@@ -11,8 +11,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -43,7 +43,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-060",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -54,7 +54,9 @@ window.questionBank = [
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
     "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
     "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -77,8 +79,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -109,7 +111,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-071",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -122,7 +124,7 @@ window.questionBank = [
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -143,8 +145,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -175,7 +177,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-069",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -209,8 +211,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -241,7 +243,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-069",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -252,7 +254,9 @@ window.questionBank = [
     "rpmCrosswalkStatus": "FAMILY_ACTIVE",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBucket": 4,
@@ -262,7 +266,8 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q004_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q004_visual.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q4-solution.svg"
   },
   {
     "id": 5,
@@ -275,8 +280,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -307,7 +312,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-070",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -341,8 +346,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -373,7 +378,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-061",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -386,7 +391,7 @@ window.questionBank = [
     "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -407,8 +412,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -439,7 +444,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-066",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -473,8 +478,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -505,7 +510,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-069",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -539,8 +544,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -571,7 +576,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-064",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -605,8 +610,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -637,7 +642,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-066",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -658,7 +663,8 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q010"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q010",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q10-solution.svg"
   },
   {
     "id": 11,
@@ -671,8 +677,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -703,7 +709,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-072",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -716,7 +722,7 @@ window.questionBank = [
     "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -737,8 +743,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -769,7 +775,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-074",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -782,7 +788,7 @@ window.questionBank = [
     "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -803,8 +809,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -835,7 +841,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-072",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -848,7 +854,7 @@ window.questionBank = [
     "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -869,8 +875,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -901,7 +907,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-078",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -912,7 +918,9 @@ window.questionBank = [
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR"
+    ],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBucket": 3,
@@ -935,8 +943,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -967,7 +975,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-083",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -980,7 +988,7 @@ window.questionBank = [
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1001,8 +1009,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1033,7 +1041,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-079",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -1046,7 +1054,7 @@ window.questionBank = [
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1067,8 +1075,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1099,7 +1107,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-078",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -1133,8 +1141,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1165,7 +1173,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-079",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -1199,8 +1207,8 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1231,7 +1239,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-085",
     "rpmPrimaryPath": {
       "majorUnit": "도형의 닮음과 피타고라스 정리",
@@ -1244,7 +1252,7 @@ window.questionBank = [
     "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1265,8 +1273,8 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1297,7 +1305,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-090",
     "rpmPrimaryPath": {
       "majorUnit": "도형의 닮음과 피타고라스 정리",
@@ -1310,7 +1318,7 @@ window.questionBank = [
     "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1331,8 +1339,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1345,7 +1353,7 @@ window.questionBank = [
     "content": "<div class=\"note-box\"><div style=\"font-weight:600;\">서술형 문제 (20점)</div>다음 서술형 문제는 서술형 답안지에 제시되는 풀이 과정을 반드시 자세히 기록하기를 바랍니다. (풀이 과정이 없으면 감점됩니다.)</div><br>다음 직각삼각형 $ABC$에서 $\\angle A$의 이등분선과 $\\overline{BC}$의 교점을 $D$, 점 $D$에서 변 $AC$에 내린 수선의 발을 $E$라고 할 때, $\\triangle DEC$의 넓이를 구하시오. (단, 삼각형의 합동을 이용할 것) [5점]",
     "choices": [],
     "answer": "$6$",
-    "solution": "$\\triangle ABC$는 $AB=12$, $AC=15$인 직각삼각형이므로 $BC=9$이다. $AD$는 $\\angle A$의 이등분선이고 $\\angle B=\\angle E=90^\\circ$이므로 직각삼각형 $ABD$, $AED$는 공통 빗변 $AD$와 한 예각이 같아 RHA 합동이다. 따라서 $AE=AB=12$, $DE=BD=4$. $EC=15-12=3$이므로 $[DEC]=\\dfrac12\\cdot4\\cdot3=6$.",
+    "solution": "$\\angle BAD=\\angle DAE$이고 $\\angle ABD=\\angle AED=90^\\circ$이며 $AD$는 공통 빗변이므로, 직각삼각형 $ABD$, $AED$는 RHA 합동이다. 따라서 $AE=AB=12$, $DE=BD=4$이다. $EC=AC-AE=15-12=3$이므로 $[DEC]=\\dfrac12\\cdot3\\cdot4=6$.",
     "sourceQuestionNo": "서술형1",
     "displayNo": "서술형1",
     "sourceOrdinal": 21,
@@ -1357,7 +1365,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-071",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -1368,9 +1376,11 @@ window.questionBank = [
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1378,7 +1388,8 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q021"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q021",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -1391,8 +1402,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1405,7 +1416,7 @@ window.questionBank = [
     "content": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\triangle ABC$의 넓이는 $84$일 때, $\\triangle ABC$의 내접원의 넓이를 구하시오. [5점]",
     "choices": [],
     "answer": "$16\\pi$",
-    "solution": "세 변의 길이가 $14,13,15$이므로 반둘레는 $s=21$이다. 내접원의 반지름을 $r$이라 하면 삼각형의 넓이는 $rs$이므로 $84=21r$, 따라서 $r=4$이다. 내접원의 넓이는 $\\pi r^2=16\\pi$.",
+    "solution": "내심 $I$에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름 $r$이다. 따라서 $\\triangle ABC$의 넓이는 세 작은 삼각형의 넓이의 합이므로 $84=\\dfrac12r(14+13+15)=21r$이다. 그러므로 $r=4$이고, 내접원의 넓이는 $\\pi r^2=16\\pi$이다.",
     "sourceQuestionNo": "서술형2",
     "displayNo": "서술형2",
     "sourceOrdinal": 22,
@@ -1417,7 +1428,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-068",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -1428,7 +1439,9 @@ window.questionBank = [
     "rpmCrosswalkStatus": "FAMILY_ACTIVE",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_INCENTER",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -1438,7 +1451,8 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q022"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q022",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -1451,8 +1465,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1477,7 +1491,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-078",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -1498,7 +1512,8 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q023"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q023",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q23-solution.svg"
   },
   {
     "id": 24,
@@ -1511,8 +1526,8 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1525,7 +1540,7 @@ window.questionBank = [
     "content": "다음 평행사변형 $ABCD$에서 $\\overline{AO}$, $\\overline{CO}$의 중점을 각각 $M$, $N$이라고 할 때, $\\triangle ABM$과 $\\triangle CBN$의 넓이의 합을 구하시오. (단, 점 $O$는 두 대각선의 교점) [5점]",
     "choices": [],
     "answer": "$12\\,\\mathrm{cm}^2$",
-    "solution": "평행사변형의 넓이는 $8\\times6=48\\,\\mathrm{cm}^2$이다. 대각선은 서로를 이등분하므로 $O$는 $AC$의 중점이고, $M,N$은 각각 $AO,CO$의 중점이다. 따라서 $M,N$의 밑변 $BC$에 대한 높이는 각각 전체 높이의 $\\dfrac34$, $\\dfrac14$이다. $[ABM]=6$, $[CBN]=6$이므로 합은 $12\\,\\mathrm{cm}^2$이다.",
+    "solution": "평행사변형의 넓이는 $8\\times6=48\\,\\mathrm{cm}^2$이고, 두 대각선은 서로를 이등분하므로 네 삼각형 $AOB$, $BOC$, $COD$, $DOA$의 넓이는 각각 $12\\,\\mathrm{cm}^2$이다. $M$은 $AO$의 중점이므로 $[ABM]=\\dfrac12[ABO]=6$, $N$은 $CO$의 중점이므로 $[CBN]=\\dfrac12[CBO]=6$이다. 따라서 넓이의 합은 $12\\,\\mathrm{cm}^2$이다.",
     "sourceQuestionNo": "서술형4",
     "displayNo": "서술형4",
     "sourceOrdinal": 24,
@@ -1537,7 +1552,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "rpmPrimaryRecordId": "M2-RPM-077",
     "rpmPrimaryPath": {
       "majorUnit": "사각형의 성질",
@@ -1548,7 +1563,9 @@ window.questionBank = [
     "rpmCrosswalkStatus": "RPM_ONLY",
     "problemTypeKey": "",
     "templateKey": "",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLELOGRAM_PROPERTIES"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -1558,6 +1575,7 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q024"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q024",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q24-solution.svg"
   }
 ];

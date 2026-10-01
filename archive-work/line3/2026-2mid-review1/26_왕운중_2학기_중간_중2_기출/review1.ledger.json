@@ -1,0 +1,820 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LINE3_REVIEW1_LEDGER_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW1_DONE",
+  "examId": "26_왕운중_2학기_중간_중2_기출",
+  "reviewedAtKst": "2026-10-01T08:42:43+09:00",
+  "input": {
+    "remoteMainSha": "aa1154a40b2edbd34ae32f45d5efb79784558494",
+    "createBranch": "work/line3/26-wangun-m2-2mid-create-20261001",
+    "createSealedHead": "039f277e7c9c6bd4c55cb0207fe0ab92dcd05651",
+    "createArtifactCommit": "c8eea7862b5f57cf74186f8518bd821280a41b0e",
+    "createFinalArtifactSha": "691d413a4fef9efe757b3fa789020725e5120af9",
+    "sourceAuthorityBranch": "codex/archive-2026-2mid-prompt-assets",
+    "sourceAuthorityCommit": "c6470f313c09c73faa34bbcad73faafb603668e2",
+    "sourceDocumentSha256": "sha256:01edf694f153321a8d8b2f130275d1637966440577d4756ef8c1c343f5409b7c",
+    "rpmCrosswalkMiddle2Blob": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "activeRegistryBlob": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "visualRuleBlob": "01dfa5b000b0e894cd06fc505cf8e2272b17d195",
+    "currentHardGateMain": "aa1154a40b2edbd34ae32f45d5efb79784558494"
+  },
+  "calibration": {
+    "blindDecisionFrozenBeforeCompare": true,
+    "status": "PASS"
+  },
+  "denominator": {
+    "questionCount": 24,
+    "fullPageSourcePageCount": 6,
+    "problemImageCount": 21,
+    "inputSolutionSvgCount": 0,
+    "activeSolutionSvgCount": 6
+  },
+  "independentAudit": {
+    "sourceContentChoices": "24/24 PASS",
+    "answerSolve": "24/24 PASS",
+    "mathSolution": "24/24 PASS_AFTER_REPAIR",
+    "smallBoard": "24/24 PASS_AFTER_REPAIR",
+    "microLayout": "24/24 PASS_GRID_DEFAULT",
+    "problemImages": "21/21 PASS",
+    "solutionSvg": "6/6 CODE_FIRST + PYTHON_NUMERIC_MODEL",
+    "metadata": "24/24 PASS",
+    "difficulty": "24/24 PASS",
+    "curriculumMethodAuditCount": "24/24",
+    "visualNecessityAuditCount": "24/24"
+  },
+  "repairs": [
+    {
+      "qid": 21,
+      "type": "CURRICULUM_METHOD_REPAIR",
+      "detail": "삭제: M2-05 범위 밖의 불필요한 피타고라스 정리 단계. RHA 합동→AE=12, DE=4→EC=3→넓이 6으로 단원 내 풀이만 사용."
+    },
+    {
+      "qid": 22,
+      "type": "SMALL_BOARD_REPAIR",
+      "detail": "[ABC]=rs 압축표현을 내심에서 세 변에 내린 수선과 세 작은 삼각형의 넓이 합으로 풀어 학생 재현 가능하게 상세화."
+    },
+    {
+      "qid": 24,
+      "type": "SMALL_BOARD_REPAIR",
+      "detail": "불명확한 높이 3/4·1/4 서술을 대각선이 만드는 네 등넓이 삼각형과 M,N 중점에 따른 절반 넓이로 교체."
+    },
+    {
+      "scope": "meta",
+      "type": "FRESH_INDEPENDENT_REPAIR",
+      "qids": [
+        1,
+        2,
+        4,
+        6,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        19,
+        20,
+        21,
+        22,
+        24
+      ],
+      "detail": "CrossConcept/IntegrationPattern을 source+독립 final solution에서 재판정. q24 RPM_ONLY는 semantic FINAL + projection UNMATERIALIZED로 보존."
+    },
+    {
+      "scope": "solution SVG",
+      "type": "ADD_NEW_VISUAL",
+      "qids": [
+        4,
+        10,
+        21,
+        22,
+        23,
+        24
+      ],
+      "detail": "visual necessity hard gate catch-up; Python numeric model로 semantic geometry를 고정한 뒤 solution SVG 생성."
+    }
+  ],
+  "itemHolds": [],
+  "questionAudits": [
+    {
+      "id": 1,
+      "answer": "⑤",
+      "rpm": "M2-RPM-060",
+      "projection": "REUSE_ACTIVE",
+      "cross": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "conditions": [],
+      "pattern": "SEQUENTIAL",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 2,
+      "answer": "④",
+      "rpm": "M2-RPM-071",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 1,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 3,
+      "answer": "③",
+      "rpm": "M2-RPM-069",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 4,
+      "answer": "④",
+      "rpm": "M2-RPM-069",
+      "projection": "REUSE_ACTIVE",
+      "cross": [
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 4,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "ADD_NEW_VISUAL"
+    },
+    {
+      "id": 5,
+      "answer": "②",
+      "rpm": "M2-RPM-070",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 4,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 6,
+      "answer": "②,④",
+      "rpm": "M2-RPM-061",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 7,
+      "answer": "⑤",
+      "rpm": "M2-RPM-066",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "SEQUENTIAL",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 8,
+      "answer": "①",
+      "rpm": "M2-RPM-069",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 9,
+      "answer": "③",
+      "rpm": "M2-RPM-064",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "REINTERPRETATION",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 10,
+      "answer": "③",
+      "rpm": "M2-RPM-066",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "ADD_NEW_VISUAL"
+    },
+    {
+      "id": 11,
+      "answer": "②",
+      "rpm": "M2-RPM-072",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 1,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 12,
+      "answer": "①,⑤",
+      "rpm": "M2-RPM-074",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "VISUAL_EXEMPT"
+    },
+    {
+      "id": 13,
+      "answer": "③",
+      "rpm": "M2-RPM-072",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 1,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "VISUAL_EXEMPT"
+    },
+    {
+      "id": 14,
+      "answer": "④",
+      "rpm": "M2-RPM-078",
+      "projection": "REUSE_ACTIVE",
+      "cross": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 15,
+      "answer": "①",
+      "rpm": "M2-RPM-083",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "VISUAL_EXEMPT"
+    },
+    {
+      "id": 16,
+      "answer": "③",
+      "rpm": "M2-RPM-079",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 1,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 17,
+      "answer": "①",
+      "rpm": "M2-RPM-078",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 18,
+      "answer": "⑤",
+      "rpm": "M2-RPM-079",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 19,
+      "answer": "④",
+      "rpm": "M2-RPM-085",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 20,
+      "answer": "②",
+      "rpm": "M2-RPM-090",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "NONE",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "KEEP_EXISTING_REFERENCE"
+    },
+    {
+      "id": 21,
+      "answer": "6",
+      "rpm": "M2-RPM-071",
+      "projection": "REUSE_ACTIVE",
+      "cross": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditions": [],
+      "pattern": "SEQUENTIAL",
+      "difficulty": 3,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "ADD_NEW_VISUAL"
+    },
+    {
+      "id": 22,
+      "answer": "16π",
+      "rpm": "M2-RPM-068",
+      "projection": "REUSE_ACTIVE",
+      "cross": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditions": [],
+      "pattern": "SEQUENTIAL",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "ADD_NEW_VISUAL"
+    },
+    {
+      "id": 23,
+      "answer": "80°",
+      "rpm": "M2-RPM-078",
+      "projection": "REUSE_ACTIVE",
+      "cross": [],
+      "conditions": [],
+      "pattern": "INTERDEPENDENT",
+      "difficulty": 4,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "ADD_NEW_VISUAL"
+    },
+    {
+      "id": 24,
+      "answer": "12 cm²",
+      "rpm": "M2-RPM-077",
+      "projection": "UNMATERIALIZED_RPM_ONLY",
+      "cross": [
+        "CC_PARALLELOGRAM_PROPERTIES"
+      ],
+      "conditions": [],
+      "pattern": "SEQUENTIAL",
+      "difficulty": 2,
+      "sourceContentChoices": "PASS",
+      "mathSolution": "PASS",
+      "metadataSemantic": "FINAL",
+      "curriculumMethod": "ALLOWED",
+      "visualDecision": "ADD_NEW_VISUAL"
+    }
+  ],
+  "curriculumMethodAudits": [
+    {
+      "id": 1,
+      "methods": [
+        "삼각형의 내각의 합",
+        "이등변삼각형의 밑각",
+        "각의 이등분선"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 2,
+      "methods": [
+        "직각삼각형 RHA 합동 조건"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 3,
+      "methods": [
+        "내심의 각",
+        "외심의 중심각·이등변삼각형"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 4,
+      "methods": [
+        "외심",
+        "직각삼각형의 외심은 빗변의 중점"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 5,
+      "methods": [
+        "직각삼각형 RHS 합동",
+        "이등변삼각형의 성질"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 6,
+      "methods": [
+        "이등변삼각형의 꼭짓각 이등분선"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 7,
+      "methods": [
+        "내심",
+        "각의 이등분선",
+        "삼각형의 내각의 합"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 8,
+      "methods": [
+        "내심의 각",
+        "외심의 중심각",
+        "이등변삼각형의 성질"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 9,
+      "methods": [
+        "수직이등분선",
+        "외심"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 10,
+      "methods": [
+        "내심의 각의 이등분선",
+        "평행선의 각"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 11,
+      "methods": [
+        "평행사변형의 대변의 길이"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 12,
+      "methods": [
+        "평행사변형의 판정",
+        "평행선의 엇각"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 13,
+      "methods": [
+        "평행사변형의 각의 성질"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 14,
+      "methods": [
+        "평행사변형의 각",
+        "각의 이등분선",
+        "직사각형의 성질"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 15,
+      "methods": [
+        "직사각형·마름모·정사각형의 대각선 성질"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 16,
+      "methods": [
+        "직사각형의 대각선 성질",
+        "일차방정식"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 17,
+      "methods": [
+        "정사각형의 성질",
+        "이등변삼각형의 성질"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 18,
+      "methods": [
+        "마름모의 대각선 성질",
+        "수직인 두 직선의 각"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 19,
+      "methods": [
+        "닮은 도형의 대응변·대응각"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 20,
+      "methods": [
+        "닮음비와 넓이비"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 21,
+      "methods": [
+        "직각삼각형 RHA 합동",
+        "삼각형의 넓이"
+      ],
+      "status": "ALLOWED_AFTER_REPAIR",
+      "repair": "삭제: 단원 밖 피타고라스 정리로 BC를 먼저 구하던 불필요 단계"
+    },
+    {
+      "id": 22,
+      "methods": [
+        "내심·내접원의 반지름",
+        "삼각형 넓이의 분할"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 23,
+      "methods": [
+        "정사각형의 대각선",
+        "삼각형 SAS 합동",
+        "삼각형의 내각의 합"
+      ],
+      "status": "ALLOWED"
+    },
+    {
+      "id": 24,
+      "methods": [
+        "평행사변형의 넓이",
+        "대각선의 이등분",
+        "중점에 따른 넓이 분할"
+      ],
+      "status": "ALLOWED"
+    }
+  ],
+  "curriculumViolationQids": [],
+  "visualNecessityAudits": [
+    {
+      "id": 1,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 2,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 3,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 4,
+      "decision": "ADD_NEW_VISUAL",
+      "reason": "풀이의 결정적 보조관계/중점·합동·내접원·넓이 분할을 문제 그림만으로 추적하기 어려워 별도 solution visual 추가"
+    },
+    {
+      "id": 5,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 6,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 7,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 8,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 9,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 10,
+      "decision": "ADD_NEW_VISUAL",
+      "reason": "풀이의 결정적 보조관계/중점·합동·내접원·넓이 분할을 문제 그림만으로 추적하기 어려워 별도 solution visual 추가"
+    },
+    {
+      "id": 11,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 12,
+      "decision": "VISUAL_EXEMPT",
+      "reason": "평행사변형 판정 조건의 순수 명제 비교로 특정 한 도형을 추가하면 오히려 선택지 의미를 왜곡할 수 있음"
+    },
+    {
+      "id": 13,
+      "decision": "VISUAL_EXEMPT",
+      "reason": "평행사변형 이웃각·대각의 단일 각 계산으로 새 학습 정보를 주는 보조선이 없음"
+    },
+    {
+      "id": 14,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 15,
+      "decision": "VISUAL_EXEMPT",
+      "reason": "특수 사각형의 성질 목록 비교 문항으로 단일 도형 시각화가 선택지 전체를 대표하지 못함"
+    },
+    {
+      "id": 16,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 17,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 18,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 19,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 20,
+      "decision": "KEEP_EXISTING_REFERENCE",
+      "reason": "기존 문제 visual에 풀이에 필요한 점·선이 이미 있고 별도 construction 없이 해설 문장과 직접 연결 가능"
+    },
+    {
+      "id": 21,
+      "decision": "ADD_NEW_VISUAL",
+      "reason": "풀이의 결정적 보조관계/중점·합동·내접원·넓이 분할을 문제 그림만으로 추적하기 어려워 별도 solution visual 추가"
+    },
+    {
+      "id": 22,
+      "decision": "ADD_NEW_VISUAL",
+      "reason": "풀이의 결정적 보조관계/중점·합동·내접원·넓이 분할을 문제 그림만으로 추적하기 어려워 별도 solution visual 추가"
+    },
+    {
+      "id": 23,
+      "decision": "ADD_NEW_VISUAL",
+      "reason": "풀이의 결정적 보조관계/중점·합동·내접원·넓이 분할을 문제 그림만으로 추적하기 어려워 별도 solution visual 추가"
+    },
+    {
+      "id": 24,
+      "decision": "ADD_NEW_VISUAL",
+      "reason": "풀이의 결정적 보조관계/중점·합동·내접원·넓이 분할을 문제 그림만으로 추적하기 어려워 별도 solution visual 추가"
+    }
+  ],
+  "visualMissingQids": [],
+  "sourceRepair": {
+    "auditedSourceRepairCount": 0,
+    "sourceMutation": false
+  },
+  "difficultyDistribution": {
+    "1": 4,
+    "2": 9,
+    "3": 8,
+    "4": 3,
+    "5": 0,
+    "UNKNOWN": 0
+  },
+  "output": {
+    "examBlob": "ef43f55cfbc82e0821786d151fb3ee8d30ba1843",
+    "solutionSvgBlobs": {
+      "q4": "b6d1a467b3b7acbdbb294b24c685133362b73d6d",
+      "q10": "9c9fc6590058bd33b006f0af1044be25fea1a23f",
+      "q21": "c0b3358afce4bfb9dae11db3b3c942841725657d",
+      "q22": "53f672cb5efa16ca755a3fa25b1b273d32545531",
+      "q23": "681b0de2f93a93453b4c8979e14e0963689160d7",
+      "q24": "40edfd9b6d7c5dfa70e282dcd6f682aaaaa97963"
+    }
+  },
+  "mainMutation": false,
+  "nextOwner": "LINE3 REVIEW2",
+  "notes": [
+    "CREATE verdict/answer/solution/meta/hold는 answer authority로 사용하지 않고 full-page source와 독립 풀이를 먼저 동결했다.",
+    "CURRENT hard gate aa1154a4 이후 요구된 curriculumMethodAuditCount=24/24와 visualNecessityAuditCount=24/24를 REVIEW1 catch-up으로 완료했다.",
+    "시험지 전체 HOLD/BLOCK 없음."
+  ]
+}
