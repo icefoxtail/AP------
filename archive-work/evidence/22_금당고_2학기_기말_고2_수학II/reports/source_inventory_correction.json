@@ -1,0 +1,35 @@
+{
+  "schema": "SOURCE_INVENTORY_CORRECTION_v1",
+  "examId": "22_금당고_2학기_기말_고2_수학II",
+  "runId": "source-intake-heartbeat-2026-10-01-0902-kst",
+  "status": "INITIAL_DRAFT_INVALID_REPLACED_BEFORE_CANDIDATE_CREATION",
+  "reason": "Initial manually composed inventory/extraction grouping placed question 14 and the constructed-response section on incorrect PDF pages and duplicated short-answer identifiers. The full-page cover and page images show q14 on page 2, q15/q16 plus 단답형1/2 on page 3, and 서술형1/2 on page 4. No candidate JS or visual assets were created from that invalid grouping; the invalid drafts are preserved under reports/recovery/.",
+  "preservedArtifacts": [
+    {
+      "originalPath": "reports/source_inventory.json",
+      "preservedPath": "reports/recovery/source_inventory_initial_inventory_mismatch.json",
+      "sha256": "sha256:be58d0cd74da443b1a8f585d11fae20c5ae6010146115c258b0d883798615df8"
+    },
+    {
+      "originalPath": "reports/source_identity_map.json",
+      "preservedPath": "reports/recovery/source_identity_map_initial_inventory_mismatch.json",
+      "sha256": "sha256:82145ca9cda5b3fd250155cc78062748d8128fce86073d8b40bb3ae2a454d2d1"
+    },
+    {
+      "originalPath": "reports/source_text_freeze.json",
+      "preservedPath": "reports/recovery/source_text_freeze_initial_inventory_mismatch.json",
+      "sha256": "sha256:af75f471c046f9030830293e07d7195b3e10da437ba408bfc62639adfbaf54fc"
+    },
+    {
+      "originalPath": "reports/extraction_errors.json",
+      "preservedPath": "reports/recovery/extraction_errors_initial_inventory_mismatch.json",
+      "sha256": "sha256:3bb34bfb228c3c442b2b968da345c37ab72970a73886f72d8669b86022b6ff6a"
+    }
+  ],
+  "correctedInventoryRef": "inventory-input.json",
+  "correctedSourcePageInventoryRef": "reports/source_page_inventory.json",
+  "candidateJsCreatedFromInvalidInventory": false,
+  "preservedArtifactsLocalOnly": true,
+  "preservedArtifactsStaged": false,
+  "correctedInventorySha256": "sha256:1d791af8597920ab68cb59228040179a795f56edf7a61401cb76981f6c1fa4a3"
+}
