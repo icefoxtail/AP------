@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_RETRY_FAIL_PACKET_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "R3_RETRY_FAIL",
+  "status": "R3_FAIL_REENTRY_REQUIRED",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "reviewedAt": "2026-10-01T10:37:00+09:00",
+  "r3Input": {
+    "branch": "work/line3/26-maesan-h1-2mid-r2-targeted-recheck-20261001",
+    "branchHead": "33c3549e0551e58d170d7ea64132e19fe24b374f",
+    "artifactSha": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+    "r2StudentArtifactCommit": "8166fe3d5d2e72a7534ebb721fcb47d8f1d68e08",
+    "r2LedgerCommit": "27f80a1820461164d78e85f9cb5568401d9bc114"
+  },
+  "independence": {
+    "priorR1R2VerdictUsedAsAuthority": false,
+    "latestRepairedLineageReadDirectly": true,
+    "sourcePagesReadDirectly": true,
+    "targetMathAndSolutionReadAllQuestions": "21/21",
+    "solutionVisualBytesRead": "14/14",
+    "problemVisualSourcePixelCompare": "3/3",
+    "blindTargetDecisionBeforeGoldenCompare": true
+  },
+  "audit": {
+    "studentArtifact": {
+      "status": "FAIL_Q3_VISUAL_LABEL_ONLY",
+      "count": "21/21",
+      "mathAnswerSolutionStatus": "PASS_21_21",
+      "forbiddenInternalStudentLanguageHits": 0
+    },
+    "protectedFields": {
+      "status": "PASS",
+      "diffCount": 0,
+      "comparedFromArtifactSha": "7401a9cd568589637b529131ed56a2b125767302",
+      "comparedToArtifactSha": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+      "fields": [
+        "id",
+        "content",
+        "choices",
+        "answer",
+        "sourceIdentityKey",
+        "sourceDocumentSha256"
+      ]
+    },
+    "curriculum": {
+      "status": "PASS",
+      "auditCount": "21/21",
+      "violationQids": [],
+      "directFocus": {
+        "q13": "PASS_SET_OPERATIONS_DEMORGAN_NO_SYMMETRIC_DIFFERENCE_NOTATION_DEPENDENCY",
+        "q15": "PASS_SLOPE_POINT_LINE_DISTANCE_PYTHAGOREAN_NO_VECTOR_PROJECTION",
+        "q21": "PASS_INSCRIBED_ANGLE_PERPENDICULAR_BISECTOR_SLOPE_DISTANCE_NO_VECTOR"
+      }
+    },
+    "solutionReproducibility": {
+      "status": "PASS",
+      "auditCount": "21/21",
+      "q20": {
+        "status": "PASS",
+        "decisiveChain": [
+          "z+conjugate(z)=1 => conjugate(z)=1-z",
+          "z*conjugate(z)=1 => z^2-z+1=0",
+          "z^6-1 factorization contains z^2-z+1 => B subset A",
+          "|A|=6 and |B|=2 => |A-B|=4",
+          "C is a nonempty subset of A-B => 2^4-1=15"
+        ]
+      }
+    },
+    "visualNecessity": {
+      "status": "PASS",
+      "auditCount": "21/21",
+      "requiredQids": [
+        3,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        17,
+        18,
+        19,
+        21
+      ],
+      "requiredLinked": "14/14",
+      "missingQids": []
+    },
+    "solutionVisualMathParity": {
+      "status": "PASS_MATH_PARITY_WITH_PUBLICATION_LABEL_FAIL",
+      "auditCount": "14/14",
+      "mathParityFailureQids": [],
+      "studentDecimalPointLabelCheck": {
+        "status": "FAIL",
+        "scanScope": "ALL_17_LINKED_STUDENT_VISUALS",
+        "failureCount": 1,
+        "qid": 3,
+        "path": "archive/assets/images/26_매산고_2학기_중간_고1_기출/q3-solution.svg",
+        "blob": "fcb4830e1212a375038776f52e640ec22dfb01f1",
+        "exposedText": "P(0.9,4.7)",
+        "exactCoordinate": "(9/10,47/10)",
+        "sourceDecimalException": false
+      }
+    },
+    "problemVisual": {
+      "status": "PASS",
+      "auditCount": "3/3",
+      "q12": {
+        "sourcePageBlob": "1a8cb211a13ea5d326ee37019a9e6716cdc41fb7",
+        "currentSvgBlob": "7318a3e83499eb20af5772edfe4d51100e46ef03",
+        "checks": [
+          "O/A/Q/P/C present",
+          "y=x present",
+          "AQ and QP present",
+          "equal x/y scale",
+          "circle C equation metric preserved",
+          "handwriting 0",
+          "clipping 0"
+        ]
+      },
+      "q15": {
+        "sourcePageBlob": "443ead1ae14a0d39b0018695fc5f0199c5b3c51e",
+        "currentSvgBlob": "fde1c15f99f4ba6ae3922eb9a5b4f3e73e65ec4f",
+        "checks": [
+          "O/A/B/H/C present",
+          "y=mx present",
+          "AH perpendicular to y=mx",
+          "equal x/y scale",
+          "circle center/radius metric preserved",
+          "handwriting 0",
+          "clipping 0"
+        ]
+      },
+      "q18": {
+        "sourcePageBlob": "a72e159cb36e5af462cdaf11e543f781984fe443",
+        "currentSvgBlob": "dd79fc3da6dfebdba367363f8bda7f5bd2b4d91b",
+        "checks": [
+          "O/x/y present",
+          "printed -2/-1 x ticks and -2/-3 y ticks preserved",
+          "quarter arc + two segments coordinate semantics preserved",
+          "equal x/y scale",
+          "handwriting 0",
+          "clipping 0"
+        ]
+      }
+    },
+    "metadata": {
+      "status": "PASS",
+      "q1": {
+        "problemTypeKey": "PT_SET_DEFINITION",
+        "templateKey": "TPL_SET_IDENTIFY",
+        "primary": "set membership definability judgment"
+      },
+      "q21": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_INSCRIBED_ANGLE_CENTER",
+        "primary": "inscribed-angle radius + perpendicular-bisector center locus"
+      }
+    },
+    "itemHoldCount": 0,
+    "releaseRender": {
+      "status": "NOT_RUN",
+      "reason": "No connected branch browser/runtime is exposed in this review session; user requested fresh student render when possible. Static hard FAIL already blocks release."
+    }
+  },
+  "failedQids": [
+    3
+  ],
+  "failureCodes": [
+    "STUDENT_DECIMAL_POINT_LABEL_FAIL"
+  ],
+  "affectedAxes": [
+    "solution_visual",
+    "student_label_precision",
+    "publication_quality"
+  ],
+  "findings": [
+    {
+      "qid": 3,
+      "code": "STUDENT_DECIMAL_POINT_LABEL_FAIL",
+      "observedEvidence": "q3 solution SVG exposes computed student-facing point label P(0.9,4.7). The source question does not provide decimal coordinates. Exact intersection is (9/10,47/10).",
+      "authorityEvidence": [
+        "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md:25.3 STUDENT_DECIMAL_POINT_LABEL_CHECK",
+        "q3-solution.svg blob fcb4830e1212a375038776f52e640ec22dfb01f1"
+      ],
+      "scopeEvidence": "All 17 linked student visual files were scanned for decimal text labels; q3 is the only hit."
+    }
+  ],
+  "systemicScope": {
+    "classification": "BOUNDED_Q3_VISUAL_LABEL",
+    "visualNecessityFamilyRescan": "PASS_21_21",
+    "linkedStudentVisualDecimalLabelScan": "17/17_ONE_FAIL_Q3",
+    "unrelatedMathSourceAnswerScope": "CLOSED_NO_REENTRY"
+  },
+  "failureClass": "TARGETED_R1_R2",
+  "requiredRoute": "R1_TARGETED_REPAIR_THEN_R2_TARGETED_INDEPENDENT_RECHECK_THEN_R3_RETRY",
+  "nextOwner": "R1_TARGETED_REPAIR",
+  "r1Target": {
+    "qids": [
+      3
+    ],
+    "defectFamily": "SOLUTION_VISUAL_STUDENT_LABEL",
+    "repairConstraint": "Do not change source/content/choices/answer/sourceIdentity or q3 solution math. Replace the computed decimal student label with an exact fraction label or point-name-only label under the current visual rule."
+  },
+  "r2Target": {
+    "qids": [
+      3
+    ],
+    "defectFamily": "SOLUTION_VISUAL_STUDENT_LABEL",
+    "independentRecheck": true,
+    "requiredFamilyScan": "STUDENT_DECIMAL_POINT_LABEL_CHECK on all linked student visuals"
+  },
+  "authorityRefs": {
+    "r3ProtocolMainBlob": "b38b2f240a3243f2999a3eb2afe6fd6730e7a321",
+    "visualRuleV11MainBlob": "a333220a0762ef935f20a59efa7ec88dd9a4fe49",
+    "standardUnitMasterMainBlob": "8e2a8562f3e4daad70c9af4efd038dffb7b7ae82",
+    "goldenSamples": [
+      "25_효천고_2학기_중간_고1_기출.js@eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "25_제일고_2학기_중간_고1_기출.js@e23fc34093196f68aff6fef48d66b9830e6d9c12"
+    ],
+    "negativeFixture": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md@f7440339f2532f6e7ea357541c2a09b05847af59"
+  },
+  "mainMutation": false,
+  "studentArtifactMutationInR3": false
+}
