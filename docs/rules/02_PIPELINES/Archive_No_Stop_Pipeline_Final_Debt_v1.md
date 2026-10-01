@@ -1,3 +1,11 @@
+## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
+- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
+- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
+- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
+- Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
+- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
+- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
+
 # Archive No-Stop Pipeline / Final Debt v1
 
 - 상태: **ACTIVE / CURRENT**
@@ -230,7 +238,7 @@ STAGE_ATTEMPT_CLOSED_WITH_DEBT
 - initial R3 FAIL → `FINAL_REVIEW_DEBT` + scoped repair packet.
 - R3 worker는 repair를 기다리지 않고 다음 eligible exam으로 진행한다.
 - repair worker도 실패 시 복구 루프 후 debt를 닫고 다음 repair target으로 진행한다.
-- targeted R3_RETRY도 동일하다.
+- post-R3 Codex Independent Review PASS는 별도 GPT retry를 기다리지 않고 기계적 release gate 후 publish한다. Independent Review FAIL은 CODEX_R3_REPAIR로 되돌린다.
 - R3 PASS를 만들려면 기존 R3 품질 gate를 실제 충족해야 한다. no-stop 규칙은 PASS 기준을 완화하지 않는다.
 
 ---

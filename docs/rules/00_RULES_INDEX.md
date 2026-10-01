@@ -1,3 +1,11 @@
+## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
+- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
+- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
+- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
+- Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
+- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
+- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
+
 ## CURRENT HARD RULE — NO-STOP PIPELINE / FINAL-DEBT (2026-10-02)
 - 실행 정본: `02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md`.
 - 운영 selector용 `BLOCK/BLOCKED/PENDING`은 신규 생성하지 않는다. legacy 상태는 HISTORY/debt provenance로만 읽는다.
@@ -54,7 +62,7 @@ CREATE/R1/R2/R3뿐 아니라 repair/recovery/visual repair/independent recheck/F
 - rescue 중복 방지는 checkpoint freshness가 아니라 **실제 primary worker in-flight 또는 유효 competing claim**으로만 막는다. 최근 actual run이 있더라도 이미 종료되어 checkpoint만 남긴 상태면 rescue 가능하다.
 - 조율자/FLEX RESCUE는 위 조건을 만족한 stalled CREATE/R1/R2/lane-local initial R3의 **oldest eligible 1시험지**만 해당 lane의 CURRENT protocol 그대로 대신 처리할 수 있다.
 - rescue 직전 `FLEX_CLAIM(lane, exam, inputSha, claimedAtKST)`을 기록하고 즉시 physical state를 재조회한다. 실제 in-flight worker 또는 competing claim이 확인될 때만 claim을 취소하고 mutation 0으로 종료한다.
-- `ITEM_RECOVERY_QUEUE`와 post-R3 `R3_FAIL_DEFERRED / CODEX_REPAIR_* / READY_FOR_R3_RETRY`는 FLEX가 소비하지 않는다. 정상 R1/R2는 first-pass 전용이며 post-R3 repair/review는 Codex 전용, targeted R3_RETRY는 dedicated GPT R3 전용이다.
+- `ITEM_RECOVERY_QUEUE`와 post-R3 `R3_FAIL_DEFERRED / CODEX_REPAIR_*`는 FLEX가 소비하지 않는다. 정상 R1/R2는 first-pass 전용이며 post-R3 repair/review는 Codex 전용이다. clean Codex Independent Review PASS는 추가 GPT retry 없이 publish 대상으로 전환한다.
 - stale Notion selector만 믿고 backlog를 NO-WORK로 처리하지 않는다. physical receipt가 있으면 CURRENT를 정합화하고 진행한다.
 - **global/non-global blocker라는 운영 상태 자체를 만들지 않는다.** 실패는 scoped debt로 닫고 비충돌 eligible 작업을 계속한다.
 - 활성 시간표의 정확한 시각은 Notion `JS Archive 예약 세션 운영 규칙 v2 — CURRENT`를 live authority로 사용한다. 2026-10-01 cutover에서 CREATE-2는 고등 8시험지와의 :20 충돌을 피하도록 분리되었다.
@@ -77,9 +85,9 @@ CREATE/R1/R2/R3뿐 아니라 repair/recovery/visual repair/independent recheck/F
 - legacy `FULL_REENTRY` code가 남아 있어도 whole-exam R1/R2/R3 재실행을 뜻하지 않는다. 실제 수리 범위는 packet의 OPEN locus가 결정한다.
 - OPEN 밖 dependency가 반드시 필요하면 자동 전체확대 대신 `SCOPE_EXPANSION_REQUIRED`로 필요한 qid/file/field와 dependency evidence만 추가한다.
 - R3 이후 defect-family 시험지 전체 N/N rescan, unrelated 전 문항 재풀이, 전 SVG/Meta 재검은 금지한다.
-- post-R3 전담 경로: `R3_FAIL_DEFERRED → CODEX_R3_REPAIR → CODEX_INDEPENDENT_REVIEW → READY_FOR_R3_RETRY → GPT_TARGETED_R3_RETRY → R3_RETRY_PASS → READY_FOR_CODEX_PUBLISH`.
+- post-R3 전담 경로: `R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW → READY_FOR_CODEX_PUBLISH → MAIN`.
 - Codex repair는 OPEN locus만 수정하고, Codex independent review는 changed/open locus만 독립검수 + `lockedScopeMutationCount=0`을 확인한다.
-- GPT `R3_RETRY`는 수정된 OPEN locus + direct dependency + LOCK 보존만 targeted regression 한다. initial R3 전수감사를 4차·5차로 반복하지 않는다.
+- Codex Independent Review가 수정된 OPEN locus + direct dependency + LOCK 보존을 독립 확인한다. PASS면 추가 GPT 재검수 없이 기계적 release gate 후 publish하고, FAIL이면 CODEX_R3_REPAIR로 되돌린다.
 
 ### CURRENT ownership
 - 정상 R1/R2는 first-pass 검수 전용이며 `R3_FAIL_DEFERRED`를 소비하지 않는다.
