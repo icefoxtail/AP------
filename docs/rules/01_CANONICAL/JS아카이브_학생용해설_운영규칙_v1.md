@@ -8,6 +8,16 @@
 
 ---
 
+## CURRENT HARD GATE — SMALL-BOARD PHYSICAL STRUCTURE EVIDENCE (2026-10-01)
+
+학생용 해설 PASS는 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`의 `smallBoard` evidence와 결속한다.
+
+- `smallBoardAuditCount=N/N` 집계만으로 PASS 금지.
+- source에 ㄱ/ㄴ/ㄷ/ㄹ, (1)/(2)/(3), 경우분리가 있으면 final solution의 actual 문자열 block에서 각각 분리되었는지 확인한다.
+- 설명→식→계산→조건→결론의 결정 단계가 실제 줄/문단 구조로 보이는지 qid별 evidence를 남긴다.
+- 정적 linter가 `SMALLBOARD_ENUMERATION_FAIL`을 내면 사람이 가독성 취향으로 PASS override하지 않는다.
+- 2026-10-01 복성고1 q2/q17은 `22/22` 자기보고가 실제 구조 확인을 대체한 negative regression fixture다.
+
 ## 0. 권위와 목적
 
 이 문서는 **학생에게 실제로 노출되는 `solution`의 내용·표현·계산 전개·가독성·업그레이드 판정**에 대한 canonical authority다.
