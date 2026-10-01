@@ -11,8 +11,8 @@
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactSha256": "sha256:bbefaf1c7f465c4e78ef9426a2d05b0b6c318dccdad200c78542ad1fb44eaa9a",
   "sourceArtifactGitBlobSha": "ca9f16b88bd898f46c1359c713bc1dc10c318e68",
-  "reviewedArtifactSha256": "sha256:73607ed108e33b732fd627735d59114a8701842e1354d5f6649877cfd71f2832",
-  "reviewedArtifactGitBlobSha": "b5c98778e1ea460f6f2f7a022a71b429d7a3fd65",
+  "reviewedArtifactSha256": "sha256:e5153922b85e94cf831321c12f15deb10b44f41ccdc5b73a702add970c34c0f0",
+  "reviewedArtifactGitBlobSha": "3d1e1b517e1f4e05fd5e3d74d52c9b5c69c5d05b",
   "axes": [
     "source to solution mathematics",
     "answer alignment",
@@ -22,34 +22,148 @@
     "existence and feasibility"
   ],
   "fullCoverage": [
-    {"qid":1,"status":"PASS","note":"Both domain inputs determine a,b and the requested expression."},
-    {"qid":2,"status":"PASS","note":"Product law gives f(0)=1; each of ㄱ,ㄴ,ㄷ is independently evaluated."},
-    {"qid":3,"status":"PASS","note":"Function codomain and image inclusion force f(X)=Y; both slope orientations are checked."},
-    {"qid":4,"status":"PASS","note":"Inverse substitution is valid because f is onto the real line."},
-    {"qid":5,"status":"PASS","note":"The inspected map has one fixed point and a three-cycle; exponents are reduced modulo 3."},
-    {"qid":6,"status":"PASS","note":"The composition identity is rearranged through the bijective affine maps."},
-    {"qid":7,"status":"PASS","note":"Both one-to-one and onto-X conditions are used; a<2 supplies equal inputs across the axis."},
-    {"qid":8,"status":"PASS","note":"Signs of a,b,c follow from the inspected asymptotes and y-intercept; radical domain and sign give quadrants."},
-    {"qid":9,"status":"PASS","note":"Center-shifted hyperbola has symmetry axes of slopes ±1; a>c identifies each line."},
-    {"qid":10,"status":"PASS","note":"Endpoint order is justified by algebraic monotonicity of 3−3/(x+2), with no calculus."},
-    {"qid":11,"status":"PASS","note":"End placements and the two adjacent-pair events use inclusion-exclusion."},
-    {"qid":12,"status":"PASS","note":"Branch ranges, injectivity, full range, and the requested product are checked in sequence."},
-    {"qid":13,"status":"PASS","note":"The k≤0 hyperbola case is excluded; both graph quadrant conditions give 6<k<9."},
-    {"qid":14,"status":"PASS","note":"Complement count excludes exactly the orders with A students at both ends."},
-    {"qid":15,"status":"PASS","note":"Diameter, unique long cyclic gap, and remainder counts partition all 220 triangles."},
-    {"qid":16,"status":"PASS","note":"The pictured region adjacency is a 4-cycle; equal and unequal B,D color cases are counted separately."},
-    {"qid":17,"status":"PASS","note":"Nine gaps count nonconsecutive b's; the forbidden pair of endpoint b's is subtracted."},
-    {"qid":18,"status":"PASS","note":"Swapping variables gives the inverse rational function and both asymptotes."},
-    {"qid":19,"status":"PASS","note":"Each of five adjacent input pairs is counted; disjoint double events are subtracted twice and triple events are impossible."},
-    {"qid":20,"status":"PASS","note":"Descending first-digit blocks locate ranks 50 and 100; within-block ranks are enumerated."},
-    {"qid":21,"status":"PASS","note":"With t=√x≥0, the area is a positive quadratic and its vertex is in the domain."},
-    {"qid":22,"status":"PASS","note":"The open-domain image includes its minimum but excludes its upper endpoint; natural-number counts are checked at a=3,4."}
+    {
+      "qid": 1,
+      "status": "PASS",
+      "note": "Both domain inputs determine a,b and the requested expression."
+    },
+    {
+      "qid": 2,
+      "status": "PASS",
+      "note": "Product law gives f(0)=1; each of ㄱ,ㄴ,ㄷ is independently evaluated."
+    },
+    {
+      "qid": 3,
+      "status": "PASS",
+      "note": "Function codomain and image inclusion force f(X)=Y; both slope orientations are checked."
+    },
+    {
+      "qid": 4,
+      "status": "PASS",
+      "note": "Inverse substitution is valid because f is onto the real line."
+    },
+    {
+      "qid": 5,
+      "status": "PASS",
+      "note": "The inspected map has one fixed point and a three-cycle; exponents are reduced modulo 3."
+    },
+    {
+      "qid": 6,
+      "status": "PASS",
+      "note": "The composition identity is rearranged through the bijective affine maps."
+    },
+    {
+      "qid": 7,
+      "status": "PASS",
+      "note": "Both one-to-one and onto-X conditions are used; a<2 supplies equal inputs across the axis."
+    },
+    {
+      "qid": 8,
+      "status": "PASS",
+      "note": "Signs of a,b,c follow from the inspected asymptotes and y-intercept; radical domain and sign give quadrants."
+    },
+    {
+      "qid": 9,
+      "status": "PASS",
+      "note": "Center-shifted hyperbola has symmetry axes of slopes ±1; a>c identifies each line."
+    },
+    {
+      "qid": 10,
+      "status": "PASS",
+      "note": "Endpoint order is justified by algebraic monotonicity of 3−3/(x+2), with no calculus."
+    },
+    {
+      "qid": 11,
+      "status": "PASS",
+      "note": "End placements and the two adjacent-pair events use inclusion-exclusion."
+    },
+    {
+      "qid": 12,
+      "status": "PASS",
+      "note": "Branch ranges, injectivity, full range, and the requested product are checked in sequence."
+    },
+    {
+      "qid": 13,
+      "status": "PASS",
+      "note": "The k≤0 hyperbola case is excluded; both graph quadrant conditions give 6<k<9."
+    },
+    {
+      "qid": 14,
+      "status": "PASS",
+      "note": "Complement count excludes exactly the orders with A students at both ends."
+    },
+    {
+      "qid": 15,
+      "status": "PASS",
+      "note": "Diameter, unique long cyclic gap, and remainder counts partition all 220 triangles."
+    },
+    {
+      "qid": 16,
+      "status": "PASS",
+      "note": "The pictured region adjacency is a 4-cycle; equal and unequal B,D color cases are counted separately."
+    },
+    {
+      "qid": 17,
+      "status": "PASS",
+      "note": "Nine gaps count nonconsecutive b's; the forbidden pair of endpoint b's is subtracted."
+    },
+    {
+      "qid": 18,
+      "status": "PASS",
+      "note": "Swapping variables gives the inverse rational function and both asymptotes."
+    },
+    {
+      "qid": 19,
+      "status": "PASS",
+      "note": "Each of five adjacent input pairs is counted; disjoint double events are subtracted twice and triple events are impossible."
+    },
+    {
+      "qid": 20,
+      "status": "PASS",
+      "note": "Descending first-digit blocks locate ranks 50 and 100; within-block ranks are enumerated."
+    },
+    {
+      "qid": 21,
+      "status": "PASS",
+      "note": "With t=√x≥0, the area is a positive quadratic and its vertex is in the domain."
+    },
+    {
+      "qid": 22,
+      "status": "PASS",
+      "note": "The open-domain image includes its minimum but excludes its upper endpoint; natural-number counts are checked at a=3,4."
+    }
   ],
   "repairsAndRechecks": [
-    {"qid":3,"repair":"Simplified the decreasing-case absolute value to 22/4 in the student solution.","recheck":"PASS"},
-    {"qid":7,"repair":"Made the equal-input witness explicit when a<2.","recheck":"PASS"},
-    {"qid":10,"repair":"Used algebraic monotonicity in place of a derivative.","recheck":"PASS"},
-    {"qid":13,"repair":"Explicitly excluded k≤0 before the all-quadrants condition and rechecked 6<k<9.","recheck":"PASS"}
+    {
+      "qid": 3,
+      "repair": "Simplified the decreasing-case absolute value to 22/4 in the student solution.",
+      "recheck": "PASS"
+    },
+    {
+      "qid": 7,
+      "repair": "Made the equal-input witness explicit when a<2.",
+      "recheck": "PASS"
+    },
+    {
+      "qid": 10,
+      "repair": "Used algebraic monotonicity in place of a derivative.",
+      "recheck": "PASS"
+    },
+    {
+      "qid": 13,
+      "repair": "Explicitly excluded k≤0 before the all-quadrants condition and rechecked 6<k<9.",
+      "recheck": "PASS"
+    },
+    {
+      "qid": 9,
+      "repair": "Student re-read added the shifted XY=7/2 symmetry explanation.",
+      "recheck": "PASS: both transformations preserve the product; original equations and ad−bc unchanged."
+    },
+    {
+      "qid": 15,
+      "repair": "Student re-read explained the positive-gap composition count behind 4+3+2+1.",
+      "recheck": "PASS: long-gap count and answer are unchanged."
+    }
   ],
   "protectedSourceParity": "PASS: 22/22 content and 22/22 choices exact against frozen source authority; only answer and solution fields added.",
   "runtime": {

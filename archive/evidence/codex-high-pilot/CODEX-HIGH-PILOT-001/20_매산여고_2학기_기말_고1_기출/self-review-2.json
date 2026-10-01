@@ -1,0 +1,56 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "SELF_REVIEW_2",
+  "status": "STUDENT_PASS",
+  "reviewer": "Codex primary, separate student-facing full reread",
+  "denominator": 22,
+  "reviewedQuestionCount": 22,
+  "heldQids": [],
+  "reviewedArtifactSha256": "sha256:e5153922b85e94cf831321c12f15deb10b44f41ccdc5b73a702add970c34c0f0",
+  "reviewedArtifactGitBlobSha": "3d1e1b517e1f4e05fd5e3d74d52c9b5c69c5d05b",
+  "axes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "enumerated statements have independent blocks",
+    "cases and subparts are visibly separated",
+    "board flow and key equations are easy to locate"
+  ],
+  "fullCoverage": [
+    {"qid":1,"status":"PASS","note":"Two substitutions and elimination are on separate lines."},
+    {"qid":2,"status":"PASS","note":"ㄱ, ㄴ, ㄷ each has a separate judgment block."},
+    {"qid":3,"status":"PASS","note":"Increasing and decreasing endpoint assignments are split and each value is calculated."},
+    {"qid":4,"status":"PASS","note":"The inverse is stated before the requested value is evaluated."},
+    {"qid":5,"status":"PASS","note":"The fixed point and cycle are named before reducing large exponents."},
+    {"qid":6,"status":"PASS","note":"The composition is reversed one step at a time before evaluating h(0),h(1)."},
+    {"qid":7,"status":"PASS","note":"Injectivity and surjectivity onto X are both explained before solving the equation."},
+    {"qid":8,"status":"PASS","note":"Each sign comes from a named graph feature; domain and output sign lead directly to quadrants."},
+    {"qid":9,"status":"PASS","note":"Shifted coordinates expose the symmetry, followed by the two coefficient assignments and requested product."},
+    {"qid":10,"status":"PASS","note":"The algebraic monotonicity explanation and endpoint values are concise and reproducible."},
+    {"qid":11,"status":"PASS","note":"The end order, two bundle counts, overlap, and inclusion-exclusion are visible separately."},
+    {"qid":12,"status":"PASS","note":"The two branch ranges and the no-overlap/full-coverage condition are explicit."},
+    {"qid":13,"status":"PASS","note":"The two graph conditions are separate; k≤0, the boundaries, and integer selection are shown."},
+    {"qid":14,"status":"PASS","note":"Total orders and the complementary endpoint case are separated."},
+    {"qid":15,"status":"PASS","note":"The total, right-triangle count, long-gap compositions, and remaining acute count are distinct steps."},
+    {"qid":16,"status":"PASS","note":"The adjacency cycle and equal/different color cases are separate and easy to count."},
+    {"qid":17,"status":"PASS","note":"The gap model is introduced before subtracting the forbidden endpoint configuration."},
+    {"qid":18,"status":"PASS","note":"Variable swap, equation solve, and vertical/horizontal asymptotes are shown in order."},
+    {"qid":19,"status":"PASS","note":"Marked events, double intersections, impossible triple intersections, and exact-one correction are explained."},
+    {"qid":20,"status":"PASS","note":"First-digit blocks and within-block ranks are shown for both requested positions."},
+    {"qid":21,"status":"PASS","note":"The substitution, determinant area, completed square, and domain check are all present."},
+    {"qid":22,"status":"PASS","note":"The open upper endpoint is respected and the neighboring integer values are compared."}
+  ],
+  "repairsAndRechecks": [
+    {"qid":9,"repair":"Added the centered XY=7/2 explanation and transformations preserving the product.","recheck":"PASS"},
+    {"qid":15,"repair":"Explained the counts for each possible unique long gap.","recheck":"PASS"}
+  ],
+  "smallBoardFindings": {
+    "enumeratedSourceQids": [2],
+    "independentDecisionBlocks": "1/1",
+    "caseStructuredQids": [3,7,8,9,10,11,12,13,14,15,16,17,19,20,22],
+    "issues": []
+  },
+  "findings": []
+}
