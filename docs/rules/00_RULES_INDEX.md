@@ -8,6 +8,23 @@
 - M3 initial R3는 TEMP R3-1/2/3 전담이며 dedicated R3가 중복 소비하지 않는다.
 - 세부 failureClass 및 release audit는 `03_REVIEW/JS아카이브_3차검수_프로토콜.md`를 따른다.
 
+## CURRENT HARD RULE — POST-R3 LOCKED TARGETED RECOVERY (2026-10-01)
+
+- **initial R3가 시험지 전체를 보는 마지막 전수 release audit**다. initial R3 종료 artifact를 `R3_BASELINE`으로 동결한다.
+- R3 FAIL 이후에는 `failedQids[] / failedFiles[] / affectedFields[] / affectedAxes[] / directDependencies[]`만 OPEN한다. 그 밖의 문항·해설·SVG·Meta·difficulty·source·layout·asset은 `R3_LOCKED`다.
+- `R3_LOCKED` 영역은 다시 풀거나 의미검수하지 않는다. baseline blob/hash/diff 불변성만 확인한다.
+- legacy `FULL_REENTRY` code가 남아 있어도 whole-exam R1/R2/R3 재실행을 뜻하지 않는다. 실제 수리 범위는 packet의 OPEN locus가 결정한다.
+- OPEN 밖 dependency가 반드시 필요하면 자동 전체확대 대신 `SCOPE_EXPANSION_REQUIRED`로 필요한 qid/file/field와 dependency evidence만 추가한다.
+- R3 이후 defect-family 시험지 전체 N/N rescan, unrelated 전 문항 재풀이, 전 SVG/Meta 재검은 금지한다.
+- post-R3 전담 경로: `R3_FAIL_DEFERRED → CODEX_R3_REPAIR → CODEX_INDEPENDENT_REVIEW → READY_FOR_R3_RETRY → GPT_TARGETED_R3_RETRY → R3_RETRY_PASS → READY_FOR_CODEX_PUBLISH`.
+- Codex repair는 OPEN locus만 수정하고, Codex independent review는 changed/open locus만 독립검수 + `lockedScopeMutationCount=0`을 확인한다.
+- GPT `R3_RETRY`는 수정된 OPEN locus + direct dependency + LOCK 보존만 targeted regression 한다. initial R3 전수감사를 4차·5차로 반복하지 않는다.
+
+### CURRENT ownership
+- 정상 R1/R2는 first-pass 검수 전용이며 `R3_FAIL_DEFERRED`를 소비하지 않는다.
+- R3 deferred repair는 별도 Codex repair / independent-review 예약창이 병렬 처리한다.
+- `ITEM_RECOVERY_QUEUE`도 별도 Codex FINAL ITEM RECOVERY worker가 소비한다.
+- content-bearing current flow의 `ITEM_RECOVERY_DONE`은 `READY_FOR_R3`로 간다. `READY_FOR_COMMIT`만으로 publish하지 않는다.
 # JS아카이브 규칙 통합 인덱스
 
 이 문서는 `docs/rules/`의 단일 진입점이다. 규칙 원문을 무리하게 한 파일에 복사하지 않고, 기준 원본·작업 프로토콜·검수 프로토콜·특수 규정·역사 문서를 역할별로 분리한다.
@@ -133,9 +150,9 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다. Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질, Meta/difficulty 전수 audit는 경량화 대상이 아니다.
 - CURRENT R3는 **MAIN 직전 release gate**다. R3는 repair stage가 아니며, CURRENT가 R3를 요구하는 release-bound flow에서 REVIEW2 이후 반드시 통과한다.
-- 현재 적용 대상은 2026 긴급 5시험지, 고등 SOURCE-ONLY PILOT-001, 그리고 M3 REVIEW2 69/69 뒤 CREATE-1/2/3이 임시 전환하는 M3 TEMP R3 campaign이다.
-- R3 FAIL 회귀는 `failureClass`로 고정한다: A `FULL_REENTRY`, B `TARGETED_R1_R2`, C `ASSET_ONLY`. 애매하면 A. B는 failed qid repair + defect-family N/N rescan + targeted blind recheck이며 unrelated 전 문항 수학 재풀이를 금지한다.
-- R3_RETRY는 어떤 class였든 latest repaired lineage에서 full release gate를 다시 닫는다.
+- current initial R3는 긴급/고등 release와 lane-local TEMP M3 R3에 적용한다. M3 TEMP R3는 각 CREATE partition이 physical-evidence-valid CREATE 100%가 되는 즉시 독립 전환한다.
+- initial R3 FAIL은 `R3_FAIL_DEFERRED`로 격리하고 packet의 OPEN locus만 Codex post-R3 repair가 소비한다. legacy `FULL_REENTRY`가 있어도 whole-exam R1/R2 재실행으로 해석하지 않는다.
+- R3_RETRY는 changed/open locus + direct dependency + `R3_LOCKED` hash/diff 보존만 targeted regression 한다.
 
 ### NO EXAM PENDING / STAGE AUTHORITY CONTINUITY — CURRENT HARD RULE (2026-10-01)
 
@@ -159,7 +176,7 @@ CREATE / REVIEW1 / REVIEW2 / BATCH의 write recovery는 `02_PIPELINES/Archive_Au
 - CREATE에서 미해결 문항이 있어도 나머지 문항을 완료하고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다. CREATE 판단은 최종 판정이 아니며 REVIEW1이 held item을 처음부터 독립 재판정한다.
 - REVIEW1에서 남은 문항 HOLD는 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘기고 REVIEW2가 다시 독립 재판정한다.
 - REVIEW2 뒤에도 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`에 둔다. 시험지 HOLD 상태를 만들지 않는다.
-- `ITEM_RECOVERY_QUEUE`의 소비 주체는 기존 REVIEW2 lane이다. 각 lane은 정상 `READY_FOR_REVIEW2*`를 우선 처리하고, 자기 partition에 정상 eligible이 없을 때 가장 오래된 item-recovery 시험지 1개의 **held qid만** 재판정한다. 시험지 전체 재검은 하지 않는다. 전부 해결되어 `itemHoldCount=0`이면 `READY_FOR_COMMIT`으로 승격한다.
+- `ITEM_RECOVERY_QUEUE`의 소비 주체는 **전용 Codex FINAL ITEM RECOVERY worker**다. 정상 REVIEW2 lane은 first-pass R2만 수행한다. Codex recovery는 HOLD 자체를 latest bytes에서 먼저 독립 재판정하고 TRUE HOLD만 최소수리/대체한다. 전부 해결되어 `itemHoldCount=0`이면 current content-bearing flow는 `ITEM_RECOVERY_DONE → READY_FOR_R3`로 승격한다.
 - BATCH/FINAL은 `itemHoldCount=0`인 시험지만 publish하고, held item이 남은 시험지는 publish pending으로 건너뛴다. 다른 시험지·lane·cohort 진행은 계속한다.
 - authority/connector/Git write 실패는 시험지 상태로 남기지 않는다. exact recovery artifact를 `stageArtifactRef`로 사용해 stage를 정상 완료하고, Git 전체 write capability가 막힌 경우에만 전역 blocker로 보고한다.
 - 문항 HOLD에는 최소 `qid/questionUid / reason / observedEvidence / unresolvedPoint / nextRequiredEvidenceOrCapability / createdStage / lastReviewedStage`를 남긴다.
@@ -187,7 +204,7 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 - 객관식은 보기 5개를 전수 검증하며 **③ default를 금지**한다. 현재 시험지에서 덜 쓰인 정답 위치를 우선하되 보기 자연성을 해치는 억지 배치는 금지한다.
 - 숫자형 보기는 같은 표현 체계와 자연스러운 규모를 유지하고 단독 outlier를 만들지 않는다. 오답은 실제 오류 경로에서 만든다.
 - 문항 교체 시 해당 qid의 Meta는 새 문제+새 solution 기준으로 fresh 재판정한다.
-- non-target qid는 불변이며, 완료 시험지는 `READY_FOR_COMMIT`까지만 올리고 main은 별도 writer가 담당한다.
+- non-target qid는 불변이며, current content-bearing flow의 완료 시험지는 `ITEM_RECOVERY_DONE → READY_FOR_R3`까지만 올린다. R3 PASS 전 main publish 금지다.
 
 ### ARCHIVE GOLDEN SAMPLE CALIBRATION — 공통 START HARD RULE (2026-09-28)
 

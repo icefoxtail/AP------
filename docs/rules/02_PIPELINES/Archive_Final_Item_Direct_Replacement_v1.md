@@ -22,7 +22,7 @@ REVIEW2_DONE_WITH_ITEM_HOLDS
 → replacement qid Meta fresh 판정
 → ITEM_HOLD 제거
 → itemHoldCount=0
-→ READY_FOR_COMMIT
+→ READY_FOR_R3
 ```
 
 ## 1. 실행 경계 — HARD
@@ -39,6 +39,12 @@ REVIEW2_DONE_WITH_ITEM_HOLDS
 
 다만 이 문서는 기존 JS schema, 학생용 해설 규칙, 교육과정, Meta semantic authority, Git safety를 무효화하지 않는다.
 
+## 1.1 CURRENT OWNER — DEDICATED CODEX ITEM RECOVERY
+
+- current `ITEM_RECOVERY_QUEUE`는 정상 REVIEW2 lane이 소비하지 않는다.
+- 별도 Codex FINAL ITEM RECOVERY 예약창이 가장 오래된 eligible 시험지 1건의 held qid만 처리한다.
+- upstream HOLD reason은 수정 명령이 아니라 재판정 provenance다. latest bytes에서 HOLD 자체를 먼저 독립 재판정한다.
+- R3 FAIL repair와 ITEM_RECOVERY를 같은 worker에 섞지 않는다. R3 이후 수리는 별도 Codex R3 repair worker가 담당한다.
 ## 2. 적용 조건
 
 다음 조건일 때 적용한다.
@@ -386,10 +392,10 @@ production question object에 임의 provenance field를 추가하지 않는다.
 ```text
 ITEM_RECOVERY_DONE
 itemHoldCount = 0
-READY_FOR_COMMIT
+READY_FOR_R3
 ```
 
-까지만 승격한다. main publish는 별도 writer가 수행한다.
+까지만 승격한다. current content-bearing 시험지는 R3 PASS 전 main publish 금지다.
 
 ## 15. 참고 품질 원칙
 

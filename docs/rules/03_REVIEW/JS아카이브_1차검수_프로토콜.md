@@ -1,5 +1,11 @@
 [JS아카이브 1차 검수 프로토콜 — FULL 독립검수·Repair v2.0]
 
+## CURRENT HARD RULE — R1 FIRST-PASS ONLY / R3 DEFERRED OWNER SEPARATION (2026-10-01)
+- R1은 정상 first-pass R1만 담당한다. `R3_FAIL_DEFERRED`와 `CODEX_REPAIR_RETRY_REQUIRED`를 소비하지 않는다.
+- initial R3 이후 수리는 별도 Codex R3 repair worker가 packet의 OPEN locus만 처리한다.
+- 아래 R3→R1 reentry/FULL_REENTRY/TARGETED_R1_R2 섹션은 SUPERSEDED / HISTORY다.
+
+
 ## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS (2026-10-01)
 
 R1 PASS/DONE은 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`의 item-level physical evidence gate를 통과해야 한다.
@@ -92,7 +98,7 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - q12·q15·q18의 crop/필기혼입/라벨잘림을 HOLD로 보낸 것은 false HOLD다. asset repair로 직접 닫아야 한다.
 - q1·q21을 ACTIVE canonical lookup을 끝까지 하지 않고 Meta HOLD로 둔 것도 false HOLD다. q1은 `PT_SET_DEFINITION / TPL_SET_IDENTIFY`, q21은 `PT_CIRCLE_EQUATION / TM_CIRCLE_INSCRIBED_ANGLE_CENTER`로 exact ACTIVE mapping이 가능하다.
 
-## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAILURE CLASS ROUTING (2026-10-01)
 
 R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
 
@@ -127,7 +133,7 @@ asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 �
 복수 defect class가 한 시험지에 섞이면 **A > B > C** 우선순위로 exam-level `failureClass`를 정한다. `ASSET_ONLY`는 모든 unresolved defect가 C일 때만 사용한다. B+C가 섞이면 exam-level은 B이며 asset defect도 같은 targeted reentry 안에서 asset-only repair/recheck로 닫는다.
 
 CLASS C의 별도 신규 예약은 만들지 않는다. 기존 R1 owner가 `ASSET_OWNER_REPAIR`를 **asset-only mode**로 소비하고 수학 재풀이 없이 repair한 뒤 `INDEPENDENT_ASSET_RECHECK`로 넘긴다. 기존 R2 owner는 asset-only independent recheck만 수행하고 PASS면 `R3_RETRY`로 보낸다. semantic 영향이 발견되면 B/A로 승격한다.
-## CURRENT OVERRIDE — R3 TARGETED REENTRY CONTRACT (2026-10-01)
+## SUPERSEDED / HISTORY — R3 TARGETED REENTRY CONTRACT (2026-10-01)
 
 - `FULL_REENTRY`: 기존 FULL R1 계약으로 재진입.
 - `TARGETED_R1_R2`: failed qids만 repair + defect family N/N rescan. unrelated qids의 수학·정답·source 전수 재풀이 금지.
