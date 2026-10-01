@@ -1,5 +1,21 @@
 # JS아카이브 PHYSICAL EVIDENCE BEFORE PASS v1
 
+## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER PREFLIGHT
+
+**모든 JS 품질 작업자**는 actual target의 기존 해설·SVG·이전 reviewer verdict를 열거나 수정하기 전에 Golden 2~3 + 관련 Negative Sample을 실제로 읽어 동일 quality bar를 고정한다. CREATE / R1 / R2 / R3 / SOLUTION_UPGRADE뿐 아니라 targeted REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_REPAIR / INDEPENDENT_RECHECK도 예외가 없다.
+
+작업 전 preflight:
+```bash
+node archive/tools/solution-calibration-gate.mjs --exam <js> --evidence <calibration.json> --stage <STAGE> --preflight
+```
+
+preflight에는 sample path+SHA+Git blob, sample별 대표 solution 2~5문항의 qid+solutionSha256+solutionExcerpt+observation, 복성고1 false-PASS Negative Sample, 그리고 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY` 5축이 모두 필요하다.
+
+**Blind는 quality bar에 대한 blind가 아니라 target의 기존 해설·이전 verdict에 대한 blind다.** Golden/Negative Sample은 먼저 읽되 target-specific prior answer/solution/verdict는 독립판정 전까지 가린다.
+
+full CREATE/R1/R2/R3/SOLUTION_UPGRADE는 작업 후 기존 `review-evidence-gate.mjs`에서 final target `qualityCompareCount=N/N`까지 닫는다. post-R3 targeted repair/item recovery는 LOCK을 풀지 않기 위해 full-exam gate를 강제 재실행하지 않고 preflight PASS 후 OPEN locus만 수리하며, 별도 independent recheck가 changed/open locus를 검증한다.
+
+
 ## CURRENT HARD GATE — 2026-10-01 — GOLDEN SAMPLE QUALITY FLOOR
 
 `review-evidence-gate.mjs`는 source/math/SVG/Meta physical evidence뿐 아니라 **solution quality calibration physical evidence**도 직접 검증한다. 적용 stage는 `CREATE / R1 / R2 / R3 / SOLUTION_UPGRADE`다.

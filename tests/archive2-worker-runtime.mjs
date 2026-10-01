@@ -6,6 +6,10 @@ import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
+import {
+  prepareSavedPaperBatch,
+  SAVED_PAPER_SCHEMA,
+} from "../apmath/worker-backup/worker/helpers/archive-saved-papers.js";
 import { runRc2 } from "./archive2-rc2-boundaries.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -13,13 +17,32 @@ const worker = path.join(root, "apmath/worker-backup/worker");
 const requireWorker = createRequire(path.join(worker, "package.json"));
 const { Miniflare } = requireWorker("miniflare");
 const { build } = requireWorker("esbuild");
-const catalogText = fs.readFileSync(
-  path.join(root, "archive/data/archive2-catalog.json"),
-  "utf8",
-);
-const catalog = core.decodeCatalog(JSON.parse(catalogText));
+const require = createRequire(import.meta.url);
+const { catalog } = require("./helpers/archive2-scope-harness.cjs");
 const serving = process.argv.includes("--serve");
 const fixturePort = Number(process.env.ARCHIVE2_FIXTURE_PORT || 8790);
+let canonicalBundleUnavailable = false;
+let canonicalManifestFetches = 0;
+function archiveAssetResponse(input) {
+  const pathname = decodeURIComponent(new URL(String(input?.url || input)).pathname);
+  if (pathname.endsWith("/archive/data/archive2-canonical-input-manifest.json")) {
+    canonicalManifestFetches += 1;
+    if (canonicalBundleUnavailable)
+      return new Response("authority unavailable", { status: 503 });
+  }
+  const archivePrefix = "/AP------/archive/";
+  const docsPrefix = "/AP------/docs/";
+  const file = pathname.startsWith(archivePrefix)
+    ? path.join(root, "archive", pathname.slice(archivePrefix.length))
+    : pathname.startsWith(docsPrefix)
+      ? path.join(root, "docs", pathname.slice(docsPrefix.length))
+      : "";
+  if (!file) return new Response("Not found", { status: 404 });
+  const relative = path.relative(root, file);
+  if (relative.startsWith("..") || path.isAbsolute(relative) || !fs.existsSync(file) || !fs.statSync(file).isFile())
+    return new Response("Not found", { status: 404 });
+  return new Response(fs.readFileSync(file), { status: 200 });
+}
 const bundle = await build({
   stdin: {
     contents: `import { handleExams } from './routes/exams.js';
@@ -57,20 +80,7 @@ const mf = new Miniflare({
   r2Buckets: ["EXAM_PDF_BUCKET"],
   bindings: { ARCHIVE2_ENABLED: "true" },
   serviceBindings: {
-    ARCHIVE2_ASSETS: (request) => {
-      const url = new URL(request.url);
-      if (url.pathname.endsWith("/data/archive2-catalog.json"))
-        return new Response(catalogText, {
-          headers: { "Content-Type": "application/json" },
-        });
-      const file = decodeURIComponent(url.pathname.split("/exams/")[1] || "");
-      if (!file || file.includes(".."))
-        return new Response("Not found", { status: 404 });
-      return new Response(
-        fs.readFileSync(path.join(root, "archive/exams", file)),
-        { headers: { "Content-Type": "application/javascript" } },
-      );
-    },
+    ARCHIVE2_ASSETS: archiveAssetResponse,
     FIXTURE_ASSETS: (request) => {
       const pathname = decodeURIComponent(new URL(request.url).pathname),
         file = path.resolve(root, "." + pathname);
@@ -167,7 +177,7 @@ try {
     await db.prepare(statement[0]).run();
   }
   await db.exec(
-    "CREATE TABLE classes(id TEXT PRIMARY KEY,name TEXT,teacher_name TEXT);CREATE TABLE students(id TEXT PRIMARY KEY,name TEXT,school_name TEXT DEFAULT '',grade TEXT DEFAULT '고1',student_pin TEXT DEFAULT '',status TEXT DEFAULT '재원');CREATE TABLE class_students(class_id TEXT,student_id TEXT);CREATE TABLE teacher_classes(teacher_id TEXT,class_id TEXT);CREATE TABLE attendance(student_id TEXT,status TEXT,date TEXT);ALTER TABLE exam_sessions ADD COLUMN assignment_id TEXT;",
+    "CREATE TABLE classes(id TEXT PRIMARY KEY,name TEXT,teacher_name TEXT,grade TEXT DEFAULT '고1');CREATE TABLE students(id TEXT PRIMARY KEY,name TEXT,school_name TEXT DEFAULT '',grade TEXT DEFAULT '고1',student_pin TEXT DEFAULT '',status TEXT DEFAULT '재원');CREATE TABLE class_students(class_id TEXT,student_id TEXT);CREATE TABLE teacher_classes(teacher_id TEXT,class_id TEXT);CREATE TABLE attendance(student_id TEXT,status TEXT,date TEXT);ALTER TABLE exam_sessions ADD COLUMN assignment_id TEXT;",
   );
   const migration = fs.readFileSync(
     path.join(worker, "migrations/20260916_archive2_question_bridge.sql"),
@@ -183,10 +193,28 @@ try {
     .filter(Boolean))
     await db.prepare(sql).run();
   await db.prepare(migration.slice(migration.indexOf("CREATE TRIGGER"))).run();
-  await db.exec(
-    "INSERT INTO classes VALUES ('class-a','고1 검증반 A','Teacher A'),('class-b','고1 검증반 B','Teacher B');INSERT INTO students(id,name) VALUES ('student-a','검증학생 가'),('student-b','검증학생 나'),('student-c','검증학생 다');INSERT INTO class_students VALUES ('class-a','student-a'),('class-a','student-b'),('class-b','student-c');INSERT INTO teacher_classes VALUES ('teacher-a','class-a');",
+  const savedPaperMigration = fs.readFileSync(
+    path.join(worker, "migrations/20260929_archive_saved_papers.sql"),
+    "utf8",
   );
-  const base = catalog.records.find((r) => r.automatic && (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
+  const savedTriggerIndex = savedPaperMigration.indexOf("CREATE TRIGGER");
+  const savedPlain = savedPaperMigration.slice(0, savedTriggerIndex).replace(/--[^\n]*/g, "");
+  for (const sql of savedPlain.split(";").map((s) => s.trim()).filter(Boolean))
+    await db.prepare(sql).run();
+  await db.prepare(savedPaperMigration.slice(savedTriggerIndex)).run();
+  await db.exec(
+    "INSERT INTO classes VALUES ('class-a','고1 검증반 A','Teacher A','고1'),('class-b','고1 검증반 B','Teacher B','고1');INSERT INTO students(id,name) VALUES ('student-a','검증학생 가'),('student-b','검증학생 나'),('student-c','검증학생 다');INSERT INTO class_students VALUES ('class-a','student-a'),('class-a','student-b'),('class-b','student-c');INSERT INTO teacher_classes VALUES ('teacher-a','class-a');",
+  );
+  await db.prepare("INSERT INTO classes VALUES (?,?,?,?)")
+    .bind("class-h2", "고2 saved paper target", "Teacher A", "고2").run();
+  await db.prepare("INSERT INTO students(id,name,grade,status) VALUES (?,?,?,?)")
+    .bind("student-h2", "저장본 검증학생", "고2", "active").run();
+  await db.prepare("INSERT INTO class_students VALUES (?,?)")
+    .bind("class-h2", "student-h2").run();
+  await db.prepare("INSERT INTO teacher_classes VALUES (?,?)")
+    .bind("teacher-a", "class-h2").run();
+  const base = catalog.records.find((r) => r.automatic && r.sourceGrade === "고1" &&
+    (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
   const records = catalog.records
     .filter(
       (r) =>
@@ -254,6 +282,111 @@ try {
     );
     return { status: response.status, body: await response.json() };
   };
+
+  const sharedRecord = catalog.records.find((row) => row.automatic && row.sourceGrade === "고2" &&
+    core.subjectProjectionForRecord(row, "", catalog.projectionPolicy) &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  assert.ok(sharedRecord, "saved-paper route fixture needs a real approved high2 shared-subject source");
+  const sharedQuestion = {
+    ...source.evaluate(
+      fs.readFileSync(path.join(root, "archive/exams", sharedRecord.sourceFile), "utf8"),
+      sharedRecord.sourceFile,
+    )[sharedRecord.sourceOrdinal - 1],
+    questionUid: sharedRecord.questionUid,
+    sourceArchiveFile: sharedRecord.sourceFile,
+    sourceOrdinal: sharedRecord.sourceOrdinal,
+    sourceQuestionNo: sharedRecord.sourceQuestionNo,
+    sourceFingerprint: sharedRecord.sourceFingerprint,
+  };
+  for (const field of core.META_FIELDS)
+    if (sharedRecord[field] !== undefined) sharedQuestion[field] = sharedRecord[field];
+  const semanticSubject = core.subjectProjectionForRecord(sharedRecord, "", catalog.projectionPolicy);
+  const savedPaperEnv = {
+    ARCHIVE_PUBLIC_BASE_URL: "https://archive.test/AP------/archive",
+    ARCHIVE2_ASSETS: { fetch: archiveAssetResponse },
+  };
+  const savedPapers = [];
+  for (const [index, browseGrade] of ["고2", "고3"].entries()) {
+    const saveBatchId = index === 0
+      ? "33333333-3333-4333-8333-333333333333"
+      : "44444444-4444-4444-8444-444444444444";
+    const selectionFilters = {
+      grade: browseGrade,
+      curriculumKey: sharedRecord.curriculumKey,
+      semanticSubject,
+      primaryPaths: [core.pathKey(sharedRecord, 4)],
+      scopeQuestionUids: [sharedRecord.questionUid],
+    };
+    const prepared = await prepareSavedPaperBatch(savedPaperEnv, {
+      schema_version: SAVED_PAPER_SCHEMA,
+      save_batch_id: saveBatchId,
+      index_version: catalog.indexVersion,
+      selection_filters: selectionFilters,
+      papers: [{
+        part_index: 0,
+        questions: [structuredClone(sharedQuestion)],
+        meta: { title: `공유 source ${browseGrade}`, qpp: 4, questionUids: [sharedRecord.questionUid] },
+      }],
+    });
+    const paper = prepared.papers[0];
+    const id = crypto.randomUUID();
+    await db.prepare(`INSERT INTO archive_saved_papers (
+      id,owner_teacher_id,save_batch_id,part_index,part_count,title,grade,subject,question_count,
+      snapshot_json,snapshot_hash,save_request_hash,source_index_version,schema_version,created_at
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(
+      id, "teacher-a", saveBatchId, paper.part_index, 1, paper.title, paper.grade, paper.subject,
+      paper.question_count, paper.snapshot_json, paper.snapshot_hash, prepared.requestHash,
+      paper.source_index_version, paper.schema_version, new Date().toISOString(),
+    ).run();
+    const snapshot = JSON.parse(paper.snapshot_json);
+    assert.equal(snapshot.questions[0].sourceGrade, "고2",
+      "the Worker save path must freeze actual source grade separately from the browse grade");
+    assert.equal(snapshot.meta.grade, browseGrade);
+    savedPapers.push({ id, browseGrade });
+  }
+  const manifestFetchesBeforeDelivery = canonicalManifestFetches;
+  canonicalBundleUnavailable = true;
+  const savedPaperDeliveries = [];
+  try {
+    for (const paper of savedPapers) {
+      const delivery = await post("", {
+        contract_version: "archive2-v1",
+        class_id: "class-h2",
+        exam_title: "shared saved source delivery",
+        student_ids: ["student-h2"],
+        exam_date: "2026-10-02",
+        saved_paper_id: paper.id,
+        assignment_batch_id: paper.browseGrade === "고2"
+          ? "55555555-5555-4555-8555-555555555555"
+          : "66666666-6666-4666-8666-666666666666",
+      }, "teacher");
+      assert.equal(delivery.body.saved, true, JSON.stringify(delivery));
+      assert.equal(delivery.status, 502,
+        "the snapshot delivery should reach the expected local no-Browser-Rendering boundary");
+      savedPaperDeliveries.push({
+        browseGrade: paper.browseGrade,
+        saved: delivery.body.saved,
+        status: delivery.status,
+        assignmentId: delivery.body.assignment.id,
+      });
+    }
+  } finally {
+    canonicalBundleUnavailable = false;
+  }
+  const manifestFetchesDuringSavedPaperDelivery = canonicalManifestFetches - manifestFetchesBeforeDelivery;
+  assert.equal(manifestFetchesDuringSavedPaperDelivery, 0,
+    "saved snapshot delivery must not reload the current canonical catalog or manifest");
+  assert.deepEqual(savedPaperDeliveries.map(row => [row.saved, row.status]), [[true, 502], [true, 502]],
+    "the same high2 source must have the same delivery decision from high2 and high3 browse views");
+  const deliveredSavedCount = await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignments WHERE saved_paper_id IS NOT NULL AND class_id='class-h2'",
+  ).first();
+  assert.equal(Number(deliveredSavedCount.n), 2);
+  for (const delivery of savedPaperDeliveries)
+    await db.prepare("DELETE FROM class_exam_assignments WHERE id=?").bind(delivery.assignmentId).run();
+  for (const paper of savedPapers)
+    await db.prepare("UPDATE archive_saved_papers SET deleted_at=? WHERE id=?")
+      .bind(new Date().toISOString(), paper.id).run();
   assert.equal(
     (await post("question-history", { student_ids: ["student-a"] }, "")).status,
     401,
@@ -319,7 +452,7 @@ try {
     [uid(1)],
   );
   const repeat = await post("studio", payload);
-  assert.equal(repeat.body.assignment.id, id);
+  assert.equal(repeat.body.assignment?.id, id, JSON.stringify(repeat));
   assert.equal(
     (
       await db
@@ -344,7 +477,16 @@ try {
     ...payload,
     student_ids: ["student-b"],
   });
-  assert.equal(changed.status, 409);
+  assert.equal(changed.status, 502); // write succeeded; local Browser Rendering is deliberately absent.
+  assert.equal(changed.body.saved, true);
+  const addedRecipient = await db.prepare(`
+    SELECT r.student_id, x.student_id AS excluded_student_id
+    FROM class_exam_assignment_recipients r
+    LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id
+    WHERE r.assignment_id=? AND r.student_id=?
+  `).bind(id, "student-b").first();
+  assert.equal(addedRecipient.student_id, "student-b");
+  assert.equal(addedRecipient.excluded_student_id, null);
   const duplicate = await post("studio", {
     ...payload,
     archive_file: "MIXED:archive2-second",
@@ -557,6 +699,7 @@ try {
     class_id: "class-a",
     exam_title: "Native original runtime",
     exam_date: "2026-09-17",
+    index_version: catalog.indexVersion,
     question_count: nativeExam.qCount,
     archive_file: "exams/" + nativeExam.file,
     source_type: "archive",
@@ -634,7 +777,7 @@ try {
       const raw = source.evaluate(fs.readFileSync(path.join(root, 'archive/exams', exam.file), 'utf8'), exam.file);
       const issued = await post('', {
         contract_version: 'archive2-v1', class_id: 'class-a', student_ids: ['student-a'],
-        exam_title: '중3 2학기 중간 ' + exam.file, exam_date: '2026-09-28',
+        exam_title: '중3 2학기 중간 ' + exam.file, exam_date: '2026-09-28', index_version: catalog.indexVersion,
         archive_file: 'exams/' + exam.file, question_count: raw.length, pdf_qpp: 4,
         original_payload_json: { questions: raw, meta: { includeQr: false } }
       });
@@ -687,6 +830,14 @@ try {
       metadataIndependentHistory: "PASS",
       historyConflict: "PASS",
       deletedAssignment: "PASS",
+      savedPaperRouteDuringCanonicalOutage: {
+        status: "PASS",
+        actualSourceGrade: sharedRecord.sourceGrade,
+        targetClassGrade: "고2",
+        browseGrades: savedPaperDeliveries.map((row) => row.browseGrade),
+        deliveryResults: savedPaperDeliveries.map(({ browseGrade, saved, status }) => ({ browseGrade, saved, status })),
+        canonicalManifestRequestsDuringDelivery: manifestFetchesDuringSavedPaperDelivery,
+      },
       pdf: "EXPECTED_FAILURE_NO_BROWSER_BINDING",
     }),
   );

@@ -1866,18 +1866,28 @@ def run_archive_registration_sync():
         repo_root,
     )
     run_pipeline_command(
-        "Archive 2.0 catalog 갱신",
-        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs"],
-        repo_root,
-    )
-    run_pipeline_command(
         "Meta Foundation runtime source rename 동기화",
         ["node", archive_dir / "tools" / "meta-foundation" / "sync-runtime-source-path-renames.mjs"],
         repo_root,
     )
     run_pipeline_command(
+        "Archive 2.0 intermediate catalog/manifest 갱신",
+        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
         "기본 L1/L2 부모 연결 갱신",
         ["node", archive_dir / "tools" / "build-basic-scope-parent-links.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 2.0 final catalog/manifest 갱신",
+        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "기본 L1/L2 부모 연결 안정성 검증",
+        ["node", archive_dir / "tools" / "build-basic-scope-parent-links.mjs", "--check"],
         repo_root,
     )
     run_pipeline_command(

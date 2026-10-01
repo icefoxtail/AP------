@@ -1,3 +1,9 @@
+## CURRENT — 2026-10-01 — ALL JS QUALITY WORKERS READ SAMPLES BEFORE TARGET
+
+CREATE/R1/R2/R3뿐 아니라 repair/recovery/visual repair/independent recheck/FLEX rescue가 학생 노출 JS 품질을 만들거나 판정하면, **target artifact를 열거나 수정하기 전에** `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md`의 Golden 2~3 + 관련 Negative Sample을 실제 판독한다. 공용 preflight는 `archive/tools/solution-calibration-gate.mjs --preflight`다.
+
+공통 5축: `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`. Blind→Compare는 target prior solution/verdict를 가리는 규칙으로 유지하며, 외부 quality sample pre-read는 허용·필수다.
+
 ## CURRENT HARD RULE — NO-IDLE / FLEX RESCUE (2026-10-01)
 
 ## CURRENT — 2026-10-01 — SOLUTION QUALITY CALIBRATION PHYSICAL HARD GATE
