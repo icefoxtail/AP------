@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LINE3_REVIEW2_LEDGER_v2",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW2_DONE_WITH_ITEM_HOLDS",
+  "readyState": "PUBLISH_PENDING_ITEM_HOLDS",
+  "examId": "26_왕운중_2학기_중간_중2_기출",
+  "reviewMode": "NORMAL_FULL_INDEPENDENT",
+  "reviewedAtKst": "2026-10-01T14:26:00+09:00",
+  "input": {
+    "startRemoteMainSha": "b476e68c71cc9ed443c80907a060b7d52e8914d5",
+    "endObservedRemoteMainSha": "2c543d1e62f5b8770cda6911fbf3331495ef6a8b",
+    "r1Branch": "work/line3/26-wangun-m2-2mid-review1-20261001",
+    "r1ReviewCommit": "321181eb8a5291b673fc5fa5167a11bd776bc8db",
+    "r1SealedHead": "314de2cabcdb8bdc0eb701095d4cce275839ebee",
+    "r1FinalArtifactSha": "ef43f55cfbc82e0821786d151fb3ee8d30ba1843",
+    "r1LedgerBlob": "dd2d11750f197ef16c57b8327ae977b7ea0d22fb",
+    "r1ReceiptBlob": "a0689a1ca5f77e648da977305498ff369f0b9ff4",
+    "sourceAuthorityBranch": "codex/archive-2026-2mid-prompt-assets",
+    "sourceDocumentSha256": "sha256:01edf694f153321a8d8b2f130275d1637966440577d4756ef8c1c343f5409b7c"
+  },
+  "blindIndependence": {
+    "blindDecisionFrozenBeforeR1Compare": true,
+    "r1LedgerOpenedBeforeFreeze": false,
+    "blindFreezeCommit": "1f9121ec4cda55f9bdaf05eda24298a11e802872",
+    "blindFreezeBlob": "549f74b3ad5cd8e9f1b6c99da50c289ba8302baa",
+    "blindFreezeSha256": "7843217f76bb822934c288f42bd84a08775cbad6efce1bdbe5ecb630675af3a1"
+  },
+  "denominator": {
+    "questionCount": 24,
+    "fullPageSourcePageCount": 6,
+    "problemImageCount": 21,
+    "solutionSvgCount": 6
+  },
+  "independentAudit": {
+    "sourceContentChoices": "24/24 PASS",
+    "answerSolve": "23/24 PASS; q5 SOURCE_CONDITION_INCONSISTENCY",
+    "mathSolution": "23/24 PASS_AFTER_REPAIR; q5 ITEM_HOLD_SOURCE_MATH",
+    "smallBoard": "23/24 PASS_AFTER_REPAIR; q5 HOLD explanation replaces uncertified answer",
+    "microLayout": "24/24 PASS_GRID_DEFAULT",
+    "curriculumMethod": "24/24 AUDITED",
+    "visualNecessity": "24/24 AUDITED",
+    "problemImages": "21/21 source-topology/linkage checked; q5 metric exactness not certifiable because source itself is inconsistent",
+    "solutionSvg": "6/6 CODE_FIRST checked after q22 repair",
+    "metadata": "24/24 FRESH; 24/24 curriculum/RPM rebound to 2022",
+    "difficulty": "24/24 AUDITED; 23 FINAL + q5 UNKNOWN"
+  },
+  "curriculumMetaRepair": {
+    "previousCurriculum": "2015",
+    "finalCurriculum": "2022",
+    "repairedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "rpm2022ByQid": {
+      "1": "M2-RPM-178",
+      "2": "M2-RPM-181",
+      "3": "M2-RPM-189",
+      "4": "M2-RPM-189",
+      "5": "M2-RPM-180",
+      "6": "M2-RPM-178",
+      "7": "M2-RPM-186",
+      "8": "M2-RPM-189",
+      "9": "M2-RPM-184",
+      "10": "M2-RPM-186",
+      "11": "M2-RPM-190",
+      "12": "M2-RPM-192",
+      "13": "M2-RPM-190",
+      "14": "M2-RPM-196",
+      "15": "M2-RPM-201",
+      "16": "M2-RPM-197",
+      "17": "M2-RPM-196",
+      "18": "M2-RPM-197",
+      "19": "M2-RPM-203",
+      "20": "M2-RPM-208",
+      "21": "M2-RPM-181",
+      "22": "M2-RPM-188",
+      "23": "M2-RPM-196",
+      "24": "M2-RPM-195"
+    },
+    "projectionInterpretation": "*_BINDING_GAP and RPM_ONLY are compatibility/runtime states, not semantic Meta holds",
+    "q24Projection": "RPM_ONLY / NO_ACTIVE_MAPPING retained; no invented PT/TPL"
+  },
+  "deterministicRepairs": [
+    {
+      "qid": 4,
+      "type": "SOLUTION_COMPLETENESS"
+    },
+    {
+      "qid": 5,
+      "type": "ITEM_HOLD_REPRESENTATION"
+    },
+    {
+      "qid": 5,
+      "type": "PROBLEM_VISUAL_TOPOLOGY"
+    },
+    {
+      "qid": 6,
+      "type": "PROBLEM_VISUAL_SOURCE_PARITY"
+    },
+    {
+      "qid": 10,
+      "type": "META_CROSSCONCEPT",
+      "value": "CC_PARALLEL_LINES"
+    },
+    {
+      "qid": 22,
+      "type": "SOLUTION_SVG_LABEL_OWNER"
+    },
+    {
+      "scope": "all",
+      "type": "CURRICULUM_RPM_REBIND"
+    }
+  ],
+  "itemHolds": [
+    {
+      "qid": 5,
+      "reason": "SOURCE_CONDITION_INCONSISTENCY",
+      "intendedLocalAnswer": "②",
+      "certifiedAnswer": null,
+      "sourceMutation": false
+    }
+  ],
+  "regressionCompareAfterFreeze": {
+    "r1FalsePasses": [
+      "q5 source math",
+      "q4 solution completeness",
+      "q5 visual topology",
+      "q6 AP omission",
+      "q22 side-label ownership",
+      "24/24 curriculum metadata 2015",
+      "q10 missing CC_PARALLEL_LINES"
+    ],
+    "createOrR1VerdictUsedAsAnswerAuthority": false
+  },
+  "difficultyDistributionFinal": {
+    "1": 4,
+    "2": 9,
+    "3": 8,
+    "4": 2,
+    "5": 0,
+    "UNKNOWN": 1
+  },
+  "output": {
+    "review2Branch": "work/line3/26-wangun-m2-2mid-review2-20261001",
+    "reviewArtifactCommit": "90110d4f5fbc1b5c9e73215148049765d57841c4",
+    "finalArtifactSha": "049d78b17e307c918fc0ba5bf0d386a6a28e0d8c",
+    "assetBlobs": {
+      "q05Problem": "84c768d3a4ef3f3378dba4485ff73a04b4e0393c",
+      "q006Problem": "a04ba1772b87ac6826313cea858c973f6eba9314",
+      "q4Solution": "b6d1a467b3b7acbdbb294b24c685133362b73d6d",
+      "q10Solution": "0d0aa1458d9b70b52b302543e848ad8c4573fc10",
+      "q21Solution": "88401c3c20a343bde6927ad16f5a37a69cd071b1",
+      "q22Solution": "29ba9d14ef0c7238add122ea49d98ed17c0d407d",
+      "q23Solution": "681b0de2f93a93453b4c8979e14e0963689160d7",
+      "q24Solution": "40edfd9b6d7c5dfa70e282dcd6f682aaaaa97963"
+    }
+  },
+  "mainMutation": false,
+  "nextOwner": "LINE3_R3_INITIAL"
+}
