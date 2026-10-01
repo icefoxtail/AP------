@@ -1,4 +1,12 @@
 ## CURRENT — 2026-10-01 — ALL JS QUALITY WORKERS READ SAMPLES BEFORE TARGET
+## CURRENT — 2026-10-02 — R3 VISUAL DOUBT IS NOT FAIL
+- R3는 SVG 좌표·anchor·primitive 위치를 보고 **추정만으로 새 visual FAIL/HOLD를 만들지 않는다**.
+- upstream CREATE/R1/R2 또는 Codex independent review에서 source 대조 후 PASS한 visual은 그 PASS를 정답으로 복사하지는 않되, R3가 뒤집으려면 **fresh source/problem geometry 또는 실제 rendered visual에서 명백한 semantic contradiction**을 제시해야 한다.
+- 특히 label anchor가 선의 어느 쪽에 보인다는 좌표 추정, path 좌표만으로 angle/side owner를 추측한 것, source와 의미가 동일한 schematic/non-scale 표현은 단독 FAIL 근거가 아니다.
+- 판정은 `CONFIRMED_VISUAL_DEFECT` / `VISUAL_RECHECK_ONLY` / `PASS`로 구분한다. source/render에서 확정되지 않은 의심은 `VISUAL_RECHECK_ONLY`로 기록하고 **R3 FAIL/HOLD/openQid에 넣지 않는다**.
+- prior independent review PASS와 R3 의심이 충돌하면 실제 source/render evidence를 한 번 더 확인한다. 확정 반증이 없으면 prior-pass 자산을 유지한다.
+- 회귀 사례: 왕운중 중1 q15 solution SVG의 d label anchor 의심은 Codex independent review가 95°=NW, b=SE correction을 source 대조 후 PASS했다. d 위치가 실제 의미 오류인지 source/render에서 확정되지 않은 상태에서는 R3 FAIL로 승격하지 않는다.
+
 ## CURRENT — 2026-10-01 — GRADE-BOUNDED REVIEW / UPPER-GRADE FAIL-HOLD FORBIDDEN
 - CREATE/R1/R2/R3/repair/retry의 **정답·해설·PASS/FAIL/HOLD 판정은 대상 학년 교육과정 상한선 안에서** 수행한다.
 - 하위 학년에서 아직 배우지 않은 상위 학년/후속과정 방법(예: 중2 문항에 삼각비·코사인, 중3 문항에 고등 벡터/정사영)을 사용해 추가 모순·반례를 만들고 그 결과로 `SOURCE_CONDITION_INCONSISTENCY`, `ANSWER_UNIQUENESS_UNRESOLVED`, ITEM_HOLD 또는 R3 FAIL을 생성하는 행위를 금지한다.
