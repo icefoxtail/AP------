@@ -22,7 +22,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 12151 bytes | sha256 8ac96f30c9bd58e5e5d15402182d79842ab76d63f37820c83f41f969c9b1260b
-- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 25899 bytes | sha256 54cf213b109d0fc8f8c83175a843da63f41eab374eb51472b130a3489a8bd5c3
+- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 26602 bytes | sha256 7d157093c5ee6b05da2ee202acef428486eaccca5f61edf66fb3404cba369a1f
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 9062 bytes | sha256 e3f8ee3bbb39d84194bb327decf144af23b6c954871eb160e7284953f0e82686
 - 02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md | 16488 bytes | sha256 594f9b51924cae3666fca8dbc3f51dd5772afd34c7cc37f130fd1a9d0f07204b
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
