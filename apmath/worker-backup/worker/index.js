@@ -3534,14 +3534,22 @@ async function handleApiRequest(request, env) {
             map.results
           );
           const analysisArchiveFiles = getInitialDataArchiveCandidates(exs.results);
-          let examQuestionReviews = { results: [] };
-          let examAnalysisMeta = { results: [] };
+          const questionReviewRows = [];
+          const analysisMetaRows = [];
           if (analysisArchiveFiles.length > 0) {
-            const archiveMarkers = analysisArchiveFiles.map(() => '?').join(',');
-            [examQuestionReviews, examAnalysisMeta] = await Promise.all([
-              env.DB.prepare(`SELECT * FROM exam_question_reviews WHERE archive_file IN (${archiveMarkers})`).bind(...analysisArchiveFiles).all(),
-              env.DB.prepare(`SELECT * FROM exam_analysis_meta WHERE archive_file IN (${archiveMarkers})`).bind(...analysisArchiveFiles).all()
-            ]);
+            const analysisBatchSize = 90;
+            for (let offset = 0; offset < analysisArchiveFiles.length; offset += analysisBatchSize) {
+              const batch = analysisArchiveFiles.slice(offset, offset + analysisBatchSize);
+              const markers = batch.map(() => '?').join(',');
+
+              const [reviewRes, metaRes] = await Promise.all([
+                env.DB.prepare(`SELECT * FROM exam_question_reviews WHERE archive_file IN (${markers})`).bind(...batch).all(),
+                env.DB.prepare(`SELECT * FROM exam_analysis_meta WHERE archive_file IN (${markers})`).bind(...batch).all()
+              ]);
+
+              questionReviewRows.push(...(reviewRes.results || []));
+              analysisMetaRows.push(...(metaRes.results || []));
+            }
           }
 
           return new Response(JSON.stringify({
@@ -3571,8 +3579,8 @@ async function handleApiRequest(request, env) {
             timetable_class_daily_records: ttAllDailyRecords.results,
             timetable_class_daily_progress: ttAllDailyProgress.results,
             report_exam_cohort_stats: reportExamCohortStats,
-            exam_question_reviews: examQuestionReviews.results || [],
-            exam_analysis_meta: examAnalysisMeta.results || [],
+            exam_question_reviews: questionReviewRows,
+            exam_analysis_meta: analysisMetaRows,
             ...classProgressInitialData,
             ...foundationData
           }), { headers });
