@@ -1,17 +1,17 @@
-## CURRENT OVERRIDE — NORMAL-FIRST / DEFERRED R3 REENTRY (2026-10-01)
+## CURRENT OVERRIDE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
 
 정상 1차 흐름을 R3 실패 재작업보다 우선한다.
 
 - 아직 initial R3 판정을 받지 않은 정상 latest-R2 시험지가 있으면 그 시험지를 먼저 검수한다.
 - R3 PASS는 `R3_PASS / READY_FOR_CODEX_PUBLISH`로 닫고, R3 자체는 MAIN merge를 하지 않는다.
 - R3 FAIL은 기존 `failureClass` A/B/C와 `requiredRoute`를 packet에 그대로 보존하되 current 실행 상태를 `R3_FAIL_DEFERRED / DEFERRED_REENTRY_QUEUE`로 둔다.
-- FAIL 직후 R1/R2 재작업을 정상 first-pass 큐보다 우선시키지 않는다. 정상 큐가 비었거나 사용자가 특정 시험지 재작업을 직접 지시한 경우에만 deferred route를 소비한다.
+- FAIL 직후 R1/R2로 되돌리지 않는다. 별도 Codex post-R3 repair/review worker가 OPEN locus를 병렬 처리하며 정상 first-pass R1/R2/initial R3는 계속 진행한다.
 - initial R3 disposition은 `R3_PASS` 또는 `R3_FAIL_DEFERRED` 둘 중 하나다. FAIL은 release 실패이므로 publish 금지지만, 다른 시험지의 first-pass 진행을 막지 않는다.
 - M3 initial R3 소유권은 lane-local TEMP R3-1/2/3에 있다. dedicated R3는 M3 initial R3를 중복 소비하지 않는다.
 - M3 CREATE lane은 자기 mod-3 partition의 current-generation CREATE가 physical-evidence-valid DONE* 100%가 되는 즉시 다른 CREATE lane이나 M3 REVIEW2 69/69을 기다리지 않고 TEMP R3로 전환할 수 있다.
 - 해당 partition의 모든 시험지가 initial R3 disposition을 가지면 그 lane은 M1 CREATE를 재개할 수 있다. deferred 실패는 별도 재작업 큐에 남고 CREATE 재개를 막지 않는다.
 
-아래의 즉시 R1/R2 reentry 표현은 **재작업 범위(route)**를 설명하는 것으로만 읽는다. queue priority/즉시 실행 권한을 뜻하지 않는다. 이 섹션과 충돌하면 본 CURRENT OVERRIDE가 우선한다.
+아래의 R1/R2 reentry·FULL_REENTRY·full R3_RETRY 표현은 모두 **SUPERSEDED / HISTORY**다. current post-R3 owner는 Codex repair/review + GPT targeted R3_RETRY다.
 
 ## CURRENT HARD RULE — POST-R3 BASELINE LOCK / TARGETED RETRY (2026-10-01)
 
