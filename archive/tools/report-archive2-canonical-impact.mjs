@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url);
 const core = require("../archive2-core.js");
 const source = require("../archive2-source.js");
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const reportDate = "20260930";
+const reportDate = "20261001";
 const sha256 = value => crypto.createHash("sha256").update(value).digest("hex");
 const normalizeSource = value => String(value).replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
 const normalizeFile = value => core.normalizeFile(value);

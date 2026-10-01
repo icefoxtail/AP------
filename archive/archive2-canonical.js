@@ -5,7 +5,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
 
-  const RESOLVER_VERSION = "1.0.0";
+  const RESOLVER_VERSION = "1.1.0";
   const GRADES = new Set(["중1", "중2", "중3", "고1", "고2", "고3"]);
   const APPROVAL_STATES = new Set(["APPROVED", "approved"]);
   const REVIEW_STATES = new Set([
@@ -96,11 +96,10 @@
     "data/meta-foundation/runtime/middle1-v1.json",
     "data/meta-foundation/runtime/h1-foundation-v1.json",
   ];
-  const REQUIRED_INPUT_PATHS = Object.freeze([
+  const MANIFEST_REQUIRED_PATHS = Object.freeze([
     "data/archive2-catalog.json",
     CANONICAL_MASTER_PATH,
     "data/archive2-canonical-projection-policy.json",
-    "data/archive2-item-review-overrides.json",
     "data/archive2-item-review-overrides.json",
     "data/basic-scope-parent-links.json",
     "data/basic-scope-source-links.json",
@@ -111,6 +110,34 @@
     "data/meta-foundation/compiled/curriculum_bindings.json",
     ...RUNTIME_INPUT_PATHS,
   ]);
+  const REQUIRED_INPUT_PATHS = Object.freeze([
+    "data/archive2-catalog.json",
+    CANONICAL_MASTER_PATH,
+    "data/archive2-canonical-projection-policy.json",
+    "data/archive2-item-review-overrides.json",
+    "data/basic-scope-parent-links.json",
+    "data/meta-foundation/compiled/taxonomy_registry.json",
+    "data/meta-foundation/compiled/curriculum_bindings.json",
+    ...RUNTIME_INPUT_PATHS,
+  ]);
+
+  function manifestInputPathsFromRuntimePacks(runtimePacks = [], includeOptionalPath = () => false) {
+    const paths = new Set(MANIFEST_REQUIRED_PATHS);
+    for (const pack of runtimePacks) {
+      for (const sourceRef of Object.values(pack?.generatedFrom || {})) {
+        if (typeof sourceRef !== "string" || !sourceRef.startsWith("archive/") || !sourceRef.endsWith(".json")) continue;
+        const webPath = sourceRef.slice("archive/".length);
+        if (!webPath || webPath.split("/").some((part) => part === ".." || part === "."))
+          throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical generatedFrom path is invalid");
+        paths.add(webPath);
+        if (webPath.includes("/evidence/") && /item_metadata_assignments.*\.json$/.test(webPath)) {
+          const receiptPath = webPath.replace(/[^/]+$/, "promotion_receipt.json");
+          if (includeOptionalPath(receiptPath)) paths.add(receiptPath);
+        }
+      }
+    }
+    return [...paths].sort();
+  }
 
   function resolveSourceGrade({ registeredGrade, sourceFile, identitySourceFile } = {}) {
     const registered = text(registeredGrade);
@@ -392,7 +419,7 @@
     )
       throw makeError("CANONICAL_RESOLVER_VERSION_MISMATCH", "browser/Worker canonical resolver version mismatch");
     const listed = new Set(manifest.files.map((row) => text(row.path)));
-    if (REQUIRED_INPUT_PATHS.some((path) => !listed.has(path)))
+    if (MANIFEST_REQUIRED_PATHS.some((path) => !listed.has(path)))
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete");
     const projectionVersion = await computeProjectionVersion(manifest.files);
     if (projectionVersion !== manifest.projectionVersion)
@@ -401,20 +428,31 @@
       throw makeError("CANONICAL_PROJECTION_REFRESH_REQUIRED", "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.");
 
     const resources = {};
-    const files = {};
-    await Promise.all(manifest.files.map(async (entry) => {
+    const files = Object.fromEntries(manifest.files.map((entry) => [
+      text(entry.path),
+      { sha256: text(entry.sha256).toLowerCase() },
+    ]));
+    await Promise.all(REQUIRED_INPUT_PATHS.map(async (inputPath) => {
+      const entry = manifest.files.find((row) => text(row.path) === inputPath);
+      if (!entry)
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete: " + inputPath);
       let body;
-      try { body = await read(entry.path); }
+      try { body = await read(inputPath); }
       catch (error) {
         if (error.code) throw error;
-        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical authority unavailable: " + entry.path);
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical authority unavailable: " + inputPath);
       }
       if (await sha256(body) !== text(entry.sha256).toLowerCase())
-        throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical input digest mismatch: " + entry.path);
-      try { resources[entry.path] = JSON.parse(body); }
-      catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input JSON is invalid: " + entry.path); }
-      files[entry.path] = { sha256: text(entry.sha256).toLowerCase() };
+        throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical input digest mismatch: " + inputPath);
+      try { resources[inputPath] = JSON.parse(body); }
+      catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input JSON is invalid: " + inputPath); }
     }));
+    const requiredManifestPaths = manifestInputPathsFromRuntimePacks(
+      RUNTIME_INPUT_PATHS.map((path) => resources[path]),
+      (path) => listed.has(path),
+    );
+    if (requiredManifestPaths.some((path) => !listed.has(path)))
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete");
     return { manifest, projectionVersion, files, resources };
   }
 
@@ -910,7 +948,10 @@
   return {
     CANONICAL_MASTER_PATH,
     RESOLVER_VERSION,
+    MANIFEST_REQUIRED_PATHS,
     REQUIRED_INPUT_PATHS,
+    RUNTIME_INPUT_PATHS,
+    manifestInputPathsFromRuntimePacks,
     normalizeFile,
     pathGrade,
     resolveSourceGrade,

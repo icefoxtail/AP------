@@ -29,6 +29,18 @@ export function checkTargetGrade(classRow, sourceGrade) {
   if (core.gradeRank(sourceGrade) > core.gradeRank(grade))
     fail("대상 반보다 높은 학년의 source 문항은 기본 출제할 수 없습니다.", 409);
 }
+export function checkTargetGrades(classRow, sourceGrades) {
+  if (!Array.isArray(sourceGrades) || !sourceGrades.length)
+    fail("canonical source grade를 확인할 수 없습니다.", 409);
+  const uniqueGrades = new Set();
+  for (const value of sourceGrades) {
+    const grade = String(value ?? "").trim();
+    if (!core.gradeRank(grade))
+      fail("canonical source grade를 확인할 수 없습니다.", 409);
+    uniqueGrades.add(grade);
+  }
+  for (const grade of uniqueGrades) checkTargetGrade(classRow, grade);
+}
 export function uniqueIds(input, max = 200) {
   if (
     !Array.isArray(input) ||
@@ -154,6 +166,7 @@ export async function validateApprovedMixedQuestions(
   const byUid = new Map(
     data.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r]),
   );
+  const sourceGrades = new Set();
   for (const q of questions || []) {
     const record = byUid.get(q.questionUid);
     const sourceFile = norm(
@@ -177,6 +190,9 @@ export async function validateApprovedMixedQuestions(
       })
     )
       fail("승인된 문항·출제 범위와 일치하지 않습니다.", 409);
+    if (!core.gradeRank(record.sourceGrade))
+      fail("canonical source grade를 확인할 수 없습니다.", 409);
+    sourceGrades.add(record.sourceGrade);
     let assignmentFingerprint;
     try {
       assignmentFingerprint = await canonical.assignmentFingerprint(q);
@@ -208,7 +224,45 @@ export async function validateApprovedMixedQuestions(
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
   }
-  return data;
+  return {
+    ...data,
+    sourceGrades: [...sourceGrades].sort((a, b) => core.gradeRank(a) - core.gradeRank(b)),
+  };
+}
+
+export async function resolveSavedPaperSourceGrades(env, questions) {
+  if (!Array.isArray(questions) || !questions.length)
+    fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+  const data = await loadCanonicalCatalog(env);
+  const byUid = new Map(
+    data.records.filter((record) => record.questionUid).map((record) => [record.questionUid, record]),
+  );
+  const sourceGrades = new Set();
+  for (const question of questions) {
+    const uid = String(question?.questionUid || ""),
+      record = byUid.get(uid),
+      sourceFile = norm(question?.sourceArchiveFile || question?.sourceFile || question?.source_archive_file),
+      sourceOrdinal = Number(question?.sourceOrdinal ?? question?.source_question_ordinal),
+      identity = data.canonicalAuthority.identityByUid[uid],
+      grade = canonical.resolveSourceGrade({
+        registeredGrade: data.canonicalAuthority.examGradeByFile[sourceFile],
+        sourceFile,
+        identitySourceFile: identity?.sourceArchiveFile,
+      });
+    if (
+      !record ||
+      record.identityStatus !== "VERIFIED" ||
+      identity?.status !== "VERIFIED" ||
+      sourceFile !== record.sourceFile ||
+      sourceOrdinal !== Number(record.sourceOrdinal) ||
+      grade.status !== "VALID" ||
+      grade.grade !== record.sourceGrade ||
+      !core.gradeRank(grade.grade)
+    )
+      fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    sourceGrades.add(grade.grade);
+  }
+  return [...sourceGrades].sort((a, b) => core.gradeRank(a) - core.gradeRank(b));
 }
 // Original issue needs verified source bytes/ordinal identity, not automatic
 // selection approval. All raw fields (including visual/layout fields) are hashed.

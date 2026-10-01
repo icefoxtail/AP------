@@ -852,6 +852,7 @@
     hasSubjectProjection,
     subjectProjectionOptions,
     subjectProjectionForRecord,
+    browseGradeMatchesRecord,
     subjectProjectionLabel,
     subjectProjectionMatches,
     finderCourseGrade,

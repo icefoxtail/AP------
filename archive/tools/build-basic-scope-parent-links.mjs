@@ -62,15 +62,35 @@ for (const group of groupData.groups) for (const member of group.members) {
 // Compile existing reviewed assignments into parent-only source links once.
 // The published UI links never require L3, L4, template or difficulty fields.
 const semanticLinks = records.slice();
-const window = { Archive2Core: core };
+const existingParentLinks = JSON.parse(read('archive/data/basic-scope-parent-links.json'));
+const canonical = {
+  ...core.Canonical,
+  async loadInputBundle(fetcher, baseUrl, expectedVersion) {
+    const bundle = await core.Canonical.loadInputBundle(fetcher, baseUrl, expectedVersion);
+    return {
+      ...bundle,
+      resources: {
+        ...bundle.resources,
+        'data/basic-scope-parent-links.json': {
+          ...bundle.resources['data/basic-scope-parent-links.json'],
+          records: semanticLinks,
+        },
+      },
+    };
+  },
+};
+const window = { Archive2Core: core, Archive2Canonical: canonical };
 vm.runInNewContext(read('archive/meta-foundation-runtime.js'), {
   window, document: { baseURI: 'https://basic-scope.test/archive/' }, URL, console,
-  fetch: async url => ({ ok: true, json: async () => {
-    const relative = new URL(url).pathname.replace(/^\/archive\//, '');
-    return relative === 'data/basic-scope-parent-links.json'
-      ? { schemaVersion: 'archive2-basic-scope-parent-links-v1', status: 'DERIVED_READ_ONLY', records: semanticLinks }
-      : JSON.parse(read(`archive/${relative}`));
-  } }),
+  fetch: async url => {
+    const relative = decodeURIComponent(new URL(url).pathname).replace(/^\/+/, '');
+    const absolute = path.resolve(root, relative);
+    const fromRoot = path.relative(root, absolute);
+    if (fromRoot.startsWith('..') || path.isAbsolute(fromRoot) || !fs.existsSync(absolute))
+      return { ok: false, status: 404, text: async () => '', json: async () => ({}) };
+    const body = fs.readFileSync(absolute, 'utf8');
+    return { ok: true, text: async () => body, json: async () => JSON.parse(body) };
+  },
 });
 const catalogText = read('archive/data/archive2-catalog.json');
 const catalog = await window.applyArchiveMetaFoundationCatalog(core.decodeCatalog(JSON.parse(catalogText)));
@@ -101,6 +121,45 @@ for (const item of catalog.records) {
       L1: parent.L1, L2: parent.L2 });
   }
 }
+const currentByUid = new Map(catalog.records.filter(item => item.questionUid).map(item => [item.questionUid, item]));
+const sourceGradeByFile = catalog.canonicalAuthority?.examGradeByFile || {};
+const identityByUid = catalog.canonicalAuthority?.identityByUid || {};
+const gradeCourses = catalog.canonicalAuthority?.gradeCourses || [];
+const sourceParentByUid = new Map(sourceParents.map(link => [link.questionUid, link]));
+for (const link of existingParentLinks.sourceParents || []) {
+  const item = currentByUid.get(link.questionUid);
+  const identity = identityByUid[link.questionUid];
+  if (!item || !identity || identity.status !== 'VERIFIED') continue;
+  const sourceFile = core.normalizeFile(item.sourceFile);
+  const gradeEvidence = core.Canonical.resolveSourceGrade({
+    registeredGrade: sourceGradeByFile[sourceFile],
+    sourceFile,
+    identitySourceFile: identity.sourceArchiveFile,
+  });
+  const canonicalParent = parents.some(parent => parent.curriculumKey === link.curriculumKey &&
+    core.normalizeCourseIdentity(parent.courseKey) === core.normalizeCourseIdentity(link.courseKey) &&
+    parent.L1 === link.L1 && parent.L2 === link.L2);
+  const currentGradeCourse = gradeCourses.some(row => row.grade === gradeEvidence.grade &&
+    row.curriculumKey === item.curriculumKey &&
+    core.normalizeCourseIdentity(row.courseKey) === core.normalizeCourseIdentity(item.courseKey));
+  const stillValid = gradeEvidence.status === 'VALID' &&
+    gradeEvidence.grade === item.sourceGrade &&
+    link.grade === item.sourceGrade &&
+    link.sourceFingerprint === item.sourceFingerprint &&
+    link.curriculumKey === item.curriculumKey &&
+    core.normalizeCourseIdentity(link.courseKey) === core.normalizeCourseIdentity(item.courseKey) &&
+    link.L1 === item.L1 && link.L2 === item.L2 &&
+    Number(identity.sourceOrdinal) === Number(item.sourceOrdinal) &&
+    core.normalizeFile(identity.sourceArchiveFile) === sourceFile &&
+    canonicalParent && currentGradeCourse &&
+    core.basicEligibility(item, { canonicalAuthority: catalog.canonicalAuthority }).ok;
+  if (!stillValid) continue;
+  const existing = sourceParentByUid.get(link.questionUid);
+  if (existing && JSON.stringify(existing) !== JSON.stringify(link))
+    throw new Error(`Conflicting canonical source parents: ${link.questionUid}`);
+  sourceParentByUid.set(link.questionUid, link);
+}
+sourceParents.splice(0, sourceParents.length, ...sourceParentByUid.values());
 const published = [], publishedKeys = new Set();
 for (const row of records) {
   const { problemTypeKey, templateKey, ...parent } = row;

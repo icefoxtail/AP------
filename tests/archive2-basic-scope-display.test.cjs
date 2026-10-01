@@ -1,6 +1,9 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const { spawnSync } = require('node:child_process');
+const path = require('node:path');
 const { core, catalog, workspace, productionCatalog, filterCases } = require('./helpers/archive2-scope-harness.cjs');
+const root = path.resolve(__dirname, '..');
 
 const normalized = value => String(value || '').replace(/\s+/g, '');
 const parentKey = row => [core.normalizeCourseIdentity(row.courseKey), normalized(row.L1), normalized(row.L2)].join('|');
@@ -8,6 +11,14 @@ function selectableUids(data, filters, state) {
   return data.records.filter(row => core.matches(row, filters, state) && core.eligibility(row, state).ok &&
     core.basicScopeParent(row, data.basicScopeLinks, data.canonicalAuthority)).map(row => row.questionUid);
 }
+
+test('basic-scope parent-link generator verifies the canonical runtime contract', () => {
+  const result = spawnSync(process.execPath, ['archive/tools/build-basic-scope-parent-links.mjs', '--check'], {
+    cwd: root,
+    encoding: 'utf8',
+  });
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+});
 
 test('Compose renders only canonical parent scopes with UID-deduplicated selectable counts', () => {
   const app = workspace();

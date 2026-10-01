@@ -285,13 +285,115 @@ test('explicit selected-source entry and saved draft restoration retain the inte
   assert.deepEqual(plain(w.state.sources), [source]);
 });
 
+test('approved shared high2/high3 sources survive Finder-to-Compose in both browse directions', async () => {
+  const base = catalog.records.find(row => row.sourceGrade === '고2' &&
+    core.subjectProjectionForRecord(row, '', catalog.projectionPolicy));
+  assert.ok(base, 'test needs a canonical high2 subject projection');
+  const semanticSubject = core.subjectProjectionForRecord(base, '', catalog.projectionPolicy);
+  const makeRecord = grade => {
+    const sourceFile = `original/high/h${grade[1]}/1mid/shared-${grade}.js`;
+    return {
+      ...base,
+      questionUid: 'qid_v1_' + crypto.createHash('sha256').update(`shared-compose:${grade}`).digest('hex'),
+      sourceFile,
+      sourceOrdinal: 1,
+      sourceGrade: grade,
+      effectiveBrowseGrade: grade,
+      __testApprovedAssignment: true,
+    };
+  };
+  const records = ['고2', '고3'].map(makeRecord);
+  const exams = records.map(record => ({
+    file: record.sourceFile,
+    grade: record.sourceGrade,
+    sourceGrade: record.sourceGrade,
+    effectiveBrowseGrade: record.sourceGrade,
+    school: `공유 ${record.sourceGrade}`,
+    year: 2025,
+    courseRanges: [],
+    curriculums: [record.curriculumKey],
+  }));
+  const { w, click } = harness({ ...catalog, records, exams });
+  const data = w.state.catalog;
+
+  for (const [browseGrade, sourceGrade] of [['고2', '고3'], ['고3', '고2']]) {
+    const record = data.records.find(row => row.sourceGrade === sourceGrade);
+    const exam = data.exams.find(row => row.file === record.sourceFile);
+    const filters = {
+      grade: browseGrade,
+      curriculumKey: record.curriculumKey,
+      semanticSubject,
+    };
+    assert.equal(core.finderMatches(exam, filters, w.state.finderIndex), true,
+      `${browseGrade} Finder should show the approved ${sourceGrade} source`);
+
+    const uidsFor = activeFilters => data.records.filter(row => row.sourceFile === record.sourceFile &&
+      core.matches(row, activeFilters, { catalog: data, projectionPolicy: data.projectionPolicy }) &&
+      core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok)
+      .map(row => row.questionUid).sort();
+    const beforeUids = uidsFor(filters);
+    const beforeMetadata = data.records.filter(row => row.sourceFile === record.sourceFile)
+      .map(({ sourceGrade: rawGrade, curriculumKey, courseKey }) => ({ sourceGrade: rawGrade, curriculumKey, courseKey }));
+    assert.deepEqual(beforeUids, [record.questionUid]);
+
+    w.state.find = filters;
+    w.state.sources = [record.sourceFile];
+    await click({ action: 'go-compose', useSources: 'true' });
+
+    assert.deepEqual(plain(w.state.sources), [record.sourceFile]);
+    assert.deepEqual(uidsFor(w.state.filters), beforeUids,
+      `${browseGrade} Compose should keep the same selected source UID set`);
+    assert.deepEqual(data.records.filter(row => row.sourceFile === record.sourceFile)
+      .map(({ sourceGrade: rawGrade, curriculumKey, courseKey }) => ({ sourceGrade: rawGrade, curriculumKey, courseKey })),
+    beforeMetadata, 'source grade and curriculum identity remain unchanged');
+  }
+});
+
+test('cross-grade sources without an approved canonical projection remain excluded', async () => {
+  const base = catalog.records.find(row => row.sourceGrade === '고2' &&
+    core.subjectProjectionForRecord(row, '', catalog.projectionPolicy));
+  const semanticSubject = core.subjectProjectionForRecord(base, '', catalog.projectionPolicy);
+  const sourceFile = 'original/high/h3/unapproved-shared.js';
+  const record = {
+    ...base,
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('unapproved-shared').digest('hex'),
+    sourceFile,
+    sourceOrdinal: 1,
+    sourceGrade: '고3',
+    effectiveBrowseGrade: '고3',
+    __testApprovedAssignment: true,
+  };
+  const projectionPolicy = {
+    ...catalog.projectionPolicy,
+    high23SharedSubjects: catalog.projectionPolicy.high23SharedSubjects.filter(row =>
+      !(row.grade === '고3' && row.curriculumKey === record.curriculumKey && row.courseKey === record.courseKey)),
+  };
+  const exam = { file: sourceFile, grade: '고3', sourceGrade: '고3', effectiveBrowseGrade: '고3', courseRanges: [] };
+  const data = {
+    ...catalog,
+    records: [record],
+    exams: [exam],
+    projectionPolicy,
+    canonicalAuthority: { ...catalog.canonicalAuthority, projectionPolicy },
+  };
+  const { w, click } = harness(data);
+  const filters = { grade: '고2', curriculumKey: record.curriculumKey, semanticSubject };
+
+  assert.equal(core.finderMatches(exam, filters, w.state.finderIndex), false);
+  assert.equal(core.matches(record, filters, { catalog: w.state.catalog, projectionPolicy }), false);
+  w.state.find = filters;
+  w.state.sources = [sourceFile];
+  await click({ action: 'go-compose', useSources: 'true' });
+  assert.deepEqual(plain(w.state.sources), []);
+});
+
 test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const [file, version] of [
-    ['archive2-canonical.js', '20260930-canonical-lock-2'],
-    ['archive2-core.js', '20260930-h23-shared-browse-1'],
+    ['archive2-canonical.js', '20261001-canonical-loadset-1'],
+    ['archive2-core.js', '20261001-h23-compose-closure-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
-    ['archive2-workspace.js', '20260930-h23-shared-browse-1'],
+    ['archive2-workspace.js', '20261001-h23-compose-closure-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);

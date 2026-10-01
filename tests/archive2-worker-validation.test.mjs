@@ -132,14 +132,35 @@ test("Worker accepts an approved high2 source in the shared high3 semantic brows
   assert.ok(record, "need a selectable high2 source with an approved shared semantic projection");
   const semanticSubject = core.subjectProjectionForRecord(record, "", catalog.projectionPolicy);
   const question = materialize(record);
-  await validateApprovedMixedQuestions(env, [question], input({
+  const verified = await validateApprovedMixedQuestions(env, [question], input({
     grade: "고3",
     semanticSubject,
     primaryPaths: [core.pathKey(record, 4)],
   }));
+  assert.deepEqual(verified.sourceGrades, ["고2"], "deployment uses the actual registered source grade");
   assert.equal(record.sourceGrade, "고2");
   assert.equal(question.curriculumKey, record.curriculumKey);
   assert.equal(question.courseKey, record.courseKey);
+});
+
+test("shared browse grade cannot replace saved snapshot source grades at deployment", async () => {
+  const record = catalog.records.find(row => row.sourceGrade === "고2" &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok &&
+    core.subjectProjectionForRecord(row, "", catalog.projectionPolicy));
+  assert.ok(record, "need an approved high2 source shared into the high3 browse pool");
+  const question = materialize(record);
+  const before = JSON.stringify(question);
+  const questionsModule = await import("../apmath/worker-backup/worker/helpers/archive2-questions.js");
+  assert.equal(typeof questionsModule.resolveSavedPaperSourceGrades, "function");
+  assert.equal(typeof questionsModule.checkTargetGrades, "function");
+
+  const sourceGrades = await questionsModule.resolveSavedPaperSourceGrades(env, [question]);
+  assert.deepEqual(sourceGrades, ["고2"]);
+  assert.equal(JSON.stringify(question), before, "snapshot questions stay immutable while the gate checks authority");
+  assert.doesNotThrow(() => questionsModule.checkTargetGrades({ grade: "고2" }, sourceGrades),
+    "a high2 source remains deployable to high2 when browsed from high3");
+  assert.throws(() => questionsModule.checkTargetGrades({ grade: "고1" }, sourceGrades),
+    error => error.status === 409);
 });
 
 test("BASIC restores current source bytes with optional metadata missing and passes server validation", async () => {
