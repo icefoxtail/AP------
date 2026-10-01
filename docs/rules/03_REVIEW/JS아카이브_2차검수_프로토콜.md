@@ -1,5 +1,18 @@
 [JS아카이브 2차 검수 프로토콜 — FULL 독립 재검·Reentry v2.0]
 
+## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS + R2 BLIND FREEZE (2026-10-01)
+
+R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
+
+- R1 ledger/repair detail을 보기 전에 latest R1 artifact bytes에서 R2 qid evidence를 먼저 만든다.
+- SVG expected facts, actual geometry checks, small-board 구조, Meta semantic decision까지 먼저 동결한다.
+- `blindDecisionFrozenBeforeR1Compare=true` + `blindFreezeSha256`가 물리 evidence에 없으면 REVIEW2_DONE 금지.
+- `22/22`, `14/14` 같은 집계는 item rows에서 validator가 파생한 값만 인정한다.
+- SVG 라벨/소수좌표를 고쳤다는 사실은 actual line/circle/point geometry 재검을 대체하지 않는다.
+- Meta는 기존 HOLD qid만 보는 것이 아니라 **전 문항 null/ACTIVE resolvability**를 다시 검사한다.
+- 완료 전 `review-evidence-gate.mjs --stage R2`의 `ok=true`가 필수다.
+- 예약 시간이 부족하면 checkpoint만 남기고 REVIEW2_DONE receipt를 만들지 않는다.
+
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
 
 `ITEM_HOLD` / `META_CANONICAL_HOLD`는 결함을 발견했을 때의 기본 상태가 아니라 **결정론적 수리와 정본 조회를 실제로 끝까지 수행한 뒤에도 닫을 수 없을 때만 허용되는 최후 상태**다. 작업자가 번거롭거나 현재 방법이 바로 떠오르지 않는다는 이유로 HOLD를 만들지 않는다.

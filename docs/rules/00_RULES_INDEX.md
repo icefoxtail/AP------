@@ -12,6 +12,21 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
+## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS (2026-10-01)
+
+CREATE / REVIEW1 / REVIEW2 / R3의 PASS/DONE은 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 통과해야 한다.
+
+- `N/N` 숫자를 worker가 직접 적은 것만으로 검수 완료로 인정하지 않는다.
+- 전 문항 qid별 physical evidence row, linked solutionImage별 visual evidence row, 전 문항 Meta evidence row가 있어야 한다.
+- SVG PASS는 라벨 텍스트가 아니라 actual SVG 좌표/위상에서 expected fact를 계산한 evidence가 필요하다. `TEXT_LABEL_ONLY`는 PASS 근거가 아니다.
+- source exact는 가능하면 runtime 문자열 기준으로 확인하며 doubled TeX escape를 별도 차단한다.
+- ㄱ/ㄴ/ㄷ, 소문항, 경우분리 작은칠판 구조를 실제 solution block으로 확인한다.
+- Meta null에는 lookup evidence + null reason이 필요하다. unique EXACT_ACTIVE mapping이 있는데 null이면 `META_NULL_BUT_RESOLVABLE` FAIL이다.
+- R2는 R1 ledger를 열기 전 blind evidence freeze가 필요하고, R3는 과거 stage N/N을 증거로 사용하지 않고 latest artifact bytes에서 fresh audit한다.
+- 예약 run이 시간 안에 evidence를 완결하지 못하면 checkpoint만 남기고 DONE receipt를 만들지 않는다. 예약작업에 완화 규칙은 없다.
+- 공용 기계 gate: `node archive/tools/review-evidence-gate.mjs --exam <js> --evidence <json> --stage CREATE|R1|R2|R3`.
+- 2026-10-01 복성고1 false-PASS는 `archive/fixtures/review-negative-regressions/2026-10-01-bokseong/`의 mandatory regression fixture다.
+
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
 
 `ITEM_HOLD` / `META_CANONICAL_HOLD`는 결함을 발견했을 때의 기본 상태가 아니라 **결정론적 수리와 정본 조회를 실제로 끝까지 수행한 뒤에도 닫을 수 없을 때만 허용되는 최후 상태**다. 작업자가 번거롭거나 현재 방법이 바로 떠오르지 않는다는 이유로 HOLD를 만들지 않는다.
@@ -272,14 +287,15 @@ ROUTINE_EXAM_VISUAL 최소 기준:
 2. `02_PIPELINES/수정프로토콜.md`
 3. `02_PIPELINES/작업방식_적응형배치루프_v1.md` (현재 배치 크기·UID 중복·revision·canonical 판정 기준)
 4. `02_PIPELINES/작업방식_5문항배치루프_필수.md` (legacy compatibility reference; 고위험 문항의 3~5문항 축소 루프에만 참조)
-5. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
-6. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
-7. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
-8. `03_REVIEW/무결성검수.md`
-9. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 제작·수치·style·publication)
-10. 기하 문항이면 `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md` (visual necessity·pedagogy·semantic independent review)
-11. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
-12. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
+5. `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md` (CREATE/R1/R2/R3 공통 PASS 증거 gate)
+6. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
+7. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
+8. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
+9. `03_REVIEW/무결성검수.md`
+10. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 제작·수치·style·publication)
+11. 기하 문항이면 `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md` (visual necessity·pedagogy·semantic independent review)
+12. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
+13. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
 
 ## 2. 디렉터리별 역할
 
