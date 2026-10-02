@@ -91,6 +91,22 @@ export async function computeSavedPaperRequestHash(input) {
   }));
 }
 
+export async function computeSavedPaperCopyRequestHash({ save_batch_id, parent_id, parent_snapshot_hash }) {
+  if (!SAVED_PAPER_BATCH_ID.test(String(save_batch_id || "")))
+    fail("save_batch_id must be a UUID", 400);
+  if (!SAVED_PAPER_BATCH_ID.test(String(parent_id || "")))
+    fail("parent Saved Paper ID must be a UUID", 400);
+  if (!/^[0-9a-f]{64}$/i.test(String(parent_snapshot_hash || "")))
+    fail("parent snapshot hash is invalid", 400);
+  return sha256hex(stableStringify({
+    operation: "SAVED_PAPER_COPY",
+    schema_version: SAVED_PAPER_SCHEMA,
+    save_batch_id,
+    parent_id,
+    parent_snapshot_hash: String(parent_snapshot_hash).toLowerCase(),
+  }));
+}
+
 function validateQuestionObject(question, partIndex, questionIndex) {
   if (!isPlainObject(question)) fail(`문항 ${questionIndex + 1}의 형식이 올바르지 않습니다.`, 409);
   const uid = String(question.questionUid || "");

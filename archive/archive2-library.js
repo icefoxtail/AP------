@@ -11,6 +11,7 @@
     const date = new Date(value);
     return Number.isNaN(date.getTime()) ? String(value || "") : new Intl.DateTimeFormat("ko-KR", { dateStyle: "medium" }).format(date);
   };
+  const COPY_PENDING_KEY = "archive2.saved-paper-copy-pending.v1";
   const paperMetaLabel = (paper) => [
     paper.grade,
     paper.subject,
@@ -61,7 +62,7 @@
       ? `<button type="button" data-library-action="library-status" data-status="ACTIVE">보관함으로 복원</button>`
       : `<button type="button" data-library-action="library-status" data-status="ARCHIVED">보관</button>`;
     return `<section class="panel saved-paper-detail">
-      <div class="intro"><div><p class="muted"><a href="workspace.html?view=saved">저장한 시험지</a> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div><div class="actions"><a class="button-like primary" href="index.html?savedPaper=${encodeURIComponent(paper.id)}">학생에게 배포</a><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></div>
+      <div class="intro"><div><p class="muted"><a href="workspace.html?view=saved">저장한 시험지</a> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div><div class="actions"><a class="button-like primary" href="index.html?savedPaper=${encodeURIComponent(paper.id)}">학생에게 배포</a><a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a><button type="button" data-library-action="copy">정확히 복사</button><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></div>
       <div class="actions saved-paper-modes" role="group" aria-label="출력 미리보기">
         ${[["exam", "문제"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
         <button type="button" data-library-action="print" data-mode="${esc(mode)}" class="small">새 창에서 출력</button>
@@ -175,6 +176,30 @@
           );
           if (viewState.paperId) await render(host, viewState.paperId);
           else await render(host, "", currentView);
+        } else if (action === "copy") {
+          const paper = viewState.paper;
+          if (!paper?.id || !/^[0-9a-f]{64}$/i.test(String(paper.snapshot_hash || "")))
+            throw new Error("복사할 immutable snapshot identity를 확인할 수 없습니다.");
+          let pending = {};
+          try {
+            const parsed = JSON.parse(localStorage.getItem(COPY_PENDING_KEY) || "{}");
+            if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) pending = parsed;
+          } catch {}
+          const batchId = pending[paper.id] || window.crypto?.randomUUID?.() || crypto.randomUUID();
+          pending[paper.id] = batchId;
+          localStorage.setItem(COPY_PENDING_KEY, JSON.stringify(pending));
+          const data = await apiClient().request(
+            "/archive-saved-papers/" + encodeURIComponent(paper.id) + "/copy",
+            { save_batch_id: batchId, expected_snapshot_hash: paper.snapshot_hash },
+            "POST",
+          );
+          const copyId = data.papers?.[0]?.id;
+          if (!copyId) throw new Error("시험지 사본 생성 결과를 확인하지 못했습니다.");
+          delete pending[paper.id];
+          if (Object.keys(pending).length) localStorage.setItem(COPY_PENDING_KEY, JSON.stringify(pending));
+          else localStorage.removeItem(COPY_PENDING_KEY);
+          history.pushState(null, "", "workspace.html?view=saved&paper_id=" + encodeURIComponent(copyId));
+          await render(host, copyId);
         } else if (action === "library-status") {
           await apiClient().request(
             "/archive-saved-papers/" + encodeURIComponent(id) + "/library",
