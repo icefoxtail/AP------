@@ -45,21 +45,15 @@
   "itemHoldCount": 0,
   "itemHoldQuestionIds": [],
   "itemHolds": [],
-  "metadataCanonicalHoldCount": 2,
-  "metadataCanonicalHoldQuestionIds": [
-    6,
-    10
-  ],
-  "metadataCanonicalHoldReasons": {
-    "6": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-    "10": "NO_EXACT_RPM_L4_FOR_INTEGER_COUNTING_BY_RADICAL_INEQUALITY"
-  },
-  "semanticFinalCount": 22,
-  "semanticHoldCount": 2,
+  "metadataCanonicalHoldCount": 0,
+  "metadataCanonicalHoldQuestionIds": [],
+  "metadataCanonicalHoldReasons": {},
+  "semanticFinalCount": 24,
+  "semanticHoldCount": 0,
   "projectionReuseCount": 0,
   "projectionBindingPendingCount": 0,
-  "projectionUnmaterializedCount": 22,
-  "projectionNotAttemptedCount": 2,
+  "projectionUnmaterializedCount": 24,
+  "projectionNotAttemptedCount": 0,
   "passAfterRepairQuestionIds": [
     19,
     20,
@@ -433,15 +427,22 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "primaryMethod": "여러 곱셈공식 유형 종합 판정",
-      "decisiveStep": "합·차의 제곱, 합과 차의 곱, 두 일차식의 곱이 함께 필요해 단일 L4 primary를 고정할 수 없다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "TRUE_META_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "primaryMethod": "다항식 곱셈공식의 올바른 전개 판정",
+      "decisiveStep": "각 식을 두 일차식의 곱으로 전개하여 동류항 계수를 비교하고, 맞는 항등식만 고른다.",
+      "rpmRecordId": "M3-RPM-017",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식",
+        "l4": "두 일차식의 곱"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
@@ -468,7 +469,7 @@
         "rationale": "q6: source and independently verified REVIEW1 solution only; bucket 2 fixed from step count, strategy load, and condition coupling before legacy comparison."
       },
       "metadataReviewStatus": "REVIEW2_META_HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
     },
     {
       "sourceOrdinal": 7,
@@ -630,15 +631,22 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-01",
       "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-      "primaryMethod": "근호 부등식에서 자연수 구간 개수세기",
-      "decisiveStep": "근호 부등식을 제곱해 자연수 구간을 세지만 현 RPM에 exact L4가 없다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "TRUE_META_HOLD",
-      "holdReason": "NO_EXACT_RPM_L4_FOR_INTEGER_COUNTING_BY_RADICAL_INEQUALITY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "primaryMethod": "근호 부등식의 자연수 해 개수 결정",
+      "decisiveStep": "비음수인 양변을 제곱해 73≤n<99의 범위를 얻은 뒤 자연수 개수 26을 센다.",
+      "rpmRecordId": "M3-RPM-014",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "혼합 계산",
+        "l4": "식의 값"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
@@ -668,7 +676,7 @@
         "rationale": "q10 REVIEW2 fresh blind: multiplying by 2, squaring the nonnegative compound inequality, solving 73≤n<99, and counting natural numbers is a direct standard sequence with no strategy fork; bucket 2 is retained after 2↔3 boundary recheck."
       },
       "metadataReviewStatus": "REVIEW2_META_HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
     },
     {
       "sourceOrdinal": 11,
