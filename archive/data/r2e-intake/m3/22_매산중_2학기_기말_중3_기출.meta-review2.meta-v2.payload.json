@@ -34,21 +34,17 @@
   "contentSemanticReaudit": "NOT_PERFORMED_FAST_TRACK",
   "itemHoldCount": 0,
   "itemHoldQuestionIds": [],
-  "metadataCanonicalHoldCount": 1,
-  "metadataCanonicalHoldQids": [
-    20
-  ],
-  "metadataCanonicalHoldReasons": {
-    "20": "RPM_PATH_MISSING_INTERSECTING_CHORD_ANGLE"
-  },
-  "semanticFinalCount": 21,
-  "semanticHoldCount": 1,
+  "metadataCanonicalHoldCount": 0,
+  "metadataCanonicalHoldQids": [],
+  "metadataCanonicalHoldReasons": {},
+  "semanticFinalCount": 22,
+  "semanticHoldCount": 0,
   "rpmPrimaryMigrationGapCount": 7,
-  "projectionReuseCount": 14,
+  "projectionReuseCount": 15,
   "projectionBindingPendingCount": 5,
   "projectionUnmaterializedCount": 2,
   "compiledRuntimeMaterializationRequired": false,
-  "compiledRuntimeReason": "14 FINAL rows reuse current ACTIVE projections; 5 retain ACTIVE PT/TPL with exact M3 owner-matched binding pending; 2 RPM_ONLY rows remain unmaterialized; q20 remains the only true RPM semantic HOLD. No new canonical key, binding, or runtime is invented.",
+  "compiledRuntimeReason": "15 FINAL rows reuse current ACTIVE projections; 5 retain ACTIVE PT/TPL with exact M3 owner-matched binding pending; 2 RPM_ONLY rows remain unmaterialized. q20 exact RPM leaf remains a nonblocking RPM_COVERAGE_GAP_META_ONLY debt but is uniquely projected to ACTIVE PT_CIRCLE_ANGLE_RELATIONS / TPL_CIRCLE_ANGLE_COMPOSITE with exact M3-06-CIRCLE_INSCRIBED_ANGLE binding.",
   "reviewedAtKst": "2026-09-30T22:26:00+09:00",
   "independentReviewCorrections": [
     {
@@ -171,7 +167,8 @@
         14,
         15,
         16,
-        18
+        18,
+        20
       ],
       "projectionStatus": "PROJECTION_REUSE",
       "canonicalOwnerPack": "MIDDLE_GEOMETRY",
@@ -185,10 +182,8 @@
       "projectionStatus": "PROJECTION_UNMATERIALIZED"
     },
     "trueMetaHold": {
-      "sourceOrdinals": [
-        20
-      ],
-      "reason": "RPM_PATH_MISSING_INTERSECTING_CHORD_ANGLE"
+      "sourceOrdinals": [],
+      "reason": null
     },
     "crossConcepts": {
       "CC_PYTHAGOREAN": "ACTIVE",
@@ -1519,8 +1514,8 @@
       "solutionHash": "76e7c377ab354d703e464d21f2372e92fac06757a5db59e4e48d7c2b4973ff86",
       "primaryMethod": "원 내부에서 두 현이 만날 때 교점각이 마주 보는 두 호의 합의 절반이라는 성질로 호의 각도 합을 얻고 호의 길이로 환산",
       "decisiveStep": "∠AED=60°→두 호 각도 합 120°→(120/360)·30π=10π",
-      "semanticCandidate": "HOLD_CANDIDATE",
-      "holdReason": "RPM_PATH_MISSING_INTERSECTING_CHORD_ANGLE",
+      "semanticCandidate": "PROPOSED",
+      "holdReason": null,
       "rpmRecordId": null,
       "rpmPath": null,
       "l3Candidate": null,
@@ -1533,7 +1528,13 @@
       "semanticReason": "원 내부에서 두 현이 만날 때 교점각이 마주 보는 두 호의 합의 절반이라는 성질로 호의 각도 합을 얻고 호의 길이로 환산; 결정적 단계: ∠AED=60°→두 호 각도 합 120°→(120/360)·30π=10π",
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "mappingCandidate": null,
+      "mappingCandidate": {
+        "mappingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE"
+      },
       "category": "교차하는 현과 호",
       "tags": [
         "원",
@@ -1556,15 +1557,15 @@
         "rationale": "RPM leaf 누락과 난이도는 분리한다. 교점각-호 정리 뒤 원둘레 비례로 호 길이를 구하는 표준 2단계라 풀이 전략 선택 부담이 낮다."
       },
       "reviewStatus": "META_CREATE_SEMANTIC_CANDIDATE",
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "META_CANONICAL_HOLD",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_PROJECTED",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "ownerPack": null,
-      "metadataReviewStatus": "META_REVIEW1_HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_COVERAGE_GAP_META_ONLY",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "metadataReviewStatus": "META_REVIEW1_PASS",
+      "metadataDisposition": "EXISTING_REUSE"
     },
     {
       "sourceOrdinal": 21,

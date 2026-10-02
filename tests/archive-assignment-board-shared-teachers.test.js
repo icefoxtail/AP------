@@ -24,10 +24,12 @@ assert(
   'archive assignment board should use the grade-wide board API instead of per-class assignment calls'
 );
 
-const rowOrder = archiveIndex.indexOf('assignment-board-teacher') <
-  archiveIndex.indexOf('assignment-board-paper') &&
-  archiveIndex.indexOf('assignment-board-paper') <
-  archiveIndex.indexOf('assignment-board-classes');
+const rowStart = archiveIndex.indexOf("list.innerHTML = actionError + rows.map(row => `");
+const boardRowRenderer = archiveIndex.slice(rowStart, archiveIndex.indexOf(").join('');", rowStart));
+const rowOrder = boardRowRenderer.indexOf('assignment-board-teacher') <
+  boardRowRenderer.indexOf('assignment-board-paper') &&
+  boardRowRenderer.indexOf('assignment-board-paper') <
+    boardRowRenderer.indexOf('assignment-board-classes');
 assert(rowOrder, 'assignment board rows should render teacher, paper, classes in that order');
 
 assert(
