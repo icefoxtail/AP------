@@ -20,7 +20,7 @@
 CREATE/R1/R2/R3의 Meta PASS는 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`에 결속한다.
 
 - `metadataAuditCount=N/N` 집계만으로 Meta 검수 완료 금지.
-- qid마다 blind `primaryMethod / decisiveStep`, RPM Primary 판정, crosswalk lookup, GLOBAL ACTIVE taxonomy/template lookup, exact binding lookup evidence를 남긴다.
+- qid마다 current-pass 재검 `primaryMethod / decisiveStep`, RPM Primary 판정, crosswalk lookup, GLOBAL ACTIVE taxonomy/template lookup, exact binding lookup evidence를 남긴다.
 - `problemTypeKey` 또는 `templateKey`가 null이면 lookup evidence + `nullReason` 필수.
 - unique `EXACT_ACTIVE` mapping이 존재하는데 field가 null이면 `META_NULL_BUT_RESOLVABLE` FAIL.
 - RPM_ONLY/BINDING_GAP은 기존 CURRENT처럼 비차단 projection debt일 수 있지만, **lookup을 하지 않은 null**과 혼동하지 않는다.
@@ -377,7 +377,7 @@ CrossConcept 2개 이상
 
 L3/L4/CrossConcept semantic assignment은 **decision-isolated input bundle**에서만 생성한다.
 
-현재 stage에 필요한 이미 검증·동결된 upstream authority는 사용할 수 있다. 예를 들어 L4 판정에서 검증된 FINAL L3 parent는 허용한다. 다만 **같은 stage의 기존 candidate·suggestion·heuristic 결과·이전 verdict는 semantic decision 입력에서 제외**한다.
+현재 stage에 필요한 이미 검증·동결된 upstream authority는 사용할 수 있다. 예를 들어 L4 판정에서 검증된 FINAL L3 parent는 허용한다. 다만 **같은 stage의 기존 candidate·suggestion·heuristic 결과·이전 verdict는 보여도 되지만 semantic decision authority로 사용하거나 복사하지 않는다**.
 
 금지 입력 예:
 
@@ -390,7 +390,7 @@ prior builder/reviewer verdict
 aggregate target count를 맞추기 위한 기존 assignment
 ```
 
-fresh semantic pass에서 새로 생성된 current-pass upstream 결과를 후속 판단에 사용하는 것은 허용하되, 과거 same-stage candidate를 authority로 재사용해서는 안 된다.
+current-pass semantic 재검에서 새로 생성된 upstream 결과를 후속 판단에 사용하는 것은 허용하되, 과거 same-stage candidate를 authority로 재사용해서는 안 된다.
 
 ## 3-1.2 Source provenance 물리 증거
 
@@ -440,7 +440,7 @@ L1/L2의 canonical authority는 기존 master에 그대로 두되, 문항별 유
 
 `crossConceptReasons[]`는 각 `crossConceptKey`별로 왜 primary 밖의 결정적 추가 개념인지 설명해야 한다. 단순 등장·그림 요소·조건 표현을 이유로 한 부여는 무효다.
 
-source에서 읽은 듯한 `decisiveStep`·reason 문자열을 **이미 candidate로 결정한 key에 사후 부착**하는 것은 fresh semantic provenance가 아니다.
+source에서 읽은 듯한 `decisiveStep`·reason 문자열을 **이미 candidate로 결정한 key에 사후 부착**하는 것은 current-pass semantic provenance가 아니다.
 
 ## 3-1.4 FINAL은 validator가 생성한다
 
