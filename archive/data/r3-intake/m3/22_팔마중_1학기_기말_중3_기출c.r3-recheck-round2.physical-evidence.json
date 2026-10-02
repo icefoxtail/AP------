@@ -1,0 +1,1835 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+  "examSha256": "sha256:2751bf2758899779681f89386d1008b80f611b1ae5000d723e3a87ce5bc9f7f5",
+  "questionCount": 25,
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "MAIN_PRESENT_META_ONLY",
+  "canonicalOrdinal": 35,
+  "executor": "R3-2_CONTEXT_TOLERANT_RECHECK",
+  "inputArtifactGitBlobSha": "b1b4ca97a071a00d2422173463bf056924d277c7",
+  "inputAuthorityCommit": "archive-recovery/m3-22-palma-1final-meta-review2-v2-20260930-1820-l2-final@984fd697e5b72f0427cd41a1496b801f9289bb96",
+  "metaAuthorityRef": "work/middle/m3/22-palma-1final-meta-v2@04b3798ca5e75ea407d047c46c95dcd3396f95ce",
+  "metaReview2PayloadGitBlobSha": "7756adffbbcc0f556b8e995ef3569fc2246e2426",
+  "frozenContentParityGitBlobSha": "b20cb69d065682c2d1dfa5a03548c10e560121b9",
+  "metaReview2ReceiptGitBlobSha": "7027f2acaae37516ba6c06423cfc23dbe057fb75",
+  "observedMainAtClaim": "073353a8177358cb45623b059af7a42cf263c94c",
+  "claimNotionPageId": "3ec0e68b-d69f-81f6-8b82-dba7977baf09",
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "gradeBounded": true,
+    "higherGradeCounterexampleSearch": false,
+    "visualDoubtIsNotFail": true,
+    "targetPriorVerdictUsedAsEvidence": false,
+    "contextTolerantReview": true,
+    "priorDetailExposureAllowed": true,
+    "decisionSnapshotMeaning": "INDEPENDENT_RECALCULATION_SNAPSHOT_NOT_NONEXPOSURE_PROOF"
+  },
+  "sourceParity": {
+    "status": "PASS",
+    "count": "25/25",
+    "protectedFields": [
+      "content",
+      "choices",
+      "answer",
+      "image"
+    ],
+    "frozenParityBlob": "b20cb69d065682c2d1dfa5a03548c10e560121b9",
+    "currentBlob": "b1b4ca97a071a00d2422173463bf056924d277c7",
+    "contentDriftDiscovered": false,
+    "evidenceNote": "Protected source/content/choices/answer/image remain unchanged; round2 changed q18.solution only."
+  },
+  "curriculumMethodAuditCount": "25/25",
+  "curriculumViolationQids": [],
+  "visualNecessityAuditCount": "25/25",
+  "linkedProblemVisualAuditCount": "5/5",
+  "linkedSolutionVisualAuditCount": "1/1",
+  "runtimeStringAuditCount": "25/25",
+  "layoutAuditCount": "25/25",
+  "releaseFindings": [
+    {
+      "axis": "POST_R3_RECHECK",
+      "qids": [
+        18,
+        22
+      ],
+      "code": "ROUND2_REPAIR_SCOPE_RECHECK_PASS",
+      "blocking": false,
+      "evidence": "q18 small-board defect closed; q18/q22 Meta prior multi-L4 HOLD reclassified under current PRIMARY-KEY-FIRST authority; no item holds remain."
+    },
+    {
+      "axis": "VISUAL",
+      "qids": [],
+      "code": "LOCKED_VISUAL_SCOPE_UNCHANGED",
+      "blocking": false,
+      "evidence": "Original R3 visual audit remains bound; round2 changed q18.solution only and linkedAssetMutationCount=0."
+    }
+  ],
+  "confirmedVisualDefectQids": [],
+  "visualRecheckOnlyQids": [],
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q1 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 각 보기를 정리하면 ②의 식만 이차방정식이 아니므로 정답 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 각 보기를 정리하면 ②의 식만 이차방정식이 아니므로 정답 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-029); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q2 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 공통근을 두 식에 대입·소거하면 공통근은 -3이고 요구값은 -4, 정답 ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 공통근을 두 식에 대입·소거하면 공통근은 -3이고 요구값은 -4, 정답 ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-030); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q3 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 4(x-p)^2=q의 두 근 -1±√3과 비교해 p=-1,q=12이므로 p+q=11, 정답 ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 4(x-p)^2=q의 두 근 -1±√3과 비교해 p=-1,q=12이므로 p+q=11, 정답 ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-031); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q4 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 한 근 -2를 대입해 a=-6, 인수분해하면 다른 근 3이므로 두 근의 합 -3, 정답 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 한 근 -2를 대입해 a=-6, 인수분해하면 다른 근 3이므로 두 근의 합 -3, 정답 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-031); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q5 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: x²+4x-5=(x+5)(x-1)이므로 두 근 -5,1, 정답 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. x²+4x-5=(x+5)(x-1)이므로 두 근 -5,1, 정답 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-032); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q6 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 주어진 두 근 -1,2를 식에 대입해 a=-2,b=-4, 따라서 a-b=2, 정답 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 주어진 두 근 -1,2를 식에 대입해 a=-2,b=-4, 따라서 a-b=2, 정답 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-031); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q7 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 완전제곱으로 중근 조건을 적용하면 a=-49/4, 중근 1/2, 합 -47/4, 정답 ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 완전제곱으로 중근 조건을 적용하면 a=-49/4, 중근 1/2, 합 -47/4, 정답 ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-036); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2 with B23 boundary rechecked; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q8 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 근의 공식의 형태를 비교해 A=9/5,B=-2, A+B=-1/5, 정답 ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 근의 공식의 형태를 비교해 A=9/5,B=-2, A+B=-1/5, 정답 ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-035); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q9 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 판별식 41-8a가 완전제곱수가 되는 자연수 a를 점검하면 2,4,5이고 합 11, 정답 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 판별식 41-8a가 완전제곱수가 되는 자연수 a를 점검하면 2,4,5이고 합 11, 정답 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-035); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 4; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q10 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 바깥 통로 폭 x에 대해 (8+2x)(5+2x)-40=48, 2x²+13x-24=0의 양의 해 x=3/2, 정답 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 바깥 통로 폭 x에 대해 (8+2x)(5+2x)-40=48, 2x²+13x-24=0의 양의 해 x=3/2, 정답 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked problem source pixels were opened and checked against the problem relation; no objective source/visual semantic contradiction was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-039); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 3 with B23 boundary rechecked; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q11 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 위로 볼록이므로 a<0이고 같은 꼭짓점에서 |a|가 작을수록 폭이 넓다. a=-1/2, 정답 ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 위로 볼록이므로 a<0이고 같은 꼭짓점에서 |a|가 작을수록 폭이 넓다. a=-1/2, 정답 ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-045); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q12 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: y=(1/3)x²에서 x<0 구간은 x가 증가할수록 y가 감소하므로 정답 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. y=(1/3)x²에서 x<0 구간은 x가 증가할수록 y가 감소하므로 정답 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-046); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q13 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: x축 대칭으로 y=-3x²가 되고 요구 계수 비교에서 k=-12, 정답 ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. x축 대칭으로 y=-3x²가 되고 요구 계수 비교에서 k=-12, 정답 ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-047); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q14 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 꼭짓점이 x축 위에 있으려면 꼭짓점형의 상수항 q=0이어야 하므로 ①,③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 꼭짓점이 x축 위에 있으려면 꼭짓점형의 상수항 q=0이어야 하므로 ①,③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-050); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 1 with B12 boundary rechecked; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q15 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 평행이동은 이차항 계수를 보존하므로 -2 계수인 ⑤만 가능."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 평행이동은 이차항 계수를 보존하므로 -2 계수인 ⑤만 가능."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-049); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q16 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 두 포물선은 수평으로 7만큼 평행이동 관계이며 source 그림의 A,B가 같은 쪽 대응점이라 AB=7."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 두 포물선은 수평으로 7만큼 평행이동 관계이며 source 그림의 A,B가 같은 쪽 대응점이라 AB=7."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked problem source pixels were opened and checked against the problem relation; no objective source/visual semantic contradiction was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-049); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q17 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: -5x²+20x-16=-5(x-2)²+4이므로 a=-5,m=2,n=4, 합 1, 정답 ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. -5x²+20x-16=-5(x-2)²+4이므로 a=-5,m=2,n=4, 합 1, 정답 ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-051); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Round2 diff changes q18.solution only; q18 content/choices/answer/image remain byte-protected against the prior R3 baseline."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Direct recomputation of y=x^2+6x+5=(x+1)(x+5)=(x+3)^2-4 confirms choices ④ and ⑤ only."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Repaired solution independently checks all five statements: ① false because x>0 gives y>0 so quadrant IV is not visited; ② y-intercept is (0,5); ③ vertex is (-3,-4); ④ (-1,0) is on the upward-opening parabola; ⑤ translation is left 3/down 4."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "All five statements ①–⑤ are now separated and individually justified; the prior CONDITION_USAGE_OMISSION is closed."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses only M3 quadratic-function graph, factorization, vertex-form, intercept and translation facts."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No q18 image/solutionImage exists or is required to resolve the repaired all-statements logic; locked visual assets elsewhere are unchanged."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current PRIMARY-KEY-FIRST authority resolves one primary semantic path (M3-RPM-049: vertex form/translation); additional graph checks are secondary evidence and do not require a second primary. Production Meta itemHoldCount is 0; prior multi-L4 HOLD is stale/nonblocking under current authority."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket 3 remains appropriate after direct recomputation; no difficulty-affecting content change occurred."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "q18 repaired runtime strings contain no doubled high-signal TeX escapes; canonical Node gate will replay runtime checks on the final artifact."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "layoutTag remains grid and round2 changed only solution text; no layout field or asset mutation."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q19 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: source 그래프가 아래로 열린 형태(위로 볼록), 축이 y축 왼쪽, y절편 양수이므로 a<0,b<0,c>0, 정답 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. source 그래프가 아래로 열린 형태(위로 볼록), 축이 y축 왼쪽, y절편 양수이므로 a<0,b<0,c>0, 정답 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked problem source pixels were opened and checked against the problem relation; no objective source/visual semantic contradiction was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-053); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q20 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 축 x=1과 두 x절편의 대칭/거리 조건으로 a=1/2, b=4, 따라서 ab=2, 정답 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 축 x=1과 두 x절편의 대칭/거리 조건으로 a=1/2, b=4, 따라서 ab=2, 정답 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-054); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 3 with B34 boundary rechecked; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q21 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: x절편 0,8에서 y=-x(x-8), 꼭짓점 P=(4,-2). 삼각형 넓이는 8, 정답 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. x절편 0,8에서 y=-x(x-8), 꼭짓점 P=(4,-2). 삼각형 넓이는 8, 정답 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked problem source pixels were opened and checked against the problem relation; no objective source/visual semantic contradiction was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-054); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 3; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "Current frozen grid layout remains unchanged; no supported source/layout contradiction was found."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q22 production bytes are unchanged by round2; content/answer/source remain exactly the reviewed artifact."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Direct recomputation gives (1) x=±√5 and (2) x=-1±√6, matching the locked answer."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "The current solution separately executes the source-mandated square-root method for (1) and completing-square method for (2), with all decisive equations shown."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "The two explicit subparts are separated into independent readable blocks with their required methods."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Both methods are within M3 quadratic-equation curriculum."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "This is a pure algebraic two-method exercise; no solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current PRIMARY-KEY-FIRST authority resolves M3-RPM-033 (square-root method) as the primary path and M3-RPM-034 as secondary required-method evidence; prior multi-L4 HOLD is stale/nonblocking. Production Meta itemHoldCount is 0."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket 2 remains appropriate; source and solution are unchanged."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "q22 runtime strings contain no doubled high-signal TeX escapes; canonical Node gate will replay runtime checks on the final artifact."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "subjective-2up remains appropriate for the two separately required written methods; no layout mutation."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q23 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 근의 공식으로 원래 두 근을 구해 M=3,N=-6, 새 근은 4,-5이므로 x²+x-20=0."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 근의 공식으로 원래 두 근을 구해 M=3,N=-6, 새 근은 4,-5이므로 x²+x-20=0."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Text/algebra is sufficient for student reproduction; no missing visual relation blocks the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-035); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 3; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen layout parity was preserved; no production relayout was performed. Current track does not backfill layout absent drift, and no static/source contradiction requiring a new layout mutation was used as a release finding."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q24 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: 축 x=2에서 p=2, x절편 (5,0)을 대입해 q=6."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. 축 x=2에서 p=2, x절편 (5,0)을 대입해 q=6."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked problem source pixels were opened and checked against the problem relation; no objective source/visual semantic contradiction was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-054); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen layout parity was preserved; no production relayout was performed. Current track does not backfill layout absent drift, and no static/source contradiction requiring a new layout mutation was used as a release finding."
+      }
+    },
+    {
+      "qid": 25,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen production parity: current q25 content/choices/answer/image exactly remains on input blob 85987815739e0b55c2b06504655c6c19737edd08; V2 frozen parity receipt b20cb69d065682c2d1dfa5a03548c10e560121b9 reports linked/source drift 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh M3 grade-bounded solve: x축에 접하고 축 x=1이므로 꼭짓점 (1,0), y절편 (0,-1)에서 계수 -1, 함수는 y=-(x-1)²=-x²+2x-1."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution conclusion/decisive steps agree with the fresh grade-bounded solve. x축에 접하고 축 x=1이므로 꼭짓점 (1,0), y절편 (0,-1)에서 계수 -1, 함수는 y=-(x-1)²=-x²+2x-1."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Current solution exposes the decisive relation/calculation/condition in reproducible small-board order; explicit subparts, where present, remain separately readable."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3(2015) 상한선과 이미 이수한 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution visual was inspected by actual SVG primitive/coordinate semantics; no objective semantic contradiction was found. Coordinate/anchor micro-doubt was not promoted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → current M3 RPM semantic lookup is deterministic (M3-RPM-054); projection debt, if any, is nonblocking under current resolver."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind R3 difficulty bucket 3 with B34 boundary rechecked; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated runtime content/choices/answer/solution high-signal TeX doubled-escape scan returned zero for this qid."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "MAIN_PRESENT_META_ONLY frozen layout parity was preserved; no production relayout was performed. Current track does not backfill layout absent drift, and no static/source contradiction requiring a new layout mutation was used as a release finding."
+      }
+    }
+  ],
+  "visualRows": [
+    {
+      "qid": 25,
+      "result": "PASS",
+      "assetPath": "assets/images/22_팔마중_1학기_기말_중3_기출/q25-solution.svg",
+      "assetSha256": "sha256:c187dd8d4d1865b86956f70de69961e6104620e287defd5b24243d84a8d20f95",
+      "expectedFacts": [
+        "vertex is (1,0) on x-axis",
+        "axis is x=1",
+        "graph passes through (0,-1)",
+        "parabola opens downward"
+      ],
+      "observedFacts": [
+        "SVG vertex primitive is centered on x=1 at the x-axis",
+        "dashed symmetry line is x=1",
+        "marked point lies on y-axis at -1",
+        "curve opens downward"
+      ],
+      "checks": [
+        {
+          "method": "COORDINATE_COMPUTE",
+          "result": "PASS",
+          "predicate": "vertex/axis ownership",
+          "expected": "vertex (1,0), axis x=1",
+          "observed": "screen vertex (115,130) on x-axis y=130 with dashed axis x=115; x=1 label bound to that axis"
+        },
+        {
+          "method": "COORDINATE_COMPUTE",
+          "result": "PASS",
+          "predicate": "y-intercept ownership",
+          "expected": "(0,-1)",
+          "observed": "marked point at screen (80,165) lies on y-axis x=80 below x-axis and is labelled (0,-1)"
+        },
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "result": "PASS",
+          "predicate": "opening direction",
+          "expected": "downward-opening parabola tangent to x-axis at vertex",
+          "observed": "curve branches descend on both sides from the vertex; no semantic contradiction"
+        }
+      ]
+    }
+  ],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "Fresh q1 grade-bounded decisive method",
+      "decisiveStep": "각 보기를 정리하면 ②의 식만 이차방정식이 아니므로 정답 ②.",
+      "rpmRecordId": "M3-RPM-029",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "Fresh q2 grade-bounded decisive method",
+      "decisiveStep": "공통근을 두 식에 대입·소거하면 공통근은 -3이고 요구값은 -4, 정답 ③.",
+      "rpmRecordId": "M3-RPM-030",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "Fresh q3 grade-bounded decisive method",
+      "decisiveStep": "4(x-p)^2=q의 두 근 -1±√3과 비교해 p=-1,q=12이므로 p+q=11, 정답 ①.",
+      "rpmRecordId": "M3-RPM-031",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "Fresh q4 grade-bounded decisive method",
+      "decisiveStep": "한 근 -2를 대입해 a=-6, 인수분해하면 다른 근 3이므로 두 근의 합 -3, 정답 ②.",
+      "rpmRecordId": "M3-RPM-031",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "Fresh q5 grade-bounded decisive method",
+      "decisiveStep": "x²+4x-5=(x+5)(x-1)이므로 두 근 -5,1, 정답 ②.",
+      "rpmRecordId": "M3-RPM-032",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "Fresh q6 grade-bounded decisive method",
+      "decisiveStep": "주어진 두 근 -1,2를 식에 대입해 a=-2,b=-4, 따라서 a-b=2, 정답 ④.",
+      "rpmRecordId": "M3-RPM-031",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "Fresh q7 grade-bounded decisive method",
+      "decisiveStep": "완전제곱으로 중근 조건을 적용하면 a=-49/4, 중근 1/2, 합 -47/4, 정답 ③.",
+      "rpmRecordId": "M3-RPM-036",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23"
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "Fresh q8 grade-bounded decisive method",
+      "decisiveStep": "근의 공식의 형태를 비교해 A=9/5,B=-2, A+B=-1/5, 정답 ③.",
+      "rpmRecordId": "M3-RPM-035",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "Fresh q9 grade-bounded decisive method",
+      "decisiveStep": "판별식 41-8a가 완전제곱수가 되는 자연수 a를 점검하면 2,4,5이고 합 11, 정답 ⑤.",
+      "rpmRecordId": "M3-RPM-035",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 4,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "Fresh q10 grade-bounded decisive method",
+      "decisiveStep": "바깥 통로 폭 x에 대해 (8+2x)(5+2x)-40=48, 2x²+13x-24=0의 양의 해 x=3/2, 정답 ④.",
+      "rpmRecordId": "M3-RPM-039",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23"
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "Fresh q11 grade-bounded decisive method",
+      "decisiveStep": "위로 볼록이므로 a<0이고 같은 꼭짓점에서 |a|가 작을수록 폭이 넓다. a=-1/2, 정답 ①.",
+      "rpmRecordId": "M3-RPM-045",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "Fresh q12 grade-bounded decisive method",
+      "decisiveStep": "y=(1/3)x²에서 x<0 구간은 x가 증가할수록 y가 감소하므로 정답 ⑤.",
+      "rpmRecordId": "M3-RPM-046",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "Fresh q13 grade-bounded decisive method",
+      "decisiveStep": "x축 대칭으로 y=-3x²가 되고 요구 계수 비교에서 k=-12, 정답 ①.",
+      "rpmRecordId": "M3-RPM-047",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "Fresh q14 grade-bounded decisive method",
+      "decisiveStep": "꼭짓점이 x축 위에 있으려면 꼭짓점형의 상수항 q=0이어야 하므로 ①,③.",
+      "rpmRecordId": "M3-RPM-050",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12"
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "Fresh q15 grade-bounded decisive method",
+      "decisiveStep": "평행이동은 이차항 계수를 보존하므로 -2 계수인 ⑤만 가능.",
+      "rpmRecordId": "M3-RPM-049",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; a compatibility projection/binding is pending and is nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "Fresh q16 grade-bounded decisive method",
+      "decisiveStep": "두 포물선은 수평으로 7만큼 평행이동 관계이며 source 그림의 A,B가 같은 쪽 대응점이라 AB=7.",
+      "rpmRecordId": "M3-RPM-049",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; a compatibility projection/binding is pending and is nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "Fresh q17 grade-bounded decisive method",
+      "decisiveStep": "-5x²+20x-16=-5(x-2)²+4이므로 a=-5,m=2,n=4, 합 1, 정답 ③.",
+      "rpmRecordId": "M3-RPM-051",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "꼭짓점형과 평행이동을 주의미로 잡고 각 보기의 그래프 성질을 보조 검증",
+      "decisiveStep": "y=(x+3)^2-4로 꼭짓점·평행이동을 확정하고, 인수분해/부호/절편 검증으로 나머지 보기를 판정한다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM primary is resolved; legacy PT/TPL projection is unmaterialized and nonblocking for BASIC release.",
+      "freshDifficultyBucket": 3,
+      "difficultyBoundaryFlag": "NONE",
+      "rpmRecordId": "M3-RPM-049"
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "Fresh q19 grade-bounded decisive method",
+      "decisiveStep": "source 그래프가 아래로 열린 형태(위로 볼록), 축이 y축 왼쪽, y절편 양수이므로 a<0,b<0,c>0, 정답 ②.",
+      "rpmRecordId": "M3-RPM-053",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "Fresh q20 grade-bounded decisive method",
+      "decisiveStep": "축 x=1과 두 x절편의 대칭/거리 조건으로 a=1/2, b=4, 따라서 ab=2, 정답 ④.",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; a compatibility projection/binding is pending and is nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34"
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "Fresh q21 grade-bounded decisive method",
+      "decisiveStep": "x절편 0,8에서 y=-x(x-8), 꼭짓점 P=(4,-2). 삼각형 넓이는 8, 정답 ④.",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; a compatibility projection/binding is pending and is nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 3,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "첫 번째 명시 풀이 요구인 제곱근 이용을 주의미로 잡고 두 번째 완전제곱식 풀이를 보조 필수 의미로 검증",
+      "decisiveStep": "(1)은 제곱근 이용으로, (2)는 완전제곱식 이용으로 각각 해결하며 primary는 M3-RPM-033, secondary required method evidence는 M3-RPM-034로 보존한다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM primary is resolved; legacy PT/TPL projection is unmaterialized and nonblocking for BASIC release.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "rpmRecordId": "M3-RPM-033"
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "Fresh q23 grade-bounded decisive method",
+      "decisiveStep": "근의 공식으로 원래 두 근을 구해 M=3,N=-6, 새 근은 4,-5이므로 x²+x-20=0.",
+      "rpmRecordId": "M3-RPM-035",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; safe legacy PT/TPL projection is unmaterialized/nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 3,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "Fresh q24 grade-bounded decisive method",
+      "decisiveStep": "축 x=2에서 p=2, x절편 (5,0)을 대입해 q=6.",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; a compatibility projection/binding is pending and is nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE"
+    },
+    {
+      "qid": 25,
+      "result": "PASS",
+      "primaryMethod": "Fresh q25 grade-bounded decisive method",
+      "decisiveStep": "x축에 접하고 축 x=1이므로 꼭짓점 (1,0), y절편 (0,-1)에서 계수 -1, 함수는 y=-(x-1)²=-x²+2x-1.",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current RPM semantic path is FINAL; a compatibility projection/binding is pending and is nonblocking under the current resolver contract.",
+      "freshDifficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34"
+    }
+  ],
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "25/25",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "Rule → calculation → requested result is explicitly reproducible."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "Governing relation is stated before substitution."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "Formula → substitution → simplification is explicit."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "Concept first; decisive algebra is visible."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "compareAfterFreshFreeze": {
+    "qualityFloor": "Original R3 Golden/Negative calibration retained; q18/q22 rechecked against current authority and final repaired bytes.",
+    "result": "PASS_ROUND2_RECHECK",
+    "q18": "All five choices are now independently justified and current PRIMARY-KEY-FIRST Meta disposition is deterministic/nonblocking.",
+    "q22": "Both required methods are independently correct; PRIMARY-KEY-FIRST records one primary plus secondary method evidence without an item HOLD."
+  },
+  "summary": {
+    "questionCount": 25,
+    "questionEvidenceRows": 25,
+    "linkedSolutionVisualCount": 1,
+    "visualEvidenceRows": 1,
+    "metaEvidenceRows": 25,
+    "itemHoldCount": 0,
+    "r3EvidenceFailCount": 0,
+    "r3EvidenceFailQids": []
+  },
+  "overallProtocolDisposition": "PASS",
+  "overallProtocolFailureCodes": [],
+  "note": "R3 made no production mutation. Fresh grade-bounded math/answers/curriculum/runtime and inspected visuals pass. q18/q22 are the only OPEN qids; visual coordinate/anchor doubt was not promoted.",
+  "metaCheck": "25/25 current semantic review PASS for release eligibility; q18 primary M3-RPM-049 with secondary graph checks, q22 primary M3-RPM-033 with M3-RPM-034 secondary method evidence; production Meta itemHoldCount=0.",
+  "postRepairRecheck": {
+    "schemaVersion": "JS_ARCHIVE_R3_CONTEXT_TOLERANT_RECHECK_v1",
+    "currentUserOverride": "CONTEXT_TOLERANT_REVIEW",
+    "repairRound": 2,
+    "openQids": [
+      18,
+      22
+    ],
+    "changedQids": [
+      18
+    ],
+    "changedFields": [
+      "q18.solution"
+    ],
+    "directDependencyQids": [
+      18,
+      22
+    ],
+    "lockedScopeMutationCount": 0,
+    "protectedSourceMutationCount": 0,
+    "answerMutationCount": 0,
+    "choicesMutationCount": 0,
+    "linkedAssetMutationCount": 0,
+    "repairCommit": "521fb8ecd95fc5e9f2d4fde090f9076fe55b8200",
+    "finalArtifactGitBlobSha": "b1b4ca97a071a00d2422173463bf056924d277c7",
+    "finalArtifactSha": "sha256:2751bf2758899779681f89386d1008b80f611b1ae5000d723e3a87ce5bc9f7f5",
+    "validatorAuthorityGitBlobSha": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "visualPreload": {
+      "skillBlob": "4be6c735b983708630a6e367a5e491ca77b40ffe",
+      "visualProtocolBlob": "08cfc834e3dae9838000880baaf983a685dece51",
+      "status": "PASS_BEFORE_TARGET_RECHECK"
+    }
+  }
+}
