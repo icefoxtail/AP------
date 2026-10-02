@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_REPAIR_REQUEST_v1",
+  "canonicalOrdinal": 37,
+  "examFile": "22_연향중_1학기_기말_중3_기출c.js",
+  "stage": "CODEX_R3_REPAIR",
+  "sourceR3Branch": "work/middle/m3/22-yeonhyang-1final-r3-surge2-20261002",
+  "sourceR3Head": "70711da03a3d78f3922b6f70cf62941dcfde13f0",
+  "inputArtifactGitBlobSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "failPacketBlob": "02af7e594bc435bb085e49a0ba66c0351b19c51c",
+  "failPacketPath": "archive/data/r3-intake/m3/22_연향중_1학기_기말_중3_기출c.r3-surge2.fail-packet.json",
+  "openQids": [
+    1,
+    9,
+    12
+  ],
+  "allowedOpenFields": [
+    "q1.content",
+    "q1.solution",
+    "q9.content",
+    "q9.solution",
+    "q12.content"
+  ],
+  "lockedDependenciesToReverifyOnly": [
+    "q12.answer",
+    "q12.solution",
+    "q12.image"
+  ],
+  "requiredRepairs": {
+    "q1": [
+      "replace literal backslash-n separators in content with intended runtime line breaks only",
+      "rewrite solution presentation so ㄱ~ㅂ judgements are independently traceable small-board blocks without changing math"
+    ],
+    "q9": [
+      "replace literal backslash-n separators in content with intended runtime line breaks only",
+      "rewrite solution presentation so shared ㄱ~ㅂ judgements are independently traceable small-board blocks without changing math"
+    ],
+    "q12": [
+      "correct only the stem owner order so A is on y=3x^2 and B is on y=ax^2, matching source raster and stored answer ③",
+      "preserve source crop and reverify answer/solution/image; do not edit them unless a new verified source fact requires it"
+    ]
+  },
+  "lockedScopeRule": "All qids/files/fields outside allowedOpenFields are locked. Final repair must report lockedScopeMutationCount=0.",
+  "completion": [
+    "materialize exact repaired exam bytes on this branch",
+    "record changed fields and lockedScopeMutationCount",
+    "run target-scoped syntax/runtime checks available to Codex",
+    "produce durable CODEX_REPAIR_DONE evidence tied to finalArtifactSha",
+    "route to fresh CODEX_INDEPENDENT_REVIEW; do not merge main"
+  ],
+  "mainMutation": false
+}
