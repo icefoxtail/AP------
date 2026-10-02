@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_VALIDATOR_FALLBACK_DEBT_v1",
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "lane": "CREATE-1",
+  "canonicalOrdinal": 67,
+  "examFile": "22_연향중_2학기_기말_중3_기출.js",
+  "status": "STAGE_ATTEMPT_CLOSED_WITH_DEBT",
+  "completionClaim": false,
+  "latestMainObserved": "fe9dc0412f4572b74676537f7990a931832e16be",
+  "candidateRef": "archive-recovery/m3-22-yeonhyang-2final-meta-v2-create1-close-20261002-0554-l1",
+  "candidateArtifactGitBlob": "359c3189a9c7319fb797b701bb5add4448504be0",
+  "physicalEvidenceGitBlob": "4201571c0b0f0e800df84db515bd24f71a2596e5",
+  "requiredValidator": "node archive/tools/review-evidence-gate.mjs --exam archive/exams/original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js --evidence archive/data/r2e-intake/m3/22_연향중_2학기_기말_중3_기출.meta-v2-create1.physical-debt.json --stage CREATE",
+  "requiredPreflight": "node archive/tools/solution-calibration-gate.mjs --exam archive/exams/original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js --evidence archive/data/r2e-intake/m3/22_연향중_2학기_기말_중3_기출.meta-v2-create1.physical-debt.json --stage CREATE --preflight",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "attempts": [
+    {
+      "executor": "local-container",
+      "result": "UNAVAILABLE_REPO_CHECKOUT",
+      "detail": "Node v22.16.0 exists, but the repository is not checked out in this runtime and shell network cloning is unavailable."
+    },
+    {
+      "executor": "github-actions-pr-ci",
+      "result": "WRITE_BLOCKED_BEFORE_MUTATION",
+      "detail": "Created isolated validation ref from the exact o67 recovery branch, then the attempted temporary CI workflow update was blocked by platform safety before any workflow-file mutation or PR creation."
+    }
+  ],
+  "validationBranch": "validation/m3-o67-create-gate-20261002",
+  "validationBranchMutation": 0,
+  "mainMutation": 0,
+  "debtType": "INFRA_RETRY_DEBT",
+  "releaseBlocking": true,
+  "schedulerBlocking": false,
+  "nextRequiredAction": "Execute the exact canonical calibration preflight and CREATE review-evidence gate in a repository-filesystem executor or permitted temporary PR/CI path. Only ok=true/issues=[] may convert o67 to CREATE_DONE*."
+}
