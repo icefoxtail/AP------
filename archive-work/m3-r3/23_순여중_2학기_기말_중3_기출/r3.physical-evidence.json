@@ -1,0 +1,1750 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+  "examSha256": "sha256:c83c4064fea03fc7eee7b0d9cf3aae485c57413c4a317bd235abb56d30505484",
+  "questionCount": 24,
+  "inputArtifactSha": "002cf4fac705ff59ab5b37592e17817ce0e79a02",
+  "examBlobSha": "4ed330ab185bc5c6c2a55b2972b8861dbef6f31f",
+  "reviewAttemptId": "R3+23_순여중_2학기_기말_중3_기출+002cf4fac705ff59ab5b37592e17817ce0e79a02+2",
+  "blindFreezeGitBlobSha": "09407a4d5706fe37148664f98cff2c92402ffce5",
+  "executorCapabilityPreflight": {
+    "validationExecutor": "GITHUB_ACTIONS",
+    "localNode": "UNAVAILABLE_IN_CONNECTED_RUNTIME"
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "중간 계산을 재현 가능한 단계로 분리."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.",
+        "observation": "조건 해석 뒤 보기별 검증 구조."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다.",
+        "observation": "개념 구분을 먼저 고정."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:7c72f3a036e518df8cb19bf8759dc175ad8ab89a79e04d0c1964b3b6cbac7b94",
+        "solutionExcerpt": "두 점 사이의 거리 공식으로 세 변의 길이의 제곱을 구한다.",
+        "observation": "결정 계산을 생략하지 않음."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "blindDecisionFrozenBeforeCompare": true
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 150°,30°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-075"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: x=25°; ⑤ false"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-075"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: x=60°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-075"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: ②,④"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "HOLD",
+        "evidence": "R2 sidecar holds q4 for MULTI_L4, but M3-RPM-075 and 076 both resolve to PT_CIRCLE_ANGLE_RELATIONS / TPL_CIRCLE_ANGLE_CENTER_ARC.",
+        "holdEvidence": {
+          "reason": "META_NULL_BUT_RESOLVABLE_STALE_HOLD",
+          "observedEvidence": "R2 sidecar holds q4 for MULTI_L4, but M3-RPM-075 and 076 both resolve to PT_CIRCLE_ANGLE_RELATIONS / TPL_CIRCLE_ANGLE_CENTER_ARC.",
+          "unresolvedPoint": "META_NULL_BUT_RESOLVABLE_STALE_HOLD",
+          "nextRequiredEvidenceOrCapability": "Repair q4 Meta sidecar only; rebind evidence.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
+        }
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 80°,100°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-077"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "HOLD",
+        "evidence": "Two diagrams require four angle outputs, while content names only one x,y pair; choices encode two pairs with '/'.",
+        "holdEvidence": {
+          "reason": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
+          "observedEvidence": "Two diagrams require four angle outputs, while content names only one x,y pair; choices encode two pairs with '/'.",
+          "unresolvedPoint": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
+          "nextRequiredEvidenceOrCapability": "Restore official two-diagram wording/arity.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
+        }
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 110°,80° / 95°,60°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-077"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 55°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-077"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 70°,35°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-080"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: ① false"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-079"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "HOLD",
+        "evidence": "Two diagrams and ordered-pair choices, but content asks singular x; solution computes 120° and 60°.",
+        "holdEvidence": {
+          "reason": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
+          "observedEvidence": "Two diagrams and ordered-pair choices, but content asks singular x; solution computes 120° and 60°.",
+          "unresolvedPoint": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
+          "nextRequiredEvidenceOrCapability": "Restore official plural/ordered wording.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
+        }
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 120°,60°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-079"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 75°; ⑤ false"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-079"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 35°+20°=55°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-079"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: mode 95; ③"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-081"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: x=7, median6.5"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-087"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: a=7,b=12"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-087"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 0"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-083"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 1"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: x=10, variance5"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "HOLD",
+        "evidence": "After x=10, solution asserts squared-deviation sum=40 without the deviation list or square-sum line.",
+        "holdEvidence": {
+          "reason": "SOLUTION_REPRODUCIBILITY_DECISIVE_CALC_OMITTED",
+          "observedEvidence": "After x=10, solution asserts squared-deviation sum=40 without the deviation list or square-sum line.",
+          "unresolvedPoint": "SOLUTION_REPRODUCIBILITY_DECISIVE_CALC_OMITTED",
+          "nextRequiredEvidenceOrCapability": "Add only the missing decisive calculation line.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
+        }
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-084"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: sqrt2"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-085"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: no correlation"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-092"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 20%"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-088"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 180°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-077"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: x=y=28°"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Linked solution SVG checked physically."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-079"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Direct source image/content/choices inspected."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: 15"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-087"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 3"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "HOLD",
+        "evidence": "Stem says six students but linked source visual shows five deviations (-3,1,5,-3,1) with no blank/variable marker.",
+        "holdEvidence": {
+          "reason": "SOURCE_VISUAL_CARDINALITY_AMBIGUITY",
+          "observedEvidence": "Stem says six students but linked source visual shows five deviations (-3,1,5,-3,1) with no blank/variable marker.",
+          "unresolvedPoint": "SOURCE_VISUAL_CARDINALITY_AMBIGUITY",
+          "nextRequiredEvidenceOrCapability": "Make the intentionally missing sixth deviation explicit from official source.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
+        }
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent result: d=-1,var=23/3,sd=sqrt69/3"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution agrees with independent result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Method and decisive relation are student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "M3 or lower prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM checked: M3-RPM-084"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh check supports bucket 2"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "No doubled runtime TeX defect observed."
+      }
+    }
+  ],
+  "visualRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q1-solution.svg",
+      "assetSha256": "sha256:300a33c51b17d69e458159e82b0927f6f2331bcbdce0989ba22b9085cab3a180",
+      "expectedFacts": [
+        "two circle diagrams; 150°,30°"
+      ],
+      "observedFacts": [
+        "two circle diagrams; 150°,30°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "two circle diagrams; 150°,30°",
+          "observed": "two circle diagrams; 150°,30°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q2-solution.svg",
+      "assetSha256": "sha256:e3a109b413b732d11a712266733c4d37640fcfd5b3f70818a99bdf567f6a2c7a",
+      "expectedFacts": [
+        "B,C,D,E,A,O topology; x=25°"
+      ],
+      "observedFacts": [
+        "B,C,D,E,A,O topology; x=25°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "B,C,D,E,A,O topology; x=25°",
+          "observed": "B,C,D,E,A,O topology; x=25°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q3-solution.svg",
+      "assetSha256": "sha256:30038ab7d9b2f511a1d9b03e8081867ea288b2e02de3cc64bfaff16def4d8008",
+      "expectedFacts": [
+        "inscribed ABC; x=60°"
+      ],
+      "observedFacts": [
+        "inscribed ABC; x=60°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "inscribed ABC; x=60°",
+          "observed": "inscribed ABC; x=60°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q4-solution.svg",
+      "assetSha256": "sha256:181c4897b930ff90cee7a079f7802e1d0ec7ee1c54e4bd16bae85cebc4a8b616",
+      "expectedFacts": [
+        "semicircle AB; A-D-E and B-C-E collinear; DOC=46°"
+      ],
+      "observedFacts": [
+        "semicircle AB; A-D-E and B-C-E collinear; DOC=46°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "semicircle AB; A-D-E and B-C-E collinear; DOC=46°",
+          "observed": "semicircle AB; A-D-E and B-C-E collinear; DOC=46°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q5-solution.svg",
+      "assetSha256": "sha256:f27920ed4c18eb73b2b8abb49d54213d482b94c5e8c1d650e43cd8bed46d6037",
+      "expectedFacts": [
+        "cyclic ABCD; x=80°,y=100°"
+      ],
+      "observedFacts": [
+        "cyclic ABCD; x=80°,y=100°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "cyclic ABCD; x=80°,y=100°",
+          "observed": "cyclic ABCD; x=80°,y=100°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q6-solution.svg",
+      "assetSha256": "sha256:a7860115453dc557df16069e8bca59b5a6ef177d5eb5b6b84017778a0510f845",
+      "expectedFacts": [
+        "two cyclic figures; 110°,80° / 95°,60°"
+      ],
+      "observedFacts": [
+        "two cyclic figures; 110°,80° / 95°,60°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "two cyclic figures; 110°,80° / 95°,60°",
+          "observed": "two cyclic figures; 110°,80° / 95°,60°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q7-solution.svg",
+      "assetSha256": "sha256:321b4c064bdfb9dbc80d7d387ad9d2a8e7d60fa818a3bbce2ea8c40516633297",
+      "expectedFacts": [
+        "cyclic ABCD with exterior F,E; x=55°"
+      ],
+      "observedFacts": [
+        "cyclic ABCD with exterior F,E; x=55°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "cyclic ABCD with exterior F,E; x=55°",
+          "observed": "cyclic ABCD with exterior F,E; x=55°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q8-solution.svg",
+      "assetSha256": "sha256:7a0e3394b7450e2e1e69070ea82f1548b8626e82e5380ca3e8c8192335088f5e",
+      "expectedFacts": [
+        "pentagon+O; central70°, inscribed35°"
+      ],
+      "observedFacts": [
+        "pentagon+O; central70°, inscribed35°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "pentagon+O; central70°, inscribed35°",
+          "observed": "pentagon+O; central70°, inscribed35°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q9-solution.svg",
+      "assetSha256": "sha256:237c2ff529ade666b055f71d4b06b940d69ce8eb8ed1b64763bbe1cf255f5835",
+      "expectedFacts": [
+        "diameter/tangent right-angle topology"
+      ],
+      "observedFacts": [
+        "diameter/tangent right-angle topology"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "diameter/tangent right-angle topology",
+          "observed": "diameter/tangent right-angle topology",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q10-solution.svg",
+      "assetSha256": "sha256:8e7f2313ade3981f95c97a59f331f4edcb5b8de6f130164723b5597e91411ada",
+      "expectedFacts": [
+        "two tangent-chord figures; x=120°,60°"
+      ],
+      "observedFacts": [
+        "two tangent-chord figures; x=120°,60°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "two tangent-chord figures; x=120°,60°",
+          "observed": "two tangent-chord figures; x=120°,60°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q11-solution.svg",
+      "assetSha256": "sha256:5bef78597fd530d064896b01a96610c3bfa0007833ce8881938c461d88263994",
+      "expectedFacts": [
+        "P-A-B,T topology; x=75°"
+      ],
+      "observedFacts": [
+        "P-A-B,T topology; x=75°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "P-A-B,T topology; x=75°",
+          "observed": "P-A-B,T topology; x=75°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q12-solution.svg",
+      "assetSha256": "sha256:27c08d7c3219f757b3416460c08e762de6a8b923496ccfe777cba01ebdffb101",
+      "expectedFacts": [
+        "tangent+diameter+secant; x=35°,y=20°"
+      ],
+      "observedFacts": [
+        "tangent+diameter+secant; x=35°,y=20°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "tangent+diameter+secant; x=35°,y=20°",
+          "observed": "tangent+diameter+secant; x=35°,y=20°",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q21-solution.svg",
+      "assetSha256": "sha256:f075305ea3247ef63455671329760056a5e7df286eccad384583ccd729579666",
+      "expectedFacts": [
+        "cyclic ABCD+O opposite-angle proof"
+      ],
+      "observedFacts": [
+        "cyclic ABCD+O opposite-angle proof"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "cyclic ABCD+O opposite-angle proof",
+          "observed": "cyclic ABCD+O opposite-angle proof",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "assetPath": "assets/images/23_순여중_2학기_기말_중3_기출/q22-solution.svg",
+      "assetSha256": "sha256:35680275349037293cc698d22a29a7e43a67e9c7ea76255b34c0459b1f62c470",
+      "expectedFacts": [
+        "tangent PT+diameter BC; x=y=28°"
+      ],
+      "observedFacts": [
+        "tangent PT+diameter BC; x=y=28°"
+      ],
+      "checks": [
+        {
+          "method": "TOPOLOGY_COMPUTE",
+          "predicate": "decisive labeled geometry matches solution relation",
+          "expected": "tangent PT+diameter BC; x=y=28°",
+          "observed": "tangent PT+diameter BC; x=y=28°",
+          "result": "PASS"
+        }
+      ]
+    }
+  ],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "center/inscribed-angle",
+      "decisiveStep": "150°,30°",
+      "rpmDisposition": "M3-RPM-075",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-075",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "center subtraction then inscribed",
+      "decisiveStep": "x=25°; ⑤ false",
+      "rpmDisposition": "M3-RPM-075",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-075",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "arc ratio",
+      "decisiveStep": "x=60°",
+      "rpmDisposition": "M3-RPM-075",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-075",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 4,
+      "result": "HOLD",
+      "primaryMethod": "semicircle + center/inscribed",
+      "decisiveStep": "②,④",
+      "rpmDisposition": "M3-RPM-075/076",
+      "projectionDisposition": "STALE_HOLD_REQUIRES_REPAIR",
+      "lookupRefs": [
+        "M3-RPM-075",
+        "M3-RPM-076",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "nullReason": "Pre-publish meta-only baseline plus stale q4 sidecar HOLD.",
+      "holdEvidence": {
+        "reason": "META_NULL_BUT_RESOLVABLE_STALE_HOLD",
+        "observedEvidence": "075/076 converge to same ACTIVE PT/TPL.",
+        "unresolvedPoint": "q4 stale Meta HOLD",
+        "nextRequiredEvidenceOrCapability": "Codex q4 Meta repair then independent recheck",
+        "repairAttempted": false,
+        "authorityLookupAttempted": true,
+        "whyDeterministicClosureImpossible": "R3 cannot mutate Meta."
+      }
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "triangle then cyclic",
+      "decisiveStep": "80°,100°",
+      "rpmDisposition": "M3-RPM-077",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-077",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "two cyclic diagrams",
+      "decisiveStep": "110°,80° / 95°,60°",
+      "rpmDisposition": "M3-RPM-077",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-077",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "external intersections",
+      "decisiveStep": "55°",
+      "rpmDisposition": "M3-RPM-077",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-077",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "arc reconstruction",
+      "decisiveStep": "70°,35°",
+      "rpmDisposition": "M3-RPM-080",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-080",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "tangent-chord+diameter",
+      "decisiveStep": "① false",
+      "rpmDisposition": "M3-RPM-079",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-079",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "two tangent-chord diagrams",
+      "decisiveStep": "120°,60°",
+      "rpmDisposition": "M3-RPM-079",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-079",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "isosceles+tangent-chord",
+      "decisiveStep": "75°; ⑤ false",
+      "rpmDisposition": "M3-RPM-079",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-079",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "tangent-chord+diameter",
+      "decisiveStep": "35°+20°=55°",
+      "rpmDisposition": "M3-RPM-079",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-079",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "representative values",
+      "decisiveStep": "mode 95; ③",
+      "rpmDisposition": "M3-RPM-081",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-081",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "mode then median",
+      "decisiveStep": "x=7, median6.5",
+      "rpmDisposition": "M3-RPM-087",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-087",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "mean+median constraints",
+      "decisiveStep": "a=7,b=12",
+      "rpmDisposition": "M3-RPM-087",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-087",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "deviation sum",
+      "decisiveStep": "0",
+      "rpmDisposition": "M3-RPM-083",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-083",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "mean then variance",
+      "decisiveStep": "x=10, variance5",
+      "rpmDisposition": "M3-RPM-084",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-084",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "standard deviation",
+      "decisiveStep": "sqrt2",
+      "rpmDisposition": "M3-RPM-085",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-085",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "scatter after removals",
+      "decisiveStep": "no correlation",
+      "rpmDisposition": "M3-RPM-092",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-092",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "scatter count",
+      "decisiveStep": "20%",
+      "rpmDisposition": "M3-RPM-088",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-088",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "cyclic opposite-angle proof",
+      "decisiveStep": "180°",
+      "rpmDisposition": "M3-RPM-077",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-077",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "tangent-chord+diameter",
+      "decisiveStep": "x=y=28°",
+      "rpmDisposition": "M3-RPM-079",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
+      "lookupRefs": [
+        "M3-RPM-079",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "nullReason": "MAIN_PRESENT_META_ONLY sidecar not yet materialized into exam JS."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "mode+mean to median",
+      "decisiveStep": "15",
+      "rpmDisposition": "M3-RPM-087",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-087",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "missing deviation to variance",
+      "decisiveStep": "d=-1,var=23/3,sd=sqrt69/3",
+      "rpmDisposition": "M3-RPM-084",
+      "projectionDisposition": "RPM_ONLY_UNMATERIALIZED",
+      "lookupRefs": [
+        "M3-RPM-084",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY; no safe ACTIVE PT/TPL mapping."
+    }
+  ],
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 14,
+    "visualEvidenceRows": 14,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 5
+  },
+  "disposition": "R3_FAIL_DEFERRED",
+  "failedQids": [
+    4,
+    6,
+    10,
+    17,
+    24
+  ]
+}
