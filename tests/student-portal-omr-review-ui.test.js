@@ -44,6 +44,41 @@ assert(
   'student portal OMR cards should expose exam, answer, and solution review actions'
 );
 
+const reviewActionsHelper = studentPortal.match(/function renderOmrReviewActions\(exam\) \{[\s\S]*?\n    \}/);
+const pdfActionHelper = studentPortal.match(/function renderOmrPdfAction\(exam\) \{[\s\S]*?\n    \}/);
+assert(reviewActionsHelper, 'review action renderer should exist');
+assert(pdfActionHelper, 'PDF action renderer should exist');
+const actionContext = {
+  String,
+  escapeHtml: value => String(value),
+  isOmrReviewAvailable: () => true,
+  buildOmrReviewUrl: (_exam, mode) => `/review?mode=${mode}`,
+};
+vm.createContext(actionContext);
+vm.runInContext(reviewActionsHelper[0] + '\n' + pdfActionHelper[0], actionContext, {
+  filename: 'student-portal-review-actions.js'
+});
+const reviewOnlyExam = {
+  assignment_id: 'cancelled-assignment',
+  is_review_only: true,
+  pdf_ready: true,
+  pdf_status: 'ready',
+};
+assert.strictEqual(
+  actionContext.renderOmrPdfAction(reviewOnlyExam),
+  '',
+  'review-only assignments must not expose a PDF action rejected by the student PDF endpoint'
+);
+const reviewOnlyActions = actionContext.renderOmrReviewActions(reviewOnlyExam);
+for (const label of ['시험지 보기', '정답 보기', '해설 보기']) {
+  assert(reviewOnlyActions.includes(label), `review-only assignments must retain ${label}`);
+}
+assert.match(
+  actionContext.renderOmrPdfAction({ assignment_id: 'active-assignment', pdf_ready: true, pdf_status: 'ready' }),
+  /PDF 다운로드/,
+  'active assignments should retain the existing PDF download action'
+);
+
 assert(
   studentPortal.includes("if (!archiveFile.startsWith('MIXED:')) return true;") &&
     studentPortal.includes('mixed_payload_json') &&
