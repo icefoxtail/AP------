@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CALIBRATION_PREFLIGHT_v1",
+  "stage": "R1",
+  "examPath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+  "reviewAttemptId": "R1:m3/2final/22-sinheung:6c290d45af848b6127b4cd68555cabfa1011613c:1",
+  "inputArtifactGitBlob": "6c290d45af848b6127b4cd68555cabfa1011613c",
+  "validationExecutor": "GITHUB_ACTIONS",
+  "sampleReadBeforeTargetDetail": true,
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:7c3cfb3950fff60017f6d6b882984afa905ab4723ea516abc92e07f5c57f4961",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:605a0a0b9b7cf60e0ef1d9e0f5294990b949f33b8152f85a96330bf55dbb6d95",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "내분점→중점→거리 계산을 학생이 재현할 수 있게 중간식을 분리한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:c16f0cdfa2bc08b64937fca70f044f31195e5c08412b20b7d9a182d22c8f1ae4",
+        "solutionExcerpt": "$A\\subset B$이고 $B\\subset A$이므로",
+        "observation": "집합 상등 조건을 먼저 고정하고 필요한 원소 비교를 순서대로 전개한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:c3a4988bc396f3873498f46ebc52a72116d49764dc34e36db9be811a22a21b9a",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "기본 문항도 공식 적용의 입력과 계산을 생략하지 않아 학생 재현성을 확보한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:b6c70080d1ab0c20e147ba06dc4ae01ff8212f18ba78bc9a4b57f47ecb393cdb",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$",
+        "observation": "ㄱ/ㄴ/ㄷ/ㄹ 판단을 독립 block으로 분리하고 반례까지 명시한다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:4a7e6718bbd2b530a31fbba1e3ee0a31dec12b09988955ad7b1018df6daca4bf",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
+  }
+}
