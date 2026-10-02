@@ -5,7 +5,7 @@
   "canonicalOrdinal": 62,
   "examFile": "23_순천여중_2학기_기말_중3_기출.js",
   "stage": "CREATE",
-  "disposition": "INFRA_RETRY_DEBT",
+  "disposition": "RESOLVED_BY_ACTUAL_NODE_GATE",
   "observedAtKST": "2026-10-02T10:07:00+09:00",
   "latestMainSha": "fc699d27122ea255a048874bb624fabbd95c4c34",
   "latestMainExamBlobSha": "9b8c6081ad591dd4a708d9d55ba383b44eb55629",
@@ -36,12 +36,21 @@
     "require actual validator ok=true",
     "write durable CREATE_DONE* receipt with finalArtifactSha and validator receipt SHA"
   ],
-  "createDoneClaimed": false,
+  "createDoneClaimed": true,
   "examLevelHoldCreated": false,
   "mainMutation": 0,
   "rotation": {
     "monopolizeQueue": false,
     "nextKnownIncompleteOrdinal": 65,
     "nextSelectionMustRescanPhysicalGit": true
-  }
+  },
+  "resolved": true,
+  "resolvedBy": {
+    "workflowRunId": 36950087918,
+    "workflowJobId": 110660893800,
+    "calibrationPreflight": "PASS",
+    "reviewEvidenceGate": "PASS",
+    "validatorReceiptPath": "archive/data/r2e-intake/m3/23_순천여중_2학기_기말_중3_기출.create.meta-v2.validator.json"
+  },
+  "nextOwner": "M3_REVIEW1_GLOBAL"
 }
