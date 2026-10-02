@@ -8,8 +8,8 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 65799 bytes | sha256 6e6bc5636ec2fbbf965dd6d1d6a50dde6b08e2b3c710ba5d948fbe4181f60e4a
-- 02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md | 14316 bytes | sha256 ecf0b7d3a6cde072e6cf0c46e1839e829badec739f96aa2191b482a72559dbf4
+- 00_RULES_INDEX.md | 66949 bytes | sha256 0a48a62551e3ca800d93f8f27ae5b3c3b046fee65d8e29c9850f3636f0510fa6
+- 02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md | 18900 bytes | sha256 772592849ba7e67131206d097612d7b72b4255ea6048950242306f89cf42c0e7
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 7541 bytes | sha256 51676f7c508240880da0060d148e021ca6c669dab251118b6fb6cdf46b5e7e9c
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 11027 bytes | sha256 db8a8119c12bffac5331d7864b7aa136514bc97736becc45f5f1caa0e9c18463
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
