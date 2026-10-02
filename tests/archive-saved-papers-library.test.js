@@ -242,3 +242,80 @@ test("library display metadata never replaces the immutable output title", async
     if (previousLocation === undefined) delete global.location; else global.location = previousLocation;
   }
 });
+
+test("Saved Paper library starts immutable revision Drafts and retries exact copies with one idempotency ID", async () => {
+  const previous = {
+    window: global.window,
+    location: global.location,
+    localStorage: global.localStorage,
+    history: global.history,
+    document: global.document,
+  };
+  const sourceId = "00000000-0000-4000-8000-000000000041";
+  const copiedId = "00000000-0000-4000-8000-000000000042";
+  const saved = paper(sourceId, "frozen output title");
+  saved.snapshot_hash = "a".repeat(64);
+  const copied = { ...saved, id: copiedId, library_display_name: "frozen output title (복사본)" };
+  const local = storage();
+  const requests = [];
+  let copyPosts = 0;
+  global.localStorage = local;
+  global.location = new URL("https://archive.test/archive/workspace.html?view=saved");
+  global.history = { pushState(_state, _title, url) { global.location = new URL(url, global.location); } };
+  global.document = {
+    createElement() {
+      return { className: "", textContent: "", setAttribute() {}, remove() {} };
+    },
+  };
+  global.window = {
+    localStorage: local,
+    crypto: { randomUUID: () => "00000000-0000-4000-8000-000000000043" },
+    Archive2Output: outputWithCapture(),
+    Archive2Api: {
+      async request(route, body, method) {
+        requests.push({ route, body, method });
+        if (route === "/archive-saved-papers/" + sourceId) return { paper: saved };
+        if (route === "/archive-saved-papers/" + copiedId) return { paper: copied };
+        if (route === "/archive-saved-papers/" + sourceId + "/copy" && method === "POST") {
+          copyPosts++;
+          if (copyPosts === 1) throw new Error("reply lost after commit");
+          return { success: true, saved: true, papers: [{ id: copiedId }] };
+        }
+        throw new Error("unexpected library API request: " + route);
+      },
+    },
+  };
+  try {
+    const host = { innerHTML: "", prepend() {} };
+    await library.render(host, sourceId);
+    assert.match(host.innerHTML, /수정본 만들기/);
+    assert.match(host.innerHTML, /edit_saved_paper=/);
+    assert.match(host.innerHTML, /정확히 복사/);
+    assert.match(host.innerHTML, /frozen output title/);
+    assert.equal(saved.snapshot.meta.title, "frozen output title");
+
+    const copyButton = { dataset: { libraryAction: "copy" } };
+    const click = () => host.onclick({
+      target: { closest: () => copyButton },
+      preventDefault() {},
+      stopPropagation() {},
+    });
+    await click();
+    assert.equal(copyPosts, 1);
+    const firstCopyBody = requests.findLast(request => request.method === "POST").body;
+    await click();
+    const copyBodies = requests.filter(request => request.method === "POST").map(request => request.body);
+    assert.equal(copyPosts, 2);
+    assert.equal(copyBodies[1].save_batch_id, firstCopyBody.save_batch_id);
+    assert.equal(copyBodies[1].expected_snapshot_hash, saved.snapshot_hash);
+    assert.deepEqual(copyBodies[1], firstCopyBody);
+    assert.match(host.innerHTML, /frozen output title \(복사본\)/);
+    assert.equal(local.getItem("archive2.saved-paper-copy-pending.v1"), null);
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.localStorage === undefined) delete global.localStorage; else global.localStorage = previous.localStorage;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.document === undefined) delete global.document; else global.document = previous.document;
+  }
+});

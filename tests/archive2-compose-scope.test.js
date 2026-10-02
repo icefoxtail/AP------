@@ -53,7 +53,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, saveWorkSignature, savePapers, findExams, renderFind, pool};
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, findExams, renderFind, pool};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -459,11 +459,11 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-canonical.js', '20261001-canonical-loadset-1'],
     ['archive2-core.js', '20261001-h23-compose-closure-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
-    ['archive2-workspace.js', '20261002-paper-lifecycle-2'],
+    ['archive2-workspace.js', '20261002-paper-lifecycle-3'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
-  assert.match(html, /archive2-library\.js\?v=20261002-paper-lifecycle-2/);
+  assert.match(html, /archive2-library\.js\?v=20261002-paper-lifecycle-3/);
   assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
 });
 
@@ -849,4 +849,103 @@ test('unknown save with no committed batch retries the identical request identit
   assert.equal(postBodies.length, 2);
   assert.equal(postBodies[1].save_batch_id, originalBatchId);
   assert.deepEqual(postBodies[1], postBodies[0]);
+});
+
+test('Saved Paper revision Draft preserves the immutable source snapshot and lineage parent', async () => {
+  const { w, ctx } = harness();
+  const record = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const uid = record.questionUid;
+  const pathKey = core.pathKey(record, 4);
+  const frozenQuestion = {
+    questionUid: uid,
+    sourceFingerprint: record.sourceFingerprint,
+    sourceArchiveFile: record.sourceFile,
+    sourceOrdinal: record.sourceOrdinal,
+    sourceQuestionNo: record.sourceQuestionNo,
+    content: '<p>frozen Saved Paper bytes</p>',
+    solution: '<p>frozen solution bytes</p>',
+    image: 'data:image/png;base64,Zm9vemVu',
+  };
+  const paper = {
+    id: '00000000-0000-4000-8000-000000000321',
+    title: 'immutable source title',
+    snapshot_hash: 'a'.repeat(64),
+    snapshot: {
+      questions: [frozenQuestion],
+      meta: {
+        title: 'immutable source title',
+        questionUids: [uid],
+        printHeaderOptions: { title: 'immutable source title', subtitle: 'saved subtitle' },
+        qpp: 6,
+        includeQr: true,
+      },
+      selectionFilters: {
+        grade: record.effectiveBrowseGrade,
+        primaryPaths: [pathKey],
+        scopeQuestionUids: [uid],
+        sourceFiles: [record.sourceFile],
+        difficultyBuckets: [],
+      },
+    },
+  };
+  const oldDraftId = w.state.draftId;
+  w.applySavedPaperRevision(paper);
+  assert.notEqual(w.state.draftId, oldDraftId);
+  assert.equal(w.state.derivationSource.parentKind, 'SAVED_PAPER');
+  assert.equal(w.state.derivationSource.parentId, paper.id);
+  assert.equal(w.state.derivationSource.parentSnapshotHash, paper.snapshot_hash);
+  assert.equal(w.state.derivationSource.derivationType, 'REVISION');
+  assert.deepEqual(plain(w.state.selected.map(row => row.questionUid)), [uid]);
+  assert.equal(w.state.saveBatchId, '');
+  assert.equal(w.state.qpp, 6);
+  assert.equal(w.state.includeQr, true);
+  const persistedDraft = plain(w.draft());
+  assert.equal(persistedDraft.derivationSource.parentId, paper.id);
+  assert.equal(Object.hasOwn(persistedDraft, 'derivedBaseQuestions'), false,
+    'large immutable source payload stays server-authoritative instead of entering local Draft storage');
+  const prepared = await w.prepare();
+  assert.equal(prepared[0].questions[0].content, frozenQuestion.content);
+  assert.equal(prepared[0].questions[0].solution, frozenQuestion.solution);
+  assert.equal(prepared[0].questions[0].image, frozenQuestion.image);
+  assert.match(w.renderCompose(), /원본 저장 시험지의 고정된 범위/);
+
+  const changedSource = structuredClone(paper);
+  changedSource.snapshot.questions[0].sourceFingerprint = 'changed-source-fingerprint';
+  assert.throws(() => w.applySavedPaperRevision(changedSource), /원본 문항이 변경되었습니다/);
+
+  ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
+  ctx.APMATH_API_BASE = "https://archive.test/api";
+  let savedPayload = null;
+  ctx.fetch = async (url, init = {}) => {
+    assert.equal(new URL(String(url)).pathname, "/api/archive-saved-papers");
+    assert.equal(init.method, "POST");
+    savedPayload = JSON.parse(init.body);
+    return { ok: true, status: 200, json: async () => ({
+      success: true,
+      saved: true,
+      papers: [{ id: "00000000-0000-4000-8000-000000000322" }],
+    }) };
+  };
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "SAVED");
+  assert.equal(savedPayload.papers[0].lineage.parent_kind, "SAVED_PAPER");
+  assert.equal(savedPayload.papers[0].lineage.parent_id, paper.id);
+  assert.equal(savedPayload.papers[0].lineage.parent_snapshot_hash, paper.snapshot_hash);
+  assert.equal(savedPayload.papers[0].lineage.derivation_type, "REVISION");
+  assert.equal(savedPayload.papers[0].questions[0].content, frozenQuestion.content);
+
+  w.applyDraft(persistedDraft);
+  assert.equal(w.state.derivationSource.parentId, paper.id);
+  assert.equal(w.state.derivedBaseQuestions, null, "Draft restoration keeps only the parent identity locally");
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    assert.equal(parsed.pathname, "/api/archive-saved-papers/" + paper.id);
+    assert.equal(init.method, "GET");
+    return { ok: true, status: 200, json: async () => ({ success: true, paper }) };
+  };
+  const restoredPrepared = await w.prepare();
+  assert.equal(restoredPrepared[0].questions[0].content, frozenQuestion.content,
+    "Draft reopen reads the immutable parent snapshot instead of rebuilding from current source files");
 });

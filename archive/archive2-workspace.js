@@ -152,6 +152,7 @@
     count: 10,
     buckets: [],
     difficultyFilterVersion: "optional-v1",
+    includeExtended: false,
     custom: {},
     selected: [],
     pins: [],
@@ -200,9 +201,13 @@
     saveError: "",
     saveResultSignature: "",
     saveResultState: "",
+    derivationSource: null,
+    derivedBaseQuestions: null,
+    editSavedPaperId: "",
   };
   let autosaveTimer,
     previewTimer,
+    derivedBaseLoad = null,
     previewOutputEnvelope = null,
     candidateRecords = [],
     replacementIndex = -1,
@@ -269,6 +274,7 @@
       "count",
       "buckets",
       "difficultyFilterVersion",
+      "includeExtended",
       "custom",
       "seed",
       "rows",
@@ -295,6 +301,7 @@
       "saveError",
       "saveResultSignature",
       "saveResultState",
+      "derivationSource",
     ];
     return {
       schemaVersion: C.VERSION,
@@ -448,6 +455,17 @@
     );
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
+    state.derivationSource = data.derivationSource || null;
+    state.includeExtended = data.includeExtended === true;
+    state.derivedBaseQuestions = null;
+    derivedBaseLoad = null;
+    if (state.derivationSource && (
+      state.derivationSource.parentKind !== "SAVED_PAPER" ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(String(state.derivationSource.parentId || "")) ||
+      !/^[0-9a-f]{64}$/i.test(String(state.derivationSource.parentSnapshotHash || "")) ||
+      !["REVISION", "FORK"].includes(state.derivationSource.derivationType) ||
+      (state.derivationSource.parentDisplayName != null && typeof state.derivationSource.parentDisplayName !== "string")
+    )) throw new Error("저장 시험지 계보 정보를 확인할 수 없습니다.");
     if (data.saveResultSignature === undefined) {
       state.saveBatchId = "";
       state.saveSignature = "";
@@ -506,6 +524,138 @@
       data.indexVersion !== state.catalog.indexVersion,
     );
     if (state.studentIds.length) refreshHistory();
+  }
+  function validateSavedPaperRevision(paper) {
+    const snapshot = paper?.snapshot;
+    if (!paper?.id || !/^[0-9a-f]{64}$/i.test(String(paper.snapshot_hash || "")) ||
+        !Array.isArray(snapshot?.questions) || !snapshot.questions.length || snapshot.questions.length > 50 ||
+        !snapshot.meta || !snapshot.selectionFilters)
+      throw new Error("저장한 시험지 snapshot을 수정용 Draft로 열 수 없습니다.");
+    const questionUids = snapshot.meta.questionUids || snapshot.questions.map(question => question.questionUid);
+    if (!Array.isArray(questionUids) || questionUids.length !== snapshot.questions.length ||
+        questionUids.some((uid, index) => uid !== snapshot.questions[index]?.questionUid) ||
+        new Set(questionUids).size !== questionUids.length)
+      throw new Error("저장한 시험지 문항 순서와 identity를 확인할 수 없습니다.");
+    const records = snapshot.questions.map((question) => {
+      const record = state.byUid.get(question.questionUid);
+      const sourceFile = String(question.sourceArchiveFile || question.sourceFile || question._sourceFile || "");
+      if (!record || !question.sourceFingerprint ||
+          String(question.sourceFingerprint) !== String(record.sourceFingerprint) ||
+          sourceFile !== String(record.sourceFile || "") ||
+          Number(question.sourceOrdinal) !== Number(record.sourceOrdinal))
+        throw new Error("원본 문항이 변경되었습니다. 변경된 원본을 최신 catalog에서 묵시적으로 다시 조립하지 않습니다.");
+      return { ...record, rowId: "saved-paper-revision" };
+    });
+    const selectionFilters = snapshot.selectionFilters;
+    const paths = Array.isArray(selectionFilters.primaryPaths) && selectionFilters.primaryPaths.length
+      ? [...new Set(selectionFilters.primaryPaths.map(String))]
+      : [...new Set(records.map(record => C.pathKey(record, 4)))];
+    const scopeQuestionUids = Array.isArray(selectionFilters.scopeQuestionUids) && selectionFilters.scopeQuestionUids.length
+      ? [...new Set(selectionFilters.scopeQuestionUids.map(String))]
+      : records.map(record => record.questionUid);
+    const row = {
+      id: "saved-paper-revision",
+      label: "원본 저장 시험지 범위",
+      depth: 4,
+      count: records.length,
+      paths,
+      scopeQuestionUids,
+      difficultyBuckets: [],
+    };
+    for (const record of records)
+      if (!C.rowMatches(record, row))
+        throw new Error("저장 당시 범위와 현재 canonical namespace가 달라 수정본을 안전하게 열 수 없습니다.");
+    const filters = { ...selectionFilters };
+    delete filters.sourceFiles;
+    delete filters.primaryPaths;
+    delete filters.scopeQuestionUids;
+    delete filters.difficultyBuckets;
+    return { snapshot, records, row, filters, selectionFilters };
+  }
+  function applySavedPaperRevision(paper) {
+    const validated = validateSavedPaperRevision(paper);
+    const snapshot = validated.snapshot;
+    const title = String(snapshot.meta.title || paper.title || "저장 시험지 수정본");
+    const header = snapshot.meta.printHeaderOptions || { title };
+    state.draftId = crypto.randomUUID();
+    state.filters = validated.filters;
+    state.scopes = [];
+    state.sources = Array.isArray(validated.selectionFilters.sourceFiles)
+      ? [...validated.selectionFilters.sourceFiles]
+      : [...new Set(validated.records.map(record => record.sourceFile))];
+    state.distribution = "custom";
+    state.count = validated.records.length;
+    state.buckets = [];
+    state.includeExtended = validated.records.some(record => record.curriculumApplicability === "RPM_EXTENDED") ||
+      snapshot.meta.includeExtended === true;
+    state.custom = {};
+    state.rows = [validated.row];
+    state.selected = validated.records;
+    state.pins = [];
+    state.round = 1;
+    state.rounds = [];
+    state.sealed = false;
+    state.title = title;
+    state.header = { ...header, title: String(header.title || title) };
+    state.qpp = Number(snapshot.meta.qpp) || 4;
+    state.includeQr = snapshot.meta.includeQr === true;
+    state.indexVersion = state.catalog.indexVersion;
+    state.studentIds = [];
+    state.classId = "";
+    state.studentLabels = [];
+    state.receipts = [];
+    state.saveBatchId = "";
+    state.saveSignature = "";
+    state.savedPaperIds = [];
+    state.saveMessage = "";
+    state.saveError = "";
+    state.saveResultSignature = "";
+    state.saveResultState = "";
+    state.derivationSource = {
+      parentKind: "SAVED_PAPER",
+      parentId: paper.id,
+      parentRevision: null,
+      parentSnapshotHash: String(paper.snapshot_hash).toLowerCase(),
+      parentDisplayName: String(paper.library_display_name || paper.title || title),
+      derivationType: "REVISION",
+    };
+    state.derivedBaseQuestions = structuredClone(snapshot.questions);
+    derivedBaseLoad = null;
+    state.prepared = [];
+    state.undo = [];
+    state.previewIndex = 0;
+    state.ackWarnings = false;
+    state.view = "compose";
+    state.inspector = "summary";
+    save();
+    render();
+    status("저장 시험지에서 새 Draft를 만들었습니다. 원본은 그대로 유지되며 수정본 저장 시 계보를 기록합니다.");
+  }
+  async function openSavedPaperRevision(id) {
+    const data = await api("/archive-saved-papers/" + encodeURIComponent(id));
+    applySavedPaperRevision(data.paper);
+    state.editSavedPaperId = "";
+    history.replaceState(null, "", "workspace.html?view=compose");
+  }
+  async function ensureDerivedBaseQuestions() {
+    if (!state.derivationSource) return null;
+    if (Array.isArray(state.derivedBaseQuestions)) return state.derivedBaseQuestions;
+    if (!derivedBaseLoad) derivedBaseLoad = (async () => {
+      const data = await api("/archive-saved-papers/" + encodeURIComponent(state.derivationSource.parentId));
+      const paper = data.paper;
+      if (paper?.id !== state.derivationSource.parentId ||
+          String(paper.snapshot_hash || "").toLowerCase() !== state.derivationSource.parentSnapshotHash)
+        throw new Error("파생 Draft의 원본 snapshot identity가 일치하지 않습니다.");
+      if (!Array.isArray(paper.snapshot?.questions) || !paper.snapshot.questions.length)
+        throw new Error("파생 Draft의 원본 시험지 snapshot을 확인할 수 없습니다.");
+      return structuredClone(paper.snapshot.questions);
+    })();
+    try {
+      state.derivedBaseQuestions = await derivedBaseLoad;
+      return state.derivedBaseQuestions;
+    } finally {
+      derivedBaseLoad = null;
+    }
   }
   function invalidate() {
     if (state.receipts.length)
@@ -730,6 +880,7 @@
       header: state.header,
       qpp: state.qpp,
       includeQr: state.includeQr,
+      derivationSource: state.derivationSource,
     });
   }
   function review() {
@@ -1303,7 +1454,12 @@
     C.advancedAuthority(record) === "mf"
       ? window.ARCHIVE_META_FOUNDATION_LABELS?.templates?.[record.templateKey]?.label || record.L4
       : record.L4;
+  function renderDerivedComposition() {
+    const sourceTitle = state.derivationSource?.parentDisplayName || "저장한 시험지";
+    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>원본 저장 시험지의 고정된 범위</h2></div><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 Draft를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 Saved Paper로 저장할 수 있습니다.</p><p class="muted">변경하지 않은 문항은 기존 immutable snapshot의 내용을 그대로 사용합니다. 원본 Saved Paper는 수정되지 않습니다.</p></section>`;
+  }
   function renderComposition() {
+    if (state.derivationSource) return renderDerivedComposition();
     const selectionFilters = {
       ...state.filters,
       sourceFiles: state.sources,
@@ -1343,7 +1499,7 @@
   function renderInspector() {
     const r = state.selected.length ? review() : null;
     const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
-      <div class="summary-line"><span>선택 범위</span><strong>${selectedScopeOptions().length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
+      <div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
       ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
       ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
     const frozen = Parts.receipt(state.receipts, state.previewIndex),
@@ -1446,8 +1602,8 @@
     return `<div class="mobile-actions">${button("mobile-inspector", "출력 설정")}${button("print", "출력", `class="small" ${blocked ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
-    <div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">${state.derivationSource ? "원본 Saved Paper에서 복사한 새 Draft입니다. 원본은 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
+    <div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
@@ -1697,9 +1853,12 @@
         state.qpp,
         state.round,
         state.includeQr,
+        state.derivationSource,
       ]);
     if (state.prepared.signature === signature) return state.prepared;
     const prepared = [];
+    const derivedBaseQuestions = await ensureDerivedBaseQuestions();
+    const derivedBaseByUid = new Map((derivedBaseQuestions || []).map(question => [question.questionUid, question]));
     for (let i = 0; i < records.length; i += 50) {
       const index = i / 50,
         saved = Parts.receipt(state.receipts, index);
@@ -1729,11 +1888,21 @@
         prepared.push({ ...frozen, assignmentId: saved.id });
         continue;
       }
-      const part = await Source.restore(
-          records.slice(i, i + 50),
-          state.catalog,
-        ),
-        partSignature = JSON.stringify([
+      const partRecords = records.slice(i, i + 50);
+      const part = derivedBaseQuestions
+        ? await Promise.all(partRecords.map(async record => {
+            const frozen = derivedBaseByUid.get(record.questionUid);
+            if (frozen) {
+              const sourceFile = String(frozen.sourceArchiveFile || frozen.sourceFile || frozen._sourceFile || "");
+              if (!frozen.sourceFingerprint || String(frozen.sourceFingerprint) !== String(record.sourceFingerprint) ||
+                  sourceFile !== String(record.sourceFile || "") || Number(frozen.sourceOrdinal) !== Number(record.sourceOrdinal))
+                throw new Error("원본 문항이 변경되었습니다. 현재 catalog의 문항으로 묵시적으로 교체하지 않습니다.");
+              return structuredClone(frozen);
+            }
+            return (await Source.restore([record], state.catalog))[0];
+          }))
+        : await Source.restore(partRecords, state.catalog);
+      const partSignature = JSON.stringify([
           part.map((q) => q.questionUid),
           state.header,
           state.qpp,
@@ -1776,6 +1945,7 @@
         state.qpp,
         state.round,
         state.includeQr,
+        state.derivationSource,
       ])
     )
       throw new Error("편집 내용이 변경되었습니다. 다시 시도하세요.");
@@ -1873,6 +2043,15 @@
           part_index: paper.index,
           questions: paper.questions,
           meta: paper.meta,
+          ...(state.derivationSource ? {
+            lineage: {
+              parent_kind: state.derivationSource.parentKind,
+              parent_id: state.derivationSource.parentId,
+              parent_revision: state.derivationSource.parentRevision,
+              parent_snapshot_hash: state.derivationSource.parentSnapshotHash,
+              derivation_type: state.derivationSource.derivationType,
+            },
+          } : {}),
         })),
       };
       requestStarted = true;
@@ -2354,6 +2533,7 @@
       sources: [],
       scopes: [],
       buckets: [],
+      includeExtended: false,
       custom: {},
       pins: [],
       rows: [],
@@ -2381,8 +2561,11 @@
       saveError: "",
       saveResultSignature: "",
       saveResultState: "",
+      derivationSource: null,
+      derivedBaseQuestions: null,
       view: "compose",
     });
+    derivedBaseLoad = null;
     render();
     scheduleSave();
   }
@@ -3069,6 +3252,7 @@
       ? p.get("view")
       : "home";
     state.savedPaperId = p.get("paper_id") || "";
+    state.editSavedPaperId = p.get("edit_saved_paper") || "";
     state.find = {};
     for (const k of [
       "grade",
@@ -3134,7 +3318,11 @@
         : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`);
       const previous = drafts();
       if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
-      if (previous.length && state.view === "compose")
+      if (state.view === "compose" && state.editSavedPaperId) {
+        const sourceId = state.editSavedPaperId;
+        status("원본 Saved Paper snapshot을 확인해 새 Draft를 준비하고 있습니다.");
+        await openSavedPaperRevision(sourceId);
+      } else if (previous.length && state.view === "compose")
         showDialog(
           "이전 작업이 있습니다",
           `<p>${esc(previous[0].header?.title || previous[0].title)} · ${previous[0].selected?.length || 0}문항</p>${button("restore", "이전 작업 복원", 'data-draft="0" class="primary"')} ${button("close-dialog", "새로 시작")}`,

@@ -8,6 +8,7 @@ import {
   SAVED_PAPER_SCHEMA,
   SAVED_PAPER_LIBRARY_STATES,
   computeSavedPaperRequestHash,
+  computeSavedPaperCopyRequestHash,
   prepareSavedPaperBatch,
   readAndVerifySavedSnapshot,
   resolveSavedPaperLibraryStatus,
@@ -135,6 +136,50 @@ async function handleCreate(request, env, teacher) {
     if (!matchPrior()) fail("save_batch_id was already used for different paper content", 409);
     return privateJson({ success: true, saved: true, idempotent: true, papers: prior.map(listRow) });
   }
+  const derivations = [];
+  for (const paper of input.papers) {
+    if (paper.lineage == null) {
+      derivations.push(null);
+      continue;
+    }
+    const lineage = paper.lineage;
+    if (!lineage || typeof lineage !== "object" || Array.isArray(lineage) ||
+        Object.keys(lineage).some(key => ![
+          "parent_kind", "parent_id", "parent_revision", "parent_snapshot_hash", "derivation_type",
+        ].includes(key)))
+      fail("파생 시험지 계보 정보가 올바르지 않습니다.", 409);
+    if (lineage.derivation_type === "COPY")
+      fail("정확한 사본은 Saved Paper 복사 경로를 사용해 주세요.", 409);
+    if (!["REVISION", "FORK"].includes(lineage.derivation_type))
+      fail("invalid derivation_type", 409);
+    if (lineage.parent_kind !== "SAVED_PAPER")
+      fail("Shared/Common Paper 파생 저장은 현재 구현 범위 밖입니다.", 409);
+    if (!SAVED_PAPER_BATCH_ID.test(String(lineage.parent_id || "")))
+      fail("parent Saved Paper ID must be a UUID", 400);
+    if (lineage.parent_revision != null && lineage.parent_revision !== "")
+      fail("Saved Paper parent does not have a revision identity", 409);
+    if (!/^[0-9a-f]{64}$/i.test(String(lineage.parent_snapshot_hash || "")))
+      fail("parent snapshot hash is invalid", 400);
+    const parent = await env.DB.prepare(
+      "SELECT * FROM archive_saved_papers WHERE id=? AND owner_teacher_id=? LIMIT 1",
+    ).bind(lineage.parent_id, teacher.id).first();
+    if (!parent) fail("원본 저장 시험지를 찾을 수 없습니다.", 404);
+    const parentMetadata = await env.DB.prepare(
+      "SELECT * FROM archive_saved_paper_library_metadata WHERE saved_paper_id=? AND owner_teacher_id=? LIMIT 1",
+    ).bind(parent.id, teacher.id).first();
+    if (resolveSavedPaperLibraryStatus(parent, parentMetadata) === "TRASHED")
+      fail("휴지통 시험지를 새 파생본의 원본으로 사용할 수 없습니다.", 404);
+    if (String(parent.snapshot_hash).toLowerCase() !== String(lineage.parent_snapshot_hash).toLowerCase())
+      fail("원본 Saved Paper snapshot이 변경되었거나 일치하지 않습니다.", 409);
+    await readAndVerifySavedSnapshot(parent);
+    derivations.push({
+      parentKind: "SAVED_PAPER",
+      parentId: parent.id,
+      parentRevision: null,
+      parentSnapshotHash: parent.snapshot_hash,
+      derivationType: lineage.derivation_type,
+    });
+  }
   const prepared = await prepareSavedPaperBatch(env, input);
   if (prepared.requestHash !== requestHash) fail("save request changed during validation", 409);
 
@@ -155,6 +200,14 @@ async function handleCreate(request, env, teacher) {
       "INSERT INTO archive_saved_paper_library_metadata (saved_paper_id,owner_teacher_id,status,created_at,updated_at) " +
       "VALUES (?,?,'ACTIVE',?,?)",
     ).bind(id, teacher.id, createdAt, createdAt));
+    const lineage = derivations[paper.part_index];
+    if (lineage) statements.push(env.DB.prepare(
+      "INSERT INTO archive_saved_paper_lineage (child_saved_paper_id,parent_kind,parent_id,parent_revision,parent_snapshot_hash,derivation_type,created_at) " +
+      "VALUES (?,?,?,?,?,?,?)",
+    ).bind(
+      id, lineage.parentKind, lineage.parentId, lineage.parentRevision,
+      lineage.parentSnapshotHash, lineage.derivationType, createdAt,
+    ));
   }
   try {
     await env.DB.batch(statements);
@@ -172,6 +225,83 @@ async function handleCreate(request, env, teacher) {
   }
   const rows = await loadSavedPapersByBatch(env, teacher.id, input.save_batch_id);
   if (rows.length !== input.papers.length) fail("시험지 저장 결과를 확인하지 못했습니다.", 500);
+  return privateJson({ success: true, saved: true, idempotent: false, papers: rows.map(listRow) });
+}
+
+async function handleCopy(id, request, env, teacher) {
+  if (!SAVED_PAPER_BATCH_ID.test(id)) fail("저장한 시험지를 찾을 수 없습니다.", 404);
+  const input = await readBoundedJson(request);
+  if (!input || typeof input !== "object" || Array.isArray(input) ||
+      Object.keys(input).some(key => !["save_batch_id", "expected_snapshot_hash"].includes(key)))
+    fail("사본 요청 형식이 올바르지 않습니다.", 400);
+  const requestHash = await computeSavedPaperCopyRequestHash({
+    save_batch_id: input.save_batch_id,
+    parent_id: id,
+    parent_snapshot_hash: input.expected_snapshot_hash,
+  });
+  const prior = await loadSavedPapersByBatch(env, teacher.id, input.save_batch_id);
+  if (prior.length) {
+    const sameCopy = prior.length === 1 && Number(prior[0].part_index) === 0 &&
+      Number(prior[0].part_count) === 1 && prior[0].save_request_hash === requestHash;
+    const lineage = sameCopy ? await env.DB.prepare(
+      "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=? LIMIT 1",
+    ).bind(prior[0].id).first() : null;
+    if (!sameCopy || lineage?.parent_kind !== "SAVED_PAPER" || lineage.parent_id !== id ||
+        String(lineage.parent_snapshot_hash || "").toLowerCase() !== String(input.expected_snapshot_hash).toLowerCase() ||
+        lineage.derivation_type !== "COPY")
+      fail("save_batch_id was already used for a different operation", 409);
+    return privateJson({ success: true, saved: true, idempotent: true, papers: prior.map(listRow) });
+  }
+
+  const parent = await env.DB.prepare(
+    "SELECT * FROM archive_saved_papers WHERE id=? AND owner_teacher_id=? LIMIT 1",
+  ).bind(id, teacher.id).first();
+  if (!parent) fail("저장한 시험지를 찾을 수 없습니다.", 404);
+  const parentMetadata = await env.DB.prepare(
+    "SELECT * FROM archive_saved_paper_library_metadata WHERE saved_paper_id=? AND owner_teacher_id=? LIMIT 1",
+  ).bind(id, teacher.id).first();
+  if (resolveSavedPaperLibraryStatus(parent, parentMetadata) === "TRASHED")
+    fail("휴지통 시험지는 복사할 수 없습니다.", 404);
+  if (String(parent.snapshot_hash).toLowerCase() !== String(input.expected_snapshot_hash).toLowerCase())
+    fail("원본 Saved Paper snapshot이 변경되었거나 일치하지 않습니다.", 409);
+  await readAndVerifySavedSnapshot(parent);
+
+  const now = new Date().toISOString();
+  const idCopy = crypto.randomUUID();
+  const displayName = (parentMetadata?.display_name || parent.title || "저장한 시험지").slice(0, 140) + " (복사본)";
+  const statements = [
+    env.DB.prepare(
+      "INSERT INTO archive_saved_papers (id,owner_teacher_id,save_batch_id,part_index,part_count,title,grade,subject,question_count,snapshot_json,snapshot_hash,save_request_hash,source_index_version,schema_version,created_at) " +
+      "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+    ).bind(
+      idCopy, teacher.id, input.save_batch_id, 0, 1, parent.title, parent.grade,
+      parent.subject, parent.question_count, parent.snapshot_json, parent.snapshot_hash,
+      requestHash, parent.source_index_version, parent.schema_version, now,
+    ),
+    env.DB.prepare(
+      "INSERT INTO archive_saved_paper_library_metadata (saved_paper_id,owner_teacher_id,display_name,status,created_at,updated_at) " +
+      "VALUES (?,?,?,'ACTIVE',?,?)",
+    ).bind(idCopy, teacher.id, displayName, now, now),
+    env.DB.prepare(
+      "INSERT INTO archive_saved_paper_lineage (child_saved_paper_id,parent_kind,parent_id,parent_revision,parent_snapshot_hash,derivation_type,created_at) " +
+      "VALUES (?,'SAVED_PAPER',?,?,?,'COPY',?)",
+    ).bind(idCopy, id, null, parent.snapshot_hash, now),
+  ];
+  try {
+    await env.DB.batch(statements);
+  } catch (error) {
+    const raced = await loadSavedPapersByBatch(env, teacher.id, input.save_batch_id).catch(() => []);
+    const lineage = raced.length === 1 ? await env.DB.prepare(
+      "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=? LIMIT 1",
+    ).bind(raced[0].id).first().catch(() => null) : null;
+    if (raced.length === 1 && raced[0].save_request_hash === requestHash &&
+        lineage?.parent_kind === "SAVED_PAPER" && lineage.parent_id === id &&
+        lineage.derivation_type === "COPY")
+      return privateJson({ success: true, saved: true, idempotent: true, papers: raced.map(listRow) });
+    throw error;
+  }
+  const rows = await loadSavedPapersByBatch(env, teacher.id, input.save_batch_id);
+  if (rows.length !== 1) fail("시험지 복사 결과를 확인하지 못했습니다.", 500);
   return privateJson({ success: true, saved: true, idempotent: false, papers: rows.map(listRow) });
 }
 
@@ -360,6 +490,8 @@ export async function handleArchiveSavedPapers(request, env, teacher, path, url)
     const subresource = String(path[3] || "");
     if (id === "save-batches" && subresource && method === "GET")
       return await handleSaveBatchStatus(subresource, env, teacher);
+    if (id && subresource === "copy" && method === "POST")
+      return await handleCopy(id, request, env, teacher);
     if (id && subresource === "library" && method === "PATCH")
       return await handleLibraryUpdate(id, request, env, teacher);
     if (!id && method === "POST") return await handleCreate(request, env, teacher);

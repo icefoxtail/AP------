@@ -231,6 +231,101 @@ try {
   const directDetail = await request(`archive-saved-papers/${directId}`);
   assert.equal(directDetail.status, 200);
   const originalContentHash = directDetail.body.paper.snapshot_hash;
+  const copyBatchId = uuid();
+  const exactCopy = await request(`archive-saved-papers/${directId}/copy`, "POST", {
+    save_batch_id: copyBatchId,
+    expected_snapshot_hash: originalContentHash,
+  });
+  assert.equal(exactCopy.status, 200, JSON.stringify(exactCopy));
+  const exactCopyId = exactCopy.body.papers[0].id;
+  assert.notEqual(exactCopyId, directId);
+  const exactCopyDetail = await request(`archive-saved-papers/${exactCopyId}`);
+  assert.equal(exactCopyDetail.status, 200);
+  assert.equal(exactCopyDetail.body.paper.snapshot_hash, originalContentHash);
+  assert.equal(exactCopyDetail.body.paper.title, directDetail.body.paper.title);
+  assert.equal(exactCopyDetail.body.paper.library_display_name, directDetail.body.paper.title + " (복사본)");
+  const [parentStoredSnapshot, copiedStoredSnapshot] = await Promise.all([
+    db.prepare("SELECT snapshot_json FROM archive_saved_papers WHERE id=?").bind(directId).first(),
+    db.prepare("SELECT snapshot_json FROM archive_saved_papers WHERE id=?").bind(exactCopyId).first(),
+  ]);
+  assert.equal(copiedStoredSnapshot.snapshot_json, parentStoredSnapshot.snapshot_json,
+    "COPY reuses the verified immutable snapshot bytes exactly");
+  const exactCopyLineage = await db.prepare(
+    "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?",
+  ).bind(exactCopyId).first();
+  assert.equal(exactCopyLineage.parent_kind, "SAVED_PAPER");
+  assert.equal(exactCopyLineage.parent_id, directId);
+  assert.equal(exactCopyLineage.parent_snapshot_hash, originalContentHash);
+  assert.equal(exactCopyLineage.derivation_type, "COPY");
+  const retriedCopy = await request(`archive-saved-papers/${directId}/copy`, "POST", {
+    save_batch_id: copyBatchId,
+    expected_snapshot_hash: originalContentHash,
+  });
+  assert.equal(retriedCopy.status, 200, JSON.stringify(retriedCopy));
+  assert.equal(retriedCopy.body.papers[0].id, exactCopyId, "copy retry resolves through the same idempotency identity");
+  const changedCopyRetry = await request(`archive-saved-papers/${directId}/copy`, "POST", {
+    save_batch_id: copyBatchId,
+    expected_snapshot_hash: "f".repeat(64),
+  });
+  assert.equal(changedCopyRetry.status, 409, "a copy batch cannot be reused for a different frozen parent");
+
+  const revisionInput = structuredClone(directInput);
+  revisionInput.save_batch_id = uuid();
+  revisionInput.papers[0].lineage = {
+    parent_kind: "SAVED_PAPER",
+    parent_id: directId,
+    parent_revision: null,
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "REVISION",
+  };
+  const revisionSaved = await request("archive-saved-papers", "POST", revisionInput);
+  assert.equal(revisionSaved.status, 200, JSON.stringify(revisionSaved));
+  const revisionLineage = await db.prepare(
+    "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?",
+  ).bind(revisionSaved.body.papers[0].id).first();
+  assert.equal(revisionLineage.parent_kind, "SAVED_PAPER");
+  assert.equal(revisionLineage.parent_id, directId);
+  assert.equal(revisionLineage.parent_snapshot_hash, originalContentHash);
+  assert.equal(revisionLineage.derivation_type, "REVISION");
+  const forkInput = structuredClone(directInput);
+  forkInput.save_batch_id = uuid();
+  forkInput.papers[0].lineage = {
+    parent_kind: "SAVED_PAPER",
+    parent_id: directId,
+    parent_revision: null,
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "FORK",
+  };
+  const forkSaved = await request("archive-saved-papers", "POST", forkInput);
+  assert.equal(forkSaved.status, 200, JSON.stringify(forkSaved));
+  const forkLineage = await db.prepare(
+    "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?",
+  ).bind(forkSaved.body.papers[0].id).first();
+  assert.equal(forkLineage.derivation_type, "FORK");
+  assert.equal(forkLineage.parent_kind, "SAVED_PAPER");
+  assert.equal(forkLineage.parent_id, directId);
+  const copyThroughRevisionRoute = structuredClone(directInput);
+  copyThroughRevisionRoute.save_batch_id = uuid();
+  copyThroughRevisionRoute.papers[0].lineage = {
+    parent_kind: "SAVED_PAPER",
+    parent_id: directId,
+    parent_revision: null,
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "COPY",
+  };
+  const forbiddenCopy = await request("archive-saved-papers", "POST", copyThroughRevisionRoute);
+  assert.equal(forbiddenCopy.status, 409, "exact copies must use the snapshot-preserving copy route");
+  const forbiddenSharedRevisionInput = structuredClone(directInput);
+  forbiddenSharedRevisionInput.save_batch_id = uuid();
+  forbiddenSharedRevisionInput.papers[0].lineage = {
+    parent_kind: "SHARED_PAPER",
+    parent_id: uuid(),
+    parent_revision: "rev-1",
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "FORK",
+  };
+  const forbiddenSharedRevision = await request("archive-saved-papers", "POST", forbiddenSharedRevisionInput);
+  assert.equal(forbiddenSharedRevision.status, 409, "Shared Paper lineage writes remain outside this campaign");
   const renamed = await request("archive-saved-papers/" + directId + "/library", "PATCH", {
     display_name: "왕운중 심화반용",
   });
