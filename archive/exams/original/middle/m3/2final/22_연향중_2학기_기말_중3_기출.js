@@ -158,7 +158,7 @@ window.questionBank = [
       "$38^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 접선과 현이 이루는 각은 그 현이 만드는 원주각과 같다.\n$A,C,P$가 한 직선 위에 있으므로 삼각형 $APT$에서 $\\angle PAT=36^\\circ$이다.\n점 $T$에서의 접선 $TP$와 현 $TA$가 이루는 각은 현 $TA$가 만드는 원주각과 같다.\n주어진 $\\angle ABT=112^\\circ$가 바로 현 $AT$를 바라보는 원주각이므로 $\\angle ATP=112^\\circ$이다.\n따라서 삼각형 $APT$에서\n$x=\\angle APT=180^\\circ-36^\\circ-112^\\circ=32^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 원주각과 접선-현 정리를 이용해 삼각형 $PCT$의 각을 구한다.\n$A,C,P$가 한 직선 위이고 $\\angle CAT=36^\\circ$이므로 $\\angle PAT=144^\\circ$이다.\n$\\angle ABT=112^\\circ$는 호 $AT$를 보는 원주각이므로 이 각이 바라보는 큰 호 $AT$는 $224^\\circ$, 작은 호 $AT$는 $136^\\circ$이다.\n따라서 작은 호 $AT$를 보는 원주각 $\\angle ACT=68^\\circ$이다.\n$A,C,P$가 한 직선 위이므로 $\\angle PCT=180^\\circ-68^\\circ=112^\\circ$이다.\n점 $T$에서 접선 $TP$와 현 $TC$가 이루는 각은 현 $TC$를 보는 원주각 $\\angle CAT$와 같으므로 $\\angle PTC=36^\\circ$이다.\n따라서 삼각형 $PCT$에서\n$\\angle CPT=180^\\circ-112^\\circ-36^\\circ=32^\\circ$이다.\n$P,C,A$가 한 직선 위이므로 $\\angle APT=\\angle CPT=32^\\circ$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -627,7 +627,7 @@ window.questionBank = [
     "content": "아래의 산점도는 학생 $20$명의 수학 점수와 영어 점수를 조사하여 나타낸 것이다.",
     "choices": [],
     "answer": "$a=3$, $b=30$, $c=25$",
-    "solution": "산점도의 점을 조건별로 직접 센다.\n(1) 수학 점수와 영어 점수가 모두 $90$점 이상인 점은 $(90,90),(90,100),(100,100)$의 $3$개이므로 $a=3$이다.\n(2) 두 과목 점수의 차가 가장 큰 점은 $(30,70)$이고, 이때 수학 점수는 $30$점이므로 $b=30$이다.\n(3) 수학 점수가 영어 점수보다 낮은 점, 즉 $y>x$인 점은 $5$개이다. 전체가 $20$명이므로\n$c=\\dfrac5{20}\\times100=25$이다.\n따라서 $a=3,\\ b=30,\\ c=25$이다.",
+    "solution": "산점도의 점을 조건별로 직접 센다.\n(1) 수학 점수와 영어 점수가 모두 $90$점 이상인 점은 $(90,90),(90,100),(100,100)$의 $3$개이므로 $a=3$이다.\n(2) 두 과목 점수의 차가 가장 큰 점은 $(30,70)$이고, 이때 수학 점수는 $30$점이므로 $b=30$이다.\n(3) 수학 점수가 영어 점수보다 좋은 학생은 $x>y$인 점이다.\n해당 점은 $(50,30),(60,40),(70,50),(70,40),(90,70)$의 $5$개이다.\n전체가 $20$명이므로\n$c=\\dfrac5{20}\\times100=25$이다.\n따라서 $a=3,\\ b=30,\\ c=25$이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
