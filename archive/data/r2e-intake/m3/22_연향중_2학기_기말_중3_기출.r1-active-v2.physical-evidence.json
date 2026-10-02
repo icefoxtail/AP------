@@ -1304,6 +1304,55 @@
     "solutionMutationCount": 0,
     "visualMutationCount": 0
   },
-  "currentStage": "R1_EVIDENCE_READY_FOR_VALIDATOR",
-  "nextStage": "VALIDATE_R1"
+  "currentStage": "REVIEW1_DONE",
+  "nextStage": "READY_FOR_REVIEW2",
+  "actualValidatorReceipt": {
+    "receiptSchema": "JS_ARCHIVE_ACTUAL_VALIDATOR_RECEIPT_v1",
+    "stage": "R1",
+    "ok": true,
+    "disposition": "PASS",
+    "issues": [],
+    "evidenceGitBlobBeforeReceipt": "4410a2019d95162cac031b08290b895418c5e51e",
+    "finalArtifactSha": "a22f9830863763c7d509325b0f3be1c2bba6145a",
+    "finalArtifactSha256": "sha256:26a8d4e1e9b983fb4e453fd7454c560416b77536f1b4e84b1eef9f64878aa5ec",
+    "validatorCanonicalPath": "archive/tools/review-evidence-gate.mjs",
+    "validatorCanonicalGitBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "calibrationValidatorCanonicalPath": "archive/tools/solution-calibration-gate.mjs",
+    "calibrationValidatorCanonicalGitBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+    "validationMode": "GITHUB_ACTIONS_ACTUAL_NODE",
+    "validationBranch": "archive-validation/r1-22-yeonhyang-o67-20261002",
+    "validationHead": "94f1bced67de73dba62aff73acb34e86d5bf55db",
+    "pullRequestNumber": 142,
+    "workflowRunId": 37037857072,
+    "workflowJobId": 110940389858,
+    "targetGateObservedAt": "2026-10-02T17:03:11Z",
+    "targetGateStatus": "PASS",
+    "calibrationTargetStatus": "PASS",
+    "workflowOverallConclusion": "failure",
+    "workflowOverallFailureScope": "unrelated repository-wide baseline failures after target-scoped R1 gate PASS",
+    "reviewAttemptId": "R1:m3/2final/22-yeonhyang:359c3189a9c7319fb797b701bb5add4448504be0:1"
+  },
+  "stageReceipt": {
+    "receiptSchema": "JS_ARCHIVE_M3_REVIEW1_STAGE_RECEIPT_v2_INLINE",
+    "reviewAttemptId": "R1:m3/2final/22-yeonhyang:359c3189a9c7319fb797b701bb5add4448504be0:1",
+    "stage": "REVIEW1_DONE",
+    "next": "READY_FOR_REVIEW2",
+    "nextOwner": "R2",
+    "finalArtifactSha": "a22f9830863763c7d509325b0f3be1c2bba6145a",
+    "finalArtifactSha256": "sha256:26a8d4e1e9b983fb4e453fd7454c560416b77536f1b4e84b1eef9f64878aa5ec",
+    "validatorReceipt": "actualValidatorReceipt",
+    "itemHoldCount": 0,
+    "repairedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      19
+    ],
+    "protectedSourceMutation": 0,
+    "closedAt": "2026-10-03T02:03:13+09:00",
+    "mainMutation": 0
+  }
 }
