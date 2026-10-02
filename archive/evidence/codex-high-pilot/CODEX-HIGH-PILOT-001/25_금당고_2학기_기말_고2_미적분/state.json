@@ -5,14 +5,14 @@
   "branch": "work/high-source8-r2",
   "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
   "observedRemoteBranchHead": "5f306e74840e92ef45131c5c04abcce027ac06b4",
-  "latestOriginMain": "68a918f1e027776f6d2b5b9fefd5a66578c8287c",
+  "latestOriginMain": "f40747efb55c7018c868c5f8ed246a2a555d6b1b",
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
-  "lastDurableStage": "TARGETED_REPAIR_Q15_AND_Q12_VISUAL",
-  "currentStage": "META",
-  "nextStage": "META",
+  "lastDurableStage": "META",
+  "currentStage": "INDEPENDENT_REVIEW",
+  "nextStage": "INDEPENDENT_REVIEW",
   "artifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
-  "artifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "artifactSha256": "sha256:234028e5df4ae83639093778f506589be7141b8f8f146cf7909b478da15fd9ac",
   "denominator": 21,
   "resolvedAnswerCount": 21,
   "solutionCount": 21,
@@ -25,8 +25,8 @@
     "solutionSelfReview": "self-review-1.json; self-review-2.json; q15-post-repair-recheck.json",
     "goldenCalibration": "golden-calibration.json",
     "visual": "visual-evidence.json; q12-visual-coordinate-proof.json; q12-expected-facts.json; q12-svg-coordinate-verification.json; q12-solution-render.png; q12-visual-recheck.json",
-    "meta": null,
-    "independentReview": "independent-review.json (partial fresh math/answer check; lifecycle stage not reached)",
+    "meta": "meta-evidence.json; meta-decision-isolated-inputs.json; meta-resolver-results.json",
+    "independentReview": "independent-review.json (prior partial only); fresh current review pending",
     "release": null,
     "calibrationPreflight": "calibration-preflight-recovery.json; q15-repair-calibration-input.json; q15-repair-calibration-preflight.json",
     "sourceTruthQ15": "q15-source-truth-recheck.json; q15-audited-source-repair.json; q15-post-repair-recheck.json; q15-source-page3.png",
@@ -36,7 +36,7 @@
   "unrelatedMutationCount": 0,
   "resolvedSolutionCount": 21,
   "unfinishedSolutionQids": [],
-  "targetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "targetArtifactGitBlobSha": "867118ebe5ed81044c7a53d79a2292e3cbdbf612",
   "selfReview1Status": "PASS_AFTER_Q15_TARGETED_RECHECK",
   "repairNote": null,
   "selfReview2Status": "PASS_AFTER_Q15_TARGETED_RECHECK",
@@ -44,29 +44,7 @@
   "unfinishedQids": {
     "solution": [],
     "visual": [],
-    "meta": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21
-    ],
+    "meta": [],
     "independentReview": [
       1,
       2,
@@ -114,15 +92,9 @@
       21
     ],
     "answer": [],
-    "selfReview1": [
-      15
-    ],
-    "selfReview2": [
-      15
-    ],
-    "goldenCompare": [
-      15
-    ]
+    "selfReview1": [],
+    "selfReview2": [],
+    "goldenCompare": []
   },
   "blockedAtStage": null,
   "manualGoldenCompareStatus": "PASS_ON_21_RESOLVED_QIDS",
@@ -146,30 +118,8 @@
     }
   ],
   "commitSha": null,
-  "independentReviewStageStatus": "NOT_REACHED_BLOCKED_BEFORE_META",
-  "pendingMetaQids": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21
-  ],
+  "independentReviewStageStatus": "IN_PROGRESS_FRESH_BLIND_REVIEW",
+  "pendingMetaQids": [],
   "progressCommits": [
     {
       "stage": "ANSWER",
@@ -209,9 +159,10 @@
   "solutionSvgQids": [
     12
   ],
-  "targetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "targetArtifactSha256": "sha256:234028e5df4ae83639093778f506589be7141b8f8f146cf7909b478da15fd9ac",
   "sourceRepairQid": 15,
   "sourceRepairChange": "3xe^{x²}→3xe^x, one superscript digit deleted; choices unchanged",
   "currentQ12VisualStatus": "PASS_INDEPENDENT_RECHECK",
-  "nextStageNote": "Only q12 visual and q15 source-truth hold were targeted here; exam META and later stages remain pending."
+  "nextStageNote": "META is complete for all 21 semantic rows; projection keys not emitted when the current resolver returns unmaterialized. Await fresh independent review, then targeted repair if needed and RELEASE.",
+  "metaStatus": "META_SEMANTIC_PASS_21_21_PROJECTION_UNMATERIALIZED_21_21"
 }
