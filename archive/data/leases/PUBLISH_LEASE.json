@@ -2,26 +2,31 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "MASTER-C-PUBLISH-20261003T0539+0900",
   "owner": "MASTER-C",
-  "status": "ACTIVE",
+  "status": "CLOSED",
   "baseMainSha": "c105ea93ccc9316e75359011e498a08a9e88caaa",
   "claimedAt": "2026-10-03T05:39:00+09:00",
   "expiresAt": "2026-10-03T07:09:00+09:00",
-  "lastProgressAt": "2026-10-03T05:39:00+09:00",
+  "lastProgressAt": "2026-10-03T05:40:00+09:00",
   "expectedCompletionGate": "CURRENT_CLEAN_RELEASE_BACKLOG_SWEEP_TO_MAIN_DONE",
   "scope": "M3:CURRENT_CLEAN_RELEASE_BACKLOG",
-  "result": null,
-  "finalOriginMain": null,
+  "result": "MAIN_DONE_O32_O41",
+  "finalOriginMain": "0513cd5e69a4aecec2df5b38afc6f78a404ea2ba",
   "includedOrdinals": [
     32,
     41
   ],
   "excludedDebtOrdinals": [],
-  "publishedCommit": null,
+  "publishedCommit": "0513cd5e69a4aecec2df5b38afc6f78a404ea2ba",
   "candidateBatchCommit": "0513cd5e69a4aecec2df5b38afc6f78a404ea2ba",
   "candidateBatchBranch": "publish/m3/20261003-0526-o32-o41",
   "batchManifestBlob": "c90b9500f13442beb55b16b1f2c350c60bf28e1d",
-  "publishedExactBlobs": {},
-  "firstMissingClosureStep": "FAST_FORWARD_MAIN_TO_CANDIDATE_BATCH_OR_CREATE_AND_MERGE_PR",
-  "mainMutation": 0,
-  "closedAt": null
+  "publishedExactBlobs": {
+    "o32.exam": "3019bebdfa25af008c969c3e65a19a8ebeb0eec2",
+    "o41.exam": "b937cb9d9d54d5c17ca9ec9780e08b67476608ed",
+    "o41.metaPayload": "f2036da78875af13a4ddcd31bfee2a5d89354f3f",
+    "batchManifest": "c90b9500f13442beb55b16b1f2c350c60bf28e1d"
+  },
+  "firstMissingClosureStep": null,
+  "mainMutation": 1,
+  "closedAt": "2026-10-03T05:40:00+09:00"
 }
