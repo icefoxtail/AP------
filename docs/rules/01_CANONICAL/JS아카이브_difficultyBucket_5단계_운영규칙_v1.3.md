@@ -581,14 +581,14 @@ difficultyBucket
 
 ---
 
-# 8. Blind First-Pass
+# 8. Current-pass 재검 — legacy Blind field names
 
 최초 판정 시 다음을 숨긴다.
 
 ```text
 기존 level
 기존 difficultyBucket
-이전 reviewer verdict
+이전 reviewer verdict [visibility allowed; decision authority로 복사 금지]
 이전 difficulty 사유
 ```
 
@@ -1351,7 +1351,7 @@ legacyLevelCompatibility ∈ {NORMAL,BORDERLINE_REVIEW,BORDERLINE_ACCEPTABLE,STR
 `HOLD`는 reviewStatus에서만 허용
 불법 문자열 bucket = 0
 
-blind first-pass ledger 존재
+current-pass recheck ledger 존재 (`blind_*` field names are legacy compatible)
 compare가 first-pass freeze 이후 수행됨
 
 difficultyConfidence = low → independent recheck 또는 adjudication evidence 필요
