@@ -31,7 +31,7 @@
     "calibrationPreflight": "calibration-preflight-recovery.json; q15-repair-calibration-input.json; q15-repair-calibration-preflight.json",
     "sourceTruthQ15": "q15-source-truth-recheck.json; q15-audited-source-repair.json; q15-post-repair-recheck.json; q15-source-page3.png",
     "solution": "solution.json; q15-audited-source-repair.json; q15-post-repair-recheck.json",
-    "goldenCompare": "golden-calibration.json; q15-post-repair-recheck.json"
+    "goldenCompare": "golden-calibration.json; q15-post-repair-golden-compare.json"
   },
   "unrelatedMutationCount": 0,
   "resolvedSolutionCount": 21,
@@ -97,7 +97,7 @@
     "goldenCompare": []
   },
   "blockedAtStage": null,
-  "manualGoldenCompareStatus": "PASS_ON_21_RESOLVED_QIDS",
+  "manualGoldenCompareStatus": "PASS_ON_21_RESOLVED_QIDS_AFTER_Q15_REPAIR",
   "lastDurableCommitBeforeBlockedCloseout": "546640c52e83d1f9763da8df04267c513e007b9a",
   "authorityRefs": [
     {
@@ -154,7 +154,7 @@
     "branchSystemMutationCount": 0
   },
   "sourceTruthReviewQ15Status": "AUDITED_SOURCE_REPAIR_AND_TARGETED_RECHECK_PASS",
-  "visualStatus": "PASS_Q12_SOLUTION_VISUAL_ADDED_AND_INDEPENDENTLY_RECHECKED",
+  "visualStatus": "VISUAL_PASS_21_21_Q12_SVG_RECHECKED_Q15_VISUAL_EXEMPT",
   "solutionSvgCount": 1,
   "solutionSvgQids": [
     12
@@ -163,6 +163,6 @@
   "sourceRepairQid": 15,
   "sourceRepairChange": "3xe^{x²}→3xe^x, one superscript digit deleted; choices unchanged",
   "currentQ12VisualStatus": "PASS_INDEPENDENT_RECHECK",
-  "nextStageNote": "META is complete for all 21 semantic rows; projection keys not emitted when the current resolver returns unmaterialized. Await fresh independent review, then targeted repair if needed and RELEASE.",
+  "nextStageNote": "Current independent review in progress; after any bounded fixes and affected-scope recheck, complete RELEASE.",
   "metaStatus": "META_SEMANTIC_PASS_21_21_PROJECTION_UNMATERIALIZED_21_21"
 }

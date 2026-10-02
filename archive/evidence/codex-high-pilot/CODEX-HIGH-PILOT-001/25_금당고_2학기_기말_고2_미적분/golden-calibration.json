@@ -2,12 +2,10 @@
   "pilotId": "CODEX-HIGH-PILOT-001",
   "exam": "25_금당고_2학기_기말_고2_미적분",
   "stage": "GOLDEN_COMPARE",
-  "status": "MANUAL_SOLUTION_COMPARE_PASS_OFFICIAL_PREFLIGHT_BLOCKED",
+  "status": "MANUAL_SOLUTION_COMPARE_PASS_21_21_AFTER_Q15_REPAIR",
   "targetArtifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
-  "resolvedCount": 20,
-  "itemHoldQids": [
-    15
-  ],
+  "resolvedCount": 21,
+  "itemHoldQids": [],
   "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
   "notionLineage": "https://app.notion.com/p/3eb0e68bd69f81b58ee5e0e9ba215da1",
   "samples": [
@@ -116,7 +114,7 @@
     "explanationDensity": "Routine items concise; q19-q21 retain decisive steps.",
     "visualSemanticParity": "H2 visual sample geometry inspected from primitives; target SVG checked in VISUAL stage."
   },
-  "conclusion": "SOLUTION_CALIBRATION_PASS. Same-grade H2 refs only; one calculus and two adjacent Math II. No H1 sample; no answer or wording copied.",
+  "conclusion": "SOLUTION_CALIBRATION_PASS after exact latest-main calibration preflight recovery; all 21 resolved items compared. Q15 was added after its authorized source repair and checked against the same-grade H2 calculus reference below.",
   "solutionQualityCalibration": {
     "goldenSampleRefs": [
       {
@@ -232,5 +230,9 @@
       "NEGATIVE_SAMPLE_REF_NOT_FOUND x3",
       "BOKSEONG_FALSE_PASS_NEGATIVE_SAMPLE_REQUIRED"
     ]
-  }
+  },
+  "officialPreflightHistoricalStatus": "FAIL",
+  "officialPreflightRecovery": "calibration-preflight-recovery.json",
+  "repairPreflight": "q15-repair-calibration-preflight.json",
+  "postRepairQ15Comparison": "q15-post-repair-golden-compare.json"
 }

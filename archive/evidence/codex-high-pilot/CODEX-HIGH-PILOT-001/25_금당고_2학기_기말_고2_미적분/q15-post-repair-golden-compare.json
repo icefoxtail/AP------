@@ -1,0 +1,32 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "ordinal": 1,
+  "qid": 15,
+  "status": "MANUAL_GOLDEN_COMPARE_PASS_AFTER_SOURCE_REPAIR",
+  "targetArtifactSha256": "sha256:234028e5df4ae83639093778f506589be7141b8f8f146cf7909b478da15fd9ac",
+  "solutionSha256": "sha256:328dbcab9b8d9732d63553efa860263e6b1e0bcb80e21ef7460f711acd980e52",
+  "calibrationStatus": "SOLUTION_REPAIR_PREFLIGHT_PASS",
+  "sameGradeSubjectReferences": [
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+      "qid": 21,
+      "solutionSha256": "sha256:b3fd002e55adea3bcc3b2c6df512f920df83b0c04ee7a9e3d2c70d15a75f525f",
+      "observation": "The verified reference separates its given conditions and derivative stages; the repaired q15 solution likewise displays the quotient-derivative identity, definite integration, antiderivative evaluation, and f(1) application as distinct visible steps."
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+      "qid": 7,
+      "solutionSha256": "sha256:5e5da7e90764d505e5a0971f0da57c3f5c686cdc0074a64eb24e564051f6f829",
+      "observation": "The verified reference shows the decisive integral/series calculation explicitly. Q15 states the antiderivative and both bounds instead of hiding the integral evaluation behind “계산하면”."
+    }
+  ],
+  "axes": {
+    "studentReproducibility": "PASS",
+    "smallBoardStructure": "PASS",
+    "explanationDensity": "PASS",
+    "visualSemanticParity": "N_A_NO_SOLUTION_VISUAL_REQUIRED",
+    "visualReadability": "PASS_TEXT_ONLY"
+  },
+  "finding": "Q15 fits the calibrated H2 student-solution floor: its non-obvious quotient derivative and full bound evaluation are explicit; no answer or reference wording was copied."
+}

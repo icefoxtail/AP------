@@ -2,7 +2,7 @@
   "pilotId": "CODEX-HIGH-PILOT-001",
   "exam": "25_금당고_2학기_기말_고2_미적분",
   "stage": "VISUAL",
-  "status": "TRIAGE_COMPLETE_BUILD_BLOCKED",
+  "status": "VISUAL_PASS_21_21",
   "denominator": 21,
   "sourceVisualCount": 0,
   "sourceSolutionVisualCount": 0,
@@ -205,7 +205,10 @@
       "classification": "EXEMPT",
       "action": "NONE",
       "studentBenefit": "No diagram materially improves the algebraic derivation.",
-      "status": "ITEM_HOLD_NO_VISUAL"
+      "status": "TRIAGED",
+      "disposition": "VISUAL_EXEMPT",
+      "resolution": "PASS_AFTER_SOURCE_REPAIR",
+      "reason": "The corrected q15 item is text-only and has no source or solution diagram/graph requiring a visual asset."
     },
     {
       "qid": 16,
@@ -297,5 +300,11 @@
   "currentTargetArtifactSha256": "sha256:234028e5df4ae83639093778f506589be7141b8f8f146cf7909b478da15fd9ac",
   "currentTargetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
   "q15PostRepairRecheck": "q15-post-repair-recheck.json",
-  "currentTargetGitBlobSha": "867118ebe5ed81044c7a53d79a2292e3cbdbf612"
+  "currentTargetGitBlobSha": "867118ebe5ed81044c7a53d79a2292e3cbdbf612",
+  "openQids": [],
+  "holdQids": [],
+  "recheckedQids": [
+    12,
+    15
+  ]
 }
