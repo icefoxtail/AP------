@@ -28,7 +28,7 @@ CREATE → R1 → R2 → R3 → RELEASE QUEUE → PUBLISH → MAIN_DONE
 
 R3 FAIL 이후에는 repair → 재검으로 닫는다. Codex는 사용할 수 있지만 fresh/별도 reviewer 자체가 필수조건은 아니다.
 
-이 문서가 활성화되면 automation role/schedule/blind/recovery/publish의 단일 실행 authority가 된다.
+이 문서가 활성화되면 automation role/schedule/recheck/recovery/publish의 단일 실행 authority가 된다.
 과거 3-lane, Surge, Phase A/B, existing-slot-only, persistent-thread contamination, dormant clean-slot, 감시자/조율자 계약은 HISTORY다.
 
 ## 1. GPT 고정 12-slot topology
@@ -66,7 +66,7 @@ R3 FAIL 이후에는 repair → 재검으로 닫는다. Codex는 사용할 수 �
 - CREATE/R1/R2/R3/PUBLISH slot은 역할을 바꾸지 않는다.
 - CREATE slot을 R3로, R3 slot을 R1로 재활용하지 않는다.
 - 역할 변경이 필요하면 해당 role의 새 task/slot을 만든다.
-- 과거 대화 context가 다른 blind stage로 승계되지 않게 한다.
+- 과거 대화 context가 보여도 stage는 무효가 아니다. selector는 최신 physical receipt/HEAD/input SHA를 authority로 삼고 같은 stage에서 source/current authority 기준 재검을 수행한다.
 
 ### 1.3 AUTOMATION DISPATCH CONTRACT — recurring-capable HARD
 
@@ -105,7 +105,7 @@ temporary test의 첫 실제 run 판정은 `last_run_time`만 보지 않고 **ta
 
 이 규칙은 ACTIVE CREATE/R1/R2/R3/PUBLISH/MASTER 전체에 적용한다.
 
-- **worker self-disable 금지.** target 하나의 contamination, validator 실행 불가, write/tool failure, stale ref, claim conflict, source/capability debt, scoped HARD gate 때문에 recurring role slot 자체를 끄지 않는다.
+- **worker self-disable 금지.** target 하나의 prior-context exposure, validator 실행 불가, write/tool failure, stale ref, claim conflict, source/capability debt, scoped HARD gate 때문에 recurring role slot 자체를 끄지 않는다.
 - disable은 **사용자 명시 지시** 또는 **현재 topology authority가 role queue 종료를 명시한 경우**에만 한다. 현재 M3에서는 CREATE=69/69이므로 CREATE만 OFF이고 R1×2/R2×2/R3×2/PUBLISH×1/MASTER×3은 backlog가 있는 동안 계속 ACTIVE다.
 - 한 target을 현재 worker가 안전하게 완료할 수 없으면 그 target에 대해 exact durable handoff를 만든다:
   - `reviewAttemptId` 또는 invalid-attempt identity
@@ -287,7 +287,7 @@ MASTER도 다음 사실은 조작할 수 없다.
 - prompt에 고정된 과거 target이 이미 closure되었거나 stage가 이동했으면 재작업하지 않는다.
 - prompt의 branch/HEAD/input SHA가 stale이면 최신 physical lineage로 selector를 재계산한다.
 - 과거 `CURRENT CONTINUATION PRIORITY` 문구가 최신 migration ledger와 충돌하면 최신 CURRENT/physical이 우선한다.
-- stale continuation을 이유로 fresh 정상 backlog를 건너뛰지 않는다.
+- stale continuation을 이유로 정상 backlog를 건너뛰지 않는다.
 - 과거 채팅 보고나 예약 prompt의 PASS/FAIL을 physical receipt/readback보다 우선하지 않는다.
 
 ### 3.5 MASTER_LEASE v2 — single-writer / no duplicate mutation HARD
