@@ -1,5 +1,6 @@
 {
-  "id": "q07",
+  "id": "q7",
+  "title": "수직인 두 직선",
   "visualType": "coordinate_geometry",
   "viewport": {
     "xMin": -7,
@@ -11,6 +12,7 @@
     "panel": 180,
     "margin": 36
   },
+  "axes": true,
   "sourceFacts": {
     "baseLine": [
       4,
@@ -21,8 +23,7 @@
       -4,
       1
     ],
-    "givenPointX": 4,
-    "independentFactHash": "377328b4a1837f9723c4c5013e7bc2b5aa433387eab9e3bfecb9c55ba6e0297b"
+    "givenPointX": 4
   },
   "derivedFacts": {
     "perpendicularSlope": 0.75,
@@ -38,7 +39,8 @@
     "a": 7
   },
   "displayFacts": {
-    "slopes": "−4/3 and 3/4",
+    "slopes": "기울기 −4/3, 3/4",
+    "incidence": "점 (4,a)가 이 직선 위에 있으므로 a=7",
     "answer": "a=7"
   },
   "objects": [
@@ -115,13 +117,10 @@
         8
       ],
       "lines": [
-        "m₁=−4/3",
-        "m₂=3/4",
-        "(4,a) on m₂ → a=7"
-      ],
-      "priority": 0
+        "기울기 −4/3",
+        "기울기 3/4",
+        "점 (4,a)가 이 직선 위에 있으므로 a=7"
+      ]
     }
-  ],
-  "axes": true,
-  "title": "수직인 직선의 기울기"
+  ]
 }

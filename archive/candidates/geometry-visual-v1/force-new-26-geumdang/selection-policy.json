@@ -1,6 +1,31 @@
 {
-  "schemaVersion": "visual-candidate-selector-policy-v1",
+  "schemaVersion": "visual-candidate-selector-policy-v2",
+  "engine": "geometry-visual-v1",
   "mode": "FORCE_NEW",
+  "defaultTargetFamilies": [
+    "COORDINATE_GEOMETRY",
+    "LINE_OR_CIRCLE",
+    "SHAPE_TRANSFORMATION",
+    "GEOMETRY_RELATION",
+    "FUNCTION_OR_GRAPH",
+    "DECISIVE_SPATIAL_OR_GRAPH_RELATION"
+  ],
+  "allowedVisualTypes": [
+    "coordinate_geometry",
+    "line_circle_geometry",
+    "function_graph"
+  ],
+  "rejectedVisualTypes": [
+    "explanation_card"
+  ],
+  "mustShowDecisiveSolutionRelation": true,
+  "cardPossibilityIsNotEligibility": true,
+  "excludedVisualFamilies": [
+    "SET_CARDINALITY",
+    "SET_EQUALITY",
+    "SUBSET_OR_RESIDUE_MAXIMUM_SUM",
+    "SUBSET_SUMMATION"
+  ],
   "decisionOrder": [
     {
       "when": "domainEligibility != ELIGIBLE",
@@ -11,30 +36,93 @@
       "decision": "EXCLUDE_VISUAL_EXEMPT"
     },
     {
-      "when": "domainEligibility == ELIGIBLE and visualEligibility == NON_EXEMPT and mode == FORCE_NEW",
+      "when": "visualType not in allowedVisualTypes",
+      "decision": "EXCLUDE_GEOMETRY_VISUAL_INELIGIBLE"
+    },
+    {
+      "when": "decisive spatial or graph relation is absent",
+      "decision": "EXCLUDE_GEOMETRY_VISUAL_INELIGIBLE"
+    },
+    {
+      "when": "eligible and non-exempt and mode == FORCE_NEW",
       "decision": "SELECT_AND_GENERATE_NEW_CANDIDATE"
     }
   ],
   "forceNewSemantics": {
     "overridesOnly": "existingSolutionSvg reuse/keep/skip disposition",
-    "existingSolutionSvgPresence": "does not add eligibility and does not exclude an eligible question; eligible questions are rebuilt as fresh candidates",
-    "existingSolutionSvgContent": "not read, supplied, or used as a visual reference",
+    "existingSolutionSvgContent": "not read, supplied, or used as visual reference",
     "doesNotOverride": [
       "domainEligibility",
       "VISUAL_EXEMPT",
-      "source/fact readiness"
+      "source/fact readiness",
+      "decisive-step pedagogy gate"
     ]
   },
   "failClosed": {
     "missingDomainEligibility": "EXCLUDE_UNRESOLVED_ELIGIBILITY",
-    "missingVisualEligibility": "EXCLUDE_UNRESOLVED_VISUAL_APPLICABILITY"
+    "missingVisualEligibility": "EXCLUDE_UNRESOLVED_VISUAL_APPLICABILITY",
+    "missingDecisiveRelation": "EXCLUDE_GEOMETRY_VISUAL_INELIGIBLE"
   },
   "thisRun": {
     "questionCount": 20,
     "domainEligibleCount": 20,
-    "visualExemptCount": 0,
-    "selectedForceNewCount": 20,
+    "visualExemptCount": 4,
+    "excludedVisualExemptQuestionIds": [
+      2,
+      8,
+      16,
+      19
+    ],
+    "selectedForceNewCount": 16,
+    "selectedQuestionIds": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      20
+    ],
     "excludedDomainIneligibleQuestionIds": [],
-    "excludedVisualExemptQuestionIds": []
-  }
+    "existingSvgReadAsReference": false
+  },
+  "visualExemptions": [
+    {
+      "questionId": 2,
+      "decision": "VISUAL_EXEMPT",
+      "reason": "집합의 원소 수를 세는 논리 문제로, 기하·좌표·그래프 관계가 풀이의 결정 단계가 아님.",
+      "geometryCandidate": false,
+      "followup": "필요 시 logic/table visual 계열에서 별도 판단"
+    },
+    {
+      "questionId": 8,
+      "decision": "VISUAL_EXEMPT",
+      "reason": "집합의 상등을 판별하는 논리 문제로, 기하·좌표·그래프 관계가 풀이의 결정 단계가 아님.",
+      "geometryCandidate": false,
+      "followup": "필요 시 logic/table visual 계열에서 별도 판단"
+    },
+    {
+      "questionId": 16,
+      "decision": "VISUAL_EXEMPT",
+      "reason": "부분집합과 나머지류의 최대합을 다루는 조합 문제로, 도형·좌표·그래프 관계가 풀이의 결정 단계가 아님.",
+      "geometryCandidate": false,
+      "followup": "필요 시 logic/table visual 계열에서 별도 판단"
+    },
+    {
+      "questionId": 19,
+      "decision": "VISUAL_EXEMPT",
+      "reason": "부분집합의 합을 세는 조합 문제로, 도형·좌표·그래프 관계가 풀이의 결정 단계가 아님.",
+      "geometryCandidate": false,
+      "followup": "필요 시 logic/table visual 계열에서 별도 판단"
+    }
+  ]
 }
