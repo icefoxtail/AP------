@@ -102,6 +102,27 @@ const requiredCommands = [
   {
     label: 'tests/apmath-class-progress-phase.test.mjs',
     args: ['--test', 'tests/apmath-class-progress-phase.test.mjs']
+  },
+  {
+    label: 'TEMP o66 R1 calibration preflight',
+    args: [
+      'archive/tools/solution-calibration-gate.mjs',
+      '--exam', 'archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js',
+      '--evidence', 'archive/data/r2e-intake/m3/22_팔마중_2학기_기말_중3_기출.review1.meta-v2.physical-evidence.json',
+      '--stage', 'R1',
+      '--preflight',
+      '--json'
+    ]
+  },
+  {
+    label: 'TEMP o66 R1 physical evidence gate',
+    args: [
+      'archive/tools/review-evidence-gate.mjs',
+      '--exam', 'archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js',
+      '--evidence', 'archive/data/r2e-intake/m3/22_팔마중_2학기_기말_중3_기출.review1.meta-v2.physical-evidence.json',
+      '--stage', 'R1',
+      '--json'
+    ]
   }
 ];
 
