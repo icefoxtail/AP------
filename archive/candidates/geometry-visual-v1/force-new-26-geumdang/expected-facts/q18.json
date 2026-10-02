@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q18",
+  "route": "STANDARD",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -5,
+    "xMax": 9,
+    "yMin": -4,
+    "yMax": 8,
+    "width": 800,
+    "height": 560,
+    "panel": 200,
+    "margin": 36
+  },
+  "title": "이동된 원의 중심과 거리 조건",
+  "sourceFacts": {
+    "originalCenter": [
+      -2,
+      1
+    ],
+    "translation": [
+      3,
+      2
+    ],
+    "reflectionLine": [
+      1,
+      -1,
+      0
+    ],
+    "givenNormalLine": [
+      2,
+      1,
+      -9
+    ]
+  },
+  "derivedFacts": {
+    "translatedCenter": [
+      1,
+      3
+    ],
+    "finalCenter": [
+      3,
+      1
+    ],
+    "chosenLine": [
+      1,
+      -2,
+      4
+    ],
+    "otherLine": [
+      1,
+      -2,
+      -6
+    ],
+    "yIntercepts": [
+      2,
+      -3
+    ]
+  },
+  "displayFacts": {
+    "centers": "(-2,1)→(1,3)→(3,1)",
+    "choices": "c=4 or -6",
+    "answer": "y절편=2"
+  },
+  "objects": [
+    {
+      "id": "C0",
+      "kind": "POINT",
+      "at": [
+        -2,
+        1
+      ],
+      "name": "C₀",
+      "priority": 0
+    },
+    {
+      "id": "C1",
+      "kind": "POINT",
+      "at": [
+        1,
+        3
+      ],
+      "name": "C₁",
+      "priority": 0
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        3,
+        1
+      ],
+      "name": "C",
+      "priority": 0
+    },
+    {
+      "id": "initialCircle",
+      "kind": "CIRCLE",
+      "center": [
+        -2,
+        1
+      ],
+      "radius": 2
+    },
+    {
+      "id": "finalCircle",
+      "kind": "CIRCLE",
+      "center": [
+        3,
+        1
+      ],
+      "radius": 2
+    },
+    {
+      "id": "translation",
+      "kind": "SEGMENT",
+      "from": [
+        -2,
+        1
+      ],
+      "to": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "axis",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "given",
+      "kind": "LINE",
+      "coefficients": [
+        2,
+        1,
+        -9
+      ]
+    },
+    {
+      "id": "chosen",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        -2,
+        4
+      ]
+    },
+    {
+      "id": "other",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        1,
+        -2,
+        -6
+      ]
+    },
+    {
+      "id": "orthogonal",
+      "kind": "PERPENDICULAR",
+      "refs": [
+        "given",
+        "chosen"
+      ]
+    },
+    {
+      "id": "result",
+      "kind": "CONDITION_BOX",
+      "at": [
+        6,
+        7
+      ],
+      "lines": [
+        "거리 √5 → c=4 또는 −6",
+        "양의 y절편 선택",
+        "y절편=2"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true
+}

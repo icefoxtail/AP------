@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q08",
+  "route": "STANDARD",
+  "visualType": "explanation_card",
+  "viewport": {
+    "xMin": 0,
+    "xMax": 10,
+    "yMin": 0,
+    "yMax": 10,
+    "width": 760,
+    "height": 480,
+    "panel": 0,
+    "margin": 36
+  },
+  "title": "집합이 같아지는 두 경우",
+  "sourceFacts": {
+    "setEquality": [
+      "A subset B",
+      "B subset A"
+    ]
+  },
+  "derivedFacts": {
+    "candidateA": [
+      6,
+      -1
+    ],
+    "validA": 6
+  },
+  "displayFacts": {
+    "a=-1": "A={6,8,12}, B={6,1,-2} (불일치)",
+    "a=6": "A=B={6,8,12}",
+    "answer": "6"
+  },
+  "objects": [
+    {
+      "id": "condition",
+      "kind": "CONDITION_BOX",
+      "at": [
+        1.5,
+        8
+      ],
+      "lines": [
+        "A⊆B, B⊆A",
+        "따라서 A=B",
+        "a²−5a=6 → a=6 또는 −1"
+      ],
+      "priority": 0
+    },
+    {
+      "id": "reject",
+      "kind": "CONDITION_BOX",
+      "at": [
+        5,
+        5
+      ],
+      "lines": [
+        "a=−1",
+        "A={6,8,12}",
+        "B={6,1,−2}",
+        "서로 다름"
+      ],
+      "priority": 0
+    },
+    {
+      "id": "accept",
+      "kind": "CONDITION_BOX",
+      "at": [
+        8.5,
+        5
+      ],
+      "lines": [
+        "a=6",
+        "A=B={6,8,12}",
+        "정답 a=6"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": false
+}

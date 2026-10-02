@@ -1,0 +1,204 @@
+{
+  "id": "q14",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -4,
+    "xMax": 8,
+    "yMin": -4,
+    "yMax": 8,
+    "width": 760,
+    "height": 560,
+    "panel": 190,
+    "margin": 36
+  },
+  "sourceFacts": {
+    "A": [
+      -2,
+      -3
+    ],
+    "reflectionLine": [
+      1,
+      -1,
+      0
+    ],
+    "circleCenter": [
+      5,
+      4
+    ],
+    "circleRadius": 2,
+    "independentFactHash": "6adbf68267e59631fd90db1b5b8923232250d3119627b09c0029b3526606de28"
+  },
+  "derivedFacts": {
+    "Areflected": [
+      -3,
+      -2
+    ],
+    "P0": [
+      1,
+      1
+    ],
+    "Q0": [
+      3.4,
+      2.8
+    ],
+    "ACprimeDistance": 10,
+    "minimumPath": 8,
+    "area": 2.1
+  },
+  "displayFacts": {
+    "chain": "A′–P₀–Q₀–C",
+    "result": "10S=21"
+  },
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -2,
+        -3
+      ],
+      "name": "A",
+      "priority": 0
+    },
+    {
+      "id": "Aprime",
+      "kind": "POINT",
+      "at": [
+        -3,
+        -2
+      ],
+      "name": "A′",
+      "priority": 0
+    },
+    {
+      "id": "P0",
+      "kind": "POINT",
+      "at": [
+        1,
+        1
+      ],
+      "name": "P₀",
+      "priority": 0
+    },
+    {
+      "id": "Q0",
+      "kind": "POINT",
+      "at": [
+        3.4,
+        2.8
+      ],
+      "name": "Q₀",
+      "priority": 0
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        5,
+        4
+      ],
+      "name": "C",
+      "priority": 0
+    },
+    {
+      "id": "reflectionAxis",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "minimumLine",
+      "kind": "LINE",
+      "coefficients": [
+        3,
+        -4,
+        1
+      ]
+    },
+    {
+      "id": "circle",
+      "kind": "CIRCLE",
+      "center": [
+        5,
+        4
+      ],
+      "radius": 2
+    },
+    {
+      "id": "P0Intersection",
+      "kind": "INTERSECTION",
+      "refs": [
+        "reflectionAxis",
+        "minimumLine"
+      ],
+      "target": "P0"
+    },
+    {
+      "id": "AP0",
+      "kind": "SEGMENT",
+      "from": [
+        -2,
+        -3
+      ],
+      "to": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "P0Q0",
+      "kind": "SEGMENT",
+      "from": [
+        1,
+        1
+      ],
+      "to": [
+        3.4,
+        2.8
+      ]
+    },
+    {
+      "id": "Q0C",
+      "kind": "SEGMENT",
+      "from": [
+        3.4,
+        2.8
+      ],
+      "to": [
+        5,
+        4
+      ]
+    },
+    {
+      "id": "AP0length",
+      "kind": "LENGTH_LABEL",
+      "refs": [
+        "AP0"
+      ],
+      "value": 5,
+      "text": "5",
+      "at": [
+        -0.5,
+        -1
+      ]
+    },
+    {
+      "id": "summary",
+      "kind": "CONDITION_BOX",
+      "at": [
+        6.5,
+        -2
+      ],
+      "lines": [
+        "A′Q₀=8, Q₀C=2",
+        "S=21/10 → 10S=21"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true,
+  "title": "대칭으로 펴는 최단 경로와 넓이"
+}

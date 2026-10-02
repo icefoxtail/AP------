@@ -1,0 +1,184 @@
+{
+  "id": "q12",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6,
+    "xMax": 8,
+    "yMin": -4,
+    "yMax": 7,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "sourceFacts": {
+    "C1center": [
+      1,
+      2
+    ],
+    "C2center": [
+      2,
+      -1
+    ],
+    "bisectingLine": [
+      3,
+      -4,
+      5
+    ],
+    "chordLength": 8,
+    "independentFactHash": "c83c2a82ab54c026b5125b1aa9f2bf3cd535a1a31bb4c1d01e133f797411d66c"
+  },
+  "derivedFacts": {
+    "radius": 5,
+    "foot": [
+      0.2,
+      1.4
+    ],
+    "chordEndpoints": [
+      [
+        3.4,
+        3.8
+      ],
+      [
+        -3,
+        -1
+      ]
+    ],
+    "distanceOH": 3,
+    "halfChord": 4
+  },
+  "displayFacts": {
+    "rightTriangle": "3-4-5",
+    "answer": "a+b+c+d=-17"
+  },
+  "objects": [
+    {
+      "id": "O",
+      "kind": "POINT",
+      "at": [
+        2,
+        -1
+      ],
+      "name": "O",
+      "priority": 0
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        0.2,
+        1.4
+      ],
+      "name": "H",
+      "priority": 0
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        3.4,
+        3.8
+      ],
+      "name": "A",
+      "priority": 0
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -3,
+        -1
+      ],
+      "name": "B",
+      "priority": 0
+    },
+    {
+      "id": "C2",
+      "kind": "CIRCLE",
+      "center": [
+        2,
+        -1
+      ],
+      "radius": 5
+    },
+    {
+      "id": "chordLine",
+      "kind": "LINE",
+      "coefficients": [
+        3,
+        -4,
+        5
+      ]
+    },
+    {
+      "id": "radiusLine",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        4,
+        3,
+        -5
+      ]
+    },
+    {
+      "id": "OH",
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        -1
+      ],
+      "to": [
+        0.2,
+        1.4
+      ]
+    },
+    {
+      "id": "HA",
+      "kind": "SEGMENT",
+      "from": [
+        0.2,
+        1.4
+      ],
+      "to": [
+        3.4,
+        3.8
+      ]
+    },
+    {
+      "id": "HB",
+      "kind": "SEGMENT",
+      "from": [
+        0.2,
+        1.4
+      ],
+      "to": [
+        -3,
+        -1
+      ]
+    },
+    {
+      "id": "perp",
+      "kind": "PERPENDICULAR",
+      "refs": [
+        "chordLine",
+        "radiusLine"
+      ]
+    },
+    {
+      "id": "values",
+      "kind": "CONDITION_BOX",
+      "at": [
+        5,
+        6
+      ],
+      "lines": [
+        "OH=3, AH=BH=4",
+        "r²=3²+4²=25",
+        "r=5 → d=−20",
+        "a+b+c+d=−17"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true,
+  "title": "원에서 현의 중점과 수선"
+}

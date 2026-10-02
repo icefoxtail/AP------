@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q07",
+  "route": "STANDARD",
+  "visualType": "coordinate_geometry",
+  "viewport": {
+    "xMin": -7,
+    "xMax": 6,
+    "yMin": -3,
+    "yMax": 9,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "title": "수직인 직선의 기울기",
+  "sourceFacts": {
+    "baseLine": [
+      4,
+      3,
+      -2
+    ],
+    "throughPoint": [
+      -4,
+      1
+    ],
+    "givenPointX": 4
+  },
+  "derivedFacts": {
+    "perpendicularSlope": 0.75,
+    "lineThroughGiven": [
+      3,
+      -4,
+      16
+    ],
+    "intersection": [
+      -1.6,
+      2.8
+    ],
+    "a": 7
+  },
+  "displayFacts": {
+    "slopes": "−4/3 and 3/4",
+    "answer": "a=7"
+  },
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -4,
+        1
+      ],
+      "name": "A",
+      "priority": 0
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        4,
+        7
+      ],
+      "name": "B",
+      "priority": 0
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        -1.6,
+        2.8
+      ],
+      "name": "H",
+      "priority": 0
+    },
+    {
+      "id": "given",
+      "kind": "LINE",
+      "coefficients": [
+        4,
+        3,
+        -2
+      ]
+    },
+    {
+      "id": "perpendicular",
+      "kind": "LINE",
+      "coefficients": [
+        3,
+        -4,
+        16
+      ]
+    },
+    {
+      "id": "perp",
+      "kind": "PERPENDICULAR",
+      "refs": [
+        "given",
+        "perpendicular"
+      ]
+    },
+    {
+      "id": "H-is-crossing",
+      "kind": "INTERSECTION",
+      "refs": [
+        "given",
+        "perpendicular"
+      ],
+      "target": "H"
+    },
+    {
+      "id": "slopeProof",
+      "kind": "CONDITION_BOX",
+      "at": [
+        4,
+        8
+      ],
+      "lines": [
+        "m₁=−4/3",
+        "m₂=3/4",
+        "(4,a) on m₂ → a=7"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true
+}

@@ -1,0 +1,106 @@
+{
+  "id": "q04",
+  "visualType": "coordinate_geometry",
+  "viewport": {
+    "xMin": -5,
+    "xMax": 3,
+    "yMin": -1,
+    "yMax": 9,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "sourceFacts": {
+    "start": [
+      -2,
+      3
+    ],
+    "translation": [
+      1,
+      4
+    ],
+    "target": [
+      -1,
+      7
+    ],
+    "independentFactHash": "46d8eaf7f56aa96319ccaa8cd243af18130f878bc83f7f88a3b837cfd24e11bb"
+  },
+  "derivedFacts": {
+    "a": 1,
+    "b": 7,
+    "aMinusB": -6
+  },
+  "displayFacts": {
+    "translation": "(+1,+4)",
+    "answer": "-6"
+  },
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -2,
+        3
+      ],
+      "name": "A",
+      "priority": 0
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -1,
+        7
+      ],
+      "name": "B",
+      "priority": 0
+    },
+    {
+      "id": "translation",
+      "kind": "SEGMENT",
+      "from": [
+        -2,
+        3
+      ],
+      "to": [
+        -1,
+        7
+      ]
+    },
+    {
+      "id": "A-coordinate",
+      "kind": "COORDINATE_LABEL",
+      "target": "A",
+      "exact": [
+        "-2",
+        "3"
+      ]
+    },
+    {
+      "id": "B-coordinate",
+      "kind": "COORDINATE_LABEL",
+      "target": "B",
+      "exact": [
+        "-1",
+        "7"
+      ]
+    },
+    {
+      "id": "values",
+      "kind": "CONDITION_BOX",
+      "at": [
+        1,
+        8
+      ],
+      "lines": [
+        "Δx=+1 → a=1",
+        "y: 3+4=7 → b=7",
+        "a−b=−6"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true,
+  "title": "점의 평행이동"
+}

@@ -1,0 +1,492 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "831d414f93ccee12100471dd3b9c71cedb3ecd50b0bff1d7edc3f45594017f5d",
+  "normalizedSvgSha256": "81b1583577c7c2e9235c92138847b36f80411a6230af39a447f7357f1f5c743b",
+  "texSha256": "848b7b8949e18d7609522c842ca08cae7d944ef53190020973053b56cf4471f3",
+  "coordinateModel": {
+    "originX": 325.6,
+    "originY": 442.40000000000003,
+    "sx": 45.6,
+    "sy": 45.6,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [],
+  "layout": {
+    "labels": [
+      {
+        "id": "A-name",
+        "kind": "POINT_NAME",
+        "target": "A",
+        "text": "A",
+        "at": [
+          234.4,
+          305.6
+        ],
+        "font": 13.25,
+        "priority": 0,
+        "box": {
+          "x": 246.4,
+          "y": 295.6625,
+          "width": 8.745000000000001,
+          "height": 19.875
+        },
+        "baseline": [
+          246.4,
+          311.5625
+        ],
+        "placement": "AUTO_E"
+      },
+      {
+        "id": "B-name",
+        "kind": "POINT_NAME",
+        "target": "B",
+        "text": "B",
+        "at": [
+          280.0,
+          123.2
+        ],
+        "font": 13.25,
+        "priority": 0,
+        "box": {
+          "x": 275.6275,
+          "y": 91.325,
+          "width": 8.745000000000001,
+          "height": 19.875
+        },
+        "baseline": [
+          275.6275,
+          107.22500000000001
+        ],
+        "placement": "AUTO_N"
+      },
+      {
+        "id": "values",
+        "kind": "CONDITION_BOX",
+        "at": [
+          371.20000000000005,
+          77.6
+        ],
+        "lines": [
+          "Δx=+1 → a=1",
+          "y: 3+4=7 → b=7",
+          "a−b=−6"
+        ],
+        "priority": 0,
+        "font": 13.0,
+        "renderedLines": [
+          {
+            "text": "Δx=+1 → a=1",
+            "math": false,
+            "markup": null
+          },
+          {
+            "text": "y: 3+4=7 → b=7",
+            "math": false,
+            "markup": null
+          },
+          {
+            "text": "a−b=−6",
+            "math": false,
+            "markup": null
+          }
+        ],
+        "text": "Δx=+1 → a=1\ny: 3+4=7 → b=7\na−b=−6",
+        "hasMath": false,
+        "box": {
+          "x": 383.20000000000005,
+          "y": 48.349999999999994,
+          "width": 124.54,
+          "height": 58.5
+        },
+        "baseline": [
+          383.20000000000005,
+          95.15
+        ],
+        "placement": "AUTO_E"
+      },
+      {
+        "id": "A-coordinate",
+        "kind": "COORDINATE_LABEL",
+        "target": "A",
+        "exact": [
+          "-2",
+          "3"
+        ],
+        "font": 12.0,
+        "priority": 2,
+        "at": [
+          234.4,
+          305.6
+        ],
+        "text": "(−2,3)",
+        "panelText": "A: (−2,3)",
+        "panelPrefix": "A: ",
+        "markup": "(−2,3)",
+        "math": true,
+        "box": {
+          "x": 174.88,
+          "y": 317.6,
+          "width": 47.519999999999996,
+          "height": 18.0
+        },
+        "baseline": [
+          174.88,
+          332.0
+        ],
+        "placement": "AUTO_SW"
+      },
+      {
+        "id": "B-coordinate",
+        "kind": "COORDINATE_LABEL",
+        "target": "B",
+        "exact": [
+          "-1",
+          "7"
+        ],
+        "font": 12.0,
+        "priority": 2,
+        "at": [
+          280.0,
+          123.2
+        ],
+        "text": "(−1,7)",
+        "panelText": "B: (−1,7)",
+        "panelPrefix": "B: ",
+        "markup": "(−1,7)",
+        "math": true,
+        "box": {
+          "x": 220.48000000000002,
+          "y": 114.2,
+          "width": 47.519999999999996,
+          "height": 18.0
+        },
+        "baseline": [
+          220.48000000000002,
+          128.6
+        ],
+        "placement": "AUTO_W"
+      },
+      {
+        "id": "axis-x",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          462.4,
+          442.40000000000003
+        ],
+        "text": "x",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 458.10999999999996,
+          "y": 410.90000000000003,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          458.10999999999996,
+          426.50000000000006
+        ],
+        "placement": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          325.6,
+          32.0
+        ],
+        "text": "y",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 337.6,
+          "y": 44.0,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          337.6,
+          59.6
+        ],
+        "placement": "AUTO_SE"
+      },
+      {
+        "id": "tick-x--1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          234.4,
+          442.40000000000003
+        ],
+        "text": "−2",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 226.81,
+          "y": 417.15000000000003,
+          "width": 15.180000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          226.81,
+          430.95000000000005
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x--2-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          143.2,
+          442.40000000000003
+        ],
+        "text": "−4",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 135.60999999999999,
+          "y": 417.15000000000003,
+          "width": 15.180000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          135.60999999999999,
+          430.95000000000005
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x-1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          416.79999999999995,
+          442.40000000000003
+        ],
+        "text": "2",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 413.00499999999994,
+          "y": 417.15000000000003,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          413.00499999999994,
+          430.95000000000005
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-y-1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          325.6,
+          351.2
+        ],
+        "text": "2",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 333.6,
+          "y": 325.95,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          333.6,
+          339.75
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-2-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          325.6,
+          260.0
+        ],
+        "text": "4",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 333.6,
+          "y": 234.75,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          333.6,
+          248.55
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-3-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          325.6,
+          168.8
+        ],
+        "text": "6",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 333.6,
+          "y": 143.55,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          333.6,
+          157.35000000000002
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-4-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          325.6,
+          77.6
+        ],
+        "text": "8",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 333.6,
+          "y": 85.6,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          333.6,
+          99.39999999999999
+        ],
+        "placement": "COORDINATE_RELOCATION_SE"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "A-name",
+        "fallback": "AUTO_E"
+      },
+      {
+        "id": "B-name",
+        "fallback": "AUTO_N"
+      },
+      {
+        "id": "values",
+        "fallback": "AUTO_E"
+      },
+      {
+        "id": "A-coordinate",
+        "fallback": "AUTO_SW"
+      },
+      {
+        "id": "B-coordinate",
+        "fallback": "AUTO_W"
+      },
+      {
+        "id": "axis-x",
+        "fallback": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "fallback": "AUTO_SE"
+      },
+      {
+        "id": "tick-x--1-label",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x--2-label",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x-1-label",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-y-1-label",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-2-label",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-3-label",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-4-label",
+        "fallback": "COORDINATE_RELOCATION_SE"
+      }
+    ],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY"
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "semanticWitnessSha256": "bd7ef3bdb486ea04dcbacaf4dbc747a7bed3ec521ee026781699fefe928dad02",
+  "independentFactHash": "46d8eaf7f56aa96319ccaa8cd243af18130f878bc83f7f88a3b837cfd24e11bb"
+}
