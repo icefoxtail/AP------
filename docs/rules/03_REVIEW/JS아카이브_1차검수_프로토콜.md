@@ -1,3 +1,13 @@
+## CURRENT OVERRIDE — 2026-10-03 — CONTEXT-TOLERANT R1 / PRIOR EXPOSURE ALLOWED
+
+형님의 현재 명시 지시가 아래 과거 blind-order 문구보다 우선한다.
+
+- target의 기존 solution·이전 verdict·checkpoint·repair detail을 **이미 봤거나 먼저 봐도 R1 attempt는 유효**하다.
+- 독립검수의 의미는 정보를 못 보는 것이 아니라 **source/current artifact/정본에서 수학·해설·visual·Meta를 다시 계산·판정하고 기존 verdict를 정답처럼 복사하지 않는 것**이다.
+- prior 노출 때문에 `INVALID`, `CONTEXT_CONTAMINATED`, fresh reviewer 재배정을 만들지 않는다. 같은 R1 worker가 끝까지 validator/receipt를 닫는다.
+- Golden/Negative calibration은 최종 판정/수리 전에 읽어 quality bar를 맞추면 된다. target을 이미 본 과거 context는 calibration 실패 사유가 아니다.
+- 아래의 “기존 solution/verdict를 열기 전에”, “fresh blind” 표현은 **순서 강제가 아니라 독립 재계산 품질 원칙**으로 읽는다.
+
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
 
 R1 worker는 stage assignment와 scope만 확인한 직후, **target의 기존 solution/이전 verdict를 열기 전에** Golden 2~3 + 관련 Negative Sample을 먼저 실제 판독한다. 이 preflight는 품질 눈높이만 고정하며 target 정답을 주지 않는다. 그 뒤 target을 fresh blind 판정·수리하고 마지막에 Golden floor와 N/N compare한다. sample path/SHA/blob, sample별 대표 solution 2~5문항의 solution SHA+excerpt, `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`, `qualityCompareCount=N/N`, 복성고 false-PASS fixture가 validator PASS하지 않으면 R1 DONE/PASS 금지다.
@@ -18,7 +28,7 @@ R1 PASS/DONE은 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`의 item-lev
 - source/current artifact를 직접 열어 전 문항 qid evidence를 새로 만든다.
 - linked solutionImage는 **각 SVG의 expected fact와 actual primitive 좌표/위상 계산**을 남긴다. 라벨 문구 확인만으로 `solutionSvgAuditCount=X/X` 금지.
 - ㄱ/ㄴ/ㄷ·소문항·경우분리 작은칠판 구조는 actual solution block으로 확인한다.
-- Meta는 blind primaryMethod/decisiveStep → RPM/crosswalk → GLOBAL ACTIVE/binding을 실제 조회한다. resolvable null은 FAIL.
+- Meta는 prior key/verdict를 볼 수 있지만 `primaryMethod/decisiveStep → RPM/crosswalk → GLOBAL ACTIVE/binding`을 source/current solution에서 다시 판정·조회한다. resolvable null은 FAIL.
 - 완료 전 `review-evidence-gate.mjs --stage R1`의 `ok=true`가 필수다.
 - 예약 시간이 부족하면 checkpoint만 남기고 R1_DONE receipt를 만들지 않는다.
 
