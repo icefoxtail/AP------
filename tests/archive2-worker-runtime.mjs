@@ -203,6 +203,113 @@ try {
   for (const sql of savedPlain.split(";").map((s) => s.trim()).filter(Boolean))
     await db.prepare(sql).run();
   await db.prepare(savedPaperMigration.slice(savedTriggerIndex)).run();
+
+  const stage1FixtureInsert = "INSERT INTO archive_saved_papers (id,owner_teacher_id,save_batch_id,part_index,part_count,title,grade,subject,question_count,snapshot_json,snapshot_hash,save_request_hash,source_index_version,schema_version,created_at,deleted_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  const stage1Snapshot = JSON.stringify({ questions: [{ questionUid: "qid_v1_stage1", content: "frozen" }], meta: { title: "Stage 1", qpp: 4 } });
+  for (const [id, batch, deletedAt] of [
+    ["stage1-parent", "stage1-batch-parent", null],
+    ["stage1-active", "stage1-batch-active", null],
+    ["stage1-deleted", "stage1-batch-deleted", "2026-01-01T00:00:00.000Z"],
+    ["stage1-shared-child", "stage1-batch-shared", null],
+    ["stage1-common-child", "stage1-batch-common", null],
+  ]) {
+    await db.prepare(stage1FixtureInsert).bind(
+      id, "stage1-owner", batch, 0, 1, "Stage 1", "고1", "수학", 1, stage1Snapshot,
+      "a".repeat(64), "b".repeat(64), "legacy-index", SAVED_PAPER_SCHEMA,
+      "2026-01-01T00:00:00.000Z", deletedAt,
+    ).run();
+  }
+  const stage1AssignmentHash = "c".repeat(64);
+  await db.prepare("INSERT INTO class_exam_assignments (id,class_id,exam_title,exam_date,question_count,archive_file,source_type,mixed_payload_json,subject,pdf_qpp,archive2_write_key,archive2_snapshot_hash,saved_paper_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)").bind(
+    "stage1-existing-assignment", "stage1-class", "Stage 1", "2026-01-01", 1,
+    "MIXED:stage1", "mixed", '{"questions":[{"content":"frozen"}],"meta":{"qpp":4}}',
+    "수학", 4, "stage1-write-key", stage1AssignmentHash, null,
+  ).run();
+
+  const lifecycleMigrationPath = path.join(worker, "migrations/20261002_archive2_paper_lifecycle_foundation.sql");
+  assert.ok(fs.existsSync(lifecycleMigrationPath), "Stage 1 additive persistence migration must exist");
+  const lifecycleMigration = fs.readFileSync(lifecycleMigrationPath, "utf8");
+  const lifecycleTriggers = [...lifecycleMigration.matchAll(/CREATE TRIGGER IF NOT EXISTS.*?END;/gs)]
+    .map(match => match[0]);
+  const lifecyclePlain = lifecycleMigration
+    .replace(/CREATE TRIGGER IF NOT EXISTS.*?END;/gs, "")
+    .replace(/--.*$/gm, "");
+  for (const sql of lifecyclePlain.split(";").map(value => value.trim()).filter(Boolean))
+    await db.prepare(sql).run();
+  for (const trigger of lifecycleTriggers) await db.prepare(trigger).run();
+
+  assert.equal(Number((await db.prepare("SELECT COUNT(*) n FROM archive_saved_paper_library_metadata").first()).n), 0,
+    "migration must not mass-backfill sidecar rows");
+  const cancellationColumn = (await db.prepare("PRAGMA table_info(class_exam_assignments)").all()).results
+    .find(column => column.name === "cancelled_at");
+  assert.ok(cancellationColumn);
+  assert.equal(cancellationColumn.notnull, 0);
+  const lifecycleHelper = await import("../apmath/worker-backup/worker/helpers/archive-saved-papers.js");
+  const resolveStatus = lifecycleHelper.resolveSavedPaperLibraryStatus;
+  assert.equal(typeof resolveStatus, "function");
+  const legacyActive = await db.prepare("SELECT * FROM archive_saved_papers WHERE id=?").bind("stage1-active").first();
+  const legacyDeleted = await db.prepare("SELECT * FROM archive_saved_papers WHERE id=?").bind("stage1-deleted").first();
+  assert.equal(resolveStatus(legacyActive, null), "ACTIVE");
+  assert.equal(resolveStatus(legacyDeleted, null), "TRASHED");
+  const immutablePaperFields = [legacyActive.title, legacyActive.snapshot_json, legacyActive.snapshot_hash];
+  await db.prepare("INSERT INTO archive_saved_paper_library_metadata (saved_paper_id,owner_teacher_id,display_name,status,note,tags_json,is_favorite) VALUES (?,?,?,?,?,?,?)").bind(
+    "stage1-active", "stage1-owner", "Stage 1 보관함 이름", "ACTIVE", "note", '["tag"]', 1,
+  ).run();
+  await db.prepare("UPDATE archive_saved_paper_library_metadata SET display_name=?,status=?,note=?,tags_json=?,is_favorite=? WHERE saved_paper_id=?").bind(
+    "바뀐 표시 이름", "ARCHIVED", "new note", '["review"]', 0, "stage1-active",
+  ).run();
+  const changedMetadata = await db.prepare("SELECT * FROM archive_saved_paper_library_metadata WHERE saved_paper_id=?").bind("stage1-active").first();
+  assert.equal(resolveStatus(legacyActive, changedMetadata), "ARCHIVED");
+  const unchangedPaper = await db.prepare("SELECT title,snapshot_json,snapshot_hash FROM archive_saved_papers WHERE id=?").bind("stage1-active").first();
+  assert.deepEqual([unchangedPaper.title, unchangedPaper.snapshot_json, unchangedPaper.snapshot_hash], immutablePaperFields);
+  await db.prepare("INSERT INTO archive_saved_paper_library_metadata (saved_paper_id,owner_teacher_id,status) VALUES (?,?,?)").bind(
+    "stage1-deleted", "stage1-owner", "ACTIVE",
+  ).run();
+  assert.equal(resolveStatus(legacyDeleted,
+    await db.prepare("SELECT * FROM archive_saved_paper_library_metadata WHERE saved_paper_id=?").bind("stage1-deleted").first()), "TRASHED");
+
+  const lineageInsert = "INSERT INTO archive_saved_paper_lineage (child_saved_paper_id,parent_kind,parent_id,parent_revision,parent_snapshot_hash,derivation_type) VALUES (?,?,?,?,?,?)";
+  for (const row of [
+    ["stage1-active", "SAVED_PAPER", "stage1-parent", null, "a".repeat(64), "REVISION"],
+    ["stage1-shared-child", "SHARED_PAPER", "future-shared-id", "revision-7", "d".repeat(64), "FORK"],
+    ["stage1-common-child", "COMMON_PAPER", "future-common-id", "revision-2", "e".repeat(64), "COPY"],
+  ]) await db.prepare(lineageInsert).bind(...row).run();
+  assert.equal((await db.prepare("SELECT parent_kind FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?").bind("stage1-shared-child").first()).parent_kind, "SHARED_PAPER");
+  await assert.rejects(
+    db.prepare(lineageInsert).bind("stage1-common-child", "COMMON_PAPER", "invalid", null, null, "DUPLICATE").run(),
+    /ARCHIVE_SAVED_PAPER_LINEAGE_IMMUTABLE|CHECK constraint/i,
+  );
+  await assert.rejects(
+    db.prepare("UPDATE archive_saved_paper_lineage SET parent_id=? WHERE child_saved_paper_id=?").bind("mutated", "stage1-shared-child").run(),
+    /ARCHIVE_SAVED_PAPER_LINEAGE_IMMUTABLE/,
+  );
+
+  const eventInsert = "INSERT INTO class_exam_assignment_lifecycle_events (event_id,assignment_id,related_assignment_id,saved_paper_id,student_id,actor_teacher_id,operation,operation_identity,metadata_json) VALUES (?,?,?,?,?,?,?,?,?)";
+  for (const [operation, identity, relatedId, studentId] of [
+    ["ADD_RECIPIENTS", "stage1-add", "parent-assignment", null],
+    ["EXCLUDE", "stage1-exclude", null, "student-a"],
+    ["RESTORE", "stage1-restore", null, "student-a"],
+    ["CANCEL", "stage1-cancel", null, null],
+    ["REPLACEMENT_ASSIGNMENT", "stage1-replacement", "old-assignment", null],
+  ]) await db.prepare(eventInsert).bind(
+    "event-" + identity, "stage1-existing-assignment", relatedId, "stage1-active",
+    studentId, "teacher-stage1", operation, identity, "{}",
+  ).run();
+  await assert.rejects(
+    db.prepare(eventInsert).bind("event-retry", "stage1-existing-assignment", null, null, null, "teacher-stage1", "RETRY", "stage1-retry", "{}").run(),
+    /CHECK constraint/i,
+  );
+  await assert.rejects(
+    db.prepare("DELETE FROM class_exam_assignment_lifecycle_events WHERE event_id=?").bind("event-stage1-cancel").run(),
+    /ARCHIVE_ASSIGNMENT_EVENT_IMMUTABLE/,
+  );
+  const preservedAssignment = await db.prepare("SELECT archive2_snapshot_hash,mixed_payload_json,cancelled_at FROM class_exam_assignments WHERE id=?").bind("stage1-existing-assignment").first();
+  assert.equal(preservedAssignment.archive2_snapshot_hash, stage1AssignmentHash);
+  assert.equal(preservedAssignment.mixed_payload_json, '{"questions":[{"content":"frozen"}],"meta":{"qpp":4}}');
+  assert.equal(preservedAssignment.cancelled_at, null);
+  await db.prepare("DELETE FROM class_exam_assignments WHERE id=?").bind("stage1-existing-assignment").run();
+  console.info("paper lifecycle persistence foundation PASS");
+
   await db.exec(
     "INSERT INTO classes VALUES ('class-a','고1 검증반 A','Teacher A','고1'),('class-b','고1 검증반 B','Teacher B','고1');INSERT INTO students(id,name) VALUES ('student-a','검증학생 가'),('student-b','검증학생 나'),('student-c','검증학생 다');INSERT INTO class_students VALUES ('class-a','student-a'),('class-a','student-b'),('class-b','student-c');INSERT INTO teacher_classes VALUES ('teacher-a','class-a');",
   );

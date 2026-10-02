@@ -176,6 +176,7 @@ try {
   `);
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20260916_archive2_question_bridge.sql"), "utf8"));
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20260929_archive_saved_papers.sql"), "utf8"));
+  await migrate(db, fs.readFileSync(path.join(worker, "migrations/20261002_archive2_paper_lifecycle_foundation.sql"), "utf8"));
   await db.prepare("INSERT INTO classes VALUES ('class-a','고2 기본 검증반','Teacher A'),('class-saved','고2 저장본 검증반','Teacher A'),('class-race','고2 다중 반 검증반','Teacher B')").run();
   await db.prepare("INSERT INTO students(id,name) VALUES ('student-a','기본 검증학생'),('student-save-a','저장본 검증학생 가'),('student-save-b','저장본 검증학생 나'),('student-race','다중 반 검증학생')").run();
   await db.prepare("INSERT INTO class_students VALUES ('class-a','student-a'),('class-saved','student-save-a'),('class-saved','student-save-b'),('class-race','student-race')").run();
