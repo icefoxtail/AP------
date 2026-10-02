@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_BLIND_DECISION_v2",
+  "stage": "R1",
+  "role": "R1-2",
+  "canonicalOrdinal": 66,
+  "examUid": "m3/2final/22-palma",
+  "examFile": "22_팔마중_2학기_기말_중3_기출.js",
+  "inputAuthorityBranch": "archive-recovery/m3-22-palma-2final-meta-v2-create-20261002-1625",
+  "inputArtifactSha": "073716484ed180fef9e09c31d8d20439a68bb3f3",
+  "reviewAttemptId": "R1:m3/2final/22-palma:073716484ed180fef9e09c31d8d20439a68bb3f3:1",
+  "attemptNo": 1,
+  "priorTargetDetailReadBeforeBlindFreeze": false,
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha": "5b3e7a4d98da3f9b5f0cfd3237fcc4fa655549bc",
+      "observedQids": [
+        1,
+        12,
+        24
+      ],
+      "observation": " concise keypoint-first solutions; decisive equalities shown; multi-step variance work keeps intermediate equations"
+    },
+    {
+      "path": "archive/exams/original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+      "gitBlobSha": "7a8143a96a0d0785c4eef5bd67b7b4a526593b56",
+      "observedQids": [
+        1,
+        12
+      ],
+      "observation": "student-reproducible direct reasoning; tangent/perimeter chain preserves each needed equality"
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observations": [
+        "verify actual SVG coordinates/topology rather than labels",
+        "enumerated source judgments require separated reasoning blocks",
+        "Meta null cannot pass when a unique exact ACTIVE key exists",
+        "inspect runtime strings for doubled TeX escape"
+      ]
+    }
+  ],
+  "sourceImageAudit": {
+    "expectedImageCount": 22,
+    "directReadCount": 22,
+    "missing": [],
+    "blobs": {
+      "1": "f8e487ecc2d6b363141676e199292da68f8b411c",
+      "2": "0524fff6094b6dc67af6011ed5d7199cb2644ee7",
+      "3": "72314fe6a60dbfb61e0f1cb47bdbad5dc7bf2c39",
+      "4": "d0c6c80a4e8da02d98a779c3fd089f407f13b885",
+      "5": "f005071cf92f3fb04cab21d1b0634f470e2b33fc",
+      "6": "de4e3184243cfffb554fae3babfe4cc27ead4845",
+      "7": "047fc70fdb2b23ebbdb798d1181a96d11ebd9af4",
+      "8": "546f2f414bb71637ad9352aa8d4928bdde2e9164",
+      "9": "a03be7ce1e78866347fbdc20bd77168d75ec5292",
+      "10": "5ffb57c6e9cd60549fdf2ce5e72c948171ab87b0",
+      "11": "a7ba32a1635c26478e6258adaf165107408aaa14",
+      "13": "db5ec3b2d54d881e1ac667ab0b4b0aa9784f11b3",
+      "14": "74692f90e15ba35fdadd96491dd44f076053f8d5",
+      "15": "33ed40ebe0a40c3bae4d8e1a8eee217372cae44f",
+      "16": "3e66897471a3b5b1be69e781efdd5bb8588a3226",
+      "17": "a2db0b54dc625be034474164041993388a9dd5b2",
+      "18": "cdaf79e01e623c697b440615e07b951bc098ff87",
+      "20": "f77640bd52a4c91d20b073523dabdbbf3ca5e0a4",
+      "21": "7b73d1661c24df7f3c22ed637753ba5b9b027c08",
+      "22": "95cabc9a3556d38bb20eaa28933ef1e3663ed3c5",
+      "23": "ea9f9a7fdce8f270747a4af4788aba758bb97d4b",
+      "24": "464f993d1c2c725d3d13207a72c45c493ae82527"
+    }
+  },
+  "questionCount": 25,
+  "independentAnswerDigest": "③|④|①|③|④|③|⑤|②|②|①|④|⑤|①|④|②|③|④|②|⑤|①|⑤|72°|58°|(1)4,-5,2,4,-4,-1;(2)13|(1)3;(2)9;(3)√2",
+  "sourceAnswerVerdict": "PASS",
+  "blindRows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "method": "same chord AB: inscribed angle 20°, central x=40°, inscribed y=20°, x-y=20°"
+    },
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "method": "equal arcs BC=CD; BAC=30° gives arc BC=60°, so arc BD=120° and x=60°"
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "method": "tangent-chord gives angle ABC=65°; triangle ABC with C=54° gives A=x=61°"
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "method": "equal arcs BC=CD give CAD=BAC=34°; triangle ACD gives ADC=87°; cyclic/exterior yields EBA=87°"
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS",
+      "method": "tangent-chord gives x=55°; AD=BD makes BAD=55°; cyclic gives y=125°, hence y-x=70°"
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "method": "cyclic gives ADC=97°; P,D,C collinear gives ADP=83°; triangle APD gives PAD=50°; tangent-chord gives ACD=50°; CAD=33°"
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "method": "two secants external angle = half difference of arcs: (144°-36°)/2=54°"
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "method": "two tangents angle 44° makes base angles PAB=PBA=68°; tangent-chord gives BCA=68°; arc ratio AC:BC=2:5 gives ABC:BAC=2:5 and their sum 112°, so x=32°"
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "method": "external secants: b-d=60°, a-c=96°; with total arcs 360°, c+d=102°; x=(c+d)/2=51°"
+    },
+    {
+      "qid": 10,
+      "verdict": "PASS",
+      "method": "BAC=BDC=90° makes BC a common diameter and Q the center; intersecting chords APD=119° gives arc AD=58°, so central AQD=58°"
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "method": "mean 13 for five gives total 65; known total 50, so B=15"
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS",
+      "method": "a+b+c=27; transformed total=54-3=51, average=17"
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "method": "sorted data median=13; modes 11 and 13 so b=24; a-b=-11"
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "method": "A median 5.5 mode 5 mean 6; B median 5.5 mode 5 mean 6.5; only statement ④ is false"
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "method": "first median 7 forces a=7; second median 10 then b=11; ab=77"
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "method": "mean 6 gives a+b=16; a-b=2 gives a=9,b=7; 7 is the unique mode"
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "method": "deviation sum 0 gives 2x^2+x-3=0; integer x=1; Jimin=76, Jungkook deviation=1, sum=77"
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "method": "mean=3m; squared deviations total=10m^2; variance=2m^2; m>0 so std=√2 m"
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "method": "mean gives a+b=9; variance gives a^2+b^2=45; 81=45+2ab, so ab=18"
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "method": "among 14 points with x>=5, exactly 7 have y<7; ratio=1/2"
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "method": "winter temperature vs heating cost is negative correlation; ㄱ latitude-temperature, ㄴ oil production-price, ㅁ altitude-oxygen are negative; choice ⑤"
+    },
+    {
+      "qid": 22,
+      "verdict": "PASS",
+      "method": "ACB=126° subtends major arc AB=252°, so minor central AOB=108°; angle between two tangents=180°-108°=72°"
+    },
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "method": "let B=β,C=γ in triangle ABC; β+γ=116°. Tangent/chord orientation gives BAD=180°-γ, hence ADB=γ-β; its bisector gives ADE=(γ-β)/2; AED=(β+γ)/2=58°"
+    },
+    {
+      "qid": 24,
+      "verdict": "PASS",
+      "method": "mean=14; deviations are 4,-5,2,4,-4,-1; squared sum=78, variance=78/6=13"
+    },
+    {
+      "qid": 25,
+      "verdict": "PASS",
+      "method": "mean 0 and variances 1,3 give square sums 3 and 9; combined variance=(3+9)/6=2, std=√2"
+    }
+  ],
+  "blindDecisionStatus": "FROZEN_PASS_SOURCE_ANSWER",
+  "nextStep": "COMPARE_TARGET_SOLUTION_META_VISUAL_RUNTIME_AFTER_FREEZE"
+}
