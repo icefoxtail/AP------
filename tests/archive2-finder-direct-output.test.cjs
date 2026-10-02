@@ -11,7 +11,7 @@ test("Archive2 Finder exposes one-click exam, solution, and answer outputs besid
   assert.notEqual(start, -1);
   assert.match(finder, /\[\["exam", "시험"\], \["sol", "해설"\], \["ans", "정답"\]\]/);
   assert.match(finder, /button\("source-output-direct", label,[\s\S]*?data-mode="\$\{mode\}"/);
-  assert.match(finder, /button\("source-issue", "바로 출제"/);
+  assert.match(finder, /button\("source-issue", "출제"/);
   assert.match(finder, /button\("source-toggle"/);
   assert.doesNotMatch(finder, /source-preview/, "Finder output actions must not retain the modal preview route");
 });
