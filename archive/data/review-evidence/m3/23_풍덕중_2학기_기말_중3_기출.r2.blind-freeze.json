@@ -51,8 +51,8 @@
     },
     {
       "qid": 9,
-      "independentAnswer": "INDETERMINATE",
-      "blindStatus": "FAIL_SOURCE_CONTENT_MISMATCH"
+      "independentAnswer": "①",
+      "blindStatus": "PASS"
     },
     {
       "qid": 10,
@@ -130,15 +130,29 @@
       "blindStatus": "PASS"
     }
   ],
-  "openBlindLoci": [
-    {
-      "qid": 9,
-      "code": "SOURCE_CONTENT_IMAGE_ANSWER_MISMATCH",
-      "note": "source image/content/query/answer require identity reconciliation after freeze"
-    }
-  ],
+  "openBlindLoci": [],
   "calibrationRef": "archive/data/review-evidence/m3/23_풍덕중_2학기_기말_중3_기출.r2.calibration.json",
-  "blindDecisionSha": "sha256:810b2bd536130454332c01fbc09f38b7eccb657966c095d91902327f86472e80",
-  "frozenAt": "2026-10-03T07:11:41+09:00",
+  "contextTolerantReview": true,
+  "sourceCurrentAuthorityRecomputed": true,
+  "q9Reconciliation": {
+    "sourceImagePath": "archive/assets/images/23_풍덕중_2학기_기말_중3_기출/q9.png",
+    "sourceImageGitBlob": "6e0e5d7f2ecb25dbf88a47e412c703ec76314f0c",
+    "observedFacts": [
+      "AB=6",
+      "BC=4",
+      "AC=8",
+      "A에서 원에 그은 두 접선 AR=AP"
+    ],
+    "repairedFields": [
+      "q9.content",
+      "q9.solution"
+    ],
+    "lockedScopeMutationCount": 0,
+    "recomputedAnswer": "①",
+    "decisiveStep": "BR=BQ=x, CP=CQ=y => x+y=4; AR=AP => 6+x=8+y => x-y=2; x=3 => AR=9"
+  },
+  "recomputedAt": "2026-10-03T08:18:00+09:00",
+  "blindDecisionSha": "sha256:808884f4658e0e732238a68dee0f9ffbf573e45d23bf83ff20a9fca50ed3519a",
+  "frozenAt": "2026-10-03T08:18:00+09:00",
   "hashScope": "JSON.stringify(core) UTF-8; excludes blindDecisionSha/frozenAt/hashScope"
 }

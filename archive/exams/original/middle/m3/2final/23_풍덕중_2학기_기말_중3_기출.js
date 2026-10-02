@@ -278,7 +278,7 @@ window.questionBank=[
       "도형"
     ],
     "wide": false,
-    "content": "$\\triangle ABC$의 두 변의 연장선과 나머지 한 변이 점 $P,Q,R$에서 접하는 원 $O$에 대하여 $\\overline{AB}=6$, $\\overline{BC}=8$, $\\overline{AC}=4$일 때 $\\overline{BR}$의 길이로 적절한 것은? [4점]",
+    "content": "$\\triangle ABC$의 두 변의 연장선과 나머지 한 변이 점 $P,Q,R$에서 접하는 원 $O$에 대하여 $\\overline{AB}=6$, $\\overline{BC}=4$, $\\overline{AC}=8$일 때 $\\overline{AR}$의 길이로 적절한 것은? [4점]",
     "choices": [
       "$9$",
       "$8$",
@@ -287,7 +287,7 @@ window.questionBank=[
       "$10$"
     ],
     "answer": "①",
-    "solution": "$AR=AQ=a$, $CP=CQ=c$라 두면 $a+c=AC=4$이다.\n또 $BR=BA+AR=6+a$, $BP=BC+CP=8+c$이고 같은 점 $B$에서 그은 접선이므로 $BR=BP$이다.\n따라서 $a-c=2$이고, 두 식을 풀면 $a=3$, $c=1$이다.\n그러므로 $BR=6+3=9$이고 정답은 ①이다.",
+    "solution": "같은 점에서 원에 그은 두 접선의 길이는 같다.\n$BR=BQ=x$, $CP=CQ=y$라 두면 $x+y=BC=4$이다.\n또 $AR=AB+BR=6+x$, $AP=AC+CP=8+y$이고 같은 점 $A$에서 그은 두 접선이므로 $AR=AP$이다.\n따라서 $x-y=2$이고, 두 식을 풀면 $x=3$, $y=1$이다.\n그러므로 $AR=6+3=9$이고 정답은 ①이다.",
     "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q9.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
