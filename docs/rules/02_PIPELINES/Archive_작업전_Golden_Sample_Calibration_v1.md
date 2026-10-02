@@ -1,5 +1,30 @@
 # Archive 작업 전 Golden Sample Calibration v1
 
+## CURRENT HARD RULE — 2026-10-02 — REVIEW ATTEMPT V2 / PREFLIGHT ORDER
+
+모든 REVIEW/repair worker의 calibration 순서는 다음으로 고정한다.
+
+```text
+stage assignment / selector-safe metadata
+→ Golden Sample 2~3 + related Negative Sample
+→ CALIBRATION_PREFLIGHT PASS
+→ target source/required authority 기반 independent judgment
+→ blindDecisionSha freeze
+→ prior solution / verdict / checkpoint / repair / diff compare
+→ final quality compare
+→ stage close
+```
+
+- blind 독립성의 단위는 **automation/thread 전체가 아니라 reviewAttemptId**다.
+- 유효한 blindDecisionSha가 동결된 뒤 prior detail을 본 것은 contamination이 아니라 정상 compare/continuation이다.
+- 이후 write/validator/Git/Notion 실패가 나도 같은 reviewAttemptId로 이어서 닫는다.
+- blindDecisionSha 동결 전에 target prior detail이 선노출되어 독립성이 실제로 깨진 경우 **그 attempt만 INVALID**다.
+- worker/thread 전체를 permanent contaminated로 취급하지 않는다.
+- fresh blind 재검이 필요하면 MASTER가 **fresh one-shot reviewer/task를 새로 생성**할 수 있다.
+- 과거 persistent-thread contamination / existing dormant clean-slot / new-task prohibition 계약은 `90_ARCHIVE/JS_Archive_Automation_Operational_Contracts_PreStable_2026-10-02.md`의 HISTORY다.
+- automation role/schedule/recovery는 `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md`가 authority다.
+- `solution-calibration-gate.mjs`의 sampleReadBeforeWork와 calibrationOrder evidence 요구는 그대로 유지한다.
+
 ## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER START GATE
 
 이 calibration은 더 이상 CREATE/solution production 전용이 아니다. **학생 노출 JS의 해설·solutionImage/SVG·문항 품질을 생성·수정·검수·승인하는 모든 worker의 공통 START GATE**다.
@@ -44,7 +69,7 @@ stage는 실제 역할에 따라 `REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_RE
 
 - NEW/SOURCE-ONLY 및 fresh-rewrite CREATE: target source/answer로 fresh solution을 먼저 동결 → Golden/Negative Sample을 실제 판독 → target 품질 보강. 기존 solution이 없으면 찾거나 억지로 참고하지 않는다.
 - 기존 production SOLUTION UPGRADE: current solution baseline 확인 → 수학 정합성 확인 → Golden/Negative Sample calibration → 부족 문항 upgrade.
-- R1/R2/R3: target의 blind/independent 판단을 먼저 동결 → Sample은 quality floor 비교에만 사용. Blind → Compare를 훼손하지 않는다.
+- R1/R2/R3: Golden/Negative preflight를 먼저 완료한 뒤 target의 blind/independent 판단을 동결한다. Sample의 정답·Meta·difficulty를 target 판단 힌트로 쓰지 않으며, blind freeze 뒤 final quality floor compare만 수행한다.
 - solution을 생성·수정·승인하지 않는 순수 Meta-only/Git/manifest 작업만 `EXAM_SAMPLE_NOT_APPLICABLE` 가능. 이 경우 해설 품질 PASS/SOLUTION_COMPLETE를 새로 선언할 수 없다.
 
 `JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1.solutionQualityCalibration` 최소 필드:
@@ -172,7 +197,7 @@ Golden Sample pre-read가 독립 의미 판정을 오염시키면 안 된다.
 - 학생용 표현/가독성 개선
 - evidence 형식·보고 품질 calibration
 
-### target 의미 판정을 먼저 blind로 동결해야 하는 작업
+### sample preflight 뒤 target 의미 판정을 blind로 동결해야 하는 작업
 - 정답·수학 검수
 - difficulty fresh 판정
 - L3/L4 / RPM / Meta semantic 판정
@@ -182,13 +207,15 @@ Golden Sample pre-read가 독립 의미 판정을 오염시키면 안 된다.
 이 경우 순서는:
 
 ```text
-target source + required authority만 읽음
-→ blind decision freeze
-→ 그 뒤 Golden/Negative Sample과 비교
+Golden/Negative Sample preflight
+→ target source + required authority만 읽음
+→ target prior solution/verdict/checkpoint를 가린 채 blind decision freeze
+→ 그 뒤 target prior artifact와 compare
+→ Golden quality floor와 final compare
 → 품질/일관성 차이만 보정
 ```
 
-샘플의 정답·difficulty·Meta key를 target 판정의 힌트로 사용하지 않는다.
+샘플의 정답·difficulty·Meta key를 target 판정의 힌트로 사용하지 않는다. **pre-read와 final compare는 다른 단계**이며, pre-read를 했다는 이유로 target prior verdict를 blind freeze 전에 볼 수 있는 것은 아니다.
 
 ---
 

@@ -326,7 +326,7 @@ window.questionBank = [
       "ㅁ"
     ],
     "answer": "3",
-    "solution": "표에서 직접 또는 100의 거듭제곱을 이용해 바꿀 수 있는지 확인한다.\nㄱ. $\\sqrt{4.52}$는 표에서 바로 구할 수 있다.\nㄴ. $\\sqrt{484}=10\\sqrt{4.84}$\nㄹ. $\\sqrt{46200}=100\\sqrt{4.62}$\nㅁ. $\\sqrt{0.0493}=\\frac{\\sqrt{4.93}}{10}$\n반면 $\\sqrt{0.475}=\\frac{\\sqrt{4.75}}{\\sqrt{10}}$이어서 이 표만으로는 구할 수 없다.\n$\\therefore$ ㄷ, ③",
+    "solution": "표에서 직접 또는 100의 거듭제곱을 이용해 바꿀 수 있는지 확인한다.\nㄱ. $\\sqrt{4.52}$는 표에서 바로 구할 수 있다.\nㄴ. $\\sqrt{484}=10\\sqrt{4.84}$\nㄹ. $\\sqrt{46200}=100\\sqrt{4.62}$\nㅁ. $\\sqrt{0.0493}=\\frac{\\sqrt{4.93}}{10}$\nㄷ. $\\sqrt{0.475}=\\frac{\\sqrt{4.75}}{\\sqrt{10}}$이어서 이 표만으로는 구할 수 없다.\n$\\therefore$ ㄷ, ③",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",

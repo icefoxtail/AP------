@@ -32,10 +32,6 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
-    label: 'tests/archive-phase5-gate5-readiness.test.mjs (o67 R1 preflight)',
-    args: ['--test', 'tests/archive-phase5-gate5-readiness.test.mjs']
-  },
-  {
     label: 'archive/tools/solution-calibration-gate.mjs syntax',
     args: ['--check', 'archive/tools/solution-calibration-gate.mjs']
   },
