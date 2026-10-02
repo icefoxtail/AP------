@@ -1,3 +1,10 @@
+## CURRENT OVERRIDE — 2026-10-03 — DIFFICULTY 재검 / PRIOR LEVEL VISIBILITY ALLOWED
+
+- 기존 `level`, 이전 `difficultyBucket`, 과거 difficulty verdict가 **보였다는 사실 자체는 재검 무효 사유가 아니다.**
+- current 문항의 풀이 단계·계산량·추론·함정·표현 복잡도와 Foundation context를 기준으로 bucket을 다시 판정하고, 기존 값은 마지막 비교/compatibility 확인에만 사용한다.
+- `blind_bucket`, `blind first-pass` 같은 기존 필드명/문구는 schema·history 호환용으로 유지할 수 있으나 **fresh reviewer나 non-exposure를 요구하지 않는다.** 의미는 current-pass recheck bucket snapshot이다.
+- 기존 값을 그대로 복사하거나 기존 level에 맞춰 bucket을 역산하는 것은 금지한다.
+
 # JS아카이브 `difficultyBucket` 5단계 운영규칙 v1.3
 
 작성일: 2026-09-16  
