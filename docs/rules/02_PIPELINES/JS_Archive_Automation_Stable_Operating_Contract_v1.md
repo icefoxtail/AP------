@@ -193,12 +193,126 @@ MASTER도 다음 사실은 조작할 수 없다.
 
 문서 갱신은 마지막이다.
 
-### 3.5 MASTER_LEASE
+### 3.5 MASTER_LEASE v2 — single-writer / no duplicate mutation HARD
 
-- MASTER-A/B/C는 target별 MASTER_LEASE를 사용한다.
-- 유효 lease + durable progress가 있으면 다음 MASTER는 건드리지 않는다.
-- lease만 있고 durable progress가 없거나 timeout이면 다음 MASTER가 takeover할 수 있다.
-- durable progress는 artifact SHA 변경, validator receipt, commit, stage transition, main merge 중 하나 이상으로 본다.
+MASTER-A/B/C는 병렬 감시자이지만 **동일 artifact의 동시 수정자는 아니다.** 같은 시험지·같은 stage·같은 input artifact에는 항상 MASTER 1개만 mutation authority를 가진다.
+
+#### 3.5.1 lease identity
+
+exclusive lease key는 다음 3개를 결속한다.
+
+```text
+leaseKey = sha256(examUid + stage + inputArtifactSha)
+```
+
+`repairFingerprint`는 lease를 쪼개는 key가 아니라 **lease 내부의 secondary dedupe identity**다. 같은 artifact에서 defect가 여러 개 보여도 별도 MASTER들이 병렬 수정하지 않는다.
+
+최소 lease record:
+
+- `masterLeaseId`
+- `leaseKey`
+- `owner = MASTER-A | MASTER-B | MASTER-C`
+- `examUid`
+- `stage`
+- `inputArtifactSha`
+- `targetBranch`
+- `targetHeadAtClaim`
+- `repairFingerprint`
+- `failedGate`
+- `openQids[] / openFiles[] / openFields[]`
+- `firstMissingClosureStep`
+- `claimedAt`
+- `expiresAt`
+- `lastProgressAt`
+- `expectedCompletionGate`
+- `status = ACTIVE | HANDOFF_READY | CLOSED`
+
+`repairFingerprint`는 최소 `failedGate + openQids/openFiles/openFields + firstMissingClosureStep`를 canonical sort/normalize한 값으로 만든다.
+
+#### 3.5.2 atomic claim
+
+MASTER는 defect를 발견했다고 바로 수정하지 않는다.
+
+```text
+read-only scan
+→ leaseKey/repairFingerprint 계산
+→ remote MASTER_LEASE atomic claim
+→ claim readback
+→ target HEAD/input SHA 재조회
+→ 유일 owner 확인 후에만 mutation
+```
+
+- lease는 main이 아닌 전용 temporary remote ref/record로 물리화한다.
+- 같은 `leaseKey`에 기존 ACTIVE lease가 있으면 새 claim은 실패해야 하며, 실패한 MASTER는 **mutation 0**으로 해당 target을 건너뛰고 다음 eligible을 찾는다.
+- claim 성공 직후 반드시 remote lease를 다시 읽어 `masterLeaseId/owner/inputArtifactSha`가 자기 claim과 exact인지 확인한다.
+- claim 뒤 target HEAD 또는 inputArtifactSha가 이미 바뀌었으면 lease를 사용하지 않고 최신 상태에서 selector를 다시 시작한다.
+
+#### 3.5.3 pre-mutation CAS recheck
+
+다음 각 경계 직전에 MASTER는 lease와 target을 다시 읽는다.
+
+1. production/candidate file write 직전
+2. validator/Actions trigger 직전
+3. validator receipt write 직전
+4. stage receipt/state transition 직전
+5. merge/publish 직전
+
+필수 조건:
+
+```text
+currentLease.masterLeaseId == myLeaseId
+AND currentLease.owner == me
+AND currentTargetHead == expectedTargetHead
+AND currentInputArtifactSha == leasedInputArtifactSha
+```
+
+하나라도 다르면 stale 판단을 폐기하고 **mutation 0**. 다른 MASTER/worker가 만든 최신 artifact를 덮어쓰거나 같은 repair를 반복하지 않는다.
+
+자기 write로 HEAD가 이동한 경우에는 write 결과 readback 후 lease의 `expectedTargetHead/lastProgressAt`을 새 값으로 갱신한 뒤 다음 mutation으로 진행한다.
+
+#### 3.5.4 duplicate repair suppression
+
+- ACTIVE lease가 있는 target은 다른 MASTER가 read-only 관찰은 할 수 있지만 repair/write/validator/receipt/publish mutation을 하지 않는다.
+- 같은 `repairFingerprint`가 이미 newer HEAD/receipt에서 닫혔으면 새 repair를 만들지 않고 stale debt/claim만 정리한다.
+- 다른 `repairFingerprint`가 발견돼도 같은 `examUid + stage + inputArtifactSha`라면 현재 lease owner가 한 run에서 함께 판단하거나 durable handoff한다. 별도 MASTER가 같은 artifact를 병렬 수정하지 않는다.
+- 유효 lease target 하나 때문에 MASTER run 전체를 종료하지 않는다. skip 후 다음 eligible target을 계속 찾는다.
+
+#### 3.5.5 lease lifetime / takeover
+
+기본 ACTIVE lease TTL은 **90분**이다. 긴 validator/Actions 실행을 고려해 20분 MASTER 간격보다 충분히 길게 둔다.
+
+takeover는 아래를 **모두** 만족할 때만 허용한다.
+
+1. `expiresAt` 경과
+2. lease owner의 최신 durable progress가 없음
+3. target HEAD/input SHA 재조회 완료
+4. 관련 validator/workflow가 queued/in_progress가 아님
+5. 기존 owner가 만든 새 commit/receipt/stage transition이 claim 직전 재조회에서도 없음
+
+takeover도 stale lease 정리 후 **새 atomic claim + post-claim readback**을 다시 통과해야 한다. 단순히 “다른 MASTER가 20분 뒤 왔다”는 이유만으로 takeover하지 않는다.
+
+durable progress는 최소 다음 중 하나다.
+
+- target/candidate HEAD 또는 artifact SHA 이동
+- validator workflow/run/job 생성 또는 완료
+- validator receipt
+- stage receipt/state transition
+- publish/main merge
+
+#### 3.5.6 release / handoff
+
+- 정상 closure 후 MASTER는 receipt/readback에 `masterLeaseId`를 남기고 lease를 `CLOSED` 처리한다.
+- runtime 종료 등으로 직접 closure가 불가능하지만 exact continuation이 물리화됐으면 `HANDOFF_READY`로 닫고 `candidate HEAD / finalArtifactSha / firstMissingClosureStep / validationExecutor`를 결속한다.
+- HANDOFF_READY 이후 다음 MASTER는 기존 repair를 처음부터 재실행하지 않고 exact continuation에서 새 lease를 획득한다.
+- 문서만 남기고 ACTIVE lease를 방치하지 않는다.
+
+#### 3.5.7 PUBLISH singleton
+
+PUBLISH/main mutation은 target lease와 별개로 **전역 `PUBLISH_LEASE` 1개**를 사용한다.
+
+- GPT PUBLISH, Codex publisher, MASTER의 emergency publish 모두 같은 singleton lease를 사용한다.
+- lease 획득 실패 시 main mutation 0.
+- publish 직전 latest main + release backlog + lease owner를 다시 읽고, batch가 이미 소비됐으면 mutation 0.
 
 ## 4. 실패 처리
 
