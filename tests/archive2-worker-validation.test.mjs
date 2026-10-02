@@ -4,6 +4,7 @@ import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
+import * as savedPaperLibrary from "../apmath/worker-backup/worker/helpers/archive-saved-papers.js";
 import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
 import {
@@ -365,5 +366,21 @@ test("taxonomy fingerprint excludes answer and solution while full source finger
   await expectValidationFailure(
     () => validateApprovedMixedQuestions(env, [answerOnlyEdit], input(gradeOnlyFilters)),
     "문항 내용 fingerprint가 일치하지 않습니다.",
+  );
+});
+
+test("library state defaults legacy rows and never revives a one-way tombstone", () => {
+  const resolve = savedPaperLibrary.resolveSavedPaperLibraryStatus;
+  assert.equal(typeof resolve, "function", "the legacy/status precedence resolver is a public shared helper");
+  assert.equal(resolve({ deleted_at: null }, null), "ACTIVE");
+  assert.equal(resolve({ deleted_at: null }, { status: "ARCHIVED" }), "ARCHIVED");
+  assert.equal(resolve({ deleted_at: null }, { status: "TRASHED" }), "TRASHED");
+  assert.equal(
+    resolve({ deleted_at: "2026-01-01T00:00:00.000Z" }, { status: "ACTIVE" }),
+    "TRASHED",
+  );
+  assert.throws(
+    () => resolve({ deleted_at: null }, { status: "BROKEN" }),
+    /invalid library status/i,
   );
 });

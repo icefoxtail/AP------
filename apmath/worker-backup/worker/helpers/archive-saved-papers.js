@@ -13,6 +13,17 @@ export const MAX_SAVED_PAPER_BYTES = 1_500_000;
 export const MAX_SAVED_BATCH_BYTES = 8_000_000;
 export const MAX_SAVED_PAPERS = 8;
 export const MAX_SAVED_QUESTIONS = 400;
+export const SAVED_PAPER_LIBRARY_STATES = Object.freeze(["ACTIVE", "ARCHIVED", "TRASHED"]);
+const SAVED_PAPER_LIBRARY_STATUS_SET = new Set(SAVED_PAPER_LIBRARY_STATES);
+
+export function resolveSavedPaperLibraryStatus(savedPaper, libraryMetadata = null) {
+  if (!savedPaper || typeof savedPaper !== "object") throw new TypeError("saved paper row is required");
+  if (savedPaper.deleted_at !== null && savedPaper.deleted_at !== undefined) return "TRASHED";
+  const status = libraryMetadata?.status ?? "ACTIVE";
+  if (!SAVED_PAPER_LIBRARY_STATUS_SET.has(status))
+    throw new Error("invalid library status: " + String(status));
+  return status;
+}
 
 const FILTER_KEYS = new Set([
   "grade", "curriculumKey", "courseKey", "semanticSubject", "L1", "L2", "L3", "L4",
