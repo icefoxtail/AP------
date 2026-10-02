@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_STAGE_RECEIPT_v1",
+  "stage": "R3",
+  "examUid": "m3/1mid/25-wangun",
+  "canonicalOrdinal": 3,
+  "finalArtifactGitBlobSha": "ea3169df67445f359b269115f23e238f7deddd76",
+  "finalArtifactSha256": "sha256:f594cd35316e16579c7444c86ad2ada13930957e24b2ca8e25924ccbc2228f6f",
+  "disposition": "R3_FAIL_DEFERRED",
+  "nextStage": "R3_REPAIR",
+  "failureCode": "META_L1_L2_RPM_PATH_MISMATCH",
+  "failedQids": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    17,
+    18,
+    22
+  ],
+  "failPacketPath": "archive/data/r3-intake/m3/25_왕운중_1학기_중간_중3_기출.r3.fail-packet.json",
+  "validatorReceiptPath": "archive/data/r3-intake/m3/25_왕운중_1학기_중간_중3_기출.r3.validator-receipt.json",
+  "physicalEvidencePath": "archive/data/r3-intake/m3/25_왕운중_1학기_중간_중3_기출.r3.physical-evidence.json",
+  "directRepairPerformed": false,
+  "productionMutationCount": 0,
+  "protectedFieldMutationCount": 0,
+  "lockedScopeMutationCount": 0,
+  "currentAuthorityMain": "1c0f07eaa29bf4049f36530e16a782b3f7033657",
+  "requiredRecovery": {
+    "stage": "R3_REPAIR",
+    "openQids": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      17,
+      18,
+      22
+    ],
+    "openFields": [
+      "standardUnitKey",
+      "standardUnit",
+      "subUnitKey",
+      "subUnit"
+    ],
+    "postRepairGate": "POST_REPAIR_RECHECK",
+    "postRepairRequirements": [
+      "recompute open/changed locus and direct dependency",
+      "remainingFailureCodes=[]",
+      "newDirectDefects=[]",
+      "lockedScopeMutationCount=0",
+      "canonical recheck validator PASS"
+    ]
+  }
+}
