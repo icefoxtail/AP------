@@ -202,6 +202,7 @@
   };
   let autosaveTimer,
     previewTimer,
+    previewOutputEnvelope = null,
     candidateRecords = [],
     replacementIndex = -1,
     classRows = [],
@@ -1053,7 +1054,7 @@
       qpp,
     });
     state.originalReceipts = [];
-    state.originalPreviewKey = "preview-" + crypto.randomUUID();
+    state.originalPreviewEnvelope = null;
     showDialog(
       O.displayTitle(exam),
       `<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 수록 순서 그대로</span><div class="actions">${button("original-review", "시험지 확인", 'aria-pressed="true"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="false"')}</div><details class="original-output"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details></div><div id="original-receipts"></div><section id="original-review"><div class="resultbar"><p class="muted">학생에게 나갈 시험지입니다. 출력 설정을 바꾸면 여기에 반영됩니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="학생에게 나갈 시험지"></iframe></section><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`,
@@ -1076,26 +1077,50 @@
     // render; refresh only after the review panel becomes visible.
     if (step === "review") updateOriginalPreview();
   }
-  async function originalOutputUrl() {
+  async function originalOutputUrl(mode = "exam") {
     const e = state.originalExam, s = state.originalSettings;
     const saved = state.originalReceipts?.[0];
-    const key = saved?.key || state.originalPreviewKey;
+    let sourceKind = "archive2-original";
+    let sourceId = e.file;
+    let assignmentId;
+    let questions;
+    let meta;
     if (!saved) {
-      const questions = await Source.load(e.file, new Map(state.catalog.sourceHashes).get(e.file));
+      questions = await Source.load(e.file, new Map(state.catalog.sourceHashes).get(e.file));
       const questionUids = state.catalog.records.filter(r => r.sourceFile === e.file)
         .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)
         .map(r => r.identityStatus === "VERIFIED" ? r.questionUid : null);
-      localStorage.setItem("archive2Original_" + key, JSON.stringify({ questions, meta: {
+      meta = {
         sourceKind: "archive2-original", sourceArchiveFile: e.file, questionUids,
         identityTitle: e.identityTitle || e.file.split("/").pop().replace(/\.js$/, ""),
         printHeaderOptions: s.header, qpp: s.qpp, includeQr: s.includeQr,
-      }}));
+      };
+    } else {
+      sourceKind = "assignment";
+      sourceId = saved.id;
+      assignmentId = saved.id;
+      const result = await api(`/class-exam-assignments/${encodeURIComponent(saved.id)}/status`);
+      const payload = JSON.parse(result.assignment?.mixed_payload_json || "null");
+      if (!Array.isArray(payload?.questions) || !payload.meta)
+        throw new Error("저장된 출제 snapshot을 확인할 수 없습니다. 최근 출제에서 다시 열어 주세요.");
+      questions = payload.questions;
+      meta = payload.meta;
     }
-    const url = O.applyUrl(O.engineUrl("engine.html", location.href), s);
-    url.searchParams.set("originalSnapshot", key);
-    url.searchParams.set("data", "exams/" + e.file);
-    url.searchParams.set("mode", "exam");
-    return url;
+    const envelope = await O.publishOutputEnvelope({
+      sourceKind,
+      sourceId,
+      ...(assignmentId ? { assignmentId } : {}),
+      mode,
+      questionCount: questions.length,
+      questionUids: meta.questionUids,
+      meta,
+      questions,
+    });
+    const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, {
+      preview: true,
+      assignmentId,
+    });
+    return { url, envelope };
   }
   async function updateOriginalPreview() {
     const token = state.originalPreviewToken = (state.originalPreviewToken || 0) + 1;
@@ -1104,24 +1129,30 @@
     const status = $("original-preview-status");
     status.textContent = "시험지를 불러오는 중…";
     try {
-      const url = await originalOutputUrl();
-      if (token !== state.originalPreviewToken || !frame.isConnected || $("original-review").hidden) return;
-      url.searchParams.set("archive2Review", "1");
+      const output = await originalOutputUrl();
+      if (token !== state.originalPreviewToken || !frame.isConnected || $("original-review").hidden) {
+        await O.createOutputStore().cleanup(output.envelope.ownerId, output.envelope.outputRequestId);
+        return;
+      }
+      const previousEnvelope = state.originalPreviewEnvelope;
+      state.originalPreviewEnvelope = output.envelope;
       // Refresh after an output setting changes, even though snapshot identity stays stable.
-      url.searchParams.set("revision", String(token));
+      output.url.searchParams.set("revision", String(token));
       frame.onload = () => {
         status.textContent = "출제할 문항과 출력 설정을 확인하세요.";
         if (!$("original-review")?.hidden) $("modal").scrollTop = 0;
       };
-      frame.src = url.href;
+      frame.src = output.url.href;
+      if (previousEnvelope)
+        await O.createOutputStore().cleanup(previousEnvelope.ownerId, previousEnvelope.outputRequestId);
     } catch (error) { status.textContent = "시험지를 표시하지 못했습니다: " + error.message; }
   }
   async function originalPrint() {
     const popup = window.open("about:blank", "_blank");
     try {
-      const url = await originalOutputUrl();
+      const output = await originalOutputUrl();
       if (!popup) throw new Error("팝업을 허용해 주세요.");
-      popup.location.href = url.href;
+      popup.location.href = output.url.href;
     } catch (error) { popup?.close(); throw error; }
   }
 
@@ -1414,7 +1445,7 @@
           a.questionCount === null ? "" : `${a.questionCount}문항`,
           a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
           a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`].filter(Boolean);
-        return `<article class="history-card"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div><div class="history-card-footer"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${a.pdfReady ? "PDF 준비 완료" : "출제 저장됨 · PDF 확인 필요"}</span>${button("assignment-status", "학생별 확인 · 출력", `data-assignment="${esc(a.id)}" class="small"`)}</div></article>`;
+        return `<article class="history-card"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div><div class="history-card-footer"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${a.pdfReady ? "PDF 준비 완료" : "출제 저장됨 · PDF 확인 필요"}</span><div class="actions" role="group" aria-label="최근 출제 바로 열기">${[["exam", "문제"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
       }).join("")}</div></section>`
     ).join("") || '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
   }
@@ -1492,40 +1523,23 @@
       `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p><div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : "PDF 파일은 아직 준비되지 않았지만 온라인 문제·정답·해설과 오답 입력을 사용할 수 있습니다."}</div><div class="actions">${["exam", "ans", "sol"].map((m, i) => button("assignment-output", ["문제지", "정답", "해설"][i], `data-mode="${m}"`)).join("")}${a.pdf_status !== "ready" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${a.id}"`) : ""}</div><h3>학생별 확인</h3><div class="assignment-students">${active.map((s) => `<div class="recent-row"><span>${esc(s.name)}</span><span>${s.session_id ? "오답 입력 완료" : "오답 입력 전"}</span><a href="../apmath/student/index.html?teacher_preview=1&student_id=${encodeURIComponent(s.student_id)}" target="_blank">학생 화면 확인</a></div>`).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><p>${excluded.map((s) => esc(s.name)).join(" · ")}</p></details>` : ""}`,
     );
   }
-  function assignmentOutput(mode) {
-    const a = state.openAssignment.assignment,
-      p = JSON.parse(a.mixed_payload_json || "null"),
-      u = O.engineUrl(
-        a.archive_file.startsWith("MIXED:")
-          ? "mixed_engine.html"
-          : "engine.html",
-        location.href,
-      );
-    if (a.archive_file.startsWith("MIXED:")) {
-      const key = a.archive_file.slice(6);
-      localStorage.setItem(
-        "mixedQuestions_" + key,
-        JSON.stringify(p.questions),
-      );
-      localStorage.setItem("mixedMeta_" + key, JSON.stringify(p.meta));
-      u.searchParams.set("key", key);
-    } else {
-      u.searchParams.set("data", a.archive_file);
-      if (p?.meta?.sourceKind === "archive2-original") {
-        const key = "original-" + a.id;
-        localStorage.setItem("archive2Original_" + key, JSON.stringify(p));
-        u.searchParams.set("originalSnapshot", key);
-      }
+  async function openAssignmentOutput(assignmentId, mode) {
+    const popup = window.open("about:blank", "_blank");
+    if (!popup) throw new Error("팝업을 허용한 뒤 다시 출력하세요.");
+    try {
+      const data = await api(`/class-exam-assignments/${encodeURIComponent(assignmentId)}/output?mode=${encodeURIComponent(mode)}`);
+      const envelope = data.envelope;
+      if (!envelope) throw new Error("Worker가 immutable snapshot 출력 envelope를 반환하지 않았습니다.");
+      await O.storeOutputEnvelope(envelope);
+      const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, {
+        studio: true,
+        assignmentId,
+      });
+      popup.location.href = url.href;
+    } catch (error) {
+      popup.close();
+      throw error;
     }
-    O.applyUrl(u, {
-      header: p?.meta?.printHeaderOptions,
-      qpp: p?.meta?.qpp || a.pdf_qpp,
-      includeQr: p?.meta?.includeQr,
-    });
-    if (a.archive_file.startsWith("MIXED:")) u.searchParams.set("studio", "1");
-    u.searchParams.set("mode", mode);
-    u.searchParams.set("assignmentId", a.id);
-    window.open(u.href, "_blank");
   }
   function renderHealth() {
     const h = state.catalog.health,
@@ -1665,15 +1679,7 @@
           });
         }
         const frozen = frozenPaperCache.get(saved.key);
-        localStorage.setItem(
-          "mixedQuestions_" + frozen.key,
-          JSON.stringify(frozen.questions),
-        );
-        localStorage.setItem(
-          "mixedMeta_" + frozen.key,
-          JSON.stringify(frozen.meta),
-        );
-        prepared.push(frozen);
+        prepared.push({ ...frozen, assignmentId: saved.id });
         continue;
       }
       const part = await Source.restore(
@@ -1713,8 +1719,6 @@
         outputContractVersion: C.VERSION,
         indexVersion: state.catalog.indexVersion,
       };
-      localStorage.setItem("mixedQuestions_" + key, JSON.stringify(part));
-      localStorage.setItem("mixedMeta_" + key, JSON.stringify(meta));
       prepared.push({ key, index, questions: part, meta });
     }
     if (
@@ -1800,20 +1804,26 @@
       render();
     }
   }
-  function outputUrl(paper, mode = state.outputMode, preview = true) {
-    const url = O.engineUrl("mixed_engine.html", location.href);
-    url.searchParams.set("key", paper.key);
-    url.searchParams.set("qpp", state.qpp);
-    url.searchParams.set("q", paper.questions.length);
-    url.searchParams.set("mode", mode);
-    url.searchParams.set("studio", "1");
-    O.applyUrl(url, {
-      header: paper.meta.printHeaderOptions,
-      qpp: paper.meta.qpp,
-      includeQr: paper.meta.includeQr,
+  async function outputUrl(paper, mode = state.outputMode, preview = true) {
+    const questionUids = paper.meta.questionUids || paper.questions.map((question) =>
+      question.questionUid || question.source_question_uid || question._sourceQuestionUid || null,
+    );
+    const envelope = await O.publishOutputEnvelope({
+      sourceKind: paper.assignmentId ? "assignment" : "archive2-compose",
+      sourceId: paper.assignmentId || paper.key,
+      ...(paper.assignmentId ? { assignmentId: paper.assignmentId } : {}),
+      mode,
+      questionCount: paper.questions.length,
+      questionUids,
+      meta: paper.meta,
+      questions: paper.questions,
     });
-    if (preview) url.searchParams.set("archive2Review", "1");
-    return url.href;
+    const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, {
+      studio: true,
+      preview,
+      assignmentId: paper.assignmentId,
+    });
+    return { href: url.href, envelope };
   }
   async function updatePreview() {
     const host = $("preview-host");
@@ -1826,7 +1836,16 @@
       const frame = document.createElement("iframe");
       frame.className = "preview";
       frame.title = "실제 문제지 미리보기";
-      frame.src = outputUrl(papers[state.previewIndex]);
+      const output = await outputUrl(papers[state.previewIndex]);
+      if (host !== $("preview-host") || token !== state.previewToken) {
+        await O.createOutputStore().cleanup(output.envelope.ownerId, output.envelope.outputRequestId);
+        return;
+      }
+      const previousEnvelope = previewOutputEnvelope;
+      previewOutputEnvelope = output.envelope;
+      frame.src = output.href;
+      if (previousEnvelope)
+        await O.createOutputStore().cleanup(previousEnvelope.ownerId, previousEnvelope.outputRequestId);
       frame.addEventListener("load", () => {
         const doc = frame.contentDocument;
         if (!doc) return;
@@ -1996,11 +2015,12 @@
     try {
       const papers = await finalGate();
       if (!popup) throw new Error("팝업을 허용한 뒤 다시 출력하세요.");
-      popup.location.href = outputUrl(
+      const output = await outputUrl(
         papers[state.previewIndex],
         state.outputMode,
         false,
       );
+      popup.location.href = output.href;
       render();
       status(
         "출력 창을 열었습니다. 학생 출제 전까지 문항을 수정할 수 있습니다.",
@@ -2272,8 +2292,12 @@
         await assignmentStatus(b.dataset.assignment);
         return;
       }
+      if (a === "assignment-output-direct") {
+        await openAssignmentOutput(b.dataset.assignment, b.dataset.mode || "exam");
+        return;
+      }
       if (a === "assignment-output") {
-        assignmentOutput(b.dataset.mode);
+        await openAssignmentOutput(state.openAssignment.assignment.id, b.dataset.mode);
         return;
       }
       if (a === "assignment-pdf") {
@@ -2901,7 +2925,7 @@
       state.originalReceipts = (state.originalReceipts || []).filter(
         (r) => r.id !== a.id,
       );
-      state.originalReceipts.push({ id: a.id, key: event.data.key });
+      state.originalReceipts.push({ id: a.id });
       $("modal")
         .querySelectorAll(
           "[data-output-settings] input,[data-output-settings] select",

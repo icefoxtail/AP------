@@ -2,6 +2,9 @@
 <html lang="ko">
 <head>
     <script src="archive2-review.js"></script>
+    <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
+    <script src="archive2-output.js?v=20261002-output-envelope-v3"></script>
+    <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
     <link rel="stylesheet" href="archive2-review.css">
     <script>
         // Studio owns ordering/header/layout. Keep the existing renderer and print
@@ -16,6 +19,7 @@
         html.archive2-output .print-header-editor-wrap,
         html.archive2-output button[onclick="shuffleData()"],
         html.archive2-output .qr-output-wrap { display: none !important; }
+        html.archive2-output-envelope .mode-tabs { display: none !important; }
         html.archive2-preview #mode-ctrl { display: none !important; }
         html.archive2-preview body { background: #eef0f3 !important; background-image: none !important; padding-top: 10px !important; }
         html.archive2-preview #print-area { margin-top: 0 !important; }
@@ -415,7 +419,7 @@
     <script src="common-fast-runtime.js?v=20260915.2"></script>
     <script src="equal-slot-engine.js?v=20260915.1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20260915.1"></script>
+    <script src="exam-render-executor.js?v=20261002-output-envelope-v3"></script>
     <script src="solution-render-executor.js?v=20260914.1"></script>
     <script src="answer-render-executor.js?v=20260912.1"></script>
 </head>
@@ -431,6 +435,8 @@
             <div class="qpp-selector">
                 <span>문항/쪽:</span>
                 <select id="qppSelect" onchange="changeQpp(this.value)">
+                    <option value="1">1문항</option>
+                    <option value="2">2문항</option>
                     <option value="4">4문항</option>
                     <option value="6">6문항</option>
                     <option value="8">8문항</option>
@@ -2074,7 +2080,7 @@ function changeQpp(val) {
 
 function normalizeMixedQpp(value) {
     const parsed = parseInt(value, 10);
-    return [4, 6, 8].includes(parsed) ? parsed : 4;
+    return [1, 2, 4, 6, 8].includes(parsed) ? parsed : 4;
 }
 async function shuffleData() {
     if (window.mixedFastHost) {
@@ -2215,16 +2221,17 @@ async function renderExam(area, data) {
     const usesSlotLayout = items.some(item => ['subjective-2up', 'subjective-4up'].includes(item.q.layoutTag || ''));
     if (usesSlotLayout) {
         const rowCount = Math.max(1, Math.ceil(AppState.qpp / 2));
+        const slotColumnCount = AppState.qpp === 1 ? 1 : 2;
         const spanFor = item => {
             const tag = item.q.layoutTag || '';
             if (tag === 'subjective-2up') return rowCount;
             if (tag === 'subjective-4up') return Math.max(1, Math.ceil(rowCount / 2));
             return 1;
         };
-        const newSlotPage = () => ({ placements: [], occupied: Array.from({ length: rowCount }, () => [false, false]) });
+        const newSlotPage = () => ({ placements: [], occupied: Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false)) });
         const findSlot = (pageData, span) => {
             for (let row = 0; row <= rowCount - span; row += 1) {
-                for (let col = 0; col < 2; col += 1) {
+                for (let col = 0; col < slotColumnCount; col += 1) {
                     let fits = true;
                     for (let offset = 0; offset < span; offset += 1) {
                         if (pageData.occupied[row + offset][col]) { fits = false; break; }
@@ -2254,7 +2261,7 @@ async function renderExam(area, data) {
             if (!placement && span === rowCount) {
                 const usedSpan = slotPage.placements.reduce((sum, entry) => sum + entry.span, 0);
                 if (usedSpan <= rowCount) {
-                    slotPage.occupied = Array.from({ length: rowCount }, () => [false, false]);
+                    slotPage.occupied = Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false));
                     let packedRow = 0;
                     slotPage.placements.forEach(entry => {
                         entry.row = packedRow; entry.col = 0;
@@ -3145,17 +3152,79 @@ if (!buildContext && typeof window !== 'undefined' && window.addEventListener) {
 async function init() {
     if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
     const p = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
-    AppState.key = p.get('key') || '';
+    const strictOutput = p.get('archive2Context') === 'archive2' || p.has('archive2OutputContract') || p.has('outputRequestId');
+    const outputRequestId = p.get('outputRequestId') || '';
+    const outputOwnerId = p.get('outputOwnerId') || '';
+    AppState.key = strictOutput ? outputRequestId : (p.get('key') || '');
     let rawData = null;
     let rawMeta = null;
-    try { rawData = sessionStorage.getItem('mixedQuestions_' + AppState.key); } catch (e) {}
-    try { if (!rawData) rawData = localStorage.getItem('mixedQuestions_' + AppState.key); } catch (e) {}
-    try { if (!rawData) rawData = sessionStorage.getItem('mixedQuestions'); } catch (e) {}
-    try { rawMeta = sessionStorage.getItem('mixedMeta_' + AppState.key); } catch (e) {}
-    try { if (!rawMeta) rawMeta = localStorage.getItem('mixedMeta_' + AppState.key); } catch (e) {}
-    try { if (!rawMeta) rawMeta = sessionStorage.getItem('mixedMeta'); } catch (e) {}
+    let outputEnvelope = null;
+    if (strictOutput) {
+        try {
+            const contract = window.Archive2OutputContract;
+            if (!contract || p.get('archive2OutputContract') !== contract.CONTRACT_VERSION)
+                throw new Error('출력 계약 버전이 맞지 않습니다. 원본에서 다시 열어 주세요.');
+            if (!outputRequestId || !outputOwnerId)
+                throw new Error('출력 요청 ID가 없습니다. 원본에서 다시 열어 주세요.');
+            const expectedMode = p.get('mode') || '';
+            outputEnvelope = window.__AP_OUTPUT_ENVELOPE__ || await window.Archive2Output.readOutputEnvelope(
+                outputRequestId,
+                outputOwnerId,
+                expectedMode,
+            );
+            if (window.__AP_OUTPUT_ENVELOPE__) {
+                await contract.validateOutputEnvelope(outputEnvelope, {
+                    outputRequestId,
+                    ownerId: outputOwnerId,
+                    mode: expectedMode || undefined,
+                });
+            }
+            if (!Array.isArray(outputEnvelope.questions) || !outputEnvelope.questions.length)
+                throw new Error('이 출력 엔진은 문항 데이터가 포함된 envelope가 필요합니다. 원본에서 다시 열어 주세요.');
+            document.documentElement.classList.add('archive2-output-envelope');
+            if (p.has('q') && Number(p.get('q')) !== outputEnvelope.questionCount)
+                throw new Error('요청 문항 수가 출력 envelope와 다릅니다. 원본에서 다시 열어 주세요.');
+            if (p.has('qpp') && Number(p.get('qpp')) !== Number(outputEnvelope.meta.qpp))
+                throw new Error('쪽당 문항 수가 출력 envelope와 다릅니다. 원본에서 다시 열어 주세요.');
+            AppState.mode = outputEnvelope.mode;
+            AppState.outputEnvelope = outputEnvelope;
+            rawData = JSON.stringify(outputEnvelope.questions);
+            rawMeta = JSON.stringify(outputEnvelope.meta);
+            window.__AP_OUTPUT_ENVELOPE_READY__ = {
+                contractVersion: outputEnvelope.contractVersion,
+                outputRequestId: outputEnvelope.outputRequestId,
+                payloadHash: outputEnvelope.payloadHash,
+            };
+        } catch (error) {
+            const host = document.getElementById('print-area') || document.body;
+            document.documentElement.dataset.archive2OutputFailure = 'true';
+            host.replaceChildren();
+            const panel = document.createElement('section');
+            panel.className = 'panel output-envelope-error';
+            const title = document.createElement('h1');
+            title.textContent = '시험지 출력을 준비하지 못했습니다';
+            const detail = document.createElement('p');
+            detail.setAttribute('role', 'alert');
+            detail.textContent = error?.message || '출력 envelope를 확인할 수 없습니다.';
+            const reopen = document.createElement('a');
+            reopen.href = 'workspace.html?view=saved';
+            reopen.textContent = '저장한 시험지 목록에서 다시 열기';
+            panel.append(title, detail, reopen);
+            host.append(panel);
+            window.__AP_OUTPUT_RENDER_ERROR__ = detail.textContent;
+            return;
+        }
+    } else {
+        // Explicitly legacy, non-Archive2 unit-past / assessment-pack transport.
+        try { rawData = sessionStorage.getItem('mixedQuestions_' + AppState.key); } catch (e) {}
+        try { if (!rawData) rawData = localStorage.getItem('mixedQuestions_' + AppState.key); } catch (e) {}
+        try { if (!rawData) rawData = sessionStorage.getItem('mixedQuestions'); } catch (e) {}
+        try { rawMeta = sessionStorage.getItem('mixedMeta_' + AppState.key); } catch (e) {}
+        try { if (!rawMeta) rawMeta = localStorage.getItem('mixedMeta_' + AppState.key); } catch (e) {}
+        try { if (!rawMeta) rawMeta = sessionStorage.getItem('mixedMeta'); } catch (e) {}
+    }
 
-    if (!rawData && p.get('packId')) {
+    if (!strictOutput && !rawData && p.get('packId')) {
         try {
             const fallback = await loadAssessmentPackFallback(p.get('packId'));
             if (fallback) {
@@ -3186,7 +3255,14 @@ async function init() {
         }
     }
 
-    if (!rawData) { alert('데이터가 없습니다.'); return; }
+    if (!rawData) {
+        if (strictOutput) {
+            const host = document.getElementById('print-area') || document.body;
+            host.textContent = '출력 데이터를 찾을 수 없습니다. Archive 2.0 원본 목록에서 다시 열어 주세요.';
+            window.__AP_OUTPUT_RENDER_ERROR__ = host.textContent;
+        } else alert('데이터가 없습니다.');
+        return;
+    }
 
     try {
         const parsedData = JSON.parse(rawData);
@@ -3200,7 +3276,11 @@ async function init() {
             : question);
     } catch (e) {
         console.error('mixedQuestions parse error:', e);
-        alert('문항 데이터를 읽지 못했습니다.');
+        if (strictOutput) {
+            const host = document.getElementById('print-area') || document.body;
+            host.textContent = '출력 envelope 문항을 읽지 못했습니다. 원본에서 다시 열어 주세요.';
+            window.__AP_OUTPUT_RENDER_ERROR__ = host.textContent;
+        } else alert('문항 데이터를 읽지 못했습니다.');
         return;
     }
 
@@ -3218,11 +3298,11 @@ async function init() {
 
     AppState.canonicalData = buildMixedCanonicalData();
 
-    AppState.mode = p.get('mode') || 'exam';
-    if (isQrSolutionMode()) AppState.mode = 'sol';
+    AppState.mode = strictOutput ? outputEnvelope.mode : (p.get('mode') || 'exam');
+    if (!strictOutput && isQrSolutionMode()) AppState.mode = 'sol';
     applyQrSolutionLockUI();
     
-    AppState.qpp = normalizeMixedQpp(p.get('qpp') || AppState.meta.qpp);
+    AppState.qpp = normalizeMixedQpp(strictOutput ? outputEnvelope.meta.qpp : (p.get('qpp') || AppState.meta.qpp));
 
     AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.meta.printHeaderOptions);
     const title = getIdentityTitle();
@@ -3242,6 +3322,25 @@ async function init() {
     }
 
     await render();
+    if (strictOutput) {
+        const rendered = await window.__AP_RENDER_READY__;
+        if (!rendered?.ok || !rendered.pages) {
+            const message = rendered?.message || rendered?.code || '출력 렌더링이 완료되지 않았습니다.';
+            window.__AP_OUTPUT_RENDER_ERROR__ = message;
+            throw new Error(message);
+        }
+        const readiness = await window.Archive2PdfReadiness.assertReady({
+            contractVersion: outputEnvelope.contractVersion,
+            outputRequestId: outputEnvelope.outputRequestId,
+            payloadHash: outputEnvelope.payloadHash,
+        });
+        window.__AP_OUTPUT_RENDER_READY__ = {
+            contractVersion: outputEnvelope.contractVersion,
+            outputRequestId: outputEnvelope.outputRequestId,
+            payloadHash: outputEnvelope.payloadHash,
+            pageCount: readiness.pageCount,
+        };
+    }
 }
 // 백그라운드 탭에서는 브라우저가 rAF를 아예 멈춘다. 배열 로직이 전부 await raf()로
 // 이어져 있어, 새 탭이 뒤에서 열리면 헤더만 그려진 채 영구히 멈춘다(빈 화면).
@@ -3259,7 +3358,27 @@ if (!buildContext) window.onload = () => {
     restoreApmathSessionFromHash();
     const params = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
     if (shouldUseScreenFit(params)) document.body.classList.add('screen-fit-mode');
-    init();
+    init().catch(error => {
+        console.error('[mixed-engine] output render failed', error);
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('archive2Context') !== 'archive2') return;
+        document.documentElement.dataset.archive2OutputFailure = 'true';
+        const host = document.getElementById('print-area') || document.body;
+        host.replaceChildren();
+        const panel = document.createElement('section');
+        panel.className = 'panel output-envelope-error';
+        const title = document.createElement('h1');
+        title.textContent = '시험지 출력을 준비하지 못했습니다';
+        const detail = document.createElement('p');
+        detail.setAttribute('role', 'alert');
+        detail.textContent = error?.message || '출력 렌더링이 완료되지 않았습니다.';
+        const reopen = document.createElement('a');
+        reopen.href = 'workspace.html?view=saved';
+        reopen.textContent = '저장한 시험지 목록에서 다시 열기';
+        panel.append(title, detail, reopen);
+        host.append(panel);
+        window.__AP_OUTPUT_RENDER_ERROR__ = detail.textContent;
+    });
 };
 
 function mixedExecutorDeps() {
