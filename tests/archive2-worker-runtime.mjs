@@ -4,8 +4,10 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
+const require = createRequire(import.meta.url);
 import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
+const outputContract = require("../archive/archive2-output-contract.js");
 import {
   prepareSavedPaperBatch,
   SAVED_PAPER_SCHEMA,
@@ -17,7 +19,6 @@ const worker = path.join(root, "apmath/worker-backup/worker");
 const requireWorker = createRequire(path.join(worker, "package.json"));
 const { Miniflare } = requireWorker("miniflare");
 const { build } = requireWorker("esbuild");
-const require = createRequire(import.meta.url);
 const { catalog } = require("./helpers/archive2-scope-harness.cjs");
 const serving = process.argv.includes("--serve");
 const fixturePort = Number(process.env.ARCHIVE2_FIXTURE_PORT || 8790);
@@ -363,6 +364,34 @@ try {
       assert.equal(delivery.body.saved, true, JSON.stringify(delivery));
       assert.equal(delivery.status, 502,
         "the snapshot delivery should reach the expected local no-Browser-Rendering boundary");
+      const outputResponse = await mf.dispatchFetch(
+        `http://local/api/class-exam-assignments/${encodeURIComponent(delivery.body.assignment.id)}/output?mode=ans`,
+        { headers: { "X-Fixture-Role": "teacher" } },
+      );
+      const outputData = await outputResponse.json();
+      assert.equal(outputResponse.status, 200, JSON.stringify(outputData));
+      assert.equal(outputData.envelope.contractVersion, "archive2-output-envelope-v1");
+      assert.equal(outputData.envelope.assignmentId, delivery.body.assignment.id);
+      assert.equal(outputData.envelope.paperId, paper.id);
+      assert.equal(outputData.envelope.mode, "ans");
+      await outputContract.validateOutputEnvelope(outputData.envelope, {
+        outputRequestId: outputData.envelope.outputRequestId,
+        ownerId: outputData.envelope.ownerId,
+        mode: "ans",
+      }, crypto.webcrypto);
+      assert.deepEqual(outputData.envelope.questionUids, [sharedRecord.questionUid]);
+      const boardResponse = await mf.dispatchFetch(
+        "http://local/api/class-exam-assignments/board?grade=%EA%B3%A02&from=2026-09-02&to=2026-10-02",
+        { headers: { "X-Fixture-Role": "teacher" } },
+      );
+      const boardData = await boardResponse.json();
+      assert.equal(boardResponse.status, 200, JSON.stringify(boardData));
+      const boardRow = boardData.assignments.find(row => row.id === delivery.body.assignment.id);
+      assert.ok(boardRow, "board should retain the exact assignment identity");
+      assert.equal(boardRow.has_output_snapshot, true);
+      assert.ok(boardRow.archive2_snapshot_hash);
+      assert.equal(Object.prototype.hasOwnProperty.call(boardRow, "mixed_payload_json"), false,
+        "board listing should not materialize the full payload before the direct output action");
       savedPaperDeliveries.push({
         browseGrade: paper.browseGrade,
         saved: delivery.body.saved,

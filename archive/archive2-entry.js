@@ -9,28 +9,6 @@
     originalQuestions = null,
     originalIdentityTitle = "";
   const registeredBodies = new Map();
-  function storeSavedPaperTemporarySnapshot(key, snapshot) {
-    const storage = window.sessionStorage;
-    if (!storage) throw new Error("시험지 미리보기를 위한 임시 저장 공간을 사용할 수 없습니다.");
-    const questionKey = `mixedQuestions_${key}`;
-    const metaKey = `mixedMeta_${key}`;
-    const prefixes = ["mixedQuestions_archive2-saved-", "mixedMeta_archive2-saved-"];
-    try {
-      for (let i = storage.length - 1; i >= 0; i--) {
-        const currentKey = storage.key(i);
-        if (prefixes.some((prefix) => currentKey?.startsWith(prefix)) && currentKey !== questionKey && currentKey !== metaKey)
-          storage.removeItem(currentKey);
-      }
-      storage.setItem(questionKey, JSON.stringify(snapshot.questions));
-      storage.setItem(metaKey, JSON.stringify(snapshot.meta));
-    } catch {
-      try {
-        storage.removeItem(questionKey);
-        storage.removeItem(metaKey);
-      } catch {}
-      throw new Error("저장한 시험지를 배포 화면에 준비할 임시 저장 공간이 부족합니다.");
-    }
-  }
   const preferenceKey = () =>
     "APMATH_ARCHIVE2_ORIGINAL_CLASSES:" +
     String(
@@ -90,12 +68,9 @@
   };
   window.archive2OriginalReceipt = function (data) {
     if (data?.saved && data.assignment) {
-      const key = "original-" + data.assignment.id;
-      const payload = JSON.parse(data.assignment.mixed_payload_json);
-      localStorage.setItem("archive2Original_" + key, JSON.stringify(payload));
       if (embedded)
         parent.postMessage(
-          { type: "archive2-original-saved", assignment: data.assignment, key },
+          { type: "archive2-original-saved", assignment: data.assignment },
           location.origin,
         );
     }
@@ -195,12 +170,26 @@
       if (!Array.isArray(snapshot.questions) || !snapshot.questions.length || !snapshot.meta)
         throw new Error("저장한 시험지의 문항을 확인할 수 없습니다.");
       const assignmentBatchId = crypto.randomUUID();
-      const key = `archive2-saved-${paper.id}-${assignmentBatchId}`;
-      storeSavedPaperTemporarySnapshot(key, snapshot);
+      const questionUids = snapshot.meta.questionUids || snapshot.questions.map((question) =>
+        question.questionUid || question.source_question_uid || question._sourceQuestionUid || null,
+      );
+      const envelope = await O.publishOutputEnvelope({
+        sourceKind: "saved-paper",
+        sourceId: paper.id,
+        paperId: paper.id,
+        mode: "exam",
+        questionCount: snapshot.questions.length,
+        questionUids,
+        meta: snapshot.meta,
+        questions: snapshot.questions,
+      });
       const item = {
         savedPaperId: paper.id,
         savedPaperAssignmentBatchId: assignmentBatchId,
-        unitPastSnapshotKey: key,
+        unitPastSnapshotKey: `archive2-saved-${paper.id}-${assignmentBatchId}`,
+        outputRequestId: envelope.outputRequestId,
+        outputOwnerId: envelope.ownerId,
+        outputSnapshot: snapshot,
         title: paper.title,
         identityTitle: paper.title,
         topic: paper.title,
