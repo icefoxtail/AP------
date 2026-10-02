@@ -1335,7 +1335,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.png",
+    "imageSize": "large"
   },
   {
     "id": 20,
@@ -1407,7 +1408,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q020_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q020_visual.png",
+    "imageSize": "large"
   },
   {
     "id": 21,
@@ -1538,6 +1540,7 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_visual.png",
+    "imageSize": "large",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q22.svg"
   },
   {
