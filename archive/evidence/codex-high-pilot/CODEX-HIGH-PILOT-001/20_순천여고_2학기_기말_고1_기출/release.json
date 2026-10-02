@@ -1,0 +1,150 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_순천여고_2학기_기말_고1_기출",
+  "ordinal": 5,
+  "stage": "RELEASE",
+  "status": "PILOT_DONE",
+  "branch": "work/high-source8-r2",
+  "originMain": "f0300aa6c9ac8302f9062a701b59cf8c38070d08",
+  "resolverSnapshot": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
+  "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+  "targetArtifactSha256": "sha256:a49ec4c61a74c84f0233de687e9ea6ff6d35ab6867e31a17e057960517993fa8",
+  "targetArtifactGitBlobSha": "75d3d914bb78faa6b9ea21b50ad8be4f5ab05789",
+  "denominator": 23,
+  "resolvedAnswerCount": 23,
+  "resolvedSolutionCount": 23,
+  "changedSolutionCount": 23,
+  "itemHoldQids": [],
+  "calibration": {
+    "status": "MANUAL_SOLUTION_CALIBRATION_PASS",
+    "evidence": "golden-calibration.json",
+    "preflight": "calibration-preflight.json",
+    "sampleCount": 2,
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong"
+  },
+  "visual": {
+    "status": "ROUTINE_VISUAL_PASS_INDEPENDENTLY_RECHECKED",
+    "sourceImageCount": 4,
+    "sourceImageQids": [
+      9,
+      15,
+      20,
+      21
+    ],
+    "sourceImageBlobParity": "4/4 exact",
+    "solutionSvgAdded": 0,
+    "solutionSvgModified": 0,
+    "visualEvidence": "visual-evidence.json",
+    "independentReview": "PASS 4/4",
+    "targetedRenderNeeded": false,
+    "fullSolutionRender": "NOT_RUN_ROUTINE_VISUAL_SCOPE"
+  },
+  "meta": {
+    "status": "META_PASS_WITH_DOCUMENTED_RPM_AND_CROSSWALK_GAPS",
+    "resolvedMetaRecordCount": 23,
+    "activeRegistryStatus": "ACTIVE",
+    "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
+    "exactResolverFinalizationPassCount": 21,
+    "activeFieldsOnlyValidatedCount": 2,
+    "rpmCoverageGapQids": [
+      11,
+      16
+    ],
+    "crosswalkProjectionVariantQids": [
+      4,
+      17,
+      20,
+      21
+    ],
+    "itemHoldQids": [],
+    "projectionCaveats": "q11/q16 have no exact H15 L4 and remain documented META_ONLY coverage gaps; q4/q17/q20/q21 use validated existing ACTIVE bindings with crosswalk variants. No taxonomy or crosswalk keys were invented."
+  },
+  "difficulty": {
+    "status": "PASS_WITH_ADJUDICATION",
+    "recordCount": 23,
+    "legacyLevelCompatibilityCounts": {
+      "NORMAL": 17,
+      "BORDERLINE_ACCEPTABLE": 6,
+      "STRONG_CONFLICT": 0,
+      "UNKNOWN": 0
+    },
+    "evidence": "difficulty-adjudication.json"
+  },
+  "independentReview": {
+    "status": "PASS_WITH_DOCUMENTED_META_CAVEATS",
+    "evidence": "independent-review.json",
+    "answerFreeze": "independent-answer-freeze.json",
+    "targetedRepairEvidence": "meta-q13-repair.json",
+    "targetedRecheckEvidence": "independent-review-q13-recheck.json",
+    "initialReviewEvidence": "independent-review-initial.json",
+    "findings": [
+      "Initial q13 Meta mismatch was repaired and independently rechecked PASS against the current origin/main resolver snapshot.",
+      "All 23 math, answer, student reproducibility, small-board, curriculum, visual, source protection, runtime TeX, and Meta rows are PASS or documented Meta-only gaps."
+    ]
+  },
+  "checks": {
+    "nodeSyntax": "PASS",
+    "vmRuntime": "PASS: 23 questions, 23 answers, 23 solutions",
+    "independentAnswerParity": "20/20 multiple-choice choices plus 3/3 written answers independently confirmed",
+    "texRuntimeAndDelimiter": "PASS",
+    "protectedSourceParity": "23/23 content/choices/source fields; q21–q23 layoutTag exact",
+    "sourceImageBlobParity": "4/4 exact",
+    "metaRegistry": "ACTIVE; 23 populated records and exact bindings validated; resolver finalization 21/21; q11/q16 active field validation 2/2",
+    "q13CurrentMainReceipt": "PASS; 12/12 authority refs match origin/main f0300aa; activeRegistrySha aggregate matches stored evidence",
+    "pilotEvidenceJson": "PASS: 49 JSON files parsed",
+    "unrelatedMutationCount": 0
+  },
+  "evidenceFiles": [
+    "state.json",
+    "answer.json",
+    "solution.json",
+    "self-review-1.json",
+    "self-review-2.json",
+    "calibration-preflight.json",
+    "golden-calibration.json",
+    "visual-evidence.json",
+    "difficulty-blind-input.json",
+    "difficulty-blind-result.json",
+    "difficulty-tiebreak.json",
+    "difficulty-adjudication.json",
+    "difficulty-evidence.json",
+    "meta-blind-input.json",
+    "meta-semantic-freeze.json",
+    "meta-projection-adjudication.json",
+    "resolver-preflight.json",
+    "meta-finalization-preflight.json",
+    "meta-resolver/ (21 exact-path records)",
+    "relational-meta-evidence.json",
+    "meta.json",
+    "independent-answer-input.json",
+    "independent-answer-freeze.json",
+    "independent-solution-verification.json",
+    "independent-review-initial.json",
+    "independent-review-q13-recheck.json",
+    "independent-review.json",
+    "meta-q13-repair.json",
+    "release.json"
+  ],
+  "stageCommits": {
+    "answer": "e9ea5c1b6",
+    "calibrationPreflight": "600be4e67",
+    "solution": "804b60a00",
+    "selfReview1": "4bd7f6635",
+    "selfReview2": "b9376e94a",
+    "goldenCompare": "789df7171",
+    "visual": "b335f65eb",
+    "metaInput": "7635bcb35",
+    "metaSemanticFreeze": "9d2c9ab14",
+    "difficultyBlind": "f2d851db9",
+    "difficultyAdjudication": "24cc6309e",
+    "solutionVerify": "402205530",
+    "meta": "735cc9f6a",
+    "independentAnswerFreeze": "699393164",
+    "metaQ13Repair": "07f3e595b",
+    "semanticFreezeReceiptRepair": "9a0ef78ab",
+    "independentReview": "42ef5481a"
+  },
+  "scope": "Local pilot candidate closure only; no MAIN merge, PR, or production publish."
+}
