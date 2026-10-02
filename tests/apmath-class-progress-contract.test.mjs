@@ -60,6 +60,7 @@ assert.match(classroom, /api\.get\(`class-progress\?/);
 assert.match(classroom, /api\.post\('class-progress'/);
 assert.match(classroom, /specialNote = \[preservedLegacyLine, noteText\]/);
 assert.match(classroom, /function invalidateClassProgressCacheFromDate\(classId, effectiveDate\)/);
+assert.match(classroom, /function invalidateClassJournalProgressCacheFromDate\(classId, effectiveDate\)/);
 assert.match(classroom, /function buildClassProgressSnapshotItems\(\)/);
 assert.match(classroom, /DOM is only authoritative for course panels that are actually rendered/);
 assert.match(classroom, /const snapshotDraft = buildClassProgressSnapshotItems\(\)/);
@@ -93,6 +94,12 @@ const progressContext = {
     ui: {
       classProgressCache: {
         'c1|2026-09-14': { snapshot: { id: 'snapshot-a' }, items: [] },
+        'c1|2026-09-20': { snapshot: { id: 'snapshot-a' }, items: [] },
+        'other|2026-09-20': { snapshot: { id: 'other-snapshot' }, items: [] }
+      },
+      journalProgressCache: {
+        'c1|2026-09-14': { snapshot: { id: 'snapshot-a' }, items: [] },
+        'c1|2026-09-15': { snapshot: { id: 'snapshot-a' }, items: [] },
         'c1|2026-09-20': { snapshot: { id: 'snapshot-a' }, items: [] },
         'other|2026-09-20': { snapshot: { id: 'other-snapshot' }, items: [] }
       }
@@ -133,6 +140,10 @@ assert.ok(progressContext.state.ui.classProgressCache['c1|2026-09-14']);
 assert.equal(progressContext.state.ui.classProgressCache['c1|2026-09-15'].snapshot.id, 'snapshot-b');
 assert.equal(progressContext.state.ui.classProgressCache['c1|2026-09-20'], undefined);
 assert.equal(progressContext.state.ui.classProgressCache['other|2026-09-20'].snapshot.id, 'other-snapshot');
+assert.ok(progressContext.state.ui.journalProgressCache['c1|2026-09-14']);
+assert.equal(progressContext.state.ui.journalProgressCache['c1|2026-09-15'], undefined);
+assert.equal(progressContext.state.ui.journalProgressCache['c1|2026-09-20'], undefined);
+assert.ok(progressContext.state.ui.journalProgressCache['other|2026-09-20']);
 assert.equal(
   vm.runInNewContext("getClassProgressSnapshotForDate('c1', '2026-09-14').snapshot.id", progressContext),
   'snapshot-a'

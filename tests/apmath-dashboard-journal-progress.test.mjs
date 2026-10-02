@@ -111,6 +111,63 @@ test('existing draft placeholder is upgraded without overwriting teacher notes',
   assert.match(upgraded, /- 특이사항: 직접 적은 메모/);
 });
 
+test('editable draft refreshes stale generated progress while preserving teacher notes', async () => {
+  const { context } = makeContext(async () => ({
+    success: true,
+    snapshot: { id: 'past', class_id: 'c1', effective_date: '2026-10-01' },
+    items: [
+      { snapshot_id: 'past', class_id: 'c1', curriculum_key: '2022', course_key: 'M2-1', canonical_path_key: 'p2', l1_snapshot: '수와 식', l2_snapshot: '유리수와 순환소수', sort_order: 0 }
+    ]
+  }));
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }], { forceRefresh: true });
+  const generated = context.buildJournalContent('2026-10-01');
+  const draft = [
+    '[AP Math 운영 일지 - 2026-10-01]',
+    '작성자: 교사',
+    '',
+    '■ 중1A반',
+    '- 출석: 6/6',
+    '- 숙제: 6/6',
+    '- 진도:',
+    '  * 2022 개정 · 중1 과정 · 2학기: 오래된 단원',
+    '- 특이사항: 직접 적은 메모',
+    ''
+  ].join('\n');
+
+  const refreshed = context.dashboardUpgradeJournalProgressPlaceholders(draft, generated);
+  assert.doesNotMatch(refreshed, /오래된 단원/);
+  assert.match(refreshed, /2022 개정 · 중2 과정 · 1학기: 수와 식 · 유리수와 순환소수/);
+  assert.match(refreshed, /- 특이사항: 직접 적은 메모/);
+});
+
+test('force refresh bypasses stale journal progress cache', async () => {
+  let callNo = 0;
+  const { context, calls } = makeContext(async () => {
+    callNo += 1;
+    return {
+      success: true,
+      snapshot: { id: 's-' + callNo, class_id: 'c1', effective_date: '2026-10-01' },
+      items: [{
+        snapshot_id: 's-' + callNo,
+        class_id: 'c1',
+        curriculum_key: '2022',
+        course_key: 'M1-2',
+        canonical_path_key: 'p1',
+        l1_snapshot: '평면도형',
+        l2_snapshot: callNo === 1 ? '다각형' : '원과 부채꼴',
+        sort_order: 0
+      }]
+    };
+  });
+
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
+  assert.equal(calls.length, 1);
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }], { forceRefresh: true });
+  assert.equal(calls.length, 2);
+  assert.match(context.buildJournalContent('2026-10-01'), /원과 부채꼴/);
+});
+
 test('API failure never borrows a future persistent snapshot into an older journal', async () => {
   const { context } = makeContext(async () => { throw new Error('network'); });
   await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1', name: '중1A' }]);
@@ -121,5 +178,7 @@ test('API failure never borrows a future persistent snapshot into an older journ
 });
 
 assert.match(source, /async function openDailyJournalModal\(dateStr\)/);
-assert.match(source, /await dashboardPrimeJournalProgressForDate\(targetDate, journalClasses\)/);
+assert.match(source, /await dashboardPrimeJournalProgressForDate\(targetDate, journalClasses, \{ forceRefresh: true \}\)/);
+assert.match(source, /async function openTodayCloseModal\(step = 1\)/);
+assert.match(source, /dashboardGetJournalClassRows\(today\)/);
 assert.doesNotMatch(source, /- 진도: \(수업 기록 미입력\)/);
