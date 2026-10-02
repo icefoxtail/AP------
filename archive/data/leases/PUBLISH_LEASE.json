@@ -2,27 +2,33 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "PUBLISH-20261003T012400+0900-MASTER-F-o69-cdf6ae9725f0",
   "owner": "JS Archive MASTER-F",
-  "status": "ACTIVE",
+  "status": "CLOSED",
   "baseMainSha": "cdf6ae9725f05adbf68c35e637241b4055aa79b9",
   "claimedAt": "2026-10-03T01:24:00+09:00",
   "expiresAt": "2026-10-03T02:54:00+09:00",
+  "closedAt": "2026-10-03T01:26:00+09:00",
   "expectedCompletionGate": "O69_PREPARED_PUBLISH_MAIN_DONE_OR_SAFE_NOOP",
   "scope": "M3",
-  "candidateOrdinals": [69],
-  "currentTarget": "22_매산중_2학기_기말_중3_기출.js",
+  "result": "MAIN_DONE",
+  "finalOriginMain": "b98ead01f3b1b51976909b97d918749964192a5a",
+  "includedOrdinals": [69],
+  "excludedDebtOrdinals": [],
+  "publishedCommit": "b98ead01f3b1b51976909b97d918749964192a5a",
+  "publishedExactBlobs": {
+    "exam": "4b6ba3d9b8ed7ece3dba3ad7b7d694260c1b5aff",
+    "meta": "4e405d80d577697bde65434fadd575fc44ae095d",
+    "manifest": "ad823822a66478af81fcf1d37738901c953cdc86"
+  },
   "preparedPublish": {
     "branch": "publish/m3-o69-temp-d-20261003",
     "commit": "b98ead01f3b1b51976909b97d918749964192a5a",
-    "baseMainSha": "cdf6ae9725f05adbf68c35e637241b4055aa79b9",
-    "examBlobSha": "4b6ba3d9b8ed7ece3dba3ad7b7d694260c1b5aff",
-    "metaBlobSha": "4e405d80d577697bde65434fadd575fc44ae095d",
-    "manifestBlobSha": "ad823822a66478af81fcf1d37738901c953cdc86"
+    "baseMainSha": "cdf6ae9725f05adbf68c35e637241b4055aa79b9"
   },
   "previousLease": {
     "leaseId": "PUBLISH-20261003T011500+0900-MASTER-TEMP-D-cdf6ae9725f0",
     "status": "CLOSED",
     "result": "MAIN_MUTATION_BLOCKED_BY_OPENAI_SAFETY"
   },
-  "firstMissingClosureStep": "FAST_FORWARD_PREPARED_O69_PUBLISH_COMMIT_TO_MAIN",
-  "mainMutation": 0
+  "firstMissingClosureStep": null,
+  "mainMutation": 1
 }
