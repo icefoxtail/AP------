@@ -1,10 +1,13 @@
 const fs = require('fs');
+const path = require('path');
 const vm = require('vm');
 const assert = require('assert/strict');
 
 (async () => {
-  const examPath = 'archive/exams/original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js';
-  const evidencePath = 'archive/data/r3-intake/m3/25_왕운중_1학기_중간_중3_기출.r3.physical-evidence.json';
+  const examRel = 'archive/exams/original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js';
+  const evidenceRel = 'archive/data/r3-intake/m3/25_왕운중_1학기_중간_중3_기출.r3.physical-evidence.json';
+  const examPath = path.resolve(examRel);
+  const evidencePath = path.resolve(evidenceRel);
   const code = fs.readFileSync(examPath, 'utf8');
   const sandbox = { window: {} };
   vm.runInNewContext(code, sandbox, { filename: examPath });
@@ -23,5 +26,5 @@ const assert = require('assert/strict');
   console.log(JSON.stringify({ target:'m3/o3', runtimeQuestionCount:bank.length, runtimeDoubleEscapeQids, canonicalR3Gate:report }));
   assert.equal(report.ok, false);
   assert.deepEqual(report.itemHoldQids, [1,2,4,6,7,8,9,11,12,17,18,22]);
-  assert.ok(report.issues.includes('R3_ITEM_HOLD_FORBIDDEN:1,2,4,6,7,8,9,11,12,17,18,22'));
+  assert.deepEqual(report.issues, ['R3_ITEM_HOLD_FORBIDDEN:1,2,4,6,7,8,9,11,12,17,18,22']);
 })().catch(err => { console.error(err); process.exit(1); });
