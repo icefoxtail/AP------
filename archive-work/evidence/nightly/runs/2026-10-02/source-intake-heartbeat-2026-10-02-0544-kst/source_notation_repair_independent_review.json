@@ -1,0 +1,2299 @@
+{
+  "schema": "SOURCE_NOTATION_REPAIR_INDEPENDENT_REVIEW_v1",
+  "reviewedCommit": "d01689133a8d8f1be52852858f97261dd40c3c9",
+  "verdict": "PASS_TARGETED_SOURCE_NOTATION_AND_ASSET_REVIEW",
+  "readiness": "PENDING_PARENT_VERIFICATION",
+  "reviewMethod": {
+    "freshIndependentReview": true,
+    "ocrUsed": false,
+    "sourceTruth": "Original full-page PNG pixels visually inspected at the receipt page regions; current candidate JS parsed directly from its questionBank JSON payload.",
+    "prohibitedMethodsUsed": []
+  },
+  "scope": {
+    "examCount": 2,
+    "correctedQuestionCount": 33,
+    "correctedNotationMappingsReviewed": 92,
+    "supplementalUnindexedRepairsReviewed": 2,
+    "questionsWithAnswerAndSolutionChecked": 46,
+    "answerAndSolutionBothEmptyForAll46": true
+  },
+  "notationMappings": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "3",
+      "entryIndex": 2,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.18,
+        0.94,
+        0.39
+      ],
+      "printedSourceToken": "y=f′(x)",
+      "currentJsSerialization": "y=f'(x)",
+      "currentCharacterOffset": 16,
+      "currentUtf8ByteOffset": 28,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.53,
+        0.94,
+        0.71
+      ],
+      "printedSourceToken": "∫_0^11 over x+1,dx",
+      "currentJsSerialization": "\\int_0^1\\dfrac{1}{x+1}\\,dx",
+      "currentCharacterOffset": 5,
+      "currentUtf8ByteOffset": 11,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "entryIndex": 1,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.53,
+        0.94,
+        0.71
+      ],
+      "printedSourceToken": "-∫_1^0y^3 over y+1,dy",
+      "currentJsSerialization": "-\\int_1^0\\dfrac{y^3}{y+1}\\,dy",
+      "currentCharacterOffset": 31,
+      "currentUtf8ByteOffset": 37,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "entryIndex": 2,
+      "field": "choices[0]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.53,
+        0.94,
+        0.71
+      ],
+      "printedSourceToken": "1 over 6",
+      "currentJsSerialization": "\\dfrac{1}{6}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "entryIndex": 3,
+      "field": "choices[1]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.53,
+        0.94,
+        0.71
+      ],
+      "printedSourceToken": "5 over 6",
+      "currentJsSerialization": "\\dfrac{5}{6}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "entryIndex": 4,
+      "field": "choices[2]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.53,
+        0.94,
+        0.71
+      ],
+      "printedSourceToken": "7 over 6",
+      "currentJsSerialization": "\\dfrac{7}{6}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "entryIndex": 5,
+      "field": "choices[3]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.53,
+        0.94,
+        0.71
+      ],
+      "printedSourceToken": "11 over 6",
+      "currentJsSerialization": "\\dfrac{11}{6}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "entryIndex": 6,
+      "field": "choices[4]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.53,
+        0.94,
+        0.71
+      ],
+      "printedSourceToken": "13 over 6",
+      "currentJsSerialization": "\\dfrac{13}{6}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "5",
+      "entryIndex": 3,
+      "field": "choices[0]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.05,
+        0.49,
+        0.22
+      ],
+      "printedSourceToken": "9 over 2",
+      "currentJsSerialization": "\\dfrac{9}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "5",
+      "entryIndex": 5,
+      "field": "choices[2]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.05,
+        0.49,
+        0.22
+      ],
+      "printedSourceToken": "11 over 2",
+      "currentJsSerialization": "\\dfrac{11}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "5",
+      "entryIndex": 7,
+      "field": "choices[4]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.05,
+        0.49,
+        0.22
+      ],
+      "printedSourceToken": "13 over 2",
+      "currentJsSerialization": "\\dfrac{13}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "6",
+      "entryIndex": 11,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.56,
+        0.5,
+        0.76
+      ],
+      "printedSourceToken": "f′(a)=0",
+      "currentJsSerialization": "f'(a)=0",
+      "currentCharacterOffset": 227,
+      "currentUtf8ByteOffset": 417,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "9",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.05,
+        0.49,
+        0.21
+      ],
+      "printedSourceToken": "x≥0",
+      "currentJsSerialization": "x\\ge0",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "9",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.05,
+        0.49,
+        0.21
+      ],
+      "printedSourceToken": "+8≥0",
+      "currentJsSerialization": "+8\\ge0",
+      "currentCharacterOffset": 27,
+      "currentUtf8ByteOffset": 37,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.49,
+        0.49,
+        0.72
+      ],
+      "printedSourceToken": "d over dx∫ F(x),dx=xf(x)",
+      "currentJsSerialization": "\\dfrac{d}{dx}\\int F(x)\\,dx=xf(x)",
+      "currentCharacterOffset": 32,
+      "currentUtf8ByteOffset": 58,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "11",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.05,
+        0.94,
+        0.22
+      ],
+      "printedSourceToken": "∫_1^x f(t),dt=x^3",
+      "currentJsSerialization": "\\int_1^x f(t)\\,dt=x^3",
+      "currentCharacterOffset": 29,
+      "currentUtf8ByteOffset": 55,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "11",
+      "entryIndex": 9,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.05,
+        0.94,
+        0.22
+      ],
+      "printedSourceToken": "f′(2)",
+      "currentJsSerialization": "f'(2)",
+      "currentCharacterOffset": 82,
+      "currentUtf8ByteOffset": 126,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "entryIndex": 5,
+      "field": "choices[0]",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.45,
+        0.94,
+        0.69
+      ],
+      "printedSourceToken": "1 over 2",
+      "currentJsSerialization": "\\dfrac{1}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "entryIndex": 7,
+      "field": "choices[2]",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.45,
+        0.94,
+        0.69
+      ],
+      "printedSourceToken": "3 over 2",
+      "currentJsSerialization": "\\dfrac{3}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "entryIndex": 9,
+      "field": "choices[4]",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.52,
+        0.45,
+        0.94,
+        0.69
+      ],
+      "printedSourceToken": "5 over 2",
+      "currentJsSerialization": "\\dfrac{5}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "13",
+      "entryIndex": 2,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.04,
+        0.49,
+        0.34
+      ],
+      "printedSourceToken": "y=f′(x)",
+      "currentJsSerialization": "y=f'(x)",
+      "currentCharacterOffset": 18,
+      "currentUtf8ByteOffset": 34,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "13",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.04,
+        0.49,
+        0.34
+      ],
+      "printedSourceToken": "f′(1)",
+      "currentJsSerialization": "f'(1)",
+      "currentCharacterOffset": 73,
+      "currentUtf8ByteOffset": 135,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "15",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.04,
+        0.94,
+        0.29
+      ],
+      "printedSourceToken": "lim_{n→∞}{2n∫_1^((n+1)/n)(x^3−2x^2+3x+5)dx}",
+      "currentJsSerialization": "\\lim_{n\\to\\infty}\\left\\{2n\\int_1^{\\frac{n+1}{n}}(x^3-2x^2+3x+5)\\,dx\\right\\}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 1,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.49,
+        0.94,
+        0.68
+      ],
+      "printedSourceToken": "-1 over 2x^2",
+      "currentJsSerialization": "-\\dfrac{1}{2}x^2",
+      "currentCharacterOffset": 6,
+      "currentUtf8ByteOffset": 10,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "17",
+      "entryIndex": 1,
+      "field": "content",
+      "sourcePageNo": 5,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.04,
+        0.49,
+        0.28
+      ],
+      "printedSourceToken": "f(x)=1 over 4x^4",
+      "currentJsSerialization": "f(x)=\\dfrac{1}{4}x^4",
+      "currentCharacterOffset": 18,
+      "currentUtf8ByteOffset": 36,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "17",
+      "entryIndex": 10,
+      "field": "content",
+      "sourcePageNo": 5,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.04,
+        0.49,
+        0.28
+      ],
+      "printedSourceToken": "Σ_{a=1}^{12}k(a)",
+      "currentJsSerialization": "\\sum_{a=1}^{12}k(a)",
+      "currentCharacterOffset": 98,
+      "currentUtf8ByteOffset": 156,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "entryIndex": 5,
+      "field": "content",
+      "sourcePageNo": 5,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.48,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "f′(a)=f′(d)=0",
+      "currentJsSerialization": "f'(a)=f'(d)=0",
+      "currentCharacterOffset": 125,
+      "currentUtf8ByteOffset": 237,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "21",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 6,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.04,
+        0.49,
+        0.48
+      ],
+      "printedSourceToken": "x≥ a",
+      "currentJsSerialization": "x\\ge a",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "21",
+      "entryIndex": 8,
+      "field": "content",
+      "sourcePageNo": 6,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.04,
+        0.49,
+        0.48
+      ],
+      "printedSourceToken": "lim_{x→a+} 2S(x)/(x−a)",
+      "currentJsSerialization": "\\lim_{x\\to a+}\\dfrac{2S(x)}{x-a}",
+      "currentCharacterOffset": 99,
+      "currentUtf8ByteOffset": 161,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "1",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.36,
+        0.49,
+        0.54
+      ],
+      "printedSourceToken": "∫(3x^2+4x-1),dx",
+      "currentJsSerialization": "\\int(3x^2+4x-1)\\,dx",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "3",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.65,
+        0.33,
+        0.76
+      ],
+      "printedSourceToken": "∫_1^{-2}5x^4,dx",
+      "currentJsSerialization": "\\int_1^{-2}5x^4\\,dx",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "5",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.83,
+        0.48,
+        0.98
+      ],
+      "printedSourceToken": "f(x)=∫≤ft{d over dx(2x^3-3x)}dx",
+      "currentJsSerialization": "f(x)=\\int\\left\\{\\dfrac{d}{dx}(2x^3-3x)\\right\\}dx",
+      "currentCharacterOffset": 4,
+      "currentUtf8ByteOffset": 8,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "6",
+      "entryIndex": 1,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.17,
+        0.98,
+        0.32
+      ],
+      "printedSourceToken": "∫_a^x f(t),dt=2x^2",
+      "currentJsSerialization": "\\int_a^x f(t)\\,dt=2x^2",
+      "currentCharacterOffset": 17,
+      "currentUtf8ByteOffset": 35,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "8",
+      "entryIndex": 0,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.49,
+        0.98,
+        0.6
+      ],
+      "printedSourceToken": "f(x)=∫_0^x(3t^2-6t-9),dt",
+      "currentJsSerialization": "f(x)=\\int_0^x(3t^2-6t-9)\\,dt",
+      "currentCharacterOffset": 4,
+      "currentUtf8ByteOffset": 8,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "9",
+      "entryIndex": 2,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.63,
+        0.98,
+        0.78
+      ],
+      "printedSourceToken": "f′(x)={3x^2 (x≥1); 2x+1 (x<1)}",
+      "currentJsSerialization": "f'(x)=\\begin{cases}3x^2&(x\\ge1)\\\\2x",
+      "currentCharacterOffset": 30,
+      "currentUtf8ByteOffset": 64,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "9",
+      "entryIndex": 4,
+      "field": "content",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.63,
+        0.98,
+        0.78
+      ],
+      "printedSourceToken": "(x≥1)",
+      "currentJsSerialization": "(x\\ge1)",
+      "currentCharacterOffset": 54,
+      "currentUtf8ByteOffset": 88,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "entryIndex": 5,
+      "field": "choices[0]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.79,
+        0.98,
+        0.98
+      ],
+      "printedSourceToken": "26 over 3",
+      "currentJsSerialization": "\\dfrac{26}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "entryIndex": 6,
+      "field": "choices[1]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.79,
+        0.98,
+        0.98
+      ],
+      "printedSourceToken": "53 over 6",
+      "currentJsSerialization": "\\dfrac{53}{6}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "entryIndex": 7,
+      "field": "choices[2]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.79,
+        0.98,
+        0.98
+      ],
+      "printedSourceToken": "27 over 3",
+      "currentJsSerialization": "\\dfrac{27}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "entryIndex": 8,
+      "field": "choices[3]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.79,
+        0.98,
+        0.98
+      ],
+      "printedSourceToken": "55 over 6",
+      "currentJsSerialization": "\\dfrac{55}{6}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "entryIndex": 9,
+      "field": "choices[4]",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.79,
+        0.98,
+        0.98
+      ],
+      "printedSourceToken": "28 over 3",
+      "currentJsSerialization": "\\dfrac{28}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "11",
+      "entryIndex": 9,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.16
+      ],
+      "printedSourceToken": "lim_{h→0+} S(h)/h",
+      "currentJsSerialization": "\\lim_{h\\to0+}\\dfrac{S(h)}h",
+      "currentCharacterOffset": 78,
+      "currentUtf8ByteOffset": 122,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "entryIndex": 2,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.21,
+        0.49,
+        0.37
+      ],
+      "printedSourceToken": "∫_0^3 3x^2f(x),dx",
+      "currentJsSerialization": "\\int_0^3 3x^2f(x)\\,dx",
+      "currentCharacterOffset": 14,
+      "currentUtf8ByteOffset": 24,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.21,
+        0.49,
+        0.37
+      ],
+      "printedSourceToken": "+∫_0^3(x^3-1)f′(x),dx=5",
+      "currentJsSerialization": "+\\int_0^3(x^3-1)f'(x)\\,dx=5",
+      "currentCharacterOffset": 35,
+      "currentUtf8ByteOffset": 45,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "entryIndex": 11,
+      "field": "choices[1]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.21,
+        0.49,
+        0.37
+      ],
+      "printedSourceToken": "-1 over 2",
+      "currentJsSerialization": "-\\dfrac{1}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "entryIndex": 13,
+      "field": "choices[3]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.21,
+        0.49,
+        0.37
+      ],
+      "printedSourceToken": "1 over 2",
+      "currentJsSerialization": "\\dfrac{1}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "13",
+      "entryIndex": 4,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.4,
+        0.49,
+        0.53
+      ],
+      "printedSourceToken": "+∫_0^1 f′(t),dt",
+      "currentJsSerialization": "+\\int_0^1 f'(t)\\,dt",
+      "currentCharacterOffset": 26,
+      "currentUtf8ByteOffset": 36,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "13",
+      "entryIndex": 6,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.4,
+        0.49,
+        0.53
+      ],
+      "printedSourceToken": "∫_0^1 f(x),dx",
+      "currentJsSerialization": "\\int_0^1 f(x)\\,dx",
+      "currentCharacterOffset": 57,
+      "currentUtf8ByteOffset": 79,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "-1≤ x<n",
+      "currentJsSerialization": "-1\\le x<n",
+      "currentCharacterOffset": 42,
+      "currentUtf8ByteOffset": 86,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 4,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "f(x)={3(x−n+1)(x−n) (n=1,3,5,7일 때); −3(x−n+1)(x−n) (n=2,4,6,8일 때)}",
+      "currentJsSerialization": "f(x)=\\begin{cases}3(x-n+1)(x-n)&(n=1,3,5,7\\text{일 때})\\\\",
+      "currentCharacterOffset": 58,
+      "currentUtf8ByteOffset": 106,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 5,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "-3(x-n+1)(x-n)&(n=2,4,6,8(일 때))}",
+      "currentJsSerialization": "-3(x-n+1)(x-n)&(n=2,4,6,8\\text{일 때})\\end{cases}",
+      "currentCharacterOffset": 113,
+      "currentUtf8ByteOffset": 165,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 8,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "(n=1,3,5,7(일 때))",
+      "currentJsSerialization": "(n=1,3,5,7\\text{일 때})",
+      "currentCharacterOffset": 90,
+      "currentUtf8ByteOffset": 138,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 9,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "(n=2,4,6,8(일 때))",
+      "currentJsSerialization": "(n=2,4,6,8\\text{일 때})",
+      "currentCharacterOffset": 128,
+      "currentUtf8ByteOffset": 180,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 10,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "∫_0^{15/2}f(x),dx",
+      "currentJsSerialization": "\\int_0^{15/2}f(x)\\,dx",
+      "currentCharacterOffset": 171,
+      "currentUtf8ByteOffset": 239,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 11,
+      "field": "choices[0]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "-1 over 8",
+      "currentJsSerialization": "-\\dfrac{1}{8}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 12,
+      "field": "choices[1]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "-1 over 4",
+      "currentJsSerialization": "-\\dfrac{1}{4}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 13,
+      "field": "choices[2]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "-3 over 8",
+      "currentJsSerialization": "-\\dfrac{3}{8}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 14,
+      "field": "choices[3]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "-1 over 2",
+      "currentJsSerialization": "-\\dfrac{1}{2}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "entryIndex": 15,
+      "field": "choices[4]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.78
+      ],
+      "printedSourceToken": "-5 over 8",
+      "currentJsSerialization": "-\\dfrac{5}{8}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "15",
+      "entryIndex": 9,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.8,
+        0.49,
+        0.98
+      ],
+      "printedSourceToken": "∫_0^4(f(x)-g(x)),dx=0",
+      "currentJsSerialization": "\\int_0^4(f(x)-g(x))\\,dx=0",
+      "currentCharacterOffset": 79,
+      "currentUtf8ByteOffset": 139,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.17
+      ],
+      "printedSourceToken": "-∫_0^1g(t),dt",
+      "currentJsSerialization": "-\\int_0^1g(t)\\,dt",
+      "currentCharacterOffset": 30,
+      "currentUtf8ByteOffset": 42,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 6,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.17
+      ],
+      "printedSourceToken": "+∫_0^1f(t),dt",
+      "currentJsSerialization": "+\\int_0^1f(t)\\,dt",
+      "currentCharacterOffset": 58,
+      "currentUtf8ByteOffset": 70,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 7,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.17
+      ],
+      "printedSourceToken": "∫_0^1(f(x)-xg(x)),dx",
+      "currentJsSerialization": "\\int_0^1(f(x)-xg(x))\\,dx",
+      "currentCharacterOffset": 87,
+      "currentUtf8ByteOffset": 111,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 9,
+      "field": "choices[0]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.17
+      ],
+      "printedSourceToken": "-2 over 3",
+      "currentJsSerialization": "-\\dfrac{2}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 10,
+      "field": "choices[1]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.17
+      ],
+      "printedSourceToken": "-1 over 3",
+      "currentJsSerialization": "-\\dfrac{1}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 12,
+      "field": "choices[3]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.17
+      ],
+      "printedSourceToken": "1 over 3",
+      "currentJsSerialization": "\\dfrac{1}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "entryIndex": 13,
+      "field": "choices[4]",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.17
+      ],
+      "printedSourceToken": "2 over 3",
+      "currentJsSerialization": "\\dfrac{2}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "17",
+      "entryIndex": 8,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.27,
+        0.98,
+        0.46
+      ],
+      "printedSourceToken": "-15 over 4t^2",
+      "currentJsSerialization": "-\\dfrac{15}{4}t^2",
+      "currentCharacterOffset": 98,
+      "currentUtf8ByteOffset": 176,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "entryIndex": 2,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.54,
+        0.98,
+        0.78
+      ],
+      "printedSourceToken": "g(x)=x^2∫_0^x f(t),dt",
+      "currentJsSerialization": "g(x)=x^2\\int_0^x f(t)\\,dt",
+      "currentCharacterOffset": 48,
+      "currentUtf8ByteOffset": 104,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 2,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.54,
+        0.98,
+        0.78
+      ],
+      "printedSourceToken": "-∫_0^x t^2f(t),dt",
+      "currentJsSerialization": "-\\int_0^x t^2f(t)\\,dt",
+      "currentCharacterOffset": 73,
+      "currentUtf8ByteOffset": 129,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "α, β",
+      "currentJsSerialization": "\\alpha,\\beta",
+      "currentCharacterOffset": 37,
+      "currentUtf8ByteOffset": 71,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 9,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "h(x)=∫_0^x(f(t)-g(t)),dt",
+      "currentJsSerialization": "h(x)=\\int_0^x(f(t)-g(t))\\,dt",
+      "currentCharacterOffset": 139,
+      "currentUtf8ByteOffset": 239,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 14,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "x=α, x=β",
+      "currentJsSerialization": "x=\\alpha,x=\\beta",
+      "currentCharacterOffset": 317,
+      "currentUtf8ByteOffset": 537,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 16,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "+S_2=2h(α)",
+      "currentJsSerialization": "+S_2=2h(\\alpha)",
+      "currentCharacterOffset": 354,
+      "currentUtf8ByteOffset": 594,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 17,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "−h(β)",
+      "currentJsSerialization": "-h(\\beta)",
+      "currentCharacterOffset": 369,
+      "currentUtf8ByteOffset": 609,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 18,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "(α)",
+      "currentJsSerialization": "(\\alpha)",
+      "currentCharacterOffset": 361,
+      "currentUtf8ByteOffset": 601,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 19,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "(β)",
+      "currentJsSerialization": "(\\beta)",
+      "currentCharacterOffset": 371,
+      "currentUtf8ByteOffset": 611,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 20,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "f′((α+β)/2)",
+      "currentJsSerialization": "f'\\left(\\dfrac{\\alpha+\\beta}{2}\\right)",
+      "currentCharacterOffset": 384,
+      "currentUtf8ByteOffset": 626,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 21,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "f((α+β)/2)=0",
+      "currentJsSerialization": "+f\\left(\\dfrac{\\alpha+\\beta}{2}\\right)=0",
+      "currentCharacterOffset": 422,
+      "currentUtf8ByteOffset": 664,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "entryIndex": 22,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.35
+      ],
+      "printedSourceToken": "((α+β)/2)",
+      "currentJsSerialization": "(\\dfrac{\\alpha+\\beta}{2}\\right)",
+      "currentCharacterOffset": 391,
+      "currentUtf8ByteOffset": 633,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "entryIndex": 6,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "∫_0^t f(x),dx=∫_{2a-t}^{2a}f(x),dx",
+      "currentJsSerialization": "\\int_0^t f(x)\\,dx=\\int_{2a-t}^{2a}f(x)\\,dx",
+      "currentCharacterOffset": 98,
+      "currentUtf8ByteOffset": 198,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "entryIndex": 11,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "∫_a^5f(x),dx=6",
+      "currentJsSerialization": "\\int_a^5f(x)\\,dx=6",
+      "currentCharacterOffset": 184,
+      "currentUtf8ByteOffset": 306,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "entryIndex": 12,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "∫_a^5|f(x)|,dx=22 over 3",
+      "currentJsSerialization": "\\int_a^5|f(x)|\\,dx=\\dfrac{22}{3}",
+      "currentCharacterOffset": 206,
+      "currentUtf8ByteOffset": 328,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "entryIndex": 13,
+      "field": "content",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "∫_k^5|f(x)|,dx",
+      "currentJsSerialization": "\\int_k^5|f(x)|\\,dx",
+      "currentCharacterOffset": 245,
+      "currentUtf8ByteOffset": 371,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "entryIndex": 15,
+      "field": "choices[1]",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "22 over 3",
+      "currentJsSerialization": "\\dfrac{22}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "entryIndex": 16,
+      "field": "choices[2]",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "23 over 3",
+      "currentJsSerialization": "\\dfrac{23}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "entryIndex": 18,
+      "field": "choices[4]",
+      "sourcePageNo": 3,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.59,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "25 over 3",
+      "currentJsSerialization": "\\dfrac{25}{3}",
+      "currentCharacterOffset": 1,
+      "currentUtf8ByteOffset": 1,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "23",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.03,
+        0.49,
+        0.2
+      ],
+      "printedSourceToken": "∫_1^x(x-t)^2f(t),dt=∫_0^x(t^3+at^2+bt+c),dt",
+      "currentJsSerialization": "\\int_1^x(x-t)^2f(t)\\,dt=\\int_0^x(t^3+at^2+bt+c)\\,dt",
+      "currentCharacterOffset": 27,
+      "currentUtf8ByteOffset": 49,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "24",
+      "entryIndex": 3,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.53
+      ],
+      "printedSourceToken": "f′(x)",
+      "currentJsSerialization": "f'(x)",
+      "currentCharacterOffset": 29,
+      "currentUtf8ByteOffset": 55,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "24",
+      "entryIndex": 5,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.53
+      ],
+      "printedSourceToken": "g(x)={f(x) (x<−3); ∫_0^x |f′(t)|dt (x≥−3)}",
+      "currentJsSerialization": "g(x)=\\begin{cases}f(x)&(x<-3)\\\\\\int_0^x|f'(t)|\\,dt&(x\\ge-3)\\end{cases}",
+      "currentCharacterOffset": 77,
+      "currentUtf8ByteOffset": 159,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "24",
+      "entryIndex": 8,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.53
+      ],
+      "printedSourceToken": "(x≥-3)",
+      "currentJsSerialization": "(x\\ge-3)",
+      "currentCharacterOffset": 128,
+      "currentUtf8ByteOffset": 210,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "24",
+      "entryIndex": 16,
+      "field": "content",
+      "sourcePageNo": 4,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sourcePixelRegionNormalized": [
+        0.51,
+        0.03,
+        0.98,
+        0.53
+      ],
+      "printedSourceToken": "∫_a^2(f(x)+g(x)),dx",
+      "currentJsSerialization": "\\int_a^2(f(x)+g(x))\\,dx",
+      "currentCharacterOffset": 250,
+      "currentUtf8ByteOffset": 412,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    }
+  ],
+  "supplementalMappings": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "entryIndex": "supplemental",
+      "field": "content",
+      "sourcePageNo": 5,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.48,
+        0.49,
+        0.86
+      ],
+      "printedSourceToken": "g′(a)=g′(e)=0",
+      "currentJsSerialization": "g'(a)=g'(e)=0",
+      "currentCharacterOffset": 142,
+      "currentUtf8ByteOffset": 254,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "21",
+      "entryIndex": "supplemental",
+      "field": "content",
+      "sourcePageNo": 6,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+      "sourcePixelRegionNormalized": [
+        0.04,
+        0.04,
+        0.49,
+        0.48
+      ],
+      "printedSourceToken": "F′(x)=f(x)",
+      "currentJsSerialization": "F'(x)=f(x)",
+      "currentCharacterOffset": 82,
+      "currentUtf8ByteOffset": 140,
+      "fieldAndOffsetsBindExactly": true,
+      "visualComparison": "PASS"
+    }
+  ],
+  "questionReviews": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "3",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "5",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "6",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "9",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "11",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "13",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "15",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "17",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "21",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "1",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "3",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "5",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "6",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "8",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "9",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "10",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "11",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "12",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "13",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "14",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "15",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "16",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "17",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "19",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "20",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "23",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "24",
+      "currentContentReviewed": true,
+      "choicesReviewed": true,
+      "sourcePageComparedWithoutOcr": true,
+      "visualNotationAndFormulaFidelity": "PASS",
+      "answerEmpty": true,
+      "solutionEmpty": true
+    }
+  ],
+  "assetReviews": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+      "sourcePageNo": 5,
+      "sourceBBox": [
+        100,
+        1328,
+        810,
+        1690
+      ],
+      "expectedSha256": "e00b87d463085e2b113df2df7438e67a307483a7ddfb2bf9c9ac4657af4b7bba",
+      "currentSha256": "e00b87d463085e2b113df2df7438e67a307483a7ddfb2bf9c9ac4657af4b7bba",
+      "sha256Matches": true,
+      "pixelIdenticalToSourceBbox": true,
+      "visualGraphInspection": "PASS",
+      "graphContent": "All graph curves/segments, axes and available labels are present and correspond to the original crop."
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "sourcePageNo": 3,
+      "sourceBBox": [
+        1660,
+        1200,
+        2110,
+        2200
+      ],
+      "expectedSha256": "c43fc7879ad2400f966bbc7e7e587e9e06098145015895e91de04fbe5b42f1b0",
+      "currentSha256": "c43fc7879ad2400f966bbc7e7e587e9e06098145015895e91de04fbe5b42f1b0",
+      "sha256Matches": true,
+      "pixelIdenticalToSourceBbox": true,
+      "visualGraphInspection": "PASS",
+      "graphContent": "All graph curves/segments, axes and available labels are present and correspond to the original crop."
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q004_visual.png",
+      "sourcePageNo": 1,
+      "sourceBBox": [
+        820,
+        2100,
+        1060,
+        2460
+      ],
+      "expectedSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+      "currentSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+      "sha256Matches": true,
+      "pixelIdenticalToSourceBbox": true,
+      "visualGraphInspection": "PASS",
+      "graphContent": "All graph curves/segments, axes and available labels are present and correspond to the original crop."
+    }
+  ],
+  "remainingIssues": [],
+  "mechanicalBindingSummary": {
+    "checked": 94,
+    "exactCurrentFieldAndUnicodeCharacterAndUtf8ByteOffsets": true,
+    "offsetErrors": []
+  },
+  "notes": "This independent review did not alter production JS/assets, run status, ledger, or closeout. No answer solving, browser/engine rendering, Notion action, or handoff was performed."
+}
