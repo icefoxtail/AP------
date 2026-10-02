@@ -399,6 +399,31 @@ local Node CLI available?
 - 사용할 canonical validator path/blob
 - branch/write 권한과 Actions 실행 가능 여부
 
+#### 4.4.1A CAPABILITY MATRIX / NO GLOBALIZATION HARD
+
+예약 run은 하나의 실행 경로 실패를 전체 시스템 capability 부재로 일반화하지 않는다. target mutation 전에 현재 run의 capability를 최소 다음 축으로 분리한다.
+
+```text
+LOCAL_FS / LOCAL_NODE
+GITHUB_READ
+GITHUB_CONTENTS_WRITE
+GITHUB_PR_WRITE
+GITHUB_ACTIONS_READ
+GITHUB_ACTIONS_WRITE
+NOTION_WRITE
+```
+
+- `UNKNOWN`은 `UNAVAILABLE`이 아니다. 실제 관련 action을 호출해 exact error를 받은 capability만 unavailable/blocked로 판정한다.
+- local filesystem/write safety 차단은 LOCAL 계열 실패다. 이를 GitHub connector write/PR/Actions 불가로 복사하지 않는다.
+- GitHub Contents write 실패는 PR write 실패가 아니며, PR write 실패는 Actions read/write 실패가 아니다. action별로 독립 판정한다.
+- GitHub read가 가능하고 target에 remote mutation이 필요하면 해당 target에 필요한 exact connector write action을 실제 시도한다. capability 확인만을 위한 unrelated probe mutation은 만들지 않는다.
+- validation/independent review가 필요하면 `기존 PR 검색 → 없으면 draft PR 생성 → PR number/head SHA readback → Actions run/job 또는 Codex review actual start proof readback` 순서를 사용한다.
+- `@codex` comment 생성만으로 actual execution을 선언하지 않는다. bot summary/reaction/review state 등 실제 실행 개시 증거를 확인한다.
+- PR/Contents/Actions 중 한 경로가 실패하면 exact error를 남기고 같은 run에서 materially different GitHub 경로를 최소 하나 실제 시도한다.
+- 모든 관련 GitHub capability가 각자 exact error로 실패한 뒤에만 `CAPABILITY_DEBT`/infra handoff를 허용한다.
+- 같은 capability를 가진 owner에게 반복 HANDOFF하여 같은 실패를 재생산하는 것을 금지한다.
+- 2026-10-03 o69 복구에서 연결 GitHub의 `create_pull_request`, issue/PR comment, workflow read가 실제 동작했고 PR #141에서 Codex review actual start까지 확인됐다. 따라서 이후 예약 worker는 local safety 차단을 근거로 이 GitHub capability들을 선험적으로 불가 판정하지 않는다.
+
 **무거운 solution/Meta/SVG 작업을 끝낸 뒤에야 validator 실행경로가 없음을 발견하는 순서를 금지한다.**
 
 ### 4.4.2 closure tuple HARD
