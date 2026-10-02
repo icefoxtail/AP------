@@ -1,20 +1,26 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "PUBLISH-20261003T032606+0900-JS-ARCHIVE-PUBLISH-67fc3534470f",
-  "owner": "JS Archive PUBLISH",
-  "status": "CLOSED",
+  "leaseId": "INFINITY2-PUBLISH-o14-20261003T0333+0900",
+  "owner": "INFINITY-MASTER-2",
+  "status": "ACTIVE",
   "baseMainSha": "67fc3534470f24c07ceb77f218d0f062117a6516",
-  "claimedAt": "2026-10-03T03:26:06+09:00",
-  "expiresAt": "2026-10-03T04:56:06+09:00",
-  "closedAt": "2026-10-03T03:29:00+09:00",
-  "expectedCompletionGate": "CURRENT_CLEAN_RELEASE_BACKLOG_SWEEP_MAIN_DONE_OR_SAFE_NOOP",
-  "scope": "M3",
-  "result": "NO_CLEAN_RELEASE_INPUT",
-  "finalOriginMain": "67fc3534470f24c07ceb77f218d0f062117a6516",
-  "includedOrdinals": [],
+  "claimedAt": "2026-10-03T03:33:00+09:00",
+  "expiresAt": "2026-10-03T05:03:00+09:00",
+  "expectedCompletionGate": "O14_MAIN_DONE_APPLIED_EXISTING_OR_PUBLISH",
+  "scope": "M3:o14",
+  "result": null,
+  "finalOriginMain": null,
+  "includedOrdinals": [
+    14
+  ],
   "excludedDebtOrdinals": [],
   "publishedCommit": null,
-  "publishedExactBlobs": {},
-  "firstMissingClosureStep": null,
+  "publishedExactBlobs": {
+    "14": {
+      "exam": "f65e98c668f324acc53e7832f0501ac6044f1023",
+      "meta": "0849a4e6ba27c9a3b4a54f186356eec68f609a79"
+    }
+  },
+  "firstMissingClosureStep": "VERIFY_MAIN_EXACT_AND_MARK_MAIN_DONE",
   "mainMutation": 0
 }
