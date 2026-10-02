@@ -76,7 +76,7 @@ R3 FAIL 이후에는 repair → 재검으로 닫는다. Codex는 사용할 수 �
 - 정상 CREATE/R1/R2/R3/PUBLISH/MASTER slot은 **RRULE 기반 recurring-capable schedule**로 생성한다.
 - production slot은 고정 분(:00/:05/.../:55)에 맞는 RRULE을 사용하고, enable/disable은 role 운영 상태로 제어한다.
 - one-off rescue/test도 dispatch 검증이 목적이면 single DTSTART 대신 **temporary recurring-capable schedule**을 사용한다. 권장 fail-safe는 `RRULE:FREQ=HOURLY;COUNT=2`처럼 두 번 이하 기회를 주고, 첫 실제 run이 확인되면 즉시 disable한다.
-- 테스트 task는 전체 activation과 구분한다. prompt 첫머리에 `USER_APPROVED_ONE_SHOT_TEST / GLOBAL_TOPOLOGY_NOT_ACTIVATED`를 명시하여 `STABLE DESIGN / NOT ACTIVE`가 해당 테스트 1건의 실행 금지로 오해되지 않게 한다.
+- 현재 전체 topology는 ACTIVE다. 임시 rescue/test는 `USER_TEMP_* / DO_NOT_CANONICALIZE`처럼 **임시 역할임을 명시**하고, 과거 `GLOBAL_TOPOLOGY_NOT_ACTIVATED` / `STABLE DESIGN / NOT ACTIVE` 문구는 HISTORY로만 취급한다.
 - 예정시각이 지났는데 `last_run_time=null`이고 target의 Git/Notion physical progress도 0이면 **WORK_FAIL이 아니라 DISPATCH_STALL**이다. 동일 expired one-shot의 DTSTART만 다시 쓰지 말고 recurring-capable task로 재생성/교체한다.
 - schedule에는 사용자 운영 timezone을 명시적으로 고정하는 것을 권장한다. 현재 Archive 기본은 `Asia/Seoul`이다.
 
