@@ -16,6 +16,72 @@ ROUTINE_EXAM_VISUAL의 CREATE/REVIEW/repair/rebuild worker는 source/target SVG�
 - post-R3에서는 preflight가 `R3_LOCKED` 범위를 다시 여는 근거가 아니다.
 
 
+## CURRENT HARD FINISH MODE — 2026-10-03 — PRINT95_VISUAL_BUILD
+
+학생용 SVG/그래프/solutionImage를 **신규 제작·전면 REBUILD·현대화 파일럿**하면서 목표가 학교 내신/교육청·평가원 모의고사 수준의 출판 품질이면 `ROUTINE_EXAM_VISUAL`로 끝내지 말고 `PRINT95_VISUAL_BUILD`를 선택한다.
+
+`PRINT95_VISUAL_BUILD`는 SYSTEM_VISUAL 코드 자격검증과 다르다. 공통 엔진을 재개발하지 않지만 개별 학생용 artifact는 **수학 정확성 이후의 마감 공정까지** 닫아야 한다.
+
+고정 목표:
+- current Golden Sample은 quality floor이지 ceiling이 아니다.
+- 내부 목표는 **학교 시험지·모의고사 인쇄 시각물 체감 품질 95%+**다.
+- 단일 합산 점수로 결함을 상쇄하지 않는다. 수학 정확성 / decisive-step 전달 / 도형 자연스러움 / typography / 정보밀도 / 불필요 요소 억제 / 실제 인쇄 가독성 중 하나라도 명확히 미달이면 완료가 아니다.
+- 기존 SVG가 있다는 이유로 KEEP하지 않는다. 반대로 그릴 수 있다는 이유만으로 VISUAL_EXEMPT를 깨지 않는다.
+
+`PRINT95_VISUAL_BUILD` 완료 루프:
+```text
+source + verified/frozen solution facts
+→ visual necessity / decisive relation 판정
+→ Python numeric geometry authority
+→ semantic validation
+→ backend 선택
+→ candidate build
+→ actual SVG parity
+→ real Chromium render
+→ actual font / getBBox / collision / clipping / print readability
+→ composition/typography polish
+→ 필요 시 backend escalation
+→ rerender
+→ independent visual compare
+→ PRINT95_VISUAL_READY
+```
+
+`APPROXIMATE_BUILD_SIDE_ONLY`, `CANDIDATE_REQUIRES_QA`, static parity PASS는 완료 상태가 아니다.
+
+### BACKEND ESCALATION GATE
+
+STANDARD SVG는 기본 초벌 경로일 뿐 강제 최종 backend가 아니다.
+- `STANDARD_SVG`: 단순 좌표기하·원·직선·기본 이동.
+- `MINIMAL_EXAM_DIAGRAM`: 불필요한 축/tick/grid/설명 상자를 제거하고 decisive geometry만 남기는 시험지식 최소 결정도형.
+- `COMPOSITE_PANEL`: 경우 2개 이상, 이동 전/후, context→decisive reduction처럼 한 장에 욱여넣으면 가독성이 떨어지는 경우.
+- `TIKZ_SPECIAL`: 복잡한 수학 typography, 정교한 vector drafting, 다수 각·길이·보조선 정렬, STANDARD 결과가 기계적으로 보이는 경우.
+- `PGFPLOTS_SPECIAL`: 함수/그래프에서 축·tick·곡선·수학 조판의 출판 품질이 STANDARD graph보다 중요하거나 95% 목표에 못 미치는 경우.
+- `RASTER_KEEP`: 원본 고품질 raster/vector가 재구성보다 우수하고 source context 보존이 더 안전한 경우.
+
+Python/semantic layer가 항상 수학 authority다. TikZ/PGFPlots/SPECIAL backend가 좌표·교점·접선·정답 사실을 독자적으로 재계산해 authority를 바꾸면 안 된다.
+
+STANDARD가 수학적으로 PASS해도 **font, spacing, baseline, label hierarchy, line weight, panel balance, naturalness, print readability**가 부족하면 PASS하지 말고 polish 또는 escalation한다.
+
+### MANDATORY FINISH LOOP
+
+`PRINT95_VISUAL_BUILD`에서는 real browser QA가 선택사항이 아니다.
+- Chromium/Playwright 실제 렌더를 최소 1회 수행한다.
+- `getBBox()` / `getBoundingClientRect()` / actual font fallback / clipping / collision / condition-box overflow를 확인한다.
+- 첫 렌더가 출판 품질에 미달하면 visualSpec/layout/backend를 수정하고 재렌더한다.
+- 일반적으로 최대 2~3회 bounded polish loop를 사용한다.
+- 실제 browser 실행이 불가능하면 `PRINT95_VISUAL_READY`를 선언하지 않고 `PRINT95_RENDER_PENDING`으로 닫는다.
+- 학생용 artifact에 내부 변수명·개발자식 라벨·불필요한 영어·임시 디버그 텍스트를 남기지 않는다.
+
+### GOLDEN FLOOR / PRINT95 TARGET
+
+`Archive_작업전_Golden_Sample_Calibration_v1.md`의 current Golden은 **최저선**으로 사용한다. 최종 target은 Golden을 단순 복제하거나 약간 넘는 것이 아니라, `도형추출.md`의 typography / geometry publication / print readability 규칙까지 적용하여 학교 내신·교육청·평가원 모의고사 시각물에 가까운 95%+ 품질을 목표로 한다.
+
+PRINT95 작업은 최종 compare에서 최소 다음 축을 독립 확인한다:
+`MATH_SEMANTIC / DECISIVE_STEP / EXAM_DIAGRAM_NATURALNESS / TYPOGRAPHY / COMPOSITION / INFORMATION_DENSITY / PRINT_READABILITY / ACTUAL_RENDER`.
+
+모두 닫히기 전에는 `PRINT95_VISUAL_READY`를 선언하지 않는다.
+
+
 This skill is a **visual route selector**.
 
 A visual subtask must not silently replace the parent exam task with a pipeline project.

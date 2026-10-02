@@ -26,7 +26,7 @@ JS Archive 자동화를 다음 고정 흐름으로 단순화한다.
 CREATE → R1 → R2 → R3 → RELEASE QUEUE → PUBLISH → MAIN_DONE
 ```
 
-R3 FAIL 이후의 repair/recovery/independent recheck는 현재 운영대로 Codex가 담당한다.
+R3 FAIL 이후에는 repair → 재검으로 닫는다. Codex는 사용할 수 있지만 fresh/별도 reviewer 자체가 필수조건은 아니다.
 
 이 문서가 활성화되면 automation role/schedule/blind/recovery/publish의 단일 실행 authority가 된다.
 과거 3-lane, Surge, Phase A/B, existing-slot-only, persistent-thread contamination, dormant clean-slot, 감시자/조율자 계약은 HISTORY다.
@@ -36,9 +36,9 @@ R3 FAIL 이후의 repair/recovery/independent recheck는 현재 운영대로 Cod
 | Role | Count | Responsibility |
 |---|---:|---|
 | CREATE | 2 | 시험지 제작, solution, solution visual, Meta, physical evidence, CREATE closure |
-| R1 | 2 | FULL independent review + allowed deterministic repair |
-| R2 | 2 | FULL independent recheck + compare/regression closure |
-| R3 | 2 | final full release audit; direct repair forbidden |
+| R1 | 2 | 1차 전수 재검 + 허용 범위 deterministic repair |
+| R2 | 2 | 2차 전수 재검 + compare/regression closure |
+| R3 | 2 | 최종 release 재검; direct repair forbidden |
 | PUBLISH | 1 | release queue/branch의 clean backlog 전체 batch main 반영 |
 | MASTER EXECUTOR | 3 | 20분 간격으로 전체 pipeline 실제 복구·재배정·쓰기·배포 |
 
@@ -117,15 +117,17 @@ temporary test의 첫 실제 run 판정은 `last_run_time`만 보지 않고 **ta
   - `nextOwner=MASTER` 또는 해당 recovery owner
 - handoff 이후 **그 target 때문에 run/slot을 멈추지 않고 selector를 계속하여 다음 eligible target을 찾는다.**
 - 한 run의 mutation/closure는 최대 1시험지로 유지한다. 따라서 여러 부적격 target은 read-only로 skip/handoff할 수 있지만 실제 mutation을 시작한 target은 1개만 닫는다.
-- `EXECUTOR_CAPABILITY_PREFLIGHT=UNAVAILABLE`이면 target detail/blind 작업에 들어가기 전에 handoff 후 다음 eligible로 순환한다. 이미 blind freeze 전에 prior detail이 노출됐다면 그 attempt만 `INVALID`로 닫고 다음 eligible로 순환한다.
-- valid `blindDecisionSha` 이후 write/validator 실패는 same-attempt continuation debt로 넘기되, 현재 run에서 continuation executor가 없으면 handoff 후 다음 eligible을 찾는다.
+- `EXECUTOR_CAPABILITY_PREFLIGHT=UNAVAILABLE`이면 target의 무거운 review/repair에 들어가기 전에 handoff 후 다음 eligible로 순환한다. **prior solution/verdict/checkpoint/repair detail의 선노출 자체는 attempt INVALID 사유가 아니다.**
+- `blindDecisionSha`는 하위 schema 호환을 위해 이름을 유지하지만, 이제 **비노출 증명값이 아니라 independently recomputed decision snapshot**이다. write/validator 실패는 same-attempt continuation debt로 넘기고, 현재 run에서 continuation executor가 없으면 handoff 후 다음 eligible을 찾는다.
 - selector 전체에 실제 eligible이 0이거나 모든 eligible이 active lease/claim으로 점유된 경우에만 scoped `NO_EXECUTABLE_TARGET`/`NO_WORK`를 기록할 수 있다. **그래도 recurring slot은 enabled 상태를 유지한다.**
 - MASTER는 매 run ACTIVE topology를 확인한다. **사용자 명시 중지가 아닌데 R1/R2/R3/PUBLISH/MASTER role-pure slot이 disabled이고 해당 role backlog가 남아 있으면 즉시 re-enable**한다.
 - target-local debt는 MASTER/recovery sidecar가 처리한다. role worker는 다음 시험지를 계속 소비한다.
 
-## 2. Review Attempt v2 — blind의 단위
+## 2. Review Attempt v2 — CONTEXT-TOLERANT RECHECK
 
-Blind 독립성 단위는 **automation/thread 전체가 아니라 reviewAttemptId**다.
+형님의 2026-10-03 명시 지시: **기존 solution·이전 verdict·checkpoint·repair detail을 이미 봤어도 검수는 유효하다.** 노출을 이유로 fresh reviewer를 새로 만들거나 attempt를 폐기하지 않는다.
+
+재검의 신뢰성은 **정보 비노출**이 아니라 **source/current authority에서 다시 계산·판정하고 기존 verdict를 정답처럼 복사하지 않는 것**으로 정의한다.
 
 reviewAttemptId는 최소 다음을 결속한다.
 
@@ -139,28 +141,33 @@ attemptNo
 정상 순서:
 
 ```text
-selector-safe metadata
+selector
 → Golden/Negative calibration
-→ source/required authority 기반 independent judgment
-→ blindDecisionSha freeze
-→ prior solution/verdict/checkpoint/repair/diff compare
+→ target + 필요 시 prior solution/verdict/checkpoint/repair를 읽을 수 있음
+→ source/current authority에서 전 문항 또는 required scope 재계산·재판정
+→ decision snapshot 고정
+→ prior 결과와 regression compare
 → repair/recheck/validator/receipt closure
 ```
 
-### 2.1 continuation
+- 기존 schema/validator 호환을 위해 `blindDecisionSha`, `blindFreezeSha256`, `blindDecisionFrozenBeforeR1Compare` 같은 필드명은 유지할 수 있다. **이 필드들은 이제 prior detail 비노출을 증명하지 않으며, formal compare/receipt 전에 재검 decision snapshot이 고정됐음을 뜻한다.**
+- prior detail을 먼저 봤다는 이유만으로 `INVALID`, `CONTEXT_CONTAMINATED`, `FRESH_REVIEWER_REQUIRED`를 만들지 않는다.
+- same worker/thread가 그대로 R1/R2/R3 또는 post-repair recheck를 끝까지 닫을 수 있다.
+- 다른 reviewer/Codex를 쓰는 것은 품질상 유용할 때 선택할 수 있지만 **stage closure의 필수조건이 아니다.**
+- 동일 reviewAttemptId의 continuation은 언제든 이어서 닫는다. prior compare detail을 이미 봤다는 이유로 폐기하지 않는다.
 
-유효한 blindDecisionSha가 이미 동결된 뒤 write/validator/Git/Notion 실패가 발생했다면 오염이 아니다.
-동일 reviewAttemptId로 다음 run에서 이어서 닫는다.
-compare detail을 이미 봤다는 이유로 continuation을 폐기하지 않는다.
+### 2.1 재검 최소 원칙
 
-### 2.2 invalid blind attempt
+prior verdict를 본 상태에서도 최소한 다음을 자기 판단으로 다시 만든다.
 
-blindDecisionSha 동결 전에 target prior verdict/repair answer/checkpoint detail이 선노출되어 독립성이 실제로 깨진 경우 **그 attempt만 INVALID**다.
+- 수학/정답/solution의 핵심 계산·논리
+- curriculum method
+- small-board/보기·소문항 구조
+- linked visual의 actual semantic parity
+- Meta/RPM/CrossConcept의 required lookup
+- 해당 stage가 요구하는 difficulty/runtime/layout 축
 
-- worker/thread 전체를 영구 오염시키지 않는다.
-- MASTER가 invalid attempt를 닫는다.
-- fresh one-shot reviewer/task를 새로 생성해 재배정한다.
-- 새 task 생성 금지, dormant clean-slot 재고, persistent-thread permanent contamination 규칙은 폐기한다.
+evidence의 근거는 prior PASS/FAIL 문구가 아니라 **source/current artifact/정본 lookup과 실제 재계산 결과**여야 한다.
 
 ## 3. MASTER EXECUTOR ×3
 
@@ -197,18 +204,18 @@ stage delivery의 최소 종착점은 다음과 같다.
 ```text
 R1 병목
 → REVIEW1_DONE / READY_FOR_REVIEW2
-   또는 fresh R2 reviewer actual claim/run
+   또는 R2 worker actual claim/run
 
 R2 병목
 → REVIEW2_DONE / READY_FOR_R3
-   또는 fresh R3 reviewer actual claim/run
+   또는 R3 worker actual claim/run
 
 R3 병목
 → R3_PASS / RELEASE_QUEUE
-   또는 R3_FAIL_DEFERRED → CODEX_R3_REPAIR / CODEX_INDEPENDENT_REVIEW actual execution
+   또는 R3_FAIL_DEFERRED → repair/recheck actual execution
 ```
 
-`HANDOFF_READY`, `nextOwner`, 문서 기록만으로 MASTER delivery 완료를 선언하지 않는다. 직접 closure가 불가능한 경우에도 **fresh executable owner가 실제 claim/run에 진입한 물리 증거**와 exact input/completion gate가 있어야 완료다.
+`HANDOFF_READY`, `nextOwner`, 문서 기록만으로 MASTER delivery 완료를 선언하지 않는다. 직접 closure가 불가능한 경우에도 **executable owner가 실제 claim/run에 진입한 물리 증거**와 exact input/completion gate가 있어야 완료다. prior detail 노출 때문에 owner를 fresh하게 교체할 필요는 없다.
 
 ### 3.1 권한
 
@@ -222,8 +229,8 @@ MASTER는 필요 시 다음을 직접 수행할 수 있다.
 - validator 실행/fallback
 - commit/push/merge/publish
 - stage/owner/queue 재배정
-- invalid blind attempt 폐쇄
-- fresh one-shot blind reviewer/task 생성
+- stale/abandoned review attempt 정리
+- same-role reviewer/task continuation 또는 재배정
 - Codex repair/recheck queue 재기동·재연결
 - release queue 정리
 
@@ -252,7 +259,7 @@ MASTER도 다음 사실은 조작할 수 없다.
 완료는 다음 둘 중 하나다.
 
 1. durable state가 실제 다음 정상 상태로 이동함.
-2. 직접 완료 불가 시 fresh executable owner가 실제 claim/실행에 진입하고 exact input/completion gate가 결속됨.
+2. 직접 완료 불가 시 executable owner가 실제 claim/실행에 진입하고 exact input/completion gate가 결속됨.
 
 ### 3.4 실행 순서
 
@@ -393,7 +400,7 @@ durable progress는 최소 다음 중 하나다.
 
 - 정상 closure 후 MASTER는 receipt/readback에 `masterLeaseId`를 남기고 lease를 `CLOSED` 처리한다.
 - runtime 종료 등으로 직접 closure가 불가능하지만 exact continuation이 물리화됐으면 `HANDOFF_READY`로 lease를 정리할 수는 있다. **그러나 이것만으로 MASTER stage-delivery 완료를 선언하지 않는다.**
-- MASTER 완료 판정에는 fresh executable owner의 실제 claim/run 또는 다음 정상 durable stage가 필요하다.
+- MASTER 완료 판정에는 executable owner의 실제 claim/run 또는 다음 정상 durable stage가 필요하다.
 - HANDOFF_READY 이후 다음 MASTER는 기존 repair를 처음부터 재실행하지 않고 exact continuation에서 새 lease를 획득한다.
 - 같은 capability를 가진 owner에게 같은 handoff를 반복해 실패를 재생산하지 않는다.
 - 문서만 남기고 ACTIVE lease를 방치하지 않는다.
@@ -425,11 +432,15 @@ FAIL
 
 첫 실패에서 보고만 하고 종료하지 않는다.
 
-### 4.2 contamination
+- **동일 실패 경로 반복 금지 — recovery only.** 같은 target에서 state/HEAD/capability 변화가 없는데 동일 action path가 이미 실패했다면 같은 경로를 반복하지 않는다. materially different safe path를 시도하고, 그래도 현재 run에서 닫히지 않으면 exact continuation/handoff를 남긴 뒤 즉시 다음 eligible로 진행한다. **이 규칙은 새 HOLD·gate·대기 상태를 만들지 않는다.**
+- **stale lineage는 current physical 기준으로 복구 — recovery only.** stale repair/candidate/branch 때문에 막히면 stage 전체를 처음부터 되감지 않는다. 확인 가능한 최신 main/current valid preimage에 이미 확정된 수정은 보존하고 current OPEN locus만 재적용해 최신 lineage를 재구성한다. exact reconstruction이 당장 불가능하면 scoped handoff 후 다음 eligible로 진행한다. **stale lineage 자체는 라인 중단 사유가 아니다.**
 
-- blind freeze 이후 노출: 정상 continuation.
-- blind freeze 이전 선노출: attempt만 INVALID → MASTER가 fresh one-shot reviewer 생성.
-- MASTER는 비블라인드이므로 “나도 봤으니 못 고친다”를 이유로 repair/write/routing/publish를 거부할 수 없다.
+### 4.2 prior-context exposure
+
+- prior solution/verdict/checkpoint/repair detail 노출은 **정상 review input으로 허용**하며 attempt invalidation 사유가 아니다.
+- 같은 worker가 source/current authority에서 재계산·재판정한 recheck snapshot을 만든 뒤 formal compare/validator/receipt까지 계속 닫는다.
+- fresh reviewer actual-start를 기다리는 상태를 만들지 않는다.
+- MASTER도 “이미 봤다”를 이유로 review/repair/write/routing/publish를 거부할 수 없다.
 
 ### 4.3 NO_WORK
 
@@ -476,8 +487,8 @@ NOTION_WRITE
 - local filesystem/write safety 차단은 LOCAL 계열 실패다. 이를 GitHub connector write/PR/Actions 불가로 복사하지 않는다.
 - GitHub Contents write 실패는 PR write 실패가 아니며, PR write 실패는 Actions read/write 실패가 아니다. action별로 독립 판정한다.
 - GitHub read가 가능하고 target에 remote mutation이 필요하면 해당 target에 필요한 exact connector write action을 실제 시도한다. capability 확인만을 위한 unrelated probe mutation은 만들지 않는다.
-- validation/independent review가 필요하면 `기존 PR 검색 → 없으면 draft PR 생성 → PR number/head SHA readback → Actions run/job 또는 Codex review actual start proof readback` 순서를 사용한다.
-- `@codex` comment 생성만으로 actual execution을 선언하지 않는다. bot summary/reaction/review state 등 실제 실행 개시 증거를 확인한다.
+- validation/recheck가 필요하면 **현재 worker가 먼저 required independent recalculation을 수행하고**, canonical validator를 실제 실행한다. remote validator가 필요할 때만 `기존 PR 검색 → 없으면 validation PR 생성 → Actions run/job → canonical validator output readback`을 사용한다.
+- **Codex review actual start는 stage closure 필수조건이 아니다.** `@codex review`는 선택적 추가 검수 수단이며, 시작되지 않아도 current worker의 재계산 + canonical validator + receipt가 유효하면 stage를 닫는다.
 - PR/Contents/Actions 중 한 경로가 실패하면 exact error를 남기고 같은 run에서 materially different GitHub 경로를 최소 하나 실제 시도한다.
 - 모든 관련 GitHub capability가 각자 exact error로 실패한 뒤에만 `CAPABILITY_DEBT`/infra handoff를 허용한다.
 - 같은 capability를 가진 owner에게 반복 HANDOFF하여 같은 실패를 재생산하는 것을 금지한다.
@@ -527,24 +538,22 @@ run이 시간 제한이나 executor 중단으로 candidate 이후 종료될 수 
 다음 같은-role run은 새 target을 고르거나 fresh rewrite를 반복하지 않고 **그 exact candidate의 firstMissingClosureStep부터 먼저 재개**한다.
 
 one-shot 예약으로 full CREATE를 시험할 때 candidate 생성까지 시간이 오래 걸릴 가능성이 있으면, one-shot 하나에 “무조건 완결”을 가정하지 않는다. **continuation 가능한 recurring slot**을 사용하거나, 첫 run이 candidate에서 끝났다면 즉시 gate/receipt-only continuation run으로 이어야 한다.
-## 5. Codex recovery ownership
+## 5. Post-R3 recovery ownership
 
-현재 운영대로 다음은 Codex가 담당한다.
-
-- 하위 실패 recovery
-- R3 FAIL repair
-- repair 결과 independent recheck
-
-post-R3:
+R3 FAIL 이후 repair는 Codex 또는 현재 mutation 가능한 recovery worker가 수행할 수 있다.
 
 ```text
 R3_FAIL_DEFERRED
-→ CODEX_R3_REPAIR
-↔ CODEX_INDEPENDENT_REVIEW
+→ R3_REPAIR
+→ POST_REPAIR_RECHECK
+→ PASS: RELEASE_QUEUE
+   FAIL: updated OPEN locus로 R3_REPAIR
 ```
 
-Independent Review PASS는 추가 GPT R3 retry 없이 release queue로 보낸다.
-FAIL은 updated OPEN locus로 Codex repair에 되돌린다.
+- `POST_REPAIR_RECHECK`는 **같은 worker가 수행해도 되고 다른 worker/Codex가 수행해도 된다.** prior fail/repair detail 노출은 blocker가 아니다.
+- recheck는 open/changed locus + direct dependency를 source/current authority에서 다시 계산하고 `lockedScopeMutationCount=0`을 확인한다.
+- 기존 `CODEX_R3_REPAIR`, `CODEX_INDEPENDENT_REVIEW` 상태명/receipt는 legacy 호환으로 소비할 수 있지만 **fresh Codex reviewer actual-start는 필수조건이 아니다.**
+- PASS면 추가 GPT R3 retry 없이 release queue로 보내고, FAIL이면 updated OPEN locus로 repair에 되돌린다.
 
 MASTER는 Codex queue를 감시하고 stalled owner를 재기동·재배정할 수 있지만 Codex independent PASS를 임의로 대신 선언하지 않는다.
 

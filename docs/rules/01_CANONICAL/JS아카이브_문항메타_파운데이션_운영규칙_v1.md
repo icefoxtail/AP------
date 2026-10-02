@@ -1,3 +1,10 @@
+## CURRENT OVERRIDE — 2026-10-03 — META 재검 / PRIOR CANDIDATE VISIBILITY ALLOWED
+
+- 기존 candidate key, 이전 verdict, 기존 Meta 값이 **보였다는 사실 자체는 semantic provenance FAIL이나 재검 무효 사유가 아니다.**
+- 기존 값을 정답/authority로 복사하지 않고 source + verified final solution에서 `primaryMethod / decisiveStep`을 다시 만들고 RPM Primary → crosswalk → GLOBAL ACTIVE → exact binding을 다시 조회해 current-pass evidence를 만든다.
+- `FORBIDDEN_CANDIDATE_INPUT` / `SEMANTIC_PROVENANCE_LEAKAGE`는 candidate 값을 decision authority로 사용하거나 기존 결정을 복사했을 때 적용한다. 단순 visibility에는 적용하지 않는다.
+- fresh reviewer, 새 context, candidate 비노출은 Meta closure의 필수조건이 아니다. 같은 worker가 재검 evidence를 새로 만들고 deterministic validator를 통과하면 된다.
+
 # JS아카이브 문항 메타 파운데이션 운영규칙 v1
 
 작성일: 2026-09-19  
@@ -34,7 +41,7 @@ CREATE/R1/R2/R3의 Meta PASS는 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFO
 - `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → RPM Primary semantic → 학년·과목 crosswalk → GLOBAL ACTIVE taxonomy/templates → exact curriculum binding/aliases**까지 조회한다.
 - `RPM_ONLY`, `*_BINDING_GAP`, exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다.
 - RPM semantic coverage가 부족하더라도 source+solution이 하나의 **GLOBAL ACTIVE problemTypeKey/templateKey + exact curriculum binding**에 유일하게 대응하면 PT/TPL은 채우고, RPM 쪽 부족은 `RPM_COVERAGE_GAP_META_ONLY` 같은 비차단 taxonomy debt로 별도 기록한다. **없는 RPM L3/L4를 임의 생성하지는 않는다.**
-- TRUE Meta HOLD는 primary semantic 자체가 source/solution으로 결정되지 않거나, exhaustive lookup 뒤에도 exact ACTIVE 후보가 복수로 남거나, deterministic machine projection 자체가 실제로 존재하지 않는 경우에만 허용한다.
+- TRUE Meta HOLD는 primary semantic 자체가 source/solution으로 결정되지 않거나, exhaustive lookup 뒤에도 exact ACTIVE 후보가 복수로 남거나, deterministic machine projection 자체가 실제로 존재하지 않는 경우에만 허용한다. 단, 아래 §1.4 판정 규칙 9의 **독립 소문항 MULTI-L4**는 exam-level HOLD가 아니라 Meta-only unresolved로 처리한다.
 
 ### C. HOLD 입장 증거
 HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
@@ -190,6 +197,7 @@ current source + independently verified final solution
 6. legacy compatibility 때문에 `RPM_PRIMARY_MIGRATION_GAP` 문자열을 유지해야 하면 `META_ONLY` projection status로만 기록한다. R1/R2E gate를 차단하지 않는다.
 7. TRUE Meta semantic HOLD/taxonomy gap은 source+verified solution으로 RPM L3/L4 자체를 결정할 수 없거나, 해당 curriculum/scope RPM path가 실제로 누락·모순되어 deterministic semantic classification이 불가능할 때만 허용한다.
 8. PT/TPL projection을 새로 materialize할지는 별도 compatibility/runtime 작업이다. **RPM semantic FINAL을 만들기 위한 필수 선행조건이 아니다.**
+9. **독립 소문항 MULTI-L4는 억지로 single primary를 만들지 않는다.** 하나의 문항 안에 명시적으로 독립된 소문항들이 있고 각 소문항의 decisive step이 서로 다른 RPM L4를 필수로 요구하면, source order·소문항 번호 순서만으로 하나를 primary로 고르지 않는다. 각 소문항의 semantic evidence를 보존하고 현재 single-`rpmL4` 구조로 유일 primary를 표현할 수 없으면 `MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY`를 **Meta-only unresolved**로 기록한다. 이것은 exam-level HOLD나 예약 라인 중단 사유가 아니며 다른 문항·단계는 계속 진행한다. source+verified solution에서 순서와 무관한 유일한 overarching primary가 입증될 때만 single primary로 닫고, 이 문제를 닫기 위해 새 RPM key를 임의 생성하지 않는다.
 
 evidence는 최소 다음 두 축을 분리한다.
 

@@ -1,8 +1,18 @@
+## CURRENT OVERRIDE — 2026-10-03 — R1 재검 / PRIOR EXPOSURE ALLOWED
+
+형님의 현재 명시 지시가 아래 과거 blind-order 문구보다 우선한다.
+
+- target의 기존 solution·이전 verdict·checkpoint·repair detail을 **이미 봤거나 먼저 봐도 R1 attempt는 유효**하다.
+- R1 재검은 정보를 못 보는 절차가 아니라 **source/current artifact/정본에서 수학·해설·visual·Meta를 다시 계산·판정하고 기존 verdict를 정답처럼 복사하지 않는 절차**다.
+- prior 노출 때문에 `INVALID`, `CONTEXT_CONTAMINATED`, fresh reviewer 재배정을 만들지 않는다. 같은 R1 worker가 끝까지 validator/receipt를 닫는다.
+- Golden/Negative calibration은 최종 판정/수리 전에 읽어 quality bar를 맞추면 된다. target을 이미 본 과거 context는 calibration 실패 사유가 아니다.
+- 아래의 “기존 solution/verdict를 열기 전에”, “fresh blind” 표현은 **CURRENT에서는 순서 강제가 아니라 재검 품질 원칙**으로 읽는다.
+
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
 
-R1 worker는 stage assignment와 scope만 확인한 직후, **target의 기존 solution/이전 verdict를 열기 전에** Golden 2~3 + 관련 Negative Sample을 먼저 실제 판독한다. 이 preflight는 품질 눈높이만 고정하며 target 정답을 주지 않는다. 그 뒤 target을 fresh blind 판정·수리하고 마지막에 Golden floor와 N/N compare한다. sample path/SHA/blob, sample별 대표 solution 2~5문항의 solution SHA+excerpt, `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`, `qualityCompareCount=N/N`, 복성고 false-PASS fixture가 validator PASS하지 않으면 R1 DONE/PASS 금지다.
+R1 worker는 stage assignment와 scope를 확인하고 Golden 2~3 + 관련 Negative Sample로 품질 눈높이를 맞춘다. target의 기존 solution/이전 verdict가 이미 보였어도 무효가 아니며, source/current artifact 기준으로 전 문항을 다시 계산·재검한 뒤 필요한 최소수리와 N/N compare를 수행한다. sample path/SHA/blob, sample별 대표 solution 2~5문항의 solution SHA+excerpt, `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`, `qualityCompareCount=N/N`, 복성고 false-PASS fixture가 validator PASS하지 않으면 R1 DONE/PASS 금지다.
 
-[JS아카이브 1차 검수 프로토콜 — FULL 독립검수·Repair v2.0]
+[JS아카이브 1차 검수 프로토콜 — FULL 재검·Repair v2.0]
 
 ## CURRENT HARD RULE — R1 FIRST-PASS ONLY / R3 DEFERRED OWNER SEPARATION (2026-10-01)
 - R1은 정상 first-pass R1만 담당한다. `R3_FAIL_DEFERRED`와 `CODEX_REPAIR_RETRY_REQUIRED`를 소비하지 않는다.
@@ -18,7 +28,7 @@ R1 PASS/DONE은 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`의 item-lev
 - source/current artifact를 직접 열어 전 문항 qid evidence를 새로 만든다.
 - linked solutionImage는 **각 SVG의 expected fact와 actual primitive 좌표/위상 계산**을 남긴다. 라벨 문구 확인만으로 `solutionSvgAuditCount=X/X` 금지.
 - ㄱ/ㄴ/ㄷ·소문항·경우분리 작은칠판 구조는 actual solution block으로 확인한다.
-- Meta는 blind primaryMethod/decisiveStep → RPM/crosswalk → GLOBAL ACTIVE/binding을 실제 조회한다. resolvable null은 FAIL.
+- Meta는 prior key/verdict를 볼 수 있지만 `primaryMethod/decisiveStep → RPM/crosswalk → GLOBAL ACTIVE/binding`을 source/current solution에서 다시 판정·조회한다. resolvable null은 FAIL.
 - 완료 전 `review-evidence-gate.mjs --stage R1`의 `ok=true`가 필수다.
 - 예약 시간이 부족하면 checkpoint만 남기고 R1_DONE receipt를 만들지 않는다.
 
@@ -172,7 +182,7 @@ R1 완료물은 이전 R2/R3 artifact를 덮어쓰지 않고 새 final artifact 
 
 ## CURRENT HARD GATE — CURRICULUM METHOD INVENTORY + VISUAL NECESSITY N/N (2026-10-01)
 
-CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 반드시 전 문항 독립검수한다. 이 gate는 **중1·중2·중3·고등 전 과정**에 적용하며, 이전 stage의 PASS·inventory·visual count를 정답으로 사용하지 않는다.
+CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 반드시 전 문항 재검한다. 이 gate는 **중1·중2·중3·고등 전 과정**에 적용하며, 이전 stage의 PASS·inventory·visual count를 정답으로 사용하지 않는다.
 
 ### 1. CURRICULUM METHOD INVENTORY — N/N
 
@@ -209,14 +219,14 @@ final solution에서 실제 풀이가 의존하는 `concepts[] / formulas[] / no
 ## CURRENT OVERRIDE — FULL REVIEW + REPAIR_BEFORE_HOLD (2026-09-29)
 
 CURRENT 중등 재인증 및 이에 준하는 예약 REVIEW1에서는 아래 과거의 “구조만 보고 수정하지 않는다” 제한보다 이 섹션이 우선한다.
-- 최신 artifact를 처음 보는 것처럼 **FULL 독립검수**한 뒤 결함 verdict를 먼저 동결한다.
+- 최신 artifact를 기준으로 **FULL 재검**해 결함 verdict를 다시 만든다. 과거 verdict가 보였더라도 정답처럼 복사하지 않는다.
 - 결함이 있으면 `docs/rules/02_PIPELINES/수정프로토콜.md`의 **REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR**를 적용해 같은 run에서 최소수정 → 영향 축 재검한다.
 - 수리 성공은 `PASS_AFTER_REPAIR`로 기록한다. source 자체를 최소 보정했으면 receipt/evidence에 `AUDITED_SOURCE_REPAIR`를 남긴다.
 - deterministic minimal repair가 불가능한 qid만 `ITEM_HOLD`로 남기며 시험지 전체 HOLD/BLOCK/격리는 금지한다.
 - REVIEW1은 CREATE의 HOLD/판정을 정답으로 사용하지 않는다. held item도 처음부터 다시 판정하며 해결되면 hold ledger에서 제거한다.
 - current full-solution-rewrite catch-up이 필요한 시험지는 catch-up을 완료한 뒤 동일 기준으로 solution/layout/visual까지 재검·수리한다.
 
-이 override의 목적은 독립성을 약화하는 것이 아니라 **독립 판정 후 복구 가능한 오류를 즉시 치료하여 다음 단계에는 가능한 한 성립한 문항을 넘기는 것**이다.
+이 override의 목적은 재검 품질을 유지하면서 **복구 가능한 오류를 즉시 치료하여 다음 단계에는 가능한 한 성립한 문항을 넘기는 것**이다.
 
 
 ## CURRENT QUESTION LAYOUT HARD RULE — GRID DEFAULT / SUBJECTIVE-2UP EXCEPTION (2026-09-28)
@@ -242,7 +252,7 @@ CURRENT 중등 재인증 및 이에 준하는 예약 REVIEW1에서는 아래 과
 
 ## SUPERSEDED / LEGACY V1 ROLE SCOPE — CHECKLIST REFERENCE ONLY (2026-10-01)
 
-아래 v1 본문의 `구조·무결성 전담`, `정오답 판단 금지`, `수학 풀이 검증 금지` 같은 역할 제한은 **CURRENT가 아니다**. 현재 R1은 이 문서 상단 CURRENT에 따라 FULL 독립검수·Repair를 수행하며 curriculum/visual/Meta/difficulty 포함 필수 축을 함께 닫는다.
+아래 v1 본문의 `구조·무결성 전담`, `정오답 판단 금지`, `수학 풀이 검증 금지` 같은 역할 제한은 **CURRENT가 아니다**. 현재 R1은 이 문서 상단 CURRENT에 따라 FULL 재검·Repair를 수행하며 curriculum/visual/Meta/difficulty 포함 필수 축을 함께 닫는다.
 아래의 구조·필드·문법 체크리스트는 상단 CURRENT와 충돌하지 않는 범위에서만 보조 체크리스트로 사용한다.
 
 너는 JS아카이브 1차 구조·무결성 검수 전담 엔진이다.
