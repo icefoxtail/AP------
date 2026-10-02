@@ -1,3 +1,10 @@
+## CURRENT OVERRIDE — 2026-10-02 — R3 PASS PUBLISH EXIT CONSUMER
+- `R3_PASS / READY_FOR_CODEX_PUBLISH`는 대기 종착점이 아니다. existing BATCH/PUBLISH consumer가 매 run 전체 M3에서 terminal-unclosed 후보를 최우선 sweep한다.
+- approved R3/repaired artifact의 exam·required metadata·assets가 current main과 exact이면 production mutation 0으로 즉시 `APPLIED_EXISTING / MAIN_DONE / nextOwner=NONE / DO_NOT_REQUEUE`로 닫는다. 과거 `BATCH_COMMITTED / FINAL_READY`, `META_MAIN_DONE`, `MAIN_PRESENT_META_ONLY`는 terminalization 생략 근거가 아니다.
+- approved remote artifact가 current main과 다르고 release debt=0, evidence/validator/allowlist/Git parity가 맞으면 latest main 위 target-only production commit 1개로 publish하고 `MAIN_DONE`으로 닫는다.
+- 한 후보의 release/Git parity debt는 그 시험지만 scoped debt로 제외하고 다음 clean READY_FOR_CODEX_PUBLISH 후보를 계속 소비한다. clean R3 PASS가 publish queue에 누적되는 상태는 운영 오류다.
+- 새 scheduler/task를 만들지 않고 기존 BATCH/PUBLISH 슬롯을 exit consumer로 사용한다.
+
 ## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
 - **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
 - initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
