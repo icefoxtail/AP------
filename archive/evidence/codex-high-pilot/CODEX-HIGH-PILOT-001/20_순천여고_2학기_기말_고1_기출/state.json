@@ -5,13 +5,13 @@
   "branch": "work/high-source8-r2",
   "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
   "observedRemoteBranchHead": "5046279e97f035fadfa11f475e3e5dd6a4bd9c2d",
-  "latestOriginMain": "fc699d27122ea255a048874bb624fabbd95c4c34",
+  "latestOriginMain": "f0300aa6c9ac8302f9062a701b59cf8c38070d08",
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactSha256": "sha256:b05fa3a085699ed37798a99a035b533d6fe6a0075145436839853c84b67ba5c2",
   "sourceArtifactGitBlobSha": "6224c099b808f13136031d0c4d2383c3013eda5c",
-  "lastDurableStage": "META_Q13_REPAIR",
-  "currentStage": "INDEPENDENT_REVIEW",
-  "nextStage": "INDEPENDENT_REVIEW",
+  "lastDurableStage": "INDEPENDENT_REVIEW",
+  "currentStage": "RELEASE",
+  "nextStage": "RELEASE",
   "artifactPath": "archive-work/exams/original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
   "artifactSha256": "sha256:a49ec4c61a74c84f0233de687e9ea6ff6d35ab6867e31a17e057960517993fa8",
   "targetArtifactGitBlobSha": "75d3d914bb78faa6b9ea21b50ad8be4f5ab05789",
@@ -25,9 +25,7 @@
     "solution": [],
     "visual": [],
     "meta": [],
-    "independentReview": [
-      13
-    ],
+    "independentReview": [],
     "release": [
       1,
       2,
@@ -71,7 +69,7 @@
     "visual": "visual-evidence.json",
     "meta": "meta.json; meta-finalization-preflight.json (post-q13 repair validation); meta-q13-repair.json; meta-semantic-freeze.json; meta-resolver/q13-evidence.json",
     "metaSemanticFreeze": "meta-semantic-freeze.json",
-    "independentReview": "independent-answer-freeze.json; independent-review-initial.json (FAIL q13 Meta, targeted repair applied; recheck pending)",
+    "independentReview": "independent-answer-freeze.json; independent-review-initial.json; independent-review-q13-recheck.json; independent-review.json",
     "release": null,
     "solution": "solution.json",
     "solutionVerification": "independent-solution-verification.json"
@@ -111,5 +109,6 @@
   "independentAnswerFreezeStatus": "FROZEN_23_OF_23_BEFORE_SOLUTION_READ",
   "independentAnswerFreezeInputSha256": "sha256:944fd2ea30e9e2972988b7aeacf5af12a57202d4aa3ddcf9ebea7c6c1695da01",
   "initialIndependentReviewStatus": "FAIL_TARGETED_META_Q13",
-  "independentReviewPreviousArtifactSha256": "sha256:a88c7573bfe03082c1a9083331704b6b667fc8079d624d49acd029e90c31cf54"
+  "independentReviewPreviousArtifactSha256": "sha256:a88c7573bfe03082c1a9083331704b6b667fc8079d624d49acd029e90c31cf54",
+  "independentReviewStatus": "PASS_WITH_DOCUMENTED_META_CAVEATS"
 }
