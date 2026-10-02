@@ -18,53 +18,34 @@
     {
       "examId": "22_팔마고_2학기_기말_고2_수학II",
       "qid": "18",
-      "oldBBox": {
-        "x1": 170,
-        "y1": 1420,
-        "x2": 800,
-        "y2": 1680
+      "bbox": {
+        "x1": 160,
+        "y1": 1358,
+        "x2": 810,
+        "y2": 1690
       },
-      "newBBox": {
-        "x1": 170,
-        "y1": 1380,
-        "x2": 800,
-        "y2": 1680
-      },
-      "reason": "Restore full upper curve labels y=f(t), y=g(t)."
-    },
-    {
-      "examId": "22_효천고_2학기_기말_고2_수학II",
-      "qid": "4",
-      "oldBBox": {
-        "x1": 850,
-        "y1": 2110,
-        "x2": 1060,
-        "y2": 2460
-      },
-      "newBBox": {
-        "x1": 820,
-        "y1": 2100,
-        "x2": 1060,
-        "y2": 2460
-      },
-      "reason": "Restore complete v(t) label while keeping the neighboring choice line outside the crop."
+      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+      "assetSha256": "sha256:0a9086312e9e5cc6a0f9cb4c535b23cd67b41bbc01f1b3d8b915375bd0c327b3",
+      "operations": [
+        "crop"
+      ],
+      "independentReviewStatus": "PENDING_FRESH_OCR_FREE_REVIEW"
     },
     {
       "examId": "22_효천고_2학기_기말_고2_수학II",
       "qid": "22",
-      "oldBBox": {
-        "x1": 1650,
-        "y1": 1450,
-        "x2": 2190,
-        "y2": 2050
+      "bbox": {
+        "x1": 1660,
+        "y1": 1350,
+        "x2": 2110,
+        "y2": 2200
       },
-      "newBBox": {
-        "x1": 1650,
-        "y1": 1450,
-        "x2": 2100,
-        "y2": 2050
-      },
-      "reason": "Exclude the right page/column divider while retaining the complete source graph."
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "assetSha256": "sha256:0329862755c4b10dea876f3796e0530dc03e737fa19929a03918cea54b445e57",
+      "operations": [
+        "crop"
+      ],
+      "independentReviewStatus": "PENDING_FRESH_OCR_FREE_REVIEW"
     }
   ],
   "newSourceJs": [
@@ -104,7 +85,7 @@
     }
   ],
   "sourcePagePixelsChanged": false,
-  "assetOperations": "Source-page PNG crop only; no rotation, deskew, contrast, reconstruction, or pixel restoration.",
+  "assetOperations": "Direct rectangular crop from the original source full-page PNG only; no rotation, deskew, contrast, enhancement, restoration or reconstruction.",
   "recheckRequired": true,
-  "nextReviewScope": "Fresh independent recheck of source q1 serialization and the three repaired crops; preserve the 46-row initial report and do not edit unrelated questions/assets."
+  "nextReviewScope": "Fresh OCR-free itemization audit over all 46 questions and all 561 notation mappings, plus repaired crops Pal q18 and Hyocheon q22; Hyocheon q4 remains frozen PASS."
 }

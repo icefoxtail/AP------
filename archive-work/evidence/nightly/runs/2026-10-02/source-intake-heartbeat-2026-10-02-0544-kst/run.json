@@ -120,9 +120,9 @@
       "initialReviewEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
       "targetedRecheckEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
       "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
-      "sourceJsSha256": "sha256:d425aeecffb594e8c2aea9d931d9e9e02ccb082ab3f430651a9bcf71b18555e2",
-      "sourceJsGitBlob": "eb9a89b951812ff44f948a1a6f55f65d59ee39c5",
-      "sourceJsCommittedContentSha256": "sha256:cbd214dc79842b3fcaa0d1dc84d5d7770f558fa2c289f8ca626675034d699f95",
+      "sourceJsSha256": "sha256:243dd1d1290917529fad51def3a97dbba56c5312749aecd7a43423b3bb65716d",
+      "sourceJsGitBlob": "PENDING_CROP_REPAIR_COMMIT",
+      "sourceJsCommittedContentSha256": "PENDING_CROP_REPAIR_COMMIT",
       "sourceMetadataFirstPassRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/source_metadata_first_pass.json",
       "sourceMetadataFirstPassSha": "sha256:ab323bcb15dbdf5480a7f742eba0e7ee564001a4fe9459abf27891b299ac4a86",
       "repairQids": [
@@ -219,9 +219,9 @@
       "initialReviewEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
       "targetedRecheckEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
       "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
-      "sourceJsSha256": "sha256:55449fd9df1e955f1f77558eeefc3ceca0a8c2d27568395bb800c523536e94e7",
-      "sourceJsGitBlob": "aaccf38c3e28247c3b57943ed439a13ffa46a785",
-      "sourceJsCommittedContentSha256": "sha256:b868afd6e659c9ab89bf196274846af0efd0a1dfaf897ee6cb446c0de0554bf4",
+      "sourceJsSha256": "sha256:ec5bbef81cd3383c248ee014fd7fc7b9a782e28252be9b1730b8b9d090319820",
+      "sourceJsGitBlob": "PENDING_CROP_REPAIR_COMMIT",
+      "sourceJsCommittedContentSha256": "PENDING_CROP_REPAIR_COMMIT",
       "sourceMetadataFirstPassRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/source_metadata_first_pass.json",
       "sourceMetadataFirstPassSha": "sha256:4c4558e237cbf9ec0b2d1e07da1c581b5167ac5d2125da6ebf061e9c6c949178",
       "repairQids": [
@@ -328,7 +328,7 @@
   "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
   "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
   "finalReconciledReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
-  "finalReconciledReviewReportSha256": "sha256:a1a5f6ed5c36683ae36d47a80574ebc60206387698777f0b199cf1839e9f828e",
+  "finalReconciledReviewReportSha256": "sha256:1bf7750fb2bf506b02a2dbfde2052518692ca9645c9c7e98007bf0f36341af8f",
   "reviewReceiptCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "reviewReceiptPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "artifactCommits": {
@@ -358,7 +358,7 @@
   "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "sourceArtifactExamCount": 2,
   "sourceQAReadyCount": 0,
-  "itemizationReviewStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
+  "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
   "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
   "initialFullReviewPreserved": true,
   "notationInventoryRepairSha256": "sha256:2c1aea26dafbd84fd89f60cce90d4f01c362eb2d49b642bad5818684e9d4ec23",
@@ -374,43 +374,32 @@
       "examId": "22_팔마고_2학기_기말_고2_수학II",
       "qid": "18",
       "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
-      "gates": {
-        "CROP_PURITY": "PASS",
-        "contamination": "PASS",
-        "clipping": "FAIL",
-        "requiredLabel": "FAIL",
-        "questionSemanticMatch": "PASS"
+      "bbox": {
+        "x1": 160,
+        "y1": 1358,
+        "x2": 810,
+        "y2": 1690
       },
-      "finding": "Direct graph crop for q18. The plotted curves, t-axis, point labels a,b,c,d,e,10 and f(t)/g(t) labels are present; the top crop boundary intersects the y-axis tip/label area. Increase the top margin so the complete y-axis arrow/label is retained.",
-      "pageBBox": {
-        "x1": 170,
-        "y1": 1380,
-        "x2": 800,
-        "y2": 1680
-      }
+      "status": "TARGETED_RECHECK_PENDING"
     },
     {
       "examId": "22_효천고_2학기_기말_고2_수학II",
       "qid": "22",
       "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
-      "gates": {
-        "CROP_PURITY": "PASS",
-        "contamination": "PASS",
-        "clipping": "FAIL",
-        "requiredLabel": "FAIL",
-        "questionSemanticMatch": "PASS"
+      "bbox": {
+        "x1": 1660,
+        "y1": 1350,
+        "x2": 2110,
+        "y2": 2200
       },
-      "finding": "Direct q22 graph crop, but the upper portions of the plotted curves and the top of the y-axis/arrow are cut by the crop boundary. Expand upward to include the full graph semantics.",
-      "pageBBox": {
-        "x1": 1650,
-        "y1": 1450,
-        "x2": 2100,
-        "y2": 2050
-      }
+      "status": "TARGETED_RECHECK_PENDING"
     }
   ],
   "remoteBranchHeadAtItemizationAudit": "32490399f307492a13c242e30f020e9d988387cb",
   "itemizationAuditCommitSha": "32490399f307492a13c242e30f020e9d988387cb",
   "itemizationAuditPushSha": "32490399f307492a13c242e30f020e9d988387cb",
-  "itemizationAuditRecordedAtKst": "2026-10-02T08:33:34+09:00"
+  "itemizationAuditRecordedAtKst": "2026-10-02T08:33:34+09:00",
+  "successfulSourceOnlyCountForRun": 0,
+  "targetedCropRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/targeted_source_asset_crop_repair_pending.json",
+  "targetedCropRepairStatus": "PENDING_FRESH_OCR_FREE_REVIEW"
 }

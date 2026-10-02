@@ -322,7 +322,7 @@
       "sourceAssetCropAuditStatus": "SOURCE_QA_PASS",
       "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
       "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
-      "finalReconciledReviewReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8",
+      "finalReconciledReviewReportSha256": "sha256:1bf7750fb2bf506b02a2dbfde2052518692ca9645c9c7e98007bf0f36341af8f",
       "sourceArtifactCommitSha": "8a22c605549a4468a0d40823d5242bf798bcb301",
       "sourceRepairArtifactCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
       "reviewReceiptCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
@@ -338,7 +338,7 @@
       "sourceArtifactExamCount": 2,
       "sourceQAReadyCount": 0,
       "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
-      "itemizationReviewStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
+      "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
       "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
       "itemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
       "itemizationAuditReportSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
@@ -354,7 +354,8 @@
         }
       ],
       "itemizationAuditCommitSha": "32490399f307492a13c242e30f020e9d988387cb",
-      "itemizationAuditPushSha": "32490399f307492a13c242e30f020e9d988387cb"
+      "itemizationAuditPushSha": "32490399f307492a13c242e30f020e9d988387cb",
+      "targetedCropRepairStatus": "PENDING_FRESH_OCR_FREE_REVIEW"
     }
   ],
   "owner": "codex-thread-automation-10",
@@ -684,11 +685,12 @@
   "currentRunFinalReconciledReportSha256": "sha256:6d8c29cacd8c61b20cdf1b718deaae91630e1ce03a4e994dfcaeb072550235f0",
   "currentRunNotationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
   "sourceQAReadyCount": 0,
-  "currentRunFinalReconciledReviewReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8",
+  "currentRunFinalReconciledReviewReportSha256": "sha256:1bf7750fb2bf506b02a2dbfde2052518692ca9645c9c7e98007bf0f36341af8f",
   "currentRunItemizationStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "currentRunItemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
   "currentRunItemizationAuditReportSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
   "currentRunNotationSourceMappingFailureCount": 92,
   "currentRunItemizationAuditCommitSha": "32490399f307492a13c242e30f020e9d988387cb",
-  "currentRunItemizationAuditPushSha": "32490399f307492a13c242e30f020e9d988387cb"
+  "currentRunItemizationAuditPushSha": "32490399f307492a13c242e30f020e9d988387cb",
+  "currentRunFinalReconciledReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json"
 }
