@@ -24,9 +24,9 @@
     "answer": "answer.json; q15-audited-source-repair.json; q15-post-repair-recheck.json",
     "solutionSelfReview": "self-review-1.json; self-review-2.json; q15-post-repair-recheck.json",
     "goldenCalibration": "golden-calibration.json",
-    "visual": "visual-evidence.json; q12-visual-coordinate-proof.json; q12-svg-coordinate-verification.json; q12-solution-render.png",
+    "visual": "visual-evidence.json; q12-post-legend-recheck.json; q12-visual-coordinate-proof.json; q12-svg-coordinate-verification.json; q12-solution-render.png",
     "meta": "meta-evidence.json; meta-decision-isolated-inputs.json; meta-resolver-results-current-main.json",
-    "independentReview": "independent-review.json (prior partial only); fresh current review pending",
+    "independentReview": "independent-review.json; q12-post-legend-recheck.json",
     "release": null,
     "calibrationPreflight": "calibration-preflight-recovery.json; q15-repair-calibration-input.json; q15-repair-calibration-preflight.json",
     "sourceTruthQ15": "q15-source-truth-recheck.json; q15-audited-source-repair.json; q15-post-repair-recheck.json; q15-source-page3.png",
@@ -44,13 +44,10 @@
   "attemptedStage": "GOLDEN_COMPARE_MANUAL_AND_VISUAL_PREFLIGHT",
   "unfinishedQids": {
     "solution": [],
-    "visual": [
-      12
-    ],
+    "visual": [],
     "meta": [],
     "independentReview": [
-      19,
-      12
+      19
     ],
     "release": [
       1,
@@ -142,7 +139,7 @@
     "branchSystemMutationCount": 0
   },
   "sourceTruthReviewQ15Status": "AUDITED_SOURCE_REPAIR_AND_TARGETED_RECHECK_PASS",
-  "visualStatus": "Q12_TARGETED_RECHECK_PENDING_AFTER_LABEL_FIX_Q15_VISUAL_EXEMPT",
+  "visualStatus": "PASS_21_21_Q12_LEGEND_RECHECKED_Q15_EXEMPT",
   "solutionSvgCount": 1,
   "solutionSvgQids": [
     12
@@ -150,7 +147,7 @@
   "targetArtifactSha256": "sha256:c4c05c01cf774e71f9947aad6928868b5208a733ee15b20f1120c7cfee05e858",
   "sourceRepairQid": 15,
   "sourceRepairChange": "3xe^{x²}→3xe^x, one superscript digit deleted; choices unchanged",
-  "currentQ12VisualStatus": "PASS_INDEPENDENT_RECHECK",
+  "currentQ12VisualStatus": "PASS_POST_LEGEND_INDEPENDENT_RECHECK",
   "nextStageNote": "Current-main RPM resolver revalidation is PASS 21/21. q19 repair and q12 legend/render are committed next; affected-locus independent recheck must pass before RELEASE.",
   "metaStatus": "META_SEMANTIC_PASS_21_21_CURRENT_MAIN_VALIDATOR_PASS",
   "difficultyStatus": "BLIND_PASS_21_21_ADJUDICATED",
