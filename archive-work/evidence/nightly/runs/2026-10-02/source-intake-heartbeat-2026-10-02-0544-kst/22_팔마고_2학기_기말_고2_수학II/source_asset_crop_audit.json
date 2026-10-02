@@ -3,7 +3,7 @@
   "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "examId": "22_팔마고_2학기_기말_고2_수학II",
   "assetCount": 4,
-  "status": "PENDING_FRESH_OCR_FREE_REVIEW",
+  "status": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
   "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
   "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
   "reconciledFinalReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
@@ -71,17 +71,20 @@
         "x2": 810,
         "y2": 1690
       },
-      "cropPurity": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "contamination": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "choiceContamination": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "pageBorderContamination": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "clipping": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "requiredLabels": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "questionSemanticMatch": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "pngDecode": "PENDING_FRESH_OCR_FREE_REVIEW",
-      "initialReviewFinding": "Expanded upward and left to retain the complete printed condition line for this same question plus the full y-axis arrow/label and graph; no neighboring question, instructions, or answer choices enter the crop.",
+      "cropPurity": "PASS",
+      "contamination": "PASS",
+      "choiceContamination": "PASS",
+      "pageBorderContamination": "PASS",
+      "clipping": "PASS",
+      "requiredLabels": "PASS",
+      "questionSemanticMatch": "PASS",
+      "pngDecode": "PASS",
+      "initialReviewFinding": "v2 independent review passed crop visual and pixel gates; nested JS sourceBBox/dimensions were reconciled afterward and await targeted metadata check.",
       "targetedRecheckEvidence": null,
-      "backReferenceQuestionReview": "18"
+      "backReferenceQuestionReview": "18",
+      "sourceBBoxBinding": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
+      "targetedRecheckEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
+      "targetedRecheckEvidenceSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1"
     },
     {
       "qid": "21",
@@ -145,5 +148,7 @@
       "linkedQuestionReviewQid": "18"
     }
   ],
-  "repairPendingRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/targeted_source_asset_crop_repair_pending.json"
+  "repairPendingRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/targeted_source_asset_crop_repair_pending.json",
+  "latestIndependentCropReviewRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
+  "latestIndependentCropReviewSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1"
 }

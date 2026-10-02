@@ -1,0 +1,63 @@
+{
+  "schema": "SOURCE_VISUAL_PROVENANCE_METADATA_RECHECK_v1",
+  "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
+  "priorReviewRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
+  "priorReviewSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
+  "priorReviewCommit": "9607edd48e271a3297df49a3aaad6435ca68716d",
+  "priorReviewVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
+  "currentHeadBeforeMetadataRepair": "9607edd48e271a3297df49a3aaad6435ca68716d",
+  "independentReviewStatus": "PENDING_TARGETED_OCR_FREE_METADATA_RECHECK",
+  "changedProductionScope": "Only q18/q22 nested visualAssetProvenance sourceBBox, naturalWidth/naturalHeight and current crop-review gates; no content/choices, asset pixels, answers, solutions or other qids changed.",
+  "contentChoicePayloadChecks": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "sourceJsPath": "archive-work/exams/original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js",
+      "sourceJsSha256": "sha256:454e71f6ad076c48bb71b9a0c60c78dcec692bd3b5afaebf9b923b9b55a6c361",
+      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+      "assetSha256": "sha256:e00b87d463085e2b113df2df7438e67a307483a7ddfb2bf9c9ac4657af4b7bba",
+      "bbox": {
+        "x1": 100,
+        "y1": 1328,
+        "x2": 810,
+        "y2": 1690
+      },
+      "assetDimensionsPx": [
+        710,
+        362
+      ],
+      "contentChoicesDigestAtV2Audit": "sha256:7e5e7d94c18749492b759992fde3104f5d42edf1f28fd74f9da15c4725849989",
+      "contentChoicesDigestAfterMetadataRepair": "sha256:7e5e7d94c18749492b759992fde3104f5d42edf1f28fd74f9da15c4725849989",
+      "contentChoicesUnchanged": true
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22",
+      "sourceJsPath": "archive-work/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
+      "sourceJsSha256": "sha256:a512083b1c763fc4ed47f9221c1062abc9d45062e901bb0fe65072d58d2eb43f",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "assetSha256": "sha256:c43fc7879ad2400f966bbc7e7e587e9e06098145015895e91de04fbe5b42f1b0",
+      "bbox": {
+        "x1": 1660,
+        "y1": 1200,
+        "x2": 2110,
+        "y2": 2200
+      },
+      "assetDimensionsPx": [
+        450,
+        1000
+      ],
+      "contentChoicesDigestAtV2Audit": "sha256:d7f20a2133b0e67ca1eac10c540e5d1948d29bbf84d3d7950b1ea2ab64152c38",
+      "contentChoicesDigestAfterMetadataRepair": "sha256:d7f20a2133b0e67ca1eac10c540e5d1948d29bbf84d3d7950b1ea2ab64152c38",
+      "contentChoicesUnchanged": true
+    }
+  ],
+  "remainingNotationMappingFailures": {
+    "count": 92,
+    "Pal": 29,
+    "Hyocheon": 63,
+    "disposition": "Retain all as unsupported/malformed failures; no source-question content serialization changed."
+  },
+  "reviewerScope": "Independently compare the two nested provenance bboxes/dimensions/current asset hashes with active visualAssetBBoxOnPage and crop pixels. Confirm q4 frozen PASS. Prior v2 review remains the full 46-qid/561-entry notation audit because the content/choices payload hashes were unchanged.",
+  "noNotionWrites": true
+}

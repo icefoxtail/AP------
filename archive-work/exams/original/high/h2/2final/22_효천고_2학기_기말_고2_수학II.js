@@ -1968,25 +1968,25 @@ window.questionBank = [
         "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png"
       ],
       "sourceBBox": {
-        "x1": 1650,
-        "y1": 1450,
-        "x2": 2100,
-        "y2": 2050
+        "x1": 1660,
+        "y1": 1200,
+        "x2": 2110,
+        "y2": 2200
       },
-      "cropGenerator": "scanned_exam_pipeline.py",
+      "cropGenerator": "Pillow Image.crop from original full-page PNG",
       "pngDecodePass": true,
       "naturalWidth": 450,
-      "naturalHeight": 600,
-      "cropStatus": "CROP_PURITY_REVIEW_REQUIRED",
-      "verdict": "PENDING_REVIEW",
+      "naturalHeight": 1000,
+      "cropStatus": "CROP_PURITY_PASS",
+      "verdict": "PASS_VISUAL_AND_PIXEL_CROP",
       "checks": {
-        "CROP_PURITY": false,
-        "NO_OTHER_QUESTION_TEXT": false,
-        "NO_CHOICES_CONTAMINATION": false,
-        "NO_PAGE_BORDER_CONTAMINATION": false,
-        "NO_CLIPPING": false,
-        "REQUIRED_LABELS_PRESENT": false,
-        "QUESTION_SEMANTIC_MATCH": false
+        "CROP_PURITY": true,
+        "NO_OTHER_QUESTION_TEXT": true,
+        "NO_CHOICES_CONTAMINATION": true,
+        "NO_PAGE_BORDER_CONTAMINATION": true,
+        "NO_CLIPPING": true,
+        "REQUIRED_LABELS_PRESENT": true,
+        "QUESTION_SEMANTIC_MATCH": true
       }
     },
     "curriculum": "2015",

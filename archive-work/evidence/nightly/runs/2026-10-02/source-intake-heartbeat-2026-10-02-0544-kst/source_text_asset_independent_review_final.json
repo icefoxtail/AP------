@@ -32,7 +32,7 @@
     "status": "PASS"
   },
   "assetReviewCount": 10,
-  "assetGateStatus": "PENDING_FRESH_OCR_FREE_REVIEW_AFTER_SECOND_TARGETED_CROP_REPAIR",
+  "assetGateStatus": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
   "answerSolutionEmptyStatus": "PASS",
   "sourceMetadataFirstPassStatus": "PASS_SOURCE_FIRST_PASS",
   "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
@@ -56,10 +56,10 @@
       },
       "sourceJs": {
         "path": "archive-work/exams/original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js",
-        "sha256": "sha256:5c54964528285854ae64b0ed8cbd593bf4c66ca02b8d807b4fb77d2f7c8b4e53",
-        "providedSha256": "sha256:5c54964528285854ae64b0ed8cbd593bf4c66ca02b8d807b4fb77d2f7c8b4e53",
-        "sha256Basis": "raw working-tree bytes after bbox-only crop repair; commit receipt pending",
-        "identityStatus": "BBOX_ONLY_REPAIR_PENDING_COMMIT",
+        "sha256": "sha256:454e71f6ad076c48bb71b9a0c60c78dcec692bd3b5afaebf9b923b9b55a6c361",
+        "providedSha256": "sha256:454e71f6ad076c48bb71b9a0c60c78dcec692bd3b5afaebf9b923b9b55a6c361",
+        "sha256Basis": "raw working-tree bytes after visual provenance metadata correction; targeted recheck pending",
+        "identityStatus": "VISUAL_METADATA_REPAIR_PENDING_RECHECK",
         "gitBlobObjectIdAtArtifactCommit": "50d84d97e903894cb414fbcf3b5c45c0e9687dc3",
         "committedContentSha256Lf": "sha256:ff4ab5a4701c2005148570ec4df5600e93f08558480c157179a353c1144b652e",
         "normalizedContentMatchesArtifactCommit": false,
@@ -11751,14 +11751,15 @@
           "cropGenerator": "Pillow Image.crop from original full-page PNG",
           "actualProcessing": "Direct rectangular crop from original source page PNG; no rotation, deskew, contrast adjustment, enhancement or reconstruction.",
           "gates": {
-            "CROP_PURITY": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "contamination": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "clipping": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "requiredLabel": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "questionSemanticMatch": "PENDING_FRESH_OCR_FREE_REVIEW"
+            "cropPurity": "PASS",
+            "contamination": "PASS",
+            "clipping": "PASS",
+            "requiredLabel": "PASS",
+            "questionSemanticMatch": "PASS",
+            "sourceBBoxBinding": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK"
           },
-          "verdict": "TARGETED_RECHECK_PENDING",
-          "finding": "Updated crop bbox {\"x1\":100,\"y1\":1328,\"x2\":810,\"y2\":1690} and SHA-256 e00b87d463085e2b113df2df7438e67a307483a7ddfb2bf9c9ac4657af4b7bba; fresh independent OCR-free review is pending. Expanded upward and left to retain the complete printed condition line for this same question plus the full y-axis arrow/label and graph; no neighboring question, instructions, or answer choices enter the crop.",
+          "verdict": "PASS_VISUAL_PENDING_METADATA_RECHECK",
+          "finding": "Fresh v2 visual/pixel review passed. Nested sourceBBox/dimensions were reconciled after that review; targeted provenance metadata recheck is pending.",
           "linkedQuestionReviewQid": "18",
           "initialAndTargetedEvidence": {
             "qid": "18",
@@ -12055,7 +12056,7 @@
           ]
         }
       },
-      "assetGateStatus": "PENDING_FRESH_OCR_FREE_REVIEW",
+      "assetGateStatus": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
       "notationSourceMappingFailureCount": 29,
       "notationSourceMappingPassCount": 204,
       "notationFailuresByQid": {
@@ -12116,6 +12117,11 @@
           0,
           8
         ]
+      },
+      "postV2MetadataReconciliation": {
+        "currentJsSha256": "sha256:454e71f6ad076c48bb71b9a0c60c78dcec692bd3b5afaebf9b923b9b55a6c361",
+        "contentChoicesPayloadUnchanged": true,
+        "metadataRecheckStatus": "PENDING"
       }
     },
     {
@@ -12135,10 +12141,10 @@
       },
       "sourceJs": {
         "path": "archive-work/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
-        "sha256": "sha256:2e86668972165203016500080b5558b6c1989d9f61481d327208d555f5fed02d",
-        "sha256Basis": "raw working-tree bytes after bbox-only crop repair; commit receipt pending",
-        "identityStatus": "BBOX_ONLY_REPAIR_PENDING_COMMIT",
-        "providedSha256": "sha256:2e86668972165203016500080b5558b6c1989d9f61481d327208d555f5fed02d",
+        "sha256": "sha256:a512083b1c763fc4ed47f9221c1062abc9d45062e901bb0fe65072d58d2eb43f",
+        "sha256Basis": "raw working-tree bytes after visual provenance metadata correction; targeted recheck pending",
+        "identityStatus": "VISUAL_METADATA_REPAIR_PENDING_RECHECK",
+        "providedSha256": "sha256:a512083b1c763fc4ed47f9221c1062abc9d45062e901bb0fe65072d58d2eb43f",
         "gitBlobObjectId": "aaccf38c3e28247c3b57943ed439a13ffa46a785",
         "committedContentSha256": "sha256:b868afd6e659c9ab89bf196274846af0efd0a1dfaf897ee6cb446c0de0554bf4",
         "normalizedContentMatchesArtifactCommit": false
@@ -27023,14 +27029,15 @@
           "cropGenerator": "Pillow Image.crop from original full-page PNG",
           "actualProcessing": "Direct rectangular crop from original source page PNG; no rotation, deskew, contrast adjustment, enhancement or reconstruction.",
           "gates": {
-            "CROP_PURITY": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "contamination": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "clipping": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "requiredLabel": "PENDING_FRESH_OCR_FREE_REVIEW",
-            "questionSemanticMatch": "PENDING_FRESH_OCR_FREE_REVIEW"
+            "cropPurity": "PASS",
+            "contamination": "PASS",
+            "clipping": "PASS",
+            "requiredLabel": "PASS",
+            "questionSemanticMatch": "PASS",
+            "sourceBBoxBinding": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK"
           },
-          "verdict": "TARGETED_RECHECK_PENDING",
-          "finding": "Updated crop bbox {\"x1\":1660,\"y1\":1200,\"x2\":2110,\"y2\":2200} and SHA-256 c43fc7879ad2400f966bbc7e7e587e9e06098145015895e91de04fbe5b42f1b0; fresh independent OCR-free review is pending. Expanded the top margin to retain the y-axis arrow/label and complete curve tops; the full y=g(x) label remains and no prompt text or page divider enters the crop.",
+          "verdict": "PASS_VISUAL_PENDING_METADATA_RECHECK",
+          "finding": "Fresh v2 visual/pixel review passed. Nested sourceBBox/dimensions were reconciled after that review; targeted provenance metadata recheck is pending.",
           "linkedQuestionReviewQid": "22",
           "initialAndTargetedEvidence": {
             "qid": "22",
@@ -27370,7 +27377,7 @@
           ]
         }
       },
-      "assetGateStatus": "PENDING_FRESH_OCR_FREE_REVIEW",
+      "assetGateStatus": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
       "notationSourceMappingFailureCount": 63,
       "notationSourceMappingPassCount": 265,
       "notationFailuresByQid": {
@@ -27475,6 +27482,11 @@
           8,
           16
         ]
+      },
+      "postV2MetadataReconciliation": {
+        "currentJsSha256": "sha256:a512083b1c763fc4ed47f9221c1062abc9d45062e901bb0fe65072d58d2eb43f",
+        "contentChoicesPayloadUnchanged": true,
+        "metadataRecheckStatus": "PENDING"
       }
     }
   ],
@@ -29073,87 +29085,19 @@
     ]
   },
   "sourceItemizationAudit": {
-    "ref": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_postcrop_independent_audit.json",
-    "sha256": "sha256:7f60daee94f5471c648be21300334f611d25b376ed7126037232c9581eb2706e",
-    "reviewerId": "Independent Codex child reviewer / source_postcrop_qa_20261002_0544",
-    "reviewedAtKst": "2026-10-02 (local worktree review)",
-    "reviewedCommit": "a0696c70c5f3f759aac531698898ca911ec85ca8",
+    "ref": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
+    "sha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
+    "reviewerId": "Independent Codex subagent / source_v2_qa_20261002_0544",
+    "reviewedAtKst": "2026-10-02",
+    "reviewedCommit": "9607edd48e271a3297df49a3aaad6435ca68716d",
     "notationEntryCount": 561,
     "mechanicallyBoundCount": 561,
     "sourceMappingPassCount": 469,
     "sourceMappingFailureCount": 92,
     "visualAnchorCount": 48,
     "visualAnchorStatus": "PASS_48",
-    "assetFailures": [
-      {
-        "examId": "22_팔마고_2학기_기말_고2_수학II",
-        "qid": "18",
-        "sourcePageNo": 5,
-        "bboxPx": [
-          160,
-          1358,
-          810,
-          1690
-        ],
-        "pagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
-        "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
-        "expectedSha256": "0a9086312e9e5cc6a0f9cb4c535b23cd67b41bbc01f1b3d8b915375bd0c327b3",
-        "pageDimensionsPx": [
-          1819,
-          2570
-        ],
-        "assetDimensionsPx": [
-          650,
-          332
-        ],
-        "actualAssetSha256": "0a9086312e9e5cc6a0f9cb4c535b23cd67b41bbc01f1b3d8b915375bd0c327b3",
-        "expectedAssetSha256": "0a9086312e9e5cc6a0f9cb4c535b23cd67b41bbc01f1b3d8b915375bd0c327b3",
-        "assetShaMatches": true,
-        "exactPixelCropEquality": true,
-        "semanticMatch": "PASS",
-        "cropPurity": "PASS",
-        "contamination": "NONE",
-        "requiredAxisArrowsAndLabels": "FAIL_CLIPPED_OR_OMITTED",
-        "clipping": "FAIL",
-        "verdict": "ASSET_REPAIR_REQUIRED",
-        "finding": "Graph semantically matches and crop is pure, but the upper y-axis arrow/label are cut by the top crop boundary.",
-        "ocrUsed": false
-      },
-      {
-        "examId": "22_효천고_2학기_기말_고2_수학II",
-        "qid": "22",
-        "sourcePageNo": 3,
-        "bboxPx": [
-          1660,
-          1350,
-          2110,
-          2200
-        ],
-        "pagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
-        "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
-        "expectedSha256": "0329862755c4b10dea876f3796e0530dc03e737fa19929a03918cea54b445e57",
-        "pageDimensionsPx": [
-          2226,
-          3153
-        ],
-        "assetDimensionsPx": [
-          450,
-          850
-        ],
-        "actualAssetSha256": "0329862755c4b10dea876f3796e0530dc03e737fa19929a03918cea54b445e57",
-        "expectedAssetSha256": "0329862755c4b10dea876f3796e0530dc03e737fa19929a03918cea54b445e57",
-        "assetShaMatches": true,
-        "exactPixelCropEquality": true,
-        "semanticMatch": "PASS",
-        "cropPurity": "PASS",
-        "contamination": "NONE",
-        "requiredAxisArrowsAndLabels": "FAIL_CLIPPED_OR_OMITTED",
-        "clipping": "FAIL",
-        "verdict": "ASSET_REPAIR_REQUIRED",
-        "finding": "Graph semantically matches and crop is pure, but the upper y-axis arrow/label are absent at the top crop boundary.",
-        "ocrUsed": false
-      }
-    ]
+    "assetFailures": []
   },
-  "targetedCropRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/targeted_source_asset_crop_repair_pending.json"
+  "targetedCropRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/targeted_source_asset_crop_repair_pending.json",
+  "visualProvenanceMetadataRecheckRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_recheck_pending.json"
 }

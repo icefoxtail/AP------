@@ -4,7 +4,7 @@
   "priorCommittedFinalReportCommit": "6ae2cd435af0f29eefb2160f1e8458e27b7662ef",
   "priorCommittedFinalReportSha256": "sha256:6de6a65cd5e76947da970a80eadbaa197d8a02db0cec0279907703f9429541f2",
   "updatedFinalReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
-  "updatedFinalReportSha256": "sha256:b90927f168bf8c43e4aed6f7d46679aa6d095ef2c4c4ae6e3cdd095ea4450b70",
+  "updatedFinalReportSha256": "sha256:b5eee30a7bc92d4b897895d4de188c8f5f49c4cf87ad5c0c3b57247929cf90f5",
   "repairedExams": [
     {
       "examId": "22_팔마고_2학기_기말_고2_수학II",
@@ -31,40 +31,15 @@
   "freshIndependentAuditStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_AND_ASSET_REPAIR_REQUIRED",
   "freshAuditScope": "All 46 qid notation inventories and anchors, plus the repaired Palma q18, Hyocheon q4 and q22 crops.",
   "handoffStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
-  "freshAuditStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_AND_ASSET_REPAIR_REQUIRED",
-  "freshAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_postcrop_independent_audit.json",
-  "freshAuditReportSha256": "sha256:7f60daee94f5471c648be21300334f611d25b376ed7126037232c9581eb2706e",
+  "freshAuditStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
+  "freshAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
+  "freshAuditReportSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
   "notationSourceMappingFailures": 92,
   "notationSourceMappingPasses": 469,
   "mechanicallyBoundEntries": 561,
   "visualAnchorCount": 48,
   "visualAnchorStatus": "PASS",
-  "remainingAssetFailures": [
-    {
-      "examId": "22_팔마고_2학기_기말_고2_수학II",
-      "qid": "18",
-      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
-      "bbox": {
-        "x1": 100,
-        "y1": 1328,
-        "x2": 810,
-        "y2": 1690
-      },
-      "status": "TARGETED_RECHECK_PENDING"
-    },
-    {
-      "examId": "22_효천고_2학기_기말_고2_수학II",
-      "qid": "22",
-      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
-      "bbox": {
-        "x1": 1660,
-        "y1": 1200,
-        "x2": 2110,
-        "y2": 2200
-      },
-      "status": "TARGETED_RECHECK_PENDING"
-    }
-  ],
+  "remainingAssetFailures": [],
   "sourceFilesChanged": true,
   "assetFilesChanged": true,
   "failures": [
@@ -1702,5 +1677,10 @@
       "finding": "Graph semantically matches and crop is pure, but the upper y-axis arrow/label are absent at the top crop boundary.",
       "ocrUsed": false
     }
-  ]
+  ],
+  "visualMetadataDrift": [
+    "Pal q18 nested sourceBBox/naturalWidth/naturalHeight",
+    "Hyocheon q22 nested sourceBBox/naturalWidth/naturalHeight"
+  ],
+  "targetedMetadataRecheckStatus": "PENDING"
 }
