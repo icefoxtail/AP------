@@ -1,7 +1,18 @@
+## CURRENT OVERRIDE — 2026-10-03 — CONTEXT-TOLERANT R3 / SAME-WORKER RECHECK ALLOWED
+
+형님의 현재 명시 지시가 아래 과거 blind/fresh-review/Codex-independent-start 문구보다 우선한다.
+
+- 이전 stage verdict·target solution·R3 fail packet·repair detail을 **이미 봤거나 먼저 봐도 R3/recheck는 유효**하다.
+- initial R3는 latest artifact를 source/current authority에서 전 문항 다시 계산·감사하면 되고, prior 노출 때문에 fresh reviewer를 만들지 않는다.
+- post-R3 repair 후 recheck도 **같은 worker 또는 다른 worker/Codex 어느 쪽이든 가능**하다. fresh Codex reviewer actual-start는 release 필수조건이 아니다.
+- recheck PASS는 open/changed locus + direct dependency 재계산, locked scope 불변, canonical validator/receipt, exact finalArtifactSha parity로 판단한다.
+- 기존 `CODEX_INDEPENDENT_REVIEW` 상태명은 호환용으로 유지할 수 있지만 “다른 새 reviewer여야 한다”는 의미는 폐기한다.
+- 아래의 “이전 verdict/solution을 열기 전에”, “fresh release”, “independent reviewer”는 **prior를 정답처럼 복사하지 말고 실제로 재검하라는 품질 원칙**으로 읽는다.
+
 ## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
 - **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
-- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
-- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
+- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → R3_REPAIR → POST_REPAIR_RECHECK`**다. 기존 `CODEX_R3_REPAIR/CODEX_INDEPENDENT_REVIEW` 상태명은 호환 가능하다.
+- POST_REPAIR_RECHECK가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 release → MAIN**으로 진행한다. recheck worker가 repair detail을 이미 본 것은 blocker가 아니다.
 - Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
 - `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
 - 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
