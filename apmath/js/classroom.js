@@ -2478,17 +2478,45 @@ function renderClassProgressStatusChip(status) {
     return `<span class="ap-class-progress-status ap-class-progress-status--${apEscapeHtml(status)}">${apEscapeHtml(getClassProgressStatusLabel(status))}</span>`;
 }
 
-function getClassProgressItemStatus(group, itemIndex, selectedPaths) {
+function getClassProgressCurrentItemIndex(group, selectedPaths) {
     const active = new Set(selectedPaths || []);
-    const item = group.items[itemIndex];
-    const pathKey = String(item?.canonicalPathKey || '');
-    if (active.has(pathKey)) return 'current';
-
-    const currentIndexes = group.items
+    const currentIndexes = (Array.isArray(group?.items) ? group.items : [])
         .map((candidate, index) => active.has(String(candidate?.canonicalPathKey || '')) ? index : -1)
         .filter(index => index >= 0);
-    if (!currentIndexes.length) return 'unlearned';
-    return itemIndex < Math.min(...currentIndexes) ? 'complete' : 'unlearned';
+    return currentIndexes.length ? Math.max(...currentIndexes) : -1;
+}
+
+function getClassProgressItemStatus(group, itemIndex, selectedPaths) {
+    const currentIndex = getClassProgressCurrentItemIndex(group, selectedPaths);
+    if (currentIndex < 0) return 'unlearned';
+    if (itemIndex === currentIndex) return 'current';
+    return itemIndex < currentIndex ? 'complete' : 'unlearned';
+}
+
+function setClassProgressCurrentUnit(groupKey, pathKey, selected) {
+    const modalState = getClassProgressModalState();
+    const key = String(groupKey || '');
+    const path = String(pathKey || '');
+    const group = (Array.isArray(modalState.groups) ? modalState.groups : [])
+        .find(item => String(item?.key || '') === key);
+    if (!group) return;
+
+    const draft = new Set(getClassProgressSelectedPathDraft());
+    (Array.isArray(group.items) ? group.items : []).forEach(item => {
+        const candidatePath = String(item?.canonicalPathKey || '');
+        if (candidatePath) draft.delete(candidatePath);
+    });
+    if (selected && path) draft.add(path);
+
+    const ordered = [];
+    (Array.isArray(modalState.groups) ? modalState.groups : []).forEach(candidateGroup => {
+        (Array.isArray(candidateGroup?.items) ? candidateGroup.items : []).forEach(item => {
+            const candidatePath = String(item?.canonicalPathKey || '');
+            if (candidatePath && draft.has(candidatePath)) ordered.push(candidatePath);
+        });
+    });
+    modalState.selectedPathDraft = ordered;
+    rerenderClassProgressTextbookDetail();
 }
 
 function getClassProgressL1Groups(group, selectedPaths) {
@@ -2533,12 +2561,12 @@ function renderClassProgressCoursePanel(group, selectedPaths) {
         const open = stats.current > 0;
         const itemHtml = bucket.items.map(({ item, index, status }) => {
             const pathKey = String(item.canonicalPathKey || '');
-            const checked = selected.has(pathKey) ? ' checked' : '';
+            const checked = status === 'current' ? ' checked' : '';
             const l1 = String(item.l1 || '');
             const l2 = String(item.l2 || '');
             const itemLabel = l2 || l1 || '-';
             return `<label class="ap-class-progress-unit ap-class-progress-unit--${apEscapeHtml(status)}">
-                <input type="checkbox" class="record-unit-check" value="${apEscapeHtml(pathKey)}" data-canonical-path-key="${apEscapeHtml(pathKey)}" data-curriculum-key="${apEscapeHtml(String(item.curriculumKey || ''))}" data-level-key="${apEscapeHtml(String(item.level || ''))}" data-course-key="${apEscapeHtml(String(item.courseKey || ''))}" data-l1="${apEscapeHtml(l1)}" data-l2="${apEscapeHtml(l2)}"${checked}>
+                <input type="checkbox" class="record-unit-check" value="${apEscapeHtml(pathKey)}" data-canonical-path-key="${apEscapeHtml(pathKey)}" data-curriculum-key="${apEscapeHtml(String(item.curriculumKey || ''))}" data-level-key="${apEscapeHtml(String(item.level || ''))}" data-course-key="${apEscapeHtml(String(item.courseKey || ''))}" data-l1="${apEscapeHtml(l1)}" data-l2="${apEscapeHtml(l2)}"${checked} onchange="setClassProgressCurrentUnit(${classProgressJsArg(group.key)}, ${classProgressJsArg(pathKey)}, this.checked)">
                 <span class="ap-class-progress-unit__main">
                     <span class="ap-class-progress-unit__index">${apEscapeHtml(String(index + 1))}</span>
                     <span class="ap-class-progress-unit__label">${apEscapeHtml(itemLabel)}</span>
