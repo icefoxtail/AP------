@@ -213,6 +213,53 @@ test('applying a selected course and active books adds a course card and collaps
     assert.match(detail.innerHTML, /onclick="toggleClassProgressCourseAdd\(\)"/);
 });
 
+test('unsaved unit selection survives adding a second course before record save', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const firstGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M1-2');
+    const secondGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const firstPath = firstGroup.items[0].canonicalPathKey;
+
+    modalState.activeGroupKeys = [firstGroup.key];
+    modalState.savedPaths = [];
+    modalState.selectedPathDraft = [];
+    modalState.courseAddSelectedGroupKey = secondGroup.key;
+    context._courseBookCheckboxes = [{ value: 'book-a' }];
+
+    const checkedUnit = {
+        value: firstPath,
+        getAttribute(name) {
+            return name === 'data-canonical-path-key' ? firstPath : '';
+        }
+    };
+    const inserted = [];
+    const root = {
+        querySelectorAll(selector) {
+            if (selector === '.record-unit-check:checked') return [checkedUnit];
+            if (selector === '[data-progress-group]') {
+                return [{ getAttribute(name) { return name === 'data-progress-group' ? firstGroup.key : ''; } }];
+            }
+            return [];
+        },
+        querySelector() { return { remove() {} }; },
+        insertAdjacentHTML(_position, html) { inserted.push(html); }
+    };
+    const detail = { innerHTML: '' };
+    context._elements.set('record-progress-course-panels', root);
+    context._elements.set('record-progress-detail', detail);
+
+    context.applyClassProgressCourseAndTextbooks();
+
+    assert.deepEqual(Array.from(modalState.selectedPathDraft), [firstPath]);
+    assert.equal(modalState.activeGroupKeys.includes(firstGroup.key), true);
+    assert.equal(modalState.activeGroupKeys.includes(secondGroup.key), true);
+    const marker = `value="${context.apEscapeHtml(firstPath)}"`;
+    const markerIndex = detail.innerHTML.indexOf(marker);
+    assert.notEqual(markerIndex, -1);
+    assert.match(detail.innerHTML.slice(markerIndex, markerIndex + 400), /checked/);
+    assert.equal(inserted.some(html => html.includes(secondGroup.key)), true);
+});
+
 test('inline textbook registration reuses handleAddTextbook and carries the apply draft through modal reopen', async () => {
     const context = makeContext('고1');
     const modalState = context.state.ui.classProgressModalState;
