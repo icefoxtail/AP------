@@ -1,0 +1,275 @@
+# JS Archive Automation Stable Operating Contract v1
+
+- 상태: **STABLE DESIGN / NOT ACTIVE**
+- 동결일: 2026-10-02
+- 최상위 authority: 형님의 현재 명시 지시
+- 적용 시점: **미정 — 별도 activation 결정 전 실행 금지**
+- 기존 GPT 예약: **OFF 유지**
+- 기존 backlog migration: **이 문서에서 결정하지 않음 — 별도 migration plan 필요**
+
+## 0. 목적
+
+JS Archive 자동화를 다음 고정 흐름으로 단순화한다.
+
+```text
+CREATE → R1 → R2 → R3 → RELEASE QUEUE → PUBLISH → MAIN_DONE
+```
+
+R3 FAIL 이후의 repair/recovery/independent recheck는 현재 운영대로 Codex가 담당한다.
+
+이 문서가 활성화되면 automation role/schedule/blind/recovery/publish의 단일 실행 authority가 된다.
+과거 3-lane, Surge, Phase A/B, existing-slot-only, persistent-thread contamination, dormant clean-slot, 감시자/조율자 계약은 HISTORY다.
+
+## 1. GPT 고정 12-slot topology
+
+| Role | Count | Responsibility |
+|---|---:|---|
+| CREATE | 2 | 시험지 제작, solution, solution visual, Meta, physical evidence, CREATE closure |
+| R1 | 2 | FULL independent review + allowed deterministic repair |
+| R2 | 2 | FULL independent recheck + compare/regression closure |
+| R3 | 2 | final full release audit; direct repair forbidden |
+| PUBLISH | 1 | release queue/branch의 clean backlog 전체 batch main 반영 |
+| MASTER EXECUTOR | 3 | 20분 간격으로 전체 pipeline 실제 복구·재배정·쓰기·배포 |
+
+### 1.1 5-minute fixed schedule design
+
+```text
+:00 MASTER-A
+:05 CREATE-1
+:10 R1-1
+:15 R2-1
+:20 MASTER-B
+:25 R3-1
+:30 PUBLISH
+:35 CREATE-2
+:40 MASTER-C
+:45 R1-2
+:50 R2-2
+:55 R3-2
+```
+
+이 시간표는 설계 정본이며 activation 전에는 task를 생성/enable하지 않는다.
+
+### 1.2 ROLE-PURE HARD RULE
+
+- CREATE/R1/R2/R3/PUBLISH slot은 역할을 바꾸지 않는다.
+- CREATE slot을 R3로, R3 slot을 R1로 재활용하지 않는다.
+- 역할 변경이 필요하면 해당 role의 새 task/slot을 만든다.
+- 과거 대화 context가 다른 blind stage로 승계되지 않게 한다.
+
+## 2. Review Attempt v2 — blind의 단위
+
+Blind 독립성 단위는 **automation/thread 전체가 아니라 reviewAttemptId**다.
+
+reviewAttemptId는 최소 다음을 결속한다.
+
+```text
+stage
+examUid
+inputArtifactSha
+attemptNo
+```
+
+정상 순서:
+
+```text
+selector-safe metadata
+→ Golden/Negative calibration
+→ source/required authority 기반 independent judgment
+→ blindDecisionSha freeze
+→ prior solution/verdict/checkpoint/repair/diff compare
+→ repair/recheck/validator/receipt closure
+```
+
+### 2.1 continuation
+
+유효한 blindDecisionSha가 이미 동결된 뒤 write/validator/Git/Notion 실패가 발생했다면 오염이 아니다.
+동일 reviewAttemptId로 다음 run에서 이어서 닫는다.
+compare detail을 이미 봤다는 이유로 continuation을 폐기하지 않는다.
+
+### 2.2 invalid blind attempt
+
+blindDecisionSha 동결 전에 target prior verdict/repair answer/checkpoint detail이 선노출되어 독립성이 실제로 깨진 경우 **그 attempt만 INVALID**다.
+
+- worker/thread 전체를 영구 오염시키지 않는다.
+- MASTER가 invalid attempt를 닫는다.
+- fresh one-shot reviewer/task를 새로 생성해 재배정한다.
+- 새 task 생성 금지, dormant clean-slot 재고, persistent-thread permanent contamination 규칙은 폐기한다.
+
+## 3. MASTER EXECUTOR ×3
+
+MASTER는 감시자/보고자가 아니라 **비블라인드 총괄 실행자**다.
+형님의 운영 authority를 위임받아 pipeline을 실제로 움직인다.
+
+### 3.1 권한
+
+MASTER는 필요 시 다음을 직접 수행할 수 있다.
+
+- stalled owner/claim/lease 정리
+- stale SHA/ref/page/receipt 재조회·교정
+- write 재시도 및 safe write path 전환
+- deterministic repair
+- evidence materialization
+- validator 실행/fallback
+- commit/push/merge/publish
+- stage/owner/queue 재배정
+- invalid blind attempt 폐쇄
+- fresh one-shot blind reviewer/task 생성
+- Codex repair/recheck queue 재기동·재연결
+- release queue 정리
+
+### 3.2 금지
+
+MASTER도 다음 사실은 조작할 수 없다.
+
+- source truth
+- answer/math truth
+- 실제 validator FAIL을 PASS로 위조
+- unresolved release debt를 숨기고 publish
+- unrelated production payload mutation
+
+운영 절차와 ownership은 강권한으로 바꿀 수 있지만 사실과 품질 gate는 위조할 수 없다.
+
+### 3.3 MASTER 완료 조건
+
+다음은 완료가 아니다.
+
+- 문제 발견
+- STALL/DEBT/CONTAMINATED 기록
+- generic checkpoint
+- 문서 갱신만 수행
+- 다음 owner에게 말만 넘김
+
+완료는 다음 둘 중 하나다.
+
+1. durable state가 실제 다음 정상 상태로 이동함.
+2. 직접 완료 불가 시 fresh executable owner가 실제 claim/실행에 진입하고 exact input/completion gate가 결속됨.
+
+### 3.4 실행 순서
+
+```text
+발견
+→ physical state 확인
+→ root cause 확정
+→ MASTER_LEASE
+→ 직접 복구/수정
+→ validator
+→ commit/push/merge
+→ 저장 readback
+→ stage 이동
+→ 마지막에 Notion
+```
+
+문서 갱신은 마지막이다.
+
+### 3.5 MASTER_LEASE
+
+- MASTER-A/B/C는 target별 MASTER_LEASE를 사용한다.
+- 유효 lease + durable progress가 있으면 다음 MASTER는 건드리지 않는다.
+- lease만 있고 durable progress가 없거나 timeout이면 다음 MASTER가 takeover할 수 있다.
+- durable progress는 artifact SHA 변경, validator receipt, commit, stage transition, main merge 중 하나 이상으로 본다.
+
+## 4. 실패 처리
+
+### 4.1 write/tool/Git/Notion 실패
+
+```text
+FAIL
+→ state recheck
+→ safe retry
+→ stale state refresh
+→ alternate safe path
+→ readback
+→ DONE 또는 scoped debt
+→ 다음 eligible
+```
+
+첫 실패에서 보고만 하고 종료하지 않는다.
+
+### 4.2 contamination
+
+- blind freeze 이후 노출: 정상 continuation.
+- blind freeze 이전 선노출: attempt만 INVALID → MASTER가 fresh one-shot reviewer 생성.
+- MASTER는 비블라인드이므로 “나도 봤으니 못 고친다”를 이유로 repair/write/routing/publish를 거부할 수 없다.
+
+### 4.3 NO_WORK
+
+- candidate 하나가 부적격이라고 run을 종료하지 않는다.
+- selector 범위 전체를 확인하고 실제 eligible=0일 때만 NO_WORK.
+- eligible backlog가 있는데 NO_WORK면 MASTER rescue 대상이다.
+
+## 5. Codex recovery ownership
+
+현재 운영대로 다음은 Codex가 담당한다.
+
+- 하위 실패 recovery
+- R3 FAIL repair
+- repair 결과 independent recheck
+
+post-R3:
+
+```text
+R3_FAIL_DEFERRED
+→ CODEX_R3_REPAIR
+↔ CODEX_INDEPENDENT_REVIEW
+```
+
+Independent Review PASS는 추가 GPT R3 retry 없이 release queue로 보낸다.
+FAIL은 updated OPEN locus로 Codex repair에 되돌린다.
+
+MASTER는 Codex queue를 감시하고 stalled owner를 재기동·재배정할 수 있지만 Codex independent PASS를 임의로 대신 선언하지 않는다.
+
+## 6. R3 PASS → RELEASE QUEUE
+
+R3 PASS는 main merge가 아니다.
+
+R3 PASS 시 final exam/required metadata/assets/evidence/finalArtifactSha와 R3 PASS provenance를 release queue/branch에 적재한다.
+
+Codex post-R3 Independent Review PASS도 동일 release queue/branch로 보낸다.
+
+## 7. PUBLISH = clean backlog 전체 batch sweep
+
+PUBLISH는 시험지 1개 consumer가 아니다.
+
+매 run:
+
+1. release queue/branch 전체 재조회
+2. clean release-eligible 전체 확정
+3. debt/invalid 후보는 queue에 남김
+4. clean 최종 산출물 전체를 하나의 publish batch로 반영
+5. batch manifest에 exam + finalArtifactSha + release provenance + changed files 기록
+6. batch commit/merge/push
+7. remote main 및 각 final artifact parity 확인
+8. 포함 시험지를 MAIN_DONE
+
+### 7.1 GPT + Codex dual publisher
+
+GPT PUBLISH와 Codex publisher가 동시에 존재할 수 있다.
+
+- 하나의 PUBLISH_LEASE만 사용한다.
+- 먼저 lease를 잡은 publisher가 현재 clean backlog 전체를 처리한다.
+- 다른 publisher는 재조회 후 이미 소비됐으면 mutation 0.
+- 시험지별 독립 commit을 강제하지 않는다.
+- publish cycle의 clean release backlog를 batch 단위로 commit한다.
+
+## 8. No-stop invariant
+
+- HARD gate FAIL은 해당 artifact의 PASS/release를 막지만 scheduler 전체를 멈추지 않는다.
+- 한 target debt가 다른 exam/lane/cohort를 막지 않는다.
+- release debt는 final publish에서만 0을 강제한다.
+- MASTER는 병목을 문서화만 하지 않고 실제 closure 또는 executable handoff까지 만든다.
+
+## 9. Activation 전 보존
+
+- current main artifact와 durable CREATE/R1/R2/R3 receipts는 삭제하지 않는다.
+- Codex repair/recheck 결과도 보존한다.
+- automation topology만 새 구조로 교체한다.
+- **기존 누적 시험지/backlog migration은 별도 논의 후 확정한다.**
+- activation 전 기존 GPT 예약은 OFF 유지.
+
+## 10. 문서 버전 정책
+
+- 이 문서 이전의 automation topology/Surge/Phase A·B/persistent-thread contamination/clean dormant slot/coordinator-monitor 계약은 HISTORY다.
+- 새 worker는 HISTORY를 기본 preload하지 않는다.
+- 이 문서에 임시 override를 계속 덧붙이지 않는다.
+- 큰 구조 변경 시 새 버전 문서를 만들고 이전 버전 전체를 90_ARCHIVE/HISTORY로 이동한다.
