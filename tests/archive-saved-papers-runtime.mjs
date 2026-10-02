@@ -216,10 +216,39 @@ try {
   const beforeAssignments = Number((await db.prepare("SELECT COUNT(*) n FROM class_exam_assignments").first()).n);
   const directSaved = await request("archive-saved-papers", "POST", directInput);
   assert.equal(directSaved.status, 200, JSON.stringify(directSaved));
+  assert.equal(directSaved.body.papers[0].title, "image snapshot");
+  assert.equal(directSaved.body.papers[0].library_display_name, "image snapshot");
+  assert.equal(directSaved.body.papers[0].library_status, "ACTIVE");
+  const resolvedBatch = await request("archive-saved-papers/save-batches/" + directBatchId);
+  assert.equal(resolvedBatch.status, 200, JSON.stringify(resolvedBatch));
+  assert.equal(resolvedBatch.body.saved, true);
+  assert.equal(resolvedBatch.body.papers[0].id, directSaved.body.papers[0].id);
+  const missingBatch = await request("archive-saved-papers/save-batches/" + uuid());
+  assert.equal(missingBatch.status, 200);
+  assert.equal(missingBatch.body.found, false);
   assert.equal(Number((await db.prepare("SELECT COUNT(*) n FROM class_exam_assignments").first()).n), beforeAssignments, "paper save creates no assignment");
   const directId = directSaved.body.papers[0].id;
   const directDetail = await request(`archive-saved-papers/${directId}`);
   assert.equal(directDetail.status, 200);
+  const originalContentHash = directDetail.body.paper.snapshot_hash;
+  const renamed = await request("archive-saved-papers/" + directId + "/library", "PATCH", {
+    display_name: "왕운중 심화반용",
+  });
+  assert.equal(renamed.status, 200, JSON.stringify(renamed));
+  const renamedDetail = await request("archive-saved-papers/" + directId);
+  assert.equal(renamedDetail.body.paper.title, "image snapshot", "library label never replaces output title");
+  assert.equal(renamedDetail.body.paper.library_display_name, "왕운중 심화반용");
+  assert.equal(renamedDetail.body.paper.snapshot_hash, originalContentHash);
+  assert.equal(renamedDetail.body.paper.snapshot.meta.title, "image snapshot");
+  const displayNameSearch = await request("archive-saved-papers?limit=20&q=" + encodeURIComponent("왕운중"));
+  assert.equal(displayNameSearch.body.papers.some(paper => paper.id === directId), true,
+    "the existing title search should find the mutable library display name");
+  const archived = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ARCHIVED" });
+  assert.equal(archived.status, 200, JSON.stringify(archived));
+  assert.equal((await request("archive-saved-papers?limit=20")).body.papers.some(paper => paper.id === directId), false);
+  assert.equal((await request("archive-saved-papers?status=ARCHIVED&limit=20")).body.papers.some(paper => paper.id === directId), true);
+  const restored = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ACTIVE" });
+  assert.equal(restored.status, 200, JSON.stringify(restored));
   const frozenImage = directDetail.body.paper.snapshot.questions[0].image;
   assert.match(frozenImage, /^data:image\/png;base64,/);
   assert.ok(Buffer.from(frozenImage.split(",")[1], "base64").equals(
@@ -306,6 +335,20 @@ try {
   assert.equal((await request(`archive-saved-papers/${directId}`)).status, 404);
   assert.equal(Number((await db.prepare("SELECT COUNT(*) n FROM class_exam_assignments WHERE saved_paper_id=?").bind(directId).first()).n), 2, "soft delete retains both successful class assignments");
   assert.equal((await request("class-exam-assignments", "POST", { ...assignmentInput, assignment_batch_id: uuid() })).status, 404);
+  assert.equal((await db.prepare("SELECT deleted_at FROM archive_saved_papers WHERE id=?").bind(directId).first()).deleted_at, null,
+    "new trash changes only mutable library state");
+  const trashed = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "TRASHED" });
+  assert.equal(trashed.status, 200, JSON.stringify(trashed));
+  const trashList = await request("archive-saved-papers?status=TRASHED&limit=20");
+  assert.equal(trashList.body.papers.some(paper => paper.id === directId), true);
+  const restoredFromTrash = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ACTIVE" });
+  assert.equal(restoredFromTrash.status, 200, JSON.stringify(restoredFromTrash));
+  assert.equal((await request("archive-saved-papers/" + directId)).status, 200);
+  await db.prepare("UPDATE archive_saved_papers SET deleted_at=? WHERE id=?")
+    .bind("2026-10-02T00:00:00.000Z", directId).run();
+  const legacyRestore = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ACTIVE" });
+  assert.equal(legacyRestore.status, 409, "legacy one-way tombstones cannot be restored through the new sidecar");
+  assert.equal((await request("archive-saved-papers/" + directId)).status, 404);
 
   console.log("Archive saved-paper D1 runtime passed: ownership, immutable content, images, idempotency, rollback, same-day multi-class identity, PDF failure retention, race guard, and soft delete.");
 } finally {

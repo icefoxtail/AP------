@@ -189,3 +189,56 @@ function paperFixture(id) {
     },
   };
 }
+
+test("library display metadata never replaces the immutable output title", async () => {
+  const previousWindow = global.window;
+  const previousLocation = global.location;
+  const savedId = "00000000-0000-4000-8000-000000000010";
+  const saved = paper(savedId, "immutable output title");
+  saved.library_display_name = "왕운중 심화반용";
+  saved.library_status = "ACTIVE";
+  const outputApi = outputWithCapture();
+  const requests = [];
+  global.window = {
+    prompt: () => "왕운중 심화반 복습용",
+    Archive2Output: outputApi,
+    Archive2Api: {
+      request: async (route, body, method) => {
+        requests.push({ route, body, method });
+        if (method === "PATCH") {
+          saved.library_display_name = body.display_name || saved.library_display_name;
+          saved.library_status = body.status || saved.library_status;
+          return { success: true, paper: saved };
+        }
+        if (route.includes(savedId)) return { paper: saved };
+        return { papers: [saved], next_cursor: null };
+      },
+    },
+  };
+  global.location = new URL("https://archive.test/archive/workspace.html?view=saved");
+  try {
+    const host = { innerHTML: "" };
+    await library.render(host);
+    assert.match(host.innerHTML, /왕운중 심화반용/);
+    assert.doesNotMatch(host.innerHTML, /immutable output title/);
+    await library.render(host, savedId);
+    assert.match(host.innerHTML, /<h1>왕운중 심화반용<\/h1>/);
+    assert.equal(outputApi.envelopes.at(-1).meta.title, "immutable output title");
+
+    const renameButton = { dataset: { libraryAction: "rename", paperId: savedId } };
+    await host.onclick({
+      target: { closest: () => renameButton },
+      preventDefault() {},
+      stopPropagation() {},
+    });
+    const metadataPatch = requests.findLast(request => request.method === "PATCH");
+    assert.equal(metadataPatch.route, "/archive-saved-papers/" + savedId + "/library");
+    assert.equal(metadataPatch.body.display_name, "왕운중 심화반 복습용");
+    assert.match(host.innerHTML, /<h1>왕운중 심화반 복습용<\/h1>/);
+    assert.equal(outputApi.envelopes.at(-1).meta.title, "immutable output title");
+    assert.equal(saved.snapshot.meta.printHeaderOptions.title, "immutable output title");
+  } finally {
+    if (previousWindow === undefined) delete global.window; else global.window = previousWindow;
+    if (previousLocation === undefined) delete global.location; else global.location = previousLocation;
+  }
+});

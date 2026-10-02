@@ -22,6 +22,7 @@ import {
 import {
   SAVED_PAPER_BATCH_ID,
   readAndVerifySavedSnapshot,
+  resolveSavedPaperLibraryStatus,
 } from "../helpers/archive-saved-papers.js";
 import output from "../../../../archive/archive2-output.js";
 
@@ -118,10 +119,19 @@ export async function handleArchive2(
       const assignmentColumns = await env.DB.prepare("PRAGMA table_info(class_exam_assignments)").all();
       if (!(assignmentColumns.results || []).some((column) => column.name === "saved_paper_id"))
         fail("저장본 출제 migration이 적용되지 않았습니다.", 503);
+      const libraryTable = await env.DB.prepare(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='archive_saved_paper_library_metadata'",
+      ).first();
+      if (!libraryTable) fail("Paper Lifecycle library metadata migration is required", 503);
       savedPaper = await env.DB.prepare(
-        "SELECT * FROM archive_saved_papers WHERE id=? AND owner_teacher_id=? AND deleted_at IS NULL LIMIT 1",
+        "SELECT * FROM archive_saved_papers WHERE id=? AND owner_teacher_id=? LIMIT 1",
       ).bind(paperId, teacher.id).first();
       if (!savedPaper) fail("저장한 시험지를 찾을 수 없습니다.", 404);
+      const libraryMetadata = await env.DB.prepare(
+        "SELECT * FROM archive_saved_paper_library_metadata WHERE saved_paper_id=? AND owner_teacher_id=? LIMIT 1",
+      ).bind(paperId, teacher.id).first();
+      if (resolveSavedPaperLibraryStatus(savedPaper, libraryMetadata) === "TRASHED")
+        fail("저장한 시험지를 찾을 수 없습니다.", 404);
       savedSnapshot = await readAndVerifySavedSnapshot(savedPaper);
       if (savedSnapshot.questions.length !== Number(savedPaper.question_count))
         fail("저장한 시험지 문항 수가 일치하지 않습니다.", 409);
