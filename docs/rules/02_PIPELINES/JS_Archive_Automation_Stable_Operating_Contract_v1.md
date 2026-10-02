@@ -167,49 +167,6 @@ blindDecisionSha 동결 전에 target prior verdict/repair answer/checkpoint det
 MASTER는 감시자/보고자가 아니라 **비블라인드 총괄 실행자**다.
 형님의 운영 authority를 위임받아 pipeline을 실제로 움직인다.
 
-### 3.0 AUTONOMOUS ESCALATION CONSUMER / DELIVERY TARGET HARD
-
-MASTER는 하위 worker가 남긴 상태를 단순 관찰하지 않고 **escalation queue를 능동 소비**한다.
-
-매 run read-only 전체 pipeline scan 후 실제 mutation target은 최대 1시험지다. selector 우선순위는 다음으로 고정한다.
-
-```text
-1. release-materialization debt / remote parity recovery
-2. candidate / validator / receipt closure stall
-3. stale SHA / ref / claim / lineage conflict
-4. live R1 / R2 / R3 write·validator failure
-```
-
-다음 상태는 MASTER가 사용자 추가 지시를 기다리지 않고 소비한다.
-
-- `HANDOFF_READY` / `nextOwner=MASTER`
-- validator/write/receipt debt
-- stale lease/claim
-- release-materialization debt
-- lineage conflict
-- eligible backlog가 존재하는 false `NO_WORK`
-- stalled Codex repair / independent-review recovery
-
-단, Codex 또는 다른 executor가 해당 target에서 **실제 queued/in_progress run, active review, fresh commit/receipt**를 만들고 있으면 중복수리하지 않는다. 같은 target의 active work를 확인하면 mutation 0으로 건너뛰고 다음 eligible을 찾는다.
-
-stage delivery의 최소 종착점은 다음과 같다.
-
-```text
-R1 병목
-→ REVIEW1_DONE / READY_FOR_REVIEW2
-   또는 fresh R2 reviewer actual claim/run
-
-R2 병목
-→ REVIEW2_DONE / READY_FOR_R3
-   또는 fresh R3 reviewer actual claim/run
-
-R3 병목
-→ R3_PASS / RELEASE_QUEUE
-   또는 R3_FAIL_DEFERRED → CODEX_R3_REPAIR / CODEX_INDEPENDENT_REVIEW actual execution
-```
-
-`HANDOFF_READY`, `nextOwner`, 문서 기록만으로 MASTER delivery 완료를 선언하지 않는다. 직접 closure가 불가능한 경우에도 **fresh executable owner가 실제 claim/run에 진입한 물리 증거**와 exact input/completion gate가 있어야 완료다.
-
 ### 3.1 권한
 
 MASTER는 필요 시 다음을 직접 수행할 수 있다.
@@ -270,18 +227,6 @@ MASTER도 다음 사실은 조작할 수 없다.
 ```
 
 문서 갱신은 마지막이다.
-
-#### 3.4.1 CURRENT PHYSICAL OVERRIDES PROMPT-PINNED TARGET
-
-예약 prompt에 특정 exam/branch/HEAD/continuation priority가 적혀 있어도 그것은 **실행 시작 시점의 selector hint**일 뿐 authority가 아니다.
-
-매 run 시작 시 최신 migration ledger CURRENT + latest origin/main + target physical branch/receipt/lease/workflow를 다시 읽고 다음을 적용한다.
-
-- prompt에 고정된 과거 target이 이미 closure되었거나 stage가 이동했으면 재작업하지 않는다.
-- prompt의 branch/HEAD/input SHA가 stale이면 최신 physical lineage로 selector를 재계산한다.
-- 과거 `CURRENT CONTINUATION PRIORITY` 문구가 최신 migration ledger와 충돌하면 최신 CURRENT/physical이 우선한다.
-- stale continuation을 이유로 fresh 정상 backlog를 건너뛰지 않는다.
-- 과거 채팅 보고나 예약 prompt의 PASS/FAIL을 physical receipt/readback보다 우선하지 않는다.
 
 ### 3.5 MASTER_LEASE v2 — single-writer / no duplicate mutation HARD
 
@@ -392,10 +337,8 @@ durable progress는 최소 다음 중 하나다.
 #### 3.5.6 release / handoff
 
 - 정상 closure 후 MASTER는 receipt/readback에 `masterLeaseId`를 남기고 lease를 `CLOSED` 처리한다.
-- runtime 종료 등으로 직접 closure가 불가능하지만 exact continuation이 물리화됐으면 `HANDOFF_READY`로 lease를 정리할 수는 있다. **그러나 이것만으로 MASTER stage-delivery 완료를 선언하지 않는다.**
-- MASTER 완료 판정에는 fresh executable owner의 실제 claim/run 또는 다음 정상 durable stage가 필요하다.
+- runtime 종료 등으로 직접 closure가 불가능하지만 exact continuation이 물리화됐으면 `HANDOFF_READY`로 닫고 `candidate HEAD / finalArtifactSha / firstMissingClosureStep / validationExecutor`를 결속한다.
 - HANDOFF_READY 이후 다음 MASTER는 기존 repair를 처음부터 재실행하지 않고 exact continuation에서 새 lease를 획득한다.
-- 같은 capability를 가진 owner에게 같은 handoff를 반복해 실패를 재생산하지 않는다.
 - 문서만 남기고 ACTIVE lease를 방치하지 않는다.
 
 #### 3.5.7 PUBLISH singleton
@@ -405,8 +348,6 @@ PUBLISH/main mutation은 target lease와 별개로 **전역 `PUBLISH_LEASE` 1개
 - GPT PUBLISH, Codex publisher, MASTER의 emergency publish 모두 같은 singleton lease를 사용한다.
 - lease 획득 실패 시 main mutation 0.
 - publish 직전 latest main + release backlog + lease owner를 다시 읽고, batch가 이미 소비됐으면 mutation 0.
-- stale PUBLISH_LEASE takeover는 일반 MASTER lease보다 느슨하게 처리하지 않는다. 최소 `lease expiry + no durable publish progress + no queued/in_progress publish workflow + latest main/release backlog 재조회 + 직전 owner의 fresh commit/receipt 없음`을 모두 확인한 뒤 새 atomic claim으로만 takeover한다.
-- 다른 publisher가 실제 in-flight이면 기다리는 대신 그 target/batch mutation은 0으로 두고 다른 MASTER backlog를 소비한다.
 
 ## 4. 실패 처리
 
@@ -457,31 +398,6 @@ local Node CLI available?
 - `validationExecutor = LOCAL_NODE | GITHUB_ACTIONS | UNAVAILABLE`
 - 사용할 canonical validator path/blob
 - branch/write 권한과 Actions 실행 가능 여부
-
-#### 4.4.1A CAPABILITY MATRIX / NO GLOBALIZATION HARD
-
-예약 run은 하나의 실행 경로 실패를 전체 시스템 capability 부재로 일반화하지 않는다. target mutation 전에 현재 run의 capability를 최소 다음 축으로 분리한다.
-
-```text
-LOCAL_FS / LOCAL_NODE
-GITHUB_READ
-GITHUB_CONTENTS_WRITE
-GITHUB_PR_WRITE
-GITHUB_ACTIONS_READ
-GITHUB_ACTIONS_WRITE
-NOTION_WRITE
-```
-
-- `UNKNOWN`은 `UNAVAILABLE`이 아니다. 실제 관련 action을 호출해 exact error를 받은 capability만 unavailable/blocked로 판정한다.
-- local filesystem/write safety 차단은 LOCAL 계열 실패다. 이를 GitHub connector write/PR/Actions 불가로 복사하지 않는다.
-- GitHub Contents write 실패는 PR write 실패가 아니며, PR write 실패는 Actions read/write 실패가 아니다. action별로 독립 판정한다.
-- GitHub read가 가능하고 target에 remote mutation이 필요하면 해당 target에 필요한 exact connector write action을 실제 시도한다. capability 확인만을 위한 unrelated probe mutation은 만들지 않는다.
-- validation/independent review가 필요하면 `기존 PR 검색 → 없으면 draft PR 생성 → PR number/head SHA readback → Actions run/job 또는 Codex review actual start proof readback` 순서를 사용한다.
-- `@codex` comment 생성만으로 actual execution을 선언하지 않는다. bot summary/reaction/review state 등 실제 실행 개시 증거를 확인한다.
-- PR/Contents/Actions 중 한 경로가 실패하면 exact error를 남기고 같은 run에서 materially different GitHub 경로를 최소 하나 실제 시도한다.
-- 모든 관련 GitHub capability가 각자 exact error로 실패한 뒤에만 `CAPABILITY_DEBT`/infra handoff를 허용한다.
-- 같은 capability를 가진 owner에게 반복 HANDOFF하여 같은 실패를 재생산하는 것을 금지한다.
-- 2026-10-03 o69 복구에서 연결 GitHub의 `create_pull_request`, issue/PR comment, workflow read가 실제 동작했고 PR #141에서 Codex review actual start까지 확인됐다. 따라서 이후 예약 worker는 local safety 차단을 근거로 이 GitHub capability들을 선험적으로 불가 판정하지 않는다.
 
 **무거운 solution/Meta/SVG 작업을 끝낸 뒤에야 validator 실행경로가 없음을 발견하는 순서를 금지한다.**
 
