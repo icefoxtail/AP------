@@ -89,10 +89,6 @@
       previousClose();
       parent.postMessage({ type: "archive2-original-close" }, location.origin);
     };
-    window.assignTargetMaybeFinish = function () {
-      if (!AssignTarget) return;
-      renderAssignTargetProgressView();
-    };
   }
   window.setArchive2OriginalQpp = function (value) {
     const qpp = Number(value);
