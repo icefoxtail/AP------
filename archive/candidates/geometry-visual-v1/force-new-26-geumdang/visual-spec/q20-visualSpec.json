@@ -1,0 +1,131 @@
+{
+  "id": "q20",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": 0,
+    "xMax": 13,
+    "yMin": -20,
+    "yMax": 110,
+    "width": 900,
+    "height": 620,
+    "panel": 210,
+    "margin": 36
+  },
+  "sourceFacts": {
+    "piecewise": {
+      "left": "x^2+2x-14",
+      "domainLeft": "x<8",
+      "right": "x^2-13x+106",
+      "domainRight": "x>=8"
+    },
+    "lineCoefficients": [
+      2,
+      -1,
+      10
+    ],
+    "radius": "sqrt(5)t",
+    "independentFactHash": "a3d5a76ab9af20b8ad99b19668b06f36a306dbc5f8a680f93b84eebaac8c5a8a"
+  },
+  "derivedFacts": {
+    "k": 10,
+    "g2Intervals": [
+      [
+        3,
+        8
+      ],
+      [
+        8,
+        12
+      ]
+    ],
+    "g8": 1,
+    "g9": 2,
+    "maxA": 12
+  },
+  "displayFacts": {
+    "graphMeaning": "piecewise center locus f(t)",
+    "intersectionCount": "t=8 tangent; t=9 secant",
+    "g2Intervals": "(3,8)∪(8,12)",
+    "answer": "a=12"
+  },
+  "objects": [
+    {
+      "id": "f-left",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "x^2+2x-14",
+      "domain": [
+        0,
+        8
+      ],
+      "breaks": [],
+      "criticalX": []
+    },
+    {
+      "id": "f-right",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "x^2-13x+106",
+      "domain": [
+        8,
+        12
+      ],
+      "breaks": [],
+      "criticalX": []
+    },
+    {
+      "id": "O8",
+      "kind": "POINT",
+      "at": [
+        8,
+        66
+      ],
+      "name": "O₈",
+      "priority": 0
+    },
+    {
+      "id": "O9",
+      "kind": "POINT",
+      "at": [
+        9,
+        70
+      ],
+      "name": "O₉",
+      "priority": 0
+    },
+    {
+      "id": "case8",
+      "kind": "GRAPH_ANNOTATION",
+      "text": "t=8: d=r, g(8)=1",
+      "at": [
+        2,
+        98
+      ],
+      "priority": 0
+    },
+    {
+      "id": "case9",
+      "kind": "GRAPH_ANNOTATION",
+      "text": "t=9: d<r, g(9)=2",
+      "at": [
+        7,
+        102
+      ],
+      "priority": 0
+    },
+    {
+      "id": "intervals",
+      "kind": "CONDITION_BOX",
+      "at": [
+        10,
+        15
+      ],
+      "lines": [
+        "g(t)=2 on (3,8)∪(8,12)",
+        "(a−2,a) rightmost: (10,12)",
+        "a=12"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true,
+  "title": "중심 궤적과 교점 수 구간"
+}

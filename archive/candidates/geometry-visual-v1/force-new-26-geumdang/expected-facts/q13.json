@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q13",
+  "route": "STANDARD",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -3,
+    "xMax": 7,
+    "yMin": -2,
+    "yMax": 7,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "title": "한 점에서 그은 두 접선",
+  "sourceFacts": {
+    "externalPoint": [
+      -1,
+      1
+    ],
+    "center": [
+      3,
+      2
+    ],
+    "radius": 2
+  },
+  "derivedFacts": {
+    "touchPoints": [
+      [
+        2.483006032407528,
+        0.06797587036988739
+      ],
+      [
+        1.6346410264160012,
+        3.461435894335995
+      ]
+    ],
+    "tangentLines": [
+      [
+        0.9320241296301126,
+        3.483006032407528,
+        -2.550981902777415
+      ],
+      [
+        -2.461435894335995,
+        2.634641026416001,
+        -5.096076920751996
+      ]
+    ],
+    "slopeProduct": -0.25
+  },
+  "displayFacts": {
+    "radii": "CT₁ ⟂ PT₁; CT₂ ⟂ PT₂",
+    "answer": "m₁m₂=−1/4"
+  },
+  "objects": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        -1,
+        1
+      ],
+      "name": "P",
+      "priority": 0
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        3,
+        2
+      ],
+      "name": "C",
+      "priority": 0
+    },
+    {
+      "id": "T1",
+      "kind": "POINT",
+      "at": [
+        2.483006032407528,
+        0.06797587036988739
+      ],
+      "name": "T₁",
+      "priority": 0
+    },
+    {
+      "id": "T2",
+      "kind": "POINT",
+      "at": [
+        1.6346410264160012,
+        3.461435894335995
+      ],
+      "name": "T₂",
+      "priority": 0
+    },
+    {
+      "id": "circle",
+      "kind": "CIRCLE",
+      "center": [
+        3,
+        2
+      ],
+      "radius": 2
+    },
+    {
+      "id": "tangent1",
+      "kind": "LINE",
+      "coefficients": [
+        0.9320241296301126,
+        3.483006032407528,
+        -2.550981902777415
+      ]
+    },
+    {
+      "id": "tangent2",
+      "kind": "LINE",
+      "coefficients": [
+        -2.461435894335995,
+        2.634641026416001,
+        -5.096076920751996
+      ]
+    },
+    {
+      "id": "touch1",
+      "kind": "TANGENT",
+      "refs": [
+        "tangent1",
+        "circle"
+      ],
+      "at": [
+        2.483006032407528,
+        0.06797587036988739
+      ]
+    },
+    {
+      "id": "touch2",
+      "kind": "TANGENT",
+      "refs": [
+        "tangent2",
+        "circle"
+      ],
+      "at": [
+        1.6346410264160012,
+        3.461435894335995
+      ]
+    },
+    {
+      "id": "CT1",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        2
+      ],
+      "to": [
+        2.483006032407528,
+        0.06797587036988739
+      ]
+    },
+    {
+      "id": "CT2",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        2
+      ],
+      "to": [
+        1.6346410264160012,
+        3.461435894335995
+      ]
+    },
+    {
+      "id": "result",
+      "kind": "CONDITION_BOX",
+      "at": [
+        5,
+        6
+      ],
+      "lines": [
+        "접점에서 반지름 ⟂ 접선",
+        "m₁m₂=−1/4"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true
+}

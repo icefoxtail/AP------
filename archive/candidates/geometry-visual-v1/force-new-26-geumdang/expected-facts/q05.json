@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q05",
+  "route": "STANDARD",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -7,
+    "xMax": 7,
+    "yMin": -6,
+    "yMax": 8,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "title": "y=x 대칭과 원",
+  "sourceFacts": {
+    "center": [
+      3,
+      -2
+    ],
+    "radius": 4,
+    "reflectionLine": [
+      1,
+      -1,
+      0
+    ]
+  },
+  "derivedFacts": {
+    "reflectedCenter": [
+      -2,
+      3
+    ],
+    "reflectedRadius": 4,
+    "value": -1
+  },
+  "displayFacts": {
+    "mapping": "(3,-2)→(-2,3)",
+    "answer": "a−b+c=−1"
+  },
+  "objects": [
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        3,
+        -2
+      ],
+      "name": "C",
+      "priority": 0
+    },
+    {
+      "id": "Cp",
+      "kind": "POINT",
+      "at": [
+        -2,
+        3
+      ],
+      "name": "C′",
+      "priority": 0
+    },
+    {
+      "id": "original",
+      "kind": "CIRCLE",
+      "center": [
+        3,
+        -2
+      ],
+      "radius": 4
+    },
+    {
+      "id": "reflected",
+      "kind": "CIRCLE",
+      "center": [
+        -2,
+        3
+      ],
+      "radius": 4
+    },
+    {
+      "id": "reflection",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "centerMap",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        -2
+      ],
+      "to": [
+        -2,
+        3
+      ]
+    },
+    {
+      "id": "result",
+      "kind": "CONDITION_BOX",
+      "at": [
+        4,
+        7
+      ],
+      "lines": [
+        "중심 좌표를 서로 바꿈",
+        "반지름 4는 보존",
+        "a−b+c=−1"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true
+}

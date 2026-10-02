@@ -1,0 +1,273 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "0b9aaaccdda37886c4a4876d95c128c99973c37e1c85b580b164fd010fd3015d",
+  "normalizedSvgSha256": "f49236264b1865be9298a5869264769fa9182c1a4ad818b139be39c122389acb",
+  "texSha256": "ffe6ca0882bed2db57d96e32a3fdba070558e919f2ddfec74e078bc0cb60dacd",
+  "coordinateModel": {
+    "originX": 223.0,
+    "originY": 374.0,
+    "sx": 38.0,
+    "sy": 38.0,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [
+    {
+      "id": "P-family-cross",
+      "kind": "INTERSECTION",
+      "status": "PASS",
+      "observed": [
+        2.0,
+        4.000000000000001
+      ]
+    },
+    {
+      "id": "orthogonal",
+      "kind": "PERPENDICULAR",
+      "status": "PASS",
+      "observed": null
+    }
+  ],
+  "layout": {
+    "labels": [
+      {
+        "id": "H-name",
+        "kind": "POINT_NAME",
+        "target": "H",
+        "text": "H",
+        "at": [
+          185.0,
+          374.0
+        ],
+        "font": 13.25,
+        "priority": 0,
+        "box": {
+          "x": 180.6275,
+          "y": 334.125,
+          "width": 8.745000000000001,
+          "height": 19.875
+        },
+        "baseline": [
+          180.6275,
+          350.025
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "P-name",
+        "kind": "POINT_NAME",
+        "target": "P",
+        "text": "P",
+        "at": [
+          299.0,
+          222.0
+        ],
+        "font": 13.25,
+        "priority": 0,
+        "box": {
+          "x": 311.0,
+          "y": 234.0,
+          "width": 8.745000000000001,
+          "height": 19.875
+        },
+        "baseline": [
+          311.0,
+          249.9
+        ],
+        "placement": "AUTO_SE"
+      },
+      {
+        "id": "result",
+        "kind": "CONDITION_BOX",
+        "at": [
+          375.0,
+          70.0
+        ],
+        "lines": [
+          "공통점 P=(2,4)",
+          "H=(−1,0)",
+          "PH=5"
+        ],
+        "priority": 0,
+        "font": 13.0,
+        "renderedLines": [
+          {
+            "text": "공통점 P=(2,4)",
+            "math": false,
+            "markup": null
+          },
+          {
+            "text": "H=(−1,0)",
+            "math": false,
+            "markup": null
+          },
+          {
+            "text": "PH=5",
+            "math": false,
+            "markup": null
+          }
+        ],
+        "text": "공통점 P=(2,4)\nH=(−1,0)\nPH=5",
+        "hasMath": false,
+        "box": {
+          "x": 407.0,
+          "y": 102.0,
+          "width": 107.64,
+          "height": 58.5
+        },
+        "baseline": [
+          407.0,
+          148.8
+        ],
+        "placement": "COORDINATE_RELOCATION_SE"
+      },
+      {
+        "id": "axis-x",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          489.0,
+          374.0
+        ],
+        "text": "x",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 484.71,
+          "y": 342.5,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          484.71,
+          358.1
+        ],
+        "placement": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          223.0,
+          32.0
+        ],
+        "text": "y",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 235.0,
+          "y": 44.0,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          235.0,
+          59.6
+        ],
+        "placement": "AUTO_SE"
+      },
+      {
+        "id": "tick-x-1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          413.0,
+          374.0
+        ],
+        "text": "5",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 409.205,
+          "y": 348.75,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          409.205,
+          362.55
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-y-1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          223.0,
+          184.0
+        ],
+        "text": "5",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 231.0,
+          "y": 158.75,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          231.0,
+          172.55
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "H-name",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "P-name",
+        "fallback": "AUTO_SE"
+      },
+      {
+        "id": "result",
+        "fallback": "COORDINATE_RELOCATION_SE"
+      },
+      {
+        "id": "axis-x",
+        "fallback": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "fallback": "AUTO_SE"
+      },
+      {
+        "id": "tick-x-1-label",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-y-1-label",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      }
+    ],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY"
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "semanticWitnessSha256": "b20f0846e90be424c14e8d8fb7999e2b059fb215e7da838b68a6012a771a99b6",
+  "independentFactHash": "bfcc5b5c1192dbcefd5cc6c9b2f118d9d974412a49f6ba3ae496dee3bfeaad81"
+}

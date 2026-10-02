@@ -1,0 +1,100 @@
+{
+  "id": "q01",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -6,
+    "xMax": 2,
+    "yMin": -1,
+    "yMax": 7,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "sourceFacts": {
+    "center": [
+      -2,
+      3
+    ],
+    "radiusSquared": [
+      "5",
+      "8",
+      "9"
+    ],
+    "independentFactHash": "2c180f026dd2d5f384f25bda6b61a827d3e4f994673c27afdd6a51374c90826a"
+  },
+  "derivedFacts": {
+    "radius": [
+      2.23606797749979,
+      2.8284271247461903,
+      3.0
+    ],
+    "integerK": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "displayFacts": {
+    "condition": "r^2=9-(k-2)^2>0",
+    "answer": "5 integers"
+  },
+  "objects": [
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -2,
+        3
+      ],
+      "name": "C",
+      "priority": 0
+    },
+    {
+      "id": "r5",
+      "kind": "CIRCLE",
+      "center": [
+        -2,
+        3
+      ],
+      "radius": 2.23606797749979
+    },
+    {
+      "id": "r8",
+      "kind": "CIRCLE",
+      "center": [
+        -2,
+        3
+      ],
+      "radius": 2.8284271247461903
+    },
+    {
+      "id": "r9",
+      "kind": "CIRCLE",
+      "center": [
+        -2,
+        3
+      ],
+      "radius": 3
+    },
+    {
+      "id": "summary",
+      "kind": "CONDITION_BOX",
+      "at": [
+        0,
+        6
+      ],
+      "lines": [
+        "r²=5: k=0,4",
+        "r²=8: k=1,3",
+        "r²=9: k=2",
+        "정수 k=0,1,2,3,4"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true,
+  "title": "원이 되기 위한 반지름 조건"
+}

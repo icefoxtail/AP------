@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q10",
+  "route": "STANDARD",
+  "visualType": "coordinate_geometry",
+  "viewport": {
+    "xMin": -4,
+    "xMax": 7,
+    "yMin": -3,
+    "yMax": 9,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "title": "직선족의 공통점과 점-직선 거리",
+  "sourceFacts": {
+    "lineFamily": [
+      3,
+      -1,
+      -2,
+      1,
+      1,
+      -6
+    ],
+    "targetLine": [
+      3,
+      4,
+      3
+    ]
+  },
+  "derivedFacts": {
+    "P": [
+      2,
+      4
+    ],
+    "H": [
+      -1,
+      0
+    ],
+    "distance": 5,
+    "secondRepresentative": [
+      4,
+      0,
+      -8
+    ]
+  },
+  "displayFacts": {
+    "commonPoint": "P=(2,4)",
+    "foot": "H=(-1,0)",
+    "answer": "PH=5"
+  },
+  "objects": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        2,
+        4
+      ],
+      "name": "P",
+      "priority": 0
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "at": [
+        -1,
+        0
+      ],
+      "name": "H",
+      "priority": 0
+    },
+    {
+      "id": "family-k0",
+      "kind": "LINE",
+      "coefficients": [
+        3,
+        -1,
+        -2
+      ]
+    },
+    {
+      "id": "family-k1",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        4,
+        0,
+        -8
+      ]
+    },
+    {
+      "id": "target",
+      "kind": "LINE",
+      "coefficients": [
+        3,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "perpendicularLine",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        4,
+        -3,
+        4
+      ]
+    },
+    {
+      "id": "PH",
+      "kind": "SEGMENT",
+      "from": [
+        -1,
+        0
+      ],
+      "to": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "P-family-cross",
+      "kind": "INTERSECTION",
+      "refs": [
+        "family-k0",
+        "family-k1"
+      ],
+      "target": "P"
+    },
+    {
+      "id": "orthogonal",
+      "kind": "PERPENDICULAR",
+      "refs": [
+        "target",
+        "perpendicularLine"
+      ]
+    },
+    {
+      "id": "result",
+      "kind": "CONDITION_BOX",
+      "at": [
+        4,
+        8
+      ],
+      "lines": [
+        "공통점 P=(2,4)",
+        "H=(−1,0)",
+        "PH=5"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q09",
+  "route": "STANDARD",
+  "visualType": "coordinate_geometry",
+  "viewport": {
+    "xMin": -6,
+    "xMax": 17,
+    "yMin": -12,
+    "yMax": 5,
+    "width": 740,
+    "height": 520,
+    "panel": 180,
+    "margin": 36
+  },
+  "title": "선분의 내분점",
+  "sourceFacts": {
+    "A": [
+      -3,
+      -8
+    ],
+    "B": [
+      15,
+      1
+    ],
+    "equation": "5AP=4PB"
+  },
+  "derivedFacts": {
+    "ratio": [
+      4,
+      5
+    ],
+    "P": [
+      5,
+      -4
+    ],
+    "lengths": [
+      8.94427190999916,
+      11.180339887498949
+    ],
+    "sum": 1
+  },
+  "displayFacts": {
+    "ratio": "AP:PB=4:5",
+    "answer": "p+q=1"
+  },
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        -3,
+        -8
+      ],
+      "name": "A",
+      "priority": 0
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        5,
+        -4
+      ],
+      "name": "P",
+      "priority": 0
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        15,
+        1
+      ],
+      "name": "B",
+      "priority": 0
+    },
+    {
+      "id": "AP",
+      "kind": "SEGMENT",
+      "from": [
+        -3,
+        -8
+      ],
+      "to": [
+        5,
+        -4
+      ]
+    },
+    {
+      "id": "PB",
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        -4
+      ],
+      "to": [
+        15,
+        1
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        1,
+        -2,
+        -13
+      ]
+    },
+    {
+      "id": "lengthAP",
+      "kind": "LENGTH_LABEL",
+      "refs": [
+        "AP"
+      ],
+      "value": 8.94427190999916,
+      "text": "4sqrt(5)",
+      "at": [
+        0,
+        -6
+      ]
+    },
+    {
+      "id": "lengthPB",
+      "kind": "LENGTH_LABEL",
+      "refs": [
+        "PB"
+      ],
+      "value": 11.180339887498949,
+      "text": "5sqrt(5)",
+      "at": [
+        10,
+        -1
+      ]
+    },
+    {
+      "id": "result",
+      "kind": "CONDITION_BOX",
+      "at": [
+        12,
+        3
+      ],
+      "lines": [
+        "5AP=4PB",
+        "AP:PB=4:5",
+        "P=(5,−4)",
+        "p+q=1"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": true
+}

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q15",
+  "route": "STANDARD",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -3,
+    "xMax": 10,
+    "yMin": -4,
+    "yMax": 10,
+    "width": 760,
+    "height": 560,
+    "panel": 180,
+    "margin": 36
+  },
+  "title": "원의 가장 먼 점에서의 접선",
+  "sourceFacts": {
+    "circleCenter": [
+      2,
+      3
+    ],
+    "circleRadiusSquared": 10,
+    "fixedChordLine": [
+      1,
+      1,
+      -1
+    ],
+    "perpendicularDiameterLine": [
+      1,
+      -1,
+      1
+    ]
+  },
+  "derivedFacts": {
+    "maxPoint": [
+      4.23606797749979,
+      5.23606797749979
+    ],
+    "otherIntersection": [
+      -0.2360679774997898,
+      0.7639320225002102
+    ],
+    "tangentLine": [
+      1,
+      1,
+      -9.47213595499958
+    ],
+    "tangentSlope": -1,
+    "abcSum": -6
+  },
+  "displayFacts": {
+    "maximizingPoint": "(2+√5,3+√5)",
+    "tangent": "x+y−5−2√5=0",
+    "answer": "−6"
+  },
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        1,
+        0
+      ],
+      "name": "A",
+      "priority": 0
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -1,
+        2
+      ],
+      "name": "B",
+      "priority": 0
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        2,
+        3
+      ],
+      "name": "C",
+      "priority": 0
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "at": [
+        4.23606797749979,
+        5.23606797749979
+      ],
+      "name": "P",
+      "priority": 0
+    },
+    {
+      "id": "Pother",
+      "kind": "POINT",
+      "at": [
+        -0.2360679774997898,
+        0.7639320225002102
+      ],
+      "name": "P′",
+      "priority": 1
+    },
+    {
+      "id": "circle",
+      "kind": "CIRCLE",
+      "center": [
+        2,
+        3
+      ],
+      "radius": 3.1622776601683795
+    },
+    {
+      "id": "chord",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        1,
+        -1
+      ]
+    },
+    {
+      "id": "diameter",
+      "kind": "AUXILIARY_LINE",
+      "coefficients": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "id": "tangent",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        1,
+        -9.47213595499958
+      ]
+    },
+    {
+      "id": "P-is-tangent",
+      "kind": "TANGENT",
+      "refs": [
+        "tangent",
+        "circle"
+      ],
+      "at": [
+        4.23606797749979,
+        5.23606797749979
+      ]
+    },
+    {
+      "id": "P-exact",
+      "kind": "COORDINATE_LABEL",
+      "target": "P",
+      "exact": [
+        "2+sqrt(5)",
+        "3+sqrt(5)"
+      ]
+    },
+    {
+      "id": "chord-eq",
+      "kind": "EQUATION_LABEL",
+      "text": "x+y=1",
+      "at": [
+        0,
+        1
+      ],
+      "math": true,
+      "priority": 0
+    },
+    {
+      "id": "tangent-eq",
+      "kind": "EQUATION_LABEL",
+      "text": "x+y-5-2sqrt(5)=0",
+      "at": [
+        7,
+        7
+      ],
+      "math": true,
+      "priority": 1
+    },
+    {
+      "id": "max-result",
+      "kind": "GRAPH_ANNOTATION",
+      "text": "farther point P → a+b+c=−6",
+      "at": [
+        8,
+        -2
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": false
+}

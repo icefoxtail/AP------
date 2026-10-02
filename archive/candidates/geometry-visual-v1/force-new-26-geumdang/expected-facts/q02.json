@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "past-exam-expected-facts-v1",
+  "questionUid": "q02",
+  "route": "STANDARD",
+  "visualType": "explanation_card",
+  "viewport": {
+    "xMin": 0,
+    "xMax": 10,
+    "yMin": 0,
+    "yMax": 10,
+    "width": 760,
+    "height": 480,
+    "panel": 0,
+    "margin": 36
+  },
+  "title": "∅와 {∅}의 원소 수",
+  "sourceFacts": {
+    "sets": [
+      "empty set",
+      "singleton containing empty set"
+    ]
+  },
+  "derivedFacts": {
+    "cardinality": {
+      "empty": 0,
+      "singletonEmpty": 1,
+      "difference": 1
+    }
+  },
+  "displayFacts": {
+    "focus": "n({∅})-n(∅)=1"
+  },
+  "objects": [
+    {
+      "id": "empty",
+      "kind": "CONDITION_BOX",
+      "at": [
+        2,
+        7
+      ],
+      "lines": [
+        "∅",
+        "원소 없음",
+        "n(∅)=0"
+      ],
+      "priority": 0
+    },
+    {
+      "id": "singleton",
+      "kind": "CONDITION_BOX",
+      "at": [
+        5,
+        7
+      ],
+      "lines": [
+        "{∅}",
+        "원소: ∅ 하나",
+        "n({∅})=1"
+      ],
+      "priority": 0
+    },
+    {
+      "id": "difference",
+      "kind": "CONDITION_BOX",
+      "at": [
+        8,
+        7
+      ],
+      "lines": [
+        "1−0=1",
+        "③ 참"
+      ],
+      "priority": 0
+    }
+  ],
+  "axes": false
+}
