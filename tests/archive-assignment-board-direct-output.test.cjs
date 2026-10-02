@@ -34,6 +34,11 @@ test("board row outputs are tied to an exact assignment and open without the det
   const clickHandler = board.slice(clickHandlerStart, clickHandlerEnd);
   assertMatch(clickHandler, /finally\s*\{[\s\S]*?if\s*\(button\.isConnected\)\s*button\.disabled\s*=\s*false/, "successful board actions must remain reusable");
   assertMatch(clickHandler, /assignmentBoardState\.actionError\s*=\s*null;[\s\S]*?renderAssignmentBoard\(\)/, "successful retries must clear their visible error state");
+  const groupingStart = board.indexOf("function groupArchiveBoardAssignments(");
+  const groupingEnd = board.indexOf("function renderAssignmentBoard(", groupingStart);
+  const grouping = board.slice(groupingStart, groupingEnd);
+  assertMatch(grouping, /row\.has_output_snapshot\s*&&\s*row\.can_read_snapshot\s*===\s*true/, "only the server's snapshot-read authority may select a direct output assignment");
+  assertNoMatch(grouping, /outputAssignmentId:\s*row\.has_output_snapshot\s*\?/, "snapshot availability alone must not authorize a button");
 });
 
 test("Worker output endpoint enforces class access and builds from its assignment snapshot", () => {
@@ -45,6 +50,14 @@ test("Worker output endpoint enforces class access and builds from its assignmen
   assertMatch(outputRoute, /mixed_payload_json/, "server must use its stored assignment snapshot");
   assertMatch(outputRoute, /createOutputEnvelope/, "server must construct the canonical envelope");
   assertMatch(outputRoute, /validateOutputEnvelope/, "server must verify the envelope hash");
+  assertMatch(outputRoute, /canReadAssignmentSnapshot/, "snapshot GET must use its dedicated read authority");
+  const boardStart = worker.indexOf("if (method === 'GET' && id === 'board')");
+  const boardEnd = worker.indexOf("if (method === 'POST')", boardStart);
+  const boardRoute = worker.slice(boardStart, boardEnd);
+  assert.notEqual(boardStart, -1);
+  assertMatch(boardRoute, /can_read_snapshot/, "board must expose snapshot-read authorization from the server");
+  assertMatch(boardRoute, /getAllowedClassIds/, "snapshot-read authority must come from teacher/class IDs");
+  assertNoMatch(boardRoute, /can_read_snapshot:[^,\n]*(?:is_mine|can_manage)/, "name-derived flags must not authorize snapshot reads");
 });
 
 test("recent assignments expose direct exam, solution, and answer actions", () => {

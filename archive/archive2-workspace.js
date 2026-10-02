@@ -1036,23 +1036,29 @@
       );
     }).sort(C.compareNewest);
   }
-  function openOriginalIssue(exam, step = "review") {
-    state.originalExam = exam;
-    const stored = Number(
-      localStorage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP") || 4,
-    );
-    const qpp = [4, 6, 8].includes(stored) ? stored : 4;
-    const url = new URL("index.html", location.href);
-    url.searchParams.set("archive2Issue", exam.file);
-    url.searchParams.set("archive2Embedded", "1");
-    url.searchParams.set("qpp", String(qpp));
-    state.originalSettings = O.settings({
+  function originalSettingsForExam(exam) {
+    let storedQpp = 4;
+    try {
+      storedQpp = Number(localStorage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP") || 4);
+    } catch {}
+    const qpp = [4, 6, 8].includes(storedQpp) ? storedQpp : 4;
+    return O.settings({
       header: {
         title: O.displayTitle(exam),
         subtitle: exam.subject || exam.primaryStandardCourse,
       },
       qpp,
     });
+  }
+  function openOriginalIssue(exam, step = "review") {
+    state.originalExam = exam;
+    const settings = originalSettingsForExam(exam);
+    const qpp = settings.qpp;
+    const url = new URL("index.html", location.href);
+    url.searchParams.set("archive2Issue", exam.file);
+    url.searchParams.set("archive2Embedded", "1");
+    url.searchParams.set("qpp", String(qpp));
+    state.originalSettings = settings;
     state.originalReceipts = [];
     state.originalPreviewEnvelope = null;
     showDialog(
@@ -1077,35 +1083,52 @@
     // render; refresh only after the review panel becomes visible.
     if (step === "review") updateOriginalPreview();
   }
+  async function buildOriginalSourceOutput(exam, mode, settings) {
+    const questions = await Source.load(
+      exam.file,
+      new Map(state.catalog.sourceHashes).get(exam.file),
+    );
+    const questionUids = state.catalog.records
+      .filter((record) => record.sourceFile === exam.file)
+      .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)
+      .map((record) => record.identityStatus === "VERIFIED" ? record.questionUid : null);
+    const meta = {
+      sourceKind: "archive2-original",
+      sourceArchiveFile: exam.file,
+      questionUids,
+      identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
+      printHeaderOptions: settings.header,
+      qpp: settings.qpp,
+      includeQr: settings.includeQr,
+    };
+    const envelope = await O.publishOutputEnvelope({
+      sourceKind: "archive2-original",
+      sourceId: exam.file,
+      mode,
+      questionCount: questions.length,
+      questionUids,
+      meta,
+      questions,
+    });
+    const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, { preview: true });
+    return { url, envelope };
+  }
   async function originalOutputUrl(mode = "exam") {
     const e = state.originalExam, s = state.originalSettings;
     const saved = state.originalReceipts?.[0];
-    let sourceKind = "archive2-original";
-    let sourceId = e.file;
+    if (!saved) return buildOriginalSourceOutput(e, mode, s);
+    let sourceKind = "assignment";
+    let sourceId = saved.id;
     let assignmentId;
     let questions;
     let meta;
-    if (!saved) {
-      questions = await Source.load(e.file, new Map(state.catalog.sourceHashes).get(e.file));
-      const questionUids = state.catalog.records.filter(r => r.sourceFile === e.file)
-        .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)
-        .map(r => r.identityStatus === "VERIFIED" ? r.questionUid : null);
-      meta = {
-        sourceKind: "archive2-original", sourceArchiveFile: e.file, questionUids,
-        identityTitle: e.identityTitle || e.file.split("/").pop().replace(/\.js$/, ""),
-        printHeaderOptions: s.header, qpp: s.qpp, includeQr: s.includeQr,
-      };
-    } else {
-      sourceKind = "assignment";
-      sourceId = saved.id;
-      assignmentId = saved.id;
-      const result = await api(`/class-exam-assignments/${encodeURIComponent(saved.id)}/status`);
-      const payload = JSON.parse(result.assignment?.mixed_payload_json || "null");
-      if (!Array.isArray(payload?.questions) || !payload.meta)
-        throw new Error("저장된 출제 snapshot을 확인할 수 없습니다. 최근 출제에서 다시 열어 주세요.");
-      questions = payload.questions;
-      meta = payload.meta;
-    }
+    assignmentId = saved.id;
+    const result = await api(`/class-exam-assignments/${encodeURIComponent(saved.id)}/status`);
+    const payload = JSON.parse(result.assignment?.mixed_payload_json || "null");
+    if (!Array.isArray(payload?.questions) || !payload.meta)
+      throw new Error("저장된 출제 snapshot을 확인할 수 없습니다. 최근 출제에서 다시 열어 주세요.");
+    questions = payload.questions;
+    meta = payload.meta;
     const envelope = await O.publishOutputEnvelope({
       sourceKind,
       sourceId,
@@ -1155,6 +1178,19 @@
       popup.location.href = output.url.href;
     } catch (error) { popup?.close(); throw error; }
   }
+  async function openFinderOutput(exam, mode = "exam") {
+    const safeMode = ["exam", "sol", "ans"].includes(mode) ? mode : "exam";
+    const popup = window.open("about:blank", "_blank");
+    try {
+      if (!popup) throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
+      const settings = originalSettingsForExam(exam);
+      const output = await buildOriginalSourceOutput(exam, safeMode, settings);
+      popup.location.href = output.url.href;
+    } catch (error) {
+      popup?.close();
+      throw error;
+    }
+  }
 
   function renderHome() {
     const recent = drafts().slice(0, 3);
@@ -1194,7 +1230,7 @@
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "시험지 확인", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
         })
         .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
@@ -2450,10 +2486,10 @@
         render();
       } else if (a === "source-issue") {
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "targets");
+      } else if (a === "source-output-direct") {
+        await openFinderOutput(state.catalog.exams[Number(b.dataset.exam)], b.dataset.mode || "exam");
       } else if (a === "original-print") {
         await originalPrint();
-      } else if (a === "source-preview") {
-        openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "review");
       } else if (a === "original-review" || a === "original-targets") {
         setOriginalStep(a === "original-review" ? "review" : "targets");
       } else if (a === "sources-clear") {

@@ -5,6 +5,7 @@
   const embedded =
     (requested || params.get("unitPastAssign")) && params.get("archive2Embedded") === "1" && parent !== window;
   const O = window.Archive2Output;
+  const ORIGINAL_QPP_VALUES = [4, 6, 8];
   let originalSettings = null,
     originalQuestions = null,
     originalIdentityTitle = "";
@@ -59,6 +60,7 @@
         meta: {
           identityTitle: originalIdentityTitle,
           printHeaderOptions: s.header,
+          qpp: s.qpp,
           includeQr: s.includeQr,
         },
       },
@@ -95,7 +97,7 @@
   window.setArchive2OriginalQpp = function (value) {
     const qpp = Number(value);
     if (
-      ![4, 6].includes(qpp) ||
+      !ORIGINAL_QPP_VALUES.includes(qpp) ||
       !AssignTarget ||
       AssignTarget.view === "progress"
     )
@@ -125,7 +127,7 @@
     }
     _pendingFile = item.file;
     _pendingAction = "exam";
-    _pendingQpp = [4, 6].includes(Number(params.get("qpp")))
+    _pendingQpp = ORIGINAL_QPP_VALUES.includes(Number(params.get("qpp")))
       ? Number(params.get("qpp"))
       : 4;
     originalSettings = O.settings({
