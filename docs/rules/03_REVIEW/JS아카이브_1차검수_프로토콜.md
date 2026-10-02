@@ -1,12 +1,12 @@
 ## CURRENT OVERRIDE — 2026-10-03 — R1 재검 / PRIOR EXPOSURE ALLOWED
 
-형님의 현재 명시 지시가 아래 과거 blind-order 문구보다 우선한다.
+형님의 현재 명시 지시가 아래 과거 blind-order 문구보다 우선한다. CURRENT 운영 용어는 **R1 1차 재검**이다.
 
 - target의 기존 solution·이전 verdict·checkpoint·repair detail을 **이미 봤거나 먼저 봐도 R1 attempt는 유효**하다.
 - R1 재검은 정보를 못 보는 절차가 아니라 **source/current artifact/정본에서 수학·해설·visual·Meta를 다시 계산·판정하고 기존 verdict를 정답처럼 복사하지 않는 절차**다.
 - prior 노출 때문에 `INVALID`, `CONTEXT_CONTAMINATED`, fresh reviewer 재배정을 만들지 않는다. 같은 R1 worker가 끝까지 validator/receipt를 닫는다.
 - Golden/Negative calibration은 최종 판정/수리 전에 읽어 quality bar를 맞추면 된다. target을 이미 본 과거 context는 calibration 실패 사유가 아니다.
-- 아래의 “기존 solution/verdict를 열기 전에”, “fresh blind” 표현은 **CURRENT에서는 순서 강제가 아니라 재검 품질 원칙**으로 읽는다.
+- 아래 과거 “기존 solution/verdict를 열기 전에”, “fresh blind” 표현은 CURRENT stage gate가 아니다. 같은 문서 안에서 충돌하면 이 재검 규칙을 적용한다.
 
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
 
@@ -16,7 +16,7 @@ R1 worker는 stage assignment와 scope를 확인하고 Golden 2~3 + 관련 Negat
 
 ## CURRENT HARD RULE — R1 FIRST-PASS ONLY / R3 DEFERRED OWNER SEPARATION (2026-10-01)
 - R1은 정상 first-pass R1만 담당한다. `R3_FAIL_DEFERRED`와 `CODEX_REPAIR_RETRY_REQUIRED`를 소비하지 않는다.
-- initial R3 이후 수리는 별도 Codex R3 repair worker가 packet의 OPEN locus만 처리한다.
+- initial R3 이후 수리는 R3_REPAIR owner가 packet의 OPEN locus만 처리한다. Codex 사용 여부는 필수가 아니다.
 - 아래 R3→R1 reentry/FULL_REENTRY/TARGETED_R1_R2 섹션은 SUPERSEDED / HISTORY다.
 
 
