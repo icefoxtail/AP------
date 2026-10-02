@@ -13,3 +13,5 @@ const path = require('path');
   console.error(error);
   process.exitCode = 1;
 });
+
+// MASTER-TEMP-G synchronize trigger: o60 R1 target-scoped validator only.
