@@ -1,4 +1,9 @@
 # 코드검사실 / JS아카이브 시험지 작업 통합 운영 프로토콜
+
+## CURRENT OVERRIDE — 2026-10-03 — RECHECK TERMINOLOGY
+
+CURRENT JS Archive에서 “독립 풀이/독립 검수/blind”는 **source/current authority에서 다시 계산하는 재검 품질 원칙**으로 해석한다. prior answer/solution/verdict/Meta/difficulty가 보여도 무효가 아니며, separate session/non-exposure/fresh reviewer를 요구하지 않는다. 기존 값을 decision authority로 복사하지 않고 current-pass evidence를 새로 만들면 된다. 기존 schema 필드명은 호환을 위해 유지할 수 있다.
+
 ## PDF·페이지 이미지 기반 신규 제작 / 기존 JS 검수·수정 / 이미지 에셋 / 1·2·3차 검수 / 최종 ZIP 봉인 전 단계
 ### Integrated Clean Edition — 2026-08-25
 ### Revision: 기존 v1.2 전 규칙 유지 + MIDDLE SCHOOL GRADE 1 SOLUTION MANDATORY LOCK — 중1 solution 공란 허용 예외 폐기 / 전 학년 일반 문항 solution 필수 / G3 SOLUTION 비공란 게이트 / 중1 해설 미작성 HARD_FAIL 추가
@@ -1010,7 +1015,7 @@ standardUnitOrder
 depth는 `complete_candidate`, `complete_category`, `complete_documented`, `complete_rule`이다.
 RAW/RRAW/UNMAPPED와 legacy 누락은 report 예외로 격리하며, 이 게이트는 원문·정답·해설을 수정하지 않는다.
 
-Foundation v1 적용 신규 JS의 L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 route로 사용한다. Semantic 판단은 current source + independently verified final solution에서 candidate-blind `primaryMethod`/`decisiveStep`을 확정한 뒤 RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE owner → exact binding 순으로 진행한다. Difficulty v1.3은 독립 blind pass다.
+Foundation v1 적용 신규 JS의 L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 route로 사용한다. Semantic 판단은 current source + verified final solution에서 `primaryMethod`/`decisiveStep`을 **current-pass 재판정**한 뒤 RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE owner → exact binding 순으로 진행한다. Difficulty v1.3은 별도 current-pass 재검 evidence 축이다.
 
 신규 production 입고 전에는 공용 deterministic validator를 실행하여 ACTIVE L3, L2↔L3 binding, ACTIVE L4와 parent, CrossConcept/Condition 전부 ACTIVE, 중복·alias 0, canonical IntegrationPattern, difficulty evidence, source/solution identity, resolver evidence SHA를 확인하고 validator receipt를 저장한다. `RPM_PRIMARY_MIGRATION_GAP`은 advanced eligibility만 미완료이며 source/solution/L1/L2가 정상인 문항의 BASIC eligibility와 결합하지 않는다. Candidate/deprecated/unregistered key로 BASIC PASS를 만들지 않는다.
 
