@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "js-archive-solution-calibration-evidence-v1",
+  "examPath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+  "stage": "R1",
+  "reviewAttemptId": "R1:m3/2final/22-sinheung:6c290d45af848b6127b4cd68555cabfa1011613c:2",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+        "sha256": "sha256:6522dd76dacfee2736b5127adb4d1a787ea5a9ac6fe8a6d017f0ba426228b1f3",
+        "gitBlobSha": "3c9a6fc67ab837c3e191cb3337c6b078bab464a2"
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+        "sha256": "sha256:657c7a662860927254ee20e9f50beb161dc71e7886783e942060d205334f01c9",
+        "gitBlobSha": "459ef57158938750c7d93643cbd0dd670a955b90"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:9fe6de4136aa2e34a06159db2b562bc85a82b5c34aba7192eda171b49a2b8581",
+        "solutionExcerpt": "원의 중심 \\(O\\)에서 현 \\(AB\\)에 내린 수선의 발을 \\(M\\)이라 하자.",
+        "observation": "현의 중점·직각삼각형 관계와 계산을 학생이 재현 가능한 순서로 전개한다."
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:3088194cd3184e062bb44b0a8af0ca5b4312a7d7da67a7ec10d4886edd6e77d0",
+        "solutionExcerpt": "그림에서 \\(AD=BD=5\\rm\\,cm\\), \\(CD=1\\rm\\,cm\\)이다.",
+        "observation": "원 그림의 길이 관계를 식으로 옮겨 해설과 visual의 의미를 닫는다."
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+        "qid": 1,
+        "solutionSha256": "sha256:996fb4ac630b5026840aa865280e3ad2a5c1e5240b60f569195a3dca1d9f8999",
+        "solutionExcerpt": "① 정다각형의 대각선 수를 식으로 쓰면",
+        "observation": "보기별 판단을 독립 block으로 분리해 학생이 판정을 추적할 수 있다."
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+        "qid": 5,
+        "solutionSha256": "sha256:f9e02ccda23afbfc020510787bd74b4b7e18ef71969f29a33b10eda46470b6f7",
+        "solutionExcerpt": "그림에서 $y=ax^2$도 아래쪽으로 열린다.",
+        "observation": "관찰→계수 조건→범위 결론을 작은칠판 흐름으로 분리한다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "22/22",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "visualHardPreload": {
+      "skill": ".codex/skills/apmath-visual-upgrade/SKILL.md",
+      "visualRouter": "docs/rules/04_VISUAL/도형추출.md",
+      "independentReview": "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md",
+      "status": "PASS"
+    }
+  }
+}
