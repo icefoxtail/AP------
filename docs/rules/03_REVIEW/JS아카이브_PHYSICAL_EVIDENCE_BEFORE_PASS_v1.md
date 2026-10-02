@@ -1,3 +1,14 @@
+## CURRENT OVERRIDE — 2026-10-03 — CONTEXT-TOLERANT REVIEW / NO FRESH-REVIEWER BLOCKER
+
+형님의 현재 명시 지시에 따라 **target의 기존 해설·SVG·이전 reviewer verdict·repair detail 노출은 R1/R2/R3/REPAIR/RECHECK의 invalidation 사유가 아니다.**
+
+- 독립성은 non-exposure가 아니라 **source/current artifact/정본에서 required scope를 실제로 다시 계산·판정하는 것**으로 정의한다.
+- prior detail을 봤다는 이유로 `INVALID`, `CONTEXT_CONTAMINATED`, `FRESH_REVIEWER_REQUIRED`를 만들지 않는다.
+- 같은 worker가 review/recheck를 계속 수행할 수 있으며, fresh Codex reviewer actual-start는 PASS의 필수 evidence가 아니다.
+- Golden/Negative calibration은 current attempt의 최종 판정/수리 전에 수행하면 된다. target이 과거 context에서 이미 노출됐다는 사실은 calibration FAIL이 아니다.
+- 기존 `blindDecisionSha`, `blindFreezeSha256`, `blindDecisionFrozenBeforeR1Compare` 필드명은 하위 schema 호환을 위해 유지한다. 이 값은 **formal compare/receipt 전에 independent recalculation snapshot이 고정됐음**을 뜻하며 prior 비노출 증명이 아니다.
+- 아래 문서의 blind-order 문구와 충돌하면 이 override가 우선한다.
+
 ## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
 - **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
 - initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
@@ -19,7 +30,7 @@ node archive/tools/solution-calibration-gate.mjs --exam <js> --evidence <calibra
 
 preflight에는 sample path+SHA+Git blob, sample별 대표 solution 2~5문항의 qid+solutionSha256+solutionExcerpt+observation, 복성고1 false-PASS Negative Sample, 그리고 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY` 5축이 모두 필요하다.
 
-**Blind는 quality bar에 대한 blind가 아니라 target의 기존 해설·이전 verdict에 대한 blind다.** Golden/Negative Sample은 먼저 읽되 target-specific prior answer/solution/verdict는 독립판정 전까지 가린다.
+**현재 review는 context-tolerant다.** target-specific prior answer/solution/verdict를 볼 수 있지만 이를 evidence로 복사하지 않고 source/current artifact에서 다시 계산한다. Golden/Negative Sample은 current attempt의 최종 판정 전에 읽는다.
 
 full CREATE/R1/R2/R3/SOLUTION_UPGRADE는 작업 후 기존 `review-evidence-gate.mjs`에서 final target `qualityCompareCount=N/N`까지 닫는다. post-R3 targeted repair/item recovery는 LOCK을 풀지 않기 위해 full-exam gate를 강제 재실행하지 않고 preflight PASS 후 OPEN locus만 수리하며, 별도 independent recheck가 changed/open locus를 검증한다.
 
@@ -30,7 +41,7 @@ full CREATE/R1/R2/R3/SOLUTION_UPGRADE는 작업 후 기존 `review-evidence-gate
 
 완료 전 필수: Golden Sample 2~3개의 `path + sha256 + gitBlobSha`, sample별 대표 solution 2~5문항의 `qid + solutionSha256 + observation`, 복성고1 false-PASS Negative Sample, 필수 3 quality axes, final target `qualityCompareCount=N/N`, `sampleReadBeforeWork=true`, `calibrationStatus=PASS`.
 
-stage 순서는 CREATE=`FRESH_SOLUTION_FROZEN_THEN_CALIBRATE`, 기존 upgrade=`BASELINE_REVIEW_THEN_CALIBRATE_THEN_UPGRADE`, REVIEW=`BLIND_TARGET_DECISION_FROZEN_THEN_CALIBRATE`로 고정한다.
+stage evidence order는 기존 필드 호환을 유지하되 REVIEW의 blind/non-exposure 순서를 HARD gate로 해석하지 않는다. REVIEW는 `INDEPENDENT_RECALC_SNAPSHOT_THEN_FORMAL_COMPARE` 의미로 운용한다.
 
 글자 수/줄 수 임계값은 품질 gate가 아니다. 쉬운 문항은 짧아도 되지만 핵심 중간식·왜 그 식인지·조건 적용·경우분리/보기판정·결론 연결이 빠져 학생이 재현하기 어렵다면 FAIL이다.
 
