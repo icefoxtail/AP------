@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE3_RECOVERY_CHECKPOINT_v2",
+  "stage": "VALIDATOR_PENDING",
+  "completionClaim": false,
+  "lane": "CREATE-3",
+  "canonicalOrdinal": 60,
+  "exam": "23_풍덕중_2학기_기말_중3_기출.js",
+  "latestMainSha": "e3f421afdbe15840c37c2d3e67f0160292d08f62",
+  "sourceExamBlobSha": "cb0fa93ced768b038e7253e95188a5b602e69a2b",
+  "recoveryBranch": "archive-recovery/m3-23-pungdeok-2final-create3-20261002-1325",
+  "resumedFrom": "archive-recovery/m3-23-pungdeok-2final-create3-20261002-1130@100116e7ff4948a3d45cfbce3caae97948f744a9",
+  "inherited": {
+    "sourcePixel": "20/20",
+    "independentSolve": "24/24",
+    "answerParity": "24/24",
+    "freshSolutionDraft": "24/24",
+    "metaAudit": "24/24",
+    "difficultyAudit": "24/24",
+    "itemHoldCount": 0
+  },
+  "finalArtifactSha": "581b56505e0ff68eecfa5273d4a650122ef251d9",
+  "finalArtifactSha256": "sha256:6c5386e246f17a5962a01f60d23e946899ad135e83669e5f5343af4cf77cb602",
+  "physicalEvidence": {
+    "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+    "path": "archive/data/r2e-intake/m3/23_풍덕중_2학기_기말_중3_기출.create.meta-v2.physical-evidence.json",
+    "gitBlobSha": "fa83b71ddc08e30d8291e701dd5e155df12cc10b",
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 8,
+    "visualEvidenceRows": 8,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0
+  },
+  "validator": {
+    "status": "PENDING_ACTUAL_EXECUTION",
+    "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+    "reviewEvidenceGateBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "attempts": [
+      "LOCAL_NODE_PRESENT_V22_BUT_REPOSITORY_NETWORK_MATERIALIZATION_FAILED_DNS",
+      "GITHUB_ACTIONS_TEMP_WORKFLOW_WRITE_BLOCKED_BEFORE_MUTATION",
+      "GITHUB_ACTIONS_TEMP_PR_CREATE_BLOCKED_BEFORE_MUTATION"
+    ]
+  },
+  "solutionSvg": {
+    "qids": [
+      6,
+      10,
+      12,
+      16,
+      19,
+      21,
+      22,
+      23
+    ],
+    "bytesPresent": "8/8",
+    "physicalEvidence": "8/8 PASS"
+  },
+  "meta": {
+    "semanticFinal": "23/24",
+    "rpmPrimaryMigrationGap": [
+      18
+    ],
+    "migrationGapDisposition": "NONBLOCKING_PROJECTION_DEBT",
+    "itemHoldCount": 0
+  },
+  "releaseState": "NOT_CREATE_DONE",
+  "debtClass": "INFRA_RETRY_DEBT",
+  "mainMutation": 0,
+  "postR3Mutation": 0,
+  "itemRecoveryMutation": 0,
+  "nextOwner": "CREATE-3",
+  "nextAction": "execute actual canonical solution-calibration-gate --preflight and review-evidence-gate --stage CREATE against frozen final artifact/evidence; on ok=true persist validator receipt + CREATE_DONE receipt; do not redo frozen item work while source/final blobs are unchanged"
+}

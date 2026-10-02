@@ -1,7 +1,6 @@
 import puppeteer from '@cloudflare/puppeteer';
-import outputContract from '../../../../archive/archive2-output-contract.js';
 
-const PDF_RENDER_REVISION = 'exam-pdf-output-envelope-v2-20261002';
+const PDF_RENDER_REVISION = 'exam-pdf-v1-20260827';
 const DEFAULT_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive';
 const PDF_STATUS_READY = 'ready';
 
@@ -36,41 +35,12 @@ function parseMixedPayload(assignment) {
   };
 }
 
-export async function buildPdfIdentity(assignment) {
+async function buildPdfIdentity(assignment) {
   const qpp = normalizePdfQpp(assignment?.pdf_qpp);
   const mixedPayload = isMixedAssignment(assignment) || assignment?.archive2_write_key ? parseMixedPayload(assignment) : null;
-  const createdAt = Date.now();
-  const outputEnvelope = mixedPayload ? await outputContract.createOutputEnvelope({
-    sourceKind: 'assignment',
-    sourceId: String(assignment?.archive_file || assignment?.id || ''),
-    assignmentId: String(assignment?.id || ''),
-    ...(assignment?.saved_paper_id ? { paperId: String(assignment.saved_paper_id) } : {}),
-    mode: 'exam',
-    questionCount: mixedPayload.questions.length,
-    questionUids: mixedPayload.meta.questionUids || mixedPayload.questions.map(question =>
-      question?.questionUid || question?.source_question_uid || question?._sourceQuestionUid || null
-    ),
-    meta: { ...mixedPayload.meta, qpp },
-    questions: mixedPayload.questions,
-    createdAt,
-    expiresAt: createdAt + outputContract.DEFAULT_TTL_MS
-  }, crypto) : null;
-  if (outputEnvelope) {
-    await outputContract.validateOutputEnvelope(outputEnvelope, {
-      outputRequestId: outputEnvelope.outputRequestId,
-      ownerId: outputEnvelope.ownerId,
-      mode: 'exam'
-    }, crypto);
-  }
-  const outputEnvelopeMetrics = outputEnvelope
-    ? outputContract.measureOutputEnvelope(outputEnvelope)
-    : null;
-  const assignmentPayloadBytes = mixedPayload
-    ? new TextEncoder().encode(JSON.stringify(mixedPayload)).byteLength
-    : 0;
   const canonical = JSON.stringify({
     revision: PDF_RENDER_REVISION,
-    archive2_output_revision: outputEnvelope?.contractVersion || (assignment?.archive2_write_key ? 'archive2-rc2-v1' : undefined),
+    archive2_output_revision: assignment?.archive2_write_key ? 'archive2-rc2-v1' : undefined,
     assignment_id: String(assignment?.id || ''),
     class_id: String(assignment?.class_id || ''),
     exam_title: String(assignment?.exam_title || ''),
@@ -85,9 +55,6 @@ export async function buildPdfIdentity(assignment) {
   return {
     qpp,
     mixedPayload,
-    outputEnvelope,
-    outputEnvelopeMetrics,
-    assignmentPayloadBytes,
     hash,
     objectKey: `exam-pdfs/${PDF_RENDER_REVISION}/${hash}.pdf`
   };
@@ -104,24 +71,13 @@ function buildRenderUrl(env, assignment, identity) {
   url.searchParams.set('solQr', assignment.archive2_write_key && identity.mixedPayload?.meta?.includeQr ? '1' : '0');
   if(assignment.archive2_write_key){url.searchParams.set('portalQr','1');url.searchParams.set('assignmentId',assignment.id);}
   url.searchParams.set('assignmentRegistered', '1');
-  if (identity.outputEnvelope) {
-    url.searchParams.set('archive2Context', 'archive2');
-    url.searchParams.set('archive2OutputContract', identity.outputEnvelope.contractVersion);
-    url.searchParams.set('outputRequestId', identity.outputEnvelope.outputRequestId);
-    url.searchParams.set('outputOwnerId', identity.outputEnvelope.ownerId);
-    url.searchParams.set('v', '20261002-output-envelope-v3');
-  }
   url.searchParams.set('preRegistered', '1');
   if (assignment.class_id) url.searchParams.set('class', String(assignment.class_id));
   if (assignment.class_name) url.searchParams.set('className', String(assignment.class_name));
   if (assignment.teacher_name) url.searchParams.set('teacher', String(assignment.teacher_name));
   if (assignment.exam_date) url.searchParams.set('date', String(assignment.exam_date).slice(0, 10));
   if (assignment.question_count) url.searchParams.set('q', String(assignment.question_count));
-  if (identity.outputEnvelope) {
-    url.searchParams.set('mode', identity.outputEnvelope.mode);
-    url.searchParams.set('q', String(identity.outputEnvelope.questionCount));
-    url.searchParams.set('qpp', String(identity.outputEnvelope.meta.qpp));
-  } else if (mixed) {
+  if (mixed) {
     url.searchParams.set('key', String(assignment.archive_file).slice('MIXED:'.length));
   } else {
     url.searchParams.set('data', String(assignment.archive_file || ''));
@@ -152,63 +108,46 @@ async function renderAssignmentPdf(env, assignment, identity) {
       await dialog.dismiss();
     });
 
-    if (identity.outputEnvelope) {
-      const actualMetrics = outputContract.measureOutputEnvelope(identity.outputEnvelope);
-      if (actualMetrics.canonicalJsonBytes !== identity.outputEnvelopeMetrics?.canonicalJsonBytes)
-        throw new Error('Output envelope capacity measurement changed before PDF injection.');
-      console.info('[exam-pdf] output capacity', JSON.stringify({
-        assignment_id: assignment.id,
-        assignment_payload_bytes: identity.assignmentPayloadBytes,
-        envelope_canonical_json_bytes: actualMetrics.canonicalJsonBytes,
-        envelope_browser_json_bytes: actualMetrics.browserJsonBytes,
-        image_data_url_bytes: actualMetrics.imageDataUrlBytes,
-        estimated_pinned_image_bytes: actualMetrics.estimatedPinnedImageBytes,
-      }));
-      await page.evaluateOnNewDocument(envelope => {
-        window.__AP_OUTPUT_ENVELOPE__ = envelope;
-      }, identity.outputEnvelope);
+    if (identity.mixedPayload) {
+      const storageKey = isMixedAssignment(assignment) ? String(assignment.archive_file).slice('MIXED:'.length) : 'original-'+assignment.id;
+      const payloadJson = JSON.stringify(identity.mixedPayload);
+      await page.evaluateOnNewDocument((key, rawPayload) => {
+        const payload = JSON.parse(rawPayload);
+        if(payload.meta?.sourceKind==='archive2-original'){localStorage.setItem('archive2Original_'+key,rawPayload);return;}
+        localStorage.setItem(`mixedQuestions_${key}`, JSON.stringify(payload.questions || []));
+        localStorage.setItem(`mixedMeta_${key}`, JSON.stringify(payload.meta || {}));
+      }, storageKey, payloadJson);
     }
 
     const renderUrl = buildRenderUrl(env, assignment, identity);
     await page.goto(renderUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    const expectedEnvelope = identity.outputEnvelope ? {
-      contractVersion: identity.outputEnvelope.contractVersion,
-      outputRequestId: identity.outputEnvelope.outputRequestId,
-      payloadHash: identity.outputEnvelope.payloadHash,
-    } : null;
-    if (expectedEnvelope) {
-      await page.waitForFunction(expected => {
-        const ready = window.__AP_OUTPUT_RENDER_READY__;
-        return Boolean(window.__AP_OUTPUT_RENDER_ERROR__) || (
-          ready?.contractVersion === expected.contractVersion &&
-          ready?.outputRequestId === expected.outputRequestId &&
-          ready?.payloadHash === expected.payloadHash
-        );
-      }, { timeout: 45000 }, expectedEnvelope);
-      const result = await page.evaluate(expected => ({
-        error: window.__AP_OUTPUT_RENDER_ERROR__ || '',
-        ready: window.__AP_OUTPUT_RENDER_READY__ || null,
-        render: window.__AP_RENDER_READY__ || null,
-        envelope: window.__AP_OUTPUT_ENVELOPE_READY__ || null,
-      }), expectedEnvelope);
-      if (result.error) throw new Error(`Archive output render failed: ${result.error}`);
-      if (result.ready?.contractVersion !== expectedEnvelope.contractVersion ||
-          result.ready?.outputRequestId !== expectedEnvelope.outputRequestId ||
-          result.ready?.payloadHash !== expectedEnvelope.payloadHash)
-        throw new Error('PDF render output identity mismatch.');
-      if (result.envelope?.payloadHash !== expectedEnvelope.payloadHash)
-        throw new Error('PDF render did not verify the requested output envelope.');
-    } else {
-      await page.waitForFunction(
-        () => document.querySelectorAll('#print-area .page').length > 0,
-        { timeout: 45000 }
-      );
-    }
-    const readiness = await page.evaluate(
-      expected => window.Archive2PdfReadiness.assertReady(expected),
-      expectedEnvelope,
+    await page.waitForFunction(
+      () => document.querySelectorAll('#print-area .page').length > 0,
+      { timeout: 45000 }
     );
-    const pageCount = readiness.pageCount;
+    await page.evaluate(async () => {
+      if (window.__AP_RENDER_READY__) await window.__AP_RENDER_READY__;
+      if (document.fonts?.ready) await document.fonts.ready;
+      const images = Array.from(document.querySelectorAll('#print-area img'));
+      await Promise.all(images.map(async image => {
+        if (!image.complete) {
+          await Promise.race([
+            new Promise(resolve => {
+              image.addEventListener('load', resolve, { once: true });
+              image.addEventListener('error', resolve, { once: true });
+            }),
+            new Promise(resolve => setTimeout(resolve, 10000))
+          ]);
+        }
+        if (typeof image.decode === 'function') {
+          await Promise.race([
+            image.decode().catch(() => {}),
+            new Promise(resolve => setTimeout(resolve, 5000))
+          ]);
+        }
+      }));
+    });
+    const pageCount = await page.evaluate(() => document.querySelectorAll('#print-area .page').length);
     if (!pageCount) throw new Error('렌더링된 시험지 페이지가 없습니다.');
     const pdf = await page.pdf({
       format: 'A4',

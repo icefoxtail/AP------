@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE3_VALIDATOR_PENDING_v1",
+  "stage": "VALIDATOR_PENDING",
+  "completionClaim": false,
+  "lane": "CREATE-3",
+  "canonicalOrdinal": 60,
+  "exam": "23_풍덕중_2학기_기말_중3_기출.js",
+  "latestMainSha": "69121e27be5dbe3b4901768e7e32cff354eddcf8",
+  "mainTargetExamBlobSha": "cb0fa93ced768b038e7253e95188a5b602e69a2b",
+  "finalArtifactSha": "581b56505e0ff68eecfa5273d4a650122ef251d9",
+  "finalArtifactSha256": "sha256:6c5386e246f17a5962a01f60d23e946899ad135e83669e5f5343af4cf77cb602",
+  "physicalEvidence": {
+    "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+    "gitBlobSha": "fa83b71ddc08e30d8291e701dd5e155df12cc10b",
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 8,
+    "visualEvidenceRows": 8,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0
+  },
+  "canonicalValidators": {
+    "solutionCalibrationGateBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+    "reviewEvidenceGateBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5"
+  },
+  "validatorExecution": {
+    "status": "NOT_EXECUTED",
+    "attempts": [
+      {
+        "mode": "LOCAL_NODE",
+        "result": "NODE_V22_AVAILABLE_BUT_GITHUB_REPOSITORY_MATERIALIZATION_FAILED_DNS"
+      },
+      {
+        "mode": "GITHUB_ACTIONS_FALLBACK",
+        "result": "TEMP_WORKFLOW_WRITE_BLOCKED_BEFORE_MUTATION"
+      },
+      {
+        "mode": "GITHUB_ACTIONS_FALLBACK",
+        "result": "TEMP_PR_CREATE_BLOCKED_BEFORE_MUTATION"
+      }
+    ]
+  },
+  "driftCheck": "TARGET_AND_VALIDATOR_BLOBS_UNCHANGED_ON_LATEST_MAIN",
+  "debtClass": "INFRA_RETRY_DEBT",
+  "releaseState": "NOT_CREATE_DONE",
+  "mainMutation": 0,
+  "postR3Mutation": 0,
+  "itemRecoveryMutation": 0,
+  "nextOwner": "CREATE-3",
+  "nextAction": "Run actual canonical calibration preflight and review-evidence-gate --stage CREATE on frozen final artifact/evidence. Only ok=true permits CREATE_DONE receipt. Do not redo frozen item work while blobs are unchanged."
+}

@@ -6,7 +6,6 @@ const vm = require("node:vm");
 const crypto = require("node:crypto");
 const library = require("../archive/archive2-library.js");
 const output = require("../archive/archive2-output.js");
-const contract = require("../archive/archive2-output-contract.js");
 
 function storage(initial = {}, maxBytes = Infinity) {
   const values = new Map(Object.entries(initial));
@@ -41,31 +40,13 @@ function paper(id, title) {
   };
 }
 
-function outputWithCapture() {
-  const envelopes = [];
-  return {
-    ...output,
-    envelopes,
-    async publishOutputEnvelope(input) {
-      const envelope = await contract.createOutputEnvelope({
-        ...input,
-        ownerId: "55555555-5555-4555-8555-555555555555",
-      }, crypto.webcrypto);
-      envelopes.push(envelope);
-      return envelope;
-    },
-  };
-}
-
 test("saved-paper detail renders when localStorage writes throw QuotaExceededError", async () => {
   const previous = { window: global.window, location: global.location, localStorage: global.localStorage };
   const sessionStorage = storage({ APMATH_SESSION: "teacher session must remain" });
-  const outputApi = outputWithCapture();
-  let localStorageWrites = 0;
   global.window = {
     sessionStorage,
-    localStorage: { setItem() { localStorageWrites++; throw new DOMException("Quota exceeded", "QuotaExceededError"); } },
-    Archive2Output: outputApi,
+    localStorage: { setItem() { throw new DOMException("Quota exceeded", "QuotaExceededError"); } },
+    Archive2Output: output,
     Archive2Api: { request: async () => ({ paper: paper("00000000-0000-4000-8000-000000000001", "Quota test paper") }) },
   };
   global.localStorage = global.window.localStorage;
@@ -75,13 +56,8 @@ test("saved-paper detail renders when localStorage writes throw QuotaExceededErr
     await library.render(host, "00000000-0000-4000-8000-000000000001");
     assert.match(host.innerHTML, /Quota test paper/);
     assert.match(host.innerHTML, /saved-paper-preview/);
-    assert.equal(outputApi.envelopes.length, 1);
-    assert.equal(outputApi.envelopes[0].sourceKind, "saved-paper");
-    assert.equal(outputApi.envelopes[0].paperId, "00000000-0000-4000-8000-000000000001");
-    assert.match(host.innerHTML, /outputRequestId=/);
-    assert.match(host.innerHTML, /outputOwnerId=/);
+    assert.ok(sessionStorage.getItem("mixedQuestions_archive2-saved-00000000-0000-4000-8000-000000000001-preview"));
     assert.equal(sessionStorage.getItem("APMATH_SESSION"), "teacher session must remain");
-    assert.equal(localStorageWrites, 0);
   } finally {
     if (previous.window === undefined) delete global.window; else global.window = previous.window;
     if (previous.location === undefined) delete global.location; else global.location = previous.location;
@@ -89,7 +65,7 @@ test("saved-paper detail renders when localStorage writes throw QuotaExceededErr
   }
 });
 
-test("saved-paper preview is one owner-scoped envelope without changing browser session storage", async () => {
+test("saved-paper temporary preview cleanup removes only its own prior snapshot keys", () => {
   const previousWindow = global.window;
   const sessionStorage = storage({
     APMATH_SESSION: "do not delete",
@@ -97,47 +73,28 @@ test("saved-paper preview is one owner-scoped envelope without changing browser 
     "mixedMeta_archive2-saved-old-paper-old-batch": "old saved meta",
     "mixedQuestions_unit-past-user-work": "existing user work",
   });
-  const outputApi = outputWithCapture();
-  global.window = { sessionStorage, Archive2Output: outputApi };
+  global.window = { sessionStorage };
   try {
-    const before = sessionStorage.snapshot();
-    const envelope = await library.preparePreview(paper("00000000-0000-4000-8000-000000000002", "New test paper"));
+    const key = library.preparePreview(paper("00000000-0000-4000-8000-000000000002", "New test paper"));
     const values = sessionStorage.snapshot();
-    assert.equal(outputApi.envelopes.length, 1);
-    assert.equal(envelope, outputApi.envelopes[0]);
-    assert.equal(envelope.questionCount, 1);
-    assert.deepEqual(envelope.questionUids, ["qid_v1_test"]);
-    assert.equal(envelope.ownerId, "55555555-5555-4555-8555-555555555555");
-    assert.deepEqual(values, before);
+    assert.ok(values[`mixedQuestions_${key}`]);
+    assert.ok(values[`mixedMeta_${key}`]);
     assert.equal(values["APMATH_SESSION"], "do not delete");
     assert.equal(values["mixedQuestions_unit-past-user-work"], "existing user work");
-    assert.equal(values["mixedQuestions_archive2-saved-old-paper-old-batch"], "old saved snapshot");
-    assert.equal(values["mixedMeta_archive2-saved-old-paper-old-batch"], "old saved meta");
+    assert.equal(values["mixedQuestions_archive2-saved-old-paper-old-batch"], undefined);
+    assert.equal(values["mixedMeta_archive2-saved-old-paper-old-batch"], undefined);
   } finally {
     if (previousWindow === undefined) delete global.window; else global.window = previousWindow;
   }
 });
 
-test("saved-paper AssignTarget handoff publishes one envelope without localStorage writes", async () => {
+test("saved-paper AssignTarget handoff uses sessionStorage when localStorage writes fail", async () => {
   const savedId = "00000000-0000-4000-8000-000000000003";
   const sessionStorage = storage({ APMATH_SESSION: "teacher session must remain" });
   let localStorageWrites = 0;
-  let envelopeInput = null;
   let opened = null;
   const paper = paperFixture(savedId);
-  const envelope = {
-    contractVersion: "archive2-output-envelope-v1",
-    outputRequestId: "66666666-6666-4666-8666-666666666666",
-    ownerId: "77777777-7777-4777-8777-777777777777",
-  };
-  const window = {
-    Archive2Output: {
-      settings: value => value,
-      publishOutputEnvelope: async input => { envelopeInput = input; return envelope; },
-    },
-    sessionStorage,
-    close() {},
-  };
+  const window = { Archive2Output: { settings: value => value }, sessionStorage, close() {} };
   const context = {
     window,
     URLSearchParams,
@@ -166,12 +123,7 @@ test("saved-paper AssignTarget handoff publishes one envelope without localStora
   assert.equal(await window.openArchive2SavedPaperIssue(), true);
   assert.equal(opened.item.savedPaperId, savedId);
   assert.equal(Number(opened.qpp), 4);
-  assert.equal(opened.item.outputRequestId, envelope.outputRequestId);
-  assert.equal(opened.item.outputOwnerId, envelope.ownerId);
-  assert.deepEqual(JSON.parse(JSON.stringify(opened.item.outputSnapshot)), JSON.parse(JSON.stringify(paper.snapshot)));
-  assert.equal(envelopeInput.paperId, savedId);
-  assert.equal(envelopeInput.sourceKind, "saved-paper");
-  assert.equal(envelopeInput.mode, "exam");
+  assert.ok(sessionStorage.getItem(`mixedQuestions_${opened.item.unitPastSnapshotKey}`));
   assert.equal(sessionStorage.getItem("APMATH_SESSION"), "teacher session must remain");
   assert.equal(localStorageWrites, 0, "saved-paper distribution does not grow localStorage");
 });

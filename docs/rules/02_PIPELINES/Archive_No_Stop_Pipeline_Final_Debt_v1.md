@@ -1,4 +1,30 @@
-> **AUTOMATION TOPOLOGY NOTICE — 2026-10-02:** 이 문서의 no-stop/final-debt 원칙은 지원 규칙으로 유지한다. 과거 3-lane/Surge/Phase A·B/existing-slot-only/FLEX topology와 one-item publish 의미는 HISTORY다. role/schedule/blind/MASTER/PUBLISH authority는 `JS_Archive_Automation_Stable_Operating_Contract_v1.md` 하나로 판단한다. 현재 설계는 NOT ACTIVE이며 기존 GPT 예약은 OFF 상태다.
+## CURRENT OVERRIDE — 2026-10-02 — R3 PASS PUBLISH EXIT CONSUMER
+- `R3_PASS / READY_FOR_CODEX_PUBLISH`는 대기 종착점이 아니다. existing BATCH/PUBLISH consumer가 매 run 전체 M3에서 terminal-unclosed 후보를 최우선 sweep한다.
+- approved R3/repaired artifact의 exam·required metadata·assets가 current main과 exact이면 production mutation 0으로 즉시 `APPLIED_EXISTING / MAIN_DONE / nextOwner=NONE / DO_NOT_REQUEUE`로 닫는다. 과거 `BATCH_COMMITTED / FINAL_READY`, `META_MAIN_DONE`, `MAIN_PRESENT_META_ONLY`는 terminalization 생략 근거가 아니다.
+- approved remote artifact가 current main과 다르고 release debt=0, evidence/validator/allowlist/Git parity가 맞으면 latest main 위 target-only production commit 1개로 publish하고 `MAIN_DONE`으로 닫는다.
+- 한 후보의 release/Git parity debt는 그 시험지만 scoped debt로 제외하고 다음 clean READY_FOR_CODEX_PUBLISH 후보를 계속 소비한다. clean R3 PASS가 publish queue에 누적되는 상태는 운영 오류다.
+- 새 scheduler/task를 만들지 않고 기존 BATCH/PUBLISH 슬롯을 exit consumer로 사용한다.
+
+## CURRENT OVERRIDE — 2026-10-02 10:32 KST — M3 3-LANE RETURN SIMULATION
+- 사용자 직접 지시로 overnight R3 SURGE 임시구조에서 원래 3-lane 구조로 단계 회귀한다.
+- **PHASE A:** CREATE-1/2/3 = 3 lanes, R1 GLOBAL = 1 lane, R2-1/2/3 = 3 lanes, initial R3 = SURGE-3/4/5 = 3 lanes.
+- CREATE-1/2/3은 ordinal mod3 = 1/2/0 partition을 각각 소유한다. 과거 SURGE-1/2는 각각 CREATE-2/3로 복귀했다.
+- REVIEW2-3의 LINE3 emergency redirect는 HISTORY이며 정상 M3 lane3다.
+- current known CREATE residual after o62 closure는 o60/o65/o66/o67/o68이며 authority는 매 run physical receipt rescan이다.
+- **PHASE B cutover:** physical CREATE=69/69 AND normal first-pass R1 eligible>=3가 동시에 확인되면 즉시 same-run automation cutover를 수행한다.
+- cutover 후 topology는 정확히 **CREATE 0 / R1 3 / R2 3 / R3 3**이다.
+- role mapping: CREATE-2→R3-1(:10), CREATE-3→R3-2(:22), SURGE-3→R3-3(:38), REVIEW1 GLOBAL→R1-1(:45), SURGE-5→R1-2(:50), SURGE-4→R1-3(:42), REVIEW2-1/2/3 유지, CREATE-1 disable.
+- R1/R2/R3 각 lane은 자기 mod3 partition만 소비한다. R1/R2는 blind→compare + repair-before-hold + SHA-bound physical evidence + actual validator PASS, R3는 initial full release audit only / direct repair 금지다.
+- local Node unavailable 시 실행 가능한 GitHub Actions/recovery validator fallback을 먼저 사용하고, 실제 fallback 시도 없이 INFRA_RETRY_DEBT로 종료하지 않는다.
+- 아래 과거 single-CREATE 또는 5-SURGE 설명과 충돌하면 이 override가 우선한다.
+
+## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
+- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
+- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
+- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
+- Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
+- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
+- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
 
 # Archive No-Stop Pipeline / Final Debt v1
 
@@ -77,15 +103,45 @@ UNRESOLVED RELEASE DEBT
 
 ---
 
-## 2.1 MASTER EXECUTOR — ACTION-FIRST RESCUE
+## 2.1 조율자 / FLEX — ACTION-FIRST RESCUE
 
-조율자/FLEX/운영감시자 topology는 HISTORY다. 현재 안정화 설계에서는 `JS_Archive_Automation_Stable_Operating_Contract_v1.md`의 MASTER EXECUTOR ×3가 동일 목적을 수행한다.
+조율자/FLEX의 완료 기준은 **문서 기록이 아니라 병목 제거 또는 실행 가능한 repair handoff**다.
 
-- MASTER는 감시/보고가 아니라 실제 closure executor다.
-- 문제 발견이나 문서 작성만으로 완료하지 않는다.
-- physical recheck → root cause → MASTER_LEASE → direct repair/write/validator/commit/publish 또는 fresh executable owner start → readback → stage transition → 마지막에 Notion 순서를 지킨다.
-- invalid blind attempt는 worker 영구 오염으로 만들지 않고 attempt만 폐쇄한 뒤 fresh one-shot reviewer를 생성한다.
-- source truth와 실제 validator 결과는 위조할 수 없다.
+`STALL_DETECTED`, `FLEX_RESCUE_REQUIRED`, `CHECKPOINT_CHURN_STALL`, 반복 `WRITE_GATE_TRANSIENT`, 반복 `mutation 0`, validator 미실행/실패가 확인되면 다음 순서를 지킨다.
+
+1. 최신 physical state와 마지막 durable artifact/checkpoint를 재조회한다.
+2. 정확한 실패 지점을 특정한다.
+   - `failedGate`
+   - 정확한 `qid / file / field`
+   - current input/artifact SHA
+   - missing evidence
+   - 필요한 validator / closure condition
+3. 실제 primary worker in-flight 또는 valid competing claim이 없으면 claim 후 **직접 repair를 먼저 실행**한다.
+4. deterministic repair, evidence materialization, validator 실행, durable receipt closure가 가능하면 같은 run에서 끝낸다.
+5. 직접 repair가 불가능한 경우에만 `RESCUE_DIAGNOSIS`를 만든다. 최소 필드는 다음과 같다.
+   - `target`
+   - `failedGate`
+   - `openQids/openFiles/openFields`
+   - `currentInputSha`
+   - `candidateOrCheckpointRef`
+   - `requiredRepairActions`
+   - `doNotTouchScope`
+   - `executionOwner`
+   - `exactCompletionGate`
+   - `retryCommandOrValidator`
+   - `nextOwner`
+6. CREATE/R1/R2/FLEX 범위에서 조율자가 직접 수행 가능한 작업은 다른 owner에게 넘기지 않고 직접 닫는다. post-R3 Codex repair / ITEM_RECOVERY처럼 전용 owner가 있는 범위만 executable handoff한다.
+7. **repair 또는 executable handoff가 물리적으로 생긴 뒤에만** Notion snapshot/debt/history를 갱신한다.
+
+금지:
+- `STALL_DETECTED`나 debt 문서만 추가하고 조율 완료 처리
+- 같은 target에 generic checkpoint/debt를 반복 생성
+- 같은 이유로 두 번 이상 재등장했는데 동일 recovery action 반복
+- actual repair/mutation/validator attempt 또는 executable handoff 없이 `RESOLVED`, `COORDINATED`, `RECOVERY_DONE` 표기
+
+같은 target이 두 FLEX cycle 이상 반복되면 `RESCUE_DIAGNOSIS`를 갱신하고 이전 시도와 **다른 구체적 recovery action**을 수행한다. 이것이 없으면 상태는 `COORDINATION_INCOMPLETE`다.
+
+---
 
 ## 2.2 Executor fallback — validator는 실행환경 부재만으로 debt 종료 금지
 
@@ -114,28 +170,6 @@ local Node unavailable
 - GitHub Actions 자체가 unavailable/permission denied일 때에만 그 실행환경 문제를 scoped `INFRA_RETRY_DEBT`로 남길 수 있다.
 - 이 fallback은 품질 gate 완화가 아니다. **실제 canonical Node CLI를 다른 executor에서 실행하는 것**이다.
 
-### 2.3 Scheduled executor capability preflight + closure-first
-
-예약 worker는 target 생성부터 시작하지 않는다. 먼저 이번 run의 **actual validator executor**를 확정한다.
-
-- local Node 가능 → local canonical CLI
-- local Node 불가 + GitHub Actions 가능 → temporary validation PR/CI 경로를 target 작업 전에 준비
-- 둘 다 불가 → 정확한 continuation checkpoint와 scoped INFRA_RETRY_DEBT
-
-candidate/evidence 생성 후에는 **validator → validator receipt → stage receipt → remote readback**이 최우선이다. candidate/evidence commit만 만들고 종료하는 것은 stage advancement가 아니다.
-
-CREATE 기준 완료 tuple:
-
-```text
-final artifact
-+ physical evidence
-+ actual calibration/review-evidence-gate receipt
-+ CREATE_DONE receipt
-+ remote readback
-```
-
-GitHub Actions fallback을 선택했는데 workflow run/job가 0이면 validator는 실행되지 않은 것으로 판정한다.
-시간 제한으로 중단될 경우 same-role 다음 run이 exact candidate를 다시 쓰지 않고 firstMissingClosureStep부터 resume할 수 있도록 candidate HEAD/finalArtifactSha/evidence blob/validationExecutor를 durable하게 남긴다.
 ## 3. Non-blocking Debt Registry
 
 미해결은 다음 debt 중 하나로 남긴다. **어느 debt도 scheduler/lane/cohort selector의 stop 조건이 아니다.**

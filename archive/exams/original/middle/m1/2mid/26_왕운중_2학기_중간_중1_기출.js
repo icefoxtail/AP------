@@ -411,7 +411,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.svg"
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.png"
   },
   {
     "id": 7,
@@ -764,7 +764,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q11.svg"
   },
   {
@@ -837,7 +837,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q12.svg"
   },
   {
@@ -980,7 +980,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.svg",
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q14.svg"
   },
   {
@@ -1087,8 +1087,8 @@ window.questionBank = [
       "4명",
       "5명"
     ],
-    "answer": "①",
-    "solution": "[키포인트] 문장에 필요한 조건이 빠져 있지 않은지 확인합니다.\n\n원희: 평각은 $180^\\circ$이므로 틀립니다.\n리나: 단순히 서로 마주 보는 두 각이라고 해서 항상 맞꼭지각인 것은 아니므로, 항상 크기가 같다고 할 수 없습니다. 따라서 틀립니다.\n미나: 공간에서는 서로 만나지 않으면서 평행하지 않은 꼬인 위치의 두 직선이 있을 수 있으므로 틀립니다.\n제다: $M$이 $AB$의 중점이고 $l\\perp\\overline{AB}$이므로 $l$은 선분 $AB$의 수직이등분선입니다. 따라서 옳습니다.\n메이: 동위각은 두 직선이 평행할 때 서로 같으므로 항상 같다는 말은 틀립니다.\n\n항상 옳게 말한 사람은 제다 1명뿐이므로 정답은 ①입니다.",
+    "answer": "②",
+    "solution": "[키포인트] 문장에 필요한 조건이 빠져 있지 않은지 확인합니다.\n\n평각은 $180^\\circ$라 원희는 틀리고, 맞꼭지각은 같아 리나는 옳습니다. 공간에서는 만나지 않지만 평행하지 않은 꼬인 위치가 있어 미나는 항상 옳지 않습니다. 제다의 수직이등분선 설명은 옳고, 동위각은 평행선일 때 같으므로 메이의 말은 항상 옳지 않습니다.\n\n항상 옳게 말한 사람은 2명이므로 정답은 ②입니다.",
     "sourceQuestionNo": "16",
     "displayNo": "16",
     "sourceOrdinal": 16,
@@ -1193,7 +1193,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.svg"
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.png"
   },
   {
     "id": 18,
@@ -1263,7 +1263,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q018_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q018_visual.png"
   },
   {
     "id": 19,
@@ -1335,8 +1335,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.svg",
-    "imageSize": "full"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.png"
   },
   {
     "id": 20,
@@ -1408,7 +1407,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-      },
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q020_visual.png"
+  },
   {
     "id": 21,
     "level": "하",
@@ -1537,8 +1537,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_visual.svg",
-    "imageSize": "large",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q22.svg"
   },
   {
@@ -1605,7 +1604,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.png",
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q23.svg"
   }
 ];
