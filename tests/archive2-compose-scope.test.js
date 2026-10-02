@@ -73,6 +73,38 @@ function harness(data = structuredClone(catalog)) {
   };
 }
 
+function configureSaveHarness(t) {
+  const { w, ctx } = harness();
+  const previousDocument = global.document;
+  const previousFetch = global.fetch;
+  global.document = { baseURI: "https://archive.test/archive/workspace.html" };
+  global.fetch = async input => {
+    const url = new URL(String(input));
+    const sourcePath = decodeURIComponent(url.pathname.replace("/archive/exams/", ""));
+    return {
+      ok: true,
+      status: 200,
+      text: async () => fs.readFileSync(path.join(root, "archive/exams", sourcePath), "utf8"),
+    };
+  };
+  t.after(() => {
+    if (previousDocument === undefined) delete global.document; else global.document = previousDocument;
+    if (previousFetch === undefined) delete global.fetch; else global.fetch = previousFetch;
+  });
+  const record = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.ackWarnings = true;
+  ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
+  ctx.APMATH_API_BASE = "https://archive.test/api";
+  return { w, ctx };
+}
+
 function basicRecord(grade, change = {}) {
   const base = catalog.records.find(row => core.basicEligibility(row, {
     canonicalAuthority: catalog.canonicalAuthority,
@@ -849,6 +881,58 @@ test('unknown save with no committed batch retries the identical request identit
   assert.equal(postBodies.length, 2);
   assert.equal(postBodies[1].save_batch_id, originalBatchId);
   assert.deepEqual(postBodies[1], postBodies[0]);
+});
+
+test("a missing save batch followed by POST 409 is a definite failure", async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  let statusChecks = 0;
+  let posts = 0;
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    if (parsed.pathname.startsWith("/api/archive-saved-papers/save-batches/")) {
+      statusChecks++;
+      if (statusChecks === 1)
+        return { ok: true, status: 200, json: async () => ({ success: true, found: false, saved: false, papers: [] }) };
+      return { ok: false, status: 404, json: async () => ({ error: "save batch not found" }) };
+    }
+    if (parsed.pathname === "/api/archive-saved-papers" && init.method === "POST") {
+      posts++;
+      if (posts === 1) throw new Error("response lost");
+      return { ok: false, status: 409, json: async () => ({ error: "save batch conflict" }) };
+    }
+    throw new Error("unexpected API request: " + parsed.pathname);
+  };
+
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "RESULT_UNKNOWN");
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "FAILED");
+  assert.equal(posts, 2);
+  assert.equal(statusChecks, 2);
+  assert.match(w.state.saveError, /save batch conflict/);
+});
+
+test("HTTP 502 and network failures keep the same save result unresolved", async t => {
+  for (const failureKind of ["HTTP 502", "network"]) {
+    await t.test(failureKind, async subtest => {
+      const { w, ctx } = configureSaveHarness(subtest);
+      ctx.fetch = async (url, init = {}) => {
+        const parsed = new URL(String(url));
+        if (parsed.pathname.startsWith("/api/archive-saved-papers/save-batches/"))
+          return { ok: true, status: 200, json: async () => ({ success: true, found: false, saved: false, papers: [] }) };
+        if (parsed.pathname === "/api/archive-saved-papers" && init.method === "POST") {
+          if (failureKind === "network") throw new Error("network unavailable");
+          return { ok: false, status: 502, json: async () => ({ error: "upstream unavailable" }) };
+        }
+        throw new Error("unexpected API request: " + parsed.pathname);
+      };
+
+      await w.savePapers();
+      assert.equal(w.state.saveResultState, "RESULT_UNKNOWN");
+      assert.ok(w.state.saveBatchId);
+      assert.match(w.state.saveError, failureKind === "network" ? /network unavailable/ : /upstream unavailable/);
+    });
+  }
 });
 
 test('Saved Paper revision Draft preserves the immutable source snapshot and lineage parent', async () => {

@@ -676,6 +676,26 @@ try {
   ).bind(parentAssignmentId).first()).n), 1);
   const changedAddRetry = await post("", { ...addRecipientsBody, student_ids: ["student-h2"] }, "teacher");
   assert.equal(changedAddRetry.status, 409, "one ADD_RECIPIENTS identity cannot be reused for another frozen roster");
+  const studentH2BToken = crypto.createHash("sha256").update("student-h2-b::student-portal:v1").digest("hex");
+  assert.equal(await db.prepare("SELECT 1 FROM exam_sessions WHERE assignment_id=? AND student_id=?")
+    .bind(addedAssignmentId, "student-h2-b").first(), null,
+  "the additional recipient has no submitted session before cancellation");
+  const cancelUnsubmittedChild = await mf.dispatchFetch(
+    `http://local/api/class-exam-assignments/${encodeURIComponent(addedAssignmentId)}/cancel`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+      body: JSON.stringify({ operation_identity: "88888888-8888-4888-8888-888888888880" }),
+    },
+  );
+  assert.equal(cancelUnsubmittedChild.status, 200, await cancelUnsubmittedChild.clone().text());
+  const unsubmittedCancelPortalResponse = await mf.dispatchFetch(
+    `http://local/api/student-portal/exams?student_id=student-h2-b&token=${studentH2BToken}`,
+  );
+  const unsubmittedCancelPortal = await unsubmittedCancelPortalResponse.json();
+  assert.equal(unsubmittedCancelPortalResponse.status, 200, JSON.stringify(unsubmittedCancelPortal));
+  assert.equal(unsubmittedCancelPortal.exams.some(row => row.assignment_id === addedAssignmentId), false,
+    "an unsubmitted cancelled Assignment stays hidden from the student portal");
   await db.batch([
     db.prepare("DELETE FROM class_exam_assignment_exclusions WHERE assignment_id=?").bind(addedAssignmentId),
     db.prepare("DELETE FROM class_exam_assignment_recipients WHERE assignment_id=?").bind(addedAssignmentId),
@@ -684,7 +704,7 @@ try {
   ]);
   assert.equal(Number((await db.prepare(
     "SELECT COUNT(*) AS n FROM class_exam_assignment_lifecycle_events WHERE assignment_id=?",
-  ).bind(addedAssignmentId).first()).n), 1,
+  ).bind(addedAssignmentId).first()).n), 2,
   "append-only Assignment lifecycle events survive legacy Assignment cleanup");
   await db.batch([
     db.prepare("DELETE FROM class_exam_assignment_exclusions WHERE assignment_id=?").bind(repeatSamePaper.body.assignment.id),
@@ -705,6 +725,10 @@ try {
   ).run();
   await db.prepare("INSERT INTO wrong_answers (session_id,question_id,student_id) VALUES (?,?,?)")
     .bind(preservedSessionId, "1", "student-h2").run();
+  const preservedSessionBefore = await db.prepare("SELECT * FROM exam_sessions WHERE id=?")
+    .bind(preservedSessionId).first();
+  const preservedWrongAnswersBefore = await db.prepare("SELECT * FROM wrong_answers WHERE session_id=? ORDER BY question_id")
+    .bind(preservedSessionId).all();
 
   const excludeRequestId = "88888888-8888-4888-8888-888888888881";
   const excludeBody = {
@@ -783,6 +807,48 @@ try {
     body: JSON.stringify({ ...excludeBody, operation_identity: "88888888-8888-4888-8888-888888888884" }),
   });
   assert.equal(excludeBeforeCancel.status, 200, await excludeBeforeCancel.clone().text());
+  const excludedReviewPortalResponse = await mf.dispatchFetch(
+    `http://local/api/student-portal/exams?student_id=student-h2&token=${studentH2Token}`,
+  );
+  const excludedReviewPortal = await excludedReviewPortalResponse.json();
+  assert.equal(excludedReviewPortalResponse.status, 200, JSON.stringify(excludedReviewPortal));
+  const excludedReviewRow = excludedReviewPortal.exams.find(row => row.assignment_id === parentAssignmentId);
+  assert.ok(excludedReviewRow, "a submitted EXCLUDE remains in student history");
+  assert.equal(excludedReviewRow.is_review_only, true);
+  assert.equal(excludedReviewRow.is_excluded, true);
+  assert.equal(excludedReviewRow.is_cancelled, false);
+  assert.equal(excludedReviewRow.is_submitted, 1);
+  assert.equal(excludedReviewRow.session_id, preservedSessionId);
+  const excludedOmr = await mf.dispatchFetch("http://local/api/student-portal/omr-submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ student_id: "student-h2", student_token: studentH2Token, assignment_id: parentAssignmentId, wrong_ids: [1] }),
+  });
+  assert.equal(excludedOmr.status, 404, "a submitted review-only EXCLUDE blocks a new OMR submission");
+  assert.deepEqual(await db.prepare("SELECT * FROM exam_sessions WHERE id=?").bind(preservedSessionId).first(),
+    preservedSessionBefore, "EXCLUDE does not mutate any historical session field");
+  assert.deepEqual((await db.prepare("SELECT * FROM wrong_answers WHERE session_id=? ORDER BY question_id")
+    .bind(preservedSessionId).all()).results, preservedWrongAnswersBefore.results,
+  "EXCLUDE does not mutate historical wrong-answer rows");
+
+  const restoreBeforeCancel = await mf.dispatchFetch("http://local/api/class-exam-assignments/restore-student", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify({
+      assignment_id: parentAssignmentId,
+      student_id: "student-h2",
+      operation_identity: "88888888-8888-4888-8888-888888888886",
+    }),
+  });
+  assert.equal(restoreBeforeCancel.status, 200, await restoreBeforeCancel.clone().text());
+  const restoredPortalResponse = await mf.dispatchFetch(
+    `http://local/api/student-portal/exams?student_id=student-h2&token=${studentH2Token}`,
+  );
+  const restoredPortal = await restoredPortalResponse.json();
+  const restoredAssignment = restoredPortal.exams.find(row => row.assignment_id === parentAssignmentId);
+  assert.ok(restoredAssignment);
+  assert.equal(restoredAssignment.is_review_only, false);
+  assert.equal(restoredAssignment.is_excluded, false);
 
   const cancelRequestId = "88888888-8888-4888-8888-888888888883";
   const cancelUrl = `http://local/api/class-exam-assignments/${encodeURIComponent(parentAssignmentId)}/cancel`;
@@ -806,8 +872,18 @@ try {
   );
   const afterCancelPortal = await afterCancelPortalResponse.json();
   assert.equal(afterCancelPortalResponse.status, 200, JSON.stringify(afterCancelPortal));
-  assert.equal(afterCancelPortal.exams.some(row => row.assignment_id === parentAssignmentId), false,
-    "a cancelled Assignment is hidden from future student portal visibility");
+  const cancelledReviewRow = afterCancelPortal.exams.find(row => row.assignment_id === parentAssignmentId);
+  assert.ok(cancelledReviewRow, "a submitted CANCEL remains in student history");
+  assert.equal(cancelledReviewRow.is_review_only, true);
+  assert.equal(cancelledReviewRow.is_cancelled, true);
+  assert.equal(cancelledReviewRow.is_excluded, false);
+  assert.equal(cancelledReviewRow.is_submitted, 1);
+  assert.equal(cancelledReviewRow.session_id, preservedSessionId);
+  assert.deepEqual(await db.prepare("SELECT * FROM exam_sessions WHERE id=?").bind(preservedSessionId).first(),
+    preservedSessionBefore, "CANCEL does not mutate any historical session field");
+  assert.deepEqual((await db.prepare("SELECT * FROM wrong_answers WHERE session_id=? ORDER BY question_id")
+    .bind(preservedSessionId).all()).results, preservedWrongAnswersBefore.results,
+  "CANCEL does not mutate historical wrong-answer rows");
   const cancelledStudentPdf = await mf.dispatchFetch(
     `http://local/api/student-portal/exam-pdf?student_id=student-h2&token=${studentH2Token}&assignment_id=${encodeURIComponent(parentAssignmentId)}`,
   );
@@ -825,10 +901,10 @@ try {
   });
   assert.equal(restoreCancelled.status, 409,
     "RESTORE cannot claim to reactivate a terminally cancelled Assignment");
-  assert.equal((await db.prepare(
+  assert.equal(await db.prepare(
     "SELECT reason FROM class_exam_assignment_exclusions WHERE assignment_id=? AND student_id=?",
-  ).bind(parentAssignmentId, "student-h2").first()).reason, "manual",
-  "RESTORE after cancellation leaves the current exclusion projection unchanged");
+  ).bind(parentAssignmentId, "student-h2").first(), null,
+  "RESTORE after cancellation leaves the restored recipient projection unchanged");
   assert.equal(await db.prepare(
     "SELECT 1 FROM class_exam_assignment_lifecycle_events WHERE operation_identity=?",
   ).bind(`RESTORE:${parentAssignmentId}:88888888-8888-4888-8888-888888888885:student-h2`).first(), null);
