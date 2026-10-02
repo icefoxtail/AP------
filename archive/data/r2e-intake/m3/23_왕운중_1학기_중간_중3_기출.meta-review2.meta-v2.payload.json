@@ -14,7 +14,7 @@
   "upstreamMetaCreatePayloadSha": "3e112566305d1e0cb6e405d1e5c198c2f935b90c",
   "baseMainSha": "305bb678937c62475cf3d335abc27988407559b7",
   "currentMainSha": "a14521821d1dab215ef37d3d812311df93f18efd",
-  "sourceExamBlobSha": "400d423ef2d29aae4de443ed083a181b203d2d9d",
+  "sourceExamBlobSha": "92cb09e27671d9bdcb24d6e3b01f826d09a0d651",
   "metadataAudit": "FULL_ALL_QUESTIONS",
   "metadataAuditCount": "24/24",
   "taxonomyAudit": "FULL_ALL_QUESTIONS",
@@ -30,25 +30,17 @@
   "contentSemanticReaudit": "NOT_PERFORMED_FAST_TRACK",
   "itemHoldCount": 0,
   "itemHoldQuestionIds": [],
-  "metadataCanonicalHoldCount": 3,
-  "metadataCanonicalHoldQids": [
-    "qid_v1_dbdfcc2a888b8d601fd4320de50f6ff4e25011ec8ff719b08e86bded5bce3671",
-    "qid_v1_4b64243a82a924a5f203d2a3982512958d4dc1be838de4c3c5f271f49581de5d",
-    "qid_v1_0d57b9dfcc63447fef45e9e0ca26ee40bba440043d17c7593d76becddc6a7ef5"
-  ],
-  "metadataCanonicalHoldReasons": {
-    "qid_v1_dbdfcc2a888b8d601fd4320de50f6ff4e25011ec8ff719b08e86bded5bce3671": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-    "qid_v1_4b64243a82a924a5f203d2a3982512958d4dc1be838de4c3c5f271f49581de5d": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-    "qid_v1_0d57b9dfcc63447fef45e9e0ca26ee40bba440043d17c7593d76becddc6a7ef5": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
-  },
-  "semanticFinalCount": 21,
-  "semanticHoldCount": 3,
-  "rpmPrimaryMigrationGapCount": 21,
+  "metadataCanonicalHoldCount": 0,
+  "metadataCanonicalHoldQids": [],
+  "metadataCanonicalHoldReasons": {},
+  "semanticFinalCount": 24,
+  "semanticHoldCount": 0,
+  "rpmPrimaryMigrationGapCount": 24,
   "projectionReuseCount": 0,
-  "projectionBindingPendingCount": 4,
-  "projectionUnmaterializedCount": 17,
+  "projectionBindingPendingCount": 5,
+  "projectionUnmaterializedCount": 19,
   "compiledRuntimeMaterializationRequired": false,
-  "compiledRuntimeReason": "20/24 RPM semantic paths are FINAL. q12/q14/q15/q24 map to ACTIVE PT_RADICAL_EXPRESSION/TPL_RADICAL_EXPRESSION_SIMPLIFY but exact 2015 middle3 binding is absent; 16 other FINAL rows are RPM_ONLY. q1/q13/q22/q23 remain true metadata canonical holds because no unique primary L4 is deterministically selectable. Invented runtime keys are forbidden.",
+  "compiledRuntimeReason": "24/24 RPM semantic paths are FINAL. 5 rows have PROJECTION_BINDING_PENDING and 19 have PROJECTION_UNMATERIALIZED, including q23 where the current target L2 has no exact compatible crosswalk row for the selected RPM path. Projection gaps remain META_ONLY; no canonical keys or bindings were invented, and production metadata materialization is outside this post-R3 repair.",
   "reviewedAtKst": "2026-09-30T17:50:56+09:00",
   "independentReviewCorrections": [],
   "reviewAgreementWithMetaCreateCount": 24,
@@ -56,7 +48,7 @@
     "lightweightContract": "docs/rules/02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md",
     "rpmCanonical": {
       "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-      "sha": "73ba7fef0a16081e4772d40c0a874cf45c486857"
+      "sha": "5d9f55f51de2aad5ee37bded24d17edb5ee4bd55"
     },
     "rpmScopeView": {
       "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
@@ -77,11 +69,11 @@
     "metadataRules": "archive/data/meta-foundation/canonical/metadata_rules.json",
     "artifactFirstContract": {
       "path": "docs/rules/02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md",
-      "sha": "9b5332f4cac997bc049133c03b38516719034758"
+      "sha": "b6dd7c796af39d36352fdbcc997633908d188e2f"
     },
     "metadataFoundationRule": {
       "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
-      "sha": "0eadabee6378010bfc1eeb122f7fdab4d9cb38a5"
+      "sha": "4f6024cd8bcdc7bd5134d5e09fea56d04550f200"
     }
   },
   "activeCanonicalChecks": {
@@ -145,18 +137,25 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-01",
       "subUnitKey": null,
-      "primaryMethod": "근호 계산 진술 복합 판정",
-      "decisiveStep": "근호 간단히 하기와 근호의 곱 성질이 보기별로 병렬 적용되어 단일 primary L4가 유일하지 않다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "META_CANONICAL_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "ownerPack": null,
+      "primaryMethod": "근호의 곱 성질로 근호식 간단히 하기",
+      "decisiveStep": "보기별 계산에서 제곱인수 추출과 근호의 곱 성질을 적용해 틀린 등식 ①을 판정한다.",
+      "rpmRecordId": "M3-RPM-007",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "근호의 곱셈과 나눗셈",
+        "l4": "근호의 곱"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "ownerPack": "FUNCTIONS_GRAPHS",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
@@ -182,7 +181,7 @@
         "rationale": "q1: frozen main 문제·보기와 검수 완료 solution에서 필수 풀이 구조만 추출해 legacy level을 보지 않고 blind bucket 2를 먼저 확정했다."
       },
       "metadataReviewStatus": "META_REVIEW1_HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_BINDING_PENDING"
     },
     {
       "sourceOrdinal": 2,
@@ -777,15 +776,22 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-01",
       "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-      "primaryMethod": "복수 실수 개념 진술 독립 판정",
-      "decisiveStep": "제곱근의 뜻과 유리수·무리수 분류가 서로 다른 RPM L4로 동등하게 필요해 단일 primary L4가 유일하지 않다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "META_CANONICAL_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "primaryMethod": "제곱근의 뜻으로 진술의 참·거짓 판정",
+      "decisiveStep": "ㄱ과 ㄴ은 제곱근과 양의 제곱근의 뜻으로 판정하며, ㄷ의 유리수·무리수 분류는 보조 진술로 남긴다.",
+      "rpmRecordId": "M3-RPM-001",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "제곱근",
+        "l4": "제곱근의 뜻"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
@@ -814,7 +820,7 @@
         "rationale": "q13: frozen main 문제·보기와 검수 완료 solution에서 필수 풀이 구조만 추출해 legacy level을 보지 않고 blind bucket 2를 먼저 확정했다."
       },
       "metadataReviewStatus": "META_REVIEW1_HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED"
     },
     {
       "sourceOrdinal": 14,
@@ -1322,15 +1328,22 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-01",
       "subUnitKey": null,
-      "primaryMethod": "정사각형 길이와 근호 넓이의 복합 해석",
-      "decisiveStep": "정사각형 넓이에서 변의 길이를 구하고 직사각형 분할 관계와 근호 계산을 결합해야 하여 단일 RPM L4가 유일하지 않다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "META_CANONICAL_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "primaryMethod": "근호 혼합계산으로 넓이 값 구하기",
+      "decisiveStep": "정사각형 넓이에서 변을 구한 뒤 근호 길이 차와 곱으로 D의 넓이를 계산한다; CC_AREA와 CC_SQUARE는 supporting concepts.",
+      "rpmRecordId": "M3-RPM-014",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "혼합 계산",
+        "l4": "식의 값"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
       "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
@@ -1363,7 +1376,7 @@
         "rationale": "q23: frozen main 문제·보기와 검수 완료 solution에서 필수 풀이 구조만 추출해 legacy level을 보지 않고 blind bucket 3를 먼저 확정했다. 2↔3 경계를 독립 재검하여 bucket 3을 유지했다."
       },
       "metadataReviewStatus": "META_REVIEW1_HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED"
     },
     {
       "sourceOrdinal": 24,
