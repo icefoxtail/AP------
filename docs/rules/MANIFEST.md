@@ -22,7 +22,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 95451 bytes | sha256 35aaaff1edcf77d80131cf0b25b311ec60e5422a949d16dee53cbe113c825700
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 38634 bytes | sha256 3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638
-- 02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md | 31803 bytes | sha256 fafcaed794979fd5a52ae1b9a76618ad3ac7ed0211b9eb5e15cf2c22038aeade
+- 02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md | 31797 bytes | sha256 37e5f3389c2b90e7e24e88653e7c035ce2a94ecba54def2928f2b977a51addaa
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 203308 bytes | sha256 96d82f4f937ea70a4644f808a35f246375cc030a78979829689324e3f5435c9f
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 18406 bytes | sha256 48a0cdd5a0d22b07c25937a1d4b9b0b4b910dba2cb9a61e30eefc2afa7e8a974
@@ -45,7 +45,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md | 8439 bytes | sha256 35afb56a5e2c6e676e9244f8387f1d32efec1840341c846a38d56750c31eaea9
 - 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 34624 bytes | sha256 3f35157d3923bae4e3aa10bb13a2131b2f90a0c2d9457583f9c012bbc9df9083
 - 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 33475 bytes | sha256 c6cb1a144c85e5269fc6569ad66d1e5a2eecaa77fee63e07c8fce0c7c136c8ba
-- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 38476 bytes | sha256 331be2bee9b997e112848a95dca32d07b58dac01737631a9362f71c03a3d9fd3
+- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 38579 bytes | sha256 3974633eab0adf5d2f7a8b6f76c53f8f21d123549e061e61edb199eb7ea3a5c1
 - 03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md | 21313 bytes | sha256 0bb122bb7360341b0623fd5f151b324968cdde803984f15469c0b8f6061a9546
 - 04_VISUAL/도형추출.md | 57487 bytes | sha256 5121ee73b19e9df3310c98720532dd6d9768be2d7a172837f57db1f78e7cef09
 - 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 73684 bytes | sha256 1dcb787717543982f0c26f7522df7d66087302751d424dec715ada6bb9fa61d1
