@@ -21,7 +21,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json | 558759 bytes | sha256 8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 95451 bytes | sha256 35aaaff1edcf77d80131cf0b25b311ec60e5422a949d16dee53cbe113c825700
-- 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37687 bytes | sha256 3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab
+- 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 38634 bytes | sha256 3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638
 - 02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md | 31803 bytes | sha256 fafcaed794979fd5a52ae1b9a76618ad3ac7ed0211b9eb5e15cf2c22038aeade
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 203308 bytes | sha256 96d82f4f937ea70a4644f808a35f246375cc030a78979829689324e3f5435c9f
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
@@ -53,4 +53,4 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 106288 bytes | sha256 6888fb6c390b565891c50449cc0275919884e038d452e024eb64fc044f730f26
 - 02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md | 11585 bytes | sha256 fc42c0b7928ad340eae694a99b74eac845fcd4c333b631515c7a1c15f7c22b56
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 16860 bytes | sha256 b513f10e380df687af528e4aed846b62098ee7aa92800bc019fe0f51638dbdca
-- 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 10104 bytes | sha256 0d03b2f0bff2b0439f1874377f19fa92b002d90792f89fb59e6589c7f225e22a
+- 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 12742 bytes | sha256 79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954
