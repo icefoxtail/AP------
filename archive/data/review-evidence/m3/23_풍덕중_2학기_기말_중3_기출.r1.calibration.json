@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "js-archive-solution-calibration-evidence-v1",
+  "examPath": "archive/exams/original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+  "stage": "R1",
+  "reviewAttemptId": "R1:m3/2final/23-pungdeok:581b56505e0ff68eecfa5273d4a650122ef251d9:1",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "Explicit coordinate-distance setup and student-readable arithmetic."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.",
+        "observation": "Condition is translated before option judgment."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 20,
+        "solutionSha256": "sha256:40bb99e366d1e9f497a07702c138407585607b7d6ef45a1107499c5f9f0d25e1",
+        "solutionExcerpt": "드모르간 법칙을 이용하면\n$A^c\\cap B^c=(A\\cup B)^c$이다.",
+        "observation": "Named relation then direct application."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다.",
+        "observation": "Distinguishes membership and subset language explicitly."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:7c72f3a036e518df8cb19bf8759dc175ad8ab89a79e04d0c1964b3b6cbac7b94",
+        "solutionExcerpt": "두 점 사이의 거리 공식으로 세 변의 길이의 제곱을 구한다.",
+        "observation": "Geometry computation is decomposed into verifiable side-length steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 20,
+        "solutionSha256": "sha256:76e9d24b9281566a50f5b83f8628093447d71381349004a4f218f6863f59bbcc",
+        "solutionExcerpt": "두 점 $A(1,3)$, $B(3,6)$ 사이의 거리는",
+        "observation": "Formula-to-substitution-to-result progression is explicit."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observation": "Actual geometry, block structure, Meta exact-active reuse, and runtime escape must be physically checked; N/N self-report is not authority."
+      }
+    ],
+    "calibrationExecutionNote": "R1-1 actual sample read completed before target prior solution/verdict exposure. Goldens show explicit condition translation, intermediate arithmetic, and reproducible step order; Bokseong negative requires primitive-coordinate/topology, real block structure, exact-active Meta lookup, and runtime-string checks."
+  }
+}
