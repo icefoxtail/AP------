@@ -2011,6 +2011,21 @@ function invalidateClassProgressCacheFromDate(classId, effectiveDate) {
     });
 }
 
+function invalidateClassJournalProgressCacheFromDate(classId, effectiveDate) {
+    const cid = String(classId || '');
+    const date = String(effectiveDate || '');
+    const cache = state.ui?.journalProgressCache;
+    if (!cid || !date || !cache || typeof cache !== 'object') return;
+
+    Object.keys(cache).forEach(cacheKey => {
+        const separator = cacheKey.lastIndexOf('|');
+        if (separator < 0) return;
+        const cacheClassId = cacheKey.slice(0, separator);
+        const queryDate = cacheKey.slice(separator + 1);
+        if (cacheClassId === cid && queryDate >= date) delete cache[cacheKey];
+    });
+}
+
 function syncClassProgressToState(cid, date, snapshot, items) {
     if (!snapshot) return;
     if (!Array.isArray(state.db.class_progress_snapshots)) state.db.class_progress_snapshots = [];
@@ -2028,6 +2043,7 @@ function syncClassProgressToState(cid, date, snapshot, items) {
         .concat(Array.isArray(items) ? items : []);
 
     invalidateClassProgressCacheFromDate(cid, snapshot.effective_date);
+    invalidateClassJournalProgressCacheFromDate(cid, snapshot.effective_date);
     getClassProgressCache()[`${cid}|${date}`] = { snapshot, items: Array.isArray(items) ? items : [], legacy_record: null };
     if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
 }

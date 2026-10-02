@@ -2106,11 +2106,21 @@ function renderDailyClosePanel(step = 1) {
     `;
 }
 
-function openTodayCloseModal(step = 1) {
+async function openTodayCloseModal(step = 1) {
     const numericStep = Number(step);
     const safeStep = Number.isFinite(numericStep) ? Math.max(1, Math.min(3, numericStep)) : 1;
     if (!state.ui) state.ui = {};
     state.ui.dailyCloseStep = safeStep;
+
+    if (safeStep === 3) {
+        const requestId = Number(state.ui.dailyCloseProgressRequestId || 0) + 1;
+        state.ui.dailyCloseProgressRequestId = requestId;
+        const today = new Date().toLocaleDateString('sv-SE');
+        showModal('예외 현황', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">일지 진도를 불러오는 중…</div>');
+        await dashboardPrimeJournalProgressForDate(today, dashboardGetJournalClassRows(today), { forceRefresh: true });
+        if (Number(state.ui.dailyCloseProgressRequestId || 0) !== requestId) return;
+    }
+
     showModal('예외 현황', renderDailyClosePanel(safeStep));
 }
 
@@ -2256,9 +2266,10 @@ function dashboardGetJournalPersistentProgress(classId, dateStr) {
     };
 }
 
-async function dashboardPrimeJournalProgressForDate(dateStr, classes) {
+async function dashboardPrimeJournalProgressForDate(dateStr, classes, options = {}) {
     const targetDate = String(dateStr || '').slice(0, 10);
     const cache = dashboardGetJournalProgressCache();
+    const forceRefresh = !!options.forceRefresh;
     const uniqueClasses = [];
     const seen = new Set();
     (Array.isArray(classes) ? classes : []).forEach(cls => {
@@ -2271,7 +2282,7 @@ async function dashboardPrimeJournalProgressForDate(dateStr, classes) {
     await Promise.all(uniqueClasses.map(async cls => {
         const cid = String(cls.id || '');
         const cacheKey = `${cid}|${targetDate}`;
-        if (Object.prototype.hasOwnProperty.call(cache, cacheKey)) return;
+        if (!forceRefresh && Object.prototype.hasOwnProperty.call(cache, cacheKey)) return;
 
         try {
             const response = await api.get(`class-progress?class_id=${encodeURIComponent(cid)}&date=${encodeURIComponent(targetDate)}`);
@@ -2418,7 +2429,8 @@ function dashboardUpgradeJournalProgressPlaceholders(existingContent, generatedC
         const replacement = generatedBlocks.get(section.header);
         if (!replacement) return;
         const block = dashboardGetJournalProgressBlock(existingLines, section.start, section.end);
-        if (!block || !/^- 진도: \((?:수업 기록 미입력|기록 없음)\)$/.test(block.lines[0])) return;
+        if (!block) return;
+        // Editable journals take their progress block from 진도관리; preserve every other teacher-written line.
         existingLines.splice(block.start, block.end - block.start, ...replacement);
     });
 
@@ -2760,7 +2772,7 @@ async function openDailyJournalModal(dateStr) {
     if (!isLocked || !myJournal?.content) {
         showModal('일지', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">기준일 진도를 불러오는 중…</div>');
         const journalClasses = dashboardGetJournalClassRows(targetDate);
-        await dashboardPrimeJournalProgressForDate(targetDate, journalClasses);
+        await dashboardPrimeJournalProgressForDate(targetDate, journalClasses, { forceRefresh: true });
         if (Number(state.ui.journalModalRequestId || 0) !== requestId) return;
         generatedContent = buildJournalContent(targetDate);
     }
