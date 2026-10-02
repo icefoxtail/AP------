@@ -1,3 +1,13 @@
+## CURRENT OVERRIDE — 2026-10-03 — CONTEXT-TOLERANT R2 / FRESH REVIEWER NOT REQUIRED
+
+형님의 현재 명시 지시가 아래 과거 blind/fresh-review 문구보다 우선한다.
+
+- R1 detail·target solution·이전 verdict·repair/checkpoint를 **이미 봤거나 먼저 봐도 R2 attempt는 유효**하다.
+- 같은 R2 worker가 latest artifact를 source/current authority에서 다시 풀고 판정하여 R2를 직접 끝까지 닫는다. prior 노출만으로 fresh reviewer/Codex를 새로 만들지 않는다.
+- 기존 verdict는 비교 대상일 뿐 evidence가 아니다. R2 evidence에는 worker가 다시 계산한 method/결론/visual/Meta 판단 근거가 있어야 한다.
+- `blindDecisionFrozenBeforeR1Compare=true`, `blindFreezeSha256`는 schema/validator 호환을 위해 유지한다. **이제 prior R1 content 비노출을 뜻하지 않고, formal regression compare/receipt 전에 independently recomputed decision snapshot이 고정됐음을 뜻한다.**
+- 아래의 “R1 detail을 보기 전에”, “기존 solution을 보지 않고” 문구는 이 override와 충돌하는 순서 제한으로 사용하지 않는다.
+
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
 
 R2 worker는 stage assignment와 scope만 확인한 직후, **R1 detail/target 기존 solution을 보기 전에** Golden 2~3 + 관련 Negative Sample을 먼저 읽어 품질 눈높이를 고정한다. 이후 latest R1 artifact에서 target blind decision freeze를 만들고 마지막 compare에서 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 N/N 재확인한다. 물리 sample path/SHA/blob + 대표 solution SHA/excerpt + `calibrationStatus=PASS`가 없으면 R2 DONE/PASS 금지다.
@@ -16,9 +26,9 @@ R2 worker는 stage assignment와 scope만 확인한 직후, **R1 detail/target �
 
 R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
 
-- R1 ledger/repair detail을 보기 전에 latest R1 artifact bytes에서 R2 qid evidence를 먼저 만든다.
+- R1 ledger/repair detail을 함께 볼 수 있다. 다만 latest R1 artifact/source/current authority에서 R2 qid evidence를 독립 재계산해 새로 만든다.
 - SVG expected facts, actual geometry checks, small-board 구조, Meta semantic decision까지 먼저 동결한다.
-- `blindDecisionFrozenBeforeR1Compare=true` + `blindFreezeSha256`가 물리 evidence에 없으면 REVIEW2_DONE 금지.
+- `blindDecisionFrozenBeforeR1Compare=true` + `blindFreezeSha256`는 호환 필드로 유지한다. 이는 **formal regression compare/receipt 전에 독립 재계산 decision snapshot을 고정했음**을 뜻하며 prior detail 비노출 증명이 아니다.
 - `22/22`, `14/14` 같은 집계는 item rows에서 validator가 파생한 값만 인정한다.
 - SVG 라벨/소수좌표를 고쳤다는 사실은 actual line/circle/point geometry 재검을 대체하지 않는다.
 - Meta는 기존 HOLD qid만 보는 것이 아니라 **전 문항 null/ACTIVE resolvability**를 다시 검사한다.
