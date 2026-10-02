@@ -1,5 +1,6 @@
 {
   "id": "q15",
+  "title": "현에서 가장 먼 교점과 접선",
   "visualType": "line_circle_geometry",
   "viewport": {
     "xMin": -3,
@@ -11,6 +12,7 @@
     "panel": 180,
     "margin": 36
   },
+  "axes": true,
   "sourceFacts": {
     "circleCenter": [
       2,
@@ -26,8 +28,7 @@
       1,
       -1,
       1
-    ],
-    "independentFactHash": "2dfc784d0d074fedd207800b22c4727cf9fb00ccc6abb965b19dbdd752185dfb"
+    ]
   },
   "derivedFacts": {
     "maxPoint": [
@@ -47,9 +48,9 @@
     "abcSum": -6
   },
   "displayFacts": {
-    "maximizingPoint": "(2+√5,3+√5)",
+    "maximizingPoint": "먼 교점 P: (2+√5,3+√5)",
     "tangent": "x+y−5−2√5=0",
-    "answer": "−6"
+    "answer": "a+b+c=−6"
   },
   "objects": [
     {
@@ -182,16 +183,45 @@
       "priority": 1
     },
     {
+      "id": "radiusCP",
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        3
+      ],
+      "to": [
+        4.23606797749979,
+        5.23606797749979
+      ]
+    },
+    {
+      "id": "contact",
+      "kind": "TANGENT",
+      "refs": [
+        "tangent",
+        "circle"
+      ],
+      "at": [
+        4.23606797749979,
+        5.23606797749979
+      ]
+    },
+    {
+      "id": "perpRadiusTangent",
+      "kind": "PERPENDICULAR",
+      "refs": [
+        "tangent",
+        "diameter"
+      ]
+    },
+    {
       "id": "max-result",
       "kind": "GRAPH_ANNOTATION",
-      "text": "farther point P → a+b+c=−6",
+      "text": "먼 교점 P → a+b+c=−6",
       "at": [
         8,
         -2
-      ],
-      "priority": 0
+      ]
     }
-  ],
-  "axes": false,
-  "title": "원의 가장 먼 점에서의 접선"
+  ]
 }

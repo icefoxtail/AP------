@@ -1,5 +1,6 @@
 {
-  "id": "q03",
+  "id": "q3",
+  "title": "접선과 반지름",
   "visualType": "line_circle_geometry",
   "viewport": {
     "xMin": -5,
@@ -11,6 +12,7 @@
     "panel": 180,
     "margin": 36
   },
+  "axes": true,
   "sourceFacts": {
     "circleCenter": [
       0,
@@ -25,8 +27,7 @@
       -2,
       3,
       -13
-    ],
-    "independentFactHash": "26e630ac2b419c72785f46d0e83b9a9227d1d422bd4fed110c6fc632a499c6fa"
+    ]
   },
   "derivedFacts": {
     "P": [
@@ -37,8 +38,8 @@
     "a": 1
   },
   "displayFacts": {
-    "tangent": "-2x+3y=13",
-    "orthogonal": "OT ⟂ tangent",
+    "tangent": "−2x+3y=13",
+    "orthogonal": "OT ⟂ 접선",
     "answer": "a=1"
   },
   "objects": [
@@ -49,8 +50,7 @@
         0,
         0
       ],
-      "name": "O",
-      "priority": 0
+      "name": "O"
     },
     {
       "id": "T",
@@ -59,8 +59,7 @@
         -2,
         3
       ],
-      "name": "T",
-      "priority": 0
+      "name": "T"
     },
     {
       "id": "P",
@@ -69,8 +68,7 @@
         1,
         5
       ],
-      "name": "P",
-      "priority": 0
+      "name": "P"
     },
     {
       "id": "circle",
@@ -91,15 +89,6 @@
       ]
     },
     {
-      "id": "radiusLine",
-      "kind": "AUXILIARY_LINE",
-      "coefficients": [
-        3,
-        2,
-        0
-      ]
-    },
-    {
       "id": "OT",
       "kind": "SEGMENT",
       "from": [
@@ -112,33 +101,12 @@
       ]
     },
     {
-      "id": "tangentRelation",
-      "kind": "TANGENT",
-      "refs": [
-        "tangent",
-        "circle"
-      ],
-      "at": [
-        -2,
-        3
-      ]
-    },
-    {
-      "id": "orthogonal",
+      "id": "perpRelation",
       "kind": "PERPENDICULAR",
       "refs": [
         "tangent",
-        "radiusLine"
+        "OT"
       ]
-    },
-    {
-      "id": "P-on-tangent",
-      "kind": "INTERSECTION",
-      "refs": [
-        "tangent",
-        "radiusLine"
-      ],
-      "target": "T"
     },
     {
       "id": "result",
@@ -148,13 +116,10 @@
         5
       ],
       "lines": [
-        "T에서 접선: -2x+3y=13",
-        "P=(a,5)를 대입",
+        "−2x+3y=13",
+        "P=(a,5)",
         "a=1"
-      ],
-      "priority": 0
+      ]
     }
-  ],
-  "axes": true,
-  "title": "원의 접선과 접점"
+  ]
 }

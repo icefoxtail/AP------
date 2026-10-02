@@ -1,5 +1,6 @@
 {
   "id": "q20",
+  "title": "중심까지 거리와 반지름 비교",
   "visualType": "function_graph",
   "viewport": {
     "xMin": 0,
@@ -11,6 +12,7 @@
     "panel": 210,
     "margin": 36
   },
+  "axes": true,
   "sourceFacts": {
     "piecewise": {
       "left": "x^2+2x-14",
@@ -23,8 +25,7 @@
       -1,
       10
     ],
-    "radius": "sqrt(5)t",
-    "independentFactHash": "a3d5a76ab9af20b8ad99b19668b06f36a306dbc5f8a680f93b84eebaac8c5a8a"
+    "radius": "sqrt(5)t"
   },
   "derivedFacts": {
     "k": 10,
@@ -43,73 +44,90 @@
     "maxA": 12
   },
   "displayFacts": {
-    "graphMeaning": "piecewise center locus f(t)",
-    "intersectionCount": "t=8 tangent; t=9 secant",
+    "distanceFunction": "|2t−f(t)+10|",
+    "radiusFunction": "5t",
+    "boundaries": "t=3, 8, 12",
     "g2Intervals": "(3,8)∪(8,12)",
+    "rightmostInterval": "길이 2인 가장 오른쪽 열린구간 (10,12)",
     "answer": "a=12"
   },
   "objects": [
     {
-      "id": "f-left",
+      "id": "distance-left-positive",
       "kind": "FUNCTION_GRAPH",
-      "expression": "x^2+2x-14",
+      "expression": "24-x^2",
       "domain": [
         0,
+        4.898979485566356
+      ],
+      "breaks": [],
+      "criticalX": [
+        0
+      ]
+    },
+    {
+      "id": "distance-left-negative",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "x^2-24",
+      "domain": [
+        4.898979485566356,
         8
       ],
       "breaks": [],
-      "criticalX": []
+      "criticalX": [
+        4.898979485566356
+      ]
     },
     {
-      "id": "f-right",
+      "id": "distance-right",
       "kind": "FUNCTION_GRAPH",
-      "expression": "x^2-13x+106",
+      "expression": "x^2-15*x+96",
       "domain": [
         8,
-        12
+        13
+      ],
+      "breaks": [],
+      "criticalX": [
+        7.5
+      ]
+    },
+    {
+      "id": "radius",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "5*x",
+      "domain": [
+        0,
+        13
       ],
       "breaks": [],
       "criticalX": []
     },
     {
-      "id": "O8",
+      "id": "t3",
+      "kind": "POINT",
+      "at": [
+        3,
+        15
+      ],
+      "name": "3"
+    },
+    {
+      "id": "t8",
       "kind": "POINT",
       "at": [
         8,
-        66
+        40
       ],
-      "name": "O₈",
-      "priority": 0
+      "name": "8"
     },
     {
-      "id": "O9",
+      "id": "t12",
       "kind": "POINT",
       "at": [
-        9,
-        70
+        12,
+        60
       ],
-      "name": "O₉",
-      "priority": 0
-    },
-    {
-      "id": "case8",
-      "kind": "GRAPH_ANNOTATION",
-      "text": "t=8: d=r, g(8)=1",
-      "at": [
-        2,
-        98
-      ],
-      "priority": 0
-    },
-    {
-      "id": "case9",
-      "kind": "GRAPH_ANNOTATION",
-      "text": "t=9: d<r, g(9)=2",
-      "at": [
-        7,
-        102
-      ],
-      "priority": 0
+      "name": "12"
     },
     {
       "id": "intervals",
@@ -119,13 +137,11 @@
         15
       ],
       "lines": [
-        "g(t)=2 on (3,8)∪(8,12)",
-        "(a−2,a) rightmost: (10,12)",
+        "거리 < 반지름: g(t)=2",
+        "(3,8)∪(8,12)",
+        "길이 2: (10,12)",
         "a=12"
-      ],
-      "priority": 0
+      ]
     }
-  ],
-  "axes": true,
-  "title": "중심 궤적과 교점 수 구간"
+  ]
 }

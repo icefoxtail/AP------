@@ -1,47 +1,41 @@
-# FORCE_NEW_CANDIDATE — 26 금당고 2학기 중간 고1
+# 26 금당고 고1 2학기 중간 FORCE_NEW SVG 파일럿
 
-이 브랜치는 `geometry-visual-v1` 신규 생성 품질을 보는 파일럿이다. 기존 `solutionImage`/SVG 파일은 열거나 참조하지 않았다. 후보 입력은 시험지 문항 원문, 확정 solution, 독립 수학검산으로 동결한 EXPECTED FACT와 visualSpec뿐이다.
+브랜치: `codex/pilot-26-geumdang-h1-force-new-svg`
+대상 원문: `archive/exams/original/high/h1/2mid/26_금당고_2학기_중간_고1_기출.js`
 
-- 시작 main: `cdf6ae9725f05adbf68c35e637241b4055aa79b9`
-- 대상: 20문항
-- EXEMPT: 없음
-- FORCE_NEW_CANDIDATE: q1–q20 (20개)
-- 신규 SVG: 20개 (`candidate-svg/q01.svg`–`q20.svg`)
-- 엔진 route: STANDARD. q20은 `function_graph`로 Python adaptive sampling 실행.
-- engine witness: 20/20 `CANDIDATE_REQUIRES_QA`; approximate unresolved label 0.
-- actual SVG geometry/text parity: 20/20 PASS; 독립 수학검산: 20/20 PASS.
-- rendered desktop/mobile bbox: 미측정. 현 브라우저 환경에서 로컬 페이지 URL이 보안 정책으로 거부되어 실제 browser render를 실행하지 않았다.
-- production JS/SVG 변경: 0; 다른 시험지 변경: 0; main merge: 없음.
+이 실행은 원문 문항·최종 해설·동결 `EXPECTED_FACTS`만 입력으로 사용해 후보 SVG를 새로 생성했다. 기존 candidate SVG, 기존 visualSpec, witness, 생산 SVG는 새 후보의 입력이나 참조로 열지 않았다.
 
-## FORCE_NEW selector policy
+## 선택 분모
 
-`FORCE_NEW` affects only the existing solution SVG reuse/keep/skip disposition. It does **not** bypass either the domain eligibility gate or the visual applicability gate. Selection is fail-closed in this order:
+- 원문 20문항, 문제·해설 source-lock 20/20
+- `VISUAL_EXEMPT` 4문항: q2 집합 원소 수, q8 집합 상등, q16 부분집합/나머지류 최대합, q19 부분집합 합산
+- `FORCE_NEW` 16문항: q1, q3–q7, q9–q15, q17, q18, q20
+- 면제 문항에는 geometry-visual-v1 후보 SVG, visualSpec, witness를 두지 않는다. 향후 logic/table visual 계열 필요성은 별도로 판단한다.
 
-1. `domainEligibility` must be `ELIGIBLE`; otherwise exclude the item as `EXCLUDE_DOMAIN_INELIGIBLE`.
-2. `visualEligibility` must be explicitly `NON_EXEMPT`; `VISUAL_EXEMPT` is excluded even under `FORCE_NEW`.
-3. For items that pass both gates, `FORCE_NEW` means generate a fresh candidate regardless of whether an existing solution SVG is present. Existing SVG content is not opened or used as input/reference.
+geometry-visual-v1 기본 허용 visual type은 `coordinate_geometry`, `line_circle_geometry`, `function_graph`다. 도형 카드로 표현할 수 있다는 이유만으로 선택하지 않으며, 결정적 공간·그래프 관계가 없거나 `explanation_card`만 가능한 유형은 제외한다. 정책은 `selection-policy.json`에 기록했다.
 
-The selector contract is recorded in [`selection-policy.json`](selection-policy.json). In this run, q1–q20 are domain-eligible and non-exempt, so all 20 were selected. If either eligibility gate changes for a future run, that item must be excluded even when the selector mode remains `FORCE_NEW`.
+## 새 시각 설계
 
-## Former EXEMPT 후보 재판정
+- q3 접선 식의 음수 부호를 수학 기호 `−`로 표시
+- q6 세 중선과 G(2,1)을 그리고 중점은 M, N, L로 표기
+- q7 수직인 두 직선 위의 점 관계를 한국어로 표시
+- q11 평행·수직 경우를 분리된 두 좌표 패널로 구성
+- q12 OH ⟂ AB, AH=BH=4, OH=3, r=5를 직접 표시
+- q14 선은 plotting frame 안에서 자르고 밖으로 연장하지 않음
+- q15 고정 현 AB, 중심 C, 수직 지름 방향, 먼 교점 P와 P의 접선을 표시
+- q17 넓이비 2:1 → s+t=4/3과 PQ 최소 → s=t를 별도 보조 패널로 구성
+- q18 C₀→C₁→C 단계와 거리 √5인 두 직선의 양의 절편 선택을 표시
+- q20 중심 궤적 대신 y=|2t−f(t)+10|과 y=5t를 비교하고 3, 8, 12 및 (3,8)∪(8,12), 길이 2인 (10,12) → a=12를 표시
 
-| 문항 | 신규 시각자료의 학습 역할 | 판정 |
-|---:|---|---|
-| 2 | `∅`와 `{∅}`의 원소 수 0과 1을 중첩 의미 카드로 구분 | FORCE_NEW_CANDIDATE |
-| 8 | `a=-1` 반례와 `a=6` 성립을 case 카드로 직접 비교 | FORCE_NEW_CANDIDATE |
-| 16 | 나머지류 필터와 최대 집합 원소를 묶어 조건 추적 | FORCE_NEW_CANDIDATE |
-| 19 | 세 endpoint case와 각 합 기여량을 표식으로 분리 | FORCE_NEW_CANDIDATE |
+## 검증
 
-## 파일 구조
+최종 산출물 기준으로 모두 16/16 PASS:
 
-- `candidate-svg/`: 신규 SVG 20개
-- `expected-facts/`: 문항별 source/derived/display facts와 frozen hash bundle
-- `visual-spec/`: 엔진에 실제 입력된 visualSpec 20개
-- `witness/`: geometry-visual-v1 build witness 20개
-- `manifest.json`: 파일 SHA-256, 문항별 후보 맵, triage, qualification
-- `source-lock.json`: source content/solution hashes와 시험지 source hash
-- `independent-math-checks.json`: 문항별 독립 numeric check 결과
-- `actual-svg-parity.json`: 저장된 실제 SVG bytes에서 재계산한 좌표·관계·표시 text 점검
-- `calibration-preflight.json`: visual repair calibration gate evidence
+- 독립 수학 parity
+- 실제 저장 SVG geometry/text parity
+- static viewBox 이탈 0, unresolved label 0
+- 학생용 한국어 우선 표현 lint
+- decisive-step pedagogy gate
+- Chrome 실제 DOM bbox: text·geometry viewBox 이탈 0, text overlap 0, 빈 라벨 0, 폰트 로드 완료
 
-Candidate는 검수·publication authority를 갖지 않는다. 이 branch는 새 그림 후보를 전달하는 용도이며 production 반영이나 main merge를 포함하지 않는다.
+검증 결과는 `validation-report.json`, `actual-svg-parity.json`, `student-language-lint.json`, `viewbox-unresolved-labels.json`, `student-language-pedagogy-gate.json`, `actual-browser-bbox.json`에 있다. 모든 후보는 검수 전용이며 production publication authority가 없다. 기존 production SVG 및 골든 결과와의 우열 비교는 수행하지 않았다.

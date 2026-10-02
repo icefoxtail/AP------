@@ -1,5 +1,6 @@
 {
-  "id": "q06",
+  "id": "q6",
+  "title": "세 중선의 교점",
   "visualType": "coordinate_geometry",
   "viewport": {
     "xMin": -4,
@@ -11,6 +12,7 @@
     "panel": 180,
     "margin": 36
   },
+  "axes": true,
   "sourceFacts": {
     "vertices": {
       "A": [
@@ -25,8 +27,7 @@
         -1,
         -3
       ]
-    },
-    "independentFactHash": "32597fd752a4a9bd8a3f4abb51dd302297b0b1c9eb44ca3ad4a8ea6f5f3155f1"
+    }
   },
   "derivedFacts": {
     "centroid": [
@@ -66,8 +67,8 @@
     }
   },
   "displayFacts": {
-    "identity": "median intersection",
-    "answer": "a+b=3"
+    "identity": "세 중선의 교점",
+    "answer": "G=(2,1), a+b=3"
   },
   "objects": [
     {
@@ -77,8 +78,7 @@
         5,
         2
       ],
-      "name": "A",
-      "priority": 0
+      "name": "A"
     },
     {
       "id": "B",
@@ -87,8 +87,7 @@
         2,
         4
       ],
-      "name": "B",
-      "priority": 0
+      "name": "B"
     },
     {
       "id": "C",
@@ -97,8 +96,7 @@
         -1,
         -3
       ],
-      "name": "C",
-      "priority": 0
+      "name": "C"
     },
     {
       "id": "G",
@@ -107,90 +105,83 @@
         2,
         1
       ],
-      "name": "G",
-      "priority": 0
+      "name": "G"
     },
     {
-      "id": "Mbc",
+      "id": "midM",
       "kind": "POINT",
       "at": [
         0.5,
         0.5
       ],
-      "name": "M_BC",
-      "priority": 0
+      "name": "M"
     },
     {
-      "id": "Mac",
+      "id": "midN",
       "kind": "POINT",
       "at": [
         2,
         -0.5
       ],
-      "name": "M_AC",
-      "priority": 0
+      "name": "N"
     },
     {
-      "id": "Mab",
+      "id": "midL",
       "kind": "POINT",
       "at": [
         3.5,
         3
       ],
-      "name": "M_AB",
-      "priority": 0
+      "name": "L"
     },
     {
       "id": "medianA",
-      "kind": "AUXILIARY_LINE",
-      "coefficients": [
-        1,
-        -3,
-        1
+      "kind": "SEGMENT",
+      "from": [
+        5,
+        2
+      ],
+      "to": [
+        0.5,
+        0.5
       ]
     },
     {
       "id": "medianB",
-      "kind": "AUXILIARY_LINE",
-      "coefficients": [
-        1,
-        0,
-        -2
+      "kind": "SEGMENT",
+      "from": [
+        2,
+        4
+      ],
+      "to": [
+        2,
+        -0.5
       ]
     },
     {
       "id": "medianC",
-      "kind": "AUXILIARY_LINE",
-      "coefficients": [
-        4,
-        -3,
-        -5
+      "kind": "SEGMENT",
+      "from": [
+        -1,
+        -3
+      ],
+      "to": [
+        3.5,
+        3
       ]
     },
     {
-      "id": "G-from-A-B",
-      "kind": "INTERSECTION",
-      "refs": [
-        "medianA",
-        "medianB"
-      ],
-      "target": "G"
-    },
-    {
-      "id": "coordinates",
+      "id": "result",
       "kind": "CONDITION_BOX",
       "at": [
         6,
         6
       ],
       "lines": [
-        "G=((5+2−1)/3,(2+4−3)/3)",
+        "세 중선",
         "G=(2,1)",
         "a+b=3"
-      ],
-      "priority": 0
+      ]
     }
-  ],
-  "axes": true,
-  "title": "삼각형의 무게중심"
+  ]
 }

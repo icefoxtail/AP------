@@ -1,5 +1,6 @@
 {
   "id": "q14",
+  "title": "대칭으로 펴는 최소 경로",
   "visualType": "line_circle_geometry",
   "viewport": {
     "xMin": -4,
@@ -11,6 +12,7 @@
     "panel": 190,
     "margin": 36
   },
+  "axes": true,
   "sourceFacts": {
     "A": [
       -2,
@@ -25,8 +27,7 @@
       5,
       4
     ],
-    "circleRadius": 2,
-    "independentFactHash": "6adbf68267e59631fd90db1b5b8923232250d3119627b09c0029b3526606de28"
+    "circleRadius": 2
   },
   "derivedFacts": {
     "Areflected": [
@@ -46,7 +47,8 @@
     "area": 2.1
   },
   "displayFacts": {
-    "chain": "A′–P₀–Q₀–C",
+    "chain": "A′—P₀—Q₀—C",
+    "minimum": "A′Q₀=8, Q₀C=2",
     "result": "10S=21"
   },
   "objects": [
@@ -198,7 +200,5 @@
       ],
       "priority": 0
     }
-  ],
-  "axes": true,
-  "title": "대칭으로 펴는 최단 경로와 넓이"
+  ]
 }

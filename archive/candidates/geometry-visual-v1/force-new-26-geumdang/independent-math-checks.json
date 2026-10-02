@@ -1,76 +1,206 @@
 {
-  "schemaVersion": "force-new-independent-math-checks-v1",
-  "questionCount": 20,
-  "checks": {
-    "q01": true,
-    "q02": true,
-    "q03": true,
-    "q04": true,
-    "q05": true,
-    "q06": true,
-    "q07": true,
-    "q08": true,
-    "q09": true,
-    "q10": true,
-    "q11": true,
-    "q12": true,
-    "q13": true,
-    "q14": true,
-    "q15": true,
-    "q16": true,
-    "q17": true,
-    "q18": true,
-    "q19": true,
-    "q20": true
-  },
-  "passed": 20,
-  "failed": [],
-  "q13": {
-    "T": [
-      [
-        2.483006032407528,
-        0.06797587036988739
-      ],
-      [
-        1.6346410264160012,
-        3.461435894335995
-      ]
-    ],
-    "slopes": [
-      -0.26759187924399824,
-      0.9342585459106648
-    ]
-  },
-  "q14Area": 2.1000000000000014,
-  "q17Areas": [
-    3.333333333333333,
-    1.6666666666666667
-  ],
-  "q20Samples": {
-    "3": {
-      "f": 1,
-      "d": 6.7082039324993685,
-      "r": 6.708203932499369
+  "schemaVersion": "force-new-independent-math-checks-v2",
+  "questionCount": 16,
+  "passCount": 16,
+  "failCount": 0,
+  "sourceDrivenIndependentRecomputation": true,
+  "checks": [
+    {
+      "questionId": 1,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "6ec766e1d02dff12bf719d0c602086381aaa7bab7da8c23eb5d2fb7c4f8b75dd",
+      "sourceSolutionSha256": "c25ce1a8506e40e58ec78ad6436032254d902e6d568aba2dff1c1853f655903a",
+      "checks": {
+        "openInterval": true,
+        "integers": true,
+        "endpoints": true
+      }
     },
-    "4": {
-      "f": 10,
-      "d": 3.5777087639996634,
-      "r": 8.94427190999916
+    {
+      "questionId": 3,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "381b291acb823ee491dbda54c0852fd0955a8376778e02c6e1f486b6f2590da3",
+      "sourceSolutionSha256": "250dd701b1897f40ee8997ace991cf4f105d40c9435ee2045de5dc788158e1a9",
+      "checks": {
+        "contact": true,
+        "tangent": true,
+        "radiusPerpendicular": true,
+        "answer": true
+      }
     },
-    "8": {
-      "f": 66,
-      "d": 17.88854381999832,
-      "r": 17.88854381999832
+    {
+      "questionId": 4,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "ff313a916d638cf12c72bd843f9f04d447404407452c9db9e92143de1f8c0927",
+      "sourceSolutionSha256": "d10d8813d8b1fbc03797263c2595e559520b1c9c0a926eb591a486adf6298a00",
+      "checks": {
+        "translation": true,
+        "answer": true
+      }
     },
-    "9": {
-      "f": 70,
-      "d": 18.78297101099823,
-      "r": 20.12461179749811
+    {
+      "questionId": 5,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "b6b5e7e4af5e5dcb1b88aa35f63d0f1c981f68287f8d70c6f2b14fe228968fb7",
+      "sourceSolutionSha256": "233117cbaa94c2ceeadcb9607050df5b4edd6d4dc50a69fb93b809d8595c05c8",
+      "checks": {
+        "reflection": true,
+        "radius": true,
+        "answer": true
+      }
     },
-    "12": {
-      "f": 94,
-      "d": 26.832815729997474,
-      "r": 26.832815729997478
+    {
+      "questionId": 6,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "cec876b16449e64863a60d6e6c6a7403618a12f419c1030aa560f45b2b0dac8d",
+      "sourceSolutionSha256": "dd6906f6abde3289f2cc47f63738b75b265d05d2c71106ff53fd099f95c6d4cd",
+      "checks": {
+        "centroid": true,
+        "threeMedians": true,
+        "answer": true
+      }
+    },
+    {
+      "questionId": 7,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "80f5a49232fa4911735e903c0b0d3a1beba67066b5f01de9003da1d50255f2df",
+      "sourceSolutionSha256": "6c919141d61a4669a8673794f54327aa725fce2f124fa19b36ee8fddc0c7bcb7",
+      "checks": {
+        "slopes": true,
+        "point": true
+      }
+    },
+    {
+      "questionId": 9,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "21e7ad45343eb9ea2f7fa84df98b9b98d485219f2c7ade38affef88cff5b5909",
+      "sourceSolutionSha256": "d74e4f66c36ffbaf3be48e3d9f6483eb6bd0d4ffdf20249771aa842388e7aae9",
+      "checks": {
+        "sectionPoint": true,
+        "ratio": true,
+        "answer": true
+      }
+    },
+    {
+      "questionId": 10,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "d0ae9c065779524c296f2ceb851905c3fa73e35cb490dea6a833ad4b1581dfea",
+      "sourceSolutionSha256": "7026b60797fb869ef73d63bbe3f05b521704281ba3f0014841dc38ea851cd1d4",
+      "checks": {
+        "commonPoint": true,
+        "perpendicularFoot": true,
+        "distance": true
+      }
+    },
+    {
+      "questionId": 11,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "df87365dfd83729124c9652e4ed10a70509e02300b8b751dcdb564c627192248",
+      "sourceSolutionSha256": "5dda45a00146076720949793e51aaae78a437a4b7328e9dc4259203ccdd36d19",
+      "checks": {
+        "parallel": true,
+        "perpendicular": true,
+        "positiveRoot": true,
+        "answer": true
+      }
+    },
+    {
+      "questionId": 12,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "03a685172cee7e8c3edb7460213de683b0f142094572eb5ab9df7b0d062077fc",
+      "sourceSolutionSha256": "e98e08c4ef8585d50b7dfd321ae7e0b266dcd06710b43ad5e8a2f3d590c9e7a4",
+      "checks": {
+        "bisector": true,
+        "centerToChord": true,
+        "halfChord": true,
+        "radius": true,
+        "d": true,
+        "answer": true
+      }
+    },
+    {
+      "questionId": 13,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "0f1547c9aace524b11dfb1093975cf1b09cc683c185dd525529f8cd69aa8db7c",
+      "sourceSolutionSha256": "441e448e75e60669600d97d82ace252bb936dff4a0f7c6bbfd48c72275bd764d",
+      "checks": {
+        "vieta": true,
+        "quadratic": true
+      }
+    },
+    {
+      "questionId": 14,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "47d2017a540991589984438bebd373014111b00527f645f3ecd91dceb02209d6",
+      "sourceSolutionSha256": "a7af9e8cb58136422bce059c66504b16364e0940b0f7e1128b91130ffa62b197",
+      "checks": {
+        "reflection": true,
+        "closestPoint": true,
+        "intersection": true,
+        "area": true
+      }
+    },
+    {
+      "questionId": 15,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "ad987838b89210c531ff084127f3245b1967fa0e0533e852949aaa0f326a3db0",
+      "sourceSolutionSha256": "fe65fe9ba367701b630361825b7c7d33005880ff2c583a0c4c236d62db0b0c5e",
+      "checks": {
+        "circle": true,
+        "farthest": true,
+        "tangent": true,
+        "answer": true
+      }
+    },
+    {
+      "questionId": 17,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "644d2ecc13b55d07505ed599b16aff3bfd07f0359a34d0a7cbcbaa871ad2531b",
+      "sourceSolutionSha256": "afcc3f095f9ab7547570068c4969ca9b279a5d3a16ef88350dc41ceee3439869",
+      "checks": {
+        "areaRatio": true,
+        "minimum": true,
+        "answer": true
+      }
+    },
+    {
+      "questionId": 18,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "3e58fb20b23c847475545b51a17d327dd08c55e3be0484652acf4a659a83e77a",
+      "sourceSolutionSha256": "c75f194bd67a905dc15dffe0a16f5b059b70f965bf14f5c22749daffae7f2be2",
+      "checks": {
+        "centers": true,
+        "distance": true,
+        "positiveIntercept": true
+      }
+    },
+    {
+      "questionId": 20,
+      "status": "PASS",
+      "method": "source solution and frozen facts independently recomputed",
+      "sourceContentSha256": "efb04e2211d70571bb95d12721ce4a5c9fd3b501478a18cec2c5546c07e4eee7",
+      "sourceSolutionSha256": "c3fb57c6dbd2c2c44407a0b3876984200635600227a04b1f0524b9b034211371",
+      "checks": {
+        "k": true,
+        "boundaries": true,
+        "g2Intervals": true,
+        "answer": true
+      }
     }
-  }
+  ]
 }
