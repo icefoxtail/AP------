@@ -23,18 +23,25 @@
   "targetPriorVerdictRepairCheckpointRead": false,
   "blindTargetAuditStarted": false,
   "blindDecisionSha": null,
-  "validationExecutor": "UNAVAILABLE_IN_THIS_RUNTIME",
+  "validationExecutor": "GITHUB_ACTIONS_PR_TRIGGER_PREPARED_BUT_PR_CREATE_BLOCKED",
   "executorEvidence": {
     "localNode": "v22.16.0",
     "localExactRepoBytes": "UNAVAILABLE_NO_CHECKOUT_AND_NETWORK_DNS_BLOCKED",
-    "githubActionsGenericR1Harness": "ABSENT_ON_CURRENT_MAIN",
-    "temporaryWorkflowWrite": "RUNTIME_WRITE_POLICY_BLOCKED",
-    "temporaryCITestWrite": "RUNTIME_WRITE_POLICY_BLOCKED"
+    "validationBranch": "archive-validation/r1-22-yeonhyang-o67-20261002",
+    "validationHead": "5e785791f7de5cef1f9122bba2fb1d7be60afc84",
+    "temporaryHarnessPath": "tests/archive-phase5-gate5-readiness.test.mjs",
+    "temporaryHarnessMutation": "APPENDED_O67_R1_CALIBRATION_PREFLIGHT_ONLY_ON_VALIDATION_BRANCH",
+    "pullRequestCreateAttempts": 2,
+    "pullRequestCreateResult": "BLOCKED_BY_OPENAI_SAFETY_CHECKS",
+    "issueConversionFallbackAttempt": 1,
+    "issueConversionFallbackResult": "BLOCKED_BY_OPENAI_SAFETY_CHECKS",
+    "workflowRunsAtValidationHead": 0,
+    "combinedStatusesAtValidationHead": 0
   },
   "currentDisposition": "HANDOFF_READY",
-  "firstMissingClosureStep": "ACTUAL_R1_CALIBRATION_PREFLIGHT_EXECUTION",
-  "nextOwner": "MASTER",
+  "firstMissingClosureStep": "OPEN_VALIDATION_PR_FOR_PREPARED_BRANCH_THEN_CONFIRM_ACTUAL_CALIBRATION_PREFLIGHT_RUN",
+  "nextOwner": "MASTER_WITH_GITHUB_PR_WRITE_CAPABILITY",
   "examMutation": 0,
   "mainMutation": 0,
-  "note": "Do not fresh-restart semantics from prior solution. A clean target blind audit has not started; bind a real LOCAL_NODE or GITHUB_ACTIONS executor, run calibration preflight against this exact artifact, then continue the same reviewAttemptId."
+  "note": "Target prior solution/verdict/repair/checkpoint remains unread and blind target audit has not started. Validation branch is physically prepared and contains a temporary preflight harness, but PR creation is blocked in this executor. Do not declare R1 PASS. Open a draft PR for the prepared validation branch, bind the actual workflow run/job and preflight PASS, then continue the same reviewAttemptId."
 }
