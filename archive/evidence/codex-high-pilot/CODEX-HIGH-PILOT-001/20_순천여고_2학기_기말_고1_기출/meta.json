@@ -10,8 +10,8 @@
   "sourceArtifactSha256": "sha256:b05fa3a085699ed37798a99a035b533d6fe6a0075145436839853c84b67ba5c2",
   "sourceArtifactGitBlobSha": "6224c099b808f13136031d0c4d2383c3013eda5c",
   "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
-  "targetArtifactSha256": "sha256:a88c7573bfe03082c1a9083331704b6b667fc8079d624d49acd029e90c31cf54",
-  "targetArtifactGitBlobSha": "cb168b5031979fa431c2048f39df925bfc61f35b",
+  "targetArtifactSha256": "sha256:a49ec4c61a74c84f0233de687e9ea6ff6d35ab6867e31a17e057960517993fa8",
+  "targetArtifactGitBlobSha": "75d3d914bb78faa6b9ea21b50ad8be4f5ab05789",
   "denominator": 23,
   "resolvedMetaRecordCount": 23,
   "itemHoldQids": [],
@@ -120,13 +120,6 @@
         "inputBundleSha": "sha256:91d5ac50ea90a6fbca064917530da10f85579cca3eb9f27225c31ccb4ca6ec78"
       },
       {
-        "key": "CC_RATIONAL_FUNCTION",
-        "status": "FINAL",
-        "reason": "The rational graph supplies an independent quadrant constraint in addition to the radical graph.",
-        "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-        "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf"
-      },
-      {
         "key": "CC_TRIANGLE_AREA",
         "status": "FINAL",
         "reason": "Triangle area is the distinct geometric objective derived from the function-graph intersections.",
@@ -181,6 +174,13 @@
         "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
         "sourceFingerprint": "sha256:22acb1b83b8365d5d328479a46f693f19b9598227c23c963d9b38e7c602e54ed",
         "inputBundleSha": "sha256:58d0fa9b7366fecbe13c8cdb1e21d1d03dc5e2dbcefa9fe4ae419874816b3fe6"
+      },
+      {
+        "key": "CC_RADICAL_FUNCTION",
+        "status": "FINAL",
+        "reason": "The defining radical expression must be inverted: squaring y−2 recovers x+a before applying the inverse-domain range.",
+        "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
+        "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
       }
     ],
     "rejected": []
@@ -227,6 +227,13 @@
       "reason": "The image must be all real numbers, which constrains the middle branch range.",
       "sourceFingerprint": "sha256:6ad7f3460a6703b46e2294b103b56eafcb8d917767faacc18917ce9659ea7458",
       "inputBundleSha": "sha256:56784f973b1a6a1f29f274408235545ae8e587fb03c39cabbad3918c330d2b9e"
+    },
+    {
+      "key": "COND_RANGE",
+      "status": "FINAL",
+      "reason": "The inverse domain is the original radical function range x≥2, which determines b.",
+      "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
+      "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
     }
   ],
   "integrationAdjudication": [
@@ -1397,55 +1404,65 @@
         "curriculum": "2015",
         "scope": "수학_하",
         "standardCourse": "수학(하)",
-        "standardUnitKey": "H15-SB-05",
-        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH"
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-INVERSE_FUNCTION"
       },
-      "primaryMethod": "Combine quadrant conditions on rational and radical function graphs.",
-      "decisiveStep": "Find a,b from the inverse of the radical function and its range, then use b−a.",
+      "primaryMethod": "Find the inverse of a radical function, use its range as the inverse domain, and compare the resulting quadratic expression.",
+      "decisiveStep": "Solve y=√(x+a)+2 for x, then use the original function range y≥2 to determine the inverse domain.",
       "rpmPrimary": {
-        "id": "H1-RPM-118",
+        "id": "H1-RPM-104",
         "majorUnit": "함수",
-        "midUnit": "무리함수",
-        "l3": "정의역과 치역",
-        "l4": "그래프 위치",
-        "status": "FINAL"
+        "midUnit": "함수",
+        "l3": "역함수",
+        "l4": "역함수 구하기",
+        "status": "DIRECT_ACTIVE"
       },
       "semanticStatus": "FINAL",
       "activeProjection": {
         "status": "ACTIVE_EXACT_BINDING_VALIDATED",
-        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "problemTypeKey": "PT_INVERSE_VALUE",
         "problemTypeStatus": "ACTIVE",
         "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
-        "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+        "templateKey": "TPL_INVERSE_FUNCTION_FORM",
         "templateStatus": "ACTIVE",
         "bindingStatus": "ACTIVE",
         "bindingOwnerPack": "FUNCTIONS_GRAPHS",
         "crosswalk": {
-          "recordId": "H1-RPM-118",
+          "recordId": "H1-RPM-104",
           "status": "DIRECT_ACTIVE",
-          "suggestedProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-          "suggestedTemplateKey": "TPL_GRAPH_ORDER_INTERVAL",
+          "suggestedProblemTypeKey": "PT_INVERSE_VALUE",
+          "suggestedTemplateKey": "TPL_INVERSE_FUNCTION_FORM",
           "resolverValidation": "PASS",
           "candidateParity": true
         },
         "projectionDisposition": "PROJECTION_REUSE"
       },
       "crossConceptKeys": [
-        "CC_RATIONAL_FUNCTION"
+        "CC_RADICAL_FUNCTION"
       ],
       "crossConceptDecisions": [
         {
-          "key": "CC_RATIONAL_FUNCTION",
+          "key": "CC_RADICAL_FUNCTION",
           "status": "FINAL",
-          "reason": "The rational graph supplies an independent quadrant constraint in addition to the radical graph.",
+          "reason": "The defining radical expression must be inverted: squaring y−2 recovers x+a before applying the inverse-domain range.",
           "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-          "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf"
+          "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
         }
       ],
-      "conditionKeys": [],
-      "conditionDecisions": [],
-      "integrationPattern": "INTERDEPENDENT",
-      "integrationReason": "Use the rational graph condition and radical graph condition together to restrict the parameters.",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDecisions": [
+        {
+          "key": "COND_RANGE",
+          "status": "FINAL",
+          "reason": "The inverse domain is the original radical function range x≥2, which determines b.",
+          "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
+          "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
+        }
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Derive the inverse expression, use its range as the inverse domain, and compare coefficients.",
       "difficulty": {
         "bucket": 2,
         "confidence": "high",

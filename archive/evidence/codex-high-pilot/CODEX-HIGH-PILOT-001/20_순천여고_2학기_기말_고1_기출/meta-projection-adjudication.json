@@ -297,14 +297,16 @@
     },
     {
       "qid": 13,
-      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-      "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
       "crossConceptKeys": [
-        "CC_RATIONAL_FUNCTION"
+        "CC_RADICAL_FUNCTION"
       ],
-      "conditionKeys": [],
-      "integrationPattern": "INTERDEPENDENT",
-      "integrationReason": "Use the rational graph condition and radical graph condition together to restrict the parameters.",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Derive the inverse expression, use its range as the inverse domain, and compare coefficients.",
       "legacyLevel": "중",
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
@@ -312,10 +314,10 @@
       "legacyLevelCompatibility": "NORMAL",
       "semanticStatus": "FINAL",
       "resolverProjectionStatus": "PROJECTION_REUSE",
-      "crosswalkRecordId": "H1-RPM-118",
+      "crosswalkRecordId": "H1-RPM-104",
       "crosswalkStatus": "DIRECT_ACTIVE",
-      "crosswalkSuggestedPT": "PT_FUNCTION_GRAPH_PROPERTIES",
-      "crosswalkSuggestedTPL": "TPL_GRAPH_ORDER_INTERVAL",
+      "crosswalkSuggestedPT": "PT_INVERSE_VALUE",
+      "crosswalkSuggestedTPL": "TPL_INVERSE_FUNCTION_FORM",
       "projectionVariant": false,
       "activeBindingStatus": "ACTIVE_EXACT_BINDING_VALIDATED"
     },

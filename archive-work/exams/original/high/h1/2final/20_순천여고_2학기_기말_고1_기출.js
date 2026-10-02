@@ -1102,11 +1102,11 @@ window.questionBank = [
     "category": "무리함수의 역함수와 정의역 조건",
     "originalCategory": "무리함수",
     "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-05",
+    "standardUnitKey": "H15-SB-03",
     "standardUnit": "함수",
     "standardUnitOrder": 5,
-    "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
-    "subUnit": "무리함수",
+    "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+    "subUnit": "역함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -1169,14 +1169,16 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "curriculum": "2015",
-    "conceptClusterKey": "H15-SB-05-IRRATIONAL_GRAPH",
-    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-    "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+    "conceptClusterKey": "H15-SB-03-INVERSE_FUNCTION",
+    "problemTypeKey": "PT_INVERSE_VALUE",
+    "templateKey": "TPL_INVERSE_FUNCTION_FORM",
     "crossConceptKeys": [
-      "CC_RATIONAL_FUNCTION"
+      "CC_RADICAL_FUNCTION"
     ],
-    "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",

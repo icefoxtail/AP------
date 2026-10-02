@@ -230,23 +230,31 @@
     {
       "qid": 13,
       "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-      "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf",
+      "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8",
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-        "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf",
+        "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8",
         "candidateVisibleDuringDecision": false,
         "crossConceptDecisions": [
           {
-            "key": "CC_RATIONAL_FUNCTION",
+            "key": "CC_RADICAL_FUNCTION",
             "status": "FINAL",
-            "reason": "The rational graph supplies an independent quadrant constraint in addition to the radical graph.",
+            "reason": "The defining radical expression must be inverted: squaring y−2 recovers x+a before applying the inverse-domain range.",
             "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-            "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf"
+            "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
           }
         ],
-        "conditionDecisions": [],
-        "evidenceSha": "sha256:e4a9b8d07943e680bfc8d1c8452e7fdde40761573067c1ebd1888b00a1b18d1e"
+        "conditionDecisions": [
+          {
+            "key": "COND_RANGE",
+            "status": "FINAL",
+            "reason": "The inverse domain is the original radical function range x≥2, which determines b.",
+            "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
+            "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
+          }
+        ],
+        "evidenceSha": "sha256:9086e0de023e8c877fc9ae10c6264d5bec560d6c1ab149328a77891185bb0a58"
       }
     },
     {

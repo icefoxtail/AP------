@@ -176,9 +176,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:6fe2ebb6733bd90543434968fc6ecbd8267344c16f9462f012fa62bb9e15c986",
+        "inputEvidenceSha": "sha256:8b6029b880517307e8f4dfeb63a01b492cc0349ca0c376c2c381482f6fa29d52",
         "validationResultSha": "sha256:4180c2f08c4627eff7b3ba2e7f5698338a17a739adfe7e9ac7df8ea221c3672f",
-        "runSha": "sha256:9d58c61a561359a27a1ea8d7a4727396f8f1d049236ea00e1cf5d48d21e43073"
+        "runSha": "sha256:839e1719dec0acdc87a53fc0ff5b74050c73b8f6a6eac8c9c7fac0a4f206ee59"
       }
     },
     {
@@ -597,14 +597,16 @@
     },
     {
       "qid": 13,
-      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-      "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
       "crossConceptKeys": [
-        "CC_RATIONAL_FUNCTION"
+        "CC_RADICAL_FUNCTION"
       ],
-      "conditionKeys": [],
-      "integrationPattern": "INTERDEPENDENT",
-      "integrationReason": "Use the rational graph condition and radical graph condition together to restrict the parameters.",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Derive the inverse expression, use its range as the inverse domain, and compare coefficients.",
       "legacyLevel": "중",
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
@@ -612,12 +614,16 @@
       "legacyLevelCompatibility": "NORMAL",
       "semanticStatus": "FINAL",
       "resolverProjectionStatus": "PROJECTION_REUSE",
-      "crosswalkRecordId": "H1-RPM-118",
+      "crosswalkRecordId": "H1-RPM-104",
       "crosswalkStatus": "DIRECT_ACTIVE",
-      "crosswalkSuggestedPT": "PT_FUNCTION_GRAPH_PROPERTIES",
-      "crosswalkSuggestedTPL": "TPL_GRAPH_ORDER_INTERVAL",
+      "crosswalkSuggestedPT": "PT_INVERSE_VALUE",
+      "crosswalkSuggestedTPL": "TPL_INVERSE_FUNCTION_FORM",
       "projectionVariant": false,
-      "activeBindingStatus": "ACTIVE_EXACT_BINDING_VALIDATED"
+      "activeBindingStatus": "ACTIVE_EXACT_BINDING_VALIDATED",
+      "curriculum": "2015",
+      "standardCourse": "수학(하)",
+      "standardUnitKey": "H15-SB-03",
+      "subUnitKey": "H15-SB-03-INVERSE_FUNCTION"
     },
     {
       "qid": 14,
@@ -1690,23 +1696,31 @@
     {
       "qid": 13,
       "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-      "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf",
+      "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8",
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-        "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf",
+        "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8",
         "candidateVisibleDuringDecision": false,
         "crossConceptDecisions": [
           {
-            "key": "CC_RATIONAL_FUNCTION",
+            "key": "CC_RADICAL_FUNCTION",
             "status": "FINAL",
-            "reason": "The rational graph supplies an independent quadrant constraint in addition to the radical graph.",
+            "reason": "The defining radical expression must be inverted: squaring y−2 recovers x+a before applying the inverse-domain range.",
             "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
-            "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf"
+            "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
           }
         ],
-        "conditionDecisions": [],
-        "evidenceSha": "sha256:e4a9b8d07943e680bfc8d1c8452e7fdde40761573067c1ebd1888b00a1b18d1e"
+        "conditionDecisions": [
+          {
+            "key": "COND_RANGE",
+            "status": "FINAL",
+            "reason": "The inverse domain is the original radical function range x≥2, which determines b.",
+            "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
+            "inputBundleSha": "sha256:3af64fa2f6c8f117925eb22304ba08c8e790ffc30d2a0c76577dc916e178b1c8"
+          }
+        ],
+        "evidenceSha": "sha256:9086e0de023e8c877fc9ae10c6264d5bec560d6c1ab149328a77891185bb0a58"
       }
     },
     {
@@ -1941,9 +1955,9 @@
   "postMutationValidation": {
     "originMain": "fc699d27122ea255a048874bb624fabbd95c4c34",
     "resolverSnapshot": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
-    "targetArtifactSha256": "sha256:a88c7573bfe03082c1a9083331704b6b667fc8079d624d49acd029e90c31cf54",
-    "targetArtifactGitBlobSha": "cb168b5031979fa431c2048f39df925bfc61f35b",
-    "validatedAt": "2026-10-02T01:22:26.647Z",
+    "targetArtifactSha256": "sha256:a49ec4c61a74c84f0233de687e9ea6ff6d35ab6867e31a17e057960517993fa8",
+    "targetArtifactGitBlobSha": "75d3d914bb78faa6b9ea21b50ad8be4f5ab05789",
+    "validatedAt": "2026-10-02T02:01:25.803Z",
     "rows": [
       {
         "qid": 1,
@@ -2062,4 +2076,4 @@
       }
     ]
   }
-}\n
+}
