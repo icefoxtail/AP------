@@ -24,6 +24,12 @@ import {
   readAndVerifySavedSnapshot,
   resolveSavedPaperLibraryStatus,
 } from "../helpers/archive-saved-papers.js";
+import {
+  assignmentLifecycleEventStatement,
+  assignmentOperationIdentity,
+  existingAssignmentLifecycleEvent,
+  hasAssignmentLifecycleEvents,
+} from "../helpers/archive2-assignment-lifecycle.js";
 import output from "../../../../archive/archive2-output.js";
 
 async function readPayload(request) {
@@ -78,6 +84,15 @@ export async function handleArchive2(
     if (action === "question-history")
       return jsonResponse(await loadQuestionHistory(env, teacher, input));
     const savedPaperMode = action === "original" && input.saved_paper_id !== undefined;
+    const assignmentOperation = String(input.assignment_operation || "");
+    const addRecipientsMode = assignmentOperation === "ADD_RECIPIENTS";
+    const replacementMode = assignmentOperation === "REPLACEMENT_ASSIGNMENT";
+    if (assignmentOperation && !["ADD_RECIPIENTS", "REPLACEMENT_ASSIGNMENT"].includes(assignmentOperation))
+      fail("invalid assignment_operation", 400);
+    if (assignmentOperation && !savedPaperMode)
+      fail("lifecycle operations require a Saved Paper snapshot", 409);
+    if (!assignmentOperation && input.related_assignment_id)
+      fail("related_assignment_id requires an explicit Assignment operation", 400);
     if (!["studio", "original"].includes(action)) fail("Not found", 404);
     const original = action === "original" && !savedPaperMode;
     if (!(await hasQuestionBridge(env)))
@@ -107,14 +122,16 @@ export async function handleArchive2(
     const date = String(input.exam_date || "");
     let savedPaper = null;
     let savedSnapshot = null;
+    let relatedAssignment = null;
+    let assignmentBatchId = "";
     let title = String(input.exam_title || "").trim();
     let file = String(input.archive_file || "").trim();
     if (savedPaperMode) {
       if (input.contract_version !== ARCHIVE2_CONTRACT)
         fail("contract_version mismatch");
       const paperId = String(input.saved_paper_id || "");
-      const batchId = String(input.assignment_batch_id || "");
-      if (!SAVED_PAPER_BATCH_ID.test(paperId) || !SAVED_PAPER_BATCH_ID.test(batchId))
+      assignmentBatchId = String(input.assignment_batch_id || "");
+      if (!SAVED_PAPER_BATCH_ID.test(paperId) || !SAVED_PAPER_BATCH_ID.test(assignmentBatchId))
         fail("저장본 출제 ID가 올바르지 않습니다.", 400);
       const assignmentColumns = await env.DB.prepare("PRAGMA table_info(class_exam_assignments)").all();
       if (!(assignmentColumns.results || []).some((column) => column.name === "saved_paper_id"))
@@ -140,7 +157,40 @@ export async function handleArchive2(
         await resolveSavedPaperSourceGrades(env, savedSnapshot.questions),
       );
       title = savedPaper.title;
-      file = `MIXED:archive2-saved-${paperId}-${batchId}`;
+      file = `MIXED:archive2-saved-${paperId}-${assignmentBatchId}`;
+      if (assignmentOperation) {
+        if (!(await hasAssignmentLifecycleEvents(env)))
+          fail("Assignment lifecycle migration is required", 503);
+        const relatedId = String(input.related_assignment_id || "");
+        if (!SAVED_PAPER_BATCH_ID.test(relatedId))
+          fail("related_assignment_id must be an Assignment UUID", 400);
+        relatedAssignment = await env.DB.prepare(
+          "SELECT * FROM class_exam_assignments WHERE id=? LIMIT 1",
+        ).bind(relatedId).first();
+        if (!relatedAssignment) fail("원본 Assignment를 찾을 수 없습니다.", 404);
+        if (!(await canAccessClass(teacher, relatedAssignment.class_id, env)))
+          fail("Forbidden", 403);
+        if (addRecipientsMode) {
+          if (String(relatedAssignment.saved_paper_id || "") !== paperId)
+            fail("ADD_RECIPIENTS must reuse the original Saved Paper identity", 409);
+          file = `MIXED:archive2-add-recipients-${relatedId}-${assignmentBatchId}`;
+        } else {
+          if (!relatedAssignment.saved_paper_id || String(relatedAssignment.saved_paper_id) === paperId)
+            fail("REPLACEMENT_ASSIGNMENT requires a new Saved Paper", 409);
+          const parentPaper = await env.DB.prepare(
+            "SELECT snapshot_hash FROM archive_saved_papers WHERE id=? AND owner_teacher_id=? LIMIT 1",
+          ).bind(relatedAssignment.saved_paper_id, teacher.id).first();
+          const lineage = await env.DB.prepare(
+            "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=? LIMIT 1",
+          ).bind(paperId).first();
+          if (!parentPaper || lineage?.parent_kind !== "SAVED_PAPER" ||
+              lineage.parent_id !== relatedAssignment.saved_paper_id ||
+              String(lineage.parent_snapshot_hash || "").toLowerCase() !== String(parentPaper.snapshot_hash || "").toLowerCase() ||
+              !["REVISION", "FORK"].includes(lineage.derivation_type))
+            fail("대체 배포 시험지는 원본 Saved Paper의 새 revision이어야 합니다.", 409);
+          file = `MIXED:archive2-replacement-${relatedId}-${paperId}-${assignmentBatchId}`;
+        }
+      }
     }
     if (
       !title ||
@@ -164,6 +214,8 @@ export async function handleArchive2(
         409,
       );
     const existing = existingRows[0];
+    if (addRecipientsMode && relatedAssignment.cancelled_at && !existing)
+      fail("취소된 Assignment에 학생을 추가할 수 없습니다.", 409);
     const savedRows = existing
       ? (
           await env.DB.prepare(
@@ -181,28 +233,39 @@ export async function handleArchive2(
         fail("저장된 시험지 정보를 확인할 수 없습니다.", 409);
       }
     }
+    if (existing?.cancelled_at)
+      fail("취소된 Assignment는 RETRY로 다시 배포할 수 없습니다.", 409);
     const recipients = existing
       ? (
           await env.DB.prepare(
-            "SELECT r.student_id, x.student_id AS excluded_student_id FROM class_exam_assignment_recipients r LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id WHERE r.assignment_id=?",
+            "SELECT r.student_id, x.student_id AS excluded_student_id, x.reason AS exclusion_reason FROM class_exam_assignment_recipients r LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id WHERE r.assignment_id=?",
           )
             .bind(existing.id)
             .all()
         ).results || []
       : [];
-    const recipientIds = new Set(recipients.map((r) => r.student_id));
-    const effectiveIds = new Set(
-      recipients.filter((r) => !r.excluded_student_id).map((r) => r.student_id),
-    );
-    const newTargetIds = targetIds.filter((id) => !effectiveIds.has(id));
-    // A retry keeps the frozen roster. Explicitly selected, previously excluded
-    // students may be added without removing any existing recipient.
-    if (existing && newTargetIds.some((id) => !recipientIds.has(id)))
-      fail("최초 배부 이후 추가된 학생은 새 문제지로 출제하세요.", 409);
+    const initialTargetIds = recipients
+      .filter(row => row.exclusion_reason !== "archive2_target")
+      .map(row => row.student_id);
+    if (existing && (
+      initialTargetIds.length !== targetIds.length ||
+      targetIds.some(id => !initialTargetIds.includes(id))
+    )) fail("기존 Assignment의 고정 roster는 변경할 수 없습니다. 학생 추가는 ADD_RECIPIENTS로 요청하세요.", 409);
+    const newTargetIds = existing ? [] : targetIds;
     if (newTargetIds.some((id) => !rosterIds.includes(id)))
       fail("대상 학생의 반 소속 또는 재원 상태가 변경되었습니다.", 409);
     if (newTargetIds.length)
       await requireStudentAccess(teacher, newTargetIds, env);
+    if (addRecipientsMode) {
+      const parentRecipients = (await env.DB.prepare(
+        "SELECT r.student_id,x.student_id AS excluded_student_id FROM class_exam_assignment_recipients r LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id WHERE r.assignment_id=?",
+      ).bind(relatedAssignment.id).all()).results || [];
+      const previouslyActive = new Set(parentRecipients
+        .filter(row => !row.excluded_student_id)
+        .map(row => row.student_id));
+      if (targetIds.some(id => previouslyActive.has(id)))
+        fail("기존 Assignment에 이미 배포된 학생은 ADD_RECIPIENTS 대상이 될 수 없습니다.", 409);
+    }
     let payload = null,
       questions,
       meta,
@@ -337,6 +400,31 @@ export async function handleArchive2(
         fail("추정·미복원 이력 안내를 확인하세요.", 409);
     }
     const assignmentId = existing?.id || crypto.randomUUID();
+    let lifecycleEventStatement = null;
+    if (assignmentOperation) {
+      const event = {
+        assignment_id: assignmentId,
+        related_assignment_id: relatedAssignment.id,
+        saved_paper_id: savedPaper.id,
+        student_id: null,
+        actor_teacher_id: teacher.id,
+        operation: assignmentOperation,
+        operation_identity: assignmentOperationIdentity(
+          assignmentOperation,
+          relatedAssignment.id,
+          assignmentBatchId,
+        ),
+        metadata: {
+          assignment_batch_id: assignmentBatchId,
+          parent_saved_paper_id: relatedAssignment.saved_paper_id,
+          student_ids: [...targetIds].sort(),
+        },
+      };
+      const priorEvent = await existingAssignmentLifecycleEvent(env, event);
+      if (priorEvent && priorEvent.assignment_id !== assignmentId)
+        fail("operation_identity is already attached to another Assignment", 409);
+      if (!priorEvent) lifecycleEventStatement = assignmentLifecycleEventStatement(env, event);
+    }
     const selectId =
       "SELECT id FROM class_exam_assignments WHERE archive2_write_key = ?";
     const assignmentValues = [
@@ -362,9 +450,13 @@ export async function handleArchive2(
             SELECT 1 FROM archive_saved_papers
             WHERE id=? AND owner_teacher_id=? AND deleted_at IS NULL AND snapshot_hash=?
           )
+          AND NOT EXISTS (
+            SELECT 1 FROM archive_saved_paper_library_metadata
+            WHERE saved_paper_id=? AND owner_teacher_id=? AND status='TRASHED'
+          )
           ON CONFLICT(archive2_write_key) WHERE archive2_write_key IS NOT NULL
           DO UPDATE SET archive2_snapshot_hash = excluded.archive2_snapshot_hash
-        `).bind(...assignmentValues, savedPaper.id, savedPaper.id, teacher.id, savedPaper.snapshot_hash)
+        `).bind(...assignmentValues, savedPaper.id, savedPaper.id, teacher.id, savedPaper.snapshot_hash, savedPaper.id, teacher.id)
       : env.DB.prepare(`
           INSERT INTO class_exam_assignments
           (id,class_id,exam_title,exam_date,question_count,archive_file,source_type,mixed_payload_json,subject,pdf_qpp,archive2_write_key,archive2_snapshot_hash)
@@ -373,6 +465,7 @@ export async function handleArchive2(
           DO UPDATE SET archive2_snapshot_hash = excluded.archive2_snapshot_hash
         `).bind(...assignmentValues);
     const statements = [insert];
+    if (lifecycleEventStatement) statements.push(lifecycleEventStatement);
     if (payload && !original)
       statements.push(
         env.DB.prepare(

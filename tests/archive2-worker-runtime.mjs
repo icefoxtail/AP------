@@ -11,6 +11,7 @@ const outputContract = require("../archive/archive2-output-contract.js");
 import {
   prepareSavedPaperBatch,
   SAVED_PAPER_SCHEMA,
+  stableStringify,
 } from "../apmath/worker-backup/worker/helpers/archive-saved-papers.js";
 import { runRc2 } from "./archive2-rc2-boundaries.mjs";
 
@@ -317,8 +318,12 @@ try {
     .bind("class-h2", "고2 saved paper target", "Teacher A", "고2").run();
   await db.prepare("INSERT INTO students(id,name,grade,status) VALUES (?,?,?,?)")
     .bind("student-h2", "저장본 검증학생", "고2", "active").run();
+  await db.prepare("INSERT INTO students(id,name,grade,status) VALUES (?,?,?,?)")
+    .bind("student-h2-b", "추가 배포 검증학생", "고2", "active").run();
   await db.prepare("INSERT INTO class_students VALUES (?,?)")
     .bind("class-h2", "student-h2").run();
+  await db.prepare("INSERT INTO class_students VALUES (?,?)")
+    .bind("class-h2", "student-h2-b").run();
   await db.prepare("INSERT INTO teacher_classes VALUES (?,?)")
     .bind("teacher-a", "class-h2").run();
   const base = catalog.records.find((r) => r.automatic && r.sourceGrade === "고1" &&
@@ -536,6 +541,247 @@ try {
     "SELECT COUNT(*) AS n FROM class_exam_assignments WHERE saved_paper_id IS NOT NULL AND class_id='class-h2'",
   ).first();
   assert.equal(Number(deliveredSavedCount.n), 2);
+  const parentAssignmentId = savedPaperDeliveries[0].assignmentId;
+  const parentPaperId = savedPapers[0].id;
+  const addRecipientsBody = {
+    contract_version: "archive2-v1",
+    assignment_operation: "ADD_RECIPIENTS",
+    related_assignment_id: parentAssignmentId,
+    class_id: "class-h2",
+    student_ids: ["student-h2-b"],
+    exam_date: "2026-10-02",
+    saved_paper_id: parentPaperId,
+    assignment_batch_id: "77777777-7777-4777-8777-777777777777",
+  };
+  const addedRecipients = await post("", addRecipientsBody, "teacher");
+  assert.equal(addedRecipients.body.saved, true, JSON.stringify(addedRecipients));
+  assert.equal(addedRecipients.status, 502, "local PDF binding is intentionally absent after the Assignment commit");
+  const addedAssignmentId = addedRecipients.body.assignment.id;
+  assert.notEqual(addedAssignmentId, parentAssignmentId,
+    "ADD_RECIPIENTS creates a distinct frozen Assignment identity");
+  const addEvent = await db.prepare(
+    "SELECT * FROM class_exam_assignment_lifecycle_events WHERE assignment_id=? AND operation='ADD_RECIPIENTS'",
+  ).bind(addedAssignmentId).first();
+  assert.equal(addEvent.related_assignment_id, parentAssignmentId);
+  assert.equal(addEvent.saved_paper_id, parentPaperId);
+  assert.equal(JSON.parse(addEvent.metadata_json).student_ids[0], "student-h2-b");
+  const childRecipient = await db.prepare(`
+    SELECT r.student_id,x.student_id AS excluded_student_id
+    FROM class_exam_assignment_recipients r
+    LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id
+    WHERE r.assignment_id=? AND r.student_id=?
+  `).bind(addedAssignmentId, "student-h2-b").first();
+  assert.equal(childRecipient.student_id, "student-h2-b");
+  assert.equal(childRecipient.excluded_student_id, null,
+    "the new Assignment freezes the added student without changing the parent's roster");
+  const parentExcludedRecipient = await db.prepare(
+    "SELECT reason FROM class_exam_assignment_exclusions WHERE assignment_id=? AND student_id=?",
+  ).bind(parentAssignmentId, "student-h2-b").first();
+  assert.equal(parentExcludedRecipient.reason, "archive2_target", "the original frozen Assignment roster stays unchanged");
+  const retryAddRecipients = await post("", addRecipientsBody, "teacher");
+  assert.equal(retryAddRecipients.body.assignment.id, addedAssignmentId);
+  assert.equal(Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignment_lifecycle_events WHERE operation='ADD_RECIPIENTS' AND related_assignment_id=?",
+  ).bind(parentAssignmentId).first()).n), 1);
+  const changedAddRetry = await post("", { ...addRecipientsBody, student_ids: ["student-h2"] }, "teacher");
+  assert.equal(changedAddRetry.status, 409, "one ADD_RECIPIENTS identity cannot be reused for another frozen roster");
+  await db.batch([
+    db.prepare("DELETE FROM class_exam_assignment_exclusions WHERE assignment_id=?").bind(addedAssignmentId),
+    db.prepare("DELETE FROM class_exam_assignment_recipients WHERE assignment_id=?").bind(addedAssignmentId),
+    db.prepare("DELETE FROM class_exam_assignment_questions WHERE assignment_id=?").bind(addedAssignmentId),
+    db.prepare("DELETE FROM class_exam_assignments WHERE id=?").bind(addedAssignmentId),
+  ]);
+  assert.equal(Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignment_lifecycle_events WHERE assignment_id=?",
+  ).bind(addedAssignmentId).first()).n), 1,
+  "append-only Assignment lifecycle events survive legacy Assignment cleanup");
+
+  const parentAssignmentBeforeOps = await db.prepare("SELECT * FROM class_exam_assignments WHERE id=?")
+    .bind(parentAssignmentId).first();
+  const preservedSessionId = crypto.randomUUID();
+  await db.prepare(`INSERT INTO exam_sessions
+    (id,student_id,exam_title,score,exam_date,question_count,class_id,archive_file,assignment_id)
+    VALUES (?,?,?,?,?,?,?,?,?)`).bind(
+    preservedSessionId, "student-h2", parentAssignmentBeforeOps.exam_title, 1,
+    parentAssignmentBeforeOps.exam_date, parentAssignmentBeforeOps.question_count,
+    parentAssignmentBeforeOps.class_id, parentAssignmentBeforeOps.archive_file, parentAssignmentId,
+  ).run();
+  await db.prepare("INSERT INTO wrong_answers (session_id,question_id,student_id) VALUES (?,?,?)")
+    .bind(preservedSessionId, "1", "student-h2").run();
+
+  const excludeRequestId = "88888888-8888-4888-8888-888888888881";
+  const excludeBody = {
+    assignment_id: parentAssignmentId,
+    class_id: "class-h2",
+    student_id: "student-h2",
+    exam_title: parentAssignmentBeforeOps.exam_title,
+    exam_date: parentAssignmentBeforeOps.exam_date,
+    archive_file: parentAssignmentBeforeOps.archive_file,
+    operation_identity: excludeRequestId,
+  };
+  const excludeResponse = await mf.dispatchFetch("http://local/api/class-exam-assignments/exclude-student", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify(excludeBody),
+  });
+  const excludeResult = await excludeResponse.json();
+  assert.equal(excludeResponse.status, 200, JSON.stringify(excludeResult));
+  assert.equal((await db.prepare("SELECT id FROM exam_sessions WHERE id=?").bind(preservedSessionId).first()).id,
+    preservedSessionId, "EXCLUDE retains the original submission session");
+  assert.equal(Number((await db.prepare("SELECT COUNT(*) AS n FROM wrong_answers WHERE session_id=?").bind(preservedSessionId).first()).n),
+    1, "EXCLUDE retains wrong-answer history");
+  const excludeEventIdentity = `EXCLUDE:${parentAssignmentId}:${excludeRequestId}:student-h2`;
+  const excludeEvent = await db.prepare("SELECT * FROM class_exam_assignment_lifecycle_events WHERE operation_identity=?")
+    .bind(excludeEventIdentity).first();
+  assert.equal(excludeEvent.student_id, "student-h2");
+  const excludeReplay = await mf.dispatchFetch("http://local/api/class-exam-assignments/exclude-student", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify(excludeBody),
+  });
+  assert.equal((await excludeReplay.json()).idempotent, true);
+  assert.equal(Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignment_lifecycle_events WHERE operation='EXCLUDE' AND assignment_id=? AND student_id='student-h2'",
+  ).bind(parentAssignmentId).first()).n), 1);
+
+  const restoreRequestId = "88888888-8888-4888-8888-888888888882";
+  const restoreBody = { assignment_id: parentAssignmentId, student_id: "student-h2", operation_identity: restoreRequestId };
+  const restoreResponse = await mf.dispatchFetch("http://local/api/class-exam-assignments/restore-student", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify(restoreBody),
+  });
+  assert.equal(restoreResponse.status, 200, await restoreResponse.clone().text());
+  assert.equal(await db.prepare(
+    "SELECT 1 FROM class_exam_assignment_exclusions WHERE assignment_id=? AND student_id=? AND reason='manual'",
+  ).bind(parentAssignmentId, "student-h2").first(), null);
+  assert.equal((await db.prepare("SELECT id FROM exam_sessions WHERE id=?").bind(preservedSessionId).first()).id,
+    preservedSessionId);
+  assert.equal(Number((await db.prepare("SELECT COUNT(*) AS n FROM wrong_answers WHERE session_id=?").bind(preservedSessionId).first()).n), 1);
+  const restoreEventIdentity = `RESTORE:${parentAssignmentId}:${restoreRequestId}:student-h2`;
+  const restoreEvent = await db.prepare("SELECT * FROM class_exam_assignment_lifecycle_events WHERE operation_identity=?")
+    .bind(restoreEventIdentity).first();
+  assert.equal(restoreEvent.assignment_id, parentAssignmentId);
+  const restoreReplay = await mf.dispatchFetch("http://local/api/class-exam-assignments/restore-student", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify(restoreBody),
+  });
+  assert.equal((await restoreReplay.json()).idempotent, true);
+
+  const cancelRequestId = "88888888-8888-4888-8888-888888888883";
+  const cancelUrl = `http://local/api/class-exam-assignments/${encodeURIComponent(parentAssignmentId)}/cancel`;
+  const cancelResponse = await mf.dispatchFetch(cancelUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify({ operation_identity: cancelRequestId }),
+  });
+  const cancelResult = await cancelResponse.json();
+  assert.equal(cancelResponse.status, 200, JSON.stringify(cancelResult));
+  assert.ok(cancelResult.assignment.cancelled_at);
+  assert.equal(cancelResult.assignment.mixed_payload_json, parentAssignmentBeforeOps.mixed_payload_json);
+  assert.equal(cancelResult.assignment.archive2_snapshot_hash, parentAssignmentBeforeOps.archive2_snapshot_hash);
+  const cancelledOutputResponse = await mf.dispatchFetch(
+    `http://local/api/class-exam-assignments/${encodeURIComponent(parentAssignmentId)}/output?mode=ans`,
+    { headers: { "X-Fixture-Role": "teacher" } },
+  );
+  const cancelledOutput = await cancelledOutputResponse.json();
+  assert.equal(cancelledOutputResponse.status, 200, JSON.stringify(cancelledOutput));
+  assert.equal(cancelledOutput.envelope.assignmentId, parentAssignmentId,
+    "a cancelled Assignment remains reopenable from its historical frozen snapshot");
+  assert.equal((await db.prepare("SELECT id FROM exam_sessions WHERE id=?").bind(preservedSessionId).first()).id,
+    preservedSessionId, "CANCEL retains historical sessions");
+  assert.equal(Number((await db.prepare("SELECT COUNT(*) AS n FROM wrong_answers WHERE session_id=?").bind(preservedSessionId).first()).n),
+    1, "CANCEL retains historical wrong answers");
+  const destructiveDelete = await mf.dispatchFetch(
+    "http://local/api/exam-sessions/by-exam?class=" + encodeURIComponent("class-h2") +
+      "&exam=" + encodeURIComponent(parentAssignmentBeforeOps.exam_title) +
+      "&date=" + encodeURIComponent(parentAssignmentBeforeOps.exam_date) +
+      "&archive=" + encodeURIComponent(parentAssignmentBeforeOps.archive_file) +
+      "&assignment=" + encodeURIComponent(parentAssignmentId),
+    { method: "DELETE", headers: { "X-Fixture-Role": "teacher" } },
+  );
+  assert.equal(destructiveDelete.status, 409,
+    "legacy DELETE cannot erase an Archive 2.0 historical Assignment; cancellation is separate");
+  assert.equal((await db.prepare("SELECT id FROM exam_sessions WHERE id=?").bind(preservedSessionId).first()).id,
+    preservedSessionId);
+  const cancelReplay = await mf.dispatchFetch(cancelUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify({ operation_identity: cancelRequestId }),
+  });
+  assert.equal((await cancelReplay.json()).assignment.cancelled_at, cancelResult.assignment.cancelled_at);
+  assert.equal(Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignment_lifecycle_events WHERE operation='CANCEL' AND assignment_id=?",
+  ).bind(parentAssignmentId).first()).n), 1);
+  const cancelledRetry = await post("", {
+    contract_version: "archive2-v1",
+    class_id: "class-h2",
+    student_ids: ["student-h2"],
+    exam_date: "2026-10-02",
+    saved_paper_id: parentPaperId,
+    assignment_batch_id: "55555555-5555-4555-8555-555555555555",
+  }, "teacher");
+  assert.equal(cancelledRetry.status, 409, "CANCEL blocks ordinary Assignment retry");
+
+  const sourcePaper = await db.prepare("SELECT * FROM archive_saved_papers WHERE id=?").bind(parentPaperId).first();
+  const replacementSnapshot = JSON.parse(sourcePaper.snapshot_json);
+  const replacementTitle = sourcePaper.title + " 수정본";
+  replacementSnapshot.meta.title = replacementTitle;
+  replacementSnapshot.meta.printHeaderOptions = { ...replacementSnapshot.meta.printHeaderOptions, title: replacementTitle };
+  const replacementSnapshotJson = stableStringify(replacementSnapshot);
+  const replacementSnapshotHash = crypto.createHash("sha256").update(replacementSnapshotJson).digest("hex");
+  const replacementPaperId = crypto.randomUUID();
+  const replacementBatchId = crypto.randomUUID();
+  await db.prepare(`INSERT INTO archive_saved_papers (
+    id,owner_teacher_id,save_batch_id,part_index,part_count,title,grade,subject,question_count,
+    snapshot_json,snapshot_hash,save_request_hash,source_index_version,schema_version,created_at
+  ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(
+    replacementPaperId, "teacher-a", replacementBatchId, 0, 1, replacementTitle,
+    sourcePaper.grade, sourcePaper.subject, sourcePaper.question_count,
+    replacementSnapshotJson, replacementSnapshotHash, "a".repeat(64), sourcePaper.source_index_version,
+    SAVED_PAPER_SCHEMA, new Date().toISOString(),
+  ).run();
+  await db.prepare("INSERT INTO archive_saved_paper_library_metadata (saved_paper_id,owner_teacher_id,status) VALUES (?,?,?)")
+    .bind(replacementPaperId, "teacher-a", "ACTIVE").run();
+  await db.prepare(`INSERT INTO archive_saved_paper_lineage
+    (child_saved_paper_id,parent_kind,parent_id,parent_revision,parent_snapshot_hash,derivation_type)
+    VALUES (?,'SAVED_PAPER',?,NULL,?,'REVISION')`).bind(
+    replacementPaperId, parentPaperId, sourcePaper.snapshot_hash,
+  ).run();
+  const replacementAssignment = await post("", {
+    contract_version: "archive2-v1",
+    assignment_operation: "REPLACEMENT_ASSIGNMENT",
+    related_assignment_id: parentAssignmentId,
+    class_id: "class-h2",
+    student_ids: ["student-h2"],
+    exam_date: "2026-10-03",
+    saved_paper_id: replacementPaperId,
+    assignment_batch_id: replacementBatchId,
+  }, "teacher");
+  assert.equal(replacementAssignment.body.saved, true, JSON.stringify(replacementAssignment));
+  const replacementAssignmentId = replacementAssignment.body.assignment.id;
+  assert.notEqual(replacementAssignmentId, parentAssignmentId);
+  const replacementEvent = await db.prepare(
+    "SELECT * FROM class_exam_assignment_lifecycle_events WHERE assignment_id=? AND operation='REPLACEMENT_ASSIGNMENT'",
+  ).bind(replacementAssignmentId).first();
+  assert.equal(replacementEvent.related_assignment_id, parentAssignmentId);
+  assert.equal(replacementEvent.saved_paper_id, replacementPaperId);
+  assert.equal(JSON.parse(replacementEvent.metadata_json).parent_saved_paper_id, parentPaperId);
+  assert.equal((await db.prepare("SELECT cancelled_at FROM class_exam_assignments WHERE id=?").bind(parentAssignmentId).first()).cancelled_at,
+    cancelResult.assignment.cancelled_at, "replacement preserves the cancelled historical parent");
+  assert.equal((await db.prepare("SELECT id FROM exam_sessions WHERE id=?").bind(preservedSessionId).first()).id,
+    preservedSessionId);
+  await db.batch([
+    db.prepare("DELETE FROM class_exam_assignment_exclusions WHERE assignment_id=?").bind(replacementAssignmentId),
+    db.prepare("DELETE FROM class_exam_assignment_recipients WHERE assignment_id=?").bind(replacementAssignmentId),
+    db.prepare("DELETE FROM class_exam_assignment_questions WHERE assignment_id=?").bind(replacementAssignmentId),
+    db.prepare("DELETE FROM class_exam_assignments WHERE id=?").bind(replacementAssignmentId),
+  ]);
+  assert.ok(await db.prepare(
+    "SELECT event_id FROM class_exam_assignment_lifecycle_events WHERE assignment_id=? AND operation='REPLACEMENT_ASSIGNMENT'",
+  ).bind(replacementAssignmentId).first(), "replacement lineage remains auditable after row cleanup");
+
   for (const delivery of savedPaperDeliveries)
     await db.prepare("DELETE FROM class_exam_assignments WHERE id=?").bind(delivery.assignmentId).run();
   for (const paper of savedPapers)
@@ -607,6 +853,9 @@ try {
   );
   const repeat = await post("studio", payload);
   assert.equal(repeat.body.assignment?.id, id, JSON.stringify(repeat));
+  assert.equal(Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignment_lifecycle_events WHERE assignment_id=? AND operation='RETRY'",
+  ).bind(id).first()).n), 0, "RETRY keeps the existing write-key authority and is not an operation event");
   assert.equal(
     (
       await db
@@ -631,8 +880,7 @@ try {
     ...payload,
     student_ids: ["student-b"],
   });
-  assert.equal(changed.status, 502); // write succeeded; local Browser Rendering is deliberately absent.
-  assert.equal(changed.body.saved, true);
+  assert.equal(changed.status, 409, "retry cannot silently turn into add-recipients");
   const addedRecipient = await db.prepare(`
     SELECT r.student_id, x.student_id AS excluded_student_id
     FROM class_exam_assignment_recipients r
@@ -640,7 +888,8 @@ try {
     WHERE r.assignment_id=? AND r.student_id=?
   `).bind(id, "student-b").first();
   assert.equal(addedRecipient.student_id, "student-b");
-  assert.equal(addedRecipient.excluded_student_id, null);
+  assert.equal(addedRecipient.excluded_student_id, "student-b",
+    "retry cannot restore a previously excluded recipient");
   const duplicate = await post("studio", {
     ...payload,
     archive_file: "MIXED:archive2-second",
