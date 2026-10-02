@@ -6,7 +6,7 @@
   "canonicalOrdinal": 66,
   "lane": "R3-2",
   "examPath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
-  "examSha256": "sha256:1b0ee141326572dbd5f0a7b328d9a1f490d4da664d5f1207cd6b24b15315640b",
+  "examSha256": "sha256:90e35dba8555051d8d66613d72d0fdb6e07521d4aff9cf66f8dda69e6ba4df8e",
   "questionCount": 25,
   "questionRows": [
     {
@@ -192,16 +192,8 @@
         "evidence": "R3 fresh audit PASS for q5: visualNecessity checked from exact artifact bytes and required authority."
       },
       "meta": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "R3 fresh semantic audit found q5 primary template too narrow for the verified multi-step decisive method.",
-          "observedEvidence": "Current solution requires tangent-chord, isosceles-triangle, and cyclic-quadrilateral angle relations in sequence; current template is TPL_CIRCLE_ANGLE_TANGENT_CHORD while ACTIVE M3-RPM-080 projects composite angle reasoning.",
-          "unresolvedPoint": "q5 templateKey must be reconciled to the verified decisive method before release.",
-          "nextRequiredEvidenceOrCapability": "Codex post-R3 repair must rebind q5 metadata to the correct ACTIVE projection and independently recheck the repaired artifact.",
-          "repairAttempted": false,
-          "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "R3 is a release audit and direct repair is forbidden."
-        }
+        "status": "PASS",
+        "evidence": "Post-R3 repair recheck on exact repaired artifact: q5 templateKey is TPL_CIRCLE_ANGLE_COMPOSITE, matching verified M3-RPM-080 composite angle reasoning; original HOLD locus closed."
       },
       "difficulty": {
         "status": "PASS",
@@ -1127,7 +1119,7 @@
     },
     {
       "qid": 5,
-      "result": "HOLD",
+      "result": "PASS",
       "primaryMethod": "[키포인트] 접선-현의 각, 이등변삼각형, 내접사각형의 성질을 차례로 이용한다.",
       "decisiveStep": "[키포인트] 접선-현의 각, 이등변삼각형, 내접사각형의 성질을 차례로 이용한다.\n접선 $AT$와 현 $AD$가 이루는 각이 $55^\\circ$이므로 $x=\\angle ABD=55^\\circ$이다.\n그림에서 $AD=BD$이므로 $\\triangle ABD$는 이등변삼각형이고 $\\angle BAD=55^\\circ$이다.\n사각형 $ABCD$가 원에 내접하므로 $y=\\angle BCD=180^\\circ-55^\\circ=125^\\circ$이다.\n따라서 $y-x=70^\\circ$이고 정답은 ④이다.",
       "rpmDisposition": "RPM_SEMANTIC_FINAL",
@@ -1142,16 +1134,7 @@
       ],
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-      "nullReason": null,
-      "holdEvidence": {
-        "reason": "R3 fresh semantic audit found q5 primary template too narrow for the verified multi-step decisive method.",
-        "observedEvidence": "Current solution requires tangent-chord, isosceles-triangle, and cyclic-quadrilateral angle relations in sequence; current template is TPL_CIRCLE_ANGLE_TANGENT_CHORD while ACTIVE M3-RPM-080 projects composite angle reasoning.",
-        "unresolvedPoint": "q5 templateKey must be reconciled to the verified decisive method before release.",
-        "nextRequiredEvidenceOrCapability": "Codex post-R3 repair must rebind q5 metadata to the correct ACTIVE projection and independently recheck the repaired artifact.",
-        "repairAttempted": false,
-        "authorityLookupAttempted": true,
-        "whyDeterministicClosureImpossible": "R3 is a release audit and direct repair is forbidden."
-      }
+      "nullReason": null
     },
     {
       "qid": 6,
@@ -1615,14 +1598,19 @@
     "linkedSolutionVisualCount": 2,
     "visualEvidenceRows": 2,
     "metaEvidenceRows": 25,
-    "itemHoldCount": 1
+    "itemHoldCount": 0
   },
   "provenance": {
-    "stageInputArtifactSha": "073716484ed180fef9e09c31d8d20439a68bb3f3",
-    "stageInputSha256": "sha256:1b0ee141326572dbd5f0a7b328d9a1f490d4da664d5f1207cd6b24b15315640b",
-    "productionMutation": 0,
-    "mainMutation": 0
+    "stageInputArtifactSha": "bef78247ee090a57cbd83f01043ad8ff94df4864",
+    "stageInputSha256": "sha256:90e35dba8555051d8d66613d72d0fdb6e07521d4aff9cf66f8dda69e6ba4df8e",
+    "productionMutation": 2,
+    "mainMutation": 0,
+    "postR3RepairScope": [
+      "q5.templateKey",
+      "window.examTitle"
+    ],
+    "regenerationReason": "PR #155 Codex independent review found stale pre-repair evidence binding and missing examTitle; rebound to exact repaired bytes after deterministic repair."
   },
-  "currentStage": "R3_EVIDENCE_READY_VALIDATOR_PENDING",
-  "nextStage": "R3_FAIL_DEFERRED_PENDING_ACTUAL_VALIDATOR"
+  "currentStage": "POST_R3_REPAIR_EVIDENCE_READY_INDEPENDENT_REVIEW_PENDING",
+  "nextStage": "CODEX_INDEPENDENT_REVIEW"
 }
