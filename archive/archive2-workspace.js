@@ -199,6 +199,7 @@
     saveMessage: "",
     saveError: "",
     saveResultSignature: "",
+    saveResultState: "",
   };
   let autosaveTimer,
     previewTimer,
@@ -248,6 +249,7 @@
     const data = await response.json().catch(() => ({}));
     if (!response.ok || data.success === false) {
       const error = new Error(data.error || `요청 실패 (${response.status})`);
+      error.status = response.status;
       error.data = data;
       throw error;
     }
@@ -292,6 +294,7 @@
       "saveMessage",
       "saveError",
       "saveResultSignature",
+      "saveResultState",
     ];
     return {
       schemaVersion: C.VERSION,
@@ -452,7 +455,11 @@
       state.saveMessage = "";
       state.saveError = "";
       state.saveResultSignature = "";
+      state.saveResultState = "";
+    } else if (data.saveResultState === undefined) {
+      state.saveResultState = data.savedPaperIds?.length ? "SAVED" : data.saveError ? "FAILED" : "";
     }
+    if (state.saveResultState === "SAVING") state.saveResultState = "RESULT_UNKNOWN";
     state.filters = restoredFilters;
     state.scopes = restoredScopeKeys;
     // Old unopened drafts inherited [2, 3] without a user choosing difficulty.
@@ -1360,7 +1367,9 @@
     const saveBlocked = !state.selected.length || saveHardFailures.length > 0;
     const saveResultCurrent = Boolean(state.saveResultSignature) &&
       state.saveResultSignature === saveWorkSignature();
-    const savedResult = state.saveError && saveResultCurrent
+    const savedResult = state.saveResultState === "RESULT_UNKNOWN"
+      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 저장 결과 확인 버튼으로 같은 요청을 조회하거나 재시도합니다.<button type="button" data-action="save-paper" class="button-like primary">저장 결과 확인</button></div>'
+      : state.saveError && saveResultCurrent
       ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(state.saveError)}</div>`
       : state.saveMessage && saveResultCurrent
         ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>시험지 저장은 학생 배포와 별도입니다.</p>${state.savedPaperIds.map((id, i) => `<div><a href="workspace.html?view=saved&paper_id=${encodeURIComponent(id)}">${state.savedPaperIds.length > 1 ? `${i + 1}권 · ` : ""}저장한 시험지 보기</a> · <a href="index.html?savedPaper=${encodeURIComponent(id)}">학생에게 배포</a></div>`).join("")}</div>`
@@ -1427,6 +1436,8 @@
     )}</select></label></div><details id="question-list" class="question-manager" ${state.questionListOpen ? "open" : ""}><summary>문항별 고정·교체 (${state.selected.length}문항)</summary><div class="actions batch-tools">${tools}</div><div class="paper-list">${rows}</div></details><div id="preview-host"><div class="loading">실제 출력 엔진으로 미리보기를 준비합니다.</div></div></section>`;
   }
   function renderMobileActions() {
+    if (state.saveResultState === "RESULT_UNKNOWN")
+      return '<div class="mobile-actions">' + button("save-paper", "저장 결과 확인", 'class="primary"') + "</div>";
     if (!state.selected.length) return "";
     const r = review(),
       blocked =
@@ -1436,7 +1447,7 @@
   }
   function renderCompose() {
     return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
-    <div class="workspace"><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    <div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
@@ -1773,20 +1784,60 @@
     return prepared;
   }
   async function savePapers() {
-    if (!state.selected.length) throw new Error("저장할 문항을 먼저 선택해 주세요.");
     if (state.saveBusy) return;
-    const r = review();
-    const blocking = r.hardFailures.filter((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
-    if (blocking.length) throw new Error(blocking.join(" "));
-    if (r.warnings.length && !state.ackWarnings) {
-      state.inspector = "summary";
-      render();
-      throw new Error("저장 전에 안내를 확인해 주세요.");
-    }
+    const recoveringUnknown = state.saveResultState === "RESULT_UNKNOWN";
+    const pendingBatchId = state.saveBatchId;
+    if (!state.selected.length && !recoveringUnknown)
+      throw new Error("저장할 문항을 먼저 선택해 주세요.");
+    const setConfirmed = (data, expectedCount, workSignature) => {
+      const rows = Array.isArray(data?.papers) ? data.papers : [];
+      if (data?.saved !== true || !rows.length || (expectedCount && rows.length !== expectedCount))
+        throw new Error("저장 결과의 시험지 수를 확인하지 못했습니다.");
+      state.savedPaperIds = rows.map((paper) => paper.id);
+      state.saveMessage = state.savedPaperIds.length > 1
+        ? "시험지 " + state.savedPaperIds.length + "권을 저장했습니다."
+        : "시험지 1개를 저장했습니다.";
+      state.saveError = "";
+      state.saveResultState = "SAVED";
+      state.saveResultSignature = workSignature || state.saveResultSignature;
+      save();
+      status(state.saveMessage + " 학생 배포는 아직 완료되지 않았습니다.");
+    };
+    const resolveBatch = async (batchId = state.saveBatchId) => {
+      if (!batchId) return { found: false, saved: false, papers: [] };
+      return api("/archive-saved-papers/save-batches/" + encodeURIComponent(batchId));
+    };
+
     state.saveBusy = true;
     $("content").inert = true;
-    status("문항과 출력 정보를 확인한 뒤 시험지를 저장합니다.");
+    status(recoveringUnknown
+      ? "저장 요청의 기존 결과를 확인하고 있습니다."
+      : "문항과 출력 정보를 확인한 뒤 시험지를 저장합니다.");
+    let requestStarted = false;
+    let recoveryConfirmedAbsent = !recoveringUnknown;
+    let attemptedWorkSignature = state.saveResultSignature;
     try {
+      if (recoveringUnknown) {
+        try {
+          const prior = await resolveBatch(pendingBatchId);
+          recoveryConfirmedAbsent = prior.found === false && prior.saved !== true;
+          if (prior.saved) {
+            setConfirmed(prior, null, attemptedWorkSignature);
+            return;
+          }
+        } catch {
+          // The saved batch ID is idempotent, so a same-body POST can also resolve an unavailable lookup.
+        }
+      }
+      if (!state.selected.length) throw new Error("저장할 문항을 먼저 선택해 주세요.");
+      const reviewResult = review();
+      const blocking = reviewResult.hardFailures.filter((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
+      if (blocking.length) throw new Error(blocking.join(" "));
+      if (reviewResult.warnings.length && !state.ackWarnings) {
+        state.inspector = "summary";
+        render();
+        throw new Error("저장 전에 안내를 확인해 주세요.");
+      }
       const papers = await prepare();
       const filters = request(true).filters;
       const saveIndexVersion = state.indexVersion || state.catalog?.indexVersion || "";
@@ -1797,7 +1848,9 @@
         includeExtended: state.includeExtended === true,
         papers: papers.map((paper) => ({ part_index: paper.index, questions: paper.questions, meta: paper.meta })),
       });
-      if (state.saveSignature !== signature || !state.saveBatchId) {
+      if (recoveringUnknown && state.saveSignature !== signature)
+        throw new Error("저장 결과가 미확정인 요청 내용이 바뀌었습니다. 기존 요청 ID를 유지하며 다시 확인하세요.");
+      if (!recoveringUnknown && (state.saveSignature !== signature || !state.saveBatchId)) {
         state.saveSignature = signature;
         state.saveBatchId = crypto.randomUUID();
         state.savedPaperIds = [];
@@ -1806,9 +1859,11 @@
       }
       state.saveError = "";
       state.saveResultSignature = saveWorkSignature();
+      attemptedWorkSignature = state.saveResultSignature;
+      state.saveResultState = "SAVING";
       save();
       status("시험지 문항과 출제 범위를 서버에서 확인하고 저장하고 있습니다.");
-      const data = await api("/archive-saved-papers", {
+      const payload = {
         schema_version: "archive-saved-paper-v1",
         save_batch_id: state.saveBatchId,
         index_version: saveIndexVersion,
@@ -1819,21 +1874,38 @@
           questions: paper.questions,
           meta: paper.meta,
         })),
-      });
-      state.savedPaperIds = (data.papers || []).map((paper) => paper.id);
-      if (state.savedPaperIds.length !== papers.length)
-        throw new Error("저장 응답의 시험지 수가 요청과 다릅니다.");
-      state.saveMessage = state.savedPaperIds.length > 1
-        ? `시험지 ${state.savedPaperIds.length}권을 저장했습니다.`
-        : "시험지 1개를 저장했습니다.";
-      state.saveError = "";
-      save();
-      status(`${state.saveMessage} 학생 배포는 아직 완료되지 않았습니다.`);
+      };
+      requestStarted = true;
+      const data = await api("/archive-saved-papers", payload);
+      setConfirmed(data, papers.length, attemptedWorkSignature);
     } catch (error) {
-      state.saveMessage = "";
-      state.saveError = error.message || "저장 요청에 실패했습니다.";
-      save();
-      status("시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.", true);
+      let recovered = false;
+      if (requestStarted && (!error.status || error.status >= 500)) {
+        try {
+          const result = await resolveBatch();
+          if (result.saved) {
+            setConfirmed(result, null, attemptedWorkSignature);
+            recovered = true;
+          }
+        } catch {
+          // The outcome stays unknown until the same owner/batch can be read.
+        }
+      }
+      if (!recovered) {
+        const keepUnknown = (recoveringUnknown && !recoveryConfirmedAbsent) ||
+          (!requestStarted && recoveringUnknown) ||
+          (requestStarted && (!error.status || error.status >= 500));
+        state.saveResultState = keepUnknown ? "RESULT_UNKNOWN" : "FAILED";
+        state.saveMessage = "";
+        state.saveError = error.message || "저장 요청에 실패했습니다.";
+        save();
+        status(
+          keepUnknown
+            ? "저장 결과를 확인하지 못했습니다. 같은 요청 ID를 유지합니다. 저장 결과 확인을 다시 눌러 주세요."
+            : "시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.",
+          true,
+        );
+      }
     } finally {
       state.saveBusy = false;
       $("content").inert = false;
@@ -2269,6 +2341,10 @@
     history.pushState(null, "", url);
   }
   function newDraft() {
+    if (state.saveResultState === "RESULT_UNKNOWN") {
+      status("현재 저장 결과를 먼저 확인한 뒤 새 작업을 시작하세요.", true);
+      return;
+    }
     if (state.selected.length) save();
     delete state.filters.L3;
     delete state.filters.L4;
@@ -2304,6 +2380,7 @@
       saveMessage: "",
       saveError: "",
       saveResultSignature: "",
+      saveResultState: "",
       view: "compose",
     });
     render();
@@ -2324,6 +2401,10 @@
         return;
       }
       const a = b.dataset.action;
+      if (state.saveResultState === "RESULT_UNKNOWN" && a !== "save-paper") {
+        status("저장 결과를 확인할 때까지 Draft 편집을 잠급니다.", true);
+        return;
+      }
       if (a === "assignment-status") {
         await assignmentStatus(b.dataset.assignment);
         return;
@@ -2685,6 +2766,7 @@
     render();
   });
   document.addEventListener("change", async (event) => {
+    if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
     if (state.busy) return;
     const el = event.target;
     try {
@@ -2847,6 +2929,7 @@
     }
   });
   document.addEventListener("input", (event) => {
+    if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
     if (event.target.dataset.recentFilter === "query") {
       if (!event.isComposing) changeRecentFilter(event.target);
       return;
