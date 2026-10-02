@@ -1336,7 +1336,7 @@ window.questionBank = [
     "itemHold": false,
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.png",
-    "imageSize": "large"
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -1408,9 +1408,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q020_visual.png",
-    "imageSize": "large"
-  },
+      },
   {
     "id": 21,
     "level": "하",
