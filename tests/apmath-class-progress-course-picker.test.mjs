@@ -213,6 +213,58 @@ test('applying a selected course and active books adds a course card and collaps
     assert.match(detail.innerHTML, /onclick="toggleClassProgressCourseAdd\(\)"/);
 });
 
+test('partial course DOM updates only rendered groups and preserves unrendered course selections', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const firstGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M1-2');
+    const secondGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const firstPath = firstGroup.items[0].canonicalPathKey;
+    const secondPath = secondGroup.items[0].canonicalPathKey;
+    modalState.activeGroupKeys = [firstGroup.key, secondGroup.key];
+    modalState.selectedPathDraft = [firstPath, secondPath];
+
+    const checkedFirst = {
+        value: firstPath,
+        getAttribute(name) {
+            return name === 'data-canonical-path-key' ? firstPath : '';
+        }
+    };
+    const root = {
+        querySelectorAll(selector) {
+            if (selector === '[data-progress-group]') {
+                return [{ getAttribute(name) { return name === 'data-progress-group' ? firstGroup.key : ''; } }];
+            }
+            if (selector === '.record-unit-check:checked') return [checkedFirst];
+            return [];
+        }
+    };
+    context._elements.set('record-progress-course-panels', root);
+
+    const nextDraft = context.syncClassProgressUnitDraftsFromDom();
+
+    assert.deepEqual(Array.from(nextDraft), [firstPath, secondPath]);
+    const snapshot = context.buildClassProgressSnapshotItems();
+    assert.deepEqual(Array.from(snapshot.errors), []);
+    assert.deepEqual(Array.from(snapshot.items, item => item.canonical_path_key), [firstPath, secondPath]);
+});
+
+test('snapshot serialization uses the full draft instead of visible checked DOM only', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const firstGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M1-2');
+    const secondGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const firstPath = firstGroup.items[0].canonicalPathKey;
+    const secondPath = secondGroup.items[0].canonicalPathKey;
+    modalState.activeGroupKeys = [firstGroup.key, secondGroup.key];
+    modalState.selectedPathDraft = [firstPath, secondPath];
+
+    const snapshot = context.buildClassProgressSnapshotItems();
+
+    assert.deepEqual(Array.from(snapshot.errors), []);
+    assert.deepEqual(Array.from(snapshot.items, item => item.canonical_path_key), [firstPath, secondPath]);
+    assert.deepEqual(Array.from(snapshot.items, item => item.course_key), ['M1-2', 'M2-1']);
+});
+
 test('unsaved unit selection survives adding a second course before record save', () => {
     const context = makeContext('중1');
     const modalState = context.state.ui.classProgressModalState;

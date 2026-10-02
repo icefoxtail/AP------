@@ -2190,14 +2190,118 @@ function getClassProgressSelectedPathDraft() {
 function syncClassProgressUnitDraftsFromDom() {
     const modalState = getClassProgressModalState();
     const root = document.getElementById('record-progress-course-panels');
-    if (!root) return getClassProgressSelectedPathDraft();
+    const previousDraft = new Set(getClassProgressSelectedPathDraft());
+    if (!root) return Array.from(previousDraft);
 
-    modalState.selectedPathDraft = Array.from(new Set(
-        Array.from(root.querySelectorAll('.record-unit-check:checked'))
-            .map(input => String(input.getAttribute('data-canonical-path-key') || input.value || '').trim())
+    const groups = Array.isArray(modalState.groups) ? modalState.groups : [];
+    const groupByKey = new Map(groups.map(group => [String(group?.key || ''), group]));
+    const pathToGroupKey = new Map();
+    groups.forEach(group => {
+        const groupKey = String(group?.key || '');
+        (Array.isArray(group?.items) ? group.items : []).forEach(item => {
+            const pathKey = String(item?.canonicalPathKey || '').trim();
+            if (pathKey) pathToGroupKey.set(pathKey, groupKey);
+        });
+    });
+
+    const renderedGroupKeys = new Set(
+        Array.from(root.querySelectorAll('[data-progress-group]'))
+            .map(panel => String(panel.getAttribute('data-progress-group') || '').trim())
             .filter(Boolean)
-    ));
+    );
+    if (!renderedGroupKeys.size) return Array.from(previousDraft);
+
+    // DOM is only authoritative for course panels that are actually rendered.
+    // Keep draft selections for active-but-unrendered courses so a partial rerender
+    // can never collapse a full persistent snapshot into the visible subset.
+    renderedGroupKeys.forEach(groupKey => {
+        const group = groupByKey.get(groupKey);
+        if (!group) return;
+        (Array.isArray(group.items) ? group.items : []).forEach(item => {
+            const pathKey = String(item?.canonicalPathKey || '').trim();
+            if (pathKey) previousDraft.delete(pathKey);
+        });
+    });
+
+    Array.from(root.querySelectorAll('.record-unit-check:checked')).forEach(input => {
+        const pathKey = String(input.getAttribute('data-canonical-path-key') || input.value || '').trim();
+        if (!pathKey) return;
+        const ownerGroupKey = pathToGroupKey.get(pathKey);
+        if (!ownerGroupKey || !renderedGroupKeys.has(ownerGroupKey)) return;
+        previousDraft.add(pathKey);
+    });
+
+    const orderedKnownPaths = [];
+    groups.forEach(group => {
+        (Array.isArray(group?.items) ? group.items : []).forEach(item => {
+            const pathKey = String(item?.canonicalPathKey || '').trim();
+            if (pathKey && previousDraft.has(pathKey)) orderedKnownPaths.push(pathKey);
+        });
+    });
+    const unknownPaths = Array.from(previousDraft).filter(pathKey => !pathToGroupKey.has(pathKey));
+    modalState.selectedPathDraft = orderedKnownPaths.concat(unknownPaths);
     return modalState.selectedPathDraft;
+}
+
+function buildClassProgressSnapshotItems() {
+    const modalState = getClassProgressModalState();
+    const groups = Array.isArray(modalState.groups) ? modalState.groups : [];
+    const activeGroupKeys = new Set(
+        (Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys : [])
+            .map(key => String(key || '').trim())
+            .filter(Boolean)
+    );
+    const selectedPaths = getClassProgressSelectedPathDraft()
+        .map(path => String(path || '').trim())
+        .filter(Boolean);
+
+    const pathIndex = new Map();
+    groups.forEach((group, groupIndex) => {
+        const groupKey = String(group?.key || '').trim();
+        (Array.isArray(group?.items) ? group.items : []).forEach((item, itemIndex) => {
+            const pathKey = String(item?.canonicalPathKey || '').trim();
+            if (!pathKey || pathIndex.has(pathKey)) return;
+            pathIndex.set(pathKey, { group, groupKey, groupIndex, item, itemIndex });
+        });
+    });
+
+    const errors = [];
+    const entries = [];
+    const seenPaths = new Set();
+    selectedPaths.forEach(pathKey => {
+        if (seenPaths.has(pathKey)) return;
+        seenPaths.add(pathKey);
+        const indexed = pathIndex.get(pathKey);
+        if (!indexed) {
+            errors.push({ code: 'UNKNOWN_CANONICAL_PATH', pathKey });
+            return;
+        }
+        if (!activeGroupKeys.has(indexed.groupKey)) {
+            errors.push({ code: 'PATH_OUTSIDE_ACTIVE_COURSE', pathKey, groupKey: indexed.groupKey });
+            return;
+        }
+        entries.push(indexed);
+    });
+
+    entries.sort((left, right) =>
+        left.groupIndex - right.groupIndex ||
+        left.itemIndex - right.itemIndex ||
+        left.groupKey.localeCompare(right.groupKey) ||
+        String(left.item?.canonicalPathKey || '').localeCompare(String(right.item?.canonicalPathKey || ''))
+    );
+
+    return {
+        errors,
+        items: entries.map((entry, index) => ({
+            curriculum_key: String(entry.item?.curriculumKey || entry.group?.curriculumKey || ''),
+            level_key: String(entry.item?.level || entry.group?.level || ''),
+            course_key: String(entry.item?.courseKey || entry.group?.courseKey || ''),
+            canonical_path_key: String(entry.item?.canonicalPathKey || ''),
+            l1_snapshot: String(entry.item?.l1 || ''),
+            l2_snapshot: String(entry.item?.l2 || ''),
+            sort_order: index
+        }))
+    };
 }
 
 function removeClassProgressGroupPathsFromDraft(groupKey) {
@@ -3292,15 +3396,13 @@ async function saveClassRecord(cid, dateStr) {
             progress_text: String(draft.progressText || '').trim()
         });
     });
-    const selectedItems = Array.from(document.querySelectorAll('.record-unit-check:checked')).map((checkbox, index) => ({
-        curriculum_key: checkbox.getAttribute('data-curriculum-key') || '',
-        level_key: checkbox.getAttribute('data-level-key') || '',
-        course_key: checkbox.getAttribute('data-course-key') || '',
-        canonical_path_key: checkbox.getAttribute('data-canonical-path-key') || checkbox.value || '',
-        l1_snapshot: checkbox.getAttribute('data-l1') || '',
-        l2_snapshot: checkbox.getAttribute('data-l2') || '',
-        sort_order: index
-    }));
+    const snapshotDraft = buildClassProgressSnapshotItems();
+    if (snapshotDraft.errors.length > 0) {
+        console.error('[saveClassRecord] invalid full progress snapshot draft:', snapshotDraft.errors);
+        toast('진도 상태가 완전하지 않아 저장을 중단했습니다. 진도 창을 다시 열어 확인해주세요.', 'warn');
+        return;
+    }
+    const selectedItems = snapshotDraft.items;
     const meta = state.ui?.classProgressModalMeta;
     const loadedPhase = normalizeClassProgressPhase(meta?.loadedPhase ?? modalState?.loadedPhase);
     const selectedPhase = normalizeClassProgressPhase(modalState?.selectedPhase ?? meta?.selectedPhase ?? loadedPhase);
