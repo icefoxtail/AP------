@@ -266,13 +266,13 @@ export async function handleArchive2(
       await requireStudentAccess(teacher, newTargetIds, env);
     if (addRecipientsMode) {
       const parentRecipients = (await env.DB.prepare(
-        "SELECT r.student_id,x.student_id AS excluded_student_id FROM class_exam_assignment_recipients r LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id WHERE r.assignment_id=?",
+        "SELECT r.student_id,x.student_id AS excluded_student_id,x.reason AS exclusion_reason FROM class_exam_assignment_recipients r LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id WHERE r.assignment_id=?",
       ).bind(relatedAssignment.id).all()).results || [];
-      const previouslyActive = new Set(parentRecipients
-        .filter(row => !row.excluded_student_id)
+      const previouslyAssignedOrManuallyExcluded = new Set(parentRecipients
+        .filter(row => row.exclusion_reason !== "archive2_target")
         .map(row => row.student_id));
-      if (targetIds.some(id => previouslyActive.has(id)))
-        fail("기존 Assignment에 이미 배포된 학생은 ADD_RECIPIENTS 대상이 될 수 없습니다.", 409);
+      if (targetIds.some(id => previouslyAssignedOrManuallyExcluded.has(id)))
+        fail("기존 또는 수동 제외 학생은 ADD_RECIPIENTS로 우회할 수 없습니다. 필요하면 RESTORE를 사용하세요.", 409);
     }
     let payload = null,
       questions,

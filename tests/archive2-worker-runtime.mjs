@@ -731,6 +731,13 @@ try {
   const excludeEvent = await db.prepare("SELECT * FROM class_exam_assignment_lifecycle_events WHERE operation_identity=?")
     .bind(excludeEventIdentity).first();
   assert.equal(excludeEvent.student_id, "student-h2");
+  const addManualExcludedRecipient = await post("", {
+    ...addRecipientsBody,
+    student_ids: ["student-h2"],
+    assignment_batch_id: "77777777-7777-4777-8777-777777777778",
+  }, "teacher");
+  assert.equal(addManualExcludedRecipient.status, 409,
+    "ADD_RECIPIENTS cannot bypass an explicit manual EXCLUDE with a second Assignment");
   const excludeReplay = await mf.dispatchFetch("http://local/api/class-exam-assignments/exclude-student", {
     method: "POST",
     headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
@@ -770,6 +777,13 @@ try {
   ).bind(parentAssignmentId).first()).context_json, parentAssignmentContext.context_json,
   "EXCLUDE/RESTORE changes do not mutate the frozen Assignment context");
 
+  const excludeBeforeCancel = await mf.dispatchFetch("http://local/api/class-exam-assignments/exclude-student", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify({ ...excludeBody, operation_identity: "88888888-8888-4888-8888-888888888884" }),
+  });
+  assert.equal(excludeBeforeCancel.status, 200, await excludeBeforeCancel.clone().text());
+
   const cancelRequestId = "88888888-8888-4888-8888-888888888883";
   const cancelUrl = `http://local/api/class-exam-assignments/${encodeURIComponent(parentAssignmentId)}/cancel`;
   const cancelResponse = await mf.dispatchFetch(cancelUrl, {
@@ -804,6 +818,20 @@ try {
     body: JSON.stringify({ student_id: "student-h2", student_token: studentH2Token, assignment_id: parentAssignmentId, wrong_ids: [1] }),
   });
   assert.equal(cancelledOmr.status, 404, "a cancelled Assignment blocks new OMR submissions");
+  const restoreCancelled = await mf.dispatchFetch("http://local/api/class-exam-assignments/restore-student", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Fixture-Role": "teacher" },
+    body: JSON.stringify({ assignment_id: parentAssignmentId, student_id: "student-h2", operation_identity: "88888888-8888-4888-8888-888888888885" }),
+  });
+  assert.equal(restoreCancelled.status, 409,
+    "RESTORE cannot claim to reactivate a terminally cancelled Assignment");
+  assert.equal((await db.prepare(
+    "SELECT reason FROM class_exam_assignment_exclusions WHERE assignment_id=? AND student_id=?",
+  ).bind(parentAssignmentId, "student-h2").first()).reason, "manual",
+  "RESTORE after cancellation leaves the current exclusion projection unchanged");
+  assert.equal(await db.prepare(
+    "SELECT 1 FROM class_exam_assignment_lifecycle_events WHERE operation_identity=?",
+  ).bind(`RESTORE:${parentAssignmentId}:88888888-8888-4888-8888-888888888885:student-h2`).first(), null);
   const cancelledOutputResponse = await mf.dispatchFetch(
     `http://local/api/class-exam-assignments/${encodeURIComponent(parentAssignmentId)}/output?mode=ans`,
     { headers: { "X-Fixture-Role": "teacher" } },

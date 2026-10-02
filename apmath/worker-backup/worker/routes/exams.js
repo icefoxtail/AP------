@@ -993,6 +993,9 @@ async function performExcludeStudent(env, currentTeacher, { classId, studentId, 
   if (!assignment?.id) {
     return { success: false, student_id: studentId, error: 'assignment not found', status: 404 };
   }
+  if (assignment.cancelled_at)
+    return { success: false, student_id: studentId, assignment_id: assignment.id,
+      error: 'cancelled Assignment cannot change recipients', status: 409 };
   if (String(assignment.class_id || '') !== classId) {
     return { success: false, student_id: studentId, error: 'assignment class mismatch', status: 400 };
   }
@@ -1467,6 +1470,9 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!(await canAccessClass(currentTeacher, assignment.class_id, env)) ||
           !(await canAccessStudent(currentTeacher, studentId, env)))
         return jsonResponse({ error: 'Forbidden' }, 403);
+      if (assignment.cancelled_at)
+        return jsonResponse({ success: false, restored: false, cancelled: true,
+          error: 'cancelled Assignment cannot restore student visibility' }, 409);
       if (!(await hasClassExamAssignmentExclusions(env)) || !(await hasAssignmentLifecycleEvents(env)))
         return jsonResponse({ success: false, error: 'Assignment lifecycle migration is required' }, 503);
       const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
