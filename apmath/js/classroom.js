@@ -2175,6 +2175,47 @@ function getClassProgressModalState() {
     return state.ui.classProgressModalState;
 }
 
+function getClassProgressSelectedPathDraft() {
+    const modalState = getClassProgressModalState();
+    if (!Array.isArray(modalState.selectedPathDraft)) {
+        modalState.selectedPathDraft = Array.from(new Set(
+            (Array.isArray(modalState.savedPaths) ? modalState.savedPaths : [])
+                .map(path => String(path || '').trim())
+                .filter(Boolean)
+        ));
+    }
+    return modalState.selectedPathDraft;
+}
+
+function syncClassProgressUnitDraftsFromDom() {
+    const modalState = getClassProgressModalState();
+    const root = document.getElementById('record-progress-course-panels');
+    if (!root) return getClassProgressSelectedPathDraft();
+
+    modalState.selectedPathDraft = Array.from(new Set(
+        Array.from(root.querySelectorAll('.record-unit-check:checked'))
+            .map(input => String(input.getAttribute('data-canonical-path-key') || input.value || '').trim())
+            .filter(Boolean)
+    ));
+    return modalState.selectedPathDraft;
+}
+
+function removeClassProgressGroupPathsFromDraft(groupKey) {
+    const modalState = getClassProgressModalState();
+    const group = (Array.isArray(modalState.groups) ? modalState.groups : [])
+        .find(item => String(item?.key || '') === String(groupKey || ''));
+    if (!group) return getClassProgressSelectedPathDraft();
+
+    const removedPaths = new Set(
+        (Array.isArray(group.items) ? group.items : [])
+            .map(item => String(item?.canonicalPathKey || '').trim())
+            .filter(Boolean)
+    );
+    modalState.selectedPathDraft = getClassProgressSelectedPathDraft()
+        .filter(path => !removedPaths.has(String(path || '')));
+    return modalState.selectedPathDraft;
+}
+
 const CLASS_PROGRESS_PHASE_OPTIONS = Object.freeze([
     { key: 'regular', label: '정규 진도' },
     { key: 'semester1_midterm', label: '1학기 중간고사 대비' },
@@ -2511,12 +2552,12 @@ function renderClassProgressTextbookPanel() {
 function renderClassProgressTextbookDetail(book) {
     const modalState = getClassProgressModalState();
     const groups = Array.isArray(modalState.groups) ? modalState.groups : [];
-    const savedPaths = Array.isArray(modalState.savedPaths) ? modalState.savedPaths : [];
+    const selectedPaths = getClassProgressSelectedPathDraft();
     const meta = state.ui?.classProgressModalMeta || {};
     const progressInfo = modalState.progressByTextbook?.[String(book?.id || '')] || {};
     const activeKeys = new Set(Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys : []);
     const selectedId = String(book?.id || '');
-    const panels = groups.filter(group => activeKeys.has(group.key)).map(group => renderClassProgressCoursePanel(group, savedPaths)).join('');
+    const panels = groups.filter(group => activeKeys.has(group.key)).map(group => renderClassProgressCoursePanel(group, selectedPaths)).join('');
     const status = book ? getClassProgressTextbookStatus(book) : '';
     const statusLabel = status === 'complete' ? '완료' : '진행 중';
     const title = String(book?.title || '');
@@ -2648,6 +2689,7 @@ function selectClassProgressTextbook(textbookId) {
     const completedPanel = document.querySelector('.ap-class-progress-completed-books');
     if (completedPanel) modalState.completedBooksOpen = !!completedPanel.open;
     syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressUnitDraftsFromDom();
     modalState.selectedTextbookId = selectedId;
     modalState.courseAddOpen = false;
     renderClassProgressTextbookPanelInPlace(false);
@@ -2666,6 +2708,7 @@ function rerenderClassProgressTextbookDetail() {
 function toggleClassProgressCourseAdd() {
     const modalState = getClassProgressModalState();
     syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressUnitDraftsFromDom();
     syncClassProgressPhaseDraftFromDom();
     syncClassProgressCourseAddDraftFromDom();
     modalState.courseAddOpen = !modalState.courseAddOpen;
@@ -2731,6 +2774,7 @@ function cancelClassProgressInlineNewTextbook() {
 function cancelClassProgressCourseAdd() {
     const modalState = getClassProgressModalState();
     syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressUnitDraftsFromDom();
     syncClassProgressPhaseDraftFromDom();
     modalState.courseAddOpen = false;
     modalState.courseAddShowAll = false;
@@ -2743,6 +2787,7 @@ function cancelClassProgressCourseAdd() {
 }
 
 function applyClassProgressCourseAndTextbooks() {
+    syncClassProgressUnitDraftsFromDom();
     syncClassProgressCourseAddDraftFromDom();
     const modalState = getClassProgressModalState();
     const classId = String(modalState.classId || '');
@@ -2761,7 +2806,9 @@ function applyClassProgressCourseAndTextbooks() {
         newTextbookTitle: modalState.courseAddNewTextbookOpen
             ? String(modalState.courseAddNewTextbookTitle || '').trim()
             : '',
-        newTextbookStartDate: String(modalState.courseAddNewTextbookStartDate || date || getClassroomOperationDate())
+        newTextbookStartDate: String(modalState.courseAddNewTextbookStartDate || date || getClassroomOperationDate()),
+        activeGroupKeys: Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys.slice() : [],
+        selectedPathDraft: getClassProgressSelectedPathDraft().slice()
     };
 
     if (draft.newTextbookTitle) {
@@ -2795,7 +2842,7 @@ function applyClassProgressCourseAndTextbookDraft(draft = {}) {
     if (!modalState.activeGroupKeys.includes(groupKey)) modalState.activeGroupKeys.push(groupKey);
     if (root && !alreadyRendered) {
         root.querySelector('.ap-class-progress-course-empty')?.remove();
-        root.insertAdjacentHTML('beforeend', renderClassProgressCoursePanel(group, modalState.savedPaths || []));
+        root.insertAdjacentHTML('beforeend', renderClassProgressCoursePanel(group, getClassProgressSelectedPathDraft()));
     }
 
     const selectedBookIds = new Set((Array.isArray(draft.selectedBookIds) ? draft.selectedBookIds : []).map(String));
@@ -2830,6 +2877,14 @@ function applyPendingClassProgressCourseApply(classId, date, groups, activeKeys,
     if (!pending
         || String(pending.classId || '') !== String(classId || '')
         || String(pending.date || '') !== String(date || '')) return activeKeys;
+
+    const availableGroupKeys = new Set(
+        (Array.isArray(groups) ? groups : []).map(item => String(item?.key || '')).filter(Boolean)
+    );
+    (Array.isArray(pending.activeGroupKeys) ? pending.activeGroupKeys : []).forEach(key => {
+        const normalizedKey = String(key || '');
+        if (availableGroupKeys.has(normalizedKey)) activeKeys.add(normalizedKey);
+    });
 
     const group = (Array.isArray(groups) ? groups : []).find(item =>
         String(item.key || '') === String(pending.groupKey || '') && item.curriculumKey === '2022'
@@ -2957,8 +3012,10 @@ function submitClassProgressTextbookDelete(textbookId) {
 
 function removeClassProgressCourse(groupKey) {
     const modalState = getClassProgressModalState();
+    syncClassProgressUnitDraftsFromDom();
     const key = String(groupKey || '');
     if (!key) return;
+    removeClassProgressGroupPathsFromDraft(key);
     const root = document.getElementById('record-progress-course-panels');
     const panel = root
         ? Array.from(root.querySelectorAll('[data-progress-group]')).find(node => String(node.getAttribute('data-progress-group') || '') === key)
@@ -2971,6 +3028,7 @@ function removeClassProgressCourse(groupKey) {
 }
 
 function addClassProgressCourseFromSelect() {
+    syncClassProgressUnitDraftsFromDom();
     const select = document.getElementById('record-progress-course-select');
     const root = document.getElementById('record-progress-course-panels');
     if (!select || !root || !state.ui?.classProgressModalGroups) return;
@@ -2979,7 +3037,7 @@ function addClassProgressCourseFromSelect() {
     if (!group) return;
     if (Array.from(root.querySelectorAll('[data-progress-group]')).some(node => node.getAttribute('data-progress-group') === key)) return;
     root.querySelector('.ap-class-progress-course-empty')?.remove();
-    root.insertAdjacentHTML('beforeend', renderClassProgressCoursePanel(group, []));
+    root.insertAdjacentHTML('beforeend', renderClassProgressCoursePanel(group, getClassProgressSelectedPathDraft()));
     const modalState = getClassProgressModalState();
     if (!Array.isArray(modalState.activeGroupKeys)) modalState.activeGroupKeys = [];
     if (!modalState.activeGroupKeys.includes(key)) modalState.activeGroupKeys.push(key);
@@ -3071,6 +3129,9 @@ async function openClassRecordModal(cid, requestedDate) {
         gradeKey
     };
 
+    const pendingSelectedPathDraft = Array.isArray(state.ui?.pendingClassProgressCourseApply?.selectedPathDraft)
+        ? state.ui.pendingClassProgressCourseApply.selectedPathDraft.slice()
+        : null;
     const activeKeys = applyPendingClassProgressCourseApply(
         cid,
         todayStr,
@@ -3079,6 +3140,11 @@ async function openClassRecordModal(cid, requestedDate) {
         progressByTextbook,
         visibleBooks
     );
+    const selectedPathDraft = Array.from(new Set(
+        (pendingSelectedPathDraft || savedPaths)
+            .map(path => String(path || '').trim())
+            .filter(Boolean)
+    ));
     const selectedTextbook = visibleBooks.find(tb => tb.status === 'active') || visibleBooks[0] || null;
     state.ui.classProgressModalState = {
         classId: String(cid),
@@ -3091,6 +3157,7 @@ async function openClassRecordModal(cid, requestedDate) {
         selectedTextbookId: String(selectedTextbook?.id || ''),
         groups,
         savedPaths,
+        selectedPathDraft,
         activeGroupKeys: Array.from(activeKeys),
         loadedPhase: phaseState.phase,
         selectedPhase: phaseState.phase,
@@ -3209,6 +3276,7 @@ async function saveClassRecord(cid, dateStr) {
         return;
     }
     syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressUnitDraftsFromDom();
     syncClassProgressPhaseDraftFromDom();
     const modalState = state.ui?.classProgressModalState;
     const textbookDrafts = modalState?.progressByTextbook || {};
