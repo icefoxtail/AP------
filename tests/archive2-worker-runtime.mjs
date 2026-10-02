@@ -54,7 +54,7 @@ export default {async fetch(request, env) {
 const url=new URL(request.url);
 if(!url.pathname.startsWith('/api/'))return env.FIXTURE_ASSETS.fetch(request);
 const role=request.headers.get('X-Fixture-Role') || (request.headers.get('Authorization')==='Bearer fixture-admin'?'admin':null);
-const teacher=role ? {id:role==='admin'?'admin':'teacher-a',role} : null;
+const teacher=role ? {id:role==='admin'?'admin':role==='teacher-b'?'teacher-b':'teacher-a',role:role==='admin'?'admin':'teacher'} : null;
 if(url.pathname==='/api/__fixture/split-failure'&&teacher){splitFault=true;return Response.json({success:true});}
 if(url.pathname==='/api/class-exam-assignments/studio'&&splitFault){const body=await request.clone().json();if(body.question_count<50){splitFault=false;return Response.json({success:false,error:'검증용 후속 문제지 충돌: 이 문제지만 수정한 뒤 재시도하세요.'},{status:409});}}
 if(url.pathname==='/api/qr-classes'&&teacher)return Response.json({success:true,classes:(await env.DB.prepare('SELECT * FROM classes').all()).results});
@@ -389,9 +389,27 @@ try {
       const boardRow = boardData.assignments.find(row => row.id === delivery.body.assignment.id);
       assert.ok(boardRow, "board should retain the exact assignment identity");
       assert.equal(boardRow.has_output_snapshot, true);
+      assert.equal(boardRow.can_read_snapshot, true,
+        "a teacher assigned to the exact class may read its snapshot");
       assert.ok(boardRow.archive2_snapshot_hash);
       assert.equal(Object.prototype.hasOwnProperty.call(boardRow, "mixed_payload_json"), false,
         "board listing should not materialize the full payload before the direct output action");
+      const peerBoardResponse = await mf.dispatchFetch(
+        "http://local/api/class-exam-assignments/board?grade=%EA%B3%A02&from=2026-09-02&to=2026-10-02",
+        { headers: { "X-Fixture-Role": "teacher-b" } },
+      );
+      const peerBoard = await peerBoardResponse.json();
+      const peerRow = peerBoard.assignments.find(row => row.id === delivery.body.assignment.id);
+      assert.ok(peerRow, "same-grade board listing must retain another teacher's row");
+      assert.equal(peerRow.has_output_snapshot, true);
+      assert.equal(peerRow.can_read_snapshot, false,
+        "snapshot-read authority must use teacher ID and exact class ID");
+      const peerOutputResponse = await mf.dispatchFetch(
+        `http://local/api/class-exam-assignments/${encodeURIComponent(delivery.body.assignment.id)}/output?mode=ans`,
+        { headers: { "X-Fixture-Role": "teacher-b" } },
+      );
+      assert.equal(peerOutputResponse.status, 403,
+        "direct output endpoint must enforce the same read authority advertised by the board");
       savedPaperDeliveries.push({
         browseGrade: paper.browseGrade,
         saved: delivery.body.saved,

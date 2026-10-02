@@ -58,6 +58,15 @@ function normalizeAssignmentPdfQpp(value) {
   return [1, 2, 4, 6, 8].includes(parsed) ? parsed : 4;
 }
 
+async function canReadAssignmentSnapshot(teacher, classId, env, allowedClassIds) {
+  const normalizedClassId = String(classId || '').trim();
+  if (!teacher?.id || !normalizedClassId) return false;
+  if (isAdminUser(teacher)) return true;
+  if (allowedClassIds !== undefined)
+    return Array.isArray(allowedClassIds) && allowedClassIds.includes(normalizedClassId);
+  return await canAccessClass(teacher, normalizedClassId, env);
+}
+
 function normalizeMixedAssignmentPayload(value, archiveFile) {
   if (!String(archiveFile || '').startsWith('MIXED:')) return null;
   if (typeof value !== 'string' || !value.trim() || value.length > 900000) return null;
@@ -1320,7 +1329,7 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
       const assignment = await loadClassExamAssignmentById(env, id);
       if (!assignment) return jsonResponse({ error: '출제 내역을 찾을 수 없습니다.' }, 404);
-      if (!(await canAccessClass(currentTeacher, assignment.class_id, env)))
+      if (!(await canReadAssignmentSnapshot(currentTeacher, assignment.class_id, env)))
         return jsonResponse({ error: 'Forbidden' }, 403);
       const mode = String(url.searchParams.get('mode') || 'exam');
       if (!['exam', 'sol', 'ans'].includes(mode))
@@ -1534,18 +1543,26 @@ export async function handleExams(request, env, teacher, path, url) {
         LIMIT 1000
       `).bind(grade, from, to).all();
 
-      const rows = dedupeClassExamAssignments(res.results || []).map(row => {
+      const allowedSnapshotClassIds = await getAllowedClassIds(env, currentTeacher);
+      const rows = await Promise.all(dedupeClassExamAssignments(res.results || []).map(async row => {
         const ownerName = String(row.class_teacher_name || row.teacher_name || '').trim();
         const ownerKey = normalizeBoardGrade(ownerName);
+        const hasOutputSnapshot = Number(row.has_mixed_payload) === 1;
         return {
           ...row,
-          has_output_snapshot: Number(row.has_mixed_payload) === 1,
+          has_output_snapshot: hasOutputSnapshot,
+          can_read_snapshot: hasOutputSnapshot && await canReadAssignmentSnapshot(
+            currentTeacher,
+            row.class_id,
+            env,
+            allowedSnapshotClassIds,
+          ),
           teacher_name: ownerName,
           owner_name: ownerName,
           is_mine: !!(mineKey && ownerKey && mineKey === ownerKey),
           can_manage: isAdminUser(currentTeacher) || !!(mineKey && ownerKey && mineKey === ownerKey)
         };
-      });
+      }));
 
       return jsonResponse({ success: true, from, to, grade, assignments: rows });
     }

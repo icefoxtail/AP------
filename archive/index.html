@@ -1912,6 +1912,7 @@ function groupArchiveBoardAssignments(grade) {
         const teacherKey = String(row.teacher_id || row.teacherId || compactText(teacher)).trim();
         const groupKey = `${paperKey}::teacher:${teacherKey}`;
 
+        const canReadSnapshot = row.has_output_snapshot && row.can_read_snapshot === true;
         if (!groups.has(groupKey)) {
             groups.set(groupKey, {
                 title: getArchiveBoardAssignmentTitle(row),
@@ -1921,14 +1922,14 @@ function groupArchiveBoardAssignments(grade) {
                 isMine: isArchiveBoardMine(row),
                 classMap: new Map(),
                 assignments: [],
-            outputAssignmentId: row.has_output_snapshot ? String(row.id || '') : '',
+            outputAssignmentId: canReadSnapshot ? String(row.id || '') : '',
                 firstDate: date,
                 lastDate: date
             });
         }
 
         const group = groups.get(groupKey);
-        if (!group.outputAssignmentId && row.has_output_snapshot && row.id)
+        if (!group.outputAssignmentId && canReadSnapshot && row.id)
             group.outputAssignmentId = String(row.id);
         const classId = String(row.class_id || '');
         const className = String(row.class_name || row.className || '-').trim();
@@ -1997,7 +1998,7 @@ function renderAssignmentBoard(message) {
     }
 
     const actionError = assignmentBoardState.actionError
-        ? `<div class="assignment-board-action-error" role="alert">${archiveBoardEscape(assignmentBoardState.actionError.message)} <button type="button" data-board-output="1" data-assignment-id="${archiveBoardEscape(assignmentBoardState.actionError.assignmentId)}" data-mode="${archiveBoardEscape(assignmentBoardState.actionError.mode)}">다시 시도</button></div>`
+        ? `<div class="assignment-board-action-error" role="alert">${archiveBoardEscape(assignmentBoardState.actionError.message)}${(assignmentBoardState.boardRows || []).some(row => String(row.id || '') === String(assignmentBoardState.actionError.assignmentId || '') && row.has_output_snapshot && row.can_read_snapshot === true) ? ` <button type="button" data-board-output="1" data-assignment-id="${archiveBoardEscape(assignmentBoardState.actionError.assignmentId)}" data-mode="${archiveBoardEscape(assignmentBoardState.actionError.mode)}">다시 시도</button>` : ''}</div>`
         : '';
     list.innerHTML = actionError + rows.map(row => `
         <div class="assignment-board-row" title="${archiveBoardEscape(`${row.title} | ${row.teacher || '-'} | ${row.classLabel || '-'} | ${row.firstDate} ~ ${row.lastDate}`)}">
