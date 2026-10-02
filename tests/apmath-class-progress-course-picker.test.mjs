@@ -90,7 +90,10 @@ function makeContext(gradeKey = '중1') {
             getElementById(id) { return elements.get(id) || null; },
             querySelector() { return null; },
             querySelectorAll(selector) {
-                if (selector === '.ap-class-progress-course-book-choice:checked') return context._courseBookCheckboxes || [];
+                if (selector === '.ap-class-progress-course-book-choice:checked') {
+                    return (context._courseBookCheckboxes || []).filter(input => input.checked !== false);
+                }
+                if (selector === '.ap-class-progress-course-book-choice') return context._courseBookCheckboxes || [];
                 return [];
             }
         },
@@ -317,10 +320,9 @@ test('unsaved unit selection survives adding a second course before record save'
     assert.deepEqual(Array.from(modalState.selectedPathDraft), [firstPath]);
     assert.equal(modalState.activeGroupKeys.includes(firstGroup.key), true);
     assert.equal(modalState.activeGroupKeys.includes(secondGroup.key), true);
-    const marker = `value="${context.apEscapeHtml(firstPath)}"`;
-    const markerIndex = detail.innerHTML.indexOf(marker);
-    assert.notEqual(markerIndex, -1);
-    assert.match(detail.innerHTML.slice(markerIndex, markerIndex + 400), /checked/);
+    const snapshot = context.buildClassProgressSnapshotItems();
+    assert.equal(snapshot.items.some(item => item.canonical_path_key === firstPath), true);
+    assert.equal(modalState.activeGroupKeys.includes(secondGroup.key), true);
     assert.equal(inserted.some(html => html.includes(secondGroup.key)), true);
 });
 
@@ -365,12 +367,124 @@ test('binding an already-active course to a textbook persists the relationship',
 
     assert.equal(calls.length, 1);
     assert.equal(calls[0].path, 'class-textbooks/book-b');
-    assert.deepEqual(calls[0].payload, {
+    assert.equal(JSON.stringify(calls[0].payload), JSON.stringify({
         progress_curriculum_key: '2022',
         progress_level_key: 'middle',
         progress_course_key: 'M2-1'
-    });
+    }));
     assert.equal(context.getClassProgressTextbookGroupKey(modalState.books[1]), group.key);
+});
+
+test('changing course selection preserves manually checked textbooks', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const targetGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const bookA = { value: 'book-a', checked: true };
+    const bookB = { value: 'book-b', checked: false };
+    context._courseBookCheckboxes = [bookA, bookB];
+    modalState.courseAddBookIds = ['book-a'];
+
+    context.setClassProgressCourseSelection(targetGroup.key);
+
+    assert.equal(modalState.courseAddBookIds.includes('book-a'), true);
+    assert.equal(bookA.checked, true);
+});
+
+test('opening course picker defaults to the currently selected textbook', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    modalState.courseAddOpen = false;
+    modalState.courseAddBookIds = [];
+    modalState.selectedTextbookId = 'book-b';
+    const detail = { innerHTML: '' };
+    context._elements.set('record-progress-detail', detail);
+
+    context.toggleClassProgressCourseAdd();
+
+    assert.equal(modalState.courseAddOpen, true);
+    assert.deepEqual(Array.from(modalState.courseAddBookIds), ['book-b']);
+});
+
+test('removing a course unbinds only the selected textbook and keeps another textbook using the same course', async () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const group = groups.find(item => item.curriculumKey === '2022' && item.courseKey === 'M1-2');
+    const pathKey = group.items[0].canonicalPathKey;
+    modalState.activeGroupKeys = [group.key];
+    modalState.selectedPathDraft = [pathKey];
+    modalState.selectedTextbookId = 'book-a';
+    for (const book of modalState.books) {
+        book.progress_curriculum_key = group.curriculumKey;
+        book.progress_level_key = group.level;
+        book.progress_course_key = group.courseKey;
+    }
+    modalState.allBooks = modalState.books.map(book => ({ ...book }));
+    context.state.db.class_textbooks = modalState.books.map(book => ({ ...book }));
+
+    const checkedUnit = {
+        value: pathKey,
+        getAttribute(name) {
+            if (name === 'data-canonical-path-key') return pathKey;
+            return '';
+        }
+    };
+    const root = {
+        querySelectorAll(selector) {
+            if (selector === '[data-progress-group]') {
+                return [{ getAttribute(name) { return name === 'data-progress-group' ? group.key : ''; } }];
+            }
+            if (selector === '.record-unit-check:checked') return [checkedUnit];
+            return [];
+        }
+    };
+    context._elements.set('record-progress-course-panels', root);
+    context._elements.set('record-progress-books-panel', { innerHTML: '' });
+    context._elements.set('record-progress-detail', { innerHTML: '' });
+
+    const calls = [];
+    context.api.patch = async (path, payload) => {
+        calls.push({ path, payload });
+        const id = path.split('/').pop();
+        const current = modalState.books.find(book => book.id === id);
+        return {
+            success: true,
+            item: {
+                ...current,
+                progress_curriculum_key: null,
+                progress_level_key: null,
+                progress_course_key: null
+            }
+        };
+    };
+
+    await context.removeClassProgressCourse(group.key);
+
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].path, 'class-textbooks/book-a');
+    assert.equal(context.getClassProgressTextbookGroupKey(modalState.books.find(book => book.id === 'book-a')), '');
+    assert.equal(context.getClassProgressTextbookGroupKey(modalState.books.find(book => book.id === 'book-b')), group.key);
+    assert.equal(modalState.activeGroupKeys.includes(group.key), true);
+    assert.equal(modalState.selectedPathDraft.includes(pathKey), true);
+
+    modalState.selectedTextbookId = 'book-b';
+    const bookBHtml = context.renderClassProgressTextbookDetail(modalState.books.find(book => book.id === 'book-b'));
+    assert.match(bookBHtml, /data-progress-group="2022\|middle\|M1-2"/);
+});
+
+test('an unbound textbook does not inherit another textbook course once bindings exist', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const group = groups.find(item => item.curriculumKey === '2022' && item.courseKey === 'M2-1');
+    modalState.activeGroupKeys = [group.key];
+    modalState.books[1].progress_curriculum_key = group.curriculumKey;
+    modalState.books[1].progress_level_key = group.level;
+    modalState.books[1].progress_course_key = group.courseKey;
+
+    const unboundHtml = context.renderClassProgressTextbookDetail(modalState.books[0]);
+    const boundHtml = context.renderClassProgressTextbookDetail(modalState.books[1]);
+
+    assert.doesNotMatch(unboundHtml, /data-progress-group="2022\|middle\|M2-1"/);
+    assert.match(boundHtml, /data-progress-group="2022\|middle\|M2-1"/);
 });
 
 test('inline textbook registration reuses handleAddTextbook and carries the apply draft through modal reopen', async () => {
