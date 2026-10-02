@@ -1,0 +1,2273 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_순천여고_2학기_기말_고1_기출",
+  "ordinal": 5,
+  "stage": "META",
+  "status": "META_PASS_WITH_DOCUMENTED_RPM_AND_CROSSWALK_GAPS",
+  "originMain": "fc699d27122ea255a048874bb624fabbd95c4c34",
+  "branch": "work/high-source8-r2",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceArtifactSha256": "sha256:b05fa3a085699ed37798a99a035b533d6fe6a0075145436839853c84b67ba5c2",
+  "sourceArtifactGitBlobSha": "6224c099b808f13136031d0c4d2383c3013eda5c",
+  "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+  "targetArtifactSha256": "sha256:a88c7573bfe03082c1a9083331704b6b667fc8079d624d49acd029e90c31cf54",
+  "targetArtifactGitBlobSha": "cb168b5031979fa431c2048f39df925bfc61f35b",
+  "denominator": 23,
+  "resolvedMetaRecordCount": 23,
+  "itemHoldQids": [],
+  "sourceParity": {
+    "content": "23/23 exact",
+    "choices": "23/23 exact",
+    "sourceImageBlobParity": "4/4 exact",
+    "unrelatedMutationCount": 0,
+    "layoutTag": "23/23 exact"
+  },
+  "solutionVerification": {
+    "status": "PASS_23_OF_23",
+    "evidence": "independent-solution-verification.json",
+    "reviewedArtifactSha256": "sha256:f782397757ce6eb4657204bb06035510fc2f85607f2560b08ea006bb937c5c71"
+  },
+  "activeRegistry": {
+    "status": "ACTIVE",
+    "registrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
+    "validatedFieldRecordCount": 23,
+    "activeBindingCount": 23,
+    "populatedProblemTypeCount": 23,
+    "populatedTemplateCount": 23,
+    "invalidFieldRecords": []
+  },
+  "rpmSemantic": {
+    "scope": "2015 high-school mathematics (수학_상 / 수학_하)",
+    "exactPathResolverPassCount": 21,
+    "coverageGapQids": [
+      11,
+      16
+    ],
+    "policy": "q11/q16 have no exact H15 L4; retain deterministic source+verified-solution classification as nonblocking META_ONLY coverage debt, with validated existing ACTIVE PT/TPL/binding; no taxonomy key is invented."
+  },
+  "projection": {
+    "activeExactBindingCount": 23,
+    "resolverPreflightEvidence": "resolver-preflight.json",
+    "resolverPreflightStatus": "PASS for 21 exact H15 RPM paths; q11/q16 are META_ONLY; q4/q17/q20/q21 are documented projection variants.",
+    "crosswalkCandidateParityQids": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      18,
+      19,
+      22,
+      23
+    ],
+    "crosswalkVariantQids": [
+      4,
+      17,
+      20,
+      21
+    ],
+    "rpmOnlyCrosswalkQids": [],
+    "disposition": "All populated PT/TPL values are existing GLOBAL ACTIVE keys with validated H15 bindings; projection variants and the two explicit RPM gaps are documented without taxonomy edits."
+  },
+  "difficulty": {
+    "status": "PASS_WITH_ADJUDICATION",
+    "evidence": "difficulty-adjudication.json",
+    "resolvedCount": 23,
+    "legacyLevelCompatibilityCounts": {
+      "NORMAL": 17,
+      "BORDERLINE_ACCEPTABLE": 6,
+      "STRONG_CONFLICT": 0,
+      "UNKNOWN": 0
+    }
+  },
+  "crossConceptAdjudication": {
+    "rule": "Only concepts outside the selected Primary L1/L2 that are required by the decisive solution are listed.",
+    "records": [
+      {
+        "key": "CC_INVERSE_FUNCTION",
+        "status": "FINAL",
+        "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+        "sourceFingerprint": "sha256:e8e8efedadfcecbb85d2967460f53e4ac0059b24e8bd68c1cae879021cc5fda0",
+        "inputBundleSha": "sha256:d6d5de66c1412e5fdf8f361f14990743580c3731898427672ff786b309024cf0"
+      },
+      {
+        "key": "CC_NUMBER_PARITY",
+        "status": "FINAL",
+        "reason": "Digit parity determines the exhaustive valid-digit cases.",
+        "sourceFingerprint": "sha256:2cc864eff251110d9fafc5e5fdcc95ad4f7fe91e28dde9b9fb46f1e295447240",
+        "inputBundleSha": "sha256:b50461dcade06fe2903cc1c7996de3f7e38d8d44644b476c7bcbfe044ff163f7"
+      },
+      {
+        "key": "CC_INVERSE_FUNCTION",
+        "status": "FINAL",
+        "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+        "sourceFingerprint": "sha256:504e0ca815893da321a7cbdbc65282a762379c17a4253a3cd2cd72335cb0df33",
+        "inputBundleSha": "sha256:50f163219631f567e047473acbbe6b265ae7dc073b76dfd677e9e9d09ae50c47"
+      },
+      {
+        "key": "CC_INVERSE_FUNCTION",
+        "status": "FINAL",
+        "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+        "sourceFingerprint": "sha256:025792f4f840d89b702e28ae4500f4c130349d3c4e951c36f40d35ec50f5b1d0",
+        "inputBundleSha": "sha256:91d5ac50ea90a6fbca064917530da10f85579cca3eb9f27225c31ccb4ca6ec78"
+      },
+      {
+        "key": "CC_RATIONAL_FUNCTION",
+        "status": "FINAL",
+        "reason": "The rational graph supplies an independent quadrant constraint in addition to the radical graph.",
+        "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
+        "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf"
+      },
+      {
+        "key": "CC_TRIANGLE_AREA",
+        "status": "FINAL",
+        "reason": "Triangle area is the distinct geometric objective derived from the function-graph intersections.",
+        "sourceFingerprint": "sha256:95ae8d99a8c7fe818b7b98188d342016744730c6b94b104d12f9380001a5c983",
+        "inputBundleSha": "sha256:a0caea9a5fbcdd2baf294f1b860e57d383d68d8c0198d4abb67458b2ab7672b3"
+      },
+      {
+        "key": "CC_MIDPOINT",
+        "status": "FINAL",
+        "reason": "The midpoint coordinate condition supplies the relation used to determine the radical-curve secant slope.",
+        "sourceFingerprint": "sha256:8c257bcba5df7da3475e7f471c6d3cc20ace77ed25c28ac176674605bd4583e0",
+        "inputBundleSha": "sha256:d80b68270e84b97b173baa3f423581efcd447f0636ddedf7aa465688d451171f"
+      },
+      {
+        "key": "CC_COMBINATORICS_COUNTING",
+        "status": "FINAL",
+        "reason": "Combination counting is the decisive count after the source set-inclusion constraints are imposed.",
+        "sourceFingerprint": "sha256:3bb1582ecda4be740d38f9cf1600f85f797660312619593e98a0b2daae39a898",
+        "inputBundleSha": "sha256:b34c9d19740a52065c7ab89c707c7d2b59c51dd68984d52d627bb9beed6e4a7c"
+      },
+      {
+        "key": "CC_DISCRIMINANT",
+        "status": "FINAL",
+        "reason": "The quadratic discriminant is the decisive condition for intersection existence for every line slope.",
+        "sourceFingerprint": "sha256:f3397d780b42fe661bccb6b11d4900def25234354ad6a9eb96900b96b79f33f1",
+        "inputBundleSha": "sha256:8245bc145ed4d0c9924c4c7082bf0de3a6e96449f5c86b514cad828c1eaa946b"
+      },
+      {
+        "key": "CC_TRIANGLE_AREA",
+        "status": "FINAL",
+        "reason": "Triangle area is the distinct geometric objective derived from the function-graph intersections.",
+        "sourceFingerprint": "sha256:7bf68f699ed6f9cb823a35ef212b13a22f1ebd107758bd5cf6d1e29813496d94",
+        "inputBundleSha": "sha256:712cc5647cda1391e9fe511608867ef7a8c77045299abe02e2d5292ed1d54943"
+      },
+      {
+        "key": "CC_INVERSE_FUNCTION",
+        "status": "FINAL",
+        "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+        "sourceFingerprint": "sha256:9386f0570a3fd511d3fcf4bfe4ca5c27eb594ca497a739da3854d11cfdf08d3c",
+        "inputBundleSha": "sha256:f0d2ef438ff62ecbd1c9914a3074036b3f9aef195fd182be65536afdb9c4cd36"
+      },
+      {
+        "key": "CC_QUADRATIC_FUNCTION",
+        "status": "FINAL",
+        "reason": "The middle branch is a quadratic, and its shape determines how to satisfy global range and injectivity.",
+        "sourceFingerprint": "sha256:6ad7f3460a6703b46e2294b103b56eafcb8d917767faacc18917ce9659ea7458",
+        "inputBundleSha": "sha256:56784f973b1a6a1f29f274408235545ae8e587fb03c39cabbad3918c330d2b9e"
+      },
+      {
+        "key": "CC_INVERSE_FUNCTION",
+        "status": "FINAL",
+        "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+        "sourceFingerprint": "sha256:22acb1b83b8365d5d328479a46f693f19b9598227c23c963d9b38e7c602e54ed",
+        "inputBundleSha": "sha256:58d0fa9b7366fecbe13c8cdb1e21d1d03dc5e2dbcefa9fe4ae419874816b3fe6"
+      }
+    ],
+    "rejected": []
+  },
+  "conditionRationales": [
+    {
+      "key": "COND_NATURAL_NUMBER",
+      "status": "FINAL",
+      "reason": "A two-digit natural number cannot have tens digit zero.",
+      "sourceFingerprint": "sha256:2cc864eff251110d9fafc5e5fdcc95ad4f7fe91e28dde9b9fb46f1e295447240",
+      "inputBundleSha": "sha256:b50461dcade06fe2903cc1c7996de3f7e38d8d44644b476c7bcbfe044ff163f7"
+    },
+    {
+      "key": "COND_NATURAL_NUMBER",
+      "status": "FINAL",
+      "reason": "The source parameter n is restricted to natural numbers, so the binomial-count equation is solved on that discrete domain.",
+      "sourceFingerprint": "sha256:92da5bfb6d4a0de66c90693bab90559077edef644aca1ec1085f6a185b8d2621",
+      "inputBundleSha": "sha256:7ebb884a4672717c30826dc39344992e6cf3203b8d92b14436ca2707cee219e4"
+    },
+    {
+      "key": "COND_RANGE",
+      "status": "FINAL",
+      "reason": "The domain is restricted to the closed interval [−4,1], which determines the endpoint extrema.",
+      "sourceFingerprint": "sha256:11b2c9f4dee1da1d8fe0a7fcd34b6c7f97201117fff35521bebdf128f1bea3b7",
+      "inputBundleSha": "sha256:d61049ad09ad243b3a2ee2cc0a521ada935e868df73ee1525f228b544dbb6cb9"
+    },
+    {
+      "key": "COND_POSITIVE",
+      "status": "FINAL",
+      "reason": "The first-quadrant location and k>1 make the derived graph-coordinate parameters positive.",
+      "sourceFingerprint": "sha256:7bf68f699ed6f9cb823a35ef212b13a22f1ebd107758bd5cf6d1e29813496d94",
+      "inputBundleSha": "sha256:712cc5647cda1391e9fe511608867ef7a8c77045299abe02e2d5292ed1d54943"
+    },
+    {
+      "key": "COND_RANGE",
+      "status": "FINAL",
+      "reason": "The function and inverse domains constrain candidate common-point coordinates and eliminate the off-diagonal pair.",
+      "sourceFingerprint": "sha256:9386f0570a3fd511d3fcf4bfe4ca5c27eb594ca497a739da3854d11cfdf08d3c",
+      "inputBundleSha": "sha256:f0d2ef438ff62ecbd1c9914a3074036b3f9aef195fd182be65536afdb9c4cd36"
+    },
+    {
+      "key": "COND_RANGE",
+      "status": "FINAL",
+      "reason": "The image must be all real numbers, which constrains the middle branch range.",
+      "sourceFingerprint": "sha256:6ad7f3460a6703b46e2294b103b56eafcb8d917767faacc18917ce9659ea7458",
+      "inputBundleSha": "sha256:56784f973b1a6a1f29f274408235545ae8e587fb03c39cabbad3918c330d2b9e"
+    }
+  ],
+  "integrationAdjudication": [
+    {
+      "qid": 1,
+      "pattern": "SEQUENTIAL",
+      "reason": "Read the permutation expression first, then compute the zero-selection combination and multiply."
+    },
+    {
+      "qid": 2,
+      "pattern": "SEQUENTIAL",
+      "reason": "Recover g from the given identity composition and then evaluate at 2."
+    },
+    {
+      "qid": 3,
+      "pattern": "CASE_BRANCH",
+      "reason": "Count the two disjoint tens-digit parity cases separately and add."
+    },
+    {
+      "qid": 4,
+      "pattern": "SEQUENTIAL",
+      "reason": "Combine the rational expressions, simplify the numerator, and compare coefficients."
+    },
+    {
+      "qid": 5,
+      "pattern": "SEQUENTIAL",
+      "reason": "Evaluate the nested affine composition from the inside outward."
+    },
+    {
+      "qid": 6,
+      "pattern": "SEQUENTIAL",
+      "reason": "Set the combination count equal to 120 and determine the natural input."
+    },
+    {
+      "qid": 7,
+      "pattern": "SEQUENTIAL",
+      "reason": "Choose and order the endpoint boys, then arrange the remaining students."
+    },
+    {
+      "qid": 8,
+      "pattern": "INTERDEPENDENT",
+      "reason": "Translate the shared inverse-graph point into two linked function-value equations."
+    },
+    {
+      "qid": 9,
+      "pattern": "SEQUENTIAL",
+      "reason": "Read two graph values and compose them in the required order."
+    },
+    {
+      "qid": 10,
+      "pattern": "SEQUENTIAL",
+      "reason": "Assign four distinct balls to four distinct boxes in order."
+    },
+    {
+      "qid": 11,
+      "pattern": "SEQUENTIAL",
+      "reason": "Use the decreasing radical function to identify the minimum and maximum interval endpoints."
+    },
+    {
+      "qid": 12,
+      "pattern": "CASE_BRANCH",
+      "reason": "Check the rational graph sign over x<0 by parameter intervals and include the boundary case."
+    },
+    {
+      "qid": 13,
+      "pattern": "INTERDEPENDENT",
+      "reason": "Use the rational graph condition and radical graph condition together to restrict the parameters."
+    },
+    {
+      "qid": 14,
+      "pattern": "SEQUENTIAL",
+      "reason": "Subtract the equal and adjacent ordered-pair cases from the total."
+    },
+    {
+      "qid": 15,
+      "pattern": "INTERDEPENDENT",
+      "reason": "Relate the line–hyperbola intersections to the perpendicular triangle legs and its area."
+    },
+    {
+      "qid": 16,
+      "pattern": "SEQUENTIAL",
+      "reason": "Use the midpoint y-coordinate to find the sum of endpoint y-values, then compute the secant slope."
+    },
+    {
+      "qid": 17,
+      "pattern": "SEQUENTIAL",
+      "reason": "Count subsets meeting the inclusion requirements, then subtract the forbidden family."
+    },
+    {
+      "qid": 18,
+      "pattern": "SEQUENTIAL",
+      "reason": "Reduce both complex powers through their four-step algebraic cycles."
+    },
+    {
+      "qid": 19,
+      "pattern": "INTERDEPENDENT",
+      "reason": "Turn intersection for every slope into a discriminant condition and maximize n."
+    },
+    {
+      "qid": 20,
+      "pattern": "INTERDEPENDENT",
+      "reason": "Coordinate the graph intersections, equate right-isosceles legs, and use the area."
+    },
+    {
+      "qid": 21,
+      "pattern": "INTERDEPENDENT",
+      "reason": "Use graph-derived parameters and the inverse-intersection domain to determine the common point."
+    },
+    {
+      "qid": 22,
+      "pattern": "INTERDEPENDENT",
+      "reason": "Combine the outer ranges with global injectivity to reconstruct the middle quadratic."
+    },
+    {
+      "qid": 23,
+      "pattern": "CASE_BRANCH",
+      "reason": "Count involutions by zero, one, or two disjoint transpositions."
+    }
+  ],
+  "parentAdjudications": [
+    {
+      "qid": 4,
+      "decision": "Selected existing ACTIVE PT/TPL and exact H15 binding; crosswalk variant is documented."
+    },
+    {
+      "qid": 11,
+      "decision": "Selected existing ACTIVE PT/TPL and exact H15 binding; crosswalk variant is documented."
+    },
+    {
+      "qid": 16,
+      "decision": "Selected existing ACTIVE PT/TPL and exact H15 binding; crosswalk variant is documented."
+    },
+    {
+      "qid": 17,
+      "decision": "Selected existing ACTIVE PT/TPL and exact H15 binding; crosswalk variant is documented."
+    },
+    {
+      "qid": 20,
+      "decision": "Selected existing ACTIVE PT/TPL and exact H15 binding; crosswalk variant is documented."
+    },
+    {
+      "qid": 21,
+      "decision": "Selected existing ACTIVE PT/TPL and exact H15 binding; crosswalk variant is documented."
+    }
+  ],
+  "systemDefectCandidates": [
+    {
+      "type": "SYSTEM_DEFECT_CANDIDATE",
+      "scope": "H1 2015 RPM coverage",
+      "qids": [
+        11,
+        16
+      ],
+      "detail": "Exact H15 L4 leaves are missing for radical-function interval extrema and a midpoint-constrained secant slope; this exam records the gaps without taxonomy changes."
+    },
+    {
+      "type": "SYSTEM_DEFECT_CANDIDATE",
+      "scope": "H1 crosswalk projection",
+      "qids": [
+        4,
+        17,
+        20,
+        21
+      ],
+      "detail": "Crosswalk L2 projections differ from source+solution selected ACTIVE H1 bindings. Bindings validate; no shared-system edits were made."
+    }
+  ],
+  "authorities": [
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+      "bytes": 1839,
+      "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "bytes": 558759,
+      "sha256": "sha256:8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_하.md",
+      "bytes": 5066,
+      "sha256": "sha256:05f2eff79bae1827c5bca5aaa3d1e4fe5c09f783754f4a4ceb05db089b499042"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+      "bytes": 255230,
+      "sha256": "sha256:f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "bytes": 14035,
+      "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+      "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+      "bytes": 879,
+      "sha256": "sha256:72cc1f7be577667c2f166183017041ae2eeeaff74a8ef3167a64ed1380c6325e",
+      "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "bytes": 2050,
+      "sha256": "sha256:bbb8e0c4c10211e5faadeb5cfe462aa5a9b06890ad4052690b24002dc5511c4e",
+      "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "bytes": 1655704,
+      "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+      "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "bytes": 158736,
+      "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+      "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "bytes": 2091,
+      "sha256": "sha256:2800ec15d1dd9c15c51d5f18b48d399b233fbe33ff8eebfdf89a49c4ba98ae5f",
+      "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "bytes": 743114,
+      "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+      "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md",
+      "bytes": 6988,
+      "sha256": "sha256:06da50b55732a66d037e02a4eab874fb4b39823cf932f49414509904205172ad"
+    }
+  ],
+  "questions": [
+    {
+      "qid": 1,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|1",
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_64abffb332af5556ae3aacf22fb1d3a0be72148e2a84eeed6761fe22a7aa4a12",
+        "contentHash": "sha256:43dc65a9c41612c1f57665b0e5742bf8db74e888865049835ec5542634b057cc",
+        "choicesHash": "sha256:5ba4df32def04ccaaceb9cf4a60cc07e799adf93c8ebc8dfcddd6b23b5f2858f",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:e79f5241c44aef6a8a5c809291bbc17f5b1d904695d2a219eca238f465df5865",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC"
+      },
+      "primaryMethod": "Evaluate a permutation-symbol equation, then evaluate a zero-selection combination.",
+      "decisiveStep": "Match the factorial denominator in 11P_x to (11−x)! to determine x.",
+      "rpmPrimary": {
+        "id": "H1-RPM-124",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "일렬 배열",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-124",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "suggestedTemplateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Read the permutation expression first, then compute the zero-selection combination and multiply.",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "B12",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "The permutation and zero-combination formulas are direct. The independent raters split between adjacent buckets 1 and 2. The legacy middle label remains plausible on its coarser scale because two formula evaluations are combined; preserve the old level under the stability lock."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|2",
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_95e66556f015ba0af9c8be291d93da8d3e06b09cfbbcdbd11144ad14e9476181",
+        "contentHash": "sha256:de6c04656040f10c4b435da8d7c268e876aca6b730cfefdd4b1de9bf3942452c",
+        "choicesHash": "sha256:cc4f1f7fd21459ce5bcba92f00d0a8b9ba878a01dfdf0687db03ec9b942c35db",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:f1e4949876b69252f9db8fb41707547d9f7e05c5623c4d6b01bccdd8a869e952",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION"
+      },
+      "primaryMethod": "Recover g from an affine identity composition.",
+      "decisiveStep": "Solve f(g(x))=x for g(x), then substitute x=2.",
+      "rpmPrimary": {
+        "id": "H1-RPM-102",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-102",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+          "suggestedTemplateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_INVERSE_FUNCTION",
+          "status": "FINAL",
+          "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+          "sourceFingerprint": "sha256:e8e8efedadfcecbb85d2967460f53e4ac0059b24e8bd68c1cae879021cc5fda0",
+          "inputBundleSha": "sha256:d6d5de66c1412e5fdf8f361f14990743580c3731898427672ff786b309024cf0"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Recover g from the given identity composition and then evaluate at 2.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B12",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The identity-composition interpretation is one familiar step before a linear solve. Bucket 1 is plausible for the short calculation, so retain the 1/2 boundary while bucket 2 remains the better fit."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|3",
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_fa641bdfb2f3b8fb154853b21fc35767eb66927989c667a84772a22aa153e5ae",
+        "contentHash": "sha256:36c2bc1c3873fd22f48986222a2334babce6b7098aecd8be891fa5ffdee79e42",
+        "choicesHash": "sha256:ff13f36f92280dbb6862415334f9cc3c2a4a25ecc55d421e851187aa332b5a50",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:60346a787fedab2c79b3a10dc9141011b3693b9641b7190bc970169da12a884f",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE"
+      },
+      "primaryMethod": "Count valid ordered digit choices by parity cases.",
+      "decisiveStep": "Separate odd tens/even units from even tens/odd units and add the disjoint counts.",
+      "rpmPrimary": {
+        "id": "H1-RPM-122",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "합·곱의 법칙",
+        "l4": "경우를 나누어 세기",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "H1_FOUNDATION",
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-122",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "suggestedTemplateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_NUMBER_PARITY"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_NUMBER_PARITY",
+          "status": "FINAL",
+          "reason": "Digit parity determines the exhaustive valid-digit cases.",
+          "sourceFingerprint": "sha256:2cc864eff251110d9fafc5e5fdcc95ad4f7fe91e28dde9b9fb46f1e295447240",
+          "inputBundleSha": "sha256:b50461dcade06fe2903cc1c7996de3f7e38d8d44644b476c7bcbfe044ff163f7"
+        }
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "conditionDecisions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "status": "FINAL",
+          "reason": "A two-digit natural number cannot have tens digit zero.",
+          "sourceFingerprint": "sha256:2cc864eff251110d9fafc5e5fdcc95ad4f7fe91e28dde9b9fb46f1e295447240",
+          "inputBundleSha": "sha256:b50461dcade06fe2903cc1c7996de3f7e38d8d44644b476c7bcbfe044ff163f7"
+        }
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "Count the two disjoint tens-digit parity cases separately and add.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The parity split and leading-zero restriction are routine, but make bucket 3 a reasonable neighbor; retain bucket 2 as the more direct method."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|4",
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_2bb2352306e1e4e127169a75827f1ad80e3817c69fca12e7167690bfae64550f",
+        "contentHash": "sha256:bc1148911fd235f64f37fa147402dd8e3d2987b29ad58d1e54edd08ef8750f35",
+        "choicesHash": "sha256:94c1a492dc337cb3510d6526d7c061abe1528e53d19b98e1a14813b00f880038",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:c53af9f6750433eafbad11188a2f804c1385b3a6bef7adc8c87a957f068bc13f",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "subUnitKey": "H15-SB-04-RATIONAL_BASIC"
+      },
+      "primaryMethod": "Simplify an identity of rational expressions and identify numerator coefficients.",
+      "decisiveStep": "Put both fractions over the common denominator and simplify the numerator to −2x+5.",
+      "rpmPrimary": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "유리함수의 활용",
+        "l4": "식 결정",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": null,
+          "status": null,
+          "suggestedProblemTypeKey": null,
+          "suggestedTemplateKey": null,
+          "resolverValidation": "NOT_RUN_NO_EXACT_RPM_LEAF"
+        },
+        "projectionDisposition": "META_ONLY_CROSSWALK_VARIANT"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Combine the rational expressions, simplify the numerator, and compare coefficients.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Common-denominator algebra and coefficient comparison are routine."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|5",
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_e0f243145f9cdde9702988de739557702d29c244636077561d5a0d6d48764adf",
+        "contentHash": "sha256:a18abc6ab801563bbe376ceff0d7bef7d9c05406bfa811cabf185fa511218ed5",
+        "choicesHash": "sha256:795cfd58741e8d6653064f4b6397fd24636879021c41dda8dfaed61f6b6f63b9",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:f5923faa867a17380b2c6d26e2621cd5a3b7c9db607cb3423868e3654f321fe8",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION"
+      },
+      "primaryMethod": "Evaluate a composition containing the inverse of a composed affine function.",
+      "decisiveStep": "Compute f∘g, invert that affine function, then evaluate from the innermost f(2) outward.",
+      "rpmPrimary": {
+        "id": "H1-RPM-102",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-102",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+          "suggestedTemplateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_INVERSE_FUNCTION",
+          "status": "FINAL",
+          "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+          "sourceFingerprint": "sha256:504e0ca815893da321a7cbdbc65282a762379c17a4253a3cd2cd72335cb0df33",
+          "inputBundleSha": "sha256:50f163219631f567e047473acbbe6b265ae7dc073b76dfd677e9e9d09ae50c47"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Evaluate the nested affine composition from the inside outward.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The nested inverse composition has several routine steps in a stated order; bucket 3 remains a plausible workload neighbor."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|6",
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_1b1fc513d89763e805b17dccdb2335b1bb98d000f2ce9f111b4c3d2c9be25008",
+        "contentHash": "sha256:732a4c7e0e8661b0393059a7b96f32901720f6c8021ee57d9726f07fe4fb1cd7",
+        "choicesHash": "sha256:119a6d81cf8b830697ba7ba1e4042113a222c8a082c3619f03f917d8c647f06f",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:d5939f83f264ca4c4b35cc9a21b8f4ba73fac6c16922e7bbf462f317f9386209",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-08",
+        "subUnitKey": "H15-SB-08-COMBINATION_BASIC"
+      },
+      "primaryMethod": "Invert a combination count by testing the natural-number index.",
+      "decisiveStep": "Set nC3=120 and identify the matching n=10.",
+      "rpmPrimary": {
+        "id": "H1-RPM-128",
+        "majorUnit": "경우의 수",
+        "midUnit": "조합",
+        "l3": "조합의 뜻과 계산",
+        "l4": "조합 계산",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-128",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "suggestedTemplateKey": "TPL_COMBINATION_SELECTION",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "conditionDecisions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "status": "FINAL",
+          "reason": "The source parameter n is restricted to natural numbers, so the binomial-count equation is solved on that discrete domain.",
+          "sourceFingerprint": "sha256:92da5bfb6d4a0de66c90693bab90559077edef644aca1ec1085f6a185b8d2621",
+          "inputBundleSha": "sha256:7ebb884a4672717c30826dc39344992e6cf3203b8d92b14436ca2707cee219e4"
+        }
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Set the combination count equal to 120 and determine the natural input.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Recognize a single combination equation and identify its natural-number solution."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|7",
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_993cb6961ae5154a04979023994c0c6276004f1ce8b903717c52ee0b901e7062",
+        "contentHash": "sha256:7b12c2cb861b16e88f1ebe689d9413ecd0c8e3a3fb866d57ef53dfff1595b9c3",
+        "choicesHash": "sha256:b96d62d876ee2a3f1352999eb0075d02139d79089d2a31a7a80894f726b237d3",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:a04212e6f927634e62d67585d14b869e708e5a805f91fe86aa5ecc91d6a7d84f",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED"
+      },
+      "primaryMethod": "Arrange distinct students with a sex constraint on endpoint positions.",
+      "decisiveStep": "Choose the ordered pair of boys for the ends, then arrange the remaining students.",
+      "rpmPrimary": {
+        "id": "H1-RPM-125",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "특정 조건 배열",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-125",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "suggestedTemplateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Choose and order the endpoint boys, then arrange the remaining students.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Endpoint placements and the remaining arrangement are standard multiplication-rule steps."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|8",
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_8a91ed8cc58db3bbddf30c9a7a26a4cb30905a55a2f65eb7b93dddaa538d5c8a",
+        "contentHash": "sha256:e25a2280e692344a31c683ee5afac6aa9b26a10afd28380e37c954e06292a76f",
+        "choicesHash": "sha256:795cfd58741e8d6653064f4b6397fd24636879021c41dda8dfaed61f6b6f63b9",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:29bb388c60c37c4dff40a2787dfcec3c6c0a24f0577b7b28f2c7fb5dd39010ad",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-INVERSE_FUNCTION"
+      },
+      "primaryMethod": "Use the common point of a linear-function graph and its inverse graph.",
+      "decisiveStep": "Translate the shared point into f(−2)=1 and f(1)=−2, then solve for a,b.",
+      "rpmPrimary": {
+        "id": "H1-RPM-105",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "역함수",
+        "l4": "그래프 대칭",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-105",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_INVERSE_GRAPH",
+          "suggestedTemplateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Translate the shared inverse-graph point into two linked function-value equations.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Inverse-graph symmetry gives two linear conditions; bucket 3 is plausible but bucket 2 is the more direct fit."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|9",
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_be69ccb61d8cd5bc89cc9fbb11661415e4d9dbc6a4f2832e4f443c65af536fa6",
+        "contentHash": "sha256:11ab9aa1a8c5244b95fcd708433a60dd1532623d89b59bb42fdbf79fdef1a0ab",
+        "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+        "sourceVisual": {
+          "imageRefHash": "sha256:62326b8bc40749745ce3109febfae56d8021a961c6c431572bab44d10233258a"
+        }
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:2afecfa1552cdbff1a4af168873f6c1c8f6f0d238031e722f72a25695d25e253",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION"
+      },
+      "primaryMethod": "Read two function values from the graph and evaluate a second iterate.",
+      "decisiveStep": "Use f(3)=2 and f(2)=1 to get f(f(3))=1, so the inverse-composition input is 3.",
+      "rpmPrimary": {
+        "id": "H1-RPM-102",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-102",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+          "suggestedTemplateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_INVERSE_FUNCTION",
+          "status": "FINAL",
+          "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+          "sourceFingerprint": "sha256:025792f4f840d89b702e28ae4500f4c130349d3c4e951c36f40d35ec50f5b1d0",
+          "inputBundleSha": "sha256:91d5ac50ea90a6fbca064917530da10f85579cca3eb9f27225c31ccb4ca6ec78"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Read two graph values and compose them in the required order.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The verified graph readings make the successive composition lookup short and unambiguous."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|10",
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_d1217aa1f1e1fbae1f10ed9bcd103403839ea9c97ed8b841fabd1fb149235e38",
+        "contentHash": "sha256:e022524c50174583668b459e6af03485af827376e160666135ccb67a13f6f654",
+        "choicesHash": "sha256:6597e5362fde1c4a7c37ce2b6cd03f4e2f8f9c15194986caf627d2d8b00a895e",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:b416f668c104e8b7d09090cc98f5d38544c95a1701b2dbaa086c2d6dcea401d8",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED"
+      },
+      "primaryMethod": "Count injections from four distinct balls to distinct boxes.",
+      "decisiveStep": "Assign the labelled balls to four distinct boxes in order, giving 6P4.",
+      "rpmPrimary": {
+        "id": "H1-RPM-125",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "특정 조건 배열",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-125",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "suggestedTemplateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Assign four distinct balls to four distinct boxes in order.",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "The count is the direct formula 6P4. The fresh recheck confirmed bucket 1; the legacy middle label remains plausible for an application of distinct-object arrangements under the coarser old scale, so retain it."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|11",
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_36c0b37c6dd8abb3f46c8f774f143251beee85f145b95d9026f2ba7491ec04dc",
+        "contentHash": "sha256:cac55ac4e8acc59de6f3f1d5b93258bdb4ea91a6912e5458838ef612e4649a63",
+        "choicesHash": "sha256:ebb443eccdb14874856e0eb5c7b00fa4c968eb3566927473c4dc87d7b7b4719a",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:cdc2487c7ba7e801cf661371451eddcb53912ad9cea7acce32096a8d5637a58c",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH"
+      },
+      "primaryMethod": "Use monotonicity of a radical function to locate interval endpoint extrema.",
+      "decisiveStep": "The function decreases on [−4,1]; use x=1 to determine a and x=−4 for the maximum.",
+      "rpmPrimary": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": null,
+        "status": "RPM_COVERAGE_GAP_META_ONLY",
+        "nearestSupported": "무리함수의 활용; No exact RPM L4 covers extrema of a radical function over a closed interval."
+      },
+      "semanticStatus": "RPM_COVERAGE_GAP_META_ONLY",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": null,
+          "status": null,
+          "suggestedProblemTypeKey": null,
+          "suggestedTemplateKey": null,
+          "resolverValidation": "NOT_RUN_NO_EXACT_RPM_LEAF"
+        },
+        "projectionDisposition": "META_ONLY_RPM_COVERAGE_GAP"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDecisions": [
+        {
+          "key": "COND_RANGE",
+          "status": "FINAL",
+          "reason": "The domain is restricted to the closed interval [−4,1], which determines the endpoint extrema.",
+          "sourceFingerprint": "sha256:11b2c9f4dee1da1d8fe0a7fcd34b6c7f97201117fff35521bebdf128f1bea3b7",
+          "inputBundleSha": "sha256:d61049ad09ad243b3a2ee2cc0a521ada935e868df73ee1525f228b544dbb6cb9"
+        }
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Use the decreasing radical function to identify the minimum and maximum interval endpoints.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Monotonicity on a fixed interval directly identifies the two endpoint extrema."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|12",
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_458352b10058143c3a0e0e1df38e10fe32c60e62b5407a7e96a3f8f8fb75d310",
+        "contentHash": "sha256:286cb0630be06bf134cce7ee6abd2dd7876a2136dabda3fb2f0d4406c5a527b2",
+        "choicesHash": "sha256:8f1c0bf920eef05e2ceedce1f87337a59ef3c127036c05fad25f4feec485e8df",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:c164820c5dad95bd138b2a25b0ad83dfb6c312edea35491b12e738ae5dd48e8f",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH"
+      },
+      "primaryMethod": "Determine the parameter range from the sign of a translated reciprocal graph.",
+      "decisiveStep": "Rewrite y=2+(k−1)/(x−1) and test for x<0,y<0.",
+      "rpmPrimary": {
+        "id": "H1-RPM-111",
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "점근선과 위치",
+        "l4": "그래프의 사분면",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-111",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+          "suggestedTemplateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "Check the rational graph sign over x<0 by parameter intervals and include the boundary case.",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The sign condition must hold across x<0 and requires a parameter-case analysis; the bounded rational sign argument remains within a standard bucket-3 structure."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|13",
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_ed1957e3ff14aadf0c5d0d24e81c9cfe18cded21d0b7ca95093ab19594b18e99",
+        "contentHash": "sha256:579125901a051c0d2cb9bbfabf294504578cbaa3f907603871b5870a32679151",
+        "choicesHash": "sha256:3543832344cbd3df313a1e10e897e02e02b70b7705b79724e2f588a559d32b1a",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:bd23d6d9997fb99e9569cdf69ef24ae3f069222d65da547b675e054f27bc9ea0",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH"
+      },
+      "primaryMethod": "Combine quadrant conditions on rational and radical function graphs.",
+      "decisiveStep": "Find a,b from the inverse of the radical function and its range, then use b−a.",
+      "rpmPrimary": {
+        "id": "H1-RPM-118",
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "정의역과 치역",
+        "l4": "그래프 위치",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-118",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "suggestedTemplateKey": "TPL_GRAPH_ORDER_INTERVAL",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_RATIONAL_FUNCTION",
+          "status": "FINAL",
+          "reason": "The rational graph supplies an independent quadrant constraint in addition to the radical graph.",
+          "sourceFingerprint": "sha256:097ab22003adfabc2dc3d9ed07fb64feb204192844fb6e1ee2b1bb81374f4f69",
+          "inputBundleSha": "sha256:5dba31954d3e8d9489a7975b5ade804348ddb4a7ae1786fcc2d95049f05217bf"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Use the rational graph condition and radical graph condition together to restrict the parameters.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Apply the standard radical inverse formula, domain, and coefficient comparison."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|14",
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_dad3075bd2abd3e4142c3388b0c4d8a1b97f16c2fe49d85424f73182505e87fa",
+        "contentHash": "sha256:2d6f7efe788cdf252506618b671fccef916adc9aefd04b42cc0866e7b230a536",
+        "choicesHash": "sha256:ff13f36f92280dbb6862415334f9cc3c2a4a25ecc55d421e851187aa332b5a50",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:ca2f8230d25f3ca33ad4f4e89e73b3415061ea229dcccdc0ef0b98b951ded7b8",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE"
+      },
+      "primaryMethod": "Count ordered dice outcomes by removing the complement of the desired difference condition.",
+      "decisiveStep": "Subtract equal pairs and adjacent pairs from all 36 ordered outcomes.",
+      "rpmPrimary": {
+        "id": "H1-RPM-122",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "합·곱의 법칙",
+        "l4": "경우를 나누어 세기",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "H1_FOUNDATION",
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-122",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "suggestedTemplateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Subtract the equal and adjacent ordered-pair cases from the total.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "A complement count removes two disjoint, easy-to-count groups of ordered outcomes."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|15",
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_424800a42150a151d79bf093082f190d4dd6ded1e6968c1bb18fbdc800992d09",
+        "contentHash": "sha256:d7efec1350f5c2f89f6eef7cbd4a9c536f4a5d15039fee7fb2ff5d10138c8e66",
+        "choicesHash": "sha256:c0454da1f6d5c90ca8055a97fe593cca8702fccc76db8fcac638534a18dbf541",
+        "sourceVisual": {
+          "imageRefHash": "sha256:e02916e14b4effa4cd00013e0a2ed9fd189178f8a1c7ecb68bdc5a664de44c7a"
+        }
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:57df3ee14b93db9d49a9ee88759de9a7c9038175dcb7c81afec3bbdf71fdfcf3",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION"
+      },
+      "primaryMethod": "Use the line–hyperbola intersections to obtain a fixed right-triangle area.",
+      "decisiveStep": "Parameterize P,Q on the line through the origin and use mt²=−3 to evaluate the perpendicular-leg product.",
+      "rpmPrimary": {
+        "id": "H1-RPM-114",
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "유리함수의 활용",
+        "l4": "유리함수와 그래프의 교점",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-114",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "suggestedTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_TRIANGLE_AREA",
+          "status": "FINAL",
+          "reason": "Triangle area is the distinct geometric objective derived from the function-graph intersections.",
+          "sourceFingerprint": "sha256:95ae8d99a8c7fe818b7b98188d342016744730c6b94b104d12f9380001a5c983",
+          "inputBundleSha": "sha256:a0caea9a5fbcdd2baf294f1b860e57d383d68d8c0198d4abb67458b2ab7672b3"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Relate the line–hyperbola intersections to the perpendicular triangle legs and its area.",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "The source graph plus line/hyperbola symmetry yields a fixed triangle-area relation. The recheck considered bucket 3 plausible, but the coordinate restructuring is a meaningful upper step; keep bucket 4 and retain the historically reasonable middle label under the stability lock."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|16",
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_c7f62e26019e7017bd084610a5e09dadc311f5455a044d18b0e4e807578a6393",
+        "contentHash": "sha256:465a8dfb3e632c64713c8e6724cc66912ae660f1bfe01f699c594901d20e8274",
+        "choicesHash": "sha256:cbd3c9d34dd7c36d987057d045c26c3d466ea70309bd5596bcc6a51f8ad3910e",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:65cd0a958d76267365a7438752ade89e1eaaf18c4333795e39eb044a97a79683",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH"
+      },
+      "primaryMethod": "Express the radical curve's x-coordinate as a function of y and use the midpoint condition.",
+      "decisiveStep": "Set u+v=2 and simplify the secant slope to 1/(u+v+2).",
+      "rpmPrimary": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": null,
+        "status": "RPM_COVERAGE_GAP_META_ONLY",
+        "nearestSupported": "무리함수의 활용; No exact RPM L4 covers a secant slope of a radical curve constrained by the midpoint y-coordinate."
+      },
+      "semanticStatus": "RPM_COVERAGE_GAP_META_ONLY",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": null,
+          "status": null,
+          "suggestedProblemTypeKey": null,
+          "suggestedTemplateKey": null,
+          "resolverValidation": "NOT_RUN_NO_EXACT_RPM_LEAF"
+        },
+        "projectionDisposition": "META_ONLY_RPM_COVERAGE_GAP"
+      },
+      "crossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_MIDPOINT",
+          "status": "FINAL",
+          "reason": "The midpoint coordinate condition supplies the relation used to determine the radical-curve secant slope.",
+          "sourceFingerprint": "sha256:8c257bcba5df7da3475e7f471c6d3cc20ace77ed25c28ac176674605bd4583e0",
+          "inputBundleSha": "sha256:d80b68270e84b97b173baa3f423581efcd447f0636ddedf7aa465688d451171f"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Use the midpoint y-coordinate to find the sum of endpoint y-values, then compute the secant slope.",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Translate the midpoint condition into a relation between y-coordinates, then simplify a secant slope; bucket 4 is plausible but bucket 3 is the standard fit."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|17",
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_5be4ee10729d3874b7ec02bf764ac5db27843a8c4039ba4487172718fbe71d58",
+        "contentHash": "sha256:5586472bec7c710960fc7daeace3bca0a596ce1bc551c3284d62a0a7e7026c14",
+        "choicesHash": "sha256:0c0146e7705ba4367a09ad02fb769209917329a9590783db522c0647ea296f37",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:e19a23e19fba662ac8c42ba7341612d028a53f2c9524d7e6dc39ac25b3eff494",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-01",
+        "subUnitKey": "H15-SB-01-SET_COUNT"
+      },
+      "primaryMethod": "Count fixed-cardinality subsets satisfying inclusion and exclusion conditions.",
+      "decisiveStep": "Count the size-five subsets containing 1,2, then subtract those that also contain 5,7.",
+      "rpmPrimary": {
+        "id": null,
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 뜻과 포함 관계",
+        "l3": "부분집합",
+        "l4": "부분집합의 개수",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "SETS_PROPOSITIONS",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "SETS_PROPOSITIONS",
+        "crosswalk": {
+          "recordId": null,
+          "status": null,
+          "suggestedProblemTypeKey": null,
+          "suggestedTemplateKey": null,
+          "resolverValidation": "NOT_RUN_NO_EXACT_RPM_LEAF"
+        },
+        "projectionDisposition": "META_ONLY_CROSSWALK_VARIANT"
+      },
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_COMBINATORICS_COUNTING",
+          "status": "FINAL",
+          "reason": "Combination counting is the decisive count after the source set-inclusion constraints are imposed.",
+          "sourceFingerprint": "sha256:3bb1582ecda4be740d38f9cf1600f85f797660312619593e98a0b2daae39a898",
+          "inputBundleSha": "sha256:b34c9d19740a52065c7ab89c707c7d2b59c51dd68984d52d627bb9beed6e4a7c"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Count subsets meeting the inclusion requirements, then subtract the forbidden family.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Choose a fixed-size subset and subtract one forbidden family."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|18",
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_30a55434567f8ba3ee9e662e3a35c3d6ebc35858e895d7180db041f586c7096c",
+        "contentHash": "sha256:43677f3756240bbf35d14df8534e68d645a40e03ab5ba1e8e1147992c888f4b3",
+        "choicesHash": "sha256:795cfd58741e8d6653064f4b6397fd24636879021c41dda8dfaed61f6b6f63b9",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:ab4467052a2e5467b786f1a570f9798e79d34f684776dda2eca4273c84afff0f",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_상",
+        "standardCourse": "수학(상)",
+        "standardUnitKey": "H15-SA-04",
+        "subUnitKey": "H15-SA-04-COMPLEX_OPERATION"
+      },
+      "primaryMethod": "Reduce powers of two normalized complex numbers using their four-step algebraic periods.",
+      "decisiveStep": "Show z⁴=−1 and (z−√2)⁴=−1, then use exponent 36.",
+      "rpmPrimary": {
+        "id": "H1-RPM-025",
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "복소수",
+        "l3": "i의 거듭제곱",
+        "l4": "주기성",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "H1_FOUNDATION",
+        "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-025",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+          "suggestedTemplateKey": "TPL_H1_COMPLEX_I_PERIOD",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [],
+      "crossConceptDecisions": [],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Reduce both complex powers through their four-step algebraic cycles.",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Use the four-step algebraic power cycle of two complex numbers."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|19",
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_7094e1fa3d523d2f7a6c8ad0c31bad37b28e1dd6ac4889d2ce36e41879961899",
+        "contentHash": "sha256:cd31d67fee9ca7a27bb5ffc1412709c61d0a90566f0063d5ec0a7a77110b11e1",
+        "choicesHash": "sha256:fc859cb71dc8ae8fb0e183b970f9040a8d251bbd6a0869b7854b3fcb36646e2c",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:194200bd7c00e4f5b09c8f2ae396b608b2d0ed213aa604f1be11cd32774a751d",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION"
+      },
+      "primaryMethod": "Require every line slope to intersect a rational-function graph.",
+      "decisiveStep": "Shift x to the rational denominator's center and force the quadratic discriminant to be nonnegative for all slopes.",
+      "rpmPrimary": {
+        "id": "H1-RPM-114",
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "유리함수의 활용",
+        "l4": "유리함수와 그래프의 교점",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-114",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "suggestedTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_DISCRIMINANT",
+          "status": "FINAL",
+          "reason": "The quadratic discriminant is the decisive condition for intersection existence for every line slope.",
+          "sourceFingerprint": "sha256:f3397d780b42fe661bccb6b11d4900def25234354ad6a9eb96900b96b79f33f1",
+          "inputBundleSha": "sha256:8245bc145ed4d0c9924c4c7082bf0de3a6e96449f5c86b514cad828c1eaa946b"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Turn intersection for every slope into a discriminant condition and maximize n.",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B45",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "The universal condition across all slopes requires a global discriminant minimum. Bucket 5 is a plausible neighbor but no hidden insight blocks progress; retain bucket 4. The coarse legacy middle level remains acceptable after independent recheck."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|20",
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_df642ba5ba6b03a242cfd8f4688169315203ebd89653a68abe8d7d5b2592057b",
+        "contentHash": "sha256:de7fb8acef79b99023cb5ffc5d3c894147431a50412f4fed82abea6a1bc5d6dd",
+        "choicesHash": "sha256:8d1cfa416d7d2d3ad4bbdae65ddc3aaf67459799b23edd0a4e75d39e625110ee",
+        "sourceVisual": {
+          "imageRefHash": "sha256:4e2032ce22b1a340c560f362b3338c597d0f2fa80cf7aedaacd2bc29b149755d"
+        }
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:7627433941b5d187b688f1caa0d2e814620b5a04b01fd7ce00b39a00d906542c",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH"
+      },
+      "primaryMethod": "Use horizontal and vertical intersections between two radical-function graphs.",
+      "decisiveStep": "Express A,B,C in coordinates, equate the perpendicular legs, and apply the area condition.",
+      "rpmPrimary": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": null,
+          "status": null,
+          "suggestedProblemTypeKey": null,
+          "suggestedTemplateKey": null,
+          "resolverValidation": "NOT_RUN_NO_EXACT_RPM_LEAF"
+        },
+        "projectionDisposition": "META_ONLY_CROSSWALK_VARIANT"
+      },
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_TRIANGLE_AREA",
+          "status": "FINAL",
+          "reason": "Triangle area is the distinct geometric objective derived from the function-graph intersections.",
+          "sourceFingerprint": "sha256:7bf68f699ed6f9cb823a35ef212b13a22f1ebd107758bd5cf6d1e29813496d94",
+          "inputBundleSha": "sha256:712cc5647cda1391e9fe511608867ef7a8c77045299abe02e2d5292ed1d54943"
+        }
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "conditionDecisions": [
+        {
+          "key": "COND_POSITIVE",
+          "status": "FINAL",
+          "reason": "The first-quadrant location and k>1 make the derived graph-coordinate parameters positive.",
+          "sourceFingerprint": "sha256:7bf68f699ed6f9cb823a35ef212b13a22f1ebd107758bd5cf6d1e29813496d94",
+          "inputBundleSha": "sha256:712cc5647cda1391e9fe511608867ef7a8c77045299abe02e2d5292ed1d54943"
+        }
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Coordinate the graph intersections, equate right-isosceles legs, and use the area.",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Coordinate the two graph intersections and equate the standard right-isosceles legs before using area; this is a structured bucket-3 application with bucket 4 plausible."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|서술형1",
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_a9196edd63d2e1a153fd3bcea37550d59899a1afe8032fded42b5c35d08efac7",
+        "contentHash": "sha256:43749d344fb7060bf74f395172ae99c70cd6b054c71ff3a0a1a067400c155455",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceVisual": {
+          "imageRefHash": "sha256:816b28deaf57c3ac56eded3b524275f91ba2e979542186a6d1f95ededa2612dd"
+        }
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:e8655f47d886385ebca0ed191a47664c94bfbcd2d4279f67dcce74b43e9d72ea",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE"
+      },
+      "primaryMethod": "Determine a radical function from its graph endpoint and solve its intersection with the inverse graph.",
+      "decisiveStep": "Use the two mutual inverse equations to exclude non-diagonal common points, then solve the admissible fixed point.",
+      "rpmPrimary": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": null,
+          "status": null,
+          "suggestedProblemTypeKey": null,
+          "suggestedTemplateKey": null,
+          "resolverValidation": "NOT_RUN_NO_EXACT_RPM_LEAF"
+        },
+        "projectionDisposition": "META_ONLY_CROSSWALK_VARIANT"
+      },
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_INVERSE_FUNCTION",
+          "status": "FINAL",
+          "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+          "sourceFingerprint": "sha256:9386f0570a3fd511d3fcf4bfe4ca5c27eb594ca497a739da3854d11cfdf08d3c",
+          "inputBundleSha": "sha256:f0d2ef438ff62ecbd1c9914a3074036b3f9aef195fd182be65536afdb9c4cd36"
+        }
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDecisions": [
+        {
+          "key": "COND_RANGE",
+          "status": "FINAL",
+          "reason": "The function and inverse domains constrain candidate common-point coordinates and eliminate the off-diagonal pair.",
+          "sourceFingerprint": "sha256:9386f0570a3fd511d3fcf4bfe4ca5c27eb594ca497a739da3854d11cfdf08d3c",
+          "inputBundleSha": "sha256:f0d2ef438ff62ecbd1c9914a3074036b3f9aef195fd182be65536afdb9c4cd36"
+        }
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Use graph-derived parameters and the inverse-intersection domain to determine the common point.",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "The domain/endpoint read is followed by a non-diagonal inverse-intersection exclusion and an admissible-root choice. Recheck supports bucket 3 as a neighbor, but bucket 4 captures that structural argument; preserve the old middle label under the stability lock."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|서술형2",
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_78eb383c8d75d1a58c5b0928c84ca37a0ee11f9bc30b050a9bdfd9a2430052a6",
+        "contentHash": "sha256:8cf31489c93e8dc3b7a42eda82802d68842ed22f8fda69a06fce5ef1b53e065c",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:c5c2b0cbdd3a3b3f1bf72714c250b5e0df785a63c3956688c41600c78364a981",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION"
+      },
+      "primaryMethod": "Use global injectivity and surjectivity to reconstruct a piecewise quadratic function.",
+      "decisiveStep": "The outer ranges and one-to-one condition force the middle branch to decrease from 4 to −5.",
+      "rpmPrimary": {
+        "id": "H1-RPM-106",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "FUNCTIONS_GRAPHS",
+        "crosswalk": {
+          "recordId": "H1-RPM-106",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+          "suggestedTemplateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_QUADRATIC_FUNCTION",
+          "status": "FINAL",
+          "reason": "The middle branch is a quadratic, and its shape determines how to satisfy global range and injectivity.",
+          "sourceFingerprint": "sha256:6ad7f3460a6703b46e2294b103b56eafcb8d917767faacc18917ce9659ea7458",
+          "inputBundleSha": "sha256:56784f973b1a6a1f29f274408235545ae8e587fb03c39cabbad3918c330d2b9e"
+        }
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDecisions": [
+        {
+          "key": "COND_RANGE",
+          "status": "FINAL",
+          "reason": "The image must be all real numbers, which constrains the middle branch range.",
+          "sourceFingerprint": "sha256:6ad7f3460a6703b46e2294b103b56eafcb8d917767faacc18917ce9659ea7458",
+          "inputBundleSha": "sha256:56784f973b1a6a1f29f274408235545ae8e587fb03c39cabbad3918c330d2b9e"
+        }
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Combine the outer ranges with global injectivity to reconstruct the middle quadratic.",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Global injectivity and range force the middle branch’s direction and both endpoint values before the quadratic is recovered. The older middle label remains plausible under its broader scale after independent recheck."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+        "legacySourceIdentityKey": "sha256:e6d0c524b9e3f595e2557ba6634817485cf756aa52148ad9b1eca3bcb0bf4042|서술형3",
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_c0330dca230e557a4c441ac8a0a5150b3d82fe8265b0e1faa5b0913f1da47697",
+        "contentHash": "sha256:83abccbddfad014901b9a0286517bdd577054ddf0b5b243a96a379151a0477a1",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceVisual": null
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:2c1b7d668008e198ac9be21736b983199a53b796e753e7675f13967b81a639bc",
+        "evidence": "independent-solution-verification.json"
+      },
+      "curriculumContext": {
+        "grade": "H1",
+        "curriculum": "2015",
+        "scope": "수학_하",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED"
+      },
+      "primaryMethod": "Count permutations satisfying f²=id by their fixed points and transpositions.",
+      "decisiveStep": "Partition by zero, one, or two disjoint transpositions; longer cycles are impossible.",
+      "rpmPrimary": {
+        "id": "H1-RPM-125",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "특정 조건 배열",
+        "status": "FINAL"
+      },
+      "semanticStatus": "FINAL",
+      "activeProjection": {
+        "status": "ACTIVE_EXACT_BINDING_VALIDATED",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "problemTypeStatus": "ACTIVE",
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "templateStatus": "ACTIVE",
+        "bindingStatus": "ACTIVE",
+        "bindingOwnerPack": "H1_FOUNDATION",
+        "crosswalk": {
+          "recordId": "H1-RPM-125",
+          "status": "DIRECT_ACTIVE",
+          "suggestedProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "suggestedTemplateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "resolverValidation": "PASS",
+          "candidateParity": true
+        },
+        "projectionDisposition": "PROJECTION_REUSE"
+      },
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "crossConceptDecisions": [
+        {
+          "key": "CC_INVERSE_FUNCTION",
+          "status": "FINAL",
+          "reason": "The inverse-function relation is a decisive step outside the selected primary subtype.",
+          "sourceFingerprint": "sha256:22acb1b83b8365d5d328479a46f693f19b9598227c23c963d9b38e7c602e54ed",
+          "inputBundleSha": "sha256:58d0fa9b7366fecbe13c8cdb1e21d1d03dc5e2dbcefa9fe4ae419874816b3fe6"
+        }
+      ],
+      "conditionKeys": [],
+      "conditionDecisions": [],
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "Count involutions by zero, one, or two disjoint transpositions.",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevel": "중",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "The involution structure requires case-splitting by transposition count, but the three cases are direct and exhaustive."
+      }
+    }
+  ],
+  "scope": "Bounded exam Meta only; no taxonomy registry, crosswalk, resolver, or other shared system files were modified."
+}
