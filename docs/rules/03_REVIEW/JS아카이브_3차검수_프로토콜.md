@@ -226,7 +226,7 @@ release-bound R3에서 다음 중 하나라도 성립하면 MAIN_READY 금지:
 > `subUnitConfidence`/`subUnitClassificationDepth` 허용값, compiled master 등록 여부를 확인한다.
 > 세부단원 판정은 원문·보기·정답·해설·이미지·배치 필드를 변경하지 않는 별도 메타데이터 게이트다.
 > 본문에 복사한 간이 단원표·기억·과거 예시는 판정 근거로 사용하지 않고 canonical master를 직접 대조한다.
-> **공용 Meta resolver 동기화(2026-09-27):** 최초 semantic 판단은 current source + verified final solution에서 `primaryMethod`/`decisiveStep`을 candidate-blind로 확정한 뒤, RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE PT/TPL → exact binding 순으로 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 사용한다. difficulty는 독립 blind pass다.
+> **공용 Meta resolver 동기화:** semantic 재검은 current source + verified final solution에서 `primaryMethod`/`decisiveStep`을 current-pass로 다시 판정한 뒤, RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE PT/TPL → exact binding 순으로 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 사용한다. prior candidate/verdict는 보여도 되지만 decision authority로 복사하지 않는다. difficulty는 별도 current-pass 재검 evidence 축이다.
 
 ## SUPERSEDED / LEGACY V1 ROLE SCOPE — CHECKLIST REFERENCE ONLY (2026-10-01)
 
