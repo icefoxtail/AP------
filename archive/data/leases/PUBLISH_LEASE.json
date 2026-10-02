@@ -1,28 +1,31 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "MASTER-C-PUBLISH-O19-20261003T0807+0900",
+  "leaseId": "MASTER-C-PUBLISH-O59-RECHECK-20261003T0854+0900",
   "owner": "JS Archive MASTER-C",
-  "status": "CLOSED",
-  "baseMainSha": "7ddfcb6263f7850b575b6c73875c79c1f8889de8",
-  "claimedAt": "2026-10-03T08:07:00+09:00",
-  "expiresAt": "2026-10-03T09:37:00+09:00",
-  "lastProgressAt": "2026-10-03T08:07:00+09:00",
-  "expectedCompletionGate": "O19_RELEASE_QUEUE_TO_MAIN_DONE",
-  "scope": "M3:o19:21_금당중_1학기_중간_중3_기출.js",
-  "result": "MAIN_DONE_O19",
-  "finalOriginMain": "1c0f07eaa29bf4049f36530e16a782b3f7033657",
+  "status": "ACTIVE",
+  "baseMainSha": "1c0f07eaa29bf4049f36530e16a782b3f7033657",
+  "claimedAt": "2026-10-03T08:54:00+09:00",
+  "expiresAt": "2026-10-03T10:24:00+09:00",
+  "lastProgressAt": "2026-10-03T08:54:00+09:00",
+  "expectedCompletionGate": "O59_R3_RECHECK_RELEASE_QUEUE_TO_MAIN_DONE",
+  "scope": "M3:o59:23_향림중_2학기_기말_중3_기출.js:R3_RECHECK_EVIDENCE",
+  "result": null,
+  "finalOriginMain": null,
   "includedOrdinals": [
-    19
+    59
   ],
   "excludedDebtOrdinals": [],
-  "publishedCommit": "6a074ded8daaf57ce03619855e354ebf9c19f7b6",
-  "candidateBatchCommit": null,
-  "candidateBatchBranch": null,
-  "batchManifestBlob": "91926e8f1e4765e1d981bf70fef3841e543125a6",
+  "publishedCommit": null,
+  "candidateBatchCommit": "2ab85d7c3897195a8b894acc28d7f06d6a624f52",
+  "candidateBatchBranch": "release/m3/o59-hyangrim-2final-20261003-recheck",
+  "batchManifestBlob": "b964d36d10c06ef14fe89ff6d3c0ea1485177761",
   "publishedExactBlobs": {
-    "exam": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907"
+    "exam": "6aa83a5aaa1bf24268ed24fae05b65ab1f1e1fd6",
+    "recheckSnapshot": "d6c88a661f72599fa4fada55df06e82872665964",
+    "validatorReceipt": "9ddc500195cd9619f7f7585ef01d29be76e503a8",
+    "stageReceipt": "2b7314cf71007230aff9d381a9f347459bb3f24d",
+    "releaseManifest": "b964d36d10c06ef14fe89ff6d3c0ea1485177761"
   },
-  "firstMissingClosureStep": null,
-  "mainMutation": 1,
-  "closedAt": "2026-10-03T08:53:00+09:00"
+  "firstMissingClosureStep": "FAST_FORWARD_MAIN_TO_RELEASE_HEAD_AFTER_CAS",
+  "mainMutation": 0
 }
