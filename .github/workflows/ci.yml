@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install Worker test dependencies
+        run: npm ci --prefix apmath/worker-backup/worker --no-audit --no-fund
+
       - name: Syntax check (node --check)
         shell: bash
         run: |

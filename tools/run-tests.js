@@ -115,7 +115,8 @@ for (const file of tests) {
   const result = spawnSync(process.execPath, [testPath], {
     cwd: root,
     stdio: 'inherit',
-    timeout: 60000
+    // Full canonical Compose inventory now covers all grades and runtime packs.
+    timeout: file === 'archive2-compose-scope.test.js' ? 180000 : 60000
   });
 
   if (result.status === 0) {

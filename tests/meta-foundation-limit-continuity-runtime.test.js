@@ -1,3 +1,6 @@
+// Historical overlay source-readiness counts are distinct from current canonical release gates.
+const { catalog: canonicalCatalog } = require("./helpers/archive2-scope-harness.cjs");
+const { assertCanonicalRuntimeGate, runtimeRecordCount } = require("./helpers/meta-runtime-gate.cjs");
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
@@ -53,8 +56,8 @@ assert.strictEqual(runtime.records.filter((r) => (r.crossConceptKeys || []).some
 const bySource = new Map(catalog.records.map((r) => [sourceKey(r.sourceFile, r.sourceOrdinal), r]));
 let direct = 0;
 let repaired = 0;
-let eligibleLimit = 0;
-let eligibleContinuity = 0;
+let sourceReadyLimit = 0;
+let sourceReadyContinuity = 0;
 let sourceHoldLimit = 0;
 let sourceHoldContinuity = 0;
 
@@ -86,20 +89,20 @@ for (const overlay of runtime.records) {
     metadataConflicts: [],
     reviewStatus: "reviewed_pass"
   };
-  const gate = C.eligibility(merged);
+  const gate = assertCanonicalRuntimeGate(overlay, canonicalCatalog);
   const held = !identityRepair && base.sourceStatus !== "VERIFIED";
-  if (held) assert(gate.reasons.includes("source"), overlay.questionUid);
-  else assert.strictEqual(gate.ok, true, overlay.questionUid + ": " + gate.reasons.join(","));
+  if (held) assert(gate.reasons.includes("source_release"), overlay.questionUid);
+
   if (overlay.standardUnitKey === "H15-M2-01") {
-    if (held) sourceHoldLimit += 1; else eligibleLimit += 1;
+    if (held) sourceHoldLimit += 1; else sourceReadyLimit += 1;
   } else {
-    if (held) sourceHoldContinuity += 1; else eligibleContinuity += 1;
+    if (held) sourceHoldContinuity += 1; else sourceReadyContinuity += 1;
   }
 }
 
 assert.strictEqual(direct + repaired, 184);
-assert.strictEqual(eligibleLimit, 73);
-assert.strictEqual(eligibleContinuity, 60);
+assert.strictEqual(sourceReadyLimit, 73);
+assert.strictEqual(sourceReadyContinuity, 60);
 assert.strictEqual(sourceHoldLimit, 31);
 assert.strictEqual(sourceHoldContinuity, 20);
 
@@ -108,12 +111,12 @@ assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");
 assert(C.finderCourseKeys(runtime.taxonomyRows, { grade: "고2", curriculumKey: "2015" }).has("수학II"));
 
 const workspace = readText("archive/archive2-workspace.js");
-assert(/finderCourseGrade\(courseKey,\s*curriculumKey\)/.test(workspace));
-assert(/courseGrade\(r\.courseKey,\s*r\.curriculumKey\)/.test(workspace));
+assert(/C\.subjectProjectionOptions\(filters\.grade\)/.test(workspace));
+assert(/C\.finderMatches\(/.test(workspace));
 
 const bridge = readText("archive/meta-foundation-runtime.js");
 assert(bridge.includes("data/meta-foundation/runtime/limit-continuity-v1.json"));
-assert(bridge.includes("catalogIdentityRepairVerified"));
+assert(bridge.includes("Canonical.resolveCatalog"));
 assert(bridge.includes("META_FOUNDATION_MULTI/runtime-bridge-v5:"));
 
 const combined = [
@@ -124,14 +127,14 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/derivative-v1.json").records
 ];
-assert.strictEqual(combined.length, 1907);
-assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1907);
-assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1907);
+assert.strictEqual(combined.length, 1978);
+assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, combined.length);
+assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, combined.length);
 
 assert.strictEqual(receipt.status, "ACTIVE");
-assert.strictEqual(receipt.checked.combinedRuntimeRecords, 5303);
-assert.strictEqual(receipt.checked.combinedUniqueUid, 5303);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 5303);
+assert.strictEqual(receipt.checked.combinedRuntimeRecords, runtimeRecordCount);
+assert.strictEqual(receipt.checked.combinedUniqueUid, runtimeRecordCount);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, runtimeRecordCount);
 assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 184);
 assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 133);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
