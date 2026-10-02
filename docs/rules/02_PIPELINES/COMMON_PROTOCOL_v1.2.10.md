@@ -1,4 +1,8 @@
-# JS아카이브 전수 품질 업그레이드 · 다중 독립 검수 · 최종 봉인 공통 프로토콜 v1.2.10 — 정본
+# JS아카이브 전수 품질 업그레이드 · 다중 재검 · 최종 봉인 공통 프로토콜 v1.2.10 — 정본
+
+## CURRENT OVERRIDE — 2026-10-03 — JS ARCHIVE RECHECK SEMANTICS
+
+CURRENT JS Archive R1/R2/R3/repair-recheck에서 **독립/Blind는 별도 세션·비노출·fresh reviewer를 뜻하지 않는다.** prior answer/solution/verdict/repair가 보여도 유효하며, source/current authority에서 수학·정답·required scope를 다시 계산한 current-pass evidence를 만들면 된다. 기존 `A_BLIND_*`, `A_INDEPENDENCE_LEVEL`, `priorReviewVisibility` 같은 필드명은 schema/history 호환으로 유지할 수 있으나 current JS Archive stage closure에서 separate session/non-exposure를 요구하는 HARD gate로 사용하지 않는다. prior 값을 decision authority로 복사하는 것은 금지한다.
 
 - 작성일: 2026-09-04
 - 상태: `CANONICAL_CANDIDATE_READY_FOR_FINAL_REVIEW`
@@ -159,7 +163,7 @@ auditor, 자동 second review, Mother Final fan-out, retry/fallback을 허가하
 
 최상위 목표:
 
-> **전체 문항은 독립적으로 검수하되 필요한 부분만 수정하고, SOURCE·MATH·PEDAGOGY·VISUAL·RUNTIME을 서로 독립된 증거로 검증하며, 동일한 최종 artifact SHA에 모든 필수 PASS가 모이고 production 승격 후 실제 렌더까지 재통과한 경우에만 최종 봉인한다.**
+> **전체 문항은 다시 검수하되 필요한 부분만 수정하고, SOURCE·MATH·PEDAGOGY·VISUAL·RUNTIME을 서로 독립된 증거로 검증하며, 동일한 최종 artifact SHA에 모든 필수 PASS가 모이고 production 승격 후 실제 렌더까지 재통과한 경우에만 최종 봉인한다.**
 
 ---
 
@@ -2374,14 +2378,13 @@ STATIC_CONTRACT_COVERAGE_MAP_SHA valid
 
 ---
 
-# 11. A Math Verifier — A1 Blind Solve + A2 Comparison
+# 11. A Math Verifier — A1 재검 산출 + A2 Comparison
 
-A는 Builder가 아니며 수정하지 않는다.
+A는 Builder 결과를 정답으로 복사하지 않고 수학을 다시 계산한다. 같은 session/worker여도 된다.
 
-## 11.1 A1 BLIND SOLVE 입력
+## 11.1 A1 RECHECK 입력
 
 허용:
-
 ```text
 question content
 choices [객관식]
@@ -2389,20 +2392,14 @@ problem image/source [문제 해석에 필요]
 curriculum boundary
 shared material/dependency
 math review rules
+source answer / existing solution / previous reviewer verdict [visibility allowed]
 ```
 
-금지:
-
-```text
-source answer
-existing solution
-modified/final solution
-Builder self-check
-previous reviewer verdict
-previous final report
-```
+prior answer/solution/verdict가 보여도 되지만 **computedAnswer와 derivation의 근거로 복사해서는 안 된다.**
 
 ## 11.2 A1 필수 evidence
+
+기존 schema 호환을 위해 `A_BLIND_INPUT_SHA`, `A_FIRST_PASS_EVIDENCE_SHA` 이름을 유지할 수 있다. CURRENT 의미는 recheck input/snapshot이다.
 
 ```text
 A_BLIND_INPUT_SHA
@@ -2413,32 +2410,11 @@ choiceTruthVector [객관식]
 uniqueAnswerStatus [객관식]
 ```
 
-객관식은 모든 선지를 판정한다.
-
-예:
-
-```text
-choiceTruthVector = [false, false, true, false, false]
-uniqueAnswerStatus = UNIQUE
-```
-
-정답 없음/복수정답도 명시한다.
-
-주관식은 실제 값을 독립 산출한다.
-
-A1 evidence를 먼저 불변 동결한다.
+객관식은 모든 선지를 다시 판정한다. 주관식은 실제 값을 다시 산출한다. evidence를 formal compare 전에 고정한다.
 
 ## 11.3 A2 COMPARISON
 
-A1 동결 후에만 공개:
-
-```text
-source answer
-final solution
-source repair / exception record
-```
-
-필수:
+recheck snapshot을 만든 뒤 prior/source answer/final solution과 formal compare한다.
 
 ```text
 A_COMPARISON_INPUT_SHA
@@ -2448,26 +2424,19 @@ solutionConclusionComparison
 sourceDefectSignal
 ```
 
-## 11.4 Independence level
+## 11.4 Review mode / legacy independence fields
 
-최소:
-
+CURRENT JS Archive 최소 조건:
 ```text
-A_INDEPENDENCE_LEVEL = I2_BLIND_SEPARATE_SESSION
+A_RECHECK_MODE = SOURCE_CURRENT_RECALC
+CURRENT_PASS_EVIDENCE_FROZEN = YES
 ```
 
-권장 분류:
+`A_INDEPENDENCE_LEVEL=I1/I2/I3`, `SEPARATE_SESSION`, `PRIOR_VERDICT_CONTEXT`는 기존 schema/history 또는 다른 프로젝트의 명시적 qualification에서 사용할 수 있으나 **CURRENT JS Archive R1/R2/R3 stage PASS의 separate-session gate가 아니다.**
 
-```text
-I1 = same-session context contamination 가능 [Final A 불가]
-I2 = separate session + answer/solution hidden
-I3 = separate independent model/verifier + blind input
-```
+same-session이라도 source/current authority에서 다시 계산한 evidence가 있고 prior 값을 복사하지 않았으면 유효하다. 다른 specialized Overlay가 별도 세션을 명시적으로 요구하면 그 Overlay 범위에서만 따른다.
 
-Overlay는 고위험 문항에 I3를 요구할 수 있다.
-
-## 11.5 수학 검수 항목
-
+## 11.5 수학 재검 항목
 - 문제 성립성
 - 실제 정답
 - 조건 충분성
@@ -2479,11 +2448,7 @@ Overlay는 고위험 문항에 I3를 요구할 수 있다.
 - 그래프/도형 조건
 - 교육과정 내 계산 가능성
 
-source answer가 틀려도 독립 수학 자체는 PASS할 수 있다.
-
-그러나 source 결함 미해결이면 SOURCE_READY가 false다.
-
----
+source answer가 틀려도 재검 수학 자체는 PASS할 수 있다. 그러나 source 결함 미해결이면 SOURCE_READY가 false다.
 
 # 12. Deterministic / Computational Companion Verifier
 
@@ -2544,10 +2509,9 @@ FINAL_SEAL_BLOCK
 
 ---
 
-# 13. Review Independence Contract — A/B/C/D 공통
+# 13. Review Recheck Contract — A/B/C/D 공통
 
 각 review run은 최소 기록한다.
-
 ```text
 reviewAxis
 reviewerId
@@ -2562,26 +2526,17 @@ firstPassEvidenceSha
 finalReviewReportSha
 ```
 
-첫 판정 기본값:
-
+CURRENT JS Archive에서 `priorReviewVisibility`는 NONE일 필요가 없다. prior context가 보였는지 기록하되 PASS 조건은 다음이다.
 ```text
-priorReviewVisibility = NONE
-```
-
-첫 판정 전에 다른 reviewer verdict를 공개하지 않는다.
-
-같은 모델을 재사용할 경우 최소:
-
-```text
-SEPARATE_SESSION = YES
-PRIOR_VERDICT_CONTEXT = NONE
+SOURCE_CURRENT_AUTHORITY_RECALCULATED = YES
+PRIOR_VALUE_COPIED_AS_DECISION = NO
+CURRENT_PASS_EVIDENCE_FROZEN = YES
 REVIEW_INPUT_BUNDLE_SHA recorded
-FIRST_PASS_EVIDENCE_FROZEN = YES
 ```
 
-START release SHA와 END release SHA가 다르면 해당 review invalid.
+같은 모델·같은 session을 사용해도 위 조건을 만족하면 유효하다. `SEPARATE_SESSION`, `PRIOR_VERDICT_CONTEXT=NONE`은 legacy/특수 qualification 필드이며 CURRENT JS Archive 일반 R1/R2/R3 closure의 필수조건이 아니다.
 
----
+START release SHA와 END release SHA가 다르면 stale input 여부를 재확인하고 current artifact에 evidence를 재결속한다. 단순 session 동일성만으로 review를 invalid 처리하지 않는다.
 
 # 14. Review Conflict / Adjudication
 

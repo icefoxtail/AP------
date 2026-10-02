@@ -1,4 +1,4 @@
-## CURRENT OVERRIDE — 2026-10-03 — CONTEXT-TOLERANT REVIEW / NO FRESH-REVIEWER BLOCKER
+## CURRENT OVERRIDE — 2026-10-03 — RECHECK / PRIOR VISIBILITY ALLOWED
 
 형님의 현재 명시 지시에 따라 **target의 기존 해설·SVG·이전 reviewer verdict·repair detail 노출은 R1/R2/R3/REPAIR/RECHECK의 invalidation 사유가 아니다.**
 
@@ -21,7 +21,7 @@
 
 ## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER PREFLIGHT
 
-**모든 JS 품질 작업자**는 actual target의 기존 해설·SVG·이전 reviewer verdict를 열거나 수정하기 전에 Golden 2~3 + 관련 Negative Sample을 실제로 읽어 동일 quality bar를 고정한다. CREATE / R1 / R2 / R3 / SOLUTION_UPGRADE뿐 아니라 targeted REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_REPAIR / INDEPENDENT_RECHECK도 예외가 없다.
+**모든 JS 품질 작업자**는 current attempt의 최종 판정·수리 전에 Golden 2~3 + 관련 Negative Sample을 실제로 읽어 동일 quality bar를 고정한다. target의 기존 해설·SVG·이전 reviewer verdict가 이미 보였어도 무효가 아니다. CREATE / R1 / R2 / R3 / SOLUTION_UPGRADE뿐 아니라 targeted REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_REPAIR / INDEPENDENT_RECHECK(legacy stage name)도 예외가 없다.
 
 작업 전 preflight:
 ```bash
@@ -305,7 +305,7 @@ SVG 수정 후 예전 evidence를 재사용하지 않는다.
 
 ## 6. Meta — NULL-BUT-RESOLVABLE 금지
 
-각 qid는 기존 metadata를 정답으로 보기 전에 다음을 fresh evidence로 남긴다.
+각 qid는 기존 metadata가 보여도 이를 정답처럼 복사하지 않고 source/current authority에서 다음 current-pass evidence를 새로 남긴다.
 
 1. `primaryMethod`
 2. `decisiveStep`
@@ -333,7 +333,7 @@ AND lookup result = unique EXACT_ACTIVE reusable mapping
 
 ---
 
-## 7. 독립검수 evidence
+## 7. 재검 evidence
 
 ### CREATE
 
@@ -353,20 +353,20 @@ R2는 특히 다음을 강제한다.
 latest R1 artifact bytes 직접 읽기
 → R1 ledger/repair detail 보기 전
 → R2 qid evidence + visual expected facts + Meta semantic decision freeze
-→ blindFreezeSha256 물리 저장
+→ recheck snapshot을 `blindFreezeSha256` 호환 필드에 물리 저장
 → 그 뒤 R1 ledger / 이전 R3 packet과 compare
 ```
 
-`blindDecisionFrozenBeforeR1Compare=true`와 `blindFreezeSha256`가 없으면 R2 DONE 금지.
+`blindDecisionFrozenBeforeR1Compare=true`와 `blindFreezeSha256`는 호환 marker로 유지하며, 의미는 formal compare 전에 current-pass 재검 snapshot이 고정됐다는 것이다. prior 비노출을 요구하지 않는다.
 
 ### R3 INITIAL vs POST-R3 INDEPENDENT REVIEW
 
 **initial R3**는 시험지 전체를 보는 마지막 전수 release audit다.
-- 전 문항 questionRows / visualRows / metaRows를 fresh 생성하고 `review-evidence-gate.mjs --stage R3` full validator PASS를 요구한다.
+- 전 문항 questionRows / visualRows / metaRows를 current artifact에서 새로 생성하고 `review-evidence-gate.mjs --stage R3` full validator PASS를 요구한다.
 
-**post-R3 Codex Independent Review**는 initial R3 FAIL 이후 수리된 locus의 마지막 독립 품질 검수다.
+**post-R3 repair recheck**는 initial R3 FAIL 이후 수리된 locus의 마지막 재검이다. 같은 worker 또는 다른 worker/Codex 모두 가능하다.
 - `R3_BASELINE`의 PASS scope를 잠근다.
-- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 독립 재검한다.
+- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 다시 계산·재검한다.
 - LOCKED scope는 semantic row를 다시 만들지 않고 baseline blob/hash와 불변인지 확인한다.
 - release evidence에는 `r3BaselineArtifactSha`, `openScope`, `changedScope`, `reviewedOpenScope`, `lockedScopeMutationCount=0`, `closedFailureCodes`, `remainingFailureCodes=[]`, `newDirectDefects=[]`, `outputArtifactSha`가 필요하다.
 - PASS면 별도 GPT R3_RETRY 없이 기계적 release gate로 넘어가며, FAIL이면 CODEX_R3_REPAIR로 되돌린다.
@@ -378,7 +378,7 @@ latest R1 artifact bytes 직접 읽기
 R3는 release gate다.
 
 - R1/R2의 `22/22`, `14/14` 숫자를 evidence로 사용 금지
-- latest artifact bytes에서 fresh audit
+- latest artifact bytes에서 current-pass 재검
 - source/runtime/small-board/SVG actual geometry/Meta null-resolvable을 다시 확인
 - 이전 receipt는 provenance와 regression target으로만 사용
 - `freshFromArtifactBytes=true`
@@ -430,7 +430,7 @@ validator는 최소 다음을 기계적으로 확인한다.
 - visual physical method 존재
 - Meta row denominator
 - `META_NULL_BUT_RESOLVABLE`
-- R2 blind freeze / R3 fresh-byte flags
+- R2/R3 recheck snapshot / current-byte flags
 - summary count가 item rows에서 파생된 값과 일치
 
 validator `ok=false`이면 stage PASS/DONE 금지.

@@ -1,3 +1,10 @@
+## CURRENT OVERRIDE — 2026-10-03 — META/DIFFICULTY RECHECK VISIBILITY
+
+- 기존 candidate key, 이전 verdict, 기존 level/difficultyBucket이 보여도 resolver/recheck는 무효가 아니다.
+- prior 값은 **decision authority로 복사하지 않으며**, source identity + verified solution + curriculum context에서 semanticDecision/difficulty evidence를 current-pass로 다시 만든다.
+- fresh reviewer, separate session, prior non-exposure는 resolver closure 조건이 아니다.
+- 아래 `blind`, `fresh independent pass`, candidate exclusion 표현은 **visibility 금지**가 아니라 **prior 값을 decision input authority로 사용 금지**라는 뜻으로 읽는다.
+
 # JS Archive Meta RPM→ACTIVE 공용 Resolver 계약 v1
 
 - 상태: ACTIVE
@@ -20,7 +27,7 @@ current source + independently verified final student solution
 → semantic source-scope crosswalk + target grade/subject GLOBAL ACTIVE/binding projection
 → GLOBAL ACTIVE PT/TPL + binding projection lookup
 → projectionStatus(PROJECTION_REUSE / PROJECTION_BINDING_PENDING / PROJECTION_UNMATERIALIZED / META_ONLY_COMPATIBILITY_PENDING)
-→ separate fresh difficulty blind pass
+→ separate difficulty current-pass recheck evidence axis
 → deterministic Meta validator receipt
 → runtime / Archive parity
 ```
@@ -42,11 +49,11 @@ lower-scope semantic을 사용해도 target `standardCourse/standardUnitKey/subU
 
 future/higher scope를 lower grade 문항에 넣으면 `META_RPM_FUTURE_OR_UNRELATED_SCOPE_FORBIDDEN`으로 거부한다.
 
-Semantic first pass는 source identity, content/choices/image reference hash, verified solution hash, curriculum/L1/L2, `primaryMethod`, `decisiveStep`만 사용한다. same-stage candidate의 `problemTypeKey`, `templateKey`, CrossConcept/Condition suggestion, 이전 verdict, heuristic/tag-enrichment 결과는 입력하지 않는다.
+Semantic first pass는 source identity, content/choices/image reference hash, verified solution hash, curriculum/L1/L2, `primaryMethod`, `decisiveStep`만 사용한다. same-stage candidate의 `problemTypeKey`, `templateKey`, CrossConcept/Condition suggestion, 이전 verdict, heuristic/tag-enrichment 결과는 볼 수 있으나 semanticDecision authority로 복사하지 않는다.
 
 ## 2. Resolver API와 evidence
 
-Resolver 입력은 `sourceIdentity`, `solutionIdentity`, `curriculumContext`, `semanticDecision`의 명시 필드만 허용한다. 결정 단계에서 `problemTypeKey`, `templateKey`, CrossConcept/Condition key, difficulty, candidate, heuristic, 이전 판정 필드는 거부한다.
+Resolver 입력은 `sourceIdentity`, `solutionIdentity`, `curriculumContext`, `semanticDecision`의 명시 필드만 허용한다. 결정 단계에서 `problemTypeKey`, `templateKey`, CrossConcept/Condition key, difficulty, candidate, heuristic, 이전 판정 필드를 **decision authority로 직접 투입·복사하는 것은 거부**한다.
 
 최소 identity:
 
@@ -91,9 +98,9 @@ canonical ownerPack과 curriculum binding ownerPack이 다른 것은 정상 cros
 
 R2E v3 release authority에서 projection gap은 `META_ONLY`다. `semanticStatus=FINAL`인 문항은 projection gap만으로 R1 READY, R2E_FINAL, R2E_MAIN_FINAL을 막지 않는다. TRUE semantic HOLD와 production에 실제 기록된 invalid canonical key만 해당 Meta gate를 막을 수 있다. Receipts는 RPM semantic completeness와 legacy projection completeness를 별도 집계하고, `resolvablePending`에서 projection pending을 제외한다.
 
-## 4. Difficulty blind pass
+## 4. Difficulty current-pass 재검 (`blind` schema compatibility)
 
-Difficulty는 `JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1`로 L3/L4 semantic pass와 분리한다. source fingerprint와 verified solution hash에 결속된 fresh independent pass, bucket 1–5, confidence, boundary flag, legacy compatibility, rationale, reviewer/decision provenance를 요구한다. 기존 `level`은 blind 판정 입력이나 bucket 변환식으로 사용할 수 없다. legacy level은 fresh bucket 결정 뒤 비교 evidence로만 허용한다.
+Difficulty는 `JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1`로 L3/L4 semantic pass와 분리한다. source fingerprint와 verified solution hash에 결속된 current-pass 재검 evidence, bucket 1–5, confidence, boundary flag, legacy compatibility, rationale, reviewer/decision provenance를 요구한다. 기존 `level`/difficultyBucket은 보여도 되지만 bucket 변환식이나 decision authority로 복사할 수 없다. current-pass bucket을 다시 판정한 뒤 비교 evidence로 사용한다.
 
 ## 5. Finalization·validator·runtime
 
