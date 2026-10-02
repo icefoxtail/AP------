@@ -1,27 +1,29 @@
 # Archive 작업 전 Golden Sample Calibration v1
 
-## CURRENT HARD RULE — 2026-10-02 — PREFLIGHT ORDER + PERSISTENT CONTEXT ISOLATION
+## CURRENT HARD RULE — 2026-10-02 — REVIEW ATTEMPT V2 / PREFLIGHT ORDER
 
-모든 REVIEW/repair worker의 calibration 순서는 **한 방향으로만** 해석한다.
+모든 REVIEW/repair worker의 calibration 순서는 다음으로 고정한다.
 
 ```text
-stage assignment / selector metadata 확인
-→ Golden Sample 2~3 + 관련 Negative Sample 실제 판독
+stage assignment / selector-safe metadata
+→ Golden Sample 2~3 + related Negative Sample
 → CALIBRATION_PREFLIGHT PASS
-→ target source/required authority 기반 blind 판단
-→ blind evidence freeze
-→ 그 뒤에만 target의 기존 solution / prior verdict / checkpoint / repair detail / prior diff compare
+→ target source/required authority 기반 independent judgment
+→ blindDecisionSha freeze
+→ prior solution / verdict / checkpoint / repair / diff compare
 → final quality compare
 → stage close
 ```
 
-- 아래 문서의 과거 문구 중 `target blind → Sample pre-read`로 읽힐 수 있는 설명은 **SUPERSEDED**다. Golden/Negative의 **pre-read는 target-specific blind 판단보다 먼저**, Golden quality-floor의 **final compare는 blind freeze 뒤**에 한다.
-- recurring automation/task의 blind 자격은 **현재 run만이 아니라 그 worker/thread의 전체 이전 실행 이력까지 포함**해 판단한다.
-- 동일 worker/thread가 과거 어느 run에서든 특정 target의 기존 solution, reviewer verdict, checkpoint/rotation-debt, repair detail, prior diff를 preflight/blind freeze 전에 이미 읽었다면 그 target은 그 worker에서 다시 fresh blind PASS 대상이 될 수 없다. 샘플을 다시 읽어도 오염은 reset되지 않는다.
-- 이 경우 동일 target에 calibration-order checkpoint를 반복 생성하지 않는다. `*_CONTEXT_CONTAMINATED_FOR_THIS_WORKER`로 scoped routing하고, 아직 보지 않은 eligible target으로 순환한다.
-- clean blind 재검이 꼭 필요하면 **새 task를 만들기보다 기존 never-run/clean worker slot을 재사용**한다. clean worker도 selector metadata 외 target detail을 preflight 전에 열면 안 된다.
-- `solution-calibration-gate.mjs`의 `sampleReadBeforeWork=true`와 `SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE`는 이 순서를 의미한다. validator가 과거 대화/worker context를 직접 볼 수 없으므로 **context freshness는 운영 계약으로 별도 보장**해야 한다.
-
+- blind 독립성의 단위는 **automation/thread 전체가 아니라 reviewAttemptId**다.
+- 유효한 blindDecisionSha가 동결된 뒤 prior detail을 본 것은 contamination이 아니라 정상 compare/continuation이다.
+- 이후 write/validator/Git/Notion 실패가 나도 같은 reviewAttemptId로 이어서 닫는다.
+- blindDecisionSha 동결 전에 target prior detail이 선노출되어 독립성이 실제로 깨진 경우 **그 attempt만 INVALID**다.
+- worker/thread 전체를 permanent contaminated로 취급하지 않는다.
+- fresh blind 재검이 필요하면 MASTER가 **fresh one-shot reviewer/task를 새로 생성**할 수 있다.
+- 과거 persistent-thread contamination / existing dormant clean-slot / new-task prohibition 계약은 `90_ARCHIVE/JS_Archive_Automation_Operational_Contracts_PreStable_2026-10-02.md`의 HISTORY다.
+- automation role/schedule/recovery는 `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md`가 authority다.
+- `solution-calibration-gate.mjs`의 sampleReadBeforeWork와 calibrationOrder evidence 요구는 그대로 유지한다.
 
 ## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER START GATE
 
