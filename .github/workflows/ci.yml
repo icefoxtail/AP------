@@ -54,3 +54,19 @@ jobs:
 
       - name: Run tests
         run: node tools/run-tests.js
+
+  o65_create_gate:
+    if: github.head_ref == 'archive-recovery/m3-22-pungdeok-2final-meta-v2-create2-20261002-1036-v2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout PR merge
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: o65 calibration preflight
+        run: node archive/tools/solution-calibration-gate.mjs --exam 'archive/exams/original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js' --evidence 'archive/data/r2e-intake/m3/22_풍덕중_2학기_기말_중3_기출.create.meta-v2.physical-evidence.json' --stage CREATE --preflight
+      - name: o65 CREATE evidence gate
+        run: node archive/tools/review-evidence-gate.mjs --exam 'archive/exams/original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js' --evidence 'archive/data/r2e-intake/m3/22_풍덕중_2학기_기말_중3_기출.create.meta-v2.physical-evidence.json' --stage CREATE
