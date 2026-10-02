@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_RECEIPT_v1",
+  "runId": "manual-o53-wangun-2final-r3-user-authority-20261002",
+  "generation": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "inventoryOrdinal": 53,
+  "examId": "25_왕운중_2학기_기말_중3_기출",
+  "stage": "R3_PASS_USER_AUTHORITY",
+  "verdict": "PASS",
+  "r3InputArtifactSha": "d0f0d01806cff292875f57e4c386d28d984f7d20",
+  "r3BaselineArtifactSha": "d0f0d01806cff292875f57e4c386d28d984f7d20",
+  "authorityRef": "work/middle/m3/25-wangun-2final-meta-v2@c2611bb8cdfb0a450d0a20f627593712a5a01c73",
+  "userAuthorityOverride": {
+    "explicit": true,
+    "requestedAction": "Complete o53 directly despite R3_CLEAN_SLOT_CONTEXT_CONTAMINATED routing.",
+    "contextBlindnessWaived": true,
+    "blindFreshnessClaimed": false,
+    "directR3RepairAuthorized": true,
+    "directMainCloseoutAuthorized": true
+  },
+  "curriculumMethodAuditCount": "24/24",
+  "curriculumViolationQids": [],
+  "visualNecessityAuditCount": "24/24",
+  "solutionVisualAuditCount": "15/15",
+  "metaAuditCount": "24/24",
+  "difficultyAuditCount": "24/24",
+  "runtimeIssueCount": 0,
+  "itemHoldCount": 0,
+  "staleMetaHoldResolutions": [
+    {
+      "qid": 13,
+      "oldReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "currentResolution": "PRIMARY_ONE_PLUS_SECONDARY",
+      "primary": "M3-RPM-081 / 대푯값 / 평균·중앙값·최빈값"
+    },
+    {
+      "qid": 14,
+      "oldReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "currentResolution": "PRIMARY_ONE_PLUS_SECONDARY",
+      "primary": "M3-RPM-084 / 산포도 / 분산"
+    }
+  ],
+  "repair": {
+    "qids": [
+      23
+    ],
+    "examJsMutationCount": 0,
+    "protectedFieldMutationCount": 0,
+    "assetMutationCount": 1,
+    "oldSolutionSvgBlob": "ec67ddf5a85fc14d720f435f03cad521fb0ab4b9",
+    "newSolutionSvgBlob": "4dd21d7c3befa7215490c2d2250a8083cae96e59",
+    "detail": "q23 118° label owner restored to the prior correct E/∠AED region; line/circle primitives unchanged."
+  },
+  "physicalEvidencePath": "archive/data/r2e-intake/m3/25_왕운중_2학기_기말_중3_기출.r3-authority.physical-evidence.json",
+  "physicalEvidenceBlob": "1c9cf472df737b3f808f30cb6ada5f6a37acb053",
+  "validatorReportPath": "archive/data/r2e-intake/m3/25_왕운중_2학기_기말_중3_기출.r3-authority.validator-report.json",
+  "validatorReportBlob": "6e48f1128d284ae796e645a4c08bec7d9c7ad463",
+  "reviewEvidenceGate": {
+    "ok": true,
+    "contractBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "executionMode": "GITHUB_ACTIONS_NODE_CANONICAL_GATE",
+    "workflowRunId": 36964240793,
+    "issues": []
+  },
+  "ciBaselineParity": {
+    "baselineMainSha": "e3f421afdbe15840c37c2d3e67f0160292d08f62",
+    "baselineMainCiRunId": 36958886373,
+    "branchCiRunId": 36964240793,
+    "preExistingFailureCount": 10,
+    "branchFailureCount": 10,
+    "failureSetExactMatch": true
+  },
+  "solutionQualityCalibration": {
+    "status": "PASS",
+    "qualityCompareCount": "24/24",
+    "blindContextClaimed": false,
+    "contextOverride": "USER_AUTHORITY"
+  },
+  "publishEligible": true,
+  "nextOwner": "DIRECT_MAIN_CLOSEOUT_USER_AUTHORITY",
+  "doNotRequeueAfterMain": true
+}

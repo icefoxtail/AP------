@@ -4,6 +4,7 @@ import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
 import { handleArchiveSavedPapers } from './archive-saved-papers.js';
+import outputContract from '../../../../archive/archive2-output-contract.js';
 
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -55,6 +56,15 @@ function normalizeOptionalPositiveInteger(value) {
 function normalizeAssignmentPdfQpp(value) {
   const parsed = Number.parseInt(value, 10);
   return [1, 2, 4, 6, 8].includes(parsed) ? parsed : 4;
+}
+
+async function canReadAssignmentSnapshot(teacher, classId, env, allowedClassIds) {
+  const normalizedClassId = String(classId || '').trim();
+  if (!teacher?.id || !normalizedClassId) return false;
+  if (isAdminUser(teacher)) return true;
+  if (allowedClassIds !== undefined)
+    return Array.isArray(allowedClassIds) && allowedClassIds.includes(normalizedClassId);
+  return await canAccessClass(teacher, normalizedClassId, env);
 }
 
 function normalizeMixedAssignmentPayload(value, archiveFile) {
@@ -1314,6 +1324,58 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
       return handleArchive2(request, env, currentTeacher, id, { buildArchiveQuestionMetadata, buildArchiveMetadataHash });
     }
+    if (method === 'GET' && id && path[3] === 'output') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      const assignment = await loadClassExamAssignmentById(env, id);
+      if (!assignment) return jsonResponse({ error: '출제 내역을 찾을 수 없습니다.' }, 404);
+      if (!(await canReadAssignmentSnapshot(currentTeacher, assignment.class_id, env)))
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      const mode = String(url.searchParams.get('mode') || 'exam');
+      if (!['exam', 'sol', 'ans'].includes(mode))
+        return jsonResponse({ error: 'invalid output mode' }, 400);
+      let snapshot;
+      try {
+        snapshot = JSON.parse(String(assignment.mixed_payload_json || 'null'));
+      } catch {
+        return jsonResponse({ error: '출제 snapshot을 읽을 수 없습니다.' }, 409);
+      }
+      if (!Array.isArray(snapshot?.questions) || !snapshot.questions.length || !snapshot.meta)
+        return jsonResponse({ error: '이 출제에는 다시 열 수 있는 immutable snapshot이 없습니다.' }, 409);
+      if (Number(assignment.question_count) !== snapshot.questions.length)
+        return jsonResponse({ error: '출제 snapshot 문항 수가 일치하지 않습니다.' }, 409);
+      const qpp = Number(snapshot.meta.qpp || assignment.pdf_qpp || 4);
+      if (![1, 2, 4, 6, 8].includes(qpp))
+        return jsonResponse({ error: '출력 snapshot 쪽당 문항 수가 올바르지 않습니다.' }, 409);
+      const createdAt = Date.now();
+      let envelope;
+      try {
+        envelope = await outputContract.createOutputEnvelope({
+          sourceKind: 'assignment',
+          sourceId: String(assignment.archive_file || assignment.id),
+          assignmentId: String(assignment.id),
+          ...(assignment.saved_paper_id ? { paperId: String(assignment.saved_paper_id) } : {}),
+          mode,
+          questionCount: snapshot.questions.length,
+          questionUids: snapshot.meta.questionUids || snapshot.questions.map(question =>
+            question?.questionUid || question?.source_question_uid || question?._sourceQuestionUid || null
+          ),
+          meta: { ...snapshot.meta, qpp },
+          questions: snapshot.questions,
+          createdAt,
+          expiresAt: createdAt + outputContract.DEFAULT_TTL_MS,
+        }, crypto);
+        await outputContract.validateOutputEnvelope(envelope, {
+          outputRequestId: envelope.outputRequestId,
+          ownerId: envelope.ownerId,
+          mode,
+          now: createdAt,
+        }, crypto);
+      } catch (error) {
+        return jsonResponse({ error: error?.message || '출력 envelope 검증에 실패했습니다.' }, 409);
+      }
+      return jsonResponse({ success: true, envelope });
+    }
     if(method==='GET'&&id&&path[3]==='status'){
       const currentTeacher=await requireTeacher(request,env,teacher);
       if(!currentTeacher)return jsonResponse({error:'Unauthorized'},401);
@@ -1446,33 +1508,61 @@ export async function handleExams(request, env, teacher, path, url) {
       const to = normalizeBoardDate(url.searchParams.get('to')) || getBoardDateOffset('', 0);
       const from = normalizeBoardDate(url.searchParams.get('from')) || getBoardDateOffset(to, -30);
       const mineKey = normalizeBoardGrade(currentTeacher.name || '');
+      const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
+      const classColumns = await getTableColumnSet(env, 'classes');
+      const activeClassFilter = classColumns.has('is_active')
+        ? '(c.is_active != 0 OR c.is_active IS NULL)'
+        : '1 = 1';
+      const assignmentProjection = [
+        'a.id', 'a.class_id', 'a.exam_title', 'a.exam_date', 'a.question_count',
+        'a.archive_file',
+        assignmentColumns.has('source_type') ? 'a.source_type' : "'archive' AS source_type",
+        assignmentColumns.has('teacher_name') ? 'a.teacher_name' : 'NULL AS teacher_name',
+        assignmentColumns.has('pdf_status') ? 'a.pdf_status' : 'NULL AS pdf_status',
+        assignmentColumns.has('pdf_qpp') ? 'a.pdf_qpp' : 'NULL AS pdf_qpp',
+        assignmentColumns.has('saved_paper_id') ? 'a.saved_paper_id' : 'NULL AS saved_paper_id',
+        assignmentColumns.has('archive2_snapshot_hash') ? 'a.archive2_snapshot_hash' : 'NULL AS archive2_snapshot_hash',
+        assignmentColumns.has('archive2_write_key') ? 'a.archive2_write_key' : 'NULL AS archive2_write_key',
+        assignmentColumns.has('mixed_payload_json')
+          ? "CASE WHEN COALESCE(a.mixed_payload_json, '') != '' THEN 1 ELSE 0 END AS has_mixed_payload"
+          : '0 AS has_mixed_payload',
+      ];
 
       const res = await env.DB.prepare(`
         SELECT
-          a.*,
+          ${assignmentProjection.join(',\n          ')},
           c.name AS class_name,
           c.grade AS class_grade,
           c.teacher_name AS class_teacher_name
         FROM class_exam_assignments a
         JOIN classes c ON c.id = a.class_id
-        WHERE (c.is_active != 0 OR c.is_active IS NULL)
+        WHERE ${activeClassFilter}
           AND REPLACE(COALESCE(c.grade, ''), ' ', '') = ?
           AND SUBSTR(COALESCE(a.exam_date, ''), 1, 10) BETWEEN ? AND ?
         ORDER BY a.exam_date DESC, c.teacher_name ASC, c.name ASC, a.updated_at DESC
         LIMIT 1000
       `).bind(grade, from, to).all();
 
-      const rows = dedupeClassExamAssignments(res.results || []).map(row => {
+      const allowedSnapshotClassIds = await getAllowedClassIds(env, currentTeacher);
+      const rows = await Promise.all(dedupeClassExamAssignments(res.results || []).map(async row => {
         const ownerName = String(row.class_teacher_name || row.teacher_name || '').trim();
         const ownerKey = normalizeBoardGrade(ownerName);
+        const hasOutputSnapshot = Number(row.has_mixed_payload) === 1;
         return {
           ...row,
+          has_output_snapshot: hasOutputSnapshot,
+          can_read_snapshot: hasOutputSnapshot && await canReadAssignmentSnapshot(
+            currentTeacher,
+            row.class_id,
+            env,
+            allowedSnapshotClassIds,
+          ),
           teacher_name: ownerName,
           owner_name: ownerName,
           is_mine: !!(mineKey && ownerKey && mineKey === ownerKey),
           can_manage: isAdminUser(currentTeacher) || !!(mineKey && ownerKey && mineKey === ownerKey)
         };
-      });
+      }));
 
       return jsonResponse({ success: true, from, to, grade, assignments: rows });
     }

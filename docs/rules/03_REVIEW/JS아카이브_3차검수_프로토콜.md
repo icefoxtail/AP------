@@ -1,3 +1,11 @@
+## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
+- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
+- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
+- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
+- Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
+- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
+- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
+
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY RELEASE FLOOR
 
 R3 worker도 예외가 아니다. stage assignment와 release scope만 확인한 직후 **이전 stage verdict/target solution을 열기 전에** Golden 2~3 + 관련 Negative Sample을 실제 판독해 동일 quality bar를 고정한다. 그 뒤 latest artifact에 대한 fresh release 판단을 만들고 마지막 compare에서 해설과 SVG의 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 N/N 확인한다. 이전 stage quality count는 재사용하지 않으며 `solutionQualityCalibration` physical binding과 `qualityCompareCount=N/N`이 없으면 R3 PASS 금지다.
@@ -23,8 +31,8 @@ R3 worker도 예외가 아니다. stage assignment와 release scope만 확인한
 - initial R3 종료 artifact와 linked assets를 `R3_BASELINE`으로 동결한다.
 - FAIL packet은 `openQids[] / openFiles[] / openFields[] / openAxes[] / directDependencies[]`를 고정한다. 그 밖은 `R3_LOCKED`다.
 - legacy `FULL_REENTRY` failureClass도 whole-exam reopen 권한이 아니다. 범위를 한정할 수 없으면 `SCOPE_EXPANSION_REQUIRED`로 필요한 dependency locus만 추가한다.
-- post-R3 경로는 `R3_FAIL_DEFERRED → Codex R3 Repair → Codex Independent Review → READY_FOR_R3_RETRY → GPT TARGETED R3_RETRY`다. 정상 R1/R2로 되돌리지 않는다.
-- targeted R3_RETRY는 open/changed locus + direct dependency + lock 보존만 확인한다. initial R3 전수감사를 반복하지 않는다.
+- post-R3 경로는 `R3_FAIL_DEFERRED → Codex R3 Repair ↔ Codex Independent Review → READY_FOR_CODEX_PUBLISH → MAIN`다. 정상 R1/R2로 되돌리지 않는다.
+- post-R3 Codex Independent Review가 open/changed locus + direct dependency + lock 보존을 독립 확인한다. PASS 시 추가 GPT retry 없이 기계적 release gate를 거쳐 publish한다.
 
 [JS아카이브 3차 검수 프로토콜 — MAIN 직전 Release Gate v2.0]
 
