@@ -263,6 +263,42 @@ test('partial course DOM updates only rendered groups and preserves unrendered c
     assert.deepEqual(Array.from(snapshot.items, item => item.canonical_path_key), [firstPath, secondPath]);
 });
 
+test('last clicked unit becomes the single current unit and earlier units render complete', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const group = {
+        key: '2022|middle|M2-1',
+        curriculumKey: '2022',
+        level: 'middle',
+        courseKey: 'M2-1',
+        courseLabel: '중2 과정 · 1학기',
+        gradeKey: '중2',
+        items: [
+            { canonicalPathKey: 'm2-1-1', curriculumKey: '2022', level: 'middle', courseKey: 'M2-1', l1: '수와 식', l2: '유리수와 순환소수' },
+            { canonicalPathKey: 'm2-1-2', curriculumKey: '2022', level: 'middle', courseKey: 'M2-1', l1: '식의 계산', l2: '단항식의 계산' },
+            { canonicalPathKey: 'm2-1-3', curriculumKey: '2022', level: 'middle', courseKey: 'M2-1', l1: '연립일차방정식', l2: '연립일차방정식의 활용' }
+        ]
+    };
+    modalState.groups = [group];
+    modalState.activeGroupKeys = [group.key];
+    modalState.selectedPathDraft = ['m2-1-1', 'm2-1-2'];
+    modalState.books[0].progress_curriculum_key = '2022';
+    modalState.books[0].progress_level_key = 'middle';
+    modalState.books[0].progress_course_key = 'M2-1';
+    modalState.selectedTextbookId = modalState.books[0].id;
+    context._elements.set('record-progress-detail', { innerHTML: '' });
+
+    context.setClassProgressCurrentUnit(group.key, 'm2-1-3', true);
+
+    assert.deepEqual(Array.from(modalState.selectedPathDraft), ['m2-1-3']);
+    assert.equal(context.getClassProgressItemStatus(group, 0, modalState.selectedPathDraft), 'complete');
+    assert.equal(context.getClassProgressItemStatus(group, 1, modalState.selectedPathDraft), 'complete');
+    assert.equal(context.getClassProgressItemStatus(group, 2, modalState.selectedPathDraft), 'current');
+    const html = context.renderClassProgressCoursePanel(group, modalState.selectedPathDraft);
+    assert.equal((html.match(/ checked/g) || []).length, 1);
+    assert.match(html, /연립일차방정식의 활용/);
+});
+
 test('snapshot serialization uses the full draft instead of visible checked DOM only', () => {
     const context = makeContext('중1');
     const modalState = context.state.ui.classProgressModalState;

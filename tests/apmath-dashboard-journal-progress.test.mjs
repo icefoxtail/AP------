@@ -84,6 +84,31 @@ test('historical journal loads persistent progress as of the journal date withou
   assert.doesNotMatch(content, /미래단원/);
 });
 
+test('journal prints only the last selected unit for each canonical course', async () => {
+  const { context } = makeContext(async () => ({
+    success: true,
+    snapshot: { id: 'same-course', class_id: 'c1', effective_date: '2026-10-01' },
+    items: [
+      { snapshot_id: 'same-course', class_id: 'c1', curriculum_key: '2022', course_key: 'M2-1', canonical_path_key: 'p2', l1_snapshot: '수와 식', l2_snapshot: '유리수와 순환소수', sort_order: 0 },
+      { snapshot_id: 'same-course', class_id: 'c1', curriculum_key: '2022', course_key: 'M2-1', canonical_path_key: 'p2-later', l1_snapshot: '연립일차방정식', l2_snapshot: '연립일차방정식의 활용', sort_order: 1 }
+    ]
+  }));
+  context.state.db.class_progress_taxonomy.push({
+    canonicalPathKey: 'p2-later',
+    curriculumKey: '2022',
+    courseKey: 'M2-1',
+    courseLabel: '중2 과정 · 1학기',
+    l1: '연립일차방정식',
+    l2: '연립일차방정식의 활용'
+  });
+
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }], { forceRefresh: true });
+  const content = context.buildJournalContent('2026-10-01');
+
+  assert.doesNotMatch(content, /유리수와 순환소수/);
+  assert.match(content, /중2 과정 · 1학기: 연립일차방정식 · 연립일차방정식의 활용/);
+});
+
 test('existing draft placeholder is upgraded without overwriting teacher notes', async () => {
   const { context } = makeContext(async () => ({
     success: true,

@@ -2317,31 +2317,33 @@ function dashboardGetProgressCatalogItem(pathKey) {
 
 function dashboardFormatPersistentProgressLines(progressState) {
     const groups = new Map();
-    (Array.isArray(progressState?.items) ? progressState.items : []).forEach(item => {
+    (Array.isArray(progressState?.items) ? progressState.items : []).forEach((item, index) => {
         const pathKey = String(item?.canonical_path_key || item?.canonicalPathKey || '');
         const catalogItem = dashboardGetProgressCatalogItem(pathKey) || {};
         const curriculumKey = String(item?.curriculum_key || item?.curriculumKey || catalogItem.curriculumKey || '');
         const courseKey = String(item?.course_key || item?.courseKey || catalogItem.courseKey || '');
         const courseLabel = String(catalogItem.courseLabel || courseKey || '과정');
         const groupKey = [curriculumKey, courseKey].join('|');
-        if (!groups.has(groupKey)) {
-            groups.set(groupKey, {
-                label: [curriculumKey ? `${curriculumKey} 개정` : '', courseLabel].filter(Boolean).join(' · '),
-                units: []
-            });
-        }
-
         const l1 = String(item?.l1_snapshot || item?.l1 || catalogItem.l1 || '').trim();
         const l2 = String(item?.l2_snapshot || item?.l2 || catalogItem.l2 || '').trim();
         const unitLabel = l1 && l2 && l1 !== l2 ? `${l1} · ${l2}` : (l2 || l1);
-        if (unitLabel && !groups.get(groupKey).units.includes(unitLabel)) {
-            groups.get(groupKey).units.push(unitLabel);
+        const order = Number.isFinite(Number(item?.sort_order))
+            ? Number(item.sort_order)
+            : index;
+
+        const previous = groups.get(groupKey);
+        if (!previous || order >= previous.order) {
+            groups.set(groupKey, {
+                label: [curriculumKey ? `${curriculumKey} 개정` : '', courseLabel].filter(Boolean).join(' · '),
+                unit: unitLabel,
+                order
+            });
         }
     });
 
     return Array.from(groups.values())
-        .filter(group => group.units.length > 0)
-        .map(group => `  * ${group.label}: ${group.units.join(', ')}`);
+        .filter(group => !!group.unit)
+        .map(group => `  * ${group.label}: ${group.unit}`);
 }
 
 function dashboardGetJournalDailyProgressState(classId, dateStr, exactRecord = null) {
