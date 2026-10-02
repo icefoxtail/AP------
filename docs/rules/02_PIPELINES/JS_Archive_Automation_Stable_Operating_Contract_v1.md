@@ -99,6 +99,30 @@ END:VEVENT
 ```
 
 temporary test의 첫 실제 run 판정은 `last_run_time`만 보지 않고 **target physical mutation/receipt/readback**까지 같이 확인한다. 첫 run이 성공하면 두 번째 occurrence 전에 disable한다.
+### 1.4 NON-STOP ROLE-PURE WORKER — NEVER SELF-DISABLE HARD
+
+형님의 2026-10-02 최신 지시: **"내가 못하면 다음 거 하러 간다. 정지는 절대 하지 않는다."**
+
+이 규칙은 ACTIVE CREATE/R1/R2/R3/PUBLISH/MASTER 전체에 적용한다.
+
+- **worker self-disable 금지.** target 하나의 contamination, validator 실행 불가, write/tool failure, stale ref, claim conflict, source/capability debt, scoped HARD gate 때문에 recurring role slot 자체를 끄지 않는다.
+- disable은 **사용자 명시 지시** 또는 **현재 topology authority가 role queue 종료를 명시한 경우**에만 한다. 현재 M3에서는 CREATE=69/69이므로 CREATE만 OFF이고 R1×2/R2×2/R3×2/PUBLISH×1/MASTER×3은 backlog가 있는 동안 계속 ACTIVE다.
+- 한 target을 현재 worker가 안전하게 완료할 수 없으면 그 target에 대해 exact durable handoff를 만든다:
+  - `reviewAttemptId` 또는 invalid-attempt identity
+  - `inputArtifactSha`
+  - current branch/HEAD
+  - `validationExecutor`
+  - `firstMissingClosureStep`
+  - exact blocker/debt
+  - `nextOwner=MASTER` 또는 해당 recovery owner
+- handoff 이후 **그 target 때문에 run/slot을 멈추지 않고 selector를 계속하여 다음 eligible target을 찾는다.**
+- 한 run의 mutation/closure는 최대 1시험지로 유지한다. 따라서 여러 부적격 target은 read-only로 skip/handoff할 수 있지만 실제 mutation을 시작한 target은 1개만 닫는다.
+- `EXECUTOR_CAPABILITY_PREFLIGHT=UNAVAILABLE`이면 target detail/blind 작업에 들어가기 전에 handoff 후 다음 eligible로 순환한다. 이미 blind freeze 전에 prior detail이 노출됐다면 그 attempt만 `INVALID`로 닫고 다음 eligible로 순환한다.
+- valid `blindDecisionSha` 이후 write/validator 실패는 same-attempt continuation debt로 넘기되, 현재 run에서 continuation executor가 없으면 handoff 후 다음 eligible을 찾는다.
+- selector 전체에 실제 eligible이 0이거나 모든 eligible이 active lease/claim으로 점유된 경우에만 scoped `NO_EXECUTABLE_TARGET`/`NO_WORK`를 기록할 수 있다. **그래도 recurring slot은 enabled 상태를 유지한다.**
+- MASTER는 매 run ACTIVE topology를 확인한다. **사용자 명시 중지가 아닌데 R1/R2/R3/PUBLISH/MASTER role-pure slot이 disabled이고 해당 role backlog가 남아 있으면 즉시 re-enable**한다.
+- target-local debt는 MASTER/recovery sidecar가 처리한다. role worker는 다음 시험지를 계속 소비한다.
+
 ## 2. Review Attempt v2 — blind의 단위
 
 Blind 독립성 단위는 **automation/thread 전체가 아니라 reviewAttemptId**다.
