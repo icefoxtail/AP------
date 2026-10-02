@@ -1,3 +1,10 @@
+## CURRENT OVERRIDE — 2026-10-03 — META 재검 / PRIOR CANDIDATE VISIBILITY ALLOWED
+
+- 기존 candidate key, 이전 verdict, 기존 Meta 값이 **보였다는 사실 자체는 semantic provenance FAIL이나 재검 무효 사유가 아니다.**
+- 기존 값을 정답/authority로 복사하지 않고 source + verified final solution에서 `primaryMethod / decisiveStep`을 다시 만들고 RPM Primary → crosswalk → GLOBAL ACTIVE → exact binding을 다시 조회해 current-pass evidence를 만든다.
+- `FORBIDDEN_CANDIDATE_INPUT` / `SEMANTIC_PROVENANCE_LEAKAGE`는 candidate 값을 decision authority로 사용하거나 기존 결정을 복사했을 때 적용한다. 단순 visibility에는 적용하지 않는다.
+- fresh reviewer, 새 context, candidate 비노출은 Meta closure의 필수조건이 아니다. 같은 worker가 재검 evidence를 새로 만들고 deterministic validator를 통과하면 된다.
+
 # JS아카이브 문항 메타 파운데이션 운영규칙 v1
 
 작성일: 2026-09-19  
