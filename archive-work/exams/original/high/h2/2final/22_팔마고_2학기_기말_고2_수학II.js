@@ -1522,8 +1522,8 @@ window.questionBank = [
     "hasVisualAsset": true,
     "visualAssetType": "graph",
     "visualAssetBBoxOnPage": {
-      "x1": 160,
-      "y1": 1358,
+      "x1": 100,
+      "y1": 1328,
       "x2": 810,
       "y2": 1690
     },
@@ -1562,7 +1562,7 @@ window.questionBank = [
     "tagStatus": "manual_review",
     "visualAssetProvenance": {
       "assetPath": "assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
-      "assetSha256": "sha256:0a9086312e9e5cc6a0f9cb4c535b23cd67b41bbc01f1b3d8b915375bd0c327b3",
+      "assetSha256": "sha256:e00b87d463085e2b113df2df7438e67a307483a7ddfb2bf9c9ac4657af4b7bba",
       "assetBindingType": "DIRECT",
       "sourceDocumentSha256": "sha256:81806e70e69932928eeff5d90706d4c32ee45155133a421670e7c1d57ce929b3",
       "sourceQuestionNo": "18",

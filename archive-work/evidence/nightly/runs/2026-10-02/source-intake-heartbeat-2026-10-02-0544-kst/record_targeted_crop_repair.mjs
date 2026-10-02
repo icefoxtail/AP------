@@ -11,15 +11,15 @@ const exams = [
     examId: '22_팔마고_2학기_기말_고2_수학II', qid: '18', sourceQuestionNo: '18',
     js: 'archive-work/exams/original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js',
     asset: 'archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png',
-    bbox: { x1: 160, y1: 1358, x2: 810, y2: 1690 }, page: 5,
-    note: 'The graph crop now reaches above the y-axis tip/label. The source condition line sits immediately above the graph; the fresh reviewer must verify that the exact crop excludes unrelated prompt pixels while retaining the complete label.'
+    bbox: { x1: 100, y1: 1328, x2: 810, y2: 1690 }, page: 5,
+    note: 'Expanded upward and left to retain the complete printed condition line for this same question plus the full y-axis arrow/label and graph; no neighboring question, instructions, or answer choices enter the crop.'
   },
   {
     examId: '22_효천고_2학기_기말_고2_수학II', qid: '22', sourceQuestionNo: '서술형2',
     js: 'archive-work/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js',
     asset: 'archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png',
-    bbox: { x1: 1660, y1: 1350, x2: 2110, y2: 2200 }, page: 3,
-    note: 'Expanded top margin and left edge retain curve tops, y-axis tip and the full y=g(x) label. Cropped directly from the original full-page raster.'
+    bbox: { x1: 1660, y1: 1200, x2: 2110, y2: 2200 }, page: 3,
+    note: 'Expanded the top margin to retain the y-axis arrow/label and complete curve tops; the full y=g(x) label remains and no prompt text or page divider enters the crop.'
   }
 ];
 const writeJson = (p, o) => fs.writeFileSync(p, JSON.stringify(o, null, 2) + '\n');
@@ -134,7 +134,7 @@ for (const item of exams) {
 }
 
 const pendingPath = path.join(runDir, 'targeted_source_asset_crop_repair_pending.json');
-writeJson(pendingPath, { schema: 'SOURCE_ASSET_TARGETED_REPAIR_PENDING_v1', runId: 'source-intake-heartbeat-2026-10-02-0544-kst', createdAtKst: new Date().toISOString(), cropper: 'Pillow Image.crop from original full-page PNG', operations: ['crop'], prohibitedTransformsUsed: false, independentReviewStatus: 'PENDING_FRESH_OCR_FREE_REVIEW', frozenAsset: { examId: '22_효천고_2학기_기말_고2_수학II', qid: '4', disposition: 'FROZEN_PASS_UNCHANGED' }, repairedAssets: outputs });
+writeJson(pendingPath, { schema: 'SOURCE_ASSET_TARGETED_REPAIR_PENDING_v1', runId: 'source-intake-heartbeat-2026-10-02-0544-kst', createdAtKst: new Date(Date.now()+9*60*60*1000).toISOString().replace('Z','+09:00'), cropper: 'Pillow Image.crop from original full-page PNG', operations: ['crop'], prohibitedTransformsUsed: false, independentReviewStatus: 'PENDING_FRESH_OCR_FREE_REVIEW', frozenAsset: { examId: '22_효천고_2학기_기말_고2_수학II', qid: '4', disposition: 'FROZEN_PASS_UNCHANGED' }, repairedAssets: outputs });
 
 const receiptPath = path.join(runDir, 'source_asset_and_text_repair_receipt.json');
 const receipt = JSON.parse(fs.readFileSync(receiptPath, 'utf8'));

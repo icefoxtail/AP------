@@ -1919,7 +1919,7 @@ window.questionBank = [
     "visualAssetType": "graph",
     "visualAssetBBoxOnPage": {
       "x1": 1660,
-      "y1": 1350,
+      "y1": 1200,
       "x2": 2110,
       "y2": 2200
     },
@@ -1958,7 +1958,7 @@ window.questionBank = [
     "tagStatus": "manual_review",
     "visualAssetProvenance": {
       "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
-      "assetSha256": "sha256:0329862755c4b10dea876f3796e0530dc03e737fa19929a03918cea54b445e57",
+      "assetSha256": "sha256:c43fc7879ad2400f966bbc7e7e587e9e06098145015895e91de04fbe5b42f1b0",
       "assetBindingType": "DIRECT",
       "sourceDocumentSha256": "sha256:3de860f5462f49674d3951cc3829e80539e0aaaef40e40874e127690a5ab7ab6",
       "sourceQuestionNo": "서술형2",
