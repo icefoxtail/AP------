@@ -13,6 +13,11 @@ test("Archive2 Finder exposes one-click exam, solution, and answer outputs besid
   assert.match(finder, /button\("source-output-direct", label,[\s\S]*?data-mode="\$\{mode\}"/);
   assert.match(finder, /button\("source-issue", "출제"/);
   assert.match(finder, /button\("source-toggle"/);
+  const directActionsIndex = finder.indexOf('button("source-output-direct", label,');
+  const issueIndex = finder.indexOf('button("source-issue", "출제"');
+  const selectionIndex = finder.indexOf('button("source-toggle"');
+  assert.ok(directActionsIndex >= 0 && directActionsIndex < issueIndex && issueIndex < selectionIndex,
+    "Finder actions should render exam, solution, answer, issue, then question selection");
   assert.doesNotMatch(finder, /source-preview/, "Finder output actions must not retain the modal preview route");
 });
 
