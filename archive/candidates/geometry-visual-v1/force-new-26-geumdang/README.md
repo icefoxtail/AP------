@@ -13,6 +13,16 @@
 - rendered desktop/mobile bbox: 미측정. 현 브라우저 환경에서 로컬 페이지 URL이 보안 정책으로 거부되어 실제 browser render를 실행하지 않았다.
 - production JS/SVG 변경: 0; 다른 시험지 변경: 0; main merge: 없음.
 
+## FORCE_NEW selector policy
+
+`FORCE_NEW` affects only the existing solution SVG reuse/keep/skip disposition. It does **not** bypass either the domain eligibility gate or the visual applicability gate. Selection is fail-closed in this order:
+
+1. `domainEligibility` must be `ELIGIBLE`; otherwise exclude the item as `EXCLUDE_DOMAIN_INELIGIBLE`.
+2. `visualEligibility` must be explicitly `NON_EXEMPT`; `VISUAL_EXEMPT` is excluded even under `FORCE_NEW`.
+3. For items that pass both gates, `FORCE_NEW` means generate a fresh candidate regardless of whether an existing solution SVG is present. Existing SVG content is not opened or used as input/reference.
+
+The selector contract is recorded in [`selection-policy.json`](selection-policy.json). In this run, q1–q20 are domain-eligible and non-exempt, so all 20 were selected. If either eligibility gate changes for a future run, that item must be excluded even when the selector mode remains `FORCE_NEW`.
+
 ## Former EXEMPT 후보 재판정
 
 | 문항 | 신규 시각자료의 학습 역할 | 판정 |
