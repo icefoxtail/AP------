@@ -1,3 +1,16 @@
+## CURRENT OVERRIDE — 2026-10-02 10:32 KST — M3 3-LANE RETURN SIMULATION
+- 사용자 직접 지시로 overnight R3 SURGE 임시구조에서 원래 3-lane 구조로 단계 회귀한다.
+- **PHASE A:** CREATE-1/2/3 = 3 lanes, R1 GLOBAL = 1 lane, R2-1/2/3 = 3 lanes, initial R3 = SURGE-3/4/5 = 3 lanes.
+- CREATE-1/2/3은 ordinal mod3 = 1/2/0 partition을 각각 소유한다. 과거 SURGE-1/2는 각각 CREATE-2/3로 복귀했다.
+- REVIEW2-3의 LINE3 emergency redirect는 HISTORY이며 정상 M3 lane3다.
+- current known CREATE residual after o62 closure는 o60/o65/o66/o67/o68이며 authority는 매 run physical receipt rescan이다.
+- **PHASE B cutover:** physical CREATE=69/69 AND normal first-pass R1 eligible>=3가 동시에 확인되면 즉시 same-run automation cutover를 수행한다.
+- cutover 후 topology는 정확히 **CREATE 0 / R1 3 / R2 3 / R3 3**이다.
+- role mapping: CREATE-2→R3-1(:10), CREATE-3→R3-2(:22), SURGE-3→R3-3(:38), REVIEW1 GLOBAL→R1-1(:45), SURGE-5→R1-2(:50), SURGE-4→R1-3(:42), REVIEW2-1/2/3 유지, CREATE-1 disable.
+- R1/R2/R3 각 lane은 자기 mod3 partition만 소비한다. R1/R2는 blind→compare + repair-before-hold + SHA-bound physical evidence + actual validator PASS, R3는 initial full release audit only / direct repair 금지다.
+- local Node unavailable 시 실행 가능한 GitHub Actions/recovery validator fallback을 먼저 사용하고, 실제 fallback 시도 없이 INFRA_RETRY_DEBT로 종료하지 않는다.
+- 아래 과거 single-CREATE 또는 5-SURGE 설명과 충돌하면 이 override가 우선한다.
+
 ## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
 - **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
 - initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
