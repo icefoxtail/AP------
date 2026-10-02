@@ -59,6 +59,12 @@ async function readPayload(request) {
   }
 }
 
+async function hasAssignmentContextSnapshots(env) {
+  return Boolean(await env.DB.prepare(
+    "SELECT name FROM sqlite_master WHERE type='table' AND name='archive2_assignment_context_snapshots'",
+  ).first().catch(() => null));
+}
+
 export async function handleArchive2(
   request,
   env,
@@ -140,6 +146,8 @@ export async function handleArchive2(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='archive_saved_paper_library_metadata'",
       ).first();
       if (!libraryTable) fail("Paper Lifecycle library metadata migration is required", 503);
+      if (!(await hasAssignmentContextSnapshots(env)))
+        fail("Paper Lifecycle Assignment context migration is required", 503);
       savedPaper = await env.DB.prepare(
         "SELECT * FROM archive_saved_papers WHERE id=? AND owner_teacher_id=? LIMIT 1",
       ).bind(paperId, teacher.id).first();
@@ -400,6 +408,66 @@ export async function handleArchive2(
         fail("추정·미복원 이력 안내를 확인하세요.", 409);
     }
     const assignmentId = existing?.id || crypto.randomUUID();
+    const selectId = "SELECT id FROM class_exam_assignments WHERE archive2_write_key = ?";
+    let assignmentContext = null;
+    let assignmentContextStatement = null;
+    if (savedPaperMode) {
+      const outputContext = {
+        contractVersion: "archive2-output-envelope-v1",
+        defaultMode: "exam",
+        availableModes: ["exam", "sol", "ans"],
+        qpp,
+        includeQr: savedSnapshot.meta.includeQr === true,
+        printHeaderOptions: savedSnapshot.meta.printHeaderOptions || {},
+      };
+      const deliveryContext = {
+        classId: input.class_id,
+        examDate: date,
+        targetStudentIds: [...targetIds].sort(),
+        operation: assignmentOperation || "INITIAL_DISTRIBUTION",
+        relatedAssignmentId: relatedAssignment?.id || null,
+        qrTarget: { identityKind: "ASSIGNMENT_ID" },
+        assignmentWriteKey: writeKey,
+      };
+      const contextJson = JSON.stringify({
+        schemaVersion: "archive2-assignment-context-v1",
+        content: {
+          sourceKind: "saved-paper",
+          savedPaperId: savedPaper.id,
+          snapshotHash: savedPaper.snapshot_hash,
+        },
+        output: outputContext,
+        assignment: deliveryContext,
+      });
+      assignmentContext = {
+        savedPaperId: savedPaper.id,
+        savedPaperSnapshotHash: savedPaper.snapshot_hash,
+        outputContextHash: await sha256hex(JSON.stringify(outputContext)),
+        assignmentContextHash: await sha256hex(JSON.stringify(deliveryContext)),
+        contextJson,
+      };
+      assignmentContextStatement = env.DB.prepare(`
+        INSERT OR IGNORE INTO archive2_assignment_context_snapshots
+          (assignment_id,saved_paper_id,saved_paper_snapshot_hash,output_context_hash,assignment_context_hash,context_json)
+        SELECT a.id,?,?,?,?,?
+        FROM class_exam_assignments a
+        WHERE a.archive2_write_key=? AND a.saved_paper_id=?
+      `).bind(
+        assignmentContext.savedPaperId,
+        assignmentContext.savedPaperSnapshotHash,
+        assignmentContext.outputContextHash,
+        assignmentContext.assignmentContextHash,
+        assignmentContext.contextJson,
+        writeKey,
+        savedPaper.id,
+      );
+    }
+    const assignmentContextGate = savedPaperMode
+      ? `AND EXISTS (SELECT 1 FROM archive2_assignment_context_snapshots cx WHERE cx.assignment_id=(${selectId}) AND cx.assignment_context_hash=?)`
+      : "";
+    const assignmentContextGateParams = savedPaperMode
+      ? [writeKey, assignmentContext.assignmentContextHash]
+      : [];
     let lifecycleEventStatement = null;
     if (assignmentOperation) {
       const event = {
@@ -425,8 +493,6 @@ export async function handleArchive2(
         fail("operation_identity is already attached to another Assignment", 409);
       if (!priorEvent) lifecycleEventStatement = assignmentLifecycleEventStatement(env, event);
     }
-    const selectId =
-      "SELECT id FROM class_exam_assignments WHERE archive2_write_key = ?";
     const assignmentValues = [
       assignmentId,
       input.class_id,
@@ -465,6 +531,7 @@ export async function handleArchive2(
           DO UPDATE SET archive2_snapshot_hash = excluded.archive2_snapshot_hash
         `).bind(...assignmentValues);
     const statements = [insert];
+    if (assignmentContextStatement) statements.push(assignmentContextStatement);
     if (lifecycleEventStatement) statements.push(lifecycleEventStatement);
     if (payload && !original)
       statements.push(
@@ -506,20 +573,23 @@ export async function handleArchive2(
         env.DB.prepare(
           `INSERT OR IGNORE INTO class_exam_assignment_recipients
       (assignment_id,student_id) SELECT (${selectId}), value FROM json_each(?) WHERE (${selectId}) = ?
-       AND EXISTS (SELECT 1 FROM students s WHERE s.id = value AND s.status IN ('재원','active'))`,
-        ).bind(writeKey, JSON.stringify(rosterIds), writeKey, assignmentId),
+       AND EXISTS (SELECT 1 FROM students s WHERE s.id = value AND s.status IN ('재원','active'))
+       ${assignmentContextGate}`,
+        ).bind(writeKey, JSON.stringify(rosterIds), writeKey, assignmentId, ...assignmentContextGateParams),
       );
     if (!existing)
       statements.push(
         env.DB.prepare(
           `INSERT OR IGNORE INTO class_exam_assignment_exclusions
       (assignment_id,student_id,reason) SELECT (${selectId}), value, 'archive2_target' FROM json_each(?) WHERE (${selectId}) = ?
-       AND EXISTS (SELECT 1 FROM students s WHERE s.id = value AND s.status IN ('재원','active'))`,
+       AND EXISTS (SELECT 1 FROM students s WHERE s.id = value AND s.status IN ('재원','active'))
+       ${assignmentContextGate}`,
         ).bind(
           writeKey,
           JSON.stringify(rosterIds.filter((id) => !targetIds.includes(id))),
           writeKey,
           assignmentId,
+        ...assignmentContextGateParams,
         ),
       );
     // Apply the explicit selection after the initial exclusions. This also
@@ -527,8 +597,8 @@ export async function handleArchive2(
     statements.push(
       env.DB.prepare(
         `DELETE FROM class_exam_assignment_exclusions WHERE assignment_id=(${selectId})
-         AND student_id IN (SELECT value FROM json_each(?))`,
-      ).bind(writeKey, JSON.stringify(newTargetIds)),
+         AND student_id IN (SELECT value FROM json_each(?)) ${assignmentContextGate}`,
+      ).bind(writeKey, JSON.stringify(newTargetIds), ...assignmentContextGateParams),
     );
     statements.push(
       ...questionInsertStatements(env, selectId, [writeKey], rows),
@@ -554,6 +624,19 @@ export async function handleArchive2(
     )
       .bind(assignment.id)
       .first();
+    if (savedPaperMode) {
+      const storedContext = await env.DB.prepare(
+        "SELECT * FROM archive2_assignment_context_snapshots WHERE assignment_id=? LIMIT 1",
+      ).bind(assignment.id).first();
+      if (!storedContext)
+        fail("Saved Paper Assignment context snapshot was not committed", 500);
+      if (storedContext.saved_paper_id !== assignmentContext.savedPaperId ||
+          storedContext.saved_paper_snapshot_hash !== assignmentContext.savedPaperSnapshotHash ||
+          storedContext.output_context_hash !== assignmentContext.outputContextHash ||
+          storedContext.assignment_context_hash !== assignmentContext.assignmentContextHash ||
+          storedContext.context_json !== assignmentContext.contextJson)
+        fail("Assignment context identity conflict", 409);
+    }
     const actualRows =
       (
         await env.DB.prepare(

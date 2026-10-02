@@ -104,6 +104,10 @@ async function hasClassExamAssignmentRecipients(env) {
   return columns.has('assignment_id') && columns.has('student_id');
 }
 
+async function hasClassExamAssignmentCancellationAt(env) {
+  return (await getTableColumnSet(env, 'class_exam_assignments')).has('cancelled_at');
+}
+
 function normalizeWrongIds(values, questionCount) {
   const source = Array.isArray(values)
     ? values
@@ -160,6 +164,9 @@ function dedupeClassExamAssignments(rows = [], sessionByAssignment = new Map()) 
 async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
   const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
   const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
+  const cancellationFilter = await hasClassExamAssignmentCancellationAt(env)
+    ? 'AND cea.cancelled_at IS NULL'
+    : '';
   const exclusionFilter = await hasClassExamAssignmentExclusions(env)
     ? `AND NOT EXISTS (
         SELECT 1
@@ -180,6 +187,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
       LEFT JOIN classes c ON c.id = cea.class_id
       WHERE ${recipientSnapshotExists ? 'ar.student_id' : 'cs.student_id'} = ?
         ${exclusionFilter}
+        ${cancellationFilter}
       ORDER BY cea.exam_date DESC, cea.updated_at DESC, cea.created_at DESC
       LIMIT ?
     `).bind(...(exclusionFilter ? [studentId, studentId, safeLimit] : [studentId, safeLimit])).all(),
@@ -246,6 +254,9 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
 
     const hasRecipients = await hasClassExamAssignmentRecipients(env);
     const hasExclusions = await hasClassExamAssignmentExclusions(env);
+    const cancellationFilter = await hasClassExamAssignmentCancellationAt(env)
+      ? 'AND cea.cancelled_at IS NULL'
+      : '';
     const assignment = await env.DB.prepare(`
       SELECT cea.*
       FROM class_exam_assignments cea
@@ -257,6 +268,7 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
           SELECT 1 FROM class_exam_assignment_exclusions ex
           WHERE ex.assignment_id = cea.id AND ex.student_id = ?
         )` : ''}
+        ${cancellationFilter}
       LIMIT 1
     `).bind(...(hasExclusions
       ? [verified.student.id, assignmentId, verified.student.id]
@@ -445,6 +457,9 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
 
     const hasExclusions = await hasClassExamAssignmentExclusions(env);
     const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
+    const cancellationFilter = await hasClassExamAssignmentCancellationAt(env)
+      ? 'AND cea.cancelled_at IS NULL'
+      : '';
     const exclusionFilter = hasExclusions
       ? `AND NOT EXISTS (
           SELECT 1
@@ -462,6 +477,7 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       LEFT JOIN classes c ON c.id = cea.class_id
       WHERE cea.id = ?
         ${exclusionFilter}
+        ${cancellationFilter}
       LIMIT 1
     `).bind(...(hasExclusions ? [verified.student.id, assignmentId, verified.student.id] : [verified.student.id, assignmentId])).first();
 
