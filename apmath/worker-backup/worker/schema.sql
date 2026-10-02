@@ -344,6 +344,9 @@ CREATE TABLE IF NOT EXISTS class_textbooks (
   start_date TEXT,
   end_date TEXT,
   sort_order INTEGER DEFAULT 0,
+  progress_curriculum_key TEXT,
+  progress_level_key TEXT,
+  progress_course_key TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -430,6 +433,8 @@ CREATE INDEX IF NOT EXISTS idx_daily_journals_teacher ON daily_journals(teacher_
 
 CREATE INDEX IF NOT EXISTS idx_class_textbooks_class ON class_textbooks(class_id);
 CREATE INDEX IF NOT EXISTS idx_class_textbooks_status ON class_textbooks(status);
+CREATE INDEX IF NOT EXISTS idx_class_textbooks_progress_course
+  ON class_textbooks(class_id, progress_curriculum_key, progress_level_key, progress_course_key);
 
 CREATE INDEX IF NOT EXISTS idx_class_daily_records_class_date ON class_daily_records(class_id, date);
 CREATE INDEX IF NOT EXISTS idx_class_daily_progress_record ON class_daily_progress(record_id);

@@ -2571,6 +2571,59 @@ function getClassProgressTextbookStatus(tb) {
     return tb?.status === 'completed' ? 'complete' : 'current';
 }
 
+function getClassProgressTextbookGroupKey(tb) {
+    const curriculumKey = String(tb?.progress_curriculum_key || tb?.progressCurriculumKey || '').trim();
+    const levelKey = String(tb?.progress_level_key || tb?.progressLevelKey || '').trim();
+    const courseKey = String(tb?.progress_course_key || tb?.progressCourseKey || '').trim();
+    return curriculumKey && levelKey && courseKey ? [curriculumKey, levelKey, courseKey].join('|') : '';
+}
+
+function syncClassProgressTextbookBindingToState(item) {
+    if (!item?.id) return;
+    const textbookId = String(item.id);
+    const replace = list => (Array.isArray(list) ? list : []).map(book =>
+        String(book?.id || '') === textbookId ? { ...book, ...item } : book
+    );
+    if (Array.isArray(state.db?.class_textbooks)) state.db.class_textbooks = replace(state.db.class_textbooks);
+    const modalState = getClassProgressModalState();
+    modalState.allBooks = replace(modalState.allBooks);
+    modalState.books = replace(modalState.books);
+}
+
+async function persistClassProgressTextbookBindings(textbookIds, group) {
+    const modalState = getClassProgressModalState();
+    const ids = Array.from(new Set((Array.isArray(textbookIds) ? textbookIds : [])
+        .map(id => String(id || '').trim())
+        .filter(Boolean)));
+    if (!ids.length || !group) return true;
+
+    const payload = {
+        progress_curriculum_key: String(group.curriculumKey || ''),
+        progress_level_key: String(group.level || ''),
+        progress_course_key: String(group.courseKey || '')
+    };
+
+    for (const textbookId of ids) {
+        const book = (modalState.allBooks || modalState.books || [])
+            .find(item => String(item?.id || '') === textbookId);
+        if (!book || book.isFallback) continue;
+        let response;
+        try {
+            response = await api.patch(`class-textbooks/${textbookId}`, payload);
+        } catch (error) {
+            console.error('[persistClassProgressTextbookBindings] failed:', error);
+            toast('교재와 과정 연결 저장에 실패했습니다. 다시 시도해주세요.', 'warn');
+            return false;
+        }
+        if (!response?.success || !response.item) {
+            toast(response?.message || response?.error || '교재와 과정 연결 저장에 실패했습니다.', 'warn');
+            return false;
+        }
+        syncClassProgressTextbookBindingToState(response.item);
+    }
+    return true;
+}
+
 function renderClassProgressTextbookRow(tb, progressInfo, selected) {
     const isCompleted = tb?.status === 'completed';
     const textbookId = String(tb?.id || '');
@@ -2677,7 +2730,14 @@ function renderClassProgressTextbookDetail(book) {
     const progressInfo = modalState.progressByTextbook?.[String(book?.id || '')] || {};
     const activeKeys = new Set(Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys : []);
     const selectedId = String(book?.id || '');
-    const panels = groups.filter(group => activeKeys.has(group.key)).map(group => renderClassProgressCoursePanel(group, selectedPaths)).join('');
+    const boundGroupKey = getClassProgressTextbookGroupKey(book);
+    const visibleGroups = groups.filter(group =>
+        activeKeys.has(group.key) && (!boundGroupKey || group.key === boundGroupKey)
+    );
+    const panels = visibleGroups.map(group => renderClassProgressCoursePanel(group, selectedPaths)).join('');
+    const courseEmptyHtml = boundGroupKey
+        ? '<div class="apms-empty ap-class-progress-course-empty">이 교재에 연결된 과정이 현재 진도에 없습니다. 과정 추가에서 다시 연결하세요.</div>'
+        : '<div class="apms-empty ap-class-progress-course-empty">등록된 과정이 없습니다. 과정 추가를 눌러 선택하세요.</div>';
     const status = book ? getClassProgressTextbookStatus(book) : '';
     const statusLabel = status === 'complete' ? '완료' : '진행 중';
     const title = String(book?.title || '');
@@ -2716,7 +2776,7 @@ function renderClassProgressTextbookDetail(book) {
                 </div>
             </div>
             ${modalState.courseAddOpen ? courseAddHtml : ''}
-            <div id="record-progress-course-panels">${panels || '<div class="apms-empty ap-class-progress-course-empty">등록된 과정이 없습니다. 과정 추가를 눌러 선택하세요.</div>'}</div>
+            <div id="record-progress-course-panels">${panels || courseEmptyHtml}</div>
         </section>
     </div>`;
 }
@@ -2749,7 +2809,7 @@ function renderClassProgressCourseAddControl() {
     );
     const activeKeys = new Set(Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys : []);
     const selectedGroupKey = String(modalState.courseAddSelectedGroupKey || '');
-    const options = groups.map(group => `<option value="${apEscapeHtml(group.key)}"${activeKeys.has(group.key) ? ' disabled' : ''}${group.key === selectedGroupKey ? ' selected' : ''}>${apEscapeHtml(getClassProgressCourseOptionLabel(group))}</option>`).join('');
+    const options = groups.map(group => `<option value="${apEscapeHtml(group.key)}"${group.key === selectedGroupKey ? ' selected' : ''}>${apEscapeHtml(getClassProgressCourseOptionLabel(group))}</option>`).join('');
     const selectedBookIds = new Set(Array.isArray(modalState.courseAddBookIds) ? modalState.courseAddBookIds.map(String) : []);
     const activeBooks = (Array.isArray(modalState.books) ? modalState.books : [])
         .filter(book => book?.status === 'active' && !book?.isFallback);
@@ -2854,7 +2914,17 @@ function syncClassProgressCourseAddDraftFromDom() {
 }
 
 function setClassProgressCourseSelection(groupKey) {
-    getClassProgressModalState().courseAddSelectedGroupKey = String(groupKey || '');
+    const modalState = getClassProgressModalState();
+    const key = String(groupKey || '');
+    modalState.courseAddSelectedGroupKey = key;
+    const boundIds = new Set((Array.isArray(modalState.books) ? modalState.books : [])
+        .filter(book => getClassProgressTextbookGroupKey(book) === key)
+        .map(book => String(book.id || ''))
+        .filter(Boolean));
+    modalState.courseAddBookIds = Array.from(boundIds);
+    document.querySelectorAll('.ap-class-progress-course-book-choice').forEach(input => {
+        input.checked = boundIds.has(String(input.value || ''));
+    });
 }
 
 function setClassProgressCourseBookSelected(textbookId, selected) {
@@ -2922,6 +2992,9 @@ function applyClassProgressCourseAndTextbooks() {
         classId,
         date,
         groupKey,
+        curriculumKey: String(group.curriculumKey || ''),
+        levelKey: String(group.level || ''),
+        courseKey: String(group.courseKey || ''),
         selectedBookIds: Array.isArray(modalState.courseAddBookIds) ? modalState.courseAddBookIds.map(String) : [],
         newTextbookTitle: modalState.courseAddNewTextbookOpen
             ? String(modalState.courseAddNewTextbookTitle || '').trim()
@@ -2945,7 +3018,7 @@ function applyClassProgressCourseAndTextbooks() {
     return applyClassProgressCourseAndTextbookDraft(draft);
 }
 
-function applyClassProgressCourseAndTextbookDraft(draft = {}) {
+async function applyClassProgressCourseAndTextbookDraft(draft = {}) {
     const modalState = getClassProgressModalState();
     if (String(draft.classId || '') !== String(modalState.classId || '')
         || String(draft.date || '') !== String(modalState.date || '')) return false;
@@ -2954,6 +3027,12 @@ function applyClassProgressCourseAndTextbookDraft(draft = {}) {
         String(item?.key || '') === groupKey && item?.curriculumKey === '2022'
     );
     if (!group) return false;
+
+    const selectedBookIds = new Set((Array.isArray(draft.selectedBookIds) ? draft.selectedBookIds : []).map(String));
+    const addedTextbookId = String(draft.addedTextbookId || '');
+    if (addedTextbookId) selectedBookIds.add(addedTextbookId);
+    const bindingSaved = await persistClassProgressTextbookBindings(Array.from(selectedBookIds), group);
+    if (!bindingSaved) return false;
 
     if (!Array.isArray(modalState.activeGroupKeys)) modalState.activeGroupKeys = [];
     const root = document.getElementById('record-progress-course-panels');
@@ -2965,9 +3044,6 @@ function applyClassProgressCourseAndTextbookDraft(draft = {}) {
         root.insertAdjacentHTML('beforeend', renderClassProgressCoursePanel(group, getClassProgressSelectedPathDraft()));
     }
 
-    const selectedBookIds = new Set((Array.isArray(draft.selectedBookIds) ? draft.selectedBookIds : []).map(String));
-    const addedTextbookId = String(draft.addedTextbookId || '');
-    if (addedTextbookId) selectedBookIds.add(addedTextbookId);
     if (!modalState.progressByTextbook) modalState.progressByTextbook = {};
     selectedBookIds.forEach(textbookId => {
         if (modalState.progressByTextbook[textbookId]) modalState.progressByTextbook[textbookId].isChecked = true;
@@ -3252,11 +3328,17 @@ async function openClassRecordModal(cid, requestedDate) {
     const pendingSelectedPathDraft = Array.isArray(state.ui?.pendingClassProgressCourseApply?.selectedPathDraft)
         ? state.ui.pendingClassProgressCourseApply.selectedPathDraft.slice()
         : null;
+    const boundGroupKeys = new Set(
+        visibleBooks.map(getClassProgressTextbookGroupKey).filter(Boolean)
+    );
+    const initialActiveKeys = new Set(groups
+        .filter(group => savedGroupKeys.has(group.key) || boundGroupKeys.has(group.key))
+        .map(group => group.key));
     const activeKeys = applyPendingClassProgressCourseApply(
         cid,
         todayStr,
         groups,
-        new Set(groups.filter(group => savedGroupKeys.has(group.key)).map(group => group.key)),
+        initialActiveKeys,
         progressByTextbook,
         visibleBooks
     );
