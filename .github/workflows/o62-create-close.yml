@@ -1,0 +1,22 @@
+name: o62-create-close
+on:
+  push:
+    branches:
+      - 'archive-recovery/m3-23-suncheonyeo-2final-actionfirst-20261002-0947'
+    paths:
+      - 'archive/data/r2e-intake/m3/23_순천여중_2학기_기말_중3_기출.create.meta-v2.physical-evidence.json'
+      - '.github/workflows/o62-create-close.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Calibration preflight
+        run: node archive/tools/solution-calibration-gate.mjs --exam 'archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js' --evidence 'archive/data/r2e-intake/m3/23_순천여중_2학기_기말_중3_기출.create.meta-v2.physical-evidence.json' --stage CREATE --preflight
+      - name: CREATE physical evidence gate
+        run: node archive/tools/review-evidence-gate.mjs --exam 'archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js' --evidence 'archive/data/r2e-intake/m3/23_순천여중_2학기_기말_중3_기출.create.meta-v2.physical-evidence.json' --stage CREATE
