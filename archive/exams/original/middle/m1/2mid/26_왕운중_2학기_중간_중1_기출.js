@@ -411,7 +411,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.svg"
   },
   {
     "id": 7,
@@ -764,7 +764,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.png",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q11.svg"
   },
   {
@@ -837,7 +837,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.png",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q12.svg"
   },
   {
@@ -1193,7 +1193,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.svg"
   },
   {
     "id": 18,
@@ -1263,7 +1263,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q018_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q018_visual.svg"
   },
   {
     "id": 19,
@@ -1335,7 +1335,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.png",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q019_visual.svg",
     "imageSize": "full"
   },
   {
@@ -1537,7 +1537,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_visual.png",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q022_visual.svg",
     "imageSize": "large",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q22.svg"
   },
@@ -1605,7 +1605,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.png",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q23.svg"
   }
 ];
