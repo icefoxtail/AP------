@@ -6,17 +6,6 @@ One job may contain many run manifests, selected question/asset targets, or an
 entire unit. Each run's `questions` defines its UID targets. `workBatchId` is
 bound in `runInputSha`; a run cannot acquire a second budget by changing batch ID.
 
-## CURRENT OVERRIDE — 2026-10-02 — NO-STOP SCHEDULING
-
-This implementation contract separates **quality/release eligibility** from **scheduler continuity**.
-
-- HOLD/FAIL/provider failure/stagnation/lock/write problems never authorize PASS, but they also do not stop unrelated eligible work.
-- Every failure must run the recovery sequence: re-read current state → verify whether mutation/dispatch actually happened → bounded safe retry/reconcile → refresh stale identity/ref → use a safe recovery path when available → re-read the result → close as DONE or a scoped debt.
-- Unresolved work is recorded as `FINAL_REVIEW_DEBT`, `WRITE_RECOVERY_DEBT`, `INFRA_RETRY_DEBT`, `USER_DECISION_DEBT`, or item-level HOLD. Legacy `BLOCK/BLOCKED/PENDING` is not a scheduler selector state.
-- If a required durable input does not exist, only that dependent target/stage is skipped; the worker releases ownership and selects the next eligible target.
-- Production authorization still requires the open defect/debt set to be empty and all existing quality gates to PASS.
-- A provider slot/lock tied to one unresolved launch may remain reserved for reconciliation, but it does not stop non-conflicting local work, other lanes, or later cohorts.
-
 ## Operating sequence
 
 1. The main worker initializes the job with its complete `runIds` and builder
@@ -42,11 +31,8 @@ This implementation contract separates **quality/release eligibility** from **sc
    complete scope sequentially in sealed U1/U2/U3 stateless input contexts and
    returns evidence refs plus one consolidated defect list.
 6. Reconcile a hash-bound terminal provider receipt. Quality defects mean a
-   COMPLETED audit, not a new launch. Provider failure becomes scoped
-   `INFRA_RETRY_DEBT`; first re-read provider state and reconcile/retry only
-   through the same safe launch identity. Unknown or timed-out provider state
-   keeps RESERVED/DISPATCHED for reconciliation, but this is not a global
-   scheduler stop: release the target owner and continue non-conflicting eligible work.
+   COMPLETED audit, not a new launch. Provider failure means HOLD. Unknown or
+   timed-out provider state keeps RESERVED/DISPATCHED and occupies the slot.
 7. A COMPLETED audit with defects enters `REPAIR_REQUIRED`; it is not a
    terminal success and it is not an automatic retry. The original builder
    records one disposition per open defect, creates a new revision/inputSha,
@@ -58,8 +44,7 @@ This implementation contract separates **quality/release eligibility** from **sc
    unaffected axes require direct-root validated reuse.
 9. Recheck PASS closure accumulates with prior validated reuse; remaining or
    newly discovered defects replace the open set for the next repair iteration.
-   Same-input same-defect stagnation and the iteration limit become scoped
-   `FINAL_REVIEW_DEBT`, not a lane/cohort stop.
+   Same-input same-defect stagnation and the iteration limit are HOLD.
 10. Aggregate whole-job coverage and cost with work-batch-audit. Only when the
     open defect set is empty and all closure artifacts are valid can production
     authorization be considered.
@@ -100,9 +85,8 @@ snapshot when adding evidence rather than overwriting a frozen ref.
 - `work-batch-repair --work-batch-id JOB --request request.json`: the original
   builder records `iteration`, `revision`, aggregate `inputSha`, builder
   identity, and exactly one disposition per `openDefectSet` target. It does not
-  close an audit or grant production authority. A legacy `HOLD` disposition means the affected target is not release-ready;
-  normalize it to scoped debt for scheduling, preserve the evidence, and continue
-  other eligible work until explicit reconciliation.
+  close an audit or grant production authority. A `HOLD` disposition holds the
+  batch until explicit reconciliation.
 - `work-batch-reserve --work-batch-id JOB --request request.json`: request has
   `purpose`, `callerRole: MAIN_WORKER`, `auditorId`, `auditorSessionId`,
   `parentLaunchId: null`, `recursiveSubagentLaunchCount: 0`,
