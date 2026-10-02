@@ -1,3 +1,5 @@
+window.examTitle = "22_팔마중_2학기_기말_중3_기출";
+
 window.questionBank = [
   {
     "id": 1,
