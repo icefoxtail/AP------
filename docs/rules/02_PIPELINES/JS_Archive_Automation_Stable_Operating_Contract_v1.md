@@ -26,7 +26,7 @@ JS Archive 자동화를 다음 고정 흐름으로 단순화한다.
 CREATE → R1 → R2 → R3 → RELEASE QUEUE → PUBLISH → MAIN_DONE
 ```
 
-R3 FAIL 이후의 repair/recovery/independent recheck는 현재 운영대로 Codex가 담당한다.
+R3 FAIL 이후에는 repair → 재검으로 닫는다. Codex는 사용할 수 있지만 fresh/별도 reviewer 자체가 필수조건은 아니다.
 
 이 문서가 활성화되면 automation role/schedule/blind/recovery/publish의 단일 실행 authority가 된다.
 과거 3-lane, Surge, Phase A/B, existing-slot-only, persistent-thread contamination, dormant clean-slot, 감시자/조율자 계약은 HISTORY다.
@@ -36,9 +36,9 @@ R3 FAIL 이후의 repair/recovery/independent recheck는 현재 운영대로 Cod
 | Role | Count | Responsibility |
 |---|---:|---|
 | CREATE | 2 | 시험지 제작, solution, solution visual, Meta, physical evidence, CREATE closure |
-| R1 | 2 | FULL independent review + allowed deterministic repair |
-| R2 | 2 | FULL independent recheck + compare/regression closure |
-| R3 | 2 | final full release audit; direct repair forbidden |
+| R1 | 2 | 1차 전수 재검 + 허용 범위 deterministic repair |
+| R2 | 2 | 2차 전수 재검 + compare/regression closure |
+| R3 | 2 | 최종 release 재검; direct repair forbidden |
 | PUBLISH | 1 | release queue/branch의 clean backlog 전체 batch main 반영 |
 | MASTER EXECUTOR | 3 | 20분 간격으로 전체 pipeline 실제 복구·재배정·쓰기·배포 |
 
@@ -123,11 +123,11 @@ temporary test의 첫 실제 run 판정은 `last_run_time`만 보지 않고 **ta
 - MASTER는 매 run ACTIVE topology를 확인한다. **사용자 명시 중지가 아닌데 R1/R2/R3/PUBLISH/MASTER role-pure slot이 disabled이고 해당 role backlog가 남아 있으면 즉시 re-enable**한다.
 - target-local debt는 MASTER/recovery sidecar가 처리한다. role worker는 다음 시험지를 계속 소비한다.
 
-## 2. Review Attempt v2 — CONTEXT-TOLERANT INDEPENDENT REVIEW
+## 2. Review Attempt v2 — CONTEXT-TOLERANT RECHECK
 
 형님의 2026-10-03 명시 지시: **기존 solution·이전 verdict·checkpoint·repair detail을 이미 봤어도 검수는 유효하다.** 노출을 이유로 fresh reviewer를 새로 만들거나 attempt를 폐기하지 않는다.
 
-독립성은 **정보 비노출**이 아니라 **source/current authority에서 다시 계산·판정하고 기존 verdict를 정답처럼 복사하지 않는 것**으로 정의한다.
+재검의 신뢰성은 **정보 비노출**이 아니라 **source/current authority에서 다시 계산·판정하고 기존 verdict를 정답처럼 복사하지 않는 것**으로 정의한다.
 
 reviewAttemptId는 최소 다음을 결속한다.
 
@@ -144,19 +144,19 @@ attemptNo
 selector
 → Golden/Negative calibration
 → target + 필요 시 prior solution/verdict/checkpoint/repair를 읽을 수 있음
-→ source/current authority에서 전 문항 또는 required scope 독립 재계산·판정
+→ source/current authority에서 전 문항 또는 required scope 재계산·재판정
 → decision snapshot 고정
 → prior 결과와 regression compare
 → repair/recheck/validator/receipt closure
 ```
 
-- 기존 schema/validator 호환을 위해 `blindDecisionSha`, `blindFreezeSha256`, `blindDecisionFrozenBeforeR1Compare` 같은 필드명은 유지할 수 있다. **이 필드들은 이제 prior detail 비노출을 증명하지 않으며, formal compare/receipt 전에 독립 재계산한 decision snapshot이 고정됐음을 뜻한다.**
+- 기존 schema/validator 호환을 위해 `blindDecisionSha`, `blindFreezeSha256`, `blindDecisionFrozenBeforeR1Compare` 같은 필드명은 유지할 수 있다. **이 필드들은 이제 prior detail 비노출을 증명하지 않으며, formal compare/receipt 전에 재검 decision snapshot이 고정됐음을 뜻한다.**
 - prior detail을 먼저 봤다는 이유만으로 `INVALID`, `CONTEXT_CONTAMINATED`, `FRESH_REVIEWER_REQUIRED`를 만들지 않는다.
 - same worker/thread가 그대로 R1/R2/R3 또는 post-repair recheck를 끝까지 닫을 수 있다.
 - 다른 reviewer/Codex를 쓰는 것은 품질상 유용할 때 선택할 수 있지만 **stage closure의 필수조건이 아니다.**
 - 동일 reviewAttemptId의 continuation은 언제든 이어서 닫는다. prior compare detail을 이미 봤다는 이유로 폐기하지 않는다.
 
-### 2.1 독립 재계산 최소 원칙
+### 2.1 재검 최소 원칙
 
 prior verdict를 본 상태에서도 최소한 다음을 자기 판단으로 다시 만든다.
 
@@ -259,7 +259,7 @@ MASTER도 다음 사실은 조작할 수 없다.
 완료는 다음 둘 중 하나다.
 
 1. durable state가 실제 다음 정상 상태로 이동함.
-2. 직접 완료 불가 시 fresh executable owner가 실제 claim/실행에 진입하고 exact input/completion gate가 결속됨.
+2. 직접 완료 불가 시 executable owner가 실제 claim/실행에 진입하고 exact input/completion gate가 결속됨.
 
 ### 3.4 실행 순서
 
@@ -400,7 +400,7 @@ durable progress는 최소 다음 중 하나다.
 
 - 정상 closure 후 MASTER는 receipt/readback에 `masterLeaseId`를 남기고 lease를 `CLOSED` 처리한다.
 - runtime 종료 등으로 직접 closure가 불가능하지만 exact continuation이 물리화됐으면 `HANDOFF_READY`로 lease를 정리할 수는 있다. **그러나 이것만으로 MASTER stage-delivery 완료를 선언하지 않는다.**
-- MASTER 완료 판정에는 fresh executable owner의 실제 claim/run 또는 다음 정상 durable stage가 필요하다.
+- MASTER 완료 판정에는 executable owner의 실제 claim/run 또는 다음 정상 durable stage가 필요하다.
 - HANDOFF_READY 이후 다음 MASTER는 기존 repair를 처음부터 재실행하지 않고 exact continuation에서 새 lease를 획득한다.
 - 같은 capability를 가진 owner에게 같은 handoff를 반복해 실패를 재생산하지 않는다.
 - 문서만 남기고 ACTIVE lease를 방치하지 않는다.
@@ -438,7 +438,7 @@ FAIL
 ### 4.2 prior-context exposure
 
 - prior solution/verdict/checkpoint/repair detail 노출은 **정상 review input으로 허용**하며 attempt invalidation 사유가 아니다.
-- 같은 worker가 source/current authority에서 독립 재계산한 decision snapshot을 만든 뒤 formal compare/validator/receipt까지 계속 닫는다.
+- 같은 worker가 source/current authority에서 재계산·재판정한 recheck snapshot을 만든 뒤 formal compare/validator/receipt까지 계속 닫는다.
 - fresh reviewer actual-start를 기다리는 상태를 만들지 않는다.
 - MASTER도 “이미 봤다”를 이유로 review/repair/write/routing/publish를 거부할 수 없다.
 
