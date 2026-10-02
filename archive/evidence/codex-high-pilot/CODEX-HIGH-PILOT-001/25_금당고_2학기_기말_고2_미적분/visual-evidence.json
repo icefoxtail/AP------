@@ -2,7 +2,7 @@
   "pilotId": "CODEX-HIGH-PILOT-001",
   "exam": "25_금당고_2학기_기말_고2_미적분",
   "stage": "VISUAL",
-  "status": "VISUAL_PASS_21_21",
+  "status": "VISUAL_TARGETED_RECHECK_PENDING",
   "denominator": 21,
   "sourceVisualCount": 0,
   "sourceSolutionVisualCount": 0,
@@ -35,7 +35,7 @@
   "newSvgCount": 0,
   "changedSvgCount": 0,
   "renderRiskQids": [],
-  "blocker": "Official VISUAL_REPAIR calibration preflight failed before target SVG mutation.",
+  "blocker": null,
   "items": [
     {
       "qid": 1,
@@ -143,7 +143,7 @@
       "classification": "OPTIONAL",
       "action": "ADD",
       "studentBenefit": "A graph of y=xe^-x, its inflection tangent, and both axis intercepts makes the triangle-area setup immediately visible.",
-      "status": "PASS_INDEPENDENT_RECHECK",
+      "status": "TARGETED_RECHECK_PENDING_AFTER_LEGEND_WORDING_FIX",
       "solutionVisual": "VISUAL_OPTIONAL_ADDED",
       "solutionAsset": "archive-work/assets/images/25_금당고_2학기_기말_고2_미적분/q012_solution.svg",
       "coordinateFactCount": 8,
@@ -178,7 +178,9 @@
           ]
         ],
         "area": 1.0826822658929016
-      }
+      },
+      "renderSha256": "sha256:8b5a09a3b7a0bc553841c0bcf77a952994100586cf13bd4da58befc83b5571af",
+      "svgSha256": "sha256:593ca8faf05d6e8807814efd3f7a6330dd47778cd0d5834f99e8a32a2494a65b"
     },
     {
       "qid": 13,
@@ -270,8 +272,8 @@
     "gitBlobSha": "08cfc834e3dae9838000880baaf983a685dece51",
     "relevantBoundary": "Keep original problem images as crops; solutionImage remains a separate instructional visual. Target has no problem image, and proposed q12 SVG is solution-only."
   },
-  "targetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
-  "targetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "targetArtifactSha256": "sha256:c4c05c01cf774e71f9947aad6928868b5208a733ee15b20f1120c7cfee05e858",
+  "targetArtifactGitBlobSha": "13ed6214ffeeadd33bbd7df0101d00f43ac69ec0",
   "solutionSvgAddedCount": 1,
   "solutionSvgModifiedCount": 0,
   "solutionVisualOptionalQids": [
@@ -297,14 +299,17 @@
   ],
   "independentVisualReview": "PASS_Q12_SOLUTION_VISUAL",
   "independentVisualReviewEvidence": "q12-visual-recheck.json",
-  "currentTargetArtifactSha256": "sha256:234028e5df4ae83639093778f506589be7141b8f8f146cf7909b478da15fd9ac",
-  "currentTargetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "currentTargetArtifactSha256": "sha256:c4c05c01cf774e71f9947aad6928868b5208a733ee15b20f1120c7cfee05e858",
+  "currentTargetArtifactGitBlobSha": "13ed6214ffeeadd33bbd7df0101d00f43ac69ec0",
   "q15PostRepairRecheck": "q15-post-repair-recheck.json",
-  "currentTargetGitBlobSha": "867118ebe5ed81044c7a53d79a2292e3cbdbf612",
+  "currentTargetGitBlobSha": "13ed6214ffeeadd33bbd7df0101d00f43ac69ec0",
   "openQids": [],
   "holdQids": [],
   "recheckedQids": [
     12,
     15
-  ]
+  ],
+  "currentSvgSha256": "sha256:593ca8faf05d6e8807814efd3f7a6330dd47778cd0d5834f99e8a32a2494a65b",
+  "currentRenderSha256": "sha256:8b5a09a3b7a0bc553841c0bcf77a952994100586cf13bd4da58befc83b5571af",
+  "calibrationBlockResolution": "calibration-preflight-recovery.json"
 }

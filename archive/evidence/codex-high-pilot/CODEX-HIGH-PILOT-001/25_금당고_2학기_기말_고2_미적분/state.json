@@ -8,11 +8,11 @@
   "latestOriginMain": "f40747efb55c7018c868c5f8ed246a2a555d6b1b",
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
-  "lastDurableStage": "META",
-  "currentStage": "INDEPENDENT_REVIEW",
-  "nextStage": "INDEPENDENT_REVIEW",
+  "lastDurableStage": "TARGETED_REPAIR_Q19_AND_Q12_LEGEND",
+  "currentStage": "INDEPENDENT_REVIEW_TARGETED_RECHECK",
+  "nextStage": "INDEPENDENT_REVIEW_TARGETED_RECHECK",
   "artifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
-  "artifactSha256": "sha256:234028e5df4ae83639093778f506589be7141b8f8f146cf7909b478da15fd9ac",
+  "artifactSha256": "sha256:c4c05c01cf774e71f9947aad6928868b5208a733ee15b20f1120c7cfee05e858",
   "denominator": 21,
   "resolvedAnswerCount": 21,
   "solutionCount": 21,
@@ -24,49 +24,33 @@
     "answer": "answer.json; q15-audited-source-repair.json; q15-post-repair-recheck.json",
     "solutionSelfReview": "self-review-1.json; self-review-2.json; q15-post-repair-recheck.json",
     "goldenCalibration": "golden-calibration.json",
-    "visual": "visual-evidence.json; q12-visual-coordinate-proof.json; q12-expected-facts.json; q12-svg-coordinate-verification.json; q12-solution-render.png; q12-visual-recheck.json",
-    "meta": "meta-evidence.json; meta-decision-isolated-inputs.json; meta-resolver-results.json",
+    "visual": "visual-evidence.json; q12-visual-coordinate-proof.json; q12-svg-coordinate-verification.json; q12-solution-render.png",
+    "meta": "meta-evidence.json; meta-decision-isolated-inputs.json; meta-resolver-results-current-main.json",
     "independentReview": "independent-review.json (prior partial only); fresh current review pending",
     "release": null,
     "calibrationPreflight": "calibration-preflight-recovery.json; q15-repair-calibration-input.json; q15-repair-calibration-preflight.json",
     "sourceTruthQ15": "q15-source-truth-recheck.json; q15-audited-source-repair.json; q15-post-repair-recheck.json; q15-source-page3.png",
-    "solution": "solution.json; q15-audited-source-repair.json; q15-post-repair-recheck.json",
-    "goldenCompare": "golden-calibration.json; q15-post-repair-golden-compare.json"
+    "solution": "solution.json; q19-targeted-repair-recheck.json",
+    "goldenCompare": "golden-calibration.json; q15-post-repair-golden-compare.json; q19-post-repair-golden-compare.json",
+    "difficulty": "difficulty-blind-review.json; meta-evidence.json"
   },
   "unrelatedMutationCount": 0,
   "resolvedSolutionCount": 21,
   "unfinishedSolutionQids": [],
-  "targetArtifactGitBlobSha": "867118ebe5ed81044c7a53d79a2292e3cbdbf612",
+  "targetArtifactGitBlobSha": "13ed6214ffeeadd33bbd7df0101d00f43ac69ec0",
   "selfReview1Status": "PASS_AFTER_Q15_TARGETED_RECHECK",
   "repairNote": null,
   "selfReview2Status": "PASS_AFTER_Q15_TARGETED_RECHECK",
   "attemptedStage": "GOLDEN_COMPARE_MANUAL_AND_VISUAL_PREFLIGHT",
   "unfinishedQids": {
     "solution": [],
-    "visual": [],
+    "visual": [
+      12
+    ],
     "meta": [],
     "independentReview": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
       19,
-      20,
-      21
+      12
     ],
     "release": [
       1,
@@ -92,8 +76,12 @@
       21
     ],
     "answer": [],
-    "selfReview1": [],
-    "selfReview2": [],
+    "selfReview1": [
+      19
+    ],
+    "selfReview2": [
+      19
+    ],
     "goldenCompare": []
   },
   "blockedAtStage": null,
@@ -118,7 +106,7 @@
     }
   ],
   "commitSha": null,
-  "independentReviewStageStatus": "IN_PROGRESS_FRESH_BLIND_REVIEW",
+  "independentReviewStageStatus": "Q19_REPAIR_APPLIED_TARGETED_RECHECK_PENDING",
   "pendingMetaQids": [],
   "progressCommits": [
     {
@@ -154,15 +142,22 @@
     "branchSystemMutationCount": 0
   },
   "sourceTruthReviewQ15Status": "AUDITED_SOURCE_REPAIR_AND_TARGETED_RECHECK_PASS",
-  "visualStatus": "VISUAL_PASS_21_21_Q12_SVG_RECHECKED_Q15_VISUAL_EXEMPT",
+  "visualStatus": "Q12_TARGETED_RECHECK_PENDING_AFTER_LABEL_FIX_Q15_VISUAL_EXEMPT",
   "solutionSvgCount": 1,
   "solutionSvgQids": [
     12
   ],
-  "targetArtifactSha256": "sha256:234028e5df4ae83639093778f506589be7141b8f8f146cf7909b478da15fd9ac",
+  "targetArtifactSha256": "sha256:c4c05c01cf774e71f9947aad6928868b5208a733ee15b20f1120c7cfee05e858",
   "sourceRepairQid": 15,
   "sourceRepairChange": "3xe^{x²}→3xe^x, one superscript digit deleted; choices unchanged",
   "currentQ12VisualStatus": "PASS_INDEPENDENT_RECHECK",
-  "nextStageNote": "Current independent review in progress; after any bounded fixes and affected-scope recheck, complete RELEASE.",
-  "metaStatus": "META_SEMANTIC_PASS_21_21_PROJECTION_UNMATERIALIZED_21_21"
+  "nextStageNote": "Current-main RPM resolver revalidation is PASS 21/21. q19 repair and q12 legend/render are committed next; affected-locus independent recheck must pass before RELEASE.",
+  "metaStatus": "META_SEMANTIC_PASS_21_21_CURRENT_MAIN_VALIDATOR_PASS",
+  "difficultyStatus": "BLIND_PASS_21_21_ADJUDICATED",
+  "metaCurrentMainResolverValidationCount": 21,
+  "currentResolverAuthority": {
+    "originMain": "f40747efb55c7018c868c5f8ed246a2a555d6b1b",
+    "validationFile": "meta-resolver-results-current-main.json",
+    "validatedCount": 21
+  }
 }

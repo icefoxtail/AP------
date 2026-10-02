@@ -1547,7 +1547,7 @@ window.questionBank = [
     "content": "모든 실수 $x$에 대하여 미분가능한 함수 $f(x)$가 $\\int_0^x f(t)\\,dt-e^4x=\\int_0^x (x-t)f(t)\\,dt$를 만족시킬 때, $f(-2)$의 값을 구하는 과정을 서술하시오. [5점]",
     "choices": [],
     "answer": "$e^2$",
-    "solution": "양변을 $x$에 대하여 미분하면 $f(x)-e^4=\\int_0^xf(t)dt$이다. $x=0$에서 $f(0)=e^4$이다. 이 식을 다시 미분하면 $f'(x)=f(x)$이므로 $(e^{-x}f(x))'=0$이다. 따라서 $e^{-x}f(x)$는 상수이고, $f(0)=e^4$에서 $f(x)=e^{x+4}$이다. 그러므로 $f(-2)=e^2$이다.",
+    "solution": "양변을 $x$에 대하여 미분한다.\n오른쪽 적분을 먼저 $x\\int_0^x f(t)\\,dt-\\int_0^x tf(t)\\,dt$로 나누면,\n$\\dfrac{d}{dx}\\left(x\\int_0^x f(t)\\,dt-\\int_0^x tf(t)\\,dt\\right)=\\int_0^x f(t)\\,dt+xf(x)-xf(x)=\\int_0^x f(t)\\,dt$이다.\n따라서 $f(x)-e^4=\\int_0^x f(t)\\,dt$이다. $x=0$을 대입하면 $f(0)=e^4$이다.\n이 식을 다시 미분하면 $f'(x)=f(x)$이다. 그러므로 $\\left(e^{-x}f(x)\\right)'=0$이고 $e^{-x}f(x)$는 상수이다. $f(0)=e^4$에서 $f(x)=e^{x+4}$이므로 $f(-2)=e^2$이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,

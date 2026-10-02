@@ -1,0 +1,31 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "qid": 19,
+  "status": "MANUAL_GOLDEN_COMPARE_PASS_AFTER_Q19_REPAIR",
+  "targetArtifactSha256": "sha256:c4c05c01cf774e71f9947aad6928868b5208a733ee15b20f1120c7cfee05e858",
+  "solutionSha256": "sha256:6d56bae7e4aeea04e3450c49c49b04fad95eb1bb578fbda6cc665e0eb9fce729",
+  "calibrationStatus": "SOLUTION_CALIBRATION_PASS_21_21",
+  "references": [
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+      "qid": 21,
+      "solutionSha256": "sha256:b3fd002e55adea3bcc3b2c6df512f920df83b0c04ee7a9e3d2c70d15a75f525f",
+      "observation": "Verified H2 calculus reference separates condition and derivative stages; q19 now expands each differentiated term and cancellation into distinct board lines."
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+      "qid": 7,
+      "solutionSha256": "sha256:5e5da7e90764d505e5a0971f0da57c3f5c686cdc0074a64eb24e564051f6f829",
+      "observation": "Verified reference states the intermediate antiderivative and endpoint evaluation; q19 now likewise shows the decisive product-rule/FTC expansion rather than skipping it."
+    }
+  ],
+  "axes": {
+    "studentReproducibility": "PASS_AFTER_REPAIR",
+    "smallBoardStructure": "PASS_AFTER_REPAIR",
+    "explanationDensity": "PASS_NO_FILLER",
+    "visualSemanticParity": "N_A",
+    "visualReadability": "PASS"
+  },
+  "finding": "Q19 repair makes the previously omitted differentiation cancellation explicit. No Golden wording copied. Independent targeted recheck pending."
+}

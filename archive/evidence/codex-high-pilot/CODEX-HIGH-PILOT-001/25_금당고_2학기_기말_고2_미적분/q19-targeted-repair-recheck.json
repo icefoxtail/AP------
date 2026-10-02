@@ -1,0 +1,20 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "qid": 19,
+  "status": "LOCAL_TARGETED_MATH_REPAIR_PENDING_INDEPENDENT_RECHECK",
+  "targetArtifactSha256": "sha256:c4c05c01cf774e71f9947aad6928868b5208a733ee15b20f1120c7cfee05e858",
+  "solutionSha256": "sha256:6d56bae7e4aeea04e3450c49c49b04fad95eb1bb578fbda6cc665e0eb9fce729",
+  "issue": "Independent reviewer found the derivative of the RHS integral was asserted without showing the product-rule/FTC cancellation.",
+  "repair": "Rewrite ∫₀ˣ(x−t)f(t)dt as x∫₀ˣf(t)dt−∫₀ˣtf(t)dt, then differentiate both terms to show ∫₀ˣf(t)dt+xf(x)−xf(x)=∫₀ˣf(t)dt.",
+  "checks": {
+    "productRuleVisible": true,
+    "ftcBoundaryTermsVisible": true,
+    "boundaryTermsCancel": true,
+    "f0Applied": true,
+    "secondDerivativeStepVisible": true,
+    "answerUnchanged": true,
+    "latexEscapePresent": true
+  },
+  "independentRecheck": "PENDING"
+}
