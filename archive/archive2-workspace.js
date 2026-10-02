@@ -2071,9 +2071,14 @@
         }
       }
       if (!recovered) {
-        const keepUnknown = (recoveringUnknown && !recoveryConfirmedAbsent) ||
+        const responseStatus = Number(error.status);
+        const definiteHttpFailure = requestStarted &&
+          Number.isInteger(responseStatus) && responseStatus >= 400 && responseStatus < 500;
+        const keepUnknown = !definiteHttpFailure && (
+          (recoveringUnknown && !recoveryConfirmedAbsent) ||
           (!requestStarted && recoveringUnknown) ||
-          (requestStarted && (!error.status || error.status >= 500));
+          (requestStarted && (!error.status || responseStatus >= 500))
+        );
         state.saveResultState = keepUnknown ? "RESULT_UNKNOWN" : "FAILED";
         state.saveMessage = "";
         state.saveError = error.message || "저장 요청에 실패했습니다.";
