@@ -57,6 +57,37 @@ R3 FAIL 이후의 repair/recovery/independent recheck는 현재 운영대로 Cod
 - 역할 변경이 필요하면 해당 role의 새 task/slot을 만든다.
 - 과거 대화 context가 다른 blind stage로 승계되지 않게 한다.
 
+### 1.3 AUTOMATION DISPATCH CONTRACT — recurring-capable HARD
+
+과거 예약 운영에서 확인된 dispatch 함정을 CURRENT로 승격한다. **critical Archive slot과 rescue/test slot은 single-DTSTART one-shot을 기본값으로 사용하지 않는다.**
+
+- `last_run_time=null`은 “아직 정상 대기 중”의 충분조건이 아니다. single-DTSTART/one-shot task는 실행 이력이 없어도 내부 terminal/expired 상태가 되어 예정시각을 지나도 dispatch되지 않을 수 있다.
+- 정상 CREATE/R1/R2/R3/PUBLISH/MASTER slot은 **RRULE 기반 recurring-capable schedule**로 생성한다.
+- production slot은 고정 분(:00/:05/.../:55)에 맞는 RRULE을 사용하고, enable/disable은 role 운영 상태로 제어한다.
+- one-off rescue/test도 dispatch 검증이 목적이면 single DTSTART 대신 **temporary recurring-capable schedule**을 사용한다. 권장 fail-safe는 `RRULE:FREQ=HOURLY;COUNT=2`처럼 두 번 이하 기회를 주고, 첫 실제 run이 확인되면 즉시 disable한다.
+- 테스트 task는 전체 activation과 구분한다. prompt 첫머리에 `USER_APPROVED_ONE_SHOT_TEST / GLOBAL_TOPOLOGY_NOT_ACTIVATED`를 명시하여 `STABLE DESIGN / NOT ACTIVE`가 해당 테스트 1건의 실행 금지로 오해되지 않게 한다.
+- 예정시각이 지났는데 `last_run_time=null`이고 target의 Git/Notion physical progress도 0이면 **WORK_FAIL이 아니라 DISPATCH_STALL**이다. 동일 expired one-shot의 DTSTART만 다시 쓰지 말고 recurring-capable task로 재생성/교체한다.
+- schedule에는 사용자 운영 timezone을 명시적으로 고정하는 것을 권장한다. 현재 Archive 기본은 `Asia/Seoul`이다.
+
+예시 — hourly role slot:
+
+```text
+BEGIN:VEVENT
+DTSTART;TZID=Asia/Seoul:20261002T182000
+RRULE:FREQ=HOURLY;BYMINUTE=20;BYSECOND=0
+END:VEVENT
+```
+
+예시 — temporary dispatch test:
+
+```text
+BEGIN:VEVENT
+DTSTART;TZID=Asia/Seoul:20261002T182000
+RRULE:FREQ=HOURLY;COUNT=2;BYMINUTE=20;BYSECOND=0
+END:VEVENT
+```
+
+temporary test의 첫 실제 run 판정은 `last_run_time`만 보지 않고 **target physical mutation/receipt/readback**까지 같이 확인한다. 첫 run이 성공하면 두 번째 occurrence 전에 disable한다.
 ## 2. Review Attempt v2 — blind의 단위
 
 Blind 독립성 단위는 **automation/thread 전체가 아니라 reviewAttemptId**다.
