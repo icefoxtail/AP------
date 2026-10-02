@@ -21,3 +21,19 @@ test('checked-in Gate 5 readiness audit is deterministic', () => {
   assert.ok(fs.existsSync(file), 'phase5-gate5-readiness.json must be generated');
   assert.deepEqual(JSON.parse(fs.readFileSync(file, 'utf8')), auditPhase5Gate5Readiness());
 });
+
+
+test('temporary o67 R1 calibration preflight passes canonical gate', async () => {
+  globalThis.window = {};
+  await import('../archive/exams/original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js?o67-r1-calibration');
+  const questions = globalThis.window.questionBank;
+  const evidence = JSON.parse(fs.readFileSync('archive/data/r2e-intake/m3/22_연향중_2학기_기말_중3_기출.r1-active-v2.preflight.json', 'utf8'));
+  const { validateSolutionCalibrationPreflight } = await import('../archive/tools/solution-calibration-gate.mjs');
+  const issues = validateSolutionCalibrationPreflight({
+    examFile: 'archive/exams/original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js',
+    questions,
+    evidence,
+    stage: 'R1'
+  });
+  assert.deepEqual(issues, []);
+});
