@@ -1,0 +1,75 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "ordinal": 1,
+  "stage": "VISUAL_REPAIR",
+  "status": "PASS",
+  "gate": {
+    "ok": true,
+    "stage": "VISUAL_REPAIR",
+    "gate": "CALIBRATION_PREFLIGHT",
+    "questionCount": 21,
+    "issues": []
+  },
+  "latestOriginMain": "68a918f1e027776f6d2b5b9fefd5a66578c8287c",
+  "resolverSnapshot": "68a918f1e027776f6d2b5b9fefd5a66578c8287c",
+  "executionRoot": "C:\\Users\\USER\\AppData\\Local\\Temp\\codex_ordinal1_calibration_68a918_1790924996043",
+  "helper": {
+    "path": "archive/tools/solution-calibration-gate.mjs",
+    "sha256": "sha256:fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
+    "gitBlobSha": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41"
+  },
+  "dependencies": [
+    {
+      "path": "archive/tools/solution-calibration-gate.mjs",
+      "sha256": "sha256:fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
+      "gitBlobSha": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+      "bytes": 9936
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+      "sha256": "sha256:12d402a742b0573eb13b38cd209e5bcbceaffd6b421fa31d6e9fb1e6acb89e86",
+      "gitBlobSha": "d8738128ae80e60a7eca4802cd461f85adefc84e",
+      "bytes": 38980
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+      "sha256": "sha256:2433f4d4582a8a83e780372e4fb41af77daf913efa8ba059e3d33b8e2564921b",
+      "gitBlobSha": "583dfdc8e6fd00e58fc126ccfcd56c67257ed248",
+      "bytes": 41848
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+      "sha256": "sha256:fef8e3deffb9bfc9bac234193a5ab84326abc39d5d36111855dcf2a003e62171",
+      "gitBlobSha": "c259fcfec2766fea67b4b5b1c6e5bd84f3522442",
+      "bytes": 40434
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "bytes": 3060
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "sha256": "sha256:240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+      "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7",
+      "bytes": 1084
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+      "sha256": "sha256:5082ba76d12ffc1ceaca34baf7c215607515a5c8378331ab54baed859e5120e5",
+      "gitBlobSha": "04aeff3b443b94c68a714b27eddd8321ece9bd52",
+      "bytes": 1327
+    }
+  ],
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
+  "targetArtifactSha256": "sha256:5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
+  "targetArtifactGitBlobSha": "391a77834e59e93f331c5a5dd0aa85fd7def8118",
+  "calibrationInput": "visual-repair-calibration-input.json",
+  "calibrationInputSha256": "sha256:848c82a6abd9562b7be43c53d8710df3dfe586449559e76792b49a1b17a6167b",
+  "recoveryMethod": "Temporary latest-origin-main snapshot with exact helper, Golden sample refs, and Bokseong fixture; current pinned-branch target copied into temp snapshot for read-only preflight. No canonical/system files copied into or edited in the pilot branch.",
+  "previousBlocker": "CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
+  "blockCause": "Pinned worktree lacked the main-only helper and negative fixture; CRLF checkout bytes made raw SHA-256 differ from canonical Git blob refs despite clean blob parity.",
+  "unrelatedMutationCount": 0
+}

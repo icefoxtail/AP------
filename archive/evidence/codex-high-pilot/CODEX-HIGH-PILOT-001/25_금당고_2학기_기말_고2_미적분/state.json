@@ -5,7 +5,7 @@
   "branch": "work/high-source8-r2",
   "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
   "observedRemoteBranchHead": "5f306e74840e92ef45131c5c04abcce027ac06b4",
-  "latestOriginMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "latestOriginMain": "68a918f1e027776f6d2b5b9fefd5a66578c8287c",
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
   "lastDurableStage": "GOLDEN_COMPARE",
@@ -19,13 +19,9 @@
   "itemHoldQids": [
     15
   ],
-  "calibrationStatus": "PILOT_BLOCKED_CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
-  "blocker": {
-    "code": "CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
-    "detail": "Latest-main samples were read; however the pinned checkout uses CRLF bytes that fail raw SHA/blob binding and lacks the required Bokseong negative fixture plus the calibration helper. The mandated VISUAL_REPAIR preflight failed. No unrelated files or main were mutated.",
-    "gateEvidence": "calibration-preflight.json"
-  },
-  "examTerminalStatus": "PILOT_BLOCKED_CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
+  "calibrationStatus": "VISUAL_REPAIR_PREFLIGHT_PASS",
+  "blocker": null,
+  "examTerminalStatus": null,
   "evidence": {
     "answer": "answer.json",
     "solutionSelfReview": "self-review-1.json; self-review-2.json",
@@ -34,7 +30,7 @@
     "meta": null,
     "independentReview": "independent-review.json (partial fresh math/answer check; lifecycle stage not reached)",
     "release": null,
-    "calibrationPreflight": "calibration-preflight.json; system-defect-candidate.json"
+    "calibrationPreflight": "calibration-preflight.json (initial failure); visual-repair-calibration-input.json; calibration-preflight-recovery.json"
   },
   "unrelatedMutationCount": 0,
   "resolvedSolutionCount": 20,
@@ -123,7 +119,7 @@
       21
     ]
   },
-  "blockedAtStage": "VISUAL",
+  "blockedAtStage": null,
   "manualGoldenCompareStatus": "PASS_ON_20_RESOLVED_QIDS",
   "lastDurableCommitBeforeBlockedCloseout": "546640c52e83d1f9763da8df04267c513e007b9a",
   "authorityRefs": [
@@ -179,5 +175,27 @@
       "sha": "546640c52e83d1f9763da8df04267c513e007b9a"
     }
   ],
-  "systemDefectCandidateEvidence": "system-defect-candidate.json (evidence only; no system edits)"
+  "systemDefectCandidateEvidence": "system-defect-candidate.json (evidence only; no system edits)",
+  "lastObservedRemoteBranchHead": "9dac93a7cb5c01437c5d6ff948ccc73d6ea1317b",
+  "previousBlocker": {
+    "code": "CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
+    "reason": "Locked pilot checkout lacks the main-only calibration helper and Bokseong negative fixture; CRLF Golden sample checkout bytes failed raw SHA/blob refs even though Git clean blob SHAs matched.",
+    "clearedBy": "Run the current main calibration helper in a temporary snapshot containing exact main Golden/Negative refs and the current branch target.",
+    "clearedAtStage": "VISUAL_REPAIR",
+    "evidence": "calibration-preflight-recovery.json"
+  },
+  "calibrationBlockResolution": {
+    "status": "CLEARED",
+    "originMain": "68a918f1e027776f6d2b5b9fefd5a66578c8287c",
+    "helperSha256": "sha256:fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
+    "preflight": {
+      "ok": true,
+      "stage": "VISUAL_REPAIR",
+      "gate": "CALIBRATION_PREFLIGHT",
+      "questionCount": 21,
+      "issues": []
+    },
+    "temporarySnapshot": "C:\\Users\\USER\\AppData\\Local\\Temp\\codex_ordinal1_calibration_68a918_1790924996043",
+    "branchSystemMutationCount": 0
+  }
 }

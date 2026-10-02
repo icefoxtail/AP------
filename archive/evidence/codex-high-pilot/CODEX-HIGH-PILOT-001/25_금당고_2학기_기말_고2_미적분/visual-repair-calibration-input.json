@@ -1,0 +1,236 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "stage": "GOLDEN_COMPARE",
+  "status": "MANUAL_SOLUTION_COMPARE_PASS_OFFICIAL_PREFLIGHT_BLOCKED",
+  "targetArtifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
+  "resolvedCount": 20,
+  "itemHoldQids": [
+    15
+  ],
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "notionLineage": "https://app.notion.com/p/3eb0e68bd69f81b58ee5e0e9ba215da1",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+      "sha256": "12d402a742b0573eb13b38cd209e5bcbceaffd6b421fa31d6e9fb1e6acb89e86",
+      "gitBlobSha": "d8738128ae80e60a7eca4802cd461f85adefc84e",
+      "denominator": 21,
+      "answers": 21,
+      "solutions": 21,
+      "reps": [
+        {
+          "qid": 7,
+          "solutionSha256": "5e5da7e90764d505e5a0971f0da57c3f5c686cdc0074a64eb24e564051f6f829",
+          "observation": "Series zero terms, ratio and sum made explicit."
+        },
+        {
+          "qid": 21,
+          "solutionSha256": "b3fd002e55adea3bcc3b2c6df512f920df83b0c04ee7a9e3d2c70d15a75f525f",
+          "observation": "Conditions and derivative stages separated."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+      "sha256": "2433f4d4582a8a83e780372e4fb41af77daf913efa8ba059e3d33b8e2564921b",
+      "gitBlobSha": "583dfdc8e6fd00e58fc126ccfcd56c67257ed248",
+      "denominator": 20,
+      "answers": 20,
+      "solutions": 20,
+      "reps": [
+        {
+          "qid": 2,
+          "solutionSha256": "b0edb7c5b12cd7020622fe36e2980a564ff6457a6a68262e8c546fb8d3dc01df",
+          "observation": "Concise routine substitution."
+        },
+        {
+          "qid": 13,
+          "solutionSha256": "8275bad923012bb8d5eabc855d6caacc8052b22c576cb3dba4f396439d3ac9c0",
+          "observation": "Geometry plus separated visual/formula panel."
+        },
+        {
+          "qid": 18,
+          "solutionSha256": "998ac3ab9d1478305ed0c3c59cd9e52adc5987777ea468ed82fd4ba7953f718b",
+          "observation": "Explicit interval case split."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+      "sha256": "fef8e3deffb9bfc9bac234193a5ab84326abc39d5d36111855dcf2a003e62171",
+      "gitBlobSha": "c259fcfec2766fea67b4b5b1c6e5bd84f3522442",
+      "denominator": 23,
+      "answers": 23,
+      "solutions": 23,
+      "reps": [
+        {
+          "qid": 16,
+          "solutionSha256": "fcafbbdbb6970e10927f16a23daac3fa936e86a8b543007b088e2ae7202bb355",
+          "observation": "ㄱ/ㄴ/ㄷ each separate; derivative signs visible."
+        },
+        {
+          "qid": 19,
+          "solutionSha256": "1c867661cd15724135b1a4420678995b6238e2d82eaee28762d61d2661e27066",
+          "observation": "Inner one-sided limits identified before piecewise substitution."
+        }
+      ]
+    }
+  ],
+  "visualRefs": [
+    {
+      "path": "archive/assets/images/25_매산고_2학기_중간_고2_수학II/q13-solution.svg",
+      "sha256": "743a8124c7cf88c7dda69739e3918cfd2d85ca121c8813010f5492f0128a1a6c",
+      "gitBlobSha": "2ec0ea83dc90a9904cd9026c458e7d28a6e4c4ab",
+      "observation": "O/P/Q, equal radii, circumcircle and diameter primitives match the stated representative t=1 geometry."
+    },
+    {
+      "path": "archive/assets/images/24_매산여고_2학기_중간_고2_수학II/q16-solution.svg",
+      "sha256": "ef757df3ae930c9f48523c4fbaf9fbf42595bd1e62f991339b88f2a6b4a51838",
+      "gitBlobSha": "0df1c55a9f920af835c8608e5d6f835f9a34cff1",
+      "observation": "Schematic-scale declaration; graph intersections and sign regions match solution."
+    }
+  ],
+  "negativeRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "sha256": "240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+      "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7",
+      "finding": "Failed curve misses labelled points."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+      "sha256": "5082ba76d12ffc1ceaca34baf7c215607515a5c8378331ab54baed859e5120e5",
+      "gitBlobSha": "04aeff3b443b94c68a714b27eddd8321ece9bd52",
+      "finding": "Failed tangent line disagrees with primitive geometry."
+    }
+  ],
+  "axes": {
+    "studentReproducibility": "Target includes decisive conditions, equations and calculations.",
+    "smallBoard": "Target q1 options are separate lines; q21 condition blocks and derivative steps are separated.",
+    "explanationDensity": "Routine items concise; q19-q21 retain decisive steps.",
+    "visualSemanticParity": "H2 visual sample geometry inspected from primitives; target SVG checked in VISUAL stage."
+  },
+  "conclusion": "SOLUTION_CALIBRATION_PASS. Same-grade H2 refs only; one calculus and two adjacent Math II. No H1 sample; no answer or wording copied.",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+        "sha256": "sha256:12d402a742b0573eb13b38cd209e5bcbceaffd6b421fa31d6e9fb1e6acb89e86",
+        "gitBlobSha": "d8738128ae80e60a7eca4802cd461f85adefc84e"
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+        "sha256": "sha256:2433f4d4582a8a83e780372e4fb41af77daf913efa8ba059e3d33b8e2564921b",
+        "gitBlobSha": "583dfdc8e6fd00e58fc126ccfcd56c67257ed248"
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+        "sha256": "sha256:fef8e3deffb9bfc9bac234193a5ab84326abc39d5d36111855dcf2a003e62171",
+        "gitBlobSha": "c259fcfec2766fea67b4b5b1c6e5bd84f3522442"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+        "qid": 7,
+        "solutionSha256": "sha256:5e5da7e90764d505e5a0971f0da57c3f5c686cdc0074a64eb24e564051f6f829",
+        "solutionExcerpt": "[키포인트] $\\cos\\dfrac{n\\pi}{2}$의 주기를 이용하여 영이 아닌 항만 모은다.\n조건 정리: 홀수 $n$에서는 코사인값이 $0$이고, 짝수 $n=2k$에서는 $\\cos k\\pi=(-1)^k$이다.\n풀이",
+        "observation": "Series zero terms, ratio and sum made explicit."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+        "qid": 21,
+        "solutionSha256": "sha256:b3fd002e55adea3bcc3b2c6df512f920df83b0c04ee7a9e3d2c70d15a75f525f",
+        "solutionExcerpt": "[키포인트] 첫째 극한으로 $f(1)$과 $f'(1)$을 구하고, 둘째 조건을 미분하여 $g(1)$과 $g'(1)$을 구한다.\n조건 정리: 두 함수는 $x=1$에서 미분 가능하며 마지막 극한이 유한하려면 분자가 $x",
+        "observation": "Conditions and derivative stages separated."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b0edb7c5b12cd7020622fe36e2980a564ff6457a6a68262e8c546fb8d3dc01df",
+        "solutionExcerpt": "[키포인트] 각 함수의 극한값이 존재하므로 합, 차, 곱에 대한 극한의 연산법칙을 적용한다.\n조건 정리: $\\lim_{x\\to a}f(x)=3$, $\\lim_{x\\to a}g(x)=-1$이다.\n풀이 방향: 식의 $f",
+        "observation": "Concise routine substitution."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+        "qid": 13,
+        "solutionSha256": "sha256:8275bad923012bb8d5eabc855d6caacc8052b22c576cb3dba4f396439d3ac9c0",
+        "solutionExcerpt": "[키포인트] 외접원의 지름은 삼각형의 세 변과 넓이로 나타내고, 각 길이를 $t$의 최고차항 기준으로 비교한다.\n조건 정리: $P=(t,t^2)$이고 $OP=OQ$이므로 $s=OP=OQ=t\\sqrt{1+t^2}$라 ",
+        "observation": "Geometry plus separated visual/formula panel."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+        "qid": 18,
+        "solutionSha256": "sha256:998ac3ab9d1478305ed0c3c59cd9e52adc5987777ea468ed82fd4ba7953f718b",
+        "solutionExcerpt": "[키포인트] 할선의 기울기를 $S$라 두고, 음수 구간과 양수 구간에서 $f'(c)=S$의 해가 각각 하나씩 존재하는 조건을 구한다.\n조건 정리: $f(-2)=-4$이고, 두 개의 서로 다른 해가 생기려면 열린구간 ",
+        "observation": "Explicit interval case split."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+        "qid": 16,
+        "solutionSha256": "sha256:fcafbbdbb6970e10927f16a23daac3fa936e86a8b543007b088e2ae7202bb355",
+        "solutionExcerpt": "$h'(x)=f'(x)-g'(x)$이므로 두 그래프의 위아래 관계가 곧 $h'$의 부호이다.\n그래프에서 $y=f'(x)$는 $x=0$과 $x=3$을 지나는 아래로 볼록한 포물선이고, $y=g'(x)$는 원점을 지나는",
+        "observation": "ㄱ/ㄴ/ㄷ each separate; derivative signs visible."
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+        "qid": 19,
+        "solutionSha256": "sha256:1c867661cd15724135b1a4420678995b6238e2d82eaee28762d61d2661e27066",
+        "solutionExcerpt": "합성된 극한은 안쪽 식이 어느 값에 어느 쪽에서 다가가는지를 먼저 정해야 한다.\n$f$는 $x\\ge2$에서 $x^2$, $-1\\le x\\lt2$에서 $x$, $x\\lt-1$에서 $-x$이고, $g$는 $x\\gt2$에",
+        "observation": "Inner one-sided limits identified before piecewise substitution."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "sha256:240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+        "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+        "sha256": "sha256:5082ba76d12ffc1ceaca34baf7c215607515a5c8378331ab54baed859e5120e5",
+        "gitBlobSha": "04aeff3b443b94c68a714b27eddd8321ece9bd52"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "20/20",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "workScope": "Ordinal 1 q12 routine solution visual repair only; q15 remains source-truth ITEM_HOLD.",
+    "blockReason": "Current origin/main calibration helper cannot bind the main sample bytes to this Windows checkout and the mandatory Bokseong fixture is absent from the locked baseline."
+  },
+  "officialPreflight": {
+    "status": "FAIL",
+    "gate": "CALIBRATION_PREFLIGHT",
+    "stage": "VISUAL_REPAIR",
+    "helperPath": "archive/tools/solution-calibration-gate.mjs",
+    "helperMainSha256": "sha256:fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
+    "helperMainGitBlobSha": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+    "helperInPilotCheckout": false,
+    "issues": [
+      "GOLDEN_SAMPLE_SHA256_MISMATCH x3",
+      "GOLDEN_SAMPLE_BLOB_SHA_MISMATCH x3",
+      "NEGATIVE_SAMPLE_REF_NOT_FOUND x3",
+      "BOKSEONG_FALSE_PASS_NEGATIVE_SAMPLE_REQUIRED"
+    ]
+  }
+}
