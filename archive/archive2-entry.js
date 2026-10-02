@@ -89,6 +89,24 @@
       previousClose();
       parent.postMessage({ type: "archive2-original-close" }, location.origin);
     };
+    if (requested) {
+      let completionSent = false;
+      window.assignTargetMaybeFinish = function () {
+        if (!AssignTarget) return;
+        const progress = Object.values(AssignTarget.progress || {});
+        if (!progress.length || progress.some((entry) => entry.status !== "success")) {
+          renderAssignTargetProgressView();
+          return;
+        }
+        if (completionSent) return;
+        completionSent = true;
+        renderAssignTargetProgressView();
+        parent.postMessage(
+          { type: "archive2-original-complete", receiptCount: progress.length },
+          location.origin,
+        );
+      };
+    }
   }
   window.setArchive2OriginalQpp = function (value) {
     const qpp = Number(value);
