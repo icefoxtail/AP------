@@ -14,71 +14,6 @@
         return root.APEqualSlotEngine.enabled(qpp, url, questions);
     }
 
-    function buildSlotPages(items, qpp) {
-        const rowCount = Math.max(1, Math.ceil(Number(qpp) / 2));
-        const slotColumnCount = Number(qpp) === 1 ? 1 : 2;
-        const spanFor = item => {
-            const tag = item.q.layoutTag || '';
-            if (tag === 'subjective-2up') return rowCount;
-            if (tag === 'subjective-4up') return Math.max(1, Math.ceil(rowCount / 2));
-            return 1;
-        };
-        const newSlotPage = () => ({
-            placements: [],
-            occupied: Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false))
-        });
-        const findSlot = (pageData, span) => {
-            for (let row = 0; row <= rowCount - span; row += 1) {
-                for (let col = 0; col < slotColumnCount; col += 1) {
-                    let fits = true;
-                    for (let offset = 0; offset < span; offset += 1) {
-                        if (pageData.occupied[row + offset][col]) { fits = false; break; }
-                    }
-                    if (fits) return { row, col, span };
-                }
-            }
-            return null;
-        };
-        const slotPages = [];
-        let slotPage = newSlotPage();
-        const flushSlotPage = () => {
-            if (slotPage.placements.length) slotPages.push(slotPage);
-            slotPage = newSlotPage();
-        };
-        for (const item of items) {
-            const tag = item.q.layoutTag || '';
-            if (tag === 'fullwidth') {
-                flushSlotPage();
-                slotPages.push({ wideItem: item });
-                continue;
-            }
-            const span = Math.min(rowCount, spanFor(item));
-            let placement = findSlot(slotPage, span);
-            if (!placement && span === rowCount) {
-                const usedSpan = slotPage.placements.reduce((sum, entry) => sum + entry.span, 0);
-                if (usedSpan <= rowCount) {
-                    slotPage.occupied = Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false));
-                    let packedRow = 0;
-                    slotPage.placements.forEach(entry => {
-                        entry.row = packedRow;
-                        entry.col = 0;
-                        for (let offset = 0; offset < entry.span; offset += 1) slotPage.occupied[packedRow + offset][0] = true;
-                        packedRow += entry.span;
-                    });
-                    placement = findSlot(slotPage, span);
-                }
-            }
-            if (!placement) {
-                flushSlotPage();
-                placement = findSlot(slotPage, span);
-            }
-            for (let offset = 0; offset < span; offset += 1) slotPage.occupied[placement.row + offset][placement.col] = true;
-            slotPage.placements.push({ item, ...placement });
-        }
-        flushSlotPage();
-        return slotPages;
-    }
-
     // Mechanical extraction of Archive's verified renderExam DOM transaction.
     // The executor receives all Archive-specific format/source helpers through
     // deps; the staging, slot, chunk, image, and page materialization order is
@@ -164,8 +99,62 @@
         const usesSlotLayout = items.some(item => ['subjective-2up', 'subjective-4up'].includes(item.q.layoutTag || ''));
         if (usesSlotLayout) {
             const rowCount = Math.max(1, Math.ceil(appState.qpp / 2));
-            const slotColumnCount = Number(appState.qpp) === 1 ? 1 : 2;
-            const slotPages = buildSlotPages(items, appState.qpp);
+            const spanFor = item => {
+                const tag = item.q.layoutTag || '';
+                if (tag === 'subjective-2up') return rowCount;
+                if (tag === 'subjective-4up') return Math.max(1, Math.ceil(rowCount / 2));
+                return 1;
+            };
+            const newSlotPage = () => ({ placements: [], occupied: Array.from({ length: rowCount }, () => [false, false]) });
+            const findSlot = (pageData, span) => {
+                for (let row = 0; row <= rowCount - span; row += 1) {
+                    for (let col = 0; col < 2; col += 1) {
+                        let fits = true;
+                        for (let offset = 0; offset < span; offset += 1) {
+                            if (pageData.occupied[row + offset][col]) { fits = false; break; }
+                        }
+                        if (fits) return { row, col, span };
+                    }
+                }
+                return null;
+            };
+            const slotPages = [];
+            let slotPage = newSlotPage();
+            const flushSlotPage = () => {
+                if (slotPage.placements.length) slotPages.push(slotPage);
+                slotPage = newSlotPage();
+            };
+            for (const item of items) {
+                const tag = item.q.layoutTag || '';
+                if (tag === 'fullwidth') {
+                    flushSlotPage();
+                    slotPages.push({ wideItem: item });
+                    continue;
+                }
+                const span = Math.min(rowCount, spanFor(item));
+                let placement = findSlot(slotPage, span);
+                if (!placement && span === rowCount) {
+                    const usedSpan = slotPage.placements.reduce((sum, entry) => sum + entry.span, 0);
+                    if (usedSpan <= rowCount) {
+                        slotPage.occupied = Array.from({ length: rowCount }, () => [false, false]);
+                        let packedRow = 0;
+                        slotPage.placements.forEach(entry => {
+                            entry.row = packedRow;
+                            entry.col = 0;
+                            for (let offset = 0; offset < entry.span; offset += 1) slotPage.occupied[packedRow + offset][0] = true;
+                            packedRow += entry.span;
+                        });
+                        placement = findSlot(slotPage, span);
+                    }
+                }
+                if (!placement) {
+                    flushSlotPage();
+                    placement = findSlot(slotPage, span);
+                }
+                for (let offset = 0; offset < span; offset += 1) slotPage.occupied[placement.row + offset][placement.col] = true;
+                slotPage.placements.push({ item, ...placement });
+            }
+            flushSlotPage();
 
             let slotPageNumber = 1;
             for (const slotPageData of slotPages) {
@@ -179,7 +168,7 @@
                     const grid = document.createElement('div');
                     grid.className = 'grid-container';
                     grid.style.flex = '1 1 0';
-                    const columns = Array.from({ length: slotColumnCount }, () => {
+                    const columns = [0, 1].map(() => {
                         const col = document.createElement('div');
                         col.className = 'grid-col';
                         grid.appendChild(col);
@@ -191,9 +180,9 @@
                         const ordered = slotPageData.placements.map(entry => entry.item);
                         const split = Math.ceil(ordered.length / 2);
                         ordered.slice(0, split).forEach(item => columns[0].appendChild(item.box.cloneNode(true)));
-                        ordered.slice(split).forEach(item => columns[1]?.appendChild(item.box.cloneNode(true)));
+                        ordered.slice(split).forEach(item => columns[1].appendChild(item.box.cloneNode(true)));
                     } else {
-                        for (let col = 0; col < slotColumnCount; col += 1) {
+                        for (let col = 0; col < 2; col += 1) {
                             let row = 0;
                             while (row < rowCount) {
                                 const placement = slotPageData.placements.find(entry => entry.col === col && entry.row === row);
@@ -477,5 +466,5 @@ async function renderComposed({ area, items, deps }) {
         return items;
     }
 
-    return Object.freeze({ render, renderComposed, measureProfiles, buildSlotPages });
+    return Object.freeze({ render, renderComposed, measureProfiles });
 });

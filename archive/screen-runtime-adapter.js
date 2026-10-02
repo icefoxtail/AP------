@@ -40,86 +40,15 @@ async function initArchiveScreenRuntime() {
     installArchivePreviewWitness();
     const params = new URLSearchParams(window.location.search);
     const originalKey=params.get('originalSnapshot');
-    const strictOutput = params.get('archive2Context') === 'archive2' || params.has('archive2OutputContract') || params.has('outputRequestId');
-    if (strictOutput) {
-        document.documentElement.classList.add('archive2-snapshot-output');
-        try {
-            const contract = window.Archive2OutputContract;
-            const outputRequestId = params.get('outputRequestId') || '';
-            const ownerId = params.get('outputOwnerId') || '';
-            if (!contract || params.get('archive2OutputContract') !== contract.CONTRACT_VERSION)
-                throw new Error('출력 계약 버전이 맞지 않습니다. 원본에서 다시 열어 주세요.');
-            if (!outputRequestId || !ownerId)
-                throw new Error('출력 요청 ID가 없습니다. 원본에서 다시 열어 주세요.');
-            const expectedMode = params.get('mode') || '';
-            const envelope = window.__AP_OUTPUT_ENVELOPE__ || await window.Archive2Output.readOutputEnvelope(
-                outputRequestId,
-                ownerId,
-                expectedMode,
-            );
-            if (window.__AP_OUTPUT_ENVELOPE__) {
-                await contract.validateOutputEnvelope(envelope, {
-                    outputRequestId,
-                    ownerId,
-                    mode: expectedMode || undefined,
-                });
-            }
-            if (!Array.isArray(envelope.questions) || envelope.questions.length !== envelope.questionCount)
-                throw new Error('출력 문항 snapshot이 불완전합니다. 원본에서 다시 열어 주세요.');
-            if (params.has('q') && Number(params.get('q')) !== envelope.questionCount)
-                throw new Error('요청 문항 수가 snapshot과 다릅니다. 원본에서 다시 열어 주세요.');
-            if (params.has('qpp') && Number(params.get('qpp')) !== Number(envelope.meta.qpp))
-                throw new Error('쪽당 문항 수가 snapshot과 다릅니다. 원본에서 다시 열어 주세요.');
-            const meta = envelope.meta;
-            const sourceArchiveFile = String(meta.sourceArchiveFile || envelope.sourceId || '').trim();
-            if (!sourceArchiveFile || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(sourceArchiveFile))
-                throw new Error('원본 출처를 확인할 수 없습니다. 원본에서 다시 열어 주세요.');
-            const outcome = await archiveScreenRuntime.request({
-                type: 'SOURCE_CHANGE',
-                foreground: true,
-                payload: {
-                    sourceKind: 'review-snapshot',
-                    frozenSource: envelope.sourceKind === 'assignment' || Boolean(envelope.assignmentId),
-                    questionUids: envelope.questionUids,
-                    sourceArchiveFile,
-                    questionBank: envelope.questions,
-                    examTitle: meta.identityTitle || meta.title || sourceArchiveFile.split('/').pop().replace(/\.js$/, ''),
-                    examDisplayTitle: meta.printHeaderOptions?.title,
-                    printHeaderOptions: meta.printHeaderOptions,
-                    mode: envelope.mode,
-                    qpp: Number(meta.qpp || 4),
-                    sourceRequestId: envelope.outputRequestId,
-                },
-            });
-            if (!outcome.ok) throw new Error(outcome.code);
-            const renderOutcome = window.__AP_RENDER_READY__ ? await window.__AP_RENDER_READY__ : outcome;
-            if (renderOutcome?.ok === false) throw new Error(renderOutcome.message || renderOutcome.code || '출력 렌더링이 완료되지 않았습니다.');
-            const pageCount = document.querySelectorAll('#print-area .page').length;
-            if (!pageCount) throw new Error('렌더링된 시험지 페이지가 없습니다.');
-            window.__AP_OUTPUT_ENVELOPE_READY__ = {
-                contractVersion: envelope.contractVersion,
-                outputRequestId: envelope.outputRequestId,
-                payloadHash: envelope.payloadHash,
-            };
-            const readiness = await window.Archive2PdfReadiness.assertReady({
-                contractVersion: envelope.contractVersion,
-                outputRequestId: envelope.outputRequestId,
-                payloadHash: envelope.payloadHash,
-            });
-            window.__AP_OUTPUT_RENDER_READY__ = {
-                contractVersion: envelope.contractVersion,
-                outputRequestId: envelope.outputRequestId,
-                payloadHash: envelope.payloadHash,
-                pageCount: readiness.pageCount,
-            };
-        } catch (error) {
-            showArchiveDataLoadError(error?.message || '출력 envelope를 확인할 수 없습니다. 원본에서 다시 열어 주세요.');
-            window.__AP_OUTPUT_RENDER_ERROR__ = String(error?.message || error || 'envelope error');
-        }
-        return;
-    }
     if(originalKey){
-        showArchiveDataLoadError('이전 출력 데이터는 더 이상 사용할 수 없습니다. 최근 출제 또는 저장한 시험지에서 다시 열어 주세요.');
+        document.documentElement.classList.add('archive2-snapshot-output');
+        try{
+            const payload=JSON.parse(localStorage.getItem('archive2Original_'+originalKey)||'null');
+            if(!payload?.questions?.length||payload.meta?.sourceKind!=='archive2-original')throw new Error('출제된 시험지가 만료되었습니다. 학생 포털이나 최근 출제에서 다시 열어 주세요.');
+            const meta=payload.meta;
+            const outcome=await archiveScreenRuntime.request({type:'SOURCE_CHANGE',foreground:true,payload:{sourceKind:'review-snapshot',frozenSource:true,questionUids:meta.questionUids,sourceArchiveFile:meta.sourceArchiveFile,questionBank:payload.questions,examTitle:meta.identityTitle,examDisplayTitle:meta.printHeaderOptions?.title,printHeaderOptions:meta.printHeaderOptions,mode:params.get('mode')||'exam',qpp:Number(meta.qpp||4),sourceRequestId:originalKey}});
+            if(!outcome.ok)throw new Error(outcome.code);
+        }catch(error){showArchiveDataLoadError(error.message);}
         return;
     }
     const launch = params.get('data') ? null : readRecentArchiveEngineLaunch();

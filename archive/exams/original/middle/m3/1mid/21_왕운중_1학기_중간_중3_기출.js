@@ -441,7 +441,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$-\\frac{1}{\\sqrt{5}} \\times (-\\sqrt{90}) \\div \\frac{5\\sqrt{32}}{\\sqrt{80}} = k\\sqrt{a}$ 일 때, 유리수 $k$의 값은? (단, $a$는 소수) [4점]",
+    "content": "$-\\frac{1}{\\sqrt{5}} \\times (-\\sqrt{90}) \\div \\frac{5\\sqrt{32}}{\\sqrt{80}} = k\\sqrt{a}$ 일 때, 유리수 $k$의 값은? [4점]",
     "choices": [
       "\\frac{2}{5}",
       "\\frac{3}{5}",

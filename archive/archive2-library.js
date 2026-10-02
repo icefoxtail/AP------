@@ -24,36 +24,53 @@
     return client;
   }
 
-  function outputUrl(paper, envelope, mode) {
+  function outputUrl(paper, key, mode) {
     const O = window.Archive2Output;
-    const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, {
-      studio: true,
-      preview: true,
+    const url = O.engineUrl("mixed_engine.html", location.href);
+    url.searchParams.set("key", key);
+    url.searchParams.set("q", String(paper.question_count));
+    url.searchParams.set("mode", mode);
+    url.searchParams.set("studio", "1");
+    url.searchParams.set("archive2SavedStorageVersion", "2");
+    O.applyUrl(url, {
+      header: paper.snapshot.meta.printHeaderOptions,
+      qpp: paper.snapshot.meta.qpp,
+      includeQr: paper.snapshot.meta.includeQr,
     });
-    url.searchParams.set("archive2SavedStorageVersion", "3");
+    url.searchParams.set("archive2Review", "1");
     return url.href;
   }
 
-  async function preparePreview(paper, mode = "exam") {
-    const snapshot = paper?.snapshot;
-    if (!snapshot || !Array.isArray(snapshot.questions) || !snapshot.questions.length)
-      throw new Error("저장한 시험지 snapshot을 확인할 수 없습니다.");
-    const questionUids = snapshot.meta?.questionUids || snapshot.questions.map((question) =>
-      question.questionUid || question.source_question_uid || question._sourceQuestionUid || null,
-    );
-    return window.Archive2Output.publishOutputEnvelope({
-      sourceKind: "saved-paper",
-      sourceId: paper.id,
-      paperId: paper.id,
-      mode,
-      questionCount: snapshot.questions.length,
-      questionUids,
-      meta: snapshot.meta,
-      questions: snapshot.questions,
-    });
+  function writeTemporarySnapshot(target, key, paper) {
+    const storage = target?.sessionStorage;
+    if (!storage) throw new Error("이 브라우저에서 시험지 미리보기를 위한 임시 저장 공간을 사용할 수 없습니다.");
+    const questionKey = `mixedQuestions_${key}`;
+    const metaKey = `mixedMeta_${key}`;
+    const savedPrefixes = ["mixedQuestions_archive2-saved-", "mixedMeta_archive2-saved-"];
+    try {
+      for (let i = storage.length - 1; i >= 0; i--) {
+        const existingKey = storage.key(i);
+        if (savedPrefixes.some((prefix) => existingKey?.startsWith(prefix)) && existingKey !== questionKey && existingKey !== metaKey)
+          storage.removeItem(existingKey);
+      }
+      storage.setItem(questionKey, JSON.stringify(paper.snapshot.questions));
+      storage.setItem(metaKey, JSON.stringify(paper.snapshot.meta));
+    } catch {
+      try {
+        storage.removeItem(questionKey);
+        storage.removeItem(metaKey);
+      } catch {}
+      throw new Error("저장한 시험지 미리보기를 위한 임시 저장 공간이 부족합니다.");
+    }
   }
 
-  function detailMarkup(paper, envelope, mode = "exam") {
+  function preparePreview(paper, target = window) {
+    const key = `archive2-saved-${paper.id}-preview`;
+    writeTemporarySnapshot(target, key, paper);
+    return key;
+  }
+
+  function detailMarkup(paper, key, mode = "exam") {
     const title = paper.title || paper.snapshot.meta.title || "저장한 시험지";
     return `<section class="panel saved-paper-detail">
       <div class="intro"><div><p class="muted"><a href="workspace.html?view=saved">저장한 시험지</a> / 상세</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div><div class="actions"><a class="button-like primary" href="index.html?savedPaper=${encodeURIComponent(paper.id)}">학생에게 배포</a><button type="button" data-library-action="list">목록</button></div></div>
@@ -61,7 +78,7 @@
         ${[["exam", "문제"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
         <button type="button" data-library-action="print" data-mode="${esc(mode)}" class="small">새 창에서 출력</button>
       </div>
-      <iframe class="saved-paper-preview" title="저장한 시험지 미리보기" src="${esc(outputUrl(paper, envelope, mode))}"></iframe>
+      <iframe class="saved-paper-preview" title="저장한 시험지 미리보기" src="${esc(outputUrl(paper, key, mode))}"></iframe>
     </section>`;
   }
 
@@ -85,9 +102,9 @@
       const data = await client.request(`/archive-saved-papers/${encodeURIComponent(paperId)}`);
       const paper = data.paper;
       if (!paper?.snapshot) throw new Error("저장한 시험지 내용을 확인할 수 없습니다.");
-      const envelope = await preparePreview(paper);
-      host.innerHTML = detailMarkup(paper, envelope);
-      bind(host, { paper, envelope, paperId, cursor: null, papers: [] });
+      const key = preparePreview(paper);
+      host.innerHTML = detailMarkup(paper, key);
+      bind(host, { paper, key, paperId, cursor: null, papers: [] });
       return;
     }
     const data = await client.request("/archive-saved-papers?limit=20");
@@ -129,9 +146,7 @@
         } else if (action === "mode") {
           const mode = button.dataset.mode;
           const frame = host.querySelector(".saved-paper-preview");
-          const envelope = await preparePreview(viewState.paper, mode);
-          frame.src = outputUrl(viewState.paper, envelope, mode);
-          viewState.envelope = envelope;
+          frame.src = outputUrl(viewState.paper, viewState.key, mode);
           host.querySelectorAll('[data-library-action="mode"]').forEach((item) => item.classList.toggle("active", item === button));
           const printButton = host.querySelector('[data-library-action="print"]');
           if (printButton) printButton.dataset.mode = mode;
@@ -141,8 +156,9 @@
           try {
             const data = viewState.paper ? { paper: viewState.paper } : await apiClient().request(`/archive-saved-papers/${encodeURIComponent(id)}`);
             const paper = data.paper;
-            const envelope = await preparePreview(paper, button.dataset.mode || "exam");
-            popup.location.href = outputUrl(paper, envelope, envelope.mode);
+            const key = viewState.key || preparePreview(paper);
+            writeTemporarySnapshot(popup, key, paper);
+            popup.location.href = outputUrl(paper, key, button.dataset.mode || "exam");
           } catch (error) {
             popup.close();
             throw error;
@@ -158,5 +174,5 @@
     };
   }
 
-  return { render, preparePreview, outputUrl };
+  return { render, preparePreview };
 });

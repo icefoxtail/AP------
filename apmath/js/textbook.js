@@ -422,34 +422,11 @@ async function handleAddTextbook(options = {}) {
     if (!cid || !title) return toast('반과 교재명을 모두 입력하세요.', 'warn');
 
     try {
-        const inlineAction = state.ui?.classProgressInlineTextbookAction;
-        const courseDraft = inlineAction?.courseApplyDraft || null;
-        const courseBinding = courseDraft ? {
-            progress_curriculum_key: String(courseDraft.curriculumKey || ''),
-            progress_level_key: String(courseDraft.levelKey || ''),
-            progress_course_key: String(courseDraft.courseKey || '')
-        } : {};
-        const r = await api.post('class-textbooks', {
-            class_id: cid,
-            title: title,
-            start_date: startDate,
-            ...courseBinding
-        });
+        const r = await api.post('class-textbooks', { class_id: cid, title: title, start_date: startDate });
         if (r?.success) {
-            if (courseDraft) {
+            const inlineAction = state.ui?.classProgressInlineTextbookAction;
+            if (inlineAction?.courseApplyDraft) {
                 inlineAction.addedTextbookId = String(r.item?.id || r.textbook?.id || r.id || '');
-                const existingBookIds = Array.from(new Set(
-                    (Array.isArray(courseDraft.selectedBookIds) ? courseDraft.selectedBookIds : [])
-                        .map(id => String(id || '').trim())
-                        .filter(Boolean)
-                ));
-                for (const textbookId of existingBookIds) {
-                    const bindingResponse = await api.patch(`class-textbooks/${textbookId}`, courseBinding);
-                    if (!bindingResponse?.success) {
-                        toast(bindingResponse?.message || bindingResponse?.error || '기존 교재와 과정 연결 저장에 실패했습니다.', 'warn');
-                        return;
-                    }
-                }
             }
             toast('교재가 등록되었습니다.', 'success');
             await loadData();
