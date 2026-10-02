@@ -1,0 +1,95 @@
+{
+  "schema": "STATIC_NOTATION_SERIALIZATION_REPAIR_VALIDATION_v1",
+  "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
+  "validatedAtKst": "2026-10-02T14:55:53.949+09:00",
+  "baselineHead": "884c00224a32c332b2a756929a0dadc244d7a7a1",
+  "repairReceiptRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_serialization_repair_receipt.json",
+  "repairReceiptSha256": "sha256:5dc9a62baffe888df84f434dd52a1165c14625593c77bddc6400af6c442efc1c",
+  "questionCount": 46,
+  "correctedQuestionCount": 33,
+  "correctedNotationMappingCount": 92,
+  "unindexedSupplementalNotationRepairCount": 2,
+  "totalSourceSerializationRepairCount": 94,
+  "exactAfterSubstringBindings": "PASS_92_OF_92",
+  "afterCharacterAndUtf8Offsets": "PASS_92_OF_92",
+  "nonTargetQuestionObjectsUnchanged": 13,
+  "onlyTargetedContentChoicesChanged": true,
+  "answerSolutionFieldsUnchangedAndEmpty": "PASS_46_OF_46",
+  "nodeSyntaxChecks": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "status": "PASS",
+      "sourceJsSha256": "sha256:c172d7f91cfa26496bc7c069f0cc560a47599b58628a55513066bdbfb5cc8b0e"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "status": "PASS",
+      "sourceJsSha256": "sha256:e28bd2da58bfdccc4d41274eb336f8be21b7dd14cbc52184c7abdfc94da56984"
+    }
+  ],
+  "unsupportedSerializerResidualCount": 0,
+  "fullPagePixelsUsedForSourceTruth": true,
+  "ocrUsed": false,
+  "browserRenderUsed": false,
+  "answersSolutionsExpanded": false,
+  "notionWrites": "NOT_PERFORMED",
+  "independentReviewStatus": "PENDING_FRESH_OCR_FREE_SUBAGENT_REVIEW",
+  "sourceQAReadyCount": 0,
+  "exams": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "file": "archive-work/exams/original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js",
+      "sourceJsSha256": "sha256:c172d7f91cfa26496bc7c069f0cc560a47599b58628a55513066bdbfb5cc8b0e",
+      "baselineCommit": "884c00224a32c332b2a756929a0dadc244d7a7a1",
+      "questionCount": 22,
+      "correctedQids": [
+        3,
+        4,
+        5,
+        6,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        21
+      ],
+      "nodeCheck": "PASS",
+      "output": ""
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "file": "archive-work/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
+      "sourceJsSha256": "sha256:e28bd2da58bfdccc4d41274eb336f8be21b7dd14cbc52184c7abdfc94da56984",
+      "baselineCommit": "884c00224a32c332b2a756929a0dadc244d7a7a1",
+      "questionCount": 24,
+      "correctedQids": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24
+      ],
+      "nodeCheck": "PASS",
+      "output": ""
+    }
+  ]
+}

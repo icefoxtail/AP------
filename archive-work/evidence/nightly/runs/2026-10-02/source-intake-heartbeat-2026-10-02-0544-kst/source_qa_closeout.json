@@ -2,7 +2,7 @@
   "schema": "NIGHTLY_SOURCE_ONLY_CLOSEOUT_v1",
   "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "batchDate": "2026-10-02",
-  "status": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
+  "status": "SOURCE_QA_NOTATION_REPAIR_PENDING_FRESH_OCR_FREE_REVIEW",
   "priorityGroup": "high2",
   "year": 2022,
   "grade": "고2",
@@ -34,8 +34,8 @@
   "sourceRepairArtifactCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
   "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
   "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
-  "finalReconciledReportSha256": "sha256:fed42c855583effa6f25625d0101965e5df4edac9cbcc6abe18ec17496b8db94",
-  "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
+  "finalReconciledReportSha256": "sha256:bf976a342d663be7ab50ae03f68ff3e4039a5dc346a64a707a381b2a5e9413f8",
+  "finalVerdict": "SOURCE_QA_NOTATION_REPAIR_PENDING_FRESH_OCR_FREE_REVIEW",
   "reviewerSubagentIds": [
     "/root/source_qa_20261002_0544",
     "/root/source_qa_recheck_20261002_0544"
@@ -48,7 +48,7 @@
   "remoteBranchHeadAtReceipt": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "latestOriginMain": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
   "latestOriginIntakeAtReceipt": "6ae2cd435af0f29eefb2160f1e8458e27b7662ef",
-  "reviewStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
+  "reviewStatus": "SOURCE_QA_NOTATION_REPAIR_PENDING_FRESH_OCR_FREE_REVIEW",
   "receiptCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "receiptPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "sourceQACloseoutCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
@@ -57,12 +57,12 @@
   "notionsStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
   "handoffEligibility": "PENDING_PARENT_EVIDENCE",
   "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
-  "itemizationReviewStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
+  "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_REVIEW",
   "notionsWrites": "NOT_PERFORMED",
   "notationInventoryRepairSha256": "sha256:2c1aea26dafbd84fd89f60cce90d4f01c362eb2d49b642bad5818684e9d4ec23",
   "itemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
   "itemizationAuditReportSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
-  "notationSourceMappingFailureCount": 92,
+  "notationSourceMappingFailureCount": 0,
   "notationSourceMappingPassCount": 469,
   "remainingAssetFailures": [
     {
@@ -126,5 +126,15 @@
   "statusReceiptBaseHead": "9c9711bce1d2dccc5931c85589d64b64af1cef68",
   "v2AuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
   "v2AuditReportSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
-  "v2AuditReviewedCommit": "9607edd48e271a3297df49a3aaad6435ca68716d"
+  "v2AuditReviewedCommit": "9607edd48e271a3297df49a3aaad6435ca68716d",
+  "notationRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_serialization_repair_receipt.json",
+  "notationRepairStaticStatus": "PASS_92_OF_92_BINDINGS",
+  "notationRepairReviewStatus": "PENDING_FRESH_OCR_FREE_REVIEW",
+  "notationMappingReviewPendingCount": 92,
+  "supplementalUnindexedNotationRepairCount": 2,
+  "sourceNotationSerializationReviewPendingCount": 94,
+  "notationRepairSha256": "sha256:5dc9a62baffe888df84f434dd52a1165c14625593c77bddc6400af6c442efc1c",
+  "notationStaticValidationRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_serialization_static_validation.json",
+  "notationStaticValidationSha256": "sha256:0b25bf16f16b7cd4d535f1a28b386f86b053a67a8846272b1e59378647d74495",
+  "notationSourceMappingReviewPendingCount": 92
 }

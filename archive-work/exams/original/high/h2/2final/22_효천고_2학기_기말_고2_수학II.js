@@ -20,7 +20,7 @@ window.questionBank = [
       "부정적분"
     ],
     "wide": false,
-    "content": "$int(3x^2+4x-1),dx$의 부정적분은? (단, $C$는 적분상수) [3점]",
+    "content": "$\\int(3x^2+4x-1)\\,dx$의 부정적분은? (단, $C$는 적분상수) [3점]",
     "choices": [
       "$3x^2+4x-1$",
       "$3x^2+4x+C$",
@@ -186,7 +186,7 @@ window.questionBank = [
       "정적분"
     ],
     "wide": false,
-    "content": "$int_1^{-2}5x^4,dx$의 값은? [3점]",
+    "content": "$\\int_1^{-2}5x^4\\,dx$의 값은? [3점]",
     "choices": [
       "$-33$",
       "$-10$",
@@ -390,7 +390,7 @@ window.questionBank = [
       "부정적분"
     ],
     "wide": false,
-    "content": "함수 $f(x)=intleft{dfrac{d}{dx}(2x^3-3x)\right}dx$이고, $f(0)=0$일 때, $f(1)$의 값은? [3점]",
+    "content": "함수 $f(x)=\\int\\left\\{\\dfrac{d}{dx}(2x^3-3x)\\right\\}dx$이고, $f(0)=0$일 때, $f(1)$의 값은? [3점]",
     "choices": [
       "$-1$",
       "$-2$",
@@ -473,7 +473,7 @@ window.questionBank = [
       "정적분"
     ],
     "wide": false,
-    "content": "임의의 실수 $x$에 대하여 $int_a^x f(t),dt=2x^2-12x+10$을 만족시키는 연속함수 $f(x)$에서 상수 $a$ 값들의 합은? [3.3점]",
+    "content": "임의의 실수 $x$에 대하여 $\\int_a^x f(t)\\,dt=2x^2-12x+10$을 만족시키는 연속함수 $f(x)$에서 상수 $a$ 값들의 합은? [3.3점]",
     "choices": [
       "$2$",
       "$3$",
@@ -639,7 +639,7 @@ window.questionBank = [
       "도함수의 활용"
     ],
     "wide": false,
-    "content": "함수 $f(x)=int_0^x(3t^2-6t-9),dt$의 극댓값과 극솟값의 합은? [3.7점]",
+    "content": "함수 $f(x)=\\int_0^x(3t^2-6t-9)\\,dt$의 극댓값과 극솟값의 합은? [3.7점]",
     "choices": [
       "$-27$",
       "$-22$",
@@ -722,7 +722,7 @@ window.questionBank = [
       "도함수의 활용"
     ],
     "wide": false,
-    "content": "실수 전체의 집합에서 미분가능한 함수 $f(x)$가 $fprime(x)=\begin{cases}3x^2&(xge1)\\2x+1&(x<1)end{cases}$일 때, $f(2)-f(0)$의 값은? [3.7점]",
+    "content": "실수 전체의 집합에서 미분가능한 함수 $f(x)$가 $f'(x)=\\begin{cases}3x^2&(x\\ge1)\\\\2x+1&(x<1)\\end{cases}$일 때, $f(2)-f(0)$의 값은? [3.7점]",
     "choices": [
       "$9$",
       "$10$",
@@ -807,11 +807,11 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=-x^2+2$와 두 직선 $y=x$, $y=-x$로 둘러싸인 도형이 있다. 이 도형을 $y=x$와 $y=-x$에 대하여 대칭이동을 시켜 완성한 도형이 그림과 같을 때, 네 곡선으로 둘러싸인 부분의 넓이는? [4점]",
     "choices": [
-      "$dfrac{26}{3}$",
-      "$dfrac{53}{6}$",
-      "$dfrac{27}{3}$",
-      "$dfrac{55}{6}$",
-      "$dfrac{28}{3}$"
+      "$\\dfrac{26}{3}$",
+      "$\\dfrac{53}{6}$",
+      "$\\dfrac{27}{3}$",
+      "$\\dfrac{55}{6}$",
+      "$\\dfrac{28}{3}$"
     ],
     "answer": "",
     "solution": "",
@@ -926,7 +926,7 @@ window.questionBank = [
       "적분의 활용"
     ],
     "wide": false,
-    "content": "곡선 $y=3x^2+1$과 $x$축 및 두 직선 $x=1$, $x=1+h$ $(h>0)$로 둘러싸인 도형의 넓이를 $S(h)$라 할 때, $lim_{h\to0+}dfrac{S(h)}h$의 값은? [4점]",
+    "content": "곡선 $y=3x^2+1$과 $x$축 및 두 직선 $x=1$, $x=1+h$ $(h>0)$로 둘러싸인 도형의 넓이를 $S(h)$라 할 때, $\\lim_{h\\to0+}\\dfrac{S(h)}h$의 값은? [4점]",
     "choices": [
       "$1$",
       "$2$",
@@ -1009,12 +1009,12 @@ window.questionBank = [
       "정적분"
     ],
     "wide": false,
-    "content": "다항함수 $f(x)$가 $int_0^3 3x^2f(x),dx+int_0^3(x^3-1)fprime(x),dx=5$를 만족시킨다. $f(0)=-8$일 때, $f(3)$의 값은? [4.1점]",
+    "content": "다항함수 $f(x)$가 $\\int_0^3 3x^2f(x)\\,dx+\\int_0^3(x^3-1)f'(x)\\,dx=5$를 만족시킨다. $f(0)=-8$일 때, $f(3)$의 값은? [4.1점]",
     "choices": [
       "$-2$",
-      "$-dfrac12$",
+      "$-\\dfrac{1}{2}$",
       "$0$",
-      "$dfrac12$",
+      "$\\dfrac{1}{2}$",
       "$2$"
     ],
     "answer": "",
@@ -1092,7 +1092,7 @@ window.questionBank = [
       "부정적분"
     ],
     "wide": false,
-    "content": "다항함수 $f(x)$가 $f(x)=3x^2+2x+int_0^1 fprime(t),dt$를 만족시킬 때, $int_0^1 f(x),dx$의 값은? [4.2점]",
+    "content": "다항함수 $f(x)$가 $f(x)=3x^2+2x+\\int_0^1 f'(t)\\,dt$를 만족시킬 때, $\\int_0^1 f(x)\\,dx$의 값은? [4.2점]",
     "choices": [
       "$6$",
       "$7$",
@@ -1175,13 +1175,13 @@ window.questionBank = [
       "정적분"
     ],
     "wide": false,
-    "content": "실수 전체의 집합에서 연속인 함수 $f(x)$와 자연수 $n$에 대하여 $n-1le x<n$일 때, $f(x)=\begin{cases}3(x-n+1)(x-n)&(n=1,3,5,7\text{일 때})\\-3(x-n+1)(x-n)&(n=2,4,6,8\text{일 때})end{cases}$라고 정의하자. $int_0^{15/2}f(x),dx$의 값은? [4.3점]",
+    "content": "실수 전체의 집합에서 연속인 함수 $f(x)$와 자연수 $n$에 대하여 $n-1\\le x<n$일 때, $f(x)=\\begin{cases}3(x-n+1)(x-n)&(n=1,3,5,7\\text{일 때})\\\\-3(x-n+1)(x-n)&(n=2,4,6,8\\text{일 때})\\end{cases}$라고 정의하자. $\\int_0^{15/2}f(x)\\,dx$의 값은? [4.3점]",
     "choices": [
-      "$-dfrac18$",
-      "$-dfrac14$",
-      "$-dfrac38$",
-      "$-dfrac12$",
-      "$-dfrac58$"
+      "$-\\dfrac{1}{8}$",
+      "$-\\dfrac{1}{4}$",
+      "$-\\dfrac{3}{8}$",
+      "$-\\dfrac{1}{2}$",
+      "$-\\dfrac{5}{8}$"
     ],
     "answer": "",
     "solution": "",
@@ -1258,7 +1258,7 @@ window.questionBank = [
       "적분의 활용"
     ],
     "wide": false,
-    "content": "최고차항의 계수가 1인 삼차함수 $f(x)$가 $f(1)=0$이고, 모든 실수 $x$에 대하여 $f(2-x)=-f(2+x)$를 만족시킨다. $int_0^4(f(x)-g(x)),dx=0$을 만족하는 직선 $g(x)=ax-6$이라 할 때, $a$의 값은? (단, $a$는 양수) [4.5점]",
+    "content": "최고차항의 계수가 1인 삼차함수 $f(x)$가 $f(1)=0$이고, 모든 실수 $x$에 대하여 $f(2-x)=-f(2+x)$를 만족시킨다. $\\int_0^4(f(x)-g(x))\\,dx=0$을 만족하는 직선 $g(x)=ax-6$이라 할 때, $a$의 값은? (단, $a$는 양수) [4.5점]",
     "choices": [
       "$1$",
       "$2$",
@@ -1341,13 +1341,13 @@ window.questionBank = [
       "정적분"
     ],
     "wide": false,
-    "content": "두 다항함수 $f(x),g(x)$가 $f(x)=3x^2-int_0^1g(t),dt$, $g(x)=2x+int_0^1f(t),dt$를 만족시킬 때, $int_0^1(f(x)-xg(x)),dx$의 값은? [4.8점]",
+    "content": "두 다항함수 $f(x),g(x)$가 $f(x)=3x^2-\\int_0^1g(t)\\,dt$, $g(x)=2x+\\int_0^1f(t)\\,dt$를 만족시킬 때, $\\int_0^1(f(x)-xg(x))\\,dx$의 값은? [4.8점]",
     "choices": [
-      "$-dfrac23$",
-      "$-dfrac13$",
+      "$-\\dfrac{2}{3}$",
+      "$-\\dfrac{1}{3}$",
       "$0$",
-      "$dfrac13$",
-      "$dfrac23$"
+      "$\\dfrac{1}{3}$",
+      "$\\dfrac{2}{3}$"
     ],
     "answer": "",
     "solution": "",
@@ -1424,7 +1424,7 @@ window.questionBank = [
       "도함수의 활용"
     ],
     "wide": false,
-    "content": "직선도로 위를 달리는 자동차 $A$와 자동차 $B$가 같은 곳에서 출발하여 $t$초 후 속도는 각각 $v_A,v_B$라고 한다. $v_A$와 $v_B$는 $v_A=v_B+t^3-dfrac{15}{4}t^2+3t$의 관계를 가진다. $A$와 $B$가 출발한 후 처음으로 만나게 되는 시간 $t_c$의 값은? [4.9점]",
+    "content": "직선도로 위를 달리는 자동차 $A$와 자동차 $B$가 같은 곳에서 출발하여 $t$초 후 속도는 각각 $v_A,v_B$라고 한다. $v_A$와 $v_B$는 $v_A=v_B+t^3-\\dfrac{15}{4}t^2+3t$의 관계를 가진다. $A$와 $B$가 출발한 후 처음으로 만나게 되는 시간 $t_c$의 값은? [4.9점]",
     "choices": [
       "$1$",
       "$2$",
@@ -1507,7 +1507,7 @@ window.questionBank = [
       "적분의 활용"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 주어진 최고차항의 계수가 1인 삼차함수 $f(x)$가 있다. 함수 $g(x)=x^2int_0^x f(t),dt-int_0^x t^2f(t),dt$가 오직 하나의 극값을 갖도록 하는 실수 $a$ $(a>2)$에 대하여 $a^2$의 최댓값은? [5.5점]",
+    "content": "다음 그림과 같이 주어진 최고차항의 계수가 1인 삼차함수 $f(x)$가 있다. 함수 $g(x)=x^2\\int_0^x f(t)\\,dt-\\int_0^x t^2f(t)\\,dt$가 오직 하나의 극값을 갖도록 하는 실수 $a$ $(a>2)$에 대하여 $a^2$의 최댓값은? [5.5점]",
     "choices": [
       "$24$",
       "$25$",
@@ -1628,7 +1628,7 @@ window.questionBank = [
       "적분의 활용"
     ],
     "wide": false,
-    "content": "삼차함수 $f(x)$와 이차함수 $g(x)$에 대하여 양의 실수 $alpha,\beta$와 두 함수 $y=f(x)$, $y=g(x)$의 그래프가 그림과 같다. 두 함수로 둘러싸인 부분의 넓이를 각각 $S_1,S_2$ $(S_1<S_2)$라 하고 $h(x)=int_0^x(f(t)-g(t)),dt$라 할 때, <보기>에서 옳은 것의 개수는? (단, $y=f(x)$의 그래프는 $x$축에 접하며 두 함수 $y=f(x),y=g(x)$ 모두 원점을 지난다.) [5점]\n<보기>\nㄱ. $y=h(x)$는 4차 함수이며 최고차항의 계수는 양수이다.\nㄴ. $y=h(x)$는 $x=alpha,x=\beta$에서만 극값을 가진다.\nㄷ. $S_1+S_2=2h(alpha)-h(\beta)$\nㄹ. $fprimeleft(dfrac{alpha+\beta}{2}\right)+fleft(dfrac{alpha+\beta}{2}\right)=0$\nㅁ. $h(x)$의 최솟값은 $S_2-S_1$이다.",
+    "content": "삼차함수 $f(x)$와 이차함수 $g(x)$에 대하여 양의 실수 $\\alpha,\\beta$와 두 함수 $y=f(x)$, $y=g(x)$의 그래프가 그림과 같다. 두 함수로 둘러싸인 부분의 넓이를 각각 $S_1,S_2$ $(S_1<S_2)$라 하고 $h(x)=\\int_0^x(f(t)-g(t))\\,dt$라 할 때, <보기>에서 옳은 것의 개수는? (단, $y=f(x)$의 그래프는 $x$축에 접하며 두 함수 $y=f(x),y=g(x)$ 모두 원점을 지난다.) [5점]\n<보기>\nㄱ. $y=h(x)$는 4차 함수이며 최고차항의 계수는 양수이다.\nㄴ. $y=h(x)$는 $x=\\alpha,x=\\beta$에서만 극값을 가진다.\nㄷ. $S_1+S_2=2h(\\alpha)-h(\\beta)$\nㄹ. $f'\\left(\\dfrac{\\alpha+\\beta}{2}\\right)+f\\left(\\dfrac{\\alpha+\\beta}{2}\\right)=0$\nㅁ. $h(x)$의 최솟값은 $S_2-S_1$이다.",
     "choices": [
       "$1$개",
       "$2$개",
@@ -1749,13 +1749,13 @@ window.questionBank = [
       "적분의 활용"
     ],
     "wide": false,
-    "content": "최고차항의 계수가 1이고 서로 다른 두 근을 갖는 이차함수 $f(x)$가 상수 $a$ $(0<a<5)$에 대하여 다음 조건을 만족시킨다.\n(가) 임의의 실수 $t$에 대하여 $int_0^t f(x),dx=int_{2a-t}^{2a}f(x),dx$이다.\n(나) $0<k<a$인 실수 $k$에 대하여 $f(k)=0$\n(다) $int_a^5f(x),dx=6$, $int_a^5|f(x)|,dx=dfrac{22}{3}$\n이때, $int_k^5|f(x)|,dx$의 값은?",
+    "content": "최고차항의 계수가 1이고 서로 다른 두 근을 갖는 이차함수 $f(x)$가 상수 $a$ $(0<a<5)$에 대하여 다음 조건을 만족시킨다.\n(가) 임의의 실수 $t$에 대하여 $\\int_0^t f(x)\\,dx=\\int_{2a-t}^{2a}f(x)\\,dx$이다.\n(나) $0<k<a$인 실수 $k$에 대하여 $f(k)=0$\n(다) $\\int_a^5f(x)\\,dx=6$, $\\int_a^5|f(x)|\\,dx=\\dfrac{22}{3}$\n이때, $\\int_k^5|f(x)|\\,dx$의 값은?",
     "choices": [
       "$7$",
-      "$dfrac{22}{3}$",
-      "$dfrac{23}{3}$",
+      "$\\dfrac{22}{3}$",
+      "$\\dfrac{23}{3}$",
       "$8$",
-      "$dfrac{25}{3}$"
+      "$\\dfrac{25}{3}$"
     ],
     "answer": "",
     "solution": "",
@@ -2024,7 +2024,7 @@ window.questionBank = [
       "정적분"
     ],
     "wide": false,
-    "content": "함수 $f(x)$가 모든 실수 $x$에 대하여 $int_1^x(x-t)^2f(t),dt=int_0^x(t^3+at^2+bt+c),dt$를 만족한다고 할 때, $f(a)+10$의 값을 구하는 과정을 서술하시오. [6점]",
+    "content": "함수 $f(x)$가 모든 실수 $x$에 대하여 $\\int_1^x(x-t)^2f(t)\\,dt=\\int_0^x(t^3+at^2+bt+c)\\,dt$를 만족한다고 할 때, $f(a)+10$의 값을 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "",
     "solution": "",
@@ -2101,7 +2101,7 @@ window.questionBank = [
       "적분의 활용"
     ],
     "wide": false,
-    "content": "최고차항의 계수가 $k$ $(k<0)$인 이차함수 $fprime(x)$의 그래프가 다음 그림과 같다. 이때, 실수 전체의 집합에서 정의된 함수 $g(x)=\begin{cases}f(x)&(x<-3)\\int_0^x|fprime(t)|,dt&(xge-3)end{cases}$이 다음 조건을 만족시킨다.\n(가) $g(-3)=-16$, $g(a)=-8$\n(나) 함수 $g(x)$는 실수 전체의 집합에서 연속이다.\n(다) 함수 $g(x)$는 극솟값을 갖는다.\n$int_a^2(f(x)+g(x)),dx$의 값을 구하는 과정을 서술하시오. (단, $a>-3$) [6점]",
+    "content": "최고차항의 계수가 $k$ $(k<0)$인 이차함수 $f'(x)$의 그래프가 다음 그림과 같다. 이때, 실수 전체의 집합에서 정의된 함수 $g(x)=\\begin{cases}f(x)&(x<-3)\\\\\\int_0^x|f'(t)|\\,dt&(x\\ge-3)\\end{cases}$이 다음 조건을 만족시킨다.\n(가) $g(-3)=-16$, $g(a)=-8$\n(나) 함수 $g(x)$는 실수 전체의 집합에서 연속이다.\n(다) 함수 $g(x)$는 극솟값을 갖는다.\n$\\int_a^2(f(x)+g(x))\\,dx$의 값을 구하는 과정을 서술하시오. (단, $a>-3$) [6점]",
     "choices": [],
     "answer": "",
     "solution": "",
