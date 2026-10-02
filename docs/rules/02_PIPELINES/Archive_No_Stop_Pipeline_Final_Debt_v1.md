@@ -123,6 +123,33 @@ UNRESOLVED RELEASE DEBT
 
 ---
 
+## 2.2 Executor fallback — validator는 실행환경 부재만으로 debt 종료 금지
+
+CREATE / R1 / R2 / R3 / FLEX가 현재 connector runtime에서 local Node CLI를 직접 실행할 수 없더라도, **validator 자체가 실행 불가능하다는 이유만으로 `INFRA_RETRY_DEBT`를 만들고 stage를 끝내지 않는다.**
+
+현재 repository에서 GitHub Actions 실행이 가능하면 다음 recovery path를 우선한다.
+
+```text
+local Node unavailable
+→ exact target/evidence bytes를 recovery ref에 durable materialize
+→ current main의 canonical validator를 사용하는 temporary validation PR/CI 또는 동등한 GitHub Actions job 실행
+→ actual Node CLI 결과 `ok=true` / `issues=[]` 확인
+→ validator receipt에 workflow run/job/validator blob/exam SHA/evidence SHA 결속
+→ durable stage DONE receipt 기록
+→ temporary CI mutation 원복
+→ validation PR은 merge 없이 close
+```
+
+하드 규칙:
+- 임시 CI/PR은 **validator 실행 전용**이며 production/main publish 경로로 사용하지 않는다.
+- current main canonical validator와 target recovery bytes를 merge-ref에서 실제 실행한다.
+- `solution-calibration-gate`가 필요한 stage면 preflight도 함께 actual Node로 실행한다.
+- validator PASS 전에는 DONE/PASS receipt 금지.
+- validator PASS 후에는 `EXACT_CREATE_NODE_GATE_NOT_EXECUTABLE_IN_CURRENT_CONNECTOR_RUNTIME` 같은 infra debt를 **RESOLVED**로 닫고 정상 nextOwner로 즉시 넘긴다.
+- temporary workflow/CI 변경은 결과 receipt를 쓰는 같은 closure에서 원복한다.
+- GitHub Actions 자체가 unavailable/permission denied일 때에만 그 실행환경 문제를 scoped `INFRA_RETRY_DEBT`로 남길 수 있다.
+- 이 fallback은 품질 gate 완화가 아니다. **실제 canonical Node CLI를 다른 executor에서 실행하는 것**이다.
+
 ## 3. Non-blocking Debt Registry
 
 미해결은 다음 debt 중 하나로 남긴다. **어느 debt도 scheduler/lane/cohort selector의 stop 조건이 아니다.**
