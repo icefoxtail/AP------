@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_INPUT_v1",
+  "questionId": 12,
+  "svg": "archive-work/assets/images/25_금당고_2학기_기말_고2_미적분/q012_solution.svg",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 110.38461538461539,
+    "originY": 334.5806451612903,
+    "sx": 105.53846153846153,
+    "sy": 238.70967741935482,
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "model-x-axis",
+          "model-y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "model-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "model-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "tolerance": 0.0001,
+  "expectedFacts": [
+    {
+      "factId": "A_INFLECTION_POINT",
+      "type": "POINT",
+      "element": "point-A",
+      "expected": [
+        2,
+        0.2706705664732254
+      ]
+    },
+    {
+      "factId": "B_TANGENT_X_INTERCEPT",
+      "type": "POINT",
+      "element": "point-B",
+      "expected": [
+        4,
+        0
+      ]
+    },
+    {
+      "factId": "C_TANGENT_Y_INTERCEPT",
+      "type": "POINT",
+      "element": "point-C",
+      "expected": [
+        0,
+        0.5413411329464508
+      ]
+    },
+    {
+      "factId": "O_ORIGIN",
+      "type": "POINT",
+      "element": "point-O",
+      "expected": [
+        0,
+        0
+      ]
+    },
+    {
+      "factId": "TANGENT_SLOPE",
+      "type": "LINE_SLOPE",
+      "element": "tangent",
+      "expected": -0.1353352832366127
+    },
+    {
+      "factId": "TANGENT_INTERCEPTS",
+      "type": "INTERCEPT",
+      "element": "tangent",
+      "expected": {
+        "x": 4,
+        "y": 0.5413411329464508
+      }
+    },
+    {
+      "factId": "TANGENT_X_AXIS_INTERSECTION",
+      "type": "INTERSECTION",
+      "elements": [
+        "tangent",
+        "model-x-axis"
+      ],
+      "expected": [
+        4,
+        0
+      ]
+    },
+    {
+      "factId": "TANGENT_Y_AXIS_INTERSECTION",
+      "type": "INTERSECTION",
+      "elements": [
+        "tangent",
+        "model-y-axis"
+      ],
+      "expected": [
+        0,
+        0.5413411329464508
+      ]
+    }
+  ],
+  "renderResult": "PASS"
+}

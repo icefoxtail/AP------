@@ -2,16 +2,14 @@
   "pilotId": "CODEX-HIGH-PILOT-001",
   "exam": "25_금당고_2학기_기말_고2_미적분",
   "stage": "SOLUTION",
-  "status": "SOLUTION_DRAFT_COMPLETE_WITH_ITEM_HOLD",
+  "status": "SOLUTION_COMPLETE_WITH_TARGETED_SOURCE_REPAIR",
   "denominator": 21,
-  "resolvedSolutionCount": 20,
-  "itemHoldQids": [
-    15
-  ],
+  "resolvedSolutionCount": 21,
+  "itemHoldQids": [],
   "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
   "targetArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
-  "targetArtifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
-  "targetArtifactGitBlobSha": "391a77834e59e93f331c5a5dd0aa85fd7def8118",
+  "targetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "targetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
   "calibrationStatus": "PENDING_GOLDEN_SEARCH",
   "solutions": [
     {
@@ -71,6 +69,11 @@
       "solution": "$f(e^6)-f(1/e)=\\int_{1/e}^{e^6}\\dfrac{dx}{x\\sqrt{\\ln x+10}}$이다. $u=\\ln x+10$으로 두면 구간은 $9$에서 $16$이므로 차는 $\\int_9^{16}\\dfrac{du}{\\sqrt u}=2\\sqrt u\\big|_9^{16}=2$이다. $f(1/e)=10$이므로 $f(e^6)=12$, 정답은 ③이다."
     },
     {
+      "qid": 15,
+      "solution": "$x\\ne0$에서\n$\\left(\\dfrac{f(x)}x\\right)'=\\dfrac{xf'(x)-f(x)}{x^2}=3xe^x$이다.\n양변을 $1$에서 $2$까지 적분하면\n$\\dfrac{f(2)}2-f(1)=3\\int_1^2 xe^x\\,dx$이다.\n$\\dfrac{d}{dx}\\left((x-1)e^x\\right)=xe^x$이므로\n$3\\int_1^2 xe^x\\,dx=3\\left[(x-1)e^x\\right]_1^2=3e^2$이다.\n$f(1)=0$을 대입하면 $\\dfrac{f(2)}2=3e^2$이므로 $f(2)=6e^2$이다.\n따라서 정답은 ④이다.",
+      "repairEvidence": "q15-audited-source-repair.json"
+    },
+    {
       "qid": 16,
       "solution": "$P$의 속도는 $f'(t)=2t-a$이다. $Q$의 속도는 $g'(t)=\\dfrac{2(t-1)}{(t-1)^2+1}$이므로 $t<1$에서 음수이다. 반대 방향인 구간이 정확히 $1/4<t<1$이 되려면 $P$의 속도는 $t>1/4$에서 양수이고 경계에서 $2(1/4)-a=0$이다. 따라서 $a=1/2$, 정답은 ①이다."
     },
@@ -94,5 +97,6 @@
       "qid": 21,
       "solution": "조건 (가)의 $f(1)=e$에서 $a+b=0$이다.\n$f'(x)=(x^2+(a+2)x+a+b)e^x$이고 $f'(1)=e$에서 $2a+b=-2$이다. 두 식을 풀면 $a=-2,b=2$이므로 $f(x)=(x^2-2x+2)e^x=((x-1)^2+1)e^x$이고 $f'(x)=x^2e^x$이다. $f'(x)>0$ ($x\\ne0$)이므로 $f$는 엄격히 증가한다. 또한 $x\\to-\\infty$에서 $f(x)\\to0$, $x\\to\\infty$에서 $f(x)\\to\\infty$이므로 $f$의 치역은 $(0,\\infty)$이고 역함수가 존재한다.\n조건 (나)와 $f(1)=e$에서 $f^{-1}(e)=1$, $g(e)=f'(1)=e$이다. $g(f(x))=f'(x)$를 미분하면 $g'(f(x))f'(x)=f''(x)$이다. $f''(x)=(x^2+2x)e^x$이므로 $g'(e)=3$이다. 또 $(f^{-1})'(e)=1/f'(1)=1/e$이다.\n따라서 $h'(e)=(f^{-1})'(e)g(e)+f^{-1}(e)g'(e)=1+3=4$이다."
     }
-  ]
+  ],
+  "postRepairQ15Recheck": "q15-post-repair-recheck.json"
 }

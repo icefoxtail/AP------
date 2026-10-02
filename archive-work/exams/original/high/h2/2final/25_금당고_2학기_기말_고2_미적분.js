@@ -1018,7 +1018,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "UNKNOWN",
     "metadataStatus": "SOURCE_FIRST_PASS",
     "metadataReviewRequired": true,
-    "sourceMetadataFirstPassSha": "sha256:d0fea099281c393abe38c6b81e430d82e9d1334d6f59fea8d1ced46fa50fd1bd"
+    "sourceMetadataFirstPassSha": "sha256:d0fea099281c393abe38c6b81e430d82e9d1334d6f59fea8d1ced46fa50fd1bd",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고2_미적분/q012_solution.svg",
+    "solutionImageAlt": "y=xe^(-x)의 변곡점 A와 접선, 절편 B, C 및 삼각형 OBC",
+    "solutionImageCaption": "A=(2,2/e²)에서의 접선은 B=(4,0), C=(0,4/e²)를 지나므로 넓이 계산에 두 절편을 사용한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -1212,7 +1216,7 @@ window.questionBank = [
       "여러 가지 적분법"
     ],
     "wide": false,
-    "content": "실수 전체의 집합에서 미분가능한 함수 $f(x)$가 다음 조건을 만족시킨다.\n(가) $f(1)=0$\n(나) $0$이 아닌 모든 실수 $x$에 대하여 $\\dfrac{xf'(x)-f(x)}{x^2}=3xe^{x^2}$이다.\n$f(2)$의 값은? [5점]",
+    "content": "실수 전체의 집합에서 미분가능한 함수 $f(x)$가 다음 조건을 만족시킨다.\n(가) $f(1)=0$\n(나) $0$이 아닌 모든 실수 $x$에 대하여 $\\dfrac{xf'(x)-f(x)}{x^2}=3xe^x$이다.\n$f(2)$의 값은? [5점]",
     "choices": [
       "$e^2$",
       "$2e^2$",
@@ -1220,8 +1224,8 @@ window.questionBank = [
       "$6e^2$",
       "$8e^2$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "$x\\ne0$에서\n$\\left(\\dfrac{f(x)}x\\right)'=\\dfrac{xf'(x)-f(x)}{x^2}=3xe^x$이다.\n양변을 $1$에서 $2$까지 적분하면\n$\\dfrac{f(2)}2-f(1)=3\\int_1^2 xe^x\\,dx$이다.\n$\\dfrac{d}{dx}\\left((x-1)e^x\\right)=xe^x$이므로\n$3\\int_1^2 xe^x\\,dx=3\\left[(x-1)e^x\\right]_1^2=3e^2$이다.\n$f(1)=0$을 대입하면 $\\dfrac{f(2)}2=3e^2$이므로 $f(2)=6e^2$이다.\n따라서 정답은 ④이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,

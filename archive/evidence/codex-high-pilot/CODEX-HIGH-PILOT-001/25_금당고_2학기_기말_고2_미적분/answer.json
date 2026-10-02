@@ -3,15 +3,13 @@
   "exam": "25_금당고_2학기_기말_고2_미적분",
   "ordinal": 1,
   "stage": "ANSWER",
-  "status": "ANSWER_COMPLETE_WITH_ITEM_HOLD",
+  "status": "ANSWER_COMPLETE_WITH_AUDITED_SOURCE_REPAIR",
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
   "sourceDocumentSha256": "0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020",
   "inputQuestionCount": 21,
-  "resolvedAnswerCount": 20,
-  "itemHoldQids": [
-    15
-  ],
+  "resolvedAnswerCount": 21,
+  "itemHoldQids": [],
   "authorityUsed": "Fresh derivation from source content and choices in the locked source-only artifact; prior answer/review evidence was not used to select answers.",
   "questions": [
     {
@@ -130,9 +128,10 @@
       "qid": 15,
       "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|15",
       "sourceOrdinal": 15,
-      "disposition": "ITEM_HOLD",
-      "answer": null,
-      "decisiveCalculation": "For x≠0, (f/x)'=3x e^(x²), so f(x)/x=(3/2)e^(x²)+C. From f(1)=0, f(2)=3(e^4-e), which matches none of the five frozen choices; hold only q15."
+      "disposition": "RESOLVED",
+      "answer": "④",
+      "decisiveCalculation": "For the audited corrected source 3xe^x, (f/x)′=3xe^x. Integrating from 1 to 2 gives f(2)/2=3e², so f(2)=6e² (④).",
+      "sourceRepairEvidence": "q15-audited-source-repair.json"
     },
     {
       "qid": 16,
@@ -184,6 +183,7 @@
     }
   ],
   "targetArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
-  "targetArtifactGitBlobSha": "8016e1999423c9ad4480857f3af1d76dd80af5ff",
-  "targetArtifactSha256": "f5f18b3f41eab8f735c8819dd4a06928b65ff861f37073c077bee5b2542c5434"
+  "targetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "targetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "postRepairQ15Recheck": "q15-post-repair-recheck.json"
 }

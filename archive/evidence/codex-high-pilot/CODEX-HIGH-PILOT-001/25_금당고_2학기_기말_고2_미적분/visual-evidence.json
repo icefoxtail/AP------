@@ -143,7 +143,42 @@
       "classification": "OPTIONAL",
       "action": "ADD",
       "studentBenefit": "A graph of y=xe^-x, its inflection tangent, and both axis intercepts makes the triangle-area setup immediately visible.",
-      "status": "BLOCKED_BEFORE_BUILD"
+      "status": "PASS_INDEPENDENT_RECHECK",
+      "solutionVisual": "VISUAL_OPTIONAL_ADDED",
+      "solutionAsset": "archive-work/assets/images/25_금당고_2학기_기말_고2_미적분/q012_solution.svg",
+      "coordinateFactCount": 8,
+      "targetedRender": "PASS",
+      "independentObservedFacts": {
+        "inflectionPoint": [
+          2,
+          0.2706705664732254
+        ],
+        "tangent": "y=(4-x)/e^2",
+        "tangentSlope": -0.1353352832366127,
+        "xIntercept": [
+          4,
+          0
+        ],
+        "yIntercept": [
+          0,
+          0.5413411329464508
+        ],
+        "triangleVertices": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0.5413411329464508
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "area": 1.0826822658929016
+      }
     },
     {
       "qid": 13,
@@ -231,5 +266,35 @@
     "path": "docs/rules/04_VISUAL/도형추출.md",
     "gitBlobSha": "08cfc834e3dae9838000880baaf983a685dece51",
     "relevantBoundary": "Keep original problem images as crops; solutionImage remains a separate instructional visual. Target has no problem image, and proposed q12 SVG is solution-only."
-  }
+  },
+  "targetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "targetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "solutionSvgAddedCount": 1,
+  "solutionSvgModifiedCount": 0,
+  "solutionVisualOptionalQids": [
+    12
+  ],
+  "solutionSvgAudit": "PASS: q12 SVG coordinate parity 8/8 and targeted Chrome render",
+  "solutionVisualAudit": "PASS: q12 graph, inflection point, tangent, axis intercepts, and shaded OBC triangle match the verified solution.",
+  "targetedRenderRequired": true,
+  "targetedRenderStatus": "PASS",
+  "canonicalEngineRender": "NOT_TESTED_ROUTINE_VISUAL_SCOPE",
+  "solutionSvgRefs": [
+    {
+      "qid": 12,
+      "path": "archive-work/assets/images/25_금당고_2학기_기말_고2_미적분/q012_solution.svg",
+      "sha256": "sha256:46bfebb1c8cc5e2d10a5af44669dad8017db374b08624e1451efd7d9e1c11622",
+      "gitBlobSha": "d944792335009bc4afb497d5b19782b9a80f66ce",
+      "coordinateProof": "q12-visual-coordinate-proof.json",
+      "coordinateParity": "q12-svg-coordinate-verification.json",
+      "renderEvidence": "q12-solution-render.png",
+      "renderSha256": "sha256:0031518b56fe6366a8b5c082b54fa82c4e56fc43c5eec1265ea33517bf08c4cb",
+      "status": "PASS_SELF_CHECK_PENDING_INDEPENDENT"
+    }
+  ],
+  "independentVisualReview": "PASS_Q12_SOLUTION_VISUAL",
+  "independentVisualReviewEvidence": "q12-visual-recheck.json",
+  "currentTargetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "currentTargetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "q15PostRepairRecheck": "q15-post-repair-recheck.json"
 }

@@ -1,0 +1,281 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1",
+  "questionId": 12,
+  "svg": "archive-work/assets/images/25_금당고_2학기_기말_고2_미적분/q012_solution.svg",
+  "svgSha256": "sha256:46bfebb1c8cc5e2d10a5af44669dad8017db374b08624e1451efd7d9e1c11622",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 110.38461538461539,
+    "originY": 334.5806451612903,
+    "sx": 105.53846153846153,
+    "sy": 238.70967741935482,
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "model-x-axis",
+          "model-y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "model-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "model-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFactCount": 8,
+  "observedFactCount": 8,
+  "factParityPassCount": 8,
+  "coordinateModelParity": "PASS",
+  "coordinateModelAnchors": [
+    {
+      "role": "origin",
+      "type": "INTERSECTION",
+      "element": [
+        "model-x-axis",
+        "model-y-axis"
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "observed": [
+        -3.6443149217502494e-9,
+        0
+      ],
+      "delta": [
+        -3.6443149217502494e-9,
+        0
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "xAxis",
+      "type": "POINT",
+      "element": "model-x-unit",
+      "expected": [
+        1,
+        0
+      ],
+      "observed": [
+        1.000000000728863,
+        0
+      ],
+      "delta": [
+        7.288629699786497e-10,
+        0
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "yAxis",
+      "type": "POINT",
+      "element": "model-y-unit",
+      "expected": [
+        0,
+        1
+      ],
+      "observed": [
+        -3.6443149217502494e-9,
+        0.9999999989189189
+      ],
+      "delta": [
+        -3.6443149217502494e-9,
+        -1.0810811135186782e-9
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "tolerancePolicy": {
+    "maxTolerance": 0.05,
+    "defaultTolerance": 0.0001,
+    "status": "PASS"
+  },
+  "elementExtractionStatus": "PASS",
+  "observedFactStatus": "PASS",
+  "expectedObservedParity": "PASS",
+  "facts": [
+    {
+      "factId": "A_INFLECTION_POINT",
+      "type": "POINT",
+      "element": "point-A",
+      "expected": [
+        2,
+        0.2706705664732254
+      ],
+      "observed": [
+        1.9999999956268224,
+        0.27067056459459465
+      ],
+      "delta": [
+        -4.3731775978272935e-9,
+        -1.8786307509621736e-9
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "B_TANGENT_X_INTERCEPT",
+      "type": "POINT",
+      "element": "point-B",
+      "expected": [
+        4,
+        0
+      ],
+      "observed": [
+        4.000000004373178,
+        0
+      ],
+      "delta": [
+        4.373178263961108e-9,
+        0
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "C_TANGENT_Y_INTERCEPT",
+      "type": "POINT",
+      "element": "point-C",
+      "expected": [
+        0,
+        0.5413411329464508
+      ],
+      "observed": [
+        -3.6443149217502494e-9,
+        0.5413411327027027
+      ],
+      "delta": [
+        -3.6443149217502494e-9,
+        -2.4374813278882357e-10
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "O_ORIGIN",
+      "type": "POINT",
+      "element": "point-O",
+      "expected": [
+        0,
+        0
+      ],
+      "observed": [
+        -3.6443149217502494e-9,
+        0
+      ],
+      "delta": [
+        -3.6443149217502494e-9,
+        0
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "TANGENT_SLOPE",
+      "type": "LINE_SLOPE",
+      "element": "tangent",
+      "expected": -0.1353352832366127,
+      "observed": -0.13533528290441324,
+      "delta": 3.321994623828317e-10,
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "TANGENT_INTERCEPTS",
+      "type": "INTERCEPT",
+      "element": "tangent",
+      "expected": {
+        "x": 4,
+        "y": 0.5413411329464508
+      },
+      "observed": {
+        "x": 4.000000004373178,
+        "y": 0.5413411322094983
+      },
+      "delta": {
+        "x": 4.373178263961108e-9,
+        "y": -7.369524990252785e-10
+      },
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "TANGENT_X_AXIS_INTERSECTION",
+      "type": "INTERSECTION",
+      "element": [
+        "tangent",
+        "model-x-axis"
+      ],
+      "expected": [
+        4,
+        0
+      ],
+      "observed": [
+        4.000000004373178,
+        0
+      ],
+      "delta": [
+        4.373178263961108e-9,
+        0
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "TANGENT_Y_AXIS_INTERSECTION",
+      "type": "INTERSECTION",
+      "element": [
+        "tangent",
+        "model-y-axis"
+      ],
+      "expected": [
+        0,
+        0.5413411329464508
+      ],
+      "observed": [
+        -3.6443149217502494e-9,
+        0.5413411327027028
+      ],
+      "delta": [
+        -3.6443149217502494e-9,
+        -2.437480217665211e-10
+      ],
+      "tolerance": 0.0001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "svgMathStatus": "PASS",
+  "renderResult": "PASS",
+  "svgFinalStatus": "PASS",
+  "failures": []
+}

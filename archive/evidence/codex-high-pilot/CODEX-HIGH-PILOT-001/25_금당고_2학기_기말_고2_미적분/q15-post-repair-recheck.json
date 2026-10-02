@@ -1,0 +1,38 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "ordinal": 1,
+  "qid": 15,
+  "stage": "POST_REPAIR_TARGETED_RECHECK",
+  "status": "PASS_ITEM_HOLD_CLEARED",
+  "reviewedTargetArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
+  "reviewedTargetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "reviewedTargetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "sourcePdfSha256": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020",
+  "sourcePage": 3,
+  "sourceVisualEvidence": "q15-source-page3.png",
+  "sourceFinding": "Printed 3xe^{x²} yields f(2)=3(e^4−e), which matches none of the five choices.",
+  "authorizedMinimalRepair": "Delete only the superscript 2: 3xe^{x²} → 3xe^x. All five choices are unchanged.",
+  "independentDerivation": [
+    "From the repaired condition, (f(x)/x)′=3xe^x for x≠0.",
+    "Integrate on [1,2]: f(2)/2−f(1)=3∫₁² xe^x dx.",
+    "Since d((x−1)e^x)/dx=xe^x, the integral is 3[(x−1)e^x]₁²=3e².",
+    "With f(1)=0, f(2)=6e², equal to choice ④."
+  ],
+  "answerChoiceCheck": {
+    "answer": "④",
+    "choice": "$6e^2$",
+    "match": true
+  },
+  "solutionAudit": {
+    "derivativeIdentity": true,
+    "integralBounds": true,
+    "antiderivative": true,
+    "conditionApplied": true,
+    "conclusionMatchesAnswer": true,
+    "latexBackslashesPresent": true
+  },
+  "q15ItemHold": "CLEARED",
+  "q12Visual": "PASS",
+  "examRelease": "NOT_CLAIMED"
+}

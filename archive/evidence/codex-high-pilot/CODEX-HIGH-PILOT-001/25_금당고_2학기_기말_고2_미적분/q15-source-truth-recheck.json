@@ -1,0 +1,49 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "ordinal": 1,
+  "qid": 15,
+  "stage": "ITEM_HOLD_SOURCE_TRUTH_RECHECK",
+  "status": "SOURCE_DEFECT_CONFIRMED_HISTORICAL_PRE_REPAIR",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4",
+  "sourcePdfPath": "D:\\기출\\(4)2기말\\미적분\\2025_금당고2_미적분_2기말.pdf",
+  "sourcePdfSha256": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020",
+  "sourcePage": 3,
+  "renderedSourcePageEvidence": "q15-source-page3.png",
+  "renderedPageSha256": "sha256:dee8ea141c1e8ae8022d7c8802c023408277fdfac6aa10225a85a7fb0a85a7c7",
+  "sourceParity": {
+    "content": "EXACT_MATCH",
+    "choices": "EXACT_MATCH",
+    "sourceQuestionNo": "15",
+    "sourcePageNo": 3
+  },
+  "sourceStatement": "For every nonzero real x, (x f′(x) − f(x))/x² = 3x e^(x²), with f(1)=0; find f(2).",
+  "freshDerivation": [
+    "For x≠0, (f(x)/x)′=(x f′(x)−f(x))/x²=3x e^(x²).",
+    "Integrate: f(x)/x=(3/2)e^(x²)+C on the positive interval containing 1 and 2.",
+    "Using f(1)=0 gives C=−(3/2)e.",
+    "Thus f(2)=2·(3/2)(e⁴−e)=3(e⁴−e)."
+  ],
+  "answerChoices": [
+    "e²",
+    "2e²",
+    "4e²",
+    "6e²",
+    "8e²"
+  ],
+  "choiceCheck": {
+    "candidate": "3(e⁴−e)",
+    "ratioToE2": "f(2)/e²=3e²−3/e",
+    "proofOutsideChoices": "Since e>2, 3e²−3/e>12−1.5=10.5>8; therefore the computed value exceeds every listed choice.",
+    "matchingChoices": []
+  },
+  "disposition": "SOURCE_HOLD_CLEARED_BY_MINIMAL_USER_AUTHORIZED_REPAIR",
+  "itemHoldQid": 15,
+  "sourceOrChoiceMutationCount": 0,
+  "reason": "The frozen original page confirms the same equation and choices as the JS. The fresh result matches none of the five choices, so no answer can be assigned without changing source text or choices.",
+  "reviewedTargetArtifactSha256": "sha256:5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
+  "currentTargetArtifactSha256": "sha256:4056a50181756891e721cddd73edf62ea498aa5bc2630e7541174a7fa4046c17",
+  "currentTargetProtectedFieldParity": "PASS_21_OF_21",
+  "q12VisualMutationDoesNotAffectQ15SourceFields": true,
+  "supersededBy": "q15-audited-source-repair.json"
+}

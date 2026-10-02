@@ -8,47 +8,42 @@
   "latestOriginMain": "68a918f1e027776f6d2b5b9fefd5a66578c8287c",
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
-  "lastDurableStage": "GOLDEN_COMPARE",
-  "currentStage": "VISUAL",
-  "nextStage": "VISUAL",
+  "lastDurableStage": "TARGETED_REPAIR_Q15_AND_Q12_VISUAL",
+  "currentStage": "META",
+  "nextStage": "META",
   "artifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
-  "artifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
+  "artifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
   "denominator": 21,
-  "resolvedAnswerCount": 20,
-  "solutionCount": 20,
-  "itemHoldQids": [
-    15
-  ],
-  "calibrationStatus": "VISUAL_REPAIR_PREFLIGHT_PASS",
+  "resolvedAnswerCount": 21,
+  "solutionCount": 21,
+  "itemHoldQids": [],
+  "calibrationStatus": "SOLUTION_REPAIR_PREFLIGHT_PASS",
   "blocker": null,
   "examTerminalStatus": null,
   "evidence": {
-    "answer": "answer.json",
-    "solutionSelfReview": "self-review-1.json; self-review-2.json",
+    "answer": "answer.json; q15-audited-source-repair.json; q15-post-repair-recheck.json",
+    "solutionSelfReview": "self-review-1.json; self-review-2.json; q15-post-repair-recheck.json",
     "goldenCalibration": "golden-calibration.json",
-    "visual": "visual-evidence.json (triage complete; q12 SVG not built)",
+    "visual": "visual-evidence.json; q12-visual-coordinate-proof.json; q12-expected-facts.json; q12-svg-coordinate-verification.json; q12-solution-render.png; q12-visual-recheck.json",
     "meta": null,
     "independentReview": "independent-review.json (partial fresh math/answer check; lifecycle stage not reached)",
     "release": null,
-    "calibrationPreflight": "calibration-preflight.json (initial failure); visual-repair-calibration-input.json; calibration-preflight-recovery.json"
+    "calibrationPreflight": "calibration-preflight-recovery.json; q15-repair-calibration-input.json; q15-repair-calibration-preflight.json",
+    "sourceTruthQ15": "q15-source-truth-recheck.json; q15-audited-source-repair.json; q15-post-repair-recheck.json; q15-source-page3.png",
+    "solution": "solution.json; q15-audited-source-repair.json; q15-post-repair-recheck.json",
+    "goldenCompare": "golden-calibration.json; q15-post-repair-recheck.json"
   },
   "unrelatedMutationCount": 0,
-  "resolvedSolutionCount": 20,
-  "unfinishedSolutionQids": [
-    15
-  ],
-  "targetArtifactGitBlobSha": "391a77834e59e93f331c5a5dd0aa85fd7def8118",
-  "selfReview1Status": "MATH_PASS_WITH_ITEM_HOLD",
+  "resolvedSolutionCount": 21,
+  "unfinishedSolutionQids": [],
+  "targetArtifactGitBlobSha": "59f67d9bd283bd0ce0ccc3716ecbafa21e448191",
+  "selfReview1Status": "PASS_AFTER_Q15_TARGETED_RECHECK",
   "repairNote": null,
-  "selfReview2Status": "STUDENT_PASS_WITH_ITEM_HOLD",
+  "selfReview2Status": "PASS_AFTER_Q15_TARGETED_RECHECK",
   "attemptedStage": "GOLDEN_COMPARE_MANUAL_AND_VISUAL_PREFLIGHT",
   "unfinishedQids": {
-    "solution": [
-      15
-    ],
-    "visual": [
-      12
-    ],
+    "solution": [],
+    "visual": [],
     "meta": [
       1,
       2,
@@ -117,10 +112,20 @@
       19,
       20,
       21
+    ],
+    "answer": [],
+    "selfReview1": [
+      15
+    ],
+    "selfReview2": [
+      15
+    ],
+    "goldenCompare": [
+      15
     ]
   },
   "blockedAtStage": null,
-  "manualGoldenCompareStatus": "PASS_ON_20_RESOLVED_QIDS",
+  "manualGoldenCompareStatus": "PASS_ON_21_RESOLVED_QIDS",
   "lastDurableCommitBeforeBlockedCloseout": "546640c52e83d1f9763da8df04267c513e007b9a",
   "authorityRefs": [
     {
@@ -197,5 +202,16 @@
     },
     "temporarySnapshot": "C:\\Users\\USER\\AppData\\Local\\Temp\\codex_ordinal1_calibration_68a918_1790924996043",
     "branchSystemMutationCount": 0
-  }
+  },
+  "sourceTruthReviewQ15Status": "AUDITED_SOURCE_REPAIR_AND_TARGETED_RECHECK_PASS",
+  "visualStatus": "PASS_Q12_SOLUTION_VISUAL_ADDED_AND_INDEPENDENTLY_RECHECKED",
+  "solutionSvgCount": 1,
+  "solutionSvgQids": [
+    12
+  ],
+  "targetArtifactSha256": "sha256:ec708c78d3bb2be45f9e82db9708dc9fe6400d545f56c4c7029d5e390e8071f2",
+  "sourceRepairQid": 15,
+  "sourceRepairChange": "3xe^{x²}→3xe^x, one superscript digit deleted; choices unchanged",
+  "currentQ12VisualStatus": "PASS_INDEPENDENT_RECHECK",
+  "nextStageNote": "Only q12 visual and q15 source-truth hold were targeted here; exam META and later stages remain pending."
 }
