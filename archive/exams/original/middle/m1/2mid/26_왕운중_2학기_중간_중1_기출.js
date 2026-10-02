@@ -980,7 +980,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.png",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q14.svg"
   },
   {
