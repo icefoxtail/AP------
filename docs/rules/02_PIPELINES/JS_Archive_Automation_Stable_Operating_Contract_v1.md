@@ -198,6 +198,71 @@ FAIL
 - selector 범위 전체를 확인하고 실제 eligible=0일 때만 NO_WORK.
 - eligible backlog가 있는데 NO_WORK면 MASTER rescue 대상이다.
 
+## 4.4 Scheduled worker closure — CANDIDATE IS NOT DONE
+
+예약 worker는 candidate/evidence를 만들었다는 이유로 stage를 끝냈다고 간주하지 않는다.
+
+### 4.4.1 EXECUTOR_CAPABILITY_PREFLIGHT — target 작업 전에 실행
+
+CREATE/R1/R2/R3 worker는 긴 target 작업을 시작하기 전에 이번 run에서 실제 validator를 어디서 실행할지 먼저 확정한다.
+
+```text
+local Node CLI available?
+→ YES: local canonical validator 사용
+→ NO: GitHub Actions / temporary validation PR·CI 사용 가능 여부 확인
+→ 둘 다 불가: exact continuation checkpoint + scoped INFRA_RETRY_DEBT
+```
+
+최소 기록:
+
+- `validationExecutor = LOCAL_NODE | GITHUB_ACTIONS | UNAVAILABLE`
+- 사용할 canonical validator path/blob
+- branch/write 권한과 Actions 실행 가능 여부
+
+**무거운 solution/Meta/SVG 작업을 끝낸 뒤에야 validator 실행경로가 없음을 발견하는 순서를 금지한다.**
+
+### 4.4.2 closure tuple HARD
+
+CREATE의 정상 완료는 아래 5개가 모두 물리적으로 존재하고 서로 같은 final artifact에 결속될 때만 인정한다.
+
+1. final exam/artifact blob
+2. physical evidence
+3. **actual** calibration/`review-evidence-gate --stage CREATE` validator receipt
+4. durable CREATE receipt with `CREATE_DONE → READY_FOR_REVIEW1`
+5. remote ref/blob readback
+
+candidate commit, evidence-only commit, self-reported `calibrationStatus=PASS`, checkpoint, Notion 기록만으로는 CREATE_DONE이 아니다.
+특히 GitHub Actions fallback을 선택한 경우 **workflow run/job가 실제로 존재하지 않으면 validator 미실행**이다.
+
+### 4.4.3 CLOSURE-FIRST BUDGET
+
+candidate + physical evidence가 완성된 순간부터 남은 run 시간은 다음 순서에 우선 배정한다.
+
+```text
+actual validator
+→ validator receipt
+→ stage receipt
+→ remote readback
+→ Notion/report
+```
+
+추가 SVG 개선, 설명 확장, 문서 정리, 보고 작성은 closure 뒤다.
+
+### 4.4.4 runtime/time limit continuation
+
+run이 시간 제한이나 executor 중단으로 candidate 이후 종료될 수 있으면 종료 전에 최소 다음을 durable checkpoint로 남긴다.
+
+- `reviewAttemptId`
+- candidate branch/HEAD
+- finalArtifactSha
+- physicalEvidence blob
+- completed step
+- **firstMissingClosureStep**
+- selected `validationExecutor`
+
+다음 같은-role run은 새 target을 고르거나 fresh rewrite를 반복하지 않고 **그 exact candidate의 firstMissingClosureStep부터 먼저 재개**한다.
+
+one-shot 예약으로 full CREATE를 시험할 때 candidate 생성까지 시간이 오래 걸릴 가능성이 있으면, one-shot 하나에 “무조건 완결”을 가정하지 않는다. **continuation 가능한 recurring slot**을 사용하거나, 첫 run이 candidate에서 끝났다면 즉시 gate/receipt-only continuation run으로 이어야 한다.
 ## 5. Codex recovery ownership
 
 현재 운영대로 다음은 Codex가 담당한다.

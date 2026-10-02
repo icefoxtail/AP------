@@ -114,6 +114,28 @@ local Node unavailable
 - GitHub Actions 자체가 unavailable/permission denied일 때에만 그 실행환경 문제를 scoped `INFRA_RETRY_DEBT`로 남길 수 있다.
 - 이 fallback은 품질 gate 완화가 아니다. **실제 canonical Node CLI를 다른 executor에서 실행하는 것**이다.
 
+### 2.3 Scheduled executor capability preflight + closure-first
+
+예약 worker는 target 생성부터 시작하지 않는다. 먼저 이번 run의 **actual validator executor**를 확정한다.
+
+- local Node 가능 → local canonical CLI
+- local Node 불가 + GitHub Actions 가능 → temporary validation PR/CI 경로를 target 작업 전에 준비
+- 둘 다 불가 → 정확한 continuation checkpoint와 scoped INFRA_RETRY_DEBT
+
+candidate/evidence 생성 후에는 **validator → validator receipt → stage receipt → remote readback**이 최우선이다. candidate/evidence commit만 만들고 종료하는 것은 stage advancement가 아니다.
+
+CREATE 기준 완료 tuple:
+
+```text
+final artifact
++ physical evidence
++ actual calibration/review-evidence-gate receipt
++ CREATE_DONE receipt
++ remote readback
+```
+
+GitHub Actions fallback을 선택했는데 workflow run/job가 0이면 validator는 실행되지 않은 것으로 판정한다.
+시간 제한으로 중단될 경우 same-role 다음 run이 exact candidate를 다시 쓰지 않고 firstMissingClosureStep부터 resume할 수 있도록 candidate HEAD/finalArtifactSha/evidence blob/validationExecutor를 durable하게 남긴다.
 ## 3. Non-blocking Debt Registry
 
 미해결은 다음 debt 중 하나로 남긴다. **어느 debt도 scheduler/lane/cohort selector의 stop 조건이 아니다.**
