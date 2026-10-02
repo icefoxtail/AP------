@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "stage": "R2",
+  "canonicalValidatorPath": "archive/tools/review-evidence-gate.mjs",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "calibrationValidatorPath": "archive/tools/solution-calibration-gate.mjs",
+  "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "validationMode": "GITHUB_ACTIONS_CANONICAL_EXECUTION",
+  "candidateCommit": "5ccf2ebcefaf99f85cdc37f646788ba6172b2315",
+  "validationSurfaceCommit": "852685ee97e96a8d449085cdd3092c6241dd4875",
+  "githubActionsRunId": 37043243776,
+  "githubActionsJobId": 110958250098,
+  "githubActionsWorkflow": "CI",
+  "examGitBlob": "073716484ed180fef9e09c31d8d20439a68bb3f3",
+  "examSha256": "sha256:1b0ee141326572dbd5f0a7b328d9a1f490d4da664d5f1207cd6b24b15315640b",
+  "physicalEvidenceGitBlob": "2f887ca35a8afe23dbfafd9734251f581950c082",
+  "blindDecisionGitBlob": "31a5ca3d15be6fabde4b867dbdad0e94b78fa9db",
+  "blindDecisionSha256": "sha256:7e931c508cad0d474449d6019a7f6cb942d95ae289b8ed118b901a6574d92530",
+  "result": {
+    "ok": true,
+    "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+    "stage": "R2",
+    "questionCount": 25,
+    "questionEvidenceRows": 25,
+    "linkedSolutionVisualCount": 2,
+    "visualEvidenceRows": 2,
+    "metaEvidenceRows": 25,
+    "itemHoldCount": 0,
+    "itemHoldQids": [],
+    "disposition": "PASS",
+    "issues": []
+  },
+  "replayChecks": {
+    "examShaBinding": "PASS",
+    "visualAssetShaBinding": "2/2",
+    "visualPhysicalMethod": "2/2",
+    "questionAxes": "25/25",
+    "runtimeTex": "25/25",
+    "smallBoard": "25/25",
+    "metaRows": "25/25",
+    "solutionCalibration": "PASS",
+    "blindFreeze": "PASS"
+  },
+  "ciEnvelope": {
+    "overallConclusion": "FAIL_UNRELATED_BASELINE",
+    "targetedCanonicalGate": "PASS",
+    "targetedGateObservedAtLogTimestamp": "2026-10-02T17:50:55.2246044Z",
+    "unrelatedBlockingFailures": 13
+  }
+}
