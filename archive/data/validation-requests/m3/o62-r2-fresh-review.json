@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_FRESH_REVIEW_REQUEST_v1",
+  "stage": "R2",
+  "canonicalOrdinal": 62,
+  "examPath": "archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+  "inputArtifactGitBlob": "50488c7b9280555d889699572e35756d8c655512",
+  "reviewAttemptId": "R2:m3/2final/23-suncheonyeo:50488c7b9280555d889699572e35756d8c655512:1",
+  "blindRule": "Before blindDecisionSha, do not inspect target solution fields or any R1 verdict/evidence/receipt/diff. Independently audit all 24 questions from source/content/choices/answer/images first.",
+  "afterFreeze": "Only after 24/24 blind decisions are frozen, compare target solution and prior-stage details, revalidate inherited holds from current source truth, then perform allowed deterministic minimal repair.",
+  "visualPreloadRequired": true,
+  "visualPreload": [
+    ".codex/skills/apmath-visual-upgrade/SKILL.md",
+    "docs/rules/04_VISUAL/도형추출.md",
+    "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md"
+  ],
+  "goldenSamples": [
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+  "requiredClosure": "fresh R2 physical evidence + calibration closure + actual review-evidence-gate --stage R2 PASS + validator receipt + REVIEW2_DONE/READY_FOR_R3 receipt + remote readback",
+  "createdFromMain": "c105ea93ccc9316e75359011e498a08a9e88caaa"
+}
