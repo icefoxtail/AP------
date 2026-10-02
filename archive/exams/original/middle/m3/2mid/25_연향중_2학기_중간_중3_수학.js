@@ -32,7 +32,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
   },
   {
     "id": 2,
@@ -63,7 +65,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
   },
   {
     "id": 3,
@@ -96,7 +100,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
   },
   {
     "id": 4,
@@ -127,7 +133,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
   },
   {
     "id": 5,
@@ -160,7 +168,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
   },
   {
     "id": 6,
@@ -191,7 +201,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
   },
   {
     "id": 7,
@@ -218,11 +230,13 @@ window.questionBank = [
       "ㄹ-ㅁ-ㄱ-ㄷ-ㄴ"
     ],
     "answer": "③",
-    "solution": "$25^\\circ<45^\\circ$이므로\n$\\sin25^\\circ<\\sin45^\\circ=\\cos45^\\circ$이다.\n또 $\\cos45^\\circ<\\cos0^\\circ=1$이다.\n\n$50^\\circ>45^\\circ$이므로 $\\tan50^\\circ>\\tan45^\\circ=1$이고,\n$50^\\circ<65^\\circ$이므로 $\\tan50^\\circ<\\tan65^\\circ$이다.\n\n따라서 작은 것부터\nㄴ-ㄷ-ㄱ-ㄹ-ㅁ이다.\n\n정답은 ③이다.",
+    "solution": "보기의 각 항을 따로 비교한다.\n\nㄱ. $\\cos0^\\circ=1$이다.\n\nㄴ. $25^\\circ<45^\\circ$이므로 $\\sin25^\\circ<\\sin45^\\circ=\\dfrac{\\sqrt2}{2}$이다.\n\nㄷ. $\\cos45^\\circ=\\dfrac{\\sqrt2}{2}$이므로 ㄴ보다 크고 ㄱ보다 작다.\n\nㄹ. $50^\\circ>45^\\circ$이므로 $\\tan50^\\circ>\\tan45^\\circ=1$이다.\n\nㅁ. $65^\\circ>50^\\circ$이므로 $\\tan65^\\circ>\\tan50^\\circ$이다.\n\n따라서 작은 것부터 ㄴ-ㄷ-ㄱ-ㄹ-ㅁ이다.\n\n정답은 ③이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
   },
   {
     "id": 8,
@@ -255,7 +269,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
   },
   {
     "id": 9,
@@ -288,7 +304,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
   },
   {
     "id": 10,
@@ -321,7 +339,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
   },
   {
     "id": 11,
@@ -354,7 +374,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
   },
   {
     "id": 12,
@@ -387,7 +409,9 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
   },
   {
     "id": 13,
@@ -421,6 +445,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q13-solution.svg"
   },
   {
@@ -685,6 +711,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q21-solution.svg"
   },
   {
@@ -713,6 +741,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q22-solution.svg"
   },
   {
