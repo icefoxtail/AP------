@@ -734,7 +734,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "정사각형",

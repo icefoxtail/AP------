@@ -2106,11 +2106,21 @@ function renderDailyClosePanel(step = 1) {
     `;
 }
 
-function openTodayCloseModal(step = 1) {
+async function openTodayCloseModal(step = 1) {
     const numericStep = Number(step);
     const safeStep = Number.isFinite(numericStep) ? Math.max(1, Math.min(3, numericStep)) : 1;
     if (!state.ui) state.ui = {};
     state.ui.dailyCloseStep = safeStep;
+
+    if (safeStep === 3) {
+        const requestId = Number(state.ui.dailyCloseProgressRequestId || 0) + 1;
+        state.ui.dailyCloseProgressRequestId = requestId;
+        const today = new Date().toLocaleDateString('sv-SE');
+        showModal('예외 현황', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">일지 진도를 불러오는 중…</div>');
+        await dashboardPrimeJournalProgressForDate(today, dashboardGetJournalClassRows(today), { forceRefresh: true });
+        if (Number(state.ui.dailyCloseProgressRequestId || 0) !== requestId) return;
+    }
+
     showModal('예외 현황', renderDailyClosePanel(safeStep));
 }
 
@@ -2203,6 +2213,230 @@ function formatJournalProgressLine(progress, unitText) {
     }
 
     return `  * ${title}: ${progressText}`;
+}
+
+function dashboardGetJournalProgressCache() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.journalProgressCache) state.ui.journalProgressCache = {};
+    return state.ui.journalProgressCache;
+}
+
+function dashboardGetLocalPersistentProgressForDate(classId, dateStr) {
+    const cid = String(classId || '');
+    const targetDate = String(dateStr || '').slice(0, 10);
+    if (!cid || !targetDate) return null;
+
+    const snapshot = (state.db.class_progress_snapshots || [])
+        .filter(row =>
+            String(row?.class_id || '') === cid &&
+            String(row?.effective_date || '') <= targetDate
+        )
+        .sort((a, b) =>
+            String(b?.effective_date || '').localeCompare(String(a?.effective_date || '')) ||
+            String(b?.updated_at || '').localeCompare(String(a?.updated_at || '')) ||
+            String(b?.id || '').localeCompare(String(a?.id || ''))
+        )[0] || null;
+    if (!snapshot) return null;
+
+    return {
+        snapshot,
+        items: (state.db.class_progress_items || [])
+            .filter(item => String(item?.snapshot_id || '') === String(snapshot.id || ''))
+            .sort((a, b) =>
+                Number(a?.sort_order || 0) - Number(b?.sort_order || 0) ||
+                String(a?.id || '').localeCompare(String(b?.id || ''))
+            ),
+        loadFailed: false,
+        source: 'local'
+    };
+}
+
+function dashboardGetJournalPersistentProgress(classId, dateStr) {
+    const cid = String(classId || '');
+    const targetDate = String(dateStr || '').slice(0, 10);
+    const cache = dashboardGetJournalProgressCache();
+    const cacheKey = `${cid}|${targetDate}`;
+    if (Object.prototype.hasOwnProperty.call(cache, cacheKey)) return cache[cacheKey];
+
+    return dashboardGetLocalPersistentProgressForDate(cid, targetDate) || {
+        snapshot: null,
+        items: [],
+        loadFailed: false,
+        source: 'none'
+    };
+}
+
+async function dashboardPrimeJournalProgressForDate(dateStr, classes, options = {}) {
+    const targetDate = String(dateStr || '').slice(0, 10);
+    const cache = dashboardGetJournalProgressCache();
+    const forceRefresh = !!options.forceRefresh;
+    const uniqueClasses = [];
+    const seen = new Set();
+    (Array.isArray(classes) ? classes : []).forEach(cls => {
+        const cid = String(cls?.id || '').trim();
+        if (!cid || seen.has(cid)) return;
+        seen.add(cid);
+        uniqueClasses.push(cls);
+    });
+
+    await Promise.all(uniqueClasses.map(async cls => {
+        const cid = String(cls.id || '');
+        const cacheKey = `${cid}|${targetDate}`;
+        if (!forceRefresh && Object.prototype.hasOwnProperty.call(cache, cacheKey)) return;
+
+        try {
+            const response = await api.get(`class-progress?class_id=${encodeURIComponent(cid)}&date=${encodeURIComponent(targetDate)}`);
+            if (response?.success) {
+                cache[cacheKey] = {
+                    snapshot: response.snapshot || null,
+                    items: Array.isArray(response.items) ? response.items : [],
+                    loadFailed: false,
+                    source: 'api'
+                };
+                return;
+            }
+        } catch (error) {
+            console.warn('[dashboardPrimeJournalProgressForDate] failed:', error);
+        }
+
+        const local = dashboardGetLocalPersistentProgressForDate(cid, targetDate);
+        cache[cacheKey] = local
+            ? { ...local, loadFailed: true, source: 'local-fallback' }
+            : { snapshot: null, items: [], loadFailed: true, source: 'unavailable' };
+    }));
+
+    return uniqueClasses.map(cls => dashboardGetJournalPersistentProgress(cls.id, targetDate));
+}
+
+function dashboardGetProgressCatalogItem(pathKey) {
+    const key = String(pathKey || '');
+    return (state.db.class_progress_taxonomy || []).find(item =>
+        String(item?.canonicalPathKey || item?.canonical_path_key || '') === key
+    ) || null;
+}
+
+function dashboardFormatPersistentProgressLines(progressState) {
+    const groups = new Map();
+    (Array.isArray(progressState?.items) ? progressState.items : []).forEach((item, index) => {
+        const pathKey = String(item?.canonical_path_key || item?.canonicalPathKey || '');
+        const catalogItem = dashboardGetProgressCatalogItem(pathKey) || {};
+        const curriculumKey = String(item?.curriculum_key || item?.curriculumKey || catalogItem.curriculumKey || '');
+        const courseKey = String(item?.course_key || item?.courseKey || catalogItem.courseKey || '');
+        const courseLabel = String(catalogItem.courseLabel || courseKey || '과정');
+        const groupKey = [curriculumKey, courseKey].join('|');
+        const l1 = String(item?.l1_snapshot || item?.l1 || catalogItem.l1 || '').trim();
+        const l2 = String(item?.l2_snapshot || item?.l2 || catalogItem.l2 || '').trim();
+        const unitLabel = l1 && l2 && l1 !== l2 ? `${l1} · ${l2}` : (l2 || l1);
+        const order = Number.isFinite(Number(item?.sort_order))
+            ? Number(item.sort_order)
+            : index;
+
+        const previous = groups.get(groupKey);
+        if (!previous || order >= previous.order) {
+            groups.set(groupKey, {
+                label: [curriculumKey ? `${curriculumKey} 개정` : '', courseLabel].filter(Boolean).join(' · '),
+                unit: unitLabel,
+                order
+            });
+        }
+    });
+
+    return Array.from(groups.values())
+        .filter(group => !!group.unit)
+        .map(group => `  * ${group.label}: ${group.unit}`);
+}
+
+function dashboardGetJournalDailyProgressState(classId, dateStr, exactRecord = null) {
+    const cid = String(classId || '');
+    const targetDate = String(dateStr || '').slice(0, 10);
+    const records = (state.db.class_daily_records || [])
+        .filter(record =>
+            String(record?.class_id || '') === cid &&
+            String(record?.date || '') <= targetDate
+        )
+        .sort((a, b) =>
+            String(b?.date || '').localeCompare(String(a?.date || '')) ||
+            String(b?.updated_at || '').localeCompare(String(a?.updated_at || '')) ||
+            String(b?.id || '').localeCompare(String(a?.id || ''))
+        );
+    const record = exactRecord || records[0] || null;
+    return {
+        record,
+        progress: record
+            ? (state.db.class_daily_progress || []).filter(row =>
+                String(row?.record_id || '') === String(record.id || '')
+            )
+            : []
+    };
+}
+
+function dashboardBuildClassJournalProgress(classId, dateStr, exactRecord = null) {
+    const noteData = exactRecord
+        ? extractJournalUnitAndNote(exactRecord.special_note)
+        : { units: '', note: '' };
+    const persistent = dashboardGetJournalPersistentProgress(classId, dateStr);
+    const persistentLines = dashboardFormatPersistentProgressLines(persistent);
+    const dailyProgressState = dashboardGetJournalDailyProgressState(classId, dateStr, exactRecord);
+    const lines = persistentLines.slice();
+
+    dailyProgressState.progress.forEach(progress => {
+        lines.push(formatJournalProgressLine(progress, persistentLines.length > 0 ? '' : noteData.units));
+    });
+
+    return {
+        lines,
+        note: noteData.note,
+        loadFailed: !!persistent?.loadFailed && lines.length === 0
+    };
+}
+
+function dashboardGetJournalSectionRanges(lines) {
+    const ranges = [];
+    let current = null;
+    lines.forEach((line, index) => {
+        if (!/^■\s+/.test(String(line || ''))) return;
+        if (current) {
+            current.end = index;
+            ranges.push(current);
+        }
+        current = { header: String(line), start: index, end: lines.length };
+    });
+    if (current) ranges.push(current);
+    return ranges;
+}
+
+function dashboardGetJournalProgressBlock(lines, start, end) {
+    for (let index = start + 1; index < end; index += 1) {
+        if (!/^- 진도:/.test(String(lines[index] || ''))) continue;
+        let blockEnd = index + 1;
+        while (blockEnd < end && /^\s+\*/.test(String(lines[blockEnd] || ''))) blockEnd += 1;
+        return { start: index, end: blockEnd, lines: lines.slice(index, blockEnd) };
+    }
+    return null;
+}
+
+function dashboardUpgradeJournalProgressPlaceholders(existingContent, generatedContent) {
+    const existingLines = String(existingContent || '').replace(/\r\n/g, '\n').split('\n');
+    const generatedLines = String(generatedContent || '').replace(/\r\n/g, '\n').split('\n');
+    const generatedBlocks = new Map();
+
+    dashboardGetJournalSectionRanges(generatedLines).forEach(section => {
+        const block = dashboardGetJournalProgressBlock(generatedLines, section.start, section.end);
+        if (!block || block.lines.length < 2 || block.lines[0] !== '- 진도:') return;
+        generatedBlocks.set(section.header, block.lines);
+    });
+
+    const existingSections = dashboardGetJournalSectionRanges(existingLines).slice().reverse();
+    existingSections.forEach(section => {
+        const replacement = generatedBlocks.get(section.header);
+        if (!replacement) return;
+        const block = dashboardGetJournalProgressBlock(existingLines, section.start, section.end);
+        if (!block) return;
+        // Editable journals take their progress block from 진도관리; preserve every other teacher-written line.
+        existingLines.splice(block.start, block.end - block.start, ...replacement);
+    });
+
+    return existingLines.join('\n');
 }
 
 function appendJournalNote(text, note) {
@@ -2485,21 +2719,22 @@ function buildJournalContent(dateStr) {
             if (lates.length > 0) text += `- 지각: ${lates.join(', ')}\n`;
             if (hwMiss.length > 0) text += `- 숙제 미완료: ${hwMiss.join(', ')}\n`;
 
-            const dailyRecord = (state.db.class_daily_records || []).find(r => String(r.class_id) === String(cls.id) && r.date === targetDate);
-            if (dailyRecord) {
-                const noteData = extractJournalUnitAndNote(dailyRecord.special_note);
-                const progresses = (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(dailyRecord.id));
-                if (progresses.length > 0) {
-                    text += `- 진도:\n`;
-                    progresses.forEach(p => {
-                        text += formatJournalProgressLine(p, noteData.units) + `\n`;
-                    });
-                } else text += `- 진도: (기록 없음)\n`;
-
-                text = appendJournalNote(text, noteData.note);
+            const dailyRecord = (state.db.class_daily_records || []).find(r =>
+                String(r.class_id) === String(cls.id) && String(r.date || '') === String(targetDate)
+            ) || null;
+            const progressState = dashboardBuildClassJournalProgress(cls.id, targetDate, dailyRecord);
+            if (progressState.lines.length > 0) {
+                text += `- 진도:\n`;
+                progressState.lines.forEach(line => {
+                    text += line + `\n`;
+                });
+            } else if (progressState.loadFailed) {
+                text += `- 진도: (불러오기 실패)\n`;
             } else {
-                text += `- 진도: (수업 기록 미입력)\n`;
+                text += `- 진도: (기록 없음)\n`;
             }
+
+            text = appendJournalNote(text, progressState.note);
 
             text += `\n`;
         });
@@ -2517,7 +2752,7 @@ function buildJournalContent(dateStr) {
 }
 
 
-function openDailyJournalModal(dateStr) {
+async function openDailyJournalModal(dateStr) {
     const targetDate = dateStr || new Date().toLocaleDateString('sv-SE');
 
     if (state.ui.viewScope === 'all' || state.auth.role === 'admin') {
@@ -2530,9 +2765,26 @@ function openDailyJournalModal(dateStr) {
 
     const status = myJournal ? myJournal.status : '작성중';
     const isLocked = status === '제출완료' || status === '결재완료';
+
+    if (!state.ui) state.ui = {};
+    const requestId = Number(state.ui.journalModalRequestId || 0) + 1;
+    state.ui.journalModalRequestId = requestId;
+
+    let generatedContent = '';
+    if (!isLocked || !myJournal?.content) {
+        showModal('일지', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">기준일 진도를 불러오는 중…</div>');
+        const journalClasses = dashboardGetJournalClassRows(targetDate);
+        await dashboardPrimeJournalProgressForDate(targetDate, journalClasses, { forceRefresh: true });
+        if (Number(state.ui.journalModalRequestId || 0) !== requestId) return;
+        generatedContent = buildJournalContent(targetDate);
+    }
+
+    const draftContent = myJournal?.content
+        ? dashboardUpgradeJournalProgressPlaceholders(myJournal.content, generatedContent)
+        : generatedContent;
     const content = isLocked
-        ? (myJournal?.content || buildJournalContent(targetDate))
-        : mergeJournalConsultationsIntoContent(myJournal?.content || buildJournalContent(targetDate), targetDate);
+        ? (myJournal?.content || generatedContent)
+        : mergeJournalConsultationsIntoContent(draftContent || generatedContent, targetDate);
 
     let actionBtns = '';
     if (!myJournal || status === '작성중') {

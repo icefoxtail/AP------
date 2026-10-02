@@ -2765,7 +2765,9 @@ SOLUTION_ANNOTATION_REQUIRED
 SOLUTION_RECONSTRUCTION_REQUIRED
 ```
 
-원문 그림이 solution mode에서 충분하면 중복 asset을 억지로 만들지 않는다.
+**problem-side source asset은 source pixel crop이 authority다.** full-page/source crop을 사용할 수 있으면 문제용 `image`는 원본 crop PNG로 유지하며 generated SVG로 교체하지 않는다. crop 품질 문제가 있으면 recrop/cleanup이 우선이다. problem SVG reconstruction은 source pixels가 실제로 없거나 사용 불가능한 예외 fallback에만 허용한다.
+
+원문 그림이 solution mode에서 충분하면 중복 asset을 억지로 만들지 않는다. 해설 이해를 위한 별도 `solutionImage`/solution SVG는 추가할 수 있지만 problem image를 대체하지 않는다.
 
 ## 17.2 실제 visual / problem visual / shared visual의 C closure
 
@@ -2800,6 +2802,8 @@ Overlay가 단원 특성에 따라 판정 규칙을 구체화한다.
 ---
 
 # 18. Visual Fact Model · Deterministic Generator
+
+이 장의 deterministic generator는 **생성형 visual/해설 visual 및 17.1에서 허용된 예외 problem reconstruction**에만 적용한다. usable source pixel crop이 있는 기출 problem image는 생성 대상이 아니며 원본 PNG를 보존한다.
 
 시각자료는 machine-readable fact model에서 생성한다.
 
