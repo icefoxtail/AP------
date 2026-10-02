@@ -51,7 +51,7 @@ window.questionBank = [
     "content": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)",
     "choices": [],
     "answer": "③, ④",
-    "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.\\n① $\\overline{AM}=\\dfrac12\\overline{AB}$, ② $\\overline{CN}=\\dfrac12\\overline{CD}$는 모두 옳다.\\n$\\overline{AB}=\\overline{CD}$에서 바로 얻는 것은 $\\overline{AM}=\\overline{CN}$이므로 ③의 $\\overline{OM}=\\overline{ON}$은 이 단계에서 사용할 수 없어 옳지 않다.\\n또 $\\overline{OA}$와 같은 것은 반지름 $\\overline{OC}$이므로 ④의 $\\overline{OA}=\\overline{CN}$도 옳지 않다.\\n올바른 조건 $\\overline{AM}=\\overline{CN}$, $\\overline{OA}=\\overline{OC}$와 두 직각을 이용하면 두 직각삼각형은 RHS 합동이므로 ⑤는 옳다.\\n따라서 정답은 ③, ④이다.",
+    "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.\n① AM=AB/2이므로 옳다.\n② CN=CD/2이므로 옳다.\n③ AB=CD에서 먼저 얻는 것은 AM=CN이다. 결론인 OM=ON을 먼저 쓸 수 없으므로 옳지 않다.\n④ OA와 같은 길이는 같은 원의 반지름 OC이므로 OA=CN은 옳지 않다.\n⑤ AM=CN, OA=OC이고 두 삼각형은 직각삼각형이므로 RHS 합동으로 설명할 수 있어 옳다.\n따라서 정답은 ③, ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q2.png",
     "imageSize": "tall",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -119,7 +119,8 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q4-solution.svg"
   },
   {
     "id": 5,
@@ -181,7 +182,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q6-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
   },
   {
     "id": 7,
@@ -212,7 +216,8 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -243,7 +248,9 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 9,
@@ -270,12 +277,14 @@ window.questionBank = [
       "하영이는 서준이보다 유리하다."
     ],
     "answer": "①, ④",
-    "solution": "[키포인트] 보검이와 서준이를 지나는, 의자를 중심으로 하는 원을 기준으로 각 학생이 원 안·위·밖 어디에 있는지 판단한다.\\n의자를 $O$, 보검이를 $B$, 서준이를 $S$라 하자. $OB=OS$이고 그림에서 $\\angle BOS=80^\\circ$이다. 이 원에서 현 $BS$에 대한 원주각은 $40^\\circ$이다.\\n지수의 각이 $40^\\circ$이므로 지수는 보검이, 서준이와 같은 원 위에 있다. 따라서 원 위의 사람은 보검이, 서준이, 지수의 3명으로 ①은 옳다.\\n지민이의 각은 $42^\\circ$로 $40^\\circ$보다 크므로 지민이는 이 원의 안쪽에 있어 의자에 더 가깝다. 따라서 ④는 옳고 ③은 옳지 않다.\\n하영이의 각은 $38^\\circ$로 $40^\\circ$보다 작으므로 원의 바깥쪽에 있어 서준이보다 의자에서 멀다. 따라서 ⑤는 옳지 않다. 보검이와 지수는 같은 원 위이므로 ②도 옳지 않다.\\n따라서 정답은 ①, ④이다.",
+    "solution": "[키포인트] 보검이와 서준이를 지나는, 의자를 중심으로 하는 원을 기준으로 원 안·위·밖을 판단한다.\n의자를 O라 하면 중심각이 80도이므로 같은 현을 보는 원주각은 40도이다.\n① 지수의 각이 40도이므로 같은 원 위에 있어 옳다.\n② 보검이와 지수는 같은 원 위에 있어 의자에서의 거리가 같으므로 옳지 않다.\n③ 지민이의 각은 42도로 40도보다 커서 원 안쪽이므로 서준이와 같은 거리가 아니다.\n④ 지민이는 원 안쪽에 있어 보검이보다 의자에 가까우므로 옳다.\n⑤ 하영이의 각은 38도로 40도보다 작아 원 바깥쪽이므로 서준이보다 멀다.\n따라서 정답은 ①, ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q9.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 10,
@@ -306,7 +315,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q10-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 11,
@@ -337,7 +349,9 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 12,
@@ -363,12 +377,14 @@ window.questionBank = [
       "□$EABD$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 한 사각형의 두 맞은각의 합이 $180^\\circ$이면 그 사각형은 한 원에 내접한다. 높이의 발에서 생기는 직각을 이용한다.\\n$AFHE$에서는 $\\angle AFH=\\angle AEH=90^\\circ$이므로 내접한다.\\n$FBCE$에서는 $\\angle BFC=\\angle BEC=90^\\circ$이므로 내접한다.\\n$EHDC$에서는 $\\angle HEC=\\angle HDC=90^\\circ$이므로 내접한다.\\n$EABD$에서는 $\\angle AEB=\\angle ADB=90^\\circ$이므로 내접한다.\\n반면 $FDCE$에서는 이러한 직각의 맞은각 조건이 성립하지 않는다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 두 맞은각의 합이 180도이면 한 원에 내접한다. 높이의 발에서 생기는 직각을 이용한다.\n① AFHE: 두 맞은각이 각각 90도이므로 내접한다.\n② FBCE: 두 맞은각이 각각 90도이므로 내접한다.\n③ EHDC: 두 맞은각이 각각 90도이므로 내접한다.\n④ FDCE: 한 쌍의 맞은 직각이 만들어지지 않아 내접 조건이 성립하지 않는다.\n⑤ EABD: 두 맞은각이 각각 90도이므로 내접한다.\n따라서 정답은 ④이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q12.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 13,
@@ -399,7 +415,9 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
   },
   {
     "id": 14,
@@ -430,7 +448,9 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 15,
@@ -461,7 +481,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q15-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
   },
   {
     "id": 16,
@@ -561,12 +584,14 @@ window.questionBank = [
     "content": "[서술형4] 다음 사각형이 ①원에 내접하는지 판단하고 ②그 이유를 설명하시오. (3점)",
     "choices": [],
     "answer": "원에 내접하지 않는다. 한 내각은 $110^\\circ$이고 그 맞은각은 $60^\\circ$이므로 합이 $170^\\circ$이다.",
-    "solution": "[키포인트] 사각형이 원에 내접하려면 한 쌍의 맞은각의 합이 $180^\\circ$이어야 한다.\\n그림의 오른쪽 아래 $120^\\circ$는 외각이므로 그 꼭짓점의 내각은 $180^\\circ-120^\\circ=60^\\circ$이다.\\n이 내각과 맞은편의 $110^\\circ$를 더하면 $170^\\circ$로 $180^\\circ$가 아니다.\\n따라서 이 사각형은 원에 내접하지 않는다.",
+    "solution": "[키포인트] 원에 내접하는 사각형의 맞은각의 합은 180도이다.\n① 판정: 이 사각형은 원에 내접하지 않는다.\n② 이유: 오른쪽 아래 120도는 외각이므로 그 내각은 60도이다. 맞은편 110도와의 합이 170도로 180도가 아니므로 원에 내접하지 않는다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q19.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 20,
@@ -593,7 +618,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q20-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
   },
   {
     "id": 21,
@@ -614,7 +642,7 @@ window.questionBank = [
     "content": "[서술형6] 다음은 학생 10명의 제기차기 횟수를 조사하여 나타낸 것이다.",
     "choices": [],
     "answer": "평균 $15$, 중앙값 $8$, 최빈값 $5, 7, 8, 11$; 대표값: 중앙값",
-    "solution": "[키포인트] 극단적으로 큰 값이 하나 있으므로 평균, 중앙값, 최빈값을 모두 구한 뒤 대표값으로서의 적절성을 비교한다.\\n자료의 합은 $10+8+11+5+11+7+5+8+7+78=150$이므로 평균은 $150\\div10=15$이다.\\n자료를 작은 순서로 배열하면 $5,5,7,7,8,8,10,11,11,78$이므로 중앙값은 다섯째와 여섯째 값의 평균인 $8$이다.\\n가장 많이 나타나는 횟수는 모두 2회이므로 최빈값은 $5,7,8,11$이다.\\n$78$이라는 매우 큰 값 때문에 평균 $15$는 대부분의 자료보다 지나치게 크다. 최빈값은 네 개라 하나의 대표값으로 정하기 어렵다. 반면 중앙값 $8$은 극단값의 영향을 거의 받지 않으므로 가장 적절하다.\\n따라서 평균은 $15$, 중앙값은 $8$, 최빈값은 $5,7,8,11$이고 대표값으로 가장 적절한 것은 중앙값이다.",
+    "solution": "[키포인트] 극단적으로 큰 값이 있으므로 평균, 중앙값, 최빈값을 구한 뒤 대표값의 적절성을 비교한다.\n① 평균·중앙값·최빈값: 합은 150이므로 평균은 15이다. 정렬하면 5,5,7,7,8,8,10,11,11,78이므로 중앙값은 8, 최빈값은 5,7,8,11이다.\n② 대표값: 78 때문에 평균은 지나치게 크고 최빈값은 네 개이다. 중앙값 8은 극단값의 영향을 거의 받지 않아 가장 적절하다.\n따라서 평균 15, 중앙값 8, 최빈값 5,7,8,11이고 대표값은 중앙값이다.",
     "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q21.png",
     "imageSize": "tall",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
