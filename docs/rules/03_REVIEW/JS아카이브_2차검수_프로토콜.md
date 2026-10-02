@@ -1,4 +1,4 @@
-## CURRENT OVERRIDE — 2026-10-03 — R2 2차 재검 / FRESH REVIEWER NOT REQUIRED
+## CURRENT OVERRIDE — 2026-10-03 — R2 2차 재검
 
 형님의 현재 명시 지시가 아래 과거 blind/fresh-review 문구보다 우선한다.
 
@@ -17,8 +17,8 @@ R2 worker는 stage assignment와 scope를 확인하고 Golden 2~3 + 관련 Negat
 ## CURRENT HARD RULE — R2 FIRST-PASS ONLY / ITEM RECOVERY + R3 DEFERRED SEPARATION (2026-10-01)
 - R2는 정상 first-pass REVIEW2만 담당한다.
 - `ITEM_RECOVERY_QUEUE`는 전용 Codex FINAL ITEM RECOVERY worker가 소비한다. R2 예약 lane은 held-qid recovery fallback을 수행하지 않는다.
-- `R3_FAIL_DEFERRED`, `CODEX_REPAIR_DONE`, `CODEX_REPAIR_RETRY_REQUIRED`도 R2가 소비하지 않는다.
-- initial R3 이후 독립검수는 별도 Codex R3 Independent Review worker가 changed/open locus만 검사한다.
+- `R3_FAIL_DEFERRED`, post-R3 repair/recheck queue도 정상 R2 first-pass lane이 소비하지 않는다.
+- initial R3 이후는 별도 repair → 재검 경로가 changed/open locus만 처리한다. 같은 worker/Codex 모두 가능하며 fresh reviewer는 필수조건이 아니다.
 - 아래 R3 reentry/FULL_REENTRY/TARGETED R2 섹션은 SUPERSEDED / HISTORY다.
 
 
@@ -28,7 +28,7 @@ R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
 
 - R1 ledger/repair detail을 함께 볼 수 있다. 다만 latest R1 artifact/source/current authority에서 R2 qid evidence를 다시 계산·재판정해 새로 만든다.
 - SVG expected facts, actual geometry checks, small-board 구조, Meta semantic decision까지 먼저 동결한다.
-- `blindDecisionFrozenBeforeR1Compare=true` + `blindFreezeSha256`는 호환 필드로 유지한다. 이는 **formal regression compare/receipt 전에 독립 재계산 decision snapshot을 고정했음**을 뜻하며 prior detail 비노출 증명이 아니다.
+- `blindDecisionFrozenBeforeR1Compare=true` + `blindFreezeSha256`는 호환 필드로 유지한다. 이는 **formal regression compare/receipt 전에 재검 decision snapshot을 고정했음**을 뜻하며 prior detail 비노출 증명이 아니다.
 - `22/22`, `14/14` 같은 집계는 item rows에서 validator가 파생한 값만 인정한다.
 - SVG 라벨/소수좌표를 고쳤다는 사실은 actual line/circle/point geometry 재검을 대체하지 않는다.
 - Meta는 기존 HOLD qid만 보는 것이 아니라 **전 문항 null/ACTIVE resolvability**를 다시 검사한다.
