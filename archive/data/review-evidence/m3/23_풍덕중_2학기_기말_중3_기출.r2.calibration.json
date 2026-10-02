@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_CALIBRATION_PREFLIGHT_v1",
+  "stage": "R2",
+  "examFile": "23_풍덕중_2학기_기말_중3_기출.js",
+  "inputArtifactGitBlob": "581b56505e0ff68eecfa5273d4a650122ef251d9",
+  "inputArtifactSha256": "sha256:6c5386e246f17a5962a01f60d23e946899ad135e83669e5f5343af4cf77cb602",
+  "reviewAttemptId": "R2:m3/2final/23-pungdeok:581b56505e0ff68eecfa5273d4a650122ef251d9:3",
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "INDEPENDENT_REVIEW",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+      "gitBlobSha": "d527a003528a14b82d8b1cebc4094d1b72d324c3",
+      "sha256": "sha256:e2b273c90fb3661c222ccc0a98a4b0d4228370a0cffe12798e89053411ece8a5"
+    }
+  ],
+  "goldenSampleQuestionRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 1,
+      "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+      "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서",
+      "observation": "formula→substitution→arithmetic explicit"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+      "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 ",
+      "observation": "decisive method explicit"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 3,
+      "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+      "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2+2x=(x+1)^",
+      "observation": "intermediate equalities explicit"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+      "qid": 1,
+      "solutionSha256": "sha256:fb0fa394bd331090ad5d606f28f9f10081197b3666c380fda8e20204fb2206f9",
+      "solutionExcerpt": "[키포인트] 원소와 부분집합의 기호를 구분한다.\\n$A$의 원소는 $1,2,3$이고, $|x|\\lt2$인 정수는 $-1,0,1$이므로 $B=\\{-1,0,1\\}$이다.\\n$2$는 집합 $A$의 원소이므로 $2\\in A",
+      "observation": "concept distinction student-readable"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:801e27dd70fb82fdd899128b85ed5ae12ff6621ed66138688cefc744ed02b800",
+      "solutionExcerpt": "[키포인트] 두 점 사이의 거리 공식을 적용한 뒤 이차방정식의 두 근의 합을 구한다.\\n거리 조건에서 $(a-1)^2+\\{3-(1-a)\\}^2=10$이다.\\n따라서 $(a-1)^2+(a+2)^2=10$, 즉 $2a^",
+      "observation": "condition setup before calculation"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+      "qid": 3,
+      "solutionSha256": "sha256:56bb672f6cd3e6c2ba1827c13340ca08f1c9ab709f332f17276c3eaa515ddbca",
+      "solutionExcerpt": "[키포인트] 세 변의 길이의 제곱을 비교하면 삼각형의 종류를 판정할 수 있다.\\n$AB^2=(-5)^2+(-3)^2=34$, $AC^2=3^2+(-5)^2=34$이다.\\n또한 $BC^2=8^2+(-2)^2=68=AB",
+      "observation": "verifiable intermediate calculations"
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "observation": "actual geometry, small-board, Meta exact-active and runtime-string false-PASS families"
+    },
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "gitBlobSha": "f7440339f2532f6e7ea357541c2a09b05847af59",
+      "sha256": "sha256:89b63696be991c3b508279c6e34d98697fdfbfc43e4a901443f5ae6f864ad736",
+      "observation": "owner-ray, label binding and coordinate semantic parity visual failures"
+    }
+  ],
+  "visualPreload": {
+    "skill": ".codex/skills/apmath-visual-upgrade/SKILL.md",
+    "geometryCanonical": "docs/rules/04_VISUAL/도형추출.md",
+    "independentReviewCanonical": "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md",
+    "status": "READ_BEFORE_TARGET_VISUAL_REVIEW"
+  }
+}
