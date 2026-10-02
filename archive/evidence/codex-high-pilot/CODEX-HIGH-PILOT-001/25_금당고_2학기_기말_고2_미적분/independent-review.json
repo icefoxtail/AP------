@@ -1,64 +1,349 @@
 {
   "pilotId": "CODEX-HIGH-PILOT-001",
   "exam": "25_금당고_2학기_기말_고2_미적분",
-  "scope": "Fresh read-only independent answer/math/student solution check; this is evidence from the worker, but the lifecycle INDEPENDENT_REVIEW stage is not closed.",
-  "denominator": 21,
-  "answerMathReview": "21/21 source questions independently solved from content/choices before comparing stored values.",
-  "answers": {
-    "15": "ITEM_HOLD: 3(e^4-e) not among frozen choices",
-    "1-14": [
-      "④",
-      "①",
-      "③",
-      "⑤",
-      "③",
-      "②",
-      "④",
-      "①",
-      "②",
-      "②",
-      "②",
-      "④",
-      "③",
-      "③"
-    ],
-    "16-21": [
-      "①",
-      "$11$",
-      "-16",
-      "$e^2$",
-      "$1/2$",
-      "$4$"
-    ]
-  },
-  "findings": [
+  "ordinal": 1,
+  "stage": "INDEPENDENT_REVIEW",
+  "status": "PASS_21_21_AFTER_TARGETED_REPAIRS",
+  "reviewer": "ordinal1_fresh_review",
+  "reviewedCommit": "dd5bbd0c0b0e211738ee467c9619cff73cce4f90",
+  "targetArtifactSha256": "sha256:2a94669de3727c3c78f98f6f21f41eaf25e04170a7ab58719a214c9a5a00dc95",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "blindAnswerFreeze": [
     {
-      "qid": 15,
-      "severity": "ITEM_HOLD",
-      "code": "SOURCE_MATH_NO_CHOICE_MATCH",
-      "detail": "(f/x)'=3xe^(x²), f(1)=0 gives f(2)=3(e^4-e); no listed choice matches."
+      "qid": 1,
+      "answer": "④"
     },
     {
-      "qid": 21,
-      "severity": "PASS_AFTER_RECHECK",
-      "detail": "Correct function is f=(x²−2x+2)e^x; f'=x²e^x. f is strictly increasing with range (0,∞); inverse is valid at e and h'(e)=4. Initial contrary note confused f and f'; corrected independently."
+      "qid": 2,
+      "answer": "①"
+    },
+    {
+      "qid": 3,
+      "answer": "③"
+    },
+    {
+      "qid": 4,
+      "answer": "⑤"
+    },
+    {
+      "qid": 5,
+      "answer": "③"
+    },
+    {
+      "qid": 6,
+      "answer": "②"
+    },
+    {
+      "qid": 7,
+      "answer": "④"
+    },
+    {
+      "qid": 8,
+      "answer": "①"
+    },
+    {
+      "qid": 9,
+      "answer": "②"
+    },
+    {
+      "qid": 10,
+      "answer": "②"
+    },
+    {
+      "qid": 11,
+      "answer": "②"
+    },
+    {
+      "qid": 12,
+      "answer": "④"
+    },
+    {
+      "qid": 13,
+      "answer": "③"
+    },
+    {
+      "qid": 14,
+      "answer": "③"
+    },
+    {
+      "qid": 15,
+      "answer": "④"
+    },
+    {
+      "qid": 16,
+      "answer": "①"
     },
     {
       "qid": 17,
-      "severity": "META_FOLLOWUP",
-      "detail": "Source-only metadata has blank category/unit fields; Meta stage should resolve against current ACTIVE canonical semantic."
+      "answer": "11"
+    },
+    {
+      "qid": 18,
+      "answer": "-16"
+    },
+    {
+      "qid": 19,
+      "answer": "e²"
+    },
+    {
+      "qid": 20,
+      "answer": "1/2"
+    },
+    {
+      "qid": 21,
+      "answer": "4"
     }
   ],
-  "scopeFindings": {
-    "sourceQuestionCount": "21/21 across four pages",
-    "contentChoicesSourceCheck": "21/21",
-    "curriculum": "2015 high-school Calculus",
-    "studentReproducibility": "19 resolved qids concise and sufficient; q21 solution updated to state inverse domain/range.",
-    "jsSyntax": "node --check passed in worker review",
-    "runtimeTeX": "balanced dollar delimiters reported by worker; browser rendering not tested.",
-    "visual": "Not stage-reviewed; no solution SVG was added.",
-    "meta": "Not stage-reviewed; q17 metadata gap noted.",
-    "protectedSourceFields": "No issue reported."
+  "answerParity": "PASS_21_21",
+  "difficultyBlindEvidence": "difficulty-blind-review.json",
+  "difficultyParity": "PASS_21_21_BUCKET_CONFIDENCE_BOUNDARY_LEGACY",
+  "initialFindings": [
+    {
+      "qid": 12,
+      "code": "VISUAL_UNNECESSARY_ENGLISH",
+      "resolution": "Replaced legend with “A에서의 접선”; fresh visual recheck PASS."
+    },
+    {
+      "qid": 19,
+      "code": "STUDENT_REPRODUCIBLE_FAIL",
+      "resolution": "Expanded RHS product-rule/FTC cancellation; targeted independent recheck PASS."
+    },
+    {
+      "qids": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11,
+        13,
+        14,
+        17,
+        18,
+        19,
+        21
+      ],
+      "code": "DIFFICULTY_BLIND_BUCKET_DISAGREEMENT",
+      "resolution": "Candidate difficulty fields reconciled exactly to frozen independent blind decisions."
+    },
+    {
+      "qids": "all",
+      "code": "META_RESOLUTION_RECOMPUTE_MISMATCH",
+      "resolution": "Rebuilt evidence with origin/main current resolver and canonical/compiled bytes at 1e6fed; 21/21 fresh validation PASS, all 10 authority byte/hash refs match."
+    }
+  ],
+  "postRepairRechecks": {
+    "q12": "PASS; q12-post-legend-recheck.json; SVG/PNG hashes bound; 8/8 coordinates.",
+    "q19": "PASS; expanded integral differentiation cancellation explicit; answer e² unchanged.",
+    "difficulty": "PASS_21_21",
+    "meta": "PASS_21_21_CURRENT_MAIN_1E6FED",
+    "sourceParity": "PASS; q15 authorized content edit only; choices/source identities unchanged."
   },
-  "agentStatus": "Corrected q21 finding; read-only; no files modified."
+  "itemFindings": [
+    {
+      "qid": 1,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 2,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 3,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 4,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 5,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 6,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 7,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 8,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 9,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 10,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 11,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 12,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "PASS"
+    },
+    {
+      "qid": 13,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 14,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 15,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "EXEMPT"
+    },
+    {
+      "qid": 16,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 17,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 18,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 19,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 20,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    },
+    {
+      "qid": 21,
+      "answer": "PASS",
+      "math": "PASS",
+      "studentReproducibility": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS_SEMANTIC_FINAL",
+      "visual": "TRIAGED_PASS"
+    }
+  ],
+  "protectedSourceParity": {
+    "contentChangedQids": [
+      15
+    ],
+    "authorizedChange": "3xe^{x²}→3xe^x, delete superscript ² only",
+    "choicesChangedQids": [],
+    "problemVisualChangedQids": [],
+    "sourceIdentityOrProvenanceChangedQids": [],
+    "solutionVisualChangedQids": [
+      12
+    ],
+    "unrelatedMutationCount": 0
+  },
+  "findingsAfterRepair": [],
+  "itemHoldQids": []
 }
