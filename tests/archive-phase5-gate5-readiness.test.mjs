@@ -37,3 +37,5 @@ test('temporary o67 R1 calibration preflight passes canonical gate', async () =>
   });
   assert.deepEqual(issues, []);
 });
+
+// validation-bus sync: o67 R1 preflight 2026-10-03T00:38+09:00
