@@ -425,6 +425,9 @@ FAIL
 
 첫 실패에서 보고만 하고 종료하지 않는다.
 
+- **동일 실패 경로 반복 금지 — recovery only.** 같은 target에서 state/HEAD/capability 변화가 없는데 동일 action path가 이미 실패했다면 같은 경로를 반복하지 않는다. materially different safe path를 시도하고, 그래도 현재 run에서 닫히지 않으면 exact continuation/handoff를 남긴 뒤 즉시 다음 eligible로 진행한다. **이 규칙은 새 HOLD·gate·대기 상태를 만들지 않는다.**
+- **stale lineage는 current physical 기준으로 복구 — recovery only.** stale repair/candidate/branch 때문에 막히면 stage 전체를 처음부터 되감지 않는다. 확인 가능한 최신 main/current valid preimage에 이미 확정된 수정은 보존하고 current OPEN locus만 재적용해 최신 lineage를 재구성한다. exact reconstruction이 당장 불가능하면 scoped handoff 후 다음 eligible로 진행한다. **stale lineage 자체는 라인 중단 사유가 아니다.**
+
 ### 4.2 contamination
 
 - blind freeze 이후 노출: 정상 continuation.
