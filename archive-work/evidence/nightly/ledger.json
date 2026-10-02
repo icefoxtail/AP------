@@ -6,7 +6,7 @@
   "activeRunId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "branch": "codex/archive-source-intake",
   "batchSuccessCap": 2,
-  "intakeHead": "a0696c70c5f3f759aac531698898ca911ec85ca8",
+  "intakeHead": "dee98cdba6a1d84b4cdf80fb019fde28a15f578b",
   "schema": "nightly-source-intake-ledger-v1",
   "runs": [
     {
@@ -319,10 +319,10 @@
       "assetCount": 10,
       "sourceTextExactParityStatus": "PASS",
       "choicesExactParityStatus": "PASS",
-      "sourceAssetCropAuditStatus": "PENDING_FRESH_OCR_FREE_REVIEW",
+      "sourceAssetCropAuditStatus": "PASS_10_OF_10_CROPS",
       "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
       "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
-      "finalReconciledReviewReportSha256": "sha256:b90927f168bf8c43e4aed6f7d46679aa6d095ef2c4c4ae6e3cdd095ea4450b70",
+      "finalReconciledReviewReportSha256": "sha256:fed42c855583effa6f25625d0101965e5df4edac9cbcc6abe18ec17496b8db94",
       "sourceArtifactCommitSha": "8a22c605549a4468a0d40823d5242bf798bcb301",
       "sourceRepairArtifactCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
       "reviewReceiptCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
@@ -357,7 +357,10 @@
       "itemizationAuditPushSha": "32490399f307492a13c242e30f020e9d988387cb",
       "targetedCropRepairStatus": "PENDING_FRESH_OCR_FREE_REVIEW",
       "notationSourceMappingPassCount": 469,
-      "notationInventoryEntryCount": 561
+      "notationInventoryEntryCount": 561,
+      "visualMetadataRecheckStatus": "PASS_TARGETED_METADATA_PIXEL_AND_PAYLOAD_INTEGRITY",
+      "visualMetadataRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_independent_recheck.json",
+      "visualMetadataRecheckReportSha256": "sha256:8d8c0188d6a42a08bb3a67c991128d1f8f44e0347ef1a8b578b7da686b4a51a6"
     }
   ],
   "owner": "codex-thread-automation-10",
@@ -663,8 +666,8 @@
   "activeOwner": "codex-thread-automation-10",
   "activeSinceKst": "2026-10-02T05:44:00+09:00",
   "latestOriginMain": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
-  "latestOriginIntake": "a0696c70c5f3f759aac531698898ca911ec85ca8",
-  "sourceAssetCropAuditStatus": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
+  "latestOriginIntake": "dee98cdba6a1d84b4cdf80fb019fde28a15f578b",
+  "sourceAssetCropAuditStatus": "PASS_10_OF_10_CROPS",
   "sourceQACloseoutStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
   "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
   "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
@@ -687,7 +690,7 @@
   "currentRunFinalReconciledReportSha256": "sha256:6d8c29cacd8c61b20cdf1b718deaae91630e1ce03a4e994dfcaeb072550235f0",
   "currentRunNotationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
   "sourceQAReadyCount": 0,
-  "currentRunFinalReconciledReviewReportSha256": "sha256:b5eee30a7bc92d4b897895d4de188c8f5f49c4cf87ad5c0c3b57247929cf90f5",
+  "currentRunFinalReconciledReviewReportSha256": "sha256:fed42c855583effa6f25625d0101965e5df4edac9cbcc6abe18ec17496b8db94",
   "currentRunItemizationStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "currentRunItemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
   "currentRunItemizationAuditReportSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
@@ -697,5 +700,8 @@
   "currentRunFinalReconciledReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
   "currentRunV2ItemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
   "currentRunV2ItemizationAuditReportSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
-  "currentRunNotationSourceMappingPassCount": 469
+  "currentRunNotationSourceMappingPassCount": 469,
+  "currentRunVisualMetadataRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_independent_recheck.json",
+  "currentRunVisualMetadataRecheckReportSha256": "sha256:8d8c0188d6a42a08bb3a67c991128d1f8f44e0347ef1a8b578b7da686b4a51a6",
+  "currentRunVisualMetadataRecheckStatus": "PASS_TARGETED_METADATA_PIXEL_AND_PAYLOAD_INTEGRITY"
 }

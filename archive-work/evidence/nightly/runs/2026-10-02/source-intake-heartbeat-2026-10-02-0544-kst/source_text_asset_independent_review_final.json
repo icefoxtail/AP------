@@ -32,11 +32,11 @@
     "status": "PASS"
   },
   "assetReviewCount": 10,
-  "assetGateStatus": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
+  "assetGateStatus": "PASS_10_OF_10_CROPS",
   "answerSolutionEmptyStatus": "PASS",
   "sourceMetadataFirstPassStatus": "PASS_SOURCE_FIRST_PASS",
   "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
-  "handoffEligibility": "PENDING_PARENT_EVIDENCE_AND_SOURCE_SERIALIZATION_REPAIR",
+  "handoffEligibility": "PENDING_PARENT_EVIDENCE",
   "knownScope": "The first full report’s stale Pal q1 interval transcription and three crop defects are superseded only by the cited targeted recheck rows. All other initial full-review question and asset rows remain byte-preserved.",
   "exams": [
     {
@@ -11756,10 +11756,12 @@
             "clipping": "PASS",
             "requiredLabel": "PASS",
             "questionSemanticMatch": "PASS",
-            "sourceBBoxBinding": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK"
+            "sourceBBoxBinding": "PASS",
+            "dimensionsBinding": "PASS",
+            "assetHashBinding": "PASS"
           },
-          "verdict": "PASS_VISUAL_PENDING_METADATA_RECHECK",
-          "finding": "Fresh v2 visual/pixel review passed. Nested sourceBBox/dimensions were reconciled after that review; targeted provenance metadata recheck is pending.",
+          "verdict": "PASS_VISUAL_PIXEL_AND_METADATA_RECHECK",
+          "finding": "Fresh v2 visual/pixel review passed; targeted metadata recheck confirms nested sourceBBox/dimensions and active bbox, exact source-pixel equality, and hashes all match.",
           "linkedQuestionReviewQid": "18",
           "initialAndTargetedEvidence": {
             "qid": "18",
@@ -12056,7 +12058,7 @@
           ]
         }
       },
-      "assetGateStatus": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
+      "assetGateStatus": "PASS_4_OF_4_CROPS",
       "notationSourceMappingFailureCount": 29,
       "notationSourceMappingPassCount": 204,
       "notationFailuresByQid": {
@@ -12122,7 +12124,8 @@
         "currentJsSha256": "sha256:454e71f6ad076c48bb71b9a0c60c78dcec692bd3b5afaebf9b923b9b55a6c361",
         "contentChoicesPayloadUnchanged": true,
         "metadataRecheckStatus": "PENDING"
-      }
+      },
+      "visualProvenanceMetadataReviewRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_independent_recheck.json"
     },
     {
       "examId": "22_효천고_2학기_기말_고2_수학II",
@@ -27034,10 +27037,12 @@
             "clipping": "PASS",
             "requiredLabel": "PASS",
             "questionSemanticMatch": "PASS",
-            "sourceBBoxBinding": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK"
+            "sourceBBoxBinding": "PASS",
+            "dimensionsBinding": "PASS",
+            "assetHashBinding": "PASS"
           },
-          "verdict": "PASS_VISUAL_PENDING_METADATA_RECHECK",
-          "finding": "Fresh v2 visual/pixel review passed. Nested sourceBBox/dimensions were reconciled after that review; targeted provenance metadata recheck is pending.",
+          "verdict": "PASS_VISUAL_PIXEL_AND_METADATA_RECHECK",
+          "finding": "Fresh v2 visual/pixel review passed; targeted metadata recheck confirms nested sourceBBox/dimensions and active bbox, exact source-pixel equality, and hashes all match.",
           "linkedQuestionReviewQid": "22",
           "initialAndTargetedEvidence": {
             "qid": "22",
@@ -27377,7 +27382,7 @@
           ]
         }
       },
-      "assetGateStatus": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
+      "assetGateStatus": "PASS_6_OF_6_CROPS",
       "notationSourceMappingFailureCount": 63,
       "notationSourceMappingPassCount": 265,
       "notationFailuresByQid": {
@@ -27487,7 +27492,8 @@
         "currentJsSha256": "sha256:a512083b1c763fc4ed47f9221c1062abc9d45062e901bb0fe65072d58d2eb43f",
         "contentChoicesPayloadUnchanged": true,
         "metadataRecheckStatus": "PENDING"
-      }
+      },
+      "visualProvenanceMetadataReviewRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_independent_recheck.json"
     }
   ],
   "notationInventoryRepair": {
@@ -29087,9 +29093,7 @@
   "sourceItemizationAudit": {
     "ref": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
     "sha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
-    "reviewerId": "Independent Codex subagent / source_v2_qa_20261002_0544",
-    "reviewedAtKst": "2026-10-02",
-    "reviewedCommit": "9607edd48e271a3297df49a3aaad6435ca68716d",
+    "reviewerId": "/root/source_v2_qa_20261002_0544",
     "notationEntryCount": 561,
     "mechanicallyBoundCount": 561,
     "sourceMappingPassCount": 469,
@@ -29099,5 +29103,15 @@
     "assetFailures": []
   },
   "targetedCropRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/targeted_source_asset_crop_repair_pending.json",
-  "visualProvenanceMetadataRecheckRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_recheck_pending.json"
+  "visualProvenanceMetadataRecheckRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_recheck_pending.json",
+  "visualProvenanceMetadataReview": {
+    "status": "PASS_TARGETED_METADATA_PIXEL_AND_PAYLOAD_INTEGRITY",
+    "reportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_independent_recheck.json",
+    "reportSha256": "sha256:8d8c0188d6a42a08bb3a67c991128d1f8f44e0347ef1a8b578b7da686b4a51a6",
+    "reviewer": "Independent Codex child reviewer / source_v2_qa_20261002_0544",
+    "reviewedCommit": "dee98cdba6a1d84b4cdf80fb019fde28a15f578b",
+    "contentAndChoicesPayloadUnchanged": true,
+    "q18AndQ22ProvenanceBboxesDimensionsHashesMatch": true,
+    "hyocheonQ4FrozenPass": true
+  }
 }

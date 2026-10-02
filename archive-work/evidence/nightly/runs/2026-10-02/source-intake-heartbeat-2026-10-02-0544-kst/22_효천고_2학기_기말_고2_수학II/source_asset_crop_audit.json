@@ -3,7 +3,7 @@
   "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "examId": "22_효천고_2학기_기말_고2_수학II",
   "assetCount": 6,
-  "status": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
+  "status": "PASS_ALL_CROPS_VISUAL_PIXEL_AND_METADATA",
   "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
   "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
   "reconciledFinalReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
@@ -186,12 +186,12 @@
       "requiredLabels": "PASS",
       "questionSemanticMatch": "PASS",
       "pngDecode": "PASS",
-      "initialReviewFinding": "v2 independent review passed crop visual and pixel gates; nested JS sourceBBox/dimensions were reconciled afterward and await targeted metadata check.",
+      "initialReviewFinding": "Fresh v2 crop review and targeted provenance metadata review passed; active/nested bboxes, dimensions, asset hash and source-pixel equality match.",
       "targetedRecheckEvidence": null,
       "backReferenceQuestionReview": "22",
-      "sourceBBoxBinding": "PENDING_TARGETED_PROVENANCE_METADATA_RECHECK",
-      "targetedRecheckEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
-      "targetedRecheckEvidenceSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1"
+      "sourceBBoxBinding": "PASS",
+      "targetedRecheckEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_independent_recheck.json",
+      "targetedRecheckEvidenceSha256": "sha256:8d8c0188d6a42a08bb3a67c991128d1f8f44e0347ef1a8b578b7da686b4a51a6"
     },
     {
       "qid": "24",
@@ -287,6 +287,6 @@
     }
   ],
   "repairPendingRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/targeted_source_asset_crop_repair_pending.json",
-  "latestIndependentCropReviewRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
-  "latestIndependentCropReviewSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1"
+  "latestIndependentCropReviewRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_visual_provenance_metadata_independent_recheck.json",
+  "latestIndependentCropReviewSha256": "sha256:8d8c0188d6a42a08bb3a67c991128d1f8f44e0347ef1a8b578b7da686b4a51a6"
 }

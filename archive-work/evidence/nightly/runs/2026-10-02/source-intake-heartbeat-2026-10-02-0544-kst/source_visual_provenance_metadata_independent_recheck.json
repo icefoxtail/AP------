@@ -1,0 +1,175 @@
+{
+  "schema": "SOURCE_VISUAL_PROVENANCE_METADATA_INDEPENDENT_RECHECK_v1",
+  "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
+  "reviewer": "Independent Codex subagent / source_v2_qa_20261002_0544",
+  "reviewedAtKst": "2026-10-02",
+  "reviewedCommit": "dee98cdba6a1d84b4cdf80fb019fde28a15f578b",
+  "reviewedRemoteRef": "origin/codex/archive-source-intake",
+  "remoteRefMatchesHead": true,
+  "priorFullAuditRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_v2_independent_audit.json",
+  "priorFullAuditSha256": "sha256:aa70d1dfe7cf1decf9f9a7047c8015deb0d98d53cdaeb4c033ce77adccdde4a1",
+  "priorFullAuditReviewedCommit": "9607edd48e271a3297df49a3aaad6435ca68716d",
+  "priorFullAuditOverallVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
+  "priorFullAuditFailureCounts": {
+    "notationMappings": 92,
+    "Pal": 29,
+    "Hyocheon": 63
+  },
+  "prohibitedMethodsUsed": {
+    "ocr": false,
+    "browserRender": false,
+    "answersOrSolutions": false,
+    "notion": false
+  },
+  "scope": "Only targeted recheck of q18/q22 nested visual provenance metadata, active bboxes, source crop pixels, image dimensions/hashes, q4 frozen crop, and content+choices digests. No production edits made.",
+  "repairedCropReviews": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "sourceJsPath": "archive-work/exams/original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js",
+      "currentSourceJsSha256": "sha256:454e71f6ad076c48bb71b9a0c60c78dcec692bd3b5afaebf9b923b9b55a6c361",
+      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+      "activeVisualAssetBBoxOnPagePx": [
+        100,
+        1328,
+        810,
+        1690
+      ],
+      "nestedProvenanceSourceBBoxPx": [
+        100,
+        1328,
+        810,
+        1690
+      ],
+      "bboxMetadataMatches": true,
+      "assetDimensionsPx": [
+        710,
+        362
+      ],
+      "nestedProvenanceDimensionsPx": [
+        710,
+        362
+      ],
+      "dimensionsMatch": true,
+      "expectedDimensionsFromActiveBBoxPx": [
+        710,
+        362
+      ],
+      "dimensionsMatchActiveBBox": true,
+      "assetSha256": "e00b87d463085e2b113df2df7438e67a307483a7ddfb2bf9c9ac4657af4b7bba",
+      "nestedProvenanceAssetSha256": "sha256:e00b87d463085e2b113df2df7438e67a307483a7ddfb2bf9c9ac4657af4b7bba",
+      "assetShaMatchesMetadata": true,
+      "pixelExactToOriginalPageBBox": true,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "sourcePageSha256": "sha256:6192219c8f99e1a4a0da028ddf4aa097dbac603c42f96165d5712ff3b7fb5529",
+      "cropGenerator": "Pillow Image.crop from original full-page PNG",
+      "cropStatus": "CROP_PURITY_PASS",
+      "cropVerdict": "PASS_VISUAL_AND_PIXEL_CROP",
+      "cropChecks": {
+        "CROP_PURITY": true,
+        "NO_OTHER_QUESTION_TEXT": true,
+        "NO_CHOICES_CONTAMINATION": true,
+        "NO_PAGE_BORDER_CONTAMINATION": true,
+        "NO_CLIPPING": true,
+        "REQUIRED_LABELS_PRESENT": true,
+        "QUESTION_SEMANTIC_MATCH": true
+      },
+      "contentChoicesPayloadDigestAtV2Audit": "sha256:7e5e7d94c18749492b759992fde3104f5d42edf1f28fd74f9da15c4725849989",
+      "contentChoicesPayloadDigestCurrent": "sha256:7e5e7d94c18749492b759992fde3104f5d42edf1f28fd74f9da15c4725849989",
+      "contentChoicesDigestMatchesV2Audit": true,
+      "humanVisualSpotCheck": "PASS: current asset matches the expected source question graph, labels and axes are complete, and no unrelated question or answer choice text is present."
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22",
+      "sourceJsPath": "archive-work/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
+      "currentSourceJsSha256": "sha256:a512083b1c763fc4ed47f9221c1062abc9d45062e901bb0fe65072d58d2eb43f",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "activeVisualAssetBBoxOnPagePx": [
+        1660,
+        1200,
+        2110,
+        2200
+      ],
+      "nestedProvenanceSourceBBoxPx": [
+        1660,
+        1200,
+        2110,
+        2200
+      ],
+      "bboxMetadataMatches": true,
+      "assetDimensionsPx": [
+        450,
+        1000
+      ],
+      "nestedProvenanceDimensionsPx": [
+        450,
+        1000
+      ],
+      "dimensionsMatch": true,
+      "expectedDimensionsFromActiveBBoxPx": [
+        450,
+        1000
+      ],
+      "dimensionsMatchActiveBBox": true,
+      "assetSha256": "c43fc7879ad2400f966bbc7e7e587e9e06098145015895e91de04fbe5b42f1b0",
+      "nestedProvenanceAssetSha256": "sha256:c43fc7879ad2400f966bbc7e7e587e9e06098145015895e91de04fbe5b42f1b0",
+      "assetShaMatchesMetadata": true,
+      "pixelExactToOriginalPageBBox": true,
+      "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sourcePageSha256": "sha256:8cdb1d6950f5eaa75ae7ca39b00eb12838611d7dfd22ea77de7928c93a073871",
+      "cropGenerator": "Pillow Image.crop from original full-page PNG",
+      "cropStatus": "CROP_PURITY_PASS",
+      "cropVerdict": "PASS_VISUAL_AND_PIXEL_CROP",
+      "cropChecks": {
+        "CROP_PURITY": true,
+        "NO_OTHER_QUESTION_TEXT": true,
+        "NO_CHOICES_CONTAMINATION": true,
+        "NO_PAGE_BORDER_CONTAMINATION": true,
+        "NO_CLIPPING": true,
+        "REQUIRED_LABELS_PRESENT": true,
+        "QUESTION_SEMANTIC_MATCH": true
+      },
+      "contentChoicesPayloadDigestAtV2Audit": "sha256:d7f20a2133b0e67ca1eac10c540e5d1948d29bbf84d3d7950b1ea2ab64152c38",
+      "contentChoicesPayloadDigestCurrent": "sha256:d7f20a2133b0e67ca1eac10c540e5d1948d29bbf84d3d7950b1ea2ab64152c38",
+      "contentChoicesDigestMatchesV2Audit": true,
+      "humanVisualSpotCheck": "PASS: current asset matches the expected source question graph, labels and axes are complete, and no unrelated question or answer choice text is present."
+    }
+  ],
+  "frozenHyocheonQ4Review": {
+    "examId": "22_효천고_2학기_기말_고2_수학II",
+    "qid": "4",
+    "activeVisualAssetBBoxOnPagePx": [
+      820,
+      2100,
+      1060,
+      2460
+    ],
+    "nestedProvenanceSourceBBoxPx": [
+      820,
+      2100,
+      1060,
+      2460
+    ],
+    "bboxMetadataMatches": true,
+    "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q004_visual.png",
+    "assetSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+    "expectedFrozenSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+    "frozenShaUnchanged": true,
+    "assetDimensionsPx": [
+      240,
+      360
+    ],
+    "nestedProvenanceDimensionsPx": [
+      240,
+      360
+    ],
+    "dimensionsMatch": true,
+    "pixelExactToOriginalPageBBox": true,
+    "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+    "sourcePageSha256": "sha256:d42d901a9143a8f14c45dcee53b00a1a89faf4eadad27e2b7fc85335148d9352",
+    "humanVisualSpotCheck": "PASS: complete q4 velocity graph, axes, arrow/tick labels and plotted line are present; no unrelated content."
+  },
+  "overallDisposition": "SOURCE_QA_ITEMIZATION_REQUIRED: retain overall source-QA failure and zero handoff eligibility; 92 unsupported/malformed notation serializations remain (Pal 29, Hyocheon 63). This targeted metadata check does not clear or replace the v2 notation audit.",
+  "targetedMetadataRecheckResult": "PASS_TARGETED_METADATA_PIXEL_AND_PAYLOAD_INTEGRITY"
+}
