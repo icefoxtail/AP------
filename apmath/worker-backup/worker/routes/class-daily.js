@@ -76,6 +76,14 @@ function findCanonicalProgressItem(item) {
   return match || null;
 }
 
+function isCanonicalProgressCourseBinding(curriculumKey, levelKey, courseKey) {
+  return CLASS_PROGRESS_TAXONOMY.some(row =>
+    row.curriculumKey === curriculumKey &&
+    row.level === levelKey &&
+    row.courseKey === courseKey
+  );
+}
+
 async function getAccessibleClassIds(env, teacher) {
   if (isAdminUser(teacher)) {
     const rows = await env.DB.prepare(
@@ -516,16 +524,32 @@ export async function handleClassDaily(request, env, teacher, path, url) {
       const tid = `tx_${crypto.randomUUID()}`;
       const startDate = d.start_date || todayKstDateString();
 
+      const progressCurriculumKey = String(d.progress_curriculum_key || d.progressCurriculumKey || '').trim() || null;
+      const progressLevelKey = String(d.progress_level_key || d.progressLevelKey || '').trim() || null;
+      const progressCourseKey = String(d.progress_course_key || d.progressCourseKey || '').trim() || null;
+      const hasCompleteProgressBinding = progressCurriculumKey && progressLevelKey && progressCourseKey;
+      if ((progressCurriculumKey || progressLevelKey || progressCourseKey) && !hasCompleteProgressBinding) {
+        return jsonResponse({ success: false, error: 'complete progress course binding required' }, 422);
+      }
+      if (hasCompleteProgressBinding && !isCanonicalProgressCourseBinding(progressCurriculumKey, progressLevelKey, progressCourseKey)) {
+        return jsonResponse({ success: false, error: 'invalid progress course binding' }, 422);
+      }
+
       await env.DB.prepare(`
         INSERT INTO class_textbooks (
-          id, class_id, title, status, start_date, end_date, sort_order, created_at, updated_at
-        ) VALUES (?, ?, ?, 'active', ?, NULL, ?, DATETIME('now'), DATETIME('now'))
+          id, class_id, title, status, start_date, end_date, sort_order,
+          progress_curriculum_key, progress_level_key, progress_course_key,
+          created_at, updated_at
+        ) VALUES (?, ?, ?, 'active', ?, NULL, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
       `).bind(
         tid,
         d.class_id,
         String(d.title).trim(),
         startDate,
-        Number(d.sort_order || 0)
+        Number(d.sort_order || 0),
+        progressCurriculumKey,
+        progressLevelKey,
+        progressCourseKey
       ).run();
 
       const item = await env.DB.prepare('SELECT * FROM class_textbooks WHERE id = ?').bind(tid).first();
@@ -551,6 +575,23 @@ export async function handleClassDaily(request, env, teacher, path, url) {
       if (nextStatus === 'completed' && !nextEndDate) nextEndDate = today;
       if (nextStatus === 'active' && d.clear_end_date === true) nextEndDate = null;
 
+      const nextProgressCurriculumKey = d.progress_curriculum_key !== undefined
+        ? (String(d.progress_curriculum_key || '').trim() || null)
+        : current.progress_curriculum_key;
+      const nextProgressLevelKey = d.progress_level_key !== undefined
+        ? (String(d.progress_level_key || '').trim() || null)
+        : current.progress_level_key;
+      const nextProgressCourseKey = d.progress_course_key !== undefined
+        ? (String(d.progress_course_key || '').trim() || null)
+        : current.progress_course_key;
+      const bindingPartCount = [nextProgressCurriculumKey, nextProgressLevelKey, nextProgressCourseKey].filter(Boolean).length;
+      if (bindingPartCount !== 0 && bindingPartCount !== 3) {
+        return jsonResponse({ success: false, error: 'complete progress course binding required' }, 422);
+      }
+      if (bindingPartCount === 3 && !isCanonicalProgressCourseBinding(nextProgressCurriculumKey, nextProgressLevelKey, nextProgressCourseKey)) {
+        return jsonResponse({ success: false, error: 'invalid progress course binding' }, 422);
+      }
+
       await env.DB.prepare(`
         UPDATE class_textbooks
         SET title = ?,
@@ -558,6 +599,9 @@ export async function handleClassDaily(request, env, teacher, path, url) {
             start_date = ?,
             end_date = ?,
             sort_order = ?,
+            progress_curriculum_key = ?,
+            progress_level_key = ?,
+            progress_course_key = ?,
             updated_at = DATETIME('now')
         WHERE id = ?
       `).bind(
@@ -566,6 +610,9 @@ export async function handleClassDaily(request, env, teacher, path, url) {
         d.start_date !== undefined ? d.start_date : current.start_date,
         nextEndDate,
         d.sort_order !== undefined ? Number(d.sort_order || 0) : Number(current.sort_order || 0),
+        nextProgressCurriculumKey,
+        nextProgressLevelKey,
+        nextProgressCourseKey,
         id
       ).run();
 

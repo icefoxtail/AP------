@@ -31,6 +31,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q1-solution.svg"
   },
   {
@@ -63,6 +65,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q2-solution.svg"
   },
   {
@@ -95,6 +99,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q3-solution.svg"
   },
   {
@@ -128,6 +134,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q4-solution.svg"
   },
   {
@@ -224,6 +232,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q7-solution.svg"
   },
   {
@@ -256,6 +266,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q8-solution.svg"
   },
   {
@@ -288,6 +300,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q9-solution.svg"
   },
   {
@@ -320,6 +334,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q10-solution.svg"
   },
   {
@@ -352,6 +368,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q11-solution.svg"
   },
   {
@@ -384,6 +402,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q12-solution.svg"
   },
   {
@@ -676,6 +696,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q22-solution.svg"
   },
   {

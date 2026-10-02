@@ -283,8 +283,24 @@ test('phase-only changes preserve canonical unit paths and save after existing c
         loadedPhase: 'semester2_midterm',
         checkedUnits: [makeCheckedUnit(pathKey)]
     });
+    context.state.ui.classProgressModalState.groups = [{
+        key: '2022|high|공통수학2',
+        curriculumKey: '2022',
+        level: 'high',
+        courseKey: '공통수학2',
+        courseLabel: '공통수학2',
+        items: [{
+            canonicalPathKey: pathKey,
+            curriculumKey: '2022',
+            level: 'high',
+            courseKey: '공통수학2',
+            l1: '도형의 방정식',
+            l2: '원의 방정식'
+        }]
+    }];
     context.state.ui.classProgressModalState.activeGroupKeys = ['2022|high|공통수학2'];
     context.state.ui.classProgressModalState.savedPaths = [pathKey];
+    context.state.ui.classProgressModalState.selectedPathDraft = [pathKey];
     context.state.ui.classProgressModalState.books = [
         { id: 'book1', class_id: 'c1', title: '개념원리 공통수학2', status: 'active' }
     ];
@@ -334,6 +350,7 @@ test('initial-data and refreshDataOnly keep phase rows in state.db and clear the
     let responseData = {
         students: [],
         classes: [],
+        consultations: [],
         class_progress_date: '2026-09-18',
         class_progress_phases: [{ class_id: 'c1', effective_date: '2026-09-01', phase: 'semester2_midterm' }]
     };
