@@ -162,7 +162,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 6,
