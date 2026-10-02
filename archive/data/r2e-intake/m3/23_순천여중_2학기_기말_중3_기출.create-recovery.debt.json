@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_RECOVERY_DEBT_v1",
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "canonicalOrdinal": 62,
+  "examFile": "23_순천여중_2학기_기말_중3_기출.js",
+  "stage": "CREATE",
+  "disposition": "INFRA_RETRY_DEBT",
+  "observedAtKST": "2026-10-02T10:07:00+09:00",
+  "latestMainSha": "fc699d27122ea255a048874bb624fabbd95c4c34",
+  "latestMainExamBlobSha": "9b8c6081ad591dd4a708d9d55ba383b44eb55629",
+  "recoveryBranch": "archive-recovery/m3-23-suncheonyeo-2final-actionfirst-20261002-0947",
+  "recoveryExamBlobSha": "50488c7b9280555d889699572e35756d8c655512",
+  "finalCandidateBlobSha": "d8277eeef27bbe4cd34f043384720281e2890a53",
+  "preservedPriorCandidateBlobSha": "ad5f2b459cd06412f98de826fe5f38d657bd521e",
+  "projectionMaterialization": {
+    "status": "MATERIALIZED",
+    "activeProjectionCount": 11,
+    "commitReportedByCurrentInventory": "e1e2fc799d78dd63489192e8223bfc663e820e1d"
+  },
+  "protectedParity": {
+    "mainSourceBlobStillExact": true,
+    "note": "latest main exam blob re-fetched and still equals checkpoint sourceExamBlobSha"
+  },
+  "failedGate": "EXACT_CREATE_NODE_GATE_NOT_EXECUTABLE_IN_CURRENT_CONNECTOR_RUNTIME",
+  "completedBeforeDebt": [
+    "24/24 source/solution/visual candidate preserved",
+    "11 ACTIVE projections materialized",
+    "recovery exam bytes durably present on Git recovery branch",
+    "latest main source blob parity rechecked"
+  ],
+  "stillRequired": [
+    "materialize SHA-bound JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1 from final recovery bytes",
+    "run node archive/tools/solution-calibration-gate.mjs --exam <recovery-exam> --evidence <evidence> --stage CREATE --preflight",
+    "run node archive/tools/review-evidence-gate.mjs --exam <recovery-exam> --evidence <evidence> --stage CREATE",
+    "require actual validator ok=true",
+    "write durable CREATE_DONE* receipt with finalArtifactSha and validator receipt SHA"
+  ],
+  "createDoneClaimed": false,
+  "examLevelHoldCreated": false,
+  "mainMutation": 0,
+  "rotation": {
+    "monopolizeQueue": false,
+    "nextKnownIncompleteOrdinal": 65,
+    "nextSelectionMustRescanPhysicalGit": true
+  }
+}
