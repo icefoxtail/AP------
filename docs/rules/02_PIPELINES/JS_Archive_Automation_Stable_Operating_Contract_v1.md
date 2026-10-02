@@ -1,11 +1,22 @@
 # JS Archive Automation Stable Operating Contract v1
 
-- 상태: **STABLE DESIGN / NOT ACTIVE**
+- 상태: **ACTIVE — M3 MIGRATION / CREATE OFF (69/69 DONE)**
 - 동결일: 2026-10-02
 - 최상위 authority: 형님의 현재 명시 지시
-- 적용 시점: **미정 — 별도 activation 결정 전 실행 금지**
-- 기존 GPT 예약: **OFF 유지**
-- 기존 backlog migration: **이 문서에서 결정하지 않음 — 별도 migration plan 필요**
+- 적용 시점: **2026-10-02 20:27 KST — 사용자 명시 승인으로 M3 migration 활성화**
+- 기존 legacy GPT 예약: **OFF 유지**
+- 현재 M3 backlog migration: **ACTIVE — Notion migration ledger 최신 CURRENT RECALC 사용**
+
+## ACTIVE CUTOVER — 2026-10-02 20:27 KST — M3 MIGRATION
+
+- 사용자 명시 승인으로 M3 backlog를 stable topology에 이관한다.
+- CREATE=69/69 DONE, CREATE queue=0 → CREATE-1/2 OFF.
+- ACTIVE: R1×2 / R2×2 / R3×2 / PUBLISH×1 / MASTER×3 = 10 slots.
+- 일정: :00 MASTER-A / :10 R1-1 / :15 R2-1 / :20 MASTER-B / :25 R3-1 / :30 PUBLISH / :40 MASTER-C / :45 R1-2 / :50 R2-2 / :55 R3-2.
+- 모든 slot은 Asia/Seoul RRULE recurring-capable schedule.
+- MASTER는 §3.5 MASTER_LEASE v2 single-writer를 강제한다.
+- Codex post-R3 repair/independent review sidecar는 별도 유지한다.
+- latest queue는 Notion M3 migration ledger의 CURRENT RECALC를 매 run 재조회한다.
 
 ## 0. 목적
 
@@ -48,7 +59,7 @@ R3 FAIL 이후의 repair/recovery/independent recheck는 현재 운영대로 Cod
 :55 R3-2
 ```
 
-이 시간표는 설계 정본이며 activation 전에는 task를 생성/enable하지 않는다.
+이 시간표는 ACTIVE 운영 정본이다. M3 CREATE는 69/69이므로 CREATE-1/2만 OFF 유지하고 R1/R2/R3/PUBLISH/MASTER 10슬롯을 활성화한다.
 
 ### 1.2 ROLE-PURE HARD RULE
 
