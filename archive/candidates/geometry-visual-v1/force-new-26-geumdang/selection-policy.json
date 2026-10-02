@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "visual-candidate-selector-policy-v1",
+  "mode": "FORCE_NEW",
+  "decisionOrder": [
+    {
+      "when": "domainEligibility != ELIGIBLE",
+      "decision": "EXCLUDE_DOMAIN_INELIGIBLE"
+    },
+    {
+      "when": "visualEligibility == VISUAL_EXEMPT",
+      "decision": "EXCLUDE_VISUAL_EXEMPT"
+    },
+    {
+      "when": "domainEligibility == ELIGIBLE and visualEligibility == NON_EXEMPT and mode == FORCE_NEW",
+      "decision": "SELECT_AND_GENERATE_NEW_CANDIDATE"
+    }
+  ],
+  "forceNewSemantics": {
+    "overridesOnly": "existingSolutionSvg reuse/keep/skip disposition",
+    "existingSolutionSvgPresence": "does not add eligibility and does not exclude an eligible question; eligible questions are rebuilt as fresh candidates",
+    "existingSolutionSvgContent": "not read, supplied, or used as a visual reference",
+    "doesNotOverride": [
+      "domainEligibility",
+      "VISUAL_EXEMPT",
+      "source/fact readiness"
+    ]
+  },
+  "failClosed": {
+    "missingDomainEligibility": "EXCLUDE_UNRESOLVED_ELIGIBILITY",
+    "missingVisualEligibility": "EXCLUDE_UNRESOLVED_VISUAL_APPLICABILITY"
+  },
+  "thisRun": {
+    "questionCount": 20,
+    "domainEligibleCount": 20,
+    "visualExemptCount": 0,
+    "selectedForceNewCount": 20,
+    "excludedDomainIneligibleQuestionIds": [],
+    "excludedVisualExemptQuestionIds": []
+  }
+}
