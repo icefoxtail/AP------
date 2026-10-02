@@ -1837,7 +1837,7 @@
     "sampleReadBeforeWork": true,
     "calibrationStatus": "PASS",
     "solutionWorkMode": "INDEPENDENT_REVIEW",
-    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_USER_AUTHORITY_FRESH_BYTES_THEN_COMPARE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
     "calibrationAxes": [
       "STUDENT_REPRODUCIBILITY",
       "SMALL_BOARD_STRUCTURE",
@@ -1911,7 +1911,8 @@
         "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
         "observation": "False-pass patterns for symbol/source/visual-semantic defects were applied; q23 label-owner regression was caught rather than waived."
       }
-    ]
+    ],
+    "calibrationExecutionNote": "Canonical gate token retained for schema compatibility; recurring-worker blind freshness was not claimed. Explicit user authority waived that context-only restriction and required fresh artifact-byte R3 closeout."
   },
   "repair": {
     "count": 1,
