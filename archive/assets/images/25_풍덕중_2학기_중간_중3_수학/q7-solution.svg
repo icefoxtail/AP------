@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 800" role="img" aria-labelledby="title desc">
+  <title id="title">두 직각삼각형의 공통 변 BC</title>
+  <desc id="desc">삼각형 BCD에서 CD가 6이고 각 D가 30도이므로 BC는 2루트3이다. 삼각형 ABC는 45도 직각삼각형이어서 AB도 2루트3이고 AC는 2루트6이다.</desc>
+  <style>
+    .ko{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;fill:#16324f}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;fill:#16324f}
+    .title{font-size:24px;font-weight:700}.body{font-size:19px}.small{font-size:17px;fill:#52677f}.result{font-size:23px;font-weight:700}
+  </style>
+  <rect width="560" height="800" rx="18" fill="#f5f8fc"/>
+  <text id="title" x="28" y="42" class="ko title">공통 변 BC를 먼저 구하기</text>
+  <rect x="28" y="68" width="504" height="386" rx="14" fill="#fff" stroke="#d9e2ed"/>
+  <g transform="translate(88 0)">
+    <path d="M92 370 L92 196.795 L265.205 370 L265.205 70 Z" fill="none" stroke="#16324f" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="92" y1="370" x2="265.205" y2="370" stroke="#246bce" stroke-width="4"/>
+    <path d="M92 350 h20 v20 M245.205 370 v-20 h20 v20" fill="none" stroke="#16324f" stroke-width="2"/>
+    <path d="M92 218.795 A22 22 0 0 0 107.556 212.351" fill="none" stroke="#d97919" stroke-width="2.5"/>
+    <path d="M265.205 94 A24 24 0 0 1 253.205 90.8" fill="none" stroke="#d97919" stroke-width="2.5"/>
+    <g class="math body">
+      <text x="69" y="194">A</text><text x="68" y="394">B</text><text x="269" y="394">C</text><text x="270" y="64">D</text>
+      <text x="93" y="244" fill="#d97919">45°</text><text x="252" y="124" text-anchor="middle" font-size="14" fill="#d97919">30°</text>
+      <text x="105" y="296" fill="#246bce">2√3</text><text x="163" y="394" fill="#246bce">2√3</text><text x="274" y="222">6</text><text x="156" y="263">2√6</text>
+    </g>
+  </g>
+  <rect x="28" y="472" width="504" height="300" rx="14" fill="#fff" stroke="#d9e2ed"/>
+  <text x="54" y="516" class="ko small">1  △BCD에서 탄젠트</text>
+  <text x="54" y="558" class="math body">tan30° = BC / 6</text>
+  <text x="54" y="592" class="math body">BC = 2√3</text>
+  <line x1="54" y1="616" x2="506" y2="616" stroke="#e4eaf1"/>
+  <text x="54" y="655" class="ko small">2  △ABC는 45° 직각삼각형</text>
+  <text x="54" y="695" class="math body">AB = BC = 2√3,  AC² = 24</text>
+  <rect x="52" y="716" width="456" height="40" rx="10" fill="#e7f5f2" stroke="#8fc9bd"/>
+  <text x="280" y="744" text-anchor="middle" class="ko result">AC = 2√6</text>
+</svg>

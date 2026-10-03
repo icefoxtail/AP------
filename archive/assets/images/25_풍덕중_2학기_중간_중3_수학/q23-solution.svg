@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 850" role="img" aria-labelledby="title desc">
+  <title id="title">대각선 AC로 나누어 사각형 넓이 구하기</title>
+  <desc id="desc">사각형 ABCD를 대각선 AC로 삼각형 ABC와 ACD로 나눈다. 두 넓이는 각각 18루트3과 24루트3이므로 전체 넓이는 42루트3이다.</desc>
+  <style>
+    .ko{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;fill:#16324f}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;fill:#16324f}
+    .title{font-size:24px;font-weight:700}.body{font-size:19px}.small{font-size:17px;fill:#52677f}.result{font-size:23px;font-weight:700}
+  </style>
+  <rect width="560" height="850" rx="18" fill="#f5f8fc"/>
+  <text id="title" x="28" y="42" class="ko title">대각선 AC로 두 넓이를 더하기</text>
+  <rect x="28" y="68" width="504" height="392" rx="14" fill="#fff" stroke="#d9e2ed"/>
+  <g transform="translate(88 0)">
+    <path d="M70 340 L350.59 340 L350.59 178 L163.53 70 Z" fill="#eef5ff" stroke="#16324f" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M70 340 L350.59 178" fill="none" stroke="#246bce" stroke-width="4"/>
+    <path d="M350.59 324 h-16 v16 h16 M350.59 178 L333.27 168" fill="none" stroke="#16324f" stroke-width="2"/>
+    <path d="M98 340 A28 28 0 0 0 94.25 326" fill="none" stroke="#d97919" stroke-width="2.5"/>
+    <path d="M326.34 192 A28 28 0 0 1 326.34 164" fill="none" stroke="#d97919" stroke-width="2.5"/>
+    <g class="math body">
+      <text x="53" y="364">A</text><text x="354" y="364">B</text><text x="357" y="176">C</text><text x="147" y="65">D</text>
+      <text x="105" y="337" fill="#d97919">30°</text><text x="294" y="190" fill="#d97919">60°</text>
+      <text x="363" y="270" fill="#246bce">6</text><text x="260" y="107">8</text><text x="207" y="246" fill="#246bce">AC=12</text>
+    </g>
+  </g>
+  <text x="280" y="435" text-anchor="middle" class="ko small">△ABC와 △ACD로 나누어 각각 계산</text>
+  <rect x="28" y="478" width="504" height="342" rx="14" fill="#fff" stroke="#d9e2ed"/>
+  <text x="54" y="520" class="ko small">△ABC</text>
+  <text x="54" y="560" class="math body">sin30° = 6 / AC</text>
+  <text x="54" y="594" class="math body">AC = 12</text>
+  <text x="54" y="630" class="math body">[ABC] = ½ × 6√3 × 6 = 18√3</text>
+  <line x1="54" y1="651" x2="506" y2="651" stroke="#e4eaf1"/>
+  <text x="54" y="690" class="ko small">△ACD</text>
+  <text x="54" y="730" class="math body">[ACD] = ½ × 12 × 8 × sin60°</text>
+  <text x="54" y="764" class="math body">= 24√3</text>
+  <rect x="52" y="779" width="456" height="50" rx="11" fill="#e7f5f2" stroke="#8fc9bd"/>
+  <text x="280" y="812" text-anchor="middle" class="ko result">[ABCD] = 42√3 cm²</text>
+</svg>

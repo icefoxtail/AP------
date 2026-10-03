@@ -1,24 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 305" role="img" aria-label="네 내접원의 공통 접선에서 접선 길이를 연쇄하는 풀이 그림" data-visual-provenance="R2_INDEPENDENT_MODEL">
-  <g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M250 35 L79.22 80.76 L191.09 156.69 L302.69 181.83 L328.82 102.84 L380.97 68.57 Z"/>
-    <line x1="250" y1="35" x2="191.09" y2="156.69"/>
-    <line x1="250" y1="35" x2="302.69" y2="181.83"/>
-    <line x1="250" y1="35" x2="328.82" y2="102.84"/>
-    <circle cx="175.08" cy="96.94" r="40.44"/>
-    <circle cx="244.91" cy="130.75" r="37.14"/>
-    <circle cx="301.80" cy="110.33" r="23.31"/>
-    <circle cx="330.50" cy="76.99" r="20.69"/>
-    <g fill="currentColor" stroke="none">
-      <circle cx="164.61" cy="57.88" r="2.6"/><circle cx="211.48" cy="114.57" r="2.6"/>
-      <circle cx="279.86" cy="118.20" r="2.6"/><circle cx="317.00" cy="92.67" r="2.6"/><circle cx="335.63" cy="56.95" r="2.6"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 740" role="img" aria-labelledby="title desc">
+  <title id="title">접선 길이를 이어서 AD와 AF 구하기</title>
+  <desc id="desc">한 꼭짓점에서 두 접선의 길이가 같다는 성질을 사용해 네 삼각형을 따라 접선 조각을 구한다. AD는 30, AF는 26이므로 합은 56이다.</desc>
+  <style>
+    .ko{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;fill:#16324f}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;fill:#16324f}
+    .title{font-size:24px;font-weight:700}.lead{font-size:17px;fill:#52677f}
+    .head{font-size:18px;font-weight:700}.body{font-size:18px}.result{font-size:23px;font-weight:700}
+  </style>
+  <rect width="600" height="740" rx="18" fill="#f5f8fc"/>
+  <text id="title" x="26" y="40" class="ko title">접선 길이를 꼭짓점마다 이어 보기</text>
+  <text id="desc" x="26" y="67" class="ko lead">같은 꼭짓점에서 원에 그은 두 접선 조각의 길이는 같습니다.</text>
+  <rect x="24" y="86" width="552" height="66" rx="12" fill="#eaf1fb" stroke="#c7d7ec"/>
+  <circle cx="57" cy="119" r="5" fill="#246bce"/>
+  <path d="M57 119 L88 99 M57 119 L88 139" fill="none" stroke="#246bce" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="88" cy="99" r="4" fill="#d97919"/><circle cx="88" cy="139" r="4" fill="#d97919"/>
+  <text x="108" y="115" class="ko head">주어진 변</text>
+  <text x="108" y="139" class="math body">AB=34, BC=26, CD=22, DE=16, EF=12</text>
+  <g>
+    <rect x="24" y="166" width="552" height="104" rx="12" fill="#fff" stroke="#d9e2ed"/>
+    <circle cx="52" cy="218" r="18" fill="#eaf1fb"/><text x="52" y="224" text-anchor="middle" class="math head">1</text>
+    <text x="82" y="204" class="ko head">△ABC</text>
+    <text x="178" y="204" class="math body">C쪽 = 26 − (34 − t) = t − 8</text>
+    <text x="178" y="240" class="math body">AC = t + (t − 8) = 2t − 8</text>
+
+    <rect x="24" y="280" width="552" height="104" rx="12" fill="#fff" stroke="#d9e2ed"/>
+    <circle cx="52" cy="332" r="18" fill="#eaf1fb"/><text x="52" y="338" text-anchor="middle" class="math head">2</text>
+    <text x="82" y="318" class="ko head">△ACD</text>
+    <text x="178" y="318" class="math body">D쪽 = 22 − (t − 8) = 30 − t</text>
+    <text x="178" y="354" class="math body">AD = t + (30 − t) = 30</text>
+
+    <rect x="24" y="394" width="552" height="104" rx="12" fill="#fff" stroke="#d9e2ed"/>
+    <circle cx="52" cy="446" r="18" fill="#eaf1fb"/><text x="52" y="452" text-anchor="middle" class="math head">3</text>
+    <text x="82" y="432" class="ko head">△ADE</text>
+    <text x="178" y="432" class="math body">E쪽 = 16 − (30 − t) = t − 14</text>
+    <text x="178" y="468" class="math body">AE = t + (t − 14) = 2t − 14</text>
+
+    <rect x="24" y="508" width="552" height="104" rx="12" fill="#fff" stroke="#d9e2ed"/>
+    <circle cx="52" cy="560" r="18" fill="#eaf1fb"/><text x="52" y="566" text-anchor="middle" class="math head">4</text>
+    <text x="82" y="546" class="ko head">△AEF</text>
+    <text x="178" y="546" class="math body">F쪽 = 12 − (t − 14) = 26 − t</text>
+    <text x="178" y="582" class="math body">AF = t + (26 − t) = 26</text>
   </g>
-  <g fill="currentColor" font-family="Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, Arial, sans-serif" font-size="13">
-    <text x="244" y="23">A</text><text x="61" y="83">B</text><text x="179" y="176">C</text><text x="298" y="202">D</text><text x="334" y="113">E</text><text x="386" y="66">F</text>
-    <text x="121" y="51">34</text><text x="111" y="132">26</text><text x="236" y="181">22</text><text x="320" y="158">16</text><text x="361" y="103">12</text>
-    <text x="150" y="44">t</text><text x="200" y="108">t</text><text x="282" y="111">t</text><text x="319" y="84">t</text><text x="339" y="49">t</text>
-    <text x="55" y="236">BC: 34−t + (t−8)=26</text>
-    <text x="55" y="258">CD: (t−8) + (30−t)=22  →  AD=t+(30−t)=30</text>
-    <text x="55" y="280">EF: (t−14) + (26−t)=12  →  AF=t+(26−t)=26</text>
-  </g>
+  <rect x="24" y="630" width="552" height="82" rx="14" fill="#e7f5f2" stroke="#8fc9bd" stroke-width="1.5"/>
+  <text x="300" y="682" text-anchor="middle" class="ko result">AD + AF = 30 + 26 = 56</text>
 </svg>
