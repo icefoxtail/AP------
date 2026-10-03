@@ -5,7 +5,7 @@
   "canonicalOrdinal": 17,
   "examFile": "26_팔마중_1학기_기말_중2_기출.js",
   "inputFinalArtifactSha": "06c09e564b55badd89879d470c4783baf90f0e91",
-  "status": "R1_FULL_RECHECK_IN_PROGRESS",
+  "status": "REVIEW1_DONE",
   "completed": {
     "protectedFieldCompare": "24/24 exact vs current main",
     "answerMath": "20 PASS + q9/q11/q13/q16 SOURCE_VISUAL holds",
@@ -13,11 +13,38 @@
     "curriculumMethodAudit": "24/24 PASS",
     "smallBoardAudit": "24/24 PASS",
     "visualNecessityAudit": "24/24 PASS; solutionImage 0",
-    "runtimeStringAudit": "24/24 source inspection PASS pending canonical validator",
+    "runtimeStringAudit": "24/24 PASS; canonical R1 validator confirmed",
     "goldenCalibration": "PASS",
     "negativeRegressionRead": true
   },
-  "deterministicRepairsRequired": [
+  "sourceVisualHolds": [
+    {
+      "qid": 9,
+      "blob": "f94672df38a7f627021f212c23549852151b8c32"
+    },
+    {
+      "qid": 11,
+      "blob": "5facc64515bfdb208e41f4f23517ca66b72fce6c"
+    },
+    {
+      "qid": 13,
+      "blob": "6ac3cc6f92ba83a2ec90933fea76ae7334ec7e48"
+    },
+    {
+      "qid": 16,
+      "blob": "a326f6c0a8378973b7639d520ac30ae1e2239c29"
+    }
+  ],
+  "next": "READY_FOR_REVIEW2",
+  "nextStage": "READY_FOR_REVIEW2",
+  "finalArtifactSha": "a398fa685e89e6eb9e53970ba2debb374f03ae3b",
+  "physicalEvidenceGitBlob": "bd576b2b088ec99aebbd4a95122c80d8279d66e5",
+  "validatorReceiptSha": "c2ac96cee34844bbc689986f79219db248b48f41",
+  "stageReceiptSha": "fa2ae6f489fd3a3b5c31e895243869eb06b324ca",
+  "workflowRunId": 37151575247,
+  "workflowJobId": 111286381794,
+  "validatorDisposition": "PASS_WITH_ITEM_HOLDS",
+  "deterministicRepairsApplied": [
     {
       "qid": 1,
       "field": "subUnit",
@@ -48,24 +75,5 @@
       "from": "M2-04-LINEAR_FUNCTION_BASIC",
       "to": "M2-04-LINEAR_FUNCTION_EQUATION"
     }
-  ],
-  "sourceVisualHolds": [
-    {
-      "qid": 9,
-      "blob": "f94672df38a7f627021f212c23549852151b8c32"
-    },
-    {
-      "qid": 11,
-      "blob": "5facc64515bfdb208e41f4f23517ca66b72fce6c"
-    },
-    {
-      "qid": 13,
-      "blob": "6ac3cc6f92ba83a2ec90933fea76ae7334ec7e48"
-    },
-    {
-      "qid": 16,
-      "blob": "a326f6c0a8378973b7639d520ac30ae1e2239c29"
-    }
-  ],
-  "next": "Apply five deterministic subUnit repairs, bind fresh R1 physical evidence to repaired artifact, run canonical R1 validator, write REVIEW1_DONE_WITH_ITEM_HOLDS if validator PASS_WITH_ITEM_HOLDS."
+  ]
 }
