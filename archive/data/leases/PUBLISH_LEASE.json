@@ -2,19 +2,24 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "GPT-PUBLISH-M3-20261003T1231+0900",
   "owner": "JS Archive M3 ACTIVE PUBLISH",
-  "status": "ACTIVE",
+  "status": "CLOSED",
   "baseMainSha": "546afa1b6973514f625c2d1d98cbcab178cc7e79",
   "claimedAt": "2026-10-03T12:31:15+09:00",
   "expiresAt": "2026-10-03T14:01:15+09:00",
-  "lastProgressAt": "2026-10-03T12:31:15+09:00",
+  "lastProgressAt": "2026-10-03T12:33:36+09:00",
   "expectedCompletionGate": "M3_CURRENT_CLEAN_RELEASE_BACKLOG_BATCH_TO_MAIN_DONE",
   "scope": "M3:CURRENT_CLEAN_RELEASE_BACKLOG",
-  "targets": [],
-  "result": null,
-  "finalOriginMain": null,
+  "targets": [
+    65
+  ],
+  "result": "MAIN_WRITE_GATE_O65",
+  "finalOriginMain": "546afa1b6973514f625c2d1d98cbcab178cc7e79",
   "includedOrdinals": [],
-  "excludedDebtOrdinals": [],
+  "excludedDebtOrdinals": [
+    68
+  ],
   "publishedCommit": null,
-  "firstMissingClosureStep": "SCAN_CURRENT_RELEASE_BACKLOG_AFTER_LEASE_READBACK",
-  "mainMutation": 0
+  "firstMissingClosureStep": "MERGE_O65_BATCH_PR_171",
+  "mainMutation": 0,
+  "closedAt": "2026-10-03T12:33:36+09:00"
 }
