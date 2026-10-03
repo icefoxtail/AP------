@@ -14,7 +14,7 @@ test('Mixer adapter dual-runs canonical normalization without changing storage, 
   assert.match(html, /async function recordMixedDualRun\(area\)/);
   assert.match(html, /loadAssessmentPackFallback/);
   assert.match(html, /localStorage\.getItem\('mixedQuestions_' \+ AppState\.key\)/);
-  assert.match(html, /return \[4, 6, 8\]\.includes\(parsed\) \? parsed : 4;/);
+  assert.match(html, /return \[1, 2, 4, 6, 8\]\.includes\(parsed\) \? parsed : 4;/);
   assert.match(html, /async function renderExam\(area, data\)/);
   assert.match(html, /resolveSourceRef: \(question, index\)/);
   assert.match(html, /getMixedQuestionIdentity\(q\)/);

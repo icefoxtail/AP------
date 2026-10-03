@@ -133,7 +133,7 @@ window.questionBank = [
       "사분원을 이용한 삼각비의 값"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 1인 사분원을 이용하여 &lt;보기&gt;에서 $55^\\circ$의 삼각비의 값으로 옳은 것만을 있는 대로 고르면? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\sin 55^\\circ=0.57$<br>ㄴ. $\\cos 55^\\circ=0.82$<br>ㄷ. $\\tan 55^\\circ=1.43$</div>",
+    "content": "다음 그림과 같이 반지름의 길이가 1인 사분원을 이용하여 보기에서 $55^\\circ$의 삼각비의 값으로 옳은 것만을 있는 대로 고르면? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\sin 55^\\circ=0.57$<br>ㄴ. $\\cos 55^\\circ=0.82$<br>ㄷ. $\\tan 55^\\circ=1.43$</div>",
     "choices": [
       "ㄱ",
       "ㄷ",
@@ -306,7 +306,7 @@ window.questionBank = [
       "삼각비의 대소 비교"
     ],
     "wide": false,
-    "content": "&lt;보기&gt;의 삼각비의 값을 작은 것부터 차례로 나열한 것은? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\sin 40^\\circ$　ㄴ. $\\cos 0^\\circ$　ㄷ. $\\tan 40^\\circ$　ㄹ. $\\tan 50^\\circ$</div>",
+    "content": "보기의 삼각비의 값을 작은 것부터 차례로 나열한 것은? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\sin 40^\\circ$　ㄴ. $\\cos 0^\\circ$　ㄷ. $\\tan 40^\\circ$　ㄹ. $\\tan 50^\\circ$</div>",
     "choices": [
       "ㄱ, ㄴ, ㄷ, ㄹ",
       "ㄱ, ㄴ, ㄹ, ㄷ",
@@ -1054,7 +1054,7 @@ window.questionBank = [
       "현의 수직이등분선과 원의 중심"
     ],
     "wide": false,
-    "content": "&lt;보기&gt;에서 원의 중심을 찾기 위한 세 사람의 대화를 읽고 옳은 것만을 있는 대로 고른 것은? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>홍민: 원에 내접하는 삼각형을 그리고 두 내각의 이등분선이 만나는 점을 찾으면 돼.<br>민재: 원에 서로 다른 두 현을 긋고 각 현의 수직이등분선이 만나는 점을 찾으면 돼.<br>강인: 원에 외접하는 삼각형을 그리고 두 선분의 수직이등분선의 교점을 찾으면 돼.</div>",
+    "content": "보기에서 원의 중심을 찾기 위한 세 사람의 대화를 읽고 옳은 것만을 있는 대로 고른 것은? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>홍민: 원에 내접하는 삼각형을 그리고 두 내각의 이등분선이 만나는 점을 찾으면 돼.<br>민재: 원에 서로 다른 두 현을 긋고 각 현의 수직이등분선이 만나는 점을 찾으면 돼.<br>강인: 원에 외접하는 삼각형을 그리고 두 선분의 수직이등분선의 교점을 찾으면 돼.</div>",
     "choices": [
       "민재",
       "강인",

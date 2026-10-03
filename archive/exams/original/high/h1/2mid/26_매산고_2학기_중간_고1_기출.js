@@ -20,7 +20,7 @@ window.questionBank = [
       "개념판별"
     ],
     "wide": false,
-    "content": "다음 &lt;보기&gt;에서 집합인 것의 개수는? [3.6점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. 좋아하는 과일의 모임<br>ㄴ. 12의 약수의 모임<br>ㄷ. 노래를 잘하는 학생의 모임<br>ㄹ. 5보다 작은 자연수의 모임</div>",
+    "content": "다음 보기에서 집합인 것의 개수는? [3.6점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. 좋아하는 과일의 모임<br>ㄴ. 12의 약수의 모임<br>ㄷ. 노래를 잘하는 학생의 모임<br>ㄹ. 5보다 작은 자연수의 모임</div>",
     "choices": [
       "0",
       "1",
@@ -718,7 +718,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_매산고_2학기_중간_고1_기출/q012_visual.svg",
+    "image": "assets/images/26_매산고_2학기_중간_고1_기출/q012_visual.png",
     "imageSize": "full",
     "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q12-solution.svg",
     "solutionImageAlt": "점 A를 직선 y=x에 대칭이동한 A'와 원, 최단점 P, 교점 Q를 나타낸 해설 그림",
@@ -746,7 +746,7 @@ window.questionBank = [
       "집합의 연산법칙"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $A$, $B$에 대하여 $S(A,B)=(A\\cap B^C)\\cup(A\\cup B^C)^C$라 할 때, 다음 중 &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $n(S(A,B))=n(A\\cup B)$이면 $n(A\\cap B)=0$이다.<br>ㄴ. $S(A,B)=A^C$이면 $A\\cup B=U$이다.<br>ㄷ. $S(A,B)\\cap C^C=S(A\\cap B,B\\cap C)$이다.</div>",
+    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $A$, $B$에 대하여 $S(A,B)=(A\\cap B^C)\\cup(A\\cup B^C)^C$라 할 때, 다음 중 보기에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $n(S(A,B))=n(A\\cup B)$이면 $n(A\\cap B)=0$이다.<br>ㄴ. $S(A,B)=A^C$이면 $A\\cup B=U$이다.<br>ㄷ. $S(A,B)\\cap C^C=S(A\\cap B,B\\cap C)$이다.</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -902,7 +902,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_매산고_2학기_중간_고1_기출/q015_visual.svg",
+    "image": "assets/images/26_매산고_2학기_중간_고1_기출/q015_visual.png",
     "imageSize": "full",
     "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q15-solution.svg",
     "solutionImageAlt": "원 중심 A에서 직선 y=mx에 내린 수선 AH와 현의 반쪽 BH, 선분 OH를 나타낸 해설 그림",
@@ -1067,7 +1067,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_매산고_2학기_중간_고1_기출/q018_visual.svg",
+    "image": "assets/images/26_매산고_2학기_중간_고1_기출/q018_visual.png",
     "imageSize": "full",
     "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q18-solution.svg",
     "solutionImageAlt": "중심 (-3,0), 반지름 1인 왼쪽 아래 사분원호와 두 반지름 선분을 좌표축에 정확히 나타낸 해설 그림",

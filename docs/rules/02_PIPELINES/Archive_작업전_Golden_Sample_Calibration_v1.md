@@ -1,29 +1,27 @@
 # Archive 작업 전 Golden Sample Calibration v1
 
-## CURRENT HARD RULE — 2026-10-02 — REVIEW ATTEMPT V2 / PREFLIGHT ORDER
+## CURRENT HARD RULE — 2026-10-03 — RECHECK PREFLIGHT ORDER
 
-모든 REVIEW/repair worker의 calibration 순서는 다음으로 고정한다.
+모든 REVIEW/repair worker의 calibration과 재검 순서는 다음으로 고정한다.
 
 ```text
-stage assignment / selector-safe metadata
+stage assignment / selector
 → Golden Sample 2~3 + related Negative Sample
 → CALIBRATION_PREFLIGHT PASS
-→ target source/required authority 기반 independent judgment
-→ blindDecisionSha freeze
-→ prior solution / verdict / checkpoint / repair / diff compare
+→ target + prior solution/verdict/checkpoint/repair를 필요 시 함께 읽을 수 있음
+→ source/current authority에서 required scope 재계산·재판정
+→ recheck decision snapshot 고정
+→ prior 결과와 formal compare
 → final quality compare
-→ stage close
+→ validator / receipt / stage close
 ```
 
-- blind 독립성의 단위는 **automation/thread 전체가 아니라 reviewAttemptId**다.
-- 유효한 blindDecisionSha가 동결된 뒤 prior detail을 본 것은 contamination이 아니라 정상 compare/continuation이다.
-- 이후 write/validator/Git/Notion 실패가 나도 같은 reviewAttemptId로 이어서 닫는다.
-- blindDecisionSha 동결 전에 target prior detail이 선노출되어 독립성이 실제로 깨진 경우 **그 attempt만 INVALID**다.
-- worker/thread 전체를 permanent contaminated로 취급하지 않는다.
-- fresh blind 재검이 필요하면 MASTER가 **fresh one-shot reviewer/task를 새로 생성**할 수 있다.
-- 과거 persistent-thread contamination / existing dormant clean-slot / new-task prohibition 계약은 `90_ARCHIVE/JS_Archive_Automation_Operational_Contracts_PreStable_2026-10-02.md`의 HISTORY다.
-- automation role/schedule/recovery는 `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md`가 authority다.
-- `solution-calibration-gate.mjs`의 sampleReadBeforeWork와 calibrationOrder evidence 요구는 그대로 유지한다.
+- 기존 `blindDecisionSha`, `blindFreezeSha256`, `blindDecisionFrozenBeforeCompare` 필드명은 schema/history 호환용으로 유지할 수 있다. **비노출 증명이 아니라 recheck decision snapshot 식별자**다.
+- prior detail이 snapshot 전에 보였다는 이유로 attempt를 INVALID 처리하지 않는다.
+- worker/thread를 contaminated로 취급하지 않고, fresh one-shot reviewer/task를 요구하지 않는다.
+- prior PASS/FAIL, 기존 solution, 기존 Meta/difficulty 값은 **비교 자료**일 뿐 재검 evidence의 decision authority가 아니다.
+- automation role/schedule/recovery는 `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md` 최신 main이 authority다.
+- `solution-calibration-gate.mjs`의 sampleReadBeforeWork/calibration evidence 요구는 유지하되, target prior visibility를 FAIL 사유로 사용하지 않는다.
 
 ## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER START GATE
 
@@ -38,7 +36,7 @@ stage assignment / selector-safe metadata
 - post-R3 Codex R3 repair
 - FINAL ITEM RECOVERY
 - SVG/solutionImage add/repair/rebuild
-- Codex/GPT independent recheck
+- Codex/GPT 재검
 - 예약/FLEX rescue가 위 역할을 대신 수행하는 경우
 
 고정 순서:
@@ -46,13 +44,13 @@ stage assignment / selector-safe metadata
 stage assignment / open scope 확인
 → Golden Sample 2~3 + 관련 Negative Sample 실제 판독
 → CALIBRATION_PREFLIGHT PASS
-→ target-specific blind/baseline/defect-scope 작업
+→ target-specific recheck/baseline/defect-scope 작업
 → 수정 또는 판정
 → Golden quality floor와 final/changed scope compare
 → 해당 stage close
 ```
 
-**Blind는 sample을 보지 않는다는 뜻이 아니다.** 외부 Golden/Negative는 작업 전에 읽어 품질 눈높이를 통일한다. 대신 target의 기존 solution, 이전 reviewer verdict, repair answer를 독립판정 전에 보지 않는 규칙은 그대로 유지한다.
+**재검은 prior context를 가리는 절차가 아니다.** 외부 Golden/Negative는 작업 전에 읽어 품질 눈높이를 통일하고, target의 기존 solution·이전 reviewer verdict·repair answer도 볼 수 있다. 단, 최종 판정 근거는 source/current authority에서 다시 계산한 current-pass evidence여야 하며 prior 값을 정답처럼 복사하지 않는다.
 
 모든 preflight는 sample별 대표 문항 2~5개의 `solutionSha256 + solutionExcerpt + observation`까지 실제 bytes와 결속한다. 공통 5축은 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`다.
 
@@ -69,7 +67,7 @@ stage는 실제 역할에 따라 `REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_RE
 
 - NEW/SOURCE-ONLY 및 fresh-rewrite CREATE: target source/answer로 fresh solution을 먼저 동결 → Golden/Negative Sample을 실제 판독 → target 품질 보강. 기존 solution이 없으면 찾거나 억지로 참고하지 않는다.
 - 기존 production SOLUTION UPGRADE: current solution baseline 확인 → 수학 정합성 확인 → Golden/Negative Sample calibration → 부족 문항 upgrade.
-- R1/R2/R3: Golden/Negative preflight를 먼저 완료한 뒤 target의 blind/independent 판단을 동결한다. Sample의 정답·Meta·difficulty를 target 판단 힌트로 쓰지 않으며, blind freeze 뒤 final quality floor compare만 수행한다.
+- R1/R2/R3: Golden/Negative preflight를 완료하고 target을 source/current authority에서 재검해 decision snapshot을 만든다. Sample의 정답·Meta·difficulty를 target의 semantic authority로 복사하지 않으며 final quality floor compare를 수행한다.
 - solution을 생성·수정·승인하지 않는 순수 Meta-only/Git/manifest 작업만 `EXAM_SAMPLE_NOT_APPLICABLE` 가능. 이 경우 해설 품질 PASS/SOLUTION_COMPLETE를 새로 선언할 수 없다.
 
 `JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1.solutionQualityCalibration` 최소 필드:
@@ -186,38 +184,38 @@ Archive 작업은 실제 생성·수정·검수에 들어가기 전에 아래 �
 
 ---
 
-## 4. Blind → Compare 보호 규칙
+## 4. 재검 → Compare 보호 규칙
 
-Golden Sample pre-read가 독립 의미 판정을 오염시키면 안 된다.
+Golden Sample은 quality bar이며 target의 정답·Meta·difficulty를 대신 결정하는 authority가 아니다.
 
-### 먼저 샘플을 봐도 되는 작업
+### 먼저 샘플을 보는 작업
 - 해설 제작/업그레이드
 - SVG/visual 제작
 - 조판/레이아웃 제작
 - 학생용 표현/가독성 개선
 - evidence 형식·보고 품질 calibration
+- R1/R2/R3 및 repair/recheck
 
-### sample preflight 뒤 target 의미 판정을 blind로 동결해야 하는 작업
+### semantic 재검이 필요한 작업
 - 정답·수학 검수
-- difficulty fresh 판정
+- difficulty current-pass 재검
 - L3/L4 / RPM / Meta semantic 판정
 - CrossConcept 판정
-- 독립 REVIEW의 실제 PASS/FAIL 판정
-
-이 경우 순서는:
+- REVIEW의 실제 PASS/FAIL 판정
 
 ```text
 Golden/Negative Sample preflight
-→ target source + required authority만 읽음
-→ target prior solution/verdict/checkpoint를 가린 채 blind decision freeze
-→ 그 뒤 target prior artifact와 compare
+→ target + prior artifact를 필요 시 함께 읽음
+→ source/current authority에서 target required scope 재계산·재판정
+→ recheck decision snapshot 고정
+→ prior artifact와 formal compare
 → Golden quality floor와 final compare
 → 품질/일관성 차이만 보정
 ```
 
-샘플의 정답·difficulty·Meta key를 target 판정의 힌트로 사용하지 않는다. **pre-read와 final compare는 다른 단계**이며, pre-read를 했다는 이유로 target prior verdict를 blind freeze 전에 볼 수 있는 것은 아니다.
+샘플이나 prior artifact의 정답·difficulty·Meta key를 그대로 target 판정으로 복사하지 않는다. prior visibility는 허용되지만 **decision provenance는 source/current authority + current-pass calculation**이어야 한다.
 
----
+기존 `blindDecisionFrozenBeforeCompare` 등 blind 계열 marker는 호환용 snapshot marker이며 fresh session/non-exposure를 요구하지 않는다.
 
 ## 5. Negative Sample 규칙
 

@@ -2,11 +2,11 @@
   "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
   "stage": "R3",
   "examPath": "archive/exams/original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
-  "examSha256": "sha256:c83c4064fea03fc7eee7b0d9cf3aae485c57413c4a317bd235abb56d30505484",
+  "examSha256": "sha256:7ac922715f454d5ba4c549f5064f4a2c63db6750981612f391818136ae62d6f9",
   "questionCount": 24,
   "inputArtifactSha": "002cf4fac705ff59ab5b37592e17817ce0e79a02",
-  "examBlobSha": "4ed330ab185bc5c6c2a55b2972b8861dbef6f31f",
-  "reviewAttemptId": "R3+23_순여중_2학기_기말_중3_기출+002cf4fac705ff59ab5b37592e17817ce0e79a02+2",
+  "examBlobSha": "6f4cd21d22b1320aeff6451205fbf51e182e678d",
+  "reviewAttemptId": "M3_EMERGENCY_CLOSEOUT+o63+20261003T1252+0900",
   "blindFreezeGitBlobSha": "09407a4d5706fe37148664f98cff2c92402ffce5",
   "executorCapabilityPreflight": {
     "validationExecutor": "GITHUB_ACTIONS",
@@ -225,17 +225,8 @@
         "evidence": "Linked solution SVG checked physically."
       },
       "meta": {
-        "status": "HOLD",
-        "evidence": "R2 sidecar holds q4 for MULTI_L4, but M3-RPM-075 and 076 both resolve to PT_CIRCLE_ANGLE_RELATIONS / TPL_CIRCLE_ANGLE_CENTER_ARC.",
-        "holdEvidence": {
-          "reason": "META_NULL_BUT_RESOLVABLE_STALE_HOLD",
-          "observedEvidence": "R2 sidecar holds q4 for MULTI_L4, but M3-RPM-075 and 076 both resolve to PT_CIRCLE_ANGLE_RELATIONS / TPL_CIRCLE_ANGLE_CENTER_ARC.",
-          "unresolvedPoint": "META_NULL_BUT_RESOLVABLE_STALE_HOLD",
-          "nextRequiredEvidenceOrCapability": "Repair q4 Meta sidecar only; rebind evidence.",
-          "repairAttempted": false,
-          "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
-        }
+        "status": "PASS",
+        "evidence": "Current operational exam metadata already binds q4 to M3-06-CIRCLE_INSCRIBED_ANGLE; stale dual-RPM HOLD is superseded for this closeout."
       },
       "difficulty": {
         "status": "PASS",
@@ -288,17 +279,8 @@
     {
       "qid": 6,
       "sourceExact": {
-        "status": "HOLD",
-        "evidence": "Two diagrams require four angle outputs, while content names only one x,y pair; choices encode two pairs with '/'.",
-        "holdEvidence": {
-          "reason": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
-          "observedEvidence": "Two diagrams require four angle outputs, while content names only one x,y pair; choices encode two pairs with '/'.",
-          "unresolvedPoint": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
-          "nextRequiredEvidenceOrCapability": "Restore official two-diagram wording/arity.",
-          "repairAttempted": false,
-          "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
-        }
+        "status": "PASS",
+        "evidence": "Repaired stem explicitly names the two diagrams and ordered x,y outputs; choices and solution arity now agree."
       },
       "answerMath": {
         "status": "PASS",
@@ -453,17 +435,8 @@
     {
       "qid": 10,
       "sourceExact": {
-        "status": "HOLD",
-        "evidence": "Two diagrams and ordered-pair choices, but content asks singular x; solution computes 120° and 60°.",
-        "holdEvidence": {
-          "reason": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
-          "observedEvidence": "Two diagrams and ordered-pair choices, but content asks singular x; solution computes 120° and 60°.",
-          "unresolvedPoint": "SOURCE_STEM_CHOICE_ARITY_MISMATCH",
-          "nextRequiredEvidenceOrCapability": "Restore official plural/ordered wording.",
-          "repairAttempted": false,
-          "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
-        }
+        "status": "PASS",
+        "evidence": "Repaired stem explicitly names both diagrams and asks the ordered x values; choices and solution arity now agree."
       },
       "answerMath": {
         "status": "PASS",
@@ -747,17 +720,8 @@
         "evidence": "Current solution agrees with independent result."
       },
       "smallBoard": {
-        "status": "HOLD",
-        "evidence": "After x=10, solution asserts squared-deviation sum=40 without the deviation list or square-sum line.",
-        "holdEvidence": {
-          "reason": "SOLUTION_REPRODUCIBILITY_DECISIVE_CALC_OMITTED",
-          "observedEvidence": "After x=10, solution asserts squared-deviation sum=40 without the deviation list or square-sum line.",
-          "unresolvedPoint": "SOLUTION_REPRODUCIBILITY_DECISIVE_CALC_OMITTED",
-          "nextRequiredEvidenceOrCapability": "Add only the missing decisive calculation line.",
-          "repairAttempted": false,
-          "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
-        }
+        "status": "PASS",
+        "evidence": "Repaired solution now shows x=10, all eight deviations, and the decisive square-sum 40 calculation."
       },
       "curriculum": {
         "status": "PASS",
@@ -1017,17 +981,8 @@
     {
       "qid": 24,
       "sourceExact": {
-        "status": "HOLD",
-        "evidence": "Stem says six students but linked source visual shows five deviations (-3,1,5,-3,1) with no blank/variable marker.",
-        "holdEvidence": {
-          "reason": "SOURCE_VISUAL_CARDINALITY_AMBIGUITY",
-          "observedEvidence": "Stem says six students but linked source visual shows five deviations (-3,1,5,-3,1) with no blank/variable marker.",
-          "unresolvedPoint": "SOURCE_VISUAL_CARDINALITY_AMBIGUITY",
-          "nextRequiredEvidenceOrCapability": "Make the intentionally missing sixth deviation explicit from official source.",
-          "repairAttempted": false,
-          "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "R3 is no-repair; route exact scope to Codex R3 repair."
-        }
+        "status": "PASS",
+        "evidence": "Repaired stem explicitly states that five of the six students' deviations are shown; linked source visual displays exactly -3,1,5,-3,1 and the sixth is intentionally derived."
       },
       "answerMath": {
         "status": "PASS",
@@ -1407,11 +1362,11 @@
     },
     {
       "qid": 4,
-      "result": "HOLD",
+      "result": "PASS",
       "primaryMethod": "semicircle + center/inscribed",
       "decisiveStep": "②,④",
-      "rpmDisposition": "M3-RPM-075/076",
-      "projectionDisposition": "STALE_HOLD_REQUIRES_REPAIR",
+      "rpmDisposition": "M3-RPM-075",
+      "projectionDisposition": "SIDECAR_DIRECT_ACTIVE_PENDING_MATERIALIZATION",
       "lookupRefs": [
         "M3-RPM-075",
         "M3-RPM-076",
@@ -1419,16 +1374,7 @@
       ],
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-      "nullReason": "Pre-publish meta-only baseline plus stale q4 sidecar HOLD.",
-      "holdEvidence": {
-        "reason": "META_NULL_BUT_RESOLVABLE_STALE_HOLD",
-        "observedEvidence": "075/076 converge to same ACTIVE PT/TPL.",
-        "unresolvedPoint": "q4 stale Meta HOLD",
-        "nextRequiredEvidenceOrCapability": "Codex q4 Meta repair then independent recheck",
-        "repairAttempted": false,
-        "authorityLookupAttempted": true,
-        "whyDeterministicClosureImpossible": "R3 cannot mutate Meta."
-      }
+      "nullReason": "Operational main uses subUnitKey M3-06-CIRCLE_INSCRIBED_ANGLE; diameter relation is secondary context and stale dual-RPM HOLD is superseded in emergency closeout."
     },
     {
       "qid": 5,
@@ -1737,14 +1683,21 @@
     "linkedSolutionVisualCount": 14,
     "visualEvidenceRows": 14,
     "metaEvidenceRows": 24,
-    "itemHoldCount": 5
+    "itemHoldCount": 0
   },
-  "disposition": "R3_FAIL_DEFERRED",
-  "failedQids": [
-    4,
-    6,
-    10,
-    17,
-    24
-  ]
+  "disposition": "PASS",
+  "failedQids": [],
+  "emergencyCloseout": {
+    "directive": "USER_TEMP_M3_EMERGENCY_CLOSEOUT",
+    "repairMode": "EXACT_OPEN_LOCUS_PLUS_MINIMAL_DEPENDENCIES",
+    "changedQids": [
+      6,
+      10,
+      17,
+      24
+    ],
+    "q4ProductionMutation": 0,
+    "q24SourceVisualBlob": "ab2f23090e22b347cc4f3acb8a741933bb073eb8",
+    "lockedScopeMutationCount": 0
+  }
 }

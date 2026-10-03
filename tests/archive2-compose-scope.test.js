@@ -5,6 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
 const core = require('../archive/archive2-core.js');
+const archiveSource = require('../archive/archive2-source.js');
 const { catalog, withTestAssignments } = require('./helpers/archive2-scope-harness.cjs');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -43,7 +44,7 @@ function harness(data = structuredClone(catalog)) {
     Archive2Output: require('../archive/archive2-output.js'),
     Archive2Papers: require('../archive/archive2-papers.js'),
     Archive2History: require('../archive/archive2-history.js'),
-    Archive2Source: {},
+    Archive2Source: archiveSource,
   });
   ctx.window = ctx;
   const source = read('archive2-workspace.js');
@@ -52,7 +53,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, planRows, request, bucketButtons, newDraft, draft, applyDraft, saveWorkSignature, findExams, renderFind, pool};
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, findExams, renderFind, pool};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -70,6 +71,38 @@ function harness(data = structuredClone(catalog)) {
         await callback({ target: { dataset: { group, filter }, value } });
     },
   };
+}
+
+function configureSaveHarness(t) {
+  const { w, ctx } = harness();
+  const previousDocument = global.document;
+  const previousFetch = global.fetch;
+  global.document = { baseURI: "https://archive.test/archive/workspace.html" };
+  global.fetch = async input => {
+    const url = new URL(String(input));
+    const sourcePath = decodeURIComponent(url.pathname.replace("/archive/exams/", ""));
+    return {
+      ok: true,
+      status: 200,
+      text: async () => fs.readFileSync(path.join(root, "archive/exams", sourcePath), "utf8"),
+    };
+  };
+  t.after(() => {
+    if (previousDocument === undefined) delete global.document; else global.document = previousDocument;
+    if (previousFetch === undefined) delete global.fetch; else global.fetch = previousFetch;
+  });
+  const record = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.ackWarnings = true;
+  ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
+  ctx.APMATH_API_BASE = "https://archive.test/api";
+  return { w, ctx };
 }
 
 function basicRecord(grade, change = {}) {
@@ -458,12 +491,12 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-canonical.js', '20261001-canonical-loadset-1'],
     ['archive2-core.js', '20261001-h23-compose-closure-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
-    ['archive2-workspace.js', '20261001-shared-grade-finder-1'],
+    ['archive2-workspace.js', '20261003-assign-output-ux-2'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
-  for (const file of ['archive2-library.js', 'archive2-navigation.js'])
-    assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260929-saved-library-'));
+  assert.match(html, /archive2-library\.js\?v=20261002-paper-lifecycle-3/);
+  assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
 });
 
 test('fresh BASIC includes every difficulty and unclassified metadata without preselecting 2 and 3', () => {
@@ -591,7 +624,7 @@ test('saved-paper links are tied to the current work signature and fresh drafts 
   assert.equal(w.state.saveSignature, '');
   assert.equal(w.state.saveResultSignature, '');
   const legacyDraft = plain(w.draft());
-  for (const key of ['saveBatchId', 'saveSignature', 'savedPaperIds', 'saveMessage', 'saveError', 'saveResultSignature']) delete legacyDraft[key];
+  for (const key of ['saveBatchId', 'saveSignature', 'savedPaperIds', 'saveMessage', 'saveError', 'saveResultSignature', 'saveResultState']) delete legacyDraft[key];
   w.state.saveBatchId = 'stale-legacy-batch';
   w.state.saveSignature = 'stale-legacy-signature';
   w.state.savedPaperIds = ['00000000-0000-4000-8000-000000000001'];
@@ -673,4 +706,330 @@ test('restoring a draft fails when its exact canonical scope parent no longer ex
   w.state.catalog = nextCatalog;
   w.state.byUid = new Map(nextCatalog.records.map(row => [row.questionUid, row]));
   assert.throws(() => w.applyDraft(draft), /현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다/);
+});
+
+test('unknown save result persists its batch and locks Draft edits until reconciled', () => {
+  const { w } = harness();
+  const record = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.saveBatchId = '00000000-0000-4000-8000-000000000123';
+  w.state.saveSignature = 'frozen-request-signature';
+  w.state.saveResultSignature = w.saveWorkSignature();
+  w.state.saveResultState = 'RESULT_UNKNOWN';
+  const savedDraft = plain(w.draft());
+  assert.equal(savedDraft.saveBatchId, w.state.saveBatchId);
+  assert.equal(savedDraft.saveResultState, 'RESULT_UNKNOWN');
+  const mobile = w.renderMobileActions();
+  assert.match(mobile, /저장 결과 확인/);
+  const compose = w.renderCompose();
+  assert.match(compose, /응답을 확인하지 못했습니다/);
+  assert.match(compose, /class="workspace" inert/);
+  const lockedDraftId = w.state.draftId;
+  w.newDraft();
+  assert.equal(w.state.draftId, lockedDraftId, "an unknown result cannot be abandoned as a new save identity");
+  assert.match(compose, /응답을 확인하지 못했습니다/);
+});
+
+test('restoring a Draft saved while POST was in flight marks the result unknown', () => {
+  const { w } = harness();
+  const interruptedRequest = plain(w.draft());
+  interruptedRequest.saveBatchId = '00000000-0000-4000-8000-000000000124';
+  interruptedRequest.saveSignature = 'frozen-request-signature';
+  interruptedRequest.saveResultSignature = w.saveWorkSignature();
+  interruptedRequest.saveResultState = 'SAVING';
+  w.applyDraft(interruptedRequest);
+  assert.equal(w.state.saveResultState, 'RESULT_UNKNOWN');
+  assert.equal(w.state.saveBatchId, interruptedRequest.saveBatchId);
+  assert.equal(w.state.saveSignature, interruptedRequest.saveSignature);
+});
+
+test('lost save response resolves through the same batch ID and changed Draft creates a new batch', async (t) => {
+  const { w, ctx } = harness();
+  const previousDocument = global.document;
+  const previousFetch = global.fetch;
+  global.document = { baseURI: "https://archive.test/archive/workspace.html" };
+  global.fetch = async input => {
+    const url = new URL(String(input));
+    const sourcePath = decodeURIComponent(url.pathname.replace("/archive/exams/", ""));
+    return {
+      ok: true,
+      status: 200,
+      text: async () => fs.readFileSync(path.join(root, "archive/exams", sourcePath), "utf8"),
+    };
+  };
+  t.after(() => {
+    if (previousDocument === undefined) delete global.document; else global.document = previousDocument;
+    if (previousFetch === undefined) delete global.fetch; else global.fetch = previousFetch;
+  });
+  const record = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.ackWarnings = true;
+  ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
+  ctx.APMATH_API_BASE = "https://archive.test/api";
+  const postBodies = [];
+  let batchLookups = 0;
+  let lookedUpBatchId = "";
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    if (parsed.pathname.startsWith("/api/archive-saved-papers/save-batches/")) {
+      batchLookups++;
+      lookedUpBatchId = parsed.pathname.split("/").at(-1);
+      return { ok: true, status: 200, json: async () => ({
+        success: true, found: true, saved: true,
+        papers: [{ id: "00000000-0000-4000-8000-000000000901" }],
+      }) };
+    }
+    if (parsed.pathname === "/api/archive-saved-papers" && init.method === "POST") {
+      const body = JSON.parse(init.body);
+      postBodies.push(body);
+      if (postBodies.length === 1)
+        return { ok: false, status: 502, json: async () => ({ error: "reply lost after commit" }) };
+      return { ok: true, status: 200, json: async () => ({
+        success: true, saved: true,
+        papers: [{ id: "00000000-0000-4000-8000-000000000902" }],
+      }) };
+    }
+    throw new Error("unexpected API request: " + parsed.pathname);
+  };
+
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "SAVED", JSON.stringify({error: w.state.saveError, postBodies: postBodies.length, batchLookups}));
+  assert.deepEqual(plain(w.state.savedPaperIds), ["00000000-0000-4000-8000-000000000901"]);
+  assert.equal(postBodies.length, 1);
+  assert.equal(batchLookups, 1);
+  assert.equal(lookedUpBatchId, postBodies[0].save_batch_id);
+
+  const firstBatchId = w.state.saveBatchId;
+  w.state.header = { ...w.state.header, title: "다음 수정본" };
+  await w.savePapers();
+  assert.equal(postBodies.length, 2);
+  assert.notEqual(postBodies[1].save_batch_id, firstBatchId,
+    "a changed Draft must receive a new idempotency identity");
+  assert.equal(w.state.saveResultState, "SAVED");
+  assert.deepEqual(plain(w.state.savedPaperIds), ["00000000-0000-4000-8000-000000000902"]);
+});
+
+
+test('unknown save with no committed batch retries the identical request identity', async (t) => {
+  const { w, ctx } = harness();
+  const previousDocument = global.document;
+  const previousFetch = global.fetch;
+  global.document = { baseURI: "https://archive.test/archive/workspace.html" };
+  global.fetch = async input => {
+    const url = new URL(String(input));
+    const sourcePath = decodeURIComponent(url.pathname.replace("/archive/exams/", ""));
+    return {
+      ok: true,
+      status: 200,
+      text: async () => fs.readFileSync(path.join(root, "archive/exams", sourcePath), "utf8"),
+    };
+  };
+  t.after(() => {
+    if (previousDocument === undefined) delete global.document; else global.document = previousDocument;
+    if (previousFetch === undefined) delete global.fetch; else global.fetch = previousFetch;
+  });
+  const record = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.ackWarnings = true;
+  ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
+  ctx.APMATH_API_BASE = "https://archive.test/api";
+  const postBodies = [];
+  let statusChecks = 0;
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    if (parsed.pathname.startsWith("/api/archive-saved-papers/save-batches/")) {
+      statusChecks++;
+      if (statusChecks === 2) throw new Error("transient status lookup failure");
+      return { ok: true, status: 200, json: async () => ({ success: true, found: false, saved: false, papers: [] }) };
+    }
+    if (parsed.pathname === "/api/archive-saved-papers" && init.method === "POST") {
+      postBodies.push(JSON.parse(init.body));
+      if (postBodies.length === 1)
+        return { ok: false, status: 502, json: async () => ({ error: "response lost before commit" }) };
+      return { ok: true, status: 200, json: async () => ({
+        success: true, saved: true,
+        papers: [{ id: "00000000-0000-4000-8000-000000000903" }],
+      }) };
+    }
+    throw new Error("unexpected API request: " + parsed.pathname);
+  };
+
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "RESULT_UNKNOWN");
+  const originalBatchId = postBodies[0].save_batch_id;
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "SAVED");
+  assert.equal(statusChecks, 2);
+  assert.equal(postBodies.length, 2);
+  assert.equal(postBodies[1].save_batch_id, originalBatchId);
+  assert.deepEqual(postBodies[1], postBodies[0]);
+});
+
+test("a missing save batch followed by POST 409 is a definite failure", async t => {
+  const { w, ctx } = configureSaveHarness(t);
+  let statusChecks = 0;
+  let posts = 0;
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    if (parsed.pathname.startsWith("/api/archive-saved-papers/save-batches/")) {
+      statusChecks++;
+      if (statusChecks === 1)
+        return { ok: true, status: 200, json: async () => ({ success: true, found: false, saved: false, papers: [] }) };
+      return { ok: false, status: 404, json: async () => ({ error: "save batch not found" }) };
+    }
+    if (parsed.pathname === "/api/archive-saved-papers" && init.method === "POST") {
+      posts++;
+      if (posts === 1) throw new Error("response lost");
+      return { ok: false, status: 409, json: async () => ({ error: "save batch conflict" }) };
+    }
+    throw new Error("unexpected API request: " + parsed.pathname);
+  };
+
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "RESULT_UNKNOWN");
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "FAILED");
+  assert.equal(posts, 2);
+  assert.equal(statusChecks, 2);
+  assert.match(w.state.saveError, /save batch conflict/);
+});
+
+test("HTTP 502 and network failures keep the same save result unresolved", async t => {
+  for (const failureKind of ["HTTP 502", "network"]) {
+    await t.test(failureKind, async subtest => {
+      const { w, ctx } = configureSaveHarness(subtest);
+      ctx.fetch = async (url, init = {}) => {
+        const parsed = new URL(String(url));
+        if (parsed.pathname.startsWith("/api/archive-saved-papers/save-batches/"))
+          return { ok: true, status: 200, json: async () => ({ success: true, found: false, saved: false, papers: [] }) };
+        if (parsed.pathname === "/api/archive-saved-papers" && init.method === "POST") {
+          if (failureKind === "network") throw new Error("network unavailable");
+          return { ok: false, status: 502, json: async () => ({ error: "upstream unavailable" }) };
+        }
+        throw new Error("unexpected API request: " + parsed.pathname);
+      };
+
+      await w.savePapers();
+      assert.equal(w.state.saveResultState, "RESULT_UNKNOWN");
+      assert.ok(w.state.saveBatchId);
+      assert.match(w.state.saveError, failureKind === "network" ? /network unavailable/ : /upstream unavailable/);
+    });
+  }
+});
+
+test('Saved Paper revision Draft preserves the immutable source snapshot and lineage parent', async () => {
+  const { w, ctx } = harness();
+  const record = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const uid = record.questionUid;
+  const pathKey = core.pathKey(record, 4);
+  const frozenQuestion = {
+    questionUid: uid,
+    sourceFingerprint: record.sourceFingerprint,
+    sourceArchiveFile: record.sourceFile,
+    sourceOrdinal: record.sourceOrdinal,
+    sourceQuestionNo: record.sourceQuestionNo,
+    content: '<p>frozen Saved Paper bytes</p>',
+    solution: '<p>frozen solution bytes</p>',
+    image: 'data:image/png;base64,Zm9vemVu',
+  };
+  const paper = {
+    id: '00000000-0000-4000-8000-000000000321',
+    title: 'immutable source title',
+    snapshot_hash: 'a'.repeat(64),
+    snapshot: {
+      questions: [frozenQuestion],
+      meta: {
+        title: 'immutable source title',
+        questionUids: [uid],
+        printHeaderOptions: { title: 'immutable source title', subtitle: 'saved subtitle' },
+        qpp: 6,
+        includeQr: true,
+      },
+      selectionFilters: {
+        grade: record.effectiveBrowseGrade,
+        primaryPaths: [pathKey],
+        scopeQuestionUids: [uid],
+        sourceFiles: [record.sourceFile],
+        difficultyBuckets: [],
+      },
+    },
+  };
+  const oldDraftId = w.state.draftId;
+  w.applySavedPaperRevision(paper);
+  assert.notEqual(w.state.draftId, oldDraftId);
+  assert.equal(w.state.derivationSource.parentKind, 'SAVED_PAPER');
+  assert.equal(w.state.derivationSource.parentId, paper.id);
+  assert.equal(w.state.derivationSource.parentSnapshotHash, paper.snapshot_hash);
+  assert.equal(w.state.derivationSource.derivationType, 'REVISION');
+  assert.deepEqual(plain(w.state.selected.map(row => row.questionUid)), [uid]);
+  assert.equal(w.state.saveBatchId, '');
+  assert.equal(w.state.qpp, 6);
+  assert.equal(w.state.includeQr, true);
+  const persistedDraft = plain(w.draft());
+  assert.equal(persistedDraft.derivationSource.parentId, paper.id);
+  assert.equal(Object.hasOwn(persistedDraft, 'derivedBaseQuestions'), false,
+    'large immutable source payload stays server-authoritative instead of entering local Draft storage');
+  const prepared = await w.prepare();
+  assert.equal(prepared[0].questions[0].content, frozenQuestion.content);
+  assert.equal(prepared[0].questions[0].solution, frozenQuestion.solution);
+  assert.equal(prepared[0].questions[0].image, frozenQuestion.image);
+  assert.match(w.renderCompose(), /원본 저장 시험지의 고정된 범위/);
+
+  const changedSource = structuredClone(paper);
+  changedSource.snapshot.questions[0].sourceFingerprint = 'changed-source-fingerprint';
+  assert.throws(() => w.applySavedPaperRevision(changedSource), /원본 문항이 변경되었습니다/);
+
+  ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
+  ctx.APMATH_API_BASE = "https://archive.test/api";
+  let savedPayload = null;
+  ctx.fetch = async (url, init = {}) => {
+    assert.equal(new URL(String(url)).pathname, "/api/archive-saved-papers");
+    assert.equal(init.method, "POST");
+    savedPayload = JSON.parse(init.body);
+    return { ok: true, status: 200, json: async () => ({
+      success: true,
+      saved: true,
+      papers: [{ id: "00000000-0000-4000-8000-000000000322" }],
+    }) };
+  };
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, "SAVED");
+  assert.equal(savedPayload.papers[0].lineage.parent_kind, "SAVED_PAPER");
+  assert.equal(savedPayload.papers[0].lineage.parent_id, paper.id);
+  assert.equal(savedPayload.papers[0].lineage.parent_snapshot_hash, paper.snapshot_hash);
+  assert.equal(savedPayload.papers[0].lineage.derivation_type, "REVISION");
+  assert.equal(savedPayload.papers[0].questions[0].content, frozenQuestion.content);
+
+  w.applyDraft(persistedDraft);
+  assert.equal(w.state.derivationSource.parentId, paper.id);
+  assert.equal(w.state.derivedBaseQuestions, null, "Draft restoration keeps only the parent identity locally");
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    assert.equal(parsed.pathname, "/api/archive-saved-papers/" + paper.id);
+    assert.equal(init.method, "GET");
+    return { ok: true, status: 200, json: async () => ({ success: true, paper }) };
+  };
+  const restoredPrepared = await w.prepare();
+  assert.equal(restoredPrepared[0].questions[0].content, frozenQuestion.content,
+    "Draft reopen reads the immutable parent snapshot instead of rebuilding from current source files");
 });
