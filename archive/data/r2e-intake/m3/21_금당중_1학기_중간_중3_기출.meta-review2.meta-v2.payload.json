@@ -29,19 +29,15 @@
   "canonicalBindingRuntimeAuditCount": "23/23",
   "itemHoldCount": 0,
   "itemHoldQuestionIds": [],
-  "metadataCanonicalHoldCount": 1,
-  "metadataCanonicalHoldQids": [
-    "archive/exams/original/middle/m3/1mid/21_금당중_1학기_중간_중3_기출.js|21_금당중_1학기_중간_중3_기출|14"
-  ],
-  "metadataCanonicalHoldReasons": {
-    "archive/exams/original/middle/m3/1mid/21_금당중_1학기_중간_중3_기출.js|21_금당중_1학기_중간_중3_기출|14": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
-  },
-  "semanticFinalCount": 22,
-  "semanticHoldCount": 1,
-  "rpmPrimaryMigrationGapCount": 22,
+  "metadataCanonicalHoldCount": 0,
+  "metadataCanonicalHoldQids": [],
+  "metadataCanonicalHoldReasons": {},
+  "semanticFinalCount": 23,
+  "semanticHoldCount": 0,
+  "rpmPrimaryMigrationGapCount": 23,
   "projectionReuseCount": 0,
   "projectionBindingPendingCount": 2,
-  "projectionUnmaterializedCount": 20,
+  "projectionUnmaterializedCount": 21,
   "compiledRuntimeMaterializationRequired": false,
   "compiledRuntimeReason": "No reviewed row resolves to a full ACTIVE projection with exact 2015 M3 binding. DIRECT_BINDING_GAP rows remain metadata-only binding-pending; RPM_ONLY rows remain unmaterialized. Projection gaps are not semantic HOLDs.",
   "contentMutation": 0,
@@ -901,15 +897,22 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "primaryMethod": "여러 종류의 곱셈공식 전개를 병렬 검산",
-      "decisiveStep": "합·차의 제곱, 합과 차의 곱, 두 일차식의 곱을 각각 전개해야 하며 단일 L4가 문항 전체를 지배하지 않음",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "META_CANONICAL_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "primaryMethod": "여러 곱셈공식의 전개 결과를 비교·판별",
+      "decisiveStep": "합·차의 제곱, 합과 차의 곱, 두 일차식의 곱을 각 보기에서 전개해 좌우 다항식을 비교하고 ③만 일치함을 확인",
+      "rpmRecordId": "M3-RPM-182",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식",
+        "l4": "여러 곱셈공식 비교·판별"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
@@ -938,13 +941,11 @@
         "rationale": "q14: 계산 자체는 공식 직접 적용이고 전략 선택이 없어 bucket 1."
       },
       "metadataReviewStatus": "META_REVIEW2_HOLD",
-      "metadataDisposition": "TRUE_META_HOLD",
+      "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED",
       "crossConceptReasons": [],
       "conditionReasons": [],
       "rpmCandidateRecordIds": [
-        "M3-RPM-015",
-        "M3-RPM-016",
-        "M3-RPM-017"
+        "M3-RPM-182"
       ]
     },
     {
