@@ -8,13 +8,23 @@
   "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
   "validationMode": "GITHUB_ACTIONS_CANONICAL_EXECUTION",
   "validationPullRequest": 156,
-  "validationSurfaceCommit": "da064c81129bf6926cfece5086dbd56c8282eb2a",
-  "githubActionsRunId": 37078753402,
-  "githubActionsJobId": 111074419311,
+  "validationSurfaceCommit": "6c9851c6e7921f14ffb8a817891cee3ff18b0763",
+  "githubActionsRunId": 37080090614,
+  "githubActionsJobId": 111078483110,
   "examGitBlob": "50488c7b9280555d889699572e35756d8c655512",
   "examSha256": "sha256:9c6283c749de1c01bde63830caad2a2ad35ddcfcbd11df0fdc516a148a44a9a1",
-  "physicalEvidenceGitBlob": "009200a4c068b1b397f9d84ffba8616e52aa2b0b",
-  "blindDecisionSha256": "sha256:afc3523cfc0cd2f6ab893b577300d01c1dfbff6bf590db96e3f5f2b740d44987",
+  "physicalEvidenceGitBlob": "6fae04a05b84b3247a6868d0a05f5957aa438e2b",
+  "physicalEvidenceSha256": "sha256:eee0fe69a883cd91875c0a73edbd1be292da7541c38ea85f0f92a4d85e05e78d",
+  "recheckDecisionGitBlob": "caa0c9e376bd363fa4b9952b45279e6c3e39f3bc",
+  "blindDecisionSha256": "sha256:fe30b02d5d75279050af880e07c41cbea84f9f5e96efd6856f503a0e3c04cbd9",
+  "deterministicRepair": {
+    "qid": 6,
+    "assetPath": "assets/images/23_순천여중_2학기_기말_중3_기출/q6-solution.svg",
+    "beforeGitBlob": "2d20db8a6a7be3beff41a8676c74fa3314118d1f",
+    "afterGitBlob": "ef8763a64af63788a0239fd6919a7a311f0c27ef",
+    "afterSha256": "sha256:f757ff9b1ff7c5152ff611fd1662d68942a46315eb77b95a5433ffb65e39bcb4",
+    "repairCommit": "6693ef937e80b5c2e1614235189775626c2251b1"
+  },
   "result": {
     "ok": true,
     "questionCount": 24,
@@ -27,9 +37,11 @@
     "disposition": "PASS",
     "issues": []
   },
-  "visualPreloadReadBeforeClosure": true,
-  "q23FalseHoldResolved": true,
+  "calibrationPreflight": "PASS",
   "targetedCanonicalGate": "PASS",
+  "bindingHashesVerified": true,
+  "q23SourcePixelRecheck": "PASS_MODE_18_VISIBLE",
   "overallCi": "FAIL_UNRELATED_BASELINE",
-  "closureMainSha": "1c0f07eaa29bf4049f36530e16a782b3f7033657"
+  "unrelatedCiFailureSummary": "repository-wide baseline tests fail outside o62 R2 target (including archive2-canonical/miniflare dependency drift); targeted O62_R2_CALIBRATION_PREFLIGHT and O62_R2_CANONICAL_GATE both PASS in the same job before those failures",
+  "closureMainSha": "2ab85d7c3897195a8b894acc28d7f06d6a624f52"
 }
