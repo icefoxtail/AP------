@@ -20,7 +20,7 @@ window.questionBank = [
       "개념판별"
     ],
     "wide": false,
-    "content": "다음 &lt;보기&gt;에서 집합인 것의 개수는? [3.6점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. 좋아하는 과일의 모임<br>ㄴ. 12의 약수의 모임<br>ㄷ. 노래를 잘하는 학생의 모임<br>ㄹ. 5보다 작은 자연수의 모임</div>",
+    "content": "다음 보기에서 집합인 것의 개수는? [3.6점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. 좋아하는 과일의 모임<br>ㄴ. 12의 약수의 모임<br>ㄷ. 노래를 잘하는 학생의 모임<br>ㄹ. 5보다 작은 자연수의 모임</div>",
     "choices": [
       "0",
       "1",
@@ -746,7 +746,7 @@ window.questionBank = [
       "집합의 연산법칙"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $A$, $B$에 대하여 $S(A,B)=(A\\cap B^C)\\cup(A\\cup B^C)^C$라 할 때, 다음 중 &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $n(S(A,B))=n(A\\cup B)$이면 $n(A\\cap B)=0$이다.<br>ㄴ. $S(A,B)=A^C$이면 $A\\cup B=U$이다.<br>ㄷ. $S(A,B)\\cap C^C=S(A\\cap B,B\\cap C)$이다.</div>",
+    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $A$, $B$에 대하여 $S(A,B)=(A\\cap B^C)\\cup(A\\cup B^C)^C$라 할 때, 다음 중 보기에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $n(S(A,B))=n(A\\cup B)$이면 $n(A\\cap B)=0$이다.<br>ㄴ. $S(A,B)=A^C$이면 $A\\cup B=U$이다.<br>ㄷ. $S(A,B)\\cap C^C=S(A\\cap B,B\\cap C)$이다.</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
