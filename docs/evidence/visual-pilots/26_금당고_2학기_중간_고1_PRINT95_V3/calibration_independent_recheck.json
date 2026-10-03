@@ -1,0 +1,87 @@
+{
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:ab37a1bdb3343be7b31db66ac2ee204abec339f35a4bc8eb9ca6252f92656f99",
+        "gitBlobSha": "7f4a3ee06170fc8aa426080e58f7b33bc351b62f"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:acdb76bc6092e60c215baaf235516b6fd1a7777ffc9d20cb1f134a95a7043cdf",
+        "solutionExcerpt": "직선이 원에 접하려면 원의 중심에서 직선까지의 거리가 반지름과 같아야 한다.",
+        "observation": "The verified solution derives both tangent offsets and exact y-intercepts; the current figure distinguishes the two tangents, circle, center, contact points, and A/B. Quality-floor observation only; do not reuse its layout or coordinates."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+        "solutionExcerpt": "실제 원이 되려면 $r^2>0$이어야 하므로",
+        "observation": "The solution excludes k=0 and k=8 because r² must be positive. The panels separate representative real-circle cases from the number-line interval; their different drawing scales are not a geometric fact to copy."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:25421d8ac704b7506d2f4053b6e916238197d77033f2c87f720914fed2919c7b",
+        "solutionExcerpt": "점 $G$는 선분 $AM$을 $2:1$로 내분한다.",
+        "observation": "The solution applies the 2:1 division coordinatewise. The figure binds A, G, M to their exact coordinates on one line and labels the ratio; the extended support line should not be mistaken for the segment itself."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 14,
+        "solutionSha256": "sha256:04f0b5e878ca8b774d04157268c2764669a49e718ebb6cdeb84f2e0d077dbe10",
+        "solutionExcerpt": "거리 $2$와 $6$에 해당하는 평행한 직선은 원에 접하므로",
+        "observation": "The solution distinguishes the two tangent boundary distances from three interior distances, yielding 1+2+2+2+1 points. The current panel makes the boundary/interior distinction and count visible."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "sha256:4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "gitBlobSha": "6184b4f2da7e098575b19cc8bac5c61fe9c513c7"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-28/README.md",
+        "sha256": "sha256:64334f9c22bb25e9bbf226d7f2dff79e55b1835966156970b1cd496a2efc0caa",
+        "gitBlobSha": "90b42e2056a57a4fae356ae7434063c0ad69b6a6"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_RECHECK",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "qualityCompareCount": "20/20",
+    "recheckOrder": [
+      "CALIBRATION_PREFLIGHT PASS",
+      "target and relevant prior/current artifacts read as needed",
+      "source/current-authority scope recomputed and independently reviewed",
+      "recheck decision snapshot frozen",
+      "formal comparison to prior artifacts",
+      "final quality compare 20/20",
+      "static validators and receipt close; actual Chromium render pending"
+    ],
+    "recheckDecisionSnapshotRef": "docs/evidence/visual-pilots/26_금당고_2학기_중간_고1_PRINT95_V3/recheck_decision_snapshot.json",
+    "recheckDecisionSnapshotSha256": "sha256:b7e58b9351f5e1a5ade0681ed2c87a660925fb0ab8dcfec263ceefa260c46ccf",
+    "calibrationOrderCompatibilityNote": "The configured solution-calibration gate requires a legacy calibrationOrder enum; current-main 2026-10-03 recheck ordering is recorded in recheckOrder. No target non-exposure claim is made."
+  }
+}

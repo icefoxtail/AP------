@@ -1,0 +1,33 @@
+{
+  "scope": "Final candidate review only; source-only facts frozen before candidate bytes. Existing target SVGs and second-pilot material were not reviewed as references.",
+  "reviewers": [
+    {
+      "role": "alive_visual_reviewer",
+      "qid": "q1",
+      "status": "PASS",
+      "blindMath": "PASS",
+      "checks": "Strict interval -1<k<5, open endpoint topology, five filled integers, estimated text/geometry bounds. Solution-only usage confirmed."
+    },
+    {
+      "role": "alive_visual_reviewer",
+      "qids": [
+        4,
+        9,
+        12,
+        14,
+        15,
+        17,
+        18,
+        20
+      ],
+      "status": "PASS_STATIC",
+      "mathSemantic": "PASS",
+      "checks": "Geometry, coordinate incidence, labels, token radius, q9 hybrid metadata, q14 label position/stroke hierarchy, q18 intercept line binding, estimated spacing and viewBox."
+    }
+  ],
+  "qualification": "PRINT95_RENDER_PENDING",
+  "limitations": [
+    "Actual Chromium render and engine placement were not tested.",
+    "Physical page scale, browser font fallback, getBBox/getBoundingClientRect, and page/mobile overflow remain pending."
+  ]
+}
