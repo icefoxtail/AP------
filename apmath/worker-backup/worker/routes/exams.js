@@ -1058,6 +1058,35 @@ async function performExcludeStudent(env, currentTeacher, { classId, studentId, 
   };
 }
 
+const RECENT_SUBJECT_WHITESPACE_SQL = [
+  "' '", "char(9)", "char(10)", "char(11)", "char(12)", "char(13)",
+  "char(160)", "char(5760)", "char(8192)", "char(8193)", "char(8194)",
+  "char(8195)", "char(8196)", "char(8197)", "char(8198)", "char(8199)",
+  "char(8200)", "char(8201)", "char(8202)", "char(8232)", "char(8233)",
+  "char(8239)", "char(8287)", "char(12288)", "char(65279)",
+];
+
+function normalizeRecentSubjectTerm(value) {
+  return String(value || '')
+    .normalize('NFC')
+    .replace(/Ⅰ/g, 'I')
+    .replace(/Ⅱ/g, 'II')
+    .replace(/\s+/g, '')
+    .toLowerCase();
+}
+
+function recentSubjectTermVariants(value) {
+  const normalized = normalizeRecentSubjectTerm(value);
+  return [...new Set([normalized, normalized.normalize('NFD')])];
+}
+
+function normalizeRecentSubjectSql(expression) {
+  let normalized = `COALESCE(${expression}, '')`;
+  for (const whitespace of RECENT_SUBJECT_WHITESPACE_SQL)
+    normalized = `REPLACE(${normalized}, ${whitespace}, '')`;
+  return `LOWER(REPLACE(REPLACE(${normalized}, 'Ⅰ', 'I'), 'Ⅱ', 'II'))`;
+}
+
 export async function handleExams(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
@@ -1962,16 +1991,14 @@ export async function handleExams(request, env, teacher, path, url) {
         const subjectTerms = [...new Set([
           subjectKey,
           ...url.searchParams.getAll('subject_term').slice(0, 16),
-        ].map(value => String(value || '').normalize('NFC').trim().toLocaleLowerCase().replace(/\s+/g, ''))
+        ].flatMap(recentSubjectTermVariants)
           .filter(value => value && value.length <= 100))];
         if (subjectKey && subjectTerms.length) {
-          const normalizeSubjectSql = expression =>
-            `LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(COALESCE(${expression}, ''), ' ', ''), char(9), ''), char(10), ''), char(13), ''), char(160), ''))`;
           const subjectExpressions = [];
-          if (assignmentColumns.has('subject')) subjectExpressions.push(normalizeSubjectSql('a.subject'));
+          if (assignmentColumns.has('subject')) subjectExpressions.push(normalizeRecentSubjectSql('a.subject'));
           if (assignmentColumns.has('mixed_payload_json')) {
             const metaSubject = `CASE WHEN json_valid(COALESCE(a.mixed_payload_json, '')) THEN json_extract(a.mixed_payload_json, '$.meta.subject') ELSE '' END`;
-            subjectExpressions.push(normalizeSubjectSql(metaSubject));
+            subjectExpressions.push(normalizeRecentSubjectSql(metaSubject));
           }
           if (subjectExpressions.length) {
             conditions.push(`(${subjectExpressions.map(expression => `${expression} IN (${subjectTerms.map(() => '?').join(',')})`).join(' OR ')})`);

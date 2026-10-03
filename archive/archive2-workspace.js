@@ -216,6 +216,7 @@
   let autosaveTimer,
     previewTimer,
     recentRefetchTimer = null,
+    recentSubjectOptionUniverse = new Map(),
     derivedBaseLoad = null,
     previewOutputEnvelope = null,
     candidateRecords = [],
@@ -1731,19 +1732,13 @@
   }
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
-    const availableIds = new Set(state.recentRows
-      .filter((row) => !grade || row.targetGrade === grade)
-      .map((row) => row.classId).filter(Boolean));
-    const byId = new Map();
-    for (const cls of classRows) {
-      const id = String(cls.id || "");
-      if (id && availableIds.has(id)) byId.set(id, { value: id, label: cls.name || id });
-    }
-    for (const row of state.recentRows) {
-      if (!row.classId || (grade && row.targetGrade !== grade)) continue;
-      if (!byId.has(row.classId)) byId.set(row.classId, { value: row.classId, label: row.className || row.classId });
-    }
-    return [...byId.values()];
+    return classRows
+      .filter((cls) => !grade || String(cls.grade || "") === grade)
+      .map((cls) => {
+        const id = String(cls.id || "");
+        return id ? { value: id, label: cls.name || id } : null;
+      })
+      .filter(Boolean);
   }
   function renderRecent() {
     const list = drafts(), f = state.recentFilters;
@@ -1789,6 +1784,7 @@
     ).join("") || '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
   }
   function updateRecentResults() {
+    updateRecentFilterOptions();
     const host = $("recent-assignments");
     if (host) {
       host.innerHTML = recentAssignmentMarkup();
@@ -1806,29 +1802,52 @@
     return [key];
   }
   function recentSubjectOptions() {
-    const values = History.subjectOptions(state.recentRows, state.recentFilters.grade, C);
-    const selected = state.recentFilters.subject;
-    if (selected && !values.some((row) => row.value === selected)) {
-      const [label] = recentSubjectTerms(selected);
-      values.push({ value: selected, label: label || selected });
+    const grade = state.recentFilters.grade;
+    const values = new Map();
+    for (const option of C.subjectProjectionOptions(grade) || [])
+      values.set(option.value, option);
+    for (const [optionGrade, optionsByKey] of recentSubjectOptionUniverse) {
+      if (grade && optionGrade !== grade) continue;
+      for (const option of optionsByKey.values())
+        if (!values.has(option.value)) values.set(option.value, option);
     }
-    return values;
+    for (const option of History.subjectOptions(state.recentRows, grade, C))
+      if (!values.has(option.value)) values.set(option.value, option);
+    const selected = state.recentFilters.subject;
+    if (selected && !values.has(selected)) {
+      const [label] = recentSubjectTerms(selected);
+      values.set(selected, { value: selected, label: label || selected });
+    }
+    return [...values.values()];
+  }
+  function rememberRecentSubjectOptions(rows) {
+    for (const row of rows || []) {
+      const grade = String(row.targetGrade || "");
+      if (!recentSubjectOptionUniverse.has(grade)) recentSubjectOptionUniverse.set(grade, new Map());
+      const optionsByKey = recentSubjectOptionUniverse.get(grade);
+      for (const option of History.subjectOptions([row], grade, C))
+        if (!optionsByKey.has(option.value)) optionsByKey.set(option.value, option);
+    }
+  }
+  function updateRecentFilterOptions() {
+    const classField = $("recent-class");
+    const classMarkup = options(recentClassOptions(), state.recentClassId, "전체 반");
+    if (classField && classField.innerHTML !== classMarkup) classField.innerHTML = classMarkup;
+    const subjectField = document.querySelector('[data-recent-filter="subject"]');
+    const subjectMarkup = options(recentSubjectOptions(), state.recentFilters.subject, "전체 과목");
+    if (subjectField && subjectField.innerHTML !== subjectMarkup) subjectField.innerHTML = subjectMarkup;
   }
   function changeRecentFilter(el) {
     const key = el.dataset.recentFilter;
     if (!Object.hasOwn(state.recentFilters, key)) return;
     state.recentFilters[key] = el.value;
     if (key === "grade") {
-      const subjects = History.subjectOptions(state.recentRows, el.value, C);
+      const subjects = recentSubjectOptions();
       if (!subjects.some((item) => item.value === state.recentFilters.subject))
         state.recentFilters.subject = "";
-      const field = document.querySelector('[data-recent-filter="subject"]');
-      if (field) field.innerHTML = options(recentSubjectOptions(), state.recentFilters.subject, "전체 과목");
       const classes = recentClassOptions();
       if (state.recentClassId && !classes.some((item) => item.value === state.recentClassId))
         state.recentClassId = "";
-      const classField = $("recent-class");
-      if (classField) classField.innerHTML = options(classes, state.recentClassId, "전체 반");
     }
     // Update only the result host: date/search inputs retain focus and IME state.
     updateRecentResults();
@@ -1855,6 +1874,13 @@
         if (version !== state.recentLoadVersion) return;
         classRows = Array.isArray(data.classes) ? data.classes : [];
       }
+      if (state.recentClassId) {
+        const selectedClass = classRows.find((row) => String(row.id || "") === state.recentClassId);
+        if (!selectedClass || (state.recentFilters.grade && String(selectedClass.grade || "") !== state.recentFilters.grade)) {
+          state.recentClassId = "";
+          replaceUrlState();
+        }
+      }
       const params = new URLSearchParams({ limit: "1000" });
       for (const key of ["from", "to", "grade", "query"])
         if (state.recentFilters[key]) params.set(key, state.recentFilters[key]);
@@ -1870,8 +1896,7 @@
       state.recentRows = History.normalizeAssignments(
         state.recentAssignments, classRows, state.catalog.exams, C,
       );
-      if (state.recentClassId && !classRows.some((row) => String(row.id) === state.recentClassId))
-        state.recentClassId = "";
+      rememberRecentSubjectOptions(state.recentRows);
     } catch (error) {
       if (version !== state.recentLoadVersion) return;
       state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
@@ -1879,7 +1904,7 @@
     } finally {
       if (version === state.recentLoadVersion) {
         state.recentLoading = false;
-        if (state.view === "recent") render();
+        if (state.view === "recent") updateRecentResults();
       }
     }
   }

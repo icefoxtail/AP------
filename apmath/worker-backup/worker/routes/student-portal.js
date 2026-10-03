@@ -1,7 +1,7 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse } from './exam-pdf.js';
-import { canAccessStudent, isStaffUser } from '../helpers/foundation-db.js';
+import { canAccessClass, canAccessStudent, isStaffUser } from '../helpers/foundation-db.js';
 import {
   listWrongClinicPacketsForStudent,
   saveWrongClinicReviewWrongsForStudent,
@@ -73,6 +73,20 @@ async function verifyStudentPortalReadAccess(env, teacher, studentId, studentTok
   const verified = await verifyStudentPortalSession(env, studentId, studentToken, options);
   if (verified.error) return verified;
   return { ...verified, accessMode: 'student', readOnly: false };
+}
+
+async function verifyTeacherPreviewAssignmentClassAccess(env, teacher, accessMode, assignmentId) {
+  if (accessMode !== 'teacher_preview' || !assignmentId) return null;
+  const assignment = await env.DB.prepare(
+    'SELECT class_id FROM class_exam_assignments WHERE id = ? LIMIT 1',
+  ).bind(assignmentId).first();
+  if (!assignment) {
+    return { error: jsonResponse({ success: false, message: '시험지를 확인할 권한이 없습니다.' }, 404) };
+  }
+  if (!(await canAccessClass(teacher, String(assignment.class_id || ''), env))) {
+    return { error: jsonResponse({ success: false, message: '해당 반의 시험지를 확인할 권한이 없습니다.' }, 403) };
+  }
+  return null;
 }
 
 async function getTableColumnSet(env, tableName) {
@@ -294,6 +308,10 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken);
     if (verified.error) return verified.error;
     if (!assignmentId) return jsonResponse({ success: false, message: 'assignment_id required' }, 400);
+    const classAccess = await verifyTeacherPreviewAssignmentClassAccess(
+      env, teacher, verified.accessMode, assignmentId,
+    );
+    if (classAccess?.error) return classAccess.error;
 
     const hasRecipients = await hasClassExamAssignmentRecipients(env);
     const hasExclusions = await hasClassExamAssignmentExclusions(env);
@@ -446,6 +464,10 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     if (verified.error) return verified.error;
 
     const exactAssignmentId = String(url.searchParams.get('assignment_id') || '').trim();
+    const classAccess = await verifyTeacherPreviewAssignmentClassAccess(
+      env, teacher, verified.accessMode, exactAssignmentId,
+    );
+    if (classAccess?.error) return classAccess.error;
     const exams = await loadStudentClassExamAssignments(
       env,
       verified.student.id,
