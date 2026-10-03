@@ -10,7 +10,8 @@
 - M3/M1/M2 2학기/고등 legacy 예약은 OFF 유지한다.
 - R1/R2/R3의 운영 개념은 **재검**이다. prior solution/verdict/repair/checkpoint가 보여도 source/current authority에서 required scope를 다시 계산·판정한다.
 - R3는 최종 full audit + same-stage pinpoint repair owner다. source/image 재확인·재크롭도 THANOS가 실행환경에서 가능하면 직접 수행한다.
-- WATCHDOG는 매시 :56에 15개 roster의 liveness/dispatch/conveyor-contract를 복구하고 기존 `JS Archive 예약 레인 상시 상태판 — CURRENT`를 latest main·stage queue·최근 1시간 결과·stale/debt·다음 우선 작업 기준으로 제자리 갱신한다. 단순 LIVENESS PASS 보고로 끝내지 않는다.
+- **운영 상태 저장은 Space-first다.** production 14레인은 기존 Work/Space Page의 자기 `LANE CURRENT` 섹션만 갱신하고 per-run Notion write와 개별 hourly 장문 사용자 보고를 하지 않는다. Git physical receipt/validator/remote readback이 stage authority다.
+- **WATCHDOG만 시간당 대표 보고 + Notion mirror를 담당한다.** 매시 :56에 15개 roster의 liveness/dispatch/conveyor-contract를 복구하고 Work/Space 상단 CURRENT를 갱신한 뒤 기존 `JS Archive 예약 레인 상시 상태판 — CURRENT`에 동일 snapshot을 1회 미러링한다. Notion mirror 실패는 production blocker가 아니다.
 
 # JS아카이브 규칙 통합 인덱스
 
