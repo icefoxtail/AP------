@@ -1,0 +1,49 @@
+{
+  "status": "CREATE_CANDIDATE_META_COMPLETE_SOURCE_PIXEL_PENDING_CURRENT_MAIN",
+  "currentOwner": "TEMP-CREATE-1",
+  "currentGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "canonicalOrdinal": 17,
+  "examFile": "26_팔마중_1학기_기말_중2_기출.js",
+  "currentBranch": "work/middle/m2/26-palma-1final-temp-create1-refresh-20261003-2021",
+  "latestMainSha": "a87ba08ad4e076c2ce9c372168293f55be6c8809",
+  "refreshReason": "LATEST_MAIN_DOCS_ONLY_DRIFT_REBOUND; current main drift did not touch this exam, its CREATE Meta payload, or its four problem-image blobs. Exact candidate/meta are rebound without redoing CREATE; current canonical automation-contract ref refreshed.",
+  "priorCheckpointCommit": "d1629f140612f3924c0dccf9c970a42664d40601",
+  "priorCheckpointBlob": "d8dc457e9076d003966870e1dd178baefe093ada",
+  "candidateExamGitBlob": "06c09e564b55badd89879d470c4783baf90f0e91",
+  "metaPayloadGitBlob": "16107f080dbb6c3b85ca39ad63b46bb491b25994",
+  "questionCount": 24,
+  "protectedFieldParity": "24/24 exact",
+  "freshSolutionRewriteCount": "24/24",
+  "tagMetaAuditCount": "24/24",
+  "tagMetaCompleteCount": "24/24",
+  "openImplicitMetaNullCount": 0,
+  "sourceProblemImageQids": [
+    9,
+    11,
+    13,
+    16
+  ],
+  "sourceProblemImageBlobs": [
+    "f94672df38a7f627021f212c23549852151b8c32",
+    "5facc64515bfdb208e41f4f23517ca66b72fce6c",
+    "6ac3cc6f92ba83a2ec90933fea76ae7334ec7e48",
+    "a326f6c0a8378973b7639d520ac30ae1e2239c29"
+  ],
+  "sourceProblemImageCurrentMainParity": "4/4 exact blob identity",
+  "pixelAudit": "PENDING_DIRECT_PIXEL_READBACK",
+  "pixelAccessInvestigation": {
+    "githubBlobIdentity": "4/4 exact on current main",
+    "githubBinaryReadback": "AVAILABLE_AS_GIT_OBJECT_IDENTITY_BUT_NOT_DIRECT_VISUAL_BYTES_THROUGH_CURRENT_CONNECTOR_PATH",
+    "driveSourceSearch": "NO_MATCHING_2026_PALMA_M2_SOURCE_PDF_OR_IMAGE_FOUND",
+    "authorityDecision": "NO_PIXEL_PASS_ASSERTED; CREATE_DONE remains false until direct visual pixel readback is available"
+  },
+  "canonicalRefs": {
+    "goldenCalibrationBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "automationContractBlob": "e0727cae7b2f08f090aca327a98d07bf137e02cb",
+    "physicalEvidenceBlob": "32f212619a31df15add413ebe8eccdb86941cec1"
+  },
+  "createDone": false,
+  "readyForReview1": false,
+  "nextAction": "Directly inspect q9/q11/q13/q16 pixels, seal final physical evidence/calibration binding, run actual canonical CREATE validators, write validator receipt and CREATE_DONE/READY_FOR_REVIEW1 durable receipt, then remote-readback.",
+  "r1Performed": false
+}
