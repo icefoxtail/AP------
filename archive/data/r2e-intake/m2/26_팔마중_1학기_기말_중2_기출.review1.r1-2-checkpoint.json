@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "M2_1_R1_CHECKPOINT_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "lane": "R1-2",
+  "canonicalOrdinal": 17,
+  "examFile": "26_팔마중_1학기_기말_중2_기출.js",
+  "inputFinalArtifactSha": "06c09e564b55badd89879d470c4783baf90f0e91",
+  "status": "R1_FULL_RECHECK_IN_PROGRESS",
+  "completed": {
+    "protectedFieldCompare": "24/24 exact vs current main",
+    "answerMath": "20 PASS + q9/q11/q13/q16 SOURCE_VISUAL holds",
+    "solutionMath": "24/24 independently recomputed or conditional on held source raster",
+    "curriculumMethodAudit": "24/24 PASS",
+    "smallBoardAudit": "24/24 PASS",
+    "visualNecessityAudit": "24/24 PASS; solutionImage 0",
+    "runtimeStringAudit": "24/24 source inspection PASS pending canonical validator",
+    "goldenCalibration": "PASS",
+    "negativeRegressionRead": true
+  },
+  "deterministicRepairsRequired": [
+    {
+      "qid": 1,
+      "field": "subUnit",
+      "from": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "to": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+    },
+    {
+      "qid": 9,
+      "field": "subUnit",
+      "from": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "to": "M2-04-LINEAR_FUNCTION_BASIC"
+    },
+    {
+      "qid": 16,
+      "field": "subUnit",
+      "from": "M2-04-LINEAR_FUNCTION_BASIC",
+      "to": "M2-04-LINEAR_FUNCTION_EQUATION"
+    },
+    {
+      "qid": 23,
+      "field": "subUnit",
+      "from": "M2-04-LINEAR_FUNCTION_BASIC",
+      "to": "M2-04-LINEAR_FUNCTION_EQUATION"
+    },
+    {
+      "qid": 24,
+      "field": "subUnit",
+      "from": "M2-04-LINEAR_FUNCTION_BASIC",
+      "to": "M2-04-LINEAR_FUNCTION_EQUATION"
+    }
+  ],
+  "sourceVisualHolds": [
+    {
+      "qid": 9,
+      "blob": "f94672df38a7f627021f212c23549852151b8c32"
+    },
+    {
+      "qid": 11,
+      "blob": "5facc64515bfdb208e41f4f23517ca66b72fce6c"
+    },
+    {
+      "qid": 13,
+      "blob": "6ac3cc6f92ba83a2ec90933fea76ae7334ec7e48"
+    },
+    {
+      "qid": 16,
+      "blob": "a326f6c0a8378973b7639d520ac30ae1e2239c29"
+    }
+  ],
+  "next": "Apply five deterministic subUnit repairs, bind fresh R1 physical evidence to repaired artifact, run canonical R1 validator, write REVIEW1_DONE_WITH_ITEM_HOLDS if validator PASS_WITH_ITEM_HOLDS."
+}
