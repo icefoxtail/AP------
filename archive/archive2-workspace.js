@@ -2956,6 +2956,7 @@
           }
           await assignmentStatus(b.dataset.assignment);
         } catch (error) {
+          b.disabled = false;
           if (row) {
             row.pdfStatus = "failed";
             row.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
