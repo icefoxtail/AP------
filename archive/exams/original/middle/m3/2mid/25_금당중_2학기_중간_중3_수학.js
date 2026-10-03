@@ -26,7 +26,7 @@ window.questionBank = [
       "$\\dfrac{9}{5}$"
     ],
     "answer": "①",
-    "solution": "$\\angle B=90^\\circ$인 직각삼각형에서 $AB=4$, $BC=3$, $AC=5$이다.\n$\\cos A=\\dfrac{AB}{AC}=\\dfrac45$, $\\sin A=\\dfrac{BC}{AC}=\\dfrac35$이다.\n따라서 $\\cos A-\\sin A=\\dfrac45-\\dfrac35=\\dfrac15$이다.",
+    "solution": "그림의 직각삼각형은 세 변의 길이가 $3,4,5$이다.\n각 $A$에서 $AB=4$, $BC=3$, $AC=5$이므로\n$\\cos A=\\dfrac45$, $\\sin A=\\dfrac35$이다.\n따라서 $\\cos A-\\sin A=\\dfrac15$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q1.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -57,7 +57,7 @@ window.questionBank = [
       "$\\tan60^\\circ\\div\\sin60^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "특수각의 삼각비를 차례로 대입하면\n① $\\dfrac12+0=\\dfrac12$\n② $\\dfrac{\\sqrt2}{2}\\times\\dfrac{\\sqrt2}{2}=\\dfrac12$\n③ $\\dfrac12-\\dfrac12=0$\n④ $0+1=1$\n⑤ $\\sqrt3\\div\\dfrac{\\sqrt3}{2}=2$이다.\n가장 큰 값은 $2$이므로 ⑤이다.",
+    "solution": "각 보기의 값을 계산하면\n① $\\dfrac12$, ② $\\dfrac12$, ③ $0$, ④ $1$이다.\n⑤는 $\\sqrt3\\div\\dfrac{\\sqrt3}{2}=2$이다.\n가장 큰 값은 $2$이므로 ⑤이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -87,11 +87,12 @@ window.questionBank = [
       "6"
     ],
     "answer": "④",
-    "solution": "$3\\cos A=2$이므로 $\\cos A=\\dfrac23$이다.\n각 $A$에 대하여 이웃한 변을 $2$, 빗변을 $3$으로 생각하면, 피타고라스 정리에 의해 마주 보는 변은 $\\sqrt5$이다.\n따라서 $\\sin A=\\dfrac{\\sqrt5}{3}$, $\\tan A=\\dfrac{\\sqrt5}{2}$이다.\n$6\\sin A\\tan A=6\\times\\dfrac{\\sqrt5}{3}\\times\\dfrac{\\sqrt5}{2}=5$이다.",
+    "solution": "$3\\cos A=2$이므로 $\\cos A=\\dfrac23$이다.\n$A$가 예각이므로 이웃한 변을 $2$, 빗변을 $3$으로 두면 마주 보는 변은 $\\sqrt5$이다.\n따라서 $\\sin A=\\dfrac{\\sqrt5}{3}$, $\\tan A=\\dfrac{\\sqrt5}{2}$이고\n$6\\sin A\\tan A=5$이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q3-solution.svg"
   },
   {
     "id": 4,
@@ -118,7 +119,7 @@ window.questionBank = [
       "1.35"
     ],
     "answer": "③",
-    "solution": "그림에서 $\\sin29^\\circ=0.48$, $\\cos29^\\circ=0.87$, $\\tan29^\\circ=0.55$를 읽을 수 있다.\n따라서 $0.48+0.87-0.55=1.35-0.55=0.80$이다.",
+    "solution": "그림에서 $\\sin29^\\circ\\approx0.48$, $\\cos29^\\circ\\approx0.87$, $\\tan29^\\circ\\approx0.55$이다.\n따라서 $0.48+0.87-0.55=0.80$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q4.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -150,12 +151,13 @@ window.questionBank = [
       "$\\dfrac{13}{8}$"
     ],
     "answer": "②",
-    "solution": "$AC=8$, $BC=15$인 직각삼각형이므로 $AB=\\sqrt{8^2+15^2}=17$이다.\n삼각형 $ABC$의 넓이는 $\\dfrac12\\times8\\times15=60$이다. 또 밑변을 $AB$로 보면\n$60=\\dfrac12\\times17\\times CD$이므로 $CD=\\dfrac{120}{17}$이다.\n$\\triangle ACD\\sim\\triangle ABC$이므로 $AD=\\dfrac{AC^2}{AB}=\\dfrac{64}{17}$이다.\n따라서 $\\tan x^\\circ=\\dfrac{AD}{CD}=\\dfrac{8}{15}$, $\\cos y^\\circ=\\dfrac{CD}{BC}=\\dfrac{8}{17}$이다.\n그러므로 $\\dfrac{\\tan x^\\circ}{\\cos y^\\circ}=\\dfrac{8}{15}\\div\\dfrac{8}{17}=\\dfrac{17}{15}$이다.",
+    "solution": "$AC=8$, $BC=15$인 직각삼각형이므로 $AB=17$이다.\n$CD\\perp AB$에서 닮음에 의해 $x=\\angle B$, $y=\\angle A$이다.\n따라서 $\\tan x^\\circ=\\dfrac8{15}$, $\\cos y^\\circ=\\dfrac8{17}$이고\n$\\dfrac{\\tan x^\\circ}{\\cos y^\\circ}=\\dfrac{17}{15}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q5.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q5-solution.svg"
   },
   {
     "id": 6,
@@ -182,12 +184,13 @@ window.questionBank = [
       "$5\\sqrt3$"
     ],
     "answer": "②",
-    "solution": "$AB=6$은 빗변이고 $\\angle B=30^\\circ$이므로\n$AC=6\\sin30^\\circ=3$, $BC=6\\cos30^\\circ=3\\sqrt3$이다.\n$AD$는 $\\angle A$의 이등분선이므로 $BD:DC=AB:AC=6:3=2:1$이다.\n따라서 $BD=\\dfrac23\\,BC=\\dfrac23\\times3\\sqrt3=2\\sqrt3$이다.",
+    "solution": "$AB=6$은 빗변이고 $\\angle B=30^\\circ$이므로 $AC=3$, $BC=3\\sqrt3$이다.\n$AD$는 $\\angle A$의 이등분선이므로 $BD:DC=AB:AC=2:1$이다.\n따라서 $BD=\\dfrac23\\cdot3\\sqrt3=2\\sqrt3$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q6.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q6-solution.svg"
   },
   {
     "id": 7,
@@ -214,12 +217,13 @@ window.questionBank = [
       "$10\\,\\mathrm{cm}$"
     ],
     "answer": "①",
-    "solution": "$\\angle ABC=90^\\circ$, $\\angle ACB=45^\\circ$이므로 $\\triangle ABC$는 직각이등변삼각형이다.\n빗변 $AC=6\\sqrt2$이므로 $BC=6$이다.\n직각삼각형 $BDC$에서 $BC$는 빗변이고 $\\angle DBC=30^\\circ$이므로\n$BD=BC\\cos30^\\circ=6\\times\\dfrac{\\sqrt3}{2}=3\\sqrt3\\,\\mathrm{cm}$이다.",
+    "solution": "$\\angle B=90^\\circ$, $\\angle C=45^\\circ$이므로 $\\triangle ABC$는 직각이등변삼각형이다.\n$AC=6\\sqrt2$이므로 $BC=6$이다.\n직각삼각형 $BDC$에서 $BD=BC\\cos30^\\circ=3\\sqrt3\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q7.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q7-solution.svg"
   },
   {
     "id": 8,
@@ -246,12 +250,13 @@ window.questionBank = [
       "$10\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "$A$에서 $BC$에 수선을 내려 그 발을 $H$라 하자.\n$AB=8$, $\\angle B=60^\\circ$이므로\n$AH=8\\sin60^\\circ=4\\sqrt3$, $BH=8\\cos60^\\circ=4$이다.\n$BC=10$이므로 $HC=10-4=6$이다.\n직각삼각형 $AHC$에서\n$AC^2=(4\\sqrt3)^2+6^2=48+36=84$이므로 $AC=2\\sqrt{21}\\,\\mathrm{cm}$이다.",
+    "solution": "$AB=8$, $\\angle B=60^\\circ$이므로 $BC$ 방향 길이는 $8\\cos60^\\circ=4$, 높이는 $8\\sin60^\\circ=4\\sqrt3$이다.\n$C$까지 남은 가로 길이는 $10-4=6$이다.\n따라서 $AC^2=(4\\sqrt3)^2+6^2=84$이고 $AC=2\\sqrt{21}\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q8.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q8-solution.svg"
   },
   {
     "id": 9,
@@ -278,12 +283,13 @@ window.questionBank = [
       "$2\\sqrt3(\\sqrt3+2)\\,\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "$B,C,H$가 한 직선 위에 있으므로 $\\angle ACH=180^\\circ-135^\\circ=45^\\circ$이다.\n또 $\\angle AHC=90^\\circ$이므로 $\\triangle ACH$는 직각이등변삼각형이다. 따라서 $AH=CH$이다.\n$AH=CH=t$라 하면 $BH=4\\sqrt3+t$이다.\n직각삼각형 $ABH$에서\n$\\tan30^\\circ=\\dfrac{AH}{BH}$이므로 $\\dfrac1{\\sqrt3}=\\dfrac{t}{4\\sqrt3+t}$이다.\n$\\sqrt3t=4\\sqrt3+t$이므로 $t(\\sqrt3-1)=4\\sqrt3$,\n$t=\\dfrac{4\\sqrt3}{\\sqrt3-1}=6+2\\sqrt3=2(3+\\sqrt3)$이다.",
+    "solution": "$B,C,H$가 한 직선 위에 있으므로 $\\angle ACH=180^\\circ-135^\\circ=45^\\circ$이고, $\\angle AHC=90^\\circ$이므로 $AH=CH$이다.\n$AH=CH=t$라 하면 $BH=4\\sqrt3+t$이다.\n$\\tan30^\\circ=\\dfrac{t}{4\\sqrt3+t}=\\dfrac1{\\sqrt3}$에서 $t(\\sqrt3-1)=4\\sqrt3$이다.\n따라서 $AH=t=2(3+\\sqrt3)\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q9.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q9-solution.svg"
   },
   {
     "id": 10,
@@ -310,12 +316,13 @@ window.questionBank = [
       "$\\dfrac{4}{5}$"
     ],
     "answer": "⑤",
-    "solution": "$AE=ED=DF=FC=2$이므로 피타고라스 정리에 의해 $BE=BF=2\\sqrt5$이다.\n$\\triangle EBF$의 넓이는 정사각형에서 세 모서리 삼각형을 빼서\n$16-4-4-2=6$이다.\n$E$에서 $BF$에 내린 수선의 발을 $H$라 하면\n$6=\\dfrac12\\times2\\sqrt5\\times EH$이므로 $EH=\\dfrac6{\\sqrt5}$이다.\n직각삼각형 $BEH$에서\n$BH^2=BE^2-EH^2=20-\\dfrac{36}{5}=\\dfrac{64}{5}$이므로 $BH=\\dfrac8{\\sqrt5}$이다.\n따라서 $\\cos x^\\circ=\\dfrac{BH}{BE}=\\dfrac{8/\\sqrt5}{2\\sqrt5}=\\dfrac45$이다.",
+    "solution": "$AE=ED=DF=FC=2$이다.\n정사각형에서 세 모서리 삼각형을 빼면 $[\\triangle EBF]=16-4-2-4=6$이다.\n또 $BE=BF=\\sqrt{2^2+4^2}=2\\sqrt5$이다.\n따라서 $6=\\dfrac12(2\\sqrt5)(2\\sqrt5)\\sin x^\\circ=10\\sin x^\\circ$이므로 $\\sin x^\\circ=\\dfrac35$이다.\n$x$는 예각이므로 $\\cos x^\\circ=\\dfrac45$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q10.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q10-solution.svg"
   },
   {
     "id": 11,
@@ -342,12 +349,13 @@ window.questionBank = [
       "$16\\sqrt2\\,\\mathrm{cm}^2$"
     ],
     "answer": "①",
-    "solution": "$AB=AC$인 이등변삼각형이므로 $\\angle C=\\angle B=75^\\circ$이다.\n따라서 $\\angle A=180^\\circ-75^\\circ-75^\\circ=30^\\circ$이다.\n$AB=AC=4\\sqrt2$이므로 넓이는\n$\\dfrac12\\times4\\sqrt2\\times4\\sqrt2\\times\\sin30^\\circ\n=\\dfrac12\\times32\\times\\dfrac12=8\\,\\mathrm{cm}^2$이다.",
+    "solution": "$AB=AC$이므로 $\\angle B=\\angle C=75^\\circ$이고 $\\angle A=30^\\circ$이다.\n따라서 $[\\triangle ABC]=\\dfrac12\\cdot4\\sqrt2\\cdot4\\sqrt2\\cdot\\sin30^\\circ=8\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q11.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q11-solution.svg"
   },
   {
     "id": 12,
@@ -374,12 +382,13 @@ window.questionBank = [
       "$\\dfrac{24\\sqrt3}{3}\\,\\mathrm{cm}^2$"
     ],
     "answer": "①",
-    "solution": "$A$에서 아래쪽 가로선에 내린 수선의 발을 $H$라 하자. $AH=2$, $AC=4$이다.\n직각삼각형 $AHC$에서 $\\sin\\angle ACH=\\dfrac{2}{4}=\\dfrac12$이므로 $\\angle ACH=30^\\circ$, $CH=2\\sqrt3$이다.\n직사각형의 위아래 변은 평행하므로 원래 위쪽 변과 $AC$가 이루는 각도 $30^\\circ$이다. 접으면 그 각이 그대로 반대쪽으로 옮겨지므로 $AB$는 아래쪽 가로선과 $60^\\circ$를 이룬다.\n따라서 $BH=\\dfrac{AH}{\\tan60^\\circ}=\\dfrac{2\\sqrt3}{3}$이고\n$BC=CH-BH=2\\sqrt3-\\dfrac{2\\sqrt3}{3}=\\dfrac{4\\sqrt3}{3}$이다.\n$BC$를 밑변으로 보면 높이는 $2$이므로\n$\\triangle ABC$의 넓이는 $\\dfrac12\\times\\dfrac{4\\sqrt3}{3}\\times2=\\dfrac{4\\sqrt3}{3}\\,\\mathrm{cm}^2$이다.",
+    "solution": "$AC=4$, 세로 길이가 $2$이므로 $AC$와 가로선의 각은 $30^\\circ$이다.\n접은 뒤 $AB$는 가로선과 $60^\\circ$를 이룬다.\n$A$에서 $B$까지의 가로 이동은 $\\dfrac2{\\tan60^\\circ}=\\dfrac2{\\sqrt3}$, $A$에서 $C$까지는 $\\dfrac2{\\tan30^\\circ}=2\\sqrt3$이다.\n따라서 $BC=\\dfrac{4\\sqrt3}{3}$이고, 높이가 $2$이므로 $[\\triangle ABC]=\\dfrac{4\\sqrt3}{3}\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q12.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q12-solution.svg"
   },
   {
     "id": 13,
@@ -406,12 +415,13 @@ window.questionBank = [
       "$2\\sqrt{19}\\,\\mathrm{cm}$"
     ],
     "answer": "⑤",
-    "solution": "$BC=6$, $\\angle B=60^\\circ$이고 넓이가 $15\\sqrt3$이다.\n$\\dfrac12\\times AB\\times6\\times\\sin60^\\circ=15\\sqrt3$이므로 $AB=10$이다.\n$A$에서 $BC$에 수선을 내려 그 발을 $H$라 하면\n$AH=10\\sin60^\\circ=5\\sqrt3$, $BH=10\\cos60^\\circ=5$이다.\n따라서 $HC=6-5=1$이고, 직각삼각형 $AHC$에서\n$AC^2=(5\\sqrt3)^2+1^2=76$이다.\n그러므로 $AC=2\\sqrt{19}\\,\\mathrm{cm}$이다.",
+    "solution": "넓이 조건에서 $15\\sqrt3=\\dfrac12\\cdot AB\\cdot6\\cdot\\sin60^\\circ$이므로 $AB=10$이다.\n$AB$의 $BC$ 방향 길이는 $5$, 높이는 $5\\sqrt3$이다.\n따라서 $C$까지 남은 가로 길이는 $1$이고 $AC^2=(5\\sqrt3)^2+1^2=76$이다.\n그러므로 $AC=2\\sqrt{19}\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q13.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q13-solution.svg"
   },
   {
     "id": 14,
@@ -438,12 +448,13 @@ window.questionBank = [
       "10"
     ],
     "answer": "①",
-    "solution": "원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n현의 전체 길이가 $12\\,\\mathrm{cm}$이므로 $x=12\\div2=6$이다.",
+    "solution": "원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n현의 길이가 $12\\,\\mathrm{cm}$이므로 $x=12\\div2=6$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q14.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q14-solution.svg"
   },
   {
     "id": 15,
@@ -470,12 +481,13 @@ window.questionBank = [
       "$10\\,\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "$OM\\perp AB$이므로 중심에서 현에 내린 수선의 성질에 의해 $AM=BM=7$이다.\n반지름을 $r$이라 하면 $OA=OB=OC=r$이고 $OM=OC-CM=r-3$이다.\n직각삼각형 $OMB$에서\n$r^2=(r-3)^2+7^2$이다.\n$r^2=r^2-6r+9+49$이므로 $6r=58$, 따라서 $r=\\dfrac{29}{3}$이다.\n그러므로 $OA=\\dfrac{29}{3}\\,\\mathrm{cm}$이다.",
+    "solution": "$OM\\perp AB$이므로 $AM=BM=7$이다.\n반지름을 $r$이라 하면 $OM=r-3$이다.\n직각삼각형 $OMA$에서 $r^2=(r-3)^2+7^2$이므로 $6r=58$이다.\n따라서 $OA=r=\\dfrac{29}{3}\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q15.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q15-solution.svg"
   },
   {
     "id": 16,
@@ -502,13 +514,14 @@ window.questionBank = [
       "$(4+5\\sqrt2)\\,\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "정사각형의 한 변의 길이를 $s$라 하자.\n중앙 원의 중심에서 왼쪽 위 원의 중심까지 가로로도, 세로로도 $\\dfrac{s}{2}-2$만큼 떨어져 있다.\n두 원은 서로 접하므로 두 중심 사이의 거리는 $2+2=4$이다.\n피타고라스 정리에 의해\n$\\left(\\dfrac{s}{2}-2\\right)^2+\\left(\\dfrac{s}{2}-2\\right)^2=4^2$이다.\n따라서 $\\dfrac{s}{2}-2=2\\sqrt2$이고 $s=4+4\\sqrt2\\,\\mathrm{cm}$이다.",
+    "solution": "정사각형의 한 변을 $s$라 하자.\n가운데 원의 중심과 모서리 원의 중심 사이의 가로 차와 세로 차는 모두 $\\dfrac{s}{2}-2$이다.\n두 원이 접하므로 중심 사이 거리는 $4$이다.\n따라서 $2\\left(\\dfrac{s}{2}-2\\right)^2=16$이고 $\\dfrac{s}{2}-2=2\\sqrt2$이다.\n그러므로 $s=4+4\\sqrt2\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q16.png",
     "imageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q16-solution.svg"
   },
   {
     "id": 17,
@@ -535,12 +548,13 @@ window.questionBank = [
       "$12\\sqrt3\\,\\mathrm{cm}^2$"
     ],
     "answer": "③",
-    "solution": "한 점 $P$에서 원에 그은 두 접선의 길이는 같으므로 $PA=PB=6$이다.\n두 변 $PA$, $PB$의 끼인각이 $60^\\circ$이므로\n$\\triangle APB$의 넓이는\n$\\dfrac12\\times6\\times6\\times\\sin60^\\circ=9\\sqrt3\\,\\mathrm{cm}^2$이다.",
+    "solution": "한 점에서 그은 두 접선의 길이는 같으므로 $PA=PB=6$이다.\n$\\angle APB=60^\\circ$이므로 $\\triangle APB$는 정삼각형이다.\n따라서 $[\\triangle APB]=\\dfrac12\\cdot6\\cdot6\\cdot\\sin60^\\circ=9\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q17.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q17-solution.svg"
   },
   {
     "id": 18,
@@ -567,12 +581,13 @@ window.questionBank = [
       "$(5\\sqrt5+5\\sqrt{10}+20)\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "같은 점에서 원에 그은 두 접선의 길이는 같으므로 $BD=BE=8$, $CF=CE=12$이다. 따라서 $BC=20$이다.\n또 $AD=AF=t$라 하면 $AB=t+8$, $AC=t+12$이다.\n$\\angle A=90^\\circ$이므로 피타고라스 정리에 의해\n$(t+8)^2+(t+12)^2=20^2$이다.\n정리하면 $t^2+20t-96=0$, 즉 $(t-4)(t+24)=0$이므로 길이 $t=4$이다.\n$A$는 직각이고 $OD\\perp AB$, $OF\\perp AC$이므로 사각형 $ADOF$는 한 변이 $4$인 정사각형이다. 따라서 내접원의 반지름은 $4$이다.\n직각삼각형 $OBE$, $OCE$에서\n$OB=\\sqrt{8^2+4^2}=4\\sqrt5$, $OC=\\sqrt{12^2+4^2}=4\\sqrt{10}$이다.\n따라서 $\\triangle OBC$의 둘레는 $4\\sqrt5+4\\sqrt{10}+20\\,\\mathrm{cm}$이다.",
+    "solution": "접선의 길이 성질로 $BD=BE=8$, $CF=CE=12$이므로 $BC=20$이다.\n$AD=AF=x$라 하면 $AB=x+8$, $AC=x+12$이다.\n직각삼각형 $ABC$에서 $(x+8)^2+(x+12)^2=20^2$이므로 $(x-4)(x+24)=0$에서 $x=4$이다.\n따라서 내접원의 반지름은 $4$이다.\n$OB=\\sqrt{8^2+4^2}=4\\sqrt5$, $OC=\\sqrt{12^2+4^2}=4\\sqrt{10}$이므로 둘레는 $4\\sqrt5+4\\sqrt{10}+20\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q18.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q18-solution.svg"
   },
   {
     "id": 19,
@@ -599,12 +614,13 @@ window.questionBank = [
       "$2\\sqrt{21}\\,\\mathrm{cm}$"
     ],
     "answer": "⑤",
-    "solution": "$P$에서 중심 $O$ 쪽으로 가장 가까운 원주 위의 점을 $Q$라 하자.\n$PQ=6$, $QO=4$이므로 $PO=10$이다.\n접점 $A$에서 그은 반지름은 접선 $PA$와 수직이므로 $\\triangle OAP$는 직각삼각형이다.\n따라서 $PA^2=PO^2-OA^2=10^2-4^2=84$이므로\n$PA=2\\sqrt{21}\\,\\mathrm{cm}$이다.",
+    "solution": "점 $P$에서 원까지의 거리가 $6$이고 반지름이 $4$이므로 $PO=10$이다.\n접점에서 반지름과 접선은 수직이므로 $PA^2=PO^2-OA^2=100-16=84$이다.\n따라서 $PA=2\\sqrt{21}\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q19.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q19-solution.svg"
   },
   {
     "id": 20,
@@ -631,12 +647,13 @@ window.questionBank = [
       "$(12\\sqrt3+6\\pi)\\,\\mathrm{cm}^2$"
     ],
     "answer": "②",
-    "solution": "$ON\\perp CD$, $OM\\perp AB$이므로 직각삼각형 $OND$, $OMB$를 볼 수 있다.\n$ND=\\sqrt{6^2-3^2}=3\\sqrt3$이고 같은 방법으로 $MB=3\\sqrt3$이다.\n또 $\\cos\\angle NOD=\\dfrac{3}{6}=\\dfrac12$이므로 $\\angle NOD=60^\\circ$이고, $\\angle MOB=60^\\circ$이다.\n따라서 $\\angle DOB=150^\\circ-60^\\circ-60^\\circ=30^\\circ$이다.\n두 직각삼각형의 넓이의 합은\n$2\\times\\dfrac12\\times3\\times3\\sqrt3=9\\sqrt3$이다.\n중심각이 $30^\\circ$인 부채꼴 $DOB$의 넓이는\n$\\dfrac{30}{360}\\times\\pi\\times6^2=3\\pi$이다.\n그러므로 어두운 부분의 넓이는 $(9\\sqrt3+3\\pi)\\,\\mathrm{cm}^2$이다.",
+    "solution": "직각삼각형 $OND$에서 $ND=\\sqrt{6^2-3^2}=3\\sqrt3$이고 $\\angle NOD=60^\\circ$이다.\n같은 방법으로 $MB=3\\sqrt3$, $\\angle MOB=60^\\circ$이다.\n$\\angle NOM=150^\\circ$이므로 $\\angle DOB=30^\\circ$이다.\n어두운 부분의 두 직각삼각형 넓이 합은 $2\\cdot\\dfrac12\\cdot3\\cdot3\\sqrt3=9\\sqrt3$, 부채꼴 $DOB$의 넓이는 $\\dfrac{30}{360}\\pi\\cdot6^2=3\\pi$이다.\n따라서 넓이는 $(9\\sqrt3+3\\pi)\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q20.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q20-solution.svg"
   },
   {
     "id": 21,
@@ -657,12 +674,13 @@ window.questionBank = [
     "content": "[서술형1] 다음 직각삼각형 $ABC$에서 $\\overline{AC}=6$, $\\cos A=\\dfrac{2}{3}$일 때, $\\overline{AB}$, $\\overline{BC}$의 길이를 풀이 과정을 쓰고 구하시오. [4점]<br>(1) $\\overline{AB}$의 길이를 구하시오. [2점] (부분점수 있음)<br>(2) $\\overline{BC}$의 길이를 구하시오. [2점] (부분점수 있음)",
     "choices": [],
     "answer": "(1) $4$ (2) $2\\sqrt5$",
-    "solution": "(1) $AC=6$은 빗변이고 $\\cos A=\\dfrac{AB}{AC}=\\dfrac23$이다.\n$\\dfrac{AB}{6}=\\dfrac23$이므로 $AB=4$이다.\n\n(2) 피타고라스 정리에 의해 $AB^2+BC^2=AC^2$이다.\n$BC^2=6^2-4^2=20$이므로 $BC=2\\sqrt5$이다.",
+    "solution": "(1) $AC=6$은 빗변이고 $\\cos A=\\dfrac{AB}{AC}=\\dfrac23$이므로 $AB=4$이다.\n\n(2) 피타고라스 정리에 의해 $BC^2=6^2-4^2=20$이다.\n따라서 $BC=2\\sqrt5$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q21.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q21-solution.svg"
   },
   {
     "id": 22,
@@ -683,12 +701,13 @@ window.questionBank = [
     "content": "[서술형2] 다음 그림과 같이 일차함수 $y=\\dfrac{1}{2}x+4$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $A,B$라 하자. $\\angle BAO=a^\\circ$, $\\angle ABO=b^\\circ$라고 할 때, $(\\sin a^\\circ)^2+(\\cos a^\\circ)^2-(\\tan b^\\circ)^2$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [6점]<br>(1) 위의 그래프에서 $\\overline{AB}$의 길이를 구하시오. [2점] (부분점수 있음)<br>(2) 위 식의 값을 구하시오. [4점] (부분점수 있음)",
     "choices": [],
     "answer": "(1) $4\\sqrt5$ (2) $-3$",
-    "solution": "(1) $y=0$을 대입하면 $x=-8$이므로 $A=(-8,0)$이다. $x=0$이면 $B=(0,4)$이다.\n따라서 $AO=8$, $BO=4$이고\n$AB=\\sqrt{8^2+4^2}=4\\sqrt5$이다.\n\n(2) 각 $a$에 대하여 $\\sin a=\\dfrac{BO}{AB}=\\dfrac1{\\sqrt5}$, $\\cos a=\\dfrac{AO}{AB}=\\dfrac2{\\sqrt5}$이다.\n또 각 $b$에 대하여 $\\tan b=\\dfrac{AO}{BO}=2$이다.\n따라서\n$(\\sin a)^2+(\\cos a)^2-(\\tan b)^2\n=\\dfrac15+\\dfrac45-4=-3$이다.",
+    "solution": "(1) $y=0$에서 $x=-8$이므로 $A=(-8,0)$이고, $x=0$에서 $B=(0,4)$이다.\n따라서 $AO=8$, $BO=4$이고 $AB=\\sqrt{8^2+4^2}=4\\sqrt5$이다.\n\n(2) $\\sin a=\\dfrac1{\\sqrt5}$, $\\cos a=\\dfrac2{\\sqrt5}$, $\\tan b=2$이다.\n그러므로 $(\\sin a)^2+(\\cos a)^2-(\\tan b)^2=\\dfrac15+\\dfrac45-4=-3$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q22.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q22-solution.svg"
   },
   {
     "id": 23,
@@ -709,12 +728,13 @@ window.questionBank = [
     "content": "[서술형3] 다음 그림의 사각형 $ABCD$에서 $\\angle CAB=45^\\circ$, $\\angle B=90^\\circ$, $\\angle ACD=60^\\circ$, $\\overline{BC}=6\\,\\mathrm{cm}$, $\\overline{CD}=3\\,\\mathrm{cm}$일 때, 아래의 질문에 풀이 과정을 쓰고 답을 구하시오. [5점]<br>(1) $\\triangle ABC$의 넓이를 구하시오. [2점] (부분점수 있음)<br>(2) $\\triangle ACD$의 넓이를 구하시오. [2점] (부분점수 있음)<br>(3) 사각형 $ABCD$의 넓이를 구하시오. [1점]",
     "choices": [],
     "answer": "(1) $18\\,\\mathrm{cm}^2$ (2) $\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$ (3) $18+\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$",
-    "solution": "(1) $\\angle B=90^\\circ$, $\\angle CAB=45^\\circ$이므로 $\\triangle ABC$는 직각이등변삼각형이다.\n따라서 $AB=BC=6$이고 넓이는 $\\dfrac12\\times6\\times6=18\\,\\mathrm{cm}^2$이다.\n\n(2) $AC=6\\sqrt2$이다. $CD=3$, $\\angle ACD=60^\\circ$이므로\n$\\triangle ACD$의 넓이는\n$\\dfrac12\\times6\\sqrt2\\times3\\times\\sin60^\\circ=\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$이다.\n\n(3) 사각형 $ABCD$는 두 삼각형 $ABC$, $ACD$로 나뉜다.\n따라서 넓이는 $18+\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$이다.",
+    "solution": "(1) $\\angle B=90^\\circ$, $\\angle A=45^\\circ$이므로 $AB=BC=6$이다.\n따라서 $[\\triangle ABC]=18\\,\\mathrm{cm}^2$이다.\n\n(2) $AC=6\\sqrt2$이므로 $[\\triangle ACD]=\\dfrac12\\cdot6\\sqrt2\\cdot3\\cdot\\sin60^\\circ=\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$이다.\n\n(3) 따라서 $[ABCD]=18+\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q23.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q23-solution.svg"
   },
   {
     "id": 24,
@@ -735,11 +755,12 @@ window.questionBank = [
     "content": "[서술형4] 다음 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $CD$에 내린 수선의 발을 각각 $M,N$이라 하자. 이때 $\\overline{OM}=\\overline{ON}$이면 $\\overline{AB}=\\overline{CD}$임을 설명하려고 한다. 아래의 질문에 풀이 과정을 쓰고 답을 구하시오. [5점]<br>(1) $\\triangle OAM\\equiv\\triangle OCN$임을 설명하시오. [3점] (부분점수 있음)<br>(2) (1)을 이용하여 $\\overline{AB}=\\overline{CD}$임을 설명하시오. [2점] (부분점수 있음)",
     "choices": [],
     "answer": "$\\overline{AB}=\\overline{CD}$",
-    "solution": "(1) $OA=OC$는 같은 원의 반지름이고 $OM=ON$이다.\n또 $OM\\perp AB$, $ON\\perp CD$이므로 $\\angle OMA=\\angle ONC=90^\\circ$이다.\n따라서 $\\triangle OAM$과 $\\triangle OCN$은 빗변과 한 변이 각각 같은 두 직각삼각형이므로 합동이다.\n\n(2) 합동인 두 삼각형의 대응변이므로 $AM=CN$이다.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=MB$, $CN=ND$이다.\n따라서 $AB=2AM$, $CD=2CN$이고 $AM=CN$이므로 $AB=CD$이다.",
+    "solution": "(1) $OA=OC$는 반지름이고 $OM=ON$이다.\n또 $OM\\perp AB$, $ON\\perp CD$이므로 $\\angle OMA=\\angle ONC=90^\\circ$이다.\n따라서 두 직각삼각형은 빗변과 한 변이 각각 같으므로 $\\triangle OAM\\equiv\\triangle OCN$이다.\n\n(2) 합동이므로 $AM=CN$이다.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=MB$, $CN=ND$이다.\n따라서 $AB=2AM$, $CD=2CN$이고 $AB=CD$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q24.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q24-solution.svg"
   }
 ];

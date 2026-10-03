@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POST_REPAIR_RECHECK_RECEIPT_v1",
+  "recordType": "POST_REPAIR_RECHECK_STAGE_RECEIPT",
+  "canonicalOrdinal": 60,
+  "examUid": "m3/2final/23-pungdeok",
+  "exam": "23_풍덕중_2학기_기말_중3_기출.js",
+  "status": "POST_REPAIR_RECHECK_PASS",
+  "verdict": "PASS",
+  "stage": "R3",
+  "nextState": "RELEASE_QUEUE",
+  "nextOwner": "PUBLISH",
+  "repairedFields": {
+    "q22": {
+      "subUnitKey": {
+        "from": "M3-06-CIRCLE_LINE",
+        "to": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+      },
+      "subUnit": {
+        "from": "원과 직선",
+        "to": "원주각"
+      },
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+    }
+  },
+  "repairCommit": "4dcba19219c531fd1d29b0bf923e699396213560",
+  "finalArtifactSha": "sha256:fb85846985720ccd39d8f1ff9931e4cb1b3c084696a499c727236f912c21c441",
+  "finalArtifactGitBlobSha": "c2c18f47c36686a8d0d61de5a8a576a3dea59a23",
+  "evidencePath": "archive/data/r3-intake/m3/23_풍덕중_2학기_기말_중3_기출.r3-repair.recheck-evidence.json",
+  "evidenceGitBlobSha": "25fc9c381bd970e4b891b68443e685c3096de271",
+  "validatorReceiptPath": "archive/data/r3-intake/m3/23_풍덕중_2학기_기말_중3_기출.post-repair-recheck.r3-2.validator-receipt.json",
+  "validatorReceiptGitBlobSha": "a8b107dfbe816773132701b83214d4960fd7f958",
+  "validationRunId": 37081670649,
+  "validationJobId": 111083330248,
+  "currentAuthorityMain": "ccd95f890254f864cca925d58900f52cf25724c3",
+  "remainingBlockingFailureCodes": [],
+  "supersededFailureCodes": [
+    "META_L2_RPM_PATH_MISMATCH:q22",
+    "R3_ITEM_HOLD_FORBIDDEN:22"
+  ],
+  "lockedScopeMutationCount": 0,
+  "repairProductionFieldMutationCount": 2,
+  "mainMutation": 0,
+  "releaseEligible": true,
+  "additionalR3Retry": false,
+  "firstMissingClosureStep": null,
+  "closedAt": "2026-10-03T09:21:15+09:00"
+}

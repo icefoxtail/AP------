@@ -31,6 +31,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q1-solution.svg"
   },
   {
@@ -63,6 +65,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q2-solution.svg"
   },
   {
@@ -95,6 +99,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q3-solution.svg"
   },
   {
@@ -128,6 +134,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q4-solution.svg"
   },
   {
@@ -224,6 +232,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q7-solution.svg"
   },
   {
@@ -256,6 +266,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q8-solution.svg"
   },
   {
@@ -288,6 +300,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q9-solution.svg"
   },
   {
@@ -320,6 +334,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q10-solution.svg"
   },
   {
@@ -352,6 +368,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q11-solution.svg"
   },
   {
@@ -384,6 +402,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q12-solution.svg"
   },
   {
@@ -676,6 +696,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q22-solution.svg"
   },
   {
@@ -722,7 +744,7 @@ window.questionBank = [
     "choices": [],
     "answer": "분산 $\\dfrac{23}{3}$, 표준편차 $\\dfrac{\\sqrt{69}}{3}$",
     "solution": "편차의 합은 $0$이다.\n주어진 다섯 편차의 합은\n$-3+1+5-3+1=1$\n이므로 여섯 번째 편차는 $-1$이다.\n\n편차 제곱의 합은\n$(-3)^2+1^2+5^2+(-3)^2+1^2+(-1)^2$\n$=9+1+25+9+1+1=46$\n이다.\n따라서 분산은\n$\\dfrac{46}{6}=\\dfrac{23}{3}$\n이다.\n표준편차는\n$\\sqrt{\\dfrac{23}{3}}=\\dfrac{\\sqrt{69}}{3}$\n이다.\n따라서 분산은 $\\dfrac{23}{3}$, 표준편차는 $\\dfrac{\\sqrt{69}}{3}$이다.",
-    "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q24.png",
+    "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q24-source.svg",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",

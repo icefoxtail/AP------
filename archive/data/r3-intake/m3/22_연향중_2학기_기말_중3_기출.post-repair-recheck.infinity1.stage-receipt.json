@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POST_REPAIR_RECHECK_RECEIPT_v1",
+  "recordType": "POST_REPAIR_RECHECK_STAGE_RECEIPT",
+  "canonicalOrdinal": 67,
+  "examUid": "m3/2final/22-yeonhyang",
+  "exam": "22_연향중_2학기_기말_중3_기출.js",
+  "status": "POST_REPAIR_RECHECK_PASS",
+  "verdict": "PASS",
+  "stage": "R3",
+  "nextState": "RELEASE_QUEUE",
+  "nextOwner": "PUBLISH",
+  "repairedFields": {
+    "q5": {
+      "solution": {
+        "action": "REMOVE_FALSE_INTERMEDIATE_STATEMENT",
+        "removed": "A,C,P collinear + ∠CAT=36° therefore ∠PAT=144°"
+      }
+    }
+  },
+  "repairCommit": "09a7af090711f4f6b61ff5b80b9484645dd36926",
+  "finalArtifactSha": "sha256:a8cd7cc30d59fb77bc1d3f48c5c66663ce103ddc80b3677fb5c69748943325ac",
+  "finalArtifactGitBlobSha": "6a5f421ae3d1b1c1504591fa8df8752bcd62704e",
+  "evidencePath": "archive/data/r3-intake/m3/22_연향중_2학기_기말_중3_기출.r3.post-repair.physical-evidence.json",
+  "evidenceGitBlobSha": "de009d273c55a05799c8d13fc7174e126e4e4fa3",
+  "validatorReceiptPath": "archive/data/release-manifests/m3/o67-22-yeonhyang-2final.r3-post-repair-validator.json",
+  "validatorReceiptGitBlobSha": "828599b5823a01a2dfda52f971f0b4c1d037ff6d",
+  "validationRunId": 37085953806,
+  "validationJobId": 111096193023,
+  "currentAuthorityMain": "cbb930807132e1217691b1752323a54b24d25dc2",
+  "remainingBlockingFailureCodes": [],
+  "supersededFailureCodes": [
+    "SOLUTION_MATH_FALSE_STEP:q5",
+    "R3_ITEM_HOLD_FORBIDDEN:5"
+  ],
+  "changedQids": [
+    5
+  ],
+  "changedFields": [
+    "q5.solution"
+  ],
+  "lockedScopeMutationCount": 0,
+  "repairProductionFieldMutationCount": 1,
+  "recheckProductionMutationCount": 0,
+  "mainMutation": 0,
+  "releaseEligible": true,
+  "additionalR3Retry": false,
+  "firstMissingClosureStep": null,
+  "masterLeaseId": "INFINITY1-o67-R3-REPAIR-20261003T1009+0900",
+  "closedAt": "2026-10-03T10:27:10+09:00"
+}

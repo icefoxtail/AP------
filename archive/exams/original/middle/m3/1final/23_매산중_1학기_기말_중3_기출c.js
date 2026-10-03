@@ -30,8 +30,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 인수는 다항식을 곱의 꼴로 나타냈을 때 곱해진 각각의 식을 의미한다.\\n조건 정리: 다항식이 $a$, $b+1$, $c-2$의 곱으로 인수분해되어 있다.\\n정석 풀이: 주어진 식 $a(b+1)(c-2)$는 $a$, $b+1$, $c-2$를 인수로 가지며, 이들의 곱으로 만들어지는 식들도 인수이다.\\n보기 중에서 주어진 식의 인수인 것은 $b+1$이다.\\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },
@@ -486,10 +486,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 동생의 나이를 미지수 $x$로 두고 조건에 맞는 이차방정식을 세워 푼다.\\n조건 정리: 제완이의 나이는 동생의 나이보다 $4$살 많으며, 두 나이의 곱이 $165$이다.\\n정석 풀이: 동생의 나이를 $x$살이라 하면, 제완이의 나이는 $(x+4)$살이다.\\n나이의 곱이 $165$이므로\\n$x(x+4) = 165$\\n$x^2+4x-165 = 0$\\n$(x-11)(x+15) = 0$이므로 $x=11$ 또는 $x=-15$이다.\\n나이는 양수이어야 하므로 $x=11$이다.\\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+    "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conditionKeys": ["COND_NATURAL_NUMBER"]
   },
   {
     "id": 15,
@@ -522,7 +523,7 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "[키포인트] $y=(x에 대한 이차식)$ 꼴로 정리되는 함수를 찾는다.\\n조건 정리: 보기에 주어진 식들을 전개하여 차수를 확인한다.\\n정석 풀이:\\nㄱ. $y=11x-2$는 일차함수이다.\\nㄴ. $y=x^2-x+3$은 이차함수이다.\\nㄷ. $y=x(x+4)-7 = x^2+4x-7$이므로 이차함수이다.\\nㄹ. $y=-\\dfrac{5}{x^2}-2x+1$은 분모에 변수 $x$가 있으므로 다항함수가 아니다.\\n따라서 이차함수인 것은 ㄴ, ㄷ이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] $y=(x에 대한 이차식)$ 꼴로 정리되는 함수를 찾는다.\\n조건 정리: 보기에 주어진 식들을 전개하여 차수를 확인한다.\\n정석 풀이:\\n<br><br>\nㄱ. $y=11x-2$는 일차함수이다.\\n<br><br>\nㄴ. $y=x^2-x+3$은 이차함수이다.\\n<br><br>\nㄷ. $y=x(x+4)-7 = x^2+4x-7$이므로 이차함수이다.\\n<br><br>\nㄹ. $y=-\\dfrac{5}{x^2}-2x+1$은 분모에 변수 $x$가 있으므로 다항함수가 아니다.\\n따라서 이차함수인 것은 ㄴ, ㄷ이다.\\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -600,7 +601,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": ["CC_FUNCTION_SYMMETRY"]
   },
   {
     "id": 18,
@@ -727,10 +731,12 @@ window.questionBank = [
     "choices": [],
     "answer": "$x+7$",
     "solution": "[키포인트] 삼각형의 넓이 공식 $\\dfrac{1}{2} \\times (밑변) \\times (높이)$를 이용하여 높이를 구하는 다항식 방정식을 세운다.\\n조건 정리: 밑변의 길이가 $2x-6$, 넓이가 $x^2+4x-21$이다.\\n정석 풀이: 구하는 삼각형의 높이를 $h$라 하자.\\n삼각형의 넓이 공식에 의해\\n$\\dfrac{1}{2} \\times (2x-6) \\times h = x^2+4x-21$이 성립한다.\\n좌변을 정리하면 $\\dfrac{1}{2} \\times 2(x-3) \\times h = (x-3)h$이다.\\n우변의 다항식을 인수분해하면 $x^2+4x-21 = (x-3)(x+7)$이다.\\n따라서 $(x-3)h = (x-3)(x+7)$이므로 높이 $h = x+7$이다.\\n따라서 구하는 값은 $x+7$이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": ["COND_POSITIVE"]
   },
   {
     "id": 22,
@@ -828,7 +834,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": ["CC_FUNCTION_SYMMETRY"]
   },
   {
     "id": 26,
