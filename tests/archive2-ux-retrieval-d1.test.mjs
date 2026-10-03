@@ -70,6 +70,12 @@ export default { async fetch(request, env) {
       )`,
       `CREATE TABLE class_students(class_id TEXT,student_id TEXT)`,
       `CREATE TABLE teacher_classes(teacher_id TEXT,class_id TEXT)`,
+      `CREATE TABLE homework_photo_assignments(
+        id TEXT PRIMARY KEY,title TEXT,description TEXT,class_id TEXT,due_date TEXT,due_time TEXT,status TEXT,created_at TEXT
+      )`,
+      `CREATE TABLE homework_photo_submissions(
+        assignment_id TEXT,student_id TEXT,is_submitted INTEGER,submitted_at TEXT
+      )`,
     ]) await db.prepare(sql).run();
     await db.prepare("INSERT INTO classes VALUES(?,?,?)").bind("class-target", "고1 대상반", "고1").run();
     await db.prepare("INSERT INTO classes VALUES(?,?,?)").bind("class-other", "고2 다른반", "고2").run();
@@ -167,16 +173,22 @@ export default { async fetch(request, env) {
       .bind("student-b", "학생 B", "고1", "테스트학교", "", "재원").run();
 
     for (const [id, classId, title] of [
-      ["assignment-class-1", "class-1", "반 1 시험"],
-      ["assignment-class-2", "class-2", "반 2 시험"],
+      ["assignment-class-1", "class-1", "두 반 공통 시험"],
+      ["assignment-class-2", "class-2", "두 반 공통 시험"],
     ]) {
       await assignmentInsert.bind(
-        id, classId, title, "2026-09-20", 1, `original/${id}.js`, "archive",
+        id, classId, title, "2026-09-30", 1, "original/shared-class-exam.js", "archive",
         JSON.stringify({ meta: { grade: "고1", subject: "공통수학1" } }), "공통수학1", "ready", "", null, null,
-        "2026-09-20T00:00:00.000Z", "2026-09-20T00:00:00.000Z", "고1",
+        "2026-09-30T00:00:00.000Z", "2026-09-30T00:00:00.000Z", "고1",
       ).run();
       await recipientInsert.bind(id, "student-a").run();
     }
+    await db.prepare(`INSERT INTO exam_sessions
+      (id,student_id,assignment_id,exam_title,exam_date,question_count,archive_file,updated_at,created_at,score,wrong_ids)
+      VALUES(?,?,?,?,?,?,?,?,?,?,?)`).bind(
+      "session-class-2", "student-a", "assignment-class-2", "두 반 공통 시험", "2026-09-30", 1,
+      "original/shared-class-exam.js", "2026-10-01T00:00:00.000Z", "2026-10-01T00:00:00.000Z", 1, "[]",
+    ).run();
     for (const [id, title] of [
       ["class1-cancelled-submitted", "반 1 취소 제출"],
       ["class1-cancelled-unsubmitted", "반 1 취소 미제출"],
@@ -204,6 +216,17 @@ export default { async fetch(request, env) {
     await db.prepare("INSERT INTO class_students VALUES(?,?)").bind("class-2", "student-a").run();
     await db.prepare("INSERT INTO class_students VALUES(?,?)").bind("class-1", "student-b").run();
     await db.prepare("INSERT INTO teacher_classes VALUES(?,?)").bind("teacher-a", "class-1").run();
+    const homeworkInsert = db.prepare(`INSERT INTO homework_photo_assignments
+      (id,title,description,class_id,due_date,due_time,status,created_at) VALUES(?,?,?,?,?,?,?,?)`);
+    const homeworkSubmissionInsert = db.prepare(`INSERT INTO homework_photo_submissions
+      (assignment_id,student_id,is_submitted,submitted_at) VALUES(?,?,?,?)`);
+    for (const [id, classId, title] of [
+      ["homework-class-1", "class-1", "반 1 과제"],
+      ["homework-class-2", "class-2", "반 2 과제"],
+    ]) {
+      await homeworkInsert.bind(id, title, "과제 설명", classId, "2026-10-10", "18:00", "active", "2026-10-01").run();
+      await homeworkSubmissionInsert.bind(id, "student-a", 0, null).run();
+    }
 
     const recentBase = await mf.dispatchFetch("http://local/api/class-exam-assignments/recent-summary?limit=1000");
     const recentBaseText = await recentBase.text();
@@ -300,6 +323,58 @@ export default { async fetch(request, env) {
     );
     assert.equal(exactClass2PdfTeacher.status, 403,
       "teacher-preview PDF reads use the same exact Assignment class authority");
+
+    const teacherHome = await mf.dispatchFetch(
+      "http://local/api/student-portal/home?student_id=student-a",
+      { headers: teacherHeaders },
+    );
+    const teacherHomeBody = await teacherHome.json();
+    assert.equal(teacherHome.status, 200, JSON.stringify(teacherHomeBody));
+    assert.deepEqual(teacherHomeBody.assignments.map(row => row.assignment_id), ["homework-class-1"]);
+    assert.ok(teacherHomeBody.class_exam_assignments.length > 0);
+    assert.ok(teacherHomeBody.class_exam_assignments.every(row => row.class_id === "class-1"));
+    assert.equal(teacherHomeBody.assignments.some(row => row.assignment_id === "homework-class-2"), false);
+    assert.equal(teacherHomeBody.class_exam_assignments.some(row => row.assignment_id === "assignment-class-2"), false);
+
+    const teacherGeneralExams = await mf.dispatchFetch(
+      "http://local/api/student-portal/exams?student_id=student-a",
+      { headers: teacherHeaders },
+    );
+    const teacherGeneralExamsBody = await teacherGeneralExams.json();
+    assert.equal(teacherGeneralExams.status, 200, JSON.stringify(teacherGeneralExamsBody));
+    assert.ok(teacherGeneralExamsBody.exams.length > 0);
+    assert.ok(teacherGeneralExamsBody.exams.every(row => row.class_id === "class-1"));
+    assert.equal(teacherGeneralExamsBody.exams.some(row => row.assignment_id === "assignment-class-2"), false);
+    const teacherClass1Exam = teacherGeneralExamsBody.exams.find(row => row.assignment_id === "assignment-class-1");
+    assert.equal(teacherClass1Exam.is_submitted, 0,
+      "an unauthorized sibling-class session cannot leak into a matching exam row");
+    assert.equal(teacherClass1Exam.session_id, null);
+
+    const adminHome = await mf.dispatchFetch(
+      "http://local/api/student-portal/home?student_id=student-a",
+      { headers: { "X-Fixture-Role": "admin" } },
+    );
+    const adminHomeBody = await adminHome.json();
+    assert.equal(adminHome.status, 200, JSON.stringify(adminHomeBody));
+    assert.deepEqual(new Set(adminHomeBody.assignments.map(row => row.assignment_id)),
+      new Set(["homework-class-1", "homework-class-2"]));
+    assert.ok(adminHomeBody.class_exam_assignments.some(row => row.class_id === "class-1"));
+    assert.ok(adminHomeBody.class_exam_assignments.some(row => row.class_id === "class-2"));
+
+    const studentHome = await mf.dispatchFetch(
+      `http://local/api/student-portal/home?student_id=student-a&token=${tokenFor("student-a")}`,
+    );
+    const studentHomeBody = await studentHome.json();
+    assert.equal(studentHome.status, 200, JSON.stringify(studentHomeBody));
+    assert.deepEqual(new Set(studentHomeBody.assignments.map(row => row.assignment_id)),
+      new Set(["homework-class-1", "homework-class-2"]));
+    assert.ok(studentHomeBody.class_exam_assignments.some(row => row.class_id === "class-1"));
+    assert.ok(studentHomeBody.class_exam_assignments.some(row => row.class_id === "class-2"));
+
+    const studentGeneralExams = await mf.dispatchFetch(listUrl);
+    const studentGeneralExamsBody = await studentGeneralExams.json();
+    assert.equal(studentGeneralExams.status, 200, JSON.stringify(studentGeneralExamsBody));
+    assert.ok(studentGeneralExamsBody.exams.some(row => row.assignment_id === "assignment-class-2"));
 
     for (const assignmentId of ["assignment-class-1", "assignment-class-2"]) {
       const adminExact = await mf.dispatchFetch(

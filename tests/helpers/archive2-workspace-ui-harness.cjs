@@ -32,6 +32,8 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
     btoa: value => Buffer.from(value, 'binary').toString('base64'),
     location: new URL('https://test.invalid/archive/workspace.html?view=recent'),
     history: { state: null, pushState(state) { this.state = state; }, replaceState(state) { this.state = state; } },
+    scrollY: 0,
+    scrollTo() {},
     localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
     document: {
       activeElement: null,

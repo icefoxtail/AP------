@@ -143,6 +143,7 @@
     recentFilters: { from: "", to: "", grade: "", subject: "", query: "" },
     recentSelectedAssignmentId: "",
     recentLoadVersion: 0,
+    assignmentStatusLoadVersion: 0,
     recentLoading: false,
     recentError: "",
     byUid: new Map(),
@@ -1801,7 +1802,7 @@
     if (shared) return [...new Set([shared.label, ...(shared.courseKeys || [])])];
     return [key];
   }
-  function recentSubjectOptions() {
+  function recentSubjectOptions({ preserveSelected = true } = {}) {
     const grade = state.recentFilters.grade;
     const values = new Map();
     for (const option of C.subjectProjectionOptions(grade) || [])
@@ -1814,7 +1815,7 @@
     for (const option of History.subjectOptions(state.recentRows, grade, C))
       if (!values.has(option.value)) values.set(option.value, option);
     const selected = state.recentFilters.subject;
-    if (selected && !values.has(selected)) {
+    if (preserveSelected && selected && !values.has(selected)) {
       const [label] = recentSubjectTerms(selected);
       values.set(selected, { value: selected, label: label || selected });
     }
@@ -1842,7 +1843,7 @@
     if (!Object.hasOwn(state.recentFilters, key)) return;
     state.recentFilters[key] = el.value;
     if (key === "grade") {
-      const subjects = recentSubjectOptions();
+      const subjects = recentSubjectOptions({ preserveSelected: false });
       if (!subjects.some((item) => item.value === state.recentFilters.subject))
         state.recentFilters.subject = "";
       const classes = recentClassOptions();
@@ -1909,9 +1910,27 @@
     }
   }
   async function assignmentStatus(id) {
-    const data = await api(
-      "/class-exam-assignments/" + encodeURIComponent(id) + "/status",
-    );
+    const assignmentId = String(id || "").trim();
+    if (!assignmentId) return null;
+    const version = ++state.assignmentStatusLoadVersion;
+    const requestedView = state.view;
+    const expectedSelection = String(state.recentSelectedAssignmentId || "");
+    const isCurrentRequest = () =>
+      version === state.assignmentStatusLoadVersion &&
+      requestedView === "recent" && state.view === requestedView &&
+      String(state.recentSelectedAssignmentId || "") === expectedSelection &&
+      (!expectedSelection || expectedSelection === assignmentId);
+    if (!isCurrentRequest()) return null;
+    let data;
+    try {
+      data = await api(
+        "/class-exam-assignments/" + encodeURIComponent(assignmentId) + "/status",
+      );
+    } catch (error) {
+      if (!isCurrentRequest()) return null;
+      throw error;
+    }
+    if (!isCurrentRequest()) return null;
     state.openAssignment = data;
     const a = data.assignment,
       active = data.students.filter((s) => !s.excluded),
@@ -1939,6 +1958,7 @@
       a.exam_title,
       `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
     );
+    return data;
   }
   async function openAssignmentOutput(assignmentId, mode) {
     const popup = window.open("about:blank", "_blank");
@@ -2895,6 +2915,7 @@
       if (b.dataset.view) {
         if (b.dataset.view === state.view && !(state.view === "saved" && state.savedPaperId))
           return;
+        state.assignmentStatusLoadVersion++;
         rememberCurrentHistoryEntry();
         if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length)
           state.sources = [];
@@ -3661,6 +3682,7 @@
   });
   window.addEventListener("pagehide", save);
   window.addEventListener("popstate", async () => {
+    state.assignmentStatusLoadVersion++;
     const previousSelection = state.recentSelectedAssignmentId;
     readUrl();
     if ($("modal")?.open && previousSelection !== state.recentSelectedAssignmentId)
