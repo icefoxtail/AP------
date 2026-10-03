@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 790" role="img" aria-labelledby="title desc">
+  <title id="title">산 아래 터널 길이</title>
+  <desc id="desc">산꼭대기 A에서 터널 BC에 내린 수선의 발 H를 사용한다. BH는 4루트3, HC는 4이므로 터널 BC의 길이는 4루트3 더하기 4이다.</desc>
+  <style>
+    .ko{font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;fill:#16324f}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;fill:#16324f}
+    .title{font-size:24px;font-weight:700}.body{font-size:20px}.small{font-size:17px;fill:#52677f}.result{font-size:23px;font-weight:700}
+  </style>
+  <rect width="560" height="790" rx="18" fill="#f5f8fc"/>
+  <text id="title" x="28" y="42" class="ko title">높이를 두 직각삼각형으로 나누기</text>
+  <rect x="28" y="68" width="504" height="374" rx="14" fill="#fff" stroke="#d9e2ed"/>
+  <g transform="translate(90 0)">
+    <path d="M80 342 L232.42 254 L320.42 342" fill="none" stroke="#16324f" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="232.42" y1="254" x2="232.42" y2="342" stroke="#246bce" stroke-width="3"/>
+    <path d="M232.42 326 h16 v16 h-16" fill="none" stroke="#16324f" stroke-width="2"/>
+    <path d="M99 331 A24 24 0 0 1 101 319" fill="none" stroke="#d97919" stroke-width="2.5"/>
+    <path d="M295 342 A24 24 0 0 1 303.45 325" fill="none" stroke="#d97919" stroke-width="2.5"/>
+    <g class="math body">
+      <text x="60" y="363">B</text><text x="221" y="363">H</text><text x="322" y="363">C</text><text x="222" y="247">A</text>
+      <text x="120" y="329" fill="#d97919">30°</text><text x="279" y="333" fill="#d97919">45°</text>
+      <text x="135" y="278">8</text><text x="155" y="394" fill="#246bce">4√3</text><text x="275" y="394" fill="#246bce">4</text><text x="240" y="306" fill="#246bce">4</text>
+    </g>
+  </g>
+  <rect x="28" y="460" width="504" height="300" rx="14" fill="#fff" stroke="#d9e2ed"/>
+  <text x="54" y="505" class="ko small">왼쪽 △ABH</text>
+  <text x="54" y="548" class="math body">AH = 8 sin30° = 4</text>
+  <text x="54" y="584" class="math body">BH = 8 cos30° = 4√3</text>
+  <line x1="54" y1="610" x2="506" y2="610" stroke="#e4eaf1"/>
+  <text x="54" y="650" class="ko small">오른쪽 △AHC는 45° 직각삼각형</text>
+  <text x="54" y="690" class="math body">HC = AH = 4</text>
+  <rect x="52" y="711" width="456" height="40" rx="10" fill="#e7f5f2" stroke="#8fc9bd"/>
+  <text x="280" y="739" text-anchor="middle" class="ko result">BC = 4√3 + 4</text>
+</svg>
