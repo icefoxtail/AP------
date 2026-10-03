@@ -5,7 +5,7 @@
   "canonicalOrdinal": 1,
   "examFile": "25_진남중_1학기_중간_중2_기출.js",
   "inputFinalArtifactSha": "a3867d116498aa2afa67b327968a9d46946b4bb5",
-  "status": "R1_FULL_RECHECK_IN_PROGRESS",
+  "status": "R1_REPAIR_WRITE_DEBT",
   "selector": "2025 DESC + inventory ordinal; no current same-stage R1 branch found before claim",
   "currentBranch": "work/middle/m2/25-jinnam-1mid-r1-2-20261004-0836",
   "deterministicRepairsRequired": [
@@ -35,13 +35,63 @@
     {
       "qid": 6,
       "reason": "SOURCE_TRUTH_AMBIGUITY_DUPLICATE_CHOICE_TEXT",
+      "observed": "choices ③ and ⑤ byte-identical; answer ② mathematically consistent with visible stem",
       "nextRequiredEvidence": "original PDF/page pixel authority"
     },
     {
       "qid": 7,
       "reason": "SOURCE_TRUTH_AMBIGUITY_ENUMERATION_MISMATCH",
+      "observed": "visible statements only ㄴ/ㅂ/ㅇ/ㅈ while choices reference ㄱ..ㅈ; answer ③ consistent with visible statements",
       "nextRequiredEvidence": "original PDF/page pixel authority"
     }
   ],
-  "next": "Apply deterministic metadata repairs, bind fresh R1 physical evidence, run canonical R1 validator, materialize REVIEW1_DONE_WITH_ITEM_HOLDS if validator passes."
+  "next": "Executor with target-JS write capability: apply only q13/q20/q23 subUnitKey+subUnit repairs; then bind fresh R1 physical evidence to repaired blob, run canonical --stage R1 validator, write REVIEW1_DONE_WITH_ITEM_HOLDS (q6/q7 only) and remote-readback.",
+  "completed": {
+    "goldenCalibration": "PASS; 2 Golden files read from current main and Bokseong negative regression read",
+    "protectedSourceParity": "23/23 content/choices/answer/image exact vs baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; CREATE-added questionType excluded from protected source parity",
+    "answerMath": "23/23 independently recomputed from current artifact; q6/q7 mathematical answer matches current visible stem but original-source ambiguity remains held",
+    "solutionMath": "23/23 current solutions rechecked against independent computations; no math correction required",
+    "curriculum": "23/23 PASS for 2022 M2-1 or lower methods",
+    "smallBoard": "23/23 [핵심]/[풀이]/[결론] structure present and reproducible",
+    "visuals": "problemImage 0; solutionImage 0; q6/q7 require unavailable original PDF/page pixels for source ambiguity only",
+    "runtime": "23/23 high-signal TeX runtime scan PASS; malformed doubled command hits 0",
+    "layout": "q1-q20 grid; q21-q23 subjective-2up; no deterministic layout defect found",
+    "metaCrosswalk": "23/23 RPM rows rechecked against current middle2.json blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59; exact subUnit mismatch at q13/q20/q23 only",
+    "difficulty": "23/23 rechecked against v1.3 definitions; no deterministic bucket correction found"
+  },
+  "writeAttempts": [
+    {
+      "path": "GitHub contents update_file on target JS",
+      "result": "BLOCKED_BEFORE_SIDE_EFFECT",
+      "detail": "OpenAI connector safety check rejected executable JS replacement; target bytes unchanged"
+    },
+    {
+      "path": "target-specific GitHub Actions repair workflow create_file on validation branch",
+      "result": "BLOCKED_BEFORE_SIDE_EFFECT",
+      "detail": "OpenAI connector safety check rejected workflow write; no workflow/run/job created"
+    }
+  ],
+  "currentArtifactGitBlob": "a3867d116498aa2afa67b327968a9d46946b4bb5",
+  "remainingDefects": [
+    {
+      "qid": 13,
+      "field": "subUnitKey/subUnit",
+      "required": "M2-01-EXPONENT_LAW / 지수법칙",
+      "authority": "M2-RPM-129"
+    },
+    {
+      "qid": 20,
+      "field": "subUnitKey/subUnit",
+      "required": "M2-02-LINEAR_INEQUALITY / 일차부등식",
+      "authority": "M2-RPM-141"
+    },
+    {
+      "qid": 23,
+      "field": "subUnitKey/subUnit",
+      "required": "M2-02-LINEAR_INEQUALITY / 일차부등식",
+      "authority": "M2-RPM-136"
+    }
+  ],
+  "stageClosure": "NOT_WRITTEN",
+  "validator": "NOT_RUN_ON_UNREPAIRED_ARTIFACT"
 }
