@@ -6,14 +6,14 @@
   "stage": "CREATE",
   "inputArtifactSha": "fc83839de05f393f3392cd84ed5897c82f55781f",
   "leaseKey": "sha256:63427ca7d6cdaa2ecd5d6778fe1fcc9a69efaa32b5352bcf58ea8f8fc88a6347",
-  "owner": "THANOS-MASTER-1",
+  "owner": "TEMP-CREATE-1",
   "state": "ACTIVE",
-  "claimedAt": "2026-10-03T21:01:43+09:00",
+  "claimedAt": "2026-10-04T02:15:16+09:00",
   "ttlMinutes": 90,
   "expectedMainSha": "65a7777700af13cbefd5c8db1290b1abe05dba92",
-  "expectedHeadSha": "65a7777700af13cbefd5c8db1290b1abe05dba92",
+  "expectedHeadSha": "e47af8a34c720f123ce923e86614aaeae0db6b52",
   "continuationFromBranch": "work/middle/m2/25-jinnam-1mid-infinity2-20261003",
   "continuationFromCommit": "1d0a45aee5ad9fd052affa2d36053e3fc0007ab1",
   "activeSameTargetWriterObserved": false,
-  "note": "Stale CREATE continuation claimed after prior owner TTL; no newer same-target branch found."
+  "note": "TEMP-CREATE-1 exact continuation takeover after prior THANOS-MASTER-1 lease TTL expired; current branch remains latest-main based and no newer same-target CREATE writer was found."
 }
