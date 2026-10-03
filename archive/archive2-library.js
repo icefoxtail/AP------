@@ -17,6 +17,7 @@
   let savedLibraryContextPatch = null;
   let activeListState = null;
   let libraryViewVersion = 0;
+  let activeLibraryMutation = false;
   let outsideCloseDocument = null;
   function writeSavedLibraryListContextInvalidation(patch) {
     savedLibraryContextInvalidated = true;
@@ -350,6 +351,17 @@
     saveContext(viewState);
   }
 
+  async function renderAfterMutation(...args) {
+    try {
+      return await render(...args);
+    } catch (error) {
+      if (error && typeof error === "object") {
+        try { error.savedMutationRefresh = true; } catch {}
+      }
+      throw error;
+    }
+  }
+
   function bind(host, viewState) {
     const ownerDocument = host.ownerDocument || (typeof document === "undefined" ? null : document);
     if (ownerDocument?.addEventListener && ownerDocument !== outsideCloseDocument) {
@@ -369,6 +381,14 @@
       const action = button.dataset.libraryAction;
       const id = button.dataset.paperId || viewState.paperId;
       const currentView = viewState.statusFilter || "ACTIVE";
+      const authorityVersion = libraryViewVersion;
+      const mutationAction = ["rename", "copy", "library-status", "delete"].includes(action);
+      if (mutationAction && activeLibraryMutation) return;
+      if (mutationAction) {
+        activeLibraryMutation = true;
+        host.querySelectorAll?.('[data-library-action="rename"],[data-library-action="copy"],[data-library-action="library-status"],[data-library-action="delete"]')
+          .forEach((item) => { item.disabled = true; });
+      }
       try {
         if (action === "list") {
           if (typeof history !== "undefined" && history.state?.archive2SavedLibraryDetail) history.back();
@@ -397,14 +417,18 @@
           const currentName = paper?.library_display_name || paper?.title || "";
           const nextName = window.prompt("보관함에서 표시할 이름", currentName);
           if (nextName === null) return;
-          await apiClient().request(
+          const renamed = await apiClient().request(
             "/archive-saved-papers/" + encodeURIComponent(id) + "/library",
             { display_name: nextName },
             "PATCH",
           );
-          invalidateSavedLibraryListContext({ kind: "rename", paperId: id, displayName: nextName.trim() });
-          if (viewState.paperId) await render(host, viewState.paperId, currentView);
-          else await render(host, "", currentView, { forceRefresh: true });
+          const displayName = Object.hasOwn(renamed?.paper || {}, "library_display_name")
+            ? renamed.paper.library_display_name || ""
+            : nextName.trim();
+          invalidateSavedLibraryListContext({ kind: "rename", paperId: id, displayName });
+          if (authorityVersion !== libraryViewVersion) return;
+          if (viewState.paperId) await renderAfterMutation(host, viewState.paperId, currentView);
+          else await renderAfterMutation(host, "", currentView, { forceRefresh: true });
         } else if (action === "copy") {
           const paper = viewState.paper;
           if (!paper?.id || !/^[0-9a-f]{64}$/i.test(String(paper.snapshot_hash || "")))
@@ -423,15 +447,19 @@
             "POST",
           );
           const copyId = data.papers?.[0]?.id;
-          if (!copyId) throw new Error("시험지 사본 생성 결과를 확인하지 못했습니다.");
+          if (!copyId) {
+            invalidateSavedLibraryListContext({ kind: "reload" });
+            throw new Error("시험지 사본 생성 결과를 확인하지 못했습니다.");
+          }
           const copiedPaper = data.papers[0];
           invalidateSavedLibraryListContext({ kind: "insert", paper: copiedPaper });
           delete pending[paper.id];
           if (Object.keys(pending).length) localStorage.setItem(COPY_PENDING_KEY, JSON.stringify(pending));
           else localStorage.removeItem(COPY_PENDING_KEY);
+          if (authorityVersion !== libraryViewVersion) return;
           if (typeof window.Archive2WorkspaceShowSavedPaper === "function")
             window.Archive2WorkspaceShowSavedPaper(copyId, currentView);
-          else await render(host, copyId, currentView);
+          else await renderAfterMutation(host, copyId, currentView);
         } else if (action === "library-status") {
           const result = await apiClient().request(
             "/archive-saved-papers/" + encodeURIComponent(id) + "/library",
@@ -449,17 +477,20 @@
           invalidateSavedLibraryListContext(updatedPaper?.id
             ? { kind: "status", paper: updatedPaper }
             : null);
-          if (viewState.paperId) await render(host, viewState.paperId, currentView, { forceRefresh: true });
-          else await render(host, "", currentView, { forceRefresh: true });
+          if (authorityVersion !== libraryViewVersion) return;
+          if (viewState.paperId) await renderAfterMutation(host, viewState.paperId, currentView, { forceRefresh: true });
+          else await renderAfterMutation(host, "", currentView, { forceRefresh: true });
         } else if (action === "delete") {
           if (!confirm("이 시험지를 휴지통으로 이동할까요? 학생에게 이미 배포한 시험지와 오답 기록은 그대로 유지됩니다.")) return;
           await apiClient().request("/archive-saved-papers/" + encodeURIComponent(id), undefined, "DELETE");
           invalidateSavedLibraryListContext({ kind: "remove", paperId: id });
-          await render(host, "", currentView, { forceRefresh: true });
+          if (authorityVersion !== libraryViewVersion) return;
+          await renderAfterMutation(host, "", currentView, { forceRefresh: true });
         } else if (action === "mode") {
           const mode = button.dataset.mode;
           const frame = host.querySelector(".saved-paper-preview");
           const envelope = await preparePreview(viewState.paper, mode);
+          if (authorityVersion !== libraryViewVersion || !frame?.isConnected) return;
           frame.src = outputUrl(viewState.paper, envelope, mode);
           viewState.envelope = envelope;
           host.querySelectorAll('[data-library-action="mode"]').forEach((item) => item.classList.toggle("active", item === button));
@@ -469,11 +500,20 @@
           await openOutput(id, button.dataset.mode || "exam", viewState.paper);
         }
       } catch (error) {
+        if (mutationAction) invalidateSavedLibraryListContext({ kind: "reload" });
+        if (authorityVersion !== libraryViewVersion && !error?.savedMutationRefresh) return;
         const message = document.createElement("p");
         message.className = "callout danger";
         message.setAttribute("role", "alert");
         message.textContent = error.message || "요청을 처리하지 못했습니다.";
         host.prepend(message);
+      } finally {
+        if (mutationAction) {
+          activeLibraryMutation = false;
+          if (authorityVersion === libraryViewVersion)
+            host.querySelectorAll?.('[data-library-action="rename"],[data-library-action="copy"],[data-library-action="library-status"],[data-library-action="delete"]')
+              .forEach((item) => { item.disabled = false; });
+        }
       }
     };
   }
