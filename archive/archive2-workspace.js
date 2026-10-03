@@ -218,6 +218,8 @@
   let autosaveTimer,
     previewTimer,
     recentRefetchTimer = null,
+    recentPdfRetryIds = new Set(),
+    recentPdfMutationVersions = new Map(),
     recentSubjectOptionUniverse = new Map(),
     derivedBaseLoad = null,
     previewOutputEnvelope = null,
@@ -1778,8 +1780,9 @@
       ].filter(Boolean).join("");
       const pdfLabel = a.pdfReady ? "PDF 준비 완료" : a.pdfStatus === "failed"
         ? "PDF 준비 실패" : a.pdfStatus === "generating" ? "PDF 준비 중" : "PDF 준비 필요";
+      const pdfRetryPending = recentPdfRetryIds.has(String(a.id));
       const pdfRetry = !a.pdfReady && a.pdfStatus !== "generating"
-        ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}" class="small"`)
+        ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}" class="small"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`)
         : "";
       return `<article class="history-card" data-assignment-id="${esc(a.id)}"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="history-card-footer"><div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답·학생별 확인">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
       }).join("")}</div></section>`
@@ -1840,6 +1843,7 @@
     if (subjectField && subjectField.innerHTML !== subjectMarkup) subjectField.innerHTML = subjectMarkup;
   }
   function changeRecentFilter(el) {
+    if (state.view !== "recent") return;
     const key = el.dataset.recentFilter;
     if (!Object.hasOwn(state.recentFilters, key)) return;
     state.recentFilters[key] = el.value;
@@ -1856,15 +1860,76 @@
     replaceUrlState();
     scheduleRecentRefetch();
   }
+  function invalidateRecentRequests() {
+    state.recentLoadVersion++;
+    if (recentRefetchTimer !== null) {
+      clearTimeout(recentRefetchTimer);
+      recentRefetchTimer = null;
+    }
+    state.recentLoading = false;
+  }
+  function recentRequestIsCurrent(version, requestedView, expectedSelection) {
+    return version === state.recentLoadVersion &&
+      requestedView === "recent" && state.view === requestedView &&
+      String(state.recentSelectedAssignmentId || "") === expectedSelection;
+  }
+  function recentAuthorityError(error, authority) {
+    if (error && typeof error === "object") {
+      try { error.archive2Authority = { kind: "recent", ...authority }; } catch {}
+    }
+    return error;
+  }
+  function assignmentStatusAuthorityError(error, authority) {
+    if (error && typeof error === "object") {
+      try { error.archive2Authority = { kind: "assignment-status", ...authority }; } catch {}
+    }
+    return error;
+  }
+  function recentPdfMutationVersion(assignmentId) {
+    return recentPdfMutationVersions.get(assignmentId) || 0;
+  }
+  function advanceRecentPdfMutationVersion(assignmentId) {
+    const next = recentPdfMutationVersion(assignmentId) + 1;
+    recentPdfMutationVersions.set(assignmentId, next);
+    return next;
+  }
+  function isCurrentAuthorityError(error) {
+    const authority = error?.archive2Authority;
+    if (authority?.kind === "recent")
+      return recentRequestIsCurrent(authority.version, authority.view, authority.selection);
+    if (authority?.kind === "assignment-status")
+      return authority.version === state.assignmentStatusLoadVersion &&
+        authority.view === "recent" && state.view === authority.view &&
+        String(state.recentSelectedAssignmentId || "") === authority.selection &&
+        (!authority.selection || authority.selection === authority.assignmentId) &&
+        authority.pdfMutationVersion === recentPdfMutationVersion(authority.assignmentId);
+    return true;
+  }
   function scheduleRecentRefetch() {
-    if (recentRefetchTimer !== null) clearTimeout(recentRefetchTimer);
+    invalidateRecentRequests();
+    if (state.view !== "recent") return;
+    updateRecentResults();
+    const scheduledVersion = state.recentLoadVersion;
     recentRefetchTimer = setTimeout(() => {
       recentRefetchTimer = null;
-      return loadRecent().catch((error) => status(error.message || "출제 내역을 불러오지 못했습니다.", true));
+      if (state.view !== "recent" || scheduledVersion !== state.recentLoadVersion) return false;
+      return loadRecent().catch((error) => {
+        if (isCurrentAuthorityError(error))
+          status(error.message || "출제 내역을 불러오지 못했습니다.", true);
+        return false;
+      });
     }, 300);
   }
   async function loadRecent() {
+    if (state.view !== "recent") return false;
+    if (recentRefetchTimer !== null) {
+      clearTimeout(recentRefetchTimer);
+      recentRefetchTimer = null;
+    }
     const version = ++state.recentLoadVersion;
+    const requestedView = state.view;
+    const expectedSelection = String(state.recentSelectedAssignmentId || "");
+    const isCurrentRequest = () => recentRequestIsCurrent(version, requestedView, expectedSelection);
     state.recentLoading = true;
     state.recentError = "";
     state.recentAssignments = [];
@@ -1873,7 +1938,7 @@
     try {
       if (!classRows.length) {
         const data = await api("/qr-classes");
-        if (version !== state.recentLoadVersion) return;
+        if (!isCurrentRequest()) return false;
         classRows = Array.isArray(data.classes) ? data.classes : [];
       }
       if (state.recentClassId) {
@@ -1893,50 +1958,33 @@
           params.append("subject_term", term);
       }
       const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
-      if (version !== state.recentLoadVersion) return;
+      if (!isCurrentRequest()) return false;
       state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
       state.recentRows = History.normalizeAssignments(
         state.recentAssignments, classRows, state.catalog.exams, C,
       );
       rememberRecentSubjectOptions(state.recentRows);
+      return true;
     } catch (error) {
-      if (version !== state.recentLoadVersion) return;
+      if (!isCurrentRequest()) return false;
       state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
-      throw error;
+      throw recentAuthorityError(error, {
+        version,
+        view: requestedView,
+        selection: expectedSelection,
+      });
     } finally {
-      if (version === state.recentLoadVersion) {
+      if (isCurrentRequest()) {
         state.recentLoading = false;
-        if (state.view === "recent") updateRecentResults();
+        updateRecentResults();
       }
     }
   }
-  async function assignmentStatus(id) {
-    const assignmentId = String(id || "").trim();
-    if (!assignmentId) return null;
-    const version = ++state.assignmentStatusLoadVersion;
-    const requestedView = state.view;
-    const expectedSelection = String(state.recentSelectedAssignmentId || "");
-    const isCurrentRequest = () =>
-      version === state.assignmentStatusLoadVersion &&
-      requestedView === "recent" && state.view === requestedView &&
-      String(state.recentSelectedAssignmentId || "") === expectedSelection &&
-      (!expectedSelection || expectedSelection === assignmentId);
-    if (!isCurrentRequest()) return null;
-    let data;
-    try {
-      data = await api(
-        "/class-exam-assignments/" + encodeURIComponent(assignmentId) + "/status",
-      );
-    } catch (error) {
-      if (!isCurrentRequest()) return null;
-      throw error;
-    }
-    if (!isCurrentRequest()) return null;
-    state.openAssignment = data;
+  function renderAssignmentStatus(data, assignmentId) {
     const a = data.assignment,
       active = data.students.filter((s) => !s.excluded),
       excluded = data.students.filter((s) => s.excluded);
-    const summary = state.recentRows.find((row) => row.id === String(id));
+    const summary = state.recentRows.find((row) => row.id === assignmentId);
     const lifecycle = [
       a.cancelled_at ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
       summary?.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(summary.replacementAssignmentId)}</span>` : "",
@@ -1950,15 +1998,97 @@
       const url = new URL("../apmath/student/index.html", location.href);
       url.searchParams.set("teacher_preview", "1");
       url.searchParams.set("student_id", String(studentId || ""));
-      url.searchParams.set("assignment_id", String(a.id || id));
+      url.searchParams.set("assignment_id", String(a.id || assignmentId));
       url.searchParams.set("omr", "1");
       return url.href;
     };
     const studentRow = (student) => `<div class="recent-row"><span>${esc(student.name)}</span><span>${studentStatus(student)}</span><a href="${esc(studentPreviewUrl(student.student_id))}" target="_blank" rel="noopener">이 출제 확인</a></div>`;
+    const pdfRetryPending = recentPdfRetryIds.has(assignmentId);
     showDialog(
       a.exam_title,
-      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
+      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
     );
+  }
+  function pdfRetryAuthority(assignmentId) {
+    return {
+      assignmentId,
+      view: state.view,
+      selection: String(state.recentSelectedAssignmentId || ""),
+      modalWasOpen: Boolean($("modal")?.open),
+      modalAssignmentId: String(state.openAssignment?.assignment?.id || ""),
+    };
+  }
+  function isCurrentPdfRetryAuthority(authority) {
+    return Boolean(authority &&
+      authority.view === "recent" && state.view === authority.view &&
+      String(state.recentSelectedAssignmentId || "") === authority.selection &&
+      (!authority.selection || authority.selection === authority.assignmentId) &&
+      (!authority.modalWasOpen || (
+        $("modal")?.open && authority.modalAssignmentId === authority.assignmentId &&
+        state.openAssignment?.assignment?.id === authority.assignmentId
+      )));
+  }
+  function applyRecentPdfMutationResult(assignmentId, result, authority) {
+    if (!isCurrentPdfRetryAuthority(authority)) return false;
+    const assignment = result?.assignment || {};
+    const pdfStatus = assignment.pdf_status || "pending";
+    const pdfError = assignment.pdf_error || "";
+    const row = state.recentRows.find((item) => item.id === assignmentId);
+    if (row) {
+      row.pdfStatus = pdfStatus;
+      row.pdfError = pdfError;
+      row.pdfReady = pdfStatus === "ready";
+    }
+    const openAssignment = state.openAssignment;
+    if (authority.modalWasOpen && openAssignment?.assignment?.id === assignmentId) {
+      state.openAssignment = {
+        ...openAssignment,
+        assignment: { ...openAssignment.assignment, ...assignment, pdf_status: pdfStatus, pdf_error: pdfError },
+      };
+      if ($("modal")?.open) renderAssignmentStatus(state.openAssignment, assignmentId);
+    }
+    if (state.view === "recent") updateRecentResults();
+    return true;
+  }
+  async function assignmentStatus(id) {
+    const assignmentId = String(id || "").trim();
+    if (!assignmentId) return null;
+    const version = ++state.assignmentStatusLoadVersion;
+    const requestedView = state.view;
+    const expectedSelection = String(state.recentSelectedAssignmentId || "");
+    const pdfMutationVersion = recentPdfMutationVersion(assignmentId);
+    const isCurrentRequest = () =>
+      version === state.assignmentStatusLoadVersion &&
+      requestedView === "recent" && state.view === requestedView &&
+      String(state.recentSelectedAssignmentId || "") === expectedSelection &&
+      (!expectedSelection || expectedSelection === assignmentId) &&
+      pdfMutationVersion === recentPdfMutationVersion(assignmentId);
+    if (!isCurrentRequest()) return null;
+    let data;
+    try {
+      data = await api(
+        "/class-exam-assignments/" + encodeURIComponent(assignmentId) + "/status",
+      );
+    } catch (error) {
+      if (!isCurrentRequest()) return null;
+      throw assignmentStatusAuthorityError(error, {
+        version,
+        view: requestedView,
+        selection: expectedSelection,
+        assignmentId,
+        pdfMutationVersion,
+      });
+    }
+    if (!isCurrentRequest()) return null;
+    state.openAssignment = data;
+    const recentRow = state.recentRows.find((row) => row.id === assignmentId);
+    if (recentRow && Object.hasOwn(data.assignment || {}, "pdf_status")) {
+      recentRow.pdfStatus = data.assignment.pdf_status || "pending";
+      recentRow.pdfError = data.assignment.pdf_error || "";
+      recentRow.pdfReady = recentRow.pdfStatus === "ready";
+      updateRecentResults();
+    }
+    renderAssignmentStatus(data, assignmentId);
     return data;
   }
   async function openAssignmentOutput(assignmentId, mode) {
@@ -2026,11 +2156,16 @@
         }
       });
   }
+  function noteRenderedViewTransition() {
+    if (lastRenderedView === state.view) return;
+    const previousView = lastRenderedView;
+    lastRenderedView = state.view;
+    state.assignmentStatusLoadVersion++;
+    if (previousView === "recent" && state.view !== "recent")
+      invalidateRecentRequests();
+  }
   function render() {
-    if (lastRenderedView !== state.view) {
-      lastRenderedView = state.view;
-      state.assignmentStatusLoadVersion++;
-    }
+    noteRenderedViewTransition();
     if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
       document.body.dataset.archiveView = state.view;
@@ -2819,6 +2954,8 @@
     const assignmentId = String(id || "").trim();
     if (!assignmentId) return;
     if (state.view === "recent") {
+      invalidateRecentRequests();
+      updateRecentResults();
       rememberCurrentHistoryEntry();
       state.recentSelectedAssignmentId = assignmentId;
       history.pushState(
@@ -2951,46 +3088,65 @@
         return;
       }
       if (a === "assignment-pdf") {
+        const assignmentId = String(b.dataset.assignment || "");
+        if (!assignmentId || recentPdfRetryIds.has(assignmentId)) return;
+        recentPdfRetryIds.add(assignmentId);
         b.disabled = true;
-        const receipt = state.originalReceipts?.find((row) => row.id === b.dataset.assignment);
-        if (receipt) {
+        const retryAuthority = pdfRetryAuthority(assignmentId);
+        const receipt = state.originalReceipts?.find((row) => row.id === assignmentId);
+        try {
+          if (receipt) {
+            try {
+              const result = await api(
+                "/class-exam-assignments/" + assignmentId + "/pdf",
+                {},
+              );
+              advanceRecentPdfMutationVersion(assignmentId);
+              receipt.pdfStatus = result.assignment?.pdf_status || "pending";
+              receipt.pdfError = result.assignment?.pdf_error || result.error || "";
+            } catch (error) {
+              receipt.pdfStatus = "pending";
+              receipt.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
+              if (state.view === retryAuthority.view && $("modal")?.open)
+                status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+            }
+            return;
+          }
+          let pdfResult;
           try {
-            const result = await api(
-              "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
+            pdfResult = await api(
+              "/class-exam-assignments/" + assignmentId + "/pdf",
               {},
             );
-            receipt.pdfStatus = result.assignment?.pdf_status || "pending";
-            receipt.pdfError = result.assignment?.pdf_error || result.error || "";
+            advanceRecentPdfMutationVersion(assignmentId);
           } catch (error) {
-            receipt.pdfStatus = "pending";
-            receipt.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
-            status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+            if (isCurrentPdfRetryAuthority(retryAuthority)) {
+              applyRecentPdfMutationResult(assignmentId, {
+                assignment: { pdf_status: "failed", pdf_error: error.message || "PDF를 다시 준비하지 못했습니다." },
+              }, retryAuthority);
+              status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+            }
+            return;
           }
-          renderOriginalReceipts();
-          return;
-        }
-        const row = state.recentRows.find((item) => item.id === b.dataset.assignment);
-        try {
-          const result = await api(
-            "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
-            {},
-          );
-          if (row) {
-            row.pdfStatus = result.assignment?.pdf_status || "pending";
-            row.pdfError = result.assignment?.pdf_error || "";
-            row.pdfReady = row.pdfStatus === "ready";
-            updateRecentResults();
+          applyRecentPdfMutationResult(assignmentId, pdfResult, retryAuthority);
+          try {
+            if (isCurrentPdfRetryAuthority(retryAuthority))
+              await assignmentStatus(assignmentId);
+          } catch (error) {
+            if (isCurrentAuthorityError(error) && isCurrentPdfRetryAuthority(retryAuthority))
+              status("PDF 상태는 저장되었습니다. 학생별 확인 화면만 새로고침하지 못했습니다.", true);
           }
-          await assignmentStatus(b.dataset.assignment);
-        } catch (error) {
+        } finally {
+          recentPdfRetryIds.delete(assignmentId);
           b.disabled = false;
-          if (row) {
-            row.pdfStatus = "failed";
-            row.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
-            row.pdfReady = false;
-            updateRecentResults();
+          if (receipt) {
+            if (state.originalReceipts?.includes(receipt) && $("modal")?.open)
+              renderOriginalReceipts();
+          } else {
+            if (isCurrentPdfRetryAuthority(retryAuthority)) updateRecentResults();
+            if (retryAuthority.modalWasOpen && isCurrentPdfRetryAuthority(retryAuthority))
+              renderAssignmentStatus(state.openAssignment, assignmentId);
           }
-          status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
         }
         return;
       }
@@ -3033,6 +3189,8 @@
       }
       if (a === "close-dialog") {
         if (state.view === "recent" && state.recentSelectedAssignmentId) {
+          state.assignmentStatusLoadVersion++;
+          invalidateRecentRequests();
           if (history.state?.archive2RecentSelection) history.back();
           else {
             state.recentSelectedAssignmentId = "";
@@ -3343,7 +3501,7 @@
           "archive2-health.json",
         );
     } catch (e) {
-      status(e.message, true);
+      if (isCurrentAuthorityError(e)) status(e.message, true);
     }
   });
   document.addEventListener("submit", (event) => {
@@ -3368,6 +3526,7 @@
         return;
       }
       if (el.id === "recent-class") {
+        if (state.view !== "recent") return;
         state.recentClassId = el.value;
         updateRecentResults();
         replaceUrlState();
@@ -3526,7 +3685,11 @@
   document.addEventListener("input", (event) => {
     if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
     if (event.target.dataset.recentFilter === "query") {
-      if (!event.isComposing) changeRecentFilter(event.target);
+      if (state.view !== "recent") return;
+      if (event.isComposing) {
+        invalidateRecentRequests();
+        updateRecentResults();
+      } else changeRecentFilter(event.target);
       return;
     }
     const el = event.target;
@@ -3607,6 +3770,12 @@
       previewTimer = setTimeout(updatePreview, 450);
     }
   }
+  document.addEventListener("compositionstart", (event) => {
+    if (event.target.dataset.recentFilter === "query" && state.view === "recent") {
+      invalidateRecentRequests();
+      updateRecentResults();
+    }
+  });
   document.addEventListener("compositionend", (event) => {
     if (event.target.dataset.recentFilter === "query") changeRecentFilter(event.target);
   });
@@ -3674,10 +3843,16 @@
       }
     }
   });
+  $("modal").addEventListener?.("close", () => {
+    state.assignmentStatusLoadVersion++;
+    if (state.view === "recent") updateRecentResults();
+  });
   $("modal").addEventListener("cancel", (event) => {
     if (originalIssueBusy()) event.preventDefault();
     else if (state.view === "recent" && state.recentSelectedAssignmentId) {
       event.preventDefault();
+      state.assignmentStatusLoadVersion++;
+      invalidateRecentRequests();
       if (history.state?.archive2RecentSelection) history.back();
       else {
         state.recentSelectedAssignmentId = "";
@@ -3695,11 +3870,13 @@
       $("modal").close();
     render();
     if (state.view === "recent") {
+      const selectedAssignmentId = state.recentSelectedAssignmentId;
       try {
-        await loadRecent();
-        if (state.recentSelectedAssignmentId)
-          await assignmentStatus(state.recentSelectedAssignmentId);
-      } catch (e) { status(e.message, true); }
+        const loaded = await loadRecent();
+        if (loaded && selectedAssignmentId && state.view === "recent" &&
+          state.recentSelectedAssignmentId === selectedAssignmentId)
+          await assignmentStatus(selectedAssignmentId);
+      } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
     }
     restoreCurrentHistoryScroll();
   });
@@ -3766,11 +3943,13 @@
         : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`);
       const previous = drafts();
       if (state.view === "recent") {
+        const selectedAssignmentId = state.recentSelectedAssignmentId;
         try {
-          await loadRecent();
-          if (state.recentSelectedAssignmentId)
-            await assignmentStatus(state.recentSelectedAssignmentId);
-        } catch (e) { status(e.message, true); }
+          const loaded = await loadRecent();
+          if (loaded && selectedAssignmentId && state.view === "recent" &&
+            state.recentSelectedAssignmentId === selectedAssignmentId)
+            await assignmentStatus(selectedAssignmentId);
+        } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
       }
       restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {
