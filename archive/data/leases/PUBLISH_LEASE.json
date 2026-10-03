@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "INFINITY1-PUBLISH-O60-20261003T1039+0900",
   "owner": "INFINITY-MASTER-1",
-  "status": "ACTIVE",
+  "status": "CLOSED",
   "baseMainSha": "cbb930807132e1217691b1752323a54b24d25dc2",
   "claimedAt": "2026-10-03T10:39:00+09:00",
   "expiresAt": "2026-10-03T12:09:00+09:00",
@@ -18,6 +18,12 @@
   "cleanBatchCommit": "b80b6b59116787dc5517412a2ad051b285e99e32",
   "cleanBatchTree": "5d2d60a538db24b8c469a283614feac186c255f7",
   "cleanBatchFileCount": 13,
-  "firstMissingClosureStep": "MAIN_FAST_FORWARD_OR_MERGE_FROM_CLEAN_BATCH",
-  "mainMutation": 0
+  "cleanBatchCompare": "ahead=1,behind=0,target-only",
+  "mainWriteAttempts": [
+    "update_ref(main): BLOCKED_BY_CONNECTOR_SAFETY"
+  ],
+  "result": "CLEAN_BATCH_READY_MAIN_WRITE_CAPABILITY_BLOCKED_CURRENT_RUN",
+  "firstMissingClosureStep": "MAIN_FAST_FORWARD_OR_EQUIVALENT_MERGE_FROM_CLEAN_BATCH",
+  "mainMutation": 0,
+  "closedAt": "2026-10-03T10:40:00+09:00"
 }
