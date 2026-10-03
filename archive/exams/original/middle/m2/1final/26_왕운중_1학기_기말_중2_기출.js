@@ -629,8 +629,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[핵심] $y$축에 평행한 직선 위의 두 점은 $x$좌표가 같다.\n따라서\n$2a=-a+9$이다.\n정리하면\n$3a=9$,\n$a=3$이다.\n정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
