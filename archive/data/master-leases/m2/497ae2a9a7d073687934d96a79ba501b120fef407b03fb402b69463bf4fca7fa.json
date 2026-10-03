@@ -1,23 +1,23 @@
 {
   "schemaVersion": "MASTER_LEASE_v2",
-  "masterLeaseId": "M2-1-THANOS-MASTER-1-o21-r1-rescue-20261004T015831+0900",
+  "masterLeaseId": "M2-1-THANOS-MASTER-2-o21-r1-takeover-20261004T053257+0900",
   "leaseKey": "497ae2a9a7d073687934d96a79ba501b120fef407b03fb402b69463bf4fca7fa",
-  "owner": "THANOS-MASTER-1",
+  "owner": "THANOS-MASTER-2",
   "examUid": "26_동산중_1학기_기말_중2_기출",
   "stage": "R1",
   "inputArtifactSha": "20fbda77de8b761848b59a26956f9171dc068d10",
-  "targetBranch": "work/middle/m2/26-dongsan-1final-r1-2-20261004-0033",
-  "targetHeadAtClaim": "b61c80455ea72d4b878d2b85f4e01e546d12ccc2",
-  "expectedTargetHead": "b61c80455ea72d4b878d2b85f4e01e546d12ccc2",
+  "targetBranch": "work/middle/m2/26-dongsan-1final-r1-thanos1-rescue-20261004-0158",
+  "targetHeadAtClaim": "4b3d5d028e46fed8e602e157cf2a115515e2883c",
+  "expectedTargetHead": "4b3d5d028e46fed8e602e157cf2a115515e2883c",
   "openQids": [
     6,
     20
   ],
-  "firstMissingClosureStep": "R1_FULL_RECHECK_DETERMINISTIC_META_REPAIR_CANONICAL_VALIDATOR_RECEIPT",
-  "rescueReason": "R1-2_DISPATCH_STALL",
-  "claimedAt": "2026-10-04T01:58:31+09:00",
-  "expiresAt": "2026-10-04T03:28:31+09:00",
-  "lastProgressAt": "2026-10-04T01:58:31+09:00",
+  "firstMissingClosureStep": "R1_STALE_BASE_REFRESH_FULL_RECHECK_CANONICAL_VALIDATOR_RECEIPT",
+  "rescueReason": "EXPIRED_TH1_R1_RESCUE_LEASE_NO_PROGRESS_NO_INFLIGHT_STALE_BASE",
+  "claimedAt": "2026-10-04T05:32:57+09:00",
+  "expiresAt": "2026-10-04T07:02:57+09:00",
+  "lastProgressAt": "2026-10-04T05:32:57+09:00",
   "status": "ACTIVE",
-  "claimMode": "ATOMIC_LEASE_KEY_BRANCH_CAS"
+  "claimMode": "ATOMIC_LEASE_KEY_BRANCH_CAS_TAKEOVER_AFTER_TTL"
 }
