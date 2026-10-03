@@ -7,11 +7,12 @@
   "examPath": "archive/exams/original/middle/m2/1final/26_신흥중_1학기_기말_중2_기출.js",
   "owner": "M2-1 MASTER-C",
   "stage": "CREATE",
-  "status": "CREATE_CANDIDATE_READY_GATE_CLOSURE_PENDING",
-  "baseMainSha": "d4842784e70654dbc23939f4cced4076dbb51d68",
+  "status": "CREATE_CANDIDATE_PRODUCTION_COMPLETION_REQUIRED",
+  "baseMainSha": "cd74c75fb14abf3fd9d9c1cea026a20681576c9e",
+  "lineageParentHead": "7967f993b97d2d9a59479704c0eecb79f00e2d93",
   "inputArtifactGitBlob": "3ab151b96338b52c8982a48f71c44779dc65dea0",
   "candidateArtifactGitBlob": "edf7347fec65e190d4d5461537b35c781e97cb76",
-  "branch": "work/middle/m2/26-sinheung-1final-master-c-20261003",
+  "branch": "work/middle/m2/26-sinheung-1final-master-c-refresh-20261003",
   "solutionRewrite": "FULL_ALL_QUESTIONS",
   "solutionRewriteCount": "23/23",
   "legacyExactSolutionReuseCount": 0,
@@ -22,12 +23,22 @@
   ],
   "protectedFieldParity": "PASS",
   "runtimeDoubleTexIssueCount": 0,
+  "currentCreateTagMetaHardGate": {
+    "checkedAgainstMainSha": "cd74c75fb14abf3fd9d9c1cea026a20681576c9e",
+    "questionCount": 23,
+    "tagsFieldCount": 23,
+    "emptyTagsCount": 19,
+    "problemTypeKeyCount": 0,
+    "templateKeyCount": 0,
+    "difficultyBucketCount": 0,
+    "disposition": "PRODUCTION_MATERIALIZATION_REQUIRED_BY_TEMP_CREATE_OWNER"
+  },
   "problemImageQ4": {
     "path": "archive/assets/images/26_신흥중_1학기_기말_중2_기출/q04.png",
     "gitBlobSha": "68d7c174f22eae629be8b1fb4895b64ad2ff800f",
     "size": 420229,
     "status": "BINARY_EXISTS_PIXEL_CHECK_PENDING"
   },
-  "firstMissingClosureStep": "Q4_SOURCE_PIXEL_CHECK_THEN_CREATE_PHYSICAL_EVIDENCE_AND_CANONICAL_VALIDATOR",
-  "disposition": "CONTINUE_SAME_CANDIDATE_DO_NOT_REWRITE_AGAIN_DO_NOT_TREAT_AS_CREATE_DONE"
+  "firstMissingClosureStep": "FULL_TAG_META_MATERIALIZATION_THEN_Q4_SOURCE_PIXEL_CHECK_THEN_CREATE_PHYSICAL_EVIDENCE_AND_CANONICAL_VALIDATOR",
+  "disposition": "KEEP_EXAM_BYTES_EXACT; TEMP-CREATE-1/2 CONTINUES EXISTING CANDIDATE; DO_NOT_DECLARE_CREATE_DONE"
 }
