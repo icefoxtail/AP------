@@ -14,7 +14,7 @@
 - CURRENT CREATE phase에서는 THANOS-MASTER 5개와 TEMP-CREATE-1/2가 모두 새 eligible CREATE target을 직접 claim할 수 있다. TEMP-CREATE가 유일 production owner라는 과거 제한은 무효다.
 - CREATE 권한에는 source/content/choices/answer exact, 전 문항 fresh solution, curriculum, tags/Meta/RPM/PT·TPL/CrossConcept/Condition/IntegrationPattern/difficulty, image/SVG/solutionImage, source pixel 확인과 필요한 재크롭, deterministic repair, Golden/Negative calibration, physical evidence, actual validator/receipt, commit/push와 remote readback이 모두 포함된다.
 - stage를 닫으면 보고에서 멈추지 않고 반드시 다음 durable state까지 이동한다: `CREATE_DONE→READY_FOR_REVIEW1`, `REVIEW1_DONE→READY_FOR_REVIEW2`, `REVIEW2_DONE→READY_FOR_R3`, `R3_PASS→RELEASE_QUEUE`, publish 후 `MAIN_DONE`.
-- cohort phase barrier는 유지한다: **CREATE 34/34 → R1 34/34 → R2 34/34 → R3 34/34 → MAIN**. barrier가 열리면 THANOS-MASTER는 사용자 재지시나 role conversion 없이 즉시 새 phase의 eligible work를 소비한다.
+- **EXAM-LEVEL CONVEYOR BELT HARD:** 전역 cohort/phase barrier는 없다. `CREATE 34/34`, `R1 34/34`, `R2 34/34`, `R3 34/34`는 다음 stage 시작 조건이 아니다. 시험지 1건이 `CREATE_DONE→READY_FOR_REVIEW1`이 되면 즉시 R1, `REVIEW1_DONE→READY_FOR_REVIEW2`면 즉시 R2, `REVIEW2_DONE→READY_FOR_R3`면 즉시 R3, `R3_PASS→RELEASE_QUEUE`면 즉시 publish/main eligible이다. 서로 다른 시험지는 동시에 서로 다른 stage에 존재하는 것이 정상이다.
 - R1/R2/R3에서도 수학·정답·solution·Meta·SVG·asset·조판을 직접 수정할 수 있다. 원본 PDF/page 확인, 재추출·재크롭도 현재 실행환경에서 가능하면 직접 수행한다. 다른 executor는 capability fallback일 뿐 정책상 필수 owner가 아니다.
 - PUBLISH/main도 global PUBLISH_LEASE를 획득하면 THANOS-MASTER가 직접 수행할 수 있다.
 - `MASTER_LEASE v2` 명칭은 schema compatibility 때문에 유지하지만 owner 값은 `THANOS-MASTER-1~5`를 사용한다. same-target valid writer/lease 중복은 계속 금지한다.
@@ -55,13 +55,13 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 
 | Role | Count | Responsibility |
 |---|---:|---|
-| THANOS MASTER | 5 | current phase의 eligible target을 직접 claim해 생산·전수 재검·수리·validator/receipt·stage transition·publish/main까지 수행 |
+| THANOS MASTER | 5 | 시험지별 eligible target을 직접 claim해 생산·전수 재검·수리·validator/receipt·stage transition·publish/main까지 수행 |
 | TEMP-CREATE | 2 | CREATE 전용 생산 보강. THANOS와 동급으로 새 CREATE target claim 가능 |
 | R1 | 2 | R1 전용 full recheck + repair |
 | R2 | 2 | R2 전용 full recheck + regression closure |
 | R3 | 2 | 최종 full audit + same-stage pinpoint repair + release seal |
 | MAIN-MERGE | 1 | clean release backlog publish/main |
-| WATCHDOG | 1 | 5 THANOS와 M2-1 active roster liveness 복구 |
+| WATCHDOG | 1 | 15개 roster liveness/dispatch/conveyor-contract 복구 + 매시간 CURRENT 전광판 갱신 |
 
 ### 1.1 ACTIVE hourly schedule
 
@@ -88,8 +88,8 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 ### 1.2 ROLE-PURE + THANOS UNIVERSAL HARD RULE
 
 - R1/R2/R3/MAIN/TEMP-CREATE slot은 자신의 고정 역할을 유지한다.
-- **THANOS-MASTER-1~5는 role-pure 제한의 예외인 universal executor**다. 별도 task 생성이나 역할 전환 없이 current phase의 CREATE/R1/R2/R3/PUBLISH/MAIN 작업을 수행한다.
-- THANOS가 universal이라고 cohort phase barrier를 건너뛰지는 않는다. current phase가 열려 있는 작업만 소비한다.
+- **THANOS-MASTER-1~5는 role-pure 제한의 예외인 universal executor**다. 별도 task 생성이나 역할 전환 없이 시험지별 current stage의 CREATE/R1/R2/R3/PUBLISH/MAIN 작업을 수행한다.
+- 전역 phase-open 조건은 없다. THANOS는 **각 시험지의 직전 durable state만** 확인한다. 다른 시험지의 미완료·분모 진행률 때문에 이미 eligible인 시험지를 기다리게 해서는 안 된다.
 - target 하나의 failure, stale ref, validator 실행경로 실패, claim conflict 때문에 self-disable하지 않는다. exact continuation을 남긴 뒤 다음 eligible을 찾는다.
 - selector 전체에 실제 eligible target이 없을 때만 scoped `NO_WORK`를 기록할 수 있다. **eligible이 있는데 WAIT/관망 금지**다.
 - same exam/stage/inputArtifactSha는 single-writer lease 1개만 허용한다. active valid owner가 있으면 그 target을 건너뛰고 다음 eligible을 찾는다.
@@ -100,7 +100,18 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 - 사용자 명시 중지/M2-1 종료가 아닌데 peer가 disabled이거나 recurring schedule이 drift하면 peer 또는 WATCHDOG가 복구하고 readback한다.
 - 기존 `MASTER-A/B/C`, `INFINITY-1/2` 이름은 scheduler history이며 current protected roster가 아니다.
 
-### 1.4 dispatch / capability
+### 1.4 WATCHDOG HOURLY STATUS BOARD HARD
+
+- `M2-1 WATCHDOG + 전광판`은 매시 :56에 15개 ACTIVE roster의 enable, hourly RRULE, last_run freshness, conveyor prompt contract를 확인한다.
+- 사용자 명시 중지나 M2-1 종료가 아닌데 OFF면 즉시 re-enable한다. enabled+정상 RRULE인데 expected occurrence를 놓쳐 last_run이 60분을 넘기고 실제 in-flight/recent durable progress가 없으면 `DISPATCH_STALL` 후보로 보고 canonical hourly RRULE을 같은 고정 분에 재결속한 뒤 readback한다.
+- phase-wide `34/34` barrier, 정상 상태의 `CREATE_PHASE_WAIT`, old MASTER/INFINITY topology가 active prompt에 재유입되면 conveyor-contract drift로 보고 최신 EXAM-LEVEL CONVEYOR 계약으로 복구한다.
+- 같은 run 마지막에 기존 Notion `JS Archive 예약 레인 상시 상태판 — CURRENT` **한 페이지를 제자리 갱신**한다. 새 상태판 페이지를 만들지 않는다.
+- 전광판 최소 항목: 기준 KST/latest remote main, 15개 ON/OFF·schedule·last_run·stale, current-generation CREATE/READY_R1/READY_R2/READY_R3/RELEASE/MAIN queue, 최근 1시간 실제 closure/NO_WORK/실패, active/debt target+owner, WATCHDOG 복구 조치, 다음 1시간 우선 target.
+- 단계/완료 수치는 가능한 범위에서 Git physical receipt, finalArtifactSha, remote readback과 CURRENT ledger로 검증한다. 확인 불가 값은 추정하지 않고 `확인 필요`로 표시한다.
+- WATCHDOG 예약 채팅의 final report도 전광판 핵심을 짧게 출력한다. 단순 `LIVENESS PASS` 한 줄 보고로 끝내지 않는다.
+- WATCHDOG은 production exam/artifact를 수정하지 않는다. automation enable/schedule/prompt-contract 복구와 status-board Notion 갱신은 정상 권한이다.
+
+### 1.5 dispatch / capability
 
 - critical slot은 one-shot이 아니라 RRULE recurring schedule을 사용한다.
 - local 경로 하나가 실패해도 전체 capability 부재로 일반화하지 않는다. local/GitHub/Actions/Notion capability를 분리해 확인하고 materially different safe path를 시도한다.
@@ -162,14 +173,15 @@ THANOS-MASTER는 형님의 운영 authority를 위임받은 universal executor�
 매 run은 latest Notion CURRENT + latest origin/main + physical receipt/branch/lease를 다시 읽고, 다음 우선순위에서 실제 mutation target 최대 1시험지를 고른다.
 
 ```text
-1. current phase의 미완성 정상 eligible production
+1. 이미 next-stage eligible인 시험지의 downstream closure (R3 → R2 → R1 우선)
 2. candidate / validator / receipt closure stall
 3. stale SHA / ref / claim / lineage conflict
 4. live stage write / validator failure
-5. release materialization / remote parity / main debt
+5. 새 CREATE eligible production
+6. release materialization / remote parity / main debt
 ```
 
-- CURRENT CREATE phase에서는 미완성 CREATE가 최우선이며, THANOS는 새 CREATE target을 직접 claim할 수 있다.
+- THANOS는 새 CREATE target을 직접 claim할 수 있지만, **이미 R1/R2/R3 eligible인 시험지가 있으면 전량 CREATE 완료를 기다리지 않고 즉시 downstream을 소비**한다. stage 전용 R1/R2/R3 worker도 같은 원칙으로 자기 stage eligible 1건이 생기는 즉시 가져간다.
 - stage delivery는 반드시 durable next state까지다.
   - CREATE → `CREATE_DONE / READY_FOR_REVIEW1`
   - R1 → `REVIEW1_DONE / READY_FOR_REVIEW2`
@@ -181,7 +193,7 @@ THANOS-MASTER는 형님의 운영 authority를 위임받은 universal executor�
 
 ### 3.1 full authority
 
-THANOS-MASTER는 current phase에서 필요하면 다음을 직접 수행한다.
+THANOS-MASTER는 각 시험지의 current stage에서 필요하면 다음을 직접 수행한다.
 
 - 새 target claim과 branch/continuation 선택
 - full CREATE production: source/content/choices/answer exact, fresh solution, curriculum, tags/Meta/RPM/PT·TPL/CrossConcept/Condition/IntegrationPattern/difficulty
@@ -224,7 +236,7 @@ owner = THANOS-MASTER-1 | ... | THANOS-MASTER-5 | compatible stage worker
 
 ### 3.4 phase transition
 
-THANOS는 stage를 닫은 후 next durable state를 기록하고, **cohort barrier가 열려 있으면 다음 phase를 별도 사용자 지시 없이 자동 소비한다.** barrier가 아직 닫혀 있으면 다음 시험지의 current phase work를 계속한다. “다음 phase를 기다린다”는 이유로 eligible current-phase backlog를 관망하지 않는다.
+THANOS는 stage를 닫은 후 next durable state를 기록한다. **그 순간 해당 시험지는 다음 stage에 즉시 eligible**해진다. 전체 cohort의 N/N 완료를 기다리는 phase-open 이벤트는 없다. 다음 예약자/THANOS는 직전 stage receipt + artifact SHA를 확인하고 즉시 이어받는다. 자기 stage eligible이 0일 때만 scoped `NO_WORK`가 가능하며, `CREATE_PHASE_WAIT` 같은 전역 대기 상태는 사용하지 않는다.
 
 ## 4. 실패 처리
 
