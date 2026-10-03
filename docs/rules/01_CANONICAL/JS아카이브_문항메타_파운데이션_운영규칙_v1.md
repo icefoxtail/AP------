@@ -1707,6 +1707,36 @@ CROSSCONCEPT_CONDITION_ROLE_COLLISION
 
 # 17. 신규 JS 입고 파이프라인
 
+## 17.0 CREATE FULL TAG/META COMPLETION GATE — HARD (2026-10-03)
+
+형님의 현재 명시 지시로 **CREATE가 문항 태그와 Meta의 최초 완성 책임을 가진다.** 신규 제작뿐 아니라 current-generation 재인증에서 CREATE closure를 다시 닫는 기존 JS에도 동일하게 적용한다.
+
+CREATE_DONE 전에 각 qid에 대해 다음을 전수 판정하고 현재 schema가 정한 canonical location(JS 본문 또는 stage Meta payload)에 물리화한다.
+
+- `category / originalCategory / tags[] / level / difficultyBucket`
+- curriculum/course + L1/L2(`standardUnitKey / subUnitKey` 및 대응 label/order)
+- RPM Primary semantic(`rpmSemanticStatus / rpmPrimaryPath / rpmL3 / rpmL4 / primaryMethod / decisiveStep`)
+- prerequisite fallback을 쓴 경우 `semanticSourceScope / semanticScopeRelation`
+- projection(`projectionStatus / problemTypeKey / templateKey` 또는 허용된 explicit null reason)
+- `crossConceptKeys[] / conditionKeys[] / integrationPattern`
+- current metadata schema가 요구하는 confidence/boundary/evidence/provenance
+
+`tags[]`는 의도적으로 채우며 빈 배열을 관성적으로 남기지 않는다. source+verified solution+canonical lookup으로 결정 가능한 metadata를 null/누락 상태로 두면 CREATE FAIL이다.
+
+RPM semantic은 FINAL인데 PT/TPL projection이 아직 없을 수 있다. 이 경우 **semantic field는 모두 채운 채** projection만 `BINDING_PENDING / UNMATERIALIZED` 등으로 명시하고, `nullReason / projectionReason` evidence를 남긴다. projection gap은 Meta 공란 허가가 아니다. TRUE semantic unresolved도 암묵적 null로 숨기지 않고 §1.4/현행 HOLD admission gate의 명시적 evidence 상태로 기록한다.
+
+R1/R2/R3는 CREATE 누락분을 최초 생성하는 정상 경로가 아니다. 누락이 발견되면 CREATE completeness defect로 간주해 즉시 deterministic repair하고, 이후 해당 review stage에서 재검한다.
+
+CREATE physical evidence/receipt는 최소 다음을 결속한다.
+
+```text
+tagMetaAuditCount = N/N
+tagMetaCompleteCount = N/N
+openImplicitMetaNullCount = 0
+```
+
+여기서 explicit canonical projection gap / explicit unresolved evidence는 `openImplicitMetaNullCount`에 포함하지 않는다.
+
 ```text
 JS 생성
 → node --check
