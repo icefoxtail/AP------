@@ -215,6 +215,7 @@
   };
   let autosaveTimer,
     previewTimer,
+    recentRefetchTimer = null,
     derivedBaseLoad = null,
     previewOutputEnvelope = null,
     candidateRecords = [],
@@ -1747,7 +1748,7 @@
         <label class="history-period-filter">기간<span class="history-period"><input type="date" data-recent-filter="from" aria-label="시작일" value="${esc(f.from)}"><span aria-hidden="true">~</span><input type="date" data-recent-filter="to" aria-label="끝일" value="${esc(f.to)}"></span></label>
         <label>학년<select data-recent-filter="grade">${options(History.grades, f.grade, "전체 학년")}</select></label>
         <label>반<select id="recent-class">${options(recentClassOptions(), state.recentClassId, "전체 반")}</select></label>
-        <label class="history-subject-filter">과목<select data-recent-filter="subject">${options(History.subjectOptions(state.recentRows, f.grade, C), f.subject, "전체 과목")}</select></label>
+        <label class="history-subject-filter">과목<select data-recent-filter="subject">${options(recentSubjectOptions(), f.subject, "전체 과목")}</select></label>
         <label class="history-title-filter">제목 검색<input type="search" data-recent-filter="query" value="${esc(f.query)}"></label>
       </div><div id="recent-assignments" aria-live="polite" aria-busy="${state.recentLoading}">${recentAssignmentMarkup()}</div></section>
       <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions history-draft-actions">${button("restore", "이어하기", `data-draft="${i}"`)}<details><summary>더보기</summary>${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</details></div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
@@ -1789,6 +1790,25 @@
       host.setAttribute("aria-busy", String(state.recentLoading));
     }
   }
+  function recentSubjectTerms(subjectKey) {
+    const key = String(subjectKey || "").trim();
+    if (!key) return [];
+    if (key.startsWith("raw:")) return [key.slice(4)];
+    const high1 = C.subjectProjectionOptions("고1").find((row) => row.value === key);
+    if (high1) return [high1.label];
+    const shared = C.HIGH_SEMANTIC_SUBJECTS.find((row) => row.value === key);
+    if (shared) return [...new Set([shared.label, ...(shared.courseKeys || [])])];
+    return [key];
+  }
+  function recentSubjectOptions() {
+    const values = History.subjectOptions(state.recentRows, state.recentFilters.grade, C);
+    const selected = state.recentFilters.subject;
+    if (selected && !values.some((row) => row.value === selected)) {
+      const [label] = recentSubjectTerms(selected);
+      values.push({ value: selected, label: label || selected });
+    }
+    return values;
+  }
   function changeRecentFilter(el) {
     const key = el.dataset.recentFilter;
     if (!Object.hasOwn(state.recentFilters, key)) return;
@@ -1798,7 +1818,7 @@
       if (!subjects.some((item) => item.value === state.recentFilters.subject))
         state.recentFilters.subject = "";
       const field = document.querySelector('[data-recent-filter="subject"]');
-      if (field) field.innerHTML = options(subjects, state.recentFilters.subject, "전체 과목");
+      if (field) field.innerHTML = options(recentSubjectOptions(), state.recentFilters.subject, "전체 과목");
       const classes = recentClassOptions();
       if (state.recentClassId && !classes.some((item) => item.value === state.recentClassId))
         state.recentClassId = "";
@@ -1808,6 +1828,14 @@
     // Update only the result host: date/search inputs retain focus and IME state.
     updateRecentResults();
     replaceUrlState();
+    scheduleRecentRefetch();
+  }
+  function scheduleRecentRefetch() {
+    if (recentRefetchTimer !== null) clearTimeout(recentRefetchTimer);
+    recentRefetchTimer = setTimeout(() => {
+      recentRefetchTimer = null;
+      return loadRecent().catch((error) => status(error.message || "출제 내역을 불러오지 못했습니다.", true));
+    }, 300);
   }
   async function loadRecent() {
     const version = ++state.recentLoadVersion;
@@ -1822,17 +1850,23 @@
         if (version !== state.recentLoadVersion) return;
         classRows = Array.isArray(data.classes) ? data.classes : [];
       }
-      const data = await api("/class-exam-assignments/recent-summary?limit=1000");
+      const params = new URLSearchParams({ limit: "1000" });
+      for (const key of ["from", "to", "grade", "query"])
+        if (state.recentFilters[key]) params.set(key, state.recentFilters[key]);
+      if (state.recentClassId) params.set("class", state.recentClassId);
+      if (state.recentFilters.subject) {
+        params.set("subject", state.recentFilters.subject);
+        for (const term of recentSubjectTerms(state.recentFilters.subject))
+          params.append("subject_term", term);
+      }
+      const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
       if (version !== state.recentLoadVersion) return;
       state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
       state.recentRows = History.normalizeAssignments(
         state.recentAssignments, classRows, state.catalog.exams, C,
       );
-      if (state.recentClassId && !state.recentRows.some((row) => row.classId === state.recentClassId))
+      if (state.recentClassId && !classRows.some((row) => String(row.id) === state.recentClassId))
         state.recentClassId = "";
-      const subjects = History.subjectOptions(state.recentRows, state.recentFilters.grade, C);
-      if (state.recentFilters.subject && !subjects.some((item) => item.value === state.recentFilters.subject))
-        state.recentFilters.subject = "";
     } catch (error) {
       if (version !== state.recentLoadVersion) return;
       state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
@@ -3279,6 +3313,7 @@
         state.recentClassId = el.value;
         updateRecentResults();
         replaceUrlState();
+        scheduleRecentRefetch();
         return;
       }
       if (el.dataset.recentFilter) {

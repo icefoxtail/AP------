@@ -1958,6 +1958,34 @@ export async function handleExams(request, env, teacher, path, url) {
           conditions.push("SUBSTR(COALESCE(a.exam_date, ''), 1, 10) <= ?");
           params.push(to);
         }
+        const subjectKey = normalizeOptionalText(url.searchParams.get('subject'));
+        const subjectTerms = [...new Set([
+          subjectKey,
+          ...url.searchParams.getAll('subject_term').slice(0, 16),
+        ].map(value => String(value || '').normalize('NFC').trim().toLocaleLowerCase().replace(/\s+/g, ''))
+          .filter(value => value && value.length <= 100))];
+        if (subjectKey && subjectTerms.length) {
+          const normalizeSubjectSql = expression =>
+            `LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(COALESCE(${expression}, ''), ' ', ''), char(9), ''), char(10), ''), char(13), ''), char(160), ''))`;
+          const subjectExpressions = [];
+          if (assignmentColumns.has('subject')) subjectExpressions.push(normalizeSubjectSql('a.subject'));
+          if (assignmentColumns.has('mixed_payload_json')) {
+            const metaSubject = `CASE WHEN json_valid(COALESCE(a.mixed_payload_json, '')) THEN json_extract(a.mixed_payload_json, '$.meta.subject') ELSE '' END`;
+            subjectExpressions.push(normalizeSubjectSql(metaSubject));
+          }
+          if (subjectExpressions.length) {
+            conditions.push(`(${subjectExpressions.map(expression => `${expression} IN (${subjectTerms.map(() => '?').join(',')})`).join(' OR ')})`);
+            for (const expression of subjectExpressions) params.push(...subjectTerms);
+          }
+        }
+        const query = String(normalizeOptionalText(url.searchParams.get('query')) || '')
+          .normalize('NFC').toLocaleLowerCase().replace(/\s+/g, '').slice(0, 100);
+        if (query) {
+          const escapedQuery = query.replace(/[\\%_]/g, value => `\\${value}`);
+          const titleExpression = `LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(COALESCE(a.exam_title, ''), ' ', ''), char(9), ''), char(10), ''), char(13), ''), char(160), ''))`;
+          conditions.push(`${titleExpression} LIKE ? ESCAPE '\\'`);
+          params.push(`%${escapedQuery}%`);
+        }
 
         const recipientCount = recipientColumns.has('assignment_id')
           ? '(SELECT COUNT(*) FROM class_exam_assignment_recipients r WHERE r.assignment_id = a.id)'

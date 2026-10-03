@@ -161,7 +161,8 @@ function dedupeClassExamAssignments(rows = [], sessionByAssignment = new Map()) 
   return Array.from(byExam.values());
 }
 
-async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
+async function loadStudentClassExamAssignments(env, studentId, limit = 100, assignmentId = '') {
+  const exactAssignmentId = String(assignmentId || '').trim();
   const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
   const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
   const cancellationColumnExists = await hasClassExamAssignmentCancellationAt(env);
@@ -195,7 +196,8 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
     ...(exclusionsExist ? [studentId] : []),
     studentId,
     studentId,
-    safeLimit
+    ...(exactAssignmentId ? [exactAssignmentId] : []),
+    ...(exactAssignmentId ? [] : [safeLimit])
   ];
   const [assignments, sessions] = await Promise.all([
     env.DB.prepare(`
@@ -213,6 +215,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
           : 'JOIN class_students cs ON cs.class_id = cea.class_id'}
         LEFT JOIN classes c ON c.id = cea.class_id
         WHERE ${recipientSnapshotExists ? 'ar.student_id' : 'cs.student_id'} = ?
+          ${exactAssignmentId ? 'AND cea.id = ?' : ''}
       ), visible_assignments AS (
         SELECT *,
           CASE WHEN (is_cancelled = 1 OR is_excluded = 1) AND has_assignment_session = 1
@@ -222,15 +225,16 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
       )
       SELECT * FROM visible_assignments
       ORDER BY exam_date DESC, updated_at DESC, created_at DESC
-      LIMIT ?
+      ${exactAssignmentId ? 'LIMIT 1' : 'LIMIT ?'}
     `).bind(...assignmentBinds).all(),
     env.DB.prepare(`
       SELECT *
       FROM exam_sessions
       WHERE student_id = ?
+        ${exactAssignmentId ? 'AND assignment_id = ?' : ''}
       ORDER BY exam_date DESC, updated_at DESC
-      LIMIT 300
-    `).bind(studentId).all()
+      ${exactAssignmentId ? 'LIMIT 1' : 'LIMIT 300'}
+    `).bind(...(exactAssignmentId ? [studentId, exactAssignmentId] : [studentId])).all()
   ]);
 
   const sessionByAssignment = new Map();
@@ -441,7 +445,13 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken);
     if (verified.error) return verified.error;
 
-    const exams = await loadStudentClassExamAssignments(env, verified.student.id, 150);
+    const exactAssignmentId = String(url.searchParams.get('assignment_id') || '').trim();
+    const exams = await loadStudentClassExamAssignments(
+      env,
+      verified.student.id,
+      150,
+      exactAssignmentId,
+    );
     return jsonResponse({ success: true, access_mode: verified.accessMode, read_only: verified.readOnly, exams });
   }
 

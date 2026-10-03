@@ -110,6 +110,39 @@ test('teacher preview assignment links show only the exact student Assignment', 
   context.getOmrExams = () => [];
   assert.deepEqual(Array.from(context.getVisibleOmrExams()), [], 'a missing exact receipt does not fall back to all assignments');
 });
+test('student exact deep links call the Assignment-scoped endpoint while ordinary lists remain bounded', async () => {
+  const html = fs.readFileSync(require.resolve('../apmath/student/index.html'), 'utf8');
+  const start = html.indexOf('    async function loadOmrExams(force = false) {');
+  const end = html.indexOf('    function getOmrExams()', start);
+  assert.ok(start >= 0 && end > start);
+  async function requestFor(exactOmrAssignmentId) {
+    const calls = [];
+    const context = {
+      URLSearchParams,
+      exactOmrAssignmentId,
+      omrData: null,
+      omrLoadedAssignmentId: null,
+      omrIndex: null,
+      session: { student_id: 'student-a', student_token: 'student-token' },
+      hasPortalReadAccess: () => true,
+      apiGet: async (url, token) => { calls.push({ url, token }); return { exams: [] }; },
+    };
+    vm.runInNewContext(html.slice(start, end), context);
+    await context.loadOmrExams();
+    return calls[0];
+  }
+  const exact = await requestFor('assignment-old');
+  const exactUrl = new URL(exact.url, base);
+  assert.equal(exactUrl.searchParams.get('student_id'), 'student-a');
+  assert.equal(exactUrl.searchParams.get('assignment_id'), 'assignment-old');
+  assert.equal(exact.token, 'student-token');
+  const list = await requestFor('');
+  const listUrl = new URL(list.url, base);
+  assert.equal(listUrl.searchParams.get('student_id'), 'student-a');
+  assert.equal(listUrl.searchParams.has('assignment_id'), false);
+  const worker = fs.readFileSync(require.resolve('../apmath/worker-backup/worker/routes/student-portal.js'), 'utf8');
+  assert.match(worker, /loadStudentClassExamAssignments\(\s*env,\s*verified\.student\.id,\s*150,\s*exactAssignmentId/);
+});
 
 test('student app, manifest, service worker, and version endpoint advance together', () => {
   const html = fs.readFileSync(require.resolve('../apmath/student/index.html'), 'utf8');
@@ -118,7 +151,7 @@ test('student app, manifest, service worker, and version endpoint advance togeth
   const sw = fs.readFileSync(require.resolve('../apmath/student/sw.js'), 'utf8');
   const appVersion = html.match(/const STUDENT_APP_VERSION = '([^']+)'/)?.[1];
   const swVersion = sw.match(/const STUDENT_SW_VERSION = '([^']+)'/)?.[1];
-  assert.equal(appVersion, '2026.10.03.2');
+  assert.equal(appVersion, '2026.10.03.3');
   assert.equal(manifest.version, appVersion);
   assert.equal(version.version, appVersion);
   assert.equal(swVersion, appVersion);
