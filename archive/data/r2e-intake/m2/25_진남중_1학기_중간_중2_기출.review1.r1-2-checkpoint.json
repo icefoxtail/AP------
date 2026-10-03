@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "M2_1_R1_CHECKPOINT_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "lane": "R1-2",
+  "canonicalOrdinal": 1,
+  "examFile": "25_진남중_1학기_중간_중2_기출.js",
+  "inputFinalArtifactSha": "a3867d116498aa2afa67b327968a9d46946b4bb5",
+  "status": "R1_FULL_RECHECK_IN_PROGRESS",
+  "selector": "2025 DESC + inventory ordinal; no current same-stage R1 branch found before claim",
+  "currentBranch": "work/middle/m2/25-jinnam-1mid-r1-2-20261004-0836",
+  "deterministicRepairsRequired": [
+    {
+      "qid": 13,
+      "field": "subUnitKey/subUnit",
+      "from": "M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산",
+      "to": "M2-01-EXPONENT_LAW / 지수법칙",
+      "authority": "middle2.json M2-RPM-129"
+    },
+    {
+      "qid": 20,
+      "field": "subUnitKey/subUnit",
+      "from": "M2-02-LINEAR_INEQUALITY_WORD / 일차부등식의 활용",
+      "to": "M2-02-LINEAR_INEQUALITY / 일차부등식",
+      "authority": "middle2.json M2-RPM-141"
+    },
+    {
+      "qid": 23,
+      "field": "subUnitKey/subUnit",
+      "from": "M2-02-LINEAR_INEQUALITY_WORD / 일차부등식의 활용",
+      "to": "M2-02-LINEAR_INEQUALITY / 일차부등식",
+      "authority": "middle2.json M2-RPM-136"
+    }
+  ],
+  "sourceHolds": [
+    {
+      "qid": 6,
+      "reason": "SOURCE_TRUTH_AMBIGUITY_DUPLICATE_CHOICE_TEXT",
+      "nextRequiredEvidence": "original PDF/page pixel authority"
+    },
+    {
+      "qid": 7,
+      "reason": "SOURCE_TRUTH_AMBIGUITY_ENUMERATION_MISMATCH",
+      "nextRequiredEvidence": "original PDF/page pixel authority"
+    }
+  ],
+  "next": "Apply deterministic metadata repairs, bind fresh R1 physical evidence, run canonical R1 validator, materialize REVIEW1_DONE_WITH_ITEM_HOLDS if validator passes."
+}
