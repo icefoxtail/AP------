@@ -64,6 +64,38 @@ current Golden Sample은 **quality floor**이지 ceiling이 아니다.
 
 ---
 
+## 0.1 PASS AUTHORITY — WORKER CLAIM IS NOT EVIDENCE
+
+작업자의 `검수 완료`, `Python으로 확인`, `PASS`, 점수/카운트 자기보고는 **authority가 아니다**.
+
+재계산 가능한 사실은 final artifact와 결속된 raw physical evidence로 증명해야 한다.
+
+```text
+expected fact
+→ Python/numeric input + calculated output
+→ coordinate model
+→ actual final SVG primitive
+→ primitive에서 역산한 observed fact + delta/tolerance
+→ label owner binding
+→ actual browser measurement
+→ final SVG SHA / Git blob SHA binding
+```
+
+요약 점수(`geometryScore=100`, `21/21 PASS`)는 위 raw evidence를 대체하지 못한다.
+raw evidence가 없으면 해당 축은 **NOT_VERIFIED**다.
+
+전수 triage 작업은 전체 denominator의 item-level ledger를 남긴다.
+
+최소:
+- qid / questionUid
+- baseline solutionImage 존재 여부
+- KEEP / POLISH / REBUILD / ADD / REMOVE / EXEMPT
+- 한 줄 판단 근거
+- decisive relation
+- ADD인 경우 marginal benefit 근거
+
+---
+
 # 1. SELECT THE VISUAL SURFACE FIRST
 
 ## 1.1 PROBLEM_VISUAL
@@ -162,6 +194,27 @@ target의 기존 SVG를 신규 candidate construction reference로 쓸지는 별
 
 ---
 
+## 3.1 MARGINAL BENEFIT GATE — SOURCE FIGURE SUFFICIENCY
+
+`VISUAL_OPTIONAL != BLIND_ADD`.
+
+문제 그림/source figure가 이미 solution의 decisive relation을 충분히 보여 주는 경우,
+같은 삼각형·같은 원·같은 라벨을 다시 그리는 것만으로는 ADD 근거가 되지 않는다.
+
+source figure가 있는 문항에서 ADD하려면 최소 하나를 item evidence에 명시한다.
+
+- solution에서 새로 도입되는 보조선/수선/접점/분할
+- source에는 없는 owner 관계 또는 같은 길이/같은 각 묶음
+- 복잡한 source를 decisive reduction으로 바꾸는 새 representation
+- 계산값이 도형의 어디에 대응하는지 보여 주는 실질적 concept anchor
+
+`newVisualInformation=[]`이고 source가 이미 decisive relation을 충분히 전달하면
+기본 판정은 `VISUAL_EXEMPT` 또는 기존 visual KEEP이다.
+
+`문제가 쉽지 않다`, `삼각비 문항이다`, `그림이 있으면 좋다`만으로 ADD하지 않는다.
+
+---
+
 # 4. DECISIVE RELATION FIRST
 
 solution visual은 “모든 것을 그린 그림”이 아니다.
@@ -175,6 +228,9 @@ solution visual은 “모든 것을 그린 그림”이 아니다.
 3. 필요한 label / exact value
 4. 필요한 경우에만 axis / tick / grid
 5. 필요한 경우에만 계산 card
+
+**Geometry-preservation HARD:** 풀이의 결정 구조가 실제 점·선·원·각·접선·수선 등의 geometry이면
+계산 card/panel이 그 geometry를 대체할 수 없다. card는 geometry→algebra bridge 또는 결론 보조용이다.
 
 금지:
 - 좌표 문제라는 이유만으로 항상 full Cartesian axes
@@ -267,6 +323,21 @@ TikZ / PGFPlots / handcrafted SVG가 다음을 독자적으로 재계산해 auth
 - `COORDINATE_SEMANTIC_PASS`
 - `ACTUAL_SVG_PARITY_PASS`
 
+변경/신규 SVG마다 item-level evidence에는 최소 다음을 남긴다.
+
+- source exam SHA / solution SHA
+- final SVG sha256 + Git blob SHA
+- expectedFacts[]
+- pythonInputs / pythonCalculatedOutputs
+- coordinateModel
+- actualSvgPrimitives
+- observedFacts[] + delta/tolerance
+- labelOwnerBindings
+- XML parse result
+- browser evidence가 있으면 final SVG SHA와 동일 artifact 결속
+
+이 필드 없이 PASS count만 존재하면 `PHYSICAL_EVIDENCE_MISSING`이다.
+
 ---
 
 # 7. SOLUTION VISUAL DESIGN LANGUAGE — DIGITAL-FIRST
@@ -352,6 +423,11 @@ relocate
 ```
 
 4px/6px 같은 “들어가기는 하지만 학생이 못 읽는” label은 PASS가 아니다.
+
+**Final viewport HARD:** authored SVG `font-size`가 아니라 실제 Archive required render profile에서의
+`finalViewportCssFontPx`를 본다. 학생에게 읽혀야 하는 point/length/angle/math/text label은
+**11 CSS px 미만이면 HARD FAIL**, 12 CSS px 이상을 기본 목표로 한다.
+축소 때문에 11px 미만이 되면 font만 억지로 줄이지 말고 canvas/viewport/label 밀도/구성을 바꾼다.
 
 학생용 영어 lint:
 - 불필요한 영어 문장 = FAIL/POLISH
@@ -457,6 +533,8 @@ triage
 - actual font load state
 - `getBBox()` / `getBoundingClientRect()` 등 real DOM measurement
 - clipping / label collision / overflow 확인
+- 각 student-facing label의 `finalViewportCssFontPx` 기록
+- required render profile에서 `finalViewportCssFontPx >= 11` HARD
 - 가능하면 native Archive solution column에서도 확인
 
 금지:

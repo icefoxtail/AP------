@@ -47,8 +47,8 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 33475 bytes | sha256 c6cb1a144c85e5269fc6569ad66d1e5a2eecaa77fee63e07c8fce0c7c136c8ba
 - 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 39407 bytes | sha256 44c2036546d2b7b37dfc5ad2c643f0324e1a22cc12932c8f018e049947b8d943
 - 03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md | 21255 bytes | sha256 47b6e6a7b3a1645704cfb775cfb711c854860d401f0c1892eea2c680de5f85df
-- 04_VISUAL/도형추출.md | 57487 bytes | sha256 5121ee73b19e9df3310c98720532dd6d9768be2d7a172837f57db1f78e7cef09
-- 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 73684 bytes | sha256 1dcb787717543982f0c26f7522df7d66087302751d424dec715ada6bb9fa61d1
+- 04_VISUAL/도형추출.md | 61768 bytes | sha256 5a35258495d52bef65cf0bef25caa8efadc15fc5f394ec475bb7da6a573f6729
+- 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 75231 bytes | sha256 2d0d91caae0eaa1375f27cbdb2badac3e4e7aeb7830a65012103dde1b4c111f4
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 106288 bytes | sha256 6888fb6c390b565891c50449cc0275919884e038d452e024eb64fc044f730f26
 - 02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md | 11585 bytes | sha256 fc42c0b7928ad340eae694a99b74eac845fcd4c333b631515c7a1c15f7c22b56
