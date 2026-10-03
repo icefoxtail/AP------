@@ -1,16 +1,16 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "REPAIR-DIRECT-1-PUBLISH-O1-20261003T1301+0900",
-  "owner": "JS Archive M3 REPAIR-DIRECT-1 emergency closeout",
+  "leaseId": "REPAIR-DIRECT-6-PUBLISH-O63-20261003T1320+0900",
+  "owner": "JS Archive M3 REPAIR-DIRECT-6 emergency closeout",
   "status": "ACTIVE",
-  "baseMainSha": "546afa1b6973514f625c2d1d98cbcab178cc7e79",
-  "claimedAt": "2026-10-03T13:01:00+09:00",
-  "expiresAt": "2026-10-03T14:31:00+09:00",
-  "lastProgressAt": "2026-10-03T13:01:00+09:00",
-  "expectedCompletionGate": "M3_O1_USER_TEMP_EMERGENCY_CLOSEOUT_MAIN_DONE",
-  "scope": "M3:o1:EMERGENCY_CLOSEOUT_DIRECT_MAIN",
+  "baseMainSha": "f528436e02c5307664c1d70db011b7e074f95828",
+  "claimedAt": "2026-10-03T13:20:00+09:00",
+  "expiresAt": "2026-10-03T14:50:00+09:00",
+  "lastProgressAt": "2026-10-03T13:20:00+09:00",
+  "expectedCompletionGate": "M3_O63_USER_TEMP_EMERGENCY_CLOSEOUT_MAIN_DONE",
+  "scope": "M3:o63:EMERGENCY_CLOSEOUT_DIRECT_MAIN",
   "targets": [
-    1
+    63
   ],
   "result": null,
   "finalOriginMain": null,
@@ -18,5 +18,12 @@
   "excludedDebtOrdinals": [],
   "publishedCommit": null,
   "firstMissingClosureStep": "WRITE_TARGET_ONLY_MAIN_CLOSEOUT",
-  "mainMutation": 0
+  "mainMutation": 0,
+  "takeover": {
+    "previousLeaseId": "REPAIR-DIRECT-1-PUBLISH-O1-20261003T1301+0900",
+    "previousTarget": 1,
+    "previousExpectedCompletionGate": "M3_O1_USER_TEMP_EMERGENCY_CLOSEOUT_MAIN_DONE",
+    "previousTargetTerminalMainCommit": "e0a87a00750f0f0558e4ceab26b93977c2c4ee38",
+    "reason": "PREVIOUS_TARGET_ALREADY_MAIN_DONE_DO_NOT_REQUEUE"
+  }
 }
