@@ -7,21 +7,31 @@ const root = path.resolve(__dirname, '../..');
 const read = name => fs.readFileSync(path.join(root, 'archive', name), 'utf8');
 
 function workspaceHarness(fetcher = async () => { throw new Error('unexpected network'); }) {
-  const events = new Map(), nodes = new Map(), timers = new Map(), storage = new Map();
+  const events = new Map(), windowEvents = new Map(), nodes = new Map(), timers = new Map(), storage = new Map();
   let nextTimer = 1;
   let queryInput = {
     dataset: { recentFilter: 'query' }, value: '', selectionStart: 0, selectionEnd: 0,
     isConnected: true,
   };
   const node = id => {
-    if (!nodes.has(id)) nodes.set(id, {
-      id, innerHTML: '', textContent: '', dataset: {}, open: false,
-      setAttribute(key, value) { this[key] = value; },
-      addEventListener() {},
-      classList: { toggle() {}, add() {}, remove() {} },
-      showModal() { this.open = true; }, close() { this.open = false; },
-      querySelectorAll() { return []; },
-    });
+    if (!nodes.has(id)) {
+      const listeners = new Map();
+      nodes.set(id, {
+        id, innerHTML: '', textContent: '', dataset: {}, open: false,
+        setAttribute(key, value) { this[key] = value; },
+        addEventListener(type, callback) {
+          if (!listeners.has(type)) listeners.set(type, []);
+          listeners.get(type).push(callback);
+        },
+        classList: { toggle() {}, add() {}, remove() {} },
+        showModal() { this.open = true; },
+        close() {
+          this.open = false;
+          for (const callback of listeners.get('close') || []) callback({ target: this });
+        },
+        querySelectorAll() { return []; },
+      });
+    }
     return nodes.get(id);
   };
   const context = {
@@ -31,7 +41,17 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
     atob: value => Buffer.from(value, 'base64').toString('binary'),
     btoa: value => Buffer.from(value, 'binary').toString('base64'),
     location: new URL('https://test.invalid/archive/workspace.html?view=recent'),
-    history: { state: null, pushState(state) { this.state = state; }, replaceState(state) { this.state = state; } },
+    history: {
+      state: null,
+      pushState(state, _title, url) {
+        this.state = state;
+        if (url) context.location = new URL(String(url), context.location.href);
+      },
+      replaceState(state, _title, url) {
+        this.state = state;
+        if (url) context.location = new URL(String(url), context.location.href);
+      },
+    },
     scrollY: 0,
     scrollTo() {},
     localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
@@ -54,7 +74,10 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
     fetch: fetcher,
   };
   context.window = context;
-  context.addEventListener = () => {};
+  context.addEventListener = (name, callback) => {
+    if (!windowEvents.has(name)) windowEvents.set(name, []);
+    windowEvents.get(name).push(callback);
+  };
   context.Archive2Output = { matchesMaterial: (exam, material) => !material || exam.material === material };
   context.Archive2Source = {};
   context.Archive2Papers = {
@@ -73,11 +96,12 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
   const startup = source.lastIndexOf('  (async () => {');
   if (startup <= 0) throw new Error('workspace network bootstrap was not found');
   vm.runInContext(source.slice(0, startup) + `
-    render = () => { globalThis.workspaceRenderCount++; globalThis.__onWholeRender(); };
+    render = () => { noteRenderedViewTransition(); globalThis.workspaceRenderCount++; globalThis.__onWholeRender(); };
     globalThis.workspaceRenderCount = 0;
     globalThis.workspaceTest = {
       state, recentClassOptions, recentSubjectOptions, updateRecentResults, loadRecent,
       assignmentStatus, getRenderCount: () => globalThis.workspaceRenderCount,
+      setView: view => { state.view = view; noteRenderedViewTransition(); },
       setClasses: rows => { classRows = rows; },
     };
   })();`, ctx);
@@ -90,6 +114,9 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
     queryInput: () => queryInput,
     async event(type, target, extra = {}) {
       for (const callback of events.get(type) || []) await callback({ target, ...extra });
+    },
+    async windowEvent(type, extra = {}) {
+      for (const callback of windowEvents.get(type) || []) await callback(extra);
     },
     fireTimers() {
       const pending = [...timers.values()]; timers.clear();

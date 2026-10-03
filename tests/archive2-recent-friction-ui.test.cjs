@@ -2,6 +2,17 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { workspaceHarness, okJson } = require('./helpers/archive2-workspace-ui-harness.cjs');
 
+function deferred() {
+  let resolve, reject;
+  const promise = new Promise((res, rej) => { resolve = res; reject = rej; });
+  return { promise, resolve, reject };
+}
+
+function viewClick(view) {
+  const button = { dataset: { view }, disabled: false };
+  return { closest: selector => selector === 'button' ? button : null };
+}
+
 test('Archive2 client subject identity maps every Recent alias to its semantic subject', () => {
   const h = workspaceHarness();
   const aliases = [
@@ -23,7 +34,7 @@ test('Recent DOM refetch preserves query focus, cursor, IME composition, errors,
   const pending = [];
   const h = workspaceHarness(url => new Promise(resolve => pending.push({ url: String(url), resolve })));
   h.workspace.setClasses([{ id: 'class-a', name: '고2 A반', grade: '고2' }]);
-  h.workspace.state.view = 'recent';
+  h.workspace.setView('recent');
   h.workspace.state.recentFilters.query = 'old';
   const input = h.queryInput();
   input.value = 'old'; input.selectionStart = 2; input.selectionEnd = 2;
@@ -108,7 +119,7 @@ test('Recent facet options retain sibling classes and semantic subjects after na
     { id: 'class-b', name: '고2 B반', grade: '고2' },
     { id: 'class-c', name: '고1 C반', grade: '고1' },
   ]);
-  h.workspace.state.view = 'recent';
+  h.workspace.setView('recent');
   h.workspace.state.recentFilters.grade = '고2';
   h.workspace.state.recentFilters.subject = 'CALCULUS';
   h.workspace.state.recentClassId = 'class-a';
@@ -183,7 +194,7 @@ test('Recent grade changes clear stale subjects before the debounced server requ
       return okJson({ assignments: [] });
     });
     h.workspace.setClasses([{ id: 'class-high2', name: '고2 A반', grade: '고2' }]);
-    h.workspace.state.view = 'recent';
+    h.workspace.setView('recent');
     h.workspace.state.recentFilters.grade = '고2';
     h.workspace.state.recentFilters.subject = staleSubject;
 
@@ -199,7 +210,7 @@ test('Recent grade changes clear stale subjects before the debounced server requ
 
   const h = workspaceHarness(async () => okJson({ assignments: [] }));
   h.workspace.setClasses([{ id: 'class-high2', name: '고2 A반', grade: '고2' }]);
-  h.workspace.state.view = 'recent';
+  h.workspace.setView('recent');
   h.workspace.state.recentFilters.grade = '고2';
   h.workspace.state.recentFilters.subject = 'CALCULUS';
   await h.event('change', { dataset: { recentFilter: 'grade' }, value: '고2' });
@@ -212,7 +223,7 @@ test('Recent assignment status requests discard stale success and stale error re
   const h = workspaceHarness(url => new Promise((resolve, reject) => pending.push({
     url: String(url), resolve, reject,
   })));
-  h.workspace.state.view = 'recent';
+  h.workspace.setView('recent');
   h.workspace.state.recentSelectedAssignmentId = 'assignment-a';
   h.workspace.state.openAssignment = { assignment: { id: 'previous' }, students: [] };
   h.node('status').textContent = 'keep current status';
@@ -238,6 +249,26 @@ test('Recent assignment status requests discard stale success and stale error re
     'a stale status failure cannot overwrite current UI status');
 });
 
+test('Current Recent assignment status failure is visible and preserves the last Assignment selection', async () => {
+  const pending = deferred();
+  const h = workspaceHarness(url => new Promise((resolve, reject) => {
+    pending.promise.then(resolve, reject);
+  }));
+  h.workspace.setView('recent');
+  const sentinel = { assignment: { id: 'previous-assignment' }, students: [] };
+  h.workspace.state.openAssignment = sentinel;
+  const button = { dataset: { action: 'assignment-status', assignment: 'assignment-current-error' }, disabled: false };
+  const click = h.event('click', { closest: selector => selector === 'button' ? button : null }, {
+    preventDefault() {}, stopPropagation() {},
+  });
+  assert.equal(h.workspace.state.recentSelectedAssignmentId, 'assignment-current-error');
+  pending.reject(new Error('current status unavailable'));
+  await click;
+  assert.equal(h.workspace.state.openAssignment, sentinel);
+  assert.match(h.node('status').textContent, /current status unavailable/);
+  assert.equal(new URLSearchParams(h.ctx.location.search).get('assignment_id'), 'assignment-current-error');
+});
+
 test('Recent assignment status response is ignored after Finder navigation or selection clear', async () => {
   const pending = [];
   const h = workspaceHarness(url => {
@@ -246,7 +277,7 @@ test('Recent assignment status response is ignored after Finder navigation or se
       return Promise.resolve(okJson({ assignments: [] }));
     return new Promise(resolve => pending.push({ url: String(url), resolve }));
   });
-  h.workspace.state.view = 'recent';
+  h.workspace.setView('recent');
   h.workspace.state.recentSelectedAssignmentId = 'assignment-a';
   const sentinel = { assignment: { id: 'previous' }, students: [] };
   h.workspace.state.openAssignment = sentinel;
@@ -277,4 +308,156 @@ test('Recent assignment status response is ignored after Finder navigation or se
   await selectionRequest;
   assert.equal(h.workspace.state.openAssignment, sentinel);
   assert.doesNotMatch(h.node('modal-body').innerHTML, /Back 이후 시험/);
+});
+
+test('Recent assignment status failure after view leave cannot alter Finder status or the modal', async () => {
+  const pending = deferred();
+  const h = workspaceHarness(url => new Promise((resolve, reject) => {
+    if (String(url).endsWith('/qr-classes')) resolve(okJson({ classes: [] }));
+    else if (String(url).includes('/recent-summary')) resolve(okJson({ assignments: [] }));
+    else pending.promise.then(resolve, reject);
+  }));
+  h.workspace.setView('recent');
+  h.workspace.state.recentSelectedAssignmentId = 'assignment-a';
+  const sentinel = { assignment: { id: 'kept-assignment' }, students: [] };
+  h.workspace.state.openAssignment = sentinel;
+  h.node('status').textContent = 'Finder status sentinel';
+  const request = h.workspace.assignmentStatus('assignment-a');
+  await h.event('click', viewClick('find'), { preventDefault() {}, stopPropagation() {} });
+  pending.reject(new Error('stale assignment status failed'));
+  await request;
+  assert.equal(h.workspace.state.openAssignment, sentinel);
+  assert.equal(h.node('modal').open, false);
+  assert.equal(h.node('status').textContent, 'Finder status sentinel');
+});
+
+test('Recent success and failure arriving after Finder leave have no authority', async () => {
+  for (const outcome of ['success', 'failure']) {
+    const request = deferred();
+    const h = workspaceHarness(url => new Promise((resolve, reject) => {
+      if (String(url).includes('/recent-summary')) request.promise.then(resolve, reject);
+      else resolve(okJson({ classes: [] }));
+    }));
+    h.workspace.setClasses([{ id: 'class-a', name: 'A반', grade: '고2' }]);
+    h.workspace.setView('recent');
+    const pending = h.workspace.loadRecent();
+    const finder = h.event('click', viewClick('find'), { preventDefault() {}, stopPropagation() {} });
+    await finder;
+    const sentinelRow = { id: 'current-finder-sentinel' };
+    const sentinelAssignments = [{ id: 'current-assignment-sentinel' }];
+    const sentinelOpenAssignment = { assignment: { id: 'selected-current' }, students: [] };
+    h.workspace.state.recentRows = [sentinelRow];
+    h.workspace.state.recentAssignments = sentinelAssignments;
+    h.workspace.state.openAssignment = sentinelOpenAssignment;
+    h.workspace.state.recentError = 'current-view error sentinel';
+    h.workspace.state.recentLoading = false;
+    h.workspace.state.recentSelectedAssignmentId = 'selected-current';
+    h.node('status').textContent = 'Finder status sentinel';
+    if (outcome === 'success') request.resolve(okJson({ assignments: [{ id: 'stale-row' }] }));
+    else request.reject(new Error('stale Recent request failed'));
+    await pending;
+    assert.deepEqual(h.workspace.state.recentRows, [sentinelRow]);
+    assert.equal(h.workspace.state.recentAssignments, sentinelAssignments);
+    assert.equal(h.workspace.state.openAssignment, sentinelOpenAssignment);
+    assert.equal(h.workspace.state.recentSelectedAssignmentId, 'selected-current');
+    assert.equal(h.workspace.state.recentError, 'current-view error sentinel');
+    assert.equal(h.node('status').textContent, 'Finder status sentinel');
+    assert.equal(new URLSearchParams(h.ctx.location.search).get('view'), 'find');
+  }
+});
+
+test('Recent debounce timer is cancelled on view leave and IME composition invalidates pending reads', async () => {
+  const requests = [];
+  const pending = [];
+  const h = workspaceHarness(url => {
+    requests.push(String(url));
+    const item = deferred();
+    pending.push(item);
+    return item.promise;
+  });
+  h.workspace.setClasses([{ id: 'class-a', name: 'A반', grade: '고2' }]);
+  h.workspace.setView('recent');
+  const query = h.queryInput();
+  query.value = '조합 전 검색';
+  await h.event('input', query, { isComposing: false });
+  assert.deepEqual(h.timerDelays(), [300]);
+  await h.event('click', viewClick('find'), { preventDefault() {}, stopPropagation() {} });
+  assert.equal(h.fireTimers().length, 0);
+  assert.equal(requests.length, 0, 'leaving Recent cancels the pending debounce before fetch');
+
+  h.workspace.setView('recent');
+  const active = h.workspace.loadRecent();
+  assert.equal(requests.length, 1);
+  const sentinel = [{ id: 'ime-current-result', subjectKeys: [] }];
+  h.workspace.state.recentRows = sentinel;
+  await h.event('compositionstart', query);
+  pending[0].resolve(okJson({ assignments: [{ id: 'stale-ime-row' }] }));
+  await active;
+  assert.equal(h.workspace.state.recentRows, sentinel,
+    'a request started before IME composition cannot commit its old query results');
+});
+
+test('Recent grade, class, and subject changes revoke earlier request authority immediately', async () => {
+  const cases = [
+    { kind: 'grade', value: '고1', expected: ['grade', '고1'] },
+    { kind: 'class', value: 'class-b', expected: ['class', 'class-b'] },
+    { kind: 'subject', value: 'PROB_STATS', expected: ['subject', 'PROB_STATS'] },
+  ];
+  for (const scenario of cases) {
+    const requests = [];
+    const pending = [];
+    const h = workspaceHarness(url => {
+      requests.push(new URL(String(url)));
+      const item = deferred();
+      pending.push(item);
+      return item.promise;
+    });
+    h.workspace.setClasses([
+      { id: 'class-a', name: 'A반', grade: '고2' },
+      { id: 'class-b', name: 'B반', grade: '고2' },
+      { id: 'class-c', name: 'C반', grade: '고1' },
+    ]);
+    h.workspace.setView('recent');
+    const old = h.workspace.loadRecent();
+    const oldRows = [{ id: 'preserved-after-filter-change', subjectKeys: [] }];
+    h.workspace.state.recentRows = oldRows;
+    const priorVersion = h.workspace.state.recentLoadVersion;
+    if (scenario.kind === 'class')
+      await h.event('change', { id: 'recent-class', dataset: {}, value: scenario.value });
+    else
+      await h.event('change', { dataset: { recentFilter: scenario.kind }, value: scenario.value });
+    if (scenario.kind === 'class') assert.equal(h.workspace.state.recentClassId, scenario.value);
+    assert.notEqual(h.workspace.state.recentLoadVersion, priorVersion,
+      `${scenario.kind} filter changes revoke the pending request before the debounce fires`);
+    pending[0].resolve(okJson({ assignments: [{ id: 'stale-filter-row' }] }));
+    await old;
+    assert.equal(h.workspace.state.recentRows, oldRows, `${scenario.kind} change invalidates a pending response`);
+    const timerJobs = h.fireTimers();
+    assert.equal(requests.length, 2);
+    assert.equal(requests[1].searchParams.get(scenario.expected[0]), scenario.expected[1]);
+    pending[1].resolve(okJson({ assignments: [] }));
+    await Promise.all(timerJobs);
+  }
+});
+
+test('Recent Back through popstate starts a fresh list request after Finder leave', async () => {
+  const pending = [];
+  const h = workspaceHarness(url => {
+    if (String(url).includes('/qr-classes')) return Promise.resolve(okJson({ classes: [] }));
+    const item = deferred();
+    pending.push(item);
+    return item.promise;
+  });
+  h.workspace.setClasses([{ id: 'class-a', name: 'A반', grade: '고2' }]);
+  h.workspace.setView('recent');
+  const first = h.workspace.loadRecent();
+  await h.event('click', viewClick('find'), { preventDefault() {}, stopPropagation() {} });
+  h.ctx.location = new URL('https://test.invalid/archive/workspace.html?view=recent');
+  const back = h.windowEvent('popstate');
+  assert.equal(pending.length, 2);
+  pending[1].resolve(okJson({ assignments: [{ id: 'fresh-after-back' }] }));
+  await back;
+  pending[0].resolve(okJson({ assignments: [{ id: 'stale-before-back' }] }));
+  await first;
+  assert.deepEqual(h.workspace.state.recentRows.map(row => row.id), ['fresh-after-back']);
 });
