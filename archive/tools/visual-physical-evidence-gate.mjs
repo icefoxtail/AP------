@@ -19,9 +19,59 @@ for(const item of items){
   req(typeof item.finalSvgSha256==='string' && item.finalSvgSha256.startsWith('sha256:'),'MISSING_FINAL_SVG_SHA256',ctx);
   req(typeof item.finalSvgGitBlobSha==='string' && item.finalSvgGitBlobSha.length>10,'MISSING_FINAL_SVG_GIT_BLOB',ctx);
   req(Array.isArray(item.expectedFacts) && item.expectedFacts.length>0,'MISSING_EXPECTED_FACTS',ctx);
+  if(Array.isArray(item.expectedFacts)){
+    for(const fact of item.expectedFacts){
+      req(['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'].includes(fact.role),'EXPECTED_FACT_ROLE_MISSING_OR_INVALID',{...ctx,factId:fact.id,role:fact.role});
+    }
+  }
+  const coverage=item.expectedFactCompleteness;
+  req(coverage && typeof coverage==='object','EXPECTED_FACT_COMPLETENESS_MISSING',ctx);
+  if(coverage){
+    req(Array.isArray(coverage.sourceConditionCoverage) && coverage.sourceConditionCoverage.length>0,'SOURCE_CONDITION_COVERAGE_MISSING',ctx);
+    req(coverage.decisiveRelationCovered===true,'DECISIVE_RELATION_NOT_COVERED',ctx);
+    req(Array.isArray(coverage.uncoveredCriticalConditions),'UNCOVERED_CRITICAL_CONDITIONS_MISSING',ctx);
+    if(Array.isArray(coverage.uncoveredCriticalConditions)) req(coverage.uncoveredCriticalConditions.length===0,'UNCOVERED_CRITICAL_CONDITION',{...ctx,conditions:coverage.uncoveredCriticalConditions});
+    req(coverage.expectedFactCompletenessStatus==='PASS','EXPECTED_FACT_COMPLETENESS_FAIL',ctx);
+  }
+  const identity=item.sourceSemanticIdentity;
+  req(identity && typeof identity==='object','SOURCE_SEMANTIC_IDENTITY_EVIDENCE_MISSING',ctx);
+  if(identity){
+    req(typeof identity.applicable==='boolean','SOURCE_SEMANTIC_IDENTITY_APPLICABILITY_MISSING',ctx);
+    if(identity.applicable){
+      req(Array.isArray(identity.checks) && identity.checks.length>0,'SOURCE_SEMANTIC_IDENTITY_CHECKS_MISSING',ctx);
+      for(const check of (identity.checks||[])){
+        req(check.result==='PASS','SOURCE_SEMANTIC_IDENTITY_DRIFT',{...ctx,semanticRole:check.semanticRole,sourceLabel:check.sourceLabel,artifactLabel:check.artifactLabel});
+        if(!check.renamingAuthorized) req(check.sourceLabel===check.artifactLabel,'SOURCE_SEMANTIC_LABEL_CHANGED',{...ctx,semanticRole:check.semanticRole,sourceLabel:check.sourceLabel,artifactLabel:check.artifactLabel});
+      }
+    } else {
+      req(typeof identity.notApplicableReason==='string' && identity.notApplicableReason.trim().length>0,'SOURCE_SEMANTIC_IDENTITY_NA_REASON_MISSING',ctx);
+    }
+  }
+  req(Array.isArray(item.factVisualizations),'FACT_VISUALIZATIONS_MISSING',ctx);
+  if(Array.isArray(item.factVisualizations) && Array.isArray(item.expectedFacts)){
+    const roleById=new Map(item.expectedFacts.map(f=>[f.id,f.role]));
+    for(const fv of item.factVisualizations){
+      req(roleById.has(fv.factId),'FACT_VISUALIZATION_UNKNOWN_FACT',{...ctx,factId:fv.factId});
+      req(['GIVEN_STYLE','DERIVED_STYLE','CONCLUSION_STYLE','NOT_RENDERED'].includes(fv.encodingRole),'FACT_VISUALIZATION_ROLE_INVALID',{...ctx,factId:fv.factId,encodingRole:fv.encodingRole});
+      if(roleById.get(fv.factId)==='CONCLUSION') req(fv.encodingRole!=='GIVEN_STYLE','CONCLUSION_AS_GIVEN_VISUAL',{...ctx,factId:fv.factId});
+    }
+  }
   req(item.pythonInputs && typeof item.pythonInputs==='object','MISSING_PYTHON_INPUTS',ctx);
   req(item.pythonCalculatedOutputs && typeof item.pythonCalculatedOutputs==='object','MISSING_PYTHON_OUTPUTS',ctx);
   req(item.coordinateModel && typeof item.coordinateModel==='object','MISSING_COORDINATE_MODEL',ctx);
+  req(typeof item.visualSemanticType==='string' && item.visualSemanticType.length>0,'VISUAL_SEMANTIC_TYPE_MISSING',ctx);
+  if(item.visualSemanticType==='COORDINATE_GRAPH'){
+    const frame=item.coordinateFrameEvidence;
+    req(frame && typeof frame==='object','COORDINATE_FRAME_EVIDENCE_MISSING',ctx);
+    if(frame){
+      req(frame.result==='PASS','COORDINATE_FRAME_FALSE_PASS',ctx);
+      req(Number.isFinite(Number(frame.xAxisHorizontalResidual)) && Number(frame.xAxisHorizontalResidual)<=Number(frame.tolerance??1e-6),'X_AXIS_NOT_HORIZONTAL',{...ctx,observed:frame.xAxisHorizontalResidual});
+      req(Number.isFinite(Number(frame.yAxisVerticalResidual)) && Number(frame.yAxisVerticalResidual)<=Number(frame.tolerance??1e-6),'Y_AXIS_NOT_VERTICAL',{...ctx,observed:frame.yAxisVerticalResidual});
+      req(Number.isFinite(Number(frame.axisOrthogonalityResidual)) && Number(frame.axisOrthogonalityResidual)<=Number(frame.tolerance??1e-6),'AXES_NOT_ORTHOGONAL',{...ctx,observed:frame.axisOrthogonalityResidual});
+      req(Number.isFinite(Number(frame.originIntersectionDeltaPx)) && Number(frame.originIntersectionDeltaPx)<=Number(frame.originTolerancePx??0.5),'AXES_ORIGIN_INTERSECTION_FAIL',{...ctx,observed:frame.originIntersectionDeltaPx});
+      req(frame.sameCoordinateFrame===true,'PLOT_NOT_IN_AXIS_COORDINATE_FRAME',ctx);
+    }
+  }
   req(Array.isArray(item.actualSvgPrimitives) && item.actualSvgPrimitives.length>0,'MISSING_ACTUAL_SVG_PRIMITIVES',ctx);
   req(Array.isArray(item.observedFacts) && item.observedFacts.length>0,'MISSING_OBSERVED_FACTS',ctx);
   if(Array.isArray(item.observedFacts)) for(const fact of item.observedFacts) req(fact.result==='PASS','OBSERVED_FACT_FAIL',{...ctx,factId:fact.id,result:fact.result});
