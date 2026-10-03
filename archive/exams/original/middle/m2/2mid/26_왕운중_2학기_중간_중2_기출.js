@@ -555,7 +555,7 @@ window.questionBank = [
       "수직이등분선과 외심"
     ],
     "wide": false,
-    "content": "다음 활동을 보고 &lt;보기&gt; 중 옳은 것만을 있는 대로 고르면? [4점]<br><div class=\"note-box\">(1) 두 꼭짓점 $A$, $B$가 겹치도록 접었다가 펼쳐 변 $AB$의 수직이등분선을 만든다.<br>(2) 같은 방법으로 변 $AC$의 수직이등분선을 만든다.<br>(3) 만들어진 두 선분의 교점을 $O$라고 한다.</div><br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $\\overline{AO}=\\overline{BO}=\\overline{CO}$<br>ㄴ. $\\overline{AO}$는 $\\angle A$의 이등분선<br>ㄷ. $\\angle A=50^\\circ$이면 $\\angle BOC=100^\\circ$<br>ㄹ. $\\triangle ABC$가 정삼각형이면 $O$는 내심이다.</div>",
+    "content": "다음 활동을 보고 보기 중 옳은 것만을 있는 대로 고르면? [4점]<br><div class=\"note-box\">(1) 두 꼭짓점 $A$, $B$가 겹치도록 접었다가 펼쳐 변 $AB$의 수직이등분선을 만든다.<br>(2) 같은 방법으로 변 $AC$의 수직이등분선을 만든다.<br>(3) 만들어진 두 선분의 교점을 $O$라고 한다.</div><br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $\\overline{AO}=\\overline{BO}=\\overline{CO}$<br>ㄴ. $\\overline{AO}$는 $\\angle A$의 이등분선<br>ㄷ. $\\angle A=50^\\circ$이면 $\\angle BOC=100^\\circ$<br>ㄹ. $\\triangle ABC$가 정삼각형이면 $O$는 내심이다.</div>",
     "choices": [
       "ㄱ, ㄴ, ㄷ",
       "ㄱ, ㄴ, ㄹ",
@@ -956,7 +956,7 @@ window.questionBank = [
       "성질 비교"
     ],
     "wide": false,
-    "content": "다음 &lt;보기&gt;에서 두 대각선의 길이가 같은 것의 개수를 $a$, 두 대각선이 서로 수직인 것의 개수를 $b$, 두 대각선이 서로 다른 것을 수직이등분하는 것의 개수를 $c$라 할 때, $a-b+c$의 값은? [3점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. 평행사변형　ㄴ. 직사각형　ㄷ. 마름모<br>ㄹ. 정사각형　ㅁ. 사다리꼴</div>",
+    "content": "다음 보기에서 두 대각선의 길이가 같은 것의 개수를 $a$, 두 대각선이 서로 수직인 것의 개수를 $b$, 두 대각선이 서로 다른 것을 수직이등분하는 것의 개수를 $c$라 할 때, $a-b+c$의 값은? [3점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. 평행사변형　ㄴ. 직사각형　ㄷ. 마름모<br>ㄹ. 정사각형　ㅁ. 사다리꼴</div>",
     "choices": [
       "$2$",
       "$3$",
