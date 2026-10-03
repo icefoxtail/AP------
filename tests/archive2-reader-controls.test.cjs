@@ -29,8 +29,8 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(controls, /target\.pathname\.startsWith\("\/apmath\/student\/"\)/);
   assert.match(engine, /history\.replaceState\(null, '', outputUrl\.toString\(\)\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261003-reader-controls-s1-2/);
-  assert.match(workspaceHtml, /archive2-library\.js\?v=20261003-compose-save-continuity-1/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261003-assignment-history-s4-2/);
+  assert.match(workspaceHtml, /archive2-library\.js\?v=20261003-navigation-s5-3/);
+  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261003-navigation-s5-2/);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {
