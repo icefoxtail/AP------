@@ -14,12 +14,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "유리수",
-      "인수분해",
       "순환소수",
       "유한소수",
-      "참거짓",
-      "오류판별",
-      "개념"
+      "개념판별"
     ],
     "wide": false,
     "content": "유리수와 순환소수에 대한 설명으로 옳은 것은? [4점]",
@@ -31,11 +28,17 @@ window.questionBank = [
       "$0.\\dot{3}$은 유한소수이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 보기의 성질을 분석하여 옳은 것을 찾는다.\\n① $0.\\dot{3} = 0.333...$ 이므로 $0.3$보다 크다. 따라서 틀림.\\n② $\\frac{1}{6} = 0.1666...$ 이므로 유한소수로 나타낼 수 없고 순환소수로 나타낼 수 있다. 따라서 옳음.\\n③ 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. 따라서 틀림.\\n④ 기약분수의 분모 소인수에 $2$나 $5$ 이외의 수가 있으면 순환소수가 된다. 따라서 틀림.\\n⑤ 순환소수는 소수점 아래의 숫자가 무한히 반복되는 무한소수이다. 따라서 틀림.\\n$\\therefore$ 정답은 ②이다.",
+    "solution": "[핵심]\n유한소수와 순환소수의 성질을 보기마다 확인한다.\n[풀이]\n① 0.\\dot{3}=0.333\\cdots이므로 0.3보다 크다. ② \\frac{1}{6}=0.1666\\cdots이므로 유한소수가 아니라 순환소수이다. ③ 모든 순환소수는 유리수이다. ④ 기약분수의 분모에 2,5 이외의 소인수가 남으면 유한소수가 아니다. ⑤ 0.\\dot{3}은 끝나지 않는 순환소수이다.\n[결론]\n옳은 것은 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 2,
@@ -50,13 +53,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "순환소수",
       "유한소수",
-      "표해석",
-      "참거짓",
-      "오류판별",
-      "개념"
+      "분수소수변환",
+      "십진분수",
+      "오류판별"
     ],
     "wide": false,
     "content": "분수 $\\frac{3}{40}$을 유한소수로 나타내는 과정이다. 빈칸에 알맞은 수로 옳지 않은 것은? [3점]<br>$\\frac{3}{40}=\\frac{3}{2^3 \\times 5}=\\frac{3 \\times (가)}{2^3 \\times 5 \\times (나)} = \\frac{(다)}{(라)} = (마)$",
@@ -68,11 +68,17 @@ window.questionBank = [
       "(마) $0.75$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 분모를 $10$의 거듭제곱으로 만들기 위해 분모와 분자에 적절한 수를 곱한다.\\n$\\frac{3}{40} = \\frac{3}{2^3 \\times 5} = \\frac{3 \\times 5^2}{2^3 \\times 5 \\times 5^2} = \\frac{75}{2^3 \\times 5^3} = \\frac{75}{10^3} = 0.075$\\n따라서 (마)는 $0.075$여야 하므로 ⑤번이 옳지 않다.",
+    "solution": "[핵심]\n분모를 10의 거듭제곱으로 만든다.\n[풀이]\n\\frac{3}{40}=\\frac{3}{2^3\\times5}=\\frac{3\\times5^2}{2^3\\times5\\times5^2}=\\frac{75}{10^3}=0.075이다. 따라서 (가),(나)는 5^2, (다)는 75, (라)는 10^3이다.\n[결론]\n(마)를 0.75라 한 ⑤가 옳지 않다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 3,
@@ -87,10 +93,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
-      "순환소수",
       "유한소수",
-      "계산"
+      "기약분수",
+      "분모소인수",
+      "판별"
     ],
     "wide": false,
     "content": "다음 분수 중 유한소수로 나타낼 수 있는 것은? [4점]",
@@ -102,11 +108,17 @@ window.questionBank = [
       "$\\frac{33}{3^2 \\times 5 \\times 11}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 유한소수이다.\\n① $\\frac{1}{15} = \\frac{1}{3 \\times 5}$ (순환소수)\\n② $\\frac{15}{54} = \\frac{5}{18} = \\frac{5}{2 \\times 3^2}$ (순환소수)\\n③ $\\frac{5}{2^3 \\times 7}$ (순환소수)\\n④ $\\frac{14}{2^3 \\times 5 \\times 7} = \\frac{2}{2^3 \\times 5} = \\frac{1}{2^2 \\times 5}$ (유한소수)\\n⑤ $\\frac{33}{3^2 \\times 5 \\times 11} = \\frac{3}{3^2 \\times 5} = \\frac{1}{3 \\times 5}$ (순환소수)\\n$\\therefore$ 정답은 ④이다.",
+    "solution": "[핵심]\n기약분수의 분모 소인수가 2와 5뿐이면 유한소수이다.\n[풀이]\n① \\frac1{15}에는 3이 남고, ② \\frac{15}{54}=\\frac5{18}에도 3이 남는다. ③은 분모에 7이 남는다. ④ \\frac{14}{2^3\\times5\\times7}=\\frac1{2^2\\times5}이므로 유한소수이다. ⑤ \\frac{33}{3^2\\times5\\times11}=\\frac1{3\\times5}이므로 순환소수이다.\n[결론]\n정답은 ④이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 4,
@@ -122,9 +134,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "순환소수",
-      "표해석",
-      "참거짓",
-      "개념"
+      "순환마디",
+      "순환점",
+      "표현"
     ],
     "wide": false,
     "content": "다음 보기 중 순환소수의 표현이 옳은 것은? [3점]",
@@ -136,11 +148,17 @@ window.questionBank = [
       "$3.123123... = 3.\\dot{1}2\\dot{3}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 순환마디의 시작과 끝점 위에만 순환점을 찍는다.\\n① $0.01616...$의 순환마디는 $16$이므로 $0.0\\dot{1}\\dot{6}$으로 나타내야 한다.\\n② $24.734734...$의 순환마디는 $734$이므로 $24.\\dot{7}3\\dot{4}$로 나타내야 한다.\\n③ $8.4747...$의 순환마디는 $47$이므로 $8.\\dot{4}\\dot{7}$로 나타내야 한다.\\n④ $8.0808...$의 순환마디는 $08$이므로 $8.\\dot{0}\\dot{8}$로 나타내야 한다.\\n⑤ $3.123123...$의 순환마디는 $123$이므로 $3.\\dot{1}2\\dot{3}$으로 나타낸 것은 옳다.\\n$\\therefore$ 정답은 ⑤이다.",
+    "solution": "[핵심]\n순환점은 최소 순환마디의 첫 숫자와 끝 숫자에 찍는다.\n[풀이]\n①의 순환마디는 16, ②는 734, ③은 47, ④는 08이다. ⑤의 3.123123\\cdots은 123이 반복되므로 3.\\dot{1}2\\dot{3}으로 나타낸 것이 맞다.\n[결론]\n정답은 ⑤이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 5,
@@ -156,10 +174,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "순환소수",
-      "표해석",
-      "참거짓",
-      "오류판별",
-      "개념"
+      "분수변환",
+      "순환마디",
+      "오류판별"
     ],
     "wide": false,
     "content": "순환소수 $1.3\\dot{2}\\dot{3}$을 분수로 나타내는 과정이다. 빈칸에 들어갈 수로 옳지 않은 것은? [4점]<br>$x=1.32323...$의 양변에 (가)를 곱하면 $(가)x=13.2323...$<br>양변에 $1000$을 곱하면 $(나)=1323.2323...$<br>두 식을 빼면 $(다)x = (라)$이고, 따라서 $x=(마)$이다.",
@@ -171,11 +188,17 @@ window.questionBank = [
       "(마) $\\frac{131}{99}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소수점 아래 순환마디의 위치를 일치시켜 소수 부분을 제거한다.\\n$x = 1.32323...$\\n$1000x = 1323.2323...$\\n$10x = 13.2323...$\\n두 식을 빼면 $1000x - 10x = 1323.2323... - 13.2323...$\\n$990x = 1310$\\n$x=\\frac{1310}{990}=\\frac{131}{99}$\\n따라서 (다)는 $990$이어야 하므로 ③번이 옳지 않다.",
+    "solution": "[핵심]\n순환부분이 같은 자리에서 맞도록 두 식을 만든다.\n[풀이]\nx=1.32323\\cdots라 두면 1000x=1323.2323\\cdots, 10x=13.2323\\cdots이다. 두 식을 빼면 990x=1310이고 x=\\frac{131}{99}이다.\n[결론]\n(다)는 900이 아니라 990이므로 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 6,
@@ -190,11 +213,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
-      "순환소수",
       "유한소수",
-      "자연수조건",
-      "계산"
+      "순환소수",
+      "분모소인수",
+      "자연수조건"
     ],
     "wide": false,
     "content": "분수 $\\frac{63}{3^2 \\times 2 \\times x}$를 순환소수로만 나타낼 수 있을 때, 한 자리의 자연수 $x$가 될 수 있는 모든 수들의 합은? [4점]",
@@ -206,11 +228,17 @@ window.questionBank = [
       "$42$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 기약분수로 정리한 후 분모의 소인수에 $2$나 $5$ 이외의 수가 존재해야 한다.\\n$\\frac{63}{9 \\times 2 \\times x} = \\frac{7}{2 \\times x}$\\n순환소수가 되기 위해서는 분모에 $2, 5$ 이외의 소인수가 남아야 한다.\\n- $x=3$: $\\frac{7}{2 \\times 3}$ (순환소수)\\n- $x=6$: $\\frac{7}{2^2 \\times 3}$ (순환소수)\\n- $x=7$: $\\frac{7}{2 \\times 7} = \\frac{1}{2}$ (유한소수)\\n- $x=9$: $\\frac{7}{2 \\times 3^2}$ (순환소수)\\n그 외 $x=1, 2, 4, 5, 8$은 유한소수가 된다.\\n가능한 $x$의 합은 $3 + 6 + 9 = 18$이다.\\n$\\therefore$ 정답은 ①이다.",
+    "solution": "[핵심]\n약분 후 분모에 2,5 이외의 소인수가 남는지 본다.\n[풀이]\n\\frac{63}{3^2\\times2\\times x}=\\frac7{2x}. 한 자리 자연수에서 x=3,6,9이면 약분 후 분모에 3이 남는다. x=7이면 \\frac7{14}=\\frac12이고, x=1,2,4,5,8도 유한소수가 된다.\n[결론]\n가능한 값의 합은 3+6+9=18이므로 ①이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 7,
@@ -225,10 +253,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "나머지정리",
       "순환소수",
-      "응용",
-      "계산"
+      "분수변환",
+      "조건추론"
     ],
     "wide": false,
     "content": "어떤 기약분수를 순환소수로 나타내는데 민주는 분자를 잘못 보아서 $1.0\\dot{8}$이라 하였고, 현주는 분모를 잘못 보아서 $0.1\\dot{7}$이라 하였다. 처음의 기약분수는? [5점]",
@@ -240,11 +267,17 @@ window.questionBank = [
       "$\\frac{16}{99}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 잘못 보지 않은 나머지 부분을 이용하여 처음의 기약분수를 구한다.\\n민주는 분자를 잘못 보았으므로 분모는 정확하다.\\n$1.0\\dot{8}=1.0888...=\\frac{98}{90}=\\frac{49}{45}$이므로 처음 분수의 분모는 $45$이다.\\n현주는 분모를 잘못 보았으므로 분자는 정확하다.\\n$0.1\\dot{7}=0.1777...=\\frac{16}{90}=\\frac{8}{45}$이므로 처음 분수의 분자는 $8$이다.\\n따라서 처음의 기약분수는 $\\frac{8}{45}$이다.\\n$\\therefore$ 정답은 ②이다.",
+    "solution": "[핵심]\n각 학생이 잘못 보지 않은 분모와 분자를 이용한다.\n[풀이]\n민주는 분자만 잘못 보았으므로 분모는 맞다. 1.0\\dot8=\\frac{49}{45}이므로 원래 분모는 45이다. 현주는 분모만 잘못 보았으므로 분자는 맞다. 0.1\\dot7=\\frac8{45}이므로 원래 분자는 8이다.\n[결론]\n원래 기약분수는 \\frac8{45}이므로 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 8,
@@ -259,10 +292,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "참거짓",
-      "계산",
-      "조건해석"
+      "지수법칙",
+      "단항식",
+      "오류판별"
     ],
     "wide": false,
     "content": "지수법칙을 이용한 계산 결과가 옳은 것은? [3점]",
@@ -274,11 +306,17 @@ window.questionBank = [
       "$(-\\frac{a^2}{b})^2 = \\frac{a^4}{b^2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 지수법칙의 합, 차, 곱, 분배 법칙을 정확히 적용한다.\\n① $a^7 \\times a^2 = a^{7+2} = a^9$\\n② $a^9 \\div a^3 = a^{9-3} = a^6$\\n③ $(a^4)^3 = a^{4 \\times 3} = a^{12}$\\n④ $(2a^2b)^3 = 2^3 a^6 b^3 = 8a^6b^3$\\n⑤ $(-\\frac{a^2}{b})^2 = \\frac{(-1)^2 (a^2)^2}{b^2} = \\frac{a^4}{b^2}$ (옳음)\\n$\\therefore$ 정답은 ⑤이다.",
+    "solution": "[핵심]\n지수법칙을 보기마다 직접 적용한다.\n[풀이]\n① a^7a^2=a^9, ② a^9\\div a^3=a^6, ③ (a^4)^3=a^{12}, ④ (2a^2b)^3=8a^6b^3, ⑤ \\left(-\\frac{a^2}{b}\\right)^2=\\frac{a^4}{b^2}이다.\n[결론]\n옳은 것은 ⑤이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 9,
@@ -293,11 +331,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
+      "지수법칙",
+      "거듭제곱",
       "자연수조건",
-      "조건해석",
-      "응용",
-      "계산"
+      "계수비교"
     ],
     "wide": false,
     "content": "$(\\frac{x^{2a}}{2y^6})^3 = \\frac{x^{12}}{8y^{2b}}$ 일 때, 두 자연수 $a, b$의 합 $a+b$는? [4점]",
@@ -309,11 +346,17 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 지수법칙의 분배를 사용하여 식을 정리한 뒤 각 항을 비교한다.\\n$(\\frac{x^{2a}}{2y^6})^3 = \\frac{x^{6a}}{2^3 y^{18}} = \\frac{x^{6a}}{8y^{18}}$\\n우변의 $\\frac{x^{12}}{8y^{2b}}$와 비교하면:\\n$6a = 12 \\implies a = 2$\\n$2b = 18 \\implies b = 9$\\n$\\therefore a + b = 2 + 9 = 11$",
+    "solution": "[핵심]\n거듭제곱의 거듭제곱에서는 지수를 곱한다.\n[풀이]\n\\left(\\frac{x^{2a}}{2y^6}\\right)^3=\\frac{x^{6a}}{8y^{18}}이다. 우변과 비교하면 6a=12, 2b=18이므로 a=2, b=9이다.\n[결론]\na+b=11이므로 ①이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 10,
@@ -328,10 +371,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "자연수조건",
-      "계산",
-      "조건해석"
+      "지수법칙",
+      "자릿수",
+      "수의표현"
     ],
     "wide": false,
     "content": "$2^7 \\times 5^{10}$은 $n$자리 자연수이고, 각 자리 숫자의 합은 $a$이다. 이때 $a+n$의 값은? [5점]",
@@ -343,11 +385,17 @@ window.questionBank = [
       "$23$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $2^n \\times 5^n = 10^n$임을 이용하여 자릿수를 구한다.\\n$2^7 \\times 5^{10} = 2^7 \\times 5^7 \\times 5^3 = (2 \\times 5)^7 \\times 125 = 125 \\times 10^7$\\n이는 $125$ 뒤에 $0$이 $7$개 붙는 수이므로 $3 + 7 = 10$자리 자연수이다. ($n=10$)\\n각 자리 숫자의 합 $a = 1 + 2 + 5 + 0 \\times 7 = 8$이다.\\n$\\therefore a + n = 8 + 10 = 18$",
+    "solution": "[핵심]\n2^n\\times5^n=10^n을 이용한다.\n[풀이]\n2^7\\times5^{10}=10^7\\times125이다. 따라서 125 뒤에 0이 7개 붙은 10자리 수이므로 n=10이고, 각 자리 숫자의 합은 a=1+2+5=8이다.\n[결론]\na+n=18이므로 ③이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 11,
@@ -362,10 +410,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "참거짓",
-      "개념",
-      "조건해석"
+      "단항식",
+      "곱셈나눗셈",
+      "지수법칙",
+      "오류판별"
     ],
     "wide": false,
     "content": "다음 중 옳은 것은? [4점]",
@@ -377,11 +425,17 @@ window.questionBank = [
       "$(-x^2y^3)^2 \\div \\frac{x^3y^3}{2} = -2xy^3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 단항식의 곱셈과 나눗셈 법칙을 사용하여 하나씩 검증한다.\\n① $(-2x^2) \\times 3x^5 = -6x^7$\\n② $(-6ab) \\div \\frac{1}{2}a = -6ab \\times \\frac{2}{a} = -12b$\\n③ $(-2xy^2)^3 \\times (3x^2y)^2 = (-8x^3y^6) \\times (9x^4y^2) = -72x^7y^8$\\n④ $12x^5 \\div (-3x^6) = \\frac{12x^5}{-3x^6} = -\\frac{4}{x}$ (옳음)\\n⑤ $(-x^2y^3)^2 \\div \\frac{x^3y^3}{2} = x^4y^6 \\times \\frac{2}{x^3y^3} = 2xy^3$\\n$\\therefore$ 정답은 ④이다.",
+    "solution": "[핵심]\n계수와 같은 문자의 지수를 따로 계산한다.\n[풀이]\n① -6x^7, ② -12b, ③ -72x^7y^8, ④ -\\frac4x, ⑤ 2xy^3이 된다.\n[결론]\n제시식과 일치하는 것은 ④이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 12,
@@ -397,9 +451,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "계수비교",
-      "계산",
-      "조건해석"
+      "덧셈뺄셈",
+      "동류항",
+      "계수"
     ],
     "wide": false,
     "content": "다항식 $(2x^2-x+3)-(3x^2-5x+8)$을 계산하였을 때, $x$의 계수와 상수항의 합은? [3점]",
@@ -411,11 +465,17 @@ window.questionBank = [
       "$-6$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 괄호를 먼저 풀고 동류항끼리 정리한다.\\n$(2x^2-x+3)-(3x^2-5x+8)$\\n$=2x^2-x+3-3x^2+5x-8$\\n$=-x^2+4x-5$\\n$x$의 계수는 $4$, 상수항은 $-5$이다.\\n따라서 두 수의 합은 $4 + (-5) = -1$이다.\\n$\\therefore$ 정답은 ③이다.",
+    "solution": "[핵심]\n괄호 앞의 마이너스를 분배한 뒤 동류항을 정리한다.\n[풀이]\n(2x^2-x+3)-(3x^2-5x+8)=-x^2+4x-5이다. x의 계수는 4, 상수항은 -5이다.\n[결론]\n합은 -1이므로 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 13,
@@ -431,9 +491,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "참거짓",
-      "오류판별",
-      "계산"
+      "단항식나눗셈",
+      "오류판별"
     ],
     "wide": false,
     "content": "다음 중 계산 과정이 틀린 식을 고르면? [4점]<br>(가) $(12x^2-9x)\\div(-3x) = -4x-3$<br>(나) $(10x^2y-8xy^2)\\div\\frac{2}{3}xy = 15x-12y$",
@@ -445,11 +504,17 @@ window.questionBank = [
       "판단 불가"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분배법칙을 사용하여 나눗셈을 정확히 수행한다.\\n(가) $(12x^2-9x) \\div (-3x) = \\frac{12x^2}{-3x} - \\frac{9x}{-3x} = -4x + 3$ 이어야 하므로 틀림.\\n(나) $(10x^2y-8xy^2) \\times \\frac{3}{2xy} = \\frac{30x^2y}{2xy} - \\frac{24xy^2}{2xy} = 15x - 12y$ 이므로 옳음.\\n따라서 틀린 식은 (가)이다.\\n$\\therefore$ 정답은 ①이다.",
+    "solution": "[핵심]\n다항식을 단항식으로 나눌 때 각 항을 같은 단항식으로 나눈다.\n[풀이]\n(가)는 (12x^2-9x)\\div(-3x)=-4x+3이므로 제시식이 틀리다. (나)는 (10x^2y-8xy^2)\\div\\frac23xy=15x-12y로 맞다.\n[결론]\n틀린 식은 (가)뿐이므로 ①이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 14,
@@ -465,9 +530,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "조건해석",
-      "계산",
-      "응용"
+      "단항식나눗셈",
+      "역연산"
     ],
     "wide": false,
     "content": "$(x^2y - \\square + 2y^2) \\div \\frac{1}{9}y = 9x^2 - 6x + 6y$ 일 때, $\\square$ 안에 알맞은 식은? [4점]",
@@ -479,11 +543,17 @@ window.questionBank = [
       "$3x^2y-2xy$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 나눗셈을 곱셈으로 역연산하여 다항식을 구한다.\\n$(x^2y - \\square + 2y^2) = (9x^2 - 6x + 6y) \\times \\frac{1}{9}y$\\n$x^2y - \\square + 2y^2 = x^2y - \\frac{2}{3}xy + \\frac{2}{3}y^2$\\n양변에서 $x^2y$를 없애면\\n$-\\square + 2y^2 = -\\frac{2}{3}xy + \\frac{2}{3}y^2$\\n따라서\\n$\\square = \\frac{2}{3}xy + \\frac{4}{3}y^2$\\n$\\therefore$ 정답은 ④이다.",
+    "solution": "[핵심]\n나눗셈을 곱셈으로 되돌려 괄호 안 식을 구한다.\n[풀이]\nx^2y-\\square+2y^2=(9x^2-6x+6y)\\times\\frac19y=x^2y-\\frac23xy+\\frac23y^2이다. 따라서 \\square=\\frac23xy+\\frac43y^2이다.\n[결론]\n정답은 ④이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 15,
@@ -498,13 +568,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "부등식",
       "일차부등식",
-      "도형",
-      "삼각형",
-      "넓이",
-      "표해석",
-      "범위"
+      "문장제",
+      "부등식표현",
+      "오류판별"
     ],
     "wide": false,
     "content": "다음 중 문장을 부등식으로 옳게 나타낸 것은? [4점]",
@@ -516,11 +583,17 @@ window.questionBank = [
       "삼각형 넓이는 8 미만이다. $\\rightarrow 3x \\le 8$"
     ],
     "answer": "④",
-    "solution": "[키포인트] '작지 않다'($\\ge$), '많다'($>$), '적다'($<$) 등의 부등호 표현을 확인한다.\\n① $3x-5 \\ge 6$이어야 한다.\\n② 형과 나이의 합이라면 $a+b \\ge 20$처럼 나타내야 한다.\\n③ 남은 쪽수가 $40$쪽보다 많으므로 $200-x > 40$이어야 한다.\\n④ $a+10 < 2a$는 문장을 옳게 나타낸 부등식이다.\\n⑤ 삼각형의 넓이는 보통 $\\frac{1}{2} \\times 밑변 \\times 높이$로 나타내야 하므로 제시식은 옳지 않다.\\n$\\therefore$ 정답은 ④이다.",
+    "solution": "[핵심]\n문장에 쓰인 이상·많다·적다의 뜻을 부등호로 옮긴다.\n[풀이]\n① ‘작지 않다’는 \\ge, ③ ‘40쪽보다 많다’는 > 이다. ②는 두 사람의 나이를 더한 식이어야 하고 ⑤는 삼각형 넓이식이 필요하다. ④ a+10<2a는 문장을 정확히 나타낸다.\n[결론]\n정답은 ④이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 16,
@@ -536,11 +609,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "부등식",
-      "일차부등식",
-      "참거짓",
-      "오류판별",
-      "조건해석",
-      "개념"
+      "부등식의성질",
+      "오류판별"
     ],
     "wide": false,
     "content": "$a>b$일 때, 다음 중 옳지 않은 것은? [4점]",
@@ -552,11 +622,17 @@ window.questionBank = [
       "$-\\frac{a}{5}+3 < -\\frac{b}{5}+3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 부등식의 양변에 음수를 곱하거나 나눌 때만 부등호 방향이 바뀐다.\\n① $a>b$의 양변에서 $2$를 빼도 부등호 방향은 그대로이므로 $a-2>b-2$이다.\\n② $a>b$의 양변에 $-2$를 곱하면 $-2a<-2b$이고, $3$을 더하면 $-2a+3<-2b+3$이다.\\n③ $a>b$의 양변에 $-1$을 곱하면 $-a < -b$이고, $1$을 더하면 $1-a < 1-b$가 된다. 따라서 제시식은 옳지 않다.\\n④ $a>b$의 양변을 $3$으로 나누고 $2$를 빼도 부등호 방향은 그대로이므로 옳다.\\n⑤ $a>b$의 양변에 $-\\frac{1}{5}$를 곱하면 부등호 방향이 바뀌므로 옳다.\\n$\\therefore$ 정답은 ③이다.",
+    "solution": "[핵심]\n부등식에 음수를 곱하면 부등호 방향이 바뀐다.\n[풀이]\na>b에서 -a<-b이고 1을 더하면 1-a<1-b이다. 따라서 ③의 1-a>1-b는 옳지 않다. 나머지는 부등식의 성질을 바르게 적용했다.\n[결론]\n정답은 ③이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 17,
@@ -571,11 +647,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "부등식",
       "일차부등식",
-      "범위",
-      "참거짓",
-      "개념"
+      "괄호",
+      "부등식풀이",
+      "해"
     ],
     "wide": false,
     "content": "일차부등식 $2(x-3) \\le 4x+2$의 해로 옳은 것은? [4점]",
@@ -587,11 +662,17 @@ window.questionBank = [
       "$x \\ge -2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 괄호를 풀고 이항하여 $x$의 범위를 구한다.\\n$2(x-3) \\le 4x+2$\\n$2x - 6 \\le 4x + 2$\\n$-2x \\le 8$\\n음수 $-2$로 나누면 부등호 방향이 바뀌므로\\n$x \\ge -4$\\n$\\therefore$ 정답은 ②이다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "solution": "[핵심]\n괄호를 풀고 x항을 한쪽으로 모은다.\n[풀이]\n2x-6\\le4x+2에서 -2x\\le8이다. 양변을 -2로 나누면 부등호가 바뀌어 x\\ge-4이다.\n[결론]\n정답은 ②이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 18,
@@ -606,12 +687,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "계수비교",
-      "부등식",
       "일차부등식",
-      "자연수조건",
-      "조건해석",
-      "계산"
+      "소수계수",
+      "분수계수",
+      "자연수조건"
     ],
     "wide": false,
     "content": "일차부등식 $0.4x+1 > 0.7x - \\frac{1}{2}$를 만족시키는 모든 자연수 $x$의 합은? [4점]",
@@ -623,11 +702,17 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 계수를 정수로 바꾸기 위해 양변에 $10$을 곱한다.\\n$0.4x+1 > 0.7x - \\frac{1}{2}$\\n$4x + 10 > 7x - 5$\\n$-3x > -15$\\n$x < 5$\\n자연수 $x$는 $1, 2, 3, 4$이므로 합은 $1+2+3+4 = 10$이다.\\n$\\therefore$ 정답은 ④이다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "solution": "[핵심]\n소수와 분수가 섞인 부등식을 정리한 뒤 자연수 해만 고른다.\n[풀이]\n0.4x+1>0.7x-\\frac12의 양변에 10을 곱하면 4x+10>7x-5이다. 따라서 -3x>-15, 즉 x<5이다. 자연수 해는 1,2,3,4이다.\n[결론]\n합은 10이므로 ④이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 19,
@@ -642,11 +727,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "부등식",
       "일차부등식",
-      "조건해석",
-      "계산",
-      "응용"
+      "계수조건",
+      "해의조건"
     ],
     "wide": false,
     "content": "일차부등식 $3x-4 \\ge a-x$의 해가 $x \\ge -1$일 때, 상수 $a$의 값은? [5점]",
@@ -658,11 +741,17 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $a$를 포함한 식의 해를 구한 뒤 주어진 해와 비교한다.\\n$3x-4 \\ge a-x$\\n$4x \\ge a + 4$\\n$x \\ge \\frac{a+4}{4}$\\n주어진 해가 $x \\ge -1$이므로 $\\frac{a+4}{4} = -1$이다.\\n$a + 4 = -4 \\implies a = -8$\\n$\\therefore$ 정답은 ①이다.",
+    "solution": "[핵심]\n식으로 구한 해의 경계와 주어진 해의 경계를 같게 둔다.\n[풀이]\n3x-4\\ge a-x에서 4x\\ge a+4, 즉 x\\ge\\frac{a+4}{4}이다. 이것이 x\\ge-1과 같으므로 \\frac{a+4}{4}=-1이다.\n[결론]\na=-8이므로 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 20,
@@ -677,13 +766,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "최대최소",
-      "부등식",
       "일차부등식",
-      "실생활",
-      "범위",
-      "조건해석",
-      "응용"
+      "거리속력시간",
+      "최대값",
+      "문장제"
     ],
     "wide": false,
     "content": "집에서 마트까지 갈 때 분속 $45m$, 올 때 분속 $30m$로 걷고 물건 사는 시간 $10$분을 포함해 총 $1$시간 이내일 때, 거리는 최대 몇 $m$ 이하인가? [5점]",
@@ -695,11 +781,17 @@ window.questionBank = [
       "$1300m$"
     ],
     "answer": "①",
-    "solution": "[키포인트] (시간) = (거리)/(속력) 공식을 사용하여 식을 세운다.\\n거리를 $x$라 하면, $\\frac{x}{45} + 10 + \\frac{x}{30} \\le 60$\\n$\\frac{x}{45}+\\frac{x}{30} \\le 50$\\n$\\frac{2x + 3x}{90} \\le 50$\\n$5x \\le 4500$\\n$x \\le 900$\\n따라서 최대 거리는 $900m$이다.\\n$\\therefore$ 정답은 ①이다.",
+    "solution": "[핵심]\n왕복 시간과 물건을 사는 시간을 모두 합해 60분 이하로 둔다.\n[풀이]\n거리를 x m라 하면 \\frac{x}{45}+10+\\frac{x}{30}\\le60이다. 따라서 \\frac{5x}{90}\\le50, 즉 x\\le900이다.\n[결론]\n최대 거리는 900m이므로 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 21,
@@ -713,17 +805,27 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "순환소수",
+      "순환마디",
+      "규칙성",
+      "개수세기"
     ],
     "wide": false,
     "content": "$\\frac{5}{7}$를 소수로 나타낼 때, 소수점 아래 $100$번째 자리까지의 숫자 중 $4$가 나오는 횟수를 구하시오. [6점]",
     "choices": [],
     "answer": "17회",
-    "solution": "[키포인트] 순환마디를 먼저 찾고 마디가 몇 번 반복되는지 확인한다.\\n$\\frac{5}{7} = 0.\\dot{7}1428\\dot{5}$ 이므로 순환마디는 $7, 1, 4, 2, 8, 5$로 총 $6$개이다.\\n$100 \\div 6 = 16$ 나머지는 $4$이다.\\n$16$번의 순환마디 반복 동안 $4$는 마디당 한 번씩 나오므로 $16$번 나타난다.\\n남은 $4$자리 숫자($7, 1, 4, 2$) 중 세 번째 숫자가 $4$이므로 한 번 더 추가된다.\\n$\\therefore 16 + 1 = 17$회",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "solution": "[핵심]\n\\frac57의 순환마디 길이와 숫자 4의 위치를 이용한다.\n[풀이]\n\\frac57=0.\\overline{714285}이고 순환마디 길이는 6이다. 100=6\\times16+4이므로 완전한 16개 마디에서 4가 16번 나온다. 남은 네 자리 7,1,4,2에도 4가 한 번 있다.\n[결론]\n총 17회이다.",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 22,
@@ -737,17 +839,27 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "단항식",
+      "나눗셈",
+      "부피",
+      "사각뿔"
     ],
     "wide": false,
     "content": "밑면 가로 $24$, 세로 $36$인 직사각형이고 부피가 $360a^3b^2$인 사각뿔의 높이를 구하시오. [5점]",
     "choices": [],
     "answer": "$\\frac{5a^3b^2}{4}$",
-    "solution": "[키포인트] 사각뿔의 부피 $V = \\frac{1}{3} \\times (밑넓이) \\times h$ 임을 이용한다.\\n$360a^3b^2 = \\frac{1}{3} \\times (24 \\times 36) \\times h$\\n$360a^3b^2 = 288h$\\n$h = \\frac{360a^3b^2}{288} = \\frac{5}{4}a^3b^2$\\n$\\therefore$ 높이는 $\\frac{5a^3b^2}{4}$이다.",
+    "solution": "[핵심]\n사각뿔의 부피는 \\frac13\\times밑넓이\\times높이이다.\n[풀이]\n높이를 h라 하면 밑넓이는 24\\times36=864이고, 360a^3b^2=\\frac13\\times864\\times h=288h이다. 따라서 h=\\frac54a^3b^2이다.\n[결론]\n높이는 \\frac{5a^3b^2}{4}이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 23,
@@ -761,17 +873,26 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "다항식",
+      "덧셈뺄셈",
+      "역연산"
     ],
     "wide": false,
     "content": "어떤 식에서 $3x^2+5x-6$을 빼야 할 것을 더했더니 $7x^2+10x-4$가 되었다. 바르게 계산한 식을 구하시오. [4점]",
     "choices": [],
     "answer": "$x^2+8$",
-    "solution": "[키포인트] 거꾸로 계산하여 어떤 식을 먼저 구한 뒤 원래의 식을 계산한다.\\n(어떤 식) $+ (3x^2+5x-6) = 7x^2+10x-4$\\n(어떤 식) $= (7x^2+10x-4) - (3x^2+5x-6) = 4x^2+5x+2$\\n바르게 계산한 식: $(4x^2+5x+2) - (3x^2+5x-6) = x^2+8$\\n$\\therefore$ 정답은 $x^2+8$이다.",
+    "solution": "[핵심]\n잘못 더한 결과에서 먼저 원래 식을 복원한다.\n[풀이]\n원래 식을 A라 하면 A+(3x^2+5x-6)=7x^2+10x-4이므로 A=4x^2+5x+2이다. 바르게 계산하면 A-(3x^2+5x-6)=x^2+8이다.\n[결론]\n정답은 x^2+8이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 24,
@@ -785,16 +906,26 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차부등식",
+      "가격",
+      "최대값",
+      "자연수조건"
     ],
     "wide": false,
     "content": "$40000$원 중 포장비 $4000$원을 제외하고 한 송이 $1600$원인 장미를 최대 몇 송이까지 살 수 있는지 구하시오. [5점]",
     "choices": [],
     "answer": "22송이",
-    "solution": "[키포인트] 살 수 있는 장미의 수를 $x$라 두고 부등식을 세운다.\\n$1600x + 4000 \\le 40000$\\n$1600x \\le 36000$\\n$x \\le 22.5$\\n장미의 송이수는 자연수이므로 최대 $22$송이까지 살 수 있다.\\n$\\therefore$ 정답은 22송이이다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-    "subUnit": "일차부등식",
+    "solution": "[핵심]\n포장비와 장미값의 합이 가진 돈을 넘지 않도록 부등식을 세운다.\n[풀이]\n장미를 x송이라 하면 1600x+4000\\le40000이다. 따라서 x\\le22.5이고 송이 수는 자연수이다.\n[결론]\n최대 22송이까지 살 수 있다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   }
 ];
