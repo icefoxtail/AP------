@@ -1711,6 +1711,55 @@ select {
   margin: 0;
   border-top: 1px solid #edf0f3;
 }
+.finder-surface .exam .finder-card-actions {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.finder-card-more {
+  position: relative;
+  min-width: 0;
+}
+.finder-card-more > summary,
+.saved-paper-more > summary {
+  min-height: 44px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line, #d0d5dd);
+  border-radius: 8px;
+  color: #344054;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.finder-card-more-menu,
+.saved-paper-more-menu {
+  position: absolute;
+  z-index: 35;
+  top: calc(100% + 5px);
+  right: 0;
+  min-width: 176px;
+  padding: 6px;
+  display: grid;
+  gap: 5px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 24px #17203324;
+}
+.finder-card-more-menu button,
+.finder-card-more-menu a,
+.saved-paper-more-menu button,
+.saved-paper-more-menu a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 10px;
+  text-align: left;
+  white-space: normal;
+}
 .finder-surface .exam .head {
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -1927,10 +1976,16 @@ select {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 6px;
   }
+  .finder-surface .exam .finder-card-actions {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
   .finder-surface .exam .actions button {
     min-height: 44px;
     padding: 7px 5px;
     font-size: 12px;
+  }
+  .finder-card-more-menu {
+    min-width: 172px;
   }
   .finder-selection-bar {
     position: fixed;
@@ -2334,6 +2389,42 @@ body[data-archive-view="compose"] .compose-create-bar {
 .saved-paper-card .actions {
   justify-content: flex-end;
 }
+.saved-paper-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.saved-paper-primary-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(58px, 1fr));
+  gap: 6px;
+}
+.saved-paper-primary-actions button {
+  min-height: 44px;
+  padding: 7px 9px;
+  white-space: nowrap;
+}
+.saved-paper-more-wrap {
+  align-items: center;
+  gap: 8px;
+}
+.saved-paper-more-wrap > button {
+  min-height: 44px;
+}
+.saved-paper-more {
+  position: relative;
+}
+.saved-paper-back {
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .button-like {
   display: inline-flex;
   align-items: center;
@@ -2377,12 +2468,61 @@ body[data-archive-view="compose"] .compose-create-bar {
 @media (max-width: 760px) {
   .saved-paper-card {
     display: grid;
+    gap: 10px;
   }
-  .saved-paper-card .actions > * {
+  .saved-paper-card-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+  .saved-paper-primary-actions {
     flex: 1 1 auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .saved-paper-primary-actions button {
+    min-width: 0;
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+  .saved-paper-card-actions > .saved-paper-more {
+    flex: 0 0 auto;
   }
   .saved-paper-preview {
     min-height: 72vh;
+  }
+}
+.saved-paper-issue-dialog {
+  width: min(1040px, calc(100% - 24px));
+  max-width: 1040px;
+  padding: 16px 16px 10px;
+  max-height: 94dvh;
+  overscroll-behavior: contain;
+}
+.saved-paper-issue-dialog h2 {
+  margin: 0 0 7px;
+  font-size: 17px;
+}
+.saved-paper-issue-dialog > .dialog-close {
+  position: sticky;
+  bottom: 0;
+  margin-top: 8px;
+  background: #fff;
+}
+#saved-paper-issue-frame {
+  width: 100%;
+  height: min(72vh, 760px);
+  min-height: 520px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+@media (max-width: 700px) {
+  .saved-paper-issue-dialog {
+    width: calc(100% - 12px);
+    padding: 13px 10px;
+  }
+  #saved-paper-issue-frame {
+    height: 68vh;
+    min-height: 460px;
   }
 }
 
@@ -2418,6 +2558,10 @@ body[data-archive-view="compose"] .compose-create-bar {
 .compose-saved-continuity-paper .actions > * {
   min-height: 44px;
 }
+.compose-saved-continuity-more { position: relative; }
+.compose-saved-continuity-more > summary { min-height: 44px; padding: 0 10px; display: flex; align-items: center; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+.compose-saved-continuity-more > div { position: absolute; z-index: 20; top: calc(100% + 4px); right: 0; min-width: 170px; padding: 6px; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: 0 8px 22px #17203324; }
+.compose-saved-continuity-more button { width: 100%; min-height: 44px; text-align: left; }
 @media (max-width: 1000px) {
   .mobile-actions > .mobile-saved-paper-assign {
     flex: 1;

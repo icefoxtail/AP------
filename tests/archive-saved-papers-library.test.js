@@ -210,6 +210,51 @@ test("saved-paper AssignTarget handoff publishes one envelope without localStora
   assert.equal(localStorageWrites, 0, "saved-paper distribution does not grow localStorage");
 });
 
+test("embedded Saved Paper assignment keeps its ID through login and retains the compatibility entry", async () => {
+  const savedId = "00000000-0000-4000-8000-000000000074";
+  const rootWindow = { closeModal() {}, addEventListener() {} };
+  const parent = { messages: [], postMessage(message) { this.messages.push(message); } };
+  const classes = [];
+  let opened = null;
+  const context = {
+    window: rootWindow,
+    parent,
+    URLSearchParams,
+    Map,
+    crypto,
+    location: {
+      search: `?savedPaper=${savedId}&archive2Embedded=1`,
+      origin: "https://archive.test",
+      href: `https://archive.test/archive/index.html?savedPaper=${savedId}&archive2Embedded=1`,
+    },
+    document: {
+      documentElement: { classList: { add(value) { classes.push(value); } } },
+      createElement: () => ({ style: {} }),
+      head: { appendChild() {} },
+      body: { prepend() {} },
+    },
+    localStorage: { getItem: () => "{}", setItem() {} },
+    sessionStorage: storage(),
+    getIndexAssignmentAuthHeader: () => null,
+    openAssignTargetPanel: async (item, qpp) => { opened = { item, qpp }; },
+  };
+  rootWindow.Archive2Output = {};
+  const source = fs.readFileSync(path.join(__dirname, "../archive/archive2-entry.js"), "utf8");
+  vm.runInNewContext(source, context);
+
+  assert.ok(classes.includes("archive2-original-host"));
+  assert.equal(await rootWindow.openArchive2SavedPaperIssue(), true);
+  assert.equal(opened.item.savedPaperId, savedId);
+  assert.equal(opened.qpp, 4);
+  assert.equal(rootWindow.closeModal !== undefined, true);
+
+  const index = fs.readFileSync(path.join(__dirname, "../archive/index.html"), "utf8");
+  assert.match(index, /AssignTarget\?\.item\?\.savedPaperId[\s\S]*?window\.openArchive2SavedPaperIssue/,
+    "the savedPaper URL is retried after authentication instead of losing its intent");
+  assert.match(source, /const requestedSavedPaper = params\.get\("savedPaper"\)/,
+    "the existing savedPaper compatibility URL remains supported");
+});
+
 function paperFixture(id) {
   return {
     id,
@@ -351,5 +396,105 @@ test("Saved Paper library starts immutable revision Drafts and retries exact cop
     if (previous.localStorage === undefined) delete global.localStorage; else global.localStorage = previous.localStorage;
     if (previous.history === undefined) delete global.history; else global.history = previous.history;
     if (previous.document === undefined) delete global.document; else global.document = previous.document;
+  }
+});
+
+test("Saved Paper cards open each output and assignment directly and restore list cursor context", async () => {
+  const previous = {
+    window: global.window,
+    location: global.location,
+    history: global.history,
+    requestAnimationFrame: global.requestAnimationFrame,
+  };
+  const savedId = "00000000-0000-4000-8000-000000000071";
+  const saved = paper(savedId, "immutable list snapshot");
+  const summary = (id, title) => ({
+    id, title, grade: "고1", subject: "공통수학1", question_count: 1,
+    created_at: "2026-09-29T00:00:00.000Z", library_status: "ACTIVE",
+  });
+  const outputApi = outputWithCapture();
+  const requests = [];
+  const opened = [];
+  const scrolls = [];
+  const popup = { location: { href: "" }, close() { this.closed = true; } };
+  global.location = new URL("https://archive.test/archive/workspace.html?view=saved");
+  global.history = {
+    state: null,
+    replaceState(state, _title, url) {
+      this.state = state;
+      global.location = new URL(String(url), global.location.href);
+    },
+    pushState(state, _title, url) {
+      this.state = state;
+      global.location = new URL(String(url), global.location.href);
+    },
+    back() {},
+  };
+  global.requestAnimationFrame = callback => callback();
+  global.window = {
+    scrollY: 321,
+    scrollTo: (x, y) => scrolls.push([x, y]),
+    crypto: { randomUUID: () => "00000000-0000-4000-8000-000000000072" },
+    Archive2Output: outputApi,
+    Archive2Api: {
+      async request(route) {
+        requests.push(route);
+        if (route === "/archive-saved-papers?limit=20&status=ACTIVE")
+          return { papers: [summary(savedId, "Saved direct paper")], next_cursor: "cursor-next" };
+        if (route.includes("&cursor=cursor-next"))
+          return { papers: [summary("00000000-0000-4000-8000-000000000073", "Second page paper")], next_cursor: null };
+        if (route === "/archive-saved-papers/" + savedId) return { paper: saved };
+        throw new Error("unexpected library request: " + route);
+      },
+    },
+    open: url => { assert.equal(url, "about:blank"); return popup; },
+    Archive2WorkspaceSavedPaperIssue: async id => opened.push(id),
+  };
+  try {
+    const host = { innerHTML: "", prepend() {} };
+    await library.render(host, "", "ACTIVE");
+    assert.match(host.innerHTML, /data-library-action="output"[^>]*data-mode="exam"/);
+    assert.match(host.innerHTML, /data-library-action="output"[^>]*data-mode="sol"/);
+    assert.match(host.innerHTML, /data-library-action="output"[^>]*data-mode="ans"/);
+    assert.match(host.innerHTML, /data-library-action="distribute"/);
+    assert.match(host.innerHTML, /<summary>더보기<\/summary>/);
+    assert.doesNotMatch(host.innerHTML, /index\.html\?savedPaper=/);
+
+    const outputButton = { dataset: { libraryAction: "output", paperId: savedId, mode: "sol" } };
+    await host.onclick({ target: { closest: () => outputButton }, preventDefault() {}, stopPropagation() {} });
+    assert.equal(requests.at(-1), "/archive-saved-papers/" + savedId);
+    assert.equal(outputApi.envelopes.at(-1).sourceId, savedId);
+    assert.equal(outputApi.envelopes.at(-1).mode, "sol");
+    assert.equal(new URL(popup.location.href).searchParams.get("preview"), null);
+
+    const distributeButton = { dataset: { libraryAction: "distribute", paperId: savedId } };
+    await host.onclick({ target: { closest: () => distributeButton }, preventDefault() {}, stopPropagation() {} });
+    assert.deepEqual(opened, [savedId]);
+
+    const moreButton = { dataset: { libraryAction: "more" } };
+    await host.onclick({ target: { closest: () => moreButton }, preventDefault() {}, stopPropagation() {} });
+    const listContext = global.history.state.archive2SavedLibrary;
+    assert.equal(listContext.cursor, null);
+    assert.deepEqual(listContext.papers.map(row => row.id), [savedId, "00000000-0000-4000-8000-000000000073"]);
+    assert.equal(listContext.scrollY, 321);
+
+    global.history.state = { archive2SavedLibraryDetail: true, archive2ScrollY: 0 };
+    global.location = new URL("https://archive.test/archive/workspace.html?view=saved&paper_id=" + savedId);
+    await library.render(host, savedId, "ACTIVE");
+    assert.match(host.innerHTML, /immutable list snapshot/);
+
+    global.history.state = { archive2SavedLibrary: listContext, archive2ScrollY: 321 };
+    global.location = new URL("https://archive.test/archive/workspace.html?view=saved");
+    const listReadsBeforeRestore = requests.filter(route => route.startsWith("/archive-saved-papers?limit=20")).length;
+    await library.render(host, "", "ACTIVE");
+    const listReadsAfterRestore = requests.filter(route => route.startsWith("/archive-saved-papers?limit=20")).length;
+    assert.equal(listReadsAfterRestore, listReadsBeforeRestore);
+    assert.match(host.innerHTML, /Second page paper/);
+    assert.deepEqual(scrolls.at(-1), [0, 321]);
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.requestAnimationFrame === undefined) delete global.requestAnimationFrame; else global.requestAnimationFrame = previous.requestAnimationFrame;
   }
 });
