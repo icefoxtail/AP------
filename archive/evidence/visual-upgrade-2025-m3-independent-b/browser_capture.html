@@ -1,0 +1,189 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>M3 solution browser evidence capture</title>
+<style>
+body{font:15px system-ui,"Malgun Gothic",sans-serif;margin:24px;color:#17202a}
+#status{padding:14px;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px}
+#detail{white-space:pre-wrap;font:12px ui-monospace,monospace;margin-top:10px}
+iframe{position:absolute;left:-9000px;top:0;border:0;opacity:.01;pointer-events:none}
+</style>
+<h1>Actual Archive solution render evidence</h1>
+<div id="status" data-ready="false">Loading five exams in solution mode…</div>
+<div id="detail"></div>
+<script>
+const EVIDENCE="/archive/evidence/visual-upgrade-2025-m3-independent-b/";
+const expectedCounts={
+"25_왕운중_2학기_중간_중3_수학.js":24,
+"25_풍덕중_2학기_중간_중3_수학.js":25,
+"25_연향중_2학기_기말_중3_기출.js":23,
+"25_금당중_2학기_기말_중3_기출.js":24,
+"25_신흥중_2학기_기말_중3_기출.js":24
+};
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+const rect=r=>({x:r.x,y:r.y,width:r.width,height:r.height});
+const overlap=(a,b)=>Math.max(0,Math.min(a.x+a.width,b.x+b.width)-Math.max(a.x,b.x))>0.5 &&
+                     Math.max(0,Math.min(a.y+a.height,b.y+b.height)-Math.max(a.y,b.y))>0.5;
+async function sha256Bytes(bytes){
+  const digest=await crypto.subtle.digest("SHA-256",bytes);
+  return "sha256:"+[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+function segmentHitsRect(a,b,r,pad){
+  const box={x:r.x-pad,y:r.y-pad,width:r.width+2*pad,height:r.height+2*pad};
+  const dx=b[0]-a[0],dy=b[1]-a[1],p=[-dx,dx,-dy,dy];
+  const q=[a[0]-box.x,box.x+box.width-a[0],a[1]-box.y,box.y+box.height-a[1]];
+  let lo=0,hi=1;
+  for(let i=0;i<4;i++){
+    if(Math.abs(p[i])<1e-12){if(q[i]<0)return false;}
+    else{const t=q[i]/p[i];if(p[i]<0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return false;}
+  }
+  return true;
+}
+function elementSegments(el){
+  const tag=el.tagName.toLowerCase();
+  if(tag==="line")return [[[Number(el.getAttribute("x1")),Number(el.getAttribute("y1"))],[Number(el.getAttribute("x2")),Number(el.getAttribute("y2"))]]];
+  if(tag==="polyline"||tag==="polygon"){
+    const pts=(el.getAttribute("points")||"").trim().split(/[ ,]+/).filter(Boolean).map(Number);
+    const rows=[];for(let i=0;i+3<pts.length;i+=2)rows.push([[pts[i],pts[i+1]],[pts[i+2],pts[i+3]]]);
+    if(tag==="polygon"&&pts.length>=6)rows.push([[pts[pts.length-2],pts[pts.length-1]],[pts[0],pts[1]]]);
+    return rows;
+  }
+  if(tag==="circle"){
+    const cx=Number(el.getAttribute("cx")),cy=Number(el.getAttribute("cy")),r=Number(el.getAttribute("r")),out=[];
+    let prev=[cx+r,cy];for(let i=1;i<=96;i++){const t=2*Math.PI*i/96,cur=[cx+r*Math.cos(t),cy+r*Math.sin(t)];out.push([prev,cur]);prev=cur;}return out;
+  }
+  return [];
+}
+async function measureInline(svgText,assetPath,engineBox,sourceUrl){
+  const parsed=new DOMParser().parseFromString(svgText,"image/svg+xml");
+  if(parsed.querySelector("parsererror"))return {xmlParse:"FAIL",assetPath};
+  const svg=document.importNode(parsed.documentElement,true);
+  const vb=(svg.getAttribute("viewBox")||"0 0 0 0").split(/[ ,]+/).map(Number);
+  const host=document.createElement("div");
+  host.style.cssText="position:absolute;left:24px;top:80px;width:"+engineBox.width+"px;height:"+engineBox.height+"px;opacity:.01;overflow:visible;color:#111";
+  svg.style.width=engineBox.width+"px";svg.style.height=engineBox.height+"px";svg.style.display="block";
+  host.appendChild(svg);document.body.appendChild(host);
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  const svgBox=rect(svg.getBoundingClientRect());
+  const labels=[...svg.querySelectorAll("text")].map(t=>{
+    const b=t.getBoundingClientRect(),s=getComputedStyle(t);
+    const box=rect(b), authored=s.fontSize, units=parseFloat(t.getAttribute("font-size")||authored);
+    const local=t.getBBox();
+    return {id:t.id,text:t.textContent,kind:t.getAttribute("data-label-kind")||"annotation",
+      ownerPoint:t.getAttribute("data-owner-point")||null,ownerSegment:t.getAttribute("data-owner-segment")||null,
+      ownerVertex:t.getAttribute("data-owner-vertex")||null,ownerRays:(t.getAttribute("data-owner-rays")||"").split(/\s+/).filter(Boolean),
+      authoredFontSize:t.getAttribute("font-size")||null,computedFontFamily:s.fontFamily,
+      computedFontSize:s.fontSize,svgBBox:rect(local),browserCssBBox:box,
+      finalViewportCssFontPx:Math.round(units*svgBox.width/(vb[2]||1)*1000)/1000,
+      clipped:box.x<svgBox.x-0.5||box.y<svgBox.y-0.5||box.x+box.width>svgBox.x+svgBox.width+0.5||box.y+box.height>svgBox.y+svgBox.height+0.5,
+      safeMarginViolation:local.x<30||local.y<30||local.x+local.width>vb[2]-30||local.y+local.height>vb[3]-30};
+  });
+  const textOverlaps=[];
+  for(let i=0;i<labels.length;i++)for(let j=i+1;j<labels.length;j++)if(overlap(labels[i].browserCssBBox,labels[j].browserCssBBox))textOverlaps.push([labels[i].id,labels[j].id]);
+  const strokePairs=[];
+  for(const t of labels){
+    const excluded=new Set([t.ownerPoint,t.ownerSegment,...t.ownerRays].filter(Boolean));
+    const r=t.svgBBox;
+    for(const el of [...svg.querySelectorAll("line,polyline,polygon,circle")]){
+      if(!el.id||excluded.has(el.id))continue;
+      if(el.tagName.toLowerCase()==="polygon"&&(!el.getAttribute("stroke")||el.getAttribute("stroke")==="none"))continue;
+      const strokeWidth=parseFloat(getComputedStyle(el).strokeWidth)||0;
+      const padding=strokeWidth/2+0.25;
+      for(const [a,b] of elementSegments(el)){
+        if(segmentHitsRect(a,b,r,padding)){strokePairs.push({text:t.id,primitive:el.id,primitiveTag:el.tagName.toLowerCase(),textSvgBBox:r,segmentEndpoints:[a,b],strokePaddingUserUnits:padding});break;}
+      }
+    }
+  }
+  const evidence={assetPath,sourceUrl,svgSha256:null,xmlParse:"PASS",viewBox:svg.getAttribute("viewBox"),
+    engineImageCssBox:engineBox,inlineBrowserRootCssBox:svgBox,scaleCssPxPerViewBoxUnit:svgBox.width/(vb[2]||1),
+    labels,textOverlaps,actualStrokeTextOverlapPairs:strokePairs,
+    clippingCount:labels.filter(x=>x.clipped).length,safeMarginViolationCount:labels.filter(x=>x.safeMarginViolation).length,
+    textOverlapCount:textOverlaps.length,strokeTextOverlapCount:strokePairs.length,
+    createdByActualBrowser:true};
+  host.remove();
+  return evidence;
+}
+async function waitEngine(frame,expectedCount){
+  const start=Date.now();
+  while(Date.now()-start<30000){
+    const doc=frame.contentDocument;
+    if(doc&&doc.querySelectorAll(".q-num").length===expectedCount){
+      frame.contentWindow.scrollTo(0,doc.documentElement.scrollHeight);
+      await wait(120);
+      frame.contentWindow.scrollTo(0,0);
+      await wait(150);
+      return doc;
+    }
+    await wait(150);
+  }
+  throw new Error("ENGINE_QUESTION_COUNT_TIMEOUT:"+expectedCount);
+}
+async function main(){
+  const [links,inventory]=await Promise.all([
+    fetch(EVIDENCE+"build_outputs.json").then(r=>r.json()),
+    fetch(EVIDENCE+"inventory.json").then(r=>r.json())
+  ]);
+  const assetsByExam=new Map();
+  for(const a of links.assets){const f=a.sourcePath.split("/").pop();if(!assetsByExam.has(f))assetsByExam.set(f,[]);assetsByExam.get(f).push(a)}
+  const exams=[];
+  for(const exam of inventory.exams){
+    const file=exam.sourcePath.split("/").pop(),relative="exams/"+exam.sourcePath.replace("archive/exams/","");
+    const sourceBytes=await fetch("/"+exam.sourcePath,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("SOURCE_EXAM_FETCH_FAIL:"+exam.sourcePath);return r.arrayBuffer()});
+    const sourceExamSha256=await sha256Bytes(sourceBytes);
+    const iframe=document.createElement("iframe");iframe.width=innerWidth;iframe.height=innerHeight;
+    iframe.src="/archive/engine.html?qpp=4&data="+encodeURIComponent(relative)+"&mode=sol";
+    document.body.appendChild(iframe);
+    await new Promise((resolve,reject)=>{iframe.onload=resolve;iframe.onerror=()=>reject(new Error("ENGINE_FRAME_LOAD_FAIL:"+file))});
+    const doc=await waitEngine(iframe,expectedCounts[file]);
+    for(const img of [...doc.images]){img.loading="eager";}
+    await Promise.all([...doc.images].map(img=>img.complete?Promise.resolve():new Promise(resolve=>{
+      img.addEventListener("load",resolve,{once:true});img.addEventListener("error",resolve,{once:true});
+      setTimeout(resolve,10000);
+    })));
+    const svgImgs=[...doc.images].filter(img=>/\/q\d+-solution\.svg(?:\?|$)/.test(new URL(img.src).pathname+(new URL(img.src).search||"")));
+    const rows=svgImgs.map(img=>{
+      const r=img.getBoundingClientRect(),url=new URL(img.src);return {src:img.getAttribute("src"),path:url.pathname,
+        complete:img.complete,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
+        cssBox:rect(r),wrapperClass:img.parentElement?.className||"",withinWrapper:(()=>{const p=img.parentElement?.getBoundingClientRect();return !!p&&r.x>=p.x-0.5&&r.y>=p.y-0.5&&r.x+r.width<=p.x+p.width+0.5&&r.y+r.height<=p.y+p.height+0.5})()};
+    });
+    const qnums=[...doc.querySelectorAll(".q-num")].map(e=>e.textContent.trim());
+    const errors=rows.filter(x=>!x.complete||x.naturalWidth===0||x.naturalHeight===0);
+    exams.push({file,sourcePath:exam.sourcePath,baselineSourceExamSha256:exam.sourceSha256,sourceExamSha256,mode:"sol",
+      questionCount:qnums.length,lastQuestion:qnums[qnums.length-1]||null,
+      solutionSvgImageCount:rows.length,loadedSolutionSvgCount:rows.length-errors.length,
+      failedImages:errors,horizontalOverflow:doc.documentElement.scrollWidth>doc.documentElement.clientWidth,
+      clientWidth:doc.documentElement.clientWidth,scrollWidth:doc.documentElement.scrollWidth,solutionImages:rows});
+    iframe.remove();
+  }
+  const inlineRows=[];
+  for(const [file,assets] of assetsByExam){
+    for(const asset of assets){
+      const exam=exams.find(x=>x.file===file),img=exam.solutionImages.find(x=>x.path.endsWith(asset.svgPath.replace("archive/","/archive/").split("/assets/")[1]||"NO_MATCH"));
+      const targetImage=exam.solutionImages.find(x=>x.path.endsWith("/"+asset.svgPath.split("/").pop()));
+      if(!targetImage)throw new Error("FINAL_SVG_NOT_FOUND_IN_RENDER:"+asset.svgPath);
+      const fetchPath="/"+asset.svgPath;
+      const bytes=await fetch(fetchPath).then(r=>{if(!r.ok)throw new Error("SVG_FETCH_FAIL:"+fetchPath);return r.arrayBuffer()});
+      const svgText=new TextDecoder().decode(bytes);
+      const record=await measureInline(svgText,asset.svgPath,targetImage.cssBox,fetchPath);
+      record.svgSha256=asset.svgSha256;
+      record.solutionSha256=asset.solutionSha256;
+      record.sourceExamSha256=exam.sourceExamSha256;
+      record.qid=asset.qid;record.action=asset.action;
+      record.renderStatus=record.xmlParse==="PASS"&&record.clippingCount===0&&record.safeMarginViolationCount===0&&record.textOverlapCount===0&&record.strokeTextOverlapCount===0?"PASS":"REVIEW_REQUIRED";
+      inlineRows.push(record);
+    }
+  }
+  const out={schemaVersion:"M3_ACTUAL_BROWSER_RENDER_EVIDENCE_v1",
+    capturedAt:new Date().toISOString(),browser:{userAgent:navigator.userAgent,viewport:{width:innerWidth,height:innerHeight},
+      devicePixelRatio,engineUrl:"/archive/engine.html",mode:"sol",qpp:4},
+    examDenominator:120,examRenderPassCount:exams.filter(x=>x.questionCount===expectedCounts[x.file]&&x.loadedSolutionSvgCount===x.solutionSvgImageCount&&x.failedImages.length===0).length,
+    exams,changedSvgCount:inlineRows.length,changedSvgPassCount:inlineRows.filter(x=>x.renderStatus==="PASS").length,
+    changedSvgRenderEvidence:inlineRows};
+  const response=await fetch("/__capture",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(out)});
+  const saved=await response.json();
+  document.querySelector("#status").dataset.ready="true";
+  document.querySelector("#status").textContent="Captured "+out.examRenderPassCount+"/5 solution pages; "+out.changedSvgPassCount+"/"+out.changedSvgCount+" changed SVGs have zero clipping/text-overlap flags. Saved: "+saved.saved;
+  document.querySelector("#detail").textContent=JSON.stringify({examSummary:exams.map(x=>({file:x.file,q:x.questionCount,last:x.lastQuestion,svgs:x.loadedSolutionSvgCount+"/"+x.solutionSvgImageCount,overflow:x.horizontalOverflow})),
+    changedSvgSummary:inlineRows.map(x=>({qid:x.qid,path:x.assetPath,cssBox:x.engineImageCssBox,scale:x.scaleCssPxPerViewBoxUnit,fontPx:[...new Set(x.labels.map(l=>l.finalViewportCssFontPx))],clipped:x.clippingCount,textOverlaps:x.textOverlapCount,render:x.renderStatus})),saved},null,2);
+}
+main().catch(e=>{document.querySelector("#status").textContent="Capture failed: "+String(e);document.querySelector("#status").dataset.ready="error";});
+</script>
