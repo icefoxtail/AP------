@@ -8,7 +8,7 @@
   "inputArtifactSha": "edf7347fec65e190d4d5461537b35c781e97cb76",
   "targetBranch": "work/middle/m2/26-sinheung-1final-master-c-20261003",
   "targetHeadAtClaim": "7967f993b97d2d9a59479704c0eecb79f00e2d93",
-  "expectedTargetHead": "7967f993b97d2d9a59479704c0eecb79f00e2d93",
+  "expectedTargetHead": "4f2b3b823a04701e3762ca3d7cab7c6ce3445dcf",
   "repairFingerprint": "508a891b6fbea5c0d934944f49052837b04e8b59e343770a475fd8d07b688054",
   "failedGate": "STALE_BASE_MAIN_REF_AND_CREATE_TAG_META_GATE_DRIFT",
   "openQids": [],
@@ -25,5 +25,20 @@
   "expiresAt": "2026-10-03T19:06:03+09:00",
   "lastProgressAt": "2026-10-03T17:36:03+09:00",
   "expectedCompletionGate": "successor branch contains latest main cd74c75f, exam blob edf7347f unchanged, checkpoint points to FULL_TAG_META_MATERIALIZATION before q4 pixel/validator",
-  "status": "ACTIVE"
+  "status": "CLOSED",
+  "closedAt": "2026-10-03T17:36:03+09:00",
+  "closure": {
+    "disposition": "STALE_LINEAGE_REFRESHED_AND_NEW_CREATE_GATE_DEBT_EXPOSED",
+    "supersededBranch": "work/middle/m2/26-sinheung-1final-master-c-20261003",
+    "successorBranch": "work/middle/m2/26-sinheung-1final-master-c-refresh-20261003",
+    "successorHead": "4f2b3b823a04701e3762ca3d7cab7c6ce3445dcf",
+    "baseMainSha": "cd74c75fb14abf3fd9d9c1cea026a20681576c9e",
+    "remoteCompare": "ahead=3,behind=0",
+    "inputArtifactShaUnchanged": "edf7347fec65e190d4d5461537b35c781e97cb76",
+    "contentMutationCount": 0,
+    "checkpointBlob": "cfedc679421876eefe83d10ba5b5bc044b946073",
+    "nextOwner": "M2-1 TEMP-CREATE-1/2",
+    "firstMissingClosureStep": "FULL_TAG_META_MATERIALIZATION_THEN_Q4_SOURCE_PIXEL_CHECK_THEN_CREATE_PHYSICAL_EVIDENCE_AND_CANONICAL_VALIDATOR",
+    "note": "MASTER-C closed only stale lineage/current-gate structural debt. Exam bytes remain exact; current CREATE tag/meta production work remains for TEMP-CREATE owner."
+  }
 }
