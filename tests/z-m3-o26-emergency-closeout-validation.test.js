@@ -85,3 +85,5 @@ if (preflight.status !== 0) process.exit(preflight.status || 1);
   console.error(error);
   process.exitCode = 1;
 });
+
+// validation retry after targeted evidence binding fix
