@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "M2_1_CREATE_CONTINUATION_CHECKPOINT_v2",
+  "cohort": "M2_1SEM_34",
+  "currentGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "ordinal": 20,
+  "exam": "26_신흥중_1학기_기말_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1final/26_신흥중_1학기_기말_중2_기출.js",
+  "stage": "CREATE",
+  "status": "CREATE_PRODUCTION_CONTINUATION_REQUIRED",
+  "productionOwner": "TEMP-CREATE-1/2",
+  "preparedBy": "M2-1 MASTER-C",
+  "baseMainSha": "21a46c1a6972316de8446ebeda876006ccc69ae6",
+  "inputArtifactGitBlob": "edf7347fec65e190d4d5461537b35c781e97cb76",
+  "exactCandidateGitBlob": "edf7347fec65e190d4d5461537b35c781e97cb76",
+  "lineageSourceCommit": "4f2b3b823a04701e3762ca3d7cab7c6ce3445dcf",
+  "recoveredFromMissingCurrentRef": true,
+  "productionArtifactMutation": "EXACT_REMATERIALIZATION_ONLY",
+  "createDone": false,
+  "readyForReview1": false,
+  "solutionRewrite": "FULL_ALL_QUESTIONS",
+  "solutionRewriteCount": "23/23",
+  "protectedFieldParity": "PASS",
+  "currentCreateTagMetaHardGate": {
+    "questionCount": 23,
+    "emptyTagsCount": 19,
+    "problemTypeKeyCount": 0,
+    "templateKeyCount": 0,
+    "difficultyBucketCount": 0,
+    "status": "PRODUCTION_MATERIALIZATION_REQUIRED"
+  },
+  "problemImageQ4": {
+    "path": "archive/assets/images/26_신흥중_1학기_기말_중2_기출/q04.png",
+    "gitBlobSha": "68d7c174f22eae629be8b1fb4895b64ad2ff800f",
+    "status": "DIRECT_SOURCE_PIXEL_CHECK_PENDING"
+  },
+  "firstMissingClosureStep": "FULL_TAG_META_MATERIALIZATION_THEN_Q4_SOURCE_PIXEL_CHECK_THEN_PHYSICAL_EVIDENCE_AND_ACTUAL_CANONICAL_CREATE_VALIDATOR",
+  "nextRequiredWork": [
+    "TEMP-CREATE-1/2 continues the existing candidate; do not rewrite from scratch",
+    "materialize full tags/Meta for 23/23 under current CREATE schema",
+    "direct q4 source/problem image pixel confirmation",
+    "seal current physical evidence bound to finalArtifactSha",
+    "run actual canonical CREATE validator",
+    "write validator receipt and CREATE_DONE/READY_FOR_REVIEW1 durable receipt",
+    "remote readback"
+  ],
+  "lineageRefresh": {
+    "currentMainAncestor": true,
+    "candidateSourceCommitParent": true,
+    "exactCandidateBlobPreserved": true,
+    "staleOrMissingRefClosed": true,
+    "note": "MASTER-C performed structural lineage/parity closure only. TEMP-CREATE remains sole production owner; CREATE_DONE is not asserted."
+  },
+  "recordedAtKst": "2026-10-03 18:43 KST"
+}
