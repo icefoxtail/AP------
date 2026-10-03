@@ -251,8 +251,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트]\n평행한 두 직선의 기울기는 같다.\n\n두 점 $(-2,1)$, $(6,k)$를 지나는 직선의 기울기는\n$\\dfrac{k-1}{6-(-2)}=\\dfrac{k-1}{8}$이다.\n\n이 직선이 $y=\\dfrac54x+3$과 평행하므로\n$\\dfrac{k-1}{8}=\\dfrac54$이다.\n따라서 $k-1=10$이고 $k=11$이다.\n\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -279,8 +279,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트]\n두 그래프의 교점에서는 두 식의 $y$값이 같다.\n\n$x-5=-2x+4$에서\n$3x=9$이므로 $x=3$이다.\n이를 $y=x-5$에 대입하면\n$y=3-5=-2$이다.\n\n따라서 $(a,b)=(3,-2)$이고\n$a+b=1$이다.\n\n따라서 정답은 ④이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -475,8 +475,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트]\n교통 카드로 낸 학생 수와 현금으로 낸 학생 수를 각각 미지수로 둔다.\n\n교통 카드로 낸 학생 수를 $x$, 현금으로 낸 학생 수를 $y$라 하면\n$\\begin{cases}x+y=27\\\\720x+1000y=23920\\end{cases}$이다.\n\n첫째 식에 720을 곱하면\n$720x+720y=19440$이다.\n둘째 식에서 이를 빼면\n$280y=4480$이므로 $y=16$이다.\n따라서 $x=11$이다.\n\n두 학생 수의 차는\n$16-11=5$이다.\n\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
-    "subUnit": "연립일차방정식",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+    "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
