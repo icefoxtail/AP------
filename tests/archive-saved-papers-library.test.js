@@ -118,6 +118,40 @@ test("saved-paper preview is one owner-scoped envelope without changing browser 
   }
 });
 
+test("direct Saved Paper mode output uses the exact immutable snapshot in a standalone envelope", async () => {
+  const previous = { window: global.window, location: global.location };
+  const savedId = "00000000-0000-4000-8000-000000000004";
+  const saved = paper(savedId, "immutable mode output");
+  const outputApi = outputWithCapture();
+  const requests = [];
+  const popup = { location: { href: "" }, close() { this.closed = true; } };
+  global.window = {
+    Archive2Output: outputApi,
+    Archive2Api: { request: async route => { requests.push(route); return { paper: saved }; } },
+    open: url => { assert.equal(url, "about:blank"); return popup; },
+  };
+  global.location = new URL("https://archive.test/archive/workspace.html?view=compose");
+  try {
+    const opened = await library.openOutput(savedId, "sol");
+    assert.deepEqual(requests, ["/archive-saved-papers/" + savedId]);
+    assert.equal(opened.paperId, savedId);
+    assert.equal(outputApi.envelopes.length, 1);
+    assert.equal(outputApi.envelopes[0].sourceKind, "saved-paper");
+    assert.equal(outputApi.envelopes[0].sourceId, savedId);
+    assert.equal(outputApi.envelopes[0].paperId, savedId);
+    assert.equal(outputApi.envelopes[0].mode, "sol");
+    assert.deepEqual(outputApi.envelopes[0].questions, saved.snapshot.questions);
+    const url = new URL(popup.location.href);
+    assert.equal(url.searchParams.get("mode"), "sol");
+    assert.equal(url.searchParams.get("preview"), null);
+    assert.equal(url.searchParams.get("archive2Review"), null);
+    assert.equal(url.searchParams.get("archive2SavedStorageVersion"), "3");
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+  }
+});
+
 test("saved-paper AssignTarget handoff publishes one envelope without localStorage writes", async () => {
   const savedId = "00000000-0000-4000-8000-000000000003";
   const sessionStorage = storage({ APMATH_SESSION: "teacher session must remain" });

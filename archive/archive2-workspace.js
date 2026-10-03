@@ -48,6 +48,10 @@
   const badge = (label, type = "") =>
     `<span class="badge ${type}">${esc(label)}</span>`;
   const unique = (values) => [...new Set(values.filter(Boolean))];
+  const SAVED_PAPER_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  const savedPaperIds = (values) => unique(
+    (Array.isArray(values) ? values : []).map(String).filter((id) => SAVED_PAPER_UUID.test(id)),
+  );
   const HOME_PRODUCT_REGISTRY = Object.freeze([
     Object.freeze({
       productKey: "school-exams",
@@ -197,6 +201,7 @@
     saveBatchId: "",
     saveSignature: "",
     savedPaperIds: [],
+    lastSavedPaperIds: [],
     saveMessage: "",
     saveError: "",
     saveResultSignature: "",
@@ -297,6 +302,7 @@
       "saveBatchId",
       "saveSignature",
       "savedPaperIds",
+      "lastSavedPaperIds",
       "saveMessage",
       "saveError",
       "saveResultSignature",
@@ -466,6 +472,15 @@
       !["REVISION", "FORK"].includes(state.derivationSource.derivationType) ||
       (state.derivationSource.parentDisplayName != null && typeof state.derivationSource.parentDisplayName !== "string")
     )) throw new Error("저장 시험지 계보 정보를 확인할 수 없습니다.");
+    state.lastSavedPaperIds = savedPaperIds(
+      Array.isArray(data.lastSavedPaperIds)
+        ? data.lastSavedPaperIds
+        : data.savedPaperIds?.length
+          ? data.savedPaperIds
+          : state.derivationSource?.parentKind === "SAVED_PAPER"
+            ? [state.derivationSource.parentId]
+            : [],
+    );
     if (data.saveResultSignature === undefined) {
       state.saveBatchId = "";
       state.saveSignature = "";
@@ -607,6 +622,7 @@
     state.saveBatchId = "";
     state.saveSignature = "";
     state.savedPaperIds = [];
+    state.lastSavedPaperIds = [paper.id];
     state.saveMessage = "";
     state.saveError = "";
     state.saveResultSignature = "";
@@ -1524,13 +1540,11 @@
     const saveResultCurrent = Boolean(state.saveResultSignature) &&
       state.saveResultSignature === saveWorkSignature();
     const savedResult = state.saveResultState === "RESULT_UNKNOWN"
-      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 저장 결과 확인 버튼으로 같은 요청을 조회하거나 재시도합니다.<button type="button" data-action="save-paper" class="button-like primary">저장 결과 확인</button></div>'
+      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. Draft 편집은 잠겨 있으며 본문 위의 저장 결과 확인 action을 사용할 수 있습니다.</div>'
       : state.saveError && saveResultCurrent
       ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(state.saveError)}</div>`
       : state.saveMessage && saveResultCurrent
-        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>시험지 저장은 학생 배포와 별도입니다.</p>${state.savedPaperIds.map((id, i) => `<div><a href="workspace.html?view=saved&paper_id=${encodeURIComponent(id)}">${state.savedPaperIds.length > 1 ? `${i + 1}권 · ` : ""}저장한 시험지 보기</a> · <a href="index.html?savedPaper=${encodeURIComponent(id)}">학생에게 배포</a></div>`).join("")}</div>`
-        : (state.saveMessage || state.savedPaperIds.length) && !saveResultCurrent
-          ? '<div class="callout" role="status" aria-live="polite">저장 이후 현재 시험지 내용이 변경되었습니다. 현재 편집본은 저장되지 않았습니다.</div>'
+        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>출제와 시험·해설·정답 action은 본문 위의 Saved Paper 저장본을 사용합니다.</p></div>`
           : "";
     const saveStaleNotice = state.indexVersion !== state.catalog.indexVersion
       ? '<div class="callout">문항 목록 버전이 달라 서버가 저장 시 각 문항 내용과 출제 범위를 다시 확인합니다.</div>'
@@ -1550,6 +1564,55 @@
         "",
       )}</div><div>${state.inspector === "header" ? header : summary + saveStaleNotice}</div>
       ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "출력", `class="small" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div><div class="actions" style="margin-top:12px">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div>${savedResult}` : '<p class="muted">문항을 선택한 뒤 시험지 저장을 눌러 완성본을 보관하세요.</p>'}</section></aside>`;
+  }
+  function renderSaveRecovery() {
+    if (state.saveResultState !== "RESULT_UNKNOWN") return "";
+    return `<section class="callout danger compose-save-recovery" role="status" aria-live="polite">
+      <strong>저장 결과를 확인할 수 없습니다.</strong>
+      <p>같은 요청 ID의 결과를 조회하거나 안전하게 재시도합니다. Draft는 확인될 때까지 잠겨 있습니다.</p>
+      ${button("save-paper", "저장 결과 확인", 'class="primary"')}
+    </section>`;
+  }
+  function renderSavedContinuity() {
+    const ids = savedPaperIds(state.lastSavedPaperIds);
+    if (!ids.length) return "";
+    const currentSaved = state.saveResultState === "SAVED" &&
+      Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
+    const statusCopy = currentSaved
+      ? state.saveMessage || "현재 편집본을 Saved Paper로 저장했습니다."
+      : state.saveResultState === "RESULT_UNKNOWN"
+        ? "현재 저장 요청의 결과가 아직 미확정입니다. 아래 action은 직전 확인된 Saved Paper를 엽니다."
+        : state.saveResultState === "SAVING"
+          ? "현재 저장 요청을 처리하고 있습니다. 직전 Saved Paper는 그대로 사용할 수 있습니다."
+          : "현재 편집본은 저장되지 않았습니다. 아래 action은 마지막으로 저장된 immutable snapshot을 사용합니다.";
+    return `<section class="panel compose-saved-continuity" aria-labelledby="compose-saved-continuity-title">
+      <div class="compose-saved-continuity-head"><h2 id="compose-saved-continuity-title">마지막 저장본</h2><p class="muted">${esc(statusCopy)}</p></div>
+      <div class="compose-saved-continuity-list">${ids.map((id, index) => {
+        const part = ids.length > 1 ? `${index + 1}권` : "저장본";
+        return `<article class="compose-saved-continuity-paper" data-saved-paper-id="${esc(id)}">
+          <strong>${part}</strong>
+          <div class="actions" role="group" aria-label="${part} action">
+            <a class="button-like primary" href="index.html?savedPaper=${encodeURIComponent(id)}">${ids.length > 1 ? `${index + 1}권 출제` : "이 저장본 출제"}</a>
+            ${button("saved-output", "시험", `data-paper-id="${esc(id)}" data-mode="exam" class="small"`)}
+            ${button("saved-output", "해설", `data-paper-id="${esc(id)}" data-mode="sol" class="small"`)}
+            ${button("saved-output", "정답", `data-paper-id="${esc(id)}" data-mode="ans" class="small"`)}
+            <a class="button-like" href="workspace.html?view=saved&amp;paper_id=${encodeURIComponent(id)}">저장본 보기</a>
+          </div>
+        </article>`;
+      }).join("")}</div>
+    </section>`;
+  }
+  function refreshComposeSaveContinuity() {
+    const host = document.getElementById("compose-save-continuity");
+    if (host) host.innerHTML = renderSaveRecovery() + renderSavedContinuity();
+    const mobileActions = document.querySelector(".mobile-actions");
+    const mobileMarkup = renderMobileActions();
+    if (mobileActions) {
+      if (mobileMarkup) mobileActions.outerHTML = mobileMarkup;
+      else mobileActions.remove();
+    } else if (mobileMarkup) {
+      document.querySelector("#content")?.insertAdjacentHTML("beforeend", mobileMarkup);
+    }
   }
   function renderPaper() {
     const modes = [
@@ -1594,6 +1657,13 @@
   function renderMobileActions() {
     if (state.saveResultState === "RESULT_UNKNOWN")
       return '<div class="mobile-actions">' + button("save-paper", "저장 결과 확인", 'class="primary"') + "</div>";
+    const savedCurrent = state.saveResultState === "SAVED" &&
+      Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
+    if (savedCurrent && state.lastSavedPaperIds.length) {
+      const id = state.lastSavedPaperIds[0];
+      const label = state.lastSavedPaperIds.length > 1 ? "1권 출제" : "이 저장본 출제";
+      return `<div class="mobile-actions"><a class="button-like primary mobile-saved-paper-assign" href="index.html?savedPaper=${encodeURIComponent(id)}">${label}</a></div>`;
+    }
     if (!state.selected.length) return "";
     const r = review(),
       blocked =
@@ -1603,7 +1673,7 @@
   }
   function renderCompose() {
     return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">${state.derivationSource ? "원본 Saved Paper에서 복사한 새 Draft입니다. 원본은 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
-    <div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
@@ -1964,6 +2034,9 @@
       if (data?.saved !== true || !rows.length || (expectedCount && rows.length !== expectedCount))
         throw new Error("저장 결과의 시험지 수를 확인하지 못했습니다.");
       state.savedPaperIds = rows.map((paper) => paper.id);
+      if (state.savedPaperIds.some((id) => !SAVED_PAPER_UUID.test(String(id || ""))))
+        throw new Error("저장 결과의 Saved Paper ID를 확인하지 못했습니다.");
+      state.lastSavedPaperIds = state.savedPaperIds.slice();
       state.saveMessage = state.savedPaperIds.length > 1
         ? "시험지 " + state.savedPaperIds.length + "권을 저장했습니다."
         : "시험지 1개를 저장했습니다.";
@@ -2562,6 +2635,7 @@
       saveBatchId: "",
       saveSignature: "",
       savedPaperIds: [],
+      lastSavedPaperIds: [],
       saveMessage: "",
       saveError: "",
       saveResultSignature: "",
@@ -2589,7 +2663,7 @@
         return;
       }
       const a = b.dataset.action;
-      if (state.saveResultState === "RESULT_UNKNOWN" && a !== "save-paper") {
+      if (state.saveResultState === "RESULT_UNKNOWN" && !["save-paper", "saved-output"].includes(a)) {
         status("저장 결과를 확인할 때까지 Draft 편집을 잠급니다.", true);
         return;
       }
@@ -2886,6 +2960,10 @@
         scheduleSave();
         await refreshHistory();
       } else if (a === "history-refresh") await refreshHistory();
+      else if (a === "saved-output") await window.Archive2Library.openOutput(
+        b.dataset.paperId,
+        b.dataset.mode || "exam",
+      );
       else if (a === "print") await print();
       else if (a === "save-paper") await savePapers();
       else if (a === "assign") await assign();
@@ -3195,6 +3273,7 @@
       state.title = s.header.title;
       state.prepared = [];
       scheduleSave();
+      refreshComposeSaveContinuity();
       clearTimeout(previewTimer);
       previewTimer = setTimeout(updatePreview, 450);
     }

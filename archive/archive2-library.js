@@ -35,6 +35,27 @@
     return url.href;
   }
 
+  async function openOutput(paperId, mode = "exam", knownPaper = null) {
+    const id = String(paperId || "");
+    if (!id) throw new Error("출력할 Saved Paper ID를 확인할 수 없습니다.");
+    const popup = window.open("about:blank", "_blank");
+    if (!popup) throw new Error("팝업을 허용한 뒤 다시 출력하세요.");
+    try {
+      const data = knownPaper?.id === id
+        ? { paper: knownPaper }
+        : await apiClient().request("/archive-saved-papers/" + encodeURIComponent(id));
+      const paper = data.paper;
+      if (paper?.id !== id || !paper.snapshot)
+        throw new Error("저장한 시험지 snapshot을 확인할 수 없습니다.");
+      const envelope = await preparePreview(paper, mode);
+      popup.location.href = outputUrl(paper, envelope, envelope.mode, false);
+      return { paperId: id, outputRequestId: envelope.outputRequestId };
+    } catch (error) {
+      popup.close();
+      throw error;
+    }
+  }
+
   async function preparePreview(paper, mode = "exam") {
     const snapshot = paper?.snapshot;
     if (!snapshot || !Array.isArray(snapshot.questions) || !snapshot.questions.length)
@@ -222,17 +243,7 @@
           const printButton = host.querySelector('[data-library-action="print"]');
           if (printButton) printButton.dataset.mode = mode;
         } else if (action === "print") {
-          const popup = window.open("about:blank", "_blank");
-          if (!popup) throw new Error("팝업을 허용한 뒤 다시 출력하세요.");
-          try {
-            const data = viewState.paper ? { paper: viewState.paper } : await apiClient().request("/archive-saved-papers/" + encodeURIComponent(id));
-            const paper = data.paper;
-            const envelope = await preparePreview(paper, button.dataset.mode || "exam");
-            popup.location.href = outputUrl(paper, envelope, envelope.mode, false);
-          } catch (error) {
-            popup.close();
-            throw error;
-          }
+          await openOutput(id, button.dataset.mode || "exam", viewState.paper);
         }
       } catch (error) {
         const message = document.createElement("p");
@@ -244,5 +255,5 @@
     };
   }
 
-  return { render, preparePreview, outputUrl };
+  return { render, preparePreview, outputUrl, openOutput };
 });

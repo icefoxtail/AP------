@@ -2386,3 +2386,43 @@ body[data-archive-view="compose"] .compose-create-bar {
   }
 }
 
+.compose-save-recovery {
+  margin: 0 0 16px;
+}
+.compose-saved-continuity {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.compose-saved-continuity-head h2 {
+  margin: 0 0 6px;
+}
+.compose-saved-continuity-head p {
+  margin: 0;
+}
+.compose-saved-continuity-list {
+  display: grid;
+  gap: 12px;
+}
+.compose-saved-continuity-paper {
+  display: grid;
+  gap: 9px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.compose-saved-continuity-paper .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.compose-saved-continuity-paper .actions > * {
+  min-height: 44px;
+}
+@media (max-width: 1000px) {
+  .mobile-actions > .mobile-saved-paper-assign {
+    flex: 1;
+    min-height: 44px;
+    font-size: 12px;
+  }
+}
+
