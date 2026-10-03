@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_FAIL_PACKET_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 68,
+  "examFile": "22_신흥중_2학기_기말_중3_기출.js",
+  "finalArtifactSha": "a8e678354642a70a9d6fd909be61ab6f4ee26163",
+  "disposition": "R3_FAIL_DEFERRED",
+  "nextOwner": "R3_REPAIR",
+  "failedQids": [
+    3,
+    9,
+    12,
+    17,
+    19
+  ],
+  "failureCodes": [
+    "VISUAL_COORDINATE_SEMANTIC_MISMATCH:q3",
+    "VISUAL_MISSING_OWNER_RAYS:q9",
+    "META_CURRENT_CROSSWALK_OVERMAPPING:q12",
+    "VISUAL_COORDINATE_SEMANTIC_MISMATCH:q17",
+    "META_CURRENT_CROSSWALK_OVERMAPPING:q19",
+    "R3_CALIBRATION_EVIDENCE_INVALID"
+  ],
+  "openScope": [
+    {
+      "qid": 3,
+      "field": "solutionImage",
+      "assetPath": "assets/images/22_신흥중_2학기_기말_중3_기출/q3-solution.svg",
+      "reason": "VISUAL_COORDINATE_SEMANTIC_MISMATCH",
+      "observedEvidence": "q3 SVG encodes apex about 64 instead of 52"
+    },
+    {
+      "qid": 9,
+      "field": "solutionImage",
+      "assetPath": "assets/images/22_신흥중_2학기_기말_중3_기출/q9-solution.svg",
+      "reason": "VISUAL_MISSING_OWNER_RAYS",
+      "observedEvidence": "q9 42/38 candidates lack owner-ray pairs"
+    },
+    {
+      "qid": 12,
+      "field": "Meta/RPM projection",
+      "reason": "META_CURRENT_CROSSWALK_OVERMAPPING",
+      "observedEvidence": "q12 cyclic-condition composite mapping conflicts with RPM_ONLY/NO_ACTIVE_MAPPING"
+    },
+    {
+      "qid": 17,
+      "field": "solutionImage",
+      "assetPath": "assets/images/22_신흥중_2학기_기말_중3_기출/q17-solution.svg",
+      "reason": "VISUAL_COORDINATE_SEMANTIC_MISMATCH",
+      "observedEvidence": "q17 second chord endpoints are off the circle"
+    },
+    {
+      "qid": 19,
+      "field": "Meta/RPM projection",
+      "reason": "META_CURRENT_CROSSWALK_OVERMAPPING",
+      "observedEvidence": "q19 cyclic-condition composite mapping conflicts with RPM_ONLY/NO_ACTIVE_MAPPING"
+    }
+  ],
+  "structuralEvidenceDebt": [
+    "CALIBRATION_WORK_MODE_INVALID:R3",
+    "CALIBRATION_ORDER_INVALID:R3",
+    "CALIBRATION_REQUIRES_2_OR_3_DISTINCT_GOLDEN_SAMPLES",
+    "GOLDEN_SAMPLE_REF_INCOMPLETE",
+    "NEGATIVE_SAMPLE_REF_INCOMPLETE",
+    "BOKSEONG_FALSE_PASS_NEGATIVE_SAMPLE_REQUIRED"
+  ],
+  "validatorRunId": 37092030443,
+  "validatorJobId": 111114204969,
+  "pullRequest": 170,
+  "productionMutationCount": 0,
+  "mainMutationCount": 0
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_VALIDATOR_RECEIPT_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 68,
+  "examFile": "22_신흥중_2학기_기말_중3_기출.js",
+  "finalArtifactSha": "a8e678354642a70a9d6fd909be61ab6f4ee26163",
+  "physicalEvidenceGitBlob": "e36d3490e144546c156fef0b127434da3cf0fad0",
+  "decisionSnapshotGitBlob": "3f5a29bce654bea208047ac6c8bcf3a192f03744",
+  "validationSurfaceCommit": "b635d9844148bff5388a3d685c806cfc59b4c85e",
+  "pullRequest": 170,
+  "githubActionsRunId": 37092030443,
+  "githubActionsJobId": 111114204969,
+  "targetMarker": "O68_R3_SURGE_CANONICAL_GATE",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "solutionCalibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "result": {
+    "ok": false,
+    "disposition": "FAIL",
+    "questionCount": 22,
+    "questionEvidenceRows": 22,
+    "linkedSolutionVisualCount": 19,
+    "visualEvidenceRows": 19,
+    "metaEvidenceRows": 22,
+    "itemHoldCount": 5,
+    "itemHoldQids": [
+      3,
+      9,
+      12,
+      17,
+      19
+    ],
+    "issues": [
+      "VISUAL_ROW_NOT_PASS:q3",
+      "VISUAL_CHECK_INCOMPLETE:q3:1",
+      "VISUAL_ROW_NOT_PASS:q9",
+      "VISUAL_CHECK_INCOMPLETE:q9:1",
+      "VISUAL_ROW_NOT_PASS:q17",
+      "VISUAL_CHECK_INCOMPLETE:q17:1",
+      "CALIBRATION_WORK_MODE_INVALID:R3",
+      "CALIBRATION_ORDER_INVALID:R3",
+      "CALIBRATION_REQUIRES_2_OR_3_DISTINCT_GOLDEN_SAMPLES",
+      "GOLDEN_SAMPLE_REF_INCOMPLETE",
+      "NEGATIVE_SAMPLE_REF_INCOMPLETE",
+      "BOKSEONG_FALSE_PASS_NEGATIVE_SAMPLE_REQUIRED",
+      "R3_ITEM_HOLD_FORBIDDEN:3,9,12,17,19"
+    ]
+  },
+  "repositoryWideCiConclusion": "failure",
+  "targetGateIndependentOfUnrelatedCi": true
+}
