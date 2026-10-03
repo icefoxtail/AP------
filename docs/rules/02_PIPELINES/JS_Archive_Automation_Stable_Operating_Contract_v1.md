@@ -61,7 +61,7 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 | R2 | 2 | R2 전용 full recheck + regression closure |
 | R3 | 2 | 최종 full audit + same-stage pinpoint repair + release seal |
 | MAIN-MERGE | 1 | clean release backlog publish/main |
-| WATCHDOG | 1 | 5 THANOS와 M2-1 active roster liveness 복구 |
+| WATCHDOG | 1 | 15개 roster liveness/dispatch/conveyor-contract 복구 + 매시간 CURRENT 전광판 갱신 |
 
 ### 1.1 ACTIVE hourly schedule
 
@@ -100,7 +100,18 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 - 사용자 명시 중지/M2-1 종료가 아닌데 peer가 disabled이거나 recurring schedule이 drift하면 peer 또는 WATCHDOG가 복구하고 readback한다.
 - 기존 `MASTER-A/B/C`, `INFINITY-1/2` 이름은 scheduler history이며 current protected roster가 아니다.
 
-### 1.4 dispatch / capability
+### 1.4 WATCHDOG HOURLY STATUS BOARD HARD
+
+- `M2-1 WATCHDOG + 전광판`은 매시 :56에 15개 ACTIVE roster의 enable, hourly RRULE, last_run freshness, conveyor prompt contract를 확인한다.
+- 사용자 명시 중지나 M2-1 종료가 아닌데 OFF면 즉시 re-enable한다. enabled+정상 RRULE인데 expected occurrence를 놓쳐 last_run이 60분을 넘기고 실제 in-flight/recent durable progress가 없으면 `DISPATCH_STALL` 후보로 보고 canonical hourly RRULE을 같은 고정 분에 재결속한 뒤 readback한다.
+- phase-wide `34/34` barrier, 정상 상태의 `CREATE_PHASE_WAIT`, old MASTER/INFINITY topology가 active prompt에 재유입되면 conveyor-contract drift로 보고 최신 EXAM-LEVEL CONVEYOR 계약으로 복구한다.
+- 같은 run 마지막에 기존 Notion `JS Archive 예약 레인 상시 상태판 — CURRENT` **한 페이지를 제자리 갱신**한다. 새 상태판 페이지를 만들지 않는다.
+- 전광판 최소 항목: 기준 KST/latest remote main, 15개 ON/OFF·schedule·last_run·stale, current-generation CREATE/READY_R1/READY_R2/READY_R3/RELEASE/MAIN queue, 최근 1시간 실제 closure/NO_WORK/실패, active/debt target+owner, WATCHDOG 복구 조치, 다음 1시간 우선 target.
+- 단계/완료 수치는 가능한 범위에서 Git physical receipt, finalArtifactSha, remote readback과 CURRENT ledger로 검증한다. 확인 불가 값은 추정하지 않고 `확인 필요`로 표시한다.
+- WATCHDOG 예약 채팅의 final report도 전광판 핵심을 짧게 출력한다. 단순 `LIVENESS PASS` 한 줄 보고로 끝내지 않는다.
+- WATCHDOG은 production exam/artifact를 수정하지 않는다. automation enable/schedule/prompt-contract 복구와 status-board Notion 갱신은 정상 권한이다.
+
+### 1.5 dispatch / capability
 
 - critical slot은 one-shot이 아니라 RRULE recurring schedule을 사용한다.
 - local 경로 하나가 실패해도 전체 capability 부재로 일반화하지 않는다. local/GitHub/Actions/Notion capability를 분리해 확인하고 materially different safe path를 시도한다.
