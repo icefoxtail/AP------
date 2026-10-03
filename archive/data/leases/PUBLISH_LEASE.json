@@ -2,20 +2,20 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "CODEX-MASTER-DIRECTED-M3-O19-L4-20261003T102732+0900",
   "owner": "Codex user-directed RPM L4 main merge",
-  "status": "ACTIVE",
+  "status": "CLOSED",
   "baseMainSha": "42c76d18899a3902f005e8fc6e7d60f5ff6f850f",
   "claimedAt": "2026-10-03T10:27:32+09:00",
   "expiresAt": "2026-10-03T11:57:32+09:00",
-  "lastProgressAt": "2026-10-03T10:27:32+09:00",
+  "lastProgressAt": "2026-10-03T10:30:34+09:00",
   "expectedCompletionGate": "O19_MULTI_FORMULA_L4_MAIN_MERGE_AND_READBACK",
   "scope": "M3:o19:21_금당중_1학기_중간_중3_기출.js:canonical RPM L4 + q14 Meta payload",
-  "result": null,
-  "finalOriginMain": null,
+  "result": "MAIN_META_DONE",
+  "finalOriginMain": "cbb930807132e1217691b1752323a54b24d25dc2",
   "includedOrdinals": [
     19
   ],
   "excludedDebtOrdinals": [],
-  "publishedCommit": null,
+  "publishedCommit": "cbb930807132e1217691b1752323a54b24d25dc2",
   "candidateBatchCommit": "cbb930807132e1217691b1752323a54b24d25dc2",
   "candidateBatchBranch": "codex/rpm-m3-multi-formula-main-merge-20261003-v2",
   "batchManifestBlob": null,
@@ -35,6 +35,14 @@
     "originMainRechecked": "42c76d18899a3902f005e8fc6e7d60f5ff6f850f",
     "mainOperatorThreadIdle": true
   },
-  "firstMissingClosureStep": "FAST_FORWARD_MAIN_TO_RELEASE_CANDIDATE_AFTER_PREPUSH_CAS",
-  "mainMutation": 0
+  "firstMissingClosureStep": "CLOSED",
+  "mainMutation": 1,
+  "closedAt": "2026-10-03T10:30:34+09:00",
+  "mergeReadback": {
+    "mainRef": "cbb930807132e1217691b1752323a54b24d25dc2",
+    "candidateBranch": "codex/rpm-m3-multi-formula-main-merge-20261003-v2",
+    "productionDeltaFiles": 5,
+    "examBlobUnchanged": true,
+    "wholeExamR3Repeated": false
+  }
 }
