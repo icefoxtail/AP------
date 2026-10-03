@@ -1,29 +1,19 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "INFINITY1-PUBLISH-O60-20261003T1039+0900",
-  "owner": "INFINITY-MASTER-1",
-  "status": "CLOSED",
+  "leaseId": "INFINITY2-PUBLISH-O66-20261003T1041+0900",
+  "owner": "INFINITY-MASTER-2",
+  "status": "ACTIVE",
   "baseMainSha": "cbb930807132e1217691b1752323a54b24d25dc2",
-  "claimedAt": "2026-10-03T10:39:00+09:00",
-  "expiresAt": "2026-10-03T12:09:00+09:00",
+  "claimedAt": "2026-10-03T10:41:00+09:00",
+  "expiresAt": "2026-10-03T12:11:00+09:00",
   "targets": [
     {
-      "examUid": "m3/2final/23-pungdeok",
-      "targetReleaseBranch": "release/m3/o60-pungdeok-2final-20261003",
-      "targetReleaseHead": "9dd5f75cbe959e1cc2f4657b14c0674e0c5cdcbc",
-      "targetExamBlob": "c2c18f47c36686a8d0d61de5a8a576a3dea59a23"
+      "examUid": "m3/2final/22-palma",
+      "targetReleaseBranch": "release/m3/o66-palma-2final-20261003-infinity1-v3",
+      "targetReleaseHead": "0ae29f3714d774c96e759787cb97ba89f84c2408",
+      "targetExamBlob": "bef78247ee090a57cbd83f01043ad8ff94df4864"
     }
   ],
-  "cleanBatchBranch": "publish/m3/20261003-1032-o60-infinity2-batch",
-  "cleanBatchCommit": "b80b6b59116787dc5517412a2ad051b285e99e32",
-  "cleanBatchTree": "5d2d60a538db24b8c469a283614feac186c255f7",
-  "cleanBatchFileCount": 13,
-  "cleanBatchCompare": "ahead=1,behind=0,target-only",
-  "mainWriteAttempts": [
-    "update_ref(main): BLOCKED_BY_CONNECTOR_SAFETY"
-  ],
-  "result": "CLEAN_BATCH_READY_MAIN_WRITE_CAPABILITY_BLOCKED_CURRENT_RUN",
-  "firstMissingClosureStep": "MAIN_FAST_FORWARD_OR_EQUIVALENT_MERGE_FROM_CLEAN_BATCH",
-  "mainMutation": 0,
-  "closedAt": "2026-10-03T10:40:00+09:00"
+  "firstMissingClosureStep": "BUILD_CURRENT_MAIN_TARGET_ONLY_BATCH",
+  "mainMutation": 0
 }
