@@ -1,48 +1,19 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "CODEX-MASTER-DIRECTED-M3-O19-L4-20261003T102732+0900",
-  "owner": "Codex user-directed RPM L4 main merge",
-  "status": "CLOSED",
-  "baseMainSha": "42c76d18899a3902f005e8fc6e7d60f5ff6f850f",
-  "claimedAt": "2026-10-03T10:27:32+09:00",
-  "expiresAt": "2026-10-03T11:57:32+09:00",
-  "lastProgressAt": "2026-10-03T10:30:34+09:00",
-  "expectedCompletionGate": "O19_MULTI_FORMULA_L4_MAIN_MERGE_AND_READBACK",
-  "scope": "M3:o19:21_금당중_1학기_중간_중3_기출.js:canonical RPM L4 + q14 Meta payload",
-  "result": "MAIN_META_DONE",
-  "finalOriginMain": "cbb930807132e1217691b1752323a54b24d25dc2",
-  "includedOrdinals": [
-    19
-  ],
+  "leaseId": "INFINITY2-PUBLISH-O60-20261003T1032+0900",
+  "owner": "INFINITY-MASTER-2",
+  "status": "ACTIVE",
+  "baseMainSha": "cbb930807132e1217691b1752323a54b24d25dc2",
+  "claimedAt": "2026-10-03T10:32:00+09:00",
+  "expiresAt": "2026-10-03T12:02:00+09:00",
+  "lastProgressAt": "2026-10-03T10:32:00+09:00",
+  "expectedCompletionGate": "O60_TARGET_ONLY_PUBLISH_AND_REMOTE_PARITY",
+  "scope": "M3:o60:23_풍덕중_2학기_기말_중3_기출.js",
+  "includedOrdinals": [60],
   "excludedDebtOrdinals": [],
-  "publishedCommit": "cbb930807132e1217691b1752323a54b24d25dc2",
-  "candidateBatchCommit": "cbb930807132e1217691b1752323a54b24d25dc2",
-  "candidateBatchBranch": "codex/rpm-m3-multi-formula-main-merge-20261003-v2",
-  "batchManifestBlob": null,
-  "publishedExactBlobs": {
-    "exam": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907",
-    "canonicalMaster": "a4ecfca14d45b5537357b8fbc65998a4e9c3bb11",
-    "rpmScopeView": "545e22f4433e28c574477d0aa85b1960a7078e33",
-    "middle3Crosswalk": "4a4f5a4b4a9aae781235297b5998f4a1e3727cec",
-    "q14MetaPayload": "30ceebfb4b284ec040e55e81bd48f6679f04f2fd",
-    "rulesManifest": "e0713e2df2304bb15953c3440a524a5c42e0d605"
-  },
-  "takeoverChecks": {
-    "previousLeaseHead": "0fc5531ea73c538f00bf4c16930765dce1916640",
-    "previousLeaseExpired": true,
-    "previousLastProgressAt": "2026-10-03T08:54:00+09:00",
-    "noQueuedOrInProgressPublishWorkflow": true,
-    "originMainRechecked": "42c76d18899a3902f005e8fc6e7d60f5ff6f850f",
-    "mainOperatorThreadIdle": true
-  },
-  "firstMissingClosureStep": "CLOSED",
-  "mainMutation": 1,
-  "closedAt": "2026-10-03T10:30:34+09:00",
-  "mergeReadback": {
-    "mainRef": "cbb930807132e1217691b1752323a54b24d25dc2",
-    "candidateBranch": "codex/rpm-m3-multi-formula-main-merge-20261003-v2",
-    "productionDeltaFiles": 5,
-    "examBlobUnchanged": true,
-    "wholeExamR3Repeated": false
-  }
+  "targetReleaseBranch": "release/m3/o60-pungdeok-2final-20261003",
+  "targetReleaseHead": "9dd5f75cbe959e1cc2f4657b14c0674e0c5cdcbc",
+  "targetExamBlob": "c2c18f47c36686a8d0d61de5a8a576a3dea59a23",
+  "firstMissingClosureStep": "BUILD_CURRENT_MAIN_TARGET_ONLY_BATCH",
+  "mainMutation": 0
 }
