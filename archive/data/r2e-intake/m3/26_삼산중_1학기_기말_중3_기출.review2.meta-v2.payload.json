@@ -1223,21 +1223,30 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-03",
       "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-      "primaryMethod": "RPM_PRIMARY_HOLD",
-      "decisiveStep": "인수분해 풀이와 완전제곱식 풀이가 독립 필수 소문항으로 동등 요구",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "META_CANONICAL_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "PROJECTION_NOT_ATTEMPTED",
+      "primaryMethod": "인수분해를 이용한 이차방정식 풀이",
+      "decisiveStep": "첫 필수 소문항의 지정 방법인 인수분해로 이차방정식의 두 근을 구하고, 완전제곱식 풀이는 보조 CrossConcept로 분리한다.",
+      "rpmRecordId": "M3-RPM-032",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "인수분해를 이용한 풀이",
+        "l4": "기본 인수분해"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
       "conditionKeys": [],
-      "integrationPattern": "NONE",
+      "integrationPattern": "SEQUENTIAL",
       "category": "이차방정식",
       "tags": [
         "서술형"
@@ -1256,8 +1265,8 @@
         "legacyLevelAtCompare": "중",
         "rationale": "q21: REVIEW2에서 current source + final solution 기준으로 필수 전략·조건 결합·계산 부담을 blind-first 재판정한 뒤 legacy level과 비교·경계 재검까지 완료."
       },
-      "metadataReviewStatus": "HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "metadataReviewStatus": "TARGETED_REPAIR_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
     },
     {
       "sourceOrdinal": 22,
@@ -1365,25 +1374,32 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-04",
       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "primaryMethod": "RPM_PRIMARY_HOLD",
-      "decisiveStep": "계수식 결정과 사분면 범위 판정이 동등 필수 소문항이라 단일 primary L4 없음",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "META_CANONICAL_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "PROJECTION_NOT_ATTEMPTED",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "ownerPack": null,
+      "primaryMethod": "꼭짓점 조건으로 이차함수 계수 결정",
+      "decisiveStep": "꼭짓점형 y=a(x-2)^2-3을 전개해 b,c를 a의 식으로 정하고, 사분면 범위 조건은 보조 조건으로 분리한다.",
+      "rpmRecordId": "M3-RPM-048",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "그래프와 식",
+        "l4": "계수 결정"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "ownerPack": "H1_FOUNDATION",
       "crossConceptKeys": [
         "CC_VERTEX"
       ],
       "conditionKeys": [
         "COND_RANGE"
       ],
-      "integrationPattern": "NONE",
+      "integrationPattern": "SEQUENTIAL",
       "category": "이차함수와 그래프",
       "tags": [
         "서술형"
@@ -1402,8 +1418,8 @@
         "legacyLevelAtCompare": "상",
         "rationale": "q24: REVIEW2에서 current source + final solution 기준으로 필수 전략·조건 결합·계산 부담을 blind-first 재판정한 뒤 legacy level과 비교·경계 재검까지 완료."
       },
-      "metadataReviewStatus": "HOLD",
-      "metadataDisposition": "META_CANONICAL_HOLD"
+      "metadataReviewStatus": "TARGETED_REPAIR_PASS",
+      "metadataDisposition": "RPM_PRIMARY_BINDING_GAP"
     }
   ],
   "mainMutation": 0
