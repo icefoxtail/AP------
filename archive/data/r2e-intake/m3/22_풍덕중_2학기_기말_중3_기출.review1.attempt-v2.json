@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_ATTEMPT_V2",
+  "stage": "R1",
+  "canonicalOrdinal": 65,
+  "examFile": "22_풍덕중_2학기_기말_중3_기출.js",
+  "examUid": "m3/2final/22-pungdeok",
+  "inputArtifactSha": "c216ebc77557402d242b99d28a3251a5387dda27",
+  "attemptNo": 2,
+  "reviewAttemptId": "R1:m3/2final/22-pungdeok:c216ebc77557402d242b99d28a3251a5387dda27:2",
+  "validationExecutor": "GITHUB_ACTIONS",
+  "validatorPaths": [
+    "archive/tools/solution-calibration-gate.mjs",
+    "archive/tools/review-evidence-gate.mjs"
+  ],
+  "calibration": {
+    "goldenSamplePaths": [
+      "archive/exams/original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "archive/exams/original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js"
+    ],
+    "negativeSamplePath": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sampleReadBeforeTarget": true
+  },
+  "blindDecisionFrozen": true,
+  "status": "REVIEW1_DONE",
+  "blindDecisionSummary": {
+    "answerMath": "25/25 PASS",
+    "sourceImage": "18/18 DIRECT",
+    "curriculum": "25/25 ALLOWED",
+    "visualNecessity": "25/25 AUDITED",
+    "answerMismatches": [],
+    "curriculumViolations": [],
+    "visualRequiredQids": [1,2,3,5,6,7,8,9,10,11,19,20,21],
+    "independentAnswerDigest": "④|②|②|④|⑤|③|④|③|①|①|④|③|⑤|③|①|⑤|⑤|③|②|②|①|B|3,√6|4,23/2,√46/2|45%,positive"
+  },
+  "candidateHead": "1e1d1fb32c665304c526bf3eeba3ebe370dd662d",
+  "finalArtifactSha": "c216ebc77557402d242b99d28a3251a5387dda27",
+  "physicalEvidenceGitBlob": "4337808db9761ceeb37dc20a0afd8025aeb9f1a4",
+  "repairedQids": [6],
+  "firstMissingClosureStep": null,
+  "nextStage": "READY_FOR_REVIEW2",
+  "nextOwner": "R2"
+}
