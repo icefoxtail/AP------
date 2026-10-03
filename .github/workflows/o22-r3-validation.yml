@@ -1,0 +1,18 @@
+name: O22 R3 Canonical Validation
+
+on:
+  push:
+    branches:
+      - validation/m2-o22-r3-20261004-0746
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run O22 canonical R3 gate
+        run: node tests/z-r3-o22-wangui-release-validation.test.js
