@@ -12,7 +12,17 @@
   "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR",
   "claimedAt": "2026-10-03T20:02:00+09:00",
   "expiresAt": "2026-10-03T21:32:00+09:00",
-  "lastProgressAt": "2026-10-03T20:02:00+09:00",
-  "status": "ACTIVE",
-  "claimMode": "SUCCESSOR_CAS_REF"
+  "lastProgressAt": "2026-10-03T20:07:12+09:00",
+  "status": "CLOSED",
+  "closedAt": "2026-10-03T20:07:12+09:00",
+  "claimMode": "SUCCESSOR_CAS_REF",
+  "closure": {
+    "disposition": "PEER_COMPLETED_BEFORE_TARGET_CAS",
+    "peerHead": "25afb5b3dc46fb4aa047514119d79c142a6f7fa3",
+    "peerReceiptStage": "CREATE_DONE",
+    "peerReceiptStatus": "READY_FOR_REVIEW1",
+    "peerValidatorMode": "ACTUAL_NODE_CLI_GITHUB_ACTIONS_PUSH_VALIDATION",
+    "productionMutationCountByThisLease": 0,
+    "note": "Non-fast-forward CAS rejected local test commit because the target advanced. Remote readback showed current-generation physical CREATE closure already completed by the peer."
+  }
 }
