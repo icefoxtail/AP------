@@ -128,8 +128,31 @@ Verification:
 - Required student portal output-envelope regression command passed 32/32 after S4 changes; it covers immutable Original/Saved Paper/MIXED outputs, mode envelopes, identity, and student output access boundaries.
 - Actual browser flow used local mock APIs at desktop and 390px: recent rows and detail modal showed exact IDs and lifecycle/PDF state; PDF retry sent one POST to the exact `/pdf` route; exact student link showed only the selected Assignment; solution output returned to the exact student and Assignment context. At 390px the recent cards stacked without horizontal overflow and the reader retained the compact `돌아가기 / 시험 ▾ / ⋯` controls and clean output body. Menu actions exposed print/PDF and new window; all fixture API requests stayed local.
 
+Commit: `fbec770d9385fc9598533382dbba9e7ed32e0b3a`
+
+## S5 — Navigation / Library / Mobile
+
+Status: PASS
+
+Changes:
+
+- Saved Paper cards now put `시험 | 해설 | 정답 | 출제 | 더보기` in the primary area. The first three actions open standalone, mode-specific Output Envelopes from the exact immutable Saved Paper snapshot. Rename, copy, archive, trash, edit Draft, and detail management sit under `더보기`.
+- Saved Paper issue opens the existing Archive assignment panel inside an Archive 2.0 dialog. The legacy `index.html?savedPaper=...` route remains available for compatibility; Archive 2.0 no longer navigates there as the primary action. If login is needed, that compatibility intent retains its Saved Paper ID and resumes that exact snapshot after login.
+- Saved library tabs, loaded page summaries, cursor, and scroll are attached to the current history entry. Opening a detail route uses `pushState`; Back restores the same tab/list/cursor/scroll from summary metadata. Output snapshots remain server-authoritative and are fetched by exact Saved Paper ID when output is opened.
+- Finder filter and page state remain in the URL; the history entry stores scroll position. Recent filters and class selection remain in the URL, and the exact selected Assignment ID is addressable while its student-status dialog is open. Closing the dialog returns to its filtered row.
+- Finder selection and Saved Paper management actions are secondary under `더보기`. The primary card controls remain accessible with 44px or larger mobile targets.
+
+Verification:
+
+- Targeted Saved Paper library, Assignment handoff, Finder, navigation, and Compose continuity regressions passed 62/62; changed JavaScript syntax checks and `git diff --check` passed. Coverage includes exact immutable mode output, no primary `index.html?savedPaper` link, cursor/detail restoration without output payload storage, login intent retention, URL filter/page/selection state, and Compose's last Saved Paper action.
+- Actual browser flow used a local-only API fixture. At 1440px the Saved Paper card exposed the four primary actions and More menu. At 390px it measured five 44px actions (`시험`, `해설`, `정답`, `출제`, `더보기`), each 54×44px except `더보기` at 51×44px; document scroll width was 390px. Management opened under `더보기`, and tapping outside closed it.
+- Opened the second Saved Paper cursor page, opened an exact Saved Paper detail, and used Back. Both loaded rows and the same cursor context returned without another list fetch. No output snapshot bytes were kept in history state.
+- Opened `해설` from the Saved Paper list at 1440px. The standalone Output Envelope URL carried the exact output request/owner IDs, `mode=sol`, qpp=4, and the fixture’s frozen question, answer, and solution rendered in the existing mixed engine.
+- Opened `출제` at 390px. The Archive 2.0 URL stayed on the library and the existing Assignment selector rendered in a dialog. With the session removed, it displayed the login prompt; completing the local mock login resumed the same Saved Paper ID and showed its class-selection panel. No production API or Assignment POST was sent.
+- Finder page 2 used `?view=find&page=2`; after scrolling to y=700, switching to Saved Paper and using Back returned to `?view=find&page=2` at y=700. Recent date/grade/title filters were reflected in the URL; opening student status added the exact `assignment_id`, and closing it returned to the same filtered recent row.
+
 Commit: pending stage close.
 
-## S5–S6
+## S6 — Final Acceptance
 
 Not started.

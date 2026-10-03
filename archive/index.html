@@ -3031,7 +3031,9 @@ async function doApmathLoginAndOpenAssignTarget(e) {
         if (!data.success) { if (errEl) errEl.innerText = '아이디 또는 비밀번호가 맞지 않습니다.'; return; }
         window.__APMATH_AUTH_MEMORY = { login_id: loginId, raw_password: pw };
         saveApmathSession({ login_id: data.login_id || loginId, id: data.id, name: data.name, role: data.role, session_token: data.session_token || '', expires_at: data.expires_at || '' });
-        if (AssignTarget?.item) openAssignTargetPanel(AssignTarget.item, AssignTarget.qpp);
+        if (AssignTarget?.item?.savedPaperId && !AssignTarget.item.outputSnapshot && window.openArchive2SavedPaperIssue)
+            await window.openArchive2SavedPaperIssue();
+        else if (AssignTarget?.item) openAssignTargetPanel(AssignTarget.item, AssignTarget.qpp);
     } catch(err) {
         if (errEl) errEl.innerText = '서버 연결 실패. 다시 시도하세요.';
     }
@@ -3800,6 +3802,6 @@ window.onload = function () {
 <script src="archive2-source.js"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261003-student-output-s4-1"></script>
-<script src="archive2-entry.js?v=20261003-assignment-continuity-1"></script>
+<script src="archive2-entry.js?v=20261003-navigation-s5-1"></script>
 </body>
 </html>

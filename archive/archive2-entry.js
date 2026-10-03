@@ -3,7 +3,8 @@
   const requested = params.get("archive2Issue");
   const requestedSavedPaper = params.get("savedPaper");
   const embedded =
-    (requested || params.get("unitPastAssign")) && params.get("archive2Embedded") === "1" && parent !== window;
+    (requested || params.get("unitPastAssign") || requestedSavedPaper) &&
+    params.get("archive2Embedded") === "1" && parent !== window;
   const O = window.Archive2Output;
   const ORIGINAL_QPP_VALUES = [4, 6, 8];
   let originalSettings = null,
@@ -179,7 +180,11 @@
     if (!id) return false;
     const authHeader = getIndexAssignmentAuthHeader();
     if (!authHeader) {
-      document.body.innerHTML = `<main style="max-width:640px;margin:40px auto;padding:24px"><h1>교사 로그인 필요</h1><p>저장한 시험지를 배포하려면 먼저 AP Math OS에 교사로 로그인해 주세요.</p><a href="index.html">아카이브 열기</a></main>`;
+      await openAssignTargetPanel({
+        savedPaperId: id,
+        title: "저장한 시험지",
+        grade: "",
+      }, Number(params.get("qpp")) || 4);
       return true;
     }
     try {
@@ -229,7 +234,14 @@
       });
       await openAssignTargetPanel(item, snapshot.meta.qpp);
     } catch (error) {
-      document.body.innerHTML = `<main style="max-width:640px;margin:40px auto;padding:24px"><h1>저장한 시험지를 열지 못했습니다</h1><p role="alert">${String(error.message || "요청에 실패했습니다.").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c])}</p><a href="workspace.html?view=saved">저장한 시험지로 돌아가기</a></main>`;
+      const message = String(error.message || "요청에 실패했습니다.").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+      if (embedded) {
+        document.getElementById("assignTargetModalOverlay")?.classList.add("open");
+        const body = document.getElementById("assignTargetBody");
+        if (body) body.innerHTML = `<div style="padding:36px;text-align:center"><p role="alert">${message}</p><button class="modal-btn-cancel" type="button" onclick="closeModal()">닫기</button></div>`;
+      } else {
+        document.body.innerHTML = `<main style="max-width:640px;margin:40px auto;padding:24px"><h1>저장한 시험지를 열지 못했습니다</h1><p role="alert">${message}</p><a href="workspace.html?view=saved">저장한 시험지로 돌아가기</a></main>`;
+      }
     }
     return true;
   };

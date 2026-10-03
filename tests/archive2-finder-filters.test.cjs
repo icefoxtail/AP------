@@ -364,7 +364,10 @@ test("workspace readUrl and popstate paths reconcile parsed Finder state", () =>
     workspace,
     /state\.find,\s*C\.reconcileFinderFilters\(state\.find, state\.catalog\.taxonomy\)/s,
   );
-  assert.match(workspace, /history\.replaceState\(null, "", url\)/);
+  assert.match(workspace, /function replaceFinderUrlState\(\)\s*\{[\s\S]*?history\.replaceState\(history\.state \|\| \{\}, "", routeUrl\(\)\)/);
+  assert.match(workspace, /url\.searchParams\.set\("page", String\(state\.page\)\)/);
+  assert.match(workspace, /function restoreCurrentHistoryScroll\(\)/);
+  assert.match(workspace, /window\.addEventListener\("popstate"/);
   assert.match(workspace, /window\.addEventListener\("popstate"/);
 });
 test("high1 Finder exam matching is record-level across both approved native 2015 subjects", () => {

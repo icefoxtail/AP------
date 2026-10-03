@@ -141,6 +141,7 @@
     recentRows: [],
     recentClassId: "",
     recentFilters: { from: "", to: "", grade: "", subject: "", query: "" },
+    recentSelectedAssignmentId: "",
     recentLoadVersion: 0,
     recentLoading: false,
     recentError: "",
@@ -148,6 +149,8 @@
     busy: false,
     view: "home",
     page: 0,
+    savedPaperId: "",
+    savedLibraryStatusFilter: "ACTIVE",
     find: { grade: "고1" },
     sources: [],
     filters: { grade: "고1" },
@@ -1268,9 +1271,23 @@
     $("modal").classList.add("original-issue-dialog");
     setOriginalStep(step);
   }
+  function openSavedPaperIssue(id) {
+    const paperId = String(id || "").trim();
+    if (!paperId) throw new Error("출제할 Saved Paper ID를 확인할 수 없습니다.");
+    const url = new URL("index.html", location.href);
+    url.searchParams.set("savedPaper", paperId);
+    url.searchParams.set("archive2Embedded", "1");
+    showDialog(
+      "저장한 시험지 출제",
+      `<p class="muted">Saved Paper ${esc(paperId)}의 immutable snapshot으로 반과 학생을 선택합니다.</p><iframe id="saved-paper-issue-frame" title="저장한 시험지 반·학생 출제" src="${esc(url.href)}"></iframe>`,
+    );
+    $("modal").classList.add("saved-paper-issue-dialog");
+  }
+  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperIssue;
   function originalIssueBusy() {
     return Boolean(
-      $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.(),
+      $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.() ||
+      $("saved-paper-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.(),
     );
   }
   function setOriginalStep(step) {
@@ -1419,8 +1436,13 @@
 
   function renderFind() {
     reconcileFinderSchool(state.find);
-    const exams = findExams(),
-      page = exams.slice(state.page * 18, (state.page + 1) * 18),
+    const exams = findExams();
+    const lastPage = Math.max(0, Math.ceil(exams.length / 18) - 1);
+    if (state.page > lastPage) {
+      state.page = lastPage;
+      replaceFinderUrlState();
+    }
+    const page = exams.slice(state.page * 18, (state.page + 1) * 18),
       detailOpen = matchMedia("(max-width: 700px)").matches ? "" : " open";
     return `<div class="finder-surface"><div class="intro finder-intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
       <section class="panel finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>${finderSearchMarkup(state.find)}${finderActiveMarkup(state.find)}${finderPrimaryFilterMarkup(state.find)}<details class="finder-detail-filters"${detailOpen}><summary>상세 필터</summary>${finderDetailFilterMarkup(state.find)}</details></section>
@@ -1430,7 +1452,7 @@
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions finder-card-actions" role="group" aria-label="${esc(O.displayTitle(e))} 시험·해설·정답·출제·더보기">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></details></div></article>`;
         })
         .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
@@ -1618,11 +1640,11 @@
         return `<article class="compose-saved-continuity-paper" data-saved-paper-id="${esc(id)}">
           <strong>${part}</strong>
           <div class="actions" role="group" aria-label="${part} action">
-            <a class="button-like primary" href="index.html?savedPaper=${encodeURIComponent(id)}">${ids.length > 1 ? `${index + 1}권 출제` : "이 저장본 출제"}</a>
+            ${button("saved-paper-issue", ids.length > 1 ? `${index + 1}권 출제` : "이 저장본 출제", `data-paper-id="${esc(id)}" class="primary"`)}
             ${button("saved-output", "시험", `data-paper-id="${esc(id)}" data-mode="exam" class="small"`)}
             ${button("saved-output", "해설", `data-paper-id="${esc(id)}" data-mode="sol" class="small"`)}
             ${button("saved-output", "정답", `data-paper-id="${esc(id)}" data-mode="ans" class="small"`)}
-            <a class="button-like" href="workspace.html?view=saved&amp;paper_id=${encodeURIComponent(id)}">저장본 보기</a>
+            <details class="compose-saved-continuity-more"><summary>더보기</summary><div>${button("saved-paper-view", "저장본 보기", `data-paper-id="${esc(id)}"`)}</div></details>
           </div>
         </article>`;
       }).join("")}</div>
@@ -1688,7 +1710,7 @@
     if (savedCurrent && state.lastSavedPaperIds.length) {
       const id = state.lastSavedPaperIds[0];
       const label = state.lastSavedPaperIds.length > 1 ? "1권 출제" : "이 저장본 출제";
-      return `<div class="mobile-actions"><a class="button-like primary mobile-saved-paper-assign" href="index.html?savedPaper=${encodeURIComponent(id)}">${label}</a></div>`;
+      return `<div class="mobile-actions">${button("saved-paper-issue", label, `data-paper-id="${esc(id)}" class="primary mobile-saved-paper-assign"`)}</div>`;
     }
     if (!state.selected.length) return "";
     const r = review(),
@@ -1728,7 +1750,7 @@
         <label class="history-subject-filter">과목<select data-recent-filter="subject">${options(History.subjectOptions(state.recentRows, f.grade, C), f.subject, "전체 과목")}</select></label>
         <label class="history-title-filter">제목 검색<input type="search" data-recent-filter="query" value="${esc(f.query)}"></label>
       </div><div id="recent-assignments" aria-live="polite" aria-busy="${state.recentLoading}">${recentAssignmentMarkup()}</div></section>
-      <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
+      <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions history-draft-actions">${button("restore", "이어하기", `data-draft="${i}"`)}<details><summary>더보기</summary>${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</details></div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
   }
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
@@ -1785,6 +1807,7 @@
     }
     // Update only the result host: date/search inputs retain focus and IME state.
     updateRecentResults();
+    replaceUrlState();
   }
   async function loadRecent() {
     const version = ++state.recentLoadVersion;
@@ -1925,7 +1948,11 @@
         button.classList.toggle("active", button.dataset.view === state.view);
         button.setAttribute("aria-current", button.dataset.view === state.view ? "page" : "false");
       });
-      window.Archive2Library.render($("content"), state.savedPaperId || "")
+      window.Archive2Library.render(
+        $("content"),
+        state.savedPaperId || "",
+        state.savedLibraryStatusFilter || "ACTIVE",
+      )
         .then(() => status("저장한 시험지를 불러왔습니다."))
         .catch((error) => {
           $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(error.message || "시험지를 불러오지 못했습니다.")}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
@@ -2345,7 +2372,7 @@
     );
   }
   function showDialog(title, body) {
-    $("modal").classList.remove("original-issue-dialog");
+    $("modal").classList.remove("original-issue-dialog", "saved-paper-issue-dialog");
     $("modal-body").innerHTML =
       `<h2 id="modal-title">${esc(title)}</h2>${body}`;
     if (!$("modal").open) $("modal").showModal();
@@ -2649,15 +2676,99 @@
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
-  function urlState() {
-    const url = new URL(location.href);
-    url.search = "";
+  const FINDER_URL_KEYS = [
+    "grade", "curriculumKey", "courseKey", "semanticSubject", "school",
+    "yearFrom", "yearTo", "axis", "query", "family", "material",
+  ];
+  const RECENT_URL_KEYS = ["from", "to", "grade", "subject", "query"];
+  function routeUrl() {
+    const url = new URL("workspace.html", location.href);
     url.searchParams.set("view", state.view);
-    if (state.view === "find")
-      for (const [k, v] of Object.entries(state.find))
-        if (v) url.searchParams.set(k, v);
-    history.pushState(null, "", url);
+    if (state.view === "find") {
+      for (const key of FINDER_URL_KEYS)
+        if (state.find[key]) url.searchParams.set(key, state.find[key]);
+      if (state.page > 0) url.searchParams.set("page", String(state.page));
+    } else if (state.view === "recent") {
+      for (const key of RECENT_URL_KEYS)
+        if (state.recentFilters[key]) url.searchParams.set(key, state.recentFilters[key]);
+      if (state.recentClassId) url.searchParams.set("class", state.recentClassId);
+      if (state.recentSelectedAssignmentId)
+        url.searchParams.set("assignment_id", state.recentSelectedAssignmentId);
+    } else if (state.view === "saved") {
+      if (state.savedPaperId) url.searchParams.set("paper_id", state.savedPaperId);
+      if (state.savedLibraryStatusFilter !== "ACTIVE")
+        url.searchParams.set("status", state.savedLibraryStatusFilter);
+    } else if (state.view === "compose" && state.editSavedPaperId) {
+      url.searchParams.set("edit_saved_paper", state.editSavedPaperId);
+    }
+    return url;
   }
+  function rememberCurrentHistoryEntry() {
+    if (new URLSearchParams(location.search).get("view") === "saved")
+      window.Archive2Library?.saveContext?.();
+    try {
+      history.replaceState(
+        { ...(history.state || {}), archive2ScrollY: Math.max(0, Number(window.scrollY) || 0) },
+        "",
+        location.href,
+      );
+    } catch {}
+  }
+  function urlState() {
+    rememberCurrentHistoryEntry();
+    history.pushState({ archive2ScrollY: 0 }, "", routeUrl());
+  }
+  function replaceUrlState() {
+    history.replaceState(
+      { ...(history.state || {}), archive2ScrollY: Math.max(0, Number(window.scrollY) || 0) },
+      "",
+      routeUrl(),
+    );
+  }
+  async function openRecentAssignmentStatus(id) {
+    const assignmentId = String(id || "").trim();
+    if (!assignmentId) return;
+    if (state.view === "recent") {
+      rememberCurrentHistoryEntry();
+      state.recentSelectedAssignmentId = assignmentId;
+      history.pushState(
+        { archive2ScrollY: Math.max(0, Number(window.scrollY) || 0), archive2RecentSelection: true },
+        "",
+        routeUrl(),
+      );
+    }
+    await assignmentStatus(assignmentId);
+  }
+  function restoreCurrentHistoryScroll() {
+    const top = Math.max(0, Number(history.state?.archive2ScrollY) || 0);
+    const restore = () => window.scrollTo(0, top);
+    if (typeof requestAnimationFrame === "function") requestAnimationFrame(restore);
+    else restore();
+  }
+  function showSavedLibrary(statusFilter = "ACTIVE") {
+    rememberCurrentHistoryEntry();
+    state.view = "saved";
+    state.savedPaperId = "";
+    state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(statusFilter)
+      ? statusFilter : "ACTIVE";
+    history.pushState({ archive2ScrollY: 0 }, "", routeUrl());
+    render();
+    window.scrollTo(0, 0);
+  }
+  function showSavedPaper(id, statusFilter = state.savedLibraryStatusFilter || "ACTIVE") {
+    const paperId = String(id || "").trim();
+    if (!paperId) return;
+    rememberCurrentHistoryEntry();
+    state.view = "saved";
+    state.savedPaperId = paperId;
+    state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(statusFilter)
+      ? statusFilter : "ACTIVE";
+    history.pushState({ archive2ScrollY: 0, archive2SavedLibraryDetail: true }, "", routeUrl());
+    render();
+    window.scrollTo(0, 0);
+  }
+  window.Archive2WorkspaceShowSavedLibrary = showSavedLibrary;
+  window.Archive2WorkspaceShowSavedPaper = showSavedPaper;
   function newDraft() {
     if (state.saveResultState === "RESULT_UNKNOWN") {
       status("현재 저장 결과를 먼저 확인한 뒤 새 작업을 시작하세요.", true);
@@ -2710,26 +2821,34 @@
     scheduleSave();
   }
   document.addEventListener("click", async (event) => {
+    if (!event.target.closest(".finder-card-more, .compose-saved-continuity-more, .history-draft-actions details"))
+      document.querySelectorAll(".finder-card-more[open], .compose-saved-continuity-more[open], .history-draft-actions details[open]")
+        .forEach((menu) => { menu.open = false; });
     const b = event.target.closest("button");
-    if (!b || b.disabled || state.busy || state.saveBusy) return;
+    const savedPaperAction = ["saved-paper-issue", "saved-paper-view", "saved-output"].includes(b?.dataset?.action);
+    if (!b || b.disabled || ((state.busy || state.saveBusy) && !savedPaperAction)) return;
     try {
       if (b.dataset.view) {
+        if (b.dataset.view === state.view && !(state.view === "saved" && state.savedPaperId))
+          return;
+        rememberCurrentHistoryEntry();
         if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length)
           state.sources = [];
         state.view = b.dataset.view;
         if (state.view === "saved") state.savedPaperId = "";
         urlState();
         render();
+        window.scrollTo(0, 0);
         if (state.view === "recent") await loadRecent();
         return;
       }
       const a = b.dataset.action;
-      if (state.saveResultState === "RESULT_UNKNOWN" && !["save-paper", "saved-output"].includes(a)) {
+      if (state.saveResultState === "RESULT_UNKNOWN" && !["save-paper", "saved-output", "saved-paper-issue", "saved-paper-view"].includes(a)) {
         status("저장 결과를 확인할 때까지 Draft 편집을 잠급니다.", true);
         return;
       }
       if (a === "assignment-status") {
-        await assignmentStatus(b.dataset.assignment);
+        await openRecentAssignmentStatus(b.dataset.assignment);
         return;
       }
       if (a === "assignment-output-direct") {
@@ -2821,7 +2940,14 @@
         return;
       }
       if (a === "close-dialog") {
-        if (!originalIssueBusy()) $("modal").close();
+        if (state.view === "recent" && state.recentSelectedAssignmentId) {
+          if (history.state?.archive2RecentSelection) history.back();
+          else {
+            state.recentSelectedAssignmentId = "";
+            replaceUrlState();
+            $("modal").close();
+          }
+        } else if (!originalIssueBusy()) $("modal").close();
       } else if (a === "home-product") {
         const product = HOME_PRODUCT_REGISTRY.find(
           (item) => item.productKey === b.dataset.productKey,
@@ -2834,13 +2960,16 @@
         const target = product.routeResolver();
         if (target) location.href = String(target);
       } else if (a === "home-grade") {
+        rememberCurrentHistoryEntry();
         state.sources = [];
         state.find = { grade: b.dataset.grade || "" };
         state.view = "find";
         state.page = 0;
         urlState();
         render();
+        window.scrollTo(0, 0);
       } else if (a === "home-search") {
+        rememberCurrentHistoryEntry();
         const query = $("archive-home-query")?.value.trim() || "";
         state.find = query ? { query } : {};
         state.view = "find";
@@ -2848,6 +2977,7 @@
         urlState();
         render();
       } else if (a === "go-compose") {
+        rememberCurrentHistoryEntry();
         const sources = b.dataset.useSources === "true" ? state.sources.slice() : [];
         if (state.selected.length || state.receipts.length || state.sealed) newDraft();
         state.sources = sources;
@@ -2904,8 +3034,11 @@
         urlState();
         render();
       } else if (a === "page-prev") {
-        state.page--;
+        state.page = Math.max(0, state.page - 1);
+        urlState();
         render();
+        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       } else if (a === "material") {
         state.find.material = b.dataset.material;
         reconcileFinderSchool(state.find);
@@ -2914,7 +3047,10 @@
         render();
       } else if (a === "page-next") {
         state.page++;
+        urlState();
         render();
+        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       } else if (a === "source-toggle") {
         const f = state.catalog.exams[Number(b.dataset.exam)].file;
         state.sources = state.sources.includes(f)
@@ -3059,6 +3195,8 @@
         b.dataset.paperId,
         b.dataset.mode || "exam",
       );
+      else if (a === "saved-paper-issue") await openSavedPaperIssue(b.dataset.paperId);
+      else if (a === "saved-paper-view") showSavedPaper(b.dataset.paperId);
       else if (a === "print") await print();
       else if (a === "save-paper") await savePapers();
       else if (a === "assign") await assign();
@@ -3119,12 +3257,14 @@
   document.addEventListener("submit", (event) => {
     if (event.target.id !== "archive-home-search") return;
     event.preventDefault();
+    rememberCurrentHistoryEntry();
     const query = $("archive-home-query")?.value.trim() || "";
     state.find = query ? { query } : {};
     state.view = "find";
     state.page = 0;
     urlState();
     render();
+    window.scrollTo(0, 0);
   });
   document.addEventListener("change", async (event) => {
     if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
@@ -3138,6 +3278,7 @@
       if (el.id === "recent-class") {
         state.recentClassId = el.value;
         updateRecentResults();
+        replaceUrlState();
         return;
       }
       if (el.dataset.recentFilter) {
@@ -3392,16 +3533,22 @@
   });
   window.addEventListener("message", (event) => {
     const frame = $("original-issue-frame");
+    const savedPaperFrame = $("saved-paper-issue-frame");
+    const fromOriginalFrame = Boolean(frame && event.source === frame.contentWindow);
+    const fromSavedPaperFrame = Boolean(savedPaperFrame && event.source === savedPaperFrame.contentWindow);
     if (
       event.origin !== location.origin ||
-      !frame ||
-      event.source !== frame.contentWindow
+      (!fromOriginalFrame && !fromSavedPaperFrame)
     )
       return;
-    if (event.data?.type === "archive2-original-close") $("modal").close();
-    if (event.data?.type === "archive2-original-ready")
+    if (event.data?.type === "archive2-original-close") {
+      $("modal").classList.remove("original-issue-dialog", "saved-paper-issue-dialog");
+      $("modal").close();
+      return;
+    }
+    if (fromOriginalFrame && event.data?.type === "archive2-original-ready")
       frame.contentWindow.setArchive2OriginalSettings?.(state.originalSettings);
-    if (event.data?.type === "archive2-original-saved") {
+    if (fromOriginalFrame && event.data?.type === "archive2-original-saved") {
       const a = event.data.assignment;
       state.originalReceipts = (state.originalReceipts || []).filter(
         (r) => r.id !== a.id,
@@ -3420,7 +3567,7 @@
         .forEach((el) => (el.disabled = true));
       renderOriginalReceipts();
     }
-    if (event.data?.type === "archive2-original-complete") {
+    if (fromOriginalFrame && event.data?.type === "archive2-original-complete") {
       const receiptCount = Number(event.data.receiptCount);
       if (
         $("original-review").hidden &&
@@ -3433,12 +3580,31 @@
   });
   $("modal").addEventListener("cancel", (event) => {
     if (originalIssueBusy()) event.preventDefault();
+    else if (state.view === "recent" && state.recentSelectedAssignmentId) {
+      event.preventDefault();
+      if (history.state?.archive2RecentSelection) history.back();
+      else {
+        state.recentSelectedAssignmentId = "";
+        replaceUrlState();
+        $("modal").close();
+      }
+    }
   });
   window.addEventListener("pagehide", save);
   window.addEventListener("popstate", async () => {
+    const previousSelection = state.recentSelectedAssignmentId;
     readUrl();
+    if ($("modal")?.open && previousSelection !== state.recentSelectedAssignmentId)
+      $("modal").close();
     render();
-    if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
+    if (state.view === "recent") {
+      try {
+        await loadRecent();
+        if (state.recentSelectedAssignmentId)
+          await assignmentStatus(state.recentSelectedAssignmentId);
+      } catch (e) { status(e.message, true); }
+    }
+    restoreCurrentHistoryScroll();
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
@@ -3446,23 +3612,19 @@
       ? p.get("view")
       : "home";
     state.savedPaperId = p.get("paper_id") || "";
+    state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(p.get("status"))
+      ? p.get("status") : "ACTIVE";
     state.editSavedPaperId = p.get("edit_saved_paper") || "";
     state.find = {};
-    for (const k of [
-      "grade",
-      "curriculumKey",
-      "courseKey",
-      "semanticSubject",
-      "school",
-      "yearFrom",
-      "yearTo",
-      "axis",
-      "query",
-      "family",
-      "material",
-    ])
+    for (const k of FINDER_URL_KEYS)
       if (p.has(k)) state.find[k] = p.get(k);
-    state.page = 0;
+    const requestedPage = Number.parseInt(p.get("page") || "0", 10);
+    state.page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 0;
+    state.recentFilters = Object.fromEntries(
+      RECENT_URL_KEYS.map((key) => [key, p.get(key) || ""]),
+    );
+    state.recentClassId = p.get("class") || "";
+    state.recentSelectedAssignmentId = p.get("assignment_id") || "";
     if (state.catalog?.taxonomy) {
       const before = JSON.stringify(state.find);
       Object.assign(
@@ -3475,12 +3637,7 @@
   }
   function replaceFinderUrlState() {
     if (state.view !== "find") return;
-    const url = new URL(location.href);
-    url.search = "";
-    url.searchParams.set("view", state.view);
-    for (const [key, value] of Object.entries(state.find))
-      if (value) url.searchParams.set(key, value);
-    history.replaceState(null, "", url);
+    history.replaceState(history.state || {}, "", routeUrl());
   }
   (async () => {
     readUrl();
@@ -3511,7 +3668,14 @@
         ? "저장한 시험지를 불러왔습니다."
         : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`);
       const previous = drafts();
-      if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
+      if (state.view === "recent") {
+        try {
+          await loadRecent();
+          if (state.recentSelectedAssignmentId)
+            await assignmentStatus(state.recentSelectedAssignmentId);
+        } catch (e) { status(e.message, true); }
+      }
+      restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {
         const sourceId = state.editSavedPaperId;
         status("원본 Saved Paper snapshot을 확인해 새 Draft를 준비하고 있습니다.");

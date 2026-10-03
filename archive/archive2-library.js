@@ -12,6 +12,8 @@
     return Number.isNaN(date.getTime()) ? String(value || "") : new Intl.DateTimeFormat("ko-KR", { dateStyle: "medium" }).format(date);
   };
   const COPY_PENDING_KEY = "archive2.saved-paper-copy-pending.v1";
+  let activeListState = null;
+  let outsideCloseDocument = null;
   const paperMetaLabel = (paper) => [
     paper.grade,
     paper.subject,
@@ -83,9 +85,10 @@
       ? `<button type="button" data-library-action="library-status" data-status="ACTIVE">보관함으로 복원</button>`
       : `<button type="button" data-library-action="library-status" data-status="ARCHIVED">보관</button>`;
     return `<section class="panel saved-paper-detail">
-      <div class="intro"><div><p class="muted"><a href="workspace.html?view=saved">저장한 시험지</a> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div><div class="actions"><a class="button-like primary" href="index.html?savedPaper=${encodeURIComponent(paper.id)}">학생에게 배포</a><a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a><button type="button" data-library-action="copy">정확히 복사</button><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></div>
+      <div class="intro"><div><p class="muted"><button type="button" class="saved-library-back" data-library-action="list">저장한 시험지</button> / ${statusLabel}</p><h1>${esc(title)}</h1><p class="muted">${esc(paperMetaLabel(paper))}</p></div>
+        <div class="actions saved-paper-more-wrap"><button type="button" class="primary" data-library-action="distribute" data-paper-id="${esc(paper.id)}">출제</button><details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu"><a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a><button type="button" data-library-action="copy">정확히 복사</button><button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>${statusAction}<button type="button" data-library-action="list">목록</button></div></details></div></div>
       <div class="actions saved-paper-modes" role="group" aria-label="출력 미리보기">
-        ${[["exam", "문제"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
+        ${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([value, label]) => `<button type="button" data-library-action="mode" data-mode="${value}" class="small ${mode === value ? "active" : ""}">${label}</button>`).join("")}
         <button type="button" data-library-action="print" data-mode="${esc(mode)}" class="small">새 창에서 출력</button>
       </div>
       <iframe class="saved-paper-preview" title="저장한 시험지 미리보기" src="${esc(outputUrl(paper, envelope, mode))}"></iframe>
@@ -96,9 +99,6 @@
     const cards = papers.map((paper) => {
       const status = paper.library_status || "ACTIVE";
       const title = paper.library_display_name || paper.title || "저장한 시험지";
-      const useActions = status === "TRASHED"
-        ? '<span class="muted">휴지통의 시험지는 새 배포와 출력을 할 수 없습니다.</span>'
-        : `<a class="button-like" href="workspace.html?view=saved&paper_id=${encodeURIComponent(paper.id)}">열기</a><button type="button" data-library-action="print" data-paper-id="${esc(paper.id)}" data-mode="exam">출력</button><a class="button-like primary" href="index.html?savedPaper=${encodeURIComponent(paper.id)}">학생에게 배포</a>`;
       const statusAction = status === "ACTIVE"
         ? `<button type="button" data-library-action="library-status" data-paper-id="${esc(paper.id)}" data-status="ARCHIVED">보관</button>`
         : status === "ARCHIVED"
@@ -106,12 +106,23 @@
           : paper.legacy_tombstone
             ? '<span class="muted">기존 삭제 항목은 복원할 수 없습니다.</span>'
             : `<button type="button" data-library-action="library-status" data-paper-id="${esc(paper.id)}" data-status="ACTIVE">복원</button>`;
-      const rename = status === "TRASHED" ? "" : `<button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>`;
-      const deleteButton = status === "TRASHED" ? "" : `<button type="button" data-library-action="delete" data-paper-id="${esc(paper.id)}" class="small danger">휴지통으로</button>`;
+      const useActions = status === "TRASHED"
+        ? `<span class="muted">휴지통 · 새 출력과 출제는 사용할 수 없습니다.</span>`
+        : `<div class="saved-paper-primary-actions" role="group" aria-label="${esc(title)} 시험·해설·정답·출제">
+            ${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => `<button type="button" data-library-action="output" data-paper-id="${esc(paper.id)}" data-mode="${mode}">${label}</button>`).join("")}
+            <button type="button" class="primary" data-library-action="distribute" data-paper-id="${esc(paper.id)}">출제</button>
+          </div>
+          <details class="saved-paper-more"><summary>더보기</summary><div class="saved-paper-more-menu">
+            <button type="button" data-library-action="detail" data-paper-id="${esc(paper.id)}">상세 보기</button>
+            <a class="button-like" href="workspace.html?view=compose&amp;edit_saved_paper=${encodeURIComponent(paper.id)}">수정본 만들기</a>
+            <button type="button" data-library-action="rename" data-paper-id="${esc(paper.id)}">이름 변경</button>
+            ${statusAction}
+            <button type="button" data-library-action="delete" data-paper-id="${esc(paper.id)}" class="danger">휴지통으로</button>
+          </div></details>`;
       return `<article class="saved-paper-card">
         <div class="saved-paper-copy"><h2>${esc(title)}${Number(paper.part_count) > 1 ? ` <span class="badge">${Number(paper.part_index) + 1}권 / ${Number(paper.part_count)}권</span>` : ""}</h2>
         <p class="muted">${esc(paperMetaLabel(paper))} · ${esc(status === "ACTIVE" ? "사용 중" : status === "ARCHIVED" ? "보관" : "휴지통")}</p></div>
-        <div class="actions">${useActions}${rename}${statusAction}${deleteButton}</div>
+        <div class="saved-paper-card-actions">${useActions}</div>
       </article>`;
     }).join("");
     const tabs = [["ACTIVE", "내 보관함"], ["ARCHIVED", "보관"], ["TRASHED", "휴지통"]];
@@ -125,7 +136,7 @@
       ${cursor ? '<div class="actions saved-library-more"><button type="button" data-library-action="more">더 불러오기</button></div>' : ""}</div>`;
   }
 
-  async function render(host, paperId = "", statusFilter = "ACTIVE") {
+  async function render(host, paperId = "", statusFilter = "ACTIVE", options = {}) {
     if (!host) return;
     host.innerHTML = '<div class="panel loading" role="status">저장한 시험지를 불러오고 있습니다.</div>';
     const client = apiClient();
@@ -136,6 +147,25 @@
       const envelope = await preparePreview(paper);
       host.innerHTML = detailMarkup(paper, envelope);
       bind(host, { paper, envelope, paperId, cursor: null, papers: [], statusFilter });
+      return;
+    }
+    const restored = options.forceRefresh || typeof history === "undefined"
+      ? null : history.state?.archive2SavedLibrary;
+    if (restored && restored.statusFilter === statusFilter && Array.isArray(restored.papers)) {
+      const viewState = {
+        paper: null,
+        key: "",
+        paperId: "",
+        cursor: restored.cursor || null,
+        papers: restored.papers,
+        statusFilter,
+      };
+      activeListState = viewState;
+      host.innerHTML = listMarkup(viewState.papers, viewState.cursor, "", statusFilter);
+      bind(host, viewState);
+      const restoreScroll = () => window.scrollTo(0, Math.max(0, Number(restored.scrollY) || 0));
+      if (typeof requestAnimationFrame === "function") requestAnimationFrame(restoreScroll);
+      else restoreScroll();
       return;
     }
     const data = await client.request(
@@ -149,8 +179,30 @@
       papers: data.papers || [],
       statusFilter,
     };
+    activeListState = viewState;
     host.innerHTML = listMarkup(viewState.papers, viewState.cursor, "", statusFilter);
     bind(host, viewState);
+    saveContext(viewState);
+  }
+
+  function saveContext(viewState = activeListState) {
+    if (!viewState || viewState.paperId || typeof history === "undefined") return;
+    const papers = (viewState.papers || []).map((paper) => {
+      const summary = { ...paper };
+      delete summary.snapshot;
+      delete summary.questions;
+      delete summary.mixed_payload_json;
+      return summary;
+    });
+    const context = {
+      statusFilter: viewState.statusFilter || "ACTIVE",
+      papers,
+      cursor: viewState.cursor || null,
+      scrollY: Math.max(0, Number(window.scrollY) || 0),
+    };
+    try {
+      history.replaceState({ ...(history.state || {}), archive2SavedLibrary: context }, "", location.href);
+    } catch {}
   }
 
   async function loadMore(host, viewState) {
@@ -163,10 +215,22 @@
     viewState.cursor = data.next_cursor || null;
     host.innerHTML = listMarkup(viewState.papers, viewState.cursor, "", viewState.statusFilter);
     bind(host, viewState);
+    activeListState = viewState;
+    saveContext(viewState);
   }
 
   function bind(host, viewState) {
+    const ownerDocument = host.ownerDocument || (typeof document === "undefined" ? null : document);
+    if (ownerDocument?.addEventListener && ownerDocument !== outsideCloseDocument) {
+      ownerDocument.addEventListener("click", (event) => {
+        if (event.target.closest?.(".saved-paper-more")) return;
+        ownerDocument.querySelectorAll(".saved-paper-more[open]").forEach((menu) => { menu.open = false; });
+      });
+      outsideCloseDocument = ownerDocument;
+    }
     host.onclick = async (event) => {
+      if (!event.target.closest(".saved-paper-more"))
+        host.querySelectorAll(".saved-paper-more[open]").forEach((menu) => { menu.open = false; });
       const button = event.target.closest("[data-library-action]");
       if (!button) return;
       event.preventDefault();
@@ -176,12 +240,24 @@
       const currentView = viewState.statusFilter || "ACTIVE";
       try {
         if (action === "list") {
-          history.pushState(null, "", "workspace.html?view=saved");
-          await render(document.getElementById("content"), "", currentView);
+          if (typeof history !== "undefined" && history.state?.archive2SavedLibraryDetail) history.back();
+          else if (typeof window.Archive2WorkspaceShowSavedLibrary === "function")
+            window.Archive2WorkspaceShowSavedLibrary(currentView);
+          else await render(document.getElementById("content"), "", currentView);
         } else if (action === "status") {
-          await render(host, "", button.dataset.status || "ACTIVE");
+          if (typeof window.Archive2WorkspaceShowSavedLibrary === "function")
+            window.Archive2WorkspaceShowSavedLibrary(button.dataset.status || "ACTIVE");
+          else await render(host, "", button.dataset.status || "ACTIVE");
         } else if (action === "distribute") {
-          location.href = "index.html?savedPaper=" + encodeURIComponent(id);
+          if (typeof window.Archive2WorkspaceSavedPaperIssue !== "function")
+            throw new Error("저장한 시험지 출제 화면을 열 수 없습니다. 목록에서 다시 시도해 주세요.");
+          await window.Archive2WorkspaceSavedPaperIssue(id);
+        } else if (action === "output") {
+          await openOutput(id, button.dataset.mode || "exam");
+        } else if (action === "detail") {
+          if (typeof window.Archive2WorkspaceShowSavedPaper === "function")
+            window.Archive2WorkspaceShowSavedPaper(id, currentView);
+          else await render(host, id, currentView);
         } else if (action === "more") {
           button.disabled = true;
           await loadMore(host, viewState);
@@ -195,8 +271,8 @@
             { display_name: nextName },
             "PATCH",
           );
-          if (viewState.paperId) await render(host, viewState.paperId);
-          else await render(host, "", currentView);
+          if (viewState.paperId) await render(host, viewState.paperId, currentView);
+          else await render(host, "", currentView, { forceRefresh: true });
         } else if (action === "copy") {
           const paper = viewState.paper;
           if (!paper?.id || !/^[0-9a-f]{64}$/i.test(String(paper.snapshot_hash || "")))
@@ -219,20 +295,21 @@
           delete pending[paper.id];
           if (Object.keys(pending).length) localStorage.setItem(COPY_PENDING_KEY, JSON.stringify(pending));
           else localStorage.removeItem(COPY_PENDING_KEY);
-          history.pushState(null, "", "workspace.html?view=saved&paper_id=" + encodeURIComponent(copyId));
-          await render(host, copyId);
+          if (typeof window.Archive2WorkspaceShowSavedPaper === "function")
+            window.Archive2WorkspaceShowSavedPaper(copyId, currentView);
+          else await render(host, copyId, currentView);
         } else if (action === "library-status") {
           await apiClient().request(
             "/archive-saved-papers/" + encodeURIComponent(id) + "/library",
             { status: button.dataset.status },
             "PATCH",
           );
-          if (viewState.paperId) await render(host, viewState.paperId);
-          else await render(host, "", currentView);
+          if (viewState.paperId) await render(host, viewState.paperId, currentView, { forceRefresh: true });
+          else await render(host, "", currentView, { forceRefresh: true });
         } else if (action === "delete") {
           if (!confirm("이 시험지를 휴지통으로 이동할까요? 학생에게 이미 배포한 시험지와 오답 기록은 그대로 유지됩니다.")) return;
           await apiClient().request("/archive-saved-papers/" + encodeURIComponent(id), undefined, "DELETE");
-          await render(host, "", currentView);
+          await render(host, "", currentView, { forceRefresh: true });
         } else if (action === "mode") {
           const mode = button.dataset.mode;
           const frame = host.querySelector(".saved-paper-preview");
@@ -255,5 +332,5 @@
     };
   }
 
-  return { render, preparePreview, outputUrl, openOutput };
+  return { render, preparePreview, outputUrl, openOutput, saveContext };
 });
