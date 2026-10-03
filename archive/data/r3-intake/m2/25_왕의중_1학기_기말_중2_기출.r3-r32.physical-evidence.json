@@ -1372,8 +1372,8 @@
   "solutionQualityCalibration": {
     "sampleReadBeforeWork": true,
     "calibrationStatus": "PASS",
-    "solutionWorkMode": "R3_RECHECK",
-    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_RECHECK_THEN_COMPARE",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
     "calibrationAxes": [
       "STUDENT_REPRODUCIBILITY",
       "SMALL_BOARD_STRUCTURE",
@@ -1434,6 +1434,7 @@
   },
   "independence": {
     "priorVerdictUsedAsEvidence": false,
+    "freshFromArtifactBytes": true,
     "priorStageCountsUsedAsEvidence": false,
     "recomputedFromSourceCurrentAuthority": true,
     "r3DecisionSnapshotBlob": "81b913262d45233f6eb97b08444ea2cb30175507",
