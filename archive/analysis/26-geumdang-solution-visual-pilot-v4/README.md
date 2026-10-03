@@ -90,4 +90,5 @@ Python facts were computed before drawing. `build_mobile_visuals.py` freezes the
 
 ## Final branch record
 
-Base main at rebase: `cd74c75fb14abf3fd9d9c1cea026a20681576c9e`. Commit and push SHA will be recorded here after the pilot-only branch commit.
+Base main at rebase: `cd74c75fb14abf3fd9d9c1cea026a20681576c9e`.  
+Pilot content commit: `60caff04599e5ec72fad788fe601c38342bedeeb`. The final branch HEAD also contains this pilot report’s closeout update.
