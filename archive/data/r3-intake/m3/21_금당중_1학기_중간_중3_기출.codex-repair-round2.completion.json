@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_REPAIR_COMPLETION_v1",
+  "recordedAtUTC": "2026-10-03T00:10:04Z",
+  "canonicalOrdinal": 19,
+  "repairRound": 2,
+  "status": "CODEX_R3_REPAIR_DONE",
+  "postRepairTargetedCheck": "PASS",
+  "currentStateAfterTargetedClosure": "READY_FOR_CODEX_PUBLISH",
+  "nextOwner": "PUBLISH",
+  "originMainBaseSha": "1c0f07eaa29bf4049f36530e16a782b3f7033657",
+  "originalR3FailPacketBlobSha": "3df39837c91cb17b6d724e35061180cceb987bf7",
+  "priorReviewFailEvidenceCommit": "cb6c936532c25b77f1732a49de46053f51beacd9",
+  "priorScopeExpansionEvidenceCommit": "e30a17f44350f30cf3364cc06fecd7446f2f135c",
+  "scopeUpdateId": "master-directed-o19-r2-m3-multi-formula-l4-20261003",
+  "finalArtifactSha": "sha256:283692bf7fcb4007a287a3ff4e701f346c194dfa1fcaf4dd4e91244fe56f0b05",
+  "finalExamGitBlobSha": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907",
+  "preRepairMetaPayloadGitBlobSha": "7c24df33ea7a055b16dc10856ce340bdfce80929",
+  "finalMetaPayloadSha256": "sha256:39fc2419de8439527f9b3774b8c0c686436762f4fd0be7b8fd2fe9f69108bc45",
+  "finalMetaPayloadGitBlobSha": "30ceebfb4b284ec040e55e81bd48f6679f04f2fd",
+  "productionChangedFiles": [
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json",
+    "docs/rules/MANIFEST.md"
+  ],
+  "changedQids": [
+    14
+  ],
+  "newCanonicalL4": {
+    "rpmRecordId": "M3-RPM-182",
+    "l3": "곱셈공식",
+    "l4": "여러 곱셈공식 비교·판별"
+  },
+  "q14": {
+    "primaryMethod": "여러 곱셈공식의 전개 결과를 비교·판별",
+    "decisiveStep": "합·차의 제곱, 합과 차의 곱, 두 일차식의 곱을 각 보기에서 전개해 좌우 다항식을 비교하고 ③만 일치함을 확인",
+    "rpmRecordId": "M3-RPM-182",
+    "rpmPath": {
+      "curriculum": "2015",
+      "scope": "M3-1",
+      "majorUnit": "다항식의 곱셈과 인수분해",
+      "midUnit": "다항식의 곱셈",
+      "l3": "곱셈공식",
+      "l4": "여러 곱셈공식 비교·판별"
+    },
+    "semanticStatus": "FINAL",
+    "semanticDisposition": "RPM_SEMANTIC_FINAL",
+    "mappingStatus": "RPM_ONLY",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED",
+    "candidateRecordIds": [
+      "M3-RPM-182"
+    ]
+  },
+  "resolver": {
+    "evidenceFile": "archive/data/r3-intake/m3/21_금당중_1학기_중간_중3_기출.codex-repair-round2.q14.rpm-resolution.json",
+    "evidenceSha": "sha256:31edd27f3ebedb8b5ca17ea0fcf61a40d04abda2eff63af575d37f5a7f849968",
+    "inputBundleSha": "sha256:29187fb8b80b399c235c7aa92f5ecf055ce46efe91450dd249a0aa493cb1898c",
+    "validatorReceiptStatus": "PASS",
+    "semanticStatus": "FINAL",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crosswalkRecordId": "M3-RPM-182"
+  },
+  "sourceSolutionCheck": {
+    "expansions": {
+      "choice1": "(a+b)^2=a^2+2ab+b^2 (mismatch)",
+      "choice2": "(a+5)(a-5)=a^2-25 (mismatch)",
+      "choice3": "(a-3)^2=a^2-6a+9 (match)",
+      "choice4": "(a+3)(a-5)=a^2-2a-15 (mismatch)",
+      "choice5": "(2a+1)(2a-3)=4a^2-4a-3 (mismatch)"
+    },
+    "answer": "③"
+  },
+  "closedFailureCodes": [
+    "META_STALE_MULTI_L4_HOLD_Q14",
+    "R3_ITEM_HOLD_FORBIDDEN:14",
+    "META_STALE_MULTI_L4_HOLD_Q18",
+    "R3_ITEM_HOLD_FORBIDDEN:18"
+  ],
+  "remainingFailureCodes": [],
+  "newDirectDefects": [],
+  "lockedScopeMutationCount": 0,
+  "lockedProjectionSha256": "sha256:465ba3303ec95e9b212fe37ee0951839fd8cff92fee71fccf47cad9c86f99a5c",
+  "unrelatedAssetChanges": 0,
+  "scopeExpansionRequired": false,
+  "wholeExamR3Repeated": false,
+  "independentFullExamReviewClaimed": false,
+  "mainMutationPerformed": false
+}

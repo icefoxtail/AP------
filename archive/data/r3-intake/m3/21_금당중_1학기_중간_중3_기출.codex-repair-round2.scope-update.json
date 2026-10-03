@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_REPAIR_SCOPE_UPDATE_v1",
+  "scopeUpdateId": "master-directed-o19-r2-m3-multi-formula-l4-20261003",
+  "recordedAtUTC": "2026-10-03T00:10:04Z",
+  "authorizedBy": "explicit user/master instruction",
+  "userDirective": "여러 곱셈공식 비교·판별- 신규생성해서 완료처리 후 메인에 머지시켜",
+  "originalR3": {
+    "canonicalOrdinal": 19,
+    "packetBlobSha": "3df39837c91cb17b6d724e35061180cceb987bf7",
+    "baselineArtifactSha": "sha256:283692bf7fcb4007a287a3ff4e701f346c194dfa1fcaf4dd4e91244fe56f0b05",
+    "failedQids": [
+      14,
+      18
+    ]
+  },
+  "priorReview": {
+    "round": 1,
+    "verdict": "FAIL",
+    "evidenceCommit": "cb6c936532c25b77f1732a49de46053f51beacd9",
+    "unresolvedQids": [
+      14
+    ],
+    "closedQids": [
+      18
+    ]
+  },
+  "priorScopeExpansion": {
+    "round": 2,
+    "evidenceCommit": "e30a17f44350f30cf3364cc06fecd7446f2f135c",
+    "status": "SCOPE_EXPANSION_REQUIRED"
+  },
+  "newCanonical": {
+    "rpmRecordId": "M3-RPM-182",
+    "curriculum": "2015",
+    "scope": "M3-1",
+    "majorUnit": "다항식의 곱셈과 인수분해",
+    "midUnit": "다항식의 곱셈",
+    "l3": "곱셈공식",
+    "l4": "여러 곱셈공식 비교·판별",
+    "definition": "서로 다른 곱셈공식 형태의 등식이 둘 이상 제시되어 각 식을 전개하고 좌우 다항식의 동치 여부를 비교·판별한다. 단일 공식의 적용이 문항을 결정하면 해당 공식의 기존 L4를 사용한다.",
+    "projectionStatus": "RPM_ONLY / NO_ACTIVE_MAPPING"
+  },
+  "openQids": [
+    14
+  ],
+  "openFiles": [
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json"
+  ],
+  "openFieldsByQid": {
+    "14": [
+      "primaryMethod",
+      "decisiveStep",
+      "rpmRecordId",
+      "rpmPath",
+      "semanticStatus",
+      "semanticDisposition",
+      "holdReason",
+      "mappingStatus",
+      "projectionStatus",
+      "metadataDisposition",
+      "rpmCandidateRecordIds"
+    ]
+  },
+  "openDerivedSummaryFields": [
+    "metadataCanonicalHoldCount",
+    "metadataCanonicalHoldQids",
+    "metadataCanonicalHoldReasons",
+    "semanticFinalCount",
+    "semanticHoldCount",
+    "rpmPrimaryMigrationGapCount",
+    "projectionReuseCount",
+    "projectionBindingPendingCount",
+    "projectionUnmaterializedCount"
+  ],
+  "readOnlyDependencies": [
+    "q14.content",
+    "q14.choices",
+    "q14.answer",
+    "q14.solution"
+  ],
+  "addedResolverCodeChangeRequired": false,
+  "reasonResolverGenericL4Path": true,
+  "noAdditionalQids": true,
+  "lockedScopeMutationCount": 0
+}
