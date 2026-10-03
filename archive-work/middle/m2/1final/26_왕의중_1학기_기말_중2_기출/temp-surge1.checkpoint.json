@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "M2_1_TEMP_SURGE_CONTINUATION_v1",
+  "cohort": "M2_1SEM_34",
+  "lane": "TEMP-SURGE-1",
+  "phase": "TEMP_R1",
+  "ordinal": 18,
+  "examFile": "26_왕의중_1학기_기말_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1final/26_왕의중_1학기_기말_중2_기출.js",
+  "baseMainSha": "d4842784e70654dbc23939f4cced4076dbb51d68",
+  "inputExamBlob": "2138c772054936a5f5307dff497013ed13d50652",
+  "branch": "work/middle/m2/26-wangui-1final-temp-surge1-20261003",
+  "selection": {
+    "latestYearPriority": true,
+    "skippedOrdinal17": {
+      "examFile": "26_팔마중_1학기_기말_중2_기출.js",
+      "reason": "same-stage valid R1 owner branch exists",
+      "ownerRef": "work/middle/m2/26-palma-1final-r1-1-20261003"
+    }
+  },
+  "calibration": {
+    "sampleReadBeforeWork": true,
+    "goldenSampleFiles": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js"
+    ],
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "status": "READ_BEFORE_TARGET_AUDIT"
+  },
+  "audit": {
+    "questionCount": 24,
+    "mathAnswerSolution": "24/24 recomputed from current artifact; no math/answer contradiction found",
+    "curriculum": "24/24 current solution paths reviewed; q24 current main uses middle-school coefficient-ratio reasoning, not determinant/matrix language",
+    "sourceAuthority": {
+      "fullOriginalSourcePdfFound": false,
+      "q16SourcePixel": {
+        "status": "PASS",
+        "assetPath": "archive/assets/images/26_왕의중_1학기_기말_중2_기출/q16.png",
+        "gitBlobSha": "0101c787ed9cbe673a9a5206e976dd3ba6ff7f3e"
+      },
+      "q17SourcePixel": {
+        "status": "PASS",
+        "assetPath": "archive/assets/images/26_왕의중_1학기_기말_중2_기출/q17.png",
+        "gitBlobSha": "4a3c498e088c1c4438ad96057a0d6f1f60a6a800"
+      },
+      "remainingTextSourceParity": "NOT_INDEPENDENTLY_REVERIFIED_WITH_ORIGINAL_PDF"
+    },
+    "deterministicRepairRequired": [
+      {
+        "qid": 2,
+        "failureCode": "SMALLBOARD_ENUMERATION_FAIL",
+        "reason": "content has ㄱ/ㄴ/ㄷ/ㄹ enumeration but solution does not preserve labels as separated line blocks required by current review-evidence gate",
+        "exactRepair": "rewrite only q2 solution enumeration into separate ㄱ. / ㄴ. / ㄷ. / ㄹ. lines; preserve math and answer"
+      },
+      {
+        "qid": 7,
+        "failureCode": "SMALLBOARD_ENUMERATION_FAIL",
+        "reason": "content has ㄱ/ㄴ/ㄷ/ㄹ enumeration but solution does not preserve labels as separated line blocks required by current review-evidence gate",
+        "exactRepair": "rewrite only q7 solution enumeration into separate ㄱ. / ㄴ. / ㄷ. / ㄹ. lines; preserve math and answer"
+      }
+    ]
+  },
+  "closure": {
+    "createDone": false,
+    "review1Done": false,
+    "stageReceiptCreated": false,
+    "validatorReceiptCreated": false,
+    "validationExecutor": "UNAVAILABLE_IN_CURRENT_RUNTIME",
+    "validatorDetail": "current runtime has GitHub read/write connector but no local Node executor and no exposed GitHub workflow-dispatch action for canonical review-evidence-gate",
+    "firstMissingClosureStep": "APPLY_Q2_Q7_DETERMINISTIC_REPAIR_THEN_SOURCE_AUTHORITY_COMPLETE_AND_CANONICAL_CREATE_R1_VALIDATOR",
+    "disposition": "CONTINUATION_CHECKPOINT_ONLY_DO_NOT_TREAT_AS_PASS"
+  }
+}
