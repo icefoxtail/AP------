@@ -14,6 +14,9 @@
   <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.06.19.1">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.06.19.1">
   <title>AP Math OS | 학생 포털</title>
+  <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
+  <script src="../../archive/archive2-output.js?v=20261003-student-review-1"></script>
+  <script src="./archive-review-output.js?v=20261003-student-review-1"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.06.19.1">
   <style>
@@ -745,7 +748,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.09.22.2';
+    const STUDENT_APP_VERSION = '2026.10.03.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1985,15 +1988,27 @@
         return false;
       }
     }
-    function openOmrReview(assignmentId, mode) {
+    async function openOmrReview(assignmentId, mode) {
       const exam = findOmrExam(assignmentId);
-      if (!exam || !isOmrReviewAvailable(exam) || !restoreMixedOmrPayload(exam)) {
-        toast('이 시험지는 원본 문항을 준비하지 못했습니다. 선생님께 다시 출제를 요청해 주세요.');
+      if (!exam || !isOmrReviewAvailable(exam)) {
+        toast('저장된 출제 문항을 확인할 수 없습니다. 시험지 목록을 새로고침한 뒤 다시 열어 주세요.');
         return;
       }
-      const url = buildOmrReviewUrl(exam, mode);
-      if (!url) return toast('시험지 링크를 만들지 못했습니다.');
-      window.open(url, '_blank', 'noopener');
+      // Reserve the tab during the gesture, before the asynchronous IndexedDB write.
+      const popup = window.open('about:blank', '_blank');
+      if (!popup) return toast('팝업을 허용한 뒤 다시 열어 주세요.');
+      try {
+        popup.opener = null;
+        const frozenUrl = await window.StudentArchiveReviewOutput.prepare(
+          exam, mode, window.Archive2Output, window.location.href,
+        );
+        const url = frozenUrl || buildOmrReviewUrl(exam, mode);
+        if (!url) throw new Error('시험지 링크를 만들지 못했습니다.');
+        popup.location.href = url;
+      } catch (error) {
+        popup.close();
+        toast(error.message || '출력을 준비하지 못했습니다. 시험지 목록에서 다시 열어 주세요.');
+      }
     }
     function renderOmrReviewActions(exam) {
       if (!isOmrReviewAvailable(exam)) return '';
