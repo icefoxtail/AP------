@@ -28,6 +28,13 @@ for(const item of items){
   req(coverage && typeof coverage==='object','EXPECTED_FACT_COMPLETENESS_MISSING',ctx);
   if(coverage){
     req(Array.isArray(coverage.sourceConditionCoverage) && coverage.sourceConditionCoverage.length>0,'SOURCE_CONDITION_COVERAGE_MISSING',ctx);
+    if(Array.isArray(coverage.sourceConditionCoverage)){
+      for(const row of coverage.sourceConditionCoverage){
+        req(typeof row.condition==='string' && row.condition.trim().length>0,'SOURCE_CONDITION_TEXT_MISSING',ctx);
+        req(row.result==='PASS','SOURCE_CONDITION_NOT_COVERED',{...ctx,condition:row.condition,result:row.result});
+        req(Array.isArray(row.coveredByFactIds) && row.coveredByFactIds.length>0,'SOURCE_CONDITION_FACT_BINDING_MISSING',{...ctx,condition:row.condition});
+      }
+    }
     req(coverage.decisiveRelationCovered===true,'DECISIVE_RELATION_NOT_COVERED',ctx);
     req(Array.isArray(coverage.uncoveredCriticalConditions),'UNCOVERED_CRITICAL_CONDITIONS_MISSING',ctx);
     if(Array.isArray(coverage.uncoveredCriticalConditions)) req(coverage.uncoveredCriticalConditions.length===0,'UNCOVERED_CRITICAL_CONDITION',{...ctx,conditions:coverage.uncoveredCriticalConditions});
@@ -60,7 +67,13 @@ for(const item of items){
   req(item.pythonCalculatedOutputs && typeof item.pythonCalculatedOutputs==='object','MISSING_PYTHON_OUTPUTS',ctx);
   req(item.coordinateModel && typeof item.coordinateModel==='object','MISSING_COORDINATE_MODEL',ctx);
   req(typeof item.visualSemanticType==='string' && item.visualSemanticType.length>0,'VISUAL_SEMANTIC_TYPE_MISSING',ctx);
-  if(item.visualSemanticType==='COORDINATE_GRAPH'){
+  const structured=Array.isArray(item.structuredExpectedFacts)?item.structuredExpectedFacts:[];
+  const primitiveIds=(Array.isArray(item.actualSvgPrimitives)?item.actualSvgPrimitives:[]).map(p=>String(p.id||'').toLowerCase());
+  const inferredCoordinateGraph =
+    item.visualSemanticType==='COORDINATE_GRAPH' ||
+    structured.some(f=>['line_slope','line_intercept','coordinate_point','axis_scale'].includes(f.type)) ||
+    primitiveIds.some(id=>id.includes('xaxis')||id.includes('yaxis')||id==='seg-xray'||id==='seg-yray');
+  if(inferredCoordinateGraph){
     const frame=item.coordinateFrameEvidence;
     req(frame && typeof frame==='object','COORDINATE_FRAME_EVIDENCE_MISSING',ctx);
     if(frame){
