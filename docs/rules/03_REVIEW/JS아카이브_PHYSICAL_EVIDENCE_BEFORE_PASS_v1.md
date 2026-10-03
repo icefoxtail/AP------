@@ -9,13 +9,13 @@
 - 기존 `blindDecisionSha`, `blindFreezeSha256`, `blindDecisionFrozenBeforeR1Compare` 필드명은 하위 schema 호환을 위해 유지한다. 이 값은 **formal compare/receipt 전에 independent recalculation snapshot이 고정됐음**을 뜻하며 prior 비노출 증명이 아니다.
 - 아래 문서의 blind-order 문구와 충돌하면 이 override가 우선한다.
 
-## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
-- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
-- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
-- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
-- Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
-- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
-- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
+## CURRENT OVERRIDE — 2026-10-03 — R3 SAME-STAGE FINAL REPAIR
+- R3는 시험지 전체를 보는 마지막 전수 release audit이며 동시에 **최종 핀포인트 수리 owner**다.
+- 일반 defect는 `R3_ACTIVE` 안에서 직접 수리하고 `changed/open locus + direct dependency + lockedScopeMutationCount=0`을 재확인해 `R3_PASS → RELEASE_QUEUE`로 닫는다.
+- current artifact만으로 source truth를 확정할 수 없는 원본 PDF/페이지 재확인·재크롭·손상 source asset 건만 `SOURCE_REPAIR_REQUIRED → Codex Source Repair`로 보낸다.
+- Codex Source Repair 완료 뒤 별도 `POST_REPAIR_RECHECK`/fresh independent review stage를 만들지 않는다. 같은 R3 continuation에서 repaired locus + direct dependency + locked scope를 확인해 PASS를 닫는다.
+- `R3_FAIL_DEFERRED`, `CODEX_R3_REPAIR`, `CODEX_INDEPENDENT_REVIEW`, `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 신규 정상 상태로 만들지 않고 기존 durable record만 legacy/HISTORY로 소비한다.
+- 아래 문서의 과거 R3_RETRY/post-R3 repair 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
 
 # JS아카이브 PHYSICAL EVIDENCE BEFORE PASS v1
 
@@ -32,7 +32,7 @@ preflight에는 sample path+SHA+Git blob, sample별 대표 solution 2~5문항의
 
 **현재 review는 context-tolerant다.** target-specific prior answer/solution/verdict를 볼 수 있지만 이를 evidence로 복사하지 않고 source/current artifact에서 다시 계산한다. Golden/Negative Sample은 current attempt의 최종 판정 전에 읽는다.
 
-full CREATE/R1/R2/R3/SOLUTION_UPGRADE는 작업 후 기존 `review-evidence-gate.mjs`에서 final target `qualityCompareCount=N/N`까지 닫는다. post-R3 targeted repair/item recovery는 LOCK을 풀지 않기 위해 full-exam gate를 강제 재실행하지 않고 preflight PASS 후 OPEN locus만 수리하며, 별도 independent recheck가 changed/open locus를 검증한다.
+full CREATE/R1/R2/R3/SOLUTION_UPGRADE는 작업 후 기존 `review-evidence-gate.mjs`에서 final target `qualityCompareCount=N/N`까지 닫는다. R3 same-stage pinpoint repair는 initial full-audit의 LOCK을 풀지 않고 OPEN/changed locus + direct dependency만 다시 검증한다. Source Repair 예외도 repaired locus를 같은 R3 continuation에서 검증하며 별도 independent recheck stage를 요구하지 않는다.
 
 
 ## CURRENT HARD GATE — 2026-10-01 — GOLDEN SAMPLE QUALITY FLOOR
