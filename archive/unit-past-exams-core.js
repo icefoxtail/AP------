@@ -546,6 +546,11 @@
       .trim()
       .replace(/^\[|\]$/g, '')
       .trim();
+    // Canonical Archive2 stores the five-level numeric bucket. This three-level
+    // Unit Past projection follows the canonical legacy comparison matrix only
+    // for filtering/display; source metadata stays numeric and unchanged.
+    if (/^[1-5]$/.test(normalized))
+      return ({ 1: '하', 2: '중', 3: '중', 4: '상', 5: '상' })[normalized];
     return ['하', '중', '상'].includes(normalized) ? normalized : '미분류';
   }
 

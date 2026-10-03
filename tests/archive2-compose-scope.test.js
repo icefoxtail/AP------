@@ -179,6 +179,27 @@ test('고2·고3 browse는 승인된 shared semantic subject source pool을 공�
   }
 });
 
+test('Saved Paper는 51문항을 50문항과 1문항으로 나눈다', async t => {
+  const { w } = configureSaveHarness(t);
+  const first = catalog.records.find(row => row.automatic && row.sourceGrade === '고2' &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  const semanticSubject = core.subjectProjectionForRecord(first, '', catalog.projectionPolicy);
+  const records = catalog.records
+    .filter(row => row.automatic && row.sourceGrade === '고2' &&
+      core.subjectProjectionForRecord(row, '', catalog.projectionPolicy) === semanticSubject &&
+      core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok)
+    .slice(0, 51);
+  assert.equal(records.length, 51);
+  w.state.filters = { grade: '고2', semanticSubject };
+  w.state.selected = records.map(row => ({ ...row }));
+  w.state.prepared = { signature: '' };
+  const papers = await w.prepare();
+  assert.deepEqual(plain(papers.map(paper => paper.questions.length)), [50, 1]);
+  assert.deepEqual(plain(papers.map(paper => paper.index)), [0, 1]);
+  assert.equal(papers[0].meta.title.endsWith('· 1권'), true);
+  assert.equal(papers[1].meta.title.endsWith('· 2권'), true);
+});
+
 test('BASIC selection and final review accept UNKNOWN advanced taxonomy for every grade', () => {
   for (const grade of ['중1', '중2', '중3', '고1', '고2', '고3']) {
     const row = basicRecord(grade);

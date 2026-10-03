@@ -339,6 +339,7 @@
     const meta = {
       title: paper.title, customTitle: paper.title, identityTitle: paper.title, count: questions.length,
       generatedAt: new Date().toISOString(), category: '단원별 기출', grade: profile.grade, gradeLabel: profile.gradeLabel,
+      qpp: Number(getQpp()), includeQr: false,
       scopeLabel: collection?.scopeLabel || '2학기 기말까지', unitKey: unit.key, unitName: unit.name, subject: collection?.course || unit.course, sourceType: 'mixed',
       subUnitKeys: selectedSubUnits.map(item => item.key), subUnits: selectedSubUnits,
       difficultyBuckets: [...new Set(paper.records.map(record => core.getDifficultyBucket(record)))],
@@ -357,6 +358,40 @@
     localStorage.setItem(`mixedMeta_${paper.snapshotKey}`, JSON.stringify(meta));
     return meta;
   }
+  async function prepareOutputEnvelope(paper, questions, meta, mode = 'exam') {
+    const output = window.Archive2Output;
+    if (!output?.publishOutputEnvelope) throw new Error('시험지 출력 모듈을 불러오지 못했습니다. 화면을 새로고침해 주세요.');
+    const signature = JSON.stringify([
+      mode,
+      meta,
+      questions.map(question => [
+        core.getQuestionUid(question),
+        question.sourceFingerprint || question.source_fingerprint || ''
+      ])
+    ]);
+    paper.outputEnvelopeCache ||= {};
+    const cached = paper.outputEnvelopeCache[mode];
+    if (cached?.signature === signature) return cached.envelope;
+    const envelope = await output.publishOutputEnvelope({
+      sourceKind: 'unit-past',
+      sourceId: paper.snapshotKey,
+      mode,
+      questionCount: questions.length,
+      questionUids: questions.map(question => core.getQuestionUid(question)),
+      meta,
+      questions
+    });
+    paper.outputEnvelopeCache[mode] = { signature, envelope };
+    return envelope;
+  }
+  function outputEnvelopeUrl(envelope, preview = false) {
+    const url = window.Archive2Output.outputEnvelopeUrl(
+      'mixed_engine.html', window.location.href, envelope,
+      { studio: true, preview }
+    );
+    if (preview) url.searchParams.set('preview', '1');
+    return url;
+  }
   function appendSessionHash(url) {
     const session = getSession();
     if (!session) return url;
@@ -369,17 +404,6 @@
     const encoded = encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
     return `${url}#apmsess=${encoded}`;
   }
-  function buildMixedUrl(paper, options = {}) {
-    const url = new URL('mixed_engine.html', window.location.href);
-    url.searchParams.set('archive2Context', 'archive2');
-    url.searchParams.set('key', paper.snapshotKey); url.searchParams.set('qpp', getQpp());
-    url.searchParams.set('mode', 'exam'); url.searchParams.set('q', String(paper.count));
-    if (options.submitQr) url.searchParams.set('submitQr', '1');
-    if (options.classId) url.searchParams.set('class', options.classId);
-    if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
-    if (options.className) url.searchParams.set('className', options.className);
-    return url.toString();
-  }
   async function preparePaper(unitKey, paperIndex, button) {
     const unit = getUnit(unitKey); const paper = getPaper(unitKey, paperIndex);
     if (!unit || !paper) throw new Error('문제지를 찾지 못했습니다.');
@@ -391,23 +415,31 @@
     setStatus(`${paper.title} 문항과 이미지 에셋을 불러오는 중입니다.`);
     try {
       const questions = await restorePaperQuestions(paper);
-      storeMixedPayload(unit, paper, questions);
+      const meta = storeMixedPayload(unit, paper, questions);
+      const outputEnvelope = await prepareOutputEnvelope(paper, questions, meta);
       setStatus(`${paper.title} · ${questions.length}문항 준비 완료`);
-      return { unit, paper, questions };
+      return { unit, paper, questions, meta, outputEnvelope };
     } finally {
       state.busyKey = '';
       if (button) { button.disabled = false; button.textContent = oldText; }
     }
   }
   async function printPaper(unitKey, paperIndex, button) {
-    try { const { paper } = await preparePaper(unitKey, paperIndex, button); window.open(appendSessionHash(buildMixedUrl(paper)), '_blank'); }
-    catch (error) { console.error(error); setStatus(error.message || '문제지 준비에 실패했습니다.', true); alert(error.message || '문제지 준비에 실패했습니다.'); }
+    const popup = window.open('about:blank', '_blank');
+    if (!popup) { alert('새 창을 허용한 뒤 다시 출력해 주세요.'); return; }
+    try {
+      const { outputEnvelope } = await preparePaper(unitKey, paperIndex, button);
+      popup.location.href = appendSessionHash(outputEnvelopeUrl(outputEnvelope).href);
+    }
+    catch (error) { popup.close(); console.error(error); setStatus(error.message || '문제지 준비에 실패했습니다.', true); alert(error.message || '문제지 준비에 실패했습니다.'); }
   }
   async function assignPaper(unitKey, paperIndex, button) {
     try {
-      const { unit, paper } = await preparePaper(unitKey, paperIndex, button); const profile = getProfile();
+      const { unit, paper, outputEnvelope } = await preparePaper(unitKey, paperIndex, button); const profile = getProfile();
       const pending = {
         unitPast: true, unitPastSnapshotKey: paper.snapshotKey, identityTitle: paper.title, title: paper.title,
+        outputRequestId: outputEnvelope.outputRequestId, outputOwnerId: outputEnvelope.ownerId,
+        outputMeta: outputEnvelope.meta,
         topic: paper.title, subject: unit.course, grade: profile.grade, qCount: paper.count, count: paper.count,
         source_type: 'mixed', selectionMode: paper.selection?.mode || 'legacy',
         subUnitKeys: paper.selection?.subUnitKeys || [], difficultyBuckets: paper.selection?.difficultyBuckets || [],
@@ -1505,10 +1537,9 @@
     if (!paper || !unit || !frameRoot) return;
     const token = ++state.previewLoadToken;
     try {
-      await preparePaper(unit.key, paper.index, null);
+      const { outputEnvelope } = await preparePaper(unit.key, paper.index, null);
       if (token !== state.previewLoadToken || state.workflowStep !== 4) return;
-      const url = new URL(buildMixedUrl(paper));
-      url.searchParams.set('preview', '1');
+      const url = outputEnvelopeUrl(outputEnvelope, true);
       frameRoot.innerHTML = `<iframe id="unit-preview-iframe" title="${escapeHtml(paper.title)} 실제 문제지 미리보기" src="${escapeHtml(url.toString())}" onload="UnitPastExams.tunePreviewFrame()"></iframe>`;
     } catch (error) {
       if (token !== state.previewLoadToken) return;

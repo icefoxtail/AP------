@@ -8,12 +8,16 @@ const html = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.html'), 'ut
 const js = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.js'), 'utf8');
 const css = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.css'), 'utf8');
 const mixedEngine = fs.readFileSync(path.join(archiveRoot, 'mixed_engine.html'), 'utf8');
+const archiveIndex = fs.readFileSync(path.join(archiveRoot, 'index.html'), 'utf8');
 const fallbackFixture = fs.readFileSync(path.resolve(__dirname, 'fixtures', 'unit-past-exams-fallback.html'), 'utf8');
 
 test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 연결한다', () => {
   assert.match(html, /question-meta\.js/);
   assert.match(html, /unit-past-exams\.css\?v=20260922-semantic-cards/);
   assert.match(html, /question-index\.js\?v=20260827a/);
+  assert.ok(html.indexOf('archive2-canonical.js') < html.indexOf('archive2-core.js'), 'canonical core must load before its browser consumer');
+  assert.ok(html.indexOf('archive2-output-contract.js') < html.indexOf('archive2-output.js'), 'output contract must load before its producer');
+  assert.ok(html.indexOf('archive2-output.js') < html.indexOf('unit-past-exams.js'), 'Unit Past must load the existing Output Envelope producer first');
   assert.match(html, /archive2-core\.js\?v=20260922-shared-semantic/);
   assert.match(html, /unit-past-exams-core\.js\?v=20260922-shared-semantic/);
   assert.match(html, /unit-past-exams\.js\?v=20260922-semantic-cards/);
@@ -53,6 +57,14 @@ test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 �
   assert.match(js, /options\.restore \|\| !state\.filterState/);
   assert.match(js, /core\.getQuestionUid\(question\)/);
   assert.match(js, /core\.isSubUnitInParentScope/);
+  assert.match(js, /prepareOutputEnvelope/);
+  assert.match(js, /sourceKind: 'unit-past'/);
+  assert.match(js, /qpp: Number\(getQpp\(\)\), includeQr: false/);
+  assert.match(js, /outputEnvelopeUrl\(outputEnvelope, true\)/);
+  assert.match(js, /popup\.location\.href = appendSessionHash\(outputEnvelopeUrl\(outputEnvelope\)\.href\)/);
+  assert.match(archiveIndex, /outputMeta\?\.qpp/);
+  assert.match(archiveIndex, /if \(item\?\.outputRequestId && item\?\.outputOwnerId\)/);
+  assert.match(archiveIndex, /sourceKind: 'unit-past'/);
   assert.match(js, /aria-pressed=/);
   assert.match(js, /state\.selectedUnitKey === unit\.key/);
   assert.match(js, /state\.generatedPapers\.length > 1/);

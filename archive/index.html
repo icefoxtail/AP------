@@ -2849,19 +2849,20 @@ function buildAssignTargetPreviewUrl() {
     if (!item) return '';
     const params = new URLSearchParams(window.location.search);
     if (isUnitPastExamItem(item)) {
-        const archive2Envelope = Boolean(item?.savedPaperId && item?.outputRequestId);
+        const archive2Envelope = Boolean(item?.outputRequestId && item?.outputOwnerId);
         const archive2UnitPast = params.get('archive2Embedded') === '1';
         const url = archive2Envelope || archive2UnitPast
             ? window.Archive2Output.engineUrl('mixed_engine.html', window.location.href)
             : new URL('mixed_engine.html', window.location.href);
-        if (item?.savedPaperId && item?.outputRequestId && item?.outputOwnerId) {
+        if (archive2Envelope) {
             url.searchParams.set('outputRequestId', item.outputRequestId);
             url.searchParams.set('outputOwnerId', item.outputOwnerId);
             url.searchParams.set('mode', 'exam');
-            url.searchParams.set('qpp', String(item.outputSnapshot?.meta?.qpp || AssignTarget.qpp || 4));
+            url.searchParams.set('qpp', String(item.outputSnapshot?.meta?.qpp || item.outputMeta?.qpp || AssignTarget.qpp || 4));
             url.searchParams.set('q', String(resolveExamQuestionCountForAssignment(item) || 0));
             url.searchParams.set('studio', '1');
             url.searchParams.set('archive2Review', '1');
+            url.searchParams.set('preview', '1');
             return url.toString();
         }
         url.searchParams.set('key', item.unitPastSnapshotKey);
@@ -3663,6 +3664,46 @@ function goUnitPastMixedEngine(item, action, qpp, options = {}) {
                 window.open(appendCurrentArchiveSessionToHash(url.href), '_blank');
             } catch (error) {
                 alert(error?.message || '저장한 시험지를 출력할 수 없습니다. 보관함에서 다시 열어 주세요.');
+            }
+        })();
+        return;
+    }
+    if (item?.outputRequestId && item?.outputOwnerId) {
+        const popup = window.open('about:blank', '_blank');
+        if (!popup) { alert('새 창을 허용한 뒤 다시 출력해 주세요.'); return; }
+        void (async () => {
+            try {
+                const questions = JSON.parse(localStorage.getItem(`mixedQuestions_${snapshotKey}`) || '[]');
+                const storedMeta = JSON.parse(localStorage.getItem(`mixedMeta_${snapshotKey}`) || '{}');
+                if (!Array.isArray(questions) || !questions.length) throw new Error('단원별 기출 데이터가 만료되었습니다. 단원별 기출 화면에서 다시 준비해 주세요.');
+                const meta = { ...storedMeta, qpp: Number(qpp || storedMeta.qpp || 4) };
+                const envelope = await window.Archive2Output.publishOutputEnvelope({
+                    sourceKind: 'unit-past',
+                    sourceId: snapshotKey,
+                    mode: action || 'exam',
+                    questionCount: questions.length,
+                    questionUids: meta.questionUids || questions.map(question =>
+                        question.questionUid || question.source_question_uid || question._sourceQuestionUid || null
+                    ),
+                    meta,
+                    questions,
+                });
+                const url = window.Archive2Output.outputEnvelopeUrl('mixed_engine.html', window.location.href, envelope, { studio: true });
+                if (options.submitQr) {
+                    url.searchParams.set('submitQr', '1');
+                    url.searchParams.set('assignmentRegistered', '1');
+                    url.searchParams.set('preRegistered', '1');
+                }
+                if (options.classId) url.searchParams.set('class', options.classId);
+                if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
+                if (options.className) url.searchParams.set('className', options.className);
+                if (options.target_scope) url.searchParams.set('target_scope', options.target_scope);
+                if (options.gradeLabel) url.searchParams.set('grade_label', options.gradeLabel);
+                if (options.assignmentBatchId) url.searchParams.set('assignment_batch_id', options.assignmentBatchId);
+                popup.location.href = appendCurrentArchiveSessionToHash(url.href);
+            } catch (error) {
+                popup.close();
+                alert(error?.message || '단원별 기출을 출력할 수 없습니다. 원본에서 다시 열어 주세요.');
             }
         })();
         return;

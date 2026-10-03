@@ -1451,6 +1451,92 @@ try {
     }
     console.log(JSON.stringify({ middle3MidtermClinic: 'PASS', originalAssignments: midterms.length, omrSubmissions: submitted, storedGradeClinics: submitted, pdf: 'EXPECTED_FAILURE_NO_BROWSER_BINDING' }));
   }
+  const guardedSubjectRecords = catalog.records
+    .filter((row) => row.automatic && row.sourceGrade === "고2" &&
+      row.curriculumKey === sharedRecord.curriculumKey &&
+      core.subjectProjectionForRecord(row, "", catalog.projectionPolicy) === semanticSubject &&
+      core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  const guardedCandidateRecords = guardedSubjectRecords;
+  const guardedQuestionCache = new Map();
+  const guardedCandidates = guardedCandidateRecords.map((row) => {
+    if (!guardedQuestionCache.has(row.sourceFile)) {
+      const sourceText = fs.readFileSync(path.join(root, "archive/exams", row.sourceFile), "utf8");
+      guardedQuestionCache.set(row.sourceFile, source.evaluate(sourceText, row.sourceFile));
+    }
+    const question = structuredClone(guardedQuestionCache.get(row.sourceFile)[row.sourceOrdinal - 1]);
+    question.questionUid = row.questionUid;
+    question.sourceArchiveFile = row.sourceFile;
+    question.sourceOrdinal = row.sourceOrdinal;
+    question.sourceQuestionNo = row.sourceQuestionNo;
+    question.sourceFingerprint = row.sourceFingerprint;
+    for (const field of core.META_FIELDS)
+      if (row[field] !== undefined) question[field] = row[field];
+    return { row, question };
+  });
+  const guardedBatch = guardedCandidates
+    .filter(({ question }) => !/assets\/images\//i.test(JSON.stringify(question)))
+    .slice(0, 50);
+  const guardedBatchRecords = guardedBatch.map(({ row }) => row);
+  const guardedQuestions = guardedBatch.map(({ question }) => question);
+  assert.equal(guardedBatchRecords.length, 50, "Saved Paper D1 route regression needs 50 compact approved questions");
+  const savedPaperAssignmentMatrix = [];
+  for (const questionCount of [1, 5, 6, 10, 50]) {
+    const selectedRecords = guardedBatchRecords.slice(0, questionCount);
+    const selectedQuestions = structuredClone(guardedQuestions.slice(0, questionCount));
+    const saveBatchId = crypto.randomUUID();
+    const selectionFilters = {
+      grade: "고2",
+      curriculumKey: selectedRecords[0].curriculumKey,
+      semanticSubject,
+      primaryPaths: [...new Set(selectedRecords.map((row) => core.pathKey(row, 4)))],
+      scopeQuestionUids: selectedRecords.map((row) => row.questionUid),
+    };
+    const prepared = await prepareSavedPaperBatch(savedPaperEnv, {
+      schema_version: SAVED_PAPER_SCHEMA,
+      save_batch_id: saveBatchId,
+      index_version: catalog.indexVersion,
+      selection_filters: selectionFilters,
+      papers: [{
+        part_index: 0,
+        questions: selectedQuestions,
+        meta: {
+          title: `D1 bind regression ${questionCount}`,
+          qpp: 4,
+          questionUids: selectedQuestions.map((question) => question.questionUid),
+        },
+      }],
+    });
+    const paper = prepared.papers[0];
+    const savedPaperId = crypto.randomUUID();
+    await db.prepare(`INSERT INTO archive_saved_papers (
+      id,owner_teacher_id,save_batch_id,part_index,part_count,title,grade,subject,question_count,
+      snapshot_json,snapshot_hash,save_request_hash,source_index_version,schema_version,created_at
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(
+      savedPaperId, "teacher-a", saveBatchId, 0, 1, paper.title, paper.grade, paper.subject,
+      paper.question_count, paper.snapshot_json, paper.snapshot_hash, prepared.requestHash,
+      paper.source_index_version, paper.schema_version, new Date().toISOString(),
+    ).run();
+    const delivery = await post("", {
+      contract_version: "archive2-v1",
+      class_id: "class-h2",
+      student_ids: ["student-h2"],
+      exam_date: "2026-10-03",
+      saved_paper_id: savedPaperId,
+      assignment_batch_id: crypto.randomUUID(),
+    }, "teacher");
+    assert.equal(delivery.body.saved, true, `${questionCount}-question Saved Paper must commit: ${JSON.stringify(delivery)}`);
+    assert.equal(delivery.status, 502, "the local PDF renderer is intentionally unavailable after the Assignment commit");
+    const assignmentRows = await db.prepare(
+      "SELECT COUNT(*) AS n FROM class_exam_assignment_questions WHERE assignment_id=?",
+    ).bind(delivery.body.assignment.id).first();
+    assert.equal(Number(assignmentRows.n), questionCount, `${questionCount}-question Assignment preserves every ordered question`);
+    const blueprintRows = await db.prepare(
+      "SELECT COUNT(*) AS n FROM exam_blueprints WHERE archive_file=?",
+    ).bind(delivery.body.assignment.archive_file).first();
+    assert.equal(Number(blueprintRows.n), questionCount, `${questionCount}-question Saved Paper writes every blueprint row`);
+    savedPaperAssignmentMatrix.push({ questionCount, saved: delivery.body.saved, assignmentId: delivery.body.assignment.id });
+  }
+
   console.log(
     JSON.stringify({
       status: "PASS",
@@ -1475,6 +1561,8 @@ try {
         deliveryResults: savedPaperDeliveries.map(({ browseGrade, saved, status }) => ({ browseGrade, saved, status })),
         canonicalManifestRequestsDuringDelivery: manifestFetchesDuringSavedPaperDelivery,
       },
+      savedPaperAssignmentMatrix,
+      savedPaperAssignmentSizes: "1/5/6/10/50 D1 PASS",
       pdf: "EXPECTED_FAILURE_NO_BROWSER_BINDING",
     }),
   );
