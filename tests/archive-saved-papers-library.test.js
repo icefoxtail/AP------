@@ -336,11 +336,17 @@ test("Saved Paper library starts immutable revision Drafts and retries exact cop
   saved.snapshot_hash = "a".repeat(64);
   const copied = { ...saved, id: copiedId, library_display_name: "frozen output title (복사본)" };
   const local = storage();
+  const session = storage();
   const requests = [];
   let copyPosts = 0;
+  let copyExists = false;
   global.localStorage = local;
   global.location = new URL("https://archive.test/archive/workspace.html?view=saved");
-  global.history = { pushState(_state, _title, url) { global.location = new URL(url, global.location); } };
+  global.history = {
+    state: null,
+    pushState(state, _title, url) { this.state = state; global.location = new URL(url, global.location); },
+    replaceState(state, _title, url) { this.state = state; global.location = new URL(String(url), global.location.href); },
+  };
   global.document = {
     createElement() {
       return { className: "", textContent: "", setAttribute() {}, remove() {} };
@@ -348,17 +354,32 @@ test("Saved Paper library starts immutable revision Drafts and retries exact cop
   };
   global.window = {
     localStorage: local,
+    sessionStorage: session,
+    scrollTo() {},
     crypto: { randomUUID: () => "00000000-0000-4000-8000-000000000043" },
     Archive2Output: outputWithCapture(),
     Archive2Api: {
       async request(route, body, method) {
         requests.push({ route, body, method });
+        if (route === "/archive-saved-papers?limit=20&status=ACTIVE") {
+          const rows = [saved, ...(copyExists ? [copied] : [])].map(row => ({
+            id: row.id, title: row.title, library_display_name: row.library_display_name || row.title,
+            grade: row.grade, subject: row.subject, question_count: row.question_count,
+            created_at: row.created_at, library_status: "ACTIVE",
+          }));
+          return { papers: rows, next_cursor: null };
+        }
         if (route === "/archive-saved-papers/" + sourceId) return { paper: saved };
         if (route === "/archive-saved-papers/" + copiedId) return { paper: copied };
         if (route === "/archive-saved-papers/" + sourceId + "/copy" && method === "POST") {
           copyPosts++;
+          copyExists = true;
           if (copyPosts === 1) throw new Error("reply lost after commit");
-          return { success: true, saved: true, papers: [{ id: copiedId }] };
+          return { success: true, saved: true, papers: [{
+            id: copiedId, title: copied.title, library_display_name: copied.library_display_name,
+            library_status: "ACTIVE", question_count: copied.question_count,
+            grade: copied.grade, subject: copied.subject, created_at: copied.created_at,
+          }] };
         }
         throw new Error("unexpected library API request: " + route);
       },
@@ -366,6 +387,10 @@ test("Saved Paper library starts immutable revision Drafts and retries exact cop
   };
   try {
     const host = { innerHTML: "", prepend() {} };
+    await library.render(host, "", "ACTIVE");
+    const staleListState = structuredClone(global.history.state);
+    global.history.state = { archive2SavedLibraryDetail: true, archive2ScrollY: 0 };
+    global.location = new URL("https://archive.test/archive/workspace.html?view=saved&paper_id=" + sourceId);
     await library.render(host, sourceId);
     assert.match(host.innerHTML, /수정본 만들기/);
     assert.match(host.innerHTML, /edit_saved_paper=/);
@@ -390,6 +415,16 @@ test("Saved Paper library starts immutable revision Drafts and retries exact cop
     assert.deepEqual(copyBodies[1], firstCopyBody);
     assert.match(host.innerHTML, /frozen output title \(복사본\)/);
     assert.equal(local.getItem("archive2.saved-paper-copy-pending.v1"), null);
+    assert.equal(JSON.parse(session.getItem("archive2.saved-paper-list-invalidated.v1")).kind, "insert");
+
+    const readsBeforeBack = requests.filter(request => request.route === "/archive-saved-papers?limit=20&status=ACTIVE").length;
+    global.history.state = staleListState;
+    global.location = new URL("https://archive.test/archive/workspace.html?view=saved");
+    await library.render(host, "", "ACTIVE");
+    const readsAfterBack = requests.filter(request => request.route === "/archive-saved-papers?limit=20&status=ACTIVE").length;
+    assert.equal(readsAfterBack, readsBeforeBack, "copy patches stale list membership before Back");
+    assert.match(host.innerHTML, /frozen output title \(복사본\)/);
+    assert.equal(session.getItem("archive2.saved-paper-list-invalidated.v1"), null);
   } finally {
     if (previous.window === undefined) delete global.window; else global.window = previous.window;
     if (previous.location === undefined) delete global.location; else global.location = previous.location;
@@ -496,5 +531,164 @@ test("Saved Paper cards open each output and assignment directly and restore lis
     if (previous.location === undefined) delete global.location; else global.location = previous.location;
     if (previous.history === undefined) delete global.history; else global.history = previous.history;
     if (previous.requestAnimationFrame === undefined) delete global.requestAnimationFrame; else global.requestAnimationFrame = previous.requestAnimationFrame;
+  }
+});
+
+test("TRASHED cards expose restore only, while legacy tombstones remain non-restorable", async () => {
+  const previous = { window: global.window, location: global.location, history: global.history, confirm: global.confirm };
+  const trashedId = "00000000-0000-4000-8000-000000000081";
+  const legacyId = "00000000-0000-4000-8000-000000000082";
+  const trashed = { ...paper(trashedId, "휴지통 시험지"), library_status: "ACTIVE" };
+  const legacy = { ...paper(legacyId, "기존 삭제 항목"), library_status: "TRASHED", legacy_tombstone: true };
+  const requests = [];
+  const outputApi = outputWithCapture();
+  global.location = new URL("https://archive.test/archive/workspace.html?view=saved&status=TRASHED");
+  global.history = { state: null, replaceState(state) { this.state = state; } };
+  global.confirm = () => true;
+  global.window = {
+    sessionStorage: storage(),
+    Archive2Output: outputApi,
+    Archive2Api: {
+      async request(route, body, method) {
+        requests.push({ route, body, method });
+        if (method === "PATCH") {
+          trashed.library_status = body.status;
+          return { success: true, paper: trashed };
+        }
+        if (method === "DELETE" && route.endsWith("/" + trashedId)) {
+          trashed.library_status = "TRASHED";
+          return { success: true };
+        }
+        if (route.startsWith("/archive-saved-papers?")) {
+          const status = new URLSearchParams(route.split("?")[1]).get("status");
+          return { papers: [trashed, legacy].filter(row => row.library_status === status), next_cursor: null };
+        }
+        if (route.endsWith("/" + trashedId)) return { paper: trashed };
+        if (route.endsWith("/" + legacyId)) return { paper: legacy };
+        throw new Error("unexpected library request: " + route);
+      },
+    },
+  };
+  try {
+    const host = { innerHTML: "", prepend() {} };
+    await library.render(host, "", "ACTIVE");
+    assert.match(host.innerHTML, /data-library-action="delete"/);
+    const deleteButton = { dataset: { libraryAction: "delete", paperId: trashedId } };
+    await host.onclick({ target: { closest: () => deleteButton }, preventDefault() {}, stopPropagation() {} });
+    assert.equal(trashed.library_status, "TRASHED");
+
+    await library.render(host, "", "TRASHED");
+    assert.match(host.innerHTML, new RegExp(`data-library-action="library-status" data-paper-id="${trashedId}" data-status="ACTIVE">복원`));
+    assert.match(host.innerHTML, /기존 삭제 항목은 복원할 수 없습니다/);
+    assert.doesNotMatch(host.innerHTML, /data-library-action="(?:output|distribute|detail|delete|rename)"/);
+    assert.equal(outputApi.envelopes.length, 0);
+    const listOnClick = host.onclick;
+
+    const restore = { dataset: { libraryAction: "library-status", paperId: trashedId, status: "ACTIVE" } };
+    await listOnClick({ target: { closest: () => restore }, preventDefault() {}, stopPropagation() {} });
+    assert.equal(trashed.library_status, "ACTIVE");
+    assert.equal(requests.filter(row => row.method === "PATCH").length, 1);
+    assert.match(host.innerHTML, /기존 삭제 항목/);
+    assert.doesNotMatch(host.innerHTML, new RegExp(trashedId));
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.confirm === undefined) delete global.confirm; else global.confirm = previous.confirm;
+  }
+});
+
+test("detail mutations invalidate the previous Saved Library list cache before Back", async () => {
+  const previous = {
+    window: global.window, location: global.location, history: global.history,
+    localStorage: global.localStorage, document: global.document, confirm: global.confirm,
+  };
+  const scenarios = [
+    { status: "ACTIVE", action: "rename", nextName: "이름 B", expected: "이름 B" },
+    { status: "ACTIVE", action: "library-status", nextStatus: "ARCHIVED", expected: null },
+    { status: "ACTIVE", action: "delete", expected: null },
+  ];
+  try {
+    for (let index = 0; index < scenarios.length; index++) {
+      const scenario = scenarios[index];
+      const id = `00000000-0000-4000-8000-${String(90 + index).padStart(12, "0")}`;
+      const saved = { ...paper(id, "이름 A"), library_display_name: "이름 A", library_status: scenario.status };
+      const session = storage();
+      const requests = [];
+      const location = new URL(`https://archive.test/archive/workspace.html?view=saved&status=${scenario.status}`);
+      global.location = location;
+      global.localStorage = storage();
+      global.confirm = () => true;
+      global.history = {
+        state: null,
+        replaceState(state, _title, url) { this.state = state; global.location = new URL(String(url), global.location.href); },
+      };
+      global.document = { createElement() { return { className: "", textContent: "", setAttribute() {}, remove() {} }; } };
+      global.window = {
+        sessionStorage: session,
+        scrollY: 240,
+        scrollTo() {},
+        prompt: () => scenario.nextName,
+        crypto: { randomUUID: () => "00000000-0000-4000-8000-000000000099" },
+        Archive2Output: outputWithCapture(),
+        Archive2Api: {
+          async request(route, body, method) {
+            requests.push({ route, body, method });
+            if (route.startsWith("/archive-saved-papers?")) {
+              const requestedStatus = new URLSearchParams(route.split("?")[1]).get("status");
+              const rows = saved.library_status === requestedStatus ? [{ ...saved, snapshot: undefined }] : [];
+              return { papers: rows, next_cursor: "cursor-before-mutation" };
+            }
+            if (route === `/archive-saved-papers/${id}` && method === "DELETE") {
+              saved.library_status = "TRASHED";
+              return { success: true };
+            }
+            if (route === `/archive-saved-papers/${id}`) return { paper: saved };
+            if (route === `/archive-saved-papers/${id}/library` && method === "PATCH") {
+              if (body.display_name) saved.library_display_name = body.display_name;
+              if (body.status) saved.library_status = body.status;
+              return { success: true, paper: saved };
+            }
+            throw new Error(`unexpected request ${method || "GET"} ${route}`);
+          },
+        },
+      };
+      const host = { innerHTML: "", prepend() {} };
+      const listRoute = `https://archive.test/archive/workspace.html?view=saved&status=${scenario.status}`;
+      await library.render(host, "", scenario.status);
+      assert.match(host.innerHTML, /이름 A/);
+      const cachedListState = structuredClone(global.history.state);
+      const firstListReads = requests.filter(row => row.route.startsWith("/archive-saved-papers?")).length;
+
+      global.history.state = { archive2SavedLibraryDetail: true, archive2ScrollY: 0 };
+      global.location = new URL(`https://archive.test/archive/workspace.html?view=saved&paper_id=${id}&status=${scenario.status}`);
+      await library.render(host, id, scenario.status);
+      const button = scenario.action === "rename"
+        ? { dataset: { libraryAction: "rename", paperId: id } }
+        : scenario.action === "delete"
+          ? { dataset: { libraryAction: "delete", paperId: id } }
+          : { dataset: { libraryAction: "library-status", paperId: id, status: scenario.nextStatus } };
+      await host.onclick({ target: { closest: () => button }, preventDefault() {}, stopPropagation() {} });
+      assert.ok(session.getItem("archive2.saved-paper-list-invalidated.v1"));
+
+      const listReadsBeforeBack = requests.filter(row => row.route.startsWith("/archive-saved-papers?")).length;
+      global.history.state = cachedListState;
+      global.location = new URL(listRoute);
+      await library.render(host, "", scenario.status);
+      const listReadsAfterBack = requests.filter(row => row.route.startsWith("/archive-saved-papers?")).length;
+      assert.equal(listReadsAfterBack, listReadsBeforeBack, "Back restores the exact patched context without reusing stale rows");
+      assert.equal(session.getItem("archive2.saved-paper-list-invalidated.v1"), null);
+      assert.equal(global.history.state.archive2SavedLibrary.cursor, "cursor-before-mutation");
+      assert.equal(global.history.state.archive2SavedLibrary.scrollY, 240);
+      if (scenario.expected) assert.match(host.innerHTML, new RegExp(scenario.expected));
+      else assert.doesNotMatch(host.innerHTML, new RegExp(id));
+    }
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.localStorage === undefined) delete global.localStorage; else global.localStorage = previous.localStorage;
+    if (previous.document === undefined) delete global.document; else global.document = previous.document;
+    if (previous.confirm === undefined) delete global.confirm; else global.confirm = previous.confirm;
   }
 });

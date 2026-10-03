@@ -1275,14 +1275,18 @@
   function openSavedPaperIssue(id) {
     const paperId = String(id || "").trim();
     if (!paperId) throw new Error("출제할 Saved Paper ID를 확인할 수 없습니다.");
+    state.originalReceipts = [];
+    state.originalPreviewEnvelope = null;
+    state.originalPreviewToken = (state.originalPreviewToken || 0) + 1;
     const url = new URL("index.html", location.href);
     url.searchParams.set("savedPaper", paperId);
     url.searchParams.set("archive2Embedded", "1");
     showDialog(
       "저장한 시험지 출제",
-      `<p class="muted">Saved Paper ${esc(paperId)}의 immutable snapshot으로 반과 학생을 선택합니다.</p><iframe id="saved-paper-issue-frame" title="저장한 시험지 반·학생 출제" src="${esc(url.href)}"></iframe>`,
+      `<div class="original-issue-toolbar"><span>Saved Paper ${esc(paperId)} · immutable snapshot</span><div class="actions">${button("original-review", "시험지 확인", 'disabled aria-pressed="false"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="true"')}</div></div><div id="original-receipts"></div><section id="original-review" hidden><div class="resultbar"><p class="muted">각 반 Assignment의 frozen snapshot을 표시합니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="저장된 Assignment 시험지"></iframe></section><iframe id="saved-paper-issue-frame" title="저장한 시험지 반·학생 출제" src="${esc(url.href)}"></iframe>`,
     );
     $("modal").classList.add("saved-paper-issue-dialog");
+    setOriginalStep("targets");
   }
   window.Archive2WorkspaceSavedPaperIssue = openSavedPaperIssue;
   function originalIssueBusy() {
@@ -1293,9 +1297,10 @@
   }
   function setOriginalStep(step) {
     $("original-review").hidden = step !== "review";
-    $("original-issue-frame").hidden = step !== "targets";
-    document.querySelector('[data-action="original-review"]').setAttribute("aria-pressed", String(step === "review"));
-    document.querySelector('[data-action="original-targets"]').setAttribute("aria-pressed", String(step === "targets"));
+    const issueFrame = $("original-issue-frame") || $("saved-paper-issue-frame");
+    if (issueFrame) issueFrame.hidden = step !== "targets";
+    document.querySelector('[data-action="original-review"]')?.setAttribute("aria-pressed", String(step === "review"));
+    document.querySelector('[data-action="original-targets"]')?.setAttribute("aria-pressed", String(step === "targets"));
     $("modal").scrollTop = 0;
     // Equal-slot layout requires measurable width. A hidden iframe cannot
     // render; refresh only after the review panel becomes visible.
@@ -3583,7 +3588,7 @@
     }
     if (fromOriginalFrame && event.data?.type === "archive2-original-ready")
       frame.contentWindow.setArchive2OriginalSettings?.(state.originalSettings);
-    if (fromOriginalFrame && event.data?.type === "archive2-original-saved") {
+    if ((fromOriginalFrame || fromSavedPaperFrame) && event.data?.type === "archive2-original-saved") {
       const a = event.data.assignment;
       state.originalReceipts = (state.originalReceipts || []).filter(
         (r) => r.id !== a.id,
@@ -3602,15 +3607,18 @@
         .forEach((el) => (el.disabled = true));
       renderOriginalReceipts();
     }
-    if (fromOriginalFrame && event.data?.type === "archive2-original-complete") {
+    if ((fromOriginalFrame || fromSavedPaperFrame) && event.data?.type === "archive2-original-complete") {
       const receiptCount = Number(event.data.receiptCount);
       if (
         $("original-review").hidden &&
         Number.isInteger(receiptCount) &&
         receiptCount > 0 &&
         state.originalReceipts?.length === receiptCount
-      )
+      ) {
+        if (fromSavedPaperFrame)
+          document.querySelector('[data-action="original-review"]')?.removeAttribute("disabled");
         setOriginalStep("review");
+      }
     }
   });
   $("modal").addEventListener("cancel", (event) => {
