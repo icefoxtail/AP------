@@ -278,9 +278,12 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
   if (classScope !== null) {
     const scopedAssignmentIds = new Set(scopedAssignmentRows.map(row => String(row.id || '')));
     const scopedExamKeys = new Set(scopedAssignmentRows.map(buildOmrSessionKey));
-    sessionRows = sessionRows.filter(row => row.assignment_id
-      ? scopedAssignmentIds.has(String(row.assignment_id))
-      : scopedExamKeys.has(buildOmrSessionKey(row)));
+    const scopedClassIds = new Set(classScope);
+    sessionRows = sessionRows.filter(row => {
+      if (row.assignment_id) return scopedAssignmentIds.has(String(row.assignment_id));
+      const sessionClassId = String(row.class_id || '');
+      return Boolean(sessionClassId && scopedClassIds.has(sessionClassId) && scopedExamKeys.has(buildOmrSessionKey(row)));
+    });
   }
   sessionRows.forEach(row => {
     if (row.assignment_id) sessionByAssignment.set(String(row.assignment_id), row);

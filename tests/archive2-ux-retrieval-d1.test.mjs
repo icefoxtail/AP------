@@ -63,7 +63,7 @@ export default { async fetch(request, env) {
       )`,
       `CREATE TABLE exam_sessions(
         id TEXT PRIMARY KEY,student_id TEXT,assignment_id TEXT,exam_title TEXT,exam_date TEXT,
-        question_count INTEGER,archive_file TEXT,updated_at TEXT,created_at TEXT,score REAL,wrong_ids TEXT
+        question_count INTEGER,archive_file TEXT,updated_at TEXT,created_at TEXT,score REAL,wrong_ids TEXT,class_id TEXT
       )`,
       `CREATE TABLE students(
         id TEXT PRIMARY KEY,name TEXT,grade TEXT,school_name TEXT,student_pin TEXT,status TEXT
@@ -188,6 +188,12 @@ export default { async fetch(request, env) {
       VALUES(?,?,?,?,?,?,?,?,?,?,?)`).bind(
       "session-class-2", "student-a", "assignment-class-2", "두 반 공통 시험", "2026-09-30", 1,
       "original/shared-class-exam.js", "2026-10-01T00:00:00.000Z", "2026-10-01T00:00:00.000Z", 1, "[]",
+    ).run();
+    await db.prepare(`INSERT INTO exam_sessions
+      (id,student_id,assignment_id,exam_title,exam_date,question_count,archive_file,updated_at,created_at,score,wrong_ids,class_id)
+      VALUES(?,?,?,?,?,?,?,?,?,?,?,?)`).bind(
+      "session-class-2-legacy", "student-a", null, "두 반 공통 시험", "2026-09-30", 1,
+      "original/shared-class-exam.js", "2026-10-02T00:00:00.000Z", "2026-10-02T00:00:00.000Z", 1, "[]", "class-2",
     ).run();
     for (const [id, title] of [
       ["class1-cancelled-submitted", "반 1 취소 제출"],
