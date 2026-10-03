@@ -1,0 +1,1290 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "CREATE",
+  "examPath": "archive/exams/original/middle/m2/1final/26_신흥중_1학기_기말_중2_기출.js",
+  "examSha256": "sha256:66486935b2ea040e6b2e7f3567bb661cfc52e20271da5b60db6ad2c35bc03504",
+  "questionCount": 23,
+  "provenance": {
+    "cohort": "M2_1SEM_34",
+    "ordinal": 20,
+    "owner": "M2-1 INFINITY-1",
+    "baseMainSha": "d4842784e70654dbc23939f4cced4076dbb51d68",
+    "inputArtifactGitBlob": "3ab151b96338b52c8982a48f71c44779dc65dea0",
+    "solutionRewrite": "FULL_ALL_QUESTIONS",
+    "protectedFieldMutationCount": 0
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "FRESH_REWRITE_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다",
+        "observation": "내분점→중점→거리 순서와 중간식을 분리한 재현성 기준을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$",
+        "observation": "평행 조건→기울기→점 대입의 이유-계산 연결을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A",
+        "observation": "좌표 차→거리 공식→제곱근 정리의 단계 밀도를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y",
+        "observation": "각 직선을 기울기 꼴로 정리한 뒤 수직 조건을 적용하는 구조를 확인했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "qualityCompareCount": "23/23",
+    "calibrationNotes": "Golden 2종과 복성고 false-PASS 회귀를 읽고 23문항의 재현성·작은칠판·설명밀도·시각의미·가독성을 비교했다."
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q1 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "자연수 조건에서 y=1,x=2로 유일해 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 자연수 조건에서 y=1,x=2로 유일해 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-4.1.1/L4-4.1.1.2 대입법를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q1의 실제 단계 수·조건 결합을 재판정했으며 '하' 수준과 핵심 개념 중심의 기본 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q2 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "2a+7=3에서 a=-2, ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 2a+7=3에서 a=-2, ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.1/L4-5.1.1.1 함숫값를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q2의 실제 단계 수·조건 결합을 재판정했으며 '하' 수준과 핵심 개념 중심의 기본 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q3 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "기울기 -6/3=-2, ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 기울기 -6/3=-2, ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.2/L4-5.1.2.1 기울기·절편를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q3의 실제 단계 수·조건 결합을 재판정했으며 '하' 수준과 핵심 개념 중심의 기본 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q4 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "세로선 x=1, ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 세로선 x=1, ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "기존 문제 image q04.png 참조를 그대로 보존했고, 세로선 x=1 판독은 별도 해설 SVG 없이도 재현 가능하다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.2.1/L4-5.2.1.2 축에 평행한 직선를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q4의 실제 단계 수·조건 결합을 재판정했으며 '하' 수준과 핵심 개념 중심의 기본 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q5 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "음의 기울기는 ㄴ만 해당, ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 음의 기울기는 ㄴ만 해당, ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "ㄱ/ㄴ/ㄷ/ㄹ을 각각 독립 줄 블록으로 분리했다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.3/L4-5.1.3.2 증가·감소를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q5의 실제 단계 수·조건 결합을 재판정했으며 '하' 수준과 핵심 개념 중심의 기본 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q6 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "y=3,x=5, 합8, ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: y=3,x=5, 합8, ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-4.1.1/L4-4.1.1.1 가감법를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q6의 실제 단계 수·조건 결합을 재판정했으며 '하' 수준과 핵심 개념 중심의 기본 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q7 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "함수는 ㄴ,ㄷ, ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 함수는 ㄴ,ㄷ, ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "ㄱ/ㄴ/ㄷ/ㄹ을 각각 독립 줄 블록으로 분리했다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.1/L4-5.1.1.2 함수 판별를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q7의 실제 단계 수·조건 결합을 재판정했으며 '하' 수준과 핵심 개념 중심의 기본 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q8 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "a/2=4와 다른 절편으로 a=8, ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: a/2=4와 다른 절편으로 a=8, ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.2.2/L4-5.2.2.2 평행·일치를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q8의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q9 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "(k-1)/8=5/4에서 k=11, ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: (k-1)/8=5/4에서 k=11, ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q9의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q10 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "교점 (3,-2), 합1, ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 교점 (3,-2), 합1, ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.2.2/L4-5.2.2.1 교점과 연립방정식를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q10의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q11 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "공통해 (-1,-3), a=-8,b=6, 합-2, ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 공통해 (-1,-3), a=-8,b=6, 합-2, ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-4.1.2/L4-4.1.2.2 계수 결정를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q11의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q12 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "(6,0),(0,-4)의 기울기 2/3, ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: (6,0),(0,-4)의 기울기 2/3, ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q12의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q13 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "상방향8 이동 후 k=-4, ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 상방향8 이동 후 k=-4, ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.2/L4-5.1.2.2 그래프를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q13의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q14 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "기울기1/3, 절편6, f(1)=19/3, ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 기울기1/3, 절편6, f(1)=19/3, ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q14의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q15 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "18-6×1.7=7.8, ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 18-6×1.7=7.8, ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.1/L4-5.1.1.1 함숫값를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q15의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q16 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x=9,y=3에서 a=21, ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: x=9,y=3에서 a=21, ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-4.1.2/L4-4.1.2.1 해가 주어진 연립방정식를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q16의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q17 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "카드11명·현금16명, 차5, ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 카드11명·현금16명, 차5, ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-4.2.1/L4-4.2.1.2 개수·가격를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q17의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q18 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "밑변10·높이4, 넓이20, ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 밑변10·높이4, 넓이20, ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.2.3/L4-5.2.3.1 넓이를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q18의 실제 단계 수·조건 결합을 재판정했으며 '상' 수준과 다단계 조건 결합이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q19 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "2≤46/(a+13)≤3에서 자연수 a=3~10, 8개, ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 2≤46/(a+13)≤3에서 자연수 a=3~10, 8개, ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.2.3/L4-5.2.3.2 조건에 따른 식 결정를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q19의 실제 단계 수·조건 결합을 재판정했으며 '상' 수준과 다단계 조건 결합이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q20 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "동일직선 계수비로 a=4,b=14, 합18, ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 동일직선 계수비로 a=4,b=14, 합18, ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-4.1.4/L4-4.1.4.1 해가 무수히 많은 경우를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q20의 실제 단계 수·조건 결합을 재판정했으며 '상' 수준과 다단계 조건 결합이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q21 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "가감법으로 x=1,y=-2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: 가감법으로 x=1,y=-2."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 식과 계산·결론이 별도 줄로 이어져 중간 점프가 없다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-4.1.1/L4-4.1.1.1 가감법를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q21의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q22 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "y=-3x/2+410, y=140에서 x=180."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: y=-3x/2+410, y=140에서 x=180."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "(1)/(2)를 각각 독립 문단으로 분리하고 중간 계산과 결론을 분리했다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q22의 실제 단계 수·조건 결합을 재판정했으며 '중' 수준과 표준 응용의 연속 계산이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "입력 main blob 3ab151b96338b52c8982a48f71c44779dc65dea0의 q23 content/choices/answer/image를 mutation scope에서 잠그고 최종 candidate에서 불변을 기계 비교했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "AB=14, a=6,b=144."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 문항에서 독립 재계산 후 fresh solution으로 재작성했고 answer와 일치: AB=14, a=6,b=144."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "(1)/(2)를 각각 독립 문단으로 분리하고 중간 계산과 결론을 분리했다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 연립일차방정식·일차함수 및 하위 개념만 사용하고 상위 과정 방법을 사용하지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수식·문장만으로 재현 가능하며 필수 solutionImage가 필요한 위상 의존 단계가 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "2022 M2-1 RPM Primary L3-5.2.3/L4-5.2.3.1 넓이를 조회했다. ACTIVE canonical packs 목록에는 middle2 전용 PT/TPL pack이 없어 임의 production key를 만들지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "q23의 실제 단계 수·조건 결합을 재판정했으며 '상' 수준과 다단계 조건 결합이 일치한다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "최종 candidate의 JSON-decoded runtime 문자열을 검사해 high-signal TeX doubled backslash가 없음을 확인했다."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "자연수 해 조건 대입",
+      "decisiveStep": "자연수 조건으로 가능한 순서쌍 확정",
+      "rpmDisposition": "L3-4.1.1/L4-4.1.1.2 대입법",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "함숫값 대입",
+      "decisiveStep": "f(2)=3으로 계수 결정",
+      "rpmDisposition": "L3-5.1.1/L4-5.1.1.1 함숫값",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "기울기 계산",
+      "decisiveStep": "증가량 비를 보기와 비교",
+      "rpmDisposition": "L3-5.1.2/L4-5.1.2.1 기울기·절편",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "축 평행 직선 판독",
+      "decisiveStep": "일정한 x좌표를 방정식으로 연결",
+      "rpmDisposition": "L3-5.2.1/L4-5.2.1.2 축에 평행한 직선",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "기울기 부호 판정",
+      "decisiveStep": "보기별 x계수 부호 판정",
+      "rpmDisposition": "L3-5.1.3/L4-5.1.3.2 증가·감소",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "가감법",
+      "decisiveStep": "x항 소거 후 y 계산",
+      "rpmDisposition": "L3-4.1.1/L4-4.1.1.1 가감법",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "함수 정의 판정",
+      "decisiveStep": "x 하나에 y 하나인지 판정",
+      "rpmDisposition": "L3-5.1.1/L4-5.1.1.2 함수 판별",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "두 직선 평행",
+      "decisiveStep": "기울기 일치·절편 불일치 확인",
+      "rpmDisposition": "L3-5.2.2/L4-5.2.2.2 평행·일치",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "두 점의 기울기",
+      "decisiveStep": "두 점 기울기를 주어진 기울기와 같게 둠",
+      "rpmDisposition": "L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "교점과 연립",
+      "decisiveStep": "두 함수식을 같게 놓아 교점 계산",
+      "rpmDisposition": "L3-5.2.2/L4-5.2.2.1 교점과 연립방정식",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "공통해로 계수 결정",
+      "decisiveStep": "공통해 후 a,b 식 대입",
+      "rpmDisposition": "L3-4.1.2/L4-4.1.2.2 계수 결정",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "절편 두 점 기울기",
+      "decisiveStep": "축 교점 두 점으로 기울기 계산",
+      "rpmDisposition": "L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "그래프 평행이동",
+      "decisiveStep": "상하 이동 후 점 대입",
+      "rpmDisposition": "L3-5.1.2/L4-5.1.2.2 그래프",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "두 점으로 식 구하기",
+      "decisiveStep": "기울기·절편 후 함숫값 계산",
+      "rpmDisposition": "L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "일차함수 상황 해석",
+      "decisiveStep": "높이와 기온의 일정 변화율 적용",
+      "rpmDisposition": "L3-5.1.1/L4-5.1.1.1 함숫값",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "비례상수 대입",
+      "decisiveStep": "x:y=3:1로 x,y 결정 후 a 계산",
+      "rpmDisposition": "L3-4.1.2/L4-4.1.2.1 해가 주어진 연립방정식",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "개수·가격 활용",
+      "decisiveStep": "인원·총요금 연립식 가감",
+      "rpmDisposition": "L3-4.2.1/L4-4.2.1.2 개수·가격",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "그래프 넓이",
+      "decisiveStep": "세 직선에서 밑변·높이 산출",
+      "rpmDisposition": "L3-5.2.3/L4-5.2.3.1 넓이",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "교점 구간 조건",
+      "decisiveStep": "교점 x좌표를 선분 구간 부등식으로 제한",
+      "rpmDisposition": "L3-5.2.3/L4-5.2.3.2 조건에 따른 식 결정",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "특수해 계수 조건",
+      "decisiveStep": "두 방정식 계수·상수항 비 비교",
+      "rpmDisposition": "L3-4.1.4/L4-4.1.4.1 해가 무수히 많은 경우",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "가감법",
+      "decisiveStep": "y계수를 같게 만들어 소거",
+      "rpmDisposition": "L3-4.1.1/L4-4.1.1.1 가감법",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "두 점으로 일차함수",
+      "decisiveStep": "두 시점으로 기울기·절편 결정 후 역산",
+      "rpmDisposition": "L3-5.1.4/L4-5.1.4.1 두 점으로 식 구하기",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "그래프 넓이·계수",
+      "decisiveStep": "기울기→밑변, 넓이→a, 점대입→b",
+      "rpmDisposition": "L3-5.2.3/L4-5.2.3.1 넓이",
+      "projectionDisposition": "RPM_PRIMARY_PRESENT_ACTIVE_MIDDLE2_PT_TPL_PACK_ABSENT",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "archive/data/meta-foundation/canonical/packs/ (2026-10-03 main listing: no middle2 pack)"
+      ],
+      "nullReason": "RPM Primary semantic path exists, but current ACTIVE canonical pack inventory has no middle2 PT/TPL projection pack; arbitrary new production key creation is forbidden."
+    }
+  ],
+  "independence": {},
+  "summary": {
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 0
+  }
+}
