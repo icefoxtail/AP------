@@ -45,6 +45,28 @@ Verification:
 - Popup/back flow preserved its source page: opening output created a standalone reader, `새 창 열기` opened the same exact request envelope, and Back closed each child reader to its opener. The embedded preview smoke rendered three pages at 390px with zero reader controls and no horizontal overflow.
 - Matched warm-cache timing at 390×844, device scale 1, same 12-question exam Output Envelope, exam mode, qpp=4, owner and request ID; baseline and S1 engine navigations alternated three times in the same browser context. Median first visible page: 821ms before / 805.9ms after. Median Output Envelope readiness: 827.8ms before / 815.4ms after. Observed ranges overlapped; no speedup is attributed to the toolbar change.
 
-## S2–S6
+Commit: `4d64210b3ce09b003b40da1584d9f74a1c40e11e`
+
+## S2 — Compose Save Continuity
+
+Status: PASS
+
+Changes:
+
+- Compose retains the most recently confirmed Saved Paper IDs independently from the current save attempt. The IDs survive edits and draft restoration; a fresh Draft clears them. Draft-local state changed only; no backend schema changed.
+- A confirmed save shows one Saved Paper action group per saved part. The primary action assigns that exact Saved Paper. Exam, solution, and answer actions fetch the Saved Paper detail and open a standalone Output Envelope built from its immutable snapshot.
+- Editing after save keeps the prior Saved Paper actions visible and marks the current Draft as unsaved. After a later confirmed save, actions move to the new Saved Paper IDs.
+- `RESULT_UNKNOWN` recovery now renders outside the inert editor and remains in the mobile sticky action bar. Existing same-batch lookup/retry behavior remains unchanged; the last confirmed Saved Paper stays distinct while the new result is unknown.
+
+Verification:
+
+- Targeted Compose regressions passed: cache version, save/edit continuity, unknown-result locking/recovery, and same-batch retry (5/5). Saved Paper library/envelope/control regressions passed (17/17), including direct mode output from an exact snapshot. JavaScript syntax and `git diff --check` passed.
+- Actual browser flow at 1440px with the real catalog and a local mock API: generated and saved a one-question paper (mock Saved Paper `…0901`), opened its solution as a standalone exact-snapshot Output Envelope, edited the Draft title, and verified the prior Saved Paper actions remained while the Draft was marked unsaved.
+- The second mock save returned 502 and the first batch lookup failed. At desktop, `RESULT_UNKNOWN` showed a recovery button outside `.workspace[inert]`; the prior `…0901` actions remained available. Recovery checked the same batch and retried it successfully as `…0902`.
+- At 390px, the saved-paper assignment action measured 347×44px, the document had no horizontal overflow, and exam/solution/answer actions remained visible. Editing the Draft showed the unsaved state while preserving actions for `…0902`; opening answer produced `mode=ans`, q=1, from the saved snapshot title before the last edit. All API calls were intercepted by the local fixture; no production save or assignment was sent.
+
+Commit: pending stage close.
+
+## S3–S6
 
 Not started.
