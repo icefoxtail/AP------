@@ -1241,7 +1241,7 @@
     // render; refresh only after the review panel becomes visible.
     if (step === "review") updateOriginalPreview();
   }
-  async function buildOriginalSourceOutput(exam, mode, settings) {
+  async function buildOriginalSourceOutput(exam, mode, settings, preview = true) {
     const questions = await Source.load(
       exam.file,
       new Map(state.catalog.sourceHashes).get(exam.file),
@@ -1268,13 +1268,13 @@
       meta,
       questions,
     });
-    const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, { preview: true });
+    const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, { preview });
     return { url, envelope };
   }
-  async function originalOutputUrl(mode = "exam") {
+  async function originalOutputUrl(mode = "exam", preview = true) {
     const e = state.originalExam, s = state.originalSettings;
     const saved = state.originalReceipts?.[0];
-    if (!saved) return buildOriginalSourceOutput(e, mode, s);
+    if (!saved) return buildOriginalSourceOutput(e, mode, s, preview);
     let sourceKind = "assignment";
     let sourceId = saved.id;
     let assignmentId;
@@ -1298,7 +1298,7 @@
       questions,
     });
     const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, {
-      preview: true,
+      preview,
       assignmentId,
     });
     return { url, envelope };
@@ -1331,7 +1331,7 @@
   async function originalPrint() {
     const popup = window.open("about:blank", "_blank");
     try {
-      const output = await originalOutputUrl();
+      const output = await originalOutputUrl("exam", false);
       if (!popup) throw new Error("팝업을 허용해 주세요.");
       popup.location.href = output.url.href;
     } catch (error) { popup?.close(); throw error; }
@@ -1342,7 +1342,7 @@
     try {
       if (!popup) throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
       const settings = originalSettingsForExam(exam);
-      const output = await buildOriginalSourceOutput(exam, safeMode, settings);
+      const output = await buildOriginalSourceOutput(exam, safeMode, settings, false);
       popup.location.href = output.url.href;
     } catch (error) {
       popup?.close();

@@ -144,7 +144,7 @@ function assignmentHandoffHarness(classes) {
 
   const parentMessageCode = [
     sliceBetween(workspace, 'function setOriginalStep(step) {', 'async function buildOriginalSourceOutput('),
-    sliceBetween(workspace, 'async function originalOutputUrl(mode = "exam") {', 'async function originalPrint() {'),
+    sliceBetween(workspace, 'async function originalOutputUrl(mode = "exam", preview = true) {', 'async function originalPrint() {'),
     sliceBetween(workspace, 'window.addEventListener("message", (event) => {', '$("modal").addEventListener("cancel"'),
   ].join('\n');
   vm.runInNewContext(parentMessageCode, parent, { filename: 'archive2-workspace-original-handoff.js' });

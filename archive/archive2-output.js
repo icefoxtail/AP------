@@ -198,6 +198,24 @@
     return envelope;
   }
 
+  async function publishOutputEnvelopeMode(envelope, mode, options = {}) {
+    if (mode === envelope?.mode) return envelope;
+    if (!Array.isArray(envelope?.questions) || !envelope.questions.length)
+      throw new Error("현재 출력 Envelope에 같은 source의 문항이 없습니다.");
+    return publishOutputEnvelope({
+      sourceKind: envelope.sourceKind,
+      sourceId: envelope.sourceId,
+      ...(envelope.paperId ? { paperId: envelope.paperId } : {}),
+      ...(envelope.assignmentId ? { assignmentId: envelope.assignmentId } : {}),
+      ownerId: envelope.ownerId,
+      mode,
+      questionCount: envelope.questionCount,
+      questionUids: envelope.questionUids,
+      meta: envelope.meta,
+      questions: envelope.questions,
+    }, options);
+  }
+
   async function readOutputEnvelope(outputRequestId, ownerId, mode, options = {}) {
     const store = createOutputStore(options.indexedDB || root.indexedDB, { crypto: options.crypto || root.crypto });
     return store.read(outputRequestId, ownerId, mode, options);
@@ -336,7 +354,7 @@
     url.searchParams.set("archive2Context", "archive2");
     url.searchParams.set("archive2OutputContract", contractApi().CONTRACT_VERSION);
     // Static hosts may retain an older inline engine at the unversioned URL.
-    url.searchParams.set("v", "20261002-output-envelope-v3");
+    url.searchParams.set("v", "20261003-reader-controls-s1-1");
     return url;
   }
   function outputEnvelopeUrl(path, base, envelope, options = {}) {
@@ -354,7 +372,10 @@
     const qpp = Number(envelope.meta?.qpp);
     if (supportedQpp.includes(qpp)) url.searchParams.set("qpp", String(qpp));
     if (options.studio) url.searchParams.set("studio", "1");
-    if (options.preview) url.searchParams.set("archive2Review", "1");
+    if (options.preview) {
+      url.searchParams.set("archive2Review", "1");
+      url.searchParams.set("preview", "1");
+    }
     if (options.assignmentId) url.searchParams.set("assignmentId", options.assignmentId);
     return url;
   }
@@ -373,6 +394,7 @@
     createOutputStore,
     measureOutputEnvelope,
     publishOutputEnvelope,
+    publishOutputEnvelopeMode,
     readOutputEnvelope,
     storeOutputEnvelope,
   };

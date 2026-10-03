@@ -25,11 +25,11 @@
     return client;
   }
 
-  function outputUrl(paper, envelope, mode) {
+  function outputUrl(paper, envelope, mode, preview = true) {
     const O = window.Archive2Output;
     const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, {
       studio: true,
-      preview: true,
+      preview,
     });
     url.searchParams.set("archive2SavedStorageVersion", "3");
     return url.href;
@@ -228,7 +228,7 @@
             const data = viewState.paper ? { paper: viewState.paper } : await apiClient().request("/archive-saved-papers/" + encodeURIComponent(id));
             const paper = data.paper;
             const envelope = await preparePreview(paper, button.dataset.mode || "exam");
-            popup.location.href = outputUrl(paper, envelope, envelope.mode);
+            popup.location.href = outputUrl(paper, envelope, envelope.mode, false);
           } catch (error) {
             popup.close();
             throw error;

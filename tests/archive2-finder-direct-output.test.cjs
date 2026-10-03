@@ -27,7 +27,7 @@ test("Finder direct output opens a current-source envelope in the existing engin
   const action = workspace.slice(start, end);
   assert.notEqual(start, -1);
   assert.match(action, /window\.open\("about:blank"/);
-  assert.match(action, /buildOriginalSourceOutput\(exam, safeMode, settings\)/);
+  assert.match(action, /buildOriginalSourceOutput\(exam, safeMode, settings, false\)/);
   assert.match(action, /popup\.location\.href\s*=\s*output\.url\.href/);
   assert.match(workspace, /O\.publishOutputEnvelope\(/);
   assert.match(workspace, /O\.outputEnvelopeUrl\("engine\.html"/);
