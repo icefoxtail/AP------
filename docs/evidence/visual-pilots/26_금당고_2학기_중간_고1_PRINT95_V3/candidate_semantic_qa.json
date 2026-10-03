@@ -1,0 +1,342 @@
+{
+  "status": "PASS",
+  "independentInputRef": "independent_math_facts.json",
+  "candidateRef": "candidate_manifest.json",
+  "questionCount": 9,
+  "checks": {
+    "1": [
+      {
+        "check": "strict_integer_marks",
+        "status": "PASS",
+        "details": {
+          "-1": "open",
+          "0": "closed",
+          "1": "closed",
+          "2": "closed",
+          "3": "closed",
+          "4": "closed",
+          "5": "open"
+        }
+      }
+    ],
+    "4": [
+      {
+        "check": "translation_vector",
+        "status": "PASS",
+        "details": {
+          "A": [
+            -2.0,
+            3.0
+          ],
+          "B": [
+            -1.0,
+            7.0
+          ],
+          "B-A": [
+            1.0,
+            4.0
+          ]
+        }
+      }
+    ],
+    "9": [
+      {
+        "check": "internal_4_to_5_division",
+        "status": "PASS",
+        "details": {
+          "A": [
+            -3.0,
+            -8.0
+          ],
+          "P": [
+            5.0,
+            -4.0
+          ],
+          "B": [
+            15.0,
+            1.0
+          ],
+          "AP/PB": 0.8
+        }
+      }
+    ],
+    "12": [
+      {
+        "check": "C1_bisector_through_center",
+        "status": "PASS",
+        "details": {
+          "C1": [
+            1.0,
+            2.0
+          ],
+          "equation": "3x-4y+5=0",
+          "lineValue": 0.0
+        }
+      },
+      {
+        "check": "C2_chord_3_4_5",
+        "status": "PASS",
+        "details": {
+          "O": [
+            2.0,
+            -1.0
+          ],
+          "H": [
+            0.2,
+            1.4
+          ],
+          "A": [
+            3.4,
+            3.8
+          ],
+          "B": [
+            -3.0,
+            -1.0
+          ],
+          "OH": 3.0,
+          "AH": 3.9999999999999996,
+          "BH": 4.0,
+          "OA": 5.0
+        }
+      }
+    ],
+    "14": [
+      {
+        "check": "reflection_swap",
+        "status": "PASS",
+        "details": {
+          "A": [
+            -2.0,
+            -3.0
+          ],
+          "A-prime": [
+            -3.0,
+            -2.0
+          ]
+        }
+      },
+      {
+        "check": "straightened_order",
+        "status": "PASS",
+        "details": {
+          "A-prime": [
+            -3.0,
+            -2.0
+          ],
+          "P0": [
+            1.0,
+            1.0
+          ],
+          "Q0": [
+            3.4,
+            2.8
+          ],
+          "C": [
+            5.0,
+            4.0
+          ]
+        }
+      },
+      {
+        "check": "nearest_circle_point_and_area",
+        "status": "PASS",
+        "details": {
+          "CQ0": 2.0,
+          "P0": [
+            1.0,
+            1.0
+          ],
+          "area": 2.0999999999999996
+        }
+      }
+    ],
+    "15": [
+      {
+        "check": "fixed_base_line",
+        "status": "PASS",
+        "details": {
+          "A": [
+            1.0,
+            0.0
+          ],
+          "B": [
+            -1.0,
+            2.0
+          ]
+        }
+      },
+      {
+        "check": "farthest_circle_point",
+        "status": "PASS",
+        "details": {
+          "C": [
+            2.0,
+            3.0
+          ],
+          "P-minus": [
+            -0.2360679774997898,
+            0.7639320225002102
+          ],
+          "P-plus": [
+            4.23606797749979,
+            5.23606797749979
+          ],
+          "radius": 3.1622776601683795
+        }
+      },
+      {
+        "check": "tangent_at_selected_point",
+        "status": "PASS",
+        "details": {
+          "equation": "x+y-5-2sqrt(5)=0",
+          "P-plus": [
+            4.23606797749979,
+            5.23606797749979
+          ],
+          "lineValue": 0.0
+        }
+      }
+    ],
+    "17": [
+      {
+        "check": "cut_point_incidence",
+        "status": "PASS",
+        "details": {
+          "A": [
+            0.0,
+            2.0
+          ],
+          "P": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "Q": [
+            2.6666666666666665,
+            1.6666666666666667
+          ],
+          "B": [
+            1.0,
+            0.0
+          ],
+          "D": [
+            2.0,
+            3.0
+          ],
+          "C": [
+            3.0,
+            1.0
+          ]
+        }
+      },
+      {
+        "check": "region_area_ratio",
+        "status": "PASS",
+        "details": {
+          "APQD_area": 3.3333375,
+          "PBCQ_area": 1.6666625000000002,
+          "ratio": 2.0000075000187496
+        }
+      },
+      {
+        "check": "optimal_segment_length",
+        "status": "PASS",
+        "details": {
+          "PQ_squared": 5.0
+        }
+      }
+    ],
+    "18": [
+      {
+        "check": "center_transformations",
+        "status": "PASS",
+        "details": {
+          "C0": [
+            -2.0,
+            1.0
+          ],
+          "C1": [
+            1.0,
+            3.0
+          ],
+          "C": [
+            3.0,
+            1.0
+          ]
+        }
+      },
+      {
+        "check": "two_signed_parallel_distances",
+        "status": "PASS",
+        "details": {
+          "H": [
+            2.0,
+            3.0
+          ],
+          "J": [
+            4.0,
+            -1.0
+          ],
+          "CH": 2.23606797749979,
+          "CJ": 2.23606797749979,
+          "positiveEquation": "x-2y+4=0",
+          "negativeEquation": "x-2y-6=0"
+        }
+      },
+      {
+        "check": "negative_intercept_marker_bound_to_line",
+        "status": "PASS",
+        "details": {
+          "Y-minus-screen": [
+            680.0,
+            350.0
+          ],
+          "negative-line-start": [
+            680.0,
+            350.0
+          ]
+        }
+      },
+      {
+        "check": "positive_intercept_selected",
+        "status": "PASS",
+        "details": {
+          "positiveYIntercept": 2,
+          "negativeYIntercept": -3
+        }
+      }
+    ],
+    "20": [
+      {
+        "check": "open_interval_topology",
+        "status": "PASS",
+        "details": {
+          "3": "open",
+          "8": "open",
+          "12": "open",
+          "10": "open"
+        }
+      },
+      {
+        "check": "two_components_and_rightmost_window",
+        "status": "PASS",
+        "details": [
+          "",
+          "t-number-line",
+          "tick:0",
+          "tick:2",
+          "tick:4",
+          "tick:6",
+          "tick:8",
+          "tick:10",
+          "tick:12",
+          "tick:14",
+          "maximal-window-(10,12)",
+          "g(t)=2 on (3,8)",
+          "g(t)=2 on (8,12)"
+        ]
+      }
+    ]
+  },
+  "actualBrowserRender": "NOT_RUN_BROWSER_POLICY_BLOCK",
+  "qualification": "PRINT95_RENDER_PENDING"
+}

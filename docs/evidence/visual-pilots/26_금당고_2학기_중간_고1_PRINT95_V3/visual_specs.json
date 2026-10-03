@@ -1,0 +1,244 @@
+{
+  "target": "archive/exams/original/high/h1/2mid/26_금당고_2학기_중간_고1_기출.js",
+  "targetSha256": "sha256:fce2bf7db9cfef3c97609ac5fe5d930a07e533eec9a6107532280d37cf2e4355",
+  "coordinateRule": "For every point: screenX=originX+sx*mathX; screenY=originY-sy*mathY. No SVG transforms. All pixel coordinates are emitted by the accompanying Python builder.",
+  "common": {
+    "svg": true,
+    "viewBoxSafeMarginPx": 32,
+    "preserveAspectRatio": "xMidYMid meet",
+    "textFont": "Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif",
+    "mathFont": "STIX Two Math, Cambria Math, Times New Roman, serif",
+    "grayscaleInformationParity": true,
+    "latexInsideSvg": false,
+    "brInsideSvg": false,
+    "geometryStyleVersion": "AP_GEOMETRY_PRINT_V1_0_DRAFT",
+    "provenance": "independent-python-facts; generated from source_solution_bindings.json and independent_math_facts.json"
+  },
+  "candidates": [
+    {
+      "qid": 1,
+      "backend": "MINIMAL_EXAM_DIAGRAM",
+      "viewBox": "0 0 640 270",
+      "objects": [
+        "k number line",
+        "open endpoints -1 and 5",
+        "filled integer marks 0,1,2,3,4",
+        "strict condition r²=9−(k−2)²>0"
+      ],
+      "relationships": [
+        "allowed interval is exactly -1<k<5",
+        "five integer marks, no endpoint marks"
+      ],
+      "labels": [
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "가능한 정수 5개"
+      ],
+      "role": "Make strict endpoints and integer count immediately visible."
+    },
+    {
+      "qid": 4,
+      "backend": "MINIMAL_EXAM_DIAGRAM",
+      "viewBox": "0 0 620 360",
+      "objects": [
+        "coordinate axes",
+        "start A(-2,3)",
+        "end B(-1,7)",
+        "horizontal +1 component",
+        "vertical +4 component",
+        "result a-b=-6"
+      ],
+      "relationships": [
+        "B-A=(1,4)",
+        "equal-unit coordinate transform",
+        "components attach to actual endpoints"
+      ],
+      "labels": [
+        "A(-2,3)",
+        "B(-1,7)",
+        "x방향 +1",
+        "y방향 +4",
+        "a-b=-6"
+      ],
+      "role": "Clarify signed coordinate displacement."
+    },
+    {
+      "qid": 9,
+      "backend": "MINIMAL_EXAM_DIAGRAM",
+      "viewBox": "0 0 700 400",
+      "objects": [
+        "segment AB",
+        "points A(-3,-8), P(5,-4), B(15,1)",
+        "AP and PB owner marks"
+      ],
+      "relationships": [
+        "A,P,B are collinear in this order",
+        "AP:PB=4:5 by exact coordinates"
+      ],
+      "labels": [
+        "A(-3,-8)",
+        "P(5,-4)",
+        "B(15,1)",
+        "AP:PB=4:5"
+      ],
+      "role": "Show internal division and ratio ownership."
+    },
+    {
+      "qid": 12,
+      "backend": "COMPOSITE_PANEL",
+      "viewBox": "0 0 940 500",
+      "objects": [
+        "panel 1: C1 circle center (1,2), radius 2, line 3x−4y+5=0 through center",
+        "panel 2: C2 center (2,-1), radius 5, chord AB with A(17/5,19/5), B(-3,-1), H(1/5,7/5)"
+      ],
+      "relationships": [
+        "panel 1 line bisects area through center, yielding a=5",
+        "panel 2 OH=3, AH=BH=4, OH⊥AB, OA=OB=5"
+      ],
+      "labels": [
+        "C1(1,2)",
+        "r1=2",
+        "C2(2,-1)",
+        "AB=8",
+        "OH=3",
+        "AH=BH=4",
+        "r2=5",
+        "a+b+c+d=-17"
+      ],
+      "role": "Keep the first-circle center condition separate from second-circle chord geometry."
+    },
+    {
+      "qid": 14,
+      "backend": "COMPOSITE_PANEL",
+      "viewBox": "0 0 1020 520",
+      "objects": [
+        "left: A(-2,-3), reflected A′(-3,-2), line y=x, circle center C(5,4) radius 2, P0(1,1), Q0(17/5,14/5)",
+        "right: decisive area measurements and formula"
+      ],
+      "relationships": [
+        "A′,P0,Q0,C are collinear in this order",
+        "CQ0=2; AP0=5; distance from Q0 to AP0 line=21/25"
+      ],
+      "labels": [
+        "A",
+        "A′",
+        "P0",
+        "Q0",
+        "C",
+        "AP0=A′P0",
+        "A′Q0=8",
+        "S=21/10",
+        "10S=21"
+      ],
+      "role": "Separate reflection minimization from area calculation."
+    },
+    {
+      "qid": 15,
+      "backend": "MINIMAL_EXAM_DIAGRAM",
+      "viewBox": "0 0 760 500",
+      "objects": [
+        "circle center C(2,3), radius √10",
+        "chord AB on x+y−1=0 with A(1,0), B(-1,2)",
+        "normal CP through C and P±=(2±√5,3±√5)",
+        "tangent at P+ on x+y−5−2√5=0"
+      ],
+      "relationships": [
+        "CP+ ⟂ AB",
+        "P+ has greatest distance to AB",
+        "tangent at P+ is perpendicular to CP+ and parallel to AB"
+      ],
+      "labels": [
+        "A(1,0)",
+        "B(-1,2)",
+        "C(2,3)",
+        "P−",
+        "P+(2+√5,3+√5)",
+        "AB: x+y−1=0",
+        "x+y−5−2√5=0",
+        "a+b+c=-6"
+      ],
+      "role": "Show the maximizing side and the tangent relation without a dense derivation panel."
+    },
+    {
+      "qid": 17,
+      "backend": "MINIMAL_EXAM_DIAGRAM",
+      "viewBox": "0 0 760 460",
+      "objects": [
+        "convex polygon A(0,2),B(1,0),C(3,1),D(2,3)",
+        "P(2/3,2/3) on AB, Q(8/3,5/3) on DC",
+        "transversal PQ and two regions"
+      ],
+      "relationships": [
+        "polygon area 5; APQD=10/3; PBCQ=5/3",
+        "s+t=4/3; |PQ|²=5+5(s−t)²; minimizer s=t=2/3"
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "P(2/3,2/3)",
+        "Q(8/3,5/3)",
+        "APQD:PBCQ=2:1",
+        "PQ min at s=t=2/3",
+        "30(m+n)=25"
+      ],
+      "role": "Show the cut and area ownership with a compact optimization callout."
+    },
+    {
+      "qid": 18,
+      "backend": "COMPOSITE_PANEL",
+      "viewBox": "0 0 940 500",
+      "objects": [
+        "left: center C0(-2,1) translated to C1(1,3) then reflected to C(3,1)",
+        "right: parallel lines x−2y+4=0 and x−2y−6=0, center C, feet H(2,3), J(4,-1)"
+      ],
+      "relationships": [
+        "CH=CJ=√5",
+        "each line is perpendicular to 2x+y−9=0",
+        "y-intercepts 2 and -3; choose positive 2"
+      ],
+      "labels": [
+        "C0",
+        "C1",
+        "C",
+        "(+3,+2)",
+        "swap coordinates",
+        "H(2,3)",
+        "J(4,-1)",
+        "y=2",
+        "y=-3",
+        "양의 y절편=2"
+      ],
+      "role": "Separate the two transformations from signed distance alternatives."
+    },
+    {
+      "qid": 20,
+      "backend": "MINIMAL_EXAM_DIAGRAM",
+      "viewBox": "0 0 700 360",
+      "objects": [
+        "number line t",
+        "open endpoints 3,8,12",
+        "g(t)=2 spans (3,8) and (8,12)",
+        "length-2 open window (10,12)"
+      ],
+      "relationships": [
+        "g(3)=g(8)=g(12)=1",
+        "open interval (a−2,a) fits right component at maximum a=12"
+      ],
+      "labels": [
+        "(3,8)",
+        "(8,12)",
+        "g(t)=2",
+        "(a−2,a)=(10,12)",
+        "a=12"
+      ],
+      "role": "Make the excluded t=8 split and rightmost length-two interval visible."
+    }
+  ]
+}
