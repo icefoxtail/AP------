@@ -171,7 +171,7 @@ function createArchiveScreenRuntime() {
         };
         idleHandle = window.requestIdleCallback ? requestIdleCallback(warm, { timeout: 2000 }) : setTimeout(warm, 100);
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20260914.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: '20260914.1-context7', pageLayout: 'engine-20260914.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
+    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20261003.2', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: '20260914.1-context7', pageLayout: 'engine-20260914.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;

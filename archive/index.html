@@ -2821,7 +2821,10 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
     }
     if (!res.ok || data?.assignment?.pdf_status === 'failed')
         data.pdfFailure = data.assignment?.pdf_error || data.error || '시험지 PDF 생성 실패';
-    window.archive2OriginalReceipt?.(data);
+    window.archive2OriginalReceipt?.(data, {
+        id: classRow.id,
+        name: classRow.name || classRow.class_name || classRow.id
+    });
     return data;
 }
 
@@ -3433,7 +3436,7 @@ async function assignTargetProcessOneClass(classId) {
             qpp: AssignTarget.qpp,
             studentIds: st.studentIds ? [...st.studentIds] : (st.roster||[]).map(s=>s.id)
         });
-        if (AssignTarget.item?.savedPaperId && registration.saved && registration.assignment?.id) {
+        if (registration.saved && registration.assignment?.id) {
             AssignTarget.progress[classId] = {
                 status: 'success',
                 assignmentId: registration.assignment.id,
@@ -3478,21 +3481,29 @@ function renderAssignTargetProgressView() {
         const st = AssignTarget.classState[id];
         const p = AssignTarget.progress[id];
         const icon = p.status === 'success' ? '✔' : p.status === 'error' ? '✕' : '…';
-        const savedPaperPdfState = AssignTarget.item?.savedPaperId && p.status === 'success' && p.pdfPending;
+        const assignmentSaved = p.status === 'success' && Boolean(p.assignmentId);
+        const pdfPending = assignmentSaved && p.pdfPending;
+        const className = st.row.name || '이름 없는 반';
+        const assignmentId = String(p.assignmentId || '');
+        const outputActions = assignmentSaved
+            ? `<div class="actions" role="group" aria-label="${escapeModalText(className)} Assignment ${escapeModalText(assignmentId)} 출력">${[['exam','시험'],['sol','해설'],['ans','정답']].map(([mode,label]) => `<button type="button" class="modal-btn-cancel" onclick="archiveBoardDirectOutput('${escapeModalText(assignmentId)}','${mode}')">${label}</button>`).join('')}</div>`
+            : '';
         return `<div class="assign-progress-row ${p.status}">
             <span class="icon">${icon}</span>
             <div style="flex:1 1 auto; min-width:0;">
-                <span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : savedPaperPdfState ? ' — 배포 저장 완료 · PDF 준비 필요' : ''}</span>
-                ${savedPaperPdfState && p.pdfError ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">${escapeModalText(p.pdfError)}</small>` : ''}
-                ${savedPaperPdfState && p.pdfRetrying ? '<small style="display:block; margin-top:4px; color:var(--text-sub);">PDF를 다시 준비하고 있습니다.</small>' : ''}
+                <span>${escapeModalText(className)}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : pdfPending ? ' — Assignment 저장 완료 · PDF 준비 필요' : ''}</span>
+                ${assignmentSaved ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">Assignment ID · ${escapeModalText(assignmentId)}</small>` : ''}
+                ${pdfPending && p.pdfError ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">${escapeModalText(p.pdfError)}</small>` : ''}
+                ${pdfPending && p.pdfRetrying ? '<small style="display:block; margin-top:4px; color:var(--text-sub);">PDF를 다시 준비하고 있습니다.</small>' : ''}
+                ${outputActions}
             </div>
-            ${savedPaperPdfState && !p.pdfRetrying ? `<button type="button" class="modal-btn-cancel" style="width:auto; min-width:132px; min-height:44px; margin:0; padding:10px 16px; flex:0 0 auto; color:var(--blue-main);" onclick="assignTargetRetrySavedPaperPdf('${escapeModalText(id)}')">PDF 다시 준비</button>` : ''}
+            ${pdfPending && !p.pdfRetrying ? `<button type="button" class="modal-btn-cancel" style="width:auto; min-width:132px; min-height:44px; margin:0; padding:10px 16px; flex:0 0 auto; color:var(--blue-main);" onclick="assignTargetRetryPdf('${escapeModalText(id)}')">PDF 다시 준비</button>` : ''}
         </div>`;
     }).join('');
 
     const anyError = classIds.some(id => AssignTarget.progress[id].status === 'error');
     const anyPending = classIds.some(id => AssignTarget.progress[id].status === 'pending');
-    const anySavedPaperPdfPending = Boolean(AssignTarget.item?.savedPaperId) && classIds.some(id => AssignTarget.progress[id].status === 'success' && AssignTarget.progress[id].pdfPending);
+    const anyPdfPending = classIds.some(id => AssignTarget.progress[id].status === 'success' && AssignTarget.progress[id].pdfPending);
 
     assignTargetBodyEl().innerHTML = `
         <div class="assign-target-panel">
@@ -3503,7 +3514,7 @@ function renderAssignTargetProgressView() {
                 ${rowsHtml}
             </div>
             <div class="assign-target-foot">
-                <div class="assign-summary-text">${anyPending ? '처리 중입니다...' : (anyError ? '저장에 실패한 반만 배포를 다시 시도할 수 있습니다.' : anySavedPaperPdfPending ? '학생 배포는 저장됐습니다. 아래 버튼은 기존 과제의 PDF만 다시 준비합니다.' : '모두 완료되었습니다.')}</div>
+                <div class="assign-summary-text">${anyPending ? '처리 중입니다...' : (anyError ? '저장에 실패한 반만 배포를 다시 시도할 수 있습니다.' : anyPdfPending ? 'Assignment 저장이 완료되었습니다. 아래 action은 해당 Assignment의 PDF만 다시 준비합니다.' : 'Assignment 저장이 완료되었습니다.')}</div>
                 <div class="assign-foot-btns">
                     ${(!anyPending && anyError) ? '<button class="modal-btn-primary" onclick="assignTargetRetryFailed()">실패한 반만 재시도</button>' : ''}
                     ${(!anyPending && !anyError) ? '<button class="modal-btn-primary" onclick="closeModal()">닫기</button>' : ''}
@@ -3512,8 +3523,7 @@ function renderAssignTargetProgressView() {
         </div>`;
 }
 
-async function assignTargetRetrySavedPaperPdf(classId) {
-    if (!AssignTarget?.item?.savedPaperId) return;
+async function assignTargetRetryPdf(classId) {
     const progress = AssignTarget.progress?.[classId];
     if (!progress?.assignmentId || !progress.pdfPending || progress.pdfRetrying) return;
     progress.pdfRetrying = true;
@@ -3539,6 +3549,10 @@ async function assignTargetRetrySavedPaperPdf(classId) {
     assignTargetMaybeFinish();
 }
 
+async function assignTargetRetrySavedPaperPdf(classId) {
+    return assignTargetRetryPdf(classId);
+}
+
 async function assignTargetRetryFailed() {
     const failedIds = Object.keys(AssignTarget.progress).filter(id => AssignTarget.progress[id].status === 'error');
     for (const classId of failedIds) {
@@ -3554,10 +3568,6 @@ function assignTargetMaybeFinish() {
     const allSuccess = Object.values(AssignTarget.progress).every(p => p.status === 'success');
     if (!allSuccess) return;
     if (AssignTarget.grade) loadAssignmentBoardForGrade(AssignTarget.grade);
-    if (AssignTarget.item?.savedPaperId && Object.values(AssignTarget.progress).some(p => p.pdfPending)) {
-        renderAssignTargetProgressView();
-        return;
-    }
     setTimeout(() => assignTargetFinishAndOpenEngine(), 700);
 }
 
@@ -3571,6 +3581,11 @@ function assignTargetFinishAndOpenEngine() {
     const gradeLabel = AssignTarget.grade;
     const assignmentBatchId = AssignTarget.assignmentBatchId;
     const scope = AssignTarget.scope;
+    const archive2Issue = new URLSearchParams(window.location.search).has('archive2Issue');
+    if (item?.savedPaperId || archive2Issue) {
+        renderAssignTargetProgressView();
+        return;
+    }
     closeModal();
     if (representative) {
         launchIndexExamOutput(item, "exam", qpp, {
@@ -3784,7 +3799,7 @@ window.onload = function () {
 <script src="archive2-core.js"></script>
 <script src="archive2-source.js"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-<script src="archive2-output.js?v=20261003-reader-controls-s1-1"></script>
-<script src="archive2-entry.js?v=20261003-assignment-output-parent-preview-1"></script>
+<script src="archive2-output.js?v=20261003-student-mode-layout-2"></script>
+<script src="archive2-entry.js?v=20261003-assignment-continuity-1"></script>
 </body>
 </html>

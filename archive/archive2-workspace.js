@@ -1224,6 +1224,32 @@
       qpp,
     });
   }
+  function renderOriginalReceipts() {
+    const host = $("original-receipts");
+    if (!host) return;
+    const receipts = state.originalReceipts || [];
+    if (!receipts.length) {
+      host.replaceChildren();
+      return;
+    }
+    const pdfPending = receipts.some((receipt) => receipt.pdfStatus !== "ready");
+    host.innerHTML = `<div class="callout original-receipts-callout">
+      <strong>${receipts.length}개 반에 Assignment 저장 완료</strong>
+      <p>학생별 문제지는 각 receipt Assignment ID의 immutable snapshot을 사용합니다.${pdfPending ? " PDF 준비가 필요한 반은 해당 Assignment의 PDF만 다시 준비할 수 있습니다." : ""}</p>
+      <div class="original-receipt-list">${receipts.map((receipt) => {
+        const ready = receipt.pdfStatus === "ready";
+        return `<article class="original-receipt-row" data-assignment-id="${esc(receipt.id)}">
+          <div><strong>${esc(receipt.className || "선택한 반")}</strong><div class="muted">Assignment ID · <code>${esc(receipt.id)}</code></div>
+            <div class="muted">${ready ? "PDF 준비 완료" : "Assignment 저장 완료 · PDF 확인 필요"}${receipt.pdfError ? ` · ${esc(receipt.pdfError)}` : ""}</div></div>
+          <div class="actions" role="group" aria-label="${esc(receipt.className || "선택한 반")} Assignment ${esc(receipt.id)} action">
+            ${[ ["exam", "시험"], ["sol", "해설"], ["ans", "정답"] ].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(receipt.id)}" data-mode="${mode}" class="small"`)).join("")}
+            ${ready ? "" : button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(receipt.id)}" class="small"`)}
+            ${button("assignment-status", "학생별 확인", `data-assignment="${esc(receipt.id)}" class="small"`)}
+          </div>
+        </article>`;
+      }).join("")}</div>
+    </div>`;
+  }
   function openOriginalIssue(exam, step = "review") {
     state.originalExam = exam;
     const settings = originalSettingsForExam(exam);
@@ -2376,6 +2402,10 @@
     return prepare();
   }
   async function print() {
+    const receipt = state.receipts.find((row) =>
+      row.partIndex === state.previewIndex && row.classId === state.classId,
+    );
+    if (receipt?.id) return openAssignmentOutput(receipt.id, state.outputMode);
     const popup = window.open("about:blank", "_blank");
     try {
       const papers = await finalGate();
@@ -2681,6 +2711,23 @@
       }
       if (a === "assignment-pdf") {
         b.disabled = true;
+        const receipt = state.originalReceipts?.find((row) => row.id === b.dataset.assignment);
+        if (receipt) {
+          try {
+            const result = await api(
+              "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
+              {},
+            );
+            receipt.pdfStatus = result.assignment?.pdf_status || "pending";
+            receipt.pdfError = result.assignment?.pdf_error || result.error || "";
+          } catch (error) {
+            receipt.pdfStatus = "pending";
+            receipt.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
+            status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+          }
+          renderOriginalReceipts();
+          return;
+        }
         await api(
           "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
           {},
@@ -3311,14 +3358,19 @@
       state.originalReceipts = (state.originalReceipts || []).filter(
         (r) => r.id !== a.id,
       );
-      state.originalReceipts.push({ id: a.id });
+      state.originalReceipts.push({
+        id: a.id,
+        classId: String(event.data.classId || a.class_id || ""),
+        className: String(event.data.className || "선택한 반"),
+        pdfStatus: String(a.pdf_status || "pending"),
+        pdfError: String(event.data.pdfFailure || a.pdf_error || ""),
+      });
       $("modal")
         .querySelectorAll(
           "[data-output-settings] input,[data-output-settings] select",
         )
         .forEach((el) => (el.disabled = true));
-      $("original-receipts").innerHTML =
-        `<div class="callout"><strong>${state.originalReceipts.length}개 반에 출제 저장 완료</strong><p>선택한 학생의 ‘내 시험지’에 표시됩니다. 문제·정답·해설 확인과 오답 입력이 가능합니다.${a.pdf_status === "ready" ? "" : " PDF 파일은 다시 준비해야 합니다."}</p>${state.originalReceipts.map((r) => button("assignment-status", "학생별 확인 · 출력", `data-assignment="${r.id}"`)).join("")}</div>`;
+      renderOriginalReceipts();
     }
     if (event.data?.type === "archive2-original-complete") {
       const receiptCount = Number(event.data.receiptCount);

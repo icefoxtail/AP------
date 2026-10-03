@@ -354,7 +354,7 @@
     url.searchParams.set("archive2Context", "archive2");
     url.searchParams.set("archive2OutputContract", contractApi().CONTRACT_VERSION);
     // Static hosts may retain an older inline engine at the unversioned URL.
-    url.searchParams.set("v", "20261003-reader-controls-s1-1");
+    url.searchParams.set("v", "20261003-student-mode-layout-2");
     return url;
   }
   function outputEnvelopeUrl(path, base, envelope, options = {}) {
