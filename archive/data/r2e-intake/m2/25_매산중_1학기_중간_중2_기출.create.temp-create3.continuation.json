@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M2_CREATE_CONTINUATION_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "canonicalOrdinal": 4,
+  "examFile": "25_매산중_1학기_중간_중2_기출.js",
+  "owner": "TEMP-CREATE-3",
+  "baseMainSha": "d5463a336d95ce7f8d018860d8413f08d267f29d",
+  "candidateHead": "382773096f59bf8abffc3602c1bb66fe730d8f1c",
+  "candidateExamBlob": "e3a287904445dbe2e1a03dcb88286e9c2e02d5ff",
+  "protectedFieldsExact": true,
+  "freshSolutionRewriteCount": "24/24",
+  "tagDifficultyMaterializationCount": "24/24",
+  "stage": "CREATE_CONTINUATION_REQUIRED",
+  "debtType": "INFRA_RETRY_DEBT",
+  "firstMissingClosureStep": "RENDER_SAFE_SOLUTION_PATCH_THEN_META_EVIDENCE_VALIDATOR_RECEIPT",
+  "observedIssue": "Fresh solutions were written for all 24 questions, but a render-safe TeX delimiter patch is still required before physical evidence/validator closure. Normal contents write and low-level/base64 blob alternate write paths were both rejected by the connected write safety gate; no PASS was inferred.",
+  "nextAction": "Resume exact candidate; patch only solution rendering delimiters without touching content/choices/answer/image, then materialize full Meta+physical evidence, run actual CREATE calibration/review-evidence gates, bind validator receipt and durable CREATE receipt, remote readback.",
+  "updatedAtKST": "2026-10-04T07:47:00+09:00"
+}
