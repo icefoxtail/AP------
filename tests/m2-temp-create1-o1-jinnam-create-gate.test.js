@@ -8,4 +8,4 @@ for (const args of [
   const r=spawnSync(process.execPath,args,{stdio:'inherit'});
   if(r.status!==0) process.exit(r.status||1);
 }
-console.log('M2 o1 CREATE canonical gates PASS');
+console.log('M2 o1 CREATE canonical gates PASS (TEMP-CREATE-2)');
