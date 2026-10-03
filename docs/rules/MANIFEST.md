@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 53597 bytes | sha256 daeea6a87be9541a0b64146d28f4a4db790f437fd3d90af25b18ac23e55ce01c
+- 00_RULES_INDEX.md | 53970 bytes | sha256 9acedcea8ee971576943ce71de1e9f705db345a7fba4af9cd1b6ad32a78d8944
 - 02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md | 18900 bytes | sha256 772592849ba7e67131206d097612d7b72b4255ea6048950242306f89cf42c0e7
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 7541 bytes | sha256 51676f7c508240880da0060d148e021ca6c669dab251118b6fb6cdf46b5e7e9c
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 11721 bytes | sha256 dd6c8d7dbc69a8b09e996091c78fcb2a84ea5effa6a503ddd0c731c0a1c8c618
@@ -45,8 +45,8 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md | 8439 bytes | sha256 35afb56a5e2c6e676e9244f8387f1d32efec1840341c846a38d56750c31eaea9
 - 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 34624 bytes | sha256 3f35157d3923bae4e3aa10bb13a2131b2f90a0c2d9457583f9c012bbc9df9083
 - 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 33475 bytes | sha256 c6cb1a144c85e5269fc6569ad66d1e5a2eecaa77fee63e07c8fce0c7c136c8ba
-- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 38579 bytes | sha256 3974633eab0adf5d2f7a8b6f76c53f8f21d123549e061e61edb199eb7ea3a5c1
-- 03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md | 21313 bytes | sha256 0bb122bb7360341b0623fd5f151b324968cdde803984f15469c0b8f6061a9546
+- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 39407 bytes | sha256 44c2036546d2b7b37dfc5ad2c643f0324e1a22cc12932c8f018e049947b8d943
+- 03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md | 21255 bytes | sha256 47b6e6a7b3a1645704cfb775cfb711c854860d401f0c1892eea2c680de5f85df
 - 04_VISUAL/도형추출.md | 57487 bytes | sha256 5121ee73b19e9df3310c98720532dd6d9768be2d7a172837f57db1f78e7cef09
 - 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 73684 bytes | sha256 1dcb787717543982f0c26f7522df7d66087302751d424dec715ada6bb9fa61d1
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b
