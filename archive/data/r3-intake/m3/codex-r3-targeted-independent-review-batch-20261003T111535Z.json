@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_TARGETED_INDEPENDENT_REVIEW_BATCH_v1",
+  "recordType": "CODEX_R3_TARGETED_INDEPENDENT_REVIEW_BATCH_RECEIPT",
+  "runId": "js-archive-r3-repair-20261003T111535Z",
+  "reviewedAtUTC": "2026-10-03T11:15:35Z",
+  "originMainSha": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+  "reviewBranch": "codex/r3-independent-review-batch-20261003-0910z",
+  "reviewerThreadId": "01a0fd4c-ad78-7703-9481-8f8b8fd51397",
+  "sourceAuthority": {
+    "migrationLedgerPageId": "3ed0e68bd69f81adbed0e77222d12cc7",
+    "inventoryPageId": "3e80e68bd69f81069d21f2ee0a25ba3f",
+    "routerPageId": "3e10e68bd69f81f19397e7cd1c8d3cfd",
+    "startPageId": "3e10e68bd69f81898cc8fb85cb4b1398",
+    "lifecyclePageId": "3e10e68bd69f81fdb161ffc3f6227b6e",
+    "contractPageId": "3ed0e68bd69f81a1b37ff912f5acdfa2"
+  },
+  "currentMainRulePack": {
+    "manifestStatus": "PASS",
+    "manifestSha256": "ec6133bb04358826811b0dac880cf912ad63259dc69b31e1455b8d8a9c783d0f",
+    "files": [
+      {
+        "path": "docs/rules/02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md",
+        "sha256": "2e8c187618e4e8d3fe627b3b21ce5d01f050e5aa7400338b0ed0405c60ee38e3"
+      },
+      {
+        "path": "docs/rules/00_RULES_INDEX.md",
+        "sha256": "b8d31dc823f2f83e17397ac3aa771ab613626f7fa380f8a7321b1aae4a49009e"
+      },
+      {
+        "path": "docs/rules/MANIFEST.md",
+        "sha256": "ec6133bb04358826811b0dac880cf912ad63259dc69b31e1455b8d8a9c783d0f"
+      },
+      {
+        "path": "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md",
+        "sha256": "44c2036546d2b7b37dfc5ad2c643f0324e1a22cc12932c8f018e049947b8d943"
+      },
+      {
+        "path": "docs/rules/03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md",
+        "sha256": "47b6e6a7b3a1645704cfb775cfb711c854860d401f0c1892eea2c680de5f85df"
+      }
+    ],
+    "currentContractDisposition": "latest contract documents same-stage R3 repair; this explicitly user-requested legacy targeted independent review was executed under the current heartbeat"
+  },
+  "queueScan": {
+    "physicalRepairCandidatesExamined": 13,
+    "targetItemsWithOriginalFailEvidenceAndRepairLineage": 4,
+    "eligibleForCurrentTargetedReview": 2,
+    "completedTargetedReviews": 2,
+    "passCount": 0,
+    "failCount": 2,
+    "staleTargetCount": 10,
+    "duplicateSameKeyDurableReceiptSkips": 6,
+    "duplicateSameKeyActiveOtherReviewerSkips": 0,
+    "incompleteOriginalR3EvidenceExcluded": 1,
+    "releaseQueueMoves": 0,
+    "repairReentries": 2,
+    "remainingActionableTargetedReviewBacklog": 0
+  },
+  "reviewedTargets": [
+    {
+      "examUid": "m3/1mid/26-wangun",
+      "ordinal": 1,
+      "verdict": "CODEX_INDEPENDENT_REVIEW_FAIL",
+      "nextPhysicalState": "CODEX_R3_REPAIR",
+      "examPath": "archive/exams/original/middle/m3/1mid/26_왕운중_1학기_중간_중3_기출c.js",
+      "originalFailPacketBlob": "6692d7934d944e8aa301cd53311e7476949493d2",
+      "originalR3ReceiptBlob": "e48b23c13b1f9de10c4c0ee1edf6eb618bb05a01",
+      "originalPhysicalEvidenceBlob": "9b2b304ff0fbf008d24f7327d224d48019310ae5",
+      "originalValidatorBlob": "e2613c6fdab4e411902cbce25d282cdd7c44558c",
+      "r3InputExamBlob": "2bca55f7d2efe93fc733686b4bec3c228a33a8cd",
+      "repairCommit": "960c101b8d965d884b93820b3e178d22f91bd0f2",
+      "repairRef": "refs/heads/main",
+      "repairHeadAtReview": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+      "separateRepairReceipt": "none in current main; repair commit and exact sidecar diff are physical repair evidence",
+      "finalExamArtifact": {
+        "gitBlob": "2bca55f7d2efe93fc733686b4bec3c228a33a8cd",
+        "sha256": "2ddeccf0ca9cca37823039885122380bb126051e711d66adf5cc96e492cf8f23"
+      },
+      "repairedMetaArtifact": {
+        "path": "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json",
+        "gitBlob": "06cd59af584717e5f38a4128e46a5cab53547d75",
+        "sha256": "ac3127f06afe628bfd931c19ccb1eba8a436811290e9e48bcb785601f2df3aa1"
+      },
+      "changedQids": [
+        14,
+        18,
+        23
+      ],
+      "changedFields": {
+        "14": [
+          "crossConceptKeys",
+          "holdReason",
+          "projectionStatus",
+          "rpmPath",
+          "rpmRecordId",
+          "semanticDisposition",
+          "semanticStatus"
+        ],
+        "18": [
+          "holdReason",
+          "projectionStatus",
+          "rpmPath",
+          "rpmRecordId",
+          "semanticDisposition",
+          "semanticStatus"
+        ],
+        "23": [
+          "crossConceptKeys",
+          "holdReason",
+          "projectionStatus",
+          "rpmPath",
+          "rpmRecordId",
+          "semanticDisposition",
+          "semanticStatus"
+        ]
+      },
+      "failedLoci": [
+        "q14 metadata HOLD/disposition conflicts with FINAL M3-RPM-182; null projection lacks lookup evidence/nullReason",
+        "q18 unsupported single FINAL primary M3-RPM-182 despite distinct perfect-square/expansion/factorization judgments; missing lookup evidence",
+        "q23 unsupported single FINAL primary M3-RPM-027 despite explicitly required factorization and completing-square methods; missing lookup evidence"
+      ],
+      "closedFailureCodes": [
+        "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:q14"
+      ],
+      "remainingFailureCodes": [
+        "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:q18,q23",
+        "R3_ITEM_HOLD_FORBIDDEN:14,18,23",
+        "META_PRIMARY_TIEBREAK_UNSUPPORTED_BY_CURRENT_AUTHORITY:18,23",
+        "META_NULL_WITHOUT_LOOKUP_EVIDENCE:14,18,23"
+      ],
+      "evidenceFile": "archive/data/r3-intake/m3/26_왕운중_1학기_중간_중3_기출c.codex-independent-review-round1.fail-packet.json"
+    },
+    {
+      "examUid": "m3/1final/26-samsan",
+      "ordinal": 26,
+      "verdict": "CODEX_INDEPENDENT_REVIEW_FAIL",
+      "nextPhysicalState": "CODEX_R3_REPAIR",
+      "examPath": "archive/exams/original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+      "originalFailPacketBlob": "62e664dd7fee60d474416d85129dfac2b2d2009f",
+      "originalR3ReceiptBlob": "558c11ba3e5e77831934841d55f00aaeadcfb4a8",
+      "originalPhysicalEvidenceBlob": "f4798eda781f91039a132947815eeddc50c50950",
+      "originalValidatorBlob": "18e4051bc9a0572e6b29573a22b144effa8f6e31",
+      "r3InputExamBlob": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc",
+      "repairCommit": "c4c4520d01d9483a7ba64ba526c3894242171139",
+      "repairRef": "refs/heads/main",
+      "repairHeadAtReview": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+      "separateRepairReceipt": "none in current main; repair commit and exact sidecar diff are physical repair evidence",
+      "finalExamArtifact": {
+        "gitBlob": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc",
+        "sha256": "5e93070b2ce1187ae22b7ebdbc441a698addab5e0a379ea64fb2ce11e1d5cf7c"
+      },
+      "repairedMetaArtifact": {
+        "path": "archive/data/r2e-intake/m3/26_삼산중_1학기_기말_중3_기출.review2.meta-v2.payload.json",
+        "gitBlob": "59c7e351cdb4abb2da6e1675a95ea5bc6d27e913",
+        "sha256": "6a3ea6d53803da910cab4d5702f60aa2c47b1d4f275248264a06e21d3101e898"
+      },
+      "changedQids": [
+        21,
+        24
+      ],
+      "changedFields": {
+        "21": [
+          "crossConceptKeys",
+          "decisiveStep",
+          "holdReason",
+          "integrationPattern",
+          "mappingStatus",
+          "metadataDisposition",
+          "metadataReviewStatus",
+          "primaryMethod",
+          "projectionStatus",
+          "rpmPath",
+          "rpmRecordId",
+          "semanticDisposition",
+          "semanticStatus"
+        ],
+        "24": [
+          "decisiveStep",
+          "holdReason",
+          "integrationPattern",
+          "mappingStatus",
+          "metadataDisposition",
+          "metadataReviewStatus",
+          "ownerPack",
+          "primaryMethod",
+          "problemTypeKey",
+          "projectionStatus",
+          "rpmPath",
+          "rpmRecordId",
+          "semanticDisposition",
+          "semanticStatus",
+          "templateKey"
+        ]
+      },
+      "failedLoci": [
+        "q21 chooses factorization as primary by first-subpart order despite separately scored factorization and completing-square methods",
+        "q24 chooses vertex coefficient determination as primary by first-subpart order despite a separate scored quadrant-range condition and distinct L4 semantics; q24 pending binding lacks lookup evidence"
+      ],
+      "closedFailureCodes": [
+        "R3_ITEM_HOLD_FORBIDDEN:21,24"
+      ],
+      "remainingFailureCodes": [
+        "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:21,24",
+        "META_PRIMARY_TIEBREAK_UNSUPPORTED_BY_CURRENT_AUTHORITY:21,24",
+        "META_NULL_WITHOUT_LOOKUP_EVIDENCE:q21",
+        "META_BINDING_EVIDENCE_MISSING:q24"
+      ],
+      "evidenceFile": "archive/data/r3-intake/m3/26_삼산중_1학기_기말_중3_기출.codex-independent-review-round1.fail-packet.json"
+    }
+  ],
+  "staleTargets": [
+    {
+      "ordinal": 50,
+      "path": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "r3InputBlob": "2edb7ba31e49919a9dc0d1282478513d55191fd7",
+      "repairParentBlob": "d7ece7a9dcc964db057369efa4a2fca43bfdc42d",
+      "currentMainBlob": "e940db6efe5e27a3c8090ebb2274634fa5ee06ef",
+      "currentSha256": "123aab6ebbf78dc770b82b635b56014c02881a8934d4ae2f7e2af555dc1a97a3",
+      "reason": "repair parent differs from accepted R3 input baseline"
+    },
+    {
+      "ordinal": 34,
+      "path": "archive/exams/original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js",
+      "r3InputBlob": "ed7d5d78ebb9777f26f5b250acc10c8c47abd42d",
+      "repairParentBlob": "07149326e1f0693cd7cb350dc90dd09cb74399d2",
+      "currentMainBlob": "b800f51c3cac8a7611802b343ab863ef0e8b4cf5",
+      "currentSha256": "09c152ed975faa1aa14464c1f53da884ef9e5f2e9bcb4601499208db0365c3e9",
+      "reason": "repair parent differs from accepted R3 input baseline"
+    },
+    {
+      "ordinal": 46,
+      "path": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+      "r3InputBlob": "de124fb5a224ebd81ab8d5c9fc832d75052f016b",
+      "repairParentBlob": "64621b0ecdf40be4d496767b14b60516a3a9dabd",
+      "currentMainBlob": "8573230c84785dc0302f70b12a74f60a661ba910",
+      "currentSha256": "3f4c109467b7564f33234998dc83d7f6c6bca260ff2580c93c5944ecb719e40c",
+      "reason": "repair parent differs from accepted R3 input baseline"
+    },
+    {
+      "ordinal": 56,
+      "path": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+      "r3InputBlob": "9c505401cd0abd0a0d847dbf58f9ae493755ee5b",
+      "repairParentBlob": "6eb5e4ee8dfef6e41dc1c7198e70fbc3655a7db7",
+      "currentMainBlob": "cbfa20cc10f55735925247c55f59783c8649fd01",
+      "currentSha256": "bfe75bfc8f295035f20e454375643830e406a9dd0543bbb6f18372c9e472b56a",
+      "reason": "repair parent differs from accepted R3 input baseline"
+    },
+    {
+      "ordinal": 68,
+      "path": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출c.js",
+      "r3InputBlob": "a8e678354642a70a9d6fd909be61ab6f4ee26163",
+      "repairParentBlob": "6c8f6a8d2a2e9b6b35164d894362e3062f637540",
+      "currentMainBlob": "d249ad6f7a05a47a46a28c260f2375e3219c88b3",
+      "currentSha256": "c4887f0eb1cae7aaf6c1f47241b37e51f29199651b27d623ef11f17983abc064",
+      "reason": "repair parent differs from accepted R3 input baseline"
+    },
+    {
+      "ordinal": 63,
+      "path": "archive/exams/original/middle/m3/2final/23_순여중_2학기_기말_중3_기출c.js",
+      "priorReviewBlob": "66949e71f67f91794634db2757133ea877c24aa1",
+      "priorReviewSha256": "a141265c9f93bfaad7d2887e7ad6db1c2fa8bd21d5527b2c73684332a841fdb1",
+      "currentMainBlob": "6f4cd21d22b1320aeff6451205fbf51e182e678d",
+      "currentSha256": "7ac922715f454d5ba4c549f5064f4a2c63db6750981612f391818136ae62d6f9",
+      "reason": "prior review artifact SHA is stale relative to latest main"
+    },
+    {
+      "ordinal": 37,
+      "path": "archive/exams/original/middle/m3/1final/22_향림중_1학기_기말_중3_기출c.js",
+      "r3InputBlob": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+      "repairParentBlob": "eda24492496203ffc01baef703ff6c8608b71420",
+      "currentMainBlob": "fba0ea278a05ad113d926fa049af036e7c828a03",
+      "currentSha256": "04be4d3c798310e9874ada772789221e3f60e68f049cad4404abd8f9d917a711",
+      "reason": "repair parent differs from accepted R3 input baseline"
+    },
+    {
+      "ordinal": 41,
+      "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "priorRepairBlob": "77ec14b9196b6e81469aa795ae1fc889fbed2a1e",
+      "currentMainBlob": "b937cb9d9d54d5c17ca9ec9780e08b67476608ed",
+      "currentSha256": "22190747a0186047a4a3343482690c91aa733cad8c22414883c17a07ce264ad1",
+      "reason": "current repair bytes supersede the old repair SHA"
+    },
+    {
+      "ordinal": 4,
+      "path": "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
+      "inputR3Blob": "4edc4af980e45248f608a2ce9ccbe2d3921bcb65",
+      "receiptRepairBlob": "cf4fcf9aa967e158bf41cf7b341738edff6670d5",
+      "receiptFinalSha256": "d7f4a5ca77999477f202e3a15d3ad64840d4d1065fdd3b33ad3846e21ea3def0",
+      "receiptTargetBlobRawSha256": "2384587dbbd82cda1400d2172c150d017400a6021d9811177d230d244b3964c1",
+      "currentMainBlob": "b95f4aeaa647d415413c31129dba4cf39f244099",
+      "currentSha256": "662971fec9cf6370bf764d1185f8aaaa9f61ad25af92c432c19063af11140b4d",
+      "reason": "latest main blob and raw SHA mismatch the emergency repair receipt; receipt SHA also differs from raw SHA of its declared output blob"
+    },
+    {
+      "ordinal": 22,
+      "path": "archive/exams/original/middle/m3/1mid/19_동산중_1학기_중간_중3_기출.js",
+      "inputR3Blob": "5ee76dfff2e731b4b6e5f45bbac77bbd33b84b74",
+      "receiptRepairBlob": "e3555453779d52b1c25cbe29bc2fbc4a8f3511b2",
+      "receiptFinalSha256": "010adabedb1450796ec290f09cdec34e6c20e51b19ad7f96e3b18d4574bc93f9",
+      "currentMainBlob": "e4a4daf048b885f26ea18f896ff9676378b9a796",
+      "currentSha256": "153467c090b53437607045fbce2ce8351a4c043c1c0b3aeac8df167fdf13ab63",
+      "reason": "latest main blob/SHA mismatch the accepted direct-repair validator receipt"
+    }
+  ],
+  "duplicateSameKeyReceipts": [
+    {
+      "ordinal": 19,
+      "currentExamBlob": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907",
+      "receiptBlob": "3dac2ef0793582d63a5fc013b92d4635a548484e"
+    },
+    {
+      "ordinal": 25,
+      "currentExamBlob": "4f9d8caaeb54385a33623b36518737f34d33fe2a",
+      "reviewCommit": "2ef164bc9e67c2a4c8d58d5533fa95cf85f77414",
+      "finalArtifactSha256": "72870cd855da5875703b08fb650f3f68790ba06e77d414a9c99baa8d6909b157"
+    },
+    {
+      "ordinal": 35,
+      "receiptBlob": "041c110cd2194af5ce52d72d02e1e2221f1ac221"
+    },
+    {
+      "ordinal": 62,
+      "receiptBlob": "25fc9c381bd970e4b891b68443e685c3096de271"
+    },
+    {
+      "ordinal": 66,
+      "receiptBlob": "950481b20baa31168aeadbf78096e37c73cc9bdc"
+    },
+    {
+      "ordinal": 67,
+      "receiptBlob": "de009d273c55a05799c8d13fc7174e126e4e4fa3"
+    }
+  ],
+  "incompleteEvidenceExclusion": {
+    "ordinal": 29,
+    "currentExamBlob": "6b232e25166daf19ea9f7724a9e1f262d556955e",
+    "reason": "physical original R3 fail packet not present or identifiable in latest main/advertised refs; no verdict"
+  },
+  "queueTransitions": {
+    "pass": [],
+    "fail": [
+      {
+        "examUid": "m3/1mid/26-wangun",
+        "state": "CODEX_INDEPENDENT_REVIEW_FAIL → CODEX_R3_REPAIR",
+        "openQids": [
+          14,
+          18,
+          23
+        ]
+      },
+      {
+        "examUid": "m3/1final/26-samsan",
+        "state": "CODEX_INDEPENDENT_REVIEW_FAIL → CODEX_R3_REPAIR",
+        "openQids": [
+          21,
+          24
+        ]
+      }
+    ],
+    "additionalGPT_R3Retry": false,
+    "mainMutation": 0
+  }
+}

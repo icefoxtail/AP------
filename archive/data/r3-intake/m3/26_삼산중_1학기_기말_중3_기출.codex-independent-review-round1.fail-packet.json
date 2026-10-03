@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_TARGETED_INDEPENDENT_REVIEW_v1",
+  "recordType": "CODEX_INDEPENDENT_REVIEW_FAIL_PACKET",
+  "status": "CODEX_INDEPENDENT_REVIEW_FAIL",
+  "reviewAttemptId": "codex-r3-targeted-review-m3-1final-26-samsan-20261003T111000Z",
+  "examUid": "m3/1final/26-samsan",
+  "canonicalOrdinal": 26,
+  "examPath": "archive/exams/original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+  "originMainSha": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+  "finalArtifactGitBlobSha": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc",
+  "finalArtifactSha": "sha256:5e93070b2ce1187ae22b7ebdbc441a698addab5e0a379ea64fb2ce11e1d5cf7c",
+  "repairedArtifactSha": "sha256:6a3ea6d53803da910cab4d5702f60aa2c47b1d4f275248264a06e21d3101e898",
+  "artifactFiles": [
+    {
+      "path": "archive/exams/original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+      "gitBlobSha": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc",
+      "sha256": "5e93070b2ce1187ae22b7ebdbc441a698addab5e0a379ea64fb2ce11e1d5cf7c",
+      "role": "final exam; locked source dependency"
+    },
+    {
+      "path": "archive/data/r2e-intake/m3/26_삼산중_1학기_기말_중3_기출.review2.meta-v2.payload.json",
+      "gitBlobSha": "59c7e351cdb4abb2da6e1675a95ea5bc6d27e913",
+      "sha256": "6a3ea6d53803da910cab4d5702f60aa2c47b1d4f275248264a06e21d3101e898",
+      "role": "repaired metadata artifact"
+    }
+  ],
+  "originalR3Evidence": {
+    "sourceRef": "work/middle/m3/26-samsan-1final-r3-surge1-20261002",
+    "sourceHead": "f9ce0480dbc40a8425527f47d8d06e9a2ac32e06",
+    "failPacketPath": "archive/data/r3-intake/m3/26_삼산중_1학기_기말_중3_기출.r3-fail-packet.json",
+    "failPacketGitBlobSha": "62e664dd7fee60d474416d85129dfac2b2d2009f",
+    "r3ReceiptGitBlobSha": "558c11ba3e5e77831934841d55f00aaeadcfb4a8",
+    "physicalEvidenceGitBlobSha": "f4798eda781f91039a132947815eeddc50c50950",
+    "validatorGitBlobSha": "18e4051bc9a0572e6b29573a22b144effa8f6e31",
+    "inputExamGitBlobSha": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc",
+    "openQids": [
+      21,
+      24
+    ],
+    "failureCodes": [
+      "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
+      "R3_ITEM_HOLD_FORBIDDEN"
+    ]
+  },
+  "repairLineage": {
+    "repairRef": "refs/heads/main",
+    "repairCommit": "c4c4520d01d9483a7ba64ba526c3894242171139",
+    "repairHeadAtReview": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+    "repairReceipt": "No separate R3 repair receipt sidecar exists in latest main; physical repair evidence is the exact main commit and file/blob diff.",
+    "beforeMetaGitBlobSha": "7fd5af7b24413f99aeb3ee906757ea9efbe32889",
+    "afterMetaGitBlobSha": "59c7e351cdb4abb2da6e1675a95ea5bc6d27e913",
+    "beforeExamGitBlobSha": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc",
+    "afterExamGitBlobSha": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc"
+  },
+  "actualChangedFiles": [
+    "archive/data/r2e-intake/m3/26_삼산중_1학기_기말_중3_기출.review2.meta-v2.payload.json"
+  ],
+  "actualChangedQids": [
+    21,
+    24
+  ],
+  "actualChangedFields": [
+    {
+      "fields": [
+        "crossConceptKeys",
+        "decisiveStep",
+        "holdReason",
+        "integrationPattern",
+        "mappingStatus",
+        "metadataDisposition",
+        "metadataReviewStatus",
+        "primaryMethod",
+        "projectionStatus",
+        "rpmPath",
+        "rpmRecordId",
+        "semanticDisposition",
+        "semanticStatus"
+      ],
+      "qid": 21
+    },
+    {
+      "fields": [
+        "decisiveStep",
+        "holdReason",
+        "integrationPattern",
+        "mappingStatus",
+        "metadataDisposition",
+        "metadataReviewStatus",
+        "ownerPack",
+        "primaryMethod",
+        "problemTypeKey",
+        "projectionStatus",
+        "rpmPath",
+        "rpmRecordId",
+        "semanticDisposition",
+        "semanticStatus",
+        "templateKey"
+      ],
+      "qid": 24
+    }
+  ],
+  "reviewedLoci": [
+    {
+      "qid": 21,
+      "fields": [
+        "content",
+        "answer",
+        "solution as direct read-only dependencies",
+        "Meta primary/projection"
+      ]
+    },
+    {
+      "qid": 24,
+      "fields": [
+        "content",
+        "answer",
+        "solution as direct read-only dependencies",
+        "Meta primary/projection"
+      ]
+    }
+  ],
+  "closedFailureCodes": [
+    "R3_ITEM_HOLD_FORBIDDEN:21,24"
+  ],
+  "remainingFailureCodes": [
+    "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:21,24",
+    "META_PRIMARY_TIEBREAK_UNSUPPORTED_BY_CURRENT_AUTHORITY:21,24",
+    "META_NULL_WITHOUT_LOOKUP_EVIDENCE:q21",
+    "META_BINDING_EVIDENCE_MISSING:q24"
+  ],
+  "failedLoci": [
+    {
+      "qid": 21,
+      "file": "archive/data/r2e-intake/m3/26_삼산중_1학기_기말_중3_기출.review2.meta-v2.payload.json",
+      "field": "primaryMethod,decisiveStep,rpmRecordId,rpmPath,semanticStatus,metadataReviewStatus",
+      "observedDefect": "The source explicitly assigns separate 2-point and 3-point tasks to solve different equations by factorization and completing the square. The final row chooses factorization as the unique primary because it is the first subpart, while storing completing-square as a supporting CrossConcept. Current canonical rule forbids choosing a single RPM L4 solely by subpart order.",
+      "expectedCorrection": "Preserve both required method semantics as MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY with a Meta-only nonblocking disposition; do not force M3-RPM-032. Add current lookup evidence/nullReason for the unmaterialized projection.",
+      "currentArtifactSha": "sha256:6a3ea6d53803da910cab4d5702f60aa2c47b1d4f275248264a06e21d3101e898"
+    },
+    {
+      "qid": 24,
+      "file": "archive/data/r2e-intake/m3/26_삼산중_1학기_기말_중3_기출.review2.meta-v2.payload.json",
+      "field": "primaryMethod,decisiveStep,rpmRecordId,rpmPath,projectionStatus,problemTypeKey,templateKey,authorityLookupEvidence",
+      "observedDefect": "The source gives independently scored 3-point parts for vertex coefficient relations and quadrant-range conditions. Current RPM has distinct coefficient-determination and graph-location leaves; repair selects the first part as M3-RPM-048 primary without an order-independent overarching rationale, while R3 evidence held this qid as no-unique-primary. Family binding evidence is absent.",
+      "expectedCorrection": "Either provide current source+verified-solution evidence for one overarching primary independent of part order, or retain the two required semantics as Meta-only unresolved/nonblocking. Do not choose the first subpart as the tiebreak; bind any pending PT/TPL lookup.",
+      "currentArtifactSha": "sha256:6a3ea6d53803da910cab4d5702f60aa2c47b1d4f275248264a06e21d3101e898"
+    }
+  ],
+  "lockedScopeMutationCount": 0,
+  "newDirectDefects": [
+    "unsupported primary tie-breaks q21 and q24",
+    "missing current Meta lookup evidence for q21/q24"
+  ],
+  "additionalGPTR3Retry": false,
+  "mainMutation": 0,
+  "reviewProvenance": {
+    "reviewer": "Codex",
+    "reviewerThreadId": "01a0fd4c-ad78-7703-9481-8f8b8fd51397",
+    "automationId": "js-archive-r3-repair",
+    "reviewedAtUTC": "2026-10-03T11:10:00Z",
+    "latestOriginMainSha": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+    "rulePackManifestStatus": "PASS",
+    "authorityRuleRefs": [
+      "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@8cd98707cb79cabdbb145b60d8d989b1f8cb0046",
+      "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@3581b435f129bbf704af6fb2d82fbac6cdac1373",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@4a4f5a4b4a9aae781235297b5998f4a1e3727cec"
+    ]
+  },
+  "currentArtifactSha": "sha256:6a3ea6d53803da910cab4d5702f60aa2c47b1d4f275248264a06e21d3101e898"
+}
