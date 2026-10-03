@@ -174,3 +174,107 @@ test('Recent facet options retain sibling classes and semantic subjects after na
   assert.equal(h.queryInput(), input);
   assert.equal(h.ctx.document.activeElement, input);
 });
+
+test('Recent grade changes clear stale subjects before the debounced server request', async () => {
+  for (const staleSubject of ['ALGEBRA', 'CALCULUS']) {
+    const requests = [];
+    const h = workspaceHarness(async url => {
+      requests.push(new URL(String(url)));
+      return okJson({ assignments: [] });
+    });
+    h.workspace.setClasses([{ id: 'class-high2', name: '고2 A반', grade: '고2' }]);
+    h.workspace.state.view = 'recent';
+    h.workspace.state.recentFilters.grade = '고2';
+    h.workspace.state.recentFilters.subject = staleSubject;
+
+    await h.event('change', { dataset: { recentFilter: 'grade' }, value: '고1' });
+    assert.equal(h.workspace.state.recentFilters.subject, '', `${staleSubject} is invalid for the new grade`);
+    const jobs = h.fireTimers();
+    assert.equal(requests.length, 1);
+    assert.equal(requests[0].searchParams.get('grade'), '고1');
+    assert.equal(requests[0].searchParams.has('subject'), false,
+      `${staleSubject} is never sent for the new grade`);
+    await Promise.all(jobs);
+  }
+
+  const h = workspaceHarness(async () => okJson({ assignments: [] }));
+  h.workspace.setClasses([{ id: 'class-high2', name: '고2 A반', grade: '고2' }]);
+  h.workspace.state.view = 'recent';
+  h.workspace.state.recentFilters.grade = '고2';
+  h.workspace.state.recentFilters.subject = 'CALCULUS';
+  await h.event('change', { dataset: { recentFilter: 'grade' }, value: '고2' });
+  assert.equal(h.workspace.state.recentFilters.subject, 'CALCULUS',
+    'a subject valid within the selected grade remains selected');
+});
+
+test('Recent assignment status requests discard stale success and stale error responses', async () => {
+  const pending = [];
+  const h = workspaceHarness(url => new Promise((resolve, reject) => pending.push({
+    url: String(url), resolve, reject,
+  })));
+  h.workspace.state.view = 'recent';
+  h.workspace.state.recentSelectedAssignmentId = 'assignment-a';
+  h.workspace.state.openAssignment = { assignment: { id: 'previous' }, students: [] };
+  h.node('status').textContent = 'keep current status';
+
+  const staleA = h.workspace.assignmentStatus('assignment-a');
+  h.workspace.state.recentSelectedAssignmentId = 'assignment-b';
+  const currentB = h.workspace.assignmentStatus('assignment-b');
+  assert.equal(pending.length, 2);
+  pending[1].resolve(okJson({
+    assignment: { id: 'assignment-b', exam_title: 'B 시험', exam_date: '2026-10-02', question_count: 2, pdf_status: 'ready' },
+    students: [],
+  }));
+  await currentB;
+  assert.equal(h.workspace.state.openAssignment.assignment.id, 'assignment-b');
+  assert.match(h.node('modal-body').innerHTML, /B 시험/);
+
+  pending[0].reject(new Error('stale A failed'));
+  await staleA;
+  assert.equal(h.workspace.state.openAssignment.assignment.id, 'assignment-b');
+  assert.match(h.node('modal-body').innerHTML, /B 시험/);
+  assert.doesNotMatch(h.node('modal-body').innerHTML, /A 시험/);
+  assert.equal(h.node('status').textContent, 'keep current status',
+    'a stale status failure cannot overwrite current UI status');
+});
+
+test('Recent assignment status response is ignored after Finder navigation or selection clear', async () => {
+  const pending = [];
+  const h = workspaceHarness(url => {
+    if (String(url).endsWith('/qr-classes')) return Promise.resolve(okJson({ classes: [] }));
+    if (String(url).includes('/class-exam-assignments/recent-summary'))
+      return Promise.resolve(okJson({ assignments: [] }));
+    return new Promise(resolve => pending.push({ url: String(url), resolve }));
+  });
+  h.workspace.state.view = 'recent';
+  h.workspace.state.recentSelectedAssignmentId = 'assignment-a';
+  const sentinel = { assignment: { id: 'previous' }, students: [] };
+  h.workspace.state.openAssignment = sentinel;
+  const request = h.workspace.assignmentStatus('assignment-a');
+  const findButton = { dataset: { view: 'find' }, disabled: false };
+  await h.event('click', { closest: selector => selector === 'button' ? findButton : null }, {
+    preventDefault() {}, stopPropagation() {},
+  });
+  const recentButton = { dataset: { view: 'recent' }, disabled: false };
+  await h.event('click', { closest: selector => selector === 'button' ? recentButton : null }, {
+    preventDefault() {}, stopPropagation() {},
+  });
+  pending[0].resolve(okJson({
+    assignment: { id: 'assignment-a', exam_title: '낡은 시험', exam_date: '2026-10-01', question_count: 1, pdf_status: 'ready' },
+    students: [],
+  }));
+  await request;
+  assert.equal(h.workspace.state.openAssignment, sentinel);
+  assert.doesNotMatch(h.node('modal-body').innerHTML, /낡은 시험/);
+
+  h.workspace.state.recentSelectedAssignmentId = 'assignment-a';
+  const selectionRequest = h.workspace.assignmentStatus('assignment-a');
+  h.workspace.state.recentSelectedAssignmentId = '';
+  pending[1].resolve(okJson({
+    assignment: { id: 'assignment-a', exam_title: 'Back 이후 시험', exam_date: '2026-10-01', question_count: 1, pdf_status: 'ready' },
+    students: [],
+  }));
+  await selectionRequest;
+  assert.equal(h.workspace.state.openAssignment, sentinel);
+  assert.doesNotMatch(h.node('modal-body').innerHTML, /Back 이후 시험/);
+});

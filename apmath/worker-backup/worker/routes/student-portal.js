@@ -1,7 +1,12 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse } from './exam-pdf.js';
-import { canAccessClass, canAccessStudent, isStaffUser } from '../helpers/foundation-db.js';
+import {
+  canAccessClass,
+  canAccessStudent,
+  getAllowedClassIds,
+  isStaffUser,
+} from '../helpers/foundation-db.js';
 import {
   listWrongClinicPacketsForStudent,
   saveWrongClinicReviewWrongsForStudent,
@@ -87,6 +92,11 @@ async function verifyTeacherPreviewAssignmentClassAccess(env, teacher, accessMod
     return { error: jsonResponse({ success: false, message: '해당 반의 시험지를 확인할 권한이 없습니다.' }, 403) };
   }
   return null;
+}
+
+async function teacherPreviewAllowedClassIds(env, teacher, accessMode) {
+  if (accessMode !== 'teacher_preview') return null;
+  return await getAllowedClassIds(env, teacher);
 }
 
 async function getTableColumnSet(env, tableName) {
@@ -175,8 +185,16 @@ function dedupeClassExamAssignments(rows = [], sessionByAssignment = new Map()) 
   return Array.from(byExam.values());
 }
 
-async function loadStudentClassExamAssignments(env, studentId, limit = 100, assignmentId = '') {
+async function loadStudentClassExamAssignments(env, studentId, limit = 100, assignmentId = '', allowedClassIds = null) {
   const exactAssignmentId = String(assignmentId || '').trim();
+  const classScope = Array.isArray(allowedClassIds)
+    ? [...new Set(allowedClassIds.map(value => String(value || '')).filter(Boolean))]
+    : null;
+  const classScopeSql = classScope === null
+    ? ''
+    : classScope.length
+      ? `AND cea.class_id IN (${classScope.map(() => '?').join(',')})`
+      : 'AND 1=0';
   const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
   const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
   const cancellationColumnExists = await hasClassExamAssignmentCancellationAt(env);
@@ -211,6 +229,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
     studentId,
     studentId,
     ...(exactAssignmentId ? [exactAssignmentId] : []),
+    ...(classScope || []),
     ...(exactAssignmentId ? [] : [safeLimit])
   ];
   const [assignments, sessions] = await Promise.all([
@@ -230,6 +249,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
         LEFT JOIN classes c ON c.id = cea.class_id
         WHERE ${recipientSnapshotExists ? 'ar.student_id' : 'cs.student_id'} = ?
           ${exactAssignmentId ? 'AND cea.id = ?' : ''}
+          ${classScopeSql}
       ), visible_assignments AS (
         SELECT *,
           CASE WHEN (is_cancelled = 1 OR is_excluded = 1) AND has_assignment_session = 1
@@ -253,7 +273,16 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
 
   const sessionByAssignment = new Map();
   const sessionByExam = new Map();
-  (sessions.results || []).forEach(row => {
+  const scopedAssignmentRows = assignments.results || [];
+  let sessionRows = sessions.results || [];
+  if (classScope !== null) {
+    const scopedAssignmentIds = new Set(scopedAssignmentRows.map(row => String(row.id || '')));
+    const scopedExamKeys = new Set(scopedAssignmentRows.map(buildOmrSessionKey));
+    sessionRows = sessionRows.filter(row => row.assignment_id
+      ? scopedAssignmentIds.has(String(row.assignment_id))
+      : scopedExamKeys.has(buildOmrSessionKey(row)));
+  }
+  sessionRows.forEach(row => {
     if (row.assignment_id) sessionByAssignment.set(String(row.assignment_id), row);
     const key = buildOmrSessionKey(row);
     if (!sessionByExam.has(key)) sessionByExam.set(key, row);
@@ -395,6 +424,12 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken, { requireRewonStudent: true });
     if (verified.error) return verified.error;
     const student = verified.student;
+    const allowedClassIds = await teacherPreviewAllowedClassIds(env, teacher, verified.accessMode);
+    const homeworkClassScopeSql = allowedClassIds === null
+      ? ''
+      : allowedClassIds.length
+        ? `AND hpa.class_id IN (${allowedClassIds.map(() => '?').join(',')})`
+        : 'AND 1=0';
 
     const [assignments, classExamAssignments] = await Promise.all([
       env.DB.prepare(`
@@ -414,13 +449,14 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       LEFT JOIN classes c ON c.id = hpa.class_id
       WHERE hps.student_id = ?
         AND COALESCE(hpa.status, 'active') != 'deleted'
+        ${homeworkClassScopeSql}
       ORDER BY
         CASE WHEN COALESCE(hps.is_submitted, 0) = 1 THEN 1 ELSE 0 END ASC,
         hpa.due_date ASC,
         hpa.created_at DESC
       LIMIT 30
-      `).bind(studentId).all(),
-      loadStudentClassExamAssignments(env, studentId, 100)
+      `).bind(studentId, ...(allowedClassIds || [])).all(),
+      loadStudentClassExamAssignments(env, studentId, 100, '', allowedClassIds)
     ]);
 
     return jsonResponse({
@@ -468,11 +504,13 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       env, teacher, verified.accessMode, exactAssignmentId,
     );
     if (classAccess?.error) return classAccess.error;
+    const allowedClassIds = await teacherPreviewAllowedClassIds(env, teacher, verified.accessMode);
     const exams = await loadStudentClassExamAssignments(
       env,
       verified.student.id,
       150,
       exactAssignmentId,
+      allowedClassIds,
     );
     return jsonResponse({ success: true, access_mode: verified.accessMode, read_only: verified.readOnly, exams });
   }
