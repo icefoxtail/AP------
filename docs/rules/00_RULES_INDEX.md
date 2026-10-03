@@ -1,13 +1,15 @@
-## CURRENT — 2026-10-03 — JS ARCHIVE ACTIVE M3 MIGRATION / RECHECK SEMANTICS
+## CURRENT — 2026-10-03 — M2-1 THANOS MASTER ×5
 
 - automation 실행 authority: `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md` 최신 main.
-- 상태는 **ACTIVE / M3 MIGRATION**이다. CREATE=69/69 완료로 CREATE×2는 OFF, 정상 상설 생산은 R1×2 / R2×2 / R3×2 / PUBLISH×1 / MASTER×3이다. 임시 SURGE/MASTER는 backlog 해소용이며 canonical topology로 승격하지 않는다.
-- R1/R2/R3의 운영 개념은 **재검**이다. 기존 solution·이전 verdict·repair/checkpoint가 보여도 무효가 아니다. source/current authority에서 required scope를 다시 계산·판정하고 prior 값을 정답처럼 복사하지 않는다.
-- `blindDecisionSha`, `blindFreezeSha256` 등 기존 blind 필드명은 schema/history 호환용 **recheck decision snapshot** 이름으로만 유지한다. 새 세션, 비노출, fresh reviewer는 stage closure 조건이 아니다.
-- MASTER는 병목을 실제 closure하거나 executable owner를 시작시킨다. prior context 노출 때문에 fresh owner를 새로 만들지 않는다.
-- PUBLISH는 release queue의 clean backlog 전체를 batch sweep한다.
-- R3 FAIL 이후는 **repair → 재검 → PASS면 release / FAIL이면 OPEN locus repair 복귀**다. 기존 `CODEX_R3_REPAIR` / `CODEX_INDEPENDENT_REVIEW` 이름은 legacy receipt/status 호환으로만 읽는다.
-- 과거 3-lane/Surge/Phase A·B/existing-slot-only/persistent-thread contamination/dormant clean-slot/감시자·조율자 topology는 `90_ARCHIVE/JS_Archive_Automation_Operational_Contracts_PreStable_2026-10-02.md`의 HISTORY다.
+- current scope는 **M2 1학기 34 current generation**이며 기존 MASTER-A/B/C + INFINITY-1/2는 `THANOS-MASTER-1~5`로 통합됐다.
+- 5개 THANOS는 동일 권한의 universal executor다. current phase의 새 eligible target claim부터 full production/recheck/repair, validator/receipt, stage transition, release/publish/main까지 수행할 수 있다.
+- CURRENT CREATE phase에서 THANOS×5와 TEMP-CREATE×2가 모두 새 CREATE target을 잡을 수 있다. TEMP-CREATE 전용 owner 제한은 폐기했다.
+- cohort barrier는 **CREATE 34/34 → R1 34/34 → R2 34/34 → R3 34/34 → MAIN**을 유지한다. barrier가 열리면 THANOS는 재지시 없이 다음 phase를 소비한다.
+- stage closure는 다음 durable state까지 이동해야 한다. WAIT/관망/문서 보고만으로 THANOS run을 종료하지 않는다.
+- single-writer `MASTER_LEASE v2`, PUBLISH_LEASE, source-truth/validator gate는 유지한다. generic MASTER 문구는 current M2-1에서 THANOS-MASTER를 뜻한다.
+- M3/M1/M2 2학기/고등 legacy 예약은 OFF 유지한다.
+- R1/R2/R3의 운영 개념은 **재검**이다. prior solution/verdict/repair/checkpoint가 보여도 source/current authority에서 required scope를 다시 계산·판정한다.
+- R3는 최종 full audit + same-stage pinpoint repair owner다. source/image 재확인·재크롭도 THANOS가 실행환경에서 가능하면 직접 수행한다.
 
 # JS아카이브 규칙 통합 인덱스
 
