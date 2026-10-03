@@ -31,6 +31,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q1-solution.svg"
   },
   {
@@ -63,6 +65,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q2-solution.svg"
   },
   {
@@ -95,6 +99,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q3-solution.svg"
   },
   {
@@ -127,6 +133,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q4-solution.svg"
   },
   {
@@ -159,6 +167,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q5-solution.svg"
   },
   {
@@ -191,6 +201,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q6-solution.svg"
   },
   {
@@ -223,6 +235,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q7-solution.svg"
   },
   {
@@ -255,6 +269,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q8-solution.svg"
   },
   {
@@ -287,6 +303,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q9-solution.svg"
   },
   {
@@ -630,11 +648,13 @@ window.questionBank=[
     "content": "[서술형1] 아래 그림과 같이 원 $O$ 위의 점 $A$를 지나는 접선 $AT$와 평행한 현 $BC$가 있다. 다음 물음에 풀이 과정을 쓰고 답하시오. [4점]<br>(1) $\\triangle ABC$가 이등변삼각형임을 설명하는 풀이 과정을 쓰시오. [3점] (부분점수 있음)<br>(2) $\\angle BAT$의 크기가 몇 도일 때 $\\triangle ABC$가 정삼각형이 되는지 구하시오. [1점]",
     "choices": [],
     "answer": "(1) $\\overline{AB}=\\overline{AC}$, (2) $60^\\circ$",
-    "solution": "(1) $AT\\parallel BC$이므로 직선 $AB$를 가로지르는 선으로 보면\n$\\angle BAT=\\angle ABC$\n이다.\n또 접선과 현이 이루는 각의 성질에 의해\n$\\angle BAT=\\angle ACB$\n이다.\n따라서\n$\\angle ABC=\\angle ACB$\n이므로 그 맞은편 변의 길이가 같아\n$\\overline{AB}=\\overline{AC}$\n이다.\n그러므로 $\\triangle ABC$는 이등변삼각형이다.\n\n(2) 위에서\n$\\angle BAT=\\angle ABC=\\angle ACB$\n이다.\n$\\triangle ABC$가 정삼각형이면 세 내각이 모두 $60^\\circ$이므로\n$\\angle BAT=60^\\circ$\n이다.\n따라서 (1) $\\overline{AB}=\\overline{AC}$, (2) $60^\\circ$이다.",
+    "solution": "(1) $AT\\parallel BC$이므로 직선 $AB$를 가로지르는 선으로 보면\n$\\angle BAT=\\angle ABC$\n이다.\n또 접선과 현이 이루는 각의 성질에 의해\n$\\angle BAT=\\angle ACB$\n이다.\n따라서\n$\\angle ABC=\\angle ACB$\n이므로 그 맞은편 변의 길이가 같아\n$\\overline{AB}=\\overline{AC}$\n이다.\n그러므로 $\\triangle ABC$는 이등변삼각형이다.\n<br><br>\n(2) 위에서\n$\\angle BAT=\\angle ABC=\\angle ACB$\n이다.\n$\\triangle ABC$가 정삼각형이면 세 내각이 모두 $60^\\circ$이므로\n$\\angle BAT=60^\\circ$\n이다.\n따라서 (1) $\\overline{AB}=\\overline{AC}$, (2) $60^\\circ$이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q21-solution.svg"
   },
   {
@@ -662,6 +682,8 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q22-solution.svg"
   },
   {
@@ -683,7 +705,7 @@ window.questionBank=[
     "content": "[서술형3] 다음은 학생 $10$명의 제기차기 횟수를 조사하여 나타낸 것이다. 다음 물음에 풀이 과정을 쓰고 답하시오. [4점]<div class=\"question-table-wrap\"><table><thead><tr><th colspan=\"10\">제기차기 횟수 (단위: 회)</th></tr></thead><tbody><tr><td>10</td><td>9</td><td>11</td><td>5</td><td>11</td><td>7</td><td>5</td><td>8</td><td>7</td><td>67</td></tr></tbody></table></div>(1) 제기차기 횟수의 평균을 풀이 과정을 쓰고 구하시오. [2점] (부분점수 있음)<br>(2) 제기차기 횟수의 중앙값을 풀이 과정을 쓰고 구하시오. [2점] (부분점수 있음)",
     "choices": [],
     "answer": "(1) $14$회, (2) $8.5$회",
-    "solution": "(1) 제기차기 횟수의 합은\n$10+9+11+5+11+7+5+8+7+67=140$\n이다.\n학생은 $10$명이므로 평균은\n$\\dfrac{140}{10}=14$회\n이다.\n\n(2) 자료를 작은 값부터 놓으면\n$5,\\ 5,\\ 7,\\ 7,\\ 8,\\ 9,\\ 10,\\ 11,\\ 11,\\ 67$\n이다.\n자료가 $10$개이므로 중앙값은 가운데 두 값 $8$, $9$의 평균이다.\n$\\dfrac{8+9}{2}=8.5$회\n따라서 (1) 평균은 $14$회, (2) 중앙값은 $8.5$회이다.",
+    "solution": "(1) 제기차기 횟수의 합은\n$10+9+11+5+11+7+5+8+7+67=140$\n이다.\n학생은 $10$명이므로 평균은\n$\\dfrac{140}{10}=14$회\n이다.\n<br><br>\n(2) 자료를 작은 값부터 놓으면\n$5,\\ 5,\\ 7,\\ 7,\\ 8,\\ 9,\\ 10,\\ 11,\\ 11,\\ 67$\n이다.\n자료가 $10$개이므로 중앙값은 가운데 두 값 $8$, $9$의 평균이다.\n$\\dfrac{8+9}{2}=8.5$회\n따라서 (1) 평균은 $14$회, (2) 중앙값은 $8.5$회이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",

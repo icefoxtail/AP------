@@ -12,7 +12,7 @@
   "productionState": "MAIN_PRESENT_PRE_META_V2",
   "certificationState": "META_REVIEW1_DONE",
   "baseMainSha": "305bb678937c62475cf3d335abc27988407559b7",
-  "sourceExamBlobSha": "4edc4af980e45248f608a2ce9ccbe2d3921bcb65",
+  "sourceExamBlobSha": "6a3613cd08554978ad81069c015e8054396c241e",
   "upstreamCreateCommit": "8e16cfb4639e8cb79fd59736cbddf0b44efc07a0",
   "upstreamMetadataPayloadSha": "7d2c029059888645af4607d671b2d469bec389b6",
   "frozenContentParityPath": "archive/data/r2e-intake/m3/25_신흥중_1학기_중간_중3_기출.meta-review1.meta-v2.frozen-parity.json",
@@ -28,22 +28,14 @@
   "canonicalBindingRuntimeAuditCount": "24/24",
   "itemHoldCount": 0,
   "itemHoldQuestionIds": [],
-  "metadataCanonicalHoldCount": 3,
-  "metadataCanonicalHoldQids": [
-    "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js|25_신흥중_1학기_중간_중3_기출|7",
-    "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js|25_신흥중_1학기_중간_중3_기출|12",
-    "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js|25_신흥중_1학기_중간_중3_기출|23"
-  ],
-  "metadataCanonicalHoldReasons": {
-    "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js|25_신흥중_1학기_중간_중3_기출|7": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-    "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js|25_신흥중_1학기_중간_중3_기출|12": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-    "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js|25_신흥중_1학기_중간_중3_기출|23": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
-  },
-  "semanticFinalCount": 21,
-  "semanticHoldCount": 3,
+  "metadataCanonicalHoldCount": 0,
+  "metadataCanonicalHoldQids": [],
+  "metadataCanonicalHoldReasons": {},
+  "semanticFinalCount": 24,
+  "semanticHoldCount": 0,
   "projectionReuseCount": 0,
   "projectionBindingPendingCount": 2,
-  "projectionUnmaterializedCount": 19,
+  "projectionUnmaterializedCount": 22,
   "compiledRuntimeMaterializationRequired": false,
   "compiledRuntimeReason": "No reviewed row resolves to a full ACTIVE projection with exact 2015 M3 binding. DIRECT_BINDING_GAP rows remain metadata-only binding-pending; RPM_ONLY rows remain unmaterialized. Projection gaps are not semantic HOLDs.",
   "contentMutation": 0,
@@ -416,15 +408,22 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-01",
       "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-      "primaryMethod": "복수 개념 진술의 독립 판정",
-      "decisiveStep": "보기들이 제곱근·무리수·수직선의 서로 다른 RPM L4를 동등하게 요구해 하나의 primary를 정할 수 없다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "TRUE_META_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "primaryMethod": "실수 수직선과 유리수·무리수의 관계 판별",
+      "decisiveStep": "정의와 반례를 검토해 참인 ⑤가 유리수와 무리수가 실수 수직선을 함께 채운다는 명제임을 판별한다.",
+      "rpmRecordId": "M3-RPM-005",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "수직선과 제곱근",
+        "l4": "무리수의 위치"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
@@ -432,7 +431,7 @@
       "crossConceptReasons": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
-      "category": "복수 L4 진술 독립 판정",
+      "category": "무리수의 위치",
       "tags": [
         "실수",
         "유리수",
@@ -455,8 +454,8 @@
         "legacyLevelAtCompare": "중",
         "rationale": "q7: 여러 개념 진술을 직접 검산하는 구조로 전략 부담은 작다."
       },
-      "metadataReviewStatus": "META_REVIEW2_HOLD",
-      "metadataDisposition": "TRUE_META_HOLD"
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED"
     },
     {
       "sourceOrdinal": 8,
@@ -697,15 +696,22 @@
       "course": "중3 수학",
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "primaryMethod": "여러 곱셈공식의 계수 판정",
-      "decisiveStep": "다섯 보기가 서로 다른 곱셈공식 L4를 동등하게 사용하므로 unique primary를 정할 수 없다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "TRUE_META_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "primaryMethod": "여러 곱셈공식의 빈칸 계수 비교·판별",
+      "decisiveStep": "각 식을 전개해 빈칸의 계수 4, -3, -9, 8, 2를 비교하고 최솟값 -9를 고른다.",
+      "rpmRecordId": "M3-RPM-182",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식",
+        "l4": "여러 곱셈공식 비교·판별"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
@@ -713,12 +719,13 @@
       "crossConceptReasons": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
-      "category": "곱셈공식 복합 판정",
+      "category": "여러 곱셈공식 비교·판별",
       "tags": [
         "곱셈공식",
         "계수",
         "전개",
-        "복합판정"
+        "비교",
+        "판별"
       ],
       "difficulty": {
         "difficultyBucket": 1,
@@ -734,8 +741,8 @@
         "legacyLevelAtCompare": "하",
         "rationale": "q12: 각 보기의 빈칸 계수를 기본 전개로 바로 확인하는 직접 적용형이다."
       },
-      "metadataReviewStatus": "META_REVIEW2_HOLD",
-      "metadataDisposition": "TRUE_META_HOLD"
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED"
     },
     {
       "sourceOrdinal": 13,
@@ -1306,30 +1313,44 @@
       "curriculum": "2015",
       "course": "중3 수학",
       "standardUnitKey": "M3-02",
-      "subUnitKey": null,
-      "primaryMethod": "전개와 인수분해의 동등 결합",
-      "decisiveStep": "A,B는 다항식 곱셈에서, C,D는 인수분해에서 독립적으로 정해져 서로 다른 L2/L4가 동등하게 필요하다",
-      "rpmRecordId": null,
-      "rpmPath": null,
-      "semanticStatus": "HOLD",
-      "semanticDisposition": "TRUE_META_HOLD",
-      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-      "mappingStatus": null,
-      "projectionStatus": "NOT_ATTEMPTED",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "primaryMethod": "두 일차식 곱의 전개와 이차식 인수분해로 비밀번호 결정",
+      "decisiveStep": "첫 등식을 전개해 A=8, B=6을 구한 다음 둘째 이차식을 인수분해해 C=4, D=2를 구한다.",
+      "rpmRecordId": "M3-RPM-017",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M3-1",
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식",
+        "l4": "두 일차식의 곱"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
       "ownerPack": null,
-      "crossConceptKeys": [],
-      "crossConceptReasons": [],
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_FACTORIZATION"
+      ],
+      "crossConceptReasons": [
+        {
+          "conceptKey": "CC_POLYNOMIAL_FACTORIZATION",
+          "reason": "첫 등식의 전개로 A,B를 구한 뒤, 둘째 이차식의 인수분해로 C,D를 구하는 순차 결합이다."
+        }
+      ],
       "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "category": "전개·인수분해 복합 판정",
+      "integrationPattern": "SEQUENTIAL",
+      "category": "두 일차식의 곱",
       "tags": [
         "다항식",
         "전개",
         "인수분해",
         "계수비교",
-        "서술형"
+        "비밀번호"
       ],
       "difficulty": {
         "difficultyBucket": 2,
@@ -1345,8 +1366,8 @@
         "legacyLevelAtCompare": "중",
         "rationale": "q23: 두 기본 절차를 각각 수행해 네 자리 수를 조립하며 각 절차 자체는 표준적이다."
       },
-      "metadataReviewStatus": "META_REVIEW2_HOLD",
-      "metadataDisposition": "TRUE_META_HOLD"
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED"
     },
     {
       "sourceOrdinal": 24,
@@ -1417,8 +1438,8 @@
   "upstreamMetaReview1Commit": "3b629d6c39510e6955a81a6303e667585f4a2e5a",
   "upstreamMetaReview1ReceiptSha": "62d636f7e99e258ebe7e3ffeef4cf3e698988067",
   "upstreamMetaReview1PayloadSha": "2a687ef9d6f99ddb8f4cad3fafbd2626f4f72f23",
-  "currentMainSha": "ba82cbda9c17c13c09105d2a50398ffdce4ab944",
+  "currentMainSha": "3f64a2373eddacd19bc810422934e438ec09c237",
   "reviewIndependence": "THIRD_FRESH_META_PASS_FROM_CURRENT_MAIN_EXAM_AND_FINAL_SOLUTION; META_CREATE_AND_META_REVIEW1_VERDICTS_NOT_USED_AS_DECISION_AUTHORITY",
   "contentSemanticReaudit": "NOT_PERFORMED_FAST_TRACK",
-  "rpmPrimaryMigrationGapCount": 21
+  "rpmPrimaryMigrationGapCount": 24
 }

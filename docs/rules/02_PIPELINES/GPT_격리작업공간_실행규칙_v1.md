@@ -145,6 +145,52 @@ RELATED_MAIN_DRIFT_RESOLVED == true
 - 실제 변경 파일 목록
 - 필수 테스트 결과
 - 필요 시 runtime/catalog/compiled parity
+- branch/worktree를 사용한 경우 cleanup status와 retained ref 사유
+
+### 4.1 Worktree / temporary branch lifecycle cleanup — HARD
+
+branch/worktree를 사용한 작업은 코드·문서 수정과 remote push만으로 DONE이 아니다. **remote 보존 확인과 local checkout 정리, terminal 시 temporary ref 정리까지 lifecycle에 포함한다.**
+
+기본 흐름:
+
+```text
+WORK
+→ commit/push
+→ remote exact readback
+→ local worktree cleanup
+→ terminal MAIN_DONE이면 stale PR / temporary branch cleanup
+```
+
+#### Local worktree
+
+다음 조건을 모두 만족하면 `LOCAL_DELETE_SAFE`다.
+
+1. 현재 ACTIVE worker/automation이 해당 worktree를 사용하지 않는다.
+2. tracked working tree가 clean이다.
+3. source PDF, 수동 작성 문서, 유일 evidence, 미반영 산출물 같은 보존 가치 있는 unique untracked/ignored 파일이 없다.
+4. local HEAD commit을 보존하는 remote branch/tag/main이 실제 remote에 존재한다.
+5. 해당 remote ref HEAD와 local worktree HEAD가 exact하다.
+
+이 경우 **origin/main에 merge됐는지는 local worktree 삭제 필수조건이 아니다.** remote Git에 exact 보존된 checkout은 중복 복사본이므로 `git worktree remove <path>`로 제거하고 필요 시 `git worktree prune`한다.
+
+detached HEAD도 그 commit이 remote branch/tag/main에서 reachable하면 같은 기준으로 삭제 후보가 된다. remote 어디에도 없는 detached/local-only commit은 보호한다.
+
+#### Temporary branch / PR
+
+stage 중간의 remote branch는 다음 stage handoff authority가 될 수 있으므로 무조건 삭제하지 않는다. 최종 `MAIN_DONE / DO_NOT_REQUEUE` owner가 해당 작업의 stale review/repair/validation/release/publish refs와 PR을 sweep한다.
+
+temporary remote branch 삭제 전에는 다음을 모두 확인한다.
+
+- production 결과가 latest main에 반영되었거나 별도 canonical durable ref에 보존됨
+- 필요한 evidence/receipt/manifest가 main 또는 canonical durable location에 존재
+- ACTIVE worker/automation/open production PR이 사용하지 않음
+- branch에 main/다른 장기보존 ref 밖의 유일한 보존 필요 commit이 없음
+
+**삭제 금지:** Desktop main checkout, ACTIVE branch/worktree, dirty tracked changes, remote에 없는 local-only commit, local HEAD와 보존 remote HEAD가 다른 worktree, unique source/evidence/manual artifact가 있는 checkout, current authority가 실제 사용 중인 ref.
+
+branch는 history 저장소로 사용하지 않는다. 이력은 commit SHA / blob SHA / receipt / canonical 문서에 보존한다.
+
+cleanup 목적으로 `git clean`, reset, force push, force ref update, 임의 `git gc`를 사용하지 않는다.
 
 ---
 

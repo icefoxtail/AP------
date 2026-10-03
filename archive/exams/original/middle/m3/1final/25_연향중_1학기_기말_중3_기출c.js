@@ -368,7 +368,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "crossConceptKeys": ["CC_FUNCTION_MONOTONICITY", "CC_FUNCTION_SYMMETRY"]
   },
   {
     "id": 11,
@@ -535,7 +538,7 @@ window.questionBank = [
       "ㄹ과 ㅁ"
     ],
     "answer": "②",
-    "solution": "이차함수의 그래프를 평행이동하여 완전히 포개려면 포물선의 방향과 폭이 같아야 하므로 이차항의 계수가 같아야 한다.\nㄱ은 $y=-2x^2+5$이므로 이차항의 계수는 $-2$이다.\nㅁ은 $y=-2(x-2)^2+4$이므로 이차항의 계수도 $-2$이다.\n따라서 ㄱ의 그래프를 평행이동하면 ㅁ의 그래프와 완전히 포갤 수 있다.\n나머지 함수들의 이차항의 계수는 각각 $2,-1,1$로 서로 다르다.\n따라서 정답은 ②이다.",
+    "solution": "이차함수의 그래프를 평행이동하여 완전히 포개려면 포물선의 방향과 폭이 같아야 하므로 이차항의 계수가 같아야 한다.\n<br><br>\nㄱ. $y=5-2x^2$이므로 이차항의 계수는 $-2$이다.\n<br><br>\nㄷ. $y=-(x+1)^2$이므로 이차항의 계수는 $-1$이다.\n<br><br>\nㅁ. $y=-2(x-2)^2+4$이므로 이차항의 계수는 $-2$이다.\n따라서 ㄱ과 ㅁ은 이차항의 계수가 같아 평행이동하여 완전히 포갤 수 있다.\nㄴ, ㄹ의 이차항의 계수는 각각 $2$, $1$로 다르다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",

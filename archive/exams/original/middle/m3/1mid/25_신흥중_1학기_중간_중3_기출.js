@@ -594,7 +594,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$x^3-7x^2=x^2(x-7)=x(x^2-7x)$이다.\n따라서 보기의 $x$, $x-7$, $x^2-7x$는 인수이고 $1$도 인수로 볼 수 있다. 이 문제에서 사용하는 중학교 정수계수 다항식의 인수분해 기준으로 $7x$는 해당하지 않는다.\n따라서 정답은 ④이다.",
+    "solution": "$x^3-7x^2=x^2(x-7)$이다.\n따라서 정답은 ④이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",

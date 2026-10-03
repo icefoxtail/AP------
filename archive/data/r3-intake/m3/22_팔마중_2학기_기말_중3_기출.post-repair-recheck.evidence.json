@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POST_REPAIR_RECHECK_EVIDENCE_v1",
+  "stage": "POST_REPAIR_RECHECK",
+  "canonicalStage": "R3",
+  "canonicalOrdinal": 66,
+  "examUid": "m3/2final/22-palma",
+  "examFile": "22_팔마중_2학기_기말_중3_기출.js",
+  "reviewAttemptId": "POST_REPAIR_RECHECK:m3/2final/22-palma:90e35dba8555051d8d66613d72d0fdb6e07521d4aff9cf66f8dda69e6ba4df8e:1",
+  "currentAuthorityMain": "1c0f07eaa29bf4049f36530e16a782b3f7033657",
+  "validationSurfaceCommit": "3cc52315fde57bc29b8cde8b4f9cdf95ea23f133",
+  "finalArtifactSha": "sha256:90e35dba8555051d8d66613d72d0fdb6e07521d4aff9cf66f8dda69e6ba4df8e",
+  "examGitBlobSha": "bef78247ee090a57cbd83f01043ad8ff94df4864",
+  "inputPhysicalEvidenceGitBlobSha": "9da1e3e66486124cdeab834893e72ba8ad951fe3",
+  "compatibilityDecisionSnapshot": {
+    "priorContextAllowed": true,
+    "independentlyRecalculated": true,
+    "changedLocus": [
+      {
+        "qid": 5,
+        "field": "templateKey",
+        "result": "PASS",
+        "rpmRecordId": "M3-RPM-080",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      {
+        "qid": null,
+        "field": "window.examTitle",
+        "result": "PASS"
+      }
+    ],
+    "q5Math": {
+      "result": "PASS",
+      "answerChoice": 4,
+      "derivedValueDegrees": 70,
+      "basis": [
+        "tangent-chord angle",
+        "AD=BD",
+        "cyclic quadrilateral supplementary angles"
+      ]
+    },
+    "directDependencyResult": "PASS",
+    "lockedScopeMutationCount": 0,
+    "finalArtifactShaParity": true
+  },
+  "codexReview": {
+    "pullRequest": 155,
+    "reviewedCommit": "27f6875026fcf3157b8cbe2cdd2d2c8a52f19b7b",
+    "status": "COMPLETED",
+    "majorIssuesFound": false,
+    "optionalForStageGate": true
+  },
+  "canonicalValidator": {
+    "pullRequest": 165,
+    "runId": 37079152859,
+    "jobId": 111075615592,
+    "executor": "GITHUB_ACTIONS",
+    "targetGate": {
+      "ok": true,
+      "stage": "R3",
+      "examSha256": "sha256:90e35dba8555051d8d66613d72d0fdb6e07521d4aff9cf66f8dda69e6ba4df8e",
+      "questionCount": 25,
+      "questionEvidenceRows": 25,
+      "linkedSolutionVisualCount": 2,
+      "visualEvidenceRows": 2,
+      "metaEvidenceRows": 25,
+      "itemHoldCount": 0,
+      "itemHoldQids": [],
+      "disposition": "PASS",
+      "issues": []
+    },
+    "workflowConclusion": "failure",
+    "workflowFailureScope": "UNRELATED_REPOSITORY_BASELINE_TESTS"
+  },
+  "disposition": "POST_REPAIR_RECHECK_PASS",
+  "nextStage": "RELEASE_QUEUE"
+}
