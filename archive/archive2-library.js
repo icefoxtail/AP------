@@ -48,6 +48,17 @@
         : paper);
     } else if (patch.kind === "remove") {
       papers = papers.filter((paper) => paper.id !== patch.paperId);
+    } else if (patch.kind === "status" && patch.paper?.id) {
+      if (patch.paper.library_status === statusFilter) {
+        const currentIndex = papers.findIndex((paper) => paper.id === patch.paper.id);
+        if (currentIndex >= 0) {
+          papers[currentIndex] = { ...papers[currentIndex], ...patch.paper };
+        } else {
+          papers = [patch.paper, ...papers];
+        }
+      } else {
+        papers = papers.filter((paper) => paper.id !== patch.paper.id);
+      }
     } else if (patch.kind === "insert" && statusFilter === "ACTIVE" && patch.paper?.id) {
       papers = [patch.paper, ...papers.filter((paper) => paper.id !== patch.paper.id)];
     } else return null;
@@ -376,12 +387,22 @@
             window.Archive2WorkspaceShowSavedPaper(copyId, currentView);
           else await render(host, copyId, currentView);
         } else if (action === "library-status") {
-          await apiClient().request(
+          const result = await apiClient().request(
             "/archive-saved-papers/" + encodeURIComponent(id) + "/library",
             { status: button.dataset.status },
             "PATCH",
           );
-          invalidateSavedLibraryListContext({ kind: "remove", paperId: id });
+          const updatedPaper = result.paper?.id ? result.paper : viewState.paper
+            ? {
+              id: viewState.paper.id,
+              title: viewState.paper.title,
+              library_display_name: viewState.paper.library_display_name,
+              library_status: button.dataset.status,
+            }
+            : null;
+          invalidateSavedLibraryListContext(updatedPaper?.id
+            ? { kind: "status", paper: updatedPaper }
+            : null);
           if (viewState.paperId) await render(host, viewState.paperId, currentView, { forceRefresh: true });
           else await render(host, "", currentView, { forceRefresh: true });
         } else if (action === "delete") {

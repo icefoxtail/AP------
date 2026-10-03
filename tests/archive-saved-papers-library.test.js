@@ -604,10 +604,25 @@ test("detail mutations invalidate the previous Saved Library list cache before B
     localStorage: global.localStorage, document: global.document, confirm: global.confirm,
   };
   const scenarios = [
-    { status: "ACTIVE", action: "rename", nextName: "이름 B", expected: "이름 B" },
-    { status: "ACTIVE", action: "library-status", nextStatus: "ARCHIVED", expected: null },
-    { status: "ACTIVE", action: "delete", expected: null },
+    { status: "ACTIVE", actions: [{ kind: "rename", name: "이름 B" }], expectedName: "이름 B", expectedStatus: "ACTIVE" },
+    { status: "ACTIVE", actions: [{ kind: "status", status: "ARCHIVED" }], expectedStatus: null },
+    { status: "ACTIVE", actions: [{ kind: "delete" }], expectedStatus: null },
+    { status: "ACTIVE", actions: [
+      { kind: "status", status: "ARCHIVED" }, { kind: "status", status: "ACTIVE" },
+    ], expectedStatus: "ACTIVE" },
+    { status: "ARCHIVED", actions: [
+      { kind: "status", status: "ACTIVE" }, { kind: "status", status: "ARCHIVED" },
+    ], expectedStatus: "ARCHIVED" },
+    { status: "TRASHED", actions: [
+      { kind: "status", status: "ACTIVE" }, { kind: "status", status: "TRASHED" },
+    ], expectedStatus: "TRASHED" },
+    { status: "ACTIVE", actions: [
+      { kind: "rename", name: "최신 이름" },
+      { kind: "status", status: "ARCHIVED" }, { kind: "status", status: "ACTIVE" },
+    ], expectedName: "최신 이름", expectedStatus: "ACTIVE" },
   ];
+  const libraryModulePath = require.resolve("../archive/archive2-library.js");
+  let activeLibrary = library;
   try {
     for (let index = 0; index < scenarios.length; index++) {
       const scenario = scenarios[index];
@@ -628,7 +643,7 @@ test("detail mutations invalidate the previous Saved Library list cache before B
         sessionStorage: session,
         scrollY: 240,
         scrollTo() {},
-        prompt: () => scenario.nextName,
+        prompt: () => scenario.actions.find(action => action.kind === "rename")?.name || null,
         crypto: { randomUUID: () => "00000000-0000-4000-8000-000000000099" },
         Archive2Output: outputWithCapture(),
         Archive2Api: {
@@ -655,33 +670,40 @@ test("detail mutations invalidate the previous Saved Library list cache before B
       };
       const host = { innerHTML: "", prepend() {} };
       const listRoute = `https://archive.test/archive/workspace.html?view=saved&status=${scenario.status}`;
-      await library.render(host, "", scenario.status);
+      await activeLibrary.render(host, "", scenario.status);
       assert.match(host.innerHTML, /이름 A/);
       const cachedListState = structuredClone(global.history.state);
       const firstListReads = requests.filter(row => row.route.startsWith("/archive-saved-papers?")).length;
 
       global.history.state = { archive2SavedLibraryDetail: true, archive2ScrollY: 0 };
       global.location = new URL(`https://archive.test/archive/workspace.html?view=saved&paper_id=${id}&status=${scenario.status}`);
-      await library.render(host, id, scenario.status);
-      const button = scenario.action === "rename"
-        ? { dataset: { libraryAction: "rename", paperId: id } }
-        : scenario.action === "delete"
-          ? { dataset: { libraryAction: "delete", paperId: id } }
-          : { dataset: { libraryAction: "library-status", paperId: id, status: scenario.nextStatus } };
-      await host.onclick({ target: { closest: () => button }, preventDefault() {}, stopPropagation() {} });
-      assert.ok(session.getItem("archive2.saved-paper-list-invalidated.v1"));
+      await activeLibrary.render(host, id, scenario.status);
+      for (const action of scenario.actions) {
+        const button = action.kind === "rename"
+          ? { dataset: { libraryAction: "rename", paperId: id } }
+          : action.kind === "delete"
+            ? { dataset: { libraryAction: "delete", paperId: id } }
+            : { dataset: { libraryAction: "library-status", paperId: id, status: action.status } };
+        await host.onclick({ target: { closest: () => button }, preventDefault() {}, stopPropagation() {} });
+        assert.ok(session.getItem("archive2.saved-paper-list-invalidated.v1"));
+      }
 
       const listReadsBeforeBack = requests.filter(row => row.route.startsWith("/archive-saved-papers?")).length;
       global.history.state = cachedListState;
       global.location = new URL(listRoute);
-      await library.render(host, "", scenario.status);
+      delete require.cache[libraryModulePath];
+      activeLibrary = require(libraryModulePath);
+      await activeLibrary.render(host, "", scenario.status);
       const listReadsAfterBack = requests.filter(row => row.route.startsWith("/archive-saved-papers?")).length;
       assert.equal(listReadsAfterBack, listReadsBeforeBack, "Back restores the exact patched context without reusing stale rows");
       assert.equal(session.getItem("archive2.saved-paper-list-invalidated.v1"), null);
       assert.equal(global.history.state.archive2SavedLibrary.cursor, "cursor-before-mutation");
       assert.equal(global.history.state.archive2SavedLibrary.scrollY, 240);
-      if (scenario.expected) assert.match(host.innerHTML, new RegExp(scenario.expected));
-      else assert.doesNotMatch(host.innerHTML, new RegExp(id));
+      if (scenario.expectedStatus) {
+        assert.match(host.innerHTML, new RegExp(id));
+        assert.equal(global.history.state.archive2SavedLibrary.papers[0].library_status, scenario.expectedStatus);
+      } else assert.doesNotMatch(host.innerHTML, new RegExp(id));
+      if (scenario.expectedName) assert.match(host.innerHTML, new RegExp(scenario.expectedName));
     }
   } finally {
     if (previous.window === undefined) delete global.window; else global.window = previous.window;
