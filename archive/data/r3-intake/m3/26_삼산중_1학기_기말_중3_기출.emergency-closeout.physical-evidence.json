@@ -19,7 +19,7 @@
     "status": "PASS",
     "protectedFieldAuditCount": "24/24",
     "contentMutation": 0,
-    "evidence": "Current main exam blob is exact to the frozen R3 input artifact; this closeout changes metadata evidence only."
+    "evidence": "Current main exam blob is exact to frozen R3 input artifact; closeout changes evidence only."
   },
   "curriculumMethodAuditCount": "24/24",
   "curriculumViolationQids": [],
@@ -36,7 +36,7 @@
       ],
       "code": "TARGETED_PRIMARY_PLUS_CROSSCONCEPT_REPAIR_CLOSED",
       "blocking": false,
-      "evidence": "q21: source score 3 vs 2 gives deterministic complete-square primary and factorization remains ACTIVE CrossConcept. q24: terminal graph-position/range decision consumes coefficient setup, with vertex/range support. No canonical mutation."
+      "evidence": "q21 uses source score-weight tie-break; q24 uses terminal dependency tie-break. No canonical mutation."
     },
     {
       "axis": "META",
@@ -1017,25 +1017,7 @@
       },
       "meta": {
         "status": "PASS",
-        "evidence": "Targeted fail-packet repair only. Source score weights are 3 points for complete-square and 2 for factorization, giving a deterministic primary tie-break. Primary M3-RPM-034; factorization preserved as ACTIVE CC_POLYNOMIAL_FACTORIZATION. Exam bytes unchanged.",
-        "primaryMethod": "완전제곱식을 이용한 이차방정식 풀이",
-        "decisiveStep": "3점인 (2) 완전제곱식 풀이를 primary로 고정하고 2점인 (1) 인수분해를 보조 결정개념으로 보존한다.",
-        "rpmRecordId": "M3-RPM-034",
-        "rpmDisposition": "RPM_ONLY",
-        "projectionDisposition": "PROJECTION_UNMATERIALIZED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "crossConceptKeys": [
-          "CC_POLYNOMIAL_FACTORIZATION"
-        ],
-        "conditionKeys": [],
-        "nullReason": "Current RPM semantic suffices; no new PT/TPL canonicalization.",
-        "repairBasis": {
-          "failureCodeClosed": "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
-          "deterministicTieBreak": "SOURCE_EXPLICIT_SCORE_WEIGHT_3_VS_2",
-          "supportingRpmRecordId": "M3-RPM-032",
-          "supportingConceptKey": "CC_POLYNOMIAL_FACTORIZATION"
-        }
+        "evidence": "Targeted fail-packet meta repair. Source weights part (2) complete-square 3 points vs part (1) factorization 2 points, so M3-RPM-034 is deterministic primary; CC_POLYNOMIAL_FACTORIZATION preserves the other required method."
       },
       "difficulty": {
         "status": "PASS",
@@ -1164,28 +1146,7 @@
       },
       "meta": {
         "status": "PASS",
-        "evidence": "Targeted fail-packet repair only. Part (1) establishes vertex-form coefficients and part (2) is the terminal required range judgment consuming part (1). Primary M3-RPM-053; CC_VERTEX and COND_RANGE preserve support semantics. Exam bytes unchanged.",
-        "primaryMethod": "그래프 위치 조건으로 계수의 범위 판정",
-        "decisiveStep": "꼭짓점형의 c=4a-3을 사용해 제3사분면을 지나지 않는 조건 y(0)>=0으로 a>=3/4를 확정한다.",
-        "rpmRecordId": "M3-RPM-053",
-        "rpmDisposition": "RPM_ONLY",
-        "projectionDisposition": "PROJECTION_UNMATERIALIZED",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "crossConceptKeys": [
-          "CC_VERTEX"
-        ],
-        "conditionKeys": [
-          "COND_RANGE"
-        ],
-        "nullReason": "Current RPM semantic suffices; no new PT/TPL canonicalization.",
-        "repairBasis": {
-          "failureCodeClosed": "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
-          "deterministicTieBreak": "TERMINAL_DEPENDENCY_PART2_CONSUMES_PART1",
-          "supportingRpmRecordId": "M3-RPM-054",
-          "supportingConceptKey": "CC_VERTEX",
-          "conditionKey": "COND_RANGE"
-        }
+        "evidence": "Targeted fail-packet meta repair. Part (2) is the terminal range judgment and consumes part (1)'s coefficient setup, so M3-RPM-053 graph-position is primary; CC_VERTEX and COND_RANGE preserve support semantics."
       },
       "difficulty": {
         "status": "PASS",
@@ -1565,11 +1526,11 @@
     },
     {
       "qid": 21,
-      "result": "HOLD",
-      "primaryMethod": "인수분해 풀이와 완전제곱식 풀이의 독립 서술",
-      "decisiveStep": "두 지정 방법을 각각 수행해야 문항 전체가 완결된다.",
-      "rpmDisposition": "TRUE_META_HOLD",
-      "projectionDisposition": "NOT_ATTEMPTED",
+      "result": "PASS",
+      "primaryMethod": "완전제곱식을 이용한 이차방정식 풀이",
+      "decisiveStep": "3점인 (2)의 완전제곱식 풀이를 primary로 고정하고 2점인 (1)의 인수분해를 ACTIVE 보조 개념으로 보존한다.",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
       "lookupRefs": [
         "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
         "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
@@ -1578,20 +1539,16 @@
       ],
       "problemTypeKey": null,
       "templateKey": null,
-      "nullReason": "두 독립 필수 RPM L4를 한 primary로 임의 없이 축약할 수 없다.",
-      "holdEvidence": {
-        "reason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-        "observedEvidence": "(1) 인수분해 풀이와 (2) 완전제곱식 풀이를 각각 독립 부분점수로 명시해 두 current M3 RPM L4가 모두 필수다.",
-        "unresolvedPoint": "문항 전체를 대표하는 단일 RPM L3/L4를 source+verified solution만으로 유일하게 정할 수 없다.",
-        "nextRequiredEvidenceOrCapability": "복수 독립 채점축을 손실 없이 표현하는 canonical composite semantic 또는 임의성 없는 explicit primary authority.",
-        "repairAttempted": "R3 direct repair 없이 current source+solution에서 primary/decisive step을 재도출하고 current M3 RPM, lower-only prerequisite route, crosswalk, GLOBAL ACTIVE를 재조회했다.",
-        "authorityLookupAttempted": [
-          "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
-          "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
-          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
-          "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
-        ],
-        "whyDeterministicClosureImpossible": "각 요구의 수학적 진실값은 결정되지만 독립 필수 semantic 축을 하나로 축약할 canonical tie-break가 없어 한 leaf 선택은 임의적 정보 손실이다."
+      "nullReason": "Current RPM semantic is deterministic; no new PT/TPL canonicalization is performed.",
+      "rpmRecordId": "M3-RPM-034",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "repairBasis": {
+        "failureCodeClosed": "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
+        "deterministicTieBreak": "SOURCE_EXPLICIT_SCORE_WEIGHT_3_VS_2",
+        "supportingRpmRecordId": "M3-RPM-032"
       }
     },
     {
@@ -1637,11 +1594,11 @@
     },
     {
       "qid": 24,
-      "result": "HOLD",
-      "primaryMethod": "꼭짓점형 계수 결정과 사분면 범위 판정의 독립 서술",
-      "decisiveStep": "계수 비교와 그래프 위치·범위 판정이 각각 필수다.",
-      "rpmDisposition": "TRUE_META_HOLD",
-      "projectionDisposition": "NOT_ATTEMPTED",
+      "result": "PASS",
+      "primaryMethod": "그래프 위치 조건으로 계수의 범위 판정",
+      "decisiveStep": "꼭짓점형에서 얻은 c=4a-3을 사용해 제3사분면을 지나지 않는 조건으로 a>=3/4를 확정한다.",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
       "lookupRefs": [
         "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
         "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
@@ -1650,20 +1607,18 @@
       ],
       "problemTypeKey": null,
       "templateKey": null,
-      "nullReason": "두 독립 필수 RPM semantic 축에 unique primary tie-break가 없다.",
-      "holdEvidence": {
-        "reason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
-        "observedEvidence": "(1) 꼭짓점형 계수 결정과 (2) 사분면 조건 범위 판정을 각각 3점 독립 채점으로 요구해 두 semantic 축이 동등 필수다.",
-        "unresolvedPoint": "문항 전체를 대표하는 단일 RPM L3/L4를 source+verified solution만으로 유일하게 정할 수 없다.",
-        "nextRequiredEvidenceOrCapability": "복수 독립 채점축을 손실 없이 표현하는 canonical composite semantic 또는 임의성 없는 explicit primary authority.",
-        "repairAttempted": "R3 direct repair 없이 current source+solution에서 primary/decisive step을 재도출하고 current M3 RPM, lower-only prerequisite route, crosswalk, GLOBAL ACTIVE를 재조회했다.",
-        "authorityLookupAttempted": [
-          "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
-          "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
-          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
-          "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
-        ],
-        "whyDeterministicClosureImpossible": "각 요구의 수학적 진실값은 결정되지만 독립 필수 semantic 축을 하나로 축약할 canonical tie-break가 없어 한 leaf 선택은 임의적 정보 손실이다."
+      "nullReason": "Current RPM semantic is deterministic; no new PT/TPL canonicalization is performed.",
+      "rpmRecordId": "M3-RPM-053",
+      "crossConceptKeys": [
+        "CC_VERTEX"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "repairBasis": {
+        "failureCodeClosed": "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
+        "deterministicTieBreak": "TERMINAL_DEPENDENCY_PART2_CONSUMES_PART1",
+        "supportingRpmRecordId": "M3-RPM-054"
       }
     }
   ],
@@ -1677,7 +1632,7 @@
   },
   "overallProtocolDisposition": "PASS",
   "overallProtocolFailureCodes": [],
-  "note": "Emergency closeout targeted only q21/q24 meta HOLDs. No production exam/source/answer/solution/image mutation; no full recertification; no canonical registry mutation.",
+  "note": "Emergency closeout targeted q21/q24 meta HOLDs only; production exam bytes unchanged; no full recertification; no canonical registry mutation.",
   "closeoutMode": "USER_TEMP_M3_EMERGENCY_CLOSEOUT",
   "closeoutDirective": "EXISTING_MAIN_OPERATIONALLY_CERTIFIED_TARGETED_OPEN_LOCUS_ONLY",
   "observedMainAtCloseout": "546afa1b6973514f625c2d1d98cbcab178cc7e79",
