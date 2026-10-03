@@ -139,7 +139,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $\\sqrt3\\times\\sqrt{12}=\\sqrt{36}=6$이다.\\n② $3\\sqrt3\\times\\sqrt{18}\\times\\sqrt{\\frac16}=3\\sqrt9=9$이다.\\n③ $3\\sqrt6\\div\\sqrt3=3\\sqrt2$이다.\\n④ $\\sqrt{\\frac{3}{16}}\\times\\sqrt{\\frac23}\\div\\sqrt2=\\sqrt{\\frac1{16}}=\\frac14$이므로 $\\frac18$이 아니다.\\n⑤ $\\sqrt{48}\\div\\sqrt4\\times\\sqrt3=\\sqrt{12}\\times\\sqrt3=6$이다.\\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "① $\\sqrt3\\times\\sqrt{12}=\\sqrt{36}=6$이다.\n\n② $3\\sqrt3\\times\\sqrt{18}\\times\\sqrt{\\frac16}=3\\sqrt9=9$이다.\n\n③ $3\\sqrt6\\div\\sqrt3=3\\sqrt2$이다.\n\n④ $\\sqrt{\\frac{3}{16}}\\times\\sqrt{\\frac23}\\div\\sqrt2=\\sqrt{\\frac1{16}}=\\frac14$이므로 $\\frac18$이 아니다.\n\n⑤ $\\sqrt{48}\\div\\sqrt4\\times\\sqrt3=\\sqrt{12}\\times\\sqrt3=6$이다.\n\n따라서 옳지 않은 것은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -325,7 +325,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $-\\sqrt{18}<-4$이므로 거짓이다.\\n② $(2\\sqrt{11})^2=44<(3\\sqrt5)^2=45$이므로 거짓이다.\\n③ $\\sqrt2+1<3$이므로 거짓이다.\\n④ $5\\sqrt6<6\\sqrt5$이므로 거짓이다.\\n⑤는 $5\\sqrt3>6\\sqrt2$와 같고 $75>72$이므로 참이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "① $-\\sqrt{18}<-4$이므로 거짓이다.\n\n② $(2\\sqrt{11})^2=44<(3\\sqrt5)^2=45$이므로 거짓이다.\n\n③ $\\sqrt2+1<3$이므로 거짓이다.\n\n④ $5\\sqrt6<6\\sqrt5$이므로 거짓이다.\n\n⑤는 $5\\sqrt3>6\\sqrt2$와 같고 $75>72$이므로 참이다.\n\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -362,7 +362,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$0<a<1$이면 $a^2<a<\\sqrt a<1$이고 $1<\\dfrac1{\\sqrt a}<\\dfrac1a$이다.\\n따라서 가장 큰 수는 $\\dfrac1a$이므로 정답은 ④이다.",
+    "solution": "$0<a<1$이면 $a^2<a<\\sqrt a<1$이고 $1<\\dfrac1{\\sqrt a}<\\dfrac1a$이다.\n따라서 가장 큰 수는 $\\dfrac1a$이므로 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -435,7 +435,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$a,b>0$이므로 $a\\sqrt{\\dfrac{2b}{a}}=\\sqrt{2ab}=4\\sqrt2$이고, $b\\sqrt{\\dfrac{8a}{b}}=\\sqrt{8ab}=8\\sqrt2$이다.\\n따라서 합은 $12\\sqrt2$이므로 정답은 ④이다.",
+    "solution": "$a,b>0$이므로 $a\\sqrt{\\dfrac{2b}{a}}=\\sqrt{2ab}=4\\sqrt2$이고, $b\\sqrt{\\dfrac{8a}{b}}=\\sqrt{8ab}=8\\sqrt2$이다.\n따라서 합은 $12\\sqrt2$이므로 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -471,7 +471,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x^4-1=(x^2-1)(x^2+1)=(x-1)(x+1)(x^2+1)$이다.\\n따라서 $x+2$는 인수가 아니므로 정답은 ⑤이다.",
+    "solution": "$x^4-1=(x^2-1)(x^2+1)=(x-1)(x+1)(x^2+1)$이다.\n따라서 $x+2$는 인수가 아니므로 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -507,7 +507,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $a^2+8a+16=(a+4)^2$이다.\\n② $\\dfrac14x^2+x+1=(\\dfrac12x+1)^2$이다.\\n③ $1+2y+y^2=(y+1)^2$이다.\\n④ $(3a+4b)^2=9a^2+24ab+16b^2$이므로 가운데 항이 $30ab$인 식은 완전제곱식이 아니다.\\n⑤ $3x^2-12xy+12y^2=(\\sqrt3x-2\\sqrt3y)^2$이다.\\n따라서 정답은 ④이다.",
+    "solution": "① $a^2+8a+16=(a+4)^2$이다.\n\n② $\\dfrac14x^2+x+1=(\\dfrac12x+1)^2$이다.\n\n③ $1+2y+y^2=(y+1)^2$이다.\n\n④ $(3a+4b)^2=9a^2+24ab+16b^2$이므로 가운데 항이 $30ab$인 식은 완전제곱식이 아니다.\n\n⑤ $3x^2-12xy+12y^2=(\\sqrt3x-2\\sqrt3y)^2$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -543,7 +543,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $x^2-49=(x-7)(x+7)$이다.\\n② $(x-3)(x+2)=x^2-x-6$이다.\\n③ $x^2-4x+4=(x-2)^2$이다.\\n④ $2a^2-8ab+4a=2a(a-4b+2)$이다.\\n⑤ $x^2-25=(x+5)(x-5)$이다.\\n따라서 바르게 인수분해한 것은 ⑤이다.",
+    "solution": "① $x^2-49=(x-7)(x+7)$이다.\n\n② $(x-3)(x+2)=x^2-x-6$이다.\n\n③ $x^2-4x+4=(x-2)^2$이다.\n\n④ $2a^2-8ab+4a=2a(a-4b+2)$이다.\n\n⑤ $x^2-25=(x+5)(x-5)$이다.\n\n따라서 바르게 인수분해한 것은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -655,7 +655,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$xy=(\\sqrt3+2\\sqrt2)(\\sqrt3-2\\sqrt2)=-5$이고 $x^2-y^2=(x+y)(x-y)=8\\sqrt6$이다.\\n따라서 $x^3y-xy^3=xy(x^2-y^2)=-40\\sqrt6$이므로 정답은 ①이다.",
+    "solution": "$xy=(\\sqrt3+2\\sqrt2)(\\sqrt3-2\\sqrt2)=-5$이고 $x^2-y^2=(x+y)(x-y)=8\\sqrt6$이다.\n따라서 $x^3y-xy^3=xy(x^2-y^2)=-40\\sqrt6$이므로 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -730,7 +730,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $2(91^2-9^2)=16400$\\n② $103\\times97=9991$\\n③ $103^2-6\\cdot103+9=10000$\\n④ $47(62+38)=4700$\\n⑤ $11^2-2^2+13^2-14^2+15^2-16^2=59$이다.\\n따라서 가장 큰 값은 ①이다.",
+    "solution": "① $2(91^2-9^2)=16400$\n\n② $103\\times97=9991$\n\n③ $103^2-6\\cdot103+9=10000$\n\n④ $47(62+38)=4700$\n\n⑤ $11^2-2^2+13^2-14^2+15^2-16^2=59$이다.\n\n따라서 가장 큰 값은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -767,7 +767,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "서인이의 식에서 상수항은 $B=12$, 한별이의 식에서 일차항의 계수는 $A=-8$이다.\\n따라서 처음 식은 $x^2-8x+12=(x-2)(x-6)$이므로 정답은 ②이다.",
+    "solution": "서인이의 식에서 상수항은 $B=12$, 한별이의 식에서 일차항의 계수는 $A=-8$이다.\n따라서 처음 식은 $x^2-8x+12=(x-2)(x-6)$이므로 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -808,7 +808,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "$0 < a < 1$일 때, 다음 식을 간단히 하시오. (4점)\\n$5\\sqrt{a^{2}}+2\\sqrt{(a+\\frac{1}{a})^{2}-4}-2\\sqrt{(a-\\frac{1}{a})^{2}+4}$",
+    "content": "$0 < a < 1$일 때, 다음 식을 간단히 하시오. (4점)\n$5\\sqrt{a^{2}}+2\\sqrt{(a+\\frac{1}{a})^{2}-4}-2\\sqrt{(a-\\frac{1}{a})^{2}+4}$",
     "choices": [],
     "answer": "a",
     "category": "인수분해의 활용",
@@ -830,7 +830,7 @@ window.questionBank = [
       "상급"
     ],
     "wide": false,
-    "solution": "$0<a<1$이므로 $\\sqrt{a^2}=a$이다.\\n$(a+\\dfrac1a)^2-4=(\\dfrac1a-a)^2$, $(a-\\dfrac1a)^2+4=(a+\\dfrac1a)^2$이다.\\n부호를 반영하면 식은 $5a+2(\\dfrac1a-a)-2(a+\\dfrac1a)=a$이다.",
+    "solution": "$0<a<1$이므로 $\\sqrt{a^2}=a$이다.\n$(a+\\dfrac1a)^2-4=(\\dfrac1a-a)^2$, $(a-\\dfrac1a)^2+4=(a+\\dfrac1a)^2$이다.\n부호를 반영하면 식은 $5a+2(\\dfrac1a-a)-2(a+\\dfrac1a)=a$이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -839,7 +839,7 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "content": "다음 식을 인수분해 하시오. (8점)\\n(1) $a^{2}b-2ab+3ab^{2}$\\n(2) $x^{2}-10xy+25y^{2}$\\n(3) $9x^{2}-16y^{2}$\\n(4) $x^{2}-5x+6$",
+    "content": "다음 식을 인수분해 하시오. (8점)\n\n(1) $a^{2}b-2ab+3ab^{2}$\n\n(2) $x^{2}-10xy+25y^{2}$\n\n(3) $9x^{2}-16y^{2}$\n\n(4) $x^{2}-5x+6$",
     "choices": [],
     "answer": "(1) ab(a-2+3b), (2) (x-5y)^2, (3) (3x+4y)(3x-4y), (4) (x-2)(x-3)",
     "category": "인수분해",
@@ -861,7 +861,7 @@ window.questionBank = [
       "계산과정"
     ],
     "wide": false,
-    "solution": "(1) 공통인수 $ab$를 묶으면 $ab(a-2+3b)$이다.\\n(2) $x^2-10xy+25y^2=x^2-2\\cdot x\\cdot 5y+(5y)^2=(x-5y)^2$이다.\\n(3) $9x^2-16y^2=(3x)^2-(4y)^2=(3x+4y)(3x-4y)$이다.\\n(4) 곱이 6이고 합이 -5인 두 수는 -2, -3이므로 $x^2-5x+6=(x-2)(x-3)$이다.",
+    "solution": "(1) 공통인수 $ab$를 묶으면 $ab(a-2+3b)$이다.\n\n(2) $x^2-10xy+25y^2=x^2-2\\cdot x\\cdot 5y+(5y)^2=(x-5y)^2$이다.\n\n(3) $9x^2-16y^2=(3x)^2-(4y)^2=(3x+4y)(3x-4y)$이다.\n\n(4) 곱이 6이고 합이 -5인 두 수는 -2, -3이므로 $x^2-5x+6=(x-2)(x-3)$이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
