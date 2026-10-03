@@ -4,12 +4,15 @@
   "certificationTrack": "FULL_INTEGRATED_V2",
   "stage": "CREATE",
   "canonicalOrdinal": 17,
-  "executionMode": "ACTUAL_NODE_CLI_GITHUB_ACTIONS_PULL_REQUEST_VALIDATION",
+  "executionMode": "ACTUAL_NODE_CLI_GITHUB_ACTIONS_PR_VALIDATION",
   "workflowRunId": 37134930812,
   "workflowJobId": 111237431892,
   "workflowHeadSha": "0ee3a812a6d2622f15f527dbdb09e29970129eb3",
   "validationBranch": "review/m2-o17-create-gate-20261003-2348",
-  "validationPullRequest": 181,
+  "validationPrNumber": 181,
+  "workflowOverallConclusion": "failure",
+  "workflowOverallFailureScope": "UNRELATED_GLOBAL_CI_AFTER_TARGET_CANONICAL_PASS",
+  "unrelatedBlockingFailureCount": 7,
   "calibrationValidatorPath": "archive/tools/solution-calibration-gate.mjs",
   "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
   "canonicalValidatorPath": "archive/tools/review-evidence-gate.mjs",
@@ -47,10 +50,5 @@
     "disposition": "PASS_WITH_ITEM_HOLDS",
     "issues": []
   },
-  "repositoryCiContext": {
-    "overallRunConclusion": "failure",
-    "targetCanonicalGate": "PASS_WITH_ITEM_HOLDS",
-    "unrelatedBlockingFailures": 7,
-    "note": "The exact o17 CREATE canonical gate passed in CI. The workflow's overall failure is from seven unrelated repository-wide tests and is not used as target-local validator failure authority."
-  }
+  "targetGateLogMarker": "M2 o17 CREATE canonical gates PASS"
 }
