@@ -225,8 +225,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[핵심] 연립일차방정식의 해의 개수는 두 직선의 위치 관계로 판단한다.\n\n① $a\\ne a'$, $b\\ne b'$만으로는 평행 여부를 정할 수 없으므로 항상 해가 없는 것은 아니다.\n\n② 세 계수가 모두 같으면 두 식이 같은 직선이므로 해가 무수히 많다.\n\n③ $a=a'$, $b=b'$, $c\\ne c'$이면 서로 다른 평행선이므로 해가 없다.\n\n④ 첫 식은 $y$가 일정한 수평선, 둘째 식은 $x$가 일정한 수직선이므로 반드시 한 점에서 만난다.\n\n⑤ $x+y+2=0$, $x+2y+4=0$을 풀면 $(x,y)=(0,-2)$이므로 제시한 $(0,2)$가 아니다.\n\n따라서 옳은 것은 ④이다.",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -561,8 +561,8 @@ window.questionBank = [
     ],
     "answer": "②, ④",
     "solution": "[핵심] 방정식을 $y=mx+n$ 꼴로 바꿔 기울기와 절편을 확인한다.\n$-5x+2y+1=0$에서\n$2y=5x-1$,\n$y=\\dfrac52x-\\dfrac12$이다.\n\n① $x$절편은 $\\dfrac15$이지만 $y$절편은 $-\\dfrac12$이므로 틀리다.\n\n② 기울기 $\\dfrac52>0$이므로 $x$가 증가하면 $y$도 증가한다. 옳다.\n\n③ $-10x+4y+3=0$은 $y=\\dfrac52x-\\dfrac34$이므로 기울기가 같고 절편이 달라 평행하다. 한 점에서 만나지 않는다.\n\n④ $x<0$이면 $\\dfrac52x-\\dfrac12<0$이므로 제2사분면을 지나지 않는다. 옳다.\n\n⑤ $(1,-2)$를 대입하면 $-5-4+1=-8\\ne0$이다.\n\n따라서 정답은 ②, ④이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -629,8 +629,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[핵심] $y$축에 평행한 직선 위의 두 점은 $x$좌표가 같다.\n따라서\n$2a=-a+9$이다.\n정리하면\n$3a=9$,\n$a=3$이다.\n정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
