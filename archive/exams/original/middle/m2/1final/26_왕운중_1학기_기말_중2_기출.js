@@ -746,8 +746,8 @@ window.questionBank = [
     "content": "원이와 미남이가 어떤 일차함수의 식을 보고 그래프를 그리는데 다음 보기와 같이 각각 잘못 그렸다. 처음 일차함수의 그래프가 점 $(4,k)$를 지난다고 할 때, 처음 일차함수의 식과 수 $k$의 값을 구하시오. [5점]<br><div class='note-box'><div style='text-align:center;font-weight:600;margin-bottom:4px;'>&lt;보기&gt;</div>원이: 기울기를 잘못 보고 그렸더니 두 점 $(5,-1)$, $(2,5)$를 지나는 그래프를 그렸어.<br>미남: $y$절편을 잘못 보고 그렸더니 $x$절편이 $4$, $y$절편이 $-3$인 그래프를 그렸어.</div>",
     "answer": "$y=\\dfrac{3}{4}x+9,\\ k=12$",
     "solution": "[핵심] 한 사람의 실수에서는 실제 $y$절편을, 다른 사람의 실수에서는 실제 기울기를 복원한다.\n\n원이는 기울기만 잘못 보았다.\n원이의 그래프는 $(5,-1)$, $(2,5)$를 지나므로\n기울기는\n$\\dfrac{-1-5}{5-2}=-2$이다.\n따라서 잘못 그린 직선은\n$y=-2x+9$이고,\n처음 함수의 $y$절편은 $9$이다.\n\n미남은 $y$절편만 잘못 보았다.\n미남의 그래프는 $(4,0)$, $(0,-3)$을 지나므로\n기울기는\n$\\dfrac{0-(-3)}{4-0}=\\dfrac34$이다.\n따라서 처음 함수의 기울기는 $\\dfrac34$이다.\n\n처음 일차함수는\n$y=\\dfrac34x+9$.\n점 $(4,k)$를 지나므로\n$k=\\dfrac34\\cdot4+9=12$이다.\n\n결론: $y=\\dfrac34x+9$, $k=12$이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
