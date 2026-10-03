@@ -455,14 +455,15 @@ test("Saved Paper library starts immutable revision Drafts and retries exact cop
     assert.deepEqual(copyBodies[1], firstCopyBody);
     assert.match(host.innerHTML, /frozen output title \(복사본\)/);
     assert.equal(local.getItem("archive2.saved-paper-copy-pending.v1"), null);
-    assert.equal(JSON.parse(session.getItem("archive2.saved-paper-list-invalidated.v1")).kind, "insert");
+    assert.equal(JSON.parse(session.getItem("archive2.saved-paper-list-invalidated.v1")).kind, "reload",
+      "an ambiguous copy failure followed by an idempotent retry requires an authoritative list read");
 
     const readsBeforeBack = requests.filter(request => request.route === "/archive-saved-papers?limit=20&status=ACTIVE").length;
     global.history.state = staleListState;
     global.location = new URL("https://archive.test/archive/workspace.html?view=saved");
     await library.render(host, "", "ACTIVE");
     const readsAfterBack = requests.filter(request => request.route === "/archive-saved-papers?limit=20&status=ACTIVE").length;
-    assert.equal(readsAfterBack, readsBeforeBack, "copy patches stale list membership before Back");
+    assert.equal(readsAfterBack, readsBeforeBack + 1, "ambiguous copy retry refreshes list membership from the server on Back");
     assert.match(host.innerHTML, /frozen output title \(복사본\)/);
     assert.equal(session.getItem("archive2.saved-paper-list-invalidated.v1"), null);
   } finally {
@@ -774,14 +775,237 @@ test("Saved Library loadMore cannot append or surface an error after a tab switc
   }
 });
 
-test("Saved Library rename-copy and copy-rename sequences use one fresh authority read on Back", async () => {
+test("Saved Library list response cannot replace a newer detail selection", async () => {
+  const previous = { window: global.window, location: global.location, history: global.history, document: global.document };
+  try {
+    for (const lateResult of ["success", "error"]) {
+      const listRequest = deferred();
+      const id = "00000000-0000-4000-8000-000000000151";
+      const currentLibrary = freshLibrary();
+      installLibraryTestGlobals(route => {
+        if (route.startsWith("/archive-saved-papers?")) return listRequest.promise;
+        if (route === "/archive-saved-papers/" + id)
+          return Promise.resolve({ paper: { ...paper(id, "Selected detail B"), library_status: "ACTIVE" } });
+        throw new Error(`unexpected Saved Library read ${route}`);
+      });
+      const host = { innerHTML: "", prepend() {}, querySelectorAll() { return []; } };
+      const list = currentLibrary.render(host, "", "ACTIVE");
+      const detail = currentLibrary.render(host, id, "ACTIVE");
+      await detail;
+      const detailHtml = host.innerHTML;
+      assert.match(detailHtml, /Selected detail B/);
+      if (lateResult === "success")
+        listRequest.resolve({ papers: [{ ...paper("old-list", "Stale list A"), library_status: "ACTIVE" }], next_cursor: null });
+      else listRequest.reject(new Error("stale list A failed"));
+      await list;
+      assert.equal(host.innerHTML, detailHtml);
+      assert.doesNotMatch(host.innerHTML, /Stale list A/);
+    }
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.document === undefined) delete global.document; else global.document = previous.document;
+  }
+});
+
+test("Saved mutations that finish after Finder leave invalidate cache without rendering, navigating, or showing errors", async () => {
+  const previous = {
+    window: global.window, location: global.location, history: global.history,
+    localStorage: global.localStorage, document: global.document, confirm: global.confirm,
+  };
+  const scenarios = [
+    { action: "rename", result: {}, kind: "rename", detail: true },
+    { action: "copy", result: { papers: [{ id: "00000000-0000-4000-8000-000000000162", title: "Copied", library_status: "ACTIVE" }] }, kind: "insert", detail: true },
+    { action: "library-status", result: { paper: { id: "00000000-0000-4000-8000-000000000163", library_status: "ARCHIVED" } }, kind: "status", detail: false },
+    { action: "delete", result: { success: true }, kind: "remove", detail: false },
+    { action: "rename", error: new Error("stale rename failed"), kind: "reload", detail: true },
+    { action: "copy", error: new Error("stale copy failed"), kind: "reload", detail: true },
+  ];
+  try {
+    for (let index = 0; index < scenarios.length; index++) {
+      const scenario = scenarios[index];
+      const id = `00000000-0000-4000-8000-${String(161 + index).padStart(12, "0")}`;
+      const saved = {
+        ...paper(id, "Saved authority A"),
+        snapshot_hash: "a".repeat(64),
+        library_display_name: "Saved authority A",
+        library_status: "ACTIVE",
+      };
+      const mutation = deferred();
+      let mutationCalls = 0;
+      let prependCalls = 0;
+      let savedNavigationCalls = 0;
+      const local = storage();
+      const session = storage();
+      const currentLibrary = freshLibrary();
+      global.location = new URL("https://archive.test/archive/workspace.html?view=saved&status=ACTIVE");
+      global.localStorage = local;
+      global.confirm = () => true;
+      global.history = {
+        state: null,
+        replaceState(state, _title, url) { this.state = state; global.location = new URL(String(url), global.location.href); },
+        pushState(state, _title, url) { this.state = state; global.location = new URL(String(url), global.location.href); },
+        back() {},
+      };
+      global.document = { createElement() { return { className: "", textContent: "", setAttribute() {}, remove() {} }; } };
+      global.window = {
+        sessionStorage: session,
+        localStorage: local,
+        scrollY: 0,
+        scrollTo() {},
+        prompt: () => "Renamed A",
+        crypto: { randomUUID: () => "00000000-0000-4000-8000-000000000199" },
+        Archive2Output: outputWithCapture(),
+        Archive2WorkspaceShowSavedPaper() { savedNavigationCalls++; },
+        Archive2Api: {
+          request(route, body, method) {
+            if (scenario.detail && route === `/archive-saved-papers/${id}`)
+              return Promise.resolve({ paper: saved });
+            if (!scenario.detail && route.startsWith("/archive-saved-papers?"))
+              return Promise.resolve({ papers: [{ ...saved, snapshot: undefined }], next_cursor: null });
+            const expectedRoute = scenario.action === "copy"
+              ? `/archive-saved-papers/${id}/copy`
+              : scenario.action === "delete"
+                ? `/archive-saved-papers/${id}`
+                : `/archive-saved-papers/${id}/library`;
+            if (route === expectedRoute) {
+              mutationCalls++;
+              return mutation.promise;
+            }
+            throw new Error(`unexpected request ${method || "GET"} ${route}`);
+          },
+        },
+      };
+      const host = {
+        innerHTML: "",
+        prepend() { prependCalls++; },
+        querySelectorAll() { return []; },
+      };
+      await currentLibrary.render(host, scenario.detail ? id : "", "ACTIVE");
+      const button = {
+        dataset: {
+          libraryAction: scenario.action,
+          paperId: id,
+          ...(scenario.action === "library-status" ? { status: "ARCHIVED" } : {}),
+        },
+      };
+      const operation = host.onclick({ target: { closest: () => button }, preventDefault() {}, stopPropagation() {} });
+      assert.equal(mutationCalls, 1);
+      currentLibrary.invalidatePendingRequests();
+      global.location = new URL("https://archive.test/archive/workspace.html?view=find");
+      host.innerHTML = "Finder current DOM";
+      if (scenario.error) mutation.reject(scenario.error);
+      else mutation.resolve(scenario.result);
+      await operation;
+      assert.equal(host.innerHTML, "Finder current DOM", `${scenario.action} response must not overwrite Finder`);
+      assert.equal(savedNavigationCalls, 0, `${scenario.action} response must not navigate to an old Saved selection`);
+      assert.equal(prependCalls, 0, `${scenario.action} stale errors are swallowed`);
+      assert.equal(JSON.parse(session.getItem("archive2.saved-paper-list-invalidated.v1")).kind, scenario.kind);
+      if (scenario.action === "copy") {
+        if (scenario.error) assert.ok(local.getItem("archive2.saved-paper-copy-pending.v1"),
+          "an ambiguous stale copy failure retains its idempotency key for recovery");
+        else assert.equal(local.getItem("archive2.saved-paper-copy-pending.v1"), null);
+      }
+    }
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.localStorage === undefined) delete global.localStorage; else global.localStorage = previous.localStorage;
+    if (previous.document === undefined) delete global.document; else global.document = previous.document;
+    if (previous.confirm === undefined) delete global.confirm; else global.confirm = previous.confirm;
+  }
+});
+
+test("Saved mutation completion after an in-view reload cannot overwrite the reloaded page", async () => {
+  const previous = { window: global.window, location: global.location, history: global.history, document: global.document };
+  const id = "00000000-0000-4000-8000-000000000171";
+  const saved = { ...paper(id, "Before reload"), library_display_name: "Before reload", library_status: "ACTIVE" };
+  const rename = deferred();
+  let renameCalls = 0;
+  try {
+    const currentLibrary = freshLibrary();
+    installLibraryTestGlobals(route => {
+      if (route === `/archive-saved-papers/${id}`) return Promise.resolve({ paper: saved });
+      if (route.startsWith("/archive-saved-papers?"))
+        return Promise.resolve({ papers: [{ ...saved, snapshot: undefined }], next_cursor: null });
+      if (route === `/archive-saved-papers/${id}/library`) {
+        renameCalls++;
+        return rename.promise;
+      }
+      throw new Error(`unexpected request ${route}`);
+    }, `https://archive.test/archive/workspace.html?view=saved&paper_id=${id}`);
+    global.window.prompt = () => "After reload";
+    const host = { innerHTML: "", prepend() {}, querySelectorAll() { return []; } };
+    await currentLibrary.render(host, id, "ACTIVE");
+    const renameButton = { dataset: { libraryAction: "rename", paperId: id } };
+    const mutation = host.onclick({ target: { closest: () => renameButton }, preventDefault() {}, stopPropagation() {} });
+    assert.equal(renameCalls, 1);
+    global.location = new URL("https://archive.test/archive/workspace.html?view=saved&status=ACTIVE");
+    await currentLibrary.render(host, "", "ACTIVE", { forceRefresh: true });
+    const reloadedHtml = host.innerHTML;
+    assert.match(reloadedHtml, /Before reload/);
+    rename.resolve({ success: true });
+    await mutation;
+    assert.equal(host.innerHTML, reloadedHtml);
+    assert.doesNotMatch(host.innerHTML, /After reload/);
+    assert.equal(JSON.parse(global.window.sessionStorage.getItem("archive2.saved-paper-list-invalidated.v1")).kind, "rename");
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.document === undefined) delete global.document; else global.document = previous.document;
+  }
+});
+
+test("Saved mutation success with a failed refresh keeps cache invalidation and shows the current error", async () => {
+  const previous = { window: global.window, location: global.location, history: global.history, document: global.document };
+  const id = "00000000-0000-4000-8000-000000000173";
+  const saved = { ...paper(id, "Before refresh"), library_display_name: "Before refresh", library_status: "ACTIVE" };
+  let detailReads = 0;
+  try {
+    const currentLibrary = freshLibrary();
+    const session = storage();
+    installLibraryTestGlobals(route => {
+      if (route === `/archive-saved-papers/${id}`) {
+        detailReads++;
+        if (detailReads > 1) throw new Error("Saved detail refresh failed");
+        return Promise.resolve({ paper: saved });
+      }
+      if (route === `/archive-saved-papers/${id}/library`)
+        return Promise.resolve({ success: true });
+      throw new Error(`unexpected request ${route}`);
+    }, `https://archive.test/archive/workspace.html?view=saved&paper_id=${id}`);
+    global.window.sessionStorage = session;
+    global.window.prompt = () => "After refresh";
+    const host = {
+      innerHTML: "",
+      prepend(message) { this.innerHTML = `${message.textContent}${this.innerHTML}`; },
+      querySelectorAll() { return []; },
+    };
+    await currentLibrary.render(host, id, "ACTIVE");
+    const renameButton = { dataset: { libraryAction: "rename", paperId: id } };
+    await host.onclick({ target: { closest: () => renameButton }, preventDefault() {}, stopPropagation() {} });
+    assert.equal(detailReads, 2);
+    assert.match(host.innerHTML, /Saved detail refresh failed/);
+    assert.equal(JSON.parse(session.getItem("archive2.saved-paper-list-invalidated.v1")).kind, "reload");
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.document === undefined) delete global.document; else global.document = previous.document;
+  }
+});
+
+test("Saved Library rename-copy, copy-rename, and copy-status sequences use one fresh authority read on Back", async () => {
   const previous = {
     window: global.window, location: global.location, history: global.history,
     localStorage: global.localStorage, document: global.document,
   };
   const libraryModulePath = require.resolve("../archive/archive2-library.js");
   try {
-    for (const sequence of ["rename-copy", "copy-rename"]) {
+    for (const sequence of ["rename-copy", "copy-rename", "copy-status"]) {
       const sourceId = sequence === "rename-copy"
         ? "00000000-0000-4000-8000-000000000141"
         : "00000000-0000-4000-8000-000000000143";
@@ -821,11 +1045,12 @@ test("Saved Library rename-copy and copy-rename sequences use one fresh authorit
           async request(route, body, method) {
             if (route.startsWith("/archive-saved-papers?")) {
               listReads++;
+              const requestedStatus = new URLSearchParams(route.split("?")[1]).get("status");
               const rows = [saved, ...(copyCreated ? [copied] : [])].map(row => ({
                 id: row.id, title: row.title, library_display_name: row.library_display_name,
                 grade: row.grade, subject: row.subject, question_count: row.question_count,
                 created_at: row.created_at, library_status: row.library_status,
-              }));
+              })).filter(row => row.library_status === requestedStatus);
               return { papers: rows, next_cursor: "cursor-before-mutations" };
             }
             if (route === `/archive-saved-papers/${sourceId}/copy` && method === "POST") {
@@ -843,6 +1068,7 @@ test("Saved Library rename-copy and copy-rename sequences use one fresh authorit
             }
             if (route === `/archive-saved-papers/${copyId}/library` && method === "PATCH") {
               if (body.display_name) copied.library_display_name = body.display_name;
+              if (body.status) copied.library_status = body.status;
               return { success: true, paper: { ...copied, snapshot: undefined } };
             }
             if (route === `/archive-saved-papers/${sourceId}`) return { paper: saved };
@@ -871,6 +1097,8 @@ test("Saved Library rename-copy and copy-rename sequences use one fresh authorit
       if (sequence === "copy-rename") {
         promptValue = "Copy C";
         await click({ libraryAction: "rename", paperId: copyId });
+      } else if (sequence === "copy-status") {
+        await click({ libraryAction: "library-status", paperId: copyId, status: "ARCHIVED" });
       }
       assert.equal(JSON.parse(session.getItem("archive2.saved-paper-list-invalidated.v1")).kind, "reload");
 
@@ -885,7 +1113,9 @@ test("Saved Library rename-copy and copy-rename sequences use one fresh authorit
       const originalCached = cachedPapers.find(row => row.id === sourceId);
       const copyCached = cachedPapers.find(row => row.id === copyId);
       assert.equal(originalCached.library_display_name, sequence === "rename-copy" ? "Original B" : "Original A");
-      assert.equal(copyCached.library_display_name, sequence === "rename-copy" ? "Original B (복사본)" : "Copy C");
+      if (sequence === "copy-status") assert.equal(copyCached, undefined,
+        "a copied paper moved to ARCHIVED is absent from the ACTIVE Back list");
+      else assert.equal(copyCached.library_display_name, sequence === "rename-copy" ? "Original B (복사본)" : "Copy C");
     }
   } finally {
     if (previous.window === undefined) delete global.window; else global.window = previous.window;
@@ -893,6 +1123,66 @@ test("Saved Library rename-copy and copy-rename sequences use one fresh authorit
     if (previous.history === undefined) delete global.history; else global.history = previous.history;
     if (previous.localStorage === undefined) delete global.localStorage; else global.localStorage = previous.localStorage;
     if (previous.document === undefined) delete global.document; else global.document = previous.document;
+  }
+});
+
+test("Saved Library supports rename then delete through fresh list authority", async () => {
+  const previous = {
+    window: global.window, location: global.location, history: global.history,
+    localStorage: global.localStorage, document: global.document, confirm: global.confirm,
+  };
+  const id = "00000000-0000-4000-8000-000000000172";
+  const saved = { ...paper(id, "Sequence A"), library_display_name: "Sequence A", library_status: "ACTIVE" };
+  const mutations = [];
+  try {
+    const local = storage();
+    const currentLibrary = freshLibrary();
+    global.location = new URL("https://archive.test/archive/workspace.html?view=saved&status=ACTIVE");
+    global.localStorage = local;
+    global.confirm = () => true;
+    global.history = {
+      state: null,
+      replaceState(state, _title, url) { this.state = state; global.location = new URL(String(url), global.location.href); },
+    };
+    global.document = { createElement() { return { className: "", textContent: "", setAttribute() {}, remove() {} }; } };
+    global.window = {
+      sessionStorage: storage(), localStorage: local, scrollY: 0, scrollTo() {},
+      prompt: () => "Sequence B", Archive2Output: outputWithCapture(),
+      Archive2Api: {
+        async request(route, body, method) {
+          if (route.startsWith("/archive-saved-papers?")) {
+            const requestedStatus = new URLSearchParams(route.split("?")[1]).get("status");
+            return { papers: saved.library_status === requestedStatus ? [{ ...saved, snapshot: undefined }] : [], next_cursor: null };
+          }
+          if (route === `/archive-saved-papers/${id}/library` && method === "PATCH") {
+            mutations.push("rename");
+            saved.library_display_name = body.display_name;
+            return { success: true, paper: { ...saved } };
+          }
+          if (route === `/archive-saved-papers/${id}` && method === "DELETE") {
+            mutations.push("delete");
+            saved.library_status = "TRASHED";
+            return { success: true };
+          }
+          throw new Error(`unexpected request ${method || "GET"} ${route}`);
+        },
+      },
+    };
+    const host = { innerHTML: "", prepend() {}, querySelectorAll() { return []; } };
+    await currentLibrary.render(host, "", "ACTIVE");
+    const click = dataset => host.onclick({ target: { closest: () => ({ dataset }) }, preventDefault() {}, stopPropagation() {} });
+    await click({ libraryAction: "rename", paperId: id });
+    assert.match(host.innerHTML, /Sequence B/);
+    await click({ libraryAction: "delete", paperId: id });
+    assert.deepEqual(mutations, ["rename", "delete"]);
+    assert.match(host.innerHTML, /저장한 시험지가 없습니다/);
+  } finally {
+    if (previous.window === undefined) delete global.window; else global.window = previous.window;
+    if (previous.location === undefined) delete global.location; else global.location = previous.location;
+    if (previous.history === undefined) delete global.history; else global.history = previous.history;
+    if (previous.localStorage === undefined) delete global.localStorage; else global.localStorage = previous.localStorage;
+    if (previous.document === undefined) delete global.document; else global.document = previous.document;
+    if (previous.confirm === undefined) delete global.confirm; else global.confirm = previous.confirm;
   }
 });
 
