@@ -25,6 +25,8 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
+**WORKTREE / TEMP BRANCH CLEANUP HARD:** branch/worktree 예외를 사용한 경우 `remote exact 보존 → local worktree cleanup`까지 stage 종료 lifecycle에 포함한다. local HEAD와 remote HEAD가 exact하고 ACTIVE/dirty/unique-local-artifact가 없으면 main 미병합이어도 local checkout을 제거할 수 있다. 최종 `MAIN_DONE / DO_NOT_REQUEUE` owner는 stale PR과 temporary branch를 안전조건 확인 후 sweep한다. 상세 기준은 위 선행 규칙 §4.1을 따른다.
+
 ## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS (2026-10-01)
 
 CREATE / REVIEW1 / REVIEW2 / R3의 PASS/DONE은 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 통과해야 한다.
