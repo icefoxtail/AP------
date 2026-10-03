@@ -22,7 +22,19 @@
   "firstMissingClosureStep": "REFRESH_BRANCH_TO_LATEST_MAIN",
   "claimedAt": "2026-10-03T17:01:38+09:00",
   "expiresAt": "2026-10-03T18:31:38+09:00",
-  "lastProgressAt": "2026-10-03T17:01:38+09:00",
+  "lastProgressAt": "2026-10-03T17:09:00+09:00",
   "expectedCompletionGate": "target branch contains latest main cd74c75f without content mutation; remote compare behind=0",
-  "status": "ACTIVE"
+  "status": "CLOSED",
+  "closedAt": "2026-10-03T17:09:00+09:00",
+  "closure": {
+    "disposition": "STALE_REF_CLOSED_BY_SUCCESSOR_BRANCH",
+    "supersededBranch": "work/middle/m2/26-palma-1final-r1-1-20261003",
+    "successorBranch": "work/middle/m2/26-palma-1final-master-a-refresh-20261003",
+    "successorHead": "3fa00d2b5d8079cc56617d1d6e74047aab435699",
+    "baseMainSha": "cd74c75fb14abf3fd9d9c1cea026a20681576c9e",
+    "remoteCompare": "ahead=2,behind=0",
+    "inputArtifactShaUnchanged": "95d32e294aadf941cd86b3fab7373228086c520b",
+    "contentMutationCount": 0,
+    "note": "Existing branch ref update was rejected by write safety. A non-force successor branch was materialized from the exact merge commit; no exam bytes changed."
+  }
 }
