@@ -1,0 +1,20 @@
+name: M2 o24 CREATE validation
+on:
+  push:
+    branches:
+      - validation/m2-o24-create-closure-v2-20261004
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Exact artifact SHA256
+        run: sha256sum "archive/exams/original/middle/m2/1final/24_향림중_1학기_기말_중2_기출.js"
+      - name: Calibration preflight
+        run: node archive/tools/solution-calibration-gate.mjs --exam "archive/exams/original/middle/m2/1final/24_향림중_1학기_기말_중2_기출.js" --evidence "archive/data/r2e-intake/m2/24_향림중_1학기_기말_중2_기출.create.physical-evidence.json" --stage CREATE --preflight
+      - name: Canonical CREATE gate
+        run: node archive/tools/review-evidence-gate.mjs --exam "archive/exams/original/middle/m2/1final/24_향림중_1학기_기말_중2_기출.js" --evidence "archive/data/r2e-intake/m2/24_향림중_1학기_기말_중2_기출.create.physical-evidence.json" --stage CREATE
