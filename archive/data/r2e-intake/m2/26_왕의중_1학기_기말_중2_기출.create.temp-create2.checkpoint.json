@@ -7,8 +7,8 @@
   "currentGeneration": "M2_1_CREATE_FIRST_2026_10_03",
   "baseMainSha": "21a46c1a6972316de8446ebeda876006ccc69ae6",
   "inheritedCheckpoint": "archive-work/middle/m2/1final/26_왕의중_1학기_기말_중2_기출/temp-surge1.checkpoint.json@448ccd3d6ebf1131b6a8c414b31f8a2b0d319a0e",
-  "status": "CREATE_PHYSICAL_EVIDENCE_READY_ACTUAL_VALIDATOR_EXECUTION_PENDING",
-  "next": "execute actual canonical CREATE validator on exact continuation branch, then persist validator receipt and CREATE_DONE/READY_FOR_REVIEW1 durable receipt with remote readback",
+  "status": "CREATE_EVIDENCE_READY_STALE_REFRESH_AND_ACTUAL_VALIDATOR_PENDING",
+  "next": "refresh exact target bytes onto latest main without content change; execute actual canonical CREATE validator; persist validator receipt and CREATE_DONE/READY_FOR_REVIEW1 durable receipt; remote readback",
   "claimHead": "5538f162b3dbacc9a3e3a6e6c60d923564547960",
   "branch": "work/middle/m2/26-wangui-1final-temp-create2-20261003",
   "candidatePath": "archive-work/middle/m2/1final/26_왕의중_1학기_기말_중2_기출/temp-create2.candidate.json",
@@ -26,7 +26,7 @@
   "problemImageAuthority": "q16 PASS @0101c787..., q17 PASS @4a3c498e... inherited exact continuation",
   "createDone": false,
   "readyForReview1": false,
-  "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR_EXECUTION_AND_DURABLE_RECEIPTS",
+  "firstMissingClosureStep": "FRESH_MAIN_TARGET_ONLY_MATERIALIZATION_THEN_ACTUAL_CANONICAL_CREATE_VALIDATOR",
   "continuationAuthorityBranch": "work/middle/m2/26-wangui-1final-temp-create1-20261003",
   "continuationAuthorityHead": "9f3fb9c68d80c2fc71cb53b37202e0a03cb49d89",
   "finalArtifactGitBlob": "229576d9f607b7a372dded49888081ff47bc8e45",
@@ -35,5 +35,10 @@
   "physicalEvidenceBlob": "84a345d17f2b4c377a6df955fd32285c8481929f",
   "metaBlobOnContinuation": "3515d264427c17dd200fa41cb39b958f6fd98461",
   "canonicalLogicMirrorStatus": "PASS_ISSUES_0_NOT_ACTUAL_VALIDATOR_AUTHORITY",
-  "sourcePixelAuthority": "q16 PASS @0101c787..., q17 PASS @4a3c498e... exact inherited evidence"
+  "sourcePixelAuthority": "q16 PASS @0101c787..., q17 PASS @4a3c498e... exact inherited evidence",
+  "latestObservedMainSha": "1f9e682b5cb3e1a7c87d235e259c07374c625c0f",
+  "continuationAuthorityParityAtReadback": "ahead=4 behind=2 mergeBase=21a46c1a6972316de8446ebeda876006ccc69ae6",
+  "productionMaterializationOnFreshMain": "BLOCKED_BY_CONNECTED_GITHUB_WRITE_SAFETY_GATE",
+  "actualValidatorExecution": "BLOCKED_NO_PERMITTED_EXECUTION_PATH",
+  "attemptedFreshSuccessorBranch": "work/middle/m2/26-wangui-1final-temp-create2-close-20261003@e8f287e6eb97081ac7e63b94187c56e522a73e60"
 }
