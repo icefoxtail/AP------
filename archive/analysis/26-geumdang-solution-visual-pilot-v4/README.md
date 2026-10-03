@@ -93,3 +93,10 @@ Python facts were computed before drawing. `build_mobile_visuals.py` freezes the
 Base main at rebase: `cd74c75fb14abf3fd9d9c1cea026a20681576c9e`.
 
 Pilot content commit: `60caff04599e5ec72fad788fe601c38342bedeeb`. The final branch HEAD also contains this pilot report’s closeout update.
+
+
+## Final finish hardening — 2026-10-03
+
+- General Korean copy keeps the digital-first Korean text stack. Mathematical emphasis classes `.l` and `.e` now use `STIX Two Math / Cambria Math / Times New Roman` first with Korean fallback. The same token is stored in `build_mobile_visuals.py`, so regeneration preserves the typography split.
+- `capture_browser_evidence.mjs` is the reproducible raw browser-evidence path. It renders all 13 active solution SVGs at **340 CSS px**, waits for `document.fonts.ready`, and records actual `getBBox()` / `getBoundingClientRect()`, resolved font family/size, label overlaps, and clipping into `browser-evidence.json`.
+- The pilot's original real-Chrome 340px visual review remains the human visual check. Future reruns must prefer the raw DOM evidence script rather than authored PASS counts.

@@ -2,7 +2,9 @@ from pathlib import Path
 import math, html, xml.etree.ElementTree as ET
 root=Path(__file__).resolve().parents[2]/'assets/images/26_금당고_2학기_중간_고1_기출'; root.mkdir(parents=True,exist_ok=True)
 N='#16324F'; B='#246BCE'; T='#138A82'; O='#D97919'; R='#C44848'; I='#24364B'; M='#65778B'; G='#D8E1EB'
-css=f"text{{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;fill:{I}}}.h{{font-size:21px;font-weight:700;fill:{N}}}.s{{font-size:15px;fill:{M}}}.l{{font-size:16px;font-weight:600}}.e{{font-size:17px;font-weight:700}}.p{{fill:white;stroke:{G};stroke-width:2}}"
+TEXT_FONT=\"'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif\"
+MATH_FONT=\"'STIX Two Math','Cambria Math','Times New Roman','Noto Sans KR','Malgun Gothic',serif\"
+css=f\"text{{font-family:{TEXT_FONT};fill:{I}}}.h{{font-size:21px;font-weight:700;fill:{N}}}.s{{font-size:15px;fill:{M}}}.l{{font-family:{MATH_FONT};font-size:16px;font-weight:600}}.e{{font-family:{MATH_FONT};font-size:17px;font-weight:700}}.p{{fill:white;stroke:{G};stroke-width:2}}\"
 def text(x,y,v,size='l',anchor='middle',color=None):
  c=f' style="fill:{color}"' if color else ''
  return f'<text x="{x:.1f}" y="{y:.1f}" class="{size}" text-anchor="{anchor}"{c}>{html.escape(str(v))}</text>'
