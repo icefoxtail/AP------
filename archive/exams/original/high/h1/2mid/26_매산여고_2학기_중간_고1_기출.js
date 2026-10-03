@@ -229,7 +229,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "집합 $A=\\{\\varnothing,1,\\{2\\},\\{1,2\\}\\}$에 대하여 다음 &lt;보기&gt;중 옳은 것을 있는 대로 모두 고른 것은? [3.7점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $\\varnothing\\in A$<br>ㄴ. $\\{1\\}\\in A$<br>ㄷ. $\\{2\\}\\subset A$<br>ㄹ. $\\{\\varnothing,1\\}\\subset A$</div>",
+    "content": "집합 $A=\\{\\varnothing,1,\\{2\\},\\{1,2\\}\\}$에 대하여 다음 보기중 옳은 것을 있는 대로 모두 고른 것은? [3.7점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $\\varnothing\\in A$<br>ㄴ. $\\{1\\}\\in A$<br>ㄷ. $\\{2\\}\\subset A$<br>ㄹ. $\\{\\varnothing,1\\}\\subset A$</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄹ",

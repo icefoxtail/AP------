@@ -508,7 +508,7 @@ window.questionBank = [
       "사분면"
     ],
     "wide": false,
-    "content": "$y$가 $x$에 반비례하고, $x=-4$일 때, $y=20$이다. 다음 &lt;보기&gt; 중 옳은 것은 모두 몇 개인가? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $x$의 값이 2배가 되면 $y$의 값도 2배가 된다.<br>ㄴ. $x$와 $y$ 사이의 관계식은 $y=-8x$이다.<br>ㄷ. $x=4$일 때, $y=-2$이다.<br>ㄹ. 반비례 그래프는 제2사분면과 제4사분면을 지난다.</div>",
+    "content": "$y$가 $x$에 반비례하고, $x=-4$일 때, $y=20$이다. 다음 보기 중 옳은 것은 모두 몇 개인가? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $x$의 값이 2배가 되면 $y$의 값도 2배가 된다.<br>ㄴ. $x$와 $y$ 사이의 관계식은 $y=-8x$이다.<br>ㄷ. $x=4$일 때, $y=-2$이다.<br>ㄹ. 반비례 그래프는 제2사분면과 제4사분면을 지난다.</div>",
     "choices": [
       "0개",
       "1개",

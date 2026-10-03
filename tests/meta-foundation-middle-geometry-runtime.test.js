@@ -1,3 +1,4 @@
+const { runtimeRecordCount } = require("./helpers/meta-runtime-gate.cjs");
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
@@ -10,7 +11,7 @@ const runtimePath = "archive/data/meta-foundation/runtime/middle-geometry-v1.jso
 const catalog = Archive2Core.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
 const bridge = fs.readFileSync(path.join(root, "archive/meta-foundation-runtime.js"), "utf8");
 assert(bridge.includes("data/meta-foundation/runtime/middle-geometry-v1.json"));
-assert(bridge.includes('reviewStatus: overlay.reviewStatus || "reviewed_pass"'));
+assert(bridge.includes("Canonical.resolveCatalog"));
 const runtime = readJson(runtimePath);
 const taxonomy = readJson("archive/data/meta-foundation/compiled/taxonomy_registry.json");
 const concepts = readJson("archive/data/meta-foundation/compiled/concept_registry.json");
@@ -27,9 +28,9 @@ assert.strictEqual(runtime.counts.finalL3, 921);
 assert.strictEqual(runtime.counts.finalL4, 901);
 assert.strictEqual(runtime.counts.explicitL4Hold, 20);
 assert.strictEqual(runtime.counts.routeOut, 7);
-assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, 5303);
-assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, 5303);
-assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, 5303);
+assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, runtimeRecordCount);
+assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, runtimeRecordCount);
+assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, runtimeRecordCount);
 assert.strictEqual(runtimeReceipt.checked.middleGeometryCatalogJoin, 928);
 assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 10);
 assert.strictEqual(runtime.counts.automaticEligibleExpected, 54);
@@ -101,46 +102,24 @@ console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUT
 
 
 (async () => {
-  const vm = require("vm");
-  const contextWindow = {
-    __ARCHIVE_METADATA_READY__: Promise.resolve({ records: [] }),
-    Archive2Core
-  };
-  const context = vm.createContext({
-    window: contextWindow,
-    document: { baseURI: "https://archive.test/" },
-    URL,
-    Promise,
-    fetch: async (url) => {
-      const relative = new URL(url).pathname.slice(1);
-      const localPath = path.join(root, "archive", relative);
-      return {
-        ok: fs.existsSync(localPath),
-        status: fs.existsSync(localPath) ? 200 : 404,
-        json: async () => readJson(path.relative(root, localPath).split(String.fromCharCode(92)).join("/"))
-      };
-    },
-    console
-  });
-  vm.runInContext(bridge, context, { filename: "archive/meta-foundation-runtime.js" });
-  await contextWindow.__META_FOUNDATION_RUNTIME_READY__;
-  const overlaid = await contextWindow.applyArchiveMetaFoundationCatalog(catalog);
-  const joined = overlaid.records.filter((row) => row.metaFoundationPackId === "MIDDLE_GEOMETRY");
+  const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+  const { data: overlaid, runtime: liveRuntime } = await productionCatalog();
+  const runtimeUids = new Set(runtime.records.map(row => row.questionUid));
+  const liveRows = liveRuntime.records.filter(row => runtimeUids.has(row.questionUid));
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(liveRows)), runtime.records);
+  const joined = overlaid.records.filter(row => runtimeUids.has(row.questionUid));
   assert.strictEqual(joined.length, 928);
   assert.strictEqual(new Set(joined.map((row) => row.questionUid)).size, 928);
   assert.strictEqual(new Set(joined.map((row) => sourceKey(row.sourceFile, row.sourceOrdinal))).size, 928);
-  const explicitHold = joined.find((row) => row.metaFoundationL4Status === "EXPLICIT_HOLD");
-  assert(explicitHold);
-  assert.strictEqual(explicitHold.defaultSelectable, false);
-  assert.strictEqual(explicitHold.reviewStatus, "manual_review");
-  const routeOut = joined.find((row) => row.metaFoundationL3Status === "ROUTE_OUT");
-  assert(routeOut);
-  assert.strictEqual(routeOut.problemTypeKey, null);
-  assert.strictEqual(routeOut.templateKey, null);
-  assert.strictEqual(routeOut.defaultSelectable, false);
-  assert.strictEqual(routeOut.reviewStatus, "manual_review");
+  const { catalog: canonicalCatalog } = require('./helpers/archive2-scope-harness.cjs');
+  const expected = new Map(canonicalCatalog.records.map(row => [row.questionUid, row]));
+  for (const row of joined) {
+    const currentGate = Archive2Core.eligibility(row, { catalog: overlaid });
+    assert.deepStrictEqual(currentGate, Archive2Core.eligibility(expected.get(row.questionUid), { catalog: canonicalCatalog }));
+    assert.strictEqual(Archive2Core.eligibility(row).ok, false);
+  }
   assert.strictEqual(overlaid.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_기출.js")).length, 23);
-  console.log("PASS live Meta Foundation bridge applies all 928 rows and preserves explicit holds");
+  console.log("PASS live Meta Foundation bridge preserves 928 raw overlays and canonical release authority");
 })().catch((error) => {
   console.error(error);
   process.exitCode = 1;

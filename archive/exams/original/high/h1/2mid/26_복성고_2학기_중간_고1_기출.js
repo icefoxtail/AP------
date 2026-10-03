@@ -81,7 +81,7 @@ window.questionBank = [
       "집합의 포함·연산 종합"
     ],
     "wide": false,
-    "content": "두 집합 $A=\\{x\\mid x는 12 이하의 양의 홀수\\}$, $B=\\{2,3,5,7,11\\}$에 대하여 다음 중 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (3.6점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\{1,3,5\\}\\in A$<br>ㄴ. $n(A)=7$<br>ㄷ. $B\\subset A$<br>ㄹ. $A\\cap B^C=\\{1,9\\}$</div>",
+    "content": "두 집합 $A=\\{x\\mid x는 12 이하의 양의 홀수\\}$, $B=\\{2,3,5,7,11\\}$에 대하여 다음 중 옳은 것만을 보기에서 있는대로 고른 것은? (3.6점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\{1,3,5\\}\\in A$<br>ㄴ. $n(A)=7$<br>ㄷ. $B\\subset A$<br>ㄹ. $A\\cap B^C=\\{1,9\\}$</div>",
     "choices": [
       "ㄹ",
       "ㄱ, ㄷ",
@@ -500,7 +500,7 @@ window.questionBank = [
       "시각자료"
     ],
     "wide": false,
-    "content": "세 상수 $a$, $b$, $c$에 대하여 직선 $ax+by+c=0$이 그림과 같다.<br>다음 중 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (4.2점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $b(c-a)>0$이다.<br>ㄴ. 직선 $bx-cy-a=0$은 제4사분면을 지나지 않는다.<br>ㄷ. $3a=-7b$인 경우 직선 $ax+by+c=0$은 직선 $y=-\\dfrac{7}{3}x$와 수직이다.</div>",
+    "content": "세 상수 $a$, $b$, $c$에 대하여 직선 $ax+by+c=0$이 그림과 같다.<br>다음 중 옳은 것만을 보기에서 있는대로 고른 것은? (4.2점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $b(c-a)>0$이다.<br>ㄴ. 직선 $bx-cy-a=0$은 제4사분면을 지나지 않는다.<br>ㄷ. $3a=-7b$인 경우 직선 $ax+by+c=0$은 직선 $y=-\\dfrac{7}{3}x$와 수직이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -984,7 +984,7 @@ window.questionBank = [
       "집합의 연산법칙"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 세 부분집합 $A$, $B$, $C$에 대한 설명으로 항상 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (4.9점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $(A-C)\\cup(B-C)=(A\\cup B)-C$<br>ㄴ. $(A-B)\\cup(B-A)=(A\\cup B)\\cap(A\\cap B)^C$<br>ㄷ. $(A\\cap B)-(A\\cap C)=A\\cap(B-C)$</div>",
+    "content": "전체집합 $U$의 세 부분집합 $A$, $B$, $C$에 대한 설명으로 항상 옳은 것만을 보기에서 있는대로 고른 것은? (4.9점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $(A-C)\\cup(B-C)=(A\\cup B)-C$<br>ㄴ. $(A-B)\\cup(B-A)=(A\\cup B)\\cap(A\\cap B)^C$<br>ㄷ. $(A\\cap B)-(A\\cap C)=A\\cap(B-C)$</div>",
     "choices": [
       "ㄱ",
       "ㄴ",

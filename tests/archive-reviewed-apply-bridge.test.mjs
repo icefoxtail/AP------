@@ -155,6 +155,7 @@ function metadataRecord(uid, ordinal, questionValue) {
 function baseFixtureData(root) {
   const questions = [question(1, "문항 1"), question(2, "문항 2")];
   const baseBytes = writeBank(root, questions);
+  fs.copyFileSync(path.join(projectRoot, "archive/archive2-canonical.js"), path.join(root, "archive/archive2-canonical.js"));
   fs.copyFileSync(path.join(projectRoot, "archive/archive2-core.js"), path.join(root, "archive/archive2-core.js"));
   fs.copyFileSync(path.join(projectRoot, "archive/mixer-selector.js"), path.join(root, "archive/mixer-selector.js"));
   const identityRecords = questions.map((q, index) => ({
@@ -246,7 +247,7 @@ function fixtureRoot(t) {
   git(root, ["config", "user.email", "archive-apply-tests@example.invalid"]);
   git(root, ["config", "core.quotepath", "false"]);
   const data = baseFixtureData(root);
-  git(root, ["add", "--", examRepoPath, "archive/archive2-core.js", "archive/mixer-selector.js", "archive/data", "docs/rules"]);
+  git(root, ["add", "--", examRepoPath, "archive/archive2-canonical.js", "archive/archive2-core.js", "archive/mixer-selector.js", "archive/data", "docs/rules"]);
   git(root, ["commit", "-m", "fixture base"]);
   const baseSha = String(git(root, ["rev-parse", "HEAD"])).trim();
   return { root, baseSha, ...data };

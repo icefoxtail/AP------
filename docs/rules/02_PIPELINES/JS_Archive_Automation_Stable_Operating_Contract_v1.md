@@ -132,8 +132,8 @@ MASTER-A/B/C는 pipeline target뿐 아니라 **서로의 automation liveness도 
 - peer가 enabled여도 canonical RRULE recurring schedule이 사라졌거나 one-shot/expired schedule로 drift했고 예정 실행이 반복 누락되면 `MASTER_DISPATCH_STALL`로 보고 canonical hourly RRULE schedule을 복구한 뒤 readback한다.
 - MASTER-A는 B/C, MASTER-B는 A/C, MASTER-C는 A/B를 깨우며 자기 자신도 canonical schedule/enable 상태를 확인한다.
 - peer MASTER 복구는 control-plane liveness repair이며 시험지 1건 mutation limit와 별개다. peer를 깨운 뒤 자기 run의 정상 pipeline scan/closure를 계속한다.
-- 임시 MASTER/INFINITY/SURGE는 canonical MASTER-A/B/C를 대신하지 않는다. 임시 작업이 꺼졌다는 이유로 상시 재-enable하지 않는다.
-- **all-MASTER-off 대비 독립 watchdog을 별도로 유지**한다. watchdog은 production artifact를 수정하지 않고 MASTER-A/B/C의 enable/schedule만 canonical 값으로 복구한다.
+- 현재 운영 목적으로 ACTIVE인 임시 MASTER/INFINITY/SURGE도 liveness 보호 대상이다. 2026-10-03 현재 보호 roster는 `JS Archive INFINITY-MASTER-1`, `JS Archive INFINITY-MASTER-2`, `JS Archive MASTER-TEMP-D`, `JS Archive TEMP R2-SURGE`, `JS Archive TEMP R3-SURGE`다. 사용자 명시 종료 또는 temporary 종료 선언이 아닌데 이들 중 하나가 꺼지면 즉시 re-enable하고 readback한다. 과거에 의도적으로 종료된 임시 작업은 자동 부활시키지 않는다.
+- **전체 MASTER 계열 동시 OFF 대비 독립 watchdog을 별도로 유지**한다. watchdog은 production artifact를 수정하지 않고 canonical MASTER-A/B/C와 현재 ACTIVE temporary protected roster의 enable/schedule을 복구한다.
 - MASTER liveness repair 자체를 문서 기록만으로 끝내지 않는다. automation update 성공 + readback에서 enabled/schedule parity 확인까지가 완료다.
 
 ## 2. Review Attempt v2 — CONTEXT-TOLERANT RECHECK
