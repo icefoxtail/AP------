@@ -1,28 +1,15 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "REPAIR-DIRECT-3-PUBLISH-O25-20261003T1355+0900",
-  "owner": "JS Archive M3 REPAIR-DIRECT-3 emergency closeout",
-  "status": "CLOSED",
-  "baseMainSha": "482f2b6422bb90281ff82c45fe3bcf176ffad681",
-  "claimedAt": "2026-10-03T13:55:00+09:00",
-  "expiresAt": "2026-10-03T15:25:00+09:00",
-  "lastProgressAt": "2026-10-03T13:55:00+09:00",
-  "expectedCompletionGate": "M3_O25_USER_TEMP_EMERGENCY_CLOSEOUT_MAIN_DONE",
-  "scope": "M3:o25:EMERGENCY_CLOSEOUT_DIRECT_MAIN",
-  "targets": [
-    25
-  ],
-  "validator": {
-    "mode": "EXACT_CANONICAL_SEMANTICS_REPLAY_ON_REMOTE_BYTES",
-    "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
-    "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
-    "examGitBlobSha": "4f9d8caaeb54385a33623b36518737f34d33fe2a",
-    "finalArtifactSha": "sha256:72870cd855da5875703b08fb650f3f68790ba06e77d414a9c99baa8d6909b157",
-    "result": "PASS",
-    "issues": [],
-    "itemHoldCount": 0
-  },
-  "firstMissingClosureStep": null,
-  "mainMutation": 0,
-  "result": "MAIN_DONE_O25_ALREADY_ON_MAIN"
+  "leaseId": "M2-1-MAIN-MERGE-20261003T1632+0900",
+  "owner": "JS Archive M2-1 MAIN-MERGE",
+  "status": "ACTIVE",
+  "baseMainSha": "d4842784e70654dbc23939f4cced4076dbb51d68",
+  "claimedAt": "2026-10-03T16:32:00+09:00",
+  "expiresAt": "2026-10-03T18:02:00+09:00",
+  "lastProgressAt": "2026-10-03T16:32:00+09:00",
+  "expectedCompletionGate": "M2_1_CLEAN_BACKLOG_SWEEP_MAIN_DONE_OR_NO_CLEAN_BACKLOG",
+  "scope": "M2-1:MAIN-MERGE:PUBLISH",
+  "targets": [],
+  "firstMissingClosureStep": "SCAN_RELEASE_BACKLOG",
+  "mainMutation": 0
 }
