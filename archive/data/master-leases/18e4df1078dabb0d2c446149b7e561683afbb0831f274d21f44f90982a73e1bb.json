@@ -8,29 +8,46 @@
   "inputArtifactSha": "2185a04e8d18ff096459680f33cb2200dc46a883",
   "targetBranch": "work/middle/m2/26-dongsan-1final-r1-2-20261003",
   "targetHeadAtClaim": "5727b13795ccf360c23437da97e5b299b63ccc76",
-  "expectedTargetHead": "5727b13795ccf360c23437da97e5b299b63ccc76",
-  "repairFingerprint": "5d23c20553a7d8c8d711d6b06996d061ab1658fcab22da8d78472423202eacb2",
-  "failedGate": "CREATE_VALIDATOR_NOT_ACTUAL_AND_SOURCE_VISUAL_AUTHORITY_OPEN_AND_STAGE_REF_STALE",
-  "openQids": [
-    6,
-    9,
-    15,
-    20
-  ],
+  "expectedTargetHead": "c46b7cedae31f07cc7df7cbedbff9d25ef14e502",
+  "repairFingerprint": "350fa53fc3639948ea0047c0198314df0c1b99ac7a0a75f1ca3d7e381d807923",
+  "failedGate": "STALE_BASE_MAIN_REF",
+  "openQids": [],
   "openFiles": [
-    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.receipt.json",
-    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.validator-receipt.json",
-    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.physical-evidence.json"
+    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.receipt.json"
   ],
   "openFields": [
-    "stageArtifactRef",
-    "validator.executionMode",
-    "sourceExact"
+    "baseMainSha",
+    "targetHead"
   ],
-  "firstMissingClosureStep": "RUN_ACTUAL_CANONICAL_CREATE_VALIDATOR_ON_CURRENT_ARTIFACT_AND_BIND_RECEIPT",
+  "firstMissingClosureStep": "REFRESH_BRANCH_TO_LATEST_MAIN",
   "claimedAt": "2026-10-03T18:10:59+09:00",
   "expiresAt": "2026-10-03T19:40:59+09:00",
   "lastProgressAt": "2026-10-03T18:10:59+09:00",
-  "expectedCompletionGate": "actual GitHub Actions canonical CREATE gate executes against current artifact/evidence and durable validator receipt binds exact run; unresolved q6/q9/q15/q20 source pixels remain explicit and CREATE_DONE stays false until closed",
-  "status": "ACTIVE"
+  "expectedCompletionGate": "successor branch contains latest main 21a46c1a with exam blob 2185a04e exact and remote compare behind=0",
+  "status": "CLOSED",
+  "closedAt": "2026-10-03T18:10:59+09:00",
+  "closure": {
+    "disposition": "STALE_LINEAGE_CLOSED_BY_SUCCESSOR_BRANCH",
+    "supersededBranch": "work/middle/m2/26-dongsan-1final-r1-2-20261003",
+    "supersededHead": "5727b13795ccf360c23437da97e5b299b63ccc76",
+    "successorBranch": "work/middle/m2/26-dongsan-1final-master-a-refresh-20261003",
+    "successorHead": "c46b7cedae31f07cc7df7cbedbff9d25ef14e502",
+    "baseMainSha": "21a46c1a6972316de8446ebeda876006ccc69ae6",
+    "remoteCompare": "ahead=4,behind=0",
+    "inputArtifactShaUnchanged": "2185a04e8d18ff096459680f33cb2200dc46a883",
+    "contentMutationCount": 0,
+    "remainingCreateDebt": {
+      "createDoneEligible": false,
+      "qids": [
+        6,
+        9,
+        15,
+        20
+      ],
+      "sourceAuthority": "DIRECT_SOURCE_PIXEL_REQUIRED",
+      "validator": "ACTUAL_CANONICAL_CREATE_VALIDATOR_NOT_YET_EXECUTED",
+      "receipt": "inherited receipt has stale stageArtifactRef and is not current CREATE_DONE authority",
+      "firstMissingClosureStep": "DIRECT_SOURCE_PIXEL_AUTHORITY_Q6_Q9_Q15_Q20_THEN_ACTUAL_CANONICAL_CREATE_VALIDATOR_AND_NEW_DURABLE_RECEIPT"
+    }
+  }
 }
