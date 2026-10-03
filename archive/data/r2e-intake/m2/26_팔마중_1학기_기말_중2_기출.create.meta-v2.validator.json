@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "stage": "CREATE",
+  "canonicalOrdinal": 17,
+  "executionMode": "ACTUAL_NODE_CLI_GITHUB_ACTIONS_PULL_REQUEST_VALIDATION",
+  "workflowRunId": 37134930812,
+  "workflowJobId": 111237431892,
+  "workflowHeadSha": "0ee3a812a6d2622f15f527dbdb09e29970129eb3",
+  "validationBranch": "review/m2-o17-create-gate-20261003-2348",
+  "validationPullRequest": 181,
+  "calibrationValidatorPath": "archive/tools/solution-calibration-gate.mjs",
+  "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "canonicalValidatorPath": "archive/tools/review-evidence-gate.mjs",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "examGitBlob": "06c09e564b55badd89879d470c4783baf90f0e91",
+  "examSha256": "sha256:5898391259122f66733bb55960a712e2c8bf127a65f893d0f113c010f017abd8",
+  "physicalEvidencePath": "archive/data/r2e-intake/m2/26_팔마중_1학기_기말_중2_기출.create.physical-evidence.json",
+  "physicalEvidenceGitBlob": "bdb5187b7eccedcab1a929be0773c11ed24453cb",
+  "metaPayloadPath": "archive/data/r2e-intake/m2/26_팔마중_1학기_기말_중2_기출.create.meta-v2.metadata.json",
+  "metaPayloadGitBlob": "16107f080dbb6c3b85ca39ad63b46bb491b25994",
+  "calibrationPreflight": {
+    "ok": true,
+    "stage": "CREATE",
+    "gate": "CALIBRATION_PREFLIGHT",
+    "questionCount": 24,
+    "issues": []
+  },
+  "result": {
+    "ok": true,
+    "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+    "stage": "CREATE",
+    "examSha256": "sha256:5898391259122f66733bb55960a712e2c8bf127a65f893d0f113c010f017abd8",
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 4,
+    "itemHoldQids": [9, 11, 13, 16],
+    "disposition": "PASS_WITH_ITEM_HOLDS",
+    "issues": []
+  },
+  "repositoryCiContext": {
+    "overallRunConclusion": "failure",
+    "targetCanonicalGate": "PASS_WITH_ITEM_HOLDS",
+    "unrelatedBlockingFailures": 7,
+    "note": "The exact o17 CREATE canonical gate passed. The workflow's overall failure is from seven unrelated repository-wide tests and is not used as target-local validator failure authority."
+  }
+}
