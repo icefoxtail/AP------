@@ -1,30 +1,19 @@
 {
   "schemaVersion": "MASTER_LEASE_v2",
-  "masterLeaseId": "M2-1-THANOS-MASTER-5-o21-create-close",
+  "masterLeaseId": "M2-1-THANOS-MASTER-5-o21-create-actions-close",
   "owner": "THANOS-MASTER-5",
   "examUid": "26_동산중_1학기_기말_중2_기출",
   "stage": "CREATE",
   "inputArtifactSha": "2185a04e8d18ff096459680f33cb2200dc46a883",
-  "targetBranch": "work/middle/m2/26-dongsan-1final-thanos5-create-close-20261003-1951",
+  "targetBranch": "work/middle/m2/26-dongsan-1final-thanos5-create-close-20261003-2010",
   "targetHeadAtClaim": "a76304028aed344b69de83817de92c12cf9d6bc0",
   "expectedTargetHead": "a76304028aed344b69de83817de92c12cf9d6bc0",
-  "openQids": [6, 9, 15, 20],
-  "firstMissingClosureStep": "DIRECT_SOURCE_PIXEL_AUTHORITY_Q6_Q9_Q15_Q20",
-  "claimedAt": "2026-10-03T19:51:14+09:00",
-  "expiresAt": "2026-10-03T21:21:14+09:00",
-  "lastProgressAt": "2026-10-03T20:01:30+09:00",
-  "status": "CLOSED",
-  "closedAt": "2026-10-03T20:01:30+09:00",
+  "openQids": [6,9,15,20],
+  "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR_WITH_ITEM_HOLDS",
+  "claimedAt": "2026-10-03T20:10:00+09:00",
+  "expiresAt": "2026-10-03T21:40:00+09:00",
+  "lastProgressAt": "2026-10-03T20:10:00+09:00",
+  "status": "ACTIVE",
   "claimMode": "SUCCESSOR_CAS_REF",
-  "closure": {
-    "disposition": "SCOPED_CAPABILITY_DEBT_CONTINUATION",
-    "contentMutationCount": 0,
-    "remainingCreateDebt": "Direct source-pixel authority for q6/q9/q15/q20, then actual canonical CREATE validator and current-generation receipt.",
-    "attemptedPaths": [
-      "repository binary via connector",
-      "temporary validation branch with CI pixel inspection"
-    ],
-    "exactBlocker": "Repository PNG bytes are not exposed by the text connector; temporary PR creation for a CI pixel inspection path was blocked by connected write safety.",
-    "nextAction": "Use a runtime that can directly inspect repository image bytes or an approved Actions validation path; do not infer q6/q9/q15/q20 from prior answer/solution."
-  }
+  "currentPolicy": "QUESTION_LEVEL_HOLD_ALLOWED_DURING_CREATE"
 }
