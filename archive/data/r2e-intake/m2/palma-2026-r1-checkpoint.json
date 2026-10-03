@@ -1,16 +1,19 @@
 {
   "schemaVersion": "M2_1_CREATE_CONTINUATION_CHECKPOINT_v1",
-  "status": "CREATE_CANDIDATE_META_COMPLETE_SOURCE_PIXEL_RUNTIME_CAPABILITY_BLOCKED_CURRENT_MAIN",
+  "status": "CREATE_DONE_WITH_ITEM_HOLDS_READY_FOR_REVIEW1",
   "currentOwner": "TEMP-CREATE-1",
   "currentGeneration": "M2_1_CREATE_FIRST_2026_10_03",
   "canonicalOrdinal": 17,
   "examFile": "26_팔마중_1학기_기말_중2_기출.js",
-  "currentBranch": "work/middle/m2/26-palma-1final-temp-create1-refresh-20261003-2121",
+  "currentBranch": "review/m2-o17-create-gate-20261003-2348",
   "latestMainSha": "65a7777700af13cbefd5c8db1290b1abe05dba92",
-  "refreshReason": "CURRENT_MAIN_DOCS_ONLY_DRIFT_REBOUND; candidate exam/meta bytes were copied exactly from prior continuation onto latest main without redoing CREATE.",
-  "priorBranch": "work/middle/m2/26-palma-1final-temp-create1-refresh-20261003-2021",
+  "refreshReason": "Exact continuation closed after actual GitHub Actions CREATE canonical validation. Candidate exam/meta/evidence bytes unchanged.",
+  "priorBranch": "work/middle/m2/26-palma-1final-temp-create1-refresh-20261003-2121",
   "candidateExamGitBlob": "06c09e564b55badd89879d470c4783baf90f0e91",
   "metaPayloadGitBlob": "16107f080dbb6c3b85ca39ad63b46bb491b25994",
+  "physicalEvidenceGitBlob": "bdb5187b7eccedcab1a929be0773c11ed24453cb",
+  "validatorReceiptGitBlob": "d894cad2de3e79512a433f7cb694cd4f4f9341a5",
+  "durableCreateReceiptGitBlob": "dbdf217c7b0400b9d2b850c61a0e5289f4107a91",
   "questionCount": 24,
   "protectedFieldParity": "24/24 exact",
   "freshSolutionRewriteCount": "24/24",
@@ -30,15 +33,26 @@
     "a326f6c0a8378973b7639d520ac30ae1e2239c29"
   ],
   "sourceProblemImageCurrentMainParity": "4/4 exact blob identity",
-  "pixelAudit": "PENDING_DIRECT_PIXEL_READBACK",
-  "pixelAccessInvestigation": {
-    "githubFetchFile": "blob SHA available for all four PNGs; connector returned no visual bytes",
-    "githubFetchBlob": "PNG binary rejected by UTF-8 decoding path",
-    "githubGenericFetch": "binary response rejected because connector accepts UTF-8 text only",
-    "driveSourceSearch": "no matching 2026 Palma M2 source PDF/image found",
-    "actionsArtifactFallback": "temporary validation branch created at current main, but workflow-file write was blocked by runtime safety gate; no workflow/run/job was created",
-    "validationBranch": "validation/m2-o17-pixel-20261003-2121",
-    "authorityDecision": "NO_PIXEL_PASS_ASSERTED"
+  "pixelAudit": "ITEM_HOLD_CANONICALIZED_BY_ACTUAL_CREATE_VALIDATOR",
+  "itemHoldCount": 4,
+  "itemHoldQids": [
+    9,
+    11,
+    13,
+    16
+  ],
+  "itemHoldReasons": {
+    "9": "SOURCE_VISUAL_DIRECT_PIXEL_REQUIRED",
+    "11": "SOURCE_VISUAL_DIRECT_PIXEL_REQUIRED",
+    "13": "SOURCE_VISUAL_DIRECT_PIXEL_REQUIRED",
+    "16": "SOURCE_VISUAL_DIRECT_PIXEL_REQUIRED"
+  },
+  "actualNodeValidation": {
+    "workflowRunId": 37134930812,
+    "workflowJobId": 111237431892,
+    "workflowHeadSha": "0ee3a812a6d2622f15f527dbdb09e29970129eb3",
+    "calibrationPreflight": "PASS",
+    "reviewEvidenceGate": "PASS_WITH_ITEM_HOLDS"
   },
   "canonicalRefs": {
     "goldenCalibrationBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
@@ -47,11 +61,11 @@
     "solutionCalibrationGateBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
     "reviewEvidenceGateBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5"
   },
-  "createDone": false,
-  "readyForReview1": false,
+  "createDone": true,
+  "readyForReview1": true,
   "r1Performed": false,
-  "completedStep": "CURRENT_MAIN_REBIND_EXACT_CANDIDATE_META",
-  "firstMissingClosureStep": "DIRECT_SOURCE_PROBLEM_PIXEL_READBACK_Q9_Q11_Q13_Q16",
-  "nextAction": "Directly inspect q9/q11/q13/q16 pixels; seal final physical evidence and Golden/Negative binding; execute actual canonical CREATE validators; write validator receipt and CREATE_DONE/READY_FOR_REVIEW1 durable receipt; remote-readback.",
+  "completedStep": "CREATE_DONE_WITH_ITEM_HOLDS_READY_FOR_REVIEW1_DURABLE_RECEIPT",
+  "firstMissingClosureStep": null,
+  "nextAction": "R1 worker may claim immediately under EXAM-LEVEL CONVEYOR; CREATE lane does not perform R1.",
   "targetLocalFailureDoesNotDisableLane": true
 }
