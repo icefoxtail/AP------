@@ -557,7 +557,7 @@ window.questionBank = [
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ]
   },
-  {
+{
     "id": 9,
     "level": "하",
     "category": "일차함수와 그래프",
@@ -594,22 +594,22 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "rpmSemanticStatus": "FINAL",
-    "rpmPrimaryRecordId": "M2-RPM-165",
+    "rpmSemanticStatus": "EXPLICIT_BOUNDARY",
+    "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": {
       "majorUnit": "일차함수",
-      "midUnit": "일차함수와 그 그래프",
-      "l3": "일차함수의 뜻",
-      "l4": "일차함수 판별"
+      "midUnit": "함수",
+      "l3": "함수의 뜻",
+      "l4": "함수 판별"
     },
-    "rpmL3": "일차함수의 뜻",
-    "rpmL4": "일차함수 판별",
-    "projectionStatus": "RPM_ONLY",
+    "rpmL3": "함수의 뜻",
+    "rpmL4": "함수 판별",
+    "projectionStatus": "RPM_BOUNDARY_UNMATERIALIZED",
     "ownerPack": null,
     "problemTypeKey": null,
     "templateKey": null,
-    "nullReason": "RPM_ONLY: no exact target-scope ACTIVE PT/TPL pair; null explicit.",
-    "projectionReason": "middle2 RPM crosswalk mapping=RPM_ONLY; bindingStatus=NO_ACTIVE_MAPPING.",
+    "nullReason": "NO_EXACT_RPM_PRIMARY: current middle2 RPM crosswalk has no exact general-function judgment record; M2-RPM-165 is linear-function-only.",
+    "projectionReason": "No exact target-scope RPM/PT/TPL binding exists for general function-definition discrimination in middle2.json.",
     "primaryMethod": "함수 정의로 대응값 유일성 판정",
     "decisiveStep": "공배수는 하나의 x에 여러 y",
     "semanticSourceScope": "M2-1",
@@ -618,12 +618,13 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "semanticConfidence": "HIGH",
-    "boundaryStatus": "IN_SCOPE",
+    "boundaryStatus": "EXPLICIT_RPM_BOUNDARY",
     "evidenceRefs": [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "semanticBoundaryReason": "GENERAL_FUNCTION_VS_LINEAR_FUNCTION_SCOPE_BOUNDARY: do not project general function judgment onto M2-RPM-165."
   },
   {
     "id": 10,
@@ -762,7 +763,7 @@ window.questionBank = [
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ]
   },
-  {
+{
     "id": 12,
     "level": "하",
     "category": "일차함수와 그래프",
@@ -800,22 +801,22 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "rpmSemanticStatus": "FINAL_FAMILY",
-    "rpmPrimaryRecordId": "M2-RPM-167",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordId": "M2-RPM-171",
     "rpmPrimaryPath": {
       "majorUnit": "일차함수",
       "midUnit": "일차함수와 그 그래프",
-      "l3": "일차함수의 그래프",
-      "l4": "그래프 그리기"
+      "l3": "식 구하기",
+      "l4": "기울기와 한 점으로 식 구하기"
     },
-    "rpmL3": "일차함수의 그래프",
-    "rpmL4": "그래프 그리기",
-    "projectionStatus": "FAMILY_BINDING_GAP",
+    "rpmL3": "식 구하기",
+    "rpmL4": "기울기와 한 점으로 식 구하기",
+    "projectionStatus": "DIRECT_BINDING_GAP",
     "ownerPack": "GEOMETRY_EQUATIONS",
     "problemTypeKey": "PT_LINE_EQUATION",
-    "templateKey": "TPL_LINE_MULTI_CONDITION",
+    "templateKey": "TPL_LINE_POINT_SLOPE",
     "nullReason": null,
-    "projectionReason": "middle2 RPM crosswalk mapping=FAMILY_BINDING_GAP; bindingStatus=MISSING.",
+    "projectionReason": "middle2 RPM crosswalk mapping=DIRECT_BINDING_GAP; bindingStatus=MISSING.",
     "primaryMethod": "y축 평행이동 후 점 대입",
     "decisiveStep": "y=2x+k-4에 (-1,2) 대입",
     "semanticSourceScope": "M2-1",
