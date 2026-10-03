@@ -13,6 +13,17 @@ export const MAX_SAVED_PAPER_BYTES = 1_500_000;
 export const MAX_SAVED_BATCH_BYTES = 8_000_000;
 export const MAX_SAVED_PAPERS = 8;
 export const MAX_SAVED_QUESTIONS = 400;
+export const SAVED_PAPER_LIBRARY_STATES = Object.freeze(["ACTIVE", "ARCHIVED", "TRASHED"]);
+const SAVED_PAPER_LIBRARY_STATUS_SET = new Set(SAVED_PAPER_LIBRARY_STATES);
+
+export function resolveSavedPaperLibraryStatus(savedPaper, libraryMetadata = null) {
+  if (!savedPaper || typeof savedPaper !== "object") throw new TypeError("saved paper row is required");
+  if (savedPaper.deleted_at !== null && savedPaper.deleted_at !== undefined) return "TRASHED";
+  const status = libraryMetadata?.status ?? "ACTIVE";
+  if (!SAVED_PAPER_LIBRARY_STATUS_SET.has(status))
+    throw new Error("invalid library status: " + String(status));
+  return status;
+}
 
 const FILTER_KEYS = new Set([
   "grade", "curriculumKey", "courseKey", "semanticSubject", "L1", "L2", "L3", "L4",
@@ -77,6 +88,22 @@ export async function computeSavedPaperRequestHash(input) {
     selection_filters: selectionFilters,
     include_extended: input.include_extended === true,
     papers: input.papers,
+  }));
+}
+
+export async function computeSavedPaperCopyRequestHash({ save_batch_id, parent_id, parent_snapshot_hash }) {
+  if (!SAVED_PAPER_BATCH_ID.test(String(save_batch_id || "")))
+    fail("save_batch_id must be a UUID", 400);
+  if (!SAVED_PAPER_BATCH_ID.test(String(parent_id || "")))
+    fail("parent Saved Paper ID must be a UUID", 400);
+  if (!/^[0-9a-f]{64}$/i.test(String(parent_snapshot_hash || "")))
+    fail("parent snapshot hash is invalid", 400);
+  return sha256hex(stableStringify({
+    operation: "SAVED_PAPER_COPY",
+    schema_version: SAVED_PAPER_SCHEMA,
+    save_batch_id,
+    parent_id,
+    parent_snapshot_hash: String(parent_snapshot_hash).toLowerCase(),
   }));
 }
 

@@ -176,6 +176,8 @@ try {
   `);
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20260916_archive2_question_bridge.sql"), "utf8"));
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20260929_archive_saved_papers.sql"), "utf8"));
+  await migrate(db, fs.readFileSync(path.join(worker, "migrations/20261002_archive2_paper_lifecycle_foundation.sql"), "utf8"));
+  await migrate(db, fs.readFileSync(path.join(worker, "migrations/20261002_archive2_assignment_context.sql"), "utf8"));
   await db.prepare("INSERT INTO classes VALUES ('class-a','고2 기본 검증반','Teacher A'),('class-saved','고2 저장본 검증반','Teacher A'),('class-race','고2 다중 반 검증반','Teacher B')").run();
   await db.prepare("INSERT INTO students(id,name) VALUES ('student-a','기본 검증학생'),('student-save-a','저장본 검증학생 가'),('student-save-b','저장본 검증학생 나'),('student-race','다중 반 검증학생')").run();
   await db.prepare("INSERT INTO class_students VALUES ('class-a','student-a'),('class-saved','student-save-a'),('class-saved','student-save-b'),('class-race','student-race')").run();
@@ -215,10 +217,134 @@ try {
   const beforeAssignments = Number((await db.prepare("SELECT COUNT(*) n FROM class_exam_assignments").first()).n);
   const directSaved = await request("archive-saved-papers", "POST", directInput);
   assert.equal(directSaved.status, 200, JSON.stringify(directSaved));
+  assert.equal(directSaved.body.papers[0].title, "image snapshot");
+  assert.equal(directSaved.body.papers[0].library_display_name, "image snapshot");
+  assert.equal(directSaved.body.papers[0].library_status, "ACTIVE");
+  const resolvedBatch = await request("archive-saved-papers/save-batches/" + directBatchId);
+  assert.equal(resolvedBatch.status, 200, JSON.stringify(resolvedBatch));
+  assert.equal(resolvedBatch.body.saved, true);
+  assert.equal(resolvedBatch.body.papers[0].id, directSaved.body.papers[0].id);
+  const missingBatch = await request("archive-saved-papers/save-batches/" + uuid());
+  assert.equal(missingBatch.status, 200);
+  assert.equal(missingBatch.body.found, false);
   assert.equal(Number((await db.prepare("SELECT COUNT(*) n FROM class_exam_assignments").first()).n), beforeAssignments, "paper save creates no assignment");
   const directId = directSaved.body.papers[0].id;
   const directDetail = await request(`archive-saved-papers/${directId}`);
   assert.equal(directDetail.status, 200);
+  const originalContentHash = directDetail.body.paper.snapshot_hash;
+  const copyBatchId = uuid();
+  const exactCopy = await request(`archive-saved-papers/${directId}/copy`, "POST", {
+    save_batch_id: copyBatchId,
+    expected_snapshot_hash: originalContentHash,
+  });
+  assert.equal(exactCopy.status, 200, JSON.stringify(exactCopy));
+  const exactCopyId = exactCopy.body.papers[0].id;
+  assert.notEqual(exactCopyId, directId);
+  const exactCopyDetail = await request(`archive-saved-papers/${exactCopyId}`);
+  assert.equal(exactCopyDetail.status, 200);
+  assert.equal(exactCopyDetail.body.paper.snapshot_hash, originalContentHash);
+  assert.equal(exactCopyDetail.body.paper.title, directDetail.body.paper.title);
+  assert.equal(exactCopyDetail.body.paper.library_display_name, directDetail.body.paper.title + " (복사본)");
+  const [parentStoredSnapshot, copiedStoredSnapshot] = await Promise.all([
+    db.prepare("SELECT snapshot_json FROM archive_saved_papers WHERE id=?").bind(directId).first(),
+    db.prepare("SELECT snapshot_json FROM archive_saved_papers WHERE id=?").bind(exactCopyId).first(),
+  ]);
+  assert.equal(copiedStoredSnapshot.snapshot_json, parentStoredSnapshot.snapshot_json,
+    "COPY reuses the verified immutable snapshot bytes exactly");
+  const exactCopyLineage = await db.prepare(
+    "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?",
+  ).bind(exactCopyId).first();
+  assert.equal(exactCopyLineage.parent_kind, "SAVED_PAPER");
+  assert.equal(exactCopyLineage.parent_id, directId);
+  assert.equal(exactCopyLineage.parent_snapshot_hash, originalContentHash);
+  assert.equal(exactCopyLineage.derivation_type, "COPY");
+  const retriedCopy = await request(`archive-saved-papers/${directId}/copy`, "POST", {
+    save_batch_id: copyBatchId,
+    expected_snapshot_hash: originalContentHash,
+  });
+  assert.equal(retriedCopy.status, 200, JSON.stringify(retriedCopy));
+  assert.equal(retriedCopy.body.papers[0].id, exactCopyId, "copy retry resolves through the same idempotency identity");
+  const changedCopyRetry = await request(`archive-saved-papers/${directId}/copy`, "POST", {
+    save_batch_id: copyBatchId,
+    expected_snapshot_hash: "f".repeat(64),
+  });
+  assert.equal(changedCopyRetry.status, 409, "a copy batch cannot be reused for a different frozen parent");
+
+  const revisionInput = structuredClone(directInput);
+  revisionInput.save_batch_id = uuid();
+  revisionInput.papers[0].lineage = {
+    parent_kind: "SAVED_PAPER",
+    parent_id: directId,
+    parent_revision: null,
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "REVISION",
+  };
+  const revisionSaved = await request("archive-saved-papers", "POST", revisionInput);
+  assert.equal(revisionSaved.status, 200, JSON.stringify(revisionSaved));
+  const revisionLineage = await db.prepare(
+    "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?",
+  ).bind(revisionSaved.body.papers[0].id).first();
+  assert.equal(revisionLineage.parent_kind, "SAVED_PAPER");
+  assert.equal(revisionLineage.parent_id, directId);
+  assert.equal(revisionLineage.parent_snapshot_hash, originalContentHash);
+  assert.equal(revisionLineage.derivation_type, "REVISION");
+  const forkInput = structuredClone(directInput);
+  forkInput.save_batch_id = uuid();
+  forkInput.papers[0].lineage = {
+    parent_kind: "SAVED_PAPER",
+    parent_id: directId,
+    parent_revision: null,
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "FORK",
+  };
+  const forkSaved = await request("archive-saved-papers", "POST", forkInput);
+  assert.equal(forkSaved.status, 200, JSON.stringify(forkSaved));
+  const forkLineage = await db.prepare(
+    "SELECT * FROM archive_saved_paper_lineage WHERE child_saved_paper_id=?",
+  ).bind(forkSaved.body.papers[0].id).first();
+  assert.equal(forkLineage.derivation_type, "FORK");
+  assert.equal(forkLineage.parent_kind, "SAVED_PAPER");
+  assert.equal(forkLineage.parent_id, directId);
+  const copyThroughRevisionRoute = structuredClone(directInput);
+  copyThroughRevisionRoute.save_batch_id = uuid();
+  copyThroughRevisionRoute.papers[0].lineage = {
+    parent_kind: "SAVED_PAPER",
+    parent_id: directId,
+    parent_revision: null,
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "COPY",
+  };
+  const forbiddenCopy = await request("archive-saved-papers", "POST", copyThroughRevisionRoute);
+  assert.equal(forbiddenCopy.status, 409, "exact copies must use the snapshot-preserving copy route");
+  const forbiddenSharedRevisionInput = structuredClone(directInput);
+  forbiddenSharedRevisionInput.save_batch_id = uuid();
+  forbiddenSharedRevisionInput.papers[0].lineage = {
+    parent_kind: "SHARED_PAPER",
+    parent_id: uuid(),
+    parent_revision: "rev-1",
+    parent_snapshot_hash: originalContentHash,
+    derivation_type: "FORK",
+  };
+  const forbiddenSharedRevision = await request("archive-saved-papers", "POST", forbiddenSharedRevisionInput);
+  assert.equal(forbiddenSharedRevision.status, 409, "Shared Paper lineage writes remain outside this campaign");
+  const renamed = await request("archive-saved-papers/" + directId + "/library", "PATCH", {
+    display_name: "왕운중 심화반용",
+  });
+  assert.equal(renamed.status, 200, JSON.stringify(renamed));
+  const renamedDetail = await request("archive-saved-papers/" + directId);
+  assert.equal(renamedDetail.body.paper.title, "image snapshot", "library label never replaces output title");
+  assert.equal(renamedDetail.body.paper.library_display_name, "왕운중 심화반용");
+  assert.equal(renamedDetail.body.paper.snapshot_hash, originalContentHash);
+  assert.equal(renamedDetail.body.paper.snapshot.meta.title, "image snapshot");
+  const displayNameSearch = await request("archive-saved-papers?limit=20&q=" + encodeURIComponent("왕운중"));
+  assert.equal(displayNameSearch.body.papers.some(paper => paper.id === directId), true,
+    "the existing title search should find the mutable library display name");
+  const archived = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ARCHIVED" });
+  assert.equal(archived.status, 200, JSON.stringify(archived));
+  assert.equal((await request("archive-saved-papers?limit=20")).body.papers.some(paper => paper.id === directId), false);
+  assert.equal((await request("archive-saved-papers?status=ARCHIVED&limit=20")).body.papers.some(paper => paper.id === directId), true);
+  const restored = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ACTIVE" });
+  assert.equal(restored.status, 200, JSON.stringify(restored));
   const frozenImage = directDetail.body.paper.snapshot.questions[0].image;
   assert.match(frozenImage, /^data:image\/png;base64,/);
   assert.ok(Buffer.from(frozenImage.split(",")[1], "base64").equals(
@@ -305,6 +431,20 @@ try {
   assert.equal((await request(`archive-saved-papers/${directId}`)).status, 404);
   assert.equal(Number((await db.prepare("SELECT COUNT(*) n FROM class_exam_assignments WHERE saved_paper_id=?").bind(directId).first()).n), 2, "soft delete retains both successful class assignments");
   assert.equal((await request("class-exam-assignments", "POST", { ...assignmentInput, assignment_batch_id: uuid() })).status, 404);
+  assert.equal((await db.prepare("SELECT deleted_at FROM archive_saved_papers WHERE id=?").bind(directId).first()).deleted_at, null,
+    "new trash changes only mutable library state");
+  const trashed = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "TRASHED" });
+  assert.equal(trashed.status, 200, JSON.stringify(trashed));
+  const trashList = await request("archive-saved-papers?status=TRASHED&limit=20");
+  assert.equal(trashList.body.papers.some(paper => paper.id === directId), true);
+  const restoredFromTrash = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ACTIVE" });
+  assert.equal(restoredFromTrash.status, 200, JSON.stringify(restoredFromTrash));
+  assert.equal((await request("archive-saved-papers/" + directId)).status, 200);
+  await db.prepare("UPDATE archive_saved_papers SET deleted_at=? WHERE id=?")
+    .bind("2026-10-02T00:00:00.000Z", directId).run();
+  const legacyRestore = await request("archive-saved-papers/" + directId + "/library", "PATCH", { status: "ACTIVE" });
+  assert.equal(legacyRestore.status, 409, "legacy one-way tombstones cannot be restored through the new sidecar");
+  assert.equal((await request("archive-saved-papers/" + directId)).status, 404);
 
   console.log("Archive saved-paper D1 runtime passed: ownership, immutable content, images, idempotency, rollback, same-day multi-class identity, PDF failure retention, race guard, and soft delete.");
 } finally {

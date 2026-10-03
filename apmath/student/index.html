@@ -2007,6 +2007,7 @@
       `;
     }
     function renderOmrPdfAction(exam) {
+      if (exam?.is_review_only === true) return '';
       const status = String(exam?.pdf_status || 'pending');
       if (exam?.pdf_ready || status === 'ready') {
         return `<button type="button" class="btn review-btn solution" onclick="downloadExamPdf('${escapeHtml(exam.assignment_id)}')">PDF 다운로드</button>`;

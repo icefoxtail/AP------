@@ -3453,6 +3453,7 @@ async function assignTargetProcessOneClass(classId) {
                         assignment_id: registration?.assignment?.id || undefined,
                         class_id: classId,
                         student_ids: excludedIds,
+                        operation_identity: crypto.randomUUID(),
                         exam_title: getIndexExamTitle(AssignTarget.item),
                         exam_date: examDate,
                         archive_file: getIndexAssignmentArchiveFile(AssignTarget.item)
