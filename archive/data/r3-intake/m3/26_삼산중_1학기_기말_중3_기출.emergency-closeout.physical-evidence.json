@@ -1017,7 +1017,19 @@
       },
       "meta": {
         "status": "PASS",
-        "evidence": "Targeted fail-packet meta repair. Source weights part (2) complete-square 3 points vs part (1) factorization 2 points, so M3-RPM-034 is deterministic primary; CC_POLYNOMIAL_FACTORIZATION preserves the other required method."
+        "evidence": "Targeted fail-packet meta repair. Source weights part (2) complete-square 3 points vs part (1) factorization 2 points, so M3-RPM-034 is deterministic primary; CC_POLYNOMIAL_FACTORIZATION preserves the other required method.",
+        "primaryMethod": "완전제곱식을 이용한 이차방정식 풀이",
+        "decisiveStep": "3점인 (2) 완전제곱식 풀이를 primary로 고정하고 2점인 (1) 인수분해를 보조 결정개념으로 보존한다.",
+        "rpmRecordId": "M3-RPM-034",
+        "rpmDisposition": "RPM_ONLY",
+        "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "nullReason": "Current RPM semantic suffices; no new PT/TPL canonicalization."
       },
       "difficulty": {
         "status": "PASS",
@@ -1146,7 +1158,21 @@
       },
       "meta": {
         "status": "PASS",
-        "evidence": "Targeted fail-packet meta repair. Part (2) is the terminal range judgment and consumes part (1)'s coefficient setup, so M3-RPM-053 graph-position is primary; CC_VERTEX and COND_RANGE preserve support semantics."
+        "evidence": "Targeted fail-packet meta repair. Part (2) is the terminal range judgment and consumes part (1)'s coefficient setup, so M3-RPM-053 graph-position is primary; CC_VERTEX and COND_RANGE preserve support semantics.",
+        "primaryMethod": "그래프 위치 조건으로 계수의 범위 판정",
+        "decisiveStep": "꼭짓점형의 c=4a-3을 사용해 제3사분면을 지나지 않는 조건 y(0)>=0으로 a>=3/4를 확정한다.",
+        "rpmRecordId": "M3-RPM-053",
+        "rpmDisposition": "RPM_ONLY",
+        "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_VERTEX"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "nullReason": "Current RPM semantic suffices; no new PT/TPL canonicalization."
       },
       "difficulty": {
         "status": "PASS",
