@@ -233,9 +233,10 @@ function buildGeometryRegression(canonical, compiled) {
   const brokenTemplateParents = compiled.taxonomy.templates.filter((x) => !problemTypes.has(x.parentProblemTypeKey));
   const brokenCanonicalBindings = compiled.curriculumBindings.bindings.filter((x) => !problemTypes.has(x.problemTypeKey));
 
+  const promotionUids = new Set(assignments.records.map(row => row.questionUid));
   const counts = {
     assignmentCount: assignments.records.length,
-    runtimeRecordCount: runtime.records.length,
+    runtimeRecordCount: runtime.records.filter(row => promotionUids.has(row.questionUid)).length,
     duplicateCanonicalKeyCount: duplicateCanonicalKeys.length,
     aliasCollisionCount: compiled.aliases.collisionCount,
     brokenL4ParentCount: brokenTemplateParents.length,
@@ -248,7 +249,8 @@ function buildGeometryRegression(canonical, compiled) {
     runtimeMappingMismatchCount: 0
   };
 
-  for (const record of assignments.records) {
+  // Later reviewed additions are validated too; the frozen promotion cohort remains 400.
+  for (const record of assignments.records.concat(runtime.records.filter(row => !promotionUids.has(row.questionUid)))) {
     if (!problemTypes.has(record.problemTypeKey)) counts.unregisteredL3Count += 1;
     const template = templates.get(record.templateKey);
     if (!template) counts.unregisteredL4Count += 1;
@@ -260,6 +262,7 @@ function buildGeometryRegression(canonical, compiled) {
   }
 
   const runtimeByUid = new Map(runtime.records.map((record) => [record.questionUid, record]));
+  if (runtimeByUid.size !== runtime.records.length) throw new Error("duplicate geometry runtime UID");
   const sameArray = (a, b) => JSON.stringify(a || []) === JSON.stringify(b || []);
   for (const record of assignments.records) {
     const actual = runtimeByUid.get(record.questionUid);
@@ -399,8 +402,10 @@ function expectedRuntime(canonical) {
   const runtime = readJson(geometryRuntimePath);
   runtime.packVersion = version;
   runtime.runtimeVersion = `GEOMETRY_EQUATIONS@${version}/runtime-bridge-v1`;
+  const revision = `meta-foundation:GEOMETRY_EQUATIONS@${version}`;
   for (const record of runtime.records) {
-    record.metadataRevision = `meta-foundation:GEOMETRY_EQUATIONS@${version}`;
+    // Reviewed-apply appends provenance to this revision; preserve it while checking the pack version.
+    if (!String(record.metadataRevision || "").startsWith(revision + ":")) record.metadataRevision = revision;
     record.metaFoundationPackVersion = version;
   }
   return jsonText(runtime);

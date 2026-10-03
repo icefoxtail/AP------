@@ -772,7 +772,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "이차함수 $f(x)=(x-k)^2(k>0)$이 있다. 양수 $a$에 대하여 $g(x)=\\begin{cases}f(x)&(x\\le3)\\\\kf(x-a)&(x>3)\\end{cases}$이 다음 조건을 만족시킬 때, [보기]에서 옳은 것만을 있는 대로 고른 것은? [5.8점]<br>(가) $\\displaystyle\\lim_{x\\to3}g(x)$가 존재한다.<br>(나) 함수 $y=g(x)$의 그래프는 $x$축과 서로 다른 두 점에서 만난다.<br>[보기]<br>ㄱ. $f(1)=1$이면 $g(2)=0$<br>ㄴ. $g(k+a)<g(3)$<br>ㄷ. $(k-1)(k-2)\\ge0$",
+    "content": "이차함수 $f(x)=(x-k)^2(k>0)$이 있다. 양수 $a$에 대하여 $g(x)=\\begin{cases}f(x)&(x\\le3)\\\\kf(x-a)&(x>3)\\end{cases}$이 다음 조건을 만족시킬 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [5.8점]<br>(가) $\\displaystyle\\lim_{x\\to3}g(x)$가 존재한다.<br>(나) 함수 $y=g(x)$의 그래프는 $x$축과 서로 다른 두 점에서 만난다.<br>[보기]<br>ㄱ. $f(1)=1$이면 $g(2)=0$<br>ㄴ. $g(k+a)<g(3)$<br>ㄷ. $(k-1)(k-2)\\ge0$",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
