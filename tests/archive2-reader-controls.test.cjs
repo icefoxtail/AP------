@@ -21,11 +21,13 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(css, /grid-template-columns: 98px minmax\(0, 1fr\) 48px/);
   assert.match(css, /min-height: 44px/);
   assert.match(css, /max-width: 640px/);
-  assert.match(engine, /archive2-reader-controls\.js\?v=20261003-reader-controls-s1-1/);
-  assert.match(mixed, /archive2-reader-controls\.js\?v=20261003-reader-controls-s1-1/);
+  assert.match(engine, /archive2-reader-controls\.js\?v=20261003-student-return-1/);
+  assert.match(mixed, /archive2-reader-controls\.js\?v=20261003-student-return-1/);
+  assert.match(controls, /studentReview/);
+  assert.match(engine, /history\.replaceState\(null, '', outputUrl\.toString\(\)\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261003-reader-controls-s1-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261003-compose-save-continuity-1/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261003-compose-save-continuity-2/);
+  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261003-assignment-continuity-1/);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {

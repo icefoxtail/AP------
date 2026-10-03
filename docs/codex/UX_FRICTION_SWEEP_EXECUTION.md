@@ -65,8 +65,53 @@ Verification:
 - The second mock save returned 502 and the first batch lookup failed. At desktop, `RESULT_UNKNOWN` showed a recovery button outside `.workspace[inert]`; the prior `…0901` actions remained available. Recovery checked the same batch and retried it successfully as `…0902`.
 - At 390px, the saved-paper assignment action measured 347×44px, the document had no horizontal overflow, and exam/solution/answer actions remained visible. Editing the Draft showed the unsaved state while preserving actions for `…0902`; opening answer produced `mode=ans`, q=1, from the saved snapshot title before the last edit. All API calls were intercepted by the local fixture; no production save or assignment was sent.
 
+Commit: `84c972edc5a6a9796fe8cb28389df990f1d8fe86`
+
+## S3 — Assignment Continuity
+
+Status: PASS
+
+Changes:
+
+- Original and Saved Paper registration now treat `saved=true` with an Assignment ID as completed even when PDF generation fails. Each receipt shows its class name, exact Assignment ID, PDF status, and exam/solution/answer actions.
+- PDF retry posts only to `/class-exam-assignments/:id/pdf`. It does not resubmit Assignment creation; PDF readiness no longer gates Assignment completion.
+- Saved Paper and Original flows keep their completed receipt actions in place instead of reopening the legacy output engine and risking a duplicate registration.
+- Completed Compose output reads the exact receipt Assignment ID and opens the mode-specific Output Envelope from its frozen Assignment snapshot. The old Saved Paper snapshot output path is bypassed once the receipt exists.
+- Original parent receipts expose exact ID output actions and a PDF-only retry per class. Multi-class receipts display class name and Assignment ID together.
+- The S1 standalone reader Back action now returns `studentReview=1` outputs to the student portal OMR list instead of the teacher recent-assignment workspace. Original engine mode changes in screen-fit mode reuse the already measured A4 body height only when the hidden probe reports zero, and keep failing closed when neither measurement exists. Mode-envelope routing is restored after the existing runtime commit so the exact new mode snapshot can be reopened.
+
+Verification:
+
+- Assignment handoff regression passed (6/6), including Original and Saved Paper `saved=true`/PDF failure, exact receipt output IDs, multi-class identity, PDF-only retry, and no engine re-registration.
+- Screen-fit solution geometry and student return regressions passed; Compose scope/output regressions passed (43/43), reader/assignment/layout regressions passed (19/19), and Worker/D1 Saved Paper runtime passed ownership, immutable content, idempotency, rollback, multi-class identity, PDF failure retention, race guard, and soft-delete checks.
+- The required student-portal output-envelope command passed (29/29). It covers Original, Saved Paper-backed Assignment, MIXED, `exam`/`ans`/`sol`, strict snapshot authority, no split-key fallback, and popup reservation.
+- Actual desktop browser flow used a local-only mock API. A Saved Paper Assignment POST returned HTTP 502 with `saved=true` and exact receipt `assignment-s3-exact`; the UI showed Assignment saved and PDF pending. PDF retry made one POST to that exact Assignment's `/pdf` endpoint. The visible call log showed one Assignment POST and one PDF POST total. Opening solution made GET `/class-exam-assignments/assignment-s3-exact/output?mode=sol`; the standalone reader rendered the fixture's frozen question, answer, and solution and carried `assignmentId=assignment-s3-exact`. No production API was called.
+- Actual desktop and 390px student flows used a local-only API fixture with storage writes to Original/MIXED split keys forced to throw. The completed Original card opened exam/solution/answer from `assignment-original-a`; switching exam→solution minted a new exact mode Envelope ID, preserved qpp/assignment identity, survived re-open, and Back returned to `/apmath/student/index.html?omr=1`. Saved Paper Assignment B and MIXED Assignment C opened exam/solution/answer with their own frozen question text; MIXED retained two questions in order. Original A, Saved Paper B, and MIXED C remained open concurrently without payload crossing. The portal API log contained reads only (zero Assignment POSTs and zero calls to the teacher-only output route); split-key write count was zero. All calls used mock responses; no production student or teacher API was contacted.
+- The optional `archive-header-cache-browser.cjs` command could not start because this workspace has no `playwright` npm package. The same changed mobile Original route was checked in the real CUA browser at 390px, and source/cache query assertions plus targeted layout tests passed.
+
 Commit: pending stage close.
 
-## S3–S6
+## Student Portal Regression Guard — S1 / S3 / S5 / S6
+
+The user supplied hotfix `04db702784af64814c21d65cadd1944604733e13` is on current `origin/main`; the UX branch is still pinned to its original S0 base and does not yet contain that ancestry. The six hotfix files currently appear as worktree changes/untracked files. Preserve them intact and exclude them from UX stage commits. Verify ancestry and all six files again immediately before final latest-main integration.
+
+Required acceptance:
+
+- Exercise the actual student portal card → `openOmrReview` → `StudentArchiveReviewOutput` → Output Envelope → engine/mixed engine → answer/solution render path for past Original, Saved Paper-backed Assignment, and MIXED receipts.
+- Verify completed/read-only history remains viewable, with exact `assignmentId`, frozen question/answer/solution bytes, UID order, and qpp preserved through mobile controls and mode changes. Catalog changes must not alter old receipts.
+- Keep student auth and public output policy: student rendering must not call the teacher-only `/class-exam-assignments/:id/output` route.
+- Keep fail-closed Envelope checks. Snapshot-backed receipts must not use `originalSnapshot` or split/generic storage fallback; fallback remains only for genuinely snapshot-less legacy Original data.
+- Opening output and switching answer/solution must create zero Assignment POSTs and request zero reassignments; a valid snapshot must never show the expired-output message.
+- Return to the student portal context without teacher workspace controls. Preserve app/service-worker version `2026.10.03.1` or newer.
+- Add continuous desktop/mobile 390px browser smoke; cover quota with the new single-envelope path and two simultaneous A/B historic receipts without cross-payload mixing.
+- Before final independent review status, verify hotfix ancestry and preserve/equivalently retain all six hotfix files.
+
+Required targeted regression command:
+
+`node --test tests/student-portal-output-envelope.test.cjs tests/student-portal-omr-review-ui.test.js tests/student-portal-mixed-review-payload.test.js tests/student-portal-live-update.test.js tests/student-portal-assignment-recipients.test.js tests/archive2-output-contract.test.cjs tests/archive2-output-transport.test.cjs`
+
+Latest-base baseline note: the user reported an existing `tests/student-portal-omr-history-routes.test.js` Worker string expectation failure on the parent main. Keep that separate from new output regressions; independently reproduce and classify it during S6 if still present.
+
+## S4–S6
 
 Not started.

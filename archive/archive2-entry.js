@@ -68,11 +68,17 @@
     registeredBodies.set(classRow.id, body);
     return body;
   };
-  window.archive2OriginalReceipt = function (data) {
+  window.archive2OriginalReceipt = function (data, classContext = {}) {
     if (data?.saved && data.assignment) {
       if (embedded)
         parent.postMessage(
-          { type: "archive2-original-saved", assignment: data.assignment },
+          {
+            type: "archive2-original-saved",
+            assignment: data.assignment,
+            classId: String(classContext.id || data.assignment.class_id || ""),
+            className: String(classContext.name || "선택한 반"),
+            pdfFailure: String(data.pdfFailure || ""),
+          },
           location.origin,
         );
     }

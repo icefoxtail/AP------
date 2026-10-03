@@ -23,6 +23,11 @@
 
   function fallbackUrl() {
     const output = envelope();
+    const params = new URLSearchParams(location.search);
+    if (params.get("studentReview") === "1") {
+      const portal = new URL("../apmath/student/index.html?omr=1", location.href);
+      return portal.href;
+    }
     if (output?.assignmentId)
       return `workspace.html?view=recent&assignment_id=${encodeURIComponent(output.assignmentId)}`;
     if (output?.paperId)
@@ -42,6 +47,10 @@
   }
 
   function returnToSource() {
+    if (new URLSearchParams(location.search).get("studentReview") === "1") {
+      location.href = fallbackUrl();
+      return;
+    }
     if (root.opener && root.opener !== root && !root.opener.closed) {
       try { root.opener.focus(); } catch {}
       root.close();

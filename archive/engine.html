@@ -4,7 +4,7 @@
     <script src="archive2-review.js"></script>
     <link rel="stylesheet" href="archive2-review.css">
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-    <script src="archive2-output.js?v=20261003-reader-controls-s1-1"></script>
+    <script src="archive2-output.js?v=20261003-student-mode-layout-2"></script>
     <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +40,7 @@
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20260924.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
-    <script src="layout-materializer.js?v=20260914.1"></script>
+    <script src="layout-materializer.js?v=20261003.2"></script>
     <script src="solution-render-executor.js?v=20260924.2" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20260907.1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20260915.1"></script>
@@ -52,7 +52,7 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20260915.2"></script>
-    <script src="screen-runtime-adapter.js?v=20261003-reader-controls-s1-1"></script>
+    <script src="screen-runtime-adapter.js?v=20261003.2"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
@@ -392,7 +392,7 @@
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20260923.1">
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
-    <script defer src="archive2-reader-controls.js?v=20261003-reader-controls-s1-1"></script>
+    <script defer src="archive2-reader-controls.js?v=20261003-student-return-1"></script>
 </head>
 <body>
     <div id="mode-ctrl">
@@ -1741,7 +1741,7 @@ async function switchOutputEnvelopeMode(mode) {
         const outputUrl = new URL(oldHref);
         outputUrl.searchParams.set('archive2Context', 'archive2');
         outputUrl.searchParams.set('archive2OutputContract', envelope.contractVersion);
-        outputUrl.searchParams.set('v', '20261003-reader-controls-s1-1');
+        outputUrl.searchParams.set('v', '20261003-student-mode-layout-2');
         outputUrl.searchParams.set('outputRequestId', envelope.outputRequestId);
         outputUrl.searchParams.set('outputOwnerId', envelope.ownerId);
         outputUrl.searchParams.set('mode', envelope.mode);
@@ -1768,6 +1768,10 @@ async function switchOutputEnvelopeMode(mode) {
             outputRequestId: envelope.outputRequestId,
             payloadHash: envelope.payloadHash,
         });
+        // The screen runtime commits a prepared render transaction and may
+        // restore its candidate URL during that commit. Keep the newly minted
+        // mode envelope as the reloadable route after the transaction settles.
+        history.replaceState(null, '', outputUrl.toString());
         window.__AP_OUTPUT_RENDER_READY__ = {
             contractVersion: envelope.contractVersion,
             outputRequestId: envelope.outputRequestId,

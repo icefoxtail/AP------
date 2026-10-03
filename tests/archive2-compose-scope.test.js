@@ -53,7 +53,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, findExams, renderFind, pool};
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -512,7 +512,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-canonical.js', '20261001-canonical-loadset-1'],
     ['archive2-core.js', '20261001-h23-compose-closure-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
-    ['archive2-workspace.js', '20261003-compose-save-continuity-2'],
+    ['archive2-workspace.js', '20261003-assignment-continuity-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
@@ -678,6 +678,53 @@ test('last Saved Paper actions survive Draft edits and fresh Drafts clear the pr
   assert.equal(w.state.saveBatchId, '');
   assert.equal(w.state.saveSignature, '');
   assert.equal(w.state.saveResultSignature, '');
+});
+
+test('completed Compose output reads the exact receipt Assignment ID instead of rebuilding a source output', async t => {
+  const { w, ctx } = harness();
+  const assignmentId = '00000000-0000-4000-8000-000000000440';
+  const requests = [];
+  const stored = [];
+  const popup = { location: { href: '' }, close() { this.closed = true; } };
+  const oldStore = ctx.Archive2Output.storeOutputEnvelope;
+  ctx.Archive2Output.storeOutputEnvelope = async envelope => { stored.push(envelope); };
+  ctx.open = (url, target) => { assert.equal(url, 'about:blank'); assert.equal(target, '_blank'); return popup; };
+  ctx.APMATH_API_BASE = 'https://archive.test/api';
+  ctx.localStorage.setItem('APMATH_SESSION', JSON.stringify({ id: 'fixture-teacher', session_token: 'fixture-token' }));
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    requests.push({ path: parsed.pathname, query: parsed.search, method: init.method || 'GET' });
+    assert.equal(parsed.pathname, `/api/class-exam-assignments/${assignmentId}/output`);
+    assert.equal(parsed.searchParams.get('mode'), 'sol');
+    return { ok: true, status: 200, json: async () => ({
+      success: true,
+      envelope: {
+        contractVersion: 'archive2-output-envelope-v1',
+        outputRequestId: '00000000-0000-4000-8000-000000000441',
+        ownerId: '00000000-0000-4000-8000-000000000442',
+        sourceKind: 'assignment', sourceId: assignmentId, assignmentId,
+        mode: 'sol', questionCount: 1, meta: { qpp: 4 }, questions: [{ questionUid: 'qid_v1_receipt' }],
+      },
+    }) };
+  };
+  t.after(() => { ctx.Archive2Output.storeOutputEnvelope = oldStore; });
+  w.state.classId = 'class-exact-receipt';
+  w.state.previewIndex = 0;
+  w.state.outputMode = 'sol';
+  w.state.receipts = [{ key: 'draft-paper-key', partIndex: 0, classId: w.state.classId, id: assignmentId, ready: false }];
+
+  await w.print();
+
+  assert.deepEqual(requests.map(row => row.path), [`/api/class-exam-assignments/${assignmentId}/output`]);
+  assert.equal(requests[0].method, 'GET');
+  assert.equal(stored.length, 1);
+  assert.equal(stored[0].assignmentId, assignmentId);
+  const outputUrl = new URL(popup.location.href);
+  assert.equal(outputUrl.searchParams.get('outputRequestId'), stored[0].outputRequestId);
+  assert.equal(outputUrl.searchParams.get('outputOwnerId'), stored[0].ownerId);
+  assert.equal(outputUrl.searchParams.get('assignmentId'), assignmentId);
+  assert.equal(outputUrl.searchParams.get('mode'), 'sol');
+  assert.equal(outputUrl.searchParams.get('preview'), null);
 });
 
 test('scope cards cannot be created by source-only labels and counts match selectable UIDs', () => {
