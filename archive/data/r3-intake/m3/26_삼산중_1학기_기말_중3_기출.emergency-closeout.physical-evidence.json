@@ -1,0 +1,1707 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+  "examSha256": "sha256:5e93070b2ce1187ae22b7ebdbc441a698addab5e0a379ea64fb2ce11e1d5cf7c",
+  "questionCount": 24,
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "canonicalOrdinal": 26,
+  "executor": "SURGE-1",
+  "inputArtifactGitBlobSha": "22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc",
+  "inputAuthorityCommit": "cb3925a0b49f905fae1c56c25a4bce651265ede6",
+  "observedMainAtAudit": "3c2e4f8e732a19ea8205d28e71e1b06145f15cb3",
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false
+  },
+  "sourceParity": {
+    "status": "PASS",
+    "protectedFieldAuditCount": "24/24",
+    "contentMutation": 0,
+    "evidence": "Current main exam blob is exact to the frozen R3 input artifact; this closeout changes metadata evidence only."
+  },
+  "curriculumMethodAuditCount": "24/24",
+  "curriculumViolationQids": [],
+  "visualNecessityAuditCount": "24/24",
+  "linkedSolutionVisualAuditCount": "0/0",
+  "runtimeStringAuditCount": "24/24",
+  "layoutAuditCount": "24/24",
+  "releaseFindings": [
+    {
+      "axis": "META",
+      "qids": [
+        21,
+        24
+      ],
+      "code": "TARGETED_PRIMARY_PLUS_CROSSCONCEPT_REPAIR_CLOSED",
+      "blocking": false,
+      "evidence": "q21: source score 3 vs 2 gives deterministic complete-square primary and factorization remains ACTIVE CrossConcept. q24: terminal graph-position/range decision consumes coefficient setup, with vertex/range support. No canonical mutation."
+    },
+    {
+      "axis": "META",
+      "qids": [
+        22
+      ],
+      "code": "STALE_NO_EXACT_L4_HOLD_RESOLVED_BY_LOWER_GRADE_PREREQUISITE",
+      "blocking": false
+    },
+    {
+      "axis": "MATH_SOLUTION",
+      "qids": [],
+      "code": "GRADE_BOUNDED_24_OF_24_PASS",
+      "blocking": false
+    },
+    {
+      "axis": "VISUAL",
+      "qids": [],
+      "code": "NO_CONFIRMED_VISUAL_DEFECT",
+      "blocking": false
+    },
+    {
+      "axis": "RUNTIME",
+      "qids": [],
+      "code": "RUNTIME_DOUBLED_TEX_ESCAPE_ZERO",
+      "blocking": false
+    }
+  ],
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "규칙→좌표 계산→거리 순서가 재현된다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "지배 관계→대입→요구값 순서다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "공식→대입→정리 구조다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "개념→대수 변형을 생략하지 않는다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q1 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: ⑤만 정리하면 x²-x-10=0인 이차방정식이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. ⑤만 정리하면 x²-x-10=0인 이차방정식이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q2 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: ④는 (2x+1)²=0이라 중근 -1/2을 갖는다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. ④는 (2x+1)²=0이라 중근 -1/2을 갖는다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q3 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: ② y=x²+3x만 이차함수다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. ② y=x²+3x만 이차함수다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q4 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: y=(x-1)²+3의 꼭짓점은 (1,3)이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. y=(x-1)²+3의 꼭짓점은 (1,3)이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q5 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 두 근 2/3, 2와 최고차항 3으로 3x²-8x+4, 따라서 a-b=-12이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 두 근 2/3, 2와 최고차항 3으로 3x²-8x+4, 따라서 a-b=-12이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q6 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: a=√5/2, b=(1+2√5)/2이므로 a+b=(1+3√5)/2이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. a=√5/2, b=(1+2√5)/2이므로 a+b=(1+3√5)/2이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q7 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 근의 공식 비교에서 25-24k=97, 따라서 k=-3이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 근의 공식 비교에서 25-24k=97, 따라서 k=-3이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q8 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: a=2>0이고 |2|>|1|이므로 y=x²보다 폭이 좁다. 틀린 설명은 ④다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. a=2>0이고 |2|>|1|이므로 y=x²보다 폭이 좁다. 틀린 설명은 ④다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B1; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q9 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: x축 대칭 후 y=-ax², (3,1)을 대입하면 a=-1/9이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. x축 대칭 후 y=-ax², (3,1)을 대입하면 a=-1/9이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q10 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 양의 계수 4개, |-2|보다 절댓값 큰 계수 2개이므로 m+n=6이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 양의 계수 4개, |-2|보다 절댓값 큰 계수 2개이므로 m+n=6이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q11 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 이동 후 y=a(x-2)²-1, (3,3) 대입으로 a=4이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 이동 후 y=a(x-2)²-1, (3,3) 대입으로 a=4이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q12 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 꼭짓점 (-1,2)→(-2,-3)이므로 p=-1,q=-5, 합 -6이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 꼭짓점 (-1,2)→(-2,-3)이므로 p=-1,q=-5, 합 -6이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q13 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: y=2(x+3)²+k-18, 꼭짓점이 x축 위라 k=18이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. y=2(x+3)²+k-18, 꼭짓점이 x축 위라 k=18이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q14 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 꼭짓점 (1,a),(b,1)를 잇는 직선의 기울기 1에서 1-a=b-1, 따라서 a+b=2이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 꼭짓점 (1,a),(b,1)를 잇는 직선의 기울기 1에서 1-a=b-1, 따라서 a+b=2이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q15 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: x절편 -1,3과 y절편 -3으로 y=(x+1)(x-3), 꼭짓점 (1,-4), 삼각형 넓이 8이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. x절편 -1,3과 y절편 -3으로 y=(x+1)(x-3), 꼭짓점 (1,-4), 삼각형 넓이 8이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B3; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q16 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: y=-2(x-1)²+7이므로 a+p+q=6이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. y=-2(x-1)²+7이므로 a+p+q=6이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q17 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 100을 더해 (x+10)²=225, 길이 조건으로 x=5라 ④다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 100을 더해 (x+10)²=225, 길이 조건으로 x=5라 ④다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B3; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q18 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: x²+(x+3)²+(x+5)²=238에서 양의 길이 x=6이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. x²+(x+3)²+(x+5)²=238에서 양의 길이 x=6이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B3; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q19 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: B=(1,a), A=(-1,a), 면적 2에서 a=2; 선분비로 b=-3, 합 -1이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. B=(1,a), A=(-1,a), 면적 2에서 a=2; 선분비로 b=-3, 합 -1이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B4; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q20 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 축 x=2, 근 -1,5, a<0에서 b=-4a,c=-5a. a+2b+3c=-22a>0인 ④만 참이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 축 x=2, 근 -1,5, a<0에서 b=-4a,c=-5a. a+2b+3c=-22a>0인 ④만 참이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B4; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q21 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: (1) (3x-5)(2x+7)=0 → x=5/3,-7/2. (2) (x-2)²=13/4 → x=2±√13/2이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. (1) (3x-5)(2x+7)=0 → x=5/3,-7/2. (2) (x-2)²=13/4 → x=2±√13/2이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Independent subparts are separated and each requested derivation is reproducible from the written steps."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Targeted fail-packet repair only. Source score weights are 3 points for complete-square and 2 for factorization, giving a deterministic primary tie-break. Primary M3-RPM-034; factorization preserved as ACTIVE CC_POLYNOMIAL_FACTORIZATION. Exam bytes unchanged.",
+        "primaryMethod": "완전제곱식을 이용한 이차방정식 풀이",
+        "decisiveStep": "3점인 (2) 완전제곱식 풀이를 primary로 고정하고 2점인 (1) 인수분해를 보조 결정개념으로 보존한다.",
+        "rpmRecordId": "M3-RPM-034",
+        "rpmDisposition": "RPM_ONLY",
+        "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "nullReason": "Current RPM semantic suffices; no new PT/TPL canonicalization.",
+        "repairBasis": {
+          "failureCodeClosed": "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
+          "deterministicTieBreak": "SOURCE_EXPLICIT_SCORE_WEIGHT_3_VS_2",
+          "supportingRpmRecordId": "M3-RPM-032",
+          "supportingConceptKey": "CC_POLYNOMIAL_FACTORIZATION"
+        }
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "STATIC_CAPACITY_EVIDENCE: two independently scored method solutions need written-work space."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q22 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 가로 x, 세로 x+5, 절단 후 높이 2·밑면 x-4,x+1. 2(x-4)(x+1)=352 → x=15, 처음 세로 20이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. 가로 x, 세로 x+5, 절단 후 높이 2·밑면 x-4,x+1. 2(x-4)(x+1)=352 → x=15, 처음 세로 20이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh current-policy lookup clears the old q22 no-exact-L4 hold via M1-2 lower-grade prerequisite semantic M1-RPM-100."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B3; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "STATIC_CAPACITY_EVIDENCE: long modeling prompt + condition box + source image + full equation/process justify subjective-2up."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q23 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: x절편 ±3, y절편 9로 y=a(x+3)(x-3), a=-1 → y=-x²+9이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. x절편 ±3, y절편 9로 y=a(x+3)(x-3), a=-1 → y=-x²+9이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Key relation/calculation and requested result are exposed in sequence; no hidden decisive jump or collapsed ㄱ/ㄴ/ㄷ enumeration."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh source+verified solution → RPM semantic → crosswalk → GLOBAL ACTIVE lookup yields semantic FINAL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B2; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "grid retained; no supported overflow trigger was found."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R2 artifact blob 22d2e2b25a1bb2861d4ee3f68c4a9f0ee2e135fc was freshly read; q24 protected source fields remain exact to the R2 source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: y=a(x-2)²-3에서 b=-4a,c=4a-3. 제3사분면을 피하려면 a>0, 4a-3≥0이므로 a≥3/4이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh solve was frozen before upstream compare; current student solution reaches the same result without future/higher-course dependency. y=a(x-2)²-3에서 b=-4a,c=4a-3. 제3사분면을 피하려면 a>0, 4a-3≥0이므로 a≥3/4이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Independent subparts are separated and each requested derivation is reproducible from the written steps."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중3 상한선과 이미 이수한 중1·중2 prerequisite만 사용했다. 상위 학년/후속과정 방법으로 추가 모순·반례를 만들지 않았다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Required problem visual, if referenced, remains linked by the exact R2-audited blob; no fresh source/rendered semantic contradiction was found, and anchor/micro-layout doubt was not escalated. Text-only items remain reproducible without a new solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Targeted fail-packet repair only. Part (1) establishes vertex-form coefficients and part (2) is the terminal required range judgment consuming part (1). Primary M3-RPM-053; CC_VERTEX and COND_RANGE preserve support semantics. Exam bytes unchanged.",
+        "primaryMethod": "그래프 위치 조건으로 계수의 범위 판정",
+        "decisiveStep": "꼭짓점형의 c=4a-3을 사용해 제3사분면을 지나지 않는 조건 y(0)>=0으로 a>=3/4를 확정한다.",
+        "rpmRecordId": "M3-RPM-053",
+        "rpmDisposition": "RPM_ONLY",
+        "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_VERTEX"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "nullReason": "Current RPM semantic suffices; no new PT/TPL canonicalization.",
+        "repairBasis": {
+          "failureCodeClosed": "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
+          "deterministicTieBreak": "TERMINAL_DEPENDENCY_PART2_CONSUMES_PART1",
+          "supportingRpmRecordId": "M3-RPM-054",
+          "supportingConceptKey": "CC_VERTEX",
+          "conditionKey": "COND_RANGE"
+        }
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty reconverged to B4; legacy level was compared only after the fresh judgement."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Evaluated final runtime content/choices/answer/solution high-signal TeX scan has doubled escape 0."
+      },
+      "layoutAudit": {
+        "status": "PASS",
+        "evidence": "STATIC_CAPACITY_EVIDENCE: two independent 3-point written subparts justify subjective-2up."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "이차방정식 판별",
+      "decisiveStep": "각 보기를 등식으로 정리해 이차항이 남는지 판별",
+      "rpmRecordId": "M3-RPM-029",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "중근 판별",
+      "decisiveStep": "완전제곱식 또는 판별식으로 중근 여부 판별",
+      "rpmRecordId": "M3-RPM-036",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "이차함수 판별",
+      "decisiveStep": "각 관계를 y의 x식으로 정리해 최고차항 확인",
+      "rpmRecordId": "M3-RPM-043",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "꼭짓점 좌표 읽기",
+      "decisiveStep": "꼭짓점형에서 (p,q)를 직접 판독",
+      "rpmRecordId": "M3-RPM-050",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "주어진 두 근으로 계수 결정",
+      "decisiveStep": "최고차항 계수와 두 근으로 인수형을 만든 뒤 계수 비교",
+      "rpmRecordId": "M3-RPM-031",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "제곱근을 이용한 이차방정식 풀이",
+      "decisiveStep": "두 제곱꼴 방정식의 양수 해를 각각 선택해 합산",
+      "rpmRecordId": "M3-RPM-033",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "근의 공식 계수 비교",
+      "decisiveStep": "근의 공식의 판별식 부분을 주어진 근과 비교",
+      "rpmRecordId": "M3-RPM-035",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "y=ax² 그래프 성질 판별",
+      "decisiveStep": "계수 부호와 절댓값으로 방향·폭·대칭 판별",
+      "rpmRecordId": "M3-RPM-045",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "대칭이동한 그래프의 계수 결정",
+      "decisiveStep": "x축 대칭으로 y=-ax²를 만든 뒤 주어진 점 대입",
+      "rpmRecordId": "M3-RPM-048",
+      "rpmDisposition": "FAMILY_BINDING_GAP",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "nullReason": "Fresh resolver reconverged to the same ACTIVE PT/TPL projection; any missing exact target binding remains nonblocking."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "y=ax² 그래프 비교",
+      "decisiveStep": "계수 부호와 절댓값으로 방향·폭 조건을 각각 계산",
+      "rpmRecordId": "M3-RPM-045",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "이차함수 평행이동",
+      "decisiveStep": "평행이동한 식 y=a(x-2)^2-1에 점을 대입",
+      "rpmRecordId": "M3-RPM-049",
+      "rpmDisposition": "DIRECT_BINDING_GAP",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "nullReason": "Fresh resolver reconverged to the same ACTIVE PT/TPL projection; any missing exact target binding remains nonblocking."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "꼭짓점 이동량 비교",
+      "decisiveStep": "이동 전후 꼭짓점 좌표 차이로 p,q 결정",
+      "rpmRecordId": "M3-RPM-049",
+      "rpmDisposition": "DIRECT_BINDING_GAP",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "nullReason": "Fresh resolver reconverged to the same ACTIVE PT/TPL projection; any missing exact target binding remains nonblocking."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "완전제곱식 변형",
+      "decisiveStep": "일반형을 꼭짓점형으로 바꾸고 꼭짓점 높이를 0으로 설정",
+      "rpmRecordId": "M3-RPM-051",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "꼭짓점 좌표와 직선 기울기",
+      "decisiveStep": "두 꼭짓점을 좌표화한 뒤 기울기 1 조건을 식으로 변환",
+      "rpmRecordId": "M3-RPM-050",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "그래프 조건으로 이차함수 결정",
+      "decisiveStep": "두 x절편과 y절편으로 함수식을 만든 뒤 꼭짓점·삼각형 넓이 계산",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmDisposition": "FAMILY_BINDING_GAP",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "nullReason": "Fresh resolver reconverged to the same ACTIVE PT/TPL projection; any missing exact target binding remains nonblocking."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "일반형을 꼭짓점형으로 변형",
+      "decisiveStep": "완전제곱식으로 a,p,q를 읽고 합산",
+      "rpmRecordId": "M3-RPM-051",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "완전제곱식을 이용한 풀이",
+      "decisiveStep": "x²+20x에 100을 더해 (x+10)²을 만든 뒤 양의 해 선택",
+      "rpmRecordId": "M3-RPM-034",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "도형 조건을 이차방정식으로 모델링",
+      "decisiveStep": "세 정사각형의 변을 x,x+3,x+5로 두고 넓이 합 방정식 해결",
+      "rpmRecordId": "M3-RPM-039",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "그래프 계수 결정",
+      "decisiveStep": "포물선 대칭·삼각형 넓이·선분비를 결합해 a,b 결정",
+      "rpmRecordId": "M3-RPM-048",
+      "rpmDisposition": "FAMILY_BINDING_GAP",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "nullReason": "Fresh resolver reconverged to the same ACTIVE PT/TPL projection; any missing exact target binding remains nonblocking."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "그래프 위치와 계수 관계 판별",
+      "decisiveStep": "대칭축과 x절편으로 인수형을 세워 b,c를 a로 표현",
+      "rpmRecordId": "M3-RPM-053",
+      "rpmDisposition": "RPM_ONLY",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh RPM semantic is deterministic FINAL; no safe exact PT/TPL projection is materialized, so null is preserved with explicit nonblocking reason."
+    },
+    {
+      "qid": 21,
+      "result": "HOLD",
+      "primaryMethod": "인수분해 풀이와 완전제곱식 풀이의 독립 서술",
+      "decisiveStep": "두 지정 방법을 각각 수행해야 문항 전체가 완결된다.",
+      "rpmDisposition": "TRUE_META_HOLD",
+      "projectionDisposition": "NOT_ATTEMPTED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "두 독립 필수 RPM L4를 한 primary로 임의 없이 축약할 수 없다.",
+      "holdEvidence": {
+        "reason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "observedEvidence": "(1) 인수분해 풀이와 (2) 완전제곱식 풀이를 각각 독립 부분점수로 명시해 두 current M3 RPM L4가 모두 필수다.",
+        "unresolvedPoint": "문항 전체를 대표하는 단일 RPM L3/L4를 source+verified solution만으로 유일하게 정할 수 없다.",
+        "nextRequiredEvidenceOrCapability": "복수 독립 채점축을 손실 없이 표현하는 canonical composite semantic 또는 임의성 없는 explicit primary authority.",
+        "repairAttempted": "R3 direct repair 없이 current source+solution에서 primary/decisive step을 재도출하고 current M3 RPM, lower-only prerequisite route, crosswalk, GLOBAL ACTIVE를 재조회했다.",
+        "authorityLookupAttempted": [
+          "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+          "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+          "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+        ],
+        "whyDeterministicClosureImpossible": "각 요구의 수학적 진실값은 결정되지만 독립 필수 semantic 축을 하나로 축약할 canonical tie-break가 없어 한 leaf 선택은 임의적 정보 손실이다."
+      }
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "각기둥 부피 공식으로 상자 부피 조건 모델링",
+      "decisiveStep": "절단 후 밑면 (x-4)(x+1), 높이 2의 부피를 352로 두어 이차방정식을 세운다.",
+      "rpmRecordId": "M1-RPM-100",
+      "rpmDisposition": "FAMILY_ACTIVE",
+      "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+      "targetScope": "M3-1",
+      "semanticSourceScope": "M1-2",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json@c58b07b93900bfa85ef4c1d392bea9405717c984",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md@55057ebbffec58a2a7ee24c6022e4921c475e945"
+      ],
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "nullReason": "Current lower-only prerequisite rule makes the old no-exact-M3-volume-leaf hold nonblocking: M1-2 prism-volume semantic is deterministic FINAL; target M3 binding remains projection debt."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "그래프 조건으로 식 결정",
+      "decisiveStep": "두 x절편과 y절편을 이용해 인수형 계수 결정",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmDisposition": "FAMILY_BINDING_GAP",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "nullReason": "Fresh resolver reconverged to the same ACTIVE PT/TPL projection; any missing exact target binding remains nonblocking."
+    },
+    {
+      "qid": 24,
+      "result": "HOLD",
+      "primaryMethod": "꼭짓점형 계수 결정과 사분면 범위 판정의 독립 서술",
+      "decisiveStep": "계수 비교와 그래프 위치·범위 판정이 각각 필수다.",
+      "rpmDisposition": "TRUE_META_HOLD",
+      "projectionDisposition": "NOT_ATTEMPTED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+        "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "두 독립 필수 RPM semantic 축에 unique primary tie-break가 없다.",
+      "holdEvidence": {
+        "reason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "observedEvidence": "(1) 꼭짓점형 계수 결정과 (2) 사분면 조건 범위 판정을 각각 3점 독립 채점으로 요구해 두 semantic 축이 동등 필수다.",
+        "unresolvedPoint": "문항 전체를 대표하는 단일 RPM L3/L4를 source+verified solution만으로 유일하게 정할 수 없다.",
+        "nextRequiredEvidenceOrCapability": "복수 독립 채점축을 손실 없이 표현하는 canonical composite semantic 또는 임의성 없는 explicit primary authority.",
+        "repairAttempted": "R3 direct repair 없이 current source+solution에서 primary/decisive step을 재도출하고 current M3 RPM, lower-only prerequisite route, crosswalk, GLOBAL ACTIVE를 재조회했다.",
+        "authorityLookupAttempted": [
+          "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@40e48693b9cc19946f4a6b6c78134876faa94009",
+          "archive/tools/meta-foundation/rpm-active-resolver.mjs@4b91b33f9963782f667f2167bc816cf58040512a",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+          "archive/data/meta-foundation/canonical/registry_index.json@c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+        ],
+        "whyDeterministicClosureImpossible": "각 요구의 수학적 진실값은 결정되지만 독립 필수 semantic 축을 하나로 축약할 canonical tie-break가 없어 한 leaf 선택은 임의적 정보 손실이다."
+      }
+    }
+  ],
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0
+  },
+  "overallProtocolDisposition": "PASS",
+  "overallProtocolFailureCodes": [],
+  "note": "Emergency closeout targeted only q21/q24 meta HOLDs. No production exam/source/answer/solution/image mutation; no full recertification; no canonical registry mutation.",
+  "closeoutMode": "USER_TEMP_M3_EMERGENCY_CLOSEOUT",
+  "closeoutDirective": "EXISTING_MAIN_OPERATIONALLY_CERTIFIED_TARGETED_OPEN_LOCUS_ONLY",
+  "observedMainAtCloseout": "546afa1b6973514f625c2d1d98cbcab178cc7e79",
+  "repairScope": {
+    "sourceFailPacketPath": "archive/data/r3-intake/m3/26_삼산중_1학기_기말_중3_기출.r3-fail-packet.json",
+    "sourceFailPacketGitBlobSha": "62e664dd7fee60d474416d85129dfac2b2d2009f",
+    "openQids": [
+      21,
+      24
+    ],
+    "openAxes": [
+      "meta"
+    ],
+    "productionExamMutation": 0,
+    "lockedRemainderPreserved": true
+  },
+  "canonicalAuthorityAtRepair": {
+    "middle3RpmCrosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+      "gitBlobSha": "4a4f5a4b4a9aae781235297b5998f4a1e3727cec"
+    },
+    "compiledConceptRegistry": {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "gitBlobSha": "0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+    }
+  }
+}
