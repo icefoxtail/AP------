@@ -1919,6 +1919,98 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
       const classId = normalizeOptionalText(url.searchParams.get('class'));
+      if (id === 'recent-summary') {
+        if (classId && !(await canAccessClass(currentTeacher, classId, env)))
+          return jsonResponse({ error: 'Forbidden' }, 403);
+        const allowedClassIds = classId ? [classId] : await getAllowedClassIds(env, currentTeacher);
+        if (Array.isArray(allowedClassIds) && !allowedClassIds.length)
+          return jsonResponse({ success: true, assignments: [], limit: 0 });
+
+        const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
+        const classColumns = await getTableColumnSet(env, 'classes');
+        const recipientColumns = await getTableColumnSet(env, 'class_exam_assignment_recipients');
+        const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
+        const exclusionColumns = await getTableColumnSet(env, 'class_exam_assignment_exclusions');
+        const lifecycleColumns = await getTableColumnSet(env, 'class_exam_assignment_lifecycle_events');
+        const limitInput = Number.parseInt(url.searchParams.get('limit') || '1000', 10);
+        const limit = Number.isInteger(limitInput) && limitInput > 0 ? Math.min(1000, limitInput) : 1000;
+        const conditions = [];
+        const params = [];
+        if (classId) {
+          conditions.push('a.class_id = ?');
+          params.push(classId);
+        } else if (Array.isArray(allowedClassIds)) {
+          conditions.push(`a.class_id IN (${allowedClassIds.map(() => '?').join(',')})`);
+          params.push(...allowedClassIds);
+        }
+        const grade = normalizeBoardGrade(url.searchParams.get('grade') || '');
+        const from = normalizeBoardDate(url.searchParams.get('from'));
+        const to = normalizeBoardDate(url.searchParams.get('to'));
+        if (grade && classColumns.has('grade')) {
+          conditions.push("REPLACE(COALESCE(c.grade, ''), ' ', '') = ?");
+          params.push(grade);
+        }
+        if (from) {
+          conditions.push("SUBSTR(COALESCE(a.exam_date, ''), 1, 10) >= ?");
+          params.push(from);
+        }
+        if (to) {
+          conditions.push("SUBSTR(COALESCE(a.exam_date, ''), 1, 10) <= ?");
+          params.push(to);
+        }
+
+        const recipientCount = recipientColumns.has('assignment_id')
+          ? '(SELECT COUNT(*) FROM class_exam_assignment_recipients r WHERE r.assignment_id = a.id)'
+          : 'NULL';
+        const submittedCount = sessionColumns.has('assignment_id') && sessionColumns.has('student_id')
+          ? '(SELECT COUNT(DISTINCT es.student_id) FROM exam_sessions es WHERE es.assignment_id = a.id)'
+          : 'NULL';
+        const reviewOnlyPredicate = [
+          assignmentColumns.has('cancelled_at') ? 'a.cancelled_at IS NOT NULL' : '',
+          exclusionColumns.has('assignment_id') && exclusionColumns.has('student_id') ? 'ex.student_id IS NOT NULL' : '',
+        ].filter(Boolean).join(' OR ');
+        const reviewOnlyCount = recipientColumns.has('assignment_id') && recipientColumns.has('student_id') &&
+          sessionColumns.has('assignment_id') && sessionColumns.has('student_id') && reviewOnlyPredicate
+          ? `(SELECT COUNT(DISTINCT es.student_id) FROM class_exam_assignment_recipients r
+              JOIN exam_sessions es ON es.assignment_id = r.assignment_id AND es.student_id = r.student_id
+              ${exclusionColumns.has('assignment_id') && exclusionColumns.has('student_id')
+                ? 'LEFT JOIN class_exam_assignment_exclusions ex ON ex.assignment_id = r.assignment_id AND ex.student_id = r.student_id'
+                : ''}
+              WHERE r.assignment_id = a.id AND (${reviewOnlyPredicate}))`
+          : 'NULL';
+        const replacementId = lifecycleColumns.has('assignment_id') && lifecycleColumns.has('related_assignment_id') && lifecycleColumns.has('operation') && lifecycleColumns.has('occurred_at') && lifecycleColumns.has('event_id')
+          ? `(SELECT le.assignment_id FROM class_exam_assignment_lifecycle_events le
+              WHERE le.related_assignment_id = a.id AND le.operation = 'REPLACEMENT_ASSIGNMENT'
+              ORDER BY le.occurred_at DESC, le.event_id DESC LIMIT 1)`
+          : 'NULL';
+        const replacesId = lifecycleColumns.has('assignment_id') && lifecycleColumns.has('related_assignment_id') && lifecycleColumns.has('operation') && lifecycleColumns.has('occurred_at') && lifecycleColumns.has('event_id')
+          ? `(SELECT le.related_assignment_id FROM class_exam_assignment_lifecycle_events le
+              WHERE le.assignment_id = a.id AND le.operation = 'REPLACEMENT_ASSIGNMENT'
+              ORDER BY le.occurred_at DESC, le.event_id DESC LIMIT 1)`
+          : 'NULL';
+        const projection = [
+          'a.id', 'a.class_id', 'a.exam_title', 'a.exam_date', 'a.question_count', 'a.archive_file',
+          assignmentColumns.has('source_type') ? 'a.source_type' : "'archive' AS source_type",
+          assignmentColumns.has('subject') ? 'a.subject' : "'' AS subject",
+          assignmentColumns.has('pdf_status') ? 'a.pdf_status' : "'pending' AS pdf_status",
+          assignmentColumns.has('pdf_error') ? 'a.pdf_error' : "'' AS pdf_error",
+          assignmentColumns.has('saved_paper_id') ? 'a.saved_paper_id' : 'NULL AS saved_paper_id',
+          assignmentColumns.has('cancelled_at') ? 'a.cancelled_at' : 'NULL AS cancelled_at',
+          `${recipientCount} AS recipient_count`, `${submittedCount} AS submitted_count`,
+          `${reviewOnlyCount} AS review_only_count`, `${replacementId} AS replacement_assignment_id`,
+          `${replacesId} AS replaces_assignment_id`,
+          'c.name AS class_name', classColumns.has('grade') ? 'c.grade AS class_grade' : "'' AS class_grade",
+        ];
+        const result = await env.DB.prepare(`
+          SELECT ${projection.join(',\n            ')}
+          FROM class_exam_assignments a
+          LEFT JOIN classes c ON c.id = a.class_id
+          ${conditions.length ? `WHERE ${conditions.join(' AND ')}` : ''}
+          ORDER BY a.exam_date DESC, a.updated_at DESC, a.id DESC
+          LIMIT ?
+        `).bind(...params, limit).all();
+        return jsonResponse({ success: true, limit, assignments: dedupeClassExamAssignments(result.results || []) });
+      }
       const historyList = url.searchParams.get('history') === '1';
       if (historyList) {
         if (classId && !(await canAccessClass(currentTeacher, classId, env)))

@@ -437,6 +437,21 @@ test('history supports all five high-school semantic labels and safe malformed p
     assert.equal(row.recipientCount, null); assert.equal(row.submittedCount, null);
   }
 });
+test('recent summary normalizer exposes PDF and lifecycle states without inferring missing values', () => {
+  const h = harness();
+  const [row] = h.h.normalizeAssignments([{
+    id: 'cancelled-parent', class_id: 'c1', class_name: '고1 A반', class_grade: '고1',
+    exam_title: '개정 전 시험', exam_date: '2026-09-22', pdf_status: 'failed', pdf_error: 'worker offline',
+    cancelled_at: '2026-09-23T00:00:00Z', review_only_count: 2,
+    replacement_assignment_id: 'replacement-exact', replaces_assignment_id: '',
+  }], [{ id: 'c1', name: '고1 A반', grade: '고1' }], [], h.c);
+  assert.equal(row.pdfStatus, 'failed'); assert.equal(row.pdfError, 'worker offline');
+  assert.equal(row.isCancelled, true); assert.equal(row.isReviewOnly, true);
+  assert.equal(row.reviewOnlyCount, 2); assert.equal(row.replacementAssignmentId, 'replacement-exact');
+  const [unknown] = h.h.normalizeAssignments([{ id: 'legacy', pdf_status: null }], [], [], h.c);
+  assert.equal(unknown.pdfStatus, 'pending'); assert.equal(unknown.reviewOnlyCount, null);
+  assert.equal(unknown.isCancelled, false);
+});
 test('all history filters compose conjunctively; period includes both endpoints', () => {
   const h = harness(); const { rows } = historyFixture(h);
   assert.deepEqual(plain(h.h.filterAssignments(rows, { from: '2026-09-20', to: '2026-09-22', grade: '중3', classId: 'c1', subject: 'COMMON_MATH_1', query: '중간고사' }).map(r => r.id)), ['a1']);
@@ -461,7 +476,11 @@ test('compact history markup separates drafts, preserves the detail action and e
   assert.match(markup, /id="recent-class"/); assert.match(markup, /전체 반/);
   assert.match(markup, /대상 중3/); assert.match(markup, /시험지 고1 · 공통수학1/);
   assert.match(markup, /<aside class="history-drafts"/);
-  assert.match(markup, /학생별 확인 · 출력/);
+  assert.match(markup, /학생별 확인/);
+  assert.match(markup, /data-mode="exam" class="small"[^>]*>시험/);
+  assert.match(markup, /data-mode="sol" class="small"[^>]*>해설/);
+  assert.match(markup, /data-mode="ans" class="small"[^>]*>정답/);
+  assert.match(markup, /PDF 다시 준비/);
   assert.match(markup, /data-action="assignment-status"/);
   assert.doesNotMatch(markup, /assignment-students|\/status|<iframe/);
   assert.match(markup, /대상 0명/); assert.match(markup, /제출 0명/);
@@ -493,7 +512,7 @@ test('history loads all accessible classes in one assignments request and never 
     return { ok: true, json: async () => data };
   });
   await h.w.loadRecent();
-  assert.equal(calls.length, 2); assert.ok(calls[1].endsWith('/class-exam-assignments?history=1'));
+  assert.equal(calls.length, 2); assert.ok(calls[1].endsWith('/class-exam-assignments/recent-summary?limit=1000'));
   assert.equal(h.w.state.recentRows.length, 100); assert.equal(h.w.state.recentClassId, '');
   assert.equal(h.h.filterAssignments(h.w.state.recentRows, { grade: '중3' }).length, 50);
   h.w.recentAssignmentMarkup();
@@ -533,6 +552,38 @@ test('worker history list supports whole, grade and class scopes with class meta
   assert.match(block, /SUBSTR\(COALESCE\(a\.exam_date/);
   assert.match(block, /c\.name AS class_name, c\.grade AS class_grade/);
   assert.match(block, /dedupeClassExamAssignments/);
+});
+test('recent and student detail expose cancellation, replacement, review-only, and exact deep-link identity', () => {
+  const h = harness(); const { classes, rows } = historyFixture(h);
+  const stateRow = {
+    ...rows[0], id: 'parent-assignment', title: '취소된 원본', pdfReady: false,
+    pdfStatus: 'failed', pdfError: 'PDF worker offline', isCancelled: true,
+    replacementAssignmentId: 'replacement-assignment', isReviewOnly: true, reviewOnlyCount: 1,
+  };
+  h.w.setClasses(classes); h.w.state.recentRows = [stateRow]; h.w.state.recentClassId = '';
+  const markup = h.w.recentAssignmentMarkup();
+  assert.match(markup, /취소됨/);
+  assert.match(markup, /대체됨 · replacement-assignment/);
+  assert.match(markup, /열람 전용 · 1명/);
+  assert.match(markup, /PDF 준비 실패/);
+  assert.match(markup, /PDF 다시 준비/);
+  const workspace = read('archive2-workspace.js');
+  assert.match(workspace, /url\.searchParams\.set\("assignment_id", String\(a\.id \|\| id\)\)/);
+  assert.match(workspace, /url\.searchParams\.set\("student_id", String\(studentId \|\| ""\)\)/);
+  assert.match(workspace, /url\.searchParams\.set\("omr", "1"\)/);
+});
+test('additive recent summary is bounded and leaves compatible history API intact', () => {
+  const worker = readRoot('apmath', 'worker-backup', 'worker', 'routes', 'exams.js');
+  const start = worker.indexOf("if (id === 'recent-summary') {");
+  const end = worker.indexOf("const historyList = url.searchParams.get('history') === '1'", start);
+  assert.ok(start > 0 && end > start);
+  const summary = worker.slice(start, end);
+  assert.match(summary, /Math\.min\(1000, limitInput\)/);
+  assert.match(summary, /LIMIT \?/);
+  assert.match(summary, /replacement_assignment_id/);
+  assert.match(summary, /review_only_count/);
+  assert.doesNotMatch(summary, /mixed_payload_json/);
+  assert.ok(worker.slice(end).includes("url.searchParams.get('history') === '1'"));
 });
 test('history load failures do not display old-class cards as new results', async () => {
   const h = harness(async () => { throw new Error('test list unavailable'); });

@@ -1741,10 +1741,22 @@
         const paperMeta = [a.contentGrade, a.subjectLabel].filter(Boolean).join(" · ");
         const metadata = [a.targetGrade ? `대상 ${a.targetGrade}` : "",
           paperMeta ? `시험지 ${paperMeta}` : "", a.className,
+          `Assignment ID · ${a.id}`,
           a.questionCount === null ? "" : `${a.questionCount}문항`,
           a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
           a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`].filter(Boolean);
-        return `<article class="history-card"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div><div class="history-card-footer"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${a.pdfReady ? "PDF 준비 완료" : "출제 저장됨 · PDF 확인 필요"}</span><div class="actions" role="group" aria-label="최근 출제 바로 열기">${[["exam", "문제"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
+      const lifecycle = [
+        a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
+        a.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(a.replacementAssignmentId)}</span>` : "",
+        a.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(a.replacesAssignmentId)}</span>` : "",
+        a.isReviewOnly ? `<span class="history-state-chip review-only">열람 전용${a.reviewOnlyCount === null ? "" : ` · ${a.reviewOnlyCount}명`}</span>` : "",
+      ].filter(Boolean).join("");
+      const pdfLabel = a.pdfReady ? "PDF 준비 완료" : a.pdfStatus === "failed"
+        ? "PDF 준비 실패" : a.pdfStatus === "generating" ? "PDF 준비 중" : "PDF 준비 필요";
+      const pdfRetry = !a.pdfReady && a.pdfStatus !== "generating"
+        ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}" class="small"`)
+        : "";
+      return `<article class="history-card" data-assignment-id="${esc(a.id)}"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="history-card-footer"><div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답·학생별 확인">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
       }).join("")}</div></section>`
     ).join("") || '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
   }
@@ -1787,7 +1799,7 @@
         if (version !== state.recentLoadVersion) return;
         classRows = Array.isArray(data.classes) ? data.classes : [];
       }
-      const data = await api("/class-exam-assignments?history=1");
+      const data = await api("/class-exam-assignments/recent-summary?limit=1000");
       if (version !== state.recentLoadVersion) return;
       state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
       state.recentRows = History.normalizeAssignments(
@@ -1817,9 +1829,28 @@
     const a = data.assignment,
       active = data.students.filter((s) => !s.excluded),
       excluded = data.students.filter((s) => s.excluded);
+    const summary = state.recentRows.find((row) => row.id === String(id));
+    const lifecycle = [
+      a.cancelled_at ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
+      summary?.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(summary.replacementAssignmentId)}</span>` : "",
+      summary?.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(summary.replacesAssignmentId)}</span>` : "",
+      (summary?.reviewOnlyCount || 0) > 0 ? `<span class="history-state-chip review-only">열람 전용 · ${summary.reviewOnlyCount}명</span>` : "",
+    ].filter(Boolean).join("");
+    const studentStatus = (student) => student.session_id
+      ? (a.cancelled_at || student.excluded ? "제출 완료 · 열람 전용" : "제출 완료")
+      : (student.excluded ? "제외됨" : "제출 전");
+    const studentPreviewUrl = (studentId) => {
+      const url = new URL("../apmath/student/index.html", location.href);
+      url.searchParams.set("teacher_preview", "1");
+      url.searchParams.set("student_id", String(studentId || ""));
+      url.searchParams.set("assignment_id", String(a.id || id));
+      url.searchParams.set("omr", "1");
+      return url.href;
+    };
+    const studentRow = (student) => `<div class="recent-row"><span>${esc(student.name)}</span><span>${studentStatus(student)}</span><a href="${esc(studentPreviewUrl(student.student_id))}" target="_blank" rel="noopener">이 출제 확인</a></div>`;
     showDialog(
       a.exam_title,
-      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p><div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : "PDF 파일은 아직 준비되지 않았지만 온라인 문제·정답·해설과 오답 입력을 사용할 수 있습니다."}</div><div class="actions">${["exam", "ans", "sol"].map((m, i) => button("assignment-output", ["문제지", "정답", "해설"][i], `data-mode="${m}"`)).join("")}${a.pdf_status !== "ready" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${a.id}"`) : ""}</div><h3>학생별 확인</h3><div class="assignment-students">${active.map((s) => `<div class="recent-row"><span>${esc(s.name)}</span><span>${s.session_id ? "오답 입력 완료" : "오답 입력 전"}</span><a href="../apmath/student/index.html?teacher_preview=1&student_id=${encodeURIComponent(s.student_id)}" target="_blank">학생 화면 확인</a></div>`).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><p>${excluded.map((s) => esc(s.name)).join(" · ")}</p></details>` : ""}`,
+      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
     );
   }
   async function openAssignmentOutput(assignmentId, mode) {
@@ -2728,11 +2759,28 @@
           renderOriginalReceipts();
           return;
         }
-        await api(
-          "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
-          {},
-        );
-        await assignmentStatus(b.dataset.assignment);
+        const row = state.recentRows.find((item) => item.id === b.dataset.assignment);
+        try {
+          const result = await api(
+            "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
+            {},
+          );
+          if (row) {
+            row.pdfStatus = result.assignment?.pdf_status || "pending";
+            row.pdfError = result.assignment?.pdf_error || "";
+            row.pdfReady = row.pdfStatus === "ready";
+            updateRecentResults();
+          }
+          await assignmentStatus(b.dataset.assignment);
+        } catch (error) {
+          if (row) {
+            row.pdfStatus = "failed";
+            row.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
+            row.pdfReady = false;
+            updateRecentResults();
+          }
+          status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+        }
         return;
       }
       if (a === "recover-part") {

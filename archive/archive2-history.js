@@ -69,6 +69,13 @@
         targetGrade, grade: targetGrade, contentGrade, subjectKeys, subjectLabel,
         classId: text(assignment.class_id), className: text(assignment.class_name) || text(cls?.name),
         questionCount: countOf(assignment.question_count), pdfReady: assignment.pdf_status === "ready",
+        pdfStatus: text(assignment.pdf_status) || "pending", pdfError: text(assignment.pdf_error),
+        cancelledAt: text(assignment.cancelled_at),
+        isCancelled: Boolean(text(assignment.cancelled_at)) || Number(assignment.is_cancelled) === 1,
+        replacementAssignmentId: text(assignment.replacement_assignment_id),
+        replacesAssignmentId: text(assignment.replaces_assignment_id),
+        reviewOnlyCount: countOf(assignment.review_only_count),
+        isReviewOnly: Number(assignment.is_review_only) === 1 || (countOf(assignment.review_only_count) || 0) > 0,
         // Optional additive list fields: absence is unknown, never zero.
         recipientCount: countOf(assignment.recipient_count),
         submittedCount: countOf(assignment.submitted_count),
