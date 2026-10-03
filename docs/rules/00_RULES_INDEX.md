@@ -137,10 +137,10 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - 현재 진행 중인 M2 2학기 고정 20은 META_V2 reset 대상이 아니며 기존 current REVIEW/PUBLISH tail을 완주한다.
 - CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다. Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질, Meta/difficulty 전수 audit는 경량화 대상이 아니다.
-- CURRENT R3는 **MAIN 직전 release gate**다. R3는 repair stage가 아니며, CURRENT가 R3를 요구하는 release-bound flow에서 REVIEW2 이후 반드시 통과한다.
+- CURRENT R3는 **MAIN 직전 release gate이자 최종 핀포인트 수리 owner**다. REVIEW2 이후 전수 release audit을 수행하고, current artifact/current authority만으로 확정 가능한 일반 결함은 같은 R3에서 직접 수리·수정범위 재확인까지 닫는다.
 - current initial R3는 긴급/고등 release와 lane-local TEMP M3 R3에 적용한다. M3 TEMP R3는 각 CREATE partition이 physical-evidence-valid CREATE 100%가 되는 즉시 독립 전환한다.
-- initial R3 FAIL은 `R3_FAIL_DEFERRED`로 격리하고 packet의 OPEN locus만 Codex post-R3 repair가 소비한다. legacy `FULL_REENTRY`가 있어도 whole-exam R1/R2 재실행으로 해석하지 않는다.
-- R3_RETRY는 changed/open locus + direct dependency + `R3_LOCKED` hash/diff 보존만 targeted regression 한다.
+- R3에서 source truth를 current artifact만으로 확정할 수 없는 원본 PDF/페이지 재확인·재크롭·손상 source asset 예외만 `SOURCE_REPAIR_REQUIRED`로 Codex Source Repair에 보낸다. 일반 결함은 R3 내부에서 닫는다. legacy `FULL_REENTRY`가 있어도 whole-exam R1/R2 재실행으로 해석하지 않는다.
+- R3 직접 수리 또는 Codex Source Repair 복귀 후에는 별도 R3_RETRY stage를 만들지 않고 **같은 R3 continuation**에서 changed/open locus + direct dependency + `R3_LOCKED` hash/diff 보존만 targeted regression 한다.
 
 ### NO EXAM PENDING / STAGE AUTHORITY CONTINUITY — CURRENT HARD RULE (2026-10-01)
 
