@@ -1,31 +1,40 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "MASTER-C-PUBLISH-O59-RECHECK-20261003T0854+0900",
-  "owner": "JS Archive MASTER-C",
+  "leaseId": "CODEX-MASTER-DIRECTED-M3-O19-L4-20261003T102732+0900",
+  "owner": "Codex user-directed RPM L4 main merge",
   "status": "ACTIVE",
-  "baseMainSha": "1c0f07eaa29bf4049f36530e16a782b3f7033657",
-  "claimedAt": "2026-10-03T08:54:00+09:00",
-  "expiresAt": "2026-10-03T10:24:00+09:00",
-  "lastProgressAt": "2026-10-03T08:54:00+09:00",
-  "expectedCompletionGate": "O59_R3_RECHECK_RELEASE_QUEUE_TO_MAIN_DONE",
-  "scope": "M3:o59:23_향림중_2학기_기말_중3_기출.js:R3_RECHECK_EVIDENCE",
+  "baseMainSha": "42c76d18899a3902f005e8fc6e7d60f5ff6f850f",
+  "claimedAt": "2026-10-03T10:27:32+09:00",
+  "expiresAt": "2026-10-03T11:57:32+09:00",
+  "lastProgressAt": "2026-10-03T10:27:32+09:00",
+  "expectedCompletionGate": "O19_MULTI_FORMULA_L4_MAIN_MERGE_AND_READBACK",
+  "scope": "M3:o19:21_금당중_1학기_중간_중3_기출.js:canonical RPM L4 + q14 Meta payload",
   "result": null,
   "finalOriginMain": null,
   "includedOrdinals": [
-    59
+    19
   ],
   "excludedDebtOrdinals": [],
   "publishedCommit": null,
-  "candidateBatchCommit": "2ab85d7c3897195a8b894acc28d7f06d6a624f52",
-  "candidateBatchBranch": "release/m3/o59-hyangrim-2final-20261003-recheck",
-  "batchManifestBlob": "b964d36d10c06ef14fe89ff6d3c0ea1485177761",
+  "candidateBatchCommit": "cbb930807132e1217691b1752323a54b24d25dc2",
+  "candidateBatchBranch": "codex/rpm-m3-multi-formula-main-merge-20261003-v2",
+  "batchManifestBlob": null,
   "publishedExactBlobs": {
-    "exam": "6aa83a5aaa1bf24268ed24fae05b65ab1f1e1fd6",
-    "recheckSnapshot": "d6c88a661f72599fa4fada55df06e82872665964",
-    "validatorReceipt": "9ddc500195cd9619f7f7585ef01d29be76e503a8",
-    "stageReceipt": "2b7314cf71007230aff9d381a9f347459bb3f24d",
-    "releaseManifest": "b964d36d10c06ef14fe89ff6d3c0ea1485177761"
+    "exam": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907",
+    "canonicalMaster": "a4ecfca14d45b5537357b8fbc65998a4e9c3bb11",
+    "rpmScopeView": "545e22f4433e28c574477d0aa85b1960a7078e33",
+    "middle3Crosswalk": "4a4f5a4b4a9aae781235297b5998f4a1e3727cec",
+    "q14MetaPayload": "30ceebfb4b284ec040e55e81bd48f6679f04f2fd",
+    "rulesManifest": "e0713e2df2304bb15953c3440a524a5c42e0d605"
   },
-  "firstMissingClosureStep": "FAST_FORWARD_MAIN_TO_RELEASE_HEAD_AFTER_CAS",
+  "takeoverChecks": {
+    "previousLeaseHead": "0fc5531ea73c538f00bf4c16930765dce1916640",
+    "previousLeaseExpired": true,
+    "previousLastProgressAt": "2026-10-03T08:54:00+09:00",
+    "noQueuedOrInProgressPublishWorkflow": true,
+    "originMainRechecked": "42c76d18899a3902f005e8fc6e7d60f5ff6f850f",
+    "mainOperatorThreadIdle": true
+  },
+  "firstMissingClosureStep": "FAST_FORWARD_MAIN_TO_RELEASE_CANDIDATE_AFTER_PREPUSH_CAS",
   "mainMutation": 0
 }
