@@ -1002,6 +1002,33 @@ try {
   assert.equal(replacementContext.saved_paper_snapshot_hash, replacementSnapshotHash);
   assert.notEqual(replacementContext.saved_paper_snapshot_hash, parentAssignmentContext.saved_paper_snapshot_hash,
     "replacement has a distinct Content identity as well as Assignment identity");
+  const recentSummaryResponse = await mf.dispatchFetch(
+    "http://local/api/class-exam-assignments/recent-summary?limit=9999",
+    { headers: { "X-Fixture-Role": "teacher" } },
+  );
+  const recentSummary = await recentSummaryResponse.json();
+  assert.equal(recentSummaryResponse.status, 200, JSON.stringify(recentSummary));
+  assert.equal(recentSummary.limit, 1000, "recent summary clamps its result window");
+  const parentSummary = recentSummary.assignments.find(row => row.id === parentAssignmentId);
+  const replacementSummary = recentSummary.assignments.find(row => row.id === replacementAssignmentId);
+  assert.ok(parentSummary, "summary includes the exact cancelled historical Assignment");
+  assert.equal(parentSummary.replacement_assignment_id, replacementAssignmentId);
+  assert.ok(Number(parentSummary.review_only_count) >= 1, "cancelled submitted history is marked read-only");
+  assert.equal(replacementSummary.replaces_assignment_id, parentAssignmentId);
+  const exactReplacementRecipientCount = await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignment_recipients WHERE assignment_id=?",
+  ).bind(replacementAssignmentId).first();
+  assert.equal(Number(replacementSummary.recipient_count), Number(exactReplacementRecipientCount.n));
+  assert.equal(Number(replacementSummary.submitted_count), 0);
+  assert.equal(Object.hasOwn(parentSummary, "mixed_payload_json"), false,
+    "bounded summary never returns frozen question payloads");
+  const compatibleHistoryResponse = await mf.dispatchFetch(
+    "http://local/api/class-exam-assignments?history=1",
+    { headers: { "X-Fixture-Role": "teacher" } },
+  );
+  const compatibleHistory = await compatibleHistoryResponse.json();
+  assert.equal(compatibleHistoryResponse.status, 200);
+  assert.ok(Array.isArray(compatibleHistory.assignments), "the compatibility history API remains available");
   assert.equal((await db.prepare("SELECT cancelled_at FROM class_exam_assignments WHERE id=?").bind(parentAssignmentId).first()).cancelled_at,
     cancelResult.assignment.cancelled_at, "replacement preserves the cancelled historical parent");
   assert.equal((await db.prepare("SELECT id FROM exam_sessions WHERE id=?").bind(preservedSessionId).first()).id,

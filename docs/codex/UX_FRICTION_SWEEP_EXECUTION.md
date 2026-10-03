@@ -89,11 +89,11 @@ Verification:
 - Actual desktop and 390px student flows used a local-only API fixture with storage writes to Original/MIXED split keys forced to throw. The completed Original card opened exam/solution/answer from `assignment-original-a`; switching exam→solution minted a new exact mode Envelope ID, preserved qpp/assignment identity, survived re-open, and Back returned to `/apmath/student/index.html?omr=1`. Saved Paper Assignment B and MIXED Assignment C opened exam/solution/answer with their own frozen question text; MIXED retained two questions in order. Original A, Saved Paper B, and MIXED C remained open concurrently without payload crossing. The portal API log contained reads only (zero Assignment POSTs and zero calls to the teacher-only output route); split-key write count was zero. All calls used mock responses; no production student or teacher API was contacted.
 - The optional `archive-header-cache-browser.cjs` command could not start because this workspace has no `playwright` npm package. The same changed mobile Original route was checked in the real CUA browser at 390px, and source/cache query assertions plus targeted layout tests passed.
 
-Commit: pending stage close.
+Commit: `83036546d051148a1a42c4655ba9bec4c8158943`
 
 ## Student Portal Regression Guard — S1 / S3 / S5 / S6
 
-The user supplied hotfix `04db702784af64814c21d65cadd1944604733e13` is on current `origin/main`; the UX branch is still pinned to its original S0 base and does not yet contain that ancestry. The six hotfix files currently appear as worktree changes/untracked files. Preserve them intact and exclude them from UX stage commits. Verify ancestry and all six files again immediately before final latest-main integration.
+The user supplied hotfix `04db702784af64814c21d65cadd1944604733e13` is on current `origin/main`; the UX branch remains pinned to its original S0 base until final integration. S4's exact student Assignment deep link touches the same six hotfix files, so their current contents are deliberately preserved with the S4 student-flow changes and the app version is only advanced. Before final latest-main integration, verify the hotfix commit is an ancestor and all six files remain present.
 
 Required acceptance:
 
@@ -112,6 +112,24 @@ Required targeted regression command:
 
 Latest-base baseline note: the user reported an existing `tests/student-portal-omr-history-routes.test.js` Worker string expectation failure on the parent main. Keep that separate from new output regressions; independently reproduce and classify it during S6 if still present.
 
-## S4–S6
+## S4 — Recent / Assignment
+
+Status: PASS
+
+Changes:
+
+- Added the bounded `/class-exam-assignments/recent-summary?limit=1000` metadata route. It clamps the limit, returns lifecycle/PDF/count summaries without frozen output payloads, and leaves the compatible `?history=1` API intact.
+- Recent and detail views use the shared `시험 | 해설 | 정답 | 학생별 확인` grammar and identify each exact Assignment ID. Cancelled, replaced, replacement, review-only, and PDF states are visible; PDF retry is available only when not ready or generating and posts only to the Assignment PDF endpoint.
+- Student detail links include exact `student_id` and `assignment_id`. The student portal filters to that Assignment, shows its lifecycle state, and its output reader returns to the exact student/list context. Student app and service-worker versions advance to `2026.10.03.2`.
+
+Verification:
+
+- Archive UX regressions passed 68/68; Worker + D1 runtime passed bounded recent summary, compatibility history route, lifecycle metadata, recipient/submission counts, and omission of frozen payloads. Saved Paper 1/5/6/10/50 persistence still passed.
+- Required student portal output-envelope regression command passed 32/32 after S4 changes; it covers immutable Original/Saved Paper/MIXED outputs, mode envelopes, identity, and student output access boundaries.
+- Actual browser flow used local mock APIs at desktop and 390px: recent rows and detail modal showed exact IDs and lifecycle/PDF state; PDF retry sent one POST to the exact `/pdf` route; exact student link showed only the selected Assignment; solution output returned to the exact student and Assignment context. At 390px the recent cards stacked without horizontal overflow and the reader retained the compact `돌아가기 / 시험 ▾ / ⋯` controls and clean output body. Menu actions exposed print/PDF and new window; all fixture API requests stayed local.
+
+Commit: pending stage close.
+
+## S5–S6
 
 Not started.

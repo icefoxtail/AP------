@@ -166,6 +166,14 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
   const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
   const cancellationColumnExists = await hasClassExamAssignmentCancellationAt(env);
   const exclusionsExist = await hasClassExamAssignmentExclusions(env);
+  const lifecycleColumns = await getTableColumnSet(env, 'class_exam_assignment_lifecycle_events');
+  const replacementAssignmentExpr = lifecycleColumns.has('assignment_id') &&
+    lifecycleColumns.has('related_assignment_id') && lifecycleColumns.has('operation') &&
+    lifecycleColumns.has('occurred_at') && lifecycleColumns.has('event_id')
+    ? `(SELECT le.assignment_id FROM class_exam_assignment_lifecycle_events le
+        WHERE le.related_assignment_id = cea.id AND le.operation = 'REPLACEMENT_ASSIGNMENT'
+        ORDER BY le.occurred_at DESC, le.event_id DESC LIMIT 1)`
+    : 'NULL';
   const cancelledExpr = cancellationColumnExists
     ? 'CASE WHEN cea.cancelled_at IS NOT NULL THEN 1 ELSE 0 END'
     : '0';
@@ -197,7 +205,8 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
           c.name AS class_name,
           ${cancelledExpr} AS is_cancelled,
           ${excludedExpr} AS is_excluded,
-          ${assignmentSessionExpr} AS has_assignment_session
+          ${assignmentSessionExpr} AS has_assignment_session,
+          ${replacementAssignmentExpr} AS replaced_by_assignment_id
         FROM class_exam_assignments cea
         ${recipientSnapshotExists
           ? 'JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id'
@@ -257,6 +266,8 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
       is_review_only: Number(row.is_review_only) === 1,
       is_cancelled: Number(row.is_cancelled) === 1,
       is_excluded: Number(row.is_excluded) === 1,
+      is_replaced: Boolean(String(row.replaced_by_assignment_id || '').trim()),
+      replaced_by_assignment_id: row.replaced_by_assignment_id || null,
       session_id: session?.id || null,
       score: session?.score ?? null,
       submitted_at: session?.updated_at || session?.created_at || null,

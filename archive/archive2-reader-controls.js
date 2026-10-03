@@ -25,6 +25,14 @@
     const output = envelope();
     const params = new URLSearchParams(location.search);
     if (params.get("studentReview") === "1") {
+      const returnTarget = params.get("studentReturnTo");
+      if (returnTarget) {
+        try {
+          const target = new URL(returnTarget, location.href);
+          if (target.origin === location.origin && target.pathname.startsWith("/apmath/student/"))
+            return target.href;
+        } catch {}
+      }
       const portal = new URL("../apmath/student/index.html?omr=1", location.href);
       return portal.href;
     }
