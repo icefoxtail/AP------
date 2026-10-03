@@ -16,13 +16,13 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 23333 bytes | sha256 ed736808a9ac5b2c68e1b57a2f2adfbd183b959966fdbfeb093d0926d2863c2c
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12887 bytes | sha256 7642674cf88b5ac9949e12bd867412b6a70be42d6998763446a0883ccbc7a72f
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
-- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 56956 bytes | sha256 c7a37521a4dc601606dac843ddef0487a7a1cddcab1fe998a9d30990f21ff963
+- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 59213 bytes | sha256 f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md | 1839 bytes | sha256 3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json | 558996 bytes | sha256 c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 95451 bytes | sha256 35aaaff1edcf77d80131cf0b25b311ec60e5422a949d16dee53cbe113c825700
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 38634 bytes | sha256 3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638
-- 02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md | 31797 bytes | sha256 37e5f3389c2b90e7e24e88653e7c035ce2a94ecba54def2928f2b977a51addaa
+- 02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md | 35973 bytes | sha256 97aa4b1bd500d37486027e3dae655d013c21a1f9d9c2261c0e26a7092b9dad15
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 203308 bytes | sha256 96d82f4f937ea70a4644f808a35f246375cc030a78979829689324e3f5435c9f
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 10862 bytes | sha256 2e8c187618e4e8d3fe627b3b21ce5d01f050e5aa7400338b0ed0405c60ee38e3
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 18406 bytes | sha256 48a0cdd5a0d22b07c25937a1d4b9b0b4b910dba2cb9a61e30eefc2afa7e8a974

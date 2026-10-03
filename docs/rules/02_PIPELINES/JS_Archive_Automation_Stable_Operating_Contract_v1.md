@@ -31,6 +31,23 @@ R3 FAIL 이후에는 repair → 재검으로 닫는다. Codex는 사용할 수 �
 이 문서가 활성화되면 automation role/schedule/recheck/recovery/publish의 단일 실행 authority가 된다.
 과거 3-lane, Surge, Phase A/B, existing-slot-only, persistent-thread contamination, dormant clean-slot, 감시자/조율자 계약은 HISTORY다.
 
+## 0.1 CREATE FULL TAG/META MATERIALIZATION — HARD (2026-10-03)
+
+형님의 2026-10-03 명시 지시: **CREATE 단계에서 모든 문항의 태그와 Meta를 전부 채운다.** R1/R2/R3는 CREATE에서 비워 둔 태그·Meta를 처음 만드는 catch-up 단계가 아니라, 이미 완성된 CREATE metadata를 source/current authority에서 다시 검증하고 필요한 오류만 교정하는 재검 단계다.
+
+CREATE_DONE 전 각 qid는 현재 schema와 canonical authority에서 적용 가능한 metadata를 production JS 또는 해당 stage의 canonical Meta payload에 모두 물리화한다.
+
+- 기본 분류/태그: `category`, `originalCategory`, 비어 있지 않은 `tags[]`, `level`, `difficultyBucket`
+- 교육과정/L1/L2: curriculum/course, `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder`, `subUnitKey`, `subUnit`
+- RPM semantic: `rpmSemanticStatus`, `rpmPrimaryPath`, `rpmL3`, `rpmL4`, `primaryMethod`, `decisiveStep`, 필요한 `semanticSourceScope / semanticScopeRelation`
+- projection: `projectionStatus`와 가능한 `problemTypeKey / templateKey`; projection field가 null이면 current canonical이 허용하는 `nullReason / projectionReason`을 evidence에 명시
+- 관계 Meta: `crossConceptKeys[]`, `conditionKeys[]`, `integrationPattern`
+- current schema가 요구하는 confidence/boundary/evidence/provenance 필드
+
+**결정 가능한 값을 빈칸/null/미판정으로 남기고 CREATE_DONE을 선언하는 것은 FAIL**이다. 기존 ACTIVE PT/TPL projection이 없다는 이유로 semantic Meta까지 비워 두지 않는다. RPM semantic이 결정되면 semantic은 FINAL로 채우고 projection만 `BINDING_PENDING / UNMATERIALIZED` 등 current canonical 상태로 명시한다. TRUE semantic unresolved가 남는 경우에도 암묵적 공란으로 두지 말고 현행 Meta canonical의 명시적 unresolved/hold evidence를 남긴다.
+
+CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-field completeness를 결속해야 한다. **R1 진입 전 CREATE tag/meta denominator는 전 문항 100%**여야 한다.
+
 ## 1. GPT 고정 12-slot topology
 
 | Role | Count | Responsibility |
