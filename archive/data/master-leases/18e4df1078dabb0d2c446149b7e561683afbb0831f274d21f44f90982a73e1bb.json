@@ -1,53 +1,18 @@
 {
   "schemaVersion": "MASTER_LEASE_v2",
-  "masterLeaseId": "M2-1-MASTER-A-20261003T181059+0900-o21-create-closure",
-  "leaseKey": "18e4df1078dabb0d2c446149b7e561683afbb0831f274d21f44f90982a73e1bb",
-  "owner": "MASTER-A",
+  "masterLeaseId": "M2-1-THANOS-MASTER-5-o21-create-close",
+  "owner": "THANOS-MASTER-5",
   "examUid": "26_동산중_1학기_기말_중2_기출",
   "stage": "CREATE",
   "inputArtifactSha": "2185a04e8d18ff096459680f33cb2200dc46a883",
-  "targetBranch": "work/middle/m2/26-dongsan-1final-r1-2-20261003",
-  "targetHeadAtClaim": "5727b13795ccf360c23437da97e5b299b63ccc76",
-  "expectedTargetHead": "c46b7cedae31f07cc7df7cbedbff9d25ef14e502",
-  "repairFingerprint": "350fa53fc3639948ea0047c0198314df0c1b99ac7a0a75f1ca3d7e381d807923",
-  "failedGate": "STALE_BASE_MAIN_REF",
-  "openQids": [],
-  "openFiles": [
-    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.receipt.json"
-  ],
-  "openFields": [
-    "baseMainSha",
-    "targetHead"
-  ],
-  "firstMissingClosureStep": "REFRESH_BRANCH_TO_LATEST_MAIN",
-  "claimedAt": "2026-10-03T18:10:59+09:00",
-  "expiresAt": "2026-10-03T19:40:59+09:00",
-  "lastProgressAt": "2026-10-03T18:10:59+09:00",
-  "expectedCompletionGate": "successor branch contains latest main 21a46c1a with exam blob 2185a04e exact and remote compare behind=0",
-  "status": "CLOSED",
-  "closedAt": "2026-10-03T18:10:59+09:00",
-  "closure": {
-    "disposition": "STALE_LINEAGE_CLOSED_BY_SUCCESSOR_BRANCH",
-    "supersededBranch": "work/middle/m2/26-dongsan-1final-r1-2-20261003",
-    "supersededHead": "5727b13795ccf360c23437da97e5b299b63ccc76",
-    "successorBranch": "work/middle/m2/26-dongsan-1final-master-a-refresh-20261003",
-    "successorHead": "c46b7cedae31f07cc7df7cbedbff9d25ef14e502",
-    "baseMainSha": "21a46c1a6972316de8446ebeda876006ccc69ae6",
-    "remoteCompare": "ahead=4,behind=0",
-    "inputArtifactShaUnchanged": "2185a04e8d18ff096459680f33cb2200dc46a883",
-    "contentMutationCount": 0,
-    "remainingCreateDebt": {
-      "createDoneEligible": false,
-      "qids": [
-        6,
-        9,
-        15,
-        20
-      ],
-      "sourceAuthority": "DIRECT_SOURCE_PIXEL_REQUIRED",
-      "validator": "ACTUAL_CANONICAL_CREATE_VALIDATOR_NOT_YET_EXECUTED",
-      "receipt": "inherited receipt has stale stageArtifactRef and is not current CREATE_DONE authority",
-      "firstMissingClosureStep": "DIRECT_SOURCE_PIXEL_AUTHORITY_Q6_Q9_Q15_Q20_THEN_ACTUAL_CANONICAL_CREATE_VALIDATOR_AND_NEW_DURABLE_RECEIPT"
-    }
-  }
+  "targetBranch": "work/middle/m2/26-dongsan-1final-thanos5-create-close-20261003-1951",
+  "targetHeadAtClaim": "a76304028aed344b69de83817de92c12cf9d6bc0",
+  "expectedTargetHead": "a76304028aed344b69de83817de92c12cf9d6bc0",
+  "openQids": [6, 9, 15, 20],
+  "firstMissingClosureStep": "DIRECT_SOURCE_PIXEL_AUTHORITY_Q6_Q9_Q15_Q20",
+  "claimedAt": "2026-10-03T19:51:14+09:00",
+  "expiresAt": "2026-10-03T21:21:14+09:00",
+  "lastProgressAt": "2026-10-03T19:51:14+09:00",
+  "status": "ACTIVE",
+  "claimMode": "SUCCESSOR_CAS_REF"
 }
