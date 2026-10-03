@@ -1388,7 +1388,7 @@
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
         })
         .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
@@ -3240,6 +3240,16 @@
         .forEach((el) => (el.disabled = true));
       $("original-receipts").innerHTML =
         `<div class="callout"><strong>${state.originalReceipts.length}개 반에 출제 저장 완료</strong><p>선택한 학생의 ‘내 시험지’에 표시됩니다. 문제·정답·해설 확인과 오답 입력이 가능합니다.${a.pdf_status === "ready" ? "" : " PDF 파일은 다시 준비해야 합니다."}</p>${state.originalReceipts.map((r) => button("assignment-status", "학생별 확인 · 출력", `data-assignment="${r.id}"`)).join("")}</div>`;
+    }
+    if (event.data?.type === "archive2-original-complete") {
+      const receiptCount = Number(event.data.receiptCount);
+      if (
+        $("original-review").hidden &&
+        Number.isInteger(receiptCount) &&
+        receiptCount > 0 &&
+        state.originalReceipts?.length === receiptCount
+      )
+        setOriginalStep("review");
     }
   });
   $("modal").addEventListener("cancel", (event) => {
