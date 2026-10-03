@@ -340,6 +340,63 @@ TikZ / PGFPlots / handcrafted SVG가 다음을 독자적으로 재계산해 auth
 
 ---
 
+## 6.1 EXPECTED-FACT COMPLETENESS / SOURCE IDENTITY / FACT ROLE HARD
+
+raw evidence가 있어도 **검증 질문 자체가 불완전하면 PASS가 아니다**.
+
+각 changed SVG evidence는 다음 세 축을 추가로 닫는다.
+
+### A. EXPECTED_FACT_COMPLETENESS
+source + verified solution에서 student-facing visual에 관련된 조건을 먼저 inventory한다.
+
+최소:
+- `sourceConditionCoverage[]`
+- `decisiveRelationCovered=true`
+- `uncoveredCriticalConditions=[]`
+- `expectedFactCompletenessStatus=PASS`
+
+좌표평면/함수그래프이면 slope/intercept만 검증하지 않는다.
+최소 frame facts도 포함한다.
+
+```text
+x-axis horizontal
+y-axis vertical
+axes intersect at intended origin
+axis directions/signs are correct
+plotted line/curve uses the same coordinate frame
+required axis/tick/label identity is preserved
+```
+
+### B. SOURCE_SEMANTIC_IDENTITY_PARITY
+source의 점/선/원/접점/중심 이름은 임의 재명명하지 않는다.
+
+evidence:
+- `sourceSemanticIdentity.applicable`
+- `sourceSemanticIdentity.checks[]`
+- 각 row: `semanticRole / sourceLabel / artifactLabel / result`
+
+`sourceLabel != artifactLabel`이면 사용자 승인된 pedagogical renaming이 아닌 한 FAIL.
+내부 계산용 보조점은 별도 이름을 쓸 수 있지만 source entity를 대체하면 안 된다.
+
+### C. FACT ROLE — GIVEN / DERIVED / CONCLUSION
+expected fact마다 다음 role 중 하나를 부여한다.
+
+- `GIVEN`
+- `DERIVED_INTERMEDIATE`
+- `CONCLUSION`
+
+그리고 visual encoding을 `factVisualizations[]`로 결속한다.
+
+- `GIVEN_STYLE`
+- `DERIVED_STYLE`
+- `CONCLUSION_STYLE`
+- `NOT_RENDERED`
+
+**CONCLUSION을 GIVEN_STYLE indicator(tick, equal-mark, supplied-value style)로 미리 그리면 FAIL**이다.
+증명해야 할 등식/합동/길이를 문제에서 주어진 사실처럼 표시하지 않는다.
+
+---
+
 # 7. SOLUTION VISUAL DESIGN LANGUAGE — DIGITAL-FIRST
 
 2차/3차 pilot에서 확인한 장점을 production 기본값으로 승계한다.
