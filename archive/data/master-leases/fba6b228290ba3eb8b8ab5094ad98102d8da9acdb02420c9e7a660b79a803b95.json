@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "MASTER_LEASE_v2",
+  "masterLeaseId": "M2-1-MASTER-C-20261003T173603+0900-o20-stale-ref-tagmeta-drift",
+  "leaseKey": "fba6b228290ba3eb8b8ab5094ad98102d8da9acdb02420c9e7a660b79a803b95",
+  "owner": "MASTER-C",
+  "examUid": "26_신흥중_1학기_기말_중2_기출",
+  "stage": "CREATE",
+  "inputArtifactSha": "edf7347fec65e190d4d5461537b35c781e97cb76",
+  "targetBranch": "work/middle/m2/26-sinheung-1final-master-c-20261003",
+  "targetHeadAtClaim": "7967f993b97d2d9a59479704c0eecb79f00e2d93",
+  "expectedTargetHead": "7967f993b97d2d9a59479704c0eecb79f00e2d93",
+  "repairFingerprint": "508a891b6fbea5c0d934944f49052837b04e8b59e343770a475fd8d07b688054",
+  "failedGate": "STALE_BASE_MAIN_REF_AND_CREATE_TAG_META_GATE_DRIFT",
+  "openQids": [],
+  "openFiles": [
+    "archive/data/r2e-intake/m2/26_신흥중_1학기_기말_중2_기출.create.master-c.checkpoint.json"
+  ],
+  "openFields": [
+    "baseMainSha",
+    "firstMissingClosureStep",
+    "status"
+  ],
+  "firstMissingClosureStep": "REFRESH_LINEAGE_TO_LATEST_MAIN_AND_MARK_FULL_TAG_META_PRODUCTION_DEBT",
+  "claimedAt": "2026-10-03T17:36:03+09:00",
+  "expiresAt": "2026-10-03T19:06:03+09:00",
+  "lastProgressAt": "2026-10-03T17:36:03+09:00",
+  "expectedCompletionGate": "successor branch contains latest main cd74c75f, exam blob edf7347f unchanged, checkpoint points to FULL_TAG_META_MATERIALIZATION before q4 pixel/validator",
+  "status": "ACTIVE"
+}
