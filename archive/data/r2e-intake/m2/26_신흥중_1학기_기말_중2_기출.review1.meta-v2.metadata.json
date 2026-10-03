@@ -30,7 +30,7 @@
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "curriculum": "2022",
       "course": "중2 수학",
       "standardCourse": "중2 수학",
@@ -88,7 +88,7 @@
         "계수결정"
       ],
       "level": "하",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
@@ -149,7 +149,7 @@
         "변화량"
       ],
       "level": "하",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
@@ -211,7 +211,7 @@
         "그래프"
       ],
       "level": "하",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
@@ -273,7 +273,7 @@
         "그래프성질"
       ],
       "level": "하",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
@@ -333,7 +333,7 @@
         "가감법"
       ],
       "level": "하",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
@@ -397,7 +397,7 @@
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "curriculum": "2022",
       "course": "중2 수학",
       "standardCourse": "중2 수학",
@@ -1437,8 +1437,8 @@
     }
   ],
   "examSha256": "sha256:ab8dc7488cd70171ea035b68cd97f20e33597d4a1ca2d9807cc4c251e96113cb",
-  "reviewStage": "R1",
-  "reviewLane": "R1-2",
+  "reviewStage": "R3",
+  "reviewLane": "R3-1",
   "r1Repairs": [
     {
       "qid": 9,
@@ -1460,6 +1460,25 @@
       "from": "M2-03-SIMULTANEOUS_LINEAR_EQUATION / 연립일차방정식",
       "to": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD / 연립일차방정식의 활용",
       "basis": "M2-RPM-157 current crosswalk exact L2; boundary NONE"
+    }
+  ],
+  "r3Repairs": [
+    {
+      "scope": "DIFFICULTY_METADATA_ONLY",
+      "qids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "changedFields": [
+        "difficultyBucket",
+        "legacyLevelCompatibility"
+      ],
+      "lockedScopeMutationCount": 0
     }
   ]
 }
