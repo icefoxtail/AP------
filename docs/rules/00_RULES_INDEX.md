@@ -2,10 +2,10 @@
 
 - automation 실행 authority: `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md` 최신 main.
 - current scope는 **M2 1학기 34 current generation**이며 기존 MASTER-A/B/C + INFINITY-1/2는 `THANOS-MASTER-1~5`로 통합됐다.
-- 5개 THANOS는 동일 권한의 universal executor다. current phase의 새 eligible target claim부터 full production/recheck/repair, validator/receipt, stage transition, release/publish/main까지 수행할 수 있다.
-- CURRENT CREATE phase에서 THANOS×5와 TEMP-CREATE×2가 모두 새 CREATE target을 잡을 수 있다. TEMP-CREATE 전용 owner 제한은 폐기했다.
-- cohort barrier는 **CREATE 34/34 → R1 34/34 → R2 34/34 → R3 34/34 → MAIN**을 유지한다. barrier가 열리면 THANOS는 재지시 없이 다음 phase를 소비한다.
-- stage closure는 다음 durable state까지 이동해야 한다. WAIT/관망/문서 보고만으로 THANOS run을 종료하지 않는다.
+- 5개 THANOS는 동일 권한의 universal executor다. 시험지별 eligible target claim부터 full production/recheck/repair, validator/receipt, stage transition, release/publish/main까지 수행할 수 있다.
+- CREATE가 필요한 시험지는 THANOS×5와 TEMP-CREATE×2가 새 CREATE target을 잡을 수 있다. 동시에 R1/R2/R3 worker는 자기 stage eligible 시험지가 1건이라도 생기면 즉시 가져간다.
+- **전역 cohort/phase barrier는 폐기한다. EXAM-LEVEL CONVEYOR BELT가 HARD다.** `CREATE_DONE→READY_FOR_REVIEW1` 즉시 R1, `REVIEW1_DONE→READY_FOR_REVIEW2` 즉시 R2, `REVIEW2_DONE→READY_FOR_R3` 즉시 R3, `R3_PASS→RELEASE_QUEUE` 즉시 publish/main으로 이어진다. 다른 시험지의 N/N 진행률은 이 흐름을 막지 않는다.
+- stage closure는 다음 durable state까지 이동해야 한다. **eligible 시험지가 있는데 `CREATE_PHASE_WAIT`/phase-wide WAIT/관망/문서 보고만으로 종료하는 것을 금지한다.** 자기 stage eligible이 0일 때만 scoped `NO_WORK`를 기록하고 slot은 계속 ACTIVE로 둔다.
 - single-writer `MASTER_LEASE v2`, PUBLISH_LEASE, source-truth/validator gate는 유지한다. generic MASTER 문구는 current M2-1에서 THANOS-MASTER를 뜻한다.
 - M3/M1/M2 2학기/고등 legacy 예약은 OFF 유지한다.
 - R1/R2/R3의 운영 개념은 **재검**이다. prior solution/verdict/repair/checkpoint가 보여도 source/current authority에서 required scope를 다시 계산·판정한다.
