@@ -225,8 +225,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[핵심] 연립일차방정식의 해의 개수는 두 직선의 위치 관계로 판단한다.\n\n① $a\\ne a'$, $b\\ne b'$만으로는 평행 여부를 정할 수 없으므로 항상 해가 없는 것은 아니다.\n\n② 세 계수가 모두 같으면 두 식이 같은 직선이므로 해가 무수히 많다.\n\n③ $a=a'$, $b=b'$, $c\\ne c'$이면 서로 다른 평행선이므로 해가 없다.\n\n④ 첫 식은 $y$가 일정한 수평선, 둘째 식은 $x$가 일정한 수직선이므로 반드시 한 점에서 만난다.\n\n⑤ $x+y+2=0$, $x+2y+4=0$을 풀면 $(x,y)=(0,-2)$이므로 제시한 $(0,2)$가 아니다.\n\n따라서 옳은 것은 ④이다.",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -561,8 +561,8 @@ window.questionBank = [
     ],
     "answer": "②, ④",
     "solution": "[핵심] 방정식을 $y=mx+n$ 꼴로 바꿔 기울기와 절편을 확인한다.\n$-5x+2y+1=0$에서\n$2y=5x-1$,\n$y=\\dfrac52x-\\dfrac12$이다.\n\n① $x$절편은 $\\dfrac15$이지만 $y$절편은 $-\\dfrac12$이므로 틀리다.\n\n② 기울기 $\\dfrac52>0$이므로 $x$가 증가하면 $y$도 증가한다. 옳다.\n\n③ $-10x+4y+3=0$은 $y=\\dfrac52x-\\dfrac34$이므로 기울기가 같고 절편이 달라 평행하다. 한 점에서 만나지 않는다.\n\n④ $x<0$이면 $\\dfrac52x-\\dfrac12<0$이므로 제2사분면을 지나지 않는다. 옳다.\n\n⑤ $(1,-2)$를 대입하면 $-5-4+1=-8\\ne0$이다.\n\n따라서 정답은 ②, ④이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -746,8 +746,8 @@ window.questionBank = [
     "content": "원이와 미남이가 어떤 일차함수의 식을 보고 그래프를 그리는데 다음 보기와 같이 각각 잘못 그렸다. 처음 일차함수의 그래프가 점 $(4,k)$를 지난다고 할 때, 처음 일차함수의 식과 수 $k$의 값을 구하시오. [5점]<br><div class='note-box'><div style='text-align:center;font-weight:600;margin-bottom:4px;'>&lt;보기&gt;</div>원이: 기울기를 잘못 보고 그렸더니 두 점 $(5,-1)$, $(2,5)$를 지나는 그래프를 그렸어.<br>미남: $y$절편을 잘못 보고 그렸더니 $x$절편이 $4$, $y$절편이 $-3$인 그래프를 그렸어.</div>",
     "answer": "$y=\\dfrac{3}{4}x+9,\\ k=12$",
     "solution": "[핵심] 한 사람의 실수에서는 실제 $y$절편을, 다른 사람의 실수에서는 실제 기울기를 복원한다.\n\n원이는 기울기만 잘못 보았다.\n원이의 그래프는 $(5,-1)$, $(2,5)$를 지나므로\n기울기는\n$\\dfrac{-1-5}{5-2}=-2$이다.\n따라서 잘못 그린 직선은\n$y=-2x+9$이고,\n처음 함수의 $y$절편은 $9$이다.\n\n미남은 $y$절편만 잘못 보았다.\n미남의 그래프는 $(4,0)$, $(0,-3)$을 지나므로\n기울기는\n$\\dfrac{0-(-3)}{4-0}=\\dfrac34$이다.\n따라서 처음 함수의 기울기는 $\\dfrac34$이다.\n\n처음 일차함수는\n$y=\\dfrac34x+9$.\n점 $(4,k)$를 지나므로\n$k=\\dfrac34\\cdot4+9=12$이다.\n\n결론: $y=\\dfrac34x+9$, $k=12$이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
