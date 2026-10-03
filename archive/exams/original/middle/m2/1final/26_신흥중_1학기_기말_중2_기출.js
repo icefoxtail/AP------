@@ -6,13 +6,18 @@ window.questionBank = [
     "level": "하",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "미지수가2개인일차방정식",
+      "자연수해",
+      "해의열거"
+    ],
     "wide": false,
     "content": "$x, y$의 값이 자연수일 때, 일차방정식 $x+3y=5$의 해는? [3점]",
     "choices": [
@@ -27,20 +32,31 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "함숫값",
+      "계수결정"
+    ],
     "wide": false,
     "content": "함수 $f(x)=ax+7$에서 $f(2)=3$일 때, 수 $a$의 값은? [3점]",
     "choices": [
@@ -55,20 +71,31 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "기울기",
+      "변화량"
+    ],
     "wide": false,
     "content": "다음 일차함수의 그래프 중 $x$의 값이 3만큼 증가할 때 $y$의 값이 6만큼 감소하는 것은? [3점]",
     "choices": [
@@ -83,20 +110,30 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
+      "객관식",
+      "일차방정식의그래프",
+      "y축평행",
+      "좌표조건",
       "그래프"
     ],
     "wide": false,
@@ -114,20 +151,32 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "기울기",
+      "증가감소",
+      "그래프성질"
+    ],
     "wide": false,
     "content": "다음 보기에서 일차함수의 그래프가 오른쪽 아래를 향하는 것을 있는 대로 고른 것은? [3점]<div class=\"note-box\">ㄱ. $y=4x-5$<br>ㄴ. $y=-7x+4$<br>ㄷ. $y=\\dfrac35x-2$<br>ㄹ. $y=3x+8$</div>",
     "choices": [
@@ -142,20 +191,30 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
     "level": "하",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "가감법"
+    ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases}2x+3y=19\\\\2x-y=7\\end{cases}$의 해를 $x=a,\\ y=b$라고 할 때, $a+b$의 값은? [4점]",
     "choices": [
@@ -170,20 +229,31 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "함수판별",
+      "복수판정"
+    ],
     "wide": false,
     "content": "다음 보기에서 $y$가 $x$의 함수인 것을 있는 대로 고른 것은? [4점]<div class=\"note-box\">ㄱ. 어떤 수 $x$보다 큰 자연수 $y$<br>ㄴ. 반지름의 길이가 $x$인 원의 넓이 $y$<br>ㄷ. 자연수 $x$의 약수의 개수 $y$<br>ㄹ. 자연수 $x$의 배수 $y$</div>",
     "choices": [
@@ -198,20 +268,32 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차방정식의그래프",
+      "직선평행",
+      "교점없음",
+      "계수조건"
+    ],
     "wide": false,
     "content": "두 일차방정식 $ax-2y=4$, $-4x+y=1$의 그래프의 교점이 존재하지 않을 때, 수 $a$의 값은? [4점]",
     "choices": [
@@ -226,20 +308,32 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "두점",
+      "기울기",
+      "평행"
+    ],
     "wide": false,
     "content": "두 점 $(-2,1)$, $(6,k)$를 지나는 직선이 일차함수 $y=\\dfrac54x+3$의 그래프와 평행할 때, 수 $k$의 값은? [4점]",
     "choices": [
@@ -254,20 +348,31 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "두직선의교점",
+      "연립방정식"
+    ],
     "wide": false,
     "content": "두 일차함수 $y=x-5$, $y=-2x+4$의 그래프의 교점의 좌표를 $(a,b)$라고 할 때, $a+b$의 값은? [4점]",
     "choices": [
@@ -282,20 +387,31 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
     "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "공통해",
+      "계수결정"
+    ],
     "wide": false,
     "content": "두 수 $a, b$에 대하여 다음 두 연립방정식의 해가 서로 같을 때, $a+b$의 값은? [4점]<div class=\"note-box\">$\\begin{cases}3x+y=-6\\\\ax+2y=2\\end{cases}\\qquad\\begin{cases}4x-by=14\\\\x-2y=5\\end{cases}$</div>",
     "choices": [
@@ -310,20 +426,33 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "x절편",
+      "y절편",
+      "두점",
+      "기울기"
+    ],
     "wide": false,
     "content": "일차함수 $y=\\dfrac13x-2$의 그래프와 $x$축 위에서 만나고, 일차함수 $y=5x-4$의 그래프와 $y$축 위에서 만나는 두 점을 그래프로 하는 일차함수의 기울기는? [4점]",
     "choices": [
@@ -338,20 +467,32 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "평행이동",
+      "y절편",
+      "점대입"
+    ],
     "wide": false,
     "content": "함수 $y=\\dfrac32x-1$의 그래프를 $y$축의 방향으로 8만큼 평행이동한 그래프가 점 $(k,1)$을 지날 때, 수 $k$의 값은? [4점]",
     "choices": [
@@ -366,20 +507,32 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "두점",
+      "직선의식",
+      "함숫값"
+    ],
     "wide": false,
     "content": "일차함수 $y=f(x)$의 그래프가 두 점 $(3,7)$, $(6,8)$을 지날 때, $f(1)$의 값은? [4점]",
     "choices": [
@@ -394,20 +547,32 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "증가감소",
+      "실생활",
+      "기온"
+    ],
     "wide": false,
     "content": "지면에서 10 km까지는 높이가 1 km 높아질 때마다 기온이 $6^\\circ\\mathrm{C}$씩 일정하게 낮아진다고 한다. 지면의 기온이 $18^\\circ\\mathrm{C}$일 때, 높이가 1.7 km인 대청봉 정상의 기온은? [4점]",
     "choices": [
@@ -422,20 +587,31 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
     "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "비조건",
+      "계수결정"
+    ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases}3x-5y=12\\\\x+4y=a\\end{cases}$를 만족시키는 $x$와 $y$의 값의 비가 $3:1$일 때, 수 $a$의 값은? [5점]",
     "choices": [
@@ -450,20 +626,32 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
     "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "활용",
+      "개수가격",
+      "교통요금"
+    ],
     "wide": false,
     "content": "선형네 반 학생 27명이 체험 학습을 가기 위해 버스를 탔는데 요금의 총액이 23920원이었다. 버스 요금을 교통 카드로 지불하면 720원이고, 현금으로 지불하면 1000원일 때, 교통 카드로 지불한 학생 수와 현금으로 지불한 학생 수의 차는? [5점]",
     "choices": [
@@ -478,20 +666,32 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "두직선의교점",
+      "삼각형넓이",
+      "그래프활용"
+    ],
     "wide": false,
     "content": "세 일차방정식 $y=-2x+13$, $y=\\dfrac12x+\\dfrac12$, $x=1$의 그래프로 둘러싸인 도형의 넓이는? [5점]",
     "choices": [
@@ -506,20 +706,33 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "선분교점",
+      "매개변수",
+      "범위조건",
+      "자연수개수"
+    ],
     "wide": false,
     "content": "일차함수 $y=ax+1$의 그래프가 두 점 $A(2,21)$, $B(3,8)$을 이은 선분 $AB$와 만나도록 하는 자연수 $a$의 개수는? [5점]",
     "choices": [
@@ -534,20 +747,31 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
     "level": "상",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "해가무수히많음",
+      "계수조건"
+    ],
     "wide": false,
     "content": "두 수 $a, b$에 대하여 연립방정식 $\\begin{cases}2ax-y=1-2a\\\\(12-2b)x+2y=b\\end{cases}$의 해가 무수히 많을 때, $a+b$의 값은? [5점]",
     "choices": [
@@ -562,21 +786,30 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
     "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "연립일차방정식",
+      "가감법",
+      "풀이과정"
     ],
     "wide": false,
     "content": "[서술형 1] 연립방정식 $\\begin{cases}3x-2y=7\\\\5x-3y=11\\end{cases}$의 해를 구하고, 그 풀이 과정을 서술하시오. [5점]",
@@ -586,21 +819,32 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차함수",
+      "두점",
+      "직선의식",
+      "실생활",
+      "함숫값"
     ],
     "wide": false,
     "content": "[서술형 2] 총 7점<br>방향제의 양이 일정한 속력으로 줄어들어 개봉한 지 20일 후에는 380 mL, 개봉한 지 30일 후에는 365 mL가 된다고 한다.<br>(1) 이 방향제를 개봉한 지 $x$일 후의 방향제의 양을 $y$ mL라고 할 때, $y$를 $x$에 대한 식으로 나타내고 그 풀이 과정을 서술하시오. [5점]<br>(2) 방향제의 양이 140 mL가 되는 것은 개봉한 지 며칠 후인지 구하고, 그 풀이 과정을 일차함수의 식을 활용하여 서술하시오. [2점]",
@@ -610,14 +854,20 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
-    "standardCourse": "중2",
+    "standardCourse": "중2 수학",
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
@@ -625,7 +875,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "그래프"
+      "일차방정식의그래프",
+      "기울기",
+      "삼각형넓이",
+      "계수결정",
+      "복합조건"
     ],
     "wide": false,
     "content": "[서술형 3] 총 8점<br>수 $a, b$ (단, $a>0$)에 대하여 일차방정식 $(a+4)x+7y-b=0$의 그래프가 점 $(a,2a)$를 지난다고 한다. 세 일차방정식 $(a+4)x+7y-b=0$, $x=a$, $y=-8$의 그래프로 둘러싸인 도형의 넓이가 140일 때, $a,b$의 값을 각각 구하고자 한다.<br>(1) 일차방정식 $y=-8$의 그래프가 두 일차방정식 $(a+4)x+7y-b=0$, $x=a$의 그래프와 만나는 교점을 각각 $A,B$라고 하자. 이때, 선분 $AB$의 길이를 구하고, 그 풀이 과정을 기울기를 이용하여 서술하시오. [4점]<br>(2) (1)의 결과를 이용하여 $a,b$의 값을 구하고, 그 풀이 과정을 서술하시오. [4점]",
@@ -635,6 +889,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "course": "중2 수학",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
