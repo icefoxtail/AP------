@@ -1,0 +1,43 @@
+{
+  "status": "CREATE_CANDIDATE_META_COMPLETE_SOURCE_PIXEL_PENDING_CURRENT_MAIN",
+  "currentOwner": "TEMP-CREATE-1",
+  "currentGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "canonicalOrdinal": 17,
+  "examFile": "26_팔마중_1학기_기말_중2_기출.js",
+  "currentBranch": "work/middle/m2/26-palma-1final-temp-create1-refresh-20261003-1921",
+  "latestMainSha": "841df0f80abc6a39fd419fd160d075d3bd9522e2",
+  "refreshReason": "PRIOR_CONTINUATION_WAS_BEHIND_CURRENT_MAIN; current main drift did not touch this exam or its four problem-image blobs, so exact candidate/meta are rebound without redoing CREATE.",
+  "priorCheckpointCommit": "de04d7257155ec45cda2c78752bc026cc7ddcd5c",
+  "priorCheckpointBlob": "0efe16b8de27373976eb15f590708c6381955951",
+  "candidateExamGitBlob": "06c09e564b55badd89879d470c4783baf90f0e91",
+  "metaPayloadGitBlob": "16107f080dbb6c3b85ca39ad63b46bb491b25994",
+  "questionCount": 24,
+  "protectedFieldParity": "24/24 exact",
+  "freshSolutionRewriteCount": "24/24",
+  "tagMetaAuditCount": "24/24",
+  "tagMetaCompleteCount": "24/24",
+  "openImplicitMetaNullCount": 0,
+  "sourceProblemImageQids": [
+    9,
+    11,
+    13,
+    16
+  ],
+  "sourceProblemImageBlobs": [
+    "f94672df38a7f627021f212c23549852151b8c32",
+    "5facc64515bfdb208e41f4f23517ca66b72fce6c",
+    "6ac3cc6f92ba83a2ec90933fea76ae7334ec7e48",
+    "a326f6c0a8378973b7639d520ac30ae1e2239c29"
+  ],
+  "sourceProblemImageCurrentMainParity": "4/4 exact blob identity",
+  "pixelAudit": "PENDING_DIRECT_PIXEL_READBACK",
+  "canonicalRefs": {
+    "goldenCalibrationBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "automationContractBlob": "cf094eae040d0fc6b25a8ccbfaeae22c2d5e515f",
+    "physicalEvidenceBlob": "32f212619a31df15add413ebe8eccdb86941cec1"
+  },
+  "createDone": false,
+  "readyForReview1": false,
+  "nextAction": "Directly inspect q9/q11/q13/q16 pixels, seal final physical evidence/calibration binding, run actual canonical CREATE validators, write validator receipt and CREATE_DONE/READY_FOR_REVIEW1 durable receipt, then remote-readback.",
+  "r1Performed": false
+}
