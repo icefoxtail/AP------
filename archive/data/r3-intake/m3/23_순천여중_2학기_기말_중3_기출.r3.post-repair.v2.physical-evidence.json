@@ -1660,7 +1660,7 @@
     "sampleReadBeforeWork": true,
     "qualityCompareCount": "24/24",
     "calibrationStatus": "PASS",
-    "solutionWorkMode": "INDEPENDENT_POST_REPAIR_RECHECK",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
     "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE"
   },
   "summary": {
@@ -1721,5 +1721,9 @@
     "recalculatedScope": "q24 changed locus + direct dependencies; q1-q23 locked scope retained from initial R3 physical audit",
     "remainingFailureCodes": [],
     "newDirectDefects": []
+  },
+  "provenance": {
+    "canonicalCalibrationModeRepair": "R3 canonical validator expects INDEPENDENT_REVIEW for post-repair R3 recheck",
+    "canonicalCalibrationModeRepairAt": "2026-10-03T11:20:00+09:00"
   }
 }
