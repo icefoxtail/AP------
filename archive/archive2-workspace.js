@@ -214,6 +214,7 @@
     derivedBaseQuestions: null,
     editSavedPaperId: "",
   };
+  let lastRenderedView = state.view;
   let autosaveTimer,
     previewTimer,
     recentRefetchTimer = null,
@@ -2026,6 +2027,11 @@
       });
   }
   function render() {
+    if (lastRenderedView !== state.view) {
+      lastRenderedView = state.view;
+      state.assignmentStatusLoadVersion++;
+    }
+    if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
       document.body.dataset.archiveView = state.view;
       document.querySelectorAll("[data-view]").forEach((button) => {
@@ -2037,7 +2043,7 @@
         state.savedPaperId || "",
         state.savedLibraryStatusFilter || "ACTIVE",
       )
-        .then(() => status("저장한 시험지를 불러왔습니다."))
+        .then((result) => { if (result !== false) status("저장한 시험지를 불러왔습니다."); })
         .catch((error) => {
           $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(error.message || "시험지를 불러오지 못했습니다.")}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
           status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);

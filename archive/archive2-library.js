@@ -16,11 +16,19 @@
   let savedLibraryContextInvalidated = false;
   let savedLibraryContextPatch = null;
   let activeListState = null;
+  let libraryViewVersion = 0;
   let outsideCloseDocument = null;
-  function invalidateSavedLibraryListContext(patch = null) {
+  function writeSavedLibraryListContextInvalidation(patch) {
     savedLibraryContextInvalidated = true;
     savedLibraryContextPatch = patch;
-    try { window.sessionStorage?.setItem(SAVED_LIBRARY_INVALIDATION_KEY, JSON.stringify(patch || {})); } catch {}
+    try { window.sessionStorage?.setItem(SAVED_LIBRARY_INVALIDATION_KEY, JSON.stringify(patch)); } catch {}
+  }
+  function invalidateSavedLibraryListContext(patch = null) {
+    const previous = readSavedLibraryContextPatch();
+    const next = savedLibraryContextInvalidated || previous
+      ? { kind: "reload" }
+      : (patch || { kind: "reload" });
+    writeSavedLibraryListContextInvalidation(next);
   }
   function savedLibraryListContextIsInvalidated() {
     if (savedLibraryContextInvalidated) return true;
@@ -41,6 +49,7 @@
   function patchSavedLibraryListContext(context, statusFilter) {
     const patch = readSavedLibraryContextPatch();
     if (!patch || !Array.isArray(context?.papers)) return null;
+    if (patch.kind === "reload") return null;
     let papers = context.papers.slice();
     if (patch.kind === "rename") {
       papers = papers.map((paper) => paper.id === patch.paperId
@@ -194,13 +203,30 @@
 
   async function render(host, paperId = "", statusFilter = "ACTIVE", options = {}) {
     if (!host) return;
+    const version = ++libraryViewVersion;
     host.innerHTML = '<div class="panel loading" role="status">저장한 시험지를 불러오고 있습니다.</div>';
     const client = apiClient();
     if (paperId) {
-      const data = await client.request("/archive-saved-papers/" + encodeURIComponent(paperId));
+      let data;
+      try {
+        data = await client.request("/archive-saved-papers/" + encodeURIComponent(paperId));
+      } catch (error) {
+        if (version !== libraryViewVersion) return false;
+        throw error;
+      }
+      if (version !== libraryViewVersion) return false;
       const paper = data.paper;
       if (!paper?.snapshot) throw new Error("저장한 시험지 내용을 확인할 수 없습니다.");
-      const envelope = paper.library_status === "TRASHED" ? null : await preparePreview(paper);
+      let envelope = null;
+      if (paper.library_status !== "TRASHED") {
+        try {
+          envelope = await preparePreview(paper);
+        } catch (error) {
+          if (version !== libraryViewVersion) return false;
+          throw error;
+        }
+        if (version !== libraryViewVersion) return false;
+      }
       host.innerHTML = detailMarkup(paper, envelope);
       bind(host, { paper, envelope, paperId, cursor: null, papers: [], statusFilter });
       return;
@@ -251,9 +277,16 @@
       else restoreScroll();
       return;
     }
-    const data = await client.request(
-      "/archive-saved-papers?limit=20&status=" + encodeURIComponent(statusFilter),
-    );
+    let data;
+    try {
+      data = await client.request(
+        "/archive-saved-papers?limit=20&status=" + encodeURIComponent(statusFilter),
+      );
+    } catch (error) {
+      if (version !== libraryViewVersion) return false;
+      throw error;
+    }
+    if (version !== libraryViewVersion) return false;
     const viewState = {
       paper: null,
       key: "",
@@ -268,6 +301,10 @@
     if (typeof history === "undefined" || !history.state?.archive2SavedLibraryDetail)
       clearSavedLibraryListContextInvalidation();
     saveContext(viewState);
+  }
+
+  function invalidatePendingRequests() {
+    libraryViewVersion++;
   }
 
   function saveContext(viewState = activeListState) {
@@ -292,10 +329,19 @@
 
   async function loadMore(host, viewState) {
     if (!viewState.cursor) return;
-    const data = await apiClient().request(
-      "/archive-saved-papers?limit=20&status=" + encodeURIComponent(viewState.statusFilter || "ACTIVE") +
-      "&cursor=" + encodeURIComponent(viewState.cursor),
-    );
+    const version = libraryViewVersion;
+    const cursor = viewState.cursor;
+    let data;
+    try {
+      data = await apiClient().request(
+        "/archive-saved-papers?limit=20&status=" + encodeURIComponent(viewState.statusFilter || "ACTIVE") +
+        "&cursor=" + encodeURIComponent(cursor),
+      );
+    } catch (error) {
+      if (version !== libraryViewVersion || activeListState !== viewState || viewState.cursor !== cursor) return;
+      throw error;
+    }
+    if (version !== libraryViewVersion || activeListState !== viewState || viewState.cursor !== cursor) return;
     viewState.papers.push(...(data.papers || []));
     viewState.cursor = data.next_cursor || null;
     host.innerHTML = listMarkup(viewState.papers, viewState.cursor, "", viewState.statusFilter);
@@ -432,5 +478,5 @@
     };
   }
 
-  return { render, preparePreview, outputUrl, openOutput, saveContext };
+  return { render, preparePreview, outputUrl, openOutput, saveContext, invalidatePendingRequests };
 });
