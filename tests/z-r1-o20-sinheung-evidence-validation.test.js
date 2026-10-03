@@ -1,0 +1,11 @@
+const path = require('path');
+(async () => {
+  const { validatePhysicalEvidence } = await import('../archive/tools/review-evidence-gate.mjs');
+  const report = validatePhysicalEvidence({
+    examFile: path.resolve('archive/exams/original/middle/m2/1final/26_신흥중_1학기_기말_중2_기출.js'),
+    evidenceFile: path.resolve('archive/data/r2e-intake/m2/26_신흥중_1학기_기말_중2_기출.review1.physical-evidence.json'),
+    stage: 'R1'
+  });
+  console.log(JSON.stringify(report, null, 2));
+  if (!report.ok) throw new Error('M2_O20_R1_GATE_FAIL:' + report.issues.join(','));
+})();
