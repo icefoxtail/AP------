@@ -1259,7 +1259,7 @@ window.questionBank = [
       "가감법"
     ],
     "wide": false,
-    "content": "연립방정식 $\\begin{cases}0.5x-0.3y=0.4\\\\\\dfrac{x}{2}+\\dfrac{y}{3}=-\\dfrac{3}{2}\\end{cases}$을 푸시오. [4점]",
+    "content": "연립방정식 $\\begin{cases}0.5x-0.3y=0.4\\\\ \\dfrac{x}{2}+\\dfrac{y}{3}=-\\dfrac{3}{2}\\end{cases}$을 푸시오. [4점]",
     "choices": [
       "$x=-1, y=-3$",
       "$x=2, y=-1$",

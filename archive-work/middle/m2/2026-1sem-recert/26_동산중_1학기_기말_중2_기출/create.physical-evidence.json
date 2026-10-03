@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
   "stage": "CREATE",
   "examPath": "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
-  "examSha256": "sha256:1e95b308b22da4744f9314609b53cabe00473ddb706c54a9b815747eaa1f7412",
+  "examSha256": "sha256:ba49721d6e32e370e4c9a02c98ec667442a3374ca0f5abee9802fcceabc15e02",
   "questionCount": 24,
   "questionRows": [
     {
@@ -727,7 +727,7 @@
       "qid": 19,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "Base-main source transcription content/choices/answer remained byte-stable from blob 9b546ad3...; q19 decisive facts are text/table-complete."
+        "evidence": "Source math/content semantics preserved from current authority; deterministic runtime-only TeX normalization separates the cases row break from the following \\dfrac command without changing the equation."
       },
       "answerMath": {
         "status": "PASS",
@@ -759,7 +759,7 @@
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "Runtime TeX/string structure reviewed; canonical validator will rescan actual evaluated content/choices/answer/solution."
+        "evidence": "Validator-reported RUNTIME_TEX_FAIL at q19 was repaired by changing the cases boundary from adjacent row-break+\\dfrac escaping to an equivalent whitespace-separated TeX form; canonical gate rerun required."
       }
     },
     {
@@ -1439,11 +1439,12 @@
     "itemHoldCount": 2
   },
   "auditNotes": {
-    "baseMainSha": "a87ba08ad4e076c2ce9c372168293f55be6c8809",
-    "finalExamBlobSha": "30311283da3e9ef042c55c2c7a34f4a147c7202b",
+    "baseMainSha": "65a7777700af13cbefd5c8db1290b1abe05dba92",
+    "finalExamBlobSha": "20fbda77de8b761848b59a26956f9171dc068d10",
     "deterministicRepairs": [
       "q11 small-board enumeration",
-      "q13 small-board enumeration"
+      "q13 small-board enumeration",
+      "q19 cases row-break / dfrac runtime escape normalization"
     ],
     "sourceVisualHolds": [
       6,
