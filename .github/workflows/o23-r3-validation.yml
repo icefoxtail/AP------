@@ -1,0 +1,18 @@
+name: O23 R3 Canonical Validation
+
+on:
+  push:
+    branches:
+      - validation/m2-o23-r3-20261004-0725
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run O23 canonical R3 gate
+        run: node tests/z-r3-o23-yeonhyang-release-validation.test.js
