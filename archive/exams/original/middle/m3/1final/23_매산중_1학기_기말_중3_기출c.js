@@ -514,7 +514,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다음 〈보기〉에서 $y$가 $x$에 대한 이차함수인 것을 모두 찾으면?\\n〈보기〉\\n<br><br>\nㄱ. $y=11x-2$\\n<br><br>\nㄴ. $y=x^2-x+3$\\n<br><br>\nㄷ. $y=x(x+4)-7$\\n<br><br>\nㄹ. $y=-\\dfrac{5}{x^2}-2x+1$",
+    "content": "다음 〈보기〉에서 $y$가 $x$에 대한 이차함수인 것을 모두 찾으면?\\n〈보기〉\\nㄱ. $y=11x-2$\\nㄴ. $y=x^2-x+3$\\nㄷ. $y=x(x+4)-7$\\nㄹ. $y=-\\dfrac{5}{x^2}-2x+1$",
     "choices": [
       "ㄴ",
       "ㄴ, ㄷ",
