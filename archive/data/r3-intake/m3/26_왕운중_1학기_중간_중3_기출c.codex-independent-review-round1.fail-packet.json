@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_TARGETED_INDEPENDENT_REVIEW_v1",
+  "recordType": "CODEX_INDEPENDENT_REVIEW_FAIL_PACKET",
+  "status": "CODEX_INDEPENDENT_REVIEW_FAIL",
+  "reviewAttemptId": "codex-r3-targeted-review-m3-1mid-26-wangun-20261003T111000Z",
+  "examUid": "m3/1mid/26-wangun",
+  "canonicalOrdinal": 1,
+  "examPath": "archive/exams/original/middle/m3/1mid/26_왕운중_1학기_중간_중3_기출c.js",
+  "originMainSha": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+  "finalArtifactGitBlobSha": "2bca55f7d2efe93fc733686b4bec3c228a33a8cd",
+  "finalArtifactSha": "sha256:2ddeccf0ca9cca37823039885122380bb126051e711d66adf5cc96e492cf8f23",
+  "repairedArtifactSha": "sha256:ac3127f06afe628bfd931c19ccb1eba8a436811290e9e48bcb785601f2df3aa1",
+  "artifactFiles": [
+    {
+      "path": "archive/exams/original/middle/m3/1mid/26_왕운중_1학기_중간_중3_기출c.js",
+      "gitBlobSha": "2bca55f7d2efe93fc733686b4bec3c228a33a8cd",
+      "sha256": "2ddeccf0ca9cca37823039885122380bb126051e711d66adf5cc96e492cf8f23",
+      "role": "final exam; read-only dependency"
+    },
+    {
+      "path": "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json",
+      "gitBlobSha": "06cd59af584717e5f38a4128e46a5cab53547d75",
+      "sha256": "ac3127f06afe628bfd931c19ccb1eba8a436811290e9e48bcb785601f2df3aa1",
+      "role": "repaired metadata artifact"
+    }
+  ],
+  "originalR3Evidence": {
+    "sourceRef": "work/middle/m3/26-wangun-1mid-r3-surge1-20261002-v2",
+    "sourceHead": "68eb61502fa81690f80ade21546588342d6a5f1b",
+    "failPacketPath": "archive/data/r3-intake/m3/26_왕운중_1학기_중간_중3_기출c.r3-fail-packet.json",
+    "failPacketGitBlobSha": "6692d7934d944e8aa301cd53311e7476949493d2",
+    "r3ReceiptGitBlobSha": "e48b23c13b1f9de10c4c0ee1edf6eb618bb05a01",
+    "physicalEvidenceGitBlobSha": "9b2b304ff0fbf008d24f7327d224d48019310ae5",
+    "validatorGitBlobSha": "e2613c6fdab4e411902cbce25d282cdd7c44558c",
+    "inputExamGitBlobSha": "2bca55f7d2efe93fc733686b4bec3c228a33a8cd",
+    "openQids": [
+      14,
+      18,
+      23
+    ],
+    "failureCodes": [
+      "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY",
+      "R3_ITEM_HOLD_FORBIDDEN"
+    ]
+  },
+  "repairLineage": {
+    "repairRef": "refs/heads/main",
+    "repairCommit": "960c101b8d965d884b93820b3e178d22f91bd0f2",
+    "repairHeadAtReview": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+    "repairReceipt": "No separate R3 repair receipt sidecar exists in latest main; physical repair evidence is the exact main commit and file/blob diff.",
+    "beforeMetaGitBlobSha": "f50a0a05117a7f88cac150d3c3ed7c05410b5f40",
+    "afterMetaGitBlobSha": "06cd59af584717e5f38a4128e46a5cab53547d75",
+    "beforeExamGitBlobSha": "2bca55f7d2efe93fc733686b4bec3c228a33a8cd",
+    "afterExamGitBlobSha": "2bca55f7d2efe93fc733686b4bec3c228a33a8cd"
+  },
+  "actualChangedFiles": [
+    "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json"
+  ],
+  "actualChangedQids": [
+    14,
+    18,
+    23
+  ],
+  "actualChangedFields": [
+    {
+      "fields": [
+        "crossConceptKeys",
+        "holdReason",
+        "projectionStatus",
+        "rpmPath",
+        "rpmRecordId",
+        "semanticDisposition",
+        "semanticStatus"
+      ],
+      "qid": 14
+    },
+    {
+      "fields": [
+        "holdReason",
+        "projectionStatus",
+        "rpmPath",
+        "rpmRecordId",
+        "semanticDisposition",
+        "semanticStatus"
+      ],
+      "qid": 18
+    },
+    {
+      "fields": [
+        "crossConceptKeys",
+        "holdReason",
+        "projectionStatus",
+        "rpmPath",
+        "rpmRecordId",
+        "semanticDisposition",
+        "semanticStatus"
+      ],
+      "qid": 23
+    }
+  ],
+  "reviewedLoci": [
+    {
+      "qid": 14,
+      "fields": [
+        "source content/answer/solution as read-only dependencies",
+        "semanticStatus",
+        "rpmRecordId",
+        "rpmPath",
+        "projectionStatus",
+        "metadataReviewStatus",
+        "metadataDisposition",
+        "nullReason/lookup evidence"
+      ]
+    },
+    {
+      "qid": 18,
+      "fields": [
+        "source content/answer/solution as read-only dependencies",
+        "semanticStatus",
+        "rpmRecordId",
+        "rpmPath",
+        "projectionStatus",
+        "metadataReviewStatus",
+        "metadataDisposition",
+        "nullReason/lookup evidence"
+      ]
+    },
+    {
+      "qid": 23,
+      "fields": [
+        "source content/answer/solution as read-only dependencies",
+        "semanticStatus",
+        "rpmRecordId",
+        "rpmPath",
+        "projectionStatus",
+        "metadataReviewStatus",
+        "metadataDisposition",
+        "nullReason/lookup evidence"
+      ]
+    }
+  ],
+  "closedFailureCodes": [
+    "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:q14"
+  ],
+  "remainingFailureCodes": [
+    "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:q18,q23",
+    "R3_ITEM_HOLD_FORBIDDEN:14,18,23",
+    "META_PRIMARY_TIEBREAK_UNSUPPORTED_BY_CURRENT_AUTHORITY:18,23",
+    "META_NULL_WITHOUT_LOOKUP_EVIDENCE:14,18,23"
+  ],
+  "failedLoci": [
+    {
+      "qid": 14,
+      "file": "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json",
+      "field": "metadataReviewStatus,metadataDisposition,metadataCanonicalHoldQids,lookupRefs,nullReason",
+      "observedDefect": "semanticStatus is FINAL at M3-RPM-182 and holdReason is null, but metadataReviewStatus remains HOLD and metadataDisposition remains META_CANONICAL_HOLD; the hold-qid summary still includes this row, and the null projection lacks current lookupRefs/nullReason.",
+      "expectedCorrection": "Retain M3-RPM-182 if current source/authority supports it; reconcile row and derived hold state to the nonblocking projection and add the required lookup evidence/nullReason.",
+      "currentArtifactSha": "sha256:ac3127f06afe628bfd931c19ccb1eba8a436811290e9e48bcb785601f2df3aa1"
+    },
+    {
+      "qid": 18,
+      "file": "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json",
+      "field": "rpmRecordId,rpmPath,semanticStatus,semanticDisposition,metadataReviewStatus,metadataDisposition,lookupRefs,nullReason",
+      "observedDefect": "The question independently judges perfect-square, expansion, and common-factor claims, yet repair assigns M3-RPM-182 as a single FINAL primary; that leaf is scoped to comparing multiplication-formula identities. Hold markers remain and projection evidence is absent.",
+      "expectedCorrection": "Preserve the distinct required semantics as MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY with a Meta-only nonblocking disposition; do not force M3-RPM-182, and reconcile hold/projection evidence.",
+      "currentArtifactSha": "sha256:ac3127f06afe628bfd931c19ccb1eba8a436811290e9e48bcb785601f2df3aa1"
+    },
+    {
+      "qid": 23,
+      "file": "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json",
+      "field": "rpmRecordId,rpmPath,semanticStatus,semanticDisposition,metadataReviewStatus,metadataDisposition,lookupRefs,nullReason",
+      "observedDefect": "The source separately requests evaluation using factorization and completing-square transformation; repair selects M3-RPM-027 as one primary while retaining HOLD metadata state and no lookup evidence.",
+      "expectedCorrection": "Represent both required algebraic methods without a single forced primary (Meta-only unresolved/nonblocking) and reconcile lookup/hold evidence.",
+      "currentArtifactSha": "sha256:ac3127f06afe628bfd931c19ccb1eba8a436811290e9e48bcb785601f2df3aa1"
+    }
+  ],
+  "lockedScopeMutationCount": 0,
+  "newDirectDefects": [
+    "semantic FINAL with stale META_CANONICAL_HOLD for q14",
+    "unsupported single-primary assignments for q18 and q23",
+    "missing null-projection lookup evidence for q14,q18,q23"
+  ],
+  "additionalGPTR3Retry": false,
+  "mainMutation": 0,
+  "reviewProvenance": {
+    "reviewer": "Codex",
+    "reviewerThreadId": "01a0fd4c-ad78-7703-9481-8f8b8fd51397",
+    "automationId": "js-archive-r3-repair",
+    "reviewedAtUTC": "2026-10-03T11:10:00Z",
+    "latestOriginMainSha": "bff6e28550491a3cb82d7f82a6d299d94cdf9f4a",
+    "rulePackManifestStatus": "PASS",
+    "authorityRuleRefs": [
+      "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@8cd98707cb79cabdbb145b60d8d989b1f8cb0046",
+      "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md@3581b435f129bbf704af6fb2d82fbac6cdac1373",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@4a4f5a4b4a9aae781235297b5998f4a1e3727cec"
+    ]
+  },
+  "currentArtifactSha": "sha256:ac3127f06afe628bfd931c19ccb1eba8a436811290e9e48bcb785601f2df3aa1"
+}
