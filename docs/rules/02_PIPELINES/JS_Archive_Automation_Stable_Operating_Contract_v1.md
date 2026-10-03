@@ -100,16 +100,32 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 - 사용자 명시 중지/M2-1 종료가 아닌데 peer가 disabled이거나 recurring schedule이 drift하면 peer 또는 WATCHDOG가 복구하고 readback한다.
 - 기존 `MASTER-A/B/C`, `INFINITY-1/2` 이름은 scheduler history이며 current protected roster가 아니다.
 
-### 1.4 WATCHDOG HOURLY STATUS BOARD HARD
+### 1.4 OPERATIONAL STATE STORAGE + REPRESENTATIVE REPORTING HARD
+
+#### 1.4.1 Production lane state storage — Space first / no per-run Notion
+
+- 정상 production lane인 `M2-1 THANOS-MASTER-1~5`, `TEMP-CREATE-1/2`, `R1-1/2`, `R2-1/2`, `R3-1/2`, `MAIN-MERGE`는 **매 run Notion을 직접 갱신하지 않는다.**
+- primary operational display/store는 기존 ChatGPT Work/Space Page `https://chatgpt.com/space/page_d53a4d15a5508191a90730bb848a3dfb`다. 각 lane은 이 페이지의 자기 고정 섹션 `LANE CURRENT — <task title>`만 갱신하며 다른 lane 섹션이나 상단 WATCHDOG dashboard를 덮어쓰지 않는다.
+- lane CURRENT는 장문 로그가 아니라 아래 7필드만 유지한다: `RESULT / TARGET / TRANSITION / PHYSICAL / DEBT / NEXT / UPDATED_KST`. 정상 예시는 `R1_DONE · o22 · READY_R1→READY_R2 · validator+receipt+remote readback PASS · debt 없음 · R2 즉시 소비 가능`처럼 한눈에 읽히게 쓴다.
+- lane CURRENT는 **latest state만** 유지한다. 과거 실행 상세 history는 Git commit/blob/validator receipt/stage receipt가 authority이며 Space 페이지를 작업 로그 저장소로 비대하게 만들지 않는다.
+- Space write는 production closure/readback **이후**의 운영 표시 단계다. Space write 실패는 stage verdict를 무효화하지 않으며 `SPACE_STATE_SYNC_DEBT`로만 기록한다. 다음 run/WATCHDOG가 Git physical state에서 재구성한다.
+- production lane은 정상 run마다 형님에게 시간당 장문 보고를 보내지 않는다. **정상 run은 lane CURRENT 저장으로 종료**하고, 사용자 판단이 필요한 `USER_DECISION_DEBT` 또는 공장 전체 진행을 실제로 막는 복구 불능 상태일 때만 즉시 예외 보고한다.
+- Notion write 실패를 production blocker로 확대하지 않는다. production lane prompt에서 per-run Notion write 의무와 “Notion last” 완료조건을 제거한다.
+
+#### 1.4.2 WATCHDOG = sole hourly reporter + sole Notion mirror writer
 
 - `M2-1 WATCHDOG + 전광판`은 매시 :56에 15개 ACTIVE roster의 enable, hourly RRULE, last_run freshness, conveyor prompt contract를 확인한다.
 - 사용자 명시 중지나 M2-1 종료가 아닌데 OFF면 즉시 re-enable한다. enabled+정상 RRULE인데 expected occurrence를 놓쳐 last_run이 60분을 넘기고 실제 in-flight/recent durable progress가 없으면 `DISPATCH_STALL` 후보로 보고 canonical hourly RRULE을 같은 고정 분에 재결속한 뒤 readback한다.
 - phase-wide `34/34` barrier, 정상 상태의 `CREATE_PHASE_WAIT`, old MASTER/INFINITY topology가 active prompt에 재유입되면 conveyor-contract drift로 보고 최신 EXAM-LEVEL CONVEYOR 계약으로 복구한다.
-- 같은 run 마지막에 기존 Notion `JS Archive 예약 레인 상시 상태판 — CURRENT` **한 페이지를 제자리 갱신**한다. 새 상태판 페이지를 만들지 않는다.
-- 전광판 최소 항목: 기준 KST/latest remote main, 15개 ON/OFF·schedule·last_run·stale, current-generation CREATE/READY_R1/READY_R2/READY_R3/RELEASE/MAIN queue, 최근 1시간 실제 closure/NO_WORK/실패, active/debt target+owner, WATCHDOG 복구 조치, 다음 1시간 우선 target.
-- 단계/완료 수치는 가능한 범위에서 Git physical receipt, finalArtifactSha, remote readback과 CURRENT ledger로 검증한다. 확인 불가 값은 추정하지 않고 `확인 필요`로 표시한다.
-- WATCHDOG 예약 채팅의 final report도 전광판 핵심을 짧게 출력한다. 단순 `LIVENESS PASS` 한 줄 보고로 끝내지 않는다.
-- WATCHDOG은 production exam/artifact를 수정하지 않는다. automation enable/schedule/prompt-contract 복구와 status-board Notion 갱신은 정상 권한이다.
+- WATCHDOG은 **각 lane CURRENT + 실제 Automations readback + Git physical receipt/finalArtifactSha/remote main**을 함께 읽어 한 시간 스냅샷을 만든다. lane self-report만으로 queue/stage 완료를 확정하지 않는다.
+- primary direct display는 위 Work/Space Page의 **상단 WATCHDOG CURRENT dashboard**다. WATCHDOG은 상단 dashboard만 갱신하고 lane별 CURRENT 섹션은 worker-owned로 보존한다.
+- durable mirror는 기존 Notion `JS Archive 예약 레인 상시 상태판 — CURRENT` `https://app.notion.com/p/3ee0e68bd69f81bdb3a9c6d81c773b7b?pvs=204` 한 페이지다. **Notion에는 WATCHDOG만 시간당 1회 동일 snapshot을 미러링한다.** 새 상태판 페이지를 만들지 않는다.
+- Notion mirror 실패는 `NOTION_MIRROR_DEBT`이며 **production 영향 없음**이다. Work/Space write가 성공했다면 그 성공을 보존하고 다음 WATCHDOG에서 Notion만 재동기화한다. 반대로 어느 한 destination이라도 실패하면 dual-write 성공이라고 보고하지 않는다.
+- WATCHDOG 전광판 최소 항목: 기준 KST/latest remote main, 15개 ON/OFF·schedule·last_run·raw stale/confirmed stall, current-generation CREATE/READY_R1/READY_R2/READY_R3/RELEASE/MAIN queue, 최근 1시간 실제 closure/NO_WORK/실패, active/debt target+owner, 복구 조치, 다음 1시간 우선 target.
+- 확인 불가 값은 추정하지 않고 `확인 필요`로 표시한다. 오래된 snapshot/history는 historical로 명시해 아래에 둘 수 있으나 top CURRENT와 섞지 않는다.
+- **형님에게 보내는 정기 시간당 공장 보고는 WATCHDOG 1개만 담당한다.** production lane의 개별 hourly narrative report는 폐기한다.
+- WATCHDOG은 production exam/artifact/stage verdict를 수정하지 않는다. automation enable/schedule/prompt-contract 복구, Work/Space dashboard 갱신, Notion hourly mirror가 정상 권한이다.
+- 매 run 마지막에 Work/Space Page와 Notion mirror를 각각 readback한다.
 
 ### 1.5 dispatch / capability
 
