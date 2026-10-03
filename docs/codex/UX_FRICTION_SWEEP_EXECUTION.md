@@ -2,7 +2,7 @@
 
 Base: `origin/main` `42c76d18899a3902f005e8fc6e7d60f5ff6f850f`
 Branch: `codex/ux-friction-sweep`
-Campaign status: in progress; stage commits stay local until independent UX review.
+Campaign status: READY_FOR_UX_INDEPENDENT_REVIEW; S0–S6 commits remain local for review.
 Mobile reading guardrail: [Notion 9-7](https://app.notion.com/p/3ec0e68bd69f81fcb26cf73a6f2130fc)
 
 ## S0 — Execution Baseline
@@ -151,8 +151,59 @@ Verification:
 - Opened `출제` at 390px. The Archive 2.0 URL stayed on the library and the existing Assignment selector rendered in a dialog. With the session removed, it displayed the login prompt; completing the local mock login resumed the same Saved Paper ID and showed its class-selection panel. No production API or Assignment POST was sent.
 - Finder page 2 used `?view=find&page=2`; after scrolling to y=700, switching to Saved Paper and using Back returned to `?view=find&page=2` at y=700. Recent date/grade/title filters were reflected in the URL; opening student status added the exact `assignment_id`, and closing it returned to the same filtered recent row.
 
-Commit: pending stage close.
+Commit: `276fd8ee53c8c1d4ee2df5b594d211b99d7c23f8`
 
 ## S6 — Final Acceptance
 
-Not started.
+Status: READY_FOR_UX_INDEPENDENT_REVIEW
+
+Final main check and hotfix preservation:
+
+- Campaign start base: `origin/main` `42c76d18899a3902f005e8fc6e7d60f5ff6f850f`. S6 synchronized current `origin/main` `21a46c1a6972316de8446ebeda876006ccc69ae6` with merge commit `ba956ad7ce64106a1bfb8ece30fd6f0e5670a0a0` after S0–S5 closed independently.
+- The user hotfix `04db702784af64814c21d65cadd1944604733e13` is an ancestor of latest origin/main. All six hotfix files remain present, with `apmath/student/student-version.json` advanced to `2026.10.03.2`; the S4 exact Assignment link/return additions remain on top.
+- The unrelated Geumdang visual pilot/source changes from latest main were synchronized without edits by this Campaign.
+
+A01–A20 traceability, mapped to the frozen S0–S5 acceptance clauses:
+
+| ID | Acceptance clause | Result |
+|---|---|---|
+| A01 | Saved Paper 6+ SQL binds remain under D1 limits | PASS — 1/5/6/10/50 bind regression; maximum 85 binds. |
+| A02 | Unit Past canonical bootstrap dependency resolves | PASS at the pinned S0 baseline; CURRENT-MAIN DEBT below prevents latest-main boot. |
+| A03 | Unit Past outputs use the existing Output Envelope producer | PASS at the pinned S0 baseline; CURRENT-MAIN DEBT below. |
+| A04 | Saved Paper assignment persists 1/5/6/10/50 questions | PASS at the pinned S0 baseline; CURRENT-MAIN DEBT below. |
+| A05 | 51 questions split into 50 + 1 | PASS — split regression. |
+| A06 | Unit Past generation → exam/solution/answer/assignment smoke | PASS at the pinned S0 baseline — actual browser smoke recorded in S0. |
+| A07 | Embedded preview is iframe-only; standalone outputs expose print | PASS — Output Envelope/reader regressions and browser checks. |
+| A08 | Compact 390px reader controls, 44px targets, mobile ≤2 taps, desktop 1 click | PASS — post-merge 390px controls measured 98×44, 212×44, 48×44; menu items 260×44; S1 print readiness checks passed. |
+| A09 | Existing renderer, A4 layout, math/image path, readiness gate, same-source Envelope modes | PASS — renderer/transport regressions and S1 matched-cache timing comparison; no toolbar-caused speed claim. |
+| A10 | Compose retains exact last Saved Paper ID with direct mode/issue actions | PASS — Compose continuity tests and actual browser flow. |
+| A11 | Unsaved Draft state and RESULT_UNKNOWN recovery stay distinct and reachable | PASS — recovery/persistence regressions and actual browser flow. |
+| A12 | Original and Saved Paper Assignment use the same completion meaning; PDF failure does not erase saved receipt | PASS — Assignment handoff regressions. |
+| A13 | Retry posts only PDF; duplicate Assignment creation POSTs remain zero | PASS — handoff/runtime/call-log checks. |
+| A14 | Output is bound to exact receipt Assignment ID and frozen snapshot; multi-class IDs remain distinct | PASS — direct output and multi-class handoff tests/browser evidence. |
+| A15 | Recent grammar, lifecycle states, PDF state/action, bounded additive summary, compatible history API | PASS at the pinned S0 baseline — 34 Recent/history tests and Worker/D1 runtime; CURRENT-MAIN DEBT below. |
+| A16 | Student link carries exact student + Assignment IDs; student output keeps snapshot authority and return context | PASS — student output guard 32/32 and S4 browser flow. |
+| A17 | Saved Paper list direct modes/issue, no primary full-page `index.html?savedPaper` hop, cursor/detail context | PASS — S5 tests and actual 390px flow; post-merge 1440/1180/1024/960/390 Saved Library widths have no horizontal overflow. |
+| A18 | Finder filter/page/scroll restore; management actions under More | PASS on pinned S5 browser flow (page 2 and y=700 restored); CURRENT-MAIN DEBT below. |
+| A19 | Recent filters and exact selected Assignment restore; login resumes original issue intent | PASS on pinned S5 browser flow/local login fixture; exact `assignment_id` route verified; CURRENT-MAIN DEBT below. |
+| A20 | Desktop/mobile continuous flow and 1440/1180/1024/960/390px render checks | PASS for Saved Library and reader at all five widths; Finder/Recent continuous flow passed on pinned S5 base. CURRENT-MAIN DEBT below. |
+
+Post-sync reruns:
+
+- Focused reader/output/Assignment regressions passed 29/29 after refreshing the S5 cache-version assertion; focused student portal output regressions passed 32/32.
+- Canonical-independent Unit Past contracts passed 36/36; Saved Library direct output/Assignment/context unit coverage passed. The canonical-dependent scope/history/Worker modules fail before their test bodies load because the current main manifest digest no longer matches its canonical Master. Saved Paper D1 runtime receives 503 `MIGRATION_REQUIRED` for the same reason.
+- `tests/student-portal-omr-history-routes.test.js` still fails the known legacy SQL-string expectation. `origin/main` has the newer `exam_date/updated_at/created_at` ordering and lacks that expected literal.
+
+Current-main baseline debt (kept outside the Campaign):
+
+- `origin/main` `21a46c1a6` changed `docs/rules/.../CANONICAL_MASTER.json` without updating `archive/data/archive2-canonical-input-manifest.json`, `archive/data/archive2-canonical-projection-policy.json`, and their derived catalog inputs. The manifest expects SHA `8997970a…`; the current Master hashes to `c8de39f9…`. `node archive/tools/build-archive2-catalog.mjs --check` fails with `Archive2 canonical source-pack drift: master version does not match parent-link/projection policy` before generation.
+- After the S6 main sync this makes Worker canonical validation return 503 `MIGRATION_REQUIRED`; Unit Past browser reports `canonical input digest mismatch`, and Finder/Recent cannot initialize without the catalog. Fixing it requires canonical policy/parent-link revalidation and regenerating the projection. No such policy/data authority change was made under this UX Campaign. The S0 Worker/D1 and S5 Finder/Recent results above are from the locked baseline before this upstream drift.
+- The known `tests/student-portal-omr-history-routes.test.js` failure reproduces as an obsolete Worker source-string expectation: latest Worker ordering is `exam_date/updated_at/created_at` and no longer contains the expected legacy SQL literal. The focused student output suite passes 32/32.
+
+Final browser evidence on the synchronized branch:
+
+- Saved Library rendered at 1440/1180/1024/960/390px with `scrollWidth == innerWidth`; 390px primary actions are 54×44px and `더보기` is 51×44px. The latest-main canonical warning remains visible in the Saved view.
+- Standalone Saved Paper solution opened from the exact snapshot at 390px with the compact `돌아가기 / 시험 ▾ / ⋯` row; touch areas measured 98×44, 212×44, and 48×44px, with print/PDF and new-window actions in More. Back closed the output tab to the Saved Library.
+- After main sync, the Finder/Unit Past/Recent flows were attempted and the canonical source-pack failure above was observed. Their complete flow evidence remains recorded at S0/S5 on the pinned baseline.
+
+Superpowers note: no Superpowers skill file exists in the repository or user skill directories. The frozen S0→S6 stage sequence and the available Playwright workflow were followed; the plan was not regenerated.
