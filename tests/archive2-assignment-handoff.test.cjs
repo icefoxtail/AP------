@@ -50,7 +50,7 @@ function assignmentReceiptRuntime(kind) {
   return { context, assignmentId, assignmentPosts, pdfPosts, host };
 }
 
-function assignmentHandoffHarness(classes) {
+function assignmentHandoffHarness(classes, kind = 'original') {
   const workspace = read('archive2-workspace.js');
   const entry = read('archive2-entry.js');
   const index = read('index.html');
@@ -73,7 +73,9 @@ function assignmentHandoffHarness(classes) {
     AssignTarget: {
       progress,
       grade: '고1',
-      item: { file: 'original/sample.js', subject: '수학' },
+      item: kind === 'saved-paper'
+        ? { savedPaperId: 'saved-paper-exact', title: '저장 시험지', subject: '공통수학1' }
+        : { file: 'original/sample.js', subject: '수학' },
       qpp: 4,
       classState: Object.fromEntries(classes.map(row => [row.id, {
         checked: true,
@@ -81,7 +83,9 @@ function assignmentHandoffHarness(classes) {
       }])),
     },
     location: {
-      search: '?archive2Issue=original%2Fsample.js&archive2Embedded=1',
+      search: kind === 'saved-paper'
+        ? '?savedPaper=saved-paper-exact&archive2Embedded=1'
+        : '?archive2Issue=original%2Fsample.js&archive2Embedded=1',
       origin: 'https://archive.test',
     },
     document: {
@@ -106,9 +110,12 @@ function assignmentHandoffHarness(classes) {
     get src() { return previewSrc; },
     set src(value) { previewSrc = String(value); previewLoadCount++; },
   };
+  const originalFrame = kind === 'original' ? { hidden: false, contentWindow: child } : null;
+  const savedPaperFrame = kind === 'saved-paper' ? { hidden: false, contentWindow: child } : null;
   const elements = new Map([
     ['original-review', { hidden: true }],
-    ['original-issue-frame', { hidden: false, contentWindow: child }],
+    ['original-issue-frame', originalFrame],
+    ['saved-paper-issue-frame', savedPaperFrame],
     ['original-preview-frame', previewFrame],
     ['original-preview-status', { textContent: '' }],
     ['original-receipts', { innerHTML: '' }],
@@ -131,7 +138,7 @@ function assignmentHandoffHarness(classes) {
     location: { origin: 'https://archive.test', href: 'https://archive.test/archive/workspace.html' },
     state,
     window: null,
-    document: { querySelector: () => ({ setAttribute() {} }) },
+    document: { querySelector: () => ({ setAttribute() {}, removeAttribute() {} }) },
     $(id) { return elements.get(id); },
     esc: value => String(value ?? ""),
     button: (action, label, extra = "") => `<button data-action="${action}" ${extra}>${label}</button>`,
@@ -279,6 +286,38 @@ function frozenSnapshot(questionUid, content) {
   };
 }
 
+test('Saved Paper embedded issue mounts the shared receipt and frozen Assignment preview surface', () => {
+  const workspace = read('archive2-workspace.js');
+  const entry = read('archive2-entry.js');
+  const openSaved = sliceBetween(workspace, 'function openSavedPaperIssue(id) {', 'window.Archive2WorkspaceSavedPaperIssue =');
+  const captured = { title: '', body: '' };
+  const context = {
+    URL,
+    location: { href: 'https://archive.test/archive/workspace.html' },
+    state: { originalReceipts: [{ id: 'stale' }], originalPreviewEnvelope: { stale: true }, originalPreviewToken: 1 },
+    esc: value => String(value ?? ''),
+    button: (action, label, extra = '') => `<button data-action="${action}" ${extra}>${label}</button>`,
+    showDialog(title, body) { captured.title = title; captured.body = body; },
+    $: () => ({ classList: { add(value) { captured.className = value; } } }),
+    setOriginalStep(step) { captured.step = step; },
+  };
+  vm.runInNewContext(openSaved, context);
+  context.openSavedPaperIssue('saved-paper-exact');
+  assert.equal(context.state.originalReceipts.length, 0);
+  assert.equal(context.state.originalPreviewEnvelope, null);
+  assert.equal(context.state.originalPreviewToken, 2);
+  assert.equal(captured.title, '저장한 시험지 출제');
+  assert.equal(captured.step, 'targets');
+  assert.match(captured.body, /id="saved-paper-issue-frame"/);
+  assert.match(captured.body, /id="original-receipts"/);
+  assert.match(captured.body, /id="original-review" hidden/);
+  assert.match(captured.body, /id="original-preview-frame"/);
+  assert.match(captured.body, /data-action="original-review" disabled/);
+  assert.match(captured.body, /savedPaper=saved-paper-exact/);
+  assert.match(entry, /if \(requested \|\| requestedSavedPaper\) \{/,
+    'Saved Paper uses the same all-success embedded completion override as Original');
+});
+
 test('one-class completion changes the same modal to its saved frozen preview with no engine Assignment POST', async () => {
   const h = assignmentHandoffHarness([{ id: 'class-1', status: 'success' }]);
   const snapshot = frozenSnapshot('saved-q1', 'class-1 frozen content');
@@ -380,6 +419,102 @@ test('partial failure stays on progress; retrying only the failed class switches
     'repeated finish checks cannot reopen or regenerate the preview');
   assert.equal(h.previewLoadCount, 1);
   assert.equal(h.assignmentPosts.count, 2, 'preview completion performs no additional Assignment save');
+});
+
+test('Saved Paper one-class completion opens the exact Assignment frozen preview in the parent', async () => {
+  const h = assignmentHandoffHarness([{ id: 'saved-class-1', status: 'success' }], 'saved-paper');
+  h.recordSavedAssignment('saved-assignment-1', frozenSnapshot('saved-q1', 'saved class frozen content'));
+
+  h.child.assignTargetMaybeFinish();
+  await h.settlePreview();
+
+  assert.deepEqual(h.receipts.map(row => row.message.type), [
+    'archive2-original-saved',
+    'archive2-original-complete',
+  ]);
+  assert.equal(h.elements.get('saved-paper-issue-frame').hidden, true);
+  assert.equal(h.elements.get('original-review').hidden, false);
+  assert.equal(h.previewLoadCount, 1);
+  assert.equal(h.previewEnvelopes[0].sourceKind, 'assignment');
+  assert.equal(h.previewEnvelopes[0].assignmentId, 'saved-assignment-1');
+  assert.equal(h.previewEnvelopes[0].questions[0].content, 'saved class frozen content');
+  assert.deepEqual(h.statusReads, ['/class-exam-assignments/saved-assignment-1/status']);
+  assert.equal(h.assignmentPosts.count, 1, 'parent preview adds no Assignment POST');
+});
+
+test('Saved Paper three-class completion preserves each receipt and previews the first exact Assignment once', async () => {
+  const h = assignmentHandoffHarness([
+    { id: 'saved-class-1', status: 'success' },
+    { id: 'saved-class-2', status: 'success' },
+    { id: 'saved-class-3', status: 'success' },
+  ], 'saved-paper');
+  h.recordSavedAssignment('saved-assignment-1', frozenSnapshot('saved-q1', 'first saved Assignment'));
+  h.recordSavedAssignment('saved-assignment-2', frozenSnapshot('saved-q2', 'second saved Assignment'));
+  h.recordSavedAssignment('saved-assignment-3', frozenSnapshot('saved-q3', 'third saved Assignment'));
+
+  h.child.assignTargetMaybeFinish();
+  await h.settlePreview();
+
+  assert.equal(h.state.originalReceipts.length, 3);
+  assert.deepEqual(h.state.originalReceipts.map(row => row.id), [
+    'saved-assignment-1', 'saved-assignment-2', 'saved-assignment-3',
+  ]);
+  assert.equal(h.receipts.filter(row => row.message.type === 'archive2-original-complete').length, 1);
+  assert.equal(h.previewLoadCount, 1);
+  assert.equal(h.previewEnvelopes[0].assignmentId, h.state.originalReceipts[0].id);
+  assert.equal(h.previewEnvelopes[0].questions[0].content, 'first saved Assignment');
+  assert.equal(h.assignmentPosts.count, 3);
+});
+
+test('Saved Paper partial failure stays on progress and retrying the failed class completes once', async () => {
+  const h = assignmentHandoffHarness([
+    { id: 'saved-class-1', status: 'success' },
+    { id: 'saved-class-2', status: 'error' },
+  ], 'saved-paper');
+  h.recordSavedAssignment('saved-assignment-1', frozenSnapshot('saved-q1', 'first saved Assignment'));
+
+  h.child.assignTargetMaybeFinish();
+  assert.equal(h.receipts.some(row => row.message.type === 'archive2-original-complete'), false);
+  assert.equal(h.previewLoadCount, 0);
+  assert.equal(h.elements.get('original-review').hidden, true);
+
+  const retryIds = [];
+  h.child.assignTargetProcessOneClass = async classId => {
+    retryIds.push(classId);
+    h.child.AssignTarget.progress[classId] = { status: 'success' };
+    h.recordSavedAssignment('saved-assignment-2', frozenSnapshot('saved-q2', 'retried saved Assignment'));
+  };
+  await h.child.assignTargetRetryFailed();
+  await h.settlePreview();
+
+  assert.deepEqual(retryIds, ['saved-class-2']);
+  assert.equal(h.receipts.filter(row => row.message.type === 'archive2-original-complete').length, 1);
+  assert.equal(h.previewLoadCount, 1);
+  assert.equal(h.previewEnvelopes[0].assignmentId, 'saved-assignment-1');
+  assert.equal(h.assignmentPosts.count, 2, 'retry saves one failed class and preview adds no POST');
+});
+
+test('Saved Paper PDF failure remains complete and previews the exact receipt Assignment', async () => {
+  const h = assignmentHandoffHarness([
+    { id: 'saved-class-pdf', name: '고1 저장반', status: 'success' },
+  ], 'saved-paper');
+  h.recordSavedAssignment('saved-assignment-pdf', frozenSnapshot('saved-pdf-q', 'saved PDF pending snapshot'), {
+    pdfStatus: 'pending', pdfError: 'PDF renderer unavailable',
+  });
+
+  h.child.assignTargetMaybeFinish();
+  await h.settlePreview();
+
+  assert.equal(h.state.originalReceipts[0].pdfStatus, 'pending');
+  assert.equal(h.state.originalReceipts[0].pdfError, 'PDF renderer unavailable');
+  assert.equal(h.receipts.filter(row => row.message.type === 'archive2-original-complete').length, 1);
+  assert.equal(h.previewEnvelopes[0].assignmentId, 'saved-assignment-pdf');
+  assert.match(h.elements.get('original-receipts').innerHTML, /PDF 다시 준비/);
+  const retry = assignmentReceiptRuntime('saved-paper');
+  await retry.context.assignTargetProcessOneClass('classA');
+  await retry.context.assignTargetRetryPdf('classA');
+  assert.deepEqual(retry.pdfPosts, [{ url: 'https://api.test/api/class-exam-assignments/assignment-saved-paper-pdf/pdf', method: 'POST' }]);
+  assert.equal(retry.assignmentPosts.length, 1, 'PDF retry never creates a second Assignment');
 });
 
 test('Original and Saved Paper PDF failure is a saved receipt; retry POST targets PDF only', async () => {

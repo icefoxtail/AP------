@@ -96,7 +96,7 @@
       previousClose();
       parent.postMessage({ type: "archive2-original-close" }, location.origin);
     };
-    if (requested) {
+    if (requested || requestedSavedPaper) {
       let completionSent = false;
       window.assignTargetMaybeFinish = function () {
         if (!AssignTarget) return;
