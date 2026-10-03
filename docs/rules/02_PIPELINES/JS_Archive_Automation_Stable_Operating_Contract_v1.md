@@ -15,7 +15,7 @@
 - 일정: :00 MASTER-A / :10 R1-1 / :15 R2-1 / :20 MASTER-B / :25 R3-1 / :30 PUBLISH / :40 MASTER-C / :45 R1-2 / :50 R2-2 / :55 R3-2.
 - 모든 slot은 Asia/Seoul RRULE recurring-capable schedule.
 - MASTER는 §3.5 MASTER_LEASE v2 single-writer를 강제한다.
-- Codex post-R3 repair/independent review sidecar는 별도 유지한다.
+- Codex post-R3 sidecar는 **원본 재확인이 필요한 Source Repair 예외 경로만** 유지한다. 일반 R3 결함은 R3가 직접 닫는다.
 - latest queue는 Notion M3 migration ledger의 CURRENT RECALC를 매 run 재조회한다.
 
 ## 0. 목적
@@ -26,7 +26,7 @@ JS Archive 자동화를 다음 고정 흐름으로 단순화한다.
 CREATE → R1 → R2 → R3 → RELEASE QUEUE → PUBLISH → MAIN_DONE
 ```
 
-R3 FAIL 이후에는 repair → 재검으로 닫는다. Codex는 사용할 수 있지만 fresh/별도 reviewer 자체가 필수조건은 아니다.
+R3는 최종 전수검수와 함께 일반 결함의 핀포인트 수리·수정범위 재확인까지 같은 stage에서 닫는다. 현재 artifact만으로 source truth를 확정할 수 없는 경우에만 Codex Source Repair 예외 경로를 사용한다.
 
 이 문서가 활성화되면 automation role/schedule/recheck/recovery/publish의 단일 실행 authority가 된다.
 과거 3-lane, Surge, Phase A/B, existing-slot-only, persistent-thread contamination, dormant clean-slot, 감시자/조율자 계약은 HISTORY다.
@@ -55,7 +55,7 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 | CREATE | 2 | 시험지 제작, solution, solution visual, Meta, physical evidence, CREATE closure |
 | R1 | 2 | 1차 전수 재검 + 허용 범위 deterministic repair |
 | R2 | 2 | 2차 전수 재검 + compare/regression closure |
-| R3 | 2 | 최종 release 재검; direct repair forbidden |
+| R3 | 2 | 최종 release 전수 재검 + 직접 핀포인트 수리 + 수정 locus/direct dependency 재확인 + 봉인; source truth 재확인이 필요한 경우만 Codex Source Repair |
 | PUBLISH | 1 | release queue/branch의 clean backlog 전체 batch main 반영 |
 | MASTER EXECUTOR | 3 | 20분 간격으로 전체 pipeline 실제 복구·재배정·쓰기·배포 |
 
@@ -241,8 +241,8 @@ R2 병목
    또는 R3 worker actual claim/run
 
 R3 병목
-→ R3_PASS / RELEASE_QUEUE
-   또는 R3_FAIL_DEFERRED → repair/recheck actual execution
+→ 같은 R3에서 직접 수리·수정범위 재확인 후 R3_PASS / RELEASE_QUEUE
+   또는 현재 artifact만으로 source truth 확정 불가 시 SOURCE_REPAIR_REQUIRED → Codex Source Repair actual execution
 ```
 
 `HANDOFF_READY`, `nextOwner`, 문서 기록만으로 MASTER delivery 완료를 선언하지 않는다. 직접 closure가 불가능한 경우에도 **executable owner가 실제 claim/run에 진입한 물리 증거**와 exact input/completion gate가 있어야 완료다. prior detail 노출 때문에 owner를 fresh하게 교체할 필요는 없다.
@@ -261,7 +261,7 @@ MASTER는 필요 시 다음을 직접 수행할 수 있다.
 - stage/owner/queue 재배정
 - stale/abandoned review attempt 정리
 - same-role reviewer/task continuation 또는 재배정
-- Codex repair/recheck queue 재기동·재연결
+- 예외적 Codex Source Repair queue 재기동·재연결
 - release queue 정리
 
 ### 3.2 금지
@@ -568,24 +568,29 @@ run이 시간 제한이나 executor 중단으로 candidate 이후 종료될 수 
 다음 같은-role run은 새 target을 고르거나 fresh rewrite를 반복하지 않고 **그 exact candidate의 firstMissingClosureStep부터 먼저 재개**한다.
 
 one-shot 예약으로 full CREATE를 시험할 때 candidate 생성까지 시간이 오래 걸릴 가능성이 있으면, one-shot 하나에 “무조건 완결”을 가정하지 않는다. **continuation 가능한 recurring slot**을 사용하거나, 첫 run이 candidate에서 끝났다면 즉시 gate/receipt-only continuation run으로 이어야 한다.
-## 5. Post-R3 recovery ownership
+## 5. R3 FINAL QA + FINAL REPAIR — CURRENT
 
-R3 FAIL 이후 repair는 Codex 또는 현재 mutation 가능한 recovery worker가 수행할 수 있다.
+R3는 별도 post-R3 repair/recheck pipeline을 정상 경로로 만들지 않는다.
 
 ```text
-R3_FAIL_DEFERRED
-→ R3_REPAIR
-→ POST_REPAIR_RECHECK
-→ PASS: RELEASE_QUEUE
-   FAIL: updated OPEN locus로 R3_REPAIR
+READY_FOR_R3
+→ R3_ACTIVE
+→ final full audit
+→ defect 없음: R3_PASS
+→ 일반 defect: 같은 R3에서 pinpoint repair
+→ changed locus + direct dependency + locked scope 재확인
+→ R3_PASS
+→ RELEASE_QUEUE
 ```
 
-- `POST_REPAIR_RECHECK`는 **같은 worker가 수행해도 되고 다른 worker/Codex가 수행해도 된다.** prior fail/repair detail 노출은 blocker가 아니다.
-- recheck는 open/changed locus + direct dependency를 source/current authority에서 다시 계산하고 `lockedScopeMutationCount=0`을 확인한다.
-- 기존 `CODEX_R3_REPAIR`, `CODEX_INDEPENDENT_REVIEW` 상태명/receipt는 legacy 호환으로 소비할 수 있지만 **fresh Codex reviewer actual-start는 필수조건이 아니다.**
-- PASS면 추가 GPT R3 retry 없이 release queue로 보내고, FAIL이면 updated OPEN locus로 repair에 되돌린다.
+- R3는 최종 전수검수자이자 **최종 핀포인트 수리 owner**다. 해설·정답·Meta·태그·SVG·라벨·조판·asset ref 등 current artifact와 current authority만으로 결함과 올바른 수정값을 확정할 수 있으면 R3가 직접 고친다.
+- 직접 수리 뒤 시험지 전체 R3를 처음부터 반복하지 않는다. **변경한 qid/file/field + direct dependency + locked scope**만 다시 확인하고 같은 R3 attempt에서 PASS를 닫는다.
+- `R3_FAIL_DEFERRED`, `R3_REPAIR`, `POST_REPAIR_RECHECK`, `READY_FOR_R3_RETRY`, `CODEX_INDEPENDENT_REVIEW`를 신규 정상 상태로 만들지 않는다. 기존 durable state/receipt는 legacy 호환 이력으로만 소비한다.
+- **Codex Source Repair는 예외 경로**다. 원본 PDF/페이지 재확인, 원본 이미지 재추출·재크롭, 잘린 기호/도형, 누락·손상 source asset처럼 **현재 artifact만으로 source truth를 확정할 수 없는 경우에만** `SOURCE_REPAIR_REQUIRED`로 보낸다.
+- Codex Source Repair 완료 뒤 별도 POST_REPAIR_RECHECK stage를 만들지 않는다. **같은 R3 continuation**으로 돌아와 repaired locus + direct dependency만 확인하고 `R3_PASS → RELEASE_QUEUE`로 닫는다.
+- Source Repair queue가 상시 backlog를 갖는 것은 정상 운영이 아니다. 대부분의 R3 결함은 R3 내부에서 닫혀야 한다.
 
-MASTER는 Codex queue를 감시하고 stalled owner를 재기동·재배정할 수 있지만 Codex independent PASS를 임의로 대신 선언하지 않는다.
+MASTER는 Source Repair queue의 stalled owner를 재기동·재배정할 수 있지만 source truth를 추측해 대신 확정하지 않는다.
 
 ## 6. R3 PASS → RELEASE QUEUE
 
@@ -593,7 +598,7 @@ R3 PASS는 main merge가 아니다.
 
 R3 PASS 시 final exam/required metadata/assets/evidence/finalArtifactSha와 R3 PASS provenance를 release queue/branch에 적재한다.
 
-Codex post-R3 Independent Review PASS도 동일 release queue/branch로 보낸다.
+R3 직접 수리 또는 Codex Source Repair continuation을 거쳤더라도 최종 `R3_PASS`가 닫히면 동일 release queue/branch로 보낸다. 과거 Codex Independent Review PASS는 legacy 호환 이력으로만 읽는다.
 
 ## 7. PUBLISH = clean backlog 전체 batch sweep
 
@@ -630,7 +635,7 @@ GPT PUBLISH와 Codex publisher가 동시에 존재할 수 있다.
 ## 9. Activation 전 보존
 
 - current main artifact와 durable CREATE/R1/R2/R3 receipts는 삭제하지 않는다.
-- Codex repair/recheck 결과도 보존한다.
+- 과거 Codex repair/recheck 결과도 보존한다. 과거 상태는 legacy 호환 이력으로 보존하되 신규 정상 경로로 생성하지 않는다.
 - automation topology만 새 구조로 교체한다.
 - **기존 누적 시험지/backlog migration은 별도 논의 후 확정한다.**
 - activation 전 기존 GPT 예약은 OFF 유지.
