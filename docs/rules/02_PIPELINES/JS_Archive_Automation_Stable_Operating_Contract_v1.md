@@ -123,6 +123,19 @@ temporary test의 첫 실제 run 판정은 `last_run_time`만 보지 않고 **ta
 - MASTER는 매 run ACTIVE topology를 확인한다. **사용자 명시 중지가 아닌데 R1/R2/R3/PUBLISH/MASTER role-pure slot이 disabled이고 해당 role backlog가 남아 있으면 즉시 re-enable**한다.
 - target-local debt는 MASTER/recovery sidecar가 처리한다. role worker는 다음 시험지를 계속 소비한다.
 
+### 1.5 MASTER PEER-LIVENESS CROSS-WATCH — HARD
+
+MASTER-A/B/C는 pipeline target뿐 아니라 **서로의 automation liveness도 상호 감시**한다.
+
+- 각 MASTER run은 시험지 selector보다 먼저 canonical MASTER-A/B/C의 automation 상태를 조회한다.
+- 사용자 명시 중지 또는 topology authority의 MASTER role 종료가 아닌데 peer MASTER가 `is_enabled=false`이면 **즉시 re-enable하고 상태를 readback**한다.
+- peer가 enabled여도 canonical RRULE recurring schedule이 사라졌거나 one-shot/expired schedule로 drift했고 예정 실행이 반복 누락되면 `MASTER_DISPATCH_STALL`로 보고 canonical hourly RRULE schedule을 복구한 뒤 readback한다.
+- MASTER-A는 B/C, MASTER-B는 A/C, MASTER-C는 A/B를 깨우며 자기 자신도 canonical schedule/enable 상태를 확인한다.
+- peer MASTER 복구는 control-plane liveness repair이며 시험지 1건 mutation limit와 별개다. peer를 깨운 뒤 자기 run의 정상 pipeline scan/closure를 계속한다.
+- 임시 MASTER/INFINITY/SURGE는 canonical MASTER-A/B/C를 대신하지 않는다. 임시 작업이 꺼졌다는 이유로 상시 재-enable하지 않는다.
+- **all-MASTER-off 대비 독립 watchdog을 별도로 유지**한다. watchdog은 production artifact를 수정하지 않고 MASTER-A/B/C의 enable/schedule만 canonical 값으로 복구한다.
+- MASTER liveness repair 자체를 문서 기록만으로 끝내지 않는다. automation update 성공 + readback에서 enabled/schedule parity 확인까지가 완료다.
+
 ## 2. Review Attempt v2 — CONTEXT-TOLERANT RECHECK
 
 형님의 2026-10-03 명시 지시: **기존 solution·이전 verdict·checkpoint·repair detail을 이미 봤어도 검수는 유효하다.** 노출을 이유로 fresh reviewer를 새로 만들거나 attempt를 폐기하지 않는다.
@@ -178,7 +191,7 @@ MASTER는 감시자/보고자가 아니라 **비블라인드 총괄 실행자**�
 
 MASTER는 하위 worker가 남긴 상태를 단순 관찰하지 않고 **escalation queue를 능동 소비**한다.
 
-매 run read-only 전체 pipeline scan 후 실제 mutation target은 최대 1시험지다. selector 우선순위는 다음으로 고정한다.
+매 run은 **control-plane liveness scan → pipeline read-only scan** 순서다. 먼저 MASTER-A/B/C peer enable/schedule parity를 확인·복구한 뒤, 실제 시험지 mutation target은 최대 1시험지다. selector 우선순위는 다음으로 고정한다.
 
 ```text
 1. release-materialization debt / remote parity recovery
