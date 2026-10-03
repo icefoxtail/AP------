@@ -82,7 +82,7 @@ test('The ledger records current production differences rather than a desired-bu
   assert.match(clinic, /AP_CLINIC_PREVIEW/);
   assert.match(clinic, /appendBlankPage\(area\)/);
   assert.match(clinic, /문항 복원 실패/);
-  assert.match(mixed, /return \[4, 6, 8\]\.includes\(parsed\) \? parsed : 4;/);
+  assert.match(mixed, /return \[1, 2, 4, 6, 8\]\.includes\(parsed\) \? parsed : 4;/);
   assert.match(source('archive/mixer.html'), /<option value="2">2문항\/P<\/option>/);
   assert.match(archive, /function shouldRenderSolutionQr\(\)/);
   assert.match(archive, /function shouldRenderSubmitQr\(\)/);

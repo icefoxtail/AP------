@@ -4,6 +4,14 @@ import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
 import { handleArchiveSavedPapers } from './archive-saved-papers.js';
+import {
+  assignmentLifecycleError,
+  assignmentLifecycleEventStatement,
+  assignmentOperationIdentity,
+  existingAssignmentLifecycleEvent,
+  hasAssignmentLifecycleEvents,
+} from '../helpers/archive2-assignment-lifecycle.js';
+import outputContract from '../../../../archive/archive2-output-contract.js';
 
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -55,6 +63,15 @@ function normalizeOptionalPositiveInteger(value) {
 function normalizeAssignmentPdfQpp(value) {
   const parsed = Number.parseInt(value, 10);
   return [1, 2, 4, 6, 8].includes(parsed) ? parsed : 4;
+}
+
+async function canReadAssignmentSnapshot(teacher, classId, env, allowedClassIds) {
+  const normalizedClassId = String(classId || '').trim();
+  if (!teacher?.id || !normalizedClassId) return false;
+  if (isAdminUser(teacher)) return true;
+  if (allowedClassIds !== undefined)
+    return Array.isArray(allowedClassIds) && allowedClassIds.includes(normalizedClassId);
+  return await canAccessClass(teacher, normalizedClassId, env);
 }
 
 function normalizeMixedAssignmentPayload(value, archiveFile) {
@@ -933,7 +950,16 @@ async function saveAssessmentResultItems(env, input) {
   return { saved: stmts.length };
 }
 
-async function performExcludeStudent(env, currentTeacher, { classId, studentId, examTitle, examDate, archiveFile, rawInput }) {
+const ASSIGNMENT_OPERATION_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function normalizeAssignmentOperationRequestId(value) {
+  const id = String(value || "").trim();
+  if (!ASSIGNMENT_OPERATION_UUID.test(id))
+    throw assignmentLifecycleError("operation_identity must be a UUID", 400);
+  return id.toLowerCase();
+}
+
+async function performExcludeStudent(env, currentTeacher, { classId, studentId, examTitle, examDate, archiveFile, rawInput, operationIdentity }) {
   if (!classId || !studentId || !examTitle || !examDate) {
     return { success: false, student_id: studentId, error: 'class_id, student_id, exam_title, exam_date required', status: 400 };
   }
@@ -945,6 +971,15 @@ async function performExcludeStudent(env, currentTeacher, { classId, studentId, 
   }
   if (!(await hasClassExamAssignmentExclusions(env))) {
     return { success: false, student_id: studentId, error: 'assignment exclusions table not available', status: 503 };
+  }
+  if (!(await hasAssignmentLifecycleEvents(env))) {
+    return { success: false, student_id: studentId, error: 'Assignment lifecycle migration is required', status: 503 };
+  }
+  let requestId;
+  try {
+    requestId = normalizeAssignmentOperationRequestId(operationIdentity || rawInput?.operation_identity || crypto.randomUUID());
+  } catch (error) {
+    return { success: false, student_id: studentId, error: error.message, status: error.status || 400 };
   }
 
   const assignment = await ensureClassExamAssignmentForExclusion(env, {
@@ -958,63 +993,68 @@ async function performExcludeStudent(env, currentTeacher, { classId, studentId, 
   if (!assignment?.id) {
     return { success: false, student_id: studentId, error: 'assignment not found', status: 404 };
   }
+  if (assignment.cancelled_at)
+    return { success: false, student_id: studentId, assignment_id: assignment.id,
+      error: 'cancelled Assignment cannot change recipients', status: 409 };
   if (String(assignment.class_id || '') !== classId) {
     return { success: false, student_id: studentId, error: 'assignment class mismatch', status: 400 };
   }
 
   const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
   const member = await env.DB.prepare(recipientSnapshotExists ? `
-    SELECT 1
-    FROM class_exam_assignment_recipients
-    WHERE assignment_id = ? AND student_id = ?
+    SELECT r.student_id,x.reason AS exclusion_reason
+    FROM class_exam_assignment_recipients r
+    LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id
+    WHERE r.assignment_id = ? AND r.student_id = ?
     LIMIT 1
   ` : `
-    SELECT 1
+    SELECT student_id,NULL AS exclusion_reason
     FROM class_students
     WHERE class_id = ? AND student_id = ?
     LIMIT 1
   `).bind(recipientSnapshotExists ? assignment.id : classId, studentId).first();
-  if (!member) {
+  if (!member || member.exclusion_reason === 'archive2_target') {
     return { success: false, student_id: studentId, error: 'student is not in class', status: 400 };
   }
-
-  const targets = archiveFile
-    ? await env.DB.prepare(`
-      SELECT id
-      FROM exam_sessions
-      WHERE exam_date = ?
-        AND student_id = ?
-        AND (archive_file = ? OR (COALESCE(archive_file, '') = '' AND exam_title = ?))
-    `).bind(examDate, studentId, archiveFile, examTitle).all()
-    : await env.DB.prepare(`
-      SELECT id
-      FROM exam_sessions
-      WHERE exam_title = ?
-        AND exam_date = ?
-        AND student_id = ?
-    `).bind(examTitle, examDate, studentId).all();
-
-  const sessionIds = (targets.results || []).map(r => r.id).filter(Boolean);
-  const stmts = [
-    env.DB.prepare(`
-      INSERT INTO class_exam_assignment_exclusions (assignment_id, student_id, reason)
-      VALUES (?, ?, 'manual')
-      ON CONFLICT(assignment_id, student_id) DO UPDATE SET reason = 'manual'
-    `).bind(assignment.id, studentId)
-  ];
-  for (const sessionId of sessionIds) {
-    stmts.push(env.DB.prepare('DELETE FROM wrong_answers WHERE session_id = ?').bind(sessionId));
-    stmts.push(env.DB.prepare('DELETE FROM exam_sessions WHERE id = ?').bind(sessionId));
+  const event = {
+    assignment_id: assignment.id,
+    related_assignment_id: null,
+    saved_paper_id: assignment.saved_paper_id || null,
+    student_id: studentId,
+    actor_teacher_id: currentTeacher.id,
+    operation: 'EXCLUDE',
+    operation_identity: assignmentOperationIdentity('EXCLUDE', assignment.id, requestId, studentId),
+    metadata: { reason: 'manual' },
+  };
+  try {
+    const prior = await existingAssignmentLifecycleEvent(env, event);
+    if (prior) return {
+      success: true,
+      idempotent: true,
+      student_id: studentId,
+      assignment_id: assignment.id,
+      historical_records_preserved: true,
+    };
+    await env.DB.batch([
+      env.DB.prepare(`
+        INSERT INTO class_exam_assignment_exclusions (assignment_id, student_id, reason)
+        VALUES (?, ?, 'manual')
+        ON CONFLICT(assignment_id, student_id) DO UPDATE SET reason = 'manual'
+      `).bind(assignment.id, studentId),
+      assignmentLifecycleEventStatement(env, event),
+    ]);
+  } catch (error) {
+    return { success: false, student_id: studentId, assignment_id: assignment.id,
+      error: error.message || 'Assignment exclusion failed', status: error.status || 500 };
   }
-  await env.DB.batch(stmts);
-  const assignment_deleted = await cleanupAssignmentIfNoTargets(env, assignment);
-
   return {
     success: true,
+    idempotent: false,
     student_id: studentId,
     assignment_id: assignment.id,
-    deleted_session: sessionIds.length > 0,
-    assignment_deleted
+    deleted_session: false,
+    assignment_deleted: false,
+    historical_records_preserved: true,
   };
 }
 
@@ -1314,6 +1354,58 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
       return handleArchive2(request, env, currentTeacher, id, { buildArchiveQuestionMetadata, buildArchiveMetadataHash });
     }
+    if (method === 'GET' && id && path[3] === 'output') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      const assignment = await loadClassExamAssignmentById(env, id);
+      if (!assignment) return jsonResponse({ error: '출제 내역을 찾을 수 없습니다.' }, 404);
+      if (!(await canReadAssignmentSnapshot(currentTeacher, assignment.class_id, env)))
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      const mode = String(url.searchParams.get('mode') || 'exam');
+      if (!['exam', 'sol', 'ans'].includes(mode))
+        return jsonResponse({ error: 'invalid output mode' }, 400);
+      let snapshot;
+      try {
+        snapshot = JSON.parse(String(assignment.mixed_payload_json || 'null'));
+      } catch {
+        return jsonResponse({ error: '출제 snapshot을 읽을 수 없습니다.' }, 409);
+      }
+      if (!Array.isArray(snapshot?.questions) || !snapshot.questions.length || !snapshot.meta)
+        return jsonResponse({ error: '이 출제에는 다시 열 수 있는 immutable snapshot이 없습니다.' }, 409);
+      if (Number(assignment.question_count) !== snapshot.questions.length)
+        return jsonResponse({ error: '출제 snapshot 문항 수가 일치하지 않습니다.' }, 409);
+      const qpp = Number(snapshot.meta.qpp || assignment.pdf_qpp || 4);
+      if (![1, 2, 4, 6, 8].includes(qpp))
+        return jsonResponse({ error: '출력 snapshot 쪽당 문항 수가 올바르지 않습니다.' }, 409);
+      const createdAt = Date.now();
+      let envelope;
+      try {
+        envelope = await outputContract.createOutputEnvelope({
+          sourceKind: 'assignment',
+          sourceId: String(assignment.archive_file || assignment.id),
+          assignmentId: String(assignment.id),
+          ...(assignment.saved_paper_id ? { paperId: String(assignment.saved_paper_id) } : {}),
+          mode,
+          questionCount: snapshot.questions.length,
+          questionUids: snapshot.meta.questionUids || snapshot.questions.map(question =>
+            question?.questionUid || question?.source_question_uid || question?._sourceQuestionUid || null
+          ),
+          meta: { ...snapshot.meta, qpp },
+          questions: snapshot.questions,
+          createdAt,
+          expiresAt: createdAt + outputContract.DEFAULT_TTL_MS,
+        }, crypto);
+        await outputContract.validateOutputEnvelope(envelope, {
+          outputRequestId: envelope.outputRequestId,
+          ownerId: envelope.ownerId,
+          mode,
+          now: createdAt,
+        }, crypto);
+      } catch (error) {
+        return jsonResponse({ error: error?.message || '출력 envelope 검증에 실패했습니다.' }, 409);
+      }
+      return jsonResponse({ success: true, envelope });
+    }
     if(method==='GET'&&id&&path[3]==='status'){
       const currentTeacher=await requireTeacher(request,env,teacher);
       if(!currentTeacher)return jsonResponse({error:'Unauthorized'},401);
@@ -1359,6 +1451,118 @@ export async function handleExams(request, env, teacher, path, url) {
       return jsonResponse(body, result.success ? 200 : (status || 400));
     }
 
+    if (method === 'POST' && id === 'restore-student') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      const d = await request.json();
+      const assignmentId = normalizeOptionalText(d.assignment_id);
+      const studentId = normalizeOptionalText(d.student_id);
+      let requestId;
+      try {
+        requestId = normalizeAssignmentOperationRequestId(d.operation_identity);
+      } catch (error) {
+        return jsonResponse({ success: false, error: error.message }, error.status || 400);
+      }
+      if (!assignmentId || !studentId)
+        return jsonResponse({ success: false, error: 'assignment_id and student_id required' }, 400);
+      const assignment = await loadClassExamAssignmentById(env, assignmentId);
+      if (!assignment) return jsonResponse({ success: false, error: 'assignment not found' }, 404);
+      if (!(await canAccessClass(currentTeacher, assignment.class_id, env)) ||
+          !(await canAccessStudent(currentTeacher, studentId, env)))
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      if (assignment.cancelled_at)
+        return jsonResponse({ success: false, restored: false, cancelled: true,
+          error: 'cancelled Assignment cannot restore student visibility' }, 409);
+      if (!(await hasClassExamAssignmentExclusions(env)) || !(await hasAssignmentLifecycleEvents(env)))
+        return jsonResponse({ success: false, error: 'Assignment lifecycle migration is required' }, 503);
+      const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
+      const member = await env.DB.prepare(recipientSnapshotExists ? `
+        SELECT r.student_id,x.reason AS exclusion_reason
+        FROM class_exam_assignment_recipients r
+        LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id
+        WHERE r.assignment_id=? AND r.student_id=? LIMIT 1
+      ` : `
+        SELECT student_id,NULL AS exclusion_reason FROM class_students
+        WHERE class_id=? AND student_id=? LIMIT 1
+      `).bind(recipientSnapshotExists ? assignment.id : assignment.class_id, studentId).first();
+      if (!member || member.exclusion_reason === 'archive2_target')
+        return jsonResponse({ success: false, error: 'student is not an Assignment recipient' }, 409);
+      const event = {
+        assignment_id: assignment.id,
+        related_assignment_id: null,
+        saved_paper_id: assignment.saved_paper_id || null,
+        student_id: studentId,
+        actor_teacher_id: currentTeacher.id,
+        operation: 'RESTORE',
+        operation_identity: assignmentOperationIdentity('RESTORE', assignment.id, requestId, studentId),
+        metadata: {},
+      };
+      try {
+        const prior = await existingAssignmentLifecycleEvent(env, event);
+        if (prior) return jsonResponse({ success: true, restored: true, idempotent: true, assignment_id: assignment.id });
+        const excluded = await env.DB.prepare(
+          "SELECT 1 FROM class_exam_assignment_exclusions WHERE assignment_id=? AND student_id=? AND reason='manual' LIMIT 1",
+        ).bind(assignment.id, studentId).first();
+        if (!excluded) return jsonResponse({ success: true, restored: false, already_active: true, assignment_id: assignment.id });
+        await env.DB.batch([
+          env.DB.prepare(
+            "DELETE FROM class_exam_assignment_exclusions WHERE assignment_id=? AND student_id=? AND reason='manual'",
+          ).bind(assignment.id, studentId),
+          assignmentLifecycleEventStatement(env, event),
+        ]);
+        return jsonResponse({ success: true, restored: true, idempotent: false, assignment_id: assignment.id,
+          historical_records_preserved: true });
+      } catch (error) {
+        return jsonResponse({ success: false, error: error.message || 'Assignment restore failed' }, error.status || 500);
+      }
+    }
+
+    if (method === 'POST' && id && path[3] === 'cancel') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      const d = await request.json();
+      try {
+        normalizeAssignmentOperationRequestId(d.operation_identity);
+      } catch (error) {
+        return jsonResponse({ success: false, error: error.message }, error.status || 400);
+      }
+      const assignment = await loadClassExamAssignmentById(env, id);
+      if (!assignment) return jsonResponse({ success: false, error: 'assignment not found' }, 404);
+      if (!(await canAccessClass(currentTeacher, assignment.class_id, env)))
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      if (!assignment.saved_paper_id)
+        return jsonResponse({ success: false, error: 'Paper Lifecycle cancellation applies to Saved Paper Assignments only.' }, 409);
+      if (!(await getTableColumnSet(env, 'class_exam_assignments')).has('cancelled_at') ||
+          !(await hasAssignmentLifecycleEvents(env)))
+        return jsonResponse({ success: false, error: 'Assignment lifecycle migration is required' }, 503);
+      if (assignment.cancelled_at)
+        return jsonResponse({ success: true, cancelled: true, idempotent: true, assignment });
+      const event = {
+        assignment_id: assignment.id,
+        related_assignment_id: null,
+        saved_paper_id: assignment.saved_paper_id || null,
+        student_id: null,
+        actor_teacher_id: currentTeacher.id,
+        operation: 'CANCEL',
+        operation_identity: assignmentOperationIdentity('CANCEL', assignment.id),
+        metadata: {},
+      };
+      try {
+        const prior = await existingAssignmentLifecycleEvent(env, event);
+        if (!prior) await env.DB.batch([
+          env.DB.prepare(
+            "UPDATE class_exam_assignments SET cancelled_at=? WHERE id=? AND cancelled_at IS NULL",
+          ).bind(new Date().toISOString(), assignment.id),
+          assignmentLifecycleEventStatement(env, event),
+        ]);
+        const updated = await loadClassExamAssignmentById(env, assignment.id);
+        return jsonResponse({ success: true, cancelled: Boolean(updated?.cancelled_at),
+          idempotent: Boolean(prior), assignment: updated, historical_records_preserved: true });
+      } catch (error) {
+        return jsonResponse({ success: false, error: error.message || 'Assignment cancel failed' }, error.status || 500);
+      }
+    }
+
     if (method === 'POST' && id === 'exclude-students') {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
@@ -1380,11 +1584,12 @@ export async function handleExams(request, env, teacher, path, url) {
       if (studentIds.length > 200) {
         return jsonResponse({ success: false, error: 'too many students in one request (max 200)' }, 400);
       }
+      const operationIdentity = normalizeOptionalText(d.operation_identity) || crypto.randomUUID();
 
       const results = [];
       for (const studentId of studentIds) {
         results.push(await performExcludeStudent(env, currentTeacher, {
-          classId, studentId, examTitle, examDate, archiveFile, rawInput: d
+          classId, studentId, examTitle, examDate, archiveFile, rawInput: d, operationIdentity
         }));
       }
 
@@ -1446,33 +1651,61 @@ export async function handleExams(request, env, teacher, path, url) {
       const to = normalizeBoardDate(url.searchParams.get('to')) || getBoardDateOffset('', 0);
       const from = normalizeBoardDate(url.searchParams.get('from')) || getBoardDateOffset(to, -30);
       const mineKey = normalizeBoardGrade(currentTeacher.name || '');
+      const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
+      const classColumns = await getTableColumnSet(env, 'classes');
+      const activeClassFilter = classColumns.has('is_active')
+        ? '(c.is_active != 0 OR c.is_active IS NULL)'
+        : '1 = 1';
+      const assignmentProjection = [
+        'a.id', 'a.class_id', 'a.exam_title', 'a.exam_date', 'a.question_count',
+        'a.archive_file',
+        assignmentColumns.has('source_type') ? 'a.source_type' : "'archive' AS source_type",
+        assignmentColumns.has('teacher_name') ? 'a.teacher_name' : 'NULL AS teacher_name',
+        assignmentColumns.has('pdf_status') ? 'a.pdf_status' : 'NULL AS pdf_status',
+        assignmentColumns.has('pdf_qpp') ? 'a.pdf_qpp' : 'NULL AS pdf_qpp',
+        assignmentColumns.has('saved_paper_id') ? 'a.saved_paper_id' : 'NULL AS saved_paper_id',
+        assignmentColumns.has('archive2_snapshot_hash') ? 'a.archive2_snapshot_hash' : 'NULL AS archive2_snapshot_hash',
+        assignmentColumns.has('archive2_write_key') ? 'a.archive2_write_key' : 'NULL AS archive2_write_key',
+        assignmentColumns.has('mixed_payload_json')
+          ? "CASE WHEN COALESCE(a.mixed_payload_json, '') != '' THEN 1 ELSE 0 END AS has_mixed_payload"
+          : '0 AS has_mixed_payload',
+      ];
 
       const res = await env.DB.prepare(`
         SELECT
-          a.*,
+          ${assignmentProjection.join(',\n          ')},
           c.name AS class_name,
           c.grade AS class_grade,
           c.teacher_name AS class_teacher_name
         FROM class_exam_assignments a
         JOIN classes c ON c.id = a.class_id
-        WHERE (c.is_active != 0 OR c.is_active IS NULL)
+        WHERE ${activeClassFilter}
           AND REPLACE(COALESCE(c.grade, ''), ' ', '') = ?
           AND SUBSTR(COALESCE(a.exam_date, ''), 1, 10) BETWEEN ? AND ?
         ORDER BY a.exam_date DESC, c.teacher_name ASC, c.name ASC, a.updated_at DESC
         LIMIT 1000
       `).bind(grade, from, to).all();
 
-      const rows = dedupeClassExamAssignments(res.results || []).map(row => {
+      const allowedSnapshotClassIds = await getAllowedClassIds(env, currentTeacher);
+      const rows = await Promise.all(dedupeClassExamAssignments(res.results || []).map(async row => {
         const ownerName = String(row.class_teacher_name || row.teacher_name || '').trim();
         const ownerKey = normalizeBoardGrade(ownerName);
+        const hasOutputSnapshot = Number(row.has_mixed_payload) === 1;
         return {
           ...row,
+          has_output_snapshot: hasOutputSnapshot,
+          can_read_snapshot: hasOutputSnapshot && await canReadAssignmentSnapshot(
+            currentTeacher,
+            row.class_id,
+            env,
+            allowedSnapshotClassIds,
+          ),
           teacher_name: ownerName,
           owner_name: ownerName,
           is_mine: !!(mineKey && ownerKey && mineKey === ownerKey),
           can_manage: isAdminUser(currentTeacher) || !!(mineKey && ownerKey && mineKey === ownerKey)
         };
-      });
+      }));
 
       return jsonResponse({ success: true, from, to, grade, assignments: rows });
     }
@@ -1827,6 +2060,16 @@ export async function handleExams(request, env, teacher, path, url) {
           `).bind(classId, examTitle, examDate).all();
       }
       const assignmentIds = (assignmentTargets.results || []).map(r => r.id).filter(Boolean);
+      const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
+      if (assignmentIds.length && assignmentColumns.has('archive2_write_key')) {
+        const markers = assignmentIds.map(() => '?').join(',');
+        const archive2Rows = await env.DB.prepare(`
+          SELECT id FROM class_exam_assignments
+          WHERE id IN (${markers}) AND archive2_write_key IS NOT NULL
+        `).bind(...assignmentIds).all();
+        if ((archive2Rows.results || []).length)
+          return jsonResponse({ success: false, error: 'Archive 2.0 Assignment history is immutable; use the cancel operation to stop future student visibility.' }, 409);
+      }
       if (assignmentIds.length && await hasClassExamAssignmentExclusions(env)) {
         const assignmentMarkers = assignmentIds.map(() => '?').join(',');
         stmts.push(env.DB.prepare(`

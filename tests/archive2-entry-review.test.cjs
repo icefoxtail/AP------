@@ -70,8 +70,10 @@ test('workspace consumes the common subject projection for Finder, Compose, meta
 
 test('scope, replacement and draft restore keep the shared projection gate on the existing paths', () => {
   const workspace = read('archive2-workspace.js');
-  assert.match(workspace, /const pool = state\.catalog\.records\.filter\(\(r\) =>\s*C\.matches\(r, \{ \.\.\.state\.filters, L3: "", L4: "", difficultyBuckets: \[\], sourceFiles: state\.sources \}\)/s);
-  assert.match(workspace, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters\)/);
+  assert.match(workspace, /function pool\(\)\s*\{\s*const scopes = selectedScopeOptions\(\)/s);
+  assert.match(workspace, /const uids = new Set\(scopes\.flatMap\(scope => scope\.scopeQuestionUids\)\)/);
+  assert.match(workspace, /uids\.has\(r\.questionUid\)/);
+  assert.match(workspace, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters, state\)/);
   assert.match(workspace, /const result = C\.selectBlueprint\(pool\(\), req, ctx\)/);
   assert.match(workspace, /state\.filters = C\.reconcileFinderFilters\([\s\S]*?state\.catalog\.taxonomy/);
   assert.match(workspace, /r\.sourceFingerprint &&[\s\S]*?state\.byUid\.get\(r\.questionUid\)\.sourceFingerprint/);

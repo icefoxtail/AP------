@@ -251,6 +251,42 @@
             white-space: nowrap;
         }
 
+        .assignment-board-paper {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .assignment-board-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .assignment-board-actions button,
+        .assignment-board-action-error button {
+            min-height: 24px;
+            border: 1px solid #dbe3ef;
+            border-radius: 6px;
+            padding: 2px 7px;
+            background: #fff;
+            color: #274771;
+            font: inherit;
+            font-size: 10px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .assignment-board-action-error {
+            margin-bottom: 6px;
+            padding: 6px 8px;
+            border-radius: 7px;
+            color: #8b1e1e;
+            background: #fff1f1;
+            font-size: 10px;
+        }
+
         .assignment-board-teacher {
             color: var(--text-sub);
         }
@@ -1567,7 +1603,8 @@ let assignmentBoardState = {
     grade: '',
     boardRows: [],
     mode: 'all',
-    loading: false
+    loading: false,
+    actionError: null
 };
 
 function compactText(value) {
@@ -1803,11 +1840,13 @@ function getArchiveBoardAssignmentTitle(row) {
 }
 
 function getArchiveBoardPaperKey(row) {
+    const snapshotHash = compactText(row?.archive2_snapshot_hash || row?.snapshot_hash || '');
+    if (snapshotHash) return `snapshot:${snapshotHash}`;
     const file = compactText(row?.archive_file || row?.file_name || row?.source_file || '');
-    const title = compactText(getArchiveBoardAssignmentTitle(row));
     const count = String(row?.question_count || row?.questionCount || row?.total_questions || '').trim();
-    if (file) return `file:${file}|q:${count}`;
-    return `title:${title}|q:${count}`;
+    if (file) return `source:${file}|q:${count}`;
+    const assignmentId = String(row?.id || row?.assignment_id || '').trim();
+    return assignmentId ? `assignment:${assignmentId}` : '';
 }
 
 function getArchiveBoardTeacherKey(cls, row) {
@@ -1873,6 +1912,7 @@ function groupArchiveBoardAssignments(grade) {
         const teacherKey = String(row.teacher_id || row.teacherId || compactText(teacher)).trim();
         const groupKey = `${paperKey}::teacher:${teacherKey}`;
 
+        const canReadSnapshot = row.has_output_snapshot && row.can_read_snapshot === true;
         if (!groups.has(groupKey)) {
             groups.set(groupKey, {
                 title: getArchiveBoardAssignmentTitle(row),
@@ -1882,12 +1922,15 @@ function groupArchiveBoardAssignments(grade) {
                 isMine: isArchiveBoardMine(row),
                 classMap: new Map(),
                 assignments: [],
+            outputAssignmentId: canReadSnapshot ? String(row.id || '') : '',
                 firstDate: date,
                 lastDate: date
             });
         }
 
         const group = groups.get(groupKey);
+        if (!group.outputAssignmentId && canReadSnapshot && row.id)
+            group.outputAssignmentId = String(row.id);
         const classId = String(row.class_id || '');
         const className = String(row.class_name || row.className || '-').trim();
         const classKey = classId || `${teacherKey}:${compactText(className)}`;
@@ -1908,6 +1951,7 @@ function groupArchiveBoardAssignments(grade) {
             classLabel: classNames.join(', '),
             classCount: classNames.length,
             assignments: group.assignments,
+            outputAssignmentId: group.outputAssignmentId,
             firstDate: group.firstDate,
             lastDate: group.lastDate
         };
@@ -1953,10 +1997,13 @@ function renderAssignmentBoard(message) {
         return;
     }
 
-    list.innerHTML = rows.map(row => `
+    const actionError = assignmentBoardState.actionError
+        ? `<div class="assignment-board-action-error" role="alert">${archiveBoardEscape(assignmentBoardState.actionError.message)}${(assignmentBoardState.boardRows || []).some(row => String(row.id || '') === String(assignmentBoardState.actionError.assignmentId || '') && row.has_output_snapshot && row.can_read_snapshot === true) ? ` <button type="button" data-board-output="1" data-assignment-id="${archiveBoardEscape(assignmentBoardState.actionError.assignmentId)}" data-mode="${archiveBoardEscape(assignmentBoardState.actionError.mode)}">다시 시도</button>` : ''}</div>`
+        : '';
+    list.innerHTML = actionError + rows.map(row => `
         <div class="assignment-board-row" title="${archiveBoardEscape(`${row.title} | ${row.teacher || '-'} | ${row.classLabel || '-'} | ${row.firstDate} ~ ${row.lastDate}`)}">
             <span class="assignment-board-teacher">${archiveBoardEscape(row.teacher || '-')}</span>
-            <span class="assignment-board-paper">${archiveBoardEscape(row.title)}</span>
+            <div class="assignment-board-paper"><span>${archiveBoardEscape(row.title)}</span>${row.outputAssignmentId ? `<div class="assignment-board-actions" role="group" aria-label="출제 snapshot 바로 열기">${[['exam', '문제'], ['sol', '해설'], ['ans', '정답']].map(([mode, label]) => `<button type="button" data-board-output="1" data-assignment-id="${archiveBoardEscape(row.outputAssignmentId)}" data-mode="${mode}">${label}</button>`).join('')}</div>` : ''}</div>
             <span class="assignment-board-classes">${archiveBoardEscape(row.classLabel || '-')}</span>
         </div>
     `).join('');
@@ -1987,6 +2034,7 @@ async function loadAssignmentBoardForGrade(grade) {
     }
 
     assignmentBoardState.grade = grade;
+    assignmentBoardState.actionError = null;
     renderAssignmentBoard('\uCD9C\uC81C \uAE30\uB85D\uC744 \uBD88\uB7EC\uC624\uB294 \uC911...');
 
     try {
@@ -2008,6 +2056,34 @@ async function loadAssignmentBoardForGrade(grade) {
         console.warn('[archive assignment board] load failed:', e);
         assignmentBoardState.boardRows = [];
         renderAssignmentBoard('\uCD9C\uC81C \uAE30\uB85D\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.');
+    }
+}
+
+async function archiveBoardDirectOutput(assignmentId, mode) {
+    const popup = window.open('about:blank', '_blank');
+    if (!popup) throw new Error('팝업을 허용한 뒤 다시 열어 주세요.');
+    try {
+        const authHeader = getIndexAssignmentAuthHeader();
+        if (!authHeader) throw new Error('교사 로그인 후 다시 열어 주세요.');
+        const safeMode = ['exam', 'sol', 'ans'].includes(mode) ? mode : 'exam';
+        const response = await fetch(
+            `${ARCHIVE_AP_API_BASE}/class-exam-assignments/${encodeURIComponent(assignmentId)}/output?mode=${encodeURIComponent(safeMode)}`,
+            { headers: authHeader },
+        );
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || !data.envelope)
+            throw new Error(data.error || '이 출제 snapshot을 열 수 없습니다. 담당 권한과 snapshot 상태를 확인해 주세요.');
+        await window.Archive2Output.storeOutputEnvelope(data.envelope);
+        const url = window.Archive2Output.outputEnvelopeUrl(
+            'mixed_engine.html',
+            window.location.href,
+            data.envelope,
+            { studio: true, assignmentId },
+        );
+        popup.location.href = url.href;
+    } catch (error) {
+        popup.close();
+        throw error;
     }
 }
 
@@ -2050,6 +2126,34 @@ async function init() {
 
     document.getElementById('searchInput').addEventListener('input', onFilterChange);
     document.getElementById('yearFilter').addEventListener('change', onFilterChange);
+    const assignmentBoardList = document.getElementById('assignmentBoardList');
+    if (assignmentBoardList && !assignmentBoardList.dataset.directOutputBound) {
+        assignmentBoardList.dataset.directOutputBound = '1';
+        assignmentBoardList.addEventListener('click', async event => {
+            const button = event.target.closest('[data-board-output]');
+            if (!button) return;
+            event.preventDefault();
+            event.stopPropagation();
+            const assignmentId = button.dataset.assignmentId || '';
+            const mode = button.dataset.mode || 'exam';
+            const clearActionError = Boolean(assignmentBoardState.actionError);
+            button.disabled = true;
+            try {
+                await archiveBoardDirectOutput(assignmentId, mode);
+                assignmentBoardState.actionError = null;
+                if (clearActionError) renderAssignmentBoard();
+            } catch (error) {
+                assignmentBoardState.actionError = {
+                    assignmentId,
+                    mode,
+                    message: error?.message || '출제 snapshot을 열지 못했습니다.',
+                };
+                renderAssignmentBoard();
+            } finally {
+                if (button.isConnected) button.disabled = false;
+            }
+        });
+    }
     document.getElementById('contentTypeFilter').addEventListener('change', onFilterChange);
     document.getElementById('examPeriodFilter').addEventListener('change', onFilterChange);
 
@@ -2421,6 +2525,7 @@ function buildCard(ex) {
             <div class="action-btn" data-action="exam">시험</div>
             <div class="action-btn" data-action="sol">해설</div>
             <div class="action-btn" data-action="ans">정답</div>
+            ${isUnitPastExamItem(ex) ? '' : '<div class="action-btn" data-action="assign">반에 출제</div>'}
         </div>
     `;
 
@@ -2438,14 +2543,13 @@ function buildCard(ex) {
 let _pendingFile, _pendingAction, _pendingSubmitQr = false, _pendingQpp;
 
 function openEngine(file, action) {
-    if (action === 'exam') {
-        _pendingFile = file;
-        _pendingAction = action;
-        openExamModeModal();
-    } else {
-        const item = normalizedExams().find(e => e.file === file);
-        if (item) goEngine(item, action, 4);
+    const item = normalizedExams().find(e => e.file === file);
+    if (!item) return;
+    if (action === 'assign') {
+        void openAssignTargetPanel(item, 4);
+        return;
     }
+    launchIndexExamOutput(item, action || 'exam', 4);
 }
 
 function openExamModeModal() {
@@ -2745,10 +2849,21 @@ function buildAssignTargetPreviewUrl() {
     if (!item) return '';
     const params = new URLSearchParams(window.location.search);
     if (isUnitPastExamItem(item)) {
+        const archive2Envelope = Boolean(item?.savedPaperId && item?.outputRequestId);
         const archive2UnitPast = params.get('archive2Embedded') === '1';
-        const url = archive2UnitPast
+        const url = archive2Envelope || archive2UnitPast
             ? window.Archive2Output.engineUrl('mixed_engine.html', window.location.href)
             : new URL('mixed_engine.html', window.location.href);
+        if (item?.savedPaperId && item?.outputRequestId && item?.outputOwnerId) {
+            url.searchParams.set('outputRequestId', item.outputRequestId);
+            url.searchParams.set('outputOwnerId', item.outputOwnerId);
+            url.searchParams.set('mode', 'exam');
+            url.searchParams.set('qpp', String(item.outputSnapshot?.meta?.qpp || AssignTarget.qpp || 4));
+            url.searchParams.set('q', String(resolveExamQuestionCountForAssignment(item) || 0));
+            url.searchParams.set('studio', '1');
+            url.searchParams.set('archive2Review', '1');
+            return url.toString();
+        }
         url.searchParams.set('key', item.unitPastSnapshotKey);
         url.searchParams.set('mode', 'exam');
         url.searchParams.set('qpp', String(AssignTarget.qpp || 4));
@@ -3338,6 +3453,7 @@ async function assignTargetProcessOneClass(classId) {
                         assignment_id: registration?.assignment?.id || undefined,
                         class_id: classId,
                         student_ids: excludedIds,
+                        operation_identity: crypto.randomUUID(),
                         exam_title: getIndexExamTitle(AssignTarget.item),
                         exam_date: examDate,
                         archive_file: getIndexAssignmentArchiveFile(AssignTarget.item)
@@ -3514,6 +3630,43 @@ function goEngine(item, action, qpp, options = {}) {
 
 function goUnitPastMixedEngine(item, action, qpp, options = {}) {
     const snapshotKey = item?.unitPastSnapshotKey || '';
+    if (item?.savedPaperId && item?.outputSnapshot) {
+        void (async () => {
+            try {
+                const snapshot = item.outputSnapshot;
+                const questionUids = snapshot.meta?.questionUids || snapshot.questions.map((question) =>
+                    question.questionUid || question.source_question_uid || question._sourceQuestionUid || null,
+                );
+                const meta = { ...snapshot.meta, qpp: Number(qpp || snapshot.meta.qpp || 4) };
+                const envelope = await window.Archive2Output.publishOutputEnvelope({
+                    sourceKind: 'saved-paper',
+                    sourceId: item.savedPaperId,
+                    paperId: item.savedPaperId,
+                    mode: action || 'exam',
+                    questionCount: snapshot.questions.length,
+                    questionUids,
+                    meta,
+                    questions: snapshot.questions,
+                });
+                const url = window.Archive2Output.outputEnvelopeUrl('mixed_engine.html', window.location.href, envelope, { studio: true });
+                if (options.submitQr) {
+                    url.searchParams.set('submitQr', '1');
+                    url.searchParams.set('assignmentRegistered', '1');
+                    url.searchParams.set('preRegistered', '1');
+                }
+                if (options.classId) url.searchParams.set('class', options.classId);
+                if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
+                if (options.className) url.searchParams.set('className', options.className);
+                if (options.target_scope) url.searchParams.set('target_scope', options.target_scope);
+                if (options.gradeLabel) url.searchParams.set('grade_label', options.gradeLabel);
+                if (options.assignmentBatchId) url.searchParams.set('assignment_batch_id', options.assignmentBatchId);
+                window.open(appendCurrentArchiveSessionToHash(url.href), '_blank');
+            } catch (error) {
+                alert(error?.message || '저장한 시험지를 출력할 수 없습니다. 보관함에서 다시 열어 주세요.');
+            }
+        })();
+        return;
+    }
     let hasSnapshot = false;
     if (snapshotKey) {
         try { hasSnapshot = !!sessionStorage.getItem(`mixedQuestions_${snapshotKey}`); } catch (e) {}
@@ -3589,7 +3742,8 @@ window.onload = function () {
 <script src="mixer-selector.js"></script>
 <script src="archive2-core.js"></script>
 <script src="archive2-source.js"></script>
-<script src="archive2-output.js"></script>
-<script src="archive2-entry.js?v=20260929-saved-paper-session-2"></script>
+<script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
+<script src="archive2-output.js?v=20261002-output-envelope-v3"></script>
+<script src="archive2-entry.js?v=20261003-assignment-output-parent-preview-1"></script>
 </body>
 </html>

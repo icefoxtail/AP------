@@ -158,7 +158,7 @@ window.questionBank = [
       "$38^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 원주각과 접선-현 정리를 이용해 삼각형 $PCT$의 각을 구한다.\n$A,C,P$가 한 직선 위이고 $\\angle CAT=36^\\circ$이므로 $\\angle PAT=144^\\circ$이다.\n$\\angle ABT=112^\\circ$는 호 $AT$를 보는 원주각이므로 이 각이 바라보는 큰 호 $AT$는 $224^\\circ$, 작은 호 $AT$는 $136^\\circ$이다.\n따라서 작은 호 $AT$를 보는 원주각 $\\angle ACT=68^\\circ$이다.\n$A,C,P$가 한 직선 위이므로 $\\angle PCT=180^\\circ-68^\\circ=112^\\circ$이다.\n점 $T$에서 접선 $TP$와 현 $TC$가 이루는 각은 현 $TC$를 보는 원주각 $\\angle CAT$와 같으므로 $\\angle PTC=36^\\circ$이다.\n따라서 삼각형 $PCT$에서\n$\\angle CPT=180^\\circ-112^\\circ-36^\\circ=32^\\circ$이다.\n$P,C,A$가 한 직선 위이므로 $\\angle APT=\\angle CPT=32^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 원주각과 접선-현 정리를 이용해 삼각형 $PCT$의 각을 구한다.\n$\\angle ABT=112^\\circ$는 호 $AT$를 보는 원주각이므로 이 각이 바라보는 큰 호 $AT$는 $224^\\circ$, 작은 호 $AT$는 $136^\\circ$이다.\n따라서 작은 호 $AT$를 보는 원주각 $\\angle ACT=68^\\circ$이다.\n$A,C,P$가 한 직선 위이므로 $\\angle PCT=180^\\circ-68^\\circ=112^\\circ$이다.\n점 $T$에서 접선 $TP$와 현 $TC$가 이루는 각은 현 $TC$를 보는 원주각 $\\angle CAT$와 같으므로 $\\angle PTC=36^\\circ$이다.\n따라서 삼각형 $PCT$에서\n$\\angle CPT=180^\\circ-112^\\circ-36^\\circ=32^\\circ$이다.\n$P,C,A$가 한 직선 위이므로 $\\angle APT=\\angle CPT=32^\\circ$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",

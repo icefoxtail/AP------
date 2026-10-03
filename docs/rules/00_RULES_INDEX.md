@@ -1,81 +1,16 @@
-## CURRENT — 2026-10-01 — ALL JS QUALITY WORKERS READ SAMPLES BEFORE TARGET
-## CURRENT HARD RULE — PROBLEM SOURCE IMAGE = CROP-FIRST / NO SVG REPLACEMENT (2026-10-02)
-- **발문에 실제 원본 도형·그래프·표·조건 이미지가 존재하고 full-page/source crop 픽셀을 사용할 수 있으면, 문제용 시각자산은 그 원본 픽셀을 crop/recrop하여 PNG로 보존하는 것이 1순위이자 기본 종결이다.**
-- usable source pixels가 있는데 문제 도형을 새 SVG/code-first geometry로 다시 그려 `q.image`를 대체하는 행위는 금지한다. 더 예쁘게 만들기, 벡터화, 비율 정리, 가독성 개선도 교체 사유가 아니다.
-- 문제용 `image`와 해설용 `solutionImage`/solution SVG를 엄격히 분리한다. **해설 SVG는 적극 허용**하지만, 그것을 이유로 발문 원본 이미지를 버리거나 재도형화하지 않는다.
-- 문제-side deterministic SVG reconstruction은 **원본 픽셀이 실제로 없거나, full-page/원본 재크롭까지 했는데도 사용 불가능하고, source fact가 유일하게 확정되는 예외 상황에서만 fallback**으로 허용한다. worker/runtime가 crop 편집이 불편하다는 이유는 예외가 아니다.
-- 우선순위는 `SOURCE PIXEL CROP/RECROP → PNG image field 연결 → (예외시에만) deterministic reconstruction → HOLD`다.
-- 기존 source crop PNG가 존재하는데 generated problem SVG가 연결되어 있으면 `PROBLEM_SOURCE_ASSET_REPLACED_BY_RECONSTRUCTION` 결함으로 보고 **원본 crop PNG 연결 복원**을 우선한다.
-- 회귀 사례: `26_왕운중_2학기_중간_중2_기출`의 q21/q24 등은 source crop PNG가 이미 존재했는데 shared generated SVG로 대체되어 incidence topology drift가 발생했다. 이 경우 올바른 repair는 SVG를 다시 잘 그리는 것이 아니라 source crop PNG를 문제 image로 복원하는 것이다.
+## CURRENT — 2026-10-03 — JS ARCHIVE ACTIVE M3 MIGRATION / RECHECK SEMANTICS
 
-## CURRENT — 2026-10-02 — R3 VISUAL DOUBT IS NOT FAIL
-- R3는 SVG 좌표·anchor·primitive 위치를 보고 **추정만으로 새 visual FAIL/HOLD를 만들지 않는다**.
-- upstream CREATE/R1/R2 또는 Codex independent review에서 source 대조 후 PASS한 visual은 그 PASS를 정답으로 복사하지는 않되, R3가 뒤집으려면 **fresh source/problem geometry 또는 실제 rendered visual에서 명백한 semantic contradiction**을 제시해야 한다.
-- 특히 label anchor가 선의 어느 쪽에 보인다는 좌표 추정, path 좌표만으로 angle/side owner를 추측한 것, source와 의미가 동일한 schematic/non-scale 표현은 단독 FAIL 근거가 아니다.
-- 판정은 `CONFIRMED_VISUAL_DEFECT` / `VISUAL_RECHECK_ONLY` / `PASS`로 구분한다. source/render에서 확정되지 않은 의심은 `VISUAL_RECHECK_ONLY`로 기록하고 **R3 FAIL/HOLD/openQid에 넣지 않는다**.
-- prior independent review PASS와 R3 의심이 충돌하면 실제 source/render evidence를 한 번 더 확인한다. 확정 반증이 없으면 prior-pass 자산을 유지한다.
-- 회귀 사례: 왕운중 중1 q15 solution SVG의 d label anchor 의심은 Codex independent review가 95°=NW, b=SE correction을 source 대조 후 PASS했다. d 위치가 실제 의미 오류인지 source/render에서 확정되지 않은 상태에서는 R3 FAIL로 승격하지 않는다.
+- automation 실행 authority: `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md` 최신 main.
+- 상태는 **ACTIVE / M3 MIGRATION**이다. CREATE=69/69 완료로 CREATE×2는 OFF, 정상 상설 생산은 R1×2 / R2×2 / R3×2 / PUBLISH×1 / MASTER×3이다. 임시 SURGE/MASTER는 backlog 해소용이며 canonical topology로 승격하지 않는다.
+- R1/R2/R3의 운영 개념은 **재검**이다. 기존 solution·이전 verdict·repair/checkpoint가 보여도 무효가 아니다. source/current authority에서 required scope를 다시 계산·판정하고 prior 값을 정답처럼 복사하지 않는다.
+- `blindDecisionSha`, `blindFreezeSha256` 등 기존 blind 필드명은 schema/history 호환용 **recheck decision snapshot** 이름으로만 유지한다. 새 세션, 비노출, fresh reviewer는 stage closure 조건이 아니다.
+- MASTER는 병목을 실제 closure하거나 executable owner를 시작시킨다. prior context 노출 때문에 fresh owner를 새로 만들지 않는다.
+- PUBLISH는 release queue의 clean backlog 전체를 batch sweep한다.
+- R3 FAIL 이후는 **repair → 재검 → PASS면 release / FAIL이면 OPEN locus repair 복귀**다. 기존 `CODEX_R3_REPAIR` / `CODEX_INDEPENDENT_REVIEW` 이름은 legacy receipt/status 호환으로만 읽는다.
+- 과거 3-lane/Surge/Phase A·B/existing-slot-only/persistent-thread contamination/dormant clean-slot/감시자·조율자 topology는 `90_ARCHIVE/JS_Archive_Automation_Operational_Contracts_PreStable_2026-10-02.md`의 HISTORY다.
 
-## CURRENT — 2026-10-01 — GRADE-BOUNDED REVIEW / UPPER-GRADE FAIL-HOLD FORBIDDEN
-- CREATE/R1/R2/R3/repair/retry의 **정답·해설·PASS/FAIL/HOLD 판정은 대상 학년 교육과정 상한선 안에서** 수행한다.
-- 하위 학년에서 아직 배우지 않은 상위 학년/후속과정 방법(예: 중2 문항에 삼각비·코사인, 중3 문항에 고등 벡터/정사영)을 사용해 추가 모순·반례를 만들고 그 결과로 `SOURCE_CONDITION_INCONSISTENCY`, `ANSWER_UNIQUENESS_UNRESOLVED`, ITEM_HOLD 또는 R3 FAIL을 생성하는 행위를 금지한다.
-- 대상 학년의 허용 방법으로 source/조건에서 정답이 유일하게 결정되면 그 grade-bounded semantics에서 PASS한다. 상위 과정 검산은 내부 참고로도 release verdict를 뒤집는 근거가 될 수 없다.
-- lower-grade prerequisite reuse는 기존 규칙대로 허용하되 방향은 lower-only다.
-- 회귀 사례: `26_왕운중_2학기_중간_중2_기출` q5는 RHS 합동 → ∠B=∠C → AB=AC=AF+FC=8로 정답 ②가 닫힌다. R2/R3의 cos50 검산 기반 q5 HOLD는 `FALSE_HOLD_CURRICULUM_VIOLATION`으로 폐기한다.
+# JS아카이브 규칙 통합 인덱스
 
-
-CREATE/R1/R2/R3뿐 아니라 repair/recovery/visual repair/independent recheck/FLEX rescue가 학생 노출 JS 품질을 만들거나 판정하면, **target artifact를 열거나 수정하기 전에** `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md`의 Golden 2~3 + 관련 Negative Sample을 실제 판독한다. 공용 preflight는 `archive/tools/solution-calibration-gate.mjs --preflight`다.
-
-공통 5축: `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`. Blind→Compare는 target prior solution/verdict를 가리는 규칙으로 유지하며, 외부 quality sample pre-read는 허용·필수다.
-
-## CURRENT HARD RULE — NO-IDLE / FLEX RESCUE (2026-10-01)
-
-## CURRENT — 2026-10-01 — SOLUTION QUALITY CALIBRATION PHYSICAL HARD GATE
-
-모든 JS Archive 작업에서 **solution을 생성·수정·재작성·승인**하면 `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md` + `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md` + `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다. CREATE/R1/R2/R3/수동 solution upgrade는 `archive/tools/review-evidence-gate.mjs`의 SHA-bound Golden/Negative Sample evidence 없이는 DONE/PASS 금지다. 신규 CREATE는 fresh solution 동결 후 calibration, 기존 upgrade는 baseline 확인 후 calibration, REVIEW는 blind decision freeze 후 calibration한다. 복성고1 2026-10-01 false-PASS fixture는 필수 Negative Sample이다. 글자 수/줄 수 기준은 사용하지 않는다.
-
-
-- 활성 예약 lane에 eligible backlog가 있는데 반복 NO-OP 또는 장시간 무진행하는 상태를 정상으로 취급하지 않는다.
-- 예약 시각보다 늦게 실행되는 플랫폼 queue delay 자체는 stall 근거가 아니다. liveness는 **durable stage closure / denominator advancement**로 판정한다.
-- `CHECKPOINT_ONLY`, calibration/checkpoint commit, claim 생성·해제, candidate/prepared patch, write-gate mutation 0은 **durable progress가 아니다**. 이런 변화는 durable-progress timer를 reset하지 않는다.
-- 운영감시자는 매 run Git/physical receipt에서 CREATE-1/2/3 x/23 + remaining ordinals, REVIEW1/69, REVIEW2/69(Meta-only/Full), initial R3 disposition, ITEM_RECOVERY/post-R3 queue, LINE3 first-pass R2 x/3, automation별 enabled/latest actual run/latest durable closure를 재계산한다.
-- `eligible backlog > 0`이고 **마지막 durable stage closure가 75분 이상 없으면** target에 최근 checkpoint 변화가 있어도 `STALL_DETECTED / FLEX_RESCUE_REQUIRED` 후보다. 최근 checkpoint freshness만으로 stall을 해제하지 않는다.
-- 같은 target이 **2회 연속 scheduled run 또는 90분 이상 CHECKPOINT_ONLY/WRITE_GATE_TRANSIENT/mutation 0** 상태로 stage를 닫지 못하면 `CHECKPOINT_CHURN_STALL`로 승격한다.
-- rescue 중복 방지는 checkpoint freshness가 아니라 **실제 primary worker in-flight 또는 유효 competing claim**으로만 막는다. 최근 actual run이 있더라도 이미 종료되어 checkpoint만 남긴 상태면 rescue 가능하다.
-- 조율자/FLEX RESCUE는 위 조건을 만족한 stalled CREATE/R1/R2/lane-local initial R3의 **oldest eligible 1시험지**만 해당 lane의 CURRENT protocol 그대로 대신 처리할 수 있다.
-- rescue 직전 `FLEX_CLAIM(lane, exam, inputSha, claimedAtKST)`을 기록하고 즉시 physical state를 재조회한다. 실제 in-flight worker 또는 competing claim이 확인될 때만 claim을 취소하고 mutation 0으로 종료한다.
-- `ITEM_RECOVERY_QUEUE`와 post-R3 `R3_FAIL_DEFERRED / CODEX_REPAIR_* / READY_FOR_R3_RETRY`는 FLEX가 소비하지 않는다. 정상 R1/R2는 first-pass 전용이며 post-R3 repair/review는 Codex 전용, targeted R3_RETRY는 dedicated GPT R3 전용이다.
-- stale Notion selector만 믿고 backlog를 NO-WORK로 처리하지 않는다. physical receipt가 있으면 CURRENT를 정합화하고 진행한다.
-- non-global blocker 하나 때문에 전체 pipeline을 정지하지 않는다.
-- 활성 시간표의 정확한 시각은 Notion `JS Archive 예약 세션 운영 규칙 v2 — CURRENT`를 live authority로 사용한다. 2026-10-01 cutover에서 CREATE-2는 고등 8시험지와의 :20 충돌을 피하도록 분리되었다.
-
-## CURRENT HARD RULE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
-
-- 정상 `CREATE → R1 → R2 → initial R3` first-pass가 R3 FAIL 재작업보다 항상 우선한다.
-- R3 FAIL은 `R3_FAIL_DEFERRED`로 격리하지만 정상 R1/R2에 재진입시키지 않는다. **별도 Codex post-R3 repair/review 예약창이 first-pass lane과 병렬로 처리할 수 있다.** NORMAL-FIRST는 실패 시험지가 정상 first-pass lane의 우선순위를 빼앗지 않는다는 뜻이다.
-- R3 PASS만 `READY_FOR_CODEX_PUBLISH` 후보다. FAIL은 publish 금지이며 다른 시험지 흐름을 막지 않는다.
-- M3 CREATE-1/2/3은 자기 mod-3 partition CREATE가 current physical-evidence gate까지 100% 완료되는 순간 lane별로 TEMP R3로 전환한다. M3 REVIEW2 69/69 또는 다른 CREATE lane 완료를 기다리지 않는다.
-- partition initial R3 완료 기준은 각 시험지가 `R3_PASS` 또는 `R3_FAIL_DEFERRED` disposition을 갖는 것이다. 이후 해당 CREATE lane은 M1 CREATE를 재개할 수 있다.
-- M3 initial R3는 TEMP R3-1/2/3 전담이며 dedicated R3가 중복 소비하지 않는다.
-- 세부 failureClass 및 release audit는 `03_REVIEW/JS아카이브_3차검수_프로토콜.md`를 따른다.
-
-## CURRENT HARD RULE — POST-R3 LOCKED TARGETED RECOVERY (2026-10-01)
-
-- **initial R3가 시험지 전체를 보는 마지막 전수 release audit**다. initial R3 종료 artifact를 `R3_BASELINE`으로 동결한다.
-- R3 FAIL 이후에는 `failedQids[] / failedFiles[] / affectedFields[] / affectedAxes[] / directDependencies[]`만 OPEN한다. 그 밖의 문항·해설·SVG·Meta·difficulty·source·layout·asset은 `R3_LOCKED`다.
-- `R3_LOCKED` 영역은 다시 풀거나 의미검수하지 않는다. baseline blob/hash/diff 불변성만 확인한다.
-- legacy `FULL_REENTRY` code가 남아 있어도 whole-exam R1/R2/R3 재실행을 뜻하지 않는다. 실제 수리 범위는 packet의 OPEN locus가 결정한다.
-- OPEN 밖 dependency가 반드시 필요하면 자동 전체확대 대신 `SCOPE_EXPANSION_REQUIRED`로 필요한 qid/file/field와 dependency evidence만 추가한다.
-- R3 이후 defect-family 시험지 전체 N/N rescan, unrelated 전 문항 재풀이, 전 SVG/Meta 재검은 금지한다.
-- post-R3 전담 경로: `R3_FAIL_DEFERRED → CODEX_R3_REPAIR → CODEX_INDEPENDENT_REVIEW → READY_FOR_R3_RETRY → GPT_TARGETED_R3_RETRY → R3_RETRY_PASS → READY_FOR_CODEX_PUBLISH`.
-- Codex repair는 OPEN locus만 수정하고, Codex independent review는 changed/open locus만 독립검수 + `lockedScopeMutationCount=0`을 확인한다.
-- GPT `R3_RETRY`는 수정된 OPEN locus + direct dependency + LOCK 보존만 targeted regression 한다. initial R3 전수감사를 4차·5차로 반복하지 않는다.
-
-### CURRENT ownership
-- 정상 R1/R2는 first-pass 검수 전용이며 `R3_FAIL_DEFERRED`를 소비하지 않는다.
-- R3 deferred repair는 별도 Codex repair / independent-review 예약창이 병렬 처리한다.
-- `ITEM_RECOVERY_QUEUE`도 별도 Codex FINAL ITEM RECOVERY worker가 소비한다.
-- content-bearing current flow의 `ITEM_RECOVERY_DONE`은 `READY_FOR_R3`로 간다. `READY_FOR_COMMIT`만으로 publish하지 않는다.
 # JS아카이브 규칙 통합 인덱스
 
 이 문서는 `docs/rules/`의 단일 진입점이다. 규칙 원문을 무리하게 한 파일에 복사하지 않고, 기준 원본·작업 프로토콜·검수 프로토콜·특수 규정·역사 문서를 역할별로 분리한다.
@@ -100,7 +35,7 @@ CREATE / REVIEW1 / REVIEW2 / R3의 PASS/DONE은 `03_REVIEW/JS아카이브_PHYSIC
 - source exact는 가능하면 runtime 문자열 기준으로 확인하며 doubled TeX escape를 별도 차단한다.
 - ㄱ/ㄴ/ㄷ, 소문항, 경우분리 작은칠판 구조를 실제 solution block으로 확인한다.
 - Meta null에는 lookup evidence + null reason이 필요하다. unique EXACT_ACTIVE mapping이 있는데 null이면 `META_NULL_BUT_RESOLVABLE` FAIL이다.
-- R2는 R1 ledger를 열기 전 blind evidence freeze가 필요하고, R3는 과거 stage N/N을 증거로 사용하지 않고 latest artifact bytes에서 fresh audit한다.
+- R2는 R1 ledger가 보여도 current artifact/source authority에서 **2차 재검 evidence snapshot을 새로 만들고**, R3는 과거 stage N/N을 증거로 복사하지 않고 latest artifact bytes에서 **최종 재검 evidence를 새로 만든다**.
 - 예약 run이 시간 안에 evidence를 완결하지 못하면 checkpoint만 남기고 DONE receipt를 만들지 않는다. 예약작업에 완화 규칙은 없다.
 - 공용 기계 gate: `node archive/tools/review-evidence-gate.mjs --exam <js> --evidence <json> --stage CREATE|R1|R2|R3`.
 - 2026-10-01 복성고1 false-PASS는 `archive/fixtures/review-negative-regressions/2026-10-01-bokseong/`의 mandatory regression fixture다.
@@ -191,10 +126,10 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 
 - 재인증 scope: **M3 69 → M1 31 → M2 1학기 34 = 134시험지**. M3가 현재 선행 cohort이며 M3 stage gate가 닫히기 전 M1로 전환하지 않는다.
 - M3는 **FULL_INTEGRATED_V2**와 **MAIN_PRESENT_META_ONLY** 두 트랙으로 운영한다. 정확한 현재 분모·ordinal·진행 수치는 Notion CURRENT inventory가 authority이며 Git 정본에는 고정 수치를 중복 저장하지 않는다.
-- **FULL_INTEGRATED_V2:** CURRENT CREATE에서 source/content/choices/answer exact, 전 문항 fresh 작은칠판 solution, QUESTION MICRO_LAYOUT, image/SVG/solutionImage, Meta semantic, difficulty를 같은 시험지 작업에서 완료한다. REVIEW1/REVIEW2도 완성본을 처음 보는 것처럼 문제·해설·SVG·Meta를 각각 FULL 독립검수한다.
+- **FULL_INTEGRATED_V2:** CURRENT CREATE에서 source/content/choices/answer exact, 전 문항 fresh 작은칠판 solution, QUESTION MICRO_LAYOUT, image/SVG/solutionImage, Meta semantic, difficulty를 같은 시험지 작업에서 완료한다. REVIEW1/REVIEW2도 문제·해설·SVG·Meta를 각각 FULL 재검한다. prior 결과가 보여도 source/current authority에서 다시 판정하며 prior PASS/FAIL을 evidence로 복사하지 않는다.
 - **MAIN_PRESENT_META_ONLY:** V1 REVIEW2를 통과해 main에 이미 publish되었고 current inventory에서 이 track으로 명시된 시험지만 예외다. current main의 exam/solution/SVG/image를 frozen semantic baseline으로 두고 `META_CREATE → META_REVIEW1 → META_REVIEW2 → META_PUBLISH → MAIN_META_V2`만 수행한다. content/solution/SVG는 parity만 확인하며 의미 재검수·재작성하지 않는다. drift가 발견되면 `CONTENT_DRIFT_DISCOVERED`로 FULL_INTEGRATED_V2에 재진입한다.
 - FULL_INTEGRATED_V2 CREATE의 일반 문항 solution은 기존 solution 품질과 무관하게 전 문항 새 작성한다. 완료 증거는 `solutionRewrite=FULL_ALL_QUESTIONS` + `solutionRewriteCount=N/N`이며 item hold가 있으면 attempted/resolved와 held qid를 명시한다.
-- Meta는 별도 후속 production pass가 아니다. source + independently verified final solution을 기준으로 L1/L2 → RPM Primary exact L3/L4 → 학년/과목 crosswalk → ACTIVE projection → CrossConcept/Condition/IntegrationPattern → difficulty fresh blind를 같은 CREATE/REVIEW에서 판정한다.
+- Meta는 별도 후속 production pass가 아니다. source + independently verified final solution을 기준으로 L1/L2 → RPM Primary exact L3/L4 → 학년/과목 crosswalk → ACTIVE projection → CrossConcept/Condition/IntegrationPattern → difficulty current-pass 재검를 같은 CREATE/REVIEW에서 판정한다.
 - CREATE/REVIEW 완료 증거에는 `metadataAudit=FULL_ALL_QUESTIONS`, `metadataAuditCount=N/N`, `difficultyAudit=FULL_ALL_QUESTIONS`, `difficultyAuditCount=N/N`과 qid별 true Meta hold를 남긴다. projection/binding 부재만으로 source/math exam HOLD를 만들지 않는다.
 - 과거 CREATE_DONE/R1/R2/R2E/main 이력은 current-generation 면제권이 아니다. 동일 `MIDDLE_RECERT_2026-09-30_META_V2` receipt + final artifact SHA가 있을 때만 stage skip 근거가 된다.
 - 현재 진행 중인 M2 2학기 고정 20은 META_V2 reset 대상이 아니며 기존 current REVIEW/PUBLISH tail을 완주한다.
@@ -224,10 +159,10 @@ CREATE / REVIEW1 / REVIEW2 / BATCH의 write recovery는 `02_PIPELINES/Archive_Au
 
 - 금지: `EXAM_HOLD`, `CREATE_BLOCKED`, `REVIEW1_BLOCKED`, `REVIEW2_BLOCKED`, 시험지 전체 `SOURCE_REVIEW`, 문항 결함을 이유로 한 시험지 quarantine.
 - 허용: 문항별 `ITEM_HOLD` + 실제 reason code(`SOURCE_HOLD`, `MATH_HOLD`, `ENGINE_CAPABILITY_BLOCK`, `SOURCE_ASSET_MISSING` 등).
-- CREATE에서 미해결 문항이 있어도 나머지 문항을 완료하고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다. CREATE 판단은 최종 판정이 아니며 REVIEW1이 held item을 처음부터 독립 재판정한다.
-- REVIEW1에서 남은 문항 HOLD는 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘기고 REVIEW2가 다시 독립 재판정한다.
+- CREATE에서 미해결 문항이 있어도 나머지 문항을 완료하고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다. CREATE 판단은 최종 판정이 아니며 REVIEW1이 held item을 다시 재판정한다.
+- REVIEW1에서 남은 문항 HOLD는 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘기고 REVIEW2가 다시 재판정한다.
 - REVIEW2 뒤에도 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`에 둔다. 시험지 HOLD 상태를 만들지 않는다.
-- `ITEM_RECOVERY_QUEUE`의 소비 주체는 **전용 Codex FINAL ITEM RECOVERY worker**다. 정상 REVIEW2 lane은 first-pass R2만 수행한다. Codex recovery는 HOLD 자체를 latest bytes에서 먼저 독립 재판정하고 TRUE HOLD만 최소수리/대체한다. 전부 해결되어 `itemHoldCount=0`이면 current content-bearing flow는 `ITEM_RECOVERY_DONE → READY_FOR_R3`로 승격한다.
+- `ITEM_RECOVERY_QUEUE`의 소비 주체는 **전용 Codex FINAL ITEM RECOVERY worker**다. 정상 REVIEW2 lane은 first-pass R2만 수행한다. Codex recovery는 HOLD 자체를 latest bytes에서 먼저 재판정하고 TRUE HOLD만 최소수리/대체한다. 전부 해결되어 `itemHoldCount=0`이면 current content-bearing flow는 `ITEM_RECOVERY_DONE → READY_FOR_R3`로 승격한다.
 - BATCH/FINAL은 `itemHoldCount=0`인 시험지만 publish하고, held item이 남은 시험지는 publish pending으로 건너뛴다. 다른 시험지·lane·cohort 진행은 계속한다.
 - authority/connector/Git write 실패는 시험지 상태로 남기지 않는다. exact recovery artifact를 `stageArtifactRef`로 사용해 stage를 정상 완료하고, Git 전체 write capability가 막힌 경우에만 전역 blocker로 보고한다.
 - 문항 HOLD에는 최소 `qid/questionUid / reason / observedEvidence / unresolvedPoint / nextRequiredEvidenceOrCapability / createdStage / lastReviewedStage`를 남긴다.
@@ -238,7 +173,7 @@ CURRENT full-solution-rewrite gate도 이 규칙을 따른다. 명시적 item ho
 ### ITEM RECOVERY HOLD REVALIDATION — CURRENT HARD RULE (2026-10-01)
 
 - `ITEM_RECOVERY_QUEUE`는 수정 지시 목록이 아니라 **HOLD 재판정 후보 목록**이다.
-- recovery worker는 latest main/current bytes에서 held qid를 먼저 독립 재판정하고, upstream R1/R2 hold reason은 마지막 compare에서만 참고한다.
+- recovery worker는 latest main/current bytes에서 held qid를 먼저 재판정하고, upstream R1/R2 hold reason은 마지막 compare에서만 참고한다.
 - `FALSE_HOLD_NO_REPAIR_NEEDED`면 파일 mutation 없이 HOLD만 제거한다.
 - `FALSE_HOLD_ASSET_REPAIR`면 수학 truth를 다시 만들지 않고 필요한 asset만 최소수리한다.
 - `TRUE_HOLD_SOURCE_TRUTH_BLOCKED`가 독립 확인된 경우에만 Direct Replacement까지 간다.
@@ -264,7 +199,7 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 기본 순서는 `현재 라우터/생명주기 → 기존 inventory 복원 → 최신 main/정본 → Golden Sample calibration → Negative Sample calibration → 실제 작업`이다.
 
 - 해설·SVG·조판·학생용 표현 작업은 같은 학년/과목/작업유형의 고품질 실물 2~3개를 먼저 보고 품질 눈높이를 맞춘다.
-- 정답·수학·difficulty·RPM/L3/L4/Meta/CrossConcept 같은 독립 의미 판정은 **target blind decision을 먼저 동결한 뒤** sample과 비교한다. sample의 정답/key/난이도를 target 판정 힌트로 사용하지 않는다.
+- 정답·수학·difficulty·RPM/L3/L4/Meta/CrossConcept 같은 독립 의미 판정은 **target current-pass recheck decision snapshot을 만든 뒤** sample과 비교한다. sample의 정답/key/난이도를 target 판정 힌트로 사용하지 않는다.
 - Golden Sample은 source/canonical authority가 아니라 quality bar다. 새 결함이 발견되면 즉시 강등할 수 있다.
 - 관련 Negative Sample을 함께 보고 이미 확인된 false PASS를 반복하지 않는다.
 - 학생 노출 품질과 무관한 순수 Git/manifest/기계적 정리 작업은 `EXAM_SAMPLE_NOT_APPLICABLE`로 기록할 수 있다.
@@ -316,9 +251,9 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 Codex가 Meta Foundation 단원 정리를 수행할 때는 GPT 격리 작업 규칙의 기본 실행형을 그대로 적용하지 않고
 `02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md`를 Codex 실행 정본으로 함께 적용한다.
 
-Codex Meta Foundation 작업은 `최신 main → 전용 branch → GOAL 완주 → checkpoint/evidence 보존 → branch 종료 → GPT 독립검수 → 사용자 승인 후 main`이 기본 흐름이다.
+Codex Meta Foundation 작업은 `최신 main → 전용 branch → GOAL 완주 → checkpoint/evidence 보존 → branch 종료 → GPT 재검 → 사용자 승인 후 main`이 기본 흐름이다.
 checkpoint는 사용자 승인 대기 지점이 아니며, 실제 HARD BLOCKER가 아니면 프로토콜의 DONE 조건까지 계속 진행한다.
-완료 branch는 main merge 전에 GPT가 전체 diff·ledger/evidence·canonical/compiled/runtime/Archive2 parity를 독립검수한다.
+완료 branch는 main merge 전에 GPT가 전체 diff·ledger/evidence·canonical/compiled/runtime/Archive2 parity를 재검한다.
 
 ## 1. 현재 읽기 순서
 

@@ -6,10 +6,10 @@
   "canonicalOrdinal": 67,
   "lane": "R3-1",
   "examPath": "archive/exams/original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js",
-  "examSha256": "sha256:78557fc51d0026990018b2e1a0113bb91bfde4f9979c104b867750e689c1aa2a",
+  "examSha256": "sha256:a8cd7cc30d59fb77bc1d3f48c5c66663ce103ddc80b3677fb5c69748943325ac",
   "questionCount": 21,
-  "reviewAttemptId": "R3:m3/2final/22-yeonhyang:a0bda52e90c22094dd505e739f8af6d37afbb3ee:recheck-r31-turn9",
-  "inputArtifactSha": "a0bda52e90c22094dd505e739f8af6d37afbb3ee",
+  "reviewAttemptId": "R3:m3/2final/22-yeonhyang:6a5f421ae3d1b1c1504591fa8df8752bcd62704e:post-repair-infinity1",
+  "inputArtifactSha": "6a5f421ae3d1b1c1504591fa8df8752bcd62704e",
   "inputAuthorityCommit": "60efd66daabe37158745611540c52b929450905a",
   "currentAuthorityMain": "42c76d18899a3902f005e8fc6e7d60f5ff6f850f",
   "questionRows": [
@@ -173,47 +173,39 @@
       "qid": 5,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "Current-pass R3 recheck read q5 from exact finalArtifact bytes and physically re-inspected its linked source/problem image; no source/content/choices/answer identity defect was found."
+        "evidence": "POST_REPAIR_RECHECK: protected content/choices/answer/image and all qids except the authorized q5.solution locus remain unchanged; repair branch differs from the frozen R3 FAIL lineage only at q5.solution."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "Independent current-pass recomputation: Independent recomputation gives ∠ACT=68°, ∠PCT=112°, ∠PTC=36°, hence ∠APT=∠CPT=32°; however the current solution also falsely states ∠PAT=144° although rays AP and AC coincide from A, so ∠PAT=36°."
+        "evidence": "POST_REPAIR_RECHECK independent recomputation from source/current authority: ∠ABT=112° gives minor arc AT=136°, so ∠ACT=68°. With P-C-A collinear, ∠PCT=112°. Tangent-chord gives ∠PTC=36°, hence ∠APT=∠CPT=180°-112°-36°=32°, matching answer ②."
       },
       "solutionMath": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "SOLUTION_MATH_FALSE_STEP",
-          "observedEvidence": "q5 current solution states 'A,C,P are collinear and ∠CAT=36°, therefore ∠PAT=144°'. In the linked source image P-C-A are collinear with rays AP and AC identical from A, so ∠PAT=∠CAT=36°. The later PCT derivation still gives the correct final answer 32°.",
-          "unresolvedPoint": "q5.solution false intermediate statement ∠PAT=144°",
-          "nextRequiredEvidenceOrCapability": "R3_REPAIR must change only the q5.solution false angle statement (or remove the unnecessary sentence), then POST_REPAIR_RECHECK must recompute q5 and direct dependencies.",
-          "repairAttempted": false,
-          "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "R3 direct repair is forbidden by the active R3 protocol."
-        }
+        "status": "PASS",
+        "evidence": "POST_REPAIR_RECHECK: the sole false intermediate statement ∠PAT=144° was removed. The remaining q5 solution now follows only valid arc/inscribed-angle/tangent-chord steps to 32°; no other solution locus was mutated."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "q5 current solution exposes the decisive calculation/logic in student-reproducible steps; no enumerated-block regression or unreadable reasoning compression was found."
+        "evidence": "POST_REPAIR_RECHECK: q5 keeps the same student-reproducible step order after deleting only the false, unnecessary sentence; no compression or block-structure regression."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "q5 uses 2015 middle-3 content or lower-grade prerequisites only; no upper-grade method dependency was found."
+        "evidence": "POST_REPAIR_RECHECK: q5 uses only middle-3 circle/inscribed-angle/tangent-chord relations and lower-grade prerequisites."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "VISUAL HARD preload completed before target review; q5 source/problem image was physically read for labels/topology/data counts, and no separate solutionImage is required for the current decisive reasoning."
+        "evidence": "POST_REPAIR_RECHECK: source q5 geometry was used to verify P-C-A collinearity and the direct angle dependency; no solution visual mutation was required."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "q5 primary method and current RPM/Meta route were independently rechecked against latest authority; no blocking L2/L3/L4/CrossConcept contradiction was found."
+        "evidence": "POST_REPAIR_RECHECK: repair changed solution wording only, so the previously verified current RPM/Meta route remains unchanged."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "q5 stored difficulty 상 was rechecked against current solution-path length, branching, and calculation load; no boundary change is required."
+        "evidence": "POST_REPAIR_RECHECK: removing one false unused sentence does not alter the decisive solution-path complexity; stored difficulty 상 remains appropriate."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "q5 runtime-visible content/choices/answer/solution were rechecked; no doubled high-signal TeX escape or broken enumeration pattern was found."
+        "evidence": "POST_REPAIR_RECHECK: repaired q5 runtime-visible solution contains no doubled high-signal TeX escape or broken enumeration pattern."
       }
     },
     {
@@ -1283,13 +1275,23 @@
     "priorStageCountsUsedAsEvidence": false,
     "priorContextAllowed": true,
     "independentlyRecalculated": true,
-    "blindDecisionShaSemantics": "RECHECK_SNAPSHOT_MARKER_ONLY"
+    "blindDecisionShaSemantics": "RECHECK_SNAPSHOT_MARKER_ONLY",
+    "postRepairSameWorkerAllowed": true,
+    "recheckScope": "CHANGED_LOCUS_Q5_SOLUTION_PLUS_DIRECT_DEPENDENCY"
   },
   "recheckSnapshot": {
     "status": "FROZEN",
-    "marker": "R3_RECHECK_SNAPSHOT:o67:turn9:q5-solution-false-step",
+    "marker": "R3_POST_REPAIR_RECHECK:o67:6a5f421ae3d1b1c1504591fa8df8752bcd62704e:q5-solution",
     "priorVisibilityAllowed": true,
-    "decisionAuthority": "LATEST_ARTIFACT_SOURCE_CURRENT_AUTHORITY"
+    "decisionAuthority": "LATEST_ARTIFACT_SOURCE_CURRENT_AUTHORITY",
+    "changedLocus": [
+      "q5.solution"
+    ],
+    "directDependency": [
+      "q5.answerMath",
+      "q5.sourceGeometry"
+    ],
+    "lockedScopeMutationCount": 0
   },
   "compareRegression": {
     "bokseongNegativeSampleRechecked": true,
@@ -1304,6 +1306,18 @@
     "linkedSolutionVisualCount": 0,
     "visualEvidenceRows": 0,
     "metaEvidenceRows": 21,
-    "itemHoldCount": 1
+    "itemHoldCount": 0
+  },
+  "postRepairRecheck": {
+    "status": "PASS_PENDING_CANONICAL_VALIDATOR",
+    "repairCommit": "09a7af090711f4f6b61ff5b80b9484645dd36926",
+    "finalArtifactSha": "6a5f421ae3d1b1c1504591fa8df8752bcd62704e",
+    "finalArtifactSha256": "sha256:a8cd7cc30d59fb77bc1d3f48c5c66663ce103ddc80b3677fb5c69748943325ac",
+    "changedLocus": [
+      "q5.solution"
+    ],
+    "lockedScopeMutationCount": 0,
+    "directDependencyRecomputed": true,
+    "protectedFieldMutationCount": 0
   }
 }

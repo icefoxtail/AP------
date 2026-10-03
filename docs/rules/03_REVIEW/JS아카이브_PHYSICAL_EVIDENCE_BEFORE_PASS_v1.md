@@ -1,8 +1,27 @@
+## CURRENT OVERRIDE — 2026-10-03 — RECHECK / PRIOR VISIBILITY ALLOWED
+
+형님의 현재 명시 지시에 따라 **target의 기존 해설·SVG·이전 reviewer verdict·repair detail 노출은 R1/R2/R3/REPAIR/RECHECK의 invalidation 사유가 아니다.**
+
+- 독립성은 non-exposure가 아니라 **source/current artifact/정본에서 required scope를 실제로 다시 계산·판정하는 것**으로 정의한다.
+- prior detail을 봤다는 이유로 `INVALID`, `CONTEXT_CONTAMINATED`, `FRESH_REVIEWER_REQUIRED`를 만들지 않는다.
+- 같은 worker가 review/recheck를 계속 수행할 수 있으며, fresh Codex reviewer actual-start는 PASS의 필수 evidence가 아니다.
+- Golden/Negative calibration은 current attempt의 최종 판정/수리 전에 수행하면 된다. target이 과거 context에서 이미 노출됐다는 사실은 calibration FAIL이 아니다.
+- 기존 `blindDecisionSha`, `blindFreezeSha256`, `blindDecisionFrozenBeforeR1Compare` 필드명은 하위 schema 호환을 위해 유지한다. 이 값은 **formal compare/receipt 전에 independent recalculation snapshot이 고정됐음**을 뜻하며 prior 비노출 증명이 아니다.
+- 아래 문서의 blind-order 문구와 충돌하면 이 override가 우선한다.
+
+## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
+- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
+- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
+- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
+- Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
+- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
+- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
+
 # JS아카이브 PHYSICAL EVIDENCE BEFORE PASS v1
 
 ## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER PREFLIGHT
 
-**모든 JS 품질 작업자**는 actual target의 기존 해설·SVG·이전 reviewer verdict를 열거나 수정하기 전에 Golden 2~3 + 관련 Negative Sample을 실제로 읽어 동일 quality bar를 고정한다. CREATE / R1 / R2 / R3 / SOLUTION_UPGRADE뿐 아니라 targeted REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_REPAIR / INDEPENDENT_RECHECK도 예외가 없다.
+**모든 JS 품질 작업자**는 current attempt의 최종 판정·수리 전에 Golden 2~3 + 관련 Negative Sample을 실제로 읽어 동일 quality bar를 고정한다. target의 기존 해설·SVG·이전 reviewer verdict가 이미 보였어도 무효가 아니다. CREATE / R1 / R2 / R3 / SOLUTION_UPGRADE뿐 아니라 targeted REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_REPAIR / INDEPENDENT_RECHECK(legacy stage name)도 예외가 없다.
 
 작업 전 preflight:
 ```bash
@@ -11,7 +30,7 @@ node archive/tools/solution-calibration-gate.mjs --exam <js> --evidence <calibra
 
 preflight에는 sample path+SHA+Git blob, sample별 대표 solution 2~5문항의 qid+solutionSha256+solutionExcerpt+observation, 복성고1 false-PASS Negative Sample, 그리고 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY` 5축이 모두 필요하다.
 
-**Blind는 quality bar에 대한 blind가 아니라 target의 기존 해설·이전 verdict에 대한 blind다.** Golden/Negative Sample은 먼저 읽되 target-specific prior answer/solution/verdict는 독립판정 전까지 가린다.
+**현재 review는 context-tolerant다.** target-specific prior answer/solution/verdict를 볼 수 있지만 이를 evidence로 복사하지 않고 source/current artifact에서 다시 계산한다. Golden/Negative Sample은 current attempt의 최종 판정 전에 읽는다.
 
 full CREATE/R1/R2/R3/SOLUTION_UPGRADE는 작업 후 기존 `review-evidence-gate.mjs`에서 final target `qualityCompareCount=N/N`까지 닫는다. post-R3 targeted repair/item recovery는 LOCK을 풀지 않기 위해 full-exam gate를 강제 재실행하지 않고 preflight PASS 후 OPEN locus만 수리하며, 별도 independent recheck가 changed/open locus를 검증한다.
 
@@ -22,7 +41,7 @@ full CREATE/R1/R2/R3/SOLUTION_UPGRADE는 작업 후 기존 `review-evidence-gate
 
 완료 전 필수: Golden Sample 2~3개의 `path + sha256 + gitBlobSha`, sample별 대표 solution 2~5문항의 `qid + solutionSha256 + observation`, 복성고1 false-PASS Negative Sample, 필수 3 quality axes, final target `qualityCompareCount=N/N`, `sampleReadBeforeWork=true`, `calibrationStatus=PASS`.
 
-stage 순서는 CREATE=`FRESH_SOLUTION_FROZEN_THEN_CALIBRATE`, 기존 upgrade=`BASELINE_REVIEW_THEN_CALIBRATE_THEN_UPGRADE`, REVIEW=`BLIND_TARGET_DECISION_FROZEN_THEN_CALIBRATE`로 고정한다.
+stage evidence order는 기존 필드 호환을 유지하되 REVIEW의 blind/non-exposure 순서를 HARD gate로 해석하지 않는다. REVIEW는 `INDEPENDENT_RECALC_SNAPSHOT_THEN_FORMAL_COMPARE` 의미로 운용한다.
 
 글자 수/줄 수 임계값은 품질 gate가 아니다. 쉬운 문항은 짧아도 되지만 핵심 중간식·왜 그 식인지·조건 적용·경우분리/보기판정·결론 연결이 빠져 학생이 재현하기 어렵다면 FAIL이다.
 
@@ -286,7 +305,7 @@ SVG 수정 후 예전 evidence를 재사용하지 않는다.
 
 ## 6. Meta — NULL-BUT-RESOLVABLE 금지
 
-각 qid는 기존 metadata를 정답으로 보기 전에 다음을 fresh evidence로 남긴다.
+각 qid는 기존 metadata가 보여도 이를 정답처럼 복사하지 않고 source/current authority에서 다음 current-pass evidence를 새로 남긴다.
 
 1. `primaryMethod`
 2. `decisiveStep`
@@ -314,7 +333,7 @@ AND lookup result = unique EXACT_ACTIVE reusable mapping
 
 ---
 
-## 7. 독립검수 evidence
+## 7. 재검 evidence
 
 ### CREATE
 
@@ -334,22 +353,24 @@ R2는 특히 다음을 강제한다.
 latest R1 artifact bytes 직접 읽기
 → R1 ledger/repair detail 보기 전
 → R2 qid evidence + visual expected facts + Meta semantic decision freeze
-→ blindFreezeSha256 물리 저장
+→ recheck snapshot을 `blindFreezeSha256` 호환 필드에 물리 저장
 → 그 뒤 R1 ledger / 이전 R3 packet과 compare
 ```
 
-`blindDecisionFrozenBeforeR1Compare=true`와 `blindFreezeSha256`가 없으면 R2 DONE 금지.
+`blindDecisionFrozenBeforeR1Compare=true`와 `blindFreezeSha256`는 호환 marker로 유지하며, 의미는 formal compare 전에 current-pass 재검 snapshot이 고정됐다는 것이다. prior 비노출을 요구하지 않는다.
 
-### R3 INITIAL vs R3_RETRY
+### R3 INITIAL vs POST-R3 INDEPENDENT REVIEW
 
 **initial R3**는 시험지 전체를 보는 마지막 전수 release audit다.
-- 전 문항 questionRows / visualRows / metaRows를 fresh 생성하고 `review-evidence-gate.mjs --stage R3` full validator PASS를 요구한다.
+- 전 문항 questionRows / visualRows / metaRows를 current artifact에서 새로 생성하고 `review-evidence-gate.mjs --stage R3` full validator PASS를 요구한다.
 
-**R3_RETRY**는 initial R3 FAIL 이후 targeted regression이다.
+**post-R3 repair recheck**는 initial R3 FAIL 이후 수리된 locus의 마지막 재검이다. 같은 worker 또는 다른 worker/Codex 모두 가능하다.
 - `R3_BASELINE`의 PASS scope를 잠근다.
-- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 재검한다.
+- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 다시 계산·재검한다.
 - LOCKED scope는 semantic row를 다시 만들지 않고 baseline blob/hash와 불변인지 확인한다.
-- 필수 retry evidence: `r3BaselineArtifactSha`, `openScope`, `changedScope`, `reviewedOpenScope`, `lockedScopeMutationCount=0`, `closedFailureCodes`, `outputArtifactSha`.
+- release evidence에는 `r3BaselineArtifactSha`, `openScope`, `changedScope`, `reviewedOpenScope`, `lockedScopeMutationCount=0`, `closedFailureCodes`, `remainingFailureCodes=[]`, `newDirectDefects=[]`, `outputArtifactSha`가 필요하다.
+- PASS면 별도 GPT R3_RETRY 없이 기계적 release gate로 넘어가며, FAIL이면 CODEX_R3_REPAIR로 되돌린다.
+- legacy `R3_RETRY` evidence/receipt는 HISTORY로 보존하되 current 필수 stage로 사용하지 않는다.
 - full `questionRows=N`을 다시 만들어 4차·5차 전수검수로 반복하는 것은 금지한다.
 
 ### R3 — INITIAL FULL AUDIT DETAILS
@@ -357,7 +378,7 @@ latest R1 artifact bytes 직접 읽기
 R3는 release gate다.
 
 - R1/R2의 `22/22`, `14/14` 숫자를 evidence로 사용 금지
-- latest artifact bytes에서 fresh audit
+- latest artifact bytes에서 current-pass 재검
 - source/runtime/small-board/SVG actual geometry/Meta null-resolvable을 다시 확인
 - 이전 receipt는 provenance와 regression target으로만 사용
 - `freshFromArtifactBytes=true`
@@ -409,7 +430,7 @@ validator는 최소 다음을 기계적으로 확인한다.
 - visual physical method 존재
 - Meta row denominator
 - `META_NULL_BUT_RESOLVABLE`
-- R2 blind freeze / R3 fresh-byte flags
+- R2/R3 recheck snapshot / current-byte flags
 - summary count가 item rows에서 파생된 값과 일치
 
 validator `ok=false`이면 stage PASS/DONE 금지.

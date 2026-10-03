@@ -1,24 +1,34 @@
+## CURRENT OVERRIDE — 2026-10-03 — R2 2차 재검
+
+형님의 현재 명시 지시가 아래 과거 blind/fresh-review 문구보다 우선한다.
+
+- R1 detail·target solution·이전 verdict·repair/checkpoint를 **이미 봤거나 먼저 봐도 R2 attempt는 유효**하다.
+- 같은 R2 worker가 latest artifact를 source/current authority에서 다시 풀고 **2차 재검**하여 R2를 직접 끝까지 닫는다. prior 노출만으로 fresh reviewer/Codex를 새로 만들지 않는다.
+- 기존 verdict는 비교 대상일 뿐 evidence가 아니다. R2 evidence에는 worker가 다시 계산한 method/결론/visual/Meta 판단 근거가 있어야 한다.
+- `blindDecisionFrozenBeforeR1Compare=true`, `blindFreezeSha256`는 schema/validator 호환을 위해 유지한다. **이제 prior R1 content 비노출을 뜻하지 않고, formal regression compare/receipt 전에 independently recomputed decision snapshot이 고정됐음을 뜻한다.**
+- 아래의 “R1 detail을 보기 전에”, “기존 solution을 보지 않고” 문구는 이 override와 충돌하는 순서 제한으로 사용하지 않는다.
+
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
 
-R2 worker는 stage assignment와 scope만 확인한 직후, **R1 detail/target 기존 solution을 보기 전에** Golden 2~3 + 관련 Negative Sample을 먼저 읽어 품질 눈높이를 고정한다. 이후 latest R1 artifact에서 target blind decision freeze를 만들고 마지막 compare에서 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 N/N 재확인한다. 물리 sample path/SHA/blob + 대표 solution SHA/excerpt + `calibrationStatus=PASS`가 없으면 R2 DONE/PASS 금지다.
+R2 worker는 stage assignment와 scope를 확인하고 Golden 2~3 + 관련 Negative Sample로 품질 눈높이를 맞춘다. R1 detail/target solution이 이미 보였어도 무효가 아니며, latest R1 artifact를 source/current authority에서 다시 풀어 recheck snapshot을 만든 뒤 마지막 compare에서 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 N/N 재확인한다. 물리 sample path/SHA/blob + 대표 solution SHA/excerpt + `calibrationStatus=PASS`가 없으면 R2 DONE/PASS 금지다.
 
-[JS아카이브 2차 검수 프로토콜 — FULL 독립 재검·Reentry v2.0]
+[JS아카이브 2차 검수 프로토콜 — FULL 2차 재검·Reentry v2.0]
 
 ## CURRENT HARD RULE — R2 FIRST-PASS ONLY / ITEM RECOVERY + R3 DEFERRED SEPARATION (2026-10-01)
 - R2는 정상 first-pass REVIEW2만 담당한다.
 - `ITEM_RECOVERY_QUEUE`는 전용 Codex FINAL ITEM RECOVERY worker가 소비한다. R2 예약 lane은 held-qid recovery fallback을 수행하지 않는다.
-- `R3_FAIL_DEFERRED`, `CODEX_REPAIR_DONE`, `CODEX_REPAIR_RETRY_REQUIRED`도 R2가 소비하지 않는다.
-- initial R3 이후 독립검수는 별도 Codex R3 Independent Review worker가 changed/open locus만 검사한다.
+- `R3_FAIL_DEFERRED`, post-R3 repair/recheck queue도 정상 R2 first-pass lane이 소비하지 않는다.
+- initial R3 이후는 별도 repair → 재검 경로가 changed/open locus만 처리한다. 같은 worker/Codex 모두 가능하며 fresh reviewer는 필수조건이 아니다.
 - 아래 R3 reentry/FULL_REENTRY/TARGETED R2 섹션은 SUPERSEDED / HISTORY다.
 
 
-## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS + R2 BLIND FREEZE (2026-10-01)
+## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS + R2 RECHECK SNAPSHOT (2026-10-03)
 
 R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
 
-- R1 ledger/repair detail을 보기 전에 latest R1 artifact bytes에서 R2 qid evidence를 먼저 만든다.
+- R1 ledger/repair detail을 함께 볼 수 있다. 다만 latest R1 artifact/source/current authority에서 R2 qid evidence를 다시 계산·재판정해 새로 만든다.
 - SVG expected facts, actual geometry checks, small-board 구조, Meta semantic decision까지 먼저 동결한다.
-- `blindDecisionFrozenBeforeR1Compare=true` + `blindFreezeSha256`가 물리 evidence에 없으면 REVIEW2_DONE 금지.
+- `blindDecisionFrozenBeforeR1Compare=true` + `blindFreezeSha256`는 호환 필드로 유지한다. 이는 **formal regression compare/receipt 전에 재검 decision snapshot을 고정했음**을 뜻하며 prior detail 비노출 증명이 아니다.
 - `22/22`, `14/14` 같은 집계는 item rows에서 validator가 파생한 값만 인정한다.
 - SVG 라벨/소수좌표를 고쳤다는 사실은 actual line/circle/point geometry 재검을 대체하지 않는다.
 - Meta는 기존 HOLD qid만 보는 것이 아니라 **전 문항 null/ACTIVE resolvability**를 다시 검사한다.
@@ -180,7 +190,7 @@ R2 완료 후 nextOwner는 반드시 **R3_RETRY**다. 이전 R3 PASS/FAIL을 재
 
 ## CURRENT HARD GATE — CURRICULUM METHOD INVENTORY + VISUAL NECESSITY N/N (2026-10-01)
 
-CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 반드시 전 문항 독립검수한다. 이 gate는 **중1·중2·중3·고등 전 과정**에 적용하며, 이전 stage의 PASS·inventory·visual count를 정답으로 사용하지 않는다.
+CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 반드시 전 문항 2차 재검한다. 이 gate는 **중1·중2·중3·고등 전 과정**에 적용하며, 이전 stage의 PASS·inventory·visual count를 정답으로 사용하지 않는다.
 
 ### 1. CURRICULUM METHOD INVENTORY — N/N
 
@@ -218,13 +228,13 @@ final solution에서 실제 풀이가 의존하는 `concepts[] / formulas[] / no
 ## CURRENT OVERRIDE — INDEPENDENT RE-CERTIFICATION + REPAIR_BEFORE_HOLD (2026-09-29)
 
 CURRENT 중등 재인증 및 이에 준하는 예약 REVIEW2에서는 아래 과거의 “FAIL 보고만 하고 수정본을 만들지 않는다” 제한보다 이 섹션이 우선한다.
-- REVIEW1 상세 verdict/수정 이유를 정답으로 사용하지 않고 latest artifact를 대상으로 **독립 풀이·독립 판정**을 먼저 동결한다.
+- REVIEW1 상세 verdict/수정 이유를 정답으로 사용하지 않고 latest artifact를 대상으로 **다시 풀고 다시 판정한 recheck snapshot**을 만든다.
 - 결함이 확인되면 `docs/rules/02_PIPELINES/수정프로토콜.md`의 **REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR**를 적용해 같은 run에서 최소수정 → 영향 축 재검한다.
-- REVIEW1의 `AUDITED_SOURCE_REPAIR`가 있더라도 먼저 독립적으로 문항을 풀고 source truth를 판단한 뒤 ledger를 열어 repair 근거를 재검증한다. 단순히 원본과 다르다는 이유로 수리본을 원복하지 않는다.
+- REVIEW1의 `AUDITED_SOURCE_REPAIR`가 있더라도 문항을 다시 풀고 source truth를 재판정한 뒤 ledger의 repair 근거를 재검증한다. 단순히 원본과 다르다는 이유로 수리본을 원복하지 않는다.
 - 수리 성공은 `PASS_AFTER_REPAIR`. deterministic minimal repair가 불가능한 qid만 `ITEM_HOLD`로 남기고 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 자체는 닫는다.
 - ITEM_HOLD는 REVIEW2의 최종 판정이 아니라 held UID만 `ITEM_RECOVERY_QUEUE`로 보내기 위한 상태다. 다른 시험지/코호트 진행을 막지 않는다.
 
-REVIEW2의 목표는 REVIEW1을 추인하는 것이 아니라 **독립적으로 다시 맞는지 확인하고, 발견된 복구 가능 오류는 마지막 검수 단계에서 직접 치료하는 것**이다.
+REVIEW2의 목표는 REVIEW1을 추인하는 것이 아니라 **다시 맞는지 2차 재검하고, 발견된 복구 가능 오류는 같은 단계에서 직접 치료하는 것**이다.
 
 
 ## CURRENT QUESTION LAYOUT HARD RULE — GRID DEFAULT / SUBJECTIVE-2UP EXCEPTION (2026-09-28)
@@ -242,7 +252,7 @@ REVIEW2의 목표는 REVIEW1을 추인하는 것이 아니라 **독립적으로 
 
 ## SUPERSEDED / LEGACY V1 ROLE SCOPE — CHECKLIST REFERENCE ONLY (2026-10-01)
 
-아래 v1 본문의 `수학·정오답만 검수`, `JS 구조 검수 아님` 같은 단일축 역할 제한은 **CURRENT가 아니다**. 현재 R2는 상단 CURRENT에 따라 FULL 독립 재검 또는 failureClass 기반 TARGETED/ASSET reentry를 수행하고 curriculum/visual/Meta/difficulty 및 영향 축을 함께 확인한다.
+아래 v1 본문의 `수학·정오답만 검수`, `JS 구조 검수 아님` 같은 단일축 역할 제한은 **CURRENT가 아니다**. 현재 R2는 상단 CURRENT에 따라 FULL 2차 재검 또는 failureClass 기반 TARGETED/ASSET reentry를 수행하고 curriculum/visual/Meta/difficulty 및 영향 축을 함께 확인한다.
 아래 수학·정답 체크리스트는 상단 CURRENT와 충돌하지 않는 범위에서만 보조 체크리스트로 사용한다.
 
 너는 JS아카이브 2차 수학·정오답 검수 전담 엔진이다.

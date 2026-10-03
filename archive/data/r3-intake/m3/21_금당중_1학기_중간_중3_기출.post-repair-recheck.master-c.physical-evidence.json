@@ -1,0 +1,1498 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m3/1mid/21_금당중_1학기_중간_중3_기출.js",
+  "examSha256": "sha256:283692bf7fcb4007a287a3ff4e701f346c194dfa1fcaf4dd4e91244fe56f0b05",
+  "questionCount": 23,
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "MAIN_PRESENT_META_ONLY",
+  "r3Surge": {
+    "executor": "SURGE-4",
+    "canonicalOrdinal": 19,
+    "claimBranch": "work/middle/m3/21-geumdang-1mid-r3-surge4-20261002",
+    "claimedAtKst": "2026-10-02T03:47:00+09:00"
+  },
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false
+  },
+  "sourceProvenance": {
+    "productionExamGitBlobSha": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907",
+    "currentMetaPayloadGitBlobSha": "f2e173fb11293cb6b46b9135a9b1a16f56b783c3",
+    "currentMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+    "authorityRef": "work/middle/m3/21-geumdang-1mid-meta-v2@7122122249d14e78edb5824cda1fff9469fed6e9",
+    "productionBytesUnchanged": true,
+    "sourcePdfCatalogFile": "2021_금당중3_수학_1중간_문제지.pdf",
+    "sourcePdfBytesAvailableInConnectedRuntime": false,
+    "sourceLookupNote": "Exact original PDF bytes were not present in connected Git/Library lookup. R3 therefore did not invent a source-image contradiction; current production bytes and inline geometry were audited fresh."
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "23/23",
+    "auditEpochRestartedAfterCalibration": true,
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "Formula choice precedes substitution and intermediate arithmetic is reproducible."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:622be786ec1bbc6a9336a8ec6edd91599cf8caff7a36e9334b15951a8a902b60",
+        "solutionExcerpt": "원의 중심과 반지름부터 확인한다.",
+        "observation": "Semantic geometry anchor is explicit before distance calculation."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "Each coordinate-difference step is explicit."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.",
+        "observation": "Set relation is translated to student language before option checks."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "√25=5이고 0의 제곱근은 0, 음수 -4는 실수 제곱근이 없으므로 ⑤만 참이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: √25=5이고 0의 제곱근은 0, 음수 -4는 실수 제곱근이 없으므로 ⑤만 참이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 1; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "√16=4이고 4의 제곱근은 ±2이므로 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: √16=4이고 4의 제곱근은 ±2이므로 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 1; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "50=2·5², 45=3²·5이므로 최소 x=2,y=5, 합 7 → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 50=2·5², 45=3²·5이므로 최소 x=2,y=5, 합 7 → ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "4>√10, 1/2<√(1/2), 2+√5<5, -3<-√3, 5-√3>3이므로 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 4>√10, 1/2<√(1/2), 2+√5<5, -3<-√3, 5-√3>3이므로 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "90-n=k², k=0,…,9일 때 n=90-k²가 자연수이므로 10개 → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 90-n=k², k=0,…,9일 때 n=90-k²가 자연수이므로 10개 → ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 3; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "√49, 순환소수, √((-3.14)²)는 유리수이고 -√21, √2+3, π가 무리수라 3개 → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: √49, 순환소수, √((-3.14)²)는 유리수이고 -√21, √2+3, π가 무리수라 3개 → ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "2.2²<5<2.3²에서 a=2, 2.4²<6<2.5²에서 b=4, 합 6 → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 2.2²<5<2.3²에서 a=2, 2.4²<6<2.5²에서 b=4, 합 6 → ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "유리수 r와 무리수 α에 대해 r+α가 유리수라면 α=(r+α)-r도 유리수가 되어 모순이므로 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 유리수 r와 무리수 α에 대해 r+α가 유리수라면 α=(r+α)-r도 유리수가 되어 모순이므로 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "OA=√2, OP=√2, BP=1인 직각삼각형에서 OB=√3이고 OQ=OB이므로 Q=√3 → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: OA=√2, OP=√2, BP=1인 직각삼각형에서 OB=√3이고 OQ=OB이므로 Q=√3 → ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inline SVG coordinate audit: O=(30,90), A=(60,60) gives OA=42.426=√2·30; P=(72.426,90) has OP=42.426; B=(72.426,60), BP=30 and OB≈51.962=√3·30; Q=(81.962,90) gives OQ≈51.962. Geometry matches the problem facts."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 3; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "근호 연산을 직접 검산하면 2√2-√2=√2인 ⑤만 참이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 근호 연산을 직접 검산하면 2√2-√2=√2인 ⑤만 참이다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "3√24=6√6, (2√3)/√2=√6이므로 차는 5√6, a=5 → ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 3√24=6√6, (2√3)/√2=√6이므로 차는 5√6, a=5 → ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "각 보기를 정리하면 약 4.243, 3.924, 4.560, 4.878, 3.878이어서 ⑤가 최소."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 각 보기를 정리하면 약 4.243, 3.924, 4.560, 4.878, 3.878이어서 ⑤가 최소."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 3; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "변 길이는 2√2,2,√2,1. 개별 둘레 합 12√2+12에서 접합변 두 배 6+2√2를 빼 10√2+6 → ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 변 길이는 2√2,2,√2,1. 개별 둘레 합 12√2+12에서 접합변 두 배 6+2√2를 빼 10√2+6 → ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inline SVG side lengths 50.912,36,25.456,18 have successive ratio ≈√2 and bottom alignment makes shared edges equal to the smaller square side. This matches area ratio 2:1 at each step; no objective semantic contradiction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 3; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "다섯 보기를 직접 전개하면 (a-3)²=a²-6a+9인 ③만 일치한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 다섯 보기를 직접 전개하면 (a-3)²=a²-6a+9인 ③만 일치한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Source/current-authority recalculation confirms no unique question-level RPM L4 across independently checked answer alternatives (M3-RPM-015/016/017). Current Meta rule routes such truthful MULTI_L4 ambiguity as Meta-only unresolved/nonblocking; current MAIN_DONE o35 recheck evidence applies the same release interpretation. No production Meta rewrite is required for this recheck."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 1; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "붙인 직사각형의 가로 a+b, 세로 a-b이므로 넓이 (a+b)(a-b)=a²-b² → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 붙인 직사각형의 가로 a+b, 세로 a-b이므로 넓이 (a+b)(a-b)=a²-b² → ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inline SVG partitions one rectangle into congruent trapezoids with complementary top/bottom segments and common height. Labels support width a+b and height a-b; no objective semantic mismatch."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x²+y²=(x+y)²-2xy=64-28=36 → ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: x²+y²=(x+y)²-2xy=64-28=36 → ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inline SVG only depicts two squares labeled x and y; it is schematic/non-scale and contains no conflicting metric claim. Under the visual-doubt rule, no blocking defect is created."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "켤레식을 곱하면 (3+√6)²/(9-6)=5+2√6, a+b=7 → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 켤레식을 곱하면 (3+√6)²/(9-6)=5+2√6, a+b=7 → ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "9x²-1=(3x-1)(3x+1), 3x(x+2)-(x+2)=(x+2)(3x-1), 공통인수 3x-1 → ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 9x²-1=(3x-1)(3x+1), 3x(x+2)-(x+2)=(x+2)(3x-1), 공통인수 3x-1 → ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current repaired Meta row is independently reproducible: both expressions are factored only to identify their common factor 3x-1, so the unique overarching primary is M3-RPM-021 공통인수 묶기; projection remains RPM_ONLY/PROJECTION_UNMATERIALIZED and is nonblocking."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "3x²+x-10=3x²+6x-5x-10=(x+2)(3x-5) → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 3x²+x-10=3x²+6x-5x-10=(x+2)(3x-5) → ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x²-12x+a=(x-6)²에서 a=36, 4x²+12x+b=(2x+3)²에서 b=9, 합 45 → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: x²-12x+a=(x-6)²에서 a=36, 4x²+12x+b=(2x+3)²에서 b=9, 합 45 → ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "모눈에서 AB=√(4²+2²)=2√5, CD=√(2²+1²)=√5; P=-5+2√5, Q=1+√5, PQ=6-√5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 모눈에서 AB=√(4²+2²)=2√5, CD=√(2²+1²)=√5; P=-5+2√5, Q=1+√5, PQ=6-√5."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Subjective subparts are separated into explicit (1)/(2)/(3) or (1)/(2) blocks with the decisive calculations shown in student-reproducible order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inline SVG coordinate audit: A=(-5,0), B differs by (4,2) grid units so AB=2√5; C=(1,0), D differs by (2,1) so CD=√5; constructed P,Q positions are -5+2√5 and 1+√5. Geometry matches the solution."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 3; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x=2+√3이면 x²=7+4√3, 4x=8+4√3이므로 x²-4x-5=-6."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: x=2+√3이면 x²=7+4√3, 4x=8+4√3이므로 x²-4x-5=-6."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Compared to Golden/Negative calibration: decisive steps are explicit enough for student reproduction; no missing enumerated-block regression was found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 epoch decoded current production blob 965b7406f48eb1cc9c9b97810e13f5a74a7f3907; content/choices/answer/solution were audited from latest main without production mutation. No fresh source contradiction was established."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "표에서 √5.53≈2.352. 0.553=55.3/100이므로 √0.553≈7.436/10=0.7436."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Grade-bounded independent reproduction agrees with the stored solution: 표에서 √5.53≈2.352. 0.553=55.3/100이므로 √0.553≈7.436/10=0.7436."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Subjective subparts are separated into explicit (1)/(2)/(3) or (1)/(2) blocks with the decisive calculations shown in student-reproducible order."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "All answer/solution reasoning stays within 2015 middle-3 or already learned prerequisite mathematics; no upper-grade method was used to create a contradiction."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No separate solution visual is necessary for this item; the text/formula explanation is sufficient and no linked solutionImage is present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh semantic replay against current RPM Primary / lower-only prerequisite rule / middle3 crosswalk / GLOBAL ACTIVE lookup found no release-blocking mismatch in the bound META_V2 row."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh strategy-step-condition-load check is compatible with current bucket 2; difficulty was not inferred from the legacy level alone."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Runtime-evaluated content/choices/answer/solution contain no doubled high-signal TeX escape."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "제곱근 정의와 기호 의미를 보기별로 분리 판정",
+      "decisiveStep": "√25의 값과 25의 제곱근을 구별하고 0·음수의 실수 제곱근까지 확인해 ⑤만 참임을 확정",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "근호값 계산 뒤 그 수의 제곱근을 다시 결정",
+      "decisiveStep": "√16=4를 먼저 구한 다음 4의 제곱근이 ±2임을 적용",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "근호 안을 완전제곱수로 만드는 최소 자연수 탐색",
+      "decisiveStep": "50=2·5², 45=3²·5에서 홀수 지수 소인수를 각각 보충해 최소 x=2,y=5를 얻음",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "근호가 포함된 실수의 대소를 기준 제곱값으로 비교",
+      "decisiveStep": "각 보기를 정수의 제곱 또는 간단한 부등식과 비교해 ⑤의 부등호만 참임을 결정",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "정수 제곱근 조건을 완전제곱수 후보 열거로 변환",
+      "decisiveStep": "90-n=k², k≥0으로 두고 n∈N이 되도록 k=0,…,9를 세어 10개를 얻음",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "각 제시수를 유리수와 무리수로 분류",
+      "decisiveStep": "√49, 순환소수, √((-3.14)²)를 유리수로 정리하고 -√21, √2+3, π를 무리수로 세어 3개를 확정",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "제곱값 표에서 제곱근의 소수 첫째 자리 구간 판독",
+      "decisiveStep": "4.84<5<5.29와 5.76<6<6.25를 이용해 a=2,b=4를 정함",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "유리수·무리수 정의와 연산 성질로 진술 판정",
+      "decisiveStep": "순환소수, 0, 정수가 아닌 유리수 가능성 및 유리수+무리수 성질을 확인해 ⑤를 선택",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "피타고라스 길이를 두 번 만들어 수직선의 무리수 위치 결정",
+      "decisiveStep": "정사각형 대각선으로 OP=√2를 만들고 직각삼각형에서 OB=√3을 얻어 OQ=√3으로 옮김",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "서로 다른 근호 연산을 보기별로 직접 검산",
+      "decisiveStep": "곱·몫, √(a²), 동류근호 합차를 각각 정리해 ⑤만 맞음을 확인",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "근호식의 각 항을 같은 근호의 배수로 통일",
+      "decisiveStep": "3√24=6√6, 2√3/√2=√6로 바꾸어 차가 5√6임을 얻음",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "여러 근호식의 값을 같은 정밀도로 정리해 대소 비교",
+      "decisiveStep": "각 보기를 간단히 한 뒤 √2,√3,√6,√7의 근삿값으로 비교해 ⑤가 최소임을 결정",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "정사각형 넓이에서 변 길이를 복원해 전체 둘레 계산",
+      "decisiveStep": "변 길이 2√2,2,√2,1을 얻은 뒤 개별 둘레 합에서 접합변 두 배를 빼 10√2+6으로 정리",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "여러 종류의 곱셈공식 전개를 병렬 검산",
+      "decisiveStep": "합·차의 제곱, 합과 차의 곱, 두 일차식의 곱을 각각 전개해야 하며 단일 L4가 문항 전체를 지배하지 않음",
+      "rpmDisposition": "META_ONLY_UNRESOLVED_NONBLOCKING",
+      "projectionDisposition": "NOT_ATTEMPTED_META_ONLY",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main#§1.4(9)",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main#L3-2.1.1",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main#M3-RPM-015,016,017",
+        "archive/data/r3-intake/m3/22_팔마중_1학기_기말_중3_기출c.post-repair-recheck.master-b.pass-evidence.json@main"
+      ],
+      "nullReason": "No deterministic single primary L4; current authority preserves MULTI_L4 ambiguity as Meta-only unresolved and nonblocking rather than R3 item HOLD.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "metaOnlyUnresolvedEvidence": {
+        "reason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "observedEvidence": "q14 requires independent verification of five alternatives spanning M3-RPM-015, M3-RPM-016 and M3-RPM-017; no one leaf is a truthful unique primary.",
+        "routing": "META_ONLY_UNRESOLVED_NONBLOCKING",
+        "productionMetaMutationRequired": false
+      }
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "도형 넓이 표현을 합과 차의 곱으로 바꾸기",
+      "decisiveStep": "붙인 직사각형의 가로 a+b와 세로 a-b를 읽어 (a+b)(a-b)=a²-b²를 계산",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "합과 곱 조건으로 두 제곱의 합 재표현",
+      "decisiveStep": "x²+y²=(x+y)²-2xy를 선택해 8²-2·14=36을 계산",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "켤레식을 이용해 합·차 꼴 분모를 유리화",
+      "decisiveStep": "분모 3-√6의 켤레 3+√6을 곱해 5+2√6으로 정리하고 a+b=7을 계산",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "두 다항식을 각각 인수분해해 공통인수를 비교",
+      "decisiveStep": "9x^2-1=(3x-1)(3x+1), 3x(x+2)-(x+2)=(x+2)(3x-1)이므로 공통인수는 3x-1",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main#M3-RPM-021"
+      ],
+      "nullReason": "M3-RPM-021 is semantic FINAL; current crosswalk is RPM_ONLY so production PT/TPL projection is unmaterialized and nonblocking.",
+      "problemTypeKey": null,
+      "templateKey": null
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "이차식의 중항을 분해해 인수분해",
+      "decisiveStep": "곱 -30, 합 1인 6,-5로 중항을 나눠 (x+2)(3x-5)를 얻음",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "완전제곱식 계수 맞추기로 상수항 결정",
+      "decisiveStep": "x²-12x+a=(x-6)², 4x²+12x+b=(2x+3)²에서 a=36,b=9를 얻음",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "모눈의 피타고라스 길이를 수직선 위치와 거리로 연결",
+      "decisiveStep": "AB=2√5, CD=√5를 구해 P=-5+2√5, Q=1+√5로 옮기고 차로 PQ=6-√5를 계산",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "근호 값을 대입한 뒤 곱셈공식으로 식의 값 계산",
+      "decisiveStep": "x=2+√3을 넣어 x²=7+4√3, 4x=8+4√3을 만들고 근호항을 상쇄해 -6을 얻음",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "제곱근표 직접 판독과 소수점 스케일 조정",
+      "decisiveStep": "√5.53은 표에서 2.352를 읽고 √0.553=√55.3/10으로 바꿔 0.7436을 얻음",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md@main",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@main",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@main",
+        "archive/data/meta-foundation/compiled/concept_registry.json@main",
+        "archive/data/r2e-intake/m3/21_금당중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json@7122122249d14e78edb5824cda1fff9469fed6e9"
+      ],
+      "nullReason": "MAIN_PRESENT_META_ONLY: metadata is audited in the external META_V2 payload; production PT/TPL materialization is not required when current lookup remains RPM_ONLY or binding/unmaterialized projection debt."
+    }
+  ],
+  "inlineProblemVisualAudits": [
+    {
+      "qid": 9,
+      "result": "PASS",
+      "method": "COORDINATE_COMPUTE",
+      "evidence": "Inline SVG coordinate audit: O=(30,90), A=(60,60) gives OA=42.426=√2·30; P=(72.426,90) has OP=42.426; B=(72.426,60), BP=30 and OB≈51.962=√3·30; Q=(81.962,90) gives OQ≈51.962. Geometry matches the problem facts."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "method": "COORDINATE_COMPUTE",
+      "evidence": "Inline SVG side lengths 50.912,36,25.456,18 have successive ratio ≈√2 and bottom alignment makes shared edges equal to the smaller square side. This matches area ratio 2:1 at each step; no objective semantic contradiction."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "method": "TOPOLOGY_COMPUTE",
+      "evidence": "Inline SVG partitions one rectangle into congruent trapezoids with complementary top/bottom segments and common height. Labels support width a+b and height a-b; no objective semantic mismatch."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "method": "SCHEMATIC_NONBLOCKING",
+      "evidence": "Inline SVG only depicts two squares labeled x and y; it is schematic/non-scale and contains no conflicting metric claim. Under the visual-doubt rule, no blocking defect is created."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "method": "COORDINATE_COMPUTE",
+      "evidence": "Inline SVG coordinate audit: A=(-5,0), B differs by (4,2) grid units so AB=2√5; C=(1,0), D differs by (2,1) so CD=√5; constructed P,Q positions are -5+2√5 and 1+√5. Geometry matches the solution."
+    }
+  ],
+  "visualDoubtPolicy": {
+    "status": "PASS",
+    "newBlockingVisualDefects": 0,
+    "visualRecheckOnlyQids": [],
+    "confirmedVisualDefectQids": []
+  },
+  "summary": {
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 0
+  },
+  "reviewAttemptId": "master-c-post-repair-recheck-m3-o19-20261003T0752KST",
+  "reviewedAtKst": "2026-10-03T07:56:00+09:00",
+  "contextTolerance": {
+    "priorSolutionVerdictCheckpointRepairDetailRead": true,
+    "currentContractAllowsPriorContext": true,
+    "freshReviewerNotRequired": true,
+    "decisionBasis": "source/current artifact/current authority recheck by MASTER-C; prior context not used as authority"
+  },
+  "decisionSnapshot": {
+    "status": "REFROZEN_BEFORE_FORMAL_VALIDATOR_AFTER_CURRENT_AUTHORITY_COMPARE",
+    "openScope": [
+      14
+    ],
+    "directDependencies": [
+      "q14.content",
+      "q14.choices",
+      "q14.answer",
+      "q14.solution",
+      "RPM M3-1 L3 곱셈공식 / L4 015,016,017",
+      "current Meta Foundation rule §1.4(9)"
+    ],
+    "finding": "q14 is a single multiple-choice container, but its five answer alternatives are independently checkable semantic parts. Verifying the item requires M3-RPM-015/016/017 with no source-supported unique question-level primary. Under current §1.4(9) plus the already MAIN_DONE o35 precedent, this is META_ONLY_UNRESOLVED_NONBLOCKING rather than an R3 item hold. The stored Meta HOLD is retained as legacy/meta-only representation and must not block release.",
+    "q18Finding": "q18 has a deterministic overarching target: common factor; M3-RPM-021 remains FINAL with projection unmaterialized and nonblocking.",
+    "lockedScopeMutationCount": 0,
+    "finalArtifactSha": "sha256:283692bf7fcb4007a287a3ff4e701f346c194dfa1fcaf4dd4e91244fe56f0b05",
+    "examGitBlobSha": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907",
+    "repairedMetaGitBlobSha": "7c24df33ea7a055b16dc10856ce340bdfce80929",
+    "q14Routing": "META_ONLY_UNRESOLVED_NONBLOCKING",
+    "currentAuthorityMain": "073353a8177358cb45623b059af7a42cf263c94c",
+    "productionMutationCount": 0
+  },
+  "currentAuthorityRecheck": {
+    "originMain": "073353a8177358cb45623b059af7a42cf263c94c",
+    "stableContractGitBlobSha": "7387723897b08cc5cbadb0999777d9f1ecf84eaf",
+    "metaFoundationRulesGitBlobSha": "9bdea62feeb17f269f320133c7c60c4f2b31db01",
+    "rpmScopeViewGitBlobSha": "8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+    "rpmCrosswalkGitBlobSha": "afc1ede749966e838b117aca3cc640e5e8c2a345",
+    "validatorGitBlobSha": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "o35CurrentPrecedentEvidenceGitBlobSha": "041c110cd2194af5ce52d72d02e1e2221f1ac221",
+    "targetExamGitBlobSha": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907"
+  }
+}

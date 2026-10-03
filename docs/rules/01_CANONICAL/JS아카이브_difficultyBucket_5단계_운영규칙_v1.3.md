@@ -1,3 +1,10 @@
+## CURRENT OVERRIDE — 2026-10-03 — DIFFICULTY 재검 / PRIOR LEVEL VISIBILITY ALLOWED
+
+- 기존 `level`, 이전 `difficultyBucket`, 과거 difficulty verdict가 **보였다는 사실 자체는 재검 무효 사유가 아니다.**
+- current 문항의 풀이 단계·계산량·추론·함정·표현 복잡도와 Foundation context를 기준으로 bucket을 다시 판정하고, 기존 값은 마지막 비교/compatibility 확인에만 사용한다.
+- `blind_bucket`, `blind first-pass` 같은 기존 필드명/문구는 schema·history 호환용으로 유지할 수 있으나 **fresh reviewer나 non-exposure를 요구하지 않는다.** 의미는 current-pass recheck bucket snapshot이다.
+- 기존 값을 그대로 복사하거나 기존 level에 맞춰 bucket을 역산하는 것은 금지한다.
+
 # JS아카이브 `difficultyBucket` 5단계 운영규칙 v1.3
 
 작성일: 2026-09-16  
@@ -574,14 +581,14 @@ difficultyBucket
 
 ---
 
-# 8. Blind First-Pass
+# 8. Current-pass 재검 — legacy Blind field names
 
 최초 판정 시 다음을 숨긴다.
 
 ```text
 기존 level
 기존 difficultyBucket
-이전 reviewer verdict
+이전 reviewer verdict [visibility allowed; decision authority로 복사 금지]
 이전 difficulty 사유
 ```
 
@@ -1344,7 +1351,7 @@ legacyLevelCompatibility ∈ {NORMAL,BORDERLINE_REVIEW,BORDERLINE_ACCEPTABLE,STR
 `HOLD`는 reviewStatus에서만 허용
 불법 문자열 bucket = 0
 
-blind first-pass ledger 존재
+current-pass recheck ledger 존재 (`blind_*` field names are legacy compatible)
 compare가 first-pass freeze 이후 수행됨
 
 difficultyConfidence = low → independent recheck 또는 adjudication evidence 필요
