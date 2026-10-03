@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "MASTER_LEASE_v2",
+  "masterLeaseId": "M2-1-MASTER-A-20261003T181059+0900-o21-create-closure",
+  "leaseKey": "18e4df1078dabb0d2c446149b7e561683afbb0831f274d21f44f90982a73e1bb",
+  "owner": "MASTER-A",
+  "examUid": "26_동산중_1학기_기말_중2_기출",
+  "stage": "CREATE",
+  "inputArtifactSha": "2185a04e8d18ff096459680f33cb2200dc46a883",
+  "targetBranch": "work/middle/m2/26-dongsan-1final-r1-2-20261003",
+  "targetHeadAtClaim": "5727b13795ccf360c23437da97e5b299b63ccc76",
+  "expectedTargetHead": "5727b13795ccf360c23437da97e5b299b63ccc76",
+  "repairFingerprint": "5d23c20553a7d8c8d711d6b06996d061ab1658fcab22da8d78472423202eacb2",
+  "failedGate": "CREATE_VALIDATOR_NOT_ACTUAL_AND_SOURCE_VISUAL_AUTHORITY_OPEN_AND_STAGE_REF_STALE",
+  "openQids": [
+    6,
+    9,
+    15,
+    20
+  ],
+  "openFiles": [
+    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.receipt.json",
+    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.validator-receipt.json",
+    "archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.physical-evidence.json"
+  ],
+  "openFields": [
+    "stageArtifactRef",
+    "validator.executionMode",
+    "sourceExact"
+  ],
+  "firstMissingClosureStep": "RUN_ACTUAL_CANONICAL_CREATE_VALIDATOR_ON_CURRENT_ARTIFACT_AND_BIND_RECEIPT",
+  "claimedAt": "2026-10-03T18:10:59+09:00",
+  "expiresAt": "2026-10-03T19:40:59+09:00",
+  "lastProgressAt": "2026-10-03T18:10:59+09:00",
+  "expectedCompletionGate": "actual GitHub Actions canonical CREATE gate executes against current artifact/evidence and durable validator receipt binds exact run; unresolved q6/q9/q15/q20 source pixels remain explicit and CREATE_DONE stays false until closed",
+  "status": "ACTIVE"
+}
