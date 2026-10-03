@@ -186,3 +186,29 @@ test("assignment envelope URLs preserve every supported frozen QPP", async () =>
     assert.equal(url.searchParams.get("qpp"), String(qpp));
   }
 });
+
+test("mode envelopes preserve the exact source, owner, snapshot, and ordered UID list", async () => {
+  const indexedDB = new FakeIndexedDb();
+  const original = await makeEnvelope({
+    sourceKind: "assignment",
+    sourceId: "assignment-exact-7",
+    assignmentId: "assignment-exact-7",
+    paperId: "saved-paper-2",
+    questions: [{ questionUid: "q-1", body: "question" }],
+  });
+  await output.storeOutputEnvelope(original, { indexedDB, crypto: webcrypto });
+  const solution = await output.publishOutputEnvelopeMode(original, "sol", { indexedDB, crypto: webcrypto });
+  assert.notEqual(solution.outputRequestId, original.outputRequestId);
+  assert.equal(solution.ownerId, original.ownerId);
+  assert.equal(solution.sourceKind, original.sourceKind);
+  assert.equal(solution.sourceId, original.sourceId);
+  assert.equal(solution.assignmentId, original.assignmentId);
+  assert.equal(solution.paperId, original.paperId);
+  assert.equal(solution.mode, "sol");
+  assert.deepEqual(solution.questionUids, original.questionUids);
+  assert.deepEqual(solution.meta, original.meta);
+  assert.deepEqual(solution.questions, original.questions);
+  assert.deepEqual(await output.readOutputEnvelope(solution.outputRequestId, solution.ownerId, "sol", {
+    indexedDB, crypto: webcrypto, now: now + 1,
+  }), solution);
+});

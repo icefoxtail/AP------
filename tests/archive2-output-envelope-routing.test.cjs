@@ -4,6 +4,7 @@ const { test } = require("node:test");
 
 const read = (path) => readFileSync(path, "utf8");
 const mixedEngine = read("archive/mixed_engine.html");
+const output = read("archive/archive2-output.js");
 const workspace = read("archive/archive2-workspace.js");
 const library = read("archive/archive2-library.js");
 const entry = read("archive/archive2-entry.js");
@@ -36,6 +37,22 @@ test("Archive2 browser producers do not persist questions and metadata as separa
     assertNoMatch(source, /setItem\([\s\S]{0,80}mixedMeta_/i, `${name} still writes mixedMeta`);
     assertMatch(source, /publishOutputEnvelope|outputRequestId/, `${name} must route output through the envelope`);
   }
+});
+
+test("embedded Output Envelope URLs carry iframe-only preview mode", () => {
+  assertMatch(output, /if \(options\.preview\)[\s\S]*searchParams\.set\("preview", "1"\)/,
+    "preview presentation must use the existing engine preview contract");
+  assertMatch(mixedEngine, /get\('preview'\) === '1'[\s\S]*archive2-preview/,
+    "the existing mixed renderer must own embedded preview presentation");
+});
+
+test("same-source Output Envelope mode switching uses the existing producer", () => {
+  assertMatch(output, /async function publishOutputEnvelopeMode/,
+    "mode transitions must mint an envelope instead of changing only the URL mode");
+  assertMatch(output, /sourceKind: envelope\.sourceKind[\s\S]*sourceId: envelope\.sourceId[\s\S]*ownerId: envelope\.ownerId/,
+    "mode transition must retain exact source and owner identity");
+  assertMatch(output, /publishOutputEnvelopeMode,/,
+    "same-source mode producer must be shared by existing output engines");
 });
 
 test("Worker PDF builds and validates an envelope without relying on browser IndexedDB", () => {

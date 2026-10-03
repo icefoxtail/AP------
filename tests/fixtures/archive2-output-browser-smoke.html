@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/archive/">
   <title>Archive Output Envelope Browser QA</title>
+  <style>html,body{margin:0;min-height:100%;}#archive2-preview-frame{display:block;width:100%;height:100vh;border:0;}</style>
   <script src="/archive/mixer-selector.js"></script>
   <script src="/archive/archive2-canonical.js"></script>
   <script src="/archive/archive2-core.js"></script>
   <script src="/archive/archive2-source.js"></script>
   <script src="/archive/archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-  <script src="/archive/archive2-output.js?v=20261002-output-envelope-v3"></script>
+  <script src="/archive/archive2-output.js?v=20261003-reader-controls-s1-1"></script>
 </head>
 <body>
   <main>
@@ -22,6 +23,8 @@
       try {
         const params = new URLSearchParams(location.search);
         const mode = ["exam", "sol", "ans"].includes(params.get("mode")) ? params.get("mode") : "exam";
+        const preview = params.get("preview") === "1";
+        const embedded = params.get("embed") === "1";
         const qpp = [1, 2, 4, 6, 8].includes(Number(params.get("qpp"))) ? Number(params.get("qpp")) : 4;
         const engine = params.get("engine") === "screen" ? "engine.html" : "mixed_engine.html";
         const requestedCount = Math.max(1, Math.min(50, Number(params.get("count")) || 1));
@@ -72,10 +75,27 @@
           engine,
           new URL("/archive/workspace.html", location.href).href,
           envelope,
-          { studio: true },
+          { studio: true, preview },
         );
         url.searchParams.set("archive2OutputQa", "1");
         document.getElementById("status").textContent = `opening ${mode}/${qpp} with ${envelope.outputRequestId}`;
+        if (params.get("popup") === "1") {
+          const button = document.createElement("button");
+          button.id = "archive2-open-output";
+          button.type = "button";
+          button.textContent = "출력 열기";
+          button.addEventListener("click", () => window.open(url.href, "_blank"));
+          document.body.replaceChildren(button);
+          return;
+        }
+        if (embedded) {
+          const frame = document.createElement("iframe");
+          frame.id = "archive2-preview-frame";
+          frame.title = "Archive Output Envelope preview";
+          frame.src = url.href;
+          document.body.replaceChildren(frame);
+          return;
+        }
         location.replace(url.href);
       } catch (error) {
         document.getElementById("status").textContent = `FAILED: ${error?.message || error}`;

@@ -4,7 +4,7 @@
     <script src="archive2-review.js"></script>
     <link rel="stylesheet" href="archive2-review.css">
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-    <script src="archive2-output.js?v=20261002-output-envelope-v3"></script>
+    <script src="archive2-output.js?v=20261003-reader-controls-s1-1"></script>
     <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +52,7 @@
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20260915.2"></script>
-    <script src="screen-runtime-adapter.js?v=20261002-output-envelope-v3"></script>
+    <script src="screen-runtime-adapter.js?v=20261003-reader-controls-s1-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
@@ -391,6 +391,8 @@
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20260923.1">
+    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
+    <script defer src="archive2-reader-controls.js?v=20261003-reader-controls-s1-1"></script>
 </head>
 <body>
     <div id="mode-ctrl">
@@ -400,7 +402,7 @@
             <button class="mode-tab" id="btn-sol" onclick="switchMode('sol')">해설지</button>
             <button class="mode-tab" id="btn-ans" onclick="switchMode('ans')">정답표</button>
         </div>
-        <div style="display:flex; gap:10px; align-items:center;">
+        <div class="ctrl-right" style="display:flex; gap:10px; align-items:center;">
             <span id="qpp-display" style="color:rgba(255,255,255,0.7); font-size:11px; font-weight:bold;"></span>
             <div class="print-header-editor-wrap" id="print-header-editor-wrap">
                 <button class="print-header-editor-btn" type="button" onclick="togglePrintHeaderEditor(event)">헤더 수정</button>
@@ -486,6 +488,7 @@ function markArchiveReadiness(state, evidence, ctx = null) {
     try {
         archiveReadinessTracker.mark(state, evidence);
         document.documentElement.dataset.apPrintReadiness = JSON.stringify(archiveReadinessTracker.snapshot());
+        if (state === 'RENDER_READY') window.Archive2ReaderControls?.setReady(true, AppState.mode);
     } catch (error) {
         console.warn('[archive-engine] readiness transition failed', error);
     }
@@ -1683,11 +1686,122 @@ async function init() {
 }
 
 let modeSwitchPending = false;
+async function switchOutputEnvelopeMode(mode) {
+    if (modeSwitchPending) return { ok: false, code: 'MODE_SWITCH_PENDING' };
+    const current = AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
+    if (current?.mode === mode || (!current && AppState.mode === mode)) return { ok: true, mode };
+    if (!current && (!Array.isArray(AppState.data) || !AppState.data.length)) return null;
+    const previousMode = current?.mode || AppState.mode;
+    const oldHref = window.location.href;
+    const originalData = AppState.data;
+    const oldEnvelopeReady = window.__AP_OUTPUT_ENVELOPE_READY__;
+    const oldRenderReady = window.__AP_OUTPUT_RENDER_READY__;
+    modeSwitchPending = true;
+    window.Archive2ReaderControls?.setReady(false, previousMode);
+    try {
+        let envelope;
+        if (current) {
+            envelope = await window.Archive2Output.publishOutputEnvelopeMode(current, mode);
+        } else {
+            const questions = JSON.parse(JSON.stringify(AppState.data));
+            const sourceArchiveFile = String(AppState.sourceArchiveFile || new URLSearchParams(location.search).get('data') || '')
+                .replace(/^\/?(?:archive\/)?exams\//, '');
+            const questionUids = questions.map(question =>
+                question.questionUid || question.source_question_uid || question._sourceQuestionUid || null
+            );
+            const title = AppState.identityTitle || AppState.title || '수학 시험지';
+            envelope = await window.Archive2Output.publishOutputEnvelope({
+                sourceKind: sourceArchiveFile ? 'archive2-original' : 'archive2-engine-source',
+                sourceId: sourceArchiveFile || AppState.key || title,
+                mode,
+                questionCount: questions.length,
+                questionUids,
+                meta: {
+                    title,
+                    identityTitle: title,
+                    sourceArchiveFile,
+                    qpp: Number(AppState.qpp || 4),
+                    includeQr: false,
+                    questionUids,
+                    printHeaderOptions: normalizePrintHeaderOptions(AppState.printHeaderOptions),
+                },
+                questions,
+            });
+            AppState.data = envelope.questions.map(question => ({ ...question }));
+        }
+        AppState.outputEnvelope = envelope;
+        window.__AP_OUTPUT_ENVELOPE__ = envelope;
+        window.__AP_OUTPUT_ENVELOPE_READY__ = {
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+        };
+        window.__AP_OUTPUT_RENDER_READY__ = null;
+        document.documentElement.classList.add('archive2-snapshot-output');
+        const outputUrl = new URL(oldHref);
+        outputUrl.searchParams.set('archive2Context', 'archive2');
+        outputUrl.searchParams.set('archive2OutputContract', envelope.contractVersion);
+        outputUrl.searchParams.set('v', '20261003-reader-controls-s1-1');
+        outputUrl.searchParams.set('outputRequestId', envelope.outputRequestId);
+        outputUrl.searchParams.set('outputOwnerId', envelope.ownerId);
+        outputUrl.searchParams.set('mode', envelope.mode);
+        outputUrl.searchParams.set('q', String(envelope.questionCount));
+        outputUrl.searchParams.set('qpp', String(envelope.meta.qpp || AppState.qpp || 4));
+        outputUrl.searchParams.set('studio', '1');
+        history.replaceState(null, '', outputUrl.toString());
+        AppState.mode = mode;
+        document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${mode}`));
+        window.Archive2ReaderControls?.syncMode(mode);
+        if (archiveScreenRuntime) {
+            const outcome = await archiveScreenRuntime.request({ type: 'MODE_CHANGE', requestedMode: mode, foreground: true });
+            if (!outcome.ok) throw new Error(outcome.code || '출력 종류를 바꾸지 못했습니다.');
+        } else {
+            await render();
+        }
+        const rendered = window.__AP_RENDER_READY__ ? await window.__AP_RENDER_READY__ : null;
+        if (rendered && (!rendered.ok || !rendered.pages))
+            throw new Error(rendered.message || rendered.code || '출력 렌더링이 완료되지 않았습니다.');
+        const pageCount = document.querySelectorAll('#print-area .page').length;
+        if (!pageCount) throw new Error('렌더링된 시험지 페이지가 없습니다.');
+        const readiness = await window.Archive2PdfReadiness.assertReady({
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+        });
+        window.__AP_OUTPUT_RENDER_READY__ = {
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+            pageCount: readiness.pageCount || pageCount,
+        };
+        window.Archive2ReaderControls?.setReady(true, mode);
+        return { ok: true, mode, pages: pageCount };
+    } catch (error) {
+        history.replaceState(null, '', oldHref);
+        AppState.outputEnvelope = current;
+        if (current) window.__AP_OUTPUT_ENVELOPE__ = current;
+        else {
+          delete window.__AP_OUTPUT_ENVELOPE__;
+          AppState.data = originalData;
+          document.documentElement.classList.remove('archive2-snapshot-output');
+        }
+        window.__AP_OUTPUT_ENVELOPE_READY__ = oldEnvelopeReady;
+        window.__AP_OUTPUT_RENDER_READY__ = oldRenderReady;
+        AppState.mode = previousMode;
+        window.Archive2ReaderControls?.setReady(true, previousMode);
+        throw error;
+    } finally {
+        modeSwitchPending = false;
+    }
+}
+
 async function switchMode(mode) {
-    if (archiveScreenRuntime) return archiveScreenRuntime.request({ type: 'MODE_CHANGE', requestedMode: isQrSolutionMode() ? 'sol' : mode, foreground: true });
     if (isQrSolutionMode() && mode !== 'sol') {
         mode = 'sol';
     }
+    if (AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__ || (!isPreviewMode() && AppState.data?.length))
+        return switchOutputEnvelopeMode(mode);
+    if (archiveScreenRuntime) return archiveScreenRuntime.request({ type: 'MODE_CHANGE', requestedMode: isQrSolutionMode() ? 'sol' : mode, foreground: true });
     const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
     if (isQrSolutionMode()) url.searchParams.set('qr', '1');
