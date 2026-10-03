@@ -56,10 +56,6 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "중심 C(-2,3)을 공유하는 세 원과 k=0,1,2,3,4에서의 반지름을 나타낸 해설 그림",
-    "solutionImageCaption": "반지름의 제곱이 5, 8, 9로 양수인 정수 k=0,1,2,3,4에서 원이 성립한다.",
-    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -171,8 +167,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "원 x²+y²=13과 접점 T(-2,3), 접선 -2x+3y=13, 접선 위의 점 P(1,5)를 나타낸 해설 그림",
-    "solutionImageCaption": "접점 T에서 반지름 OT는 접선에 수직이고, 점 P(1,5)는 접선 -2x+3y=13 위에 있다.",
+    "solutionImageAlt": "원 O와 접점 T, 접선 위 P를 표시하고 OT와 접선이 수직임을 나타낸 그림",
+    "solutionImageCaption": "접선의 식 −2x+3y=13에 P=(a,5)를 대입하면 a=1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -229,10 +225,6 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "점 A(-2,3)을 x방향으로 1, y방향으로 4만큼 평행이동해 B(-1,7)이 되는 해설 그림",
-    "solutionImageCaption": "좌표 변화량은 x방향 +1, y방향 +4이므로 a=1, b=7이다.",
-    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -291,8 +283,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "중심 C(3,-2), 반지름 4인 원과 y=x 대칭이동 후의 중심 C'(-2,3), 반지름 4인 원을 나타낸 해설 그림",
-    "solutionImageCaption": "y=x에 대한 대칭이동에서는 중심의 두 좌표가 서로 바뀌고 반지름은 그대로 유지된다.",
+    "solutionImageAlt": "중심 (3,−2)에서 (−2,3)으로 좌표가 바뀌고 반지름 4가 유지되는 그림",
+    "solutionImageCaption": "y=x 대칭에서 좌표를 바꾸고 반지름을 보존해 a−b+c=−1을 얻는다.",
     "solutionImageSize": "full"
   },
   {
@@ -348,10 +340,6 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "삼각형 ABC의 세 중선과 무게중심 G(2,1)를 나타낸 해설 그림",
-    "solutionImageCaption": "세 꼭짓점의 좌표 평균으로 구한 G(2,1)은 세 중선의 교점이다.",
-    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -409,10 +397,6 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
-    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "직선 4x+3y-2=0과 점 (-4,1), (4,7)을 지나는 수직인 직선을 나타낸 해설 그림",
-    "solutionImageCaption": "기울기 -4/3인 직선에 수직인 직선의 기울기는 3/4이고, (4,a)가 그 직선 위에 있어 a=7이다.",
-    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -525,8 +509,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "A(-3,-8), P(5,-4), B(15,1)이 한 직선 위에서 AP 대 PB가 4 대 5인 위치 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "P는 선분 AB를 4:5로 내분하므로 P=(5,-4)이다.",
+    "solutionImageAlt": "선분 AB를 AP:PB=4:5로 나누는 점 P의 위치",
+    "solutionImageCaption": "AP:PB=4:5이므로 P는 AB의 4/9 지점이며 p+q=1이다.",
     "solutionImageSize": "full"
   },
   {
@@ -586,8 +570,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "직선족이 항상 지나는 점 P(2,4)와 직선 3x+4y+3=0에 내린 수선 PH를 나타낸 해설 그림",
-    "solutionImageCaption": "두 대표 직선의 공통점 P=(2,4)에서 주어진 직선에 내린 수선의 길이는 PH=5이다.",
+    "solutionImageAlt": "두 직선의 공통점 P=(2,4)와 직선 3x+4y+3=0까지의 수선 PH",
+    "solutionImageCaption": "공통점 P와 수선의 발 H=(−1,0) 사이의 거리는 3-4-5 직각삼각형에서 5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -651,8 +635,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "k=2/3에서 평행한 두 직선과 k=2에서 수직인 두 직선을 두 패널로 나타낸 해설 그림",
-    "solutionImageCaption": "평행일 때 두 기울기는 모두 1/3이고, 수직일 때 두 기울기는 -1과 1이다.",
+    "solutionImageAlt": "평행 조건과 수직 조건을 따로 계산해 a=2/3, b=2를 얻는 두 패널",
+    "solutionImageCaption": "두 경우를 분리하면 ab=4/3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -714,8 +698,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "원 C2의 중심 O에서 현 AB에 내린 수선의 발 H와 OH=3, AH=BH=4, 반지름 5를 나타낸 해설 그림",
-    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 3-4-5 직각삼각형이 만들어진다.",
+    "solutionImageAlt": "첫 원의 넓이를 이등분하는 중심 통과 직선과, 둘째 원의 3-4-5 현 거리 관계",
+    "solutionImageCaption": "a=5, 둘째 원의 반지름은 5이므로 a+b+c+d=−17이다.",
     "solutionImageSize": "full"
   },
   {
@@ -775,8 +759,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "점 P(-1,1)에서 원에 그은 두 접선과 두 접점 T1, T2, 중심 C(3,2)를 나타낸 해설 그림",
-    "solutionImageCaption": "두 접점에서 반지름은 각 접선에 수직이고, 두 접선의 기울기 곱은 -1/4이다.",
+    "solutionImageAlt": "외부점 P에서 원에 그은 접선 두 개와 각 접점의 반지름",
+    "solutionImageCaption": "두 접선의 기울기는 12m²−8m−3=0을 만족해 m₁m₂=−1/4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -937,6 +921,10 @@ window.questionBank = [
       "636"
     ],
     "answer": "②",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "나머지 1과 3인 홀수 무리 중 하나만 골라 15와 가장 큰 일곱 수를 표시한 해설 그림",
+    "solutionImageCaption": "원소 8개와 최소 원소 15를 고정하면 나머지 3인 수 중 가장 큰 일곱 수를 더해 624를 얻는다.",
+    "solutionImageSize": "full",
     "solution": "집합 $B$의 원소의 개수를 $n$이라 하자.\n원소가 $n$개인 집합의 부분집합은 모두 $2^n$개이다.\n이 중 원소가 $0$개인 공집합 $1$개와 원소가 $1$개인 부분집합 $n$개를 제외한 개수가 $247$이므로\n$2^n-n-1=247$이다.\n$n=8$일 때\n$256-8-1=247$이므로\n$B$의 원소는 $8$개이다.\n\n가장 작은 원소가 $15$이므로 $15\\in B$이다.\n$15$는 $4$로 나눈 나머지가 $3$이다.\n서로 다른 두 원소의 합이 $4$의 배수가 되면 안 되므로, $B$에 $4$로 나눈 나머지가 $1$인 수가 하나라도 있으면 $15$와의 합이 $4$의 배수가 되어 조건에 어긋난다.\n따라서 $B$의 모든 원소는 $4$로 나눈 나머지가 $3$인 홀수여야 한다.\n\n합을 최대로 하려면 가장 작은 원소 $15$를 반드시 포함하고, 나머지 $7$개는 $100$ 미만에서 $4$로 나눈 나머지가 $3$인 수 중 가장 큰 것부터 고른다.\n따라서\n$B=\\{15,75,79,83,87,91,95,99\\}$로 잡을 때 합이 최대이다.\n이때\n$S(B)=15+75+79+83+87+91+95+99=624$이다.\n\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "16",
     "displayNo": "16",
