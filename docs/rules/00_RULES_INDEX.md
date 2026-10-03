@@ -1,13 +1,17 @@
-## CURRENT — 2026-10-03 — JS ARCHIVE ACTIVE M3 MIGRATION / RECHECK SEMANTICS
+## CURRENT — 2026-10-03 — M2-1 THANOS MASTER ×5
 
 - automation 실행 authority: `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md` 최신 main.
-- 상태는 **ACTIVE / M3 MIGRATION**이다. CREATE=69/69 완료로 CREATE×2는 OFF, 정상 상설 생산은 R1×2 / R2×2 / R3×2 / PUBLISH×1 / MASTER×3이다. 임시 SURGE/MASTER는 backlog 해소용이며 canonical topology로 승격하지 않는다.
-- R1/R2/R3의 운영 개념은 **재검**이다. 기존 solution·이전 verdict·repair/checkpoint가 보여도 무효가 아니다. source/current authority에서 required scope를 다시 계산·판정하고 prior 값을 정답처럼 복사하지 않는다.
-- `blindDecisionSha`, `blindFreezeSha256` 등 기존 blind 필드명은 schema/history 호환용 **recheck decision snapshot** 이름으로만 유지한다. 새 세션, 비노출, fresh reviewer는 stage closure 조건이 아니다.
-- MASTER는 병목을 실제 closure하거나 executable owner를 시작시킨다. prior context 노출 때문에 fresh owner를 새로 만들지 않는다.
-- PUBLISH는 release queue의 clean backlog 전체를 batch sweep한다.
-- R3 FAIL 이후는 **repair → 재검 → PASS면 release / FAIL이면 OPEN locus repair 복귀**다. 기존 `CODEX_R3_REPAIR` / `CODEX_INDEPENDENT_REVIEW` 이름은 legacy receipt/status 호환으로만 읽는다.
-- 과거 3-lane/Surge/Phase A·B/existing-slot-only/persistent-thread contamination/dormant clean-slot/감시자·조율자 topology는 `90_ARCHIVE/JS_Archive_Automation_Operational_Contracts_PreStable_2026-10-02.md`의 HISTORY다.
+- current scope는 **M2 1학기 34 current generation**이며 기존 MASTER-A/B/C + INFINITY-1/2는 `THANOS-MASTER-1~5`로 통합됐다.
+- 5개 THANOS는 동일 권한의 universal executor다. 시험지별 eligible target claim부터 full production/recheck/repair, validator/receipt, stage transition, release/publish/main까지 수행할 수 있다.
+- CREATE가 필요한 시험지는 THANOS×5와 TEMP-CREATE×2가 새 CREATE target을 잡을 수 있다. 동시에 R1/R2/R3 worker는 자기 stage eligible 시험지가 1건이라도 생기면 즉시 가져간다.
+- **전역 cohort/phase barrier는 폐기한다. EXAM-LEVEL CONVEYOR BELT가 HARD다.** `CREATE_DONE→READY_FOR_REVIEW1` 즉시 R1, `REVIEW1_DONE→READY_FOR_REVIEW2` 즉시 R2, `REVIEW2_DONE→READY_FOR_R3` 즉시 R3, `R3_PASS→RELEASE_QUEUE` 즉시 publish/main으로 이어진다. 다른 시험지의 N/N 진행률은 이 흐름을 막지 않는다.
+- stage closure는 다음 durable state까지 이동해야 한다. **eligible 시험지가 있는데 `CREATE_PHASE_WAIT`/phase-wide WAIT/관망/문서 보고만으로 종료하는 것을 금지한다.** 자기 stage eligible이 0일 때만 scoped `NO_WORK`를 기록하고 slot은 계속 ACTIVE로 둔다.
+- single-writer `MASTER_LEASE v2`, PUBLISH_LEASE, source-truth/validator gate는 유지한다. generic MASTER 문구는 current M2-1에서 THANOS-MASTER를 뜻한다.
+- M3/M1/M2 2학기/고등 legacy 예약은 OFF 유지한다.
+- R1/R2/R3의 운영 개념은 **재검**이다. prior solution/verdict/repair/checkpoint가 보여도 source/current authority에서 required scope를 다시 계산·판정한다.
+- R3는 최종 full audit + same-stage pinpoint repair owner다. source/image 재확인·재크롭도 THANOS가 실행환경에서 가능하면 직접 수행한다.
+- **운영 상태 저장은 Space-first다.** production 14레인은 기존 Work/Space Page의 자기 `LANE CURRENT` 섹션만 갱신하고 per-run Notion write와 개별 hourly 장문 사용자 보고를 하지 않는다. Git physical receipt/validator/remote readback이 stage authority다.
+- **WATCHDOG만 시간당 대표 보고 + Notion mirror를 담당한다.** 매시 :56에 15개 roster의 liveness/dispatch/conveyor-contract를 복구하고 Work/Space 상단 CURRENT를 갱신한 뒤 기존 `JS Archive 예약 레인 상시 상태판 — CURRENT`에 동일 snapshot을 1회 미러링한다. Notion mirror 실패는 production blocker가 아니다.
 
 # JS아카이브 규칙 통합 인덱스
 
@@ -137,10 +141,10 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - 현재 진행 중인 M2 2학기 고정 20은 META_V2 reset 대상이 아니며 기존 current REVIEW/PUBLISH tail을 완주한다.
 - CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다. Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질, Meta/difficulty 전수 audit는 경량화 대상이 아니다.
-- CURRENT R3는 **MAIN 직전 release gate**다. R3는 repair stage가 아니며, CURRENT가 R3를 요구하는 release-bound flow에서 REVIEW2 이후 반드시 통과한다.
+- CURRENT R3는 **MAIN 직전 release gate이자 최종 핀포인트 수리 owner**다. REVIEW2 이후 전수 release audit을 수행하고, current artifact/current authority만으로 확정 가능한 일반 결함은 같은 R3에서 직접 수리·수정범위 재확인까지 닫는다.
 - current initial R3는 긴급/고등 release와 lane-local TEMP M3 R3에 적용한다. M3 TEMP R3는 각 CREATE partition이 physical-evidence-valid CREATE 100%가 되는 즉시 독립 전환한다.
-- initial R3 FAIL은 `R3_FAIL_DEFERRED`로 격리하고 packet의 OPEN locus만 Codex post-R3 repair가 소비한다. legacy `FULL_REENTRY`가 있어도 whole-exam R1/R2 재실행으로 해석하지 않는다.
-- R3_RETRY는 changed/open locus + direct dependency + `R3_LOCKED` hash/diff 보존만 targeted regression 한다.
+- R3에서 source truth를 current artifact만으로 확정할 수 없는 원본 PDF/페이지 재확인·재크롭·손상 source asset 예외만 `SOURCE_REPAIR_REQUIRED`로 Codex Source Repair에 보낸다. 일반 결함은 R3 내부에서 닫는다. legacy `FULL_REENTRY`가 있어도 whole-exam R1/R2 재실행으로 해석하지 않는다.
+- R3 직접 수리 또는 Codex Source Repair 복귀 후에는 별도 R3_RETRY stage를 만들지 않고 **같은 R3 continuation**에서 changed/open locus + direct dependency + `R3_LOCKED` hash/diff 보존만 targeted regression 한다.
 
 ### NO EXAM PENDING / STAGE AUTHORITY CONTINUITY — CURRENT HARD RULE (2026-10-01)
 
