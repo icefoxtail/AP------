@@ -1,27 +1,31 @@
-## CURRENT OVERRIDE — 2026-10-03 — R3 최종 재검 / SAME-WORKER RECHECK ALLOWED
+## CURRENT OVERRIDE — 2026-10-03 — R3 FINAL QA + FINAL REPAIR
 
 형님의 현재 명시 지시가 아래 과거 blind/fresh-review/Codex-independent-start 문구보다 우선한다.
 
 - 이전 stage verdict·target solution·R3 fail packet·repair detail을 **이미 봤거나 먼저 봐도 R3/recheck는 유효**하다.
-- initial R3는 latest artifact를 source/current authority에서 전 문항 다시 계산·감사하면 되고, prior 노출 때문에 fresh reviewer를 만들지 않는다.
-- post-R3 repair 후 recheck도 **같은 worker 또는 다른 worker/Codex 어느 쪽이든 가능**하다. fresh Codex reviewer actual-start는 release 필수조건이 아니다.
-- recheck PASS는 open/changed locus + direct dependency 재계산, locked scope 불변, canonical validator/receipt, exact finalArtifactSha parity로 판단한다.
+- R3는 latest artifact를 source/current authority에서 전 문항 다시 계산·감사하며, prior 노출 때문에 fresh reviewer를 만들지 않는다.
+- R3에서 발견한 일반 결함은 **같은 R3 worker가 직접 핀포인트 수리**한다. 수리 뒤 전 문항을 다시 처음부터 보지 않고 changed locus + direct dependency + locked scope를 재확인한다.
+- current artifact만으로 source truth를 확정할 수 없는 원본 PDF/페이지 재확인·재크롭·손상 source asset 건만 `SOURCE_REPAIR_REQUIRED`로 Codex Source Repair에 보낸다. 완료 후 별도 post-repair stage 없이 같은 R3 continuation으로 돌아온다.
+- R3 PASS는 changed/open locus + direct dependency 재계산, locked scope 불변, canonical validator/receipt, exact finalArtifactSha parity로 판단한다.
 - 기존 `CODEX_INDEPENDENT_REVIEW` 상태명은 호환용으로 유지할 수 있지만 “다른 새 reviewer여야 한다”는 의미는 폐기한다.
 - 아래의 “이전 verdict/solution을 열기 전에”, “fresh release”, “independent reviewer”는 **prior를 정답처럼 복사하지 말고 실제로 재검하라는 품질 원칙**으로 읽는다.
+- 아래 legacy `10. 출력 형식`의 “수정본 JS는 출력하지 않는다 / 검수 보고만 출력한다”는 ACTIVE automation R3에 적용하지 않는다. **R3는 허용 범위의 실제 pinpoint mutation + 검증 + receipt closure까지 수행한다.**
 
-## CURRENT OVERRIDE — 2026-10-03 — POST-R3 REPAIR → 재검 → DIRECT PUBLISH
-- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
-- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → R3_REPAIR → POST_REPAIR_RECHECK`**다. 기존 `CODEX_R3_REPAIR/CODEX_INDEPENDENT_REVIEW` 상태명은 호환 가능하다.
-- POST_REPAIR_RECHECK가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 release → MAIN**으로 진행한다. recheck worker가 repair detail을 이미 본 것은 blocker가 아니다.
-- POST_REPAIR_RECHECK가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
-- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. 기존 Codex Independent Review PASS receipt가 이미 있는 legacy 대상은 current release gate 확인 후 직접 publish한다.
-- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
+## CURRENT OVERRIDE — 2026-10-03 — SAME-STAGE R3 REPAIR → RELEASE
+- R3가 시험지 전체를 보는 마지막 전수 release audit인 것은 유지한다.
+- 기본 경로는 **`READY_FOR_R3 → R3_ACTIVE → full audit → 필요 시 same-stage pinpoint repair → changed locus/direct dependency 재확인 → R3_PASS → RELEASE_QUEUE`**다.
+- `R3_FAIL_DEFERRED`, `R3_REPAIR`, `POST_REPAIR_RECHECK`, `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`, `CODEX_INDEPENDENT_REVIEW`를 신규 정상 상태로 만들지 않는다. 기존 durable state/receipt는 legacy 호환 이력으로만 소비한다.
+- 일반 defect는 R3가 직접 수리한다. **current artifact만으로 source truth 확정이 불가능한 경우만** `SOURCE_REPAIR_REQUIRED → Codex Source Repair → same R3 continuation`으로 간다.
+- Codex Source Repair가 끝나면 repaired locus + direct dependency + locked scope만 재확인하고 R3 PASS를 닫는다. 별도 post-repair recheck stage나 fresh reviewer를 요구하지 않는다.
+- 아래 문서의 과거 R3_RETRY/post-R3 repair 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
 
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY RELEASE FLOOR
 
 R3 worker도 예외가 아니다. stage assignment와 release scope를 확인하고 Golden 2~3 + 관련 Negative Sample로 quality bar를 맞춘다. 이전 stage verdict/target solution이 이미 보여도 무효가 아니며, latest artifact를 source/current authority에서 전 문항 다시 계산·재검한 current-pass evidence를 만든 뒤 해설과 SVG의 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 N/N 확인한다. 이전 stage quality count를 evidence로 복사하지 않으며 `solutionQualityCalibration` physical binding과 `qualityCompareCount=N/N`이 없으면 R3 PASS 금지다.
 
-## CURRENT OVERRIDE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
+## SUPERSEDED / HISTORY — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
+
+이 블록은 과거 운영 이력이며 신규 R3 실행 authority가 아니다. 현재 경로는 위 `SAME-STAGE R3 REPAIR → RELEASE`를 따른다.
 
 정상 1차 흐름을 R3 실패 재작업보다 우선한다.
 
@@ -34,16 +38,16 @@ R3 worker도 예외가 아니다. stage assignment와 release scope를 확인하
 - M3 CREATE lane은 자기 mod-3 partition의 current-generation CREATE가 physical-evidence-valid DONE* 100%가 되는 즉시 다른 CREATE lane이나 M3 REVIEW2 69/69을 기다리지 않고 TEMP R3로 전환할 수 있다.
 - 해당 partition의 모든 시험지가 initial R3 disposition을 가지면 그 lane은 M1 CREATE를 재개할 수 있다. deferred 실패는 별도 재작업 큐에 남고 CREATE 재개를 막지 않는다.
 
-아래의 R1/R2 reentry·FULL_REENTRY·full R3_RETRY 표현은 모두 **SUPERSEDED / HISTORY**다. current post-R3 경로는 repair → 재검 → release다.
+아래의 R1/R2 reentry·FULL_REENTRY·full R3_RETRY 및 별도 post-R3 repair/recheck 표현은 모두 **SUPERSEDED / HISTORY**다. current 경로는 same-stage R3 direct repair → R3 PASS이며 source truth 재확인이 필요한 예외만 Codex Source Repair다.
 
-## CURRENT HARD RULE — POST-R3 BASELINE LOCK / TARGETED RETRY (2026-10-01)
+## CURRENT HARD RULE — R3 SAME-STAGE REPAIR SCOPE LOCK (2026-10-03)
 
 - initial R3가 시험지 전체를 보는 마지막 전수 release audit다.
 - initial R3 종료 artifact와 linked assets를 `R3_BASELINE`으로 동결한다.
 - FAIL packet은 `openQids[] / openFiles[] / openFields[] / openAxes[] / directDependencies[]`를 고정한다. 그 밖은 `R3_LOCKED`다.
 - legacy `FULL_REENTRY` failureClass도 whole-exam reopen 권한이 아니다. 범위를 한정할 수 없으면 `SCOPE_EXPANSION_REQUIRED`로 필요한 dependency locus만 추가한다.
-- post-R3 경로는 `R3_FAIL_DEFERRED → R3_REPAIR → POST_REPAIR_RECHECK → RELEASE → MAIN`이다. 정상 R1/R2로 되돌리지 않는다.
-- POST_REPAIR_RECHECK가 open/changed locus + direct dependency를 다시 계산하고 lock 보존을 확인한다. PASS 시 추가 GPT retry 없이 release gate를 거쳐 publish한다.
+- R3에서 defect를 직접 수리할 때는 initial full-audit의 PASS 영역을 `R3_LOCKED`로 유지하고 `openQids/openFiles/openFields/openAxes/directDependencies`만 mutation scope로 연다. 정상 R1/R2로 되돌리지 않는다.
+- same-stage R3 continuation이 open/changed locus + direct dependency를 다시 계산하고 lock 보존을 확인한다. PASS 시 별도 retry/recheck stage 없이 release gate로 보낸다. Source Repair 예외도 같은 scope-lock 원칙으로 R3에 복귀한다.
 
 [JS아카이브 3차 검수 프로토콜 — MAIN 직전 Release Gate v2.0]
 
@@ -52,11 +56,11 @@ R3 worker도 예외가 아니다. stage assignment와 release scope를 확인하
 R3는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 MAIN 직전 최종 release gate로 적용한다.
 
 - **initial R3**에서는 R1/R2의 `N/N`, PASS receipt, ledger 요약을 release evidence로 사용하지 않고 latest artifact bytes에서 source/runtime/small-board/SVG actual geometry/Meta null-resolvable을 전수 재검한다.
-- **R3_RETRY**에서는 `R3_BASELINE`의 LOCKED PASS를 다시 감사하지 않는다. open/changed locus + direct dependency만 fresh audit하고 나머지는 hash/diff lock을 확인한다.
+- **R3 same-stage repair continuation**에서는 initial full-audit의 LOCKED PASS를 다시 감사하지 않는다. open/changed locus + direct dependency만 fresh audit하고 나머지는 hash/diff lock을 확인한다.
 - `freshFromArtifactBytes=true` + `priorStageCountsUsedAsEvidence=false`가 evidence에 없으면 R3_PASS 금지.
 - linked SVG는 라벨 문구가 아니라 actual primitive 좌표/위상으로 solution fact를 재계산한다.
 - Meta는 null field까지 전수 resolver/canonical lookup evidence를 남긴다.
-- initial R3 완료 전 `review-evidence-gate.mjs --stage R3`의 `ok=true`가 필수다. targeted R3_RETRY는 full-row validator로 전수감사를 반복하지 않고 `openScope + changedScope + lockedScopeMutationCount=0` retry evidence를 남긴다.
+- R3 완료 전 `review-evidence-gate.mjs --stage R3`의 `ok=true`가 필수다. same-stage repair continuation은 full-row 전수감사를 처음부터 반복하지 않고 `openScope + changedScope + lockedScopeMutationCount=0` continuation evidence를 남긴다.
 - 예약 시간이 부족하면 R3_PASS를 추정하지 않고 checkpoint만 남긴다.
 
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
