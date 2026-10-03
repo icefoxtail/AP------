@@ -1,0 +1,20 @@
+const fs=require('fs');
+const vm=require('vm');
+const path=require('path');
+(async()=>{
+  const examFile=path.resolve('archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js');
+  const evidenceFile=path.resolve('archive-work/middle/m2/2026-1sem-recert/26_동산중_1학기_기말_중2_기출/create.physical-evidence.json');
+  const source=fs.readFileSync(examFile,'utf8');
+  const sandbox={window:{}};
+  vm.runInNewContext(source,sandbox,{filename:examFile});
+  const questions=sandbox.window.questionBank;
+  const evidence=JSON.parse(fs.readFileSync(evidenceFile,'utf8'));
+  const cal=await import('../archive/tools/solution-calibration-gate.mjs');
+  const rev=await import('../archive/tools/review-evidence-gate.mjs');
+  const preflightIssues=cal.validateSolutionCalibrationPreflight({examFile,questions,evidence,stage:'CREATE'});
+  console.log('M2_O21_CALIBRATION_PREFLIGHT '+JSON.stringify({ok:preflightIssues.length===0,issues:preflightIssues}));
+  if(preflightIssues.length) process.exit(1);
+  const report=rev.validatePhysicalEvidence({examFile,evidenceFile,stage:'CREATE'});
+  console.log('M2_O21_CREATE_GATE '+JSON.stringify(report));
+  if(!report.ok) process.exit(1);
+})().catch(e=>{console.error(e);process.exit(1);});
