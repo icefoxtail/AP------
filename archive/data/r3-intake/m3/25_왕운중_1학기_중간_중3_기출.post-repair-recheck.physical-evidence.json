@@ -1586,7 +1586,7 @@
   "provenance": {
     "stageInputArtifactSha": "ff243bc8b3912a62364d991d9ba69286f5418e4b",
     "stageInputSha256": "sha256:be77591bd6a7dbeac29a0f5f5b574d2303140aa8ba58cae432ddb3312e058928",
-    "latestMainAtAudit": "ccd95f890254f864cca925d58900f52cf25724c3",
+    "latestMainAtAudit": "cbb930807132e1217691b1752323a54b24d25dc2",
     "productionMutation": 1,
     "mainMutation": 0
   },
@@ -1602,7 +1602,7 @@
     "mode": "CONTEXT_TOLERANT_POST_REPAIR_RECHECK",
     "priorVerdictUsedAsEvidence": false,
     "priorDetailExposureAllowed": true,
-    "currentMain": "ccd95f890254f864cca925d58900f52cf25724c3",
+    "currentMain": "cbb930807132e1217691b1752323a54b24d25dc2",
     "inputArtifactGitBlobSha": "ff243bc8b3912a62364d991d9ba69286f5418e4b",
     "inputExamSha256": "sha256:be77591bd6a7dbeac29a0f5f5b574d2303140aa8ba58cae432ddb3312e058928",
     "changedLocus": [
@@ -1632,6 +1632,36 @@
       "metaFailureQids": []
     },
     "lockedScopeMutationCount": 0,
+    "remainingFailureCodes": [],
+    "newDirectDefects": []
+  },
+  "currentAuthorityRefresh": {
+    "status": "PASS",
+    "main": "cbb930807132e1217691b1752323a54b24d25dc2",
+    "stableContractGitBlobSha": "0ee10751d8a4c1a3e576da9aca84196ee2a9ce27",
+    "rpmPrimaryM3GitBlobSha": "545e22f4433e28c574477d0aa85b1960a7078e33",
+    "rpmCrosswalkM3GitBlobSha": "4a4f5a4b4a9aae781235297b5998f4a1e3727cec",
+    "standardUnitMasterGitBlobSha": "8e2a8562f3e4daad70c9af4efd038dffb7b7ae82",
+    "repairQidsRevalidated": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      17,
+      18,
+      22
+    ],
+    "repairQidL1L2AuthorityParity": true,
+    "q16TaxonomyDriftReview": {
+      "newLeaf": "L4-2.1.1.4 여러 곱셈공식 비교·판별",
+      "disposition": "NO_RELEASE_BLOCKING_CHANGE",
+      "rationale": "q16 computes five blank values using several formulas and compares the resulting numbers; it does not use the new leaf's decisive task of comparing polynomial identities for equivalence, so no forced single-L4 projection is introduced."
+    },
     "remainingFailureCodes": [],
     "newDirectDefects": []
   }
