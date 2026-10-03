@@ -17,7 +17,8 @@ const plain = value => JSON.parse(JSON.stringify(value));
 // at the production path, no network. Real core + workspace handlers are executed;
 // DOM sinks and the HTTP boundary are test doubles, not a visual/render test.
 function harness(fetcher = async () => { throw new Error('unexpected network'); }) {
-  const events = new Map(), nodes = new Map(), storage = new Map();
+  const events = new Map(), nodes = new Map(), storage = new Map(), timers = new Map();
+  let nextTimerId = 1;
   const node = id => {
     if (!nodes.has(id)) nodes.set(id, {
       id, innerHTML: '', textContent: '', dataset: {}, open: false,
@@ -29,7 +30,8 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
   };
   const context = {
     console, URL, URLSearchParams, Date, crypto, structuredClone,
-    setTimeout: () => 0, clearTimeout() {}, matchMedia: () => ({ matches: false }),
+    setTimeout(callback, delay) { const id = nextTimerId++; timers.set(id, { callback, delay }); return id; },
+    clearTimeout(id) { timers.delete(id); }, matchMedia: () => ({ matches: false }),
     atob: value => Buffer.from(value, 'base64').toString('binary'),
     btoa: value => Buffer.from(value, 'binary').toString('base64'),
     location: new URL('https://test.invalid/archive/workspace.html?view=recent'),
@@ -80,6 +82,13 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
   return {
     c: ctx.Archive2Core, h: ctx.Archive2History, w, nodes, node,
     async event(type, target, extra = {}) { for (const callback of events.get(type) || []) await callback({ target, ...extra }); },
+    async flushTimers() {
+      while (timers.size) {
+        const pending = [...timers.values()]; timers.clear();
+        for (const timer of pending) await timer.callback();
+      }
+    },
+    timerDelays: () => [...timers.values()].map(timer => timer.delay),
   };
 }
 function catalogFixture(h) {
@@ -499,7 +508,7 @@ test('CSS stays history-scoped, with compact 2-column desktop and 1-column mobil
   assert.ok(html.indexOf('archive2-history.js') < html.indexOf('archive2-workspace.js'));
   assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
 });
-test('history loads all accessible classes in one assignments request and never calls per-card status', async () => {
+test('history sends server filters after a debounce and never calls per-card status', async () => {
   const calls = []; let h;
   h = harness(async url => {
     calls.push(String(url));
@@ -516,10 +525,17 @@ test('history loads all accessible classes in one assignments request and never 
   assert.equal(h.w.state.recentRows.length, 100); assert.equal(h.w.state.recentClassId, '');
   assert.equal(h.h.filterAssignments(h.w.state.recentRows, { grade: '중3' }).length, 50);
   h.w.recentAssignmentMarkup();
-  h.w.changeRecentFilter({ dataset: { recentFilter: 'query' }, value: 'abc' });
-  assert.equal(calls.length, 2); assert.ok(calls.every(url => !url.endsWith('/status')));
+  await h.event('input', { dataset: { recentFilter: 'query' }, value: '오래된 제목' });
+  assert.equal(calls.length, 2, 'typing does not issue one request per keystroke');
+  assert.deepEqual(h.timerDelays(), [300]);
+  await h.flushTimers();
+  assert.equal(calls.length, 3);
+  const request = new URL(calls[2]);
+  assert.equal(request.searchParams.get('query'), '오래된 제목');
+  assert.equal(request.searchParams.get('limit'), '1000');
+  assert.ok(calls.every(url => !url.endsWith('/status')));
 });
-test('class filter is local-only and blank means all classes rather than zero results', async () => {
+test('class filter is server-backed and blank means all classes rather than zero results', async () => {
   const calls = []; const h = harness(async url => {
     calls.push(String(url));
     if (String(url).endsWith('/qr-classes')) return { ok: true, json: async () => ({ classes: [
@@ -534,11 +550,17 @@ test('class filter is local-only and blank means all classes rather than zero re
   assert.match(h.w.recentAssignmentMarkup(), /첫 시험/); assert.match(h.w.recentAssignmentMarkup(), /둘째 시험/);
   await h.event('change', { id: 'recent-class', dataset: {}, value: 'c1' });
   assert.match(h.node('recent-assignments').innerHTML, /첫 시험/); assert.doesNotMatch(h.node('recent-assignments').innerHTML, /둘째 시험/);
+  await h.flushTimers();
+  assert.equal(new URL(calls.at(-1)).searchParams.get('class'), 'c1');
   await h.event('change', { id: 'recent-class', dataset: {}, value: '' });
   assert.match(h.node('recent-assignments').innerHTML, /첫 시험/); assert.match(h.node('recent-assignments').innerHTML, /둘째 시험/);
+  await h.flushTimers();
+  assert.equal(new URL(calls.at(-1)).searchParams.has('class'), false);
   await h.event('change', { id: '', dataset: { recentFilter: 'grade' }, value: '중3' });
   assert.match(h.node('recent-class').innerHTML, /중3 A/); assert.doesNotMatch(h.node('recent-class').innerHTML, /고2 B/);
-  assert.equal(calls.length, 2);
+  await h.flushTimers();
+  assert.equal(new URL(calls.at(-1)).searchParams.get('grade'), '중3');
+  assert.equal(calls.length, 5);
 });
 test('worker history list supports whole, grade and class scopes with class metadata in one response', () => {
   const worker = readRoot('apmath', 'worker-backup', 'worker', 'routes', 'exams.js');
@@ -580,6 +602,8 @@ test('additive recent summary is bounded and leaves compatible history API intac
   const summary = worker.slice(start, end);
   assert.match(summary, /Math\.min\(1000, limitInput\)/);
   assert.match(summary, /LIMIT \?/);
+  assert.match(summary, /subject_term/);
+  assert.match(summary, /exam_title/);
   assert.match(summary, /replacement_assignment_id/);
   assert.match(summary, /review_only_count/);
   assert.doesNotMatch(summary, /mixed_payload_json/);
