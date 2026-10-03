@@ -1,17 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-label="내접사각형 두 그림의 x와 y 각 관계">
-<style>text{font-family:Arial,'Noto Sans KR',sans-serif;font-size:16px;fill:#111}.s{stroke:#111;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round}.pt{fill:#111}.note{font-size:15px}</style>
-<!-- 첫 그림: 맞은편 각의 합 -->
+<style>text{font-family:Arial,'Noto Sans KR',sans-serif;font-size:16px;fill:#111}.s{stroke:#111;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round}.note{font-size:15px}</style>
+<!-- 첫 그림: 실제 원 위 좌표가 100°, 110°, 80°, 70°를 만족 -->
 <circle class="s" cx="130" cy="145" r="82"/>
-<line class="s" x1="82" y1="79" x2="151" y2="66"/><line class="s" x1="151" y1="66" x2="209" y2="168"/>
-<line class="s" x1="209" y1="168" x2="101" y2="222"/><line class="s" x1="101" y1="222" x2="82" y2="79"/>
-<text x="88" y="104">100°</text><text x="145" y="92">x=110°</text><text x="107" y="211">70°</text><text x="174" y="164">y=80°</text>
-<!-- 둘째 그림: 아래쪽 95도, 위쪽 y는 외각임을 선 연장으로 명시 -->
+<line class="s" x1="89.0" y1="74.0" x2="171.0" y2="74.0"/><line class="s" x1="171.0" y1="74.0" x2="207.1" y2="173.0"/>
+<line class="s" x1="207.1" y1="173.0" x2="67.2" y2="197.7"/><line class="s" x1="67.2" y1="197.7" x2="89.0" y2="74.0"/>
+<text x="92" y="101">100°</text><text x="145" y="101">x=110°</text><text x="78" y="190">70°</text><text x="171" y="165">y=80°</text>
+<!-- 둘째 그림: 실제 원 위 좌표가 x=95°, 위 내각 120°, 오른쪽 내각 85°, 아래 왼쪽 60°를 만족 -->
 <circle class="s" cx="390" cy="145" r="82"/>
-<line class="s" x1="331" y1="88" x2="420" y2="69"/><line class="s" x1="420" y1="69" x2="467" y2="178"/>
-<line class="s" x1="467" y1="178" x2="353" y2="221"/><line class="s" x1="353" y1="221" x2="331" y2="88"/>
-<!-- bottom side extension --> <line class="s" x1="467" y1="178" x2="510" y2="162"/>
-<!-- right side extension through top-right --> <line class="s" x1="420" y1="69" x2="402" y2="27"/>
-<text x="336" y="113">x=95°</text><text x="360" y="211">60°</text><text x="438" y="171">내각 85°</text>
-<text x="472" y="157">외각 95°</text><text x="414" y="50">내각 120°</text><text x="374" y="34">외각 y=60°</text>
+<line class="s" x1="343.0" y1="77.8" x2="411.2" y2="65.8"/><line class="s" x1="411.2" y1="65.8" x2="471.7" y2="137.9"/>
+<line class="s" x1="471.7" y1="137.9" x2="355.3" y2="219.3"/><line class="s" x1="355.3" y1="219.3" x2="343.0" y2="77.8"/>
+<!-- 오른쪽 아래 꼭짓점의 외각 95°: DC를 C 너머로 연장 -->
+<line class="s" x1="471.7" y1="137.9" x2="508.9" y2="111.8"/>
+<!-- 위 꼭짓점의 외각 y=60°: AB를 B 너머로 연장 -->
+<line class="s" x1="343.0" y1="77.8" x2="445.4" y2="59.8"/>
+<text x="350" y="106">x=95°</text><text x="389" y="92">내각 120°</text><text x="438" y="138">내각 85°</text>
+<text x="466" y="106">외각 95°</text><text x="414" y="48">외각 y=60°</text><text x="365" y="205">60°</text>
 <text class="note" x="260" y="294" text-anchor="middle">내접사각형의 마주 보는 두 각의 합은 180°</text>
 </svg>
