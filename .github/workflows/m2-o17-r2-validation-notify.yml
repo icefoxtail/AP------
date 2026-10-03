@@ -1,0 +1,24 @@
+name: M2 o17 R2 Validation Notify
+
+on:
+  push:
+    branches:
+      - 'validation/m2-o17-palma-r2-thanos1-*'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Calibration preflight
+        run: node archive/tools/solution-calibration-gate.mjs --exam 'archive/exams/original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js' --evidence 'archive/data/r2e-intake/m2/26_팔마중_1학기_기말_중2_기출.review2.physical-evidence.json' --stage R2 --preflight --json
+      - name: Canonical R2 gate
+        run: node archive/tools/review-evidence-gate.mjs --exam 'archive/exams/original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js' --evidence 'archive/data/r2e-intake/m2/26_팔마중_1학기_기말_중2_기출.review2.physical-evidence.json' --stage R2 --json
+      - name: Validation notification sentinel
+        run: exit 1
