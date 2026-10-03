@@ -247,9 +247,13 @@ test('catalog은 범위 밖 원본을 제외하고 원본 문항 번호를 보�
 
 test('소단원·난이도 필터는 레거시 난이도를 공통 버킷으로 정규화한다', () => {
   assert.equal(core.normalizeDifficulty('[중]'), '중');
+  assert.deepEqual([1, 2, 3, 4, 5].map(core.normalizeDifficulty), ['하', '중', '중', '상', '상']);
   assert.equal(core.normalizeDifficulty('중1'), '미분류');
   assert.equal(core.normalizeDifficulty('고2'), '미분류');
   assert.equal(core.normalizeDifficulty(''), '미분류');
+  const canonicalBucket = { difficultyBucket: 3 };
+  assert.equal(core.getDifficultyBucket(canonicalBucket), '중');
+  assert.equal(canonicalBucket.difficultyBucket, 3, 'Unit Past projects the canonical bucket without rewriting it');
 
   const records = [
     { sourceFile: 'a.js', id: 1, subUnitKey: 'A', subUnit: '첫 개념', level: '[중]' },
@@ -258,6 +262,19 @@ test('소단원·난이도 필터는 레거시 난이도를 공통 버킷으로 
     { sourceFile: 'c.js', id: 1, level: '하' }
   ];
   assert.deepEqual(core.getDifficultySummary(records), { 하: 1, 중: 1, 상: 1, 미분류: 1 });
+  assert.deepEqual(core.getDifficultySummary([1, 2, 3, 4, 5].map((difficultyBucket, id) => ({
+    sourceFile: `canonical-${id}.js`, id, difficultyBucket
+  }))), { 하: 1, 중: 2, 상: 2, 미분류: 0 });
+  const canonicalSelection = core.selectByBlueprint(
+    [1, 2, 3, 4, 5].map((difficultyBucket, id) => ({
+      sourceFile: `canonical-${id}.js`, id, questionUid: `canonical-${id}`, difficultyBucket,
+      subUnitKey: 'canonical-sub', subUnitParentKey: 'canonical-parent', defaultSelectable: true
+    })),
+    [{ difficultyBucket: '하', count: 1 }, { difficultyBucket: '중', count: 2 }, { difficultyBucket: '상', count: 2 }],
+    { maxCount: 5 },
+  );
+  assert.equal(canonicalSelection.ok, true);
+  assert.equal(canonicalSelection.selected.length, 5);
   assert.deepEqual(core.filterUnitRecords(records, { subUnitKeys: ['A'], difficultyBuckets: ['중'] }).map(item => item.id), [1]);
   assert.equal(core.getSubUnitOptions(records).find(item => item.key === '__unclassified__').label, '미분류 소단원');
 });
