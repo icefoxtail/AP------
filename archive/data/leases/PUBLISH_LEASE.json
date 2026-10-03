@@ -2,18 +2,21 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "M2-1-MAIN-MERGE-20261004T0629+0900-O19-O20",
   "owner": "M2-1 MAIN-MERGE",
-  "status": "ACTIVE",
+  "status": "CLOSED",
   "baseMainSha": "9273e061c4390286373d5b3a949d84f0d9b96e31",
   "claimedAt": "2026-10-04T06:29:00+09:00",
   "expiresAt": "2026-10-04T07:59:00+09:00",
-  "lastProgressAt": "2026-10-04T06:29:00+09:00",
+  "lastProgressAt": "2026-10-04T06:36:00+09:00",
   "expectedCompletionGate": "M2_1_CLEAN_BACKLOG_MAIN_DONE",
   "scope": "M2-1:PUBLISH:CLEAN_BACKLOG",
   "targets": [
     "o19:26_왕운중_1학기_기말_중2_기출.js",
     "o20:26_신흥중_1학기_기말_중2_기출.js"
   ],
-  "firstMissingClosureStep": "LATEST_MAIN_REFRESH",
+  "firstMissingClosureStep": "PUBLISH_MAIN_REF_UPDATE",
   "mainMutation": 0,
-  "result": null
+  "preparedBranch": "publish/m2/main-merge-20261004-0630-o19-o20",
+  "preparedHead": "42ebe4d1a1ebbfcd2ad073f76a79346de09be659",
+  "result": "WRITE_RECOVERY_DEBT",
+  "disposition": "REQUEUE_PUBLISH_ONLY"
 }
