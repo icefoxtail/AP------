@@ -23,8 +23,8 @@
   "exactCapabilityAndError": {
     "q6": "Current choices ③ and ⑤ are byte-identical; no authoritative original page is present in Git.",
     "q7": "Current distractors reference ㄱ·ㄷ·ㄹ·ㅁ·ㅅ while the stem only enumerates ㄴ·ㅂ·ㅇ·ㅈ.",
-    "q16": "Referenced problem asset archive/exams/original/middle/m2/1mid/assets/images/24_문성중_1학기_중간_중2_기출/q16.png returns GitHub 404.",
-    "q17": "Referenced problem asset archive/exams/original/middle/m2/1mid/assets/images/24_문성중_1학기_중간_중2_기출/q17.png returns GitHub 404.",
+    "q16": "Canonical archive/assets/images q16.png exists, but is an open-circle-at-minus-2 number line unrelated to the current polynomial text; D has a matching-name image but no original page context or provenance.",
+    "q17": "Canonical archive/assets/images q17.png exists, but shows balance scales unrelated to the current polynomial-division text; D has a matching-name image but no original page context or provenance.",
     "historyRecheck": "At ab9d9d2901a399fefa57a8fb54653ece8a354a5a the same q6/q7 defects and q16/q17 asset 404s persist; that historical file also has the wrong examTitle 25_진남중, so it is not authoritative."
   },
   "safeAttempts": [
@@ -59,7 +59,9 @@
       "status": "SUCCESS"
     }
   },
-  "requiredNextAction": "Use Codex Source Repair to locate the authoritative PDF/page/images or obtain an explicit user-authorized minimal source repair for q6/q7/q16/q17. Apply only source-confirmed changes, then run the actual canonical CREATE validator, persist validator receipt and CREATE receipt, remote-read back exact blobs, and transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "sourceRepairEvidence": "archive/data/r2e-intake/m2/24_문성중_1학기_중간_중2_기출.create.source-repair.json",
+  "sourceRepairStatus": "SOURCE_AUTHORITY_UNRESOLVED",
+  "requiredNextAction": "Obtain the exact original 2024 문성중 중2 1학기 중간 q6/q7/q16/q17 pages with adjacent question/page context, or verified page-level provenance for q16/q17 assets. Until then, preserve the four loci and keep canonical CREATE validation, CREATE receipt, CREATE_DONE, and READY_FOR_REVIEW1 closed.",
   "createDone": false,
   "readyForReview1": false,
   "passClaim": false,
