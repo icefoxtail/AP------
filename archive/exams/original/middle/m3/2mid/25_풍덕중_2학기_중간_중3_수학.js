@@ -65,7 +65,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q2-solution.svg",
     "solutionImageAlt": "빗변 AB=6, ∠B=30°인 직각삼각형 ABC",
     "solutionImageCaption": "30°의 맞은변 x와 이웃변 y를 빗변 AB에 연결한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -191,7 +191,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q6-solution.svg",
     "solutionImageAlt": "sin A=√5/3인 직각삼각형에서 AB=2, BC=√5, AC=3",
     "solutionImageCaption": "sin A로 정한 변 비와 피타고라스 길이를 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -227,7 +227,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q7-solution.svg",
     "solutionImageAlt": "BC를 공유하는 45°-45°-90°와 30° 직각삼각형",
     "solutionImageCaption": "두 삼각형에서 구한 공통 길이 BC로 AC를 결정한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -291,6 +291,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -421,7 +423,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
     "solutionImageAlt": "산 정상 A에서 터널 바닥 BC에 내린 H와 양쪽 직각삼각형",
     "solutionImageCaption": "BH와 HC를 삼각비로 구해 터널 길이 BC를 더한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -457,7 +459,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q14-solution.svg",
     "solutionImageAlt": "해설 도형: 오른쪽 원 $O$에서 $x$의 값은? [3점]",
     "solutionImageCaption": "해설의 핵심 관계: 같은 반지름 5에서 아래 현 반길이 4, 중심거리 3; 위 현 반길이 4이므로 x²+4²=5², x=3.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -491,7 +493,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q15-solution.svg",
     "solutionImageAlt": "해설 도형: 한 원에서 길이가 같은 현을 무수히 많이 그리면 원이 되는 이유는? [4점]",
     "solutionImageCaption": "해설의 핵심 관계: 같은 원의 같은 길이 현은 중심에서 같은 거리에 있고 각 현의 중점은 중심과 현을 잇는 수선 위에 있어 그 자취가 중심 O인 원.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -525,6 +527,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -560,7 +564,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q17-solution.svg",
     "solutionImageAlt": "해설 도형: 오른쪽 원 $O$에서 $\\angle x$의 크기는? [4점]",
     "solutionImageCaption": "해설의 핵심 관계: 중심에서 같은 거리인 두 현은 길이가 같아 삼각형 PBC에서 PB=BC; 꼭짓각 62°이므로 밑각 x=59°.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -596,7 +600,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q18-solution.svg",
     "solutionImageAlt": "해설 도형: 다음 $\\triangle ABC$가 원 $O$에 외접하고 세 점 $P$, $Q$, $R$은 그 접점일 때, $x$의 값은? [4점]",
     "solutionImageCaption": "해설의 핵심 관계: AB=3, AC=6, BC=7인 내접원 접선에서 C의 두 접선 길이 CQ=CR=5.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -630,6 +634,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -666,7 +672,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q20-solution.svg",
     "solutionImageAlt": "해설 도형: 다음은 원 밖의 한 점에서 그 원에 그은 두 접선의 길이가 같음을 설명하는 과정의 일부이다. 다음 빈칸에 들어갈 말로 알맞지 않은 것은? [4점",
     "solutionImageCaption": "해설의 핵심 관계: 접점에서 OA⊥PA, OB⊥PB이고 OP 공통, OA=OB이므로 직각삼각형 PAO와 PBO가 RHS 합동, PA=PB.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -721,7 +727,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q22-solution.svg",
     "solutionImageAlt": "해설 도형: [서술형2] 다음 그림과 같이 순돌이가 나무에 올라간 고양이를 구출하려고 한다. 고양이가 있는 $C$ 지점에서 지면에 수선을 내려 만나는 점을 ",
     "solutionImageCaption": "해설의 핵심 관계: BD=AE=4.5, tan54°=CD/BD=1.38 gives CD=6.21; CE=CD+DE=7.71.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -775,6 +781,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -802,6 +810,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   }
 ];
 window.examTitle = "25_풍덕중_2학기_중간_중3_수학";

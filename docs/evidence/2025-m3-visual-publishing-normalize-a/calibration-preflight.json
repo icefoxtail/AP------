@@ -1,0 +1,112 @@
+{
+  "task": "2025 중3 2학기 기존 SVG 5개교 출판 품질 통일",
+  "calibrationReadAt": "2026-10-04 Asia/Seoul",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:ab37a1bdb3343be7b31db66ac2ee204abec339f35a4bc8eb9ca6252f92656f99",
+        "gitBlobSha": "7f4a3ee06170fc8aa426080e58f7b33bc351b62f"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 15,
+        "solutionSha256": "sha256:4bec2ff701e8d84cef228175b4c01be8f28417e7ac0e3e8a89f530e9b5ff472c",
+        "solutionExcerpt": "세 직선이 만드는 삼각형의 모양부터 확인한다.\n직선\n$y=3x$\n과\n$y=-\\dfrac13x$\n의 기울기의 곱은\n$3\\cdot",
+        "observation": "실제 SVG를 읽어 보니 좌표축·세 직선·외접원과 우측 관계판이 분리되어 있고, 한국어 설명과 수학 글꼴 역할도 분리되어 있다. title 15px, note 11.5px, label 13px이며 작은 주석 글씨가 현재 12px 목표를 못 채울 수 있어 target floor에는 12px 목표를 적용한다.",
+        "solutionImage": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q15-solution.svg",
+        "solutionSvgSha256": "sha256:64c2538e2bcf43c8b3ab2eebfdd50d4b3bff1b567f2eabbc57b7ed166d282f80"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 16,
+        "solutionSha256": "sha256:bda43b9c32df1594830feca3bf94c90cd78767872f4663de16b432ffa9a9a84c",
+        "solutionExcerpt": "먼저 점 $A$를 중심으로 하는 원의 반지름을 구한다.\n점 $A(-4,-3)$에서 $x$축까지의 거리는 $3$이므로\n이 원의 ",
+        "observation": "반사로 최단 경로를 찾는 장면과 접점현으로 넓이를 계산하는 장면을 한 SVG 안에 두 패널로 구분했다. 축/보조/원/현의 stroke 계층과 한국어 설명·수학 기호 글꼴 분리를 확인했다. 10.5px small 및 11.5px note는 현재 target의 모바일 최소 floor를 만족한다고 간주하지 않는다.",
+        "solutionImage": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q16-solution.svg",
+        "solutionSvgSha256": "sha256:2c81c4efdb6ede8f5663737f1b488dee193e1a26e6b878ddd5478a562bd1c5e5"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 14,
+        "solutionSha256": "sha256:d5eb924d91802b5ffe0c564517765757fe7ea9feef3d661ba2f2e6de6b4021bd",
+        "solutionExcerpt": "점 $I$는 삼각형 $ABC$의 내심이므로\n직선 $AI$는 $\\angle A$의 이등분선이다.\n직선 $AI$와 선분 $BC$의",
+        "observation": "삼각형, angle-bisector segment, 내분비를 좌표기하 panel과 설명 panel로 나눴다. title 17px, labels 12px, note 12px의 계층과 한국어 중심 문구를 확인했다. AI의 angle ownership 같은 semantic facts는 현재 coordinate/source authority에서 재검해야 하며 sample 값은 복사하지 않는다.",
+        "solutionImage": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q14-solution.svg",
+        "solutionSvgSha256": "sha256:7fa522e9ff8d0453c52acbe984d67fbd856888cb8d096211985553bedc2c59ab"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 21,
+        "solutionSha256": "sha256:3b1db3c72a8f0fe52b66865319ba4b7a57c7374a8e2b7ec36cd3bbed18364ac9",
+        "solutionExcerpt": "조건\n$2\\overline{BC}=3\\overline{AC}$\n에서\n$AC:BC=2:3$이다.\n점 $C$는 직선 $AB$ 위에",
+        "observation": "직선 위에서 가능한 두 점 위치를 실제로 분리해 보여 주며 직선·구간·점의 관계를 유지한다. text/math/point style을 읽고, 11px 보조 label을 현재 12px 목표보다 낮은 참고 사례로 표시했다. target은 semantic geometry를 재작성하지 않고 style floor만 비교한다.",
+        "solutionImage": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q21-solution.svg",
+        "solutionSvgSha256": "sha256:5a22139e9cc992dbfd1a0d1d885eb7c43d4ef7873f91fa76378a48892426e674"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b6f550df83f474d16431d980a0ad80c1a13b0f222e58b1109343c35c42c64f18",
+        "solutionExcerpt": "직선 $y=x$에 대하여 점 $A(5,3)$을 대칭이동한 점을 $A'(3,5)$라 하자. $P$는 $y=x$ 위에 있으므로 $",
+        "observation": "축·격자·반사선·원래 점/대칭점과 최소경로 A′B가 구분되고, 핵심 관계는 별도 패널에 모였다. graph-style version, 회색 grid, colored decisive relation, 11px label/16px title 토큰을 확인했다. 11px은 hard floor 이상이나 target에서는 12px을 기본 목표로 한다.",
+        "solutionImage": "archive/assets/images/25_순천여고_2학기_중간_고1_기출/q06-solution.svg",
+        "solutionSvgSha256": "sha256:a9892a7a9e14557bc4f1713894d39628abad9d9b479d4b74ea52164686ff85ef"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 21,
+        "solutionSha256": "sha256:627448c6b9bf60c5b7c2a40cb56744916338f6e6b18ba6f3b049a027694e0cc1",
+        "solutionExcerpt": "원의 중심은 $O(0,0)$이고 반지름은 $\\sqrt2$이다. 또\n$OA=\\sqrt{2^2+4^2}=2\\sqrt5$이다.\n접점",
+        "observation": "원·접선·접점현과 점 A의 관계를 좌표 panel에 표시하고 핵심 수치를 분리했다. math/point 12px, side-note 11px, title 15px를 확인했으며, 좁은 보조 설명은 12px 목표에 맞게 처리한다. 좌표와 접선 관계는 target 변경 시 별도 재계산한다.",
+        "solutionImage": "archive/assets/images/25_순천여고_2학기_중간_고1_기출/q21-solution.svg",
+        "solutionSvgSha256": "sha256:e8756aa7b00e1974a57e8a2ae146994ab393e64136b65b232d25189b08f7da54"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "sha256:4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "gitBlobSha": "6184b4f2da7e098575b19cc8bac5c61fe9c513c7"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/01_25_왕운중_2학기_중간_중2_수학_q7_MISSING_OWNER_RAY_FAIL.svg",
+        "sha256": "sha256:3dcb627ce00a783096a04c65f45f65b4bddf3e72eaa60227c9718bdb8e0b4c9f",
+        "gitBlobSha": "74d146e75f756584458c7a4b30af84c4696559bd"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-28/README.md",
+        "sha256": "sha256:64334f9c22bb25e9bbf226d7f2dff79e55b1835966156970b1cd496a2efc0caa",
+        "gitBlobSha": "90b42e2056a57a4fae356ae7434063c0ad69b6a6"
+      }
+    ]
+  }
+}

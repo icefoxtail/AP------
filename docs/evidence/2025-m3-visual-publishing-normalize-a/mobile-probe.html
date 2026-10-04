@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Archive 390px mobile profile probe</title>
+<style>body{margin:0;padding:0;background:#f1f5f9;font:14px sans-serif}.slot{width:390px;height:844px;border:1px solid #94a3b8;overflow:hidden}.slot iframe{display:block;width:390px;height:844px;border:0}</style>
+<div class="slot"><iframe id="archive-frame"></iframe></div>
+<script>
+const params=new URLSearchParams(location.search);
+const exam=params.get("data")||"exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js";
+const question=params.get("q");
+const qs=new URLSearchParams({mode:"sol",qpp:"4",fit:"screen",data:exam});
+if(question)qs.set("q",question);
+document.querySelector("#archive-frame").src="/archive/engine.html?"+qs.toString();
+</script>
