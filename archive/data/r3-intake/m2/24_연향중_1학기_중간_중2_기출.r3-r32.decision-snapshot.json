@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_TARGETED_DECISION_SNAPSHOT_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R3",
+  "lane": "R3-2",
+  "canonicalOrdinal": 5,
+  "examUid": "m2/1mid/24-yeonhyang",
+  "examFile": "24_연향중_1학기_중간_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js",
+  "branch": "work/middle/m2/24-yeonhyang-1mid-r3-2-20261004-2347",
+  "claimInputHead": "5abf89702a8969a460365094c991a008ea67ac07",
+  "latestMainAtClaim": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
+  "inputArtifactSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
+  "finalArtifactSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
+  "inputArtifactSha256": "sha256:38e61f187e049b23a167180e29548b597afcc019dd32a95e56399ea5401cbd1a",
+  "upstream": {
+    "review2ReceiptBlob": "359cfba552e9ad081f660c284eb896fe6718a52e",
+    "review2ValidatorBlob": "0fea92aac20aa962ac98aaa699f0530d4d74411c",
+    "review2EvidenceBlob": "f7c972819bf5ccf642c636188260b346ecb396dd",
+    "review2DecisionBlob": "8e24452c343dfe22c2ff379c008f771ae876b3fe",
+    "validatorRun": 37209275900,
+    "validatorJob": 111456944066,
+    "state": "REVIEW2_DONE",
+    "nextStage": "READY_FOR_R3",
+    "itemHoldQids": [
+      9
+    ]
+  },
+  "currentAuthority": {
+    "r3CanonicalBlob": "b2d3134a2db1129569d53b04e1afcf2cd0f09978",
+    "goldenCanonicalBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "physicalEvidenceCanonicalBlob": "32f212619a31df15add413ebe8eccdb86941cec1",
+    "auditMode": "TARGETED_PER_CURRENT_OVERRIDE"
+  },
+  "calibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "goldenRefs": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js@7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js@eb8776d19989f8f4219f4b80db0daf72310109cd"
+    ],
+    "negativeRef": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md@f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+  },
+  "targetedAudit": {
+    "openQids": [
+      9
+    ],
+    "q9": {
+      "currentStem": "(25/3)^a = 5^b/81; current stem asks for a+b",
+      "currentChoicesFormat": "ordered pairs (a,b)",
+      "currentAnswer": "④",
+      "independentMath": {
+        "a": 4,
+        "b": 8,
+        "sum": 12
+      },
+      "sourceExact": "HOLD",
+      "answerMath": "HOLD",
+      "solutionMath": "PASS",
+      "curriculum": "PASS",
+      "meta": "PASS",
+      "runtimeString": "PASS",
+      "finding": "Stem asks for a numeric sum while choices encode ordered pairs; printed source pixels are required to determine the source-exact repair."
+    },
+    "directDependencies": [
+      "q9.content",
+      "q9.choices",
+      "q9.answer",
+      "q9.solution",
+      "q9 direct metadata only if source wording changes"
+    ],
+    "lockedScopeMutationCount": 0,
+    "productionArtifactMutationCount": 0
+  },
+  "sourceLookup": {
+    "sourceFile": "2024_연향중2_수학_1중간_문제지.pdf",
+    "result": "LOCATOR_ONLY_NO_PIXEL_BYTES",
+    "attempts": [
+      "primary catalog source inaccessible in current web capability",
+      "alternate catalog source inaccessible in current web capability",
+      "direct container source fetch unavailable",
+      "Library search found catalog records but no original PDF bytes/pages"
+    ],
+    "requiredEvidence": "Direct original PDF/page pixel inspection of q9 printed stem and all choices."
+  },
+  "disposition": "SOURCE_REPAIR_REQUIRED",
+  "openQids": [
+    9
+  ],
+  "sourceRepairRequiredCount": 1,
+  "firstMissingClosureStep": "SOURCE_PDF_PAGE_Q9_PIXEL_CONFIRMATION",
+  "passClaim": false,
+  "r3Pass": false,
+  "releaseEligible": false
+}
