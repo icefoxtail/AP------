@@ -1,6 +1,6 @@
 {
   "schemaVersion": "m2-1-create-handoff-v1",
-  "status": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "status": "CODEX_SOURCE_REPAIR_DONE_SOURCE_FREE_CONTINUATION",
   "queue": "CODEX_SOURCE_REPAIR_QUEUE",
   "thanosEligible": false,
   "canonicalOrdinal": 15,
@@ -8,26 +8,30 @@
   "examPath": "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
   "productionBranch": "work/middle/m2/19-yeonhyang-1mid-temp-create3-20261004-1928",
   "productionHead": "46b27739859dac79eee1d04aa64388f557b72d8d",
-  "finalArtifactSha": "91572cf975865fccac16a9ea974ec4ccd55fa664",
+  "finalArtifactSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
   "metadataBlob": "650f08aff45eec9931260b6ee1dabff09a416c4b",
   "evidenceBlob": "9b65c1de3c8864a3c1f684531230b3b4121bb5f1",
-  "completedStep": "protected source parity 24/24 + fresh solution attempt 24/24 + resolved solution 23/24 + metadata 24/24 + visual triage 24/24 + physical evidence",
-  "firstMissingClosureStep": "SOURCE_UNVERIFIED_Q5_MULTIPLE_CORRECT_CHOICES",
+  "completedStep": "D_SOURCE_CONFIRMED_TARGETED_MINIMAL_REPAIR",
+  "firstMissingClosureStep": "SOURCE_FREE_CREATE_CONTINUATION",
   "exactCapabilityAndError": [
     {
       "qid": 5,
-      "error": "Current extracted choices make both ② a·a^4·a^6=a^11 and ③ (a^3)^2·a^3=a^9 mathematically true, while stored answer is ② only. No authoritative original q5 page/answer evidence was found in current Git/Notion sources."
+      "error": "Before repair, JS choice ② differed from the exact D page-1 option. Choice ② has been restored from D; current source math gives unique answer ③."
     },
     {
       "step": "canonical CREATE validator",
-      "error": "NOT_RUN because unresolved source truth would make PASS/receipt invalid."
+      "error": "NOT_RUN in this source-repair closure; source-free CREATE continuation remains assigned."
     }
   ],
-  "requiredNextAction": "Codex Source Repair must locate authoritative q5 option text or answer key, apply only source-confirmed repair, then run the actual canonical CREATE validator, persist validator receipt and CREATE receipt, remote-read back, and transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "requiredNextAction": "Continue source-free CREATE from the repaired artifact; run only assigned targeted CREATE continuation checks.",
   "producerOwnership": "RELINQUISHED",
   "sameTargetReselection": "DO_NOT_RESELECT_UNLESS_CURRENT_REASSIGN_TO_CREATE",
   "createDone": false,
   "readyForReview1": false,
   "passClaim": false,
-  "createdAtKst": "2026-10-04 19:38 KST"
+  "createdAtKst": "2026-10-04 19:38 KST",
+  "latestMainObserved": "c43df24bdd1edb50f2e3e699178375ff75d44f3a",
+  "blockedQids": [],
+  "sourceRepairEvidencePath": "archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json",
+  "reason": "Exact D q5 choice ② restored; independent evaluation gives the unique correct choice ③. Student-facing solution added."
 }
