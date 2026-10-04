@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "stage": "CREATE",
+  "canonicalOrdinal": 21,
+  "executionMode": "ACTUAL_NODE_CLI_GITHUB_ACTIONS_PULL_REQUEST_VALIDATION",
+  "workflowRunId": 37125231627,
+  "workflowJobId": 111209073568,
+  "workflowHeadSha": "aa8eeb420a1cf1bd645f16f24f0534aacaf42c77",
+  "validationBranch": "work/middle/m2/26-dongsan-1final-thanos5-current-20261003-2055",
+  "validationPullRequest": 178,
+  "calibrationValidatorPath": "archive/tools/solution-calibration-gate.mjs",
+  "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "canonicalValidatorPath": "archive/tools/review-evidence-gate.mjs",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "examGitBlob": "20fbda77de8b761848b59a26956f9171dc068d10",
+  "examSha256": "sha256:ba49721d6e32e370e4c9a02c98ec667442a3374ca0f5abee9802fcceabc15e02",
+  "physicalEvidencePath": "archive/data/r2e-intake/m2/26_동산중_1학기_기말_중2_기출.create.physical-evidence.json",
+  "physicalEvidenceGitBlob": "37e1bb56c14965c597166bda681c51368f32332e",
+  "metaPayloadPath": "archive/data/r2e-intake/m2/26_동산중_1학기_기말_중2_기출.create.meta-v2.metadata.json",
+  "metaPayloadGitBlob": "5c0eaf828a694653d46b5db38ad3d0d606f7009a",
+  "calibrationPreflight": {
+    "ok": true,
+    "stage": "CREATE",
+    "gate": "CALIBRATION_PREFLIGHT",
+    "questionCount": 24,
+    "issues": []
+  },
+  "result": {
+    "ok": true,
+    "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+    "stage": "CREATE",
+    "examSha256": "sha256:ba49721d6e32e370e4c9a02c98ec667442a3374ca0f5abee9802fcceabc15e02",
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 2,
+    "itemHoldQids": [
+      6,
+      20
+    ],
+    "disposition": "PASS_WITH_ITEM_HOLDS",
+    "issues": []
+  },
+  "repositoryCiContext": {
+    "overallRunConclusion": "failure",
+    "targetCanonicalGate": "PASS_WITH_ITEM_HOLDS",
+    "unrelatedBlockingFailures": 7,
+    "note": "The exact o21 CREATE canonical gate passed. The workflow's overall failure is from seven unrelated repository-wide tests and is not used as target-local validator failure authority."
+  }
+}
