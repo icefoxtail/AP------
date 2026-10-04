@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "MASTER_LEASE_v2",
+  "masterLeaseId": "M2-1-THANOS-MASTER-1-o3-r3-source-repair-20261004-1711",
+  "leaseKey": "d39b9b38e1950f079f344d73380b5740c99fe50a5afa5dd07ea6f6c0296b739d",
+  "owner": "THANOS-MASTER-1",
+  "examUid": "m2/1mid/25-yeonhyang",
+  "stage": "R3",
+  "inputArtifactSha": "d93fcc046b398155032fa7117297778db38ef5db",
+  "targetBranch": "work/middle/m2/25-yeonhyang-1mid-r3-1-20261004-1143",
+  "targetHeadAtClaim": "1c4ca87b86deba907aed10c8115b7aa91cb8fd97",
+  "expectedTargetHead": "1c4ca87b86deba907aed10c8115b7aa91cb8fd97",
+  "repairFingerprint": "o3-r3-q23-source-pixel-2025-yeonhyang",
+  "failedGate": "SOURCE_PROBLEM_PIXEL_MISSING_Q23",
+  "openQids": [
+    23
+  ],
+  "openFiles": [
+    "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+    "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+    "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.checkpoint.json",
+    "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.decision-snapshot.json",
+    "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.physical-evidence.json"
+  ],
+  "openFields": [
+    "q23.image",
+    "q23.tags",
+    "q23.solution",
+    "q23 sourceExact",
+    "q23 answerMath",
+    "q23 solutionMath",
+    "q23 meta"
+  ],
+  "firstMissingClosureStep": "SOURCE_REPAIR_Q23_ORIGINAL_PDF_PAGE_PIXEL_RECOVERY",
+  "rescueReason": "ORCHESTRATOR_RESCUE_QUEUE_STARVATION_GUARD_R3_P2_ASSIGNED_THANOS1",
+  "claimedAt": "2026-10-04T17:11:41+09:00",
+  "expiresAt": "2026-10-04T18:41:41+09:00",
+  "lastProgressAt": "2026-10-04T17:11:41+09:00",
+  "expectedCompletionGate": "R3_PASS->RELEASE_QUEUE",
+  "status": "ACTIVE",
+  "claimMode": "ATOMIC_LEASE_KEY_BRANCH_CAS"
+}
