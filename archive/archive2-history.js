@@ -37,7 +37,7 @@
       // History grade means the students' target class grade. The paper's
       // own grade/subject stays separate so cross-grade assignments remain legible.
       const targetGrade = gradeOf(assignment.class_grade) || gradeOf(cls?.grade);
-      const contentGrade = gradeOf(assignment.grade_label) || gradeOf(meta.grade) ||
+      const contentGrade = gradeOf(assignment.content_grade) || gradeOf(assignment.grade_label) || gradeOf(meta.grade) ||
         gradeOf(exam?.sourceGrade || exam?.grade);
       const rawSubject = text(assignment.subject) || text(meta.subject);
       const subjectOptions = core.subjectProjectionOptions(contentGrade);
