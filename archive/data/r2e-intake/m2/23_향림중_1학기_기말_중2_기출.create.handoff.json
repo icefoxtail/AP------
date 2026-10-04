@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CLOSURE_HANDOFF_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04",
+  "canonicalOrdinal": 30,
+  "stage": "CREATE",
+  "status": "CREATE_CLOSURE_DEBT",
+  "examUid": "o30",
+  "examFile": "23_향림중_1학기_기말_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1final/23_향림중_1학기_기말_중2_기출.js",
+  "inputBaselineGitBlob": "58a04ac18e31fcf48d8cd8ff7e1d56bce1a50d95",
+  "productionBranch": "work/middle/m2/23-hyangrim-1final-temp-create4-20261004-1436",
+  "productionHead": "148d8820bf4fd01f99f6db6ef0f3b50c1a3bbf70",
+  "finalArtifactGitBlob": "a9d9b7bd800e4eb4fa71b929d52cc0bd04af0e31",
+  "finalArtifactSha256": "sha256:e8bc853d04b0f2f5e5ac6ebe71e6bb488f6a39b5b984762005da31b733eccb37",
+  "physicalEvidenceGitBlob": "b6c6d0726a81cffc54c6036446fdc6970c30b65c",
+  "metaPayloadGitBlob": "7dd9b055de792fd10359e209f9a81cb8ecf7f5d0",
+  "pullRequest": {
+    "number": 207,
+    "url": "https://github.com/icefoxtail/AP------/pull/207",
+    "draft": true,
+    "headSha": "148d8820bf4fd01f99f6db6ef0f3b50c1a3bbf70"
+  },
+  "workflowReadback": [
+    {
+      "name": "Archive Registration Sync",
+      "runId": 37184051510,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "CI",
+      "runId": 37184051514,
+      "status": "completed",
+      "conclusion": "failure",
+      "summary": "188 PASS / 4 FAIL; failures are in teacher preview, target-selection UI, print mixer, and student portal contracts, with no target exam path in failure output."
+    }
+  ],
+  "completedStep": "CREATE_PRODUCTION_META_SOURCE_PIXEL_PHYSICAL_EVIDENCE_PR_ACTIONS_REMOTE_READBACK",
+  "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR_EXECUTOR_READBACK",
+  "exactCapabilityError": [
+    "Available PR/Actions path ran generic repository CI, not the canonical target-scoped CREATE validator and did not emit a validator receipt.",
+    "Generic CI run 37184051514 failed in four unrelated repository contract suites: apmath-student-teacher-preview, archive-target-selection-phase3-contract, print-render-authority-mixer-ecosystem, and student-portal-omr-history-routes.",
+    "No connected executor is exposed for canonical solution-calibration-gate preflight plus review-evidence-gate --stage CREATE or for binding validator/CREATE receipts."
+  ],
+  "requiredNextAction": "Fresh-revalidate production branch/head/artifact/evidence; run canonical solution-calibration-gate preflight and review-evidence-gate --stage CREATE in an available executor; bind exact run/job/head and artifact/evidence blobs into validator receipt; create CREATE receipt; remote-read back CREATE_DONE -> READY_FOR_REVIEW1. Do not treat generic CI or this handoff as PASS.",
+  "ownerState": "RELINQUISHED_TO_THANOS",
+  "r1Eligible": false,
+  "mutationScope": "o30 only",
+  "unrelatedMutationCount": 0,
+  "rescueQueueRegistration": "GIT_PHYSICAL_FALLBACK",
+  "rescueQueueRef": "PENDING_FIRST_HANDOFF_COMMIT",
+  "stateStorageMirror": {
+    "workPage": "NOT_REQUIRED_PER_NORMAL_RUN_POLICY",
+    "notionBoard": "PENDING_COMPACT_LANE_UPDATE",
+    "productionBlocking": false,
+    "recovery": "THANOS/ORCHESTRATOR must consume this Git physical rescue ref from RESCUE_QUEUE."
+  }
+}
