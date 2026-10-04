@@ -2611,12 +2611,12 @@ function getIndexClassGrade(row) {
     const explicit = String(row?.grade || row?.grade_label || row?.class_grade || '').trim();
     if (explicit) return explicit;
     const text = `${row?.name || ''} ${row?.class_name || ''}`;
-    return ['중1', '중2', '중3', '고1', '고2'].find(grade => text.includes(grade)) || '';
+    return ['중1', '중2', '중3', '고1', '고2', '고3'].find(grade => text.includes(grade)) || '';
 }
 
 function getIndexAvailableGrades(classes) {
     const grades = new Set((classes || []).map(getIndexClassGrade).filter(Boolean));
-    return ['중1', '중2', '중3', '고1', '고2'].filter(grade => grades.has(grade));
+    return ['중1', '중2', '중3', '고1', '고2', '고3'].filter(grade => grades.has(grade));
 }
 
 function getIndexClassTeacherId(row) {

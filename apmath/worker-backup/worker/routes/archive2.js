@@ -13,6 +13,7 @@ import {
   uniqueIds,
   validateApprovedMixedQuestions,
   validateNormalBlueprint,
+  checkTargetClassGrade,
   checkTargetGrade,
   checkTargetGrades,
   resolveSavedPaperSourceGrades,
@@ -160,10 +161,8 @@ export async function handleArchive2(
       savedSnapshot = await readAndVerifySavedSnapshot(savedPaper);
       if (savedSnapshot.questions.length !== Number(savedPaper.question_count))
         fail("저장한 시험지 문항 수가 일치하지 않습니다.", 409);
-      checkTargetGrades(
-        classRow,
-        await resolveSavedPaperSourceGrades(env, savedSnapshot.questions),
-      );
+      await resolveSavedPaperSourceGrades(env, savedSnapshot.questions);
+      checkTargetClassGrade(classRow);
       title = savedPaper.title;
       file = `MIXED:archive2-saved-${paperId}-${assignmentBatchId}`;
       if (assignmentOperation) {

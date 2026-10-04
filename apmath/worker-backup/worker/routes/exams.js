@@ -1956,6 +1956,11 @@ export async function handleExams(request, env, teacher, path, url) {
           return jsonResponse({ success: true, assignments: [], limit: 0 });
 
         const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
+        const savedPaperColumns = assignmentColumns.has('saved_paper_id')
+          ? await getTableColumnSet(env, 'archive_saved_papers')
+          : new Set();
+        const includeSavedPaperGrade = assignmentColumns.has('saved_paper_id') &&
+          savedPaperColumns.has('id') && savedPaperColumns.has('grade');
         const classColumns = await getTableColumnSet(env, 'classes');
         const recipientColumns = await getTableColumnSet(env, 'class_exam_assignment_recipients');
         const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
@@ -2050,6 +2055,7 @@ export async function handleExams(request, env, teacher, path, url) {
           assignmentColumns.has('pdf_status') ? 'a.pdf_status' : "'pending' AS pdf_status",
           assignmentColumns.has('pdf_error') ? 'a.pdf_error' : "'' AS pdf_error",
           assignmentColumns.has('saved_paper_id') ? 'a.saved_paper_id' : 'NULL AS saved_paper_id',
+          includeSavedPaperGrade ? 'sp.grade AS content_grade' : 'NULL AS content_grade',
           assignmentColumns.has('cancelled_at') ? 'a.cancelled_at' : 'NULL AS cancelled_at',
           `${recipientCount} AS recipient_count`, `${submittedCount} AS submitted_count`,
           `${reviewOnlyCount} AS review_only_count`, `${replacementId} AS replacement_assignment_id`,
@@ -2060,6 +2066,7 @@ export async function handleExams(request, env, teacher, path, url) {
           SELECT ${projection.join(',\n            ')}
           FROM class_exam_assignments a
           LEFT JOIN classes c ON c.id = a.class_id
+          ${includeSavedPaperGrade ? 'LEFT JOIN archive_saved_papers sp ON sp.id = a.saved_paper_id' : ''}
           ${conditions.length ? `WHERE ${conditions.join(' AND ')}` : ''}
           ORDER BY a.exam_date DESC, a.updated_at DESC, a.id DESC
           LIMIT ?
