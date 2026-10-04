@@ -362,7 +362,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "단답형",
+      "객관식",
       "계산",
       "도형"
     ],
@@ -514,7 +514,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='120' viewBox='0 0 160 120'><path d='M80,20 L30,100 L130,100 Z M30,100 L80,75 L130,100' fill='none' stroke='black'/><circle cx='80' cy='75' r='2' fill='black'/><text x='75' y='15' font-size='10'>A</text><text x='20' y='105' font-size='10'>B</text><text x='135' y='105' font-size='10'>C</text><text x='78' y='72' font-size='9'>I</text><text x='70' y='92' font-size='9'>110°</text></svg>",
+    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='130' viewBox='0 0 160 130'><path d='M80,18.84 L45,115 L115,115 Z M45,115 L80,90.49 L115,115' fill='none' stroke='black'/><circle cx='80' cy='90.49' r='2' fill='black'/><text x='76' y='14' font-size='10'>A</text><text x='35' y='122' font-size='10'>B</text><text x='119' y='122' font-size='10'>C</text><text x='83' y='88' font-size='9'>I</text><text x='68' y='108' font-size='9'>110°</text></svg>",
     "choices": [
       "$37^\\circ$",
       "$40^\\circ$",
@@ -582,7 +582,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><svg width='160' height='120' viewBox='0 0 160 120'><circle cx='80' cy='60' r='50' fill='none' stroke='black'/><path d='M80,10 L30,60 L130,60 Z M80,60 L80,10 M80,60 L30,60 M80,60 L130,60' fill='none' stroke='black'/><text x='75' y='55' font-size='10'>O</text><text x='25' y='35' font-size='9'>30°</text><text x='105' y='35' font-size='9'>40°</text></svg>",
+    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><svg width='160' height='130' viewBox='0 0 160 130'><circle cx='80' cy='65' r='50' fill='none' stroke='black'/><path d='M80,15 L36.70,90 L129.24,73.68 Z M80,65 L80,15 M80,65 L36.70,90 M80,65 L129.24,73.68' fill='none' stroke='black'/><text x='75' y='69' font-size='10'>O</text><text x='61' y='38' font-size='9'>30°</text><text x='91' y='38' font-size='9'>40°</text><text x='76' y='12' font-size='10'>A</text><text x='27' y='96' font-size='10'>B</text><text x='132' y='78' font-size='10'>C</text></svg>",
     "choices": [
       "$18^\\circ$",
       "$20^\\circ$",
@@ -606,7 +606,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "1단계: 삼각형의 외심에서 세 꼭짓점에 이르는 거리는 같으므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다.\n2단계: 외심의 성질에 의해 $\\angle OAB + \\angle OBC + \\angle OCA = 90^\\circ$가 성립한다.\n3단계: $30^\\circ + \\angle OBC + 40^\\circ = 90^\\circ$에서 $\\angle OBC = 20^\\circ$이다.",
+    "solution": "1단계: 외심 $O$에 대하여 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다. 그림에서 $\\angle OAB=30^\\circ$, $\\angle OAC=40^\\circ$이고, $\\overline{OA}=\\overline{OC}$이므로 $\\angle OCA=40^\\circ$이다.\n2단계: $\\angle OBC=x$라 하면 $\\overline{OB}=\\overline{OC}$이므로 $\\angle BCO=x$이다. 따라서 $\\angle A=70^\\circ$, $\\angle B=30^\\circ+x$, $\\angle C=40^\\circ+x$이다.\n3단계: 삼각형의 내각의 합에서 $70+(30+x)+(40+x)=180$이므로 $2x=40$, $x=20^\\circ$이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
