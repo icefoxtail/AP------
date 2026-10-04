@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_REVALIDATION_DECISION_SNAPSHOT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R3",
+  "lane": "R3-1",
+  "examUid": "m2/1mid/25-wangun",
+  "canonicalOrdinal": 2,
+  "examPath": "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+  "inputArtifactSha": "765f4a05e0af5b166fa0aa55c2efb0b4be09c8bf",
+  "finalArtifactSha": "765f4a05e0af5b166fa0aa55c2efb0b4be09c8bf",
+  "currentMain": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
+  "branch": "work/middle/m2/25-wangun-1mid-r3-1-revalidation-20261005-0113",
+  "branchHeadAtDecision": "8b04fc8cfb7f70f959d9a681ea53a7e619a4f78f",
+  "canonicals": {
+    "r3": "b2d3134a2db1129569d53b04e1afcf2cd0f09978",
+    "golden": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "physicalEvidence": "32f212619a31df15add413ebe8eccdb86941cec1"
+  },
+  "evidence": {
+    "path": "archive/data/r3-intake/m2/25_왕운중_1학기_중간_중2_기출.r3-r32.physical-evidence.json",
+    "blob": "c355d021f4dd1268445da552d1afca09ab48a8cb",
+    "decision": "current repaired artifact unchanged; source confirmation closed all source debt; current reopen still requires a fresh actual R3 validator"
+  },
+  "sourceRepairConfirmation": {
+    "path": "archive/data/r3-intake/m2/25_왕운중_1학기_중간_중2_기출.r3-r32.source-repair-confirmation.json",
+    "blob": "e8e1f52d404537db22bdf86f687f2b9d80a8187d",
+    "status": "D_SOURCE_CONFIRMED_SOURCE_FREE_CONTINUATION",
+    "confirmedQids": [
+      1,
+      3,
+      6,
+      9,
+      11,
+      14,
+      15
+    ],
+    "openQids": [],
+    "examMutationCount": 0
+  },
+  "openQids": [],
+  "repairLocus": [
+    "q1",
+    "q3",
+    "q6",
+    "q7",
+    "q9",
+    "q11",
+    "q14",
+    "q15"
+  ],
+  "lockedScopeMutationCount": 0,
+  "examMutationCount": 0,
+  "completedStep": "Fresh CURRENT/main/canonical readback and latest-main branch materialization completed; current source-repaired exam blob is byte-identical to the evidence-bound final artifact.",
+  "firstMissingClosureStep": "ACTUAL_CANONICAL_R3_VALIDATOR_ON_CURRENT_MAIN",
+  "capabilityErrors": [
+    "PR_WRITE_RUNTIME_GATE_BLOCKED_AFTER_TWO_SAFE_RETRIES",
+    "DIRECT_WORKFLOW_DISPATCH_WRITE_ACTION_NOT_EXPOSED",
+    "LOCAL_GIT_NETWORK_DNS_UNAVAILABLE"
+  ],
+  "requiredNextAction": "THANOS must continue from this exact branch and artifact, run the current R3 stage validator on a dedicated validation surface, then bind new validator/R3 receipts and a release manifest before RELEASE_QUEUE.",
+  "state": "R3_CLOSURE_DEBT",
+  "rescueQueue": {
+    "queue": "RESCUE_QUEUE",
+    "entryKey": "R3_CLOSURE_DEBT:m2/1mid/25-wangun",
+    "status": "REGISTERED"
+  },
+  "ownerState": "RELINQUISHED_TO_THANOS",
+  "autoReselectByR3": false,
+  "r3PassDeclared": false,
+  "releaseEligible": false
+}
