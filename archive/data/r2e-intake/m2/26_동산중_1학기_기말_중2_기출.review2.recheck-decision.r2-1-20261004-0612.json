@@ -1,0 +1,155 @@
+{
+  "schema": "JS_ARCHIVE_M2_R2_RECHECK_DECISION_v1",
+  "stage": "R2",
+  "lane": "R2-1",
+  "canonicalOrdinal": 21,
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "examFilename": "26_동산중_1학기_기말_중2_기출.js",
+  "inputReview1ReceiptBlob": "41a7b48593617cd037a33aaaf0d078eff49cd0e7",
+  "inputArtifactSha": "47d67b38feb660c92edb2583b12ace61f9d3fd60",
+  "reviewAttemptId": "R2:m2/1final/26-dongsan:47d67b38feb660c92edb2583b12ace61f9d3fd60:1",
+  "decisionMode": "INDEPENDENT_RECALC_SNAPSHOT_THEN_FORMAL_COMPARE",
+  "goldenCalibration": "PASS",
+  "questionDecisions": [
+    {
+      "qid": 1,
+      "status": "PASS",
+      "reasoning": "x=6 has multiple divisors, so only choice ① is not a function."
+    },
+    {
+      "qid": 2,
+      "status": "PASS",
+      "reasoning": "f(3)=3+2=5, choice ④."
+    },
+    {
+      "qid": 3,
+      "status": "PASS",
+      "reasoning": "Only y=x-3 is of the form y=ax+b with a≠0, choice ③."
+    },
+    {
+      "qid": 4,
+      "status": "PASS",
+      "reasoning": "Vertical shift of y=2x by -3 gives y=2x-3, choice ④; decisive fact is explicit in source text."
+    },
+    {
+      "qid": 5,
+      "status": "PASS",
+      "reasoning": "y-intercept 1 plus slope 3 gives 4, choice ④."
+    },
+    {
+      "qid": 6,
+      "status": "HOLD",
+      "reasoning": "Answer depends on the graph's actual slope/intercepts. q06.png exists (blob 7767c6ec...) but this runtime could not obtain its >1MiB pixels; no circular inference from prior answer/solution used."
+    },
+    {
+      "qid": 7,
+      "status": "PASS",
+      "reasoning": "Slope is -1/2 and Δx=8, so Δy=-4, choice ②."
+    },
+    {
+      "qid": 8,
+      "status": "PASS",
+      "reasoning": "Parallel gives a=-2; meeting y=3x+2 on the y-axis gives b=2; ab=-4, choice ②."
+    },
+    {
+      "qid": 9,
+      "status": "PASS",
+      "reasoning": "Direct q09 pixels show x-intercept -5 and y-intercept -4; slope -4/5, choice ③."
+    },
+    {
+      "qid": 10,
+      "status": "PASS",
+      "reasoning": "No quadrant II implies a>0 and b<0; second line has negative slope and negative intercept, so it misses quadrant I, choice ①."
+    },
+    {
+      "qid": 11,
+      "status": "PASS",
+      "reasoning": "Rectangle area 250; BP=4x and triangle ABP area=20x, so y=250-20x and all ㄱㄴㄷ true, choice ⑤."
+    },
+    {
+      "qid": 12,
+      "status": "PASS",
+      "reasoning": "Only 4x-3y=10 remains a linear equation in two variables, choice ⑤."
+    },
+    {
+      "qid": 13,
+      "status": "PASS",
+      "reasoning": "(-2,5) satisfies; natural-number solutions are finite; real solution set is a line, so ㄱㄷ, choice ③."
+    },
+    {
+      "qid": 14,
+      "status": "PASS",
+      "reasoning": "4x+3y-12=0 → y=-4/3 x+4; it passes quadrants I, II, IV, choice ⑤."
+    },
+    {
+      "qid": 15,
+      "status": "PASS",
+      "reasoning": "Direct q15 pixels show the vertical line x=4, choice ②."
+    },
+    {
+      "qid": 16,
+      "status": "PASS",
+      "reasoning": "(3,2) satisfies only (가) and (다), choice ②."
+    },
+    {
+      "qid": 17,
+      "status": "PASS",
+      "reasoning": "x=y-3; substitution gives y=2, x=-1, choice ①."
+    },
+    {
+      "qid": 18,
+      "status": "PASS",
+      "reasoning": "Unmisread equations give b=1 and a=3; solving gives (3/4,-11/4), choice ③."
+    },
+    {
+      "qid": 19,
+      "status": "PASS",
+      "reasoning": "Scale to 5x-3y=4 and 3x+2y=-9; elimination gives (-1,-3), choice ①."
+    },
+    {
+      "qid": 20,
+      "status": "PASS",
+      "reasoning": "Direct q20 pixels show the intersection (2,3); hence a=-1,b=2,a+b=1, choice ③."
+    },
+    {
+      "qid": 21,
+      "status": "PASS",
+      "reasoning": "Parallel gives a=-b-2 and coincidence gives -2b-1=3a; solve a=3,b=-5, choice ③."
+    },
+    {
+      "qid": 22,
+      "status": "PASS",
+      "reasoning": "Table has slope 3 and intercept 4; y=3x+4 and y=100 gives x=32."
+    },
+    {
+      "qid": 23,
+      "status": "PASS",
+      "reasoning": "x-y=8 and x+5=2(y+5)-6 give older 17, younger 9."
+    },
+    {
+      "qid": 24,
+      "status": "PASS",
+      "reasoning": "x-intercepts -6,-3/2 and intersection (-3,2); triangle area=(1/2)(9/2)(2)=9/2."
+    }
+  ],
+  "metaRecheck": "24/24 source+solution semantics rechecked against current middle2 RPM crosswalk 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 canonical 5423e0867708382d9d9e3ae58583c6f02affc07d; no deterministic Meta repair required.",
+  "runtimeLayoutRecheck": "24/24 current strings/structure reviewed; final canonical validator will execute VM/runtime and enumerated small-board gates.",
+  "deterministicRepairs": [],
+  "openHolds": [
+    {
+      "qid": 6,
+      "axes": [
+        "sourceExact",
+        "answerMath"
+      ],
+      "reason": "SOURCE_VISUAL_DIRECT_PIXEL_REQUIRED",
+      "asset": "archive/assets/images/26_동산중_1학기_기말_중2_기출/q06.png",
+      "assetGitBlob": "7767c6ec0dcc91c3114284750f98ebe4f5942ec1",
+      "next": "Direct q06 raster/full-page source inspection in a runtime capable of reading the >1MiB asset."
+    }
+  ],
+  "formalR1CompareAfterSnapshot": {
+    "completed": true,
+    "result": "No R1 count/verdict was used as evidence. R1 held q6/q20; this R2 independently resolved q20 by direct pixels and independently retains only q6."
+  }
+}
