@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "m2-1-create-handoff-v1",
+  "status": "SOURCE_FREE_CREATE_CLOSURE_PENDING",
+  "queue": "RESCUE_QUEUE",
+  "thanosEligible": true,
+  "canonicalOrdinal": 15,
+  "examUid": "M2-1-19-YEONHYANG-1MID",
+  "examPath": "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+  "productionBranch": "work/middle/m2/19-yeonhyang-1mid-temp-create3-20261004-1928",
+  "productionHead": "46b27739859dac79eee1d04aa64388f557b72d8d",
+  "finalArtifactSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
+  "metadataBlob": "a5d7469c94891177021cb25fff2d05fc28db041c",
+  "evidenceBlob": "3e819e3f9c6651cc68e5863972fe7ac40ca2ce41",
+  "completedStep": "SOURCE_FREE_CREATE_EVIDENCE_REFRESHED",
+  "firstMissingClosureStep": "CANONICAL_CREATE_VALIDATOR",
+  "exactCapabilityAndError": [
+    {
+      "step": "canonical CREATE validator",
+      "error": "NOT_RUN after source repair/evidence refresh"
+    }
+  ],
+  "requiredNextAction": "Run canonical CREATE validator once, persist validator and CREATE receipts, read back, then transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "producerOwnership": "RELINQUISHED",
+  "sameTargetReselection": "DO_NOT_RESELECT_UNLESS_CURRENT_REASSIGN_TO_CREATE",
+  "createDone": false,
+  "readyForReview1": false,
+  "passClaim": false,
+  "createdAtKst": "2026-10-04 19:38 KST",
+  "latestMainObserved": "c43df24bdd1edb50f2e3e699178375ff75d44f3a",
+  "blockedQids": [],
+  "sourceRepairEvidencePath": "archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json",
+  "reason": "q5 exact D source repair complete; HOLD removed and artifact/meta/evidence rebound."
+}
