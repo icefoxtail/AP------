@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "field": "conditions",
+  "value": ["COND_RANGE"],
+  "items": [
+    {
+      "queueIndex": 851,
+      "questionUid": "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187",
+      "sourceIdentity": "original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "6cfc4d48872cce6e81e43984d43fb4b1ef161088f2ad25508d4fbf2379a43f11",
+      "reason": "The 13 distinct cards are explicitly numbered 1 through 13. That finite range controls the available pairs of multiples: six cards divisible by 2, four by 3, and two by 5, with (6,12) deduplicated. The word natural only describes the already enumerated card labels and does not independently filter a variable; COND_RANGE captures the decisive numeric boundary without adding a redundant natural-number key."
+    },
+    {
+      "queueIndex": 1051,
+      "questionUid": "qid_v1_85b23db997273d0705370d71eb80d99536f50480c669ae551897340389f1c94c",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#5",
+      "sourceFingerprint": "ce65f7862886b0c017156d50c8495ec34bec4652d11687a51e965208465a265a",
+      "reason": "The number is three-digit and less than 600, which restricts the hundreds digit to 1–5; the solution explicitly splits its odd 1,3,5 and even 2,4 possibilities before choosing the odd units digit and an unused tens digit. This finite bound is decisive. 'Natural number' is implicit in a three-digit numeral and adds no separate solution filter, so only COND_RANGE remains."
+    }
+  ],
+  "newConditionKey": false,
+  "finality": "WORKING_NOT_FINAL"
+}

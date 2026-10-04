@@ -1,0 +1,37 @@
+{
+  "reportType": "FUNCTION_FAMILY_PINPOINT_BROWSER_RENDER_V1",
+  "generatedAt": "2026-09-04",
+  "status": "PINPOINT_BROWSER_RENDER_PASS",
+  "browserSurface": "Chrome via Codex computer-use extension",
+  "harness": "archive/tools/function-family/full-render-harness.html?scope=modified",
+  "scope": "32 source files containing pinpoint changes",
+  "sourceCount": 32,
+  "modes": ["exam", "sol", "ans"],
+  "expectedCases": 96,
+  "observedCases": 96,
+  "passCases": 96,
+  "failCases": 0,
+  "layoutGate": {
+    "status": "PASS",
+    "layoutIssues": 0,
+    "horizontalOverflow": 0,
+    "pageOverflow": 0,
+    "questionOverflow": 0,
+    "clippedVisuals": 0,
+    "overlappingQuestionBoxes": 0
+  },
+  "checksPerCase": [
+    "print-area has at least one .page",
+    "rendered content is non-empty",
+    "all print-area images complete with naturalWidth > 0",
+    "documentElement[data-ap-render-error] is absent",
+    "data-load error text is absent",
+    "document/body horizontal overflow is absent",
+    "page and page-body scroll overflow is absent",
+    "non-long question boxes do not scroll overflow",
+    "all img/svg/canvas visuals remain inside their page bounds",
+    "question boxes do not overlap"
+  ],
+  "lastFailure": null,
+  "freshRunNote": "Final fresh modified-only run after q1 image-backed choice compaction and q17 LaTeX delimiter repair."
+}

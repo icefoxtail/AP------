@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "middle-geometry-meta-foundation-checkpoint-v1",
+  "status": "M2_STAGE2_L3_SEMANTIC_FREEZE",
+  "createdAt": "2026-09-21",
+  "baseMainSha": "843d26d60780ae1502dd53d75c8f2b064b98174f",
+  "branch": "codex/meta-foundation/middle-geometry",
+  "denominator": {
+    "total": 928,
+    "m2": 402,
+    "m3": 526,
+    "uidMissing": 0,
+    "uidDuplicate": 0
+  },
+  "m2": {
+    "sourceScope": {
+      "triangle": 163,
+      "quadrilateral": 101,
+      "similarity": 97,
+      "parallel": 41
+    },
+    "semanticResolved": 402,
+    "middleGeometryL3Assigned": 397,
+    "routeOut": 5,
+    "newL3CandidateCount": 0,
+    "knownCounts": {
+      "PT_QUADRILATERAL_PROPERTIES": 104,
+      "PT_SIMILAR_FIGURES": 67,
+      "PT_TRIANGLE_SIMILARITY": 30,
+      "PT_PARALLEL_SEGMENT_RATIO": 41,
+      "PT_COORD_CENTROID": 3,
+      "TRIANGLE_EXISTING_4_AXES_AGGREGATE": 152
+    },
+    "forbiddenCandidate": [
+      "PT_TRIANGLE_AREA_RATIO"
+    ],
+    "triangleSimilarityUids": [
+      "23_금당중_2학기_중간_중2_수학.js#12",
+      "23_연향중_2학기_중간_중2_수학.js#15",
+      "23_연향중_2학기_중간_중2_수학.js#16",
+      "23_이수중_2학기_중간_중2_수학.js#18",
+      "23_이수중_2학기_중간_중2_수학.js#19",
+      "23_이수중_2학기_중간_중2_수학.js#24",
+      "24_금당중_2학기_중간_중2_수학.js#22",
+      "24_매산중_2학기_중간_중2_수학.js#19",
+      "24_매산중_2학기_중간_중2_수학.js#20",
+      "24_매산중_2학기_중간_중2_수학.js#24",
+      "24_연향중_2학기_중간_중2_수학.js#17",
+      "24_연향중_2학기_중간_중2_수학.js#20",
+      "24_연향중_2학기_중간_중2_수학.js#23",
+      "22_연향중_2학기_기말_중2_기출.js#4",
+      "23_신흥중_2학기_기말_중2_기출.js#4",
+      "23_신흥중_2학기_기말_중2_기출.js#10",
+      "23_신흥중_2학기_기말_중2_기출.js#20",
+      "23_연향중_2학기_기말_중2_기출.js#2",
+      "24_향림중_2학기_기말_중2_기출.js#7",
+      "24_향림중_2학기_기말_중2_기출.js#8",
+      "24_향림중_2학기_기말_중2_기출.js#11",
+      "24_향림중_2학기_기말_중2_기출.js#22",
+      "25_삼산중_2학기_기말_중2_기출.js#3",
+      "25_삼산중_2학기_기말_중2_기출.js#10",
+      "25_연향중_2학기_기말_중2_기출.js#3",
+      "25_연향중_2학기_기말_중2_기출.js#5",
+      "25_연향중_2학기_기말_중2_기출.js#21",
+      "25_왕운중_2학기_기말_중2_기출.js#3",
+      "25_왕운중_2학기_기말_중2_기출.js#4",
+      "23_신흥중_2학기_기말_중2_기출.js#5"
+    ],
+    "boundaryAdjudication": [
+      {
+        "uid": "20_풍덕중_1학기_중간_중2_기출.js#15",
+        "decision": "route_out",
+        "route": "M2-07-PYTHAGOREAN_APPLICATION"
+      },
+      {
+        "uid": "21_풍덕중_1학기_중간_중2_기출.js#16",
+        "decision": "route_out",
+        "route": "M2-07-PYTHAGOREAN_APPLICATION",
+        "sourceQa": "solution_numeric_contradiction"
+      },
+      {
+        "uid": "21_금당중_1학기_중간_중2_기출.js#20",
+        "decision": "route_out",
+        "route": "lower_grade_triangle_inequality_L2_review",
+        "sourceQa": "content_solution_mismatch"
+      },
+      {
+        "uid": "24_금당중_2학기_중간_중2_수학.js#7",
+        "decision": "reuse_L3",
+        "problemTypeKey": "PT_COORD_CENTROID"
+      },
+      {
+        "uid": "24_금당중_2학기_중간_중2_수학.js#8",
+        "decision": "reuse_L3",
+        "problemTypeKey": "PT_COORD_CENTROID"
+      },
+      {
+        "uid": "24_금당중_2학기_중간_중2_수학.js#9",
+        "decision": "reuse_L3",
+        "problemTypeKey": "PT_COORD_CENTROID"
+      },
+      {
+        "uid": "23_왕운중_2학기_중간_중2_수학.js#14",
+        "decision": "reuse_L3_plus_L4_crossconcept",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ]
+      },
+      {
+        "uid": "23_향림중_2학기_중간_중2_수학.js#20",
+        "decision": "route_out",
+        "route": "M1-06-PLANE_FIGURE_MEASURE",
+        "crossConceptCandidate": [
+          "CC_PARALLEL_LINES"
+        ]
+      },
+      {
+        "uid": "25_연향중_2학기_중간_중2_수학.js#17",
+        "decision": "route_out",
+        "route": "M1-06-PLANE_FIGURE_MEASURE"
+      },
+      {
+        "uid": "23_신흥중_2학기_중간_중2_수학.js#22",
+        "decision": "L2_correction_existing_L3",
+        "route": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES"
+      },
+      {
+        "uid": "25_왕운중_2학기_중간_중2_수학.js#25",
+        "decision": "L2_correction_existing_L3",
+        "route": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES"
+      }
+    ]
+  },
+  "nextStart": "Materialize M2 402 item-level L3 ledger, then M3 526 Stage 2 L3 Fresh Assignment",
+  "notion": {
+    "m2SemanticFreeze": "https://app.notion.com/p/3e20e68bd69f8103b5d3c1c479518882?pvs=204",
+    "middleGeometryDesign": "https://app.notion.com/p/3e20e68bd69f81fca743d6bd5fc86f0b?pvs=204",
+    "codexProtocol": "https://app.notion.com/p/3e20e68bd69f818c9fa8dbd4817958a9?pvs=204"
+  }
+}

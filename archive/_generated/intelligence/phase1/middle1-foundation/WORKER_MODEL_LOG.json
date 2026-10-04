@@ -1,0 +1,385 @@
+{
+  "schemaVersion": "m1-worker-model-log-v1",
+  "verificationSource": "Local Codex session JSONL world_state.collaboration_mode.model and reasoning_effort, inspected immediately after spawn",
+  "root": {
+    "workerId": "01a0d110-f29d-7bb3-b6b7-8f7dbce0a3c4",
+    "workerName": "/root",
+    "requestedModel": "gpt-6-sol",
+    "requestedReasoningEffort": "high",
+    "actualModel": "gpt-6-sol",
+    "actualReasoningEffort": "high",
+    "modelVerified": true
+  },
+  "workers": [
+    {
+      "workerId": "01a0d117-19fe-7ac0-8d64-70d762131064",
+      "workerName": "/root/m1_semantic_a",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "batchAssignments": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "retiredAfterBatch": 4,
+      "retirementReason": "B04 cross-exam semantic source mismatch on nine rows and recurrent cross-exam summary contamination after targeted correction"
+    },
+    {
+      "workerId": "01a0d117-4989-7503-8542-07e3f60a0b59",
+      "workerName": "/root/m1_semantic_b",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "batchAssignments": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "attemptedBatches": [
+        6
+      ],
+      "retiredAfterBatch": 5,
+      "retirementReason": "Root prematurely disclosed A B06 q22 HOLD during B independent semantic verdict; B06 attempt interrupted before any physical ledger was accepted"
+    },
+    {
+      "workerId": "01a0d1d1-a007-7190-90c1-f44703db3de6",
+      "workerName": "/root/m1_semantic_a_v2",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "batchAssignments": [],
+      "attemptedBatches": [
+        5
+      ],
+      "semanticInputVerified": false,
+      "retiredBeforeReviewedBatch": 5,
+      "retirementReason": "Opened same-stage cumulative candidate registry before B05 semantic verdict; decision-isolation gate rejects result even without reported use",
+      "replacementFor": "/root/m1_semantic_a"
+    },
+    {
+      "workerId": "01a0d1d5-3d42-7e32-85b8-6caca9013e91",
+      "workerName": "/root/m1_semantic_a_v3",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "replacementFor": "/root/m1_semantic_a_v2",
+      "retiredAfterBatch": 8,
+      "retirementReason": "Repeated A quality defects across B06/B08: six wrong M1-06 parent routes for triangle construction/congruence, q1 option truth error, q12 same-exam math copied under correct UID/hash, and a late whole-ledger rewrite after ready message; B08 targeted corrections/consensus are closed"
+    },
+    {
+      "workerId": "01a0d12e-b221-7bc3-b1bf-5a346f382ad2",
+      "workerName": "/root/m1_conflict_c",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "batchAssignments": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "attemptedBatches": [
+        10
+      ],
+      "retiredAfterBatch": 9,
+      "retirementReason": "B10 initial 13-UID C input preceded user L1/L2-baseline correction; C read old input but wrote no ledger and accepted reviewed count0. Fresh C replacement receives revised 11-UID conflict input only."
+    },
+    {
+      "workerId": "01a0d13d-f37f-79b0-8165-544a39c2163c",
+      "workerName": "/root/m1_difficulty_blind",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "batchAssignments": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "necessity": "Separate blind difficulty pass because semantic reviewers were exposed to source JS legacy level fields",
+      "retiredAfterBatch": 9,
+      "retirementReason": "B09 frozen blind difficulty q1 and q3 had wrong-source reasons despite matching UID/hash. Fresh Luna XHigh two-UID blind repair and root q3 adjudication closed B09; replace first-pass reviewer before B10."
+    },
+    {
+      "workerId": "01a0d220-f13d-7903-a70d-ceb578281278",
+      "workerName": "/root/m1_semantic_b_v2",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "replacementFor": "/root/m1_semantic_b",
+      "verificationSource": "Local Codex session world_state and turn_context immediately after spawn",
+      "retiredAfterBatch": 9,
+      "retirementReason": "B09 q18 prior-exam B08 midpoint math copied under correct B09 UID/hash; targeted source-first revision closed. Earlier B06 conditionReasons schema omission also required receipt. Replace B before B10 to avoid recurrence."
+    },
+    {
+      "workerId": "01a0d315-f3f9-7ab1-a33e-2098c488a9d5",
+      "workerName": "/root/m1_semantic_a_v4",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "replacementFor": "/root/m1_semantic_a_v3",
+      "verificationSource": "Local Codex session world_state and turn_context immediately after spawn",
+      "attemptedBatches": [
+        13
+      ],
+      "retiredAfterBatch": 12,
+      "retirementReason": "B13 pre-ledger source-identity contamination: called q16 a missing image-footer query even though frozen B13 q16 explicitly asks cut-cuboid spatial relations, and reported 18 images for a 19-ref frozen bundle. Interrupted before any B13 A ledger was written; accepted B13 reviewed count0."
+    },
+    {
+      "workerId": "01a0d35b-7642-70b3-9172-19794608cf89",
+      "workerName": "/root/m1_difficulty_blind_repair",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        9,
+        11
+      ],
+      "necessity": "Fresh blind targeted repair for B09 q1/q3 first-pass cross-UID difficulty evidence defect after original blind freeze",
+      "verificationSource": "Local Codex session turn_context immediately after spawn"
+    },
+    {
+      "workerId": "01a0d368-e50f-7ae2-9a0d-1a84f85fdae2",
+      "workerName": "/root/m1_semantic_b_v3",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        10,
+        11,
+        12
+      ],
+      "replacementFor": "/root/m1_semantic_b_v2",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "attemptedBatches": [
+        13
+      ],
+      "retiredAfterBatch": 12,
+      "retirementReason": "B13 pre-ledger source-identity contamination: provisional q15–q20 notes/L1-L2 claims used stale B12 histogram/frequency-polygon context instead of frozen B13 folding/cut-solid/angle sources. Worker acknowledged stale handoff summary; interrupted before any B13 B ledger existed, accepted reviewed count0."
+    },
+    {
+      "workerId": "01a0d3a7-3603-7e22-b59c-c005cc40a2cf",
+      "workerName": "/root/m1_conflict_c_v2",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        10,
+        11,
+        12
+      ],
+      "replacementFor": "/root/m1_conflict_c",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "retiredAfterBatch": 12,
+      "retirementReason": "Repeated affected-UID source evidence defects in B11 (#19 wrong shared table values; #22 misread named angle) and B12 (#9 ASA/AAS included side; #15 wrong histogram top-class count). Root adjudicated and preserved both batches; replace blind C before B13."
+    },
+    {
+      "workerId": "01a0d3bc-1ec9-70b2-842b-b3674a86bd24",
+      "workerName": "/root/m1_difficulty_blind_v2",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        10,
+        11,
+        12
+      ],
+      "replacementFor": "/root/m1_difficulty_blind",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "retiredAfterBatch": 12,
+      "retirementReason": "B12 pre-freeze q12 reasoning borrowed B11 q12 image/congruence context under correct B12 UID; affected q12 was rejected and freshly reviewed, other22 source-grounded rows closed. Replace full first-pass reviewer before B13 to avoid recurrence."
+    },
+    {
+      "workerId": "01a0d46e-59d3-73b0-bb9f-09d8ecaccd54",
+      "workerName": "/root/m1_difficulty_blind_v3",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        12
+      ],
+      "replacementFor": "/root/m1_difficulty_blind_v2 q12 affected scope only",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh isolated one-UID B12 q12 blind review after original reviewer acknowledged previous-exam context contamination before any accepted blind ledger",
+      "reviewRole": "targeted_repair"
+    },
+    {
+      "workerId": "01a0d48a-55df-7b31-9b1d-b723d176eb08",
+      "workerName": "/root/m1_semantic_a_v5",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "replacementFor": "/root/m1_semantic_a_v4 B13 pre-ledger rejected attempt",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh-context whole B13 A read after old reviewer confused B13 cut-cuboid q16 with previous-exam shared image footer before any physical A ledger"
+    },
+    {
+      "workerId": "01a0d494-3c6c-7472-9436-b6cbbe5ee9ab",
+      "workerName": "/root/m1_semantic_b_v4",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "replacementFor": "/root/m1_semantic_b_v3 B13 pre-ledger rejected attempt",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh-context whole B13 B read after old reviewer acknowledged stale B12 source summaries before any physical B ledger"
+    },
+    {
+      "workerId": "01a0d49d-4c00-7c70-b8c2-ec5e80ba313a",
+      "workerName": "/root/m1_semantic_a_q6_repair",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "reviewRole": "targeted_repair",
+      "batchAssignments": [
+        13
+      ],
+      "replacementFor": "/root/m1_semantic_a_v5 q6 affected scope only",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh blind isolated q6 semantic replacement after A v5 falsely reported a nonblank pentagon image as blank"
+    },
+    {
+      "workerId": "01a0d4ae-f3bd-7d92-95f1-78c71b828e91",
+      "workerName": "/root/m1_conflict_c_v3",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "replacementFor": "/root/m1_conflict_c_v2",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh-context C after repeated source-number/angle evidence defects in B11 and B12, exact B13 four-conflict blind subset only"
+    },
+    {
+      "workerId": "01a0d4c4-4e63-7a13-af89-e634e1c5058e",
+      "workerName": "/root/m1_difficulty_blind_v4",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "replacementFor": "/root/m1_difficulty_blind_v2",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh-context whole B13 difficulty first pass after B12 q12 previous-exam context intrusion in retired reviewer"
+    },
+    {
+      "workerId": "01a0d4ce-5567-7600-ad8f-baa4adf9d7a8",
+      "workerName": "/root/m1_difficulty_recheck_v1",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "reviewRole": "difficulty_recheck",
+      "batchAssignments": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh independent B13 §18 recheck subset after A semantic visual misread and blind first-pass freeze"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "checkpointId": "20260901_M107",
+  "phase": "Phase 5",
+  "scope": "M1-07 CUBE_TOTAL_EDGE_LENGTH + RECTANGULAR_PRISM_VOLUME bounded slices",
+  "status": "ACTIVE_BOUNDED",
+  "unitKey": "M1-07",
+  "familyId": "M1-07_MULTI_FAMILY",
+  "capabilities": {
+    "CUBE_TOTAL_EDGE_LENGTH": {"A_numeric": "ACTIVE_BOUNDED", "B_representation": "ACTIVE_BOUNDED", "C_parameter_recovery": "HOLD"},
+    "RECTANGULAR_PRISM_VOLUME": {"A_numeric": "ACTIVE_BOUNDED", "B_representation": "ACTIVE_BOUNDED", "C_parameter_recovery": "HOLD"}
+  },
+  "fixtures": {
+    "count": 12,
+    "general": true,
+    "boundary": true,
+    "composite": true,
+    "coverage": ["정육면체 모서리 길이의 합", "직육면체 부피"],
+    "visualDependency": "MANDATORY",
+    "visualTypes": {"CUBE_TOTAL_EDGE_LENGTH": "segment_geometry", "RECTANGULAR_PRISM_VOLUME": "segment_geometry"}
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-m1-07-a01",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "38618bcad2453cbc064975f4277acfa97c2bd9a336bff9f5f74423c9d59216a4",
+      "renderEvidenceSha256": "c53002c458f1fc43e8beea2a81e37bfa063e6a90a5826d2036a78963a6ced6a1",
+      "render": {"exam": "PASS", "solution": "PASS", "answer": "PASS", "lastQuestion": 12, "pageCounts": {"exam": 3, "solution": 6, "answer": 1}, "svgImageCounts": {"exam": 24, "solution": 12, "answer": 0}, "svgImageFailures": 0, "unrenderedMath": 0, "overflow": 0},
+      "resume": "PASS",
+      "closure": "PASS",
+      "publicationStatus": "NOT_PUBLISHED"
+    },
+    {
+      "runId": "20260901-middle-m1-07-b01",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "c4e18047652bf0d3a32aefebb0d384866f70c3b969e90e00a9a532cfbb0b22d3",
+      "renderEvidenceSha256": "62306d774a1168249f425c6cf46c9baab58a18bd5df94ac45fe7b8aca6d2e657",
+      "render": {"exam": "PASS", "solution": "PASS", "answer": "PASS", "lastQuestion": 12, "pageCounts": {"exam": 3, "solution": 6, "answer": 1}, "svgImageCounts": {"exam": 24, "solution": 12, "answer": 0}, "svgImageFailures": 0, "unrenderedMath": 0, "overflow": 0},
+      "resume": "PASS",
+      "closure": "PASS",
+      "publicationStatus": "NOT_PUBLISHED"
+    }
+  ],
+  "tests": {"m1_07EngineTests": 3, "fullRegressionTests": 285, "status": "PASS", "compileall": "PASS", "gitDiffCheck": "PASS", "packageRoundTrip": "PASS"},
+  "productionArchiveRegistration": "NOT_PERFORMED"
+}

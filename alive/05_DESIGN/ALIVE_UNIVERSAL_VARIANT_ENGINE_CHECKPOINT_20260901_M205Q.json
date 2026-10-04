@@ -1,0 +1,49 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "checkpointId": "20260901-M205Q",
+  "status": "ACTIVE_BOUNDED",
+  "productionArchiveRegistration": "NOT_PERFORMED",
+  "registeredMiddleUnits": ["M1-03", "M2-03", "M2-04", "M2-05"],
+  "unit": {
+    "key": "M2-05",
+    "title": "도형의 성질",
+    "family": "QUADRILATERAL_PROPERTIES",
+    "boundedScope": ["parallelogram_opposite_angle", "parallelogram_adjacent_angle"],
+    "fixtures": 6,
+    "activeTransforms": ["numeric", "representation"],
+    "holdTransforms": ["parameter_recovery"],
+    "holdFamilies": ["rectangle", "rhombus"],
+    "mandatoryVisual": "segment_geometry",
+    "studentSolutionPolicy": "detailed_solution_detail_with_quadrilateral_diagram"
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-quadrilateral-a01",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "c8dacf133a357ff0c4fb06a659420e62e1d572008a3f6b7f769a537f490ed397",
+      "renderEvidence": {
+        "exam": {"verdict": "PASS", "pageCount": 2, "lastQuestion": 6, "mathJaxCount": 24, "overflowCount": 0, "badImages": 0, "svgImages": 12},
+        "solution": {"verdict": "PASS", "pageCount": 3, "lastQuestion": 6, "mathJaxCount": 66, "overflowCount": 0, "badImages": 0, "svgImages": 6, "implementationLeakCount": 0},
+        "answer": {"verdict": "PASS", "pageCount": 1, "lastQuestion": 6, "mathJaxCount": 6, "overflowCount": 0, "badImages": 0}
+      },
+      "resume": "PASS",
+      "closure": "PASS"
+    },
+    {
+      "runId": "20260901-middle-quadrilateral-b01",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "1e25ea0941aa591ba6295650d110b6cf4b44d9d06f7a5278a8ed455dde96475c",
+      "renderEvidence": {
+        "exam": {"verdict": "PASS", "pageCount": 2, "lastQuestion": 6, "mathJaxCount": 24, "overflowCount": 0, "badImages": 0, "svgImages": 12},
+        "solution": {"verdict": "PASS", "pageCount": 3, "lastQuestion": 6, "mathJaxCount": 66, "overflowCount": 0, "badImages": 0, "svgImages": 6, "implementationLeakCount": 0},
+        "answer": {"verdict": "PASS", "pageCount": 1, "lastQuestion": 6, "mathJaxCount": 6, "overflowCount": 0, "badImages": 0}
+      },
+      "resume": "PASS",
+      "closure": "PASS"
+    }
+  ],
+  "globalProduction": "HOLD"
+}

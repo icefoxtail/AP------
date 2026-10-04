@@ -1,0 +1,27 @@
+{
+  "status": "REPAIR_REQUIRED_WITH_BRANCH_HOLD",
+  "findingCode": "INLINE_SVG_ESCAPE_FAIL",
+  "evidence": "inline_svg_verification.json",
+  "rows": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js|25_금당고_1학기_중간_고1_기출|9",
+      "standardUnitKey": "H15-SA-03",
+      "field": "solution",
+      "inlineIndex": 1,
+      "assetSha256": "d09d0a768d4c435be7f621ed95a902e4afbd17c278f025fc5142083366e05811",
+      "observedFailure": "XML_PARSE_ERROR at column 13 because runtime SVG contains backslash-escaped quote characters in attributes.",
+      "allowedRepair": "Replace escaped attribute quotes with valid HTML/SVG attribute quotes only; preserve geometry and solution text.",
+      "repairStatus": "PENDING_MAIN_BRANCH_GATE"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js|25_금당고_1학기_중간_고1_기출|10",
+      "standardUnitKey": "H15-SA-04",
+      "field": "solution",
+      "inlineIndex": 1,
+      "assetSha256": "79325d465cc61ab2215cf9d1b4c726dfe5479f09005722515a9ced88bf2944ba",
+      "observedFailure": "XML_PARSE_ERROR at column 13 because runtime SVG contains backslash-escaped quote characters in attributes.",
+      "allowedRepair": "Replace escaped attribute quotes with valid HTML/SVG attribute quotes only; preserve geometry and solution text.",
+      "repairStatus": "PENDING_MAIN_BRANCH_GATE"
+    }
+  ]
+}

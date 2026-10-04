@@ -1,0 +1,93 @@
+{
+  "task": "D-first50-missing-stem-batch",
+  "queueIndex": 41,
+  "questionUid": "qid_v1_cea33bc611f1ffd65076b3c694623b847b40189ba73d8cac02852703639a56b6",
+  "sourceIdentity": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#22",
+  "status": "SOURCE_REPAIR_APPLIED",
+  "queue": {
+    "uidOnlyQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-first50-missing-stem-batch\\queue-uid-only.jsonl",
+    "comparisonQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_AB_WORKING_COMPARISON_CURRENT.json",
+    "directFieldQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_SOL_DIRECT_FIELD_QUEUE.jsonl",
+    "parityBeforeEdit": "PASS",
+    "sourceFingerprintBefore": "4cb6e031bb8c27208c9af808adf83cf991f5395d2425e5c59599f4e9f3af3aa8",
+    "directSourceFingerprintBefore": "4cb6e031bb8c27208c9af808adf83cf991f5395d2425e5c59599f4e9f3af3aa8",
+    "sourceFingerprintAfter": "fb56e05b51ebcaecc209ede135e079b25c2e1b412310d72d13650e92672bb8ff",
+    "identityNeedsRefreshAfterEdit": true
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\1mid\\23_부영여고_1학기_중간_고1_기출.js",
+    "questionId": 22,
+    "arrayIndex": 21,
+    "jsSha256Before": "daf7648ffba524862f09f233c3a5cd88d31adad3f976d54c1652fb9663f0ced3",
+    "jsSha256After": "f0cfa3aa0b08cc984523b94e3561855e7cfd209eb226910fbf0e3ff1f307d96b",
+    "questionFieldsSha256Before": "267fe30931089c47cb3afe3d146e6fd4d06d190beff07797fa9090ca4d612d21",
+    "questionFieldsSha256After": "333b10dd3b605398c10af6de10977ffd78c8ab0bde4ff9ddc2bdc547796117c1",
+    "changedFields": [
+      "content"
+    ],
+    "before": {
+      "questionType": "서술형",
+      "content": "[서술형 4] 제한된 범위 내에서 이차함수 최솟값이 $6$이 되는 모든 $k$의 합을 구하시오. [6점]",
+      "choices": [],
+      "imageFieldPresent": false,
+      "imageValue": null,
+      "layoutTag": "grid",
+      "wide": false
+    },
+    "after": {
+      "questionType": "서술형",
+      "content": "[서술형 4] $0 \\leq x \\leq 4$일 때, 이차함수 $y=x^2-2kx+5k$의 최솟값이 $6$이 되도록 하는 모든 상수 $k$의 값을 구하고, 그 과정을 서술하시오. [6점]",
+      "choices": [],
+      "imageFieldPresent": false,
+      "imageValue": null,
+      "layoutTag": "grid",
+      "wide": false
+    }
+  },
+  "source": {
+    "type": "original exam question PDF",
+    "path": "D:\\기출\\1학기중간\\고1\\23 부영여고+\\수학 상 (23 부영여고).pdf",
+    "sha256": "4DFD98A474481CB20F5844E2A65565B2BD4CA9A4953EE7250FC0FDA02E1B291C",
+    "pageNumber": 6,
+    "pageCount": 7,
+    "questionNumber": "서술형 4",
+    "fullPageEvidence": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-first50-missing-stem-batch\\q41\\original-page-6.png",
+      "sha256": "2967C702AB475DC5D1AB6F24840E6C9FD4420EC58EF28B9588D0D1129FD37AB8",
+      "renderDpi": 250
+    },
+    "detailCrop": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-first50-missing-stem-batch\\q41\\q22-detail.png",
+      "sha256": "BC0D738825CE9CBE67A654651E8C6713B7BA25723947A30BC4A64CB0F28FBFBC",
+      "cropFrom": "PDF page 6; right column upper question block"
+    },
+    "officialAnswerPagesOpened": false,
+    "officialSolutionPagesOpened": false
+  },
+  "comparison": {
+    "originalStem": "0 ≤ x ≤ 4일 때, 이차함수 y=x^2-2kx+5k의 최솟값이 6이 되도록 하는 모든 상수 k의 값을 구하고, 그 과정을 서술하시오. [6점]",
+    "missingFromJs": "Interval 0≤x≤4, full quadratic y=x^2-2kx+5k, 모든 상수 k, and instruction to show work",
+    "figure": "None",
+    "repair": "Replaced only q22 content with the source-confirmed stem, retaining the [서술형 4] label."
+  },
+  "validation": {
+    "syntax": "PASS (node --check)",
+    "targetedSchema": "PASS (q22 id, 서술형, string content, choices array empty)",
+    "onlyQuestionContentChanged": true,
+    "sourceFingerprintAlgorithm": "SHA256(JSON.stringify({content,choices,answer,solution,image})) per build-h1-blind-worker-bundle.mjs; answer/solution fields hashed in memory without viewing or output",
+    "sourceVisualReview": "PASS",
+    "archiveBrowserRender": "NOT_TESTED",
+    "physicalLedgerJson": "PASS"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  },
+  "auditBoundary": {
+    "officialAnswerPagesOpened": false,
+    "officialSolutionPagesOpened": false,
+    "incidentalArchiveDiffOutput": "A final git diff included adjacent q41 archive answer/solution lines in context; they were not used for source comparison, correction, or validation.",
+    "sourceDecisionBasis": "Only D: original question PDF page 6 and q22 question crop; no official answer/solution page."
+  }
+}

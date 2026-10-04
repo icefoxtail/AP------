@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "status": "TARGETED_CORRECTION_ACCEPTED",
+  "queueRange": [1106, 1138],
+  "count": 20,
+  "rawFile": "H1_STAGEA_C_REMAINING_CONFLICTS35_RAW_GENERIC_L4_REASON.jsonl",
+  "acceptedFile": "H1_STAGEA_LUNA6_C_REMAINING_CONFLICTS35_20.jsonl",
+  "defect": "The raw file repeated one generic L4Skeleton.reason across all 20 items despite item-specific skeletons.",
+  "correction": "The separate supersession replaced each L4Skeleton.reason with an item-specific explanation. Root verified no other field changed and no exact L4 reason repeats five or more times.",
+  "verdicts": { "PASS": 20, "HOLD": 0 },
+  "finality": "WORKING_NOT_FINAL"
+}

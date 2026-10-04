@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loop A · 오답 클리닉 출력 센터 UX 하니스</title>
+    <!-- 실제 디자인 시스템 로드 (본 화면과 동일한 스타일로 보기) -->
+    <link rel="stylesheet" href="../apmath/css/apms-theme-override.css">
+    <link rel="stylesheet" href="../apmath/css/apms-ui-foundation.css">
+    <link rel="stylesheet" href="../apmath/css/apms-clinic-print.css">
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; background: var(--bg, #F2F4F6); color: var(--text, #191F28); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+        .shell { max-width: 920px; margin: 0 auto; padding: 24px 18px; }
+        .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+        h1 { margin: 0 0 6px; font-size: 18px; }
+        p { margin: 0 0 12px; color: var(--secondary); font-size: 13px; }
+        .btn, .apms-button { display: inline-flex; align-items: center; justify-content: center; gap:6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); min-height: 40px; padding: 8px 14px; border-radius: 10px; font-weight: 700; cursor: pointer; font-family: inherit; }
+        .btn-primary, .apms-button--primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .apms-button--quiet { background: var(--surface-2); }
+        #toast-root { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 3000; display: grid; gap: 8px; }
+        .toast { padding: 10px 14px; border-radius: 999px; background: #111827; color: #fff; font-size: 13px; font-weight: 700; }
+        #modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,.42); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 14px; }
+        #modal-overlay.show { display: flex; }
+        /* 실제 앱처럼 넓은 모달 + fullscreen 클래스 지원 */
+        #modal-content { width: min(1120px, 97vw); height: min(880px, 94vh); display: flex; flex-direction: column; overflow: hidden; background: var(--surface); border-radius: 18px; box-shadow: 0 18px 60px rgba(15,23,42,.24); }
+        #modal-header { min-height: 52px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--border); padding: 0 68px; }
+        #modal-title { margin: 0; font-size: 16px; font-weight: 800; }
+        #modal-cancel-btn { position: absolute; left: 14px; border: 0; background: transparent; color: var(--secondary); font-weight: 800; cursor: pointer; }
+        #modal-action-btn, #modal-footer { display: none; }
+        #modal-body { flex: 1; min-height: 0; padding: 0; overflow: auto; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <section class="panel">
+            <h1>Loop A · 오답 클리닉 출력 센터 UX 하니스</h1>
+            <p>실제 <code>clinic-print.js</code> + 디자인 CSS + 샘플 데이터로 출력 센터 모달을 렌더합니다.</p>
+            <button class="btn btn-primary" onclick="openClinicPrintCenter('c1', { skipAssignmentRefresh: true })">출력 센터 열기</button>
+        </section>
+    </main>
+
+    <div id="modal-overlay" class="hidden" onclick="if(event.target===this) closeModal()">
+        <div id="modal-content" onclick="event.stopPropagation()">
+            <div id="modal-header">
+                <button id="modal-cancel-btn" onclick="closeModal()">취소</button>
+                <h2 id="modal-title"></h2>
+                <button id="modal-action-btn"></button>
+            </div>
+            <div id="modal-body"></div>
+            <div id="modal-footer"></div>
+        </div>
+    </div>
+    <div id="toast-root"></div>
+
+    <script>
+        const archiveFile = 'exams/types/middle/m2/수와식_중2_유리수와순환소수_유형1.js';
+        window.state = { db: {
+            classes: [{ id: 'c1', name: '중2 A반', grade: '중2', is_active: 1 }, { id: 'c2', name: '중2 B반', grade: '중2', is_active: 1 }],
+            students: [
+                { id: 's1', name: '김가온', status: '재원' }, { id: 's2', name: '이나래', status: '재원' },
+                { id: 's3', name: '박도윤', status: '재원' }, { id: 's4', name: '최서진', status: '재원' },
+                { id: 's5', name: '윤하준', status: '재원' }, { id: 's6', name: '정민서', status: '재원' }
+            ],
+            class_students: [
+                { class_id: 'c1', student_id: 's1' }, { class_id: 'c1', student_id: 's2' }, { class_id: 'c1', student_id: 's3' },
+                { class_id: 'c2', student_id: 's4' }, { class_id: 'c2', student_id: 's5' }, { class_id: 'c2', student_id: 's6' }
+            ],
+            class_exam_assignments: [{ id: 'a1', class_id: 'c1', exam_title: '유리수와 순환소수 유형 점검', exam_date: '2026-06-20', archive_file: archiveFile, question_count: 8 }],
+            exam_sessions: [1,2,3,4,5,6].map(n => ({ id: 'e'+n, student_id: 's'+n, exam_title: '유리수와 순환소수 유형 점검', exam_date: '2026-06-20', archive_file: archiveFile, question_count: 8, updated_at: '2026-06-20T10:0'+n+':00Z' })),
+            wrong_answers: [
+                { session_id: 'e1', question_id: 1 }, { session_id: 'e1', question_id: 2 }, { session_id: 'e1', question_id: 8 },
+                { session_id: 'e2', question_id: 1 }, { session_id: 'e2', question_id: 2 }, { session_id: 'e2', question_id: 3 },
+                { session_id: 'e3', question_id: 1 }, { session_id: 'e3', question_id: 4 },
+                { session_id: 'e4', question_id: 1 }, { session_id: 'e4', question_id: 2 }, { session_id: 'e4', question_id: 3 }, { session_id: 'e4', question_id: 4 },
+                { session_id: 'e5', question_id: 2 }, { session_id: 'e5', question_id: 3 },
+                { session_id: 'e6', question_id: 3 }, { session_id: 'e6', question_id: 8 }
+            ],
+            exam_blueprints: [
+                { archive_file: archiveFile, question_no: 1, standard_unit_key: 'M2-01', standard_unit: '유리수와 순환소수', standard_course: '중2' },
+                { archive_file: archiveFile, question_no: 2, standard_unit_key: 'M2-02', standard_unit: '순환소수의 표현', standard_course: '중2' },
+                { archive_file: archiveFile, question_no: 3, standard_unit_key: 'M2-02', standard_unit: '순환소수의 표현', standard_course: '중2' },
+                { archive_file: archiveFile, question_no: 4, standard_unit_key: 'M2-03', standard_unit: '유리수의 계산', standard_course: '중2' },
+                { archive_file: archiveFile, question_no: 8, standard_unit_key: '', standard_unit: '', standard_course: '중2' }
+            ]
+        }, ui: {} };
+        window.apEscapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+        window.showModal = function(title, body) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-body').innerHTML = body;
+            const o = document.getElementById('modal-overlay');
+            o.classList.remove('hidden'); o.classList.add('show');
+        };
+        window.closeModal = function() {
+            const o = document.getElementById('modal-overlay');
+            o.classList.add('hidden'); o.classList.remove('show');
+        };
+        window.toast = function(m) {
+            const root = document.getElementById('toast-root');
+            const it = document.createElement('div'); it.className = 'toast'; it.textContent = m;
+            root.appendChild(it); setTimeout(() => it.remove(), 3500);
+        };
+        window.setButtonBusy = function(){};
+        window.api = { get: async () => ({ assignments: [] }), post: async () => ({ success: false }) };
+    </script>
+    <script src="../apmath/js/clinic-print.js"></script>
+    <script>
+        // 엔진 열기는 새 탭 대신 무해 처리(하니스에서 payload만 확인)
+        window.clinicPrintOpenEngine = function(payload) {
+            try { sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', JSON.stringify(payload)); } catch(e){}
+            window.toast('출력 payload 생성됨 (하니스: 엔진 열기 생략)');
+        };
+        window.addEventListener('load', () => setTimeout(() => openClinicPrintCenter('c1', { skipAssignmentRefresh: true }), 60));
+    </script>
+</body>
+</html>

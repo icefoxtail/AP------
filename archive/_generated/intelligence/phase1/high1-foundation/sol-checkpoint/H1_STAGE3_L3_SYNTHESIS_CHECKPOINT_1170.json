@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "h1-stage3-l3-synthesis-checkpoint-v1",
+  "status": "STAGE3_L3_CANDIDATE_MAPPED_REVIEW_PENDING",
+  "generatedAt": "2026-09-23",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "branchHeadBeforeCheckpoint": "acfb4b87773cd8e55c25e18ffe72e581150df895",
+  "currentMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "coverage": {
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "files": [
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_POLYNOMIAL_217.jsonl",
+        "rows": 217,
+        "blobSha": "fcb9f4bea98a32a0f41a1e427b41cb3b62674ac2"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_EQINEQ_001_350.jsonl",
+        "rows": 350,
+        "blobSha": "e2e5334331261c8615efddd82fc50b6d608799e5"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_EQINEQ_351_583.jsonl",
+        "rows": 233,
+        "blobSha": "6c0b9022f4dec5041f2e32352e8affa74b397908"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_PERMCOMB_287.jsonl",
+        "rows": 287,
+        "blobSha": "40ec741ac8b41566a3e0970b74503f5eb539255e"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_MATRIX_83.jsonl",
+        "rows": 83,
+        "blobSha": "faad3d94856080b2feaf3c8788750babff0c6c50"
+      }
+    ]
+  },
+  "keyStatusCounts": {
+    "NEW_CANDIDATE": 969,
+    "HOLD": 12,
+    "REUSE_ACTIVE": 189
+  },
+  "problemTypeDistribution": {
+    "PT_H1_QUADRATIC_DISCRIMINANT": 106,
+    "PT_COUNTING_SELECTION_DISTRIBUTION": 103,
+    "PT_H1_COUNTING_PRINCIPLE_GENERAL": 99,
+    "PT_H1_POLY_DIVISION_REMAINDER": 87,
+    "PT_COUNTING_ARRANGEMENT": 81,
+    "PT_H1_SYSTEM_EQUATION": 75,
+    "PT_H1_QUADRATIC_EXTREMA": 68,
+    "PT_H1_COMPLEX_POWER_ROOT": 48,
+    "PT_H1_COMPLEX_OPERATION": 46,
+    "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY": 44,
+    "PT_H1_QUADRATIC_INEQUALITY": 40,
+    "PT_H1_POLY_FACTORIZATION": 38,
+    "PT_H1_POLY_OPERATION_EXPANSION": 38,
+    "PT_H1_COMPLEX_CONDITION_EQUATION": 38,
+    "PT_H1_MATRIX_BASIC_OPERATION": 35,
+    "PT_H1_QUADRATIC_GRAPH_INTERSECTION": 34,
+    "PT_H1_MATRIX_MULTIPLICATION": 31,
+    "PT_H1_POLY_IDENTITY_COEFFICIENT": 29,
+    "PT_H1_POLY_FORMULA_SYMMETRIC": 23,
+    "PT_H1_LINEAR_SYSTEM_INEQUALITY": 23,
+    "PT_H1_HIGHER_DEGREE_EQUATION": 23,
+    "PT_H1_ROOT_COEFFICIENT_RELATION": 18,
+    "HOLD": 12,
+    "PT_H1_MATRIX_EQUATION": 12,
+    "PT_H1_QUADRATIC_RECONSTRUCTION": 9,
+    "PT_H1_MATRIX_POWER_IDENTITY": 5,
+    "PT_ABSOLUTE_INEQUALITY_EXTREMUM": 2,
+    "PT_COUNTING_REPEATED_ASSIGNMENT": 2,
+    "PT_FUNCTION_COUNTING": 1
+  },
+  "newProblemTypeCandidates": [
+    {
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "canonicalLabelKo": "다항식의 연산과 전개",
+      "definition": "다항식의 덧셈·뺄셈·곱셈·전개와 특정 계수 추출을 핵심으로 하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "canonicalLabelKo": "곱셈공식과 대칭식",
+      "definition": "곱셈공식의 변형, 대칭식, 역수형 거듭제곱 관계를 이용하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "canonicalLabelKo": "항등식과 미정계수",
+      "definition": "항등식의 특수값 대입 또는 계수비교로 미정계수를 정하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_POLY_DIVISION_REMAINDER",
+      "canonicalLabelKo": "다항식의 나눗셈과 나머지",
+      "definition": "다항식 나눗셈, 나머지정리, 인수정리를 이용해 나머지·계수·인수를 구하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "canonicalLabelKo": "다항식의 인수분해",
+      "definition": "인수분해 구조를 찾아 식을 분해하거나 인수 조건을 이용하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "canonicalLabelKo": "복소수의 연산과 상등",
+      "definition": "복소수의 사칙연산, 실수부·허수부 비교, 켤레복소수의 기본 연산을 다루는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "canonicalLabelKo": "복소수의 거듭제곱과 단위근",
+      "definition": "i 및 복소수 거듭제곱의 주기, 단위근·세제곱근 구조를 이용하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "canonicalLabelKo": "복소수 조건과 방정식",
+      "definition": "실수·순허수·켤레근·복소 제곱근 조건을 방정식의 근 구조와 결합하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "canonicalLabelKo": "이차방정식의 근과 판별식",
+      "definition": "실근·중근·허근의 존재와 근의 위치를 판별식 또는 부호 조건으로 판정하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "canonicalLabelKo": "근과 계수의 관계",
+      "definition": "이차방정식 및 관련 방정식의 근의 합·곱과 대칭식을 활용하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "canonicalLabelKo": "고차방정식의 풀이",
+      "definition": "삼차·사차 이상의 방정식을 인수분해·치환·근 구조로 해결하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "canonicalLabelKo": "연립방정식과 공통근",
+      "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "일차·연립부등식",
+      "definition": "일차부등식 또는 연립부등식의 공통 해구간과 정수·매개변수 조건을 다루는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "canonicalLabelKo": "절댓값 방정식과 부등식",
+      "definition": "절댓값을 구간별로 풀거나 거리 해석을 이용해 해집합을 구하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "canonicalLabelKo": "이차부등식과 부호 조건",
+      "definition": "이차식의 부호, 해구간, 전역 성립, 매개변수 범위를 다루는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "이차함수의 그래프와 교점",
+      "definition": "이차함수와 직선·축·다른 그래프의 교점, 접점, 근 위치를 판정하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "canonicalLabelKo": "이차함수의 최대·최소",
+      "definition": "이차함수의 꼭짓점·제한구간·모델링을 이용해 최댓값·최솟값을 구하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "canonicalLabelKo": "조건을 이용한 이차함수 결정",
+      "definition": "교점·축·꼭짓점·함숫값 등의 조건으로 이차함수 식이나 계수를 복원하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "canonicalLabelKo": "경우의 수의 합·곱 법칙",
+      "definition": "합의 법칙·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반적인 경우의 수를 세는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "canonicalLabelKo": "행렬의 기본과 연산",
+      "definition": "행렬의 크기·상등·성분·덧셈·뺄셈·스칼라배를 다루는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "canonicalLabelKo": "행렬의 곱셈",
+      "definition": "행렬곱·제곱의 성분을 계산하거나 곱의 의미를 활용하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "canonicalLabelKo": "행렬 방정식",
+      "definition": "행렬 상등·방정식·교환 조건으로 미지 행렬이나 성분을 정하는 유형.",
+      "status": "CANDIDATE"
+    },
+    {
+      "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "canonicalLabelKo": "행렬의 거듭제곱과 항등관계",
+      "definition": "행렬 거듭제곱의 주기, 다항식 관계, 항등식을 이용하는 유형.",
+      "status": "CANDIDATE"
+    }
+  ],
+  "existingCanonicalReuse": [
+    "PT_COUNTING_ARRANGEMENT",
+    "PT_COUNTING_REPEATED_ASSIGNMENT",
+    "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "PT_FUNCTION_COUNTING",
+    "PT_ABSOLUTE_INEQUALITY_EXTREMUM"
+  ],
+  "newCandidateCount": 23,
+  "activeReuseCount": 5,
+  "totalUsedFamilyCount": 28,
+  "l3UnassignedDueSourceBlock": 12,
+  "principles": [
+    "same semantic family reused across curricula/L2",
+    "one-off context/condition does not create L3",
+    "CrossConcept/Condition/IntegrationPattern reserved for relational detail",
+    "existing ACTIVE canonical reused before new candidate"
+  ],
+  "next": "Stage3 L3 boundary review → L4/relational synthesis; candidate only, not FINAL/promotion"
+}

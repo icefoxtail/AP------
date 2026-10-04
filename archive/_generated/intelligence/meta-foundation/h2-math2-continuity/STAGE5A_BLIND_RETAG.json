@@ -1,0 +1,2305 @@
+{
+  "project": "H2 MathII Continuity Foundation",
+  "stage": "5-A",
+  "status": "BLIND_RETAG_FROZEN",
+  "branch": "codex/metadata-foundation-h2-math2-continuity",
+  "basedOnStage4Commit": "230a340150ea1448e3145ce9e272d75a0c54b448",
+  "denominatorTotal": 85,
+  "blindRule": "Existing level/difficultyBucket/reviewer verdict were not used for this pass. Legacy compatibility remains UNKNOWN until Stage 5-B.",
+  "fixedScope": {
+    "standardUnitKey": "H15-M2-02",
+    "subUnitKey": "H15-M2-02-CONTINUITY"
+  },
+  "records": [
+    {
+      "seq": 1,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_수학II.js",
+      "sourceQuestionId": 2,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_DISCONTINUITY_POINTS",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "유리식의 분모 영점 → 약분 가능 여부와 무관하게 원함수 정의 여부까지 확인",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 2,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2final/23_순천여고_2학기_기말_고2_수학II.js",
+      "sourceQuestionId": 20,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "매개변수별 근 개수 step function → 점프점 추출 → 보정 다항식의 영점 강제",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 3,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2final/25_매산고_2학기_기말_고2_수학II.js",
+      "sourceQuestionId": 19,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B45",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "경계점 연속이 원함수의 특정 영점을 강제 → 이후 다항함수 극값 조건과 결합",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 4,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 9,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION",
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "원함수의 점프 → 변환(|·|)이 점프를 없애는지 + 합성이 새 불연속을 만드는지 판정",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 5,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 14,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH",
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "수평선 교점 개수 step function → 점프점 = 보정함수의 근",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 6,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 17,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "taxonomyDisposition": "REUSE_ACTIVE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "역함수 교점 → 고정점 조건으로 환원 + 조각 경계 연속",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 7,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 21,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "0/0 조건 강제 → 약분 → 극한값=지정 함숫값",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 8,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 3,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "기본 연속성 OX + 정의역/경계점 점검",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 9,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 10,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "매개변수형 0/0 제거 + 지정점 값 맞추기",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 10,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 11,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "표본점 값 → 연속 보조함수의 부호 변화 → 최소 근 개수",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 11,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 18,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_COMPOSITE_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_QUADRATIC_EQUATION",
+        "CC_FUNCTION_COMPOSITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B45",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "근 개수 분류(퇴화 포함) → step function → 합성 후 점프 수와 보정 가능성",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 12,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 21,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "집합을 먼저 구간으로 환원 → 두 경계 연속 + 내부 pole 금지",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 13,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_효천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 9,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "매개변수형 0/0 제거 + 지정점 값 맞추기",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 14,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_효천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 10,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "연속함수의 이산 표본 → 인접구간 부호변화 카운트",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 15,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_효천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 18,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "판별식 부호표 → 정수값 step function → 경계 불연속 판정",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 16,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/22_효천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 24,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_LIMIT_EXISTENCE_FUNCTION_DETERMINE",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "극한 존재 여부가 매개변수 t의 영점 집합을 암호화 → 영점/중복도 + 조각 경계 연속",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 17,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 5,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 2,
+        "decisiveStructure": "단일 경계점 값 맞추기",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 18,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 9,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_ROOT_INTERVAL",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "정수 구간 후보를 순차 검사하는 IVT",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 19,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 10,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "불연속 후보점 축소 → 곱의 좌우극한 직접 비교",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 20,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 17,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "서로 다른 두 점프 위치 → 교차 영점 조건 2개",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 21,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 19,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "점별 다중값 대수조건 → 연속성이 허용하는 branch switching → 후속 교점 최적화",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 22,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 9,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "연속함수 방정식을 h=f-x의 영점 문제로 변환",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 23,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 14,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "그래프 기반 다중 진술: 곱의 불연속 상쇄 + 닫힌구간 연속성 + 합성의 방향성",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 24,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 18,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_EQUATION",
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "매개변수별 해 개수 step function의 jump count",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 25,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 21,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "대칭 두 경계에서 독립 연속 조건 2개",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 26,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 5,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_DISCONTINUITY_POINTS",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "그래프 기반 점별 2단계 판정: 극한 존재 → 연속 여부",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 27,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 7,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "암시적 몫식 → 분자 영점 강제 → 유리화 → 지정값 일치",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 28,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 8,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "taxonomyDisposition": "REUSE_ACTIVE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "닫힌구간 연속성 + 명시적 후보점 비교",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 29,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 14,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "변형된 연속함수의 다점 부호표 → 최소 근 개수",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 30,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 21,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_CONDITION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "inner jump의 양쪽 도착값 → outer function 값 동일화",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 31,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 3,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "암시적 곱식에서 빠진 점 복원",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 32,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 8,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "전구간 연속 ↔ 분모 실근 없음",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 33,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 9,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B45",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "복잡식 구조화(P+P') → 기준점 부호 → IVT",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 34,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 10,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "근호 분자 영점 강제 → 유리화 → 지정값 일치",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 35,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 11,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_QUADRATIC_FUNCTION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "reciprocal continuity → 허용 영점 하나로 제한 + local factor normalization",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 36,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 16,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION",
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "교점 개수 step function → 제한된 형태의 보정함수(V형)의 영점 배치",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 37,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 17,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_DISCONTINUITY",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B45",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "첫 step threshold 계산 → 합성에서 threshold의 preimage 계산",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 38,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 18,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_REVERSE_INFERENCE",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "기준함수 f의 연속·비영 확보 → 대수적으로 g를 분리하여 연속성 전달",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 39,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 3,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "기본 0/0 제거 + 함숫값 지정",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 40,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 5,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_ROOT_INTERVAL",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "보기별 endpoint sign test → IVT",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 41,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 12,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "원함수 jump → 변환이 양쪽 값을 동일화하는지 검사",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 42,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 13,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_CONDITION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION",
+        "CC_DISCRIMINANT",
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "outer discontinuity의 preimage 금지 → inner quadratic의 무실근 조건",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 43,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 18,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "선행 함수 복원 → 0/0 제거 → 지정 함숫값 일치",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 44,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 20,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ONE_SIDED_CONDITION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH",
+        "CC_QUADRATIC_EXTREMUM",
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "변환된 함수의 경계 연속 + 별도 해 개수 step function의 국소 점프 조건 결합",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 45,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 7,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "근호 인수분해 → 약분 → 빠진 점 값 복원",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 46,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 10,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "taxonomyDisposition": "REUSE_ACTIVE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "경계 연속으로 매개변수 확정 → 닫힌구간 극값 계산",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 47,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 11,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "연속 보조함수의 다점 부호표 → 최소 근 개수",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 48,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 12,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "templateKey": "TPL_CONT_DIFF_GRAPH_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "그래프의 특이점을 강도 순으로 분류: 극한 → 연속 → 미분가능",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 49,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 14,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "분모의 경계형 0/비0 불일치 → 분자의 중근 조건으로 몫 연속화",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 50,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 22,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "연속성 증명과 미분불가능성 증명을 같은 점에서 연속적으로 수행",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 51,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 2,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_VALUE_CROSSING",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "실생활 시간구간을 여러 연속 구간으로 분리 → 각 구간 IVT 횟수 합산",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 52,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 3,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_SYMMETRY_ROOT_COUNT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "IVT로 양의 근 확보 → 홀대칭으로 근 복제 + 원점 근",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 53,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 7,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "근호 분자 영점 강제 → 유리화 → 지정값 일치",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 54,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 13,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "내부 seam 연속 + period seam 연속 → 주기 환원 계산",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 55,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 21,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "분모의 2차 영점 → 분자의 동차수 영점 조건 2개",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 56,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 22,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "두 독립 점프점마다 '상대 인수 0 또는 자체 연속' 선택 분기",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 57,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 7,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_ABSOLUTE_SQUARE_TRANSFORM",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "원함수의 점별 jump → 절댓값 변환 후 연속성 재판정",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 58,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 8,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "전구간 연속 ↔ 분모 무실근 ↔ 판별식 부등식",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 59,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 14,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "한 인수의 경계 점프 × 다른 이동 인수의 공통값 → 0 상쇄 조건",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 60,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 16,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "taxonomyDisposition": "REUSE_ACTIVE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EXTREMUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "경계값 고정 → 전역 단사성/치역 연결 → 매개변수 최적화",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 61,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 20,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "pole cancellation + 원래 지정 함숫값과의 일치를 위해 보정다항식 중근 강제",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 62,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 21,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "끝점의 1차 국소정보 → 내부 양끝 부호 반대 → 추가 영점",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 63,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 11,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "전구간 정의·연속 ↔ denominator no real zero",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 64,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 12,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "연속성 닫힘성 정리 2개 + 영인수 반례 1개",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 65,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 5,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_ABSOLUTE_SQUARE_TRANSFORM",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "원함수의 두 극한값 → 동일한 제곱값으로 접어 연속화",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 66,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 7,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "두 jump function의 조합에서 상쇄/증폭 여부를 명제별 판정",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 67,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 12,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "이동된 고정 불연속점 → 다른 인수의 영점 preimage 탐색",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 68,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 14,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "좌측 인수분해형 + 우측 유리화형을 공통 경계값으로 결합",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 69,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 18,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "같은 점에서 연속 PASS 후 differentiability FAIL 증명",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 70,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 19,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "단일 jump × 연속 multiplier → multiplier zero",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 71,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 4,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_ROOT_INTERVAL",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "endpoint sign test + global uniqueness condition",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 72,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 7,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "piecewise-linear graph × line pencil → parameter별 교점 수 step function",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 73,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 3,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 2,
+        "decisiveStructure": "기본 단일 seam 값 맞추기",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 74,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 4,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "jump function × continuous multiplier → multiplier zero",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 75,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 15,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "range hole → one-point count discontinuity → correction factor zero",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 76,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 16,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "교점 개수 step function의 두 jump → 보정 이차함수의 근 2개",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 77,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 17,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION",
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "simple pole × polynomial zero → continuity target 0 requires double zero",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 78,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 23,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "taxonomyDisposition": "REUSE_ACTIVE",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "global bijection/monotonicity → inverse-intersection를 fixed/2-cycle 구조로 변환 → 경계 연속 결합",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 79,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 3,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 2,
+        "decisiveStructure": "기본 단일 seam 연속",
+        "dominantRationale": "핵심 절차가 즉시 결정되는 직접 적용형."
+      }
+    },
+    {
+      "seq": 80,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 9,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 5,
+        "decisiveStructure": "여러 jump function 결합 + shifted argument의 접근 방향 추적",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 81,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 10,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_SYMMETRY_ROOT_COUNT",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "양의 부호변화 근 + 홀대칭 + 원점",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    },
+    {
+      "seq": 82,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 15,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 3,
+        "decisiveStructure": "내부 경계 + 주기 경계 두 조건 → modulo 주기 평가",
+        "dominantRationale": "조건 관계를 파악하고 풀이 방향을 한 번 이상 선택하는 표준 변별형."
+      }
+    },
+    {
+      "seq": 83,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 16,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION",
+        "CC_QUADRATIC_EQUATION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B45",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "parameterized intersection count → sign restriction + discriminant → correction quadratic roots",
+        "dominantRationale": "복합 조건 구조화·비정형 변형·경우 분기가 풀이 중심에 있음."
+      }
+    },
+    {
+      "seq": 84,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 17,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "pointwise algebraic alternatives → continuity permits switching only at intersections → differentiability count filters switches",
+        "dominantRationale": "결정적 관찰이나 구조 재구성 없이는 진행이 어려운 최고난도형."
+      }
+    },
+    {
+      "seq": 85,
+      "sourceArchiveFile": "archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceQuestionId": 19,
+      "standardUnitKey": "H15-M2-02",
+      "subUnitKey": "H15-M2-02-CONTINUITY",
+      "conceptClusterKey": null,
+      "conceptClusterDisposition": "UNCHANGED_COMPATIBILITY_FIELD",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "taxonomyDisposition": "NEW_L4_CANDIDATE",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "BLIND_FROZEN_PENDING_LEGACY_COMPARE",
+      "difficultyEvidence": {
+        "conceptCount": 4,
+        "decisiveStructure": "전구간 연속 ↔ radicand strictly positive ↔ discriminant < 0",
+        "dominantRationale": "한 번의 조건 해석이나 익숙한 변형 뒤 표준 절차를 적용."
+      }
+    }
+  ],
+  "validation": {
+    "recordCount": 85,
+    "uniqueSequenceCount": 85,
+    "uniqueSourceTupleCount": 85,
+    "missingSequences": [],
+    "invalidConceptKeys": [],
+    "invalidConditionKeys": [],
+    "invalidIntegrationPatterns": [],
+    "bucketDistribution": {
+      "1": 9,
+      "2": 23,
+      "3": 19,
+      "4": 23,
+      "5": 11
+    },
+    "boundaryCount": 68,
+    "canonicalRegistryMutated": false,
+    "productionJsMutated": false
+  }
+}

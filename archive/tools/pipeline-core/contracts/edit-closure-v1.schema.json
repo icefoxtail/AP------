@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_EDIT_CLOSURE_v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "runId",
+    "revision",
+    "inputSha",
+    "predecessor",
+    "changeImpactSha",
+    "requiredUidAxisSet",
+    "axes",
+    "closureSetSha",
+    "editClosureSha",
+    "productionAuthorized",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "APMATH_EDIT_CLOSURE_v1"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "inputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "predecessor": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "changeImpactSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "requiredUidAxisSet": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "questionUid",
+          "axis"
+        ],
+        "properties": {
+          "questionUid": {
+            "type": "string",
+            "minLength": 1
+          },
+          "axis": {
+            "enum": [
+              "SOURCE",
+              "MATH_A1",
+              "MATH_A2",
+              "SOLUTION",
+              "METADATA",
+              "STATIC",
+              "V1",
+              "V2",
+              "V3",
+              "RENDER_CAPTURE",
+              "RENDER_REVIEW"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "axes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "questionUid",
+          "axis",
+          "mode",
+          "evidenceId",
+          "evidenceSha",
+          "receiptSha",
+          "axisInputSha",
+          "status"
+        ],
+        "properties": {
+          "questionUid": {
+            "type": "string",
+            "minLength": 1
+          },
+          "axis": {
+            "enum": [
+              "SOURCE",
+              "MATH_A1",
+              "MATH_A2",
+              "SOLUTION",
+              "METADATA",
+              "STATIC",
+              "V1",
+              "V2",
+              "V3",
+              "RENDER_CAPTURE",
+              "RENDER_REVIEW"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "FRESH",
+                "MACHINE_CURRENT",
+              "REUSED"
+            ]
+          },
+          "evidenceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceSha": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "receiptSha": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "axisInputSha": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "BLOCKED"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "closureSetSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "editClosureSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "productionAuthorized": {
+      "const": false
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "BLOCKED"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

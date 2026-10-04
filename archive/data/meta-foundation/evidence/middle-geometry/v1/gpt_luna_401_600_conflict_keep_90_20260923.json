@@ -1,0 +1,2786 @@
+{
+  "schemaVersion": "middle-geometry-luna401-600-conflict-queue-v1",
+  "status": "CONFLICT_QUEUE_FROZEN_90",
+  "sourceCheckpoint": "f424f89773e58ca3dbde1fa9b9ac23e76adb4e39",
+  "sourceRange": "401-600",
+  "sourceReviewed": 200,
+  "problemMarked": 98,
+  "sourceDefects": 95,
+  "sourceHolds": 3,
+  "comparisonAuthority": {
+    "branch": "codex/meta-foundation/middle-geometry",
+    "branchL3": "l3_semantic_final_928.json",
+    "branchL4": "l4_crossconcept_semantic_ledger_working.json",
+    "frozen143": "gpt_conflict_adjudication_final_143_20260923.json"
+  },
+  "overlapWithFrozen143": 0,
+  "agreementsRemoved": 8,
+  "conflictCount": 90,
+  "holdConflictCount": 3,
+  "missingDecisionCount": 0,
+  "conflictByGptBucket": {
+    "601-800": 26,
+    "801-928": 24,
+    "001-200": 6,
+    "401-600": 11,
+    "201-400": 23
+  },
+  "records": [
+    {
+      "lunaReviewIndex": 406,
+      "gptIndex": 668,
+      "questionUid": "qid_v1_78a33cae31014035c5e0aa99cc93846f0fca67ff569bbf34ba23846194739bfe",
+      "sourceIdentity": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js#4",
+      "sourceFingerprint": "9a01e116919a1740ed442b14536b4421029cf6aab54d5a34f23c658f0480a137",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENCY_CONDITION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 668
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "반지름-접선 수직 조건으로 각을 계산한다. 두 접점과 현의 길이 템플릿 및 사용하지 않은 지름 CrossConcept는 맞지 않는다."
+    },
+    {
+      "lunaReviewIndex": 407,
+      "gptIndex": 669,
+      "questionUid": "qid_v1_78d7e7475b76236e3af828b09edc3464bcb9e6ed44756c0a0fb9d4d6bd2e5fdd",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#24",
+      "sourceFingerprint": "98a2d2fba0b4adf03f28591fe04fa7cfa354ed935bb1cdd634d0ddef0037528e",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENCY_CONDITION",
+        "CC": [
+          "CC_AREA",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 669
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "접선의 수직 조건과 대칭으로 반지름·중심각을 구한 뒤 사각형 넓이에서 부채꼴 넓이를 뺀다. 일반 넓이를 추가하고 삼각형 넓이와 쓰이지 않은 지름은 제거한다."
+    },
+    {
+      "lunaReviewIndex": 408,
+      "gptIndex": 817,
+      "questionUid": "qid_v1_7929bc32886dc9e9a862c84d3add991f57b58efd8d4763743985491ab2d854de",
+      "sourceIdentity": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js#12",
+      "sourceFingerprint": "48e41d52c177195d572d27e1da3e738c6d6eefdba91c223539f2fb02cb9ccfe3",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_DIAMETER"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "CC": [
+          "CC_DIAMETER",
+          "CC_PARALLEL_LINES"
+        ],
+        "status": "FINAL",
+        "gptIndex": 817
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "지름 직각, 평행선, 접선-현각, 같은 호 원주각을 연쇄 적용하는 복합 원의 각 문제다. 접선 길이 분류는 맞지 않고 원주각 CrossConcept는 Primary와 중복된다. 지름은 실제 보조 경로라 유지한다."
+    },
+    {
+      "lunaReviewIndex": 413,
+      "gptIndex": 819,
+      "questionUid": "qid_v1_7a5833ac5d37d022a6e5491e026b6905e36ce9af61437cd7e93700646f61c876",
+      "sourceIdentity": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js#9",
+      "sourceFingerprint": "69ac98bf485aa2e62f7ca289bc23116ac1ddfd234d0750de8c2a41b08fd11cd7",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL",
+        "gptIndex": 819
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "두 외부 할선각의 호 차를 연립하고 원 전체 호에서 목표 호와 원주각을 얻는 다단계 적용이다. 단일 직접 각 관계보다 원 각 관계 적용형이 맞다."
+    },
+    {
+      "lunaReviewIndex": 419,
+      "gptIndex": 670,
+      "questionUid": "qid_v1_7bf434c68e3a8321f3e77ea9866f4be6b7a8de45351278820911568719a0d740",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#15",
+      "sourceFingerprint": "22cbffca104fe39286b28d209c9cb61ffb4336040d7fd0f9dcae0b3a8bcdb0ed",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 670
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "같은 중심거리의 현이 같다는 원-현 관계와 반현을 이용한 반지름 계산이 Primary다. 삼각형 중심 유형 및 쓰이지 않는 지름 CrossConcept는 맞지 않는다."
+    },
+    {
+      "lunaReviewIndex": 420,
+      "gptIndex": 822,
+      "questionUid": "qid_v1_7c79820d88c11aef337163cec75f347205403c7f8e7b67035dcc91e0e02a0122",
+      "sourceIdentity": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js#5",
+      "sourceFingerprint": "0df4af282db43ddcb3e654a1a5cb1409768eaf54d801466e91d5a39c385bc7a5",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL",
+        "gptIndex": 822
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "접선-현각, 이등변삼각형, 내접사각형의 각을 이어 최종 각 차를 구하는 복합 원각 문제다. 접점·현 길이 유형은 맞지 않는다."
+    },
+    {
+      "lunaReviewIndex": 421,
+      "gptIndex": 189,
+      "questionUid": "qid_v1_7c8045846596a97fd168e12fa77d709521e58ce8e00047c357b722eeb97209c3",
+      "sourceIdentity": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js#18",
+      "sourceFingerprint": "474d54ab40a337a7084f6afcccd3c71f98f980d8166091dc1f861b935bbf5382",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_DIRECT",
+        "CC": [
+          "CC_PERPENDICULAR_BISECTOR"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [
+          "CC_PERPENDICULAR_BISECTOR"
+        ],
+        "status": "FINAL",
+        "gptIndex": 189
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "직사각형의 180도 대칭과 대각선 수직이등분선 성질을 쓰며 각의 이등분선은 사용하지 않는다."
+    },
+    {
+      "lunaReviewIndex": 423,
+      "gptIndex": 671,
+      "questionUid": "qid_v1_7ca94a922fb227f7079923725c0bbb5a4c399011e7961d4b3cc517f3129c27bf",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#23",
+      "sourceFingerprint": "0adbe9bbee682616c30ed577377daaf17893bfcdeb06051ad52cd3c9eca35c21",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TWO_CIRCLES",
+        "L4": "TM_TWO_CIRCLES_CENTER_LINE",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TWO_CIRCLES",
+        "L4": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 671
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "동심원에서 현과 반지름을 직각삼각형으로 계산하며 지름은 사용되지 않는다. 두 원과 중심선 관계 및 직각삼각형은 현재 분류와 일치한다."
+    },
+    {
+      "lunaReviewIndex": 424,
+      "gptIndex": 492,
+      "questionUid": "qid_v1_7cab381aa1964afe56c02ca94552f98ab34da430c16bb61d75ac913fd30a5f36",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#21",
+      "sourceFingerprint": "740fab8f845aaff88255c48c177426d5dc5dfd6bb908062ca4854766b02dfdfc",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_APPLICATION_PROOF_OR_MULTI_STATEMENT",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 492
+      },
+      "conflictFields": [
+        "L3",
+        "L4"
+      ],
+      "lunaReason": "밑면 대각선과 공간 대각선을 각각 피타고라스로 구한 뒤 코사인을 계산한다. 피타고라스 보조 개념이 누락됐다."
+    },
+    {
+      "lunaReviewIndex": 425,
+      "gptIndex": 672,
+      "questionUid": "qid_v1_7d0633cc3d175ee66d91fbb31a920fc7c55febc7f80c3f0f2babe2907460005f",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#15",
+      "sourceFingerprint": "e393f5bf296f5bad318978c7626f12d1d787246530131e3893dc54e30a884681",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 672
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "현의 반·시위와 중심거리로 반지름을 구하는 원의 현 문제다. 삼각형 중심 분류 및 지름 CrossConcept는 풀이 경로와 맞지 않고 직각삼각형 CrossConcept는 유지한다."
+    },
+    {
+      "lunaReviewIndex": 428,
+      "gptIndex": 192,
+      "questionUid": "qid_v1_7dc4026e211e0486d2db8c02619dce566eeaa63e54e2f49b728081fb3354d1d0",
+      "sourceIdentity": "original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js#9",
+      "sourceFingerprint": "300c8c08b40daabb64a996e7b5a9bffe2ca1000a7552808e84c83e1cca8a3ed9",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_PARALLEL_SEGMENT_RATIO_DIRECT",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 192
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "세 변의 중점을 이용한 중점연결정리가 모든 선분 관계의 출발점이다. 평행선 비 분류는 맞지만 중점 CrossConcept가 누락됐다."
+    },
+    {
+      "lunaReviewIndex": 430,
+      "gptIndex": 824,
+      "questionUid": "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354",
+      "sourceIdentity": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js#2",
+      "sourceFingerprint": "628dbb81f8bf69aa504bfcb608ca0ab422705a16940e1b966aad2eac75492713",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_DIRECT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 824
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "내접사각형 맞은편 각의 보각 관계만 쓰며 접선은 등장하지 않는다."
+    },
+    {
+      "lunaReviewIndex": 432,
+      "gptIndex": 193,
+      "questionUid": "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+      "sourceIdentity": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js#5",
+      "sourceFingerprint": "4c6adfa03a5f4164b184bd631b3cadebf6aa387cc0ef892de7e5f6422f6a2b89",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 193
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "평행 조건으로 두 삼각형의 닮음을 세워 변과 둘레를 구한다. 삼각형 닮음 적용을 Primary로 옮기면 Similarity CrossConcept는 중복이다."
+    },
+    {
+      "lunaReviewIndex": 433,
+      "gptIndex": 495,
+      "questionUid": "qid_v1_7e4c4f76abfe907ff6fad0c46b596d11534da80bc620ce0e70ae42c2d6d924cc",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#7",
+      "sourceFingerprint": "c98582d5fda6384e630e022da29a09c03add03e04bb01f61603d8bc87958ce99",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_RATIO_RELATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 495
+      },
+      "conflictFields": [
+        "L3",
+        "L4"
+      ],
+      "lunaReason": "사분원의 반지름을 직각삼각형 빗변으로 써 삼각비 관계를 표현하며 지름은 사용하지 않는다."
+    },
+    {
+      "lunaReviewIndex": 436,
+      "gptIndex": 194,
+      "questionUid": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
+      "sourceIdentity": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js#12",
+      "sourceFingerprint": "0eebdad698c32b0f1bcbef5de0701f4b419e6a55e949cdf23fc365a1ba72688f",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_RATIO",
+        "CC": [
+          "CC_MIDPOINT",
+          "CC_TRIANGLE_CENTROID"
+        ],
+        "status": "FINAL",
+        "gptIndex": 194
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "두 중선의 교점인 무게중심의 2:1 성질이 길이를 결정한다. 닮은 도형 분류보다 이등변삼각형에 적용한 무게중심 유형이 적합하다."
+    },
+    {
+      "lunaReviewIndex": 437,
+      "gptIndex": 673,
+      "questionUid": "qid_v1_7fad6ed9e5fa9b42efa230a0ccfb793e236c419cfcc1d0a4795a950a2be6bd01",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#14",
+      "sourceFingerprint": "94d92f904295c062d053bb4da14420ef29b5b1adbfc5777bf660d64cbf66ae25",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 673
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "중심에서 현에 내린 수선이 현을 이등분한다는 성질이 결정 단계다. 일반 원과 직선 위치 관계보다 현의 수직이등분선 템플릿이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 440,
+      "gptIndex": 674,
+      "questionUid": "qid_v1_8121df11cf45bc2a3dbf232a0dd1d0dbde082755afa7ec207d1e4ce1bcf20c6b",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#16",
+      "sourceFingerprint": "2aca1a41f0167ceda6dbf277427cbdfec8c3ea27cc14fa642d203b0605d3beb0",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_REFLECTION"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 674
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "접기선이 점과 중심을 잇는 선분의 수직이등분선이라는 사실로 현 길이를 구한다. 삼각형 중심 및 지름 분류는 맞지 않고, 수직이등분선은 Primary에 들어가므로 대칭이동 CrossConcept로 보완한다."
+    },
+    {
+      "lunaReviewIndex": 449,
+      "gptIndex": 675,
+      "questionUid": "qid_v1_82d18262065792d036c2659bccea11e9959b335de14577df1772cc2e38a79a68",
+      "sourceIdentity": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js#21",
+      "sourceFingerprint": "804cb64ec05396c750c04964c930fc7623a8afcda23b438948e20db8bae76bc7",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 675
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "내접원의 같은 꼭짓점 접선 길이로 변 조각을 나타낸 뒤 피타고라스와 넓이를 적용한다. 접점 사이 현 길이 유형보다 접선 길이 템플릿이 정확하며 지름은 쓰이지 않는다."
+    },
+    {
+      "lunaReviewIndex": 450,
+      "gptIndex": 200,
+      "questionUid": "qid_v1_82dc683c910fada2ae58952c36b18b9beb80ced6f715643551607a7b493e20cc",
+      "sourceIdentity": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js#17",
+      "sourceFingerprint": "7a723ce515e013d428848427300838f3b5fd7037d85e8aebeaaadb46f07fad07",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_CENTERS_APPLICATION",
+        "CC": [
+          "CC_TANGENCY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_INCENTER",
+        "CC": [
+          "CC_TANGENCY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 200
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "내심 반지름과 접선 조각으로 넓이를 구하며 지름은 풀이에 등장하지 않는다. 면적·접선 CrossConcept는 유효하다."
+    },
+    {
+      "lunaReviewIndex": 454,
+      "gptIndex": 202,
+      "questionUid": "qid_v1_842210b8cb13f092a4ba105fecf209695b6d507a286dd0cb01e9a7c7fcf9de0f",
+      "sourceIdentity": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js#6",
+      "sourceFingerprint": "b6ab75ebe1183c6a22f3829b6b6b241c071b72ca52d2a9d9ec7271e797d5c639",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "L4": "TPL_MIDDLE_GEOMETRY_RIGHT_TRIANGLE_CONGRUENCE_PROOF_OR_MULTI_STATEMENT",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "L4": "",
+        "CC": [],
+        "status": "HOLD",
+        "gptIndex": 202
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept",
+        "status"
+      ],
+      "lunaReason": "여러 합동 후보 조건을 차례로 평가해 하나의 비합동 조건을 고르는 문항이다. 직접 계산형보다 합동 조건 다문장 템플릿이 정확하다."
+    },
+    {
+      "lunaReviewIndex": 455,
+      "gptIndex": 203,
+      "questionUid": "qid_v1_848012b5f539fa1f58a6358ff0c5aaea032b0acc9c134b9f91cba0b749a1e303",
+      "sourceIdentity": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js#4",
+      "sourceFingerprint": "3d78234951ce2cdb491f9538ba1e32c82f5bcd1bdb11fc1690044671cd46b464",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "CC": [
+          "CC_TRIANGLE_CENTROID"
+        ],
+        "status": "FINAL",
+        "gptIndex": 203
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "두 중선의 교점 무게중심 2:1이 DF를 결정한다. 평행선 선분비보다 삼각형 무게중심 적용이 Primary이고 중점은 필요한 보조 개념이다."
+    },
+    {
+      "lunaReviewIndex": 457,
+      "gptIndex": 832,
+      "questionUid": "qid_v1_8510815903a7c2f219ebd70187837973c0e4ef5692a3892ef4573d71c1e822b8",
+      "sourceIdentity": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js#1",
+      "sourceFingerprint": "3180526e718cbdff8ee756e1f1a07d233b158efaa52921772403a4aed8e9e06f",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL",
+        "gptIndex": 832
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "접선-현각은 원주각 관계의 보기에 포함되어 현재 Circle Angle Primary에서 다루며 Tangency CrossConcept가 중복된다."
+    },
+    {
+      "lunaReviewIndex": 459,
+      "gptIndex": 500,
+      "questionUid": "qid_v1_861ca0026e01c9157133ffdcb9c47c8a1c0b48baff37646485885d2bdb073790",
+      "sourceIdentity": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js#6",
+      "sourceFingerprint": "4bac78d76590f579bf24140a7caf3500f58a52a3794629df7a1b784a53134cde",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_APPLICATION_APPLICATION",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 500
+      },
+      "conflictFields": [
+        "L2",
+        "L4"
+      ],
+      "lunaReason": "두 변과 끼인각의 사인 넓이 공식으로 삼각형 넓이를 구하는 삼각비 활용이다. L3/L4는 현재 적용형과 맞지만 L2는 일반 삼각비보다 활용 단원이 적절하다."
+    },
+    {
+      "lunaReviewIndex": 460,
+      "gptIndex": 833,
+      "questionUid": "qid_v1_86ba70e492575f8df4fe53445b2a2b6632fd642ccc2493393e1a1799e195f8b4",
+      "sourceIdentity": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js#21",
+      "sourceFingerprint": "86f11c42bf3c376c7af4cb4cd889d1ea1e8ce0c307679e4ce8660a6ca2ba852a",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL",
+        "gptIndex": 833
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "내접사각형의 보각, 삼각형 각 합, 접선-현각을 연결하는 복합 원각 문제다. 접점·현 길이 템플릿은 맞지 않는다."
+    },
+    {
+      "lunaReviewIndex": 462,
+      "gptIndex": 834,
+      "questionUid": "qid_v1_86da1fccaf8b67065a4d757a507598439c5c4258cc5669c91fd32b6c83521268",
+      "sourceIdentity": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js#22",
+      "sourceFingerprint": "6d7b268fc9122f3ba69fb1ac4975886580f2d34ee1cf755465bd76f458cb021e",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL",
+        "gptIndex": 834
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "육각형 세 원주각의 호를 합해 360도를 증명하는 원각 다문장 문제다. 접선·현 길이 유형은 맞지 않고 원주각 CrossConcept는 Primary와 중복된다."
+    },
+    {
+      "lunaReviewIndex": 471,
+      "gptIndex": 207,
+      "questionUid": "qid_v1_89b4f2038d7a60fdeff5f44c0ad9756e7e4f41be0341253d4d1f39044a7c984d",
+      "sourceIdentity": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js#3",
+      "sourceFingerprint": "43a2f442591325b48db6293dc5ecbd8656364946a892c9a79f282ba9b71e3cab",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "L4": "TPL_MIDDLE_GEOMETRY_RIGHT_TRIANGLE_CONGRUENCE_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "L4": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 207
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "여러 직각삼각형을 짝짓고 합동 조건을 연결해 고르는 다문장 판정 문제로 직접형보다 다문장 템플릿이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 473,
+      "gptIndex": 677,
+      "questionUid": "qid_v1_8ade55894bec14e81d3bdd214fdce2a4f6c1406be813f1f7d9ddcd68978a65e3",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#19",
+      "sourceFingerprint": "fa0852c60c56c1fabbde21a705c8869428ee6796aa091292b2d1346c64f6aa2e",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENCY_CONDITION",
+        "CC": [
+          "CC_RIGHT_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 677
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "반지름-접선 수직과 접선 대칭으로 중심각을 구해 부채꼴 넓이를 뺀다. 접점 사이 현 길이 템플릿보다 접선 조건이 결정적이고 지름은 사용되지 않는다."
+    },
+    {
+      "lunaReviewIndex": 478,
+      "gptIndex": 837,
+      "questionUid": "qid_v1_8c842cd9db3e25366ee1889251600e84ed61e03c1e7759346515c20148488d59",
+      "sourceIdentity": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js#22",
+      "sourceFingerprint": "a29af49320a31e3147bd98f75b26a3b6b387e9508fde748b45d2b676171e6311",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL",
+        "gptIndex": 837
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "같은 호, 외부 할선각, 원주각을 이어 여러 단계로 각을 구하므로 단순 직접형보다 원각 적용형이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 479,
+      "gptIndex": 506,
+      "questionUid": "qid_v1_8c97c2de100942b6b6b5e30c5d3c731e0dc76f68e3cd1f0a10b4ed7ee1a95f25",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#4",
+      "sourceFingerprint": "633ecafd25ceececfb3f575b2ab2c76d91982a22194544283d98af4373e48917",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_DIRECT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 506
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "단위원의 반지름과 여각 삼각비 값으로 계산하며 지름은 쓰이지 않는다."
+    },
+    {
+      "lunaReviewIndex": 480,
+      "gptIndex": 211,
+      "questionUid": "qid_v1_8cb17e84b83a3fe5882540582b3d52c6fd82d57489d10ff15e7a17af49605a96",
+      "sourceIdentity": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js#25",
+      "sourceFingerprint": "c2b5d786c63ae4514522a9df31f5e627025bb31ac3002d60ba913df2545763cb",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_MIDPOINT",
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "CC": [
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA",
+          "CC_TRIANGLE_CENTROID"
+        ],
+        "status": "FINAL",
+        "gptIndex": 211
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "무게중심의 2:1 성질과 중점연결정리가 분할 길이를 결정한다. 평행선 선분비보다 무게중심 적용이 Primary이고 중점은 추가 보조 개념이다."
+    },
+    {
+      "lunaReviewIndex": 481,
+      "gptIndex": 212,
+      "questionUid": "qid_v1_8cc219e82cc1a8dd6da9dc8c010a4cea0462aebb2cad2a3d90eb45a1ec3c9946",
+      "sourceIdentity": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js#24",
+      "sourceFingerprint": "9d269f64dfa7db551bd428009f0f0a51e350d5d67dd74954372780809ed31f89",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_CENTERS_APPLICATION",
+        "CC": [
+          "CC_AREA",
+          "CC_DIAMETER",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 212
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "외접원과 내접원의 반지름을 구해 원넓이 차를 계산하는 중심 적용형이다. 다문장 증명 템플릿보다 적용형이 맞고, 일반 원넓이를 추가해 사용되지 않은 삼각형 넓이를 제거한다. 반지름의 지름 관계는 사용되어 유지한다."
+    },
+    {
+      "lunaReviewIndex": 483,
+      "gptIndex": 838,
+      "questionUid": "qid_v1_8d53b4019a9c831c7abc15952c4eec1b1c5901130240eaf4119697527a595993",
+      "sourceIdentity": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js#22",
+      "sourceFingerprint": "b75b3aa812a3ed0a8db14c1070269130c6c62a2752d8ab608b22d1c433c5481d",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 838
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "호 길이를 각도로 바꾸고 외부 할선각의 합·차를 연립해 목표 호를 구하는 다단계 적용이다. 직접형보다 원각 적용형이 정확하다."
+    },
+    {
+      "lunaReviewIndex": 485,
+      "gptIndex": 839,
+      "questionUid": "qid_v1_8d73433bf2f68582efc50f3aae348dc967b55bd54606b3dc4b09019348b3ce98",
+      "sourceIdentity": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js#13",
+      "sourceFingerprint": "d2adad46d85d79169a1f0545b14ba1a5a0ff8e2a2f71b282ec2766d5f0759716",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 839
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "내접사각형과 삼각형 각추적 뒤 접선-현각으로 옮기는 원의 각 문제다. 접선 길이 L3/L4는 맞지 않으며 원주각 CrossConcept는 Circle Angle Primary와 중복이다."
+    },
+    {
+      "lunaReviewIndex": 486,
+      "gptIndex": 678,
+      "questionUid": "qid_v1_8da9c6b955714eada8c0673e9faff6d6c1b994ccde93ed478c74b726314d5d32",
+      "sourceIdentity": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js#3",
+      "sourceFingerprint": "a3455d27fa16995f7a3ecbc3e93fc41fc2655daa7fff09114f84130476eaec8f",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 678
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 반현을 얻는다. 일반 원과 직선 위치 템플릿보다 현의 수직이등분선 템플릿이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 488,
+      "gptIndex": 840,
+      "questionUid": "qid_v1_8e8679d91c564849aac108ab4049be00f1a73683affa74f0b65c86c5ee13e5e1",
+      "sourceIdentity": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js#9",
+      "sourceFingerprint": "5ab7e272c72406ca69059b227ab09ad06502d1903b8df7abe02650495a992d51",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 840
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "두 접선으로 호를 구하고 같은 호 분할 후 현 교차각을 계산하는 복합 원각 문제다. 접선 길이 유형보다 Circle Angle 복합 관계가 맞다."
+    },
+    {
+      "lunaReviewIndex": 490,
+      "gptIndex": 679,
+      "questionUid": "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846",
+      "sourceIdentity": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js#1",
+      "sourceFingerprint": "eb9993a7af55cc74f872d1f70189245309953eb0af6477fae4d3e4440095d630",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 679
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "같은 중심거리와 현 길이에서 출발해 직각삼각형 합동을 비교하는 문제이므로 일반 위치 관계보다 현 길이·중심거리 템플릿이 정확하다."
+    },
+    {
+      "lunaReviewIndex": 494,
+      "gptIndex": 680,
+      "questionUid": "qid_v1_8fdc1f3cc10f5adf05b8b9c59eed329f50450d5cff598e604c3e68f78ba545f1",
+      "sourceIdentity": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js#9",
+      "sourceFingerprint": "093c357c2a6d25d6ff69096cfec08580f5ba8e1dd885a71cc91cd648c37e9910",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_CENTERS_APPLICATION",
+        "CC": [
+          "CC_AREA",
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 680
+      },
+      "conflictFields": [
+        "L2",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "피타고라스로 변을 구한 뒤 내심 반지름 공식을 적용하는 삼각형 중심 적용형이다. 원의 접선 길이 유형은 맞지 않고 일반 원넓이를 추가하며 삼각형 넓이·지름 태그를 교체한다."
+    },
+    {
+      "lunaReviewIndex": 496,
+      "gptIndex": 681,
+      "questionUid": "qid_v1_8ff3dfe897385c93112cbbb140d74f9d8f2a218a9e76c18a923b24a9c6b112b8",
+      "sourceIdentity": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js#17",
+      "sourceFingerprint": "3c2dbca5a43d1f153006f491cd36146a34c2b7d5414d2ac06c11a67267cdbdcc",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 681
+      },
+      "conflictFields": [
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "내접원·방접원의 접선 거리로 같은 삼각형 넓이를 두 방식으로 나타내 반지름 비를 구한다. 접점과 현 길이 템플릿보다 접선 길이 관계가 맞고 지름은 사용되지 않는다."
+    },
+    {
+      "lunaReviewIndex": 497,
+      "gptIndex": 508,
+      "questionUid": "qid_v1_9085daae1976da47ba5f2e7cdd228aa87af076292981d26101827622ab38feca",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#10",
+      "sourceFingerprint": "ee54e3ee700f0f45a04631daf70da8f8c86d1d71b3cfdb17968dce958000980d",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_APPLICATION_APPLICATION",
+        "CC": [
+          "CC_AREA",
+          "CC_PARALLELOGRAM_PROPERTIES"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 508
+      },
+      "conflictFields": [
+        "L2",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "사인비를 적용해 평행사변형 넓이를 구하는 삼각비 활용 문제이므로 일반 삼각비보다 활용 하위단원이 정확하다. L3/L4와 보조 개념은 맞다."
+    },
+    {
+      "lunaReviewIndex": 498,
+      "gptIndex": 682,
+      "questionUid": "qid_v1_90ae56eed6029cb817a5d760d30ef3a4c4847e6076f996cc1eed1bc0c07d3e22",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#23",
+      "sourceFingerprint": "fc3364197c12e8ec24bfb9158592cc84e1f8337cd97864adfeb0932fb10a280e",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TWO_CIRCLES",
+        "L4": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TWO_CIRCLES",
+        "L4": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 682
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "미지 원이 두 원에 동시에 접하는 위치에서 중심거리로 반지름을 구한다. 두 원에 접하는 제3의 원 유형이 정확하고 Tangency CrossConcept는 Primary와 중복된다."
+    },
+    {
+      "lunaReviewIndex": 499,
+      "gptIndex": 683,
+      "questionUid": "qid_v1_915bf6c2a9a517989ed8ed6f65475f21832ace7b5f3cd67fbddaa51fdd6f26f4",
+      "sourceIdentity": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js#5",
+      "sourceFingerprint": "c4b9b5740ae463054f765b3d7df2ddeeed7a37168631976b7204ec6dbf7f125d",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 683
+      },
+      "conflictFields": [
+        "L2"
+      ],
+      "lunaReason": "지름의 평각에서 중심각을 구하고 같은 반지름의 이등변삼각형 밑각을 계산하는 중심각 관계다. 원과 직선의 위치·현 분류보다 원의 각 관계가 적절하다."
+    },
+    {
+      "lunaReviewIndex": 507,
+      "gptIndex": 221,
+      "questionUid": "qid_v1_92582dbafe5f4b941dffe7aed0b09efc30fd5fa678635897f692a33d04e9372e",
+      "sourceIdentity": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js#17",
+      "sourceFingerprint": "2c84b68f0d95741cc23a44ddda5ec31833524119c55be8cd92b7458c1268acf5",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_QUADRILATERAL_CRITERIA",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 221
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "여러 평행사변형 충분조건을 검사하고 하나는 보조점을 구성해 증명하는 다문장 판정이므로 직접형보다 증명·다문장 템플릿이 맞다."
+    },
+    {
+      "lunaReviewIndex": 509,
+      "gptIndex": 222,
+      "questionUid": "qid_v1_92a9b78ed8d175e8b4f366d95b2d09cdf2df713df5ba8183ee11d401f7df6fa8",
+      "sourceIdentity": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js#1",
+      "sourceFingerprint": "fa003deaa453c719d1500ba717b57ece260da8ecae53efb3c6adc01633892789",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_RATIO",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 222
+      },
+      "conflictFields": [
+        "L3",
+        "L4"
+      ],
+      "lunaReason": "삼각형 닮음비로 대응변을 구해 둘레를 계산한다. 일반 닮은 도형 유형보다 삼각형 닮음의 적용이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 510,
+      "gptIndex": 843,
+      "questionUid": "qid_v1_92b06787c13ce78044601ae6b707b07c354c89b94bafefd0e80e66dbc2a13e55",
+      "sourceIdentity": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js#8",
+      "sourceFingerprint": "cfb1301b1cd5fbc9db94fa73966993d5c03fd32025a77b0540bc360f53067a16",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [
+          "CC_DIAMETER"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 843
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "보조 지름으로 직각삼각형을 만든 뒤 닮음으로 접시 지름을 복원한다. 삼각형 닮음이 Primary로 옮겨가며 보조 지름은 CrossConcept로 남긴다."
+    },
+    {
+      "lunaReviewIndex": 511,
+      "gptIndex": 513,
+      "questionUid": "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#11",
+      "sourceFingerprint": "1203adbb280304585de5cee8894b01613cfdf871da8fe839ceeadfc23aaf077b",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_APPLICATION_APPLICATION",
+        "CC": [
+          "CC_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "",
+        "L4": "",
+        "CC": [],
+        "status": "HOLD",
+        "gptIndex": 513
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept",
+        "status"
+      ],
+      "lunaReason": "풀이에는 삼각비가 전혀 없고 넓이=1/2·밑변·높이로 AH를 구한다. L2 삼각비 활용은 맞지 않는다. 기존 등록 L3/L4 중 삼각형 넓이와 직접 대응하는 키를 확인하지 못해 임의 키를 만들지 않는다."
+    },
+    {
+      "lunaReviewIndex": 514,
+      "gptIndex": 223,
+      "questionUid": "qid_v1_92ed29b514280561d03d1b87b6b494055a1bb98b10e6d74a8769779099db8f3c",
+      "sourceIdentity": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js#21",
+      "sourceFingerprint": "f47c1f2142e83117e8d72cace44a77575ffb97e945ed182e8bcd29da094f7714",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_MIDPOINT",
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 223
+      },
+      "conflictFields": [
+        "L2",
+        "CrossConcept"
+      ],
+      "lunaReason": "두 소문항 모두 무게중심의 넓이분할·2:1 성질이 중심 방법이다. 평행선 선분비보다 centroid 적용을 Primary로 하고 중점 보조 개념을 추가한다."
+    },
+    {
+      "lunaReviewIndex": 515,
+      "gptIndex": 515,
+      "questionUid": "qid_v1_934643f2f1a0267dceff561827bf4442393a4686adb8e04d06225826ebfb9b51",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#16",
+      "sourceFingerprint": "0fb463a2f0b62d9f773babf881bd78dd4156e1853f7b6f747790bd0c48b947d3",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 515
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "lunaReason": "힌트와 풀이의 결정 경로가 내부 삼각형 닮음으로 변비를 푸는 것이다. 닮음을 Primary로 옮기고 유사성 CrossConcept 중복을 제거한다."
+    },
+    {
+      "lunaReviewIndex": 517,
+      "gptIndex": 685,
+      "questionUid": "qid_v1_9393d2663b3122a4b0015a8c7f4b1341f15eee90d3c5b3e31ce114c15393e5f2",
+      "sourceIdentity": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js#2",
+      "sourceFingerprint": "86e4864ddc862560dc039e3c70acd84e4b1bca1520837c329dbca11b5831ef67",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 685
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "현에 내린 중심 수선으로 현을 이등분해 반현 길이를 구하는 것이 결정 단계다. 일반 원과 직선 위치보다 현의 수직이등분선 템플릿이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 518,
+      "gptIndex": 686,
+      "questionUid": "qid_v1_940219bb88124e4093b1b5a4303c01cd4d5cf604c249581707277dc0178d8d79",
+      "sourceIdentity": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js#11",
+      "sourceFingerprint": "5872cbce513f033322437014a1c30a4ceda759655f15a4cb1130460be749f1d5",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+        "CC": [
+          "CC_RIGHT_TRIANGLE",
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 686
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "두 접선의 길이와 접점 사이 현 AB를 닮음으로 구한다. 단일 접선 길이 템플릿보다 두 접점·현 길이 템플릿이 정확하고 지름은 사용되지 않는다."
+    },
+    {
+      "lunaReviewIndex": 519,
+      "gptIndex": 224,
+      "questionUid": "qid_v1_944a8e2657646dc03aa3d569fe594e1bc8c08bdb9ec9009ba41f56427c5ecb17",
+      "sourceIdentity": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js#10",
+      "sourceFingerprint": "6213909bfa042a6411a26f706c47aa5edc297cdf9ab6fad63bf8a0cc77a72d31",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_QUADRILATERAL_CRITERIA",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 224
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "여러 판정 조건과 보조점 증명을 점검하는 사각형 다문장 문제다. 직접형보다 증명·다문장 템플릿이 적합하며 지름 CrossConcept는 무관하다."
+    },
+    {
+      "lunaReviewIndex": 520,
+      "gptIndex": 225,
+      "questionUid": "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
+      "sourceIdentity": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js#16",
+      "sourceFingerprint": "9ff87cf60ede90b31562efc3592e1ea59fe23721fddf803b5b93bc71e333366b",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_PARALLEL_SEGMENT_RATIO_DIRECT",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL",
+        "gptIndex": 225
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "두 중점 조건이 선분비 유도의 출발점이며 현재 평행선 선분비 Primary에는 중점 CrossConcept가 추가로 필요하다."
+    },
+    {
+      "lunaReviewIndex": 522,
+      "gptIndex": 227,
+      "questionUid": "qid_v1_94e47a835c99154c2066f495f46eecf39bb2ff05601a45958f7fb8634feb2797",
+      "sourceIdentity": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js#13",
+      "sourceFingerprint": "43ea79a5c96ab9a2aa5fcb6f6dbca00fe53bb277c4f00ccb78638146590c391a",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_QUADRILATERAL_CRITERIA",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 227
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "여러 평행사변형 판정 조건을 선택지별로 검증하고 보조 논증을 사용하므로 직접형보다 증명·다문장 템플릿이 적합하다."
+    },
+    {
+      "lunaReviewIndex": 523,
+      "gptIndex": 846,
+      "questionUid": "qid_v1_94efc9c51bf25d22e5ac9b1e3006705e72341f2652ad155375ece9e102123347",
+      "sourceIdentity": "original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js#5",
+      "sourceFingerprint": "7b886cd1c355c4b1c9000c1842e6ac3696fa3ae5e9d857f0e531e55b2a1cea31",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_DIRECT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 846
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "삼각형 내각합과 내접사각형 맞은각의 보각 관계만 사용하고 접선은 등장하지 않는다."
+    },
+    {
+      "lunaReviewIndex": 525,
+      "gptIndex": 687,
+      "questionUid": "qid_v1_959eb1a13f8bcb8316dcbc03b9fee21b2bb8242a320626316afb7291a055c358",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#15",
+      "sourceFingerprint": "ed2e4c1796289143b30f4c3915906dbb63244abaf8e02393e9021106140e9112",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 687
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "현에 내린 중심 수선으로 반현을 구해 반지름 방정식을 세우는 문제다. 일반 원과 직선 위치보다 현의 수직이등분선 템플릿이 더 정확하다."
+    },
+    {
+      "lunaReviewIndex": 529,
+      "gptIndex": 228,
+      "questionUid": "qid_v1_969149bbdc1850c83c3de62d1a8194bbfddc23f479b6499932685dbef0add6d8",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#2",
+      "sourceFingerprint": "cf209e3c5e71d96d6e4c43cf00a6f101c5c796b41fc8cd97dc66aee4417931c8",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_MIDDLE_GEOMETRY_ISOSCELES_TRIANGLE_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_BASE_ANGLES",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 228
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "연속된 같은 길이 변에서 이등변삼각형 각들을 추적한다. 각의 이등분선 정리는 풀이에 사용되지 않으며 여러 이등변 관계를 연결하는 다문장 유형이다."
+    },
+    {
+      "lunaReviewIndex": 530,
+      "gptIndex": 519,
+      "questionUid": "qid_v1_970e638399859a60ed12526b57e0d4d443e7a618e4fd0df18d5a9b6995e3ba14",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#7",
+      "sourceFingerprint": "3ad5b4cc801bf15c805ef36ffb57c9e62ff2580a15a1ba26aaa2c4d2cc08a87d",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_DIRECT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 519
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "반지름1의 사분원에서 사인·코사인 비로 탄젠트를 근사하며 지름은 사용되지 않는다."
+    },
+    {
+      "lunaReviewIndex": 538,
+      "gptIndex": 233,
+      "questionUid": "qid_v1_9922fdb0d30c265378a8f2f73ab4fb0d6ce20236cfe56b7ba8629752aeeb2072",
+      "sourceIdentity": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js#12",
+      "sourceFingerprint": "986c95616f7c4234789f904ab8b3d226235ae22e3e3c3840881c6b1e16473933",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_CENTERS_APPLICATION",
+        "CC": [
+          "CC_RIGHT_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_INCENTER",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 233
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "내심 반지름과 작은 삼각형 넓이를 구하며 지름은 필요하지 않다. 삼각형 넓이·직각삼각형 CrossConcept는 유지한다."
+    },
+    {
+      "lunaReviewIndex": 539,
+      "gptIndex": 849,
+      "questionUid": "qid_v1_99677195e76a6721beed9cd69f69396f239b8b7b900e7d8bc69a3c11ce6da263",
+      "sourceIdentity": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js#21",
+      "sourceFingerprint": "4564f064ad9b8f5ecd056a01a5423b3c164cb7dc7a7fb2dfb765dfd0e9e27863",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 849
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "원주각, 교차현각, 외부 할선각을 순차 연결하는 다단계 원각 적용 문제다. 직접형보다 적용 템플릿이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 544,
+      "gptIndex": 235,
+      "questionUid": "qid_v1_9a0686ad7215cc2afff66c158131fd343a64bd2111f30341df6b8383aaba1b7c",
+      "sourceIdentity": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js#6",
+      "sourceFingerprint": "f3f638451995efea0e6644b452a4b0af91d14553f6345bae66d52d46cf7b1f4a",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_CENTERS_APPLICATION",
+        "CC": [
+          "CC_RIGHT_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_INCENTER",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 235
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "내접반지름 공식을 써 원넓이를 계산하며 원의 지름은 등장하지 않는다. 삼각형 넓이와 직각삼각형 태그는 유지한다."
+    },
+    {
+      "lunaReviewIndex": 546,
+      "gptIndex": 690,
+      "questionUid": "qid_v1_9a7617321dbb9f3cc2d39e363d2de382de17ac82c77ca41d857154b52b20bcc4",
+      "sourceIdentity": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js#7",
+      "sourceFingerprint": "f17def5c049f98d074446d1b2cd6861b846f7301462747bd85fcf1be5ce58fd5",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 690
+      },
+      "conflictFields": [
+        "L2"
+      ],
+      "lunaReason": "중심각을 이등변삼각형에서 구하고 중심 주위 각 합으로 남은 각을 찾는다. 원-직선 위치 관계보다 중심각 템플릿이 정확하다."
+    },
+    {
+      "lunaReviewIndex": 547,
+      "gptIndex": 691,
+      "questionUid": "qid_v1_9ad76dfea4ad1b70be3eef74afcce9beef5f032f0db3fc039c6e15e14ccee4cc",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#14",
+      "sourceFingerprint": "6d2a3301810b4947c72500bea670e591362944f869042bc344140850e4d31211",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 691
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "현에 내린 중심 수선이 현을 이등분한다는 정리를 RHS 합동으로 증명한다. 삼각형 중심·다문장 중심 분류보다 현의 수직이등분선이 맞고 지름은 사용되지 않는다."
+    },
+    {
+      "lunaReviewIndex": 549,
+      "gptIndex": 850,
+      "questionUid": "qid_v1_9b9df4bbe6ff731a2054ad6b25b03c1a6380a05e49228b6aee12c124487af7f8",
+      "sourceIdentity": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js#21",
+      "sourceFingerprint": "cc01453c2f1f426b724aacbfc47b843dfd67dbb7af339a6bcecb3d3308744859",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_PROOF_OR_MULTI_STATEMENT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL",
+        "gptIndex": 850
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "내접사각형 맞은각 증명은 중심각과 원주각을 사용하고 접선은 쓰지 않는다."
+    },
+    {
+      "lunaReviewIndex": 550,
+      "gptIndex": 692,
+      "questionUid": "qid_v1_9c12caea8ebcfde4230f8fe3065e9a5acb9275ae4f719b49191a95d6b847cadd",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#14",
+      "sourceFingerprint": "dd3e1f5ba5a456bdfe846d3437433cca85e410e298bce5755f899a274aad190b",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 692
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "현의 중점 수선과 중심거리로 중심-현 거리를 구한다. 삼각형 중심 분류 및 지름 CrossConcept는 무관하다."
+    },
+    {
+      "lunaReviewIndex": 555,
+      "gptIndex": 852,
+      "questionUid": "qid_v1_9d2ea50be186defdd6e2c422fe21d6a6636e45dcd161ac34f73d64f834cf02f1",
+      "sourceIdentity": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js#6",
+      "sourceFingerprint": "e60d886026a1249ae71434aa2e5fa02fb4d4e2a28c5561322ea93d77f7b2244b",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_CIRCUMCIRCLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 852
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "중심각-원주각과 접선-현각을 연결하는 여러 단계 원각 관계다. 일반 직접형보다 복합형이 적절하고 접선 CrossConcept는 Primary와 중복된다."
+    },
+    {
+      "lunaReviewIndex": 557,
+      "gptIndex": 238,
+      "questionUid": "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f",
+      "sourceIdentity": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js#13",
+      "sourceFingerprint": "6816f9ecf4610a284ba819ce1a1261c7933eb50766c93163efa3353f767b1059",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_APPLICATION",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL",
+        "gptIndex": 238
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "lunaReason": "사다리꼴 대각선이 만드는 삼각형 넓이의 차와 같은 높이 관계가 결정적이며 닮음은 쓰지 않는다. 사각형 넓이 적용형으로 분류한다."
+    },
+    {
+      "lunaReviewIndex": 558,
+      "gptIndex": 694,
+      "questionUid": "qid_v1_9e21171cfd928dc42d5c422956c2008bc420e3ee8d386acc663b749c4dd40b2b",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#19",
+      "sourceFingerprint": "3749d16b6d14f96ce19f52b47d7ef1cbcafc2ee50cdbceddd0ab9b0343ee2c19",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENCY_CONDITION",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 694
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "외부점 접선의 직각삼각형에서 중심거리를 구하며 지름은 사용하지 않는다."
+    },
+    {
+      "lunaReviewIndex": 560,
+      "gptIndex": 853,
+      "questionUid": "qid_v1_9e8952d2a1f499a3360767ed5a5b942011122eb428b0464e569c4c20e790d2c6",
+      "sourceIdentity": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js#23",
+      "sourceFingerprint": "ce8394965fe42631977fc0e696ffb64d3403afd567cf6472062f019dd2dcf293",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_ANGLE_BISECTOR",
+          "CC_CIRCUMCIRCLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_ANGLE_BISECTOR"
+        ],
+        "status": "FINAL",
+        "gptIndex": 853
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "내접삼각형 각, 접선-현각, 외각 이등분을 연결하는 복합 원각 경로다. 접선 길이 템플릿은 맞지 않는다."
+    },
+    {
+      "lunaReviewIndex": 563,
+      "gptIndex": 527,
+      "questionUid": "qid_v1_9ee84629c993c881702ce3002bfbeed2feab345942000aed68de0733fd2e8e9b",
+      "sourceIdentity": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#20",
+      "sourceFingerprint": "01d7a474c6f0d9369cb1732e1f6e0ea08b8b3e3b203285c784db0740d4a529fa",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_APPLICATION_APPLICATION",
+        "CC": [
+          "CC_CIRCUMCIRCLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 527
+      },
+      "conflictFields": [
+        "L2",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "특수각 삼각비로 내·외접 반지름과 삼각형 넓이를 함께 구하므로 삼각비 활용 단원이 더 정확하다. 지름은 사용되지 않는다."
+    },
+    {
+      "lunaReviewIndex": 565,
+      "gptIndex": 854,
+      "questionUid": "qid_v1_9f7e424073229cfd5bde3020e156baa42a9e0d014aa7d3740b5b1c93f3c9e0de",
+      "sourceIdentity": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js#5",
+      "sourceFingerprint": "9de0b5f60c07b68e6954bd963564a442d99477cb1ff87f8c93469e2931d9e5be",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 854
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "반지름 이등변각·접선-현각·두 접선각으로 호를 순차 구한다. 접점/현 길이 유형보다 복합 원각 관계가 맞다."
+    },
+    {
+      "lunaReviewIndex": 566,
+      "gptIndex": 241,
+      "questionUid": "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
+      "sourceIdentity": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js#8",
+      "sourceFingerprint": "7897ec05f43039ebce952dabfb71ffc94a3069327c2c339a508f90a9a1e76aa2",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_PARALLEL_SEGMENT_RATIO_DIRECT",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_RATIO",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL",
+        "gptIndex": 241
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "lunaReason": "중점연결정리로 중점삼각형 세 변을 구해 둘레를 계산한다. 일반 닮음보다 평행선 선분비와 중점 보조 개념이 정확하다."
+    },
+    {
+      "lunaReviewIndex": 567,
+      "gptIndex": 242,
+      "questionUid": "qid_v1_9f8a851db7b6f12fe225a4687e3c482225fac12b2ce3afdb039c5fe48d9adfc4",
+      "sourceIdentity": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js#5",
+      "sourceFingerprint": "cb741dfe77371df77a8630687fc4b26dfa1f40b53c6740e8b1c12b4db058a389",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_MIDPOINT",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "CC": [
+          "CC_TRIANGLE_AREA",
+          "CC_TRIANGLE_CENTROID"
+        ],
+        "status": "FINAL",
+        "gptIndex": 242
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "무게중심이 만드는 여섯 등넓이 분할이 결정 단계다. 닮음 Primary 대신 centroid를 두고 변 중점 개념을 보완한다."
+    },
+    {
+      "lunaReviewIndex": 568,
+      "gptIndex": 695,
+      "questionUid": "qid_v1_9fb066b8f38205e481a94c6a1c98dd5f159af8a3e1ea77e8ab5ccfd86d9949f7",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#24",
+      "sourceFingerprint": "ba719fbfc6d58c4001491ff9a11f8ccd2a28629417287c5348de8bb78f530929",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TWO_CIRCLES",
+        "L4": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 695
+      },
+      "conflictFields": [
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "현의 중심거리와 RHS 합동으로 현의 길이가 같음을 증명한다. 삼각형 중심 유형 및 지름은 해당되지 않으며 직각삼각형 보조 개념은 유지한다."
+    },
+    {
+      "lunaReviewIndex": 571,
+      "gptIndex": 244,
+      "questionUid": "qid_v1_a128f16ac561a6c75d9c73014a15cd521deedefebf54ef8cd9dfba73c4596dda",
+      "sourceIdentity": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js#16",
+      "sourceFingerprint": "061c9fce514b297f07eac5e861eaf15c93c7a4da7923b0cb62a4fcf2275d9e30",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_CENTERS_PROOF_OR_MULTI_STATEMENT",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_INCENTER",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 244
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "내심의 등거리 성질을 RHS 합동 증명으로 보이는 다문장 선택형이다. 삼각형 중심 직접형보다 증명·다문장 템플릿이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 574,
+      "gptIndex": 697,
+      "questionUid": "qid_v1_a233514de1b9181236d8408e8a7a58f36f01cb09fccf5a8bc6a391093de34591",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#17",
+      "sourceFingerprint": "9170dfab353bdb2a13330faa55c6cc7b98f54089954ef416fc8da295c4c2dcb4",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_LINE_RELATION",
+        "L4": "TM_CIRCLE_CHORD_LENGTH",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 697
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "현의 반과 시위에서 반지름 방정식을 세우는 원의 현 길이 문제다. 일반 위치 관계 템플릿보다 현 길이 템플릿이 정확하다."
+    },
+    {
+      "lunaReviewIndex": 577,
+      "gptIndex": 857,
+      "questionUid": "qid_v1_a2f1a03cd4f81c3ee3d3dcdff678cee5f47b574e3301c902048786b927e22e56",
+      "sourceIdentity": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js#11",
+      "sourceFingerprint": "f1120e12a25d90ba404def6cdd57e98ea1c8d2f3f04c0d809aee815c841c4ada",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 857
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "두 접선의 끼인각에서 중심각을 얻고 접선-현각을 둘 더한다. 접선 길이 분류가 아닌 복합 원각 유형이다."
+    },
+    {
+      "lunaReviewIndex": 578,
+      "gptIndex": 247,
+      "questionUid": "qid_v1_a3047d2a6e253922761d082f7b146c7cb570c1c909441a6f3421c595e67c51fa",
+      "sourceIdentity": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js#2",
+      "sourceFingerprint": "4c03a87c56fcddf2a2a16597fe1b5cddb916c049b277d90feab832a7f51e4bbc",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "L4": "TPL_MIDDLE_GEOMETRY_RIGHT_TRIANGLE_CONGRUENCE_PROOF_OR_MULTI_STATEMENT",
+        "CC": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CIRCUMCENTER",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 247
+      },
+      "conflictFields": [
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "외심의 같은 반지름을 빗변으로 하는 직각삼각형 RHS 합동으로 답을 고른다. 삼각형 중심보다 직각삼각형 합동이 Primary다."
+    },
+    {
+      "lunaReviewIndex": 579,
+      "gptIndex": 698,
+      "questionUid": "qid_v1_a308d97d263607ab55e48378fd6a11b1b4bba9267b95c1f56f0600a16572ea8b",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#20",
+      "sourceFingerprint": "12202a128a388d907a03c82b82f3cfddf13398871b78bda16f55071cdaa0f28d",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TWO_CIRCLES",
+        "L4": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+        "CC": [
+          "CC_AREA",
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_TWO_CIRCLES",
+        "L4": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 698
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "고리 넓이를 반지름 제곱 차로 계산하며 삼각형 넓이와 지름은 쓰이지 않는다. 일반 넓이 CrossConcept를 추가한다."
+    },
+    {
+      "lunaReviewIndex": 585,
+      "gptIndex": 251,
+      "questionUid": "qid_v1_a4725c01d82c6df45888fa0c5a375a18e468b284bb3003139ec6b6dbed466c85",
+      "sourceIdentity": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js#10",
+      "sourceFingerprint": "329e028d90fb1b0e9cc5d117814c4830079dffbe3f3dff90c449ed466011a9a0",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 251
+      },
+      "conflictFields": [
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "사다리꼴에서 두 닮음을 연속 적용해 내부 평행선 길이를 구하므로 직접형보다 닮음 적용 템플릿이 구체적이다."
+    },
+    {
+      "lunaReviewIndex": 587,
+      "gptIndex": 858,
+      "questionUid": "qid_v1_a491e76571259129b6269808997ea780f8329cd28b9f1f8b1051c0f3b1b570a2",
+      "sourceIdentity": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js#11",
+      "sourceFingerprint": "088a609fadd05c6d134a9e2fb6d5834aa7233d639e5b64e5a1f795780a3ac35d",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [
+          "CC_DIAMETER",
+          "CC_INSCRIBED_ANGLE",
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_DIAMETER",
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 858
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "보조 지름으로 직각삼각형을 만들고 닮음으로 외접원 지름을 복원한다. 삼각형 닮음 적용이 Primary가 되므로 유사성 CrossConcept는 중복이다."
+    },
+    {
+      "lunaReviewIndex": 588,
+      "gptIndex": 859,
+      "questionUid": "qid_v1_a57fe22290f34bf22e6b9afdd0fd8d129d96204bdb1a828f5b8f0213d8db1cb0",
+      "sourceIdentity": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js#7",
+      "sourceFingerprint": "b7284fd378f119e0808ffae0a3165a8de368faee7f1e00631a7a31b046cc4746",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 859
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "두 외부 할선각을 호 차 식으로 바꾸고 전체 호와 연립해 목표 중심각을 구한다. 다단계 원각 적용형이 직접형보다 맞다."
+    },
+    {
+      "lunaReviewIndex": 589,
+      "gptIndex": 860,
+      "questionUid": "qid_v1_a584b3ea604818fd8f9825d88c03bafc5a27b2124597fa995157a5c38c82396d",
+      "sourceIdentity": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js#10",
+      "sourceFingerprint": "f417dd24f766daa3981c52c211704008b9d1af5c34c3863078542e273f8d07a7",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 860
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "두 그림에서 접선-현각, 중심각, 삼각형 내각합으로 각을 구하는 원의 각 문제다. 접선 길이 유형이 아니며 원주각은 Primary와 중복, 지름은 무관하다."
+    },
+    {
+      "lunaReviewIndex": 591,
+      "gptIndex": 531,
+      "questionUid": "qid_v1_a612ad2192a14f213e880ee1e73614054d15e251b1b36846bdb332e24f4538e4",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#8",
+      "sourceFingerprint": "e9259c1f5db3b3c0a3e872141def4faba57cd49dda5c71d0f59e4bbddc0a54b8",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_DIRECT",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL",
+        "gptIndex": 531
+      },
+      "conflictFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "풀이에는 삼각비와 피타고라스가 아니라 밑변-높이 넓이 공식만 쓰인다. 일반 삼각형 넓이에 해당하는 기존 Middle Geometry L3/L4 키를 확인하지 못해 새 키는 추천하지 않고 분류 결함으로 남긴다."
+    },
+    {
+      "lunaReviewIndex": 592,
+      "gptIndex": 862,
+      "questionUid": "qid_v1_a648a0c72f64d65cb15fd9efb6c9c417d994a13d895a7097a3acc57dbbfdd5fc",
+      "sourceIdentity": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js#6",
+      "sourceFingerprint": "f69276e53fd3403f043ef0a6fc51f409b1051c6486334c6f445e4ee508ecd385",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_MIDDLE_GEOMETRY_CIRCLE_ANGLE_RELATIONS_DIRECT",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 862
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "두 원주각에서 호를 구해 중심각을 얻는 원의 각 관계다. 삼각형 중심 L3/L4로 분류할 이유가 없다."
+    },
+    {
+      "lunaReviewIndex": 593,
+      "gptIndex": 863,
+      "questionUid": "qid_v1_a6aad8410d4054414cf17875be93409f2ede79d1aa4041636d84389eb9ed1cd2",
+      "sourceIdentity": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js#7",
+      "sourceFingerprint": "fe1e98ee47aa2b20d4482dff9a4e361498b6a00cbce9508bbfb4bd6e5e16575b",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "L3": "PT_CIRCLE_ANGLE_RELATIONS",
+        "L4": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 863
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "이등변삼각형, 접선-현각, 내접사각형 각을 연결한 복합 원각 경로다. 접선 길이 유형이 아니며 원주각 CrossConcept는 Primary와 중복이다."
+    },
+    {
+      "lunaReviewIndex": 595,
+      "gptIndex": 700,
+      "questionUid": "qid_v1_a7a28ed2d0042c682c607fe9525d20191e3dfda454ba197d21399c69e13e96c8",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#17",
+      "sourceFingerprint": "025e836eaf8a0c84a066dd18f73b5bf6f20e948d1d4635eaa082c5823de771f0",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M3-06-CIRCLE_LINE",
+        "L3": "PT_CIRCLE_TANGENT",
+        "L4": "TM_TANGENT_LENGTH",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 700
+      },
+      "conflictFields": [
+        "CrossConcept"
+      ],
+      "lunaReason": "두 접선 길이를 같게 한 뒤 끼인각 사인 넓이 공식을 쓴다. 실제로 필요한 접선 길이 관계가 current contact-chord L4보다 정확하다."
+    },
+    {
+      "lunaReviewIndex": 596,
+      "gptIndex": 253,
+      "questionUid": "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
+      "sourceIdentity": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js#7",
+      "sourceFingerprint": "fff52554508bda082d21b9652788eea64f064ee8425e3ae13d2e7ed8360adc8f",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [
+          "CC_RIGHT_TRIANGLE",
+          "CC_SQUARE"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_SIMILARITY",
+        "L4": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 253
+      },
+      "conflictFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "lunaReason": "합동으로 선분을 찾은 뒤 평행선 닮음으로 내부 길이를 구하는 연속 적용이므로 triangle similarity application이 더 정확하다."
+    },
+    {
+      "lunaReviewIndex": 600,
+      "gptIndex": 255,
+      "questionUid": "qid_v1_a8f6074dd81823cca2bee7bad4f3a7c9dcc2d64f3e0e19eb4ec69956089139f6",
+      "sourceIdentity": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js#6",
+      "sourceFingerprint": "1f7cd63411b5999ddba346a0ff92bafbdaf761d8872435b1faa2523eb1d05476",
+      "lunaVerdict": "DEFECT",
+      "lunaDesired": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIANGLE_CENTERS_PROOF_OR_MULTI_STATEMENT",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL"
+      },
+      "branchDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "CC": [
+          "CC_TANGENCY"
+        ],
+        "status": "FINAL",
+        "gptIndex": 255
+      },
+      "conflictFields": [
+        "L4"
+      ],
+      "lunaReason": "내심·접선 길이·외심을 포함한 여러 진술을 하나씩 판정하는 유형이므로 삼각형 중심 다문장 템플릿이 직접형보다 적절하다. Tangency CrossConcept는 별도 보조 개념으로 유지한다."
+    },
+    {
+      "lunaReviewIndex": 402,
+      "gptIndex": 489,
+      "questionUid": "qid_v1_77d78f3bca75f44ef9f2544cb25f62c7e8d7c01cbea94128c2b169e1d8146023",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#11",
+      "sourceFingerprint": "663502a31a8e8957f47d732766a8fa8ea9caac39bf357eb45f4c45c983b10ea2",
+      "lunaVerdict": "HOLD",
+      "lunaDesired": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO",
+        "L4": "TPL_MIDDLE_GEOMETRY_TRIG_RATIO_DIRECT",
+        "CC": [],
+        "status": "HOLD"
+      },
+      "branchDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "CC": [
+          "CC_LINE_EQUATION"
+        ],
+        "status": "FINAL",
+        "gptIndex": 489
+      },
+      "conflictFields": [
+        "L3",
+        "L4",
+        "CrossConcept",
+        "status"
+      ],
+      "lunaReason": "풀이의 첫 단계는 tan30°로 기울기를 얻지만 문항의 주목표는 직선 방정식이다. Middle Geometry 안에 이를 정확히 담는 기존 L3가 있는지 불명확하므로 임의 키를 추천하지 않고 보류한다."
+    },
+    {
+      "lunaReviewIndex": 446,
+      "gptIndex": 199,
+      "questionUid": "qid_v1_82797dad4da5c2f449690d234ca101201602583fe5c2e2a37b538b13c07915c7",
+      "sourceIdentity": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js#14",
+      "sourceFingerprint": "260fd7866979ffee5797a704ba86a8cbe2b926d11c83241093b5452a7de11692",
+      "lunaVerdict": "HOLD",
+      "lunaDesired": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_DIRECT",
+        "CC": [],
+        "status": "HOLD"
+      },
+      "branchDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_QUADRILATERAL_PROPERTIES",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 199
+      },
+      "conflictFields": [
+        "L4",
+        "status"
+      ],
+      "lunaReason": "평행사변형 분류는 맞지만 source가 x=10cm와 y=55°의 합을 요구해 서로 다른 단위를 더한다. metadata defect로 단정하지 않고 source issue로 보류한다."
+    },
+    {
+      "lunaReviewIndex": 552,
+      "gptIndex": 237,
+      "questionUid": "qid_v1_9cbbc510a67df2e9cbb4f255d03d85e961f0a57927fc132f82a0d4b172f162f7",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#9",
+      "sourceFingerprint": "01d2a91f9f5f40f00bc83ac4608adb0cbc58c7ef277b86a8a34120e75803b417",
+      "lunaVerdict": "HOLD",
+      "lunaDesired": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_DIRECT",
+        "CC": [],
+        "status": "HOLD"
+      },
+      "branchDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [],
+        "status": "FINAL",
+        "gptIndex": 237
+      },
+      "conflictFields": [
+        "L4",
+        "status"
+      ],
+      "lunaReason": "현재 마름모 분류와 풀이 방법은 맞지만 x는 길이(cm), y는 각도(°)여서 x+y가 단위상 정의되지 않는다. source issue로 보류한다."
+    }
+  ]
+}

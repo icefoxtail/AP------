@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "0.1.0",
+  "artifactType": "ALIVE_MIDDLE_SCHOOL_STRUCTURED_FIXTURES",
+  "fixtures": [
+    {
+      "caseId": "m1-03-linear-equation-ordinary",
+      "unitKey": "M1-03",
+      "familyId": "LINEAR_EQUATION",
+      "kind": "linear_equation",
+      "fixtureClass": "ordinary",
+      "coverage": "일차방정식의 풀이",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "subUnit": "일차방정식",
+      "data": {"a": 3, "b": 5, "c": 1, "d": 13},
+      "expected": {"answer": 4}
+    },
+    {
+      "caseId": "m1-03-linear-equation-boundary",
+      "unitKey": "M1-03",
+      "familyId": "LINEAR_EQUATION",
+      "kind": "linear_equation",
+      "fixtureClass": "boundary_or_degenerate",
+      "coverage": "부호가 섞인 일차방정식",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "subUnit": "일차방정식",
+      "data": {"a": 2, "b": -4, "c": 5, "d": 8},
+      "expected": {"answer": -4}
+    },
+    {
+      "caseId": "m1-03-linear-equation-composite",
+      "unitKey": "M1-03",
+      "familyId": "LINEAR_EQUATION",
+      "kind": "linear_equation",
+      "fixtureClass": "composite_or_exam_like",
+      "coverage": "계수 이동을 포함한 일차방정식",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "subUnit": "일차방정식",
+      "data": {"a": 7, "b": 3, "c": 2, "d": 18},
+      "expected": {"answer": 3}
+    },
+    {
+      "caseId": "m2-03-system-equation-ordinary",
+      "unitKey": "M2-03",
+      "familyId": "SYSTEM_EQUATION",
+      "kind": "system_equation",
+      "fixtureClass": "ordinary",
+      "coverage": "연립일차방정식의 풀이",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "subUnit": "연립일차방정식",
+      "data": {"a": 2, "b": 1, "c": 8, "d": 1, "e": -1, "f": 1},
+      "expected": {"answer": {"x": 3, "y": 2}}
+    },
+    {
+      "caseId": "m2-03-system-equation-boundary",
+      "unitKey": "M2-03",
+      "familyId": "SYSTEM_EQUATION",
+      "kind": "system_equation",
+      "fixtureClass": "boundary_or_degenerate",
+      "coverage": "계수가 음수인 연립일차방정식",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "subUnit": "연립일차방정식",
+      "data": {"a": 1, "b": 1, "c": 5, "d": 2, "e": -1, "f": 4},
+      "expected": {"answer": {"x": 3, "y": 2}}
+    },
+    {
+      "caseId": "m2-03-system-equation-composite",
+      "unitKey": "M2-03",
+      "familyId": "SYSTEM_EQUATION",
+      "kind": "system_equation",
+      "fixtureClass": "composite_or_exam_like",
+      "coverage": "정수해를 갖는 복합 연립일차방정식",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "subUnit": "연립일차방정식",
+      "data": {"a": 3, "b": 2, "c": 12, "d": 2, "e": -1, "f": 1},
+      "expected": {"answer": {"x": 2, "y": 3}}
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "school-fingerprint-gate.v1",
+  "status": "PASS",
+  "operationalExposure": "HOLD",
+  "source": {
+    "root": "archive/exams/original",
+    "fileCount": 348,
+    "questionCount": 7981,
+    "parseErrorCount": 0
+  },
+  "schoolCount": 37,
+  "eligibleSchoolCount": 23,
+  "hiddenSchoolCount": 14,
+  "sampleReplay": {
+    "schoolKey": "연향중",
+    "candidateCount": 762,
+    "selectedCount": 15,
+    "distribution": {
+      "ok": true,
+      "checks": [
+        {
+          "dimension": "unit",
+          "maxDelta": 0.03385826771653543,
+          "tolerance": 0.13333333333333333,
+          "ok": true
+        },
+        {
+          "dimension": "subunit",
+          "maxDelta": 0.046981627296587926,
+          "tolerance": 0.13333333333333333,
+          "ok": true
+        },
+        {
+          "dimension": "difficulty",
+          "maxDelta": 0.10183727034120735,
+          "tolerance": 0.13333333333333333,
+          "ok": true
+        },
+        {
+          "dimension": "problemType",
+          "maxDelta": 0.034120734908136496,
+          "tolerance": 0.13333333333333333,
+          "ok": true
+        }
+      ],
+      "tolerance": 0.13333333333333333
+    },
+    "hardValidation": {
+      "contractVersion": "archive-mixer-selector-v1",
+      "ok": true,
+      "errors": [],
+      "diagnostics": {
+        "selectedCount": 15,
+        "requestedCount": 15,
+        "uniqueUidCount": 15,
+        "rejectedByReason": {
+          "invalid_identity": 0,
+          "duplicate_uid": 0,
+          "grade": 0,
+          "subject": 0,
+          "course": 0,
+          "unit": 0,
+          "sub_unit": 0,
+          "concept": 0,
+          "problem_type": 0,
+          "difficulty": 0,
+          "school": 0,
+          "year": 0,
+          "recent": 0,
+          "source_file": 0,
+          "tags": 0
+        },
+        "duplicateUids": []
+      }
+    },
+    "errors": []
+  },
+  "checks": {
+    "originalOnly": true,
+    "deterministic": true,
+    "aliasAudit": true,
+    "thresholdAudit": true,
+    "questionTypeCoverage": true,
+    "presetConversion": true,
+    "selectorReplay": true
+  },
+  "next": "Approve Gate 4 operational exposure separately; do not expose school preset controls while operationalExposure is HOLD."
+}

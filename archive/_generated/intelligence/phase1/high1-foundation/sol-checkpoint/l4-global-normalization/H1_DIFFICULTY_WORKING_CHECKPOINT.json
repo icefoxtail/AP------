@@ -1,0 +1,521 @@
+{
+  "schemaVersion": "h1-difficulty-working-checkpoint-v1",
+  "status": "DIFFICULTY_WORKING_COMPLETE_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "upstreamHead": "2fbf500769dde3118b983882db424bceb12506ac",
+  "denominator": 1170,
+  "blindFirstPass": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_BLIND_1170.jsonl",
+    "checkpointPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_BLIND_CHECKPOINT.json",
+    "frozenBeforeCompare": true,
+    "rows": 1170,
+    "oldDifficultyFieldsReadBeforeFreeze": false,
+    "bucketCounts": {
+      "3": 308,
+      "2": 741,
+      "1": 29,
+      "4": 52,
+      "UNKNOWN": 39,
+      "5": 1
+    }
+  },
+  "comparison": {
+    "priorSource": "archive/data/question_metadata.json",
+    "joinKey": "questionUid + sourceArchiveFile/sourceOrdinal reconstructed sourceIdentity",
+    "sourceIdentityJoinRows": 1170,
+    "sourceFingerprintMatchRows": 1122,
+    "sourceFingerprintMismatchRows": 48,
+    "priorBucketDistribution": {
+      "3": 294,
+      "2": 241,
+      "1": 217,
+      "5": 112,
+      "4": 306
+    },
+    "blindKnownBucketMatchCount": 295,
+    "blindKnownBucketChangeCount": 803,
+    "finalKnownBucketMatchCount": 347,
+    "finalKnownBucketChangeCount": 751,
+    "finalKnownComparablePairs": 1098,
+    "sourceFingerprintMismatchCompareSuppressedRows": 48,
+    "blindHoldNonComparableRows": 24,
+    "blindLargeMovementRows": 283,
+    "largeMovementTargetedRechecksCompleted": 283,
+    "largeFinalMovementRows": 27,
+    "blindToFinalTargetedAdjustments": 267,
+    "legacyLevelCompatibility": "UNKNOWN: comparison source is existing difficultyBucket metadata, not the legacy level field",
+    "bucketShiftCountsAfterTargetedRecheck": {
+      "1->2": 185,
+      "5->4": 87,
+      "3->2": 170,
+      "2->1": 7,
+      "4->3": 218,
+      "2->4": 3,
+      "4->2": 9,
+      "3->4": 11,
+      "2->3": 46,
+      "3->1": 2,
+      "5->3": 12,
+      "1->4": 1
+    },
+    "blindBucketDistribution": {
+      "3": 308,
+      "2": 741,
+      "1": 29,
+      "4": 52,
+      "UNKNOWN": 39,
+      "5": 1
+    },
+    "finalWorkingBucketDistribution": {
+      "3": 378,
+      "2": 559,
+      "1": 35,
+      "4": 158,
+      "UNKNOWN": 39,
+      "5": 1
+    },
+    "blindBucketShiftCounts": {
+      "2->4": 8,
+      "4->2": 157,
+      "3->1": 4,
+      "5->1": 3,
+      "5->2": 45,
+      "5->3": 42,
+      "4->1": 2,
+      "1->3": 20,
+      "1->4": 2
+    }
+  },
+  "finalWorking": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_FINAL_WORKING_1170.jsonl",
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "bucketCounts": {
+      "3": 378,
+      "2": 559,
+      "1": 35,
+      "4": 158,
+      "UNKNOWN": 39,
+      "5": 1
+    },
+    "holdCount": 39,
+    "sourceIssueHoldCount": 39,
+    "difficultyConfidenceCounts": {
+      "high": 416,
+      "medium": 715,
+      "low": 39
+    },
+    "difficultyBoundaryCounts": {
+      "NONE": 416,
+      "B23": 459,
+      "B45": 5,
+      "B34": 251,
+      "UNKNOWN": 39
+    },
+    "sameTemplateOutlierCandidates": 43,
+    "sameTemplateOutlierSummary": [
+      {
+        "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+        "supportUidCount": 29,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 20
+      },
+      {
+        "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "supportUidCount": 29,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 11
+      },
+      {
+        "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY_RECONSTRUCTION",
+        "supportUidCount": 23,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 9
+      },
+      {
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "supportUidCount": 28,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 22
+      },
+      {
+        "templateKey": "TPL_H1_REMAINDER_SINGLE_LINEAR_EVALUATION",
+        "supportUidCount": 12,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 5
+      },
+      {
+        "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "supportUidCount": 4,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 3
+      },
+      {
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "supportUidCount": 4,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 2
+      },
+      {
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+        "supportUidCount": 21,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 15
+      },
+      {
+        "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_CONDITION",
+        "supportUidCount": 14,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 11
+      },
+      {
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "supportUidCount": 10,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 2
+      },
+      {
+        "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+        "supportUidCount": 4,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 2
+      },
+      {
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "supportUidCount": 26,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 18
+      },
+      {
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+        "supportUidCount": 23,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 15
+      },
+      {
+        "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "supportUidCount": 25,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 7
+      },
+      {
+        "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+        "supportUidCount": 38,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 32
+      },
+      {
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "supportUidCount": 52,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 36
+      },
+      {
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+        "supportUidCount": 19,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 15
+      },
+      {
+        "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+        "supportUidCount": 22,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 18
+      },
+      {
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "supportUidCount": 49,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 9
+      },
+      {
+        "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+        "supportUidCount": 41,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 14
+      },
+      {
+        "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+        "supportUidCount": 7,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 4
+      },
+      {
+        "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+        "supportUidCount": 11,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 4
+      },
+      {
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "supportUidCount": 25,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 19
+      },
+      {
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "supportUidCount": 6,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 4
+      },
+      {
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "supportUidCount": 9,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 4
+      },
+      {
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+        "supportUidCount": 20,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 11
+      },
+      {
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "supportUidCount": 14,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 3
+      },
+      {
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "supportUidCount": 10,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 9
+      },
+      {
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "supportUidCount": 21,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 2
+      },
+      {
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+        "supportUidCount": 18,
+        "minBucket": 1,
+        "maxBucket": 3,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 7
+      },
+      {
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "supportUidCount": 11,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 7
+      },
+      {
+        "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+        "supportUidCount": 4,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 3
+      },
+      {
+        "templateKey": "TPL_H1_INEQUALITY_APPLICATION_MODEL",
+        "supportUidCount": 5,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 3
+      },
+      {
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "supportUidCount": 76,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 13
+      },
+      {
+        "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+        "supportUidCount": 22,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 9
+      },
+      {
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "supportUidCount": 73,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 12
+      },
+      {
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "supportUidCount": 68,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 10
+      },
+      {
+        "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+        "supportUidCount": 4,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 3
+      },
+      {
+        "templateKey": "TPL_H1_SELECTION_COMPLEMENT",
+        "supportUidCount": 4,
+        "minBucket": 2,
+        "maxBucket": 4,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 2
+      },
+      {
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+        "supportUidCount": 23,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 2
+      },
+      {
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+        "supportUidCount": 23,
+        "minBucket": 1,
+        "maxBucket": 4,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 4
+      },
+      {
+        "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+        "supportUidCount": 11,
+        "minBucket": 1,
+        "maxBucket": 3,
+        "spread": 2,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 6
+      },
+      {
+        "templateKey": "TPL_H1_MATRIX_POWER_PERIOD",
+        "supportUidCount": 8,
+        "minBucket": 2,
+        "maxBucket": 5,
+        "spread": 3,
+        "status": "OPEN_TARGETED_REVIEW_CANDIDATE",
+        "extremeUidCount": 2
+      }
+    ],
+    "sameTemplateOutlierReviewStatus": "REVIEWED_SPREAD_JUSTIFIED_NO_BUCKET_NORMALIZATION",
+    "sameTemplateOutlierReviewedCount": 43,
+    "sameTemplateOutlierReviewPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_REVIEW_043.jsonl",
+    "sameTemplateOutlierBucketChanges": 0,
+    "sameTemplateOutlierReviewDecisionCounts": {
+      "KEEP_PER_UID_DIFFICULTY": 43
+    }
+  },
+  "conflictsPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_CONFLICTS.jsonl",
+  "conflictRecheckDeltaPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_CONFLICT_RECHECK_DELTA.jsonl",
+  "deterministicValidation": "PASS",
+  "canonicalPromotionCount": 0,
+  "difficultyFinal": false,
+  "nextStep": "No same-template bucket normalization is pending; retain WORKING_NOT_FINAL and proceed only to a separately approved metadata application/release stage.",
+  "final": false
+}

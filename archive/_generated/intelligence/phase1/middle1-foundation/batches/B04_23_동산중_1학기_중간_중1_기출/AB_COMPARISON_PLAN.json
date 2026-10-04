@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "m1-ab-comparison-plan-v1",
+  "batchNo": 4,
+  "denominator": 23,
+  "comparisonRule": "After independent targeted quality correction, compare goal, primary method, decisive step, L1/L2, L3/L4 semantic boundary, CrossConcept, HOLD and ROUTE_OUT. Candidate key spelling differences alone are not conflicts. Condition/IntegrationPattern differences remain root gate unless coupled to a listed conflict.",
+  "workerQualityClosureFiles": ["WORKER_QUALITY_REJECTIONS.json", "WORKER_QUALITY_REJECTION_B.json"],
+  "conflicts": [
+    { "sourceOrdinal": 4, "reason": "A adds active CC_NUMBER_PRIME_COPRIME because b is prime while B treats that restriction as intrinsic to GCD/LCM exponent recovery. CrossConcept role differs despite the same numeric solution." },
+    { "sourceOrdinal": 23, "reason": "Both give answer −4 and order-of-operations L3, but their intermediate arithmetic follows different readings of the diagrammed expression. DecisiveStep and visual interpretation conflict; C must read only this image/source UID." }
+  ],
+  "nameOnlyOrEquivalentOrdinals": [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+  "rootGateDifferencesOutsideCTrigger": [
+    { "sourceOrdinal": 9, "field": "conditionKeys", "note": "B adds inferred positive/negative signs; A has no separate Condition." },
+    { "sourceOrdinal": 12, "field": "integrationPattern", "note": "A SEQUENTIAL, B NONE for a multiplication-law step audit." },
+    { "sourceOrdinal": 13, "field": "integrationPattern", "note": "A CASE_BRANCH, B SEQUENTIAL for selecting three of four products." },
+    { "sourceOrdinal": 15, "field": "conditionKeys", "note": "A adds implicit nonzero reciprocal condition; B leaves no separate Condition." },
+    { "sourceOrdinal": 20, "field": "integrationPattern", "note": "A NONE, B SEQUENTIAL for direct substitution among expressions." }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "task": "D-q114-question-only",
+  "queueIndex": 114,
+  "questionUid": "qid_v1_24cbade0454eab3e022cfe546c8dd57cc4022c0c284cf3b367c66df446f70e55",
+  "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#13",
+  "status": "WORDING_AND_CHOICES_REPAIRED_FORMULA_HOLD",
+  "queue": {
+    "uidOnlyQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q114-question-only\\queue-uid-only.jsonl",
+    "comparisonQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_AB_WORKING_COMPARISON_CURRENT.json",
+    "parityBeforeEdit": "PASS",
+    "sourceFingerprintBefore": "883d8377bba64f2a3ce51e58dde6a603cddab21650fee6e1edada0e2edbbd0cd",
+    "sourceFingerprintAfter": "f0760890463eb68561433cc83bd6dde7a588e878113de38212f1723a278e2c23",
+    "identityNeedsRefreshAfterEdit": true
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\1mid\\24_여수고_1학기_중간_고1_기출.js",
+    "questionId": 13,
+    "arrayIndex": 12,
+    "jsSha256Before": "147c892a5c7329cac507254fe7b71acb96d234fb8905db015152dd3af7fd4759",
+    "jsSha256After": "50ba23d6d779961c7ac04b0954f94a71511ba886e3ea891182f5d9d9a9689212",
+    "questionFieldsSha256Before": "f08940cedd9494831225533349893da6036024a5cac803b2d1a40f99fefb01d2",
+    "questionFieldsSha256After": "43a9295918f89eb303e8b64879489889f92c3834754564ff5403b84ce9c5ec9f",
+    "changedFields": [
+      "choices",
+      "content"
+    ],
+    "before": {
+      "questionType": "객관식",
+      "content": "$P(x)$를 $x^3+x$로 나눈 몫 $x+3$, 나머지 $x+5$이다. $x+1$로 나눈 몫 $Q(x)$에 대해 $Q(1)-R$은? [4.1점]",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "image": null,
+      "layoutTag": "grid",
+      "wide": false
+    },
+    "after": {
+      "questionType": "객관식",
+      "content": "다항식 $P(x)$를 $x^3+x$로 나누었을 때의 몫이 $x+3$, 나머지가 $x+5$이다. 다항식 $P(x)$를 $x+1$로 나누었을 때의 몫을 $Q(x)$, 나머지를 $R$이라 할 때, $Q(1)-R$의 값은? [4.1점]",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "image": null,
+      "layoutTag": "grid",
+      "wide": false
+    }
+  },
+  "source": {
+    "type": "original question HWP",
+    "path": "D:\\기출\\23,24 고1\\2024년\\1학기 중간고사\\수학 상 (24 여수고) - 답 x.hwp",
+    "sha256": "2B08A4FC98054294DA169E044BB5F01BA05532428547474DDAEAA4D598D827B9",
+    "questionOrdinal": 13,
+    "physicalPage": null,
+    "physicalPageStatus": "UNRESOLVED_BY_HWP_PARSER",
+    "pageImage": null,
+    "textExcerpt": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q114-question-only\\q13-source-text-excerpt.txt",
+      "sha256": "50778B217679E66FB2A3DC57A337A12674A2257C5141F219AECD3E169958A17A",
+      "tool": "PyHWP hwp5txt",
+      "lines": "183-185"
+    },
+    "officialAnswerPagesOpened": false,
+    "officialSolutionPagesOpened": false
+  },
+  "comparison": {
+    "firstDivisionWording": "SOURCE_TEXT_MATCH: source states the polynomial is divided and gives a quotient and remainder; exact equation objects are omitted.",
+    "secondDivisionWording": "SOURCE_CONFIRMED: source repeats P(x), defines quotient Q(x), and defines remainder R; this text was restored.",
+    "score": "[4.1점] matches source.",
+    "choicesDisposition": "SOURCE_CONFIRMED_AND_RESTORED",
+    "sourceChoices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "formulaDetails": "HOLD: first divisor/quotient/remainder values, second divisor, and target expression are equation/control objects omitted by HWP extraction; existing formula objects were preserved without independent source confirmation.",
+    "visualEvidence": "Text excerpt only; no HWP question page render or crop; physical page mapping unavailable.",
+    "semanticRereviewRequired": "answer/solution semantic rereview required after source edit; no answer or solution values were inspected or used."
+  },
+  "validation": {
+    "syntax": "PASS (node --check)",
+    "targetedSchema": "PASS (q13 id, 객관식, string content, five choices)",
+    "onlyQuestionFieldsChanged": true,
+    "sourceFingerprintAlgorithm": "SHA256(JSON.stringify({content,choices,answer,solution,image})) per build-h1-blind-worker-bundle.mjs; answer/solution fields hashed in memory without viewing or output",
+    "sourceVisualReview": "NOT_TESTED",
+    "archiveBrowserRender": "NOT_TESTED",
+    "physicalLedgerJson": "PASS"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  }
+}

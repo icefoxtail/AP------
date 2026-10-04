@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "probability-statistics-stage3b-promotion-projection-v1",
+  "status": "PASS",
+  "baseMain": "843d26d60780ae1502dd53d75c8f2b064b98174f",
+  "stage3aTree": "e03ce367356cdef91b605d684ec5af2219e696bd",
+  "counts": {
+    "problemTypes": 128,
+    "templates": 422,
+    "crossConcepts": 88,
+    "conditions": 6,
+    "bindings": 345,
+    "aliases": 177,
+    "runtimeRecords": 704,
+    "catalogJoin": 704,
+    "automaticEligible": 704,
+    "combinedRuntimeRecords": 2608
+  },
+  "gates": {
+    "canonicalKeyUnique": true,
+    "l4ParentIntegrity": true,
+    "bindingTargetIntegrity": true,
+    "directBindingContract": true,
+    "aliasCollisionZero": true,
+    "bindingDuplicateZero": true,
+    "archive2Join704": true,
+    "archive2JoinMismatchZero": true,
+    "automaticEligibility704": true,
+    "globalRuntimeDuplicateUidZero": true,
+    "globalRuntimeDuplicateSourceIdentityZero": true,
+    "sourceFingerprintSyncEvidenceComplete": true,
+    "repositoryNodeExecution": false,
+    "compiledByteParity6of6": true
+  },
+  "eligibilityReasons": {},
+  "failures": [],
+  "note": "PASS is an isolated promotion projection over current-main compiled/catalog data plus Stage3A candidate. Repository checkout Node execution remains NOT_TESTED because this environment cannot clone/access GitHub from the local container and no branch/ref mutation was authorized.",
+  "compiledByteParity": {
+    "artifactCount": 6,
+    "mismatchCount": 0,
+    "artifacts": [
+      {
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bytes": 750125,
+        "gitBlobSha": "12ec314d7b1d06478c7392dd470ed9f279e3abde"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "bytes": 381347,
+        "gitBlobSha": "55b5ec05f7aae5c8731a3126ec94be8fc47292fd"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/aliases.json",
+        "bytes": 34868,
+        "gitBlobSha": "071e0ff968d7f3e9bcff2150337f6a2f5b11cdd7"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+        "bytes": 962,
+        "gitBlobSha": "858d631e77d1ef67e4b70fcc6e06a820c4318507"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+        "bytes": 143614,
+        "gitBlobSha": "31eb02e5d12f81d4f3c7d4f8fbada4299da00d8e"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "bytes": 1668,
+        "gitBlobSha": "a9f96a07f3c8b51169c314f9031cb4a628f7370b"
+      }
+    ]
+  },
+  "blockers": [
+    "QUESTION_METADATA_FINGERPRINT_SYNC_PENDING: 2 rows",
+    "REPOSITORY_NODE_EXECUTION_NOT_TESTED: environment cannot clone private GitHub repo and no branch/ref mutation was authorized"
+  ]
+}

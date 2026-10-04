@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_EVIDENCE_REUSE_RECEIPT_v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "questionUid",
+    "axis",
+    "priorEvidenceId",
+    "priorEvidenceSha",
+    "priorRunInputSha",
+    "currentRunId",
+    "currentRevision",
+    "currentRunInputSha",
+    "priorAxisInputSha",
+    "currentAxisInputSha",
+    "dependencySetSha",
+    "ruleDependencySetSha",
+    "semanticVerifierSha",
+    "rootFreshEvidenceId",
+    "rootFreshEvidenceSha",
+    "rootFreshRunId",
+    "rootFreshRunInputSha",
+    "rootFreshAxisInputSha",
+    "rootFreshEvidenceRef",
+    "eligibilityEvidenceRef",
+    "lifecycleSnapshotRef",
+    "withdrawalStatus",
+    "revocationStatus",
+    "supersessionStatus",
+    "sourceAuthorityStatus",
+    "eligibilityStatus",
+    "validatedAt",
+    "status",
+    "reasonCodes",
+    "rootFreshRunRef",
+    "rootFreshPacketRef"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "APMATH_EVIDENCE_REUSE_RECEIPT_v1"
+    },
+    "receiptId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "questionUid": {
+      "type": "string",
+      "minLength": 1
+    },
+    "axis": {
+      "enum": [
+        "SOURCE",
+        "MATH_A1",
+        "MATH_A2",
+        "SOLUTION",
+        "METADATA",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW"
+      ]
+    },
+    "priorEvidenceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "priorEvidenceSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "priorRunInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "currentRunId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "currentRevision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "currentRunInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "priorAxisInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "currentAxisInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "dependencySetSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "ruleDependencySetSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "semanticVerifierSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "rootFreshEvidenceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rootFreshEvidenceSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "rootFreshRunId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rootFreshRunInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "rootFreshAxisInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "rootFreshEvidenceRef": {
+      "type": "object",
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "eligibilityEvidenceRef": {
+      "type": "object",
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "lifecycleSnapshotRef": {
+      "type": "object",
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "withdrawalStatus": {
+      "const": "ACTIVE"
+    },
+    "revocationStatus": {
+      "const": "NOT_REVOKED"
+    },
+    "supersessionStatus": {
+      "const": "VALID"
+    },
+    "sourceAuthorityStatus": {
+      "const": "VALID"
+    },
+    "eligibilityStatus": {
+      "const": "ELIGIBLE"
+    },
+    "validatedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "reasonCodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rootFreshRunRef": {
+      "type": "object",
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "rootFreshPacketRef": {
+      "type": "object",
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

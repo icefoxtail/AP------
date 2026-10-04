@@ -1,0 +1,73 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "checkpointId": "20260901_M104",
+  "phase": "Phase 5",
+  "scope": "M1-04 COORDINATE_PLANE_POINT bounded slice",
+  "status": "ACTIVE_BOUNDED",
+  "unitKey": "M1-04",
+  "familyId": "COORDINATE_PLANE_POINT",
+  "capabilities": {
+    "A_numeric": "ACTIVE_BOUNDED",
+    "B_representation": "ACTIVE_BOUNDED",
+    "C_parameter_recovery": "HOLD"
+  },
+  "fixtures": {
+    "count": 6,
+    "general": true,
+    "boundary": true,
+    "composite": true,
+    "coverage": ["제1사분면", "제2사분면", "제3사분면", "제4사분면", "x축", "y축"],
+    "visualDependency": "MANDATORY",
+    "visualType": "coordinate_plane"
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-coordinate-plane-a01",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "00c17b05a23fe7d230f281199101ed97756845842a5b3fbaea599a2796d7db87",
+      "render": {
+        "exam": "PASS",
+        "solution": "PASS",
+        "answer": "PASS",
+        "lastQuestion": 6,
+        "pageCounts": {"exam": 2, "solution": 3, "answer": 1},
+        "svgImageCounts": {"exam": 12, "solution": 6, "answer": 0},
+        "svgImageFailures": 0,
+        "unrenderedMath": 0,
+        "overflow": 0
+      },
+      "resume": "PASS",
+      "closure": "PASS",
+      "publicationStatus": "NOT_PUBLISHED"
+    },
+    {
+      "runId": "20260901-middle-coordinate-plane-b01",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "43389ed3da71c4544e3620439b3fccbf8e660830d1844ed31e509c77a82dea1c",
+      "render": {
+        "exam": "PASS",
+        "solution": "PASS",
+        "answer": "PASS",
+        "lastQuestion": 6,
+        "pageCounts": {"exam": 2, "solution": 3, "answer": 1},
+        "svgImageCounts": {"exam": 12, "solution": 6, "answer": 0},
+        "svgImageFailures": 0,
+        "unrenderedMath": 0,
+        "overflow": 0
+      },
+      "resume": "PASS",
+      "closure": "PASS",
+      "publicationStatus": "NOT_PUBLISHED"
+    }
+  ],
+  "tests": {
+    "coordinatePlaneEngineTests": 3,
+    "status": "PASS",
+    "compileall": "PASS",
+    "packageRoundTrip": "PASS"
+  },
+  "productionArchiveRegistration": "NOT_PERFORMED"
+}

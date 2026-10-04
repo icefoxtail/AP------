@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_RENDER_IMPACT_v1",
+  "type": "object",
+  "required": ["schemaVersion", "changedRenderSet", "renderChangedUidSet", "affectedRenderUidSet", "globalInvalidatorSet"],
+  "properties": {
+    "schemaVersion": { "const": "APMATH_RENDER_IMPACT_v1" },
+    "changedRenderSet": { "type": "array" },
+    "renderChangedUidSet": { "type": "array", "uniqueItems": true },
+    "affectedRenderUidSet": { "type": "array", "uniqueItems": true },
+    "globalInvalidatorSet": { "type": "array", "uniqueItems": true }
+  },
+  "additionalProperties": true
+}

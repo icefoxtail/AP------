@@ -1,0 +1,357 @@
+/* ── 시간표 편집 모드 ──────────────────────────────────────── */
+.eie-v2-edit-mode-bar {
+    width: 100%;
+    padding: 8px 14px;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    border-radius: 10px;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* 드래그 중인 카드 */
+.eie-v2-week-card[draggable="true"] {
+    cursor: grab;
+}
+.eie-v2-week-card.is-dragging {
+    opacity: 0.45;
+    cursor: grabbing;
+}
+
+/* 드래프트 변경된 카드 */
+.eie-v2-week-card.is-edit-drafted {
+    border-color: rgba(234, 179, 8, 0.6);
+    box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.25);
+}
+
+
+/* 복사→붙여넣기 편집 상태 */
+.eie-v2-week-card.is-copy-source {
+    border-color: rgba(37, 99, 235, 0.78);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.20), 0 12px 24px rgba(37, 99, 235, 0.12);
+}
+
+.eie-v2-week-card.is-temp-copy {
+    border-color: rgba(16, 185, 129, 0.62);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.18);
+}
+
+.eie-v2-card-copy-button {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    min-height: 26px;
+    padding: 0 9px;
+    border: 1px solid rgba(37, 99, 235, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1d4ed8;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.eie-v2-card-copy-button:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.eie-v2-card-copy-badge {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    color: #047857;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.eie-v2-paste-button {
+    width: 100%;
+    min-height: 42px;
+    border: 1px dashed rgba(37, 99, 235, 0.42);
+    border-radius: 12px;
+    background: rgba(37, 99, 235, 0.07);
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.eie-v2-paste-button:hover {
+    background: rgba(37, 99, 235, 0.12);
+}
+
+/* 드롭 가능 슬롯 hover */
+.eie-v2-teacher-slot.is-drop-over {
+    background: rgba(37, 99, 235, 0.07);
+    outline: 2px dashed rgba(37, 99, 235, 0.4);
+    border-radius: 12px;
+}
+
+/* 전반 select */
+.eie-v2-transfer-select {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    font-size: 14px;
+    background: var(--eie-surface);
+    color: var(--eie-text);
+}
+
+/* 추가 정보 섹션 하단 — 퇴원 버튼 우측 정렬 */
+.eie-v2-extra-fields-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+/* 퇴원 버튼 — 빨간 테두리 */
+.eie-v2-retire-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    border: 2px solid #ef4444;
+    border-radius: 10px;
+    background: transparent;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.eie-v2-retire-btn:hover {
+    background: rgba(239, 68, 68, 0.08);
+}
+
+.eie-v2-mini-add-student {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.eie-v2-info {
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    border-radius: 12px;
+    background: rgba(34, 197, 94, 0.08);
+    color: #166534;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-mini-add-student {
+        grid-template-columns: 1fr;
+    }
+
+    .eie-v2-mini-day-grid {
+        grid-template-columns: 54px repeat(5, minmax(52px, 1fr));
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+
+    .eie-v2-mini-student-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* EIE timetable v5 density and horizontal card scroll */
+.eie-v2-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 380px);
+    gap: 10px;
+}
+
+.eie-v2-card-board {
+    gap: 8px;
+}
+
+.eie-v2-period-row {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+    border-radius: 18px;
+}
+
+.eie-v2-period-head {
+    min-height: 96px;
+    padding: 10px 8px;
+    border-radius: 14px;
+}
+
+.eie-v2-period-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 3px;
+    scrollbar-width: thin;
+}
+
+.eie-v2-week-card {
+    flex: 0 0 228px;
+    min-height: 96px;
+    padding: 9px;
+    border-radius: 15px;
+}
+
+.eie-v2-detail-panel {
+    position: sticky;
+    top: 74px;
+    max-height: calc(100vh - 92px);
+    overflow: auto;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-layout {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .eie-v2-period-row {
+        grid-template-columns: 78px minmax(0, 1fr);
+    }
+
+    .eie-v2-week-card {
+        flex-basis: min(252px, 84vw);
+    }
+
+    .eie-v2-detail-panel {
+        position: static;
+        max-height: none;
+    }
+}
+
+/* EIE timetable v10 homeroom-column frame */
+.eie-v2-board-scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+}
+
+.eie-v2-board-grid {
+    --eie-v2-period-width: 96px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
+    gap: 8px;
+}
+
+.eie-v2-board-corner {
+    grid-column: 1;
+    min-height: 42px;
+}
+
+.eie-v2-teacher-frame-head {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
+    gap: 8px;
+    align-items: stretch;
+}
+
+.eie-v2-teacher-frame-cell {
+    min-height: 42px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(241,245,249,0.92) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.05);
+}
+
+.eie-v2-teacher-frame-cell strong {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.eie-v2-period-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: var(--eie-v2-period-width) minmax(0, 1fr);
+    gap: 8px;
+    align-items: stretch;
+    border: 1px solid var(--eie-border);
+    border-radius: 18px;
+    background: var(--eie-surface);
+    box-shadow: var(--eie-shadow-soft, 0 8px 22px rgba(15, 23, 42, 0.06));
+    padding: 8px;
+}
+
+.eie-v2-teacher-frame-row {
+    display: grid;
+    grid-template-columns: repeat(var(--eie-v2-homeroom-count), minmax(0, 1fr));
+    gap: 8px;
+    align-items: stretch;
+    min-width: 0;
+}
+
+.eie-v2-teacher-slot {
+    min-width: 0;
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 16px;
+    background: rgba(248, 250, 252, 0.68);
+    border: 1px dashed rgba(148, 163, 184, 0.30);
+    padding: 7px;
+}
+
+.eie-v2-teacher-slot-empty {
+    min-height: 82px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.42);
+}
+
+.eie-v2-teacher-slot .eie-v2-week-card {
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.eie-v2-period-head {
+    min-height: 96px;
+}
+
+@media (max-width: 760px) {
+    .eie-v2-board-grid {
+        --eie-v2-period-width: 78px;
+    }
+
+    .eie-v2-board-corner,
+    .eie-v2-teacher-frame-cell {
+        min-height: 38px;
+    }
+
+    .eie-v2-teacher-frame-cell strong {
+        font-size: 12px;
+    }
+
+    .eie-v2-teacher-slot {
+        min-height: 94px;
+        padding: 6px;
+        gap: 7px;
+    }
+}
+

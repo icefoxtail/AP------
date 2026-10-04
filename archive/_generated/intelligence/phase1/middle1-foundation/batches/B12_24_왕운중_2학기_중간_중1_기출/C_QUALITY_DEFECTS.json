@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "m1-conflict-worker-quality-defects-v1",
+  "batchNo": 12,
+  "reviewer": "/root/m1_conflict_c_v2",
+  "preservedLedgerSha256": "6b4ab092cc2b193ae770fc59120feadfbca64d08c64c57ffabfba0b3b10cdd42",
+  "status": "AFFECTED_UID_REOPENED_AND_ROOT_ADJUDICATED",
+  "defects": [
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_ba2d23d69c7b2134cff219b832e83e2aa04e3b8472af88c3752303d00a8c228b",
+      "type": "WRONG_INCLUDED_SIDE_CRITERION",
+      "reason": "C calls choice ⑤ AAS, but the source gives angles A and C with side AC between them. Its direct determination criterion is ASA; C's intermediate theorem label is source-inaccurate despite the correct choice.",
+      "rootEvidenceFile": "ROOT_Q09_TRIANGLE_UNIQUENESS_CRITERION.md"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_82345647fa297c0c23bd664577a1af0170833b5eed2f34cc0761046b839f1c98",
+      "type": "WRONG_HISTOGRAM_TOP_CLASS_FREQUENCY",
+      "reason": "C states the highest 12–14 pull-up class contains four students. The frozen histogram has one student there; the fifth highest still lies in 10–12, but C's numerical evidence is false.",
+      "rootEvidenceFile": "ROOT_Q15_HISTOGRAM_RANK_L2_EVIDENCE.md"
+    }
+  ]
+}

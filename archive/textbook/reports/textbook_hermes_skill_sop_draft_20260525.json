@@ -1,0 +1,258 @@
+﻿{
+    "meta":  {
+                 "generatedAt":  "2026-05-25T22:30:00+09:00",
+                 "workspace":  "C:\\Users\\USER\\Desktop\\AP------",
+                 "textbookRoot":  "archive/textbook",
+                 "status":  "draft_report_only",
+                 "hermesReference":  {
+                                         "repository":  "https://github.com/NousResearch/hermes-agent",
+                                         "checked":  true,
+                                         "checkedItems":  [
+                                                              "README.md",
+                                                              "AGENTS.md",
+                                                              "skills",
+                                                              "optional-skills",
+                                                              ".plans",
+                                                              "plans",
+                                                              "tools",
+                                                              "plugins",
+                                                              "mcp_serve.py",
+                                                              "trajectory_compressor.py"
+                                                          ],
+                                         "importPolicy":  "reference_structure_only_no_install_no_copy_no_dependency"
+                                     },
+                 "hardBans":  [
+                                  ".agent actual creation",
+                                  "docs structure finalization",
+                                  "Hermes install or execution",
+                                  "dependency addition or package install",
+                                  "generated/js modification",
+                                  "generated/reports overwrite",
+                                  "pipeline code modification",
+                                  "PDF conversion",
+                                  "daemon/cron/MCP server implementation",
+                                  "apmath modification",
+                                  "archive operational HTML modification",
+                                  "archive/exams modification",
+                                  "git add/commit/push"
+                              ]
+             },
+    "purpose":  "Draft SOP catalog. These are procedural descriptions, not executable Hermes skills.",
+    "sops":  [
+                 {
+                     "id":  "content_from_full_page_crop",
+                     "trigger":  "empty_or_broken_content",
+                     "inputs":  [
+                                    "operating JS item",
+                                    "question crop",
+                                    "full page crop",
+                                    "question-page mapping reports"
+                                ],
+                     "allowedWrites":  [
+                                           "content",
+                                           "choices only when the task explicitly allows them"
+                                       ],
+                     "forbiddenWrites":  [
+                                             "answer unless answer task",
+                                             "solution",
+                                             "id",
+                                             "displayNo",
+                                             "setKey",
+                                             "sourceQuestionNo",
+                                             "metadata",
+                                             "tags",
+                                             "standardUnit"
+                                         ],
+                     "successGate":  [
+                                         "non-empty content",
+                                         "no broken OCR/mojibake",
+                                         "no image path or img tag",
+                                         "page/displayNo evidence exists",
+                                         "choices structurally valid when present"
+                                     ],
+                     "manualReviewReasons":  [
+                                                 "source_image_missing",
+                                                 "displayNo_page_mismatch",
+                                                 "ocr_unreadable",
+                                                 "visual_only_needs_asset",
+                                                 "merged_question_text"
+                                             ]
+                 },
+                 {
+                     "id":  "answer_from_solution_source",
+                     "trigger":  "missing_answer",
+                     "inputs":  [
+                                    "answer source map",
+                                    "quick answer table",
+                                    "answer crop",
+                                    "solution PDF/crop",
+                                    "operating JS content/choices"
+                                ],
+                     "allowedWrites":  [
+                                           "answer only"
+                                       ],
+                     "forbiddenWrites":  [
+                                             "content",
+                                             "choices",
+                                             "solution",
+                                             "id",
+                                             "displayNo",
+                                             "setKey",
+                                             "sourceQuestionNo",
+                                             "metadata",
+                                             "tags",
+                                             "standardUnit",
+                                             "image"
+                                         ],
+                     "successGate":  [
+                                         "setKey/displayNo/sourceQuestionNo/content keywords align",
+                                         "source answer or direct solve is certain",
+                                         "node --check passes"
+                                     ],
+                     "manualReviewReasons":  [
+                                                 "answer_source_missing",
+                                                 "answer_source_unreadable",
+                                                 "answer_displayNo_mismatch",
+                                                 "answer_setKey_mismatch",
+                                                 "answer_mismatch",
+                                                 "direct_solve_uncertain",
+                                                 "diagram_or_graph_missing"
+                                             ]
+                 },
+                 {
+                     "id":  "question_mapping_audit",
+                     "trigger":  "suspected JS/crop/page mismatch",
+                     "inputs":  [
+                                    "operating JS",
+                                    "question crop map",
+                                    "full page crop",
+                                    "section/page map"
+                                ],
+                     "allowedWrites":  [
+                                           "root report only"
+                                       ],
+                     "forbiddenWrites":  [
+                                             "operating JS",
+                                             "generated reports overwrite",
+                                             "reset/delete"
+                                         ],
+                     "successGate":  [
+                                         "sample paths recorded",
+                                         "actual printed number recorded if inspected",
+                                         "KEEP/RESET decision only when explicitly requested"
+                                     ],
+                     "manualReviewReasons":  [
+                                                 "manual_check",
+                                                 "source_image_missing",
+                                                 "displayNo_page_mismatch",
+                                                 "stale_or_extra_js_question"
+                                             ]
+                 },
+                 {
+                     "id":  "manual_review_reclassification",
+                     "trigger":  "large manual_review pool",
+                     "inputs":  [
+                                    "manual review reports",
+                                    "operating JS snapshot",
+                                    "answer/content reports"
+                                ],
+                     "allowedWrites":  [
+                                           "root report and answer only if task explicitly permits answer fill"
+                                       ],
+                     "forbiddenWrites":  [
+                                             "non-answer protected fields when answer-only task",
+                                             "exclusion deletion"
+                                         ],
+                     "successGate":  [
+                                         "every remaining item has one allowed reason",
+                                         "direct-solvable items separated first"
+                                     ],
+                     "manualReviewReasons":  [
+                                                 "direct_solve_possible",
+                                                 "image_required",
+                                                 "source_remap_needed",
+                                                 "content_empty",
+                                                 "final_hold"
+                                             ]
+                 },
+                 {
+                     "id":  "protected_field_diff_scan",
+                     "trigger":  "after any JS update",
+                     "inputs":  [
+                                    "baseline copy or git diff",
+                                    "modified JS files"
+                                ],
+                     "allowedWrites":  [
+                                           "validation report only"
+                                       ],
+                     "forbiddenWrites":  [
+                                             "silent repair without explicit restore instruction"
+                                         ],
+                     "successGate":  [
+                                         "only allowed fields changed",
+                                         "node --check pass",
+                                         "questionBank parse pass"
+                                     ],
+                     "manualReviewReasons":  [
+                                                 "protected_field_changed",
+                                                 "parse_failed",
+                                                 "syntax_failed"
+                                             ]
+                 },
+                 {
+                     "id":  "review_pack_generation",
+                     "trigger":  "human review requested",
+                     "inputs":  [
+                                    "sample index",
+                                    "JS snippets",
+                                    "question crops",
+                                    "full page crops",
+                                    "answer sources"
+                                ],
+                     "allowedWrites":  [
+                                           "Downloads zip if requested",
+                                           "root report if requested"
+                                       ],
+                     "forbiddenWrites":  [
+                                             "operating JS",
+                                             "generated reports overwrite"
+                                         ],
+                     "successGate":  [
+                                         "sample/crop/full page nonzero",
+                                         "index lists all bundled evidence"
+                                     ],
+                     "manualReviewReasons":  [
+                                                 "missing_question_crop",
+                                                 "missing_full_page_crop",
+                                                 "missing_answer_source"
+                                             ]
+                 },
+                 {
+                     "id":  "formula_patch_dry_run",
+                     "trigger":  "formula risk report exists",
+                     "inputs":  [
+                                    "formula risk reports",
+                                    "operating JS content/choices"
+                                ],
+                     "allowedWrites":  [
+                                           "patch candidate report only unless apply task explicitly permits"
+                                       ],
+                     "forbiddenWrites":  [
+                                             "solution",
+                                             "answer",
+                                             "id/display metadata",
+                                             "automatic semantic rewrite"
+                                         ],
+                     "successGate":  [
+                                         "exact targetText match",
+                                         "replacement is syntax-safe",
+                                         "node --check after apply when apply allowed"
+                                     ],
+                     "manualReviewReasons":  [
+                                                 "formula_source_image_required",
+                                                 "auto_apply_blocked",
+                                                 "semantic_uncertain"
+                                             ]
+                 }
+             ]
+}

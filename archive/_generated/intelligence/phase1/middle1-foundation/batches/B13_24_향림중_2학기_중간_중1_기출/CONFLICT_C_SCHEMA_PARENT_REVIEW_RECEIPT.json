@@ -1,0 +1,140 @@
+{
+  "receiptType": "B13_CONFLICT_C_SCHEMA_AND_PARENT_REVIEW",
+  "createdAtUtc": "2026-09-24T18:43:40.5312064Z",
+  "preservedPreCorrectionFile": "CONFLICT_C_PRE_SCHEMA_CORRECTION.jsonl",
+  "oldSha256": "c7daa49520296aa071329db746ceb8865b073f77d3b56d2671fcebecaef5a6b5",
+  "correctedFile": "CONFLICT_C.jsonl",
+  "newSha256": "4433a7d11e65d92b0c79dd0fab4805c978ad70931061199eed1d6083bfee1e81",
+  "validatorSource": "archive/tools/meta-foundation/validate-middle1-batch.mjs",
+  "requiredSemanticFields": [
+    "questionUid",
+    "sourceArchiveFile",
+    "sourceOrdinal",
+    "sourceFingerprint",
+    "inputBundleSha",
+    "contentHash",
+    "solutionHash",
+    "primaryMethod",
+    "decisiveStep",
+    "standardUnitKey",
+    "subUnitKey",
+    "l1Reason",
+    "l2Reason",
+    "problemTypeKey",
+    "l3SemanticReason",
+    "templateKey",
+    "l4SemanticReason",
+    "crossConceptKeys",
+    "crossConceptReasons",
+    "conditionKeys",
+    "conditionReasons",
+    "integrationPattern",
+    "semanticReason",
+    "reviewStatus",
+    "sourceIssue"
+  ],
+  "validation": {
+    "status": "PASS",
+    "rowCount": 4,
+    "sourceOrdinals": [
+      6,
+      12,
+      18,
+      20
+    ],
+    "schemaAndProvenance": "All requiredSemanticFields present and non-empty per validator rules; provenance fields match frozen input; reason arrays align with their key arrays.",
+    "parentReview": "Ordinal 6 corrected to M1-06/POLYGON_CIRCLE because pentagon interior-angle sum is the decisive polygon concept. Ordinals 12 and 20 retain M1-06/POLYGON_CIRCLE. Ordinal 18 retains M2-08/PROBABILITY_COUNTING and ROUTE_OUT."
+  },
+  "changedFieldsByRow": [
+    {
+      "questionUid": "qid_v1_0554824dd8ae54f73142c40123946586366e627047d79ab6a261064fba2f9c6a",
+      "sourceOrdinal": 6,
+      "addedFields": [
+        "conditionKeys",
+        "conditionReasons",
+        "crossConceptKeys",
+        "crossConceptReasons",
+        "l1L2ConflictReason",
+        "l1Reason",
+        "l2Reason"
+      ],
+      "removedFields": [
+        "conditions",
+        "crossConcepts",
+        "l1L2Evidence"
+      ],
+      "changedFields": [
+        "l1L2Conflict",
+        "problemTypeKey",
+        "standardUnitKey",
+        "subUnitKey"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6ef33b13b4ec9085d1acf7fee2cd17d7bb6ae53f4a811ea56af4efdfb3a58fd5",
+      "sourceOrdinal": 12,
+      "addedFields": [
+        "conditionKeys",
+        "conditionReasons",
+        "crossConceptKeys",
+        "crossConceptReasons",
+        "l1L2ConflictReason",
+        "l1Reason",
+        "l2Reason"
+      ],
+      "removedFields": [
+        "conditions",
+        "crossConcepts",
+        "l1L2Evidence"
+      ],
+      "changedFields": [
+        "standardUnitKey",
+        "subUnitKey"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_656d726654c8e83093c55334c07dd6857b35ecbe20e2d3fe2878d5bc467fe7bd",
+      "sourceOrdinal": 18,
+      "addedFields": [
+        "conditionKeys",
+        "conditionReasons",
+        "crossConceptKeys",
+        "crossConceptReasons",
+        "l1L2ConflictReason",
+        "l1Reason",
+        "l2Reason"
+      ],
+      "removedFields": [
+        "conditions",
+        "crossConcepts",
+        "l1L2Evidence"
+      ],
+      "changedFields": [
+        "standardUnitKey",
+        "subUnitKey"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2e6f3d78946fb4d3a06f2b7e575bde646f48d22d8b66dddb67ff1ea425795b86",
+      "sourceOrdinal": 20,
+      "addedFields": [
+        "conditionKeys",
+        "conditionReasons",
+        "crossConceptKeys",
+        "crossConceptReasons",
+        "l1L2ConflictReason",
+        "l1Reason",
+        "l2Reason"
+      ],
+      "removedFields": [
+        "conditions",
+        "crossConcepts",
+        "l1L2Evidence"
+      ],
+      "changedFields": [
+        "standardUnitKey",
+        "subUnitKey"
+      ]
+    }
+  ]
+}

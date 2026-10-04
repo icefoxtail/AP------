@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "status": "PURE_RELATIONAL_MATERIALIZATION_PASS_WORKING_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "8662b7ee911f3c4a57675aaaa0c3583e850b3d19",
+  "inputs": {
+    "batch1": {
+      "rows": 50,
+      "fields": 53,
+      "file": "H1_SOL_PURE_RELATIONAL_BATCH1_50_DECISIONS.jsonl"
+    },
+    "batch2": {
+      "rows": 48,
+      "fields": 51,
+      "file": "H1_SOL_PURE_RELATIONAL_BATCH2_48_DECISIONS.jsonl"
+    },
+    "batch3": {
+      "rows": 48,
+      "fields": 55,
+      "file": "H1_SOL_PURE_RELATIONAL_BATCH3_48_DECISIONS.jsonl"
+    },
+    "total": {
+      "rows": 146,
+      "fields": 159
+    }
+  },
+  "validation": {
+    "sourceIdentityMismatch": 0,
+    "sourceFingerprintMismatch": 0,
+    "pendingFieldMismatch": 0,
+    "candidate1120": {
+      "rows": 1120,
+      "uniqueUid": 1120,
+      "uniqueSourceIdentity": 1120,
+      "duplicateUidCount": 0,
+      "duplicateSourceIdentityCount": 0,
+      "closedRows": 1087,
+      "pendingRows": 33,
+      "pendingFields": 40
+    },
+    "candidate1170": {
+      "rows": 1170,
+      "uniqueUid": 1170,
+      "uniqueSourceIdentity": 1170,
+      "duplicateUidCount": 0,
+      "duplicateSourceIdentityCount": 0,
+      "closedRows": 1137,
+      "pendingRows": 33,
+      "pendingFields": 40
+    },
+    "residualQueue": {
+      "rows": 33,
+      "fields": 40,
+      "fieldCounts": {
+        "integrationPattern": 2,
+        "sourceIssue": 11,
+        "l3": 23,
+        "conditions": 3,
+        "crossConcepts": 1
+      }
+    }
+  },
+  "finality": {
+    "taxonomyFinal": false,
+    "l4Final": false,
+    "difficultyFinal": false,
+    "finalValidatorPass": false
+  },
+  "next": "Resolve remaining 33 rows / 40 fields before fresh difficulty."
+}
