@@ -5,7 +5,7 @@
   "canonicalOrdinal": 1,
   "examFile": "25_진남중_1학기_중간_중2_기출.js",
   "inputFinalArtifactSha": "a3867d116498aa2afa67b327968a9d46946b4bb5",
-  "status": "R1_REPAIR_WRITE_DEBT",
+  "status": "R1_VALIDATION_PENDING",
   "selector": "2025 DESC + inventory ordinal; no current same-stage R1 branch found before claim",
   "currentBranch": "work/middle/m2/25-jinnam-1mid-r1-2-20261004-0836",
   "deterministicRepairsRequired": [
@@ -45,7 +45,6 @@
       "nextRequiredEvidence": "original PDF/page pixel authority"
     }
   ],
-  "next": "Executor with target-JS write capability: apply only q13/q20/q23 subUnitKey+subUnit repairs; then bind fresh R1 physical evidence to repaired blob, run canonical --stage R1 validator, write REVIEW1_DONE_WITH_ITEM_HOLDS (q6/q7 only) and remote-readback.",
   "completed": {
     "goldenCalibration": "PASS; 2 Golden files read from current main and Bokseong negative regression read",
     "protectedSourceParity": "23/23 content/choices/answer/image exact vs baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; CREATE-added questionType excluded from protected source parity",
@@ -59,39 +58,16 @@
     "metaCrosswalk": "23/23 RPM rows rechecked against current middle2.json blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59; exact subUnit mismatch at q13/q20/q23 only",
     "difficulty": "23/23 rechecked against v1.3 definitions; no deterministic bucket correction found"
   },
-  "writeAttempts": [
-    {
-      "path": "GitHub contents update_file on target JS",
-      "result": "BLOCKED_BEFORE_SIDE_EFFECT",
-      "detail": "OpenAI connector safety check rejected executable JS replacement; target bytes unchanged"
-    },
-    {
-      "path": "target-specific GitHub Actions repair workflow create_file on validation branch",
-      "result": "BLOCKED_BEFORE_SIDE_EFFECT",
-      "detail": "OpenAI connector safety check rejected workflow write; no workflow/run/job created"
-    }
-  ],
-  "currentArtifactGitBlob": "a3867d116498aa2afa67b327968a9d46946b4bb5",
-  "remainingDefects": [
-    {
-      "qid": 13,
-      "field": "subUnitKey/subUnit",
-      "required": "M2-01-EXPONENT_LAW / 지수법칙",
-      "authority": "M2-RPM-129"
-    },
-    {
-      "qid": 20,
-      "field": "subUnitKey/subUnit",
-      "required": "M2-02-LINEAR_INEQUALITY / 일차부등식",
-      "authority": "M2-RPM-141"
-    },
-    {
-      "qid": 23,
-      "field": "subUnitKey/subUnit",
-      "required": "M2-02-LINEAR_INEQUALITY / 일차부등식",
-      "authority": "M2-RPM-136"
-    }
-  ],
+  "currentArtifactGitBlob": "f1d0d2b90dd3bed3bb63a272ee704a106cf6a2f4",
+  "remainingDefects": [],
   "stageClosure": "NOT_WRITTEN",
-  "validator": "NOT_RUN_ON_UNREPAIRED_ARTIFACT"
+  "validator": "PENDING",
+  "r1PhysicalEvidenceBlob": "45ef753d7df8fb44b573d88e497cf30e16164ba1",
+  "repairsAppliedQids": [
+    13,
+    20,
+    23
+  ],
+  "latestMainShaAtRescue": "9e7997264db40936aa05cd968cf779be0eacad57",
+  "mainTargetBlobAtRescue": "1124d7a152f1f82d62c8a9b65c74ac67d14f49e1"
 }
