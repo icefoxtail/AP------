@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
   "stage": "CREATE",
   "examPath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
-  "examSha256": "sha256:f924a24b8f0783ecc4be4b9b8780638dbac4e361206d1092e97d1fca616a8fc7",
+  "examSha256": "sha256:0c1da6d4464928c0231e4b8c228d52094abebd4bb33700f4e1a0231ec94cca7c",
   "questionCount": 21,
   "questionRows": [
     {
@@ -602,11 +602,11 @@
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "Recomputed: -x/3-5/2≥x/6 ⇒ -2x-15≥x ⇒ -3x≥15 ⇒ x≤-5. Division by the negative number reverses the inequality."
+        "evidence": "Recomputed inequality chain gives -2x-15≥x, -3x≥15, then x≤-5; division by -3 reverses the sign."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "The explanation lists all three steps separately and maps each to ㄴ, ㄱ, ㄷ; the two printed sign errors are explicitly corrected."
+        "evidence": "The solution now presents the exact enumerated blocks ㄴ., ㄱ., ㄷ. separately, correcting the printed sign errors in the algebra."
       },
       "curriculum": {
         "status": "PASS",
@@ -1234,7 +1234,8 @@
     "Golden q1/q2 samples and Bokseong/visual negative regression fixtures were read before mutation.",
     "2026-10-05 source-free closure refresh: authoritative Codex D-source repair resolves prior q7/q8/q9/q13/q15/q16/q19/q20 holds against final artifact blob 47a079986fbe1c0c8660f1c0588841388b321b10.",
     "q16 is an audited printed-source defect, not a remaining SOURCE_UNVERIFIED hold; literal source signs are preserved and no-valid-choice is explicitly recorded.",
-    "o11 q16 targeted repair: calibration samples and both negative fixtures were read before changing the solution; only q16 solution/answer-evidence were refreshed. Source content and choices remain byte-identical."
+    "o11 q16 targeted repair: calibration samples and both negative fixtures were read before changing the solution; only q16 solution/answer-evidence were refreshed. Source content and choices remain byte-identical.",
+    "o11 q16 enumeration formatting aligned with the canonical small-board gate; all three property labels are independent blocks."
   ],
   "sourceRepairBinding": {
     "status": "D_SOURCE_CONFIRMED",
