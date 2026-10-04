@@ -2,9 +2,9 @@
 
 - status: **CURRENT / GPT EXECUTION CANONICAL**
 - scope: GPT 수동 작업 + ChatGPT 예약 CREATE/R1/R2/R3/THANOS의 problem image / SVG / graph / geometry / solutionImage 생성·수정·검수
-- upstream design source: \`.codex/skills/apmath-visual-upgrade/SKILL.md\`
+- upstream design source: `.codex/skills/apmath-visual-upgrade/SKILL.md`
 - core rule: **GPT는 Codex skill을 실행한다고 주장하지 않는다. 대신 그 skill의 시각자료 철학·판단축·검수축을 GPT 환경에서 실행 가능한 계약으로 번역하여 적용한다.**
-- authority order: 형님의 현재 명시 지시 → 최신 Notion CURRENT/router → 이 문서 → 최신 \`apmath-visual-upgrade/SKILL.md\`의 비충돌 설계 철학 → 관련 visual canonical → source + verified/frozen solution facts → actual artifact bytes
+- authority order: 형님의 현재 명시 지시 → 최신 Notion CURRENT/router → 이 문서 → 최신 `apmath-visual-upgrade/SKILL.md`의 비충돌 설계 철학 → 관련 visual canonical → source + verified/frozen solution facts → actual artifact bytes
 
 ## 0. 왜 별도 GPT Contract가 필요한가
 
@@ -15,7 +15,7 @@ Codex skill에는 skill router, local command, Python/Node validator, browser/re
 2. 실행 방법은 이 GPT Contract로 해석한다.
 3. 실행하지 못한 local command나 browser/render를 실행했다고 주장하지 않는다.
 4. 가능한 검증은 source/current bytes/Git evidence/connector/수치 재계산으로 수행한다.
-5. 실행 불가능한 축은 \`NOT_RUN\` 또는 \`NOT_VERIFIED\`로 명시하되, 그 사실만으로 생산 라인을 멈추지 않는다.
+5. 실행 불가능한 축은 `NOT_RUN` 또는 `NOT_VERIFIED`로 명시하되, 그 사실만으로 생산 라인을 멈추지 않는다.
 6. final release에서 실제로 필요한 검증이 남으면 정확한 visual debt와 next executable path를 남긴다.
 
 ## 1. 적용 역할
@@ -56,19 +56,19 @@ shared generator/validator/engine/repository-wide visual system 자체가 작업
 ## 3. Visual Triage — 전 문항 판단
 
 각 qid를 아래 중 하나로 판정한다.
-- \`KEEP\`: 수학·owner·style·readability까지 현재 기준 PASS
-- \`POLISH\`: geometry는 정확하나 typography/stroke/spacing/composition/style floor 보정 필요
-- \`REBUILD\`: geometry/semantic/composition 구조를 다시 만들어야 함
-- \`ADD\`: 기존 solution visual이 없고 새 visual의 학습 이득이 명확함
-- \`REMOVE\`: 잘못되었거나 중복·오해 유발 visual
-- \`EXEMPT\`: visual이 실질적 이득 없음
+- `KEEP`: 수학·owner·style·readability까지 현재 기준 PASS
+- `POLISH`: geometry는 정확하나 typography/stroke/spacing/composition/style floor 보정 필요
+- `REBUILD`: geometry/semantic/composition 구조를 다시 만들어야 함
+- `ADD`: 기존 solution visual이 없고 새 visual의 학습 이득이 명확함
+- `REMOVE`: 잘못되었거나 중복·오해 유발 visual
+- `EXEMPT`: visual이 실질적 이득 없음
 
 별도 necessity 축:
-- \`VISUAL_REQUIRED\`
-- \`VISUAL_OPTIONAL\`
-- \`VISUAL_EXEMPT\`
+- `VISUAL_REQUIRED`
+- `VISUAL_OPTIONAL`
+- `VISUAL_EXEMPT`
 
-\`OPTIONAL\`은 무조건 ADD가 아니다.
+`OPTIONAL`은 무조건 ADD가 아니다.
 
 ## 4. Source Figure Sufficiency / Marginal Benefit
 
@@ -81,7 +81,7 @@ source figure가 있는 문항에서 solution visual을 ADD하려면 최소 하�
 - 계산값이 실제 도형의 어느 곳인지 보여주는 concept anchor
 - case 분리를 통해 오해를 줄이는 새 representation
 
-\`newVisualInformation=[]\`이면 기본값은 KEEP 또는 EXEMPT다.
+`newVisualInformation=[]`이면 기본값은 KEEP 또는 EXEMPT다.
 
 ## 5. Decisive Relation First
 
@@ -113,7 +113,7 @@ GPT는 특정 backend를 직접 실행할 수 없더라도 최종 artifact의 �
 ## 7. Math Authority — 그림보다 수학 사실이 먼저
 
 visual의 수학 authority:
-\`source + verified/frozen solution facts → numeric/geometry facts → coordinate model → actual visual primitive\`
+`source + verified/frozen solution facts → numeric/geometry facts → coordinate model → actual visual primitive`
 
 표시 문구가 맞더라도 실제 primitive가 틀리면 FAIL이다.
 
@@ -210,7 +210,7 @@ GPT 예약 worker는 local browser/Node/Python harness가 없을 수 있다.
 
 필요한 실제 render가 불가능하면:
 1. 가능한 제작/수리를 끝낸다.
-2. \`renderStatus=NOT_RUN\` 또는 해당 축 \`NOT_VERIFIED\`.
+2. `renderStatus=NOT_RUN` 또는 해당 축 `NOT_VERIFIED`.
 3. 정확한 visual debt와 target asset을 남긴다.
 4. 라인을 self-disable하거나 whole-exam HOLD하지 않는다.
 5. R3/release에서 정책상 render가 HARD라면 release 전 executable render owner가 닫아야 한다.
@@ -295,7 +295,7 @@ GPT 예약 worker는 local browser/Node/Python harness가 없을 수 있다.
 
 ## 17. Final Principle
 
-\`SKILL.md\`를 GPT가 "실행"하는 것이 아니다.
+`SKILL.md`를 GPT가 "실행"하는 것이 아니다.
 GPT는 최신 skill의 방향을 읽고 이 문서의 실행 계약으로 번역한다.
 
 최종 목표:

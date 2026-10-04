@@ -18,8 +18,8 @@
 
 ## GPT VISUAL PRODUCTION CONTRACT — CURRENT
 
-- CREATE/R1/R2/R3/THANOS에서 problem image/SVG/graph/geometry/solutionImage를 생성·수정·필요성 판정·검수할 때는 최신 main의 \`.codex/skills/apmath-visual-upgrade/SKILL.md\`와 \`docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md\`를 함께 읽는다.
-- \`SKILL.md\`는 upstream 설계 철학이며 GPT가 Codex skill을 실제 invoke했다고 주장하는 근거가 아니다. GPT 실행 규칙은 GPT Visual Contract가 번역한다.
+- CREATE/R1/R2/R3/THANOS에서 problem image/SVG/graph/geometry/solutionImage를 생성·수정·필요성 판정·검수할 때는 최신 main의 `.codex/skills/apmath-visual-upgrade/SKILL.md`와 `docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md`를 함께 읽는다.
+- `SKILL.md`는 upstream 설계 철학이며 GPT가 Codex skill을 실제 invoke했다고 주장하는 근거가 아니다. GPT 실행 규칙은 GPT Visual Contract가 번역한다.
 - local Node/Python/browser command를 실행하지 못한 경우 실행했다고 보고하지 않는다. 가능한 static/math/coordinate/owner/style audit는 계속 수행하고, 실제 render가 필요한데 실행 불가하면 정확한 NOT_RUN/NOT_VERIFIED visual debt를 남긴다.
 - visual defect 하나로 whole-exam HOLD/self-disable 금지. source truth 자체가 불확정한 경우만 기존 bounded SOURCE_REPAIR_REQUIRED 경로를 사용한다.
 - 전수 visual sweep에서는 qid denominator와 KEEP/POLISH/REBUILD/ADD/REMOVE/EXEMPT item ledger를 남긴다.
