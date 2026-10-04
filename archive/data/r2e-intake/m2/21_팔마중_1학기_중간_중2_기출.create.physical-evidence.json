@@ -233,23 +233,8 @@
       ]
     }
   },
-  "sourceRepairRequired": [
-    {
-      "qid": 10,
-      "issue": "Problem stem refers to a partitioned figure, but current JS has no image/SVG and no source pixel asset. The numerical answer depends on missing segment labels.",
-      "requiredNextAction": "Recover authoritative problem pixel/crop, bind it as problem image, and recheck the segment totals and answer."
-    },
-    {
-      "qid": 12,
-      "issue": "Displayed expression simplifies to P=-5a, which is absent from all choices and conflicts with answer ③.",
-      "requiredNextAction": "Read the authoritative source pixel and repair exactly one or more of content/choices/answer; then regenerate the solution."
-    },
-    {
-      "qid": 19,
-      "issue": "Stem says two inequalities have equal solution sets, but only one inequality is present, so a is undetermined.",
-      "requiredNextAction": "Recover the omitted comparison inequality from the source pixel, restore the stem, and recompute the answer."
-    }
-  ],
+  "sourceRepairRequired": [],
+  "sourceRepairEvidence": "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.source-repair.json",
   "visualAudit": {
     "denominator": 24,
     "ledger": [
@@ -310,11 +295,16 @@
       {
         "qid": 10,
         "necessity": "VISUAL_REQUIRED",
-        "action": "SOURCE_REPAIR_REQUIRED",
+        "action": "SOURCE_REPAIR_APPLIED",
         "surface": "PROBLEM_VISUAL",
         "decisiveRelation": "계단 도형의 가로·세로 선분 합",
+        "assetPath": "archive/assets/images/21_팔마중_1학기_중간_중2_기출/q10.png",
+        "sourcePage": 2,
+        "cropSha256": "216B6A4F8B24A3895F36DA3C42CD650BAF8A2B4F7F0C0F97F21D246108C08C09",
+        "assetLinkCheck": "PASS",
+        "sourcePixelInspection": "PASS",
         "renderStatus": "NOT_RUN",
-        "unresolvedVisualDebt": "Current JS has no linked original figure; source pixel is required before a faithful problem visual can be published."
+        "unresolvedVisualDebt": null
       },
       {
         "qid": 11,
@@ -427,9 +417,9 @@
         "reason": "The decisive relation is symbolic or verbal and gains no material clarity from an added visual."
       }
     ],
-    "addedAssetCount": 1,
+    "addedAssetCount": 2,
     "renderedAssetCount": 1,
-    "unresolvedProblemVisualCount": 1
+    "unresolvedProblemVisualCount": 0
   },
   "calibration": {
     "golden": [
@@ -445,7 +435,8 @@
     ]
   },
   "assetBlobs": {
-    "exam": "a642f718ef1787af1073c954673031a40fbb9a6d",
+    "exam": "4a04f179d9e112831b9222917f570d508c533e0f",
+    "q10SourceImageSha256": "216B6A4F8B24A3895F36DA3C42CD650BAF8A2B4F7F0C0F97F21D246108C08C09",
     "q22SolutionSvg": "629e37f56839521359917a52153ce3b373e7eca0",
     "q22RenderPng": "7d992e1e6c1bccbe10264551999a54cbedf450a3"
   },
@@ -459,11 +450,11 @@
   "createReceipt": {
     "status": "MISSING"
   },
-  "transition": "CREATE_CANDIDATE_WITH_SOURCE_REPAIR_DEBT",
+  "transition": "SOURCE_REPAIR_DONE_CREATE_VALIDATOR_RECEIPT_PENDING",
   "createDone": false,
   "readyForReview1": false,
-  "firstMissingClosureStep": "SOURCE_REPAIR_REQUIRED_Q10_Q12_Q19",
-  "requiredNextAction": "THANOS must recover authoritative source pixels for q10/q12/q19, repair protected source fields, rerun the actual CREATE validator, publish validator and CREATE receipts, then perform remote readback before CREATE_DONE→READY_FOR_REVIEW1.",
+  "firstMissingClosureStep": "CREATE_VALIDATOR_AND_RECEIPT",
+  "requiredNextAction": "Source repair for q10/q12/q19 is complete. The canonical CREATE validator and CREATE receipt executor are not present in this repository/environment; continue source-free mechanical closure when an authorized validator executor is available. Do not infer CREATE_DONE or READY_FOR_REVIEW1 from this targeted repair.",
   "passClaim": false
 }
 
