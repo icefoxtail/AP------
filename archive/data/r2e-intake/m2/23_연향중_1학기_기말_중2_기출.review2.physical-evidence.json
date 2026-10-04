@@ -1,0 +1,1368 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R2",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examPath": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "examSha256": "sha256:f1e2da5138cea0666c66a74b2e268ac3b8c3352917d238170c71e1114ef4511b",
+  "finalArtifactGitBlob": "895de966c9096d789c14e8e719eb3736574728e5",
+  "questionCount": 23,
+  "sourceAuthority": {
+    "r1ReceiptPath": "archive/data/r2e-intake/m2/23_연향중_1학기_기말_중2_기출.review1.json",
+    "r1ReceiptBlob": "1daeb73eed88e53971e1923861200f52f0799e01",
+    "r1ValidatorPath": "archive/data/r2e-intake/m2/23_연향중_1학기_기말_중2_기출.review1.validator.json",
+    "r1ValidatorBlob": "d80fb90e45f4066a1c65649a61956c5b261cf9c9",
+    "r1EvidencePath": "archive/data/r2e-intake/m2/23_연향중_1학기_기말_중2_기출.review1.physical-evidence.json",
+    "r1EvidenceBlob": "76885c68614511ce470b8259461b8b29380f58e3",
+    "sourceRepairStatus": "NOT_REQUIRED",
+    "sourceRepairQids": [],
+    "linkedProblemImageBlobs": {
+      "4": "716b6e828cdfa2f8aae75b865d00144c70a52d0c",
+      "7": "c6e7d8b0d117ff96865dfdc6e03f0cbd7b5e4bbc",
+      "11": "71a863e6791a62cf2b3b17b6c8b5c14ec4a494ca",
+      "22": "eb3ea9a38b75a2a8455491bd1b9a0a56ffe5b4ce"
+    },
+    "protectedFieldCompare": "23/23 current artifact fields re-read on post-R1 artifact; linked problem-image blob identities revalidated q4/q7/q11/q22; no source drift."
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "23/23",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱",
+        "observation": "학생이 재현 가능한 입력→계산 순서를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\",
+        "observation": "조건을 먼저 해석하고 계산하는 설명 구조를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는",
+        "observation": "학생이 재현 가능한 입력→계산 순서를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$",
+        "observation": "조건을 먼저 해석하고 계산하는 설명 구조를 확인했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "freshFromCurrentArtifactBytes": true,
+    "priorR1ReceiptUsedOnlyForEligibilityAndFormalCompare": true,
+    "currentAuthorityRecomputedBeforeFormalCompare": true,
+    "preFormalCompareFreezePath": "archive/data/r2e-intake/m2/23_연향중_1학기_기말_중2_기출.review2.blind-freeze.json",
+    "reviewAttemptId": "R2:m2/1final/23-yeonhyang:895de966c9096d789c14e8e719eb3736574728e5:1",
+    "decisionSnapshot": "23/23 full R2 audit independently recomputed; no repair locus and no item holds."
+  },
+  "formalCompare": {
+    "performedAfterCurrentPassSnapshot": true,
+    "priorStageCompared": "R1",
+    "r1FinalArtifactGitBlob": "895de966c9096d789c14e8e719eb3736574728e5",
+    "r2FinalArtifactGitBlob": "895de966c9096d789c14e8e719eb3736574728e5",
+    "artifactChangedAcrossR2": false,
+    "outcome": "Full R2 decision agrees with durable R1 artifact on all 23 questions and review axes; no regression, HOLD, or deterministic repair."
+  },
+  "summary": {
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 0,
+    "deterministicRepairQids": []
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q1; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q1; stored answer ③ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q1; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q1; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q1; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q1; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q1."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q1; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q1; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q2; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q2; stored answer ① matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q2; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q2; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q2; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q2; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q2; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q2; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q3; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q3; stored answer ③ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q3; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q3; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q3; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q3; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q3."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q3; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q3; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q4; linked problem pixel was directly inspected against content, answer, and solution. Linked image blob 716b6e828cdfa2f8aae75b865d00144c70a52d0c unchanged from R1 input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q4; stored answer ② matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q4; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q4; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q4; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual audit PASS q4; linked problem image is readable and semantically matches the solution; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q4."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q4; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q4; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q5; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q5; stored answer ④ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q5; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q5; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q5; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q5; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q5."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q5; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q5; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q6; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q6; stored answer ② matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q6; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q6; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q6; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q6; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q6."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q6; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q6; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q7; linked problem pixel was directly inspected against content, answer, and solution. Linked image blob c6e7d8b0d117ff96865dfdc6e03f0cbd7b5e4bbc unchanged from R1 input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q7; stored answer ② matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q7; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q7; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q7; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual audit PASS q7; linked problem image is readable and semantically matches the solution; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q7."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q7; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q7; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q8; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q8; stored answer ⑤ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q8; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q8; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q8; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q8; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q8."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q8; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q8; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q9; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q9; stored answer ① matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q9; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q9; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q9; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q9; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q9."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q9; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q9; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q10; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q10; stored answer ③ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q10; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q10; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q10; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q10; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q10."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q10; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q10; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q11; linked problem pixel was directly inspected against content, answer, and solution. Linked image blob 71a863e6791a62cf2b3b17b6c8b5c14ec4a494ca unchanged from R1 input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q11; stored answer ⑤ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q11; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q11; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q11; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual audit PASS q11; linked problem image is readable and semantically matches the solution; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q11."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q11; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q11; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q12; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q12; stored answer ④ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q12; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q12; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q12; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q12; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q12."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q12; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q12; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q13; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q13; stored answer ① matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q13; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q13; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q13; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q13; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q13."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q13; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q13; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q14; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q14; stored answer ③ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q14; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q14; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q14; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q14; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q14."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q14; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q14; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q15; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q15; stored answer ① matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q15; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q15; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q15; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q15; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q15."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q15; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q15; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q16; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q16; stored answer ⑤ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q16; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q16; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q16; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q16; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q16."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q16; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q16; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q17; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q17; stored answer ④ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q17; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q17; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q17; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q17; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q17."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q17; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q17; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q18; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q18; stored answer ② matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q18; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q18; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q18; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q18; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q18."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q18; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q18; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q19; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q19; stored answer ⑤ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q19; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q19; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q19; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q19; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q19."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q19; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q19; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q20; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q20; stored answer $-2$ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q20; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q20; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q20; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q20; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q20."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q20; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q20; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q21; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q21; stored answer $15$ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q21; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q21; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q21; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q21; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q21."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q21; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q21; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q22; linked problem pixel was directly inspected against content, answer, and solution. Linked image blob eb3ea9a38b75a2a8455491bd1b9a0a56ffe5b4ce unchanged from R1 input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q22; stored answer $3$ matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q22; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q22; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q22; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual audit PASS q22; linked problem image is readable and semantically matches the solution; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q22."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q22; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q22; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 source/current authority recheck PASS q23; current protected content, choices, answer, and solution are internally consistent with CREATE source authority."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 independent recomputation PASS q23; stored answer 7마리 matches the solved result."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 independent solution audit PASS q23; algebra, arithmetic, units, and conclusion are internally consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 explanation audit PASS q23; 핵심→독립 풀이 요약→풀이→확인→결론 flow is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum audit PASS q23; middle-school grade-2 first-semester scope or prerequisite only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual-necessity audit PASS q23; no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 tags/category/unit/difficulty and Meta-v2 row alignment rechecked PASS q23."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty boundary recheck PASS q23; stored level and difficultyBucket are plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 runtime/layout audit PASS q23; TeX, HTML, line breaks, choices, answer, and linked asset rendering are coherent."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "하나의 x에 대응하는 y가 하나로 정해지는지 각 관계를 확인한다.",
+      "decisiveStep": "x=2일 때 y가 2,4,6,…처럼 여러 값이 가능한 ③을 골라 함수가 아님을 확정한다.",
+      "rpmDisposition": "EXPLICIT_BOUNDARY",
+      "projectionDisposition": "RPM_BOUNDARY_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "NO_EXACT_RPM_PRIMARY: current 2015 M2-1 crosswalk has no exact record for this semantic; explicit boundary.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "함수식에 주어진 두 x값을 각각 대입한 뒤 식의 값을 계산한다.",
+      "decisiveStep": "f(3/5)=1, f(1)=3에서 2-9=-7을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "식에서 기울기와 y절편을 읽고 y=0으로 x절편을 구한다.",
+      "decisiveStep": "a=5,b=3/5,c=-3을 얻어 ab+c=0을 확정한다.",
+      "rpmDisposition": "FINAL_FAMILY",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "원본 그래프의 두 점 (0,-6),(6,-3)을 읽어 기울기와 y절편을 구한다.",
+      "decisiveStep": "a=1/2,b=-6에서 ab=-3을 확정한다.",
+      "rpmDisposition": "FINAL_FAMILY",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "a의 부호와 b의 부호가 그래프의 증가·감소와 y절편에 미치는 영향을 보기별로 판정한다.",
+      "decisiveStep": "b>0이면 x를 충분히 음수로 잡을 수 있어 제2사분면을 반드시 지난다는 ④를 확정한다.",
+      "rpmDisposition": "FINAL_FAMILY",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "기온 감소량을 100m당 감소량으로 나누어 필요한 높이를 구한다.",
+      "decisiveStep": "6÷0.3=20회이므로 2000m=2km를 확정한다.",
+      "rpmDisposition": "EXPLICIT_BOUNDARY",
+      "projectionDisposition": "RPM_BOUNDARY_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "NO_EXACT_RPM_PRIMARY: current 2015 M2-1 crosswalk has no exact record for this semantic; explicit boundary.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "원본 그래프에서 기준 직선의 기울기를 구하고 평행 조건과 지나는 점 조건을 차례로 적용한다.",
+      "decisiveStep": "기울기 -4/3에서 a=3, (-1,4) 대입에서 b=-8을 얻어 a+b=-5를 확정한다.",
+      "rpmDisposition": "FINAL_FAMILY",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "원래 직선을 함수식으로 바꾸고 y축 방향으로 2만큼 평행이동한 뒤 점의 좌표를 대입한다.",
+      "decisiveStep": "y=3x/2+2에 x=2를 넣어 k=5를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_POINT_SLOPE",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "y축에 평행한 직선 위의 두 점은 x좌표가 같다는 조건을 사용한다.",
+      "decisiveStep": "5a+3=2a-9에서 a=-4, 공통 x좌표 -17을 얻어 x=-17을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "교점이 없다는 조건을 두 직선의 평행 조건으로 바꾸어 기울기를 같게 둔다.",
+      "decisiveStep": "a/6=-2/3에서 a=-4를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "원본 그래프의 기울기와 두 절편 부호에서 a,b,c의 부호 관계를 정한 뒤 새 직선의 기울기와 y절편 부호를 계산한다.",
+      "decisiveStep": "-a/c>0, a/b>0이므로 기울기와 y절편이 모두 양수인 ⑤를 확정한다.",
+      "rpmDisposition": "FINAL_FAMILY",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "네 직선이 만드는 직사각형의 중심을 구하고 넓이를 이등분하는 직선이 중심을 지나게 한다.",
+      "decisiveStep": "중심 (3,3)을 y=ax+4에 대입해 a=-1/3을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "빵과 음료수의 개수를 미지수로 두고 개수 합과 금액 합을 연립한다.",
+      "decisiveStep": "x+y=12, 3x+4y=44에서 x=4를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "쌍둥이 동생 한 명의 나이를 미지수로 두고 네 사람의 나이 합을 식으로 세운다.",
+      "decisiveStep": "(x+5)+3x=21에서 x=4, 다훈이 나이 9를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "기차 길이를 x로 두고 터널·다리 통과에서 같은 속력 조건을 사용한다.",
+      "decisiveStep": "(x+1700)/3=(x+1000)/2에서 x=400m를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "2028년 남녀 학생 수를 미지수로 두고 전체 수와 2029년 증감 조건을 연립한다.",
+      "decisiveStep": "x+y=475,0.92x+1.02y=462에서 y=250, 2029년 여학생 255명을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "6% 소금물 양을 먼저 소금의 양 보존식으로 구한 뒤 전체 질량에서 생수 양을 뺀다.",
+      "decisiveStep": "16+0.06x=31에서 x=250, 생수 775-200-250=325g을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "가희와 나영이의 하루 작업량을 미지수로 두고 함께 일할 때와 이어서 일할 때의 조건을 세운다.",
+      "decisiveStep": "x+y=1/4,2(x+y)+3y=1에서 y=1/6, 나영이 혼자 6일을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "학생 수와 반티 한 벌 값을 미지수로 두고 부족액·남는액이 만드는 같은 총비용을 비교한다.",
+      "decisiveStep": "2000x+22400=3000x-9600에서 x=32, 총비용 86400원으로 한 벌 2700원을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "세 직선이 삼각형을 만들지 않는 경우를 두 직선 평행 또는 세 직선 공점으로 나누어 조사한다.",
+      "decisiveStep": "공점 a=-2, 두 평행 조건 a=-1,1을 얻어 합 -2를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "세 직선의 쌍별 교점을 구해 밑변과 높이를 읽어 삼각형 넓이를 계산한다.",
+      "decisiveStep": "교점 (2,-1),(-3,-1),(-1,5)에서 밑변 5, 높이 6으로 넓이 15를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "원본 그래프에서 두 직선의 공통 교점 (1,4)을 읽어 두 방정식에 대입하고 a,b를 연립한다.",
+      "decisiveStep": "a-8b=11,-a+4b=-3에서 b=-2,a=-5, b-a=3을 확정한다.",
+      "rpmDisposition": "FINAL_FAMILY",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "nullReason": null,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "오징어와 문어의 마리 수를 미지수로 두고 머리 수와 다리 수를 연립한다.",
+      "decisiveStep": "x+y=11,10x+8y=96에서 x=4,y=7을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md"
+      ]
+    }
+  ],
+  "repairSummary": {
+    "changedQids": [],
+    "changedFields": [],
+    "reason": "No deterministic repair required after full 23/23 R2 recheck and formal R1 compare.",
+    "unrelatedMutationCount": 0
+  }
+}
