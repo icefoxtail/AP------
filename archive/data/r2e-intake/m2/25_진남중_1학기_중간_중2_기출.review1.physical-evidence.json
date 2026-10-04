@@ -1,944 +1,939 @@
 {
   "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
-  "stage": "R1",
+  "stage": "R2",
   "generation": "M2_1_CREATE_FIRST_2026_10_03",
   "examPath": "archive/exams/original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js",
   "examSha256": "sha256:f06d55a2113ef5e19c32ae0cb3bd79382f58d08977936516f3d894f3a1f70fdd",
   "finalArtifactGitBlob": "f1d0d2b90dd3bed3bb63a272ee704a106cf6a2f4",
   "questionCount": 23,
-  "tagMetaAuditCount": "23/23",
-  "tagMetaCompleteCount": "23/23",
-  "openImplicitMetaNullCount": 0,
   "sourceAuthority": {
+    "inputReview1ReceiptBlob": "e802068250e3c2eaf93923e11691bf401ba65218",
+    "inputReview1ValidatorGitBlob": "2df8ba413cfba4daf82d0bc9dc4bbb8025523809",
+    "inputReview1ArtifactSha": "f1d0d2b90dd3bed3bb63a272ee704a106cf6a2f4",
     "protectedBaselineGitBlob": "1124d7a152f1f82d62c8a9b65c74ac67d14f49e1",
+    "protectedFieldRecheck": "23/23 current protected fields compared; q6/q7 retain explicit source-truth HOLD after repository + Library + Drive lookup; deterministic source repair unavailable, no protected-field mutation.",
     "linkedProblemImages": [],
-    "r1InputCreateEvidenceBlob": "0ccc704d91c9a75623cec15b9138b6dd7455bc91",
-    "r1ProtectedSourceBaseline": "main blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1",
-    "r1RepairScope": [
-      "q13.subUnitKey/subUnit",
-      "q20.subUnitKey/subUnit",
-      "q23.subUnitKey/subUnit"
+    "sourceAuthoritySearches": [
+      "repository target source-image paths: no authoritative original page",
+      "ChatGPT Library search: no target original PDF/page",
+      "Google Drive metadata search: no target original PDF/page",
+      "Google Drive image search: no target original image"
     ],
-    "r1RepairAuthority": [
-      "M2-RPM-129",
-      "M2-RPM-141",
-      "M2-RPM-136"
-    ]
+    "rpmCrosswalkBlob": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "rpmTaxonomyBlob": "5423e0867708382d9d9e3ae58583c6f02affc07d"
   },
   "questionRows": [
     {
       "qid": 1,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q1 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q1: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q1; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q1: 2^3·5 분모에 5^2를 보충해 75/1000=0.075, A+B+C=150이므로 ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q1; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q1: independent computation matches the current solution's decisive steps and conclusion. 2^3·5 분모에 5^2를 보충해 75/1000=0.075, A+B+C=150이므로 ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q1; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q1: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q1; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q1: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q1; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q1: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-119 유한소수와 무한소수 > 유한소수 판별; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q1: RPM M2-RPM-119 / 유한소수와 무한소수 > 유한소수 판별; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q1; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q1: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q1; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q1: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 2,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q2 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q2: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q2; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q2: 각 보기를 기약분수로 약분하면 ③만 분모에 3이 남아 무한소수이므로 ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q2; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q2: independent computation matches the current solution's decisive steps and conclusion. 각 보기를 기약분수로 약분하면 ③만 분모에 3이 남아 무한소수이므로 ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q2; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q2: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q2; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q2: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q2; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q2: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-120 유한소수와 무한소수 > 분모의 소인수 조건; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q2: RPM M2-RPM-120 / 유한소수와 무한소수 > 분모의 소인수 조건; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q2; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q2: difficultyBucket=1, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q2; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q2: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 3,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q3 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q3: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q3; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q3: 소수를 직접 전개해 비교하면 ③의 0.83<0.888…만 참이므로 ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q3; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q3: independent computation matches the current solution's decisive steps and conclusion. 소수를 직접 전개해 비교하면 ③의 0.83<0.888…만 참이므로 ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q3; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q3: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q3; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q3: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q3; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q3: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-121 순환소수 > 순환마디와 표현; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q3: RPM M2-RPM-121 / 순환소수 > 순환마디와 표현; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q3; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q3: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q3; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q3: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 4,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q4 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q4: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q4; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q4: 38/11=3.4545…이고 34번째 숫자 5, 35번째 숫자 4이므로 곱은 20, ④."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q4; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q4: independent computation matches the current solution's decisive steps and conclusion. 38/11=3.4545…이고 34번째 숫자 5, 35번째 숫자 4이므로 곱은 20, ④."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q4; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q4: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q4; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q4: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q4; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q4: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-121 순환소수 > 순환마디와 표현; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q4: RPM M2-RPM-121 / 순환소수 > 순환마디와 표현; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q4; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q4: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q4; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q4: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 5,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q5 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q5: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q5; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q5: 두 자리 순환소수 합에서 (a+b)/9=5/9이므로 a+b=5; 소수 조건과 a>b에서 (a,b)=(3,2), 차는 1/9이므로 ①."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q5; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q5: independent computation matches the current solution's decisive steps and conclusion. 두 자리 순환소수 합에서 (a+b)/9=5/9이므로 a+b=5; 소수 조건과 a>b에서 (a,b)=(3,2), 차는 1/9이므로 ①."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q5; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q5: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q5; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q5: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q5; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q5: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-122 순환소수 > 순환소수를 분수로; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q5: RPM M2-RPM-122 / 순환소수 > 순환소수를 분수로; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=SEQUENTIAL; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q5; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q5: difficultyBucket=4, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q5; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q5: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 6,
       "sourceExact": {
         "status": "HOLD",
-        "evidence": "Protected fields are exact to latest main but original-source ambiguity remains.",
         "holdEvidence": {
           "reason": "SOURCE_TRUTH_AMBIGUITY_DUPLICATE_CHOICE_TEXT",
-          "observedEvidence": "Latest main/current candidate choices ③ and ⑤ are byte-identical while answer is ②; repository lookup found no target source-image directory.",
-          "unresolvedPoint": "The original distinct text (if any) of choices ③ and ⑤.",
+          "observedEvidence": "Current protected choices ③ and ⑤ are byte-identical while answer is ②. Repository, ChatGPT Library, Google Drive metadata, and Google Drive image searches found no authoritative original page/image for this exam.",
+          "unresolvedPoint": "The original distinct text, if any, of choices ③ and ⑤.",
           "nextRequiredEvidenceOrCapability": "Original PDF/page pixel authority for q6.",
           "repairAttempted": false,
           "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "The current Git artifact does not contain authoritative original-page pixels for this ambiguity, so changing protected source text would be a guess."
+          "whyDeterministicClosureImpossible": "Changing protected choice text without original-page pixels would be a guess; current answer/solution math is internally consistent."
         }
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q6; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q6: 0.5833…=7/12에서 원래 분자 7, 0.5454…=6/11에서 원래 분모 11이므로 원래 수는 7/11=0.6363…, 현 정답 ②."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q6; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q6: independent computation matches the current solution's decisive steps and conclusion. 0.5833…=7/12에서 원래 분자 7, 0.5454…=6/11에서 원래 분모 11이므로 원래 수는 7/11=0.6363…, 현 정답 ②."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q6; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q6: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q6; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q6: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q6; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q6: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-124 유리수와 소수 표현 > 조건을 만족하는 유리수; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q6: RPM M2-RPM-124 / 유리수와 소수 표현 > 조건을 만족하는 유리수; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=SEQUENTIAL; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q6; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q6: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q6; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q6: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 7,
       "sourceExact": {
         "status": "HOLD",
-        "evidence": "Protected fields are exact to latest main but original-source enumeration is incomplete.",
         "holdEvidence": {
           "reason": "SOURCE_TRUTH_AMBIGUITY_ENUMERATION_MISMATCH",
-          "observedEvidence": "Latest main/current stem contains only ㄴ/ㅂ/ㅇ/ㅈ while choices reference ㄱ through ㅈ combinations; repository lookup found no target source-image directory.",
-          "unresolvedPoint": "The full original statement list and exact label mapping.",
+          "observedEvidence": "Current protected stem exposes only ㄴ/ㅂ/ㅇ/ㅈ while choices reference combinations using ㄱ through ㅈ. Repository, ChatGPT Library, Google Drive metadata, and Google Drive image searches found no authoritative original page/image for this exam.",
+          "unresolvedPoint": "The full original statement enumeration and exact label mapping.",
           "nextRequiredEvidenceOrCapability": "Original PDF/page pixel authority for q7.",
           "repairAttempted": false,
           "authorityLookupAttempted": true,
-          "whyDeterministicClosureImpossible": "The current Git artifact does not contain authoritative original-page pixels for this ambiguity, so changing protected source text would be a guess."
+          "whyDeterministicClosureImpossible": "Reconstructing omitted labels/statements without original-page pixels would invent protected source text; current visible statements and answer are mathematically consistent."
         }
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q7; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q7: 현재 보이는 명제는 ㄴ·ㅂ·ㅇ이 참이고 ㅈ은 거짓이라 현 정답 ③과 수학적으로 일치하나 원본 열거 라벨은 source HOLD."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q7; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q7: independent computation matches the current solution's decisive steps and conclusion. 현재 보이는 명제는 ㄴ·ㅂ·ㅇ이 참이고 ㅈ은 거짓이라 현 정답 ③과 수학적으로 일치하나 원본 열거 라벨은 source HOLD."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q7; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q7: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q7; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q7: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q7; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q7: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-123 유리수와 소수 표현 > 분수를 소수로; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q7: RPM M2-RPM-123 / 유리수와 소수 표현 > 분수를 소수로; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q7; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q7: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q7; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q7: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 8,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q8 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q8: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q8; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q8: (3^5)^4/(3^x)^3=3^14에서 20-3x=14, x=2이므로 ①."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q8; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q8: independent computation matches the current solution's decisive steps and conclusion. (3^5)^4/(3^x)^3=3^14에서 20-3x=14, x=2이므로 ①."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q8; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q8: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q8; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q8: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q8; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q8: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-126 지수법칙 > 거듭제곱의 거듭제곱; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q8: RPM M2-RPM-126 / 지수법칙 > 거듭제곱의 거듭제곱; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q8; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q8: difficultyBucket=1, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q8; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q8: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 9,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q9 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q9: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q9; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q9: a=3^(x-1)이므로 3^x=3a, 따라서 9^x=(3a)^2=9a^2이므로 ④."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q9; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q9: independent computation matches the current solution's decisive steps and conclusion. a=3^(x-1)이므로 3^x=3a, 따라서 9^x=(3a)^2=9a^2이므로 ④."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q9; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q9: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q9; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q9: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q9; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q9: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-126 지수법칙 > 거듭제곱의 거듭제곱; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q9: RPM M2-RPM-126 / 지수법칙 > 거듭제곱의 거듭제곱; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q9; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q9: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q9; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q9: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 10,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q10 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q10: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q10; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q10: 3^n+3^(n+1)+3^(n+2)=13·3^n=351, 3^n=27이므로 n=3, ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q10; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q10: independent computation matches the current solution's decisive steps and conclusion. 3^n+3^(n+1)+3^(n+2)=13·3^n=351, 3^n=27이므로 n=3, ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q10; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q10: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q10; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q10: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q10; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q10: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-125 지수법칙 > 거듭제곱의 곱·몫; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q10: RPM M2-RPM-125 / 지수법칙 > 거듭제곱의 곱·몫; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q10; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q10: difficultyBucket=4, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q10; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q10: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 11,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q11 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q11: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q11; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q11: 거듭제곱 법칙으로 x^16y^13, 지수의 합은 29이므로 ⑤."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q11; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q11: independent computation matches the current solution's decisive steps and conclusion. 거듭제곱 법칙으로 x^16y^13, 지수의 합은 29이므로 ⑤."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q11; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q11: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q11; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q11: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q11; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q11: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-127 단항식의 곱셈과 나눗셈 > 단항식의 곱셈; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q11: RPM M2-RPM-127 / 단항식의 곱셈과 나눗셈 > 단항식의 곱셈; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q11; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q11: difficultyBucket=1, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q11; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q11: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 12,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q12 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q12: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q12; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q12: d는 32,24,40의 최대공약수 8; (a,b,c)=(4,3,5), 합은 12이므로 ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q12; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q12: independent computation matches the current solution's decisive steps and conclusion. d는 32,24,40의 최대공약수 8; (a,b,c)=(4,3,5), 합은 12이므로 ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q12; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q12: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q12; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q12: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q12; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q12: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-126 지수법칙 > 거듭제곱의 거듭제곱; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q12: RPM M2-RPM-126 / 지수법칙 > 거듭제곱의 거듭제곱; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q12; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q12: difficultyBucket=4, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q12; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q12: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 13,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q13 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q13: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q13; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q13: 8x^3y^6·x^4y^2·7y^4/(4x^3)=14x^4y^12이므로 ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q13; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q13: independent computation matches the current solution's decisive steps and conclusion. 8x^3y^6·x^4y^2·7y^4/(4x^3)=14x^4y^12이므로 ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q13; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q13: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q13; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q13: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q13; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q13: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "R1 repaired semantic subUnit to M2-01-EXPONENT_LAW / 지수법칙 per M2-RPM-129; remaining Meta/RPM projection unchanged and rechecked."
+        "evidence": "R2 Meta recheck q13: RPM M2-RPM-129 / 단항식의 곱셈과 나눗셈 > 혼합 계산; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q13; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q13: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q13; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q13: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 14,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q14 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q14: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q14; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q14: 밑넓이 (2a^2b)^2=4a^4b^2, 부피 8a^5b^3을 나누면 높이 2ab이므로 ①."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q14; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q14: independent computation matches the current solution's decisive steps and conclusion. 밑넓이 (2a^2b)^2=4a^4b^2, 부피 8a^5b^3을 나누면 높이 2ab이므로 ①."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q14; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q14: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q14; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q14: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q14; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q14: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-128 단항식의 곱셈과 나눗셈 > 단항식의 나눗셈; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q14: RPM M2-RPM-128 / 단항식의 곱셈과 나눗셈 > 단항식의 나눗셈; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q14; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q14: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q14; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q14: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 15,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q15 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q15: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q15; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q15: 2^13·5^15=25·10^13으로 15자리 수이므로 ⑤."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q15; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q15: independent computation matches the current solution's decisive steps and conclusion. 2^13·5^15=25·10^13으로 15자리 수이므로 ⑤."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q15; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q15: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q15; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q15: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q15; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q15: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-125 지수법칙 > 거듭제곱의 곱·몫; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q15: RPM M2-RPM-125 / 지수법칙 > 거듭제곱의 곱·몫; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q15; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q15: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q15; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q15: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 16,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q16 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q16: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q16; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q16: P=2x+y+1, P-A=5x-2y-3에서 A=-3x+3y+4; P+A=-x+4y+5이므로 ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q16; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q16: independent computation matches the current solution's decisive steps and conclusion. P=2x+y+1, P-A=5x-2y-3에서 A=-3x+3y+4; P+A=-x+4y+5이므로 ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q16; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q16: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q16; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q16: 2022 중2 1학기 범위(다항식의 계산)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q16; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q16: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-131 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q16: RPM M2-RPM-131 / 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산; current subUnit=M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=SEQUENTIAL; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q16; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q16: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q16; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q16: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 17,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q17 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q17: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q17; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q17: 각 항을 나누면 (8x-4x^2)+(-x+4x^2)=7x, a=0,b=7이라 b-a=7, ③."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q17; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q17: independent computation matches the current solution's decisive steps and conclusion. 각 항을 나누면 (8x-4x^2)+(-x+4x^2)=7x, a=0,b=7이라 b-a=7, ③."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q17; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q17: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q17; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q17: 2022 중2 1학기 범위(다항식의 계산)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q17; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q17: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-133 단항식과 다항식의 곱셈·나눗셈 > 다항식을 단항식으로 나누기; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q17: RPM M2-RPM-133 / 단항식과 다항식의 곱셈·나눗셈 > 다항식을 단항식으로 나누기; current subUnit=M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q17; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q17: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q17; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q17: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 18,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q18 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q18: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q18; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q18: x=1을 각 부등식에 직접 대입하면 ①만 참이므로 ①."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q18; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q18: independent computation matches the current solution's decisive steps and conclusion. x=1을 각 부등식에 직접 대입하면 ①만 참이므로 ①."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q18; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q18: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q18; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q18: 2022 중2 1학기 범위(일차부등식)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q18; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q18: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-138 일차부등식의 풀이 > 기본형; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q18: RPM M2-RPM-138 / 일차부등식의 풀이 > 기본형; current subUnit=M2-02-LINEAR_INEQUALITY / 일차부등식; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q18; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q18: difficultyBucket=1, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q18; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q18: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 19,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q19 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q19: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q19; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q19: a≤b에서 음수배 뒤 부등호가 뒤집히는 4-a≥4-b가 유일하므로 ②."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q19; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q19: independent computation matches the current solution's decisive steps and conclusion. a≤b에서 음수배 뒤 부등호가 뒤집히는 4-a≥4-b가 유일하므로 ②."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q19; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q19: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q19; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q19: 2022 중2 1학기 범위(일차부등식)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q19; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q19: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-136 부등식의 성질 > 부등식의 성질; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q19: RPM M2-RPM-136 / 부등식의 성질 > 부등식의 성질; current subUnit=M2-02-LINEAR_INEQUALITY / 일차부등식; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q19; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q19: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q19; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q19: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 20,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q20 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q20: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q20; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q20: a<0이므로 최대는 x=-11: 1/3-11a=4에서 a=-1/3; 최소는 x=3에서 b=-2/3, a-b=1/3이므로 ①."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q20; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q20: independent computation matches the current solution's decisive steps and conclusion. a<0이므로 최대는 x=-11: 1/3-11a=4에서 a=-1/3; 최소는 x=3에서 b=-2/3, a-b=1/3이므로 ①."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q20; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q20: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q20; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q20: 2022 중2 1학기 범위(일차부등식)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q20; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q20: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "R1 repaired semantic subUnit to M2-02-LINEAR_INEQUALITY / 일차부등식 per M2-RPM-141; remaining Meta/RPM projection unchanged and rechecked."
+        "evidence": "R2 Meta recheck q20: RPM M2-RPM-141 / 해의 조건 > 계수 조건; current subUnit=M2-02-LINEAR_INEQUALITY / 일차부등식; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=SEQUENTIAL; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q20; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q20: difficultyBucket=4, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q20; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q20: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 21,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q21 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q21: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q21; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q21: x=2.9333…에서 100x-10x=264, x=44/15; 15의 최소 세 자리 배수는 105."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q21; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q21: independent computation matches the current solution's decisive steps and conclusion. x=2.9333…에서 100x-10x=264, x=44/15; 15의 최소 세 자리 배수는 105."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q21; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q21: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q21; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q21: 2022 중2 1학기 범위(유리수와 순환소수)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q21; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q21: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-122 순환소수 > 순환소수를 분수로; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q21: RPM M2-RPM-122 / 순환소수 > 순환소수를 분수로; current subUnit=M2-01-REPEATING_DECIMAL / 유리수와 순환소수; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=SEQUENTIAL; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q21; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q21: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q21; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q21: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 22,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q22 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q22: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q22; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q22: 3^b=9에서 b=2, c=4, ab=6에서 a=3; a+b-c=1."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q22; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q22: independent computation matches the current solution's decisive steps and conclusion. 3^b=9에서 b=2, c=4, ab=6에서 a=3; a+b-c=1."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q22; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q22: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q22; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q22: 2022 중2 1학기 범위(지수법칙)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q22; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q22: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "tags physicalized; RPM M2-RPM-126 지수법칙 > 거듭제곱의 거듭제곱; projection=UNMATERIALIZED with explicit RPM_ONLY reason."
+        "evidence": "R2 Meta recheck q22: RPM M2-RPM-126 / 지수법칙 > 거듭제곱의 거듭제곱; current subUnit=M2-01-EXPONENT_LAW / 지수법칙; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=NONE; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q22; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q22: difficultyBucket=2, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q22; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q22: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     },
     {
       "qid": 23,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "R1 fresh recheck PASS against current artifact and protected source parity; q23 source fields unchanged by R1 repair."
+        "evidence": "R2 direct protected-field recheck q23: current content/choices/answer/image/questionType remain exact to protected baseline blob 1124d7a152f1f82d62c8a9b65c74ac67d14f49e1; no R2 protected-field mutation."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "R1 independent recomputation PASS for q23; current answer remains mathematically consistent with current source."
+        "evidence": "R2 independent recomputation q23: -1≤x≤3에 -1/2를 곱해 더하면 7/2≤5-x/2≤11/2; a=7/2,b=11/2, 4ab=77."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "R1 independent solution recheck PASS for q23; decisive steps and conclusion are reproducible from current source."
+        "evidence": "R2 current-solution recheck q23: independent computation matches the current solution's decisive steps and conclusion. -1≤x≤3에 -1/2를 곱해 더하면 7/2≤5-x/2≤11/2; a=7/2,b=11/2, 4ab=77."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "R1 small-board/layout recheck PASS for q23; solution structure remains student-reproducible."
+        "evidence": "R2 small-board recheck q23: 핵심 조건→계산/판정→결론 순서가 학생이 재현할 수 있는 밀도로 유지되고 숨은 결정 단계가 없다."
       },
       "curriculum": {
         "status": "PASS",
-        "evidence": "R1 curriculum recheck PASS for q23; method remains within 2022 M2-1 or lower-prerequisite scope."
+        "evidence": "R2 curriculum recheck q23: 2022 중2 1학기 범위(일차부등식)와 하위 선수개념 안에서 해결되며 상위 과정 방법 의존이 없다."
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "R1 visual-necessity recheck PASS for q23; no solutionImage is required for the decisive step."
+        "evidence": "R2 visual-necessity recheck q23: current question has no linked solutionImage and 결정 과정은 텍스트/식으로 의미 손실 없이 재현 가능하다."
       },
       "meta": {
         "status": "PASS",
-        "evidence": "R1 repaired semantic subUnit to M2-02-LINEAR_INEQUALITY / 일차부등식 per M2-RPM-136; remaining Meta/RPM projection unchanged and rechecked."
+        "evidence": "R2 Meta recheck q23: RPM M2-RPM-136 / 부등식의 성질 > 부등식의 성질; current subUnit=M2-02-LINEAR_INEQUALITY / 일차부등식; projection=UNMATERIALIZED; PT/TPL=null/null; CrossConcept=[]; Condition=[]; IntegrationPattern=SEQUENTIAL; current semantic and latest crosswalk agree."
       },
       "difficulty": {
         "status": "PASS",
-        "evidence": "R1 difficulty recheck PASS for q23; no deterministic bucket correction found."
+        "evidence": "R2 difficulty recheck q23: difficultyBucket=4, confidence=high, boundary=NONE; operation depth/condition coupling/response burden rechecked and current bucket retained."
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime-string recheck PASS for q23; no malformed high-signal TeX escape found."
+        "evidence": "R2 runtime-string/layout recheck q23: current parsed content/choices/answer/solution show no malformed doubled high-signal TeX escape; no deterministic layout defect requiring R2 mutation."
       }
     }
   ],
@@ -954,10 +949,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 2,
@@ -969,10 +971,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 3,
@@ -984,10 +993,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 4,
@@ -999,10 +1015,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 5,
@@ -1014,10 +1037,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 6,
@@ -1029,10 +1059,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 7,
@@ -1044,10 +1081,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 8,
@@ -1059,10 +1103,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 9,
@@ -1074,10 +1125,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 10,
@@ -1089,10 +1147,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 4,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 11,
@@ -1104,10 +1169,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 12,
@@ -1119,10 +1191,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 4,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 13,
@@ -1134,10 +1213,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 14,
@@ -1149,10 +1235,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 15,
@@ -1164,10 +1257,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 16,
@@ -1179,10 +1279,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+      "r2CurrentSubUnit": "다항식의 계산"
     },
     {
       "qid": 17,
@@ -1194,10 +1301,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+      "r2CurrentSubUnit": "다항식의 계산"
     },
     {
       "qid": 18,
@@ -1209,10 +1323,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "r2CurrentSubUnit": "일차부등식"
     },
     {
       "qid": 19,
@@ -1224,10 +1345,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "r2CurrentSubUnit": "일차부등식"
     },
     {
       "qid": 20,
@@ -1239,10 +1367,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "r2CurrentSubUnit": "일차부등식"
     },
     {
       "qid": 21,
@@ -1254,10 +1389,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-REPEATING_DECIMAL",
+      "r2CurrentSubUnit": "유리수와 순환소수"
     },
     {
       "qid": 22,
@@ -1269,10 +1411,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-01-EXPONENT_LAW",
+      "r2CurrentSubUnit": "지수법칙"
     },
     {
       "qid": 23,
@@ -1284,10 +1433,17 @@
       "problemTypeKey": null,
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
       "lookupRefs": [
         "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
-      ]
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "r2CurrentSubUnit": "일차부등식"
     }
   ],
   "solutionQualityCalibration": {
@@ -1320,29 +1476,29 @@
         "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
         "qid": 1,
         "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
-        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.",
-        "observation": "Intermediate equations are explicit enough for student reproduction."
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "중간식과 좌표 관계를 학생 재현 가능한 순서로 전개한다."
       },
       {
         "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
         "qid": 2,
         "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
-        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면",
-        "observation": "Condition, substitution, and conclusion are connected without hidden steps."
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "핵심 성질에서 식으로 바로 연결한다."
       },
       {
         "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
         "qid": 1,
         "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
         "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
-        "observation": "The decisive formula is instantiated with concrete intermediate values."
+        "observation": "공식 적용 전 입력값을 명시한다."
       },
       {
         "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
         "qid": 2,
         "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
         "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
-        "observation": "The reasoning chain is compact but fully reproducible."
+        "observation": "결정 성질과 계산 흐름을 분리한다."
       }
     ],
     "negativeSampleRefs": [
@@ -1354,9 +1510,13 @@
     ]
   },
   "independence": {
-    "createReceiptUsedAsAuthority": false,
-    "currentArtifactReviewedFresh": true,
-    "createLineageUsedForProtectedSourceParityOnly": true
+    "blindDecisionFrozenBeforeR1Compare": true,
+    "blindFreezeSha256": "sha256:3b61c20896b9b4575e5f71c1935cd97554eb62d1353871f70a408a014a6832be",
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "recheckSnapshotBlob": "3b574423d4a905a37ae10e854216885374f74cb7",
+    "formalR1CompareCompleted": true,
+    "formalR1CompareResult": "Independent R2 recomputation agrees with R1 on current answer/solution/meta; q6/q7 independently remain source-truth HOLD because original pixels are still unavailable."
   },
   "summary": {
     "questionCount": 23,
@@ -1364,6 +1524,8 @@
     "linkedSolutionVisualCount": 0,
     "visualEvidenceRows": 0,
     "metaEvidenceRows": 23,
-    "itemHoldCount": 2
+    "itemHoldCount": 2,
+    "deterministicRepairCount": 0,
+    "deterministicRepairQids": []
   }
 }
