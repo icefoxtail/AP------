@@ -1,0 +1,18 @@
+name: O21 R3 Thanos2 Canonical Validation
+
+on:
+  push:
+    branches:
+      - validation/m2-o21-r3-thanos2-20261004-0917
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run O21 canonical R3 gate
+        run: node tests/z-r3-o21-dongsan-release-validation.test.js

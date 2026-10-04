@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M2_R3_CHECKPOINT_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "lane": "THANOS-MASTER-2",
+  "rescueReason": "DEDICATED_R3_LANES_OCCUPIED_OVERFLOW_BACKLOG",
+  "canonicalOrdinal": 21,
+  "examFile": "26_동산중_1학기_기말_중2_기출.js",
+  "status": "SOURCE_REPAIR_REQUIRED",
+  "reviewedAt": "2026-10-04T08:19:00+09:00",
+  "latestMainShaAtRecheck": "d5463a336d95ce7f8d018860d8413f08d267f29d",
+  "inputBranch": "work/middle/m2/26-dongsan-1final-r2-1-20261004-0612",
+  "inputHead": "5ea9aaef7b44b0a600f6d3f5bb1d0741c76c1207",
+  "inputFinalArtifactGitBlob": "47d67b38feb660c92edb2583b12ace61f9d3fd60",
+  "inputArtifactSha256": "sha256:78bcf7980ba63daf4885c5618158bfdad43024d80946510f4fbbf1b211f4c3b1",
+  "review2ReceiptBlob": "42c1d83665d2d8d36457a886164f8e6b900a4dab",
+  "review2ValidatorBlob": "d29e8dde3562299c8bbefb50e3dcf565b8b2dd17",
+  "canonicals": {
+    "r3": "b2d3134a2db1129569d53b04e1afcf2cd0f09978",
+    "golden": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "physicalEvidence": "32f212619a31df15add413ebe8eccdb86941cec1"
+  },
+  "sampleReadBeforeWork": true,
+  "audits": {
+    "questions": "23 source-verifiable PASS + q6 direct-pixel pending",
+    "mathAnswerSolution": "23 source-verifiable PASS + q6 pending",
+    "curriculum": "24/24 no new deterministic defect found",
+    "smallBoard": "24/24 no new deterministic defect found",
+    "metaRpm": "24/24 no new deterministic defect found",
+    "difficulty": "24/24 no new deterministic defect found",
+    "runtimeLayout": "24/24 no new deterministic defect found",
+    "solutionImage": "0/0"
+  },
+  "openQids": [
+    6
+  ],
+  "sourceRepairRequiredCount": 1,
+  "sourceRepair": [
+    {
+      "qid": 6,
+      "path": "archive/assets/images/26_동산중_1학기_기말_중2_기출/q06.png",
+      "blob": "7767c6ec0dcc91c3114284750f98ebe4f5942ec1",
+      "verify": "그래프 실제 기울기·절편을 direct source pixel에서 확정",
+      "connectorReadback": "blob identity confirmed; >1MiB raster payload unavailable"
+    }
+  ],
+  "next": "same R3 continuation after q6 source pixel closure; recheck q6 and direct dependencies, then canonical validator/receipt and R3_PASS→RELEASE_QUEUE",
+  "freshReviewerRequired": false,
+  "productionRepairCount": 0,
+  "candidateDisposition": "SOURCE_REPAIR_REQUIRED"
+}
