@@ -43,10 +43,18 @@
     },
     "genericCI": {
       "runId": 37192753805,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "failure",
       "syntaxCheck": "success",
-      "skillVerification": "success"
+      "skillVerification": "success",
+      "aggregate": "PASS 188 / FAIL 4 / KNOWN-FAIL 0",
+      "blockingFailures": [
+        "apmath-student-teacher-preview.test.js",
+        "archive-target-selection-phase3-contract.test.js",
+        "print-render-authority-mixer-ecosystem.test.js",
+        "student-portal-omr-history-routes.test.js"
+      ],
+      "targetScopeAssessment": "same four repository-wide failures observed on prior unrelated CREATE branches; no o13-specific failure identified"
     }
   },
   "requiredNextAction": "Codex Source Repair must locate authoritative q11 diagram, q18 stem/answer, and full q23 stem; apply only source-confirmed repairs; then run the actual canonical CREATE validator, persist validator receipt and CREATE receipt, remote-read back, and transition CREATE_DONE→READY_FOR_REVIEW1.",
@@ -55,5 +63,5 @@
   "createDone": false,
   "readyForReview1": false,
   "passClaim": false,
-  "createdAtKst": "2026-10-04 18:46 KST"
+  "createdAtKst": "2026-10-04 18:48 KST"
 }
