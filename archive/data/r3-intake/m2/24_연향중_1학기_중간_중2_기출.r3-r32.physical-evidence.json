@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_TARGETED_PHYSICAL_EVIDENCE_v1",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "lane": "R3-2",
+  "canonicalOrdinal": 5,
+  "examPath": "archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js",
+  "examSha256": "sha256:38e61f187e049b23a167180e29548b597afcc019dd32a95e56399ea5401cbd1a",
+  "finalArtifactGitBlob": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
+  "evidenceStatus": "SOURCE_REPAIR_REQUIRED_NOT_PASS_READY",
+  "auditMode": "TARGETED_PER_CURRENT_OVERRIDE",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "negativeSampleRef": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+    }
+  },
+  "upstreamBinding": {
+    "review2ReceiptBlob": "359cfba552e9ad081f660c284eb896fe6718a52e",
+    "review2ValidatorBlob": "0fea92aac20aa962ac98aaa699f0530d4d74411c",
+    "review2EvidenceBlob": "f7c972819bf5ccf642c636188260b346ecb396dd",
+    "actualValidatorRun": 37209275900,
+    "actualValidatorJob": 111456944066
+  },
+  "summary": {
+    "targetedQuestionEvidenceRows": 1,
+    "openQids": [
+      9
+    ],
+    "sourceRepairRequiredCount": 1,
+    "productionArtifactMutationCount": 0,
+    "lockedScopeMutationCount": 0,
+    "itemHoldCount": 1
+  },
+  "questionRows": [
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "HOLD",
+        "reason": "SOURCE_PDF_DIRECT_PIXEL_REQUIRED_FOR_STEM_CHOICE_FORMAT_CONFLICT"
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "evidence": "Independent algebra gives a=4, b=8 and a+b=12, while current choices encode ordered pairs."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current derivation to a=4,b=8 is mathematically valid; final source-exact presentation remains unresolved."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 first-semester exponent-law reasoning only."
+      },
+      "visualNecessity": {
+        "status": "HOLD",
+        "evidence": "Original printed q9 page pixels are required to resolve stem/choice-format parity."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-RPM-126; current middle2 crosswalk is RPM_ONLY/NO_ACTIVE_MAPPING, so explicit PT/TPL null projection remains correct."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Bucket 3 / medium / SOURCE_AUTHORITY_HOLD remains compatible pending source wording confirmation."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Current q9 TeX/operator strings are coherent; open defect is source parity."
+      }
+    }
+  ],
+  "lockedScope": {
+    "productionArtifactUnchanged": true,
+    "finalArtifactSameAsR2": true,
+    "lockedScopeMutationCount": 0,
+    "unrelatedMutationCount": 0
+  },
+  "passClaim": false
+}
