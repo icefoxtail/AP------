@@ -13,11 +13,11 @@
     <line x1="238" y1="173" x2="238" y2="183" stroke-width="0.8" />
   </g>
   <g fill="#1f2937" font-family="Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="13.25">
-    <text x="194.000" y="113.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">O</text>
+    <line class="ap-pub-equality-mark" x1="204" y1="149" x2="216" y2="149"/><line class="ap-pub-equality-mark" x1="171.75" y1="172" x2="171.75" y2="184"/><text x="194.000" y="113.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">O</text>
     <text x="113.502" y="196.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">A</text>
     <text x="294.498" y="196.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">B</text>
     <text x="203.000" y="198.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">M</text>
-    <text x="210" y="248" text-anchor="middle" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral" data-layout-normalized="mobile-label-clearance">RHS → AM = BM</text>
+
   </g>
 <style id="apmath-publication-style">
 :root{color:#1f2937}
@@ -36,4 +36,11 @@ text.ap-pub-label[data-publication-tone="warm"]{fill:#d97706!important}
 .dot{fill:#2563eb!important}
 line,path,polyline,polygon,circle,ellipse{stroke-linecap:round;stroke-linejoin:round}
 @media print{text.ap-pub-label{font-size:17px!important}text.ap-pub-title{font-size:21px!important}}
+text.ap-pub-label.ap-pub-numeric,text[data-label-kind="angle"],text[data-label-kind="angle-arc"],text[data-label-kind="length"]{font-size:22px!important;stroke:#fff!important;stroke-width:8px!important;paint-order:stroke fill!important;stroke-linejoin:round!important}
+.ap-pub-angle-arc{stroke:#64748b;stroke-width:2.2;fill:none;stroke-linecap:round}
+.ap-pub-dimension line{stroke:#94a3b8;stroke-width:1.6;fill:none;stroke-linecap:round}
+.ap-pub-equality-mark{stroke:#64748b;stroke-width:2.5;stroke-linecap:round}
+
+/* numeric annotation labels: half-size publication pass */
+text.ap-pub-label.ap-pub-numeric,text.ap-pub-label[data-label-kind="angle"],text.ap-pub-label[data-label-kind="angle-arc"],text.ap-pub-label[data-label-kind="length"]{font-size:18.5px!important;stroke-width:3.4px!important}
 </style></svg>

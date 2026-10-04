@@ -11,15 +11,15 @@
     <path d="M 210.000 105.500 L 218.000 105.500 L 218.000 97.500" stroke-width="0.8" />
   </g>
   <g fill="#1f2937" font-family="Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="13.25">
-    <text x="202.000" y="155.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">O</text>
+    <g class="ap-pub-dimension" data-owner-segment="seg-AB"><line x1="119.07" y1="97.50" x2="106.08" y2="105.00"/><line x1="210.00" y1="255.00" x2="197.01" y2="262.50"/><line x1="106.08" y1="105.00" x2="197.01" y2="262.50"/><line x1="112.14" y1="101.50" x2="100.01" y2="108.50"/><line x1="203.07" y1="259.00" x2="190.95" y2="266.00"/></g><text x="202.000" y="155.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">O</text>
     <text x="99.067" y="94.500" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">A</text>
     <text x="204.000" y="277.000" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">B</text>
     <text x="308.933" y="94.500" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">C</text>
     <text x="146.534" y="180.250" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">D</text>
     <text x="265.466" y="180.250" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">E</text>
     <text x="205.000" y="87.500" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">F</text>
-    <text x="140" y="135" class="ap-pub-label ap-pub-math ap-pub-numeric" data-publication-font-role="MATH_VALUE" data-publication-tone="neutral" text-anchor="end" data-label-kind="length" data-owner-segment="seg-AB" data-owner-segment-endpoints="119.067,97.5;210,255" data-owner-type="STRAIGHT_SEGMENT_LENGTH" data-fact-role="GIVEN" id="length-label-q16-1" data-owner-source="visible-line-adjacency-reviewed">12</text>
-    <text x="268" y="268" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="blue" data-layout-normalized="mobile-label-clearance">R = 4√3</text>
+    <text x="140.28" y="199.25" class="ap-pub-label ap-pub-math ap-pub-numeric" data-publication-font-role="MATH_VALUE" data-publication-tone="neutral" text-anchor="middle" data-label-kind="length" data-owner-segment="seg-AB" data-owner-segment-endpoints="119.067,97.5;210,255" data-owner-type="STRAIGHT_SEGMENT_LENGTH" data-fact-role="GIVEN" id="length-label-q16-1" data-owner-source="visible-line-adjacency-reviewed" transform="rotate(60.000 140.28 199.25)" data-layout-normalized="offset-dimension-owner">12</text>
+    <text x="268.00" y="268.00" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="blue" data-layout-normalized="mobile-label-clearance" data-label-kind="length">4√3</text>
   </g>
 <style id="apmath-publication-style">
 :root{color:#1f2937}
@@ -38,4 +38,11 @@ text.ap-pub-label[data-publication-tone="warm"]{fill:#d97706!important}
 .dot{fill:#2563eb!important}
 line,path,polyline,polygon,circle,ellipse{stroke-linecap:round;stroke-linejoin:round}
 @media print{text.ap-pub-label{font-size:17px!important}text.ap-pub-title{font-size:21px!important}}
+text.ap-pub-label.ap-pub-numeric,text[data-label-kind="angle"],text[data-label-kind="angle-arc"],text[data-label-kind="length"]{font-size:22px!important;stroke:#fff!important;stroke-width:8px!important;paint-order:stroke fill!important;stroke-linejoin:round!important}
+.ap-pub-angle-arc{stroke:#64748b;stroke-width:2.2;fill:none;stroke-linecap:round}
+.ap-pub-dimension line{stroke:#94a3b8;stroke-width:1.6;fill:none;stroke-linecap:round}
+.ap-pub-equality-mark{stroke:#64748b;stroke-width:2.5;stroke-linecap:round}
+
+/* numeric annotation labels: half-size publication pass */
+text.ap-pub-label.ap-pub-numeric,text.ap-pub-label[data-label-kind="angle"],text.ap-pub-label[data-label-kind="angle-arc"],text.ap-pub-label[data-label-kind="length"]{font-size:18.5px!important;stroke-width:3.4px!important}
 </style></svg>

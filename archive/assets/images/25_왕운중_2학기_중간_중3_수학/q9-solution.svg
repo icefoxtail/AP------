@@ -2,12 +2,12 @@
   <g fill="none" stroke="currentColor" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round">
     <path d="M75 70 L75 130 L255 70 Z" />
     <path d="M75 82 h12 v-12" />
-    <path d="M235 70 A20 20 0 0 1 237 77" />
+    <path d="M235 70 A20 20 0 0 1 237 77"  data-owner-decoration="angle-arc" data-owner-vertex="pt-C" data-owner-vertex-coordinates="255,70" data-owner-rays="ray-CA ray-CB" data-owner-ray-coordinates="255,70&gt;75,70;255,70&gt;75,130"/>
   </g>
   <g fill="currentColor" font-family="Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, Arial, sans-serif" font-size="14">
     <text x="58" y="63" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">A</text><text x="58" y="149" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">B</text><text x="261" y="66" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">C</text>
-    <text x="42" y="106" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">k</text><text x="154" y="62" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">3k</text><text x="158" y="116" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral">√10k</text>
-    <text x="264" y="101" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral" data-layout-normalized="mobile-label-clearance">∠C</text>
+    <text x="42" y="106" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral" data-label-kind="length" data-owner-segment="seg-AB" data-owner-segment-endpoints="75,70;75,130" data-owner-type="STRAIGHT_SEGMENT_LENGTH">k</text><text x="154.00" y="62.00" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral" data-label-kind="length" data-owner-segment="seg-AC" data-owner-segment-endpoints="75,70;255,70" data-owner-type="STRAIGHT_SEGMENT_LENGTH">3k</text><text x="158.00" y="116.00" class="ap-pub-label ap-pub-math ap-pub-variable" data-publication-font-role="MATH_VARIABLE" data-publication-tone="neutral" data-label-kind="length" data-owner-segment="seg-BC" data-owner-segment-endpoints="75,130;255,70" data-owner-type="STRAIGHT_SEGMENT_LENGTH">√10k</text>
+
   </g>
   <g fill="currentColor" font-family="Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, Arial, sans-serif" font-size="14">
 
@@ -29,4 +29,11 @@ text.ap-pub-label[data-publication-tone="warm"]{fill:#d97706!important}
 .dot{fill:#2563eb!important}
 line,path,polyline,polygon,circle,ellipse{stroke-linecap:round;stroke-linejoin:round}
 @media print{text.ap-pub-label{font-size:14px!important}text.ap-pub-title{font-size:17px!important}}
+text.ap-pub-label.ap-pub-numeric,text[data-label-kind="angle"],text[data-label-kind="angle-arc"],text[data-label-kind="length"]{font-size:22px!important;stroke:#fff!important;stroke-width:8px!important;paint-order:stroke fill!important;stroke-linejoin:round!important}
+.ap-pub-angle-arc{stroke:#64748b;stroke-width:2.2;fill:none;stroke-linecap:round}
+.ap-pub-dimension line{stroke:#94a3b8;stroke-width:1.6;fill:none;stroke-linecap:round}
+.ap-pub-equality-mark{stroke:#64748b;stroke-width:2.5;stroke-linecap:round}
+
+/* numeric annotation labels: half-size publication pass */
+text.ap-pub-label.ap-pub-numeric,text.ap-pub-label[data-label-kind="angle"],text.ap-pub-label[data-label-kind="angle-arc"],text.ap-pub-label[data-label-kind="length"]{font-size:15px!important;stroke-width:2.7px!important}
 </style></svg>
