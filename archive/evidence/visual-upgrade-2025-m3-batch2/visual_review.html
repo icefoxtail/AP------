@@ -1,0 +1,30 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APMath M3 visual review</title>
+<style>
+body{margin:0;padding:16px;background:#eef2f7;color:#162033;font:15px system-ui,"Malgun Gothic",sans-serif}
+header{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+strong{font-size:16px}.meta{color:#52647a;font-size:13px}
+iframe{display:block;width:390px;height:844px;border:1px solid #97a6ba;background:white;border-radius:8px}
+</style>
+<header><strong id="title">Archive mobile visual review</strong><span class="meta" id="meta"></span></header>
+<iframe id="review" title="Actual Archive solution view at 390 CSS px"></iframe>
+<script>
+const exams={
+ geumdang:{file:"exams/original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",count:24},
+ shinheung:{file:"exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",count:24},
+ yeonhyang:{file:"exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",count:23},
+ wangun:{file:"exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",count:24},
+ pungdeok:{file:"exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",count:24}
+};
+const params=new URLSearchParams(location.search),exam=params.get("exam")||"shinheung",qid=Number(params.get("qid")||11),cfg=exams[exam];
+document.querySelector("#title").textContent="Archive 해설 미리보기 · "+exam+" q"+qid;
+document.querySelector("#meta").textContent="실제 engine.html, solution mode, 390×844 CSS viewport";
+const frame=document.querySelector("#review");frame.src="/archive/engine.html?qpp=4&data="+encodeURIComponent(cfg.file)+"&mode=sol";
+frame.addEventListener("load",()=>{
+ const started=Date.now();let readyAt=null;let scrollCount=0;let cacheBusted=false;const t=setInterval(()=>{
+  try{const d=frame.contentDocument;const rows=[...d.querySelectorAll(".q-num")];const imgs=[...d.querySelectorAll('.sol-image-wrap img')];document.querySelector("#meta").textContent=`actual Archive solution mode · iframe ${d.documentElement.clientWidth}px · qnums ${rows.length}/${cfg.count} · SVG ${imgs.filter(i=>i.complete&&i.naturalWidth).length}/${imgs.length}`;if(rows.length===cfg.count){if(!cacheBusted){const nonce=Date.now();for(const img of imgs){const u=new URL(img.src);u.searchParams.set('ap_visual_review',String(nonce));img.src=u.toString();}cacheBusted=true;return;}if(imgs.some(i=>!i.complete||!i.naturalWidth))return;if(readyAt===null)readyAt=Date.now();if(Date.now()-readyAt>800&&scrollCount<8){const row=rows[qid-1];if(row){const top=row.getBoundingClientRect().top+frame.contentWindow.scrollY-12;frame.contentWindow.scrollTo(0,top);d.documentElement.scrollTop=top;d.body.scrollTop=top;}scrollCount++;}if(scrollCount>=8)clearInterval(t);}else if(Date.now()-started>30000)clearInterval(t);}catch(e){document.querySelector("#meta").textContent=String(e);clearInterval(t);}
+ },250);
+});
+</script>
