@@ -1,71 +1,36 @@
 {
   "schemaVersion": "m2-1-create-source-repair-handoff-v1",
-  "status": "CODEX_SOURCE_REPAIR_DONE_SOURCE_FREE_CONTINUATION",
-  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "status": "CREATE_DONE_READY_FOR_REVIEW1",
+  "queue": "CLOSED",
   "thanosEligible": false,
   "canonicalOrdinal": 7,
   "examUid": "M2-1-24-MUNSUNG-1MID",
   "examFile": "24_문성중_1학기_중간_중2_기출.js",
   "examPath": "archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
-  "producer": "M2-1 TEMP-CREATE-4",
-  "producerOwnership": "RELINQUISHED",
-  "productionBranch": "work/middle/m2/24-munsung-1mid-temp-create4-20261004-1732",
-  "productionHead": "7e6285a56a5d4ba9b1f49e0fb0ba1caa15f526d3",
-  "sourceRepairBranch": "rescue/m2/source-repair/o7-de873a01-q6-q7-q16-q17-20261004-1743",
-  "baseMainAtSelection": "c42691dac08e616f1f05630c9437ed05795f29c1",
-  "latestMainObserved": "ab25d27ddb41a0cb8e5f69144793b0b66efe89e5",
+  "producer": "M2-1 TEMP-MASTER-4",
+  "producerOwnership": "CLOSED",
+  "continuationBranch": "rescue/m2/o7-create-validator-closure-20261005-0058",
+  "baseMainAtClosure": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
   "finalArtifactSha": "b7674c08465614f6f02952103968c98a014f9aca",
   "metadataBlob": "1296bb95bc82df2c13483357d833fb60536d79cf",
-  "evidenceBlob": "47f32ad1becb19444430177b15a372e64ee84cad",
-  "draftPr": 209,
-  "completedStep": "NO_D_SOURCE_DETERMINISTIC_TARGETED_MINIMAL_REPAIR",
-  "firstMissingClosureStep": "SOURCE_FREE_CREATE_CONTINUATION",
-  "exactCapabilityAndError": {
-    "q6": "Duplicate distractor removed with a distractor derived from the explicitly given mistaken decimal; unique answer ② unchanged.",
-    "q7": "Choices now use only stem labels ㄴ/ㅂ/ㅇ/ㅈ; true set ㄴ·ㅂ·ㅇ uniquely gives ③.",
-    "q16": "Unrelated unproven number-line image ref removed; text-only polynomial problem and solution retained.",
-    "q17": "Unrelated unproven balance-scale image ref removed; text-only polynomial division problem and solution retained.",
-    "sourceAuthority": "No exact D original found; source parity is not claimed."
+  "evidenceBlob": "907e4fda09b3a2dcc9569ca35103623fbe56a6df",
+  "validatorReceiptBlob": "79a637f6bda559373784b87dfb83478f84576895",
+  "createReceiptBlob": "0319cced3b506a9140ee8df939395cd3c61137e3",
+  "canonicalValidator": {
+    "runId": 37215107948,
+    "jobId": 111473913792,
+    "result": "PASS",
+    "questionCount": 23,
+    "itemHoldCount": 0,
+    "issues": []
   },
-  "safeAttempts": [
-    "latest CURRENT and virgin selector re-read",
-    "same-target branch search",
-    "current-main protected-field baseline comparison",
-    "current path asset lookup",
-    "historical ref file and asset lookup",
-    "Draft PR and Actions registration sync"
-  ],
-  "validator": {
-    "canonicalCreateValidator": "NOT_RUN",
-    "reason": "Source truth is unresolved; PASS/receipt cannot be fabricated.",
-    "genericCI": {
-      "runId": 37189687141,
-      "jobId": 111399096253,
-      "status": "FAILURE",
-      "syntaxCheck": "PASS",
-      "skillVerification": "PASS",
-      "aggregate": "PASS 188 / FAIL 4",
-      "failingSuites": [
-        "apmath-student-teacher-preview.test.js",
-        "archive-target-selection-phase3-contract.test.js",
-        "print-render-authority-mixer-ecosystem.test.js",
-        "student-portal-omr-history-routes.test.js"
-      ],
-      "targetOverlap": "NONE_OBSERVED; same four repository-wide failures as preceding CREATE runs"
-    },
-    "registrationSync": {
-      "runId": 37189687138,
-      "jobId": 111399171862,
-      "status": "SUCCESS"
-    }
-  },
-  "sourceRepairEvidence": "archive/data/r2e-intake/m2/24_문성중_1학기_중간_중2_기출.create.source-repair.json",
+  "completedStep": "CANONICAL_CREATE_VALIDATOR_AND_RECEIPTS",
+  "firstMissingClosureStep": null,
+  "requiredNextAction": "Dedicated R1 lane may consume READY_FOR_REVIEW1 after fresh single-writer revalidation.",
   "sourceRepairStatus": "NO_D_SOURCE_DETERMINISTIC_MIN_REPAIR",
-  "requiredNextAction": "Continue source-free CREATE from the repaired artifact; run only assigned targeted CREATE continuation checks.",
-  "createDone": false,
-  "readyForReview1": false,
-  "passClaim": false,
-  "reselectPolicy": "TEMP-CREATE must not reselect o7 unless latest CURRENT explicitly REASSIGN_TO_CREATE.",
+  "createDone": true,
+  "readyForReview1": true,
+  "passClaim": true,
   "blockedQids": [],
-  "reason": "All q6/q7 correctness and label consistency are determinate from the visible artifact; q16/q17 visuals were unrelated direct dependencies and were removed."
+  "closedAtKST": "2026-10-05T01:01:24+09:00"
 }
