@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_CLOSURE_DEBT_HANDOFF_v1",
+  "queue": "RESCUE_QUEUE",
+  "debtType": "R2_CLOSURE_DEBT",
+  "stage": "R2",
+  "examUid": "o6",
+  "examFile": "24_신흥중_1학기_중간_중2_기출c.js",
+  "canonicalOrdinal": 6,
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "inputArtifactSha": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+  "finalArtifactSha": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+  "branch": "work/middle/m2/24-sinheung-1mid-r2-2-20261005-0143",
+  "branchHeadBeforeHandoff": "673673e9b4ae129b11ca4980b67376aa41e215fb",
+  "evidenceSnapshot": {
+    "path": "archive/data/r2e-intake/m2/24_신흥중_1학기_중간_중2_기출c.review2.targeted-evidence.r2-2-20261005-0143.json",
+    "blob": "6256eaae2f33bf8713ace99157125f522516da9c",
+    "mode": "TARGETED_MINIMAL_CURRENT_2026_10_05",
+    "recheckQids": [
+      10,
+      13
+    ],
+    "scopeCount": 2,
+    "formalCompareResult": "TARGETED_SCOPE_RECHECK_PASS",
+    "itemHoldQids": [],
+    "deterministicRepairCount": 0,
+    "examMutationCount": 0
+  },
+  "completedStep": "R2_TARGETED_RECHECK_Q10_Q13_PASS_AND_EVIDENCE_MATERIALIZED",
+  "firstMissingClosureStep": "CURRENT_CANONICAL_R2_VALIDATOR_SUPPORT_FOR_NONEMPTY_TARGETED_SCOPE",
+  "exactCapabilityAndError": {
+    "currentMain": "53d65feb4261b35aff04fc247624be05510fdd7b",
+    "currentStageValidatorGitBlob": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
+    "currentStageValidatorCompatGitBlob": "80b0b81032aac147d463fa82d3c99d6ac9b1f18b",
+    "validatorCapabilityIssue": "R2_TARGETED_NONEMPTY_SCOPE_NOT_YET_SUPPORTED",
+    "validationSurfaceBranch": "validation/m2-o6-r2-2-targeted-20261005-0143",
+    "validationSurfaceCommit": "2b45d4d539ba93678430d07725883bb1b4ae7d86",
+    "prWriteAttempt1": "BLOCKED_BEFORE_REPOSITORY_SIDE_EFFECT",
+    "prWriteAttempt2": "BLOCKED_BEFORE_REPOSITORY_SIDE_EFFECT",
+    "branchWorkflowWriteAttempt": "BLOCKED_BEFORE_REPOSITORY_SIDE_EFFECT",
+    "actualValidatorExecution": "NOT_REACHED_THIS_RUN",
+    "validatorReceiptWritten": false,
+    "review2ReceiptWritten": false
+  },
+  "requiredNextAction": "THANOS resumes at validator execution only: use an approved current validator path that supports non-empty targeted R2 scope q10/q13, execute against the exact artifact/evidence, then on actual PASS write review2.validator.json and review2.json, transition REVIEW2_DONE to READY_FOR_R3, and remote-readback.",
+  "ownerState": "RELINQUISHED_TO_THANOS",
+  "sameTargetR2AutoReselect": false,
+  "r2PassDeclared": false,
+  "review2DoneDeclared": false,
+  "r3Eligible": false,
+  "debtStatus": "OPEN",
+  "openedAtKst": "2026-10-05 01:43",
+  "stateRecheckAfterProviderBlock": {
+    "latestMain": "3066af77b4dff2cc44d344462a3879e8baecbfb3",
+    "latestMainMessage": "merge: archive2 validator phase 2 R1",
+    "currentStageValidatorGitBlob": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
+    "currentStageValidatorCompatGitBlob": "80b0b81032aac147d463fa82d3c99d6ac9b1f18b",
+    "currentR2ProtocolGitBlob": "cd9661a969bf40e919ed7864350def7c6fcdf266",
+    "currentGoldenCalibrationGitBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "currentPhysicalEvidenceCanonicalGitBlob": "32f212619a31df15add413ebe8eccdb86941cec1",
+    "conclusion": "R2 targeted non-empty capability is unchanged; closure debt remains valid."
+  }
+}
