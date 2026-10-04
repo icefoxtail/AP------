@@ -7,6 +7,14 @@
 - current scope: **M2 1학기 34 current generation**
 - M3 / M1 / M2 2학기 / 고등 legacy 예약: **OFF 유지**
 
+## PROMPT CANONICAL SOURCE — CURRENT
+
+- 신규 학년·학기·시험지 묶음의 예약 worker 생성, cohort 전환, 공통 prompt 결함 수정 시 반드시 `docs/rules/02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md`을 COPY SOURCE로 사용한다.
+- 기존 active automation prompt는 runtime instance이지 template authority가 아니다.
+- 일반화 가능한 incident는 **canonical prompt template 수정 → version bump → Notion ACTIVE/CURRENT 동기화 → 필요한 active role prompt 일괄 migration → readback** 순서로 닫는다.
+- current template version: **PROMPT_TEMPLATE_V1.0.0**.
+- template의 NEVER DELETE 철학: EXAM-LEVEL CONVEYOR, dedicated worker=throughput owner, THANOS=rescue/closure owner, first-refusal, one-exam max, single-writer, physical PASS authority, handoff+lease relinquish, handed-off target 자동 재점유 금지, recurring worker self-disable 금지.
+
 ## CURRENT CUTOVER — 2026-10-03 — THANOS MASTER ×5
 
 - 기존 `MASTER-A/B/C`와 `INFINITY-1/2`의 역할 구분은 폐기한다. 다섯 예약은 `M2-1 THANOS-MASTER-1/2/3/4/5`로 통합한다.
