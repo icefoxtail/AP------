@@ -7,6 +7,10 @@ import crypto from "node:crypto";
 const require = createRequire(import.meta.url);
 import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
+import {
+  buildQuestionSnapshot,
+  resolveSavedPaperSourceGrades,
+} from "../apmath/worker-backup/worker/helpers/archive2-questions.js";
 const outputContract = require("../archive/archive2-output-contract.js");
 import {
   prepareSavedPaperBatch,
@@ -342,7 +346,8 @@ try {
   await db.exec(
     "INSERT INTO classes VALUES ('class-a','고1 검증반 A','Teacher A','고1'),('class-b','고1 검증반 B','Teacher B','고1');INSERT INTO students(id,name) VALUES ('student-a','검증학생 가'),('student-b','검증학생 나'),('student-c','검증학생 다');INSERT INTO class_students VALUES ('class-a','student-a'),('class-a','student-b'),('class-b','student-c');INSERT INTO teacher_classes VALUES ('teacher-a','class-a');",
   );
-  await db.prepare("INSERT INTO classes VALUES (?,?,?,?)")
+  await db.prepare("ALTER TABLE classes ADD COLUMN grade_label TEXT").run();
+  await db.prepare("INSERT INTO classes (id,name,teacher_name,grade) VALUES (?,?,?,?)")
     .bind("class-h2", "고2 saved paper target", "Teacher A", "고2").run();
   await db.prepare("INSERT INTO students(id,name,grade,status) VALUES (?,?,?,?)")
     .bind("student-h2", "저장본 검증학생", "고2", "active").run();
@@ -354,6 +359,46 @@ try {
     .bind("class-h2", "student-h2-b").run();
   await db.prepare("INSERT INTO teacher_classes VALUES (?,?)")
     .bind("teacher-a", "class-h2").run();
+  const addGradeTargetClass = async ({ id, name, grade, gradeLabel = "", studentId }) => {
+    await db.prepare("INSERT INTO classes (id,name,teacher_name,grade,grade_label) VALUES (?,?,?,?,?)")
+      .bind(id, name, "Teacher A", grade, gradeLabel).run();
+    await db.prepare("INSERT INTO students(id,name,grade,status) VALUES (?,?,?,?)")
+      .bind(studentId, `${name} 학생`, grade || gradeLabel || "고1", "active").run();
+    await db.prepare("INSERT INTO class_students VALUES (?,?)").bind(id, studentId).run();
+    await db.prepare("INSERT INTO teacher_classes VALUES (?,?)").bind("teacher-a", id).run();
+  };
+  for (const [shortGrade, grade] of [["m1", "중1"], ["m2", "중2"], ["m3", "중3"], ["h1", "고1"], ["h3", "고3"]])
+    await addGradeTargetClass({
+      id: `class-target-${shortGrade}`,
+      name: `${grade} Saved Paper 대상반`,
+      grade,
+      studentId: `student-target-${shortGrade}`,
+    });
+  await addGradeTargetClass({
+    id: "class-target-grade-label",
+    name: "학년 라벨 대상반",
+    grade: "",
+    gradeLabel: "중1",
+    studentId: "student-target-grade-label",
+  });
+  await addGradeTargetClass({
+    id: "class-target-name-fallback",
+    name: "고3 이름 fallback 대상반",
+    grade: "",
+    studentId: "student-target-name-fallback",
+  });
+  await addGradeTargetClass({
+    id: "class-target-invalid-grade",
+    name: "고1 이름 fallback 금지반",
+    grade: "고4",
+    studentId: "student-target-invalid-grade",
+  });
+  await addGradeTargetClass({
+    id: "class-target-unknown-grade",
+    name: "담당 학년 미확인반",
+    grade: "",
+    studentId: "student-target-unknown-grade",
+  });
   const base = catalog.records.find((r) => r.automatic && r.sourceGrade === "고1" &&
     (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
   const records = catalog.records
@@ -1507,6 +1552,8 @@ try {
   const guardedQuestions = guardedBatch.map(({ question }) => question);
   assert.equal(guardedBatchRecords.length, 50, "Saved Paper D1 route regression needs 50 compact approved questions");
   const savedPaperAssignmentMatrix = [];
+  const savedPaperGradeAcceptance = [];
+  let mixedSourceGradeAcceptance = null;
   for (const questionCount of [1, 5, 6, 10, 50]) {
     const selectedRecords = guardedBatchRecords.slice(0, questionCount);
     const selectedQuestions = structuredClone(guardedQuestions.slice(0, questionCount));
@@ -1561,8 +1608,280 @@ try {
       "SELECT COUNT(*) AS n FROM exam_blueprints WHERE archive_file=?",
     ).bind(delivery.body.assignment.archive_file).first();
     assert.equal(Number(blueprintRows.n), questionCount, `${questionCount}-question Saved Paper writes every blueprint row`);
-    savedPaperAssignmentMatrix.push({ questionCount, saved: delivery.body.saved, assignmentId: delivery.body.assignment.id });
+    savedPaperAssignmentMatrix.push({
+      questionCount,
+      saved: delivery.body.saved,
+      savedPaperId,
+      assignmentId: delivery.body.assignment.id,
+    });
   }
+
+  const actualHigh2SavedPaper = { id: savedPaperAssignmentMatrix[0].savedPaperId, browseGrade: "고2" };
+  assert.ok(actualHigh2SavedPaper.id, "grade acceptance requires the real high2-source Saved Paper");
+  const actualHigh2Snapshot = JSON.parse((await db.prepare(
+    "SELECT snapshot_json FROM archive_saved_papers WHERE id=?",
+  ).bind(actualHigh2SavedPaper.id).first()).snapshot_json);
+  assert.deepEqual(await resolveSavedPaperSourceGrades(savedPaperEnv, actualHigh2Snapshot.questions), ["고2"],
+    "the source-grade acceptance fixture must resolve from its frozen question identity");
+
+  const manifestFetchesBeforeGradeAcceptance = canonicalManifestFetches;
+  canonicalBundleUnavailable = true;
+  try {
+    const gradeTargets = [
+      ["class-target-m1", "student-target-m1", "중1"],
+      ["class-target-m2", "student-target-m2", "중2"],
+      ["class-target-m3", "student-target-m3", "중3"],
+      ["class-target-h1", "student-target-h1", "고1"],
+      ["class-h2", "student-h2", "고2"],
+      ["class-target-h3", "student-target-h3", "고3"],
+    ];
+    for (const [classId, studentId, targetGrade] of gradeTargets) {
+      const delivery = await post("", {
+        contract_version: "archive2-v1",
+        class_id: classId,
+        student_ids: [studentId],
+        exam_date: "2026-10-05",
+        saved_paper_id: actualHigh2SavedPaper.id,
+        assignment_batch_id: crypto.randomUUID(),
+      }, "teacher");
+      assert.equal(delivery.body.saved, true,
+        `actual high2 source must distribute to valid ${targetGrade} target: ${JSON.stringify(delivery)}`);
+      assert.equal(delivery.status, 502,
+        `${targetGrade} Assignment must commit before the expected local PDF binding failure`);
+      const assignment = await db.prepare(
+        "SELECT class_id,saved_paper_id FROM class_exam_assignments WHERE id=?",
+      ).bind(delivery.body.assignment.id).first();
+      assert.equal(assignment.class_id, classId);
+      assert.equal(assignment.saved_paper_id, actualHigh2SavedPaper.id,
+        "every grade target must retain the same immutable Saved Paper identity");
+      savedPaperGradeAcceptance.push({ sourceGrade: "고2", targetGrade, saved: true });
+    }
+
+    for (const [classId, studentId, targetGrade] of [
+      ["class-target-grade-label", "student-target-grade-label", "중1"],
+      ["class-target-name-fallback", "student-target-name-fallback", "고3"],
+    ]) {
+      const delivery = await post("", {
+        contract_version: "archive2-v1",
+        class_id: classId,
+        student_ids: [studentId],
+        exam_date: "2026-10-06",
+        saved_paper_id: actualHigh2SavedPaper.id,
+        assignment_batch_id: crypto.randomUUID(),
+      }, "teacher");
+      assert.equal(delivery.body.saved, true,
+        `${targetGrade} target fallback metadata must remain valid: ${JSON.stringify(delivery)}`);
+      assert.equal(delivery.status, 502);
+      savedPaperGradeAcceptance.push({ sourceGrade: "고2", targetGrade, metadataFallback: true, saved: true });
+    }
+
+    const writesBeforeInvalidTargets = Number((await db.prepare(
+      "SELECT COUNT(*) AS n FROM class_exam_assignments",
+    ).first()).n);
+    for (const [classId, studentId] of [
+      ["class-target-invalid-grade", "student-target-invalid-grade"],
+      ["class-target-unknown-grade", "student-target-unknown-grade"],
+    ]) {
+      const rejected = await post("", {
+        contract_version: "archive2-v1",
+        class_id: classId,
+        student_ids: [studentId],
+        exam_date: "2026-10-07",
+        saved_paper_id: actualHigh2SavedPaper.id,
+        assignment_batch_id: crypto.randomUUID(),
+      }, "teacher");
+      assert.equal(rejected.status, 409, `${classId} must fail closed: ${JSON.stringify(rejected)}`);
+      assert.notEqual(rejected.body.saved, true,
+        `${classId} must not claim an Assignment was saved: ${JSON.stringify(rejected)}`);
+    }
+    assert.equal(Number((await db.prepare(
+      "SELECT COUNT(*) AS n FROM class_exam_assignments",
+    ).first()).n), writesBeforeInvalidTargets,
+    "unknown and invalid target metadata must cause zero Assignment writes");
+
+    const materializeLegacySourceQuestion = (row) => {
+      const sourceText = fs.readFileSync(path.join(root, "archive/exams", row.sourceFile), "utf8");
+      const original = source.evaluate(sourceText, row.sourceFile)[row.sourceOrdinal - 1];
+      const question = structuredClone(original);
+      question.questionUid = row.questionUid;
+      question.sourceArchiveFile = row.sourceFile;
+      question.sourceOrdinal = row.sourceOrdinal;
+      question.sourceQuestionNo = row.sourceQuestionNo;
+      question.sourceFingerprint = row.sourceFingerprint;
+      question.sourceGrade = row.sourceGrade;
+      delete question.sourceIdentityEvidence;
+      for (const field of core.META_FIELDS)
+        if (row[field] !== undefined) question[field] = row[field];
+      return question;
+    };
+    const legacyMixedRecords = [];
+    for (const sourceGrade of ["고2", "중3"]) {
+      let selected = null;
+      for (const row of catalog.records.filter(record => record.automatic && record.sourceGrade === sourceGrade &&
+        core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok)) {
+        const question = materializeLegacySourceQuestion(row);
+        if (!/assets\/images\//i.test(JSON.stringify(question))) {
+          selected = { row, question };
+          break;
+        }
+      }
+      assert.ok(selected, `need an actual compact ${sourceGrade} source question for a legacy mixed snapshot`);
+      legacyMixedRecords.push(selected);
+    }
+    const legacyMixedQuestions = legacyMixedRecords.map(item => item.question);
+    const legacyMixedGrades = await resolveSavedPaperSourceGrades(savedPaperEnv, legacyMixedQuestions);
+    assert.deepEqual(legacyMixedGrades, ["중3", "고2"],
+      "mixed source grades must be resolved from each real UID/path/ordinal, not Saved Paper context");
+    assert.ok(legacyMixedQuestions.every(question => !question.sourceIdentityEvidence),
+      "this is the supported legacy witness-less snapshot path");
+    const legacyMixedMeta = {
+      title: "legacy mixed-source Saved Paper",
+      grade: "고2",
+      subject: "수학",
+      count: legacyMixedQuestions.length,
+      qpp: 4,
+      questionUids: legacyMixedQuestions.map(question => question.questionUid),
+    };
+    const legacyMixedBridgeRows = await buildQuestionSnapshot(
+      { question_count: legacyMixedQuestions.length },
+      legacyMixedQuestions,
+      legacyMixedMeta,
+      { canonicalAuthority: catalog.canonicalAuthority },
+    );
+    const legacyMixedSnapshot = {
+      questions: legacyMixedQuestions,
+      meta: legacyMixedMeta,
+      bridgeRows: legacyMixedBridgeRows,
+      selectionFilters: {
+        grade: "고2",
+        primaryPaths: [...new Set(legacyMixedRecords.map(item => core.pathKey(item.row, 4)))],
+        scopeQuestionUids: legacyMixedQuestions.map(question => question.questionUid),
+      },
+      verifiedAt: new Date().toISOString(),
+    };
+    const legacyMixedSnapshotJson = stableStringify(legacyMixedSnapshot);
+    const legacyMixedPaperId = crypto.randomUUID();
+    const legacyMixedSaveBatchId = crypto.randomUUID();
+    await db.prepare(`INSERT INTO archive_saved_papers (
+      id,owner_teacher_id,save_batch_id,part_index,part_count,title,grade,subject,question_count,
+      snapshot_json,snapshot_hash,save_request_hash,source_index_version,schema_version,created_at
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(
+      legacyMixedPaperId, "teacher-a", legacyMixedSaveBatchId, 0, 1, legacyMixedMeta.title,
+      legacyMixedMeta.grade, legacyMixedMeta.subject, legacyMixedQuestions.length,
+      legacyMixedSnapshotJson, crypto.createHash("sha256").update(legacyMixedSnapshotJson).digest("hex"),
+      crypto.createHash("sha256").update(legacyMixedSaveBatchId).digest("hex"),
+      catalog.indexVersion, SAVED_PAPER_SCHEMA, new Date().toISOString(),
+    ).run();
+    await db.prepare(`INSERT INTO archive_saved_paper_library_metadata
+      (saved_paper_id,owner_teacher_id,status) VALUES (?,?,?)`)
+      .bind(legacyMixedPaperId, "teacher-a", "ACTIVE").run();
+    const mixedDelivery = await post("", {
+      contract_version: "archive2-v1",
+      class_id: "class-target-m1",
+      student_ids: ["student-target-m1"],
+      exam_date: "2026-10-08",
+      saved_paper_id: legacyMixedPaperId,
+      assignment_batch_id: crypto.randomUUID(),
+    }, "teacher");
+    assert.equal(mixedDelivery.body.saved, true,
+      `legacy mixed-source Saved Paper must distribute from actual source identity: ${JSON.stringify(mixedDelivery)}`);
+    assert.equal(mixedDelivery.status, 502);
+    mixedSourceGradeAcceptance = {
+      actualSourceGrades: legacyMixedGrades,
+      savedPaperGradeContext: legacyMixedMeta.grade,
+      targetGrade: "중1",
+      saved: mixedDelivery.body.saved,
+    };
+  } finally {
+    canonicalBundleUnavailable = false;
+  }
+  assert.equal(canonicalManifestFetches, manifestFetchesBeforeGradeAcceptance,
+    "cross-grade Saved Paper delivery must not re-read the current catalog");
+
+  const assignmentCountBeforeGradePolicies = Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignments",
+  ).first()).n);
+  const directMixedUpperSource = await post("studio", {
+    contract_version: "archive2-v1",
+    class_id: "class-target-m1",
+    student_ids: ["student-target-m1"],
+    exam_title: "direct MIXED upper source rejection",
+    exam_date: "2026-10-09",
+    question_count: 1,
+    archive_file: "MIXED:archive2-upper-source-mixed",
+    index_version: catalog.indexVersion,
+    selection_filters: {
+      grade: "고2",
+      curriculumKey: sharedRecord.curriculumKey,
+      semanticSubject,
+      primaryPaths: [core.pathKey(sharedRecord, 4)],
+      scopeQuestionUids: [sharedRecord.questionUid],
+    },
+    mixed_payload_json: {
+      questions: [structuredClone(sharedQuestion)],
+      meta: { questionUids: [sharedRecord.questionUid] },
+    },
+  }, "teacher");
+  assert.equal(directMixedUpperSource.status, 409,
+    `direct MIXED must retain its source-to-target restriction: ${JSON.stringify(directMixedUpperSource)}`);
+  assert.equal(Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignments",
+  ).first()).n), assignmentCountBeforeGradePolicies,
+  "rejected direct MIXED distribution must not write an Assignment");
+
+  const high2BlueprintRecords = catalog.records.filter(record => record.sourceFile === sharedRecord.sourceFile)
+    .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
+  const high2BlueprintExam = catalog.exams.find(exam => exam.file === sharedRecord.sourceFile);
+  assert.ok(high2BlueprintExam && high2BlueprintRecords.length === high2BlueprintExam.qCount,
+    "normal blueprint policy test requires the complete actual high2 source exam");
+  const high2BlueprintFile = "exams/" + sharedRecord.sourceFile;
+  for (const record of high2BlueprintRecords)
+    await db.prepare(`INSERT OR IGNORE INTO exam_blueprints
+      (archive_file,question_no,source_question_uid,source_question_ordinal) VALUES (?,?,?,?)`)
+      .bind(high2BlueprintFile, record.sourceOrdinal, record.questionUid, record.sourceOrdinal).run();
+  const normalBlueprintUpperSource = await post("studio", {
+    contract_version: "archive2-v1",
+    class_id: "class-target-m1",
+    student_ids: ["student-target-m1"],
+    exam_title: "normal blueprint upper source rejection",
+    exam_date: "2026-10-10",
+    question_count: high2BlueprintRecords.length,
+    archive_file: high2BlueprintFile,
+    index_version: catalog.indexVersion,
+    question_uids: high2BlueprintRecords.map(record => record.questionUid),
+    pdf_qpp: 4,
+  }, "teacher");
+  assert.equal(normalBlueprintUpperSource.status, 409,
+    `normal blueprint must retain its source-to-target restriction: ${JSON.stringify(normalBlueprintUpperSource)}`);
+  assert.equal(Number((await db.prepare(
+    "SELECT COUNT(*) AS n FROM class_exam_assignments",
+  ).first()).n), assignmentCountBeforeGradePolicies,
+  "rejected normal blueprint distribution must not write an Assignment");
+
+  const rawOriginalQuestions = source.evaluate(
+    fs.readFileSync(path.join(root, "archive/exams", sharedRecord.sourceFile), "utf8"),
+    sharedRecord.sourceFile,
+  );
+  const rawOriginalLowerTarget = await post("original", {
+    contract_version: "archive2-v1",
+    class_id: "class-target-m1",
+    student_ids: ["student-target-m1"],
+    exam_title: "raw Original existing separate policy",
+    exam_date: "2026-10-11",
+    index_version: catalog.indexVersion,
+    archive_file: high2BlueprintFile,
+    question_count: rawOriginalQuestions.length,
+    pdf_qpp: 4,
+    original_payload_json: { questions: rawOriginalQuestions, meta: { includeQr: false } },
+  }, "teacher");
+  assert.ok(rawOriginalLowerTarget.body.assignment?.id,
+    `raw Original must keep its separate existing distribution behavior: ${JSON.stringify(rawOriginalLowerTarget)}`);
+  assert.equal(rawOriginalLowerTarget.status, 502,
+    "raw Original Assignment should commit before the expected local PDF binding failure");
+  const rawOriginalAssignment = await db.prepare(
+    "SELECT class_id,archive_file FROM class_exam_assignments WHERE id=?",
+  ).bind(rawOriginalLowerTarget.body.assignment.id).first();
+  assert.deepEqual(rawOriginalAssignment, { class_id: "class-target-m1", archive_file: high2BlueprintFile });
 
   console.log(
     JSON.stringify({
@@ -1590,6 +1909,14 @@ try {
       },
       savedPaperAssignmentMatrix,
       savedPaperAssignmentSizes: "1/5/6/10/50 D1 PASS",
+      savedPaperGradeAcceptance,
+      mixedSourceGradeAcceptance,
+      directMixedAndBlueprintUpperSourcePolicy: "409 / zero Assignment writes",
+      rawOriginalSeparatePolicy: {
+        actualSourceGrade: sharedRecord.sourceGrade,
+        targetGrade: "중1",
+        saved: Boolean(rawOriginalLowerTarget.body.assignment?.id),
+      },
       pdf: "EXPECTED_FAILURE_NO_BROWSER_BINDING",
     }),
   );

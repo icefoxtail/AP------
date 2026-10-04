@@ -17,7 +17,7 @@ export function fail(message, status = 400) {
   error.status = status;
   throw error;
 }
-export function checkTargetGrade(classRow, sourceGrade) {
+export function checkTargetClassGrade(classRow) {
   const grade =
     String(classRow.grade || classRow.grade_label || "").replace(/\s/g, "") ||
     String(classRow.name || "").match(/(?:중|고)[123]/)?.[0];
@@ -26,6 +26,10 @@ export function checkTargetGrade(classRow, sourceGrade) {
       "반 학년을 확인할 수 없습니다. APMS의 반 학년 정보를 확인하세요.",
       409,
     );
+  return grade;
+}
+export function checkTargetGrade(classRow, sourceGrade) {
+  const grade = checkTargetClassGrade(classRow);
   if (core.gradeRank(sourceGrade) > core.gradeRank(grade))
     fail("대상 반보다 높은 학년의 source 문항은 기본 출제할 수 없습니다.", 409);
 }
