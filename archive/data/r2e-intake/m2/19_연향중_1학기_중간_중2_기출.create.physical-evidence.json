@@ -7,13 +7,13 @@
   "examUid": "M2-1-19-YEONHYANG-1MID",
   "examPath": "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
   "examFile": "19_연향중_1학기_중간_중2_기출.js",
-  "branch": "rescue/m2/o15-source-free-create-closure-20261005-0224",
+  "branch": "validation/m2-o15-create-thanos2-exact-20261005-0817",
   "baseMain": "3066af77b4dff2cc44d344462a3879e8baecbfb3",
   "sourceInputBlob": "969c8b19c2085c204db060a32d9a3721bf9bce33",
   "finalArtifactSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
   "metadataBlob": "a5d7469c94891177021cb25fff2d05fc28db041c",
   "questionCount": 24,
-  "completedStep": "D_SOURCE_CONFIRMED repair + source-free CREATE evidence refresh",
+  "completedStep": "D_SOURCE_CONFIRMED repair + CURRENT Golden/Negative calibration evidence physically bound",
   "sourceParity": {
     "fields": [
       "content",
@@ -428,13 +428,76 @@
   "readyForReview1": false,
   "passClaim": false,
   "firstMissingClosureStep": "CANONICAL_CREATE_VALIDATOR",
-  "requiredNextAction": "Run canonical CREATE validator once, then persist validator receipt and CREATE receipt and transition to READY_FOR_REVIEW1.",
+  "requiredNextAction": "Run actual canonical CREATE validator on this exact artifact/evidence; on PASS write validator receipt + CREATE receipt, transition CREATE_DONE→READY_FOR_REVIEW1, and remote-read back.",
   "sourceRepairEvidence": {
     "path": "archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json",
     "gitBlob": "4053a6c0bf405affa5100c6295e5b80c303f752e",
     "status": "D_SOURCE_CONFIRMED",
     "changedQids": [
       5
+    ]
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "FRESH_REWRITE_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "reproducible steps"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "condition then calculation"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "inputs before formula"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "semantic relation before algebra"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
     ]
   }
 }
