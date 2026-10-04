@@ -1,7 +1,7 @@
 window.examTitle = "19_복성고_2학기_기말_고2_수학II";
 
 window.questionBank = [
-  {"id":1,"questionType":"객관식","layoutTag":"grid","tags":[],"content":"함수 $f(x)=3x+2$의 $x=2$에서의 미분계수는?","choices":["$1$","$2$","$3$","$4$","$5$"],"answer":"","solution":""},
+  {"id":1,"questionType":"객관식","layoutTag":"grid","tags":[],"content":"함수 $f(x)=3x+2$의 $x=2$에서의 미분계수는?","choices":["$1$","$2$","$3$","$5$","$8$"],"answer":"","solution":""},
   {"id":2,"questionType":"객관식","layoutTag":"grid","tags":[],"content":"정적분 $\\displaystyle\\int_1^3(x^2-1)\,dx=\\dfrac{b}{a}$일 때, $b-a$의 값은? (단, $a,b$는 서로소)","choices":["$16$","$17$","$18$","$19$","$20$"],"answer":"","solution":""},
   {"id":3,"questionType":"객관식","layoutTag":"grid","tags":[],"content":"함수 $f(x)=x^3+5x+4$에 대하여 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)-f(1)}{x^2-1}$의 값은?","choices":["$1$","$2$","$3$","$4$","$5$"],"answer":"","solution":""},
   {"id":4,"questionType":"객관식","layoutTag":"grid","tags":[],"content":"함수 $f(x)=x^3-3x^2-9x+a$의 극댓값이 $6$일 때, 실수 $a$의 값은?","choices":["$-2$","$-1$","$0$","$1$","$2$"],"answer":"","solution":""},
