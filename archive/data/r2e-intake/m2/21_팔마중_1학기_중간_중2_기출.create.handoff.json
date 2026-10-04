@@ -42,6 +42,20 @@
       "result": "BASE_BRANCH_CREATED_TARGET_PAYLOAD_WRITE_BLOCKED_BEFORE_SIDE_EFFECT",
       "ref": "validation/m2-o9-create-thanos1-exact-20261005-0500",
       "baseSha": "d3f0d6963dd55e74f6ee009681df8c59621e0d8f"
+    },
+    {
+      "path": "PR_ISSUE_COMMENT_20261005_0555",
+      "result": "BLOCKED_BY_CONNECTED_WRITE_SAFETY_BEFORE_SIDE_EFFECT"
+    },
+    {
+      "path": "CURRENT_MAIN_VALIDATION_HARNESS_20261005_0556",
+      "result": "BASE_BRANCH_CREATED_TARGET_PAYLOAD_WRITE_BLOCKED_BY_CONNECTED_WRITE_SAFETY",
+      "ref": "validation/m2-o9-create-thanos1-currentmain-20261005-0556",
+      "baseSha": "d3f0d6963dd55e74f6ee009681df8c59621e0d8f"
+    },
+    {
+      "path": "TARGET_BRANCH_PUSH_WORKFLOW_20261005_0558",
+      "result": "BLOCKED_BY_CONNECTED_WRITE_SAFETY_BEFORE_SIDE_EFFECT"
     }
   ],
   "validatorAuthority": {
@@ -63,6 +77,6 @@
     "evidencePath": "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.physical-evidence.v2.json",
     "afterPass": "Emit actual validator receipt, then durable CREATE receipt, then remote readback. Do not infer PASS without actual canonical execution."
   },
-  "updatedAtKST": "2026-10-05T05:00:15+09:00",
-  "note": "05:00 exact ORCHESTRATOR rescue: stale self-lease renewed against main d3f0d696; artifact/evidence unchanged (7a7c7f1d / d866705a). Canonical workflow authority re-read. Connected write safety blocked both owner issue-comment trigger and target-payload validation harness before side effect; exact validator debt remains, no PASS/CREATE_DONE declaration."
+  "updatedAtKST": "2026-10-05T05:58:30+09:00",
+  "note": "05:55-05:58 ORCHESTRATOR exact rescue revalidated against main d3f0d696 and target head 8b0ecb4c. D_SOURCE_CONFIRMED; artifact/evidence unchanged (7a7c7f1d / d866705a). Three materially distinct authorized validator trigger paths were attempted; connected write safety blocked each before validator side effect. No PASS/CREATE_DONE inferred. Exact next step remains ACTUAL_CANONICAL_CREATE_VALIDATOR_EXECUTION."
 }
