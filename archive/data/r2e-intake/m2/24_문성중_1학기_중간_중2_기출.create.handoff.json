@@ -40,10 +40,22 @@
     "reason": "Source truth is unresolved; PASS/receipt cannot be fabricated.",
     "genericCI": {
       "runId": 37189687141,
-      "status": "IN_PROGRESS_AT_HANDOFF"
+      "jobId": 111399096253,
+      "status": "FAILURE",
+      "syntaxCheck": "PASS",
+      "skillVerification": "PASS",
+      "aggregate": "PASS 188 / FAIL 4",
+      "failingSuites": [
+        "apmath-student-teacher-preview.test.js",
+        "archive-target-selection-phase3-contract.test.js",
+        "print-render-authority-mixer-ecosystem.test.js",
+        "student-portal-omr-history-routes.test.js"
+      ],
+      "targetOverlap": "NONE_OBSERVED; same four repository-wide failures as preceding CREATE runs"
     },
     "registrationSync": {
       "runId": 37189687138,
+      "jobId": 111399171862,
       "status": "SUCCESS"
     }
   },
