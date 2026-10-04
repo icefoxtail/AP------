@@ -3,8 +3,8 @@
   "stage": "R3",
   "generation": "M2_1_CREATE_FIRST_2026_10_03",
   "examPath": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
-  "examSha256": "sha256:7b147a9f764902a9c3c9f3bbb7298981e30fd98838b518718731cfb238add86d",
-  "finalArtifactGitBlob": "1688365b9050d5aef814c878acaabc845456c0d7",
+  "examSha256": "sha256:037899d30270ac77d26a19c7c33e7f7e5486b086ecde7cce084dbb810b2d8e00",
+  "finalArtifactGitBlob": "8ea533a4c437d7831bed4561acaaf04cf98dbd60",
   "questionCount": 23,
   "sampleReadBeforeWork": true,
   "calibrationStatus": "PASS",
@@ -14,20 +14,41 @@
     "inputReview2ReceiptBlob": "67133ad05b7d1645f246341a09dc08bfe2a009e3",
     "inputReview2ValidatorGitBlob": "81f7e0b070b606b0a9ad355fa76cc679f7ca74ed",
     "inputReview2ArtifactSha": "d93fcc046b398155032fa7117297778db38ef5db",
-    "currentFinalArtifactGitBlob": "1688365b9050d5aef814c878acaabc845456c0d7",
+    "currentFinalArtifactGitBlob": "8ea533a4c437d7831bed4561acaaf04cf98dbd60",
     "currentMetadataSidecarGitBlob": "d2e6c8c9cb12879a8668791d81185c146f91808c",
     "currentCrosswalkBlob": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
     "currentTaxonomyBlob": "5423e0867708382d9d9e3ae58583c6f02affc07d",
     "latestMainShaAtRecheck": "9e31a748b07d6edac468fa2eb262c5da214f54fe",
     "protectedFieldRecheck": "PASS: q10 authorized Meta-only mutation; q1-9/q11-23 exam bytes locked unchanged against R2 final artifact.",
-    "linkedProblemImages": [],
-    "sourcePixelDebt": [
+    "linkedProblemImages": [
       {
         "qid": 23,
-        "status": "SOURCE_REPAIR_REQUIRED",
-        "reason": "Referenced number-line pixel absent from current artifact/assets; original PDF/page authority needed."
+        "path": "assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+        "archivePath": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+        "assetSha256": "sha256:5ba80c17565e096150c68dcc8b09abae047f98a5ff6d01649ef46a5f050290d3",
+        "assetGitBlob": "25d9f507a9388d44db244732e8fc9898a97d4476",
+        "assetDimensions": {
+          "width": 675,
+          "height": 340
+        },
+        "sourcePdf": "D:/기출/(1)1중간/(1)1중간/중2/2025_연향중2_수학_1중간.pdf",
+        "sourcePdfSha256": "C5ABD1C5053DD4FF04471B10C6066C679D0328822D1BE8EC044BAD5EDBB1C4F4",
+        "sourcePage": 4,
+        "cropBoxOn300DpiPagePx": [
+          1470,
+          520,
+          2145,
+          860
+        ],
+        "sourceFacts": {
+          "endpoint": "closed at -1",
+          "ray": "rightward",
+          "solutionSet": "x≥-1"
+        }
       }
-    ]
+    ],
+    "sourcePixelDebt": [],
+    "sourceRepairRecord": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.source-repair.json"
   },
   "questionRows": [
     {
@@ -803,16 +824,16 @@
     {
       "qid": 23,
       "sourceExact": {
-        "status": "HOLD",
-        "evidence": "Current stem references a number-line figure but no q23 image/solutionImage or conventional q23 raster is present; original PDF/page required."
+        "status": "PASS",
+        "evidence": "D source D:/기출/(1)1중간/(1)1중간/중2/2025_연향중2_수학_1중간.pdf, SHA-256 C5ABD1C5053DD4FF04471B10C6066C679D0328822D1BE8EC044BAD5EDBB1C4F4, page 4/4, footer school identity 순천연향중학교, 2학년 수학 2025년 1학기 중간고사. JS q23 maps to printed 서술형 3 and the adjacent written-response 1/2 context."
       },
       "answerMath": {
-        "status": "HOLD",
-        "evidence": "(4+a)x≤b+2, a<-4이므로 x≥(b+2)/(4+a). 저장 답 -6은 원본 수직선이 x≥-1일 때만 확정되며 현재 source pixel 부재로 HOLD."
+        "status": "PASS",
+        "evidence": "D source number line is x≥-1. From (4+a)x≤b+2 with a<-4, x≥(b+2)/(4+a); set the source boundary to -1 to obtain a+b=-6. D answer key page 2/2, 서술형3, agrees."
       },
       "solutionMath": {
-        "status": "HOLD",
-        "evidence": "Current solution is correctly conditional on missing source pixel; final answer cannot be source-certified until the number line is recovered."
+        "status": "PASS",
+        "evidence": "Updated q23 solution derives sign reversal from a<-4, uses the D source graph x≥-1, and solves a+b=-6."
       },
       "curriculum": {
         "status": "PASS",
@@ -820,11 +841,11 @@
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "Current solution structure remains student-reproducible; no linked solution visual required for this item."
+        "evidence": "Targeted q23 solution has a reproducible 핵심/풀이/결론 chain: rearrange, reverse inequality for the negative coefficient, equate source boundary, solve."
       },
       "meta": {
-        "status": "HOLD",
-        "evidence": "RPM family M2-RPM-141 is identified, but source-dependent graph meaning remains SOURCE_HOLD."
+        "status": "PASS",
+        "evidence": "Current source+verified solution confirm M2-RPM-141 (M2-1 > 해의 조건 > 계수 조건). RPM resolver validation PASS; crosswalk is RPM_ONLY with PROJECTION_UNMATERIALIZED, so no PT/TPL key is invented."
       },
       "difficulty": {
         "status": "PASS",
@@ -832,7 +853,7 @@
       },
       "runtimeLayout": {
         "status": "PASS",
-        "evidence": "Current content/choices/answer/solution strings and layoutTag statically rechecked; no malformed high-signal TeX/newline/layout defect found."
+        "evidence": "Node VM loaded the final 23-question bank; q23 source image ref is present and the PNG asset decodes."
       }
     }
   ],
@@ -843,7 +864,7 @@
     "openImplicitMetaNullCount": 0,
     "currentProjectionDebt": "EXPLICIT_ONLY",
     "q10CurrentScopeRepair": "PASS",
-    "q23Disposition": "SOURCE_HOLD"
+    "q23Disposition": "SOURCE_CONFIRMED_RPM_SEMANTIC_FINAL"
   },
   "summary": {
     "questionCount": 23,
@@ -851,14 +872,28 @@
     "linkedSolutionVisualCount": 0,
     "visualEvidenceRows": 0,
     "metaEvidenceRows": 23,
-    "sourceRepairRequiredCount": 1,
-    "openQids": [
-      23
-    ],
+    "sourceRepairRequiredCount": 0,
+    "openQids": [],
     "deterministicRepairCount": 1,
     "deterministicRepairQids": [
       10
     ],
-    "disposition": "SOURCE_REPAIR_REQUIRED"
+    "disposition": "SOURCE_REPAIR_CONFIRMED_TARGETED_RECHECK_PASS"
+  },
+  "currentFinalArtifactGitBlob": "8ea533a4c437d7831bed4561acaaf04cf98dbd60",
+  "currentMetadataSidecarGitBlob": "b042f4298854b1765b035bf49739ceecd68d2e31",
+  "sourceRepair": {
+    "recordPath": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.source-repair.json",
+    "status": "D_SOURCE_CONFIRMED",
+    "qid": 23,
+    "changedFields": [
+      "image",
+      "solution",
+      "tags"
+    ],
+    "lockedScopeMutationCount": 0,
+    "assetPath": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+    "assetSha256": "sha256:5ba80c17565e096150c68dcc8b09abae047f98a5ff6d01649ef46a5f050290d3",
+    "resolverEvidenceSha": "sha256:59c12432fd667a3cc5c631d96bddfa70a7685c354fa8bd69eb0f71869f08226a"
   }
 }

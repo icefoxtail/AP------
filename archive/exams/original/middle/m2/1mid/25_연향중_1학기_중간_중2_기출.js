@@ -904,14 +904,14 @@ window.questionBank = [
       "일차부등식",
       "해의조건",
       "수직선",
-      "계수결정",
-      "원본대조필요"
+      "계수결정"
     ],
     "wide": false,
+    "image": "assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
     "content": "다음 그림은 일차부등식 $4x-2 \\le -ax+b$의 해를 수직선 위에 나타낸 것이다. 이때, $a+b$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a$와 $b$는 상수이고 $a < -4$이다.) [7점]",
     "choices": [],
     "answer": "-6",
-    "solution": "[핵심]\n이 문항은 원본 수직선의 경계값과 방향이 계수 결정의 핵심 source이다.\n[풀이]\n주어진 부등식은 $(4+a)x\\le b+2$이고 $a<-4$이므로 $4+a<0$이다. 따라서 나누면 $x\\ge\\frac{b+2}{4+a}$가 된다.\n현재 저장된 기존 해설은 원본 수직선을 $x\\ge-1$로 해석하고 있으며, 이 해석이 맞다면 $\\frac{b+2}{4+a}=-1$이어서 $b+2=-a-4$, 즉 $a+b=-6$이다.\n하지만 현재 Git의 이 시험지에는 발문이 가리키는 수직선 problem image/source pixel이 연결되어 있지 않아 경계 $-1$과 오른쪽 방향을 직접 재확인할 수 없다.\n[결론]\n원본 수직선 픽셀 확인 전에는 보호된 answer $-6$을 유지하되 source·answer/solution math를 ITEM HOLD로 둔다.",
+    "solution": "[핵심]\n부등식의 해집합을 원본 수직선의 경계와 비교한다.\n[풀이]\n$4x-2\\le-ax+b$에서 $(4+a)x\\le b+2$이다. 조건 $a<-4$로 $4+a<0$이므로 양변을 $4+a$로 나누면 부등호가 바뀌어 $x\\ge\\frac{b+2}{4+a}$이다.\n원본 수직선은 경계 $-1$을 포함하고 오른쪽을 나타내므로 $\\frac{b+2}{4+a}=-1$이다. 따라서 $b+2=-(4+a)$이고 $a+b=-6$이다.\n[결론]\n정답은 $-6$이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
