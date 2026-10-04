@@ -12,7 +12,7 @@
 - 신규 학년·학기·시험지 묶음의 예약 worker 생성, cohort 전환, 공통 prompt 결함 수정 시 반드시 `docs/rules/02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md`을 COPY SOURCE로 사용한다.
 - 기존 active automation prompt는 runtime instance이지 template authority가 아니다.
 - 일반화 가능한 incident는 **canonical prompt template 수정 → version bump → Notion ACTIVE/CURRENT 동기화 → 필요한 active role prompt 일괄 migration → readback** 순서로 닫는다.
-- current template version: **PROMPT_TEMPLATE_V1.2.0**.
+- current template version: **PROMPT_TEMPLATE_V1.3.0**.
 - template의 NEVER DELETE 철학: EXAM-LEVEL CONVEYOR, dedicated worker=throughput owner, THANOS=rescue/closure owner, first-refusal, one-exam max, single-writer, physical PASS authority, handoff+lease relinquish, handed-off target 자동 재점유 금지, recurring worker self-disable 금지.
 
 
@@ -27,6 +27,21 @@
 - 중간 추가 검증은 stale ref, 실제 overlap/conflict, source truth 의심, canonical validator FAIL처럼 **구체적인 위험 신호가 있을 때만** 수행한다.
 - stage transition에 validator/receipt가 필수면 **필요한 1회만** 실행한다. 동일 입력 PASS를 근거 없이 반복 실행하지 않는다.
 - 필수 source truth/curriculum/single-writer/user HARD gate는 유지한다. 이 규칙은 품질 gate 폐지가 아니라 **중복 검증 제거**다.
+
+## QUALITY DEEP / VALIDATION LEAN — HARD (2026-10-04)
+
+형님의 현재 지시: **품질 작업은 깊게 수행하되, 그 품질과 무관한 반복 검증 때문에 stage가 느려지거나 멈추게 하지 않는다.**
+
+- CREATE/R1/R2/R3가 맡은 **본래 품질 작업**(source 정확성, 수학, 해설, visual, Meta/difficulty)은 필요한 범위에서 충분히 깊게 수행한다. 이를 경량화 대상으로 오해하지 않는다.
+- 대신 한 stage의 정상 실행은 **품질 작업 1회 → 수정이 있으면 changed locus + direct dependency만 재확인 → canonical targeted validator 1회 → receipt/readback 1회 → next durable state**로 끝낸다.
+- 같은 unchanged artifact에 대해 pre-check/full-check/post-check를 겹쳐 수행하지 않는다. 이전 stage validator를 다시 돌리지 않고, 현재 stage PASS 후 같은 validator를 “확인용”으로 재실행하지 않는다.
+- R1/R2/R3에서 full review 중 repair가 생겨도 **시험지 전체를 처음부터 두 번째로 재검하지 않는다.** 수리된 qid/field와 direct dependency만 확인한 뒤 stage validator로 닫는다. validator가 새 문제를 실제로 잡은 경우에만 그 locus를 추가 확인한다.
+- R3의 final full audit는 **R3 자체의 품질 작업 1회**다. R3 repair 후에는 whole-exam R3를 다시 돌리지 않고 changed locus + locked scope 보존만 확인한다.
+- stage worker는 unrelated global CI를 실행하지 않는다. stage-specific targeted validator가 있으면 그것만 사용하고, repo-wide/global CI가 정말 필요한 경우는 MAIN/PUBLISH 또는 별도 CI owner가 담당한다.
+- latest main은 run 시작 snapshot 1회로 충분하다. **중간 stage마다 반복 fetch/rebase/parity check하지 않으며, 최종 drift/overlap/parity는 MAIN/PUBLISH가 1회 담당**한다.
+- remote readback도 stage closure 직후 **1회**면 충분하다. 동일 SHA/receipt를 반복 readback하지 않는다.
+- capability/write/validator 실패 시 **fresh state 확인 1회 + materially different safe retry 최대 1회**까지만 한다. 그래도 안 되면 exact continuation으로 handoff하고 다른 eligible 작업을 진행한다. 무한 retry/재검 루프 금지.
+- 이 규칙은 source truth, 수학 정확성, single-writer, 실제 canonical validator PASS 같은 필수 품질·안전 gate를 없애는 것이 아니다. **중복 ceremony만 제거한다.**
 
 
 ## GPT VISUAL PRODUCTION CONTRACT — CURRENT
@@ -100,7 +115,7 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 형님의 2026-10-04 명시 지시: **R1/R2/R3 전용 worker도 자기 stage의 처리량을 계속 확보해야 한다. 가능한 경우 자기 run에서 stage closure까지 닫되, target-local capability blocker 때문에 같은 시험지를 반복 점유하거나 lane을 끄지 않는다. 마감 debt는 THANOS가 이어받는다.**
 
 - R1/R2/R3 전용 worker는 자기 stage의 full recheck, deterministic repair, evidence/validator/receipt를 가능한 범위까지 수행하고 실행 가능한 경로가 있으면 각각 `REVIEW1_DONE→READY_FOR_REVIEW2`, `REVIEW2_DONE→READY_FOR_R3`, `R3_PASS→RELEASE_QUEUE`까지 닫는다.
-- 그러나 유효한 review artifact/evidence/repair 결과가 물리화된 뒤 **Git contents/PR/Actions write, validator executor, validator receipt, stage receipt, remote readback, provider/tool capability** 중 하나가 current run에서 실제로 막히고 state recheck + safe retry + materially different safe path도 실패하면 같은 target을 반복 점유하지 않는다.
+- 그러나 유효한 review artifact/evidence/repair 결과가 물리화된 뒤 **Git contents/PR/Actions write, validator executor, validator receipt, stage receipt, remote readback, provider/tool capability** 중 하나가 current run에서 실제로 막히면 **fresh state 확인 1회 + materially different safe retry 최대 1회**까지만 수행한다. 그래도 실패하면 같은 target을 반복 점유하지 않는다.
 - 이 경우 `stage / examUid / inputArtifactSha / branch+HEAD / finalArtifactSha / evidence/decision snapshot / completedStep / firstMissingClosureStep / exact capability+error / required next action`을 durable continuation으로 남기고 공용 `RESCUE_QUEUE`에 `R1_CLOSURE_DEBT | R2_CLOSURE_DEBT | R3_CLOSURE_DEBT`로 등록한 뒤 **same-target writer/lease/owner를 relinquish**한다.
 - THANOS는 해당 handoff를 exact `firstMissingClosureStep`부터 이어받아 그 stage의 durable next state까지 닫는다. handoff 자체는 stage PASS가 아니며, 실제 validator/receipt/readback 전에는 다음 stage eligible이 아니다.
 - handoff된 target은 최신 CURRENT/RESCUE_QUEUE가 `REASSIGN_TO_R1 | REASSIGN_TO_R2 | REASSIGN_TO_R3`를 명시하지 않는 한 동일 전용 worker가 다음 run에서 자동 재점유하지 않는다. **다음 scheduled run은 같은 stage의 다른 eligible 시험지**를 선택한다.

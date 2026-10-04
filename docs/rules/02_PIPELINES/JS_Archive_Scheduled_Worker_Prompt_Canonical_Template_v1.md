@@ -1,7 +1,7 @@
 # JS Archive Scheduled Worker Prompt Canonical Template v1
 
 - status: **CURRENT / COPY SOURCE**
-- version: **PROMPT_TEMPLATE_V1.2.0**
+- version: **PROMPT_TEMPLATE_V1.3.0**
 - scope: JS Archive scheduled production/review/rescue/publish workers
 - authority order: **current explicit user instruction → latest Notion CURRENT/router → this template → active operating contract → latest Git physical state**
 - purpose: 학년·학기·시험지 묶음이 바뀌어도 예약 worker의 운영 철학과 실패 처리 방식이 drift하지 않도록, 새 예약을 만들 때 이 문서를 그대로 복제하고 placeholder만 치환한다.
@@ -31,6 +31,18 @@
 - stale ref, 실제 충돌, source truth 의심, 필수 validator FAIL 같은 구체적 위험 신호가 있을 때만 중간 재조회·추가 검증한다.
 - 필수 validator/receipt는 필요한 **1회**만 실행한다. PASS한 동일 입력을 “혹시 모르니” 반복 검증하지 않는다.
 - 짧은 지시서는 **해야 할 작업 + 꼭 필요한 최소 검증 + 완료 조건**만 적는다. 긴 예방성 체크리스트를 자동으로 덧붙이지 않는다.
+
+## 0.2 QUALITY DEEP / VALIDATION LEAN — NEVER DELETE
+
+- **품질 작업은 깊게 한다.** source/math/solution/visual/Meta/difficulty처럼 해당 stage의 실제 품질 목적은 필요한 만큼 충분히 본다.
+- 다만 한 stage 정상 실행은 **quality pass 1회 → repair 시 changed locus + direct dependency 재확인 → targeted validator 1회 → receipt/readback 1회 → 다음 stage**로 끝낸다.
+- full review 중 repair가 나와도 whole exam을 처음부터 다시 full review하지 않는다. validator가 새 defect를 실제로 잡은 경우에만 그 locus를 추가 확인한다.
+- 이전 stage validator 재실행 금지. 동일 입력의 current validator 반복 실행 금지. unrelated global CI 금지.
+- R3는 final full audit 자체가 1회의 품질 검수다. repair 후에는 changed locus + locked scope만 확인하고 validator 1회로 닫는다.
+- latest main 최종 drift/overlap/parity는 MAIN/PUBLISH owner가 1회 수행한다. CREATE/R1/R2/R3가 중간마다 반복하지 않는다.
+- remote readback은 closure 직후 1회. 같은 SHA/receipt 반복 readback 금지.
+- blocker가 나면 **fresh state 확인 1회 + 다른 안전 경로 retry 최대 1회** 후 handoff한다. 같은 target에서 검증/retry loop로 run을 소모하지 않는다.
+- 목적은 품질 저하가 아니라 **품질과 무관한 ceremony 제거**다.
 
 ## 1. PLACEHOLDERS
 
@@ -132,7 +144,7 @@ disable은 **사용자 명시 지시 또는 CURRENT topology의 role 종료**만
 prompt에 박힌 특정 target/branch/HEAD는 selector hint일 뿐 authority가 아니다.
 실행 시점 physical state에서 target을 다시 계산한다.
 
-PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.2.0 / {ROLE}
+PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.3.0 / {ROLE}
 ~~~
 
 ## 3.1 GPT VISUAL PRODUCTION CONTRACT — HARD
@@ -156,7 +168,7 @@ STAGE WORKER → THANOS HANDOFF HARD:
 유효한 stage artifact/evidence/repair 결과를 물리화한 뒤 남은 firstMissingClosureStep이
 Git contents/PR/Actions write, validator executor, validator receipt, stage receipt,
 remote readback, provider/tool capability 등 마감 경로이고,
-state recheck + safe retry + materially different safe path를 실제 시도했는데도
+fresh state를 1회 확인하고 materially different safe path를 최대 1회 시도했는데도
 current run에서 닫히지 않으면 같은 target을 반복 점유하지 않는다.
 
 반드시 아래를 durable continuation으로 남긴다:
@@ -213,9 +225,9 @@ ROLE = R1 ONLY / STAGE-THROUGHPUT FIRST.
 actual CREATE validator/receipt + post-CREATE finalArtifactSha다.
 미완 CREATE를 bootstrap하지 않는다.
 
-source/current authority에서 full R1 recheck + deterministic minimal repair를 수행한다.
-가능하면 canonical R1 validator → R1 receipt
-→ REVIEW1_DONE→READY_FOR_REVIEW2 → remote readback까지 닫는다.
+source/current authority에서 **R1 품질 recheck를 1회 깊게** 수행하고 필요한 deterministic minimal repair를 한다.
+repair가 있으면 **수정 qid/field + direct dependency만 재확인**하고 whole exam을 처음부터 다시 돌리지 않는다.
+canonical R1 validator는 1회 실행하고 R1 receipt → REVIEW1_DONE→READY_FOR_REVIEW2 → remote readback 1회로 닫는다.
 
 COMMON HANDOFF BLOCK(stage=R1)을 적용한다.
 ~~~
@@ -226,9 +238,9 @@ COMMON HANDOFF BLOCK(stage=R1)을 적용한다.
 ROLE = R2 ONLY / STAGE-THROUGHPUT FIRST.
 
 입력은 current REVIEW1_DONE→READY_FOR_REVIEW2 physical closure다.
-full R2 recheck + formal compare/regression + deterministic minimal repair를 수행한다.
-가능하면 canonical R2 validator → R2 receipt
-→ REVIEW2_DONE→READY_FOR_R3 → remote readback까지 닫는다.
+**R2 품질 recheck + formal compare/regression을 1회 깊게** 수행하고 필요한 deterministic minimal repair를 한다.
+repair가 있으면 **수정 qid/field + direct dependency만 재확인**하고 whole exam R2를 다시 시작하지 않는다.
+canonical R2 validator는 1회 실행하고 R2 receipt → REVIEW2_DONE→READY_FOR_R3 → remote readback 1회로 닫는다.
 
 COMMON HANDOFF BLOCK(stage=R2)을 적용한다.
 ~~~
@@ -239,12 +251,9 @@ COMMON HANDOFF BLOCK(stage=R2)을 적용한다.
 ROLE = R3 ONLY / STAGE-THROUGHPUT FIRST.
 
 입력은 current REVIEW2_DONE→READY_FOR_R3 physical closure다.
-final full audit를 수행하고 current artifact/source authority로 확정 가능한 결함은
-같은 R3에서 pinpoint repair한다.
-changed locus + direct dependency + locked scope를 재확인한다.
-
-가능하면 canonical R3 validator → R3 receipt
-→ R3_PASS→RELEASE_QUEUE → remote readback까지 닫는다.
+**final full audit를 1회 깊게** 수행하고 current artifact/source authority로 확정 가능한 결함은 같은 R3에서 pinpoint repair한다.
+repair 후에는 **changed locus + direct dependency + locked scope만** 재확인하며 whole exam R3를 처음부터 다시 돌리지 않는다.
+canonical R3 validator는 1회 실행하고 R3 receipt → R3_PASS→RELEASE_QUEUE → remote readback 1회로 닫는다.
 
 현재 artifact만으로 source truth를 확정할 수 없는
 원본 PDF/page 재확인·재추출·재크롭·손상 source asset만
@@ -359,6 +368,15 @@ incident
 개별 automation prompt만 수정하고 종료하지 않는다.
 
 ## 14. CHANGELOG
+
+### V1.3.0 — 2026-10-04
+- QUALITY DEEP / VALIDATION LEAN 고정: 실제 품질 검수는 깊게 유지하고 반복 ceremony만 제거.
+- stage당 quality pass 1회, repair 후 changed locus + direct dependency만 재확인.
+- targeted validator/receipt/readback 각 1회, 동일 PASS 반복 검증 금지.
+- R3 repair 후 whole-exam R3 재실행 금지.
+- blocker retry budget을 fresh state 1회 + alternate safe retry 최대 1회로 제한.
+- latest-main 최종 reconciliation을 MAIN/PUBLISH owner에 집중.
+
 
 ### V1.2.0 — 2026-10-04
 - WORK-FIRST / MINIMUM VERIFICATION 공통 원칙 추가.
