@@ -3,16 +3,16 @@
   "generation": "M2_1_CREATE_FIRST_2026_10_04",
   "canonicalOrdinal": 9,
   "stage": "CREATE",
-  "status": "CREATE_CLOSURE_DEBT",
+  "status": "CODEX_SOURCE_REPAIR_DONE_SOURCE_FREE_CONTINUATION",
   "examUid": "M2-1-21-PALMA-1MID",
   "examFile": "21_팔마중_1학기_중간_중2_기출.js",
   "examPath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
   "inputBaselineGitBlob": "4fec5194ff42312bb636090cabed9f22c2cae9d9",
   "productionBranch": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
-  "productionHead": "c8ff6679cc8ffa3ee1447ec8f880b34de7499b8b",
-  "finalArtifactGitBlob": "a642f718ef1787af1073c954673031a40fbb9a6d",
-  "finalArtifactSha256": "sha256:82280284d809657c15891920baa29c31dfb97bba222d8ef89a3369a5c13599cd",
-  "physicalEvidenceGitBlob": "33cdbcb02a5a32604d68243a65538b96193a010a",
+  "productionHead": "9d5cbf30f7b86a174224826d8fd5323516dad3ec",
+  "finalArtifactGitBlob": "96796ad3aca23c5d31626d4954b2fe15d32980ba",
+  "finalArtifactSha256": "sha256:9431a9a26ff756be29047c774f76bcadd89dabf86316a9ce19ff529fd45af28f",
+  "physicalEvidenceGitBlob": "407a0b32ff72168f2efdabfaf589b776acc1d0dd",
   "metaPayloadGitBlob": "2bfe90aa7af297812e9c468428a453c09baed38f",
   "assetBlobs": {
     "q22SolutionSvg": "629e37f56839521359917a52153ce3b373e7eca0",
@@ -22,7 +22,7 @@
     "number": 208,
     "url": "https://github.com/icefoxtail/AP------/pull/208",
     "draft": true,
-    "headSha": "c8ff6679cc8ffa3ee1447ec8f880b34de7499b8b"
+    "headSha": "9d5cbf30f7b86a174224826d8fd5323516dad3ec"
   },
   "workflowReadback": [
     {
@@ -39,46 +39,54 @@
       "summary": "Syntax check passed; aggregate tests reported PASS 188 / FAIL 4. The four blocking suites are apmath-student-teacher-preview, archive-target-selection-phase3-contract, print-render-authority-mixer-ecosystem, and student-portal-omr-history-routes; none is a canonical target-scoped CREATE validator or receipt."
     }
   ],
-  "completedStep": "CREATE_CANDIDATE_FRESH_SOLUTIONS_24_OF_24_META_24_OF_24_Q22_SVG_RENDER_PHYSICAL_EVIDENCE_PR_REMOTE_READBACK",
-  "firstMissingClosureStep": "SOURCE_REPAIR_REQUIRED_Q10_Q12_Q19",
+  "completedStep": "D_SOURCE_CONFIRMED_TARGETED_REPAIR_Q10_Q12_Q19; targeted source-repair validator PASS",
+  "firstMissingClosureStep": "SOURCE_FREE_CREATE_CONTINUATION",
   "exactCapabilityError": [
-    "q10 current JS and full repository history contain a figure-dependent stem but no linked authoritative problem image/SVG or segment labels.",
-    "q12 current and oldest available repository versions display an equation whose exact algebra yields -5a, absent from the choices and conflicting with answer ③.",
-    "q19 current and oldest available repository versions omit the comparison inequality required by the phrase '두 일차부등식의 해가 같을 때', leaving a undetermined.",
-    "Repository history back to ab9d9d2901a399fefa57a8fb54653ece8a354a5a preserves the same q10/q12/q19 deficits; code search and expected asset-directory reads found no recoverable source pixel.",
-    "No callable canonical CREATE validator executor or source-image authority is exposed in this environment."
+    "D original q10/q12/q19 source loci are repaired and independently checked; see sourceRepairEvidencePath.",
+    "Canonical CREATE validator and CREATE receipt remain NOT_RUN/MISSING in this checkout; source-free CREATE closure is separate."
   ],
-  "requiredNextAction": "Recover the authoritative scanned source for 21 팔마중 2021 1학기 중간 and repair q10 problem figure, q12 content/choices/answer, and q19 missing comparison inequality. Recompute affected solutions and metadata, rerun the actual canonical CREATE validator, bind the validator receipt and CREATE receipt, then remote-read back CREATE_DONE -> READY_FOR_REVIEW1. Do not treat PR #208, generic CI, or this handoff as PASS.",
+  "requiredNextAction": "Continue source-free CREATE from this artifact; run the authorized canonical CREATE validator and write/read back its validator receipt and CREATE receipt. Do not infer CREATE_DONE or READY_FOR_REVIEW1 from source repair.",
   "sourceRepairLoci": [
     {
       "qid": 10,
-      "missing": "authoritative problem figure and segment labels",
-      "currentAnswer": "④",
-      "provisionalComputation": "10a+8b only if source totals are 5a and 4b"
+      "status": "CLOSED_D_SOURCE_CONFIRMED",
+      "verifiedAnswer": "①",
+      "sourcePage": "2/6; printed 6-2"
     },
     {
       "qid": 12,
-      "missing": "authoritative source expression/choices/answer",
-      "currentComputedValue": "-5a",
-      "currentAnswer": "③"
+      "status": "CLOSED_D_SOURCE_CONFIRMED",
+      "verifiedAnswer": "⑤",
+      "sourcePage": "3/6; printed 6-3"
     },
     {
       "qid": 19,
-      "missing": "first/comparison inequality or equivalent coefficient condition",
-      "currentAnswer": "②"
+      "status": "CLOSED_D_SOURCE_CONFIRMED",
+      "verifiedAnswer": "③",
+      "sourcePage": "4/6; printed 6-4"
     }
   ],
-  "ownerState": "RELINQUISHED_TO_THANOS",
+  "ownerState": "RELINQUISHED_TO_SOURCE_FREE_CREATE_CONTINUATION",
   "r1Eligible": false,
   "createDone": false,
   "passClaim": false,
   "mutationScope": "o9 only",
   "unrelatedMutationCount": 0,
-  "rescueQueueRegistration": "GIT_PHYSICAL_AND_NOTION_LANE_CURRENT",
-  "rescueQueueRef": "rescue/m2/create-closure-debt/o9-a642f718-source-repair-20261004-1648@3e6df9406258fb87b7d0b40fbd64da69f4b11d18",
+  "rescueQueueRegistration": "CODEX_SOURCE_REPAIR_CLOSED_SOURCE_FREE_CREATE_CONTINUATION",
+  "rescueQueueRef": "rescue/m2/create-closure-debt/o9-a642f718-source-repair-20261004-1648",
   "stateStorageMirror": {
     "workPage": "LANE CURRENT — M2-1 TEMP-CREATE-4",
     "productionBlocking": false,
-    "recovery": "THANOS/ORCHESTRATOR should consume the physical rescue ref and start exactly at firstMissingClosureStep."
-  }
+    "recovery": "Source repair is physically closed on productionBranch/productionHead. Resume only source-free CREATE closure from SOURCE_FREE_CREATE_CONTINUATION; canonical validator/receipt remain pending."
+  },
+  "latestMainObserved": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
+  "sourceRepairStatus": "D_SOURCE_CONFIRMED",
+  "sourceRepairBranch": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
+  "sourceRepairCommit": "9d5cbf30f7b86a174224826d8fd5323516dad3ec",
+  "sourceRepairEvidencePath": "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.source-repair.json",
+  "sourceRepairEvidenceGitBlob": "04f13136dbd087b7fac07189ba9479c0a05ade8d",
+  "sourceRepairEvidenceDProblemPdfSha256": "4E84F43BFDFEE707CFBEE1CB4AAB855CD63D7411E0885DD1E2DC4F4C8EB6BA70",
+  "sourceRepairTargetedValidator": "PASS",
+  "sourceParityPassClaim": "q10/q12/q19 direct D source parity only; no whole-exam CREATE pass claim.",
+  "readyForReview1": false
 }
