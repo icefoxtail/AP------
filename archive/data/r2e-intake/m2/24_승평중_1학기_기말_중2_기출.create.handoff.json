@@ -2,8 +2,8 @@
   "schemaVersion": "JS_ARCHIVE_CREATE_CLOSURE_HANDOFF_v1",
   "generation": "M2_1_CREATE_FIRST_2026_10_03",
   "stage": "CREATE",
-  "status": "CREATE_CLOSURE_DEBT",
-  "handoffDisposition": "BLOCKED_AFTER_BOUNDED_SAFE_PATHS",
+  "status": "CREATE_DONE",
+  "handoffDisposition": "READY_FOR_REVIEW1",
   "examUid": "o27",
   "canonicalOrdinal": 27,
   "examFile": "24_승평중_1학기_기말_중2_기출.js",
@@ -15,21 +15,19 @@
   "physicalEvidenceBlob": "060b052861e45fcbc03709231b6d2c510571f600",
   "metaPayloadBlob": "bba7ef5e247db7583c59a5f64785b4297316acbf",
   "completedStep": "LATEST_MAIN_TARGET_ONLY_REBIND_HOLD0_EVIDENCE_META_READY",
-  "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR_EXECUTOR",
-  "exactCapabilityError": [
-    "Validation-only pull request creation was blocked by OpenAI safety checks before side effect.",
-    "Second minimal draft PR path was also blocked before side effect."
-  ],
-  "safePathsAttempted": [
-    "standard validation-only pull request creation",
-    "minimal draft pull request creation using head/base fields"
-  ],
-  "requiredNextAction": "Run the canonical CREATE calibration preflight + review-evidence gate exactly once against this exact branch/artifact/evidence; on PASS bind validator receipt, emit CREATE receipt, transition CREATE_DONE->READY_FOR_REVIEW1, remote-read back.",
-  "assignedRescueOwner": "M2-1 TEMP-MASTER-5",
-  "owner": "RELINQUISHED_AFTER_BOUNDED_BLOCK",
+  "firstMissingClosureStep": null,
+  "exactCapabilityError": [],
+  "safePathsAttempted": [],
+  "requiredNextAction": "R1 worker consumes READY_FOR_REVIEW1 using current artifact/source authority and creates fresh R1 evidence.",
+  "assignedRescueOwner": "M2-1 MANUAL USER-DIRECTED CLOSE",
+  "owner": "RELINQUISHED",
   "writerLeaseRelinquished": true,
-  "r1Eligible": false,
-  "passDeclared": false,
+  "r1Eligible": true,
+  "passDeclared": true,
   "itemHoldQuestionIds": [],
-  "updatedKst": "2026-10-05 05:24"
+  "validatorRunId": 37239827407,
+  "validatorJobId": 111546128349,
+  "validatorReceiptGitBlob": "15838b436dfd1e6a02f95df8911b9c6366479339",
+  "createReceiptGitBlob": "f9902e1aac9636fe430506a73c6b831f587e6782",
+  "updatedKst": "2026-10-05 08:04"
 }
