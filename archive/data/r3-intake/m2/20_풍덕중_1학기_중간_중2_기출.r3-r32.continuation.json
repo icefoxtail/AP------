@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_CLOSURE_CONTINUATION_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 14,
+  "examUid": "M2-1-20-PUNGDEOK-1MID",
+  "exam": "20_풍덕중_1학기_중간_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+  "worker": "M2-1 R3-2",
+  "branch": "work/middle/m2/o14-pungdeok-r3-2-20261005-0648",
+  "branchHeadAtAuditStart": "9d26391f362fbaf279f8365f880d8d8f1954fa95",
+  "inputArtifactSha": "64a6887c16136ec85cfd913deea49ee27b0e34b6",
+  "finalArtifactSha": "64a6887c16136ec85cfd913deea49ee27b0e34b6",
+  "upstreamR2": {
+    "validatorRun": 37236406755,
+    "validatorJob": 111536266346,
+    "validatorReceiptBlob": "daa033ae626d8eac22c4417ebac6676acae585f5",
+    "review2ReceiptBlob": "ce9f3dd72b84bed634a3de3942648f6486d20e53"
+  },
+  "audit": {
+    "denominator": "24/24",
+    "mathAnswer": "24/24 checked",
+    "solution": "24/24 checked; q17 rationale defect opened",
+    "curriculum": "24/24 checked",
+    "metaTagDifficulty": "24/24 checked",
+    "problemVisuals": "5 raster + 3 inline SVG inspected/reconciled",
+    "linkedSolutionVisuals": "0",
+    "openQids": [
+      17
+    ]
+  },
+  "evidenceDecisionSnapshot": {
+    "q17": {
+      "solutionDefect": "Current step 1 incorrectly derives AD=AF and BD=BE from equal incenter-to-side distances. Correct authority is equal tangent segments from a common external point.",
+      "deterministicRepairPrepared": "Rewrite q17 step 1 with D/E/F as incircle contact points and common-point tangent equality; retain answer ④ and perimeter chain.",
+      "problemAssetDefect": "q17.png is visibly clipped at the left edge: vertex B/owner label is outside the crop and adjacent problem text intrudes at the top.",
+      "sourceAuthorityNeeded": "Original problem PDF/page is required to recrop the full source figure without inventing a replacement problem SVG."
+    }
+  },
+  "completedStep": "R3_FULL_AUDIT_AND_Q17_PINPOINT_REPAIR_PREPARATION",
+  "firstMissingClosureStep": "Q17_SOLUTION_WRITE_AND_SOURCE_PDF_RECROP",
+  "exactCapabilityErrors": [
+    "GitHub update_file production write blocked by OpenAI safety checks.",
+    "Materially different Git-object create_blob production write path blocked by OpenAI safety checks.",
+    "Library and Google Drive exact filename searches did not locate the original 2020 Pungdeok PDF."
+  ],
+  "requiredNextAction": [
+    "Use source-capable executor to open 2020_풍덕중2_수학_1중간.pdf and recrop q17 with full B/D/E/F/A/C ownership and no neighboring text.",
+    "Apply the prepared q17 solution-only mathematical rationale correction.",
+    "Recheck q17 changed locus + direct dependency only, then produce R3 physical evidence/decision snapshot and run the canonical R3 validator.",
+    "On actual PASS, write validator receipt + R3 receipt + release manifest and move R3_PASS→RELEASE_QUEUE with remote readback."
+  ],
+  "disposition": "R3_CLOSURE_DEBT",
+  "sourceRepairRequired": true,
+  "r3Pass": false,
+  "releaseEligible": false,
+  "ownerRelinquished": true,
+  "mainMutation": 0
+}
