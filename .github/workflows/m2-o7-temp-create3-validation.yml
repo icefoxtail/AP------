@@ -1,0 +1,20 @@
+name: M2 o7 CREATE Validation
+
+on:
+  push:
+    branches:
+      - work/middle/m2/24-munseong-1mid-temp-create3-20261004-1224
+
+jobs:
+  create-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run o7 canonical CREATE gate
+        run: node tests/m2-temp-create3-o7-munseong-create-gate.test.js
