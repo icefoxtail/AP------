@@ -12,7 +12,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "함숫값",
+      "대입"
+    ],
     "wide": false,
     "content": "함수 $f(x)=5x-3$에 대하여 $f(2)$의 값은?",
     "choices": [
@@ -23,7 +28,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "④",
-    "solution": "$f(2)=5\\times2-3=7$",
+    "solution": "함수의 식에 $x=2$를 대입한다.\n$f(2)=5\\times2-3=7$\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -40,7 +45,12 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "해대입",
+      "계수결정"
+    ],
     "wide": false,
     "content": "일차방정식 $2x+y=k$가 $x=3$, $y=2$를 해로 가진다. $k$의 값은?",
     "choices": [
@@ -51,7 +61,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "④",
-    "solution": "$k=2\\times3+2=8$",
+    "solution": "주어진 $(x,y)=(3,2)$가 방정식의 해이므로 대입한다.\n$2\\times3+2=k$\n따라서 $k=8$이고 정답은 ④이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -68,7 +78,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "평행이동",
+      "계수"
+    ],
     "wide": false,
     "content": "일차함수 $y=3x$의 그래프를 $y$축의 방향으로 $-2$만큼 평행이동하면 일차함수 $y=ax+b$의 그래프가 된다. 이때 $a+b$의 값은?",
     "choices": [
@@ -79,7 +94,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "$y=3x-2$<br>$a=3,\\ b=-2$<br>$a+b=1$",
+    "solution": "$y=3x$의 그래프를 $y$축의 음의 방향으로 2만큼 평행이동하면 $y=3x-2$이다.\n따라서 $a=3$, $b=-2$이므로 $a+b=1$이다.\n정답은 ①이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
@@ -96,7 +111,11 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "가감법"
+    ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases}x+2y=5\\\\3x-2y=-9\\end{cases}$의 해가 $(a,b)$일 때, $a+b$의 값은?",
     "choices": [
@@ -107,7 +126,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "③",
-    "solution": "$4x=-4,\\ x=-1$<br>$-1+2y=5,\\ y=3$<br>$a+b=2$",
+    "solution": "두 식을 더하면 $4x=-4$이므로 $x=-1$이다.\n이를 $x+2y=5$에 대입하면 $y=3$이다.\n따라서 $(a,b)=(-1,3)$이고 $a+b=2$이다.\n정답은 ③이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -124,7 +143,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "함수",
+      "함수판별",
+      "대응"
+    ],
     "wide": false,
     "content": "다음 중 $y$가 $x$의 함수가 아닌 것은?",
     "choices": [
@@ -135,7 +159,7 @@ window.questionBank = [
       "넓이가 $30\\mathrm{cm}^2$인 직사각형의 가로의 길이 $x$ cm와 세로 $y$ cm"
     ],
     "answer": "①",
-    "solution": "$x=4$일 때 $y=1,3$ 등 여러 개",
+    "solution": "함수는 하나의 $x$값에 하나의 $y$값만 대응해야 한다.\n①은 $x=4$일 때 $y=1,3$ 등 여러 값이 가능하므로 함수가 아니다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -152,7 +176,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "절편",
+      "그래프"
+    ],
     "wide": false,
     "content": "일차함수 $y=-\\dfrac{1}{3}x+2$의 그래프의 $x$절편을 $a$, $y$절편을 $b$라 할 때, $a+b$의 값은?",
     "choices": [
@@ -163,7 +192,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "④",
-    "solution": "$0=-\\dfrac13x+2,\\ x=6$<br>$y$절편 $=2$<br>$a+b=8$",
+    "solution": "$x$절편은 $y=0$을 대입해 구한다.\n$0=-\\dfrac13x+2$에서 $x=6$이므로 $a=6$이다.\n$y$절편은 $x=0$일 때 2이므로 $b=2$이다.\n따라서 $a+b=8$이고 정답은 ④이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -180,7 +209,12 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차부등식",
+      "분수계수",
+      "해구하기"
+    ],
     "wide": false,
     "content": "일차부등식 $\\dfrac13x-\\dfrac{x-2}{2}<\\dfrac16$을 풀면?",
     "choices": [
@@ -191,7 +225,7 @@ window.questionBank = [
       "$x>5$"
     ],
     "answer": "⑤",
-    "solution": "$2x-3(x-2)<1$<br>$-x+6<1$<br>$-x<-5$<br>$x>5$",
+    "solution": "양변에 6을 곱하면 $2x-3(x-2)<1$이다.\n정리하면 $-x<-5$이고, 음수로 나누므로 부등호가 바뀌어 $x>5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -208,7 +242,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "일차함수판별",
+      "보기"
+    ],
     "wide": false,
     "content": "보기 중에서 일차함수인 것을 모두 찾은 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'><div style='font-weight:700; text-align:center;'>보기</div>ㄱ. $y=5$<br>ㄴ. $y=2x+3$<br>ㄷ. $y=\\dfrac{3}{x}$</div>",
     "choices": [
@@ -219,7 +258,7 @@ window.questionBank = [
       "ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "$y=ax+b\\ (a\\ne0)$ 꼴은 ㄴ",
+    "solution": "일차함수는 $y=ax+b\\ (a\\ne0)$ 꼴이다.\nㄱ. $y=5$는 $a=0$이므로 아니다.\nㄴ. $y=2x+3$은 일차함수이다.\nㄷ. $y=\\dfrac3x$는 이 꼴이 아니다.\n따라서 ㄴ만 옳아 정답은 ②이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -236,7 +275,11 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식의활용",
+      "속력·시간·거리"
+    ],
     "wide": false,
     "content": "현수는 총 거리가 7 km인 산책로를 걷는데 처음에는 시속 2 km로 걷다가 도중에 더 빠르게 산책을 마치기 위해 남은 거리는 시속 3 km로 걸어 3시간 만에 산책을 마쳤다. 시속 3 km로 걸은 거리는?",
     "choices": [
@@ -247,7 +290,7 @@ window.questionBank = [
       "5 km"
     ],
     "answer": "①",
-    "solution": "시속 3 km로 걸은 거리를 $x$ km라 하면<br>$\\dfrac{7-x}{2}+\\dfrac{x}{3}=3$<br>$21-3x+2x=18$<br>$x=3$",
+    "solution": "시속 3 km로 걸은 거리를 $x$ km라 하면 시속 2 km로 걸은 거리는 $7-x$ km이다.\n$\\dfrac{7-x}{2}+\\dfrac{x}{3}=3$\n양변에 6을 곱하면 $21-3x+2x=18$이므로 $x=3$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -264,7 +307,13 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차부등식",
+      "활용",
+      "도형",
+      "최댓값"
+    ],
     "wide": false,
     "content": "가로의 길이가 세로의 길이보다 3 cm 더 긴 직사각형이 있다. 이 직사각형의 둘레의 길이를 90 cm 이하가 되게 하는 세로의 길이의 최댓값은?",
     "choices": [
@@ -275,7 +324,7 @@ window.questionBank = [
       "24 cm"
     ],
     "answer": "②",
-    "solution": "세로 $x$, 가로 $x+3$<br>$2\\{x+(x+3)\\}\\le90$<br>$4x+6\\le90$<br>$x\\le21$",
+    "solution": "세로를 $x$ cm라 하면 가로는 $x+3$ cm이다.\n$2\\{x+(x+3)\\}\\le90$\n$4x+6\\le90$이므로 $x\\le21$이다.\n따라서 세로의 최댓값은 21 cm이고 정답은 ②이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -292,7 +341,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "기울기",
+      "절편"
+    ],
     "wide": false,
     "content": "$x$절편이 $-2$이고 $y$절편이 4인 일차함수의 그래프의 기울기는?",
     "choices": [
@@ -303,7 +357,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "④",
-    "solution": "$(-2,0),(0,4)$<br>기울기 $=\\dfrac{4-0}{0-(-2)}=2$",
+    "solution": "두 절편으로부터 그래프는 $(-2,0)$, $(0,4)$를 지난다.\n기울기는 $\\dfrac{4-0}{0-(-2)}=2$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -320,7 +374,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "평행",
+      "기울기"
+    ],
     "wide": false,
     "content": "일차방정식 $4x+y-3=0$의 그래프와 평행한 일차함수의 식은?",
     "choices": [
@@ -331,7 +390,7 @@ window.questionBank = [
       "$y=-4x+5$"
     ],
     "answer": "⑤",
-    "solution": "$4x+y-3=0$<br>$y=-4x+3$<br>기울기 $-4$",
+    "solution": "$4x+y-3=0$을 정리하면 $y=-4x+3$이므로 기울기는 $-4$이다.\n평행한 직선은 기울기가 같으므로 $y=-4x+5$가 알맞다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -348,7 +407,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "그래프일치",
+      "계수결정"
+    ],
     "wide": false,
     "content": "두 일차함수 $y=\\dfrac{a}{2}x+3$, $y=2x-b$의 그래프가 일치할 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은?",
     "choices": [
@@ -359,9 +423,9 @@ window.questionBank = [
       "7"
     ],
     "answer": "③",
-    "solution": "$\\dfrac{a}{2}=2,\\ a=4$<br>$3=-b,\\ b=-3$<br>$a+b=1$",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "solution": "두 그래프가 일치하려면 기울기와 $y$절편이 각각 같아야 한다.\n$\\dfrac a2=2$에서 $a=4$, $3=-b$에서 $b=-3$이다.\n따라서 $a+b=1$이고 정답은 ③이다.",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -376,7 +440,12 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차방정식의그래프",
+      "평행",
+      "수직선"
+    ],
     "wide": false,
     "content": "$(-2,3)$을 지나고, 일차방정식 $x=2$의 그래프와 평행한 직선의 방정식은?",
     "choices": [
@@ -387,7 +456,7 @@ window.questionBank = [
       "$y=3$"
     ],
     "answer": "①",
-    "solution": "$x=2$와 평행한 직선은 $x=k$<br>$(-2,3)$을 지나므로 $x=-2$",
+    "solution": "$x=2$는 $y$축과 평행한 수직선이다.\n이와 평행하고 $(-2,3)$을 지나는 직선은 $x=-2$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -404,7 +473,12 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "미지수가2개인일차방정식",
+      "자연수해",
+      "해의개수"
+    ],
     "wide": false,
     "content": "$x, y$가 자연수일 때, 일차방정식 $3x+4y=23$을 만족시키는 순서쌍 $(x,y)$는 모두 몇 개인가?",
     "choices": [
@@ -415,7 +489,7 @@ window.questionBank = [
       "5개"
     ],
     "answer": "②",
-    "solution": "$y=\\dfrac{23-3x}{4}$<br>$(x,y)=(1,5),(5,2)$<br>총 2개",
+    "solution": "$3x+4y=23$에서 $x,y$가 자연수가 되도록 확인하면 $(x,y)=(1,5),(5,2)$이다.\n그 밖의 자연수 $x$에서는 $y$가 자연수가 되지 않는다.\n따라서 순서쌍은 2개이고 정답은 ②이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -432,7 +506,12 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "해가무수히많음",
+      "계수조건"
+    ],
     "wide": false,
     "content": "두 상수 $a$, $b$에 대하여 연립방정식 $\\begin{cases}4x-6y=10\\\\ax+3y=b\\end{cases}$의 해가 무수히 많을 때, $ab$의 값은?",
     "choices": [
@@ -443,9 +522,9 @@ window.questionBank = [
       "20"
     ],
     "answer": "③",
-    "solution": "$\\dfrac{4}{a}=\\dfrac{-6}{3}=\\dfrac{10}{b}$<br>$a=-2,\\ b=-5$<br>$ab=10$",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "solution": "해가 무수히 많으려면 두 방정식이 같은 직선을 나타내므로 대응하는 계수비가 모두 같다.\n$\\dfrac4a=\\dfrac{-6}{3}=\\dfrac{10}{b}=-2$\n따라서 $a=-2$, $b=-5$이고 $ab=10$이다.\n정답은 ③이다.",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -461,7 +540,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "그래프"
+      "객관식",
+      "일차함수",
+      "그래프",
+      "기울기·절편",
+      "사분면"
     ],
     "wide": false,
     "content": "직선 $ax+by+1=0$이 아래 그림과 같을 때, 일차함수 $y=ax+b$의 그래프가 지나지 않는 사분면은?",
@@ -473,7 +556,7 @@ window.questionBank = [
       "모든 사분면을 지난다."
     ],
     "answer": "①",
-    "solution": "$ax+by+1=0$<br>$y=-\\dfrac{a}{b}x-\\dfrac{1}{b}$<br>그림에서 기울기 $<0$, $y$절편 $>0$<br>$a<0,\\ b<0$<br>$y=ax+b$는 제1사분면을 지나지 않음",
+    "solution": "$ax+by+1=0$을 정리하면 $y=-\\dfrac abx-\\dfrac1b$이다.\n그림에서 기울기는 음수이고 $y$절편은 양수이므로 $b<0$, $a<0$이다.\n따라서 $y=ax+b$는 기울기와 $y$절편이 모두 음수여서 제1사분면을 지나지 않는다.\n정답은 ①이다.",
     "image": "assets/images/24_왕운중_1학기_기말_중2_기출/q17.png",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
@@ -492,8 +575,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
+      "객관식",
+      "일차함수",
       "그래프",
-      "활용"
+      "활용",
+      "속력·시간·거리"
     ],
     "wide": false,
     "content": "집에서 1200 m 떨어진 도서관까지 가는데 동생은 걸어서 가고, 형은 동생이 출발한 지 5분 후에 자전거를 타고 갔다. 아래 그래프는 동생이 출발한 지 $x$분 후에 형이 간 거리 $y$ m를 나타낸 것이다. 형과 동생이 집에서 1000 m 떨어진 곳에서 만났다면 동생이 도서관까지 가는 데 걸린 시간은?",
@@ -505,7 +591,7 @@ window.questionBank = [
       "12분"
     ],
     "answer": "⑤",
-    "solution": "형: $(5,0),(11,1200)$<br>속력 $=\\dfrac{1200}{6}=200$ m/분<br>1000 m 도착 시각 $=5+\\dfrac{1000}{200}=10$분<br>동생 속력 $=\\dfrac{1000}{10}=100$ m/분<br>$\\dfrac{1200}{100}=12$분",
+    "solution": "그래프에서 형은 $(5,0)$에서 출발하여 $(11,1200)$에 도착한다.\n형의 속력은 $\\dfrac{1200}{11-5}=200$ m/분이다.\n1000 m 지점에는 동생 출발 후 $5+\\dfrac{1000}{200}=10$분에 도착한다.\n동생의 속력은 $\\dfrac{1000}{10}=100$ m/분이므로 도서관까지 $\\dfrac{1200}{100}=12$분 걸린다.\n정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_1학기_기말_중2_기출/q18.png",
     "imageSize": "medium",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
@@ -524,7 +610,12 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차부등식",
+      "자연수해",
+      "계수범위"
+    ],
     "wide": false,
     "content": "일차부등식 $2x-a<0$을 만족시키는 자연수 $x$의 개수가 3일 때, 상수 $a$의 범위를 구하면?",
     "choices": [
@@ -535,9 +626,9 @@ window.questionBank = [
       "$6\\le a<8$"
     ],
     "answer": "④",
-    "solution": "$x<\\dfrac{a}{2}$<br>자연수 해가 $1,2,3$만 가능<br>$3<\\dfrac{a}{2}\\le4$<br>$6<a\\le8$",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "solution": "$2x-a<0$을 풀면 $x<\\dfrac a2$이다.\n자연수 해가 정확히 $1,2,3$이 되려면 $3<\\dfrac a2\\le4$이어야 한다.\n따라서 $6<a\\le8$이고 정답은 ④이다.",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -553,8 +644,12 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
+      "객관식",
+      "일차함수",
       "그래프",
-      "보기"
+      "보기",
+      "넓이",
+      "매개변수"
     ],
     "wide": false,
     "content": "네 직선 $x=2$, $x=6$, $y=3$, $y=5$에 의해 둘러싸인 직사각형 모양의 도형은 아래 그림과 같다. 일차함수 $y=ax-2$ (단, $a\\ne0$)의 그래프가 직사각형 모양의 도형과 만날 때, 옳은 것을 모두 찾은 것은?<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'><div style='font-weight:700; text-align:center;'>보기</div>ㄱ. 직사각형의 넓이는 8이다.<br>ㄴ. $a$의 최댓값을 $m$, 최솟값을 $n$이라 하면 $5m=21n$이다.<br>ㄷ. $a=\\dfrac{3}{2}$일 때 $y=ax-2$의 그래프가 직사각형 모양의 도형의 넓이를 이등분한다.</div>",
@@ -566,11 +661,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "넓이 $(6-2)(5-3)=8$<br>$a_{\\min}=\\dfrac56,\\ a_{\\max}=\\dfrac72$<br>$5m=\\dfrac{35}{2},\\ 21n=\\dfrac{35}{2}$<br>$a=\\dfrac32$이면 도형의 중심을 지나 넓이를 이등분",
+    "solution": "ㄱ. 직사각형의 넓이는 $(6-2)(5-3)=8$이므로 옳다.\n\nㄴ. 직선 $y=ax-2$가 직사각형과 만나는 $a$의 최솟값은 $(6,3)$을 지날 때의 $\\dfrac56$, 최댓값은 $(2,5)$를 지날 때의 $\\dfrac72$이다.\n따라서 $5m=\\dfrac{35}{2}=21n$이므로 옳다.\n\nㄷ. $a=\\dfrac32$이면 $y=\\dfrac32x-2$이고 직사각형의 중심 $(4,4)$를 지난다.\n직사각형은 중심에 대해 점대칭이므로 중심을 지나는 직선은 넓이를 이등분한다. 따라서 옳다.\n\n그러므로 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_1학기_기말_중2_기출/q20.png",
     "imageSize": "medium",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -586,13 +681,16 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "연립일차방정식",
+      "해대입",
+      "계수결정"
     ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases}3x+2y=12\\\\5x-y=a+2\\end{cases}$를 만족시키는 $x$의 값이 2일 때, $a$의 값을 구하고 그 과정을 서술하시오.",
     "choices": [],
     "answer": "5",
-    "solution": "$x=2$<br>$6+2y=12$<br>$y=3$<br>$10-3=a+2$<br>$a=5$",
+    "solution": "$x=2$를 첫째 식에 대입하면 $6+2y=12$이므로 $y=3$이다.\n둘째 식에 $(x,y)=(2,3)$을 대입하면 $10-3=a+2$이다.\n따라서 $a=5$이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -610,13 +708,16 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차함수",
+      "평행이동",
+      "점대입"
     ],
     "wide": false,
     "content": "일차함수 $y=-\\dfrac{3}{2}x+k$의 그래프를 $y$축 방향으로 3만큼 평행이동한 그래프가 점 $(4,2)$를 지날 때, $k$의 값을 구하고 그 과정을 서술하시오.",
     "choices": [],
     "answer": "5",
-    "solution": "평행이동 후 $y=-\\dfrac32x+k+3$<br>$2=-6+k+3$<br>$k=5$",
+    "solution": "$y=-\\dfrac32x+k$를 $y$축의 양의 방향으로 3만큼 평행이동하면 $y=-\\dfrac32x+k+3$이다.\n$(4,2)$를 대입하면 $2=-6+k+3$이므로 $k=5$이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
@@ -634,13 +735,16 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차함수",
+      "두점",
+      "직선의식"
     ],
     "wide": false,
     "content": "일차함수의 그래프가 두 점 $(-1,2)$, $(2,8)$을 지날 때, 그 일차함수의 식을 구하고 그 과정을 서술하시오.",
     "choices": [],
     "answer": "$y=2x+4$",
-    "solution": "기울기 $=\\dfrac{8-2}{2-(-1)}=2$<br>$y=2x+b$<br>$2=-2+b$<br>$b=4$<br>$y=2x+4$",
+    "solution": "두 점 $(-1,2)$, $(2,8)$을 지나는 직선의 기울기는 $\\dfrac{8-2}{2-(-1)}=2$이다.\n$y=2x+b$에 $(-1,2)$를 대입하면 $b=4$이다.\n따라서 일차함수의 식은 $y=2x+4$이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -656,15 +760,19 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차부등식",
+      "활용",
+      "할인",
+      "비용비교"
     ],
     "wide": false,
     "content": "전체 학생 수가 30명 미만인 어느 학급에서 체험 학습으로 동물원에 가게 되었다. 이 동물원의 입장료는 4000원이며 30명 이상이면 단체 가격으로 25 % 할인하여 준다고 한다. 학생이 몇 명 이상일 때, 30명 단체 입장권을 구입하는 것이 더 싼지 구하시오.",
     "choices": [],
     "answer": "23명",
-    "solution": "학생 수 $x$명<br>개별 입장료 $4000x$<br>단체 입장료 $4000\\times30\\times\\dfrac{75}{100}=90000$<br>$4000x>90000$<br>$x>22.5$<br>따라서 23명 이상",
+    "solution": "학생 수를 $x$명이라 하자.\n개별 입장료는 $4000x$원이고, 30명 단체 입장권은 $4000\\times30\\times\\dfrac{75}{100}=90000$원이다.\n단체 입장권이 더 싸려면 $90000<4000x$이므로 $x>22.5$이다.\n학생 수는 자연수이므로 23명 이상일 때 단체 입장권이 더 싸다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
