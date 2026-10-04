@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CLOSURE_HANDOFF_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04",
+  "canonicalOrdinal": 9,
+  "stage": "CREATE",
+  "status": "CREATE_CLOSURE_DEBT",
+  "examUid": "M2-1-21-PALMA-1MID",
+  "examFile": "21_팔마중_1학기_중간_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+  "inputBaselineGitBlob": "4fec5194ff42312bb636090cabed9f22c2cae9d9",
+  "productionBranch": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
+  "productionHead": "c8ff6679cc8ffa3ee1447ec8f880b34de7499b8b",
+  "finalArtifactGitBlob": "a642f718ef1787af1073c954673031a40fbb9a6d",
+  "finalArtifactSha256": "sha256:82280284d809657c15891920baa29c31dfb97bba222d8ef89a3369a5c13599cd",
+  "physicalEvidenceGitBlob": "33cdbcb02a5a32604d68243a65538b96193a010a",
+  "metaPayloadGitBlob": "2bfe90aa7af297812e9c468428a453c09baed38f",
+  "assetBlobs": {
+    "q22SolutionSvg": "629e37f56839521359917a52153ce3b373e7eca0",
+    "q22RenderPng": "7d992e1e6c1bccbe10264551999a54cbedf450a3"
+  },
+  "pullRequest": {
+    "number": 208,
+    "url": "https://github.com/icefoxtail/AP------/pull/208",
+    "draft": false,
+    "headSha": "c8ff6679cc8ffa3ee1447ec8f880b34de7499b8b"
+  },
+  "completedStep": "CREATE_CANDIDATE_FRESH_SOLUTIONS_24_OF_24_META_24_OF_24_Q22_SVG_RENDER_PHYSICAL_EVIDENCE_PR_REMOTE_READBACK",
+  "firstMissingClosureStep": "SOURCE_REPAIR_REQUIRED_Q10_Q12_Q19",
+  "exactCapabilityError": [
+    "q10 current JS and full repository history contain a figure-dependent stem but no linked authoritative problem image/SVG or segment labels.",
+    "q12 current and oldest available repository versions display an equation whose exact algebra yields -5a, absent from the choices and conflicting with answer ③.",
+    "q19 current and oldest available repository versions omit the comparison inequality required by the phrase '두 일차부등식의 해가 같을 때', leaving a undetermined.",
+    "Repository history back to ab9d9d2901a399fefa57a8fb54653ece8a354a5a preserves the same q10/q12/q19 deficits; code search and expected asset-directory reads found no recoverable source pixel.",
+    "No callable canonical CREATE validator executor or source-image authority is exposed in this environment."
+  ],
+  "requiredNextAction": "Recover the authoritative scanned source for 21 팔마중 2021 1학기 중간 and repair q10 problem figure, q12 content/choices/answer, and q19 missing comparison inequality. Recompute affected solutions and metadata, rerun the actual canonical CREATE validator, bind the validator receipt and CREATE receipt, then remote-read back CREATE_DONE -> READY_FOR_REVIEW1. Do not treat PR #208, generic CI, or this handoff as PASS.",
+  "sourceRepairLoci": [
+    {
+      "qid": 10,
+      "missing": "authoritative problem figure and segment labels",
+      "currentAnswer": "④",
+      "provisionalComputation": "10a+8b only if source totals are 5a and 4b"
+    },
+    {
+      "qid": 12,
+      "missing": "authoritative source expression/choices/answer",
+      "currentComputedValue": "-5a",
+      "currentAnswer": "③"
+    },
+    {
+      "qid": 19,
+      "missing": "first/comparison inequality or equivalent coefficient condition",
+      "currentAnswer": "②"
+    }
+  ],
+  "ownerState": "RELINQUISHED_TO_THANOS",
+  "r1Eligible": false,
+  "createDone": false,
+  "passClaim": false,
+  "mutationScope": "o9 only",
+  "unrelatedMutationCount": 0,
+  "rescueQueueRegistration": "GIT_PHYSICAL_AND_NOTION_LANE_CURRENT",
+  "stateStorageMirror": {
+    "workPage": "LANE CURRENT — M2-1 TEMP-CREATE-4",
+    "productionBlocking": false,
+    "recovery": "THANOS/ORCHESTRATOR should consume the physical rescue ref and start exactly at firstMissingClosureStep."
+  }
+}
