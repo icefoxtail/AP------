@@ -34,9 +34,13 @@ async function run() {
   const examBlob = execFileSync("git", ["hash-object", examFile], { encoding: "utf8" }).trim();
   assert.equal(physical.finalArtifactGitBlob, examBlob);
   assert.equal(physical.examSha256, report.examSha256);
+  assert.equal(sha256(fs.readFileSync(sourceRepairFile)), physical.sourceRepairEvidenceSha256);
+  assert.equal(physical.sourceRepair.evidenceSha256, physical.sourceRepairEvidenceSha256);
   assert.deepEqual(physical.openQids, []);
   assert.equal(physical.candidateDisposition, "R3_PASS");
   assert.equal(physical.summary.lockedScopeMutationCount, 0);
+  const metaSidecar = readJson("archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.create.meta-v2.metadata.json");
+  assert.equal(metaSidecar.examGitBlob, examBlob);
 
   assert.equal(sourceRepair.status, "SOURCE_PIXEL_REPAIRED");
   assert.equal(sourceRepair.sourceAuthority.pdfSha256, "sha256:6ed6c336ced01cc1f74bbf364228b2efef34b7b8ce9eb6034e6d1c8641181871");
@@ -77,10 +81,25 @@ async function run() {
   }
   assert.equal(r1Receipt.reviewDecision, "PASS_WITH_ITEM_HOLDS");
   assert.equal(r2Receipt.reviewDecision, "PASS_WITH_ITEM_HOLDS");
+  const r1EvidencePath = "archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review1.physical-evidence.json";
+  const r1ValidatorPath = "archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review1.validator.json";
+  const r2EvidencePath = "archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review2.physical-evidence.json";
+  const r2ValidatorPath = "archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review2.validator.json";
+  const r2DecisionPath = "archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review2.recheck-decision.json";
+  const gitBlob = (file) => execFileSync("git", ["hash-object", file], { encoding: "utf8" }).trim();
+  assert.equal(r1Receipt.evidenceSha, gitBlob(r1EvidencePath));
+  assert.equal(r1Receipt.validatorReceiptSha, gitBlob(r1ValidatorPath));
+  assert.equal(r2Receipt.evidenceSha, gitBlob(r2EvidencePath));
+  assert.equal(r2Receipt.validatorReceiptSha, gitBlob(r2ValidatorPath));
+  assert.equal(r2Receipt.recheckDecisionSha, gitBlob(r2DecisionPath));
+  assert.equal(physical.sourceAuthority.review2ReceiptBlob, gitBlob("archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review2.json"));
+  assert.equal(physical.sourceAuthority.review2ValidatorBlob, gitBlob(r2ValidatorPath));
   assert.equal(r1Validator.result.ok, true);
   assert.equal(r2Validator.result.ok, true);
   assert.equal(r1Validator.result.itemHoldCount, 7);
   assert.equal(r2Validator.result.itemHoldCount, 7);
+  assert.ok(r1Validator.workflowRunId > 0 && r1Validator.workflowJobId > 0);
+  assert.equal(r2Validator.targetedCanonicalGate, "PASS");
   assert.ok(r2Validator.workflowRunId > 0 && r2Validator.workflowJobId > 0);
 
   console.log(JSON.stringify({
