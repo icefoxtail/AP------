@@ -10,7 +10,7 @@ const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-mater
 const runtimeVersions = Object.freeze({
     mathjax_render_loop: '20260911.5',
     'layout-authority': '20260911.5',
-    'layout-materializer': '20260914.1',
+    'layout-materializer': '20261003.2',
     'solution-render-executor': '20260914.1',
     'exam-render-executor': '20260914.1',
     'render-state-normalizer': '20260911.5',
@@ -18,7 +18,7 @@ const runtimeVersions = Object.freeze({
     'screen-runtime': '20260922.2',
     'snapshot-contract': '20260923.1',
     'question-image-readiness': '20260915.2',
-    'screen-runtime-adapter': '20260922.2'
+    'screen-runtime-adapter': '20261003.2'
 });
 const version = '20260915.2';
 
@@ -43,7 +43,7 @@ const version = '20260915.2';
             materializer: Boolean(window.APArchiveLayoutMaterializer), fingerprint: archiveScreenRuntime.committedCandidate.fingerprints
         }));
         assert.equal(identity.runtime, true); assert.equal(identity.planner, 'function'); assert.equal(identity.materializer, true);
-        assert.equal(identity.fingerprint.engine, 'archive-fast-phase6-20260914.1');
+        assert.equal(identity.fingerprint.engine, 'archive-fast-phase6-20261003.2');
         assert.equal(identity.fingerprint.layoutAuthority, 'measured-production-v1-20260914.1');
 
         await page.getByRole('button', { name: '헤더 수정' }).click();

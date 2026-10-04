@@ -1058,6 +1058,35 @@ async function performExcludeStudent(env, currentTeacher, { classId, studentId, 
   };
 }
 
+const RECENT_SUBJECT_WHITESPACE_SQL = [
+  "' '", "char(9)", "char(10)", "char(11)", "char(12)", "char(13)",
+  "char(160)", "char(5760)", "char(8192)", "char(8193)", "char(8194)",
+  "char(8195)", "char(8196)", "char(8197)", "char(8198)", "char(8199)",
+  "char(8200)", "char(8201)", "char(8202)", "char(8232)", "char(8233)",
+  "char(8239)", "char(8287)", "char(12288)", "char(65279)",
+];
+
+function normalizeRecentSubjectTerm(value) {
+  return String(value || '')
+    .normalize('NFC')
+    .replace(/Ⅰ/g, 'I')
+    .replace(/Ⅱ/g, 'II')
+    .replace(/\s+/g, '')
+    .toLowerCase();
+}
+
+function recentSubjectTermVariants(value) {
+  const normalized = normalizeRecentSubjectTerm(value);
+  return [...new Set([normalized, normalized.normalize('NFD')])];
+}
+
+function normalizeRecentSubjectSql(expression) {
+  let normalized = `COALESCE(${expression}, '')`;
+  for (const whitespace of RECENT_SUBJECT_WHITESPACE_SQL)
+    normalized = `REPLACE(${normalized}, ${whitespace}, '')`;
+  return `LOWER(REPLACE(REPLACE(${normalized}, 'Ⅰ', 'I'), 'Ⅱ', 'II'))`;
+}
+
 export async function handleExams(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
@@ -1919,6 +1948,124 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
       const classId = normalizeOptionalText(url.searchParams.get('class'));
+      if (id === 'recent-summary') {
+        if (classId && !(await canAccessClass(currentTeacher, classId, env)))
+          return jsonResponse({ error: 'Forbidden' }, 403);
+        const allowedClassIds = classId ? [classId] : await getAllowedClassIds(env, currentTeacher);
+        if (Array.isArray(allowedClassIds) && !allowedClassIds.length)
+          return jsonResponse({ success: true, assignments: [], limit: 0 });
+
+        const assignmentColumns = await getTableColumnSet(env, 'class_exam_assignments');
+        const classColumns = await getTableColumnSet(env, 'classes');
+        const recipientColumns = await getTableColumnSet(env, 'class_exam_assignment_recipients');
+        const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
+        const exclusionColumns = await getTableColumnSet(env, 'class_exam_assignment_exclusions');
+        const lifecycleColumns = await getTableColumnSet(env, 'class_exam_assignment_lifecycle_events');
+        const limitInput = Number.parseInt(url.searchParams.get('limit') || '1000', 10);
+        const limit = Number.isInteger(limitInput) && limitInput > 0 ? Math.min(1000, limitInput) : 1000;
+        const conditions = [];
+        const params = [];
+        if (classId) {
+          conditions.push('a.class_id = ?');
+          params.push(classId);
+        } else if (Array.isArray(allowedClassIds)) {
+          conditions.push(`a.class_id IN (${allowedClassIds.map(() => '?').join(',')})`);
+          params.push(...allowedClassIds);
+        }
+        const grade = normalizeBoardGrade(url.searchParams.get('grade') || '');
+        const from = normalizeBoardDate(url.searchParams.get('from'));
+        const to = normalizeBoardDate(url.searchParams.get('to'));
+        if (grade && classColumns.has('grade')) {
+          conditions.push("REPLACE(COALESCE(c.grade, ''), ' ', '') = ?");
+          params.push(grade);
+        }
+        if (from) {
+          conditions.push("SUBSTR(COALESCE(a.exam_date, ''), 1, 10) >= ?");
+          params.push(from);
+        }
+        if (to) {
+          conditions.push("SUBSTR(COALESCE(a.exam_date, ''), 1, 10) <= ?");
+          params.push(to);
+        }
+        const subjectKey = normalizeOptionalText(url.searchParams.get('subject'));
+        const subjectTerms = [...new Set([
+          subjectKey,
+          ...url.searchParams.getAll('subject_term').slice(0, 16),
+        ].flatMap(recentSubjectTermVariants)
+          .filter(value => value && value.length <= 100))];
+        if (subjectKey && subjectTerms.length) {
+          const subjectExpressions = [];
+          if (assignmentColumns.has('subject')) subjectExpressions.push(normalizeRecentSubjectSql('a.subject'));
+          if (assignmentColumns.has('mixed_payload_json')) {
+            const metaSubject = `CASE WHEN json_valid(COALESCE(a.mixed_payload_json, '')) THEN json_extract(a.mixed_payload_json, '$.meta.subject') ELSE '' END`;
+            subjectExpressions.push(normalizeRecentSubjectSql(metaSubject));
+          }
+          if (subjectExpressions.length) {
+            conditions.push(`(${subjectExpressions.map(expression => `${expression} IN (${subjectTerms.map(() => '?').join(',')})`).join(' OR ')})`);
+            for (const expression of subjectExpressions) params.push(...subjectTerms);
+          }
+        }
+        const query = String(normalizeOptionalText(url.searchParams.get('query')) || '')
+          .normalize('NFC').toLocaleLowerCase().replace(/\s+/g, '').slice(0, 100);
+        if (query) {
+          const escapedQuery = query.replace(/[\\%_]/g, value => `\\${value}`);
+          const titleExpression = `LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(COALESCE(a.exam_title, ''), ' ', ''), char(9), ''), char(10), ''), char(13), ''), char(160), ''))`;
+          conditions.push(`${titleExpression} LIKE ? ESCAPE '\\'`);
+          params.push(`%${escapedQuery}%`);
+        }
+
+        const recipientCount = recipientColumns.has('assignment_id')
+          ? '(SELECT COUNT(*) FROM class_exam_assignment_recipients r WHERE r.assignment_id = a.id)'
+          : 'NULL';
+        const submittedCount = sessionColumns.has('assignment_id') && sessionColumns.has('student_id')
+          ? '(SELECT COUNT(DISTINCT es.student_id) FROM exam_sessions es WHERE es.assignment_id = a.id)'
+          : 'NULL';
+        const reviewOnlyPredicate = [
+          assignmentColumns.has('cancelled_at') ? 'a.cancelled_at IS NOT NULL' : '',
+          exclusionColumns.has('assignment_id') && exclusionColumns.has('student_id') ? 'ex.student_id IS NOT NULL' : '',
+        ].filter(Boolean).join(' OR ');
+        const reviewOnlyCount = recipientColumns.has('assignment_id') && recipientColumns.has('student_id') &&
+          sessionColumns.has('assignment_id') && sessionColumns.has('student_id') && reviewOnlyPredicate
+          ? `(SELECT COUNT(DISTINCT es.student_id) FROM class_exam_assignment_recipients r
+              JOIN exam_sessions es ON es.assignment_id = r.assignment_id AND es.student_id = r.student_id
+              ${exclusionColumns.has('assignment_id') && exclusionColumns.has('student_id')
+                ? 'LEFT JOIN class_exam_assignment_exclusions ex ON ex.assignment_id = r.assignment_id AND ex.student_id = r.student_id'
+                : ''}
+              WHERE r.assignment_id = a.id AND (${reviewOnlyPredicate}))`
+          : 'NULL';
+        const replacementId = lifecycleColumns.has('assignment_id') && lifecycleColumns.has('related_assignment_id') && lifecycleColumns.has('operation') && lifecycleColumns.has('occurred_at') && lifecycleColumns.has('event_id')
+          ? `(SELECT le.assignment_id FROM class_exam_assignment_lifecycle_events le
+              WHERE le.related_assignment_id = a.id AND le.operation = 'REPLACEMENT_ASSIGNMENT'
+              ORDER BY le.occurred_at DESC, le.event_id DESC LIMIT 1)`
+          : 'NULL';
+        const replacesId = lifecycleColumns.has('assignment_id') && lifecycleColumns.has('related_assignment_id') && lifecycleColumns.has('operation') && lifecycleColumns.has('occurred_at') && lifecycleColumns.has('event_id')
+          ? `(SELECT le.related_assignment_id FROM class_exam_assignment_lifecycle_events le
+              WHERE le.assignment_id = a.id AND le.operation = 'REPLACEMENT_ASSIGNMENT'
+              ORDER BY le.occurred_at DESC, le.event_id DESC LIMIT 1)`
+          : 'NULL';
+        const projection = [
+          'a.id', 'a.class_id', 'a.exam_title', 'a.exam_date', 'a.question_count', 'a.archive_file',
+          assignmentColumns.has('source_type') ? 'a.source_type' : "'archive' AS source_type",
+          assignmentColumns.has('subject') ? 'a.subject' : "'' AS subject",
+          assignmentColumns.has('pdf_status') ? 'a.pdf_status' : "'pending' AS pdf_status",
+          assignmentColumns.has('pdf_error') ? 'a.pdf_error' : "'' AS pdf_error",
+          assignmentColumns.has('saved_paper_id') ? 'a.saved_paper_id' : 'NULL AS saved_paper_id',
+          assignmentColumns.has('cancelled_at') ? 'a.cancelled_at' : 'NULL AS cancelled_at',
+          `${recipientCount} AS recipient_count`, `${submittedCount} AS submitted_count`,
+          `${reviewOnlyCount} AS review_only_count`, `${replacementId} AS replacement_assignment_id`,
+          `${replacesId} AS replaces_assignment_id`,
+          'c.name AS class_name', classColumns.has('grade') ? 'c.grade AS class_grade' : "'' AS class_grade",
+        ];
+        const result = await env.DB.prepare(`
+          SELECT ${projection.join(',\n            ')}
+          FROM class_exam_assignments a
+          LEFT JOIN classes c ON c.id = a.class_id
+          ${conditions.length ? `WHERE ${conditions.join(' AND ')}` : ''}
+          ORDER BY a.exam_date DESC, a.updated_at DESC, a.id DESC
+          LIMIT ?
+        `).bind(...params, limit).all();
+        return jsonResponse({ success: true, limit, assignments: dedupeClassExamAssignments(result.results || []) });
+      }
       const historyList = url.searchParams.get('history') === '1';
       if (historyList) {
         if (classId && !(await canAccessClass(currentTeacher, classId, env)))

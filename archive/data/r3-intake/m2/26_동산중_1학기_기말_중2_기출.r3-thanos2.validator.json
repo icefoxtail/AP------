@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_VALIDATOR_RECEIPT_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 21,
+  "examPath": "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
+  "reviewAttemptId": "R3:m2/1final/26-dongsan:47d67b38feb660c92edb2583b12ace61f9d3fd60:thanos2-20261004-0917",
+  "finalArtifactGitBlobSha": "47d67b38feb660c92edb2583b12ace61f9d3fd60",
+  "finalArtifactSha256": "sha256:78bcf7980ba63daf4885c5618158bfdad43024d80946510f4fbbf1b211f4c3b1",
+  "sourceMainSha": "f7e9d37ed7a3f987b9fdeb6a4b6b5d9d0d93f05d",
+  "decisionSnapshotBlob": "059479e4d8ea6fe75e229985628f8c8fdec5b0a9",
+  "physicalEvidenceBlob": "6bebbdd9f656e5a1ee5b6b9eb49cda2ec5c02dc0",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "solutionCalibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "validationMode": "GITHUB_PR_CI_TARGET_GATE",
+  "validationBranch": "validation/m2-o21-r3-thanos2-20261004-0917",
+  "validationHead": "ac0781ff65095f195ef012a354d3a59a3182f159",
+  "workflowName": "CI",
+  "workflowRun": 37165038842,
+  "workflowJob": 111326121583,
+  "workflowConclusion": "failure",
+  "targetGate": {
+    "marker": "O21_R3_CANONICAL_GATE",
+    "ok": true,
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0,
+    "itemHoldQids": [],
+    "disposition": "PASS",
+    "issues": []
+  },
+  "currentStageLineageGates": {
+    "review1": "PASS_WITH_ITEM_HOLDS",
+    "review2": "PASS",
+    "review3": "PASS"
+  },
+  "repositoryWideCiConclusion": "FAIL_AFTER_TARGET_GATE_PASS",
+  "repositoryWideCiFailures": [
+    "apmath-student-teacher-preview.test.js",
+    "archive-target-selection-phase3-contract.test.js",
+    "m2-r1-2-o21-create-gate.test.js:EVIDENCE_EXAM_SHA_MISMATCH_ON_HISTORICAL_CREATE_EVIDENCE",
+    "print-render-authority-mixer-ecosystem.test.js",
+    "student-portal-omr-history-routes.test.js"
+  ],
+  "targetGateIndependentOfRepositoryWideCi": true,
+  "result": "PASS"
+}

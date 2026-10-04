@@ -4,6 +4,20 @@
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.StudentArchiveReviewOutput = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  function studentReturnTarget(baseUrl) {
+    try {
+      const source = new URL(baseUrl);
+      if (!source.pathname.startsWith('/apmath/student/')) return '';
+      const params = new URLSearchParams();
+      for (const key of ['teacher_preview', 'student_id', 'omr', 'assignment_id', 'wrong_clinic']) {
+        const value = source.searchParams.get(key);
+        if (value) params.set(key, value);
+      }
+      return source.pathname + (params.size ? `?${params.toString()}` : '') + source.hash;
+    } catch {
+      return '';
+    }
+  }
   async function prepare(exam, mode, output, baseUrl) {
     if (!['exam', 'sol', 'ans'].includes(mode)) throw new Error('지원하지 않는 보기 방식입니다.');
     const raw = String(exam?.mixed_payload_json || '').trim();
@@ -39,6 +53,8 @@
     url.searchParams.set('fit', 'screen');
     url.searchParams.set('submitQr', '0');
     url.searchParams.set('solQr', '0');
+    const returnTarget = studentReturnTarget(baseUrl);
+    if (returnTarget) url.searchParams.set('studentReturnTo', returnTarget);
     return url.href;
   }
   return { prepare };
