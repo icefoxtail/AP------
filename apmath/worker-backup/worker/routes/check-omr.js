@@ -111,6 +111,7 @@ async function handleQrClasses(request, env, teacher, url) {
   }
 
   const where = ['(is_active != 0 OR is_active IS NULL)'];
+  const classColumns = await getTableColumnSet(env, 'classes');
   const binds = [];
   if (Array.isArray(allowedClassIds)) {
     where.push(`id IN (${allowedClassIds.map(() => '?').join(',')})`);
@@ -118,7 +119,7 @@ async function handleQrClasses(request, env, teacher, url) {
   }
 
   const res = await env.DB.prepare(`
-    SELECT id, name, grade, teacher_name
+    SELECT id, name, grade, teacher_name${classColumns.has('grade_label') ? ', grade_label' : ''}
     FROM classes
     WHERE ${where.join(' AND ')}
     ORDER BY grade, name
