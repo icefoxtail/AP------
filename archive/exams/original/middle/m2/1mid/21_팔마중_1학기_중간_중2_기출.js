@@ -668,23 +668,23 @@ window.questionBank = [
     "curriculum": "2015",
     "course": "중2 수학",
     "difficultyBucket": 2,
-    "difficultyConfidence": "low",
-    "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "계단 모양 둘레를 가로·세로 총합으로 환원한다.",
-    "decisiveStep": "현행 answer 기준 10a+8b를 계산하되 source figure 부재를 분리한다.",
+    "decisiveStep": "가로·세로 경계 길이의 합을 각각 두 배하여 둘레 $8a+10b$를 확정한다.",
     "semanticSourceScope": "M2-1",
     "semanticScopeRelation": "TARGET_SCOPE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "semanticConfidence": "LOW_SOURCE_BOUNDARY",
+    "semanticConfidence": "HIGH",
     "evidenceRefs": [
       "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
-    "rpmSemanticStatus": "PROVISIONAL_SOURCE_BOUNDARY",
+    "rpmSemanticStatus": "FINAL",
     "rpmPrimaryRecordId": "M2-RPM-017",
     "rpmPrimaryPath": {
       "majorUnit": "식의 계산",
@@ -700,8 +700,8 @@ window.questionBank = [
     "templateKey": null,
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
-    "semanticBoundaryReason": "Original problem figure is not linked in current JS.",
-    "boundaryStatus": "SOURCE_REPAIR_REQUIRED"
+    "semanticBoundaryReason": null,
+    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
   },
   {
     "id": 11,
@@ -807,23 +807,23 @@ window.questionBank = [
     "curriculum": "2015",
     "course": "중2 수학",
     "difficultyBucket": 4,
-    "difficultyConfidence": "low",
-    "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "괄호를 풀어 미지의 식을 역산한다.",
-    "decisiveStep": "발문 그대로는 -5a이며 source 불일치를 확정한다.",
+    "decisiveStep": "빈칸을 $P$라 두고 왼쪽을 $-3a+3b-P$로 정리하여 $P=3a+6b$를 확정한다.",
     "semanticSourceScope": "M2-1",
     "semanticScopeRelation": "TARGET_SCOPE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "semanticConfidence": "LOW_SOURCE_BOUNDARY",
+    "semanticConfidence": "HIGH",
     "evidenceRefs": [
       "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
-    "rpmSemanticStatus": "PROVISIONAL_SOURCE_BOUNDARY",
+    "rpmSemanticStatus": "FINAL",
     "rpmPrimaryRecordId": "M2-RPM-013",
     "rpmPrimaryPath": {
       "majorUnit": "식의 계산",
@@ -839,8 +839,8 @@ window.questionBank = [
     "templateKey": null,
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
-    "semanticBoundaryReason": "Displayed algebra yields -5a, which is absent from choices and conflicts with answer ③.",
-    "boundaryStatus": "SOURCE_REPAIR_REQUIRED"
+    "semanticBoundaryReason": null,
+    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
   },
   {
     "id": 13,
@@ -1297,23 +1297,23 @@ window.questionBank = [
     "curriculum": "2015",
     "course": "중2 수학",
     "difficultyBucket": 4,
-    "difficultyConfidence": "low",
-    "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 해의 경계를 비교해 계수를 정해야 한다.",
-    "decisiveStep": "비교 부등식 누락으로 a와 해를 확정할 수 없음을 확인한다.",
+    "decisiveStep": "비교 부등식의 해 $x<6$과 첫 부등식의 경계를 일치시켜 $a=10$을 확정한다.",
     "semanticSourceScope": "M2-1",
     "semanticScopeRelation": "TARGET_SCOPE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "semanticConfidence": "LOW_SOURCE_BOUNDARY",
+    "semanticConfidence": "HIGH",
     "evidenceRefs": [
       "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
-    "rpmSemanticStatus": "PROVISIONAL_SOURCE_BOUNDARY",
+    "rpmSemanticStatus": "FINAL",
     "rpmPrimaryRecordId": "M2-RPM-023",
     "rpmPrimaryPath": {
       "majorUnit": "일차부등식과 연립일차방정식",
@@ -1329,8 +1329,8 @@ window.questionBank = [
     "templateKey": null,
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
-    "semanticBoundaryReason": "The comparison inequality required by the stem is missing.",
-    "boundaryStatus": "SOURCE_REPAIR_REQUIRED"
+    "semanticBoundaryReason": null,
+    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
   },
   {
     "id": 20,
