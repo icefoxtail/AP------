@@ -1,0 +1,1767 @@
+{
+  "schemaVersion": "ALIVE_HOLD_REPLACEMENT_CANDIDATE_AUDIT_v1",
+  "workBatchId": "alive-hold-replacements-20261004",
+  "requestedCount": 8,
+  "actualCount": 8,
+  "disposition": "Original exam JS slots now contain one generated variant per HOLD. ALIVE v2 quality approval remains BLOCKED before freeze.",
+  "pipelineCore": {
+    "initStatus": "INITIALIZED",
+    "initReportedStatus": "PRODUCTION",
+    "prepareStatus": "BLOCKED_BEFORE_DRAFT_MANIFEST",
+    "workflowProfile": "PAST_EXAM",
+    "freezeStatus": "NOT_CREATED",
+    "providerAuditStatus": "NOT_STARTED",
+    "blocker": "RULE_DRIFT in 11 files listed by docs/rules/MANIFEST.md; common manifest is outside the authorized edit scope",
+    "ruleDriftFiles": [
+      "02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md",
+      "02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md",
+      "01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "01_CANONICAL/JS아카이브룰북_v2.6.md",
+      "02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md",
+      "02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md",
+      "02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md",
+      "02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md",
+      "02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md",
+      "02_PIPELINES/수정프로토콜.md",
+      "02_PIPELINES/해설프로토콜.md"
+    ],
+    "originalSlotsReplaced": true,
+    "replacementEvidenceRef": "archive/evidence/alive-hold-replacements-20261004/original-slot-replacements.json"
+  },
+  "questions": [
+    {
+      "questionUid": "19_순천여고_2학기_기말_고2_수학II_ALIVE대체|21",
+      "sourceUid": "19_순천여고_2학기_기말_고2_수학II|21",
+      "familyId": "family-19_순천여고_2학기_기말_고2_수학II-q21",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "19_순천여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2019_순여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "25d6540dcd5b64af6eefe5bd1e098a2299cb5fc8e2f136e3fb5a9ef28a66dc74",
+        "sourceJsSha256": "sha256:60714247b90013a14e66ade74ffc8d2743230f9952c72184eb54cf1e86ea54ce",
+        "sourcePage": 4,
+        "bboxPdfPoints": [
+          310,
+          55,
+          565,
+          330
+        ],
+        "originalQuestion": "[서술형3] 그림과 같이 원 $C: x^2+(y-2)^2=4$와 이차함수 $y=x^2$로 둘러싸인 넓이를 각각 $S_1$, $S_2$라 할 때, $S_1+S_2$를 구하여라. [5점]",
+        "concept": "정적분과 두 곡선 사이의 넓이",
+        "problemType": "곡선 두 개로 둘러싸인 대칭 영역의 넓이 합",
+        "solutionEntry": "교점과 원의 아래쪽 반원을 구해 대칭 적분으로 접근",
+        "solutionGraph": [
+          "교점 확인",
+          "반원 함수 설정",
+          "0에서 1까지 적분",
+          "대칭으로 두 배"
+        ],
+        "visualDependency": "OPTIONAL",
+        "mutableSurface": "원 중심·반지름과 포물선을 새 값으로 바꾸고 좌우 대칭의 두 영역 합을 묻는다.",
+        "sourceAssetStatus": "HOLD_SOURCE_MARKS",
+        "sourceJsAfterReplacementSha256": "sha256:e2ca955cc2f3101003af76ecb55fecabf1faedb74fd45fa5aa0cdd973c683e41"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/19_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:b47eda46ef661782ae38928aa06b26ba6b97e3c1be12b74860209956ed701731",
+        "candidateQuestionSha256": "sha256:09d5ae3e8230273f3d999262258d3438a02273aefb0f250cd7a4d2cca4a2f683",
+        "question": {
+          "id": 21,
+          "level": "상",
+          "category": "정적분으로 나타낸 넓이",
+          "originalCategory": "정적분",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "standardUnit": "정적분",
+          "standardUnitOrder": 8,
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "subUnit": "정적분",
+          "questionType": "서술형",
+          "layoutTag": "grid",
+          "tags": [
+            "정적분",
+            "도형의 넓이"
+          ],
+          "wide": false,
+          "content": "[서술형3] 원 $C:x^2+(y-1)^2=1$과 포물선 $y=x^2$로 둘러싸인 두 부분의 넓이를 각각 $S_1,S_2$라 하자. $S_1+S_2$의 값을 구하고 그 과정을 서술하여라.",
+          "choices": [],
+          "image": "assets/images/19_순천여고_2학기_기말_고2_수학II_ALIVE대체/q21.svg",
+          "answer": "$\\dfrac{\\pi}{2}-\\dfrac{4}{3}$",
+          "solution": "두 곡선의 교점을 구하면 $x^2+(x^2-1)^2=1$에서 $x^2(x^2-1)=0$이므로 $x=-1,0,1$이다. 원의 아래쪽 반원은 $y=1-\\sqrt{1-x^2}$이고, $0\\le x\\le1$에서 포물선 $y=x^2$가 이 반원보다 위에 있다. 대칭성에 따라 두 영역 넓이의 합은 $2\\int_0^1\\{x^2-(1-\\sqrt{1-x^2})\\}\\,dx$이다. $\\int_0^1x^2dx=\\dfrac13$이고 $\\int_0^1\\sqrt{1-x^2}dx=\\dfrac{\\pi}{4}$이므로 합은 $2(\\dfrac13-1+\\dfrac{\\pi}{4})=\\dfrac{\\pi}{2}-\\dfrac43$. 따라서 정답은 $\\dfrac{\\pi}{2}-\\dfrac43$이다."
+        },
+        "structuredAnswer": {
+          "answerType": "expression",
+          "canonicalAnswer": "pi/2-4/3",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "symbolic_equivalence"
+        },
+        "assetPath": "assets/images/19_순천여고_2학기_기말_고2_수학II_ALIVE대체/q21.svg",
+        "assetSha256": "sha256:3f9290e5568069ba710aaf45a2e95569465303e74e5033a9652a437d898dd879"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "교점과 원의 아래쪽 반원을 구해 대칭 적분으로 접근",
+      "solutionGraph": [
+        "교점 확인",
+        "반원 함수 설정",
+        "0에서 1까지 적분",
+        "대칭으로 두 배"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "19_순천여고_2학기_기말_고2_수학II|21",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "OPTIONAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/19_순천여고_2학기_기말_고2_수학II_ALIVE대체/q21.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "원 중심·반지름과 포물선을 새 값으로 바꾸고 좌우 대칭의 두 영역 합을 묻는다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "NOT_APPLICABLE",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "not_applicable",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "주관식 문항."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/19_순천여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/19_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 21
+      }
+    },
+    {
+      "questionUid": "21_매산여고_2학기_기말_고2_수학II_ALIVE대체|6",
+      "sourceUid": "21_매산여고_2학기_기말_고2_수학II|6",
+      "familyId": "family-21_매산여고_2학기_기말_고2_수학II-q6",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "21_매산여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2021_매여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "de5426c5d8bfb1e9f034d1b8fc0b654b34b3432320885463d8ca3a2b66dccf44",
+        "sourceJsSha256": "sha256:43c51736f4851b91d403bb86d9a8e53c825cbbb67ab52d42406110dfe9cd6ab2",
+        "sourcePage": 2,
+        "bboxPdfPoints": [
+          35,
+          350,
+          300,
+          650
+        ],
+        "originalQuestion": "원점을 출발하여 수직선 위를 $9$초 동안 움직이는 점 $P$의 시각 $t$초에서 속도 $v(t)$의 그래프가 다음과 같을 때, 점 $P$의 운동에 대한 설명 중 옳은 것을 모두 고르면? [3.8점]\nㄱ. 출발 후 $9$초 동안 운동 방향이 두 번 바뀐다.\nㄴ. $t=3$에서 $t=8$까지 움직인 거리는 $4$이다.\nㄷ. $t=1$일 때와 $t=3$일 때의 속력은 서로 같다.\nㄹ. 출발한 지 $7$초 후에 다시 원점으로 돌아온다.",
+        "concept": "속도 그래프와 이동 방향·거리",
+        "problemType": "속도 그래프에서 참인 설명 고르기",
+        "solutionEntry": "속도의 부호와 그래프 넓이를 해석",
+        "solutionGraph": [
+          "구간별 속도 부호",
+          "방향 전환 시각",
+          "속력 비교",
+          "속도 그래프 넓이로 이동 거리"
+        ],
+        "visualDependency": "ESSENTIAL",
+        "mutableSurface": "새 piecewise-linear 속도 그래프와 다른 시간·진술을 사용하되 그래프 해석 구조를 유지한다.",
+        "sourceAssetStatus": "HOLD_STUDENT_MARKS",
+        "sourceJsAfterReplacementSha256": "sha256:e24dea9a084093c6f9fa7bffbf1172128dadf62876ace5b2bd3a75cccc5a605c"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/21_매산여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:659ae16623e4c2b20954c9a8e7163e06e4cda0e093d1cafd16a6d149e7785dbb",
+        "candidateQuestionSha256": "sha256:749a182782c77f635b8de54c90920d6dd008dcf2fb5b8e9b3258532c563229f9",
+        "question": {
+          "id": 6,
+          "level": "중",
+          "category": "속도와 이동 거리",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "속도와 가속도",
+            "그래프"
+          ],
+          "wide": false,
+          "content": "원점을 출발하여 수직선 위를 $9$초 동안 움직이는 점 $P$의 시각 $t$초에서의 속도 $v(t)$의 그래프가 그림과 같을 때, 점 $P$의 운동에 대한 설명 중 옳은 것을 모두 고르면?\nㄱ. 출발 후 $9$초 동안 운동 방향이 두 번 바뀐다.\nㄴ. $t=3$에서 $t=6$까지 움직인 거리는 $\\dfrac52$이다.\nㄷ. $t=1$일 때와 $t=3$일 때의 속력은 서로 같다.",
+          "choices": [
+            "ㄱ",
+            "ㄱ, ㄴ",
+            "ㄱ, ㄷ",
+            "ㄴ, ㄷ",
+            "ㄱ, ㄴ, ㄷ"
+          ],
+          "image": "assets/images/21_매산여고_2학기_기말_고2_수학II_ALIVE대체/q6.svg",
+          "answer": "⑤",
+          "solution": "그래프는 $0<t<4$에서 $v(t)>0$, $4<t<8$에서 $v(t)<0$, $8<t<9$에서 $v(t)>0$이므로 운동 방향은 $t=4,8$에서 두 번 바뀐다. 따라서 ㄱ은 참이다. $t=3$부터 $4$까지의 이동 거리는 밑변 $1$, 높이 $1$인 삼각형의 넓이 $\\dfrac12$이고, $4$부터 $6$까지는 밑변 $2$, 높이 $2$인 삼각형의 넓이 $2$이므로 이동 거리는 $\\dfrac52$이다. ㄴ도 참이다. 그래프에서 $v(1)=v(3)=1$이므로 두 속력은 같다. ㄷ도 참이다. 따라서 옳은 것은 ㄱ, ㄴ, ㄷ이고 정답은 ⑤이다."
+        },
+        "structuredAnswer": {
+          "answerType": "choice_index",
+          "canonicalAnswer": "5",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "exact"
+        },
+        "assetPath": "assets/images/21_매산여고_2학기_기말_고2_수학II_ALIVE대체/q6.svg",
+        "assetSha256": "sha256:5b10c0f1992c3f1c0657556424465ad5148b961371732fbf5fa55a275767dd15"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "속도의 부호와 그래프 넓이를 해석",
+      "solutionGraph": [
+        "구간별 속도 부호",
+        "방향 전환 시각",
+        "속력 비교",
+        "속도 그래프 넓이로 이동 거리"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "21_매산여고_2학기_기말_고2_수학II|6",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "ESSENTIAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/21_매산여고_2학기_기말_고2_수학II_ALIVE대체/q6.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 piecewise-linear 속도 그래프와 다른 시간·진술을 사용하되 그래프 해석 구조를 유지한다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "보기 5개와 키 인덱스는 기계 대조했으나 각 오답의 독립 오류경로 검토가 닫히지 않았다."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/21_매산여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 6
+      }
+    },
+    {
+      "questionUid": "21_매산여고_2학기_기말_고2_수학II_ALIVE대체|20",
+      "sourceUid": "21_매산여고_2학기_기말_고2_수학II|20",
+      "familyId": "family-21_매산여고_2학기_기말_고2_수학II-q20",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "21_매산여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2021_매여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "de5426c5d8bfb1e9f034d1b8fc0b654b34b3432320885463d8ca3a2b66dccf44",
+        "sourceJsSha256": "sha256:43c51736f4851b91d403bb86d9a8e53c825cbbb67ab52d42406110dfe9cd6ab2",
+        "sourcePage": 5,
+        "bboxPdfPoints": [
+          305,
+          415,
+          565,
+          600
+        ],
+        "originalQuestion": "[주관식2 (단답형)] 그림과 같이 밑면의 반지름의 길이가 $8$, 높이가 $12$인 원뿔의 내부에 밑면이 정사각형인 직육면체를 내접시킬 때, 직육면체의 부피가 [판독불가]가 되는 직육면체 밑면의 한 변의 길이를 구하여라. [4점]",
+        "concept": "닮음과 원뿔 내부 직육면체의 부피",
+        "problemType": "원뿔에 내접한 정사각기둥의 주어진 부피에서 변 길이 결정",
+        "solutionEntry": "높이 단면에서 반지름을 닮음으로 표현",
+        "solutionGraph": [
+          "높이 h 지정",
+          "단면 반지름 8(1-h/12)",
+          "내접 정사각형 대각선 관계",
+          "부피 방정식과 높이 조건으로 해 선택"
+        ],
+        "visualDependency": "OPTIONAL",
+        "mutableSurface": "확정 가능한 밑면 반지름 8·원뿔 높이 12와 내접 정사각기둥 구조만 사용한다. 가려진 원본 부피값과 무관한 새 값 72를 선택한다.",
+        "sourceAssetStatus": "assets/images/21_매산여고_2학기_기말_고2_수학II/q20.png",
+        "sourceJsAfterReplacementSha256": "sha256:e24dea9a084093c6f9fa7bffbf1172128dadf62876ace5b2bd3a75cccc5a605c"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/21_매산여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:659ae16623e4c2b20954c9a8e7163e06e4cda0e093d1cafd16a6d149e7785dbb",
+        "candidateQuestionSha256": "sha256:b27aa7ce36a17a75bdcf0c53208d597f4c5334c32d070ab9c5e2092317a23bf8",
+        "question": {
+          "id": 20,
+          "level": "중",
+          "category": "입체도형의 부피",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "questionType": "단답형",
+          "layoutTag": "grid",
+          "tags": [
+            "입체도형",
+            "부피"
+          ],
+          "wide": false,
+          "content": "그림과 같이 밑면의 반지름의 길이가 $8$, 높이가 $12$인 원뿔의 내부에 밑면이 정사각형인 직육면체를 내접시켰다. 직육면체의 부피가 $72$이고 높이가 $4$보다 클 때, 직육면체 밑면의 한 변의 길이를 구하여라. (그림은 모양만 나타낸 것이며 길이의 비를 정확히 나타내지 않는다.)",
+          "choices": [],
+          "image": "assets/images/21_매산여고_2학기_기말_고2_수학II_ALIVE대체/q20.svg",
+          "answer": "$2\\sqrt{2}$",
+          "solution": "직육면체의 높이를 $h$라 하면 원뿔의 밑면에서 높이 $h$인 단면의 반지름은 닮음비에 의해 $8(1-\\dfrac{h}{12})$이다. 정사각형 밑면의 한 변을 $s$라 할 때, 원에 내접한 정사각형이므로 $s=\\sqrt2\\cdot8(1-\\dfrac{h}{12})$이다. 따라서 부피 조건은 $s^2h=128h(1-\\dfrac{h}{12})^2=72$, 즉 $h(1-\\dfrac{h}{12})^2=\\dfrac{9}{16}$이다. 이를 정리하면 $(h-9)(h^2-15h+9)=0$이다. 이차식의 두 근은 $\\dfrac{15\\pm3\\sqrt{21}}{2}$이다. 그중 $0<h<12$인 작은 근은 $4$보다 작으므로, 조건 $h>4$를 만족하는 해는 $h=9$뿐이다. 그러므로 $s=8\\sqrt2(1-\\dfrac{9}{12})=2\\sqrt2$."
+        },
+        "structuredAnswer": {
+          "answerType": "expression",
+          "canonicalAnswer": "2*sqrt(2)",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "symbolic_equivalence"
+        },
+        "assetPath": "assets/images/21_매산여고_2학기_기말_고2_수학II_ALIVE대체/q20.svg",
+        "assetSha256": "sha256:cfebf6be2b60d95bb27288bb8879f3be9f0bdef946e0e5273338fb14eb8fda18"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "높이 단면에서 반지름을 닮음으로 표현",
+      "solutionGraph": [
+        "높이 h 지정",
+        "단면 반지름 8(1-h/12)",
+        "내접 정사각형 대각선 관계",
+        "부피 방정식과 높이 조건으로 해 선택"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "21_매산여고_2학기_기말_고2_수학II|20",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "OPTIONAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/21_매산여고_2학기_기말_고2_수학II_ALIVE대체/q20.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "확정 가능한 밑면 반지름 8·원뿔 높이 12와 내접 정사각기둥 구조만 사용한다. 가려진 원본 부피값과 무관한 새 값 72를 선택한다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "NOT_APPLICABLE",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "not_applicable",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "주관식 문항."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/21_매산여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 20
+      }
+    },
+    {
+      "questionUid": "21_순천여고_2학기_기말_고2_수학II_ALIVE대체|8",
+      "sourceUid": "21_순천여고_2학기_기말_고2_수학II|8",
+      "familyId": "family-21_순천여고_2학기_기말_고2_수학II-q8",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "21_순천여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2021_순여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e",
+        "sourceJsSha256": "sha256:fbfcaa5a8f90c068baf5b98f89e5fe2323cf5884986124dd03c10046f93f5a02",
+        "sourcePage": 2,
+        "bboxPdfPoints": [
+          305,
+          300,
+          565,
+          540
+        ],
+        "originalQuestion": "시각 $t=0$일 때 원점을 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$ ($t\\ge0$)에서의 속도 $v(t)$가 $v(t)=3t^2-3t$일 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? [3.9점]\nㄱ. 시각 $t=1$에서 점 $P$가 움직이는 방향이 바뀐다.\nㄴ. 점 $P$가 출발한 후 움직이는 방향이 바뀔 때 점 $P$의 위치는 $-\\dfrac{1}{2}$이다.\nㄷ. 점 $P$가 시각 $t=0$일 때부터 가속도가 $9$가 될 때까지 움직인 거리는 $3$이다.",
+        "concept": "속도·가속도·정적분으로 구한 이동 거리",
+        "problemType": "속도식에서 진술의 참·거짓 판단",
+        "solutionEntry": "속도식의 근과 부호를 확인",
+        "solutionGraph": [
+          "속도 부호와 방향 전환",
+          "위치 적분",
+          "가속도 시각",
+          "구간별 이동 거리"
+        ],
+        "visualDependency": "OPTIONAL",
+        "mutableSurface": "속도식을 다른 이차식으로 바꾸고 위치·가속도·거리 판단을 유지한다.",
+        "sourceAssetStatus": "HOLD_SOURCE_MARKS",
+        "sourceJsAfterReplacementSha256": "sha256:36497c98cb29aeb9ed0c4ade3c9078427a04c1e41a9e9f01e4687edff8094c14"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:5ec72b103cdb3af067dd816160f90d9349186949645d286e50fe8274014a8cf9",
+        "candidateQuestionSha256": "sha256:e1069b5a74f1c35abd5d92c1675b2700e65f4acabb44e404e20e14f883f13757",
+        "question": {
+          "id": 8,
+          "level": "중",
+          "category": "속도와 가속도",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "속도와 가속도",
+            "그래프"
+          ],
+          "wide": false,
+          "content": "원점을 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$ ($t\\ge0$)에서의 속도가 $v(t)=2t^2-4t$이다. <보기>에서 옳은 것만을 있는 대로 고른 것은?\nㄱ. 시각 $t=2$에서 점 $P$의 운동 방향이 바뀐다.\nㄴ. 운동 방향이 바뀌는 순간 점 $P$의 위치는 $-\\dfrac83$이다.\nㄷ. 가속도가 $8$이 될 때까지 움직인 거리는 $\\dfrac{16}{3}$이다.",
+          "choices": [
+            "ㄱ",
+            "ㄱ, ㄴ, ㄷ",
+            "ㄱ, ㄴ",
+            "ㄱ, ㄷ",
+            "ㄴ, ㄷ"
+          ],
+          "image": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q8.svg",
+          "answer": "②",
+          "solution": "$v(t)=2t(t-2)$이므로 $0<t<2$에서는 속도가 음수이고 $t>2$에서는 양수이다. 따라서 $t=2$에서 운동 방향이 바뀌므로 ㄱ은 참이다. 위치는 $x(t)=\\int_0^t(2u^2-4u)du=\\dfrac23t^3-2t^2$이고, $x(2)=\\dfrac{16}{3}-8=-\\dfrac83$이므로 ㄴ도 참이다. 가속도는 $a(t)=4t-4$이므로 $a(t)=8$일 때 $t=3$이다. $0$부터 $2$까지의 이동 거리는 $\\dfrac83$이고, $2$부터 $3$까지는 $x(3)-x(2)=0-(-\\dfrac83)=\\dfrac83$이므로 전체 이동 거리는 $\\dfrac{16}{3}$이다. ㄷ도 참이며 정답은 ②이다."
+        },
+        "structuredAnswer": {
+          "answerType": "choice_index",
+          "canonicalAnswer": "2",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "exact"
+        },
+        "assetPath": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q8.svg",
+        "assetSha256": "sha256:f406424987e7a504011d460d8661015be33de4cd660b953f10e450bd7e9f3927"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "속도식의 근과 부호를 확인",
+      "solutionGraph": [
+        "속도 부호와 방향 전환",
+        "위치 적분",
+        "가속도 시각",
+        "구간별 이동 거리"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "21_순천여고_2학기_기말_고2_수학II|8",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "OPTIONAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q8.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "속도식을 다른 이차식으로 바꾸고 위치·가속도·거리 판단을 유지한다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "보기 5개와 키 인덱스는 기계 대조했으나 각 오답의 독립 오류경로 검토가 닫히지 않았다."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 8
+      }
+    },
+    {
+      "questionUid": "21_순천여고_2학기_기말_고2_수학II_ALIVE대체|9",
+      "sourceUid": "21_순천여고_2학기_기말_고2_수학II|9",
+      "familyId": "family-21_순천여고_2학기_기말_고2_수학II-q9",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "21_순천여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2021_순여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e",
+        "sourceJsSha256": "sha256:fbfcaa5a8f90c068baf5b98f89e5fe2323cf5884986124dd03c10046f93f5a02",
+        "sourcePage": 3,
+        "bboxPdfPoints": [
+          35,
+          45,
+          300,
+          315
+        ],
+        "originalQuestion": "키가 $2,\\mathrm{m}$인 진우가 지상으로부터의 높이가 $5,\\mathrm{m}$인 가로등 바로 밑에서 출발하여 일직선으로 초속 $1.5,\\mathrm{m}$로 걷고 있다. 출발한 지 $t$초 후의 가로등 바로 밑에서부터 민기의 그림자 끝까지의 거리를 $x,\\mathrm{m}$라 하자. 그림자의 끝이 움직이는 속도는? [3.9점]",
+        "concept": "닮음과 관련 변화율",
+        "problemType": "가로등과 사람의 그림자 끝 속도",
+        "solutionEntry": "닮은 두 삼각형으로 그림자 길이 관계 도출",
+        "solutionGraph": [
+          "큰·작은 삼각형의 닮음",
+          "거리 변수 구별",
+          "시간 미분"
+        ],
+        "visualDependency": "OPTIONAL",
+        "mutableSurface": "가로등 높이·사람 키·보행 속도를 새 값으로 바꾸고 그림자 끝 속도를 구한다.",
+        "sourceAssetStatus": "HOLD_SOURCE_MARKS",
+        "sourceJsAfterReplacementSha256": "sha256:36497c98cb29aeb9ed0c4ade3c9078427a04c1e41a9e9f01e4687edff8094c14"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:5ec72b103cdb3af067dd816160f90d9349186949645d286e50fe8274014a8cf9",
+        "candidateQuestionSha256": "sha256:9d4e8c880ce0f246a6493419a5a45349eb02fc68cd64b82d9d09b0b5f8e90346",
+        "question": {
+          "id": 9,
+          "level": "중",
+          "category": "변화율",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "변화율",
+            "도형"
+          ],
+          "wide": false,
+          "content": "키가 $3\\,\\mathrm{m}$인 민수가 지상으로부터 높이가 $8\\,\\mathrm{m}$인 가로등 바로 밑에서 출발하여 일직선으로 초속 $2\\,\\mathrm{m}$로 걷고 있다. 출발한 지 $t$초 후 가로등 바로 밑에서부터 그림자 끝까지의 거리를 $x\\,\\mathrm{m}$라 할 때, 그림자 끝이 움직이는 속도는?",
+          "choices": [
+            "$\\dfrac12$",
+            "$1$",
+            "$\\dfrac32$",
+            "$\\dfrac{16}{5}$",
+            "$5$"
+          ],
+          "image": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q9.svg",
+          "answer": "④",
+          "solution": "민수가 가로등 밑에서 떨어진 거리를 $u$ m, 그림자 길이를 $y$ m라 하면 그림자 끝까지의 거리는 $x=u+y$이다. 큰 삼각형과 작은 삼각형은 닮음이므로 $\\dfrac{8}{x}=\\dfrac{3}{y}$, 즉 $8y=3x$이다. 따라서 $u=x-y=x-\\dfrac38x=\\dfrac58x$이다. $\\dfrac{du}{dt}=2$이므로 $\\dfrac{dx}{dt}=\\dfrac85\\dfrac{du}{dt}=\\dfrac{16}{5}$이다. 정답은 ④이다."
+        },
+        "structuredAnswer": {
+          "answerType": "choice_index",
+          "canonicalAnswer": "4",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "exact"
+        },
+        "assetPath": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q9.svg",
+        "assetSha256": "sha256:349eb62bfd4932b14b18e3655626a7f270913d0d811ae6ef0c016df9abf0c6d4"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "닮은 두 삼각형으로 그림자 길이 관계 도출",
+      "solutionGraph": [
+        "큰·작은 삼각형의 닮음",
+        "거리 변수 구별",
+        "시간 미분"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "21_순천여고_2학기_기말_고2_수학II|9",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "OPTIONAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q9.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "가로등 높이·사람 키·보행 속도를 새 값으로 바꾸고 그림자 끝 속도를 구한다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "보기 5개와 키 인덱스는 기계 대조했으나 각 오답의 독립 오류경로 검토가 닫히지 않았다."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 9
+      }
+    },
+    {
+      "questionUid": "21_순천여고_2학기_기말_고2_수학II_ALIVE대체|10",
+      "sourceUid": "21_순천여고_2학기_기말_고2_수학II|10",
+      "familyId": "family-21_순천여고_2학기_기말_고2_수학II-q10",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "21_순천여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2021_순여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e",
+        "sourceJsSha256": "sha256:fbfcaa5a8f90c068baf5b98f89e5fe2323cf5884986124dd03c10046f93f5a02",
+        "sourcePage": 3,
+        "bboxPdfPoints": [
+          35,
+          315,
+          300,
+          550
+        ],
+        "originalQuestion": "수직선 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $x(t)$의 그래프가 오른쪽 그림과 같을 때, 점 $P$에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은? [3.9점]\nㄱ. $0<t<c$에서 원점을 두 번 지난다.\nㄴ. $a<t<b$에서 한 방향으로만 움직인다.\nㄷ. $0<t<c$에서 운동 방향이 두 번 바뀐다.",
+        "concept": "위치-시간 그래프와 운동 방향",
+        "problemType": "위치 그래프에서 원점 통과·방향 전환 판단",
+        "solutionEntry": "그래프의 영점과 기울기 부호 확인",
+        "solutionGraph": [
+          "그래프의 영점 수",
+          "단조 구간",
+          "기울기 부호 변화"
+        ],
+        "visualDependency": "ESSENTIAL",
+        "mutableSurface": "새 piecewise-linear 위치 그래프의 꼭짓점과 시간 범위를 사용해 원점 통과·방향 진술을 판단한다.",
+        "sourceAssetStatus": "HOLD_SOURCE_MARKS",
+        "sourceJsAfterReplacementSha256": "sha256:36497c98cb29aeb9ed0c4ade3c9078427a04c1e41a9e9f01e4687edff8094c14"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:5ec72b103cdb3af067dd816160f90d9349186949645d286e50fe8274014a8cf9",
+        "candidateQuestionSha256": "sha256:e74334069a001fe735e3b5b3850f6760bb6267081d2022adff951a86b89a2832",
+        "question": {
+          "id": 10,
+          "level": "중",
+          "category": "위치와 운동 방향",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "위치와 운동 방향",
+            "그래프"
+          ],
+          "wide": false,
+          "content": "수직선 위를 움직이는 점 $P$의 시각 $t$ ($0\\le t\\le5$)에서의 위치 $x(t)$의 그래프가 그림과 같다. 점 $P$에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은?\nㄱ. $0<t<5$에서 원점을 두 번 지난다.\nㄴ. $2<t<4$에서 한 방향으로만 움직인다.\nㄷ. $0<t<5$에서 운동 방향이 두 번 바뀐다.",
+          "choices": [
+            "ㄱ",
+            "ㄱ, ㄴ",
+            "ㄱ, ㄷ",
+            "ㄴ, ㄷ",
+            "ㄱ, ㄴ, ㄷ"
+          ],
+          "image": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q10.svg",
+          "answer": "⑤",
+          "solution": "그래프는 $(0,2),(2,-2),(4,2),(5,0)$을 차례로 잇는 선분들로 이루어진다. $0<t<5$에서 위치가 $0$이 되는 시각은 $t=1,3$이므로 ㄱ은 참이다. $2<t<4$에서는 위치가 계속 증가하므로 한 방향으로 움직여 ㄴ도 참이다. 기울기는 $0<t<2$에서 음수, $2<t<4$에서 양수, $4<t<5$에서 음수이므로 방향은 $t=2,4$에서 두 번 바뀐다. ㄷ도 참이다. 정답은 ⑤이다."
+        },
+        "structuredAnswer": {
+          "answerType": "choice_index",
+          "canonicalAnswer": "5",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "exact"
+        },
+        "assetPath": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q10.svg",
+        "assetSha256": "sha256:6bcfdb9062fd708b9221a01b847aec0f1cd35dfd008aa1bff810505a9c91273a"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "그래프의 영점과 기울기 부호 확인",
+      "solutionGraph": [
+        "그래프의 영점 수",
+        "단조 구간",
+        "기울기 부호 변화"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "21_순천여고_2학기_기말_고2_수학II|10",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "ESSENTIAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q10.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 piecewise-linear 위치 그래프의 꼭짓점과 시간 범위를 사용해 원점 통과·방향 진술을 판단한다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "보기 5개와 키 인덱스는 기계 대조했으나 각 오답의 독립 오류경로 검토가 닫히지 않았다."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 10
+      }
+    },
+    {
+      "questionUid": "21_순천여고_2학기_기말_고2_수학II_ALIVE대체|13",
+      "sourceUid": "21_순천여고_2학기_기말_고2_수학II|13",
+      "familyId": "family-21_순천여고_2학기_기말_고2_수학II-q13",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "21_순천여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2021_순여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e",
+        "sourceJsSha256": "sha256:fbfcaa5a8f90c068baf5b98f89e5fe2323cf5884986124dd03c10046f93f5a02",
+        "sourcePage": 4,
+        "bboxPdfPoints": [
+          35,
+          45,
+          300,
+          330
+        ],
+        "originalQuestion": "모든 실수 $x$에서 연속인 함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 아래 그림과 같이 $y$축에 대칭인 이차함수의 그래프와 직선의 일부로 나타내어진다. 함수 $y=f(x)$의 그래프가 $(2,3)$을 지날 때, $f(-1)f(3)$의 값은? [4.1점]",
+        "concept": "도함수 그래프와 정적분으로 함수값 계산",
+        "problemType": "도함수 그래프에서 두 함수값을 구해 곱하기",
+        "solutionEntry": "기준점에서 적분으로 함수값 복원",
+        "solutionGraph": [
+          "도함수의 포물선·직선 구간",
+          "정적분 부호",
+          "기준 함수값 적용",
+          "함숫값 곱"
+        ],
+        "visualDependency": "OPTIONAL",
+        "mutableSurface": "도함수 그래프의 구간식과 기준값을 새로 정해 두 함수값 곱을 묻는다.",
+        "sourceAssetStatus": "HOLD_SOURCE_MARKS",
+        "sourceJsAfterReplacementSha256": "sha256:36497c98cb29aeb9ed0c4ade3c9078427a04c1e41a9e9f01e4687edff8094c14"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:5ec72b103cdb3af067dd816160f90d9349186949645d286e50fe8274014a8cf9",
+        "candidateQuestionSha256": "sha256:1ab7ecaf3113fb555a1fbefd83b04ffa7bc66434d235354de2534daae718c12b",
+        "question": {
+          "id": 13,
+          "level": "상",
+          "category": "도함수 그래프와 정적분",
+          "originalCategory": "도함수의 활용",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "standardUnit": "도함수의 활용",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "subUnit": "도함수의 활용",
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "도함수의 그래프",
+            "정적분"
+          ],
+          "wide": false,
+          "content": "미분가능한 함수 $f(x)$의 도함수 그래프 $y=f'(x)$가 그림과 같다. 그래프는 $-2\\le x\\le2$에서 포물선 $y=x^2-4$이고, $x\\ge2$에서는 직선 $y=x-2$이다. $f(2)=3$일 때, $f(-1)f(3)$의 값은?",
+          "choices": [
+            "$-3$",
+            "$-2$",
+            "$42$",
+            "$0$",
+            "$5$"
+          ],
+          "image": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q13.svg",
+          "answer": "③",
+          "solution": "$f(-1)=f(2)-\\int_{-1}^{2}f'(x)dx=3-\\int_{-1}^{2}(x^2-4)dx$이다. 한 원시함수는 $\\dfrac{x^3}{3}-4x$이므로 적분값은 $-\\dfrac{16}{3}-\\dfrac{11}{3}=-9$이고, $f(-1)=12$이다. 또 $f(3)=f(2)+\\int_2^3(x-2)dx=3+\\dfrac12=\\dfrac72$가 된다. 따라서 $f(-1)f(3)=42$이고 정답은 ③이다."
+        },
+        "structuredAnswer": {
+          "answerType": "choice_index",
+          "canonicalAnswer": "3",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "exact"
+        },
+        "assetPath": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q13.svg",
+        "assetSha256": "sha256:88a80c6b4fb06890fbb9e6f98352f8841d03404765edd6414160e658b03acd83"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "기준점에서 적분으로 함수값 복원",
+      "solutionGraph": [
+        "도함수의 포물선·직선 구간",
+        "정적분 부호",
+        "기준 함수값 적용",
+        "함숫값 곱"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "21_순천여고_2학기_기말_고2_수학II|13",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "OPTIONAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q13.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "도함수 그래프의 구간식과 기준값을 새로 정해 두 함수값 곱을 묻는다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "보기 5개와 키 인덱스는 기계 대조했으나 각 오답의 독립 오류경로 검토가 닫히지 않았다."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 13
+      }
+    },
+    {
+      "questionUid": "21_순천여고_2학기_기말_고2_수학II_ALIVE대체|15",
+      "sourceUid": "21_순천여고_2학기_기말_고2_수학II|15",
+      "familyId": "family-21_순천여고_2학기_기말_고2_수학II-q15",
+      "variantIndex": null,
+      "mode": "EXAM_FOLLOWUP",
+      "followupKind": "CONFIRMATION",
+      "profile": "JS_ARCHIVE",
+      "sourceFingerprint": {
+        "sourcePath": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "sourceExamTitle": "21_순천여고_2학기_기말_고2_수학II",
+        "sourcePdf": "2021_순여고2_수2_2기말.pdf",
+        "sourcePdfSha256": "bd37b2e9333055491e57d851b8a35fc1e6e5988f0a889d0f78ee337fc12a9f1e",
+        "sourceJsSha256": "sha256:fbfcaa5a8f90c068baf5b98f89e5fe2323cf5884986124dd03c10046f93f5a02",
+        "sourcePage": 4,
+        "bboxPdfPoints": [
+          305,
+          45,
+          565,
+          315
+        ],
+        "originalQuestion": "이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 아래 그림과 같이 서로 다른 두 점에서 만날 때, $\\displaystyle\\int_{-2}^3 g(x),dx-\\int_{-2}^3 f(x),dx$의 값은? [4.1점]",
+        "concept": "두 곡선의 차의 정적분",
+        "problemType": "그래프가 주어진 이차함수와 직선의 적분 차",
+        "solutionEntry": "두 함수의 차를 적분",
+        "solutionGraph": [
+          "함수식을 읽기",
+          "적분함수 차로 변환",
+          "구간 끝점 대입"
+        ],
+        "visualDependency": "OPTIONAL",
+        "mutableSurface": "포물선·직선의 식과 적분 구간을 새로 정하고 정적분의 차를 구한다.",
+        "sourceAssetStatus": "HOLD_SOURCE_MARKS",
+        "sourceJsAfterReplacementSha256": "sha256:36497c98cb29aeb9ed0c4ade3c9078427a04c1e41a9e9f01e4687edff8094c14"
+      },
+      "candidate": {
+        "candidatePath": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "candidateJsSha256": "sha256:5ec72b103cdb3af067dd816160f90d9349186949645d286e50fe8274014a8cf9",
+        "candidateQuestionSha256": "sha256:f073e8998b17801befe65b4fcdb842fe5b00361b0c4c2da76451ad21f3237f9b",
+        "question": {
+          "id": 15,
+          "level": "중",
+          "category": "두 곡선 사이의 넓이",
+          "originalCategory": "정적분",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "standardUnit": "정적분",
+          "standardUnitOrder": 8,
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "subUnit": "정적분",
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "정적분",
+            "도형의 넓이"
+          ],
+          "wide": false,
+          "content": "이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$의 그래프가 그림과 같다. $\\displaystyle\\int_{-2}^{3}g(x)dx-\\int_{-2}^{3}f(x)dx$의 값은? (그림에서 $f(x)=x^2$, $g(x)=2x+3$이다.)",
+          "choices": [
+            "$\\dfrac{25}{3}$",
+            "$\\dfrac{50}{9}$",
+            "$\\dfrac{26}{3}$",
+            "$\\dfrac{17}{4}$",
+            "$\\dfrac{5}{3}$"
+          ],
+          "image": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q15.svg",
+          "answer": "①",
+          "solution": "구하는 값은 $\\int_{-2}^{3}(g(x)-f(x))dx=\\int_{-2}^{3}(-x^2+2x+3)dx$이다. 한 원시함수는 $-\\dfrac{x^3}{3}+x^2+3x$이다. $x=3$에서 값은 $9$이고 $x=-2$에서 값은 $\\dfrac23$이므로 정적분의 값은 $9-\\dfrac23=\\dfrac{25}{3}$이다. 따라서 정답은 ①이다."
+        },
+        "structuredAnswer": {
+          "answerType": "choice_index",
+          "canonicalAnswer": "1",
+          "acceptableAnswers": [],
+          "equivalencePolicy": "exact"
+        },
+        "assetPath": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q15.svg",
+        "assetSha256": "sha256:9db256d54fd37f090b49f8a2c8216c91c2e77229094d618ad451e2e0e8e388a0"
+      },
+      "conceptKey": "",
+      "problemTypeKey": "",
+      "templateKey": "",
+      "solutionEntry": "두 함수의 차를 적분",
+      "solutionGraph": [
+        "함수식을 읽기",
+        "적분함수 차로 변환",
+        "구간 끝점 대입"
+      ],
+      "difficultyBucket": "unknown",
+      "difficultyVectorSource": "model_estimated",
+      "difficultyVector": {},
+      "difficultyComparison": {
+        "baselineSourceUid": "21_순천여고_2학기_기말_고2_수학II|15",
+        "delta": {},
+        "equivalence": "UNVERIFIED"
+      },
+      "visualDependency": "OPTIONAL",
+      "visual": {
+        "visualSpecVersion": "0.1",
+        "assetType": "svg",
+        "assetRef": "assets/images/21_순천여고_2학기_기말_고2_수학II_ALIVE대체/q15.svg",
+        "renderer": "Python deterministic coordinate sampler / SVG and direct raster reopen",
+        "visualValidator": "UNVERIFIED"
+      },
+      "trapTags": [],
+      "validators": {
+        "V1A_MATH": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "same_author_context_solution",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "정답은 작성자가 직접 유도했으나, 요구된 독립 블라인드 재풀이 증거는 아직 없다."
+          ]
+        },
+        "V1B_COMPUTATIONAL": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "A",
+          "method": "exact_symbolic",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "Python exact checkpoints and exact written derivation agree."
+          ]
+        },
+        "V2_CURRICULUM": {
+          "status": "UNVERIFIED",
+          "code": "CURRICULUM_BOUNDARY_UNRESOLVED",
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "최신 docs/rules manifest와 listed rule hashes가 달라 canonical rule snapshot을 만들지 못했다."
+          ]
+        },
+        "V3_FIDELITY": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "author_fingerprint_comparison",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "포물선·직선의 식과 적분 구간을 새로 정하고 정적분의 차를 구한다."
+          ]
+        },
+        "V4_DISTRACTOR": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "D",
+          "method": "not_closed",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "보기 5개와 키 인덱스는 기계 대조했으나 각 오답의 독립 오류경로 검토가 닫히지 않았다."
+          ]
+        },
+        "V5_VISUAL": {
+          "status": "UNVERIFIED",
+          "code": null,
+          "blocking": true,
+          "evidenceLevel": "B",
+          "method": "deterministic_svg_and_raster_visual_inspection",
+          "coverage": "partial",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "SVG는 식·좌표에서 결정적으로 생성하고 Python 좌표·교점 검사를 통과했다. raster 재오픈도 확인했으나 production browser render와 독립 visual review는 없다."
+          ]
+        },
+        "V6_DUPLICATE": {
+          "status": "UNVERIFIED",
+          "code": "ARCHIVE_DUPLICATE_UNVERIFIED",
+          "blocking": false,
+          "evidenceLevel": "D",
+          "method": "not_run",
+          "coverage": "not_applicable",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "새 candidate의 Archive 전체 duplicate 검수가 실행되지 않았다."
+          ]
+        },
+        "V7_SERIALIZATION": {
+          "status": "PASS",
+          "code": null,
+          "blocking": false,
+          "evidenceLevel": "B",
+          "method": "node_check_vm_and_asset_binding",
+          "coverage": "complete",
+          "independenceLevel": "I1_SAME_CONTEXT",
+          "evidence": [
+            "3개 JS syntax/VM 및 8개 image 참조·문항 ID 매핑 기계검사가 통과했다."
+          ]
+        }
+      },
+      "finalStatus": "BLOCKED",
+      "codes": [
+        "CURRICULUM_BOUNDARY_UNRESOLVED",
+        "ARCHIVE_DUPLICATE_UNVERIFIED"
+      ],
+      "pipelineRunId": "alive-hold-replacements-20261004",
+      "checkpointId": "draft-before-freeze",
+      "resumeFromStage": "S1_PREFLIGHT",
+      "requiredResource": "synchronized-current-rule-manifest-and-independent-review",
+      "resumePayload": {
+        "source": "archive/exams/original/high/h2/2final/21_순천여고_2학기_기말_고2_수학II.js",
+        "candidate": "archive/exams/similar/high/h2/2final/21_순천여고_2학기_기말_고2_수학II_ALIVE대체.js",
+        "qid": 15
+      }
+    }
+  ]
+}
