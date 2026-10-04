@@ -348,8 +348,9 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "content": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle C$의 외각의 크기가 $130^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='120' viewBox='0 0 160 120'><path d='M80,20 L40,100 L120,100 Z M120,100 L150,100' fill='none' stroke='black'/><text x='75' y='15' font-size='10'>A</text><text x='30' y='110' font-size='10'>B</text><text x='115' y='110' font-size='10'>C</text><path d='M130,100 A10,10 0 0 0 125,95' fill='none' stroke='black'/><text x='130' y='90' font-size='9'>130°</text></svg>",
-    "choices": [],
+    "content": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle x$의 크기는? [4점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q11.png",
+    "choices": ["$50^\\circ$", "$60^\\circ$", "$65^\\circ$", "$70^\\circ$", "$80^\\circ$"],
     "answer": "⑤",
     "category": "이등변삼각형의 성질",
     "originalCategory": "이등변삼각형의 성질",
@@ -443,7 +444,8 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "content": "그림은 직각삼각형 $ABC$의 세 변을 한 변으로 하는 세 정사각형 $AFGB, IBHC, ACDE$를 그린 것이다. $AFGB$의 넓이가 $46\\text{cm}^2$, $IBHC$의 넓이가 $25\\text{cm}^2$일 때, $ACDE$의 넓이는? [4점]<br><Figure src='image_d7bada.png' />",
+    "content": "그림은 직각삼각형 $ABC$의 세 변을 한 변으로 하는 세 정사각형 $AFGB, IBHC, ACDE$를 그린 것이다. $AFGB$의 넓이가 $46\\text{cm}^2$, $IBHC$의 넓이가 $25\\text{cm}^2$일 때, $ACDE$의 넓이는? [4점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q14.png",
     "choices": [
       "$14\\text{cm}^2$",
       "$16\\text{cm}^2$",
@@ -648,7 +650,8 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "content": "삼각형의 성질이 옳으면 '예' 방향으로 이동하고, 옳지 않으면 '아니오' 방향으로 이동할 때, 도착지는? [4점]<br><Figure src='image_d76062.jpg' />",
+    "content": "삼각형의 성질이 옳으면 '예' 방향으로 이동하고, 옳지 않으면 '아니오' 방향으로 이동할 때, 도착지는? [4점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q20.png",
     "choices": [
       "서울",
       "대전",
@@ -674,7 +677,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "1단계: '두 내각의 크기가 같은 삼각형은 이등변삼각형이다'는 참이므로 '예' 방향으로 이동한다.\n2단계: '한 변의 길이와 한 예각의 크기가 각각 같은 두 직각삼각형은 서로 합동이다'는 RHA 합동으로 참이므로 '예' 방향으로 이동한다.\n3단계: '삼각형의 내접원의 중심에서 세 꼭짓점에 이르는 거리는 같다'는 거짓(외심의 성질)이므로 '아니오' 방향으로 이동한다.\n4단계: 최종 도착지는 '대구'이다.",
+    "solution": "1단계: 두 내각의 크기가 같은 삼각형은 이등변삼각형이므로 '예' 방향으로 간다.\n2단계: 한 변의 길이와 한 예각의 크기만으로는 두 직각삼각형이 반드시 합동이라고 할 수 없으므로 '아니오' 방향으로 간다.\n3단계: 둔각삼각형에도 외심이 있으므로 '둔각삼각형의 외심은 존재하지 않는다'는 거짓이다. '아니오' 방향으로 간다.\n4단계: 직각삼각형의 외심은 빗변의 중점이므로 '직각삼각형의 외심은 빗변의 중점이다'는 참이다. '예' 방향으로 간다.\n5단계: 직각삼각형의 빗변의 제곱은 두 직각변의 제곱의 합과 같으므로 '예' 방향으로 이동한다. 도착지는 대구이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -740,7 +743,8 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "[서술형 3] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 외접원의 반지름의 길이와 내접원의 반지름의 길이를 각각 구하시오. (단, $\\overline{AB}=20\\text{cm}, \\overline{AC}=12\\text{cm}, \\overline{BC}=16\\text{cm}$) [5점]<br><Figure src='image_d7bada.png' />",
+    "content": "[서술형 3] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 외접원의 반지름의 길이와 내접원의 반지름의 길이를 각각 구하시오. (단, $\\overline{AB}=20\\text{cm}, \\overline{AC}=12\\text{cm}, \\overline{BC}=16\\text{cm}$) [5점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q23.png",
     "choices": [],
     "answer": "외접원:, $10\\text{cm}$, 내접원:, $4\\text{cm}$",
     "category": "삼각형의 내심과 외심",

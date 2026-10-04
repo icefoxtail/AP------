@@ -1,6 +1,6 @@
 {
   "schemaVersion": "m2-1-create-handoff-v1",
-  "status": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "status": "CODEX_SOURCE_REPAIR_DONE_SOURCE_FREE_CONTINUATION",
   "queue": "CODEX_SOURCE_REPAIR_QUEUE",
   "thanosEligible": false,
   "canonicalOrdinal": 14,
@@ -8,14 +8,16 @@
   "examPath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
   "baselineMain": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
   "finalArtifactSha": "cac5017e359f7a8d7743cc1bf3b1fca4a05f9e91",
-  "completedStep": "PREMUTATION_SOURCE_REVALIDATION",
-  "firstMissingClosureStep": "SOURCE_UNVERIFIED_Q11_Q14_Q20_Q23",
-  "blockedQids": [11, 14, 20, 23],
-  "reason": "q11 has no choices but answer is a choice label; q14/q20/q23 reference unresolved legacy Figure assets and q14/q23 share the same unresolved filename despite different diagrams.",
-  "requiredNextAction": "Codex source repair from authoritative source pages, then return to CREATE.",
+  "completedStep": "D_SOURCE_CONFIRMED_TARGETED_MINIMAL_REPAIR",
+  "firstMissingClosureStep": "SOURCE_FREE_CREATE_CONTINUATION",
+  "blockedQids": [],
+  "reason": "q11 stem/choices/diagram now match D page 2/4; q14/q20/q23 legacy figure refs replaced with exact D crops; q20 solution follows the printed flowchart.",
+  "requiredNextAction": "Continue source-free CREATE from the repaired artifact; run only the assigned targeted CREATE continuation checks.",
   "producerOwnership": "RELINQUISHED",
   "sameTargetReselection": "DO_NOT_RESELECT_UNLESS_CURRENT_REASSIGN_TO_CREATE",
   "createDone": false,
   "readyForReview1": false,
-  "passClaim": false
+  "passClaim": false,
+  "latestMainObserved": "4e6ee541715e08fc468e552f003b4069206bf493",
+  "sourceRepairEvidencePath": "archive/data/r2e-intake/m2/20_풍덕중_1학기_중간_중2_기출.create.source-repair.json"
 }

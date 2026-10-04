@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "m2-1-source-repair-evidence-v1",
+  "status": "D_SOURCE_CONFIRMED",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "examUid": "M2-1-20-PUNGDEOK-1MID",
+  "canonicalOrdinal": 14,
+  "examPath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+  "branch": "rescue/m2/source-repair/o14-cac5017e-q11-q14-q20-q23-20261004-1916",
+  "headBefore": "2394548ad2720997bdf4373a42ad199cbd7a1798",
+  "mainObserved": "4e6ee541715e08fc468e552f003b4069206bf493",
+  "divergenceMainOnlyBranchOnly": "50/1 before repair; no target exam/asset/handoff commits on main since merge base",
+  "source": {
+    "problemPdf": {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\중2\\2020_풍덕중2_수학_1중간.pdf",
+      "sha256": "F29D2E2188E273E731B64B0CFCDAA0075F8336C37D013FEE0CCB9A5E0A40E374",
+      "identityCheck": "PASS: first page says 2020학년도 1학기 중간고사, 2학년; page footers and page-4 copyright identify 순천풍덕중학교.",
+      "pages": 4
+    },
+    "answerPdf": {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\중2\\2020_풍덕중2_수학_1중간_정답.pdf",
+      "sha256": "4ACBC55089E9BFDCDD1F25C1578D108BF88F58E34E51A838EEB0DD6B5317765E",
+      "identityCheck": "PASS: 풍덕중학교 2020 1학기 중간고사 2학년 정답지"
+    },
+    "pageContext": {
+      "q11": "problem page 2/4, printed 2/4; q10 above and q12 below",
+      "q14": "problem page 2/4, printed 2/4; source square diagram directly beside the text and q13/q15 are adjacent questions",
+      "q20": "problem page 3/4, printed 3/4; full yes/no flowchart and all destination nodes on the right column",
+      "q23": "problem page 4/4, printed 4/4; written response 3 with the right-triangle circumcircle/incircle diagram"
+    }
+  },
+  "repairs": [
+    {
+      "qid": 11,
+      "changedFields": [
+        "content (exact source wording)",
+        "choices",
+        "image ref",
+        "image asset"
+      ],
+      "sourceExact": "D page 2/4: AB=AC is an isosceles triangle ABC; find angle x at A. Diagram includes equal-side ticks and exterior angle 130° at C.",
+      "sourceChoices": [
+        "50°",
+        "60°",
+        "65°",
+        "70°",
+        "80°"
+      ],
+      "independentAnswer": "Exterior C=130°, so interior C=50°. AB=AC gives B=50°, hence x=A=80°; choice ⑤.",
+      "unchangedDirectFields": [
+        "answer",
+        "solution"
+      ],
+      "asset": {
+        "path": "archive/assets/images/20_풍덕중_1학기_중간_중2_기출/q11.png",
+        "sourcePdfPage": 2,
+        "printedPage": "2/4",
+        "renderDpi": 220,
+        "cropBoundsPixels": [
+          1685,
+          250,
+          2050,
+          530
+        ],
+        "dimensions": "365x280",
+        "sha256": "7EB9E5B3108B38284FF422F01D3AE8AF40F997BF8D5E339F538EADB9F66169AE",
+        "pixelInspection": "PASS: full triangle, A/B/C labels, x, equal-side ticks, 130° exterior angle; adjacent q10/q12 excluded"
+      }
+    },
+    {
+      "qid": 14,
+      "changedFields": [
+        "content Figure placeholder removed",
+        "image ref",
+        "image asset"
+      ],
+      "sourceContent": "Right triangle ABC has square AFGB area 46 cm² and square IBHC area 25 cm²; find square ACDE area.",
+      "sourceDiagram": "Exact D crop shows the three side-squares, right-angle marker, shaded square ACDE, area 46 cm² on AFGB and 25 cm² on IBHC.",
+      "independentAnswer": "46 = ACDE + 25, so ACDE=21 cm²; choice ④.",
+      "asset": {
+        "path": "archive/assets/images/20_풍덕중_1학기_중간_중2_기출/q14.png",
+        "sourcePdfPage": 2,
+        "printedPage": "2/4",
+        "renderDpi": 220,
+        "cropBoundsPixels": [
+          1680,
+          2580,
+          2070,
+          2940
+        ],
+        "dimensions": "390x360",
+        "sha256": "3034484A012908FE5E64D8949CB003396BFE09ECBD6F468CD97B26CBBB860847",
+        "pixelInspection": "PASS"
+      },
+      "unchangedDirectFields": [
+        "choices",
+        "answer",
+        "solution"
+      ]
+    },
+    {
+      "qid": 20,
+      "changedFields": [
+        "content Figure placeholder removed",
+        "image ref",
+        "image asset",
+        "solution"
+      ],
+      "sourceDiagram": "Full flowchart copied from D page 3/4, including each proposition, yes/no edge, and destination node.",
+      "independentRoute": [
+        "두 내각의 크기가 같은 삼각형은 이등변삼각형이다: true → 예",
+        "한 변의 길이와 한 예각만 같은 두 직각삼각형은 항상 합동이다: false without a specified corresponding side → 아니오",
+        "둔각삼각형의 외심은 존재하지 않는다: false → 아니오",
+        "직각삼각형의 외심은 빗변의 중점이다: true → 예",
+        "직각삼각형에서 빗변²=나머지 두 변²의 합: true → 예"
+      ],
+      "verifiedAnswer": "③ 대구",
+      "asset": {
+        "path": "archive/assets/images/20_풍덕중_1학기_중간_중2_기출/q20.png",
+        "sourcePdfPage": 3,
+        "printedPage": "3/4",
+        "renderDpi": 220,
+        "cropBoundsPixels": [
+          1110,
+          1000,
+          2150,
+          1900
+        ],
+        "dimensions": "1040x900",
+        "sha256": "1DCAE77FB8CAFECAFE810D79186C7BBB5AA67401A0EF451FAD348B8903335B24",
+        "pixelInspection": "PASS"
+      },
+      "unchangedDirectFields": [
+        "choices",
+        "answer"
+      ]
+    },
+    {
+      "qid": 23,
+      "changedFields": [
+        "content Figure placeholder removed",
+        "image ref",
+        "image asset"
+      ],
+      "sourceDiagram": "Exact D page-4 diagram: right triangle sides AB=20 cm, AC=12 cm, BC=16 cm, circumcenter O on hypotenuse, and incircle center I.",
+      "verifiedAnswer": "Circumradius 10 cm; inradius 4 cm.",
+      "asset": {
+        "path": "archive/assets/images/20_풍덕중_1학기_중간_중2_기출/q23.png",
+        "sourcePdfPage": 4,
+        "printedPage": "4/4",
+        "renderDpi": 220,
+        "cropBoundsPixels": [
+          1430,
+          400,
+          1860,
+          760
+        ],
+        "dimensions": "430x360",
+        "sha256": "3C0B41F0CCFA1A05F9416C52D3D82DE8F87A44F31CD6B0D5380137CA065D6584",
+        "pixelInspection": "PASS"
+      },
+      "unchangedDirectFields": [
+        "answer",
+        "solution"
+      ]
+    }
+  ],
+  "validation": {
+    "jsSyntax": "PASS",
+    "jsLoad": "PASS: vm load exposes all 24 questions; q11/q14/q20/q23 target fields read back",
+    "targetAnswerSolutionConsistency": "PASS: q11=⑤ (80°), q14=④ (21cm²), q20=③ 대구, q23 circumradius 10cm/inradius 4cm",
+    "assetRefs": "PASS: q11/q14/q20/q23 referenced PNG files exist, PNG signatures valid, hashes recorded",
+    "canonicalCreateValidator": "NOT_RUN; the source queue requires only targeted source repair before source-free CREATE continuation",
+    "createDone": false,
+    "readyForReview1": false,
+    "passClaim": false
+  },
+  "scope": {
+    "changedQuestionIds": [
+      11,
+      14,
+      20,
+      23
+    ],
+    "unrelatedQuestionMutationCount": 0,
+    "lockedMutationCount": 0,
+    "mainMutationCount": 0
+  }
+}
