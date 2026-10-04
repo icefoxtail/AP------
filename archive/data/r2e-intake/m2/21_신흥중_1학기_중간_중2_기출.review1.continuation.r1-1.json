@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "JS_ARCHIVE_RESCUE_CONTINUATION_v1",
+  "stage": "R1",
+  "examUid": "o12",
+  "state": "R1_CLOSURE_DEBT",
+  "inputArtifactSha": "65955805e8f0f6ba7957f5a901f6679fd658352d",
+  "finalArtifactSha": "95dc95a15f58420591475ba21ad80a99010fcabc",
+  "evidenceSha": "015198dacbc97b9f38f759680238c19c67506508",
+  "branch": "work/middle/m2/o12-sinheung-r1-1-20261005-closure-v2",
+  "head": "012716c7c5dd19cfde4fcfb59735c06c75134dd0",
+  "completedStep": "RUNTIME_TEX_NORMALIZED_AND_R1_EVIDENCE_REBOUND",
+  "firstMissingClosureStep": "ACTUAL_CANONICAL_R1_VALIDATOR_EXECUTOR",
+  "exactCapabilityError": [
+    "GitHub create_pull_request blocked by connector safety checks",
+    "No workflow_dispatch write action is exposed by the connected GitHub toolset",
+    "Local container cannot resolve github.com for canonical Node checkout"
+  ],
+  "requiredNextAction": "Run canonical R1 validator on this exact artifact/evidence, then write validator receipt and R1 receipt and perform remote readback before REVIEW1_DONE→READY_FOR_REVIEW2.",
+  "ownerRelinquished": true
+}
