@@ -3,8 +3,8 @@
   "stage": "R1",
   "generation": "M2_1_CREATE_FIRST_2026_10_04",
   "examPath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
-  "examSha256": "sha256:41c5c6f72ac604f08490fddd272de018f81c0a6023314572e62c607af6d187c0",
-  "finalArtifactGitBlob": "65955805e8f0f6ba7957f5a901f6679fd658352d",
+  "examSha256": "sha256:181f0fdd8bfdf01deb7ae46b9064b5ba5652be698877c7db8bd0f6113921ca2e",
+  "finalArtifactGitBlob": "95dc95a15f58420591475ba21ad80a99010fcabc",
   "questionCount": 24,
   "sourceAuthority": {
     "createReceiptPath": "archive/data/r2e-intake/m2/21_신흥중_1학기_중간_중2_기출.create.receipt.json",
@@ -88,8 +88,8 @@
     "priorCreateReceiptUsedOnlyForEligibilityAndProvenance": true,
     "contextTolerantRecheck": true,
     "currentAuthorityRecomputedBeforeFormalCompare": true,
-    "reviewAttemptId": "R1:m2/1mid/21-sinheung:65955805e8f0f6ba7957f5a901f6679fd658352d:1",
-    "decisionSnapshot": "24/24 independent R1 audit; q1/q3/q10/q13/q16 solution defects and stale tag/type metadata repaired; item holds 0."
+    "reviewAttemptId": "R1:m2/1mid/21-sinheung:95dc95a15f58420591475ba21ad80a99010fcabc:2",
+    "decisionSnapshot": "24/24 independent R1 audit preserved; q1/q3/q10/q13/q16 runtime TeX escapes pinpoint-normalized after canonical runtime finding; item holds 0."
   },
   "formalCompare": {
     "performedAfterCurrentPassSnapshot": true,
@@ -141,7 +141,7 @@
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime/string audit PASS q1; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+        "evidence": "R1 runtime TeX normalization applied q1; high-signal TeX commands now use a single runtime backslash."
       }
     },
     {
@@ -219,7 +219,7 @@
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime/string audit PASS q3; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+        "evidence": "R1 runtime TeX normalization applied q3; high-signal TeX commands now use a single runtime backslash."
       }
     },
     {
@@ -492,7 +492,7 @@
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime/string audit PASS q10; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+        "evidence": "R1 runtime TeX normalization applied q10; high-signal TeX commands now use a single runtime backslash."
       }
     },
     {
@@ -609,7 +609,7 @@
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime/string audit PASS q13; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+        "evidence": "R1 runtime TeX normalization applied q13; high-signal TeX commands now use a single runtime backslash."
       }
     },
     {
@@ -726,7 +726,7 @@
       },
       "runtimeString": {
         "status": "PASS",
-        "evidence": "R1 runtime/string audit PASS q16; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+        "evidence": "R1 runtime TeX normalization applied q16; high-signal TeX commands now use a single runtime backslash."
       }
     },
     {
@@ -1448,7 +1448,7 @@
       "tags",
       "questionType"
     ],
-    "reason": "R1 full recheck repaired five solution-math/explanation defects and stale tag/type metadata while preserving source-protected content/choices/answer/image.",
+    "reason": "R1 full recheck repairs preserved; canonical runtime finding pinpoint-closed by normalizing high-signal TeX escapes only in q1/q3/q10/q13/q16 solutions. Protected source fields unchanged.",
     "unrelatedMutationCount": 0
   }
 }
