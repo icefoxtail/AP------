@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_RECHECK_DECISION_SNAPSHOT_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 17,
+  "examFile": "26_팔마중_1학기_기말_중2_기출.js",
+  "reviewAttemptId": "R3:m2/1final/26-palma:1c38aff93c298baeb10590df65c88048b250f0d7:r3-1-continuation-20261004-1125",
+  "reviewedAt": "2026-10-04T11:25:00+09:00",
+  "currentUserOverride": "EXAM_LEVEL_CONVEYOR_SAME_STAGE_FINAL_REPAIR",
+  "inputArtifactGitBlob": "a398fa685e89e6eb9e53970ba2debb374f03ae3b",
+  "inputArtifactSha256": "sha256:8d9e2418aac1872907812bdb6416824f7a21f7fb31f3b98ed8fe99595e7360d7",
+  "finalArtifactGitBlob": "1c38aff93c298baeb10590df65c88048b250f0d7",
+  "finalArtifactSha256": "sha256:cbf7173cad1c6b1b197155b83c28810e90b89a471222f85c4c57ad1723c4e29b",
+  "latestMainShaAtRecheck": "9e31a748b07d6edac468fa2eb262c5da214f54fe",
+  "priorVerdictUsedAsEvidence": false,
+  "priorStageCountsUsedAsEvidence": false,
+  "recomputedFromSourceCurrentAuthority": true,
+  "audits": {
+    "question": "24/24",
+    "mathAnswerSolution": "24/24 PASS_AFTER_Q16_SOURCE_PARITY_REPAIR",
+    "curriculum": "24/24 PASS",
+    "smallBoard": "24/24 PASS",
+    "sourceImage": "4/4 PASS_THIS_R3_SOURCE_PIXEL",
+    "linkedSolutionVisual": "0/0",
+    "metaRpmCrossConceptConditionIntegration": "24/24 PASS_AFTER_Q16_META_ALIGNMENT",
+    "difficulty": "24/24 PASS",
+    "runtimeLayout": "24/24 PASS_AFTER_CHANGED_LOCUS_RECHECK"
+  },
+  "visualHardPreload": "PASS_CURRENT_SOURCE_AUTHORITY",
+  "directRepairCount": 2,
+  "directRepairScope": {
+    "sourceParity": {
+      "qids": [
+        16
+      ],
+      "fields": [
+        "content",
+        "solution"
+      ],
+      "reason": "q16 source pixel shows P on DC, AB=15 cm, BC=8 cm. Current artifact had B-to-C on BC and wrong triangle labels; same-stage repair corrects labels/path while answer stays ③.",
+      "finalArtifactGitBlob": "1c38aff93c298baeb10590df65c88048b250f0d7"
+    },
+    "meta": {
+      "qids": [
+        16
+      ],
+      "fields": [
+        "subUnitKey",
+        "subUnit",
+        "examGitBlob"
+      ],
+      "reason": "Current M2-1 taxonomy places this graph-area condition problem under 일차함수와 일차방정식의 관계; sidecar was stale at BASIC.",
+      "metadataSidecarGitBlob": "e3f3be7c42898e7d72fb91f022f652299645c5e4"
+    }
+  },
+  "changedLocusRecheck": "PASS:q16 source image/content/answer/solution/subUnit + direct math dependency; q1-15/q17-24 exact unchanged against pre-repair artifact",
+  "lockedScopeMutationCount": 0,
+  "sourceRepairRequiredCount": 0,
+  "sourcePixelClosureQids": [
+    9,
+    11,
+    13,
+    16
+  ],
+  "openQids": [],
+  "failureCodes": [],
+  "candidateDisposition": "PASS_PENDING_CANONICAL_R3_VALIDATOR"
+}
