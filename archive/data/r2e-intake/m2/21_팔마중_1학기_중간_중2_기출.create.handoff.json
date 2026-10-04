@@ -1,0 +1,53 @@
+{
+  "examUid": "M2-1-21-PALMA-1MID",
+  "canonicalOrdinal": 9,
+  "stage": "CREATE",
+  "status": "RESCUE_PROGRESS",
+  "owner": "THANOS-MASTER-1",
+  "finalArtifactGitBlob": "7a7c7f1d6ef871eeadd07568cc71cf1dd9fdfd23",
+  "finalArtifactSha256": "sha256:78997c6df249a8a5049151ddf64318445fb8fa861280b2d1cb37b7f7d4c9942e",
+  "sourceRepairEvidenceGitBlob": "04f13136dbd087b7fac07189ba9479c0a05ade8d",
+  "physicalEvidencePath": "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.physical-evidence.v2.json",
+  "physicalEvidenceGitBlob": "d866705ae2c048281b11e7c29efcd02c91bae4ab",
+  "legacyPhysicalEvidenceGitBlob": "407a0b32ff72168f2efdabfaf589b776acc1d0dd",
+  "metaPayloadGitBlob": "df208e2480f845e47d5d5e69582305427f4ffa9b",
+  "masterLeaseGitBlob": "c8f49ea4c8018fb318ee52bb2cff981708fd8946",
+  "validatorReceiptGitBlob": null,
+  "createReceiptGitBlob": null,
+  "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR_EXECUTION",
+  "r1Eligible": false,
+  "triggerAttempts": [
+    {
+      "path": "PR_ISSUE_COMMENT",
+      "result": "BLOCKED_BEFORE_SIDE_EFFECT"
+    },
+    {
+      "path": "BRANCH_LOCAL_WORKFLOW",
+      "result": "BLOCKED_BEFORE_SIDE_EFFECT"
+    },
+    {
+      "path": "TARGET_TEST_HARNESS",
+      "result": "BLOCKED_BEFORE_SIDE_EFFECT"
+    },
+    {
+      "path": "CURRENT_MAIN_VALIDATION_REF_MATERIALIZATION",
+      "result": "BLOCKED_BEFORE_SIDE_EFFECT"
+    }
+  ],
+  "validatorAuthority": {
+    "mainSha": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
+    "archiveStageValidator": "archive/tools/archive-stage-validator.mjs",
+    "reviewEvidenceGateGitBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "targetRef": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
+    "stage": "CREATE"
+  },
+  "next": {
+    "action": "ARCHIVE_STAGE_VALIDATOR_WORKFLOW_DISPATCH",
+    "targetRef": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
+    "stage": "CREATE",
+    "examPath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+    "evidencePath": "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.physical-evidence.v2.json",
+    "afterPass": "Emit actual validator receipt, then durable CREATE receipt, then remote readback. Do not use connector replay as PASS authority."
+  },
+  "updatedAtKST": "2026-10-05T00:30:00+09:00"
+}
