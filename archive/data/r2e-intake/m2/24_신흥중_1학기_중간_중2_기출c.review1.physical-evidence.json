@@ -1,0 +1,1343 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examPath": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+  "examSha256": "sha256:5e2a0a018fca35dd52b1b0fa7e8db6069463a38f42849e3b4279695fa29c99db",
+  "finalArtifactGitBlob": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+  "questionCount": 23,
+  "tagMetaAuditCount": "23/23",
+  "tagMetaCompleteCount": "23/23",
+  "openImplicitMetaNullCount": 0,
+  "solutionRewriteAttempted": "23/23",
+  "solutionRewriteResolved": "23/23",
+  "sourceAuthority": {
+    "protectedBaselineGitBlob": "46fcdb971de3f21c11deaeb6728cbea1d1f64f4c",
+    "linkedProblemImages": [],
+    "sourceLookupNote": "R1 rechecked 23/23 current target bytes against protected baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c. All target questions have no image/problemImage/solutionImage field; deterministic repair changed only q10/q13 subUnitKey/subUnit."
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "23/23",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.",
+        "observation": "Intermediate equations are explicit enough for student reproduction."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면",
+        "observation": "Condition, substitution, and conclusion are connected without hidden steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "The decisive formula is instantiated with concrete intermediate values."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "The reasoning chain is compact but fully reproducible."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "freshFromCurrentArtifactBytes": true,
+    "priorCreateReceiptUsedOnlyForEligibilityAndProvenance": true,
+    "independentRecalculationSnapshot": "R1-1 full recheck 23/23 was frozen before repair. Math/answers/solutions/curriculum/small-board/runtime/layout and current RPM/meta authority were re-evaluated from current bytes. Deterministic Meta repairs were limited to q10 and q13 subUnitKey/subUnit, with protected content/choices/answer/image/layout unchanged from baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c."
+  },
+  "summary": {
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 0
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "레시피에서 분수 표현이 흔하므로 ②를 부적절한 설명으로 확정한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q1; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q1: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q1; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q1: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-123 유리수와 소수 표현 > 분수를 소수로; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q1: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①=1/2, ⑤=1/20만 조건을 만족한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q2; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q2: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q2; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q2: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-120 유한소수와 무한소수 > 분모의 소인수 조건; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q2: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "30.374374…의 최소 순환마디가 374임을 확인한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q3; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q3: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q3; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q3: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-121 순환소수 > 순환마디와 표현; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q3: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "49=3×16+1이므로 첫째 숫자 1을 고른다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q4; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q4: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q4; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q4: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-121 순환소수 > 순환마디와 표현; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q4: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①과 ④만 참임을 확인한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q5; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q5: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q5; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q5: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-119 유한소수와 무한소수 > 유한소수 판별; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q5: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "1000x-x=132가 되는 ㉥-㉠을 선택한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q6; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q6: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q6; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q6: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-122 순환소수 > 순환소수를 분수로; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q6: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "(-ab²)³=-a³b⁶만 제시식과 일치한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q7; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q7: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q7; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q7: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-126 지수법칙 > 거듭제곱의 거듭제곱; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q7: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "4a=8, 8b=24에서 a+b=5를 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q8; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q8: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q8; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q8: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-126 지수법칙 > 거듭제곱의 거듭제곱; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q8: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "6+3+1=10을 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q9; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q9: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q9; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q9: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M1-RPM-116 소인수분해 > 자연수의 소인수분해; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=4, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q9: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "2¹²5¹⁰=4×10¹⁰으로 정리한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q10; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q10: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q10; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q10: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 current-meta lookup PASS after deterministic repair: RPM M2-RPM-125; subUnitKey/subUnit = M2-01-EXPONENT_LAW / 지수법칙; tags preserved; projection UNMATERIALIZED."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q10: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "a=12,b=8에서 a-b=4를 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q11; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q11: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q11; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q11: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-125 지수법칙 > 거듭제곱의 곱·몫; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q11: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "72x⁷÷12x⁴=6x³이다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q12; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q12: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q12; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q12: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-129 단항식의 곱셈과 나눗셈 > 혼합 계산; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q12: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "A=-6x²y²를 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q13; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q13: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q13; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q13: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 current-meta lookup PASS after deterministic repair: RPM M2-RPM-129; subUnitKey/subUnit = M2-01-EXPONENT_LAW / 지수법칙; tags preserved; projection UNMATERIALIZED."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q13: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x²+(1/3)x-3에서 x의 계수 1/3을 읽는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q14; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q14: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q14; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q14: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-130 다항식의 덧셈과 뺄셈 > 동류항 정리; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q14: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "2x²+4x-11을 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q15; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q15: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q15; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q15: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-131 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q15: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "-2x+5y+3을 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q16; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q16: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q16; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q16: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-131 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q16: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "ㄴ과 ㄹ만 참이다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q17; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q17: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q17; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q17: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-138 일차부등식의 풀이 > 기본형; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q17: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①은 x≥50, ⑤는 x>120이어야 한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q18; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q18: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q18; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q18: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-142 수량 관계 > 이상·이하 조건; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q18: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "한 자리 3의 배수 3,6,9를 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q19; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q19: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q19; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q19: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-120 유한소수와 무한소수 > 분모의 소인수 조건; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q19: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "990x=146에서 73/495를 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q20; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q20: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q20; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q20: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-122 순환소수 > 순환소수를 분수로; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q20: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "a=1/2,b=7/2에서 ab=7/4이다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q21; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q21: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q21; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q21: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-130 다항식의 덧셈과 뺄셈 > 동류항 정리; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q21: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "-20x+18y-1을 얻는다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q22; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q22: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q22; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q22: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-133 단항식과 다항식의 곱셈·나눗셈 > 다항식을 단항식으로 나누기; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q22: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "content/choices/answer/image/layout exact to baseline blob 46fcdb971de3f21c11deaeb6728cbea1d1f64f4c; no linked problem image"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "-5a≤-5b 뒤 양변에 3을 더한다. Stored answer independently recomputed."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently rechecked the current solution for q23; the reasoning is mathematically valid, uses middle-2 methods only, and reaches the stored answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 small-board PASS for q23: current solution has [핵심] → [풀이] → [결론] with explicit intermediate reasoning sufficient for student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 2022 middle-2 scope PASS for q23; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit PASS for q23: no problem image or solutionImage is referenced; decisive semantic facts are textual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "tags physicalized; RPM M2-RPM-136 부등식의 성질 > 부등식의 성질; projection UNMATERIALIZED"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2, confidence=high, boundary=NONE"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout PASS for q23: render-safe TeX and layoutTag rechecked; no runtime string defect found."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-123:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "분수·소수의 역사와 실제 사용 맥락을 보기별로 판별한다.",
+      "decisiveStep": "레시피에서 분수 표현이 흔하므로 ②를 부적절한 설명으로 확정한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-120:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "기약분수의 분모에 2와 5 외의 소인수가 남는지 검사한다.",
+      "decisiveStep": "①=1/2, ⑤=1/20만 조건을 만족한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-121:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "최소 순환마디와 순환점 위치를 판별한다.",
+      "decisiveStep": "30.374374…의 최소 순환마디가 374임을 확인한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-121:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "순환마디 길이로 원하는 자릿수를 나머지로 찾는다.",
+      "decisiveStep": "49=3×16+1이므로 첫째 숫자 1을 고른다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-119:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "유리수의 유한·순환소수 표현 성질을 보기별로 판정한다.",
+      "decisiveStep": "①과 ④만 참임을 확인한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-122:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "소수 부분이 같은 두 배수식을 만들어 뺄 조합을 찾는다.",
+      "decisiveStep": "1000x-x=132가 되는 ㉥-㉠을 선택한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-126:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "각 보기의 지수법칙을 직접 적용한다.",
+      "decisiveStep": "(-ab²)³=-a³b⁶만 제시식과 일치한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-126:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "거듭제곱한 뒤 지수를 비교한다.",
+      "decisiveStep": "4a=8, 8b=24에서 a+b=5를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M1-RPM-116:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "12!에 포함된 소인수 2의 총 지수를 센다.",
+      "decisiveStep": "6+3+1=10을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md"
+      ]
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-125:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "2와 5를 짝지어 10의 거듭제곱을 만든다.",
+      "decisiveStep": "2¹²5¹⁰=4×10¹⁰으로 정리한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-125:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "소인수분해 후 지수법칙으로 몫을 정리한다.",
+      "decisiveStep": "a=12,b=8에서 a-b=4를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-129:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "계수와 문자 지수를 분리해 계산한다.",
+      "decisiveStep": "72x⁷÷12x⁴=6x³이다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-129:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "A만 남기도록 역연산한다.",
+      "decisiveStep": "A=-6x²y²를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-130:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "동류항을 정리한 뒤 계수와 차수를 판정한다.",
+      "decisiveStep": "x²+(1/3)x-3에서 x의 계수 1/3을 읽는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-131:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "잘못된 계산에서 원래 식을 복원한 뒤 바른 뺄셈을 한다.",
+      "decisiveStep": "2x²+4x-11을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-131:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "안쪽 괄호부터 풀고 음수 부호를 분배한다.",
+      "decisiveStep": "-2x+5y+3을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-138:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "x=2를 각 부등식에 대입해 해인지 판정한다.",
+      "decisiveStep": "ㄴ과 ㄹ만 참이다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-142:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "실생활 조건어를 부등호로 번역한다.",
+      "decisiveStep": "①은 x≥50, ⑤는 x>120이어야 한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-120:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "약분 후 분모의 3이 없어지도록 a를 정한다.",
+      "decisiveStep": "한 자리 3의 배수 3,6,9를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-122:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "반복 길이에 맞춘 두 배수식을 빼 분수로 바꾼다.",
+      "decisiveStep": "990x=146에서 73/495를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-130:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "통분 후 x,y 계수를 분리한다.",
+      "decisiveStep": "a=1/2,b=7/2에서 ab=7/4이다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-133:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "다항식을 단항식으로 나눈 뒤 남은 식을 정리한다.",
+      "decisiveStep": "-20x+18y-1을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-136:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "음수를 곱할 때 부등호 방향이 바뀌는 성질을 적용한다.",
+      "decisiveStep": "-5a≤-5b 뒤 양변에 3을 더한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ]
+    }
+  ]
+}
