@@ -64,6 +64,20 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 - **target-local blocker, validator/write/tool 실패, 동일 경로 반복 방지 때문에 TEMP-CREATE 예약을 self-disable하는 것은 금지한다.** disable은 형님의 명시 지시 또는 CURRENT topology가 해당 role 종료를 선언한 경우만 허용한다.
 - 따라서 역할 분담은 `TEMP-CREATE = 생산 우선 + 가능한 closure`, `THANOS = handed-off CREATE closure debt 포함 universal rescue/마감`이다.
 
+## 0.3 R1/R2/R3 WORKER → THANOS HANDOFF — HARD (2026-10-04)
+
+형님의 2026-10-04 명시 지시: **R1/R2/R3 전용 worker도 자기 stage의 처리량을 계속 확보해야 한다. 가능한 경우 자기 run에서 stage closure까지 닫되, target-local capability blocker 때문에 같은 시험지를 반복 점유하거나 lane을 끄지 않는다. 마감 debt는 THANOS가 이어받는다.**
+
+- R1/R2/R3 전용 worker는 자기 stage의 full recheck, deterministic repair, evidence/validator/receipt를 가능한 범위까지 수행하고 실행 가능한 경로가 있으면 각각 `REVIEW1_DONE→READY_FOR_REVIEW2`, `REVIEW2_DONE→READY_FOR_R3`, `R3_PASS→RELEASE_QUEUE`까지 닫는다.
+- 그러나 유효한 review artifact/evidence/repair 결과가 물리화된 뒤 **Git contents/PR/Actions write, validator executor, validator receipt, stage receipt, remote readback, provider/tool capability** 중 하나가 current run에서 실제로 막히고 state recheck + safe retry + materially different safe path도 실패하면 같은 target을 반복 점유하지 않는다.
+- 이 경우 `stage / examUid / inputArtifactSha / branch+HEAD / finalArtifactSha / evidence/decision snapshot / completedStep / firstMissingClosureStep / exact capability+error / required next action`을 durable continuation으로 남기고 공용 `RESCUE_QUEUE`에 `R1_CLOSURE_DEBT | R2_CLOSURE_DEBT | R3_CLOSURE_DEBT`로 등록한 뒤 **same-target writer/lease/owner를 relinquish**한다.
+- THANOS는 해당 handoff를 exact `firstMissingClosureStep`부터 이어받아 그 stage의 durable next state까지 닫는다. handoff 자체는 stage PASS가 아니며, 실제 validator/receipt/readback 전에는 다음 stage eligible이 아니다.
+- handoff된 target은 최신 CURRENT/RESCUE_QUEUE가 `REASSIGN_TO_R1 | REASSIGN_TO_R2 | REASSIGN_TO_R3`를 명시하지 않는 한 동일 전용 worker가 다음 run에서 자동 재점유하지 않는다. **다음 scheduled run은 같은 stage의 다른 eligible 시험지**를 선택한다.
+- current run에서 이미 1시험지 mutation/closure를 만들었으면 one-exam max를 지키고 다음 시험지 실제 mutation은 다음 run에 한다. blocker를 mutation 전에 확인했고 current run mutation=0이면 같은 run에서 다른 eligible을 선택할 수 있다.
+- **target-local blocker, validator/write/tool/provider 실패, 동일 경로 반복 방지 때문에 R1/R2/R3 예약을 self-disable하는 것은 금지한다.** disable은 형님의 명시 지시 또는 CURRENT topology의 role 종료만 허용한다.
+- R3의 source truth 자체가 current artifact로 확정 불가능한 경우는 기존 `SOURCE_REPAIR_REQUIRED` 예외를 유지한다. 이 continuation도 전용 R3 worker가 current run에서 닫지 못하면 THANOS rescue가 인수할 수 있다.
+- 역할 분담은 `R1/R2/R3 worker = stage 처리량 우선 + 가능한 closure`, `THANOS = handed-off stage closure debt 포함 universal rescue/마감`이다.
+
 ## 1. CURRENT M2-1 topology — 15 lanes / THANOS MASTER ×5
 
 | Role | Count | Responsibility |
