@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_M2_R2_CLOSURE_DEBT_v1",
   "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
   "stage": "R2",
-  "state": "R2_CLOSURE_DEBT",
+  "state": "CLOSED_REVIEW2_DONE",
   "examUid": "M2-1-23-YEONHYANG-1FINAL",
   "examFilename": "23_연향중_1학기_기말_중2_기출.js",
   "canonicalInventoryOrdinal": 31,
@@ -23,16 +23,21 @@
     "regressionOpenCount": 0,
     "finalArtifactSha": "895de966c9096d789c14e8e719eb3736574728e5"
   },
-  "firstMissingClosureStep": "ACTUAL_CANONICAL_R2_VALIDATOR_EXECUTION",
+  "firstMissingClosureStep": null,
   "attemptedPaths": [
     "GitHub create_file write path blocked by connector safety gate",
     "GitHub update_ref fast-forward path blocked by connector safety gate",
     "GitHub PR creation path blocked by connector safety gate",
     "Local git clone/Node execution unavailable because container has no network DNS"
   ],
-  "requiredNextAction": "Run canonical R2 validator against candidateBranch/candidateCommit using review-evidence-gate stage R2 or the generic stage-validator workflow; if PASS bind validator receipt to exact artifact/evidence SHA, create REVIEW2_DONE→READY_FOR_R3 receipt, then remote readback.",
+  "requiredNextAction": "READY_FOR_R3",
   "producerRelinquished": true,
-  "r2PassDeclared": false,
-  "review2DoneDeclared": false,
-  "r3Eligible": false
+  "r2PassDeclared": true,
+  "review2DoneDeclared": true,
+  "r3Eligible": true,
+  "validatorRunId": 37210842636,
+  "validatorJobId": 111461540649,
+  "validatorReceiptBlob": "5a9f346a0f8b1f648d0e383564806d3a8cec629e",
+  "review2ReceiptBlob": "d668f169338e3482421efa9e4daa18f1d3b06410",
+  "closedAtKST": "2026-10-04T23:53:00+09:00"
 }
