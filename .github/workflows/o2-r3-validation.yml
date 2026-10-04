@@ -1,0 +1,21 @@
+name: M2 O2 R3 Canonical Validation
+
+on:
+  push:
+    branches:
+      - validation/m2-o2-r3-20261004-1846
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run O2 canonical R3 gate
+        run: node tests/z-r3-o2-wangun-canonical-validation.test.js
