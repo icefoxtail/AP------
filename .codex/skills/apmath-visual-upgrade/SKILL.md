@@ -617,6 +617,47 @@ KEEP 조건:
 - current quality floor 충족
 - PRINT95 작업이면 final render qualification까지 닫힘
 
+## 13.1 PUBLISHING-TEAM STYLE FLOOR — KEEP IS NOT NO-OP
+
+목표는 한 시험지·한 코호트의 visual이 서로 다른 시기에 만들어졌더라도 **학생에게는 하나의 출판팀이 만든 결과처럼 보이게 하는 것**이다.
+
+`KEEP`는 **semantic/geometry를 보존한다**는 뜻이지 legacy SVG bytes를 무변경 보존한다는 뜻이 아니다.
+
+target visual-upgrade scope에 이미 SVG가 있으면 기본 경로는 다음이다.
+
+```text
+KEEP_SEMANTIC
+→ CURRENT_STYLE_FLOOR_AUDIT
+→ ALREADY_CURRENT | STYLE_NORMALIZE
+→ physical/browser evidence refresh
+→ PASS
+```
+
+기존 SVG가 math/semantic PASS여도 아래 current style floor 중 하나라도 미달이면 `STYLE_NORMALIZE`를 수행한다.
+
+- current canonical stroke hierarchy: main / auxiliary / derived / conclusion의 선 굵기·선종류
+- TEXT_FONT / MATH_FONT 역할 분리와 수학 변수의 일관된 조판
+- required viewport의 final CSS font-size HARD gate
+- point / length / angle label owner와 여백·충돌·clipping
+- 의미가 있는 제한적 accent color와 black-and-white survivability
+- canvas / viewBox / information density / whitespace의 일관성
+- legacy decoration, debug text, 불필요한 중복 정보 제거
+- 같은 시험지·같은 파일럿 안에서 visual style token의 일관성
+
+style normalization은 **수학 geometry를 다시 만드는 작업이 아니다**. 좌표·접선·수직·중점·각 등 semantic geometry가 이미 정확하면 가능한 한 그대로 보존하고 typography/stroke/color/spacing/composition만 현재 floor로 올린다.
+
+style normalization 과정에서 실제 geometry 또는 decisive relation을 바꿔야 하면 더 이상 단순 KEEP이 아니며 `POLISH` 또는 `REBUILD`로 승격한다.
+
+기존 SVG item evidence에는 최소 다음을 남긴다.
+
+- `styleFloorStatus = PASS | FAIL`
+- `styleNormalizationAction = ALREADY_CURRENT | NORMALIZED`
+- `styleVersion / appliedStyleTokens`
+- `semanticGeometryPreserved = true | false`
+- required viewport의 font/bbox/collision evidence
+
+**최종 KEEP은 `styleFloorStatus=PASS`일 때만 허용한다.**
+
 기존 asset을 신규 제작 reference로 가리는 blind/fresh 규칙이 있으면 이를 지킨다.
 facts를 먼저 동결한 뒤 existing asset을 audit하는 것은 허용할 수 있다.
 
