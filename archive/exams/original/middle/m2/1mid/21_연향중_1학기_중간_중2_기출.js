@@ -787,7 +787,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "첫째, 양변에 양수 6을 곱하므로 ㄴ을 이용한다.\n$-\\frac{1}{3}x-\\frac{5}{2}\\ge\\frac{1}{6}x$\n$\\Longrightarrow -2x-15\\ge x$.\n\n둘째, 양변에서 $x$를 빼고 15를 더하는 과정은 ㄱ이다.\n$-2x-15\\ge x$\n$\\Longrightarrow -3x\\ge15$.\n원문 중간식의 부등호 $\\le$는 $\\ge$로 바로잡는다.\n\n셋째, 양변을 음수 $-3$으로 나누며 부등호 방향을 바꾸므로 ㄷ이다.\n$-3x\\ge15\\Longrightarrow x\\le-5$.\n원문 마지막 $x\\ge-5$도 $x\\le-5$가 맞다.\n\n따라서 이용한 성질의 순서는 ㄴ, ㄱ, ㄷ이고 정답은 ③이다.",
+    "solution": "ㄴ. 양변에 양수 6을 곱한다.\n$-\\frac{1}{3}x-\\frac{5}{2}\\ge\\frac{1}{6}x$\n$\\Longrightarrow -2x-15\\ge x$.\n\nㄱ. 양변에서 $x$를 빼고 15를 더한다.\n$-2x-15\\ge x$\n$\\Longrightarrow -3x\\ge15$.\n원문 중간식의 부등호 $\\le$는 $\\ge$로 바로잡는다.\n\nㄷ. 양변을 음수 $-3$으로 나누며 부등호 방향을 바꾼다.\n$-3x\\ge15\\Longrightarrow x\\le-5$.\n원문 마지막 $x\\ge-5$도 $x\\le-5$가 맞다.\n\n따라서 이용한 성질의 순서는 ㄴ, ㄱ, ㄷ이고 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
