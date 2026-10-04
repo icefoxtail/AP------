@@ -1,7 +1,7 @@
 # JS Archive Scheduled Worker Prompt Canonical Template v1
 
 - status: **CURRENT / COPY SOURCE**
-- version: **PROMPT_TEMPLATE_V1.0.0**
+- version: **PROMPT_TEMPLATE_V1.1.0**
 - scope: JS Archive scheduled production/review/rescue/publish workers
 - authority order: **current explicit user instruction → latest Notion CURRENT/router → this template → active operating contract → latest Git physical state**
 - purpose: 학년·학기·시험지 묶음이 바뀌어도 예약 worker의 운영 철학과 실패 처리 방식이 drift하지 않도록, 새 예약을 만들 때 이 문서를 그대로 복제하고 placeholder만 치환한다.
@@ -120,8 +120,21 @@ disable은 **사용자 명시 지시 또는 CURRENT topology의 role 종료**만
 prompt에 박힌 특정 target/branch/HEAD는 selector hint일 뿐 authority가 아니다.
 실행 시점 physical state에서 target을 다시 계산한다.
 
-PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.0.0 / {ROLE}
+PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.1.0 / {ROLE}
 ~~~
+
+## 3.1 GPT VISUAL PRODUCTION CONTRACT — HARD
+
+CREATE/R1/R2/R3/THANOS가 problem image, SVG, graph, geometry, solutionImage의 생성·수정·필요성 판정·검수를 수행하는 경우, target visual 작업 전에 최신 main의 아래 두 문서를 읽는다.
+
+1. \`.codex/skills/apmath-visual-upgrade/SKILL.md\` — upstream visual philosophy/current direction
+2. \`docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md\` — GPT/예약 worker 실행 해석 정본
+
+GPT는 Codex skill을 invoke/실행했다고 주장하지 않는다. skill 안의 local Node/Python/browser command를 실행할 수 없으면 실행한 것으로 기록하지 않고, GPT Contract에 따라 가능한 source/current-bytes/수학/좌표/owner/style 검증을 수행한다. 필요한 actual render가 실행 불가능하면 NOT_RUN/NOT_VERIFIED와 exact visual debt를 남기되 pipeline을 self-disable하거나 whole-exam HOLD하지 않는다.
+
+공통 visual triage는 KEEP / POLISH / REBUILD / ADD / REMOVE / EXEMPT를 사용하고, PROBLEM_VISUAL(source fidelity)과 SOLUTION_VISUAL(educational digital-first)을 분리한다. source figure가 decisive relation을 이미 충분히 제공하면 중복 ADD하지 않는다. 각도/길이/점 라벨은 actual owner에 결속하고, 표시 text가 맞아도 primitive/좌표/owner가 틀리면 FAIL이다.
+
+MAIN/WATCHDOG는 visual 품질 verdict를 새로 만들지 않는다.
 
 ## 4. COMMON HANDOFF BLOCK — CREATE/R1/R2/R3
 
@@ -334,6 +347,10 @@ incident
 개별 automation prompt만 수정하고 종료하지 않는다.
 
 ## 14. CHANGELOG
+
+### V1.1.0 — 2026-10-04
+- GPT 예약 worker용 Visual Production Contract를 신설하고 CREATE/R1/R2/R3/THANOS의 공통 필독으로 연결.
+- Codex skill 직접 실행 주장 금지, GPT 환경용 실행 해석, KEEP/POLISH/REBUILD/ADD/REMOVE/EXEMPT triage, source-vs-solution visual 분리, owner/style/render-debt 규칙 고정.
 
 ### V1.0.0 — 2026-10-04
 - EXAM-LEVEL CONVEYOR를 공통 철학으로 고정.
