@@ -198,6 +198,60 @@ test("saved snapshot source grades resolve from preserved identity when canonica
     };
     assert.deepEqual(await resolveSavedPaperSourceGrades(env, [renamedIdentity]), ["고2"],
       "saved identity evidence must survive a verified source-path rename without the current identity catalog");
+    const witnessedQuestion = snapshot.questions[0];
+    const witnessedMutations = [
+      ["question UID", { ...witnessedQuestion, questionUid: "qid_v1_" + "c".repeat(64) }],
+      ["source path", { ...witnessedQuestion, sourceArchiveFile: "similar/shared.js" }],
+      ["source ordinal", { ...witnessedQuestion, sourceOrdinal: witnessedQuestion.sourceOrdinal + 1 }],
+      ["witness UID", {
+        ...witnessedQuestion,
+        sourceIdentityEvidence: { ...witnessedQuestion.sourceIdentityEvidence, questionUid: "qid_v1_" + "c".repeat(64) },
+      }],
+      ["witness source file", {
+        ...witnessedQuestion,
+        sourceIdentityEvidence: { ...witnessedQuestion.sourceIdentityEvidence, sourceFile: "similar/shared.js" },
+      }],
+      ["witness identity source file", {
+        ...witnessedQuestion,
+        sourceIdentityEvidence: { ...witnessedQuestion.sourceIdentityEvidence, identitySourceFile: "similar/shared.js" },
+      }],
+      ["witness ordinal", {
+        ...witnessedQuestion,
+        sourceIdentityEvidence: {
+          ...witnessedQuestion.sourceIdentityEvidence,
+          sourceOrdinal: witnessedQuestion.sourceIdentityEvidence.sourceOrdinal + 1,
+        },
+      }],
+      ["question source grade", { ...witnessedQuestion, sourceGrade: "고1" }],
+      ["witness source grade", {
+        ...witnessedQuestion,
+        sourceIdentityEvidence: { ...witnessedQuestion.sourceIdentityEvidence, sourceGrade: "고1" },
+      }],
+      ["witness schema", {
+        ...witnessedQuestion,
+        sourceIdentityEvidence: { ...witnessedQuestion.sourceIdentityEvidence, schemaVersion: "unknown" },
+      }],
+      ["witness status", {
+        ...witnessedQuestion,
+        sourceIdentityEvidence: { ...witnessedQuestion.sourceIdentityEvidence, status: "UNVERIFIED" },
+      }],
+    ];
+    for (const [field, question] of witnessedMutations)
+      await assert.rejects(
+        resolveSavedPaperSourceGrades(env, [question]),
+        error => error.status === 409,
+        `a Saved Paper source identity ${field} mutation must fail closed`,
+      );
+    for (const [field, question] of [
+      ["UID", { ...legacySnapshotQuestions[0], questionUid: "qid_v1_" + "d".repeat(64) }],
+      ["ordinal", { ...legacySnapshotQuestions[0], sourceOrdinal: legacySnapshotQuestions[0].sourceOrdinal + 1 }],
+      ["source grade", { ...legacySnapshotQuestions[0], sourceGrade: "고1" }],
+    ])
+      await assert.rejects(
+        resolveSavedPaperSourceGrades(env, [question]),
+        error => error.status === 409,
+        `a legacy witness-less source identity ${field} mutation must fail closed`,
+      );
     await assert.rejects(
       resolveSavedPaperSourceGrades(env, [{ ...legacySnapshotQuestions[0], sourceArchiveFile: "similar/shared.js" }]),
       error => error.status === 409,

@@ -588,3 +588,79 @@ test('Original Assignment completes on saved=true while PDF stays pending and re
   assert.equal(h.previewEnvelopes[0].assignmentId, 'assignment-pdf-1');
   assert.equal(h.previewEnvelopes[0].questions[0].content, 'saved original bytes');
 });
+
+async function runSharedTargetPicker(classes, preferredGrade) {
+  const index = read('index.html');
+  const helpers = sliceBetween(index, 'function sortQrClassesForSelect(list) {', 'function getArchiveExamQuestionCount(item) {');
+  const picker = sliceBetween(index, 'async function openAssignTargetPanel(item, qpp) {', 'function renderAssignTargetNotice(message) {');
+  const body = { innerHTML: '' };
+  const notices = [];
+  const selectedGrades = [];
+  const context = {
+    document: { getElementById: () => ({ classList: { add() {} } }) },
+    Archive2History: require('../archive/archive2-history.js'),
+    resetAssignTargetPreviewPane() {},
+    assignTargetBodyEl: () => body,
+    getIndexAssignmentAuthHeader: () => ({ Authorization: 'Bearer fixture' }),
+    ARCHIVE_AP_API_BASE: 'https://api.test/api',
+    fetch: async () => ({ status: 200, ok: true, json: async () => ({ success: true, classes }) }),
+    isArchiveAdminSession: () => false,
+    getArchiveCurrentTeacherId: () => 'teacher-a',
+    getArchiveCurrentTeacherName: () => 'Teacher A',
+    compactText: value => String(value ?? '').normalize('NFC').replace(/\s+/g, '').toLowerCase(),
+    assignTargetSwitchGrade(grade) { selectedGrades.push(grade); },
+    renderAssignTargetNotice(message) { notices.push(String(message)); },
+    renderAssignTargetLoginPrompt() { notices.push('login'); },
+    console: { error(error) { throw error; } },
+  };
+  vm.runInNewContext(`${helpers}\n${picker}`, context, { filename: 'shared-target-picker.js' });
+  await context.openAssignTargetPanel({ savedPaperId: 'saved-paper-exact', grade: preferredGrade }, 4);
+  return { context, notices, selectedGrades };
+}
+
+test('Saved Paper shared target picker exposes high3-only, mixed and fallback grades after teacher filtering', async () => {
+  const index = read('index.html');
+  assert.ok(index.indexOf('<script src="archive2-history.js?v=20261004-class-grade-fallback-1"') <
+    index.indexOf('<script src="archive2-entry.js?'), 'shared grade resolver loads before Saved Paper entry');
+  const high3Only = await runSharedTargetPicker([
+    { id: 'high3-explicit', name: '고3 대상반', grade: '고3', teacher_id: 'teacher-a' },
+  ], '고2');
+  assert.deepEqual(
+    Array.from(high3Only.context.getIndexAvailableGrades(high3Only.context.AssignTarget.classRows)),
+    ['고3'],
+    'the actual shared picker must retain a high3-only target even when the paper grade is different',
+  );
+  assert.deepEqual(high3Only.selectedGrades, ['고3']);
+
+  const mixed = await runSharedTargetPicker([
+    { id: 'high1', name: '고1 대상반', grade: '고1', teacher_id: 'teacher-a', teacher_name: 'Teacher A' },
+    { id: 'high3-name', name: '고3 이름 fallback 반', teacher_id: 'teacher-a', teacher_name: 'Teacher A' },
+    { id: 'other-teacher', name: '고2 다른 선생님 반', grade: '고2', teacher_id: 'teacher-b', teacher_name: 'Teacher B' },
+  ], '고1');
+  assert.deepEqual(
+    Array.from(mixed.context.getIndexAvailableGrades(mixed.context.AssignTarget.classRows)),
+    ['고1', '고3'],
+    'the paper grade is only an initial preference; every teacher-assigned grade remains available',
+  );
+  assert.deepEqual(mixed.selectedGrades, ['고1']);
+  assert.deepEqual(
+    Array.from(mixed.context.AssignTarget.classRows, row => row.id),
+    ['high1', 'high3-name'],
+    'the shared picker keeps its current-teacher class filter',
+  );
+
+  const labelOnly = await runSharedTargetPicker([
+    { id: 'high3-label', name: '졸업반', grade_label: '고3', teacher_id: 'teacher-a' },
+  ], '고3');
+  assert.deepEqual(
+    Array.from(labelOnly.context.getIndexAvailableGrades(labelOnly.context.AssignTarget.classRows)),
+    ['고3'],
+    'explicit grade_label metadata remains supported',
+  );
+
+  const noneAssigned = await runSharedTargetPicker([
+    { id: 'other-teacher-only', name: '고3 다른 담당 반', grade: '고3', teacher_id: 'teacher-b' },
+  ], '고3');
+  assert.deepEqual(noneAssigned.selectedGrades, []);
+  assert.match(noneAssigned.notices.join(' '), /담당 반이 없습니다/);
+});
