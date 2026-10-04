@@ -4,13 +4,13 @@
   "lane": "R3-1",
   "canonicalOrdinal": 3,
   "examFile": "25_연향중_1학기_중간_중2_기출.js",
-  "status": "SOURCE_REPAIR_REQUIRED",
+  "status": "SOURCE_REPAIR_DONE_R3_TARGETED_RECHECK_PASS",
   "reviewedAt": "2026-10-04T11:43:00+09:00",
-  "latestMainShaAtRecheck": "9e31a748b07d6edac468fa2eb262c5da214f54fe",
+  "latestMainShaAtRecheck": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
   "inputFinalArtifactGitBlob": "d93fcc046b398155032fa7117297778db38ef5db",
   "inputArtifactSha256": "sha256:4e82004dbd006eaa4131eec467308c413f6ba2f0858b9d4c6bed56ae4069d66c",
-  "currentFinalArtifactGitBlob": "1688365b9050d5aef814c878acaabc845456c0d7",
-  "currentFinalArtifactSha256": "sha256:7b147a9f764902a9c3c9f3bbb7298981e30fd98838b518718731cfb238add86d",
+  "currentFinalArtifactGitBlob": "8ea533a4c437d7831bed4561acaaf04cf98dbd60",
+  "currentFinalArtifactSha256": "sha256:037899d30270ac77d26a19c7c33e7f7e5486b086ecde7cce084dbb810b2d8e00",
   "review2ReceiptBlob": "67133ad05b7d1645f246341a09dc08bfe2a009e3",
   "canonicals": {
     "r3": "b2d3134a2db1129569d53b04e1afcf2cd0f09978",
@@ -35,21 +35,37 @@
     10
   ],
   "changedLocusRecheck": "PASS",
-  "openQids": [
-    23
-  ],
-  "sourceRepairRequiredCount": 1,
+  "openQids": [],
+  "sourceRepairRequiredCount": 0,
   "sourceRepair": [
     {
       "qid": 23,
-      "reason": "SOURCE_PROBLEM_PIXEL_MISSING",
-      "unresolvedPoint": "발문이 참조하는 원본 수직선의 경계값, 끝점 포함 여부, 방향",
-      "requiredAction": "원본 PDF/page를 직접 재확인하고 q23 수직선 source를 정확히 재추출/재크롭하여 current artifact에 결속. 저장 answer -6/current solution을 source authority로 역추론하지 말 것.",
-      "expectedTargetAsset": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png (or canonical equivalent)",
-      "returnTo": "same R3 continuation; repaired/source locus q23 + direct dependency only recheck, then canonical R3 validator/receipt"
+      "status": "D_SOURCE_CONFIRMED",
+      "sourcePdf": "D:/기출/(1)1중간/(1)1중간/중2/2025_연향중2_수학_1중간.pdf",
+      "sourcePdfSha256": "C5ABD1C5053DD4FF04471B10C6066C679D0328822D1BE8EC044BAD5EDBB1C4F4",
+      "sourcePage": 4,
+      "answerPdf": "D:/기출/(1)1중간/(1)1중간/중2/2025_연향중2_정답_1중간.pdf",
+      "answerPdfSha256": "DD4B946D1135426339F0092975B517195EFB9EA8BD8E5B159BD7EC9A2ED2CD35",
+      "sourceFacts": "closed -1 endpoint; rightward solution ray",
+      "assetPath": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+      "assetSha256": "sha256:5ba80c17565e096150c68dcc8b09abae047f98a5ff6d01649ef46a5f050290d3",
+      "resolverEvidenceSha": "sha256:59c12432fd667a3cc5c631d96bddfa70a7685c354fa8bd69eb0f71869f08226a",
+      "lockedScopeMutationCount": 0
     }
   ],
-  "next": "Codex Source Repair: recover q23 original number-line source from PDF/page; then same R3 continuation checks q23 + direct dependency only and proceeds to canonical R3 validator/receipt.",
+  "next": "Source queue item is closed. Continue source-free same-R3 stage receipt/release closure from the q23 targeted PASS; do not reopen q1-q22.",
   "freshReviewerRequired": false,
-  "candidateDisposition": "SOURCE_REPAIR_REQUIRED"
+  "candidateDisposition": "SOURCE_REPAIR_DONE_R3_TARGETED_RECHECK_PASS",
+  "currentMetadataSidecarGitBlob": "b042f4298854b1765b035bf49739ceecd68d2e31",
+  "targetedRecheck": {
+    "qid": 23,
+    "result": "PASS",
+    "answer": "-6",
+    "evidenceBlob": "1c08519ae2b8a5cabcc935ff551fb595f715611e",
+    "lockedScopeQids": "1-22",
+    "lockedScopeMutationCount": 0
+  },
+  "targetedR3ValidatorReceiptPath": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.q23-targeted-review-gate.json",
+  "targetedR3ValidatorReceiptBlob": "3e0d48f5a4c3ae3f253d6ca3068165a08939a440",
+  "targetedR3Gate": "PASS_Q23_ONLY"
 }
