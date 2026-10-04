@@ -1,0 +1,20 @@
+name: M2 o9 CREATE Validation
+
+on:
+  push:
+    branches:
+      - work/middle/m2/21-palma-1mid-temp-create3-20261004-1624
+
+jobs:
+  create-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run o9 canonical CREATE gate
+        run: node tests/m2-temp-create3-o9-palma-create-gate.test.js
