@@ -1,0 +1,41 @@
+name: Geometry publication regression
+
+on:
+  push:
+    branches: ['codex/geometry-publication-engine-20261005']
+    paths: ['archive/tools/**', '.github/workflows/geometry-publication-tests.yml']
+  pull_request:
+    paths: ['archive/tools/geometry-equation/**', '.github/workflows/geometry-publication-tests.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Python engine regression
+        run: python3 -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py' -v
+      - name: Node geometry regression
+        if: always()
+        run: node --test archive/tools/geometry-equation/tests/*.test.mjs
+      - name: Package reproducible source (no production assets or generated evidence)
+        if: always()
+        shell: bash
+        run: |
+          git rev-parse HEAD > source-commit.txt
+          git ls-files -z archive/tools docs/rules .codex/skills/apmath-visual-upgrade .github/workflows package.json package-lock.json archive/engine.html | tar --null -T - -czf geometry-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-regression-source
+          path: |
+            geometry-source.tar.gz
+            source-commit.txt
+          retention-days: 3
