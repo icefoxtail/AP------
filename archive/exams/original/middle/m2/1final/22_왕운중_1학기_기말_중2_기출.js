@@ -578,7 +578,7 @@ window.questionBank = [
       "가감법"
     ],
     "wide": false,
-    "content": "연립방정식 $\\begin{cases}3(x-y)+y=11\\\\\\dfrac{x}{4}+\\dfrac{y}{3}=\\dfrac{5}{12}\\end{cases}$의 해를 구하면? [5점]",
+    "content": "연립방정식 $\\begin{cases}3(x-y)+y=11\\\\ \\dfrac{x}{4}+\\dfrac{y}{3}=\\dfrac{5}{12}\\end{cases}$의 해를 구하면? [5점]",
     "choices": [
       "$x=2,\\ y=-1$",
       "$x=3,\\ y=1$",
