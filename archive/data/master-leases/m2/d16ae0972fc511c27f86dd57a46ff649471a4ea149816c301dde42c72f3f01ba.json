@@ -13,8 +13,10 @@
   "rescueReason": "ORCHESTRATOR_RESCUE_QUEUE_PRIMARY_CREATE_P0_DURABLE_HANDOFF",
   "claimedAt": "2026-10-04T16:18:38+09:00",
   "expiresAt": "2026-10-04T17:48:38+09:00",
-  "lastProgressAt": "2026-10-04T16:18:38+09:00",
+  "lastProgressAt": "2026-10-04T16:23:00+09:00",
   "expectedCompletionGate": "CREATE_DONE_READY_FOR_REVIEW1",
-  "status": "ACTIVE",
-  "claimMode": "ATOMIC_LEASE_KEY_BRANCH_CAS"
+  "status": "RELINQUISHED",
+  "claimMode": "ATOMIC_LEASE_KEY_BRANCH_CAS",
+  "result": "VALIDATION_EXECUTOR_WRITE_BLOCKED",
+  "requiredNextAction": "Run the canonical CREATE validators against the exact o29 artifact/evidence, then issue validator and CREATE receipts."
 }
