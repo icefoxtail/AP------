@@ -21,16 +21,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "무리수",
       "유리수",
-      "인수분해",
       "순환소수",
       "유한소수",
       "참거짓",
       "개념"
     ],
     "wide": false,
-    "solution": "<b>[포인트]</b> 유리수와 소수의 분류 정의를 명확히 함.\\n③ 모든 순환소수는 분수로 나타낼 수 있는 유리수임. (참)\\n⑤ 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 순환소수가 됨. (참)\\n$\\because$ ① 무한소수 중 비순환소수는 무리수임. ② 무한소수에는 비순환소수도 포함됨. ④ $\\frac{1}{3}$ 등은 무한소수임.\\n$\\therefore$ ③, ⑤",
+    "solution": "[핵심] 유리수는 유한소수 또는 순환소수로 나타낼 수 있다.\\n[풀이] ① 순환하지 않는 무한소수처럼 분수로 나타낼 수 없는 소수도 있으므로 거짓이다. ② 무한소수라고 모두 순환소수인 것은 아니다. ③ 순환소수는 분수로 나타낼 수 있으므로 참이다. ④ 유리수 중에는 순환소수로만 나타나는 수도 있으므로 거짓이다. ⑤ 기약분수의 분모에 2와 5 이외의 소인수가 남으면 순환소수이므로 참이다.\\n[확인] 옳은 것은 ③, ⑤이다.\\n[결론] ③, ⑤",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -99,7 +97,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "기약분수 상태에서 분모의 소인수가 $2, 5$뿐인지 확인함.\\n① $\\frac{6}{7} \\implies$ 분모 소인수 $7$\\n② $\\frac{9}{14} = \\frac{9}{2 \\times 7} \\implies$ 분모 소인수 $7$\\n③ $\\frac{12}{33} = \\frac{4}{11} \\implies$ 분모 소인수 $11$\\n④ $\\frac{21}{63} = \\frac{1}{3} \\implies$ 분모 소인수 $3$\\n⑤ $\\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$뿐임.\\n$\\therefore$ ⑤",
+    "solution": "[핵심] 기약분수의 분모에 남는 소인수가 2와 5뿐이면 유한소수로 나타낼 수 있다.\\n[풀이] ① \\\\(\\\\frac67\\\\)은 분모에 7이 남고, ② \\\\(\\\\frac9{14}\\\\)는 분모에 7이 남는다. ③ \\\\(\\\\frac3{20}=\\\\frac3{2^2\\\\times5}\\\\)이므로 유한소수이다. ④ \\\\(\\\\frac{12}{33}=\\\\frac4{11}\\\\), ⑤ \\\\(\\\\frac{21}{63}=\\\\frac13\\\\)이므로 유한소수가 아니다.\\n[확인] 조건을 만족하는 것은 ③뿐이다.\\n[결론] ③",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -163,9 +161,8 @@ window.questionBank = [
       "객관식",
       "유리수",
       "순환소수",
-      "도형",
-      "원",
-      "표해석",
+      "순환마디",
+      "표현",
       "참거짓",
       "오류판별"
     ],
@@ -343,7 +340,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "좌변을 전개함: $\\frac{(-3)^b y^{ab}}{2^b x^{b^2}}$\\n우변의 분모 상수와 비교: $2^b = 4 \\implies b = 2$\\n분모 $x$ 지수: $b^2 = d \\implies d = 4$\\n분자 상수: $(-3)^2 = c \\implies c = 9$\\n분자 $y$ 지수: $ab = 8 \\implies 2a = 8 \\implies a = 4$\\n$\\therefore a+b+c+d = 4 + 2 + 9 + 4 = 19$",
+    "solution": "[핵심] 거듭제곱의 지수와 계수를 좌우에서 각각 비교한다.\\n[풀이] \\\\(\\\\left(\\\\frac{-3y^a}{2x^3}\\\\right)^b=\\\\frac{(-3)^b y^{ab}}{2^b x^{3b}}\\\\)이다. 분모의 상수에서 \\\\(2^b=4\\\\)이므로 \\\\(b=2\\\\). 따라서 \\\\(ab=8\\\\)에서 \\\\(a=4\\\\), \\\\((-3)^2=c\\\\)에서 \\\\(c=9\\\\), \\\\(3b=d\\\\)에서 \\\\(d=6\\\\)이다.\\n[확인] \\\\(a+b+c+d=4+2+9+6=21\\\\).\\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -474,9 +471,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "복소수",
-      "도형",
-      "원",
+      "단항식",
+      "원뿔",
       "부피",
       "조건해석",
       "계산",
@@ -551,7 +547,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "중괄호 정리: $(3xy^3 - 2xy^3 + 8x^2y) \\div xy = (xy^3 + 8x^2y) \\div xy = y^2 + 8x$\\n전체 식: $\\frac{A}{2}x^2 + 2Ax - (y^2 + 8x) = \\frac{A}{2}x^2 + (2A-8)x - y^2$\\n$x$항이 소거되어야 하므로 $2A-8 = 0 \\implies A = 4$\\n$\\implies 2x^2 - y^2$ (이때 $a=2, b=-1$)\\n$\\therefore a+b = 1$",
+    "solution": "[핵심] 중괄호 안을 먼저 정리한 뒤 전체 식에서 일차항이 소거되는지 확인한다.\\n[풀이] \\\\(3xy^3-2y(xy^2-4x^2)=xy^3+8x^2y\\\\)이므로 이를 \\\\(xy\\\\)로 나누면 \\\\(y^2+8x\\\\)이다. 또 \\\\(4x(\\\\frac{x}{2}+2)=2x^2+8x\\\\)이다. 따라서 전체 식은 \\\\(2x^2+8x-(y^2+8x)=2x^2-y^2\\\\)이다.\\n[확인] \\\\(a=2, b=-1\\\\)이므로 \\\\(a+b=1\\\\).\\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -614,7 +610,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "부등식",
-      "표해석",
+      "문장제",
       "참거짓",
       "오류판별",
       "개념"
@@ -721,9 +717,8 @@ window.questionBank = [
       "객관식",
       "부등식",
       "일차부등식",
-      "도형",
-      "원",
-      "범위",
+      "실생활",
+      "가격",
       "조건해석",
       "응용"
     ],
@@ -738,13 +733,7 @@ window.questionBank = [
   {
     "id": 22,
     "content": "순환소수 $2.1\\dot{7}$을 기약분수로 나타내시오. [5점]",
-    "choices": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "choices": [],
     "answer": "$\\frac{98}{45}$",
     "category": "서술형 - 순환소수",
     "originalCategory": "서술형 - 순환소수",
@@ -752,14 +741,14 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
+      "서술형",
       "유리수",
       "순환소수",
-      "계산",
-      "조건해석"
+      "기약분수",
+      "계산"
     ],
     "wide": false,
     "solution": "$x = 2.1777\\dots$\\n$100x = 217.777\\dots$\\n$10x = 21.777\\dots$\\n$90x = 196 \\implies x = \\frac{196}{90}$\\n약분하여 기약분수로 나타냄.\\n$\\therefore \\frac{98}{45}$",
@@ -772,13 +761,7 @@ window.questionBank = [
   {
     "id": 23,
     "content": "길영이는 분모를 잘못 보아 $0.1\\dot{8}$이라 하였고, 상훈이는 분자를 잘못 보아 $0.\\dot{4}$라 하였다. 처음의 기약분수를 바르게 구하여 순환소수로 나타내시오. [9점]",
-    "choices": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "choices": [],
     "answer": "$1.\\dot{8}$",
     "category": "서술형 - 유리수의 분류",
     "originalCategory": "서술형 - 유리수의 분류",
@@ -786,16 +769,15 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
+      "서술형",
       "유리수",
       "순환소수",
-      "참거짓",
-      "조건해석",
-      "계산",
-      "개념"
+      "기약분수",
+      "역추론",
+      "계산"
     ],
     "wide": false,
     "solution": "(1) 길영: $0.1\\dot{8} = \\frac{17}{90} \\implies$ 분자 $17$은 바름.\\n(2) 상훈: $0.\\dot{4} = \\frac{4}{9} \\implies$ 분모 $9$는 바름.\\n(3) 처음 분수: $\\frac{17}{9} = 1.888\\dots$\\n$\\therefore 1.\\dot{8}$",
@@ -808,13 +790,7 @@ window.questionBank = [
   {
     "id": 24,
     "content": "집에서 상점에 다녀오는데 갈 때는 분속 $60m$, 올 때는 분속 $40m$로 걸으려고 한다. 물건을 사는 데 10분이 걸리고 전체 시간이 50분 이내가 되려면 상점은 몇 $m$ 이내에 있어야 하는가? [6점]",
-    "choices": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "choices": [],
     "answer": "960m",
     "category": "서술형 - 부등식 활용",
     "originalCategory": "서술형 - 부등식 활용",
@@ -822,12 +798,15 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
+      "서술형",
       "부등식",
+      "일차부등식",
       "실생활",
+      "속력",
+      "시간",
       "응용",
       "계산"
     ],
