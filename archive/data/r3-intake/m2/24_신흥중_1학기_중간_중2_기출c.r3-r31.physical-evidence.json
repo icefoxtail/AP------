@@ -1,0 +1,1413 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examPath": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+  "examSha256": "sha256:5e2a0a018fca35dd52b1b0fa7e8db6069463a38f42849e3b4279695fa29c99db",
+  "finalArtifactGitBlob": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+  "questionCount": 23,
+  "sourceAuthority": {
+    "protectedBaselineGitBlob": "46fcdb971de3f21c11deaeb6728cbea1d1f64f4c",
+    "r2ReceiptPath": "archive/data/r2e-intake/m2/24_신흥중_1학기_중간_중2_기출c.review2.json",
+    "r2ReceiptBlob": "eb47412e693a49599c8d4d611e1138d7d5cb8e67",
+    "r2ValidatorPath": "archive/data/r2e-intake/m2/24_신흥중_1학기_중간_중2_기출c.review2.validator.json",
+    "r2ValidatorBlob": "be3e1a3ffd794eaac4634e7e9532c777f40d6cd8",
+    "protectedFieldCompare": "23/23 current content/choices/answer/questionType/layoutTag/wide re-read against protected baseline; zero drift.",
+    "sourceRepairStatus": "NOT_REQUIRED",
+    "sourceRepairQids": []
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "23/23",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.",
+        "observation": "Intermediate equations are explicit enough for student reproduction."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면",
+        "observation": "Condition, substitution, and conclusion are connected without hidden steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "The decisive formula is instantiated with concrete intermediate values."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "The reasoning chain is compact but fully reproducible."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "r3WholeExamReauditPerformed": true,
+    "priorReceiptsUsedOnlyForEligibilityAndProvenance": true,
+    "decisionAuthority": "Fresh R3 current artifact bytes + protected source baseline + current RPM/canonical lookup."
+  },
+  "formalCompare": {
+    "performedAfterFreshR3DecisionFreeze": true,
+    "priorStageCompared": "R2",
+    "r2FinalArtifactGitBlob": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+    "r3FinalArtifactGitBlob": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+    "artifactChangedAcrossR3": false,
+    "outcome": "PASS; no deterministic production repair or source repair required."
+  },
+  "summary": {
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 0,
+    "deterministicRepairQids": []
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q1: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q1: stored answer ② matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q1: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q1: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q1: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q1: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q1: M2-RPM-123 / M2-1 > 유리수와 소수 표현 > 분수를 소수로; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q1: difficultyBucket 1 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q1: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q2: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q2: stored answer ①, ⑤ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q2: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q2: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q2: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q2: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q2: M2-RPM-120 / M2-1 > 유한소수와 무한소수 > 분모의 소인수 조건; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q2: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q2: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q3: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q3: stored answer ③ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q3: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q3: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q3: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q3: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q3: M2-RPM-121 / M2-1 > 순환소수 > 순환마디와 표현; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q3: difficultyBucket 1 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q3: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q4: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q4: stored answer ① matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q4: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q4: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q4: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q4: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q4: M2-RPM-121 / M2-1 > 순환소수 > 순환마디와 표현; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q4: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q4: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q5: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q5: stored answer ①, ④ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q5: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q5: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q5: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q5: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q5: M2-RPM-119 / M2-1 > 유한소수와 무한소수 > 유한소수 판별; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q5: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q5: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q6: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q6: stored answer ④ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q6: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q6: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q6: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q6: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q6: M2-RPM-122 / M2-1 > 순환소수 > 순환소수를 분수로; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q6: difficultyBucket 3 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q6: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q7: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q7: stored answer ④ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q7: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q7: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q7: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q7: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q7: M2-RPM-126 / M2-1 > 지수법칙 > 거듭제곱의 거듭제곱; current exam subUnit M2-01-EXPONENT_LAW / 지수법칙 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q7: difficultyBucket 1 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q7: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q8: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q8: stored answer ① matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q8: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q8: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q8: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q8: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q8: M2-RPM-126 / M2-1 > 지수법칙 > 거듭제곱의 거듭제곱; current exam subUnit M2-01-EXPONENT_LAW / 지수법칙 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q8: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q8: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q9: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q9: stored answer ③ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q9: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q9: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q9: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q9: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q9: M1-RPM-116 / M1-1 > 소인수분해 > 자연수의 소인수분해; current exam subUnit M1-01-PRIME_FACTORIZATION / 소인수분해 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q9: difficultyBucket 4 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q9: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q10: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q10: stored answer ⑤ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q10: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q10: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q10: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q10: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q10: M2-RPM-125 / M2-1 > 지수법칙 > 거듭제곱의 곱·몫; current exam subUnit M2-01-EXPONENT_LAW / 지수법칙 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q10: difficultyBucket 3 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q10: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q11: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q11: stored answer ② matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q11: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q11: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q11: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q11: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q11: M2-RPM-125 / M2-1 > 지수법칙 > 거듭제곱의 곱·몫; current exam subUnit M2-01-EXPONENT_LAW / 지수법칙 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q11: difficultyBucket 3 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q11: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q12: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q12: stored answer ③ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q12: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q12: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q12: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q12: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q12: M2-RPM-129 / M2-1 > 단항식의 곱셈과 나눗셈 > 혼합 계산; current exam subUnit M2-01-EXPONENT_LAW / 지수법칙 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q12: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q12: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q13: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q13: stored answer ③ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q13: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q13: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q13: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q13: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q13: M2-RPM-129 / M2-1 > 단항식의 곱셈과 나눗셈 > 혼합 계산; current exam subUnit M2-01-EXPONENT_LAW / 지수법칙 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q13: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q13: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q14: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q14: stored answer ③ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q14: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q14: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q14: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q14: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q14: M2-RPM-130 / M2-1 > 다항식의 덧셈과 뺄셈 > 동류항 정리; current exam subUnit M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q14: difficultyBucket 1 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q14: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q15: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q15: stored answer ④ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q15: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q15: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q15: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q15: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q15: M2-RPM-131 / M2-1 > 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산; current exam subUnit M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q15: difficultyBucket 3 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q15: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q16: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q16: stored answer ⑤ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q16: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q16: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q16: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q16: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q16: M2-RPM-131 / M2-1 > 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산; current exam subUnit M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q16: difficultyBucket 1 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q16: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q17: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q17: stored answer ③ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q17: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q17: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q17: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q17: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q17: M2-RPM-138 / M2-1 > 일차부등식의 풀이 > 기본형; current exam subUnit M2-02-LINEAR_INEQUALITY / 일차부등식 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q17: difficultyBucket 1 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q17: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q18: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q18: stored answer ①, ⑤ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q18: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q18: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q18: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q18: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q18: M2-RPM-142 / M2-1 > 수량 관계 > 이상·이하 조건; current exam subUnit M2-02-LINEAR_INEQUALITY_WORD / 일차부등식의 활용 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q18: difficultyBucket 1 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q18: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q19: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q19: stored answer $3, 6, 9$ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q19: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q19: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q19: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q19: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q19: M2-RPM-120 / M2-1 > 유한소수와 무한소수 > 분모의 소인수 조건; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q19: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q19: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q20: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q20: stored answer $\\dfrac{73}{495}$ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q20: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q20: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q20: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q20: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q20: M2-RPM-122 / M2-1 > 순환소수 > 순환소수를 분수로; current exam subUnit M2-01-REPEATING_DECIMAL / 유리수와 순환소수 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q20: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q20: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q21: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q21: stored answer $\\dfrac{7}{4}$ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q21: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q21: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q21: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q21: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q21: M2-RPM-130 / M2-1 > 다항식의 덧셈과 뺄셈 > 동류항 정리; current exam subUnit M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q21: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q21: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q22: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q22: stored answer $-20x+18y-1$ matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q22: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q22: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q22: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q22: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q22: M2-RPM-133 / M2-1 > 단항식과 다항식의 곱셈·나눗셈 > 다항식을 단항식으로 나누기; current exam subUnit M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q22: difficultyBucket 3 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q22: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 source-parity audit q23: current protected content/choices/answer/questionType/layout fields were re-read against the protected source baseline with no drift."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 independent recomputation q23: stored answer 성립함 matches the result obtained from the current problem statement."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution audit q23: the current reasoning is mathematically valid and reaches the verified stored answer without unsupported steps."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 explanation audit q23: [핵심]→[풀이]→[결론] structure is present and student-reproducible for this item."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum audit q23: method is within 2022 middle-school grade-2 semester-1 scope or an allowed lower-grade prerequisite."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh R3 visual audit q23: no solutionImage is required; decisive semantic facts are expressible and verified from the current textual artifact."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 current-authority Meta audit q23: M2-RPM-136 / M2-1 > 부등식의 성질 > 부등식의 성질; current exam subUnit M2-02-LINEAR_INEQUALITY / 일차부등식 is coherent with the resolved method."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh R3 difficulty audit q23: difficultyBucket 2 is plausible for the actual reasoning depth and item demand."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Fresh R3 runtime/layout audit q23: current JS value, TeX/HTML strings, choices, answer and layout are coherent and validator-compatible."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-123:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "분수·소수의 역사와 실제 사용 맥락을 보기별로 판별한다.",
+      "decisiveStep": "레시피에서 분수 표현이 흔하므로 ②를 부적절한 설명으로 확정한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-120:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "기약분수의 분모에 2와 5 외의 소인수가 남는지 검사한다.",
+      "decisiveStep": "①=1/2, ⑤=1/20만 조건을 만족한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-121:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "최소 순환마디와 순환점 위치를 판별한다.",
+      "decisiveStep": "30.374374…의 최소 순환마디가 374임을 확인한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-121:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "순환마디 길이로 원하는 자릿수를 나머지로 찾는다.",
+      "decisiveStep": "49=3×16+1이므로 첫째 숫자 1을 고른다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-119:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "유리수의 유한·순환소수 표현 성질을 보기별로 판정한다.",
+      "decisiveStep": "①과 ④만 참임을 확인한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-122:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "소수 부분이 같은 두 배수식을 만들어 뺄 조합을 찾는다.",
+      "decisiveStep": "1000x-x=132가 되는 ㉥-㉠을 선택한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-126:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "각 보기의 지수법칙을 직접 적용한다.",
+      "decisiveStep": "(-ab²)³=-a³b⁶만 제시식과 일치한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-126:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "거듭제곱한 뒤 지수를 비교한다.",
+      "decisiveStep": "4a=8, 8b=24에서 a+b=5를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M1-RPM-116:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "12!에 포함된 소인수 2의 총 지수를 센다.",
+      "decisiveStep": "6+3+1=10을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-125:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "2와 5를 짝지어 10의 거듭제곱을 만든다.",
+      "decisiveStep": "2¹²5¹⁰=4×10¹⁰으로 정리한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-125:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "소인수분해 후 지수법칙으로 몫을 정리한다.",
+      "decisiveStep": "a=12,b=8에서 a-b=4를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-129:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "계수와 문자 지수를 분리해 계산한다.",
+      "decisiveStep": "72x⁷÷12x⁴=6x³이다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-129:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "A만 남기도록 역연산한다.",
+      "decisiveStep": "A=-6x²y²를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-130:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "동류항을 정리한 뒤 계수와 차수를 판정한다.",
+      "decisiveStep": "x²+(1/3)x-3에서 x의 계수 1/3을 읽는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-131:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "잘못된 계산에서 원래 식을 복원한 뒤 바른 뺄셈을 한다.",
+      "decisiveStep": "2x²+4x-11을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-131:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "안쪽 괄호부터 풀고 음수 부호를 분배한다.",
+      "decisiveStep": "-2x+5y+3을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-138:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "x=2를 각 부등식에 대입해 해인지 판정한다.",
+      "decisiveStep": "ㄴ과 ㄹ만 참이다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-142:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "실생활 조건어를 부등호로 번역한다.",
+      "decisiveStep": "①은 x≥50, ⑤는 x>120이어야 한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-120:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "약분 후 분모의 3이 없어지도록 a를 정한다.",
+      "decisiveStep": "한 자리 3의 배수 3,6,9를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-122:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "반복 길이에 맞춘 두 배수식을 빼 분수로 바꾼다.",
+      "decisiveStep": "990x=146에서 73/495를 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-130:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "통분 후 x,y 계수를 분리한다.",
+      "decisiveStep": "a=1/2,b=7/2에서 ab=7/4이다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-133:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "다항식을 단항식으로 나눈 뒤 남은 식을 정리한다.",
+      "decisiveStep": "-20x+18y-1을 얻는다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "rpmDisposition": "FINAL:M2-RPM-136:RPM_ONLY",
+      "projectionDisposition": "UNMATERIALIZED",
+      "primaryMethod": "음수를 곱할 때 부등호 방향이 바뀌는 성질을 적용한다.",
+      "decisiveStep": "-5a≤-5b 뒤 양변에 3을 더한다.",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "currentPassStage": "R3",
+      "currentPassAuthority": "Fresh current artifact semantics + current RPM crosswalk/canonical lookup; prior stage verdict not decision authority."
+    }
+  ],
+  "r3Audit": {
+    "mode": "FULL_WHOLE_EXAM_RELEASE_AUDIT",
+    "sourceParity": "23/23 PASS",
+    "answerMathSolutionCurriculum": "23/23 PASS",
+    "solutionQualitySmallBoard": "23/23 PASS",
+    "visualInventory": "0 solutionImage / 0 linked solution visual",
+    "metaTagDifficulty": "23/23 PASS",
+    "runtimeLayout": "23/23 PASS",
+    "openQids": [],
+    "directRepairQids": [],
+    "sourceRepairQids": [],
+    "lockedScopeMutationCount": 0
+  }
+}
