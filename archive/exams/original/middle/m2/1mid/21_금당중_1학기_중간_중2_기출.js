@@ -751,8 +751,8 @@ window.questionBank = [
     "wide": false,
     "solution": "[핵심] 자연수 $x$를 가능한 범위에서 하나씩 정하면 $y=13-3x$도 자연수인지 확인할 수 있다.\n\n[독립 풀이 요약] $(x,y)=(1,10),(2,7),(3,4),(4,1)$의 네 쌍이다.\n\n[풀이]\n$3x+y=13$에서\n$y=13-3x$이다.\n$x,y$가 자연수이므로 $13-3x\\ge1$, 따라서 $x\\le4$이다.\n$x=1,2,3,4$를 차례로 대입하면\n$y=10,7,4,1$을 얻는다.\n따라서 자연수해는 모두 네 개이다.\n\n[확인] $x=5$부터는 $y$가 자연수가 아니다.\n\n[결론] 정답은 ①이다.",
     "level": "중",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
