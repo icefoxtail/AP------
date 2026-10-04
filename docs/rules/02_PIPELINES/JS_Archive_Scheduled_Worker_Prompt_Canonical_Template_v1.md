@@ -127,8 +127,8 @@ PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.1.0 / {ROLE}
 
 CREATE/R1/R2/R3/THANOS가 problem image, SVG, graph, geometry, solutionImage의 생성·수정·필요성 판정·검수를 수행하는 경우, target visual 작업 전에 최신 main의 아래 두 문서를 읽는다.
 
-1. \`.codex/skills/apmath-visual-upgrade/SKILL.md\` — upstream visual philosophy/current direction
-2. \`docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md\` — GPT/예약 worker 실행 해석 정본
+1. `.codex/skills/apmath-visual-upgrade/SKILL.md` — upstream visual philosophy/current direction
+2. `docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md` — GPT/예약 worker 실행 해석 정본
 
 GPT는 Codex skill을 invoke/실행했다고 주장하지 않는다. skill 안의 local Node/Python/browser command를 실행할 수 없으면 실행한 것으로 기록하지 않고, GPT Contract에 따라 가능한 source/current-bytes/수학/좌표/owner/style 검증을 수행한다. 필요한 actual render가 실행 불가능하면 NOT_RUN/NOT_VERIFIED와 exact visual debt를 남기되 pipeline을 self-disable하거나 whole-exam HOLD하지 않는다.
 
