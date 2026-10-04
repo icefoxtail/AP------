@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "MASTER_LEASE_v2",
+  "masterLeaseId": "M2-1-THANOS-MASTER-1-o9-create-source-free-20261004-2359",
+  "leaseKey": "125dc2b5c4ab063a794d50e3c0b92545dddd578916a10f7249f37dc59ad975f3",
+  "owner": "THANOS-MASTER-1",
+  "examUid": "M2-1-21-PALMA-1MID",
+  "stage": "CREATE",
+  "inputArtifactSha": "96796ad3aca23c5d31626d4954b2fe15d32980ba",
+  "targetBranch": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
+  "targetHeadAtClaim": "9d5cbf30f7b86a174224826d8fd5323516dad3ec",
+  "expectedTargetHead": "d7d701cc36c4ababdab3932dfedb026b981f9202",
+  "repairFingerprint": "o9-create-source-free-validator-receipt-20261004",
+  "failedGate": "CREATE_VALIDATOR_AND_RECEIPT",
+  "openQids": [],
+  "openFiles": [
+    "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.physical-evidence.json",
+    "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.validator.json",
+    "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.json"
+  ],
+  "openFields": [
+    "CREATE physical evidence schema binding",
+    "actual canonical validator receipt",
+    "CREATE_DONE receipt",
+    "remote readback"
+  ],
+  "firstMissingClosureStep": "CREATE_FULL_PHYSICAL_EVIDENCE_SCHEMA_BINDING_THEN_ACTUAL_VALIDATOR",
+  "rescueReason": "ORCHESTRATOR_RESCUE_QUEUE_ASSIGNED_THANOS1_O9_SOURCE_FREE_CLOSURE",
+  "claimedAt": "2026-10-04T23:59:30+09:00",
+  "expiresAt": "2026-10-05T01:29:30+09:00",
+  "lastProgressAt": "2026-10-05T00:05:00+09:00",
+  "expectedCompletionGate": "CREATE_DONE->READY_FOR_REVIEW1",
+  "status": "ACTIVE",
+  "claimMode": "SAME_OWNER_RENEWAL_AFTER_DURABLE_PROGRESS",
+  "supersedesLeaseRef": "master-lease/m2/125dc2b5c4ab063a794d50e3c0b92545dddd578916a10f7249f37dc59ad975f3-thanos1-20261005-0002-renew"
+}
