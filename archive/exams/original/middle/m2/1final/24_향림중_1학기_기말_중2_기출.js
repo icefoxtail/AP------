@@ -29,8 +29,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "문장의 비교 표현을 그대로 부등호로 옮긴다.\n① 5000원 이상이므로 $700x\\ge5000$이어야 한다.\n② $x$의 2배에서 3을 뺀 값이 4보다 크므로 $2x-3\\gt4$이다.\n③ 12년 후 나이가 현재 나이의 3배 이하이므로 $x+12\\le3x$이다.\n④ 걸린 시간은 $\\dfrac{x}{8}$시간이므로 $\\dfrac{x}{8}\\gt2$이어야 한다.\n⑤ $x+8$이 $3x$보다 작거나 같으므로 $x+8\\le3x$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-    "subUnit": "일차부등식",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -128,8 +128,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$-2x+4\\le6$에서 $-2x\\le2$이므로 음수 $-2$로 나누어 $x\\ge-1$이다.\n양변에 3을 곱하고 7을 더하면 $3x+7\\ge4$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -231,8 +231,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "종이를 $n$장 붙이면 겹치는 곳은 $n-1$곳이다.\n전체 가로 길이는 $6n-(n-1)=5n+1$cm이고 세로는 6cm이다.\n넓이가 360 이상이므로 $6(5n+1)=30n+6\\ge360$이다.\n따라서 $n\\ge11.8$이고 자연수인 장수의 최솟값은 12이다.\n정답은 ②이다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-    "subUnit": "일차부등식",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -596,8 +596,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$y$축 방향으로 $k$만큼 평행이동하면 상수항에 $k$를 더한다.\n①, ②, ③, ⑤는 이 규칙과 일치한다.\n④는 $y=5x+1-3=5x-2$가 되어야 하므로 제시된 식이 옳지 않다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
