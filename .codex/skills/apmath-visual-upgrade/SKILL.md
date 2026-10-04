@@ -658,6 +658,52 @@ style normalization 과정에서 실제 geometry 또는 decisive relation을 바
 
 **최종 KEEP은 `styleFloorStatus=PASS`일 때만 허용한다.**
 
+## 13.2 PUBLISHING ANNOTATION OWNERS — ANGLE ARC / SEGMENT DIMENSION
+
+학생이 숫자를 보고 owner를 추측하게 두지 않는다. **각도값과 길이값은 도형 자체에서 무엇의 값인지 보이게 한다.**
+
+### ANGLE — ARC OWNER DEFAULT
+일반 각에 `40° / 70° / 100°`처럼 각도값을 표시할 때는, 공간이 허용되는 한 **실제 꼭짓점을 중심으로 두 ray 사이에 작은 angle arc를 그리고 degree label을 그 arc에 결속**하는 것을 기본값으로 한다.
+
+- arc center = 실제 owner vertex
+- arc start/end direction = 실제 owner rays
+- degree label은 owner wedge 내부 또는 명확한 인접 위치
+- 같은 꼭짓점에 여러 각이 있으면 radius를 계층화해 서로 구분
+- 직각은 arc 대신 square marker 우선
+- reflex angle / straight angle은 작은 각으로 임의 치환하지 않고 source/solution 의미를 따른다
+- degree text만 다른 선 옆에 떠 있어 owner가 애매한 상태는 최종 출판 PASS 금지
+
+### SEGMENT LENGTH — DIMENSION OWNER DEFAULT
+`6 cm / 8 m / 12` 같은 길이값은 **어느 두 점 사이의 길이인지 시각적으로 결속**한다.
+
+우선순위:
+1. owner가 명확하면 선분과 평행한 방향으로 중앙/인접 배치
+2. owner가 애매하거나 여러 길이가 밀집하면 offset dimension line + end tick/end cap
+3. 공간/구조상 더 자연스러우면 brace/curved owner line 또는 leader 사용
+
+요구:
+- ownerSegment 또는 start/end point가 명시돼야 함
+- dimension marker가 실제 owner segment의 양 끝 범위를 잘못 암시하면 FAIL
+- 단위(`cm/m/km`)와 수치가 같은 owner에 결속돼야 함
+- equal-length tick은 **같은 길이 관계** 표시용이며 단순 수치 라벨 owner 대용으로 남용하지 않음
+- GIVEN / DERIVED / CONCLUSION visual role을 보존하고 결론을 주어진 조건처럼 표시하지 않음
+
+### PHYSICAL EVIDENCE
+angle annotation:
+- ownerVertex / ownerRays
+- arc center/radius/start/end
+- expectedAngleDeg / observedAngleDeg / delta
+- label anchor + insideOwnerWedge
+
+length annotation:
+- ownerSegment 또는 startPoint/endPoint
+- annotationType = INLINE | OFFSET_DIMENSION | BRACE | LEADER
+- dimension endpoints/end caps 또는 brace span
+- label text/unit
+- projection fraction / offset / owner parity
+
+**표시 text가 맞아도 arc/dimension primitive가 다른 owner를 가리키면 FAIL**이다.
+
 기존 asset을 신규 제작 reference로 가리는 blind/fresh 규칙이 있으면 이를 지킨다.
 facts를 먼저 동결한 뒤 existing asset을 audit하는 것은 허용할 수 있다.
 
