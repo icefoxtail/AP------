@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "m2-1-source-repair-evidence-v1",
+  "status": "D_SOURCE_CONFIRMED",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "examUid": "M2-1-21-YEONHYANG-1MID",
+  "canonicalOrdinal": 11,
+  "examPath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+  "branch": "work/middle/m2/21-yeonhyang-1mid-temp-create1-20261004-1720",
+  "headBefore": "7d6a2da1f7a7e6cc14da80de8e7a990f65558033",
+  "artifactBlobAfter": "47a079986fbe1c0c8660f1c0588841388b321b10",
+  "mainObserved": "40cbc43701626463c368df91aa8784d1ef12b6b8",
+  "divergenceMainOnlyBranchOnly": "34/4",
+  "source": {
+    "problemPdf": {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\중2\\2021_연향중2_수학_1중간.pdf",
+      "sha256": "879C23F31CAD502A6769B9CD21CDEE6AACAEFA14C583B8F7A5CFFEDF2509A0BC",
+      "identityCheck": "PASS: 2021학년도 1학기 중간고사 문제지, 2학년 수학; printed page footers identify 순천연향중학교",
+      "pages": 4
+    },
+    "answerPdf": {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\중2\\2021_연향중2_수학_1중간_정답.pdf",
+      "sha256": "F4CE3A8EDA84A942E1E3BE777FA6F63F8CA3ACAA18603CCD0448F800AE1329DF",
+      "objectiveAnswerChecks": {
+        "q7": "③",
+        "q8": "①",
+        "q9": "①",
+        "q13": "⑤",
+        "q15": "②"
+      },
+      "q16": "NOT_USED_FOR_ADJUDICATION_PER_USER_INSTRUCTION"
+    },
+    "solutionPdf": {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\중2\\2021_연향중2_수학_1중간_해설.pdf",
+      "sha256": "441D3AAD0241D02D2A0F639D81BE38164BDFE9C62CF2CEE159E88A61D482C284",
+      "checks": {
+        "q9": "Handwritten decimal-to-fraction work gives 92/225, 22/45, then 92/45=2.0 repeating 4.",
+        "q19": "Written response gives 41/330 and least multiplier 33.",
+        "q20": "Written response gives -36x^3+9x^2-21x+24.",
+        "q16": "NOT_USED_FOR_ADJUDICATION_PER_USER_INSTRUCTION"
+      }
+    },
+    "pageContext": {
+      "q7_q8": "problem page 1/4; neighboring page-1 questions confirm same school/exam",
+      "q9_q13": "problem page 2/4; q9/q10/q11 left column and q12/q13/q14 right column",
+      "q15_q16": "problem page 3/4; q15 above q16, with q17 below",
+      "q19_q20": "written-response section continues across pages 3/4 and 4/4"
+    }
+  },
+  "repairs": [
+    {
+      "qid": 7,
+      "changedFields": ["choices[①]", "choices[④]", "choices[⑤]"],
+      "sourceFacts": "The five source graphs are: ① filled 2 with left ray; ② filled 2 with right ray; ③ open 3 with left ray; ④ filled 3 with right ray; ⑤ open 3 with right ray.",
+      "answer": "③",
+      "unchangedDirectFields": ["content", "choices[2]", "choices[3]", "answer", "solution"]
+    },
+    {
+      "qid": 8,
+      "changedFields": ["answer", "solution"],
+      "answer": "①",
+      "independentCheck": "The inner braces simplify to -2y^2+4y+8, the bracket to -4y^2-y-8, and the full expression to y^2+4y.",
+      "unchangedDirectFields": ["content", "choices"]
+    },
+    {
+      "qid": 9,
+      "changedFields": ["content", "answer", "solution"],
+      "sourceNotation": "연이 reads 0.40 repeating 8; 황이 reads 0.4 repeating 8. The second value does not repeat the two-digit block 48.",
+      "answer": "①",
+      "independentCheck": "The mistaken denominator gives 92/225, so the original numerator is 92. The mistaken numerator gives 22/45, so the original denominator is 45. Thus 92/45=2.0 repeating 4.",
+      "unchangedDirectFields": ["choices"]
+    },
+    {
+      "qid": 13,
+      "changedFields": ["image", "image asset"],
+      "answer": "⑤",
+      "asset": {
+        "path": "archive/assets/images/21_연향중_1학기_중간_중2_기출/q13.png",
+        "sourcePdfPage": 2,
+        "renderDpi": 300,
+        "cropBoundsPixels": [1810, 1120, 2270, 1375],
+        "dimensions": "460x255",
+        "sha256": "8D5B28E97BBB42F2267A5B54B89BFAEA6769281AD42E8363EF565A1A6F6E3E25",
+        "pixelInspection": "PASS"
+      },
+      "unchangedDirectFields": ["content", "choices", "answer", "solution"]
+    },
+    {
+      "qid": 15,
+      "changedFields": ["answer"],
+      "answer": "②",
+      "independentCheck": "The first inequality gives x<-4; the second gives x<4a, so a=-1. Existing solution already shows this derivation.",
+      "unchangedDirectFields": ["content", "choices", "solution"]
+    },
+    {
+      "qid": 16,
+      "sourceOriginalContentPreserved": true,
+      "printedChain": "-1/3x-5/2 >= 1/6x -> -2x-15 >= x -> -3x <= 15 -> x >= -5",
+      "changedFields": ["answer", "solution"],
+      "answer": "원문 부등호 기준 정답 없음",
+      "independentCheck": "Multiplying the first inequality by +6 is valid. From -2x-15>=x, correct equivalent rearrangement is -3x>=15, hence x<=-5. The printed -3x<=15 and final x>=-5 make the displayed process non-equivalent; no listed sequence is correct for the exact source signs.",
+      "answerKeyAndSolutionUse": "EXCLUDED_PER_USER_INSTRUCTION",
+      "unchangedDirectFields": ["content", "choices"]
+    },
+    {
+      "qid": 19,
+      "changedFields": ["answer", "solution"],
+      "answer": "(1), 41/330, (2), 33",
+      "independentCheck": "The denominator 330=2*3*5*11 requires multiplier 3*11=33 to leave only factors 2 and 5.",
+      "unchangedDirectFields": ["content", "choices"]
+    },
+    {
+      "qid": 20,
+      "changedFields": ["answer", "solution"],
+      "answer": "-36x^3, +, 9x^2, -, 21x, +, 24",
+      "independentCheck": "After the outer factor 12, the three terms are 24-36x, -3x^2+15x, and 12x^2-36x^3; the sum is -36x^3+9x^2-21x+24.",
+      "unchangedDirectFields": ["content", "choices"]
+    }
+  ],
+  "validation": {
+    "jsSyntax": "PASS",
+    "jsLoad": "PASS: 21 questions; all eight qids present",
+    "targetAnswerAndSolutionConsistency": "PASS for repaired determinate qids; q16 is explicitly a source defect with no valid listed answer",
+    "q7ChoiceVisuals": "PASS: source topology/endpoint/label checked for all five options",
+    "q13Asset": "PASS: PNG opens at 460x255 and matches source page 2 crop",
+    "canonicalCreateValidator": "NOT_RUN: no canonical CREATE validator/executor is available in this repository checkout",
+    "createReceipt": "NOT_WRITTEN",
+    "createDone": false,
+    "readyForReview1": false
+  },
+  "scope": {
+    "changedQuestionIds": [7, 8, 9, 13, 15, 16, 19, 20],
+    "unrelatedQuestionMutationCount": 0,
+    "lockedMutationCount": 0,
+    "mainMutationCount": 0
+  }
+}

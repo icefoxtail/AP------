@@ -311,11 +311,11 @@ window.questionBank = [
     "id": 7,
     "content": "다음 중에서 일차부등식 $2x+5 > 2+3x$의 해를 수직선 위에 옳게 나타낸 것은? <span class='score'>(4점)</span>",
     "choices": [
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
+      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>2</text></svg></div>",
       "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>2</text></svg></div>",
       "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
-      "생략"
+      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
+      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>"
     ],
     "answer": "③",
     "category": "일차부등식",
@@ -368,7 +368,7 @@ window.questionBank = [
       "$y^2+4y-16$",
       "$y-3y-16$"
     ],
-    "answer": "④",
+    "answer": "①",
     "category": "식의 계산",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
@@ -385,7 +385,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "solution": "$=(-3y^2+3y-8)-[-6y^2+3y-\\{y-2y^2+3y+8\\}] = y^2+4y-16$. $\\therefore$ ④",
+    "solution": "$y-(2y^2-3y)+8=-2y^2+4y+8$이므로 대괄호 안은 $-6y^2+3y-(-2y^2+4y+8)=-4y^2-y-8$이다. 따라서 전체 식은 $-3y^2+3y-8-(-4y^2-y-8)=y^2+4y$이고, 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -410,7 +410,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "content": "어떤 기약분수를 순환소수로 나타내는데, 연이는 분모를 잘못 보아서 $0.40\\dot{8}$이라 하였고, 황이는 분자를 잘못 보아서 $0.\\dot{4}\\dot{8}$이라 하였다. 처음의 기약분수를 순환소수로 바르게 나타낸 것은? <span class='score'>(5점)</span>",
+    "content": "어떤 기약분수를 순환소수로 나타내는데, 연이는 분모를 잘못 보아서 $0.40\\dot{8}$이라 하였고, 황이는 분자를 잘못 보아서 $0.4\\dot{8}$이라 하였다. 처음의 기약분수를 순환소수로 바르게 나타낸 것은? <span class='score'>(5점)</span>",
     "choices": [
       "$2.0\\dot{4}$",
       "$5.0\\dot{3}$",
@@ -418,7 +418,7 @@ window.questionBank = [
       "$10.\\dot{0}\\dot{4}$",
       "$2.\\dot{9}\\dot{0}$"
     ],
-    "answer": "④",
+    "answer": "①",
     "category": "유리수와 순환소수",
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
@@ -435,7 +435,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "연이: $368/900 = 92/225$ (분자 92), 황이: $48/99 = 16/33$ (분모 33). 처음 분수 $92/33 = 10.\\dot{0}\\dot{4}$. $\\therefore$ ④",
+    "solution": "연이는 $0.40\\dot{8}=(408-40)/900=368/900=92/225$로 보았으므로 원래 분자는 92이다. 황이는 $0.4\\dot{8}=(48-4)/90=44/90=22/45$로 보았으므로 원래 분모는 45이다. 따라서 처음 기약분수는 $92/45=2.0\\dot{4}$이고, 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -611,6 +611,7 @@ window.questionBank = [
   {
     "id": 13,
     "content": "오른쪽 그림과 같이 A회사는 밑면의 반지름의 길이가 $a$이고 높이가 $b$인 원기둥 모양의 통조림 캔을 만들었고, B회사는 밑면의 반지름의 길이가 $b$이고 높이가 $a$인 원기둥 모양의 통조림 캔을 만들었다. A회사가 만든 캔의 부피는 B회사가 만든 캔의 부피의 몇 배인가? <span class='score'>(5점)</span>",
+    "image": "assets/images/21_연향중_1학기_중간_중2_기출/q13.png",
     "choices": [
       "$a$",
       "$b$",
@@ -719,7 +720,7 @@ window.questionBank = [
       "$2$",
       "$5$"
     ],
-    "answer": "①",
+    "answer": "②",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
@@ -769,7 +770,7 @@ window.questionBank = [
       "ㄱ, ㄷ, ㄴ",
       "ㄴ, ㄷ, ㄱ"
     ],
-    "answer": "③",
+    "answer": "원문 부등호 기준 정답 없음",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
@@ -786,7 +787,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "1) 양수 6 곱함(ㄴ), 2) 이항(ㄱ), 3) 음수 -3으로 나눔(ㄷ). $\\therefore$ ③",
+    "solution": "D드라이브 원문에 인쇄된 부등호를 그대로 따라 확인한다. 양변에 양수 6을 곱하면 $-2x-15\\ge x$까지는 맞다. 그러나 이 식에서 원문에 적힌 $-3x\\le15$는 동치가 아니다. 양변을 정리하면 $-3x\\ge15$이어야 하며, 음수 -3으로 나누면 $x\\le-5$이다. 원문 마지막의 $x\\ge-5$도 앞 단계와 맞지 않는다. 따라서 인쇄된 변형 과정 전체에 해당하는 선택지는 없고, 정답은 없다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -916,7 +917,7 @@ window.questionBank = [
     "id": 19,
     "content": "서술형1. 다음 물음에 답하시오. <span class='score'>(7점)</span><br>(1) 순환소수 $0.1\\dot{2}\\dot{4}$를 기약분수로 바꾸시오. (4점)<br>(단, $x=0.1\\dot{2}\\dot{4}$로 놓고 풀이과정을 자세히 적으시오.)<br>(2) (1)에서 구한 기약분수에 자연수 A를 곱하여 유한소수가 되도록 하는 가장 작은 자연수 A를 구하시오. (3점)",
     "choices": [],
-    "answer": "(1), 41/330, (2), 11",
+    "answer": "(1), 41/330, (2), 33",
     "category": "서술형",
     "originalCategory": "서술형",
     "standardCourse": "중2 수학",
@@ -935,7 +936,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) $1000x-10x = 124.24.. - 1.24.. \\implies 990x = 123 \\implies x = 41/330$. (2) $330=2 \\cdot 3 \\cdot 5 \\cdot 11$. 분자 41과 약분 안되는 11이 필요. $\\therefore$ 11",
+    "solution": "(1) $1000x-10x=124.24\\ldots-1.24\\ldots$이므로 $990x=123$, $x=41/330$이다. (2) $330=2\\cdot3\\cdot5\\cdot11$이고 분자 41과 약분되지 않는 분모의 소인수 3과 11을 없애야 한다. 따라서 가장 작은 자연수는 $A=3\\cdot11=33$이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -962,7 +963,7 @@ window.questionBank = [
     "id": 20,
     "content": "서술형2. $12\\left(\\frac{2x^2-3x^3}{x^2} - \\frac{x^2-5x}{4} + \\frac{3x^3-9x^4}{3x}\\right)$를 계산하시오. <span class='score'>(6점)</span>",
     "choices": [],
-    "answer": "-12x^3, +, x^2, -, 21x, +, 24",
+    "answer": "-36x^3, +, 9x^2, -, 21x, +, 24",
     "category": "서술형",
     "originalCategory": "서술형",
     "standardCourse": "중2 수학",
@@ -979,7 +980,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "solution": "$= 12(2-3x) - 3(x^2-5x) + 4(x^2-3x^3) = -12x^3 + x^2 - 21x + 24$.",
+    "solution": "$=12(2-3x)-3(x^2-5x)+12(x^2-3x^3)=24-36x-3x^2+15x+12x^2-36x^3=-36x^3+9x^2-21x+24$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
