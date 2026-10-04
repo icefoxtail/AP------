@@ -650,7 +650,7 @@ window.questionBank = [
       "계단도형"
     ],
     "wide": false,
-    "content": "분할된 선분들로 이루어진 도형의 둘레의 길이를 $a, b$에 관한 식으로 나타내면? [4점]",
+    "content": "다음 그림과 같은 도형의 둘레의 길이를 구하면? [4점]",
     "image": "assets/images/21_팔마중_1학기_중간_중2_기출/q10.png",
     "choices": [
       "$8a+10b$",
