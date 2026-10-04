@@ -6,6 +6,7 @@ import vm from "node:vm";
 import { createRequire } from "node:module";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
+import { checkTargetClassGrade } from "../apmath/worker-backup/worker/helpers/archive2-questions.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const worker = path.join(root, "apmath/worker-backup/worker");
@@ -22,6 +23,7 @@ test("recent-summary D1 subject normalization matches Roman aliases and exact st
   const bundle = await build({
     stdin: {
   contents: `import { handleExams } from './routes/exams.js';
+import { handleCheckOmr } from './routes/check-omr.js';
 import { handleStudentPortal } from './routes/student-portal.js';
 export default { async fetch(request, env) {
   const url = new URL(request.url);
@@ -39,6 +41,7 @@ export default { async fetch(request, env) {
     id: request.headers.get('X-Fixture-Teacher') || role,
     role,
   } : { id: 'admin', role: 'admin' };
+  if (url.pathname === '/api/qr-classes') return handleCheckOmr(request, env, teacher, path, url);
   if (url.pathname === '/api/class-exam-assignments/recent-summary') {
     let prepared = 0;
     const recentEnv = { ...env, DB: { prepare(sql) { prepared++; return env.DB.prepare(sql); } } };
@@ -448,6 +451,65 @@ export default { async fetch(request, env) {
       );
     }
 
+    // Use actual endpoint responses, including the fields absent from the old
+    // picker mock. Keep target filters before LIMIT and content grade separate.
+    await db.prepare("ALTER TABLE classes ADD COLUMN grade_label TEXT").run();
+    await db.prepare("ALTER TABLE classes ADD COLUMN teacher_name TEXT DEFAULT 'Teacher A'").run();
+    await db.prepare("ALTER TABLE classes ADD COLUMN is_active INTEGER DEFAULT 1").run();
+    const gradeCases = [
+      ["explicit", "졸업반", "고3", "", "고3"],
+      ["label", "졸업반", "", "고3", "고3"],
+      ["name", "고3 이름반", "", "", "고3"],
+      ["space", "졸업반", "고 3", "", "고3"],
+      ["unicode-space", "졸업반", "\t고\u20033", "", "고3"],
+      ["first-name-match", "중2 · 고3", "", "", "중2"],
+      ["invalid", "고3 반", "대학", "고3", ""],
+      ["invalid-label", "고3 반", "", "대학", ""],
+      ["whitespace-priority", "졸업반", " ", "고3", ""],
+      ["whitespace-name", "고3 반", " ", "대학", "고3"],
+      ["unknown", "졸업반", "", "", ""],
+    ];
+    for (const [id, name, grade, label] of gradeCases) {
+      await db.prepare("INSERT INTO classes(id,name,grade,grade_label) VALUES(?,?,?,?)")
+        .bind(`grade-${id}`, name, grade, label).run();
+      await assignmentInsert.bind(
+        `grade-${id}`, `grade-${id}`, "grade authority fallback", "2026-10-04", 1,
+        `MIXED:archive2-saved-grade-${id}`, "mixed", "", "대수", "ready", "",
+        "paper-cross", null, "2026-10-04", "2026-10-04", null,
+      ).run();
+    }
+    const qrResponse = await mf.dispatchFetch("http://local/api/qr-classes");
+    const qrBody = await qrResponse.json();
+    assert.equal(qrResponse.status, 200, JSON.stringify(qrBody));
+    const index = fs.readFileSync(path.join(root, "archive/index.html"), "utf8");
+    const picker = { Archive2History: history };
+    vm.runInNewContext(index.slice(index.indexOf("function getIndexClassGrade(row) {"),
+      index.indexOf("function getIndexClassTeacherId(row) {")), picker);
+    for (const [id, , , , expectedGrade] of gradeCases) {
+      const row = qrBody.classes.find(row => row.id === `grade-${id}`);
+      assert.ok(row, id);
+      assert.equal(picker.getIndexClassGrade(row), expectedGrade, `real picker response: ${id}`);
+      assert.deepEqual(Array.from(picker.getIndexAvailableGrades([row])), expectedGrade ? [expectedGrade] : [], id);
+      if (expectedGrade) assert.equal(checkTargetClassGrade(row), expectedGrade, id);
+      else assert.throws(() => checkTargetClassGrade(row), error => error.status === 409, id);
+    }
+    for (const targetGrade of ["대학", "고3", "중2"]) {
+      // The API accepts arbitrary query text; unsupported grades must not match.
+      const params = new URLSearchParams({ grade: targetGrade, query: "grade authority", limit: "1000" });
+      const response = await mf.dispatchFetch("http://local/api/class-exam-assignments/recent-summary?" + params);
+      const body = await response.json();
+      assert.equal(response.status, 200, JSON.stringify(body));
+      const expectedIds = gradeCases.filter(row => row[4] === targetGrade).map(row => `grade-${row[0]}`).sort();
+      assert.deepEqual(body.assignments.map(row => row.id).sort(), expectedIds, `server target filter: ${targetGrade}`);
+      const normalized = history.normalizeAssignments(body.assignments, qrBody.classes, [], core);
+      assert.deepEqual(history.filterAssignments(normalized, { grade: targetGrade }).map(row => row.id).sort(), expectedIds);
+      assert.ok(normalized.every(row => row.contentGrade === "고2"), "Saved Paper content grade never supplies target grade");
+    }
+    const limitedGradeResponse = await mf.dispatchFetch(
+      "http://local/api/class-exam-assignments/recent-summary?grade=" + encodeURIComponent("고3") + "&query=grade%20authority&limit=2",
+    );
+    assert.equal((await limitedGradeResponse.json()).assignments.length, 2, "fallback grade filtering precedes LIMIT");
+
     const tokenFor = studentId => crypto.createHash("sha256")
       .update(`${studentId}::student-portal:v1`).digest("hex");
     const listUrl = `http://local/api/student-portal/exams?student_id=student-a&token=${tokenFor("student-a")}`;
@@ -720,6 +782,7 @@ test("Recent workspace request carries its filter state and debounces refetches"
       HIGH_SEMANTIC_SUBJECTS: [{ value: "ALGEBRA", label: "대수", courseKeys: ["수학I", "대수"] }],
     },
     History: {
+      classGrade: history.classGrade,
       subjectOptions: () => [],
       normalizeAssignments: rows => rows,
     },

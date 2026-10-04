@@ -3,6 +3,7 @@ import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isSt
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
+import { targetClassGradeSql } from '../helpers/archive2-questions.js';
 import { handleArchiveSavedPapers } from './archive-saved-papers.js';
 import {
   assignmentLifecycleError,
@@ -1980,8 +1981,8 @@ export async function handleExams(request, env, teacher, path, url) {
         const grade = normalizeBoardGrade(url.searchParams.get('grade') || '');
         const from = normalizeBoardDate(url.searchParams.get('from'));
         const to = normalizeBoardDate(url.searchParams.get('to'));
-        if (grade && classColumns.has('grade')) {
-          conditions.push("REPLACE(COALESCE(c.grade, ''), ' ', '') = ?");
+        if (grade) {
+          conditions.push(`${targetClassGradeSql(classColumns)} = ?`);
           params.push(grade);
         }
         if (from) {
@@ -2061,6 +2062,7 @@ export async function handleExams(request, env, teacher, path, url) {
           `${reviewOnlyCount} AS review_only_count`, `${replacementId} AS replacement_assignment_id`,
           `${replacesId} AS replaces_assignment_id`,
           'c.name AS class_name', classColumns.has('grade') ? 'c.grade AS class_grade' : "'' AS class_grade",
+          classColumns.has('grade_label') ? 'c.grade_label AS class_grade_label' : 'NULL AS class_grade_label',
         ];
         const result = await env.DB.prepare(`
           SELECT ${projection.join(',\n            ')}
