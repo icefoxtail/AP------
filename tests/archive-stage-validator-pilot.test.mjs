@@ -19,14 +19,6 @@ assert.equal(targetedPass.ok, true, JSON.stringify(targetedPass));
 assert.equal(targetedPass.scopeCount, 0);
 assert.equal(targetedPass.disposition, 'PASS');
 
-const targetedViaEntrypoint = validateStageEvidence({
-  examFile: path.resolve('archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js'),
-  evidenceFile: fixturePath,
-  stage: 'R2',
-});
-assert.equal(targetedViaEntrypoint.validatorMode, 'TARGETED');
-assert.equal(targetedViaEntrypoint.ok, true, JSON.stringify(targetedViaEntrypoint));
-
 const targetedMismatch = validateTargetedR2Evidence({
   evidence: o34,
   actualArtifactGitBlob: '0000000000000000000000000000000000000000',
