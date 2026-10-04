@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "m2-1-source-repair-evidence-v1",
+  "status": "NO_D_SOURCE_DETERMINISTIC_MIN_REPAIR",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "examUid": "M2-1-24-MUNSUNG-1MID",
+  "examPath": "archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
+  "canonicalOrdinal": 7,
+  "branch": "rescue/m2/source-repair/o7-de873a01-q6-q7-q16-q17-20261004-1743",
+  "headBefore": "a0e4bfb7023cc19d4ab8526ffc4d4ceb510f5b30",
+  "mainObserved": "ab25d27ddb41a0cb8e5f69144793b0b66efe89e5",
+  "divergenceMainOnlyBranchOnly": "52/7 at repair start; no target exam/asset/handoff commits on main since merge-base",
+  "sourceSearch": {
+    "priorityUsed": [
+      "current source metadata: JS path only; no D sourcePath/page pointer",
+      "exact D year/school/grade/semester/exam-type filename search under D:\\기출 and D:\\문제지",
+      "D asset provenance search for exact archive exam path"
+    ],
+    "exactOriginalFound": false,
+    "identity": {
+      "school": "문성중",
+      "grade": "중2",
+      "semester": "1학기",
+      "examType": "중간",
+      "year": 2024
+    },
+    "DExactIdentityMatchesFound": [],
+    "DLooseAssets": [
+      {
+        "qid": 16,
+        "path": "D:\\AI_WORKSPACES\\APMS\\disk-gc-build\\archive\\assets\\images\\24_문성중_1학기_중간_중2_기출\\q16.png",
+        "sha256": "67FEB57B4F5DAF67F96574B4D269E40BE87CA1CF92A4ED132962FBA1A19D8578",
+        "observation": "Unverified loose PNG; depicts an unrelated visual and has no page context/provenance. Ref removed."
+      },
+      {
+        "qid": 17,
+        "path": "D:\\AI_WORKSPACES\\APMS\\disk-gc-build\\archive\\assets\\images\\24_문성중_1학기_중간_중2_기출\\q17.png",
+        "sha256": "40E545BABBE1440DB6E749E77FD373B51B7C1340EB3DD8BA003A635F205F6EFA",
+        "observation": "Unverified loose PNG; depicts an unrelated visual and has no page context/provenance. Ref removed."
+      }
+    ],
+    "sourceTruthPolicy": "No source parity claimed. Only deterministic repair from current stem, choices, verified answer math, and direct dependencies."
+  },
+  "qids": [
+    {
+      "qid": 6,
+      "locus": "choices[⑤] duplicate distractor; answer/solution direct dependency",
+      "currentObservation": "Choices ③ and ⑤ were identical. The stem determines the original fraction as 7/11; choice ② is uniquely correct.",
+      "deterministicRepair": true,
+      "repair": "Changed only duplicate choice ⑤ to 0.\\dot{5}\\dot{4}, the exact erroneous repeating decimal explicitly stated for Wooseok; answer remains ②. Replaced diagnostic placeholder solution with student-facing derivation and checks.",
+      "sourceParity": "NOT_CLAIMED",
+      "missingEvidence": "Exact D q6 page unavailable; it would be required to claim original distractor parity, but not to establish the unique mathematical answer or repair this duplicate."
+    },
+    {
+      "qid": 7,
+      "locus": "choices field; source-label mismatch",
+      "currentObservation": "The four visible statements are labeled ㄴ/ㅂ/ㅇ/ㅈ; only ㄴ,ㅂ,ㅇ are true, uniquely matching existing answer ③. Choices ①/②/⑤ contained labels absent from the stem.",
+      "deterministicRepair": true,
+      "repair": "Kept stem and choices ③/④. Rebuilt only choices ①/②/⑤ from the visible label universe as unique distractors based on omitting a true statement and/or including false ㅈ. Replaced diagnostic solution with student-facing truth analysis.",
+      "sourceParity": "NOT_CLAIMED",
+      "missingEvidence": "Exact D q7 page unavailable; required for original choice parity, not for the deterministic true-set and label-consistency repair."
+    },
+    {
+      "qid": 16,
+      "locus": "image ref and direct solution note",
+      "currentObservation": "Current polynomial expression and answer are self-contained; linked number-line image is unrelated and has no verified D page provenance.",
+      "deterministicRepair": true,
+      "repair": "Removed the unrelated image ref and source-check note. Content, choices, answer, and mathematical solution preserved.",
+      "sourceParity": "NOT_CLAIMED",
+      "missingEvidence": "No source evidence needed to remove a visually unrelated, non-required image dependency; exact source page remains unavailable."
+    },
+    {
+      "qid": 17,
+      "locus": "image ref and direct solution note",
+      "currentObservation": "Current polynomial-division expression and answer are self-contained; linked balance-scale image is unrelated and has no verified D page provenance.",
+      "deterministicRepair": true,
+      "repair": "Removed the unrelated image ref and source-check note. Content, choices, answer, and mathematical solution preserved.",
+      "sourceParity": "NOT_CLAIMED",
+      "missingEvidence": "No source evidence needed to remove a visually unrelated, non-required image dependency; exact source page remains unavailable."
+    }
+  ],
+  "repairDecision": "Closed all four exact loci without claiming D source parity: q6 duplicate distractor and q7 invalid labels repaired from visible mathematics; q16/q17 unrelated image dependencies removed.",
+  "finalArtifactGitBlob": "b7674c08465614f6f02952103968c98a014f9aca",
+  "validation": {
+    "targetedSourceRepairValidator": "PASS (one execution)",
+    "jsSyntax": "PASS (node --check)",
+    "jsLoad": "PASS (23 questions loaded)",
+    "answerSolution": "PASS: q6 ②; q7 true set ㄴ·ㅂ·ㅇ/③; q16 and q17 retained text answers ③",
+    "assetRefs": "PASS: q16/q17 have no image refs; no broken image dependency",
+    "unrelatedMutationCount": "0; only q6/q7/q16/q17 authorized fields changed",
+    "canonicalCreateValidator": "NOT_RUN; source-free CREATE continuation remains separate",
+    "createReceipt": "NOT_WRITTEN",
+    "createDone": false,
+    "readyForReview1": false,
+    "sourceParityPassClaim": false
+  },
+  "scope": {
+    "changedQuestionIds": [
+      6,
+      7,
+      16,
+      17
+    ],
+    "examArtifactMutation": 4,
+    "unrelatedMutation": 0,
+    "lockedMutation": 0,
+    "mainMutation": 0
+  }
+}
