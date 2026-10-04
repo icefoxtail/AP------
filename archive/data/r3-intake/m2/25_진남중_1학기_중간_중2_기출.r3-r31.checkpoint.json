@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M2_R3_CHECKPOINT_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "lane": "R3-1",
+  "canonicalOrdinal": 1,
+  "examFile": "25_진남중_1학기_중간_중2_기출.js",
+  "status": "SOURCE_REPAIR_REQUIRED",
+  "reviewedAt": "2026-10-04T13:12:00+09:00",
+  "latestMainShaAtRecheck": "201e5e5ffd2168cad74b3410e9e7dae235f35134",
+  "inputFinalArtifactGitBlob": "f1d0d2b90dd3bed3bb63a272ee704a106cf6a2f4",
+  "currentFinalArtifactGitBlob": "f1d0d2b90dd3bed3bb63a272ee704a106cf6a2f4",
+  "review2ReceiptBlob": "de7710f0f0557d29f20b075dfd417c92d5669931",
+  "canonicals": {
+    "r3": "b2d3134a2db1129569d53b04e1afcf2cd0f09978",
+    "golden": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "physicalEvidence": "32f212619a31df15add413ebe8eccdb86941cec1",
+    "rpmCrosswalk": "0b9765009fdf8c1a832d248cf255a3c1fa609b59"
+  },
+  "calibrationStatus": "PASS",
+  "sampleReadBeforeWork": true,
+  "audits": {
+    "question": "23/23",
+    "mathAnswerSolution": "23/23 PASS",
+    "curriculum": "23/23 PASS",
+    "smallBoard": "23/23 PASS",
+    "sourceExact": "21/23 PASS + q6/q7 SOURCE_REPAIR_REQUIRED",
+    "linkedSolutionVisual": "0/0",
+    "metaRpmCrossConceptConditionIntegration": "23/23 PASS_AFTER_Q13_Q20_Q23_SIDECAR_REPAIR",
+    "difficulty": "23/23 PASS",
+    "runtimeLayout": "23/23 PASS"
+  },
+  "directRepairCount": 3,
+  "directRepairQids": [
+    13,
+    20,
+    23
+  ],
+  "directRepairScope": {
+    "file": "archive/data/r2e-intake/m2/25_진남중_1학기_중간_중2_기출.create.meta-v2.metadata.json",
+    "repairedGitBlob": "2859bdc2c39fb154b1db42c2b7b31d5b3eb217e4",
+    "fields": [
+      "subUnitKey",
+      "subUnit"
+    ],
+    "examArtifactMutation": false
+  },
+  "changedLocusRecheck": "PASS",
+  "lockedScopeMutationCount": 0,
+  "openQids": [
+    6,
+    7
+  ],
+  "sourceRepairRequiredCount": 2,
+  "sourceRepair": [
+    {
+      "qid": 6,
+      "reason": "SOURCE_CHOICE_TEXT_AMBIGUOUS_DUPLICATE",
+      "unresolvedPoint": "choices ③ and ⑤ are byte-identical in current artifact",
+      "requiredAction": "recover authoritative original q6 page pixels and restore exact distinct choice text; do not infer source from stored answer/solution"
+    },
+    {
+      "qid": 7,
+      "reason": "SOURCE_STATEMENT_LABEL_UNIVERSE_MISSING",
+      "unresolvedPoint": "current statement labels are incomplete relative to choice label universe",
+      "requiredAction": "recover authoritative original q7 page pixels and restore complete statements/choices exactly"
+    }
+  ],
+  "sourceLookupDisposition": "Git current asset path not found; Library no target original PDF/page; Drive no target original document/image; authoritative public source not located.",
+  "validatorStatus": "NOT_RUN_SOURCE_TRUTH_PRECONDITION_OPEN",
+  "candidateDisposition": "SOURCE_REPAIR_REQUIRED",
+  "freshReviewerRequired": false,
+  "next": "THANOS resumes same R3 continuation at q6/q7 original-page recovery, then rechecks repaired loci/direct dependencies and runs canonical R3 validator/receipts through RELEASE_QUEUE."
+}
