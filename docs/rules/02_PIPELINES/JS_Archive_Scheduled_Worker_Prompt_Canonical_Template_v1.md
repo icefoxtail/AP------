@@ -1,7 +1,7 @@
 # JS Archive Scheduled Worker Prompt Canonical Template v1
 
 - status: **CURRENT / COPY SOURCE**
-- version: **PROMPT_TEMPLATE_V1.1.0**
+- version: **PROMPT_TEMPLATE_V1.2.0**
 - scope: JS Archive scheduled production/review/rescue/publish workers
 - authority order: **current explicit user instruction → latest Notion CURRENT/router → this template → active operating contract → latest Git physical state**
 - purpose: 학년·학기·시험지 묶음이 바뀌어도 예약 worker의 운영 철학과 실패 처리 방식이 drift하지 않도록, 새 예약을 만들 때 이 문서를 그대로 복제하고 placeholder만 치환한다.
@@ -20,6 +20,17 @@
 6. 다음 학년에서는 최신 template만 복사하므로 과거 사고 대응이 자동 승계된다.
 
 **미봉책 금지:** 개별 worker 하나만 고치고 canonical template을 그대로 두지 않는다.
+
+
+## 0.1 WORK-FIRST / MINIMUM VERIFICATION — NEVER DELETE
+
+- GPT/Codex/예약 worker 공통 기본값은 **실제 작업 우선**이다.
+- run 시작 시 router/CURRENT/target physical state/latest main을 **한 번** 읽고 바로 작업한다. 같은 문서·같은 main·같은 PASS artifact를 같은 run 안에서 반복 재조회하지 않는다.
+- 각 stage는 자기 작업과 **changed locus + 필수 stage 결과만 최소 확인**한다. 이전 stage 전체 재검, unrelated global CI, 수정하지 않은 범위 전수검사는 기본값이 아니다.
+- latest main 재동기화·overlap·final artifact parity·remote main 최종 확인은 **MAIN/PUBLISH에서 한 번** 수행한다.
+- stale ref, 실제 충돌, source truth 의심, 필수 validator FAIL 같은 구체적 위험 신호가 있을 때만 중간 재조회·추가 검증한다.
+- 필수 validator/receipt는 필요한 **1회**만 실행한다. PASS한 동일 입력을 “혹시 모르니” 반복 검증하지 않는다.
+- 짧은 지시서는 **해야 할 작업 + 꼭 필요한 최소 검증 + 완료 조건**만 적는다. 긴 예방성 체크리스트를 자동으로 덧붙이지 않는다.
 
 ## 1. PLACEHOLDERS
 
@@ -114,13 +125,14 @@ disable은 **사용자 명시 지시 또는 CURRENT topology의 role 종료**만
 → {INVENTORY_DOC} CURRENT
 → latest origin/main
 → 해당 role의 current canonical/Golden/physical-evidence authority
-를 재조회한다.
+를 **한 번 조회해 작업 snapshot을 잡고 바로 진행한다.**
+같은 run 안에서 새 충돌·drift·사용자 지시가 없으면 동일 authority를 반복 재조회하지 않는다.
 
 형님의 최신 명시 지시와 최신 CURRENT가 이 prompt의 오래된 문구보다 우선한다.
 prompt에 박힌 특정 target/branch/HEAD는 selector hint일 뿐 authority가 아니다.
 실행 시점 physical state에서 target을 다시 계산한다.
 
-PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.1.0 / {ROLE}
+PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.2.0 / {ROLE}
 ~~~
 
 ## 3.1 GPT VISUAL PRODUCTION CONTRACT — HARD
@@ -347,6 +359,13 @@ incident
 개별 automation prompt만 수정하고 종료하지 않는다.
 
 ## 14. CHANGELOG
+
+### V1.2.0 — 2026-10-04
+- WORK-FIRST / MINIMUM VERIFICATION 공통 원칙 추가.
+- run-start authority snapshot 1회, 동일 PASS/문서/main의 근거 없는 반복 재조회 금지.
+- 중간 stage는 changed locus + 필수 gate만 확인하고 latest-main 최종 reconciliation은 MAIN/PUBLISH에 집중.
+- Codex/GPT 지시서는 작업 + 최소 검증 + 완료 조건 중심으로 짧게 유지.
+
 
 ### V1.1.0 — 2026-10-04
 - GPT 예약 worker용 Visual Production Contract를 신설하고 CREATE/R1/R2/R3/THANOS의 공통 필독으로 연결.

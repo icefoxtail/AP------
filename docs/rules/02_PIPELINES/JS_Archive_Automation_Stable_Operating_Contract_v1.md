@@ -12,8 +12,21 @@
 - 신규 학년·학기·시험지 묶음의 예약 worker 생성, cohort 전환, 공통 prompt 결함 수정 시 반드시 `docs/rules/02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md`을 COPY SOURCE로 사용한다.
 - 기존 active automation prompt는 runtime instance이지 template authority가 아니다.
 - 일반화 가능한 incident는 **canonical prompt template 수정 → version bump → Notion ACTIVE/CURRENT 동기화 → 필요한 active role prompt 일괄 migration → readback** 순서로 닫는다.
-- current template version: **PROMPT_TEMPLATE_V1.1.0**.
+- current template version: **PROMPT_TEMPLATE_V1.2.0**.
 - template의 NEVER DELETE 철학: EXAM-LEVEL CONVEYOR, dedicated worker=throughput owner, THANOS=rescue/closure owner, first-refusal, one-exam max, single-writer, physical PASS authority, handoff+lease relinquish, handed-off target 자동 재점유 금지, recurring worker self-disable 금지.
+
+
+## WORK-FIRST / MINIMUM VERIFICATION — HARD (2026-10-04)
+
+형님의 현재 지시: **GPT / Codex / 예약작업 모두 실제 작업을 먼저 진행하고, 검증은 결과 정확성에 필요한 최소치만 수행한다.**
+
+- 한 run에서 router/CURRENT/target physical state/latest main은 시작 시 **1회 snapshot**을 잡고 진행한다. 같은 정보와 같은 PASS artifact를 이유 없이 반복 재조회하지 않는다.
+- 기본 흐름은 **작업 → changed locus/필수 stage 결과 최소 확인 → next durable state**다.
+- 수정하지 않은 범위의 전수검사, 이미 PASS한 이전 stage 전체 재검, unrelated global CI, 장문의 예방성 체크리스트는 기본값이 아니다.
+- CREATE/R1/R2/R3 중간 단계에서 매 소단계마다 latest main에 재결속하지 않는다. **최종 latest-main drift/overlap/final artifact parity/remote main 확인은 MAIN/PUBLISH가 담당**한다.
+- 중간 추가 검증은 stale ref, 실제 overlap/conflict, source truth 의심, canonical validator FAIL처럼 **구체적인 위험 신호가 있을 때만** 수행한다.
+- stage transition에 validator/receipt가 필수면 **필요한 1회만** 실행한다. 동일 입력 PASS를 근거 없이 반복 실행하지 않는다.
+- 필수 source truth/curriculum/single-writer/user HARD gate는 유지한다. 이 규칙은 품질 gate 폐지가 아니라 **중복 검증 제거**다.
 
 
 ## GPT VISUAL PRODUCTION CONTRACT — CURRENT
