@@ -12,7 +12,10 @@ const sha = text => crypto.createHash('sha256').update(text).digest('hex');
 const inputManifest = JSON.parse(read('archive/data/archive2-canonical-input-manifest.json'));
 const authorityInputFiles = (inputManifest.files || [])
   .filter(row => !['data/archive2-catalog.json', 'data/basic-scope-parent-links.json'].includes(row.path))
-  .map(({ path: inputPath, sha256 }) => ({ path: inputPath, sha256: String(sha256 || '').toLowerCase() }))
+  .map(({ path: inputPath }) => ({
+    path: inputPath,
+    sha256: sha(inputPath.startsWith('../') ? read(inputPath.slice(3)) : read(`archive/${inputPath}`)),
+  }))
   .sort((a, b) => a.path < b.path ? -1 : a.path > b.path ? 1 : 0);
 const authorityInputsSha256 = sha(JSON.stringify({
   resolverVersion: inputManifest.resolverVersion || '',
@@ -79,13 +82,39 @@ const existingParentLinks = JSON.parse(read('archive/data/basic-scope-parent-lin
 const canonical = {
   ...core.Canonical,
   async loadInputBundle(fetcher, baseUrl, expectedVersion) {
-    const bundle = await core.Canonical.loadInputBundle(fetcher, baseUrl, expectedVersion);
+    // This projection is the first generator in the canonical refresh chain.
+    // Rebind the existing manifest in memory to current source bytes so a
+    // master/policy advance can be projected before the catalog builder writes
+    // the final manifest. The catalog builder remains the manifest authority.
+    const files = inputManifest.files.map(row => {
+      const inputPath = row.path;
+      const sourcePath = inputPath.startsWith('../')
+        ? inputPath.slice(3)
+        : `archive/${inputPath}`;
+      const sourceText = read(sourcePath);
+      return { path: inputPath, sha256: sha(sourceText) };
+    });
+    const manifest = {
+      ...inputManifest,
+      files,
+      projectionVersion: await core.Canonical.computeProjectionVersion(files, inputManifest.resolverVersion),
+    };
+    const refreshFetcher = async url => {
+      if (new URL(url).pathname.endsWith('/data/archive2-canonical-input-manifest.json'))
+        return { ok: true, text: async () => JSON.stringify(manifest) };
+      return fetcher(url);
+    };
+    const bundle = await core.Canonical.loadInputBundle(refreshFetcher, baseUrl, '');
     return {
       ...bundle,
       resources: {
         ...bundle.resources,
         'data/basic-scope-parent-links.json': {
           ...bundle.resources['data/basic-scope-parent-links.json'],
+          authority: {
+            ...bundle.resources['data/basic-scope-parent-links.json']?.authority,
+            sha256: sha(masterText),
+          },
           records: semanticLinks,
         },
       },
