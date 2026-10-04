@@ -32,14 +32,14 @@
       "runId": 37184051514,
       "status": "completed",
       "conclusion": "failure",
-      "summary": "188 PASS / 4 FAIL; failures are in teacher preview, target-selection UI, print mixer, and student portal contracts, with no target exam path in failure output."
+      "summary": "188 PASS / 4 FAIL; failures are outside the three changed o30 files and no target exam path appears in the failure output."
     }
   ],
   "completedStep": "CREATE_PRODUCTION_META_SOURCE_PIXEL_PHYSICAL_EVIDENCE_PR_ACTIONS_REMOTE_READBACK",
   "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR_EXECUTOR_READBACK",
   "exactCapabilityError": [
     "Available PR/Actions path ran generic repository CI, not the canonical target-scoped CREATE validator and did not emit a validator receipt.",
-    "Generic CI run 37184051514 failed in four unrelated repository contract suites: apmath-student-teacher-preview, archive-target-selection-phase3-contract, print-render-authority-mixer-ecosystem, and student-portal-omr-history-routes.",
+    "Generic CI run 37184051514 failed in four repository contract suites: apmath-student-teacher-preview, archive-target-selection-phase3-contract, print-render-authority-mixer-ecosystem, and student-portal-omr-history-routes; none of the three changed o30 paths appears in the failure output.",
     "No connected executor is exposed for canonical solution-calibration-gate preflight plus review-evidence-gate --stage CREATE or for binding validator/CREATE receipts."
   ],
   "requiredNextAction": "Fresh-revalidate production branch/head/artifact/evidence; run canonical solution-calibration-gate preflight and review-evidence-gate --stage CREATE in an available executor; bind exact run/job/head and artifact/evidence blobs into validator receipt; create CREATE receipt; remote-read back CREATE_DONE -> READY_FOR_REVIEW1. Do not treat generic CI or this handoff as PASS.",
@@ -47,12 +47,12 @@
   "r1Eligible": false,
   "mutationScope": "o30 only",
   "unrelatedMutationCount": 0,
-  "rescueQueueRegistration": "GIT_PHYSICAL_FALLBACK",
-  "rescueQueueRef": "PENDING_FIRST_HANDOFF_COMMIT",
+  "rescueQueueRegistration": "GIT_PHYSICAL_AND_NOTION_LANE_CURRENT",
+  "rescueQueueRef": "rescue/m2/create-closure-debt/o30-a9d9b7bd-validator-20261004-1556@db6e0900f9bea10cbd3cba195738fbad88cbc706",
   "stateStorageMirror": {
-    "workPage": "NOT_REQUIRED_PER_NORMAL_RUN_POLICY",
-    "notionBoard": "PENDING_COMPACT_LANE_UPDATE",
+    "workPage": "LANE CURRENT — M2-1 TEMP-CREATE-4",
+    "notionBoard": "UPDATED_2026-10-04_15:56_KST",
     "productionBlocking": false,
-    "recovery": "THANOS/ORCHESTRATOR must consume this Git physical rescue ref from RESCUE_QUEUE."
+    "recovery": "THANOS/ORCHESTRATOR should consume the physical rescue ref and start exactly at firstMissingClosureStep."
   }
 }
