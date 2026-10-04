@@ -4,7 +4,7 @@
   "stage": "R2",
   "canonicalOrdinal": 5,
   "examFile": "24_연향중_1학기_중간_중2_기출.js",
-  "reviewAttemptId": "R2:m2/1mid/24-yeonhyang:f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9:reassign-20261004-2320",
+  "reviewAttemptId": "R2:o5:f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9:current-reassign-generic-20261005-0013",
   "finalArtifactSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
   "examSha256": "sha256:38e61f187e049b23a167180e29548b597afcc019dd32a95e56399ea5401cbd1a",
   "physicalEvidenceGitBlob": "f7c972819bf5ccf642c636188260b346ecb396dd",
@@ -12,13 +12,17 @@
   "blindFreezeGitBlob": "e9b483b8033a0ef59994397dc007a3281488486a",
   "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
   "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
-  "validationMode": "GITHUB_ACTIONS_CANONICAL_EXECUTION",
-  "validationPullRequest": 201,
-  "validationSurfaceCommit": "9e17dd4b71f3033e0d1e5359d823c17f51426463",
-  "workflowRunId": 37209275900,
-  "workflowJobId": 111456944066,
-  "validationMarker": "M2_O5_R2_CANONICAL_REPORT",
+  "genericStageValidatorBlob": "d7a835410e900e3cd16e81e2b61b448d207995e0",
+  "genericStageValidatorWorkflowBlob": "e0b7201629177c02a37ae39c0e2c0cd5e8fc81af",
+  "currentMainAtValidation": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
+  "validationMode": "GITHUB_ACTIONS_GENERIC_STAGE_VALIDATOR",
+  "validationPullRequest": 230,
+  "validationSurfaceCommit": "5abf89702a8969a460365094c991a008ea67ac07",
+  "workflowRunId": 37209731512,
+  "workflowRunAttempt": 2,
+  "workflowJobId": 111465392544,
   "result": {
+    "validatorMode": "FULL",
     "ok": true,
     "stage": "R2",
     "questionCount": 23,
@@ -33,13 +37,27 @@
     "disposition": "PASS_WITH_ITEM_HOLDS",
     "issues": []
   },
-  "calibrationBinding": "PASS_WITHIN_CANONICAL_REVIEW_EVIDENCE_GATE",
-  "targetedCanonicalGate": "PASS",
-  "overallCi": "FAIL_AFTER_TARGET_PASS_NON_R2_FAILURES",
-  "nonR2BlockingFailures": [
-    "apmath-student-teacher-preview.test.js",
-    "archive-target-selection-phase3-contract.test.js",
-    "print-render-authority-mixer-ecosystem.test.js",
-    "student-portal-omr-history-routes.test.js"
-  ]
+  "priorGenericAttempt": {
+    "workflowRunId": 37209731512,
+    "workflowRunAttempt": 1,
+    "workflowJobId": 111458278167,
+    "result": "FAIL",
+    "issues": [
+      "META_NULL_REASON_REQUIRED:q21",
+      "CALIBRATION_ORDER_INVALID:R2",
+      "R2_BLIND_FREEZE_SHA_REQUIRED"
+    ]
+  },
+  "deterministicEvidenceRepair": {
+    "examMutationCount": 0,
+    "evidenceBlobBefore": "138f461683bbd702550b8892455a3bb9529930d7",
+    "evidenceBlobAfter": "f7c972819bf5ccf642c636188260b346ecb396dd",
+    "repairs": [
+      "q21 meta nullReason bound to the production-JS projection-null case",
+      "R2 calibrationOrder rebound to SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+      "R2 blindFreezeSha256 and blindFreezeGitBlob bound"
+    ]
+  },
+  "genericGate": "PASS",
+  "remoteRunConclusion": "success"
 }

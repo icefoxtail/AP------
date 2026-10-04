@@ -10,51 +10,48 @@
   "inputArtifactSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
   "finalArtifactSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
   "branch": "work/middle/m2/24-yeonhyang-1mid-r2-2-20261004-2044",
-  "validationMaterialHead": "9e17dd4b71f3033e0d1e5359d823c17f51426463",
   "evidenceSnapshot": {
     "path": "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.review2.physical-evidence.json",
     "blob": "f7c972819bf5ccf642c636188260b346ecb396dd",
     "decisionPath": "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.review2.recheck-decision.r2-2-20261004-2044.json",
     "decisionBlob": "8e24452c343dfe22c2ff379c008f771ae876b3fe",
     "blindFreezeBlob": "e9b483b8033a0ef59994397dc007a3281488486a",
-    "targetGateTest": "tests/m2-r2-2-o5-yeonhyang-review2-gate.test.js",
-    "dispositionCandidate": "PASS_WITH_ITEM_HOLDS",
+    "disposition": "PASS_WITH_ITEM_HOLDS",
     "itemHoldQids": [
       9
     ],
-    "deterministicRepairCount": 0
+    "deterministicRepairCount": 0,
+    "examMutationCount": 0
   },
-  "completedStep": "REVIEW2_DONE_REMOTE_READBACK_CONFIRMED",
-  "firstMissingClosureStep": "NONE_CLOSED",
-  "exactCapabilityAndError": {
-    "priorPrCreate": "NEW_PR_CREATE_BLOCKED_BY_PROVIDER_SAFETY_GATE",
-    "materiallyDifferentSafePath": "REUSED_SAME_TARGET_OPEN_VALIDATION_PR_201; NON_FORCE_FAST_FORWARD_ONLY",
-    "firstActualRun": "37208884134 / job 111455789489: target FAIL on META_NULL_REASON_REQUIRED:q21, CALIBRATION_ORDER_INVALID:R2, R2_BLIND_FREEZE_SHA_REQUIRED",
-    "deterministicEvidenceRepair": "q21 nullReason restored from current R1 evidence; calibrationOrder rebound to current canonical expected value; blindFreeze SHA-256/blob bound; exam artifact unchanged",
-    "closureRun": "37209275900 / job 111456944066: M2_O5_R2_CANONICAL_REPORT ok=true PASS_WITH_ITEM_HOLDS q9 issues=[]; overall CI retained four unrelated baseline failures"
-  },
-  "requiredNextAction": "NONE_R2_DURABLY_CLOSED_READY_FOR_R3",
-  "ownerState": "CLOSED_BY_R2_REASSIGN",
-  "r3Eligible": true,
-  "debtStatus": "CLOSED",
-  "closedAtKst": "2026-10-04 23:31",
+  "completedStep": "REVIEW2_DONE_REMOTE_READBACK_PENDING_THIS_COMMIT",
+  "firstMissingClosureStep": "REMOTE_READBACK_ONLY",
+  "requiredNextAction": "REMOTE_READBACK_RECEIPT_BLOBS_AND_BRANCH_HEAD",
+  "ownerState": "CLOSING_BY_R2_1_CURRENT_REASSIGN",
+  "r3Eligible": false,
+  "debtStatus": "CLOSING",
   "closureResolution": {
-    "validationPullRequest": 201,
-    "validationSurfaceCommit": "9e17dd4b71f3033e0d1e5359d823c17f51426463",
-    "workflowRunId": 37209275900,
-    "workflowJobId": 111456944066,
-    "validatorReceiptSha": "0fea92aac20aa962ac98aaa699f0530d4d74411c",
-    "review2ReceiptSha": "359cfba552e9ad081f660c284eb896fe6718a52e",
-    "receiptBearingHead": "916c16353ab98b1db091ebe5c19caaf73296a44c",
+    "validationPullRequest": 230,
+    "validationSurfaceCommit": "5abf89702a8969a460365094c991a008ea67ac07",
+    "currentMainAtValidation": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
+    "workflowRunId": 37209731512,
+    "workflowRunAttempt": 2,
+    "workflowJobId": 111465392544,
+    "genericStageValidatorBlob": "d7a835410e900e3cd16e81e2b61b448d207995e0",
+    "result": "PASS_WITH_ITEM_HOLDS",
+    "issues": [],
+    "validatorReceiptSha": "c732dd53c71b840ddc12fdc05728c27444e66ded",
+    "review2ReceiptSha": "b4a91fd363456d434e254a8e38101314a01ca1b6",
     "state": "REVIEW2_DONE",
-    "nextStage": "READY_FOR_R3",
-    "remoteReadback": {
-      "examBlob": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
-      "evidenceBlob": "f7c972819bf5ccf642c636188260b346ecb396dd",
-      "validatorBlob": "0fea92aac20aa962ac98aaa699f0530d4d74411c",
-      "review2Blob": "359cfba552e9ad081f660c284eb896fe6718a52e"
-    }
+    "nextStage": "READY_FOR_R3"
   },
-  "historicalFirstMissingClosureStep": "PR_ACTIONS_TRIGGER_AND_ACTUAL_R2_CANONICAL_VALIDATOR",
-  "historicalRequiredNextAction": "Open an allowed PR/Actions validation surface from the exact R2 material, execute the canonical R2 gate, then write validator/REVIEW2 receipts and remote-read back before R3 eligibility."
+  "historicalFailure": {
+    "workflowRunId": 37209731512,
+    "workflowRunAttempt": 1,
+    "workflowJobId": 111458278167,
+    "issues": [
+      "META_NULL_REASON_REQUIRED:q21",
+      "CALIBRATION_ORDER_INVALID:R2",
+      "R2_BLIND_FREEZE_SHA_REQUIRED"
+    ]
+  }
 }
