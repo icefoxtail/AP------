@@ -1,6 +1,6 @@
 {
   "schemaVersion": "m2-1-create-handoff-v1",
-  "status": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "status": "SOURCE_REPAIRED",
   "queue": "CODEX_SOURCE_REPAIR_QUEUE",
   "thanosEligible": false,
   "canonicalOrdinal": 13,
@@ -8,31 +8,39 @@
   "examPath": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
   "productionBranch": "work/middle/m2/21-geumdang-1mid-temp-create4-20261004-1833",
   "productionHead": "71a84afa30668aba77167300410bc5f70c3dc04f",
-  "finalArtifactSha": "d72ff8f8187d32ca0471225787f0233a1c0e9d45",
-  "metadataBlob": "6ab96d223230dd5f1569970c351224312cf70d97",
-  "evidenceBlob": "1ee3b597fa020c0d46f6b880fa526522a9687692",
+  "finalArtifactSha": "6fcc9554eabda651af19f12efe76878d7f0e7b3f",
+  "metadataBlob": "f27c8ab2df5632c14cd6b0b18afe63ce95089256",
+  "evidenceBlob": "40f79a5995036a9e5a451a365b68ce88820662fb",
   "draftPullRequest": {
     "number": 211,
     "url": "https://github.com/icefoxtail/AP------/pull/211"
   },
-  "completedStep": "protected source parity 26/26 + fresh solution attempt 26/26 + resolved solution 23/26 + metadata 26/26 + visual triage 26/26 + physical evidence + draft PR + registration sync success",
-  "firstMissingClosureStep": "SOURCE_UNVERIFIED_Q11_Q18_Q23",
+  "completedStep": "D original source verified for q11/q18/q23; targeted repairs completed; zero item holds.",
+  "firstMissingClosureStep": "CANONICAL_CREATE_VALIDATOR_EVIDENCE_RECONCILIATION",
   "exactCapabilityAndError": [
     {
       "qid": 11,
-      "error": "Current inline SVG geometry and labels recalculate to A+C+B/2=13/2; no choice matches and stored answer is ④. Authoritative source page/diagram unavailable in repository evidence."
+      "error": "Current inline SVG geometry and labels recalculate to A+C+B/2=13/2; no choice matches and stored answer is ④. Authoritative source page/diagram unavailable in repository evidence.",
+      "resolved": true,
+      "resolution": "D original source verified; minimum repair and independent result are in 21_금당중_1학기_중간_중2_기출.create.physical-evidence.json"
     },
     {
       "qid": 18,
-      "error": "Current stem computes 9/2≤a<5 (choice ①), while stored answer is ⑤. Authoritative answer/stem unavailable."
+      "error": "Current stem computes 9/2≤a<5 (choice ①), while stored answer is ⑤. Authoritative answer/stem unavailable.",
+      "resolved": true,
+      "resolution": "D original source verified; minimum repair and independent result are in 21_금당중_1학기_중간_중2_기출.create.physical-evidence.json"
     },
     {
       "qid": 23,
-      "error": "Current content is truncated to '(서술형'; full original stem/subquestions unavailable."
+      "error": "Current content is truncated to '(서술형'; full original stem/subquestions unavailable.",
+      "resolved": true,
+      "resolution": "D original source verified; minimum repair and independent result are in 21_금당중_1학기_중간_중2_기출.create.physical-evidence.json"
     },
     {
       "step": "canonical CREATE validator",
-      "error": "NOT_RUN because unresolved source truth would make PASS/receipt invalid; generic PR CI is not the target-specific CREATE validator."
+      "error": "Canonical validator receipt reports evidence-schema/calibration errors; it is not a source-authority blocker.",
+      "status": "FAIL",
+      "receiptPath": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.validator.json"
     }
   ],
   "workflowEvidence": {
@@ -57,11 +65,102 @@
       "targetScopeAssessment": "same four repository-wide failures observed on prior unrelated CREATE branches; no o13-specific failure identified"
     }
   },
-  "requiredNextAction": "Codex Source Repair must locate authoritative q11 diagram, q18 stem/answer, and full q23 stem; apply only source-confirmed repairs; then run the actual canonical CREATE validator, persist validator receipt and CREATE receipt, remote-read back, and transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "requiredNextAction": "q11/q18/q23 source repairs are complete with zero item holds. Reconcile the pre-existing m2-1 CREATE evidence with the current canonical validator without re-reviewing unrelated qids before emitting a CREATE receipt and READY_FOR_REVIEW1.",
   "producerOwnership": "RELINQUISHED",
   "sameTargetReselection": "DO_NOT_RESELECT_UNLESS_CURRENT_REASSIGN_TO_CREATE",
   "createDone": false,
   "readyForReview1": false,
   "passClaim": false,
-  "createdAtKst": "2026-10-04 18:48 KST"
+  "createdAtKst": "2026-10-04 18:48 KST",
+  "sourceFiles": [
+    {
+      "kind": "problem",
+      "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_금당중2_수학_1중간.pdf",
+      "sha256": "sha256:984c483e83ddcdd77c40773024d20bb6a6bfb76ed713bee947dae67e778c9034",
+      "gitBlobSha": "29a82b6fd02ed349d1dc8f29c5b93436ab6e6e4b",
+      "sizeBytes": 6437810
+    },
+    {
+      "kind": "answer",
+      "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_금당중2_수학_1중간_정답.pdf",
+      "sha256": "sha256:4c7cf4e02f68bd0cb7eb55db2b7fd3879f8f32bf350ac977eafe22c41aa74e07",
+      "gitBlobSha": "46d5550665e12f0e53285b94d01443cedcbc32a5",
+      "sizeBytes": 2628328
+    }
+  ],
+  "sourceRepairEvidencePath": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.physical-evidence.json",
+  "canonicalCreateValidator": {
+    "status": "FAIL",
+    "validator": "archive/tools/review-evidence-gate.mjs",
+    "receiptPath": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.validator.json",
+    "issues": [
+      "EVIDENCE_SCHEMA_INVALID",
+      "EVIDENCE_STAGE_MISMATCH",
+      "EVIDENCE_EXAM_SHA_MISMATCH",
+      "QUESTION_ROW_MISSING:q1",
+      "QUESTION_ROW_MISSING:q2",
+      "QUESTION_ROW_MISSING:q3",
+      "QUESTION_ROW_MISSING:q4",
+      "QUESTION_ROW_MISSING:q5",
+      "QUESTION_ROW_MISSING:q6",
+      "QUESTION_ROW_MISSING:q7",
+      "QUESTION_ROW_MISSING:q8",
+      "QUESTION_ROW_MISSING:q9",
+      "QUESTION_ROW_MISSING:q10",
+      "QUESTION_ROW_MISSING:q11",
+      "QUESTION_ROW_MISSING:q12",
+      "QUESTION_ROW_MISSING:q13",
+      "QUESTION_ROW_MISSING:q14",
+      "QUESTION_ROW_MISSING:q15",
+      "QUESTION_ROW_MISSING:q16",
+      "QUESTION_ROW_MISSING:q17",
+      "QUESTION_ROW_MISSING:q18",
+      "QUESTION_ROW_MISSING:q19",
+      "QUESTION_ROW_MISSING:q20",
+      "QUESTION_ROW_MISSING:q21",
+      "QUESTION_ROW_MISSING:q22",
+      "QUESTION_ROW_MISSING:q23",
+      "QUESTION_ROW_MISSING:q24",
+      "QUESTION_ROW_MISSING:q25",
+      "QUESTION_ROW_MISSING:q26",
+      "META_ROW_MISSING:q1",
+      "META_ROW_MISSING:q2",
+      "META_ROW_MISSING:q3",
+      "META_ROW_MISSING:q4",
+      "META_ROW_MISSING:q5",
+      "META_ROW_MISSING:q6",
+      "META_ROW_MISSING:q7",
+      "META_ROW_MISSING:q8",
+      "META_ROW_MISSING:q9",
+      "META_ROW_MISSING:q10",
+      "META_ROW_MISSING:q11",
+      "META_ROW_MISSING:q12",
+      "META_ROW_MISSING:q13",
+      "META_ROW_MISSING:q14",
+      "META_ROW_MISSING:q15",
+      "META_ROW_MISSING:q16",
+      "META_ROW_MISSING:q17",
+      "META_ROW_MISSING:q18",
+      "META_ROW_MISSING:q19",
+      "META_ROW_MISSING:q20",
+      "META_ROW_MISSING:q21",
+      "META_ROW_MISSING:q22",
+      "META_ROW_MISSING:q23",
+      "META_ROW_MISSING:q24",
+      "META_ROW_MISSING:q25",
+      "META_ROW_MISSING:q26",
+      "SOLUTION_CALIBRATION_REQUIRED"
+    ]
+  },
+  "validatorReceipt": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.validator.json",
+  "createReceipt": null,
+  "transition": "NOT_WRITTEN",
+  "itemHoldCount": 0,
+  "sourceRepairQids": [
+    11,
+    18,
+    23
+  ],
+  "sourceRepairBranch": "rescue/m2/source-repair/o13-d72ff8f8-q11-q18-q23-20261004-1846",
+  "sourceRepairBaseHead": "6be910b8ceaa69fa6c3cfce0e88bd63f28c202ed"
 }

@@ -7,13 +7,13 @@
   "examUid": "M2-1-21-GEUMDANG-1MID",
   "examPath": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
   "examFile": "21_금당중_1학기_중간_중2_기출.js",
-  "branch": "work/middle/m2/21-geumdang-1mid-temp-create4-20261004-1833",
+  "branch": "rescue/m2/source-repair/o13-d72ff8f8-q11-q18-q23-20261004-1846",
   "baseMain": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
   "sourceInputBlob": "aa4ab31dacd57c3f77e0540f81bdea8fc3fd4ed9",
-  "finalArtifactSha": "d72ff8f8187d32ca0471225787f0233a1c0e9d45",
-  "metadataBlob": "6ab96d223230dd5f1569970c351224312cf70d97",
+  "finalArtifactSha": "6fcc9554eabda651af19f12efe76878d7f0e7b3f",
+  "metadataBlob": "f27c8ab2df5632c14cd6b0b18afe63ce95089256",
   "questionCount": 26,
-  "completedStep": "candidate + fresh solution attempt 26/26 + resolved solutions 23/26 + metadata 26/26 + visual triage 26/26 + physical evidence",
+  "completedStep": "Protected source parity + source-repaired q11/q18/q23 + targeted math/visual checks + physical evidence",
   "sourceParity": {
     "fields": [
       "content",
@@ -237,42 +237,13 @@
   "freshSolutionAudit": {
     "denominator": 26,
     "attemptedCount": 26,
-    "resolvedCount": 23,
-    "itemHoldQuestionIds": [
-      11,
-      18,
-      23
-    ],
+    "resolvedCount": 26,
+    "itemHoldQuestionIds": [],
     "runtimeEscapeCheck": "STATIC_JSON_ROUNDTRIP_PASS",
-    "mathRecheck": "All 26 rows independently recalculated; q11/q18/q23 preserve source and record exact conflicts rather than forcing the stored answer."
+    "mathRecheck": "D source repair resolved only q11/q18/q23; other 23 solution rows remain preserved from the current CREATE audit."
   },
-  "itemHolds": [
-    {
-      "qid": 11,
-      "questionUid": "M2-1-21-GEUMDANG-1MID-Q11",
-      "locus": "problem SVG geometry/length labels vs choices/answer",
-      "status": "SOURCE_UNVERIFIED",
-      "observedEvidence": "Current SVG coordinate model yields dark area -9x^2+45xy-7y^2 and A+C+B/2=13/2; no choice matches and stored answer is ④.",
-      "unresolvedPoint": "authoritative original diagram labels or shading"
-    },
-    {
-      "qid": 18,
-      "questionUid": "M2-1-21-GEUMDANG-1MID-Q18",
-      "locus": "stem/choices/answer",
-      "status": "SOURCE_UNVERIFIED",
-      "observedEvidence": "Current stem gives 9/2≤a<5 (choice ①), while stored answer is ⑤.",
-      "unresolvedPoint": "authoritative answer or corrected stem/choice"
-    },
-    {
-      "qid": 23,
-      "questionUid": "M2-1-21-GEUMDANG-1MID-Q23",
-      "locus": "content",
-      "status": "SOURCE_UNVERIFIED",
-      "observedEvidence": "content is truncated to '(서술형'; answer retains fragments only.",
-      "unresolvedPoint": "full original q23 stem and subquestions"
-    }
-  ],
-  "itemHoldCount": 3,
+  "itemHolds": [],
+  "itemHoldCount": 0,
   "visualAudit": {
     "denominator": 26,
     "ledger": [
@@ -339,13 +310,14 @@
       {
         "qid": 11,
         "necessity": "VISUAL_REQUIRED",
-        "action": "SOURCE_REPAIR_REQUIRED",
+        "action": "REPAIR",
         "surface": "PROBLEM_VISUAL",
         "decisiveRelation": "Rectangle dimensions and two offset labels must determine the shaded polynomial uniquely.",
         "assetKind": "INLINE_SVG",
-        "staticGeometryStatus": "MISMATCH",
-        "renderStatus": "NOT_RUN",
-        "unresolvedVisualDebt": "Authoritative original page/diagram is required before changing the source SVG."
+        "staticGeometryStatus": "PASS",
+        "renderStatus": "TARGETED_RENDER_PASS",
+        "sourcePage": 2,
+        "renderMethod": "PyMuPDF SVG rasterization and visual inspection"
       },
       {
         "qid": 12,
@@ -457,8 +429,8 @@
     "addedAssetCount": 0,
     "renderedAssetCount": 0,
     "staticSvgAuditCount": 5,
-    "unresolvedProblemVisualCount": 1,
-    "solutionVisualDecision": "No new solutionImage was added: existing problem SVGs carry the needed representation; q11 must be source-repaired rather than cosmetically redrawn."
+    "unresolvedProblemVisualCount": 0,
+    "solutionVisualDecision": "No solutionImage added. q11 problem SVG shading topology was repaired from the D original and raster-checked."
   },
   "calibration": {
     "golden": [
@@ -495,15 +467,354 @@
     }
   },
   "createValidator": {
-    "status": "NOT_RUN",
-    "reason": "q11/q18/q23 source authority is unresolved; target-specific canonical CREATE validator must not be represented as PASS before the item source is repaired or explicitly accepted as item holds."
+    "status": "FAIL",
+    "reason": "Canonical validator rejects the pre-existing m2-1 evidence schema; see receipt.",
+    "receiptPath": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.validator.json",
+    "issues": [
+      "EVIDENCE_SCHEMA_INVALID",
+      "EVIDENCE_STAGE_MISMATCH",
+      "EVIDENCE_EXAM_SHA_MISMATCH",
+      "QUESTION_ROW_MISSING:q1",
+      "QUESTION_ROW_MISSING:q2",
+      "QUESTION_ROW_MISSING:q3",
+      "QUESTION_ROW_MISSING:q4",
+      "QUESTION_ROW_MISSING:q5",
+      "QUESTION_ROW_MISSING:q6",
+      "QUESTION_ROW_MISSING:q7",
+      "QUESTION_ROW_MISSING:q8",
+      "QUESTION_ROW_MISSING:q9",
+      "QUESTION_ROW_MISSING:q10",
+      "QUESTION_ROW_MISSING:q11",
+      "QUESTION_ROW_MISSING:q12",
+      "QUESTION_ROW_MISSING:q13",
+      "QUESTION_ROW_MISSING:q14",
+      "QUESTION_ROW_MISSING:q15",
+      "QUESTION_ROW_MISSING:q16",
+      "QUESTION_ROW_MISSING:q17",
+      "QUESTION_ROW_MISSING:q18",
+      "QUESTION_ROW_MISSING:q19",
+      "QUESTION_ROW_MISSING:q20",
+      "QUESTION_ROW_MISSING:q21",
+      "QUESTION_ROW_MISSING:q22",
+      "QUESTION_ROW_MISSING:q23",
+      "QUESTION_ROW_MISSING:q24",
+      "QUESTION_ROW_MISSING:q25",
+      "QUESTION_ROW_MISSING:q26",
+      "META_ROW_MISSING:q1",
+      "META_ROW_MISSING:q2",
+      "META_ROW_MISSING:q3",
+      "META_ROW_MISSING:q4",
+      "META_ROW_MISSING:q5",
+      "META_ROW_MISSING:q6",
+      "META_ROW_MISSING:q7",
+      "META_ROW_MISSING:q8",
+      "META_ROW_MISSING:q9",
+      "META_ROW_MISSING:q10",
+      "META_ROW_MISSING:q11",
+      "META_ROW_MISSING:q12",
+      "META_ROW_MISSING:q13",
+      "META_ROW_MISSING:q14",
+      "META_ROW_MISSING:q15",
+      "META_ROW_MISSING:q16",
+      "META_ROW_MISSING:q17",
+      "META_ROW_MISSING:q18",
+      "META_ROW_MISSING:q19",
+      "META_ROW_MISSING:q20",
+      "META_ROW_MISSING:q21",
+      "META_ROW_MISSING:q22",
+      "META_ROW_MISSING:q23",
+      "META_ROW_MISSING:q24",
+      "META_ROW_MISSING:q25",
+      "META_ROW_MISSING:q26",
+      "SOLUTION_CALIBRATION_REQUIRED"
+    ]
   },
-  "validatorReceipt": null,
+  "validatorReceipt": {
+    "status": "FAIL",
+    "path": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.validator.json",
+    "issues": [
+      "EVIDENCE_SCHEMA_INVALID",
+      "EVIDENCE_STAGE_MISMATCH",
+      "EVIDENCE_EXAM_SHA_MISMATCH",
+      "QUESTION_ROW_MISSING:q1",
+      "QUESTION_ROW_MISSING:q2",
+      "QUESTION_ROW_MISSING:q3",
+      "QUESTION_ROW_MISSING:q4",
+      "QUESTION_ROW_MISSING:q5",
+      "QUESTION_ROW_MISSING:q6",
+      "QUESTION_ROW_MISSING:q7",
+      "QUESTION_ROW_MISSING:q8",
+      "QUESTION_ROW_MISSING:q9",
+      "QUESTION_ROW_MISSING:q10",
+      "QUESTION_ROW_MISSING:q11",
+      "QUESTION_ROW_MISSING:q12",
+      "QUESTION_ROW_MISSING:q13",
+      "QUESTION_ROW_MISSING:q14",
+      "QUESTION_ROW_MISSING:q15",
+      "QUESTION_ROW_MISSING:q16",
+      "QUESTION_ROW_MISSING:q17",
+      "QUESTION_ROW_MISSING:q18",
+      "QUESTION_ROW_MISSING:q19",
+      "QUESTION_ROW_MISSING:q20",
+      "QUESTION_ROW_MISSING:q21",
+      "QUESTION_ROW_MISSING:q22",
+      "QUESTION_ROW_MISSING:q23",
+      "QUESTION_ROW_MISSING:q24",
+      "QUESTION_ROW_MISSING:q25",
+      "QUESTION_ROW_MISSING:q26",
+      "META_ROW_MISSING:q1",
+      "META_ROW_MISSING:q2",
+      "META_ROW_MISSING:q3",
+      "META_ROW_MISSING:q4",
+      "META_ROW_MISSING:q5",
+      "META_ROW_MISSING:q6",
+      "META_ROW_MISSING:q7",
+      "META_ROW_MISSING:q8",
+      "META_ROW_MISSING:q9",
+      "META_ROW_MISSING:q10",
+      "META_ROW_MISSING:q11",
+      "META_ROW_MISSING:q12",
+      "META_ROW_MISSING:q13",
+      "META_ROW_MISSING:q14",
+      "META_ROW_MISSING:q15",
+      "META_ROW_MISSING:q16",
+      "META_ROW_MISSING:q17",
+      "META_ROW_MISSING:q18",
+      "META_ROW_MISSING:q19",
+      "META_ROW_MISSING:q20",
+      "META_ROW_MISSING:q21",
+      "META_ROW_MISSING:q22",
+      "META_ROW_MISSING:q23",
+      "META_ROW_MISSING:q24",
+      "META_ROW_MISSING:q25",
+      "META_ROW_MISSING:q26",
+      "SOLUTION_CALIBRATION_REQUIRED"
+    ]
+  },
   "createReceipt": null,
   "transition": "NOT_WRITTEN",
   "createDone": false,
   "readyForReview1": false,
   "passClaim": false,
-  "firstMissingClosureStep": "SOURCE_UNVERIFIED_Q11_Q18_Q23",
-  "requiredNextAction": "Codex Source Repair must locate the authoritative q11 diagram, q18 answer/stem, and full q23 stem; apply only source-confirmed changes, then run the actual canonical CREATE validator, persist validator and CREATE receipts, remote-read back, and transition CREATE_DONE→READY_FOR_REVIEW1."
+  "firstMissingClosureStep": "CANONICAL_CREATE_VALIDATOR_EVIDENCE_RECONCILIATION",
+  "requiredNextAction": "Codex Source Repair must locate the authoritative q11 diagram, q18 answer/stem, and full q23 stem; apply only source-confirmed changes, then run the actual canonical CREATE validator, persist validator and CREATE receipts, remote-read back, and transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "sourceRepairEvidence": {
+    "schemaVersion": "JS_ARCHIVE_SOURCE_REPAIR_EVIDENCE_v1",
+    "stage": "CREATE",
+    "status": "SOURCE_REPAIRED",
+    "examFile": "21_금당중_1학기_중간_중2_기출.js",
+    "examPath": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+    "finalArtifactSha": "6fcc9554eabda651af19f12efe76878d7f0e7b3f",
+    "sourceFiles": [
+      {
+        "kind": "problem",
+        "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_금당중2_수학_1중간.pdf",
+        "sha256": "sha256:984c483e83ddcdd77c40773024d20bb6a6bfb76ed713bee947dae67e778c9034",
+        "gitBlobSha": "29a82b6fd02ed349d1dc8f29c5b93436ab6e6e4b",
+        "sizeBytes": 6437810
+      },
+      {
+        "kind": "answer",
+        "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_금당중2_수학_1중간_정답.pdf",
+        "sha256": "sha256:4c7cf4e02f68bd0cb7eb55db2b7fd3879f8f32bf350ac977eafe22c41aa74e07",
+        "gitBlobSha": "46d5550665e12f0e53285b94d01443cedcbc32a5",
+        "sizeBytes": 2628328
+      }
+    ],
+    "pagesInspected": [
+      {
+        "qids": [
+          11
+        ],
+        "problemPage": 2,
+        "answerPage": 2
+      },
+      {
+        "qids": [
+          18
+        ],
+        "problemPage": 3,
+        "answerPage": 3
+      },
+      {
+        "qids": [
+          23
+        ],
+        "problemPage": 4,
+        "answerPage": 4
+      }
+    ],
+    "repairs": [
+      {
+        "qid": 11,
+        "repairType": "SOURCE_VISUAL_AND_SOLUTION_REPAIR",
+        "originalValue": {
+          "svg": "<svg width='180' height='150' viewBox='0 0 180 150'><rect x='30' y='20' width='120' height='100' fill='#444'/><polygon points='30,20 150,80 110,120' fill='white'/><path d='M30,12 Q90,0 150,12' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='90' y='8' font-size='12' text-anchor='middle'>6x</text><path d='M22,20 Q10,70 22,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='12' y='70' font-size='12' text-anchor='middle' transform='rotate(-90,12,70)'>7y</text><path d='M155,80 Q165,100 155,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='170' y='105' font-size='12'>3x</text><path d='M110,125 Q130,135 150,125' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='130' y='142' font-size='12' text-anchor='middle'>2y</text></svg>",
+          "answer": "④"
+        },
+        "repairedValue": {
+          "svg": "<svg width='180' height='150' viewBox='0 0 180 150'><rect x='30' y='20' width='120' height='100' fill='white' stroke='black' stroke-width='1'/><polygon points='30,20 150,20 150,80' fill='#444'/><polygon points='30,20 30,120 110,120' fill='#444'/><polyline points='30,20 150,80 110,120 30,20' fill='none' stroke='black' stroke-width='1'/><path d='M30,12 Q90,0 150,12' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='90' y='8' font-size='12' text-anchor='middle'>6x</text><path d='M22,20 Q10,70 22,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='12' y='70' font-size='12' text-anchor='middle' transform='rotate(-90,12,70)'>7y</text><path d='M155,80 Q165,100 155,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='170' y='105' font-size='12'>3x</text><path d='M110,125 Q130,135 150,125' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='130' y='142' font-size='12' text-anchor='middle'>2y</text></svg>",
+          "answer": "②"
+        },
+        "repairReason": "D page 2 shows only the upper-right and lower-left triangles shaded; the bottom-right triangle is white. The reconstructed source SVG had incorrectly shaded that bottom-right triangle.",
+        "independentMathResult": "Upper-right area 1/2·6x·(7y−3x)=21xy−9x²; lower-left area 1/2·7y·(6x−2y)=21xy−7y². Total −9x²+42xy−7y², so A+C+B/2=5, answer ②.",
+        "affectedFields": [
+          "svg",
+          "answer",
+          "solution"
+        ],
+        "postRepairUniqueness": "one matching choice: ②",
+        "sourceFingerprint": {
+          "problemPdfSha256": "sha256:984c483e83ddcdd77c40773024d20bb6a6bfb76ed713bee947dae67e778c9034",
+          "answerPdfSha256": "sha256:4c7cf4e02f68bd0cb7eb55db2b7fd3879f8f32bf350ac977eafe22c41aa74e07",
+          "pages": {
+            "problem": 2,
+            "answer": 2
+          }
+        }
+      },
+      {
+        "qid": 18,
+        "repairType": "SOURCE_STEM_ANSWER_REPAIR",
+        "originalValue": {
+          "choice5": "$4 < a \\le 4.5$",
+          "answer": "⑤"
+        },
+        "repairedValue": {
+          "choice5": "$-5\\le a<\\frac92$",
+          "answer": "①"
+        },
+        "repairReason": "D page 3 choice ⑤ is −5≤a<9/2; the current artifact had replaced it with 4<a≤4.5. The source answer table marks ①.",
+        "independentMathResult": "1/2x+3≤x+a gives x≥6−2a. Smallest integer solution −3 requires −4<6−2a≤−3, hence 9/2≤a<5, choice ①.",
+        "affectedFields": [
+          "choices[4]",
+          "answer",
+          "solution"
+        ],
+        "postRepairUniqueness": "one answer choice: ①",
+        "sourceFingerprint": {
+          "problemPdfSha256": "sha256:984c483e83ddcdd77c40773024d20bb6a6bfb76ed713bee947dae67e778c9034",
+          "answerPdfSha256": "sha256:4c7cf4e02f68bd0cb7eb55db2b7fd3879f8f32bf350ac977eafe22c41aa74e07",
+          "pages": {
+            "problem": 3,
+            "answer": 3
+          }
+        }
+      },
+      {
+        "qid": 23,
+        "repairType": "SOURCE_CONTENT_ANSWER_SOLUTION_REPAIR",
+        "originalValue": {
+          "content": "(서술형",
+          "answer": "(1), $10x=21.666..., 100x=216.666...$, (2), $\\frac{13}{6}$"
+        },
+        "repairedValue": {
+          "content": "[서술형 1]<br>순환소수 $2.1\\dot{6}$을 분수로 나타내려고 한다. 다음 물음에 답하시오. [총 4점]<br>(1) $x=2.1\\dot{6}$이라고 할 때, $10x$와 $100x$를 각각 구하시오. [2점]<br>(2) $100x-10x$를 이용하여 $2.1\\dot{6}$을 기약분수로 나타내시오. [2점]",
+          "answer": "(1) $10x=21.6\\dot{6}$, $100x=216.6\\dot{6}$; (2) $\\frac{13}{6}$"
+        },
+        "repairReason": "D page 4 contains the complete 서술형 1 prompt: 2.1 dot 6, total 4 points, with two 2-point subquestions.",
+        "independentMathResult": "10x=21.666..., 100x=216.666...; subtracting gives 90x=195, so x=13/6.",
+        "affectedFields": [
+          "content",
+          "answer",
+          "solution"
+        ],
+        "postRepairUniqueness": "(1) 10x=21.666... and 100x=216.666...; (2) 13/6",
+        "sourceFingerprint": {
+          "problemPdfSha256": "sha256:984c483e83ddcdd77c40773024d20bb6a6bfb76ed713bee947dae67e778c9034",
+          "answerPdfSha256": "sha256:4c7cf4e02f68bd0cb7eb55db2b7fd3879f8f32bf350ac977eafe22c41aa74e07",
+          "pages": {
+            "problem": 4,
+            "answer": 4
+          }
+        }
+      }
+    ],
+    "unrelatedMutationCount": 0,
+    "mainMutation": false,
+    "calibrationPreflight": {
+      "stage": "REPAIR",
+      "status": "PASS",
+      "evidencePath": ".tmp/source-repair-calibration.json",
+      "solutionQualityCalibration": {
+        "goldenSampleRefs": [
+          {
+            "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+            "sha256": "sha256:213b07f5e4593202da3c01bd8445a809ac1b78ede986b341f0b650f2eca76f03",
+            "gitBlobSha": "e21482c6ed48d64291edd43d6e4a443669be2977"
+          },
+          {
+            "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+            "sha256": "sha256:3506fef8c4c5cede6c406423bc30b814a61e49fa0f4350a71d3fe6167c2274bd",
+            "gitBlobSha": "f8e8e82a2c7d7c9ab8c6b8cb1c89bf688410a696"
+          }
+        ],
+        "goldenSampleQuestionRefs": [
+          {
+            "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+            "qid": 3,
+            "solutionSha256": "sha256:72100586fca29741292cdbd8877284bbf34c9de990141f8470fcc24e0a964dfa",
+            "solutionExcerpt": "[키포인트] 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 유한소수이다.\\n① $\\frac{1}{15} = \\frac{1}{3 \\ti",
+            "observation": "Defines the finite-decimal condition through reduced denominator factors, checks the candidate choices, and concludes with the unique matching option."
+          },
+          {
+            "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+            "qid": 5,
+            "solutionSha256": "sha256:367a2b048ce0c920cb8cf60ba27112eab46a1287f83a1202a43169cc98594e2b",
+            "solutionExcerpt": "[키포인트] 소수점 아래 순환마디의 위치를 일치시켜 소수 부분을 제거한다.\\n$x = 1.32323...$\\n$1000x = 1323.2323...$\\n",
+            "observation": "Aligns the repeating decimal positions before subtraction and shows the decisive equations."
+          },
+          {
+            "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+            "qid": 3,
+            "solutionSha256": "sha256:734419afac170ca673a2e15a4c15721160b6ee02246420c652ae7fd5a6330c74",
+            "solutionExcerpt": "* $\\frac{1}{3} = 0.333\\dots = 0.\\dot{3}$ 이므로 순환마디의 숫자는 1개 ($x=1$)\n* $\\frac{8}{11} = 0",
+            "observation": "Identifies each minimum repeating block and its length, then computes the requested count explicitly."
+          },
+          {
+            "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+            "qid": 18,
+            "solutionSha256": "sha256:9066296c02972aee8fcf4c8089602339eac2b919afe8c311ab0291337c1f1939",
+            "solutionExcerpt": "* 부등식의 양변에 음수를 곱하거나 나누면 부등호의 방향이 바뀝니다.\n* ④ 양변에 $-1$을 곱하면 $-a > -b$가 되며, 여기에 $5$를 더하면 ",
+            "observation": "States when inequality direction reverses and shows the resulting choice check."
+          }
+        ],
+        "negativeSampleRefs": [
+          {
+            "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+            "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+            "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+          },
+          {
+            "path": "archive/fixtures/visual-negative-regressions/2026-09-29/05_24_향림중_2학기_기말_중2_기출_q12_LABEL_OWNER_BINDING_FAIL.svg",
+            "sha256": "sha256:11bc8548c8555a7afc281385444d16f858dbae109ac5175085b6a17b3b52c424",
+            "gitBlobSha": "e9d698989ea3e6afcdc56bbb0ec14a86b3dd74e3"
+          }
+        ],
+        "calibrationAxes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ],
+        "sampleReadBeforeWork": true,
+        "calibrationStatus": "PASS",
+        "solutionWorkMode": "TARGETED_REPAIR",
+        "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR"
+      }
+    },
+    "metadataBlob": "f27c8ab2df5632c14cd6b0b18afe63ce95089256",
+    "visualVerification": {
+      "qid": 11,
+      "method": "PyMuPDF SVG rasterization and visual inspection",
+      "status": "PASS",
+      "facts": [
+        "top-right shaded triangle present",
+        "lower-left shaded triangle present",
+        "bottom-right triangle remains white",
+        "outer rectangle and internal divider lines visible"
+      ]
+    }
+  }
 }

@@ -360,7 +360,7 @@ window.questionBank = [
   {
     "id": 11,
     "content": "오른쪽 그림과 같이 가로, 세로의 길이가 각각 $6x, 7y$인 직사각형에서 어두운 부분의 넓이를 구하면 $Ax^2+Bxy+Cy^2$이다. 이때, $A+C+\\frac{B}{2}$의 값은? [4점]",
-    "svg": "<svg width='180' height='150' viewBox='0 0 180 150'><rect x='30' y='20' width='120' height='100' fill='#444'/><polygon points='30,20 150,80 110,120' fill='white'/><path d='M30,12 Q90,0 150,12' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='90' y='8' font-size='12' text-anchor='middle'>6x</text><path d='M22,20 Q10,70 22,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='12' y='70' font-size='12' text-anchor='middle' transform='rotate(-90,12,70)'>7y</text><path d='M155,80 Q165,100 155,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='170' y='105' font-size='12'>3x</text><path d='M110,125 Q130,135 150,125' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='130' y='142' font-size='12' text-anchor='middle'>2y</text></svg>",
+    "svg": "<svg width='180' height='150' viewBox='0 0 180 150'><rect x='30' y='20' width='120' height='100' fill='white' stroke='black' stroke-width='1'/><polygon points='30,20 150,20 150,80' fill='#444'/><polygon points='30,20 30,120 110,120' fill='#444'/><polyline points='30,20 150,80 110,120 30,20' fill='none' stroke='black' stroke-width='1'/><path d='M30,12 Q90,0 150,12' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='90' y='8' font-size='12' text-anchor='middle'>6x</text><path d='M22,20 Q10,70 22,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='12' y='70' font-size='12' text-anchor='middle' transform='rotate(-90,12,70)'>7y</text><path d='M155,80 Q165,100 155,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='170' y='105' font-size='12'>3x</text><path d='M110,125 Q130,135 150,125' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='130' y='142' font-size='12' text-anchor='middle'>2y</text></svg>",
     "choices": [
       "0",
       "5",
@@ -368,7 +368,7 @@ window.questionBank = [
       "9",
       "13"
     ],
-    "answer": "④",
+    "answer": "②",
     "category": "도형에서의 다항식 계산",
     "originalCategory": "도형에서의 다항식 계산",
     "standardCourse": "중2 수학",
@@ -388,7 +388,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "[핵심] 현재 SVG의 실제 점·길이 표기를 좌표화하면 제시 정답과 일치하지 않는다.\n\n[독립 풀이 요약] 현재 그림을 그대로 읽으면 흰 삼각형의 넓이는 $9x^2-3xy+7y^2$, 어두운 부분은 $-9x^2+45xy-7y^2$이므로 요구값은 $\\frac{13}{2}$가 된다.\n\n[풀이]\n직사각형의 왼쪽 위를 $(0,0)$, 오른쪽 아래를 $(6x,7y)$로 둔다.\n현재 SVG에서 오른쪽 변의 점은 아래 끝에서 $3x$ 위이므로 $(6x,7y-3x)$이고, 아래 변의 점은 오른쪽 끝에서 $2y$ 왼쪽이므로 $(6x-2y,7y)$이다.\n따라서 흰 삼각형의 넓이는\n$\\frac12\\{6x\\cdot7y-(7y-3x)(6x-2y)\\}$\n$=9x^2-3xy+7y^2$이다.\n어두운 부분의 넓이는\n$42xy-(9x^2-3xy+7y^2)$\n$=-9x^2+45xy-7y^2$이다.\n그러므로 현재 SVG 기준으로는 $A=-9$, $B=45$, $C=-7$이고\n$A+C+\\frac B2=-16+\\frac{45}{2}=\\frac{13}{2}$이다.\n\n[확인] $\\frac{13}{2}$는 어떤 선택지와도 일치하지 않고, 저장된 정답 ④와도 맞지 않는다.\n\n[결론] 원본 시험지의 그림 또는 길이 라벨을 확인해야 하는 SOURCE_REPAIR_REQUIRED 문항이다.",
+    "solution": "[핵심] 어두운 두 직각삼각형의 넓이를 각각 구해 더한다.\n[풀이] 오른쪽 위 삼각형의 세로 길이는 \\(7y-3x\\)이므로 넓이는 \\(\\frac12\\cdot6x(7y-3x)=21xy-9x^2\\)이다.\n왼쪽 아래 삼각형의 밑변은 \\(6x-2y\\)이므로 넓이는 \\(\\frac12\\cdot7y(6x-2y)=21xy-7y^2\\)이다.\n따라서 어두운 부분의 넓이는 \\(-9x^2+42xy-7y^2\\)이고, \\(A=-9,\\ B=42,\\ C=-7\\)이다.\n[확인] \\(A+C+\\frac B2=-9-7+21=5\\)이므로 선택지는 ②이다.\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -619,9 +619,9 @@ window.questionBank = [
       "$\\frac{9}{2} < a \\le 5$",
       "$5 \\le a < \\frac{9}{2}$",
       "$-5 < a \\le \\frac{9}{2}$",
-      "$4 < a \\le 4.5$"
+      "$-5\\le a<\\frac92$"
     ],
-    "answer": "⑤",
+    "answer": "①",
     "category": "일차부등식 심화",
     "originalCategory": "일차부등식 심화",
     "standardCourse": "중2 수학",
@@ -640,7 +640,7 @@ window.questionBank = [
       "상급"
     ],
     "wide": false,
-    "solution": "[핵심] 가장 작은 정수가 $-3$이라는 조건은 해의 경계 $k$에 대해 $-4<k\\le-3$을 뜻한다.\n\n[독립 풀이 요약] 현재 발문을 계산하면 $\\frac92\\le a<5$가 되어 선택지 ①과 일치하지만 저장된 정답 ⑤와 충돌한다.\n\n[풀이]\n$\\frac12x+3\\le x+a$\n$3-a\\le\\frac12x$\n$x\\ge6-2a$이다.\n경계를 $k=6-2a$라 하자.\n$x\\ge k$인 정수해 중 가장 작은 정수가 $-3$이려면\n$-4<k\\le-3$이어야 한다.\n따라서\n$-4<6-2a\\le-3$\n$-10<-2a\\le-9$이다.\n$-2$로 나누며 부등호 방향을 바꾸면\n$5>a\\ge\\frac92$, 즉\n$\\frac92\\le a<5$이다.\n\n[확인] 계산 결과는 선택지 ①이며 저장된 정답 ⑤와 일치하지 않는다.\n\n[결론] 발문·선택지·정답 중 하나의 원본 확인이 필요한 SOURCE_REPAIR_REQUIRED 문항이다.",
+    "solution": "[핵심] 해는 \\(x\\ge6-2a\\)이므로 경계값을 \\(k=6-2a\\)라 둔다.\n[풀이] 해 중 가장 작은 정수가 \\(-3\\)이려면 \\(-4<k\\le-3\\)이어야 한다. 따라서 \\(-4<6-2a\\le-3\\)이고, 정리하면 \\(\\frac92\\le a<5\\)이다.\n[확인] 이 범위는 ①과 일치한다.\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -793,9 +793,9 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "(서술형",
+    "content": "[서술형 1]<br>순환소수 $2.1\\dot{6}$을 분수로 나타내려고 한다. 다음 물음에 답하시오. [총 4점]<br>(1) $x=2.1\\dot{6}$이라고 할 때, $10x$와 $100x$를 각각 구하시오. [2점]<br>(2) $100x-10x$를 이용하여 $2.1\\dot{6}$을 기약분수로 나타내시오. [2점]",
     "choices": [],
-    "answer": "(1), $10x=21.666..., 100x=216.666...$, (2), $\\frac{13}{6}$",
+    "answer": "(1) $10x=21.6\\dot{6}$, $100x=216.6\\dot{6}$; (2) $\\frac{13}{6}$",
     "category": "서술형 1",
     "originalCategory": "서술형 1",
     "standardCourse": "중2 수학",
@@ -813,7 +813,7 @@ window.questionBank = [
       "유리수"
     ],
     "wide": false,
-    "solution": "[핵심] 현재 저장된 발문은 “(서술형”에서 끊겨 있어 계산 조건을 알 수 없다.\n\n[독립 풀이 요약] 저장된 답만으로는 원래 물음과 풀이 과정을 역으로 확정할 수 없다.\n\n[풀이]\n현재 content에는 서술형 번호, 순환소수의 정확한 값, (1)과 (2)의 질문이 모두 누락되어 있다.\nanswer에는 $10x=21.666\\ldots$, $100x=216.666\\ldots$, $\\frac{13}{6}$이 남아 있지만, 어떤 수를 분수로 바꾸는지와 각 단계에서 무엇을 요구하는지가 없으므로 하나의 풀이를 source-exact하게 재구성할 수 없다.\n\n[확인] 발문을 추정하여 채우면 원본을 발명하게 되므로 수정하지 않는다.\n\n[결론] 원본 시험지의 q23 발문 전체가 필요한 SOURCE_REPAIR_REQUIRED 문항이다.",
+    "solution": "[핵심] 비순환 부분이 한 자리이고 순환마디가 한 자리이므로 10x와 100x를 빼면 순환 부분이 소거된다.\n[풀이] \\(x=2.1\\dot6=2.1666\\cdots\\)이므로 \\(10x=21.6666\\cdots,\\quad100x=216.6666\\cdots\\)이다.\n\\(100x-10x=195\\)에서 \\(90x=195\\)이므로 \\(x=\\frac{195}{90}=\\frac{13}{6}\\)이다.\n[확인] \\(\\frac{13}{6}=2.1666\\cdots=2.1\\dot6\\)이다.\n[결론] (1) \\(10x=21.666\\cdots,\\quad100x=216.666\\cdots\\), (2) \\(\\frac{13}{6}\\)",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
