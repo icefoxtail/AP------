@@ -54,11 +54,62 @@
     "r1R2Reexecuted": false
   },
   "goldenCalibrationPreflight": {
+    "status": "PASS",
     "stage": "R3_REPAIR",
+    "baseMainSha": "40cbc43701626463c368df91aa8784d1ef12b6b8",
     "ok": true,
     "questionCount": 23,
     "issues": [],
-    "runCommand": "node archive/tools/solution-calibration-gate.mjs --exam <exam> --evidence <physical-evidence.json> --stage R3_REPAIR --preflight"
+    "sampleReadBeforeFinalQualityCompare": true,
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+        "sha256": "sha256:74eda25440739bb8024e63442989d3ae6b34bcb807b0ef70146e247e6c37807e",
+        "gitBlobSha": "1f537fbe3376c685cc03d625b8519e15ad2366fa"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "sha256": "sha256:9d9aa8b6489366ac166313cdf926f0d0e4092d2ffb42f468dd74dc2833987b4b",
+        "gitBlobSha": "a52472e3bc167e4fb84ab2868ae12161a7bedb01"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:f56077d1a4cdde5fddcbf60f69df4630afdd984bd73cd422a01be60ce76b5a75",
+        "solutionExcerpt": "유한소수와 순환소수의 성질을 보기마다 확인한다.",
+        "observation": "Checks each choice against finite/repeating-decimal and rational-number properties in explicit steps."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:2fce7727b1fc6e8f41e4b729352d4065599ded9529515aeb361fb41dd89612aa",
+        "solutionExcerpt": "지수법칙을 보기마다 직접 적용한다.",
+        "observation": "Applies product, quotient, power-of-power, and power-of-product rules to each printed expression."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:feb43e6792734b7c4c628e1837521b4312a2e3a4bce6805987931f53b94c8060",
+        "solutionExcerpt": "양변에 $100$을 곱하면",
+        "observation": "반복마디 자릿수에 맞춰 식을 곱하고 빼서 순환부분을 소거한다."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:85de89aeebd1fe38af6cd5fb51fd69dd497edf553585cebe703a6fe93a99e528",
+        "solutionExcerpt": "a^{4+2} = a^6",
+        "observation": "각 지수 계산을 나란히 비교하고 답 하나만 구분한다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
   },
   "scope": {
     "repairQids": [

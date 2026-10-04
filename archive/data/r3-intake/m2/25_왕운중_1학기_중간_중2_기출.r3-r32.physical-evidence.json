@@ -25,8 +25,8 @@
     "goldenSampleRefs": [
       {
         "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
-        "sha256": "sha256:8b5d9487fb1b03ba49f8009e4a01c5616b2be082540e59695221d9f78e527f0b",
-        "gitBlobSha": "2e316e6eb64d8a9c4c695e3108bd0ad8ff3c2474"
+        "sha256": "sha256:74eda25440739bb8024e63442989d3ae6b34bcb807b0ef70146e247e6c37807e",
+        "gitBlobSha": "1f537fbe3376c685cc03d625b8519e15ad2366fa"
       },
       {
         "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
@@ -38,16 +38,16 @@
       {
         "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
         "qid": 1,
-        "solutionSha256": "sha256:38443055483221932cd070aa1362beba10e7ad5e05e77938e6ffdca3d62b6d5a",
-        "solutionExcerpt": "각 보기의 성질을 분석하여 옳은 것을 찾는다.",
-        "observation": "각 보기를 유리수·유한소수·순환소수 성질로 구분하고 근거와 결론을 명시한다."
+        "solutionSha256": "sha256:f56077d1a4cdde5fddcbf60f69df4630afdd984bd73cd422a01be60ce76b5a75",
+        "solutionExcerpt": "유한소수와 순환소수의 성질을 보기마다 확인한다.",
+        "observation": "Checks each choice against finite/repeating-decimal and rational-number properties in explicit steps."
       },
       {
         "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
         "qid": 8,
-        "solutionSha256": "sha256:2e561a466cffc8169ae3b371df99f4a67a3e345b9ab32edb09f5716808cdfbb6",
-        "solutionExcerpt": "지수법칙의 합, 차, 곱, 분배 법칙을 정확히 적용한다.",
-        "observation": "선택지마다 지수법칙 적용을 드러내어 옳은 계산 하나를 판별한다."
+        "solutionSha256": "sha256:2fce7727b1fc6e8f41e4b729352d4065599ded9529515aeb361fb41dd89612aa",
+        "solutionExcerpt": "지수법칙을 보기마다 직접 적용한다.",
+        "observation": "Applies product, quotient, power-of-power, and power-of-product rules to each printed expression."
       },
       {
         "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
@@ -1915,15 +1915,20 @@
   "candidateDisposition": "R3_PASS",
   "examSha256": "sha256:627d19a944c7f9b76a74045a3c3a1c9041ce629f348d4d5166ed9c558af2d41d",
   "sourceRepairEvidencePath": "archive/data/r3-intake/m2/25_왕운중_1학기_중간_중2_기출.r3-r32.source-repair.json",
-  "sourceRepairEvidenceSha256": "sha256:bc6984fdbc7fe729546ad1e2296a3e4f50e01d2c2d8c0d4b604b421b49e37948",
+  "sourceRepairEvidenceSha256": "sha256:359e0073fd516a9501bc72066d3105b7d3caeb97215036e27e0430158e5c3b7b",
   "sourceRepairCalibration": {
     "stage": "R3_REPAIR",
     "preflight": {
+      "status": "PASS",
+      "baseMainSha": "40cbc43701626463c368df91aa8784d1ef12b6b8",
       "ok": true,
       "questionCount": 23,
       "issues": [],
-      "environment": "origin/main-based LF validation worktree",
-      "sampleReadBeforeSourceRepair": true
+      "sampleReadBeforeFinalQualityCompare": true,
+      "goldenMainBlobs": [
+        "1f537fbe3376c685cc03d625b8519e15ad2366fa",
+        "a52472e3bc167e4fb84ab2868ae12161a7bedb01"
+      ]
     },
     "targetedRecheckQids": [
       1,
@@ -1935,6 +1940,7 @@
       15
     ],
     "directDependencies": [
+      "content",
       "answer",
       "solution",
       "tags",
@@ -1956,7 +1962,7 @@
     ],
     "sourcePdfSha256": "sha256:6ed6c336ced01cc1f74bbf364228b2efef34b7b8ce9eb6034e6d1c8641181871",
     "evidencePath": "archive/data/r3-intake/m2/25_왕운중_1학기_중간_중2_기출.r3-r32.source-repair.json",
-    "evidenceSha256": "sha256:bc6984fdbc7fe729546ad1e2296a3e4f50e01d2c2d8c0d4b604b421b49e37948",
+    "evidenceSha256": "sha256:359e0073fd516a9501bc72066d3105b7d3caeb97215036e27e0430158e5c3b7b",
     "scopeVerification": {
       "questionCount": 23,
       "repairQids": [
