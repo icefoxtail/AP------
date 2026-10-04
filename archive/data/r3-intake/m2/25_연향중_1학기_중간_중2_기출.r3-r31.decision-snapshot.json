@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_RECHECK_DECISION_SNAPSHOT_v1",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "lane": "R3-1",
+  "canonicalOrdinal": 3,
+  "examFile": "25_연향중_1학기_중간_중2_기출.js",
+  "reviewAttemptId": "R3:m2/1mid/25-yeonhyang:1688365b9050d5aef814c878acaabc845456c0d7:r3-1-20261004-1143",
+  "reviewedAt": "2026-10-04T11:43:00+09:00",
+  "latestMainShaAtRecheck": "9e31a748b07d6edac468fa2eb262c5da214f54fe",
+  "canonicals": {
+    "r3": "b2d3134a2db1129569d53b04e1afcf2cd0f09978",
+    "golden": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "physicalEvidence": "32f212619a31df15add413ebe8eccdb86941cec1"
+  },
+  "inputReview2ReceiptBlob": "67133ad05b7d1645f246341a09dc08bfe2a009e3",
+  "inputArtifactGitBlob": "d93fcc046b398155032fa7117297778db38ef5db",
+  "inputArtifactSha256": "sha256:4e82004dbd006eaa4131eec467308c413f6ba2f0858b9d4c6bed56ae4069d66c",
+  "finalArtifactGitBlob": "1688365b9050d5aef814c878acaabc845456c0d7",
+  "finalArtifactSha256": "sha256:7b147a9f764902a9c3c9f3bbb7298981e30fd98838b518718731cfb238add86d",
+  "currentMetadataSidecarGitBlob": "d2e6c8c9cb12879a8668791d81185c146f91808c",
+  "priorVerdictUsedAsEvidence": false,
+  "recomputedFromSourceCurrentAuthority": true,
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "audits": {
+    "question": "23/23",
+    "mathAnswerSolution": "22/23 FINAL PASS + q23 SOURCE HOLD",
+    "curriculum": "23/23 PASS",
+    "smallBoard": "23/23 PASS_STRUCTURAL",
+    "sourceImage": "q14 SOURCE_TEXT_SUFFICIENT; q23 SOURCE_PIXEL_MISSING",
+    "linkedSolutionVisual": "0/0",
+    "metaRpmCrossConceptConditionIntegration": "22/23 PASS + q10 PASS_AFTER_META_REPAIR + q23 SOURCE_HOLD",
+    "difficulty": "23/23 PASS",
+    "runtimeLayout": "23/23 PASS_STATIC_CURRENT_ARTIFACT"
+  },
+  "directRepairCount": 1,
+  "directRepairScope": {
+    "qids": [
+      10
+    ],
+    "fields": [
+      "standardUnitKey",
+      "standardUnit",
+      "standardUnitOrder",
+      "subUnitKey",
+      "subUnit",
+      "subUnitConfidence",
+      "subUnitClassificationDepth",
+      "metadataSidecar.examGitBlob",
+      "metadataSidecar.q10.standardUnitKey",
+      "metadataSidecar.q10.standardUnit",
+      "metadataSidecar.q10.standardUnitOrder",
+      "metadataSidecar.q10.subUnitKey",
+      "metadataSidecar.q10.subUnit",
+      "metadataSidecar.q10.l2Confidence"
+    ],
+    "authority": "current main middle2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59; M2-RPM-132 => standardUnitKey M2-01 / subUnitKey M2-01-POLYNOMIAL_OPERATIONS; M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d places 분배법칙 under 식의 계산 > 다항식의 계산",
+    "changedLocusRecheck": "PASS: q10 math/answer/solution/tags/difficulty/layout unchanged; q10 current-scope unit/subunit now agrees with M2-RPM-132; metadata sidecar bound to final artifact; q1-9/q11-23 exam bytes unchanged."
+  },
+  "lockedScopeMutationCount": 0,
+  "sourceRepairRequiredCount": 1,
+  "sourceRepair": [
+    {
+      "qid": 23,
+      "reason": "SOURCE_PROBLEM_PIXEL_MISSING",
+      "unresolvedPoint": "발문이 참조하는 원본 수직선의 경계값, 끝점 포함 여부, 방향",
+      "requiredAction": "원본 PDF/page를 직접 재확인하고 q23 수직선 source를 정확히 재추출/재크롭하여 current artifact에 결속. 저장 answer -6/current solution을 source authority로 역추론하지 말 것.",
+      "expectedTargetAsset": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png (or canonical equivalent)",
+      "returnTo": "same R3 continuation; repaired/source locus q23 + direct dependency only recheck, then canonical R3 validator/receipt"
+    }
+  ],
+  "mathRecalculation": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "recalculation": "0.\\u03072\\u03077은 순환마디 2자리이므로 100x-x에서 반복부가 소거되어 ②."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "recalculation": "1.23444…는 4가 반복되는 무한소수이고 1000x-100x=1111이므로 옳지 않은 설명은 ③."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "recalculation": "1/3의 순환마디 길이 1, 8/11=0.7272…의 길이 2이므로 합 3, ②."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "recalculation": "6/13=0.461538…이고 123=6×20+3이므로 123번째 숫자는 1, ①."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "recalculation": "14/(40x)=7/(20x); 약분 뒤 분모 소인수가 2,5뿐이려면 x=1,2,4,5,7,8, 합 27, ④."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "recalculation": "①③④⑤는 a^6, ②는 a^10이므로 ②."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "recalculation": "1MB=2^20B=2^23bit, 16=2^4이므로 16MB=2^27bit, ⑤."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "recalculation": "27^8=3^24=(3^4)^6=A^6이므로 1/A^6, ②."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "recalculation": "좌변=16x^(2A+3-B)y^(8+2B); B=5,A=4,C=16, 합 25, ⑤."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "recalculation": "a(8a-6b)-a(9a-12b)=-a^2+6ab이므로 A+B=5, ③. 수학은 그대로 PASS; current M2-1 RPM M2-RPM-132와 어긋난 M1 표준단원 메타만 R3에서 수정."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "recalculation": "역연산으로 P=(15x^2y-25xy^2)×(3x/5)=9x^3y-15x^2y^2, ③."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "recalculation": "원래 P=-9a+27b, 올바른 계산은 P÷(-ab/3)=27/b-81/a, ④."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "recalculation": "(3-x^2)-(6-5x^2)=4x^2-3, ①."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "recalculation": "B/A=3^2×1/2=9/2이므로 A/B=2/9, ④; 결정 정보는 stem text에 모두 존재."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "recalculation": "①은 방정식, ⑤는 분모에 x가 남고, ④는 x^2 소거 후 일차부등식이므로 ①,⑤."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "recalculation": "⑤는 책 6권 가격이 8000×6이어야 하므로 제시식이 틀림, ⑤."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "recalculation": "1-0.4x≤0.2 ⇒ -4x≤-8 ⇒ x≥2, 최소 정수 2, ②."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "recalculation": "a<b이면 -a>-b이므로 5-a>5-b; ④가 옳지 않음."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "recalculation": "첫 식 x<2, 둘째 x<5a/4; 경계 일치로 a=8/5, ①."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "recalculation": "x/2+1/2+x/3≤2 ⇒ x≤9/5, ③."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "recalculation": "A=2^4, B=2^12, B/A=2^8."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "recalculation": "첫 몫 -2x+5y, 둘째 2x-2+4y, 차 -4x+y+2; x=4/5,y=3 대입 시 9/5."
+    },
+    {
+      "qid": 23,
+      "result": "HOLD_SOURCE",
+      "recalculation": "(4+a)x≤b+2, a<-4이므로 x≥(b+2)/(4+a). 저장 답 -6은 원본 수직선이 x≥-1일 때만 확정되며 현재 source pixel 부재로 HOLD."
+    }
+  ],
+  "openQids": [
+    23
+  ],
+  "failureCodes": [
+    "SOURCE_PROBLEM_PIXEL_MISSING_Q23"
+  ],
+  "candidateDisposition": "SOURCE_REPAIR_REQUIRED"
+}
