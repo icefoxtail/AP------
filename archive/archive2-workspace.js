@@ -1737,7 +1737,7 @@
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
     return classRows
-      .filter((cls) => !grade || String(cls.grade || "") === grade)
+      .filter((cls) => !grade || History.classGrade(cls) === grade)
       .map((cls) => {
         const id = String(cls.id || "");
         return id ? { value: id, label: cls.name || id } : null;
@@ -1943,7 +1943,7 @@
       }
       if (state.recentClassId) {
         const selectedClass = classRows.find((row) => String(row.id || "") === state.recentClassId);
-        if (!selectedClass || (state.recentFilters.grade && String(selectedClass.grade || "") !== state.recentFilters.grade)) {
+        if (!selectedClass || (state.recentFilters.grade && History.classGrade(selectedClass) !== state.recentFilters.grade)) {
           state.recentClassId = "";
           replaceUrlState();
         }
