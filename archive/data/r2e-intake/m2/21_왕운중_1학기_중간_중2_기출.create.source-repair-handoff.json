@@ -5,21 +5,93 @@
   "examFile": "21_왕운중_1학기_중간_중2_기출.js",
   "sourceBranch": "work/middle/m2/21-wangun-1mid-temp-create2-20261004-1749",
   "sourceHead": "bfc8938a71621cc54c890e1259d381e8e3a08442",
-  "finalArtifactSha": "86579379771d9adf7b1bb7de71488d7344b1a4c4",
-  "metaBlob": "02eb71be97731d5b35a3a8930bfa7b447fb56c57",
+  "finalArtifactSha": "55faf5742165a7fc08cf075b8ea6db30509b7a82",
+  "metaBlob": "20b34d001ec6e1b1df4996755eac6401c4ae7e25",
   "evidencePath": "archive/data/r2e-intake/m2/21_왕운중_1학기_중간_중2_기출.create.physical-evidence.json",
   "protectedMain": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
   "protectedExamBlob": "5b3b44f662b962144303e1dc0c95e330129f9f56",
-  "status": "SOURCE_UNVERIFIED",
+  "status": "SOURCE_VERIFIED_REPAIRED",
   "sourceRepairQids": [
     2,
     3,
     21
   ],
-  "firstMissingClosureStep": "SOURCE_REPAIR_ORIGINAL_PDF_PIXEL",
-  "requiredNextAction": "Verify original 2021 Wangun middle-2 first-semester midterm problem and answer-table PDF pixels for q2/q3/q21. Apply only source-preserving minimal repairs if confirmed, then resume the same CREATE lineage for canonical validator, validator receipt, CREATE receipt and READY_FOR_REVIEW1.",
+  "firstMissingClosureStep": "CANONICAL_CREATE_VALIDATOR_EVIDENCE_RECONCILIATION",
+  "requiredNextAction": "The three source repairs are complete with zero item holds. Reconcile the pre-existing full CREATE evidence schema/calibration mismatches before a canonical CREATE pass; do not reopen unrelated qids.",
   "ownerRouting": "CODEX_SOURCE_REPAIR_QUEUE",
   "dedicatedCreateRelinquished": true,
   "thanosEligible": false,
-  "r1Eligible": false
+  "r1Eligible": false,
+  "sourceFiles": [
+    {
+      "kind": "problem",
+      "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_왕운중2_수학_1중간.pdf",
+      "sha256": "sha256:b7dc4ad89cc0a7ed1826b2bc66b4723579f2d9752d052584f1a6394c14463e0f",
+      "gitBlobSha": "5ca9cb761f9d43c53450a8d84f1c502a7358df42",
+      "sizeBytes": 4070662
+    },
+    {
+      "kind": "answer",
+      "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_왕운중2_정답_1중간.pdf",
+      "sha256": "sha256:a6b427101f3bc20afeff1c81f08fdc6d47027539f1a24d21c71fe53e740e1ae7",
+      "gitBlobSha": "ed73576c7a770254f884b2131e7e02bcf681a17f",
+      "sizeBytes": 937842
+    }
+  ],
+  "sourceRepairEvidencePath": "archive/data/r2e-intake/m2/21_왕운중_1학기_중간_중2_기출.create.physical-evidence.json",
+  "sourceRepairOutcome": {
+    "status": "PASS_AFTER_REPAIR",
+    "repairedQids": [
+      2,
+      3,
+      21
+    ],
+    "auditedSourceRepairQids": [
+      3
+    ],
+    "itemHoldCount": 0,
+    "unrelatedMutationCount": 0
+  },
+  "canonicalValidatorReceiptPath": "archive/data/r2e-intake/m2/21_왕운중_1학기_중간_중2_기출.create.validator.json",
+  "canonicalValidatorStatus": "FAIL",
+  "canonicalValidatorIssues": [
+    "VISUAL_ROW_ORPHAN:q15",
+    "META_ROW_MISSING:q1",
+    "META_ROW_MISSING:q2",
+    "META_ROW_MISSING:q3",
+    "META_ROW_MISSING:q4",
+    "META_ROW_MISSING:q5",
+    "META_ROW_MISSING:q6",
+    "META_ROW_MISSING:q7",
+    "META_ROW_MISSING:q8",
+    "META_ROW_MISSING:q9",
+    "META_ROW_MISSING:q10",
+    "META_ROW_MISSING:q11",
+    "META_ROW_MISSING:q12",
+    "META_ROW_MISSING:q13",
+    "META_ROW_MISSING:q14",
+    "META_ROW_MISSING:q15",
+    "META_ROW_MISSING:q16",
+    "META_ROW_MISSING:q17",
+    "META_ROW_MISSING:q18",
+    "META_ROW_MISSING:q19",
+    "META_ROW_MISSING:q20",
+    "META_ROW_MISSING:q21",
+    "META_ROW_MISSING:q22",
+    "META_ROW_MISSING:q23",
+    "META_ROW_MISSING:q24",
+    "CALIBRATION_ORDER_INVALID:CREATE",
+    "GOLDEN_SAMPLE_SHA256_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "GOLDEN_SAMPLE_BLOB_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "GOLDEN_SAMPLE_SHA256_MISMATCH:archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "GOLDEN_SAMPLE_BLOB_SHA_MISMATCH:archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "GOLDEN_SAMPLE_SOLUTION_EXCERPT_MISSING_OR_STALE:archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js|q1",
+    "GOLDEN_SAMPLE_SOLUTION_EXCERPT_MISSING_OR_STALE:archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|q1",
+    "GOLDEN_SAMPLE_SOLUTION_EXCERPT_MISSING_OR_STALE:archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|q2",
+    "NEGATIVE_SAMPLE_SHA256_MISMATCH:archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "NEGATIVE_SAMPLE_BLOB_SHA_MISMATCH:archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "NEGATIVE_SAMPLE_SHA256_MISMATCH:archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+    "NEGATIVE_SAMPLE_BLOB_SHA_MISMATCH:archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+    "SUMMARY_COUNT_MISMATCH:metaEvidenceRows"
+  ]
 }
