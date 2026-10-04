@@ -8,7 +8,9 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 54972 bytes | sha256 d417a75feb0989ac044edca914b3ccb9fd71acbd6270c97e0c47cd455226002a
+- 04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md | 12870 bytes | sha256 e301ecfdd278187d0569ca67a230250040cf7213d414c20c03b90112368e1007
+- 02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md | 15657 bytes | sha256 101c853c5850701c9b4f7baf5923806a616c961841dc4333eca54b81bd752082
+- 00_RULES_INDEX.md | 55367 bytes | sha256 5d66b324a18d331cac01412bc345d9bc9d411329ef4a74fab893c3b6b0aae48c
 - 02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md | 18900 bytes | sha256 772592849ba7e67131206d097612d7b72b4255ea6048950242306f89cf42c0e7
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 7541 bytes | sha256 51676f7c508240880da0060d148e021ca6c669dab251118b6fb6cdf46b5e7e9c
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 11721 bytes | sha256 dd6c8d7dbc69a8b09e996091c78fcb2a84ea5effa6a503ddd0c731c0a1c8c618
@@ -22,7 +24,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 95451 bytes | sha256 35aaaff1edcf77d80131cf0b25b311ec60e5422a949d16dee53cbe113c825700
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 38634 bytes | sha256 3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638
-- 02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md | 31848 bytes | sha256 f82a5260acb51bd60e5def947b0f24c6b672a23b75b5789b8689633255345922
+- 02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md | 40088 bytes | sha256 8e45e79ac0cde78eeac18be5bbc1bc5dac07b3386b72227af491fda7cfd4052d
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 203308 bytes | sha256 96d82f4f937ea70a4644f808a35f246375cc030a78979829689324e3f5435c9f
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 10862 bytes | sha256 2e8c187618e4e8d3fe627b3b21ce5d01f050e5aa7400338b0ed0405c60ee38e3
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 18406 bytes | sha256 48a0cdd5a0d22b07c25937a1d4b9b0b4b910dba2cb9a61e30eefc2afa7e8a974
