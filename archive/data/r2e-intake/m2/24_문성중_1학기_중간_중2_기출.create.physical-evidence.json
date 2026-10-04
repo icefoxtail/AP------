@@ -419,5 +419,16 @@
   "readyForReview1": false,
   "firstMissingClosureStep": "SOURCE_UNVERIFIED_Q6_Q7_Q16_Q17",
   "requiredNextAction": "Codex Source Repair must locate authoritative page/image evidence or apply an explicit user-authorized source repair; then rerun canonical CREATE validator, persist validator receipt and CREATE receipt, remote-read back, and transition CREATE_DONE→READY_FOR_REVIEW1.",
-  "passClaim": false
+  "passClaim": false,
+  "historyRecheck": {
+    "ref": "ab9d9d2901a399fefa57a8fb54653ece8a354a5a",
+    "examBlob": "167b4a10db3d5cab4a9a4619d35ff7f9df20e5fb",
+    "findings": [
+      "q6 duplicate choices ③/⑤ already present",
+      "q7 stem/choice enumeration mismatch already present",
+      "q16.png and q17.png absent at the historical ref",
+      "historical file title itself points to 25_진남중, so it cannot serve as clean authoritative source"
+    ],
+    "result": "NO_RECOVERABLE_AUTHORITATIVE_SOURCE"
+  }
 }
