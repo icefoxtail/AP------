@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "m2-1-source-repair-evidence-v1",
+  "status": "D_SOURCE_CONFIRMED",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "examUid": "M2-1-21-PALMA-1MID",
+  "canonicalOrdinal": 9,
+  "examPath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+  "branch": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
+  "headBefore": "c8ff6679cc8ffa3ee1447ec8f880b34de7499b8b",
+  "mainObserved": "40cbc43701626463c368df91aa8784d1ef12b6b8",
+  "divergenceMainOnlyBranchOnly": "3/1",
+  "source": {
+    "examPdf": {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\중2\\2021_팔마중2_수학_1중간.pdf.pdf",
+      "sha256": "4E84F43BFDFEE707CFBEE1CB4AAB855CD63D7411E0885DD1E2DC4F4C8EB6BA70",
+      "pages": 6,
+      "identityCheck": "PASS: first-page 2021 / 중2 / 1학기 중간, printed page footers identify 순천팔마중학교 수학과 2학년 1학기 중간고사",
+      "pageContext": {
+        "qid10": "page 2 of 6, q9 immediately before and q11 after; printed page 6-2",
+        "qid12": "page 3 of 6, q11 before and q13 after; printed page 6-3",
+        "qid19": "page 4 of 6, q18 before and 서술형1 follows; printed page 6-4"
+      }
+    },
+    "answerKeyPdf": {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\중2\\2021_팔마중2_정답_1중간.pdf",
+      "sha256": "16F4BFABCDE7594DE373301551BBA5EFED50CB60C511E307AAA4DAACBA3A4FF0",
+      "page": 1,
+      "identityCheck": "PASS: 2021학년도 팔마중학교 2학년 1학기 중간고사 객관식 정답표",
+      "mathAnswers": {
+        "qid10": "①",
+        "qid12": "⑤",
+        "qid19": "③"
+      }
+    }
+  },
+  "sourceChecks": [
+    {
+      "qid": 10,
+      "sourceFacts": "The stair diagram labels the upper vertical part 2a-b, the right vertical part 4b-a, and the bottom width 3a+2b.",
+      "sourceChoices": ["8a+10b", "4a-b", "6a+b", "10a+8b", "12a+4b"],
+      "verifiedAnswer": "①",
+      "independentCheck": "Horizontal boundary sum 2(3a+2b); vertical boundary sum 2((2a-b)+(4b-a)); total 8a+10b.",
+      "changedFields": ["image", "choices", "answer", "solution", "source-defect tag"],
+      "asset": {
+        "path": "archive/assets/images/21_팔마중_1학기_중간_중2_기출/q10.png",
+        "sourcePdfPage": 2,
+        "renderDpi": 300,
+        "cropBoundsPixels": [1510, 2470, 2150, 2910],
+        "dimensions": "640x440",
+        "sha256": "216B6A4F8B24A3895F36DA3C42CD650BAF8A2B4F7F0C0F97F21D246108C08C09",
+        "pixelInspection": "PASS"
+      }
+    },
+    {
+      "qid": 12,
+      "sourceContent": "5a - [7a - 2b - {-a + 2b - (□ + b)}] = -6a - 3b",
+      "sourceChoices": ["-3a", "3a", "3a-b", "-3a+5b", "3a+6b"],
+      "verifiedAnswer": "⑤",
+      "independentCheck": "With blank P, the left side simplifies to -3a+3b-P; equality to -6a-3b gives P=3a+6b.",
+      "changedFields": ["content", "choices", "answer", "solution", "source-defect tag"]
+    },
+    {
+      "qid": 19,
+      "sourceContent": "a(x-1)-9(x+1)+13<0 has the same solution as (x-1)/2-(x+2)/4<1/2; solve (3a-9)x+5<2x-14.",
+      "sourceChoices": ["x<-3", "x<-2", "x<-1", "x<1", "x<2"],
+      "verifiedAnswer": "③",
+      "independentCheck": "The comparison inequality gives x<6. Equality of solution sets in the first inequality gives a=10; substituting into the last gives 19x<-19, so x<-1.",
+      "changedFields": ["content", "choices", "answer", "solution", "source-defect tag"]
+    }
+  ],
+  "validation": {
+    "jsSyntax": "PASS",
+    "jsLoad": "PASS: 24 questions loaded; qids 10/12/19 present",
+    "targetAnswerSolutionAgreement": "PASS: 3/3",
+    "assetRef": "PASS: JS q10 ref resolves to committed-tree PNG; 640x440 PNG opened and visually inspected against source crop",
+    "canonicalCreateValidator": "NOT_RUN: no canonical CREATE validator/executor exists in this repository checkout",
+    "createReceipt": "NOT_WRITTEN",
+    "createDone": false,
+    "readyForReview1": false,
+    "scope": "Only q10, q12, q19 and q10 direct image asset changed. No full-exam source parity or CREATE stage pass is claimed."
+  },
+  "unrelatedQidMutationCount": 0,
+  "lockedMutationCount": 0,
+  "mainMutationCount": 0
+}
