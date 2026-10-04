@@ -244,8 +244,8 @@ window.questionBank = [
     "wide": false,
     "solution": "[핵심] 잘못된 나눗셈 결과로부터 곱해야 했던 단항식을 역산한다.\n\n[독립 풀이 요약] 곱할 식은 $-3x^3y^6$이고, 바른 곱은 $-36x^7y^{15}$이다.\n\n[풀이]\n곱해야 했던 단항식을 $B$라 하자.\n$12x^4y^9\\div B=-4xy^3$이므로\n$B=12x^4y^9\\div(-4xy^3)\n=-3x^{4-1}y^{9-3}\n=-3x^3y^6$이다.\n따라서 바르게 계산하면\n$12x^4y^9\\times(-3x^3y^6)\n=-36x^{4+3}y^{9+6}\n=-36x^7y^{15}$이다.\n\n[확인] 계수는 $12\\times(-3)=-36$, 지수는 각각 $7,15$이다.\n\n[결론] 정답은 ②이다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
