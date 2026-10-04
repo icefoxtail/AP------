@@ -145,12 +145,12 @@ window.questionBank = [
     "content": "다음 중에서 옳은 것은? [4점]",
     "choices": [
       "$a^{3} \\times a^{7} = a^{21}$",
-      "$a \\times a^{4} \\times a^{6} = a^{11}$",
+      "$a \\times a^{4} \\times a^{2} = a^{6}$",
       "$(a^{3})^{2} \\times a^{3} = a^{9}$",
       "$2^{3} \\div 2^{6} = 2^{3}$",
       "$a^{28} \\div a^{7} = a^{4}$"
     ],
-    "answer": "2",
+    "answer": "3",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
@@ -166,7 +166,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "현재 저장된 보기들을 그대로 계산하면 ②와 ③이 모두 옳다.\n② $a\\times a^4\\times a^6=a^{11}$이고, ③ $(a^3)^2\\times a^3=a^9$이다.\n반면 저장 정답은 ② 하나이다. 따라서 원본 보기 또는 정답의 source 확인 전에는 단일 정답을 확정하지 않는다.",
+    "solution": "같은 밑을 곱할 때는 지수를 더하고, 거듭제곱의 거듭제곱은 지수를 곱한다. 각 식을 확인한다.\n① $a^3\\times a^7=a^{3+7}=a^{10}$이므로 $a^{21}$과 같지 않다.\n② $a\\times a^4\\times a^2=a^{1+4+2}=a^7$이므로 $a^6$과 같지 않다.\n③ $(a^3)^2\\times a^3=a^{3\\times2}\\times a^3=a^{6+3}=a^9$이므로 옳다.\n④ $2^3\\div2^6=8\\div64=\\frac18$이므로 $2^3$과 같지 않다.\n⑤ $a^{28}\\div a^7=a^{28-7}=a^{21}$이므로 $a^4$와 같지 않다.\n따라서 옳은 것은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
