@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "m2-1-create-source-repair-handoff-v1",
+  "status": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "thanosEligible": false,
+  "canonicalOrdinal": 7,
+  "examUid": "M2-1-24-MUNSUNG-1MID",
+  "examFile": "24_문성중_1학기_중간_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
+  "producer": "M2-1 TEMP-CREATE-4",
+  "producerOwnership": "RELINQUISHED",
+  "productionBranch": "work/middle/m2/24-munsung-1mid-temp-create4-20261004-1732",
+  "productionHead": "7e6285a56a5d4ba9b1f49e0fb0ba1caa15f526d3",
+  "sourceRepairBranch": "rescue/m2/source-repair/o7-de873a01-q6-q7-q16-q17-20261004-1743",
+  "baseMainAtSelection": "c42691dac08e616f1f05630c9437ed05795f29c1",
+  "latestMainObserved": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
+  "finalArtifactSha": "de873a01549f97fcdcdc4b2505cc923924ce9cf6",
+  "metadataBlob": "1296bb95bc82df2c13483357d833fb60536d79cf",
+  "evidenceBlob": "47f32ad1becb19444430177b15a372e64ee84cad",
+  "draftPr": 209,
+  "completedStep": "VIRGIN_SELECTED_AND_CREATE_PAYLOAD_MATERIALIZED: protected source parity 23/23, fresh solutions 23/23, current RPM/Meta/difficulty 23/23, visual triage 23/23, physical evidence, remote readback, Draft PR, registration sync PASS",
+  "firstMissingClosureStep": "SOURCE_UNVERIFIED_Q6_Q7_Q16_Q17",
+  "exactCapabilityAndError": {
+    "q6": "Current choices ③ and ⑤ are byte-identical; no authoritative original page is present in Git.",
+    "q7": "Current distractors reference ㄱ·ㄷ·ㄹ·ㅁ·ㅅ while the stem only enumerates ㄴ·ㅂ·ㅇ·ㅈ.",
+    "q16": "Referenced problem asset archive/exams/original/middle/m2/1mid/assets/images/24_문성중_1학기_중간_중2_기출/q16.png returns GitHub 404.",
+    "q17": "Referenced problem asset archive/exams/original/middle/m2/1mid/assets/images/24_문성중_1학기_중간_중2_기출/q17.png returns GitHub 404.",
+    "historyRecheck": "At ab9d9d2901a399fefa57a8fb54653ece8a354a5a the same q6/q7 defects and q16/q17 asset 404s persist; that historical file also has the wrong examTitle 25_진남중, so it is not authoritative."
+  },
+  "safeAttempts": [
+    "latest CURRENT and virgin selector re-read",
+    "same-target branch search",
+    "current-main protected-field baseline comparison",
+    "current path asset lookup",
+    "historical ref file and asset lookup",
+    "Draft PR and Actions registration sync"
+  ],
+  "validator": {
+    "canonicalCreateValidator": "NOT_RUN",
+    "reason": "Source truth is unresolved; PASS/receipt cannot be fabricated.",
+    "genericCI": {
+      "runId": 37189687141,
+      "status": "IN_PROGRESS_AT_HANDOFF"
+    },
+    "registrationSync": {
+      "runId": 37189687138,
+      "status": "SUCCESS"
+    }
+  },
+  "requiredNextAction": "Use Codex Source Repair to locate the authoritative PDF/page/images or obtain an explicit user-authorized minimal source repair for q6/q7/q16/q17. Apply only source-confirmed changes, then run the actual canonical CREATE validator, persist validator receipt and CREATE receipt, remote-read back exact blobs, and transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "createDone": false,
+  "readyForReview1": false,
+  "passClaim": false,
+  "reselectPolicy": "TEMP-CREATE must not reselect o7 unless latest CURRENT explicitly REASSIGN_TO_CREATE."
+}
