@@ -14,11 +14,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "유리수",
-      "표해석",
+      "분수",
+      "소수",
       "실생활",
-      "참거짓",
-      "응용",
-      "개념"
+      "개념판단"
     ],
     "wide": false,
     "content": "다음은 분수와 소수에 대해 친구들이 발표한 것이다. 친구들의 설명 중 바르지 못한 것은?",
@@ -30,7 +29,7 @@ window.questionBank = [
       "정식 : 내 키나 몸무게 같은 것은 소수로 표현해요."
     ],
     "answer": "②",
-    "solution": "[키포인트] 수의 역사와 실생활 활용 사례를 구분한다.\n(1) 분수는 고대 이집트 시대부터 사용되었으나, 소수는 16세기 네덜란드의 스테빈에 의해 체계화되어 분수보다 늦게 발명되었다.\n(2) 음식 레시피에서는 주로 $\\dfrac{1}{2}$컵, $\\dfrac{2}{3}$스푼 등 분수 표현이 소수보다 더 직관적이고 빈번하게 사용된다.\n∴ 정답: ②",
+    "solution": "[핵심] 각 설명이 분수·소수의 역사와 실제 쓰임에 맞는지 하나씩 확인한다.\n[풀이]\n- 분수는 나눗셈과 양의 분할에서 오래전부터 사용되었다.\n- 소수 표기는 분수보다 뒤에 체계화되었다.\n- 박자는 분수로, 키와 몸무게는 소수로 나타낼 수 있다.\n- 음식 레시피의 양은 \\(\\frac12\\)컵, \\(\\frac23\\)스푼처럼 분수 표현이 흔하므로 “주로 소수가 쓰인다”는 설명은 적절하지 않다.\n[결론] 바르지 못한 설명은 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -49,10 +48,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
       "유한소수",
-      "계산",
-      "조건해석"
+      "기약분수",
+      "소인수",
+      "조건판정"
     ],
     "wide": false,
     "content": "다음 분수 중에서 유한소수로 나타낼 수 있는 것은? (정답 2개)",
@@ -64,7 +63,7 @@ window.questionBank = [
       "$\\dfrac{45}{2^2 \\times 3^2 \\times 5^2}$"
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 기약분수로 나타냈을 때, 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.\n① $\\dfrac{14}{2^2 \\times 7} = \\dfrac{2}{2^2} = \\dfrac{1}{2}$ (유한소수)\n⑤ $\\dfrac{45}{2^2 \\times 3^2 \\times 5^2} = \\dfrac{5}{2^2 \\times 5^2} = \\dfrac{1}{2^2 \\times 5}$ (유한소수)\n∴ 정답: ①, ⑤",
+    "solution": "[핵심] 기약분수의 분모에 소인수 2와 5만 남으면 유한소수이다.\n[풀이]\n① \\(\\frac{14}{2^2\\times7}=\\frac12\\)이므로 유한소수이다.\n② \\(\\frac1{15}=\\frac1{3\\times5}\\)에서 3이 남는다.\n③ \\(\\frac{3\\times7}{2\\times5\\times7^2}=\\frac3{2\\times5\\times7}\\)에서 7이 남는다.\n④ \\(\\frac6{18}=\\frac13\\)에서 3이 남는다.\n⑤ \\(\\frac{45}{2^2\\times3^2\\times5^2}=\\frac1{20}\\)이므로 유한소수이다.\n[결론] 정답은 ①, ⑤이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -83,11 +82,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "최대최소",
       "순환소수",
-      "표해석",
-      "참거짓",
-      "개념"
+      "순환마디",
+      "소수표현",
+      "개념판단"
     ],
     "wide": false,
     "content": "다음 중 순환소수의 순환마디와 그 표현이 옳은 것은?",
@@ -99,7 +97,7 @@ window.questionBank = [
       "$2.345234523452\\dots$, 마디: $2345$, 표현: $2.\\dot{3}45\\dot{2}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 순환마디는 소수점 아래에서 일정하게 반복되는 최소 부분이며, 양 끝 숫자 위에 점을 찍어 표현한다.\n(1) $30.374374\\dots$에서 소수점 아래 반복되는 마디는 $374$이다.\n(2) 표현 시 마디의 시작과 끝에만 점을 찍으므로 $30.\\dot{3}7\\dot{4}$가 옳다.\n∴ 정답: ③",
+    "solution": "[핵심] 순환마디는 소수점 아래에서 반복되는 가장 짧은 부분이고, 그 첫째와 마지막 숫자 위에 점을 찍는다.\n[풀이] ③의 \\(30.374374374\\cdots\\)는 ‘374’가 반복되는 최소 순환마디이다. 따라서 표현은 \\(30.\\dot{3}7\\dot{4}\\)가 된다. 다른 보기는 순환마디 또는 점의 위치가 맞지 않는다.\n[결론] 정답은 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -119,9 +117,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "순환소수",
-      "개수세기",
-      "조건해석",
-      "계산"
+      "순환마디",
+      "자릿수",
+      "나머지"
     ],
     "wide": false,
     "content": "분수 $\\dfrac{5}{27}$ 을 소수로 나타낼 때, 소수점 아래 49번째 자리의 숫자를 구하면?",
@@ -133,7 +131,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "①",
-    "solution": "[키포인트] 순환소수의 마디 개수를 이용하여 $n$번째 자리 숫자를 찾는다.\n(1) $\\dfrac{5}{27} = 0.185185\\dots = 0.\\dot{1}8\\dot{5}$ 이므로 순환마디는 $1, 8, 5$의 3개이다.\n(2) $49 \\div 3 = 16 \\dots 1$ 이므로 49번째 숫자는 마디의 첫 번째 숫자인 $1$이다.\n∴ 정답: ①",
+    "solution": "[핵심] \\(\\frac5{27}\\)의 순환마디 길이와 49를 나눈 나머지를 이용한다.\n[풀이] \\(\\frac5{27}=0.185185\\cdots\\)이므로 순환마디는 185, 길이는 3이다. \\(49=3\\times16+1\\)이므로 49번째 숫자는 순환마디의 첫째 숫자이다.\n[결론] 첫째 숫자는 1이므로 정답은 ①이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -153,12 +151,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "유리수",
-      "인수분해",
-      "순환소수",
       "유한소수",
-      "정수조건",
+      "순환소수",
       "참거짓",
-      "오류판별"
+      "개념판단"
     ],
     "wide": false,
     "content": "다음 중에서 옳은 것은? (정답 2개)",
@@ -170,7 +166,7 @@ window.questionBank = [
       "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
     ],
     "answer": "①, ④",
-    "solution": "[키포인트] 유리수는 분수 $\\dfrac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수이다.\n(1) 모든 유한소수와 순환소수는 분수로 나타낼 수 있으므로 유리수이다.\n(2) 기약분수의 분모에 $2$나 $5$ 이외의 소인수가 있으면 순환소수가 되므로 $7$이 있으면 순환소수이다.\n∴ 정답: ①, ④",
+    "solution": "[핵심] 유리수의 소수 표현과 기약분수의 분모 조건을 이용한다.\n[풀이] ① 순환소수는 모두 분수로 나타낼 수 있으므로 유리수이다. ④ 기약분수의 분모에 7이 있으면 분모에 2, 5 이외의 소인수가 남으므로 순환소수가 된다. ② 유한소수는 모두 유리수이고, ③ 모든 무한소수가 순환하는 것은 아니며, ⑤ 정수가 아닌 유리수도 순환소수가 될 수 있다.\n[결론] 정답은 ①, ④이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
@@ -189,12 +185,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
       "순환소수",
+      "분수변환",
+      "자리이동",
       "정수조건",
-      "조건해석",
-      "식세우기",
-      "계산"
+      "식세우기"
     ],
     "wide": false,
     "content": "보기는 순환소수 $0.\\dot{1}3\\dot{2}=0.132132\\dots$에 $1$ 또는 $10$의 거듭제곱을 곱한 순환소수들이다. 보기의 두 순환소수를 골라 뺀 결과가 정수가 나오는 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>㉠ $0.132132\\dots$<br>㉡ $13.213213\\dots$<br>㉢ $1.321321\\dots$<br>㉣ $13213.213213\\dots$<br>㉤ $1321.321321\\dots$<br>㉥ $132.132132\\dots$</div>",
@@ -206,7 +201,7 @@ window.questionBank = [
       "㉣ - ㉥"
     ],
     "answer": "④",
-    "solution": "[키포인트] 소수점 아래 부분이 같은 두 순환소수를 빼야 정수가 된다.\n(1) $x = 0.132132\\dots$ (㉠) 일 때, 소수점 아래가 $.132132\\dots$인 또 다른 식은 $1000x = 132.132132\\dots$ (㉥) 이다.\n(2) $1000x - x = 132.\\dot{1}3\\dot{2} - 0.\\dot{1}3\\dot{2} = 132$ (정수) 이므로 ㉥ - ㉠이 적절하다.\n∴ 정답: ④",
+    "solution": "[핵심] 두 수의 소수 부분이 같아야 뺄 때 소수 부분이 사라져 정수가 된다.\n[풀이] \\(x=0.132132\\cdots\\)라 두면 \\(1000x=132.132132\\cdots\\)이다. 보기에서 ㉠이 \\(x\\), ㉥이 \\(1000x\\)이므로\n\\(㉥-㉠=1000x-x=999x=132\\)가 정수이다.\n[결론] 정답은 ④이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
@@ -225,10 +220,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "참거짓",
+      "지수법칙",
+      "거듭제곱",
       "오류판별",
-      "개념"
+      "개념판단"
     ],
     "wide": false,
     "content": "다음 중에서 옳은 것은?",
@@ -240,7 +235,7 @@ window.questionBank = [
       "$a^2 \\div a^2 = 0$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 지수법칙 $a^m \\times a^n = a^{m+n}, (a^m)^n = a^{mn}, (ab)^n = a^n b^n$을 적용한다.\n(1) $(-ab^2)^3 = (-1)^3 a^3 (b^2)^3 = -a^3 b^6$ 이므로 ④는 옳다.\n(2) 타항목 오류: ① $1/a^3$, ② $a^5$, ③ $b^6/8a^9$, ⑤ $1$\n∴ 정답: ④",
+    "solution": "[핵심] 지수법칙을 각 보기에 정확히 적용한다.\n[풀이] ④는 \\((-ab^2)^3=(-1)^3a^3(b^2)^3=-a^3b^6\\)으로 옳다. ①은 \\(a^{-3}=\\frac1{a^3}\\), ②는 \\(a^5\\), ③의 분모는 \\(8a^9\\), ⑤는 1이므로 모두 제시식과 다르다.\n[결론] 정답은 ④이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -259,11 +254,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "지수",
-      "자연수조건",
-      "조건해석",
-      "계산",
-      "응용"
+      "지수법칙",
+      "거듭제곱",
+      "지수비교",
+      "자연수조건"
     ],
     "wide": false,
     "content": "$(\\dfrac{x^a}{3y^{2b}})^4 = \\dfrac{x^8}{81y^{24}}$ 일 때, 두 자연수 $a$와 $b$의 합을 구하면?",
@@ -275,7 +269,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "①",
-    "solution": "[키포인트] 지수법칙 $(\\dfrac{A}{B})^n = \\dfrac{A^n}{B^n}$을 이용한다.\n(1) $(\\dfrac{x^a}{3y^{2b}})^4 = \\dfrac{x^{4a}}{3^4 y^{8b}} = \\dfrac{x^{4a}}{81 y^{8b}}$\n(2) 좌변과 우변의 지수를 비교하면 $4a = 8 \\implies a=2$, $8b = 24 \\implies b=3$ 이다. 따라서 $a+b = 2+3 = 5$이다.\n∴ 정답: ①",
+    "solution": "[핵심] 거듭제곱의 지수를 양변에서 비교한다.\n[풀이] \\(\\left(\\frac{x^a}{3y^{2b}}\\right)^4=\\frac{x^{4a}}{81y^{8b}}\\)이다. 따라서 \\(4a=8\\), \\(8b=24\\)이므로 \\(a=2\\), \\(b=3\\)이다.\n[결론] \\(a+b=5\\)이므로 정답은 ①이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -294,12 +288,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
+      "소인수분해",
       "지수",
-      "자연수조건",
-      "개수세기",
-      "조건해석",
-      "계산"
+      "곱의소인수",
+      "개수세기"
     ],
     "wide": false,
     "content": "$1 \\times 2 \\times 3 \\times \\dots \\times 12 = 2^a \\times b$에서 $b$가 홀수일 때, 자연수 $a$의 값을 구하면?",
@@ -311,7 +303,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "[키포인트] $1$부터 $12$까지의 곱에 포함된 소인수 $2$의 총 개수를 구한다.\n(1) 짝수들의 소인수 $2$ 추출: $2(1개), 4(2^2, 2개), 6(1개), 8(2^3, 3개), 10(1개), 12(2^2\\times 3, 2개)$\n(2) 지수의 합: $1 + 2 + 1 + 3 + 1 + 2 = 10$. 따라서 $a=10$이다.\n∴ 정답: ③",
+    "solution": "[핵심] \\(12!\\)에 포함된 소인수 2의 지수만 센다.\n[풀이] 2의 배수에서 2가 6개, 4의 배수에서 추가로 3개, 8의 배수에서 추가로 1개 나온다. 따라서 \\(a=6+3+1=10\\)이다.\n[결론] 정답은 ③이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -330,10 +322,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "자연수조건",
-      "계산",
-      "조건해석",
-      "중난도"
+      "지수법칙",
+      "10의거듭제곱",
+      "표준형",
+      "계산"
     ],
     "wide": false,
     "content": "$5^4 \\times 20^6$을 $a \\times 10^n$ (단, $1 \\le a < 10$, $n$은 자연수)의 꼴로 나타낼 때, 두 수 $a$와 $n$의 값을 합하면?",
@@ -345,7 +337,7 @@ window.questionBank = [
       "14"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $2^k \\times 5^k = 10^k$를 이용하여 $10^n$ 꼴을 만든다.\n(1) $5^4 \\times 20^6 = 5^4 \\times (2^2 \\times 5)^6 = 5^4 \\times 2^{12} \\times 5^6 = 2^{12} \\times 5^{10}$\n(2) $2^2 \\times (2^{10} \\times 5^{10}) = 4 \\times 10^{10}$. 따라서 $a=4, n=10 \\implies a+n=14$이다.\n∴ 정답: ⑤",
+    "solution": "[핵심] 같은 개수의 2와 5를 짝지어 \\(10\\)의 거듭제곱을 만든다.\n[풀이] \\(5^4\\times20^6=5^4\\times(2^2\\times5)^6=2^{12}5^{10}=2^2(2^{10}5^{10})=4\\times10^{10}\\)이다. 따라서 \\(a=4\\), \\(n=10\\)이다.\n[결론] \\(a+n=14\\)이므로 정답은 ⑤이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -364,10 +356,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
-      "지수",
-      "조건해석",
-      "계산"
+      "지수법칙",
+      "소인수분해",
+      "거듭제곱",
+      "식의값"
     ],
     "wide": false,
     "content": "$\\dfrac{36^9}{54^6} = 2^a$, $\\dfrac{9^6+9^6+9^6}{3^4+3^4+3^4} = 3^b$ 일 때, $a-b$의 값을 구하면?",
@@ -379,7 +371,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "②",
-    "solution": "[키포인트] 밑을 소인수분해하여 지수법칙을 적용한다.\n(1) $\\dfrac{(2^2 \\cdot 3^2)^9}{(2 \\cdot 3^3)^6} = \\dfrac{2^{18} \\cdot 3^{18}}{2^6 \\cdot 3^{18}} = 2^{12} \\implies a=12$\n(2) $\\dfrac{3 \\cdot 9^6}{3 \\cdot 3^4} = \\dfrac{3^{12}}{3^4} = 3^8 \\implies b=8$. 따라서 $a-b = 12-8 = 4$이다.\n∴ 정답: ②",
+    "solution": "[핵심] 밑을 2와 3의 거듭제곱으로 바꾸어 지수를 뺀다.\n[풀이] \\(\\frac{36^9}{54^6}=\\frac{2^{18}3^{18}}{2^63^{18}}=2^{12}\\)이므로 \\(a=12\\)이다. 또 \\(\\frac{9^6+9^6+9^6}{3^4+3^4+3^4}=\\frac{3\\cdot3^{12}}{3\\cdot3^4}=3^8\\)이므로 \\(b=8\\)이다.\n[결론] \\(a-b=4\\)이므로 정답은 ②이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -398,10 +390,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "계수비교",
-      "지수",
-      "계산",
-      "조건해석"
+      "단항식",
+      "곱셈",
+      "나눗셈",
+      "지수법칙"
     ],
     "wide": false,
     "content": "$(-2x^2)^3 \\times (-9x) \\div 12x^4$ 을 계산하면?",
@@ -413,7 +405,7 @@ window.questionBank = [
       "$-6x^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 계수는 계수끼리, 문자는 문자끼리 지수법칙을 적용하여 계산한다.\n(1) $(-8x^6) \\times (-9x) \\div 12x^4 = (72x^7) \\div 12x^4$\n(2) $(72 \\div 12) \\times (x^7 \\div x^4) = 6x^3$\n∴ 정답: ③",
+    "solution": "[핵심] 계수와 문자 부분을 각각 계산한다.\n[풀이] \\((-2x^2)^3=-8x^6\\)이므로\n\\((-8x^6)(-9x)\\div12x^4=72x^7\\div12x^4=6x^3\\)이다.\n[결론] 정답은 ③이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -432,10 +424,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "나머지정리",
-      "조건해석",
-      "계산",
-      "중난도"
+      "단항식",
+      "미지식",
+      "역연산",
+      "식의계산"
     ],
     "wide": false,
     "content": "$2xy^2 \\times A \\div (-3x^2y^3) = 4xy$ 를 만족하는 식 $A$를 구하면?",
@@ -447,7 +439,7 @@ window.questionBank = [
       "$-6x^3y$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $A$를 남기고 나머지 항을 등호 반대편으로 넘겨 계산한다.\n(1) $A = 4xy \\times (-3x^2y^3) \\div 2xy^2$\n(2) $A = (-12x^3y^4) \\div 2xy^2 = -6x^2y^2$\n∴ 정답: ③",
+    "solution": "[핵심] 등식을 만족하도록 \\(A\\)만 남긴 뒤 역연산한다.\n[풀이] \\(2xy^2\\times A\\div(-3x^2y^3)=4xy\\)에서\n\\(A=4xy\\times(-3x^2y^3)\\div(2xy^2)=-6x^2y^2\\)이다.\n[결론] 정답은 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -467,10 +459,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "계수비교",
-      "참거짓",
-      "계산",
-      "개념"
+      "동류항",
+      "계수",
+      "상수항",
+      "개념판단"
     ],
     "wide": false,
     "content": "다음 식을 여러 가지 수학용어를 이용하여 설명한 것이다. 옳은 것은?\\n$3x^2 + \\dfrac{x}{3} - 2 - 2x^2 - 1$",
@@ -482,7 +474,7 @@ window.questionBank = [
       "이 다항식은 일차식이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 다항식을 동류항끼리 정리한 후 각 용어의 정의를 확인한다.\n(1) 정리: $(3x^2 - 2x^2) + \\dfrac{1}{3}x + (-2 - 1) = x^2 + \\dfrac{1}{3}x - 3$\n(2) $x^2$항이 존재하므로 이차식이며, $x$의 계수는 $\\dfrac{1}{3}$이 맞다.\n∴ 정답: ③",
+    "solution": "[핵심] 먼저 동류항을 정리한 다음 항, 계수, 차수를 판정한다.\n[풀이] \\(3x^2+\\frac{x}{3}-2-2x^2-1=x^2+\\frac13x-3\\)이다. 따라서 \\(x\\)의 계수는 \\(\\frac13\\)이고, 최고차항이 \\(x^2\\)이므로 이차식이다.\n[결론] 옳은 것은 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -502,9 +494,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "참거짓",
-      "계산",
-      "조건해석"
+      "덧셈",
+      "뺄셈",
+      "오류수정",
+      "역연산"
     ],
     "wide": false,
     "content": "어떤 식에서 $2x^2-3x+7$ 을 빼야 할 것을 잘못하여 더했더니 $6x^2-2x+3$ 이 되었다. 이때 바르게 계산한 식은?",
@@ -516,7 +509,7 @@ window.questionBank = [
       "$2x^2-3x+11$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 잘못된 식을 통해 어떤 식을 구한 후, 바른 식을 계산한다.\n(1) 어떤 식 $A = (6x^2-2x+3) - (2x^2-3x+7) = 4x^2+x-4$\n(2) 바른 계산: $(4x^2+x-4) - (2x^2-3x+7) = 2x^2+4x-11$\n∴ 정답: ④",
+    "solution": "[핵심] 잘못 계산한 결과에서 먼저 원래 식을 복원한다.\n[풀이] 원래 식을 \\(A\\)라 하면 \\(A+(2x^2-3x+7)=6x^2-2x+3\\)이므로 \\(A=4x^2+x-4\\)이다. 바른 계산은\n\\(A-(2x^2-3x+7)=2x^2+4x-11\\)이다.\n[결론] 정답은 ④이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -536,9 +529,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "계산",
-      "조건해석",
-      "하난도"
+      "괄호",
+      "동류항",
+      "식의계산"
     ],
     "wide": false,
     "content": "$x - \\{2x-y-(-x+4y)-3\\}$ 를 계산하면?",
@@ -550,7 +543,7 @@ window.questionBank = [
       "$-2x+5y+3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 소괄호, 중괄호 순으로 괄호를 풀고 동류항끼리 계산한다.\n(1) 중괄호 안: $2x-y+x-4y-3 = 3x-5y-3$\n(2) 전체 식: $x - (3x-5y-3) = x-3x+5y+3 = -2x+5y+3$\n∴ 정답: ⑤",
+    "solution": "[핵심] 안쪽 괄호부터 풀고, 바깥의 마이너스 부호를 각 항에 분배한다.\n[풀이] 중괄호 안은 \\(2x-y-(-x+4y)-3=3x-5y-3\\)이다. 따라서\n\\(x-(3x-5y-3)=-2x+5y+3\\)이다.\n[결론] 정답은 ⑤이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -570,10 +563,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "부등식",
-      "일차부등식",
-      "참거짓",
+      "해",
       "대입",
-      "개념"
+      "참거짓"
     ],
     "wide": false,
     "content": "보기 중에서 $x=2$가 해가 되는 부등식을 모두 고른 것은?<br><div class=\"note-box\" style=\"border: 1px solid #000; padding: 10px; margin: 10px 0; text-align: left;\"><b>&lt;보기&gt;</b><br>ㄱ. $x>5$<br>ㄴ. $1+x \\ge 3$<br>ㄷ. $-x+3>1$<br>ㄹ. $2x \\ge x+1$</div>",
@@ -585,7 +577,7 @@ window.questionBank = [
       "ㄷ, ㄹ"
     ],
     "answer": "③",
-    "solution": "[키포인트] $x=2$를 각 부등식에 대입하여 부등호가 성립하는지 확인한다.\n(1) ㄱ: $2>5$(거짓), ㄴ: $3 \\ge 3$(참), ㄷ: $1>1$(거짓), ㄹ: $4 \\ge 3$(참)\n(2) 따라서 참인 것은 ㄴ, ㄹ이다.\n∴ 정답: ③",
+    "solution": "[핵심] \\(x=2\\)를 각 부등식에 직접 대입해 참인지 확인한다.\n[풀이]\nㄱ. \\(2>5\\)는 거짓이다.\nㄴ. \\(1+2\\ge3\\)은 참이다.\nㄷ. \\(-2+3>1\\), 즉 \\(1>1\\)은 거짓이다.\nㄹ. \\(2\\times2\\ge2+1\\), 즉 \\(4\\ge3\\)은 참이다.\n[결론] 참인 것은 ㄴ, ㄹ이므로 정답은 ③이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
@@ -604,13 +596,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "최대최소",
-      "지수",
       "부등식",
-      "일차부등식",
-      "도형",
-      "원",
-      "실생활"
+      "실생활",
+      "이상",
+      "이하",
+      "미만",
+      "조건해석"
     ],
     "wide": false,
     "content": "다음은 미지수 $x$를 이용하여 부등식으로 나타낸 것이다. 다음 중 옳지 않은 것은? (정답 2개)",
@@ -622,7 +613,7 @@ window.questionBank = [
       "키 $120\\mathrm{cm}$ 이하는 이 놀이기구를 이용할 수 없습니다. ($x$: 놀이기구 이용 가능 키) $\\implies x \\ge 120$"
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 실생활 용어(최소, 최고, 미만, 이하)를 부등호로 올바르게 변환한다.\n(1) ① 최소 거리가 50이면 $x \\ge 50$이어야 한다.\n(2) ⑤ 120 이하가 이용 금지면 이용 가능 키는 120 초과($x > 120$)여야 한다.\n∴ 정답: ①, ⑤",
+    "solution": "[핵심] ‘최소·최고·미만·이하’의 뜻을 부등호로 정확히 바꾼다.\n[풀이] ① 최소 거리가 50m이면 \\(x\\ge50\\)이어야 하므로 제시식 \\(x\\le50\\)은 틀리다. ⑤ 120cm 이하는 이용할 수 없으므로 이용 가능한 키는 \\(x>120\\)이어야 하며 \\(x\\ge120\\)은 틀리다. 나머지는 조건에 맞다.\n[결론] 옳지 않은 것은 ①, ⑤이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -640,13 +631,17 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "유한소수",
+      "기약분수",
+      "소인수",
+      "자연수조건"
     ],
     "wide": false,
     "content": "$\\dfrac{7}{30}$ 에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다. $a$가 한 자리의 자연수라고 할 때, $a$의 값을 모두 구하시오.",
     "choices": [],
     "answer": "$3, 6, 9$",
-    "solution": "[키포인트] 분모를 소인수분해하여 $2$와 $5$ 이외의 인수를 제거하는 $a$를 찾는다.\n(1) $\\dfrac{7}{30} = \\dfrac{7}{2 \\cdot 3 \\cdot 5}$ 이므로 유한소수가 되려면 $a$는 $3$의 배수여야 한다.\n(2) $a$가 한 자리의 자연수이므로 $3, 6, 9$이다.\n∴ 정답: $3, 6, 9$",
+    "solution": "[핵심] 약분한 뒤 분모에 2와 5만 남도록 3을 없애야 한다.\n[풀이] \\(\\frac7{30}=\\frac7{2\\cdot3\\cdot5}\\)이므로 \\(a\\)가 3의 배수이면 약분으로 분모의 3을 없앨 수 있다. 한 자리 자연수 중 3의 배수는 3, 6, 9이다.\n[결론] \\(a=3,6,9\\)이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -664,13 +659,17 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "순환소수",
+      "분수변환",
+      "순환마디",
+      "기약분수"
     ],
     "wide": false,
     "content": "순환소수 $0.1\\dot{4}\\dot{7}$ 을 기약분수로 나타내시오.",
     "choices": [],
     "answer": "$\\dfrac{73}{495}$",
-    "solution": "[키포인트] 순환마디의 개수만큼 $9$를 쓰고, 순환하지 않는 소수점 아래 자리수만큼 $0$을 분모에 쓴다.\n(1) $0.1\\dot{4}\\dot{7} = \\dfrac{147-1}{990} = \\dfrac{146}{990}$\n(2) 기약분수로 약분하면 $\\dfrac{73}{495}$이다.\n∴ 정답: $\\dfrac{73}{495}$",
+    "solution": "[핵심] 순환하지 않는 한 자리와 순환마디 두 자리를 함께 고려해 두 식을 만든다.\n[풀이] \\(x=0.1\\dot4\\dot7=0.1474747\\cdots\\)라 두면 \\(1000x=147.474747\\cdots\\), \\(10x=1.474747\\cdots\\)이다. 빼면 \\(990x=146\\)이므로 \\(x=\\frac{146}{990}=\\frac{73}{495}\\)이다.\n[결론] 정답은 \\(\\frac{73}{495}\\)이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -688,13 +687,17 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "다항식",
+      "분수식",
+      "계수",
+      "식의계산"
     ],
     "wide": false,
     "content": "$x+2y - \\dfrac{x-3y}{2}$ 를 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\dfrac{7}{4}$",
-    "solution": "[키포인트] 분수 형태의 다항식을 통분하여 계수를 분리한다.\n(1) $\\dfrac{2x+4y-x+3y}{2} = \\dfrac{x+7y}{2} = \\dfrac{1}{2}x + \\dfrac{7}{2}y$\n(2) $a = \\dfrac{1}{2}, b = \\dfrac{7}{2} \\implies ab = \\dfrac{7}{4}$\n∴ 정답: $\\dfrac{7}{4}$",
+    "solution": "[핵심] 통분하여 \\(x\\)항과 \\(y\\)항의 계수를 각각 읽는다.\n[풀이] \\(x+2y-\\frac{x-3y}{2}=\\frac{2x+4y-x+3y}{2}=\\frac12x+\\frac72y\\)이다. 따라서 \\(a=\\frac12\\), \\(b=\\frac72\\)이다.\n[결론] \\(ab=\\frac12\\cdot\\frac72=\\frac74\\)이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -712,13 +715,18 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "다항식",
+      "단항식",
+      "나눗셈",
+      "분배법칙",
+      "혼합계산"
     ],
     "wide": false,
     "content": "$(6xy^2 - 8x^2y) \\div \\dfrac{2}{5}xy - \\dfrac{3xy - 9xy^2}{3xy}$ 을 계산하시오.",
     "choices": [],
     "answer": "$-20x+18y-1$",
-    "solution": "[키포인트] 나누기를 곱하기로 바꾸고 분배법칙을 이용한다.\n(1) $(6xy^2 - 8x^2y) \\cdot \\dfrac{5}{2xy} = 15y - 20x$\n(2) $15y - 20x - (1 - 3y) = 15y - 20x - 1 + 3y = -20x + 18y - 1$\n∴ 정답: $-20x+18y-1$",
+    "solution": "[핵심] 첫 나눗셈은 역수의 곱으로 바꾸고, 두 번째 분수는 항별로 나눈다.\n[풀이] \\((6xy^2-8x^2y)\\div\\frac25xy=(6xy^2-8x^2y)\\cdot\\frac5{2xy}=15y-20x\\)이다. 또 \\(\\frac{3xy-9xy^2}{3xy}=1-3y\\)이다. 따라서\n\\((15y-20x)-(1-3y)=-20x+18y-1\\)이다.\n[결론] 정답은 \\(-20x+18y-1\\)이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -736,13 +744,17 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "부등식",
+      "부등식의성질",
+      "음수곱",
+      "부등호방향"
     ],
     "wide": false,
     "content": "$a \\ge b$ 일 때, 다음 부등식이 성립함을 부등식의 성질을 이용하여 설명하시오.\\n$-5a+3 \\le -5b+3$",
     "choices": [],
     "answer": "성립함",
-    "solution": "[키포인트] 부등식의 양변에 음수를 곱하면 부등호 방향이 바뀜을 이용한다.\n(1) $a \\ge b$의 양변에 $-5$를 곱하면 $-5a \\le -5b$이다.\n(2) 양변에 $3$을 더하면 $-5a+3 \\le -5b+3$이 되어 성립한다.\n∴ 정답: 성립함",
+    "solution": "[핵심] 부등식의 양변에 음수를 곱하면 부등호 방향이 바뀐다.\n[풀이] \\(a\\ge b\\)의 양변에 \\(-5\\)를 곱하면 \\(-5a\\le-5b\\)이다. 여기에 양변에 3을 더하면 \\(-5a+3\\le-5b+3\\)이 된다.\n[결론] 주어진 부등식은 성립한다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
