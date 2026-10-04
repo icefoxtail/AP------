@@ -2,6 +2,7 @@ import { sha256hex } from "./admin-db.js";
 import { canAccessStudentsBatch } from "./foundation-db.js";
 import core from "../../../../archive/archive2-core.js";
 import canonical from "../../../../archive/archive2-canonical.js";
+import history from "../../../../archive/archive2-history.js";
 
 export const ARCHIVE2_CONTRACT = "archive2-v1";
 const UID = /^qid_v1_[a-f0-9]{64}$/;
@@ -18,15 +19,32 @@ export function fail(message, status = 400) {
   throw error;
 }
 export function checkTargetClassGrade(classRow) {
-  const grade =
-    String(classRow.grade || classRow.grade_label || "").replace(/\s/g, "") ||
-    String(classRow.name || "").match(/(?:중|고)[123]/)?.[0];
+  const grade = history.classGrade(classRow);
   if (!core.gradeRank(grade))
     fail(
       "반 학년을 확인할 수 없습니다. APMS의 반 학년 정보를 확인하세요.",
       409,
     );
   return grade;
+}
+// Apply target filters before LIMIT, using the same precedence and whitespace
+// semantics as classGrade. All identifiers here are fixed, never request input.
+export function targetClassGradeSql(columns) {
+  const fields = ['grade', 'grade_label'].filter(field => columns.has(field));
+  const explicit = fields.length
+    ? `COALESCE(${fields.map(field => `NULLIF(c.${field}, '')`).concat("''").join(', ')})`
+    : "''";
+  const whitespace = [9, 10, 11, 12, 13, 32, 160, 5760,
+    8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202,
+    8232, 8233, 8239, 8287, 12288, 65279];
+  const normalized = whitespace.reduce((sql, code) => `REPLACE(${sql}, char(${code}), '')`, explicit);
+  const name = columns.has('name') ? "COALESCE(c.name, '')" : "''";
+  const positions = history.grades.map(grade =>
+    `CASE WHEN INSTR(${name}, '${grade}') > 0 THEN INSTR(${name}, '${grade}') ELSE LENGTH(${name}) + 1 END`);
+  const fallback = `SUBSTR(${name}, MIN(${positions.join(', ')}), 2)`;
+  const resolved = `COALESCE(NULLIF(${normalized}, ''), ${fallback}, '')`;
+  const supported = history.grades.map(grade => `'${grade}'`).join(', ');
+  return `CASE WHEN ${resolved} IN (${supported}) THEN ${resolved} ELSE '' END`;
 }
 export function checkTargetGrade(classRow, sourceGrade) {
   const grade = checkTargetClassGrade(classRow);

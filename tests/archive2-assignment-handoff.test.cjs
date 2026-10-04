@@ -598,6 +598,7 @@ async function runSharedTargetPicker(classes, preferredGrade) {
   const selectedGrades = [];
   const context = {
     document: { getElementById: () => ({ classList: { add() {} } }) },
+    Archive2History: require('../archive/archive2-history.js'),
     resetAssignTargetPreviewPane() {},
     assignTargetBodyEl: () => body,
     getIndexAssignmentAuthHeader: () => ({ Authorization: 'Bearer fixture' }),
@@ -618,6 +619,9 @@ async function runSharedTargetPicker(classes, preferredGrade) {
 }
 
 test('Saved Paper shared target picker exposes high3-only, mixed and fallback grades after teacher filtering', async () => {
+  const index = read('index.html');
+  assert.ok(index.indexOf('<script src="archive2-history.js?v=20261004-class-grade-fallback-1"') <
+    index.indexOf('<script src="archive2-entry.js?'), 'shared grade resolver loads before Saved Paper entry');
   const high3Only = await runSharedTargetPicker([
     { id: 'high3-explicit', name: '고3 대상반', grade: '고3', teacher_id: 'teacher-a' },
   ], '고2');
