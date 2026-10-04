@@ -1,0 +1,22 @@
+name: M2 o5 R2 Canonical Validation
+on:
+  push:
+    branches:
+      - "work/middle/m2/o5-yeonhyang-r2-1-closure-20261005-0806"
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: validator-src
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          node validator-src/archive/tools/archive-stage-validator.mjs --stage R2 --exam "$GITHUB_WORKSPACE/archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js" --evidence "$GITHUB_WORKSPACE/archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.review2.physical-evidence.json" --json
