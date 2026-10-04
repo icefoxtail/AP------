@@ -1,0 +1,1744 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04_R1",
+  "examUid": "M2-1-20-PUNGDEOK-1MID",
+  "canonicalOrdinal": 14,
+  "examPath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+  "examSha256": "sha256:c18f0de4e8c3a649a1f1081e680c97dc0e5b58b6ef02feaf285b4cd99c103e1b",
+  "finalArtifactGitBlob": "64a6887c16136ec85cfd913deea49ee27b0e34b6",
+  "questionCount": 24,
+  "sourceAuthority": {
+    "sourceRepairEvidenceRef": "archive/data/r2e-intake/m2/20_풍덕중_1학기_중간_중2_기출.create.source-repair.json",
+    "sourceRepairStatus": "D_SOURCE_CONFIRMED",
+    "sourceParityClaimed": true,
+    "deterministicClosure": "R1 independently re-audited all 24 questions. Source/answer fields remain bound to CREATE/D-source authority; R1 made only q11 tag normalization and q16/q18 embedded problem-SVG semantic geometry repair, plus q18 explanatory-solution clarification.",
+    "changedQuestionIds": [
+      11,
+      16,
+      18
+    ],
+    "r1InputCreateReceiptGitBlob": "7061cca9f903893d981ca55bd91bb42144fccd92",
+    "r1InputCreateValidatorReceiptGitBlob": "34198810e5499a9e0065710678e25be3ff215260",
+    "createReceiptUsedAsAuthority": false
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A",
+        "observation": "Representative solution exposes the decisive method and intermediate work for student reproduction."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의",
+        "observation": "Representative solution exposes the decisive method and intermediate work for student reproduction."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5",
+        "observation": "Representative solution exposes the decisive method and intermediate work for student reproduction."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfra",
+        "observation": "Representative solution exposes the decisive method and intermediate work for student reproduction."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "targetRecomputedFromCurrentArtifact": true,
+    "storedAnswerComparedOnlyAfterIndependentAnswerDecision": true,
+    "priorCreateCountsUsedAsEvidence": false
+  },
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (⑤). decisive step: 반복 구간이 374이므로 점 표기가 틀린 ⑤를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 순환마디의 실제 반복 구간을 확인한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-003; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (④). decisive step: ㄱ·ㄴ·ㄹ만 분모의 소인수가 2와 5뿐임을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 기약분수의 분모에 남는 소인수를 확인한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-002; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (②). decisive step: x=7은 약분되어 제외되고 3+6+9=18을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 약분 뒤 분모에 2·5 이외 소인수가 남는 x를 찾는다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-002; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 3, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (④). decisive step: 1000x와 10x의 소수 부분이 같아 ④를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 비순환 부분 한 자리와 순환마디 두 자리를 맞춰 뺀다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-004; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (①, ⑤). decisive step: ①과 ⑤만 참임을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 유리수와 유한·순환·비순환 무한소수의 관계를 판별한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-005; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (③). decisive step: ㄱ·ㄴ·ㄹ만 옳아 3개를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 지수법칙을 보기마다 적용한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-007; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (③). decisive step: 81³=3¹²=A⁴이므로 1/A⁴을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 81을 3의 거듭제곱으로 바꿔 A와 지수를 맞춘다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-008; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (④). decisive step: a=4, b=8, c=16으로 합 28을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 각 조건에서 같은 밑의 지수를 비교한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-008; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 3, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (①). decisive step: ①은 -20x⁵여야 하므로 오답 보기를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 계수의 부호와 문자 지수를 각각 계산한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-009; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 1, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (⑤). decisive step: h=5y⁷/x를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 삼각형 넓이식에서 높이를 단항식 나눗셈으로 구한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-010; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "D-source-repaired stem/choices/answer/image remain unchanged. R1 corrected only the classification tag from 단답형 to 객관식 because the item has five choices."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (⑤). decisive step: 두 밑각이 50°이므로 꼭짓각 80°를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 외각으로 밑각을 구한 뒤 이등변삼각형의 성질을 쓴다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "The problem image is source-bound; the solution requires no separate solutionImage."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-060; projection is RPM_ONLY with no invented PT/TPL. R1 tag normalization does not change RPM/PT/TPL semantic classification."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 1, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (③). decisive step: ∠ADB=108°이므로 112°인 ③이 옳지 않음을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 밑각과 각의 이등분선으로 두 이등변삼각형을 판정한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-061; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 3, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (②). decisive step: x²=6²+8²=100에서 x=10을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 피타고라스 정리로 빗변을 계산한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-101; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 1, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Authoritative D-source repair evidence binds the final stem, choices, answer dependencies, and exact image crop for this locus."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (④). decisive step: 46=25+ACDE에서 넓이 21cm²를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 세 변 위 정사각형의 넓이 관계를 적용한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "The problem image is source-bound; the solution requires no separate solutionImage."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-105; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (④). decisive step: 4²+5²>6²인 ④가 예각삼각형임을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 가장 긴 변의 제곱과 나머지 두 변 제곱합을 비교한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-104; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected stem/choices/answer remain unchanged; R1 changed only embedded SVG primitive coordinates so the drawn ∠BIC physically matches the stated 110°."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (②). decisive step: 110=90+∠A/2에서 ∠A=40°를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 내심에서 ∠BIC=90°+∠A/2를 적용한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Embedded problem SVG repaired. Coordinate computation gives observed ∠BIC=109.994°, target 110°, delta=0.006°. No separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-066; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (④). decisive step: 둘레 2(4+5+x)=22에서 EC=2cm를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 한 꼭짓점에서 원에 그은 두 접선 길이가 같음을 쓴다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "The problem image is source-bound; the solution requires no separate solutionImage."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-067; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected stem/choices/answer remain unchanged; R1 changed only embedded SVG primitive coordinates to make O an actual circumcenter with the shown 30°/40° relations."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (②). decisive step: 30°+∠OBC+40°=90°에서 20°를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 clarified the derivation: OA=OB=OC, ∠OAB=30°, ∠OAC=∠OCA=40°, and with x=∠OBC=∠BCO the angle sum gives x=20°."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Embedded problem SVG repaired. Coordinate computation gives ∠OAB=29.999° and ∠OAC=40.001°; A/B/C lie on the radius-50 circle centered at O. No separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-065; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 3, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (①). decisive step: x≥5와 x≥a+2가 같아 a=3을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 두 일차부등식의 해 경계가 같도록 계수를 맞춘다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-023; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Authoritative D-source repair evidence binds the final stem, choices, answer dependencies, and exact image crop for this locus."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (③). decisive step: 예→아니오→아니오→예→예 경로의 대구를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 순서도의 삼각형 명제를 참·거짓으로 판별해 경로를 따른다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "The problem image is source-bound; the solution requires no separate solutionImage."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-065; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer ((1) 153846, (2) 8). decisive step: 100=6×16+4이므로 순환마디 153846의 네 번째 숫자 8을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 순환마디 길이로 100번째 자리의 나머지 위치를 찾는다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-003; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (4b). decisive step: A=8a²b²이고 A÷2a²b=4b를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 잘못 곱한 식에서 A를 복원한 뒤 바르게 나눈다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-010; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Authoritative D-source repair evidence binds the final stem, choices, answer dependencies, and exact image crop for this locus."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (외접반지름 10cm, 내접반지름 4cm). decisive step: R=10cm, 96=24r에서 r=4cm를 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 직각삼각형의 외접반지름과 넓이-내접반지름 관계를 쓴다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "The problem image is source-bound; the solution requires no separate solutionImage."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-068; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 2, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Protected content, choices, answer, and image fields were retained from the source-aligned CREATE baseline and rechecked in the full 24-question pass."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation matched stored answer (세 변의 수직이등분선의 교점(외심)). decisive step: 세 변의 수직이등분선의 교점이 세 나무와 같은 거리임을 확정한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 quality compare PASS; the solution is complete and reproducible using: 세 나무를 꼭짓점으로 한 삼각형의 외심을 구성한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 checked the final solution structure against Golden/Negative calibration; decisive relations and conclusions are separated and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 rechecked the method and terminology against middle-school grade-2 scope or lower-grade prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is required; the decisive facts are available in the physical stem."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM disposition FINAL at M2-RPM-064; projection is RPM_ONLY with no invented PT/TPL."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh difficulty audit records bucket 1, confidence high, boundary NONE."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 evaluated final runtime strings; no forbidden doubled high-signal TeX commands were observed."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "순환마디의 실제 반복 구간을 확인한다.",
+      "decisiveStep": "반복 구간이 374이므로 점 표기가 틀린 ⑤를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "기약분수의 분모에 남는 소인수를 확인한다.",
+      "decisiveStep": "ㄱ·ㄴ·ㄹ만 분모의 소인수가 2와 5뿐임을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "약분 뒤 분모에 2·5 이외 소인수가 남는 x를 찾는다.",
+      "decisiveStep": "x=7은 약분되어 제외되고 3+6+9=18을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "비순환 부분 한 자리와 순환마디 두 자리를 맞춰 뺀다.",
+      "decisiveStep": "1000x와 10x의 소수 부분이 같아 ④를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "유리수와 유한·순환·비순환 무한소수의 관계를 판별한다.",
+      "decisiveStep": "①과 ⑤만 참임을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "지수법칙을 보기마다 적용한다.",
+      "decisiveStep": "ㄱ·ㄴ·ㄹ만 옳아 3개를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "81을 3의 거듭제곱으로 바꿔 A와 지수를 맞춘다.",
+      "decisiveStep": "81³=3¹²=A⁴이므로 1/A⁴을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "각 조건에서 같은 밑의 지수를 비교한다.",
+      "decisiveStep": "a=4, b=8, c=16으로 합 28을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "계수의 부호와 문자 지수를 각각 계산한다.",
+      "decisiveStep": "①은 -20x⁵여야 하므로 오답 보기를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "삼각형 넓이식에서 높이를 단항식 나눗셈으로 구한다.",
+      "decisiveStep": "h=5y⁷/x를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "외각으로 밑각을 구한 뒤 이등변삼각형의 성질을 쓴다.",
+      "decisiveStep": "두 밑각이 50°이므로 꼭짓각 80°를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "밑각과 각의 이등분선으로 두 이등변삼각형을 판정한다.",
+      "decisiveStep": "∠ADB=108°이므로 112°인 ③이 옳지 않음을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "피타고라스 정리로 빗변을 계산한다.",
+      "decisiveStep": "x²=6²+8²=100에서 x=10을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "세 변 위 정사각형의 넓이 관계를 적용한다.",
+      "decisiveStep": "46=25+ACDE에서 넓이 21cm²를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "가장 긴 변의 제곱과 나머지 두 변 제곱합을 비교한다.",
+      "decisiveStep": "4²+5²>6²인 ④가 예각삼각형임을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "내심에서 ∠BIC=90°+∠A/2를 적용한다.",
+      "decisiveStep": "110=90+∠A/2에서 ∠A=40°를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "한 꼭짓점에서 원에 그은 두 접선 길이가 같음을 쓴다.",
+      "decisiveStep": "둘레 2(4+5+x)=22에서 EC=2cm를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "외심과 세 꼭짓점의 등거리로 생기는 이등변삼각형 각을 합한다.",
+      "decisiveStep": "30°+∠OBC+40°=90°에서 20°를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "두 일차부등식의 해 경계가 같도록 계수를 맞춘다.",
+      "decisiveStep": "x≥5와 x≥a+2가 같아 a=3을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "순서도의 삼각형 명제를 참·거짓으로 판별해 경로를 따른다.",
+      "decisiveStep": "예→아니오→아니오→예→예 경로의 대구를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "순환마디 길이로 100번째 자리의 나머지 위치를 찾는다.",
+      "decisiveStep": "100=6×16+4이므로 순환마디 153846의 네 번째 숫자 8을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "잘못 곱한 식에서 A를 복원한 뒤 바르게 나눈다.",
+      "decisiveStep": "A=8a²b²이고 A÷2a²b=4b를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "직각삼각형의 외접반지름과 넓이-내접반지름 관계를 쓴다.",
+      "decisiveStep": "R=10cm, 96=24r에서 r=4cm를 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "세 나무를 꼭짓점으로 한 삼각형의 외심을 구성한다.",
+      "decisiveStep": "세 변의 수직이등분선의 교점이 세 나무와 같은 거리임을 확정한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable."
+    }
+  ],
+  "r1IndependentReview": {
+    "denominator": "24/24",
+    "decisionSnapshot": "FULL_R1_RECOMPUTE_BEFORE_STORED_COMPARE",
+    "rows": [
+      {
+        "qid": 1,
+        "independentAnswer": "⑤",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 2,
+        "independentAnswer": "④",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 3,
+        "independentAnswer": "②",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 4,
+        "independentAnswer": "④",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 5,
+        "independentAnswer": "①, ⑤",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 6,
+        "independentAnswer": "③",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 7,
+        "independentAnswer": "③",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 8,
+        "independentAnswer": "④",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 9,
+        "independentAnswer": "①",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 10,
+        "independentAnswer": "⑤",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 11,
+        "independentAnswer": "⑤",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 12,
+        "independentAnswer": "③",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 13,
+        "independentAnswer": "②",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 14,
+        "independentAnswer": "④",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 15,
+        "independentAnswer": "④",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 16,
+        "independentAnswer": "②",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 17,
+        "independentAnswer": "④",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 18,
+        "independentAnswer": "②",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 19,
+        "independentAnswer": "①",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 20,
+        "independentAnswer": "③",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 21,
+        "independentAnswer": "(1) 153846, (2) 8",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 22,
+        "independentAnswer": "4b",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 23,
+        "independentAnswer": "외접반지름 10cm, 내접반지름 4cm",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      },
+      {
+        "qid": 24,
+        "independentAnswer": "세 변의 수직이등분선의 교점(외심)",
+        "compareResult": "MATCH",
+        "verdict": "PASS"
+      }
+    ],
+    "deterministicRepairQids": [
+      11,
+      16,
+      18
+    ],
+    "itemHoldQids": [],
+    "resultBeforeValidator": "R1_AUDIT_COMPLETE_VALIDATOR_PENDING"
+  },
+  "r1VisualSemanticRepairs": [
+    {
+      "qid": 16,
+      "surface": "PROBLEM_VISUAL_EMBEDDED_SVG",
+      "result": "PASS",
+      "expectedFacts": [
+        {
+          "fact": "I inside triangle ABC",
+          "role": "GIVEN"
+        },
+        {
+          "fact": "angle BIC = 110 degrees",
+          "role": "GIVEN"
+        }
+      ],
+      "coordinateModel": {
+        "A": [
+          80,
+          18.84
+        ],
+        "B": [
+          45,
+          115
+        ],
+        "C": [
+          115,
+          115
+        ],
+        "I": [
+          80,
+          90.49
+        ]
+      },
+      "observedFacts": [
+        {
+          "fact": "angle BIC",
+          "observedDegrees": 109.993989,
+          "expectedDegrees": 110,
+          "deltaDegrees": 0.006011,
+          "toleranceDegrees": 0.1
+        }
+      ],
+      "sourceSemanticIdentity": {
+        "applicable": true,
+        "checks": [
+          "A→A PASS",
+          "B→B PASS",
+          "C→C PASS",
+          "I→I PASS"
+        ]
+      },
+      "factVisualizations": [
+        {
+          "fact": "angle BIC = 110 degrees",
+          "role": "GIVEN",
+          "encoding": "GIVEN_STYLE"
+        }
+      ],
+      "finalArtifactGitBlob": "64a6887c16136ec85cfd913deea49ee27b0e34b6"
+    },
+    {
+      "qid": 18,
+      "surface": "PROBLEM_VISUAL_EMBEDDED_SVG",
+      "result": "PASS",
+      "expectedFacts": [
+        {
+          "fact": "OA=OB=OC",
+          "role": "GIVEN"
+        },
+        {
+          "fact": "angle OAB=30 degrees",
+          "role": "GIVEN"
+        },
+        {
+          "fact": "angle OAC=40 degrees",
+          "role": "GIVEN"
+        }
+      ],
+      "coordinateModel": {
+        "O": [
+          80,
+          65
+        ],
+        "radius": 50,
+        "A": [
+          80,
+          15
+        ],
+        "B": [
+          36.7,
+          90
+        ],
+        "C": [
+          129.24,
+          73.68
+        ]
+      },
+      "observedFacts": [
+        {
+          "fact": "OA",
+          "observed": 50,
+          "expected": 50,
+          "tolerance": 0.02
+        },
+        {
+          "fact": "OB",
+          "observed": 49.9989,
+          "expected": 50,
+          "tolerance": 0.02
+        },
+        {
+          "fact": "OC",
+          "observed": 49.9992,
+          "expected": 50,
+          "tolerance": 0.02
+        },
+        {
+          "fact": "angle OAB",
+          "observedDegrees": 29.999272,
+          "expectedDegrees": 30,
+          "deltaDegrees": 0.000728,
+          "toleranceDegrees": 0.1
+        },
+        {
+          "fact": "angle OAC",
+          "observedDegrees": 40.000936,
+          "expectedDegrees": 40,
+          "deltaDegrees": 0.000936,
+          "toleranceDegrees": 0.1
+        }
+      ],
+      "sourceSemanticIdentity": {
+        "applicable": true,
+        "checks": [
+          "A→A PASS",
+          "B→B PASS",
+          "C→C PASS",
+          "O→O PASS"
+        ]
+      },
+      "factVisualizations": [
+        {
+          "fact": "OA=OB=OC",
+          "role": "GIVEN",
+          "encoding": "GIVEN_STYLE"
+        },
+        {
+          "fact": "angle OAB=30 degrees",
+          "role": "GIVEN",
+          "encoding": "GIVEN_STYLE"
+        },
+        {
+          "fact": "angle OAC=40 degrees",
+          "role": "GIVEN",
+          "encoding": "GIVEN_STYLE"
+        }
+      ],
+      "finalArtifactGitBlob": "64a6887c16136ec85cfd913deea49ee27b0e34b6"
+    }
+  ]
+}
