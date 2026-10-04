@@ -102,6 +102,51 @@ const requiredCommands = [
   {
     label: 'tests/apmath-class-progress-phase.test.mjs',
     args: ['--test', 'tests/apmath-class-progress-phase.test.mjs']
+  },
+  {
+    label: 'tests/archive2-worker-validation.test.mjs (Grade/browse contracts)',
+    args: [
+      '--test',
+      '--test-name-pattern',
+      'grade-only canonical path filters pass mixed-question validation|Worker accepts an approved high2 source in the shared high3 semantic browse pool without rewriting its grade|shared browse grade cannot replace saved snapshot source grades at deployment|target-only grade validation accepts every supported class grade and preserves fail-closed fallbacks',
+      'tests/archive2-worker-validation.test.mjs'
+    ]
+  },
+  {
+    label: 'tests/archive2-saved-paper-namespace.test.mjs',
+    args: ['--test', 'tests/archive2-saved-paper-namespace.test.mjs']
+  },
+  {
+    label: 'tests/archive2-assignment-handoff.test.cjs',
+    args: ['--test', 'tests/archive2-assignment-handoff.test.cjs']
+  },
+  {
+    label: 'tests/archive2-assignment-pdf-retry.test.cjs',
+    args: ['--test', 'tests/archive2-assignment-pdf-retry.test.cjs']
+  },
+  {
+    label: 'tests/archive2-worker-runtime.mjs (workerd + D1)',
+    args: ['tests/archive2-worker-runtime.mjs']
+  },
+  {
+    label: 'tests/archive2-ux-retrieval-d1.test.mjs',
+    args: ['--test', 'tests/archive2-ux-retrieval-d1.test.mjs']
+  },
+  {
+    label: 'tests/archive2-recent-friction-ui.test.cjs',
+    args: ['--test', 'tests/archive2-recent-friction-ui.test.cjs']
+  },
+  {
+    label: 'tests/archive2-core.test.cjs',
+    args: ['--test', 'tests/archive2-core.test.cjs']
+  },
+  {
+    label: 'tests/archive2-finder-filters.test.cjs',
+    args: ['--test', 'tests/archive2-finder-filters.test.cjs']
+  },
+  {
+    label: 'tests/archive2-canonical-projection.test.mjs',
+    args: ['--test', 'tests/archive2-canonical-projection.test.mjs']
   }
 ];
 
