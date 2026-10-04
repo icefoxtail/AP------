@@ -9,6 +9,7 @@ import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
 import {
   buildQuestionSnapshot,
+  checkTargetClassGrade,
   loadCanonicalCatalog,
   validateApprovedMixedQuestions,
 } from "../apmath/worker-backup/worker/helpers/archive2-questions.js";
@@ -132,11 +133,23 @@ test("Worker accepts an approved high2 source in the shared high3 semantic brows
     core.subjectProjectionForRecord(row, "", catalog.projectionPolicy));
   assert.ok(record, "need a selectable high2 source with an approved shared semantic projection");
   const semanticSubject = core.subjectProjectionForRecord(record, "", catalog.projectionPolicy);
-  const question = materialize(record);
-  const verified = await validateApprovedMixedQuestions(env, [question], input({
+  const sharedHigh3Filters = {
     grade: "고3",
     semanticSubject,
     primaryPaths: [core.pathKey(record, 4)],
+  };
+  assert.equal(core.browseGradeMatchesRecord(record, "고3", catalog.projectionPolicy), true,
+    "Browser browse membership keeps this exact high2 source in the approved high3 pool");
+  assert.equal(core.subjectProjectionMatches(record, sharedHigh3Filters, catalog.projectionPolicy), true,
+    "Browser subject projection accepts the same exact shared source");
+  assert.equal(core.matches(record, sharedHigh3Filters, {
+    catalog,
+    canonicalAuthority: catalog.canonicalAuthority,
+    projectionPolicy: catalog.projectionPolicy,
+  }), true, "Finder/Compose record eligibility uses the same shared source membership");
+  const question = materialize(record);
+  const verified = await validateApprovedMixedQuestions(env, [question], input({
+    ...sharedHigh3Filters,
   }));
   assert.deepEqual(verified.sourceGrades, ["고2"], "deployment uses the actual registered source grade");
   assert.equal(record.sourceGrade, "고2");
@@ -289,6 +302,20 @@ test("mixed validation rejects a question outside primaryPaths", async () => {
       ),
     "승인된 문항·출제 범위와 일치하지 않습니다.",
   );
+});
+
+test("target-only grade validation accepts every supported class grade and preserves fail-closed fallbacks", () => {
+  for (const grade of ["중1", "중2", "중3", "고1", "고2", "고3"])
+    assert.equal(checkTargetClassGrade({ grade }), grade);
+  assert.equal(checkTargetClassGrade({ grade_label: "고 3" }), "고3",
+    "grade_label remains a supported class metadata source");
+  assert.equal(checkTargetClassGrade({ name: "고3 선행반" }), "고3",
+    "class name fallback remains available when explicit metadata is absent");
+  assert.throws(() => checkTargetClassGrade({ name: "담당 반" }), error => error.status === 409,
+    "unknown target grade remains a conflict");
+  assert.throws(() => checkTargetClassGrade({ grade: "고4", name: "고1 이름은 fallback하지 않음" }),
+    error => error.status === 409,
+    "a non-empty invalid grade must not fall through to the class name");
 });
 
 test(
