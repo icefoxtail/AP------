@@ -1,15 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="220" viewBox="0 0 300 220">
+<svg xmlns="http://www.w3.org/2000/svg" width="230" height="182" viewBox="25 30 230 182" role="img" aria-label="수학 해설 도형">
   <title>q10 정사각형 중점과 삼각형 EBF</title>
-  <rect width="300" height="220" fill="white"/>
+  <rect width="300" height="220" fill="white" id="geom-3" />
   <g stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="70" y="60" width="120" height="120"/>
-    <line x1="70" y1="180" x2="130" y2="60"/>
-    <line x1="70" y1="180" x2="190" y2="120"/>
-    <line x1="130" y1="60" x2="190" y2="120"/>
+    <rect x="70" y="60" width="120" height="120" id="geom-5" data-segment-pairs="A-E E-D D-F F-C C-B B-A" />
+    <line x1="70" y1="180" x2="130" y2="60" id="geom-6" data-segment-pairs="B-E" stroke-width="2.3" />
+    <line x1="70" y1="180" x2="190" y2="120" id="geom-7" data-segment-pairs="B-F" stroke-width="2.3" />
+    <line x1="130" y1="60" x2="190" y2="120" id="geom-8" data-segment-pairs="E-F" stroke-width="2.3" />
   </g>
   <g fill="black" font-family="Arial, sans-serif" font-size="14">
-    <text x="59" y="55">A</text><text x="58" y="199">B</text><text x="195" y="199">C</text><text x="195" y="55">D</text>
-    <text x="126" y="52">E</text><text x="197" y="124">F</text>
-    <text x="94" y="161">x</text><text x="132" y="137">[EBF]=6</text>
+    <text x="52" y="42" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q10-text-1" data-label-kind="point" data-owner-point="A" data-point-x="70.0000" data-point-y="60.0000" text-anchor="middle" dominant-baseline="middle" style="font-size:25.5px!important">A</text>
+    <text x="52" y="193" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q10-text-2" data-label-kind="point" data-owner-point="B" data-point-x="70.0000" data-point-y="180.0000" text-anchor="middle" dominant-baseline="middle" style="font-size:25.5px!important">B</text>
+    <text x="208" y="193" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q10-text-3" data-label-kind="point" data-owner-point="C" data-point-x="190.0000" data-point-y="180.0000" text-anchor="middle" dominant-baseline="middle" style="font-size:25.5px!important">C</text>
+    <text x="208" y="42" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q10-text-4" data-label-kind="point" data-owner-point="D" data-point-x="190.0000" data-point-y="60.0000" text-anchor="middle" dominant-baseline="middle" style="font-size:25.5px!important">D</text>
+    <text x="130" y="39" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q10-text-5" data-label-kind="point" data-owner-point="E" data-point-x="130.0000" data-point-y="60.0000" text-anchor="middle" dominant-baseline="middle" style="font-size:25.5px!important">E</text>
+    <text x="210" y="120" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q10-text-6" data-label-kind="point" data-owner-point="F" data-point-x="190.0000" data-point-y="120.0000" text-anchor="middle" dominant-baseline="middle" style="font-size:25.5px!important">F</text>
+    <text x="98.284" y="151.716" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#2563eb" id="q10-text-7" text-anchor="middle" dominant-baseline="middle" data-label-kind="angle" data-owner-vertex="B" data-owner-rays="B-A B-C" data-label-id="q10-angle-7" data-fact-role="DERIVED_INTERMEDIATE" style="stroke:#fff!important;stroke-width:0.12em!important;paint-order:stroke fill!important;stroke-linejoin:round!important;font-size:25.5px!important">x</text>
+    <text x="130" y="120" font-size="25.5" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q10-text-8" text-anchor="middle" dominant-baseline="middle" data-label-kind="region" data-owner-region="triangle-EBF" data-fact-role="CONCLUSION" data-label-id="area-result-q10" style="stroke:#fff!important;stroke-width:0.12em!important;paint-order:stroke fill!important;stroke-linejoin:round!important;font-size:25.5px!important">6</text>
   </g>
+  <polyline id="angle-arc-q10-angle-7" points="70.00,168.00 71.05,168.05 72.08,168.18 73.11,168.41 74.10,168.72 75.07,169.12 76.00,169.61 76.88,170.17 77.71,170.81 78.49,171.51 79.19,172.29 79.83,173.12 80.39,174.00 80.88,174.93 81.28,175.90 81.59,176.89 81.82,177.92 81.95,178.95 82.00,180.00" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" data-marker-kind="angle-arc" data-owner-vertex="B" data-owner-rays="B-A B-C" data-radius="12" data-fact-role="DERIVED_INTERMEDIATE" />
 </svg>
