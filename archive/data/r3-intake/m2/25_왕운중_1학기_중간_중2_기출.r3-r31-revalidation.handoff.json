@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_CLOSURE_DEBT_HANDOFF_v1",
+  "stage": "R3",
+  "lane": "R3-1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examUid": "m2/1mid/25-wangun",
+  "canonicalOrdinal": 2,
+  "examPath": "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+  "inputArtifactSha": "765f4a05e0af5b166fa0aa55c2efb0b4be09c8bf",
+  "finalArtifactSha": "765f4a05e0af5b166fa0aa55c2efb0b4be09c8bf",
+  "branch": "work/middle/m2/25-wangun-1mid-r3-1-revalidation-20261005-0113",
+  "branchHeadBeforeHandoff": "ebe1191e1f7ef3522d1f885c2c54a4e0791acff5",
+  "evidencePath": "archive/data/r3-intake/m2/25_왕운중_1학기_중간_중2_기출.r3-r32.physical-evidence.json",
+  "evidenceBlob": "c355d021f4dd1268445da552d1afca09ab48a8cb",
+  "decisionSnapshotPath": "archive/data/r3-intake/m2/25_왕운중_1학기_중간_중2_기출.r3-r31-revalidation.decision-snapshot.json",
+  "openQids": [],
+  "repairLocus": [
+    "q1",
+    "q3",
+    "q6",
+    "q7",
+    "q9",
+    "q11",
+    "q14",
+    "q15"
+  ],
+  "completedStep": "Current source-repaired artifact revalidated against latest CURRENT/main and rebound on a latest-main branch; no exam mutation required.",
+  "firstMissingClosureStep": "ACTUAL_CANONICAL_R3_VALIDATOR_ON_CURRENT_MAIN",
+  "capabilityAndError": [
+    {
+      "capability": "PR_WRITE",
+      "error": "RUNTIME_GATE_BLOCKED_AFTER_TWO_SAFE_RETRIES"
+    },
+    {
+      "capability": "WORKFLOW_DISPATCH_WRITE",
+      "error": "ACTION_NOT_EXPOSED"
+    },
+    {
+      "capability": "LOCAL_GIT_REMOTE",
+      "error": "DNS_RESOLUTION_UNAVAILABLE"
+    }
+  ],
+  "requiredNextAction": "Continue from this branch without reopening source repair. Execute the current R3 stage validator on the existing full o2 evidence, then create a new validator receipt, R3 receipt, release manifest, and RELEASE_QUEUE transition only after actual PASS and remote readback.",
+  "queue": "RESCUE_QUEUE",
+  "queueKey": "R3_CLOSURE_DEBT:m2/1mid/25-wangun",
+  "ownerState": "RELINQUISHED_TO_THANOS",
+  "autoReselectByR3": false,
+  "handoffIsPass": false,
+  "mainPublishEligible": false
+}
