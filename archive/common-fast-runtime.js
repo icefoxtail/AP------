@@ -148,7 +148,15 @@
             storeSnapshot(snapshot) { snapshot.rootNode.remove(); },
             cleanup(node) { if (node) { root.MathJax?.typesetClear?.([node]); node.remove(); } },
             release(ctx) { if (ctx.stagingHost) { root.MathJax?.typesetClear?.([ctx.stagingHost]); ctx.stagingHost.remove(); } },
-            visible(ctx) { policy.visible?.(ctx); },
+            async visible(ctx) {
+                await policy.visible?.(ctx);
+                // Archive2's screen-only mobile stylesheet deliberately reflows
+                // A4 pages after render readiness. Capture the committed screen
+                // geometry after that presentation settles; print CSS still
+                // owns the A4 dimensions when the browser prints.
+                if (ctx.snapshot?.rootNode === document.getElementById('print-area'))
+                    ctx.snapshot.geometry = geometry(ctx.snapshot.rootNode);
+            },
             onRequest(promise) { cancelWarm(); root.__AP_RENDER_READY__ = promise; policy.onRequest?.(promise); },
             observe(event, ctx) {
                 if (ctx.background) return;
@@ -160,6 +168,15 @@
             }
         };
         runtime = root.APScreenRuntime.create(adapter);
+        let geometryRefreshTimer = null;
+        root.addEventListener('resize', () => {
+            clearTimeout(geometryRefreshTimer);
+            geometryRefreshTimer = setTimeout(() => {
+                const snapshot = runtime.activeSnapshot;
+                if (printLocked || runtime.busy || !snapshot || snapshot.rootNode !== document.getElementById('print-area') || !adapter.canReuse(snapshot)) return;
+                snapshot.geometry = geometry(snapshot.rootNode);
+            }, 100);
+        });
         document.fonts?.addEventListener('loadingdone', () => {
             if (runtime.currentSession && !runtime.busy && !printLocked) runtime.request({ type: 'FONT_INVALIDATION' });
         });

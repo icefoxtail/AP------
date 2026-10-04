@@ -15,8 +15,8 @@
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.06.19.1">
   <title>AP Math OS | 학생 포털</title>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
-  <script src="../../archive/archive2-output.js?v=20261003-student-review-1"></script>
-  <script src="./archive-review-output.js?v=20261003-student-review-1"></script>
+  <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
+  <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.06.19.1">
   <style>
@@ -359,6 +359,7 @@
     .omr-status { flex:0 0 auto; border-radius:999px; padding:6px 10px; font-size:11px; font-weight:500; }
     .omr-status.pending { background:#F3F4F6; color:#4B5563; }
     .omr-status.done { background:rgba(0,184,148,0.10); color:#008F72; }
+    .omr-status.lifecycle { background:rgba(232,65,79,0.08); color:#9B2831; }
     .omr-sheet { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:14px; }
     .omr-no { min-height:46px; border-radius:15px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:14px; font-weight:500; display:flex; align-items:center; justify-content:center; }
     .omr-no.wrong { background:rgba(232,65,79,0.10); border-color:rgba(232,65,79,0.22); color:var(--error); }
@@ -748,7 +749,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.10.03.1';
+    const STUDENT_APP_VERSION = '2026.10.03.3';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -757,12 +758,14 @@
       ? String(previewParams.get('student_id') || '').trim()
       : '';
     const isTeacherPreview = !!teacherPreviewStudentId;
+    const exactOmrAssignmentId = String(previewParams.get('assignment_id') || '').trim();
 
     let session = null;
     let homeData = null;
     let homeIndex = null;
     let omrData = null;
     let omrIndex = null;
+    let omrLoadedAssignmentId = null;
     let omrDraft = null;
     let omrListFilter = 'all';
     let materialWrongData = null;
@@ -903,6 +906,7 @@
         homeIndex = null;
         omrData = null;
         omrIndex = null;
+        omrLoadedAssignmentId = null;
         materialWrongData = null;
         materialWrongDraft = null;
         wrongClinicData = null;
@@ -966,6 +970,7 @@
       homeIndex = null;
       omrData = null;
       omrIndex = null;
+      omrLoadedAssignmentId = null;
       wrongClinicData = null;
     }
     async function apiPost(path, body) {
@@ -1811,13 +1816,21 @@
     }
     async function loadOmrExams(force = false) {
       if (!hasPortalReadAccess()) throw new Error('로그인이 필요합니다.');
-      if (!force && omrData?.exams) return omrData;
-      omrData = await apiGet(`student-portal/exams?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      if (!force && omrData?.exams && omrLoadedAssignmentId === exactOmrAssignmentId) return omrData;
+      const params = new URLSearchParams({ student_id: String(session.student_id) });
+      if (exactOmrAssignmentId) params.set('assignment_id', exactOmrAssignmentId);
+      omrData = await apiGet(`student-portal/exams?${params.toString()}`, session.student_token);
+      omrLoadedAssignmentId = exactOmrAssignmentId;
       omrIndex = null;
       return omrData;
     }
     function getOmrExams() {
       return Array.isArray(omrData?.exams) ? omrData.exams : [];
+    }
+    function getVisibleOmrExams() {
+      const exams = getOmrExams();
+      if (!exactOmrAssignmentId) return exams;
+      return exams.filter(exam => String(exam?.assignment_id || '') === exactOmrAssignmentId);
     }
     const STUDENT_PORTAL_RECENT_EXAM_DAYS = 30;
     function getStudentPortalExamAgeDays(exam, today = new Date()) {
@@ -1853,7 +1866,7 @@
       if (!['all', 'pending', 'complete'].includes(next)) return;
       omrListFilter = next;
       const root = document.querySelector('.omr-browser');
-      if (root) root.innerHTML = renderOmrExamBrowser(getOmrExams());
+      if (root) root.innerHTML = renderOmrExamBrowser(getVisibleOmrExams());
     }
     function handleOmrListTabKey(event, current) {
       if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
@@ -2045,12 +2058,14 @@
       `;
       try {
         await loadOmrExams(true);
-        const exams = getOmrExams();
+        const exams = getVisibleOmrExams();
         const root = document.querySelector('.omr-browser');
         if (!root) return;
         root.innerHTML = exams.length
           ? renderOmrExamBrowser(exams)
-          : `<div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '아직 나온 시험지가 없습니다.'}</div>`;
+          : exactOmrAssignmentId
+            ? '<div class="empty">정확한 Assignment를 이 학생 포털에서 찾을 수 없습니다.</div>'
+            : `<div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '아직 나온 시험지가 없습니다.'}</div>`;
       } catch (e) {
         toast(e.message || '시험지를 불러오지 못했습니다.');
         const root = document.querySelector('.omr-browser');
@@ -2065,15 +2080,22 @@
       const showActionArea = showReview || showPdf || isTeacherPreview || !submitted;
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
-      const status = submitted ? `완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '';
+      const statusParts = [];
+      if (submitted) statusParts.push(`완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}`);
+      if (exam.is_cancelled) statusParts.push('취소됨');
+      if (exam.is_replaced) statusParts.push('대체됨');
+      if (exam.is_review_only) statusParts.push('열람 전용');
+      const status = statusParts.join(' · ');
+      const statusClass = exam.is_cancelled || exam.is_replaced || exam.is_review_only
+        ? 'lifecycle' : submitted ? 'done' : 'pending';
       return `
-        <article class="omr-card">
+        <article class="omr-card" id="student-assignment-${escapeHtml(String(exam.assignment_id || ''))}" data-assignment-id="${escapeHtml(String(exam.assignment_id || ''))}">
           <div class="omr-top">
             <div style="min-width:0;">
               <div class="omr-title">${escapeHtml(exam.exam_title || '시험지')}</div>
               <div class="omr-meta">${escapeHtml(meta || 'AP수학 시험')}</div>
             </div>
-            ${status ? `<span class="omr-status done">${escapeHtml(status)}</span>` : ''}
+            ${status ? `<span class="omr-status ${statusClass}">${escapeHtml(status)}</span>` : ''}
           </div>
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
           ${showActionArea ? `

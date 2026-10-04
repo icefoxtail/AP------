@@ -34,7 +34,17 @@ const masterFile =
 const masterText = read(masterFile);
 const canonicalMasterSha = hash(masterText);
 const taxonomy = core.taxonomyPaths(JSON.parse(masterText));
-if (basicScopeLinks.authority?.sha256 !== canonicalMasterSha ||
+const refreshingCanonicalProjection = process.argv.includes("--refresh-canonical-projection");
+const existingLinkParents = [
+  ...(basicScopeLinks.records || []),
+  ...(basicScopeLinks.sourceParents || []),
+];
+const legacyParentLinksRemainValid = existingLinkParents.every(link => taxonomy.some(parent =>
+  parent.curriculumKey === link.curriculumKey &&
+  core.normalizeCourseIdentity(parent.courseKey) === core.normalizeCourseIdentity(link.courseKey) &&
+  parent.L1 === link.L1 && parent.L2 === link.L2));
+if ((basicScopeLinks.authority?.sha256 !== canonicalMasterSha &&
+      !(refreshingCanonicalProjection && legacyParentLinksRemainValid)) ||
     projectionPolicy.canonicalMasterSha256 !== canonicalMasterSha)
   throw new Error("Archive2 canonical source-pack drift: master version does not match parent-link/projection policy");
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));

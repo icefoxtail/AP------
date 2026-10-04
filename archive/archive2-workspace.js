@@ -48,6 +48,10 @@
   const badge = (label, type = "") =>
     `<span class="badge ${type}">${esc(label)}</span>`;
   const unique = (values) => [...new Set(values.filter(Boolean))];
+  const SAVED_PAPER_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  const savedPaperIds = (values) => unique(
+    (Array.isArray(values) ? values : []).map(String).filter((id) => SAVED_PAPER_UUID.test(id)),
+  );
   const HOME_PRODUCT_REGISTRY = Object.freeze([
     Object.freeze({
       productKey: "school-exams",
@@ -137,13 +141,17 @@
     recentRows: [],
     recentClassId: "",
     recentFilters: { from: "", to: "", grade: "", subject: "", query: "" },
+    recentSelectedAssignmentId: "",
     recentLoadVersion: 0,
+    assignmentStatusLoadVersion: 0,
     recentLoading: false,
     recentError: "",
     byUid: new Map(),
     busy: false,
     view: "home",
     page: 0,
+    savedPaperId: "",
+    savedLibraryStatusFilter: "ACTIVE",
     find: { grade: "고1" },
     sources: [],
     filters: { grade: "고1" },
@@ -197,6 +205,7 @@
     saveBatchId: "",
     saveSignature: "",
     savedPaperIds: [],
+    lastSavedPaperIds: [],
     saveMessage: "",
     saveError: "",
     saveResultSignature: "",
@@ -205,8 +214,13 @@
     derivedBaseQuestions: null,
     editSavedPaperId: "",
   };
+  let lastRenderedView = state.view;
   let autosaveTimer,
     previewTimer,
+    recentRefetchTimer = null,
+    recentPdfRetryIds = new Set(),
+    recentPdfMutationVersions = new Map(),
+    recentSubjectOptionUniverse = new Map(),
     derivedBaseLoad = null,
     previewOutputEnvelope = null,
     candidateRecords = [],
@@ -297,6 +311,7 @@
       "saveBatchId",
       "saveSignature",
       "savedPaperIds",
+      "lastSavedPaperIds",
       "saveMessage",
       "saveError",
       "saveResultSignature",
@@ -466,6 +481,15 @@
       !["REVISION", "FORK"].includes(state.derivationSource.derivationType) ||
       (state.derivationSource.parentDisplayName != null && typeof state.derivationSource.parentDisplayName !== "string")
     )) throw new Error("저장 시험지 계보 정보를 확인할 수 없습니다.");
+    state.lastSavedPaperIds = savedPaperIds(
+      Array.isArray(data.lastSavedPaperIds)
+        ? data.lastSavedPaperIds
+        : data.savedPaperIds?.length
+          ? data.savedPaperIds
+          : state.derivationSource?.parentKind === "SAVED_PAPER"
+            ? [state.derivationSource.parentId]
+            : [],
+    );
     if (data.saveResultSignature === undefined) {
       state.saveBatchId = "";
       state.saveSignature = "";
@@ -607,6 +631,7 @@
     state.saveBatchId = "";
     state.saveSignature = "";
     state.savedPaperIds = [];
+    state.lastSavedPaperIds = [paper.id];
     state.saveMessage = "";
     state.saveError = "";
     state.saveResultSignature = "";
@@ -1208,6 +1233,32 @@
       qpp,
     });
   }
+  function renderOriginalReceipts() {
+    const host = $("original-receipts");
+    if (!host) return;
+    const receipts = state.originalReceipts || [];
+    if (!receipts.length) {
+      host.replaceChildren();
+      return;
+    }
+    const pdfPending = receipts.some((receipt) => receipt.pdfStatus !== "ready");
+    host.innerHTML = `<div class="callout original-receipts-callout">
+      <strong>${receipts.length}개 반에 Assignment 저장 완료</strong>
+      <p>학생별 문제지는 각 receipt Assignment ID의 immutable snapshot을 사용합니다.${pdfPending ? " PDF 준비가 필요한 반은 해당 Assignment의 PDF만 다시 준비할 수 있습니다." : ""}</p>
+      <div class="original-receipt-list">${receipts.map((receipt) => {
+        const ready = receipt.pdfStatus === "ready";
+        return `<article class="original-receipt-row" data-assignment-id="${esc(receipt.id)}">
+          <div><strong>${esc(receipt.className || "선택한 반")}</strong><div class="muted">Assignment ID · <code>${esc(receipt.id)}</code></div>
+            <div class="muted">${ready ? "PDF 준비 완료" : "Assignment 저장 완료 · PDF 확인 필요"}${receipt.pdfError ? ` · ${esc(receipt.pdfError)}` : ""}</div></div>
+          <div class="actions" role="group" aria-label="${esc(receipt.className || "선택한 반")} Assignment ${esc(receipt.id)} action">
+            ${[ ["exam", "시험"], ["sol", "해설"], ["ans", "정답"] ].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(receipt.id)}" data-mode="${mode}" class="small"`)).join("")}
+            ${ready ? "" : button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(receipt.id)}" class="small"`)}
+            ${button("assignment-status", "학생별 확인", `data-assignment="${esc(receipt.id)}" class="small"`)}
+          </div>
+        </article>`;
+      }).join("")}</div>
+    </div>`;
+  }
   function openOriginalIssue(exam, step = "review") {
     state.originalExam = exam;
     const settings = originalSettingsForExam(exam);
@@ -1226,22 +1277,41 @@
     $("modal").classList.add("original-issue-dialog");
     setOriginalStep(step);
   }
+  function openSavedPaperIssue(id) {
+    const paperId = String(id || "").trim();
+    if (!paperId) throw new Error("출제할 Saved Paper ID를 확인할 수 없습니다.");
+    state.originalReceipts = [];
+    state.originalPreviewEnvelope = null;
+    state.originalPreviewToken = (state.originalPreviewToken || 0) + 1;
+    const url = new URL("index.html", location.href);
+    url.searchParams.set("savedPaper", paperId);
+    url.searchParams.set("archive2Embedded", "1");
+    showDialog(
+      "저장한 시험지 출제",
+      `<div class="original-issue-toolbar"><span>Saved Paper ${esc(paperId)} · immutable snapshot</span><div class="actions">${button("original-review", "시험지 확인", 'disabled aria-pressed="false"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="true"')}</div></div><div id="original-receipts"></div><section id="original-review" hidden><div class="resultbar"><p class="muted">각 반 Assignment의 frozen snapshot을 표시합니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="저장된 Assignment 시험지"></iframe></section><iframe id="saved-paper-issue-frame" title="저장한 시험지 반·학생 출제" src="${esc(url.href)}"></iframe>`,
+    );
+    $("modal").classList.add("saved-paper-issue-dialog");
+    setOriginalStep("targets");
+  }
+  window.Archive2WorkspaceSavedPaperIssue = openSavedPaperIssue;
   function originalIssueBusy() {
     return Boolean(
-      $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.(),
+      $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.() ||
+      $("saved-paper-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.(),
     );
   }
   function setOriginalStep(step) {
     $("original-review").hidden = step !== "review";
-    $("original-issue-frame").hidden = step !== "targets";
-    document.querySelector('[data-action="original-review"]').setAttribute("aria-pressed", String(step === "review"));
-    document.querySelector('[data-action="original-targets"]').setAttribute("aria-pressed", String(step === "targets"));
+    const issueFrame = $("original-issue-frame") || $("saved-paper-issue-frame");
+    if (issueFrame) issueFrame.hidden = step !== "targets";
+    document.querySelector('[data-action="original-review"]')?.setAttribute("aria-pressed", String(step === "review"));
+    document.querySelector('[data-action="original-targets"]')?.setAttribute("aria-pressed", String(step === "targets"));
     $("modal").scrollTop = 0;
     // Equal-slot layout requires measurable width. A hidden iframe cannot
     // render; refresh only after the review panel becomes visible.
     if (step === "review") updateOriginalPreview();
   }
-  async function buildOriginalSourceOutput(exam, mode, settings) {
+  async function buildOriginalSourceOutput(exam, mode, settings, preview = true) {
     const questions = await Source.load(
       exam.file,
       new Map(state.catalog.sourceHashes).get(exam.file),
@@ -1268,13 +1338,13 @@
       meta,
       questions,
     });
-    const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, { preview: true });
+    const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, { preview });
     return { url, envelope };
   }
-  async function originalOutputUrl(mode = "exam") {
+  async function originalOutputUrl(mode = "exam", preview = true) {
     const e = state.originalExam, s = state.originalSettings;
     const saved = state.originalReceipts?.[0];
-    if (!saved) return buildOriginalSourceOutput(e, mode, s);
+    if (!saved) return buildOriginalSourceOutput(e, mode, s, preview);
     let sourceKind = "assignment";
     let sourceId = saved.id;
     let assignmentId;
@@ -1298,7 +1368,7 @@
       questions,
     });
     const url = O.outputEnvelopeUrl("engine.html", location.href, envelope, {
-      preview: true,
+      preview,
       assignmentId,
     });
     return { url, envelope };
@@ -1331,7 +1401,7 @@
   async function originalPrint() {
     const popup = window.open("about:blank", "_blank");
     try {
-      const output = await originalOutputUrl();
+      const output = await originalOutputUrl("exam", false);
       if (!popup) throw new Error("팝업을 허용해 주세요.");
       popup.location.href = output.url.href;
     } catch (error) { popup?.close(); throw error; }
@@ -1342,7 +1412,7 @@
     try {
       if (!popup) throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
       const settings = originalSettingsForExam(exam);
-      const output = await buildOriginalSourceOutput(exam, safeMode, settings);
+      const output = await buildOriginalSourceOutput(exam, safeMode, settings, false);
       popup.location.href = output.url.href;
     } catch (error) {
       popup?.close();
@@ -1377,8 +1447,13 @@
 
   function renderFind() {
     reconcileFinderSchool(state.find);
-    const exams = findExams(),
-      page = exams.slice(state.page * 18, (state.page + 1) * 18),
+    const exams = findExams();
+    const lastPage = Math.max(0, Math.ceil(exams.length / 18) - 1);
+    if (state.page > lastPage) {
+      state.page = lastPage;
+      replaceFinderUrlState();
+    }
+    const page = exams.slice(state.page * 18, (state.page + 1) * 18),
       detailOpen = matchMedia("(max-width: 700px)").matches ? "" : " open";
     return `<div class="finder-surface"><div class="intro finder-intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
       <section class="panel finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"textbook",label:"교과서"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>${finderSearchMarkup(state.find)}${finderActiveMarkup(state.find)}${finderPrimaryFilterMarkup(state.find)}<details class="finder-detail-filters"${detailOpen}><summary>상세 필터</summary>${finderDetailFilterMarkup(state.find)}</details></section>
@@ -1388,7 +1463,7 @@
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-output-direct" data-mode="exam" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${O.materialKind(e) === "textbook" ? "교과서" : e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : O.materialKind(e) === "textbook" ? "교재 전체" : "시험지 전체"}</span></div><div class="actions finder-card-actions" role="group" aria-label="${esc(O.displayTitle(e))} 시험·해설·정답·출제·더보기">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("source-output-direct", label, `data-exam="${n}" data-mode="${mode}" class="small"`)).join("")}${button("source-issue", "출제", `data-exam="${n}" class="small primary"`)}<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></details></div></article>`;
         })
         .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
@@ -1524,13 +1599,11 @@
     const saveResultCurrent = Boolean(state.saveResultSignature) &&
       state.saveResultSignature === saveWorkSignature();
     const savedResult = state.saveResultState === "RESULT_UNKNOWN"
-      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 저장 결과 확인 버튼으로 같은 요청을 조회하거나 재시도합니다.<button type="button" data-action="save-paper" class="button-like primary">저장 결과 확인</button></div>'
+      ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. Draft 편집은 잠겨 있으며 본문 위의 저장 결과 확인 action을 사용할 수 있습니다.</div>'
       : state.saveError && saveResultCurrent
       ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(state.saveError)}</div>`
       : state.saveMessage && saveResultCurrent
-        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>시험지 저장은 학생 배포와 별도입니다.</p>${state.savedPaperIds.map((id, i) => `<div><a href="workspace.html?view=saved&paper_id=${encodeURIComponent(id)}">${state.savedPaperIds.length > 1 ? `${i + 1}권 · ` : ""}저장한 시험지 보기</a> · <a href="index.html?savedPaper=${encodeURIComponent(id)}">학생에게 배포</a></div>`).join("")}</div>`
-        : (state.saveMessage || state.savedPaperIds.length) && !saveResultCurrent
-          ? '<div class="callout" role="status" aria-live="polite">저장 이후 현재 시험지 내용이 변경되었습니다. 현재 편집본은 저장되지 않았습니다.</div>'
+        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>출제와 시험·해설·정답 action은 본문 위의 Saved Paper 저장본을 사용합니다.</p></div>`
           : "";
     const saveStaleNotice = state.indexVersion !== state.catalog.indexVersion
       ? '<div class="callout">문항 목록 버전이 달라 서버가 저장 시 각 문항 내용과 출제 범위를 다시 확인합니다.</div>'
@@ -1550,6 +1623,55 @@
         "",
       )}</div><div>${state.inspector === "header" ? header : summary + saveStaleNotice}</div>
       ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "출력", `class="small" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div><div class="actions" style="margin-top:12px">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div>${savedResult}` : '<p class="muted">문항을 선택한 뒤 시험지 저장을 눌러 완성본을 보관하세요.</p>'}</section></aside>`;
+  }
+  function renderSaveRecovery() {
+    if (state.saveResultState !== "RESULT_UNKNOWN") return "";
+    return `<section class="callout danger compose-save-recovery" role="status" aria-live="polite">
+      <strong>저장 결과를 확인할 수 없습니다.</strong>
+      <p>같은 요청 ID의 결과를 조회하거나 안전하게 재시도합니다. Draft는 확인될 때까지 잠겨 있습니다.</p>
+      ${button("save-paper", "저장 결과 확인", 'class="primary"')}
+    </section>`;
+  }
+  function renderSavedContinuity() {
+    const ids = savedPaperIds(state.lastSavedPaperIds);
+    if (!ids.length) return "";
+    const currentSaved = state.saveResultState === "SAVED" &&
+      Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
+    const statusCopy = currentSaved
+      ? state.saveMessage || "현재 편집본을 Saved Paper로 저장했습니다."
+      : state.saveResultState === "RESULT_UNKNOWN"
+        ? "현재 저장 요청의 결과가 아직 미확정입니다. 아래 action은 직전 확인된 Saved Paper를 엽니다."
+        : state.saveResultState === "SAVING"
+          ? "현재 저장 요청을 처리하고 있습니다. 직전 Saved Paper는 그대로 사용할 수 있습니다."
+          : "현재 편집본은 저장되지 않았습니다. 아래 action은 마지막으로 저장된 immutable snapshot을 사용합니다.";
+    return `<section class="panel compose-saved-continuity" aria-labelledby="compose-saved-continuity-title">
+      <div class="compose-saved-continuity-head"><h2 id="compose-saved-continuity-title">마지막 저장본</h2><p class="muted">${esc(statusCopy)}</p></div>
+      <div class="compose-saved-continuity-list">${ids.map((id, index) => {
+        const part = ids.length > 1 ? `${index + 1}권` : "저장본";
+        return `<article class="compose-saved-continuity-paper" data-saved-paper-id="${esc(id)}">
+          <strong>${part}</strong>
+          <div class="actions" role="group" aria-label="${part} action">
+            ${button("saved-paper-issue", ids.length > 1 ? `${index + 1}권 출제` : "이 저장본 출제", `data-paper-id="${esc(id)}" class="primary"`)}
+            ${button("saved-output", "시험", `data-paper-id="${esc(id)}" data-mode="exam" class="small"`)}
+            ${button("saved-output", "해설", `data-paper-id="${esc(id)}" data-mode="sol" class="small"`)}
+            ${button("saved-output", "정답", `data-paper-id="${esc(id)}" data-mode="ans" class="small"`)}
+            <details class="compose-saved-continuity-more"><summary>더보기</summary><div>${button("saved-paper-view", "저장본 보기", `data-paper-id="${esc(id)}"`)}</div></details>
+          </div>
+        </article>`;
+      }).join("")}</div>
+    </section>`;
+  }
+  function refreshComposeSaveContinuity() {
+    const host = document.getElementById("compose-save-continuity");
+    if (host) host.innerHTML = renderSaveRecovery() + renderSavedContinuity();
+    const mobileActions = document.querySelector(".mobile-actions");
+    const mobileMarkup = renderMobileActions();
+    if (mobileActions) {
+      if (mobileMarkup) mobileActions.outerHTML = mobileMarkup;
+      else mobileActions.remove();
+    } else if (mobileMarkup) {
+      document.querySelector("#content")?.insertAdjacentHTML("beforeend", mobileMarkup);
+    }
   }
   function renderPaper() {
     const modes = [
@@ -1594,6 +1716,13 @@
   function renderMobileActions() {
     if (state.saveResultState === "RESULT_UNKNOWN")
       return '<div class="mobile-actions">' + button("save-paper", "저장 결과 확인", 'class="primary"') + "</div>";
+    const savedCurrent = state.saveResultState === "SAVED" &&
+      Boolean(state.saveResultSignature) && state.saveResultSignature === saveWorkSignature();
+    if (savedCurrent && state.lastSavedPaperIds.length) {
+      const id = state.lastSavedPaperIds[0];
+      const label = state.lastSavedPaperIds.length > 1 ? "1권 출제" : "이 저장본 출제";
+      return `<div class="mobile-actions">${button("saved-paper-issue", label, `data-paper-id="${esc(id)}" class="primary mobile-saved-paper-assign"`)}</div>`;
+    }
     if (!state.selected.length) return "";
     const r = review(),
       blocked =
@@ -1603,23 +1732,17 @@
   }
   function renderCompose() {
     return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">${state.derivationSource ? "원본 Saved Paper에서 복사한 새 Draft입니다. 원본은 그대로 보존됩니다." : "범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요."}</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
-    <div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    <div id="compose-save-continuity">${renderSaveRecovery()}${renderSavedContinuity()}</div><div class="workspace" ${state.saveResultState === "RESULT_UNKNOWN" ? "inert" : ""}><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : state.derivationSource ? `<details class="panel plan-panel" open><summary>원본 시험지 범위</summary>${renderDerivedComposition()}</details>${renderPaper()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
     const grade = state.recentFilters.grade;
-    const availableIds = new Set(state.recentRows
-      .filter((row) => !grade || row.targetGrade === grade)
-      .map((row) => row.classId).filter(Boolean));
-    const byId = new Map();
-    for (const cls of classRows) {
-      const id = String(cls.id || "");
-      if (id && availableIds.has(id)) byId.set(id, { value: id, label: cls.name || id });
-    }
-    for (const row of state.recentRows) {
-      if (!row.classId || (grade && row.targetGrade !== grade)) continue;
-      if (!byId.has(row.classId)) byId.set(row.classId, { value: row.classId, label: row.className || row.classId });
-    }
-    return [...byId.values()];
+    return classRows
+      .filter((cls) => !grade || String(cls.grade || "") === grade)
+      .map((cls) => {
+        const id = String(cls.id || "");
+        return id ? { value: id, label: cls.name || id } : null;
+      })
+      .filter(Boolean);
   }
   function renderRecent() {
     const list = drafts(), f = state.recentFilters;
@@ -1629,10 +1752,10 @@
         <label class="history-period-filter">기간<span class="history-period"><input type="date" data-recent-filter="from" aria-label="시작일" value="${esc(f.from)}"><span aria-hidden="true">~</span><input type="date" data-recent-filter="to" aria-label="끝일" value="${esc(f.to)}"></span></label>
         <label>학년<select data-recent-filter="grade">${options(History.grades, f.grade, "전체 학년")}</select></label>
         <label>반<select id="recent-class">${options(recentClassOptions(), state.recentClassId, "전체 반")}</select></label>
-        <label class="history-subject-filter">과목<select data-recent-filter="subject">${options(History.subjectOptions(state.recentRows, f.grade, C), f.subject, "전체 과목")}</select></label>
+        <label class="history-subject-filter">과목<select data-recent-filter="subject">${options(recentSubjectOptions(), f.subject, "전체 과목")}</select></label>
         <label class="history-title-filter">제목 검색<input type="search" data-recent-filter="query" value="${esc(f.query)}"></label>
       </div><div id="recent-assignments" aria-live="polite" aria-busy="${state.recentLoading}">${recentAssignmentMarkup()}</div></section>
-      <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
+      <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions history-draft-actions">${button("restore", "이어하기", `data-draft="${i}"`)}<details><summary>더보기</summary>${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</details></div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
   }
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
@@ -1645,41 +1768,168 @@
         const paperMeta = [a.contentGrade, a.subjectLabel].filter(Boolean).join(" · ");
         const metadata = [a.targetGrade ? `대상 ${a.targetGrade}` : "",
           paperMeta ? `시험지 ${paperMeta}` : "", a.className,
+          `Assignment ID · ${a.id}`,
           a.questionCount === null ? "" : `${a.questionCount}문항`,
           a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
           a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`].filter(Boolean);
-        return `<article class="history-card"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div><div class="history-card-footer"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${a.pdfReady ? "PDF 준비 완료" : "출제 저장됨 · PDF 확인 필요"}</span><div class="actions" role="group" aria-label="최근 출제 바로 열기">${[["exam", "문제"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
+      const lifecycle = [
+        a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
+        a.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(a.replacementAssignmentId)}</span>` : "",
+        a.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(a.replacesAssignmentId)}</span>` : "",
+        a.isReviewOnly ? `<span class="history-state-chip review-only">열람 전용${a.reviewOnlyCount === null ? "" : ` · ${a.reviewOnlyCount}명`}</span>` : "",
+      ].filter(Boolean).join("");
+      const pdfLabel = a.pdfReady ? "PDF 준비 완료" : a.pdfStatus === "failed"
+        ? "PDF 준비 실패" : a.pdfStatus === "generating" ? "PDF 준비 중" : "PDF 준비 필요";
+      const pdfRetryPending = recentPdfRetryIds.has(String(a.id));
+      const pdfRetry = !a.pdfReady && a.pdfStatus !== "generating"
+        ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}" class="small"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`)
+        : "";
+      return `<article class="history-card" data-assignment-id="${esc(a.id)}"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="history-card-footer"><div class="history-pdf-actions"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${pdfLabel}</span>${a.pdfError ? `<span class="history-pdf-error">${esc(a.pdfError)}</span>` : ""}${pdfRetry}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답·학생별 확인">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output-direct", label, `data-assignment="${esc(a.id)}" data-mode="${mode}" class="small"`)).join("")}${button("assignment-status", "학생별 확인", `data-assignment="${esc(a.id)}" class="small"`)}</div></div></article>`;
       }).join("")}</div></section>`
     ).join("") || '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
   }
   function updateRecentResults() {
+    updateRecentFilterOptions();
     const host = $("recent-assignments");
     if (host) {
       host.innerHTML = recentAssignmentMarkup();
       host.setAttribute("aria-busy", String(state.recentLoading));
     }
   }
+  function recentSubjectTerms(subjectKey) {
+    const key = String(subjectKey || "").trim();
+    if (!key) return [];
+    if (key.startsWith("raw:")) return [key.slice(4)];
+    const high1 = C.subjectProjectionOptions("고1").find((row) => row.value === key);
+    if (high1) return [high1.label];
+    const shared = C.HIGH_SEMANTIC_SUBJECTS.find((row) => row.value === key);
+    if (shared) return [...new Set([shared.label, ...(shared.courseKeys || [])])];
+    return [key];
+  }
+  function recentSubjectOptions({ preserveSelected = true } = {}) {
+    const grade = state.recentFilters.grade;
+    const values = new Map();
+    for (const option of C.subjectProjectionOptions(grade) || [])
+      values.set(option.value, option);
+    for (const [optionGrade, optionsByKey] of recentSubjectOptionUniverse) {
+      if (grade && optionGrade !== grade) continue;
+      for (const option of optionsByKey.values())
+        if (!values.has(option.value)) values.set(option.value, option);
+    }
+    for (const option of History.subjectOptions(state.recentRows, grade, C))
+      if (!values.has(option.value)) values.set(option.value, option);
+    const selected = state.recentFilters.subject;
+    if (preserveSelected && selected && !values.has(selected)) {
+      const [label] = recentSubjectTerms(selected);
+      values.set(selected, { value: selected, label: label || selected });
+    }
+    return [...values.values()];
+  }
+  function rememberRecentSubjectOptions(rows) {
+    for (const row of rows || []) {
+      const grade = String(row.targetGrade || "");
+      if (!recentSubjectOptionUniverse.has(grade)) recentSubjectOptionUniverse.set(grade, new Map());
+      const optionsByKey = recentSubjectOptionUniverse.get(grade);
+      for (const option of History.subjectOptions([row], grade, C))
+        if (!optionsByKey.has(option.value)) optionsByKey.set(option.value, option);
+    }
+  }
+  function updateRecentFilterOptions() {
+    const classField = $("recent-class");
+    const classMarkup = options(recentClassOptions(), state.recentClassId, "전체 반");
+    if (classField && classField.innerHTML !== classMarkup) classField.innerHTML = classMarkup;
+    const subjectField = document.querySelector('[data-recent-filter="subject"]');
+    const subjectMarkup = options(recentSubjectOptions(), state.recentFilters.subject, "전체 과목");
+    if (subjectField && subjectField.innerHTML !== subjectMarkup) subjectField.innerHTML = subjectMarkup;
+  }
   function changeRecentFilter(el) {
+    if (state.view !== "recent") return;
     const key = el.dataset.recentFilter;
     if (!Object.hasOwn(state.recentFilters, key)) return;
     state.recentFilters[key] = el.value;
     if (key === "grade") {
-      const subjects = History.subjectOptions(state.recentRows, el.value, C);
+      const subjects = recentSubjectOptions({ preserveSelected: false });
       if (!subjects.some((item) => item.value === state.recentFilters.subject))
         state.recentFilters.subject = "";
-      const field = document.querySelector('[data-recent-filter="subject"]');
-      if (field) field.innerHTML = options(subjects, state.recentFilters.subject, "전체 과목");
       const classes = recentClassOptions();
       if (state.recentClassId && !classes.some((item) => item.value === state.recentClassId))
         state.recentClassId = "";
-      const classField = $("recent-class");
-      if (classField) classField.innerHTML = options(classes, state.recentClassId, "전체 반");
     }
     // Update only the result host: date/search inputs retain focus and IME state.
     updateRecentResults();
+    replaceUrlState();
+    scheduleRecentRefetch();
+  }
+  function invalidateRecentRequests() {
+    state.recentLoadVersion++;
+    if (recentRefetchTimer !== null) {
+      clearTimeout(recentRefetchTimer);
+      recentRefetchTimer = null;
+    }
+    state.recentLoading = false;
+  }
+  function recentRequestIsCurrent(version, requestedView, expectedSelection) {
+    return version === state.recentLoadVersion &&
+      requestedView === "recent" && state.view === requestedView &&
+      String(state.recentSelectedAssignmentId || "") === expectedSelection;
+  }
+  function recentAuthorityError(error, authority) {
+    if (error && typeof error === "object") {
+      try { error.archive2Authority = { kind: "recent", ...authority }; } catch {}
+    }
+    return error;
+  }
+  function assignmentStatusAuthorityError(error, authority) {
+    if (error && typeof error === "object") {
+      try { error.archive2Authority = { kind: "assignment-status", ...authority }; } catch {}
+    }
+    return error;
+  }
+  function recentPdfMutationVersion(assignmentId) {
+    return recentPdfMutationVersions.get(assignmentId) || 0;
+  }
+  function advanceRecentPdfMutationVersion(assignmentId) {
+    const next = recentPdfMutationVersion(assignmentId) + 1;
+    recentPdfMutationVersions.set(assignmentId, next);
+    return next;
+  }
+  function isCurrentAuthorityError(error) {
+    const authority = error?.archive2Authority;
+    if (authority?.kind === "recent")
+      return recentRequestIsCurrent(authority.version, authority.view, authority.selection);
+    if (authority?.kind === "assignment-status")
+      return authority.version === state.assignmentStatusLoadVersion &&
+        authority.view === "recent" && state.view === authority.view &&
+        String(state.recentSelectedAssignmentId || "") === authority.selection &&
+        (!authority.selection || authority.selection === authority.assignmentId) &&
+        authority.pdfMutationVersion === recentPdfMutationVersion(authority.assignmentId);
+    return true;
+  }
+  function scheduleRecentRefetch() {
+    invalidateRecentRequests();
+    if (state.view !== "recent") return;
+    updateRecentResults();
+    const scheduledVersion = state.recentLoadVersion;
+    recentRefetchTimer = setTimeout(() => {
+      recentRefetchTimer = null;
+      if (state.view !== "recent" || scheduledVersion !== state.recentLoadVersion) return false;
+      return loadRecent().catch((error) => {
+        if (isCurrentAuthorityError(error))
+          status(error.message || "출제 내역을 불러오지 못했습니다.", true);
+        return false;
+      });
+    }, 300);
   }
   async function loadRecent() {
+    if (state.view !== "recent") return false;
+    if (recentRefetchTimer !== null) {
+      clearTimeout(recentRefetchTimer);
+      recentRefetchTimer = null;
+    }
     const version = ++state.recentLoadVersion;
+    const requestedView = state.view;
+    const expectedSelection = String(state.recentSelectedAssignmentId || "");
+    const isCurrentRequest = () => recentRequestIsCurrent(version, requestedView, expectedSelection);
     state.recentLoading = true;
     state.recentError = "";
     state.recentAssignments = [];
@@ -1688,43 +1938,158 @@
     try {
       if (!classRows.length) {
         const data = await api("/qr-classes");
-        if (version !== state.recentLoadVersion) return;
+        if (!isCurrentRequest()) return false;
         classRows = Array.isArray(data.classes) ? data.classes : [];
       }
-      const data = await api("/class-exam-assignments?history=1");
-      if (version !== state.recentLoadVersion) return;
+      if (state.recentClassId) {
+        const selectedClass = classRows.find((row) => String(row.id || "") === state.recentClassId);
+        if (!selectedClass || (state.recentFilters.grade && String(selectedClass.grade || "") !== state.recentFilters.grade)) {
+          state.recentClassId = "";
+          replaceUrlState();
+        }
+      }
+      const params = new URLSearchParams({ limit: "1000" });
+      for (const key of ["from", "to", "grade", "query"])
+        if (state.recentFilters[key]) params.set(key, state.recentFilters[key]);
+      if (state.recentClassId) params.set("class", state.recentClassId);
+      if (state.recentFilters.subject) {
+        params.set("subject", state.recentFilters.subject);
+        for (const term of recentSubjectTerms(state.recentFilters.subject))
+          params.append("subject_term", term);
+      }
+      const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
+      if (!isCurrentRequest()) return false;
       state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
       state.recentRows = History.normalizeAssignments(
         state.recentAssignments, classRows, state.catalog.exams, C,
       );
-      if (state.recentClassId && !state.recentRows.some((row) => row.classId === state.recentClassId))
-        state.recentClassId = "";
-      const subjects = History.subjectOptions(state.recentRows, state.recentFilters.grade, C);
-      if (state.recentFilters.subject && !subjects.some((item) => item.value === state.recentFilters.subject))
-        state.recentFilters.subject = "";
+      rememberRecentSubjectOptions(state.recentRows);
+      return true;
     } catch (error) {
-      if (version !== state.recentLoadVersion) return;
+      if (!isCurrentRequest()) return false;
       state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
-      throw error;
+      throw recentAuthorityError(error, {
+        version,
+        view: requestedView,
+        selection: expectedSelection,
+      });
     } finally {
-      if (version === state.recentLoadVersion) {
+      if (isCurrentRequest()) {
         state.recentLoading = false;
-        if (state.view === "recent") render();
+        updateRecentResults();
       }
     }
   }
-  async function assignmentStatus(id) {
-    const data = await api(
-      "/class-exam-assignments/" + encodeURIComponent(id) + "/status",
-    );
-    state.openAssignment = data;
+  function renderAssignmentStatus(data, assignmentId) {
     const a = data.assignment,
       active = data.students.filter((s) => !s.excluded),
       excluded = data.students.filter((s) => s.excluded);
+    const summary = state.recentRows.find((row) => row.id === assignmentId);
+    const lifecycle = [
+      a.cancelled_at ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
+      summary?.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(summary.replacementAssignmentId)}</span>` : "",
+      summary?.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(summary.replacesAssignmentId)}</span>` : "",
+      (summary?.reviewOnlyCount || 0) > 0 ? `<span class="history-state-chip review-only">열람 전용 · ${summary.reviewOnlyCount}명</span>` : "",
+    ].filter(Boolean).join("");
+    const studentStatus = (student) => student.session_id
+      ? (a.cancelled_at || student.excluded ? "제출 완료 · 열람 전용" : "제출 완료")
+      : (student.excluded ? "제외됨" : "제출 전");
+    const studentPreviewUrl = (studentId) => {
+      const url = new URL("../apmath/student/index.html", location.href);
+      url.searchParams.set("teacher_preview", "1");
+      url.searchParams.set("student_id", String(studentId || ""));
+      url.searchParams.set("assignment_id", String(a.id || assignmentId));
+      url.searchParams.set("omr", "1");
+      return url.href;
+    };
+    const studentRow = (student) => `<div class="recent-row"><span>${esc(student.name)}</span><span>${studentStatus(student)}</span><a href="${esc(studentPreviewUrl(student.student_id))}" target="_blank" rel="noopener">이 출제 확인</a></div>`;
+    const pdfRetryPending = recentPdfRetryIds.has(assignmentId);
     showDialog(
       a.exam_title,
-      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p><div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : "PDF 파일은 아직 준비되지 않았지만 온라인 문제·정답·해설과 오답 입력을 사용할 수 있습니다."}</div><div class="actions">${["exam", "ans", "sol"].map((m, i) => button("assignment-output", ["문제지", "정답", "해설"][i], `data-mode="${m}"`)).join("")}${a.pdf_status !== "ready" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${a.id}"`) : ""}</div><h3>학생별 확인</h3><div class="assignment-students">${active.map((s) => `<div class="recent-row"><span>${esc(s.name)}</span><span>${s.session_id ? "오답 입력 완료" : "오답 입력 전"}</span><a href="../apmath/student/index.html?teacher_preview=1&student_id=${encodeURIComponent(s.student_id)}" target="_blank">학생 화면 확인</a></div>`).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><p>${excluded.map((s) => esc(s.name)).join(" · ")}</p></details>` : ""}`,
+      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p>${lifecycle ? `<div class="history-card-states" aria-label="Assignment 상태">${lifecycle}</div>` : ""}<div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : a.pdf_status === "generating" ? "PDF 준비 중" : a.pdf_status === "failed" ? "PDF 준비 실패 · 다시 준비할 수 있습니다." : "PDF 준비 필요 · 온라인 문제·정답·해설은 사용할 수 있습니다."}</div><div class="actions" role="group" aria-label="Assignment ${esc(a.id)} 시험·해설·정답">${[["exam", "시험"], ["sol", "해설"], ["ans", "정답"]].map(([mode, label]) => button("assignment-output", label, `data-mode="${mode}"`)).join("")}${a.pdf_status !== "ready" && a.pdf_status !== "generating" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${esc(a.id)}"${pdfRetryPending ? " disabled aria-busy=\"true\"" : ""}`) : ""}</div><h3>학생별 확인 · ${esc(a.id)}</h3><div class="assignment-students">${active.map(studentRow).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><div class="assignment-students">${excluded.map(studentRow).join("")}</div></details>` : ""}`,
     );
+  }
+  function pdfRetryAuthority(assignmentId) {
+    return {
+      assignmentId,
+      view: state.view,
+      selection: String(state.recentSelectedAssignmentId || ""),
+      modalWasOpen: Boolean($("modal")?.open),
+      modalAssignmentId: String(state.openAssignment?.assignment?.id || ""),
+    };
+  }
+  function isCurrentPdfRetryAuthority(authority) {
+    return Boolean(authority &&
+      authority.view === "recent" && state.view === authority.view &&
+      String(state.recentSelectedAssignmentId || "") === authority.selection &&
+      (!authority.selection || authority.selection === authority.assignmentId) &&
+      (!authority.modalWasOpen || (
+        $("modal")?.open && authority.modalAssignmentId === authority.assignmentId &&
+        state.openAssignment?.assignment?.id === authority.assignmentId
+      )));
+  }
+  function applyRecentPdfMutationResult(assignmentId, result, authority) {
+    if (!isCurrentPdfRetryAuthority(authority)) return false;
+    const assignment = result?.assignment || {};
+    const pdfStatus = assignment.pdf_status || "pending";
+    const pdfError = assignment.pdf_error || "";
+    const row = state.recentRows.find((item) => item.id === assignmentId);
+    if (row) {
+      row.pdfStatus = pdfStatus;
+      row.pdfError = pdfError;
+      row.pdfReady = pdfStatus === "ready";
+    }
+    const openAssignment = state.openAssignment;
+    if (authority.modalWasOpen && openAssignment?.assignment?.id === assignmentId) {
+      state.openAssignment = {
+        ...openAssignment,
+        assignment: { ...openAssignment.assignment, ...assignment, pdf_status: pdfStatus, pdf_error: pdfError },
+      };
+      if ($("modal")?.open) renderAssignmentStatus(state.openAssignment, assignmentId);
+    }
+    if (state.view === "recent") updateRecentResults();
+    return true;
+  }
+  async function assignmentStatus(id) {
+    const assignmentId = String(id || "").trim();
+    if (!assignmentId) return null;
+    const version = ++state.assignmentStatusLoadVersion;
+    const requestedView = state.view;
+    const expectedSelection = String(state.recentSelectedAssignmentId || "");
+    const pdfMutationVersion = recentPdfMutationVersion(assignmentId);
+    const isCurrentRequest = () =>
+      version === state.assignmentStatusLoadVersion &&
+      requestedView === "recent" && state.view === requestedView &&
+      String(state.recentSelectedAssignmentId || "") === expectedSelection &&
+      (!expectedSelection || expectedSelection === assignmentId) &&
+      pdfMutationVersion === recentPdfMutationVersion(assignmentId);
+    if (!isCurrentRequest()) return null;
+    let data;
+    try {
+      data = await api(
+        "/class-exam-assignments/" + encodeURIComponent(assignmentId) + "/status",
+      );
+    } catch (error) {
+      if (!isCurrentRequest()) return null;
+      throw assignmentStatusAuthorityError(error, {
+        version,
+        view: requestedView,
+        selection: expectedSelection,
+        assignmentId,
+        pdfMutationVersion,
+      });
+    }
+    if (!isCurrentRequest()) return null;
+    state.openAssignment = data;
+    const recentRow = state.recentRows.find((row) => row.id === assignmentId);
+    if (recentRow && Object.hasOwn(data.assignment || {}, "pdf_status")) {
+      recentRow.pdfStatus = data.assignment.pdf_status || "pending";
+      recentRow.pdfError = data.assignment.pdf_error || "";
+      recentRow.pdfReady = recentRow.pdfStatus === "ready";
+      updateRecentResults();
+    }
+    renderAssignmentStatus(data, assignmentId);
+    return data;
   }
   async function openAssignmentOutput(assignmentId, mode) {
     const popup = window.open("about:blank", "_blank");
@@ -1791,15 +2156,29 @@
         }
       });
   }
+  function noteRenderedViewTransition() {
+    if (lastRenderedView === state.view) return;
+    const previousView = lastRenderedView;
+    lastRenderedView = state.view;
+    state.assignmentStatusLoadVersion++;
+    if (previousView === "recent" && state.view !== "recent")
+      invalidateRecentRequests();
+  }
   function render() {
+    noteRenderedViewTransition();
+    if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
       document.body.dataset.archiveView = state.view;
       document.querySelectorAll("[data-view]").forEach((button) => {
         button.classList.toggle("active", button.dataset.view === state.view);
         button.setAttribute("aria-current", button.dataset.view === state.view ? "page" : "false");
       });
-      window.Archive2Library.render($("content"), state.savedPaperId || "")
-        .then(() => status("저장한 시험지를 불러왔습니다."))
+      window.Archive2Library.render(
+        $("content"),
+        state.savedPaperId || "",
+        state.savedLibraryStatusFilter || "ACTIVE",
+      )
+        .then((result) => { if (result !== false) status("저장한 시험지를 불러왔습니다."); })
         .catch((error) => {
           $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(error.message || "시험지를 불러오지 못했습니다.")}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
           status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);
@@ -1964,6 +2343,9 @@
       if (data?.saved !== true || !rows.length || (expectedCount && rows.length !== expectedCount))
         throw new Error("저장 결과의 시험지 수를 확인하지 못했습니다.");
       state.savedPaperIds = rows.map((paper) => paper.id);
+      if (state.savedPaperIds.some((id) => !SAVED_PAPER_UUID.test(String(id || ""))))
+        throw new Error("저장 결과의 Saved Paper ID를 확인하지 못했습니다.");
+      state.lastSavedPaperIds = state.savedPaperIds.slice();
       state.saveMessage = state.savedPaperIds.length > 1
         ? "시험지 " + state.savedPaperIds.length + "권을 저장했습니다."
         : "시험지 1개를 저장했습니다.";
@@ -2215,7 +2597,7 @@
     );
   }
   function showDialog(title, body) {
-    $("modal").classList.remove("original-issue-dialog");
+    $("modal").classList.remove("original-issue-dialog", "saved-paper-issue-dialog");
     $("modal-body").innerHTML =
       `<h2 id="modal-title">${esc(title)}</h2>${body}`;
     if (!$("modal").open) $("modal").showModal();
@@ -2303,6 +2685,10 @@
     return prepare();
   }
   async function print() {
+    const receipt = state.receipts.find((row) =>
+      row.partIndex === state.previewIndex && row.classId === state.classId,
+    );
+    if (receipt?.id) return openAssignmentOutput(receipt.id, state.outputMode);
     const popup = window.open("about:blank", "_blank");
     try {
       const papers = await finalGate();
@@ -2515,15 +2901,101 @@
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
-  function urlState() {
-    const url = new URL(location.href);
-    url.search = "";
+  const FINDER_URL_KEYS = [
+    "grade", "curriculumKey", "courseKey", "semanticSubject", "school",
+    "yearFrom", "yearTo", "axis", "query", "family", "material",
+  ];
+  const RECENT_URL_KEYS = ["from", "to", "grade", "subject", "query"];
+  function routeUrl() {
+    const url = new URL("workspace.html", location.href);
     url.searchParams.set("view", state.view);
-    if (state.view === "find")
-      for (const [k, v] of Object.entries(state.find))
-        if (v) url.searchParams.set(k, v);
-    history.pushState(null, "", url);
+    if (state.view === "find") {
+      for (const key of FINDER_URL_KEYS)
+        if (state.find[key]) url.searchParams.set(key, state.find[key]);
+      if (state.page > 0) url.searchParams.set("page", String(state.page));
+    } else if (state.view === "recent") {
+      for (const key of RECENT_URL_KEYS)
+        if (state.recentFilters[key]) url.searchParams.set(key, state.recentFilters[key]);
+      if (state.recentClassId) url.searchParams.set("class", state.recentClassId);
+      if (state.recentSelectedAssignmentId)
+        url.searchParams.set("assignment_id", state.recentSelectedAssignmentId);
+    } else if (state.view === "saved") {
+      if (state.savedPaperId) url.searchParams.set("paper_id", state.savedPaperId);
+      if (state.savedLibraryStatusFilter !== "ACTIVE")
+        url.searchParams.set("status", state.savedLibraryStatusFilter);
+    } else if (state.view === "compose" && state.editSavedPaperId) {
+      url.searchParams.set("edit_saved_paper", state.editSavedPaperId);
+    }
+    return url;
   }
+  function rememberCurrentHistoryEntry() {
+    if (new URLSearchParams(location.search).get("view") === "saved")
+      window.Archive2Library?.saveContext?.();
+    try {
+      history.replaceState(
+        { ...(history.state || {}), archive2ScrollY: Math.max(0, Number(window.scrollY) || 0) },
+        "",
+        location.href,
+      );
+    } catch {}
+  }
+  function urlState() {
+    rememberCurrentHistoryEntry();
+    history.pushState({ archive2ScrollY: 0 }, "", routeUrl());
+  }
+  function replaceUrlState() {
+    history.replaceState(
+      { ...(history.state || {}), archive2ScrollY: Math.max(0, Number(window.scrollY) || 0) },
+      "",
+      routeUrl(),
+    );
+  }
+  async function openRecentAssignmentStatus(id) {
+    const assignmentId = String(id || "").trim();
+    if (!assignmentId) return;
+    if (state.view === "recent") {
+      invalidateRecentRequests();
+      updateRecentResults();
+      rememberCurrentHistoryEntry();
+      state.recentSelectedAssignmentId = assignmentId;
+      history.pushState(
+        { archive2ScrollY: Math.max(0, Number(window.scrollY) || 0), archive2RecentSelection: true },
+        "",
+        routeUrl(),
+      );
+    }
+    await assignmentStatus(assignmentId);
+  }
+  function restoreCurrentHistoryScroll() {
+    const top = Math.max(0, Number(history.state?.archive2ScrollY) || 0);
+    const restore = () => window.scrollTo(0, top);
+    if (typeof requestAnimationFrame === "function") requestAnimationFrame(restore);
+    else restore();
+  }
+  function showSavedLibrary(statusFilter = "ACTIVE") {
+    rememberCurrentHistoryEntry();
+    state.view = "saved";
+    state.savedPaperId = "";
+    state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(statusFilter)
+      ? statusFilter : "ACTIVE";
+    history.pushState({ archive2ScrollY: 0 }, "", routeUrl());
+    render();
+    window.scrollTo(0, 0);
+  }
+  function showSavedPaper(id, statusFilter = state.savedLibraryStatusFilter || "ACTIVE") {
+    const paperId = String(id || "").trim();
+    if (!paperId) return;
+    rememberCurrentHistoryEntry();
+    state.view = "saved";
+    state.savedPaperId = paperId;
+    state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(statusFilter)
+      ? statusFilter : "ACTIVE";
+    history.pushState({ archive2ScrollY: 0, archive2SavedLibraryDetail: true }, "", routeUrl());
+    render();
+    window.scrollTo(0, 0);
+  }
+  window.Archive2WorkspaceShowSavedLibrary = showSavedLibrary;
+  window.Archive2WorkspaceShowSavedPaper = showSavedPaper;
   function newDraft() {
     if (state.saveResultState === "RESULT_UNKNOWN") {
       status("현재 저장 결과를 먼저 확인한 뒤 새 작업을 시작하세요.", true);
@@ -2562,6 +3034,7 @@
       saveBatchId: "",
       saveSignature: "",
       savedPaperIds: [],
+      lastSavedPaperIds: [],
       saveMessage: "",
       saveError: "",
       saveResultSignature: "",
@@ -2575,26 +3048,35 @@
     scheduleSave();
   }
   document.addEventListener("click", async (event) => {
+    if (!event.target.closest(".finder-card-more, .compose-saved-continuity-more, .history-draft-actions details"))
+      document.querySelectorAll(".finder-card-more[open], .compose-saved-continuity-more[open], .history-draft-actions details[open]")
+        .forEach((menu) => { menu.open = false; });
     const b = event.target.closest("button");
-    if (!b || b.disabled || state.busy || state.saveBusy) return;
+    const savedPaperAction = ["saved-paper-issue", "saved-paper-view", "saved-output"].includes(b?.dataset?.action);
+    if (!b || b.disabled || ((state.busy || state.saveBusy) && !savedPaperAction)) return;
     try {
       if (b.dataset.view) {
+        if (b.dataset.view === state.view && !(state.view === "saved" && state.savedPaperId))
+          return;
+        state.assignmentStatusLoadVersion++;
+        rememberCurrentHistoryEntry();
         if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length)
           state.sources = [];
         state.view = b.dataset.view;
         if (state.view === "saved") state.savedPaperId = "";
         urlState();
         render();
+        window.scrollTo(0, 0);
         if (state.view === "recent") await loadRecent();
         return;
       }
       const a = b.dataset.action;
-      if (state.saveResultState === "RESULT_UNKNOWN" && a !== "save-paper") {
+      if (state.saveResultState === "RESULT_UNKNOWN" && !["save-paper", "saved-output", "saved-paper-issue", "saved-paper-view"].includes(a)) {
         status("저장 결과를 확인할 때까지 Draft 편집을 잠급니다.", true);
         return;
       }
       if (a === "assignment-status") {
-        await assignmentStatus(b.dataset.assignment);
+        await openRecentAssignmentStatus(b.dataset.assignment);
         return;
       }
       if (a === "assignment-output-direct") {
@@ -2606,12 +3088,66 @@
         return;
       }
       if (a === "assignment-pdf") {
+        const assignmentId = String(b.dataset.assignment || "");
+        if (!assignmentId || recentPdfRetryIds.has(assignmentId)) return;
+        recentPdfRetryIds.add(assignmentId);
         b.disabled = true;
-        await api(
-          "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
-          {},
-        );
-        await assignmentStatus(b.dataset.assignment);
+        const retryAuthority = pdfRetryAuthority(assignmentId);
+        const receipt = state.originalReceipts?.find((row) => row.id === assignmentId);
+        try {
+          if (receipt) {
+            try {
+              const result = await api(
+                "/class-exam-assignments/" + assignmentId + "/pdf",
+                {},
+              );
+              advanceRecentPdfMutationVersion(assignmentId);
+              receipt.pdfStatus = result.assignment?.pdf_status || "pending";
+              receipt.pdfError = result.assignment?.pdf_error || result.error || "";
+            } catch (error) {
+              receipt.pdfStatus = "pending";
+              receipt.pdfError = error.message || "PDF를 다시 준비하지 못했습니다.";
+              if (state.view === retryAuthority.view && $("modal")?.open)
+                status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+            }
+            return;
+          }
+          let pdfResult;
+          try {
+            pdfResult = await api(
+              "/class-exam-assignments/" + assignmentId + "/pdf",
+              {},
+            );
+            advanceRecentPdfMutationVersion(assignmentId);
+          } catch (error) {
+            if (isCurrentPdfRetryAuthority(retryAuthority)) {
+              applyRecentPdfMutationResult(assignmentId, {
+                assignment: { pdf_status: "failed", pdf_error: error.message || "PDF를 다시 준비하지 못했습니다." },
+              }, retryAuthority);
+              status("Assignment 저장은 유지됩니다. PDF만 다시 준비하세요.", true);
+            }
+            return;
+          }
+          applyRecentPdfMutationResult(assignmentId, pdfResult, retryAuthority);
+          try {
+            if (isCurrentPdfRetryAuthority(retryAuthority))
+              await assignmentStatus(assignmentId);
+          } catch (error) {
+            if (isCurrentAuthorityError(error) && isCurrentPdfRetryAuthority(retryAuthority))
+              status("PDF 상태는 저장되었습니다. 학생별 확인 화면만 새로고침하지 못했습니다.", true);
+          }
+        } finally {
+          recentPdfRetryIds.delete(assignmentId);
+          b.disabled = false;
+          if (receipt) {
+            if (state.originalReceipts?.includes(receipt) && $("modal")?.open)
+              renderOriginalReceipts();
+          } else {
+            if (isCurrentPdfRetryAuthority(retryAuthority)) updateRecentResults();
+            if (retryAuthority.modalWasOpen && isCurrentPdfRetryAuthority(retryAuthority))
+              renderAssignmentStatus(state.openAssignment, assignmentId);
+          }
+        }
         return;
       }
       if (a === "recover-part") {
@@ -2652,7 +3188,16 @@
         return;
       }
       if (a === "close-dialog") {
-        if (!originalIssueBusy()) $("modal").close();
+        if (state.view === "recent" && state.recentSelectedAssignmentId) {
+          state.assignmentStatusLoadVersion++;
+          invalidateRecentRequests();
+          if (history.state?.archive2RecentSelection) history.back();
+          else {
+            state.recentSelectedAssignmentId = "";
+            replaceUrlState();
+            $("modal").close();
+          }
+        } else if (!originalIssueBusy()) $("modal").close();
       } else if (a === "home-product") {
         const product = HOME_PRODUCT_REGISTRY.find(
           (item) => item.productKey === b.dataset.productKey,
@@ -2665,13 +3210,16 @@
         const target = product.routeResolver();
         if (target) location.href = String(target);
       } else if (a === "home-grade") {
+        rememberCurrentHistoryEntry();
         state.sources = [];
         state.find = { grade: b.dataset.grade || "" };
         state.view = "find";
         state.page = 0;
         urlState();
         render();
+        window.scrollTo(0, 0);
       } else if (a === "home-search") {
+        rememberCurrentHistoryEntry();
         const query = $("archive-home-query")?.value.trim() || "";
         state.find = query ? { query } : {};
         state.view = "find";
@@ -2679,6 +3227,7 @@
         urlState();
         render();
       } else if (a === "go-compose") {
+        rememberCurrentHistoryEntry();
         const sources = b.dataset.useSources === "true" ? state.sources.slice() : [];
         if (state.selected.length || state.receipts.length || state.sealed) newDraft();
         state.sources = sources;
@@ -2735,8 +3284,11 @@
         urlState();
         render();
       } else if (a === "page-prev") {
-        state.page--;
+        state.page = Math.max(0, state.page - 1);
+        urlState();
         render();
+        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       } else if (a === "material") {
         state.find.material = b.dataset.material;
         reconcileFinderSchool(state.find);
@@ -2745,7 +3297,10 @@
         render();
       } else if (a === "page-next") {
         state.page++;
+        urlState();
         render();
+        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       } else if (a === "source-toggle") {
         const f = state.catalog.exams[Number(b.dataset.exam)].file;
         state.sources = state.sources.includes(f)
@@ -2886,6 +3441,12 @@
         scheduleSave();
         await refreshHistory();
       } else if (a === "history-refresh") await refreshHistory();
+      else if (a === "saved-output") await window.Archive2Library.openOutput(
+        b.dataset.paperId,
+        b.dataset.mode || "exam",
+      );
+      else if (a === "saved-paper-issue") await openSavedPaperIssue(b.dataset.paperId);
+      else if (a === "saved-paper-view") showSavedPaper(b.dataset.paperId);
       else if (a === "print") await print();
       else if (a === "save-paper") await savePapers();
       else if (a === "assign") await assign();
@@ -2940,18 +3501,20 @@
           "archive2-health.json",
         );
     } catch (e) {
-      status(e.message, true);
+      if (isCurrentAuthorityError(e)) status(e.message, true);
     }
   });
   document.addEventListener("submit", (event) => {
     if (event.target.id !== "archive-home-search") return;
     event.preventDefault();
+    rememberCurrentHistoryEntry();
     const query = $("archive-home-query")?.value.trim() || "";
     state.find = query ? { query } : {};
     state.view = "find";
     state.page = 0;
     urlState();
     render();
+    window.scrollTo(0, 0);
   });
   document.addEventListener("change", async (event) => {
     if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
@@ -2963,8 +3526,11 @@
         return;
       }
       if (el.id === "recent-class") {
+        if (state.view !== "recent") return;
         state.recentClassId = el.value;
         updateRecentResults();
+        replaceUrlState();
+        scheduleRecentRefetch();
         return;
       }
       if (el.dataset.recentFilter) {
@@ -3119,7 +3685,11 @@
   document.addEventListener("input", (event) => {
     if (state.saveResultState === "RESULT_UNKNOWN") { render(); return; }
     if (event.target.dataset.recentFilter === "query") {
-      if (!event.isComposing) changeRecentFilter(event.target);
+      if (state.view !== "recent") return;
+      if (event.isComposing) {
+        invalidateRecentRequests();
+        updateRecentResults();
+      } else changeRecentFilter(event.target);
       return;
     }
     const el = event.target;
@@ -3195,10 +3765,17 @@
       state.title = s.header.title;
       state.prepared = [];
       scheduleSave();
+      refreshComposeSaveContinuity();
       clearTimeout(previewTimer);
       previewTimer = setTimeout(updatePreview, 450);
     }
   }
+  document.addEventListener("compositionstart", (event) => {
+    if (event.target.dataset.recentFilter === "query" && state.view === "recent") {
+      invalidateRecentRequests();
+      updateRecentResults();
+    }
+  });
   document.addEventListener("compositionend", (event) => {
     if (event.target.dataset.recentFilter === "query") changeRecentFilter(event.target);
   });
@@ -3218,48 +3795,90 @@
   });
   window.addEventListener("message", (event) => {
     const frame = $("original-issue-frame");
+    const savedPaperFrame = $("saved-paper-issue-frame");
+    const fromOriginalFrame = Boolean(frame && event.source === frame.contentWindow);
+    const fromSavedPaperFrame = Boolean(savedPaperFrame && event.source === savedPaperFrame.contentWindow);
     if (
       event.origin !== location.origin ||
-      !frame ||
-      event.source !== frame.contentWindow
+      (!fromOriginalFrame && !fromSavedPaperFrame)
     )
       return;
-    if (event.data?.type === "archive2-original-close") $("modal").close();
-    if (event.data?.type === "archive2-original-ready")
+    if (event.data?.type === "archive2-original-close") {
+      $("modal").classList.remove("original-issue-dialog", "saved-paper-issue-dialog");
+      $("modal").close();
+      return;
+    }
+    if (fromOriginalFrame && event.data?.type === "archive2-original-ready")
       frame.contentWindow.setArchive2OriginalSettings?.(state.originalSettings);
-    if (event.data?.type === "archive2-original-saved") {
+    if ((fromOriginalFrame || fromSavedPaperFrame) && event.data?.type === "archive2-original-saved") {
       const a = event.data.assignment;
       state.originalReceipts = (state.originalReceipts || []).filter(
         (r) => r.id !== a.id,
       );
-      state.originalReceipts.push({ id: a.id });
+      state.originalReceipts.push({
+        id: a.id,
+        classId: String(event.data.classId || a.class_id || ""),
+        className: String(event.data.className || "선택한 반"),
+        pdfStatus: String(a.pdf_status || "pending"),
+        pdfError: String(event.data.pdfFailure || a.pdf_error || ""),
+      });
       $("modal")
         .querySelectorAll(
           "[data-output-settings] input,[data-output-settings] select",
         )
         .forEach((el) => (el.disabled = true));
-      $("original-receipts").innerHTML =
-        `<div class="callout"><strong>${state.originalReceipts.length}개 반에 출제 저장 완료</strong><p>선택한 학생의 ‘내 시험지’에 표시됩니다. 문제·정답·해설 확인과 오답 입력이 가능합니다.${a.pdf_status === "ready" ? "" : " PDF 파일은 다시 준비해야 합니다."}</p>${state.originalReceipts.map((r) => button("assignment-status", "학생별 확인 · 출력", `data-assignment="${r.id}"`)).join("")}</div>`;
+      renderOriginalReceipts();
     }
-    if (event.data?.type === "archive2-original-complete") {
+    if ((fromOriginalFrame || fromSavedPaperFrame) && event.data?.type === "archive2-original-complete") {
       const receiptCount = Number(event.data.receiptCount);
       if (
         $("original-review").hidden &&
         Number.isInteger(receiptCount) &&
         receiptCount > 0 &&
         state.originalReceipts?.length === receiptCount
-      )
+      ) {
+        if (fromSavedPaperFrame)
+          document.querySelector('[data-action="original-review"]')?.removeAttribute("disabled");
         setOriginalStep("review");
+      }
     }
+  });
+  $("modal").addEventListener?.("close", () => {
+    state.assignmentStatusLoadVersion++;
+    if (state.view === "recent") updateRecentResults();
   });
   $("modal").addEventListener("cancel", (event) => {
     if (originalIssueBusy()) event.preventDefault();
+    else if (state.view === "recent" && state.recentSelectedAssignmentId) {
+      event.preventDefault();
+      state.assignmentStatusLoadVersion++;
+      invalidateRecentRequests();
+      if (history.state?.archive2RecentSelection) history.back();
+      else {
+        state.recentSelectedAssignmentId = "";
+        replaceUrlState();
+        $("modal").close();
+      }
+    }
   });
   window.addEventListener("pagehide", save);
   window.addEventListener("popstate", async () => {
+    state.assignmentStatusLoadVersion++;
+    const previousSelection = state.recentSelectedAssignmentId;
     readUrl();
+    if ($("modal")?.open && previousSelection !== state.recentSelectedAssignmentId)
+      $("modal").close();
     render();
-    if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
+    if (state.view === "recent") {
+      const selectedAssignmentId = state.recentSelectedAssignmentId;
+      try {
+        const loaded = await loadRecent();
+        if (loaded && selectedAssignmentId && state.view === "recent" &&
+          state.recentSelectedAssignmentId === selectedAssignmentId)
+          await assignmentStatus(selectedAssignmentId);
+      } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+    }
+    restoreCurrentHistoryScroll();
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
@@ -3267,23 +3886,19 @@
       ? p.get("view")
       : "home";
     state.savedPaperId = p.get("paper_id") || "";
+    state.savedLibraryStatusFilter = ["ACTIVE", "ARCHIVED", "TRASHED"].includes(p.get("status"))
+      ? p.get("status") : "ACTIVE";
     state.editSavedPaperId = p.get("edit_saved_paper") || "";
     state.find = {};
-    for (const k of [
-      "grade",
-      "curriculumKey",
-      "courseKey",
-      "semanticSubject",
-      "school",
-      "yearFrom",
-      "yearTo",
-      "axis",
-      "query",
-      "family",
-      "material",
-    ])
+    for (const k of FINDER_URL_KEYS)
       if (p.has(k)) state.find[k] = p.get(k);
-    state.page = 0;
+    const requestedPage = Number.parseInt(p.get("page") || "0", 10);
+    state.page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 0;
+    state.recentFilters = Object.fromEntries(
+      RECENT_URL_KEYS.map((key) => [key, p.get(key) || ""]),
+    );
+    state.recentClassId = p.get("class") || "";
+    state.recentSelectedAssignmentId = p.get("assignment_id") || "";
     if (state.catalog?.taxonomy) {
       const before = JSON.stringify(state.find);
       Object.assign(
@@ -3296,12 +3911,7 @@
   }
   function replaceFinderUrlState() {
     if (state.view !== "find") return;
-    const url = new URL(location.href);
-    url.search = "";
-    url.searchParams.set("view", state.view);
-    for (const [key, value] of Object.entries(state.find))
-      if (value) url.searchParams.set(key, value);
-    history.replaceState(null, "", url);
+    history.replaceState(history.state || {}, "", routeUrl());
   }
   (async () => {
     readUrl();
@@ -3332,7 +3942,16 @@
         ? "저장한 시험지를 불러왔습니다."
         : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`);
       const previous = drafts();
-      if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
+      if (state.view === "recent") {
+        const selectedAssignmentId = state.recentSelectedAssignmentId;
+        try {
+          const loaded = await loadRecent();
+          if (loaded && selectedAssignmentId && state.view === "recent" &&
+            state.recentSelectedAssignmentId === selectedAssignmentId)
+            await assignmentStatus(selectedAssignmentId);
+        } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+      }
+      restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {
         const sourceId = state.editSavedPaperId;
         status("원본 Saved Paper snapshot을 확인해 새 Draft를 준비하고 있습니다.");

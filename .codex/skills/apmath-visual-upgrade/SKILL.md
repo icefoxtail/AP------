@@ -64,6 +64,38 @@ current Golden Sample은 **quality floor**이지 ceiling이 아니다.
 
 ---
 
+## 0.1 PASS AUTHORITY — WORKER CLAIM IS NOT EVIDENCE
+
+작업자의 `검수 완료`, `Python으로 확인`, `PASS`, 점수/카운트 자기보고는 **authority가 아니다**.
+
+재계산 가능한 사실은 final artifact와 결속된 raw physical evidence로 증명해야 한다.
+
+```text
+expected fact
+→ Python/numeric input + calculated output
+→ coordinate model
+→ actual final SVG primitive
+→ primitive에서 역산한 observed fact + delta/tolerance
+→ label owner binding
+→ actual browser measurement
+→ final SVG SHA / Git blob SHA binding
+```
+
+요약 점수(`geometryScore=100`, `21/21 PASS`)는 위 raw evidence를 대체하지 못한다.
+raw evidence가 없으면 해당 축은 **NOT_VERIFIED**다.
+
+전수 triage 작업은 전체 denominator의 item-level ledger를 남긴다.
+
+최소:
+- qid / questionUid
+- baseline solutionImage 존재 여부
+- KEEP / POLISH / REBUILD / ADD / REMOVE / EXEMPT
+- 한 줄 판단 근거
+- decisive relation
+- ADD인 경우 marginal benefit 근거
+
+---
+
 # 1. SELECT THE VISUAL SURFACE FIRST
 
 ## 1.1 PROBLEM_VISUAL
@@ -162,6 +194,27 @@ target의 기존 SVG를 신규 candidate construction reference로 쓸지는 별
 
 ---
 
+## 3.1 MARGINAL BENEFIT GATE — SOURCE FIGURE SUFFICIENCY
+
+`VISUAL_OPTIONAL != BLIND_ADD`.
+
+문제 그림/source figure가 이미 solution의 decisive relation을 충분히 보여 주는 경우,
+같은 삼각형·같은 원·같은 라벨을 다시 그리는 것만으로는 ADD 근거가 되지 않는다.
+
+source figure가 있는 문항에서 ADD하려면 최소 하나를 item evidence에 명시한다.
+
+- solution에서 새로 도입되는 보조선/수선/접점/분할
+- source에는 없는 owner 관계 또는 같은 길이/같은 각 묶음
+- 복잡한 source를 decisive reduction으로 바꾸는 새 representation
+- 계산값이 도형의 어디에 대응하는지 보여 주는 실질적 concept anchor
+
+`newVisualInformation=[]`이고 source가 이미 decisive relation을 충분히 전달하면
+기본 판정은 `VISUAL_EXEMPT` 또는 기존 visual KEEP이다.
+
+`문제가 쉽지 않다`, `삼각비 문항이다`, `그림이 있으면 좋다`만으로 ADD하지 않는다.
+
+---
+
 # 4. DECISIVE RELATION FIRST
 
 solution visual은 “모든 것을 그린 그림”이 아니다.
@@ -175,6 +228,9 @@ solution visual은 “모든 것을 그린 그림”이 아니다.
 3. 필요한 label / exact value
 4. 필요한 경우에만 axis / tick / grid
 5. 필요한 경우에만 계산 card
+
+**Geometry-preservation HARD:** 풀이의 결정 구조가 실제 점·선·원·각·접선·수선 등의 geometry이면
+계산 card/panel이 그 geometry를 대체할 수 없다. card는 geometry→algebra bridge 또는 결론 보조용이다.
 
 금지:
 - 좌표 문제라는 이유만으로 항상 full Cartesian axes
@@ -267,6 +323,78 @@ TikZ / PGFPlots / handcrafted SVG가 다음을 독자적으로 재계산해 auth
 - `COORDINATE_SEMANTIC_PASS`
 - `ACTUAL_SVG_PARITY_PASS`
 
+변경/신규 SVG마다 item-level evidence에는 최소 다음을 남긴다.
+
+- source exam SHA / solution SHA
+- final SVG sha256 + Git blob SHA
+- expectedFacts[]
+- pythonInputs / pythonCalculatedOutputs
+- coordinateModel
+- actualSvgPrimitives
+- observedFacts[] + delta/tolerance
+- labelOwnerBindings
+- XML parse result
+- browser evidence가 있으면 final SVG SHA와 동일 artifact 결속
+
+이 필드 없이 PASS count만 존재하면 `PHYSICAL_EVIDENCE_MISSING`이다.
+
+---
+
+## 6.1 EXPECTED-FACT COMPLETENESS / SOURCE IDENTITY / FACT ROLE HARD
+
+raw evidence가 있어도 **검증 질문 자체가 불완전하면 PASS가 아니다**.
+
+각 changed SVG evidence는 다음 세 축을 추가로 닫는다.
+
+### A. EXPECTED_FACT_COMPLETENESS
+source + verified solution에서 student-facing visual에 관련된 조건을 먼저 inventory한다.
+
+최소:
+- `sourceConditionCoverage[]`
+- `decisiveRelationCovered=true`
+- `uncoveredCriticalConditions=[]`
+- `expectedFactCompletenessStatus=PASS`
+
+좌표평면/함수그래프이면 slope/intercept만 검증하지 않는다.
+최소 frame facts도 포함한다.
+
+```text
+x-axis horizontal
+y-axis vertical
+axes intersect at intended origin
+axis directions/signs are correct
+plotted line/curve uses the same coordinate frame
+required axis/tick/label identity is preserved
+```
+
+### B. SOURCE_SEMANTIC_IDENTITY_PARITY
+source의 점/선/원/접점/중심 이름은 임의 재명명하지 않는다.
+
+evidence:
+- `sourceSemanticIdentity.applicable`
+- `sourceSemanticIdentity.checks[]`
+- 각 row: `semanticRole / sourceLabel / artifactLabel / result`
+
+`sourceLabel != artifactLabel`이면 사용자 승인된 pedagogical renaming이 아닌 한 FAIL.
+내부 계산용 보조점은 별도 이름을 쓸 수 있지만 source entity를 대체하면 안 된다.
+
+### C. FACT ROLE — GIVEN / DERIVED / CONCLUSION
+expected fact마다 다음 role 중 하나를 부여한다.
+
+- `GIVEN`
+- `DERIVED_INTERMEDIATE`
+- `CONCLUSION`
+
+그리고 visual encoding을 `factVisualizations[]`로 결속한다.
+
+- `GIVEN_STYLE`
+- `DERIVED_STYLE`
+- `CONCLUSION_STYLE`
+- `NOT_RENDERED`
+
+**CONCLUSION을 GIVEN_STYLE indicator(tick, equal-mark, supplied-value style)로 미리 그리면 FAIL**이다.
+증명해야 할 등식/합동/길이를 문제에서 주어진 사실처럼 표시하지 않는다.
+
 ---
 
 # 7. SOLUTION VISUAL DESIGN LANGUAGE — DIGITAL-FIRST
@@ -352,6 +480,11 @@ relocate
 ```
 
 4px/6px 같은 “들어가기는 하지만 학생이 못 읽는” label은 PASS가 아니다.
+
+**Final viewport HARD:** authored SVG `font-size`가 아니라 실제 Archive required render profile에서의
+`finalViewportCssFontPx`를 본다. 학생에게 읽혀야 하는 point/length/angle/math/text label은
+**11 CSS px 미만이면 HARD FAIL**, 12 CSS px 이상을 기본 목표로 한다.
+축소 때문에 11px 미만이 되면 font만 억지로 줄이지 말고 canvas/viewport/label 밀도/구성을 바꾼다.
 
 학생용 영어 lint:
 - 불필요한 영어 문장 = FAIL/POLISH
@@ -457,6 +590,8 @@ triage
 - actual font load state
 - `getBBox()` / `getBoundingClientRect()` 등 real DOM measurement
 - clipping / label collision / overflow 확인
+- 각 student-facing label의 `finalViewportCssFontPx` 기록
+- required render profile에서 `finalViewportCssFontPx >= 11` HARD
 - 가능하면 native Archive solution column에서도 확인
 
 금지:
@@ -481,6 +616,93 @@ KEEP 조건:
 - student readability
 - current quality floor 충족
 - PRINT95 작업이면 final render qualification까지 닫힘
+
+## 13.1 PUBLISHING-TEAM STYLE FLOOR — KEEP IS NOT NO-OP
+
+목표는 한 시험지·한 코호트의 visual이 서로 다른 시기에 만들어졌더라도 **학생에게는 하나의 출판팀이 만든 결과처럼 보이게 하는 것**이다.
+
+`KEEP`는 **semantic/geometry를 보존한다**는 뜻이지 legacy SVG bytes를 무변경 보존한다는 뜻이 아니다.
+
+target visual-upgrade scope에 이미 SVG가 있으면 기본 경로는 다음이다.
+
+```text
+KEEP_SEMANTIC
+→ CURRENT_STYLE_FLOOR_AUDIT
+→ ALREADY_CURRENT | STYLE_NORMALIZE
+→ physical/browser evidence refresh
+→ PASS
+```
+
+기존 SVG가 math/semantic PASS여도 아래 current style floor 중 하나라도 미달이면 `STYLE_NORMALIZE`를 수행한다.
+
+- current canonical stroke hierarchy: main / auxiliary / derived / conclusion의 선 굵기·선종류
+- TEXT_FONT / MATH_FONT 역할 분리와 수학 변수의 일관된 조판
+- required viewport의 final CSS font-size HARD gate
+- point / length / angle label owner와 여백·충돌·clipping
+- 의미가 있는 제한적 accent color와 black-and-white survivability
+- canvas / viewBox / information density / whitespace의 일관성
+- legacy decoration, debug text, 불필요한 중복 정보 제거
+- 같은 시험지·같은 파일럿 안에서 visual style token의 일관성
+
+style normalization은 **수학 geometry를 다시 만드는 작업이 아니다**. 좌표·접선·수직·중점·각 등 semantic geometry가 이미 정확하면 가능한 한 그대로 보존하고 typography/stroke/color/spacing/composition만 현재 floor로 올린다.
+
+style normalization 과정에서 실제 geometry 또는 decisive relation을 바꿔야 하면 더 이상 단순 KEEP이 아니며 `POLISH` 또는 `REBUILD`로 승격한다.
+
+기존 SVG item evidence에는 최소 다음을 남긴다.
+
+- `styleFloorStatus = PASS | FAIL`
+- `styleNormalizationAction = ALREADY_CURRENT | NORMALIZED`
+- `styleVersion / appliedStyleTokens`
+- `semanticGeometryPreserved = true | false`
+- required viewport의 font/bbox/collision evidence
+
+**최종 KEEP은 `styleFloorStatus=PASS`일 때만 허용한다.**
+
+## 13.2 PUBLISHING ANNOTATION OWNERS — ANGLE ARC / SEGMENT DIMENSION
+
+학생이 숫자를 보고 owner를 추측하게 두지 않는다. **각도값과 길이값은 도형 자체에서 무엇의 값인지 보이게 한다.**
+
+### ANGLE — ARC OWNER DEFAULT
+일반 각에 `40° / 70° / 100°`처럼 각도값을 표시할 때는, 공간이 허용되는 한 **실제 꼭짓점을 중심으로 두 ray 사이에 작은 angle arc를 그리고 degree label을 그 arc에 결속**하는 것을 기본값으로 한다.
+
+- arc center = 실제 owner vertex
+- arc start/end direction = 실제 owner rays
+- degree label은 owner wedge 내부 또는 명확한 인접 위치
+- 같은 꼭짓점에 여러 각이 있으면 radius를 계층화해 서로 구분
+- 직각은 arc 대신 square marker 우선
+- reflex angle / straight angle은 작은 각으로 임의 치환하지 않고 source/solution 의미를 따른다
+- degree text만 다른 선 옆에 떠 있어 owner가 애매한 상태는 최종 출판 PASS 금지
+
+### SEGMENT LENGTH — DIMENSION OWNER DEFAULT
+`6 cm / 8 m / 12` 같은 길이값은 **어느 두 점 사이의 길이인지 시각적으로 결속**한다.
+
+우선순위:
+1. owner가 명확하면 선분과 평행한 방향으로 중앙/인접 배치
+2. owner가 애매하거나 여러 길이가 밀집하면 offset dimension line + end tick/end cap
+3. 공간/구조상 더 자연스러우면 brace/curved owner line 또는 leader 사용
+
+요구:
+- ownerSegment 또는 start/end point가 명시돼야 함
+- dimension marker가 실제 owner segment의 양 끝 범위를 잘못 암시하면 FAIL
+- 단위(`cm/m/km`)와 수치가 같은 owner에 결속돼야 함
+- equal-length tick은 **같은 길이 관계** 표시용이며 단순 수치 라벨 owner 대용으로 남용하지 않음
+- GIVEN / DERIVED / CONCLUSION visual role을 보존하고 결론을 주어진 조건처럼 표시하지 않음
+
+### PHYSICAL EVIDENCE
+angle annotation:
+- ownerVertex / ownerRays
+- arc center/radius/start/end
+- expectedAngleDeg / observedAngleDeg / delta
+- label anchor + insideOwnerWedge
+
+length annotation:
+- ownerSegment 또는 startPoint/endPoint
+- annotationType = INLINE | OFFSET_DIMENSION | BRACE | LEADER
+- dimension endpoints/end caps 또는 brace span
+- label text/unit
+- projection fraction / offset / owner parity
+
+**표시 text가 맞아도 arc/dimension primitive가 다른 owner를 가리키면 FAIL**이다.
 
 기존 asset을 신규 제작 reference로 가리는 blind/fresh 규칙이 있으면 이를 지킨다.
 facts를 먼저 동결한 뒤 existing asset을 audit하는 것은 허용할 수 있다.

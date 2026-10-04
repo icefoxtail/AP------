@@ -7,6 +7,24 @@
 - current scope: **M2 1학기 34 current generation**
 - M3 / M1 / M2 2학기 / 고등 legacy 예약: **OFF 유지**
 
+## PROMPT CANONICAL SOURCE — CURRENT
+
+- 신규 학년·학기·시험지 묶음의 예약 worker 생성, cohort 전환, 공통 prompt 결함 수정 시 반드시 `docs/rules/02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md`을 COPY SOURCE로 사용한다.
+- 기존 active automation prompt는 runtime instance이지 template authority가 아니다.
+- 일반화 가능한 incident는 **canonical prompt template 수정 → version bump → Notion ACTIVE/CURRENT 동기화 → 필요한 active role prompt 일괄 migration → readback** 순서로 닫는다.
+- current template version: **PROMPT_TEMPLATE_V1.1.0**.
+- template의 NEVER DELETE 철학: EXAM-LEVEL CONVEYOR, dedicated worker=throughput owner, THANOS=rescue/closure owner, first-refusal, one-exam max, single-writer, physical PASS authority, handoff+lease relinquish, handed-off target 자동 재점유 금지, recurring worker self-disable 금지.
+
+
+## GPT VISUAL PRODUCTION CONTRACT — CURRENT
+
+- CREATE/R1/R2/R3/THANOS에서 problem image/SVG/graph/geometry/solutionImage를 생성·수정·필요성 판정·검수할 때는 최신 main의 `.codex/skills/apmath-visual-upgrade/SKILL.md`와 `docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md`를 함께 읽는다.
+- `SKILL.md`는 upstream 설계 철학이며 GPT가 Codex skill을 실제 invoke했다고 주장하는 근거가 아니다. GPT 실행 규칙은 GPT Visual Contract가 번역한다.
+- local Node/Python/browser command를 실행하지 못한 경우 실행했다고 보고하지 않는다. 가능한 static/math/coordinate/owner/style audit는 계속 수행하고, 실제 render가 필요한데 실행 불가하면 정확한 NOT_RUN/NOT_VERIFIED visual debt를 남긴다.
+- visual defect 하나로 whole-exam HOLD/self-disable 금지. source truth 자체가 불확정한 경우만 기존 bounded SOURCE_REPAIR_REQUIRED 경로를 사용한다.
+- 전수 visual sweep에서는 qid denominator와 KEEP/POLISH/REBUILD/ADD/REMOVE/EXEMPT item ledger를 남긴다.
+- MAIN/WATCHDOG는 신규 visual verdict를 만들지 않는다.
+
 ## CURRENT CUTOVER — 2026-10-03 — THANOS MASTER ×5
 
 - 기존 `MASTER-A/B/C`와 `INFINITY-1/2`의 역할 구분은 폐기한다. 다섯 예약은 `M2-1 THANOS-MASTER-1/2/3/4/5`로 통합한다.
@@ -50,6 +68,33 @@ CREATE_DONE 전 각 qid는 현재 schema와 canonical authority에서 적용 가
 **결정 가능한 값을 빈칸/null/미판정으로 남기고 CREATE_DONE을 선언하는 것은 FAIL**이다. 기존 ACTIVE PT/TPL projection이 없다는 이유로 semantic Meta까지 비워 두지 않는다. RPM semantic이 결정되면 semantic은 FINAL로 채우고 projection만 `BINDING_PENDING / UNMATERIALIZED` 등 current canonical 상태로 명시한다. TRUE semantic unresolved가 남는 경우에도 암묵적 공란으로 두지 말고 현행 Meta canonical의 명시적 unresolved/hold evidence를 남긴다.
 
 CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-field completeness를 결속해야 한다. **R1 진입 전 CREATE tag/meta denominator는 전 문항 100%**여야 한다.
+
+## 0.2 CREATE PRODUCER → THANOS HANDOFF — HARD (2026-10-04)
+
+형님의 2026-10-04 명시 지시: **TEMP-CREATE의 1차 책임은 생산량 확보다. 가능한 경우 자기 run에서 CREATE closure까지 닫지만, target-local capability blocker 때문에 생산 레인 자체를 붙잡거나 끄지 않는다. 마감 debt는 THANOS가 이어받을 수 있다.**
+
+- TEMP-CREATE-1/2/3/4는 source/content/choices/answer, 전 문항 fresh solution, tags/Meta, image/SVG/solutionImage, evidence까지 가능한 범위를 최대한 물리화하고, 실행 가능한 validator/receipt/write/readback 경로가 있으면 그대로 `CREATE_DONE→READY_FOR_REVIEW1`까지 닫는다.
+- 그러나 candidate/final artifact/evidence를 만든 뒤 **Git contents/PR/Actions write, validator executor, validator receipt, CREATE receipt, remote readback, provider/tool capability** 중 하나가 current run에서 실제로 막히고 materially different safe path도 실패하면, 같은 target을 반복 점유하지 않는다.
+- 이 경우 반드시 durable continuation을 남긴다: `examUid / branch+HEAD / finalArtifactSha / evidence blob / completedStep / firstMissingClosureStep / exact capability+error / required next action`. 그리고 공용 `RESCUE_QUEUE`에 CREATE closure debt로 등록하고 **same-target writer/lease/owner를 relinquish**하여 THANOS가 즉시 claim할 수 있게 한다.
+- 이 handoff는 **CREATE_DONE/PASS가 아니다.** actual validator + validator receipt + CREATE receipt + remote readback이 닫힐 때까지 해당 시험지는 R1 eligible이 아니다. 그 closure는 THANOS 또는 현재 capability를 가진 executor가 이어서 수행한다.
+- handoff된 target은 TEMP-CREATE가 다음 run에서 자동 재점유하지 않는다. 최신 CURRENT/RESCUE_QUEUE가 명시적으로 CREATE에 재배정하지 않는 한 **다음 scheduled run은 다른 eligible CREATE 생산으로 이동**한다.
+- current run에서 해당 시험지에 이미 mutation을 만들었다면 one-exam mutation/closure max/run을 지키고, 다음 eligible의 실제 mutation은 다음 run에 한다. blocker를 mutation 전에 확인했고 현재 run mutation이 0이면 다음 eligible을 같은 run에서 선택할 수 있다.
+- **target-local blocker, validator/write/tool 실패, 동일 경로 반복 방지 때문에 TEMP-CREATE 예약을 self-disable하는 것은 금지한다.** disable은 형님의 명시 지시 또는 CURRENT topology가 해당 role 종료를 선언한 경우만 허용한다.
+- 따라서 역할 분담은 `TEMP-CREATE = 생산 우선 + 가능한 closure`, `THANOS = handed-off CREATE closure debt 포함 universal rescue/마감`이다.
+
+## 0.3 R1/R2/R3 WORKER → THANOS HANDOFF — HARD (2026-10-04)
+
+형님의 2026-10-04 명시 지시: **R1/R2/R3 전용 worker도 자기 stage의 처리량을 계속 확보해야 한다. 가능한 경우 자기 run에서 stage closure까지 닫되, target-local capability blocker 때문에 같은 시험지를 반복 점유하거나 lane을 끄지 않는다. 마감 debt는 THANOS가 이어받는다.**
+
+- R1/R2/R3 전용 worker는 자기 stage의 full recheck, deterministic repair, evidence/validator/receipt를 가능한 범위까지 수행하고 실행 가능한 경로가 있으면 각각 `REVIEW1_DONE→READY_FOR_REVIEW2`, `REVIEW2_DONE→READY_FOR_R3`, `R3_PASS→RELEASE_QUEUE`까지 닫는다.
+- 그러나 유효한 review artifact/evidence/repair 결과가 물리화된 뒤 **Git contents/PR/Actions write, validator executor, validator receipt, stage receipt, remote readback, provider/tool capability** 중 하나가 current run에서 실제로 막히고 state recheck + safe retry + materially different safe path도 실패하면 같은 target을 반복 점유하지 않는다.
+- 이 경우 `stage / examUid / inputArtifactSha / branch+HEAD / finalArtifactSha / evidence/decision snapshot / completedStep / firstMissingClosureStep / exact capability+error / required next action`을 durable continuation으로 남기고 공용 `RESCUE_QUEUE`에 `R1_CLOSURE_DEBT | R2_CLOSURE_DEBT | R3_CLOSURE_DEBT`로 등록한 뒤 **same-target writer/lease/owner를 relinquish**한다.
+- THANOS는 해당 handoff를 exact `firstMissingClosureStep`부터 이어받아 그 stage의 durable next state까지 닫는다. handoff 자체는 stage PASS가 아니며, 실제 validator/receipt/readback 전에는 다음 stage eligible이 아니다.
+- handoff된 target은 최신 CURRENT/RESCUE_QUEUE가 `REASSIGN_TO_R1 | REASSIGN_TO_R2 | REASSIGN_TO_R3`를 명시하지 않는 한 동일 전용 worker가 다음 run에서 자동 재점유하지 않는다. **다음 scheduled run은 같은 stage의 다른 eligible 시험지**를 선택한다.
+- current run에서 이미 1시험지 mutation/closure를 만들었으면 one-exam max를 지키고 다음 시험지 실제 mutation은 다음 run에 한다. blocker를 mutation 전에 확인했고 current run mutation=0이면 같은 run에서 다른 eligible을 선택할 수 있다.
+- **target-local blocker, validator/write/tool/provider 실패, 동일 경로 반복 방지 때문에 R1/R2/R3 예약을 self-disable하는 것은 금지한다.** disable은 형님의 명시 지시 또는 CURRENT topology의 role 종료만 허용한다.
+- R3의 source truth 자체가 current artifact로 확정 불가능한 경우는 기존 `SOURCE_REPAIR_REQUIRED` 예외를 유지한다. 이 continuation도 전용 R3 worker가 current run에서 닫지 못하면 THANOS rescue가 인수할 수 있다.
+- 역할 분담은 `R1/R2/R3 worker = stage 처리량 우선 + 가능한 closure`, `THANOS = handed-off stage closure debt 포함 universal rescue/마감`이다.
 
 ## 1. CURRENT M2-1 topology — 15 lanes / THANOS MASTER ×5
 
@@ -100,16 +145,32 @@ CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-fie
 - 사용자 명시 중지/M2-1 종료가 아닌데 peer가 disabled이거나 recurring schedule이 drift하면 peer 또는 WATCHDOG가 복구하고 readback한다.
 - 기존 `MASTER-A/B/C`, `INFINITY-1/2` 이름은 scheduler history이며 current protected roster가 아니다.
 
-### 1.4 WATCHDOG HOURLY STATUS BOARD HARD
+### 1.4 OPERATIONAL STATE STORAGE + REPRESENTATIVE REPORTING HARD
+
+#### 1.4.1 Production lane state storage — Space first / no per-run Notion
+
+- 정상 production lane인 `M2-1 THANOS-MASTER-1~5`, `TEMP-CREATE-1/2`, `R1-1/2`, `R2-1/2`, `R3-1/2`, `MAIN-MERGE`는 **매 run Notion을 직접 갱신하지 않는다.**
+- primary operational display/store는 기존 ChatGPT Work/Space Page `https://chatgpt.com/space/page_d53a4d15a5508191a90730bb848a3dfb`다. 각 lane은 이 페이지의 자기 고정 섹션 `LANE CURRENT — <task title>`만 갱신하며 다른 lane 섹션이나 상단 WATCHDOG dashboard를 덮어쓰지 않는다.
+- lane CURRENT는 장문 로그가 아니라 아래 7필드만 유지한다: `RESULT / TARGET / TRANSITION / PHYSICAL / DEBT / NEXT / UPDATED_KST`. 정상 예시는 `R1_DONE · o22 · READY_R1→READY_R2 · validator+receipt+remote readback PASS · debt 없음 · R2 즉시 소비 가능`처럼 한눈에 읽히게 쓴다.
+- lane CURRENT는 **latest state만** 유지한다. 과거 실행 상세 history는 Git commit/blob/validator receipt/stage receipt가 authority이며 Space 페이지를 작업 로그 저장소로 비대하게 만들지 않는다.
+- Space write는 production closure/readback **이후**의 운영 표시 단계다. Space write 실패는 stage verdict를 무효화하지 않으며 `SPACE_STATE_SYNC_DEBT`로만 기록한다. 다음 run/WATCHDOG가 Git physical state에서 재구성한다.
+- production lane은 정상 run마다 형님에게 시간당 장문 보고를 보내지 않는다. **정상 run은 lane CURRENT 저장으로 종료**하고, 사용자 판단이 필요한 `USER_DECISION_DEBT` 또는 공장 전체 진행을 실제로 막는 복구 불능 상태일 때만 즉시 예외 보고한다.
+- Notion write 실패를 production blocker로 확대하지 않는다. production lane prompt에서 per-run Notion write 의무와 “Notion last” 완료조건을 제거한다.
+
+#### 1.4.2 WATCHDOG = sole hourly reporter + sole Notion mirror writer
 
 - `M2-1 WATCHDOG + 전광판`은 매시 :56에 15개 ACTIVE roster의 enable, hourly RRULE, last_run freshness, conveyor prompt contract를 확인한다.
 - 사용자 명시 중지나 M2-1 종료가 아닌데 OFF면 즉시 re-enable한다. enabled+정상 RRULE인데 expected occurrence를 놓쳐 last_run이 60분을 넘기고 실제 in-flight/recent durable progress가 없으면 `DISPATCH_STALL` 후보로 보고 canonical hourly RRULE을 같은 고정 분에 재결속한 뒤 readback한다.
 - phase-wide `34/34` barrier, 정상 상태의 `CREATE_PHASE_WAIT`, old MASTER/INFINITY topology가 active prompt에 재유입되면 conveyor-contract drift로 보고 최신 EXAM-LEVEL CONVEYOR 계약으로 복구한다.
-- 같은 run 마지막에 기존 Notion `JS Archive 예약 레인 상시 상태판 — CURRENT` **한 페이지를 제자리 갱신**한다. 새 상태판 페이지를 만들지 않는다.
-- 전광판 최소 항목: 기준 KST/latest remote main, 15개 ON/OFF·schedule·last_run·stale, current-generation CREATE/READY_R1/READY_R2/READY_R3/RELEASE/MAIN queue, 최근 1시간 실제 closure/NO_WORK/실패, active/debt target+owner, WATCHDOG 복구 조치, 다음 1시간 우선 target.
-- 단계/완료 수치는 가능한 범위에서 Git physical receipt, finalArtifactSha, remote readback과 CURRENT ledger로 검증한다. 확인 불가 값은 추정하지 않고 `확인 필요`로 표시한다.
-- WATCHDOG 예약 채팅의 final report도 전광판 핵심을 짧게 출력한다. 단순 `LIVENESS PASS` 한 줄 보고로 끝내지 않는다.
-- WATCHDOG은 production exam/artifact를 수정하지 않는다. automation enable/schedule/prompt-contract 복구와 status-board Notion 갱신은 정상 권한이다.
+- WATCHDOG은 **각 lane CURRENT + 실제 Automations readback + Git physical receipt/finalArtifactSha/remote main**을 함께 읽어 한 시간 스냅샷을 만든다. lane self-report만으로 queue/stage 완료를 확정하지 않는다.
+- primary direct display는 위 Work/Space Page의 **상단 WATCHDOG CURRENT dashboard**다. WATCHDOG은 상단 dashboard만 갱신하고 lane별 CURRENT 섹션은 worker-owned로 보존한다.
+- durable mirror는 기존 Notion `JS Archive 예약 레인 상시 상태판 — CURRENT` `https://app.notion.com/p/3ee0e68bd69f81bdb3a9c6d81c773b7b?pvs=204` 한 페이지다. **Notion에는 WATCHDOG만 시간당 1회 동일 snapshot을 미러링한다.** 새 상태판 페이지를 만들지 않는다.
+- Notion mirror 실패는 `NOTION_MIRROR_DEBT`이며 **production 영향 없음**이다. Work/Space write가 성공했다면 그 성공을 보존하고 다음 WATCHDOG에서 Notion만 재동기화한다. 반대로 어느 한 destination이라도 실패하면 dual-write 성공이라고 보고하지 않는다.
+- WATCHDOG 전광판 최소 항목: 기준 KST/latest remote main, 15개 ON/OFF·schedule·last_run·raw stale/confirmed stall, current-generation CREATE/READY_R1/READY_R2/READY_R3/RELEASE/MAIN queue, 최근 1시간 실제 closure/NO_WORK/실패, active/debt target+owner, 복구 조치, 다음 1시간 우선 target.
+- 확인 불가 값은 추정하지 않고 `확인 필요`로 표시한다. 오래된 snapshot/history는 historical로 명시해 아래에 둘 수 있으나 top CURRENT와 섞지 않는다.
+- **형님에게 보내는 정기 시간당 공장 보고는 WATCHDOG 1개만 담당한다.** production lane의 개별 hourly narrative report는 폐기한다.
+- WATCHDOG은 production exam/artifact/stage verdict를 수정하지 않는다. automation enable/schedule/prompt-contract 복구, Work/Space dashboard 갱신, Notion hourly mirror가 정상 권한이다.
+- 매 run 마지막에 Work/Space Page와 Notion mirror를 각각 readback한다.
 
 ### 1.5 dispatch / capability
 
@@ -358,9 +419,11 @@ run이 시간 제한이나 executor 중단으로 candidate 이후 종료될 수 
 - **firstMissingClosureStep**
 - selected `validationExecutor`
 
-다음 같은-role run은 새 target을 고르거나 fresh rewrite를 반복하지 않고 **그 exact candidate의 firstMissingClosureStep부터 먼저 재개**한다.
+R1/R2/R3 또는 아직 handoff되지 않은 same-role continuation은 새 target을 고르거나 fresh rewrite를 반복하지 않고 **그 exact candidate의 firstMissingClosureStep부터 먼저 재개**한다.
 
-one-shot 예약으로 full CREATE를 시험할 때 candidate 생성까지 시간이 오래 걸릴 가능성이 있으면, one-shot 하나에 “무조건 완결”을 가정하지 않는다. **continuation 가능한 recurring slot**을 사용하거나, 첫 run이 candidate에서 끝났다면 즉시 gate/receipt-only continuation run으로 이어야 한다.
+**예외 — TEMP-CREATE producer handoff:** §0.2에 따라 CREATE producer가 capability blocker를 durable continuation + RESCUE_QUEUE로 넘기고 owner/lease를 relinquish한 target은 THANOS closure debt다. 최신 CURRENT가 CREATE에 명시적으로 재배정하지 않는 한 TEMP-CREATE가 다음 run에서 그 target을 다시 집지 않고 다른 eligible CREATE를 생산한다.
+
+one-shot 예약으로 full CREATE를 시험할 때 candidate 생성까지 시간이 오래 걸릴 가능성이 있으면, one-shot 하나에 “무조건 완결”을 가정하지 않는다. recurring production에서는 candidate 이후 closure가 current run capability로 불가능하면 §0.2 handoff를 사용하고, capable rescue owner가 exact firstMissingClosureStep부터 이어받는다.
 ## 5. R3 FINAL QA + FINAL REPAIR — CURRENT
 
 R3는 별도 post-R3 repair/recheck pipeline을 정상 경로로 만들지 않는다.

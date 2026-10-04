@@ -511,8 +511,11 @@ export async function blueprintInsertStatements(
     }),
   );
   const statements = [];
-  for (let i = 0; i < values.length; i += 6) {
-    const batch = values.slice(i, i + 6);
+  // A guarded Saved Paper row adds its write-key predicate as one extra bind.
+  // Six 16-column rows plus those six guards exceed D1's 100-variable limit.
+  const batchSize = options.assignmentGuard?.writeKey ? 5 : 6;
+  for (let i = 0; i < values.length; i += batchSize) {
+    const batch = values.slice(i, i + batchSize);
     if (options.assignmentGuard?.writeKey) {
       // Saved-paper assignments can share one archive_file across classes.
       // Gate each blueprint row on this exact assignment inside the same D1

@@ -26,6 +26,8 @@ function harness(data = structuredClone(catalog)) {
     console, crypto, URL, URLSearchParams, structuredClone,
     location: new URL('https://archive.test/archive/workspace.html'),
     history: { pushState() {}, replaceState() {} },
+    scrollY: 0,
+    scrollTo() {},
     setTimeout: () => 0, clearTimeout() {}, matchMedia: () => ({ matches: false }),
     localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
     document: {
@@ -53,7 +55,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, findExams, renderFind, pool};
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool, routeUrl, urlState, replaceUrlState, readUrl};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -177,6 +179,27 @@ test('고2·고3 browse는 승인된 shared semantic subject source pool을 공�
       `browse must preserve source metadata for ${record.questionUid}`,
     );
   }
+});
+
+test('Saved Paper는 51문항을 50문항과 1문항으로 나눈다', async t => {
+  const { w } = configureSaveHarness(t);
+  const first = catalog.records.find(row => row.automatic && row.sourceGrade === '고2' &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  const semanticSubject = core.subjectProjectionForRecord(first, '', catalog.projectionPolicy);
+  const records = catalog.records
+    .filter(row => row.automatic && row.sourceGrade === '고2' &&
+      core.subjectProjectionForRecord(row, '', catalog.projectionPolicy) === semanticSubject &&
+      core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok)
+    .slice(0, 51);
+  assert.equal(records.length, 51);
+  w.state.filters = { grade: '고2', semanticSubject };
+  w.state.selected = records.map(row => ({ ...row }));
+  w.state.prepared = { signature: '' };
+  const papers = await w.prepare();
+  assert.deepEqual(plain(papers.map(paper => paper.questions.length)), [50, 1]);
+  assert.deepEqual(plain(papers.map(paper => paper.index)), [0, 1]);
+  assert.equal(papers[0].meta.title.endsWith('· 1권'), true);
+  assert.equal(papers[1].meta.title.endsWith('· 2권'), true);
 });
 
 test('BASIC selection and final review accept UNKNOWN advanced taxonomy for every grade', () => {
@@ -491,12 +514,73 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-canonical.js', '20261001-canonical-loadset-1'],
     ['archive2-core.js', '20261001-h23-compose-closure-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
-    ['archive2-workspace.js', '20261003-assign-output-ux-2'],
+    ['archive2-workspace.js', '20261003-navigation-s5-2'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
-  assert.match(html, /archive2-library\.js\?v=20261002-paper-lifecycle-3/);
+  assert.match(html, /archive2-library\.js\?v=20261003-navigation-s5-3/);
+  assert.match(html, /archive2\.css\?v=20261003-navigation-s5-1/);
   assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
+});
+
+test('Finder, Recent, and Saved Paper view state survives route changes and reload URLs', () => {
+  const { w, ctx } = harness();
+  const historyCalls = [];
+  ctx.history.replaceState = (state, _title, url) => {
+    ctx.history.state = state;
+    ctx.location = new URL(String(url), ctx.location.href);
+    historyCalls.push({ kind: 'replace', state, href: ctx.location.href });
+  };
+  ctx.history.pushState = (state, _title, url) => {
+    ctx.history.state = state;
+    ctx.location = new URL(String(url), ctx.location.href);
+    historyCalls.push({ kind: 'push', state, href: ctx.location.href });
+  };
+
+  w.state.view = 'find';
+  w.state.find = { grade: '중2', curriculumKey: '2015', query: '강남여고', material: 'exam' };
+  w.state.page = 3;
+  let url = w.routeUrl();
+  assert.equal(url.searchParams.get('view'), 'find');
+  assert.equal(url.searchParams.get('query'), '강남여고');
+  assert.equal(url.searchParams.get('page'), '3');
+
+  ctx.location = new URL('https://archive.test/archive/workspace.html?view=find&grade=%EC%A4%912&query=%EA%B0%95%EB%82%A8%EC%97%AC%EA%B3%A0&page=2');
+  w.readUrl();
+  assert.equal(w.state.page, 2);
+  assert.equal(w.state.find.query, '강남여고');
+
+  w.state.view = 'recent';
+  w.state.recentFilters = { from: '2026-09-01', to: '2026-09-30', grade: '고1', subject: '공통수학1', query: '중간' };
+  w.state.recentClassId = 'class-exact-7';
+  w.state.recentSelectedAssignmentId = 'assignment-exact-7';
+  url = w.routeUrl();
+  assert.equal(url.searchParams.get('from'), '2026-09-01');
+  assert.equal(url.searchParams.get('class'), 'class-exact-7');
+  assert.equal(url.searchParams.get('assignment_id'), 'assignment-exact-7');
+
+  w.state.view = 'saved';
+  w.state.savedPaperId = 'saved-paper-exact-7';
+  w.state.savedLibraryStatusFilter = 'ARCHIVED';
+  url = w.routeUrl();
+  assert.equal(url.searchParams.get('paper_id'), 'saved-paper-exact-7');
+  assert.equal(url.searchParams.get('status'), 'ARCHIVED');
+
+  w.state.view = 'find';
+  w.state.find = { grade: '고1', query: '중간' };
+  w.state.page = 1;
+  ctx.window.scrollY = 413;
+  w.urlState();
+  assert.equal(historyCalls.at(-2).kind, 'replace');
+  assert.equal(historyCalls.at(-2).state.archive2ScrollY, 413);
+  assert.equal(historyCalls.at(-1).kind, 'push');
+  assert.equal(new URL(historyCalls.at(-1).href).searchParams.get('page'), '1');
+  const scrollBeforeCanonicalRewrite = historyCalls.at(-1).state.archive2ScrollY;
+  ctx.location = new URL('https://archive.test/archive/workspace.html?view=find&courseKey=stale');
+  w.readUrl();
+  assert.equal(historyCalls.at(-1).kind, 'replace');
+  assert.equal(historyCalls.at(-1).state.archive2ScrollY, scrollBeforeCanonicalRewrite,
+    'canonical filter URL cleanup preserves the scroll saved on this history entry');
 });
 
 test('fresh BASIC includes every difficulty and unclassified metadata without preselecting 2 and 3', () => {
@@ -600,7 +684,7 @@ test('old unopened 2/3 defaults migrate to all while saved explicit and generate
   assert.deepEqual(plain(w.state.buckets), [2, 3]);
 });
 
-test('saved-paper links are tied to the current work signature and fresh drafts clear prior save identity', () => {
+test('last Saved Paper actions survive Draft edits and fresh Drafts clear the prior save identity', () => {
   const { w } = harness();
   const record = catalog.records.find(row => core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
   const scope = core.pathKey(record, 4);
@@ -611,20 +695,41 @@ test('saved-paper links are tied to the current work signature and fresh drafts 
   const savedSignature = w.saveWorkSignature();
   w.state.saveResultSignature = savedSignature;
   w.state.savedPaperIds = ['00000000-0000-4000-8000-000000000001'];
+  w.state.lastSavedPaperIds = ['00000000-0000-4000-8000-000000000001'];
   w.state.saveMessage = '시험지 1개를 저장했습니다.';
-  assert.match(w.renderInspector(), /index\.html\?savedPaper=00000000-0000-4000-8000-000000000001/);
+  w.state.saveResultState = 'SAVED';
+  const savedCompose = w.renderCompose();
+  assert.match(savedCompose, /마지막 저장본/);
+  assert.match(savedCompose, /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000001" class="primary">이 저장본 출제/);
+  assert.doesNotMatch(savedCompose, /index\.html\?savedPaper=/);
+  for (const mode of ["exam", "sol", "ans"])
+    assert.match(savedCompose, new RegExp(`data-action="saved-output" data-paper-id="00000000-0000-4000-8000-000000000001" data-mode="${mode}"`));
+  assert.match(w.renderMobileActions(), /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000001"/);
   w.state.header = { ...w.state.header, title: '검수: 저장 이후 수정한 시험지' };
   assert.notEqual(w.saveWorkSignature(), savedSignature, 'output title changes invalidate the old saved-paper receipt');
-  assert.doesNotMatch(w.renderInspector(), /index\.html\?savedPaper=/, 'editing invalidates the old direct-distribution link');
-  assert.match(w.renderInspector(), /현재 편집본은 저장되지 않았습니다/);
+  const editedCompose = w.renderCompose();
+  assert.match(editedCompose, /현재 편집본은 저장되지 않았습니다/);
+  assert.match(editedCompose, /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000001"/,
+    'editing marks the Draft unsaved but keeps actions for the last immutable Saved Paper');
+  const editedDraft = plain(w.draft());
+  assert.deepEqual(editedDraft.lastSavedPaperIds, ['00000000-0000-4000-8000-000000000001']);
+  editedDraft.scopes = [];
+  editedDraft.scopeSourcePaths = [];
+  editedDraft.scopeQuestionUids = [];
+  const restored = harness();
+  restored.w.applyDraft(editedDraft);
+  assert.deepEqual(plain(restored.w.state.lastSavedPaperIds), ['00000000-0000-4000-8000-000000000001']);
+  assert.match(restored.w.renderCompose(), /현재 편집본은 저장되지 않았습니다/);
+  assert.match(restored.w.renderCompose(), /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000001"/);
   w.newDraft();
   assert.equal(w.state.saveMessage, '');
   assert.deepEqual(plain(w.state.savedPaperIds), []);
+  assert.deepEqual(plain(w.state.lastSavedPaperIds), []);
   assert.equal(w.state.saveBatchId, '');
   assert.equal(w.state.saveSignature, '');
   assert.equal(w.state.saveResultSignature, '');
   const legacyDraft = plain(w.draft());
-  for (const key of ['saveBatchId', 'saveSignature', 'savedPaperIds', 'saveMessage', 'saveError', 'saveResultSignature', 'saveResultState']) delete legacyDraft[key];
+  for (const key of ['saveBatchId', 'saveSignature', 'savedPaperIds', 'lastSavedPaperIds', 'saveMessage', 'saveError', 'saveResultSignature', 'saveResultState']) delete legacyDraft[key];
   w.state.saveBatchId = 'stale-legacy-batch';
   w.state.saveSignature = 'stale-legacy-signature';
   w.state.savedPaperIds = ['00000000-0000-4000-8000-000000000001'];
@@ -637,6 +742,53 @@ test('saved-paper links are tied to the current work signature and fresh drafts 
   assert.equal(w.state.saveBatchId, '');
   assert.equal(w.state.saveSignature, '');
   assert.equal(w.state.saveResultSignature, '');
+});
+
+test('completed Compose output reads the exact receipt Assignment ID instead of rebuilding a source output', async t => {
+  const { w, ctx } = harness();
+  const assignmentId = '00000000-0000-4000-8000-000000000440';
+  const requests = [];
+  const stored = [];
+  const popup = { location: { href: '' }, close() { this.closed = true; } };
+  const oldStore = ctx.Archive2Output.storeOutputEnvelope;
+  ctx.Archive2Output.storeOutputEnvelope = async envelope => { stored.push(envelope); };
+  ctx.open = (url, target) => { assert.equal(url, 'about:blank'); assert.equal(target, '_blank'); return popup; };
+  ctx.APMATH_API_BASE = 'https://archive.test/api';
+  ctx.localStorage.setItem('APMATH_SESSION', JSON.stringify({ id: 'fixture-teacher', session_token: 'fixture-token' }));
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    requests.push({ path: parsed.pathname, query: parsed.search, method: init.method || 'GET' });
+    assert.equal(parsed.pathname, `/api/class-exam-assignments/${assignmentId}/output`);
+    assert.equal(parsed.searchParams.get('mode'), 'sol');
+    return { ok: true, status: 200, json: async () => ({
+      success: true,
+      envelope: {
+        contractVersion: 'archive2-output-envelope-v1',
+        outputRequestId: '00000000-0000-4000-8000-000000000441',
+        ownerId: '00000000-0000-4000-8000-000000000442',
+        sourceKind: 'assignment', sourceId: assignmentId, assignmentId,
+        mode: 'sol', questionCount: 1, meta: { qpp: 4 }, questions: [{ questionUid: 'qid_v1_receipt' }],
+      },
+    }) };
+  };
+  t.after(() => { ctx.Archive2Output.storeOutputEnvelope = oldStore; });
+  w.state.classId = 'class-exact-receipt';
+  w.state.previewIndex = 0;
+  w.state.outputMode = 'sol';
+  w.state.receipts = [{ key: 'draft-paper-key', partIndex: 0, classId: w.state.classId, id: assignmentId, ready: false }];
+
+  await w.print();
+
+  assert.deepEqual(requests.map(row => row.path), [`/api/class-exam-assignments/${assignmentId}/output`]);
+  assert.equal(requests[0].method, 'GET');
+  assert.equal(stored.length, 1);
+  assert.equal(stored[0].assignmentId, assignmentId);
+  const outputUrl = new URL(popup.location.href);
+  assert.equal(outputUrl.searchParams.get('outputRequestId'), stored[0].outputRequestId);
+  assert.equal(outputUrl.searchParams.get('outputOwnerId'), stored[0].ownerId);
+  assert.equal(outputUrl.searchParams.get('assignmentId'), assignmentId);
+  assert.equal(outputUrl.searchParams.get('mode'), 'sol');
+  assert.equal(outputUrl.searchParams.get('preview'), null);
 });
 
 test('scope cards cannot be created by source-only labels and counts match selectable UIDs', () => {
@@ -721,6 +873,7 @@ test('unknown save result persists its batch and locks Draft edits until reconci
   w.state.saveBatchId = '00000000-0000-4000-8000-000000000123';
   w.state.saveSignature = 'frozen-request-signature';
   w.state.saveResultSignature = w.saveWorkSignature();
+  w.state.lastSavedPaperIds = ['00000000-0000-4000-8000-000000000120'];
   w.state.saveResultState = 'RESULT_UNKNOWN';
   const savedDraft = plain(w.draft());
   assert.equal(savedDraft.saveBatchId, w.state.saveBatchId);
@@ -730,6 +883,12 @@ test('unknown save result persists its batch and locks Draft edits until reconci
   const compose = w.renderCompose();
   assert.match(compose, /응답을 확인하지 못했습니다/);
   assert.match(compose, /class="workspace" inert/);
+  assert.match(compose, /data-action="save-paper"[^>]*>저장 결과 확인/);
+  assert.ok(compose.indexOf('data-action="save-paper"') < compose.indexOf('<div class="workspace" inert'),
+    'desktop recovery action must sit outside the inert editor region');
+  assert.match(compose, /data-action="saved-paper-issue" data-paper-id="00000000-0000-4000-8000-000000000120"/,
+    'last confirmed Saved Paper remains distinct and available while the new result is unknown');
+  assert.deepEqual(plain(savedDraft.lastSavedPaperIds), ['00000000-0000-4000-8000-000000000120']);
   const lockedDraftId = w.state.draftId;
   w.newDraft();
   assert.equal(w.state.draftId, lockedDraftId, "an unknown result cannot be abandoned as a new save identity");
@@ -807,6 +966,7 @@ test('lost save response resolves through the same batch ID and changed Draft cr
   await w.savePapers();
   assert.equal(w.state.saveResultState, "SAVED", JSON.stringify({error: w.state.saveError, postBodies: postBodies.length, batchLookups}));
   assert.deepEqual(plain(w.state.savedPaperIds), ["00000000-0000-4000-8000-000000000901"]);
+  assert.deepEqual(plain(w.state.lastSavedPaperIds), ["00000000-0000-4000-8000-000000000901"]);
   assert.equal(postBodies.length, 1);
   assert.equal(batchLookups, 1);
   assert.equal(lookedUpBatchId, postBodies[0].save_batch_id);
@@ -819,6 +979,7 @@ test('lost save response resolves through the same batch ID and changed Draft cr
     "a changed Draft must receive a new idempotency identity");
   assert.equal(w.state.saveResultState, "SAVED");
   assert.deepEqual(plain(w.state.savedPaperIds), ["00000000-0000-4000-8000-000000000902"]);
+  assert.deepEqual(plain(w.state.lastSavedPaperIds), ["00000000-0000-4000-8000-000000000902"]);
 });
 
 

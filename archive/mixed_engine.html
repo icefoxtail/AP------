@@ -3,7 +3,7 @@
 <head>
     <script src="archive2-review.js"></script>
     <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-    <script src="archive2-output.js?v=20261002-output-envelope-v3"></script>
+    <script src="archive2-output.js?v=20261003-student-output-s4-1"></script>
     <script src="archive2-pdf-readiness.js?v=20261002-output-envelope-v3"></script>
     <link rel="stylesheet" href="archive2-review.css">
     <script>
@@ -19,7 +19,6 @@
         html.archive2-output .print-header-editor-wrap,
         html.archive2-output button[onclick="shuffleData()"],
         html.archive2-output .qr-output-wrap { display: none !important; }
-        html.archive2-output-envelope .mode-tabs { display: none !important; }
         html.archive2-preview #mode-ctrl { display: none !important; }
         html.archive2-preview body { background: #eef0f3 !important; background-image: none !important; padding-top: 10px !important; }
         html.archive2-preview #print-area { margin-top: 0 !important; }
@@ -416,12 +415,14 @@
     <script src="render-state-normalizer.js?v=20260912.1"></script>
     <script src="screen-runtime.js?v=20260913.1"></script>
     <script src="question-image-readiness.js?v=20260915.2"></script>
-    <script src="common-fast-runtime.js?v=20260915.2"></script>
+    <script src="common-fast-runtime.js?v=20261003-reader-controls-s1-2"></script>
     <script src="equal-slot-engine.js?v=20260915.1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
     <script src="exam-render-executor.js?v=20261002-output-envelope-v3"></script>
     <script src="solution-render-executor.js?v=20260914.1"></script>
     <script src="answer-render-executor.js?v=20260912.1"></script>
+    <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
+    <script defer src="archive2-reader-controls.js?v=20261003-student-return-s4-1"></script>
 </head>
 <body>
     <div id="mode-ctrl">
@@ -1226,6 +1227,7 @@ function markMixedReadiness(state, evidence) {
     try {
         mixedReadinessTracker.mark(state, evidence);
         document.documentElement.dataset.apPrintReadiness = JSON.stringify(mixedReadinessTracker.snapshot());
+        if (state === 'RENDER_READY') window.Archive2ReaderControls?.setReady(true, AppState.mode);
     } catch (error) {
         console.warn('[mixed-engine] readiness transition failed', error);
     }
@@ -2049,9 +2051,116 @@ async function applyAutoImageSizeClasses(root) {
 
 /** UI Actions & Navigation */
 let modeSwitchPending = false;
+async function switchOutputEnvelopeMode(mode) {
+    if (modeSwitchPending) return { ok: false, code: 'MODE_SWITCH_PENDING' };
+    const current = AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__;
+    if (current?.mode === mode || (!current && AppState.mode === mode)) return { ok: true, mode };
+    if (!current && (!Array.isArray(AppState.data) || !AppState.data.length)) return null;
+    const previousMode = current?.mode || AppState.mode;
+    const oldHref = window.location.href;
+    const originalData = AppState.data;
+    const originalMeta = AppState.meta;
+    const originalCanonicalData = AppState.canonicalData;
+    const oldEnvelopeReady = window.__AP_OUTPUT_ENVELOPE_READY__;
+    const oldRenderReady = window.__AP_OUTPUT_RENDER_READY__;
+    modeSwitchPending = true;
+    window.Archive2ReaderControls?.setReady(false, previousMode);
+    try {
+        let envelope;
+        if (current) {
+            envelope = await window.Archive2Output.publishOutputEnvelopeMode(current, mode);
+        } else {
+            const questions = JSON.parse(JSON.stringify(AppState.data));
+            const meta = JSON.parse(JSON.stringify(AppState.meta || {}));
+            const questionUids = questions.map(question =>
+                question.questionUid || question.source_question_uid || question._sourceQuestionUid || null
+            );
+            const sourceId = AppState.key || meta.unitKey || meta.identityTitle || meta.title || 'mixed-output-source';
+            meta.qpp = normalizeMixedQpp(AppState.qpp || meta.qpp || 4);
+            meta.questionUids = questionUids;
+            envelope = await window.Archive2Output.publishOutputEnvelope({
+                sourceKind: meta.category === '단원별 기출' ? 'unit-past' : 'archive2-mixed',
+                sourceId,
+                mode,
+                questionCount: questions.length,
+                questionUids,
+                meta,
+                questions,
+            });
+            AppState.data = envelope.questions.map(question => ({ ...question }));
+            AppState.meta = envelope.meta;
+            AppState.canonicalData = buildMixedCanonicalData();
+        }
+        AppState.outputEnvelope = envelope;
+        window.__AP_OUTPUT_ENVELOPE__ = envelope;
+        window.__AP_OUTPUT_ENVELOPE_READY__ = {
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+        };
+        window.__AP_OUTPUT_RENDER_READY__ = null;
+        const outputUrl = new URL(oldHref);
+        outputUrl.searchParams.set('archive2Context', 'archive2');
+        outputUrl.searchParams.set('archive2OutputContract', envelope.contractVersion);
+        outputUrl.searchParams.set('v', '20261003-student-output-s4-1');
+        outputUrl.searchParams.set('outputRequestId', envelope.outputRequestId);
+        outputUrl.searchParams.set('outputOwnerId', envelope.ownerId);
+        outputUrl.searchParams.set('mode', envelope.mode);
+        outputUrl.searchParams.set('q', String(envelope.questionCount));
+        outputUrl.searchParams.set('qpp', String(envelope.meta.qpp || AppState.qpp || 4));
+        outputUrl.searchParams.set('studio', '1');
+        history.replaceState(null, '', outputUrl.toString());
+        document.documentElement.classList.add('archive2-output-envelope', 'archive2-output');
+        AppState.mode = mode;
+        document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${mode}`));
+        applyQrSolutionLockUI();
+        window.Archive2ReaderControls?.syncMode(mode);
+        await render();
+        const rendered = window.__AP_RENDER_READY__ ? await window.__AP_RENDER_READY__ : null;
+        if (rendered && (!rendered.ok || !rendered.pages))
+            throw new Error(rendered.message || rendered.code || '출력 렌더링이 완료되지 않았습니다.');
+        const pageCount = document.querySelectorAll('#print-area .page').length;
+        if (!pageCount) throw new Error('렌더링된 시험지 페이지가 없습니다.');
+        const readiness = await window.Archive2PdfReadiness.assertReady({
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+        });
+        window.__AP_OUTPUT_RENDER_READY__ = {
+            contractVersion: envelope.contractVersion,
+            outputRequestId: envelope.outputRequestId,
+            payloadHash: envelope.payloadHash,
+            pageCount: readiness.pageCount || pageCount,
+        };
+        window.Archive2ReaderControls?.setReady(true, mode);
+        return { ok: true, mode, pages: pageCount };
+    } catch (error) {
+        history.replaceState(null, '', oldHref);
+        AppState.outputEnvelope = current;
+        if (current) window.__AP_OUTPUT_ENVELOPE__ = current;
+        else {
+            delete window.__AP_OUTPUT_ENVELOPE__;
+            AppState.data = originalData;
+            AppState.meta = originalMeta;
+            AppState.canonicalData = originalCanonicalData;
+            document.documentElement.classList.remove('archive2-output-envelope', 'archive2-output');
+        }
+        window.__AP_OUTPUT_ENVELOPE_READY__ = oldEnvelopeReady;
+        window.__AP_OUTPUT_RENDER_READY__ = oldRenderReady;
+        AppState.mode = previousMode;
+        window.Archive2ReaderControls?.setReady(true, previousMode);
+        throw error;
+    } finally {
+        modeSwitchPending = false;
+    }
+}
+
 async function switchMode(mode) {
-    if (window.mixedFastHost) return window.mixedFastHost.runtime.request({ type: 'MODE_CHANGE', requestedMode: isQrSolutionMode() ? 'sol' : mode });
     if (isQrSolutionMode() && mode !== 'sol') return;
+    if (AppState.outputEnvelope || window.__AP_OUTPUT_ENVELOPE__)
+        return switchOutputEnvelopeMode(mode);
+    if (window.mixedFastHost) return window.mixedFastHost.runtime.request({ type: 'MODE_CHANGE', requestedMode: isQrSolutionMode() ? 'sol' : mode });
+    if (!isPreviewMode() && AppState.data?.length) return switchOutputEnvelopeMode(mode);
     const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
     if (isQrSolutionMode()) url.searchParams.set('qr', '1');
@@ -3188,6 +3297,8 @@ async function init() {
                 throw new Error('쪽당 문항 수가 출력 envelope와 다릅니다. 원본에서 다시 열어 주세요.');
             AppState.mode = outputEnvelope.mode;
             AppState.outputEnvelope = outputEnvelope;
+            window.__AP_OUTPUT_ENVELOPE__ = outputEnvelope;
+            window.__AP_OUTPUT_ENVELOPE__ = outputEnvelope;
             rawData = JSON.stringify(outputEnvelope.questions);
             rawMeta = JSON.stringify(outputEnvelope.meta);
             window.__AP_OUTPUT_ENVELOPE_READY__ = {
@@ -3340,6 +3451,7 @@ async function init() {
             payloadHash: outputEnvelope.payloadHash,
             pageCount: readiness.pageCount,
         };
+        window.Archive2ReaderControls?.setReady(true, outputEnvelope.mode);
     }
 }
 // 백그라운드 탭에서는 브라우저가 rAF를 아예 멈춘다. 배열 로직이 전부 await raf()로

@@ -15,6 +15,18 @@
             throw error;
         }
     }
+    function measuredSolutionCapacity(document, probePage) {
+        const probeCapacity = Number(probePage?.body?.clientHeight || 0);
+        if (Number.isFinite(probeCapacity) && probeCapacity > 0) return probeCapacity;
+
+        // In screen-fit mode a hidden probe can report zero even though the
+        // same A4 page is already measured and visible. Reuse that page's
+        // measured body height; keep failing closed if neither measurement is
+        // available.
+        const activeCapacity = Number(document.querySelector?.('#print-area .page-body')?.clientHeight || 0);
+        if (Number.isFinite(activeCapacity) && activeCapacity > 0) return activeCapacity;
+        throw new Error('INVALID_MEASURED_SOLUTION_HEIGHT');
+    }
     async function exam({ area, items, usableHeight, deps }) {
         const document = area.ownerDocument;
         items.forEach(item => assertQuestionImagesReady(item.box, deps));
@@ -66,7 +78,7 @@
         const probePage = deps.makePage(probe, 'sol', 0);
         const cols = columns(probePage, document, undefined, 'grid-col sol-grid-col');
         const marker = document.createElement('div'); marker.style.cssText = 'flex:none;height:0;min-height:0;padding:0;margin:0;';
-        const capacity = probePage.body.clientHeight;
+        const capacity = measuredSolutionCapacity(document, probePage);
         const records = [];
         let succeeded = false;
         const flowHeight = node => {

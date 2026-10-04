@@ -71,6 +71,8 @@ async function initArchiveScreenRuntime() {
             if (params.has('qpp') && Number(params.get('qpp')) !== Number(envelope.meta.qpp))
                 throw new Error('쪽당 문항 수가 snapshot과 다릅니다. 원본에서 다시 열어 주세요.');
             const meta = envelope.meta;
+            AppState.outputEnvelope = envelope;
+            window.__AP_OUTPUT_ENVELOPE__ = envelope;
             const sourceArchiveFile = String(meta.sourceArchiveFile || envelope.sourceId || '').trim();
             if (!sourceArchiveFile || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(sourceArchiveFile))
                 throw new Error('원본 출처를 확인할 수 없습니다. 원본에서 다시 열어 주세요.');
@@ -112,6 +114,7 @@ async function initArchiveScreenRuntime() {
                 payloadHash: envelope.payloadHash,
                 pageCount: readiness.pageCount,
             };
+            window.Archive2ReaderControls?.setReady(true, envelope.mode);
         } catch (error) {
             showArchiveDataLoadError(error?.message || '출력 envelope를 확인할 수 없습니다. 원본에서 다시 열어 주세요.');
             window.__AP_OUTPUT_RENDER_ERROR__ = String(error?.message || error || 'envelope error');
@@ -142,6 +145,7 @@ async function initArchiveScreenRuntime() {
             ? '시험지 데이터를 불러올 수 없습니다. 아카이브에서 다시 출력해 주세요.'
             : '시험지 렌더링 중 오류가 발생했습니다. 개발자 도구의 apRenderError 값을 확인해 주세요.');
     }
+    if (outcome.ok) window.Archive2ReaderControls?.setReady(true, AppState.mode);
 }
 
 function createArchiveScreenRuntime() {
@@ -167,7 +171,7 @@ function createArchiveScreenRuntime() {
         };
         idleHandle = window.requestIdleCallback ? requestIdleCallback(warm, { timeout: 2000 }) : setTimeout(warm, 100);
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20260914.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: '20260914.1-context7', pageLayout: 'engine-20260914.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
+    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20261003.2', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: '20260914.1-context7', pageLayout: 'engine-20260914.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;
