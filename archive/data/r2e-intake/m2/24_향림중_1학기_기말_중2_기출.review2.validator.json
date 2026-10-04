@@ -4,7 +4,7 @@
   "stage": "R2",
   "canonicalOrdinal": 24,
   "examFile": "24_향림중_1학기_기말_중2_기출.js",
-  "reviewAttemptId": "R2:m2/1final/24-hyangrim:45d8fafa537d0669c69fc9e082850b4b56d8ae27:1",
+  "reviewAttemptId": "R2:m2/1final/24-hyangrim:45d8fafa537d0669c69fc9e082850b4b56d8ae27:r2-1-20261004-2008",
   "finalArtifactSha": "45d8fafa537d0669c69fc9e082850b4b56d8ae27",
   "examSha256": "sha256:3ad360fbfd12392f69c7e72f54150f0d4bdf2be8d6616db15d9849de1b6ebe8c",
   "physicalEvidenceGitBlob": "6d2745b5581c00903e78d6091eee2f74f1fd8dba",
@@ -12,12 +12,14 @@
   "blindFreezeGitBlob": "3e5d2d79b087e961188055e9ac95492dde08403e",
   "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
   "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
-  "validationMode": "GITHUB_ACTIONS_CANONICAL_EXECUTION",
-  "validationPullRequest": 215,
+  "currentStageValidatorBlobAtClosure": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
+  "currentStageValidatorCompatBlobAtClosure": "80b0b81032aac147d463fa82d3c99d6ac9b1f18b",
+  "validatorAuthorityMainAtClosure": "0fa019615f29cf46fd82c6e89b48df56dbf80662",
+  "validationMode": "GITHUB_ACTIONS_CANONICAL_PHYSICAL_GATE",
   "validationSurfaceCommit": "6cb446681997d1c8fe738fa4dd1f3aa038bde985",
-  "validationSurface": "EXISTING_TARGET_R1_DRAFT_PR_FAST_FORWARD_NON_FORCE",
   "workflowRunId": 37198536840,
   "workflowJobId": 111425275162,
+  "executedAtKst": "2026-10-04 20:24:55",
   "result": {
     "ok": true,
     "stage": "R2",
@@ -32,12 +34,16 @@
     "issues": []
   },
   "targetedCanonicalGate": "PASS",
-  "calibrationGateTest": "PASS",
   "overallCi": "FAIL_UNRELATED_BASELINE",
   "unrelatedCiFailures": [
     "apmath-student-teacher-preview.test.js",
     "archive-target-selection-phase3-contract.test.js",
     "print-render-authority-mixer-ecosystem.test.js",
     "student-portal-omr-history-routes.test.js"
-  ]
+  ],
+  "closureReadback": {
+    "exactExamBlobRevalidated": true,
+    "exactEvidenceBlobRevalidated": true,
+    "canonicalValidatorBlobUnchangedOnCurrentMain": true
+  }
 }
