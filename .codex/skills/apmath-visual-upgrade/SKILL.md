@@ -482,9 +482,39 @@ relocate
 4px/6px 같은 “들어가기는 하지만 학생이 못 읽는” label은 PASS가 아니다.
 
 **Final viewport HARD:** authored SVG `font-size`가 아니라 실제 Archive required render profile에서의
-`finalViewportCssFontPx`를 본다. 학생에게 읽혀야 하는 point/length/angle/math/text label은
-**11 CSS px 미만이면 HARD FAIL**, 12 CSS px 이상을 기본 목표로 한다.
-축소 때문에 11px 미만이 되면 font만 억지로 줄이지 말고 canvas/viewport/label 밀도/구성을 바꾼다.
+`finalViewportCssFontPx`를 본다.
+
+Archive solution geometry/SVG의 기본 publication reference profile은 **실제 Archive `mode=sol`, 390×844 viewport**다.
+이 기준에서 학생에게 읽혀야 하는 point/length/angle/math/text label은 **11 CSS px 미만이면 HARD FAIL**, 12 CSS px 이상을 기본 목표로 한다.
+320px 등 더 좁은 폭은 responsive 참고 프로필이며, 별도 작업 지시가 없으면 390px HARD floor를 자동 대체하지 않는다.
+
+### 8.1 GEOMETRY ANNOTATION SCALE / POSITION — CURRENT HARD
+
+**Geometry is primary. Annotation is secondary.**
+
+같은 도형 안의 점 이름, 각도값, 길이값, 짧은 수학 변수·수치는 **같은 기본 font-size**를 사용한다.
+점 이름을 크게 하고 숫자를 절반으로 줄이는 식의 hierarchy를 기본값으로 사용하지 않는다.
+구분은 font-size보다 **위치, owner mark, 제한적 색, 굵기, arc/dimension/leader**로 만든다.
+
+- label은 SVG user-space에서 도형과 함께 비례 축소·확대되게 한다.
+- fixed viewport CSS px로 도형과 분리된 크기를 강제하지 않는다.
+- 긴 식 때문에 예외적으로 크기를 달리해야 하면 먼저 위치·viewBox·composition을 조정하고, 예외 사유를 남기며 390px HARD floor는 지킨다.
+- point label은 해당 점의 외곽 free sector를 우선 사용하고, 점·선분·원·arc·숫자·canvas edge와 붙지 않게 한다.
+- angle value는 실제 owner wedge 안 또는 명확한 인접 위치에 두고 arc와 하나의 묶음으로 읽혀야 한다.
+- length value는 owner가 명백하면 선분 인접 배치를 우선하고, 애매할 때만 offset dimension, 필요할 때만 짧은 leader를 사용한다.
+- `AB=8`, `∠ABC=40°` 같은 장문형 annotation은 owner가 visual로 명백한 경우 기본값으로 쓰지 않는다.
+- region/area value는 해당 영역 내부에 두거나 짧은 region leader로 직접 결속한다.
+
+geometry annotation 충돌 해결 우선순위:
+```text
+relocate label
+→ adjust arc/dimension/owner cue
+→ enlarge/reframe geometry or viewBox
+→ use short leader / offset dimension when needed
+→ only then consider minimal font exception
+```
+
+**font 축소부터 시작하지 않는다.** 실제 렌더에서 두 label이 겹치거나, point label과 수치가 사실상 같은 위치를 점유하거나, 선/arc/꼭짓점을 침범하면 FAIL이다.
 
 학생용 영어 lint:
 - 불필요한 영어 문장 = FAIL/POLISH
@@ -603,6 +633,23 @@ triage
 가능하면 repository의 공식 browser verifier / runtime을 사용한다.
 환경 제약으로 공식 route가 안 되면 `RENDER_PENDING`을 유지한다.
 
+## 12.1 GEOMETRY CHANGE — ACTUAL ARCHIVE RENDER MANDATORY
+
+다음 중 하나라도 바꾼 solution geometry SVG는 최종 visual PASS 전에 **실제 Archive `mode=sol` 390×844**에서 반드시 확인한다.
+
+- point/angle/length/region label 위치 또는 크기
+- angle arc / right-angle / dimension / leader
+- geometry primitive
+- viewBox / canvas framing / occupancy
+- clipping 또는 collision 관련 수정
+
+XML, bbox, static collision script만으로 최종 PASS하지 않는다.
+페이지 skeleton이 아니라 문항과 대상 SVG load가 끝난 뒤 측정하며, 실제 페이지가 final SVG blob/SHA를 읽고 있는지도 확인한다.
+
+제작자 자신의 `PASS`는 seal authority가 아니다.
+파일럿/전수 visual campaign은 **수정 완료 artifact를 동결한 뒤 별도 review pass에서 실제 렌더를 다시 보고** 최종 판정한다.
+첫 전수 review 이후 발견된 FAIL을 수리하면 전체를 처음부터 반복하지 않고 **changed SVG + direct visual dependency만 재렌더/재검**한다.
+
 ---
 
 # 13. KEEP / REBUILD RULE
@@ -662,6 +709,10 @@ style normalization 과정에서 실제 geometry 또는 decisive relation을 바
 
 학생이 숫자를 보고 owner를 추측하게 두지 않는다. **각도값과 길이값은 도형 자체에서 무엇의 값인지 보이게 한다.**
 
+owner cue는 의무 장식이 아니라 ambiguity를 없애는 수단이다.
+이미 위치만으로 owner가 즉시 명확하면 불필요한 arc/dimension/leader를 추가하지 않는다.
+style consistency를 위해 geometry naturalness나 정보 밀도를 희생하지 않는다.
+
 ### ANGLE — ARC OWNER DEFAULT
 일반 각에 `40° / 70° / 100°`처럼 각도값을 표시할 때는, 공간이 허용되는 한 **실제 꼭짓점을 중심으로 두 ray 사이에 작은 angle arc를 그리고 degree label을 그 arc에 결속**하는 것을 기본값으로 한다.
 
@@ -672,6 +723,9 @@ style normalization 과정에서 실제 geometry 또는 decisive relation을 바
 - 직각은 arc 대신 square marker 우선
 - reflex angle / straight angle은 작은 각으로 임의 치환하지 않고 source/solution 의미를 따른다
 - degree text만 다른 선 옆에 떠 있어 owner가 애매한 상태는 최종 출판 PASS 금지
+- **arc center는 실제 owner vertex, arc start/end direction은 실제 두 owner ray와 일치**해야 하며 primitive에서 역산한 각도도 expected angle과 허용오차 내에서 맞아야 한다
+- 같은 의미의 semantic angle arc를 중복 삽입하지 않는다. 동일 id/동일 primitive 중복도 FAIL
+- 한 꼭짓점에 여러 각이 있으면 arc radius와 label radius를 계층화하여 서로 침범하지 않게 한다
 
 ### SEGMENT LENGTH — DIMENSION OWNER DEFAULT
 `6 cm / 8 m / 12` 같은 길이값은 **어느 두 점 사이의 길이인지 시각적으로 결속**한다.
@@ -703,6 +757,8 @@ length annotation:
 - projection fraction / offset / owner parity
 
 **표시 text가 맞아도 arc/dimension primitive가 다른 owner를 가리키면 FAIL**이다.
+source의 A/B/C/D/P 같은 semantic identity와 SVG의 point id/좌표/owner metadata가 어긋나는 경우도 FAIL이다.
+화면이 그럴듯해 보여도 `P`를 내부적으로 `B` owner로 묶거나, 다른 점 좌표까지 radius/leader가 뻗으면 PASS할 수 없다.
 
 기존 asset을 신규 제작 reference로 가리는 blind/fresh 규칙이 있으면 이를 지킨다.
 facts를 먼저 동결한 뒤 existing asset을 audit하는 것은 허용할 수 있다.
@@ -728,6 +784,27 @@ visual defect는 라인을 멈추는 이유가 아니다.
 source/math truth가 unresolved인 경우만 underlying question issue로 올린다.
 
 ---
+
+## 14.1 VISUAL SWEEP / PILOT CLOSURE — CURRENT HARD
+
+기존 production SVG를 묶음으로 업그레이드하는 visual sweep/pilot은 대표 몇 문항 PASS로 끝나지 않는다.
+
+```text
+annotation rule freeze
+→ representative pilot repair
+→ target exam 전체 SVG inventory/수정
+→ full denominator artifact freeze
+→ independent full visual review + actual Archive render
+→ 부족한 반복 패턴 추출
+→ rule/skill 최소 보정
+→ FAIL SVG pinpoint repair
+→ changed SVG + direct dependency targeted recheck
+→ final seal
+```
+
+전체 적용 후 첫 review는 **대상 denominator 전체**를 본다.
+그 review에서 나온 FAIL을 고친 뒤에는 수정되지 않은 PASS 자산까지 처음부터 반복하지 않는다.
+최종 목적은 “샘플이 예쁘다”가 아니라 **대량 적용 후에도 같은 규칙이 안정적으로 버티는지 검증하고 봉인하는 것**이다.
 
 # 15. SYSTEM_VISUAL ROUTE
 
