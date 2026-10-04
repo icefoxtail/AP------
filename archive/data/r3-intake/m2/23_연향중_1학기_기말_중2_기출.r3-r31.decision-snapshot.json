@@ -44,5 +44,21 @@
   "selectorNote": "CURRENT board listed o2 NOW, but latest main physically contains o2 exact source-repaired R3 validator receipt, R3 receipt, release manifest, and published artifact. Stage selector therefore skipped o2 as already durably R3-closed and selected free eligible o31.",
   "decision": "R3_TARGETED_SCOPE_EMPTY_VALIDATOR_CLOSURE_PENDING",
   "r3PassDeclared": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "state": "R3_CLOSURE_DEBT",
+  "firstMissingClosureStep": "CANONICAL_R3_VALIDATOR_EXECUTION",
+  "rescueQueue": {
+    "queue": "RESCUE_QUEUE",
+    "entryKey": "R3_CLOSURE_DEBT:m2/1final/23-yeonhyang",
+    "status": "REGISTERED_IN_DECISION_SNAPSHOT"
+  },
+  "ownerState": "RELINQUISHED_TO_THANOS",
+  "autoReselectByR3": false,
+  "requiredNextAction": "Run current canonical R3 validator against this exact artifact/evidence; on PASS bind validator receipt + R3 receipt + release manifest, enqueue RELEASE_QUEUE, and remote-readback.",
+  "capabilityCodes": [
+    "PR_WRITE_UNAVAILABLE",
+    "VALIDATION_SURFACE_WRITE_UNAVAILABLE",
+    "WORKFLOW_DISPATCH_UNAVAILABLE",
+    "LOCAL_NETWORK_UNAVAILABLE"
+  ]
 }
