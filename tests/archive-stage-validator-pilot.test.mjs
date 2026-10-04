@@ -6,6 +6,7 @@ import {
   validateTargetedR2Evidence,
 } from '../archive/tools/archive-stage-validator.mjs';
 import { validateCommonEvidence } from '../archive/tools/archive-stage-validator-common-v2.mjs';
+import { validateR1Evidence } from '../archive/tools/archive-stage-validator-r1-v2.mjs';
 
 const fixturePath = path.resolve('archive/fixtures/stage-validator-pilot/o34-r2-targeted.json');
 const o34 = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
@@ -101,3 +102,76 @@ assert.ok(duplicateRows.issues.includes('COMMON_ROW_QID_DUPLICATE:q1'));
 assert.ok(duplicateRows.issues.includes('COMMON_QID_MISSING:q2'));
 
 console.log('ARCHIVE_STAGE_VALIDATOR_COMMON_V2_PASS');
+
+
+const r1Base = {
+  schemaVersion: 'JS_ARCHIVE_STAGE_EVIDENCE_v2',
+  stage: 'R1',
+  examUid: 'fixture-r1',
+  artifactSha: 'artifact-r1',
+  rows: [
+    {
+      qid: 1,
+      independentAnswer: '3',
+      independentAnswerFrozenBeforeStoredAnswer: true,
+      storedAnswer: '3',
+      compareResult: 'MATCH',
+      verdict: 'PASS',
+    },
+    {
+      qid: 2,
+      independentAnswer: '②, ⑤',
+      independentAnswerFrozenBeforeStoredAnswer: true,
+      storedAnswer: '②, ⑤',
+      compareResult: 'MATCH',
+      verdict: 'PASS',
+    },
+  ],
+};
+
+function runR1(evidence, expectedQids = [1, 2]) {
+  return validateR1Evidence({
+    examUid: 'fixture-r1',
+    artifactSha: 'artifact-r1',
+    actualArtifactSha: 'artifact-r1',
+    evidenceRef: 'fixture://r1-v2',
+    evidence,
+    expectedQids,
+  });
+}
+
+const r1Pass = runR1(r1Base);
+assert.equal(r1Pass.ok, true, JSON.stringify(r1Pass));
+assert.equal(r1Pass.disposition, 'PASS');
+assert.equal(r1Pass.denominator, 2);
+assert.equal(r1Pass.rowCount, 2);
+
+const r1MissingQid = runR1({
+  ...r1Base,
+  rows: [r1Base.rows[0]],
+});
+assert.equal(r1MissingQid.ok, false);
+assert.ok(r1MissingQid.issues.includes('COMMON_QID_MISSING:q2'));
+
+const r1MissingIndependent = structuredClone(r1Base);
+delete r1MissingIndependent.rows[1].independentAnswer;
+const r1MissingIndependentReport = runR1(r1MissingIndependent);
+assert.equal(r1MissingIndependentReport.ok, false);
+assert.ok(r1MissingIndependentReport.issues.includes('R1_INDEPENDENT_ANSWER_REQUIRED:q2'));
+
+const r1MissingFreeze = structuredClone(r1Base);
+delete r1MissingFreeze.rows[1].independentAnswerFrozenBeforeStoredAnswer;
+const r1MissingFreezeReport = runR1(r1MissingFreeze);
+assert.equal(r1MissingFreezeReport.ok, false);
+assert.ok(r1MissingFreezeReport.issues.includes('R1_FREEZE_BEFORE_STORED_REQUIRED:q2'));
+
+const r1MismatchWithoutDisposition = structuredClone(r1Base);
+r1MismatchWithoutDisposition.rows[1].independentAnswer = '④';
+r1MismatchWithoutDisposition.rows[1].storedAnswer = '⑤';
+r1MismatchWithoutDisposition.rows[1].compareResult = 'MISMATCH';
+r1MismatchWithoutDisposition.rows[1].verdict = 'REPAIR_REQUIRED';
+const r1MismatchWithoutDispositionReport = runR1(r1MismatchWithoutDisposition);
+assert.equal(r1MismatchWithoutDispositionReport.ok, false);
+assert.ok(r1MismatchWithoutDispositionReport.issues.includes('R1_DISPOSITION_REQUIRED:q2'));
+
+console.log('ARCHIVE_STAGE_VALIDATOR_R1_V2_PASS');
