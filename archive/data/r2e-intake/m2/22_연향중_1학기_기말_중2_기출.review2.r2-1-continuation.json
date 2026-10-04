@@ -45,7 +45,8 @@
     "Current canonical review-evidence validator blob c9b50158bec0c931433e8c50913a5a555d3e53f5 has no targeted/no-op R2 mode and always requires questionRows/metaRows for every qid.",
     "New validation PR creation was rejected by the connector safety gate before side effect.",
     "Alternate safe path succeeded: existing same-target PR #225 validation branch was non-force fast-forwarded to f694815678947e75c148040fd1e9bd90d76c1484, triggering Actions run 37205230852 / job 111444930861.",
-    "Compatibility probe invokes the canonical validator only to bind the contract gap; it is not R2 PASS authority."
+    "Compatibility probe invokes the canonical validator only to bind the contract gap; it is not R2 PASS authority.",
+    "Actions run 37205230852 completed and the compatibility probe reached M2_O34_R2_TARGETED_VALIDATOR_GAP_CONFIRMED; the actual canonical R2 report returned ok=false, so no R2 PASS authority exists."
   ],
   "requiredNextAction": "THANOS/canonical owner: preserve targeted R2. Do not perform whole-exam R2 and do not relabel R1 evidence as R2 evidence. Add/activate canonical targeted zero-scope R2 validation, run the actual R2 validator once, then write validator receipt + REVIEW2 receipt, set REVIEW2_DONE->READY_FOR_R3, and remote-readback.",
   "compatibilityProbe": {
@@ -55,7 +56,23 @@
     "pullRequest": 225,
     "workflowRunId": 37205230852,
     "workflowJobId": 111444930861,
-    "statusAtHandoff": "IN_PROGRESS"
+    "statusAtHandoff": "COMPLETED_GAP_CONFIRMED",
+    "workflowConclusion": "failure",
+    "targetProbeResult": "PASS_EXPECTED_CANONICAL_REJECTION",
+    "canonicalReport": {
+      "ok": false,
+      "questionCount": 24,
+      "questionEvidenceRows": 0,
+      "metaEvidenceRows": 0,
+      "itemHoldCount": 0,
+      "disposition": "FAIL",
+      "representativeIssues": [
+        "EVIDENCE_SCHEMA_INVALID",
+        "QUESTION_ROW_MISSING:q1",
+        "META_ROW_MISSING:q1",
+        "R2_BLIND_FREEZE_REQUIRED"
+      ]
+    }
   },
   "writerRelinquished": true,
   "r2WorkerAutoReselect": false,
