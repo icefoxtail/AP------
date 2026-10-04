@@ -770,7 +770,7 @@ window.questionBank = [
       "ㄱ, ㄷ, ㄴ",
       "ㄴ, ㄷ, ㄱ"
     ],
-    "answer": "원문 부등호 기준 정답 없음",
+    "answer": "③",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
@@ -787,7 +787,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "D드라이브 원문에 인쇄된 부등호를 그대로 따라 확인한다. 양변에 양수 6을 곱하면 $-2x-15\\ge x$까지는 맞다. 그러나 이 식에서 원문에 적힌 $-3x\\le15$는 동치가 아니다. 양변을 정리하면 $-3x\\ge15$이어야 하며, 음수 -3으로 나누면 $x\\le-5$이다. 원문 마지막의 $x\\ge-5$도 앞 단계와 맞지 않는다. 따라서 인쇄된 변형 과정 전체에 해당하는 선택지는 없고, 정답은 없다.",
+    "solution": "첫째, 양변에 양수 6을 곱하므로 ㄴ을 이용한다.\n$-\\frac{1}{3}x-\\frac{5}{2}\\ge\\frac{1}{6}x$\n$\\Longrightarrow -2x-15\\ge x$.\n\n둘째, 양변에서 $x$를 빼고 15를 더하는 과정은 ㄱ이다.\n$-2x-15\\ge x$\n$\\Longrightarrow -3x\\ge15$.\n원문 중간식의 부등호 $\\le$는 $\\ge$로 바로잡는다.\n\n셋째, 양변을 음수 $-3$으로 나누며 부등호 방향을 바꾸므로 ㄷ이다.\n$-3x\\ge15\\Longrightarrow x\\le-5$.\n원문 마지막 $x\\ge-5$도 $x\\le-5$가 맞다.\n\n따라서 이용한 성질의 순서는 ㄴ, ㄱ, ㄷ이고 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
