@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOURCE_REPAIR_RECEIPT_v1",
+  "stage": "CREATE_SOURCE_REPAIR",
+  "sourceRepairStatus": "PASS_AFTER_REPAIR",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+  "branch": "codex/o12-sinheung-source-repair-20261004",
+  "baseMain": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
+  "sourceFiles": [
+    {
+      "kind": "problem",
+      "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_신흥중2_수학_1중간.pdf",
+      "sha256": "sha256:7401304a7531974402fc48852b2158e833227f74df2ff8619fdbe75dac0c43fe",
+      "gitBlobSha": "bcb99804bd03df3620d106751d877a4277fb0ef8",
+      "sizeBytes": 2071029
+    },
+    {
+      "kind": "answer",
+      "path": "D:/기출/(1)1중간/(1)1중간/중2/2021_신흥중2_수학_1중간_정답.pdf",
+      "sha256": "sha256:5455398d9fd7277485bfe5e1deb4b4b3a6a1a55b7063cc6797130f4186f01037",
+      "gitBlobSha": "678b7b6f0450628b717df4e4c86fada46119dae3",
+      "sizeBytes": 969307
+    }
+  ],
+  "pagesInspected": [
+    {
+      "qids": [
+        5
+      ],
+      "problemPage": 1,
+      "answerPage": 1,
+      "answerKey": "④"
+    },
+    {
+      "qids": [
+        18
+      ],
+      "problemPage": 3,
+      "answerPage": 3,
+      "answerKey": "⑤"
+    }
+  ],
+  "repairs": [
+    {
+      "qid": 5,
+      "originalValue": {
+        "choice4": "$4.0404\\dots=4.\\dot{0}\\dot{4}$",
+        "solution": "<b>[포인트]</b> 순환마디의 시작과 끝점 위에만 점을 찍음.\\n② $0.57878\\dots$에서 순환마디는 $78$임.\\n$\\implies$ $0.5\\dot{7}\\dot{8}$로 표기하는 것이 옳으나, 원문 기호의 배치 규칙을 재확인함.\\n(※ 보기 구성상 ②번이 정답으로 제시됨)\\n$\\therefore$ ②",
+        "answer": "④"
+      },
+      "repairedValue": {
+        "choice4": "$4.040404\\dots=4.\\dot{0}$",
+        "answer": "④"
+      },
+      "repairReason": "D page 1 prints the right-hand notation as 4.0 with a repeating dot on 0; the extracted artifact incorrectly added a second period digit 4, which made the option equivalent to the left side.",
+      "independentMathResult": "4.040404... has repetend 04; 4.0 with only 0 repeating equals 4. The other four dotted notations match their repeating blocks.",
+      "affectedFields": [
+        "choices[3]",
+        "solution"
+      ],
+      "postRepairUniqueness": "one incorrect representation: ④",
+      "sourceFingerprint": {
+        "problemPdfSha256": "sha256:7401304a7531974402fc48852b2158e833227f74df2ff8619fdbe75dac0c43fe",
+        "answerPdfSha256": "sha256:5455398d9fd7277485bfe5e1deb4b4b3a6a1a55b7063cc6797130f4186f01037",
+        "pages": {
+          "problem": 1,
+          "answer": 1
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "originalValue": {
+        "content": "문장을 부등식으로 나타낸 것으로 옳지 않은 것은? [4점]",
+        "choice5": "$2(x-4) \\ge 17$",
+        "solution": "'작지 않다'는 '크거나 같다($\\ge$)'를 의미함.\\n⑤ $2(x-4) \\ge 17$로 표기해야 옳음.\\n$\\therefore$ ⑤",
+        "answer": "⑤"
+      },
+      "repairedValue": {
+        "content": "다음 문장을 부등식으로 나타낸 것으로 옳지 않은 것은? [4점]",
+        "choice5": "$x-4\\times2>17$",
+        "answer": "⑤"
+      },
+      "repairReason": "D page 3 reads “다음 문장” and prints choice ⑤ as x-4×2>17. The current artifact had omitted “다음” and replaced the source expression with its corrected translation.",
+      "independentMathResult": "The phrase means 2(x-4)≥17. The printed x-4×2>17 is false as a translation, so ⑤ remains the unique answer.",
+      "affectedFields": [
+        "content",
+        "choices[4]",
+        "solution"
+      ],
+      "postRepairUniqueness": "one incorrect translation: ⑤",
+      "sourceFingerprint": {
+        "problemPdfSha256": "sha256:7401304a7531974402fc48852b2158e833227f74df2ff8619fdbe75dac0c43fe",
+        "answerPdfSha256": "sha256:5455398d9fd7277485bfe5e1deb4b4b3a6a1a55b7063cc6797130f4186f01037",
+        "pages": {
+          "problem": 3,
+          "answer": 3
+        }
+      }
+    }
+  ],
+  "unrelatedMutationCount": 0,
+  "mainMutation": false,
+  "itemHoldCount": 0,
+  "calibrationPreflight": {
+    "stage": "REPAIR",
+    "status": "PASS",
+    "evidencePath": "embedded solutionQualityCalibration",
+    "solutionQualityCalibration": {
+      "goldenSampleRefs": [
+        {
+          "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+          "sha256": "sha256:213b07f5e4593202da3c01bd8445a809ac1b78ede986b341f0b650f2eca76f03",
+          "gitBlobSha": "e21482c6ed48d64291edd43d6e4a443669be2977"
+        },
+        {
+          "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+          "sha256": "sha256:3506fef8c4c5cede6c406423bc30b814a61e49fa0f4350a71d3fe6167c2274bd",
+          "gitBlobSha": "f8e8e82a2c7d7c9ab8c6b8cb1c89bf688410a696"
+        }
+      ],
+      "goldenSampleQuestionRefs": [
+        {
+          "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+          "qid": 3,
+          "solutionSha256": "sha256:72100586fca29741292cdbd8877284bbf34c9de990141f8470fcc24e0a964dfa",
+          "solutionExcerpt": "[키포인트] 기약분수로 나타냈을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 유한소수이다.\\n① $\\frac{1}{15} = \\frac{1}{3 \\ti",
+          "observation": "Defines the finite-decimal condition through reduced denominator factors, checks the candidate choices, and concludes with the unique matching option."
+        },
+        {
+          "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+          "qid": 5,
+          "solutionSha256": "sha256:367a2b048ce0c920cb8cf60ba27112eab46a1287f83a1202a43169cc98594e2b",
+          "solutionExcerpt": "[키포인트] 소수점 아래 순환마디의 위치를 일치시켜 소수 부분을 제거한다.\\n$x = 1.32323...$\\n$1000x = 1323.2323...$\\n",
+          "observation": "Aligns the repeating decimal positions before subtraction and shows the decisive equations."
+        },
+        {
+          "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+          "qid": 3,
+          "solutionSha256": "sha256:734419afac170ca673a2e15a4c15721160b6ee02246420c652ae7fd5a6330c74",
+          "solutionExcerpt": "* $\\frac{1}{3} = 0.333\\dots = 0.\\dot{3}$ 이므로 순환마디의 숫자는 1개 ($x=1$)\n* $\\frac{8}{11} = 0",
+          "observation": "Identifies each minimum repeating block and its length, then computes the requested count explicitly."
+        },
+        {
+          "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+          "qid": 18,
+          "solutionSha256": "sha256:9066296c02972aee8fcf4c8089602339eac2b919afe8c311ab0291337c1f1939",
+          "solutionExcerpt": "* 부등식의 양변에 음수를 곱하거나 나누면 부등호의 방향이 바뀝니다.\n* ④ 양변에 $-1$을 곱하면 $-a > -b$가 되며, 여기에 $5$를 더하면 ",
+          "observation": "States when inequality direction reverses and shows the resulting choice check."
+        }
+      ],
+      "negativeSampleRefs": [
+        {
+          "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+          "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+          "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+        },
+        {
+          "path": "archive/fixtures/visual-negative-regressions/2026-09-29/05_24_향림중_2학기_기말_중2_기출_q12_LABEL_OWNER_BINDING_FAIL.svg",
+          "sha256": "sha256:11bc8548c8555a7afc281385444d16f858dbae109ac5175085b6a17b3b52c424",
+          "gitBlobSha": "e9d698989ea3e6afcdc56bbb0ec14a86b3dd74e3"
+        }
+      ],
+      "calibrationAxes": [
+        "STUDENT_REPRODUCIBILITY",
+        "SMALL_BOARD_STRUCTURE",
+        "EXPLANATION_DENSITY",
+        "VISUAL_SEMANTIC_PARITY",
+        "VISUAL_READABILITY"
+      ],
+      "sampleReadBeforeWork": true,
+      "calibrationStatus": "PASS",
+      "solutionWorkMode": "TARGETED_REPAIR",
+      "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR"
+    }
+  },
+  "canonicalCreateValidator": {
+    "status": "NOT_RUN",
+    "reason": "This origin/main branch has no current CREATE physical-evidence or metadata sidecar for the target exam; a full CREATE closure would require exam-wide evidence outside this qid-only scope."
+  },
+  "finalArtifactSha256": "sha256:74a77a740e635a991240a0db9c6ffd1a6686bdfc9913cfcc04b0508bab770771",
+  "finalArtifactBlob": "bb647e9aa8943cb9b0cd3d4e2ef6143f517110a7",
+  "changedQids": [
+    5,
+    18
+  ],
+  "questionCount": 24
+}
