@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_SOURCE_REPAIR_HANDOFF_v1",
+  "status": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "thanosEligible": false,
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R3",
+  "lane": "R3-2",
+  "canonicalOrdinal": 2,
+  "examUid": "m2/1mid/25-wangun",
+  "examPath": "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+  "inputArtifactSha": "c8adc68629f98b9a9448b01cabd00283972e8035",
+  "branch": "work/middle/m2/25-wangun-1mid-r3-2-20261004-1846",
+  "finalArtifactSha": "d0be9d842464a68a1bc058c5293e395041174566",
+  "physicalEvidenceBlob": "5b0f1c78e9e8f49dd02ff93acf04d24cc5dac0a5",
+  "decisionSnapshotBlob": "c1fa87fac2c5a464b41cb76936499b18d8a0fde5",
+  "checkpointBlob": "c0047bc34eed2dd180cd4a1f0bc1e32d250d0bbb",
+  "openQids": [
+    1,
+    3,
+    6,
+    9,
+    11,
+    14,
+    15
+  ],
+  "repairLocus": [
+    "q7.solution"
+  ],
+  "completedStep": "Fresh R3 23/23 audit + Golden/Negative calibration + q7 solution explanation repair + changed-locus recheck + physical evidence/decision/checkpoint materialization.",
+  "firstMissingClosureStep": "FETCH_ORIGINAL_PDF_AND_REPAIR_SOURCE_Q1_Q3_Q6_Q9_Q11_Q14_Q15",
+  "sourceLocator": {
+    "catalogFile": "catalog*.json in Library",
+    "fileName": "2025_왕운중2_수학_1중간_문제지.pdf",
+    "primaryUrl": "https://ancient-silence-7a1d.js-pdf.workers.dev/2025_왕운중2_수학_1중간_문제지.pdf",
+    "alternateUrl": "https://pub-4e78e71560154e7a86ec04d0bd37c191.r2.dev/2025_왕운중2_수학_1중간_문제지.pdf"
+  },
+  "exactCapabilityAndError": [
+    {
+      "path": "web PDF open",
+      "error": "Both catalog URLs were rejected as inaccessible; PDF screenshot could not be obtained."
+    },
+    {
+      "path": "web filename search",
+      "error": "No indexed result for the exact PDF filename."
+    },
+    {
+      "path": "container HTTP fetch",
+      "error": "DNS/network unavailable in current runtime; original PDF bytes could not be downloaded."
+    },
+    {
+      "step": "canonical R3 validator/receipt",
+      "error": "NOT_RUN because R3 release requires zero unresolved source holds."
+    }
+  ],
+  "requiredNextAction": "Codex Source Repair opens the cataloged original PDF, extracts q1,q3,q6,q9,q11,q14,q15 source pixels/blocks, applies only source-confirmed repairs/assets, then returns to this same R3-2 lineage. Recheck repaired loci + direct answer/solution dependencies + locked scope, run canonical R3 validator/receipt, then and only then R3_PASS→RELEASE_QUEUE.",
+  "producerOwnership": "RELINQUISHED",
+  "sameTargetReselection": "DO_NOT_RESELECT_UNLESS_CURRENT_REASSIGN_TO_R3",
+  "r3Pass": false,
+  "releaseEligible": false,
+  "passClaim": false,
+  "createdAtKst": "2026-10-04 18:46 KST"
+}
