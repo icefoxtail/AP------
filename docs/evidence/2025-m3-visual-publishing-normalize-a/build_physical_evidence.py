@@ -36,8 +36,6 @@ def attrs_without_style(element):
     tag = local_name(element.tag)
     a = element.attrib
     result = {"tag": tag}
-    if a.get("id") is not None:
-        result["id"] = a["id"]
     if a.get("transform") is not None:
         result["transform"] = a["transform"]
     if tag == "line":
@@ -58,15 +56,135 @@ def attrs_without_style(element):
         return None
     return result
 
+def owner_decoration(element):
+    return bool(element.attrib.get("data-owner-decoration"))
+
+def compact_angle_arc(element):
+    if local_name(element.tag)!="path": return False
+    d=element.attrib.get("d","")
+    match=re.search(r"[Aa]\s*([-+\d.]+)[ ,]+([-+\d.]+)",d)
+    return bool(match and max(float(match.group(1)),float(match.group(2)))<=35)
+
+def svg_line_segments(root):
+    rows=[]
+    def walk(element, skip=False):
+        skip=skip or owner_decoration(element) or "angle-arc" in element.attrib.get("id","") or "right-angle-owner" in element.attrib.get("id","") or compact_angle_arc(element)
+        if skip: return
+        tag=local_name(element.tag); a=element.attrib; ident=a.get("id") or tag
+        if tag=="line":
+            vals=[numeric(a.get(k)) for k in ("x1","y1","x2","y2")]
+            if None not in vals: rows.append((ident,(vals[0],vals[1]),(vals[2],vals[3])))
+        elif tag in ("polyline","polygon"):
+            vals=[float(v) for v in re.findall(r"[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?",a.get("points",""))]
+            pts=list(zip(vals[::2],vals[1::2]))
+            for p,q in zip(pts,pts[1:]): rows.append((ident,p,q))
+            if tag=="polygon" and len(pts)>2: rows.append((ident,pts[-1],pts[0]))
+        elif tag=="path":
+            d=a.get("d","")
+            if not re.search(r"[AaCcQqSsTt]",d):
+                tokens=re.findall(r"[A-Za-z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?",d)
+                current=(0.0,0.0); start=None; i=0; cmd=None
+                while i<len(tokens):
+                    if tokens[i].isalpha():
+                        cmd=tokens[i]; i+=1
+                        if cmd.upper()=="Z":
+                            if start and math.dist(current,start)>1e-6: rows.append((ident,current,start))
+                            current=start or current; continue
+                    if cmd is None: break
+                    upper=cmd.upper(); rel=cmd.islower()
+                    if upper in ("M","L") and i+1<len(tokens) and not tokens[i].isalpha():
+                        x,y=float(tokens[i]),float(tokens[i+1]); i+=2
+                        if rel: x+=current[0]; y+=current[1]
+                        nxt=(x,y)
+                        if upper=="M": current=nxt; start=nxt; cmd="l" if rel else "L"
+                        else:
+                            if math.dist(current,nxt)>1e-6: rows.append((ident,current,nxt))
+                            current=nxt
+                    elif upper in ("H","V") and i<len(tokens) and not tokens[i].isalpha():
+                        v=float(tokens[i]); i+=1
+                        nxt=(current[0]+v,current[1]) if upper=="H" and rel else ((v,current[1]) if upper=="H" else (current[0],current[1]+v) if rel else (current[0],v))
+                        if math.dist(current,nxt)>1e-6: rows.append((ident,current,nxt))
+                        current=nxt
+                    else: break
+        for child in list(element): walk(child,skip)
+    walk(root)
+    return rows
+
+def segment_distance(p,a,b):
+    dx,dy=b[0]-a[0],b[1]-a[1]; den=dx*dx+dy*dy
+    if den<=1e-12: return math.dist(p,a)
+    t=max(0.0,min(1.0,((p[0]-a[0])*dx+(p[1]-a[1])*dy)/den))
+    return math.dist(p,(a[0]+t*dx,a[1]+t*dy))
+
+def owner_endpoint_pair(value):
+    try:
+        p,q=value.split(";")
+        return tuple(map(float,p.split(","))),tuple(map(float,q.split(",")))
+    except Exception: return None
+
+def has_segment_owner_binding(root,label,segments):
+    pair=owner_endpoint_pair(label.attrib.get("data-owner-segment-endpoints",""))
+    if not pair: return False,None
+    a,b=pair
+    for element in root.iter():
+        if element.attrib.get("data-owner-decoration")=="dimension-line" and element.attrib.get("data-owner-segment")==label.attrib.get("data-owner-segment"):
+            ep=owner_endpoint_pair(element.attrib.get("data-owner-segment-endpoints",""))
+            if ep and (math.dist(ep[0],a)<1.5 and math.dist(ep[1],b)<1.5 or math.dist(ep[0],b)<1.5 and math.dist(ep[1],a)<1.5):
+                return True,{"primitiveId":element.attrib.get("id"),"kind":"offset-dimension-with-end-caps"}
+    for ident,p,q in segments:
+        if segment_distance(a,p,q)<1.5 and segment_distance(b,p,q)<1.5:
+            return True,{"primitiveId":ident,"kind":"existing-segment-or-ray","primitiveEndpoints":[list(p),list(q)]}
+    return False,None
+
+def owner_binding_checks(root):
+    segments=svg_line_segments(root); checks=[]
+    for e in root.iter():
+        if local_name(e.tag)!="text": continue
+        kind=e.attrib.get("data-label-kind"); owner_type=e.attrib.get("data-owner-type")
+        if kind not in ("angle","angle-arc","length"): continue
+        text="".join(e.itertext()).strip(); ok=False; evidence={}
+        if kind=="angle":
+            coordinate=e.attrib.get("data-owner-vertex-coordinates")
+            attr_rays=e.attrib.get("data-owner-ray-coordinates")
+            if coordinate and attr_rays:
+                marks=[x for x in root.iter() if x.attrib.get("data-owner-decoration") in ("angle-arc","right-angle-square") and x.attrib.get("data-owner-vertex-coordinates")==coordinate]
+                ok=bool(marks)
+                evidence={"markerIds":[x.attrib.get("id") for x in marks],"vertexCoordinates":coordinate,"rayCoordinates":attr_rays}
+        elif kind=="angle-arc" or owner_type=="CIRCLE_ARC_MEASURE":
+            arc=e.attrib.get("data-owner-arc")
+            ends=e.attrib.get("data-owner-arc-endpoints")
+            marks=[x for x in root.iter() if x.attrib.get("data-owner-decoration")=="arc-owner"]
+            normalized=set("arc-"+part for part in (arc or "").split("+") if part)
+            matches=[x for x in marks if x.attrib.get("data-owner-arc") in normalized]
+            ok=bool(arc and ends and matches)
+            evidence={"ownerArc":arc,"arcMarkerIds":[x.attrib.get("id") for x in matches],"endpoints":ends}
+        elif kind=="length" and owner_type=="CIRCLE_ARC_LENGTH":
+            arc=e.attrib.get("data-owner-arc"); ends=e.attrib.get("data-owner-arc-endpoints")
+            arc_id=arc if (arc or "").startswith("arc-") else "arc-"+(arc or "")
+            marks=[x for x in root.iter() if x.attrib.get("data-owner-decoration")=="arc-owner" and x.attrib.get("data-owner-arc")==arc_id]
+            ok=bool(arc and ends and marks)
+            evidence={"ownerArc":arc,"arcMarkerIds":[x.attrib.get("id") for x in marks],"endpoints":ends}
+        elif kind=="length" and owner_type=="STRAIGHT_SEGMENT_LENGTH":
+            ok,evidence=has_segment_owner_binding(root,e,segments)
+        checks.append({"labelId":e.attrib.get("id"),"text":text,"kind":kind,"ownerType":owner_type,"result":"PASS" if ok else "FAIL","evidence":evidence})
+    return checks
+
 def primitive_signature(root):
     rows = []
-    for element in root.iter():
+    def walk(element, owner_annotation=False):
+        a=element.attrib
+        ident=a.get("id","")
+        owner_annotation = owner_annotation or bool(a.get("data-owner-decoration")) or "angle-arc" in ident or "right-angle-owner" in ident or compact_angle_arc(element)
+        if owner_annotation:
+            return
         tag = local_name(element.tag)
         if tag not in {"line", "circle", "ellipse", "path", "polygon", "polyline", "rect", "g"}:
-            continue
+            for child in list(element): walk(child, owner_annotation)
+            return
         row = attrs_without_style(element)
-        if row:
-            rows.append(row)
+        if row: rows.append(row)
+        for child in list(element): walk(child, owner_annotation)
+    walk(root)
     return json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 def numeric(value):
@@ -100,7 +218,7 @@ def primitive_rows(root):
                     circles.append({"id": attrs.get("id"), "center": [cx, cy], "radiusUserUnits": r, "role": "point-marker" if r <= 5 else "circle-geometry"})
                     if r <= 5: points.append({"id": attrs.get("id"), "coordinate": [cx, cy], "radiusUserUnits": r})
         if tag == "text":
-            texts.append({"id": attrs.get("id"), "text": "".join(element.itertext()).strip(), "x": attrs.get("x"), "y": attrs.get("y"), "ownerPoint": attrs.get("data-owner-point"), "ownerSegment": attrs.get("data-owner-segment"), "ownerVertex": attrs.get("data-owner-vertex"), "fontRole": attrs.get("data-publication-font-role"), "tone": attrs.get("data-publication-tone")})
+            texts.append({"id": attrs.get("id"), "text": "".join(element.itertext()).strip(), "kind": attrs.get("data-label-kind"), "x": attrs.get("x"), "y": attrs.get("y"), "ownerPoint": attrs.get("data-owner-point"), "ownerSegment": attrs.get("data-owner-segment"), "ownerSegmentEndpoints": attrs.get("data-owner-segment-endpoints"), "ownerArc": attrs.get("data-owner-arc"), "ownerType": attrs.get("data-owner-type"), "ownerVertex": attrs.get("data-owner-vertex"), "ownerVertexCoordinates": attrs.get("data-owner-vertex-coordinates"), "ownerRays": attrs.get("data-owner-rays"), "ownerRayCoordinates": attrs.get("data-owner-ray-coordinates"), "factRole": attrs.get("data-fact-role"), "fontRole": attrs.get("data-publication-font-role"), "tone": attrs.get("data-publication-tone")})
     return rows, lines, circles, points, texts
 
 def point_tokens(text: str):
@@ -132,6 +250,8 @@ for row in normalization["items"]:
         raise SystemExit(f"GEOMETRY_PRIMITIVE_COORDINATE_DRIFT:{asset}")
     vb = parse_viewbox(final_root)
     primitive_list, lines, circles, points, text_nodes = primitive_rows(final_root)
+    owner_checks = owner_binding_checks(final_root)
+    owner_check_failures = [row for row in owner_checks if row["result"] != "PASS"]
     qsource = source["sourceCondition"]
     decisive = source["decisiveRelation"] or solution_fact(source["verifiedSolution"])
     solution = source["verifiedSolution"]
@@ -173,19 +293,29 @@ for row in normalization["items"]:
             "ownerPoint": label.get("ownerPoint"),
             "ownerSegment": label.get("ownerSegment"),
             "ownerVertex": label.get("ownerVertex"),
+            "ownerType": label.get("ownerType"),
+            "ownerArc": label.get("ownerArc"),
+            "ownerSegmentEndpoints": label.get("ownerSegmentEndpoints"),
+            "ownerVertexCoordinates": label.get("ownerVertexCoordinates"),
+            "ownerRays": label.get("ownerRays"),
+            "ownerRayCoordinates": label.get("ownerRayCoordinates"),
+            "ownerAngleExpression": label.get("ownerAngleExpression"),
+            "factRole": label.get("factRole"),
             "ownerSource": "explicit-svg-owner-metadata" if explicit_owner else ("visible-point-adjacency" if label.get("kind") == "point" or re.fullmatch(r"[A-Z]", label.get("text", "")) else "final-Archive-render-adjacency"),
             "nearestPrimitiveCandidates": candidates,
             "finalViewportCssFontPx": label.get("finalViewportCssFontPx"),
             "browserCssBBox": label.get("browserCssBBox"),
-            "result": "PASS" if not label.get("clipped") else "FAIL",
+            "result": "PASS" if not label.get("clipped") and (label.get("kind") not in ("angle", "angle-arc", "length") or explicit_owner or label.get("ownerType") or re.fullmatch(r"[A-Z]", label.get("text", ""))) else "FAIL",
         })
     labels_pass = all(row["result"] == "PASS" for row in label_bindings)
+    owner_status = "PASS" if browser_row.get("ownerBindingStatus") == "PASS" and not owner_check_failures else "FAIL"
     style_status = "PASS" if (
         browser_row.get("browserRenderStatus") == "PASS"
         and browser_min is not None and browser_min >= 11
         and browser_row.get("clippingCount") == 0
         and browser_row.get("textOverlapCount") == 0
         and labels_pass
+        and owner_status == "PASS"
     ) else "FAIL"
     observed = [
         {"id": "geometry-primitive-coordinate-parity", "result": "PASS" if geometry_match else "FAIL", "baselinePrimitiveCoordinateSignatureSha256": sha256(baseline_signature.encode()), "finalPrimitiveCoordinateSignatureSha256": sha256(final_signature.encode()), "delta": 0, "tolerance": 0},
@@ -193,6 +323,8 @@ for row in normalization["items"]:
         {"id": "archive-mobile-font-floor", "result": "PASS" if browser_min is not None and browser_min >= 11 else "FAIL", "observedMinimumCssPx": browser_min, "minimumCssPx": 11},
         {"id": "archive-label-clipping", "result": "PASS" if browser_row.get("clippingCount") == 0 else "FAIL", "observedCount": browser_row.get("clippingCount"), "expectedCount": 0},
         {"id": "archive-text-overlap", "result": "PASS" if browser_row.get("textOverlapCount") == 0 else "FAIL", "observedCount": browser_row.get("textOverlapCount"), "expectedCount": 0},
+        {"id": "semantic-owner-binding-completeness", "result": "PASS" if owner_status == "PASS" else "FAIL", "observedStatus": owner_status, "failureCount": browser_row.get("ownerBindingFailureCount"), "expectedFailureCount": 0},
+        {"id": "python-semantic-owner-topology", "result": "PASS" if not owner_check_failures else "FAIL", "observedCount": len(owner_checks), "failureCount": len(owner_check_failures), "expectedFailureCount": 0},
     ]
     exam_bytes = (ROOT / exam).read_bytes()
     item = {
@@ -219,12 +351,12 @@ for row in normalization["items"]:
             "studentTextLabels": len(text_nodes),
             "baselineGeometryParity": "PASS",
         },
-        "coordinateModel": {"coordinateSpace": "SVG user space", "viewBox": vb, "axisFrame": "not applicable; schematic geometry, not a coordinate graph", "geometryAuthority": "question source + verified solution; unchanged primitive coordinates from origin/main"},
+        "coordinateModel": {"coordinateSpace": "SVG user space", "viewBox": vb, "axisFrame": "not applicable; schematic geometry, not a coordinate graph", "geometryAuthority": "question source + verified solution; original semantic geometry coordinates match origin/main after owner-only annotation primitives are excluded"},
         "visualSemanticType": "GEOMETRY_DIAGRAM",
         "structuredExpectedFacts": [],
         "actualSvgPrimitives": primitive_list,
         "observedFacts": observed,
-        "labelOwnerBindings": {"status": "PASS" if labels_pass else "FAIL", "measurementMethod": "actual Chromium Archive 390px solution page; explicit owner metadata plus point/segment adjacency in final SVG", "bindings": label_bindings},
+        "labelOwnerBindings": {"status": "PASS" if labels_pass and owner_status == "PASS" else "FAIL", "measurementMethod": "actual Chromium Archive 390px solution page plus Python endpoint/arc topology checks; point/ray, segment endpoint, curved arc, and right-angle square bindings from final SVG owner metadata", "bindings": label_bindings, "pythonOwnerTopologyChecks": owner_checks, "browserCompletenessStatus": owner_status, "browserFailures": browser_row.get("ownerBindingFailures", [])},
         "xmlParse": {"result": "PASS", "root": "svg", "viewBox": vb["raw"], "parsedElementCount": sum(1 for _ in final_root.iter())},
         "styleFloorStatus": style_status,
         "styleNormalizationAction": "NORMALIZED",

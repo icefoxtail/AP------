@@ -12,6 +12,7 @@ ledger_path = OUT / "normalization-ledger.json"
 ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
 browser = json.loads((OUT / "browser_render_evidence.json").read_text(encoding="utf-8"))
 browser_rows = {row["assetPath"]: row for exam in browser["exams"] for row in exam["solutionImages"]}
+owner_work = json.loads((OUT / "angle-length-owner-ledger.json").read_text(encoding="utf-8"))
 source_review = json.loads((OUT / "source_review_snapshot.json").read_text(encoding="utf-8"))
 source_rows = {(row["exam"], int(row["qid"])): row for row in source_review["items"]}
 
@@ -79,7 +80,7 @@ for item in ledger["items"]:
         "visibleTextRemovedAsRedundant": removed,
         "visibleTextAddedOrShortened": added,
         "labelAnchorsRepositioned": moved,
-        "styleFloorStatus": "PASS" if browser_item.get("browserRenderStatus") == "PASS" and sourceMin is not None and sourceMin >= 11 else "FAIL",
+        "styleFloorStatus": "PASS" if browser_item.get("browserRenderStatus") == "PASS" and browser_item.get("ownerBindingStatus") == "PASS" and sourceMin is not None and sourceMin >= 11 else "FAIL",
         "styleNormalizationAction": "NORMALIZED",
     })
     summary_rows.append({"assetPath": path, "qid": qid, "viewBoxBefore": item["viewBox"]["raw"], "viewBoxAfter": final_viewbox, "labelsRemoved": removed, "labelsAddedOrShortened": added, "labelAnchorsRepositioned": moved})
@@ -87,8 +88,9 @@ for item in ledger["items"]:
 ledger["createdAt"] = datetime.now(timezone.utc).isoformat()
 ledger["actions"] = {"ALREADY_CURRENT": 0, "STYLE_NORMALIZE": len(ledger["items"]), "POLISH": 0, "REBUILD": 0}
 ledger["minimumFinalMobileCssFontPx"] = browser["minimumFinalViewportCssFontPx"]
-ledger["physicalBrowserPass"] = browser["svgRenderPassCount"] == len(ledger["items"]) and browser["clippingCount"] == 0 and browser["textOverlapCount"] == 0
-ledger["physicalBrowserSummary"] = {"examPass": f"{browser['examRenderPassCount']}/5", "svgPass": f"{browser['svgRenderPassCount']}/{browser['svgDenominator']}", "minMobileCssFontPx": browser["minimumFinalViewportCssFontPx"], "clipping": browser["clippingCount"], "textOverlap": browser["textOverlapCount"]}
+owner_pass = all(row.get("ownerBindingStatus") == "PASS" for row in browser_rows.values())
+ledger["physicalBrowserPass"] = browser["svgRenderPassCount"] == len(ledger["items"]) and browser["clippingCount"] == 0 and browser["textOverlapCount"] == 0 and owner_pass
+ledger["physicalBrowserSummary"] = {"examPass": f"{browser['examRenderPassCount']}/5", "svgPass": f"{browser['svgRenderPassCount']}/{browser['svgDenominator']}", "ownerBindingPass": f"{sum(row.get('ownerBindingStatus') == 'PASS' for row in browser_rows.values())}/{len(browser_rows)}", "angleOwnerBindings": owner_work["angleLabelCount"], "lengthOwnerBindings": owner_work["lengthLabelCount"], "minMobileCssFontPx": browser["minimumFinalViewportCssFontPx"], "clipping": browser["clippingCount"], "textOverlap": browser["textOverlapCount"]}
 ledger_path.write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 (OUT / "layout_refinement_ledger.json").write_text(json.dumps({"schemaVersion":"APMATH_M3_LAYOUT_REFINEMENT_EVIDENCE_v1","denominator":len(summary_rows),"items":summary_rows},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"denominator":len(ledger["items"]),"actions":ledger["actions"],"physicalBrowserPass":ledger["physicalBrowserPass"],"summary":ledger["physicalBrowserSummary"],"itemsWithViewBoxChange":sum(x["viewBoxBefore"]!=x["viewBoxAfter"] for x in summary_rows)},ensure_ascii=False,indent=2))
