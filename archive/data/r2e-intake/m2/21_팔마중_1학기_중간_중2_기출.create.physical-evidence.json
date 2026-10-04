@@ -10,7 +10,7 @@
   "branch": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
   "baseMain": "132c392371cee461e227d9d7948a7f25398d424a",
   "sourceInputBlob": "4fec5194ff42312bb636090cabed9f22c2cae9d9",
-  "finalArtifactSha": "a642f718ef1787af1073c954673031a40fbb9a6d",
+  "finalArtifactSha": "96796ad3aca23c5d31626d4954b2fe15d32980ba",
   "questionCount": 24,
   "completedStep": "candidate + fresh solutions 24/24 + metadata 24/24 + q22 solution SVG + physical evidence",
   "sourceParity": {
@@ -435,7 +435,7 @@
     ]
   },
   "assetBlobs": {
-    "exam": "4a04f179d9e112831b9222917f570d508c533e0f",
+    "exam": "96796ad3aca23c5d31626d4954b2fe15d32980ba",
     "q10SourceImageSha256": "216B6A4F8B24A3895F36DA3C42CD650BAF8A2B4F7F0C0F97F21D246108C08C09",
     "q22SolutionSvg": "629e37f56839521359917a52153ce3b373e7eca0",
     "q22RenderPng": "7d992e1e6c1bccbe10264551999a54cbedf450a3"
@@ -454,7 +454,19 @@
   "createDone": false,
   "readyForReview1": false,
   "firstMissingClosureStep": "CREATE_VALIDATOR_AND_RECEIPT",
-  "requiredNextAction": "Source repair for q10/q12/q19 is complete. The canonical CREATE validator and CREATE receipt executor are not present in this repository/environment; continue source-free mechanical closure when an authorized validator executor is available. Do not infer CREATE_DONE or READY_FOR_REVIEW1 from this targeted repair.",
-  "passClaim": false
+  "requiredNextAction": "Source repair for q10/q12/q19 is complete and tied to D originals. Continue source-free CREATE mechanical closure with an authorized canonical validator/receipt executor; do not infer CREATE_DONE or READY_FOR_REVIEW1.",
+  "passClaim": false,
+  "sourceRepairClosure": {
+    "status": "D_SOURCE_CONFIRMED",
+    "qids": [
+      10,
+      12,
+      19
+    ],
+    "evidencePath": "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.source-repair.json",
+    "evidenceGitBlob": "04f13136dbd087b7fac07189ba9479c0a05ade8d",
+    "targetedValidator": "PASS",
+    "createDone": false,
+    "passClaim": false
+  }
 }
-
