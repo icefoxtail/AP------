@@ -5,6 +5,7 @@ import {
   validateStageEvidence,
   validateTargetedR2Evidence,
 } from '../archive/tools/archive-stage-validator.mjs';
+import { validateCommonEvidence } from '../archive/tools/archive-stage-validator-common-v2.mjs';
 
 const fixturePath = path.resolve('archive/fixtures/stage-validator-pilot/o34-r2-targeted.json');
 const o34 = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
@@ -56,3 +57,55 @@ assert.equal(control.validatorMode, 'FULL');
 assert.equal(control.ok, true, JSON.stringify(control));
 
 console.log('ARCHIVE_STAGE_VALIDATOR_PILOT_PASS');
+
+
+const commonEnvelope = {
+  schemaVersion: 'JS_ARCHIVE_STAGE_EVIDENCE_v2',
+  stage: 'R1',
+  examUid: 'fixture-r1',
+  artifactSha: 'artifact-sha-1',
+  rows: [{ qid: 1 }, { qid: 2 }],
+};
+
+const commonPass = validateCommonEvidence({
+  stage: 'R1',
+  examUid: 'fixture-r1',
+  artifactSha: 'artifact-sha-1',
+  actualArtifactSha: 'artifact-sha-1',
+  evidenceRef: 'fixture://r1',
+  evidence: commonEnvelope,
+  expectedQids: [1, 2],
+});
+assert.equal(commonPass.commonValid, true, JSON.stringify(commonPass));
+assert.equal('disposition' in commonPass, false);
+assert.equal('ok' in commonPass, false);
+
+const wrongArtifact = validateCommonEvidence({
+  stage: 'R1',
+  examUid: 'fixture-r1',
+  artifactSha: 'artifact-sha-1',
+  actualArtifactSha: 'artifact-sha-2',
+  evidenceRef: 'fixture://r1',
+  evidence: commonEnvelope,
+  expectedQids: [1, 2],
+});
+assert.equal(wrongArtifact.commonValid, false);
+assert.ok(wrongArtifact.issues.includes('COMMON_ACTUAL_ARTIFACT_SHA_MISMATCH'));
+
+const duplicateRows = validateCommonEvidence({
+  stage: 'R1',
+  examUid: 'fixture-r1',
+  artifactSha: 'artifact-sha-1',
+  actualArtifactSha: 'artifact-sha-1',
+  evidenceRef: 'fixture://r1',
+  evidence: {
+    ...commonEnvelope,
+    rows: [{ qid: 1 }, { qid: 1 }],
+  },
+  expectedQids: [1, 2],
+});
+assert.equal(duplicateRows.commonValid, false);
+assert.ok(duplicateRows.issues.includes('COMMON_ROW_QID_DUPLICATE:q1'));
+assert.ok(duplicateRows.issues.includes('COMMON_QID_MISSING:q2'));
+
+console.log('ARCHIVE_STAGE_VALIDATOR_COMMON_V2_PASS');
