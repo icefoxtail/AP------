@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "m2-1-source-repair-evidence-v1",
+  "status": "SOURCE_AUTHORITY_UNRESOLVED",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "examUid": "M2-1-24-MUNSUNG-1MID",
+  "examPath": "archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
+  "canonicalOrdinal": 7,
+  "branch": "rescue/m2/source-repair/o7-de873a01-q6-q7-q16-q17-20261004-1743",
+  "headBefore": "e3b9a8aa12cc860875260cef4dc14fcaca956bdd",
+  "mainObserved": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
+  "divergenceMainOnlyBranchOnly": "1/6",
+  "sourceSearch": {
+    "priorityUsed": [
+      "exam source metadata/sourcePath: current records point to the JS artifact and provide no PDF/page sourcePath",
+      "D: exact 2024 + 문성중 + 중2 + 1학기 중간 PDF/image filename and directory search",
+      "D: exact school/year candidate and archive asset provenance search"
+    ],
+    "exactOriginalFound": false,
+    "identity": {
+      "school": "문성중",
+      "grade": "중2",
+      "semester": "1학기",
+      "examType": "중간",
+      "year": 2024
+    },
+    "DFindings": [
+      "No exact-identity full exam PDF or page image was found under D:\\기출, D:\\문제지, or the D: recursive exact year/school filename scan.",
+      "D:\\AI_WORKSPACES\\APMS\\disk-gc-build\\archive\\assets\\images\\24_문성중_1학기_중간_중2_기출 contains q16.png and q17.png only; it contains no page context or provenance connecting those images to the original exam."
+    ]
+  },
+  "qids": [
+    {
+      "qid": 6,
+      "locus": "choices ③/⑤",
+      "currentObservation": "The two choice strings are byte-identical.",
+      "deterministicRepair": false,
+      "missingEvidence": "The exact original q6 page showing the distinct source choices and neighboring question context. It determines which duplicate distractor text is wrong."
+    },
+    {
+      "qid": 7,
+      "locus": "stem statement labels and choices",
+      "currentObservation": "The stem enumerates ㄴ/ㅂ/ㅇ/ㅈ while answer choices refer to ㄱ/ㄷ/ㄹ/ㅁ/ㅅ.",
+      "deterministicRepair": false,
+      "missingEvidence": "The exact original q7 page and adjacent-page context. It determines whether the stem labels or choice labels/text were miscopied."
+    },
+    {
+      "qid": 16,
+      "locus": "problem image ref",
+      "currentObservation": "The JS image ref resolves to the canonical archive/assets/images location. That image depicts an open circle at -2 with a left ray; current text is a polynomial-addition/subtraction question. A matching-name D-workspace PNG has no original page context or provenance, so neither the current text nor image can be privileged as source truth.",
+      "gitAssetBlob": "0a7d64654fa40765ee8999d9c4bf034c0ec56038",
+      "DAsset": {
+        "path": "D:\\AI_WORKSPACES\\APMS\\disk-gc-build\\archive\\assets\\images\\24_문성중_1학기_중간_중2_기출\\q16.png",
+        "sha256": "67FEB57B4F5DAF67F96574B4D269E40BE87CA1CF92A4ED132962FBA1A19D8578"
+      },
+      "deterministicRepair": false,
+      "missingEvidence": "The original exam q16 page or an asset provenance record tying this exact image to that page and question number."
+    },
+    {
+      "qid": 17,
+      "locus": "problem image ref",
+      "currentObservation": "The JS image ref resolves to the canonical archive/assets/images location. That image depicts two balance-scale diagrams; current text is a polynomial-division coefficient question. A matching-name D-workspace PNG has no original page context or provenance, so neither the current text nor image can be privileged as source truth.",
+      "gitAssetBlob": "e7586a609dfec662ab48bbbcbdee4dd8f7a42d83",
+      "DAsset": {
+        "path": "D:\\AI_WORKSPACES\\APMS\\disk-gc-build\\archive\\assets\\images\\24_문성중_1학기_중간_중2_기출\\q17.png",
+        "sha256": "40E545BABBE1440DB6E749E77FD373B51B7C1340EB3DD8BA003A635F205F6EFA"
+      },
+      "deterministicRepair": false,
+      "missingEvidence": "The original exam q17 page or an asset provenance record tying this exact image to that page and question number."
+    }
+  ],
+  "repairDecision": "No content, choices, answer, solution, image ref, or image asset was changed because source authority cannot determine which q6/q7 text is wrong or whether q16/q17 text or images belong to this exam question.",
+  "validation": {
+    "canonicalCreateValidator": "NOT_RUN_SOURCE_AUTHORITY_UNRESOLVED",
+    "createReceipt": "NOT_WRITTEN",
+    "createDone": false,
+    "readyForReview1": false,
+    "sourceParityPassClaim": false,
+    "nextEvidenceNeeded": "Exact original 2024 문성중 grade-2 semester-1 midterm PDF/pages for q6, q7, q16, q17, including adjacent question/page context; alternatively, verified provenance for the exact q16/q17 assets plus the original q6/q7 page."
+  },
+  "scope": {
+    "examArtifactMutation": 0,
+    "unrelatedMutation": 0,
+    "lockedMutation": 0,
+    "filesChanged": [
+      "archive/data/r2e-intake/m2/24_문성중_1학기_중간_중2_기출.create.handoff.json",
+      "archive/data/r2e-intake/m2/24_문성중_1학기_중간_중2_기출.create.source-repair.json"
+    ]
+  }
+}
