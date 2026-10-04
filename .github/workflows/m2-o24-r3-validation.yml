@@ -1,0 +1,17 @@
+name: M2 o24 R3 canonical validation
+
+on:
+  push:
+    branches:
+      - validation/m2-o24-hyangrim-r3-r32-20261004-2039-v2
+
+jobs:
+  r3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run o24 R3 canonical gate
+        run: node tests/z-r3-o24-hyangrim-release-validation.test.js
