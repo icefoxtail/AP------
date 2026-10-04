@@ -11,7 +11,7 @@
   "physicalEvidenceGitBlob": "d866705ae2c048281b11e7c29efcd02c91bae4ab",
   "legacyPhysicalEvidenceGitBlob": "407a0b32ff72168f2efdabfaf589b776acc1d0dd",
   "metaPayloadGitBlob": "df208e2480f845e47d5d5e69582305427f4ffa9b",
-  "masterLeaseGitBlob": "c8f49ea4c8018fb318ee52bb2cff981708fd8946",
+  "masterLeaseGitBlob": "0c696f6eb73690b8f16f325f32d96822a48f1aa7",
   "validatorReceiptGitBlob": null,
   "createReceiptGitBlob": null,
   "firstMissingClosureStep": "ACTUAL_CANONICAL_CREATE_VALIDATOR_EXECUTION",
@@ -32,22 +32,37 @@
     {
       "path": "CURRENT_MAIN_VALIDATION_REF_MATERIALIZATION",
       "result": "BLOCKED_BEFORE_SIDE_EFFECT"
+    },
+    {
+      "path": "PR_ISSUE_COMMENT_20261005_0500",
+      "result": "BLOCKED_BEFORE_SIDE_EFFECT"
+    },
+    {
+      "path": "CURRENT_MAIN_EXACT_VALIDATION_BRANCH_20261005_0500",
+      "result": "BASE_BRANCH_CREATED_TARGET_PAYLOAD_WRITE_BLOCKED_BEFORE_SIDE_EFFECT",
+      "ref": "validation/m2-o9-create-thanos1-exact-20261005-0500",
+      "baseSha": "d3f0d6963dd55e74f6ee009681df8c59621e0d8f"
     }
   ],
   "validatorAuthority": {
-    "mainSha": "0e62cc3d6baadd039c502d4822a6a2ac8fcaada3",
+    "mainSha": "d3f0d6963dd55e74f6ee009681df8c59621e0d8f",
     "archiveStageValidator": "archive/tools/archive-stage-validator.mjs",
+    "archiveStageValidatorGitBlob": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
     "reviewEvidenceGateGitBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "workflowPath": ".github/workflows/archive-stage-validator.yml",
+    "workflowGitBlob": "e0b7201629177c02a37ae39c0e2c0cd5e8fc81af",
     "targetRef": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
+    "targetHead": "8fb9a145ac1bcbe0ac3701409dc59fc641756a4e",
     "stage": "CREATE"
   },
   "next": {
-    "action": "ARCHIVE_STAGE_VALIDATOR_WORKFLOW_DISPATCH",
+    "action": "RUN_AUTHORIZED_CANONICAL_ARCHIVE_STAGE_VALIDATOR",
     "targetRef": "work/middle/m2/21-palma-1mid-temp-create4-20261004-1632",
     "stage": "CREATE",
     "examPath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
     "evidencePath": "archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.create.physical-evidence.v2.json",
-    "afterPass": "Emit actual validator receipt, then durable CREATE receipt, then remote readback. Do not use connector replay as PASS authority."
+    "afterPass": "Emit actual validator receipt, then durable CREATE receipt, then remote readback. Do not infer PASS without actual canonical execution."
   },
-  "updatedAtKST": "2026-10-05T00:30:00+09:00"
+  "updatedAtKST": "2026-10-05T05:00:15+09:00",
+  "note": "05:00 exact ORCHESTRATOR rescue: stale self-lease renewed against main d3f0d696; artifact/evidence unchanged (7a7c7f1d / d866705a). Canonical workflow authority re-read. Connected write safety blocked both owner issue-comment trigger and target-payload validation harness before side effect; exact validator debt remains, no PASS/CREATE_DONE declaration."
 }
