@@ -1,0 +1,1420 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "lane": "R3-2",
+  "examPath": "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+  "inputArtifactGitBlob": "c8adc68629f98b9a9448b01cabd00283972e8035",
+  "finalArtifactGitBlob": "d0be9d842464a68a1bc058c5293e395041174566",
+  "questionCount": 23,
+  "freshFromArtifactBytes": true,
+  "priorStageCountsUsedAsEvidence": false,
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "qualityCompareCount": "23/23",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "sourceAuthority": {
+    "latestMainShaAtRecheck": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
+    "review2ReceiptBlob": "231052716ac91e000eaf28cdf73ca12d85db038c",
+    "review2ValidatorBlob": "98deda96f940c47e0aa47bfb65ed350c5cf821db",
+    "r3CanonicalBlob": "b2d3134a2db1129569d53b04e1afcf2cd0f09978",
+    "goldenCanonicalBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "physicalEvidenceCanonicalBlob": "32f212619a31df15add413ebe8eccdb86941cec1",
+    "linkedProblemImages": [],
+    "targetAssetDirectoryProbes": [
+      "archive/assets/images/25_왕운중_1학기_중간_중2_기출 -> 404",
+      "assets/images/25_왕운중_1학기_중간_중2_기출 -> 404"
+    ]
+  },
+  "summary": {
+    "questionEvidenceRows": 23,
+    "sourcePassCount": 16,
+    "sourceRepairRequiredCount": 7,
+    "directRepairCount": 1,
+    "directRepairQids": [
+      7
+    ],
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "lockedScopeMutationCount": 0,
+    "candidateDisposition": "SOURCE_REPAIR_REQUIRED"
+  },
+  "directRepair": {
+    "qid": 7,
+    "field": "solution",
+    "reason": "SOLUTION_EXPLANATION_DENSITY",
+    "protectedFieldsChanged": false,
+    "changedLocusRecheck": "PASS"
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "분류 대상 수 목록이 content에서 누락되어 독립적으로 a,b를 계산할 수 없음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "분류 대상 수 목록이 content에서 누락되어 독립적으로 a,b를 계산할 수 없음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 solution은 누락 source를 추정하지 않고 HOLD 경계를 명시한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q2 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "3.141414…의 순환마디는 소수 첫째 자리부터 14이므로 ⑤가 오표기."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "3.141414…의 순환마디는 소수 첫째 자리부터 14이므로 ⑤가 오표기."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "판정 대상 ㄱ~ㄹ 명제가 content에서 누락됨.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "판정 대상 ㄱ~ㄹ 명제가 content에서 누락됨.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 solution은 누락 source를 추정하지 않고 HOLD 경계를 명시한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q4 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "427/200=2.135이므로 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "427/200=2.135이므로 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q5 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "n은 63의 배수여야 하고 두 분수가 정수가 되면 안 된다. 252,315 제외 후 300에 가장 가까운 허용값은 378."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "n은 63의 배수여야 하고 두 분수가 정수가 되면 안 된다. 252,315 제외 후 300에 가장 가까운 허용값은 378."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "저장 식대로면 b/a+p+q=62.01이나 보기/정답은 a/b+p+q=162와만 일치; 원본 과정 박스 없음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "저장 식대로면 b/a+p+q=62.01이나 보기/정답은 a/b+p+q=162와만 일치; 원본 과정 박스 없음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 solution은 누락 source를 추정하지 않고 HOLD 경계를 명시한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q7 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 repair 후 ①=2/3, ②=3/11, ③=22/45, ④=281/900, ⑤=1001/900으로 직접 대조하여 ②만 일치."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3에서 5개 보기를 모두 분수로 직접 대조하도록 보강 완료."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "보기별 독립 줄 + 계산 + 결론으로 보강됨."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q8 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "3/41의 주기 07317; 홀수 자리 주기 0,3,7,7,1 합 18. 1013=5×202+3 → 3646."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "3/41의 주기 07317; 홀수 자리 주기 0,3,7,7,1 합 18. 1013=5×202+3 → 3646."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "세 학생의 실제 지수법칙 계산식/과정이 content에서 누락됨.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "세 학생의 실제 지수법칙 계산식/과정이 content에서 누락됨.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 solution은 누락 source를 추정하지 않고 HOLD 경계를 명시한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q10 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "512KiB×160=81920KiB=5/64GiB."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "512KiB×160=81920KiB=5/64GiB."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "판정 대상 ㄱ~ㅁ 식이 content에서 누락됨.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "판정 대상 ㄱ~ㅁ 식이 content에서 누락됨.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 solution은 누락 source를 추정하지 않고 HOLD 경계를 명시한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q12 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "① 좌변=-b^3/(6a)여서 제시식의 부호가 틀림."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "① 좌변=-b^3/(6a)여서 제시식의 부호가 틀림."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q13 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "2^100×5^96=16×10^96 → 98자리, 자릿수합 7 → 105."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "2^100×5^96=16×10^96 → 98자리, 자릿수합 7 → 105."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "저장 높이·부피로 밑넓이 9πxy²인데 보기 ④는 9xy²; 원본 그림/보기 pixel 없음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "저장 높이·부피로 밑넓이 9πxy²인데 보기 ④는 9xy²; 원본 그림/보기 pixel 없음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 solution은 누락 source를 추정하지 않고 HOLD 경계를 명시한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "problem visual은 source-repair locus로 분리; source를 추정한 대체 visual은 만들지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "발문이 참조하는 중량 제한 표지판 이미지가 연결되어 있지 않음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOURCE_AUTHORITY_MISSING_OR_CONFLICT",
+          "observedEvidence": "발문이 참조하는 중량 제한 표지판 이미지가 연결되어 있지 않음.",
+          "unresolvedPoint": "원본 PDF/page의 해당 누락·충돌 source fact",
+          "nextRequiredEvidenceOrCapability": "authoritative original PDF/page pixel",
+          "repairAttempted": "current final artifact 직접 재판독 + linked image field 확인 + target image directory 2경로 probe",
+          "authorityLookupAttempted": "latest main + current R3/Golden/physical-evidence canonical + exact R2 final bytes",
+          "whyDeterministicClosureImpossible": "저장 answer/solution을 원본 source로 역추론하면 source authority가 순환됨"
+        }
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "현재 solution은 누락 source를 추정하지 않고 HOLD 경계를 명시한다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "problem visual은 source-repair locus로 분리; source를 추정한 대체 visual은 만들지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q16 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "-3x+1≥4(x+1) → x≤-3/7, 제시값 중 -2,-1의 합 -3."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "-3x+1≥4(x+1) → x≤-3/7, 제시값 중 -2,-1의 합 -3."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q17 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "a≥b에 -1/4을 곱하면 부등호가 뒤집히므로 ④가 거짓."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "a≥b에 -1/4을 곱하면 부등호가 뒤집히므로 ④가 거짓."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q18 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "500x+3000<1000x → x>6 → 최소 7."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "500x+3000<1000x → x>6 → 최소 7."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q19 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "600=2^3×3×5^2. 두 자리 짝수 45개 중 3의 배수(즉 6의 배수) 15개 제외 → 30."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "600=2^3×3×5^2. 두 자리 짝수 45개 중 3의 배수(즉 6의 배수) 15개 제외 → 30."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q20 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x-1-n<-1 → x<n. 정확히 -2,-1,0만 해가 되려면 0<n≤1."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "x-1-n<-1 → x<n. 정확히 -2,-1,0만 해가 되려면 0<n≤1."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q21 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "(2/3-3/5)x=3 → x/15=3 → x=45."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "(2/3-3/5)x=3 → x/15=3 → x=45."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q22 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "A=-x^2+5-(3x^2-2x-1)=-4x^2+2x+6; A-(3x^2-2x-1)=-7x^2+4x+7."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "A=-x^2+5-(3x^2-2x-1)=-4x^2+2x+6; A-(3x^2-2x-1)=-7x^2+4x+7."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "solution visual 실익이 필수적이지 않음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q23 decisive source facts are present in current content/choices and were freshly recomputed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x+1≥-2x-5 → x≥-2; -2 닫힌 점, 오른쪽 방향."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "x+1≥-2x-5 → x≥-2; -2 닫힌 점, 오른쪽 방향."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심/풀이/결론 구조와 결정 계산이 학생 재현 가능 수준."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "중2 1학기 및 선수 개념 범위 내 풀이."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "수직선 정보(-2 포함, 오른쪽)가 solution text에 명시되어 현재 R3 source repair와 독립적으로 의미 보존."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "inline Meta + create Meta sidecar current row를 대조; null은 RPM_ONLY/NO_ACTIVE_MAPPING nullReason 보유, source-bound semantic은 명시적 boundary 유지."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "현재 bucket/confidence/boundary가 visible reasoning burden과 일치; source-bound 문항은 low confidence 유지."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "static bytes에서 고위험 TeX/newline 이상 없음. canonical executable R3 validator는 source repair 후 수행 예정."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "SOURCE_HOLD",
+      "rpmL3": "유리수와 소수 표현",
+      "rpmL4": "분수를 소수로",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "low",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 2,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "순환소수",
+      "rpmL4": "순환마디와 표현",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 3,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "SOURCE_HOLD",
+      "rpmL3": "유리수와 소수 표현",
+      "rpmL4": "분수를 소수로",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "low",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 4,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "유한소수와 무한소수",
+      "rpmL4": "유한소수 판별",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 5,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "유한소수와 무한소수",
+      "rpmL4": "분모의 소인수 조건",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 6,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "순환소수",
+      "rpmL4": "순환소수를 분수로",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "low",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 7,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "순환소수",
+      "rpmL4": "순환소수를 분수로",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 8,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "순환소수",
+      "rpmL4": "순환마디와 표현",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 9,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "rpmSemanticStatus": "SOURCE_HOLD",
+      "rpmL3": "지수법칙",
+      "rpmL4": "거듭제곱의 곱·몫",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "low",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 10,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "지수법칙",
+      "rpmL4": "거듭제곱의 곱·몫",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 11,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "rpmSemanticStatus": "SOURCE_HOLD",
+      "rpmL3": "지수법칙",
+      "rpmL4": "거듭제곱의 곱·몫",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "low",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 12,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "단항식과 다항식의 곱셈·나눗셈",
+      "rpmL4": "다항식을 단항식으로 나누기",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 13,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "지수법칙",
+      "rpmL4": "거듭제곱의 곱·몫",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 14,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-EXPONENT_LAW",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "단항식의 곱셈과 나눗셈",
+      "rpmL4": "단항식의 나눗셈",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "low",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 15,
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "수량 관계",
+      "rpmL4": "이상·이하 조건",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "low",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 16,
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "일차부등식의 풀이",
+      "rpmL4": "기본형",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 17,
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "부등식의 성질",
+      "rpmL4": "부등식의 성질",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 18,
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "비율·가격·도형",
+      "rpmL4": "할인·이익",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 19,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "유한소수와 무한소수",
+      "rpmL4": "분모의 소인수 조건",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 20,
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "해의 조건",
+      "rpmL4": "계수 조건",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 21,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-REPEATING_DECIMAL",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "순환소수",
+      "rpmL4": "순환소수를 분수로",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 22,
+      "standardUnitKey": "M2-01",
+      "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "다항식의 덧셈과 뺄셈",
+      "rpmL4": "괄호가 있는 계산",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    },
+    {
+      "qid": 23,
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "rpmSemanticStatus": "FINAL",
+      "rpmL3": "부등식의 성질",
+      "rpmL4": "수직선으로 해 표현",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "status": "PASS_CURRENT_WITH_EXPLICIT_SOURCE_BOUNDARY_WHERE_APPLICABLE"
+    }
+  ],
+  "openQids": [
+    1,
+    3,
+    6,
+    9,
+    11,
+    14,
+    15
+  ],
+  "candidateDisposition": "SOURCE_REPAIR_REQUIRED"
+}
