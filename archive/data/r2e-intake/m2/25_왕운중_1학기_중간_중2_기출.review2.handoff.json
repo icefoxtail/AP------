@@ -37,6 +37,17 @@
     "materiallyDifferentPath": "GitHub Actions lookup for validationMaterialHead returned 0 workflow runs; current connector exposes no workflow-dispatch action for a fresh run."
   },
   "requiredNextAction": "THANOS must start an allowed PR/Actions validation surface from the exact R2 branch/material above, execute tests/m2-r2-1-o2-wangun-review2-gate.test.js with the current canonical R2 evidence gate, then write the actual validator receipt and REVIEW2 receipt, transition REVIEW2_DONE->READY_FOR_R3, and remote-readback the exact artifact/receipts. Do not infer PASS from the candidate decision.",
-  "ownerState": "RELINQUISHED_TO_THANOS",
-  "r3Eligible": false
+  "ownerState": "CLOSED_BY_R2_REASSIGN",
+  "r3Eligible": true,
+  "debtStatus": "CLOSED",
+  "closedAtKst": "2026-10-04 18:29",
+  "closureResolution": {
+    "validationSurfaceCommit": "19220937974b382c6ec5495e8b348dcdc1faa09f",
+    "workflowRunId": 37192069109,
+    "workflowJobId": 111406188628,
+    "validatorReceiptSha": "ef21f4f410a28b92317a28ea24b5e8f518482b2b",
+    "review2ReceiptSha": "fa814e61e1319afea6df172542540323d73daff0",
+    "state": "REVIEW2_DONE",
+    "nextStage": "READY_FOR_R3"
+  }
 }
