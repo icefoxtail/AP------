@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_CLOSURE_DEBT_HANDOFF_v1",
+  "queue": "RESCUE_QUEUE",
+  "debtType": "R2_CLOSURE_DEBT",
+  "stage": "R2",
+  "examUid": "o2",
+  "examFile": "25_왕운중_1학기_중간_중2_기출.js",
+  "canonicalOrdinal": 2,
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "inputArtifactSha": "c8adc68629f98b9a9448b01cabd00283972e8035",
+  "finalArtifactSha": "c8adc68629f98b9a9448b01cabd00283972e8035",
+  "branch": "work/middle/m2/25-wangun-1mid-r2-1-20261004-1308-v2",
+  "validationMaterialHead": "fbc35deffada42fbd1ec425250a27435d8fb055f",
+  "evidenceSnapshot": {
+    "path": "archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review2.physical-evidence.json",
+    "blob": "6e5fbea1a8073c48223c8ba60cb99583bed82525",
+    "decisionPath": "archive/data/r2e-intake/m2/25_왕운중_1학기_중간_중2_기출.review2.recheck-decision.json",
+    "decisionBlob": "0169b09dbac11cf66ed5cf2ef6966768159686e7",
+    "targetGateTest": "tests/m2-r2-1-o2-wangun-review2-gate.test.js",
+    "dispositionCandidate": "PASS_WITH_ITEM_HOLDS",
+    "itemHoldQids": [
+      1,
+      3,
+      6,
+      9,
+      11,
+      14,
+      15
+    ],
+    "deterministicRepairCount": 0
+  },
+  "completedStep": "R2_FULL_23_RECHECK_FORMAL_COMPARE_REGRESSION_BLIND_DECISION_PHYSICAL_EVIDENCE_AND_TARGET_GATE_TEST_MATERIALIZED",
+  "firstMissingClosureStep": "PR_ACTIONS_TRIGGER_AND_ACTUAL_R2_CANONICAL_VALIDATOR",
+  "exactCapabilityAndError": {
+    "prWriteAttempt1": "GitHub create_pull_request blocked by OpenAI safety checks.",
+    "prWriteAttempt2": "Minimal draft create_pull_request retry blocked by OpenAI safety checks.",
+    "materiallyDifferentPath": "GitHub Actions lookup for validationMaterialHead returned 0 workflow runs; current connector exposes no workflow-dispatch action for a fresh run."
+  },
+  "requiredNextAction": "THANOS must start an allowed PR/Actions validation surface from the exact R2 branch/material above, execute tests/m2-r2-1-o2-wangun-review2-gate.test.js with the current canonical R2 evidence gate, then write the actual validator receipt and REVIEW2 receipt, transition REVIEW2_DONE->READY_FOR_R3, and remote-readback the exact artifact/receipts. Do not infer PASS from the candidate decision.",
+  "ownerState": "RELINQUISHED_TO_THANOS",
+  "r3Eligible": false
+}
