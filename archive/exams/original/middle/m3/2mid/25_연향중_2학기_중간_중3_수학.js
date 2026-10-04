@@ -376,7 +376,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "삼각형 ABC의 높이 AH와 45도 각으로 밑면 넓이를 나타낸다."
   },
   {
     "id": 12,
@@ -411,7 +414,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "호의 비에서 중심각 120도와 현 AB의 중점 수선 OM을 보인다."
   },
   {
     "id": 13,
@@ -447,7 +453,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q13-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -514,7 +521,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q15-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -547,7 +555,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "접는 선 AB가 OP의 수직이등분선이고 M에서 수직임을 보인다."
   },
   {
     "id": 17,
@@ -581,7 +592,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q17-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -615,7 +627,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q18-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -649,7 +662,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q19-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -683,7 +697,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -713,7 +728,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q21-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -743,7 +759,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -771,6 +788,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageSize": "full"
   }
 ];

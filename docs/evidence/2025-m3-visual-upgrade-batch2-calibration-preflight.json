@@ -1,0 +1,76 @@
+{
+  "evidenceType": "APMATH_VISUAL_UPGRADE_CALIBRATION_PREFLIGHT",
+  "scope": "2025 M3 semester-2 SVG upgrade batch 2",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:ab37a1bdb3343be7b31db66ac2ee204abec339f35a4bc8eb9ca6252f92656f99",
+        "gitBlobSha": "7f4a3ee06170fc8aa426080e58f7b33bc351b62f"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.\n따라서\n$B\\subseteq A$이다.\n이 포함관계를 이용해 각 보기를 확인한다.\n\nㄱ.",
+        "observation": "Rendered nested-set solution SVG. B is fully contained in A, the region topology matches A∩B=B and B⊆A, and the adjacent proposition card remains separate."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 14,
+        "solutionSha256": "sha256:d5eb924d91802b5ffe0c564517765757fe7ea9feef3d661ba2f2e6de6b4021bd",
+        "solutionExcerpt": "점 $I$는 삼각형 $ABC$의 내심이므로\n직선 $AI$는 $\\angle A$의 이등분선이다.\n직선 $AI$와 선분 $BC$의 교점을 $D$라고 하자.\n각의 이등분선 정리에 의해\n",
+        "observation": "Rendered coordinate triangle angle-bisector solution SVG. A(-1,2), B(-3,0), C(2,-1), and D(-1,-2/5) are legible; AD bisects angle A and BD:DC=2:3 without label collision."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:7bbe3cdb559ec0d6c9270f8ba957bee9cc0b65b703a5fc6452f81d53ca314e3b",
+        "solutionExcerpt": "[키포인트] 좌표를 설정하고 내분점의 좌표를 구한다.\\n$A=(0,0)$, $B=(8,0)$으로 두고 $C=(u,v)$라 하자. $AC=4$, $BC=4\\sqrt3$이므로 $u^2",
+        "observation": "Rendered coordinate triangle solution SVG. A(0,0), B(8,0), P(6,0), C(2,-2√3) show AP:PB=3:1 and CP²=28; axes and labels remain distinct."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:34b571e9d9dc523d5fe05deb5bcec1ac021c153e0d2786680ca4ed83565d3a64",
+        "solutionExcerpt": "[키포인트] 직선 $BC$와 점 $A$를 지나는 수선의 방정식을 구해 교점을 찾는다.\\n직선 $BC$의 기울기는 $1$이므로 방정식은 $y=x+4$이다.\\n수선의 기울기는 $-1$",
+        "observation": "Rendered perpendicular-foot solution SVG. BC has slope 1, the normal through A has slope -1, and their intersection M=(1/2,9/2) is marked at the crossing."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-28/README.md",
+        "sha256": "sha256:64334f9c22bb25e9bbf226d7f2dff79e55b1835966156970b1cd496a2efc0caa",
+        "gitBlobSha": "90b42e2056a57a4fae356ae7434063c0ad69b6a6"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "sha256": "sha256:4074b3b63494a7ea9258b06000498d0af3abf329595e14f94f488abbea3537a8",
+        "gitBlobSha": "6184b4f2da7e098575b19cc8bac5c61fe9c513c7"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY",
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR"
+  }
+}

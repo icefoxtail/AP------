@@ -219,7 +219,10 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "직선 y=x/2+4와 x축이 이루는 각 a 및 기울기 1/2를 보이는 직각삼각형."
   },
   {
     "id": 8,
@@ -251,7 +254,10 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "삼각형 ABC에 수선의 발 H를 더해 ABH와 AHC의 길이 관계를 보인다."
   },
   {
     "id": 9,
@@ -316,7 +322,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q10-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -348,7 +355,10 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "이등변삼각형 ABC에 D, E, F를 두어 풀이의 보조선과 각을 보인다."
   },
   {
     "id": 12,
@@ -444,7 +454,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "정삼각형의 중심 O, 중선 AM, 무게중심의 2:1 분할을 보인다."
   },
   {
     "id": 15,
@@ -572,7 +585,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "직사각형과 내접원에서 위아래 접점 U,V 및 DE 접점 T를 보인다."
   },
   {
     "id": 19,
@@ -636,7 +652,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "반원 접선에 점 C를 지나는 AB 평행선을 더해 닮음 관계를 보인다."
   },
   {
     "id": 21,
@@ -688,7 +707,10 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "열기구 C에서 AB에 내린 수선의 발 H와 두 시선의 각을 보인다."
   },
   {
     "id": 23,
@@ -716,7 +738,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -742,6 +765,9 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "두 접선의 직각 관계와 중심각, 음영 영역을 보인다."
   }
 ];

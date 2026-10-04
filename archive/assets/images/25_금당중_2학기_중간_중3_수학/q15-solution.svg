@@ -1,7 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="220" viewBox="0 0 300 220">
-<title>q15 중심에서 현까지의 거리</title><rect width="300" height="220" fill="white"/>
-<g stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="150" cy="80" r="58"/><line x1="108" y1="120" x2="192" y2="120"/><line x1="150" y1="80" x2="150" y2="138"/><path d="M150 120h10v-10h-10"/>
-</g><g fill="black" font-family="Arial, sans-serif" font-size="14">
-<text x="143" y="73">O</text><text x="100" y="139">A</text><text x="194" y="139">B</text><text x="142" y="116">M</text><text x="143" y="156">C</text><text x="160" y="104">OM=r-3</text><text x="164" y="115">BM=7</text><text x="158" y="136">CM=3</text><text x="202" y="77">r=29/3</text>
-</g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="300" viewBox="-40.00 -40.00 380.00 300.00" role="img" aria-label="수학 해설 도형">
+  <title>q15 중심에서 현까지의 거리</title>
+  <rect width="300" height="220" fill="white" id="geom-3" />
+  <g stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="150" cy="80" r="58" />
+    <line x1="108" y1="120" x2="192" y2="120" id="geom-6" data-segment-pairs="A-M M-B" stroke-width="2.3" />
+    <line x1="150" y1="80" x2="150" y2="138" id="geom-7" data-segment-pairs="O-M M-C" stroke-width="2.3" />
+    <polyline id="right-angle-owner-1" points="142.50,120.00 142.50,112.50 150.00,112.50" fill="none" stroke="#2563eb" stroke-width="1.8" data-marker-kind="right-angle-square" data-owner-vertex="M" data-owner-rays="M-A M-O" data-fact-role="DERIVED_INTERMEDIATE" />
+  </g>
+  <g fill="black" font-family="Arial, sans-serif" font-size="14">
+    <text x="140.101" y="70.101" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q15-text-1" data-label-kind="point" data-owner-point="O" data-point-x="150.0000" data-point-y="80.0000" text-anchor="middle" dominant-baseline="middle">O</text>
+    <text x="104.28" y="136.59" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q15-text-2" data-label-kind="point" data-owner-point="A" data-point-x="108.0000" data-point-y="120.0000" text-anchor="middle" dominant-baseline="middle">A</text>
+    <text x="201.899" y="129.899" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q15-text-3" data-label-kind="point" data-owner-point="B" data-point-x="192.0000" data-point-y="120.0000" text-anchor="middle" dominant-baseline="middle">B</text>
+    <text x="124.544" y="145.456" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q15-text-4" data-label-kind="point" data-owner-point="M" data-point-x="150.0000" data-point-y="120.0000" text-anchor="middle" dominant-baseline="middle">M</text>
+    <text x="124.544" y="163.456" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q15-text-5" data-label-kind="point" data-owner-point="C" data-point-x="150.0000" data-point-y="138.0000" text-anchor="middle" dominant-baseline="middle">C</text>
+    <text x="162.000" y="87.200" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#2563eb" id="q15-text-6" data-label-kind="length" data-owner-segment="O-M" data-owner-start-point="O" data-owner-end-point="M" data-label-id="q15-length-6" data-fact-role="DERIVED_INTERMEDIATE" text-anchor="middle" dominant-baseline="middle" transform="rotate(90.000 162.000 87.200)">OM=r-3</text>
+    <text x="216.000" y="90.000" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q15-text-7" data-label-kind="length" data-owner-segment="B-M" data-owner-start-point="B" data-owner-end-point="M" data-label-id="q15-length-7" data-fact-role="GIVEN" text-anchor="middle" dominant-baseline="middle">BM=7</text>
+    <text x="218.000" y="129.000" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#172033" id="q15-text-8" data-label-kind="length" data-owner-segment="C-M" data-owner-start-point="C" data-owner-end-point="M" data-label-id="q15-length-8" data-fact-role="GIVEN" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90.000 218.000 129.000)">CM=3</text>
+    <text x="162.457" y="162.041" font-size="16.06" font-family="Arial, &quot;Malgun Gothic&quot;, sans-serif" fill="#b45309" id="q15-text-9" data-label-kind="length" data-owner-segment="O-A" data-owner-start-point="O" data-owner-end-point="A" data-label-id="q15-radius-9" data-fact-role="CONCLUSION" text-anchor="middle" dominant-baseline="middle" transform="rotate(-43.603 162.457 162.041)">r=29/3</text>
+  </g>
+  <line id="seg-O-A-radius" x1="150.000" y1="80.000" x2="108.000" y2="120.000" stroke="#2563eb" stroke-width="2.3" data-segment-pair="O-A" data-start-point="O" data-end-point="A" data-fact-role="CONCLUSION" data-segment-pairs="O-A" />
+</svg>
