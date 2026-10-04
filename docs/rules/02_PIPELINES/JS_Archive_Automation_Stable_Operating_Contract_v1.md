@@ -12,8 +12,18 @@
 - 신규 학년·학기·시험지 묶음의 예약 worker 생성, cohort 전환, 공통 prompt 결함 수정 시 반드시 `docs/rules/02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md`을 COPY SOURCE로 사용한다.
 - 기존 active automation prompt는 runtime instance이지 template authority가 아니다.
 - 일반화 가능한 incident는 **canonical prompt template 수정 → version bump → Notion ACTIVE/CURRENT 동기화 → 필요한 active role prompt 일괄 migration → readback** 순서로 닫는다.
-- current template version: **PROMPT_TEMPLATE_V1.0.0**.
+- current template version: **PROMPT_TEMPLATE_V1.1.0**.
 - template의 NEVER DELETE 철학: EXAM-LEVEL CONVEYOR, dedicated worker=throughput owner, THANOS=rescue/closure owner, first-refusal, one-exam max, single-writer, physical PASS authority, handoff+lease relinquish, handed-off target 자동 재점유 금지, recurring worker self-disable 금지.
+
+
+## GPT VISUAL PRODUCTION CONTRACT — CURRENT
+
+- CREATE/R1/R2/R3/THANOS에서 problem image/SVG/graph/geometry/solutionImage를 생성·수정·필요성 판정·검수할 때는 최신 main의 `.codex/skills/apmath-visual-upgrade/SKILL.md`와 `docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md`를 함께 읽는다.
+- `SKILL.md`는 upstream 설계 철학이며 GPT가 Codex skill을 실제 invoke했다고 주장하는 근거가 아니다. GPT 실행 규칙은 GPT Visual Contract가 번역한다.
+- local Node/Python/browser command를 실행하지 못한 경우 실행했다고 보고하지 않는다. 가능한 static/math/coordinate/owner/style audit는 계속 수행하고, 실제 render가 필요한데 실행 불가하면 정확한 NOT_RUN/NOT_VERIFIED visual debt를 남긴다.
+- visual defect 하나로 whole-exam HOLD/self-disable 금지. source truth 자체가 불확정한 경우만 기존 bounded SOURCE_REPAIR_REQUIRED 경로를 사용한다.
+- 전수 visual sweep에서는 qid denominator와 KEEP/POLISH/REBUILD/ADD/REMOVE/EXEMPT item ledger를 남긴다.
+- MAIN/WATCHDOG는 신규 visual verdict를 만들지 않는다.
 
 ## CURRENT CUTOVER — 2026-10-03 — THANOS MASTER ×5
 
