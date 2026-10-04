@@ -1,8 +1,8 @@
 {
   "schemaVersion": "JS_ARCHIVE_R1_CONTINUATION_v1",
-  "queue": "RESCUE_QUEUE",
+  "queue": "CLOSED",
   "debtType": "R1_CLOSURE_DEBT",
-  "closureState": "HANDED_OFF_TO_THANOS",
+  "closureState": "RESCUE_CLOSED",
   "stage": "R1",
   "examUid": "24_신흥중_1학기_중간_중2_기출c",
   "canonicalOrdinal": 6,
@@ -12,7 +12,7 @@
   "rescueBranch": "rescue/m2/r1-closure-debt/o6-d1a0c918-write-20261004-1705",
   "rescueHeadBeforeContinuationRefresh": "3d59b1b8be8fec77e7561f7f8ccd4567cf6bed46",
   "validationBranch": "validation/m2-o6-sinheung-r1-1-20261004-2106",
-  "validationHead": "3d59b1b8be8fec77e7561f7f8ccd4567cf6bed46",
+  "validationHead": "4f4e5d398065a9f4a8f4436dd72acb41a6f217c0",
   "finalArtifactSha": "32597dd0dd94e484b2a01626361935ce3e2379bc",
   "finalArtifactSha256": "sha256:5e2a0a018fca35dd52b1b0fa7e8db6069463a38f42849e3b4279695fa29c99db",
   "physicalEvidenceGitBlob": "c986ad3329c0f79c023f46a4369a6bedf5dfa85b",
@@ -46,16 +46,24 @@
       }
     ]
   },
-  "completedStep": "R1_FULL_RECHECK_REPAIR_EVIDENCE_AND_CANONICAL_TARGET_TEST_MATERIALIZED",
-  "firstMissingClosureStep": "OPEN_VALIDATION_PR_OR_EQUIVALENT_ACTIONS_TRIGGER",
+  "completedStep": "CANONICAL_R1_VALIDATOR_PASS_RECEIPTS_BOUND",
+  "firstMissingClosureStep": null,
   "exactCapabilityError": [
     "create_file for a dedicated R1 workflow was blocked by OpenAI safety checks before side effect",
     "update_file retargeting the existing o6 workflow to R1 was blocked by OpenAI safety checks before side effect",
     "create_pull_request from rescue branch to main was blocked by OpenAI safety checks before side effect",
     "created separate validation branch successfully, but create_pull_request from that validation branch to main was also blocked by OpenAI safety checks before side effect"
   ],
-  "requiredNextAction": "THANOS: do not repeat the 23/23 review or q10/q13 repair. Start from validation/m2-o6-sinheung-r1-1-20261004-2106 @ 3d59b1b8be8fec77e7561f7f8ccd4567cf6bed46; open an actual validation PR or otherwise trigger GitHub Actions for tests/m2-r1-1-o6-sinheung-review1-gate.test.js. On canonical R1 PASS, write review1.validator.json and review1.json receipts, set REVIEW1_DONE->READY_FOR_REVIEW2, then remote readback.",
+  "requiredNextAction": "R2 worker may consume REVIEW1_DONE -> READY_FOR_REVIEW2 after fresh physical revalidation.",
   "writerRelinquished": true,
   "r1WorkerAutoReselect": false,
-  "r2Eligible": false
+  "r2Eligible": true,
+  "closureBranch": "rescue/m2/o6-r1-thanos5-20261005-0113",
+  "closureHeadAtValidator": "4f4e5d398065a9f4a8f4436dd72acb41a6f217c0",
+  "validationPr": 236,
+  "workflowRun": 37216094893,
+  "workflowJob": 111476788756,
+  "validatorReceiptGitBlob": "412b264838ccb1663fe44aa1ce4962004433dba2",
+  "review1ReceiptGitBlob": "850e7c28e3b738ceeb3182367355ccc6d764776b",
+  "resolution": "R1 canonical gate PASS with 23/23 evidence, HOLD 0; durable validator and REVIEW1 receipts bound."
 }
