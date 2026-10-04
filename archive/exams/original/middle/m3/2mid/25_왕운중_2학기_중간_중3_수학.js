@@ -64,7 +64,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q2-solution.svg",
     "solutionImageAlt": "5k-12k-13k 직각삼각형 ABC",
     "solutionImageCaption": "tan A가 정하는 두 직각변을 빗변과 함께 비교한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -192,7 +192,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 도형: 다음 그림과 같이 $AB=5$, $BC=2$, $\\angle ABC=120^\\circ$인 삼각형에 대하여 $\\triangle ABC$의 넓이를 ",
     "solutionImageCaption": "해설의 핵심 관계: ∠ABC=120°이므로 연장선 BH와 BC 사이 ∠CBH=60°; CH⊥AB, CH=2 sin60°=√3.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -259,6 +259,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -290,6 +292,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -323,7 +327,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q10-solution.svg",
     "solutionImageAlt": "30°, 60°, 90° 내각을 표시한 직각삼각형 ABC",
     "solutionImageCaption": "각의 비 1:2:3에서 얻는 세 각과 sin A=cos B를 연결한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -359,7 +363,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q11-solution.svg",
     "solutionImageAlt": "120°인 C와 BC 연장선 위의 H, 수선 AH를 표시한 삼각형",
     "solutionImageCaption": "밑변 BC와 높이 AH가 만드는 넓이 관계를 본다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -393,6 +397,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -428,7 +434,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q13-solution.svg",
     "solutionImageAlt": "현 AB=24의 중점 H와 중심 O에서 내린 수선",
     "solutionImageCaption": "중심에서 현에 내린 수선이 현을 이등분해 반지름 직각삼각형을 만든다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -462,6 +468,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -495,6 +503,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -528,6 +538,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -561,6 +573,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -594,6 +608,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -627,6 +643,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -660,6 +678,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -689,7 +709,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q21-solution.svg",
     "solutionImageAlt": "AB=9, BC=12인 삼각형에서 A의 수선 AH와 sin B 비",
     "solutionImageCaption": "sin B가 밑변 BC에 대한 높이 AH를 정하고 삼각형 넓이를 만든다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -719,7 +739,7 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q22-solution.svg",
     "solutionImageAlt": "AB:BC:AC=3:4:5인 직각삼각형 ABC",
     "solutionImageCaption": "cos A가 정하는 3-4-5 변 관계에서 sin A와 tan A를 읽는다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -747,6 +767,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q23-solution.svg"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -774,5 +796,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q24-solution.svg"
+  ,
+    "solutionImageSize": "full"
   }
 ];

@@ -32,6 +32,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -64,6 +66,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -96,6 +100,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -128,6 +134,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -160,6 +168,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -192,6 +202,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -224,6 +236,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -256,6 +270,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -288,6 +304,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -320,6 +338,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -352,6 +372,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -644,6 +666,8 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -672,6 +696,8 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
