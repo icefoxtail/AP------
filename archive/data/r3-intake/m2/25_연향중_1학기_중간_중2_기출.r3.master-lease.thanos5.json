@@ -3,9 +3,13 @@
   "stage": "R3",
   "examUid": "o3",
   "owner": "M2-1 THANOS-MASTER-5",
-  "status": "ACTIVE",
+  "status": "CANCELLED_SOURCE_PHYSICAL_MISMATCH",
   "claimedAt": "2026-10-04T22:55:00+09:00",
   "inputArtifactSha": "1688365b9050d5aef814c878acaabc845456c0d7",
-  "firstMissingClosureStep": "R3_Q23_SOURCE_RETURN_BINDING_AND_CANONICAL_VALIDATOR",
-  "ownerRelinquished": false
+  "firstMissingClosureStep": "MATERIALIZE_SOURCE_CONFIRMED_Q23_RETURN_IN_GIT_OR_EXACT_SOURCE_RECEIPT",
+  "ownerRelinquished": true,
+  "closedAt": "2026-10-04T22:58:00+09:00",
+  "completedStep": "Fresh Git physical revalidation of R3 handoff and q23 source asset paths",
+  "exactCapabilityError": "TEMP CURRENT routes o3 as D_SOURCE_CONFIRMED, but current Git R3 lineage still records SOURCE_REPAIR_REQUIRED and no q23 problem asset/source-return receipt is physically materialized on main or the R3 continuation branch.",
+  "requiredNextAction": "Codex/source owner materializes exact q23 source-return authority (asset or durable source receipt) on Git; then THANOS resumes changed-locus R3 closure."
 }
