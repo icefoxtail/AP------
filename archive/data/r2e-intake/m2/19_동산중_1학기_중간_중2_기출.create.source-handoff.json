@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "m2-1-create-source-handoff-v1",
+  "status": "SOURCE_UNVERIFIED",
+  "queue": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "thanosEligible": false,
+  "canonicalOrdinal": 16,
+  "examUid": "M2-1-19-DONGSAN-1MID",
+  "examPath": "archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+  "sourceInputBlob": "35f3070daafa1564429ba7c1b179755bfd751b39",
+  "blockedQids": [
+    1,
+    7
+  ],
+  "findings": [
+    {
+      "qid": 1,
+      "issue": "Stem asks which listed fractions are terminating decimals, but current artifact contains only combination choices and no physical ㉠–㉤ fraction list/image/SVG. Existing solution also internally contradicts itself on ㉣: it simplifies 12/(3×2×5^2) to 2/25 yet claims a factor 3 remains.",
+      "requiredSource": "Original q1 page pixels / exact ㉠–㉤ list and answer"
+    },
+    {
+      "qid": 7,
+      "issue": "Current bytes say 2/55=0.03636… and ask 50th digit a, 60th digit b. Direct recomputation gives both positions 3, hence a/b=1 (choice ③), while stored answer is ② and the current solution incorrectly flips the 60th digit to 6.",
+      "requiredSource": "Original q7 source text/answer to determine whether a position/value was mistranscribed"
+    }
+  ],
+  "completedStep": "SOURCE_CONFLICT_DETECTED_BEFORE_CREATE_MUTATION",
+  "firstMissingClosureStep": "AUTHORITATIVE_SOURCE_Q1_Q7",
+  "requiredNextAction": "Recheck original 2019 동산중 1학기 중간 source for q1 and q7, repair only source-grounded loci, then restart CREATE from the repaired current artifact.",
+  "producerOwnership": "RELINQUISHED",
+  "createDone": false,
+  "readyForReview1": false,
+  "passClaim": false
+}
