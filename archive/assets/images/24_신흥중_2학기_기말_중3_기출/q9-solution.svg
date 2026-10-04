@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="330" viewBox="0 0 440 330">
+  <rect width="440" height="330" fill="white"/>
+  <style>
+    .g{fill:none;stroke:#111;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .aux{fill:none;stroke:#666;stroke-width:1.7;stroke-dasharray:5 5}
+    .diam{fill:none;stroke:#111;stroke-width:3.2}
+    .t{font-family:Arial,'Noto Sans KR',sans-serif;font-size:16px;fill:#111}
+    .s{font-family:Arial,'Noto Sans KR',sans-serif;font-size:14px;fill:#444}
+    .em{font-family:Arial,'Noto Sans KR',sans-serif;font-size:15px;font-weight:700;fill:#111}
+  </style>
+  <!-- Exact model in math coordinates: D=(0,0), C=(0,4), A=(-8√2,0), B=(2√5,0). -->
+  <!-- Circumcenter O=(-4√2+√5, 2-2√10), radius 9. E=2O-C, hence CE=18 is a diameter. -->
+  <!-- Display transform: (x,y) -> (240+10x, 150-10y). -->
+  <circle class="g" cx="205.79" cy="193.25" r="90"/>
+  <line class="g" x1="126.86" y1="150" x2="240" y2="110"/>
+  <line class="g" x1="240" y1="110" x2="284.72" y2="150"/>
+  <line class="g" x1="126.86" y1="150" x2="284.72" y2="150"/>
+  <line class="aux" x1="240" y1="110" x2="240" y2="150"/>
+  <line class="diam" x1="240" y1="110" x2="171.58" y2="276.49"/>
+  <line class="g" x1="284.72" y1="150" x2="171.58" y2="276.49"/>
+  <circle cx="205.79" cy="193.25" r="3.2" fill="#111"/>
+  <path class="g" d="M228 150 L228 138 L240 138"/>
+  <path class="g" d="M275.78 142.00 L267.78 150.95 L276.72 158.95"/>
+  <text class="t" x="109" y="154">A</text>
+  <text class="t" x="288" y="154">B</text>
+  <text class="t" x="244" y="104">C</text>
+  <text class="t" x="244" y="166">D</text>
+  <text class="t" x="153" y="294">E</text>
+  <text class="t" x="212" y="202">O</text>
+  <text class="em" x="159" y="124">AC = 12</text>
+  <text class="em" x="278" y="124">BC = 6</text>
+  <text class="em" x="246" y="136">CD = 4</text>
+  <text class="em" x="183" y="238">CE = 18</text>
+  <text class="s" x="94" y="320">△ACD ∼ △CEB → CE = 18 → 반지름 9 cm</text>
+</svg>

@@ -1,0 +1,9 @@
+# B10 L1/L2 upstream-baseline policy checkpoint
+
+- User authority: the existing `standardUnitKey`/`subUnitKey` on all 737 M1 source rows are upstream baseline inputs. A/B must still read source, answer, solution and necessary images, but fresh independent work concentrates on L3, L4, CrossConcept, necessary Condition/IntegrationPattern, and item-specific evidence.
+- Open `L1_L2_CONFLICT` only when source/solution plainly conflicts with the current grade, unit, parent, or decisive concept. A reason written for every UID is not a reason to reclassify every UID.
+- A/B remain independent; existing L3/L4/CrossConcept candidates and same-stage prior verdicts remain forbidden inputs. C sees only actual semantic conflicts and explicitly evidenced L1/L2 conflicts. Root source reading remains limited to unresolved A/B/C conflict, source BLOCK, cross-grade, and taxonomy/ownership/parent decisions.
+- B01–B09 exam results, physical artifacts, metadata changes and checkpoint commits remain untouched. The v1.3 §18 difficulty recheck correction also remains active.
+- Timing: the B10 source had been frozen and A/B ledgers had completed before this new instruction arrived. They are not rerun. B10 applies the new authority at a physical `L1_L2_CONFLICT_PLAN.json` plus deterministic UID-by-UID `L1_L2_BASELINE_AUDIT.jsonl`/summary before C closure, consensus, difficulty and writeback. This checkpoint is committed and pushed before B10 resumes.
+- B11 onward: each A/B row explicitly records whether a source-grounded `l1L2Conflict` was found, with a reason only when true; otherwise its L1/L2 must match the frozen source baseline. The audit and validator enforce exact accepted parent keys and denominator closure.
+- B10 onward batch reports include total UID, baseline-used UID, confirmed L1_L2_CONFLICT UID, actual L1/L2 writeback counts, A/B actual conflict count/rate, C reviewed count, Sol direct-read count, and difficulty recheck count/rate.

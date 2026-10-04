@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "H2_MATH2_PROVIDER_FINAL_AUDIT_RECHECK_v1",
+  "workBatchId": "h2-2final-math2-visual-20260909-recheck",
+  "targetCount": 117,
+  "freezeSha": "sha256:4dae22d515cd2edf30da41ab711d94a348ca5e25fe20a3e5664e6d99ad8e27c1",
+  "preflight": {
+    "status": "READY",
+    "model": "gpt-5.6-luna/xhigh",
+    "contextIsolation": "STATELESS_INPUTS",
+    "modelInvocationCount": 0
+  },
+  "dispatch": {
+    "launchId": "h2-2final-math2-visual-20260909-recheck:1",
+    "status": "FAILED",
+    "modelTurnStarted": false,
+    "errorCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+    "rootCause": "Codex app-server rejected turn/start because collaborationMode.settings.model was missing.",
+    "receipt": "alive/runtime/provider-bridge/h2-2final-math2-visual-20260909-recheck/failed-receipt.json",
+    "retryPerformed": false
+  },
+  "adapterRepair": {
+    "status": "APPLIED_AFTER_TERMINAL_FAILURE",
+    "file": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+    "change": "Bind model inside collaborationMode.settings for current app-server protocol."
+  },
+  "closure": {
+    "status": "BLOCKED",
+    "finalCoverage": 0,
+    "freshSemanticEvidence": 0,
+    "reason": "FINAL_AUDIT transport failed before U1/U2/U3 semantic evidence; no retry or fallback is permitted by AGENT_BUDGET."
+  },
+  "independentV1V2V3": "NOT_TESTED",
+  "providerSemanticEvidence": "NOT_TESTED"
+}

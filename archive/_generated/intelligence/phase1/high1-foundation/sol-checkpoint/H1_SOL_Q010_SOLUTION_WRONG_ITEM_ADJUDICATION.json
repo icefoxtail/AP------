@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_DIRECT_ADJUDICATION_WORKING",
+  "queueIndex": 10,
+  "questionUid": "qid_v1_7ac9ba1089e9580371efd79670fbab5cd3d8d897187dce53c36b643e09b10294",
+  "sourceIdentity": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js#22",
+  "sourceFingerprint": "abe7324f35adf4fa836c8d99f98ffbf51e1915a0019f7850876b0c50841fb982",
+  "fieldDecisions": {
+    "sourceIssue": { "value": "SOLUTION_BLOCKER", "reason": "The stored solution introduces a reciprocal-polynomial substitution absent from the source and concludes a+b=2, contradicting both A(2)=30 and the keyed answer 5. A source-grounded derivation gives a+b=5." },
+    "integrationPattern": { "value": "CASE_BRANCH", "reason": "The remainder-one condition makes B=C+1. Integer coefficient and A(2)=30 conditions give two values v=1 or -10 for C=x²+v; the no-real-linear-factor condition rejects v=-10 and selects v=1." }
+  },
+  "verification": {
+    "remainderIdentity": "B=C+1",
+    "coefficientStep": "Writing C=x²+ux+v, the missing x³ term in A=C(C+1) forces u=0.",
+    "equation": "(v+4)(v+5)=30",
+    "branches": [1, -10],
+    "rejectedBranch": "v=-10 makes C=x²-10 have real linear factors.",
+    "retainedBranch": "v=1 gives A=(x²+1)(x²+2)=x⁴+3x²+2 and a+b=5."
+  },
+  "reviewStatus": "HOLD",
+  "solutionCorrectionProtocolRequired": true,
+  "jsEdit": false,
+  "evidenceFiles": [
+    "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl",
+    "H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+    "H1_STAGEA_LUNA_C_BATCH01_11.jsonl"
+  ]
+}

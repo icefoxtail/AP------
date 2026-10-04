@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "queueIndex": 7,
+  "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+  "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19",
+  "sourceFingerprint": "dd8f2e4785ee233c24e04af77a167faced9861f3d31cf046f6e5247709be7733",
+  "sourceQuestionAudit": "source-evidence/D-q7-question-only/physical-ledger.json: original question also omits any monic, positive-leading-coefficient, or sign condition on the quadratic f(x).",
+  "sourceMathEvidence": "The question says the polynomial product plus k is the perfect square of some quadratic f(x) and asks for k+f(5), without fixing the sign of f.",
+  "solutionMathEvidence": "Factoring and pairing gives (x−1)(x−4)(x−2)(x−3)+k=(t+4)(t+6)+k for t=x²−5x. The square condition fixes k=1 and the polynomial as (t+5)², but the supplied solution chooses f=t+5 without justifying its sign.",
+  "ambiguityWitness": "Both f₊(x)=x²−5x+5 and f₋(x)=−(x²−5x+5) are quadratic and have the same square. They give f₊(5)=5 and f₋(5)=−5, so k+f(5) is 6 or −4.",
+  "fieldDecisions": {
+    "integrationPattern": {
+      "value": "NONE",
+      "reason": "Pairing factors, substituting t=x²−5x, and completing the square are one polynomial-formula skeleton within the primary L3. The sign ambiguity affects the requested answer, not the integration of separate concepts."
+    },
+    "sourceIssue": {
+      "value": "SOURCE_UNRESOLVED_HOLD",
+      "reason": "The original printed question and JS both leave f and −f admissible while requesting the sign-sensitive value k+f(5). The source cannot choose between 6 and −4. Do not add a guessed monic/positive condition; route this UID to the separate correction protocol."
+    },
+    "reviewStatus": {
+      "value": "HOLD",
+      "reason": "The requested numerical answer is nonunique under the source-exact stem."
+    }
+  },
+  "jsEdit": false,
+  "correctionProtocolRequired": true,
+  "finality": "WORKING_NOT_FINAL"
+}

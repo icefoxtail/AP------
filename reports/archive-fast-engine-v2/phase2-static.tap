@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+ok 1 - candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+  ---
+  duration_ms: 3.2181
+  type: 'test'
+  ...
+# Subtest: keys include semantic changes and exclude pending session/request provenance
+ok 2 - keys include semantic changes and exclude pending session/request provenance
+  ---
+  duration_ms: 0.6792
+  type: 'test'
+  ...
+# Subtest: pending materialization is a separate complete session and rejects mismatched targets
+ok 3 - pending materialization is a separate complete session and rejects mismatched targets
+  ---
+  duration_ms: 0.5193
+  type: 'test'
+  ...
+# Subtest: successful commit binds state, active status and current session; stale provenance is not validity
+ok 4 - successful commit binds state, active status and current session; stale provenance is not validity
+  ---
+  duration_ms: 2.5594
+  type: 'test'
+  ...
+# Subtest: PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+ok 5 - PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+  ---
+  duration_ms: 2.0704
+  type: 'test'
+  ...
+# Subtest: latest wins serializes builds and never commits stale work
+ok 6 - latest wins serializes builds and never commits stale work
+  ---
+  duration_ms: 1.1584
+  type: 'test'
+  ...
+# Subtest: background and invalid enums cannot execute builds or effects
+ok 7 - background and invalid enums cannot execute builds or effects
+  ---
+  duration_ms: 1.1438
+  type: 'test'
+  ...
+# Subtest: side effect failure, acknowledgement and retry keep one logical identity/key
+ok 8 - side effect failure, acknowledgement and retry keep one logical identity/key
+  ---
+  duration_ms: 1.5525
+  type: 'test'
+  ...
+# Subtest: precommit effects are rejected before execution; no unresolved required compensation
+ok 9 - precommit effects are rejected before execution; no unresolved required compensation
+  ---
+  duration_ms: 1.7511
+  type: 'test'
+  ...
+# Subtest: asynchronous measurements remain bound to their own transaction metrics
+ok 10 - asynchronous measurements remain bound to their own transaction metrics
+  ---
+  duration_ms: 2.1377
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 160.3854

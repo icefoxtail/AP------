@@ -1,0 +1,53 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "checkpointId": "20260901-M205",
+  "status": "ACTIVE_BOUNDED",
+  "productionArchiveRegistration": "NOT_PERFORMED",
+  "registeredMiddleUnits": ["M1-03", "M2-03", "M2-04", "M2-05"],
+  "unit": {
+    "key": "M2-05",
+    "title": "도형의 성질",
+    "family": "TRIANGLE_PROPERTIES",
+    "fixtures": 6,
+    "activeTransforms": ["numeric", "representation"],
+    "holdTransforms": ["parameter_recovery"],
+    "holdFamilies": ["QUADRILATERAL_PROPERTIES"],
+    "mandatoryVisual": "segment_geometry",
+    "studentSolutionPolicy": "detailed_solution_detail_with_triangle_diagram"
+  },
+  "qualityIteration": {
+    "failedDraftRuns": ["20260901-middle-triangle-a01", "20260901-middle-triangle-b01", "20260901-middle-triangle-a02", "20260901-middle-triangle-b02"],
+    "finding": "SVG angle labels leaked TeX ^\\\\circ outside MathJax.",
+    "fix": "Separate SVG Unicode degree labels from TeX math labels and add bare-math regression coverage."
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-triangle-a03",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "93cffaa43506f6e4867d6b3f6db65e0ababfd9003b5c229fc3656d861aceefe3",
+      "renderEvidence": {
+        "exam": {"verdict": "PASS", "pageCount": 2, "lastQuestion": 6, "mathJaxCount": 36, "overflowCount": 0, "badImages": 0, "svgImages": 12},
+        "solution": {"verdict": "PASS", "pageCount": 3, "lastQuestion": 6, "mathJaxCount": 78, "overflowCount": 0, "badImages": 0, "svgImages": 6, "implementationLeakCount": 0},
+        "answer": {"verdict": "PASS", "pageCount": 1, "lastQuestion": 6, "mathJaxCount": 6, "overflowCount": 0, "badImages": 0}
+      },
+      "resume": "PASS",
+      "closure": "PASS"
+    },
+    {
+      "runId": "20260901-middle-triangle-b03",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "00b1e21f8fb6f9de8cf9005b7e51fababdc44e1e400c6bc7506438976b328093",
+      "renderEvidence": {
+        "exam": {"verdict": "PASS", "pageCount": 2, "lastQuestion": 6, "mathJaxCount": 36, "overflowCount": 0, "badImages": 0, "svgImages": 12},
+        "solution": {"verdict": "PASS", "pageCount": 3, "lastQuestion": 6, "mathJaxCount": 78, "overflowCount": 0, "badImages": 0, "svgImages": 6, "implementationLeakCount": 0},
+        "answer": {"verdict": "PASS", "pageCount": 1, "lastQuestion": 6, "mathJaxCount": 6, "overflowCount": 0, "badImages": 0}
+      },
+      "resume": "PASS",
+      "closure": "PASS"
+    }
+  ],
+  "globalProduction": "HOLD"
+}

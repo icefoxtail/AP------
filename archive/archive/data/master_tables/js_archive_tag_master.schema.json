@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ap-math.local/schemas/js_archive_tag_master.schema.json",
+  "title": "AP Math JS Archive Tag Master Table",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "key",
+      "keyType",
+      "labelKo",
+      "status"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "key": { "type": "string", "minLength": 1 },
+      "keyType": {
+        "type": "string",
+        "enum": [
+          "standardUnitKey",
+          "subUnitKey",
+          "conceptClusterKey",
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "labelKo": { "type": "string", "minLength": 1 },
+      "labelEn": { "type": "string" },
+      "parentKey": { "type": "string" },
+      "course": { "type": "string" },
+      "grade": { "type": "string" },
+      "semester": { "type": "string" },
+      "standardUnitKey": { "type": "string" },
+      "standardUnit": { "type": "string" },
+      "subUnitKey": { "type": "string" },
+      "subUnit": { "type": "string" },
+      "conceptClusterKey": { "type": "string" },
+      "problemTypeKey": { "type": "string" },
+      "templateKey": { "type": "string" },
+      "aliasesKo": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "description": { "type": "string" },
+      "evidencePolicy": {
+        "type": "string",
+        "enum": [
+          "content_required",
+          "content_or_solution_required",
+          "solution_required",
+          "manual_only"
+        ],
+        "default": "content_or_solution_required"
+      },
+      "autoApplyAllowed": { "type": "boolean", "default": false },
+      "reviewRequiredWhen": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "sourceKind": { "type": "string" },
+      "sourceTitle": { "type": "string" },
+      "sourceUrlOrPath": { "type": "string" },
+      "sourcePage": { "type": "string" },
+      "sourceNote": { "type": "string" },
+      "verifiedAt": { "type": "string" },
+      "verifiedBy": { "type": "string" },
+      "status": {
+        "type": "string",
+        "enum": ["draft", "reviewed", "active", "deprecated"]
+      }
+    }
+  }
+}

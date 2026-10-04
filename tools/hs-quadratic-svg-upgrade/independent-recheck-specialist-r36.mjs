@@ -1,0 +1,29 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+const REPORT = path.join(ROOT, 'reports', 'hs-quadratic-svg-upgrade-20260908');
+const FACTS = JSON.parse(fs.readFileSync(path.join(REPORT, '506_specialist_v1_expected_facts_r36.json'), 'utf8'));
+const OUTPUT = path.join(REPORT, '512_independent_recheck_specialist_r36.json');
+const checks = [
+  ['archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js', 17, { solutionInterval: [-2, 3], result: 6 }],
+  ['archive/exams/original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js', 13, { solutionInterval: [4, 6], count: 10, result: 10 }],
+  ['archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js', 5, { solutionInterval: [3, 17 / 3], result: 17 }],
+  ['archive/exams/original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js', 17, { solutionInterval: [2, 2], result: 2 }],
+  ['archive/exams/original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js', 3, { vertex: [1, -1], minimum: -1, result: 2 }],
+  ['archive/exams/original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js', 5, { vertex: [1.5, -8.25], result: -2 }],
+  ['archive/exams/original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js', 11, { solutionInterval: [1, 7], count: 7, result: 28 }],
+  ['archive/exams/original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js', 20, { vertex: [-2, -3], result: -5 }],
+];
+const factMap = new Map(FACTS.rows.map((row) => [`${row.sourceJsPath}|${row.id}`, row]));
+const rows = checks.map(([sourceJsPath, id, independentlyComputedFacts]) => {
+  const fact = factMap.get(`${sourceJsPath}|${id}`);
+  if (!fact) throw new Error(`V1 fact missing for ${sourceJsPath}|${id}`);
+  const expectedFactParity = Object.entries(independentlyComputedFacts).every(([field, value]) => JSON.stringify(fact.expectedFacts[field]) === JSON.stringify(value));
+  return { questionUid: fact.questionUid, sourceJsPath, id, independentlyComputedFacts, expectedFactParity, independentCalculationStatus: expectedFactParity ? 'MATCH' : 'MISMATCH' };
+});
+const mismatchCount = rows.filter((row) => !row.expectedFactParity).length;
+const output = { schemaVersion: 'HS_QUADRATIC_INDEPENDENT_RECHECK_SPECIALIST_R36', status: mismatchCount ? 'INDEPENDENT_RECHECK_FAIL' : 'INDEPENDENT_RECHECK_PASS_NO_FINAL_PASS', productionAuthorized: false, inputVisibilityProfile: 'SOURCE_ONLY_INDEPENDENT_CALCULATOR', priorReviewVisibility: 'NONE', rows, checkedRows: rows.length, mismatchCount, calculatorDigest: crypto.createHash('sha256').update(JSON.stringify(checks)).digest('hex'), note: 'Independent second-pass arithmetic for r36; candidate-only row evidence, not full-scope final PASS.' };
+fs.writeFileSync(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
+console.log(JSON.stringify({ status: output.status, checkedRows: output.checkedRows, mismatchCount }, null, 2));

@@ -1,0 +1,43 @@
+{
+  "reportType": "FUNCTION_FAMILY_VISUAL_CONTRACT_VERIFICATION_V2",
+  "generatedAt": "2026-09-03T21:40:59.147Z",
+  "status": "VISUAL_CONTRACT_PASS",
+  "targetCount": 522,
+  "targetSourceFileCount": 50,
+  "sourceRuntime": {
+    "status": "PASS",
+    "pass": 522,
+    "total": 522,
+    "failures": []
+  },
+  "graphLedger": {
+    "status": "PASS",
+    "cases": 135,
+    "pass": 135,
+    "sourceSolutionImageCount": 136,
+    "preexistingSolutionImageCount": 1
+  },
+  "svgContract": {
+    "status": "PASS",
+    "pass": 135,
+    "total": 135,
+    "failures": [],
+    "duplicateCaseIds": [],
+    "duplicateAssetRefs": []
+  },
+  "densityGate": {
+    "status": "PASS",
+    "pass": 135,
+    "total": 135,
+    "failures": [],
+    "policy": "RATIONAL_GRAPH curves >=300 points per branch; other nonlinear curves >=200 points"
+  },
+  "sourceAttachmentParity": {
+    "status": "PASS",
+    "pass": 135,
+    "total": 135,
+    "failures": []
+  },
+  "forbiddenTokenPolicy": "SVG must not contain script, foreignObject, answer, choice, 보기, or 정답 tokens.",
+  "interpretation": "This verifies generated visual assets, actual SVG polyline density, and source/index contracts. It does not by itself adjudicate VISUAL_REQUIRED versus OPTIONAL/EXEMPT for no-image questions."
+}

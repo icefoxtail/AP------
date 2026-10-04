@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_TAXONOMY_REPARENT_NOT_FINAL",
+  "scope": "39 frozen PT_H1_SYSTEM_EQUATION items whose current stems triggered a bounded inequality-family review",
+  "itemEvidence": "H1_SYSTEM_INEQUALITY_PARENT_WORKING_39.jsonl",
+  "queueParity": "H1_SYSTEM_INEQUALITY_BOUNDARY_QUEUE_PARITY_39.jsonl",
+  "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/공통수학1.md#L2-2.4-L2-2.5",
+  "oldFrozenL3": "PT_H1_SYSTEM_EQUATION",
+  "l2OwnershipNote": "The curriculum draft places the proposed parents under 여러 가지 부등식 (L2-2.5); inspect each source unit/subunit binding before any production migration.",
+  "decisions": [
+    {
+      "draftParentLabelKo": "이차부등식",
+      "workingProblemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "support": 25,
+      "keyStatus": "EXISTING_H1_CANDIDATE_NOT_ACTIVE",
+      "reason": "The decisive solution step is a genuine quadratic sign/root interval, including conjunctions with secondary linear or absolute-value restrictions."
+    },
+    {
+      "draftParentLabelKo": "연립일차부등식",
+      "workingProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "support": 9,
+      "keyStatus": "EXISTING_H1_CANDIDATE_NOT_ACTIVE",
+      "reason": "The decisive step intersects first-degree inequality ranges, possibly followed by integer enumeration."
+    },
+    {
+      "draftParentLabelKo": "부등식의 활용",
+      "workingProblemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "support": 5,
+      "keyStatus": "NEW_CANONICAL_CANDIDATE_NOT_ACTIVE",
+      "reason": "Across these five items, the decisive task is determining a parameter or existence condition from inequality solution sets, rather than only finding the set itself. The curriculum draft contains this parent name; item reasons and L4 skeletons remain separate for later compression."
+    }
+  ],
+  "aCoverage": 39,
+  "bCoverage": 39,
+  "cConflictCoverage": 5,
+  "dualAgreement": 34,
+  "twoOfThree": 5,
+  "threeWay": 0,
+  "overclassificationGuard": "Do not make each integer-count or moving-boundary variation an L3. These remain item-level L4 skeleton evidence unless a later global review proves a distinct repeatable parent.",
+  "productionCanonicalChange": false,
+  "l4Final": false,
+  "difficultyFinal": false
+}

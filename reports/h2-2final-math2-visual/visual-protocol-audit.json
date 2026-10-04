@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "APMATH_VISUAL_PROTOCOL_AUDIT_v1",
+  "scope": "고2 2학기 기말 수학II 5개 시험지",
+  "sourceAnalysis": {
+    "examCount": 5,
+    "questionCount": 117,
+    "visualOptionalRows": 79,
+    "visualRequiredRows": 1,
+    "visualExemptRows": 37
+  },
+  "assetCoverage": {
+    "optionalRowsProcessed": 79,
+    "newSvgSolutionCards": 69,
+    "existingVisualsRetained": 10,
+    "retainedVisualReview": "NOT_TESTED"
+  },
+  "staticSvgContract": {
+    "status": "PASS",
+    "assetCount": 74,
+    "passed": 74,
+    "failed": 0,
+    "checks": [
+      "svg root",
+      "viewBox",
+      "preserveAspectRatio",
+      "no <br>",
+      "no LaTeX macros",
+      "no script/foreignObject",
+      "font fallback stack"
+    ]
+  },
+  "semanticProtocol": {
+    "independentExpectedFacts": "NOT_TESTED",
+    "pythonCoordinateParity": "NOT_TESTED",
+    "svgObservedFactParity": "NOT_TESTED",
+    "independentVerifierV1V2V3": "NOT_TESTED",
+    "reason": "The connected optional assets are explanatory solution cards; no independent semantic verifier receipt was produced."
+  },
+  "renderProtocol": {
+    "wholeExamCapture": "PASS",
+    "captureCount": 30,
+    "captureRun": "h2-2final-math2-visual-20260909-fresh-playwright",
+    "captureResult": "30/30 PASS",
+    "evidence": "reports/h2-2final-math2-visual/fresh-browser-render.json",
+    "priorCaptureReused": false,
+    "readability": "NOT_TESTED",
+    "currentAssetStyleChangesRequireFreshCapture": true
+  },
+  "freeze": {
+    "status": "FROZEN",
+    "targetCount": 117,
+    "machineCheckedUidCount": 117,
+    "freezeSha": "sha256:d8871ccad3ff69364ed31f2e44bdc92acf7c340d57185cc81d70b7e7303b450e"
+  },
+  "pipelineClosure": {
+    "auditV2": "BLOCKED",
+    "workBatchAudit": "BLOCKED",
+    "errors": [
+      "auditorPacketRefs missing",
+      "buildWorkLedgerRefs missing",
+      "questionQualityClosureSetRef missing",
+      "examReleaseClosureRef missing",
+      "provider FINAL_AUDIT failed before semantic model turn",
+      "finalCoverage=0"
+    ]
+  },
+  "providerFinalAuditRecheck": {
+    "status": "FAILED_BEFORE_MODEL_TURN",
+    "evidence": "reports/h2-2final-math2-visual/provider-final-audit-recheck.json",
+    "retryPerformed": false,
+    "semanticEvidence": "NOT_TESTED"
+  },
+  "finalDecision": "HOLD",
+  "holdReasons": [
+    "SVG semantic math parity is not independently verified.",
+    "Retained existing visuals have not received the required current independent review.",
+    "Pipeline semantic closure remains blocked by unavailable provider attestation."
+  ]
+}

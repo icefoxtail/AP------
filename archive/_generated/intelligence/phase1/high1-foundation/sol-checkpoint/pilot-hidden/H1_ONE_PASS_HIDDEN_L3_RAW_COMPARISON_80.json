@@ -1,0 +1,3935 @@
+{
+  "status": "SOL_ONLY_RAW_NO_ADJUDICATION",
+  "denominator": 80,
+  "rows": [
+    {
+      "row": 1,
+      "questionUid": "qid_v1_18b5493b640ee728ceb9fa66aaffe0695217cbee6a4a614bb9f1d4cd7c0331ee",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "debcb8b3a504cde696370fdebc36fa5dda8fb38d16ae0b27bede46b218a8951d",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Quadratic polynomials enumerated from divisor-value and alternative-root constraints",
+        "l4": "NEW:Point-value divisibility plus a disjunctive root condition followed by an aggregate remainder",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Quadratic family from divisibility and point-value constraints",
+        "l4": "NEW:Evaluate divisor roots -> branch over endpoint values -> impose alternate zero -> aggregate queried coefficient",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISIBILITY_FACTOR_CONDITION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "SOURCE_FIDELITY_REVIEW_REQUIRED"
+      }
+    },
+    {
+      "row": 2,
+      "questionUid": "qid_v1_ab00d0fc95efd3711c48d9dc52d861558a5b1c4ed8a5e882cc9e1735886cb366",
+      "sourceIdentity": "original/high/h1/1final/22_순천여고_1학기_기말_고1_기출.js#13",
+      "sourceFingerprint": "5cfc86e7bb3d44835258052c48c4bfc9bb35042fdaa617d9b2dc70fbcaee9151",
+      "a": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-SYSTEM_INEQUALITY",
+        "l3": "NEW:Integer parameter threshold from a bounded simultaneous-inequality solution set",
+        "l4": "NEW:Solve a simultaneous inequality, isolate its integer points, then derive the least parameter bound",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-SYSTEM_INEQUALITY",
+        "l3": "NEW:Parameter inequality required on a system solution set",
+        "l4": "NEW:Solve full interval -> factor target -> enforce sign over interval -> apply integer minimum",
+        "crossConcepts": [
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditions": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "연립부등식의 해집합 조건",
+        "candidateL4": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "SOLUTION_QUANTIFIER_SCOPE_ERROR"
+      }
+    },
+    {
+      "row": 3,
+      "questionUid": "qid_v1_1ac42169f81c95ff16a14fe3fd34195b4f82a34a64c3aad16e7ef4981160ac0b",
+      "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#22",
+      "sourceFingerprint": "aa616b1485e3b6174ad918c188372d710253f9717044706928f663d7f202dcee",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+        "crossConcepts": [
+          "CC_PERPENDICULAR",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 최대·최소/최적화",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "SOLUTION_AREA_FORMULA_INCORRECT; ANSWER_SOLUTION_MATH_CONTRADICTION"
+      }
+    },
+    {
+      "row": 4,
+      "questionUid": "qid_v1_2c95c2e052c61e0c48ed173d1ccf40bec0d7e411c2bd97c3a3249afe527a33c4",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#22",
+      "sourceFingerprint": "26d13b2ec74b3a3446a6e145e12ae73c9427e8819ac30badcc5b8f4d122c1e97",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_GRAPH_INTERSECTION_COUNT",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "HOLD"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "SOLUTION_NOT_REPRODUCIBLE_GENERIC_STUB; ANSWER_SOLUTION_MATH_CONTRADICTION"
+      }
+    },
+    {
+      "row": 5,
+      "questionUid": "qid_v1_3959b557db1d5f1b5525ca32676b73e2959f9009158e680d2ebfd8e93093b5ef",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#10",
+      "sourceFingerprint": "1ba3ffde15f295296761838e23e27fcd9be5a563e347df53ea1aa50a942a09f6",
+      "a": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-HIGHER_EQUATION",
+        "l3": "NEW:Quartic reduced by a repeated quadratic expression with real-root branch filtering",
+        "l4": "NEW:Substitute a repeated quadratic form, solve the reduced quadratic, reject nonreal inner-equation branches, and aggregate real roots",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-HIGHER_EQUATION",
+        "l3": "NEW:Quartic reduced through a repeated quadratic expression",
+        "l4": "NEW:Substitute repeated expression -> solve auxiliary quadratic -> discriminate x branches -> compute root aggregate",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": false
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "고차방정식의 인수분해·치환 구조",
+        "candidateL4": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NON_REPRODUCIBLE_GENERIC_SOLUTION"
+      }
+    },
+    {
+      "row": 6,
+      "questionUid": "qid_v1_7cbc4b1640bcde2eaa2217408c2000a6de38220cc0a2f8de7a5eef102fc60038",
+      "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#17",
+      "sourceFingerprint": "0fd90079ffac2ead4a4abfaf32efac3760ec8af92d3b87074c5dc883c5e59469",
+      "a": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-HIGHER_INEQUALITY",
+        "l3": "NEW:Match an absolute-value interval to a quadratic inequality solution set and test coefficient uniqueness",
+        "l4": "NEW:Solve a distance-sum inequality, recover interval endpoints, and preserve the family of matching quadratic inequalities",
+        "crossConcepts": [
+          "CC_INEQUALITY_ABSOLUTE_VALUE",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-INEQUALITY",
+        "l3": "NEW:Recover a quadratic inequality from an equivalent absolute-value interval",
+        "l4": "NEW:Solve absolute-value interval -> encode endpoints in quadratic -> determine sign orientation -> evaluate invariant coefficient ratio",
+        "crossConcepts": [
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": false
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "절댓값 식의 구간분기·해집합 판정",
+        "candidateL4": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "UNDERDETERMINED_QUADRATIC_COEFFICIENTS"
+      }
+    },
+    {
+      "row": 7,
+      "questionUid": "qid_v1_7d14ef7e9447e406e1b0f3d24fdf956af2d38bb1f034c8c13921227df1698c02",
+      "sourceIdentity": "original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "20ae50f19886f18fcfee3e1e0e4d8b65b44bdefda9a9a097c3d8df3ee309f440",
+      "a": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_PRINCIPLE",
+        "l3": "NEW:Route counting through a mandatory waypoint with product and alternative segment counts",
+        "l4": "NEW:Count route legs, multiply for a required sequence, and add for either individual segment",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_PRINCIPLE",
+        "l3": "NEW:Route counts through a required waypoint and across alternatives",
+        "l4": "NEW:Read segment counts -> multiply sequential legs -> add alternative legs -> combine totals",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "HOLD"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": null,
+        "candidateL3Status": "HOLD",
+        "candidateL3Reason": "source/visual blocker",
+        "candidateL4": null,
+        "candidateL4Status": "HOLD",
+        "sourceIssue": "VISUAL_SOURCE_UNCLEAR"
+      }
+    },
+    {
+      "row": 8,
+      "questionUid": "qid_v1_f70efe8487e6b83683317b361d85c1edc0a8199eedc419e34b463d63f54e4719",
+      "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "af8ed20f47895005d55dece0462fd49407083afb1ec74ba3470f6035e0361d96",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_BASIC",
+        "l3": "NEW:Matrix-equality maximum under prime and bounded-natural constraints",
+        "l4": "NEW:Derive variable equations from matrix entries, then maximize using a prime and finite natural-number range",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_BASIC",
+        "l3": "NEW:Bounded maximum from matrix-entry equalities and a prime parameter",
+        "l4": "NEW:Extract scalar entries -> eliminate variables -> apply finite prime bound",
+        "crossConcepts": [
+          "CC_NUMBER_PRIME_COPRIME"
+        ],
+        "conditions": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": false
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_BASIC_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬의 크기·상등·덧셈·스칼라배·성분 정의",
+        "candidateL4": "TPL_H1_MATRIX_BASIC_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "SOURCE_MATRIX_EQUALITY_MISSING; SOLUTION_FALSE_HOLD"
+      }
+    },
+    {
+      "row": 9,
+      "questionUid": "qid_v1_15ed928978e54af9cc686ef1652502ecb78158740d12497b30c068b2430e5567",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "d2de29a4c9fb05818e36c0217fa140d1dfae4db78f7076f89de09e6262a77045",
+      "a": {
+        "l1": "H15-SA-01",
+        "l2": "H15-SA-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Evaluate a symmetric polynomial difference from two-variable sum and product data",
+        "l4": "NEW:Recover a signed variable difference from sum/product data and evaluate successive power differences",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-01",
+        "l2": "H15-SA-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Evaluate a polynomial difference from sum/product constraints and variable order",
+        "l4": "NEW:Recover ordered difference -> factor power differences -> substitute symmetric data",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "근의 합·곱과 대칭식 활용",
+        "candidateL4": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 10,
+      "questionUid": "qid_v1_d67e97acf385bd29f6c50185f0a55f3b9a09313469cffbe4dfb05b20118723bb",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#18",
+      "sourceFingerprint": "64aa914ea618231eba1c856ad0d2b34ea819db96b2f0fdefe1499f1d1f107116",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "l4": "NEW:Root-factor parabola -> vertex slope -> parallel second root -> area statement test",
+        "crossConcepts": [
+          "CC_PARALLEL_LINES",
+          "CC_SLOPE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 11,
+      "questionUid": "qid_v1_9a8319ccf1f66cb2ea96af675e0c5c249434545c88873e5f5b6c3bcae4e2f2cd",
+      "sourceIdentity": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js#7",
+      "sourceFingerprint": "3e1a079ebdf1acf52106fa647ce2e36ae8c285e2939f19e658b9f4c9dec30e10",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_EQUATION",
+        "l3": "NEW:Two quadratics with one shared root and a prescribed difference between their remaining roots",
+        "l4": "NEW:Subtract at the common root, recover the coefficient sum, then constrain the remaining-root gap",
+        "crossConcepts": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_EQUATION",
+        "l3": "NEW:Two quadratics with a shared root and a condition on remaining roots",
+        "l4": "NEW:Subtract at shared root -> find common root -> apply Vieta -> impose ordered root gap",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_SYSTEM_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "공통근을 이용한 연립 방정식 구조",
+        "candidateL4": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 12,
+      "questionUid": "qid_v1_3c301382694072797edb75eac337b9838cbdb0e1cb21fa803dcabb5679458aff",
+      "sourceIdentity": "original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "882c475c821d22e101b709e40b8d4d1a7ef4605792ab701f0f003dea6d77926a",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 최대·최소/최적화",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 13,
+      "questionUid": "qid_v1_dcce92f8647d76a488b8fd018f00075624a4610f904e4aa56744b9f55493a9bc",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#11",
+      "sourceFingerprint": "7d6cc85106576e567d68089c427f7fc0da5a6c7ffaca9ed9946d0a679f0514d1",
+      "a": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-HIGHER_EQUATION",
+        "l3": "NEW:Quartic solved by symmetric quadratic substitution and complex-root branch selection",
+        "l4": "NEW:Pair quartic factors, solve for a shared quadratic expression, and use an inner discriminant to select the target root type",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_ROOT",
+        "l3": "NEW:Nonreal root of a quartic via symmetric quadratic substitution",
+        "l4": "NEW:Pair factors -> solve in t -> discriminate each x quadratic -> report selected t",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "고차방정식의 인수분해·치환 구조",
+        "candidateL4": "TPL_H1_HIGHER_FACTOR_ROOT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 14,
+      "questionUid": "qid_v1_faed450feef45e9e3f93a173a31d70209ccc890aa3e3d9b75fd212fb80b22327",
+      "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#11",
+      "sourceFingerprint": "c5c7647a8213277bfcaa7bd689e4926740fb89c6fd173dbd9703443f2dad28c4",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_EQUATION",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_EQUATION",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 15,
+      "questionUid": "qid_v1_8e02669339d6bfd88d1d362c9411cc3703dfbec4b15727ca531c403cd231e98a",
+      "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#16",
+      "sourceFingerprint": "36dadd34f29dce3459486683248552a1a5e1cc11ca8c48fa820769fabd4154a7",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "crossConcepts": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "NEW:Maximize line parameter from a prescribed ratio of quadratic intersection roots",
+        "l4": "NEW:Impose root ratio -> use Vieta/value condition -> reduce to quadratic parameter -> complete square",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 최대·최소/최적화",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 16,
+      "questionUid": "qid_v1_f803b386a28bb345ce140812801122e0da6032e3cf1b14a46b1b7695c9e780ae",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#18",
+      "sourceFingerprint": "29ccfde93e9d5ebf3d94f7e782a4c6ed6fd1ad9de6c3a0ef3b1a3b1e9b45217f",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "NEW:Sum coordinate triangle areas at two line-parabola intersections and reduce via symmetric root expressions",
+        "crossConcepts": [
+          "CC_ROOTS_COEFFICIENTS",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "NEW:Determine parabola parameter from coordinate-triangle area sum at line intersections",
+        "l4": "NEW:Solve intersection quadratic -> translate axis-triangle areas to root squares -> use Vieta",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 17,
+      "questionUid": "qid_v1_d16e9f8b6e881e82ad11e0d9bafc0bee378e04d3045b9a9368834e179db79e6f",
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#4",
+      "sourceFingerprint": "bffd843ff941706e0a0cf5d750aafcdcdd12f370d6efa79519d835a6672d74fc",
+      "a": {
+        "l1": "H22-C-07",
+        "l2": "H22-C-07-CORE",
+        "l3": "NEW:Count distinct expanded monomials from a product of sums with disjoint variable sets",
+        "l4": "NEW:Multiply the number of choices from each factor after checking term uniqueness",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-01",
+        "l2": "H22-C-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Count distinct monomials in a product of sums with disjoint variables",
+        "l4": "NEW:Count addends per factor -> multiply choices -> verify distinct monomials",
+        "crossConcepts": [
+          "CC_COMBINATORICS_COUNTING"
+        ],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 18,
+      "questionUid": "qid_v1_2a444ea8f786297b2d5e2dbe63b41c560c48a403945fc8b78925f98d201f8eb5",
+      "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#19",
+      "sourceFingerprint": "188b3f97dd70e2cac87ee39a5d98b64066718259454d4bbaa7d10c0e05ce8708",
+      "a": {
+        "l1": "H22-C-01",
+        "l2": "H22-C-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Recover the volume sum of two spheres from their diameter sum and surface-area sum",
+        "l4": "NEW:Convert surface area and volume to diameter powers, recover a diameter product, then compute the cube sum",
+        "crossConcepts": [
+          "CC_DIAMETER"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-01",
+        "l2": "H22-C-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Two-sphere volume sum from total diameter and surface area",
+        "l4": "NEW:Convert to diameter formulas -> derive product from square sum -> apply cubic identity",
+        "crossConcepts": [
+          "CC_DIAMETER"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "곱셈공식 변형·대칭 구조 활용",
+        "candidateL4": "TPL_H1_FORMULA_SYMMETRIC",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 19,
+      "questionUid": "qid_v1_74b35c180f6054a6756a89f1e390fe03434a1439274ec9e9047877562bb67730",
+      "sourceIdentity": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "ab60c1ded71e5fd6bd0ffc6e857601635e7757747931c67c5aef7e46a074156f",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Determine a monic polynomial from equal quotient/remainder data and integer-root conditions",
+        "l4": "NEW:Translate equal quotient/remainder into factors, impose degree cancellation, then filter a parameter by integer roots",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Integer-root polynomial reconstruction from equal quotient/remainder expressions",
+        "l4": "NEW:Use division identity and degree bound -> cancel leading term -> insert root -> filter integer branch",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_REMAINDER_LINEAR_EVALUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 20,
+      "questionUid": "qid_v1_a8bdf7d756d2c3b167c61ead976546a7654fb8e20c6094bd1f0a63677add3b25",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "54015c5aa0c8f55b0d2b2639dc0960719b273f2412f0101a6bbca0c209599365",
+      "a": {
+        "l1": "H22-C-03",
+        "l2": "H22-C-03-FACTORIZATION",
+        "l3": "NEW:A symmetric side-length identity forces an equilateral triangle before perimeter determines its area",
+        "l4": "NEW:Factor a³+b³+c³−3abc, use positive perimeter to force equal sides, then apply the perimeter",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-03",
+        "l2": "H22-C-03-FACTORIZATION",
+        "l3": "NEW:Classify triangle sides from a symmetric cubic equality and compute area",
+        "l4": "NEW:Factor symmetric cubic -> use positive perimeter -> force squared differences zero -> compute area",
+        "crossConcepts": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_STANDARD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 21,
+      "questionUid": "qid_v1_78d4b01896491e11e0d194578453adfb891e762dc7bc833c455c8b2e7ae469a4",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#15",
+      "sourceFingerprint": "88aff1397cd8f553fa3d288e41b05fa79f3a45cafa53af1cf651f563a5fbccf9",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "l4": "NEW:Test a polynomial functional identity at special inputs and classify its degree-one solutions by coefficient comparison",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "l4": "NEW:Substitute symmetry-related inputs -> divide only under stated nonzero condition -> compare coefficients by requested degree",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 22,
+      "questionUid": "qid_v1_87ad079d1c292383bb525712fb4c03a588a625e9f291e716ba4fc80628ee9faa",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#11",
+      "sourceFingerprint": "a5df4b49c1886389e8c6e348dc5abd83dff03eb60aa391c22797e2e9d4ccbe68",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_EQUATION",
+        "l3": "NEW:Parameter-independent repeated-root condition from a discriminant identity",
+        "l4": "NEW:Expand a parameterized discriminant, equate each coefficient to zero, then evaluate a coefficient expression",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_EQUATION",
+        "l3": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "l4": "NEW:Repeated-root discriminant -> expand as a polynomial in the external parameter -> set every coefficient to zero",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_OPERATION_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 23,
+      "questionUid": "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#23",
+      "sourceFingerprint": "bd2f428d30fd960a78ec36a244148259d7d96d75f04c582a7aeab4558c0fe566",
+      "a": {
+        "l1": "H22-C-03",
+        "l2": "H22-C-03-FACTORIZATION",
+        "l3": "NEW:Natural-input polynomial primality forces an integer factor before a remainder evaluation",
+        "l4": "NEW:Factor a polynomial value into ordered positive integer factors, force the smaller factor to one, then evaluate another polynomial at that input",
+        "crossConcepts": [
+          "CC_NUMBER_PRIME_COPRIME",
+          "CC_POLYNOMIAL_DIVISION"
+        ],
+        "conditions": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-03",
+        "l2": "H22-C-03-FACTORIZATION",
+        "l3": "NEW:Use a prime polynomial value to determine a natural input, then evaluate a separate remainder",
+        "l4": "NEW:Factor prime-valued expression -> use positive integer factors -> solve forced factor=1 -> evaluate requested remainder",
+        "crossConcepts": [
+          "CC_NUMBER_PRIME_COPRIME",
+          "CC_POLYNOMIAL_DIVISION"
+        ],
+        "conditions": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_APPLICATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 24,
+      "questionUid": "qid_v1_1e0cbbffd815f776e797e18e099207770615ab1a104f7a1887da3905d21f29e0",
+      "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#1",
+      "sourceFingerprint": "eb04f30210b4d0e6fc042f4ff3f9e2467ef30346cf3c4f349f8092c0b4ee083b",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Recover polynomial parameters by coefficient comparison in an identity",
+        "l4": "NEW:Compare corresponding powers in a two-sided polynomial identity and evaluate a linear combination of coefficients",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Recover constants from a polynomial identity and aggregate them",
+        "l4": "NEW:Match coefficients by degree -> solve constants -> aggregate target expression",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 25,
+      "questionUid": "qid_v1_73e54cbaf648061f24a78d07128394705b9b0e4b552c5e5bab53a21c6692b6a7",
+      "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#21",
+      "sourceFingerprint": "652dbe7462827d0cc6193793aae6e1e2ce6153b6203697eea4308f2b722da2ff",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Recover a depressed cubic from two remainder conditions and find its root product",
+        "l4": "NEW:Evaluate a cubic at two divisors to solve coefficients, then use the constant term for the root product",
+        "crossConcepts": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Recover cubic coefficients from two linear-divisor evaluations and report the root product",
+        "l4": "NEW:Evaluate at divisor roots -> solve coefficient system -> use the constant term for the root product",
+        "crossConcepts": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_REMAINDER_LINEAR_EVALUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 26,
+      "questionUid": "qid_v1_43470432764ceeac8519109fbb96f954ac0db3fcf37177880826e99dc9417745",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "f0118c222d20efb06e2fa1c71b933e1b81b235ae4288b6ffdd4b0eb1b6509387",
+      "a": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-SYSTEM",
+        "l3": "NEW:Recover three cuboid edge lengths from the three adjacent face areas",
+        "l4": "NEW:Multiply the three pairwise edge products to find the edge product, then divide back to recover each dimension",
+        "crossConcepts": [
+          "CC_AREA"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-01",
+        "l2": "H22-C-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Recover three positive lengths from all three pairwise products",
+        "l4": "NEW:Multiply pair products -> take positive square root of abc -> divide by opposite pair product",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_OPERATION_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 27,
+      "questionUid": "qid_v1_ec7e97ac945535f2bef00fc10e7e92ba63da5808d3cd3f3cbe8770a5ddb91d37",
+      "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#8",
+      "sourceFingerprint": "0ac4ae69c63d0060c33b87b25c319d1f8c85fb851aef6d3b287c3d2963c54302",
+      "a": {
+        "l1": "H22-C-01",
+        "l2": "H22-C-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Evaluate a conjugate-radical power sum from elementary symmetric values",
+        "l4": "NEW:Compute the sum/product of a conjugate pair and apply a symmetric power-sum identity",
+        "crossConcepts": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-01",
+        "l2": "H22-C-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Evaluate a conjugate pair's cubic sum through its symmetric sum and product",
+        "l4": "NEW:Collapse conjugates to sum/product -> apply cubic-sum identity",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "곱셈공식 변형·대칭 구조 활용",
+        "candidateL4": "TPL_H1_FORMULA_SYMMETRIC",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 28,
+      "questionUid": "qid_v1_3bce5da9e542fbb4bcdd3f5ded87682d26eeb0196986ba4d662babd08d439bb7",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#19",
+      "sourceFingerprint": "24f89dfeacb0fb456f54907545c814258471029d323238c0b8a8d00ee8d8727b",
+      "a": {
+        "l1": "H22-C-03",
+        "l2": "H22-C-03-FACTORIZATION",
+        "l3": "NEW:Factor an irreducible-over-rationals quadratic by completing the square over real radicals",
+        "l4": "NEW:Complete the square in a monic quadratic, express the residual constant as a square, and split the difference",
+        "crossConcepts": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-03",
+        "l2": "H15-SA-03-FACTORIZATION_BASIC",
+        "l3": "NEW:Factor a monic quadratic with irrational real roots by completing a square",
+        "l4": "NEW:Complete the square -> identify a square difference -> apply A²−B²",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_STANDARD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 29,
+      "questionUid": "qid_v1_b356600957d6ec8de4dec19361c7f1a95c51288eb2dd601c09b782f4a68c417c",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#10",
+      "sourceFingerprint": "ea763e8647aa4a7e10a5d3c9db4d4c019917c89e579f81f8454b1cfb04e996fb",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "l4": "NEW:Complete a square in an unknown polynomial, recognize the known side as a square, then select a polynomial sign branch",
+        "crossConcepts": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Recover a positive-leading polynomial from an identity between square polynomials",
+        "l4": "NEW:Complete square in unknown polynomial -> recognize square RHS -> choose polynomial sign by leading coefficient",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 30,
+      "questionUid": "qid_v1_163385facfa8a9da00f5d31a4399cf0a5cc641059376ce491c112b698f083e31",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#14",
+      "sourceFingerprint": "2f8a4c0858dc650ab77d5467c24a9ca302845a062a44b961f2aad9356ed5ea71",
+      "a": {
+        "l1": "H22-C-03",
+        "l2": "H22-C-03-FACTORIZATION",
+        "l3": "NEW:Recover a monic cubic from two quadratic divisors and a repeated-root condition on their sum",
+        "l4": "NEW:Infer the shared divisor factor, impose a repeated-root condition on the divisor sum, and reconstruct the cubic",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-03",
+        "l2": "H22-C-03-FACTORIZATION",
+        "l3": "NEW:Reconstruct a cubic from two overlapping quadratic divisors and a repeated-root sum condition",
+        "l4": "NEW:Infer common linear factor from degree -> factor both quadratics -> impose repeated root on their sum -> use point root",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_APPLICATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 31,
+      "questionUid": "qid_v1_0052ff977f1f3544bf2248816a9882d5cc522c83bc7671a48c41d55690d7f07f",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#8",
+      "sourceFingerprint": "0a8b782563d63d68894ce90a0d796eb480948741ad66c81fee2e55661100ab91",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "l4": "NEW:Convert a polynomial equation into equality of squares and use the leading coefficient to select the polynomial branch",
+        "crossConcepts": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Recover a positive-leading polynomial from an equality of scaled squares",
+        "l4": "NEW:Complete square -> factor difference of polynomial squares -> choose sign by leading coefficient -> evaluate",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 32,
+      "questionUid": "qid_v1_8fab03d61717354293372d737db242ae344f76a93f62ecd7ebee3fe61e856c74",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#17",
+      "sourceFingerprint": "8d934c116477d8ba8e8f8af60f410d473c3dd8333f80f744ec1d857bc2ceeb33",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Determine a cubic and linear polynomial from divisibility, a point value, and sign constraints",
+        "l4": "NEW:Reduce modulo an irreducible quadratic, impose a point-zero condition, solve the coefficient system, then filter by value signs",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "NEW:Determine a polynomial and linear factor from irreducible-divisor residues and sign filters",
+        "l4": "NEW:Force irreducible divisor into P -> reduce identity modulo it -> combine point root -> filter linear coefficients by signs",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISIBILITY_FACTOR_CONDITION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 33,
+      "questionUid": "qid_v1_a99aba8b48115cdfbfaddf2818b6c0c815e3416f294f1f1b1671790444c09b3d",
+      "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#5",
+      "sourceFingerprint": "a33b90c64dca2b2c94b9b65823aadb391c85c700d4614660154e99ac069a9f72",
+      "a": {
+        "l1": "H15-SA-02",
+        "l2": "H15-SA-02-REMAINDER_FACTOR",
+        "l3": "NEW:Recover a cubic coefficient product from divisibility by a reducible quadratic",
+        "l4": "NEW:Factor the divisor into distinct linear factors, evaluate the cubic at each root, solve for coefficients, then form their product",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-02",
+        "l2": "H15-SA-02-REMAINDER_FACTOR",
+        "l3": "NEW:Determine two coefficients from roots of a quadratic divisor",
+        "l4": "NEW:Factor divisor -> evaluate at each root -> solve coefficient equations -> form requested product",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_REMAINDER_LINEAR_EVALUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 34,
+      "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "dd8f2e4785ee233c24e04af77a167faced9861f3d31cf046f6e5247709be7733",
+      "a": {
+        "l1": "H15-SA-03",
+        "l2": "H15-SA-03-FACTORIZATION",
+        "l3": "NEW:Choose a constant so a quartic product becomes the square of a quadratic",
+        "l4": "NEW:Pair four roots symmetrically, substitute their shared quadratic expression, and force the reduced quadratic to be a square",
+        "crossConcepts": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-03",
+        "l2": "H15-SA-03-FACTORIZATION",
+        "l3": "NEW:Make a quartic product a perfect square by pairing factors around a common quadratic expression",
+        "l4": "NEW:Factor quartic -> pair linear factors with equal middle coefficient -> substitute common quadratic -> impose square condition",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "곱셈공식 변형·대칭 구조 활용",
+        "candidateL4": "TPL_H1_FORMULA_SYMMETRIC",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 35,
+      "questionUid": "qid_v1_0547c180f0440e25cd8d0e3f6d6d99a191b7af3a42cec8628c91ffa97f1a820e",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#16",
+      "sourceFingerprint": "54aa0c0d9d86387b252906ac86934a9dfad2f549baca453c7eaa4845865c5d8a",
+      "a": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "l4": "NEW:Use special substitutions for value clauses, coefficient-compare degree two, and reject monic odd degree by the leading sign",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-02",
+        "l2": "H22-C-02-CORE",
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "l4": "NEW:Use point substitutions for value claims -> compare coefficients at a fixed degree -> compare leading signs at another degree",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 36,
+      "questionUid": "qid_v1_0dfda33af0430e79ca3fdb54f4cb45329e1445b80f069bcb33a2015488f80fc6",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#8",
+      "sourceFingerprint": "6f40ebc0807ceee67261f0e53bd2fb15b1fe08b5071a64498e80cdc73e50959b",
+      "a": {
+        "l1": "H15-SA-03",
+        "l2": "H15-SA-03-FACTORIZATION",
+        "l3": "NEW:Factor a bivariate quadratic with x²−y² leading form into affine linear factors",
+        "l4": "NEW:Assume factors (x+y+a)(x−y+b), compare linear coefficients, and obtain the constant product",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-03",
+        "l2": "H15-SA-03-FACTORIZATION",
+        "l3": "NEW:Factor a quadratic form x²−y² with linear terms by coefficient matching",
+        "l4": "NEW:Match x²−y² as (x+y+a)(x−y+b) -> compare linear coefficients -> recover constant product",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_STANDARD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 37,
+      "questionUid": "qid_v1_37b93301408d72343acd8d69e8cdfe93c981508a048a4c3c9127adad140b1662",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "13e6309b860b01568ace1045b8b34efd2729917f3f5cfab03e5564b0161a2794",
+      "a": {
+        "l1": "H22-C-01",
+        "l2": "H22-C-01-POLYNOMIAL_BASIC",
+        "l3": "NEW:Compute a high reciprocal power sum from a quadratic equation and its symmetric root relation",
+        "l4": "NEW:Derive x+1/x, build lower reciprocal power sums, then multiply adjacent power sums to reach the target exponent",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_EQUATION",
+        "l3": "NEW:Evaluate a high reciprocal power sum from a quadratic relation",
+        "l4": "NEW:Divide nonzero-root equation by x -> obtain x+x⁻¹ -> build symmetric power sums -> combine to the target exponent",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 38,
+      "questionUid": "qid_v1_dad058a459d2cc61b5547b40c438c207016bdc26202e14746df1ad5fc3933709",
+      "sourceIdentity": "original/high/h1/1final/26_금당고_1학기_기말_고1_기출.js#16",
+      "sourceFingerprint": "ed88eda3d49aa3f2b7411ab80515f026248e99512c43082fcb262e525bf7aca5",
+      "a": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_ROOT",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "crossConcepts": [
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_ROOT",
+        "l3": "NEW:Minimize a real polynomial's coefficient sum from constrained complex roots",
+        "l4": "NEW:Translate conjugate constraints -> write all roots -> evaluate at a convenient point -> minimize the resulting square",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION",
+          "CC_QUADRATIC_EXTREMUM"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 조건·근 구조를 이용한 방정식/판정",
+        "candidateL4": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 39,
+      "questionUid": "qid_v1_85959e8df94780fe75dbb81dc1a0b192d376f2bbb065dade58c708de64bc3fdf",
+      "sourceIdentity": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "de09dceffe97a29812320b30339269c953bd0d45df58cc5b6a6193f9c7eb5299",
+      "a": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-SYSTEM_INEQUALITY",
+        "l3": "NEW:Intersect a quadratic inequality interval with a range induced by the greatest-integer function",
+        "l4": "NEW:Bound the integer floor value, translate its allowed integers back to a real interval, then intersect with a quadratic interval",
+        "crossConcepts": [
+          "CC_GREATEST_INTEGER_FUNCTION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-SYSTEM_INEQUALITY",
+        "l3": "NEW:Intersect a polynomial inequality interval with a floor-square constraint",
+        "l4": "NEW:Solve ordinary quadratic interval -> bound integer floor values -> convert floor bounds to x interval -> intersect",
+        "crossConcepts": [
+          "CC_GREATEST_INTEGER_FUNCTION"
+        ],
+        "conditions": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차부등식·전역 부호·매개변수 범위",
+        "candidateL4": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 40,
+      "questionUid": "qid_v1_a95b420c5e87867bdfee62962b7843226e25da5fb062eaa8c0dfd5f691e6785c",
+      "sourceIdentity": "original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js#20",
+      "sourceFingerprint": "666a8af14a918aa1d31ff9a5802d1e7f2fef89d86356287b1c864f20aeee6b5a",
+      "a": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-QUADRATIC_INEQUALITY",
+        "l3": "NEW:Solve a floor-dependent quadratic inequality by a global bound and integer-part cases",
+        "l4": "NEW:Use floor(x)≤x to bound x, partition the remaining interval by integer parts, and solve each local quadratic inequality",
+        "crossConcepts": [
+          "CC_GREATEST_INTEGER_FUNCTION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-INEQUALITY_APPLICATION",
+        "l3": "NEW:Solve a quadratic inequality whose coefficient term is the floor of x",
+        "l4": "NEW:Bound x using [x]≤x -> partition by integer part -> solve each resulting quadratic -> test jump endpoint",
+        "crossConcepts": [
+          "CC_GREATEST_INTEGER_FUNCTION"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차부등식·전역 부호·매개변수 범위",
+        "candidateL4": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 41,
+      "questionUid": "qid_v1_cec69b96fd37f11a946aeaccaffd280838f05e5b99cfa61ba95a99dc9f67a973",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#9",
+      "sourceFingerprint": "4a700177589d042dddd56847031a211ddee64f54f2144093dc6c52910fdeab1c",
+      "a": {
+        "l1": "H15-SA-13",
+        "l2": "H15-SA-13-QUADRATIC_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+        "crossConcepts": [
+          "CC_PERPENDICULAR",
+          "CC_TANGENCY"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-13",
+        "l2": "H15-SA-13-QUADRATIC_APPLICATION",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+        "crossConcepts": [
+          "CC_PERPENDICULAR"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": false,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수의 최대·최소·최적화가 목표",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 42,
+      "questionUid": "qid_v1_9e0c3d87600ea26dfcf6dbe955ae3280e5c0f113029a7539f300a4955c942a5c",
+      "sourceIdentity": "original/high/h1/1final/22_복성고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "eacfd87e8634c999032609686972fc14e27e5a9f03a8d739d9409bbfc1e4f62f",
+      "a": {
+        "l1": "H15-SA-13",
+        "l2": "H15-SA-13-QUADRATIC_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_GRAPH_INTERSECTION_COUNT",
+        "crossConcepts": [
+          "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+        ],
+        "conditions": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-13",
+        "l2": "H15-SA-13-QUADRATIC_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_GRAPH_INTERSECTION_COUNT",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 그래프 관계",
+        "candidateL4": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 43,
+      "questionUid": "qid_v1_6a8c89afa5399b849ffc69fdfa517366597be8e97be5a8179930cef5d08f1939",
+      "sourceIdentity": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js#3",
+      "sourceFingerprint": "d6590dc00cd6fc66de5c4a02821c1fba7888f4f4cbdaeb27d1fbfacf622ec0eb",
+      "a": {
+        "l1": "H15-SA-01",
+        "l2": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "l3": "NEW:Transform a polynomial quotient and remainder after multiplying the dividend by x",
+        "l4": "NEW:Multiply a known division identity by x, rewrite the remainder term around the new divisor, and read off quotient/remainder",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-01",
+        "l2": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "l3": "NEW:Transform a polynomial division identity after multiplying the dividend by x",
+        "l4": "NEW:Write dividend as divisor·quotient+remainder -> multiply -> express remainder term using new divisor -> read quotient and remainder",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISION_RECONSTRUCTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 44,
+      "questionUid": "qid_v1_b7969c1be96032aa33b14559233211fceb796a9bfad20cf75ec516b11dd0a75e",
+      "sourceIdentity": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js#12",
+      "sourceFingerprint": "f9fa2e84887209a1848cbae5655aedc557acd74210c47162cfb0f930b3f2d79c",
+      "a": {
+        "l1": "H15-SA-02",
+        "l2": "H15-SA-02-IDENTITY",
+        "l3": "NEW:Recover shifted-power coefficients of a polynomial from its expanded form",
+        "l4": "NEW:Repeatedly divide by x−2 to recover coefficients of powers (x−2)^j, then evaluate a coefficient expression",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_DIVISION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-01",
+        "l2": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "l3": "NEW:Recover coefficients in powers of x−r by repeated synthetic division",
+        "l4": "NEW:Synthetic-divide successively at r -> read successive remainders as shifted coefficients -> aggregate",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISION_RECONSTRUCTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 45,
+      "questionUid": "qid_v1_fd67803bf9578bcefc1c7bc29158d8f3e28d232b181ac2bd7b3a7c43415a56f2",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#11",
+      "sourceFingerprint": "c55b33588b61b19052e8129833acbd7de5d55360a7d633c2e8b24c169300ea5a",
+      "a": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_ROOT",
+        "l3": "NEW:Evaluate a long power sum of a nonreal cubic root through its induced root-of-unity period",
+        "l4": "NEW:Transform a nonreal root of x³+1 into a nontrivial cube root of unity, then group powers into zero-sum triples",
+        "crossConcepts": [
+          "CC_GEOMETRIC_SEQUENCE"
+        ],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_ROOT",
+        "l3": "NEW:Evaluate a long power sum of a nonreal cubic root through a root-of-unity cycle",
+        "l4": "NEW:Factor the cubic -> rewrite the base as z -> group powers by the root-of-unity period -> retain the final residue",
+        "crossConcepts": [
+          "CC_GEOMETRIC_SEQUENCE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COMPLEX_POWER_ROOT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 거듭제곱·단위근·주기 구조",
+        "candidateL4": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 46,
+      "questionUid": "qid_v1_f9ffafa8308b2c12f84402d4e65440bb3114dcf70099270c24c21d60d793945c",
+      "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "09c367ebfc9cdee59aa91dd6271978e5eb867feed063d5dabd7a806ae2b9d1ce",
+      "a": {
+        "l1": "H15-SA-04",
+        "l2": "H15-SA-04-COMPLEX_BASIC",
+        "l3": "NEW:Solve real variables from a single complex-number equality",
+        "l4": "NEW:Split a complex equation into real/imaginary linear constraints, solve the pair, then aggregate variables",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-04",
+        "l2": "H15-SA-04-COMPLEX_BASIC",
+        "l3": "NEW:Determine real variables from equality of two complex numbers by component splitting",
+        "l4": "NEW:Compare real parts -> compare imaginary coefficients -> solve the resulting 2×2 system -> aggregate variables",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COMPLEX_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 사칙연산·상등·켤레의 직접 활용",
+        "candidateL4": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 47,
+      "questionUid": "qid_v1_6a288d9ee31546aac2cd048c97eba1c9aa1c5ae95adaa12950920b8986e633ac",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#15",
+      "sourceFingerprint": "f097bc3aeb1aaf6941767ee6037a8e9a3775caddbdd5dc57fc48fbc962a82ec9",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "l4": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-13",
+        "l2": "H15-SA-13-QUADRATIC_GRAPH",
+        "l3": "NEW:Recover a horizontal graph shift from the product of translated roots",
+        "l4": "NEW:Read original roots -> shift each root by a -> multiply shifted roots -> solve the parameter relation",
+        "crossConcepts": [
+          "CC_TRANSLATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차방정식의 판별식·근의 위치·중근 조건",
+        "candidateL4": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 48,
+      "questionUid": "qid_v1_6558ac9077facaf514ff792c4a6961f24889250c57d25c420d844a283f43535f",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#12",
+      "sourceFingerprint": "87ae817c06c1705292319cb0221059a03a233e2e32da15a55e319fd0a9ba47fc",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "l4": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConcepts": [
+          "CC_FUNCTION_SYMMETRY"
+        ],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "l4": "NEW:Read level/root order -> compare claims with graph sign regions -> use axis symmetry -> transform argument interval",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "조건에서 이차함수 식·축·계수를 복원",
+        "candidateL4": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 49,
+      "questionUid": "qid_v1_2284f2aa0e5307f5e1a4a91cdaa8f117b4174c0dbed3ff89d74f06495dad56b0",
+      "sourceIdentity": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js#8",
+      "sourceFingerprint": "97ad5c4f2248e93c89150ad3798d2ac30853f6fbdd76f741644ac30a45818811",
+      "a": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-INEQUALITY_APPLICATION",
+        "l3": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "l4": "TPL_AMGM_MINIMUM",
+        "crossConcepts": [
+          "CC_AM_GM"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-INEQUALITY_APPLICATION",
+        "l3": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "l4": "TPL_AMGM_RECIPROCAL_MINIMUM",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "절대부등식의 최댓값·최솟값 canonical 재사용",
+        "candidateL4": "TPL_AMGM_MINIMUM",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 50,
+      "questionUid": "qid_v1_d9ee9a3769771b5a6c881c4363088f1b2d8568d239280291bb0e5a2ff6b909b8",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#15",
+      "sourceFingerprint": "c7342b0b2669e070cd3efc7a6d1f04a6559299d9516e7cc125461545fbac4d70",
+      "a": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-SYSTEM",
+        "l3": "NEW:Infer linear-inequality coefficients from plotted solution intervals and solve a transformed system",
+        "l4": "NEW:Read endpoint orientation and inclusion from a number line, recover coefficient signs and ratios, then intersect the altered intervals",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-06",
+        "l2": "H22-C-06-SYSTEM",
+        "l3": "NEW:Recover inequality coefficients from a graphed system solution and test a transformed system",
+        "l4": "NEW:Decode each number-line interval -> infer coefficient sign and boundary -> transform expressions -> intersect half-lines",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_SYSTEM_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "연립방정식·공통근 구조",
+        "candidateL4": "TPL_H1_SYSTEM_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 51,
+      "questionUid": "qid_v1_79dc5d371de9c83631453c8041b3b678bdb8960a92ef764716906f1a9c3ed3bb",
+      "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#21",
+      "sourceFingerprint": "20733d758c40b164071566b7ba559d66fdc224fc8a009f6cd6a1034592642ad6",
+      "a": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_BASIC",
+        "l3": "NEW:Select real inputs making a complex polynomial value nonzero and real",
+        "l4": "NEW:Solve the imaginary-part equation, test each candidate in the real part, and exclude zero",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_BASIC",
+        "l3": "NEW:Select a real parameter from a complex expression's zero-imaginary and nonzero-real conditions",
+        "l4": "NEW:Set imaginary component to zero -> list real candidates -> test real component against zero",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 조건·근 구조를 이용한 방정식/판정",
+        "candidateL4": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 52,
+      "questionUid": "qid_v1_6c4ddbe07e93c8b05b0ad53f8c066a0cb59cc46f41a5fe2e6efc52c18531f74b",
+      "sourceIdentity": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js#15",
+      "sourceFingerprint": "82dd6f2d0611c152d82d49dc1309315abae3cc626b7a43dad0b8e5124bca9827",
+      "a": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-INEQUALITY_APPLICATION",
+        "l3": "NEW:Determine an added mixture amount from a two-sided concentration constraint",
+        "l4": "NEW:Write solute/total quantities as a rational concentration, solve both percentage bounds, and test candidate amounts",
+        "crossConcepts": [
+          "CC_INEQUALITY_RATIONAL"
+        ],
+        "conditions": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-INEQUALITY_APPLICATION",
+        "l3": "NEW:Translate a mixture concentration interval into a feasible amount range",
+        "l4": "NEW:Set amount variable -> form salt/total-mass fraction -> apply lower and upper concentration bounds -> intersect",
+        "crossConcepts": [
+          "CC_INEQUALITY_RATIONAL"
+        ],
+        "conditions": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "일차·연립부등식의 공통 해와 조건 판정",
+        "candidateL4": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 53,
+      "questionUid": "qid_v1_a370b70823bb029decf512751b0278a13ad2884afd9c1269575b5429af6d58e9",
+      "sourceIdentity": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js#15",
+      "sourceFingerprint": "d15a024e49310a7ee631adbcbd616a02da4e061f344e97a163dcef2a7fe86b33",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+        "crossConcepts": [
+          "CC_ABSOLUTE_VALUE_FUNCTION",
+          "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "l4": "TPL_GRAPH_INTERSECTION_COUNT",
+        "crossConcepts": [
+          "CC_ABSOLUTE_VALUE_GRAPH",
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "절댓값 식의 구간분기·해집합 판정",
+        "candidateL4": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 54,
+      "questionUid": "qid_v1_434f850d67a5b8cd177bad63a5f1f1e3f9483f9e0784704896f08e8cba24a0fe",
+      "sourceIdentity": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "d907d8f33d4c0a9fc5c673b0553b78210c305072bbcfe21dc9a538cc73095e8a",
+      "a": {
+        "l1": "H15-SA-04",
+        "l2": "H15-SA-04-COMPLEX_OPERATION",
+        "l3": "NEW:Simplify nested rational expressions with a complex variable input",
+        "l4": "NEW:Normalize each nested denominator to a simple linear expression in a, then substitute the complex value",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-04",
+        "l2": "H15-SA-04-COMPLEX_OPERATION",
+        "l3": "NEW:Simplify nested reciprocal expressions in a fixed complex parameter",
+        "l4": "NEW:Reduce nested reciprocal from innermost denominator outward -> express each term in a -> subtract -> substitute complex value",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COMPLEX_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 사칙연산·상등·켤레의 직접 활용",
+        "candidateL4": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 55,
+      "questionUid": "qid_v1_428a13c022da07d8ee527bb7274e012938405f7072e5f9de2a57a4c009798bbb",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "31e809150fbae8263ebcdbf607ebb989266238b9fed45828488654983c96b309",
+      "a": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_OPERATION",
+        "l3": "PT_FUNCTION_VALUE",
+        "l4": "TPL_FUNCTION_VALUE_DIRECT",
+        "crossConcepts": [
+          "CC_GEOMETRIC_SEQUENCE"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-04",
+        "l2": "H22-C-04-COMPLEX_OPERATION",
+        "l3": "NEW:Evaluate a polynomial at the complex unit i using power cycling",
+        "l4": "NEW:Rationalize complex quotient -> identify i -> reduce powers modulo four -> combine coefficients",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COMPLEX_POWER_ROOT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 거듭제곱·단위근·주기 구조",
+        "candidateL4": "TPL_H1_COMPLEX_I_PERIOD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 56,
+      "questionUid": "qid_v1_a49dcc90bf3d233a810bf71570275eae7603d180f9ac21afc53daba7d43a844c",
+      "sourceIdentity": "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js#6",
+      "sourceFingerprint": "e53bf4f167a09f0061596b2a3e47554888ae94e90f1a41cb8e4cff700fb5cf8b",
+      "a": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-QUADRATIC_INEQUALITY",
+        "l3": "NEW:Count integer parameters for which a quadratic inequality has an empty solution set",
+        "l4": "NEW:Impose negative discriminant, solve its parameter interval, and count integers in that interval",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-08",
+        "l2": "H15-SA-08-QUADRATIC_INEQUALITY",
+        "l3": "NEW:Count integer parameters for which a quadratic inequality has empty solution set",
+        "l4": "NEW:Translate empty solution set to positive quadratic with D<0 -> solve parameter interval -> count integers",
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차부등식·전역 부호·매개변수 범위",
+        "candidateL4": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 57,
+      "questionUid": "qid_v1_925969e57e7f0e0b9c5f8f6fa833d80ebf969d5e12990aaeb5f628942fcbfe7b",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#8",
+      "sourceFingerprint": "f9dc22ee42e103b6de83f2fe79b8a466d885f45785a31e3a2fd23dd72471b90d",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "NEW:Complete the square in a monic upward quadratic and read the global minimum at its vertex",
+        "crossConcepts": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SA-13",
+        "l2": "H15-SA-13-QUADRATIC_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "NEW:Complete the square -> read vertex -> use nonnegative square to certify minimum",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "조건에서 이차함수 식·축·계수를 복원",
+        "candidateL4": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 58,
+      "questionUid": "qid_v1_6ce2b6dde099902e283f95b803e5a9bc4a19ec7dadca7426b0b2bf1bcbe6bfcd",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#12",
+      "sourceFingerprint": "fddb7f1aabc47d84ef94a8ee83b33424c499644828d5c1792b5ddb82e0737bad",
+      "a": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+        "crossConcepts": [
+          "CC_COMPLETE_SQUARE",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-05",
+        "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "l4": "NEW:Use Vieta to rewrite root-square sum in k -> complete square -> verify parameter attainability",
+        "crossConcepts": [
+          "CC_QUADRATIC_EXTREMUM"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "근과 계수의 관계·근의 대칭식 활용",
+        "candidateL4": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 59,
+      "questionUid": "qid_v1_5022b4b8c8181c1c35476312ac274877ec7a6cb99469f9f844deda123c593fcb",
+      "sourceIdentity": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#24",
+      "sourceFingerprint": "a88af3b54bb766d806c9e7d5a7085b310b1de0c84a10cb8ca543ea529e243f9f",
+      "a": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_APPLICATION",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-07",
+        "l2": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "조합·선택·분배 canonical 재사용",
+        "candidateL4": "TPL_COMBINATION_SELECTION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 60,
+      "questionUid": "qid_v1_3fc24c90d7d450771b196f697e2c6761d61d6cc61fa902329e507469ac27ebe1",
+      "sourceIdentity": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js#7",
+      "sourceFingerprint": "f1b1118041e9df76d5ddcb894d970dce9c3ead6e9bfacc67da23c89142a17ea4",
+      "a": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-PERMUTATION",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-PERMUTATION",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": true,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 61,
+      "questionUid": "qid_v1_6759c27cc7295966f1aa3d3af6e5ed300e5abd6751fba2d8b67974853037a0b7",
+      "sourceIdentity": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js#7",
+      "sourceFingerprint": "badd24cd5e586a6e883b896f796cf00ab6c3ea38f08291973b10d952cea4fe45",
+      "a": {
+        "l1": "H15-SB-08",
+        "l2": "H15-SB-08-COMBINATION_APPLICATION",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "TPL_COMBINATION_SELECTION",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-08",
+        "l2": "H15-SB-08-COMBINATION_APPLICATION",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "NEW:Choose larger group -> pair remainder -> remove symmetry of equal-size unlabeled groups",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_DIRECT_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 62,
+      "questionUid": "qid_v1_80b879143850bbeb0210389d759c372a9bb17d77f70875f432b1659ccda04472",
+      "sourceIdentity": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "10277dc1093b647aa57ff03b9b764275ed403bec5d3e97bd93a9e3436e45e9a1",
+      "a": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_APPLICATION",
+        "l3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "l4": "NEW:사용 상자를 선택한 뒤 포함배제로 모든 선택 상자가 사용되도록 하는 전사 배정",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_APPLICATION",
+        "l3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "l4": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_FUNCTION_COUNTING",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "함수의 개수 canonical 재사용",
+        "candidateL4": "TPL_SURJECTION_COUNT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 63,
+      "questionUid": "qid_v1_6fe0d891005112d09d0bdf0139493fc5c129d4079f0da97f4d1f7a3e660a51fc",
+      "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#19",
+      "sourceFingerprint": "ba6071e1a550c4f586248e108a36a35f3cb72a37a293581c34529bd8a33f2d91",
+      "a": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-COMBINATION",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-CORE",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": false,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": true,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "중복 선택·반복 배정 canonical 재사용",
+        "candidateL4": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 64,
+      "questionUid": "qid_v1_6374ac334daf7638b5befbf40d2e30fd9eaeb395d1fce3a4af5d9640775abd00",
+      "sourceIdentity": "original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js#8",
+      "sourceFingerprint": "f802d1afc0a517ef3138b665af627c9b14bee7841e5571edb00d736aaee9a71a",
+      "a": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_APPLICATION",
+        "l3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "l4": "NEW:순환 인접 색칠에서 비인접한 두 꼭짓점의 같은 색·다른 색 분기로 가용 색 계산",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_APPLICATION",
+        "l3": "NEW:Color a four-region adjacency graph with four colors",
+        "l4": "NEW:Fix one region -> color a neighbor -> split by equality of nonadjacent regions -> count remaining colors",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 65,
+      "questionUid": "qid_v1_c376eb0e1cfe81cac7ee049a0be70ee39cb23a55e38655543fb6049d99e6f5a6",
+      "sourceIdentity": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js#12",
+      "sourceFingerprint": "5fe7770f112acd77a27cd1e36b08019d24d0a1004cec8a66ec747a4003b7846b",
+      "a": {
+        "l1": "H15-SB-07",
+        "l2": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-07",
+        "l2": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "NEW:Branch by identical-item count -> count valid category strings -> permute distinct items in candy slots",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 66,
+      "questionUid": "qid_v1_4cd2b3a60851a3865d81e04ab54a4f8e7bec9366b46f8d6d0657c44b468ac172",
+      "sourceIdentity": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js#4",
+      "sourceFingerprint": "7b03bf10e44149cab4293723ff14badbbcf46861a6296946206a60de054721e7",
+      "a": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-CORE",
+        "l3": "NEW:순열·조합 공식값의 혼합 계산",
+        "l4": "NEW:순열 기호와 조합 기호를 각각 수치화하여 합산하는 직접 공식 계산",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-CORE",
+        "l3": "NEW:Evaluate a mixed permutation/combination arithmetic expression",
+        "l4": "NEW:Compute P term -> compute C term by symmetry -> add values",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "조합·선택·분배 canonical 재사용",
+        "candidateL4": "TPL_COMBINATION_SELECTION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 67,
+      "questionUid": "qid_v1_e4b9d65fd12487b9e1a3cd3539a757d216beec078420203fe7dc06e25f03bf1d",
+      "sourceIdentity": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js#11",
+      "sourceFingerprint": "50a89503103213cb0318da941b0c557b7d2368e40b4d9c59d87bb5f6361b1317",
+      "a": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-PERMUTATION",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-PERMUTATION",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": true,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 68,
+      "questionUid": "qid_v1_4342cdbf79afacf653adacfe44cc6334de3308caf9f9fdbad605e1cc3b044831",
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#1",
+      "sourceFingerprint": "e2233fa03ea99f3d3fd61c67d380f432619c505aaf51d2558b80e8213498c369",
+      "a": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-CORE",
+        "l3": "NEW:순열·조합 공식값의 혼합 계산",
+        "l4": "NEW:순열 기호와 조합 기호를 각각 수치화하여 합산하는 직접 공식 계산",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-CORE",
+        "l3": "NEW:Evaluate a factorial-plus-combination expression",
+        "l4": "NEW:Compute factorial -> compute combination -> add",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_DIRECT_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 69,
+      "questionUid": "qid_v1_d9a0f6371046a0b88eb3db55a47414a9762c25fd66ce34271e8246b70cb08029",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#16",
+      "sourceFingerprint": "07345f656c6373e85f45f3156454f204b47aa362747e445d0e3287517a8e9908",
+      "a": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-COMBINATION",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "TPL_COMBINATION_SELECTION",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-08",
+        "l2": "H22-C-08-CORE",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "NEW:Bound a₁ from the sum -> branch -> count ordered sum-pairs -> choose later increasing pair",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": false,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "중복 선택·반복 배정 canonical 재사용",
+        "candidateL4": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 70,
+      "questionUid": "qid_v1_2d4bf3d948f482ad4a3568c35178b51ac1c61835c5aaaae6a7564543449525dd",
+      "sourceIdentity": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js#20",
+      "sourceFingerprint": "28b8c8ceb6af96ebc9b4e687e28ca62fefafd24bac456215e02548ccc008e916",
+      "a": {
+        "l1": "H15-SB-08",
+        "l2": "H15-SB-08-COMBINATION_APPLICATION",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "TPL_COMBINATION_SELECTION",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l1": "H15-SB-06",
+        "l2": "H15-SB-06-COUNTING_APPLICATION",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "NEW:Choose bye -> choose its linked opponent pair -> partition remaining teams into unordered first-round pairs",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": false
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 71,
+      "questionUid": "qid_v1_53d8cf1aaa261e8b5df44bd1634c30d497c1ee472147259f71948088e85f915d",
+      "sourceIdentity": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#5",
+      "sourceFingerprint": "f15da86cc8eb5f9a7b5802e550bb98a3885b492ea157268c9450ea63a2d1b818",
+      "a": {
+        "l1": "H15-SB-08",
+        "l2": "H15-SB-08-COMBINATION_BASIC",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "TPL_COMBINATION_SELECTION",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-08",
+        "l2": "H15-SB-08-COMBINATION_BASIC",
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "l4": "TPL_COMBINATION_SELECTION",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "l4": true,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": true,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "조합·선택·분배 canonical 재사용",
+        "candidateL4": "TPL_COMBINATION_SELECTION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 72,
+      "questionUid": "qid_v1_61b67d7ac3dfdb00112f86db4853e641b048d8142736f6b99ab052b650fdcb07",
+      "sourceIdentity": "original/high/h1/2final/21_제일고_2학기_기말_고1_기출.js#11",
+      "sourceFingerprint": "59e5b3d3d27195ac2e238f3016d7595ab3739bfe92f407df6bfe4c51402bd129",
+      "a": {
+        "l1": "H15-SB-07",
+        "l2": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-07",
+        "l2": "H15-SB-07-PERMUTATION_BASIC",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "NEW:Accumulate lexicographic blocks -> add earlier suffix words -> convert predecessor total to rank",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": false,
+        "l3": true,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 73,
+      "questionUid": "qid_v1_d46e346c8b4f101201ca01b1a88bc47a4cd3e2f4e25f985ad33c6b3ad0aed4fb",
+      "sourceIdentity": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js#12",
+      "sourceFingerprint": "06de9b8451fdad0564fe13527da164a35b820cd35fb1fa60364028b4080783bb",
+      "a": {
+        "l1": "H15-SB-07",
+        "l2": "H15-SB-07-PERMUTATION_BASIC",
+        "l3": "NEW:순열 공식의 항등·비율식으로 미지수 결정",
+        "l4": "NEW:두 순열 비율식에서 공통인수를 약분하고 미지수를 소거해 자연수 해를 고르는 골격",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H15-SB-07",
+        "l2": "H15-SB-07-PERMUTATION_BASIC",
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "l4": "NEW:Cancel falling-factorial factors -> substitute linked relation -> solve natural product equation",
+        "crossConcepts": [],
+        "conditions": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_DIRECT_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 74,
+      "questionUid": "qid_v1_20fd1a35d1c67ec114139c77d7af614574548901ad0c78c919a64ae115898721",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#3",
+      "sourceFingerprint": "2f61565f557ca017d2600cadbadfb5b1fe49a0f99579c4131c36312db265f919",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:행렬 연립 등식의 해를 구해 행렬곱 계산",
+        "l4": "NEW:두 행렬 선형식의 소거로 A,B를 구한 뒤 곱행렬 성분을 합산",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:Solve unknown matrices from linear combinations and aggregate their product",
+        "l4": "NEW:Solve corresponding entries -> reconstruct matrices -> multiply in order -> sum entries",
+        "crossConcepts": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 방정식·성분 조건으로 미지수 결정",
+        "candidateL4": "TPL_H1_MATRIX_EQUATION_LINEAR",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 75,
+      "questionUid": "qid_v1_b6c39f6501505f3e20d1862942d16a4993aada8aa60a259305d716f1512588e9",
+      "sourceIdentity": "original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js#14",
+      "sourceFingerprint": "55e6bb6228c331fb2a401216fa29dc65f11026e3e62aab3ed0174c836f647b2c",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:행렬 연산 법칙의 참·거짓 판정",
+        "l4": "NEW:단위행렬 항등식 전개와 영·제곱영 행렬 반례로 다지선다 판정",
+        "crossConcepts": [
+          "CC_COUNTEREXAMPLE"
+        ],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:Judge universal square-matrix identities by expansion and counterexample",
+        "l4": "NEW:Expand terms with E -> reject commutativity/cancellation claims -> test with zero/nilpotent matrices",
+        "crossConcepts": [
+          "CC_COUNTEREXAMPLE"
+        ],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_MULTIPLICATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬곱·제곱의 성분 계산과 활용",
+        "candidateL4": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 76,
+      "questionUid": "qid_v1_dff7b867626a8b76ed59e074c64f27e2e0127c9a17f3fe8dbc87dafd2532906a",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#20",
+      "sourceFingerprint": "382ec7dfbbe4a480a9a2e5db554541f2b845741a3feb4bbfef69870fbd619ba1",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:행렬 거듭제곱 성분 조건으로 미지수 결정",
+        "l4": "NEW:상삼각행렬의 세제곱을 전개하여 성분 총합과 행렬 등식 성분을 각각 대입",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:Recover two scalar parameters from conditions on one matrix power",
+        "l4": "NEW:Compute matrix power -> apply entry-sum condition -> compare selected identity entry -> add parameter values",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": false,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_POWER_IDENTITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 거듭제곱·다항식 항등관계",
+        "candidateL4": "TPL_H1_MATRIX_POWER_POLYNOMIAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 77,
+      "questionUid": "qid_v1_2a02cbe32024c9aad7afbcdb79176161e3c5e534dc10e8bd1edae24cb9d9b296",
+      "sourceIdentity": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js#6",
+      "sourceFingerprint": "ad860cb594d5410597bda0c202087093e4bce44fec6174bda179e1417e169674",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_BASIC",
+        "l3": "NEW:행렬 상등의 대응 성분 비교",
+        "l4": "NEW:행렬 상등에서 미지수가 있는 대응 성분의 값을 직접 결정하여 합산",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_BASIC",
+        "l3": "NEW:Recover scalar variables from matrix entry equality",
+        "l4": "NEW:Match entries -> solve unknowns -> aggregate",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "NONE",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_BASIC_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬의 크기·상등·덧셈·스칼라배·성분 정의",
+        "candidateL4": "TPL_H1_MATRIX_BASIC_EQUALITY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 78,
+      "questionUid": "qid_v1_8bec6c1e6c3adab2f32b0b9a1409c992725bdf5bfe0e33501dd6ecf3e7d4a4ba",
+      "sourceIdentity": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js#15",
+      "sourceFingerprint": "937460acf4de0e9edb01e528870588129bfce1738c4270789218ea5f86ec8a97",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:행렬 거듭제곱 성분 조건으로 미지수 결정",
+        "l4": "NEW:대각행렬 거듭제곱을 스칼라 다항식으로 축소하고 복소수 주기로 후보를 걸러내기",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_OPERATION",
+        "l3": "NEW:Select diagonal entries from power-sum identities plus distinctness",
+        "l4": "NEW:Reduce diagonal constraints to scalar z -> factor four-term sum -> test alternating period -> enforce distinct entries",
+        "crossConcepts": [
+          "CC_GEOMETRIC_SEQUENCE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": false,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_POWER_IDENTITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 거듭제곱·다항식 항등관계",
+        "candidateL4": "TPL_H1_MATRIX_POWER_PERIOD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 79,
+      "questionUid": "qid_v1_c64d112e4410d2e181230e20c6c28c18334f082734fe2bca2e3a8493f7f314aa",
+      "sourceIdentity": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js#12",
+      "sourceFingerprint": "c445d1109ed0dc28011a3735cd81a6faf5d626d78e0c84fcd3a6525354178fc4",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_APPLICATION",
+        "l3": "NEW:행렬 이차형식의 전개와 대수적 최적화",
+        "l4": "NEW:두 행렬 이차형식을 스칼라식으로 전개하고 첫 식의 두 인수별로 둘째 식을 대입해 최대 비교",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION",
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_APPLICATION",
+        "l3": "NEW:Maximize a norm under matrix-defined quadratic-form constraints",
+        "l4": "NEW:Expand bilinear forms -> factor zero form -> solve other form per line -> compare objective",
+        "crossConcepts": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditions": [],
+        "integrationPattern": "CASE_BRANCH",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": false,
+        "conditions": true,
+        "integrationPattern": true,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 방정식·성분 조건으로 미지수 결정",
+        "candidateL4": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    },
+    {
+      "row": 80,
+      "questionUid": "qid_v1_3628ecb8503ae7158bfed0a6c94ae24caf2b1fe5d41e5e6ce18935452763ae1b",
+      "sourceIdentity": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js#14",
+      "sourceFingerprint": "38642e0ec8a92d64989c0a48456386c75c8bb71433a4d535e20e92bf8cba8313",
+      "a": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_APPLICATION",
+        "l3": "NEW:행렬곱의 실생활 수량 해석",
+        "l4": "NEW:가격 행렬과 판매량 행렬을 곱하고 특정 기간 열의 매출 성분에서 원가 성분을 빼기",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "REINTERPRETATION",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l1": "H22-C-09",
+        "l2": "H22-C-09-MATRIX_APPLICATION",
+        "l3": "NEW:Interpret matrix-product entries as aggregate financial quantities",
+        "l4": "NEW:Map rows/columns to context -> read target column totals -> subtract cost from sales",
+        "crossConcepts": [],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
+        "reviewStatus": "REVIEWED"
+      },
+      "agreements": {
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "l4": false,
+        "crossConcepts": true,
+        "conditions": true,
+        "integrationPattern": false,
+        "reviewStatus": true
+      },
+      "fullSemanticAgreement": false,
+      "hiddenExisting": {
+        "candidateL3": "PT_H1_MATRIX_MULTIPLICATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬곱·제곱의 성분 계산과 활용",
+        "candidateL4": "TPL_H1_MATRIX_PRODUCT_MODEL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "sourceIssue": "NONE"
+      }
+    }
+  ]
+}

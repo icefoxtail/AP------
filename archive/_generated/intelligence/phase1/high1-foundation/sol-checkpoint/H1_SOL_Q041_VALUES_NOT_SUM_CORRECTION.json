@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "MATHEMATICAL_CORRECTION_AFTER_SOURCE_EXACT_RESTORE",
+  "queueIndex": 41,
+  "questionUid": "qid_v1_cea33bc611f1ffd65076b3c694623b847b40189ba73d8cac02852703639a56b6",
+  "sourceIdentity": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#22",
+  "questionOnlyRepairEvidence": "source-evidence/D-first50-missing-stem-batch/q41/physical-ledger.json",
+  "sourceFingerprintBeforeCorrection": "fb56e05b51ebcaecc209ede135e079b25c2e1b412310d72d13650e92672bb8ff",
+  "sourceFingerprintAfterCorrection": "c1fe21b7aefd880deefb64af26df182f0ae05df6daaaab5bd5e32784f94d1f8e",
+  "contentHashUnchanged": "bd7fbc1acc39640146bf74743129519cde1db558e2ea378a3939875e517c197a",
+  "solutionHashBefore": "13e5c85f638340a6997cd14f92567f9979317e04b48507fc60da5b38623f867d",
+  "solutionHashAfter": "5f0712d1c83982dfef320b00170d47d736e172a68113cd1648dc21f2d9c2c54a",
+  "changedFields": ["answer", "solution"],
+  "before": { "answer": "5", "solutionFinalLine": "$\\therefore 2 + 3 = 5$" },
+  "after": { "answer": "$k=2,\\ 3$", "solutionFinalLine": "$\\therefore k=2,\\ 3$" },
+  "mathematicalVerification": {
+    "sourceRequest": "Find every real parameter k for which the minimum of x²−2kx+5k on 0≤x≤4 equals 6.",
+    "kLessThanZero": "Minimum at x=0 is 5k<0, so it cannot equal 6.",
+    "kBetweenZeroAndFour": "Minimum at x=k is −k²+5k=6, giving k=2 or k=3, both admissible.",
+    "kGreaterThanFour": "Minimum at x=4 is 16−3k≤4, so it cannot equal 6.",
+    "result": [2, 3]
+  },
+  "reason": "The original printed question asks for every value of k. The prior answer and final solution line incorrectly returned the sum of those values.",
+  "officialAnswerOrSolutionPagesUsed": false,
+  "affectedUidBlindRereviewRequired": true,
+  "validation": { "nodeCheck": "PASS", "sourceFingerprintRecomputed": "PASS", "contentUnchangedAfterDRepair": true }
+}

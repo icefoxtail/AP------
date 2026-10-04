@@ -1,0 +1,103 @@
+{
+  "protocol": "docs/rules/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+  "sourceOfTruth": "production JS",
+  "pdfRequired": false,
+  "task": "2023년 기출 원의 방정식 해설 증분 보강 및 해설지 SVG 추가",
+  "basis": {
+    "year": 2023,
+    "grade": "고1",
+    "subject": "수학(상)",
+    "curriculumVersion": "H15",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "examType": "기출",
+    "selectionBasis": "production JS의 standardUnitKey·standardUnit·실제 발문을 대조하여 선별",
+    "scopeRule": "이번 라운드는 첫 시험지 1개만 처리한다. 대상 문항만 solution 및 solutionImage 계열을 수정하고, 보호 문항·문제 본문·보기·정답·메타데이터·기존 문제용 자산은 읽기·기록만 한다."
+  },
+  "exam": {
+    "file": "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js",
+    "title": "23_강남여고_1학기_기말_고1_기출",
+    "db": {
+      "school": "강남여고",
+      "grade": "고1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학(상)",
+      "contentType": "기출",
+      "qCount": 25
+    },
+    "questionIndexCountBefore": 25,
+    "sourceSha256Before": "409cb34e73488de83e11c8c248fe5339d16ca172fdc3d9885211258b1be1540f"
+  },
+  "scope": {
+    "targetQuestionIds": [6, 14, 15, 21],
+    "protectedQuestionIds": [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 22, 23, 24, 25],
+    "allowedFields": [
+      "solution",
+      "solutionImage",
+      "solutionImageAlt",
+      "solutionImageCaption",
+      "solutionImageSize"
+    ],
+    "forbiddenChanges": [
+      "content",
+      "choices",
+      "answer",
+      "image",
+      "standardCourse",
+      "standardUnitKey",
+      "standardUnit",
+      "subUnitKey",
+      "subUnit",
+      "level",
+      "questionType",
+      "layoutTag",
+      "tags",
+      "wide",
+      "DB metadata"
+    ]
+  },
+  "baseline": {
+    "solutionSha256Before": {
+      "q6": "400e5fe1aadb4bca43b283400b52a5bcd30f2bbd0b6ee5ef91d077f5a34f4034",
+      "q14": "3e9f29ec861db9fcc1852bc13362ea7bd7f9c3dfbf8781c7f78346eae1c3aea7",
+      "q15": "4356ceeb96e8f243c60705826e8e6d4d3d534d5d3bd06c3a6b2881353e26cb87",
+      "q21": "1105590ae0bf13c115e9e8d079f2e13720cfe0ade77201e631a254f573175760"
+    },
+    "existingSolutionImages": [],
+    "questionImageDirectory": "archive/assets/images/23_강남여고_1학기_기말_고1_기출",
+    "existingQuestionImageFiles": ["q17.png", "q20.png", "q25.png"],
+    "candidateSolutionImages": [
+      "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q06-solution.svg",
+      "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q14-solution.svg",
+      "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q15-solution.svg",
+      "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q21-solution.svg"
+    ]
+  },
+  "precheck": {
+    "targets": {
+      "q6": "기존 풀이 정확. 원점에서 직선까지의 거리와 접선 조건을 보강하고 수선의 발 H=(3,-1)을 도식화한다.",
+      "q14": "기존 풀이 정확. 교점 없음의 엄격한 부등식과 경계 |k|=2의 접선 의미를 보강하고 평행한 경계 직선을 도식화한다.",
+      "q15": "기존 풀이 정확. 완전제곱식으로 얻은 중심·반지름, 접점에서의 수직 조건, 피타고라스 관계를 보강하고 접선 도형을 도식화한다.",
+      "q21": "기존 풀이 정확. AB의 중점·수직이등분선·두 중심 후보와 OC 비교를 명시하고 현·원주각 관계를 도식화한다."
+    },
+    "mathDecision": "네 문항 모두 독립 풀이 결과와 기존 answer가 일치하므로 정답·문제·메타 수정 없이 additive solution enhancement만 허용한다.",
+    "curriculumDecision": "H15 수학(상) 좌표·거리·원의 방정식·원주각/중심각 관계 범위 안에서 설명하며 벡터·미적분 등 외부 도구를 사용하지 않는다."
+  },
+  "engineCapability": {
+    "engineFile": "archive/engine.html",
+    "engineSha256": "68b560223c046cfbc702f7dcdaacb36269125e7d0627e22f0d999fb2c57102b5",
+    "solutionImageSupported": true,
+    "evidence": ["renderSolutionImageHTML reads solutionImage/Alt/Caption/Size", "render mode branches sol/exam/ans"],
+    "solutionImageMode": "sol only",
+    "browserRenderBeforeChange": "NOT_TESTED_BY_DESIGN",
+    "browserRenderAfterChange": "REQUIRED"
+  },
+  "changePolicy": {
+    "fullRenderBeforeChange": false,
+    "fullRenderAfterTargetChange": ["sol", "exam", "ans"],
+    "outOfScopeFindings": "record-only until explicit user approval",
+    "independentVerifier": "separate read-only task; no file modification, stage, commit, or push"
+  }
+}

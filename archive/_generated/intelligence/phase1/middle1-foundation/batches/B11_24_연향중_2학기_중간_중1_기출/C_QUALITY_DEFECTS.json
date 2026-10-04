@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "m1-conflict-worker-quality-defects-v1",
+  "batchNo": 11,
+  "reviewer": "/root/m1_conflict_c_v2",
+  "preservedLedgerSha256": "8f73243c2cb384e22f4e944e1fe795623eb11a1e570e95b77bbe36c0948505fe",
+  "status": "AFFECTED_UID_REOPENED_AND_ROOT_ADJUDICATED",
+  "defects": [
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
+      "type": "WRONG_SHARED_TABLE_NUMERICAL_EVIDENCE",
+      "reason": "C asserted class frequencies 5 and 10 where the frozen shared table shows 130–140 frequency 4 and a derived 140–150 frequency 11. The coincidentally correct sum 15 does not validate the item's decisive evidence.",
+      "rootEvidenceFile": "ROOT_Q19_SHARED_TABLE_C_DEFECT.md"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+      "type": "MISREAD_NAMED_ANGLE_AND_UNSUPPORTED_RIGHT_ANGLE",
+      "reason": "C treated named ∠EGF=120° as exterior and assumed an interior 90° at E, contrary to the printed stem and fold diagram. The coincidentally correct 30° cannot support its L4 proof route.",
+      "rootEvidenceFile": "ROOT_Q22_FOLD_ANGLE_C_DEFECT.md"
+    }
+  ]
+}

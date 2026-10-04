@@ -1,0 +1,2567 @@
+{
+  "schemaVersion": "m3-direct-canonical-tagging-a-result-v1",
+  "status": "A_DIRECT_TAGGED",
+  "targetGrade": "MIDDLE3",
+  "semester": "2H",
+  "batchNo": "023",
+  "sourceManifest": "archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/DIRECT_2H_BATCH_023.json",
+  "canonicalAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-2.md",
+  "recordCount": 20,
+  "records": [
+    {
+      "arrayIndex": 0,
+      "source": {
+        "questionUid": "qid_v1_d0ef81f1a68d86ace97107fdec8d9a5e92e8a93afb470fc8b304e6196329d21f",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "8fc67f037fffceef521e0698c78e1b1976af501658c4a3f8e49fd8a6218a91c1",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "[서술형 2] $D$가 $AC$의 중점이고 $AB=8$, $\\angle C=90^\\circ$, $\\angle A=60^\\circ$일 때, $BD$의 길이를 구하여라. [7점]",
+        "choices": [],
+        "answer": "$2\\sqrt{13}$",
+        "solution": "[키포인트] 특수각의 삼각비로 두 직각변을 구한 뒤 중점 조건을 이용한다.\n조건 정리: $AB=8$, $\\angle C=90^\\circ$, $\\angle A=60^\\circ$이고 $D$는 $AC$의 중점이다.\n풀이 방향: $AC$, $BC$, $CD$를 구해 직각삼각형 $BCD$에 피타고라스 정리를 적용한다.\n정석 풀이: $AC=8\\cos60^\\circ=4$, $BC=8\\sin60^\\circ=4\\sqrt3$이다. $D$는 $AC$의 중점이므로 $CD=2$이다. 따라서 $BD=\\sqrt{BC^2+CD^2}=\\sqrt{(4\\sqrt3)^2+2^2}=\\sqrt{52}=2\\sqrt{13}$이다.\n따라서 구하는 값은 $2\\sqrt{13}$이다.",
+        "image": "assets/images/23_동산중_2학기_중간_중3_수학/q24.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_동산중_2학기_중간_중3_수학/q24.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "$\\angle C=90^\\circ$이므로 $AB=8$은 빗변이다. $AC=8\\cos60^\\circ=4$, $BC=8\\sin60^\\circ=4\\sqrt3$이고, D가 AC의 중점이므로 $CD=2$이다. 따라서 $BD=\\sqrt{(4\\sqrt3)^2+2^2}=\\sqrt{52}=2\\sqrt{13}$이다.",
+          "verifiedAnswer": "$2\\sqrt{13}$"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_동산중_2학기_중간_중3_수학/q24.png",
+          "inspection": "원본 도형에서 C의 직각 표시, AB=8, A의 60°, AC 위의 중점 D와 동일한 선분 표시가 확인된다. AC·BC를 특수각 삼각비로 구하고 CD=AC/2로 두어 BD를 계산하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "60°의 삼각비로 두 변을 구하고 중점 조건을 적용한 뒤 새로운 직각삼각형에서 피타고라스 정리를 써야 하는 7점 서술형 다단계 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.2",
+            "label": "특수각의 삼각비"
+          },
+          "l4": {
+            "key": "L4-1.1.2.1",
+            "label": "30°·45°·60°"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 출발 전략은 60° 특수각의 cos·sin으로 직각변을 복원하는 것이다. 중점과 피타고라스는 그 결과를 BD로 확장하는 후속 절차이며 도형 표시는 표현 맥락이다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, choices가 빈 서술형임, 정답, 풀이, 원본 도형과 중점·직각·각 표기가 모두 확인되어 실제 증거 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "특수각 삼각비를 이용해 길이를 구한 뒤 중점 조건과 피타고라스 정리로 확장하는 기초 연계 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_d0ef81f1a68d86ace97107fdec8d9a5e92e8a93afb470fc8b304e6196329d21f",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": "24",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "8fc67f037fffceef521e0698c78e1b1976af501658c4a3f8e49fd8a6218a91c1",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 1,
+      "source": {
+        "questionUid": "qid_v1_73e76e3491461fbec691af78dfa34d8b9136708fca52ee0f21bb4982f92e076c",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 25,
+        "sourceQuestionNo": "25",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "03e48de56f54f31cb6f623a50009e972b58d3b3d238b8217261c688afaf3aac3",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "[서술형 3] 두 삼각형 $ABC$, $ADE$가 그림과 같이 겹쳐져 있다. 겹쳐진 부분인 $\\triangle ADF$의 넓이를 구하여라. (이때, $AE=AC=3\\,\\mathrm{cm}$, $\\angle AED=45^\\circ$, $\\angle ACB=60^\\circ$, $\\angle ADE=\\angle ABC=90^\\circ$이다.) [6점]",
+        "choices": [],
+        "answer": "$\\dfrac{3\\sqrt3}{4}\\,\\mathrm{cm}^2$",
+        "solution": "[키포인트] 두 직각삼각형의 특수각을 이용해 겹친 삼각형의 밑변과 높이를 구한다.\n조건 정리: $AE=AC=3$, $\\angle AED=45^\\circ$, $\\angle ACB=60^\\circ$, $\\angle ADE=\\angle ABC=90^\\circ$이다.\n풀이 방향: 먼저 $AD$를 구하고, $\\angle DAF$를 이용해 $DF$를 구한다.\n정석 풀이: 직각삼각형 $ADE$에서 $AD=AE\\sin45^\\circ=\\dfrac{3\\sqrt2}{2}$이다. 직각삼각형 $ABC$에서 $\\angle BAC=30^\\circ$이므로 $\\angle DAF=30^\\circ$이다. 직각삼각형 $ADF$에서 $DF=AD\\tan30^\\circ=\\dfrac{3\\sqrt2}{2}\\times\\dfrac{\\sqrt3}{3}=\\dfrac{\\sqrt6}{2}$이다. 따라서 넓이는 $\\dfrac12\\times\\dfrac{3\\sqrt2}{2}\\times\\dfrac{\\sqrt6}{2}=\\dfrac{3\\sqrt3}{4}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 값은 $\\dfrac{3\\sqrt3}{4}\\,\\mathrm{cm}^2$이다.",
+        "image": "assets/images/23_동산중_2학기_중간_중3_수학/q25.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_동산중_2학기_중간_중3_수학/q25.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "직각삼각형 ADE에서 $AE=3$, $\\angle AED=45^\\circ$이므로 $AD=3\\sin45^\\circ=3\\sqrt2/2$이다. 삼각형 ABC는 $\\angle B=90^\\circ$, $\\angle C=60^\\circ$이므로 $\\angle A=30^\\circ$이고, $\\angle DAF=30^\\circ$이다. 직각삼각형 ADF에서 $DF=AD\\tan30^\\circ=\\sqrt6/2$이다. 따라서 $[ADF]=\\frac12\\cdot(3\\sqrt2/2)\\cdot(\\sqrt6/2)=3\\sqrt3/4\\,\\mathrm{cm}^2$이다.",
+          "verifiedAnswer": "$\\dfrac{3\\sqrt3}{4}\\,\\mathrm{cm}^2$"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_동산중_2학기_중간_중3_수학/q25.png",
+          "inspection": "원본 도형에서 두 직각삼각형, D·F의 위치, AE=AC=3 cm, E의 45°, C의 60°, D와 B의 직각 표시, 겹친 영역 ADF가 확인된다. AD와 DF를 구해 삼각형 ADF의 넓이를 계산하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "두 겹친 직각삼각형의 각 조건을 해석하고 45°·30° 삼각비로 AD와 DF를 순차적으로 구한 뒤 겹친 삼각형의 넓이를 계산해야 하는 6점 서술형이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          "l3": {
+            "key": "L3-1.2.1",
+            "label": "평면도형"
+          },
+          "l4": {
+            "key": "L4-1.2.1.1",
+            "label": "삼각형의 높이·넓이"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 겹친 삼각형 ADF의 밑변과 높이를 특수각 삼각비로 구한 뒤 삼각형 넓이 공식에 넣는 것이다. 겹침 배치는 표현 맥락이며 삼각형의 높이·넓이를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, choices가 빈 서술형임, 정답, 풀이, 원본 겹침 도형과 각·직각·길이 표기가 모두 확인되어 실제 증거 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "직각삼각형의 삼각비로 높이·밑변을 구하고 삼각형 넓이로 연결하는 기초 평면도형 활용 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_73e76e3491461fbec691af78dfa34d8b9136708fca52ee0f21bb4982f92e076c",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 25,
+      "sourceQuestionNo": "25",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "03e48de56f54f31cb6f623a50009e972b58d3b3d238b8217261c688afaf3aac3",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 2,
+      "source": {
+        "questionUid": "qid_v1_878bc323ff48dda4fdde4dfb9bdc9e3baa8155cc2d1ce9a6c2b55e106a254b87",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "bb97aa7e1b96ebd0ae61b35b46e71b8c2c898af48a23dadc27df569e859f24df",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 직각삼각형 $ABC$에서 삼각비의 값으로 옳은 것은? [3점]",
+        "choices": [
+          "$\\sin A=\\dfrac ac$",
+          "$\\sin B=\\dfrac ac$",
+          "$\\cos A=\\dfrac ab$",
+          "$\\cos B=\\dfrac bc$",
+          "$\\tan A=\\dfrac ba$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 기준각에 대한 맞은편 변, 이웃한 변, 빗변을 정확히 구분한다.\n조건 정리: 그림에서 $\\angle C=90^\\circ$이므로 빗변은 $\\overline{AB}=c$이다. $\\angle A$의 맞은편 변은 $\\overline{BC}=a$, 이웃한 변은 $\\overline{AC}=b$이다.\n풀이 방향: 삼각비의 정의로 각 보기를 확인한다.\n정석 풀이: $\\sin A$는 맞은편 변의 길이를 빗변의 길이로 나눈 값이므로 $\\sin A=\\dfrac ac$이다. 또한 $\\sin B=\\dfrac bc$, $\\cos A=\\dfrac bc$, $\\cos B=\\dfrac ac$, $\\tan A=\\dfrac ab$이다. 따라서 옳은 것은 ①이다.\n따라서 정답은 ①이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q01.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q01.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "그림에서 C가 직각이므로 AB=c는 빗변, A의 맞은편 변 BC=a, A의 이웃한 변 AC=b이다. 따라서 $\\sin A=a/c$가 맞고, 나머지 선택지는 각도 또는 변의 위치가 뒤바뀌었다.",
+          "verifiedAnswer": "①"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q01.png",
+          "inspection": "원본 도형에서 C의 직각 표시와 AB=c, BC=a, AC=b의 변 표기가 확인된다. 기준각 A에 대한 맞은편·이웃한 변·빗변을 구분하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 1,
+        "scale": "1-5",
+        "rationale": "직각삼각형의 변 문자 표기를 읽고 sin·cos·tan의 정의를 바로 대조하는 3점 기초 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.1",
+            "label": "삼각비의 뜻"
+          },
+          "l4": {
+            "key": "L4-1.1.1.1",
+            "label": "sin·cos·tan"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 핵심은 기준각에 대한 맞은편 변·이웃한 변·빗변을 구분해 삼각비 정의를 적용하는 것이다. 도형은 변 표기의 표현 맥락이므로 sin·cos·tan을 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 도형과 변 표기가 모두 확인되어 실제 증거 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "기준각에 따른 세 변의 역할과 sin·cos·tan 정의를 직접 확인하는 삼각비 기초 foundation 문항이다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_878bc323ff48dda4fdde4dfb9bdc9e3baa8155cc2d1ce9a6c2b55e106a254b87",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "bb97aa7e1b96ebd0ae61b35b46e71b8c2c898af48a23dadc27df569e859f24df",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 3,
+      "source": {
+        "questionUid": "qid_v1_e40c204b4fce0ff09ba2e294b82f5f03a4392492b96973867e07d14e10cc54ab",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "cf85b15369c27211fb334fd8a204516768949e8e80090c84a2164357391e1f01",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "$\\tan A=\\dfrac34$일 때, $\\sin A+\\cos A$의 값을 구하면? [4점]",
+        "choices": [
+          "$\\dfrac35$",
+          "$\\dfrac45$",
+          "$\\dfrac75$",
+          "$\\dfrac95$",
+          "$\\dfrac{11}{5}$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 탄젠트로 두 직각변의 비를 정한 뒤 피타고라스 정리로 빗변의 비를 구한다.\n조건 정리: $\\tan A=\\dfrac34$이므로 $\\angle A$의 맞은편 변과 이웃한 변의 길이의 비는 $3:4$이다.\n풀이 방향: 두 직각변을 $3$, $4$로 놓고 사인과 코사인을 구한다.\n정석 풀이: 빗변의 길이는 $\\sqrt{3^2+4^2}=5$이다. 따라서 $\\sin A=\\dfrac35$, $\\cos A=\\dfrac45$이고, $\\sin A+\\cos A=\\dfrac35+\\dfrac45=\\dfrac75$이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "$\\tan A=3/4$이므로 맞은편 변과 이웃한 변을 3, 4로 둘 수 있고 빗변은 5이다. 따라서 $\\sin A=3/5$, $\\cos A=4/5$, 합은 $7/5$이다.",
+          "verifiedAnswer": "③"
+        },
+        "requiredVisualEvidence": {
+          "required": false,
+          "status": "NOT_REQUIRED",
+          "asset": "",
+          "inspection": "문항은 tan 값과 식만 제시하는 텍스트형 계산 문제이며 도형, 표, 삽입 그림이 없다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 2,
+        "scale": "1-5",
+        "rationale": "tan의 변 비를 3:4로 놓고 3-4-5 직각삼각형과 sin·cos 정의를 적용하는 4점 기초 계산 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.1",
+            "label": "삼각비의 뜻"
+          },
+          "l4": {
+            "key": "L4-1.1.1.1",
+            "label": "sin·cos·tan"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 tan을 맞은편·이웃한 변의 비로 해석하고 피타고라스로 sin·cos를 복원하는 것이다. 그림이 없는 식 표현은 context일 뿐이므로 sin·cos·tan을 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이가 모두 확인되었고 시각 자료가 불필요한 문항이므로 실제 증거 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "tan에서 변의 비를 설정하고 피타고라스로 sin·cos를 연결하는 삼각비 기초 foundation 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "NOT_APPLICABLE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_e40c204b4fce0ff09ba2e294b82f5f03a4392492b96973867e07d14e10cc54ab",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "cf85b15369c27211fb334fd8a204516768949e8e80090c84a2164357391e1f01",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 4,
+      "source": {
+        "questionUid": "qid_v1_d938153ef69147163e468bf140ffeb8fe076c277e3f9050cad372965754f74ef",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "0c56a6d201f0c3bd881be8afa485acd5a5c1db27c4c506b8c9e2ea76add65a49",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 삼각형에서 $\\cos A$의 값을 구하면? [4점]",
+        "choices": [
+          "$\\dfrac35$",
+          "$\\dfrac45$",
+          "$\\dfrac34$",
+          "$\\dfrac43$",
+          "$\\dfrac53$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 빗변에 내린 수선으로 생긴 세 직각삼각형의 닮음을 이용한다.\n조건 정리: $\\overline{CD}\\perp\\overline{AB}$이고 $\\overline{DB}=9$, $\\overline{CD}=12$, $\\overline{BC}=15$이다.\n풀이 방향: 닮음으로 $\\overline{AD}$를 구한 뒤 $\\overline{AB}$와 $\\overline{AC}$를 계산한다.\n정석 풀이: $\\triangle ACD$와 $\\triangle CDB$는 각각 직각삼각형이고 한 예각이 같으므로 닮음이다. 대응변의 비에서 $\\dfrac{AD}{CD}=\\dfrac{CD}{DB}$이므로 $AD\\times9=12^2$, 따라서 $AD=16$이다. 그러므로 $AB=16+9=25$이다. 직각삼각형 $ACD$에서 $AC=\\sqrt{16^2+12^2}=20$이므로 $\\cos A=\\dfrac{AC}{AB}=\\dfrac{20}{25}=\\dfrac45$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q03.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q03.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "$CD\\perp AB$이고 $DB=9$, $CD=12$, $BC=15$이다. 직각삼각형 ACD와 CDB의 닮음으로 $AD/12=12/9$이므로 $AD=16$이다. 따라서 $AB=16+9=25$, $AC=\\sqrt{16^2+12^2}=20$이고 $\\cos A=AC/AB=20/25=4/5$이다.",
+          "verifiedAnswer": "②"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q03.png",
+          "inspection": "원본 도형에서 AB 위의 D, CD의 수직 표시, DB=9, CD=12, BC=15 및 큰 직각삼각형 ABC의 구성이 확인된다. 두 작은 직각삼각형의 닮음으로 AD를 구한 뒤 cos A를 계산하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "빗변에 내린 수선으로 생긴 두 직각삼각형의 닮음을 파악하고 AD·AB·AC를 순차적으로 복원한 뒤 cos A를 계산해야 하는 4점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          "l4": {
+            "key": "L4-1.1.3.1",
+            "label": "직각삼각형의 변"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 수선으로 생긴 닮은 직각삼각형에서 변을 복원한 뒤 cos A를 변의 비로 계산하는 것이다. 닮음 도형은 표현·구성 맥락이고 최종 결정 개념은 직각삼각형의 변이다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 도형의 수선·길이 표기가 모두 확인되어 실제 증거 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "직각삼각형의 변을 닮음과 피타고라스로 복원하고 cos의 변 비로 마무리하는 기초 길이 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_d938153ef69147163e468bf140ffeb8fe076c277e3f9050cad372965754f74ef",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "0c56a6d201f0c3bd881be8afa485acd5a5c1db27c4c506b8c9e2ea76add65a49",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 5,
+      "source": {
+        "questionUid": "qid_v1_31b90cbdd8aae919dfafdce937311f17e78981e712dcf434297067bfdd7eef86",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "705628508b757777e06b678e0f853774b7671afa2c5689d762d850f3332ef072",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 직각삼각형 $ABC$에서 $x$를 구하면? [4점]",
+        "choices": [
+          "$4$",
+          "$3\\sqrt2$",
+          "$3\\sqrt3$",
+          "$3\\sqrt6$",
+          "$6$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 기준각의 맞은편 변과 이웃한 변은 탄젠트로 연결한다.\n조건 정리: $\\angle C=90^\\circ$, $\\angle B=60^\\circ$, $BC=3\\,\\mathrm{cm}$, $AC=x\\,\\mathrm{cm}$이다.\n풀이 방향: $\\angle B$를 기준으로 탄젠트를 적용한다.\n정석 풀이: $\\tan60^\\circ=\\dfrac{AC}{BC}=\\dfrac x3$이고 $\\tan60^\\circ=\\sqrt3$이므로 $x=3\\sqrt3$이다.\n따라서 정답은 ③이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q04.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q04.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "$\\angle C=90^\\circ$, $\\angle B=60^\\circ$, $BC=3$ cm, $AC=x$ cm이다. $\\tan60^\\circ=AC/BC=x/3=\\sqrt3$이므로 $x=3\\sqrt3$ cm이다.",
+          "verifiedAnswer": "③"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q04.png",
+          "inspection": "원본 도형에서 C의 직각 표시, B의 60°, BC=3 cm, AC=x cm의 표기가 확인된다. B를 기준으로 AC를 맞은편 변, BC를 인접한 변으로 두는 탄젠트 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 2,
+        "scale": "1-5",
+        "rationale": "직각삼각형의 변 위치를 읽고 60°의 탄젠트를 한 번 적용해 미지 길이를 구하는 4점 직접 적용 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          "l4": {
+            "key": "L4-1.1.3.2",
+            "label": "각을 이용한 길이"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 주어진 60°와 한 직각변을 탄젠트로 연결해 미지 길이를 구하는 것이다. 직각삼각형 그림은 표현 맥락이므로 각을 이용한 길이를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 도형의 직각·각·길이 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "각과 한 변으로 직각삼각형의 미지 길이를 탄젠트로 구하는 기초 길이 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_31b90cbdd8aae919dfafdce937311f17e78981e712dcf434297067bfdd7eef86",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "705628508b757777e06b678e0f853774b7671afa2c5689d762d850f3332ef072",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 6,
+      "source": {
+        "questionUid": "qid_v1_4c6816ec0f5333be52029e365df8f600b7238473bfb840e39c836a131a79791e",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "558b0acaacf2265db2c28448ea9c5e7d3efffa73ec9d5fa18a4962ca6db6ca15",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 중 삼각비의 값이 가장 작은 것은? [4점]",
+        "choices": [
+          "$\\sin30^\\circ$",
+          "$\\sin60^\\circ$",
+          "$\\cos45^\\circ$",
+          "$\\tan30^\\circ$",
+          "$\\tan60^\\circ$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 특수각의 삼각비 값을 정확히 구해 비교한다.\n조건 정리: $30^\\circ$, $45^\\circ$, $60^\\circ$의 사인, 코사인, 탄젠트를 비교한다.\n풀이 방향: 각 값을 직접 나타낸 뒤 가장 작은 값을 찾는다.\n정석 풀이: $\\sin30^\\circ=\\dfrac12$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$, $\\cos45^\\circ=\\dfrac{\\sqrt2}{2}$, $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$, $\\tan60^\\circ=\\sqrt3$이다. $\\dfrac12\\lt\\dfrac{\\sqrt3}{3}\\lt\\dfrac{\\sqrt2}{2}\\lt\\dfrac{\\sqrt3}{2}\\lt\\sqrt3$이므로 가장 작은 값은 $\\sin30^\\circ$이다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "optionChecks": {
+            "1": "$\\sin30^\\circ=1/2$",
+            "2": "$\\sin60^\\circ=\\sqrt3/2$",
+            "3": "$\\cos45^\\circ=\\sqrt2/2$",
+            "4": "$\\tan30^\\circ=\\sqrt3/3$",
+            "5": "$\\tan60^\\circ=\\sqrt3$"
+          },
+          "ordering": "$1/2<\\sqrt3/3<\\sqrt2/2<\\sqrt3/2<\\sqrt3$",
+          "verifiedAnswer": "①"
+        },
+        "requiredVisualEvidence": {
+          "required": false,
+          "status": "NOT_REQUIRED",
+          "asset": "",
+          "inspection": "문항은 특수각 삼각비 식만 제시하는 텍스트형 비교 문제이며 도형, 표, 삽입 그림이 없다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 2,
+        "scale": "1-5",
+        "rationale": "30°·45°·60°의 기본 삼각비를 직접 계산해 수치를 비교하는 4점 문항으로, 핵심 전략은 단일하다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.2",
+            "label": "특수각의 삼각비"
+          },
+          "l4": {
+            "key": "L4-1.1.2.2",
+            "label": "특수각 계산"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 여러 특수각의 sin·cos·tan 값을 계산하고 크기를 비교하는 것이다. 식으로 제시된 문항 형식은 표현 맥락이므로 특수각 계산을 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이가 모두 확인되었고 시각 자료가 불필요한 문항이므로 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "특수각의 기본 삼각비를 계산하고 비교하는 foundation 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "NOT_APPLICABLE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_4c6816ec0f5333be52029e365df8f600b7238473bfb840e39c836a131a79791e",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "558b0acaacf2265db2c28448ea9c5e7d3efffa73ec9d5fa18a4962ca6db6ca15",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 7,
+      "source": {
+        "questionUid": "qid_v1_cafbde01d6a8fd4209d56828060b5090bb09b725ecf15de2a21c6933d5bd80ed",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "5cadee80f59c9fad9ab6abb4abdd4aa0d400178597dd26482c54280e3d804132",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음을 계산한 값은? [4점]<br>$\\sin45^\\circ\\times\\cos90^\\circ+\\cos45^\\circ\\times\\tan0^\\circ$",
+        "choices": [
+          "$0$",
+          "$\\dfrac12$",
+          "$\\dfrac{\\sqrt2}{2}$",
+          "$1$",
+          "$\\sqrt2$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] $\\cos90^\\circ$와 $\\tan0^\\circ$가 모두 $0$임을 이용한다.\n조건 정리: 두 항에는 각각 $\\cos90^\\circ$, $\\tan0^\\circ$가 곱해져 있다.\n풀이 방향: 특수각의 삼각비를 대입한다.\n정석 풀이: $\\cos90^\\circ=0$, $\\tan0^\\circ=0$이므로 $\\sin45^\\circ\\cos90^\\circ=0$이고 $\\cos45^\\circ\\tan0^\\circ=0$이다. 따라서 주어진 식의 값은 $0+0=0$이다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "$\\cos90^\\circ=0$와 $\\tan0^\\circ=0$이므로 $\\sin45^\\circ\\cdot0+\\cos45^\\circ\\cdot0=0$이다.",
+          "verifiedAnswer": "①"
+        },
+        "requiredVisualEvidence": {
+          "required": false,
+          "status": "NOT_REQUIRED",
+          "asset": "",
+          "inspection": "문항은 특수각 삼각비 식만 제시하는 텍스트형 계산 문제이며 도형, 표, 삽입 그림이 없다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 1,
+        "scale": "1-5",
+        "rationale": "두 곱의 인수가 각각 0이 되는 특수각 값을 즉시 대입하는 4점 기초 계산 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.2",
+            "label": "특수각의 삼각비"
+          },
+          "l4": {
+            "key": "L4-1.1.2.2",
+            "label": "특수각 계산"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 cos90°와 tan0°의 특수각 값을 대입해 식을 0으로 만드는 것이다. 텍스트형 식은 표현 맥락이므로 특수각 계산을 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이가 모두 확인되었고 시각 자료가 불필요한 문항이므로 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "0°·90° 특수각 삼각비를 식 계산에 적용하는 기초 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "NOT_APPLICABLE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_cafbde01d6a8fd4209d56828060b5090bb09b725ecf15de2a21c6933d5bd80ed",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "5cadee80f59c9fad9ab6abb4abdd4aa0d400178597dd26482c54280e3d804132",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 8,
+      "source": {
+        "questionUid": "qid_v1_970e638399859a60ed12526b57e0d4d443e7a618e4fd0df18d5a9b6995e3ba14",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "3ad5b4cc801bf15c805ef36ffb57c9e62ff2580a15a1ba26aaa2c4d2cc08a87d",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "아래 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\tan35^\\circ$의 값을 구하면? [4점]",
+        "choices": [
+          "$0.27$",
+          "$0.57$",
+          "$0.70$",
+          "$0.82$",
+          "$1$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 반지름이 $1$인 그림에서 읽은 사인과 코사인의 값으로 탄젠트를 구한다.\n조건 정리: 그림에서 $\\sin35^\\circ\\approx0.57$, $\\cos35^\\circ\\approx0.82$이다.\n풀이 방향: $\\tan35^\\circ=\\dfrac{\\sin35^\\circ}{\\cos35^\\circ}$를 이용한다.\n정석 풀이: $\\tan35^\\circ\\approx\\dfrac{0.57}{0.82}\\approx0.695$이므로 주어진 값 중 가장 가까운 것은 $0.70$이다.\n따라서 정답은 ③이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q07.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q07.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "원본 사분원에서 $\\sin35^\\circ\\approx0.57$, $\\cos35^\\circ\\approx0.82$를 읽는다. $\\tan35^\\circ=\\sin35^\\circ/\\cos35^\\circ\\approx0.57/0.82\\approx0.695$이므로 가장 가까운 선택지는 $0.70$이다.",
+          "verifiedAnswer": "③"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q07.png",
+          "inspection": "원본 사분원에서 반지름 1, 각 35°, 세로 성분 0.70·0.57, 가로 성분 0.82·1의 표기가 확인된다. sin/cos 값을 읽어 tan=sin/cos로 계산하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 3,
+        "scale": "1-5",
+        "rationale": "그림에서 두 근삿값을 정확히 읽고 삼각비의 관계로 나눈 뒤 가장 가까운 선택지를 판단해야 하는 4점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.1",
+            "label": "삼각비의 뜻"
+          },
+          "l4": {
+            "key": "L4-1.1.1.2",
+            "label": "삼각비의 관계"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 그림에서 sin과 cos의 근삿값을 읽고 tan=sin/cos 관계로 변환하는 것이다. 사분원 표현은 context이므로 삼각비의 관계를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 사분원과 근삿값 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "sin·cos 값을 tan으로 변환하는 삼각비 관계와 근삿값 비교의 기초 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_970e638399859a60ed12526b57e0d4d443e7a618e4fd0df18d5a9b6995e3ba14",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "3ad5b4cc801bf15c805ef36ffb57c9e62ff2580a15a1ba26aaa2c4d2cc08a87d",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 9,
+      "source": {
+        "questionUid": "qid_v1_5bc5a8bc2f4fc96492a3c4b1524ba8af440afe74e96ee6ab94e44968947c92a4",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "ec1286aee64c0e5833952151433f8d5c85d9bcc6bed1a5a44b83c6d72d2853dc",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 삼각비의 표를 이용하여 $\\sin25^\\circ$의 값을 구하면? [3점]",
+        "choices": [
+          "$0.4226$",
+          "$0.4663$",
+          "$0.6428$",
+          "$0.7660$",
+          "$0.9063$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 표에서 각도의 행과 삼각비의 열이 만나는 값을 읽는다.\n조건 정리: 구하려는 값은 $25^\\circ$의 사인이다.\n풀이 방향: $25^\\circ$ 행의 사인 열을 확인한다.\n정석 풀이: 표에서 $25^\\circ$ 행과 사인 열이 만나는 값은 $0.4226$이다.\n따라서 정답은 ①이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q08.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q08.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "원본 삼각비 표에서 25° 행과 사인(sin) 열이 만나는 값을 직접 읽으면 $0.4226$이다.",
+          "verifiedAnswer": "①"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q08.png",
+          "inspection": "원본 표에서 각도 25° 행과 사인(sin) 열의 교차값 0.4226이 직접 확인된다. 표의 행·열 lookup을 요구하는 content와 exact match한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 1,
+        "scale": "1-5",
+        "rationale": "표의 25° 행과 sin 열을 찾아 값을 그대로 읽는 3점 lookup 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "exactL4Available": false,
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.1",
+            "label": "삼각비의 뜻"
+          },
+          "l4": null
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "NO_EXACT_L4"
+        },
+        "rationale": "M3-2 canonical 문서에는 삼각비 표 lookup을 정확히 나타내는 L4가 없다. 따라서 상위 개념인 삼각비의 뜻까지만 기록하고 nearest L4를 부여하지 않았다. 표는 representation context이며 canonical L4 gap 자체를 foundation evidence로 보존한다.",
+        "nearestL4FallbackUsed": false,
+        "gapStatus": "CANONICAL_L4_GAP"
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "원본 content·choices·answer·solution과 표 image가 모두 직접 확인되어 evidence는 충분하다. L4 gap은 분류 gap이지 실제 source evidence 부족이 아니다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT_GAP",
+        "gapBasis": "삼각비 표 lookup을 직접 대표하는 문항이며 M3-2에 exact L4가 없어 canonical L4 gap foundation candidate로 보존한다.",
+        "nearestFallbackSuppressed": true
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "L4_GAP_ONLY"
+      },
+      "questionUid": "qid_v1_5bc5a8bc2f4fc96492a3c4b1524ba8af440afe74e96ee6ab94e44968947c92a4",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "ec1286aee64c0e5833952151433f8d5c85d9bcc6bed1a5a44b83c6d72d2853dc",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 10,
+      "source": {
+        "questionUid": "qid_v1_c1d77426ac2e7e632abcc52d04d7ff5f890bd9300c37b2f23d8e2fc8abe7ffa0",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "98a2e25770f8ab2fad04eb0a487599f3bf748ceb60f4616ff44d648056ee411b",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 그림과 같이 $\\triangle ABC$의 꼭짓점 $A$에서 $\\overline{BC}$에 내린 수선의 발을 $D$라고 할 때, $\\overline{AC}$의 길이를 구하면? [4점]",
+        "choices": [
+          "$2\\sqrt{11}$",
+          "$2\\sqrt{13}$",
+          "$3\\sqrt7$",
+          "$6\\sqrt2$",
+          "$7$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 수선을 이용해 두 직각삼각형으로 나누어 길이를 차례로 구한다.\n조건 정리: $AB=6\\,\\mathrm{cm}$, $BC=8\\,\\mathrm{cm}$, $\\angle B=60^\\circ$, $AD\\perp BC$이다.\n풀이 방향: $BD$, $AD$, $DC$를 구한 뒤 피타고라스 정리를 적용한다.\n정석 풀이: 직각삼각형 $ABD$에서 $BD=6\\cos60^\\circ=3$, $AD=6\\sin60^\\circ=3\\sqrt3$이다. 따라서 $DC=8-3=5$이다. 직각삼각형 $ADC$에서 $AC=\\sqrt{(3\\sqrt3)^2+5^2}=\\sqrt{27+25}=2\\sqrt{13}$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q09.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q09.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "$\\triangle ABD$에서 $AB=6$, $\\angle B=60^\\circ$이므로 $BD=6\\cos60^\\circ=3$, $AD=6\\sin60^\\circ=3\\sqrt3$이다. $DC=BC-BD=8-3=5$이고, $\\triangle ADC$에서 $AC=\\sqrt{(3\\sqrt3)^2+5^2}=2\\sqrt{13}$이다.",
+          "verifiedAnswer": "②"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q09.png",
+          "inspection": "원본 도형에서 A에서 BC로 내린 수선 AD, C의 직각 표시, AB=6 cm, BC=8 cm, B의 60°가 확인된다. BD·AD를 구하고 DC를 뺀 뒤 AC를 피타고라스로 구하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "수선으로 두 직각삼각형을 구성하고 60° 삼각비, 선분 차, 피타고라스를 순차 적용해야 하는 4점 다단계 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          "l4": {
+            "key": "L4-1.1.3.1",
+            "label": "직각삼각형의 변"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 수선으로 나뉜 직각삼각형들의 변을 차례로 복원해 최종 AC를 구하는 것이다. 수선 도형은 표현·구성 맥락이므로 직각삼각형의 변을 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 도형의 수선·직각·각·길이 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "특수각 삼각비와 직각삼각형 변 계산을 수선 구조와 결합하는 기초 길이 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_c1d77426ac2e7e632abcc52d04d7ff5f890bd9300c37b2f23d8e2fc8abe7ffa0",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "98a2e25770f8ab2fad04eb0a487599f3bf748ceb60f4616ff44d648056ee411b",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 11,
+      "source": {
+        "questionUid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "db2607cfb1a8425ccc84dc8a00da2006dbe5e11f55857804815d13ab1bab5f7f",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 일차함수의 그래프가 $x$축과 이루는 각도가 $30^\\circ$이고 $x$절편이 $-6$일 때 일차함수를 구하면? [4점]",
+        "choices": [
+          "$y=\\dfrac{\\sqrt3}{3}x-2\\sqrt3$",
+          "$y=\\dfrac{\\sqrt3}{3}x+2\\sqrt3$",
+          "$y=\\sqrt3x+2\\sqrt3$",
+          "$y=\\sqrt3x-2\\sqrt3$",
+          "$y=-\\sqrt3x+2\\sqrt3$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 직선이 $x$축의 양의 방향과 이루는 각의 탄젠트가 기울기이다.\n조건 정리: 이루는 각은 $30^\\circ$이고 $x$절편은 $-6$이므로 직선은 $(-6,0)$을 지난다.\n풀이 방향: 기울기를 구한 뒤 한 점을 지나는 직선의 식을 세운다.\n정석 풀이: 기울기는 $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이다. 따라서 $y=\\dfrac{\\sqrt3}{3}(x+6)=\\dfrac{\\sqrt3}{3}x+2\\sqrt3$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q10.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q10.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "직선의 기울기는 x축의 양의 방향과 이루는 각의 탄젠트이므로 $m=\\tan30^\\circ=\\sqrt3/3$이다. x절편이 -6이므로 점 $(-6,0)$을 지나며, $y=(\\sqrt3/3)(x+6)=(\\sqrt3/3)x+2\\sqrt3$이다.",
+          "verifiedAnswer": "②"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q10.png",
+          "inspection": "원본 그래프에서 x절편 -6, x축과 직선이 이루는 30°, 양의 기울기를 가진 직선이 확인된다. 기울기를 tan30°로 두고 (-6,0)을 대입하는 풀이와 일치한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 3,
+        "scale": "1-5",
+        "rationale": "그래프의 각을 기울기로 변환하고 x절편으로 일차함수식을 세워야 하는 4점 적용 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "exactL4Available": false,
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.2",
+            "label": "특수각의 삼각비"
+          },
+          "l4": null
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "NO_EXACT_L4"
+        },
+        "rationale": "M3-2 canonical 문서에는 직선의 기울기와 x절편을 결합하는 좌표·함수 적용을 정확히 나타내는 L4가 없다. 따라서 tan30°라는 특수각 상위 개념까지만 기록하고 nearest L4를 부여하지 않았다. 그래프는 representation context이며 canonical L4 gap을 보존한다.",
+        "nearestL4FallbackUsed": false,
+        "gapStatus": "CANONICAL_L4_GAP"
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "그래프 image, 내용, 선택지, 정답, 풀이가 모두 직접 확인되어 evidence는 충분하다. L4 gap은 분류 gap이지 실제 source evidence 부족이 아니다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT_GAP",
+        "gapBasis": "특수각 탄젠트를 직선 기울기로 적용하는 유형이며 M3-2에 exact L4가 없어 canonical L4 gap foundation candidate로 보존한다.",
+        "nearestFallbackSuppressed": true
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "L4_GAP_ONLY"
+      },
+      "questionUid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "db2607cfb1a8425ccc84dc8a00da2006dbe5e11f55857804815d13ab1bab5f7f",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 12,
+      "source": {
+        "questionUid": "qid_v1_1c2bc8d09671077119a3b1413455123a40412e5232561eeee8fe7bead26d2c7d",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "5a859ed89e5d08b59c0a87483b44bce44f3e830bb7d0bf1885ca069478fadd74",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 도형의 넓이를 구하면? [4점]",
+        "choices": [
+          "$\\dfrac32\\,\\mathrm{cm^2}$",
+          "$\\dfrac{3\\sqrt3}{2}\\,\\mathrm{cm^2}$",
+          "$2\\,\\mathrm{cm^2}$",
+          "$3\\sqrt3\\,\\mathrm{cm^2}$",
+          "$6\\sqrt3\\,\\mathrm{cm^2}$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 둔각을 직접 삼각비에 넣지 않고 수선을 내려 예각 $60^\\circ$인 직각삼각형을 만든다.\n조건 정리: 두 변의 길이는 $AB=3\\,\\mathrm{cm}$, $AC=2\\,\\mathrm{cm}$이고 $\\angle A=120^\\circ$이다.\n풀이 방향: 점 $C$에서 직선 $AB$에 수선을 내려 높이를 구한다.\n정석 풀이: $AB$의 $A$ 쪽 연장선과 $AC$가 이루는 각은 $180^\\circ-120^\\circ=60^\\circ$이다. 따라서 밑변 $AB$에 대한 높이는 $2\\sin60^\\circ=2\\times\\dfrac{\\sqrt3}{2}=\\sqrt3\\,\\mathrm{cm}$이다. 그러므로 넓이는 $\\dfrac12\\times3\\times\\sqrt3=\\dfrac{3\\sqrt3}{2}\\,\\mathrm{cm^2}$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q11.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q11.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "두 변의 길이와 끼인각으로 넓이를 구하면 $[ABC]=\\frac12\\cdot3\\cdot2\\cdot\\sin120^\\circ=3\\cdot\\frac{\\sqrt3}{2}=\\frac{3\\sqrt3}{2}\\,\\mathrm{cm^2}$이다.",
+          "verifiedAnswer": "②"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q11.png",
+          "inspection": "원본 도형에서 AB=3 cm, AC=2 cm, A의 120°가 확인된다. 120°의 보각 60°를 이용해 높이를 구하고 밑변·높이로 넓이를 계산하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 3,
+        "scale": "1-5",
+        "rationale": "둔각의 보각으로 수선을 구성하고 60°의 sine을 높이로 변환한 뒤 넓이를 계산하는 4점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          "l3": {
+            "key": "L3-1.2.1",
+            "label": "평면도형"
+          },
+          "l4": {
+            "key": "L4-1.2.1.1",
+            "label": "삼각형의 높이·넓이"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 둔각의 보각으로 높이를 만들고 삼각형의 밑변·높이 넓이 공식에 적용하는 것이다. 둔각 도형은 표현 맥락이므로 삼각형의 높이·넓이를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 도형의 길이·둔각 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "삼각비로 삼각형의 높이를 구하고 넓이 공식으로 연결하는 기초 평면도형 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_1c2bc8d09671077119a3b1413455123a40412e5232561eeee8fe7bead26d2c7d",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "5a859ed89e5d08b59c0a87483b44bce44f3e830bb7d0bf1885ca069478fadd74",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 13,
+      "source": {
+        "questionUid": "qid_v1_55a11f5983c5e410f65c7b2480c11370f2ef562971049f23c1468b62fb4f8a3b",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "6dcb80dc99867a7e21c5e17546a63c51fb02763c10eb6beae14f57bba75cd521",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 그림과 같이 $30\\,\\mathrm{m}$ 떨어진 두 지점 $A$, $B$에서 건물의 꼭대기를 올려본각의 크기가 각각 $30^\\circ$, $45^\\circ$이었을 때, 이 건물의 높이를 구하면? [4점]",
+        "choices": [
+          "$15\\sqrt3\\,\\mathrm{m}$",
+          "$45\\,\\mathrm{m}$",
+          "$(15+5\\sqrt3)\\,\\mathrm{m}$",
+          "$(15+15\\sqrt3)\\,\\mathrm{m}$",
+          "$(30+30\\sqrt3)\\,\\mathrm{m}$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 가까운 지점과 먼 지점에서 세운 두 탄젠트 식을 연립한다.\n조건 정리: $AB=30\\,\\mathrm{m}$이고, $B$에서의 올려본각은 $45^\\circ$, $A$에서의 올려본각은 $30^\\circ$이다.\n풀이 방향: 건물 높이와 $B$에서 건물까지의 거리를 미지수로 둔다.\n정석 풀이: 건물 높이를 $h$, $BC=x$라 하면 $\\tan45^\\circ=\\dfrac hx=1$이므로 $h=x$이다. 또한 $AC=x+30$이고 $\\tan30^\\circ=\\dfrac h{x+30}=\\dfrac{\\sqrt3}{3}$이다. $h=x$를 대입하면 $\\sqrt3h=h+30$, 따라서 $h=\\dfrac{30}{\\sqrt3-1}=15+15\\sqrt3$이다.\n따라서 정답은 ④이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q12.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q12.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "건물 높이를 $h$, 가까운 B에서 건물까지의 수평거리를 $x$라 두면 $\\tan45^\\circ=h/x$에서 $h=x$이다. 먼 A까지의 거리는 $x+30$이므로 $\\tan30^\\circ=h/(x+30)=\\sqrt3/3$이다. $h=x$를 대입하면 $h=30/(\\sqrt3-1)=15+15\\sqrt3$ m이다.",
+          "verifiedAnswer": "④"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q12.png",
+          "inspection": "원본 도형에서 A와 B의 두 관찰 지점, AB=30 m, 건물 발 C, 꼭대기 D, A의 30°와 B의 45° 앙각, 건물의 수직 높이가 확인된다. 두 탄젠트 식을 연립하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "두 관찰 지점의 앙각으로 서로 다른 수평거리에 대한 탄젠트 식을 세우고 연립해 건물 높이를 구하는 4점 측정 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          "l3": {
+            "key": "L3-1.2.2",
+            "label": "측정 문제"
+          },
+          "l4": {
+            "key": "L4-1.2.2.2",
+            "label": "앙각·부각"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 두 지점의 앙각과 수평거리를 각각 탄젠트 식으로 세워 건물 높이를 결정하는 것이다. 건물 그림은 측정 상황의 표현 맥락이므로 앙각·부각을 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 측정 도형의 거리·두 앙각·높이 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "두 앙각에서 탄젠트 식을 세우고 측정 거리 차이를 이용해 높이를 구하는 기초 측정 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_55a11f5983c5e410f65c7b2480c11370f2ef562971049f23c1468b62fb4f8a3b",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "6dcb80dc99867a7e21c5e17546a63c51fb02763c10eb6beae14f57bba75cd521",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 14,
+      "source": {
+        "questionUid": "qid_v1_5464554ff680f535676b56a107a8e4777e99efdfb891973ccd79943c4fb141fa",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "a6e0f837454e4928cef9668b767eccbd46a5d6677dd37b979427085448d44dfc",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 사각형 $ABCD$의 대각선의 길이가 각각 $4\\,\\mathrm{cm}$, $5\\,\\mathrm{cm}$이고, 두 대각선이 이루는 각의 크기가 $60^\\circ$일 때, 사각형 $ABCD$의 넓이를 구하면? [5점]",
+        "choices": [
+          "$5\\sqrt2\\,\\mathrm{cm^2}$",
+          "$5\\sqrt3\\,\\mathrm{cm^2}$",
+          "$10\\,\\mathrm{cm^2}$",
+          "$10\\sqrt2\\,\\mathrm{cm^2}$",
+          "$10\\sqrt3\\,\\mathrm{cm^2}$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 대각선의 교점을 기준으로 사각형을 네 삼각형으로 나누면 각 넓이를 한꺼번에 합할 수 있다.\n조건 정리: 두 대각선의 길이는 $4\\,\\mathrm{cm}$, $5\\,\\mathrm{cm}$이고 이루는 각은 $60^\\circ$이다.\n풀이 방향: 대각선의 교점을 $O$라 하고 네 삼각형의 넓이를 합한다.\n정석 풀이: 한 대각선이 $a$와 $4-a$, 다른 대각선이 $b$와 $5-b$로 나뉜다고 하자. 네 삼각형의 넓이의 합은 $\\dfrac12\\sin60^\\circ\\{ab+a(5-b)+(4-a)b+(4-a)(5-b)\\}$이다. 괄호 안은 $(a+4-a)(b+5-b)=4\\times5=20$이므로 넓이는 $\\dfrac12\\times20\\times\\dfrac{\\sqrt3}{2}=5\\sqrt3\\,\\mathrm{cm^2}$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q13.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q13.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "대각선의 교점으로 나눈 네 삼각형의 넓이를 합하면 전체 넓이는 $\\frac12\\cdot4\\cdot5\\cdot\\sin60^\\circ=10\\cdot\\frac{\\sqrt3}{2}=5\\sqrt3\\,\\mathrm{cm^2}$이다.",
+          "verifiedAnswer": "②"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q13.png",
+          "inspection": "원본 도형에서 사각형 ABCD의 두 대각선, 길이 4 cm와 5 cm, 대각선 사이의 60°가 확인된다. 대각선 교점으로 네 삼각형을 나누어 넓이를 합하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "대각선 교점으로 사각형을 네 삼각형으로 분할하고 각 부분의 합이 전체 대각선 곱으로 정리됨을 사용해야 하는 5점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          "l3": {
+            "key": "L3-1.2.1",
+            "label": "평면도형"
+          },
+          "l4": {
+            "key": "L4-1.2.1.2",
+            "label": "다각형의 길이·넓이"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 대각선과 끼인각으로 네 삼각형의 넓이를 합쳐 사각형 넓이를 구하는 것이다. 대각선 도형은 표현 맥락이므로 다각형의 길이·넓이를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 도형의 대각선·길이·각 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "대각선과 끼인각을 삼각형 넓이의 합으로 연결하는 기초 다각형 넓이 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_5464554ff680f535676b56a107a8e4777e99efdfb891973ccd79943c4fb141fa",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "a6e0f837454e4928cef9668b767eccbd46a5d6677dd37b979427085448d44dfc",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 15,
+      "source": {
+        "questionUid": "qid_v1_b29597dbf7771a8a0962414c122116b8aa5b0bebe6d18879e2ad309e811ccd78",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "4905e315c442d3e59fdde27946aed486db08245d2f246335d52061a4f360795d",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 밑면이 한 변의 길이가 $4\\,\\mathrm{cm}$인 정사각형이고, $\\angle OAH=60^\\circ$인 정사각뿔의 부피를 구하면? [5점]",
+        "choices": [
+          "$\\dfrac{18}{3}\\sqrt3\\,\\mathrm{cm^3}$",
+          "$6\\sqrt6\\,\\mathrm{cm^3}$",
+          "$9\\sqrt3\\,\\mathrm{cm^3}$",
+          "$\\dfrac{32}{3}\\sqrt2\\,\\mathrm{cm^3}$",
+          "$\\dfrac{32}{3}\\sqrt6\\,\\mathrm{cm^3}$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 정사각형의 중심에서 꼭짓점까지의 거리는 대각선의 절반이다.\n조건 정리: 밑면은 한 변이 $4\\,\\mathrm{cm}$인 정사각형이고 $H$는 밑면의 중심, $OH$는 높이이다.\n풀이 방향: $AH$를 구한 뒤 직각삼각형 $OAH$에서 높이 $OH$를 구한다.\n정석 풀이: 밑면 대각선의 길이는 $4\\sqrt2$이므로 $AH=2\\sqrt2$이다. $\\tan60^\\circ=\\dfrac{OH}{AH}$이므로 $OH=2\\sqrt2\\times\\sqrt3=2\\sqrt6$이다. 따라서 부피는 $\\dfrac13\\times4^2\\times2\\sqrt6=\\dfrac{32\\sqrt6}{3}\\,\\mathrm{cm^3}$이다.\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q14.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q14.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "밑면 정사각형의 대각선은 $4\\sqrt2$이므로 중심 H에서 꼭짓점 A까지 $AH=2\\sqrt2$이다. 직각삼각형 OAH에서 $\\tan60^\\circ=OH/AH$이므로 $OH=2\\sqrt6$이다. 부피는 $\\frac13\\cdot4^2\\cdot2\\sqrt6=\\frac{32\\sqrt6}{3}\\,\\mathrm{cm^3}$이다.",
+          "verifiedAnswer": "⑤"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q14.png",
+          "inspection": "원본 도형에서 한 변 4 cm인 정사각형 밑면, 중심 H, 꼭짓점 O, A에서의 60°, OH 높이와 직각삼각형 OAH 구성이 확인된다. 대각선 절반으로 AH를 구하고 tan60°로 OH를 구하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "정사각형 대각선의 절반으로 중심-꼭짓점 거리를 구하고 60° 탄젠트로 높이를 복원한 뒤 부피 공식까지 적용하는 5점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          "l2": {
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          "l3": {
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          "l4": {
+            "key": "L4-1.1.3.2",
+            "label": "각을 이용한 길이"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 삼각비 전략은 60°와 AH를 이용해 tan으로 높이 OH를 구하는 것이다. 정사각뿔과 부피 공식은 그 높이를 사용하는 representation context이므로 각을 이용한 길이를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 정사각뿔 도형과 대각선·중심·각·높이 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "특수각 탄젠트로 높이를 구하고 길이 결과를 입체 부피 계산에 연결하는 기초 길이 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_b29597dbf7771a8a0962414c122116b8aa5b0bebe6d18879e2ad309e811ccd78",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "4905e315c442d3e59fdde27946aed486db08245d2f246335d52061a4f360795d",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 16,
+      "source": {
+        "questionUid": "qid_v1_ee7791fdddb3e5c607b53ef75dc5b2495ed5476e0857b3436a722674f42a019c",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "78474f85ad9001a709d16eff26a517d030eebccd8f459ca6e25442dee258c037",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 그림의 원 $O$에서 $\\overline{AB}=10$, $\\overline{AB}\\perp\\overline{OM}$, $\\overline{CD}\\perp\\overline{ON}$이고, $\\overline{ON}=\\overline{OM}=5$일 때, $x$의 값은? [3점]",
+        "choices": [
+          "$5$",
+          "$5\\sqrt2$",
+          "$6$",
+          "$6\\sqrt2$",
+          "$7$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $AB=10$, $OM=5$, $OM\\perp AB$이고 $x$는 원의 반지름이다.\n풀이 방향: 현의 절반과 중심에서 현까지의 거리를 두 직각변으로 사용한다.\n정석 풀이: $M$은 현 $AB$의 중점이므로 $AM=5$이다. 직각삼각형 $OMA$에서 $x=OA=\\sqrt{OM^2+AM^2}=\\sqrt{5^2+5^2}=5\\sqrt2$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q15.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q15.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "중심 O에서 현 AB에 내린 수선 OM은 현을 이등분하므로 $AM=AB/2=5$이다. 직각삼각형 OMA에서 반지름 $x=OA=\\sqrt{5^2+5^2}=5\\sqrt2$이다.",
+          "verifiedAnswer": "②"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q15.png",
+          "inspection": "원본 도형에서 원 O, 현 AB=10, OM과 ON의 길이 5, AB·OM 및 CD·ON의 수직 표시, 반지름 x 표기가 확인된다. 중심에서 현에 내린 수선이 현을 이등분한다는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 2,
+        "scale": "1-5",
+        "rationale": "중심에서 현에 내린 수선의 이등분 성질과 5-5 직각삼각형의 피타고라스를 적용하는 3점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-2",
+            "label": "원의 성질"
+          },
+          "l2": {
+            "key": "L2-2.1",
+            "label": "원과 직선"
+          },
+          "l3": {
+            "key": "L3-2.1.1",
+            "label": "원의 중심과 현"
+          },
+          "l4": {
+            "key": "L4-2.1.1.1",
+            "label": "중심에서 현에 내린 수선"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 핵심은 중심에서 현에 내린 수선이 현을 이등분한다는 원의 성질이다. 보조 직각삼각형은 이 성질을 계산으로 연결하는 표현 맥락이다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 원·현·수선·길이 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "중심에서 현에 내린 수선과 현의 이등분, 반지름 계산을 직접 대표하는 원의 성질 foundation 문항이다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_ee7791fdddb3e5c607b53ef75dc5b2495ed5476e0857b3436a722674f42a019c",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "78474f85ad9001a709d16eff26a517d030eebccd8f459ca6e25442dee258c037",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 17,
+      "source": {
+        "questionUid": "qid_v1_b5db42055bd2b3bf6625d23f9bad19cfa6e55b7025e701a2abc6bb215bf708dd",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "82deefbbc6a8e55d9c1ad711910ec9d229c94e733dc15aeb43e2c639d0a63b29",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 원 $O$는 삼각형 $ABC$의 내접원이고 세 점 $D$, $E$, $F$는 접점이다. $\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{AC}=5\\,\\mathrm{cm}$, $\\overline{AD}=2\\,\\mathrm{cm}$일 때, $\\overline{BC}$의 길이는? [3점]",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$7$",
+          "$8$",
+          "$9$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 원 밖의 한 점에서 그은 두 접선의 길이는 같다.\n조건 정리: $AD=2$, $AB=6$, $AC=5$이고 $D$, $E$, $F$는 접점이다.\n풀이 방향: 각 꼭짓점에서 출발한 두 접선의 길이를 차례로 대응한다.\n정석 풀이: $AD=AF=2$이다. 따라서 $BD=AB-AD=4$이므로 $BE=4$이고, $CF=AC-AF=3$이므로 $CE=3$이다. 그러므로 $BC=BE+CE=4+3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q16.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q16.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "같은 꼭짓점에서 그은 접선의 길이는 같으므로 $AD=AF=2$이다. 따라서 $BD=6-2=4$, $CF=5-2=3$이고, 같은 성질로 $BE=4$, $CE=3$이다. 그러므로 $BC=BE+CE=7$ cm이다.",
+          "verifiedAnswer": "③"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q16.png",
+          "inspection": "원본 도형에서 삼각형 ABC의 내접원 O, 접점 D·E·F, AB=6 cm, AC=5 cm, AD=2 cm가 확인된다. 각 꼭짓점에서의 두 접선 길이를 같게 두어 BC를 계산하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 2,
+        "scale": "1-5",
+        "rationale": "접선 길이의 동일 성질을 두 꼭짓점에 연속 적용하고 주어진 변에서 차감하는 3점 직접 적용 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-2",
+            "label": "원의 성질"
+          },
+          "l2": {
+            "key": "L2-2.1",
+            "label": "원과 직선"
+          },
+          "l3": {
+            "key": "L3-2.1.2",
+            "label": "원의 접선"
+          },
+          "l4": {
+            "key": "L4-2.1.2.2",
+            "label": "한 점에서 그은 두 접선"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 한 점에서 원에 그은 두 접선의 길이가 같다는 원의 접선 성질로 각 변의 접선 조각을 대응시키는 것이다. 내접원 그림은 표현 맥락이다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 내접원·접점·변 길이 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "한 점에서 그은 두 접선의 길이 같음을 변 분할 계산에 적용하는 원의 접선 foundation 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_b5db42055bd2b3bf6625d23f9bad19cfa6e55b7025e701a2abc6bb215bf708dd",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "82deefbbc6a8e55d9c1ad711910ec9d229c94e733dc15aeb43e2c639d0a63b29",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 18,
+      "source": {
+        "questionUid": "qid_v1_3a334d205c223836aeff05b1e73c1accb72dbfebbf2fb11abb3b49f301c23867",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "7417be51cdd7e59d138c39e22a255099eac7925e6915055887fcfb145b6af2b7",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 그림과 같이 반지름의 길이가 $10$인 원 $O$의 원주 위의 한 점이 원의 중심에 겹치도록 접었을 때, $\\overline{AB}$의 길이는? [4점]",
+        "choices": [
+          "$6\\sqrt3$",
+          "$7\\sqrt3$",
+          "$8\\sqrt3$",
+          "$9\\sqrt3$",
+          "$10\\sqrt3$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 접은 선은 겹쳐지는 두 점을 잇는 선분의 수직이등분선이다.\n조건 정리: 원 위의 점과 중심 사이의 거리는 반지름 $10$이다.\n풀이 방향: 중심에서 접은 선까지의 거리를 구한 뒤 현의 절반을 계산한다.\n정석 풀이: 접은 선 $AB$는 길이 $10$인 선분의 수직이등분선이므로 원의 중심에서 $AB$까지의 거리는 $5$이다. 중심에서 현에 내린 수선은 현을 이등분하므로 현의 절반은 $\\sqrt{10^2-5^2}=5\\sqrt3$이다. 따라서 $AB=2\\times5\\sqrt3=10\\sqrt3$이다.\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q17.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q17.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "접은 선 AB는 원 위의 점과 중심 O를 잇는 길이 10인 선분의 수직이등분선이므로 O에서 AB까지의 거리는 5이다. 반지름 10인 원에서 현 AB의 절반은 $\\sqrt{10^2-5^2}=5\\sqrt3$이고, 따라서 $AB=10\\sqrt3$이다.",
+          "verifiedAnswer": "⑤"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q17.png",
+          "inspection": "원본 도형에서 중심 O를 지나는 원, 원주 위의 A·B, 접힌 선으로 해석되는 AB와 중심을 가로지르는 현 구성이 확인된다. 수직이등분선으로 생긴 중심거리 5와 반지름 10에서 현 길이를 구하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "접힘을 수직이등분선으로 해석한 뒤 중심거리와 현의 관계를 연결하고 현 전체 길이까지 복원해야 하는 4점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-2",
+            "label": "원의 성질"
+          },
+          "l2": {
+            "key": "L2-2.1",
+            "label": "원과 직선"
+          },
+          "l3": {
+            "key": "L3-2.1.1",
+            "label": "원의 중심과 현"
+          },
+          "l4": {
+            "key": "L4-2.1.1.3",
+            "label": "중심거리와 현의 길이"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 전략은 접힌 선에서 얻은 중심거리와 원의 반지름으로 현의 길이를 구하는 것이다. 접힘은 중심거리를 만드는 표현 맥락이므로 중심거리와 현의 길이를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 원·중심·현·접힘 도형이 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "원의 중심거리와 현의 길이를 직각삼각형으로 연결하는 기초 원의 성질 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_3a334d205c223836aeff05b1e73c1accb72dbfebbf2fb11abb3b49f301c23867",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "7417be51cdd7e59d138c39e22a255099eac7925e6915055887fcfb145b6af2b7",
+      "curriculumKey": "2015"
+    },
+    {
+      "arrayIndex": 19,
+      "source": {
+        "questionUid": "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6",
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+        "sourceFingerprint": "d472796f1ca327c38515755b180e87149a69c5e970893d67edda6285adf0e542",
+        "curriculumKey": "2015",
+        "curriculumResolution": {
+          "curriculum": "2015",
+          "method": "historical_source_register_guardrail",
+          "confidence": "medium",
+          "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+        }
+      },
+      "sourceEvidence": {
+        "content": "다음 그림의 원 $O$에서 $\\overline{AB}\\perp\\overline{ON}$, $\\overline{AC}\\perp\\overline{OM}$이고 $\\overline{OM}=\\overline{ON}$이다. $\\angle C=55^\\circ$일 때, $\\angle MON$의 크기는? [4점]",
+        "choices": [
+          "$110^\\circ$",
+          "$105^\\circ$",
+          "$100^\\circ$",
+          "$95^\\circ$",
+          "$90^\\circ$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현은 길이가 같다.\n조건 정리: $ON=OM$이고 $ON\\perp AB$, $OM\\perp AC$이다.\n풀이 방향: 두 현의 길이가 같음을 이용해 삼각형 $ABC$의 각을 구하고 사각형 $AMON$의 내각의 합을 이용한다.\n정석 풀이: 중심에서 두 현까지의 거리가 같으므로 $AB=AC$이다. 따라서 $\\angle B=\\angle C=55^\\circ$이고 $\\angle A=70^\\circ$이다. 사각형 $AMON$에서 $\\angle AMO=\\angle ANO=90^\\circ$이므로 $\\angle MON=360^\\circ-70^\\circ-90^\\circ-90^\\circ=110^\\circ$이다.\n따라서 정답은 ①이다.",
+        "image": "assets/images/23_연향중_2학기_중간_중3_수학/q18.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_연향중_2학기_중간_중3_수학/q18.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      },
+      "evidence": {
+        "sourceFidelity": {
+          "identity": "EXACT_MATCH",
+          "content": "VERIFIED",
+          "choices": "VERIFIED",
+          "answer": "VERIFIED",
+          "solution": "READ_AND_INDEPENDENTLY_RECHECKED"
+        },
+        "independentSolve": {
+          "status": "PASS",
+          "work": "중심 O에서 두 현까지의 거리가 $OM=ON$으로 같으므로 $AB=AC$이다. 따라서 $\\angle B=\\angle C=55^\\circ$, $\\angle A=70^\\circ$이다. 사각형 AMON에서 M과 N의 각은 각각 90°이므로 $\\angle MON=360^\\circ-70^\\circ-90^\\circ-90^\\circ=110^\\circ$이다.",
+          "verifiedAnswer": "①"
+        },
+        "requiredVisualEvidence": {
+          "required": true,
+          "status": "PASS",
+          "asset": "assets/images/23_연향중_2학기_중간_중3_수학/q18.png",
+          "inspection": "원본 도형에서 원 O, 삼각형 ABC, OM·ON의 동일 표시, AC·OM 및 AB·ON의 수직 표시, C의 55°가 확인된다. 같은 중심거리에서 같은 현을 얻고 사각형 AMON의 네 내각을 합하는 풀이를 충분히 뒷받침한다.",
+          "observedMatchesContent": true
+        }
+      },
+      "difficulty": {
+        "value": 4,
+        "scale": "1-5",
+        "rationale": "중심거리 같음에서 현의 같음을 추론하고 이등변삼각형의 각과 사각형 내각의 합을 연쇄 적용해야 하는 4점 문항이다."
+      },
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "MIDDLE3",
+        "primary": {
+          "l1": {
+            "key": "L1-2",
+            "label": "원의 성질"
+          },
+          "l2": {
+            "key": "L2-2.1",
+            "label": "원과 직선"
+          },
+          "l3": {
+            "key": "L3-2.1.1",
+            "label": "원의 중심과 현"
+          },
+          "l4": {
+            "key": "L4-2.1.1.3",
+            "label": "중심거리와 현의 길이"
+          }
+        },
+        "canonicalStatus": {
+          "l1": "RPM_VERIFIED",
+          "l2": "RPM_VERIFIED",
+          "l3": "CANONICAL_DRAFT",
+          "l4": "CANONICAL_DRAFT"
+        },
+        "rationale": "정답을 결정하는 원의 전략은 중심에서 현까지의 거리가 같다는 조건으로 두 현의 길이를 같게 만들고 각을 추론하는 것이다. 삼각형·사각형 도형은 표현 맥락이므로 중심거리와 현의 길이를 primary로 선택했다.",
+        "nearestL4FallbackUsed": false
+      },
+      "HOLD": {
+        "status": "NOT_HELD",
+        "reason": "내용, 선택지, 정답, 풀이, 원본 원·현·수선·동일거리·각 표기가 모두 확인되어 실제 evidence 부족이 없다."
+      },
+      "foundation": {
+        "isFoundationCandidate": true,
+        "status": "EVIDENCE_SUFFICIENT",
+        "gapBasis": "중심에서 현까지의 거리와 현의 길이 관계를 각 추론으로 확장하는 원의 성질 foundation 전략을 대표한다."
+      },
+      "conflict": {
+        "status": "NONE",
+        "sourceAnswerVsIndependentSolve": "AGREE",
+        "contentVsVisual": "AGREE",
+        "taxonomyAmbiguity": "NONE"
+      },
+      "questionUid": "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceJsSha256": "22214856d9e4e7d122404373ba847a61ae36edff9273234d77b77d82d9aee2cb",
+      "sourceFingerprint": "d472796f1ca327c38515755b180e87149a69c5e970893d67edda6285adf0e542",
+      "curriculumKey": "2015"
+    }
+  ]
+}

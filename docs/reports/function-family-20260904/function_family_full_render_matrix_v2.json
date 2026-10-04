@@ -1,0 +1,42 @@
+{
+  "reportType": "FUNCTION_FAMILY_FULL_BROWSER_RENDER_QA_V2",
+  "generatedAt": "2026-09-04",
+  "status": "FULL_BROWSER_RENDER_PASS",
+  "browserSurface": "Chrome via Codex computer-use extension",
+  "harness": "archive/tools/function-family/full-render-harness.html",
+  "scope": "original only; similar excluded",
+  "sourceCount": 50,
+  "modes": ["exam", "sol", "ans"],
+  "expectedCases": 150,
+  "observedCases": 150,
+  "passCases": 150,
+  "failCases": 0,
+  "perMode": {
+    "exam": {"expected": 50, "observed": 50, "pass": 50, "fail": 0},
+    "sol": {"expected": 50, "observed": 50, "pass": 50, "fail": 0},
+    "ans": {"expected": 50, "observed": 50, "pass": 50, "fail": 0}
+  },
+  "checksPerCase": [
+    "print-area has at least one .page",
+    "rendered content is non-empty",
+    "all images in print-area are complete with naturalWidth > 0",
+    "documentElement[data-ap-render-error] is absent",
+    "exam data load error text is absent",
+    "document/body horizontal overflow is absent",
+    "page and page-body scroll overflow is absent",
+    "non-long question boxes do not scroll overflow",
+    "all img/svg/canvas visuals remain inside their page bounds",
+    "question boxes do not overlap"
+  ],
+  "layoutGate": {
+    "status": "PASS",
+    "layoutIssues": 0,
+    "horizontalOverflow": 0,
+    "pageOverflow": 0,
+    "questionOverflow": 0,
+    "clippedVisuals": 0,
+    "overlappingQuestionBoxes": 0
+  },
+  "lastFailure": null,
+  "note": "This is a fresh browser run after dense SVG regeneration, q11 label repair, and q15-q17 semantic repair. Runtime/layout gate is separate from independent mathematical and visual-semantic review."
+}

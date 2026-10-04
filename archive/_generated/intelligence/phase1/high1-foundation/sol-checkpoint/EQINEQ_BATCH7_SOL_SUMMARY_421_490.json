@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "h1-stage2-sol-semantic-summary-v1",
+  "status": "BATCH_SOL_REVIEW_ARTIFACT_COMPLETE_WITH_HOLDS",
+  "authority": "SOL_EXHAUSTIVE_SOURCE_REVIEW",
+  "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+  "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "batchNo": 7,
+  "unit": "EQINEQ",
+  "scope": {
+    "start": 421,
+    "end": 490,
+    "denominator": 70
+  },
+  "coverage": {
+    "rows": 70,
+    "uniqueUid": 70,
+    "uniqueSourceIdentity": 70,
+    "fingerprintMismatch": 0,
+    "missingDecisionEvidence": 0,
+    "forbiddenCandidateInputLeakage": 0
+  },
+  "inputBundle": {
+    "inputBundleSha": "c37db3dfaa7408f9d092e8097f73d675fc16cabb5c57deaac320856a43eaaba9",
+    "sourcePackRows": 70,
+    "sourceContentSolutionImageOnly": true,
+    "sameStageCandidateInputExcluded": true,
+    "sourcePackSha256": "be1e03bcc9571ffd25c73438b03b1bd5dffcca47fc1cf729f322572cff9b2613"
+  },
+  "holdCount": 1,
+  "sourceIssues": [
+    {
+      "workIndex": 429,
+      "questionUid": "qid_v1_2c95c2e052c61e0c48ed173d1ccf40bec0d7e411c2bd97c3a3249afe527a33c4",
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "reason": "solution is a generic answer-agreement stub"
+    }
+  ],
+  "compositionPattern": {
+    "NONE": 44,
+    "SEQUENTIAL": 19,
+    "REINTERPRETATION": 1,
+    "CASE_BRANCH": 5,
+    "INTERDEPENDENT": 1
+  },
+  "visualReviewPendingWorkIndices": [
+    424,
+    427,
+    431,
+    433,
+    477
+  ],
+  "newDefiniteL1L2RejoinCount": 0,
+  "nextStart": {
+    "workIndex": 491,
+    "questionUid": "qid_v1_95394182bf16c0f0efaef71becb9d3b1021968e272aa95f47d3db39f20f306a7",
+    "sourceArchiveFile": "original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js",
+    "sourceOrdinal": 3,
+    "queueId": "H22-C-06"
+  },
+  "artifacts": {
+    "sourcePack": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/EQINEQ_BATCH7_SOURCE_PACK_421_490.jsonl",
+    "decisionLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl",
+    "summary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/EQINEQ_BATCH7_SOL_SUMMARY_421_490.json",
+    "checkpoint": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_490.json",
+    "pointers": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_490_POINTERS.json"
+  },
+  "note": "Stage 2 Single Semantic Pass only. No PT/TPL/CrossConcept/difficulty canonical synthesis; existing legacy labels were not used as authority. Codex did not generate canonical FINAL/PASS."
+}

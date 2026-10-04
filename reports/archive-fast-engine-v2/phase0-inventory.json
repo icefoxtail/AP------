@@ -1,0 +1,56 @@
+{
+  "design": "AP_Archive_Fast_Engine_v2_설계도_v1.4.md",
+  "frozenMain": "ea6564cdda7a496412246522fab5940086b48a65",
+  "renderEntries": [
+    {"caller":"init/script.onload","line":1606,"intent":"SOURCE_CHANGE","mutation":"mode, qpp, source, data, canonicalData, title, header, tab before render"},
+    {"caller":"switchMode","line":1639,"intent":"MODE_CHANGE","mutation":"mode, URL, tab before render; modeSwitchPending drops requests; legacy navigates"},
+    {"caller":"setPrintHeaderOptions","line":548,"intent":"HEADER_CHANGE","mutation":"header and controls before render"},
+    {"caller":"setQrOutputParam","line":715,"intent":"QR_CHANGE","mutation":"URL and controls before render"},
+    {"caller":"public render","line":2551,"intent":"FORCED_REBUILD","mutation":"clears canonical DOM and MathJax before success"},
+    {"caller":"safePrint math recovery","line":2881,"intent":"PRINT_STALE_REBUILD","mutation":"direct typeset on current root"}
+  ],
+  "additionalIntentSurfaces": {
+    "QPP_CHANGE":"No live setter in main; initial URL/recent launch only. Add runtime setter without changing UI text.",
+    "PROFILE_CHANGE":"resize only changes CSS screen scale; page offsetWidth/height remains A4. Keep screen-fit observer; explicit layout profile intent handles layout changes.",
+    "FONT_INVALIDATION":"No main event entry; add explicit runtime entry and font completion listener after initial font readiness.",
+    "ASSET_INVALIDATION":"No main event entry; explicit intent accepts asset version.",
+    "PAGE_LAYOUT_INVALIDATION":"No main event entry; explicit intent accepts page layout version.",
+    "ENGINE_INVALIDATION":"No main event entry; explicit intent accepts engine version."
+  },
+  "inputSchema": {
+    "canonicalFields":["sourceRef","displayNo","content","choices","answer","solution","image","imageSize","solutionImage","solutionImageAlt","solutionImageCaption","solutionImageSize","layoutTag","choiceColumns","wide"],
+    "executorProjectionFields":["id","content","question","choices","answer","solution","explanation","sol","image","imageSize","solutionImage","solutionImageAlt","solutionImageCaption","solutionImageSize","layoutTag","choiceColumns","wide","sourceArchiveFile","source_archive_file","sourceOrdinal","sourceQuestionOrdinal","source_question_ordinal","questionUid","sourceQuestionUid","source_question_uid"],
+    "businessProjectionFields":["id","standardUnitKey","standardUnit","standardCourse"],
+    "sourcePayloadReads":"prepareArchiveCanonicalContent reads content/question only. formatQuestionContent accepts q but does not read its fields. Retain an immutable projection of content/question for dual-run; never the raw payload graph.",
+    "currentFreeze":"print-contract.createCanonicalQuestion freezes outer object and sourceRef; choices is shallow sliced, choice objects and sourcePayload retain mutable references. render-authority freezes outer array only.",
+    "strategy":"Project actual executor fields without changing alias/whitespace behavior; copy plain arrays/objects recursively and freeze the copy; reject cycles, accessors, functions, symbols, non-finite numbers and non-plain objects. Candidate canonical data includes the immutable executor projection. Do not freeze raw globals.",
+    "header":["title","metaRight","subtitle","showNameLine","showScoreLine","applyToSolution","applyToAnswer"],
+    "qrInputs":["data","class","teacher","className","date","q","title/identityTitle","mode","qpp","qr","preview","submitQr","osqr","solQr","origin/base path","QR_PATCH"],
+    "otherInputs":["examDisplayTitle","renderer","examAuthority","solutionAuthority","answerAuthority","renderAuthorityDualRun","font/page-layout/asset/engine versions"]
+  },
+  "sessionLifecycle": {
+    "load":"Normalize script path (including same-origin blob), load one script at a time, await metadata; capture and restore questionBank/examTitle/examDisplayTitle globals in finally. Canonicalize immutable source data before build.",
+    "failure":"Invalid path, load error, canonicalization/schema failure, build failure and stale request abort pending state; preserve old committed source, root, URL, controls and MathJax ownership.",
+    "identity":"unique pending.targetSessionId == candidate.source.targetSessionId == ctx.requestedTargetSessionId == result/snapshot.sessionId",
+    "promotion":"promotePendingSession materializes a separate complete session in PREPARE; synchronous COMMIT swaps prepared pointer and marks pending PROMOTED; never mutate pending into CURRENT",
+    "cleanup":"After successful COMMIT only, clear MathJax for retired nodes and remove DOM; cleanup failure stays pending for later serialized retry, without rolling back the new session. No persistent cross-source residency."
+  },
+  "sideEffects": [
+    {"id":"blueprint","source":"engine.html:3031","trigger":"COMMIT when exam submit QR enabled, non-preview, data present","delivery":"BEST_EFFORT","failurePolicy":"BEST_EFFORT_LOG_ONLY","required":false,"key":"archiveFile + question id sequence (existing successful-delivery signature)","maxAttempts":"one per activation; later activation retries failed logical effect with same logicalEffectId/key","receiverCapability":"repository backup route upserts archive_file/question_no; deployed receiver contract is not assumed","completion":"only HTTP success acknowledges; missing auth/HTTP/network failure remains explicit failure, existing Korean notification retained"},
+    {"id":"assignment","source":"engine.html:988","trigger":"COMMIT with submit QR and class","delivery":"BEST_EFFORT","failurePolicy":"BEST_EFFORT_LOG_ONLY","required":false,"key":"class/date/archiveFile/questionCount/archive (existing signature)","maxAttempts":"one per activation; later activation retries failed logical effect with same logicalEffectId/key","receiverCapability":"backup route upserts assignment and may create PDF; no strict external exactly-once assertion","completion":"only HTTP success acknowledges; existing Korean notification retained"},
+    {"id":"history-controls","source":"engine.html:543,706,1621","trigger":"COMMIT","delivery":"AT_MOST_ONCE_LOCAL","failurePolicy":"synchronous rollback","required":true,"key":"transactionId","maxAttempts":1,"completion":"root/state/session/status/controls/URL same task; history final mutation"},
+    {"id":"qr-canvas","source":"engine.html:740,837","trigger":"build-local materialization","delivery":"AT_MOST_ONCE_LOCAL","failurePolicy":"abort build","required":"when policy enabled","key":"transactionId/channel","completion":"QR payload frozen in candidate; canvas belongs to candidate root; no committed global mutation"},
+    {"id":"readiness-metrics-dualrun","source":"engine.html:442,1378; mathjax_render_loop.js","trigger":"OBSERVABILITY","delivery":"OBSERVABILITY_ONLY","failurePolicy":"BEST_EFFORT_LOG_ONLY","required":false,"key":"transactionId","completion":"build-local until commit; failed attempt evidence separate from active readiness"},
+    {"id":"auth-handoff","source":"engine.html:957","trigger":"SOURCE_SESSION initialization","delivery":"AT_MOST_ONCE_LOCAL","failurePolicy":"existing catch/log","required":false,"key":"initial hash","completion":"session storage sanitization/hash removal before render orchestration; no background invocation"},
+    {"id":"recent-launch","source":"engine.html:1537","trigger":"SOURCE_SESSION initialization","delivery":"BEST_EFFORT","failurePolicy":"existing catch/log","required":false,"key":"launch timestamp","completion":"read sessionStorage; expire old entry; no builder storage reads"},
+    {"id":"preview-handshake","source":"engine.html:649","trigger":"SOURCE_SESSION initialization","delivery":"BEST_EFFORT","failurePolicy":"existing origin/source witness","required":false,"key":"document launch","completion":"parent postMessage handshake; not a render business registration"},
+    {"id":"print-transport","source":"engine.html:2860","trigger":"PRINT","delivery":"existing native/vector/raster transport contract","failurePolicy":"existing failure UI","required":true,"key":"print invocation","completion":"only after successful latest render readiness; printDryRun validates preparation without printing"},
+    {"id":"screen-fit","source":"engine.html:3013","trigger":"ACTIVATION/resize","delivery":"AT_MOST_ONCE_LOCAL","failurePolicy":"existing no-op when no page","required":false,"key":"activation/resize","completion":"transform only; no layout data mutation"}
+  ],
+  "compensationPolicy": {
+    "allowedPrecommitExternalEffects":[],
+    "BLOCK_BEFORE_COMMIT":"forbidden; no external effect in this inventory has a proven reversible compensation contract",
+    "requiredCompensationCount":0,
+    "implementation":"reject precommit effect contracts before execution; retain empty compensation ledger and zero unresolved counter; test rejection. Local COMMIT mutations use synchronous rollback journal."
+  }
+}

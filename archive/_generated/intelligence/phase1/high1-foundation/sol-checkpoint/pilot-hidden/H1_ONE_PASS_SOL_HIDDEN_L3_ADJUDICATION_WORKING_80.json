@@ -1,0 +1,2590 @@
+{
+  "summary": {
+    "status": "SOL_WORKING_NOT_FINAL",
+    "denominator": 80,
+    "categories": {
+      "A": {
+        "MATCH_GROUNDED": 53,
+        "UNSCORABLE_EXISTING_L3_HOLD": 1,
+        "DIFF_PLAUSIBLE": 23,
+        "DIFF_ERROR": 3
+      },
+      "B": {
+        "MATCH_GROUNDED": 54,
+        "UNSCORABLE_EXISTING_L3_HOLD": 1,
+        "DIFF_PLAUSIBLE": 25
+      }
+    },
+    "materialABL3ConflictCount": 5,
+    "existingL3ReviewCandidateCount": 25,
+    "cBlindCount": 16,
+    "sourceInputs": {
+      "hiddenRaw": "H1_ONE_PASS_HIDDEN_L3_RAW_COMPARISON_80.json",
+      "solRules": "H1_ONE_PASS_SOL_HIDDEN_L3_DECISION_RULES_WORKING.json",
+      "acceptedA": "A clean batches 01-03 plus fresh blind replacement batch04",
+      "acceptedB": "B clean batches 01-04"
+    }
+  },
+  "rows": [
+    {
+      "row": 1,
+      "questionUid": "qid_v1_18b5493b640ee728ceb9fa66aaffe0695217cbee6a4a614bb9f1d4cd7c0331ee",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "debcb8b3a504cde696370fdebc36fa5dda8fb38d16ae0b27bede46b218a8951d",
+      "hiddenExistingL3": "PT_H1_POLY_DIVISION_REMAINDER",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+      "a": {
+        "l3": "NEW:Quadratic polynomials enumerated from divisor-value and alternative-root constraints",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives P(1)P(-1)=0 and x(x-2) divides P(x){P(x)-1}; it asks for the remainder of T(x) divided by x.",
+        "solutionMathEvidence": "The solution states P(0),P(2)∈{0,1}, lists six quadratics, and computes T(0)=1+1+0+0+1+1=4.",
+        "decisiveStep": "Apply the remainder theorem to get T(0), then sum the six constant terms to obtain 4.",
+        "l3Reason": "The ACTIVE L3 list has no polynomial-family enumeration type; this task enumerates quadratics from two binary point-values and a disjunctive root condition.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Quadratic family from divisibility and point-value constraints",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "P quadratic; P(1)P(−1)=0; P(P−1) divisible by x(x−2).",
+        "solutionMathEvidence": "Solution lists six quadratics over endpoint pairs (1,1),(0,1),(1,0).",
+        "decisiveStep": "Sum constant terms: T(0)=1+1+0+0+1+1=4.",
+        "l3Reason": "No active type names this finite reconstruction pattern.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Apply the remainder theorem to get T(0), then sum the six constant terms to obtain 4.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 2,
+      "questionUid": "qid_v1_ab00d0fc95efd3711c48d9dc52d861558a5b1c4ed8a5e882cc9e1735886cb366",
+      "sourceIdentity": "original/high/h1/1final/22_순천여고_1학기_기말_고1_기출.js#13",
+      "sourceFingerprint": "5cfc86e7bb3d44835258052c48c4bfc9bb35042fdaa617d9b2dc70fbcaee9151",
+      "hiddenExistingL3": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "연립부등식의 해집합 조건",
+      "a": {
+        "l3": "NEW:Integer parameter threshold from a bounded simultaneous-inequality solution set",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The system is 2x+5≥-1-x and x²+4x+3<0; every real solution must satisfy x²+(m-2)x-2m<0.",
+        "solutionMathEvidence": "The solution obtains -2≤x<-1, selects x=-2, derives 8-4m<0, and reports least integer m=3.",
+        "decisiveStep": "Substitute the sole integer x=-2 to obtain m>2, then choose the least integer m=3.",
+        "l3Reason": "No ACTIVE L3 type describes intersecting a system-inequality interval and testing its integer members in a parameterized quadratic inequality.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Parameter inequality required on a system solution set",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "System solution is [−2,−1); every such x must satisfy the target inequality.",
+        "solutionMathEvidence": "Supplied solution checks only integer x=−2 and concludes m=3.",
+        "decisiveStep": "Factor (x−2)(x+m); x−2<0 on the interval, so endpoint −2 forces m>2 and least integer m=3.",
+        "l3Reason": "No active type names this universal implication structure.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Substitute the sole integer x=-2 to obtain m>2, then choose the least integer m=3.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 3,
+      "questionUid": "qid_v1_1ac42169f81c95ff16a14fe3fd34195b4f82a34a64c3aad16e7ef4981160ac0b",
+      "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#22",
+      "sourceFingerprint": "aa616b1485e3b6174ad918c188372d710253f9717044706928f663d7f202dcee",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_EXTREMA",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차함수 최대·최소/최적화",
+      "a": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem specifies a right-isosceles triangle with AB=6, Q as the perpendicular foot from P to BC, and PR∥BC; it asks for the maximum area of PQCR.",
+        "solutionMathEvidence": "The solution gives Q=((t+6)/2,(6-t)/2), R=(0,t), [PQCR]=(36-t²)/4, and maximum 9 at t=0; the image matches these incidences.",
+        "decisiveStep": "The area decreases on [0,6], so t=0 gives maximum area 36/4=9.",
+        "l3Reason": "This ACTIVE type covers maximizing the explicitly modeled area function over t∈[0,6].",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Right isosceles legs 6; P on AB; foot Q to BC; PR∥BC; maximize [PQCR].",
+        "solutionMathEvidence": "A=(0,0),B=(6,0),C=(0,6), P=(t,0), Q=((t+6)/2,(6−t)/2), R=(0,t); area=(36−t²)/4.",
+        "decisiveStep": "Maximum at t=0 is 9.",
+        "l3Reason": "Active type covers geometric-area extrema.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: The area decreases on [0,6], so t=0 gives maximum area 36/4=9.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 4,
+      "questionUid": "qid_v1_2c95c2e052c61e0c48ed173d1ccf40bec0d7e411c2bd97c3a3249afe527a33c4",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#22",
+      "sourceFingerprint": "26d13b2ec74b3a3446a6e145e12ae73c9427e8819ac30badcc5b8f4d122c1e97",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "그래프 교점·접점·근 구조",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem defines h by two quadratic formulas on x≤-3 or x≥0 and -3<x<0, and asks which real m gives three distinct intersections with y=mx+7.",
+        "solutionMathEvidence": "The supplied solution only asks the reader to inspect sign/graph changes and asserts answer 25; it lists no branch equations, roots, interval filters, or m values.",
+        "decisiveStep": "Solve each branch-line equation and filter roots by the open/closed branch intervals before combining distinct counts.",
+        "l3Reason": "The ACTIVE type covers the requested intersection count between the given piecewise function graph and a line.",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "f=(x+2)² on x≤−3 or x≥0; g=−(x+1)²+5 on −3<x<0; count line y=mx+7 intersections.",
+        "solutionMathEvidence": "Supplied solution gives only generic graph advice and answer 25.",
+        "decisiveStep": "Exactly three points occur at m=2 and m=2√3−2; S=2√3 and 10S²=120.",
+        "l3Reason": "Active type covers parameterized graph-intersection counts.",
+        "reviewStatus": "HOLD"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Solve each branch-line equation and filter roots by the open/closed branch intervals before combining distinct counts.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 5,
+      "questionUid": "qid_v1_3959b557db1d5f1b5525ca32676b73e2959f9009158e680d2ebfd8e93093b5ef",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#10",
+      "sourceFingerprint": "1ba3ffde15f295296761838e23e27fcd9be5a563e347df53ea1aa50a942a09f6",
+      "hiddenExistingL3": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "고차방정식의 인수분해·치환 구조",
+      "a": {
+        "l3": "NEW:Quartic reduced by a repeated quadratic expression with real-root branch filtering",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source is (x²−4x)(x²−4x+7)+10=0 and asks for αβ for its two distinct real roots.",
+        "solutionMathEvidence": "The supplied solution gives only generic calculation advice and answer choice ②; the source expression itself reduces to u²+7u+10=0 and the real branch u=-2 gives αβ=2.",
+        "decisiveStep": "Reject u=-5 because x²−4x+5 has negative discriminant; retain u=-2 and multiply the conjugate real roots to get 2.",
+        "l3Reason": "No ACTIVE L3 type names this reducible quartic substitution and branchwise real-root selection.",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l3": "NEW:Quartic reduced through a repeated quadratic expression",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Solve (x²−4x)(x²−4x+7)+10=0 and find product of two distinct real roots.",
+        "solutionMathEvidence": "Supplied solution only says simplify and match answer ②.",
+        "decisiveStep": "u=−2 yields roots 2±√2 with product 2; u=−5 yields no real roots.",
+        "l3Reason": "No active type names this higher-equation substitution.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "NEW",
+        "reviewStatus": "HOLD",
+        "sourceIssue": null,
+        "holdReason": "Correct source answer is independently verifiable, but the archived solution is not an auditable mathematical solution."
+      },
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Reject u=-5 because x²−4x+5 has negative discriminant; retain u=-2 and multiply the conjugate real roots to get 2.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 6,
+      "questionUid": "qid_v1_7cbc4b1640bcde2eaa2217408c2000a6de38220cc0a2f8de7a5eef102fc60038",
+      "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#17",
+      "sourceFingerprint": "0fd90079ffac2ead4a4abfaf32efac3760ec8af92d3b87074c5dc883c5e59469",
+      "hiddenExistingL3": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "절댓값 식의 구간분기·해집합 판정",
+      "a": {
+        "l3": "NEW:Match an absolute-value interval to a quadratic inequality solution set and test coefficient uniqueness",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source requires the same solution set for |x+1|+|x−2|≤5 and ax²+bx+c≤0 but gives no normalization for a,b,c.",
+        "solutionMathEvidence": "The solution derives [-2,3], chooses (x+2)(x−3)≤0, and reports 6; replacing that polynomial by 2(x+2)(x−3) preserves the set but yields bc/a=12.",
+        "decisiveStep": "Check whether bc/a is invariant under positive scaling of (x+2)(x−3); it equals 6λ for λ>0, not a fixed value.",
+        "l3Reason": "No ACTIVE L3 type names interval-equivalence followed by coefficient recovery, and the stem’s free positive scale prevents a unique requested value.",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l3": "NEW:Recover a quadratic inequality from an equivalent absolute-value interval",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Solve set equality for |x+1|+|x−2|≤5 and ax²+bx+c≤0.",
+        "solutionMathEvidence": "The supplied solution gets [−2,3], writes (x+2)(x−3)≤0, and finds 6.",
+        "decisiveStep": "(x+2)(x−3)≤0 gives bc/a=6.",
+        "l3Reason": "No active type names equality of these two solution-set forms.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "NEW",
+        "reviewStatus": "HOLD",
+        "sourceIssue": "Underdetermined requested value: no normalization such as a=1 is stated; bc/a is not invariant under positive rescaling.",
+        "holdReason": "Source question has infinitely many permitted values of bc/a; the stated single answer is not mathematically determined."
+      },
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Check whether bc/a is invariant under positive scaling of (x+2)(x−3); it equals 6λ for λ>0, not a fixed value.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 7,
+      "questionUid": "qid_v1_7d14ef7e9447e406e1b0f3d24fdf956af2d38bb1f034c8c13921227df1698c02",
+      "sourceIdentity": "original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "20ae50f19886f18fcfee3e1e0e4d8b65b44bdefda9a9a097c3d8df3ee309f440",
+      "hiddenExistingL3": null,
+      "hiddenExistingL3Status": "HOLD",
+      "hiddenExistingL3Reason": "source/visual blocker",
+      "a": {
+        "l3": "NEW:Route counting through a mandatory waypoint with product and alternative segment counts",
+        "category": "UNSCORABLE_EXISTING_L3_HOLD",
+        "sourceMathEvidence": "The stem refers to a pictured trail network, defines P as routes entrance→waterfall→summit and Q as routes for either leg, with no repeated location.",
+        "solutionMathEvidence": "The solution asserts 4 and 3 routes for the legs, computes P=12 and Q=7, and reports 19.",
+        "decisiveStep": "Use the product for the required two-leg trip and the sum for choosing either leg, yielding P+Q=19.",
+        "l3Reason": "No ACTIVE L3 entry names graph-path counts decomposed at a waypoint using both sum and product rules.",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l3": "NEW:Route counts through a required waypoint and across alternatives",
+        "category": "UNSCORABLE_EXISTING_L3_HOLD",
+        "sourceMathEvidence": "Diagram-dependent entrance/waterfall/summit path counts.",
+        "solutionMathEvidence": "Solution reads 4 paths to waterfall and 3 to summit.",
+        "decisiveStep": "Use the counts 4 and 3 supplied by the solution's reading of the diagram.",
+        "l3Reason": "Permutation/combination types do not name sum/product route counting.",
+        "reviewStatus": "HOLD"
+      },
+      "cBlind": null,
+      "solReason": "Existing Stage3 L3 is HOLD because the source route diagram is too degraded to verify the path counts; neither worker is scored against a nonexistent old key.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 8,
+      "questionUid": "qid_v1_f70efe8487e6b83683317b361d85c1edc0a8199eedc419e34b463d63f54e4719",
+      "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "af8ed20f47895005d55dece0462fd49407083afb1ec74ba3470f6035e0361d96",
+      "hiddenExistingL3": "PT_H1_MATRIX_BASIC_OPERATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬의 크기·상등·덧셈·스칼라배·성분 정의",
+      "a": {
+        "l3": "NEW:Matrix-equality maximum under prime and bounded-natural constraints",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The visible stem gives prime p and natural x,y≤50 and mentions matrix equality with x−1=p and y=11, but omits the matrix operands.",
+        "solutionMathEvidence": "The saved solution explicitly says the matrices are missing and the maximum cannot be determined without reconstructing them.",
+        "decisiveStep": "Restore both matrix operands and verify the complete entrywise conditions before maximizing x+y+p.",
+        "l3Reason": "No ACTIVE L3 type addresses entrywise matrix equality followed by a constrained maximum.",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l3": "NEW:Bounded maximum from matrix-entry equalities and a prime parameter",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Prime p; natural x,y≤50; given x−1=p, y=11; maximize x+y+p.",
+        "solutionMathEvidence": "Solution claims missing matrices make the value unknowable.",
+        "decisiveStep": "Largest prime with x≤50 is p=47, so x=48 and total=106.",
+        "l3Reason": "No active type combines matrix equality with prime-constrained maximization.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "NEW",
+        "reviewStatus": "HOLD",
+        "sourceIssue": "The two actual matrices are absent from the archived content; the phrase '행렬 상등' is malformed/incomplete even though its stated scalar equalities suffice numerically.",
+        "holdReason": "Missing matrix display and incorrect archived solution require source and solution repair before reliable archive use."
+      },
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Restore both matrix operands and verify the complete entrywise conditions before maximizing x+y+p.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 9,
+      "questionUid": "qid_v1_15ed928978e54af9cc686ef1652502ecb78158740d12497b30c068b2430e5567",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "d2de29a4c9fb05818e36c0217fa140d1dfae4db78f7076f89de09e6262a77045",
+      "hiddenExistingL3": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "근의 합·곱과 대칭식 활용",
+      "a": {
+        "l3": "NEW:Evaluate a symmetric polynomial difference from two-variable sum and product data",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives a+b=6, ab=5, a>b and requests (a³+a²+a)−(b³+b²+b).",
+        "solutionMathEvidence": "The solution gets a−b=4, then a³−b³=124, a²−b²=24, and sums these with 4 to obtain 152.",
+        "decisiveStep": "Use a>b to choose a-b=4, then add (a³-b³)+(a²-b²)+(a-b)=152.",
+        "l3Reason": "No ACTIVE L3 type names direct power-difference evaluation from elementary symmetric data.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Evaluate a polynomial difference from sum/product constraints and variable order",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "a+b=6, ab=5, a>b; evaluate cubic-plus-square-plus-linear difference.",
+        "solutionMathEvidence": "Solution obtains 4,124,24,4 and 152.",
+        "decisiveStep": "a−b=4; cubic, square, and first differences are 124,24,4, sum 152.",
+        "l3Reason": "No active type names this symmetric-expression evaluation pattern.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use a>b to choose a-b=4, then add (a³-b³)+(a²-b²)+(a-b)=152.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 10,
+      "questionUid": "qid_v1_d67e97acf385bd29f6c50185f0a55f3b9a09313469cffbe4dfb05b20118723bb",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#18",
+      "sourceFingerprint": "64aa914ea618231eba1c856ad0d2b34ea819db96b2f0fdefe1499f1d1f107116",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "그래프 교점·접점·근 구조",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem sets roots A(1,0), B(a,0), a>1, defines P as the vertex and Q via a line through A parallel to PB, then lists three claims.",
+        "solutionMathEvidence": "The solution derives m=(a−1)/2, x_Q=x_R=m+a, area(BQR)=3m³/2; it concludes ㄱ,ㄴ true and ㄷ false, consistent with the diagram.",
+        "decisiveStep": "Factor the intersection equation (x−1)(x−a)=m(x−1), cancel the shared root A, and obtain x_Q=x_R=m+a.",
+        "l3Reason": "The ACTIVE graph-intersection type fits finding Q as the second intersection of a quadratic graph and a line.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Monic quadratic with roots 1,a; vertex P, parallel through A meets at Q; statements include f(4), x-coordinate and area.",
+        "solutionMathEvidence": "Solution gives the above expressions and choice ②.",
+        "decisiveStep": "m=(a−1)/2, x_Q=x_R=m+a, area=(3/2)m³; area=3/2 gives m=1, so ㄱ,ㄴ only.",
+        "l3Reason": "Active type covers a function graph with lines and geometric relations.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Factor the intersection equation (x−1)(x−a)=m(x−1), cancel the shared root A, and obtain x_Q=x_R=m+a.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 11,
+      "questionUid": "qid_v1_9a8319ccf1f66cb2ea96af675e0c5c249434545c88873e5f5b6c3bcae4e2f2cd",
+      "sourceIdentity": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js#7",
+      "sourceFingerprint": "3e1a079ebdf1acf52106fa647ce2e36ae8c285e2939f19e658b9f4c9dec30e10",
+      "hiddenExistingL3": "PT_H1_SYSTEM_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "공통근을 이용한 연립 방정식 구조",
+      "a": {
+        "l3": "NEW:Two quadratics with one shared root and a prescribed difference between their remaining roots",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives two quadratics with exactly one common root, a difference of 2 between their two other roots, and a>b.",
+        "solutionMathEvidence": "The solution obtains α=−2, a+b=−2, noncommon roots −b and −a, then a−b=2 and a+2b=−4.",
+        "decisiveStep": "Use a>b to turn |a−b|=2 into a−b=2, then solve the two linear relations to get a=0,b=−2.",
+        "l3Reason": "No ACTIVE L3 type describes comparing two quadratic equations at a common root and constraining their noncommon roots.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Two quadratics with a shared root and a condition on remaining roots",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Two monic quadratics have one common root; noncommon roots differ by 2; a>b.",
+        "solutionMathEvidence": "Solution derives α=−2, a+b=−2, a−b=2, then −4.",
+        "decisiveStep": "Common root −2; a+b=−2 and a−b=2, hence a=0,b=−2 and a+2b=−4.",
+        "l3Reason": "No active type names shared-root elimination plus residual-root comparison.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use a>b to turn |a−b|=2 into a−b=2, then solve the two linear relations to get a=0,b=−2.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 12,
+      "questionUid": "qid_v1_3c301382694072797edb75eac337b9838cbdb0e1cb21fa803dcabb5679458aff",
+      "sourceIdentity": "original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "882c475c821d22e101b709e40b8d4d1a7ef4605792ab701f0f003dea6d77926a",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_EXTREMA",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차함수 최대·최소/최적화",
+      "a": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives a side-4 square, BF=CG, an equilateral EFG crossing AD at two points, and a BF range; it asks for the least sum [EHJ]+[AIH].",
+        "solutionMathEvidence": "The solution gets x=AH, 0<x≤1, S=√3(2−x)²+(√3/2)x² and minimum 3√3/2 at x=1; the image agrees with H,J,I,K placement.",
+        "decisiveStep": "Factor S−3√3/2=(√3/2)(3x−5)(x−1)≥0 on 0<x≤1, with equality at x=1.",
+        "l3Reason": "This ACTIVE type matches minimizing the modeled area function over the derived interval 0<x≤1.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Square side 4 and equilateral triangle intersections; minimize [EHJ]+[AIH] under BF range.",
+        "solutionMathEvidence": "Solution gives AI=√3x, HJ=4−2x, the area formulas, and minimum 3√3/2.",
+        "decisiveStep": "S=√3(2−x)²+(√3/2)x² and S−3√3/2=(√3/2)(3x−5)(x−1)≥0 on 0<x≤1.",
+        "l3Reason": "Active type includes geometric area extrema.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Factor S−3√3/2=(√3/2)(3x−5)(x−1)≥0 on 0<x≤1, with equality at x=1.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 13,
+      "questionUid": "qid_v1_dcce92f8647d76a488b8fd018f00075624a4610f904e4aa56744b9f55493a9bc",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#11",
+      "sourceFingerprint": "7d6cc85106576e567d68089c427f7fc0da5a6c7ffaca9ed9946d0a679f0514d1",
+      "hiddenExistingL3": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "고차방정식의 인수분해·치환 구조",
+      "a": {
+        "l3": "NEW:Quartic solved by symmetric quadratic substitution and complex-root branch selection",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives (x²−4x+3)(x²−6x+8)=120, specifies one imaginary root ω, and asks for ω²−5ω.",
+        "solutionMathEvidence": "The solution pairs (x−1)(x−4) and (x−2)(x−3), obtains t∈{-16,6}, and uses D<0 at t=-16 to answer -16.",
+        "decisiveStep": "Select t=-16 because x²−5x+16=0 has D=−39<0, so ω²−5ω=t=−16.",
+        "l3Reason": "No ACTIVE L3 type covers factor pairing into a repeated quadratic expression followed by a complex-root test.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Nonreal root of a quartic via symmetric quadratic substitution",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Quartic product equals 120; ω is a nonreal root; find ω²−5ω.",
+        "solutionMathEvidence": "Solution pairs factors, solves t²+10t−96=0, selects t=−16 and returns −16.",
+        "decisiveStep": "t=x²−5x satisfies (t+4)(t+6)=120; t=−16 or 6; only −16 has negative discriminant, so ω²−5ω=−16.",
+        "l3Reason": "No active type names quartic pairing plus complex branch selection.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Select t=-16 because x²−5x+16=0 has D=−39<0, so ω²−5ω=t=−16.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 14,
+      "questionUid": "qid_v1_faed450feef45e9e3f93a173a31d70209ccc890aa3e3d9b75fd212fb80b22327",
+      "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#11",
+      "sourceFingerprint": "c5c7647a8213277bfcaa7bd689e4926740fb89c6fd173dbd9703443f2dad28c4",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "그래프 교점·접점·근 구조",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source asks for the product of all real k values making y=x²+kx+5 tangent to y=−3x+2.",
+        "solutionMathEvidence": "The solution forms x²+(k+3)x+3=0, sets D=0, gets k²+6k−3=0, and gives product −3.",
+        "decisiveStep": "The parameter equation is k²+6k−3=0, so Vieta gives the product of its real roots as −3.",
+        "l3Reason": "The ACTIVE graph-intersection type covers the line and quadratic meeting in one tangency point as k varies.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Quadratic y=x²+kx+5 tangent to y=−3x+2; asks product of real k.",
+        "solutionMathEvidence": "Solution equates graphs, applies D=0, gives product −3.",
+        "decisiveStep": "(k+3)²−12=0 gives k=−3±2√3 with product −3.",
+        "l3Reason": "The active type covers line-quadratic intersections by parameter.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: The parameter equation is k²+6k−3=0, so Vieta gives the product of its real roots as −3.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 15,
+      "questionUid": "qid_v1_8e02669339d6bfd88d1d362c9411cc3703dfbec4b15727ca531c403cd231e98a",
+      "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#16",
+      "sourceFingerprint": "36dadd34f29dce3459486683248552a1a5e1cc11ca8c48fa820769fabd4154a7",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_EXTREMA",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차함수 최대·최소/최적화",
+      "a": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives a monic quadratic, roots α<β with ratio 1:2, f(1)=3, and asks for the maximum line intercept k.",
+        "solutionMathEvidence": "The solution sets β=2α, derives k=3α−3−2α², completes the square, and obtains −15/8 at α=3/4.",
+        "decisiveStep": "Complete the square: k=−2(α−3/4)²−15/8, with maximum −15/8 at α=3/4.",
+        "l3Reason": "This ACTIVE type matches maximizing k after the root-ratio constraint turns it into a quadratic function of α.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Maximize line parameter from a prescribed ratio of quadratic intersection roots",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Monic quadratic intersects y=5x+k at α<β with ratio 1:2 and f(1)=3.",
+        "solutionMathEvidence": "Solution derives p=5−3α, q=3α−3 and completes square.",
+        "decisiveStep": "k=−2(α−3/4)²−15/8, so max is −15/8.",
+        "l3Reason": "No active type names this root-ratio parameter maximum.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Complete the square: k=−2(α−3/4)²−15/8, with maximum −15/8 at α=3/4.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 16,
+      "questionUid": "qid_v1_f803b386a28bb345ce140812801122e0da6032e3cf1b14a46b1b7695c9e780ae",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#18",
+      "sourceFingerprint": "29ccfde93e9d5ebf3d94f7e782a4c6ed6fd1ad9de6c3a0ef3b1a3b1e9b45217f",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "그래프 교점·접점·근 구조",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives y=−2x²+m and y=4x, intersections A,B, perpendicular feet to the x-axis, m>0, and total triangle area 32.",
+        "solutionMathEvidence": "The solution derives α+β=−2, αβ=−m/2, areas 2α² and 2β², then 16=α²+β²=4+m and m=12.",
+        "decisiveStep": "Use α²+β²=16 from the area condition and rewrite it as (α+β)²−2αβ=4+m, giving m=12.",
+        "l3Reason": "The ACTIVE type covers the two intersections of a quadratic graph and line that supply the roots in the area equation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Determine parabola parameter from coordinate-triangle area sum at line intersections",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "m>0; y=−2x²+m meets y=4x; sum of AOC and BOD areas is 32.",
+        "solutionMathEvidence": "Solution uses α+β=−2, αβ=−m/2, areas 2α²+2β²=32 and gets m=12.",
+        "decisiveStep": "m=12.",
+        "l3Reason": "No active type names area sums encoded by intersection-root squares.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use α²+β²=16 from the area condition and rewrite it as (α+β)²−2αβ=4+m, giving m=12.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 17,
+      "questionUid": "qid_v1_d16e9f8b6e881e82ad11e0d9bafc0bee378e04d3045b9a9368834e179db79e6f",
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#4",
+      "sourceFingerprint": "bffd843ff941706e0a0cf5d750aafcdcdd12f370d6efa79519d835a6672d74fc",
+      "hiddenExistingL3": "PT_H1_POLY_OPERATION_EXPANSION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 연산·전개·계수 추출 중심",
+      "a": {
+        "l3": "NEW:Count distinct expanded monomials from a product of sums with disjoint variable sets",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source asks how many distinct terms appear after expanding (a+b)(p+q+r+s)(x+y+z).",
+        "solutionMathEvidence": "The solution counts 2, 4, and 3 summand choices, notes all letters are distinct, and obtains 24 terms.",
+        "decisiveStep": "Multiply 2·4·3 after confirming all variables are distinct, so every choice triple yields a different term.",
+        "l3Reason": "The ACTIVE L3 counting types cover arrangements, repeated assignment, and selection, but not distributive term generation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Count distinct monomials in a product of sums with disjoint variables",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Count distinct terms in (a+b)(p+q+r+s)(x+y+z).",
+        "solutionMathEvidence": "Solution multiplies 2·4·3 and notes all variables are distinct.",
+        "decisiveStep": "2×4×3=24 distinct terms.",
+        "l3Reason": "No active H1 type names collision-free expanded-term counts.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Multiply 2·4·3 after confirming all variables are distinct, so every choice triple yields a different term.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 18,
+      "questionUid": "qid_v1_2a444ea8f786297b2d5e2dbe63b41c560c48a403945fc8b78925f98d201f8eb5",
+      "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#19",
+      "sourceFingerprint": "188b3f97dd70e2cac87ee39a5d98b64066718259454d4bbaa7d10c0e05ce8708",
+      "hiddenExistingL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "곱셈공식 변형·대칭 구조 활용",
+      "a": {
+        "l3": "NEW:Recover the volume sum of two spheres from their diameter sum and surface-area sum",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives two externally tangent spheres, d1+d2=8 and total surface area 40π, and defines volume sum aπ before asking for 8a.",
+        "solutionMathEvidence": "The solution derives d1²+d2²=40, d1d2=12, cube sum 224, total volume 112π/3, and 8a=896/3; the viewed image shows two touching spheres.",
+        "decisiveStep": "Use the cube-sum identity to obtain total volume π·224/6=112π/3, so 8a=896/3.",
+        "l3Reason": "No ACTIVE L3 type represents a two-sphere measure problem or symmetric diameter-power reconstruction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Two-sphere volume sum from total diameter and surface area",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Two tangent spheres; diameter sum 8; surface areas total 40π; volume sum aπ.",
+        "solutionMathEvidence": "Solution derives square sum 40, product 12, cubic sum 224 and 8a=896/3.",
+        "decisiveStep": "d₁d₂=12 and d₁³+d₂³=8³−3·12·8=224; a=112/3, so 8a=896/3.",
+        "l3Reason": "No active type covers solid-measure conversion to symmetric polynomial sums.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use the cube-sum identity to obtain total volume π·224/6=112π/3, so 8a=896/3.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 19,
+      "questionUid": "qid_v1_74b35c180f6054a6756a89f1e390fe03434a1439274ec9e9047877562bb67730",
+      "sourceIdentity": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "ab60c1ded71e5fd6bd0ffc6e857601635e7757747931c67c5aef7e46a074156f",
+      "hiddenExistingL3": "PT_H1_POLY_DIVISION_REMAINDER",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+      "a": {
+        "l3": "NEW:Determine a monic polynomial from equal quotient/remainder data and integer-root conditions",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem says f is monic, its quotient and remainder upon division by g both equal g+x², and f has distinct integer roots 3,α,β.",
+        "solutionMathEvidence": "The solution obtains f=(g+1)(g+x²), g=−x²−x+q, q∈{3,11}; q=11 yields roots 11,3,−4.",
+        "decisiveStep": "The known root 3 gives q=3 or q=11; reject q=3 because the remaining roots are not integers and retain q=11.",
+        "l3Reason": "No ACTIVE L3 type names polynomial reconstruction from division data, a known root, and a distinct-integer-root constraint.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Integer-root polynomial reconstruction from equal quotient/remainder expressions",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Monic f divided by g has quotient and remainder g+x²; f has distinct integer roots 3,α,β.",
+        "solutionMathEvidence": "Solution forces g=−x²+px+q, p=−1; selects q=11 and roots 11,3,−4.",
+        "decisiveStep": "g=−x²−x+q; q=3 or 11; integer-root condition selects q=11; α=11, β=−4.",
+        "l3Reason": "No active type names this combined division-constraint/root-filter pattern.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: The known root 3 gives q=3 or q=11; reject q=3 because the remaining roots are not integers and retain q=11.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 20,
+      "questionUid": "qid_v1_a8bdf7d756d2c3b167c61ead976546a7654fb8e20c6094bd1f0a63677add3b25",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "54015c5aa0c8f55b0d2b2639dc0960719b273f2412f0101a6bbca0c209599365",
+      "hiddenExistingL3": "PT_H1_POLY_FACTORIZATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "인수분해 구조가 정답 도달의 중심",
+      "a": {
+        "l3": "NEW:A symmetric side-length identity forces an equilateral triangle before perimeter determines its area",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem says triangle sides a,b,c satisfy a³+b³+c³=3abc and have perimeter 12, then asks for area.",
+        "solutionMathEvidence": "The solution factors the cubic difference, uses positive perimeter to get a=b=c=4, and computes equilateral area 4√3.",
+        "decisiveStep": "Since a+b+c>0 and the sum of squared pairwise differences is zero, all three sides are equal; perimeter then gives side 4.",
+        "l3Reason": "No ACTIVE L3 type names converting this cubic side condition into equal sides and then a triangle area.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Classify triangle sides from a symmetric cubic equality and compute area",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Positive triangle sides satisfy a³+b³+c³=3abc and perimeter 12.",
+        "solutionMathEvidence": "Solution factors the identity and concludes equilateral side 4, area 4√3.",
+        "decisiveStep": "a=b=c=4 and area=4√3.",
+        "l3Reason": "No active type names this algebraic identity-to-triangle classification.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Since a+b+c>0 and the sum of squared pairwise differences is zero, all three sides are equal; perimeter then gives side 4.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 21,
+      "questionUid": "qid_v1_78d4b01896491e11e0d194578453adfb891e762dc7bc833c455c8b2e7ae469a4",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#15",
+      "sourceFingerprint": "88aff1397cd8f553fa3d288e41b05fa79f3a45cafa53af1cf651f563a5fbccf9",
+      "hiddenExistingL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "항등식·계수 비교로 미정계수를 결정",
+      "a": {
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem imposes 2f(x)f(−x)=f(x²) for all real x and asks which statements about f(0), the factor x+1, and degree-one solutions are true.",
+        "solutionMathEvidence": "The solution derives f(0)=0 or 1/2, shows f(1)≠0 forces f(−1)=1/2, and finds exactly two linear solutions with slope −1/2.",
+        "decisiveStep": "Separate the three claims: substitute 0, substitute 1 and use the factor theorem, then solve the coefficient equations for degree one.",
+        "l3Reason": "The ACTIVE type is for relations holding at every input and resolved by substitution; the source states 2f(x)f(−x)=f(x²) for all real x.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "2f(x)f(−x)=f(x²) for all real x; judge three claims about f(0), a factor at −1, and degree-one solutions.",
+        "solutionMathEvidence": "The supplied work substitutes 0 and 1, then compares coefficients for ax+b to get two polynomials.",
+        "decisiveStep": "At x=0, 2f(0)^2=f(0); at x=1 with f(1)≠0, f(−1)=1/2; for ax+b, a=−1/2 and b∈{0,1/2}.",
+        "l3Reason": "This active type covers all-input relations evaluated by substitution to determine function values and forms.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "The stem constrains a polynomial through f(x)f(-x)=f(x²) for all real x; A/B/C identify a functional equation, while the old key emphasizes polynomial coefficient identity. Both readings have source support, and the curriculum-level owner needs review.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 22,
+      "questionUid": "qid_v1_87ad079d1c292383bb525712fb4c03a588a625e9f291e716ba4fc80628ee9faa",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#11",
+      "sourceFingerprint": "a5df4b49c1886389e8c6e348dc5abd83dff03eb60aa391c22797e2e9d4ccbe68",
+      "hiddenExistingL3": "PT_H1_POLY_OPERATION_EXPANSION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 연산·전개·계수 추출 중심",
+      "a": {
+        "l3": "NEW:Parameter-independent repeated-root condition from a discriminant identity",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem requires x²+(k+2a)x+k²/4−2k−b=0 to have a double root for every real k, and asks for a−b.",
+        "solutionMathEvidence": "The solution expands D to (4a+8)k+4a²+4b, sets both coefficients to zero, and obtains a=−2,b=−4, difference 2.",
+        "decisiveStep": "Set 4a+8=0 and 4a²+4b=0, obtaining a=−2,b=−4 and a−b=2.",
+        "l3Reason": "No ACTIVE L3 type names a repeated-root requirement for every parameter value followed by coefficient recovery.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The quadratic in x must have a double root regardless of real k; find a−b.",
+        "solutionMathEvidence": "The supplied solution expands D, equates its k coefficient and constant to zero, and obtains 2.",
+        "decisiveStep": "D(k)=(4a+8)k+4a²+4b; hence a=−2,b=−4, so a−b=2.",
+        "l3Reason": "The active type covers parameter choices that make a root condition hold for all parameter values.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "NEW",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "The decisive condition is D(k)≡0 for every k, then coefficient comparison in k. The old POLY_OPERATION_EXPANSION key misses the repeated-root parameter test; A's discriminant identity and B's universal-parameter proposition are plausible but differ in primary emphasis.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": true
+    },
+    {
+      "row": 23,
+      "questionUid": "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#23",
+      "sourceFingerprint": "bd2f428d30fd960a78ec36a244148259d7d96d75f04c582a7aeab4558c0fe566",
+      "hiddenExistingL3": "PT_H1_POLY_FACTORIZATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "인수분해 구조가 정답 도달의 중심",
+      "a": {
+        "l3": "NEW:Natural-input polynomial primality forces an integer factor before a remainder evaluation",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "For natural n, n⁴+6n³+7n²−6n−3 is prime; the stem asks for the remainder of x²−5x+7 divided by x−n.",
+        "solutionMathEvidence": "The solution factors the prime as (n²+3n−3)(n²+3n+1), finds n=1, and obtains f(1)=3.",
+        "decisiveStep": "Use n≥1 to see both integer factors are positive and ordered, so the smaller must equal 1; then evaluate f(n) at n=1.",
+        "l3Reason": "No ACTIVE L3 problem type captures the combined prime-valued polynomial factorization and final remainder-at-n step.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Use a prime polynomial value to determine a natural input, then evaluate a separate remainder",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Natural n makes n⁴+6n³+7n²−6n−3 prime; ask remainder of x²−5x+7 on division by x−n.",
+        "solutionMathEvidence": "The solution factors using t, gets n=1 from positivity/primality, then computes f(1)=3.",
+        "decisiveStep": "(n²+3n−3)(n²+3n+1) is prime only if n²+3n−3=1, giving n=1; f(1)=3.",
+        "l3Reason": "No active type names this factor-primality bridge to a second polynomial remainder.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use n≥1 to see both integer factors are positive and ordered, so the smaller must equal 1; then evaluate f(n) at n=1.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 24,
+      "questionUid": "qid_v1_1e0cbbffd815f776e797e18e099207770615ab1a104f7a1887da3905d21f29e0",
+      "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#1",
+      "sourceFingerprint": "eb04f30210b4d0e6fc042f4ff3f9e2467ef30346cf3c4f349f8092c0b4ee083b",
+      "hiddenExistingL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "항등식·계수 비교로 미정계수를 결정",
+      "a": {
+        "l3": "NEW:Recover polynomial parameters by coefficient comparison in an identity",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source states x²+x+1=ax²+(b+1)x+(c−2) is an identity and asks for a+b+c.",
+        "solutionMathEvidence": "The solution matches coefficients to obtain a=1,b=0,c=3 and totals 4.",
+        "decisiveStep": "Equate coefficients of x², x, and 1; then add the uniquely determined a,b,c.",
+        "l3Reason": "The ACTIVE L3 list has no elementary polynomial-identity coefficient-recovery type.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover constants from a polynomial identity and aggregate them",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "x²+x+1=ax²+(b+1)x+(c−2) for all x.",
+        "solutionMathEvidence": "The solution matches corresponding coefficients and obtains 4.",
+        "decisiveStep": "a=1, b=0, c=3, hence a+b+c=4.",
+        "l3Reason": "No active L3 key specifically names direct coefficient matching for an identity.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Equate coefficients of x², x, and 1; then add the uniquely determined a,b,c.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 25,
+      "questionUid": "qid_v1_73e54cbaf648061f24a78d07128394705b9b0e4b552c5e5bab53a21c6692b6a7",
+      "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#21",
+      "sourceFingerprint": "652dbe7462827d0cc6193793aae6e1e2ce6153b6203697eea4308f2b722da2ff",
+      "hiddenExistingL3": "PT_H1_POLY_DIVISION_REMAINDER",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+      "a": {
+        "l3": "NEW:Recover a depressed cubic from two remainder conditions and find its root product",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The monic depressed cubic x³+px+q is divisible by x−2 and leaves remainder 4 when divided by x+2; it asks for p,q and the product of its three roots.",
+        "solutionMathEvidence": "The solution obtains p=−5,q=2 from f(2)=0 and f(−2)=4, then gives the root product −q=−2.",
+        "decisiveStep": "Solve the two linear equations from f(2),f(−2), then use the constant term of the monic cubic for the three-root product.",
+        "l3Reason": "No ACTIVE L3 type names this paired remainder-value reconstruction followed by a three-root symmetric target.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover cubic coefficients from two linear-divisor evaluations and report the root product",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Monic cubic x³+px+q vanishes at 2 and has remainder 4 at −2; also request product of its three roots.",
+        "solutionMathEvidence": "The solution gets 2p+q=−8 and −2p+q=12, then uses the constant term to get −2.",
+        "decisiveStep": "p=−5,q=2; the roots' product is −q=−2.",
+        "l3Reason": "No active type joins two remainder constraints to a Vieta output.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Solve the two linear equations from f(2),f(−2), then use the constant term of the monic cubic for the three-root product.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 26,
+      "questionUid": "qid_v1_43470432764ceeac8519109fbb96f954ac0db3fcf37177880826e99dc9417745",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "f0118c222d20efb06e2fa1c71b933e1b81b235ae4288b6ffdd4b0eb1b6509387",
+      "hiddenExistingL3": "PT_H1_POLY_OPERATION_EXPANSION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 연산·전개·계수 추출 중심",
+      "a": {
+        "l3": "NEW:Recover three cuboid edge lengths from the three adjacent face areas",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The three rectangular faces meeting at one vertex have areas 3, 9, and 27; the requested quantity is the sum of the cuboid’s edge lengths a,b,c.",
+        "solutionMathEvidence": "The solution uses ab=3,bc=9,ca=27, derives abc=27, then gets (a,b,c)=(3,1,9) and sum 13.",
+        "decisiveStep": "Choose abc=27 rather than −27 because lengths are positive, then recover each edge from the product of the other two.",
+        "l3Reason": "No ACTIVE L3 type covers a three-dimensional cuboid dimension system from pairwise face-area data.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover three positive lengths from all three pairwise products",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Three faces sharing a vertex have areas 3,9,27; find the sum of cuboid edges.",
+        "solutionMathEvidence": "Solution computes abc=27, then edges 3,1,9 and total 13.",
+        "decisiveStep": "(abc)²=3·9·27=729; abc=27, yielding (a,b,c)=(3,1,9), sum 13.",
+        "l3Reason": "No active type names the edge-recovery system from pairwise face areas.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Three cuboid edge lengths are recovered from pairwise face areas. The old polynomial-expansion type does not describe the decisive geometry/product reconstruction; both worker candidates are source-grounded.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 27,
+      "questionUid": "qid_v1_ec7e97ac945535f2bef00fc10e7e92ba63da5808d3cd3f3cbe8770a5ddb91d37",
+      "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#8",
+      "sourceFingerprint": "0ac4ae69c63d0060c33b87b25c319d1f8c85fb851aef6d3b287c3d2963c54302",
+      "hiddenExistingL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "곱셈공식 변형·대칭 구조 활용",
+      "a": {
+        "l3": "NEW:Evaluate a conjugate-radical power sum from elementary symmetric values",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem defines x=2+√3 and y=2−√3 and asks for x³+y³.",
+        "solutionMathEvidence": "The solution obtains x+y=4, xy=1, then computes 4³−3·1·4=52.",
+        "decisiveStep": "Use x³+y³=(x+y)³−3xy(x+y) instead of expanding the radicals separately.",
+        "l3Reason": "No ACTIVE L3 type names direct evaluation of a power sum from the sum and product of a conjugate pair.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Evaluate a conjugate pair's cubic sum through its symmetric sum and product",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "x=2+√3, y=2−√3; find x³+y³.",
+        "solutionMathEvidence": "The solution evaluates sum and product then applies the cubic identity.",
+        "decisiveStep": "x+y=4 and xy=1, so x³+y³=64−12=52.",
+        "l3Reason": "No active type names this two-value power-sum computation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use x³+y³=(x+y)³−3xy(x+y) instead of expanding the radicals separately.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 28,
+      "questionUid": "qid_v1_3bce5da9e542fbb4bcdd3f5ded87682d26eeb0196986ba4d662babd08d439bb7",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#19",
+      "sourceFingerprint": "24f89dfeacb0fb456f54907545c814258471029d323238c0b8a8d00ee8d8727b",
+      "hiddenExistingL3": "PT_H1_POLY_FACTORIZATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "인수분해 구조가 정답 도달의 중심",
+      "a": {
+        "l3": "NEW:Factor an irreducible-over-rationals quadratic by completing the square over real radicals",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem asks for an explicit factorization of x²−2x−1.",
+        "solutionMathEvidence": "The solution obtains (x−1)²−(√2)² and factors it as (x−1−√2)(x−1+√2).",
+        "decisiveStep": "Recognize 2=(√2)² so the completed square splits into conjugate linear factors.",
+        "l3Reason": "No ACTIVE L3 type specifically covers an irrational-root factorization via completing the square.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Factor a monic quadratic with irrational real roots by completing a square",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Factor x²−2x−1 over the reals.",
+        "solutionMathEvidence": "The solution completes the square and factors the difference of squares.",
+        "decisiveStep": "(x−1−√2)(x−1+√2).",
+        "l3Reason": "No active problem type names this elementary quadratic-factorization form.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Recognize 2=(√2)² so the completed square splits into conjugate linear factors.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 29,
+      "questionUid": "qid_v1_b356600957d6ec8de4dec19361c7f1a95c51288eb2dd601c09b782f4a68c417c",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#10",
+      "sourceFingerprint": "ea763e8647aa4a7e10a5d3c9db4d4c019917c89e579f81f8454b1cfb04e996fb",
+      "hiddenExistingL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "항등식·계수 비교로 미정계수를 결정",
+      "a": {
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "category": "DIFF_ERROR",
+        "sourceMathEvidence": "The stem requires P(x)²=x⁴−x³+2x²−x+1−xP(x) for every real x and states that P has positive leading coefficient.",
+        "solutionMathEvidence": "The solution gets (P+x/2)²=(x²−x/2+1)², selects the positive branch, and obtains P=x²−x+1 and P(1)=1.",
+        "decisiveStep": "From P+x/2=±(x²−x/2+1), take the plus sign because only it gives P a positive quadratic leading coefficient; then P(1)=1.",
+        "l3Reason": "The ACTIVE type covers a polynomial relation required for every real input and resolved by algebraic transformations of the relation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover a positive-leading polynomial from an identity between square polynomials",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Positive-leading polynomial P satisfies P²=x⁴−x³+2x²−x+1−xP; find P.",
+        "solutionMathEvidence": "The solution completes the square, recognizes the RHS square, and uses the leading-term sign.",
+        "decisiveStep": "P(x)+x/2=x²−x/2+1, so P=x²−x+1 and P(1)=1.",
+        "l3Reason": "No active L3 type names choosing a polynomial square root under a leading-sign condition.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_FUNCTION_RECOVERY",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "The equation in P(x) is completed to a square and the positive leading coefficient selects a polynomial. A's FUNCTIONAL_EQUATION key overstates a functional relation absent from the source; B's reconstruction candidate fits the decisive step. The old coefficient-identity label is broad enough to merit review.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": true
+    },
+    {
+      "row": 30,
+      "questionUid": "qid_v1_163385facfa8a9da00f5d31a4399cf0a5cc641059376ce491c112b698f083e31",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#14",
+      "sourceFingerprint": "2f8a4c0858dc650ab77d5467c24a9ca302845a062a44b961f2aad9356ed5ea71",
+      "hiddenExistingL3": "PT_H1_POLY_FACTORIZATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "인수분해 구조가 정답 도달의 중심",
+      "a": {
+        "l3": "NEW:Recover a monic cubic from two quadratic divisors and a repeated-root condition on their sum",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source states monic cubic p is divisible by two distinct monic quadratics A,B, (x−3)² divides A+B, and A(1)=0; it asks for p(2).",
+        "solutionMathEvidence": "The solution derives shared factor x−3, remaining roots 1 and 5, p=(x−3)(x−1)(x−5), and p(2)=3.",
+        "decisiveStep": "Set A=(x−k)(x−a), B=(x−k)(x−b); the condition A+B divisible by (x−3)² forces k=3 and a+b=6.",
+        "l3Reason": "No ACTIVE L3 type describes determining a cubic by the degree-limited common factor of two divisors and a repeated zero of their sum.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Reconstruct a cubic from two overlapping quadratic divisors and a repeated-root sum condition",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Monic cubic p is divisible by distinct monic quadratics A,B; A+B divisible by (x−3)²; A(1)=0; find p(2).",
+        "solutionMathEvidence": "The solution obtains A=(x−3)(x−1), B=(x−3)(x−5), p product, and p(2)=3.",
+        "decisiveStep": "A+B=(x−k)(2x−r−s)=2(x−3)² gives k=3,r+s=6; A(1)=0 gives r=1,s=5, so p(2)=3.",
+        "l3Reason": "No active type names this shared-factor reconstruction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Set A=(x−k)(x−a), B=(x−k)(x−b); the condition A+B divisible by (x−3)² forces k=3 and a+b=6.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 31,
+      "questionUid": "qid_v1_0052ff977f1f3544bf2248816a9882d5cc522c83bc7671a48c41d55690d7f07f",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#8",
+      "sourceFingerprint": "0a8b782563d63d68894ce90a0d796eb480948741ad66c81fee2e55661100ab91",
+      "hiddenExistingL3": "PT_H1_POLY_OPERATION_EXPANSION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 연산·전개·계수 추출 중심",
+      "a": {
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "category": "DIFF_ERROR",
+        "sourceMathEvidence": "The stem gives 9P(x)²=12P(x)+4x⁴−12x³+9x²−4 for all real x and states P has positive leading coefficient.",
+        "solutionMathEvidence": "The solution gets (3P−2)²={x(2x−3)}², chooses the positive branch, and finds P(1)=1/3.",
+        "decisiveStep": "Choose 3P−2=x(2x−3), which yields P(1)=1/3.",
+        "l3Reason": "The ACTIVE type covers a relation required for every real x that is transformed to determine a polynomial function P.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover a positive-leading polynomial from an equality of scaled squares",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "9P²=12P+4x⁴−12x³+9x²−4 for all x; P has positive leading coefficient; find P(1).",
+        "solutionMathEvidence": "The solution completes the square, uses equality of squares, and selects the positive-leading branch.",
+        "decisiveStep": "(3P−2)²=[x(2x−3)]²; positive-leading condition gives 3P−2=x(2x−3), so P(1)=1/3.",
+        "l3Reason": "No active type names this square-identity branch selection.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_FUNCTION_RECOVERY",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "The identity (3P−2)²=[x(2x−3)]² and leading-sign restriction recover P. A's FUNCTIONAL_EQUATION is the wrong primary category; B's polynomial-recovery description follows the actual solution. The old identity-coefficient label should be checked for granularity.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": true
+    },
+    {
+      "row": 32,
+      "questionUid": "qid_v1_8fab03d61717354293372d737db242ae344f76a93f62ecd7ebee3fe61e856c74",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#17",
+      "sourceFingerprint": "8d934c116477d8ba8e8f8af60f410d473c3dd8333f80f744ec1d857bc2ceeb33",
+      "hiddenExistingL3": "PT_H1_POLY_DIVISION_REMAINDER",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+      "a": {
+        "l3": "NEW:Determine a cubic and linear polynomial from divisibility, a point value, and sign constraints",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem requires P(x)Q(x) divisible by (x²−6x+10)(x−2), gives an identity defining P, and states Q(0)>0,Q(1)>0,P(0)<0,P(2)=0.",
+        "solutionMathEvidence": "The solution uses R=x²−6x+10 remainders, obtains m²=4, selects m=−2,n=3 by Q signs, computes a=10 and P(0)Q(1)/a=−2.",
+        "decisiveStep": "Use P(2)=0 with the quadratic remainder equations to get m²=4, then apply n>0 and m+n>0 to retain only (m,n)=(−2,3).",
+        "l3Reason": "No ACTIVE L3 type captures this coupled polynomial remainder system with a linear auxiliary polynomial and branch filtering.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Determine a polynomial and linear factor from irreducible-divisor residues and sign filters",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "P cubic, Q linear; PQ divisible by (x²−6x+10)(x−2); polynomial identity relates P,Q,a; sign conditions select target P(0)Q(1)/a.",
+        "solutionMathEvidence": "The solution reduces P modulo the irreducible quadratic, solves m,n with P(2)=0 and signs, and gets −2.",
+        "decisiveStep": "Remainder comparison gives 4m²−2mn−n²=19; P(2)=0 with this yields m²=4; Q(0),Q(1)>0 select m=−2,n=3, then a=10 and the target is −2.",
+        "l3Reason": "No active type names this residue-and-branch elimination pattern.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use P(2)=0 with the quadratic remainder equations to get m²=4, then apply n>0 and m+n>0 to retain only (m,n)=(−2,3).",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 33,
+      "questionUid": "qid_v1_a99aba8b48115cdfbfaddf2818b6c0c815e3416f294f1f1b1671790444c09b3d",
+      "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#5",
+      "sourceFingerprint": "a33b90c64dca2b2c94b9b65823aadb391c85c700d4614660154e99ac069a9f72",
+      "hiddenExistingL3": "PT_H1_POLY_DIVISION_REMAINDER",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+      "a": {
+        "l3": "NEW:Recover a cubic coefficient product from divisibility by a reducible quadratic",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives P(x)=ax³−x²+bx−2 divisible by x²+x−2 and asks for ab.",
+        "solutionMathEvidence": "The solution uses P(1)=P(−2)=0, gets a=−2,b=5, and reports ab=−10.",
+        "decisiveStep": "Factor x²+x−2=(x+2)(x−1), evaluate P at both roots, and solve the resulting linear system.",
+        "l3Reason": "No ACTIVE L3 type names coefficient recovery via the two linear roots of a quadratic divisor.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Determine two coefficients from roots of a quadratic divisor",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "P=ax³−x²+bx−2 is divisible by x²+x−2; find ab.",
+        "solutionMathEvidence": "The solution factors the divisor, evaluates at 1 and −2, and gets −10.",
+        "decisiveStep": "a+b=3 and 4a+b=−3 give a=−2,b=5, so ab=−10.",
+        "l3Reason": "No active L3 names this two-point divisibility reconstruction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Factor x²+x−2=(x+2)(x−1), evaluate P at both roots, and solve the resulting linear system.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 34,
+      "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "dd8f2e4785ee233c24e04af77a167faced9861f3d31cf046f6e5247709be7733",
+      "hiddenExistingL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "곱셈공식 변형·대칭 구조 활용",
+      "a": {
+        "l3": "NEW:Choose a constant so a quartic product becomes the square of a quadratic",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The source asks for k+f(5) when (x²−3x+2)(x²−7x+12)+k is a square of some quadratic f(x).",
+        "solutionMathEvidence": "The solution pairs to (t+4)(t+6)+k, sets k=1, obtains f=x²−5x+5, and reports 6.",
+        "decisiveStep": "Set 24+k=(10/2)²=25 so the t-quadratic becomes (t+5)².",
+        "l3Reason": "No ACTIVE L3 type captures a quartic perfect-square condition resolved by pairing four linear factors into a shared quadratic variable.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Make a quartic product a perfect square by pairing factors around a common quadratic expression",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "(x²−3x+2)(x²−7x+12)+k is a square of a quadratic; find k+f(5).",
+        "solutionMathEvidence": "The solution pairs factors into (x²−5x+4)(x²−5x+6), sets t=x²−5x, and obtains k=1 and f(5)=5.",
+        "decisiveStep": "(t+4)(t+6)+k=t²+10t+24+k=(t+5)² gives k=1; f(5)=5, total 6.",
+        "l3Reason": "No active type names this paired-factor perfect-square condition.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "The quartic product is paired around a common quadratic to form a perfect square. The worker candidates foreground square recognition/factorization rather than the old symmetric-formula key; both are mathematically grounded.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 35,
+      "questionUid": "qid_v1_0547c180f0440e25cd8d0e3f6d6d99a191b7af3a42cec8628c91ffa97f1a820e",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#16",
+      "sourceFingerprint": "54aa0c0d9d86387b252906ac86934a9dfad2f549baca453c7eaa4845865c5d8a",
+      "hiddenExistingL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "항등식·계수 비교로 미정계수를 결정",
+      "a": {
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem requires f(x)f(−x)=f(x²) for all real x and asks which of five statements about f(0), roots, monic degree-two counts, and monic cubics are true.",
+        "solutionMathEvidence": "The solution verifies f(0)=0 or 1, derives the two root implications, counts four monic quadratics, and rules out monic cubics by opposite leading signs.",
+        "decisiveStep": "For a monic cubic f(x)f(−x) has leading term −x⁶ while f(x²) has +x⁶, ruling out every such cubic.",
+        "l3Reason": "The ACTIVE type covers the all-input function relation f(x)f(−x)=f(x²) and its special-value/degree analysis.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTIONAL_EQUATION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "f(x)f(−x)=f(x²) for all x; test five claims including monic degree-2 and degree-3 counts.",
+        "solutionMathEvidence": "The solution uses 0/1 substitutions, coefficient comparison for degree 2, and leading-term contradiction for degree 3.",
+        "decisiveStep": "f(0)²=f(0); f(−1)=0 gives f(1)=0; f(1)≠0 gives f(−1)=1; degree-2 solutions number 4 and no monic cubic exists.",
+        "l3Reason": "The active type covers this universal polynomial function relation and its substitutions.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "The polynomial relation f(x)f(−x)=f(x²) is tested by substitutions and coefficient comparisons. Functional-equation treatment from A/B is plausible alongside the old polynomial-identity key; C independently selected the functional-equation family for the analogous row21.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 36,
+      "questionUid": "qid_v1_0dfda33af0430e79ca3fdb54f4cb45329e1445b80f069bcb33a2015488f80fc6",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#8",
+      "sourceFingerprint": "6f40ebc0807ceee67261f0e53bd2fb15b1fe08b5071a64498e80cdc73e50959b",
+      "hiddenExistingL3": "PT_H1_POLY_FACTORIZATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "인수분해 구조가 정답 도달의 중심",
+      "a": {
+        "l3": "NEW:Factor a bivariate quadratic with x²−y² leading form into affine linear factors",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source asks for k when x²+3x−y²+y+k factors into two linear expressions in x,y.",
+        "solutionMathEvidence": "The solution sets (x+y+a)(x−y+b), compares coefficients, obtains a=1,b=2, and reports k=2.",
+        "decisiveStep": "Match x and y coefficients separately to solve a=1 and b=2, then multiply them for k.",
+        "l3Reason": "No ACTIVE L3 type describes coefficient recovery in this two-variable factorization structure.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Factor a quadratic form x²−y² with linear terms by coefficient matching",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Factor x²+3x−y²+y+k as a product of two real linear forms; find k.",
+        "solutionMathEvidence": "The solution sets the factors as (x+y+a)(x−y+b) and obtains k=2.",
+        "decisiveStep": "a+b=3,b−a=1 give a=1,b=2 and k=ab=2.",
+        "l3Reason": "No active L3 names this two-variable linear-factor structure.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Match x and y coefficients separately to solve a=1 and b=2, then multiply them for k.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 37,
+      "questionUid": "qid_v1_37b93301408d72343acd8d69e8cdfe93c981508a048a4c3c9127adad140b1662",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "13e6309b860b01568ace1045b8b34efd2729917f3f5cfab03e5564b0161a2794",
+      "hiddenExistingL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "항등식·계수 비교로 미정계수를 결정",
+      "a": {
+        "l3": "NEW:Compute a high reciprocal power sum from a quadratic equation and its symmetric root relation",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem assumes x≠0 and x²−3x+1=0, then asks for x⁷+1/x⁷.",
+        "solutionMathEvidence": "The solution finds x+1/x=3, x³+x⁻³=18, x⁴+x⁻⁴=47, then subtracts 3 from their product to get 843.",
+        "decisiveStep": "Multiply (x³+x⁻³)(x⁴+x⁻⁴)=x⁷+x⁻⁷+x+x⁻¹ and subtract the known value 3.",
+        "l3Reason": "No ACTIVE L3 type names iterative reciprocal power-sum evaluation from x+1/x.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Evaluate a high reciprocal power sum from a quadratic relation",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Nonzero x satisfies x²−3x+1=0; evaluate x⁷+x⁻⁷.",
+        "solutionMathEvidence": "The solution divides by x, builds s₂,s₃,s₄, then uses s₃s₄=s₇+s₁.",
+        "decisiveStep": "s₂=7, s₃=18, s₄=47; s₃s₄=s₇+s₁, so s₇=846−3=843.",
+        "l3Reason": "No active type names this reciprocal power-sum computation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "A high reciprocal power sum is derived from a quadratic root relation, not chiefly by comparing coefficients of an identity; both worker descriptions are grounded alternatives to the old key.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 38,
+      "questionUid": "qid_v1_dad058a459d2cc61b5547b40c438c207016bdc26202e14746df1ad5fc3933709",
+      "sourceIdentity": "original/high/h1/1final/26_금당고_1학기_기말_고1_기출.js#16",
+      "sourceFingerprint": "ed88eda3d49aa3f2b7411ab80515f026248e99512c43082fcb262e525bf7aca5",
+      "hiddenExistingL3": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "복소수 조건·근 구조를 이용한 방정식/판정",
+      "a": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem gives a real-coefficient monic quartic with two roots satisfying α+ᾱ=4, β−β̄=2i, α−β real but not 4, and asks for the minimum a+b+c+d.",
+        "solutionMathEvidence": "The solution gets α=2+i, β=t+i, includes conjugates, obtains P(1)=2((1−t)²+1), and concludes the coefficient sum minimum is 1 at t=1.",
+        "decisiveStep": "Since P(1)=1+a+b+c+d, minimizing 2((1−t)²+1) gives P(1)≥2 at t=1, hence a+b+c+d≥1 with equality.",
+        "l3Reason": "The ACTIVE extremum type matches minimizing the derived real quadratic expression in t after the complex-root constraints parameterize the remaining roots.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Minimize a real polynomial's coefficient sum from constrained complex roots",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Real quartic has roots α,β with conjugate-sum/difference constraints and α−β real not 4; minimize a+b+c+d.",
+        "solutionMathEvidence": "The solution gets α=2+i, β=t+i, conjugates, then uses P(1)=2((1−t)²+1).",
+        "decisiveStep": "P(1)=2((1−t)²+1)≥2; equality t=1 is allowed, so a+b+c+d=1.",
+        "l3Reason": "No active type names this conjugate-root parameter minimization.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "Conjugate complex roots parameterize a real quartic, but minimizing a+b+c+d is the decisive final step. A/C select extrema and B names constrained complex-root minimization; the old complex-condition type captures a prerequisite rather than the complete primary method.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 39,
+      "questionUid": "qid_v1_85959e8df94780fe75dbb81dc1a0b192d376f2bbb065dade58c708de64bc3fdf",
+      "sourceIdentity": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "de09dceffe97a29812320b30339269c953bd0d45df58cc5b6a6193f9c7eb5299",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_INEQUALITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차부등식·전역 부호·매개변수 범위",
+      "a": {
+        "l3": "NEW:Intersect a quadratic inequality interval with a range induced by the greatest-integer function",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem asks for x satisfying x²+x−12<0 and floor(x)²−16<0, defining floor(x) as the greatest integer not exceeding x.",
+        "solutionMathEvidence": "The solution gets (−4,3) from the quadratic, [−3,4) from the floor condition, and their intersection [−3,3).",
+        "decisiveStep": "Translate −3≤floor(x)≤3 into −3≤x<4 before intersecting with −4<x<3.",
+        "l3Reason": "No ACTIVE L3 type combines simultaneous inequality solving with floor-value interval translation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Intersect a polynomial inequality interval with a floor-square constraint",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Solve x²+x−12<0 together with [x]²−16<0.",
+        "solutionMathEvidence": "The solution obtains (−4,3) and [−3,4), then their intersection [−3,3).",
+        "decisiveStep": "The common interval is −3≤x<3.",
+        "l3Reason": "No active L3 names the integer-part inequality intersection.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Translate −3≤floor(x)≤3 into −3≤x<4 before intersecting with −4<x<3.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 40,
+      "questionUid": "qid_v1_a95b420c5e87867bdfee62962b7843226e25da5fb062eaa8c0dfd5f691e6785c",
+      "sourceIdentity": "original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js#20",
+      "sourceFingerprint": "666a8af14a918aa1d31ff9a5802d1e7f2fef89d86356287b1c864f20aeee6b5a",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_INEQUALITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차부등식·전역 부호·매개변수 범위",
+      "a": {
+        "l3": "NEW:Solve a floor-dependent quadratic inequality by a global bound and integer-part cases",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source asks for solutions to x²−floor(x)−2≤0, with floor(x) defined as the greatest integer not exceeding x.",
+        "solutionMathEvidence": "The solution bounds −1≤x≤2, checks each floor interval, and reports [−1,√3]∪{2}.",
+        "decisiveStep": "On 1≤x<2, floor(x)=1 reduces the condition to x²≤3, so only 1≤x≤√3 survives; x=2 is checked separately.",
+        "l3Reason": "No ACTIVE L3 type describes a floor term added to a quadratic with intervalwise floor values.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Solve a quadratic inequality whose coefficient term is the floor of x",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Solve x²−[x]−2≤0.",
+        "solutionMathEvidence": "The solution uses [x]≤x to get −1≤x≤2, checks intervals, and includes x=2.",
+        "decisiveStep": "The first three floor intervals yield [−1,0), [0,1), [1,√3]; x=2 also satisfies equality.",
+        "l3Reason": "No active problem type names this integer-part case analysis.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: On 1≤x<2, floor(x)=1 reduces the condition to x²≤3, so only 1≤x≤√3 survives; x=2 is checked separately.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 41,
+      "questionUid": "qid_v1_cec69b96fd37f11a946aeaccaffd280838f05e5b99cfa61ba95a99dc9f67a973",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#9",
+      "sourceFingerprint": "4a700177589d042dddd56847031a211ddee64f54f2144093dc6c52910fdeab1c",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_EXTREMA",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차함수의 최대·최소·최적화가 목표",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem asks for t when the two tangent lines from (0,t) to y=−x²/4 are perpendicular.",
+        "solutionMathEvidence": "The solution obtains x²+4mx+4t=0, D=0→m²=t, then uses (√t)(−√t)=−1 to get t=1.",
+        "decisiveStep": "Set −t=−1 for the two tangent slopes and obtain t=1.",
+        "l3Reason": "The ACTIVE graph-intersection type covers lines tangent to the quadratic graph at parameter-dependent slopes.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Two lines through (0,t) tangent to y=−x²/4 are perpendicular; find t.",
+        "solutionMathEvidence": "The solution uses y=mx+t, D=0 to obtain m²=t, then multiplies the two slopes.",
+        "decisiveStep": "D=0 gives tangent slopes ±√t; their product is −t=−1, so t=1.",
+        "l3Reason": "This active type covers the parameter condition for a line to meet a quadratic graph tangentially.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "Tangency of two lines to a parabola gives m²=t and their perpendicular slopes fix t. A/B/C independently classify graph intersection/tangency; the old quadratic-extrema key does not describe the decisive method.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 42,
+      "questionUid": "qid_v1_9e0c3d87600ea26dfcf6dbe955ae3280e5c0f113029a7539f300a4955c942a5c",
+      "sourceIdentity": "original/high/h1/1final/22_복성고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "eacfd87e8634c999032609686972fc14e27e5a9f03a8d739d9409bbfc1e4f62f",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차함수 그래프 관계",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem reflects f(x)=x²−4x+k across the x-axis, defines h(k) as the intersection count, then asks for intersections of y=h(x) and y=x²−2x−7.",
+        "solutionMathEvidence": "The solution derives h(k)=2/1/0 across k<4,k=4,k>4 and filters each branch equation, reporting two final intersections.",
+        "decisiveStep": "Use the three levels of h(x) on x<4, x=4, and x>4, and filter each quadratic solution against its branch interval.",
+        "l3Reason": "The final part asks for intersections of the graph of h(x) with a second quadratic graph, matching this ACTIVE type.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Reflect f(x)=x²−4x+k over x-axis, define h(k) as graph-intersection count, then count intersections of y=h(x) with another quadratic.",
+        "solutionMathEvidence": "The solution sets g=−f, obtains the D-based step function h, then counts one root on x<4 and the boundary point x=4.",
+        "decisiveStep": "h(k)=2 for k<4, 1 at k=4, 0 for k>4; the second graph intersects on x<4 once and x=4 once, with none for x>4.",
+        "l3Reason": "The active type covers both the reflected-parabola root count and the final piecewise graph intersections.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Use the three levels of h(x) on x<4, x=4, and x>4, and filter each quadratic solution against its branch interval.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 43,
+      "questionUid": "qid_v1_6a8c89afa5399b849ffc69fdfa517366597be8e97be5a8179930cef5d08f1939",
+      "sourceIdentity": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js#3",
+      "sourceFingerprint": "d6590dc00cd6fc66de5c4a02821c1fba7888f4f4cbdaeb27d1fbfacf622ec0eb",
+      "hiddenExistingL3": "PT_H1_POLY_DIVISION_REMAINDER",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+      "a": {
+        "l3": "NEW:Transform a polynomial quotient and remainder after multiplying the dividend by x",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives quotient Q and constant remainder r when P is divided by 3x−1, then asks for quotient and remainder of xP divided by x−1/3.",
+        "solutionMathEvidence": "The solution obtains xP=(x−1/3)(3xQ+r)+r/3, identifying quotient 3xQ+r and remainder r/3.",
+        "decisiveStep": "Rewrite rx as r(x−1/3)+r/3 to isolate the new divisor and constant remainder.",
+        "l3Reason": "No ACTIVE L3 type names how a quotient–remainder representation changes under multiplication by the variable.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Transform a polynomial division identity after multiplying the dividend by x",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Given division of P by 3x−1, find quotient and remainder for xP divided by x−1/3.",
+        "solutionMathEvidence": "The solution multiplies the division identity by x and regroups to get quotient 3xQ+r and remainder r/3.",
+        "decisiveStep": "xP=(x−1/3)(3xQ+r)+r/3.",
+        "l3Reason": "No active L3 names this quotient/remainder transformation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Rewrite rx as r(x−1/3)+r/3 to isolate the new divisor and constant remainder.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 44,
+      "questionUid": "qid_v1_b7969c1be96032aa33b14559233211fceb796a9bfad20cf75ec516b11dd0a75e",
+      "sourceIdentity": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js#12",
+      "sourceFingerprint": "f9fa2e84887209a1848cbae5655aedc557acd74210c47162cfb0f930b3f2d79c",
+      "hiddenExistingL3": "PT_H1_POLY_DIVISION_REMAINDER",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+      "a": {
+        "l3": "NEW:Recover shifted-power coefficients of a polynomial from its expanded form",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source identifies x³−4x²+3x−5 with a(x−2)³+b(x−2)²+c(x−2)+d and asks for ab+cd.",
+        "solutionMathEvidence": "The solution uses repeated synthetic division at 2 to get a=1,b=2,c=−1,d=−7 and computes 9.",
+        "decisiveStep": "Evaluate the polynomial and successive quotients at x=2 to read the coefficients from lowest to highest shifted power.",
+        "l3Reason": "No ACTIVE L3 type names coefficient extraction in a translated basis using repeated synthetic division.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover coefficients in powers of x−r by repeated synthetic division",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Express x³−4x²+3x−5 as a(x−2)³+b(x−2)²+c(x−2)+d; find ab+cd.",
+        "solutionMathEvidence": "The supplied repeated synthetic divisions give a=1,b=2,c=−1,d=−7, then 9.",
+        "decisiveStep": "x³−4x²+3x−5=(x−2)³+2(x−2)²−(x−2)−7, so ab+cd=2+7=9.",
+        "l3Reason": "No active type names this shifted-basis coefficient extraction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Evaluate the polynomial and successive quotients at x=2 to read the coefficients from lowest to highest shifted power.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 45,
+      "questionUid": "qid_v1_fd67803bf9578bcefc1c7bc29158d8f3e28d232b181ac2bd7b3a7c43415a56f2",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#11",
+      "sourceFingerprint": "c55b33588b61b19052e8129833acbd7de5d55360a7d633c2e8b24c169300ea5a",
+      "hiddenExistingL3": "PT_H1_COMPLEX_POWER_ROOT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "복소수 거듭제곱·단위근·주기 구조",
+      "a": {
+        "l3": "NEW:Evaluate a long power sum of a nonreal cubic root through its induced root-of-unity period",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source gives a nonreal root w of x³+1=0 and asks for the sum of 22 powers of −w²−1.",
+        "solutionMathEvidence": "The solution finds −w²−1=−w=z, z³=1,z≠1, and the 22-term sum equals z=−w after 21 terms cancel.",
+        "decisiveStep": "Group z+z²+…+z²¹ into seven blocks of 1+z+z², leaving z²²=z.",
+        "l3Reason": "No ACTIVE L3 type names a complex-root power sum reduced by a period-three cycle.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Evaluate a long power sum of a nonreal cubic root through a root-of-unity cycle",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "A nonreal root w of x³+1 appears in the sum of powers of −w²−1 through exponent 22.",
+        "solutionMathEvidence": "The solution gets w²−w+1=0, so the summand base is −w; its powers cycle with period 3.",
+        "decisiveStep": "The first 21 powers cancel in seven 3-term blocks; the 22nd is z=−w.",
+        "l3Reason": "No active type names this combination of complex-root identification and periodic summation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Group z+z²+…+z²¹ into seven blocks of 1+z+z², leaving z²²=z.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 46,
+      "questionUid": "qid_v1_f9ffafa8308b2c12f84402d4e65440bb3114dcf70099270c24c21d60d793945c",
+      "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "09c367ebfc9cdee59aa91dd6271978e5eb867feed063d5dabd7a806ae2b9d1ce",
+      "hiddenExistingL3": "PT_H1_COMPLEX_OPERATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "복소수 사칙연산·상등·켤레의 직접 활용",
+      "a": {
+        "l3": "NEW:Solve real variables from a single complex-number equality",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives (3x−y)−(x−2y)i=4+2i for real x,y and asks for x+y.",
+        "solutionMathEvidence": "The solution matches 3x−y=4 and −x+2y=2, obtains x=2,y=2, and reports 4.",
+        "decisiveStep": "Separate the complex equation into its real and imaginary equations before solving for x,y.",
+        "l3Reason": "No ACTIVE L3 type specifies recovering real parameters by equating complex components.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Determine real variables from equality of two complex numbers by component splitting",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "For real x,y, (3x−y)−(x−2y)i=4+2i; find x+y.",
+        "solutionMathEvidence": "The supplied solution compares real and imaginary parts, solves x=2,y=2, and reports 4.",
+        "decisiveStep": "3x−y=4 and −x+2y=2 give x=y=2, hence x+y=4.",
+        "l3Reason": "No active L3 specifically names complex equality followed by a real linear-system solve.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Separate the complex equation into its real and imaginary equations before solving for x,y.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 47,
+      "questionUid": "qid_v1_6a288d9ee31546aac2cd048c97eba1c9aa1c5ae95adaa12950920b8986e633ac",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#15",
+      "sourceFingerprint": "f097bc3aeb1aaf6941767ee6037a8e9a3775caddbdd5dc57fc48fbc962a82ec9",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차방정식의 판별식·근의 위치·중근 조건",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem asks for a when f has graph x-intercepts 1,3 and the two roots of f(x−a)=0 multiply to a²+7.",
+        "solutionMathEvidence": "The solution obtains roots a+1,a+3, solves a²+4a+3=a²+7, and gets a=1.",
+        "decisiveStep": "Replace each original root r by r+a under f(x−a)=0, then solve (a+1)(a+3)=a²+7.",
+        "l3Reason": "The ACTIVE graph-transformation type matches the horizontal shift from f(x) to f(x−a) and its effect on zeros.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover a horizontal graph shift from the product of translated roots",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Graph of f has x-intercepts 1 and 3; find a so roots of f(x−a)=0 have product a²+7.",
+        "solutionMathEvidence": "The solution shifts the roots to a+1,a+3 and obtains a=1.",
+        "decisiveStep": "(a+1)(a+3)=a²+7 gives 4a=4 and a=1.",
+        "l3Reason": "No active L3 names this root-product shift condition.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_MOVE_GRAPH_TRANSLATION",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "Graph roots 1 and 3 shift to a+1 and a+3 under f(x−a); their product fixes a. A/B/C classify translation or graph transformation, whereas the old discriminant key is not used by the solution.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 48,
+      "questionUid": "qid_v1_6558ac9077facaf514ff792c4a6961f24889250c57d25c420d844a283f43535f",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#12",
+      "sourceFingerprint": "87ae817c06c1705292319cb0221059a03a233e2e32da15a55e319fd0a9ba47fc",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "조건에서 이차함수 식·축·계수를 복원",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The source diagram shows an upward quadratic with level f=2 crossings p,s and x-intercepts q,r; the options assert an inside interval, a gap equality, and a transformed negative interval.",
+        "solutionMathEvidence": "The solution marks ㄱ false because f≥2 outside [p,s], ㄴ true by p+s=q+r, and ㄷ false because the correct transformed interval is −r/2<x<−q/2.",
+        "decisiveStep": "Use symmetry about the parabola’s vertical axis to show p+s=q+r; reverse both inequalities when dividing q<−2x<r by −2.",
+        "l3Reason": "The ACTIVE graph-properties type fits judging interval, equal-height symmetry, and transformed-input claims from the quadratic graph.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Inline graph shows an upward parabola, level y=2 crossings p,s and x-intercepts q,r; judge three statements.",
+        "solutionMathEvidence": "The solution marks ㄱ false, uses symmetry for ㄴ true, and reverses endpoints for ㄷ false.",
+        "decisiveStep": "ㄱ is false because f≥2 lies outside [p,s]; ㄴ follows from p+s=q+r; ㄷ should be −r/2<x<−q/2, so is false.",
+        "l3Reason": "The active type covers graph position, symmetry, and sign intervals used to judge claims.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "The item judges statements from a supplied parabola graph, symmetry, and sign intervals. Graph-property classification from A/B is grounded; the old reconstruction key implies coefficient recovery that is not requested.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 49,
+      "questionUid": "qid_v1_2284f2aa0e5307f5e1a4a91cdaa8f117b4174c0dbed3ff89d74f06495dad56b0",
+      "sourceIdentity": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js#8",
+      "sourceFingerprint": "97ad5c4f2248e93c89150ad3798d2ac30853f6fbdd76f741644ac30a45818811",
+      "hiddenExistingL3": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "절대부등식의 최댓값·최솟값 canonical 재사용",
+      "a": {
+        "l3": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem gives a>0,b>0 and asks for the minimum of (a+b)(2/a+2/b).",
+        "solutionMathEvidence": "The solution rewrites it as 4+2(a/b+b/a), uses (a−b)²≥0 to bound it by 8, and confirms equality at a=b.",
+        "decisiveStep": "Rewrite the expression as 4+2(a/b+b/a), then use the positive ratio sum’s lower bound 2.",
+        "l3Reason": "The ACTIVE type is inequality-based optimization, matching the minimum derived from a nonnegative square.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "For positive a,b minimize (a+b)(2/a+2/b).",
+        "solutionMathEvidence": "The solution expands to 4+2(a/b+b/a) and uses (a−b)²≥0.",
+        "decisiveStep": "The minimum is 4+2·2=8 at a=b.",
+        "l3Reason": "The active type covers inequality-based minima with an equality case.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Rewrite the expression as 4+2(a/b+b/a), then use the positive ratio sum’s lower bound 2.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 50,
+      "questionUid": "qid_v1_d9ee9a3769771b5a6c881c4363088f1b2d8568d239280291bb0e5a2ff6b909b8",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#15",
+      "sourceFingerprint": "c7342b0b2669e070cd3efc7a6d1f04a6559299d9516e7cc125461545fbac4d70",
+      "hiddenExistingL3": "PT_H1_SYSTEM_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "연립방정식·공통근 구조",
+      "a": {
+        "l3": "NEW:Infer linear-inequality coefficients from plotted solution intervals and solve a transformed system",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem shows number-line solution endpoints −1 open and 2 closed for the two original linear inequalities, then asks for the modified system’s solution.",
+        "solutionMathEvidence": "The solution infers a>0,b=2a,c<0,d=c and gets x≤−2 with x>1, so no x satisfies both; the viewed diagram matches those endpoint types.",
+        "decisiveStep": "Translate the modified inequalities to x≤−2 and x>1, whose intersection is empty.",
+        "l3Reason": "No ACTIVE L3 type names reconstructing coefficient ratios from number-line solution sets before transforming a system.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover inequality coefficients from a graphed system solution and test a transformed system",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The diagram shows the original system intervals; derive the solution to ax+b≤0 and −cx+d>0.",
+        "solutionMathEvidence": "The solution reads x≤2 and x<−1, derives b=2a,d=c with a>0,c<0, then gets x≤−2 and x>1.",
+        "decisiveStep": "The transformed conditions are x≤−2 and x>1, so their intersection is empty.",
+        "l3Reason": "No active type names this diagram-to-coefficient sign reconstruction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Number-line intervals determine coefficients of a system of inequalities; the old SYSTEM_EQUATION key names equations rather than the graphed inequalities. A/B descriptions are plausible.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 51,
+      "questionUid": "qid_v1_79dc5d371de9c83631453c8041b3b678bdb8960a92ef764716906f1a9c3ed3bb",
+      "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#21",
+      "sourceFingerprint": "20733d758c40b164071566b7ba559d66fdc224fc8a009f6cd6a1034592642ad6",
+      "hiddenExistingL3": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "복소수 조건·근 구조를 이용한 방정식/판정",
+      "a": {
+        "l3": "NEW:Select real inputs making a complex polynomial value nonzero and real",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source defines z=(2x²+9x−5)+(x²−25)i and asks for real x making z a nonzero real number.",
+        "solutionMathEvidence": "The solution gets x=±5 from the imaginary part, rejects −5 because the real part is zero, and retains x=5 giving z=90.",
+        "decisiveStep": "Reject x=−5 because it makes the real component zero, and retain x=5 because it yields z=90.",
+        "l3Reason": "No ACTIVE L3 type names the combined imaginary-part zero set and exclusion of the zero complex value.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Select a real parameter from a complex expression's zero-imaginary and nonzero-real conditions",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "z=(2x²+9x−5)+(x²−25)i must be a nonzero real; find x.",
+        "solutionMathEvidence": "The solution sets x²−25=0, tests ±5, and excludes −5 because z=0.",
+        "decisiveStep": "x=−5 gives z=0; x=5 gives z=90, so x=5.",
+        "l3Reason": "No active type names this two-component filter.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Reject x=−5 because it makes the real component zero, and retain x=5 because it yields z=90.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 52,
+      "questionUid": "qid_v1_6c4ddbe07e93c8b05b0ad53f8c066a0cb59cc46f41a5fe2e6efc52c18531f74b",
+      "sourceIdentity": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js#15",
+      "sourceFingerprint": "82dd6f2d0611c152d82d49dc1309315abae3cc626b7a43dad0b8e5124bca9827",
+      "hiddenExistingL3": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "일차·연립부등식의 공통 해와 조건 판정",
+      "a": {
+        "l3": "NEW:Determine an added mixture amount from a two-sided concentration constraint",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem asks which amount among the visible choices 800, 900, 1000, 1100, 1200 gives a mixture outside the 14%–15% range.",
+        "solutionMathEvidence": "The solution derives 900≤x≤1200; 800 is outside the permissible interval, so choice ① is supported.",
+        "decisiveStep": "Solve both concentration bounds to intersect x≤1200 and x≥900, then compare the answer choices with [900,1200].",
+        "l3Reason": "No ACTIVE L3 type describes mixture concentration modeling with both a rational lower and upper bound.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Translate a mixture concentration interval into a feasible amount range",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Mix 300g of 30% solution with xg of 10% solution to obtain 14%-15% concentration; identify an invalid choice.",
+        "solutionMathEvidence": "The solution derives 900≤x≤1200 and selects 800.",
+        "decisiveStep": "The lower concentration bound gives x≤1200; the upper bound gives x≥900; feasible range is [900,1200], excluding 800.",
+        "l3Reason": "No active L3 names the mixture-ratio inequality and choice screening.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "NEW",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Solve both concentration bounds to intersect x≤1200 and x≥900, then compare the answer choices with [900,1200].",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 53,
+      "questionUid": "qid_v1_a370b70823bb029decf512751b0278a13ad2884afd9c1269575b5429af6d58e9",
+      "sourceIdentity": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js#15",
+      "sourceFingerprint": "d15a024e49310a7ee631adbcbd616a02da4e061f344e97a163dcef2a7fe86b33",
+      "hiddenExistingL3": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "절댓값 식의 구간분기·해집합 판정",
+      "a": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem gives y=x²−2|x|+1 and y=x+k and asks for k yielding four distinct real solutions.",
+        "solutionMathEvidence": "The solution derives left tangency k=3/4 and the cusp crossing k=1, then states 3/4<k<1 and α+β=7/4.",
+        "decisiveStep": "Combine the left-branch double-root threshold k=3/4 with the cusp crossing k=1, keeping both endpoints excluded.",
+        "l3Reason": "The ACTIVE graph-intersection type matches counting line intersections with the given parameterized piecewise quadratic graph.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Intersect y=x²−2|x|+1 with y=x+k; find α+β for the interval of k giving four distinct intersections.",
+        "solutionMathEvidence": "The solution splits the absolute-value graph, finds the left tangency at 3/4 and the join threshold at 1.",
+        "decisiveStep": "Exactly four points occur for 3/4<k<1, so α+β=7/4.",
+        "l3Reason": "The active type covers parameter-dependent line intersections with the piecewise quadratic graph.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "The four-solution count is determined by intersections of a line with two absolute-value parabola branches. A/B/C select graph-intersection counting; the old absolute-value equation/inequality key is a plausible ingredient but not the decisive L3.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 54,
+      "questionUid": "qid_v1_434f850d67a5b8cd177bad63a5f1f1e3f9483f9e0784704896f08e8cba24a0fe",
+      "sourceIdentity": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "d907d8f33d4c0a9fc5c673b0553b78210c305072bbcfe21dc9a538cc73095e8a",
+      "hiddenExistingL3": "PT_H1_COMPLEX_OPERATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "복소수 사칙연산·상등·켤레의 직접 활용",
+      "a": {
+        "l3": "NEW:Simplify nested rational expressions with a complex variable input",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source sets a=2+i and asks for the difference of two nested fractional expressions in a.",
+        "solutionMathEvidence": "The solution reduces the terms to 1−a and a+1, obtains −2a, and evaluates it as −4−2i.",
+        "decisiveStep": "Reduce the first nested fraction to 1−a and the second to a+1 before evaluating at 2+i.",
+        "l3Reason": "No ACTIVE L3 problem type names this complex-valued nested-fraction simplification structure.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Simplify nested reciprocal expressions in a fixed complex parameter",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "For a=2+i, evaluate the difference of two nested reciprocal expressions.",
+        "solutionMathEvidence": "The solution simplifies the first term to 1−a and the second to a+1, obtaining −2a.",
+        "decisiveStep": "The difference is −2a=−4−2i.",
+        "l3Reason": "No active L3 names this nested complex arithmetic form.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Reduce the first nested fraction to 1−a and the second to a+1 before evaluating at 2+i.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 55,
+      "questionUid": "qid_v1_428a13c022da07d8ee527bb7274e012938405f7072e5f9de2a57a4c009798bbb",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "31e809150fbae8263ebcdbf607ebb989266238b9fed45828488654983c96b309",
+      "hiddenExistingL3": "PT_H1_COMPLEX_POWER_ROOT",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "복소수 거듭제곱·단위근·주기 구조",
+      "a": {
+        "l3": "PT_FUNCTION_VALUE",
+        "category": "DIFF_ERROR",
+        "sourceMathEvidence": "The source defines z=(1+i)/(1−i) and asks for 3z⁴−2z³+6z²−3z+4.",
+        "solutionMathEvidence": "The solution obtains z=i, substitutes z²=−1,z³=−i,z⁴=1, and reports 1−i.",
+        "decisiveStep": "Reduce z to i before evaluating the fourth-, third-, and second-power terms.",
+        "l3Reason": "The ACTIVE function-value type matches evaluating a polynomial expression at the explicitly simplified input z=i.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Evaluate a polynomial at the complex unit i using power cycling",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "For z=(1+i)/(1−i), evaluate 3z⁴−2z³+6z²−3z+4.",
+        "solutionMathEvidence": "The solution rationalizes to z=i and substitutes its powers.",
+        "decisiveStep": "3−2(−i)+6(−1)−3i+4=1−i.",
+        "l3Reason": "No active L3 specifically names fixed root-of-unity polynomial evaluation.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "NEW",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "After z=(1+i)/(1−i)=i, powers cycle with period four before polynomial evaluation. B and C retain the complex-power method; A's generic FUNCTION_VALUE loses the decisive periodic structure and is an error.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": true
+    },
+    {
+      "row": 56,
+      "questionUid": "qid_v1_a49dcc90bf3d233a810bf71570275eae7603d180f9ac21afc53daba7d43a844c",
+      "sourceIdentity": "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js#6",
+      "sourceFingerprint": "e53bf4f167a09f0061596b2a3e47554888ae94e90f1a41cb8e4cff700fb5cf8b",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_INEQUALITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "이차부등식·전역 부호·매개변수 범위",
+      "a": {
+        "l3": "NEW:Count integer parameters for which a quadratic inequality has an empty solution set",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The stem asks how many integer a make x²−2ax+a+6≤0 have no real solution.",
+        "solutionMathEvidence": "The solution obtains D=4(a−3)(a+2), requires D<0, gives −2<a<3, and counts four integers.",
+        "decisiveStep": "Set D<0 because the leading coefficient is positive and no x can satisfy the nonpositive inequality only when the quadratic stays strictly above zero.",
+        "l3Reason": "No ACTIVE L3 type specifically names the empty-solution quadratic-inequality parameter count.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Count integer parameters for which a quadratic inequality has empty solution set",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Count integer a for which x²−2ax+a+6≤0 has no solutions.",
+        "solutionMathEvidence": "The solution sets D<0 and counts four integer values.",
+        "decisiveStep": "D=4(a−3)(a+2)<0 gives −2<a<3; integer a values are −1,0,1,2, count 4.",
+        "l3Reason": "No active L3 names this empty-set parameter count.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Set D<0 because the leading coefficient is positive and no x can satisfy the nonpositive inequality only when the quadratic stays strictly above zero.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 57,
+      "questionUid": "qid_v1_925969e57e7f0e0b9c5f8f6fa833d80ebf969d5e12990aaeb5f628942fcbfe7b",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#8",
+      "sourceFingerprint": "f9dc22ee42e103b6de83f2fe79b8a466d885f45785a31e3a2fd23dd72471b90d",
+      "hiddenExistingL3": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "조건에서 이차함수 식·축·계수를 복원",
+      "a": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The source asks for the minimum of y=x²−4x−5 over real x.",
+        "solutionMathEvidence": "The solution rewrites y=(x−2)²−9 and reports minimum −9 at x=2.",
+        "decisiveStep": "Use (x−2)²≥0, with equality at x=2, to establish the value −9 as attainable minimum.",
+        "l3Reason": "The ACTIVE extremum type directly matches finding the minimum of a quadratic function over the reals.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Find the minimum of y=x²−4x−5.",
+        "solutionMathEvidence": "The solution completes the square and gets −9.",
+        "decisiveStep": "Minimum is −9.",
+        "l3Reason": "The active type covers a quadratic function's minimum.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "The source asks only the minimum of x²−4x−5 and completes the square to −9. A/B extrema is directly grounded; the old quadratic-reconstruction type has no reconstruction step.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 58,
+      "questionUid": "qid_v1_6ce2b6dde099902e283f95b803e5a9bc4a19ec7dadca7426b0b2bf1bcbe6bfcd",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#12",
+      "sourceFingerprint": "fddb7f1aabc47d84ef94a8ee83b33424c499644828d5c1792b5ddb82e0737bad",
+      "hiddenExistingL3": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "근과 계수의 관계·근의 대칭식 활용",
+      "a": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The source gives roots α,β of x²−kx+k−7=0 for real k and asks for the minimum of α²+β².",
+        "solutionMathEvidence": "The solution obtains k²−2(k−7)=k²−2k+14=(k−1)²+13 and minimum 13 at k=1.",
+        "decisiveStep": "Complete the square in k to obtain (k−1)²+13 and attain equality at k=1.",
+        "l3Reason": "The ACTIVE type matches minimizing the Vieta-derived quadratic expression in k.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "For roots of x²−kx+k−7=0, minimize α²+β² over real k.",
+        "solutionMathEvidence": "The solution uses Vieta and completes the square, obtaining 13.",
+        "decisiveStep": "α²+β²=k²−2k+14=(k−1)²+13, so the minimum is 13.",
+        "l3Reason": "The active type covers minimizing a parameter expression formed from quadratic roots.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "NEW",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "Vieta gives α²+β²=k²−2k+14, then completing the square gives its minimum 13. A/B extrema is a grounded primary-method alternative; the old root-coefficient relation records the prerequisite.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 59,
+      "questionUid": "qid_v1_5022b4b8c8181c1c35476312ac274877ec7a6cb99469f9f844deda123c593fcb",
+      "sourceIdentity": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#24",
+      "sourceFingerprint": "a88af3b54bb766d806c9e7d5a7085b310b1de0c84a10cb8ca543ea529e243f9f",
+      "hiddenExistingL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "조합·선택·분배 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "The stem shows six chairs and asks for arrangements of two girls and three boys in which the girls are not adjacent; an empty chair separates students who are not neighbors.",
+        "solutionMathEvidence": "The solution counts 15−5=10 girl-seat pairs, multiplies by 2! and 4P3=24, and obtains 480; the viewed image confirms six seats in a row.",
+        "decisiveStep": "Count 10 allowable unordered girl-seat pairs before multiplying by 2! and 4P3.",
+        "l3Reason": "The ACTIVE arrangement type covers seating distinct students subject to a nonadjacency restriction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Seat two girls and three boys in six in-a-row chairs so the girls are not neighbors.",
+        "solutionMathEvidence": "The solution chooses 10 nonadjacent female-seat pairs, orders girls and places boys, getting 480.",
+        "decisiveStep": "(C(6,2)−5)·2!·4P3=10·2·24=480.",
+        "l3Reason": "The active type covers ordered seating of distinct students under a restriction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Six-seat nonadjacent seating first selects positions and then permutes distinct students. A/B arrangement is a grounded alternative to the old selection/distribution emphasis.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 60,
+      "questionUid": "qid_v1_3fc24c90d7d450771b196f697e2c6761d61d6cc61fa902329e507469ac27ebe1",
+      "sourceIdentity": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js#7",
+      "sourceFingerprint": "f1b1118041e9df76d5ddcb894d970dce9c3ead6e9bfacc67da23c89142a17ea4",
+      "hiddenExistingL3": "PT_COUNTING_ARRANGEMENT",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "순열·조건 배열 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "The source asks for arrangements of three distinct fruit types and three distinct vegetable types in a line with fruit and vegetable alternating.",
+        "solutionMathEvidence": "The solution gives two alternating patterns and 3! choices within each category, yielding 72 arrangements.",
+        "decisiveStep": "Choose which category occupies the first position, then permute the three distinct items of each category.",
+        "l3Reason": "The ACTIVE arrangement type covers arranging distinct objects subject to an alternating-position restriction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Plant three distinct fruit types and three distinct vegetable types in a row, alternating the categories.",
+        "solutionMathEvidence": "There are two category patterns; each pattern allows 3! fruit orders and 3! vegetable orders, for 2·3!·3!=72.",
+        "decisiveStep": "2·3!·3!=72.",
+        "l3Reason": "The active permutation type directly covers arrangements of distinct objects under an alternation restriction.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: Choose which category occupies the first position, then permute the three distinct items of each category.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 61,
+      "questionUid": "qid_v1_6759c27cc7295966f1aa3d3af6e5ed300e5abd6751fba2d8b67974853037a0b7",
+      "sourceIdentity": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js#7",
+      "sourceFingerprint": "badd24cd5e586a6e883b896f796cf00ab6c3ea38f08291973b10d952cea4fe45",
+      "hiddenExistingL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+      "a": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "서로 다른 학생 7명, 조 크기 3·2·2, 보기 ② 105가 발문에 명시된다.",
+        "solutionMathEvidence": "35×6/2=105가 보기 ②와 일치한다.",
+        "decisiveStep": "7C3×4C2÷2!=35×3=105.",
+        "l3Reason": "조합으로 학생 집합을 3명 조와 두 개의 2명 조에 분할한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Partition 7 distinct students into groups of sizes 3,2,2.",
+        "solutionMathEvidence": "Choose 3 in 35 ways; split the other 4 into two unlabeled pairs in C(4,2)/2=3 ways.",
+        "decisiveStep": "C(7,3)·C(4,2)/2=105.",
+        "l3Reason": "Active selection/distribution covers choosing distinct students into groups.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "A 7-person split into 3,2,2 groups uses choosing a triple and dividing out exchange of equal-size pairs. A/B selection-distribution is more specific than the old general counting-principle key.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 62,
+      "questionUid": "qid_v1_80b879143850bbeb0210389d759c372a9bb17d77f70875f432b1659ccda04472",
+      "sourceIdentity": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js#10",
+      "sourceFingerprint": "10277dc1093b647aa57ff03b9b764275ed403bec5d3e97bd93a9e3436e45e9a1",
+      "hiddenExistingL3": "PT_FUNCTION_COUNTING",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "함수의 개수 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "5개의 서로 다른 공, 5개의 서로 다른 상자, 정확히 2개 공상자라는 조건과 보기 ③ 1500을 읽었다.",
+        "solutionMathEvidence": "해설의 10×(243−96+3)=1500은 정확히 3개 상자를 사용하는 배정으로 검산된다.",
+        "decisiveStep": "5C3×(3^5−3·2^5+3)=10×150=1500.",
+        "l3Reason": "각 공은 선택된 세 상자 중 하나로 독립 배정되며 같은 상자에 여러 공이 가능하다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Put 5 distinct balls into 5 distinct boxes with exactly 2 empty.",
+        "solutionMathEvidence": "Choose 3 used boxes; onto count 3⁵−3·2⁵+3=150; multiply by C(5,3)=10.",
+        "decisiveStep": "C(5,3)(243−96+3)=1500.",
+        "l3Reason": "The active type covers repeated assignments of distinct objects to labeled destinations.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: 5C3×(3^5−3·2^5+3)=10×150=1500.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 63,
+      "questionUid": "qid_v1_6fe0d891005112d09d0bdf0139493fc5c129d4079f0da97f4d1f7a3e660a51fc",
+      "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#19",
+      "sourceFingerprint": "ba6071e1a550c4f586248e108a36a35f3cb72a37a293581c34529bd8a33f2d91",
+      "hiddenExistingL3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "중복 선택·반복 배정 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "문항의 복원추출, a3=5, a1≤a2<a3<a4≤a5와 선택지 ④ 150을 모두 대조했다.",
+        "solutionMathEvidence": "좌측 10×우측 15=150이며 양쪽 중복 허용 해설은 발문과 일치한다.",
+        "decisiveStep": "좌측 10가지와 우측 15가지를 곱해 150.",
+        "l3Reason": "순서가 부등식으로 정해진 두 수의 중복선택을 각각 세어 곱한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "With replacement from 1–10, a₃=5 and a₁≤a₂<5<a₄≤a₅; count.",
+        "solutionMathEvidence": "The left pair count is 4+3+2+1=10; the right pair count is 5+4+3+2+1=15; total 150.",
+        "decisiveStep": "10·15=150.",
+        "l3Reason": "The active selection type covers choosing repeated values as multisets.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Five draws with replacement and order inequalities can be viewed as repeated assignment or constrained selection. A/B selection-distribution differs from the old repeated-assignment emphasis but follows the counted choices.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 64,
+      "questionUid": "qid_v1_6374ac334daf7638b5befbf40d2e30fd9eaeb395d1fce3a4af5d9640775abd00",
+      "sourceIdentity": "original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js#8",
+      "sourceFingerprint": "f802d1afc0a517ef3138b665af627c9b14bee7841e5571edb00d736aaee9a71a",
+      "hiddenExistingL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+      "a": {
+        "l3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "q8.png 픽셀에서 위 A, 좌 B, 우 D, 아래 C를 확인했고 B-D와 A-C는 경계를 공유하지 않는다.",
+        "solutionMathEvidence": "그림의 4사이클 인접성으로 4(9+12)=84이며 답 ②와 맞는다.",
+        "decisiveStep": "A 4가지에 대해 B=D이면 3×3=9, B≠D이면 3×2×2=12; 4(9+12)=84.",
+        "l3Reason": "영역마다 4색 중 하나를 반복 배정하지만 인접 영역에 같은 색을 줄 수 없다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Color a four-region adjacency graph with four colors",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Color regions A,B,C,D with four colors so adjacent regions differ.",
+        "solutionMathEvidence": "Adjacencies AB,AD,BC,CD; choose A then B; split D=B or D≠B, then count C.",
+        "decisiveStep": "4·3·(3+2·2)=84.",
+        "l3Reason": "Sanitized active problem types/templates have no graph-coloring equivalent.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "reviewStatus": "REVIEWED",
+        "sourceIssue": null,
+        "holdReason": null
+      },
+      "solReason": "Four-region coloring uses an adjacency graph with repeated colors permitted. A's repeated assignment and B's graph-coloring candidate are grounded refinements of the old general counting type; C independently used repeated assignment.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 65,
+      "questionUid": "qid_v1_c376eb0e1cfe81cac7ee049a0be70ee39cb23a55e38655543fb6049d99e6f5a6",
+      "sourceIdentity": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js#12",
+      "sourceFingerprint": "5fe7770f112acd77a27cd1e36b08019d24d0a1004cec8a66ec747a4003b7846b",
+      "hiddenExistingL3": "PT_COUNTING_ARRANGEMENT",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "순열·조건 배열 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "서로 다른 사탕 4개, 같은 초콜릿 2개, 5개 추출, H 비연속과 C 최대 2연속을 확인했다.",
+        "solutionMathEvidence": "24+5×24=144로 보기 ⑤와 일치한다.",
+        "decisiveStep": "H 1개는 CCHCC만 가능해 4!=24; H 2개는 비인접 6패턴 중 HCCCH를 제외한 5패턴×4P3=120; 합 144.",
+        "l3Reason": "서로 다른 사탕의 순서 배열과 같은 초콜릿의 허용 위치 배열을 결합한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Draw 5 snacks from 4 distinct candies and 2 identical chocolates; H cannot touch and C cannot run 3 long.",
+        "solutionMathEvidence": "One H gives 24; two H give 5 valid category patterns·4P3=120; total 144.",
+        "decisiveStep": "24+5·24=144.",
+        "l3Reason": "Active type covers arrangements with identical and distinct objects under constraints.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: H 1개는 CCHCC만 가능해 4!=24; H 2개는 비인접 6패턴 중 HCCCH를 제외한 5패턴×4P3=120; 합 144.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 66,
+      "questionUid": "qid_v1_4cd2b3a60851a3865d81e04ab54a4f8e7bec9366b46f8d6d0657c44b468ac172",
+      "sourceIdentity": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js#4",
+      "sourceFingerprint": "7b03bf10e44149cab4293723ff14badbbcf46861a6296946206a60de054721e7",
+      "hiddenExistingL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "조합·선택·분배 canonical 재사용",
+      "a": {
+        "l3": "NEW:순열·조합 공식값의 혼합 계산",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "원문 5P2+7C4와 선택지 ⑤ 55를 확인했다.",
+        "solutionMathEvidence": "20+35=55가 해설과 정답을 지지한다.",
+        "decisiveStep": "5P2=20, 7C4=35, 합 55.",
+        "l3Reason": "ACTIVE 배열형 L3는 실제 배열 경우의 수를, 선택형 L3는 선택 경우의 수를 세는 정의여서 기호 두 개의 단순 합 계산 전체를 정확히 대표하지 않는다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Evaluate a mixed permutation/combination arithmetic expression",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Evaluate 5P₂+7C₄.",
+        "solutionMathEvidence": "5P₂=20 and 7C₄=7C₃=35; sum 55.",
+        "decisiveStep": "20+35=55.",
+        "l3Reason": "Active types cover individual operations but no L3 names their direct sum.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "The prompt merely evaluates 5P2+7C4. Worker candidates correctly name mixed formula evaluation; the old selection/distribution key implies an application absent from the source. A separate new type may still be overclassification.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 67,
+      "questionUid": "qid_v1_e4b9d65fd12487b9e1a3cd3539a757d216beec078420203fe7dc06e25f03bf1d",
+      "sourceIdentity": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js#11",
+      "sourceFingerprint": "50a89503103213cb0318da941b0c557b7d2368e40b4d9c59d87bb5f6361b1317",
+      "hiddenExistingL3": "PT_COUNTING_ARRANGEMENT",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "순열·조건 배열 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "a는 여자 3명 이웃, b는 남자 2명 비이웃이며 목표 b−a와 답 ④ 36이다.",
+        "solutionMathEvidence": "3!·3!=36, 3!·4P2=72, 차 36이 맞는다.",
+        "decisiveStep": "a=36, b=72이므로 b−a=36.",
+        "l3Reason": "서로 다른 5명의 줄 세우기를 인접·비인접 조건으로 센다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "For 2 men and 3 women in a row, count all women together (a) and men not adjacent (b); find b−a.",
+        "solutionMathEvidence": "a=3!·3!=36; b=3!·4P₂=72; b−a=36.",
+        "decisiveStep": "72−36=36.",
+        "l3Reason": "Active type covers block and gap arrangements of distinct people.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: a=36, b=72이므로 b−a=36.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 68,
+      "questionUid": "qid_v1_4342cdbf79afacf653adacfe44cc6334de3308caf9f9fdbad605e1cc3b044831",
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#1",
+      "sourceFingerprint": "e2233fa03ea99f3d3fd61c67d380f432619c505aaf51d2558b80e8213498c369",
+      "hiddenExistingL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+      "a": {
+        "l3": "NEW:순열·조합 공식값의 혼합 계산",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "발문 5!+7C2, 선택지 ① 141을 확인했다.",
+        "solutionMathEvidence": "120+21=141로 해설과 정답이 맞는다.",
+        "decisiveStep": "120+21=141.",
+        "l3Reason": "실제 배치나 집합 선택을 묻지 않는 기호값 합으로, ACTIVE 배열 또는 선택 L3 하나에 넣으면 다른 항을 누락한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Evaluate a factorial-plus-combination expression",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Evaluate 5!+7C₂.",
+        "solutionMathEvidence": "120+21=141.",
+        "decisiveStep": "141.",
+        "l3Reason": "No active L3 specifically names a direct sum of these notation forms.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: 120+21=141.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 69,
+      "questionUid": "qid_v1_d9a0f6371046a0b88eb3db55a47414a9762c25fd66ce34271e8246b70cb08029",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#16",
+      "sourceFingerprint": "07345f656c6373e85f45f3156454f204b47aa362747e445d0e3287517a8e9908",
+      "hiddenExistingL3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "중복 선택·반복 배정 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "복원추출, 합 a1+a2+a4=5, a1<a3<a5, 값 범위 1~7과 보기 ④ 71을 확인했다.",
+        "solutionMathEvidence": "a1=1,2,3 이외는 양의 a2,a4가 불가하고 45+20+6=71이다.",
+        "decisiveStep": "3·15+2·10+1·6=71.",
+        "l3Reason": "a3,a5를 증가 순서로 선택하는 조합과 양의 순서쌍의 선택을 결합한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "With replacement from 1–7, count tuples with a₁+a₂+a₄=5 and a₁<a₃<a₅.",
+        "solutionMathEvidence": "a₁=1,2,3 give ordered-pair counts 3,2,1 and later pair choices 15,10,6; total 71.",
+        "decisiveStep": "45+20+6=71.",
+        "l3Reason": "The active type covers the later finite pair selection.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Five replacement draws are counted by cases for a1 and ordered pair/sum restrictions. A/B selection-distribution is a grounded alternative to old repeated-assignment naming.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 70,
+      "questionUid": "qid_v1_2d4bf3d948f482ad4a3568c35178b51ac1c61835c5aaaae6a7564543449525dd",
+      "sourceIdentity": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js#20",
+      "sourceFingerprint": "28b8c8ceb6af96ebc9b4e687e28ca62fefafd24bac456215e02548ccc008e916",
+      "hiddenExistingL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+      "a": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "q20.png에서 왼쪽 4팀은 두 개의 좌·우 1회전 경기 위치, 오른쪽 3팀은 1회전 경기 한 개와 부전승 위치로 그려져 있다.",
+        "solutionMathEvidence": "해설 315는 왼쪽 두 경기의 교환을 2!로 나눈 결과다. 그림에서 위치까지 다른 대진으로 세면 630으로 달라진다.",
+        "decisiveStep": "7×15×3=315이라는 해설 계산은 두 나머지 1회전 경기를 교환 동치로 본다.",
+        "l3Reason": "팀을 부전승 1팀과 대진할 경기 2팀 및 나머지 두 쌍으로 나누는 집합 분할이다.",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Count 7-team single-elimination brackets shown in the figure.",
+        "solutionMathEvidence": "Choose bye team, its next-round opponent pair, and partition remaining four into unordered pairs: 7·15·3=315.",
+        "decisiveStep": "7·C(6,2)·C(4,2)/2=315.",
+        "l3Reason": "The active type covers placing distinct teams into tournament slots.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "reviewStatus": "HOLD",
+        "sourceIssue": "Bracket equivalence is unspecified: fixed left/right match slots in the image support 630, while abstract unordered sibling matches support the stated 315.",
+        "holdReason": "The fixed bracket drawing and 315 answer rely on incompatible or at least unstated match-position equivalence; a clarified counting convention or corrected answer is required."
+      },
+      "solReason": "The pictured fixed bracket and the solution's /2 treatment of the four-team half create a slot-equivalence ambiguity. A selects group/pair selection, B arrangement, C selects selection/distribution but HOLD; the old general counting key is too broad to settle the source ambiguity.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": true
+    },
+    {
+      "row": 71,
+      "questionUid": "qid_v1_53d8cf1aaa261e8b5df44bd1634c30d497c1ee472147259f71948088e85f915d",
+      "sourceIdentity": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#5",
+      "sourceFingerprint": "f15da86cc8eb5f9a7b5802e550bb98a3885b492ea157268c9450ea63a2d1b818",
+      "hiddenExistingL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "조합·선택·분배 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "10대 중 8대 선택, 보기 ② 45이며 순서 조건은 없다.",
+        "solutionMathEvidence": "10C2=10·9/2=45로 해설이 맞는다.",
+        "decisiveStep": "10C8=10C2=45.",
+        "l3Reason": "서로 다른 대상 중 정해진 개수를 순서 없이 선택한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Choose 8 cars from 10 distinct cars.",
+        "solutionMathEvidence": "C(10,8)=C(10,2)=45.",
+        "decisiveStep": "C(10,2)=45.",
+        "l3Reason": "The active type covers an unordered subset choice.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: 10C8=10C2=45.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 72,
+      "questionUid": "qid_v1_61b67d7ac3dfdb00112f86db4853e641b048d8142736f6b99ab052b650fdcb07",
+      "sourceIdentity": "original/high/h1/2final/21_제일고_2학기_기말_고1_기출.js#11",
+      "sourceFingerprint": "59e5b3d3d27195ac2e238f3016d7595ab3739bfe92f407df6bfe4c51402bd129",
+      "hiddenExistingL3": "PT_COUNTING_ARRANGEMENT",
+      "hiddenExistingL3Status": "REUSE_ACTIVE",
+      "hiddenExistingL3Reason": "순열·조건 배열 canonical 재사용",
+      "a": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "eijlog가 지정 순서의 첫 배열, goljie가 끝 배열이며 목표 jeilgo와 보기 ④ 242를 확인했다.",
+        "solutionMathEvidence": "e/i 선두 240개, jeilog 1개 선행, 자기 순위 1개로 242다.",
+        "decisiveStep": "2×5!+1+1=242번째.",
+        "l3Reason": "여섯 다른 문자의 순열들을 사전식으로 배열한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Under e<i<j<l<o<g, find the position of jeilgo.",
+        "solutionMathEvidence": "Earlier first letters contribute 2·5!=240; jeilog is one extra predecessor; rank is 242.",
+        "decisiveStep": "240+1+1=242.",
+        "l3Reason": "The active type covers permutations of distinct symbols.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: 2×5!+1+1=242번째.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 73,
+      "questionUid": "qid_v1_d46e346c8b4f101201ca01b1a88bc47a4cd3e2f4e25f985ad33c6b3ad0aed4fb",
+      "sourceIdentity": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js#12",
+      "sourceFingerprint": "06de9b8451fdad0564fe13527da164a35b820cd35fb1fa60364028b4080783bb",
+      "hiddenExistingL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+      "a": {
+        "l3": "NEW:순열 공식의 항등·비율식으로 미지수 결정",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "m,n 자연수, nP5/nP3 및 nP6/nP4 관계, 보기 ④ 29를 확인했다.",
+        "solutionMathEvidence": "n=9이면 m=20이고 20·9P5=600·9P3, 9P6=20·9P4가 둘 다 성립한다.",
+        "decisiveStep": "t=n−4이면 t²(t²−1)=600, 자연수 t=5여서 n=9,m=20,m+n=29.",
+        "l3Reason": "ACTIVE 배열 L3는 실제 배열 수를 세는 유형인데 이 문항은 순열 기호의 곱셈식을 약분하여 n,m을 역으로 결정한다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "PT_COUNTING_ARRANGEMENT",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Natural m,n satisfy m·nP5=600·nP3 and nP6=m·nP4; find m+n.",
+        "solutionMathEvidence": "Cancel to get m(n−3)(n−4)=600 and m=(n−4)(n−5); setting t=n−4 yields t²(t²−1)=600.",
+        "decisiveStep": "t=5,n=9,m=20, so m+n=29.",
+        "l3Reason": "The active type covers permutation counts written as falling factorials.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Two permutation equations are reduced by cancelling common factorial factors to find m,n. Worker permutation-identity/arrangement labels are grounded refinements of the old general-counting type.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 74,
+      "questionUid": "qid_v1_20fd1a35d1c67ec114139c77d7af614574548901ad0c78c919a64ae115898721",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#3",
+      "sourceFingerprint": "2f61565f557ca017d2600cadbadfb5b1fe49a0f99579c4131c36312db265f919",
+      "hiddenExistingL3": "PT_H1_MATRIX_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬 방정식·성분 조건으로 미지수 결정",
+      "a": {
+        "l3": "NEW:행렬 연립 등식의 해를 구해 행렬곱 계산",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "두 2×2 행렬 등식, AB 성분 총합, 보기 ① −4를 확인했다.",
+        "solutionMathEvidence": "A−2B=M 및 2A+B=N를 재대입 검산했고 AB 성분 합은 −4다.",
+        "decisiveStep": "A=[1 −2;0 3], B=[0 0;−3 −1], AB=[6 2;−9 −3], 성분 합 −4.",
+        "l3Reason": "sanitized ACTIVE L3에는 행렬 연립 등식 또는 행렬곱 문제유형이 없어서 새로운 후보가 필요하다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Solve unknown matrices from linear combinations and aggregate their product",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Given A−2B=M₁ and 2A+B=M₂, find the entry sum of AB.",
+        "solutionMathEvidence": "A=[[1,−2],[0,3]], B=[[0,0],[−3,−1]], AB=[[6,2],[−9,−3]], sum −4.",
+        "decisiveStep": "AB entry sum is −4.",
+        "l3Reason": "No active type names this matrix-system-to-product sequence.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: A=[1 −2;0 3], B=[0 0;−3 −1], AB=[6 2;−9 −3], 성분 합 −4.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 75,
+      "questionUid": "qid_v1_b6c39f6501505f3e20d1862942d16a4993aada8aa60a259305d716f1512588e9",
+      "sourceIdentity": "original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js#14",
+      "sourceFingerprint": "55e6bb6228c331fb2a401216fa29dc65f11026e3e62aab3ed0174c836f647b2c",
+      "hiddenExistingL3": "PT_H1_MATRIX_MULTIPLICATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬곱·제곱의 성분 계산과 활용",
+      "a": {
+        "l3": "NEW:행렬 연산 법칙의 참·거짓 판정",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "다섯 보기의 ① 교환, ② 소거, ③ (A+E)², ④ 제곱식, ⑤ A=E 단언을 각각 읽었다.",
+        "solutionMathEvidence": "③만 단위행렬과의 곱으로 항등적으로 성립하고 나머지는 해설의 반례로 깨진다.",
+        "decisiveStep": "(A+E)^2=A²+AE+EA+E²=A²+2A+E만 항상 성립.",
+        "l3Reason": "ACTIVE L3 목록에는 행렬 연산 성질이나 항상 참 판정형이 없다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Judge universal square-matrix identities by expansion and counterexample",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Select the always-true claim among five square-matrix statements.",
+        "solutionMathEvidence": "Expand (A+E)² and refute others with noncommutativity or counterexamples.",
+        "decisiveStep": "(A+E)²=A²+2A+E.",
+        "l3Reason": "No active L3 names general matrix truth/false statement analysis.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: (A+E)^2=A²+AE+EA+E²=A²+2A+E만 항상 성립.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 76,
+      "questionUid": "qid_v1_dff7b867626a8b76ed59e074c64f27e2e0127c9a17f3fe8dbc87dafd2532906a",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#20",
+      "sourceFingerprint": "382ec7dfbbe4a480a9a2e5db554541f2b845741a3feb4bbfef69870fbd619ba1",
+      "hiddenExistingL3": "PT_H1_MATRIX_POWER_IDENTITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬 거듭제곱·다항식 항등관계",
+      "a": {
+        "l3": "NEW:행렬 거듭제곱 성분 조건으로 미지수 결정",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "A=[x −1;0 −1], 두 다른 조건, 실수 x, 답 5/2를 확인했다.",
+        "solutionMathEvidence": "A³ 비대각 원소는 −x²+x−1이며 a=2,b=1/2로 주어진 답과 일치한다.",
+        "decisiveStep": "성분 합 4는 (x−2)(x²+x+3)=0에서 a=2; (1,2)성분 등식은 (x−1/2)²=0에서 b=1/2; 합 5/2.",
+        "l3Reason": "ACTIVE L3에는 행렬 거듭제곱의 성분 조건 유형이 없다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover two scalar parameters from conditions on one matrix power",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "For A=[[x,−1],[0,−1]], define a by A³ entry sum 4 and b by A³=3A/4−I/4; find a+b.",
+        "solutionMathEvidence": "A³=[[x³,−x²+x−1],[0,−1]]; first condition gives x=2, second x=1/2; sum 5/2.",
+        "decisiveStep": "a=2,b=1/2, so a+b=5/2.",
+        "l3Reason": "No active type names multiple scalar projections of a matrix power.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: 성분 합 4는 (x−2)(x²+x+3)=0에서 a=2; (1,2)성분 등식은 (x−1/2)²=0에서 b=1/2; 합 5/2.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 77,
+      "questionUid": "qid_v1_2a02cbe32024c9aad7afbcdb79176161e3c5e534dc10e8bd1edae24cb9d9b296",
+      "sourceIdentity": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js#6",
+      "sourceFingerprint": "ad860cb594d5410597bda0c202087093e4bce44fec6174bda179e1417e169674",
+      "hiddenExistingL3": "PT_H1_MATRIX_BASIC_OPERATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬의 크기·상등·덧셈·스칼라배·성분 정의",
+      "a": {
+        "l3": "NEW:행렬 상등의 대응 성분 비교",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "왼쪽 (1,1)=5,(2,2)=x와 오른쪽 (1,1)=y+1,(2,2)=−5, 보기 ② −1을 확인했다.",
+        "solutionMathEvidence": "y=4,x=−5로 합 −1이며 해설에 오류가 없다.",
+        "decisiveStep": "y=4, x=−5, x+y=−1.",
+        "l3Reason": "ACTIVE L3에는 행렬 상등 자체를 다루는 유형이 없다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Recover scalar variables from matrix entry equality",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Two 2×2 matrices are equal; find x+y.",
+        "solutionMathEvidence": "Entry comparison gives y=4,x=−5, hence −1.",
+        "decisiveStep": "x+y=−1.",
+        "l3Reason": "No active type names this direct variable-recovery pattern.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: y=4, x=−5, x+y=−1.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 78,
+      "questionUid": "qid_v1_8bec6c1e6c3adab2f32b0b9a1409c992725bdf5bfe0e33501dd6ecf3e7d4a4ba",
+      "sourceIdentity": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js#15",
+      "sourceFingerprint": "937460acf4de0e9edb01e528870588129bfce1738c4270789218ea5f86ec8a97",
+      "hiddenExistingL3": "PT_H1_MATRIX_POWER_IDENTITY",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬 거듭제곱·다항식 항등관계",
+      "a": {
+        "l3": "NEW:행렬 거듭제곱 성분 조건으로 미지수 결정",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "(가) 모든 자연수 n, (나) 99항 교대합=E, (다) a≠b, i=√−1과 답 ② 0을 확인했다.",
+        "solutionMathEvidence": "±i에서는 4항씩 합 0이고 마지막 3항 합 1; 0,−1은 탈락하여 합 0이다.",
+        "decisiveStep": "z=0은 교대합 0, z=−1은 99, z=±i는 1; a≠b이므로 (a,b)=(i,−i) 또는 역순, 합 0.",
+        "l3Reason": "행렬 거듭제곱 조건이 primary이며 sanitized ACTIVE 목록에는 대응 L3가 없다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Select diagonal entries from power-sum identities plus distinctness",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "A=diag(a,b) satisfies a four-power sum identity for all n and an alternating 99-power identity; a≠b; find entry sum.",
+        "solutionMathEvidence": "Scalar candidates are 0,−1,±i; the second condition rejects 0,−1, leaving distinct a,b=i,−i.",
+        "decisiveStep": "The distinct survivors are i and −i, so sum=0.",
+        "l3Reason": "No active L3 names this matrix-entry root filter.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: z=0은 교대합 0, z=−1은 99, z=±i는 1; a≠b이므로 (a,b)=(i,−i) 또는 역순, 합 0.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 79,
+      "questionUid": "qid_v1_c64d112e4410d2e181230e20c6c28c18334f082734fe2bca2e3a8493f7f314aa",
+      "sourceIdentity": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js#12",
+      "sourceFingerprint": "c445d1109ed0dc28011a3735cd81a6faf5d626d78e0c84fcd3a6525354178fc4",
+      "hiddenExistingL3": "PT_H1_MATRIX_EQUATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬 방정식·성분 조건으로 미지수 결정",
+      "a": {
+        "l3": "NEW:행렬 이차형식의 전개와 대수적 최적화",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "두 행렬 이차형식 값 0과 84, x,y 실수, 목표 최대, 보기 ④ 210을 읽었다.",
+        "solutionMathEvidence": "첫 식 x²−xy−6y²=(x−3y)(x+2y), 둘째 x²−3xy+4y²=84로 검산되며 최대 210이다.",
+        "decisiveStep": "x=3y이면 y²=21이고 x²+y²=210; x=−2y이면 y²=6이고 합 30이므로 최대 210.",
+        "l3Reason": "sanitized ACTIVE L3에 행렬 이차형식 활용 유형이 없다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Maximize a norm under matrix-defined quadratic-form constraints",
+        "category": "DIFF_PLAUSIBLE",
+        "sourceMathEvidence": "Two bilinear matrix forms equal 0 and 84; maximize x²+y².",
+        "solutionMathEvidence": "The first becomes (x−3y)(x+2y)=0; the two branches give norms 210 and 30.",
+        "decisiveStep": "max(210,30)=210.",
+        "l3Reason": "No active type names this matrix-form branch optimization.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Two matrix quadratic-form constraints are expanded and optimized over x,y. The old MATRIX_EQUATION key records the representation, while A/B candidates identify the decisive norm maximum problem.",
+      "existingL3ReviewCandidate": true,
+      "materialABL3Conflict": false
+    },
+    {
+      "row": 80,
+      "questionUid": "qid_v1_3628ecb8503ae7158bfed0a6c94ae24caf2b1fe5d41e5e6ce18935452763ae1b",
+      "sourceIdentity": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js#14",
+      "sourceFingerprint": "38642e0ec8a92d64989c0a48456386c75c8bb71433a4d535e20e92bf8cba8313",
+      "hiddenExistingL3": "PT_H1_MATRIX_MULTIPLICATION",
+      "hiddenExistingL3Status": "NEW_CANDIDATE",
+      "hiddenExistingL3Reason": "행렬곱·제곱의 성분 계산과 활용",
+      "a": {
+        "l3": "NEW:행렬곱의 실생활 수량 해석",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "P는 원가/판매가 행, Q는 상반기/하반기 열이며 발문이 판매 이익금을 판매가−원가로 정의한다.",
+        "solutionMathEvidence": "b=3·9+1·10=37, d=4·9+2·10=56이므로 하반기 이익은 d−b=19천만 원으로 선택지 ①과 같다.",
+        "decisiveStep": "하반기 판매 이익금 합은 d−b.",
+        "l3Reason": "sanitized ACTIVE L3에는 행렬곱의 행·열 의미를 실생활 표와 연결하는 유형이 없다.",
+        "reviewStatus": "REVIEWED"
+      },
+      "b": {
+        "l3": "NEW:Interpret matrix-product entries as aggregate financial quantities",
+        "category": "MATCH_GROUNDED",
+        "sourceMathEvidence": "Interpret PQ from unit-cost/price and sales-volume tables; express second-half profit using a,b,c,d.",
+        "solutionMathEvidence": "b is second-half total cost and d is second-half sales, so profit=d−b.",
+        "decisiveStep": "d−b.",
+        "l3Reason": "No active type names this table-to-matrix semantic application.",
+        "reviewStatus": "REVIEWED"
+      },
+      "cBlind": null,
+      "solReason": "Source and decisive-step evidence identify the same L3 family as the existing candidate: 하반기 판매 이익금 합은 d−b.",
+      "existingL3ReviewCandidate": false,
+      "materialABL3Conflict": false
+    }
+  ]
+}

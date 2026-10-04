@@ -1,0 +1,85 @@
+{
+  "goldCategory": "ANSWER_KEY_DEFECT",
+  "goldDefectTypes": [
+    "ANSWER_KEY_CONFLICT"
+  ],
+  "expectedPrimaryTier": "R0",
+  "caseId": "historical-seq-784",
+  "sourceQuestionUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17",
+  "immutableSourceRef": "external-source:D:/기출/1학기중간/고1/23 부영여고+/수학 상 (23 부영여고).pdf",
+  "immutableSourceSha256": "sha256:4dfd98a474481cb20f5844e2a65565b2bd4ca9a4953ee7250fc0fda02e1b291c",
+  "sourcePageNumber": 5,
+  "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/buyeong/page-5.png",
+  "sourcePageEvidenceSha256": "sha256:22af1a44b439c596c3adfca67773290b81210900778123a448d828ce15b5fab1",
+  "sourcePayload": {
+    "id": 17,
+    "level": "중",
+    "category": "나머지 정리 심화",
+    "originalCategory": "나머지 정리 심화",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식",
+      "항등식",
+      "나머지정리",
+      "계수비교",
+      "대입",
+      "조건해석",
+      "계산"
+    ],
+    "wide": false,
+    "content": "다항식 f(x)가 다음 조건을 만족시킨다. (가) f(x)를 (x+1)(x-1)로 나눈 몫과 나머지가 같다. (나) f(x)를 x-1로 나눈 나머지는 1이다. f(x)를 (x-1)(x+1)로 나눈 나머지를 R(x)라 하자. R(0)=2일 때, R(x)의 x의 계수는?",
+    "choices": [
+      "-2",
+      "-1",
+      "0",
+      "1",
+      "2"
+    ],
+    "answer": "①",
+    "sourceEvidence": {
+      "sourceEvidenceStatus": "REAL_SOURCE_RESOLVED",
+      "fullPageVerified": true,
+      "questionZoomVerified": true,
+      "choicesVerified": true,
+      "immutableSourceRef": "external-source:D:/기출/1학기중간/고1/23 부영여고+/수학 상 (23 부영여고).pdf",
+      "immutableSourceSha256": "sha256:4dfd98a474481cb20f5844e2a65565b2bd4ca9a4953ee7250fc0fda02e1b291c",
+      "sourcePageNumber": 5,
+      "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/buyeong/page-5.png",
+      "sourcePageEvidenceSha256": "sha256:22af1a44b439c596c3adfca67773290b81210900778123a448d828ce15b5fab1",
+      "transcriptionMethod": "PDF_PAGE_MANUAL_PARITY_TRANSCRIPTION",
+      "currentArchiveJsRef": "archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
+      "historicalEvidenceRefs": [
+        "archive/_generated/intelligence/phase3/sequential-review/archive-sequential-subunit-review-batch-003-v1.json#784"
+      ],
+      "sourceAnswerEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/buyeong/page-7.png",
+      "sourceAnswerEvidenceStatus": "REAL_SOURCE_ANSWER_EVIDENCE_PRESENT"
+    }
+  },
+  "independentSourceSolve": {
+    "solverId": "real-source-solver-A-20260909",
+    "solverSessionId": "real-source-solver-A-historical-seq-784",
+    "inputSourceSha256": "sha256:4dfd98a474481cb20f5844e2a65565b2bd4ca9a4953ee7250fc0fda02e1b291c",
+    "computed": "-1",
+    "answerUnique": true,
+    "responseContractValid": true,
+    "matchingChoiceIndices": [
+      2
+    ],
+    "mathVerdict": "PASS",
+    "defectSignals": [
+      "ANSWER_KEY_CONFLICT"
+    ],
+    "reasoningSummary": "PDF page gives R(0)=2 and f(1)=1, hence R(x)=ax+2 has a=-1, which is choice ②. The same PDF answer sheet records ①, so the answer-key conflict is source-resolved."
+  },
+  "sourceAnswerEvidence": {
+    "answer": "①",
+    "page": 7
+  },
+  "goldArtifactSha256": "sha256:e0214d157a0c744675ad038ac98103f992ae24bf39e39604f2464106fe2d0da9"
+}

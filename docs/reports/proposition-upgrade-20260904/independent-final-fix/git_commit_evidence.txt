@@ -1,0 +1,87 @@
+COMMIT_MESSAGE=fix(archive): close proposition independent review findings
+PRECOMMIT_HEAD=c3234b9e91e7d38e503e2793a7e76164c7451f47
+FORCE_PUSH=NOT_USED
+
+COMMAND=git status --short --untracked-files=all
+ M .codex/skills/apmath-archive-exams/SKILL.md
+ M .codex/skills/apmath-archive-exams/references/archive-layout.md
+ M .codex/skills/apmath-archive-exams/scripts/audit_archive_batch.mjs
+M  "archive/exams/original/high/h1/2final/24_\354\240\234\354\235\274\352\263\240_2\355\225\231\352\270\260_\352\270\260\353\247\220_\352\263\2401_\352\270\260\354\266\234.js"
+M  "archive/exams/original/high/h1/2mid/21_\353\247\244\354\202\260\352\263\240_2\355\225\231\352\270\260_\354\244\221\352\260\204_\352\263\2401_\352\270\260\354\266\234.js"
+M  "archive/exams/original/high/h1/2mid/22_\352\260\225\353\202\250\354\227\254\352\263\240_2\355\225\231\352\270\260_\354\244\221\352\260\204_\352\263\2401_\352\270\260\354\266\234.js"
+M  "archive/exams/original/high/h1/2mid/23_\353\247\244\354\202\260\354\227\254\352\263\240_2\355\225\231\352\270\260_\354\244\221\352\260\204_\352\263\2401_\352\270\260\354\266\234.js"
+M  "archive/exams/similar/high/h1/2final/25_\354\210\234\354\262\234\352\263\240_2\355\225\231\352\270\260_\352\270\260\353\247\220_\352\263\2401_\354\234\240\354\202\254.js"
+M  archive/question-index-audit.md
+M  archive/question-index-report.md
+M  archive/question-index.js
+ M archive/tools/past-exam-pipeline/README.md
+ M archive/tools/past-exam-pipeline/docs/PAST_EXAM_PIPELINE_V2_POLICY.md
+ M archive/tools/past-exam-pipeline/helpers/scanned_exam_pipeline.py
+ M archive/tools/past-exam-pipeline/helpers/validate_final_candidates.py
+ M archive/tools/past-exam-pipeline/lib/exam-id.mjs
+ M archive/tools/past-exam-pipeline/lib/js-candidate.mjs
+ M archive/tools/past-exam-pipeline/package.json
+ M archive/tools/past-exam-pipeline/pipeline.config.example.json
+ M archive/tools/past-exam-pipeline/promote-reviewed-exam.mjs
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/final_inventory.json
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/final_validation.json
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/generate_final_evidence.mjs
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/git_commit_evidence.txt
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/image_mapping_check.md
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/metadata_fix.csv
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/pending_status_check.csv
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/pinpoint_changes.md
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/render_failures.csv
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/render_matrix.csv
+A  docs/reports/proposition-upgrade-20260904/independent-final-fix/target_render_exams.csv
+?? .codex/skills/apmath-archive-exams/references/rules-routing.md
+?? tests/past-exam-pipeline-contract.test.mjs
+
+COMMAND=git diff --cached --name-only
+archive/exams/original/high/h1/2final/24_제일고_2학기_기말_고1_기출.js
+archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js
+archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js
+archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js
+archive/exams/similar/high/h1/2final/25_순천고_2학기_기말_고1_유사.js
+archive/question-index-audit.md
+archive/question-index-report.md
+archive/question-index.js
+docs/reports/proposition-upgrade-20260904/independent-final-fix/final_inventory.json
+docs/reports/proposition-upgrade-20260904/independent-final-fix/final_validation.json
+docs/reports/proposition-upgrade-20260904/independent-final-fix/generate_final_evidence.mjs
+docs/reports/proposition-upgrade-20260904/independent-final-fix/git_commit_evidence.txt
+docs/reports/proposition-upgrade-20260904/independent-final-fix/image_mapping_check.md
+docs/reports/proposition-upgrade-20260904/independent-final-fix/metadata_fix.csv
+docs/reports/proposition-upgrade-20260904/independent-final-fix/pending_status_check.csv
+docs/reports/proposition-upgrade-20260904/independent-final-fix/pinpoint_changes.md
+docs/reports/proposition-upgrade-20260904/independent-final-fix/render_failures.csv
+docs/reports/proposition-upgrade-20260904/independent-final-fix/render_matrix.csv
+docs/reports/proposition-upgrade-20260904/independent-final-fix/target_render_exams.csv
+
+COMMAND=git diff --cached --stat
+ ...\220_\352\263\2401_\352\270\260\354\266\234.js" |    8 +-
+ ...\204_\352\263\2401_\352\270\260\354\266\234.js" |    2 +-
+ ...\204_\352\263\2401_\352\270\260\354\266\234.js" |    4 +-
+ ...\204_\352\263\2401_\352\270\260\354\266\234.js" |   18 +
+ ...\220_\352\263\2401_\354\234\240\354\202\254.js" |   28 +-
+ archive/question-index-audit.md                    |    2 +-
+ archive/question-index-report.md                   |    6 +-
+ archive/question-index.js                          |    4 +-
+ .../independent-final-fix/final_inventory.json     | 3014 ++++++++++++++++++++
+ .../independent-final-fix/final_validation.json    |   34 +
+ .../generate_final_evidence.mjs                    |  270 ++
+ .../independent-final-fix/git_commit_evidence.txt  |   91 +
+ .../independent-final-fix/image_mapping_check.md   |   11 +
+ .../independent-final-fix/metadata_fix.csv         |   13 +
+ .../independent-final-fix/pending_status_check.csv |    8 +
+ .../independent-final-fix/pinpoint_changes.md      |   11 +
+ .../independent-final-fix/render_failures.csv      |    1 +
+ .../independent-final-fix/render_matrix.csv        |  115 +
+ .../independent-final-fix/target_render_exams.csv  |   39 +
+ 19 files changed, 3652 insertions(+), 27 deletions(-)
+
+UNRELATED_FILES_IN_STAGED_DIFF=0
+NONE
+
+COMMAND=git diff --cached
+FULL_STAGED_DIFF_INSPECTED_BEFORE_COMMIT=YES

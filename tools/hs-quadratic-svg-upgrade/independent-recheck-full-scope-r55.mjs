@@ -1,0 +1,12 @@
+import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto'; import { fileURLToPath } from 'node:url';
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..','..'),REPORT=path.join(ROOT,'reports','hs-quadratic-svg-upgrade-20260908'),FACTS=JSON.parse(fs.readFileSync(path.join(REPORT,'754_full_scope_v1_expected_facts_r55.json'))),OUTPUT=path.join(REPORT,'755_full_scope_independent_recheck_r55.json');
+const checks=[
+ ['archive/exams/original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js',9,{result:'5/2'}],
+ ['archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js',7,{result:-12}],
+ ['archive/exams/original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js',21,{result:'4√3'}],
+ ['archive/exams/original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js',9,{solutionInterval:[6,8],integerSolutions:[7,8],result:8}],
+ ['archive/exams/original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js',12,{result:'3−3√7'}],
+ ['archive/exams/original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js',23,{result:1}],
+ ['archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js',4,{result:2}],
+ ['archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js',13,{result:5}],
+];const factMap=new Map(FACTS.rows.map(row=>[`${row.sourceJsPath}|${row.id}`,row]));const rows=checks.map(([sourceJsPath,id,independentlyComputedFacts])=>{const fact=factMap.get(`${sourceJsPath}|${id}`);if(!fact)throw new Error(`V1 fact missing for ${sourceJsPath}|${id}`);const expectedFactParity=Object.entries(independentlyComputedFacts).every(([field,value])=>JSON.stringify(fact.expectedFacts[field])===JSON.stringify(value));return {questionUid:fact.questionUid,sourceJsPath,id,independentlyComputedFacts,expectedFactParity,independentCalculationStatus:expectedFactParity?'MATCH':'MISMATCH'};});const mismatchCount=rows.filter(row=>!row.expectedFactParity).length,output={schemaVersion:'HS_QUADRATIC_FULL_SCOPE_INDEPENDENT_RECHECK_R55',status:mismatchCount?'INDEPENDENT_RECHECK_FAIL':'INDEPENDENT_RECHECK_PASS_NO_FINAL_PASS',productionAuthorized:false,inputVisibilityProfile:'SOURCE_ONLY_INDEPENDENT_CALCULATOR',priorReviewVisibility:'NONE',rows,checkedRows:rows.length,mismatchCount,calculatorDigest:crypto.createHash('sha256').update(JSON.stringify(checks)).digest('hex'),note:'Independent second-pass arithmetic for eight full-scope fact rows; this is not final full-scope PASS.'};fs.writeFileSync(OUTPUT,`${JSON.stringify(output,null,2)}\n`);console.log(JSON.stringify({status:output.status,checkedRows:output.checkedRows,mismatchCount},null,2));

@@ -1,0 +1,279 @@
+﻿{
+    "version":  1,
+    "updatedAt":  "2026-05-26",
+    "root":  "C:\\Users\\USER\\Desktop\\AP------",
+    "sourceRulebook":  "docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md",
+    "domains":  [
+                    {
+                        "proposedSkill":  "ap-project-governance-sop",
+                        "id":  "root-governance",
+                        "notes":  "Root BOOT should enforce read order, dirty worktree awareness, and domain routing.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "CODEX_TASK.md",
+                                                    "CODEX_RESULT.md",
+                                                    "docs/codex/CODEX_TASK_WRITING_RULE.md"
+                                                ],
+                        "name":  "Root / project governance",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Only write current task-approved report/result files; never git add/commit/push/deploy by default.",
+                        "paths":  [
+                                      "CODEX_TASK.md",
+                                      "CODEX_RESULT.md",
+                                      ".gitignore",
+                                      "package-lock.json",
+                                      "index.html",
+                                      "robots.txt",
+                                      "docs/codex"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "ap-docs-maintenance-sop",
+                        "id":  "docs-rulebook-plans",
+                        "notes":  "Contains project policy, domain index, roadmap, plans, archive, design, timetable, reference.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "docs/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md",
+                                                    "docs/00_READ_ME_FIRST.md",
+                                                    "docs/03_DOMAIN_INDEX.md",
+                                                    "docs/WANGJI_OS_STRUCTURE.md",
+                                                    "docs/WANGJI_OS_ROADMAP.md"
+                                                ],
+                        "name":  "docs / rulebook / plans",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Existing policy docs are canonical; update only when task explicitly allows docs edits.",
+                        "paths":  [
+                                      "docs"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "apmath-static-app-sop",
+                        "id":  "apmath-static-app",
+                        "notes":  "Main AP Math OS operating UI and student/planner/homework subpages.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "apmath/index.html",
+                                                    "apmath/js/core.js",
+                                                    "apmath/js/ui.js",
+                                                    "apmath/js/dashboard.js",
+                                                    "apmath/js/classroom.js",
+                                                    "apmath/js/student.js",
+                                                    "apmath/js/timetable.js",
+                                                    "apmath/js/report.js"
+                                                ],
+                        "name":  "apmath static app",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Preserve existing UI wording, route/menu/mode structure, and vanilla JS patterns unless task explicitly permits changes.",
+                        "paths":  [
+                                      "apmath/index.html",
+                                      "apmath/js",
+                                      "apmath/css",
+                                      "apmath/student",
+                                      "apmath/planner",
+                                      "apmath/homework",
+                                      "apmath/plan"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "apmath-worker-backend-sop",
+                        "id":  "worker-backend-d1",
+                        "notes":  "Worker routes, helpers, D1 schema, migrations, and wrangler config.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "apmath/worker-backup/worker/index.js",
+                                                    "apmath/worker-backup/worker/schema.sql",
+                                                    "apmath/worker-backup/worker/wrangler.jsonc",
+                                                    "apmath/worker-backup/worker/routes/students.js",
+                                                    "apmath/worker-backup/worker/routes/reports-ai.js"
+                                                ],
+                        "name":  "worker / backend / D1",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "No schema/migration/remote D1/deploy changes without explicit task approval; use route files instead of inflating index.js.",
+                        "paths":  [
+                                      "apmath/worker-backup/worker",
+                                      "apmath/worker-backup/seed.sql"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "archive-core-sop",
+                        "id":  "archive-core",
+                        "notes":  "Exam archive, QR print modes, mixed exam generation, wrong-print engine.",
+                        "hermesPriority":  "P1",
+                        "representativeFiles":  [
+                                                    "archive/index.html",
+                                                    "archive/mixer.html",
+                                                    "archive/mixed_engine.html",
+                                                    "archive/wrong_print_engine.html",
+                                                    "archive/db.js"
+                                                ],
+                        "name":  "archive core",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Protect QR/OMR and engine variants; do not alter output rules casually.",
+                        "paths":  [
+                                      "archive/index.html",
+                                      "archive/mixer.html",
+                                      "archive/mixed_engine.html",
+                                      "archive/wrong_print_engine.html",
+                                      "archive/db.js",
+                                      "archive/build_db.py",
+                                      "archive/concept_map.js"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "archive-exams-sop",
+                        "id":  "archive-exams",
+                        "notes":  "Large exam source and image asset domain; inventory/sample only in this task.",
+                        "hermesPriority":  "P1",
+                        "representativeFiles":  [
+                                                    "archive/exams/types",
+                                                    "archive/exams/original",
+                                                    "archive/assets/images"
+                                                ],
+                        "name":  "archive/exams",
+                        "riskLevel":  "medium",
+                        "lockPolicy":  "Avoid broad file rewrites; validate image paths and question data when touched.",
+                        "paths":  [
+                                      "archive/exams",
+                                      "archive/assets/images"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "textbook-pipeline-sop",
+                        "id":  "archive-textbook",
+                        "notes":  "Existing Hermes-like textbook operating layer; keep subordinate to root AP governance.",
+                        "hermesPriority":  "P1",
+                        "representativeFiles":  [
+                                                    "archive/textbook"
+                                                ],
+                        "name":  "archive/textbook",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Root agent delegates to textbook layer; generated assets/review packs excluded unless textbook task allows.",
+                        "paths":  [
+                                      "archive/textbook"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "omr-qr-clinic-report-sop",
+                        "id":  "omr-qr-clinic-report",
+                        "notes":  "Crosses student submission, wrong-answer data, printable clinic, reports, and external AI proxy.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "apmath/js/qr-omr.js",
+                                                    "apmath/js/clinic-print.js",
+                                                    "apmath/js/report.js",
+                                                    "report-ai-proxy/api/report-analysis.js",
+                                                    "report-ai-proxy/README.txt"
+                                                ],
+                        "name":  "OMR / QR / clinic / report",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "No completed OMR edit/re-submit path; protect parent-facing report wording and AI proxy secrets.",
+                        "paths":  [
+                                      "check",
+                                      "apmath/js/qr-omr.js",
+                                      "apmath/js/clinic-print.js",
+                                      "apmath/js/report.js",
+                                      "apmath/wrong_print_engine.html",
+                                      "report-ai-proxy"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "student-parent-planner-sop",
+                        "id":  "student-parent-planner",
+                        "notes":  "Public/semi-public surface requiring strict privacy and access memory.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "apmath/student/index.html",
+                                                    "apmath/planner/index.html",
+                                                    "apmath/worker-backup/worker/routes/student-portal.js",
+                                                    "apmath/worker-backup/worker/routes/parent-foundation.js",
+                                                    "apmath/worker-backup/worker/routes/planner.js"
+                                                ],
+                        "name":  "student / parent / planner portal",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Protect PIN login, student direct-access limits, guardian privacy, and planner SSO/localStorage behavior.",
+                        "paths":  [
+                                      "apmath/student",
+                                      "apmath/planner",
+                                      "planner",
+                                      "apmath/worker-backup/worker/routes/student-portal.js",
+                                      "apmath/worker-backup/worker/routes/parent-foundation.js",
+                                      "apmath/worker-backup/worker/routes/planner.js"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "timetable-attendance-classroom-sop",
+                        "id":  "timetable-attendance-classroom",
+                        "notes":  "Schedule, attendance, homework, class daily, conflict/version flows.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "apmath/js/timetable.js",
+                                                    "apmath/js/classroom.js",
+                                                    "docs/timetable/README.md",
+                                                    "apmath/worker-backup/worker/routes/timetable-versions.js",
+                                                    "apmath/worker-backup/worker/routes/timetable-conflicts.js"
+                                                ],
+                        "name":  "timetable / attendance / classroom",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Separate draft/staging/active operations and preserve teacher field workflows.",
+                        "paths":  [
+                                      "apmath/js/timetable.js",
+                                      "apmath/js/classroom.js",
+                                      "docs/timetable",
+                                      "apmath/worker-backup/worker/routes/timetable-versions.js",
+                                      "apmath/worker-backup/worker/routes/timetable-conflicts.js",
+                                      "apmath/worker-backup/worker/routes/attendance-homework.js",
+                                      "apmath/worker-backup/worker/routes/class-daily.js"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "billing-accounting-operations-sop",
+                        "id":  "billing-accounting-operations",
+                        "notes":  "Billing/accounting foundation plus consultations and operations.",
+                        "hermesPriority":  "P0",
+                        "representativeFiles":  [
+                                                    "apmath/worker-backup/worker/routes/billing-accounting-foundation.js",
+                                                    "apmath/worker-backup/worker/routes/operations.js",
+                                                    "apmath/js/management.js",
+                                                    "apmath/js/dashboard.js"
+                                                ],
+                        "name":  "billing / accounting / operations",
+                        "riskLevel":  "high",
+                        "lockPolicy":  "Preserve auditability; no physical deletion of financial history; keep internal memo exposure constrained.",
+                        "paths":  [
+                                      "apmath/worker-backup/worker/routes/billing-accounting-foundation.js",
+                                      "apmath/worker-backup/worker/routes/billing-foundation.js",
+                                      "apmath/worker-backup/worker/routes/operations.js",
+                                      "apmath/js/management.js",
+                                      "apmath/js/dashboard.js",
+                                      "docs/plans/BILLING_ACCOUNTING_NEXT_PLAN.md",
+                                      "docs/plans/DIRECTOR_MODE_NEXT_PLAN.md"
+                                  ]
+                    },
+                    {
+                        "proposedSkill":  "public-site-brand-sop",
+                        "id":  "public-site-brand",
+                        "notes":  "Public site and brand/domain separation should come after root operating layer.",
+                        "hermesPriority":  "P2",
+                        "representativeFiles":  [
+                                                    "index.html",
+                                                    "manual/manual.js",
+                                                    "manual/manual-data.js",
+                                                    "docs/plans/HOMEPAGE_NEXT_PLAN.md",
+                                                    "docs/plans/CMATH_NEXT_PLAN.md",
+                                                    "docs/plans/EIE_NEXT_PLAN.md"
+                                                ],
+                        "name":  "public site / Wangji / brand",
+                        "riskLevel":  "medium",
+                        "lockPolicy":  "Do not rename AP Math/Wangji/CMath/EIE terms without explicit approval.",
+                        "paths":  [
+                                      "index.html",
+                                      "manual",
+                                      "alive",
+                                      "rules",
+                                      "docs/plans/HOMEPAGE_NEXT_PLAN.md",
+                                      "docs/plans/CMATH_NEXT_PLAN.md",
+                                      "docs/plans/EIE_NEXT_PLAN.md"
+                                  ]
+                    }
+                ]
+}

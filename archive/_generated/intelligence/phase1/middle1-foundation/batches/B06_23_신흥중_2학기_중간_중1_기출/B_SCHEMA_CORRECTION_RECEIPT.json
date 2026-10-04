@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "m1-worker-schema-correction-v1",
+  "batchNo": 6,
+  "role": "B",
+  "sourceArchiveFile": "original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
+  "oldLedgerSha256": "6112da91a5eb4d3df3c6727f40ffec4ebc1374cfdd2a634fb583be915953cab3",
+  "correctedLedgerSha256": "446fb6ee5e659f4bf209cc5b5aa1186d97eb1427da62b6f194f0c29cf9e17964",
+  "rowCount": 26,
+  "addedField": "conditionReasons",
+  "addedValue": [],
+  "semanticFieldsChanged": 0,
+  "reason": "Fresh B v2 omitted the required empty conditionReasons array on all rows despite empty conditionKeys; deterministic schema-only repair preserves mathematical verdicts and original ledger."
+}

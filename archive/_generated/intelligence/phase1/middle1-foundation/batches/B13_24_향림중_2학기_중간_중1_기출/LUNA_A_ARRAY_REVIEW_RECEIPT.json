@@ -1,0 +1,822 @@
+{
+  "batchNo": 13,
+  "worker": "LUNA_A",
+  "changeType": "ARRAY_ONLY_CONDITION_AND_CROSS_CONCEPT_REVIEW",
+  "preservedPreReviewFile": "LUNA_A_PRE_TAXONOMY_ARRAY_REVIEW.jsonl",
+  "oldLedgerSha256": "74653fa4af3be6477089bc55af7af3d9df0686e485feb1bf59710b1b64225687",
+  "newLedgerSha256": "e1d75b18908401917dbbd3c250f003cdde4917b9f0944d9db69338408451a828",
+  "changedFieldsPerUid": [
+    {
+      "questionUid": "qid_v1_fec346bc8d6987b87de4d2403e3360a7b857623df9b5d07bd71dbac8670137de",
+      "sourceOrdinal": 1,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "UNMARKED_RULER_COMPASS_ROLES"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "선택지에 열거된 눈금 없는 자와 컴퍼스의 작도 용도를 대조한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_cb145a7e3c2ac62e90a370625e978edaedfd236fc97b2bc93018179bdfd37d36",
+      "sourceOrdinal": 2,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "VERTICAL_OPPOSITE_ANGLES",
+            "GIVEN_110_DEGREES"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "그림의 교차점에서 표시된 두 각은 맞꼭지각이며 한쪽이 110°이다.",
+            "그림의 교차점에서 표시된 두 각은 맞꼭지각이며 한쪽이 110°이다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9721c3ee3c0d0ee0e06c88a448b6f64cced95ed7e1a4f2c677e9e87e0b029979",
+      "sourceOrdinal": 3,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "PARALLEL_LINES",
+            "TRANSVERSAL",
+            "GIVEN_45_DEGREES"
+          ],
+          "after": [
+            "PARALLEL_LINES"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 l∥m을 주고 그림은 횡단선과 45° 예각을 표시한다.",
+            "본문은 l∥m을 주고 그림은 횡단선과 45° 예각을 표시한다.",
+            "본문은 l∥m을 주고 그림은 횡단선과 45° 예각을 표시한다."
+          ],
+          "after": [
+            "The angle transfer depends on the explicit l∥m condition."
+          ]
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d14e9d0dcd03cb7824bb9b0d0f718eb6173a1d6a0ae8f9ff27c849e36561e493",
+      "sourceOrdinal": 4,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "REGULAR_POLYGON",
+            "EXTERIOR_ANGLE_36_DEGREES"
+          ],
+          "after": [
+            "REGULAR_POLYGON"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "정다각형의 한 외각이 36°로 주어졌다.",
+            "정다각형의 한 외각이 36°로 주어졌다."
+          ],
+          "after": [
+            "The 36° exterior angle determines the side count because the polygon is regular."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "POLYGON_DIAGONAL_COUNT",
+            "INTERIOR_ANGLE_SUM"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "n을 구한 뒤 대각선 수를 계산한다.",
+            "세 진술 검토에 내각의 합 공식도 필요하다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c065365a17e7cd338f660ae98e70c5b74ed99c5d57a3fc6978b7caa882acc6f7",
+      "sourceOrdinal": 5,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "APEX_SUBANGLE_40_DEGREES",
+            "RIGHT_BASE_EXTERIOR_120_DEGREES",
+            "X_ON_STRAIGHT_BASE"
+          ],
+          "after": [
+            "STRAIGHT_LINE"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "그림에 40°와 120°가 표시되고 ∠x는 밑변 직선의 이웃각이다.",
+            "그림에 40°와 120°가 표시되고 ∠x는 밑변 직선의 이웃각이다.",
+            "그림에 40°와 120°가 표시되고 ∠x는 밑변 직선의 이웃각이다."
+          ],
+          "after": [
+            "The requested x is the adjacent angle on the marked straight baseline."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "SUPPLEMENTARY_ANGLES"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "120° 외각을 60° 내각으로 바꾸고 밑점의 이웃각을 보각으로 바꾼다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0554824dd8ae54f73142c40123946586366e627047d79ab6a261064fba2f9c6a",
+      "sourceOrdinal": 6,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "ANGLE_X_REFERENCE_ONLY",
+            "Q6_IMAGE_BLANK"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "질문은 ∠x만 참조하고 원본 그림이 빈 화면이라 각을 연결하는 조건이 없다.",
+            "질문은 ∠x만 참조하고 원본 그림이 빈 화면이라 각을 연결하는 조건이 없다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3b07657b95c8c11dfe4a7fa364e3fdb186f7556b8482225e79fb45509ad46b45",
+      "sourceOrdinal": 7,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "M_MIDPOINT_AB",
+            "N_MIDPOINT_BC",
+            "AM_18_CM",
+            "2AB_EQUALS_3BC"
+          ],
+          "after": [
+            "MIDPOINT"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문에 두 중점 정의, AM=18 cm와 2AB=3BC가 주어졌다.",
+            "본문에 두 중점 정의, AM=18 cm와 2AB=3BC가 주어졌다.",
+            "본문에 두 중점 정의, AM=18 cm와 2AB=3BC가 주어졌다.",
+            "본문에 두 중점 정의, AM=18 cm와 2AB=3BC가 주어졌다."
+          ],
+          "after": [
+            "The specified midpoint definitions are necessary to halve AB and BC."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "LINEAR_RATIO_EQUATION"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "2AB=3BC에서 BC를 계산해 중점 간 길이에 사용한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4f1cb2468618d66468d97e304cc898576c3e9407a9c8ebc1b7aacfd5d59e6b5e",
+      "sourceOrdinal": 8,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "OE_PERPENDICULAR_AB",
+            "OF_PERPENDICULAR_CD",
+            "ANGLE_EOD_48_DEGREES"
+          ],
+          "after": [
+            "PERPENDICULAR_LINES"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "O는 E,F에서 각 직선에 내린 수선의 발이며 ∠EOD=48°이다.",
+            "O는 E,F에서 각 직선에 내린 수선의 발이며 ∠EOD=48°이다.",
+            "O는 E,F에서 각 직선에 내린 수선의 발이며 ∠EOD=48°이다."
+          ],
+          "after": [
+            "Both perpendicular-foot conditions are needed to translate the 48° angle between the intersecting lines."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "SUPPLEMENTARY_ANGLES"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "수선 방향에서 ∠AOF를 교각의 보각 관계로 결정한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6a197c91d78047c77a9d6921343db3df2d8664d07b4f94c81eb035790a5d14c9",
+      "sourceOrdinal": 9,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "TRIANGULAR_PRISM",
+            "REFERENCE_EDGE_BC"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 삼각기둥의 기준 모서리 BC와 꼬인 위치인 모서리를 묻는다.",
+            "본문은 삼각기둥의 기준 모서리 BC와 꼬인 위치인 모서리를 묻는다."
+          ],
+          "after": []
+        },
+        "crossConceptKeys": {
+          "before": [
+            "SPATIAL_LINE_RELATIONS"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "꼬인 위치는 공간에서 만나지 않고 평행하지 않은 두 직선의 관계다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3e1d222d395517122357b3c8ea03ed3aa8861c137f8e7173e368cd58c379528c",
+      "sourceOrdinal": 10,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "TRAPEZOID_ABCD",
+            "DISTANCE_D_TO_AC",
+            "DE_PERPENDICULAR_AC",
+            "DE_2_CM"
+          ],
+          "after": [
+            "PERPENDICULAR_DISTANCE"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "그림의 직각 표시와 2 cm 표시는 D에서 AC에 내린 수선의 길이를 특정한다.",
+            "그림의 직각 표시와 2 cm 표시는 D에서 AC에 내린 수선의 길이를 특정한다.",
+            "그림의 직각 표시와 2 cm 표시는 D에서 AC에 내린 수선의 길이를 특정한다.",
+            "그림의 직각 표시와 2 cm 표시는 D에서 AC에 내린 수선의 길이를 특정한다."
+          ],
+          "after": [
+            "The distance from D to AC is the length of the perpendicular segment from D to AC."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PERPENDICULARITY"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "점과 직선 사이의 거리는 수선분의 길이로 정의된다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_729249365108e33f409510fecc0e581fdfed1cc728c4584ecd3d65afa2974846",
+      "sourceOrdinal": 11,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "M_MIDPOINT_AC",
+            "M_MIDPOINT_BD",
+            "FIND_FALSE_STATEMENT"
+          ],
+          "after": [
+            "BISECTING_DIAGONALS"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "두 대각선 AC와 BD가 M에서 각각 이등분되며 옳지 않은 보기를 고른다.",
+            "두 대각선 AC와 BD가 M에서 각각 이등분되며 옳지 않은 보기를 고른다.",
+            "두 대각선 AC와 BD가 M에서 각각 이등분되며 옳지 않은 보기를 고른다."
+          ],
+          "after": [
+            "Both diagonals are bisected at M, the criterion used to establish a parallelogram."
+          ]
+        },
+        "crossConceptReasons": {
+          "before": [
+            "합동 표기에서는 대응 꼭짓점 순서와 대응변을 확인한다."
+          ],
+          "after": [
+            "The false option requires checking the ordered triangle correspondence against the diagonal-bisection consequences."
+          ]
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6ef33b13b4ec9085d1acf7fee2cd17d7bb6ae53f4a811ea56af4efdfb3a58fd5",
+      "sourceOrdinal": 12,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "TWO_DIAGONALS_FROM_ONE_VERTEX",
+            "TWO_TRIANGLES_ONE_QUADRILATERAL"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "본문에 같은 꼭짓점의 대각선 두 개와 분할 결과가 주어졌다.",
+            "본문에 같은 꼭짓점의 대각선 두 개와 분할 결과가 주어졌다."
+          ],
+          "after": []
+        },
+        "crossConceptKeys": {
+          "before": [
+            "POLYGON_DIAGONAL_COUNT"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "분할로 n을 구한 뒤 n(n−3)/2를 적용한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_030c9cfd0f6bb45b2360ed132db66b46440e48113aa3ba90739924bafde4e317",
+      "sourceOrdinal": 13,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "REGULAR_N_GON",
+            "REGULAR_HEXAGON",
+            "SQUARE",
+            "SHARED_VERTEX"
+          ],
+          "after": [
+            "REGULAR_POLYGON"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문과 그림은 정n각형·정육각형·정사각형이 꼭짓점을 공유하는 배열을 제시한다.",
+            "본문과 그림은 정n각형·정육각형·정사각형이 꼭짓점을 공유하는 배열을 제시한다.",
+            "본문과 그림은 정n각형·정육각형·정사각형이 꼭짓점을 공유하는 배열을 제시한다.",
+            "본문과 그림은 정n각형·정육각형·정사각형이 꼭짓점을 공유하는 배열을 제시한다."
+          ],
+          "after": [
+            "Equal exterior angles of the regular n-gon are required to infer n from its interior angle."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "ANGLE_AROUND_POINT",
+            "REGULAR_POLYGON_EXTERIOR_ANGLE"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "공통 꼭짓점 주위의 각은 360°이다.",
+            "정다각형의 외각으로 n을 결정한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9bb4fb1290c68f9a1c8a64f7ba7fb6de9718165ab99b8854f1f3b349f6f79f25",
+      "sourceOrdinal": 14,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "REGULAR_NONAGON",
+            "LINES_AB_AND_DC_EXTENDED",
+            "ANGLE_X"
+          ],
+          "after": [
+            "REGULAR_POLYGON"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 정구각형 ABCDEFGHI에서 AB와 DC의 연장선 교점을 정의한다.",
+            "본문은 정구각형 ABCDEFGHI에서 AB와 DC의 연장선 교점을 정의한다.",
+            "본문은 정구각형 ABCDEFGHI에서 AB와 DC의 연장선 교점을 정의한다."
+          ],
+          "after": [
+            "Equal 40° exterior turns of the regular nonagon determine the directions of AB and DC."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "SUPPLEMENTARY_ANGLES"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "작은 선 방향각 80°와 그림의 둔각은 보각이다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ea3fee08f1616d36fc20996e4297baedc36bc6e3bafe7897867a09cde82a86d0",
+      "sourceOrdinal": 15,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "RECTANGLE_PAPER",
+            "D_REFLECTS_TO_R_ACROSS_PQ",
+            "ANGLE_PRB_68_DEGREES",
+            "RB_PARALLEL_PD"
+          ],
+          "after": [
+            "FOLD_REFLECTION"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 직사각형 종이, 접는 선 PQ, D→R 및 ∠PRB=68°를 주고 그림에서 RB와 PD가 평행하다.",
+            "본문은 직사각형 종이, 접는 선 PQ, D→R 및 ∠PRB=68°를 주고 그림에서 RB와 PD가 평행하다.",
+            "본문은 직사각형 종이, 접는 선 PQ, D→R 및 ∠PRB=68°를 주고 그림에서 RB와 PD가 평행하다.",
+            "본문은 직사각형 종이, 접는 선 PQ, D→R 및 ∠PRB=68°를 주고 그림에서 RB와 PD가 평행하다."
+          ],
+          "after": [
+            "The stated fold across PQ reflects D to R and preserves corresponding lengths and angles."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "REFLECTION_ISOMETRY",
+            "RIGHT_TRIANGLE_ANGLE_SUM"
+          ],
+          "after": [
+            "RIGHT_TRIANGLE_ANGLE_SUM"
+          ]
+        },
+        "crossConceptReasons": {
+          "before": [
+            "접기는 선대칭이므로 대응 길이와 각이 보존된다.",
+            "반사된 직각 모서리로 삼각형 PQR의 각을 마무리한다."
+          ],
+          "after": [
+            "After reflection identifies the right angle at R, triangle angle sum gives ∠PQR."
+          ]
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f24f4dfcec514a35bfe8487f678f567b9d67845c368637861aca01fe8f8f00f6",
+      "sourceOrdinal": 16,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "CUT_PLANE_THROUGH_A_C_F",
+            "REFERENCE_EDGE_CG",
+            "FACE_CGHD",
+            "CUT_FACE_ACD"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 절단면의 세 꼭짓점, 기준 모서리 및 비교할 두 면을 명시한다.",
+            "본문은 절단면의 세 꼭짓점, 기준 모서리 및 비교할 두 면을 명시한다.",
+            "본문은 절단면의 세 꼭짓점, 기준 모서리 및 비교할 두 면을 명시한다.",
+            "본문은 절단면의 세 꼭짓점, 기준 모서리 및 비교할 두 면을 명시한다."
+          ],
+          "after": []
+        },
+        "crossConceptKeys": {
+          "before": [
+            "SPATIAL_LINE_RELATIONS",
+            "PLANE_NORMAL_PERPENDICULARITY"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "꼬인 모서리는 기준 모서리와의 교점·평행 여부로 분류한다.",
+            "면에 수직인 모서리는 절단면의 방향을 기준으로 판정한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_273c3b790a7a14f7395664b49b8410e832a2f4659ea23cbb55dec00fc1a04fe6",
+      "sourceOrdinal": 17,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "PARALLEL_LINES_L_M",
+            "GIVEN_30_DEGREES",
+            "ANGLES_X_MINUS_10_X_PLUS_20_X"
+          ],
+          "after": [
+            "PARALLEL_LINES"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 l∥m이고 그림은 30°, x−10°, x+20°, x를 표시한다.",
+            "본문은 l∥m이고 그림은 30°, x−10°, x+20°, x를 표시한다.",
+            "본문은 l∥m이고 그림은 30°, x−10°, x+20°, x를 표시한다."
+          ],
+          "after": [
+            "The angle chase between the two horizontal lines depends on l∥m."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "LINEAR_ANGLE_EQUATION"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "각 관계 정리 후 x가 포함된 식을 푼다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_656d726654c8e83093c55334c07dd6857b35ecbe20e2d3fe2878d5bc467fe7bd",
+      "sourceOrdinal": 18,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "SEVEN_REPRESENTATIVES",
+            "EVERY_PAIR_ONCE",
+            "ORDER_IRRELEVANT"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 대표 7명 전원이 서로 한 번씩 가위바위보를 한다고 한다.",
+            "본문은 대표 7명 전원이 서로 한 번씩 가위바위보를 한다고 한다.",
+            "본문은 대표 7명 전원이 서로 한 번씩 가위바위보를 한다고 한다."
+          ],
+          "after": []
+        },
+        "crossConceptKeys": {
+          "before": [
+            "COMBINATION_COUNTING"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "경기 순서는 구분하지 않으므로 7P2가 아니라 7C2를 쓴다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8fd3c9e74df936eeabc207ad02f66d0857fc61e35826cbf9040cd22dee3647bd",
+      "sourceOrdinal": 19,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "APEX_55_DEGREES",
+            "RIGHT_INTERSECTION_30_DEGREES",
+            "TARGET_X_35_DEGREES"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "그림에 55°와 30°가 표시되고 보기에는 35°가 있다.",
+            "그림에 55°와 30°가 표시되고 보기에는 35°가 있다.",
+            "그림에 55°와 30°가 표시되고 보기에는 35°가 있다."
+          ],
+          "after": []
+        },
+        "crossConceptKeys": {
+          "before": [
+            "VERTICAL_AND_SUPPLEMENTARY_ANGLES"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "교차점의 30°를 삼각형 내부 각으로 옮기거나 보각으로 변환한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2e6f3d78946fb4d3a06f2b7e575bde646f48d22d8b66dddb67ff1ea425795b86",
+      "sourceOrdinal": 20,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "TEN_MARKED_ANGLES_A_TO_J",
+            "STAR_LIKE_INTERSECTING_LINES"
+          ],
+          "after": []
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 a부터 j까지 열 개 표시각의 합을 묻고 그림은 교차 선 배열을 제시한다.",
+            "본문은 a부터 j까지 열 개 표시각의 합을 묻고 그림은 교차 선 배열을 제시한다."
+          ],
+          "after": []
+        },
+        "crossConceptKeys": {
+          "before": [
+            "VERTICAL_OPPOSITE_ANGLES",
+            "FULL_TURN_ANGLE_SUM"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "교점에서 마주 보는 표시 각을 짝짓는다.",
+            "각 교점의 한 바퀴 각합을 이용해 전체 합을 정리한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f6b82559bb4dc8eff24d867152a53880c334354961bec743ee8709085d80c808",
+      "sourceOrdinal": 21,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "FIVE_POINTS_A_TO_E",
+            "A_B_C_COLLINEAR",
+            "COUNT_SEGMENTS_LINES_RAYS"
+          ],
+          "after": [
+            "COLLINEAR_POINTS"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 다섯 점과 A,B,C의 공선 조건을 명시하고 세 개수를 묻는다.",
+            "본문은 다섯 점과 A,B,C의 공선 조건을 명시하고 세 개수를 묻는다.",
+            "본문은 다섯 점과 A,B,C의 공선 조건을 명시하고 세 개수를 묻는다."
+          ],
+          "after": [
+            "A, B, C being collinear is necessary to merge coincident lines and rays when counting."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "COMBINATORIAL_COUNTING",
+            "COLLINEAR_RAY_EQUIVALENCE"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "선분은 점 쌍 조합으로 센다.",
+            "같은 방향의 공선 점들은 한 반직선을 공유해 출발점별로 합친다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1c35fd2bd665914e9b62cf30175e85b0f16d6eaebdcd400d2da5889d12e72acd",
+      "sourceOrdinal": 22,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "LENGTHS_3_5_7_8_10",
+            "THREE_DISTINCT_SEGMENTS",
+            "TRIANGLE_INEQUALITY"
+          ],
+          "after": [
+            "TRIANGLE_INEQUALITY"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 3,5,7,8,10 cm 중 서로 다른 세 선분을 고른다.",
+            "본문은 3,5,7,8,10 cm 중 서로 다른 세 선분을 고른다.",
+            "본문은 3,5,7,8,10 cm 중 서로 다른 세 선분을 고른다."
+          ],
+          "after": [
+            "A selected triple is valid only when the sum of its two shorter lengths exceeds the longest."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "COMBINATION_COUNTING"
+          ],
+          "after": []
+        },
+        "crossConceptReasons": {
+          "before": [
+            "순서 없는 길이 세 개 선택을 빠짐없이 열거한다."
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_025a73eed68b6fed04fa47743bbbe5544f813f3798212b4eca60f1b98e28c3be",
+      "sourceOrdinal": 23,
+      "changedFields": {
+        "conditionKeys": {
+          "before": [
+            "AD_PARALLEL_BC",
+            "AD_EQUALS_BC_4",
+            "BD_COMMON_SIDE",
+            "FIND_CONGRUENT_TRIANGLE"
+          ],
+          "after": [
+            "PARALLEL_LINES",
+            "EQUAL_SEGMENTS"
+          ]
+        },
+        "conditionReasons": {
+          "before": [
+            "본문은 AD∥BC와 두 변 길이 4를 주고 △ABD와 합동인 삼각형을 묻는다.",
+            "본문은 AD∥BC와 두 변 길이 4를 주고 △ABD와 합동인 삼각형을 묻는다.",
+            "본문은 AD∥BC와 두 변 길이 4를 주고 △ABD와 합동인 삼각형을 묻는다.",
+            "본문은 AD∥BC와 두 변 길이 4를 주고 △ABD와 합동인 삼각형을 묻는다."
+          ],
+          "after": [
+            "AD∥BC supplies the equal included alternate-interior angles.",
+            "AD=BC=4 supplies one equal side pair for SAS."
+          ]
+        },
+        "crossConceptKeys": {
+          "before": [
+            "PARALLEL_LINE_ALTERNATE_INTERIOR_ANGLES",
+            "TRIANGLE_CONGRUENCE_SAS"
+          ],
+          "after": [
+            "PARALLEL_LINE_ALTERNATE_INTERIOR_ANGLES"
+          ]
+        },
+        "crossConceptReasons": {
+          "before": [
+            "AD∥BC에서 ∠ADB=∠CBD를 얻는다.",
+            "AD=CB, BD 공통, 끼인각의 같음으로 SAS를 적용한다."
+          ],
+          "after": [
+            "The alternate-interior angle from AD∥BC supplies the included angle for SAS."
+          ]
+        }
+      }
+    }
+  ],
+  "validation": {
+    "rowCount": 23,
+    "uniqueUidCount": 23,
+    "arrayReasonCountsAligned": true,
+    "nonArrayFieldsUnchanged": true
+  }
+}

@@ -1,0 +1,50 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import vm from 'node:vm';
+const setRoot='archive-work/textbooks/visang-common2/middle/유리함수와 무리함수';
+const setName='비상_공통수학2_유리함수와무리함수_중단원학습점검_고1';
+const evidence=path.join(setRoot,'evidence',setName);
+const jsPath=path.join(setRoot,'js',`${setName}.js`);
+const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
+const checks=[];
+const check=(name,ok,detail)=>checks.push({name,status:ok?'PASS':'FAIL',detail});
+let context={window:{}};
+try { vm.runInNewContext(fs.readFileSync(jsPath,'utf8'),context); check('node_vm_load',true,'canonical JS loaded'); }
+catch(e){ check('node_vm_load',false,e.message); }
+const questions=context.window.questionBank||[];
+const expected=JSON.parse(fs.readFileSync(path.join(evidence,'source-transcription-freeze.json'),'utf8'));
+const crosswalk=JSON.parse(fs.readFileSync(path.join(evidence,'answer-solution-crosswalk.json'),'utf8'));
+const visual=JSON.parse(fs.readFileSync(path.join(evidence,'visual-benefit-ledger.json'),'utf8'));
+const ruleCheck=JSON.parse(fs.readFileSync(path.join(evidence,'visual-rule-preflight.json'),'utf8'));
+const renders=JSON.parse(fs.readFileSync(path.join(evidence,'browser-render-report.json'),'utf8'));
+check('question_denominator',questions.length===12&&expected.denominator===12&&crosswalk.denominator===12,`JS=${questions.length}; source=${expected.denominator}; answer=${crosswalk.denominator}`);
+const ids=questions.map(q=>q.id);
+check('unique_source_ids',ids.length===new Set(ids).size&&ids.every(id=>/^qid_v1_[a-f0-9]{64}$/.test(id)),`unique=${new Set(ids).size}/${ids.length}`);
+const required=['id','level','category','originalCategory','standardCourse','standardUnitKey','standardUnit','standardUnitOrder','questionType','layoutTag','tags','wide','content','choices','answer','solution','subUnitKey','subUnit','subUnitConfidence','subUnitClassificationDepth'];
+const missing=[];
+questions.forEach((q,i)=>{for(const key of required)if(!(key in q))missing.push(`q${i+1}:${key}`);});
+check('schema_required_fields',missing.length===0,missing.length?missing.join(', '):`${required.length} required fields on all 12 items`);
+check('course_unit_tags',questions.every(q=>q.standardCourse==='공통수학2'&&q.tags.includes('비상교육')&&q.tags.includes('고1')&&q.tags.includes('중단원학습점검')), 'course and source tags present');
+check('canonical_subunit_keys',questions.every(q=>(q.standardUnitKey==='H22-C2-08'&&q.standardUnit==='유리함수'&&q.standardUnitOrder===8&&q.subUnitKey.startsWith('H22-C2-08-'))||(q.standardUnitKey==='H22-C2-09'&&q.standardUnit==='무리함수'&&q.standardUnitOrder===9&&q.subUnitKey.startsWith('H22-C2-09-'))), 'rational/irrational unit keys and child keys agree');
+const parity=[];
+for(let i=0;i<12;i++){
+ const q=questions[i],f=expected.items[i];
+ parity.push({ordinal:i+1,content:q.content===f.content,choices:JSON.stringify(q.choices)===JSON.stringify(f.choices),contentHash:hash(q.content)===f.contentSha256,choicesHash:hash(JSON.stringify(q.choices))===f.choicesSha256});
+}
+check('source_text_exact_parity',parity.every(x=>x.content&&x.choices&&x.contentHash&&x.choicesHash),`${parity.filter(x=>x.content&&x.choices&&x.contentHash&&x.choicesHash).length}/12 frozen text and choices match`);
+const answerRows=crosswalk.items.map((row,i)=>({ordinal:i+1,jsAnswer:row.jsAnswer===questions[i].answer,solutionNonempty:questions[i].solution.trim().length>0,solutionAlignment:row.solutionIdentityAlignment==='PASS',officialCrosswalk:row.answerCrosswalk==='PASS'}));
+check('official_answer_crosswalk',answerRows.every(r=>r.jsAnswer&&r.solutionNonempty&&r.solutionAlignment&&r.officialCrosswalk),`${answerRows.filter(r=>r.jsAnswer&&r.solutionNonempty&&r.solutionAlignment&&r.officialCrosswalk).length}/12 item answer/solution crosswalks`);
+const referenced=[];
+for(const q of questions)for(const ref of [q.image,q.solutionImage])if(ref)referenced.push(ref);
+const missingAssets=referenced.filter(ref=>!fs.existsSync(path.join(setRoot,ref))||fs.statSync(path.join(setRoot,ref)).size===0);
+check('local_visual_assets',missingAssets.length===0,`${referenced.length} referenced assets; missing=${missingAssets.length}`);
+check('visual_benefit_coverage',visual.items.length===12&&visual.items.every(row=>row.visualRequirement&&row.visualAction),`${visual.items.length}/12 item decisions`);
+check('visual_rule_hash_preflight',ruleCheck.status==='PASS'&&ruleCheck.ruleFiles.every(r=>r.matches),`${ruleCheck.ruleFiles.filter(r=>r.matches).length}/${ruleCheck.ruleFiles.length} current rule files match manifest bytes/SHA`);
+check('actual_archive_browser_render',renders.summary.pass===6&&renders.summary.fail===0&&renders.captures.every(c=>c.status==='PASS'&&c.countOk&&c.mathJaxContainerCount>0&&c.unrenderedMathScriptCount===0&&c.brokenImages.length===0&&c.consoleErrors.length===0&&c.pageErrors.length===0&&c.failedRequests.length===0),`${renders.summary.pass}/6 exam/sol/ans desktop/mobile captures PASS; no math, image, console, request, or count failures`);
+const missingRenders=renders.captures.filter(c=>!fs.existsSync(path.join(evidence,c.screenshot)));
+check('render_capture_files',missingRenders.length===0,`${renders.captures.length-missingRenders.length}/6 screenshots saved`);
+const report={schemaVersion:'VISANG_TEXTBOOK_STATIC_VALIDATION_v1',setTitle:setName,validatedAt:new Date().toISOString(),denominator:12,checks,sourceTextPerItem:parity,answerPerItem:answerRows,status:checks.every(c=>c.status==='PASS')?'PASS':'FAIL',openExternalReview:'PROVIDER_V3_PENDING'};
+fs.writeFileSync(path.join(evidence,'static-validation-report.json'),JSON.stringify(report,null,2)+'\n','utf8');
+console.log(JSON.stringify({status:report.status,checks:checks.map(({name,status})=>({name,status}))},null,2));
+if(report.status!=='PASS')process.exitCode=1;

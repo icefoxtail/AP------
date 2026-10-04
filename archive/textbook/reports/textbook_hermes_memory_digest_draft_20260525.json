@@ -1,0 +1,235 @@
+﻿{
+    "meta":  {
+                 "generatedAt":  "2026-05-25T22:30:00+09:00",
+                 "workspace":  "C:\\Users\\USER\\Desktop\\AP------",
+                 "textbookRoot":  "archive/textbook",
+                 "status":  "draft_report_only",
+                 "hermesReference":  {
+                                         "repository":  "https://github.com/NousResearch/hermes-agent",
+                                         "checked":  true,
+                                         "checkedItems":  [
+                                                              "README.md",
+                                                              "AGENTS.md",
+                                                              "skills",
+                                                              "optional-skills",
+                                                              ".plans",
+                                                              "plans",
+                                                              "tools",
+                                                              "plugins",
+                                                              "mcp_serve.py",
+                                                              "trajectory_compressor.py"
+                                                          ],
+                                         "importPolicy":  "reference_structure_only_no_install_no_copy_no_dependency"
+                                     },
+                 "hardBans":  [
+                                  ".agent actual creation",
+                                  "docs structure finalization",
+                                  "Hermes install or execution",
+                                  "dependency addition or package install",
+                                  "generated/js modification",
+                                  "generated/reports overwrite",
+                                  "pipeline code modification",
+                                  "PDF conversion",
+                                  "daemon/cron/MCP server implementation",
+                                  "apmath modification",
+                                  "archive operational HTML modification",
+                                  "archive/exams modification",
+                                  "git add/commit/push"
+                              ]
+             },
+    "purpose":  "Draft memory digest for repeated decisions and failure patterns. Not a persistent agent memory store.",
+    "confirmedRules":  [
+                           "Never treat bboxSlotNo as printed displayNo/sourceQuestionNo.",
+                           "Question crop alone is insufficient for content mapping; full page context is required.",
+                           "For answer fill, displayNo alone is insufficient when numbering restarts by setKey/unit.",
+                           "Do not guess answers from weak answer tables; direct solve only when content/choices are sufficient.",
+                           "Do not mark broken OCR or mojibake as successful content.",
+                           "Do not insert image paths or img tags into content.",
+                           "RESET_FILE and ITEM_EXCLUDE_ONLY decisions require report evidence; do not delete normal questions silently.",
+                           "Generated reports are evidence, but current operating JS is the source of truth for current counts."
+                       ],
+    "recurringFailures":  [
+                              {
+                                  "pattern":  "displayNo simple matching",
+                                  "impact":  "wrong answer source mapping",
+                                  "mitigation":  "require setKey/unit/content keyword/source page cross-check"
+                              },
+                              {
+                                  "pattern":  "stale or extra JS question",
+                                  "impact":  "content/answer cannot be sourced",
+                                  "mitigation":  "classify as stale_or_extra_js_question report-only until exclusion policy is explicit"
+                              },
+                              {
+                                  "pattern":  "question crop map shifted from full page",
+                                  "impact":  "wrong content entry",
+                                  "mitigation":  "audit full page printed number and page flow before edit"
+                              },
+                              {
+                                  "pattern":  "manual_review reasons too broad",
+                                  "impact":  "direct-solvable items remain blocked",
+                                  "mitigation":  "reclassify into direct_solve_possible, image_required, source_remap_needed, content_empty, final_hold"
+                              },
+                              {
+                                  "pattern":  "long CODEX_RESULT hides latest state",
+                                  "impact":  "next worker restarts or repeats work",
+                                  "mitigation":  "create compact handoff digest and boot manifest"
+                              }
+                          ],
+    "highSignalReports":  [
+                              {
+                                  "name":  "hermes_agent_textbook_pipeline_migration_assessment_20260525.md",
+                                  "lastWriteTime":  "2026-05-25T22:08:49",
+                                  "bytes":  16973
+                              },
+                              {
+                                  "name":  "maple_synergy_actual_completion_protected_scan.json",
+                                  "lastWriteTime":  "2026-05-25T21:35:11",
+                                  "bytes":  338
+                              },
+                              {
+                                  "name":  "maple_synergy_manual_review_reclassified.json",
+                                  "lastWriteTime":  "2026-05-25T21:34:56",
+                                  "bytes":  1016684
+                              },
+                              {
+                                  "name":  "maple_synergy_actual_completion_report.json",
+                                  "lastWriteTime":  "2026-05-25T21:21:13",
+                                  "bytes":  429689
+                              },
+                              {
+                                  "name":  "maple_synergy_post_completion_validation_report.json",
+                                  "lastWriteTime":  "2026-05-25T21:03:29",
+                                  "bytes":  442
+                              },
+                              {
+                                  "name":  "maple_synergy_answer_completion_report.json",
+                                  "lastWriteTime":  "2026-05-25T21:02:33",
+                                  "bytes":  382819
+                              },
+                              {
+                                  "name":  "maple_synergy_excluded_items_report.json",
+                                  "lastWriteTime":  "2026-05-25T21:02:33",
+                                  "bytes":  6678
+                              },
+                              {
+                                  "name":  "maple_synergy_cleanup_and_completion_report.json",
+                                  "lastWriteTime":  "2026-05-25T21:02:33",
+                                  "bytes":  15442
+                              },
+                              {
+                                  "name":  "maple_synergy_content_completion_report.json",
+                                  "lastWriteTime":  "2026-05-25T21:02:33",
+                                  "bytes":  43256
+                              },
+                              {
+                                  "name":  "maple_synergy_reset_plan.json",
+                                  "lastWriteTime":  "2026-05-25T20:49:21",
+                                  "bytes":  74776
+                              },
+                              {
+                                  "name":  "maple_synergy_random_review_pack_report.json",
+                                  "lastWriteTime":  "2026-05-25T20:34:08",
+                                  "bytes":  355195
+                              },
+                              {
+                                  "name":  "maple_synergy_exclude_candidates.json",
+                                  "lastWriteTime":  "2026-05-25T20:27:16",
+                                  "bytes":  12918
+                              },
+                              {
+                                  "name":  "maple_synergy_item_fix_candidates.json",
+                                  "lastWriteTime":  "2026-05-25T20:27:16",
+                                  "bytes":  27742
+                              },
+                              {
+                                  "name":  "maple_synergy_unit_reset_candidates.json",
+                                  "lastWriteTime":  "2026-05-25T20:27:16",
+                                  "bytes":  30
+                              },
+                              {
+                                  "name":  "maple_synergy_unit_mapping_audit_report.json",
+                                  "lastWriteTime":  "2026-05-25T20:27:16",
+                                  "bytes":  249745
+                              },
+                              {
+                                  "name":  "maple_common2_answer_fill_summary.json",
+                                  "lastWriteTime":  "2026-05-25T17:41:47",
+                                  "bytes":  2158
+                              },
+                              {
+                                  "name":  "bisang_algebra_answer_apply_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T10:37:29",
+                                  "bytes":  3402
+                              },
+                              {
+                                  "name":  "bisang_probstat_answer_apply_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T10:37:14",
+                                  "bytes":  2821
+                              },
+                              {
+                                  "name":  "bisang_common2_answer_apply_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T10:36:46",
+                                  "bytes":  3024
+                              },
+                              {
+                                  "name":  "answer_ocr_by_id_apply_report_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T10:33:17",
+                                  "bytes":  415
+                              },
+                              {
+                                  "name":  "answer_ocr_apply_report_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T10:08:59",
+                                  "bytes":  2184
+                              },
+                              {
+                                  "name":  "answer_pdf_apply_report_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T09:55:32",
+                                  "bytes":  4871
+                              },
+                              {
+                                  "name":  "answer_manual_review_operating_js_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T09:15:52",
+                                  "bytes":  3693666
+                              },
+                              {
+                                  "name":  "handoff_operating_js_status_20260525.json",
+                                  "lastWriteTime":  "2026-05-25T07:30:41",
+                                  "bytes":  3889
+                              },
+                              {
+                                  "name":  "operating_js_current_status_20260525_resume.json",
+                                  "lastWriteTime":  "2026-05-25T07:19:35",
+                                  "bytes":  3755
+                              },
+                              {
+                                  "name":  "operating_js_current_status_latest.json",
+                                  "lastWriteTime":  "2026-05-24T20:54:59",
+                                  "bytes":  3757
+                              },
+                              {
+                                  "name":  "operating_js_current_status_after_agent_batch.json",
+                                  "lastWriteTime":  "2026-05-24T20:44:34",
+                                  "bytes":  3756
+                              },
+                              {
+                                  "name":  "operating_js_pipeline_summary.json",
+                                  "lastWriteTime":  "2026-05-24T20:36:10",
+                                  "bytes":  7741
+                              },
+                              {
+                                  "name":  "operating_js_scope_summary_20260524.json",
+                                  "lastWriteTime":  "2026-05-24T15:44:04",
+                                  "bytes":  13722
+                              },
+                              {
+                                  "name":  "operating_js_scope_report_20260524.json",
+                                  "lastWriteTime":  "2026-05-24T15:43:07",
+                                  "bytes":  102919
+                              }
+                          ],
+    "compressionPolicy":  {
+                              "keep":  "latest task, bans, touched files, before/after counts, validation result, remaining blockers",
+                              "summarize":  "long command logs, repeated report listings, historical task prose",
+                              "drop":  "obsolete plans superseded by newer user instruction"
+                          }
+}

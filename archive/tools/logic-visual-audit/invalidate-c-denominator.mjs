@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { sha256 } from './lib/canonicalize.mjs';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive/tools/logic-visual-audit/reports');
+const candidate = JSON.parse(fs.readFileSync(path.join(OUT, 'c_denominator.json'), 'utf8'));
+const uid = candidate.candidateRequiredUidSet[0];
+const nextMaps = structuredClone(candidate.maps); nextMaps.actualSolutionVisualAttachedMapSha = sha256({ previous: nextMaps.actualSolutionVisualAttachedMapSha, mutation: 'ADD', uid });
+const stale = { ...candidate, status: 'STALE', staleReason: 'DEPENDENCY_OR_VISUAL_ATTACHMENT_MUTATION', invalidatedUid: uid, previousInputSha: candidate.cDenominatorInputSha, nextInputSha: sha256({ ...nextMaps, candidateReleaseArtifactSha: sha256(candidate.candidateRequiredUidSet) }), invalidatedAtKst: '2026-09-05' };
+fs.writeFileSync(path.join(OUT, 'c_denominator_stale.json'), JSON.stringify(stale, null, 2) + '\n', 'utf8');
+console.log(JSON.stringify({ status: stale.status, staleReason: stale.staleReason, previousInputSha: stale.previousInputSha, nextInputSha: stale.nextInputSha }, null, 2));

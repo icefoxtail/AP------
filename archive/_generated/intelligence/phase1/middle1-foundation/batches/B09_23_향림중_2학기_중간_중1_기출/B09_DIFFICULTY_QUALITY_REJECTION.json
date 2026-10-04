@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "m1-difficulty-worker-quality-rejection-v1",
+  "batchNo": 9,
+  "status": "RESOLVED_FRESH_BLIND_REVIEW",
+  "rejectedQuestionUids": [
+    "qid_v1_a4c195e98305f103d79ade2af6c1cb0437d855ab5f932c1fad41e0cc63603aed",
+    "qid_v1_82360a7b7c0dcf5598ee99eda28f2d679c48a0d7c5c3aeaad67f48e95c7b1ceb"
+  ],
+  "rejectedSourceOrdinals": [
+    1,
+    3
+  ],
+  "originalBlindLedgerSha256": "b85f3d330dcbebd6cd4e6188979732570205377bcbc32df798ab8c089e456873",
+  "isolatedInputSha256": "94364050c1def69110a426b67ba008b416857af730a3cc3b84786c303cca5703",
+  "reason": "Frozen blind q1 reason describes another five-statement question and q3 reason describes q1 cuboid counts; UID/hash matches do not establish source-specific difficulty evidence. A fresh context Luna XHigh must blindly re-evaluate only q1/q3 before final difficulty closure.",
+  "correctionFile": "DIFFICULTY_BLIND_CORRECTION_01_03.jsonl",
+  "correctedLedgerSha256": "e1dd8d32b94f3cf91fe153c0c4c4cd92f9ffe1d37bd3ed468899f6bfff6f3904",
+  "resolution": "Fresh context Luna XHigh, command audit 0 legacy/prior-ledger reads; q1 bucket1 and q3 bucket2 with source-specific reasons; original frozen blind ledger retained unchanged.",
+  "workerRawCorrectionSha256": "446c339db83e6fc5d21ffc48ac67bbf30bcd200b78e1e64607c790654b652825",
+  "workerRawCorrectionFile": "DIFFICULTY_BLIND_CORRECTION_01_03_PRE_SCHEMA.jsonl",
+  "schemaCorrection": "Renamed two evidence-reason property names only to B08+ canonical §18 schema; all difficulty decisions and reason text unchanged."
+}

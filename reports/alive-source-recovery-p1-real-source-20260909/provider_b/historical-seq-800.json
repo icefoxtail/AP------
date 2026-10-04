@@ -1,0 +1,21 @@
+{
+  "providerName": "multi_agent_v1",
+  "providerAgentType": "alive_math_verifier",
+  "verifierId": "multi_agent_v1:alive_math_verifier",
+  "verifierSessionId": "01a0854f-7da7-7f10-827e-280bb34441f7",
+  "inputVisibilityProfile": "ARTIFACT_ONLY",
+  "candidateId": "REAL-P1-historical-seq-800-C01-5a9fac04cd47",
+  "candidateVersion": 1,
+  "candidatePayloadSha256": "sha256:5a9fac04cd47fc44ccec5b2f97842c6906ec9bf7cb0790f304b09a1f9844eb24",
+  "computedAnswer": "4\\sqrt{6}",
+  "answerUnique": true,
+  "responseContractValid": true,
+  "matchingChoiceIndices": [4],
+  "matchingChoiceIndexBase": 1,
+  "allChoicesChecked": true,
+  "distractorsWrong": true,
+  "mathVerdict": "PASS",
+  "reasoningSummary": "Using principal square roots, √(-2)√(-3)=(i√2)(i√3)=-√6, √18/√(-2)=3√2/(i√2)=-3i, and √(-8)/√(-12)=(2i√2)/(2i√3)=√6/3. Thus a+bi=-(4√6/3)-3i, so ab=(-4√6/3)(-3)=4√6, matching only one candidate choice after the frozen duplicate-choice repair.",
+  "rawProviderMatchingChoiceIndices": [3],
+  "rawProviderMatchingChoiceIndexBase": 0
+}

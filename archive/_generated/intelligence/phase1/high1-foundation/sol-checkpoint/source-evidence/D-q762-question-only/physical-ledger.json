@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "task": "D question-only source repair, H1 queueIndex 762",
+  "status": "QUESTION_HEADING_REPAIRED_SOURCE_CONFIRMED",
+  "disposition": "HEADING_ONLY_CORRECTION; MATH_CONDITION_SOURCE_MATCH",
+  "queueIndex": 762,
+  "questionUid": "qid_v1_02143bc08df277e86e73598b679b7fc06780983caa85bbd0da2dda5a84eb823e",
+  "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#22",
+  "targetJs": "archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+  "sourceScope": "Original question page 5/5 only: full stem, inequality conditions, requested target, and choices status. No official answer or solution page inspected or used.",
+  "source": {
+    "file": {
+      "path": "D:\\2026년 기출\\1학기기말\\분류완료\\고1\\순천복성고등학교\\공통수학1\\S28BW-826071419330_0038.jpg",
+      "page": 5,
+      "printedPage": "5/5",
+      "sha256": "842581DE81F988D563046902A9277BCB4A0D901BA18BB41288B2EEE8F392D434",
+      "examHeader": "2026학년도 1학기 기말고사; 고1 공통수학1"
+    }
+  },
+  "itemBefore": {
+    "id": 22,
+    "questionType": "단답형",
+    "content": "&lt;서논술형 2&gt;<br>$x$에 대한 연립부등식 $\\begin{cases}|x-k|\\lt3\\\\x^2-3x-4\\le0\\end{cases}$을 만족시키는 정수 $x$가 존재할 때, 이 연립부등식을 만족시키는 모든 정수 $x$값의 합을 $p$라고 하자. $p=10$이 되도록 하는 모든 정수 $k$값의 합을 풀이과정과 함께 구하시오. [7점, 부분점수 있음]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "itemAfter": {
+    "id": 22,
+    "questionType": "단답형",
+    "content": "&lt;서술형 2&gt;<br>$x$에 대한 연립부등식 $\\begin{cases}|x-k|\\lt3\\\\x^2-3x-4\\le0\\end{cases}$을 만족시키는 정수 $x$가 존재할 때, 이 연립부등식을 만족시키는 모든 정수 $x$값의 합을 $p$라고 하자. $p=10$이 되도록 하는 모든 정수 $k$값의 합을 풀이과정과 함께 구하시오. [7점, 부분점수 있음]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "changes": [
+    {
+      "field": "questionBank[id=22].content heading",
+      "before": "&lt;서논술형 2&gt;",
+      "after": "&lt;서술형 2&gt;",
+      "reason": "The original question page clearly prints “서술형 2”; removed the extra “논” in the JS heading."
+    }
+  ],
+  "sourceConfirmed": {
+    "heading": "<서술형 2>",
+    "system": "|x−k|<3 and x²−3x−4≤0",
+    "target": "Let the sum of all integer x satisfying the system be p; require p=10 and find the sum of all integer k values.",
+    "score": "7점, 부분점수 있음",
+    "choices": "None; original item is written response."
+  },
+  "fieldDispositions": {
+    "heading": "SOURCE_DIFFERENCE_REPAIRED",
+    "absoluteValueCondition": "SOURCE_MATCH_JS_UNCHANGED",
+    "secondInequality": "SOURCE_MATCH_JS_UNCHANGED",
+    "requestedTarget": "SOURCE_MATCH_JS_UNCHANGED",
+    "choices": "SOURCE_MATCH_NONE",
+    "answer": "NOT_INSPECTED_OR_CHANGED",
+    "solution": "NOT_INSPECTED_OR_CHANGED",
+    "metadata": "NOT_INSPECTED_OR_CHANGED"
+  },
+  "validation": {
+    "syntax": {
+      "command": "node --check archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "status": "PASS",
+      "exitCode": 0
+    },
+    "itemSchema": {
+      "status": "PASS",
+      "checks": [
+        "questionBank is an array",
+        "question ids are unique positive integers",
+        "q22 heading matches source",
+        "q22 is a written response with no choices",
+        "|x-k|<3 and x²-3x-4≤0 match source",
+        "p=10 target and 7-point score match source"
+      ]
+    },
+    "render": {
+      "status": "NOT_TESTED",
+      "method": "Archive exam browser render",
+      "reason": "No connected browser surface was available; original source page and JS parsing were inspected."
+    }
+  },
+  "contentSha256": "cd4dd6f1c27b5d785a55d6292c9d29a59aef48b7a24a172704eaa10308c5901e",
+  "evidenceFiles": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q762-question-only/source-question-page-5-original.jpg",
+      "role": "Original question page 5/5 full-page JPEG",
+      "sha256": "842581DE81F988D563046902A9277BCB4A0D901BA18BB41288B2EEE8F392D434"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q762-question-only/source-q22-detail.png",
+      "role": "q22 question detail crop from original page 5/5",
+      "sha256": "5F772BADA56A8FAB35F51CD209A3AD2C25D91495E9903CC8E41BAF1E941A6E63"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q762-question-only/source-q22-detail-tight.png",
+      "role": "High-resolution crop of q22 full condition and requested target",
+      "sha256": "A58311DE52BBDDB4AC641C9DAE7A7D99DF76B03425E74D310260C8ED16823378"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q762-question-only/source-q22-heading-detail.png",
+      "role": "High-resolution crop confirming printed heading “서술형 2”",
+      "sha256": "47DEA9EF3A6D41A2F200822960AFCF4F2F648D1C7913CDA0429D9120DEEA0805"
+    }
+  ],
+  "officialAnswerPageInspected": false,
+  "officialSolutionPageInspected": false,
+  "officialAnswerOrSolutionUsed": false,
+  "model": {
+    "identity": "gpt-6-luna",
+    "reasoningEffort": "xhigh"
+  },
+  "physicalCorrectionNote": {
+    "field": "questionUid",
+    "before": "qid_v1_7d14ef7e9447e406e1b0f3d24fdf956af2d38bb1f034c8c13921227df1698c02",
+    "after": "qid_v1_02143bc08df277e86e73598b679b7fc06780983caa85bbd0da2dda5a84eb823e",
+    "reason": "Corrected the copied q859 UID to the current H1_STAGEA_AB_WORKING_COMPARISON_CURRENT.json row for queueIndex 762. Verified queueIndex=762, sourceIdentity parity, and current JS q22 content hash parity with this ledger before correction."
+  }
+}

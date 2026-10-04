@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "status": "GLOBAL_L3_PARENT_NORMALIZATION_CHECKPOINT_WORKING_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "efd09382748a8c4efd1fd32ea6a88f4f26eae739",
+  "denominator": 1170,
+  "validation": {
+    "rows": 1170,
+    "uniqueUid": 1170,
+    "uniqueSourceIdentity": 1170,
+    "oldMergedPolyKeyRemaining": 0,
+    "deltaRows": 155,
+    "reviewedKeepRows": 2,
+    "dependentRelationalAdjustmentRows": 9,
+    "holdRows": 17
+  },
+  "normalization": {
+    "newCandidateKeys": {
+      "PT_H1_POLY_DIVISION": 34,
+      "PT_H1_REMAINDER_THEOREM": 31,
+      "PT_H1_FACTOR_THEOREM": 14,
+      "PT_H1_INEQUALITY_APPLICATION": 8,
+      "PT_H1_EQUATION_APPLICATION": 2
+    },
+    "reviewedKeeps": [
+      {
+        "queueIndex": 551,
+        "questionUid": "qid_v1_a8cfd20ae2e20a19314fef2e831176d198bac89837a0345c10b958a7b771a5e4",
+        "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#12",
+        "key": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "action": "KEEP_REVIEWED",
+        "reason": "사분면 조건에서 계수 제약을 복원하는 구조는 기존 PT_H1_QUADRATIC_RECONSTRUCTION 안에서 처리하고 1문항 singleton L3를 만들지 않는다.",
+        "evidence": "H1_STAGEA_LUNA6_C_BLIND_CONFLICTS11_20.jsonl"
+      },
+      {
+        "queueIndex": 634,
+        "questionUid": "qid_v1_10f4154a085c088f363cfab4005cbb079f86580dd6e823e1ebe24188f2ef09fb",
+        "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#20",
+        "key": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "action": "KEEP_REVIEWED",
+        "reason": "두 level equation 중 한쪽의 중근/실근 수가 decisive라 PT_H1_QUADRATIC_DISCRIMINANT를 유지한다.",
+        "evidence": "H1_STAGEA_LUNA6_C_BLIND_CONFLICTS15_20.jsonl"
+      }
+    ],
+    "identityBindingNote": "queueIndex가 이동한 challenge는 questionUid/sourceIdentity를 authority로 사용했다.",
+    "staleQueueIndexResolved": [
+      {
+        "reported": 421,
+        "current": 417
+      },
+      {
+        "reported": 442,
+        "current": 439
+      },
+      {
+        "reported": 478,
+        "current": 477
+      }
+    ]
+  },
+  "distribution": {
+    "PT_H1_POLY_FACTORIZATION": 38,
+    "PT_H1_POLY_OPERATION_EXPANSION": 38,
+    "PT_H1_REMAINDER_THEOREM": 31,
+    "PT_H1_POLY_DIVISION": 34,
+    "PT_H1_POLY_IDENTITY_COEFFICIENT": 32,
+    "PT_H1_POLY_FORMULA_SYMMETRIC": 23,
+    "PT_H1_FACTOR_THEOREM": 14,
+    "HOLD": 17,
+    "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY": 43,
+    "PT_H1_SYSTEM_EQUATION": 38,
+    "PT_H1_LINEAR_SYSTEM_INEQUALITY": 33,
+    "PT_H1_QUADRATIC_DISCRIMINANT": 70,
+    "PT_H1_QUADRATIC_INEQUALITY": 64,
+    "PT_H1_HIGHER_DEGREE_EQUATION": 25,
+    "PT_H1_QUADRATIC_EXTREMA": 79,
+    "PT_H1_COMPLEX_POWER_ROOT": 49,
+    "PT_H1_ROOT_COEFFICIENT_RELATION": 30,
+    "PT_H1_QUADRATIC_GRAPH_INTERSECTION": 39,
+    "PT_H1_QUADRATIC_RECONSTRUCTION": 11,
+    "PT_H1_COMPLEX_CONDITION_EQUATION": 35,
+    "PT_H1_EQUATION_APPLICATION": 2,
+    "PT_H1_COMPLEX_OPERATION": 46,
+    "PT_ABSOLUTE_INEQUALITY_EXTREMUM": 3,
+    "PT_H1_INEQUALITY_APPLICATION": 8,
+    "PT_H1_COUNTING_PRINCIPLE_GENERAL": 100,
+    "PT_COUNTING_SELECTION_DISTRIBUTION": 102,
+    "PT_COUNTING_ARRANGEMENT": 81,
+    "PT_FUNCTION_COUNTING": 1,
+    "PT_COUNTING_REPEATED_ASSIGNMENT": 2,
+    "PT_H1_MATRIX_BASIC_OPERATION": 29,
+    "PT_H1_MATRIX_MULTIPLICATION": 27,
+    "PT_H1_MATRIX_EQUATION": 14,
+    "PT_H1_MATRIX_POWER_IDENTITY": 12
+  },
+  "authority": {
+    "normalizedLedger": "H1_STAGE3_L3_GLOBAL_NORMALIZED_1170.jsonl",
+    "deltaLedger": "H1_STAGE3_L3_GLOBAL_NORMALIZATION_DELTA.jsonl",
+    "dependentRelationalAdjustments": "H1_STAGE3_L3_DEPENDENT_RELATIONAL_ADJUSTMENTS.jsonl",
+    "semantics": "WORKING_NOT_FINAL",
+    "finalGeneratedByValidator": false
+  },
+  "next": "qdisc L4 batch3/4 completion → full L4 normalization → fresh difficulty 1170.",
+  "finality": {
+    "l3Final": false,
+    "l4Final": false,
+    "difficultyFinal": false,
+    "canonicalPromotion": false
+  }
+}

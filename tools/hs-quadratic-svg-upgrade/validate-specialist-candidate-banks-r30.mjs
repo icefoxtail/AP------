@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+const REPORT = path.join(ROOT, 'reports', 'hs-quadratic-svg-upgrade-20260908');
+const M = JSON.parse(fs.readFileSync(path.join(REPORT, '412_specialist_candidate_bank_manifest_r30.json'), 'utf8'));
+const OUTPUT = path.join(REPORT, '415_specialist_candidate_bank_validation_r30.json');
+function load(relative) { const context = { window: {} }; vm.createContext(context); vm.runInContext(fs.readFileSync(path.join(ROOT, relative), 'utf8'), context, { filename: relative, timeout: 10000 }); return JSON.parse(JSON.stringify(context.window)); }
+const errors = []; let bankRows = 0; let visualCount = 0; let solutionDrift = 0;
+for (const file of M.candidateFiles) {
+  const source = load(file.sourcePath); const candidate = load(file.candidatePath); bankRows += candidate.questionBank.length;
+  if (source.questionBank.length !== candidate.questionBank.length) errors.push(`COUNT:${file.sourcePath}`);
+  for (let index = 0; index < source.questionBank.length; index += 1) {
+    const a = source.questionBank[index]; const b = candidate.questionBank[index]; if (a.id !== b.id) errors.push(`ORDER:${file.sourcePath}`);
+    for (const field of ['content', 'choices', 'answer', 'image']) if (JSON.stringify(a[field] ?? null) !== JSON.stringify(b[field] ?? null)) errors.push(`SOURCE_FIELD_DRIFT:${file.sourcePath}|${a.id}:${field}`);
+    if (JSON.stringify(a.solution ?? null) !== JSON.stringify(b.solution ?? null)) solutionDrift += 1;
+    if (b.solutionImage) { visualCount += 1; if (!fs.existsSync(path.join(ROOT, b.solutionImage))) errors.push(`MISSING_VISUAL_ASSET:${file.sourcePath}|${b.id}`); }
+  }
+}
+if (visualCount !== M.totalDeclaredCandidateVisualCount) errors.push(`VISUAL_COUNT:${visualCount}`);
+const output = { schemaVersion: 'HS_QUADRATIC_SPECIALIST_CANDIDATE_BANK_VALIDATION_R30', status: errors.length ? 'SPECIALIST_CANDIDATE_BANK_VALIDATION_FAIL' : 'SPECIALIST_CANDIDATE_BANK_VALIDATED_NO_PASS', productionAuthorized: false, sourceFileCount: M.candidateFiles.length, candidateBankQuestionCount: bankRows, candidateVisualCount: visualCount, declaredCandidateVisualCount: M.totalDeclaredCandidateVisualCount, solutionDriftFromCurrentSource: solutionDrift, errors, note: 'Validates r30 order/count, source-protected parity, current solution parity and candidate asset existence only.' };
+fs.writeFileSync(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
+console.log(JSON.stringify({ status: output.status, sourceFileCount: output.sourceFileCount, candidateBankQuestionCount: output.candidateBankQuestionCount, candidateVisualCount: output.candidateVisualCount, solutionDriftFromCurrentSource: output.solutionDriftFromCurrentSource, errors: errors.length }, null, 2));

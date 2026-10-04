@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>학교시험 분석표 PDF</title>
+<style>
+    @page { size:A4; margin:12mm; }
+    * { box-sizing:border-box; }
+    html, body { margin:0; padding:0; background:#fff; color:#111827; }
+    body { font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:11px; line-height:1.45; }
+    .aprc-exam-analysis-print { max-width:186mm; margin:0 auto; padding:0; }
+    .aprc-print-head { margin-bottom:8mm; border-bottom:2px solid #111827; padding-bottom:5mm; break-inside:avoid; page-break-inside:avoid; }
+    .aprc-print-brand { font-size:10px; font-weight:900; color:#2563eb; letter-spacing:0.08em; }
+    .aprc-print-head h1 { margin:2mm 0 1mm; font-size:20px; line-height:1.2; }
+    .aprc-print-head p { margin:0; color:#475569; font-weight:700; }
+    .aprc-print-summary { display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:5mm; break-inside:avoid; page-break-inside:avoid; }
+    .aprc-print-summary > div { border:1px solid #dbe3ef; border-radius:8px; padding:3mm; }
+    .aprc-print-summary strong { display:block; margin-bottom:2mm; font-size:11px; }
+    .aprc-print-pill, .aprc-qtable-chip, .aprc-qtable-ai { display:inline-flex; align-items:center; margin:0 1.5mm 1.5mm 0; padding:1.2mm 2mm; border-radius:999px; background:#eef2ff; color:#1d4ed8; font-size:9px; font-weight:900; }
+    .aprc-print-muted, .aprc-qtable-muted { color:#64748b; }
+    .aprc-qtable-wrap { overflow:visible; border:0; }
+    .aprc-qtable { width:100%; border-collapse:collapse; table-layout:fixed; font-size:9.5px; }
+    .aprc-qtable th { padding:2mm 1.2mm; border:1px solid #cbd5e1; background:#f1f5f9; color:#334155; text-align:left; font-weight:900; }
+    .aprc-qtable td { padding:1.8mm 1.2mm; border:1px solid #dbe3ef; vertical-align:top; }
+    .aprc-qtable thead { display:table-header-group; }
+    .aprc-qtable tbody { display:table-row-group; }
+    .aprc-qtable tr, .aprc-qtable-detail, .aprc-qtable-detail-panel, .aprc-qtable-detail-item { break-inside:avoid; page-break-inside:avoid; }
+    .aprc-qtable-toggle { display:none; }
+    .aprc-qtable-concept { display:flex; gap:1.5mm; align-items:center; }
+    .aprc-qtable-concept-text { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:800; }
+    .aprc-qtable-rate-text, .aprc-qtable-rate-sub { display:block; font-weight:900; white-space:nowrap; }
+    .aprc-qtable-rate-sub { color:#64748b; font-size:9px; }
+    .aprc-qtable-bar { display:block; height:1.3mm; margin-top:1mm; border-radius:999px; background:#e2e8f0; overflow:hidden; }
+    .aprc-qtable-bar > span { display:block; height:100%; background:#2563eb; }
+    .aprc-qtable-bar-fill--0 { width:0%; } .aprc-qtable-bar-fill--5 { width:5%; } .aprc-qtable-bar-fill--10 { width:10%; } .aprc-qtable-bar-fill--15 { width:15%; } .aprc-qtable-bar-fill--20 { width:20%; } .aprc-qtable-bar-fill--25 { width:25%; } .aprc-qtable-bar-fill--30 { width:30%; } .aprc-qtable-bar-fill--35 { width:35%; } .aprc-qtable-bar-fill--40 { width:40%; } .aprc-qtable-bar-fill--45 { width:45%; } .aprc-qtable-bar-fill--50 { width:50%; } .aprc-qtable-bar-fill--55 { width:55%; } .aprc-qtable-bar-fill--60 { width:60%; } .aprc-qtable-bar-fill--65 { width:65%; } .aprc-qtable-bar-fill--70 { width:70%; } .aprc-qtable-bar-fill--75 { width:75%; } .aprc-qtable-bar-fill--80 { width:80%; } .aprc-qtable-bar-fill--85 { width:85%; } .aprc-qtable-bar-fill--90 { width:90%; } .aprc-qtable-bar-fill--95 { width:95%; } .aprc-qtable-bar-fill--100 { width:100%; }
+    .aprc-qtable-detail td { background:#f8fafc; }
+    .aprc-qtable-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:2mm; }
+    .aprc-qtable-detail-item { border:1px solid #e2e8f0; border-radius:6px; padding:2mm; background:#fff; }
+    .aprc-qtable-detail-label { display:block; margin-bottom:1mm; color:#64748b; font-size:9px; font-weight:900; }
+    .aprc-qtable-detail-body { font-size:10px; font-weight:700; overflow-wrap:anywhere; }
+    .aprc-qtable-wrong-groups { display:flex; flex-wrap:wrap; gap:1.5mm; }
+    @media print {
+        html, body { background:#fff !important; }
+        .aprc-exam-analysis-print { width:100% !important; max-width:186mm !important; }
+        thead { display:table-header-group !important; }
+        tr, .aprc-qtable-detail, .aprc-qtable-detail-panel, .aprc-qtable-detail-item { break-inside:avoid !important; page-break-inside:avoid !important; }
+    }
+</style>
+<script>
+    window.__AP_REPORT_PRINT_TRIGGERED = false;
+    window.__AP_REPORT_TRIGGER_PRINT = function() {
+        if (window.__AP_REPORT_PRINT_TRIGGERED) return;
+        window.__AP_REPORT_PRINT_TRIGGERED = true;
+        setTimeout(function() { try { window.focus(); } catch (e) {} window.print(); }, 200);
+    };
+    window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+        svg: { fontCache: 'global' },
+        startup: { pageReady: function() { return MathJax.startup.defaultPageReady().then(window.__AP_REPORT_TRIGGER_PRINT).catch(window.__AP_REPORT_TRIGGER_PRINT); } }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" onerror="setTimeout(window.__AP_REPORT_TRIGGER_PRINT, 2500)"></script>
+</head>
+<body>
+
+        <main class="aprc-exam-analysis-print" data-report-exam-analysis-print="exams/dump-analysis.js">
+            <header class="aprc-print-head">
+                <div class="aprc-print-brand">AP MATH REPORT</div>
+                <h1>?? ?? 분석표</h1>
+                <p>??? · ?2 · 응시 3명 · 전체 평균 80점 · 작성일 2026-07-05</p>
+            </header>
+            <section class="aprc-print-summary">
+                <div><strong>단원 분포</strong><div><span class="aprc-print-pill">????? 1</span><span class="aprc-print-pill">?? 2</span></div></div>
+                <div><strong>난도 분포</strong><div><span class="aprc-print-pill">? 3</span></div></div>
+            </section>
+            
+        <div class="aprc-qtable-wrap" data-aprc-qtable>
+            <table class="aprc-qtable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>유형</th>
+                        <th>난도</th>
+                        <th>단원</th>
+                        <th>출제의도·개념</th>
+                        <th>배점</th>
+                        <th>전체 응시 정답률</th>
+                        <th>오답</th>
+                        <th>태그</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                            <tr class="aprc-qtable-row " data-qtable-row="1">
+                                <td><button type="button" class="aprc-qtable-toggle" data-qtable-toggle aria-expanded="true" aria-label="1번 분석 펼치기">▶</button> 1</td>
+                                <td><span class="aprc-qtable-chip">객관식</span></td>
+                                <td><span class="aprc-qtable-chip aprc-qtable-level--low">?</span></td>
+                                <td><span class="aprc-qtable-concept-text">?????</span></td>
+                                <td><span class="aprc-qtable-concept"><span class="aprc-qtable-concept-text ">????? ??</span></span></td>
+                                <td>3점</td>
+                                <td><span class="aprc-qtable-rate"><span class="aprc-qtable-rate-text">전체 33%</span><span class="aprc-qtable-bar"><span class="aprc-qtable-bar-fill--35"></span></span></span></td>
+                                <td>2</td>
+                                <td><span class="aprc-qtable-chip">개념 재정리</span></td>
+                            </tr>
+                            <tr class="aprc-qtable-detail" data-qtable-detail="1" >
+                                <td colspan="9">
+        <div class="aprc-qtable-detail-panel">
+            <div class="aprc-qtable-detail-grid">
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">묻는 것</span>
+                        <div class="aprc-qtable-detail-body">??? ????.</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">함정</span>
+                        <div class="aprc-qtable-detail-body">?? 0? ???.</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">풀이 포인트</span>
+                        <div class="aprc-qtable-detail-body">??? ?? ??.</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">지도 포인트</span>
+                        <div class="aprc-qtable-detail-body">?? ?? ??</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">정답</span>
+                        <div class="aprc-qtable-detail-body">1</div>
+                    </div>
+                
+            </div>
+            <div class="aprc-qtable-detail-item">
+                <span class="aprc-qtable-detail-label">오답 학생 명단</span>
+                <div class="aprc-qtable-wrong-groups"><span class="aprc-qtable-chip">?2A · ???</span></div>
+            </div>
+        </div>
+    </td>
+                            </tr>
+                        
+                            <tr class="aprc-qtable-row " data-qtable-row="2">
+                                <td><button type="button" class="aprc-qtable-toggle" data-qtable-toggle aria-expanded="true" aria-label="2번 분석 펼치기">▶</button> 2</td>
+                                <td><span class="aprc-qtable-chip">객관식</span></td>
+                                <td><span class="aprc-qtable-chip aprc-qtable-level--low">?</span></td>
+                                <td><span class="aprc-qtable-concept-text">??</span></td>
+                                <td><span class="aprc-qtable-concept"><span class="aprc-qtable-concept-text aprc-qtable-muted">분석 대기</span></span></td>
+                                <td>4점</td>
+                                <td><span class="aprc-qtable-rate"><span class="aprc-qtable-rate-text">전체 67%</span><span class="aprc-qtable-bar"><span class="aprc-qtable-bar-fill--65"></span></span></span></td>
+                                <td>1</td>
+                                <td><span class="aprc-qtable-chip">풀이 순서</span></td>
+                            </tr>
+                            <tr class="aprc-qtable-detail" data-qtable-detail="2" >
+                                <td colspan="9">
+        <div class="aprc-qtable-detail-panel">
+            <div class="aprc-qtable-detail-grid">
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">묻는 것</span>
+                        <div class="aprc-qtable-detail-body">??</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">함정</span>
+                        <div class="aprc-qtable-detail-body">분석 대기</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">풀이 포인트</span>
+                        <div class="aprc-qtable-detail-body">분석 대기</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">지도 포인트</span>
+                        <div class="aprc-qtable-detail-body">분석 대기</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">정답</span>
+                        <div class="aprc-qtable-detail-body">-</div>
+                    </div>
+                
+            </div>
+            <div class="aprc-qtable-detail-item">
+                <span class="aprc-qtable-detail-label">오답 학생 명단</span>
+                <div class="aprc-qtable-wrong-groups"><span class="aprc-qtable-chip">?2A · ???</span></div>
+            </div>
+        </div>
+    </td>
+                            </tr>
+                        
+                            <tr class="aprc-qtable-row " data-qtable-row="3">
+                                <td><button type="button" class="aprc-qtable-toggle" data-qtable-toggle aria-expanded="true" aria-label="3번 분석 펼치기">▶</button> 3</td>
+                                <td><span class="aprc-qtable-chip">객관식</span></td>
+                                <td><span class="aprc-qtable-chip aprc-qtable-level--low">?</span></td>
+                                <td><span class="aprc-qtable-concept-text">??</span></td>
+                                <td><span class="aprc-qtable-concept"><span class="aprc-qtable-concept-text aprc-qtable-muted">분석 대기</span></span></td>
+                                <td>3점</td>
+                                <td><span class="aprc-qtable-rate"><span class="aprc-qtable-rate-text">전체 100%</span><span class="aprc-qtable-bar"><span class="aprc-qtable-bar-fill--100"></span></span></span></td>
+                                <td>0</td>
+                                <td><span class="aprc-qtable-chip">계산·검산</span></td>
+                            </tr>
+                            <tr class="aprc-qtable-detail" data-qtable-detail="3" >
+                                <td colspan="9">
+        <div class="aprc-qtable-detail-panel">
+            <div class="aprc-qtable-detail-grid">
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">묻는 것</span>
+                        <div class="aprc-qtable-detail-body">??</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">함정</span>
+                        <div class="aprc-qtable-detail-body">분석 대기</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">풀이 포인트</span>
+                        <div class="aprc-qtable-detail-body">분석 대기</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">지도 포인트</span>
+                        <div class="aprc-qtable-detail-body">분석 대기</div>
+                    </div>
+                
+                    <div class="aprc-qtable-detail-item">
+                        <span class="aprc-qtable-detail-label">정답</span>
+                        <div class="aprc-qtable-detail-body">-</div>
+                    </div>
+                
+            </div>
+            <div class="aprc-qtable-detail-item">
+                <span class="aprc-qtable-detail-label">오답 학생 명단</span>
+                <div class="aprc-qtable-wrong-groups"><span class="aprc-qtable-muted">오답 학생 없음</span></div>
+            </div>
+        </div>
+    </td>
+                            </tr>
+                        
+                </tbody>
+            </table>
+        </div>
+    
+        </main>
+    
+<script>window.addEventListener('load', function(){ setTimeout(function(){ if (!window.__AP_REPORT_PRINT_TRIGGERED) window.__AP_REPORT_TRIGGER_PRINT(); }, 5000); });</script>
+</body>
+</html>

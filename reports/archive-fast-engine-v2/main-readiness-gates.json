@@ -1,0 +1,27 @@
+{
+  "result": "PASS",
+  "originMain": "e1a4cf07578b0055fdbaf773bf27049fe54f05ce",
+  "branchContainsOriginMain": true,
+  "runtimeBundleVersion": "20260911.5",
+  "gates": {
+    "LATEST_MAIN_INTEGRATED": "PASS",
+    "SOLUTION_CLIPPING_MAIN_FIX_PRESERVED": "PASS",
+    "AUTHORITY_SOLUTION_MATERIALIZER_CLIPPING": "PASS",
+    "FRESH_WARM_CACHE_RUNTIME_IDENTITY": "PASS",
+    "RUNTIME_FINGERPRINT_BROWSER_IDENTITY_PARITY": "PASS",
+    "HEADER_TYPING_DESIRED_STATE": "PASS",
+    "QR_CONTROL_DESIRED_STATE": "PASS",
+    "MAIN_READINESS_STATIC_REGRESSION": "PASS",
+    "MAIN_READINESS_BROWSER_REGRESSION": "PASS"
+  },
+  "evidence": {
+    "static": "main-readiness-static.tap: 64 PASS / 0 FAIL",
+    "primaryBrowser": "main-readiness-regression.json: 19 PASS / 0 unexpected page errors; one injected font failure is classified as expected test evidence",
+    "headerCacheBrowser": "main-readiness-browser.json: desktop/mobile actual input typing, fresh/warm cache script identity, authority clipping probe, and submit/solution QR fast ON→OFF desired-state PASS",
+    "layout": "phase6-layout-browser.json: 12 observed-versus-authority parity comparisons PASS after main integration",
+    "snapshots": "phase1b-browser.json, phase1c-browser.json, phase1d-browser.json: desktop/mobile cache-hit and print-preflight PASS",
+    "prewarm": "phase5-browser.json: desktop/mobile prewarm/cancel/activation PASS",
+    "legacy": "phase7-legacy-browser.json: 12 rollback cases PASS"
+  },
+  "mainMergePolicy": "origin/main was merged into this feature branch only. No merge or push to main was performed."
+}

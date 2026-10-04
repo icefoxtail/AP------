@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_RELATIONAL_CLOSED_NOT_FINAL",
+  "denominator": 1170,
+  "currentUidCoverage": 1170,
+  "currentSourceIdentityCoverage": 1170,
+  "duplicateUid": 0,
+  "duplicateSourceIdentity": 0,
+  "itemsWithWorkingFieldConsensus": 1170,
+  "itemsPendingSolFieldReview": 0,
+  "pendingSolFieldCount": 0,
+  "polynomialL3ProposalApplied": 87,
+  "taxonomyFinal": false,
+  "l4Final": false,
+  "crossConceptFinal": false,
+  "conditionFinal": false,
+  "integrationFinal": false,
+  "difficultyFinal": false,
+  "finalValidatorPass": false,
+  "inputs": [
+    "H1_STAGEA_FIRST50_WORKING_RELATIONAL_CANDIDATE.jsonl",
+    "H1_STAGEA_WORKING_RELATIONAL_CANDIDATE_1120.jsonl",
+    "poly-division-boundary/H1_POLY_DIVISION_87_L3_KEY_PROPOSAL.jsonl"
+  ],
+  "postRepairInputs": [
+    "H1_SOL_Q599_SOURCE_REPAIR_TAXONOMY_RESOLUTION.json"
+  ],
+  "duplicateUidCount": 0,
+  "duplicateSourceIdentityCount": 0,
+  "pureRelationalMaterialization": {
+    "status": "COMPLETE",
+    "rowsMaterialized": 146,
+    "fieldsMaterialized": 159,
+    "batches": [
+      50,
+      48,
+      48
+    ],
+    "residualQueueRows": 33,
+    "residualQueueFields": 40,
+    "residualFieldCounts": {
+      "integrationPattern": 2,
+      "sourceIssue": 11,
+      "l3": 23,
+      "conditions": 3,
+      "crossConcepts": 1
+    },
+    "basisHead": "8662b7ee911f3c4a57675aaaa0c3583e850b3d19"
+  },
+  "critical33Materialization": {
+    "status": "COMPLETE",
+    "sourceLedger": "H1_SOL_DIRECT_CRITICAL34_DECISIONS.jsonl",
+    "rowsMaterialized": 33,
+    "fieldsMaterialized": 40,
+    "fieldCounts": {
+      "l3": 23,
+      "sourceIssue": 11,
+      "conditions": 3,
+      "crossConcepts": 1,
+      "integrationPattern": 2
+    },
+    "blockingHoldRows": 0,
+    "nonblockingSourceIssueRows": 5,
+    "sourceIssueNoneRows": 6,
+    "basisHead": "cedfaab737104d53019c0da4df4d59875c1f29ab"
+  }
+}

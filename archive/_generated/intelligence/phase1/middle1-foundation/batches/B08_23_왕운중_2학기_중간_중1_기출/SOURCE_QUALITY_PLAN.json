@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 8,
+  "denominator": 24,
+  "defaultDisposition": "SOLUTION_REPAIR_REQUIRED",
+  "defaultIssueType": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+  "defaultReason": "Archived explanation repeats a broad method and the keyed result without the item-specific decisive calculation or diagram transfer. Keep the source/answer intact and record solution-quality HOLD; this finding alone does not trigger Root rereading or independent difficulty recheck.",
+  "overrides": [
+    { "sourceOrdinal": 1, "issueType": "OFF_TOPIC_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The basic-figure truth-check has answer ④, but the archived explanation discusses straight/vertical/parallel angles and triangle sums instead of its five definitions." },
+    { "sourceOrdinal": 6, "issueType": "UNVERIFIABLE_VISUAL_OPTION_LABELS", "disposition": "SOURCE_BLOCKED", "reason": "The standard equal-angle construction is identifiable, but the five option orders are embedded in small circled glyphs that A/B/C/root cannot reliably bind to keyed ⑤. Source solution merely echoes ⑤; leave this UID semantic HOLD and unmodified." },
+    { "sourceOrdinal": 10, "issueType": "MISSING_FOLD_TRANSFER", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The 150° mark gives a 30° crease, its reflected ray is 60° to horizontal, and x=120°, but the archived explanation does not mention the fold reflection needed for these steps." },
+    { "sourceOrdinal": 12, "issueType": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The parallel-line image gives x+y=275° after canceling the middle segment inclination; archived solution lists generic angle rules and keyed ③ without the cancellation." },
+    { "sourceOrdinal": 16, "issueType": "AMBIGUOUS_SECTION_FACE_COUNT", "disposition": "SOURCE_BLOCKED", "reason": "The cut-plane option ④ is supportable, but option ⑤'s claim that exactly three faces meet AGC depends on whether vertex-only contact counts. Generic archived solution does not resolve the single-answer ambiguity; leave source and metadata unchanged on HOLD." },
+    { "sourceOrdinal": 22, "issueType": "SOLUTION_FIELD_PLACEHOLDER", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "An item-specific SAS argument appears in the stored answer text, but the archived solution starts with generic angle-law boilerplate and does not independently develop the marked diagram's correspondence. Record quality HOLD without reopening the already verified semantic UID." },
+    { "sourceOrdinal": 23, "issueType": "NONE", "disposition": "HOLD_RESOLVED_NO_SOURCE_MUTATION", "reason": "Unlike the boilerplate rows, this archived solution gives the item-specific compass arc/chord construction steps and alternate-angle parallel proof; no material explanation defect is recorded." }
+  ],
+  "sourceAnswerHoldOrdinals": [6, 16],
+  "semanticMappingPolicy": "Generic solution findings are physical quality HOLDs only; they do not by themselves open Root rereading, visual difficulty recheck, or extra solution audit. #6 and #16 are SOURCE_BLOCKED semantic HOLD with no taxonomy promotion or metadata writeback. All student-facing source fields remain unchanged."
+}

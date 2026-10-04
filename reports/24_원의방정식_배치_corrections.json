@@ -1,0 +1,103 @@
+{
+  "protocol": "docs/rules/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+  "sourceOfTruth": "production JS",
+  "pdfRequired": false,
+  "batch": {
+    "year": 2024,
+    "grade": "고1",
+    "semester": "1학기 기말",
+    "subject": "공통수학1",
+    "curriculumVersion": "H15",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "examCount": 3,
+    "targetCount": 15,
+    "protectedPolicy": "대상 밖 문항은 읽기·기록만 하고 사용자 승인 없이는 수정하지 않는다."
+  },
+  "changePolicy": {
+    "allowedFields": [
+      "solution",
+      "solutionImage",
+      "solutionImageAlt",
+      "solutionImageCaption",
+      "solutionImageSize"
+    ],
+    "questionContentChoicesAnswerMetadataPreserved": true,
+    "protectedQuestionsChanged": false
+  },
+  "exams": [
+    {
+      "file": "archive/exams/original/high/h1/1final/24_금당고_1학기_기말_고1_기출.js",
+      "questionCount": 20,
+      "targetIds": [7, 9, 16, 20],
+      "sourceSha256Before": "4213dbcaeae2613bac1067b0071d0dc24da4acc8572a8c603c847f67dd703c1b",
+      "sourceSha256After": "a1d3666b9724b1540cb815a1e7e9709788f86363378b271d7dbdd734bdd0c0d9",
+      "items": [
+        {"id": 7, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "원의 표준형에서 중심·반지름을 읽는 기존 풀이에 좌표 그림, 중심 C(-4,2), r=2, 반지름의 비음수 조건을 보강", "solutionSha256Before": "aaf8ae8c9743c960d2bbdc87707ced3aca93ae4d4b8a28bd19eea75124e45e23", "solutionSha256After": "a6140da9afb122cc27dac06994114e815fbe788bff38cfb0164679f70b056d45"},
+        {"id": 9, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "접선·접점현 풀이에 외부점 존재와 두 접선의 공통 접점 조건을 명시하고 도형으로 연결", "solutionSha256Before": "c80bb90599a1a1e6c3317528f06c8e99e2e104fa74d1b0d8e4d9a944d649b978", "solutionSha256After": "e0437fe2d5f4cf7cca48318c92f3a66be48a176d907c6c2901d06ea72b15b15c"},
+        {"id": 16, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "좌표축에 접하는 원의 중심 조건 |h|=3 또는 |k|=3과 중심 직선의 교점 후보를 그림·문장으로 보강", "solutionSha256Before": "f602b6caccbed809bdb93ed4f679733dd7e60033a6128d8f9e1a528819ae3a27", "solutionSha256After": "c7813937506fa1537c78954816525692bcde0a162c1c701a7e9a08087a17b60b"},
+        {"id": 20, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "지름을 이등분하는 현은 지름이라는 판단과 중심·중점·수직 관계를 추가하여 그림과 연결", "solutionSha256Before": "6336622df3fea5a82765223e1f303ea07f63f82d0284225e21b9d2d36ac4c2b9", "solutionSha256After": "294fbe150cd736b3f04071b93417c8d4eda632bb3160f4670ed150aa06c5e0e7"}
+      ]
+    },
+    {
+      "file": "archive/exams/original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js",
+      "questionCount": 20,
+      "targetIds": [7, 9, 15, 17],
+      "sourceSha256Before": "5adf564a3e905ef49fdd15664355efffec089017c200ea499c78e496ddf204c2",
+      "sourceSha256After": "8dbde5bf74f5794bf3801784a011f1eac59564a7dc6d43041a2a3696d9060423",
+      "items": [
+        {"id": 7, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "지름의 중점과 반지름을 구한 뒤 x축과의 교점을 찾는 좌표·거리 해석을 단계별로 보강", "solutionSha256Before": "0fe275592f9366bcd2eecd20cddf2d4fd31c37315cbf9792883db06b1f091288", "solutionSha256After": "051f1d2a069f5dfe9de63bce63b2eae0b384763a814e80ce820e61a7423f080d"},
+        {"id": 9, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "외부점과 원의 위치 관계 및 판별식 조건을 덧붙여 두 접선이 존재하는 이유를 보강", "solutionSha256Before": "f5dbfd33dda8b6ad94637e19edc4027ca779172cc992e63e40870d8ce1d909cf", "solutionSha256After": "233c23fe6e0b2e463dfe2c5e0a982b5fab463517667a130811a5246b38f2f4e8"},
+        {"id": 15, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "중심에서 직선까지의 거리 d와 반지름 r을 비교하여 원 위 거리의 최솟값·최댓값 d-r, d+r의 의미를 보강", "solutionSha256Before": "16271e91c2e399e9419d14c03877cfc2b86d1df8108225ea94fa3118a1ec87af", "solutionSha256After": "760fc24a4faf77514072cbcaae5b918d74567711c6d2525272ea2a1d0b9a41ac"},
+        {"id": 17, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "반지름 0인 퇴화 경우를 제외하고 a≠0 및 두 각의 이등분선 방향을 확인하는 흐름을 추가", "solutionSha256Before": "2d0156f86bb175e14dda70c1f45cbadd302ec9c754b2c14a7248101621cfe4e5", "solutionSha256After": "f185b045695d2b0c76f272ae9c59143b4ed99ace230233a630f2fb284caad011"}
+      ]
+    },
+    {
+      "file": "archive/exams/original/high/h1/1final/24_제일고_1학기_기말_고1_기출.js",
+      "questionCount": 22,
+      "targetIds": [10, 12, 13, 15, 17, 21, 22],
+      "sourceSha256Before": "2caaa7e928eff51814f26ba59e4d3962a2221fcc46269bf18c932000bd8b9704",
+      "sourceSha256After": "0133a1cd7cd2ee384ce88d278679ed86cd132792bf69bfa69a2311f549b68550",
+      "items": [
+        {"id": 10, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "완전제곱식으로 만든 표준형을 중심·반지름과 직접 비교하도록 설명과 그림을 보강", "solutionSha256Before": "1417f40b5d94945a45469b1a4a6e85fb85b524ded7cf1ad38b1c884789deb482", "solutionSha256After": "39f329071737010f792db0190e85914fab5d96d7a3c12f28c51f84058129b609"},
+        {"id": 12, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "두 원의 교점 조건에서 일차식 결합으로 원을 정하는 이유와 완전제곱식 변환을 단계별로 보강", "solutionSha256Before": "9eb475e80c65e2ef5fafd114a9df22a73983b381f5f31daa718f99c5d0b45406", "solutionSha256After": "a857d29e26b786d77fa8b067a69181552e2aed37edcf7b45f92f593621f11236"},
+        {"id": 13, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "외부점에서 두 접선이 생기는 거리 조건과 기울기 이차방정식의 판별식·근의 합 연결을 보강", "solutionSha256Before": "8aa3f6e788d42619efe35ea287764be681cdb325bfd785f35b558b383ba2f437", "solutionSha256After": "36457a7eb3ed9af45b707d751906f238d916d5461220662e1e920e030650a366"},
+        {"id": 15, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "거리 조건에서 얻는 구간들의 교집합과 끝점 포함 여부를 명시하여 해의 범위를 읽기 쉽게 보강", "solutionSha256Before": "6a3fbc171db8b7bfae1ab3a68df8c51395f2260dec5b212f51af47b959635dd3", "solutionSha256After": "d37e8b2871af13d78fcad7823f8bbf749877e0c80bc4031a2f4077cd997fd467"},
+        {"id": 17, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "두 원의 공통현을 나타내는 근축선과 최고점 좌표의 관계를 그림과 함께 보강", "solutionSha256Before": "c40669e208efe4cb2845241e1ecdded5770086585cf12708a616f7292474a7bf", "solutionSha256After": "ac6d68a6a03a88a0a88410ce5268c3eb67ed1739345b5a1e078f33d76f78b20f"},
+        {"id": 21, "deltaType": "ADDITIVE_ENHANCEMENT", "summary": "접선의 정의를 중심-직선 거리=반지름으로 연결하고 제곱 과정에서의 조건을 안전하게 설명", "solutionSha256Before": "71d1341275e1854153ed1d6a842097fb3dd5c15a34f5bf4ca6a81a16c3dfd50c", "solutionSha256After": "6a26ef58a5ea5998b0e75672db55764fb10b4bb85769fbe5b5c64d4ea3fa4186"},
+        {"id": 22, "deltaType": "REWRITE_DUE_SOURCE_SOLUTION_MISMATCH_PRESERVED_CONTENT_AND_ANSWER", "summary": "기존 해설의 다른 원 문제 풀이를 현재 문항의 원과 평행선·삼각형 넓이 풀이로 교체. 질문·선지·정답·메타데이터는 보존하고 C1,C2,C3의 높이와 넓이를 재현 가능하게 전개", "solutionSha256Before": "1604e45a53bef74c389991794dfdd42f430e3ac0a78b9fa31c21cbc403b9b3af", "solutionSha256After": "3188ec8d6b14bbe34d7236113270289e5bbfc3de3b23f994bdb3ab9f226bd0d6"}
+      ]
+    }
+  ],
+  "assetAndRenderStatus": {
+    "targetSolutionSvgCount": 15,
+    "targetSolutionSvgXml": "PASS",
+    "targetSolutionSvgLoad": "PASS",
+    "targetVisualInspection": "PASS",
+    "productionSolTargetOverflow": "none observed",
+    "productionSolTargetImageLoadErrors": 0,
+    "productionExamCounts": {"금당고": 20, "매산고": 20, "제일고": 22},
+    "productionAnsCounts": {"금당고": 20, "매산고": 20, "제일고": 22},
+    "productionExamAnsOverflowOrLoadErrors": "none observed",
+    "indexBuild": "PASS",
+    "archiveAudit": "PASS"
+  },
+  "independentReview": {
+    "initialReview": "FAIL",
+    "initialFailure": {
+      "file": "archive/assets/images/24_제일고_1학기_기말_고1_기출/q12-solution.svg",
+      "reason": "orange F2 circle bottom cy=226+r=88=314 exceeded the graph panel/viewBox bottom 300"
+    },
+    "pinpointFix": "Only q12-solution.svg was edited; orange F2 circle cy changed 226 -> 208, so bottom is 296",
+    "postFixSelfRender": "PASS",
+    "postFixIndependentReview": "PENDING"
+  },
+  "scopeVerification": {
+    "protectedQuestionChanges": 0,
+    "targetNonAllowedFieldChanges": 0,
+    "targetContentChoicesAnswerMetadataChanged": false,
+    "allTargetsHaveSolutionImage": true,
+    "allThreeFilesSyntaxValid": true,
+    "overallTargetScope": "PASS"
+  }
+}

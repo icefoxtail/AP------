@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_BUILD_WORK_LEDGER_v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "buildId",
+    "pipeline",
+    "runId",
+    "revision",
+    "questionUid",
+    "builderId",
+    "builderSessionId",
+    "builderModelOrAgent",
+    "inputSha",
+    "outputRefs",
+    "reviewEvidenceIds",
+    "createdAt",
+    "entrySha",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "APMATH_BUILD_WORK_LEDGER_v1"
+    },
+    "buildId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pipeline": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "questionUid": {
+      "type": "string",
+      "minLength": 1
+    },
+    "builderId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "builderSessionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "builderModelOrAgent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "outputRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "reviewEvidenceIds": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entrySha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

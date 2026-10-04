@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "h1-stage2-sol-semantic-summary-v1",
+  "status": "BATCH_SOL_REVIEW_ARTIFACT_COMPLETE_WITH_HOLDS",
+  "authority": "SOL_EXHAUSTIVE_SOURCE_REVIEW",
+  "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+  "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "batchNo": 12,
+  "unit": "PERMCOMB",
+  "scope": {
+    "start": 141,
+    "end": 210,
+    "denominator": 70
+  },
+  "coverage": {
+    "rows": 70,
+    "uniqueUid": 70,
+    "uniqueSourceIdentity": 70,
+    "fingerprintMismatch": 0,
+    "missingDecisionEvidence": 0,
+    "forbiddenCandidateInputLeakage": 0
+  },
+  "inputBundle": {
+    "inputBundleSha": "9582798ad0f52741de719f1cea4418d78cb26d89ace6ee054c6afa69581996d9",
+    "sourcePackRows": 70,
+    "sourceContentSolutionImageOnly": true,
+    "sameStageCandidateInputExcluded": true,
+    "sourcePackSha256": "85595390be441b04540b66e7d3568b0965b95d4019d5258ef2214ad74d2cc7d6"
+  },
+  "holdCount": 0,
+  "sourceIssues": [],
+  "compositionPattern": {
+    "CASE_BRANCH": 36,
+    "NONE": 28,
+    "SEQUENTIAL": 5,
+    "REINTERPRETATION": 1
+  },
+  "visualReviewPendingWorkIndices": [
+    145,
+    168,
+    187,
+    194,
+    203
+  ],
+  "newDefiniteL1L2RejoinCount": 0,
+  "nextStart": {
+    "workIndex": 211,
+    "questionUid": "qid_v1_716f0664049ec7ec179c7cd77fa6d0ce8af45cebe7879b76e41e92f60374dba3",
+    "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+    "sourceOrdinal": 8,
+    "queueId": "H22-C-08"
+  },
+  "artifacts": {
+    "sourcePack": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/PERMCOMB_BATCH12_SOURCE_PACK_141_210.jsonl",
+    "decisionLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl",
+    "summary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/PERMCOMB_BATCH12_SOL_SUMMARY_141_210.json",
+    "checkpoint": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_210.json",
+    "pointers": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_210_POINTERS.json"
+  },
+  "note": "Stage 2 Single Semantic Pass only. No PT/TPL/CrossConcept/difficulty canonical synthesis; existing legacy labels were not used as authority. Codex did not generate canonical FINAL/PASS."
+}

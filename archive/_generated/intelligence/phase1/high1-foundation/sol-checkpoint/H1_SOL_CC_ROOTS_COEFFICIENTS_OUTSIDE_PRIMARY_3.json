@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "field": "crossConcepts",
+  "value": ["CC_ROOTS_COEFFICIENTS"],
+  "canonicalDefinition": "이차방정식의 두 근의 합·곱 관계를 primary 밖에서 사용한다.",
+  "items": [
+    {
+      "queueIndex": 703,
+      "questionUid": "qid_v1_9a8319ccf1f66cb2ea96af675e0c5c249434545c88873e5f5b6c3bcae4e2f2cd",
+      "sourceIdentity": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js#7",
+      "sourceFingerprint": "3e1a079ebdf1acf52106fa647ce2e36ae8c285e2939f19e658b9f4c9dec30e10",
+      "primaryL3AtReview": "PT_H1_SYSTEM_EQUATION",
+      "reason": "The two quadratics share a root. Subtracting their equations gives the common root −2; Vieta then identifies the distinct roots as −b and −a, making their distance condition a−b=2. The root–coefficient relation is a decisive additional step outside the primary common-root system skeleton. Solving the resulting two scalar equations is already part of the primary system problem, so CC_SIMULTANEOUS_EQUATION is duplicate tagging."
+    },
+    {
+      "queueIndex": 730,
+      "questionUid": "qid_v1_498ec2aa49f7968a8ea5bc3594cc5f710033f674c5af8b2de9b3b735256d8afd",
+      "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#9",
+      "sourceFingerprint": "dccb382c3033151075505cca9ae355617be2e109e89f151a18211254cceda65d",
+      "primaryL3AtReview": "PT_H1_SYSTEM_EQUATION",
+      "reason": "The system becomes X+Y=4 and XY=3 after X=2x,Y=y. Treating X and Y as roots of t²−4t+3=0 yields the two assignments, after which x>y selects (3/2,1). The sum/product-to-roots step is the needed outside concept; the original system itself is primary, so a second simultaneous-equation tag repeats it."
+    },
+    {
+      "queueIndex": 1126,
+      "questionUid": "qid_v1_07159aa634e59c3a068b7d0f4042c2aa130c684b3427af0ae86490412eea2ec4",
+      "sourceIdentity": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js#15",
+      "sourceFingerprint": "72e2e3bb33dc5358dfdd8b47970b9d75d9902ff65f9ccca8581b921345808c8d",
+      "primaryL3AtReview": "PT_H1_MATRIX_MULTIPLICATION",
+      "reason": "Matrix multiplication and entry comparison produce x+y=−5 and x²+y²=17. The identity xy=((x+y)²−(x²+y²))/2=4 and the quadratic t²+5t+4=0 reconstruct the ordered pair. This roots–coefficients step is essential beyond the matrix primary. Tagging generic simultaneous equations as well would overcount the entry equations inherent in a matrix equality."
+    }
+  ],
+  "newCanonicalCandidate": false,
+  "finality": "WORKING_NOT_FINAL"
+}

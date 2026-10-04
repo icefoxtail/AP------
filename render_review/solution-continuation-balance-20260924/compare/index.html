@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>금당고 continuation balance — before / after</title>
+  <style>
+    :root { color-scheme: light; font-family: "Segoe UI", "Malgun Gothic", sans-serif; color: #14233a; background: #eef2f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header { background: #10223e; color: #fff; padding: 25px 4vw 17px; }
+    h1 { margin: 0 0 8px; font-size: 24px; }
+    header p { margin: 0; line-height: 1.5; color: #d9e3f0; }
+    main { max-width: 1800px; padding: 22px 3vw 48px; margin: auto; }
+    section { background: white; margin: 0 0 22px; padding: 17px; border: 1px solid #d3deeb; border-radius: 12px; }
+    h2 { font-size: 18px; margin: 0 0 7px; }
+    section p { margin: 0 0 13px; color: #526176; line-height: 1.5; }
+    .pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; align-items: start; }
+    figure { margin: 0; min-width: 0; }
+    figcaption { font-weight: 700; margin-bottom: 7px; }
+    figure a { display: block; padding: 5px; background: #e9eef5; border: 1px solid #d4deeb; border-radius: 8px; }
+    img { display: block; width: 100%; height: auto; }
+    .links { background: white; border: 1px solid #d3deeb; border-radius: 10px; padding: 15px 18px; }
+    .links a { margin-right: 15px; }
+    @media(max-width:820px) { .pair { grid-template-columns: 1fr; } main { padding-inline: 12px; } section { padding: 11px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>금당고 continuation balance — before / after</h1>
+    <p>Before는 commit 4669fd759…의 actual production mode=sol 캡처, after는 branch c99642e5…의 actual Chrome 153 / Blink render다. 고정 1440×1100 viewport와 100% zoom을 사용했다.</p>
+  </header>
+  <main>
+    <section>
+      <h2>q22 — page17 continuation 전</h2>
+      <p>Before는 q22가 page17을 거의 채우고 결론의 마지막 a, b만 page18로 넘겼다. After는 page17의 끝에서 결론 덩어리를 더 일찍 넘겨 page18에 구하는 값, k, a, b를 함께 둔다.</p>
+      <div class="pair">
+        <figure><figcaption>Before · page17</figcaption><a href="../before/q22-before-page17.png"><img src="../before/q22-before-page17.png" alt="before q22 page17"></a></figure>
+        <figure><figcaption>After · page17</figcaption><a href="../after/pages/page-17.png"><img src="../after/pages/page-17.png" alt="after q22 page17"></a></figure>
+      </div>
+    </section>
+    <section>
+      <h2>q22 — page18 continuation</h2>
+      <p>Before page18에는 a=4, b=6 두 값만 있었다. After 마지막 fragment는 7 display lines / 147.9 px의 결론 묶음이다. Page18은 남아 있지만 고립된 두 줄은 아니다.</p>
+      <div class="pair">
+        <figure><figcaption>Before · page18</figcaption><a href="../before/q22-before-page18.png"><img src="../before/q22-before-page18.png" alt="before q22 page18"></a></figure>
+        <figure><figcaption>After · page18</figcaption><a href="../after/pages/page-18.png"><img src="../after/pages/page-18.png" alt="after q22 page18"></a></figure>
+      </div>
+    </section>
+    <section>
+      <h2>다른 긴 문항의 continuation 분배</h2>
+      <p>q9와 q15의 마지막 조각도 각각 101.2→163.4 px, 69.2→145.1 px로 늘었다. q20은 162.9 px에서 그대로여서 악화되지 않았다.</p>
+      <div class="pair">
+        <figure><figcaption>q9 · Before page5</figcaption><a href="../before/q9-before-page05.png"><img src="../before/q9-before-page05.png" alt="before q9 page5"></a></figure>
+        <figure><figcaption>q9 · After page5</figcaption><a href="../after/pages/page-05.png"><img src="../after/pages/page-05.png" alt="after q9 page5"></a></figure>
+        <figure><figcaption>q15 · Before page10</figcaption><a href="../before/q15-before-page10.png"><img src="../before/q15-before-page10.png" alt="before q15 page10"></a></figure>
+        <figure><figcaption>q15 · After page10</figcaption><a href="../after/pages/page-10.png"><img src="../after/pages/page-10.png" alt="after q15 page10"></a></figure>
+        <figure><figcaption>q20 · Before page15</figcaption><a href="../before/q20-before-page15.png"><img src="../before/q20-before-page15.png" alt="before q20 page15"></a></figure>
+        <figure><figcaption>q20 · After page15</figcaption><a href="../after/pages/page-15.png"><img src="../after/pages/page-15.png" alt="after q20 page15"></a></figure>
+      </div>
+    </section>
+    <section>
+      <h2>작은칠판 기준 문항 — q18 / q19</h2>
+      <p>두 문항의 fragment 수와 page 배치는 before/after 동일하다. 해설 SVG와 계산 흐름에 회귀가 없다.</p>
+      <div class="pair">
+        <figure><figcaption>q18 · Before page13</figcaption><a href="../before/q18-before-page13.png"><img src="../before/q18-before-page13.png" alt="before q18 page13"></a></figure>
+        <figure><figcaption>q18 · After page13</figcaption><a href="../after/pages/page-13.png"><img src="../after/pages/page-13.png" alt="after q18 page13"></a></figure>
+        <figure><figcaption>q19 · Before page14</figcaption><a href="../before/q19-before-page14.png"><img src="../before/q19-before-page14.png" alt="before q19 page14"></a></figure>
+        <figure><figcaption>q19 · After page14</figcaption><a href="../after/pages/page-14.png"><img src="../after/pages/page-14.png" alt="after q19 page14"></a></figure>
+      </div>
+    </section>
+    <div class="links">
+      <strong>Full output</strong><br><br>
+      <a href="../comparison_report.md">Comparison report</a>
+      <a href="../after/geumdang-after-fix.pdf">After PDF (18 pages)</a>
+      <a href="../before/geumdang-before-fix.pdf">Before PDF (18 pages)</a>
+      <a href="../after/full-render.png">After full render PNG</a>
+    </div>
+  </main>
+</body>
+</html>

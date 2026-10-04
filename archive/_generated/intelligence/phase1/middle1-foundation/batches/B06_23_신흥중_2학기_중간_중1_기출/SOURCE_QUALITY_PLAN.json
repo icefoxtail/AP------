@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 6,
+  "denominator": 26,
+  "defaultDisposition": "HOLD_RESOLVED_NO_SOURCE_MUTATION",
+  "defaultIssueType": "NONE",
+  "defaultReason": "Independent source/solution reviews found no material answer or explanation defect for this UID.",
+  "overrides": [
+    { "sourceOrdinal": 14, "issueType": "ABBREVIATED_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The archived rotation/symmetry summary omits the F-angle proof. Root's 60° rotation and triangle-angle derivation establishes ④ but the student-facing explanation still needs that argument." },
+    { "sourceOrdinal": 16, "issueType": "INACCURATE_SOLUTION_CRITERION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "Answer ⑤ is correct when candidate additions are considered individually. The archived solution incorrectly calls angles B=55°, C=30° with AC an included-side ASA condition without first deriving A=95°." },
+    { "sourceOrdinal": 17, "issueType": "INACCURATE_SOLUTION_CRITERION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The matching choice ⑤ is correct, but the archived explanation falsely says side 5 is between 70° and 80°. It is between 30° and 70°; ③ has side 5 between 30° and 80° and is not congruent." },
+    { "sourceOrdinal": 22, "issueType": "ABBREVIATED_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The 84° answer follows from pentagon exterior 72°, shared-edge direction 36°, equilateral turn 60°, then 180°−96°, but the archived solution omits these intermediate transfers." },
+    { "sourceOrdinal": 25, "issueType": "MISLEADING_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The archived solution falsely calls OHCI a 4 cm square. It is generally not a square; area 16 follows because congruent △BOH and △COI have equal area and area(OHCI)=area(△OBC)=8×4/2." }
+  ],
+  "sourceAnswerHoldOrdinals": [],
+  "semanticMappingPolicy": "Preserve all protected source fields. Root image/geometry proof supports the source answers while five item-specific solution explanations remain quality HOLD and are not runtime selectable before repair."
+}

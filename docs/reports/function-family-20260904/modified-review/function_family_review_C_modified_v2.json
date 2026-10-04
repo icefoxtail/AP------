@@ -1,0 +1,37 @@
+{
+  "reportType": "FUNCTION_FAMILY_REVIEW_C_MODIFIED_V2",
+  "generatedAt": "2026-09-04",
+  "status": "REVIEW_C_MODIFIED_BROWSER_PASS",
+  "scope": "135 modified graph questions in 32 source JS files",
+  "browserSurface": "Chrome via Codex computer-use extension",
+  "harness": "archive/tools/function-family/full-render-harness.html?scope=modified",
+  "modes": ["exam", "sol", "ans"],
+  "expectedCases": 96,
+  "observedCases": 96,
+  "passCases": 96,
+  "failCases": 0,
+  "checksPerCase": [
+    "print-area has at least one .page",
+    "rendered content is non-empty",
+    "all print-area images complete with naturalWidth > 0",
+    "documentElement[data-ap-render-error] is absent",
+    "data-load error text is absent",
+    "document/body horizontal overflow is absent",
+    "page and page-body scroll overflow is absent",
+    "non-long question boxes do not scroll overflow",
+    "all img/svg/canvas visuals remain inside their page bounds",
+    "question boxes do not overlap"
+  ],
+  "layoutGate": {
+    "status": "PASS",
+    "layoutIssues": 0,
+    "horizontalOverflow": 0,
+    "pageOverflow": 0,
+    "questionOverflow": 0,
+    "clippedVisuals": 0,
+    "overlappingQuestionBoxes": 0
+  },
+  "visualSemanticReview": "separate from runtime load; see review B and independent visual/math reviews",
+  "freshRunNote": "Fresh modified-only browser run after q11 label repair: 32 source files × 3 modes.",
+  "lastFailure": null
+}

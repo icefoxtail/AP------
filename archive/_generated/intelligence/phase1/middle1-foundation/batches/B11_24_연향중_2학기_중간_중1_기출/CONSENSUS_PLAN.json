@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "m1-consensus-plan-v1",
+  "batchNo": 11,
+  "denominator": 22,
+  "rootDirectReadOrdinals": [
+    6,
+    7,
+    8,
+    10,
+    11,
+    14,
+    15,
+    18,
+    19,
+    22
+  ],
+  "rootPolicy": "Existing L1/L2 remains upstream baseline on 20 UID. Only #7 and #14 have source-grounded parent correction. A/B completed 22 independent source-first verdicts and blind C reviewed only nine actual semantic conflicts. Root read only source BLOCK, unresolved A/B/C conflict, important L1/L2 and cross-grade-method UID. Root source proofs resolve #6/#7/#8/#15/#18/#19/#22; #10 remains SOURCE_BLOCKED. C #19/#22 raw reasons are preserved but rejected in C_QUALITY_DEFECTS.json and replaced by affected-UID Root proof. Generic archived solution quality never automatically triggers Root or difficulty recheck. Prefer existing L3 candidates and ACTIVE folding type over new names.",
+  "decisions": [
+    {
+      "sourceOrdinal": 1,
+      "chosenRole": "B",
+      "reason": "Both workers identify the false cuboid edge count: a cuboid has 12 edges, not eight. B gives the explicit vertex/edge contrast. Reuse the prior M1 basic-geometry statement-judgment L3; retain the frozen basic-figure parent.",
+      "overrides": {
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_STATEMENT_JUDGMENT",
+        "l3SemanticReason": "기본도형과 입체도형의 정의·구성요소 개수를 보기별로 확인해 틀린 진술을 고르는 기존 L3 재사용이다."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "chosenRole": "B",
+      "reason": "Four noncollinear points give three distinct outgoing rays per starting point, hence 4×3=12. A/B differ only in candidate wording; retain B's point-order-pair count and one reusable ray-count type."
+    },
+    {
+      "sourceOrdinal": 3,
+      "chosenRole": "B",
+      "reason": "B maps x+40=70 by vertical angles and y=110 by the adjacent linear pair, so y−x=80. A gives the same target without the full two-angle chain. Reuse the earlier intersecting-lines angle-relation L3.",
+      "overrides": {
+        "problemTypeKey": "PT_M1_INTERSECTING_LINES_ANGLE_RELATION",
+        "l3SemanticReason": "맞꼭지각과 선형쌍으로 미지각을 정리하는 기존 교차직선 각 관계 L3 재사용이다."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "chosenRole": "B",
+      "reason": "M halves AB=16 to AM=8 and N halves AM to NM=4. Reuse the earlier nested-midpoint segment-length L3; only the pictured letters and length differ. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_SEGMENT_LENGTH_FROM_NESTED_MIDPOINTS",
+        "l3SemanticReason": "두 번의 중점 조건을 선분 길이 절반 관계로 연결하는 기존 중첩 중점 L3 재사용이다.",
+        "templateKey": "TPL_NESTED_MIDPOINT_LENGTH_HALVING",
+        "l4SemanticReason": "전체 선분을 한 번 절반으로 나누고 그 부분 선분을 다시 절반으로 나누는 기존 중첩 중점 길이 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "chosenRole": "B",
+      "reason": "A/B test universal spatial line-and-plane relation statements; two distinct lines parallel to one reference line are parallel. Reuse prior spatial line-plane relation judgment L3; frozen M1-05 position parent stays. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_SPATIAL_LINE_PLANE_RELATION_JUDGMENT",
+        "l3SemanticReason": "공간의 직선·평면 위치 관계에 관한 진술을 정의와 반례로 판단하는 기존 L3 재사용이다.",
+        "templateKey": "TPL_JUDGE_LINE_PLANE_PARALLEL_PERPENDICULAR_STATEMENTS",
+        "l4SemanticReason": "공간의 평행·수직 진술을 정의와 반례로 검사해 유일한 참 진술을 고르는 기존 위치관계 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "chosenRole": "A",
+      "reason": "A proposed 270 but omitted intermediate angles; B/C HOLD the printed arcs. Root original-resolution q6 proof expresses x=180+40−α and y=α+50, so x+y=270 independently of α. This is the same parallel-line zigzag angle L3 used earlier, not a new type. Generic solution remains quality HOLD. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_PARALLEL_LINES_ZIGZAG_ANGLE",
+        "l3SemanticReason": "평행선 사이 꺾은 선의 표시각을 보조 수평선과 회전각 관계로 합치는 기존 L3 재사용이다.",
+        "primaryMethod": "평행한 두 수평선 사이 꺾은 선의 중간 방향을 α로 놓고 위·아래 굽은 각의 합에서 α를 소거한다.",
+        "decisiveStep": "x=180°+40°−α, y=α+50°이므로 x+y=270°로 보기 ⑤다.",
+        "sourceIssue": "A's sparse numerical step and B/C visual HOLD were resolved by ROOT_Q06_ZIGZAG_ANGLE_EVIDENCE.md; the archived generic explanation still needs separate repair.",
+        "templateKey": "TPL_M1_TWO_BEND_PARALLEL_LINE_ENDPOINT_ANGLES",
+        "l4SemanticReason": "두 평행선 사이 두 굽은 각을 양끝 기울기와 중간 임의 기울기로 표현하고 그 기울기를 합에서 소거하는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "chosenRole": "A",
+      "reason": "A proposes keyed ⑤ but incorrectly retains M1-05; B/C correctly open the M1-07 solid parent yet HOLD the net. Root net coordinates prove AB∥DE after folding and other listed edges skew. Confirm L1_L2_CONFLICT and reuse prior polyhedron spatial-relation L3 with a cube-net L4.",
+      "overrides": {
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "l1Reason": "정육면체 전개도를 접어 공간의 모서리 관계를 판정하므로 M1-07 입체도형이 주 단원이다.",
+        "l2Reason": "꼬인 위치·평행 모서리 판별은 길이나 평면 직선관계가 아닌 입체 구성요소 위치 관계다.",
+        "problemTypeKey": "PT_M1_POLYHEDRON_SPATIAL_RELATIONS",
+        "l3SemanticReason": "다면체의 모서리를 접힌 입체에서 만나거나 평행하거나 꼬인 관계로 판별하는 기존 공간 관계 L3 재사용이다.",
+        "primaryMethod": "전개도 네 옆면과 윗면을 접어 AB와 다섯 후보 모서리의 공간 방향과 공유 꼭짓점을 비교한다.",
+        "decisiveStep": "AB와 DE는 접힌 정육면체에서 같은 깊이 방향으로 평행하고 CD·DM·EF·EL은 AB와 꼬여 있으므로 꼬이지 않은 ⑤ DE다.",
+        "sourceIssue": "B/C net-mapping HOLD resolved by ROOT_Q07_CUBE_NET_L1L2_EVIDENCE.md; the generic stored solution remains a quality finding."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "chosenRole": "A",
+      "reason": "A proposes 155 without explaining all arcs; B/C HOLD. Root original-resolution image shows a,b,c,d as successive turns from upper leftward parallel to the last lower-directed segment, with 25° closing a straight turn: sum155. Reuse the prior parallel-line zigzag-angle L3. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_PARALLEL_LINES_ZIGZAG_ANGLE",
+        "l3SemanticReason": "두 평행선 사이 꺾은 선의 연속 회전각 합을 정리하는 기존 L3 재사용이다.",
+        "primaryMethod": "a,b,c,d를 꺾은 선의 연속 회전각으로 읽고 하단 25°와 합쳐 평행선 사이의 180° 직선 회전을 완성한다.",
+        "decisiveStep": "a+b+c+d+25°=180°이므로 a+b+c+d=155°로 보기 ⑤다.",
+        "sourceIssue": "B/C arc-binding HOLD resolved by ROOT_Q08_FOUR_ANGLE_EVIDENCE.md; generic archived solution remains a separate quality HOLD.",
+        "templateKey": "TPL_DIRECTION_ANGLE_CHANGE_ACROSS_ZIGZAG",
+        "l4SemanticReason": "평행선 사이 연속된 꺾임의 방향 변화를 합쳐 중간 기울기를 소거하고 끝 기준각으로 목표합을 닫는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "chosenRole": "B",
+      "reason": "The false assertion assigns segment-length transfer to an unmarked ruler, whereas a compass preserves the two-point distance. Reuse the existing construction-tool-use L3 despite the mixed triangle statements. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_GEOMETRY_CONSTRUCTION_TOOL_USAGE",
+        "l3SemanticReason": "눈금 없는 자와 컴퍼스의 역할을 진술별로 구분하는 기존 작도 도구 사용 L3 재사용이다.",
+        "templateKey": "TPL_M1_COMPASS_AND_UNMARKED_RULER_ROLES",
+        "l4SemanticReason": "눈금 없는 자의 직선 그리기와 컴퍼스의 길이 옮기기를 대비해 도구 역할 오류를 고르는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "chosenRole": "B",
+      "reason": "A describes a valid construction in general, but B/C and Root cannot bind all circled raster operation labels to keyed sequence ②. The options array is empty because options exist only in the scan. Keep this UID HOLD/SOURCE_BLOCKED, with baseline parent and no taxonomy or metadata writeback."
+    },
+    {
+      "sourceOrdinal": 11,
+      "chosenRole": "B",
+      "reason": "Both workers recognize choice ③ as the ambiguous nonincluded SSA package. Their sine-rule calculation is unnecessary and beyond the M1 method; Root source audit records a compass-circle/two-intersection explanation. Reuse prior unique-triangle-determination L3 and retain the basic-figure baseline. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_UNIQUE_TRIANGLE_DETERMINATION_FROM_GIVEN_DATA",
+        "l3SemanticReason": "변·각 조건이 삼각형을 유일하게 정하는지 작도/합동 기준으로 판정하는 기존 L3 재사용이다.",
+        "primaryMethod": "각 C=40°의 광선과 BC=9를 고정하고 B 중심 반지름8의 원이 광선을 두 위치에서 만나는 SSA 작도 가능성을 확인한다.",
+        "decisiveStep": "③은 끼인각이 아닌 AB=8, BC=9, ∠C=40°를 주므로 A가 두 위치에 놓일 수 있어 삼각형이 하나로 결정되지 않는다.",
+        "semanticReason": "선분과 각의 중1 작도·삼각형 결정 조건으로 ③의 두 구성을 확인한다; 사인법칙 계산은 필요한 풀이 authority로 사용하지 않는다.",
+        "integrationPattern": "CASE_BRANCH",
+        "sourceIssue": "Worker explanations cited sine rule, but ROOT_Q11_CURRICULUM_METHOD_EVIDENCE.md supplies the M1 construction reasoning. The archived solution remains generic.",
+        "templateKey": "TPL_CLASSIFY_TRIANGLE_DATA_BY_UNIQUENESS",
+        "l4SemanticReason": "다섯 변·각 자료 묶음에서 SAS·ASA/AAS·SSS와 모호한 SSA를 구분해 유일하지 않은 하나를 고르는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "chosenRole": "A",
+      "reason": "A and blind C agree that ordered congruence ABC↔DEF leaves EF/BC unmarked while the other four requested values are visible. B's source-mark HOLD is outweighed by those two independent image reads. Keep the corresponding-element transfer as a distinct goal from selecting a congruence condition."
+    },
+    {
+      "sourceOrdinal": 13,
+      "chosenRole": "B",
+      "reason": "The strict triangle side interval is 5<x<13, so listed x=4 fails. Reuse the prior triangle-side-feasibility L3; the number versus choice format is only an output difference. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_TRIANGLE_SIDE_FEASIBILITY_COUNT",
+        "l3SemanticReason": "두 변과 나머지 한 변의 엄격한 범위로 성립 가능한 길이를 판단하는 기존 삼각형 성립 L3 재사용이다.",
+        "templateKey": "TPL_FILTER_CANDIDATE_SIDE_LENGTHS_BY_TRIANGLE_INEQUALITY",
+        "l4SemanticReason": "두 고정변의 차·합 사이 열린 구간을 만들고 주어진 후보값을 대조해 불가능한 변을 고르는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "chosenRole": "B",
+      "reason": "Both A/B prove SAS from AC=BC, CD=CE and included angles120; Root confirms the decisive congruence criterion and corrects frozen M1-05 position L2 to basic figures. Reuse prior triangle-congruence-condition L3 with this equilateral extension L4.",
+      "overrides": {
+        "problemTypeKey": "PT_TRIANGLE_CONGRUENCE_CONDITION_SELECTION",
+        "l3SemanticReason": "주어진 변·각 등식 중 합동을 보장하는 조건을 고르는 기존 중1 합동 조건 L3 재사용이다."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "chosenRole": "A",
+      "reason": "A reads the actual image-footer question a×b−c and computes a=5,b=8,c=7, hence 33. B/C HOLD incorrectly treat the image-footer prompt as missing or unreadable. Root original-resolution shared-image proof confirms the task and key; keep M1-08 data parent and record solution quality separately."
+    },
+    {
+      "sourceOrdinal": 16,
+      "chosenRole": "B",
+      "reason": "A/B count seven teachers in their forties out of 20, giving 35%. B supplies the seven source ages; keep one subgroup-percentage data type under frozen M1-08."
+    },
+    {
+      "sourceOrdinal": 17,
+      "chosenRole": "B",
+      "reason": "Both read minimum age24 and maximum56 from the shared data and add to80; B identifies the exact source extremes. Keep a single extreme-value data type under M1-08."
+    },
+    {
+      "sourceOrdinal": 18,
+      "chosenRole": "A",
+      "reason": "A reads the actual bottom image prompt for the 160–170 cm class. At least160 is 20% of30=6; subtract three in 170–180 to get three, choice①. B/C HOLD the footer target, but Root original-resolution proof confirms it. Retain M1-08 data parent."
+    },
+    {
+      "sourceOrdinal": 19,
+      "chosenRole": "A",
+      "reason": "A's 4+11=15 lower-class count is confirmed by Root using total30 minus nine in 150–160 and six at least160. B HOLD could not read the shared table. C also proposes15 but its printed class values 5+10 are false; C_QUALITY_DEFECTS.json rejects that affected row, and Root adjudicates it directly."
+    },
+    {
+      "sourceOrdinal": 20,
+      "chosenRole": "B",
+      "reason": "A/B solve midpoint C and BD=3AB from the ordered A-B-C-D segments, obtaining AD=24. Reuse existing midpoint-segment-length L3 with a ratio-assisted L4, rather than creating a new primary type for the same length-recovery goal.",
+      "overrides": {
+        "problemTypeKey": "PT_SEGMENT_LENGTH_FROM_NESTED_MIDPOINTS",
+        "l3SemanticReason": "중점과 연결된 선분 길이·비 조건에서 전체 길이를 구하는 기존 중점 선분 L3 재사용이다."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "chosenRole": "B",
+      "reason": "A/B use parallel-side alternate angles and common AC for ASA congruence of the two triangles. Preserve M1-05 position baseline because parallel-angle transfer is the decisive premise; reuse the prior triangle-congruence-condition L3 rather than naming a parallelogram-specific primary type.",
+      "overrides": {
+        "problemTypeKey": "PT_TRIANGLE_CONGRUENCE_CONDITION_SELECTION",
+        "l3SemanticReason": "두 각과 끼인 공통변으로 삼각형 합동 조건을 확인하는 기존 ASA 조건 L3 재사용이다."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "chosenRole": "A",
+      "reason": "A and B agree on30 but propose different proof skeletons; C's '120 exterior plus 90 interior' contradicts named ∠EGF=120 and is rejected in C_QUALITY_DEFECTS.json. Root image proof transfers the parallel rectangle angle to E, uses the fold crease to bisect60°, then triangle sum gives F30. Reuse ACTIVE folding-reflection L3 and a crease-angle L4. Existing L4 skeleton reused rather than creating a school/number/answer-specific template.",
+      "overrides": {
+        "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+        "templateKey": "TPL_SINGLE_RECTANGLE_FOLD_REFLECTED_RAY_ANGLE",
+        "l3SemanticReason": "종이접기를 반사로 해석해 이동한 각을 원래 평행변 관계와 연결하는 ACTIVE 접기 L3 재사용이다.",
+        "l4SemanticReason": "직사각형 한 번 접기에서 접는 선의 각 이등분과 원래 수평변·반사된 변의 각을 옮겨 목표각을 마무리하는 기존 골격이다.",
+        "primaryMethod": "GF∥EC와 ∠EGF=120°로 E의 원래 수평선과 EG 사이 각60°를 얻고, 접는 선 EF의 반사각 이등분과 삼각형 각 합을 적용한다.",
+        "decisiveStep": "∠GEC=60°, ∠GEF=30°이므로 ∠GFE=180°−120°−30°=30°다.",
+        "sourceIssue": "C misread the named 120° as exterior and added an unsupported right angle; ROOT_Q22_FOLD_ANGLE_C_DEFECT.md supplies affected-UID proof. The archived solution remains generic quality HOLD."
+      }
+    }
+  ]
+}

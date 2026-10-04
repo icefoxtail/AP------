@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Print guard overflow fixture</title>
+  <style>
+    .page { width: 500px; height: 700px; }
+    .page-body { width: 100%; height: 600px; overflow: hidden; }
+    .q-box { width: 220px; height: 100px; overflow: hidden; }
+    .q-content { width: 220px; height: 260px; }
+  </style>
+  <script>
+    window.MathJax = { startup: { promise: Promise.resolve() }, typesetPromise: () => Promise.resolve() };
+    window.confirm = () => false;
+  </script>
+  <script src="../../archive/print_guard.js"></script>
+</head>
+<body>
+  <button id="run" onclick="APPrintGuard.prepare({scope:document.getElementById('print-area')})">검수</button>
+  <div id="print-area"><div class="page"><div class="page-body"><div class="q-box"><div class="q-num">99.</div><div class="q-content">의도적으로 넘치는 테스트 문항</div></div></div></div></div>
+</body>
+</html>

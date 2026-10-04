@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1",
+  "questionId": 11,
+  "svg": "archive/assets/images/23_조대부고_2학기_중간_고2_수학II/q11-solution.svg",
+  "svgSha256": "sha256:4c51e52a0ed7739b3a1b6bfcfd604bdcc086f6a9d0be446e4f45ff06e31b5a0c",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 320,
+    "originY": 240,
+    "sx": 35,
+    "sy": 35,
+    "anchors": {
+      "origin": {
+        "element": "anchor-origin-o320",
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "anchor-xaxis-o320",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "anchor-yaxis-o320",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFactCount": 3,
+  "observedFactCount": 3,
+  "factParityPassCount": 3,
+  "coordinateModelParity": "PASS",
+  "coordinateModelAnchors": [
+    {
+      "role": "origin",
+      "type": "POINT",
+      "element": "anchor-origin-o320",
+      "expected": [
+        0,
+        0
+      ],
+      "observed": [
+        0,
+        0
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "xAxis",
+      "type": "POINT",
+      "element": "anchor-xaxis-o320",
+      "expected": [
+        1,
+        0
+      ],
+      "observed": [
+        1,
+        0
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "yAxis",
+      "type": "POINT",
+      "element": "anchor-yaxis-o320",
+      "expected": [
+        0,
+        1
+      ],
+      "observed": [
+        0,
+        1
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "tolerancePolicy": {
+    "maxTolerance": 0.05,
+    "defaultTolerance": 0.00001,
+    "status": "PASS"
+  },
+  "elementExtractionStatus": "PASS",
+  "observedFactStatus": "PASS",
+  "expectedObservedParity": "PASS",
+  "facts": [
+    {
+      "factId": "q11-external",
+      "type": "POINT",
+      "element": "point-o320-xm1-ym2",
+      "expected": [
+        -1,
+        -2
+      ],
+      "observed": [
+        -1,
+        -2
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q11-contact",
+      "type": "POINT",
+      "element": "point-o320-x1-y2",
+      "expected": [
+        1,
+        2
+      ],
+      "observed": [
+        1,
+        2
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q11-tangent-slope",
+      "type": "LINE_SLOPE",
+      "element": "line-tangent-o320-x1m1p8-y1m3p6-x21p8-y23p6",
+      "expected": 2,
+      "observed": 2,
+      "delta": 0,
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "svgMathStatus": "PASS",
+  "renderResult": "PASS",
+  "svgFinalStatus": "PASS",
+  "failures": []
+}

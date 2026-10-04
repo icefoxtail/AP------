@@ -1,0 +1,144 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "auditType": "SOURCE_HOLD_REPEAT_REAUDIT",
+  "scope": "current six SOURCE_HOLD question UIDs",
+  "search": {
+    "roots": ["D:/", "D:/기출"],
+    "method": "read-only recursive filename enumeration with rg --files --hidden --no-ignore, followed by exact path existence and SHA-256 checks",
+    "contentMutation": false,
+    "sourceSearchConclusion": "No newly discovered source artifact changes the disposition of any of the six active holds."
+  },
+  "summary": {
+    "heldQuestionCount": 6,
+    "sourceLocatedCount": 6,
+    "newlyResolvableHoldCount": 0,
+    "newlyDiscoveredSupplementaryArtifactPathCount": 4,
+    "newlyDiscoveredSupplementaryByteIdentityCount": 3,
+    "sourceDefectHoldCount": 4,
+    "hwpTranscriptionHoldCount": 2,
+    "similarQuestionPromotionCount": 0,
+    "productionMutationCount": 0,
+    "allSimilarCandidatesRemainNonProduction": true
+  },
+  "holds": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js|23_여수여고_1학기_중간_고1_기출|11",
+      "disposition": "SOURCE_HOLD_DUPLICATE_CHOICES",
+      "matchedArtifacts": [
+        {
+          "path": "D:/기출/23,24 고1/2023년/1학기 중간고사/23 여수여고/수학 상 (23 여수여고).hwp",
+          "bytes": 143360,
+          "sha256": "sha256:5a5e23e6b04e8be9bd1251903ff3825d1edaecaa113e0ac073f8cf7e8d45c79f"
+        },
+        {
+          "path": "D:/기출/1학기중간/고1/23 여수여고+/2023 여수여고 1 정답.hwp",
+          "bytes": 18944,
+          "sha256": "sha256:13b1dcd4c6e3e3b924c9ee4bf11270370f94cab52d7bd342561ef396be34a359"
+        }
+      ],
+      "finding": "D 정답표 q11=④와 독립 계산값 4√6은 재확인되었지만 원문 ④·⑤가 모두 4√6이다.",
+      "action": "production answer ④ 복원 상태와 중복 보기 source hold를 유지; 중복 보기 repair candidate는 비생산 격리 유지",
+      "priorEvidence": "unit-08-complex/19_source_recovery_q11_answer_key_d_drive.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js|24_여수고_1학기_중간_고1_기출|15",
+      "disposition": "SOURCE_HOLD_HWP_CONDITION_TRANSCRIPTION",
+      "matchedArtifacts": [
+        {
+          "path": "D:/기출/23,24 고1/2024년/1학기 중간고사/수학 상 (24 여수고) - 답 x.hwp",
+          "bytes": 104960,
+          "sha256": "sha256:2b08a4fc98054294da169e044bb5f01ba05532428547474ddaeaa4d598d827b9"
+        }
+      ],
+      "filenameMatchCount": 1,
+      "separatePdfImageOrSolutionFound": false,
+      "finding": "HWP가 q15 존재와 z,m,n,m+n 관련 수식 control은 보유하지만 조건식은 decoded BodyText에 없다.",
+      "action": "원문 content 보존; m,n 모두 자연수로 바꾼 유사문제는 QUARANTINED_NOT_PRODUCTION 유지",
+      "priorEvidence": "unit-08-complex/17_hwp_source_inspection_q15_q18.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js|24_여수고_1학기_중간_고1_기출|18",
+      "disposition": "SOURCE_HOLD_HWP_CONDITION_TRANSCRIPTION",
+      "matchedArtifacts": [
+        {
+          "path": "D:/기출/23,24 고1/2024년/1학기 중간고사/수학 상 (24 여수고) - 답 x.hwp",
+          "bytes": 104960,
+          "sha256": "sha256:2b08a4fc98054294da169e044bb5f01ba05532428547474ddaeaa4d598d827b9"
+        }
+      ],
+      "filenameMatchCount": 1,
+      "separatePdfImageOrSolutionFound": false,
+      "finding": "HWP가 z₁,z₂와 a,b,c,d 관련 수식 control은 보유하지만 보기 앞 조건 block은 decoded BodyText에 없다.",
+      "action": "원문 content 보존; 조건을 보강한 유사문제는 QUARANTINED_NOT_PRODUCTION 유지",
+      "priorEvidence": "unit-08-complex/17_hwp_source_inspection_q15_q18.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/24_제일고_1학기_중간_고1_수학|24_제일고_1학기_중간_고1_수학|5",
+      "disposition": "SOURCE_HOLD_SOURCE_DEFECT",
+      "matchedArtifacts": [
+        {
+          "path": "D:/기출/(1)1중간/(1)1중간/수학(상)/2024_제일고1_1중간.pdf",
+          "bytes": 4777646,
+          "sha256": "sha256:a9f2b4f1c03c040987b1aaf9a768213c16735316104435ca6d7fbe6ee57051aa"
+        },
+        {
+          "path": "D:/기출/(1)1중간/(1)1중간/수학(상)/2024_제일고1_1중간_해설.pdf",
+          "bytes": 237991,
+          "sha256": "sha256:ee08faacbc7c697f761d0afa95124b1c30517457912ec26de0b347b965678b86"
+        }
+      ],
+      "finding": "정확한 PDF와 해설 PDF가 재확인되었으나 순허수 convention과 복소수 부등호가 명시되지 않고 다) 해설 판정도 반례와 충돌한다.",
+      "action": "stored answer ④와 source defect hold 유지; 유사문제/해석 보정으로 원문을 대체하지 않음",
+      "priorEvidence": "unit-08-complex/16_source_recovery_q5_d_drive.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js|24_한영고_1학기_중간_고1_기출|19",
+      "disposition": "SOURCE_HOLD_SOURCE_ANSWER_CONFLICT",
+      "matchedArtifacts": [
+        {
+          "path": "D:/기출/23,24 고1/2024년/1학기 중간고사/수학 상 (24 한영고)/05.png",
+          "bytes": 2740837,
+          "sha256": "sha256:00029d399c387993f6e3263668f511d205cdf51c609dc1793bbacb7163388219"
+        },
+        {
+          "path": "D:/기출/23,24 고1/2024년/1학기 중간고사/수학 상 (24 한영고)/수학 상 (24 한영고).hwp",
+          "bytes": 215552,
+          "sha256": "sha256:bc6a110d4cf5c9836d377f2f4c97ee6b68eb77ec58f39a1c52ad056c0ea11a77"
+        },
+        {
+          "path": "D:/기출/1학기중간/고1/24 한영고+/수학 상 (24 한영고).pdf",
+          "bytes": 111822,
+          "sha256": "sha256:e67ed7511dbe3581f12beb6d5d3829a2082f4d6e61d7f6187b039803dca28682"
+        },
+        {
+          "path": "D:/기출/1학기중간/고1/24 한영고+/수학 상 (24 한영고).hwp",
+          "bytes": 215552,
+          "sha256": "sha256:bc6a110d4cf5c9836d377f2f4c97ee6b68eb77ec58f39a1c52ad056c0ea11a77"
+        }
+      ],
+      "finding": "동일 HWP와 보조 PDF가 재확인되었고 q19 source PNG는 유지된다. 학교 인쇄 답 0과 독립 계산 −20 및 해설 결론이 충돌한다.",
+      "action": "final stored answer −20과 source defect hold 유지; 보조 PDF는 supplementary provenance로만 기록",
+      "priorEvidence": "unit-08-complex/15_source_recovery_q19_d_drive.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_content|17",
+      "disposition": "SOURCE_HOLD_SOURCE_DEFECT",
+      "matchedArtifacts": [
+        {
+          "path": "D:/2026년 기출/1학기중간_/고1/금당고/S28BW-826042914450_0008.jpg",
+          "bytes": 1821696,
+          "sha256": "sha256:1260772559ea545df529df5bbdd63e64f87a2342ab547421d10c1678192db399"
+        },
+        {
+          "path": "D:/기출/(1)1중간/(1)1중간/공통수학1/2026_금당고1_공통수학1_1중간.pdf",
+          "bytes": 209057,
+          "sha256": "sha256:fc29cc0ca39dd34dd5fb39929035cccebd1803975c2520492a4447c68ed35d85"
+        }
+      ],
+      "finding": "D 원문 발문 ‘a의 최댓값’과 인쇄 ④는 재확인되지만 실제 조건은 1<a<4이고 최댓값이 없다.",
+      "action": "발문 복원 상태·정답 ④·source defect hold 유지",
+      "priorEvidence": "unit-09-quadratic/18_source_recovery_q17_26geumdang_d_drive.json"
+    }
+  ],
+  "finalStatus": "SOURCE_HOLD_RECONFIRMED_NO_NEW_RESOLUTION"
+}

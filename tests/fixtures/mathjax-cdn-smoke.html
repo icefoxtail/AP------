@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>MathJax CDN smoke</title>
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/boldsymbol'] },
+      tex: { inlineMath: [['$', '$']], packages: {'[+]': ['ams', 'boldsymbol']} },
+      output: { font: 'mathjax-tex', displayOverflow: 'linebreak', linebreaks: { inline: true, width: '100%', lineleading: 0.2 } },
+      startup: { typeset: false }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js"></script>
+</head>
+<body>
+  <div id="math">$\boldsymbol{x}^2+\frac{1}{2}$</div>
+  <div id="status">boot</div>
+  <script>
+    window.addEventListener('load', async () => {
+      const status = document.getElementById('status');
+      try {
+        status.textContent = 'startup';
+        await MathJax.startup.promise;
+        status.textContent = 'typeset';
+        await MathJax.typesetPromise([document.getElementById('math')]);
+        status.textContent = 'done';
+      } catch (error) {
+        status.textContent = 'error:' + (error?.message || error);
+      }
+    });
+  </script>
+</body>
+</html>

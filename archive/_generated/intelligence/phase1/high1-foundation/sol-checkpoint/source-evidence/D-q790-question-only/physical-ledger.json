@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "task": "D question-only source repair, H1 queueIndex 790",
+  "status": "SOURCE_QUESTION_WORDING_REPAIRED",
+  "disposition": "REMOVED_UNPRINTED_XY_REAL_QUALIFIER_AND_RESTORED_SOURCE_ROOT_COUNT_SENTENCE",
+  "queueIndex": 790,
+  "questionUid": "qid_v1_2a1bbc7f5245c49dbb292eb37d462974c1bd13bc5446649b59470b8c63fff975",
+  "sourceIdentity": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js#23",
+  "targetJs": "archive/exams/original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js",
+  "sourceScope": "Original question PDF page 7/7 only: full stem, parameter domain, equations, target, and choices/figure status. No official answer or solution page inspected or used.",
+  "queueIdentityValidation": {
+    "status": "PASS",
+    "queueIndex": 790,
+    "questionUid": "qid_v1_2a1bbc7f5245c49dbb292eb37d462974c1bd13bc5446649b59470b8c63fff975",
+    "sourceIdentity": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js#23"
+  },
+  "source": {
+    "pdf": {
+      "path": "D:\\기출\\1학기중간\\고1\\25 팔마고+\\25_순천팔마고_기출문제_.pdf",
+      "page": 7,
+      "printedPage": "7/7",
+      "sha256": "76CBFED69D63B6744B5B616E53007E0E8048706B1383C8407496636E8A98FEF3"
+    }
+  },
+  "itemBefore": {
+    "id": 23,
+    "questionType": "서술형",
+    "content": "[서답형(서술형)4] 연립방정식 $\\begin{cases} x^2+3y^2-4xy-6y+2x=0 \\\\ 3x^2+2xy+3y^2-4k^2=0 \\end{cases}$을 만족하는 두 실수 $x, y$에 대해 정확히 세 쌍의 해를 갖도록 하는 $k$의 값을 구하는 과정을 풀이과정과 함께 서술하시오. (단, $k$는 양의 실수이다.) [6점]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "itemAfter": {
+    "id": 23,
+    "questionType": "서술형",
+    "content": "[서·논술형 4]<br>연립방정식 $\\begin{cases} x^2+3y^2-4xy-6y+2x=0 \\\\ 3x^2+2xy+3y^2-4k^2=0 \\end{cases}$이 정확히 세 쌍의 해를 갖도록 하는 양의 실수 $k$의 값을 구하는 과정을 서술하시오. [6점]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "changes": [
+    {
+      "field": "questionBank[id=23].content",
+      "reason": "Restored source wording: the system has exactly three solution pairs for a positive real k. Removed the unprinted explicit “two real x,y” qualifier and placed the source’s positive-real parameter phrase in its printed position."
+    }
+  ],
+  "sourceConfirmed": {
+    "heading": "[서·논술형 4]",
+    "system": [
+      "x²+3y²−4xy−6y+2x=0",
+      "3x²+2xy+3y²−4k²=0"
+    ],
+    "rootCount": "정확히 세 쌍의 해",
+    "parameterDomain": "양의 실수 k",
+    "requestedTarget": "k의 값을 구하는 과정을 서술하시오",
+    "score": "6점",
+    "choices": "None; written-response item.",
+    "figure": "None."
+  },
+  "fieldDispositions": {
+    "heading": "SOURCE_WORDING_RESTORED",
+    "systemEquations": "SOURCE_MATCH",
+    "rootCount": "SOURCE_MATCH",
+    "parameterDomain": "SOURCE_MATCH_POSITIVE_REAL_K",
+    "xYDomain": "Source has no separate explicit x,y∈R phrase; removed JS-only explicit qualifier.",
+    "requestedTarget": "SOURCE_MATCH",
+    "choices": "SOURCE_MATCH_NONE",
+    "answer": "NOT_INSPECTED_OR_CHANGED",
+    "solution": "NOT_INSPECTED_OR_CHANGED",
+    "metadata": "NOT_INSPECTED_OR_CHANGED"
+  },
+  "validation": {
+    "syntax": {
+      "command": "node --check archive/exams/original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js",
+      "status": "PASS",
+      "exitCode": 0
+    },
+    "itemSchema": {
+      "status": "PASS",
+      "checks": [
+        "questionBank array and unique IDs",
+        "q23 content equals restored source wording",
+        "system equations match source page",
+        "exactly-three-solution-pairs clause matches source",
+        "positive real k domain and k target match source",
+        "q23 has no choices or image"
+      ]
+    },
+    "render": {
+      "status": "NOT_TESTED",
+      "reason": "Archive browser render was unavailable; source page and JS syntax/schema were checked."
+    }
+  },
+  "contentSha256": "f0ee37ee56097479ebdc8845aa1af5fa0530cbc2125b22024c77a17a2f20d490",
+  "evidenceFiles": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q790-question-only/source-question-page-7.png",
+      "role": "Original question PDF page 7/7 full page",
+      "sha256": "57918798966597756180D9382D9AD58A50E8F7F4F5DA929A8CAF7E42022236FC"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q790-question-only/source-q23-detail.png",
+      "role": "Original question page crop of q23 system, root-count clause, parameter domain and target",
+      "sha256": "E69331D593FE7D864A599A1F586D50D617DC40D91CA86584327C88A130BB1764"
+    }
+  ],
+  "officialAnswerPageInspected": false,
+  "officialSolutionPageInspected": false,
+  "officialAnswerOrSolutionUsed": false,
+  "model": {
+    "identity": "gpt-6-luna",
+    "reasoningEffort": "xhigh"
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "BOKSEONG_MASTER_PINPOINT_REPAIR_EVIDENCE_v1",
+  "target": "26_복성고_2학기_중간_고1_기출",
+  "mode": "MASTER_PINPOINT_REPAIR_ONLY",
+  "base": {
+    "main": "9a9e16c8246a17ac9e085b74d6b839c3ea618bdd",
+    "r3FailHead": "d890bd91583eff052c230bbb6d1831b20a89402d",
+    "inputExamBlob": "8ecbf9c5f9669c3c4e8aebb5aa547d346676e16a",
+    "sourceAuthorityQ2": "d3bc3867d0abf54b483f7b45d30b25517e3fc362"
+  },
+  "finalExamBlob": "f92aa02adcbe6a87f64d83c97f35b2ab8c621bb7",
+  "policy": {
+    "r1r2r3ReceiptCreated": false,
+    "notionStageChanged": false,
+    "mainMerged": false,
+    "physicalEvidenceBeforePassApplied": true,
+    "stagePassClaimed": false
+  },
+  "jsChecks": {
+    "q2SourceRuntimeExact": true,
+    "doubledTexRuntime": {
+      "q2": 0,
+      "q7": 0,
+      "q20": 0
+    },
+    "smallBoardBlocks": {
+      "q2": [
+        "ㄱ",
+        "ㄴ",
+        "ㄷ",
+        "ㄹ"
+      ],
+      "q17": [
+        "ㄱ",
+        "ㄴ",
+        "ㄷ"
+      ],
+      "result": "PASS"
+    },
+    "meta": {
+      "q4": {
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_EQUATION",
+        "canonicalStatus": "ACTIVE"
+      },
+      "q11": {
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "canonicalStatus": "ACTIVE"
+      },
+      "q21": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+        "canonicalStatus": "ACTIVE"
+      },
+      "q7": {
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_INTERNAL",
+        "unchanged": true,
+        "rpmId": "H1-RPM-206",
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "bindingStatus": "MISSING",
+        "disposition": "NONBLOCKING_MIGRATION_DEBT"
+      }
+    },
+    "authorityBlobs": {
+      "geometryTaxonomy": "dea309fa49338a2228c0828f660578e075fec7f9",
+      "geometryBindings": "28c9a1639425ca1b8f4375da6612d15c7f5f94f7",
+      "setsTaxonomy": "638a3afa57245bb93ddbaa0c5e1aef12e8c25963",
+      "setsBindings": "10ffb4bc3792df84033da3475ce2264b53c41a71",
+      "high1Crosswalk": "904b3768b69b300607e52217cad05bf71e34f221"
+    },
+    "answerMutationCount": 0,
+    "targetOutsideQidSemanticMutationCount": 0,
+    "changedFields": {
+      "q2": [
+        "content",
+        "solution"
+      ],
+      "q4": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "q7": [
+        "solution"
+      ],
+      "q11": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "q17": [
+        "solution"
+      ],
+      "q20": [
+        "solution"
+      ],
+      "q21": [
+        "templateKey"
+      ]
+    }
+  },
+  "svgChecks": {
+    "method": "PYTHON_COORDINATE_COMPUTE_THEN_FINAL_SVG_PRIMITIVE_REPARSE",
+    "studentFacingDecimalCoordinateLabelsNew": 0,
+    "q1": {
+      "assetPath": "archive/assets/images/26_복성고_2학기_중간_고1_기출/q1-solution.svg",
+      "finalGitBlob": "f7698f57fca0bc2f1d3c9bf2ca6353f41665358d",
+      "sha256": "5c7227c3afab58ff511443799e54eb1a193d73ec515d23cfc9588a501478ca25",
+      "coordinateModel": {
+        "originX": 300,
+        "originY": 210,
+        "sx": 30,
+        "sy": 30
+      },
+      "expectedFacts": [
+        "A=(-5,3)",
+        "B=(1,-2)",
+        "line slope=-5/6",
+        "y-intercept=-7/6"
+      ],
+      "actualFacts": {
+        "A": [
+          "-5",
+          "3"
+        ],
+        "B": [
+          "1",
+          "-2"
+        ],
+        "lineSlope": "-5/6",
+        "yIntercept": "-7/6"
+      },
+      "calculation": "((-2)-3)/(1-(-5))=-5/6; 3-(-5/6)(-5)=-7/6",
+      "primitiveReparse": {
+        "lineSlope": -0.8333333333333334,
+        "yIntercept": -1.166666666666667
+      },
+      "result": "PASS"
+    },
+    "q3": {
+      "assetPath": "archive/assets/images/26_복성고_2학기_중간_고1_기출/q3-solution.svg",
+      "finalGitBlob": "641d7506b3c1c9423b1c1028f13e63566dd5f572",
+      "sha256": "b608b14ae6a7201ec961a87a19601b55e7d0e98615b782aa89f6519fe7a4377f",
+      "coordinateModel": {
+        "originX": 250,
+        "originY": 250,
+        "sx": 40,
+        "sy": 40
+      },
+      "expectedFacts": [
+        "line=7x+y-15=0",
+        "P=(-1,2)",
+        "distance(P,line)=2√2",
+        "H on line",
+        "PH perpendicular line"
+      ],
+      "actualFacts": {
+        "P": [
+          "-1",
+          "2"
+        ],
+        "H": [
+          "9/5",
+          "12/5"
+        ],
+        "lineAtH": "0",
+        "PHslope": "1/7",
+        "lineSlope": "-7",
+        "slopeProduct": "-1",
+        "PHdistance": "2√2"
+      },
+      "calculation": "H=(9/5,12/5); 7*(9/5)+12/5-15=0; slope(PH)=1/7; (1/7)*(-7)=-1; distance=20/sqrt(50)=2√2",
+      "primitiveReparse": {
+        "lineSlope": -7.000000000000001,
+        "lineAtH": 0,
+        "PHslope": 0.14285714285714282,
+        "slopeProduct": -0.9999999999999999,
+        "PHdistance": 2.82842712474619
+      },
+      "result": "PASS"
+    },
+    "q7": {
+      "assetPath": "archive/assets/images/26_복성고_2학기_중간_고1_기출/q7-solution.svg",
+      "finalGitBlob": "974b4e94075f0fde470ef46e6c69cd48a5bd7ba8",
+      "sha256": "903304e7a9eddf661f855b9afb8dcaaa6e2fabf8702031f191fd2188f2b776b7",
+      "coordinateModel": {
+        "originX": 300,
+        "originY": 165,
+        "sx": 60,
+        "sy": 60
+      },
+      "expectedFacts": [
+        "y=-(2x+1)^2",
+        "A=(-1/2,0)",
+        "B=(0,-1)",
+        "C=(-1/10,-4/5)",
+        "AC:CB=4:1"
+      ],
+      "actualFacts": {
+        "A": [
+          "-1/2",
+          "0"
+        ],
+        "B": [
+          "0",
+          "-1"
+        ],
+        "C": [
+          "-1/10",
+          "-4/5"
+        ],
+        "polylineIncludesA": true,
+        "polylineIncludesB": true,
+        "ACvector": [
+          "2/5",
+          "-4/5"
+        ],
+        "CBvector": [
+          "1/10",
+          "-1/5"
+        ],
+        "ratio": "4:1"
+      },
+      "calculation": "C=(A+4B)/5=(-1/10,-4/5); AC=4·CB componentwise; sampled polyline includes x=-1/2 and x=0 exactly",
+      "primitiveReparse": {
+        "parabolaAtA": 0,
+        "parabolaAtB": 0,
+        "ratioComponentX": 4,
+        "ratioComponentY": 4.000000000000001
+      },
+      "result": "PASS"
+    },
+    "q8": {
+      "assetPath": "archive/assets/images/26_복성고_2학기_중간_고1_기출/q8-solution.svg",
+      "finalGitBlob": "ce038051ad9a891e8a61f89ae17fa05ee89fddac",
+      "sha256": "9f6ecdc509e88c81c5bc0fbd06a65c0c7c533d64fea20dc83d73db596b92b051",
+      "coordinateModel": {
+        "originX": 180,
+        "originY": 250,
+        "sx": 25,
+        "sy": 25
+      },
+      "expectedFacts": [
+        "circle x²+y²=8",
+        "P=(3,-1) on tangent",
+        "T=(14/5,2/5) on circle and tangent",
+        "tangent=7x+y-20=0",
+        "tangent slope=-7",
+        "OT perpendicular tangent"
+      ],
+      "actualFacts": {
+        "P": [
+          "3",
+          "-1"
+        ],
+        "T": [
+          "14/5",
+          "2/5"
+        ],
+        "Tcircle": "8",
+        "lineAtP": "0",
+        "lineAtT": "0",
+        "tangentSlope": "-7",
+        "OTslope": "1/7",
+        "directionDot": "0"
+      },
+      "calculation": "(14/5)^2+(2/5)^2=8; 7*3-1-20=0; 7*(14/5)+2/5-20=0; (14/5,2/5)·(1,-7)=0",
+      "primitiveReparse": {
+        "circleRadiusMath": 2.82842712,
+        "Tcircle": 7.999999999999999,
+        "lineAtP": 0,
+        "lineAtT": -3.552713678800501e-15,
+        "tangentSlope": -7,
+        "OTdotTangentDir": -4.440892098500626e-16
+      },
+      "result": "PASS"
+    },
+    "q20": {
+      "assetPath": "archive/assets/images/26_복성고_2학기_중간_고1_기출/q20-solution.svg",
+      "finalGitBlob": "36548b63ae172859574c379c42d9aa2dc21259a8",
+      "sha256": "e96f0e7807039456037938698feccdb26b2594c83537ebc04721283d36a9d54f",
+      "coordinateModel": {
+        "originX": 180,
+        "originY": 270,
+        "sx": 35,
+        "sy": 35
+      },
+      "expectedFacts": [
+        "line=3x+4y-8=0",
+        "P=(6,3)",
+        "H=(84/25,-13/25) on line",
+        "slope PH=4/3",
+        "line slope=-3/4",
+        "PH perpendicular line"
+      ],
+      "actualFacts": {
+        "P": [
+          "6",
+          "3"
+        ],
+        "H": [
+          "84/25",
+          "-13/25"
+        ],
+        "lineAtH": "0",
+        "PHslope": "4/3",
+        "lineSlope": "-3/4",
+        "slopeProduct": "-1"
+      },
+      "calculation": "3*(84/25)+4*(-13/25)-8=0; ((-13/25)-3)/((84/25)-6)=4/3; (4/3)*(-3/4)=-1",
+      "primitiveReparse": {
+        "lineAtH": 3.552713678800501e-15,
+        "lineSlope": -0.75,
+        "PHslope": 1.3333333333333335,
+        "slopeProduct": -1
+      },
+      "result": "PASS"
+    }
+  }
+}

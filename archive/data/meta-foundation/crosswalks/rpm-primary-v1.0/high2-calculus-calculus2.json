@@ -1,0 +1,1985 @@
+{
+  "schemaVersion": "rpm-primary-active-crosswalk-v1",
+  "status": "ACTIVE_REFERENCE",
+  "grade": "H2",
+  "subjectFamily": "CALCULUS_CALCULUS2",
+  "generatedAgainstMain": "acd1446c648bb0001bbd392349f468f2af9cebe1",
+  "rpmAuthority": {
+    "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "status": "LOCKED",
+    "source": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+  },
+  "activeAuthority": {
+    "source": "archive/data/meta-foundation/canonical/",
+    "packs": [
+      "DERIVATIVE",
+      "INTEGRAL_CALCULUS"
+    ]
+  },
+  "policy": {
+    "purpose": "2015 미적분 + 2022 미적분II RPM semantic path를 현재 ACTIVE production machine key로 번역하는 deterministic reference",
+    "doesNotCreateCanonicalKeys": true,
+    "DIRECT_ACTIVE": "mapped PT/TPL과 exact binding이 ACTIVE.",
+    "FAMILY_ACTIVE": "listed candidate에서 decisive step 선택.",
+    "DIRECT_BINDING_GAP": "PT/TPL은 ACTIVE지만 exact binding 없음. RPM_PRIMARY_MIGRATION_GAP.",
+    "FAMILY_BINDING_GAP": "PT는 ACTIVE지만 exact binding 없음.",
+    "RPM_ONLY": "현재 ACTIVE에 안전한 대응 machine key가 확정되지 않음. 특히 수열의 극한·급수·치환/부분적분 전용 skeleton을 일반 함수극한/적분키로 억지 매핑하지 않음.",
+    "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
+  },
+  "summary": {
+    "recordCount": 106,
+    "DIRECT_ACTIVE": 0,
+    "FAMILY_ACTIVE": 0,
+    "DIRECT_BINDING_GAP": 68,
+    "FAMILY_BINDING_GAP": 0,
+    "RPM_ONLY": 38,
+    "byScope": {
+      "미적분": {
+        "DIRECT_ACTIVE": 0,
+        "FAMILY_ACTIVE": 0,
+        "DIRECT_BINDING_GAP": 37,
+        "FAMILY_BINDING_GAP": 0,
+        "RPM_ONLY": 18
+      },
+      "미적분II": {
+        "DIRECT_ACTIVE": 0,
+        "FAMILY_ACTIVE": 0,
+        "DIRECT_BINDING_GAP": 31,
+        "FAMILY_BINDING_GAP": 0,
+        "RPM_ONLY": 20
+      }
+    }
+  },
+  "records": [
+    {
+      "id": "H2-CALC-RPM-001",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "수열의 수렴과 발산",
+        "l4": "극한값"
+      },
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-002",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "수열의 수렴과 발산",
+        "l4": "수렴 조건"
+      },
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-003",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "극한의 계산",
+        "l4": "대수적 계산"
+      },
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-004",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "극한의 계산",
+        "l4": "샌드위치"
+      },
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-005",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "등비수열의 극한",
+        "l4": "공비 조건"
+      },
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-006",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "등비수열의 극한",
+        "l4": "무한등비수열"
+      },
+      "standardUnitKey": "H15-CALC-01",
+      "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-007",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 수렴과 발산",
+        "l4": "부분합"
+      },
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-008",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 수렴과 발산",
+        "l4": "수렴 조건"
+      },
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-009",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "등비급수",
+        "l4": "무한등비급수"
+      },
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-010",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "등비급수",
+        "l4": "활용"
+      },
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-011",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 성질",
+        "l4": "급수 계산"
+      },
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-012",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 성질",
+        "l4": "수렴성 판정"
+      },
+      "standardUnitKey": "H15-CALC-02",
+      "subUnitKey": "H15-CALC-02-SERIES",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-013",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "지수함수의 미분",
+        "l4": "e^x형"
+      },
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-014",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "지수함수의 미분",
+        "l4": "합성함수"
+      },
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-015",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그함수의 미분",
+        "l4": "ln x형"
+      },
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-016",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그함수의 미분",
+        "l4": "합성함수"
+      },
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-017",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그미분법",
+        "l4": "곱·몫·거듭제곱형"
+      },
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-018",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그미분법",
+        "l4": "복합함수"
+      },
+      "standardUnitKey": "H15-CALC-03",
+      "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-019",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "sin·cos의 미분",
+        "l4": "기본 미분"
+      },
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-020",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "sin·cos의 미분",
+        "l4": "합성함수"
+      },
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-021",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "tan 및 관련 함수의 미분",
+        "l4": "tan 미분"
+      },
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-022",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "tan 및 관련 함수의 미분",
+        "l4": "복합 삼각함수"
+      },
+      "standardUnitKey": "H15-CALC-04",
+      "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-023",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "함수의 몫과 합성",
+        "l4": "몫의 미분"
+      },
+      "standardUnitKey": "H15-CALC-05",
+      "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-024",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "함수의 몫과 합성",
+        "l4": "합성함수의 미분"
+      },
+      "standardUnitKey": "H15-CALC-05",
+      "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-025",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "매개변수·음함수",
+        "l4": "매개변수 미분"
+      },
+      "standardUnitKey": "H15-CALC-05",
+      "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-026",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "매개변수·음함수",
+        "l4": "음함수 미분"
+      },
+      "standardUnitKey": "H15-CALC-05",
+      "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-027",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "역함수의 미분",
+        "l4": "역함수 미분"
+      },
+      "standardUnitKey": "H15-CALC-05",
+      "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-028",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "접선",
+        "l4": "접선의 방정식"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "problemTypeLabelKo": "접선과 미분",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_TANGENT_CONSTRUCTION",
+      "templateLabelKo": "접선·법선 구성",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-029",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "접선",
+        "l4": "두 곡선의 접선"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "problemTypeLabelKo": "접선과 미분",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+      "templateLabelKo": "접선 관계와 기하 활용",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-030",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "증가·감소와 극값",
+        "l4": "증감표"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+      "problemTypeLabelKo": "함수의 증가·감소",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MONOTONICITY_DIRECT",
+      "templateLabelKo": "도함수 부호로 증감 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-031",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "증가·감소와 극값",
+        "l4": "극대·극소"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "problemTypeLabelKo": "극대·극소",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "templateLabelKo": "극값·극점 조건으로 값 결정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-032",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "최대·최소",
+        "l4": "구간 최대·최소"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "problemTypeLabelKo": "최댓값·최솟값",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+      "templateLabelKo": "함수의 정의역상 최대·최소",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-033",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "최대·최소",
+        "l4": "활용"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "problemTypeLabelKo": "최댓값·최솟값",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+      "templateLabelKo": "모델링된 양의 최대·최소",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-034",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "방정식·부등식",
+        "l4": "근의 개수"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "problemTypeLabelKo": "방정식·부등식에의 활용",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+      "templateLabelKo": "극값을 이용한 실근 개수 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-035",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "방정식·부등식",
+        "l4": "함수 비교"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "problemTypeLabelKo": "방정식·부등식에의 활용",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+      "templateLabelKo": "미분을 이용한 전역 부등식",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-036",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "속도와 가속도",
+        "l4": "위치·속도"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MOTION",
+      "problemTypeLabelKo": "속도·가속도와 변화율",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+      "templateLabelKo": "운동의 사건 시각·상태 분석",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-037",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "속도와 가속도",
+        "l4": "변화율"
+      },
+      "standardUnitKey": "H15-CALC-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MOTION",
+      "problemTypeLabelKo": "속도·가속도와 변화율",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+      "templateLabelKo": "운동의 사건 시각·상태 분석",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-038",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 적분법",
+        "l3": "여러 함수의 부정적분",
+        "l4": "지수·로그함수"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-039",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 적분법",
+        "l3": "여러 함수의 부정적분",
+        "l4": "삼각함수"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-040",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 적분법",
+        "l3": "치환적분",
+        "l4": "치환 설정"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-041",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 적분법",
+        "l3": "치환적분",
+        "l4": "정적분 치환"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-042",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 적분법",
+        "l3": "부분적분",
+        "l4": "부분적분 공식"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-043",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 적분법",
+        "l3": "부분적분",
+        "l4": "반복 부분적분"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-044",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분",
+        "l3": "정적분의 뜻",
+        "l4": "정적분 계산"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "problemTypeLabelKo": "정적분의 계산과 성질",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "templateLabelKo": "정적분 값 계산",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-045",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분",
+        "l3": "정적분의 뜻",
+        "l4": "구간 분할"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "problemTypeLabelKo": "정적분의 계산과 성질",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "templateLabelKo": "정적분 값 계산",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-046",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분",
+        "l3": "정적분의 성질",
+        "l4": "상하한 교환"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "problemTypeLabelKo": "정적분의 계산과 성질",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "templateLabelKo": "정적분의 성질을 이용한 식 변형",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-047",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분",
+        "l3": "정적분의 성질",
+        "l4": "대칭성"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "problemTypeLabelKo": "정적분의 계산과 성질",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "templateLabelKo": "정적분의 성질을 이용한 식 변형",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-048",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분",
+        "l3": "정적분과 함수",
+        "l4": "상한이 변수인 적분"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "problemTypeLabelKo": "정적분과 함수",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
+      "templateLabelKo": "적분으로 정의된 함수의 미분",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-049",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분",
+        "l3": "정적분과 함수",
+        "l4": "미분과 적분 관계"
+      },
+      "standardUnitKey": "H15-CALC-07",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "problemTypeLabelKo": "정적분과 함수",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "templateLabelKo": "적분이 포함된 식을 미분하여 함수 구하기",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-050",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "넓이",
+        "l4": "곡선과 x축"
+      },
+      "standardUnitKey": "H15-CALC-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+      "templateLabelKo": "교점과 부호를 이용한 넓이",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-051",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "넓이",
+        "l4": "두 곡선 사이"
+      },
+      "standardUnitKey": "H15-CALC-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+      "templateLabelKo": "교점과 부호를 이용한 넓이",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-052",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "속도와 거리",
+        "l4": "속도에서 이동거리"
+      },
+      "standardUnitKey": "H15-CALC-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "problemTypeLabelKo": "속도와 거리",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "templateLabelKo": "속도에서 위치·변위·이동거리 구하기",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-053",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "속도와 거리",
+        "l4": "위치 변화"
+      },
+      "standardUnitKey": "H15-CALC-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "problemTypeLabelKo": "속도와 거리",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "templateLabelKo": "속도에서 위치·변위·이동거리 구하기",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-054",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "도형 활용",
+        "l4": "매개변수 넓이"
+      },
+      "standardUnitKey": "H15-CALC-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+      "templateLabelKo": "넓이 조건으로 함수·매개변수 결정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-055",
+      "curriculum": "2015",
+      "scope": "미적분",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "도형 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H15-CALC-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+      "templateLabelKo": "넓이 조건으로 함수·매개변수 결정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-056",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "수열의 수렴과 발산",
+        "l4": "극한값"
+      },
+      "standardUnitKey": "H22-M2-01",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-057",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "수열의 수렴과 발산",
+        "l4": "수렴 조건"
+      },
+      "standardUnitKey": "H22-M2-01",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-058",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "극한의 계산",
+        "l4": "대수적 계산"
+      },
+      "standardUnitKey": "H22-M2-01",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-059",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "극한의 계산",
+        "l4": "샌드위치"
+      },
+      "standardUnitKey": "H22-M2-01",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-060",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "등비수열의 극한",
+        "l4": "공비 조건"
+      },
+      "standardUnitKey": "H22-M2-01",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-061",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "수열의 극한",
+        "l3": "등비수열의 극한",
+        "l4": "무한등비수열"
+      },
+      "standardUnitKey": "H22-M2-01",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-062",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 수렴과 발산",
+        "l4": "부분합"
+      },
+      "standardUnitKey": "H22-M2-02",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-063",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 수렴과 발산",
+        "l4": "수렴 조건"
+      },
+      "standardUnitKey": "H22-M2-02",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-064",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "등비급수",
+        "l4": "무한등비급수"
+      },
+      "standardUnitKey": "H22-M2-02",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-065",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "등비급수",
+        "l4": "활용"
+      },
+      "standardUnitKey": "H22-M2-02",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-066",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 성질",
+        "l4": "급수 계산"
+      },
+      "standardUnitKey": "H22-M2-02",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-067",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "수열의 극한",
+        "midUnit": "급수",
+        "l3": "급수의 성질",
+        "l4": "수렴성 판정"
+      },
+      "standardUnitKey": "H22-M2-02",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-068",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "지수함수의 미분",
+        "l4": "e^x형"
+      },
+      "standardUnitKey": "H22-M2-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-069",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "지수함수의 미분",
+        "l4": "합성함수"
+      },
+      "standardUnitKey": "H22-M2-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-070",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그함수의 미분",
+        "l4": "ln x형"
+      },
+      "standardUnitKey": "H22-M2-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-071",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그함수의 미분",
+        "l4": "합성함수"
+      },
+      "standardUnitKey": "H22-M2-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-072",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그미분법",
+        "l4": "곱·몫·거듭제곱형"
+      },
+      "standardUnitKey": "H22-M2-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-073",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "지수함수와 로그함수의 미분",
+        "l3": "로그미분법",
+        "l4": "복합함수"
+      },
+      "standardUnitKey": "H22-M2-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-074",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "sin·cos의 미분",
+        "l4": "기본 미분"
+      },
+      "standardUnitKey": "H22-M2-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-075",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "sin·cos의 미분",
+        "l4": "합성함수"
+      },
+      "standardUnitKey": "H22-M2-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-076",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "tan 및 관련 함수의 미분",
+        "l4": "tan 미분"
+      },
+      "standardUnitKey": "H22-M2-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-077",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "삼각함수의 미분",
+        "l3": "tan 및 관련 함수의 미분",
+        "l4": "복합 삼각함수"
+      },
+      "standardUnitKey": "H22-M2-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-078",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "함수의 몫과 합성",
+        "l4": "몫의 미분"
+      },
+      "standardUnitKey": "H22-M2-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-079",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "함수의 몫과 합성",
+        "l4": "합성함수의 미분"
+      },
+      "standardUnitKey": "H22-M2-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-080",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "매개변수·음함수",
+        "l4": "매개변수 미분"
+      },
+      "standardUnitKey": "H22-M2-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-081",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "매개변수·음함수",
+        "l4": "음함수 미분"
+      },
+      "standardUnitKey": "H22-M2-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-082",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "여러 가지 미분법",
+        "l3": "역함수의 미분",
+        "l4": "역함수 미분"
+      },
+      "standardUnitKey": "H22-M2-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "problemTypeLabelKo": "도함수 계산",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "templateLabelKo": "도함수 계산과 값 평가",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-083",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "접선",
+        "l4": "접선의 방정식"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "problemTypeLabelKo": "접선과 미분",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_TANGENT_CONSTRUCTION",
+      "templateLabelKo": "접선·법선 구성",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-084",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "접선",
+        "l4": "두 곡선의 접선"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "problemTypeLabelKo": "접선과 미분",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+      "templateLabelKo": "접선 관계와 기하 활용",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-085",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "증가·감소와 극값",
+        "l4": "증감표"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+      "problemTypeLabelKo": "함수의 증가·감소",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MONOTONICITY_DIRECT",
+      "templateLabelKo": "도함수 부호로 증감 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-086",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "증가·감소와 극값",
+        "l4": "극대·극소"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "problemTypeLabelKo": "극대·극소",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "templateLabelKo": "극값·극점 조건으로 값 결정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-087",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "최대·최소",
+        "l4": "구간 최대·최소"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "problemTypeLabelKo": "최댓값·최솟값",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+      "templateLabelKo": "함수의 정의역상 최대·최소",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-088",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "최대·최소",
+        "l4": "활용"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "problemTypeLabelKo": "최댓값·최솟값",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+      "templateLabelKo": "모델링된 양의 최대·최소",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-089",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "방정식·부등식",
+        "l4": "근의 개수"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "problemTypeLabelKo": "방정식·부등식에의 활용",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+      "templateLabelKo": "극값을 이용한 실근 개수 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-090",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "방정식·부등식",
+        "l4": "함수 비교"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "problemTypeLabelKo": "방정식·부등식에의 활용",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+      "templateLabelKo": "미분을 이용한 전역 부등식",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-091",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "속도와 가속도",
+        "l4": "위치·속도"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MOTION",
+      "problemTypeLabelKo": "속도·가속도와 변화율",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+      "templateLabelKo": "운동의 사건 시각·상태 분석",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-092",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "미분법",
+        "midUnit": "도함수의 활용",
+        "l3": "속도와 가속도",
+        "l4": "변화율"
+      },
+      "standardUnitKey": "H22-M2-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_DERIVATIVE_MOTION",
+      "problemTypeLabelKo": "속도·가속도와 변화율",
+      "ownerPack": "DERIVATIVE",
+      "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+      "templateLabelKo": "운동의 사건 시각·상태 분석",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-093",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 함수의 적분",
+        "l3": "지수·로그함수의 적분",
+        "l4": "지수함수"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-094",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 함수의 적분",
+        "l3": "지수·로그함수의 적분",
+        "l4": "로그형"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-095",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 함수의 적분",
+        "l3": "삼각함수의 적분",
+        "l4": "기본 삼각함수"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-096",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "여러 가지 함수의 적분",
+        "l3": "삼각함수의 적분",
+        "l4": "합성형"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-097",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "치환적분법과 부분적분법",
+        "l3": "치환적분",
+        "l4": "부정적분"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-098",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "치환적분법과 부분적분법",
+        "l3": "치환적분",
+        "l4": "정적분"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-099",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "치환적분법과 부분적분법",
+        "l3": "부분적분",
+        "l4": "기본형"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-100",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "치환적분법과 부분적분법",
+        "l3": "부분적분",
+        "l4": "반복형"
+      },
+      "standardUnitKey": "H22-M2-07",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-CALC-RPM-101",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "넓이",
+        "l4": "곡선과 x축"
+      },
+      "standardUnitKey": "H22-M2-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+      "templateLabelKo": "교점과 부호를 이용한 넓이",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-102",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "넓이",
+        "l4": "두 곡선 사이"
+      },
+      "standardUnitKey": "H22-M2-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+      "templateLabelKo": "교점과 부호를 이용한 넓이",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-103",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "속도와 거리",
+        "l4": "속도에서 이동거리"
+      },
+      "standardUnitKey": "H22-M2-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "problemTypeLabelKo": "속도와 거리",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "templateLabelKo": "속도에서 위치·변위·이동거리 구하기",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-104",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "속도와 거리",
+        "l4": "위치 변화"
+      },
+      "standardUnitKey": "H22-M2-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "problemTypeLabelKo": "속도와 거리",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "templateLabelKo": "속도에서 위치·변위·이동거리 구하기",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-105",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "도형 활용",
+        "l4": "매개변수 넓이"
+      },
+      "standardUnitKey": "H22-M2-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+      "templateLabelKo": "넓이 조건으로 함수·매개변수 결정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-CALC-RPM-106",
+      "curriculum": "2022",
+      "scope": "미적분II",
+      "rpmPath": {
+        "majorUnit": "적분법",
+        "midUnit": "정적분의 활용",
+        "l3": "도형 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H22-M2-08",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "problemTypeLabelKo": "곡선으로 둘러싸인 도형의 넓이",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+      "templateLabelKo": "넓이 조건으로 함수·매개변수 결정",
+      "bindingStatus": "MISSING"
+    }
+  ]
+}

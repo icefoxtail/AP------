@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_DIRECT_SOLUTION_QUALITY_ADJUDICATION_WORKING",
+  "items": [
+    {
+      "queueIndex": 572,
+      "questionUid": "qid_v1_111196a6100596287fe44d3a14c073618524061755efe8005fdbf0b01652b8a8",
+      "sourceIdentity": "original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js#18",
+      "sourceFingerprint": "9d6daec2e9596e10aff2d89dadf2e4105a95c91090547266ddf89dc8a5409b75",
+      "fieldDecisions": {
+        "sourceIssue": { "value": "SOLUTION_REASON_GAP", "reason": "The archived solution sets the two vertex locations in the order p<q without writing the swapped-order check. Independent A2/B/C calculations show the swapped assignment cannot satisfy the common tangent, so the displayed -9/2 answer remains correct; the omission is a nonblocking proof gap." },
+        "reviewStatus": { "value": "PASS", "reason": "The current source and solution belong to this UID and the final value -9/2 follows; the omitted swapped-vertex branch is infeasible. Preserve the explanation gap as a correction candidate." }
+      },
+      "solutionCorrectionCandidate": true,
+      "blocking": false,
+      "qualityNote": "The original B q572 row cited q592's f(x)=x+t solution and was rejected for this UID; use only its post-correction row.",
+      "evidenceFiles": ["H1_A2_QDISC_L4_BATCH2_20.jsonl", "H1_B_QDISC_L4_BATCH2_Q572_CORRECTION.jsonl", "H1_C2_QDISC_L4_BATCH2_CONFLICTS_9.jsonl"]
+    },
+    {
+      "queueIndex": 592,
+      "questionUid": "qid_v1_c1e97437a3cd58fca3d3f514bc48b61692c14dffbc0800c0b43d0b16c54c919a",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#15",
+      "sourceFingerprint": "d98c483d012abd64444658b2bf02f92251493e0faab0979febcd2f3306db74b6",
+      "fieldDecisions": {
+        "sourceIssue": { "value": "SOLUTION_BLOCKER", "reason": "The solution states that the unique three-root level may be t=b or t=-b. Under its own derived parameters, t=-b yields only two distinct roots, and the argument does not exhaust the other parameter regimes. The numeric result a+b=17 can be checked independently, but the supplied uniqueness proof contains an incorrect alternative and is not sufficient for approval." },
+        "reviewStatus": { "value": "HOLD", "reason": "Correct the three-root level-count proof and remove the false t=-b alternative through the separate solution correction protocol before metadata freeze." }
+      },
+      "solutionCorrectionCandidate": true,
+      "blocking": true,
+      "evidenceFiles": ["H1_A2_QDISC_L4_BATCH2_20.jsonl", "H1_B_QDISC_L4_BATCH2_RAW_20.jsonl", "H1_C2_QDISC_L4_BATCH2_CONFLICTS_9.jsonl"]
+    }
+  ],
+  "currentUidCoverage": 2,
+  "jsEdit": false,
+  "officialAnswerOrSolutionPagesUsed": false,
+  "l4Final": false
+}

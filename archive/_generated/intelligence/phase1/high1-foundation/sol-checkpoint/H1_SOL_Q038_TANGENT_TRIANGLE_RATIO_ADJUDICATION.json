@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_DIRECT_ADJUDICATION_WORKING",
+  "queueIndex": 38,
+  "questionUid": "qid_v1_c0ed374f651cfb56856bce63178444ab31976984a3b1a7a488834c6985f6bf8f",
+  "sourceIdentity": "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#20",
+  "sourceFingerprint": "ec8bb07fb47d505c1fe6208812e0237b9909c0bcd9e2f9e8d2d22e16f32c300e",
+  "fieldDecisions": {
+    "l3": { "value": "PT_H1_QUADRATIC_DISCRIMINANT", "reason": "Tangency to y=-x²+6x is converted to a quadratic with a double root (or equivalently tangent parameter c); this is the primary quadratic relation. The triangle-area ratio is a necessary additional concept." },
+    "crossConcepts": { "value": ["CC_TRIANGLE_AREA"], "reason": "The 9:1 area condition determines the permitted contact positions after the tangent relation is established; removing it leaves infinitely many tangent slopes. Tangency/discriminant is already in primary L3 and is not duplicated as a cross-concept." },
+    "integrationPattern": { "value": "INTERDEPENDENT", "reason": "The contact coordinate simultaneously fixes tangent slope and intercept, while the triangle-area ratio constrains that same coordinate; the two relations jointly select the four slopes." },
+    "sourceIssue": { "value": "SOLUTION_REASON_GAP", "reason": "The archived solution cites AO/AD=3 or 3/4 without deriving the alternatives. The valid reciprocal ratio is 1/3, not 3/4; it also omits the calculation of the four listed slopes. The answer 12 is independently recoverable from the source." }
+  },
+  "verification": {
+    "parameterization": "At contact x=c, a=6-2c, b=c², A has x-coordinate -c²/(6-2c).",
+    "areaRatio": "Triangles ABO and ACD are similar right triangles, so |AO/AD|=3 or 1/3.",
+    "contactCoordinates": [9, 4.5, -3, 1.5],
+    "slopes": [-12, -3, 12, 3],
+    "target": 12
+  },
+  "reviewStatus": "HOLD",
+  "solutionCorrectionProtocolRequired": true,
+  "jsEdit": false,
+  "evidenceFiles": [
+    "H1_STAGEA_LUNA_A_BATCH02_021_040.jsonl",
+    "H1_STAGEA_LUNA_B_BATCH02_021_040.jsonl",
+    "H1_STAGEA_LUNA6_C_FIRST50_REMAINING6.jsonl"
+  ]
+}

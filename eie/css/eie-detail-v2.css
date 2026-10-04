@@ -1,0 +1,368 @@
+/* ======================================================================
+   eie-detail-v2.css
+   - eie.css를 소스 순서 그대로 분할한 조각이다 (cascade 동일, 디자인 변경 없음).
+   - index.html에서 반드시 소스 순서대로 로드한다.
+   ====================================================================== */
+/* ======================================================================
+   AP MATH header/back-button exact parity hard lock
+   기준: apmath/index.html의 .mobile-header-left / .mobile-header-menu /
+   .app-back-btn / .app-back-btn__icon / .app-header-logo 값 그대로 이식.
+   ====================================================================== */
+:root {
+    --primary-rgb: 143, 29, 45;
+}
+
+.eie-header {
+    grid-template-columns: 96px minmax(0, 1fr) 96px !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 16px !important;
+}
+
+.eie-header-left {
+    justify-self: start !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+}
+
+.eie-hamburger-btn {
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+}
+
+.eie-hamburger-btn:active {
+    background: var(--bg) !important;
+    transform: scale(0.96) !important;
+}
+
+.app-back-btn {
+    width: 32px !important;
+    height: 32px !important;
+    border: 1px solid var(--border) !important;
+    background: var(--surface) !important;
+    border-radius: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--text) !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.08s ease !important;
+}
+
+.app-back-btn:hover {
+    background: var(--surface-2) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
+
+.app-back-btn:active {
+    transform: scale(0.96) !important;
+}
+
+.app-back-btn:focus-visible {
+    outline: 2px solid rgba(var(--primary-rgb), 0.35) !important;
+    outline-offset: 2px !important;
+}
+
+.app-back-btn:disabled {
+    opacity: 0.62 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+}
+
+.app-back-btn__icon {
+    display: block !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.eie-header-brand {
+    justify-self: center !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    height: 40px !important;
+}
+
+.app-header-logo,
+.eie-header-logo {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    display: block !important;
+    object-fit: cover !important;
+    background: var(--primary) !important;
+}
+
+.eie-header-user {
+    justify-self: end !important;
+    width: 96px !important;
+    max-width: 96px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    text-align: right !important;
+    letter-spacing: 0 !important;
+    line-height: 40px !important;
+}
+
+.eie-desktop-topbar {
+    left: 56px !important;
+    height: 58px !important;
+    padding: 0 24px !important;
+    gap: 10px !important;
+}
+
+body.eie-drawer-expanded .eie-desktop-topbar {
+    left: 260px !important;
+}
+
+.eie-topbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    user-select: none !important;
+}
+
+
+
+/* ======================================================================
+   EIE header wordmark hard fix
+   - previous 32x32 icon lock breaks wide EiE wordmark.
+   - keep AP back button / header position, but size the logo as a wordmark.
+   ====================================================================== */
+#eie-mobile-header .eie-header-brand,
+#eie-desktop-topbar .eie-topbar-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: 40px !important;
+    overflow: hidden !important;
+}
+
+#eie-mobile-header .eie-header-brand .app-header-logo,
+#eie-mobile-header .eie-header-brand .eie-header-logo,
+#eie-desktop-topbar .eie-topbar-brand .app-header-logo,
+#eie-desktop-topbar .eie-topbar-brand .eie-header-logo {
+    display: block !important;
+    width: auto !important;
+    height: 24px !important;
+    max-width: 120px !important;
+    min-width: 0 !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+@media (min-width: 901px) {
+    #eie-desktop-topbar .eie-topbar-brand .app-header-logo,
+    #eie-desktop-topbar .eie-topbar-brand .eie-header-logo {
+        height: 26px !important;
+        max-width: 132px !important;
+    }
+}
+
+/* ── EIE v2 시간표 정리 패널 ───────────────────────────────── */
+.eie-v2-repair-loading {
+    padding: 32px;
+    text-align: center;
+    color: var(--eie-muted);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.eie-v2-repair-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 4px 0 24px;
+}
+
+.eie-v2-repair-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.eie-v2-repair-head h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.eie-v2-repair-head p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--eie-muted);
+    font-weight: 800;
+}
+
+.eie-v2-info {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(16, 185, 129, 0.10);
+    color: #065f46;
+    font-size: 13px;
+    font-weight: 800;
+    border: 1px solid rgba(16, 185, 129, 0.22);
+}
+
+.eie-v2-repair-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.eie-v2-repair-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--eie-border);
+    border-radius: 14px;
+    background: var(--eie-surface);
+}
+
+.eie-v2-repair-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 780px;
+    font-size: 12px;
+}
+
+.eie-v2-repair-table thead tr {
+    background: var(--eie-surface-2);
+    border-bottom: 1px solid var(--eie-border);
+}
+
+.eie-v2-repair-table th {
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--eie-muted);
+    white-space: nowrap;
+}
+
+.eie-v2-repair-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.eie-v2-repair-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.eie-v2-repair-row.is-changed {
+    background: rgba(253, 224, 71, 0.07);
+}
+
+.eie-v2-repair-row.is-unmatched {
+    background: rgba(248, 113, 113, 0.06);
+}
+
+.eie-v2-repair-row.is-skip {
+    opacity: 0.45;
+}
+
+td.eie-v2-repair-day.is-diff {
+    background: rgba(253, 186, 32, 0.22);
+    border-radius: 6px;
+    font-weight: 900;
+    color: #92400e;
+}
+
+td.eie-v2-repair-matched.is-unmatched em {
+    color: var(--eie-muted);
+    font-style: italic;
+    font-size: 11px;
+}
+
+.eie-v2-repair-num {
+    color: var(--eie-muted);
+    font-size: 11px;
+    min-width: 24px;
+}
+
+.eie-v2-repair-period {
+    font-weight: 900;
+    min-width: 42px;
+}
+
+.eie-v2-repair-mat {
+    font-weight: 900;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eie-v2-repair-teacher {
+    min-width: 52px;
+    font-weight: 800;
+    color: #2563eb;
+}
+
+.eie-v2-repair-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 900;
+    font-style: normal;
+    white-space: nowrap;
+}
+
+.eie-v2-repair-badge.is-same {
+    background: rgba(16, 185, 129, 0.10);
+    color: #065f46;
+}
+
+.eie-v2-repair-badge.is-needs_change {
+    background: rgba(251, 191, 36, 0.18);
+    color: #92400e;
+}
+
+.eie-v2-repair-badge.is-unmatched {
+    background: rgba(248, 113, 113, 0.14);
+    color: #b91c1c;
+}
+
+.eie-v2-repair-badge.is-skip {
+    background: rgba(15, 23, 42, 0.05);
+    color: var(--eie-muted);
+}

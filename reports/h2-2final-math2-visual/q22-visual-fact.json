@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "25_매산여고_2학기_기말_고2_수학II|22",
+  "visualType": "cartesian",
+  "semantic": {
+    "xMin": -1,
+    "xMax": 4,
+    "yMin": -1,
+    "yMax": 5,
+    "branches": [
+      {
+        "id": "N",
+        "formula": "-8*x",
+        "points": [
+          { "id": "negative_left", "x": -0.5, "y": 4 },
+          { "id": "negative_zero", "x": 0, "y": 0 }
+        ],
+        "leftClosed": false,
+        "rightClosed": false
+      },
+      {
+        "id": "F",
+        "formula": "x*(x-3)**2",
+        "points": [
+          { "id": "cubic_zero", "x": 0, "y": 0 },
+          { "id": "cubic_max", "x": 1, "y": 4 },
+          { "id": "cubic_zero_three", "x": 3, "y": 0 },
+          { "id": "cubic_right", "x": 4, "y": 4 }
+        ],
+        "leftClosed": true,
+        "rightClosed": true
+      }
+    ],
+    "keyPoints": [
+      { "id": "O", "x": 0, "y": 0 },
+      { "id": "M", "x": 1, "y": 4 },
+      { "id": "Z", "x": 3, "y": 0 }
+    ]
+  }
+}

@@ -1,0 +1,667 @@
+{
+  "schemaVersion": "h1-a2-l4-cluster-definitions-v1",
+  "scope": "Independent A2 review of 67 polynomial division/remainder sources; queue 26 uses only current post-D input.",
+  "workerId": "/root/h1_poly_a2_blind_replacement",
+  "activeVocabularyReview": {
+    "source": "q26-post-d/authority/H1_ACTIVE_VOCAB_NO_UID.json",
+    "status": "ACTIVE_VOCAB_ONLY_NO_ITEM_ASSIGNMENTS",
+    "sha256": "720deed302d3bd1ef67c7d73ae2c908910dd9285273f33cab2299abda3f8a120",
+    "exactProblemTypeEquivalent": null,
+    "exactTemplateEquivalent": null,
+    "finding": "The ACTIVE vocabulary contains cross-domain near matches but no exact polynomial division/remainder template. Direct substitution, proposition parameter, limit reconstruction, derivative structural determination, and binomial-term templates omit or change the defining remainder/factor-division decision rule."
+  },
+  "clusterCount": 15,
+  "clusterDefinitions": [
+    {
+      "clusterId": "L4_COMPOSITE_REMAINDER_EXTENSION",
+      "labelKo": "기존 나머지에서 복합 나머지 확장",
+      "boundedCandidateSkeleton": "Write the new remainder as the known lower-divisor remainder plus a multiple of that divisor within the degree bound; evaluate at an added factor root to fix the remaining coefficient.",
+      "representativeQueueIndex": 90,
+      "representativeUid": "qid_v1_34e872d2bdfe91208ac5b16baad9c70735778a90c50aa12996a25f001e5f562a",
+      "members": [
+        {
+          "queueIndex": 90,
+          "questionUid": "qid_v1_34e872d2bdfe91208ac5b16baad9c70735778a90c50aa12996a25f001e5f562a",
+          "sourceIdentity": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js#19",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 112,
+          "questionUid": "qid_v1_271ae4da63f6aad5eb5907016c57fb333b3dec9e3d144b9fde570e98308f36b9",
+          "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#11",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리"
+      ],
+      "mergeRationale": "Both extend a known remainder modulo a repeated linear factor by one extra distinct factor, then use its root to determine the one remaining coefficient.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent; supplied templates contain no polynomial remainder-extension skeleton."
+    },
+    {
+      "clusterId": "L4_COUPLED_DIVISION_IDENTITIES",
+      "labelKo": "연결된 나눗셈 조건으로 다항식 결정",
+      "boundedCandidateSkeleton": "Write each relevant division identity; enforce quotient/remainder degree bounds and shared quotient, remainder, or value constraints; solve the coupled polynomial coefficients and evaluate.",
+      "representativeQueueIndex": 99,
+      "representativeUid": "qid_v1_66a1d4e036dd75c532c1b069af8ed373671d45f2f1d47afe13bb27986d91a742",
+      "members": [
+        {
+          "queueIndex": 99,
+          "questionUid": "qid_v1_66a1d4e036dd75c532c1b069af8ed373671d45f2f1d47afe13bb27986d91a742",
+          "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#18",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 178,
+          "questionUid": "qid_v1_ba5fbbf731ccfed5afac3b14c1c94e0b1519fcd3da686e56ae2d49f281a49ed8",
+          "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#20",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 184,
+          "questionUid": "qid_v1_68ee906eac5c0637dd3f2ee7e3d32e56aa065e8c12cefb3cefff32ea38e58692",
+          "sourceIdentity": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js#13",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 217,
+          "questionUid": "qid_v1_d02f0d82b61db9a7e274c66991b1b3bd5a79cdbe417ff7903c57f767e63e6bec",
+          "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#23",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 220,
+          "questionUid": "qid_v1_c25d8543d75fbfb740775d72cf01978aa4043363628978b161cda1fa39bf4b50",
+          "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#11",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "다항식의 나눗셈"
+      ],
+      "mergeRationale": "Each combines linked quotient/remainder statements, equality constraints, or degree bounds to determine polynomial pieces; the arrangement of identities is a variation.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE template models coupled polynomial division identities."
+    },
+    {
+      "clusterId": "L4_DIVISION_IDENTITY_EVALUATION",
+      "labelKo": "나눗셈 항등식에서 특정값 추출",
+      "boundedCandidateSkeleton": "Write P=DQ+R; evaluate at the divisor root to get R or at another input to isolate a quotient value; combine values from one or more division identities.",
+      "representativeQueueIndex": 206,
+      "representativeUid": "qid_v1_87ae7a593e73713a5509b52b7443c2fa66f5f337b57bce7beab4190dad397070",
+      "members": [
+        {
+          "queueIndex": 119,
+          "questionUid": "qid_v1_0313f749236d56690ece056431b5bda52da6e9b5189d75c4cd1fa418537be57c",
+          "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#22",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 124,
+          "questionUid": "qid_v1_6e3a75480bf651762c0c1681600ddbf4bc5f557ac79533b908a28518346f860c",
+          "sourceIdentity": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js#9",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 136,
+          "questionUid": "qid_v1_9d997252d6b40c06ba5b0e7899faa30f2ed8f692b8eb61ec7646ab2306af6bd6",
+          "sourceIdentity": "original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js#5",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 144,
+          "questionUid": "qid_v1_33d4d9d4621635c22edf07fc0e35eb626c7beb71ef9b1425ce61e77cf708f7a7",
+          "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#15",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 174,
+          "questionUid": "qid_v1_d67d0b2fdf7cdbef33980cb30ebab8badee05068c3718395121d55bf091271b5",
+          "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#5",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 206,
+          "questionUid": "qid_v1_87ae7a593e73713a5509b52b7443c2fa66f5f337b57bce7beab4190dad397070",
+          "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#5",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리",
+        "다항식의 나눗셈"
+      ],
+      "mergeRationale": "Each evaluates one or more stated division identities at selected inputs to extract dividend, quotient, or remainder values; linked data and cancellation are variations.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. TPL_FUNCTION_VALUE_DIRECT does not encode division identities or isolate quotient/remainder components."
+    },
+    {
+      "clusterId": "L4_FACTOR_CANDIDATE_TEST",
+      "labelKo": "후보 인수의 근 대입 판정",
+      "boundedCandidateSkeleton": "Translate each candidate linear factor to its root; evaluate the polynomial at that root; accept or reject the factor (or common factor) by zero/nonzero.",
+      "representativeQueueIndex": 173,
+      "representativeUid": "qid_v1_31a805d838f38920c96842f547430a139aae9dc5effec45942b46ceba5cd0f28",
+      "members": [
+        {
+          "queueIndex": 30,
+          "questionUid": "qid_v1_fded5d00e48101af4eaba9d6550e186067e3e55dd449bda64bc8a5ee1549bccf",
+          "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#7",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 173,
+          "questionUid": "qid_v1_31a805d838f38920c96842f547430a139aae9dc5effec45942b46ceba5cd0f28",
+          "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#4",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "인수정리"
+      ],
+      "mergeRationale": "Both test candidate linear factors by evaluating at their roots; common-factor versus nonfactor output is a variation.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. Active divisibility templates concern number-set inclusion or proof by contraposition, not polynomial factor tests."
+    },
+    {
+      "clusterId": "L4_HIGH_POWER_DIVISOR_REDUCTION",
+      "labelKo": "나누는 식의 거듭제곱 관계로 고차항 축약",
+      "boundedCandidateSkeleton": "Use a factor or divisor identity to derive a power relation modulo the divisor; reduce high powers or the quotient form to a low-degree expression; evaluate the requested value.",
+      "representativeQueueIndex": 139,
+      "representativeUid": "qid_v1_790ecf3587e8785d535f18d61f08f8ce70190525d5603e252d750d2e1cd486da",
+      "members": [
+        {
+          "queueIndex": 23,
+          "questionUid": "qid_v1_1abb9fbb0dc9bb9dcd0e3fa6b9a915d7a9776766b24e9e7ba3f4d1213521010f",
+          "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#15",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 139,
+          "questionUid": "qid_v1_790ecf3587e8785d535f18d61f08f8ce70190525d5603e252d750d2e1cd486da",
+          "sourceIdentity": "original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js#18",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "다항식의 나눗셈"
+      ],
+      "mergeRationale": "Both exploit a divisor identity to reduce or count high-power terms; exponent and requested quotient/remainder value are variations.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent; the polynomial-limit reconstruction template has a different limit-driven structure."
+    },
+    {
+      "clusterId": "L4_INTEGER_REMAINDER_BY_SHIFTED_BASE",
+      "labelKo": "나머지와 같은 정수 잔여류로 치환",
+      "boundedCandidateSkeleton": "Express the integer base as a variable congruent to a simple root determined by the modulus; evaluate there; verify the residue range.",
+      "representativeQueueIndex": 176,
+      "representativeUid": "qid_v1_b4a3a0484bd3404e58b33d92ca4669d5c1f3f5aac8029f0a3ab617ce03f6502b",
+      "members": [
+        {
+          "queueIndex": 176,
+          "questionUid": "qid_v1_b4a3a0484bd3404e58b33d92ca4669d5c1f3f5aac8029f0a3ab617ce03f6502b",
+          "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#8",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 207,
+          "questionUid": "qid_v1_01e5498b4b31a7119675c3e924804a291b8bf1fe410af46a060d19de74ab9884",
+          "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#6",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리"
+      ],
+      "mergeRationale": "Both reduce a numerical remainder question to evaluating the corresponding polynomial at the base residue modulo the integer divisor.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. Number-divisibility templates concern set relations or proof, not evaluation at a polynomial residue."
+    },
+    {
+      "clusterId": "L4_LINEAR_REMAINDER_EVALUATION",
+      "labelKo": "일차식 나머지 직접 평가",
+      "boundedCandidateSkeleton": "For x−a, evaluate P(a) to obtain the constant remainder.",
+      "representativeQueueIndex": 58,
+      "representativeUid": "qid_v1_1d466fbb2e06fef8d1ba28bd75e5650b5bf2b96047f6706021f24d7d5a8c8432",
+      "members": [
+        {
+          "queueIndex": 58,
+          "questionUid": "qid_v1_1d466fbb2e06fef8d1ba28bd75e5650b5bf2b96047f6706021f24d7d5a8c8432",
+          "sourceIdentity": "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#4",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 120,
+          "questionUid": "qid_v1_c06f8893e7a1d8e509856c7584de23e57a9119aebf5c76ae7e6ab7fe1dea1523",
+          "sourceIdentity": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js#2",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 142,
+          "questionUid": "qid_v1_5eb428c1a8f5bd0cd94f01f35639eaa3e48d9021b9657815b8ebacbb25e66eab",
+          "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#2",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 171,
+          "questionUid": "qid_v1_072edd9edda5ee9b386ef5f8e1103bd7f00e69100ae490d3c207bd6ef5bcc86e",
+          "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#2",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 212,
+          "questionUid": "qid_v1_1effa253a07fd6ca3711ac9d6f4cf42513dcbc1e8939482a8c8b42fe4ce9184e",
+          "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#3",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리"
+      ],
+      "mergeRationale": "All items ask for a constant remainder after one linear division; one evaluation at the divisor root decides it. Root and coefficient changes do not create new keys.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. TPL_FUNCTION_VALUE_DIRECT is generic function-value substitution under a different parent and omits the divisor-root-to-remainder relation."
+    },
+    {
+      "clusterId": "L4_LINEAR_REMAINDER_PARAMETER",
+      "labelKo": "일차 나머지 조건으로 매개변수 결정",
+      "boundedCandidateSkeleton": "Translate a linear-divisor remainder to P(a)=r; combine with the polynomial form or factor constraints to solve a coefficient, then evaluate any requested output.",
+      "representativeQueueIndex": 164,
+      "representativeUid": "qid_v1_e576dd20cc0c97063a154535be735c1d05248e8a3d44efaa4822e38ea579343e",
+      "members": [
+        {
+          "queueIndex": 5,
+          "questionUid": "qid_v1_3141603e392470b3bde39f91dce6b68483c93f2959b588992dff4090da1a89df",
+          "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#8",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 150,
+          "questionUid": "qid_v1_c5452cc9bfd7df4549f8e92d83f6fe6db1e4d6dd6aaa48471d22c27e198521a4",
+          "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#6",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 164,
+          "questionUid": "qid_v1_e576dd20cc0c97063a154535be735c1d05248e8a3d44efaa4822e38ea579343e",
+          "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#4",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리"
+      ],
+      "mergeRationale": "Each uses a linear-divisor remainder as a point-value constraint that fixes a polynomial parameter; transformations and later target evaluation are variations.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. TPL_PROPOSITION_DIRECT_SUBSTITUTION_PARAMETER is generic proposition parameterization and lacks polynomial remainder conditions."
+    },
+    {
+      "clusterId": "L4_LINEAR_ROOT_CONDITION_SYSTEM",
+      "labelKo": "일차근 조건으로 계수·식 결정",
+      "boundedCandidateSkeleton": "Convert each linear-factor or remainder condition to P(r)=rValue; solve the coefficient equations; evaluate or factor only as needed for the requested expression.",
+      "representativeQueueIndex": 8,
+      "representativeUid": "qid_v1_a99aba8b48115cdfbfaddf2818b6c0c815e3416f294f1f1b1671790444c09b3d",
+      "members": [
+        {
+          "queueIndex": 8,
+          "questionUid": "qid_v1_a99aba8b48115cdfbfaddf2818b6c0c815e3416f294f1f1b1671790444c09b3d",
+          "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#5",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 54,
+          "questionUid": "qid_v1_73e54cbaf648061f24a78d07128394705b9b0e4b552c5e5bab53a21c6692b6a7",
+          "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#21",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 82,
+          "questionUid": "qid_v1_7cfb87bf44872d6dd95af3dcaf717130893dc1dcab789665e4863a388166bf1f",
+          "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#10",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 102,
+          "questionUid": "qid_v1_d0a41c96083b56e59d02c8d3fcda0231fb22d377ed236def500e06f9e19434d2",
+          "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#6",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 123,
+          "questionUid": "qid_v1_e1263cbdaf7b934c031dee1fd22f9ef84de06f5ff61de486d7f625842a78bd5c",
+          "sourceIdentity": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js#8",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 179,
+          "questionUid": "qid_v1_ae2ede3d75c4c0d9ac44e3636d9889482ef62885be4fdc243159ccfa0ac36c89",
+          "sourceIdentity": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js#1",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 214,
+          "questionUid": "qid_v1_4d3069e90ed30099bc55ec695cfb652a95c2bf8706896869540e3008ed1cecef",
+          "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#9",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 231,
+          "questionUid": "qid_v1_b5dae96285cc79fc128c3a40fcc9f2287a8fe24d6e541bfffa2581ea8d67b807",
+          "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#19",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리",
+        "다항식의 나눗셈",
+        "인수정리"
+      ],
+      "mergeRationale": "All reduce factor/remainder conditions to point-value equations and use them to determine coefficients or a requested combination. Zero values, nonzero remainders, and equation count are variations.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. TPL_STRUCTURAL_FUNCTION_DETERMINE belongs to derivative-based function determination; TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION requires limit conditions."
+    },
+    {
+      "clusterId": "L4_POLYNOMIAL_DIVISION_ALGORITHM",
+      "labelKo": "다항식 나눗셈의 몫·나머지 읽기",
+      "boundedCandidateSkeleton": "Perform or interpret the division recurrence, cancel leading terms until the residual degree is below the divisor, and read quotient and remainder; recover or rescale synthetic-table rows as needed.",
+      "representativeQueueIndex": 125,
+      "representativeUid": "qid_v1_7a5290c20ee0335387fb8fdf1d74918bdfdcaf7ba822c0f364eb6bbc9cd7bc13",
+      "members": [
+        {
+          "queueIndex": 87,
+          "questionUid": "qid_v1_8af06999d1a0b438d90a0643d1c241e20c11317b78164ec7e057c5e1720a6960",
+          "sourceIdentity": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js#5",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 125,
+          "questionUid": "qid_v1_7a5290c20ee0335387fb8fdf1d74918bdfdcaf7ba822c0f364eb6bbc9cd7bc13",
+          "sourceIdentity": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js#19",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 158,
+          "questionUid": "qid_v1_6967fbd41662061d6afa2dd25d4f643ba0f3bfa3c8dc4e353953042ae76951a1",
+          "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#5",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 172,
+          "questionUid": "qid_v1_953f9224b8b15caff8b329371dbdde3652c886ab661852479d5c43901b8bccd1",
+          "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#3",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 181,
+          "questionUid": "qid_v1_774a31d6d99dda66065515149d90353886d6569d0303c571dd5c8cf6630b583c",
+          "sourceIdentity": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js#4",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 201,
+          "questionUid": "qid_v1_241bfb621e52b0e6edd26eb8d26c0aade5c3f24314f563f84e0b4de2982bfeae",
+          "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#18",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 225,
+          "questionUid": "qid_v1_deee331b9d76ebf98d32714f23663930fb992ba1034ccfc205891e4907aa6ab2",
+          "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#2",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 232,
+          "questionUid": "qid_v1_632f94a1ab543d9c293a5b1593bc4ea8220d19cf5d09560c7a20835960b44aa9",
+          "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#20",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "다항식의 나눗셈",
+        "인수정리"
+      ],
+      "mergeRationale": "All use long division or the equivalent synthetic-division recurrence to obtain, inspect, or reconstruct quotient/remainder data. Display format, nonmonic scaling, and later quotient evaluation are variations.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE polynomial division algorithm template."
+    },
+    {
+      "clusterId": "L4_PRODUCT_CONDITION_BRANCH",
+      "labelKo": "곱 조건의 영점·가능값 분기",
+      "boundedCandidateSkeleton": "Evaluate a product condition at the divisor root; convert it to zero-product or squared-value branches; use remaining polynomial constraints or the objective to select the result.",
+      "representativeQueueIndex": 9,
+      "representativeUid": "qid_v1_bd12593a1ceeac51d514cc6532afd8a18a792e9758eb5240df252059d76ec605",
+      "members": [
+        {
+          "queueIndex": 9,
+          "questionUid": "qid_v1_bd12593a1ceeac51d514cc6532afd8a18a792e9758eb5240df252059d76ec605",
+          "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#19",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 221,
+          "questionUid": "qid_v1_605f150cb827a9f1bc7e3ea2ee5b4f23ca360fd327f83740bf4a504f092d6687",
+          "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#12",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리",
+        "인수정리"
+      ],
+      "mergeRationale": "Both evaluate a product at a linear-divisor root, derive multiple factor-value branches, and use remaining conditions or the objective to select among them.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent; generic proposition case-proof templates do not model polynomial product remainders or factor-root branches."
+    },
+    {
+      "clusterId": "L4_REMAINDER_AT_SHARED_ROOT",
+      "labelKo": "공통 근에서 나머지값 전달",
+      "boundedCandidateSkeleton": "At a root shared by the target divisor and a supplied divisor, replace the target remainder value by the dividend value and transfer the supplied remainder there.",
+      "representativeQueueIndex": 216,
+      "representativeUid": "qid_v1_e7b2d032e8353319c6ceb9e7c197ac5139a32f8904e198d5df81b90102597271",
+      "members": [
+        {
+          "queueIndex": 96,
+          "questionUid": "qid_v1_58e387824cd804671c59f8848d617c9b0483e54010a7d0e96457dcfff4457a35",
+          "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#8",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 216,
+          "questionUid": "qid_v1_e7b2d032e8353319c6ceb9e7c197ac5139a32f8904e198d5df81b90102597271",
+          "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#16",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리"
+      ],
+      "mergeRationale": "Both avoid constructing the entire target remainder because the requested evaluation lies at a divisor root shared with a supplied remainder condition.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. Direct function evaluation does not capture transfer from a shared divisor root."
+    },
+    {
+      "clusterId": "L4_REMAINDER_INTERPOLATION",
+      "labelKo": "나머지 다항식을 근값으로 복원",
+      "boundedCandidateSkeleton": "Represent the remainder below divisor degree; transfer known dividend values to divisor roots; solve the bounded-degree remainder from those values and evaluate or use it.",
+      "representativeQueueIndex": 18,
+      "representativeUid": "qid_v1_511c03ae0c962459b1699a01f931f7b775e651a67048aa016302f56f95e788dd",
+      "members": [
+        {
+          "queueIndex": 6,
+          "questionUid": "qid_v1_f6fc89187a9f7f32fbf752f6a1306ff1dc9333514e693bd5d93a2bfc5b140f7e",
+          "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#20",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 12,
+          "questionUid": "qid_v1_b277f6aa10deedbc893e2aace264873c4ea02a54dca62fdc736b9d9c8a00d5ac",
+          "sourceIdentity": "original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js#17",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 18,
+          "questionUid": "qid_v1_511c03ae0c962459b1699a01f931f7b775e651a67048aa016302f56f95e788dd",
+          "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#16",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 19,
+          "questionUid": "qid_v1_f66a6b26e817c318d66980bd46b8a03d3aa4fd303ec5bc9f2b3946a98eed24d9",
+          "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#7",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 22,
+          "questionUid": "qid_v1_c20730bfe4d0d96f6eef0c44275c2fc7b54eb98d3777816e783a75f0bf8f55bc",
+          "sourceIdentity": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js#20",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 130,
+          "questionUid": "qid_v1_b6d649209ea7f09165ac3bcf9b58581fa3119802a18873e12ed6c8535a35c3a4",
+          "sourceIdentity": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js#8",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 154,
+          "questionUid": "qid_v1_f032900137475d0ed240e089e045895c1a25dc0defba3a849d3c30669c65e159",
+          "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#12",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 200,
+          "questionUid": "qid_v1_042acac1a09ac5e5dde1c9fb154f909a5473f2cc63db516d9152b5e287a97431",
+          "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#12",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 209,
+          "questionUid": "qid_v1_41aef2bd32e0e368271815b09a36a033f8ed9dc22f6f048b1602cb02e187ec06",
+          "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#19",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 233,
+          "questionUid": "qid_v1_985a68184115ce51cd885be09d18add6678a75ba52498cb09c37df3493984374",
+          "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#23",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "나머지정리",
+        "다항식의 나눗셈"
+      ],
+      "mergeRationale": "Each recovers a bounded-degree remainder from values at distinct divisor roots. Source values may come from a lower remainder, linked division, an identity, equal-remainder data, or a reconstructed dividend.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. Generic function-value substitution lacks remainder degree/interpolation logic; limit reconstruction uses different conditions."
+    },
+    {
+      "clusterId": "L4_REPEATED_LINEAR_FACTOR",
+      "labelKo": "같은 근의 반복 인수 조건",
+      "boundedCandidateSkeleton": "Apply the factor theorem at a root, divide out one linear factor, impose the same root on the quotient for the next multiplicity, then solve remaining coefficients and evaluate.",
+      "representativeQueueIndex": 27,
+      "representativeUid": "qid_v1_cd9a8adba4c7a494a174d29fbe93bf687c2e91b1329fbedade9bc00a1e2d2a2d",
+      "members": [
+        {
+          "queueIndex": 20,
+          "questionUid": "qid_v1_96050be48db85ce14c8c836eff231cf2b9fe0189219ac2a72ab2b511f0a311b4",
+          "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#7",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 27,
+          "questionUid": "qid_v1_cd9a8adba4c7a494a174d29fbe93bf687c2e91b1329fbedade9bc00a1e2d2a2d",
+          "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#10",
+          "reviewStatus": "PASS"
+        },
+        {
+          "queueIndex": 191,
+          "questionUid": "qid_v1_554fdee280a088c5f3158c03d944b2dcfa1b644bcecd101059dc9013e75da4a6",
+          "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#8",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "인수정리"
+      ],
+      "mergeRationale": "Each imposes square divisibility by a linear factor and uses repeated root testing or its equivalent quotient form; coefficient/exponent changes are variations.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. TPL_STRUCTURAL_FUNCTION_DETERMINE includes multiplicity only in a derivative-family structure, not this polynomial division procedure."
+    },
+    {
+      "clusterId": "L4_SHIFTED_BASIS_COEFFICIENT_EXTRACTION",
+      "labelKo": "이동한 변수 거듭제곱의 계수 추출",
+      "boundedCandidateSkeleton": "Set t=x−r and express the identity in descending powers of t by expansion or successive synthetic division; read the shifted-basis coefficients and combine them as requested.",
+      "representativeQueueIndex": 117,
+      "representativeUid": "qid_v1_c58815c406197ef10cb0cbf62e9808d120db8d83d0a37e871b826af5bb5beae3",
+      "members": [
+        {
+          "queueIndex": 98,
+          "questionUid": "qid_v1_65454c398b883d71b6dcf6b7bd8f15ea1bbbe935649f44d22a1da5ff36cce773",
+          "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#14",
+          "reviewStatus": "HOLD"
+        },
+        {
+          "queueIndex": 117,
+          "questionUid": "qid_v1_c58815c406197ef10cb0cbf62e9808d120db8d83d0a37e871b826af5bb5beae3",
+          "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#17",
+          "reviewStatus": "PASS"
+        }
+      ],
+      "applicableL3Parents": [
+        "항등식"
+      ],
+      "mergeRationale": "Both determine coefficients after expressing a cubic in powers of x−r; shift values and requested coefficient combinations are incidental. Queue 98 remains HOLD for a source wording mismatch.",
+      "activeTemplateEquivalent": null,
+      "activeTemplateCheckReason": "No exact ACTIVE equivalent. TPL_BINOMIAL_TERM_COEFFICIENT targets binomial-theorem terms, not shifted-basis coefficients."
+    }
+  ],
+  "noSeparate": [
+    {
+      "queueIndex": 26,
+      "questionUid": "qid_v1_c55523006c9158bf5a46678b43cd1b3fcab35b243c75b74c8dc70f6871ad4087",
+      "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#7",
+      "reviewStatus": "HOLD",
+      "reason": "Current source is HOLD because monic factors are not required nonconstant; different literal factor pairs give different requested values, so no approved L4 assignment is made until the stem is repaired."
+    },
+    {
+      "queueIndex": 31,
+      "questionUid": "qid_v1_2c107f88430fa3af5dcb5f20770e2abbe1f86f721dbddacfe0d90982a1caf970",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#24",
+      "reviewStatus": "HOLD",
+      "reason": "Current source is HOLD because g and h are not uniquely specified by the printed factor and difference conditions; do not promote a skeleton that assumes intended residual factors."
+    },
+    {
+      "queueIndex": 72,
+      "questionUid": "qid_v1_46dd9a244af5eceab8322b4efd90f6564ae0e5d1a2d89fb0f5aa5579744974cd",
+      "sourceIdentity": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17",
+      "reviewStatus": "PASS",
+      "reason": "The remainder polynomial is already given and the task only reads and adds two listed terms; this is direct extraction with no distinct repeatable remainder-solving skeleton to promote."
+    },
+    {
+      "queueIndex": 78,
+      "questionUid": "qid_v1_c7608dfdab860c14a63532405d818283fbebe5329492321f5125a7fd29be505d",
+      "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#5",
+      "reviewStatus": "PASS",
+      "reason": "The item transforms one specific division identity to a new divisor and has no repeated counterpart in the 67 sources; avoid a one-off L4 candidate."
+    },
+    {
+      "queueIndex": 227,
+      "questionUid": "qid_v1_0e332b197acf3a0f72f50f234cda4a292bdaade96db304a5e8cc482a3d033ed9",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#6",
+      "reviewStatus": "PASS",
+      "reason": "The item solves two polynomial identities using a difference-of-squares relation before a simple remainder evaluation; no repeated matching skeleton appears in this source set."
+    }
+  ],
+  "coverage": {
+    "itemCount": 67,
+    "clusteredItemCount": 62,
+    "noSeparateCount": 5,
+    "queue26CurrentContentHash": "da83d7f969df1551ef9ae02a7989e676306911c1f5a648c0a81f2b0271202e1f",
+    "reviewHolds": [
+      "qid_v1_c55523006c9158bf5a46678b43cd1b3fcab35b243c75b74c8dc70f6871ad4087",
+      "qid_v1_2c107f88430fa3af5dcb5f20770e2abbe1f86f721dbddacfe0d90982a1caf970",
+      "qid_v1_65454c398b883d71b6dcf6b7bd8f15ea1bbbe935649f44d22a1da5ff36cce773"
+    ]
+  }
+}

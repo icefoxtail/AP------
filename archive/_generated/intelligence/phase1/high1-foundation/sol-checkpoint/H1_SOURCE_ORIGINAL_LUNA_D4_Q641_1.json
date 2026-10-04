@@ -1,0 +1,143 @@
+{
+  "schema": "H1_SOURCE_ORIGINAL_LUNA_D4_Q641_1.v1",
+  "worker": "D4 SOURCE REPAIR WORKER",
+  "queueIndex": 641,
+  "questionUid": "qid_v1_1ac42169f81c95ff16a14fe3fd34195b4f82a34a64c3aad16e7ef4981160ac0b",
+  "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#22",
+  "sourceExamMapping": {
+    "schoolHeader": "순천매산여자고등학교",
+    "year": 2026,
+    "datePrinted": "2026-04-29",
+    "grade": "고1",
+    "course": "공통수학1",
+    "exam": "1학기 1차 시험",
+    "sourcePage1Based": 5,
+    "printedQuestion": "주관식2 (서술형)",
+    "jsId": 22,
+    "jsArrayOrdinal1Based": 22,
+    "uidMappingVerified": true
+  },
+  "sourceOriginal": {
+    "directory": "D:\\2026년 기출\\1학기중간_\\고1\\매산여고",
+    "filesInExactDirectory": "Five original JPG scans; no separate official answer key or solution found",
+    "headerPage": {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/S28BW-826042915080_0001.jpg",
+      "sha256": "A92747C9EA1273E55F2215320D63FA83ACA388021D6851B621E0320782BD547B",
+      "originalPath": "D:\\2026년 기출\\1학기중간_\\고1\\매산여고\\S28BW-826042915080_0001.jpg"
+    },
+    "fullPage": {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/q641/S28BW-826042915080_0005.jpg",
+      "sha256": "BCC226452C954397EF2D5D7FD90460821B89CB506CE654E1F06E0C7469908B00",
+      "bytes": 1735744,
+      "originalPath": "D:\\2026년 기출\\1학기중간_\\고1\\매산여고\\S28BW-826042915080_0005.jpg"
+    },
+    "crop": {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/q641/q22-page5-crop.jpg",
+      "sha256": "1B97535C0DF2DDC1CB25DAA7D1CB1AC03506E2837ABA64935206D15EEB268E11",
+      "bytes": 1023653,
+      "bboxPx": [
+        0,
+        0,
+        2450,
+        4200
+      ],
+      "sourcePixelSize": [
+        4960,
+        7015
+      ]
+    },
+    "printedOmittedCondition": "(단, 점 P는 꼭짓점 A와 꼭짓점 B가 아니다.)",
+    "studentHandwritingNonAuthoritative": true
+  },
+  "image": {
+    "path": "archive/assets/images/26_매산여고_1학기_중간_고1_기출/q22.png",
+    "beforeAndAfterSha256": "13D5601AADE7BE9F26A9F6055E45EB5500BF677A0504AEBB48EABBFA1AF4C503",
+    "changed": false,
+    "sourceTopologyMatch": true,
+    "sourceLabelsMatch": true
+  },
+  "independentSolve": "Set A=(0,0), B=(6,0), C=(0,6), P=(t,0), 0<t<6. Then R=(0,t), Q=((t+6)/2,(6-t)/2). The quadrilateral area is [ABC]-[APR]-[BPQ]=18-t²/2-(6-t)²/4=(-3t²+12t+36)/4=12-3(t-2)²/4. Maximum 12 occurs at t=2, an interior admissible point.",
+  "verdict": "SOURCE_CONFIRMED_CORRECTION",
+  "correctionKinds": [
+    "SOURCE_EXACT_RESTORE of omitted printed endpoint exclusion",
+    "SOURCE_CONFIRMED_CORRECTION of answer and mathematical solution from exact original stem/diagram; no official key available"
+  ],
+  "beforeQ22": {
+    "content": "[주관식 2 (서술형)]\n아래의 그림과 같이 $\\angle A=90^\\circ$이고 $\\overline{AB}=6$인 직각이등변삼각형 $ABC$가 있다. $\\overline{AB}$ 위의 한 점 $P$에서 $\\overline{BC}$에 내린 수선의 발을 $Q$라 하고, 점 $P$를 지나고 $\\overline{BC}$와 평행한 직선이 $\\overline{AC}$와 만나는 점을 $R$이라 할 때, 사각형 $PQCR$의 넓이의 최댓값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
+    "answer": "9",
+    "solution": "[키포인트] 직각이등변삼각형을 좌표평면에 놓고, $P$의 위치를 변수로 두어 사각형의 넓이를 이차함수로 나타낸다.\n$A=(0,0), B=(6,0), C=(0,6)$으로 두고 $P=(t,0)$라 하자. 이제 $0\\le t\\le6$이다. $BC$의 방정식은 $x+y=6$이고, $P$에서 $BC$에 내린 수선의 발을 $Q$, $P$를 지나 $BC$와 평행한 직선과 $AC$의 교점을 $R$이라 하면 $R=(0,t)$이다.\n계산하면 $Q=((t+6)/2,(6-t)/2)$이고, 좌표를 이용한 넓이 계산으로 $[PQCR]=(36-t^2)/4$를 얻는다.\n$0\\le t\\le6$에서 이 함수는 $t=0$일 때 최댓값을 가지므로 $[PQCR]_{\\max}=36/4=9$이다. 따라서 정답은 9이다.",
+    "payloadSha256": "276B66494F5B3CECF95CDF5CCE4EFB8BD9E4FAECFD382C14F2655C83A4F69015",
+    "fieldSha256": {
+      "content": "294A94363ABC558C0D3661E4B27084320EC69DCCE4F0E6BB5A42862F7A9C0CE5",
+      "answer": "986B79D4B69DFFB1D19836F47B27073D95BF55201B3385ACEB7E0687A21D8667",
+      "solution": "AAC958269E8FAD2D0193E6F7831DC62F006ACACAB04F02E4CE53395C4A5C24A6"
+    }
+  },
+  "afterQ22": {
+    "content": "[주관식 2 (서술형)]\n아래의 그림과 같이 $\\angle A=90^\\circ$이고 $\\overline{AB}=6$인 직각이등변삼각형 $ABC$가 있다. $\\overline{AB}$ 위의 한 점 $P$에서 $\\overline{BC}$에 내린 수선의 발을 $Q$라 하고, 점 $P$를 지나고 $\\overline{BC}$와 평행한 직선이 $\\overline{AC}$와 만나는 점을 $R$이라 할 때, 사각형 $PQCR$의 넓이의 최댓값을 구하는 풀이 과정과 답을 자세히 서술하시오. (단, 점 $P$는 꼭짓점 $A$와 꼭짓점 $B$가 아니다.)",
+    "answer": "12",
+    "solution": "[키포인트] 삼각형 $ABC$에서 사각형 $PQCR$ 바깥의 두 직각삼각형 $APR$, $BPQ$의 넓이를 뺀다.\n\n$A=(0,0)$, $B=(6,0)$, $C=(0,6)$으로 두고 $P=(t,0)$라 하자. $P$는 두 꼭짓점이 아니므로 $0\\lt t\\lt6$이다. $BC$의 방정식은 $x+y=6$이고, $P$를 지나 $BC$와 평행한 직선이 $AC$와 만나는 점은 $R=(0,t)$이다. $P$에서 $BC$에 내린 수선의 발은 $Q=((t+6)/2,(6-t)/2)$이다.\n\n$[ABC]=18$, $[APR]=t^2/2$, $[BPQ]=(6-t)^2/4$이므로\n$[PQCR]=18-t^2/2-(6-t)^2/4=(-3t^2+12t+36)/4=12-3(t-2)^2/4$이다.\n$0\\lt t\\lt6$에서 $t=2$일 때 이 값이 최대이고, 그 최댓값은 $12$이다.",
+    "payloadSha256": "BDD8A934BD56FB868A718189A19C0D2544D5ACD007F803A999C8B04EF3EE1C76",
+    "fieldSha256": {
+      "content": "55FF4C2512F15BD06B7A924A397D6FB7B60AAE3F51501CCFFD729FECC1913317",
+      "answer": "F9CACF3CB91A12E03BC4546834F95A50A4C5FE02276AC260148EA9296C442D39",
+      "solution": "AF55AB6D0D08B4FDFAEB258AF7C84ABC32B510EE30250C4EF0D5052B1B377924"
+    }
+  },
+  "changedFields": [
+    "content",
+    "answer",
+    "solution"
+  ],
+  "unchangedFieldsExact": [
+    "id",
+    "level",
+    "category",
+    "originalCategory",
+    "standardCourse",
+    "standardUnitKey",
+    "standardUnit",
+    "standardUnitOrder",
+    "questionType",
+    "layoutTag",
+    "tags",
+    "wide",
+    "image",
+    "choices",
+    "subUnitKey",
+    "subUnit",
+    "subUnitConfidence",
+    "subUnitClassificationDepth"
+  ],
+  "scopeGate": {
+    "changedQuestionObjectsRelativeToHead": [
+      12,
+      17,
+      21,
+      22
+    ],
+    "priorD4QuestionIdsPreserved": [
+      12,
+      17,
+      21
+    ],
+    "priorD4LedgerSha256": "4A8D27A0030E23B18A9712F08EEC7A96C2E81C1D5012B781AE99FBD8591C4C6F",
+    "allOtherQuestionObjectsExactToHead": true
+  },
+  "sourceJs": {
+    "path": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+    "beforeQ641RawSha256": "217C9CB2ACE071F6D141C7B4BD80A36B6F9E9AE9CA037E1C3597B446837B4BEF",
+    "afterRawSha256": "F66714AB70AC33DEE3F0C190E4A64E813CF32528F42436AD43C7B21E862EE576"
+  },
+  "machineChecks": {
+    "nodeCheck": "PASS",
+    "targetedSchemaScan": "PASS; 23 sequential questions, 0 missing required fields",
+    "examLint": "PASS; one file, 23 questions, 0 fail, 0 warn",
+    "render": "NOT_RUN_BY_D4; CUA browser inventory returned no browser. Root must perform exam/solution/answer render QA before FINAL."
+  },
+  "rereviewRequired": [
+    "Fresh A semantic verdict on modified q22 JS",
+    "Fresh B semantic verdict on modified q22 JS"
+  ],
+  "solReviewNeededBeforeFinal": true
+}

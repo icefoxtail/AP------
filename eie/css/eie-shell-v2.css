@@ -1,0 +1,377 @@
+/* ======================================================================
+   eie-shell-v2.css
+   - eie.css를 소스 순서 그대로 분할한 조각이다 (cascade 동일, 디자인 변경 없음).
+   - index.html에서 반드시 소스 순서대로 로드한다.
+   ====================================================================== */
+/* ======================================================================
+   EIE Shell v2 — AP MATH 원장 대시보드와 100% 동일 구조
+   - AP MATH index.html inline CSS + sidebar-foundation.css 완전 복제
+   - 기존 eie-app-shell / eie-sidebar / eie-shell-frame 은 사용 안 함
+   ====================================================================== */
+
+/* CSS 변수 bridge: EIE 독자 변수 → AP MATH 공통 이름으로 alias */
+:root {
+    --bg:            var(--eie-bg);
+    --surface:       var(--eie-surface);
+    --surface-2:     var(--eie-surface-2);
+    --surface-alpha: rgba(255,255,255,0.88);
+    --border:        var(--eie-border);
+    --shadow:        0 2px 8px rgba(0,0,0,0.03);
+    --text:          var(--eie-text);
+    --text-soft:     #333D4B;
+    --primary:       var(--eie-primary);
+    --secondary:     var(--eie-muted);
+    --error:         #E8414F;
+}
+
+/* ── Mobile header (AP MATH <header>와 동일) ── */
+.eie-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface-alpha);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 96px minmax(0,1fr) 96px;
+    align-items: center;
+    height: 58px;
+    min-height: 58px;
+}
+.eie-header-left {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.eie-header-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    height: 40px;
+}
+.eie-header-logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+.eie-header-user {
+    justify-self: end;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 96px;
+}
+.eie-hamburger-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+}
+.eie-hamburger-glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* ── Desktop topbar (AP MATH .desktop-topbar와 동일) ── */
+.eie-desktop-topbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 56px;
+    right: 0;
+    height: 58px;
+    z-index: 80;
+    align-items: center;
+    padding: 0 24px;
+    gap: 10px;
+    background: var(--surface-alpha);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: left 0.24s ease, background 0.2s, border-color 0.2s;
+}
+.eie-topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+#eie-desktop-user {
+    margin-left: auto;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* ── Drawer overlay ── */
+#eie-drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.42);
+    z-index: 9998;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+#eie-drawer-overlay.eie-drw-open { display: block; }
+
+/* ── Sidebar drawer (AP MATH #app-drawer와 동일) ── */
+#eie-drawer {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: min(72vw, 260px);
+    background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+    border: 1px solid var(--border);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.08);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-104%);
+    transition: transform .26s cubic-bezier(0.4,0,0.2,1), width .22s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 0 18px 18px 0;
+    text-align: left;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+#eie-drawer.eie-drw-open { transform: translateX(0); }
+
+.eie-drw-rail-toggle {
+    display: none;
+    width: 36px; height: 36px;
+    margin: 11px 0 0 10px;
+    padding: 0; border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px; font-weight: 700;
+    cursor: pointer;
+    align-items: center; justify-content: center;
+    font-family: inherit;
+    flex-shrink: 0;
+}
+.eie-drw-top-tools {
+    height: 58px; min-height: 58px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+}
+.eie-drw-hamburger {
+    position: absolute;
+    left: 10px; top: 11px;
+    width: 36px; height: 36px;
+    padding: 0; border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 20px; font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center; justify-content: center;
+    font-family: inherit;
+}
+.eie-drw-menu {
+    padding: 10px 0 12px;
+    flex: 0 0 auto;
+}
+.eie-drw-section-label {
+    display: block;
+    padding: 14px 16px 6px;
+    color: var(--secondary);
+    font-size: 12.5px;
+    font-weight: 650;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    opacity: .82;
+}
+.eie-drw-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    margin: 2px 10px;
+    padding: 9px 16px;
+    min-height: 40px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+    font-family: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease, transform .16s ease;
+}
+.eie-drw-item:hover,
+.eie-drw-item:focus-visible {
+    background: rgba(15,23,42,0.04);
+    color: var(--text);
+    outline: none;
+}
+.eie-drw-item.is-active,
+.eie-drw-item[aria-current="page"] {
+    background: var(--surface-2);
+    color: var(--text);
+    border-color: var(--border);
+}
+.eie-drw-item:active {
+    transform: scale(0.99);
+    background: var(--surface-2);
+}
+.eie-drw-item.eie-drw-danger { color: var(--secondary); }
+.eie-drw-item.eie-drw-danger:hover {
+    color: var(--error);
+    background: rgba(239,68,68,0.07);
+}
+.eie-drw-icon {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 19px; height: 19px;
+    flex: 0 0 19px;
+    opacity: .72;
+    transition: opacity .16s ease;
+}
+.eie-drw-item:hover .eie-drw-icon,
+.eie-drw-item.is-active .eie-drw-icon,
+.eie-drw-item[aria-current="page"] .eie-drw-icon { opacity: 1; }
+.eie-drw-icon svg {
+    display: block;
+    width: 19px; height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.eie-drw-label {
+    flex: 1 1 auto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.eie-drw-spacer { flex: 1; }
+.eie-drw-footer {
+    padding: 6px 0 10px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+/* ── Main content area (AP MATH <main>와 동일) ── */
+.eie-main {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px 14px calc(100px + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+}
+
+/* owner-dashboard-shell: AP MATH #ap-admin-dashboard와 동일 폭/정렬 */
+.owner-dashboard-shell {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 16px 24px;
+    box-sizing: border-box;
+}
+
+/* ── Desktop ≥ 901px (AP MATH @media (min-width:901px)와 동일) ── */
+@media (min-width: 901px) {
+    body { padding-left: 56px; transition: padding-left 0.24s ease; }
+    body.eie-drawer-expanded { padding-left: 260px; }
+
+    .eie-header { display: none; }
+    .eie-desktop-topbar { display: flex; }
+    body.eie-drawer-expanded .eie-desktop-topbar { left: 260px; }
+
+    #eie-drawer {
+        width: 56px;
+        transform: none !important;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: hidden;
+    }
+    #eie-drawer.eie-drw-expanded {
+        width: 260px;
+        box-shadow: 8px 0 30px rgba(0,0,0,0.08);
+        overflow-y: auto;
+        border-radius: 0 18px 18px 0;
+    }
+    .eie-drw-rail-toggle { display: flex; }
+    #eie-drawer.eie-drw-expanded .eie-drw-rail-toggle { display: none; }
+
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-top-tools,
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-menu,
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-footer,
+    #eie-drawer:not(.eie-drw-expanded) .eie-drw-spacer { display: none; }
+
+    #eie-drawer.eie-drw-expanded .eie-drw-top-tools { display: flex; }
+    #eie-drawer.eie-drw-expanded .eie-drw-menu { display: block; }
+    #eie-drawer.eie-drw-expanded .eie-drw-footer { display: block; }
+    #eie-drawer.eie-drw-expanded .eie-drw-spacer { display: block; flex: 1; }
+
+    #eie-drawer-overlay { display: none !important; }
+
+    .eie-main {
+        max-width: 1180px;
+        padding: 76px 36px 80px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .eie-main { max-width: 1240px; padding-left: 40px; padding-right: 40px; }
+}
+
+/* 출석부는 월간 30~31일 그리드가 핵심이므로 데스크톱 폭을 제한하지 않는다. */
+.eie-main:has(.eie-att-screen) {
+    max-width: none;
+}
+
+@media (min-width: 901px) {
+    .eie-main:has(.eie-att-screen) {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
