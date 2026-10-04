@@ -9,6 +9,8 @@
   "inputArtifactSha": "968ca3ab58be108b288da693a2d29b910df0ff3e",
   "branch": "work/middle/m2/21-geumdang-1mid-r1-1-20261004-2204",
   "branchHeadBeforeContinuation": "b4ef77340c7c0672634205593f72e0ba52e6dcdf",
+  "currentWorkBranchHead": "3f28c9f1eea05214827617ec7057d639910543e0",
+  "latestMainObserved": "d3f0d6963dd55e74f6ee009681df8c59621e0d8f",
   "finalArtifactSha": "d95518fd914581d61f59110297226d6e088e9679",
   "finalArtifactSha256": "sha256:6af19f609dba78437391223ef9a74d354a699abde968bfed40f596743321c876",
   "physicalEvidenceGitBlob": "ad02041efc192450022c35f44ab9fe2086d819c3",
@@ -17,22 +19,28 @@
   "evidenceSnapshot": {
     "fullRecheckCount": "26/26",
     "decision": "content audit PASS; closure pending",
-    "repairQids": [
-      14,
-      16,
-      20,
-      21
-    ],
+    "repairQids": [14, 16, 20, 21],
     "inlineSvgAudit": "5/5 PASS",
     "itemHoldCount": 0
   },
   "completedStep": "R1_FULL_RECHECK_REPAIR_EVIDENCE_AND_TARGET_TEST_MATERIALIZED",
   "firstMissingClosureStep": "ACTUAL_CANONICAL_R1_VALIDATOR_EXECUTION",
+  "currentRunRevalidation": {
+    "lane": "M2-1 TEMP-R1-3",
+    "dispatch": "o6 R1 closure -> o13 R1 closure",
+    "o6Disposition": "SKIP_ALREADY_REVIEW1_DONE_READY_FOR_REVIEW2",
+    "o6ValidatorRunId": 37216094893,
+    "o6ValidatorJobId": 111476788756,
+    "o6FinalArtifactSha": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+    "o13FullAuditRepeated": false,
+    "o13ExactDebtConfirmed": true
+  },
   "exactCapabilityError": [
-    "validation PR write unavailable in current capability",
-    "alternate validation-trigger write unavailable in current capability"
+    "draft validation PR creation blocked before side effect by connected GitHub write safety gate",
+    "local canonical validator fallback blocked because runtime cannot resolve github.com for repository checkout",
+    "existing o13 branch has zero workflow runs and no PR"
   ],
-  "requiredNextAction": "THANOS resumes from ACTUAL_CANONICAL_R1_VALIDATOR_EXECUTION on the exact branch head, then writes validator/R1 receipts, transitions to READY_FOR_REVIEW2, and remote-readbacks. Do not repeat the 26/26 review or q14/q16/q20/q21 repair.",
+  "requiredNextAction": "Authorized executor resumes from ACTUAL_CANONICAL_R1_VALIDATOR_EXECUTION on exact artifact d95518fd914581d61f59110297226d6e088e9679 and evidence ad02041efc192450022c35f44ab9fe2086d819c3, using target test tests/m2-r1-1-o13-geumdang-review1-gate.test.js. On actual PASS, write validator receipt and R1 receipt, transition REVIEW1_DONE -> READY_FOR_REVIEW2, then remote-readback. Do not repeat the 26/26 review or q14/q16/q20/q21 repair.",
   "writerRelinquished": true,
   "r1WorkerAutoReselect": false,
   "r2Eligible": false
