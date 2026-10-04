@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_TARGETED_RECHECK_EVIDENCE_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R2",
+  "mode": "TARGETED_MINIMAL_CURRENT_2026_10_05",
+  "examUid": "o6",
+  "examFilename": "24_신흥중_1학기_중간_중2_기출c.js",
+  "canonicalInventoryOrdinal": 6,
+  "inputR1ClosureHead": "229a737194cc3c03a3a910c7ba0b2e9e5da0da42",
+  "inputR1BranchHeadAtClaim": "6606b67664f8e077552f9614928c4468ae1ec395",
+  "inputArtifactSha": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+  "r1ReceiptGitBlob": "850e7c28e3b738ceeb3182367355ccc6d764776b",
+  "r1PhysicalEvidenceGitBlob": "c986ad3329c0f79c023f46a4369a6bedf5dfa85b",
+  "r1ValidatorReceiptGitBlob": "412b264838ccb1663fe44aa1ce4962004433dba2",
+  "currentMainAtStart": "53d65feb4261b35aff04fc247624be05510fdd7b",
+  "currentContractGitBlob": "570359bffe09bfc756b484bf110d4035c2e80f80",
+  "currentR2ProtocolGitBlob": "cd9661a969bf40e919ed7864350def7c6fcdf266",
+  "currentGoldenCalibrationGitBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+  "currentPhysicalEvidenceCanonicalGitBlob": "32f212619a31df15add413ebe8eccdb86941cec1",
+  "currentStageValidatorGitBlob": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
+  "currentStageValidatorCompatGitBlob": "80b0b81032aac147d463fa82d3c99d6ac9b1f18b",
+  "selectorEvidence": {
+    "r1Stage": "REVIEW1_DONE",
+    "r1NextStage": "READY_FOR_REVIEW2",
+    "r1ReviewDecision": "PASS",
+    "r1ItemHoldQids": [],
+    "activeSameStageClaimObserved": false,
+    "priorHandoffAutoReselected": false,
+    "selectionReason": "o5 is already durably REVIEW2_DONE on physical receipt-bearing lineage; o6 is the newest-year then inventory-order unclaimed READY_FOR_REVIEW2 target."
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "itemHoldQids": [],
+    "r1ChangedQids": [
+      10,
+      13
+    ],
+    "r1ChangedFields": [
+      {
+        "qid": 10,
+        "fields": [
+          "subUnitKey",
+          "subUnit"
+        ]
+      },
+      {
+        "qid": 13,
+        "fields": [
+          "subUnitKey",
+          "subUnit"
+        ]
+      }
+    ],
+    "directDependencyQids": [],
+    "recheckQids": [
+      10,
+      13
+    ],
+    "scopeCount": 2,
+    "rationale": "CURRENT HARD requires R2 minimal recheck only over R1 open findings/HOLD, actual changed qid/field, and direct dependencies. R1 changed only q10/q13 subUnitKey/subUnit; no HOLD and no cross-item dependency exists."
+  },
+  "targetedRows": [
+    {
+      "qid": 10,
+      "checkedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "createValue": {
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산"
+      },
+      "r1Value": {
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙"
+      },
+      "rpmAuthority": {
+        "recordId": "M2-RPM-125",
+        "l3": "지수법칙",
+        "l4": "거듭제곱의 곱·몫",
+        "crosswalkSubUnitKey": "M2-01-EXPONENT_LAW"
+      },
+      "mathRegression": "PASS",
+      "protectedFieldsRegression": "PASS",
+      "solutionRegression": "PASS",
+      "decision": "R1_REPAIR_CONFIRMED"
+    },
+    {
+      "qid": 13,
+      "checkedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "createValue": {
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산"
+      },
+      "r1Value": {
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙"
+      },
+      "rpmAuthority": {
+        "recordId": "M2-RPM-129",
+        "l3": "단항식의 곱셈과 나눗셈",
+        "l4": "혼합 계산",
+        "crosswalkSubUnitKey": "M2-01-EXPONENT_LAW"
+      },
+      "mathRegression": "PASS",
+      "protectedFieldsRegression": "PASS",
+      "solutionRegression": "PASS",
+      "decision": "R1_REPAIR_CONFIRMED"
+    }
+  ],
+  "formalCompare": {
+    "createFinalArtifactSha": "d1a0c91860dbcf8b8f28779489aece2d21363bdd",
+    "r1FinalArtifactSha": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+    "artifactChangedAcrossR1": true,
+    "r1DeterministicRepairCount": 2,
+    "r1DeterministicRepairQids": [
+      10,
+      13
+    ],
+    "r1ItemHoldCount": 0,
+    "protectedFieldMutationCount": 0,
+    "changedFieldSet": [
+      "q10.subUnitKey",
+      "q10.subUnit",
+      "q13.subUnitKey",
+      "q13.subUnit"
+    ],
+    "regressionOpenCount": 0,
+    "result": "TARGETED_SCOPE_RECHECK_PASS"
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "observed": "q1/q2 actual solution bytes re-read; reproducible intermediate steps and decisive-property-to-equation flow confirmed"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "observed": "q1/q2 actual solution bytes re-read; inputs are explicit and decisive relation is separated from calculation"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observed": "false-PASS families re-read: SVG actual geometry, small-board structure, Meta null-but-resolvable, runtime escapes"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "gitBlobSha": "f7440339f2532f6e7ea357541c2a09b05847af59",
+        "observed": "owner-ray/angle-label/segment-label/coordinate-semantic regressions re-read"
+      }
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "calibrationStatus": "PASS",
+    "qualityCompareScope": "2/2 targeted qids; R1-only Meta field changes q10/q13 rechecked"
+  },
+  "decisionSnapshot": {
+    "status": "R2_TARGETED_RECHECK_PASS_VALIDATOR_PENDING",
+    "examMutationCount": 0,
+    "deterministicRepairCount": 0,
+    "targetRecheckCount": "2/2",
+    "finalArtifactSha": "32597dd0dd94e484b2a01626361935ce3e2379bc",
+    "r2PassDeclared": false,
+    "review2DoneDeclared": false,
+    "r3Eligible": false
+  }
+}
