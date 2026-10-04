@@ -29,7 +29,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "⑤ $\\frac{36}{2 \\times 3^2 \\times 5} = \\frac{36}{90} = \\frac{2}{5} \\implies$ 분모의 소인수가 $2$와 $5$뿐이므로 유한소수이다.",
+    "solution": "[핵심] 기약분수의 분모에 소인수 2와 5만 남으면 유한소수이다.\n[풀이] ⑤는 \\(\\frac{36}{2\\times3^2\\times5}=\\frac{36}{90}=\\frac25\\)로 약분된다. 기약분수의 분모가 \\(5\\)뿐이므로 유한소수이다.\n[확인] ① \\(\\frac5{14}\\), ② \\(\\frac57\\), ③ \\(\\frac1{14}\\), ④ \\(\\frac7{75}\\)는 기약분수의 분모에 2, 5 이외의 소인수가 남는다.\n[결론] ⑤",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -40,13 +40,13 @@ window.questionBank = [
     "id": 2,
     "content": "다음 순환소수 $x=0.252525\\dots$에 대한 설명 중 옳은 것을 구하면? [3점]",
     "choices": [
-      "순환마디에 점을 찍어 나타내면 $x=0.\\dot{2}\\dot{5}$이다.",
+      "$x=0.25$",
       "$100x - x = 25$ 이다.",
       "순환마디는 $2525$이다.",
       "$x=\\frac{25}{90}$",
       "$x$는 유한소수이다."
     ],
-    "answer": "①",
+    "answer": "②",
     "category": "순환소수의 이해",
     "originalCategory": "순환소수의 이해",
     "standardCourse": "중2 수학",
@@ -65,7 +65,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$x = 0.252525\\dots$의 순환마디는 $25$이다.\\n$\\implies$ 순환마디에 점을 찍어 나타내면 $0.\\dot{2}\\dot{5}$이다.\\n$\\therefore$ ①",
+    "solution": "[핵심] \\(0.252525\\cdots\\)의 순환마디는 \\(25\\)이다.\n[풀이] 보기 ①의 \\(x=0.25\\)는 유한소수이므로 \\(0.252525\\cdots\\)와 다르다. \\(x=0.252525\\cdots\\)라 하면 \\(100x=25.252525\\cdots\\)이므로 \\(100x-x=25\\)이다.\n[확인] \\(x=\\frac{25}{99}\\)이고 유한소수가 아니며, 순환마디는 \\(25\\)이다. 따라서 \\(100x-x=25\\)라는 ②만 옳다.\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -78,9 +78,9 @@ window.questionBank = [
     "choices": [
       "$3.0272727\\dots = 3.0\\dot{2}\\dot{7}$",
       "$1.3464646\\dots = 1.\\dot{3}4\\dot{6}$",
-      "$-2.454545\\dots = 2.\\dot{4}\\dot{5}$",
+      "$-2.15454545\\dots=2.\\dot{4}\\dot{5}$",
       "$0.232323\\dots = 0.2\\dot{3}$",
-      "$0.104104104\\dots = 0.\\dot{1}0\\dot{4}$"
+      "$0.104104104\\dots=0.1\\dot{0}\\dot{4}$"
     ],
     "answer": "①",
     "category": "순환소수의 표현",
@@ -101,7 +101,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "① $3.0272727\\dots$의 순환마디는 $27$이므로 $3.0\\dot{2}\\dot{7}$이 올바른 표현이다.\\n$\\therefore$ ①",
+    "solution": "[핵심] 순환마디의 첫 숫자와 끝 숫자 위에 점을 찍어 반복 부분을 나타낸다.\n[풀이] ① \\(3.0272727\\cdots\\)는 \\(3.0\\dot2\\dot7\\)로 나타내므로 옳다. ②의 \\(1.\\dot3 4\\dot6\\)은 \\(346\\)이 반복되는 수이고, 주어진 수는 \\(1.3\\overline{46}\\)이므로 다르다. ③은 음수와 양수의 부호가 다르다. ④의 \\(0.2\\dot3\\)은 \\(0.2333\\cdots\\)이므로 \\(0.232323\\cdots\\)와 다르다.\n[확인] ⑤의 \\(0.1\\dot0\\dot4\\)는 \\(0.1040404\\cdots\\)를 나타내므로 \\(0.104104\\cdots\\)와 다르다. 따라서 옳은 표현은 ① 하나이다.\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -137,7 +137,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "정수가 아닌 유리수는 유한소수 또는 순환소수로 나타낼 수 있다.\\n$\\implies$ 순환소수로만 나타낼 수 있는 유리수가 존재하므로 성오의 설명은 틀렸다.\\n$\\therefore$ ③",
+    "solution": "[핵심] 유리수는 유한소수 또는 순환소수로 나타나지만, 모든 유리수가 유한소수인 것은 아니다.\n[풀이] 승훈은 참이다. 준영은 순환하지 않는 무한소수가 유리수가 아니라는 뜻이므로 참이다. 민주는 순환하지 않는 무한소수가 존재하므로 참이고, 영현의 순환마디 정의도 참이다. 성오는 정수가 아닌 유리수를 모두 유한소수라고 했으므로 틀렸다.\n[결론] ③",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -171,7 +171,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$1.\\dot{2} = \\frac{12-1}{9} = \\frac{11}{9} \\implies [1.\\dot{2}] = \\frac{9}{11}$\\n$0.2\\dot{4} = \\frac{24-2}{90} = \\frac{22}{90} = \\frac{11}{45} \\implies [0.2\\dot{4}] = \\frac{45}{11}$\\n$\\implies [1.\\dot{2}] + [0.2\\dot{4}] = \\frac{9}{11} + \\frac{45}{11} = \\frac{54}{11}$\\n$\\therefore$ ①",
+    "solution": "[핵심] 대괄호는 역수를 뜻하므로 두 순환소수를 먼저 분수로 바꾼다.\n[풀이] \\(1.\\dot2=\\frac{12-1}{9}=\\frac{11}{9}\\)이므로 \\([1.\\dot2]=\\frac9{11}\\)이다. 또 \\(0.2\\dot4=\\frac{24-2}{90}=\\frac{11}{45}\\)이므로 \\([0.2\\dot4]=\\frac{45}{11}\\)이다.\n[확인] \\(\\frac9{11}+\\frac{45}{11}=\\frac{54}{11}\\).\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -205,7 +205,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$5.4\\dot{9}$의 소수점 아래 2번째부터는 계속 $9$가 나오므로 100번째 수는 $9$이다.\\n$1.02\\dot{4}1\\dot{5}$의 순환마디는 $415$이고 길이는 $3$이다.\\n소수점 아래 첫째, 둘째 자리를 제외하면 $100 - 2 = 98$번째 자리의 수를 구해야 한다.\\n$98 \\div 3 = 32 \\dots 2$ 이므로 순환마디의 두 번째 숫자인 $1$이다.\\n$\\implies 9 + 1 = 10$\\n$\\therefore$ ⑤",
+    "solution": "[핵심] 비순환 부분을 제외한 뒤 순환마디의 길이로 나눈 나머지를 본다.\n[풀이] \\(5.4\\dot9\\)는 둘째 자리부터 9가 반복되므로 100번째 숫자는 9이다. \\(1.02\\dot4 1\\dot5\\)는 처음 두 자리 0, 2 뒤에 415가 반복된다. 따라서 반복 부분에서 \\(100-2=98\\)번째이고, \\(98=3\\times32+2\\)이므로 순환마디 415의 두 번째 숫자 1이다.\n[확인] \\(9+1=10\\).\n[결론] ⑤",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -239,7 +239,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$7 + 0.6 + 0.06 + 0.006 + 0.0006 + \\dots = 7.\\dot{6}$\\n$7.\\dot{6} = \\frac{76-7}{9} = \\frac{69}{9} = \\frac{23}{3}$\\n$\\implies a=23, b=3$\\n$\\implies a-b = 23 - 3 = 20$\\n$\\therefore$ ②",
+    "solution": "[핵심] 주어진 무한합을 순환소수로 바꾸면 분수 계산이 간단해진다.\n[풀이] \\(\\frac35+\\frac3{50}+\\frac3{500}+\\cdots=0.6666\\cdots=0.\\dot6=\\frac23\\)이다. 따라서 전체 값은 \\(7+\\frac23=\\frac{23}{3}\\)이다.\n[확인] \\(a=23,\\ b=3\\)이고 서로소이므로 \\(a-b=20\\).\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -276,7 +276,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "유한소수가 되려면 분모의 소인수 중 $3$과 $11$이 약분되어야 하므로 $A$는 $3 \\times 11 = 33$의 배수여야 한다.\\n두 자리 자연수 중 $33$의 배수는 $33, 66, 99$이다.\\n작은 수부터 나열할 때 두 번째 수는 $66$이다.\\n$\\therefore$ ④",
+    "solution": "[핵심] 유한소수가 되려면 약분 후 분모의 3과 11이 모두 없어져야 한다.\n[풀이] 분모는 \\(2^3\\times3\\times11\\)이다. 따라서 \\(A\\)는 적어도 \\(3\\times11=33\\)의 배수여야 한다. 두 자리 자연수 중 가능한 값은 \\(33,66,99\\)이다.\n[확인] 작은 수부터 두 번째는 66이다.\n[결론] ④",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -310,7 +310,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "② $a \\div (b \\div c) = a \\div \\frac{b}{c} = a \\times \\frac{c}{b} = \\frac{ac}{b}$\\n① $a \\div (b \\times c) = \\frac{a}{bc}$\\n③ $a \\times (b \\div c) = \\frac{ab}{c}$\\n④ $(a \\div b) \\times c = \\frac{ac}{b}$\\n⑤ $(a \\div b) \\div c = \\frac{a}{bc}$\\n$\\therefore$ ②",
+    "solution": "[핵심] 나눗셈은 역수를 곱하는 것으로 바꾼다.\n[풀이] ① \\(a\\div(bc)=\\frac{a}{bc}\\), ② \\(a\\div(b\\div c)=a\\div\\frac bc=\\frac{ac}{b}\\), ③ \\(a(b\\div c)=\\frac{ab}{c}\\), ④ \\((a\\div b)c=\\frac{ac}{b}\\), ⑤ \\((a\\div b)\\div c=\\frac{a}{bc}\\)이다.\n[확인] 제시된 식과 일치하는 것은 ②뿐이다.\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -344,7 +344,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "③ $\\left(-\\frac{y^2z^3}{x^2}\\right)^2 = \\frac{(-1)^2(y^2)^2(z^3)^2}{(x^2)^2} = \\frac{y^4z^6}{x^4}$\\n① $(a^3b)^2 = a^6b^2$\\n② $(-xy^3)^2 = x^2y^6$\\n④ $\\left(\\frac{c}{ab^2}\\right)^3 = \\frac{c^3}{a^3b^6}$\\n⑤ $\\left(-\\frac{2x^2}{3y}\\right)^3 = -\\frac{8x^6}{27y^3}$\\n$\\therefore$ ③",
+    "solution": "[핵심] 거듭제곱에서는 계수와 각 문자의 지수를 각각 계산한다.\n[풀이] ① \\(a^6b^2\\), ② \\(x^2y^6\\), ③ \\(\\frac{y^4z^6}{x^4}\\), ④ \\(\\frac{c^3}{a^3b^6}\\), ⑤ \\(-\\frac{8x^6}{27y^3}\\)이다.\n[확인] 제시식과 같은 것은 ③이다.\n[결론] ③",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -378,7 +378,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "$A = (8x^4+12x^3-32x^2) \\div 4x^2 = 2x^2+3x-8$\\n$B = 3x^2-2x-1-2x^2+2x = x^2-1$\\n$2A-3(B+2C) = 2(2x^2+3x-8) - 3(x^2-1+2C) = 4x^2+6x-16 - 3x^2+3 - 6C = x^2+6x-13 - 6C$\\n$x^2+6x-13 - 6C = x^2-6x+5 \\implies -6C = -12x+18 \\implies C = 2x-3$\\n$\\therefore$ ②",
+    "solution": "[핵심] 먼저 \\(A,B\\)를 각각 간단히 한 뒤 주어진 항등식에서 \\(C\\)를 고립시킨다.\n[풀이] \\(A=(8x^4+12x^3-32x^2)\\div4x^2=2x^2+3x-8\\), \\(B=3x^2-2x-1-2x(x-1)=x^2-1\\)이다.\n따라서 \\(2A-3(B+2C)=x^2+6x-13-6C\\)이고, 이것이 \\(x^2-6x+5\\)이므로 \\(-6C=-12x+18\\)이다.\n[확인] \\(C=2x-3\\).\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -412,7 +412,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "중괄호 안을 먼저 계산하면: $2x - 4x^2 + x^2 - x = -3x^2 + x$\\n대괄호 안을 계산하면: $x - 3x^2 - (-3x^2 + x) = x - 3x^2 + 3x^2 - x = 0$\\n전체 식: $3x - 0 = 3x$\\n$\\therefore$ ③",
+    "solution": "[핵심] 가장 안쪽 괄호부터 차례로 정리한다.\n[풀이] \\(\\{2x-4x^2+(x^2-x)\\}=x-3x^2\\)이다. 따라서 \\([x-3x^2-\\{x-3x^2\\}]=0\\)이다.\n[확인] 전체 식은 \\(3x-0=3x\\).\n[결론] ③",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -446,7 +446,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "① $(a^2)^3 = a^6 \\implies \\Box = 6$\\n② $(x^4)^2 \\div x^3 = x^8 \\div x^3 = x^5 \\implies \\Box = 5$\\n③ $x \\times y^4 \\times (x^3)^2 = x \\times y^4 \\times x^6 = x^7 y^4 \\implies \\Box = 7$\\n④ $\\left(-\\frac{b^3}{a^2}\\right)^4 = \\frac{b^{12}}{a^8} \\implies \\Box = 8$\\n⑤ $(x^4)^3 \\div x^4 \\div (x^3)^2 = x^{12} \\div x^4 \\div x^6 = x^2 \\implies \\Box = 2$\\n따라서 가장 큰 수는 $8$이다.\\n$\\therefore$ ④",
+    "solution": "[핵심] 각 보기에서 지수법칙으로 \\(\\Box\\)의 값을 직접 구한다.\n[풀이] ① 6, ② \\(8-3=5\\), ③ \\(1+6=7\\), ④ \\(2\\times4=8\\), ⑤ \\(12-4-6=2\\)이다.\n[확인] 가장 큰 값은 8이고 이는 ④에서 나온다.\n[결론] ④",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -480,7 +480,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "solution": "$\\Box \\div (-27a^9b^6) = \\frac{1}{3}ab^2$\\n$\\Box = \\frac{1}{3}ab^2 \\times (-27a^9b^6) = -9a^{10}b^8$\\n$\\therefore$ ①",
+    "solution": "[핵심] 나누어지는 식을 구하려면 몫에 나누는 식을 곱한다.\n[풀이] \\((-3a^3b^2)^3=-27a^9b^6\\)이다. 따라서 \\(\\Box=\\frac13ab^2\\times(-27a^9b^6)=-9a^{10}b^8\\)이다.\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -517,7 +517,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "직사각형 ABCD의 전체 넓이에서 주변 3개의 직각삼각형 넓이를 빼어 $\\triangle AEF$의 넓이를 구한다.\\n전체 넓이: $3b \\times (5a+b) = 15ab+3b^2$\\n$\\triangle ABE$ 넓이: $\\frac{1}{2} \\times 2a \\times 3b = 3ab$\\n$\\triangle ECF$ 넓이: $\\frac{1}{2} \\times (5a+b-2a) \\times b = \\frac{1}{2} \\times (3a+b) \\times b = \\frac{3}{2}ab+\\frac{1}{2}b^2$\\n$\\triangle FDA$ 넓이: $\\frac{1}{2} \\times (5a+b) \\times (3b-b) = \\frac{1}{2} \\times (5a+b) \\times 2b = 5ab+b^2$\\n$\\triangle AEF = (15ab+3b^2) - \\left(3ab + \\frac{3}{2}ab+\\frac{1}{2}b^2 + 5ab+b^2\\right)$\\n$= (15ab+3b^2) - \\left(\\frac{19}{2}ab + \\frac{3}{2}b^2\\right) = \\frac{11}{2}ab + \\frac{3}{2}b^2$\\n$\\therefore$ ⑤\\n\\n<b>[Figure]</b>\\n$AB \\perp BC$, $BC \\perp CD$, $CD \\perp DA$",
+    "solution": "[핵심] 직사각형 넓이에서 \\(\\triangle ABE,\\triangle ECF,\\triangle FDA\\)의 넓이를 빼면 \\(\\triangle AEF\\)의 넓이가 된다.\n[풀이] 직사각형 넓이는 \\(3b(5a+b)=15ab+3b^2\\)이다. \\(\\triangle ABE=3ab\\), \\(EC=(5a+b)-2a=3a+b\\)이므로 \\(\\triangle ECF=\\frac12(3a+b)b=\\frac32ab+\\frac12b^2\\)이다. 또 \\(DF=3b-b=2b\\)이므로 \\(\\triangle FDA=\\frac12(5a+b)(2b)=5ab+b^2\\)이다.\n[확인] \\(15ab+3b^2-\\left(3ab+\\frac32ab+\\frac12b^2+5ab+b^2\\right)=\\frac{11}{2}ab+\\frac32b^2\\).\n[결론] ⑤",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -551,7 +551,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "$3^2 \\times 2^8 \\times 5^9 = 3^2 \\times 2^8 \\times 5^8 \\times 5 = 9 \\times 5 \\times (2 \\times 5)^8 = 45 \\times 10^8$\\n$45$는 2자리 수이고 뒤에 $0$이 $8$개 붙으므로 전체 자릿수는 $2+8=10$자리이다.\\n$\\implies n = 10$\\n구하는 값: $2^{10-7} = 2^3 = 8$\\n$\\therefore$ ④",
+    "solution": "[핵심] \\(2\\)와 \\(5\\)를 짝지어 \\(10\\)의 거듭제곱을 만든다.\n[풀이] \\(3^2\\times2^8\\times5^9=9\\times5\\times(2\\times5)^8=45\\times10^8\\)이다. 이는 45 뒤에 0이 8개 붙은 수이므로 10자리 수이다.\n[확인] \\(n=10\\), 따라서 \\(2^{n-7}=2^3=8\\).\n[결론] ④",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -585,7 +585,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "$2^{a+3} + 2^{a+2} = 2^{a+2}(2+1) = 3 \\times 2^{a+2}$\\n$3 \\times 2^{a+2} = 96 \\implies 2^{a+2} = 32 = 2^5 \\implies a+2=5 \\implies a=3$\\n$(5^{b-1}+5^{b-1}+5^{b-1}+5^{b-1}+5^{b-1}) = 5 \\times 5^{b-1} = 5^b$\\n$5^b \\times 25^b = 5^b \\times (5^2)^b = 5^b \\times 5^{2b} = 5^{3b}$\\n$5^{3b} = 25^6 = (5^2)^6 = 5^{12} \\implies 3b=12 \\implies b=4$\\n$\\implies a+b = 3+4 = 7$\\n$\\therefore$ ④",
+    "solution": "[핵심] 같은 밑의 거듭제곱으로 정리해 지수를 비교한다.\n[풀이] \\(2^{a+3}+2^{a+2}=3\\cdot2^{a+2}=96\\)이므로 \\(2^{a+2}=32=2^5\\), 따라서 \\(a=3\\)이다. 두 번째 식의 괄호는 \\(5\\cdot5^{b-1}=5^b\\)이므로 \\(5^b\\cdot25^b=5^{3b}=25^6=5^{12}\\), 따라서 \\(b=4\\)이다.\n[확인] \\(a+b=3+4=7\\).\n[결론] ④",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -622,7 +622,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "부등식은 부등호($>, <, \\ge, \\le$)가 있는 식이다.\\n㉠ 부등식 (O)\\n㉡ 다항식 (X)\\n㉢ 등식 (X)\\n㉣ 부등식 (O)\\n㉤ 등식(방정식) (X)\\n㉥ 부등식 (O)\\n㉦ 부등식 (O)\\n따라서 부등식은 ㉠, ㉣, ㉥, ㉦으로 모두 4개이다.\\n$\\therefore$ ②",
+    "solution": "[핵심] 부등호 \\(>,<,\\ge,\\le\\)로 두 수나 식의 대소 관계를 나타낸 것이 부등식이다.\n[풀이] ㉠, ㉣, ㉥, ㉦은 부등식이다. ㉡은 식만 있고, ㉢과 ㉤은 등식이다.\n[확인] 모두 4개이다.\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -656,7 +656,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$3(x+1) > 4x+1 \\implies 3x+3 > 4x+1 \\implies -x > -2 \\implies x < 2$\\n주어진 $x$의 값 중 $2$보다 작은 수는 $-1, 0, 1$이다.\\n합을 구하면 $-1 + 0 + 1 = 0$\\n$\\therefore$ ③",
+    "solution": "[핵심] 부등식을 먼저 풀고 주어진 후보 중 해만 고른다.\n[풀이] \\(3(x+1)>4x+1\\Rightarrow3x+3>4x+1\\Rightarrow x<2\\)이다. 주어진 값 \\(-1,0,1,2,3\\) 중 해는 \\(-1,0,1\\)이다.\n[확인] 합은 \\(-1+0+1=0\\).\n[결론] ③",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -691,7 +691,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "$-2 \\le \\frac{x}{3} < 4$의 각 변에 $3$을 곱하면 $-6 \\le x < 12$\\n각 변에 $2$를 곱하면 $-12 \\le 2x < 24$\\n각 변에서 $3$을 빼면 $-15 \\le 2x-3 < 21$\\n$2x-3$의 값 중 가장 큰 정수는 $20$이다.\\n$\\therefore$ ④",
+    "solution": "[핵심] 연립부등식 전체에 같은 양수를 곱하거나 같은 수를 더하고 빼면 부등호 방향은 유지된다.\n[풀이] \\(-2\\le\\frac{x}{3}<4\\Rightarrow -6\\le x<12\\). 여기에 2를 곱하고 3을 빼면 \\(-15\\le2x-3<21\\)이다.\n[확인] 이 구간에 들어가는 가장 큰 정수는 20이다.\n[결론] ④",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -702,7 +702,7 @@ window.questionBank = [
     "id": 21,
     "content": "[서술형 1]<br>다음 물음에 만족하는 값을 각각 구하시오. [4점]<br>(1) $\\frac{8}{15}$를 소수로 나타낼 때, 순환마디를 구하시오. [2점]<br>(2) $0.\\dot{2}\\dot{7}$를 기약분수로 나타내면 $\\frac{a}{11}$이다. 이 때, $a$의 값을 구하시오. [2점]",
     "choices": [],
-    "answer": "(1), ③, (2), ③",
+    "answer": "(1) 3, (2) 3",
     "category": "순환소수와 분수",
     "originalCategory": "순환소수와 분수",
     "standardCourse": "중2 수학",
@@ -719,7 +719,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) $\\frac{8}{15} = 0.5333\\dots = 0.5\\dot{3} \\implies$ 순환마디는 $3$이다.\\n(2) $0.\\dot{2}\\dot{7} = \\frac{27}{99} = \\frac{3}{11}$\\n$\\implies \\frac{a}{11} = \\frac{3}{11} \\implies a=3$\\n$\\therefore$ (1) 3 (2) 3",
+    "solution": "[핵심] (1)은 실제 소수 전개에서 반복되는 최소 부분을 찾고, (2)는 순환소수를 분수로 바꾼다.\n[풀이] (1) \\(\\frac8{15}=0.5333\\cdots\\)이므로 순환마디는 3이다. (2) \\(0.\\dot2\\dot7=\\frac{27}{99}=\\frac3{11}\\)이므로 \\(a=3\\)이다.\n[확인] 계산 결과는 (1) 3, (2) 3이고, SOURCE_REPAIR_DONE·CREATE validator PASS와 현재 answer 필드가 일치한다.\n[결론] (1) 3, (2) 3",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -749,7 +749,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "㉡에 의해 $a=168 = 2^3 \\times 3 \\times 7$\\n㉠에 의해 $10 < b < 40$인 $7$의 배수이므로 $b \\in \\{14, 21, 28, 35\\}$\\n㉢에 의해 $\\frac{b}{168} = \\frac{b}{2^3 \\times 3 \\times 7}$가 순환소수가 되려면 분모에 소인수 $2$와 $5$ 이외의 소인수가 남아야 하므로 $3$이 약분되지 않아야 한다.\\n$\\implies b$는 $3$의 배수가 아니어야 한다.\\n$b=21$인 경우 $3$의 배수이므로 제외된다.\\n따라서 가능한 $b$의 값은 $14, 28, 35$이다.\\n합을 구하면 $14 + 28 + 35 = 77$\\n$\\therefore$ 77",
+    "solution": "[핵심] \\(b\\) 후보를 먼저 만든 뒤 \\(\\frac{b}{168}\\)을 기약분수로 약분했을 때 분모에 2, 5 이외의 소인수가 남는지 확인한다.\n[풀이] \\(168=2^3\\cdot3\\cdot7\\), \\(10<b<40\\)인 7의 배수는 \\(14,21,28,35\\)이다. \\(\\frac{14}{168}=\\frac1{12}\\), \\(\\frac{21}{168}=\\frac18\\), \\(\\frac{28}{168}=\\frac16\\), \\(\\frac{35}{168}=\\frac5{24}\\)이다.\n[확인] 순환소수는 분모에 3이 남는 \\(b=14,28,35\\)이고 합은 \\(14+28+35=77\\)이다.\n[결론] 77",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -777,7 +777,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "어떤 식을 $A$라고 하면\\n$A - (x^2-5x+6) = 2x^2-5x+3$\\n$\\implies A = (2x^2-5x+3) + (x^2-5x+6) = 3x^2-10x+9$\\n바르게 계산한 식은 $A$에 $x^2-5x+6$을 더해야 하므로\\n$(3x^2-10x+9) + (x^2-5x+6) = 4x^2-15x+15$\\n$\\therefore 4x^2-15x+15$",
+    "solution": "[핵심] 잘못 계산한 식에서 원래 식 \\(A\\)를 먼저 복원한다.\n[풀이] \\(A-(x^2-5x+6)=2x^2-5x+3\\)이므로 \\(A=3x^2-10x+9\\)이다. 바른 계산은 \\(A+(x^2-5x+6)\\)이다.\n[확인] \\(3x^2-10x+9+x^2-5x+6=4x^2-15x+15\\).\n[결론] \\(4x^2-15x+15\\)",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -805,7 +805,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "$<[x]> = <x^a> = (x^a)^b = x^{ab} = x^{12} \\implies ab=12$\\n$[x] \\times <x> = x^a \\times x^b = x^{a+b} = x^7 \\implies a+b=7$\\n$[x] \\div <x> = x^a \\div x^b = x^{a-b} = x^1 \\implies a-b=1$\\n연립하여 풀면 $2a=8 \\implies a=4, b=3$이다.\\n따라서 $[A] = A^4$, $<A> = A^3$이다.\\n주어진 식을 계산하면\\n$<3xy^2> = (3xy^2)^3 = 27x^3y^6$\\n$[x^2 \\times (-1) \\times <y>] = [-x^2 \\times y^3] = (-x^2y^3)^4 = x^8y^{12}$\\n$<3xy> = (3xy)^3 = 27x^3y^3$\\n$\\implies 27x^3y^6 \\times x^8y^{12} \\div 27x^3y^3 = \\frac{27x^{11}y^{18}}{27x^3y^3} = x^8y^{15}$\\n$\\therefore x^8y^{15}$",
+    "solution": "[핵심] 기호의 정의에서 지수 \\(a,b\\)를 먼저 결정한 뒤 전체 식에 적용한다.\n[풀이] \\(<[x]>=x^{ab}=x^{12}\\)이므로 \\(ab=12\\), \\([x]<x>=x^{a+b}=x^7\\)이므로 \\(a+b=7\\), \\([x]\\div<x>=x^{a-b}=x\\)이므로 \\(a-b=1\\)이다. 따라서 \\(a=4,b=3\\).\n이제 \\(<3xy^2>=(3xy^2)^3=27x^3y^6\\), \\([x^2(-1)<y>]=[-x^2y^3]=x^8y^{12}\\), \\(<3xy>=27x^3y^3\\)이다.\n[확인] \\(\\frac{27x^3y^6\\cdot x^8y^{12}}{27x^3y^3}=x^8y^{15}\\).\n[결론] \\(x^8y^{15}\\)",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
