@@ -10,8 +10,13 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const worker = path.join(root, "apmath/worker-backup/worker");
 const requireWorker = createRequire(path.join(worker, "package.json"));
+const requireRoot = createRequire(import.meta.url);
 const { Miniflare } = requireWorker("miniflare");
 const { build } = requireWorker("esbuild");
+const core = requireRoot("../archive/archive2-core.js");
+const history = requireRoot("../archive/archive2-history.js");
+const source = requireRoot("../archive/archive2-source.js");
+const { catalog } = requireRoot("./helpers/archive2-scope-harness.cjs");
 
 test("recent-summary D1 subject normalization matches Roman aliases and exact student reads stay scoped", async () => {
   const bundle = await build({
@@ -29,7 +34,20 @@ export default { async fetch(request, env) {
     } : null;
     return handleStudentPortal(request, env, teacher, path, url);
   }
-  return handleExams(request, env, { id: 'admin', role: 'admin' }, path, url);
+  const role = request.headers.get('X-Fixture-Role');
+  const teacher = role ? {
+    id: request.headers.get('X-Fixture-Teacher') || role,
+    role,
+  } : { id: 'admin', role: 'admin' };
+  if (url.pathname === '/api/class-exam-assignments/recent-summary') {
+    let prepared = 0;
+    const recentEnv = { ...env, DB: { prepare(sql) { prepared++; return env.DB.prepare(sql); } } };
+    const response = await handleExams(request, recentEnv, teacher, path, url);
+    const headers = new Headers(response.headers);
+    headers.set('X-Fixture-D1-Prepares', String(prepared));
+    return new Response(await response.text(), { status: response.status, headers });
+  }
+  return handleExams(request, env, teacher, path, url);
 } }`,
       resolveDir: worker,
     },
@@ -56,6 +74,10 @@ export default { async fetch(request, env) {
         archive_file TEXT,source_type TEXT,mixed_payload_json TEXT,subject TEXT,pdf_status TEXT,pdf_error TEXT,
         saved_paper_id TEXT,cancelled_at TEXT,updated_at TEXT,created_at TEXT,grade_label TEXT
       )`,
+      `CREATE TABLE archive_saved_papers(
+        id TEXT PRIMARY KEY,grade TEXT,deleted_at TEXT,snapshot_json TEXT
+      )`,
+      `CREATE TABLE archive_saved_paper_library_metadata(saved_paper_id TEXT PRIMARY KEY,status TEXT)`,
       `CREATE TABLE class_exam_assignment_recipients(assignment_id TEXT,student_id TEXT)`,
       `CREATE TABLE class_exam_assignment_exclusions(assignment_id TEXT,student_id TEXT)`,
       `CREATE TABLE class_exam_assignment_lifecycle_events(
@@ -81,6 +103,7 @@ export default { async fetch(request, env) {
     await db.prepare("INSERT INTO classes VALUES(?,?,?)").bind("class-other", "고2 다른반", "고2").run();
     await db.prepare("INSERT INTO classes VALUES(?,?,?)").bind("class-1", "고1 A반", "고1").run();
     await db.prepare("INSERT INTO classes VALUES(?,?,?)").bind("class-2", "고1 B반", "고1").run();
+    await db.prepare("INSERT INTO classes VALUES(?,?,?)").bind("class-recent-grade", "고1 Recent 대상반", "고1").run();
 
     const assignmentInsert = db.prepare(`INSERT INTO class_exam_assignments
       (id,class_id,exam_title,exam_date,question_count,archive_file,source_type,mixed_payload_json,subject,
@@ -129,6 +152,71 @@ export default { async fetch(request, env) {
     }
     for (let index = 0; index < activeRows.length; index += 100)
       await db.batch(activeRows.slice(index, index + 100));
+
+    const mixedRecentRecords = [];
+    for (const sourceGrade of ["고2", "중3"]) {
+      const record = catalog.records.find(row => row.automatic && row.sourceGrade === sourceGrade &&
+        core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+      assert.ok(record, `Recent mixed-source fixture needs an actual ${sourceGrade} source`);
+      const question = source.evaluate(
+        fs.readFileSync(path.join(root, "archive/exams", record.sourceFile), "utf8"),
+        record.sourceFile,
+      )[record.sourceOrdinal - 1];
+      mixedRecentRecords.push({
+        ...question,
+        questionUid: record.questionUid,
+        sourceArchiveFile: record.sourceFile,
+        sourceOrdinal: record.sourceOrdinal,
+        sourceGrade: record.sourceGrade,
+      });
+    }
+    const mixedRecentSnapshot = JSON.stringify({
+      questions: mixedRecentRecords,
+      meta: { grade: "고2", subject: "미적분" },
+    });
+    assert.deepEqual(
+      [...new Set(mixedRecentRecords.map(question => question.sourceGrade))].sort(),
+      ["고2", "중3"],
+      "the Recent projection fixture uses actual mixed source-grade questions",
+    );
+    const recentPaperInsert = db.prepare(`INSERT INTO archive_saved_papers
+      (id,grade,deleted_at,snapshot_json) VALUES(?,?,?,?)`);
+    const recentPapers = [
+      ["paper-cross", "고2", null, JSON.stringify({ questions: [], meta: { grade: "고1" } })],
+      ["paper-same", "고2", null, JSON.stringify({ questions: [], meta: { grade: "고2" } })],
+      ["paper-mixed", "고2", null, mixedRecentSnapshot],
+      ["paper-archived", "고2", null, JSON.stringify({ questions: [], meta: { grade: "고1" } })],
+      ["paper-trashed", "고3", "2026-10-02T00:00:00.000Z", JSON.stringify({ questions: [], meta: { grade: "고1" } })],
+    ];
+    await db.batch(recentPapers.map(row => recentPaperInsert.bind(...row)));
+    const recentLibraryMetadataInsert = db.prepare(
+      "INSERT INTO archive_saved_paper_library_metadata(saved_paper_id,status) VALUES(?,?)",
+    );
+    await db.batch([
+      recentLibraryMetadataInsert.bind("paper-archived", "ARCHIVED"),
+      recentLibraryMetadataInsert.bind("paper-trashed", "TRASHED"),
+    ]);
+    const savedRecentRows = [
+      ["recent-saved-cross", "class-recent-grade", "paper-cross", "고1", null],
+      ["recent-saved-mixed", "class-recent-grade", "paper-mixed", "고1", null],
+      ["recent-saved-unknown", "class-recent-grade", "paper-missing", "", null],
+      ["recent-saved-archived", "class-recent-grade", "paper-archived", "고1", null],
+      ["recent-saved-trashed", "class-recent-grade", "paper-trashed", "고1", "2026-10-02T01:00:00.000Z"],
+      ["recent-saved-same", "class-other", "paper-same", "고2", null],
+    ];
+    for (const [id, classId, paperId, payloadGrade, cancelledAt] of savedRecentRows)
+      await assignmentInsert.bind(
+        id, classId, `Saved Paper ${id}`, "2026-10-02", 2,
+        `MIXED:archive2-saved-${id}`, "mixed",
+        JSON.stringify({ meta: { ...(payloadGrade ? { grade: payloadGrade } : {}), subject: "미적분" } }),
+        "미적분", "ready", "", paperId, cancelledAt,
+        "2026-10-02T00:00:00.000Z", "2026-10-02T00:00:00.000Z", null,
+      ).run();
+    await db.prepare(`INSERT INTO class_exam_assignment_lifecycle_events
+      (event_id,assignment_id,related_assignment_id,operation,occurred_at) VALUES(?,?,?,?,?)`)
+      .bind("recent-replacement-event", "recent-saved-trashed", "recent-saved-archived",
+        "REPLACEMENT_ASSIGNMENT", "2026-10-02T01:00:00.000Z").run();
+
     const recipients = [];
     for (let index = 0; index < 1005; index++) recipients.push(recipientInsert.bind(`recent-${String(index).padStart(4, "0")}`, "student-a"));
     recipients.push(recipientInsert.bind("assignment-old-exact", "student-a"));
@@ -252,6 +340,92 @@ export default { async fetch(request, env) {
     assert.equal(filtered.status, 200, JSON.stringify(filteredBody));
     assert.deepEqual(filteredBody.assignments.map(row => row.id), ["assignment-old-exact"],
       "date, target grade, class, subject and title filters are applied before LIMIT");
+    const fallbackClasses = [{ id: "class-target", name: "고1 대상반", grade: "고1" }];
+    const gradeLabelFallback = history.normalizeAssignments(
+      [{ ...filteredBody.assignments[0], grade_label: "고1" }], fallbackClasses, [], core,
+    );
+    assert.equal(gradeLabelFallback[0].contentGrade, "고1",
+      "legacy non-Saved Paper rows retain the grade_label fallback");
+    const payloadGradeFallback = history.normalizeAssignments(
+      [{ ...filteredBody.assignments[0], mixed_payload_json: JSON.stringify({ meta: { grade: "고2" } }) }],
+      fallbackClasses, [], core,
+    );
+    assert.equal(payloadGradeFallback[0].contentGrade, "고2",
+      "legacy list rows retain the payload.meta.grade fallback");
+
+    const savedRecent = await mf.dispatchFetch(
+      "http://local/api/class-exam-assignments/recent-summary?class=class-recent-grade&limit=100",
+    );
+  const savedRecentBody = await savedRecent.json();
+  assert.equal(savedRecent.status, 200, JSON.stringify(savedRecentBody));
+  const singleSavedRecent = await mf.dispatchFetch(
+    "http://local/api/class-exam-assignments/recent-summary?class=class-recent-grade&limit=1",
+  );
+  assert.equal(singleSavedRecent.status, 200);
+  assert.equal(
+    Number(savedRecent.headers.get("X-Fixture-D1-Prepares")),
+    Number(singleSavedRecent.headers.get("X-Fixture-D1-Prepares")),
+    "Recent D1 query count must not grow with the number of Saved Paper assignments",
+  );
+    const sameGradeRecent = await mf.dispatchFetch(
+      "http://local/api/class-exam-assignments/recent-summary?class=class-other&limit=20",
+    );
+    const sameGradeBody = await sameGradeRecent.json();
+    assert.equal(sameGradeRecent.status, 200, JSON.stringify(sameGradeBody));
+    const recentById = new Map([...savedRecentBody.assignments, ...sameGradeBody.assignments]
+      .map(row => [row.id, row]));
+    assert.equal(recentById.get("recent-saved-cross")?.class_grade, "고1");
+    assert.equal(recentById.get("recent-saved-cross")?.content_grade, "고2",
+      "the D1 Saved Paper grade must override a misleading old payload/meta grade");
+    assert.equal(recentById.get("recent-saved-same")?.content_grade, "고2",
+      "same-grade saved history keeps the saved content context");
+    assert.equal(recentById.get("recent-saved-unknown")?.content_grade, null,
+      "a missing Saved Paper row remains unknown");
+    assert.equal(recentById.get("recent-saved-archived")?.content_grade, "고2",
+      "ARCHIVED library state must not erase historical content grade");
+    assert.equal(recentById.get("recent-saved-trashed")?.content_grade, "고3",
+      "TRASHED and soft-deleted Saved Papers remain visible in historical assignment metadata");
+    for (const row of recentById.values()) {
+      assert.equal(Object.hasOwn(row, "mixed_payload_json"), false,
+        "Recent must not project a large Assignment payload");
+      assert.equal(Object.hasOwn(row, "snapshot_json"), false,
+        "Recent must not project a Saved Paper snapshot");
+    }
+
+    const recentClassRows = (await db.prepare("SELECT id,name,grade FROM classes").all()).results;
+    const normalizedRecent = history.normalizeAssignments(
+      [...savedRecentBody.assignments, ...sameGradeBody.assignments],
+      recentClassRows,
+      [],
+      core,
+    );
+    const normalizedById = new Map(normalizedRecent.map(row => [row.id, row]));
+    assert.deepEqual(
+      [normalizedById.get("recent-saved-mixed").targetGrade,
+        normalizedById.get("recent-saved-mixed").contentGrade],
+      ["고1", "고2"],
+      "the actual D1 response sent to normalizeAssignments keeps mixed source content context separate from target grade",
+    );
+    assert.deepEqual(
+      [normalizedById.get("recent-saved-same").targetGrade,
+        normalizedById.get("recent-saved-same").contentGrade],
+      ["고2", "고2"],
+    );
+    assert.equal(normalizedById.get("recent-saved-unknown").contentGrade, "",
+      "unknown content grade must not be filled from the target class grade");
+    assert.equal(normalizedById.get("recent-saved-trashed").isCancelled, true);
+    assert.equal(normalizedById.get("recent-saved-trashed").replacesAssignmentId, "recent-saved-archived");
+    assert.equal(normalizedById.get("recent-saved-archived").replacementAssignmentId, "recent-saved-trashed");
+    const filteredByTargetGrade = history.filterAssignments(normalizedRecent, { grade: "고1" });
+    assert.ok(filteredByTargetGrade.some(row => row.id === "recent-saved-cross" && row.contentGrade === "고2"),
+      "the Recent grade filter follows target class grade, not Saved Paper content grade");
+    assert.equal(filteredByTargetGrade.some(row => row.id === "recent-saved-same"), false);
+    const unauthorizedClassRecent = await mf.dispatchFetch(
+      "http://local/api/class-exam-assignments/recent-summary?class=class-recent-grade",
+      { headers: { "X-Fixture-Role": "teacher", "X-Fixture-Teacher": "teacher-a" } },
+    );
+    assert.equal(unauthorizedClassRecent.status, 403,
+      "adding a Saved Paper grade join must not widen existing class access");
 
     const clientSubjectTerms = {
       ALGEBRA: ["대수", "수학I"],
@@ -433,6 +607,78 @@ export default { async fetch(request, env) {
       assert.equal(response.status, 200, JSON.stringify(body));
       assert.equal(body.exams.length, expected ? 1 : 0, id);
       if (expected) assert.equal(body.exams[0].is_review_only, true, id);
+    }
+
+    const optionalGradeSchemas = [
+      { name: "Saved Paper table absent", savedPaperTableSql: "", assignmentHasSavedPaperId: true },
+      {
+        name: "Saved Paper grade column absent",
+        savedPaperTableSql: "CREATE TABLE archive_saved_papers(id TEXT PRIMARY KEY)",
+        savedPaperInsertSql: "INSERT INTO archive_saved_papers(id) VALUES(?)",
+        savedPaperInsertArgs: ["paper-capability"],
+        assignmentHasSavedPaperId: true,
+      },
+      {
+        name: "Saved Paper id column absent",
+        savedPaperTableSql: "CREATE TABLE archive_saved_papers(grade TEXT)",
+        savedPaperInsertSql: "INSERT INTO archive_saved_papers(grade) VALUES(?)",
+        savedPaperInsertArgs: ["고2"],
+        assignmentHasSavedPaperId: true,
+      },
+      {
+        name: "Assignment saved_paper_id column absent",
+        savedPaperTableSql: "CREATE TABLE archive_saved_papers(id TEXT PRIMARY KEY,grade TEXT)",
+        savedPaperInsertSql: "INSERT INTO archive_saved_papers(id,grade) VALUES(?,?)",
+        savedPaperInsertArgs: ["paper-capability", "고2"],
+        assignmentHasSavedPaperId: false,
+      },
+    ];
+    for (const schemaCase of optionalGradeSchemas) {
+      const capabilityMf = new Miniflare({
+        modules: true,
+        script: bundle.outputFiles[0].text,
+        compatibilityDate: "2026-07-11",
+        compatibilityFlags: ["nodejs_compat"],
+        d1Databases: ["DB"],
+      });
+      try {
+        const capabilityDb = await capabilityMf.getD1Database("DB");
+        await capabilityDb.prepare("CREATE TABLE classes(id TEXT PRIMARY KEY,name TEXT,grade TEXT)").run();
+        if (schemaCase.savedPaperTableSql) {
+          await capabilityDb.prepare(schemaCase.savedPaperTableSql).run();
+          if (schemaCase.savedPaperInsertSql)
+            await capabilityDb.prepare(schemaCase.savedPaperInsertSql).bind(...schemaCase.savedPaperInsertArgs).run();
+        }
+        const assignmentColumns = [
+          "id TEXT PRIMARY KEY", "class_id TEXT", "exam_title TEXT", "exam_date TEXT",
+          "question_count INTEGER", "archive_file TEXT", "updated_at TEXT",
+          ...(schemaCase.assignmentHasSavedPaperId ? ["saved_paper_id TEXT"] : []),
+        ];
+        await capabilityDb.prepare(`CREATE TABLE class_exam_assignments(${assignmentColumns.join(",")})`).run();
+        await capabilityDb.prepare("INSERT INTO classes VALUES(?,?,?)")
+          .bind("capability-class", "고1 capability class", "고1").run();
+        const assignmentNames = [
+          "id", "class_id", "exam_title", "exam_date", "question_count", "archive_file", "updated_at",
+          ...(schemaCase.assignmentHasSavedPaperId ? ["saved_paper_id"] : []),
+        ];
+        const assignmentValues = [
+          "capability-assignment", "capability-class", "Capability schema", "2026-10-01", 1,
+          "MIXED:archive2-capability", "2026-10-01T00:00:00.000Z",
+          ...(schemaCase.assignmentHasSavedPaperId ? ["paper-capability"] : []),
+        ];
+        await capabilityDb.prepare(
+          `INSERT INTO class_exam_assignments(${assignmentNames.join(",")}) VALUES(${assignmentNames.map(() => "?").join(",")})`,
+        ).bind(...assignmentValues).run();
+        const response = await capabilityMf.dispatchFetch(
+          "http://local/api/class-exam-assignments/recent-summary?class=capability-class&limit=10",
+        );
+        const body = await response.json();
+        assert.equal(response.status, 200, `${schemaCase.name}: ${JSON.stringify(body)}`);
+        assert.equal(body.assignments[0]?.content_grade, null,
+          `${schemaCase.name} must return unknown content grade without breaking Recent`);
+      } finally {
+        await capabilityMf.dispose();
+      }
     }
   } finally {
     await mf.dispose();
