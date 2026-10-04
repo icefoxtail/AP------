@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_USER_AUTHORITY_REPAIR_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R3",
+  "examUid": "m2/1mid/25-jinnam",
+  "canonicalOrdinal": 1,
+  "examFile": "25_진남중_1학기_중간_중2_기출.js",
+  "authority": {
+    "type": "USER_CURRENT_EXPLICIT_INSTRUCTION",
+    "requestedAction": "수정프로토콜 가동해서 최소 수정으로 마무리 후 메인에 머지하고, Notion에도 사용자 직접 지시임을 기록",
+    "directRepairAuthorized": true,
+    "directMainMergeAuthorized": true,
+    "sourcePixelRecoveryWaivedForThisCloseout": true,
+    "sourceExactClaimed": false
+  },
+  "sourceDisposition": {
+    "authoritativeOriginalPdfOrPageRecovered": false,
+    "priorLookup": "Git assets + Library + Google Drive + authoritative public lookup: not found",
+    "closureMode": "USER_AUTHORIZED_MINIMAL_RECONSTRUCTION",
+    "note": "q6/q7 are repaired for internal mathematical/structural consistency under current user authority; this record does not claim byte/pixel parity with unavailable original source."
+  },
+  "inputArtifactGitBlob": "f1d0d2b90dd3bed3bb63a272ee704a106cf6a2f4",
+  "finalArtifactGitBlob": "f451aebb9f711d075a071ff7380f661dea3f5c41",
+  "repair": {
+    "openQidsBefore": [6, 7],
+    "openQidsAfter": [],
+    "contentMutationCount": 0,
+    "answerMutationCount": 0,
+    "solutionMutationCount": 0,
+    "metaMutationCount": 0,
+    "choiceMutationCount": 4,
+    "outOfScopeMutationCount": 0,
+    "q6": {
+      "field": "choices[4]",
+      "before": "$0.6\\dot{3}$",
+      "after": "$0.63\\dot{6}$",
+      "reason": "remove byte-identical duplicate distractor while preserving answer ② and all source-independent math",
+      "mathRecheck": "PASS: original fraction reconstructed from given observations is 7/11 = 0.636363...; only choice ② equals 7/11 after repair"
+    },
+    "q7": {
+      "field": "choices[0], choices[1], choices[4]",
+      "before": ["ㄱ, ㄷ, ㄹ", "ㄱ, ㄹ, ㅁ", "ㄷ, ㅅ, ㅈ"],
+      "after": ["ㄴ, ㅂ", "ㄴ, ㅇ", "ㅂ, ㅇ, ㅈ"],
+      "reason": "remove references to labels absent from current statement block; preserve choices ③/④ and answer ③",
+      "statementTruth": {"ㄴ": true, "ㅂ": true, "ㅇ": true, "ㅈ": false},
+      "mathRecheck": "PASS: choice ③ is the unique option containing exactly all true visible statements"
+    }
+  },
+  "preservedPriorR3": {
+    "fullAudit": "23/23",
+    "metaRepairQids": [13, 20, 23],
+    "metaSidecarGitBlob": "2859bdc2c39fb154b1db42c2b7b31d5b3eb217e4",
+    "checkpointBlob": "93c1cc84391b01c40f646aa00c9b47ddca31ceb2",
+    "decisionSnapshotBlob": "da484e4e8293cb130b96a88e3cebeecbf48e43ef",
+    "priorPhysicalEvidenceBlob": "cd57ac7a84e3f8bd53875baefecdc14e4e962cd7",
+    "handoffBlob": "527977426c164f0f2bf8830ca1e17e99ecd80186"
+  },
+  "changedLocusDirectDependencyRecheck": "PASS",
+  "lockedScopeMutationCount": 0,
+  "candidateDisposition": "READY_FOR_R3_USER_AUTHORITY_VALIDATION"
+}
