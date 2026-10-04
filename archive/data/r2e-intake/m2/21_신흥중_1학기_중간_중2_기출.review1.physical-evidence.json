@@ -1,0 +1,1454 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+  "examSha256": "sha256:41c5c6f72ac604f08490fddd272de018f81c0a6023314572e62c607af6d187c0",
+  "finalArtifactGitBlob": "65955805e8f0f6ba7957f5a901f6679fd658352d",
+  "questionCount": 24,
+  "sourceAuthority": {
+    "createReceiptPath": "archive/data/r2e-intake/m2/21_신흥중_1학기_중간_중2_기출.create.receipt.json",
+    "createReceiptBlob": "ba6c8edeed372dd857df1997f3e9f0cb89c7b339",
+    "sourceRepairReceiptPath": "archive/data/r2e-intake/m2/21_신흥중_1학기_중간_중2_기출.create.source-repair.receipt.json",
+    "sourceRepairReceiptBlob": "2da9573d51aa7d09d5992e91f228a179c7704d78",
+    "sourceRepairStatus": "PASS_AFTER_REPAIR",
+    "protectedFieldCompare": "24/24 content/choices/answer/image unchanged from source-confirmed CREATE input; R1 mutation limited to solution and metadata fields."
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+        "sha256": "sha256:74eda25440739bb8024e63442989d3ae6b34bcb807b0ef70146e247e6c37807e",
+        "gitBlobSha": "1f537fbe3376c685cc03d625b8519e15ad2366fa"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "sha256": "sha256:9d9aa8b6489366ac166313cdf926f0d0e4092d2ffb42f468dd74dc2833987b4b",
+        "gitBlobSha": "a52472e3bc167e4fb84ab2868ae12161a7bedb01"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:8f1ade79dda49d6411734a53a8a82ad11fb7bd8b924e1ea7c612fec0df055fb3",
+        "solutionExcerpt": "[핵심]\n기약분수의 분모 소인수가 2와 5뿐이면 유한소수이다.\n[풀이]\n① $\\frac1{15}$에는 3이 남고, ② $\\frac{15}{54}=\\frac5{18}$에도 3이 남는다. ③은 분모에 7이 남는다. ④ $\\frac{14}{2^3\\times5\\times7}=\\frac1{2^2",
+        "observation": "학생이 재현할 수 있도록 조건→계산→결론을 직접 연결하는 해설 품질을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js",
+        "qid": 5,
+        "solutionSha256": "sha256:1e42fd11a8edf5752c988ba1d13a0eed8349cc8044c12ef9b1bc2eef0729d86e",
+        "solutionExcerpt": "[핵심]\n순환부분이 같은 자리에서 맞도록 두 식을 만든다.\n[풀이]\n$x=1.32323\\cdots$라 두면 $1000x=1323.2323\\cdots$, $10x=13.2323\\cdots$이다. 두 식을 빼면 $990x=1310$이고 $x=\\frac{131}{99}$이다.\n[결론]\n(다)",
+        "observation": "학생이 재현할 수 있도록 조건→계산→결론을 직접 연결하는 해설 품질을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "qid": 16,
+        "solutionSha256": "sha256:f43b8a713a4aa2f4a441bab914d22facd3f2da2f81ce43075d7c4050dbd13391",
+        "solutionExcerpt": "* ⑤ 책 6권의 값은 $8000 \\times 6$이므로, 올바른 식은 $8000 \\times 6 + 2500 < 20000$입니다.\n* 주어진 보기의 식에는 곱셈이 누락되었으므로 옳지 않습니다.\n* 정답: ⑤",
+        "observation": "문장→부등식 번역을 식의 구조까지 명시하는 품질 기준을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "qid": 18,
+        "solutionSha256": "sha256:9066296c02972aee8fcf4c8089602339eac2b919afe8c311ab0291337c1f1939",
+        "solutionExcerpt": "* 부등식의 양변에 음수를 곱하거나 나누면 부등호의 방향이 바뀝니다.\n* ④ 양변에 $-1$을 곱하면 $-a > -b$가 되며, 여기에 $5$를 더하면 $5-a > 5-b$가 되어야 합니다.\n* 정답: ④",
+        "observation": "부등식 성질을 보기 판정과 연결하는 설명 구조를 확인했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/05_24_향림중_2학기_기말_중2_기출_q12_LABEL_OWNER_BINDING_FAIL.svg",
+        "sha256": "sha256:6e41ac3f63f49df4cda7344c1f89b5c8f1250c37781d81d618540f1aeee2b43f",
+        "gitBlobSha": "eb167f54b698bdb66f926f740432db0e36d26019"
+      }
+    ]
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "freshFromCurrentArtifactBytes": true,
+    "priorCreateReceiptUsedOnlyForEligibilityAndProvenance": true,
+    "contextTolerantRecheck": true,
+    "currentAuthorityRecomputedBeforeFormalCompare": true,
+    "reviewAttemptId": "R1:m2/1mid/21-sinheung:65955805e8f0f6ba7957f5a901f6679fd658352d:1",
+    "decisionSnapshot": "24/24 independent R1 audit; q1/q3/q10/q13/q16 solution defects and stale tag/type metadata repaired; item holds 0."
+  },
+  "formalCompare": {
+    "performedAfterCurrentPassSnapshot": true,
+    "priorStageCompared": "CREATE",
+    "outcome": "CREATE source repairs q5/q18 remain valid. R1 independently found solution defects q1/q3/q10/q13/q16 and stale tag/type metadata q1/q5/q14/q21/q22/q23/q24; all were deterministically repaired without protected source-field mutation."
+  },
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q1; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q1; ③과 ⑤만 참이며 비순환 무한소수는 유리수가 아니다. Stored answer ③, ⑤ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 found and deterministically repaired solution defect q1; post-repair recomputation is consistent with answer ③, ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q1; current solution gives a student-reproducible decisive path after repair."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q1; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q1; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tag/type audit repaired stale metadata q1; category/unit/semantic projection remain aligned with the current solution."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q1; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q1; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q2; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q2; ①과 ②는 셋째 소수 자리에서 갈리고 ②의 9가 더 크다. Stored answer ② matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q2; calculations and conclusion are consistent with answer ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q2; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q2; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q2; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q2; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q2; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q3; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q3; ③의 분모 20만 소인수가 2와 5뿐이다. Stored answer ③ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 found and deterministically repaired solution defect q3; post-repair recomputation is consistent with answer ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q3; current solution gives a student-reproducible decisive path after repair."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q3; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q3; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q3."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q3; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q3; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q4; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q4; 50=3×16+2이므로 순환마디 185의 두 번째 숫자 8이다. Stored answer ⑤ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q4; calculations and conclusion are consistent with answer ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q4; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q4; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q4; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q4."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q4; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q4; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 re-read source-repair receipt PASS q5; protected content/choices/answer remain bound to source fingerprint and R1 did not mutate protected source fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q5; 4.040404…의 순환마디는 04인데 4.점0은 4를 뜻한다. Stored answer ④ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q5; calculations and conclusion are consistent with answer ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q5; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q5; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q5; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tag/type audit repaired stale metadata q5; category/unit/semantic projection remain aligned with the current solution."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q5; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q5; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q6; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q6; 1000x와 10x의 소수 부분이 같아져 빼기 가장 편리하다. Stored answer ② matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q6; calculations and conclusion are consistent with answer ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q6; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q6; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q6; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q6."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q6; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q6; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q7; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q7; 990x=716이므로 x=358/495이고 ⑤는 일치하지 않는다. Stored answer ⑤ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q7; calculations and conclusion are consistent with answer ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q7; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q7; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q7; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q7."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q7; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q7; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q8; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q8; 3²+3²+3²=3×3²=3³이다. Stored answer ① matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q8; calculations and conclusion are consistent with answer ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q8; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q8; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q8; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q8."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q8; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q8; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q9; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q9; ②의 (a⁴)³=a¹²만 제시식과 일치한다. Stored answer ② matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q9; calculations and conclusion are consistent with answer ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q9; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q9; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q9; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q9."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q9; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q9; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q10; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q10; b=2, a=4, c=9, d=3b=6이므로 합은 21이다. Stored answer ② matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 found and deterministically repaired solution defect q10; post-repair recomputation is consistent with answer ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q10; current solution gives a student-reproducible decisive path after repair."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q10; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q10; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q10."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q10; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q10; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q11; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q11; a=12, b=8이므로 a-b=4이다. Stored answer ③ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q11; calculations and conclusion are consistent with answer ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q11; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q11; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q11; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q11."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q11; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q11; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q12; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q12; 3^(x-3)=3⁴이므로 x=7이다. Stored answer ④ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q12; calculations and conclusion are consistent with answer ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q12; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q12; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q12; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q12."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q12; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q12; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q13; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q13; ⑤의 실제 값은 -32x⁸y⁵라 제시식의 부호가 틀리다. Stored answer ⑤ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 found and deterministically repaired solution defect q13; post-repair recomputation is consistent with answer ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q13; current solution gives a student-reproducible decisive path after repair."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q13; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q13; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q13."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q13; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q13; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q14; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q14; V=(1/3)πr²h에 r=2ab를 대입하면 h=36a-18b이다. Stored answer ③ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q14; calculations and conclusion are consistent with answer ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q14; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q14; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q14; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tag/type audit repaired stale metadata q14; category/unit/semantic projection remain aligned with the current solution."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q14; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q14; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q15; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q15; A=a²/(3b²), B=3ab²/2이므로 A÷B=2a/(9b⁴)이다. Stored answer ④ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q15; calculations and conclusion are consistent with answer ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q15; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q15; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q15; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q15."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q15; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q15; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q16; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q16; 전체 식이 2x²-y²가 되어 a+b=1이다. Stored answer ① matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 found and deterministically repaired solution defect q16; post-repair recomputation is consistent with answer ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q16; current solution gives a student-reproducible decisive path after repair."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q16; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q16; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q16."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q16; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q16; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q17; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q17; ①은 식일 뿐이고 ④는 등식이어서 부등식이 아니다. Stored answer ①, ④ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q17; calculations and conclusion are consistent with answer ①, ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q17; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q17; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q17; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q17."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q17; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q17; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 re-read source-repair receipt PASS q18; protected content/choices/answer remain bound to source fingerprint and R1 did not mutate protected source fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q18; ⑤의 원문 뜻은 2(x-4)≥17인데 인쇄 식 x-4×2>17은 다르다. Stored answer ⑤ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q18; calculations and conclusion are consistent with answer ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q18; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q18; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q18; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q18."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q18; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q18; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q19; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q19; 2x+1>3x-1에서 x<2이다. Stored answer ① matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q19; calculations and conclusion are consistent with answer ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q19; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q19; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q19; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q19."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q19; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q19; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q20; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q20; x<3이므로 자연수 해는 1,2 두 개이다. Stored answer ① matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q20; calculations and conclusion are consistent with answer ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q20; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q20; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q20; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/semantic projection recheck PASS q20."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q20; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q20; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q21; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q21; 800x>500x+2000에서 x>20/3이므로 7송이 이상이다. Stored answer ① matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q21; calculations and conclusion are consistent with answer ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q21; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q21; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q21; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tag/type audit repaired stale metadata q21; category/unit/semantic projection remain aligned with the current solution."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q21; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q21; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q22; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q22; 100x-10x=196이므로 x=98/45이다. Stored answer $\\frac{98}{45}$ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q22; calculations and conclusion are consistent with answer $\\frac{98}{45}$."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q22; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q22; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q22; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tag/type audit repaired stale metadata q22; category/unit/semantic projection remain aligned with the current solution."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q22; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q22; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q23; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q23; 원래 분자는 17, 분모는 9이므로 17/9=1.점8이다. Stored answer $1.\\dot{8}$ matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q23; calculations and conclusion are consistent with answer $1.\\dot{8}$."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q23; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q23; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q23; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tag/type audit repaired stale metadata q23; category/unit/semantic projection remain aligned with the current solution."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q23; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q23; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 protected-field compare PASS q24; content/choices/answer/image are unchanged from the source-confirmed CREATE input."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R1 recomputation PASS q24; x/60+10+x/40≤50에서 x≤960이다. Stored answer 960m matches."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independent solution audit PASS q24; calculations and conclusion are consistent with answer 960m."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit PASS q24; current solution gives a student-reproducible decisive path."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 method inventory PASS q24; only middle-school grade-2 first-semester concepts or lower-grade prerequisites are used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual-necessity audit PASS q24; the decisive reasoning is fully reproducible from text/formulas and no separate solutionImage is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tag/type audit repaired stale metadata q24; category/unit/semantic projection remain aligned with the current solution."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty boundary recheck PASS q24; stored level 중 is plausible for the required reasoning."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/string audit PASS q24; TeX/line breaks/choices/answer structure parse coherently in the final JS artifact."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "유리수와 소수 표현의 포함 관계 판정",
+      "decisiveStep": "③과 ⑤만 참이며 비순환 무한소수는 유리수가 아니다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "순환소수의 소수 전개 비교",
+      "decisiveStep": "①과 ②는 셋째 소수 자리에서 갈리고 ②의 9가 더 크다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "기약분수 분모 소인수 판정",
+      "decisiveStep": "③의 분모 20만 소인수가 2와 5뿐이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "순환마디 위치로 자릿수 판정",
+      "decisiveStep": "50=3×16+2이므로 순환마디 185의 두 번째 숫자 8이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "순환마디와 순환점 표기 비교",
+      "decisiveStep": "4.040404…의 순환마디는 04인데 4.점0은 4를 뜻한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "순환부분 자리 맞춤",
+      "decisiveStep": "1000x와 10x의 소수 부분이 같아져 빼기 가장 편리하다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "순환소수를 분수로 변환",
+      "decisiveStep": "990x=716이므로 x=358/495이고 ⑤는 일치하지 않는다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "같은 항의 덧셈을 곱셈으로 변환",
+      "decisiveStep": "3²+3²+3²=3×3²=3³이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "지수법칙 보기별 검산",
+      "decisiveStep": "②의 (a⁴)³=a¹²만 제시식과 일치한다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "거듭제곱 후 계수·지수 대응",
+      "decisiveStep": "b=2, a=4, c=9, d=3b=6이므로 합은 21이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "밑을 소인수 거듭제곱으로 통일",
+      "decisiveStep": "a=12, b=8이므로 a-b=4이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "같은 밑의 지수 비교",
+      "decisiveStep": "3^(x-3)=3⁴이므로 x=7이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "단항식 곱셈·나눗셈 보기 검산",
+      "decisiveStep": "⑤의 실제 값은 -32x⁸y⁵라 제시식의 부호가 틀리다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "원뿔 부피식에서 높이 고립",
+      "decisiveStep": "V=(1/3)πr²h에 r=2ab를 대입하면 h=36a-18b이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "단항식 나눗셈을 역수 곱셈으로 변환",
+      "decisiveStep": "A=a²/(3b²), B=3ab²/2이므로 A÷B=2a/(9b⁴)이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "괄호·나눗셈을 순서대로 정리",
+      "decisiveStep": "전체 식이 2x²-y²가 되어 a+b=1이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "부등호 존재 여부 판정",
+      "decisiveStep": "①은 식일 뿐이고 ④는 등식이어서 부등식이 아니다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "문장과 부등식 번역 비교",
+      "decisiveStep": "⑤의 원문 뜻은 2(x-4)≥17인데 인쇄 식 x-4×2>17은 다르다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "일차부등식 풀이",
+      "decisiveStep": "2x+1>3x-1에서 x<2이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "분모 제거 후 자연수 해 개수 판정",
+      "decisiveStep": "x<3이므로 자연수 해는 1,2 두 개이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "두 구매비용 비교 부등식",
+      "decisiveStep": "800x>500x+2000에서 x>20/3이므로 7송이 이상이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "순환소수 자리 맞춤으로 분수화",
+      "decisiveStep": "100x-10x=196이므로 x=98/45이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "잘못 본 분자·분모에서 원래 기약분수 복원",
+      "decisiveStep": "원래 분자는 17, 분모는 9이므로 17/9=1.점8이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "거리/속력/시간 부등식",
+      "decisiveStep": "x/60+10+x/40≤50에서 x≤960이다.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No exact active PT/TPL crosswalk binding established; retain RPM_ONLY.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md"
+      ]
+    }
+  ],
+  "repairSummary": {
+    "changedQids": [
+      1,
+      3,
+      5,
+      10,
+      13,
+      14,
+      16,
+      21,
+      22,
+      23,
+      24
+    ],
+    "changedFields": [
+      "solution",
+      "tags",
+      "questionType"
+    ],
+    "reason": "R1 full recheck repaired five solution-math/explanation defects and stale tag/type metadata while preserving source-protected content/choices/answer/image.",
+    "unrelatedMutationCount": 0
+  }
+}
