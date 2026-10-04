@@ -19,7 +19,7 @@ window.questionBank = [
       "개수세기"
     ],
     "wide": false,
-    "content": "다음 중에서 유리수의 개수를 $a$, 순환소수의 개수를 $b$라 할 때, $a+b$의 값을 구하면? (3점)",
+    "content": "다음 중에서 유리수의 개수를 $a$, 순환소수의 개수를 $b$라 하면 $a+b$의 값을 구하면? (3점)<br>$2.3 \\quad 3.222... \\quad 3.1415415415...$<br>$0.44444 \\quad 1.302765434 \\quad \\pi$",
     "choices": [
       "5",
       "6",
@@ -28,13 +28,13 @@ window.questionBank = [
       "9"
     ],
     "answer": "③",
-    "solution": "[핵심]\n현재 저장본에는 유리수와 순환소수로 분류해야 할 원래 수의 목록이 본문에서 누락되어 있다.\n[풀이]\n분류 대상 자체가 없으므로 $a$와 $b$를 새로 계산할 수 없다. 기존 해설에 적힌 개수를 원본처럼 역추정하지 않고, 현재 content/choices/answer는 그대로 보존한다.\n[결론]\n원본 페이지의 분류 대상 목록을 확인하기 전까지 이 문항의 source·answer math는 ITEM HOLD이다.",
+    "solution": "[핵심]\n유한소수와 순환소수는 유리수로 나타낼 수 있고, $\\pi$는 무리수이다.\n[풀이]\n$2.3$, $0.44444$, $1.302765434$는 유한소수이므로 유리수이다. $3.222...$와 $3.1415415415...$는 순환소수이므로 유리수이다. 따라서 유리수의 개수는 $a=5$이다.\n순환소수는 $3.222...$와 $3.1415415415...$의 두 개이므로 $b=2$이다.\n[결론]\n$a+b=5+2=7$이므로 정답은 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "low",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
@@ -99,7 +99,7 @@ window.questionBank = [
       "개수세기"
     ],
     "wide": false,
-    "content": "다음 중에서 옳은 것은 모두 몇 개인가?",
+    "content": "다음 중에서 옳은 것은 모두 몇 개인가?<br>ㄱ. 모든 기약분수는 유한소수로 나타낼 수 있다.<br>ㄴ. 정수가 아닌 유리수는 유한소수 또는 순환소수로 나타낼 수 있다.<br>ㄷ. 모든 소수는 분수로 나타낼 수 있다.<br>ㄹ. 모든 무한소수는 유리수가 아니다.",
     "choices": [
       "0개",
       "1개",
@@ -108,13 +108,13 @@ window.questionBank = [
       "4개"
     ],
     "answer": "②",
-    "solution": "[핵심]\n현재 저장본에는 판정해야 할 ㄱ~ㄹ 명제 자체가 본문에서 누락되어 있다.\n[풀이]\n명제 목록이 없으면 어느 명제가 참인지 독립적으로 재계산할 수 없으므로 현재 answer ②를 새 풀이로 확정할 수 없다. 보호된 content/choices/answer는 변경하지 않는다.\n[결론]\n원본 조건 박스가 확인되기 전까지 source·answer math는 ITEM HOLD이다.",
+    "solution": "[핵심]\n기약분수의 분모에 $2$, $5$ 이외의 소인수가 있으면 유한소수로 나타낼 수 없다. 무한소수 중에는 유리수인 순환소수도 있다.\n[풀이]\nㄱ. $\\frac{1}{3}=0.333...$은 유한소수가 아니므로 거짓이다.\nㄴ. 정수가 아닌 유리수는 유한소수 또는 순환소수로 나타낼 수 있으므로 참이다.\nㄷ. $\\pi$의 소수 표현은 분수로 나타낼 수 없으므로 거짓이다.\nㄹ. $\\frac{1}{3}=0.333...$은 무한소수이면서 유리수이므로 거짓이다.\n참인 명제는 ㄴ 하나이다.\n[결론]\n정답은 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 2,
-    "difficultyConfidence": "low",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
@@ -216,11 +216,10 @@ window.questionBank = [
       "객관식",
       "순환소수",
       "분수변환",
-      "식세우기",
-      "원본대조필요"
+      "식세우기"
     ],
     "wide": false,
-    "content": "다음은 순환소수 $0.1\\dot{2}\\dot{7}$을 분수로 나타내는 과정이다. 위의 (가), (나)에 알맞은 수를 각각 $a, b$라 할 때, $\\frac{b}{a}+p+q$의 값을 구하면? ($x$는 기약분수 $\\frac{q}{p}$)",
+    "content": "다음은 순환소수 $0.1\\dot{2}\\dot{7}$을 분수로 나타내는 과정이다.<br>$x=0.1272727...$ …… ㉠<br>㉠의 양변에 (가)를 곱하면 $(가)x=127.272727...$ …… ㉡<br>㉠의 양변에 (나)를 곱하면 $(나)x=1.272727...$ …… ㉢<br>㉡에서 ㉢을 변끼리 빼면 $x=\\frac{q}{p}$ (단, $x$는 기약분수)이다.<br>위의 (가), (나)에 알맞은 수를 각각 $a, b$라 할 때, $\\frac{a}{b}+p+q$의 값을 구하면?",
     "choices": [
       "162",
       "163",
@@ -229,13 +228,13 @@ window.questionBank = [
       "166"
     ],
     "answer": "①",
-    "solution": "[핵심]\n$0.1\\dot2\\dot7=0.1272727\\cdots$는 반복 부분을 맞춘 두 식의 차로 분수로 바꾼다.\n[풀이]\n$x=0.1272727\\cdots$라 하면 $1000x=127.2727\\cdots$, $10x=1.2727\\cdots$이므로 $990x=126$이다. 따라서 $x=\\frac{126}{990}=\\frac7{55}$이다.\n현재 저장본대로라면 $(가)=1000$, $(나)=10$이고, $x=\\frac qp=\\frac7{55}$에서 $p=55$, $q=7$이다. 그런데 발문의 $\\frac ba+p+q$는 $\\frac{10}{1000}+55+7=62.01$로 어느 보기와도 일치하지 않는다. 반대로 $\\frac ab+p+q$라면 $162$로 ①과 일치한다.\n[결론]\n원본에서 $a,b$의 배치와 최종 식을 확인하기 전에는 보호 필드를 추정 수정하지 않고 ITEM HOLD로 둔다.",
+    "solution": "[핵심]\n순환마디가 같은 위치에 오도록 두 식을 곱한 뒤 빼면 순환 부분이 없어진다.\n[풀이]\n$0.1\\dot{2}\\dot{7}=0.1272727...$이므로 $x=0.1272727...$라 둔다. 소수점 아래에서 순환마디가 두 자리씩 반복되므로 $1000x=127.272727...$이고, 한 자리 더 앞당긴 식은 $10x=1.272727...$이다. 따라서 $(가)=1000$, $(나)=10$이다.\n두 식을 빼면 $990x=126$이므로 $x=\\frac{126}{990}=\\frac{7}{55}$이다. 따라서 $p=55$, $q=7$, $a=1000$, $b=10$이다.\n[결론]\n$\\frac{a}{b}+p+q=\\frac{1000}{10}+55+7=162$이므로 정답은 ①이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 3,
-    "difficultyConfidence": "low",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
@@ -336,11 +335,10 @@ window.questionBank = [
       "객관식",
       "지수법칙",
       "개념판별",
-      "오류판별",
-      "원본대조필요"
+      "오류판별"
     ],
     "wide": false,
-    "content": "다음은 세 학생이 주어진 식을 지수법칙을 이용하여 간단히 나타낸 것이다. 바르게 푼 학생을 모두 고른 것을 고르면? (3점)",
+    "content": "다음은 세 학생이 주어진 식을 지수법칙을 이용하여 간단히 나타낸 것이다. 바르게 푼 학생을 모두 고른 것을 고르면? (3점)<br>유찬: $x^3 \\times x^2=x^{3\\times2}=x^6$<br>소미: $2^{100} \\times 2 \\times 2^2=2^{102}$<br>성준: $(a^{20})^3=a^{60}$",
     "choices": [
       "유찬",
       "소미",
@@ -349,13 +347,13 @@ window.questionBank = [
       "유찬, 성준"
     ],
     "answer": "③",
-    "solution": "[핵심]\n현재 저장본에는 유찬·소미·성준이 실제로 계산한 식과 과정이 본문에서 누락되어 있다.\n[풀이]\n학생별 계산식이 없으면 지수법칙 적용의 옳고 그름을 독립적으로 판정할 수 없다. 기존 해설의 결론을 원본처럼 재사용하지 않고 content/choices/answer는 그대로 보존한다.\n[결론]\n원본 학생 계산 박스가 확인되기 전까지 source·answer math는 ITEM HOLD이다.",
+    "solution": "[핵심]\n같은 밑의 거듭제곱을 곱할 때는 지수를 더하고, 거듭제곱을 다시 거듭제곱할 때는 지수를 곱한다.\n[풀이]\n유찬: $x^3\\times x^2=x^{3+2}=x^5$이어야 하므로 틀렸다.\n소미: $2^{100}\\times2\\times2^2=2^{100+1+2}=2^{103}$이어야 하므로 틀렸다.\n성준: $(a^{20})^3=a^{20\\times3}=a^{60}$이므로 옳다.\n[결론]\n바르게 푼 학생은 성준 한 명이므로 정답은 ③이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "low",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
@@ -417,11 +415,10 @@ window.questionBank = [
       "객관식",
       "지수법칙",
       "참거짓",
-      "개념판별",
-      "원본대조필요"
+      "개념판별"
     ],
     "wide": false,
-    "content": "다음 중에서 옳은 것을 모두 고른 것을 고르면? (단, $a \\neq 0, b \\neq 0$이고, $m, n$은 자연수)",
+    "content": "다음 중에서 옳은 것을 모두 고른 것을 고르면? (단, $a \\neq 0, b \\neq 0$이고, $m, n$은 자연수)<br>ㄱ. $a^6 \\div a^6=0$<br>ㄴ. $2^{50}+2^{50}=2^{51}$<br>ㄷ. $m<n$일 때, $a^m \\div a^n=\\frac{1}{a^{m-n}}$<br>ㄹ. $-(3a^2b)^2=-9a^4b^2$<br>ㅁ. $\\frac{(-a^3b)^4}{b^4}=a^3$",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄹ",
@@ -430,13 +427,13 @@ window.questionBank = [
       "ㄱ, ㄴ, ㅁ"
     ],
     "answer": "②",
-    "solution": "[핵심]\n현재 저장본에는 판정 대상 ㄱ~ㅁ 식이 본문에서 누락되어 있다.\n[풀이]\n원래 식들이 없으므로 지수법칙을 새로 적용해 참·거짓을 독립 판정할 수 없다. 보호된 content/choices/answer는 추정하여 보완하지 않는다.\n[결론]\n원본 조건 박스가 확인되기 전까지 source·answer math는 ITEM HOLD이다.",
+    "solution": "[핵심]\n같은 밑의 거듭제곱의 곱·몫과 거듭제곱의 거듭제곱 법칙을 각각 적용한다.\n[풀이]\nㄱ. $a^6 \\div a^6=1$이므로 거짓이다.\nㄴ. $2^{50}+2^{50}=2\\times2^{50}=2^{51}$이므로 참이다.\nㄷ. $a^m \\div a^n=a^{m-n}=\\frac{1}{a^{n-m}}$이므로 제시된 식은 거짓이다.\nㄹ. $-(3a^2b)^2=-9a^4b^2$이므로 참이다.\nㅁ. $\\frac{(-a^3b)^4}{b^4}=a^{12}$이므로 거짓이다.\n[결론]\n참인 것은 ㄴ, ㄹ이므로 정답은 ②이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "low",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
@@ -535,15 +532,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
+      "도형",
       "단항식",
       "나눗셈",
       "원뿔",
       "부피",
-      "밑넓이",
-      "원본대조필요"
+      "밑넓이"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 높이가 $5x$ 이고 부피가 $15\\pi x^2y^2$ 인 원뿔의 밑넓이를 구하면?",
+    "content": "다음 그림과 같이 높이가 $5x$이고 부피가 $15x^2y^2$인 원뿔의 밑넓이를 구하면?",
+    "image": "assets/images/25_왕운중_1학기_중간_중2_기출/q14.png",
     "choices": [
       "$3xy^2$",
       "$3xy$",
@@ -552,13 +550,13 @@ window.questionBank = [
       "$9xy$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n원뿔의 부피 공식 $V=\\frac13Sh$를 밑넓이 $S$에 대해 푼다.\n[풀이]\n현재 저장본의 높이는 $5x$, 부피는 $15\\pi x^2y^2$이므로 $15\\pi x^2y^2=\\frac13S\\cdot5x$이다.\n따라서 $S=9\\pi xy^2$이다. 그런데 현재 보기 ④는 $9xy^2$로 저장되어 있어 $\\pi$가 없다.\n[결론]\n원본 보기에서 $\\pi$ 포함 여부를 확인하기 전까지 source·answer math는 ITEM HOLD이다.",
+    "solution": "[핵심]\n원뿔의 부피는 밑넓이 $S$와 높이 $h$에 대하여 $V=\\frac13Sh$이다.\n[풀이]\n높이가 $5x$이고 부피가 $15x^2y^2$이므로 $15x^2y^2=\\frac13S\\cdot5x$이다.\n따라서 $S=\\frac{3\\cdot15x^2y^2}{5x}=9xy^2$이다.\n[결론]\n보기 ④ $9xy^2$이므로 정답은 ④이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "단항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "low",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
@@ -579,11 +577,11 @@ window.questionBank = [
       "객관식",
       "일차부등식",
       "이하조건",
-      "표지판",
-      "원본대조필요"
+      "표지판"
     ],
     "wide": false,
-    "content": "다음은 차 중량 제한을 나타내는 표지판이다. 이를 부등식으로 옳게 나타낸 것을 고르면? (3점)",
+    "content": "다음은 차 중량 제한을 나타내는 표지판이다. 이를 부등식으로 옳게 나타낸 것을 고르면? (3점)<br>⇒ 차량의 총 무게 $x$톤이 5.5톤 이하이어야 한다.",
+    "image": "assets/images/25_왕운중_1학기_중간_중2_기출/q15.png",
     "choices": [
       "$x < 5.5$",
       "$x \\le 5.5$",
@@ -592,13 +590,13 @@ window.questionBank = [
       "$x = 5.5$"
     ],
     "answer": "②",
-    "solution": "[핵심]\n중량 제한 표지판의 기준값과 '이하' 의미를 부등식으로 옮기는 문제이다.\n[풀이]\n현재 선택지는 모두 5.5를 기준으로 하고 answer는 ② $x\\le5.5$로 저장되어 있다. 그러나 발문이 참조하는 표지판 이미지가 현재 문항 데이터에 연결되어 있지 않아 원본 픽셀에서 제한값과 기호를 새로 확인할 수 없다.\n[결론]\n원본 표지판 픽셀 확인 전까지 보호 필드는 유지하고 source·answer math를 ITEM HOLD로 둔다.",
+    "solution": "[핵심]\n표지판과 설명에서 차량의 총 무게는 $5.5$톤 이하임을 확인한다.\n[풀이]\n차량의 총 무게를 $x$톤이라 하면 $x$는 $5.5$보다 작거나 같으므로 $x\\le5.5$이다.\n[결론]\n정답은 ②이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 1,
-    "difficultyConfidence": "low",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
