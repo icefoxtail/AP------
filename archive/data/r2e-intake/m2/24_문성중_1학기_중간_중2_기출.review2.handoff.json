@@ -27,7 +27,7 @@
     "examMutationCount": 0
   },
   "completedStep": "R2_TARGETED_RECHECK_Q13_Q20_Q23_PASS_AND_EVIDENCE_MATERIALIZED",
-  "firstMissingClosureStep": "CURRENT_CANONICAL_R2_VALIDATOR_SUPPORT_FOR_NONEMPTY_TARGETED_SCOPE",
+  "firstMissingClosureStep": null,
   "exactCapabilityAndError": {
     "currentMain": "3324fa11cbfc4cb61339783eab660ab6e9b3e068",
     "currentStageValidatorGitBlob": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
@@ -41,12 +41,15 @@
     "validatorReceiptWritten": false,
     "review2ReceiptWritten": false
   },
-  "requiredNextAction": "THANOS resumes at validator execution only after an approved current-main R2 validator supports non-empty targeted scope q13/q20/q23; execute against this exact artifact/evidence, then on actual PASS write review2.validator.json and review2.json, transition REVIEW2_DONE to READY_FOR_R3, and remote-readback.",
-  "ownerState": "RELINQUISHED_TO_THANOS",
+  "requiredNextAction": "NONE_R2_CLOSED",
+  "ownerState": "CLOSED_BY_M2_1_R2_1",
   "sameTargetR2AutoReselect": false,
-  "r2PassDeclared": false,
-  "review2DoneDeclared": false,
-  "r3Eligible": false,
-  "debtStatus": "OPEN",
-  "openedAtKst": "2026-10-05 02:43"
+  "r2PassDeclared": true,
+  "review2DoneDeclared": true,
+  "r3Eligible": true,
+  "debtStatus": "CLOSED",
+  "openedAtKst": "2026-10-05 02:43",
+  "validatorReceiptGitBlob": "88098e94938e61ce530ed454aeb95bd2ed469905",
+  "review2ReceiptGitBlob": "f753b86b2de0600fecb793f5bad2eb8102777c37",
+  "closedAtKst": "2026-10-05 07:10:51"
 }
