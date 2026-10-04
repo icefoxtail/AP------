@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "m2-1-create-handoff-v1",
+  "status": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "queue": "CODEX_SOURCE_REPAIR_QUEUE",
+  "thanosEligible": false,
+  "canonicalOrdinal": 13,
+  "examUid": "M2-1-21-GEUMDANG-1MID",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+  "productionBranch": "work/middle/m2/21-geumdang-1mid-temp-create4-20261004-1833",
+  "productionHead": "71a84afa30668aba77167300410bc5f70c3dc04f",
+  "finalArtifactSha": "d72ff8f8187d32ca0471225787f0233a1c0e9d45",
+  "metadataBlob": "6ab96d223230dd5f1569970c351224312cf70d97",
+  "evidenceBlob": "1ee3b597fa020c0d46f6b880fa526522a9687692",
+  "draftPullRequest": {
+    "number": 211,
+    "url": "https://github.com/icefoxtail/AP------/pull/211"
+  },
+  "completedStep": "protected source parity 26/26 + fresh solution attempt 26/26 + resolved solution 23/26 + metadata 26/26 + visual triage 26/26 + physical evidence + draft PR + registration sync success",
+  "firstMissingClosureStep": "SOURCE_UNVERIFIED_Q11_Q18_Q23",
+  "exactCapabilityAndError": [
+    {
+      "qid": 11,
+      "error": "Current inline SVG geometry and labels recalculate to A+C+B/2=13/2; no choice matches and stored answer is ④. Authoritative source page/diagram unavailable in repository evidence."
+    },
+    {
+      "qid": 18,
+      "error": "Current stem computes 9/2≤a<5 (choice ①), while stored answer is ⑤. Authoritative answer/stem unavailable."
+    },
+    {
+      "qid": 23,
+      "error": "Current content is truncated to '(서술형'; full original stem/subquestions unavailable."
+    },
+    {
+      "step": "canonical CREATE validator",
+      "error": "NOT_RUN because unresolved source truth would make PASS/receipt invalid; generic PR CI is not the target-specific CREATE validator."
+    }
+  ],
+  "workflowEvidence": {
+    "archiveRegistrationSync": {
+      "runId": 37192753813,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "genericCI": {
+      "runId": 37192753805,
+      "status": "in_progress",
+      "conclusion": null,
+      "syntaxCheck": "success",
+      "skillVerification": "success"
+    }
+  },
+  "requiredNextAction": "Codex Source Repair must locate authoritative q11 diagram, q18 stem/answer, and full q23 stem; apply only source-confirmed repairs; then run the actual canonical CREATE validator, persist validator receipt and CREATE receipt, remote-read back, and transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "producerOwnership": "RELINQUISHED",
+  "sameTargetReselection": "DO_NOT_RESELECT_UNLESS_CURRENT_REASSIGN_TO_CREATE",
+  "createDone": false,
+  "readyForReview1": false,
+  "passClaim": false,
+  "createdAtKst": "2026-10-04 18:46 KST"
+}
