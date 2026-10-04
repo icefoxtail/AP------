@@ -1,6 +1,6 @@
 {
   "schemaVersion": "m2-1-create-handoff-v1",
-  "status": "SOURCE_FREE_CREATE_CLOSURE_PENDING",
+  "status": "CREATE_CLOSURE_DEBT",
   "queue": "RESCUE_QUEUE",
   "thanosEligible": true,
   "canonicalOrdinal": 15,
@@ -11,17 +11,20 @@
   "finalArtifactSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
   "metadataBlob": "a5d7469c94891177021cb25fff2d05fc28db041c",
   "evidenceBlob": "3e819e3f9c6651cc68e5863972fe7ac40ca2ce41",
-  "completedStep": "SOURCE_FREE_CREATE_EVIDENCE_REFRESHED",
-  "firstMissingClosureStep": "CANONICAL_CREATE_VALIDATOR",
+  "completedStep": "SOURCE_REPAIR_AND_EVIDENCE_REFRESHED",
+  "firstMissingClosureStep": "SOLUTION_CALIBRATION_EVIDENCE",
   "exactCapabilityAndError": [
     {
-      "step": "canonical CREATE validator",
-      "error": "NOT_RUN after source repair/evidence refresh"
+      "step": "canonical CREATE calibration preflight",
+      "error": "SOLUTION_CALIBRATION_REQUIRED",
+      "workflowRunId": 37242753414,
+      "workflowJobId": 111554560081,
+      "testFile": "tests/m2-o15-create-gate-manual.test.js"
     }
   ],
-  "requiredNextAction": "Run canonical CREATE validator once, persist validator and CREATE receipts, read back, then transition CREATE_DONE→READY_FOR_REVIEW1.",
+  "requiredNextAction": "Bind complete quality calibration evidence from the required golden and negative samples, including sample qids, solution hashes, observation excerpts, and 24/24 formal comparison; then run canonical CREATE gates and issue receipts.",
   "producerOwnership": "RELINQUISHED",
-  "sameTargetReselection": "DO_NOT_RESELECT_UNLESS_CURRENT_REASSIGN_TO_CREATE",
+  "sameTargetReselection": "REASSIGN_AFTER_CALIBRATION_EVIDENCE_READY",
   "createDone": false,
   "readyForReview1": false,
   "passClaim": false,
@@ -29,5 +32,6 @@
   "latestMainObserved": "c43df24bdd1edb50f2e3e699178375ff75d44f3a",
   "blockedQids": [],
   "sourceRepairEvidencePath": "archive/data/r2e-intake/m2/19_연향중_1학기_중간_중2_기출.create.source-repair.json",
-  "reason": "q5 exact D source repair complete; HOLD removed and artifact/meta/evidence rebound."
+  "sourceRepair": "q5 exact D source correction complete; source truth and answer solution checked; no item holds.",
+  "validationOutcome": "target gate did not pass; no CREATE receipt issued."
 }
