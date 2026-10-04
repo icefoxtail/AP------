@@ -1,4 +1,4 @@
-name: M2 o5 CREATE validation PR temp-create2
+name: M2 o5 R1 validation PR r1-1
 on:
   pull_request:
     branches:
@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: 22
       - name: Calibration preflight
-        run: node archive/tools/solution-calibration-gate.mjs --exam "archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js" --evidence "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.create.physical-evidence.json" --stage CREATE --preflight
-      - name: Canonical CREATE gate
-        run: node archive/tools/review-evidence-gate.mjs --exam "archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js" --evidence "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.create.physical-evidence.json" --stage CREATE
+        run: node archive/tools/solution-calibration-gate.mjs --exam "archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js" --evidence "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.review1.physical-evidence.json" --stage R1 --preflight
+      - name: Canonical R1 gate
+        run: node archive/tools/review-evidence-gate.mjs --exam "archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js" --evidence "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.review1.physical-evidence.json" --stage R1
