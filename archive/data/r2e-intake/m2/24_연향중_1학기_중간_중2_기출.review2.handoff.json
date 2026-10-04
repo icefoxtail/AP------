@@ -23,12 +23,13 @@
     "deterministicRepairCount": 0,
     "examMutationCount": 0
   },
-  "completedStep": "REVIEW2_DONE_REMOTE_READBACK_PENDING_THIS_COMMIT",
-  "firstMissingClosureStep": "REMOTE_READBACK_ONLY",
-  "requiredNextAction": "REMOTE_READBACK_RECEIPT_BLOBS_AND_BRANCH_HEAD",
-  "ownerState": "CLOSING_BY_R2_1_CURRENT_REASSIGN",
-  "r3Eligible": false,
-  "debtStatus": "CLOSING",
+  "completedStep": "REVIEW2_DONE_REMOTE_READBACK_CONFIRMED",
+  "firstMissingClosureStep": "NONE_CLOSED",
+  "requiredNextAction": "NONE_R2_DURABLY_CLOSED_READY_FOR_R3",
+  "ownerState": "RELINQUISHED_AFTER_R2_1_CURRENT_REASSIGN_CLOSURE",
+  "r3Eligible": true,
+  "debtStatus": "CLOSED",
+  "closedAtKst": "2026-10-05 00:13",
   "closureResolution": {
     "validationPullRequest": 230,
     "validationSurfaceCommit": "5abf89702a8969a460365094c991a008ea67ac07",
@@ -37,12 +38,22 @@
     "workflowRunAttempt": 2,
     "workflowJobId": 111465392544,
     "genericStageValidatorBlob": "d7a835410e900e3cd16e81e2b61b448d207995e0",
+    "genericStageValidatorWorkflowBlob": "e0b7201629177c02a37ae39c0e2c0cd5e8fc81af",
     "result": "PASS_WITH_ITEM_HOLDS",
     "issues": [],
     "validatorReceiptSha": "c732dd53c71b840ddc12fdc05728c27444e66ded",
     "review2ReceiptSha": "b4a91fd363456d434e254a8e38101314a01ca1b6",
+    "receiptBearingHead": "aa2eb193089695dc146c9c58146bf369f09ef7d9",
     "state": "REVIEW2_DONE",
-    "nextStage": "READY_FOR_R3"
+    "nextStage": "READY_FOR_R3",
+    "remoteReadback": {
+      "examBlob": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
+      "evidenceBlob": "f7c972819bf5ccf642c636188260b346ecb396dd",
+      "validatorBlob": "c732dd53c71b840ddc12fdc05728c27444e66ded",
+      "review2Blob": "b4a91fd363456d434e254a8e38101314a01ca1b6",
+      "receiptBearingHead": "aa2eb193089695dc146c9c58146bf369f09ef7d9",
+      "status": "CONFIRMED"
+    }
   },
   "historicalFailure": {
     "workflowRunId": 37209731512,
@@ -52,6 +63,7 @@
       "META_NULL_REASON_REQUIRED:q21",
       "CALIBRATION_ORDER_INVALID:R2",
       "R2_BLIND_FREEZE_SHA_REQUIRED"
-    ]
+    ],
+    "resolution": "Evidence was deterministically repaired on 9e17dd4b71f3033e0d1e5359d823c17f51426463; the current run re-executed the generic validator against the repaired PR head and received PASS."
   }
 }
