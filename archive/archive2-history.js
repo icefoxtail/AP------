@@ -7,6 +7,12 @@
   const searchKey = (value) => text(value).normalize("NFC").toLowerCase().replace(/\s+/g, "");
   const grades = Object.freeze(["중1", "중2", "중3", "고1", "고2", "고3"]);
   const gradeOf = (value) => grades.includes(text(value)) ? text(value) : "";
+  // Match the distribution guard: invalid explicit metadata must not fall back
+  // to the name. Whitespace-only metadata still uses the original name fallback.
+  function classGrade(row) {
+    const explicit = String(row?.grade || row?.grade_label || row?.class_grade || "").replace(/\s/g, "");
+    return gradeOf(explicit || String(row?.name || row?.class_name || "").match(/(?:중|고)[123]/)?.[0]);
+  }
   function dateKey(value) {
     const match = text(value).match(/^(\d{4}-\d{2}-\d{2})(?:$|[T ])/);
     if (!match) return "";
@@ -36,8 +42,12 @@
       const exam = examByFile.get(core.normalizeFile(assignment.archive_file));
       // History grade means the students' target class grade. The paper's
       // own grade/subject stays separate so cross-grade assignments remain legible.
-      const targetGrade = gradeOf(assignment.class_grade) || gradeOf(cls?.grade);
-      const contentGrade = gradeOf(assignment.grade_label) || gradeOf(meta.grade) ||
+      const targetGrade = classGrade({
+        grade: assignment.class_grade ?? cls?.grade,
+        grade_label: assignment.class_grade_label ?? cls?.grade_label,
+        name: assignment.class_name || cls?.name,
+      });
+      const contentGrade = gradeOf(assignment.content_grade) || gradeOf(assignment.grade_label) || gradeOf(meta.grade) ||
         gradeOf(exam?.sourceGrade || exam?.grade);
       const rawSubject = text(assignment.subject) || text(meta.subject);
       const subjectOptions = core.subjectProjectionOptions(contentGrade);
@@ -111,5 +121,5 @@
     }
     return [...groups.values()];
   }
-  return { grades, dateKey, normalizeAssignments, subjectOptions, filterAssignments, groupByDate };
+  return { grades, classGrade, dateKey, normalizeAssignments, subjectOptions, filterAssignments, groupByDate };
 });
