@@ -10,10 +10,10 @@
   "inputArtifactSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
   "finalArtifactSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
   "branch": "work/middle/m2/24-yeonhyang-1mid-r2-2-20261004-2044",
-  "validationMaterialHead": "3d87d7cd66108b1586ef8854f0c84f1424e39681",
+  "validationMaterialHead": "9e17dd4b71f3033e0d1e5359d823c17f51426463",
   "evidenceSnapshot": {
     "path": "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.review2.physical-evidence.json",
-    "blob": "138f461683bbd702550b8892455a3bb9529930d7",
+    "blob": "f7c972819bf5ccf642c636188260b346ecb396dd",
     "decisionPath": "archive/data/r2e-intake/m2/24_연향중_1학기_중간_중2_기출.review2.recheck-decision.r2-2-20261004-2044.json",
     "decisionBlob": "8e24452c343dfe22c2ff379c008f771ae876b3fe",
     "blindFreezeBlob": "e9b483b8033a0ef59994397dc007a3281488486a",
@@ -24,14 +24,37 @@
     ],
     "deterministicRepairCount": 0
   },
-  "completedStep": "R2_FULL_23_RECHECK_FORMAL_COMPARE_REGRESSION_RECHECK_SNAPSHOT_PHYSICAL_EVIDENCE_AND_TARGET_GATE_TEST_MATERIALIZED",
-  "firstMissingClosureStep": "PR_ACTIONS_TRIGGER_AND_ACTUAL_R2_CANONICAL_VALIDATOR",
+  "completedStep": "REVIEW2_DONE_REMOTE_READBACK_CONFIRMED",
+  "firstMissingClosureStep": "NONE_CLOSED",
   "exactCapabilityAndError": {
-    "prWriteAttempt1": "PR_CREATE_BLOCKED_BY_PROVIDER_WRITE_GATE",
-    "prWriteAttempt2": "MINIMAL_DRAFT_PR_CREATE_BLOCKED_BY_PROVIDER_WRITE_GATE",
-    "materiallyDifferentPath": "VALIDATION_BRANCH_CREATED_FROM_CURRENT_MAIN; TARGET_ARTIFACT_BIND_WRITE_BLOCKED_BY_PROVIDER_WRITE_GATE; WORKFLOW_RUN_LOOKUP_FOR_EXACT_MATERIAL_HEAD_RETURNED_ZERO; NO_FRESH_WORKFLOW_DISPATCH_ACTION_EXPOSED"
+    "priorPrCreate": "NEW_PR_CREATE_BLOCKED_BY_PROVIDER_SAFETY_GATE",
+    "materiallyDifferentSafePath": "REUSED_SAME_TARGET_OPEN_VALIDATION_PR_201; NON_FORCE_FAST_FORWARD_ONLY",
+    "firstActualRun": "37208884134 / job 111455789489: target FAIL on META_NULL_REASON_REQUIRED:q21, CALIBRATION_ORDER_INVALID:R2, R2_BLIND_FREEZE_SHA_REQUIRED",
+    "deterministicEvidenceRepair": "q21 nullReason restored from current R1 evidence; calibrationOrder rebound to current canonical expected value; blindFreeze SHA-256/blob bound; exam artifact unchanged",
+    "closureRun": "37209275900 / job 111456944066: M2_O5_R2_CANONICAL_REPORT ok=true PASS_WITH_ITEM_HOLDS q9 issues=[]; overall CI retained four unrelated baseline failures"
   },
-  "requiredNextAction": "THANOS must open an allowed PR/Actions validation surface from the exact R2 material, run tests/m2-r2-2-o5-yeonhyang-review2-gate.test.js against the current canonical R2 gate, write actual validator and REVIEW2 receipts only on actual targeted PASS_WITH_ITEM_HOLDS, then transition REVIEW2_DONE->READY_FOR_R3 and remote-readback exact artifact/receipts.",
-  "ownerState": "RELINQUISHED_TO_THANOS",
-  "r3Eligible": false
+  "requiredNextAction": "NONE_R2_DURABLY_CLOSED_READY_FOR_R3",
+  "ownerState": "CLOSED_BY_R2_REASSIGN",
+  "r3Eligible": true,
+  "debtStatus": "CLOSED",
+  "closedAtKst": "2026-10-04 23:31",
+  "closureResolution": {
+    "validationPullRequest": 201,
+    "validationSurfaceCommit": "9e17dd4b71f3033e0d1e5359d823c17f51426463",
+    "workflowRunId": 37209275900,
+    "workflowJobId": 111456944066,
+    "validatorReceiptSha": "0fea92aac20aa962ac98aaa699f0530d4d74411c",
+    "review2ReceiptSha": "359cfba552e9ad081f660c284eb896fe6718a52e",
+    "receiptBearingHead": "916c16353ab98b1db091ebe5c19caaf73296a44c",
+    "state": "REVIEW2_DONE",
+    "nextStage": "READY_FOR_R3",
+    "remoteReadback": {
+      "examBlob": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
+      "evidenceBlob": "f7c972819bf5ccf642c636188260b346ecb396dd",
+      "validatorBlob": "0fea92aac20aa962ac98aaa699f0530d4d74411c",
+      "review2Blob": "359cfba552e9ad081f660c284eb896fe6718a52e"
+    }
+  },
+  "historicalFirstMissingClosureStep": "PR_ACTIONS_TRIGGER_AND_ACTUAL_R2_CANONICAL_VALIDATOR",
+  "historicalRequiredNextAction": "Open an allowed PR/Actions validation surface from the exact R2 material, execute the canonical R2 gate, then write validator/REVIEW2 receipts and remote-read back before R3 eligibility."
 }
