@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "executionMode": "ACTUAL_NODE_CANONICAL_GATE_GITHUB_ACTIONS_PR",
+  "stage": "CREATE",
+  "canonicalOrdinal": 2,
+  "validationBranch": "work/middle/m2/25-wangun-1mid-temp-create1-conveyor-20261004-0520",
+  "validationPullRequest": 191,
+  "workflowRunId": 37155409781,
+  "workflowJobId": 111297673903,
+  "workflowHeadSha": "9e00580cc43894d201a2ad87d503c32bcee0273e",
+  "calibrationValidatorPath": "archive/tools/solution-calibration-gate.mjs",
+  "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "canonicalValidatorPath": "archive/tools/review-evidence-gate.mjs",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "examGitBlob": "df770fc646736b63c3274450b95fdaf05f8ac9cc",
+  "examSha256": "sha256:246ed7f8ab30c7f64ce9b17c0569bd77c2cfb915801467534f525a280476515d",
+  "physicalEvidenceGitBlob": "9306b47bf9adf3ab05a421ceea73fb6c5c834b68",
+  "metaPayloadGitBlob": "be8dac66f45cb0a19d542862a122d901253fe8e4",
+  "calibrationBinding": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "qualityCompareCount": "23/23",
+    "note": "Canonical CREATE gate revalidated the bound Golden/Negative calibration evidence in the same CI execution."
+  },
+  "result": {
+    "ok": true,
+    "stage": "CREATE",
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 7,
+    "itemHoldQids": [
+      1,
+      3,
+      6,
+      9,
+      11,
+      14,
+      15
+    ],
+    "disposition": "PASS_WITH_ITEM_HOLDS",
+    "issues": []
+  },
+  "unrelatedCiFailures": {
+    "ignoredForCreateDisposition": true,
+    "count": 7,
+    "reason": "Repository-wide failures occurred after the target CREATE canonical gate PASS and are outside the target scope."
+  }
+}
