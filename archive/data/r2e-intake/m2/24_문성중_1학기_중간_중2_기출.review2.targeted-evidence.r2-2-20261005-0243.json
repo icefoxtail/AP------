@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_TARGETED_RECHECK_EVIDENCE_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_04",
+  "stage": "R2",
+  "mode": "TARGETED_MINIMAL_CURRENT_2026_10_05",
+  "examUid": "M2-1-24-MUNSUNG-1MID",
+  "examFilename": "24_문성중_1학기_중간_중2_기출.js",
+  "canonicalInventoryOrdinal": 7,
+  "inputR1Branch": "work/middle/m2/24-munseong-1mid-temp-r1-3-20261005",
+  "inputR1ClosureHead": "845eac10422d36ef83278e464e783c279844b8f7",
+  "inputArtifactSha": "96df17151a3215e8995082b20933bf12da0e429e",
+  "r1ReceiptGitBlob": "d83ca2df5277445104c3816ea92c4aa7632f1102",
+  "r1PhysicalEvidenceGitBlob": "232ff8ce615c1a813256ca05836009b176c32f1e",
+  "r1ValidatorReceiptGitBlob": "b3db8e3d6561c4b5b657759d1a36362d219bd8a6",
+  "currentMainAtStart": "3324fa11cbfc4cb61339783eab660ab6e9b3e068",
+  "currentR2ProtocolGitBlob": "cd9661a969bf40e919ed7864350def7c6fcdf266",
+  "currentGoldenCalibrationGitBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+  "currentPhysicalEvidenceCanonicalGitBlob": "32f212619a31df15add413ebe8eccdb86941cec1",
+  "currentStageValidatorGitBlob": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
+  "currentStageValidatorCompatGitBlob": "80b0b81032aac147d463fa82d3c99d6ac9b1f18b",
+  "currentMiddle2CrosswalkGitBlob": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+  "selectorEvidence": {
+    "r1Stage": "REVIEW1_DONE",
+    "r1NextStage": "READY_FOR_REVIEW2",
+    "r1ReviewDecision": "PASS",
+    "r1ItemHoldQids": [],
+    "activeSameStageClaimObserved": false,
+    "priorHandoffAutoReselected": false
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "itemHoldQids": [],
+    "r1ChangedQids": [
+      13,
+      20,
+      23
+    ],
+    "r1ChangedFields": [
+      {
+        "qid": 13,
+        "fields": [
+          "subUnitKey"
+        ]
+      },
+      {
+        "qid": 20,
+        "fields": [
+          "subUnitKey"
+        ]
+      },
+      {
+        "qid": 23,
+        "fields": [
+          "subUnitKey"
+        ]
+      }
+    ],
+    "directDependencyQids": [],
+    "recheckQids": [
+      13,
+      20,
+      23
+    ],
+    "scopeCount": 3
+  },
+  "targetedRows": [
+    {
+      "qid": 13,
+      "checkedFields": [
+        "subUnitKey"
+      ],
+      "createValue": {
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS"
+      },
+      "r1Value": {
+        "subUnitKey": "M2-01-EXPONENT_LAW"
+      },
+      "rpmAuthority": {
+        "recordId": "M2-RPM-011",
+        "crosswalkSubUnitKey": "M2-01-EXPONENT_LAW"
+      },
+      "mathRegression": "PASS",
+      "protectedFieldsRegression": "PASS",
+      "solutionRegression": "PASS",
+      "decision": "R1_REPAIR_CONFIRMED"
+    },
+    {
+      "qid": 20,
+      "checkedFields": [
+        "subUnitKey"
+      ],
+      "createValue": {
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD"
+      },
+      "r1Value": {
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY"
+      },
+      "rpmAuthority": {
+        "recordId": "M2-RPM-023",
+        "crosswalkSubUnitKey": "M2-02-LINEAR_INEQUALITY"
+      },
+      "mathRegression": "PASS",
+      "protectedFieldsRegression": "PASS",
+      "solutionRegression": "PASS",
+      "decision": "R1_REPAIR_CONFIRMED"
+    },
+    {
+      "qid": 23,
+      "checkedFields": [
+        "subUnitKey"
+      ],
+      "createValue": {
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD"
+      },
+      "r1Value": {
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY"
+      },
+      "rpmAuthority": {
+        "recordId": "M2-RPM-018",
+        "crosswalkSubUnitKey": "M2-02-LINEAR_INEQUALITY"
+      },
+      "mathRegression": "PASS",
+      "protectedFieldsRegression": "PASS",
+      "solutionRegression": "PASS",
+      "decision": "R1_REPAIR_CONFIRMED"
+    }
+  ],
+  "formalCompare": {
+    "createFinalArtifactSha": "b7674c08465614f6f02952103968c98a014f9aca",
+    "r1FinalArtifactSha": "96df17151a3215e8995082b20933bf12da0e429e",
+    "artifactChangedAcrossR1": true,
+    "r1DeterministicRepairCount": 3,
+    "r1DeterministicRepairQids": [
+      13,
+      20,
+      23
+    ],
+    "r1ItemHoldCount": 0,
+    "protectedFieldMutationCount": 0,
+    "changedFieldSet": [
+      "q13.subUnitKey",
+      "q20.subUnitKey",
+      "q23.subUnitKey"
+    ],
+    "regressionOpenCount": 0,
+    "result": "TARGETED_SCOPE_RECHECK_PASS"
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "gitBlobSha": "f7440339f2532f6e7ea357541c2a09b05847af59"
+      }
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS"
+  },
+  "decisionSnapshot": {
+    "status": "R2_TARGETED_RECHECK_PASS_VALIDATOR_PENDING",
+    "examMutationCount": 0,
+    "deterministicRepairCount": 0,
+    "targetRecheckCount": "3/3",
+    "finalArtifactSha": "96df17151a3215e8995082b20933bf12da0e429e",
+    "r2PassDeclared": false,
+    "review2DoneDeclared": false,
+    "r3Eligible": false
+  }
+}
