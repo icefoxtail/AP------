@@ -51,6 +51,19 @@ CREATE_DONE 전 각 qid는 현재 schema와 canonical authority에서 적용 가
 
 CREATE receipt/evidence는 최소 `tagMetaAuditCount=N/N`과 qid별 required-field completeness를 결속해야 한다. **R1 진입 전 CREATE tag/meta denominator는 전 문항 100%**여야 한다.
 
+## 0.2 CREATE PRODUCER → THANOS HANDOFF — HARD (2026-10-04)
+
+형님의 2026-10-04 명시 지시: **TEMP-CREATE의 1차 책임은 생산량 확보다. 가능한 경우 자기 run에서 CREATE closure까지 닫지만, target-local capability blocker 때문에 생산 레인 자체를 붙잡거나 끄지 않는다. 마감 debt는 THANOS가 이어받을 수 있다.**
+
+- TEMP-CREATE-1/2/3/4는 source/content/choices/answer, 전 문항 fresh solution, tags/Meta, image/SVG/solutionImage, evidence까지 가능한 범위를 최대한 물리화하고, 실행 가능한 validator/receipt/write/readback 경로가 있으면 그대로 `CREATE_DONE→READY_FOR_REVIEW1`까지 닫는다.
+- 그러나 candidate/final artifact/evidence를 만든 뒤 **Git contents/PR/Actions write, validator executor, validator receipt, CREATE receipt, remote readback, provider/tool capability** 중 하나가 current run에서 실제로 막히고 materially different safe path도 실패하면, 같은 target을 반복 점유하지 않는다.
+- 이 경우 반드시 durable continuation을 남긴다: `examUid / branch+HEAD / finalArtifactSha / evidence blob / completedStep / firstMissingClosureStep / exact capability+error / required next action`. 그리고 공용 `RESCUE_QUEUE`에 CREATE closure debt로 등록하고 **same-target writer/lease/owner를 relinquish**하여 THANOS가 즉시 claim할 수 있게 한다.
+- 이 handoff는 **CREATE_DONE/PASS가 아니다.** actual validator + validator receipt + CREATE receipt + remote readback이 닫힐 때까지 해당 시험지는 R1 eligible이 아니다. 그 closure는 THANOS 또는 현재 capability를 가진 executor가 이어서 수행한다.
+- handoff된 target은 TEMP-CREATE가 다음 run에서 자동 재점유하지 않는다. 최신 CURRENT/RESCUE_QUEUE가 명시적으로 CREATE에 재배정하지 않는 한 **다음 scheduled run은 다른 eligible CREATE 생산으로 이동**한다.
+- current run에서 해당 시험지에 이미 mutation을 만들었다면 one-exam mutation/closure max/run을 지키고, 다음 eligible의 실제 mutation은 다음 run에 한다. blocker를 mutation 전에 확인했고 현재 run mutation이 0이면 다음 eligible을 같은 run에서 선택할 수 있다.
+- **target-local blocker, validator/write/tool 실패, 동일 경로 반복 방지 때문에 TEMP-CREATE 예약을 self-disable하는 것은 금지한다.** disable은 형님의 명시 지시 또는 CURRENT topology가 해당 role 종료를 선언한 경우만 허용한다.
+- 따라서 역할 분담은 `TEMP-CREATE = 생산 우선 + 가능한 closure`, `THANOS = handed-off CREATE closure debt 포함 universal rescue/마감`이다.
+
 ## 1. CURRENT M2-1 topology — 15 lanes / THANOS MASTER ×5
 
 | Role | Count | Responsibility |
@@ -374,9 +387,11 @@ run이 시간 제한이나 executor 중단으로 candidate 이후 종료될 수 
 - **firstMissingClosureStep**
 - selected `validationExecutor`
 
-다음 같은-role run은 새 target을 고르거나 fresh rewrite를 반복하지 않고 **그 exact candidate의 firstMissingClosureStep부터 먼저 재개**한다.
+R1/R2/R3 또는 아직 handoff되지 않은 same-role continuation은 새 target을 고르거나 fresh rewrite를 반복하지 않고 **그 exact candidate의 firstMissingClosureStep부터 먼저 재개**한다.
 
-one-shot 예약으로 full CREATE를 시험할 때 candidate 생성까지 시간이 오래 걸릴 가능성이 있으면, one-shot 하나에 “무조건 완결”을 가정하지 않는다. **continuation 가능한 recurring slot**을 사용하거나, 첫 run이 candidate에서 끝났다면 즉시 gate/receipt-only continuation run으로 이어야 한다.
+**예외 — TEMP-CREATE producer handoff:** §0.2에 따라 CREATE producer가 capability blocker를 durable continuation + RESCUE_QUEUE로 넘기고 owner/lease를 relinquish한 target은 THANOS closure debt다. 최신 CURRENT가 CREATE에 명시적으로 재배정하지 않는 한 TEMP-CREATE가 다음 run에서 그 target을 다시 집지 않고 다른 eligible CREATE를 생산한다.
+
+one-shot 예약으로 full CREATE를 시험할 때 candidate 생성까지 시간이 오래 걸릴 가능성이 있으면, one-shot 하나에 “무조건 완결”을 가정하지 않는다. recurring production에서는 candidate 이후 closure가 current run capability로 불가능하면 §0.2 handoff를 사용하고, capable rescue owner가 exact firstMissingClosureStep부터 이어받는다.
 ## 5. R3 FINAL QA + FINAL REPAIR — CURRENT
 
 R3는 별도 post-R3 repair/recheck pipeline을 정상 경로로 만들지 않는다.
