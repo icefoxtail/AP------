@@ -24,6 +24,21 @@
     "draft": false,
     "headSha": "c8ff6679cc8ffa3ee1447ec8f880b34de7499b8b"
   },
+  "workflowReadback": [
+    {
+      "name": "Archive Registration Sync",
+      "runId": 37186773467,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "CI",
+      "runId": 37186773418,
+      "status": "completed",
+      "conclusion": "failure",
+      "summary": "Syntax check passed; aggregate tests reported PASS 188 / FAIL 4. The four blocking suites are apmath-student-teacher-preview, archive-target-selection-phase3-contract, print-render-authority-mixer-ecosystem, and student-portal-omr-history-routes; none is a canonical target-scoped CREATE validator or receipt."
+    }
+  ],
   "completedStep": "CREATE_CANDIDATE_FRESH_SOLUTIONS_24_OF_24_META_24_OF_24_Q22_SVG_RENDER_PHYSICAL_EVIDENCE_PR_REMOTE_READBACK",
   "firstMissingClosureStep": "SOURCE_REPAIR_REQUIRED_Q10_Q12_Q19",
   "exactCapabilityError": [
@@ -60,6 +75,7 @@
   "mutationScope": "o9 only",
   "unrelatedMutationCount": 0,
   "rescueQueueRegistration": "GIT_PHYSICAL_AND_NOTION_LANE_CURRENT",
+  "rescueQueueRef": "rescue/m2/create-closure-debt/o9-a642f718-source-repair-20261004-1648@3e6df9406258fb87b7d0b40fbd64da69f4b11d18",
   "stateStorageMirror": {
     "workPage": "LANE CURRENT — M2-1 TEMP-CREATE-4",
     "productionBlocking": false,
