@@ -1,35 +1,10 @@
-name: M2 o7 R1 Validation R1-2
+name: M2 o7 R1 Validation R1-2 (inactive)
+
 on:
-  push:
-    branches:
-      - "work/middle/m2/24-munsung-1mid-r1-2-20261005-0236"
-permissions:
-  contents: read
+  workflow_dispatch:
+
 jobs:
-  validate:
+  noop:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
-      - name: Checkout target
-        uses: actions/checkout@v4
-        with:
-          ref: "work/middle/m2/24-munsung-1mid-r1-2-20261005-0236"
-          path: target
-      - name: Checkout validator authority
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          path: validator-src
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Validate canonical R1
-        shell: bash
-        run: |
-          set -euo pipefail
-          node validator-src/archive/tools/archive-stage-validator.mjs \
-            --stage R1 \
-            --exam "$GITHUB_WORKSPACE/target/archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js" \
-            --evidence "$GITHUB_WORKSPACE/target/archive/data/r2e-intake/m2/24_문성중_1학기_중간_중2_기출.review1.physical-evidence.json" \
-            --json
+      - run: echo "validation completed; retained only as branch-local history"
