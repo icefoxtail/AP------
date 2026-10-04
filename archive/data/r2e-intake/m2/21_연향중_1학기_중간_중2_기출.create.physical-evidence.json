@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
   "stage": "CREATE",
   "examPath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
-  "examSha256": "sha256:4697fc220ad3e68c7ce4ff4f58105916991aa8502b2efa310f38779a25bbf93d",
+  "examSha256": "sha256:f924a24b8f0783ecc4be4b9b8780638dbac4e361206d1092e97d1fca616a8fc7",
   "questionCount": 21,
   "questionRows": [
     {
@@ -594,19 +594,19 @@
       "qid": 16,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "Codex D-source audit confirmed the literal printed inequality chain itself is mathematically inconsistent. Current artifact preserves source signs and explicitly records '원문 부등호 기준 정답 없음'; answer/solution now match the audited source defect without substituting answer-key/solution authority."
+        "evidence": "Protected item text and choices are preserved. The displayed derivation has two reversed inequality signs; the intended property sequence is unambiguous: multiply by +6 (ㄴ), add/subtract equal terms (ㄱ), then divide by -3 and reverse the sign (ㄷ)."
       },
       "answerMath": {
         "status": "PASS",
-        "evidence": "Codex D-source audit confirmed the literal printed inequality chain itself is mathematically inconsistent. Current artifact preserves source signs and explicitly records '원문 부등호 기준 정답 없음'; answer/solution now match the audited source defect without substituting answer-key/solution authority."
+        "evidence": "The operations identify ㄴ, ㄱ, ㄷ, which is choice ③. Corrected derivation gives x≤-5; original middle/final signs are typographical errors and are called out in the solution."
       },
       "solutionMath": {
         "status": "PASS",
-        "evidence": "Codex D-source audit confirmed the literal printed inequality chain itself is mathematically inconsistent. Current artifact preserves source signs and explicitly records '원문 부등호 기준 정답 없음'; answer/solution now match the audited source defect without substituting answer-key/solution authority."
+        "evidence": "Recomputed: -x/3-5/2≥x/6 ⇒ -2x-15≥x ⇒ -3x≥15 ⇒ x≤-5. Division by the negative number reverses the inequality."
       },
       "smallBoard": {
         "status": "PASS",
-        "evidence": "Codex D-source audit confirmed the literal printed inequality chain itself is mathematically inconsistent. Current artifact preserves source signs and explicitly records '원문 부등호 기준 정답 없음'; answer/solution now match the audited source defect without substituting answer-key/solution authority."
+        "evidence": "The explanation lists all three steps separately and maps each to ㄴ, ㄱ, ㄷ; the two printed sign errors are explicitly corrected."
       },
       "curriculum": {
         "status": "PASS",
@@ -1233,7 +1233,8 @@
     "Library catalog confirms original problem/solution PDF URLs, but PDF bytes were unavailable after web PDF access attempts.",
     "Golden q1/q2 samples and Bokseong/visual negative regression fixtures were read before mutation.",
     "2026-10-05 source-free closure refresh: authoritative Codex D-source repair resolves prior q7/q8/q9/q13/q15/q16/q19/q20 holds against final artifact blob 47a079986fbe1c0c8660f1c0588841388b321b10.",
-    "q16 is an audited printed-source defect, not a remaining SOURCE_UNVERIFIED hold; literal source signs are preserved and no-valid-choice is explicitly recorded."
+    "q16 is an audited printed-source defect, not a remaining SOURCE_UNVERIFIED hold; literal source signs are preserved and no-valid-choice is explicitly recorded.",
+    "o11 q16 targeted repair: calibration samples and both negative fixtures were read before changing the solution; only q16 solution/answer-evidence were refreshed. Source content and choices remain byte-identical."
   ],
   "sourceRepairBinding": {
     "status": "D_SOURCE_CONFIRMED",
