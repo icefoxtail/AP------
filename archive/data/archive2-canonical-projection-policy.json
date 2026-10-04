@@ -3,66 +3,390 @@
   "version": "1.0.0",
   "status": "ACTIVE",
   "canonicalMasterPath": "../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-  "canonicalMasterSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b",
+  "canonicalMasterSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
   "gradeCourseAllowlist": [
-    { "grade": "중1", "curriculumKey": "2015", "courseKey": "M1-1" },
-    { "grade": "중1", "curriculumKey": "2015", "courseKey": "M1-2" },
-    { "grade": "중1", "curriculumKey": "2022", "courseKey": "M1-1" },
-    { "grade": "중1", "curriculumKey": "2022", "courseKey": "M1-2" },
-    { "grade": "중2", "curriculumKey": "2015", "courseKey": "M2-1" },
-    { "grade": "중2", "curriculumKey": "2015", "courseKey": "M2-2" },
-    { "grade": "중2", "curriculumKey": "2022", "courseKey": "M2-1" },
-    { "grade": "중2", "curriculumKey": "2022", "courseKey": "M2-2" },
-    { "grade": "중3", "curriculumKey": "2015", "courseKey": "M3-1" },
-    { "grade": "중3", "curriculumKey": "2015", "courseKey": "M3-2" },
-    { "grade": "중3", "curriculumKey": "2022", "courseKey": "M3-1" },
-    { "grade": "중3", "curriculumKey": "2022", "courseKey": "M3-2" },
-    { "grade": "고1", "curriculumKey": "2015", "courseKey": "수학(상)" },
-    { "grade": "고1", "curriculumKey": "2015", "courseKey": "수학(하)" },
-    { "grade": "고1", "curriculumKey": "2022", "courseKey": "공통수학1" },
-    { "grade": "고1", "curriculumKey": "2022", "courseKey": "공통수학2" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "수학I" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "수학I" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "수학II" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "수학II" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "확률과통계" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "확률과통계" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "미적분" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "미적분" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "기하" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "기하" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "대수" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "대수" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "미적분I" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "미적분I" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "확률과통계" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "확률과통계" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "미적분II" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "미적분II" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "기하" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "기하" }
+    {
+      "grade": "중1",
+      "curriculumKey": "2015",
+      "courseKey": "M1-1"
+    },
+    {
+      "grade": "중1",
+      "curriculumKey": "2015",
+      "courseKey": "M1-2"
+    },
+    {
+      "grade": "중1",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1"
+    },
+    {
+      "grade": "중1",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2"
+    },
+    {
+      "grade": "중2",
+      "curriculumKey": "2015",
+      "courseKey": "M2-1"
+    },
+    {
+      "grade": "중2",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2"
+    },
+    {
+      "grade": "중2",
+      "curriculumKey": "2022",
+      "courseKey": "M2-1"
+    },
+    {
+      "grade": "중2",
+      "curriculumKey": "2022",
+      "courseKey": "M2-2"
+    },
+    {
+      "grade": "중3",
+      "curriculumKey": "2015",
+      "courseKey": "M3-1"
+    },
+    {
+      "grade": "중3",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2"
+    },
+    {
+      "grade": "중3",
+      "curriculumKey": "2022",
+      "courseKey": "M3-1"
+    },
+    {
+      "grade": "중3",
+      "curriculumKey": "2022",
+      "courseKey": "M3-2"
+    },
+    {
+      "grade": "고1",
+      "curriculumKey": "2015",
+      "courseKey": "수학(상)"
+    },
+    {
+      "grade": "고1",
+      "curriculumKey": "2015",
+      "courseKey": "수학(하)"
+    },
+    {
+      "grade": "고1",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1"
+    },
+    {
+      "grade": "고1",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "수학I"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "수학I"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "수학II"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "수학II"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "미적분"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "미적분"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "기하"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "기하"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "대수"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "대수"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "미적분I"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "미적분I"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "확률과통계"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "확률과통계"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "미적분II"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "미적분II"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "기하"
+    }
   ],
   "high1CompatibilityProjections": [],
   "high23SharedSubjects": [
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "수학I", "projectionKey": "ALGEBRA", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "수학I", "projectionKey": "ALGEBRA", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "수학II", "projectionKey": "CALCULUS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "수학II", "projectionKey": "CALCULUS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "확률과통계", "projectionKey": "PROB_STATS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "확률과통계", "projectionKey": "PROB_STATS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "미적분", "projectionKey": "CALCULUS_ADVANCED", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "미적분", "projectionKey": "CALCULUS_ADVANCED", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2015", "courseKey": "기하", "projectionKey": "GEOMETRY", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2015", "courseKey": "기하", "projectionKey": "GEOMETRY", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "대수", "projectionKey": "ALGEBRA", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "대수", "projectionKey": "ALGEBRA", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "미적분I", "projectionKey": "CALCULUS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "미적분I", "projectionKey": "CALCULUS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "확률과통계", "projectionKey": "PROB_STATS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "확률과통계", "projectionKey": "PROB_STATS", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "미적분II", "projectionKey": "CALCULUS_ADVANCED", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "미적분II", "projectionKey": "CALCULUS_ADVANCED", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고2", "curriculumKey": "2022", "courseKey": "기하", "projectionKey": "GEOMETRY", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" },
-    { "grade": "고3", "curriculumKey": "2022", "courseKey": "기하", "projectionKey": "GEOMETRY", "approvalStatus": "APPROVED", "taxonomyVersion": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b", "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json", "evidenceSha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b" }
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "projectionKey": "ALGEBRA",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "projectionKey": "ALGEBRA",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "projectionKey": "CALCULUS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "수학II",
+      "projectionKey": "CALCULUS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "projectionKey": "PROB_STATS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "확률과통계",
+      "projectionKey": "PROB_STATS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "미적분",
+      "projectionKey": "CALCULUS_ADVANCED",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "미적분",
+      "projectionKey": "CALCULUS_ADVANCED",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2015",
+      "courseKey": "기하",
+      "projectionKey": "GEOMETRY",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2015",
+      "courseKey": "기하",
+      "projectionKey": "GEOMETRY",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "대수",
+      "projectionKey": "ALGEBRA",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "대수",
+      "projectionKey": "ALGEBRA",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "미적분I",
+      "projectionKey": "CALCULUS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "미적분I",
+      "projectionKey": "CALCULUS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "확률과통계",
+      "projectionKey": "PROB_STATS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "확률과통계",
+      "projectionKey": "PROB_STATS",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "미적분II",
+      "projectionKey": "CALCULUS_ADVANCED",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "미적분II",
+      "projectionKey": "CALCULUS_ADVANCED",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고2",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "projectionKey": "GEOMETRY",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    },
+    {
+      "grade": "고3",
+      "curriculumKey": "2022",
+      "courseKey": "기하",
+      "projectionKey": "GEOMETRY",
+      "approvalStatus": "APPROVED",
+      "taxonomyVersion": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c",
+      "evidenceReference": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "evidenceSha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+    }
   ]
 }
