@@ -338,8 +338,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[핵심] 같은 개수의 2와 5를 짝지어 \\(10\\)의 거듭제곱을 만든다.\n[풀이] \\(5^4\\times20^6=5^4\\times(2^2\\times5)^6=2^{12}5^{10}=2^2(2^{10}5^{10})=4\\times10^{10}\\)이다. 따라서 \\(a=4\\), \\(n=10\\)이다.\n[결론] \\(a+n=14\\)이므로 정답은 ⑤이다.",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -440,8 +440,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[핵심] 등식을 만족하도록 \\(A\\)만 남긴 뒤 역연산한다.\n[풀이] \\(2xy^2\\times A\\div(-3x^2y^3)=4xy\\)에서\n\\(A=4xy\\times(-3x^2y^3)\\div(2xy^2)=-6x^2y^2\\)이다.\n[결론] 정답은 ③이다.",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
