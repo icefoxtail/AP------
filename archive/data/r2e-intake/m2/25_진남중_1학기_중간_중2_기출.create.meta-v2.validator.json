@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "stage": "CREATE",
+  "canonicalOrdinal": 1,
+  "executionMode": "ACTUAL_NODE_CLI_GITHUB_ACTIONS_PUSH_VALIDATION",
+  "workflowRunId": 37155612599,
+  "workflowJobId": 111298265651,
+  "workflowHeadSha": "d10e14a1758cb972dc5c6ad60c47951b09bcd7f4",
+  "validationBranch": "validation/m2-o1-jinnam-create-tempcreate2-20261004-0430",
+  "workflowOverallConclusion": "failure",
+  "workflowOverallFailureScope": "VALIDATION_NOTIFICATION_SENTINEL_AFTER_TARGET_CANONICAL_PASS",
+  "calibrationValidatorPath": "archive/tools/solution-calibration-gate.mjs",
+  "calibrationValidatorBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "canonicalValidatorPath": "archive/tools/review-evidence-gate.mjs",
+  "canonicalValidatorBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "examGitBlob": "a3867d116498aa2afa67b327968a9d46946b4bb5",
+  "examSha256": "sha256:8f728594564c990642d35b80f544e35da7150740895b1fd96bde6a29e540216b",
+  "physicalEvidencePath": "archive/data/r2e-intake/m2/25_진남중_1학기_중간_중2_기출.create.physical-evidence.json",
+  "physicalEvidenceGitBlob": "0ccc704d91c9a75623cec15b9138b6dd7455bc91",
+  "metaPayloadPath": "archive/data/r2e-intake/m2/25_진남중_1학기_중간_중2_기출.create.meta-v2.metadata.json",
+  "metaPayloadGitBlob": "7bf7d28fa2d339ee5f63423d133bfe09dd64e207",
+  "calibrationPreflight": {
+    "ok": true,
+    "stage": "CREATE",
+    "gate": "CALIBRATION_PREFLIGHT",
+    "questionCount": 23,
+    "issues": []
+  },
+  "result": {
+    "ok": true,
+    "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+    "stage": "CREATE",
+    "examSha256": "sha256:8f728594564c990642d35b80f544e35da7150740895b1fd96bde6a29e540216b",
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 2,
+    "itemHoldQids": [
+      6,
+      7
+    ],
+    "disposition": "PASS_WITH_ITEM_HOLDS",
+    "issues": []
+  },
+  "targetGateLogMarker": "Canonical CREATE gate"
+}
