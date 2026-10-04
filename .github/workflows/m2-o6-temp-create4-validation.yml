@@ -1,0 +1,17 @@
+name: M2 o6 TEMP-CREATE-4 validation
+on:
+  push:
+    branches:
+      - work/middle/m2/24-sinheung-1mid-temp-create4-20261004-1100
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Calibration preflight
+        run: node archive/tools/solution-calibration-gate.mjs --preflight --stage CREATE --exam 'archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js' --evidence 'archive/data/r2e-intake/m2/24_신흥중_1학기_중간_중2_기출c.create.physical-evidence.json' --json
+      - name: Canonical CREATE gate
+        run: node archive/tools/review-evidence-gate.mjs --stage CREATE --exam 'archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js' --evidence 'archive/data/r2e-intake/m2/24_신흥중_1학기_중간_중2_기출c.create.physical-evidence.json' --json
