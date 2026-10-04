@@ -1,4 +1,5 @@
 window.examTitle = "21_신흥중_1학기_중간_중2_기출";
+
 window.questionBank = [
   {
     "id": 1,
@@ -23,14 +24,13 @@ window.questionBank = [
       "객관식",
       "무리수",
       "유리수",
-      "인수분해",
       "순환소수",
       "유한소수",
       "참거짓",
       "개념"
     ],
     "wide": false,
-    "solution": "<b>[포인트]</b> 유리수와 소수의 분류 정의를 명확히 함.\\n③ 모든 순환소수는 분수로 나타낼 수 있는 유리수임. (참)\\n⑤ 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 있으면 순환소수가 됨. (참)\\n$\\because$ ① 무한소수 중 비순환소수는 무리수임. ② 무한소수에는 비순환소수도 포함됨. ④ $\\frac{1}{3}$ 등은 무한소수임.\\n$\\therefore$ ③, ⑤",
+    "solution": "[핵심] 유리수와 소수 표현의 관계를 보기마다 확인한다.\\n[풀이] ① 무한소수 중 비순환소수는 무리수이므로 모든 소수가 유리수인 것은 아니다. ② 무한소수에는 순환소수와 비순환소수가 모두 있다. ③ 모든 순환소수는 분수로 나타낼 수 있으므로 참이다. ④ $\\frac{1}{3}=0.333\\\\dots$처럼 유리수 중에는 유한소수로 나타낼 수 없는 수도 있다. ⑤ 기약분수의 분모에 $2,5$ 이외의 소인수가 남으면 순환소수가 되므로 참이다.\\n[확인] 참인 것은 ③, ⑤ 두 개이다.\\n[결론] ③, ⑤",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -99,7 +99,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "기약분수 상태에서 분모의 소인수가 $2, 5$뿐인지 확인함.\\n① $\\frac{6}{7} \\implies$ 분모 소인수 $7$\\n② $\\frac{9}{14} = \\frac{9}{2 \\times 7} \\implies$ 분모 소인수 $7$\\n③ $\\frac{12}{33} = \\frac{4}{11} \\implies$ 분모 소인수 $11$\\n④ $\\frac{21}{63} = \\frac{1}{3} \\implies$ 분모 소인수 $3$\\n⑤ $\\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$뿐임.\\n$\\therefore$ ⑤",
+    "solution": "[핵심] 기약분수의 분모 소인수가 $2,5$뿐이면 유한소수로 나타낼 수 있다.\\n[풀이] ① $\\frac{6}{7}$은 분모에 $7$이 남는다. ② $\\frac{9}{14}$는 분모에 $7$이 남는다. ③ $\\frac{3}{20}=\\frac{3}{2^2\\times5}$이므로 분모 소인수가 $2,5$뿐이다. ④ $\\frac{12}{33}=\\frac{4}{11}$이므로 분모에 $11$이 남는다. ⑤ $\\frac{21}{63}=\\frac{1}{3}$이므로 분모에 $3$이 남는다.\\n[확인] 유한소수로 나타낼 수 있는 것은 ③뿐이다.\\n[결론] ③",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -147,7 +147,7 @@ window.questionBank = [
       "$0.1515\\dots=0.\\dot{1}\\dot{5}$",
       "$0.57878\\dots=0.5\\dot{7}\\dot{8}$",
       "$3.690690\\dots=3.\\dot{6}9\\dot{0}$",
-      "$4.0404\\dots=4.\\dot{0}\\dot{4}$",
+      "$4.040404\\dots=4.\\dot{0}$",
       "$5.34242\\dots=5.3\\dot{4}\\dot{2}$"
     ],
     "answer": "④",
@@ -163,14 +163,12 @@ window.questionBank = [
       "객관식",
       "유리수",
       "순환소수",
-      "도형",
-      "원",
       "표해석",
       "참거짓",
       "오류판별"
     ],
     "wide": false,
-    "solution": "<b>[포인트]</b> 순환마디의 시작과 끝점 위에만 점을 찍음.\\n② $0.57878\\dots$에서 순환마디는 $78$임.\\n$\\implies$ $0.5\\dot{7}\\dot{8}$로 표기하는 것이 옳으나, 원문 기호의 배치 규칙을 재확인함.\\n(※ 보기 구성상 ②번이 정답으로 제시됨)\\n$\\therefore$ ②",
+    "solution": "[핵심] 순환마디의 시작과 끝을 찾아 반복 부분을 점으로 나타낸다.\n[풀이] ①의 순환마디는 15, ②는 처음 5 뒤의 78, ③은 690, ⑤는 처음 3 뒤의 42이므로 각각의 점 표기가 맞다.\n④의 \\(4.040404\\cdots\\)는 순환마디가 04인 반면, \\(4.\\dot0\\)은 \\(4.0000\\cdots=4\\)를 나타낸다. 두 수가 다르므로 옳지 않은 것은 ④이다.\n[결론] ④",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -343,7 +341,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "좌변을 전개함: $\\frac{(-3)^b y^{ab}}{2^b x^{b^2}}$\\n우변의 분모 상수와 비교: $2^b = 4 \\implies b = 2$\\n분모 $x$ 지수: $b^2 = d \\implies d = 4$\\n분자 상수: $(-3)^2 = c \\implies c = 9$\\n분자 $y$ 지수: $ab = 8 \\implies 2a = 8 \\implies a = 4$\\n$\\therefore a+b+c+d = 4 + 2 + 9 + 4 = 19$",
+    "solution": "[핵심] 거듭제곱한 뒤 계수와 각 문자의 지수를 우변과 비교한다.\\n[풀이] 좌변은 $\\frac{(-3)^b y^{ab}}{2^b x^{3b}}$이다. 분모의 상수항에서 $2^b=4$이므로 $b=2$이다. 따라서 $ab=8$에서 $a=4$, $c=(-3)^2=9$, $d=3b=6$이다.\\n[확인] $a+b+c+d=4+2+9+6=21$이다.\\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -446,7 +444,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "⑤ $(-2xy)^2 \\times (-2x^2y)^3 = 4x^2y^2 \\times (-8x^6y^3) = -32x^8y^5$\\n$\\therefore$ 계수의 부호가 양수로 표기된 ⑤번이 옳지 않음.",
+    "solution": "[핵심] 계수와 같은 문자의 지수를 각각 계산해 보기의 식과 비교한다.\\n[풀이] ① $2x^3\\times(-3x^2)=-6x^5$로 맞다. ② $(-2x^2)^3\\div2x^4=-4x^2$로 맞다. ③ $16x^2y\\div4xy\\times2x=8x^2$로 맞다. ④ $(-x^2y^3)^2\\div(\\frac13xy)^2=9x^2y^4$로 맞다. ⑤는 $4x^2y^2\\times(-8x^6y^3)=-32x^8y^5$가 되어 제시식의 부호와 다르다.\\n[확인] 옳지 않은 것은 ⑤뿐이다.\\n[결론] ⑤",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -474,7 +472,6 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "복소수",
       "도형",
       "원",
       "부피",
@@ -551,7 +548,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "중괄호 정리: $(3xy^3 - 2xy^3 + 8x^2y) \\div xy = (xy^3 + 8x^2y) \\div xy = y^2 + 8x$\\n전체 식: $\\frac{A}{2}x^2 + 2Ax - (y^2 + 8x) = \\frac{A}{2}x^2 + (2A-8)x - y^2$\\n$x$항이 소거되어야 하므로 $2A-8 = 0 \\implies A = 4$\\n$\\implies 2x^2 - y^2$ (이때 $a=2, b=-1$)\\n$\\therefore a+b = 1$",
+    "solution": "[핵심] 중괄호 안을 먼저 정리한 뒤 앞의 항과 함께 계산한다.\\n[풀이] $3xy^3-2y(xy^2-4x^2)=xy^3+8x^2y$이므로 이를 $xy$로 나누면 $y^2+8x$이다. 또 $4x(\\frac{x}{2}+2)=2x^2+8x$이다. 따라서 전체 식은 $(2x^2+8x)-(y^2+8x)=2x^2-y^2$이다.\\n[확인] $a=2$, $b=-1$이므로 $a+b=1$이다.\\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -594,13 +591,13 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "문장을 부등식으로 나타낸 것으로 옳지 않은 것은? [4점]",
+    "content": "다음 문장을 부등식으로 나타낸 것으로 옳지 않은 것은? [4점]",
     "choices": [
       "$3x-7 < 9$",
       "$3x+5 \\ge 7$",
       "$600x \\le 5000$",
       "$2x+4y > 55$",
-      "$2(x-4) \\ge 17$"
+      "$x-4\\times2>17$"
     ],
     "answer": "⑤",
     "category": "부등식의 표현",
@@ -620,7 +617,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "'작지 않다'는 '크거나 같다($\\ge$)'를 의미함.\\n⑤ $2(x-4) \\ge 17$로 표기해야 옳음.\\n$\\therefore$ ⑤",
+    "solution": "[핵심] 문장의 수량 표현을 순서와 괄호에 맞게 식으로 옮긴다.\n[풀이] ①~④는 각각 문장의 조건을 부등식으로 바르게 나타낸다. ⑤에서 “x에서 4를 뺀 수의 2배”는 \\(2(x-4)\\), “17보다 작지 않다”는 \\(\\ge17\\)이다. 그러나 보기에 적힌 식은 \\(x-4\\times2>17\\)이므로 옳지 않다.\n[결론] ⑤",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -721,8 +718,6 @@ window.questionBank = [
       "객관식",
       "부등식",
       "일차부등식",
-      "도형",
-      "원",
       "범위",
       "조건해석",
       "응용"
@@ -752,10 +747,10 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
+      "서술형",
       "유리수",
       "순환소수",
       "계산",
@@ -786,10 +781,10 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
+      "서술형",
       "유리수",
       "순환소수",
       "참거짓",
@@ -822,10 +817,10 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
+      "서술형",
       "부등식",
       "실생활",
       "응용",
