@@ -6,7 +6,7 @@
   "canonicalOrdinal": 2,
   "examUid": "m2/1mid/25-wangun",
   "examPath": "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
-  "status": "R3_VALIDATION_PENDING",
+  "status": "CANCELLED_ALREADY_MAIN_DONE",
   "currentMainSha": "3324fa11cbfc4cb61339783eab660ab6e9b3e068",
   "inputArtifactSha": "765f4a05e0af5b166fa0aa55c2efb0b4be09c8bf",
   "finalArtifactSha": "765f4a05e0af5b166fa0aa55c2efb0b4be09c8bf",
@@ -42,8 +42,26 @@
   "openQids": [],
   "lockedScopeMutationCount": 0,
   "examMutationCount": 0,
-  "completedStep": "Fresh current-main branch created; exact current exam blob verified byte-identical to evidence-bound final artifact; prior full R3 physical evidence copied unchanged for actual current-main validator execution.",
-  "firstMissingClosureStep": "ACTUAL_CANONICAL_R3_VALIDATOR_ON_CURRENT_MAIN",
+  "completedStep": "Fresh current-main physical revalidation found the target already terminal on main: R3_PASS was published and MAIN_DONE manifest is present with DO_NOT_REQUEUE. The attempted validation surface is cancelled without PR/validator execution.",
+  "firstMissingClosureStep": null,
   "r3PassDeclared": false,
-  "releaseEligible": false
+  "releaseEligible": false,
+  "physicalTerminal": {
+    "mainDoneManifestPath": "archive/data/release-manifests/m2/2026-10-04-m2-publish-2213-main-merge-o2.json",
+    "mainDoneManifestBlob": "07a6b6ae2bf545d352e5992f67a69544724d3ede",
+    "mainDoneStatus": "MAIN_DONE",
+    "disposition": "DO_NOT_REQUEUE",
+    "publishedExamGitBlobSha": "765f4a05e0af5b166fa0aa55c2efb0b4be09c8bf",
+    "r3ValidatorReceiptBlob": "146fcbcd2efef13b38d13d310da4355f97bdf9ca",
+    "r3StageReceiptBlob": "4fed4fb1c320bf7cad1c3d1ea4a595ea399d4bbe",
+    "r3ReleaseManifestBlob": "7bff018b3704f029a29dfdfe7fd0fe8c8498aab9",
+    "workflowRun": 37202043412,
+    "workflowJob": 111435564345
+  },
+  "validationAttemptCancelled": true,
+  "cancelReason": "TARGET_ALREADY_HAS_DURABLE_R3_CLOSURE_AND_MAIN_DONE_ON_CURRENT_MAIN",
+  "ownerState": "RELINQUISHED_NO_WORK",
+  "autoReselectByR3": false,
+  "doNotMerge": true,
+  "doNotRequeue": true
 }
