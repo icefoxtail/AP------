@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "M2-1-24-WANGUN-1FINAL",
+  "artifactSha": "59028f7f9b6bb6cd9db79ba15dd6517db7da2f18",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "auditMode": "TARGETED_MINIMAL_CURRENT_OVERRIDE",
+  "continuationFrom": {
+    "priorClaimBlob": "133038113c83988fda6e58db3fe9df562a5afbc4",
+    "priorDisposition": "R3_CLOSURE_DEBT",
+    "priorFirstMissingClosureStep": "MATERIALIZE_CANONICAL_R3_PHYSICAL_EVIDENCE"
+  },
+  "upstream": {
+    "review2ReceiptBlob": "14f929a0e944394b9bd12e247497536884762c14",
+    "review2ValidatorBlob": "189dd1b3b5dee18e97510b2e68418d630b07395f",
+    "review2PhysicalEvidenceBlob": "837dfec21cb17b7a4b4d9eb5b66e934645689aa8",
+    "review2DecisionBlob": "bd72089f5e12f3fff917d9db5883be5e00d20aaf",
+    "review2Decision": "PASS",
+    "review2ItemHoldCount": 0,
+    "review2RepairCount": 0
+  },
+  "calibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "qids": [
+          1,
+          2
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "qids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "axes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ]
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [],
+    "directDependencyQids": []
+  },
+  "rows": [],
+  "lockedScopeIntegrity": true,
+  "lockedScopeMutationCount": 0,
+  "releaseIntegrity": true,
+  "releaseChecks": {
+    "latestMainRead": "b08ba2db04ba3be4d172b718aee29e169f8655d3",
+    "exactR2FinalArtifactSha": "59028f7f9b6bb6cd9db79ba15dd6517db7da2f18",
+    "currentExamBlobSha": "59028f7f9b6bb6cd9db79ba15dd6517db7da2f18",
+    "sourceRepairRequired": false,
+    "r3DeterministicRepairCount": 0,
+    "currentRunExamMutationCount": 0,
+    "rationale": "R2 closed PASS with HOLD 0 and no R2 repair; exact final artifact is unchanged. Under the current targeted/minimal R3 override there is no open finding, changed locus, or direct dependency to reopen. Release gate is therefore lock/integrity-only."
+  }
+}
