@@ -1,9 +1,9 @@
 # APMath Construction & Visual Production Engine — 상위 아키텍처 재검토
 
-검토일: 2026-10-05 (Asia/Seoul)  
-기준: `0bb88da58e41ae1154911d4e711f6247e60e5f16`  
-범위: 계획 00–08 v1.1, 해당 커밋의 geometry/publication/Archive/pipeline-core 구현·테스트·계약  
-결과: **큰 아키텍처는 유지. 실행 경계·초기 통합·검증 비용 계약을 보강한 계획으로 구현 착수 권장.**  
+검토일: 2026-10-05 (Asia/Seoul)
+기준: `0bb88da58e41ae1154911d4e711f6247e60e5f16`
+범위: 계획 00–08 v1.1, 해당 커밋의 geometry/publication/Archive/pipeline-core 구현·테스트·계약
+결과: **큰 아키텍처는 유지. 실행 경계·초기 통합·검증 비용 계약을 보강한 계획으로 구현 착수 권장.**
 이번 산출물: 9개 계획서 보강 + 이 보고서. 제품 코드 수정·production 자산 수정·신규 엔진 Seal 없음.
 
 ## 1. 종합 판단
