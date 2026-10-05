@@ -12,7 +12,13 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "해대입",
+      "해검증",
+      "보기판별"
+    ],
     "wide": false,
     "content": "다음 중에서 해가 $x=1$, $y=3$인 연립방정식을 찾으시오. [3점]",
     "choices": [
@@ -23,11 +29,17 @@ window.questionBank = [
       "$\\begin{cases}y=x+2\\\\3x+y=6\\end{cases}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 주어진 해 $x=1$, $y=3$을 각 연립방정식에 직접 대입한다.\n⑤에서 $y=x+2$에 대입하면 $3=1+2$로 참이고, $3x+y=6$에 대입하면 $3+3=6$으로 참이다.\n나머지 보기는 두 식 중 적어도 하나가 성립하지 않는다.\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심]\n주어진 $(x,y)$를 각 연립방정식의 두 식에 모두 대입한다.\n[풀이]\n$x=1$, $y=3$을 ⑤에 대입하면 $y=x+2$에서 $3=1+2$이고, $3x+y=6$에서 $3+3=6$이다. 두 식을 모두 만족하므로 ⑤의 해가 $(1,3)$이다.\n[결론]\n정답은 ⑤이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 2,
@@ -40,7 +52,13 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "해와계수",
+      "계수결정",
+      "대입"
+    ],
     "wide": false,
     "content": "다음 연립방정식 $\\begin{cases}3x+2y=4\\\\5x+ay=3\\end{cases}$의 해가 $x=1$, $y=b$일 때, $ab$의 값은? (단, $a$, $b$는 수) [3.5점]",
     "choices": [
@@ -51,11 +69,17 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 먼저 첫 번째 식에 $x=1$, $y=b$를 대입하여 $b$를 구한다.\n$3\\cdot1+2b=4$이므로 $2b=1$, 따라서 $b=\\dfrac{1}{2}$이다.\n두 번째 식에 대입하면 $5+a\\cdot\\dfrac{1}{2}=3$이므로 $\\dfrac{a}{2}=-2$, 따라서 $a=-4$이다.\n그러므로 $ab=-4\\cdot\\dfrac{1}{2}=-2$이다.\n따라서 정답은 ①이다.",
+    "solution": "[핵심]\n해 $x=1$, $y=b$를 두 식에 차례로 대입한다.\n[풀이]\n$3x+2y=4$에 대입하면 $3+2b=4$이므로 $b=\\frac12$이다. $5x+ay=3$에 대입하면 $5+\\frac a2=3$이므로 $a=-4$이다. 따라서 $ab=-2$이다.\n[결론]\n정답은 ①이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 3,
@@ -68,7 +92,13 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차방정식",
+      "자연수해",
+      "순서쌍",
+      "경우확인"
+    ],
     "wide": false,
     "content": "다음 일차방정식 $2x+3y=11$을 만족시키는 자연수 $x$와 $y$의 순서쌍 $(x, y)$의 개수는? [3.5점]",
     "choices": [
@@ -79,11 +109,17 @@ window.questionBank = [
       "5개"
     ],
     "answer": "②",
-    "solution": "[키포인트] $x$, $y$가 자연수이므로 양의 정수만 확인한다.\n$2x+3y=11$에서 $y=\\dfrac{11-2x}{3}$이다.\n$x=1$이면 $y=3$, $x=4$이면 $y=1$이다. 그 외 자연수 $x$에서는 $y$가 자연수가 되지 않는다.\n따라서 순서쌍은 $(1,3)$, $(4,1)$의 2개이다.\n따라서 정답은 ②이다.",
+    "solution": "[핵심]\n$x,y$가 자연수이므로 가능한 양의 정수 값을 빠짐없이 확인한다.\n[풀이]\n$2x+3y=11$에서 $y=\\frac{11-2x}{3}$이다. $y\\ge1$이므로 $x=1,2,3,4$만 보면 되고, $y$가 자연수인 경우는 $(1,3),(4,1)$이다.\n[결론]\n순서쌍은 2개이므로 정답은 ②이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 4,
@@ -96,7 +132,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "함수",
+      "대응관계",
+      "함수판별",
+      "반례"
+    ],
     "wide": false,
     "content": "다음 중 $y$가 $x$의 함수가 아닌 것을 고르면? [4점]",
     "choices": [
@@ -107,11 +149,17 @@ window.questionBank = [
       "자연수 $x$의 소인수 $y$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 함수는 $x$의 값 하나에 $y$의 값이 하나만 정해져야 한다.\n⑤에서 자연수 $x$가 하나 정해져도 소인수 $y$는 여러 개가 될 수 있다. 예를 들어 $x=6$이면 소인수는 $2$, $3$이다.\n따라서 $x$ 하나에 $y$가 하나로 정해지지 않으므로 함수가 아니다.\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심]\n함수는 하나의 $x$에 하나의 $y$만 대응해야 한다.\n[풀이]\n⑤에서 $y$는 자연수 $x$의 소인수이다. 예를 들어 $x=6$이면 $y=2$ 또는 $3$이 될 수 있어 하나의 $x$에 여러 $y$가 대응한다.\n[결론]\n정답은 ⑤이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 5,
@@ -124,7 +172,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "함숫값",
+      "대입",
+      "계산"
+    ],
     "wide": false,
     "content": "일차함수 $f(x)=2x-3$에 대하여 $f(-1)=a$, $f(2)=b$일 때, $a+b$의 값은? (단, $a$, $b$는 수) [4점]",
     "choices": [
@@ -135,11 +189,17 @@ window.questionBank = [
       "$-6$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 함수값은 주어진 $x$값을 식에 대입하여 구한다.\n$f(-1)=2\\cdot(-1)-3=-5$이므로 $a=-5$이다.\n$f(2)=2\\cdot2-3=1$이므로 $b=1$이다.\n따라서 $a+b=-5+1=-4$이다.\n따라서 정답은 ④이다.",
+    "solution": "[핵심]\n함숫값은 주어진 $x$를 함수식에 대입해 구한다.\n[풀이]\n$f(-1)=-5$이므로 $a=-5$, $f(2)=1$이므로 $b=1$이다. 따라서 $a+b=-4$이다.\n[결론]\n정답은 ④이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 6,
@@ -152,7 +212,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "일차함수판별",
+      "식의꼴",
+      "계수"
+    ],
     "wide": false,
     "content": "다음 중 $y$가 $x$에 대한 일차함수인 것을 고르면? [3점]",
     "choices": [
@@ -163,11 +229,17 @@ window.questionBank = [
       "$y=5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 일차함수는 $y=ax+b$ 꼴이고 $a\\ne0$이어야 한다.\n④ $y=3x+1$은 $a=3$, $b=1$인 $y=ax+b$ 꼴이며 $a\\ne0$이다.\n②는 $x$가 분모에 있고, ③은 $x^2$이 있으며, ⑤는 상수함수이다.\n따라서 정답은 ④이다.",
+    "solution": "[핵심]\n일차함수는 $y=ax+b$ 꼴이며 $a\\ne0$이다.\n[풀이]\n④ $y=3x+1$은 $a=3\\ne0$인 일차함수이다. ②는 $x$가 분모에 있고, ③은 $x^2$항이 있으며, ⑤는 상수함수이다. ①은 $y=$ 꼴의 함수식이 아니다.\n[결론]\n정답은 ④이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 7,
@@ -180,7 +252,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "평행이동",
+      "기울기",
+      "한점"
+    ],
     "wide": false,
     "content": "일차함수 $y=-4x$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 그래프가 점 $(2,-6)$을 지날 때, 수 $k$의 값은? [4점]",
     "choices": [
@@ -191,11 +269,17 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $y$축 방향으로 $k$만큼 평행이동하면 식은 $y=-4x+k$가 된다.\n이 그래프가 점 $(2,-6)$을 지나므로 $-6=-4\\cdot2+k$이다.\n$-6=-8+k$이므로 $k=2$이다.\n따라서 정답은 ③이다.",
+    "solution": "[핵심]\n$y$축 방향으로 $k$만큼 이동하면 $y=-4x+k$가 된다.\n[풀이]\n$(2,-6)$을 대입하면 $-6=-8+k$이므로 $k=2$이다.\n[결론]\n정답은 ③이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 8,
@@ -208,7 +292,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "절편",
+      "삼각형넓이",
+      "좌표축"
+    ],
     "wide": false,
     "content": "일차함수 $y=-2x+6$의 그래프와 $x$축, $y$축으로 둘러싸인 도형의 넓이는? [4점]",
     "choices": [
@@ -219,11 +309,17 @@ window.questionBank = [
       "$45$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $x$절편과 $y$절편을 이용하여 직각삼각형의 넓이를 구한다.\n$y=-2x+6$에서 $x=0$이면 $y=6$이므로 $y$절편은 $6$이다.\n$y=0$이면 $-2x+6=0$에서 $x=3$이므로 $x$절편은 $3$이다.\n따라서 넓이는 $\\dfrac{1}{2}\\cdot3\\cdot6=9$이다.\n따라서 정답은 ①이다.",
+    "solution": "[핵심]\n$x$절편과 $y$절편으로 직각삼각형의 두 변 길이를 구한다.\n[풀이]\n$y=-2x+6$에서 $y$절편은 $6$, $x$절편은 $3$이다. 따라서 넓이는 $\\frac12\\times3\\times6=9$이다.\n[결론]\n정답은 ①이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 9,
@@ -237,7 +333,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "그래프"
+      "객관식",
+      "일차방정식",
+      "그래프",
+      "수직선",
+      "계수결정"
     ],
     "wide": false,
     "content": "일차방정식 $ax+by+2=0$의 그래프가 다음과 같을 때, 두 수 $a$, $b$에 대하여 $b-a$의 값은? [4점]",
@@ -249,13 +349,19 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 그림은 $x=-2$인 직선이다.\n$ax+by+2=0$이 $x=-2$의 그래프가 되려면 $b=0$이고, 식은 $ax+2=0$이어야 한다.\n이 직선이 $x=-2$이므로 $-2a+2=0$, 따라서 $a=1$이다.\n그러므로 $b-a=0-1=-1$이다.\n따라서 정답은 ②이다.",
+    "solution": "[핵심]\n그림의 직선은 $x=-2$이다.\n[풀이]\n$ax+by+2=0$이 수직선 $x=-2$가 되려면 $b=0$이다. 그러면 $ax+2=0$이고 $x=-2$에서 $a=1$이다. 따라서 $b-a=-1$이다.\n[결론]\n정답은 ②이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q9.png",
     "imageSize": "medium",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 10,
@@ -268,7 +374,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "직선",
+      "y축평행",
+      "교점",
+      "대입"
+    ],
     "wide": false,
     "content": "점 $(-5,0)$을 지나고 $y$축에 평행한 직선의 방정식과 직선의 방정식 $x+2y=5$는 한 점에서 만난다. 그 교점의 좌표를 $(a,b)$라 할 때, $a+b$의 값은? (단, $b$는 수) [4점]",
     "choices": [
@@ -279,11 +391,17 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $y$축에 평행한 직선은 $x=$상수 꼴이다.\n점 $(-5,0)$을 지나고 $y$축에 평행한 직선은 $x=-5$이다.\n$x+2y=5$에 $x=-5$를 대입하면 $-5+2y=5$이므로 $y=5$이다.\n교점은 $(-5,5)$이므로 $a+b=-5+5=0$이다.\n따라서 정답은 ③이다.",
+    "solution": "[핵심]\n$y$축에 평행한 직선은 $x=$상수 꼴이다.\n[풀이]\n점 $(-5,0)$을 지나므로 $x=-5$이다. $x+2y=5$에 대입하면 $y=5$이므로 교점은 $(-5,5)$이고 $a+b=0$이다.\n[결론]\n정답은 ③이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 11,
@@ -296,7 +414,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "기울기",
+      "두점",
+      "좌표"
+    ],
     "wide": false,
     "content": "기울기가 $\\dfrac{1}{3}$인 일차함수가 두 점 $(1,5)$, $(k,4)$를 지날 때, 수 $k$의 값은? [4점]",
     "choices": [
@@ -307,11 +431,17 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 점을 지나는 직선의 기울기는 $y$의 변화량을 $x$의 변화량으로 나눈 값이다.\n두 점 $(1,5)$, $(k,4)$를 지나는 기울기는 $\\dfrac{4-5}{k-1}=\\dfrac{-1}{k-1}$이다.\n이 값이 $\\dfrac{1}{3}$이므로 $\\dfrac{-1}{k-1}=\\dfrac{1}{3}$이다.\n따라서 $k-1=-3$이고 $k=-2$이다.\n따라서 정답은 ②이다.",
+    "solution": "[핵심]\n두 점으로 구한 기울기를 $\\frac13$과 같게 둔다.\n[풀이]\n기울기는 $\\frac{4-5}{k-1}=\\frac{-1}{k-1}$이다. 이것이 $\\frac13$이므로 $k-1=-3$, $k=-2$이다.\n[결론]\n정답은 ②이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 12,
@@ -325,7 +455,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "그래프"
+      "객관식",
+      "일차함수",
+      "그래프",
+      "기울기부호",
+      "절편"
     ],
     "wide": false,
     "content": "일차함수 $y=ax+b$의 그래프에 대하여 $a>0$, $b<0$을 만족하는 그래프와 $a<0$, $b=0$을 만족하는 그래프를 아래 그림에서 순서대로 바르게 짝지은 것은? (단, $a\\ne0$, $a$, $b$는 상수) [4점]",
@@ -337,13 +471,19 @@ window.questionBank = [
       "ㄴ,ㅁ"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $a$는 기울기, $b$는 $y$절편이다.\n$a>0$, $b<0$이면 오른쪽 위로 올라가고 $y$축을 원점 아래에서 만나는 그래프이다.\n$a<0$, $b=0$이면 오른쪽 아래로 내려가고 원점을 지나는 그래프이다.\n그림에서 이 조건을 순서대로 만족하는 짝은 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심]\n$a$의 부호는 그래프 방향, $b$는 $y$절편의 위치를 뜻한다.\n[풀이]\n$a>0,b<0$이면 오른쪽 위로 올라가며 $y$축을 원점 아래에서 만나는 그래프이므로 ㄴ이다. $a<0,b=0$이면 오른쪽 아래로 내려가며 원점을 지나는 그래프이므로 ㅁ이다.\n[결론]\nㄴ, ㅁ이므로 정답은 ⑤이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q12.png",
     "imageSize": "medium",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 13,
@@ -356,7 +496,13 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "활용",
+      "가위바위보",
+      "횟수"
+    ],
     "wide": false,
     "content": "삼이와 산이는 계단에서 가위바위보를 하여 이기면 3계단 올라가고 지면 2계단을 내려가며, 비길 경우는 움직이지 않는 게임을 했다. 처음보다 삼이는 5계단, 산이는 10계단을 더 올라가 있고, 비긴 경우는 5번이었다. 가위바위보 게임을 한 총 횟수는? [4점]",
     "choices": [
@@ -367,11 +513,17 @@ window.questionBank = [
       "25회"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼이가 이긴 횟수와 산이가 이긴 횟수를 각각 문자로 두어 연립방정식을 세운다.\n삼이가 이긴 횟수를 $x$, 산이가 이긴 횟수를 $y$라 하자.\n삼이의 이동은 $3x-2y=5$, 산이의 이동은 $-2x+3y=10$이다.\n두 식을 풀면 $x=7$, $y=8$이다.\n비긴 경우가 5번이므로 총 횟수는 $7+8+5=20$회이다.\n따라서 정답은 ④이다.",
+    "solution": "[핵심]\n삼이가 이긴 횟수와 산이가 이긴 횟수를 각각 미지수로 둔다.\n[풀이]\n삼이가 이긴 횟수를 $x$, 산이가 이긴 횟수를 $y$라 하면 $3x-2y=5$, $-2x+3y=10$이다. 풀면 $x=7$, $y=8$이다. 비긴 경우 5번을 더하면 $7+8+5=20$회이다.\n[결론]\n정답은 ④이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 14,
@@ -385,19 +537,30 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
+      "객관식",
+      "일차함수",
+      "평행",
+      "기울기",
+      "한점",
       "그래프"
     ],
     "wide": false,
     "content": "일차함수 $y=-\\dfrac{5}{2}x+1$의 그래프와 평행하고 점 $(4,-5)$를 지나는 일차함수의 그래프로 고르면? [4.5점]",
     "choices": [],
     "answer": "③",
-    "solution": "[키포인트] 평행한 두 직선은 기울기가 같다.\n주어진 직선의 기울기는 $-\\dfrac{5}{2}$이므로 구하는 직선의 기울기도 $-\\dfrac{5}{2}$이다.\n점 $(4,-5)$를 지나므로 $-5=-\\dfrac{5}{2}\\cdot4+b$에서 $b=5$이다.\n따라서 식은 $y=-\\dfrac{5}{2}x+5$이고, 이에 맞는 그래프는 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "[핵심]\n평행한 두 직선은 기울기가 같다.\n[풀이]\n구하는 직선을 $y=-\\frac52x+b$라 두고 $(4,-5)$를 대입하면 $-5=-10+b$이므로 $b=5$이다. 따라서 $y=-\\frac52x+5$이고 그림의 ③이다.\n[결론]\n정답은 ③이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q14.png",
     "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 15,
@@ -411,7 +574,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "그래프"
+      "객관식",
+      "일차함수",
+      "그래프",
+      "절편",
+      "기울기"
     ],
     "wide": false,
     "content": "그림과 같은 직선을 그래프로 하는 일차함수의 식을 구하면? [4점]",
@@ -423,13 +590,19 @@ window.questionBank = [
       "$y=-\\dfrac{1}{3}x+2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 그래프의 $x$절편과 $y$절편을 이용하여 기울기를 구한다.\n그림에서 직선은 $y$축과 $2$에서 만나고, $x$축과 $6$에서 만난다.\n따라서 두 점 $(0,2)$, $(6,0)$을 지나므로 기울기는 $\\dfrac{0-2}{6-0}=-\\dfrac{1}{3}$이다.\n그러므로 식은 $y=-\\dfrac{1}{3}x+2$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심]\n그래프에서 두 절편을 읽어 직선의 식을 구한다.\n[풀이]\n그림의 $y$절편은 $2$, $x$절편은 $6$이다. 두 점 $(0,2),(6,0)$을 지나므로 기울기는 $-\\frac13$이고 식은 $y=-\\frac13x+2$이다.\n[결론]\n정답은 ⑤이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q15.png",
     "imageSize": "half",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 16,
@@ -442,7 +615,13 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "연립일차방정식",
+      "계수결정",
+      "분수식",
+      "소수식"
+    ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases}\\dfrac{x}{6}+\\dfrac{y}{4}=\\dfrac{2}{3}\\\\0.4x+ky=-0.2\\end{cases}$의 해는 $y$의 값이 $x$의 2배일 때, 수 $k$의 값은? [4점]",
     "choices": [
@@ -453,11 +632,17 @@ window.questionBank = [
       "$-0.5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $y$가 $x$의 2배이므로 $y=2x$를 먼저 대입한다.\n$\\dfrac{x}{6}+\\dfrac{2x}{4}=\\dfrac{2}{3}$이므로 $\\dfrac{x}{6}+\\dfrac{x}{2}=\\dfrac{2}{3}$이다.\n$\\dfrac{2x}{3}=\\dfrac{2}{3}$이므로 $x=1$, 따라서 $y=2$이다.\n두 번째 식에 대입하면 $0.4+2k=-0.2$이므로 $2k=-0.6$, $k=-0.3$이다.\n따라서 정답은 ③이다.",
+    "solution": "[핵심]\n$y=2x$를 먼저 이용해 해를 구한 뒤 둘째 식에서 $k$를 정한다.\n[풀이]\n첫째 식에 $y=2x$를 대입하면 $\\frac{x}{6}+\\frac{2x}{4}=\\frac23$이므로 $x=1$, $y=2$이다. 둘째 식에 대입하면 $0.4+2k=-0.2$이므로 $k=-0.3$이다.\n[결론]\n정답은 ③이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 17,
@@ -471,7 +656,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "그래프"
+      "객관식",
+      "일차방정식",
+      "교점",
+      "연립방정식",
+      "계수"
     ],
     "wide": false,
     "content": "두 일차방정식 $ax+y=1$과 $bx-ay=3$의 그래프가 만나는 교점을 $(1,2)$라 하자. 이때, 두 수 $a$, $b$에 대하여 $a-b$의 값은? [4점]",
@@ -483,13 +672,19 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 교점은 두 방정식을 모두 만족하는 점이다.\n$(1,2)$를 $ax+y=1$에 대입하면 $a+2=1$이므로 $a=-1$이다.\n이를 $bx-ay=3$에 대입하면 $b-(-1)\\cdot2=3$이므로 $b+2=3$, $b=1$이다.\n따라서 $a-b=-1-1=-2$이다.\n따라서 정답은 ②이다.",
+    "solution": "[핵심]\n교점 $(1,2)$은 두 방정식을 모두 만족한다.\n[풀이]\n$ax+y=1$에 대입하면 $a=-1$이다. $bx-ay=3$에 대입하면 $b+2=3$이므로 $b=1$이다. 따라서 $a-b=-2$이다.\n[결론]\n정답은 ②이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q17.png",
     "imageSize": "half",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 18,
@@ -502,7 +697,13 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "객관식",
+      "일차함수",
+      "교점조건",
+      "절편",
+      "두점"
+    ],
     "wide": false,
     "content": "일차함수 $y=ax+b$의 그래프는 일차함수 $y=-\\dfrac{1}{3}x+1$의 그래프와 $x$축 위에서 만나고, 일차함수 $y=x+2$의 그래프는 $y$축 위에서 만난다. 두 수 $a$, $b$에 대하여 $\\dfrac{b}{a}$의 값은? [4.5점]",
     "choices": [
@@ -513,11 +714,17 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 주어진 두 조건은 각각 $x$축 위의 교점과 $y$축 위의 교점을 알려 준다.\n$y=-\\dfrac{1}{3}x+1$이 $x$축과 만날 때는 $0=-\\dfrac{1}{3}x+1$이므로 $x=3$이다. 따라서 점 $(3,0)$을 지난다.\n$y=x+2$가 $y$축과 만날 때는 $x=0$이므로 점 $(0,2)$를 지난다.\n두 점 $(3,0)$, $(0,2)$를 지나는 직선의 기울기는 $a=\\dfrac{0-2}{3-0}=-\\dfrac{2}{3}$이고, $b=2$이다.\n따라서 $\\dfrac{b}{a}=2\\div(-\\dfrac{2}{3})=-3$이다.\n따라서 정답은 ①이다.",
+    "solution": "[핵심]\n두 교점 조건에서 구하는 직선 위의 두 점을 찾는다.\n[풀이]\n$y=-\\frac13x+1$의 $x$절편은 $(3,0)$이고, $y=x+2$의 $y$절편은 $(0,2)$이다. 두 점을 지나는 직선은 $a=-\\frac23$, $b=2$이므로 $\\frac ba=-3$이다.\n[결론]\n정답은 ①이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 19,
@@ -531,7 +738,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "도형"
+      "객관식",
+      "일차함수",
+      "도형",
+      "직사각형",
+      "삼각형넓이"
     ],
     "wide": false,
     "content": "직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 변 $BC$를 따라 점 $C$까지 움직인다. $AD=12\\text{ cm}$, $CD=8\\text{ cm}$이고, 선분 $PC$의 길이를 $x\\text{ cm}$, 삼각형 $ABP$의 넓이를 $y\\text{ cm}^2$라 하자. $x$와 $y$ 사이의 관계식과 삼각형 $ABP$의 넓이가 $36\\text{ cm}^2$이 되는 선분 $PC$의 길이를 순서대로 바르게 짝지은 것은? [5점]",
@@ -543,13 +754,19 @@ window.questionBank = [
       "$y=-8x+96$, $4\\text{ cm}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $PC=x$이면 $BP=12-x$이다.\n삼각형 $ABP$의 밑변을 $BP$로 보면 높이는 $AB=8$이다.\n따라서 넓이 $y=\\dfrac{1}{2}(12-x)\\cdot8=48-4x$이므로 $y=-4x+48$이다.\n$y=36$일 때 $36=-4x+48$이므로 $4x=12$, $x=3$이다.\n따라서 정답은 ①이다.",
+    "solution": "[핵심]\n$PC=x$이면 $BP=12-x$이다.\n[풀이]\n삼각형 $ABP$의 높이는 $AB=8$이므로 $y=\\frac12(12-x)\\cdot8=48-4x$이다. $y=36$이면 $x=3$이다.\n[결론]\n$y=-4x+48$, $PC=3\\text{ cm}$이므로 정답은 ①이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q19.png",
     "imageSize": "half",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 20,
@@ -563,7 +780,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "그래프"
+      "객관식",
+      "일차함수",
+      "일차방정식",
+      "교점",
+      "삼각형넓이"
     ],
     "wide": false,
     "content": "$(-1,5)$를 지나고 $x$축에 평행한 직선과 두 직선 $x+y-4=0$, $2x-3y-3=0$이 이루는 도형의 넓이는? [5점]",
@@ -575,13 +796,19 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $x$축에 평행하고 $(-1,5)$를 지나는 직선은 $y=5$이다.\n$y=5$와 $x+y-4=0$의 교점은 $x=-1$이므로 $(-1,5)$이다.\n$y=5$와 $2x-3y-3=0$의 교점은 $2x-15-3=0$에서 $x=9$이므로 $(9,5)$이다.\n두 직선 $x+y-4=0$, $2x-3y-3=0$의 교점은 $(3,1)$이다.\n따라서 위쪽 밑변의 길이는 $10$, 높이는 $5-1=4$이므로 넓이는 $\\dfrac{1}{2}\\cdot10\\cdot4=20$이다.\n따라서 정답은 ④이다.",
+    "solution": "[핵심]\n세 직선의 교점을 구해 삼각형의 밑변과 높이를 정한다.\n[풀이]\n수평선은 $y=5$이다. 다른 두 직선과의 교점은 각각 $(-1,5)$, $(9,5)$이다. $x+y-4=0$, $2x-3y-3=0$의 교점은 $(3,1)$이다. 밑변은 $10$, 높이는 $4$이므로 넓이는 $20$이다.\n[결론]\n정답은 ④이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q20.png",
     "imageSize": "half",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 21,
@@ -596,19 +823,28 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "그래프"
+      "일차함수",
+      "그래프",
+      "절편",
+      "기울기"
     ],
     "wide": false,
     "content": "[서술형1] 아래 일차함수 그래프에 대하여 다음 물음에 답하여라. [총 5점]\n(1) 위 그래프의 $x$절편과 $y$절편을 각각 구하여라. [1점]\n(2) 위 그래프를 일차함수 식으로 나타내어라. [1점]\n(3) 위에서 구한 일차함수의 그래프의 성질을 한 문장으로 서술하여라. (기울기, 그래프 방향을 포함하여 서술할 것) [2점]",
     "choices": [],
     "answer": "(1) $x$절편: $-3$, $y$절편: $7$ / (2) $y=\\dfrac{7}{3}x+7$ / (3) 기울기가 양수이므로 오른쪽 위로 올라가는 그래프이다.",
-    "solution": "[키포인트] 그래프에서 $x$축과 만나는 점, $y$축과 만나는 점을 읽는다.\n그래프는 $x$축과 $(-3,0)$에서 만나므로 $x$절편은 $-3$이고, $y$축과 $(0,7)$에서 만나므로 $y$절편은 $7$이다.\n두 점 $(-3,0)$, $(0,7)$을 지나는 직선의 기울기는 $\\dfrac{7-0}{0-(-3)}=\\dfrac{7}{3}$이다.\n따라서 일차함수의 식은 $y=\\dfrac{7}{3}x+7$이다.\n기울기가 $\\dfrac{7}{3}>0$이므로 그래프는 오른쪽 위로 올라간다.",
+    "solution": "[핵심]\n그래프의 두 절편으로 직선의 식과 방향을 구한다.\n[풀이]\n(1) $x$절편은 $-3$, $y$절편은 $7$이다.\n(2) 두 점 $(-3,0),(0,7)$을 지나므로 기울기는 $\\frac73$, 식은 $y=\\frac73x+7$이다.\n(3) 기울기가 양수이므로 오른쪽 위로 올라간다.\n[결론]\n$x$절편 $-3$, $y$절편 $7$, 식 $y=\\frac73x+7$이다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q21.png",
     "imageSize": "half",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 22,
@@ -622,17 +858,27 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차함수",
+      "실생활",
+      "변화율",
+      "관계식"
     ],
     "wide": false,
     "content": "[서술형2] 지한이는 올해 때이른 폭염으로 6월부터 집에서 에어컨을 틀기 시작했다. 오늘은 집에 햇빛이 너무 많이 들어와서 집 실내 온도가 $36^\\circ\\mathrm{C}$까지 올라가 있다. 이 온도일 때부터 에어컨을 틀기 시작하였고, 엄마가 $24^\\circ\\mathrm{C}$까지 온도가 내려가면 에어컨을 바로 끄라고 말씀하셨다. 에어컨을 틀면 1시간에 $4^\\circ\\mathrm{C}$씩 일정하게 온도가 낮아진다고 할 때, 몇 시간 후에 에어컨을 끄면 될지 아래 물음에 답하여라. (단, 에어컨의 실제 작동원리는 고려하지 않는다.) [총 4점]\n(1) 변수 $x$, $y$ 정하기 [1점]\n(2) 위 문제상황에 맞는 $x$, $y$ 관계식 구하기 [1점]\n(3) 몇 시간 후에 에어컨을 꺼야 하는지 구하여라. [2점]",
     "choices": [],
     "answer": "(1) $x$: 시간, $y$: 온도 / (2) $y=-4x+36$ / (3) 3시간 후",
-    "solution": "[키포인트] 처음 온도에서 시간당 내려가는 온도를 빼서 식을 세운다.\n$x$를 에어컨을 튼 뒤 지난 시간, $y$를 실내 온도라 하자.\n처음 온도는 $36^\\circ\\mathrm{C}$이고 1시간에 $4^\\circ\\mathrm{C}$씩 낮아지므로 $y=36-4x$, 즉 $y=-4x+36$이다.\n온도가 $24^\\circ\\mathrm{C}$가 될 때를 구하면 $24=-4x+36$이다.\n$4x=12$이므로 $x=3$이다. 따라서 3시간 후에 에어컨을 끄면 된다.",
+    "solution": "[핵심]\n처음 온도와 시간당 변화량으로 일차함수식을 세운다.\n[풀이]\n(1) $x$를 지난 시간, $y$를 실내 온도라 하자.\n(2) 처음 $36^\\circ\\mathrm C$에서 1시간마다 $4^\\circ\\mathrm C$씩 내려가므로 $y=-4x+36$이다.\n(3) $24=-4x+36$에서 $x=3$이다.\n[결론]\n3시간 후에 에어컨을 끄면 된다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 23,
@@ -647,19 +893,28 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "그래프"
+      "일차함수",
+      "직선의방정식",
+      "교점",
+      "평행"
     ],
     "wide": false,
     "content": "[서술형3] 다음 그림과 같이 좌표평면 위에 세 직선 (가), (나), (다)가 있다. 다음을 서술하여라. [총 6점]\n1. 세 직선 (가), (나), (다)의 직선의 방정식을 각각 구하여라. [각 1점]\n2. 세 직선의 위치 관계를 다음으로 분류하여 설명하여라.\n(1) 한 점에서 만나는 두 직선을 찾아 기호로 쓰고, 그 교점을 구하여라. [2점]\n(2) 서로 만나지 않을 두 직선을 찾아 기호로 쓰고, 그 이유를 서술하여라. [1점]",
     "choices": [],
     "answer": "1. (가) $y=\\dfrac{3}{2}x+2$, (나) $y=\\dfrac{5}{2}x-2$, (다) $y=\\dfrac{3}{2}x-\\dfrac{11}{2}$ / 2. (1) (가),(나): $(4,8)$, (나),(다): $(-\\dfrac{7}{2},-\\dfrac{43}{4})$ / (2) (가),(다)는 서로 평행하다.",
-    "solution": "[키포인트] 각 직선에서 두 점을 읽어 기울기를 구한 뒤, $y=ax+b$ 꼴로 나타낸다.\n(가)는 두 점 $(-2,-1)$, $(0,2)$를 지나므로 기울기가 $\\dfrac{2-(-1)}{0-(-2)}=\\dfrac{3}{2}$이고, $y$절편이 $2$이다. 따라서 $y=\\dfrac{3}{2}x+2$이다.\n(나)는 두 점 $(0,-2)$, $(2,3)$을 지나므로 기울기가 $\\dfrac{3-(-2)}{2-0}=\\dfrac{5}{2}$이고, $y$절편이 $-2$이다. 따라서 $y=\\dfrac{5}{2}x-2$이다.\n(다)는 두 점 $(1,-4)$, $(3,-1)$을 지나므로 기울기가 $\\dfrac{-1-(-4)}{3-1}=\\dfrac{3}{2}$이다. 점 $(3,-1)$을 대입하면 $-1=\\dfrac{3}{2}\\cdot3+b$이므로 $b=-\\dfrac{11}{2}$이다. 따라서 $y=\\dfrac{3}{2}x-\\dfrac{11}{2}$이다.\n(가)와 (나)의 교점은 $\\dfrac{3}{2}x+2=\\dfrac{5}{2}x-2$에서 $x=4$, $y=8$이므로 $(4,8)$이다.\n(나)와 (다)의 교점은 $\\dfrac{5}{2}x-2=\\dfrac{3}{2}x-\\dfrac{11}{2}$에서 $x=-\\dfrac{7}{2}$, $y=-\\dfrac{43}{4}$이다.\n(가)와 (다)는 기울기가 모두 $\\dfrac{3}{2}$이고 $y$절편이 서로 다르므로 서로 만나지 않고 평행하다.",
+    "solution": "[핵심]\n각 직선의 두 점으로 식을 구한 뒤 교점과 평행 관계를 판정한다.\n[풀이]\n1-(가) $(-2,-1),(0,2)$에서 $y=\\frac32x+2$이다.\n1-(나) $(0,-2),(2,3)$에서 $y=\\frac52x-2$이다.\n1-(다) $(1,-4),(3,-1)$에서 $y=\\frac32x-\\frac{11}{2}$이다.\n2-(1) (가),(나)의 교점은 $(4,8)$이고, (나),(다)의 교점은 $\\left(-\\frac72,-\\frac{43}{4}\\right)$이다.\n2-(2) (가),(다)는 기울기가 $\\frac32$로 같고 절편이 달라 평행하다.\n[결론]\n세 직선의 식과 위치 관계는 위와 같다.",
     "image": "assets/images/24_삼산중_1학기_기말_중2_기출/q23.png",
     "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   },
   {
     "id": 24,
@@ -673,16 +928,26 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "연립일차방정식",
+      "속력",
+      "시간",
+      "거리"
     ],
     "wide": false,
     "content": "[서술형4] 삼산이는 두 거리 $6\\text{ km}$인 산책로를 걷는데 처음에는 시속 $4\\text{ km}$로 걷다가 도중에 힘이 들어 남은 거리는 시속 $2\\text{ km}$로 걸어 2시간 만에 산책을 마쳤다. 연립방정식으로 문제를 해결하여 시속 $4\\text{ km}$로 간 시간과 시속 $2\\text{ km}$로 간 시간을 구하려고 한다. [총 5점]\n(1) 변수 정하기 [1점]\n(2) 두 식을 세워 해결하기 [2점]\n(3) 시속 $4\\text{ km}$로 간 시간과 시속 $2\\text{ km}$로 간 시간을 구하여라. [2점]",
     "choices": [],
     "answer": "시속 $4\\text{ km}$로 간 시간: 1시간, 시속 $2\\text{ km}$로 간 시간: 1시간",
-    "solution": "[키포인트] 두 속도로 걸은 시간을 각각 문자로 두고 거리와 시간의 합을 식으로 세운다.\n시속 $4\\text{ km}$로 걸은 시간을 $x$시간, 시속 $2\\text{ km}$로 걸은 시간을 $y$시간이라 하자.\n전체 시간은 2시간이므로 $x+y=2$이다.\n전체 거리는 $6\\text{ km}$이므로 $4x+2y=6$이다.\n$x+y=2$에서 $2x+2y=4$이고, $4x+2y=6$에서 빼면 $2x=2$이므로 $x=1$이다.\n따라서 $y=1$이다. 시속 $4\\text{ km}$로 1시간, 시속 $2\\text{ km}$로 1시간 걸었다.",
+    "solution": "[핵심]\n두 속도로 걸은 시간을 미지수로 두고 시간과 거리의 합을 식으로 세운다.\n[풀이]\n(1) 시속 $4\\text{ km}$로 간 시간을 $x$, 시속 $2\\text{ km}$로 간 시간을 $y$라 하자.\n(2) $x+y=2$, $4x+2y=6$이다. 풀면 $x=1$, $y=1$이다.\n(3) 각각 1시간씩 걸었다.\n[결론]\n시속 $4\\text{ km}$로 1시간, 시속 $2\\text{ km}$로 1시간 걸었다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2022",
+    "course": "중2 수학"
   }
 ];
