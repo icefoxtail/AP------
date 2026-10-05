@@ -1,0 +1,127 @@
+{
+  "id": "equal-length-owners",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -1,
+    "xMax": 4,
+    "yMin": -1,
+    "yMax": 4,
+    "width": 384,
+    "height": 384,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {
+    "coordinateEvidence": {
+      "mode": "SOURCE_COORDINATES",
+      "rationale": "Synthetic regression source explicitly freezes every point coordinate.",
+      "sourcePointIds": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "AB",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "id": "BC",
+      "kind": "SEGMENT",
+      "from": [
+        3,
+        0
+      ],
+      "to": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        3
+      ],
+      "to": [
+        0,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "B": "B",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "AB": [
+        "A",
+        "B"
+      ],
+      "BC": [
+        "B",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lAB",
+        "kind": "LENGTH",
+        "owner": "AB",
+        "value": 3
+      },
+      {
+        "id": "lCA",
+        "kind": "LENGTH",
+        "owner": "CA",
+        "value": 3,
+        "side": -1
+      }
+    ]
+  }
+}

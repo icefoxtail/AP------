@@ -28,7 +28,7 @@ window.questionBank = [
       "오답선별"
     ],
     "wide": false,
-    "solution": "순환소수의 표기는 순환마디의 양 끝 숫자 위에 점을 찍어 나타낸다.\n④번의 순환마디는 $3, 4, 2$이므로 $2.\\dot{3}4\\dot{2}$로 표기해야 옳다.",
+    "solution": "[핵심] 순환마디 전체의 처음과 끝 숫자 위에 점을 찍어야 한다.\n\n[독립 풀이 요약] 각 소수의 실제 반복 부분과 점의 위치를 비교하면 ④만 반복마디를 잘못 표시했다.\n\n[풀이]\n① $0.777\\ldots$의 순환마디는 $7$이므로 $0.\\dot7$이 맞다.\n② $1.2333\\ldots$의 순환마디는 $3$이므로 $1.2\\dot3$이 맞다.\n③ $0.9656565\\ldots$의 순환마디는 $65$이므로 $0.9\\dot6\\dot5$가 맞다.\n④ $2.342342\\ldots$에서는 $342$가 반복되므로 $2.\\dot3 4\\dot2$로 나타내야 한다. 현재 표기는 $2$만 반복되는 뜻이므로 옳지 않다.\n⑤ $1.234234\\ldots$의 순환마디는 $234$이므로 $1.\\dot2 3\\dot4$가 맞다.\n\n[확인] 옳지 않은 것은 ④ 하나이다.\n\n[결론] 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -63,7 +63,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "③ $\\frac{15}{42} = \\frac{5}{14} = \\frac{5}{2 \\times 7}$로 분모에 소인수 $7$이 남는다.",
+    "solution": "[핵심] 기약분수의 분모에 $2$와 $5$ 이외의 소인수가 남으면 유한소수로 나타낼 수 없다.\n\n[독립 풀이 요약] 다섯 분수를 기약분수로 만든 뒤 분모의 소인수를 확인한다.\n\n[풀이]\n① $\\frac{11}{44}=\\frac14$이므로 유한소수이다.\n② $\\frac35$는 유한소수이다.\n③ $\\frac{15}{42}=\\frac5{14}=\\frac5{2\\times7}$이고 분모에 $7$이 남으므로 유한소수가 아니다.\n④ $\\frac{36}{120}=\\frac3{10}$이므로 유한소수이다.\n⑤ $\\frac{13}{2^3\\times5}=\\frac{13}{40}$이므로 유한소수이다.\n\n[확인] 조건을 만족하지 않는 것은 ③뿐이다.\n\n[결론] 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -99,7 +99,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "$\\frac{9}{330} = \\frac{3}{110} \\implies A$는 $11$의 배수, $\\frac{6}{70} = \\frac{3}{35} \\implies A$는 $7$의 배수.\n$A$는 $77$이다.",
+    "solution": "[핵심] 약분한 분모에서 $2,5$ 이외의 소인수가 모두 약분되도록 $A$를 정한다.\n\n[독립 풀이 요약] 첫째 분수에서는 $11$, 둘째 분수에서는 $7$을 없애야 하므로 가장 작은 $A$는 $\\operatorname{lcm}(11,7)=77$이다.\n\n[풀이]\n$\\frac9{330}=\\frac3{110}=\\frac3{2\\times5\\times11}$이므로 $A$는 적어도 $11$의 배수여야 한다.\n또\n$\\frac6{70}=\\frac3{35}=\\frac3{5\\times7}$이므로 $A$는 적어도 $7$의 배수여야 한다.\n따라서 가장 작은 자연수는\n$A=11\\times7=77$이다.\n\n[확인] $\\frac3{110}\\times77=\\frac{21}{10}$, $\\frac3{35}\\times77=\\frac{33}{5}$로 둘 다 유한소수이다.\n\n[결론] 정답은 ④, $77$이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -135,7 +135,7 @@ window.questionBank = [
       "복수조건"
     ],
     "wide": false,
-    "solution": "ㄱ, ㄷ은 참이며 ㄴ, ㄹ은 순환소수(유리수)라는 반례가 존재한다.",
+    "solution": "[핵심] 유리수는 유한소수 또는 순환소수로 나타낼 수 있다.\n\n[독립 풀이 요약] ㄱ과 ㄷ은 참이고, ㄴ과 ㄹ은 순환소수가 유리수라는 사실에 어긋난다.\n\n[풀이]\nㄱ. 유한소수는 분모가 $10$의 거듭제곱인 분수로 나타낼 수 있으므로 참이다.\nㄴ. 모든 순환소수는 분수로 나타낼 수 있는 유리수이므로 거짓이다.\nㄷ. 정수가 아닌 유리수도 유한소수 또는 순환소수로 나타낼 수 있으므로 참이다.\nㄹ. 무한소수 중 순환소수는 유리수이므로 거짓이다.\n\n[확인] 옳은 문장은 ㄱ, ㄷ이다.\n\n[결론] 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -170,7 +170,7 @@ window.questionBank = [
       "빈칸추론"
     ],
     "wide": false,
-    "solution": "지수는 각각 $12, 7, 7, 6, 3$이며 합은 $35$이다.",
+    "solution": "[핵심] 지수법칙을 식마다 정확히 적용한다.\n\n[독립 풀이 요약] 빈칸은 차례로 $12,7,7,6,3$이고 합은 $35$이다.\n\n[풀이]\n$(x^3)^4=x^{3\\times4}=x^{12}$,\n$x^2\\times x^5=x^{2+5}=x^7$,\n$x^{14}\\div x^7=x^{14-7}=x^7$이다.\n또\n$(a^2b)^3=a^{2\\times3}b^3=a^6b^3$이다.\n따라서 다섯 빈칸의 합은\n$12+7+7+6+3=35$이다.\n\n[확인] 각 법칙은 거듭제곱의 거듭제곱, 곱셈, 나눗셈 순으로 적용되었다.\n\n[결론] 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -206,7 +206,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "$A=9 \\times 3^x \\implies 3^x = A/9$. $9^x = (3^x)^2 = A^2/81$.",
+    "solution": "[핵심] $A$에서 먼저 $3^x$를 분리한 뒤 $9^x=(3^x)^2$를 이용한다.\n\n[독립 풀이 요약] $3^x=\\frac A9$이므로 $9^x=\\left(\\frac A9\\right)^2=\\frac{A^2}{81}$이다.\n\n[풀이]\n$A=3^{x+2}=3^x\\cdot3^2=9\\cdot3^x$이므로\n$3^x=\\frac A9$이다.\n따라서\n$9^x=(3^2)^x=(3^x)^2\n=\\left(\\frac A9\\right)^2\n=\\frac{A^2}{81}$이다.\n\n[확인] $A^2=3^{2x+4}=81\\cdot9^x$이므로 같은 결과를 얻는다.\n\n[결론] 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -242,10 +242,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "어떤 식 $B = 12x^4y^9 \\div (-4xy^3) = -3x^3y^6$.\n바른 계산: $12x^4y^9 \\times (-3x^3y^6) = -36x^7y^{15}$.",
+    "solution": "[핵심] 잘못된 나눗셈 결과로부터 곱해야 했던 단항식을 역산한다.\n\n[독립 풀이 요약] 곱할 식은 $-3x^3y^6$이고, 바른 곱은 $-36x^7y^{15}$이다.\n\n[풀이]\n곱해야 했던 단항식을 $B$라 하자.\n$12x^4y^9\\div B=-4xy^3$이므로\n$B=12x^4y^9\\div(-4xy^3)\n=-3x^{4-1}y^{9-3}\n=-3x^3y^6$이다.\n따라서 바르게 계산하면\n$12x^4y^9\\times(-3x^3y^6)\n=-36x^{4+3}y^{9+6}\n=-36x^7y^{15}$이다.\n\n[확인] 계수는 $12\\times(-3)=-36$, 지수는 각각 $7,15$이다.\n\n[결론] 정답은 ②이다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -278,7 +278,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[핵심] 괄호 앞의 빼기 부호를 둘째 다항식의 모든 항에 분배한다.\n\n[독립 풀이 요약] $\\left(\\frac12-\\frac14\\right)x+\\left(-1+\\frac12\\right)y=\\frac14x-\\frac12y$이다.\n\n[풀이]\n$\\left(\\frac12x-y\\right)-\\left(\\frac14x-\\frac12y\\right)$\n$=\\frac12x-y-\\frac14x+\\frac12y$\n$=\\left(\\frac12-\\frac14\\right)x+\\left(-1+\\frac12\\right)y$\n$=\\frac14x-\\frac12y$이다.\n따라서 $A=\\frac14$, $B=-\\frac12$이다.\n\n[확인] $Ax+By$에 대입하면 선택지 ⑤와 일치한다.\n\n[결론] 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -314,7 +314,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[핵심] 둘째 괄호의 모든 항의 부호를 바꾸어 동류항끼리 정리한다.\n\n[독립 풀이 요약] 식은 $-2x^2-5x-7$이고 $a+b-c=0$이다.\n\n[풀이]\n$(3x^2-x-8)-(5x^2+4x-1)$\n$=3x^2-x-8-5x^2-4x+1$\n$=-2x^2-5x-7$이다.\n따라서 $a=-2$, $b=-5$, $c=-7$이므로\n$a+b-c=-2-5-(-7)=0$이다.\n\n[확인] 상수항은 $-8+1=-7$임에 주의한다.\n\n[결론] 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -350,7 +350,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[핵심] 나눗셈을 먼저 계산하고, 그 결과 전체를 앞의 식에서 뺀다.\n\n[독립 풀이 요약] 나눗셈 결과는 $-3x+9y$이므로 전체는 $5x^2+13x-9y$이다.\n\n[풀이]\n$(-2xy+6y^2)\\div\\frac23y$\n$=(-2xy+6y^2)\\times\\frac3{2y}$\n$=-3x+9y$이다.\n또 $5x(2+x)=10x+5x^2$이다.\n따라서\n$5x(2+x)-(-3x+9y)$\n$=5x^2+10x+3x-9y$\n$=5x^2+13x-9y$이다.\n\n[확인] 선택지 ⑤와 일치한다.\n\n[결론] 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -360,7 +360,7 @@ window.questionBank = [
   {
     "id": 11,
     "content": "오른쪽 그림과 같이 가로, 세로의 길이가 각각 $6x, 7y$인 직사각형에서 어두운 부분의 넓이를 구하면 $Ax^2+Bxy+Cy^2$이다. 이때, $A+C+\\frac{B}{2}$의 값은? [4점]",
-    "svg": "<svg width='180' height='150' viewBox='0 0 180 150'><rect x='30' y='20' width='120' height='100' fill='#444'/><polygon points='30,20 150,80 110,120' fill='white'/><path d='M30,12 Q90,0 150,12' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='90' y='8' font-size='12' text-anchor='middle'>6x</text><path d='M22,20 Q10,70 22,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='12' y='70' font-size='12' text-anchor='middle' transform='rotate(-90,12,70)'>7y</text><path d='M155,80 Q165,100 155,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='170' y='105' font-size='12'>3x</text><path d='M110,125 Q130,135 150,125' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='130' y='142' font-size='12' text-anchor='middle'>2y</text></svg>",
+    "svg": "<svg width='180' height='150' viewBox='0 0 180 150'><rect x='30' y='20' width='120' height='100' fill='white' stroke='black' stroke-width='1'/><polygon points='30,20 150,20 150,80' fill='#444'/><polygon points='30,20 30,120 110,120' fill='#444'/><polyline points='30,20 150,80 110,120 30,20' fill='none' stroke='black' stroke-width='1'/><path d='M30,12 Q90,0 150,12' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='90' y='8' font-size='12' text-anchor='middle'>6x</text><path d='M22,20 Q10,70 22,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='12' y='70' font-size='12' text-anchor='middle' transform='rotate(-90,12,70)'>7y</text><path d='M155,80 Q165,100 155,120' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='170' y='105' font-size='12'>3x</text><path d='M110,125 Q130,135 150,125' fill='none' stroke='black' stroke-dasharray='2,2'/><text x='130' y='142' font-size='12' text-anchor='middle'>2y</text></svg>",
     "choices": [
       "0",
       "5",
@@ -368,7 +368,7 @@ window.questionBank = [
       "9",
       "13"
     ],
-    "answer": "④",
+    "answer": "②",
     "category": "도형에서의 다항식 계산",
     "originalCategory": "도형에서의 다항식 계산",
     "standardCourse": "중2 수학",
@@ -388,7 +388,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[핵심] 어두운 두 직각삼각형의 넓이를 각각 구해 더한다.\n[풀이] 오른쪽 위 삼각형의 세로 길이는 \\(7y-3x\\)이므로 넓이는 \\(\\frac12\\cdot6x(7y-3x)=21xy-9x^2\\)이다.\n왼쪽 아래 삼각형의 밑변은 \\(6x-2y\\)이므로 넓이는 \\(\\frac12\\cdot7y(6x-2y)=21xy-7y^2\\)이다.\n따라서 어두운 부분의 넓이는 \\(-9x^2+42xy-7y^2\\)이고, \\(A=-9,\\ B=42,\\ C=-7\\)이다.\n[확인] \\(A+C+\\frac B2=-9-7+21=5\\)이므로 선택지는 ②이다.\n[결론] ②",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -424,7 +424,7 @@ window.questionBank = [
       "오답선별"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[핵심] $x=1$을 각 부등식에 직접 대입한다.\n\n[독립 풀이 요약] ③의 $1-1\\le0$만 참이다.\n\n[풀이]\n① $1<0$은 거짓이다.\n② $1+1\\ge3$, 즉 $2\\ge3$은 거짓이다.\n③ $1-1\\le0$, 즉 $0\\le0$은 참이다.\n④ $2>3$은 거짓이다.\n⑤ $\\frac12<0$은 거짓이다.\n\n[확인] 참인 부등식은 ③ 하나이다.\n\n[결론] 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -461,7 +461,7 @@ window.questionBank = [
       "참거짓"
     ],
     "wide": false,
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[핵심] 수직선에서 $a<b<0<c<d$를 먼저 읽고 부등식의 성질을 적용한다.\n\n[독립 풀이 요약] ①~④는 참이고, 양수 $d^2$가 음수 $ad$보다 작다는 ⑤가 거짓이다.\n\n[풀이]\n① $a<b$의 양변에 $c$를 더하면 $a+c<b+c$이므로 참이다.\n② $b<d$이고 $c>0$이므로 $bc<dc=cd$로 참이다.\n③ $b<c$의 양변을 음수 $a$로 나누면 부등호가 바뀌어 $\\frac ba>\\frac ca$이므로 참이다.\n④ $d>b$의 양변에서 $a$를 빼면 $d-a>b-a$이므로 참이다.\n⑤ $d^2>0$이지만 $a<0<d$이므로 $ad<0$이다. 따라서 $d^2<ad$는 거짓이다.\n\n[확인] 옳지 않은 것은 ⑤뿐이다.\n\n[결론] 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -497,10 +497,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[핵심] 연속된 부등식의 세 변에 같은 연산을 적용한다.\n\n[독립 풀이 요약] $2\\le\\frac{x+9}{3}<5$에서 $-3\\le x<6$을 얻는다.\n\n[풀이]\n$2\\le\\frac{x+9}{3}<5$의 세 변에 양수 $3$을 곱하면\n$6\\le x+9<15$이다.\n세 변에서 $9$를 빼면\n$-3\\le x<6$이다.\n\n[확인] 왼쪽 끝은 포함하고 오른쪽 끝은 포함하지 않는다.\n\n[결론] 정답은 ②이다.",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -532,7 +532,7 @@ window.questionBank = [
       "오답선별"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[핵심] 정리했을 때 일차항이 남고 부등호가 있는 식만 일차부등식이다.\n\n[독립 풀이 요약] ④는 $10x<2$로 정리되어 일차부등식이고, 나머지는 이차식·항등 부등식·수의 부등식이다.\n\n[풀이]\n① 정리하면 $x^2-2x-2>0$으로 이차부등식이다.\n② 정리하면 $-3x^2+6x>0$으로 이차부등식이다.\n③ 정리하면 $-3<0$으로 미지수가 사라진다.\n④ $5x-1<1-5x$는 $10x<2$로 정리되므로 일차부등식이다.\n⑤ $7>5$는 미지수가 없는 수의 부등식이다.\n\n[확인] 일차부등식은 ④뿐이다.\n\n[결론] 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -567,10 +567,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[핵심] 부등식을 풀고 자연수 해를 직접 센다.\n\n[독립 풀이 요약] $x\\le3$이므로 자연수 해는 $1,2,3$의 세 개이다.\n\n[풀이]\n$2x-1\\le8-x$\n$2x+x\\le8+1$\n$3x\\le9$\n$x\\le3$이다.\n자연수 중 이 범위를 만족하는 값은 $1,2,3$이다.\n\n[확인] 해의 개수는 $3$개이다.\n\n[결론] 정답은 ②이다.",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -604,7 +604,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[핵심] 식으로 구한 해의 경계와 수직선의 닫힌 점 $-1$을 비교한다.\n\n[독립 풀이 요약] 부등식의 해는 $x\\ge\\frac{1-a}{2}$이고 그림은 $x\\ge-1$이므로 $a=3$이다.\n\n[풀이]\n$x+2a\\ge1-(x-a)$\n$x+2a\\ge1-x+a$\n$2x\\ge1-a$\n$x\\ge\\frac{1-a}{2}$이다.\n그림은 $-1$에서 닫힌 점을 찍고 오른쪽을 나타내므로 해는 $x\\ge-1$이다.\n따라서\n$\\frac{1-a}{2}=-1$\n$1-a=-2$\n$a=3$이다.\n\n[확인] $a=3$을 대입하면 $x\\ge-1$이 되어 그림과 일치한다.\n\n[결론] 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -619,9 +619,9 @@ window.questionBank = [
       "$\\frac{9}{2} < a \\le 5$",
       "$5 \\le a < \\frac{9}{2}$",
       "$-5 < a \\le \\frac{9}{2}$",
-      "$4 < a \\le 4.5$"
+      "$-5\\le a<\\frac92$"
     ],
-    "answer": "⑤",
+    "answer": "①",
     "category": "일차부등식 심화",
     "originalCategory": "일차부등식 심화",
     "standardCourse": "중2 수학",
@@ -640,7 +640,7 @@ window.questionBank = [
       "상급"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[핵심] 해는 \\(x\\ge6-2a\\)이므로 경계값을 \\(k=6-2a\\)라 둔다.\n[풀이] 해 중 가장 작은 정수가 \\(-3\\)이려면 \\(-4<k\\le-3\\)이어야 한다. 따라서 \\(-4<6-2a\\le-3\\)이고, 정리하면 \\(\\frac92\\le a<5\\)이다.\n[확인] 이 범위는 ①과 일치한다.\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -675,7 +675,7 @@ window.questionBank = [
       "식변형"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[핵심] $a<1$이므로 $1-a$는 양수이며 나눌 때 부등호 방향이 바뀌지 않는다.\n\n[독립 풀이 요약] 식을 $(1-a)x>-(1-a)$로 만들면 $x>-1$이다.\n\n[풀이]\n$1+(-a+1)x>a$\n$1+(1-a)x>a$\n$(1-a)x>a-1$\n$(1-a)x=-(1-a)$보다 커야 하므로\n$(1-a)x>-(1-a)$이다.\n$a<1$에서 $1-a>0$이므로 양변을 $1-a$로 나누면\n$x>-1$이다.\n\n[확인] 양수로 나누었으므로 부등호 방향은 그대로이다.\n\n[결론] 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -697,9 +697,9 @@ window.questionBank = [
     "category": "삼각형의 성립 조건",
     "originalCategory": "삼각형의 성립 조건",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-05",
-    "standardUnit": "도형의 성질",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M2-02",
+    "standardUnit": "일차부등식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -713,10 +713,10 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[핵심] 가장 긴 변의 길이가 나머지 두 변의 길이의 합보다 작아야 한다.\n\n[독립 풀이 요약] $x+3<(x-1)+(x+1)$에서 $x>3$을 얻는다.\n\n[풀이]\n세 변 중 가장 긴 변은 $x+3$이다.\n삼각형이 만들어지려면\n$x+3<(x-1)+(x+1)$이어야 한다.\n따라서\n$x+3<2x$\n$x>3$이다.\n이 조건이면 가장 짧은 변 $x-1$도 양수이므로 길이 조건도 만족한다.\n\n[확인] $x>3$이면 세 변은 모두 양수이고 삼각형 부등식을 만족한다.\n\n[결론] 정답은 ⑤이다.",
     "level": "중",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -749,10 +749,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[핵심] 자연수 $x$를 가능한 범위에서 하나씩 정하면 $y=13-3x$도 자연수인지 확인할 수 있다.\n\n[독립 풀이 요약] $(x,y)=(1,10),(2,7),(3,4),(4,1)$의 네 쌍이다.\n\n[풀이]\n$3x+y=13$에서\n$y=13-3x$이다.\n$x,y$가 자연수이므로 $13-3x\\ge1$, 따라서 $x\\le4$이다.\n$x=1,2,3,4$를 차례로 대입하면\n$y=10,7,4,1$을 얻는다.\n따라서 자연수해는 모두 네 개이다.\n\n[확인] $x=5$부터는 $y$가 자연수가 아니다.\n\n[결론] 정답은 ①이다.",
     "level": "중",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -784,7 +784,7 @@ window.questionBank = [
       "오답선별"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[핵심] $(x,y)=(3,1)$을 각 연립방정식의 두 식에 모두 대입한다.\n\n[독립 풀이 요약] ②에서만 $3+1=4$와 $2\\cdot3-1=5$가 동시에 성립한다.\n\n[풀이]\n②에 $(3,1)$을 대입하면\n$x+y=3+1=4$,\n$2x-y=2\\cdot3-1=5$이므로 두 식이 모두 성립한다.\n다른 선택지는 적어도 한 식에서 등식이 성립하지 않는다.\n\n[확인] 연립방정식의 해는 두 방정식을 동시에 만족해야 한다.\n\n[결론] 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
@@ -793,9 +793,9 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "(서술형",
+    "content": "[서술형 1]<br>순환소수 $2.1\\dot{6}$을 분수로 나타내려고 한다. 다음 물음에 답하시오. [총 4점]<br>(1) $x=2.1\\dot{6}$이라고 할 때, $10x$와 $100x$를 각각 구하시오. [2점]<br>(2) $100x-10x$를 이용하여 $2.1\\dot{6}$을 기약분수로 나타내시오. [2점]",
     "choices": [],
-    "answer": "(1), $10x=21.666..., 100x=216.666...$, (2), $\\frac{13}{6}$",
+    "answer": "(1) $10x=21.6\\dot{6}$, $100x=216.6\\dot{6}$; (2) $\\frac{13}{6}$",
     "category": "서술형 1",
     "originalCategory": "서술형 1",
     "standardCourse": "중2 수학",
@@ -813,7 +813,7 @@ window.questionBank = [
       "유리수"
     ],
     "wide": false,
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 (1), $10x=21.666..., 100x=216.666...$, (2), $\\frac{13}{6}$이다.",
+    "solution": "[핵심] 비순환 부분이 한 자리이고 순환마디가 한 자리이므로 10x와 100x를 빼면 순환 부분이 소거된다.\n[풀이] \\(x=2.1\\dot6=2.1666\\cdots\\)이므로 \\(10x=21.6666\\cdots,\\quad100x=216.6666\\cdots\\)이다.\n\\(100x-10x=195\\)에서 \\(90x=195\\)이므로 \\(x=\\frac{195}{90}=\\frac{13}{6}\\)이다.\n[확인] \\(\\frac{13}{6}=2.1666\\cdots=2.1\\dot6\\)이다.\n[결론] (1) \\(10x=21.666\\cdots,\\quad100x=216.666\\cdots\\), (2) \\(\\frac{13}{6}\\)",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -845,7 +845,7 @@ window.questionBank = [
       "복수정답"
     ],
     "wide": false,
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1), $2x+8y$, (2), $3x+4y$, 또는, $5x-6y$이다.",
+    "solution": "[핵심] 덧셈은 상대 다항식을 빼서 구하고, 뺄셈은 순서 두 가지를 모두 확인한다.\n\n[독립 풀이 요약] (1)은 $2x+8y$, (2)는 $3x+4y$ 또는 $5x-6y$이다.\n\n[풀이]\n정우가 맞힌 식을 $J=4x-y$, 윤아가 맞힌 식을 $Y$라 하자.\n\n(1) $J+Y=6x+7y$이므로\n$Y=(6x+7y)-(4x-y)=2x+8y$이다.\n\n(2) 뺄셈의 순서가 $J-Y=x-5y$이면\n$Y=J-(x-5y)=4x-y-x+5y=3x+4y$이다.\n반대로 $Y-J=x-5y$이면\n$Y=J+(x-5y)=4x-y+x-5y=5x-6y$이다.\n\n[확인] 두 식은 모두 과녁에 표시된 다항식과 일치한다.\n\n[결론] (1) $2x+8y$, (2) $3x+4y$ 또는 $5x-6y$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -874,7 +874,7 @@ window.questionBank = [
       "해집합"
     ],
     "wide": false,
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 $x, <, 3$이다.",
+    "solution": "[핵심] 분모의 최소공배수 $6$을 양변에 곱해 분수를 없앤다.\n\n[독립 풀이 요약] 정리하면 $129>43x$이므로 $x<3$이다.\n\n[풀이]\n$7-\\frac{x+1}{2}>\\frac53(4x-9)$의 양변에 양수 $6$을 곱하면\n$42-3(x+1)>10(4x-9)$이다.\n괄호를 풀면\n$42-3x-3>40x-90$\n$39-3x>40x-90$이다.\n양변을 정리하면\n$129>43x$,\n따라서 $x<3$이다.\n\n[확인] 양수 $6$과 양수 $43$으로 나누었으므로 부등호 방향은 바뀌지 않는다.\n\n[결론] $x<3$이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -905,7 +905,7 @@ window.questionBank = [
       "실생활"
     ],
     "wide": false,
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 (1), $47000+150x$, (2), $50000+120x$, (3), $x, >, 100$, (4), 100분, 초과이다.",
+    "solution": "[핵심] 월 총금액은 월 할부금액, 월 기본금액, 통화요금을 모두 더한 값이다.\n\n[독립 풀이 요약] 조건 A는 $47000+150x$, 조건 B는 $50000+120x$이고, B가 유리한 조건은 $x>100$이다.\n\n[풀이]\n(1) 조건 A의 월 총금액은\n$35000+12000+150x=47000+150x$원이다.\n\n(2) 조건 B의 월 총금액은\n$30000+20000+120x=50000+120x$원이다.\n\n(3) 조건 B가 조건 A보다 유리하려면\n$50000+120x<47000+150x$이다.\n정리하면\n$3000<30x$,\n$x>100$이다.\n\n(4) 따라서 한 달 평균 통화 시간이 $100$분을 초과할 때 조건 B가 더 유리하다.\n\n[확인] $x=100$이면 두 조건의 총금액이 모두 $62000$원으로 같으므로 “초과”가 맞다.\n\n[결론] (1) $47000+150x$, (2) $50000+120x$, (3) $x>100$, (4) $100$분 초과이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",

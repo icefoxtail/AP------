@@ -136,9 +136,11 @@ GPT가 계산 가능한 수치는 직접 재계산하고, 계산 불가/도구 �
 **Geometry is primary. Annotation is secondary.**
 
 ### 기준 viewport와 글씨 크기
-- solution geometry SVG의 기본 publication reference는 **실제 Archive `mode=sol`, 390×844**다.
-- 이 기준에서 student-facing point/angle/length/math label은 **11 CSS px 미만 HARD FAIL**, 12px 이상을 기본 목표로 한다.
-- 320px 등 더 좁은 폭은 responsive 참고이며 별도 지시가 없으면 390px HARD 기준을 대체하지 않는다.
+- solution geometry SVG의 publication reference는 **screen-fit/page-fit 축소가 없는 실제 Archive desktop `mode=sol` 해설 화면**이다.
+- 기본 qualification viewport는 **1440×1000 desktop**이며, 제품 canonical desktop viewport가 따로 있으면 그 값을 따른다.
+- 이 PC reference에서 student-facing point/angle/length/math label은 **11 CSS px 미만 HARD FAIL**, 12px 이상을 기본 목표로 한다.
+- 모바일/좁은 화면에서 A4/page 전체가 비례 축소되는 것은 SVG publication gate가 아니다.
+- 모바일 별도 render PASS나 모바일 absolute font floor는 요구하지 않는다.
 - 같은 도형 안의 점 이름, 각도값, 길이값, 짧은 수학 변수/수치는 **같은 기본 font-size**를 사용한다.
 - point를 크게, numeric을 절반 크기로 만드는 hierarchy는 기본값으로 사용하지 않는다.
 - SVG user-space에서 도형과 함께 비례 scale되게 한다.
@@ -202,7 +204,7 @@ KEEP은 다음을 모두 만족해야 한다.
 - typography readable
 - stroke hierarchy 자연스러움
 - 정보 밀도 적절
-- mobile/tablet 축소 가독성
+- desktop publication reference 가독성
 - clipping/collision 우려 없음
 - black-and-white에서도 의미 유지
 - 같은 시험지 내 style consistency
@@ -226,9 +228,13 @@ geometry/owner/decisive relation이 틀리면 REBUILD.
 ## 12. Render와 GPT 환경의 한계
 
 ### Geometry change render HARD
-point/angle/length/region label, arc/dimension/leader, geometry primitive, viewBox, canvas framing 중 하나라도 바꾼 solution SVG는 최종 visual PASS 전에 **실제 Archive `mode=sol` 390×844 render review**가 필요하다.
-XML/bbox/static inspection은 구조 검증이며 실제 화면 PASS를 대체하지 않는다.
+point/angle/length/region label, arc/dimension/leader, geometry primitive, viewBox, canvas framing 중 하나라도 바꾼 solution SVG는 최종 visual PASS 전에 **실제 Archive desktop `mode=sol` publication reference render review**가 필요하다.
+기본 qualification viewport는 **1440×1000**이며 screen-fit/page-fit 축소 상태는 사용하지 않는다.
+XML/bbox/static inspection은 구조 검증이며 실제 PC 화면 PASS를 대체하지 않는다.
 문항/SVG load 완료 후 final asset SHA/blob과 실제 페이지 asset이 일치하는지 확인한다.
+
+모바일/page-fit 렌더는 SVG publication qualification에서 제외한다.
+완성된 SVG가 `viewBox` 기준으로 비례 확대·축소되는 것은 정상 동작이며, 모바일의 축소된 절대 CSS font px로 SVG를 FAIL 처리하지 않는다.
 
 제작자 자기보고 `PASS`는 최종 seal authority가 아니다.
 전수 visual campaign은 전체 수정 artifact freeze 후 별도 review pass에서 denominator 전체를 다시 보고, 이후 FAIL 수정은 changed SVG + direct dependency만 targeted recheck한다.
@@ -313,7 +319,7 @@ GPT 예약 worker는 local browser/Node/Python harness가 없을 수 있다.
 4. KEEP/POLISH/REBUILD/ADD/REMOVE/EXEMPT
 5. 필요한 것만 전수 수정
 6. 수정 완료 artifact freeze
-7. **전체 denominator 독립 visual review + actual Archive render**
+7. **전체 denominator 독립 visual review + actual Archive desktop reference render**
 8. 반복 defect가 있으면 rule/skill 최소 보정
 9. FAIL SVG만 pinpoint repair
 10. changed SVG + direct dependency만 targeted recheck
@@ -335,7 +341,7 @@ GPT 예약 worker는 local browser/Node/Python harness가 없을 수 있다.
 - visual이 많을수록 좋다고 판단
 - 모든 좌표문제에 full axis/grid 강제
 - 계산 card가 실제 geometry를 대체
-- mobile에서 라벨이 충돌하지만 XML valid라 PASS
+- desktop publication reference에서 라벨이 충돌하지만 XML valid라 PASS
 - current skill의 local command를 실행하지 못했는데 실행했다고 주장
 
 ## 17. Final Principle

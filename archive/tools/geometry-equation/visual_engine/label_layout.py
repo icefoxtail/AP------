@@ -80,8 +80,14 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None):
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
         w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
         w,h=finite(w),finite(h);chosen=None;method=None
-        preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in DIRECTIONS if v!=preferred)
-        for gap in label.get('gaps',(12,8,20,32,48)):
+        preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
+        if 'candidateCenters' in label:
+            from .publication import box_owned
+            for x, y in label['candidateCenters']:
+                box = Box(x-w/2, y-h/2, w, h)
+                if safe_area.contains(box) and box_owned(label, box) and not any(collision(box,o) for o in occupied):
+                    chosen=box;method='OWNER_BOUND_RELOCATION';break
+        for gap in (() if 'candidateCenters' in label else label.get('gaps',(12,8,20,32,48))):
             for direction in directions:
                 box=candidate(label['at'],w,h,direction,gap)
                 if safe_area.contains(box) and not any(collision(box,o) for o in occupied):
@@ -90,7 +96,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None):
             if chosen:break
         if chosen is None and label.get('allowSuppress',False) and priority>=3:
             suppressed.append(label['id']);trace.append({'id':label['id'],'fallback':'LOW_PRIORITY_SUPPRESSION'});continue
-        if chosen is None and panel is not None and label['kind']!='POINT_NAME':
+        if chosen is None and panel is not None and label['kind']!='POINT_NAME' and label.get('allowPanel', True):
             text=label.get('panelText',label['text'])
             pw,ph=approximate_size(text,label.get('font',13.25))
             pw=max(pw,w);ph=max(ph,h)
@@ -101,7 +107,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None):
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue
-        placed.append({**label,'box':asdict(chosen),'baseline':[chosen.x,chosen.y+chosen.height*.8],'placement':method})
+        placed.append({**label,'box':asdict(chosen),'baseline':([chosen.x+chosen.width/2, chosen.y+chosen.height/2] if label.get('centered') else [chosen.x,chosen.y+chosen.height*.8]),'placement':method})
         occupied.append({'id':label['id'],'kind':'label','geometry':chosen})
         trace.append({'id':label['id'],'fallback':method})
     return {'labels':placed,'suppressed':suppressed,'unresolved':unresolved,'trace':trace,
