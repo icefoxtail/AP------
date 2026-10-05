@@ -27,7 +27,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; answers/solutions blank.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_DERIVED_REPAIR_WITH_REMAINING_VISUAL_HOLDS",
   "questions": [
     {
       "qid": 1,
@@ -224,10 +224,10 @@
       "sourceQuestionNo": "20",
       "sourcePage": 4,
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
-      "choicesStatus": "SOURCE_VISUAL_CHOICES_HOLD",
+      "choicesStatus": "SOURCE_DERIVED_REPAIR",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Visual answer-choice diagrams contain student marks; no clean original-only asset selected."
+      "itemDisposition": "SOURCE_DERIVED_REPAIR",
+      "holdReason": null
     },
     {
       "qid": 21,
@@ -246,8 +246,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Source figure is scan/mark contaminated and not safe to crop as a clean student asset."
+      "itemDisposition": "PASS_TEXT",
+      "holdReason": null
     },
     {
       "qid": 23,
@@ -866,5 +866,18 @@
     "q05/q11 crops were re-extracted from the same original pages to retain endpoint labels without choices/page borders."
   ],
   "assetCount": 18,
-  "questionInventoryCount": 25
+  "questionInventoryCount": 25,
+  "transcriptionRepairs": [
+    {
+      "qid": 20,
+      "sourcePage": 4,
+      "preRepairJsSha256": "07a3d51c9bcb03b6291be8356fbc7c1e4da0037567b0b2caef62e82a6313b132",
+      "backupPath": "tmp/source-slot-backups/21_풍덕중_2학기_기말_중3_기출.js.pre-text-choice-repair",
+      "reason": "All five source choices are diagrams with student marks over some printed labels.",
+      "repair": "Replace the marked diagrams with explicit conditions: options 1–4 guarantee cyclicity, while option 5 specifies opposite-angle sum 170 degrees and is not cyclic.",
+      "uniqueAnswer": "⑤",
+      "answerFieldAdded": false
+    }
+  ],
+  "notes": "q22’s printed conditions and question are legible; the marked figure was left unreferenced in the source-only JS, and the complete prompt remains in text."
 }
