@@ -160,11 +160,15 @@ qid별 `sourceMode` provenance와 필요한 evidence를 만든다.
 
 repair가 필요하면 같은 stage에서 최소 수정 후 changed locus만 다시 확인한다.
 
+완전한 current student input으로 freeze한 계산 오답이나 선택기호 encoding 오류는 blind 오염과 구별한다. 원 freeze와 사전 추론을 보존하고 해당 locus의 post-comparison adjudication/encoding correction으로 처리한다. 정답을 맞힐 때까지 fresh agent를 반복 호출하지 않는다. student body의 실제 교체, freeze 전 답 노출 또는 필요한 그림의 누락 때문에 기존 freeze가 적용 불가능할 때만 영향 qid를 새 clean 세션에서 독립 검수한다.
+
 ### R2
 
 전 qid BLIND SWEEP.
 
 `blindAnswer`를 R1/stored answer 공개 전에 freeze한다.
+
+학생용 bundle은 실제 current final source에서 추출하며 학생 필드와 참조 자산의 current source 일치를 freeze 전에 확인한다. old CREATE/student bundle에 현재 SHA만 적어 재사용하지 않는다. artifact SHA는 Git blob SHA-1이고 raw 파일 SHA-256과 다르다. 각 calibration gate가 요구하는 raw/clean-filter hash 계약도 구별한다.
 
 freeze 전에는 시험지 JS 전체 출력이나 answer/solution을 노출할 수 있는 검색을 하지 않는다. 안전한 파서로 학생용 지문/선택지/문제 그림 필드만 별도 입력으로 추출하고 그 입력만 읽는다.
 
