@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_v1",
+  "stage": "R3_REPAIR",
+  "canonicalOrdinal": 14,
+  "examPath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+  "targetQids": [
+    17
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+      "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+    }
+  ],
+  "goldenSampleQuestionRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 1,
+      "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+      "observation": "중간식을 학생이 재현 가능한 순서로 전개"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+      "observation": "핵심 성질에서 계산으로 직접 연결"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 1,
+      "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+      "observation": "공식 적용 전에 입력 관계를 명시"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+      "observation": "결정 성질과 계산 흐름을 분리"
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+    },
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "gitBlobSha": "f7440339f2532f6e7ea357541c2a09b05847af59"
+    }
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "R3_SAME_STAGE_PINPOINT_REPAIR",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_REPAIR_THEN_CHANGED_LOCUS_COMPARE",
+  "visualRegressionChecks": [
+    "MISSING_OWNER_RAY",
+    "ANGLE_LABEL_OWNER_BINDING",
+    "LABEL_OWNER_BINDING",
+    "COORDINATE_SEMANTIC_PARITY",
+    "CLIPPING_0"
+  ]
+}
