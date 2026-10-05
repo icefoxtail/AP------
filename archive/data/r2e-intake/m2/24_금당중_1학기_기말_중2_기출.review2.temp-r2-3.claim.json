@@ -11,10 +11,23 @@
   "inputArtifactSha": "2e218e645dfae1f573cf536cc761d18f572473e5",
   "inputEvidenceSha": "e0fa5fda9a311a9d55f30681f786d105eae83c7f",
   "r1ValidatorReceiptSha": "b5d55b1994a9fd6f7a71dcea3ebb278b0c8bf9a1",
-  "status": "CLAIMED",
-  "leaseRelinquished": false,
-  "completedStep": "CLAIM_AND_PHYSICAL_REVALIDATION",
-  "firstMissingClosureStep": "R2_REVIEW_COMPARE_AND_EVIDENCE",
-  "claimedAtKst": "2026-10-05T14:28:41+09:00",
-  "selectorEligible": true
+  "status": "HANDOFF_READY",
+  "leaseRelinquished": true,
+  "completedStep": "R2_REVIEW_COMPARE_PREFLIGHT_PASS",
+  "firstMissingClosureStep": "R2_PHYSICAL_EVIDENCE_WRITE",
+  "selectorEligible": true,
+  "r2ReviewResult": "PASS_NO_R2_MUTATION",
+  "r2TargetedScopeQids": [],
+  "deterministicRepairQids": [],
+  "itemHoldQids": [],
+  "localCanonicalPreflight": {
+    "authorityMainSha": "b08ba2db04ba3be4d172b718aee29e169f8655d3",
+    "commonV2Blob": "e1e331b52e9af51e81bba8361d89ac11910e0f72",
+    "r2V2Blob": "91db2475cf32f9f4170edf72ef4b56ce747f110a",
+    "result": "PASS",
+    "denominator": 25,
+    "rowCount": 25,
+    "issues": []
+  },
+  "next": "R2_PHYSICAL_EVIDENCE_WRITE→CANONICAL_R2_VALIDATOR_RECEIPT→REVIEW2_RECEIPT→READY_FOR_R3"
 }
