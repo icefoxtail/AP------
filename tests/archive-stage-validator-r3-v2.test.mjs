@@ -44,3 +44,17 @@ assert.equal(targetedOnlyReport.scopeCount, 1);
 assert.equal(targetedOnlyReport.rowCount, 1);
 
 console.log('ARCHIVE_STAGE_VALIDATOR_R3_V2_OK');
+
+const { validateStageEvidence } = await import('../archive/tools/archive-stage-validator.mjs');
+const o10 = validateStageEvidence({
+  examFile: 'archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js',
+  evidenceFile: 'archive/data/r3-intake/m2/21_왕운중_1학기_중간_중2_기출.r3-current.evidence-v2.json',
+  stage: 'R3',
+});
+console.log('M2_O10_R3_CANONICAL_REPORT=' + JSON.stringify(o10));
+assert.equal(o10.ok, true, JSON.stringify(o10));
+assert.equal(o10.validatorMode, 'R3_V2');
+assert.equal(o10.artifactSha, 'd274cebe65ddda80abe93ae63e83710a4171318b');
+assert.equal(o10.scopeCount, 24);
+assert.equal(o10.rowCount, 24);
+assert.equal(o10.disposition, 'PASS');
