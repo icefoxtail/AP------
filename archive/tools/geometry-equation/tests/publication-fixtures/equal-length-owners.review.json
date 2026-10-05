@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "30ddb6ecb6bbf563e19e5a75a48e98808b526650bd5dfc1e768fd66369d2a58a",
+  "solutionSha256": "539eb06897ca7559813cf05da42c60f7ff5cadc9f5376e29b6360cbc8b596230",
+  "coordinateModel": {
+    "originX": 96,
+    "originY": 288,
+    "sx": 64,
+    "sy": 64
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        0,
+        3
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lAB",
+      "segment": "AB",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "lCA",
+      "segment": "CA",
+      "value": 3,
+      "mode": "ADJACENT",
+      "text": "3",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": []
+}
