@@ -1,4 +1,5 @@
-window.examTitle = "21_신흥중_2학기_기말_중3_기출";\nwindow.questionBank = [
+window.examTitle = "21_신흥중_2학기_기말_중3_기출";
+window.questionBank = [
   {
     "id": 1,
     "content": "다음 그림의 원 $O$에서 $\\\\angle ADC=42^\\\\circ$, $\\\\angle BOC=48^\\\\circ$일 때, $\\\\angle x$의 크기는? (3점)",
@@ -267,7 +268,7 @@ window.examTitle = "21_신흥중_2학기_기말_중3_기출";\nwindow.questionBa
   },
   {
     "id": 16,
-    "content": "다음 표는 5명의 학생 $A,B,C,D,E$의 일주일 동안의 운동 시간에 대한 편차를 나타낸 것이다. 운동 시간의 분산은? (4점)\\\\n| 학생 | A | B | C | D | E |\\\\n| 편차(시간) | -6 | [공란] | 11 | 9 | -4 |",
+    "content": "다음 표는 5명의 학생 $A,B,C,D,E$의 일주일 동안의 운동 시간에 대한 편차를 나타낸 것이다. 운동 시간의 분산은? (4점)\\n| 학생 | A | B | C | D | E |\\n| 편차(시간) | -6 | -10 | 11 | 9 | -4 |",
     "choices": [
       "70.4",
       "70.5",
@@ -280,8 +281,7 @@ window.examTitle = "21_신흥중_2학기_기말_중3_기출";\nwindow.questionBa
     "tags": [
       "통계",
       "분산"
-    ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q16.png"
+    ]
   },
   {
     "id": 17,
@@ -383,4 +383,4 @@ window.examTitle = "21_신흥중_2학기_기말_중3_기출";\nwindow.questionBa
       "평균과 분산"
     ]
   }
-];\n
+];
