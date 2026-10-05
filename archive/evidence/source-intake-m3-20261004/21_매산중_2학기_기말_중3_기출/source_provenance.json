@@ -26,7 +26,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; answers/solutions blank.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_QA_READY_WITH_ALIVE_REPLACEMENTS",
   "questions": [
     {
       "qid": 1,
@@ -262,11 +262,11 @@
       "qid": 24,
       "sourceQuestionNo": "서답형 4",
       "sourcePage": 4,
-      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "transcriptionStatus": "ALIVE_DERIVED_SUBSTITUTE",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Low contrast source graph needs manual legibility review."
+      "itemDisposition": "ALIVE_REPLACEMENT",
+      "holdReason": null
     }
   ],
   "sourcePages": [
@@ -812,7 +812,7 @@
         300
       ],
       "visualChecks": {
-        "questionMeaningMatch": "PASS",
+        "questionMeaningMatch": "SUPERSEDED_BY_ALIVE_REPLACEMENT",
         "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
         "choicesIncluded": "NO",
@@ -821,7 +821,10 @@
         "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
         "sameQuestionTextFragmentIncluded": "YES"
-      }
+      },
+      "supersededByReplacement": true,
+      "usedByOutput": false,
+      "replacementNote": "Original low-contrast graph retained as source evidence but no longer linked by the ALIVE replacement."
     },
     {
       "qid": 21,
@@ -860,9 +863,28 @@
       }
     }
   ],
-  "examHold": [
-    "서답형 4 (qid 24): Low contrast source graph needs manual legibility review."
-  ],
+  "examHold": [],
   "notes": "q21 carries both source diagrams in an SVG wrapper containing direct original pixel crops. q24 remains held; its source graph cannot be made legible without inferring data.",
-  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS"
+  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS",
+  "aliveReplacementItems": [
+    {
+      "qid": 24,
+      "sourceQuestionNo": "서답형 4",
+      "sourcePage": 4,
+      "replacementType": "ALIVE_SIMILAR_QUESTION",
+      "candidateTitle": "21_매산중_2학기_기말_중3_기출_유사A2",
+      "candidateSha256": "sha256:a77643f626b60691a8f4bc9655289c2b41959e493ce98d85ba92614b16882f69",
+      "branchArtifact": "archive/exams/original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
+      "topic": "도수분포 자료의 분산",
+      "reason": "원본 그래프의 수치 판독이 불가능해 명시적 평점·도수 자료를 주는 대체문항으로 교체.",
+      "studentFieldsChanged": [
+        "content",
+        "image"
+      ],
+      "answerSolutionFields": "RETAINED_BLANK_BY_SOURCE_ONLY_SCOPE",
+      "mathRecheck": "PASS_MANUAL",
+      "renderReview": "PASS_ACTUAL_BROWSER_CAPTURE",
+      "replacementContentSha256": "sha256:6efdd4b96e07ed0b338095992793376cd313bc113eb21d10657c6b4a318f7a3b"
+    }
+  ]
 }
