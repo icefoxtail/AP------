@@ -1,5 +1,7 @@
 # APMath Actual Archive Integration 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 06 / Actual Archive Integration  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -1346,7 +1348,7 @@ synthetic PASS를 real qualification로 대체하지 않는다.
 
 # 70. Real qualification denominator
 
-최종 마스터의 실제 6문항 qualification과 연결.
+최종 마스터/D08의 Geometry ≥6 + Graph ≥4, 전체 ≥10 unique generated real UID 및 required feature qualification과 연결.
 
 각 UID마다:
 
@@ -1773,3 +1775,21 @@ ArchiveIntegrationResult
 # 88. 최종 한 문장
 
 > **APMath Actual Archive Integration v1은 generated SVG를 별도 브라우저에서 보기 좋게 렌더하는 작업이 아니라, exact questionUid·source bank·candidate patch·final SVG bytes·Archive runtime·desktop/no-fit 화면·screenshot을 하나의 hash chain으로 묶어 실제 JS Archive 안에서 publication 품질을 물리적으로 증명하는 통합 계층이다.**
+
+---
+
+# 89. 구현 전 확정: render 재사용의 실제 비용과 display feedback
+
+`render-impact.mjs::renderSignatureMap`은 현재 screenshot SHA·runtimeResponseSha·assetSha·blocks가 있는 **완료된 capture**를 요구한다. 이 함수를 재사용하는 것만으로 screenshot 없는 placement만 비교하거나 촬영을 생략할 수는 없다. §52의 reuse는 이 실제 계약에 맞춰 구현한다.
+
+v1 기본은 **affected bank를 현재 runtime으로 한 번 렌더하고 필요한 current item witnesses를 수집한 뒤, 기존 함수로 fresh review 범위를 줄이는 방식**이다. SVG/math를 불필요하게 다시 만들지 않지만 촬영/측정 비용 0을 약속하지 않는다. placement-only probe로 screenshot 수집까지 생략하는 최적화는 별도의 versioned observed-placement evidence와 충분한 equivalence 검증이 있을 때만 추가한다. 이전 screenshot SHA를 current observation으로 복사해서 API 요구사항을 채우지 않는다.
+
+page reflow는 next item 한 개를 넘어 전파될 수 있다. affected bank의 전체 block/continuation placement를 확인하고 마지막 변경 지점까지 closure를 확장한다. review는 실제 영향 대상만 수행한다. current runtime response digest에 candidate bank 전체 hash를 무조건 합치면 모든 문항이 stale이 된다. runtime 코드/폰트와 per-item source/assets/placement를 분리하되 **원래 bank response provenance는 반드시 보존**한다. 분리는 검증된 adapter 변경으로 수행하고 기존 receipt를 새 의미로 해석하지 않는다.
+
+`runtime.mjs`는 재사용하지만 정적 discovery는 동적 요청 전체의 증명이 아니다. `localFiles`와 후보 bank 전체의 problem/solution image dependency를 serving map에 합친다. original source URL→generated candidate bytes override를 manifest에 명시한다. 실제 요청은 canonical URL/response body로 검사하고 미결 promise를 모두 회수한 뒤 evidence를 닫는다. bundle에 외부 fallback URL이 나열되었다는 사실과 실제 외부 요청 발생을 구분한다. 무관 URL 문자열만으로 offline capture를 실패시키지 않되 실제 external dependency는 거부한다.
+
+초기 `DisplayEnvelope`는 승인 size class와 bound Archive CSS/container 측정에서 얻는다. 이것을 D04에 넘기고 마지막 capture에서 실제 image content scale로 재확인한다. 실제 CSS transform/contain/letterbox가 다르면 graph 오차 및 label 크기의 기존 판정을 재사용하지 않는다. 이 feedback은 D05 단일 repair budget 안에서 처리한다.
+
+재사용할 UID utility는 registry **validation/mapping 함수**이며 전체 저장소의 current registry/verified solution을 찾아주는 resolver가 아니다. `parentContext` 또는 설정된 repository authority adapter가 bound registry ref·current source ref·verified solution evidence ref를 제공해야 한다. 부재 시 정확한 missing authority를 반환하며 path/qid로 stable identity를 발명하지 않는다.
+
+필수 추가 회귀: 3페이지 이상 연쇄 reflow, 같은 SVG/다른 solution 본문, candidate bank만 바뀐 무관 item, missing screenshot witness, runtime의 동적 asset 누락, original URL override의 실제 bytes, late response, medium/full envelope, registry 부재.

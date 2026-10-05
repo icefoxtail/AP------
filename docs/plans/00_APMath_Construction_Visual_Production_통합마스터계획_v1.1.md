@@ -1,5 +1,7 @@
 # APMath Construction & Visual Production Engine — 최종 구현 계획서 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 작성일: 2026-10-05 (Asia/Seoul)  
 상태: **Detail 01–08 통합보완 반영 · 계획 v1.1 · 이번 작업 제품 코드 변경 0**  
 최종 목표: **GeoGebra-grade static mathematical construction + publication engine**  
@@ -383,16 +385,14 @@ PC의 `canonical.mjs`, `runtime.mjs`, `render-impact.mjs`, `question-uid.mjs`는
 
 | 단계 | 구현 | 종료 기준 |
 |---|---|---|
-| 0. 기준선·계약 고정 | 이 inventory를 base로 SymPy/CindyJS dependency lock/license, support matrix, request identity, graph/labels/result 계약과 최소 시험 분모 고정 | 현재 기능/신규/unsupported와 legacy compatibility 명확. 구현 시작 SHA 및 선택 배포물 hash 재확인 |
-| 1. OSS construction 연결 | SymPy op adapter, graphlib DAG/branch 정책, snapshot→legacy adapter, 별도 CindyJS cross-validator | 지원 op 전부 positive/negative, unknown op/input/cycle 거부, parameter 변경 관계 보존, 두 독립 구현 일치 |
-| 2. 조판 전달 qualification | 고정 math SVG + Korean font 전달, typed label metrics, 좁은 독립 fragment audit | 한글/분수/근호/지수/아래첨자/prime가 `<img>`·replay에서 동일. 실패 시 font 전달 대안을 이 단계에서만 결정 |
-| 3. 측정 기반 publication | profile 주입, full inventory 실측, owner layout/framing/composer 연결 | 누락 label 0, 실제 metrics로 위치가 달라지는 사례, numeric snapshot 불변 |
-| 4. runner/부분 수리 + 최소 planner | D05/D07 공통 handoff, geometry/graph 각 1 UID 정규화 연결, immutable attempt, cache/repair/reducer | UID→planner→normalizer→candidate를 수동 JSON 없이 연결; qualification/ordinary 권한 분리; stagnation/실패 보존 |
-| 5. actual Archive | real matrix desktop/direct/no-fit, runtime closure, loaded asset·bank·screenshot binding, impact adapter | 실제 Archive 문항과 최종 bytes 일치, no-fit 증거, stale runtime/잘못된 UID 부정시험 거부 |
-| 6. 문항 단일 요청 확장 | 두 vertical slice에서 지원 op/graph/좌표기하·source 다양성·resume 확대 | 사용자 별도 facts 작성 없이 연결하고, 유효 부모 source/fact evidence는 재사용 |
-| 7. 독립 자격 검증 | 지원 연산 전체 회귀 + 대표 실제 문항 + final review/targeted repair | 12절/13절 충족. READY와 PUBLICATION_READY 분리, production 파일 변화 0 |
+| 0. 기준선·실행 계약 | 기존 회귀, UID/source authority, wire/hash, stage commit, scope/분모 고정 | D05 §75 conformance 및 실제 authority resolve 확인 |
+| 1. 고위험 작은 실험 | 대표 SymPy/CindyJS, MathJax SVG·한글 img 전달, graph 독립 bound | 각 실험의 정상·실패·시간 한도 확인; 전체 지원 완료로 세지 않음 |
+| 2. 실제 두 문항 전 구간 | geometry 1 + graph 1 UID→planner/검토→normalizer→math→조판/측정/배치→Actual Archive→review | 수동 JSON 수정·가짜 PASS 없이 끝까지 연결; 비좌표 realization 조기 추가 |
+| 3. 표시·운영 보강 | DisplayEnvelope feedback, owner layout, 단일 repair, atomic publish/resume, stage cache | 실제 크기/재시작/동시 실행/cold-warm 회귀 통과 |
+| 4. capability 확대 | construction op, graph family, 좌표기하·조판·layout을 observer와 함께 확대 | 등록된 지원 scope별 positive/negative·독립 관측 완료 |
+| 5. 전체 qualification | Geometry ≥6 + Graph ≥4 및 required feature/control/negative/독립 전수 review | 전체 분모 완료→targeted repair→durable Seal/activation; production write 0 |
 
-1과 2의 설계/테스트는 독립적으로 진행 가능하지만 3은 둘 모두를 소비한다. 4까지만 완료하고 “원클릭 문항 생산 완성”이라고 보고하지 않는다. 이 계획서는 단계 0의 구현조차 시작하지 않는다.
+상세 순서와 기존 계층별 Phase의 관계는 §16.3을 따른다. 기존 Detail의 component 구현 순서는 해당 기능 내부의 순서이며, 전체 component 완성을 기다린 후 최초 Archive 통합하는 일정이 아니다. 조기 두 문항은 최종 전체 분모를 대체하지 않는다.
 
 ### 11.1 통합검토 반영된 연결 계약
 
@@ -498,3 +498,38 @@ main에 실제 있는 시작 후보는 `archive/exams/original/middle/m2/2final/
 - [runtime.mjs](https://github.com/icefoxtail/AP------/blob/b08ba2db04ba3be4d172b718aee29e169f8655d3/archive/tools/pipeline-core/runtime.mjs), [render-impact.mjs](https://github.com/icefoxtail/AP------/blob/b08ba2db04ba3be4d172b718aee29e169f8655d3/archive/tools/pipeline-core/render-impact.mjs): 재사용할 dependency closure/부분 재검 기반.
 
 이 문서는 최신 main과 Notion 초안을 독립적으로 대조한 구현 계획이다. Pro/Astra 검토 완료, 독립 reviewer 합의, 통합 runtime PASS 또는 실제 제품 변경을 의미하지 않는다.
+
+---
+
+## 16. 상위 아키텍처 재검토 결정 — 2026-10-05
+
+검토 기준은 `0bb88da58e41ae1154911d4e711f6247e60e5f16`이다. [근거·재현·우선순위 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)를 함께 읽는다. 이번 변경은 계획 보강이며 신규 엔진 구현/qualification/Seal이 아니다.
+
+### 16.1 유지할 구조와 단순화
+
+SymPy production, CindyJS 독립 재구성, 기존 sampler·publication·layout·Archive collector를 유지한다. 외부 renderer로 갈아타거나 새로운 범용 constraint solver를 만들 근거는 없다. 8개 Detail은 책임 구분이며 8개 서비스/별도 scheduler를 뜻하지 않는다. **Node의 단일 runner + 경계가 명확한 Python 계산/build worker + 격리된 observer + 기존 Archive renderer**로 시작한다. browser process는 공유 가능하지만 측정/Archive/review 입력 context와 증거는 분리한다.
+
+필수 불변 산출물은 frozen semantic plan, model snapshot, label fragments/metrics, layout/composition, final SVG, audit/capture/review, result manifest다. 작은 중간 값은 같은 stage receipt에 넣고 별도 authority 파일을 늘리지 않는다. 기존 visualSpec은 compatibility/build adapter로 유지하며 upstream plan과 서로 역변환해 두 개의 편집 정본으로 만들지 않는다.
+
+### 16.2 구현 전에 확정할 계약
+
+| 결정 | 소유 Detail | 종료 증거 |
+|---|---|---|
+| Node/Python wire·hash·bound ref 규격 | D05 §75 | 양 언어 conformance vectors; 기존 hash 의미 보존 |
+| 좌표 없는 도형의 normalization/realization, branch의 숨은 의존성 | D01 §23, D07 §104 | source-coordinate/비좌표 geometry 두 경로 및 branch-only 변경 negative |
+| scalar 계산과 notation 의미 구분 | D03 §39 | pi/π, degree/unit, 생성 AST의 괄호 우선순위 테스트 |
+| 실제 Archive 표시 한계를 받는 layout | D04 §54, D06 §89 | medium/full 각각 실제 CSS 크기에서 typography/curve gate |
+| cache 계산값과 evidence authorization 분리 | D05 §75, D06 §89 | cold/warm 동일 SVG, 변경된 reviewer/verifier/placement의 stale 거부 |
+| source 검토·planner·review continuation | D07 §104 | fresh UID 요청과 저장 plan replay를 별도로 검증 |
+| scope별 qualification fingerprint와 durable evidence | D08 §141 | 무관 docs 변경 reuse, 관련 코드/감사기 변경 stale, evidence 유실 거부 |
+
+### 16.3 최종 권장 구현 순서 — §11 순서의 구체화
+
+1. **기준선과 실행 경계:** 기존 회귀, UID authority 실제 경로, wire/hash, generated-only staging/commit, required-audit descriptor, 지원범위/전체 qualification 분모를 확정한다.
+2. **고위험 작은 실험을 먼저:** 대표 construction을 SymPy/CindyJS에서 같은 원시 입력으로 실행; MathJax SVG/한글 전달을 actual `<img>`에서 비교; graph 오차 bound의 다항/유리/sqrt 경계 정상·실패 사례를 실행한다. 범용 기능 전체를 먼저 만들지 않는다.
+3. **최초 두 실제 문항의 전 구간 연결:** geometry 1 + graph 1을 UID→planner/검토→normalizer→math→typeset/measure/layout→Actual Archive→독립 review까지 연결한다. construction 첫 사례가 source coordinates이면 비좌표 realization 사례를 곧바로 추가한다. 가짜 PASS adapter로 후기 gate를 대체하지 않는다.
+4. **실제 병목 보강:** 표시 크기 feedback, owner layout, profile 조합, resume·atomic artifact publish·단일 repair budget을 닫는다. 먼저 stage 단위 cache를 쓰며 node/local-placement cache는 정확한 dependency와 성능 이득이 입증될 때 활성화한다.
+5. **지원범위 확대:** typed op·graph family·좌표기하·조판/배치 유형을 해당 독립 observer와 함께 늘린다. semantic plan/branch를 검증하지 못하면 미지원으로 남긴다.
+6. **전체 qualification:** Geometry ≥6 + Graph ≥4와 required feature 전체, control/negative, Windows smoke/고정 CI 환경, 독립 전수 review→수정 영향 재검→Seal/activation을 닫는다. 조기 두 사례는 전체 완료를 대체하지 않는다.
+
+순서 1–3은 구현 착수 가능하다. 고위험 실험을 통과하기 전에 전체 op/함수군의 비용·완성 가능성을 확정한 것으로 간주하지 않는다. 품질 gate를 낮추는 대신 지원범위와 단계별 완료를 정확히 구분한다.
