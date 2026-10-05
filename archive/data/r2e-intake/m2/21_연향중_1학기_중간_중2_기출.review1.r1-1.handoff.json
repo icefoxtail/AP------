@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CLOSURE_DEBT_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "cohort": "M2-1",
+  "stage": "R1",
+  "canonicalOrdinal": 11,
+  "examFile": "21_연향중_1학기_중간_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+  "baseMainSha": "b08ba2db04ba3be4d172b718aee29e169f8655d3",
+  "inputArtifactSha": "541cfa587bc8f2f4bfa112a4637793ccb12310d3",
+  "repairedArtifactSha": "47213fd4bd8b5cecc005b729625285269911a4f4",
+  "selector": {
+    "chosenBy": "latestYear_DESC_then_inventory_order",
+    "noCompetingFreshR1LeaseObserved": true,
+    "physicalRevalidationAfterClaim": true
+  },
+  "r1Review": {
+    "questionCount": 21,
+    "reviewedCount": 21,
+    "mathAnswerSolutionRecalculated": "21/21",
+    "deterministicMetaRepairCount": 7,
+    "deterministicMetaRepairQids": [
+      3,
+      11,
+      12,
+      13,
+      14,
+      17,
+      18
+    ],
+    "sourceTruthHoldCount": 1,
+    "sourceTruthHoldQids": [
+      6
+    ],
+    "otherOpenMathFindingCount": 0,
+    "solutionImageCount": 0
+  },
+  "deterministicRepairs": [
+    {
+      "qid": 3,
+      "from": [
+        "M2-01-POLYNOMIAL_OPERATIONS",
+        "다항식의 계산"
+      ],
+      "to": [
+        "M2-01-EXPONENT_LAW",
+        "지수법칙"
+      ],
+      "rpmPrimaryRecordId": "M2-RPM-129"
+    },
+    {
+      "qid": 11,
+      "from": [
+        "M2-01-POLYNOMIAL_OPERATIONS",
+        "다항식의 계산"
+      ],
+      "to": [
+        "M2-01-EXPONENT_LAW",
+        "지수법칙"
+      ],
+      "rpmPrimaryRecordId": "M2-RPM-125"
+    },
+    {
+      "qid": 12,
+      "from": [
+        "M2-01-POLYNOMIAL_OPERATIONS",
+        "다항식의 계산"
+      ],
+      "to": [
+        "M2-01-EXPONENT_LAW",
+        "지수법칙"
+      ],
+      "rpmPrimaryRecordId": "M2-RPM-128"
+    },
+    {
+      "qid": 13,
+      "from": [
+        "M2-01-POLYNOMIAL_OPERATIONS",
+        "다항식의 계산"
+      ],
+      "to": [
+        "M2-01-EXPONENT_LAW",
+        "지수법칙"
+      ],
+      "rpmPrimaryRecordId": "M2-RPM-129"
+    },
+    {
+      "qid": 14,
+      "from": [
+        "M2-01-POLYNOMIAL_OPERATIONS",
+        "다항식의 계산"
+      ],
+      "to": [
+        "M2-01-EXPONENT_LAW",
+        "지수법칙"
+      ],
+      "rpmPrimaryRecordId": "M2-RPM-126"
+    },
+    {
+      "qid": 17,
+      "from": [
+        "M2-02-LINEAR_INEQUALITY",
+        "일차부등식"
+      ],
+      "to": [
+        "M2-02-LINEAR_INEQUALITY_WORD",
+        "일차부등식의 활용"
+      ],
+      "rpmPrimaryRecordId": "M2-RPM-143"
+    },
+    {
+      "qid": 18,
+      "from": [
+        "M2-02-LINEAR_INEQUALITY_WORD",
+        "일차부등식의 활용"
+      ],
+      "to": [
+        "M2-02-LINEAR_INEQUALITY",
+        "일차부등식"
+      ],
+      "rpmPrimaryRecordId": "M2-RPM-140"
+    }
+  ],
+  "sourceTruthDebt": {
+    "qid": 6,
+    "reasonCode": "SOURCE_UNVERIFIED",
+    "derivedMath": "-(x+2)<=3(x+5) gives x>=-17/4=-4.25.",
+    "currentChoices": [
+      "10",
+      "-9",
+      "7",
+      "-6",
+      "5"
+    ],
+    "currentAnswer": "②",
+    "contradiction": "Both choice ② (-9) and choice ④ (-6) are outside x>=-4.25, so the current item is not uniquely answerable as stored.",
+    "sourceLookupResult": "No authoritative 2021 연향중 중2 1학기 중간 problem/answer PDF was found in current Git history or connected Google Drive exact/broadened searches. Existing Drive hit was 2021 연향중2 2중간 and is not the target exam.",
+    "whyTruthStillNonDeterministic": "At least one of q6 stem/choice④/answer must differ from the stored artifact, but the authoritative original is absent; choosing a repair would be reconstruction by guess."
+  },
+  "currentAuthority": {
+    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "rpmCrosswalkBlob": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "r1ProtocolBlob": "6897975c45029fc7396a0c094508a8169756319c",
+    "r1ValidatorBlob": "b00d2d1ca69b9f95c4c380a82754234c46f29525"
+  },
+  "completedStep": "CAS claim -> physical revalidation -> full 21/21 R1 math/answer/solution review -> fresh Meta/RPM crosswalk review -> seven deterministic Meta repairs materialized",
+  "firstMissingClosureStep": "Q6_AUTHORITATIVE_SOURCE_TRUTH",
+  "disposition": "CODEX_SOURCE_REPAIR_REQUIRED",
+  "requiredNextAction": "Locate the authoritative 2021 연향중 중2 1학기 중간 source page/answer for q6. Repair only q6 and direct dependencies to source truth; then regenerate fresh R1 physical/V2 evidence on repairedArtifact, run canonical R1 validator, write validator/R1 receipts, transition REVIEW1_DONE->READY_FOR_REVIEW2, and remote-readback exact bindings.",
+  "review1DoneDeclared": false,
+  "r2Eligible": false,
+  "lease": "RELINQUISHED",
+  "selectorEligible": false,
+  "nonStopErrorReport": {
+    "writePathAttempts": [
+      "GitHub contents update_file for deterministic Meta repair was blocked before side effect.",
+      "Materially different Git-data blob/tree/commit/non-force-ref path succeeded; seven Meta repairs are physically materialized on the branch."
+    ],
+    "remainingBlocker": "q6 authoritative source truth, not write capability"
+  }
+}
