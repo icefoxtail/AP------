@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "CREATE",
+  "examPath": "archive/_generated/source-only/m2-20261004/21_이수중_2학기_기말_중2_기출.js",
+  "examSha256": "sha256:e304ecd887eb2b0969e1e9f506ebdccbdb71f9a93eb7c92a8bc06845a4b2a6a5",
+  "examGitBlobSha": "597b398e92b034d238951955474fe8767fed8c19",
+  "questionCount": 26,
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": false,
+    "calibrationStatus": "RECOVERY_REVIEW_PASS_AFTER_FAILED_ATTEMPT",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "FAILED_PRECALIBRATION_DRAFT_PRESERVED_THEN_GOLDEN_NEGATIVE_READ_THEN_TARGET_CORRECTION_REVIEW",
+    "failedAttemptRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.failed-attempt.json",
+    "recoveryReviewAfterSampleRead": true,
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "26/26",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:95b26ea6f819ee92a382ffb8f9e60eef13eb4c6aa321c1dac4d0b9246f32add1",
+        "gitBlobSha": "d0dc3efa842166431ac80ffebec01c25aca94772"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:4356b26ed50982de92ec09019973ec585be3f10283a518d0f327faad6282cec5",
+        "gitBlobSha": "223801f580fbe2900dd27126db953a7cc41eb6b8"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 1,
+        "observation": "유리한 경우 수를 말하고 정답을 선택지로 닫음."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 4,
+        "observation": "무게중심 2:1 비와 중점 뒤 길이를 계산."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "qid": 1,
+        "observation": "닮음비와 대응변 적용."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "qid": 4,
+        "observation": "각으로 닮음 판정 후 대응길이 비례."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "observation": "enumerated judgments require physically separate solution blocks."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+        "sha256": "sha256:93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf",
+        "gitBlobSha": "bfc5672371832703aa8b13a60123ccda296653bf",
+        "observation": "actual line geometry must match its labeled facts."
+      }
+    ],
+    "recoveryCorrections": [
+      {
+        "qid": 9,
+        "reason": "positive difference separated from total base; removed square-root notation."
+      },
+      {
+        "qid": 10,
+        "reason": "removed coordinate/shoelace method; used curriculum method."
+      },
+      {
+        "qid": 12,
+        "reason": "listed all option counts separately."
+      },
+      {
+        "qid": 19,
+        "reason": "separated all statement judgments."
+      },
+      {
+        "qid": 21,
+        "reason": "replaced factorial notation with explicit multiplication."
+      },
+      {
+        "qid": 23,
+        "reason": "separated scored subquestions."
+      },
+      {
+        "qid": 24,
+        "reason": "replaced vector proof with medians/centroid/similarity."
+      },
+      {
+        "qid": 25,
+        "reason": "separated scored subquestions."
+      }
+    ]
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourcePage": 1,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "핵심 닮음 성질과 반례를 연결해 결론."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q1"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 2,
+      "sourcePage": 1,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "대응변 순서와 닮음비를 단계로 보여 줌."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q02-r5.png",
+        "sourcePage": 1
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q2"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 3,
+      "sourcePage": 1,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "높이 → 절단비 → 작은 원뿔 부피 → 차례로 계산."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q03-r4.png",
+        "sourcePage": 1
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q3"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 4,
+      "sourcePage": 1,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "닮은 직각삼각형 관계를 비교해 틀린 등식 특정."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q04-r4.png",
+        "sourcePage": 1
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q4"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 5,
+      "sourcePage": 1,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "중점연결선과 둘레비를 사용."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q05-r2.png",
+        "sourcePage": 1
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q5"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 6,
+      "sourcePage": 1,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "대응 선분 두 쌍으로 비례식 구성."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q06-r2.png",
+        "sourcePage": 1
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q6"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 7,
+      "sourcePage": 1,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "x, y를 각각 구하고 마지막에 합산."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q07-r4.png",
+        "sourcePage": 1
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q7"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 8,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "무게중심 2:1 비 뒤 중점연결정리 적용."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q08.png",
+        "sourcePage": 2
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q8"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 9,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "피타고라스 식으로 가로 차이를 구하고 밑변에 더함."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q09-r5.png",
+        "sourcePage": 2
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q9"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 10,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "합동 대응 → 피타고라스 → 각 관계 → 넓이의 세 단계로 분리."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q10-r7.png",
+        "sourcePage": 2
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q10"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 11,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "피타고라스 정리의 역을 직접 적용."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q11"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 12,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "선택지 ①~⑤ 각각의 경우 수를 별도 block에 제시."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q12"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 13,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "두 선택 단계 수와 곱의 법칙."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q13"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 14,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "순서를 고려한 경우를 세고 중복 순서 제거."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q14"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 15,
+      "sourcePage": 2,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "세 점 선택이 삼각형 하나에 대응."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q15-r6.png",
+        "sourcePage": 2
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q15"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 16,
+      "sourcePage": 3,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "합 5와 합 8을 각각 세고 전체 경우와 비교."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q16"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 17,
+      "sourcePage": 3,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "요일별 일수와 전체 30일을 비교."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q17.png",
+        "sourcePage": 3
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q17"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 18,
+      "sourcePage": 3,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "유리한 윷가락 쌍 6개를 열거."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q18"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 19,
+      "sourcePage": 3,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "선택지 ①~⑤의 참·거짓 근거를 분리."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q19"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 20,
+      "sourcePage": 3,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "두 실패 확률과 여사건을 단계로 연결."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q20"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 21,
+      "sourcePage": 3,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전체 배열과 인접 배열을 block 방식으로 분리."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q21"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 22,
+      "sourcePage": 3,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "금요일 강수/비강수의 두 branch 분리."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q22"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 23,
+      "sourcePage": 4,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "서술형 소문항 (1)~(3)을 각각 분리."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q23-r3.png",
+        "sourcePage": 4
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "nullReason": null,
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q23"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 24,
+      "sourcePage": 4,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "중선 중점 → 무게중심 비 → 닮음비를 전개."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "원문 그림을 보존해 풀이에 필요한 정보가 이미 있고, 추가 SVG 없이 문장과 식으로 재현 가능."
+      },
+      "sourceAsset": {
+        "path": "assets/images/21_이수중_2학기_기말_중2_기출/q24.png",
+        "sourcePage": 4
+      },
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q24"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 25,
+      "sourcePage": 4,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "(1) 전체 개수와 (2) 홀수 확률을 분리."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "projectionStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "서로 독립 채점되는 (1) 두 자리 수 개수와 (2) 홀수 확률은 서로 다른 결정 L4를 요구한다. 현재 authority에 따라 Meta-only unresolved로 보존한다.",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q25"
+      },
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "qid": 26,
+      "sourcePage": 4,
+      "questionLayoutStatus": "PASS",
+      "solutionLayoutStatus": "PASS",
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "y를 x로 나타내고 유효한 순서쌍을 나열."
+      },
+      "visualNecessity": {
+        "decision": "NOT_REQUIRED",
+        "reason": "텍스트 조건과 계산만으로 풀이를 재현 가능."
+      },
+      "sourceAsset": null,
+      "metaLookup": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+        "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q26"
+      },
+      "sourceMode": "ORIGINAL"
+    }
+  ],
+  "visualRows": [
+    {
+      "qid": 2,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q02-r5.png",
+        "sha256": "sha256:f327d85d54de6e3a9076ae375f8c526f759d6890180ea1ba81638591b2da775e",
+        "dimensionsPx": [
+          395,
+          215
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-1.png",
+        "sha256": "sha256:30533a989fba67fc73043f377b35ad0c94357a75098c933233f9caead6ce448b",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 3,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q03-r4.png",
+        "sha256": "sha256:83211876475a4258c23ff489c50cd8da2afb42853dfbcfb115b6532fd2870f5d",
+        "dimensionsPx": [
+          215,
+          220
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-1.png",
+        "sha256": "sha256:30533a989fba67fc73043f377b35ad0c94357a75098c933233f9caead6ce448b",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 4,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q04-r4.png",
+        "sha256": "sha256:a80ad7d6307cde9c5f4962ffb346c9e03c91e00a354707743df6c3842c9e0d72",
+        "dimensionsPx": [
+          210,
+          120
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-1.png",
+        "sha256": "sha256:30533a989fba67fc73043f377b35ad0c94357a75098c933233f9caead6ce448b",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 5,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q05-r2.png",
+        "sha256": "sha256:40c6399a408c482b3d36b0dfc8492177ccae8b29ca2f62ac4fd2117e6244cd4f",
+        "dimensionsPx": [
+          220,
+          160
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-1.png",
+        "sha256": "sha256:30533a989fba67fc73043f377b35ad0c94357a75098c933233f9caead6ce448b",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 6,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q06-r2.png",
+        "sha256": "sha256:11f27acbd9ab7c32edfdf5fcdda653f7ced2ffb32257730eb6549bc2652ac8d2",
+        "dimensionsPx": [
+          330,
+          160
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-1.png",
+        "sha256": "sha256:30533a989fba67fc73043f377b35ad0c94357a75098c933233f9caead6ce448b",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 7,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q07-r4.png",
+        "sha256": "sha256:c6233b70c57bc7c960e99daf23247b46d0cd4553eae1e05a15d945b553d5d06c",
+        "dimensionsPx": [
+          230,
+          155
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-1.png",
+        "sha256": "sha256:30533a989fba67fc73043f377b35ad0c94357a75098c933233f9caead6ce448b",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 8,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q08.png",
+        "sha256": "sha256:ee0def23c0ba3052c233e25a866f40efa404f3e8446b497ff6e56477d8349bde",
+        "dimensionsPx": [
+          225,
+          170
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-2.png",
+        "sha256": "sha256:cec2a129836959b5ce04bafb9c0595f99c819fc4c08d0cd44c20279950b3da10",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 9,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q09-r5.png",
+        "sha256": "sha256:3d151d5733b23315751461532e85459239dff6df099bb153154c6fc314e93edf",
+        "dimensionsPx": [
+          235,
+          185
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-2.png",
+        "sha256": "sha256:cec2a129836959b5ce04bafb9c0595f99c819fc4c08d0cd44c20279950b3da10",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 10,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q10-r7.png",
+        "sha256": "sha256:5893784cdc158455a9ab7d008c5b87355edacf614ad3f0d943b46a8a2a72af14",
+        "dimensionsPx": [
+          285,
+          210
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-2.png",
+        "sha256": "sha256:cec2a129836959b5ce04bafb9c0595f99c819fc4c08d0cd44c20279950b3da10",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 15,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q15-r6.png",
+        "sha256": "sha256:ccdf5d9fa5ff948ae9d384146cbd689fbb2012cf1c18981f22cd2cf245f659ba",
+        "dimensionsPx": [
+          200,
+          190
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-2.png",
+        "sha256": "sha256:cec2a129836959b5ce04bafb9c0595f99c819fc4c08d0cd44c20279950b3da10",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 17,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q17.png",
+        "sha256": "sha256:af53a9621ab8072b2db4ae16e456690bfbf7d76338fbfa17dfd5e044ff9ec77c",
+        "dimensionsPx": [
+          415,
+          300
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-3.png",
+        "sha256": "sha256:032584feff2d135232e3d2fa196de4632ed51d9cd4f3a73ce26c5f2eefefaca2",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 23,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q23-r3.png",
+        "sha256": "sha256:0b0cb5f7ea94e5f7ef4a8cc1845f726b7e0f5020bde382692c693090123fef22",
+        "dimensionsPx": [
+          220,
+          175
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-4.png",
+        "sha256": "sha256:611aec7ecb56d0363f704e90a459b69c5037143ec535329adb6b9bd1cf94628c",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    },
+    {
+      "qid": 24,
+      "visualRole": "SOURCE_QUESTION_IMAGE",
+      "sourceMode": "ORIGINAL",
+      "sourcePdfSha256": "b2f206f9433f20cbfdc51e5b6976f2beef447907be5e4054b6bfea60a1d38274",
+      "originalImage": {
+        "path": "archive/assets/images/21_이수중_2학기_기말_중2_기출/q24.png",
+        "sha256": "sha256:409919ebdbc03eaec0e54f925956657f34774656157d0a55d8db82bde8bfa59b",
+        "dimensionsPx": [
+          240,
+          280
+        ]
+      },
+      "render": {
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/source-page-4.png",
+        "sha256": "sha256:611aec7ecb56d0363f704e90a459b69c5037143ec535329adb6b9bd1cf94628c",
+        "tool": "pdftoppm",
+        "visualInspection": "source crop을 원본 PDF page 및 contact sheet와 대조. label과 선/표 항목이 잘리지 않고 인접 문항을 포함하지 않는다."
+      },
+      "semanticParity": "PASS",
+      "visualNecessity": "SOURCE_IMAGE_RETAINED_NO_NEW_SVG"
+    }
+  ],
+  "metaRows": [
+    {
+      "qid": 1,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q1",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q1",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "nullReason": null
+    },
+    {
+      "qid": 2,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q2",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q2",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "nullReason": null
+    },
+    {
+      "qid": 3,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q3",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q3",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+      "nullReason": null
+    },
+    {
+      "qid": 4,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q4",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q4",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "nullReason": null
+    },
+    {
+      "qid": 5,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q5",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q5",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "nullReason": null
+    },
+    {
+      "qid": 6,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q6",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q6",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "nullReason": null
+    },
+    {
+      "qid": 7,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q7",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q7",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "nullReason": null
+    },
+    {
+      "qid": 8,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q8",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q8",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+    },
+    {
+      "qid": 9,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q9",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q9",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "qid": 10,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q10",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q10",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "nullReason": null
+    },
+    {
+      "qid": 11,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q11",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q11",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "qid": 12,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q12",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q12",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 13,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q13",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q13",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "qid": 14,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q14",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q14",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 15,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q15",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q15",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "qid": 16,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q16",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q16",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 17,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q17",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q17",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 18,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q18",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q18",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 19,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q19",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q19",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 20,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q20",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q20",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 21,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q21",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q21",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 22,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q22",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q22",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    },
+    {
+      "qid": 23,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q23",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q23",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "nullReason": null
+    },
+    {
+      "qid": 24,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q24",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q24",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+    },
+    {
+      "qid": 25,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q25",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q25",
+      "semanticStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "projectionStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "서로 독립 채점되는 (1) 두 자리 수 개수와 (2) 홀수 확률은 서로 다른 결정 L4를 요구한다. 현재 authority에 따라 Meta-only unresolved로 보존한다."
+    },
+    {
+      "qid": 26,
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.evidence.json#q26",
+      "lookupRef": "archive/analysis/archive-2.0-pilot-20261005/21_이수중_2학기_기말_중2_기출/CREATE.meta-resolver-evidence.json#q26",
+      "semanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING"
+    }
+  ],
+  "runtimeStringAudit": {
+    "questionCount": 26,
+    "sourceContentChoicesImageParityCount": "104/104",
+    "allowedLineSeparators": {
+      "LF": 31,
+      "CR": 0,
+      "TAB": 0
+    },
+    "forbiddenC0ControlCount": 0,
+    "forbiddenC0": [],
+    "latexRuntimeParity": "runtime content/choices/image were VM-compared to HEAD; all source TeX backslashes preserved.",
+    "actualArchiveBrowserRender": "PASS"
+  },
+  "summary": {
+    "questionCount": 26,
+    "questionEvidenceRows": 26,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 13,
+    "metaEvidenceRows": 26,
+    "itemHoldCount": 0,
+    "metaOnlyUnresolvedQids": [
+      25
+    ],
+    "sourceImageAssetRepairs": 0
+  },
+  "repairAppliedQids": [],
+  "repairArtifacts": [],
+  "browserRenderEvidence": {
+    "schemaVersion": "JS_ARCHIVE_CREATE_BROWSER_RENDER_EVIDENCE_v1",
+    "examUid": "21_이수중_2학기_기말_중2_기출",
+    "finalArtifactSha": "597b398e92b034d238951955474fe8767fed8c19",
+    "renderer": "Archive mixed_engine.html / solution-render-executor.js / local MathJax",
+    "mode": "sol",
+    "previewRoute": "localhost-only output envelope; no external publication",
+    "questionCount": 26,
+    "renderedSolutionBoxes": 26,
+    "renderedSolutionTextNodes": 26,
+    "typesetMathNodes": 61,
+    "mathErrorNodes": 0,
+    "allSourceContentChoicesImageParity": "26/26 questions, 104/104 protected field values matched HEAD after VM evaluation",
+    "forbiddenC0Count": 0,
+    "allowedLineBreaks": {
+      "LF": 31,
+      "CR": 0,
+      "TAB": 0
+    },
+    "visualReview": {
+      "status": "PASS",
+      "observations": [
+        "q9/q10 solution blocks render without overlap or clipping.",
+        "q12/q19 enumerated judgments remain separated as readable lines.",
+        "q22 probability branches remain separated.",
+        "q23 and q25 scored subquestions remain distinct.",
+        "q23/q24 similarity/centroid notation is typeset; MathJax reports zero errors.",
+        "q25/q26 final-page answers and solutions remain within page bounds."
+      ]
+    },
+    "limitations": [
+      "No solution SVG was authored; all source question images remain referenced as source raster assets."
+    ]
+  }
+}
