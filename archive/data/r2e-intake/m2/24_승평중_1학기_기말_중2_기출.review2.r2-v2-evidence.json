@@ -1,0 +1,358 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R2",
+  "examUid": "M2-1-24-SEUNGPYEONG-1FINAL",
+  "canonicalInventoryOrdinal": 27,
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "examPath": "archive/exams/original/middle/m2/1final/24_승평중_1학기_기말_중2_기출.js",
+  "artifactSha": "5b754dad0483575628c9868573279a5c4f295507",
+  "inputArtifactSha": "5b754dad0483575628c9868573279a5c4f295507",
+  "reviewAttemptId": "R2:m2/1final/24-seungpyeong:5b754dad0483575628c9868573279a5c4f295507:temp-r2-3-20261005-1330",
+  "calibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "qids": [
+          1,
+          2
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "qids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "currentContract": "R2_TARGETED_MINIMAL_REVIEW",
+    "priorContextExposureAllowed": true,
+    "decisionSnapshotFrozenBeforeFormalCompare": true,
+    "priorR1ReceiptUsedForEligibilityAndChangedLocus": true,
+    "wholeExamR2ReReview": false
+  },
+  "targetedScope": {
+    "r1ChangedQids": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22
+    ],
+    "openFindingQids": [],
+    "itemHoldQids": [],
+    "directDependencyQids": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22
+    ],
+    "visualDependencyQids": [
+      18,
+      22
+    ],
+    "recheckQids": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22
+    ],
+    "scopeCount": 9
+  },
+  "targetedDecisions": [
+    {
+      "qid": 13,
+      "result": "PASS",
+      "authority": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "평행이동한 일차함수 식과 한 점 조건으로 b를 결정하는 그래프/식 구하기 기본 locus로 확인."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "authority": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "거리-연료 관계를 y=70-x/16으로 세워 조건에서 값을 결정하므로 M2-04 관계/활용 locus가 맞음."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "authority": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "수직선 x=2가 함수 그래프가 아님을 판별하는 함수/그래프 기본 locus로 확인."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "authority": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "y축에 수직인 직선을 y=4로 표현하는 좌표축 평행 직선/방정식 locus로 확인."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "authority": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "해가 무수히 많도록 계수 조건을 맞추는 연립방정식 자체의 특수해 locus로 확인."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "authority": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "두 직선 그래프에서 식을 복원하여 연립방정식과 그래프 관계를 판별하는 locus로 확인."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "authority": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "일차함수 그래프와 좌표축의 교점/삼각형 넓이 관계를 이용하는 그래프 활용 locus로 확인."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "authority": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "주어진 해로 a,b 계수를 결정한 뒤 원 연립방정식을 푸는 해와 계수 locus로 확인."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "authority": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "두 일차함수의 교점·x절편과 삼각형 넓이 조건을 이용하는 그래프 활용 locus로 확인."
+    }
+  ],
+  "formalCompare": {
+    "priorStage": "R1",
+    "priorR1ReceiptSha": "2ff9d52040f766333c56bc3300c8a6f71cc3cf3b",
+    "priorR1ValidatorReceiptSha": "598c54dbcf4be618e216c4bd85fa64486f979ab8",
+    "priorR1EvidenceSha": "5a2f48b8a21ed4f8c7861442427fdfdd30e97904",
+    "priorR1ChangedQids": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22
+    ],
+    "r2RepairQids": [],
+    "artifactChangedAcrossR2": false,
+    "result": "PASS_NO_R2_MUTATION"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "blindAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "①",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "④",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "③",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "①, ⑤",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "②",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "(1) $a=3,\\ b=4$  (2) $x=-2,\\ y=-3$",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "$\\dfrac{2}{29}$",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_CURRENT_ARTIFACT_RECALC"
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "12",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 24,
+      "blindAnswer": "$\\dfrac{7}{3}$",
+      "blindAnswerFrozenBeforeR1AndStoredAnswer": true,
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    }
+  ]
+}
