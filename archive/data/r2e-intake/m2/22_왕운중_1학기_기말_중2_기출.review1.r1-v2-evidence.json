@@ -1,0 +1,627 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "M2-1-22-WANGUN-1FINAL",
+  "canonicalInventoryOrdinal": 33,
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "examPath": "archive/exams/original/middle/m2/1final/22_왕운중_1학기_기말_중2_기출.js",
+  "artifactSha": "b8485b9ecaf59d0c6676ce5f687095b28a6b3c6a",
+  "inputArtifactSha": "79ab6eb7ed4d46d7f6594095a0203de10d8fdfe1",
+  "inputCreateBranch": "rescue/m2/o33-create-thanos5-close-20261004-2300",
+  "inputCreateValidatorRunId": 37198103164,
+  "inputCreateValidatorJobId": 111424036551,
+  "inputCreateValidatorReceiptGitBlob": "4994ccdf5e21789767dc04dd41b31377319e3a2a",
+  "inputCreateReceiptGitBlob": "cdcf0f9f5da64b3ce9188920bf61a675deec30af",
+  "inputCreatePhysicalEvidenceGitBlob": "b757a52cbe3a476690ddb1db4c5c9409c67dee72",
+  "inputCreateMetaPayloadGitBlob": "c2acd5379de4ad32e3bb93d6cf74e0f36d390650",
+  "calibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "qids": [
+          1,
+          2
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "qids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ]
+  },
+  "reviewSummary": {
+    "questionCount": 24,
+    "fullR1ReviewCount": 24,
+    "repairQids": [
+      10,
+      14,
+      16,
+      24
+    ],
+    "repairFields": [
+      "subUnitKey",
+      "subUnit"
+    ],
+    "deterministicRepairCount": 4,
+    "linkedSolutionVisualCount": 0,
+    "sourceImageAuditQids": [
+      12,
+      14,
+      20,
+      23,
+      24
+    ],
+    "itemHoldCount": 0,
+    "itemHoldQids": [],
+    "sourceParityNewClaims": 0,
+    "resultBeforeValidator": "R1_AUDIT_COMPLETE_VALIDATOR_PENDING"
+  },
+  "repairDetails": [
+    {
+      "qid": 10,
+      "fields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "from": "M2-04-LINEAR_FUNCTION_EQUATION / 일차함수와 일차방정식의 관계",
+      "to": "M2-04-LINEAR_FUNCTION_BASIC / 일차함수의 뜻과 그래프",
+      "authority": "2022 M2-1 taxonomy: 일차함수와 그 그래프 > 식 구하기 > 두 점으로 식 구하기"
+    },
+    {
+      "qid": 14,
+      "fields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "from": "M2-04-LINEAR_FUNCTION_BASIC / 일차함수의 뜻과 그래프",
+      "to": "M2-04-LINEAR_FUNCTION_EQUATION / 일차함수와 일차방정식의 관계",
+      "authority": "2022 M2-1 taxonomy: 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 교점과 연립방정식"
+    },
+    {
+      "qid": 16,
+      "fields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "from": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD / 연립일차방정식의 활용",
+      "to": "M2-03-SIMULTANEOUS_LINEAR_EQUATION / 연립일차방정식",
+      "authority": "2022 M2-1 taxonomy: 연립일차방정식 > 해와 계수 > 계수 결정"
+    },
+    {
+      "qid": 24,
+      "fields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "from": "M2-04-LINEAR_FUNCTION_BASIC / 일차함수의 뜻과 그래프",
+      "to": "M2-04-LINEAR_FUNCTION_EQUATION / 일차함수와 일차방정식의 관계",
+      "authority": "2022 M2-1 taxonomy: 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정"
+    }
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "①,⑤ (상수함수 y=1, 반비례 y=6/x)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①,⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "⑤ (x절편 1; 나머지 2)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "② (x+y=8, 4x+2y=20)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "③ (①×3−②×2)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "② (2x−2y=2와 1의 모순)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "④ (n=4)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "① (a>3이므로 3−a<0, x<5)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "② (근영 8승)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "④ (|m| 최소 1/2)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "① (k=1)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "REPAIRED_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      },
+      "repairApplied": true,
+      "repairFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "disposition": "DETERMINISTIC_META_REPAIR"
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "② (0≤m≤2, 최댓값 2)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "③ (b<0,c<0)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_SOURCE_IMAGE_ACTUAL_GEOMETRY_RECOMPUTED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "②,④,⑤",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②,④,⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "① (a=-3,b=2,a-b=-5)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_SOURCE_IMAGE_ACTUAL_GEOMETRY_RECOMPUTED",
+        "meta": "REPAIRED_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      },
+      "repairApplied": true,
+      "repairFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "disposition": "DETERMINISTIC_META_REPAIR"
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "⑤ ((x,y)=(3,-1))",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "③ (k=0)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "REPAIRED_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      },
+      "repairApplied": true,
+      "repairFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "disposition": "DETERMINISTIC_META_REPAIR"
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "④ (가,나,다,마)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "③ (73)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "④ (x≤6/7 km)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "④ (가로 6cm, 세로 4cm)",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_SOURCE_IMAGE_ACTUAL_GEOMETRY_RECOMPUTED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "a=3, b=0, m=1",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$a=3,\\ b=0,\\ m=1$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "노새 7자루, 당나귀 5자루",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "노새 7자루, 당나귀 5자루",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_NO_LINKED_SOLUTION_VISUAL_NEEDED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "4개",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "4개",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_SOURCE_IMAGE_ACTUAL_GEOMETRY_RECOMPUTED",
+        "meta": "PASS_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      }
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "A(k,2k), C(3k,0); k=2; 넓이16, D(6,4); y=-2x+16",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "(1) $A(k,2k)$, $C(3k,0)$  (2) $k=2$  (3) 넓이 16, $D(6,4)$  (4) $y=-2x+16$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "CURRENT_ARTIFACT",
+      "audit": {
+        "sourceExact": "PASS_CREATE_AUTHORITY_CHAIN_NO_NEW_SOURCE_PARITY_CLAIM",
+        "answerMath": "PASS",
+        "solutionMath": "PASS",
+        "smallBoard": "PASS",
+        "curriculum": "PASS",
+        "visualNecessity": "PASS_SOURCE_IMAGE_ACTUAL_GEOMETRY_RECOMPUTED",
+        "meta": "REPAIRED_CURRENT_RPM_TAXONOMY",
+        "difficulty": "PASS",
+        "runtimeString": "PASS_DETERMINISTIC_META_ONLY_REPAIR"
+      },
+      "repairApplied": true,
+      "repairFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "disposition": "DETERMINISTIC_META_REPAIR"
+    }
+  ]
+}
