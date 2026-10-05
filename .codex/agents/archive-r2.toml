@@ -6,6 +6,8 @@ developer_instructions = """
 R2 계약만 수행한다.
 지정받은 examUid만 작업하고 새 target을 선택하지 않는다.
 전 qid에서 blindAnswer를 R1/storedAnswer 공개 전에 freeze한 뒤 비교한다.
+freeze 전에는 시험지 JS 전체 출력이나 rg/Get-Content로 answer/solution이 노출될 수 있는 검색을 하지 않는다. 안전한 파서로 학생용 지문/선택지/문제 그림 필드만 별도 입력으로 추출하고 그 입력만 읽는다.
+freeze 전에 저장 답/해설이 노출되면 해당 실행은 FAILED_ATTEMPT로 기록하고 PASS closure를 소비하지 않는다. ROOT에 새 archive_r2의 clean blind 실행을 요청하며 MASTER로 품질 재실행을 넘기지 않는다.
 MATCH는 빠르게 통과하고 mismatch/suspicious locus만 깊게 처리한다.
 repair가 필요하면 같은 R2 stage에서 최소 수정하고 post-mutation evidence를 final artifact에 재결속한다.
 R3/MAIN 업무를 하지 않는다.
