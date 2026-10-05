@@ -28,7 +28,13 @@
 - `21_풍덕중_2학기_기말_중2_기출.js`
 - `20_향림중_2학기_기말_중2_기출.js`
 
-시험지별 CREATE → R1 → R2 → R3 → MAIN 순서를 유지하며, 최대 5개 stage worker를 병렬 실행한다. 같은 시험지의 stage worker는 동시에 실행하지 않는다. 모든 작업자는 자기 시험지 파일과 별도 evidence만 소유하며 공용 파일을 수정하지 않는다.
+시험지별 CREATE → R1 → R2 → R3 → MAIN 순서를 유지하는 stage별 직렬 컨베이어다. CREATE/R1/R2/R3 담당은 각각 1개이며, 각 담당은 한 번에 시험지 하나만 처리한다. 시험지별 CREATE worker 5개를 동시에 spawn하는 방식은 금지한다.
+
+CREATE가 A를 R1에 넘기면 같은 CREATE 담당은 B를 시작한다. R1이 A를 R2에 넘기면 같은 R1 담당은 B를 받고, CREATE는 C를 시작한다. 시험지별 순서와 각 담당의 처리 순서를 유지하며 같은 역할을 시험지마다 병렬 증식하지 않는다. 다음 담당이 바쁘면 완료 산출물을 보존하고 해당 담당이 비는 즉시 인계한다. 별도 READY/QUEUE ceremony를 만들지 않는다.
+
+MAIN publication/closeout은 ROOT의 기술 routing이다. 정상 품질 담당은 4개이며 MASTER는 실제 durable continuation이 발생할 때만 추가한다. concurrency cap 5는 상한이며 상시 5개 worker 실행 지시가 아니다. 역할별 담당은 다음 시험지에 재사용하되 R1/R2의 새 시험지 독립 답 freeze 전 해당 시험지의 stored answer나 upstream 답 evidence를 노출하지 않는다.
+
+모든 작업자는 자기 시험지 파일과 별도 evidence만 소유하며 공용 파일을 수정하지 않는다.
 
 공유 Git index의 병렬 충돌을 방지하기 위해 이번 파일럿에서는 worker가 파일 목록과 validator/closure 결과를 반환하고, ROOT가 해당 목록만 명시적으로 stage하여 stage별 독립 commit을 만든다. worker는 git add/commit/merge/push를 실행하지 않는다. MASTER는 실제 durable continuation에만 사용한다.
 
@@ -128,6 +134,10 @@ qid별 `sourceMode` provenance와 필요한 evidence를 만든다.
 ### R1
 
 전 qid DEEP review.
+
+수학 독립풀이/answer 비교와 별도로 전 qid의 QUESTION_LAYOUT / SOLUTION_LAYOUT / META / VISUAL_SVG 4축을 독립 검수하고 qid별 근거를 기록한다. CREATE의 PASS나 VISUAL_EXEMPT를 그대로 승계하지 않는다. Visual/SVG 필요성 및 Meta의 기존 값을 실제로 확인하며 validator는 Meta를 재분류하지 않는다.
+
+기존 수학/answer PASS에 4축 검수만 누락된 경우 사용자 승인 범위의 supplemental evidence로 보충한다. 수학 독립풀이/answer 비교와 전체 CREATE/R1/R2/R3를 재실행하지 않는다. 실제 수정 qid와 direct dependency만 evidence를 재결속하고 필요한 R3도 해당 locus만 targeted 검수한다.
 
 `independentAnswer`를 `storedAnswer` 공개 전에 freeze한다.
 
@@ -242,6 +252,12 @@ worker는 우선 아래만 compact하게 반환한다.
 - 중간 stage마다 latest-main reconciliation 반복 금지
 - MAIN 반영 직전에만 latest main / overlap 최종 확인
 - unrelated production/M2-1 mutation 금지
+
+### 실제 MAIN_DONE 조건
+
+R3→MAIN state receipt는 publication 완료 증거가 아니다. `_generated/source-only/`의 final artifact만으로 MAIN_DONE을 선언하지 않는다. 실제 production canonical 파일에 final artifact를 반영하고 필요한 asset reference가 유효한지 최소 확인한 뒤, production path 및 최종 Git blob SHA에 결속된 MAIN_DONE/closeout receipt를 남긴다.
+
+현재 `21_연향중_2학기_기말_중2_기출`의 production 대상은 `archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js`다. source-only/generated에서 시작한 구조의 재설계는 별도 작업이며 이번 보충 검수/publication에서는 변경하지 않는다.
 
 ## 11. Quality References for Workers Only
 
