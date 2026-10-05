@@ -1,0 +1,1284 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SUPPLEMENTAL_AXES_v1",
+  "stage": "R1_SUPPLEMENTAL_AXES",
+  "examUid": "source-only-m2-20261004/21_연향중_2학기_기말_중2_기출",
+  "sourceArtifactPath": "archive/_generated/source-only/m2-20261004/21_연향중_2학기_기말_중2_기출.js",
+  "sourceArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "finalArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "inputR1EvidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R1.evidence.json",
+  "preservedPriorR1": {
+    "status": "PASS",
+    "qidCount": 21,
+    "mathAnswerRecheck": "NOT_RUN_BY_INSTRUCTION",
+    "independentAnswerFreezeAndStoredComparison": "preserved_without_reexecution"
+  },
+  "scope": {
+    "axes": [
+      "QUESTION_LAYOUT",
+      "SOLUTION_LAYOUT",
+      "META",
+      "VISUAL_SVG"
+    ],
+    "qidCount": 21,
+    "coverage": "21/21 on all four axes",
+    "fullStageValidator": "NOT_RUN_BY_INSTRUCTION",
+    "createR1R2R3Reexecution": "NONE"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "짧은 문장형 stem, 5개 선택지, grid 폭이 적절하다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "약수 목록과 개수, 선택지 결론 순으로 닫힌다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "level": "하",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "확률",
+            "경우의 수"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "이산 약수 개수만 세며 공간/그래프 구조가 없다. 추가 도식은 계산을 반복한다.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    },
+    {
+      "qid": 2,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "선택지 5개가 긴 정의/식이지만 grid 폭으로 구분 가능하고 복수 정답 조건이 stem에 노출된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "각 진술을 하나씩 판정한 뒤 오답 두 개를 명시한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "level": "중",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "확률"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "확률의 범위와 정의에 관한 명제 판별이다. 추가 도식은 명제 설명을 개선하지 않는다.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "원문 도식 참조, (1)(2) 두 소문항과 5개 조합 선택지가 순서대로 정리된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q03-r2.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "(1),(2)를 분리해 대응비 식, 계산, 선택지 결론 순으로 제시한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "standardUnit": "도형의 닮음",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "subUnit": "평행선 사이의 선분의 길이의 비",
+          "level": "중",
+          "category": "도형의 닮음",
+          "originalCategory": "도형의 닮음",
+          "tags": [
+            "평행선",
+            "선분의 길이",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "기존 원문 그림이 세 평행선, 두 횡선, 필요한 길이를 이미 표시하고 해설이 대응비를 순서대로 특정한다. 중복 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q03-r2.png",
+          "sha256": "fbc2866654d5dae5260e800334967966be9d1585915350f6e2f557c7ecc932f5",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "도형 조건과 x+y 목표가 앞에 오고, 도식 참조와 선택지가 대응한다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q04.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "무게중심비로 x를 얻고 중점 연결로 y를 얻은 뒤 합을 제시한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "level": "중",
+          "category": "도형의 성질",
+          "originalCategory": "도형의 성질",
+          "tags": [
+            "무게중심",
+            "평행선",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "기존 원문 삼각형 도식에 G, D, E, F 및 GE가 표시되어 있고 해설이 무게중심비와 중점 연결을 명시한다. 중복 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q04.png",
+          "sha256": "b44b14ec883d0908f011d4f5cf449cbbeed1c6e5206aac8363b306fec90690c3",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "이등변/밑변/넓이 조건 뒤 둘레를 묻고 도식이 붙는 구조가 자연스럽다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q05.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "넓이에서 높이, 이등분으로 반밑변, 직각삼각형 변, 둘레 순으로 연결한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "subUnit": "피타고라스 정리의 활용",
+          "level": "중",
+          "category": "피타고라스 정리",
+          "originalCategory": "피타고라스 정리",
+          "tags": [
+            "이등변삼각형",
+            "둘레",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 도식이 이등변삼각형과 밑변을 충분히 보여 주며 해설이 높이와 반쪽 밑변으로 직각삼각형을 설명한다. 추가 SVG 없이 이해 가능.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q05.png",
+          "sha256": "c147d92f86e5ced271f25c87320dc08788bfae9ecdbfb671c92c89deaba86c6d",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "두 정사각형 명칭, 넓이 조건, 목표 도형이 구분되어 있고 도식이 조건에 대응한다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q06-r2.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "넓이식으로 변을 얻고 피타고라스 정리, 정사각형 넓이 순으로 전개한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "subUnit": "피타고라스 정리의 활용",
+          "level": "중",
+          "category": "피타고라스 정리",
+          "originalCategory": "피타고라스 정리",
+          "tags": [
+            "정사각형",
+            "넓이",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 도식이 두 정사각형, 직각삼각형, 길이 2와 점을 보여 주며 해설이 넓이 관계를 순서대로 연결한다. 중복 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q06-r2.png",
+          "sha256": "9144dd91ee628fc08da78d24f2d33e547554def7eb13005c6aada434ef0bd8d0",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "색 목록과 이미 선택된 색 조건 뒤 단일 경우 수 질문으로 읽힌다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "필수 색을 고정하고 남은 선택 수를 조합으로 계산한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "level": "하",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "경우의 수",
+            "조합"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "색 선택의 유한 경우 세기이며 결정적 공간 구조가 없다.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "표는 Markdown 표로 완전하고 stem이 표 다음 줄에서 선택 사건을 묻는다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "유리한 수를 합하고 전체 수로 나누어 확률을 닫는다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "level": "하",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "확률",
+            "자료의 정리",
+            "표"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "표가 지문 안에 완전하게 제시되고 해설은 한 번의 유리한 경우 수 비율이다. 추가 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "평행/같은 길이 조건과 목표 선분이 stem에 먼저 나오며 그림 참조가 분명하다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q09-r2.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "중점 조건과 평행선 관계를 통해 비를 얻고 길이를 계산한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "standardUnit": "도형의 닮음",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "subUnit": "평행선 사이의 선분의 길이의 비",
+          "level": "중",
+          "category": "도형의 닮음",
+          "originalCategory": "도형의 닮음",
+          "tags": [
+            "평행선",
+            "선분의 길이",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 삼각형 도식에 점과 조건이 모두 표시되며 해설이 중점 관계와 BE:BC를 글로 연결한다. 중복 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q09-r2.png",
+          "sha256": "ab3840df2fe339b5110b8e385cb6d056631d12b6f7a36f07c958f6355743f195",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "두 무게중심 정의, 주어진 작은 넓이, 목표 넓이가 한 흐름에 배치된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q10-r2.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "두 무게중심 비를 차례로 적용하여 전체 대비 비를 만든 뒤 수치를 대입한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "level": "중",
+          "category": "도형의 성질",
+          "originalCategory": "도형의 성질",
+          "tags": [
+            "무게중심",
+            "넓이",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 중점/무게중심 도식이 두 단계 구조를 보여 주고 해설이 1/3 비를 순차로 설명한다. 같은 도형의 재표현은 정보 추가가 없다.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q10-r2.png",
+          "sha256": "97a01214f6d83486f554200484068950af848a1021852745561e2b109d3ef131",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "평행선 구성과 보기 판정 요청이 단계적으로 제시되고 원문 그림 참조가 분명하다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q11.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "무게중심/평행 관계를 정리한 후 작은 삼각형 넓이비와 여집합을 계산한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "level": "중",
+          "category": "도형의 성질",
+          "originalCategory": "도형의 성질",
+          "tags": [
+            "무게중심",
+            "평행선",
+            "삼각형의 성질",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 도식이 삼각형, 평행선, G, D, E 및 영역 구분을 보인다. 넓이비는 텍스트 해설로 명확하며 추가 도식은 반복이다.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q11.png",
+          "sha256": "1238501c8ad05046a72be6f704d7369eb3e3b1a06639c90842a10eb101df0d20",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "직각/무게중심 조건, 주어진 길이, 목표 변이 한 문장에 자연스럽게 배치된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q12-r2.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "중선/무게중심으로 빗변을 구한 후 피타고라스 정리로 목표 변을 계산한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "level": "중",
+          "category": "피타고라스 정리",
+          "originalCategory": "피타고라스 정리",
+          "tags": [
+            "직각삼각형",
+            "무게중심",
+            "선분의 길이",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 직각삼각형 도식에 A, B, C, D, G와 18 cm, 5 cm가 표시되어 있고 해설이 중선/피타고라스 순서를 설명한다. 중복 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q12-r2.png",
+          "sha256": "8b3f522ab1425d84763b5092f6bf92ff14df6582698508708a153b46624ef83b",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "동일 길이 조건과 길이 비 요청이 분명하고 도식 참조가 있다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q13.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "동일 길이를 a로 두고 연속 직각삼각형의 제곱식을 순차 적용한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "subUnit": "피타고라스 정리",
+          "level": "중",
+          "category": "피타고라스 정리",
+          "originalCategory": "피타고라스 정리",
+          "tags": [
+            "도형의 길이",
+            "비",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 도식에 OA=AB=BC=CD 구조와 연속 직각삼각형이 표시되어 있어 해설의 제곱 관계를 추적할 수 있다. 중복 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q13.png",
+          "sha256": "39520db3a1cfd5a0848ddaaec28e9a5c67e48885ce264fa5e1689f2c04347fec",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "게임 결과 확률 조건과 두 번의 시행/목표 사건이 한 흐름에 정리된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "각 승률, 상호보완 승률, 두 순서를 분리하고 합산한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "level": "중",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "확률"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "두 경기 결과 순서를 세는 확률 문제이며 순서 분기는 해설이 두 곱의 합으로 명시한다. 추가 그림은 장식이다.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "배열 대상과 O가 R 바로 앞이라는 제한 및 경우 수 요청이 명확하다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "순서가 고정된 블록과 나머지를 배열하는 설명이 결론으로 닫힌다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "level": "하",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "순열",
+            "경우의 수"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "OR 묶음과 나머지 문자 배열만 다루며 별도 공간 구조가 없다.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "동전 종류/재고와 지불 금액 및 거스름돈 조건이 구분된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "변수와 범위를 정의하고 가능한 c별 경우를 열거해 합산한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "level": "중",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "경우의 수",
+            "조합"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "동전 개수 조건을 유한 정수식으로 나누어 세며 추가 그래프/도형이 없다.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "출발/경유/도착 및 최단 조건과 격자 그림이 직접 연결된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q17.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "A-B와 B-C 경로 수를 각각 센 뒤 곱한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률",
+          "level": "중",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "경우의 수",
+            "최단 경로",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 격자가 이동 구조와 중간점 B를 직접 보여 주며 해설이 구간별 최단 경로 수를 분리한다. 경로 중첩 SVG는 정보 추가가 없다.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q17.png",
+          "sha256": "1857bf1c7d2c2a0c9da859a888e6932a18c3acb19a6dfa1da95ba06754df835d",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "원형 자리 규칙과 출발 위치/이동 방향, 목표 사건이 서술 순서대로 제시된다.",
+        "observedFields": {
+          "questionType": "객관식",
+          "choiceCount": 5,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q18.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "각 출발점에서 필요한 눈과 유리한 순서쌍, 전체 경우 수가 명시된다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "standardUnit": "확률",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "subUnit": "확률의 뜻과 성질",
+          "level": "중",
+          "category": "확률",
+          "originalCategory": "확률",
+          "tags": [
+            "확률",
+            "경우의 수",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 원형 자리 A-D가 게임의 순환 구조를 그대로 보여 주고 해설이 유리한 눈 순서쌍을 구체화한다. 추가 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q18.png",
+          "sha256": "507c81b24617d69ea4811e475381ee6349b6e056c2a939c87c741fc2db9025eb",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "서술형 번호, 그림 참조, 주어진 길이와 구할 선분, 배점이 보인다.",
+        "observedFields": {
+          "questionType": "서술형",
+          "choiceCount": 0,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q19.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "각 무게중심 분할비와 중점선 관계를 연결한 뒤 cm 단위 답을 제시한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "standardUnit": "도형의 성질",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "subUnit": "삼각형의 성질",
+          "level": "하",
+          "category": "도형의 성질",
+          "originalCategory": "도형의 성질",
+          "tags": [
+            "무게중심",
+            "선분의 길이",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "원문 도식이 두 삼각형, 중선, 중점과 BC=30 cm를 보여 주고 해설이 대응 중점선 관계를 설명한다. 추가 SVG 불필요.",
+        "solutionImagePresent": false,
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q19.png",
+          "sha256": "e772b00cd151ec58b2f9244838579ea979f2db0268836343118e2d3402b5b9b0",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS_AFTER_ASSET_CROP",
+        "evidence": "서술형 stem에 문장이 한 번만 보이고 image에는 도형·점/수치 라벨만 남도록 crop되어 중복이 제거되었다. 원래 asset SHA256 ff84e4dca3dd6b25f856c19836f4fd0c88fda6e03f2b191fd5fce4e5fa0f9b91의 중복 stem을 제거하고 도형 crop만 연결했다.",
+        "observedFields": {
+          "questionType": "서술형",
+          "choiceCount": 0,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": "assets/images/21_연향중_2학기_기말_중2_기출/q20.png"
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "같은 삼각형 넓이의 두 표현을 놓고 AH를 푸는 계산이 단위와 함께 닫힌다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "standardUnit": "피타고라스 정리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "subUnit": "피타고라스 정리의 활용",
+          "level": "중",
+          "category": "피타고라스 정리",
+          "originalCategory": "피타고라스 정리",
+          "tags": [
+            "직각삼각형",
+            "수선",
+            "선분의 길이",
+            "도형"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "기존 문제 그림은 지문을 중복 표시해 q20의 image 자산을 도형 영역으로 최소 crop했다. 새 해설 SVG는 해설의 넓이 등식을 반복하므로 불필요.",
+        "solutionImagePresent": false,
+        "assetReview": {
+          "action": "MINIMAL_CROP",
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q20.png",
+          "oldSha256": "ff84e4dca3dd6b25f856c19836f4fd0c88fda6e03f2b191fd5fce4e5fa0f9b91",
+          "finalSha256": "4b49b6950224ceb73314cc122fcc40425b40ba5c5d7f217a8198b8977f0e12eb",
+          "finalGitBlobSha": "c46ea216addf668b8dd492ee1058e5a083f0de89",
+          "retained": "A,B,C,H 및 12,5,13 표기와 높이선/밑변 도식"
+        },
+        "problemImage": {
+          "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q20.png",
+          "sha256": "4b49b6950224ceb73314cc122fcc40425b40ba5c5d7f217a8198b8977f0e12eb",
+          "review": "실제 원문 그림을 열어 구조/라벨 확인; 추가 해설 SVG marginal benefit를 판단함."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "questionLayout": {
+        "verdict": "PASS",
+        "evidence": "서술형 stem에서 표본공간, 두 나눗수, 유한소수 조건, 확률 요청이 분명하다.",
+        "observedFields": {
+          "questionType": "서술형",
+          "choiceCount": 0,
+          "layoutTag": "grid",
+          "wide": false,
+          "imagePath": null
+        }
+      },
+      "solutionLayout": {
+        "verdict": "PASS",
+        "evidence": "유한소수 분모 조건을 각각 배수 조건으로 바꾸고 중복 없는 수를 세어 확률을 제시한다."
+      },
+      "meta": {
+        "verdict": "PASS",
+        "checkedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "level",
+          "category",
+          "originalCategory",
+          "tags"
+        ],
+        "evidence": "기존 값을 직접 대조했다. 중2 과정/단원/세부단원 및 문항 주제에 맞고 level/tag 표기가 지문 특성과 일치한다. 자동 재분류 없음.",
+        "checkedValues": {
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-01",
+          "standardUnit": "유리수와 순환소수",
+          "subUnitKey": "M2-01-RATIONAL_NUMBER_REPEATING_DECIMAL",
+          "subUnit": "유리수와 순환소수",
+          "level": "중",
+          "category": "유리수와 순환소수",
+          "originalCategory": "유리수와 순환소수",
+          "tags": [
+            "확률",
+            "유한소수"
+          ]
+        }
+      },
+      "visualSvg": {
+        "verdict": "PASS",
+        "decision": "VISUAL_EXEMPT",
+        "evidence": "배수 개수와 배반 사건의 합집합 계산으로 공간/그래프 구조가 없다.",
+        "solutionImagePresent": false,
+        "problemImage": null
+      }
+    }
+  ],
+  "summary": {
+    "questionLayout": "21/21 PASS (q20 after crop)",
+    "solutionLayout": "21/21 PASS",
+    "meta": "21/21 PASS",
+    "visualSvg": "21/21 reviewed; no additional solution SVG required; q20 source image minimally cropped to remove duplicate stem",
+    "modifiedQids": [
+      20
+    ],
+    "directDependencyQids": [
+      20
+    ],
+    "targetedR3Required": true,
+    "targetedR3Scope": {
+      "qid": 20,
+      "items": [
+        "cropped q20 question-image asset",
+        "q20 question layout and image linkage"
+      ],
+      "wholeExam": false
+    }
+  },
+  "changedFiles": [
+    "archive/assets/images/21_연향중_2학기_기말_중2_기출/q20.png",
+    "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R1.axes-supplement.evidence.json"
+  ]
+}
