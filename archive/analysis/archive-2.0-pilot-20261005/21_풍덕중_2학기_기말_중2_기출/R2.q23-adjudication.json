@@ -1,0 +1,16 @@
+{
+  "schema": "archive2-r2-targeted-adjudication-v1",
+  "examUid": "source-only-m2-20261004/21_풍덕중_2학기_기말_중2_기출",
+  "stage": "R2",
+  "qid": 23,
+  "sourceGitBlobSha1": "bb1135038c4d854e95834786cf0decbefa934c2d",
+  "studentInputSha256": "fd50221a39e66f91e8aaaf9e4edc7de06763ec6a207a89b58a2710ca823ed748",
+  "freezeRef": "R2.blind-freeze.json#q23",
+  "freezeSha256": "02c2d28a6ea0e973ad8583e781d34bcca2faf562ca20a901775345218ea1dc3c",
+  "initialFrozenAnswer": "3 (conditional on one fixed cleaning pair)",
+  "preserveInitialFreeze": true,
+  "postFreezeContamination": false,
+  "adjudicatedAnswer": "36 (all complete duty assignments)",
+  "reasoning": "The prompt first states that one cleaning duty pair is chosen from 4 boys and 3 girls, then asks for meal and laundry assignments excluding those cleaning workers. With the cleaning pair included in the complete assignment count: 4*3 ways to choose cleaning, C(2,2)=1 way for meal from the remaining girls, and C(3,2)=3 ways for laundry from the remaining boys, giving 36. The initial 3 counted only the latter two choices for a fixed cleaning pair; the input does not specify a fixed pair. The stored answer 36 is consistent with the full assignment reading. The blind freeze remains unchanged.",
+  "resolution": "STORED_ANSWER_CONFIRMED; NO_REPAIR"
+}
