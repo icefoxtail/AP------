@@ -309,6 +309,9 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 ### CURRENT VISUAL ROUTER — SVG / graph / geometry / solutionImage
 
+**GPT/예약 worker 실행 정본:** `04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md`. GPT는 `.codex/skills/apmath-visual-upgrade/SKILL.md`를 upstream visual philosophy로 함께 읽되 Codex skill을 실제 실행했다고 주장하지 않는다. CREATE/R1/R2/R3/THANOS의 visual 생성·수정·검수는 GPT Contract의 triage/owner/math/style/render-debt 해석을 따른다.
+
+
 기존 Archive JS가 있는 시험지의 CREATE / REVIEW1 / REVIEW2 / repair 안에서 수행하는 SVG·graph·geometry·`solutionImage` 작업은 `.codex/skills/apmath-visual-upgrade/SKILL.md`의 **`ROUTINE_EXAM_VISUAL`**을 기본 경로로 사용한다. visual 하위작업 때문에 부모 시험지 작업을 Past Exam V3, pipeline-core work batch, provider FINAL_AUDIT, U1/U2/U3, 전역 qualification으로 자동 확대하지 않는다.
 
 ROUTINE_EXAM_VISUAL 최소 기준:
