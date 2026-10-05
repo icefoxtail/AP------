@@ -1,0 +1,111 @@
+{
+  "examTitle": "22_순천여고_2학기_중간_고1_기출",
+  "purpose": "Source diagram cleanup only; q18 has no source figure and remains text-only. No shared ledger/manifest updated.",
+  "visuals": [
+    {
+      "qid": 19,
+      "assetPath": "archive/assets/images/22_순천여고_2학기_중간_고1_기출/q19-source-clean.svg",
+      "sourceExam": "2022 Suncheon Girls High School, 2학기 중간, 고1, 수학",
+      "sourcePdf": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(3)2중간\\수학(하)\\2022_순여고1_2중간.pdf",
+      "sourcePdfSha256": "sha256:806c2a35403a6045af9ea5a9231a6015f7480880342eabb4f49a2d3ace91e106",
+      "sourcePage": 5,
+      "sourcePageRasterSizePx": [
+        1405,
+        1986
+      ],
+      "sourcePageRasterSha256": "sha256:96034d1b1c65ee5e07ccd3c3f1013d6155170b86ccb03dfe18deda16052bf0f0",
+      "sourceFigureBBoxPx": [
+        465,
+        140,
+        195,
+        167
+      ],
+      "bboxBasis": "manual bounds around printed triangle, rectangle, labels; confirmed from full page and source crop",
+      "sourceReviewCropSha256": "sha256:47436d2a0fe5ce3efa3e5ea33131dd222fa8101578803ff71e7f27b04e7396d5",
+      "priorAssetPath": "archive/assets/images/22_순천여고_2학기_중간_고1_기출/q19.png",
+      "priorAssetSha256": "sha256:60b6dd956397ad2145658c3508fdfc947c5ef29754d98755866520f730d2fd2e",
+      "pixelErasureDecision": "NOT_SAFE_TO_ERASE: handwritten marks overlap the printed rectangle, hypotenuse and labels; deletion would break printed geometry",
+      "sourceMeaningChecks": [
+        "right triangle ABC with right angle at B",
+        "AB=6 and BC=8 retained",
+        "rectangle has B as a vertex and sides parallel to the legs",
+        "upper-right corner lies on AC",
+        "printed labels a and b retained",
+        "no choices/text/footer or unrelated region included",
+        "no answer/solution fact added"
+      ],
+      "pythonCoordinateGeneration": "PASS",
+      "coordinateModel": "px=135+34x; py=320−34y",
+      "expectedFacts": [
+        "A=(0,6), B=(0,0), C=(8,0) in schematic coordinates",
+        "rectangle upper-right lies on AC",
+        "rectangle side lengths are unlabeled schematic values"
+      ],
+      "svgXmlParse": "PASS",
+      "finalSvgSha256": "sha256:7605253d9d3430c15544c47996c495a13e14d41568e4b0f41168a2e0c13b891b",
+      "finalSvgGitBlobSha": "df1e3da0700a0372e17a19bfcb1301e844046915",
+      "fontMinimumSvgPx": 22
+    }
+  ],
+  "checkedNoImageQuestions": [
+    {
+      "qid": 18,
+      "sourcePage": 4,
+      "finding": "The original provides a piecewise-function formula only; no figure/graph exists to replace."
+    }
+  ],
+  "calibration": {
+    "goldenSamples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:ab37a1bdb3343be7b31db66ac2ee204abec339f35a4bc8eb9ca6252f92656f99",
+        "gitBlobSha": "7f4a3ee06170fc8aa426080e58f7b33bc351b62f"
+      }
+    ],
+    "representativeQuestions": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝",
+        "observation": "Coordinate diagram labels and solution steps were read directly; use compact source-scale black geometry."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.",
+        "observation": "Line slope and intercept facts are made explicit in the worked solution; preserve only printed problem labels in the replacement."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:fb0fa394bd331090ad5d606f28f9f10081197b3666c380fda8e20204fb2206f9",
+        "solutionExcerpt": "[키포인트] 원소와 부분집합의 기호를 구분한다.\\n$A$의 원소는 $1,2,3$이고, $|x|\\lt2$인 정수는 $",
+        "observation": "Set membership is separated into source-supported claims; no additional problem annotation should be added."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:801e27dd70fb82fdd899128b85ed5ae12ff6621ed66138688cefc744ed02b800",
+        "solutionExcerpt": "[키포인트] 두 점 사이의 거리 공식을 적용한 뒤 이차방정식의 두 근의 합을 구한다.\\n거리 조건에서 $(a-1)^",
+        "observation": "Distance geometry is tied to actual coordinates and relationships; diagram labels must retain their owners."
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+    },
+    "sampleReadBeforeWork": true,
+    "visualRepairPreflight": "PASS",
+    "independentRecheckPreflight": "PASS"
+  },
+  "browserRenderStatus": "PENDING: the browser URL policy blocks file: URLs; the alternative direct SVG raster render was opened and visually reviewed.",
+  "reviewRenderTempDisposition": "Full-page raster render and opened source-comparison crop were temporary review files; their hashes, page number, and bounding box are retained here. Temporary PNGs will be removed after verification."
+}
