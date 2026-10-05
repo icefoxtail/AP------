@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_LOCAL_VALIDATION_CHECKPOINT_v1",
+  "stage": "R1",
+  "status": "LOCAL_CANONICAL_PASS_NOT_STAGE_RECEIPT",
+  "examUid": "M2-1-23-YEONHYANG-1FINAL",
+  "examPath": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "finalArtifactSha": "895de966c9096d789c14e8e719eb3736574728e5",
+  "finalArtifactSha256": "sha256:f1e2da5138cea0666c66a74b2e268ac3b8c3352917d238170c71e1114ef4511b",
+  "physicalEvidenceSha": "ec55d3f9fae2446d0022fcb0f758f8a5cf9b7c4e",
+  "commands": [
+    "node archive/tools/solution-calibration-gate.mjs --exam <o31> --evidence <o31.review1.physical-evidence.json> --stage R1 --preflight",
+    "node archive/tools/review-evidence-gate.mjs --exam <o31> --evidence <o31.review1.physical-evidence.json> --stage R1 --json"
+  ],
+  "result": {
+    "ok": true,
+    "questionCount": 23,
+    "questionEvidenceRows": 23,
+    "metaEvidenceRows": 23,
+    "linkedProblemImageCount": 4,
+    "itemHoldCount": 0,
+    "disposition": "PASS",
+    "issues": []
+  },
+  "providerRuns": {
+    "archiveRegistration": {
+      "runId": 37206657486,
+      "jobId": 111449139229,
+      "status": "in_progress"
+    },
+    "ci": {
+      "runId": 37206657494,
+      "jobId": 111449139005,
+      "status": "in_progress"
+    }
+  },
+  "declaration": "This checkpoint is not the canonical validator receipt and does not declare REVIEW1_DONE."
+}
