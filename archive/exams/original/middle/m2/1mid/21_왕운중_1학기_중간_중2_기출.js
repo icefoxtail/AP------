@@ -17,7 +17,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -53,7 +53,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -89,7 +89,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -125,7 +125,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -161,7 +161,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -195,7 +195,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -229,7 +229,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -263,7 +263,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -312,8 +312,8 @@ window.questionBank = [
     "wide": false,
     "solution": "[핵심] 나눗셈은 역수를 곱하는 것으로 바꾼다.\n[풀이] ① \\(a\\div(bc)=\\frac{a}{bc}\\), ② \\(a\\div(b\\div c)=a\\div\\frac bc=\\frac{ac}{b}\\), ③ \\(a(b\\div c)=\\frac{ab}{c}\\), ④ \\((a\\div b)c=\\frac{ac}{b}\\), ⑤ \\((a\\div b)\\div c=\\frac{a}{bc}\\)이다.\n[확인] 제시된 식과 일치하는 것은 ②뿐이다.\n[결론] ②",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -334,7 +334,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -368,7 +368,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -402,7 +402,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -436,7 +436,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -470,7 +470,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -482,8 +482,8 @@ window.questionBank = [
     "wide": false,
     "solution": "[핵심] 나누어지는 식을 구하려면 몫에 나누는 식을 곱한다.\n[풀이] \\((-3a^3b^2)^3=-27a^9b^6\\)이다. 따라서 \\(\\Box=\\frac13ab^2\\times(-27a^9b^6)=-9a^{10}b^8\\)이다.\n[결론] ①",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -504,7 +504,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -541,7 +541,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -575,7 +575,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -609,7 +609,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -622,10 +622,10 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "[핵심] 부등호 \\(>,<,\\ge,\\le\\)로 두 수나 식의 대소 관계를 나타낸 것이 부등식이다.\n[풀이] ㉠, ㉣, ㉥, ㉦은 부등식이다. ㉡은 식만 있고, ㉢과 ㉤은 등식이다.\n[확인] 모두 4개이다.\n[결론] ②",
+    "solution": "[핵심] 부등호 \\(>,<,\\ge,\\le\\)로 두 수나 식의 대소 관계를 나타낸 것이 부등식이다.\n[풀이]\n㉠ \\(x+10>0\\): 부등호가 있으므로 부등식이다.\n㉡ \\(2x-7\\): 식만 있고 부등호가 없으므로 부등식이 아니다.\n㉢ \\(2+8=10\\): 등호를 사용한 등식이므로 부등식이 아니다.\n㉣ \\(3x-5>9\\): 부등호가 있으므로 부등식이다.\n㉤ \\(9x=-4x+5\\): 등호를 사용한 등식이므로 부등식이 아니다.\n㉥ \\(2+7>3-1\\): 부등호가 있으므로 부등식이다.\n㉦ \\(2c+1\\le5c-1\\): 부등호가 있으므로 부등식이다.\n[확인] 부등식은 ㉠, ㉣, ㉥, ㉦의 4개이다.\n[결론] ②",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -646,7 +646,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -680,7 +680,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -709,7 +709,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -719,7 +719,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[핵심] (1)은 실제 소수 전개에서 반복되는 최소 부분을 찾고, (2)는 순환소수를 분수로 바꾼다.\n[풀이] (1) \\(\\frac8{15}=0.5333\\cdots\\)이므로 순환마디는 3이다. (2) \\(0.\\dot2\\dot7=\\frac{27}{99}=\\frac3{11}\\)이므로 \\(a=3\\)이다.\n[확인] 계산 결과는 (1) 3, (2) 3이고, SOURCE_REPAIR_DONE·CREATE validator PASS와 현재 answer 필드가 일치한다.\n[결론] (1) 3, (2) 3",
+    "solution": "[핵심] (1)은 실제 소수 전개에서 반복되는 최소 부분을 찾고, (2)는 순환소수를 분수로 바꾼다.\n[풀이]\n(1) \\(\\frac8{15}=0.5333\\cdots\\)이므로 순환마디는 3이다.\n(2) \\(0.\\dot2\\dot7=\\frac{27}{99}=\\frac3{11}\\)이므로 \\(a=3\\)이다.\n[확인]\n(1) 순환마디는 3이다.\n(2) \\(\\frac{a}{11}=\\frac3{11}\\)이므로 \\(a=3\\)이다.\n[결론] (1) 3, (2) 3",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -737,7 +737,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -767,7 +767,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -795,7 +795,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
