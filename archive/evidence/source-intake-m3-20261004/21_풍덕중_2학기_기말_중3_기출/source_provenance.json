@@ -27,7 +27,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; answers/solutions blank.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_QA_READY_WITH_ALIVE_REPLACEMENTS",
   "questions": [
     {
       "qid": 1,
@@ -223,11 +223,11 @@
       "qid": 20,
       "sourceQuestionNo": "20",
       "sourcePage": 4,
-      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
-      "choicesStatus": "SOURCE_VISUAL_CHOICES_HOLD",
+      "transcriptionStatus": "ALIVE_DERIVED_SUBSTITUTE",
+      "choicesStatus": "ALIVE_DERIVED_TEXT_CHOICES",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "The five answer options are source diagrams with student marks obscuring printed labels/details. Do not infer textual conditions or the answer."
+      "itemDisposition": "ALIVE_REPLACEMENT",
+      "holdReason": null
     },
     {
       "qid": 21,
@@ -884,9 +884,7 @@
       }
     }
   ],
-  "examHold": [
-    "q20: printed diagram choices are obscured by student marks; retain the printed stem and HOLD the visual choices without derivation."
-  ],
+  "examHold": [],
   "cropRevisionNotes": [
     "q10 initial crop included answer-choice text and was removed to a temp hold file; current q10 is a direct pixel crop from source page 2 bbox [140,1140,430,1360].",
     "q08 first crop included the page top rule; it was moved to temp and re-extracted directly from the same original page without that rule.",
@@ -903,5 +901,27 @@
       "reason": "A prior conversion interpreted the marked diagrams into mathematical conditions and recorded an answer. That is outside SOURCE_ONLY; the printed choices cannot be transcribed exactly from the marked source."
     }
   ],
-  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS"
+  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS",
+  "aliveReplacementItems": [
+    {
+      "qid": 20,
+      "sourceQuestionNo": "20",
+      "sourcePage": 4,
+      "replacementType": "ALIVE_SIMILAR_QUESTION",
+      "candidateTitle": "21_풍덕중_2학기_기말_중3_기출_유사A2",
+      "candidateSha256": "sha256:8d4158a088de718e8cc08681de2e9379cba71b5615d4b797d400663f5a77ca13",
+      "branchArtifact": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "topic": "원에 내접하는 사각형의 마주 보는 각 조건",
+      "reason": "기출 선택 도형의 수기 흔적으로 조건 판독이 결정되지 않아 수치 조건형 대체문항으로 교체.",
+      "studentFieldsChanged": [
+        "content",
+        "choices"
+      ],
+      "answerSolutionFields": "RETAINED_BLANK_BY_SOURCE_ONLY_SCOPE",
+      "mathRecheck": "PASS_MANUAL",
+      "renderReview": "PASS_ACTUAL_BROWSER_CAPTURE",
+      "replacementContentSha256": "sha256:567e24c00e05136c1025d2fd6bafed2615e695c8d5c55bf80cb8ae7d686fae98",
+      "replacementChoicesSha256": "sha256:d118440451bee8fa2da2b0afa69c5ea3fff13478b98fa6d947f06ba3720262d0"
+    }
+  ]
 }
