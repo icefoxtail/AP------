@@ -10,7 +10,17 @@ function durableWrite(file, bytes) {
 }
 export function generatedPath(root, relative) {
   if (!relative.startsWith(GENERATED_ROOT + '/')) throw Error('GENERATED_ONLY');
-  return safePath(root,relative,{mustExist:false});
+  const target=safePath(root,relative,{mustExist:false});
+  const base=path.join(fs.realpathSync(root),GENERATED_ROOT);
+  let existing=target;
+  while(!fs.existsSync(existing))existing=path.dirname(existing);
+  // Generated junctions must not redirect writes into production even within repo.
+  if(fs.existsSync(base) && fs.realpathSync(base)!==base)throw Error('GENERATED_ROOT_REDIRECT');
+  if(existing===base || existing.startsWith(base+path.sep)) {
+    const actual=fs.realpathSync(existing);
+    if(actual!==base && !actual.startsWith(base+path.sep))throw Error('GENERATED_PATH_REDIRECT');
+  }
+  return target;
 }
 export function commitStage(root, {stage, key, outputs, provenance, crashAt}) {
   if (!/^[A-Z][A-Z_]*$/.test(stage) || !HASH_PATTERN.test(key) || !outputs || !Object.keys(outputs).length) throw Error('INVALID_STAGE');

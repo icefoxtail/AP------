@@ -52,6 +52,11 @@ test('immutable commit, corruption, partial staging, concurrent writer fail clos
 test('generated-only output and traversal rejected',()=>{
   for(const p of ['archive/assets/a.svg',`${GENERATED_ROOT}/../../assets/a.svg`])assert.throws(()=>generatedPath(root,p));
 });
+test('generated junction into production inside repo rejected',()=>{
+  const target=path.join(root,'archive/assets');fs.mkdirSync(target,{recursive:true});
+  const link=path.join(root,GENERATED_ROOT,'redirect');fs.symlinkSync(target,link,'junction');
+  assert.throws(()=>generatedPath(root,`${GENERATED_ROOT}/redirect/visual.svg`),/GENERATED_PATH_REDIRECT/);
+});
 test('calculation cache reuses bytes with new provenance, never review authority',async()=>{
   const math={graph:{branch:{refs:['A','B']}}},fingerprint=objectSha({worker:1});
   const key=stageKey('MATH',math,fingerprint);

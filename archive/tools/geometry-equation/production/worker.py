@@ -41,10 +41,18 @@ def main():
         elif action == 'construction':
             from construction import execute
             result = execute(payload['graph'])
+        elif action == 'graph':
+            from graph_spike import produce
+            result = produce(payload['graphPlan'])
         elif action == 'build':
             sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
             from visual_engine.engine import build
-            result = build(payload['spec'],payload.get('measurements'))
+            result = build(payload['spec'],payload.get('measurements'),payload.get('fragments'))
+        elif action == 'prepare':
+            sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+            from visual_engine.engine import prepare
+            prepared,labels,obstacles,vp,semantic,sampling=prepare(payload['spec'])
+            result={'prepared':prepared,'labels':labels,'coordinateModel':vp.model()}
         else:
             status, result = 'UNSUPPORTED', {'code':'UNSUPPORTED_WORKER_ACTION'}
     except (ValueError, KeyError, TypeError) as error:
