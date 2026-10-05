@@ -11,10 +11,14 @@
   "inputArtifactSha": "eda74041cb7e65817b57ccca2a798faf9618a53e",
   "inputEvidenceSha": "ba2134a7ff32a8f9ac76a27387dfdbe91f0de451",
   "r1ValidatorReceiptSha": "37d6219c970f0f630ac0c8b31b1b42d1db19af56",
-  "status": "ACTIVE",
-  "leaseRelinquished": false,
+  "status": "R2_CLOSURE_DEBT",
+  "leaseRelinquished": true,
   "claimedAtKst": "2026-10-05T17:15:42+09:00",
-  "completedStep": "CAS_CLAIMED",
-  "firstMissingClosureStep": "R2_REVIEW_COMPARE",
-  "selectorEligible": true
+  "completedStep": "R2_REVIEW_COMPARE_AND_CANONICAL_PREFLIGHT_PASS",
+  "firstMissingClosureStep": "DURABLE_R2_EVIDENCE_RECEIPT_WRITE",
+  "selectorEligible": true,
+  "relinquishedAtKst": "2026-10-05T17:43:27+09:00",
+  "targetedScopeQids": [9, 17, 21, 22],
+  "reviewResult": "PASS_NO_R2_MUTATION",
+  "exactError": "GITHUB_CONTENT_WRITE_BLOCKED_BY_PROVIDER_SAFETY_GATE"
 }
