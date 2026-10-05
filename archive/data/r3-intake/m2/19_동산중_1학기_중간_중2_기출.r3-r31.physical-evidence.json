@@ -1,0 +1,1438 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+  "examSha256": "sha256:6d21b1dcbe5a35f6bcdc002a35f61f3c253181c422460ebf316de6cc3acaf948",
+  "questionCount": 25,
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "25/25",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.",
+        "observation": "explicit intermediate construction"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면",
+        "observation": "condition before algebra"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "inputs explicit"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "relation before algebra"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Approved source-free generated replacement from prior repair; original-source parity is not claimed; R3 adds no source-content mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 유한소수 조건상 3/20, 7/40, 9/25만 해당하여 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 유한소수 조건상 3/20, 7/40, 9/25만 해당하여 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 모든 유리수가 유한소수라는 ③만 거짓."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 모든 유리수가 유한소수라는 ③만 거짓."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 0.101010…의 순환마디는 10이므로 ②의 표기가 잘못됨."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 0.101010…의 순환마디는 10이므로 ②의 표기가 잘못됨."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 0.137373…에서 1000x와 10x의 소수 부분이 일치하므로 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 0.137373…에서 1000x와 10x의 소수 부분이 일치하므로 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 1.2333…=(123-12)/90=37/30이므로 ⑤가 잘못됨."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 1.2333…=(123-12)/90=37/30이므로 ⑤가 잘못됨."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 12/210=2/35에 7을 곱하면 2/5, ab=14/5이므로 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 12/210=2/35에 7을 곱하면 2/5, ab=14/5이므로 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Prior deterministic source-free repair re-read and independently recomputed; R3 adds no source-content mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 2/55=0.03636…에서 50번째와 60번째가 모두 3, 비는 1이므로 ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 2/55=0.03636…에서 50번째와 60번째가 모두 3, 비는 1이므로 ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: x=7,9에서만 약분 후 분모에 2·5 외 소인수가 남아 2개, ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: x=7,9에서만 약분 후 분모에 2·5 외 소인수가 남아 2개, ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-REPEATING_DECIMAL / 유리수와 순환소수 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: (x^3)^2/x^2=x^4이므로 ④가 잘못됨."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: (x^3)^2/x^2=x^4이므로 ④가 잘못됨."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-EXPONENT_LAW / 지수법칙 checked against current middle2 RPM authority; R3 exponent-law pinpoint repair applied."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 각 보기의 빈칸은 2,4,7,3,4이므로 최소는 2, ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 각 보기의 빈칸은 2,4,7,3,4이므로 최소는 2, ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-EXPONENT_LAW / 지수법칙 checked against current middle2 RPM authority; R3 exponent-law pinpoint repair applied."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 3과 6의 정수 선형결합 지수는 3의 배수라 a^1은 만들 수 없어 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 3과 6의 정수 선형결합 지수는 3의 배수라 a^1은 만들 수 없어 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-EXPONENT_LAW / 지수법칙 checked against current middle2 RPM authority; R3 exponent-law pinpoint repair applied."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: A=4^5=2^10, 2^10·4^10=2^30=A^3이므로 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: A=4^5=2^10, 2^10·4^10=2^30=A^3이므로 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-EXPONENT_LAW / 지수법칙 checked against current middle2 RPM authority; R3 exponent-law pinpoint repair applied."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 계수 비교로 a=2,b=5,c=4, 합 11이므로 ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 계수 비교로 a=2,b=5,c=4, 합 11이므로 ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-EXPONENT_LAW / 지수법칙 checked against current middle2 RPM authority; R3 exponent-law pinpoint repair applied."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 보기별 전개 결과 ③만 x-2y-2와 일치."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 보기별 전개 결과 ③만 x-2y-2와 일치."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 식은 2x+y^2+6, A+B+C=9이므로 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 식은 2x+y^2+6, A+B+C=9이므로 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 넓이를 3xy로 나누면 9x^2+xy^2이므로 ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 넓이를 3xy로 나누면 9x^2+xy^2이므로 ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: ②는 전개 후 6>-2로 미지수가 사라져 일차부등식이 아님."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: ②는 전개 후 6>-2로 미지수가 사라져 일차부등식이 아님."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY / 일차부등식 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 3a-2<3b-2에서 a<b, 같은 수 더하기로 ①·④만 참."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 3a-2<3b-2에서 a<b, 같은 수 더하기로 ①·④만 참."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY / 일차부등식 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 5-2x>-3의 해 x<4, 보기 중 4만 해가 아니므로 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 5-2x>-3의 해 x<4, 보기 중 4만 해가 아니므로 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY / 일차부등식 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 0.3(x+2)>1.5x+0.9에서 x<-1/4, ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 0.3(x+2)>1.5x+0.9에서 x<-1/4, ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY / 일차부등식 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 500x+200(12-x)≤5000에서 x≤26/3, 연필 최대 8개, ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 500x+200(12-x)≤5000에서 x≤26/3, 연필 최대 8개, ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY_WORD / 일차부등식의 활용 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: A=2xy-4x^2y^2이고 A/(4x^2y)=1/(2x)-y."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: A=2xy-4x^2y^2이고 A/(4x^2y)=1/(2x)-y."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-01-POLYNOMIAL_OPERATIONS / 다항식의 계산 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: x≥(3a-3)/2; 음의 정수 해가 없으려면 하한>-1, a>1/3."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: x≥(3a-3)/2; 음의 정수 해가 없으려면 하한>-1, a>1/3."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY_WORD / 일차부등식의 활용 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: 5(x-3)≤2x+3에서 x≤6, 자연수 1~6으로 6개."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: 5(x-3)≤2x+3에서 x≤6, 자연수 1~6으로 6개."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY_WORD / 일차부등식의 활용 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    },
+    {
+      "qid": 25,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Final R3 bytes re-read; content/choices/answer/solution unchanged from R2 input; R3 changes only q9-q13 subUnit fields."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 recomputation: x/5+(16-x)/60≤1에서 11x≤44, 첫 구간 최대 4km."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Stored solution independently re-derived: x/5+(16-x)/60≤1에서 11x≤44, 첫 구간 최대 4km."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Solution structure was re-read and is student-reproducible; no collapsed enumerated structure."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Uses M2-1 curriculum or lower prerequisites only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no additional explanatory visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "M2-02-LINEAR_INEQUALITY_WORD / 일차부등식의 활용 checked against current middle2 RPM authority; no deterministic drift found."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "No repair-triggering difficulty boundary defect found."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final JS evaluates as 25 questions; no high-signal doubled runtime TeX command found."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "유한소수 조건상 3/20, 7/40, 9/25만 해당하여 ④.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "모든 유리수가 유한소수라는 ③만 거짓.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "0.101010…의 순환마디는 10이므로 ②의 표기가 잘못됨.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "0.137373…에서 1000x와 10x의 소수 부분이 일치하므로 ④.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "1.2333…=(123-12)/90=37/30이므로 ⑤가 잘못됨.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "12/210=2/35에 7을 곱하면 2/5, ab=14/5이므로 ②.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "2/55=0.03636…에서 50번째와 60번째가 모두 3, 비는 1이므로 ③.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "유리수와 순환소수",
+      "decisiveStep": "x=7,9에서만 약분 후 분모에 2·5 외 소인수가 남아 2개, ②.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "지수법칙",
+      "decisiveStep": "(x^3)^2/x^2=x^4이므로 ④가 잘못됨.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "지수법칙",
+      "decisiveStep": "각 보기의 빈칸은 2,4,7,3,4이므로 최소는 2, ①.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "지수법칙",
+      "decisiveStep": "3과 6의 정수 선형결합 지수는 3의 배수라 a^1은 만들 수 없어 ④.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "지수법칙",
+      "decisiveStep": "A=4^5=2^10, 2^10·4^10=2^30=A^3이므로 ②.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "지수법칙",
+      "decisiveStep": "계수 비교로 a=2,b=5,c=4, 합 11이므로 ④.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "다항식의 계산",
+      "decisiveStep": "보기별 전개 결과 ③만 x-2y-2와 일치.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "다항식의 계산",
+      "decisiveStep": "식은 2x+y^2+6, A+B+C=9이므로 ⑤.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "다항식의 계산",
+      "decisiveStep": "넓이를 3xy로 나누면 9x^2+xy^2이므로 ①.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "일차부등식",
+      "decisiveStep": "②는 전개 후 6>-2로 미지수가 사라져 일차부등식이 아님.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "일차부등식",
+      "decisiveStep": "3a-2<3b-2에서 a<b, 같은 수 더하기로 ①·④만 참.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "일차부등식",
+      "decisiveStep": "5-2x>-3의 해 x<4, 보기 중 4만 해가 아니므로 ⑤.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "일차부등식",
+      "decisiveStep": "0.3(x+2)>1.5x+0.9에서 x<-1/4, ②.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "일차부등식의 활용",
+      "decisiveStep": "500x+200(12-x)≤5000에서 x≤26/3, 연필 최대 8개, ②.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "다항식의 계산",
+      "decisiveStep": "A=2xy-4x^2y^2이고 A/(4x^2y)=1/(2x)-y.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "일차부등식의 활용",
+      "decisiveStep": "x≥(3a-3)/2; 음의 정수 해가 없으려면 하한>-1, a>1/3.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "일차부등식의 활용",
+      "decisiveStep": "5(x-3)≤2x+3에서 x≤6, 자연수 1~6으로 6개.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    },
+    {
+      "qid": 25,
+      "result": "PASS",
+      "primaryMethod": "일차부등식의 활용",
+      "decisiveStep": "x/5+(16-x)/60≤1에서 11x≤44, 첫 구간 최대 4km.",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current M2 RPM crosswalk establishes the semantic family; no unique exact ACTIVE PT/TPL projection is asserted by this R3 audit, so null PT/TPL is retained."
+    }
+  ],
+  "summary": {
+    "questionCount": 25,
+    "questionEvidenceRows": 25,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 25,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 5,
+    "directRepairQids": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "sourceRepairRequiredCount": 0,
+    "problemVisualAuditCount": 0
+  },
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examUid": "o16",
+  "canonicalInventoryOrdinal": 16,
+  "finalArtifactGitBlob": "a87f61158fbdac5d349faccab61d2d8beb213ca3",
+  "sourceAuthority": {
+    "upstreamReview2ReceiptBlob": "db3feeb9341000b398ced425024f773b2f9ce7ac",
+    "upstreamArtifactSha": "a1a5b86ce3d995afd396caefcfae004685edf1fa",
+    "sourceFreeGeneratedReplacementQids": [
+      1
+    ],
+    "sourceOriginalParityClaimedForGeneratedReplacement": false
+  },
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "upstreamReview2UsedForEligibilityOnly": true,
+    "currentAttemptRecomputedRequiredScope": true
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "directDependencyQids": []
+  },
+  "formalCompare": {
+    "upstreamArtifactSha": "a1a5b86ce3d995afd396caefcfae004685edf1fa",
+    "finalArtifactSha": "a87f61158fbdac5d349faccab61d2d8beb213ca3",
+    "changedQids": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "changedFields": [
+      "subUnitKey",
+      "subUnit"
+    ]
+  },
+  "problemVisualRows": []
+}
