@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "source-only-m2-20261004/21_왕운중_2학기_기말_중2_기출",
+  "artifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+  "inputArtifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+  "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R3.evidence.json",
+  "upstream": {
+    "createEvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/CREATE.evidence.json",
+    "r1EvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.evidence.json",
+    "r1ClosureRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.closure.json",
+    "r2EvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2-clean/R2.evidence.json",
+    "r2ClosureRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2-clean/R2.closure.json",
+    "r2ValidationRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2-clean/R2.validation.json",
+    "r2ResultRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2-clean/R2.result.json",
+    "excludedFailedAttemptRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2.evidence.json"
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      1,
+      3,
+      9,
+      10,
+      13,
+      21
+    ],
+    "directDependencyQids": [
+      23
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "reviewRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R3.targeted-review.json",
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "reviewedLocus": "source prompt restoration",
+      "directDependencies": [],
+      "finding": "Six source statements restored; R1 source/layout evidence confirms choices and answer ①; no figure dependency."
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "reviewedLocus": [
+        "answer",
+        "solution.answer-label",
+        "solution.small-board-lines"
+      ],
+      "directDependencies": [
+        "q03 diagram",
+        "answer/solution consistency"
+      ],
+      "asset": {
+        "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q03.png",
+        "sha256": "bb18fe551ea4469b0230fd33040aa9d7df2ca1cb9b720b341743765a2b5f9ac3"
+      },
+      "finding": "R1 changed-locus evidence PASS; referenced diagram exists and matches expected source crop SHA."
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "reviewedLocus": [
+        "solution",
+        "image"
+      ],
+      "directDependencies": [
+        "q09 source crop",
+        "answer explanation"
+      ],
+      "asset": {
+        "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q09-r3.png",
+        "sha256": "c88b3629ba197787821f180bf22e98114f28ac8ffc829513e095e6283ec5593d"
+      },
+      "finding": "R1 crop and solution locus PASS; opened effective crop shows AD=6cm, BC=9cm and intersection labels P/Q; SHA binds to R1 evidence."
+    },
+    {
+      "qid": 10,
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "reviewedLocus": "choice ① minimal source correction",
+      "directDependencies": [
+        "source page 2 figure",
+        "answer choice consistency"
+      ],
+      "asset": {
+        "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q10-r3.png",
+        "sha256": "60738709986d5152f517f0338014f57e4da3a462f6e8873c1cbcdcbf1b166549"
+      },
+      "finding": "Source repair provenance is retained; R1 confirms 110/9 derivation and unchanged other choices; opened figure shows AF=8 and parallel segments."
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "reviewedLocus": [
+        "solution"
+      ],
+      "directDependencies": [
+        "area relation explanation"
+      ],
+      "asset": {
+        "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q13-r3.png",
+        "sha256": "d66770c68dfa75095f7ed114eacb09b93d49efa77b1af4671c57b5ccacadb9f2"
+      },
+      "finding": "R1 solution changed-locus evidence PASS; referenced source figure exists at expected SHA."
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "reviewedLocus": [
+        "solution.small-board-enumeration"
+      ],
+      "directDependencies": [
+        "ordered-pair list",
+        "coin/die favorable cases"
+      ],
+      "finding": "R1 targeted review PASS; 16 ordered outcomes are split by coin face and favorable cases remain three."
+    },
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "reviewedLocus": "resolved R2 blind-vs-stored mismatch",
+      "directDependencies": [
+        "q23 figure",
+        "stored answer comparison"
+      ],
+      "asset": {
+        "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q23-r2.png",
+        "sha256": "96929b3f3d970c050b8e35966d3b41cbdfa0de47ff6bff378d368a5e0064a0ee"
+      },
+      "finding": "Clean R2 postfreeze review opens figure and confirms x+y=38/5; immutable initial freeze x+y=7 is retained."
+    }
+  ]
+}
