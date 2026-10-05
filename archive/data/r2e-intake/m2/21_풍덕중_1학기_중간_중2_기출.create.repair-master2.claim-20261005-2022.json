@@ -16,7 +16,7 @@
     17,
     20
   ],
-  "state": "CLAIMED",
+  "state": "RELINQUISHED",
   "redReasons": [
     "CREATE_QUALITY_REPAIR_REQUIRED",
     "BROKEN_TEX_TOKEN",
@@ -32,5 +32,11 @@
     "q20": "REPAIR_MASTER_GENERATED_REPLACEMENT"
   },
   "sourceOriginalParityClaimed": false,
-  "claimedAt": "2026-10-05T20:22:00+09:00"
+  "claimedAt": "2026-10-05T20:22:00+09:00",
+  "ownerRelinquished": true,
+  "result": "RED_REPAIR_MUTATION_DONE_EVIDENCE_WRITE_BLOCKED",
+  "completedStep": "PRODUCTION_REPAIR_RUNTIME_REVALIDATION",
+  "firstMissingClosureStep": "CREATE_V2_EVIDENCE_PERSIST",
+  "exactError": "CREATE_EVIDENCE_WRITE_BLOCKED_BOTH_CONTENTS_AND_GIT_OBJECT_PATHS",
+  "relinquishedAt": "2026-10-05T20:22:00+09:00"
 }
