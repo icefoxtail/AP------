@@ -1,0 +1,1097 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04",
+  "lane": "M2-1 R3-1",
+  "canonicalOrdinal": 12,
+  "examUid": "m2/1mid/21-sinheung",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+  "examSha256": "sha256:f79dc57b4c35897d24047e94032165594835792d7fbe136d5eeb0dc2d1744ca4",
+  "finalArtifactGitBlob": "520da1ed5704000b6cf409b1ec0e51a05eda1790",
+  "questionCount": 24,
+  "sourceAuthority": {
+    "protectedBaselineGitBlob": "15cecd4931fc78853eb638cf16d43fee41c38578",
+    "r2ReceiptBlob": "06cfe7a8e65246aa0486eb556ce0677fc6fb15fa",
+    "r2ValidatorBlob": "d058fa13725c7a2e57fe9accd0d70bd0ad8e5586",
+    "createSourceRepairReceiptBlob": "2da9573d51aa7d09d5992e91f228a179c7704d78",
+    "sourceRepairStatus": "REQUIRED_BOUNDED",
+    "sourceRepairQids": [
+      18,
+      19
+    ]
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "qualityCompareCount": "24/24",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "r3WholeExamReauditPerformed": true,
+    "priorReceiptsUsedOnlyForEligibilityAndProvenance": true
+  },
+  "formalCompare": {
+    "r2FinalArtifactGitBlob": "15cecd4931fc78853eb638cf16d43fee41c38578",
+    "r3FinalArtifactGitBlob": "520da1ed5704000b6cf409b1ec0e51a05eda1790",
+    "artifactChangedAcrossR3": true,
+    "deterministicExamRepairs": [
+      {
+        "qids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "field": "questionType",
+        "after": "객관식"
+      },
+      {
+        "qids": [
+          22,
+          23,
+          24
+        ],
+        "field": "choices",
+        "after": "[]"
+      }
+    ],
+    "deterministicMetaRepairQids": [
+      1,
+      5,
+      14,
+      21,
+      22,
+      23,
+      24
+    ],
+    "sourceRepairOpenQids": [
+      18,
+      19
+    ],
+    "outcome": "SOURCE_REPAIR_REQUIRED before canonical R3 validator/PASS."
+  },
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0,
+    "deterministicRepairQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "deterministicMetaRepairQids": [
+      1,
+      5,
+      14,
+      21,
+      22,
+      23,
+      24
+    ],
+    "openQids": [
+      18,
+      19
+    ]
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ③,⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ①,④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Current artifact omits the original sentence premises for the five inequality translations; prior page-3 repair receipt does not preserve all five premises."
+      },
+      "answerMath": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Fresh independent result: ⑤ source-key only; full premise recheck open."
+      },
+      "solutionMath": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Known ⑤ reasoning is valid, but full uniqueness cannot be certified without the omitted source premises."
+      },
+      "smallBoard": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Missing problem premises block student reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Final source-dependent certification waits for bounded source repair."
+      },
+      "difficulty": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Final source-dependent difficulty certification deferred."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Stem asks for a number-line choice, but current choices are textual inequalities and no source visual/asset is linked."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ① under current text."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Original number-line choice modality must be recovered from source pixels."
+      },
+      "meta": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Final source-dependent certification waits for bounded source repair."
+      },
+      "difficulty": {
+        "status": "SOURCE_REPAIR_REQUIRED",
+        "evidence": "Final source-dependent difficulty certification deferred."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=객관식; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: 98/45."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=서술형 and choices=[]; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: 1.8dot."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=서술형 and choices=[]; runtime structure coherent."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 found no source-lineage contradiction."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh independent result: 960m."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Current solution reaches the independently checked result."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Decisive reasoning is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Within 2015 middle-school grade-2 semester-1 scope or prerequisites."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional solution visual is required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Meta sidecar bound to 520da1ed5704000b6cf409b1ec0e51a05eda1790; bucket 2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored bucket 2 is plausible."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "questionType=서술형 and choices=[]; runtime structure coherent."
+      }
+    }
+  ]
+}
