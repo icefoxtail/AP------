@@ -27,7 +27,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; all candidate answers/solutions blank; no production changes.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_QA_READY",
   "questions": [
     {
       "qid": 1,
@@ -56,8 +56,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes a clipped score fragment from the same question at the upper edge."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 4,
@@ -66,8 +66,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes a clipped score fragment above the boxed condition; trim/review needed."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 5,
@@ -76,8 +76,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes clipped prompt fragments around the diagram."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 6,
@@ -106,8 +106,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes a clipped prompt fragment at the upper edge."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 9,
@@ -154,8 +154,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop omits part of the source table header/row and includes clipped choice text."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 14,
@@ -164,8 +164,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes surrounding prompt/choice fragments around the full table."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 15,
@@ -183,8 +183,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes surrounding stem and answer choices with the top line clipped; image boundary needs review."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 17,
@@ -240,8 +240,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes a clipped prompt fragment and lower answer-choice text."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 23,
@@ -372,93 +372,108 @@
       "qid": 3,
       "sourcePage": 1,
       "bboxPx": [
-        370,
-        1060,
-        565,
-        1340
+        360,
+        1080,
+        580,
+        1370
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "184f64a73bc01931df0e823991ec41a6aa2544b4de88c946e619be5631084d51",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q03.png",
-      "assetSha256": "542620176e027fe71f437b9eb67ebf720fd21aa53fb318d6a7c2b2adbcfac627",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q03-r1.png",
+      "assetSha256": "0f2e6cced0867b2c8fbdec9fa745e023553681d7eee03bb62495c24882891d76",
       "pixelSize": [
-        195,
-        280
+        220,
+        290
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop includes a clipped score fragment from the same question at the upper edge."
+        "reviewNote": "Original page 1 and final diagram-only crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q03.png",
+        "assetSha256": "542620176e027fe71f437b9eb67ebf720fd21aa53fb318d6a7c2b2adbcfac627"
       }
     },
     {
       "qid": 4,
       "sourcePage": 1,
       "bboxPx": [
-        590,
-        310,
+        600,
+        320,
         1110,
-        655
+        650
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "184f64a73bc01931df0e823991ec41a6aa2544b4de88c946e619be5631084d51",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q04.png",
-      "assetSha256": "599384f03a5441ec27ec36ab83b2afa73e356aef41786509b72c6f60fc82a9f3",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q04-r1.png",
+      "assetSha256": "f38e6da0d8549804e6f966d65f5a57e88f3a27f24058d1e90348c5d4336777f6",
       "pixelSize": [
-        520,
-        345
+        510,
+        330
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop includes a clipped score fragment above the boxed condition; trim/review needed."
+        "reviewNote": "Original page 1 and final complete-boxed-condition crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q04.png",
+        "assetSha256": "599384f03a5441ec27ec36ab83b2afa73e356aef41786509b72c6f60fc82a9f3"
       }
     },
     {
       "qid": 5,
       "sourcePage": 1,
       "bboxPx": [
-        880,
-        875,
-        1090,
-        1110
+        600,
+        900,
+        1118,
+        1240
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "184f64a73bc01931df0e823991ec41a6aa2544b4de88c946e619be5631084d51",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q05.png",
-      "assetSha256": "5dbc769153aaa63fd32cb575a9f87896914cf28c33392d0a150c25eac82aa7ac",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q05-r2.png",
+      "assetSha256": "fca515930c3212e3bd3bb6c6a1c523938dd91b4e3d2652790b7dbe86c57ed2a3",
       "pixelSize": [
-        210,
-        235
+        518,
+        340
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "YES",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop includes clipped prompt fragments around the diagram."
+        "reviewNote": "Original page 1 and final complete-same-question-block crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q05.png",
+        "assetSha256": "5dbc769153aaa63fd32cb575a9f87896914cf28c33392d0a150c25eac82aa7ac"
       }
     },
     {
@@ -527,31 +542,36 @@
       "qid": 8,
       "sourcePage": 2,
       "bboxPx": [
-        390,
-        1110,
-        585,
-        1345
+        80,
+        1030,
+        600,
+        1460
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "0c10903d59e7bd94d9ee45ba57b17782e4c6e9f8e5b5fb2a813d070c288c0492",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q08.png",
-      "assetSha256": "1df233b5dc7e71cc475ec2e2fe1f3988191ec022151d67b0d038e9aad4e59359",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q08-r1.png",
+      "assetSha256": "e1544c7c76c706e38d1bae7c9fc4b3e601c7990f13ad95fae7827867fd138470",
       "pixelSize": [
-        195,
-        235
+        520,
+        430
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "YES",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop includes a clipped prompt fragment at the upper edge."
+        "reviewNote": "Original page 2 and final complete-same-question-block crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q08.png",
+        "assetSha256": "1df233b5dc7e71cc475ec2e2fe1f3988191ec022151d67b0d038e9aad4e59359"
       }
     },
     {
@@ -620,31 +640,36 @@
       "qid": 13,
       "sourcePage": 3,
       "bboxPx": [
-        70,
-        1000,
-        570,
-        1220
+        95,
+        972,
+        535,
+        1035
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "2b6f4a81c1c86dff23ddd0a0dc092d49bddac460990c36e64998faed4945a4aa",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q13.png",
-      "assetSha256": "daba2c5142e2c78755800a43395d92a565ffc6a7b1c52d6c93b9f09eef4b33c1",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q13-r1.png",
+      "assetSha256": "3e7c021fa2953b70258ee988d594d69c32d3f63527b4a3f29a57356db75b98e6",
       "pixelSize": [
-        500,
-        220
+        440,
+        63
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop omits part of the source table header/row and includes clipped choice text."
+        "reviewNote": "Original page 3 and final table-only crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q13.png",
+        "assetSha256": "daba2c5142e2c78755800a43395d92a565ffc6a7b1c52d6c93b9f09eef4b33c1"
       }
     },
     {
@@ -652,61 +677,71 @@
       "sourcePage": 3,
       "bboxPx": [
         600,
-        120,
-        1100,
-        300
+        181,
+        1090,
+        252
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "2b6f4a81c1c86dff23ddd0a0dc092d49bddac460990c36e64998faed4945a4aa",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q14.png",
-      "assetSha256": "b0e4897b5eab4b747c6a16c5364cec53e9dfdd3d1d589b25309a9b52d6705688",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q14-r1.png",
+      "assetSha256": "f7473e22d366b8f665dc9695eacd94640a8fad84ad86e2d1af4473c75d26a6a1",
       "pixelSize": [
-        500,
-        180
+        495,
+        105
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop includes surrounding prompt/choice fragments around the full table."
+        "reviewNote": "Original page 3 and final table-only crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q14.png",
+        "assetSha256": "b0e4897b5eab4b747c6a16c5364cec53e9dfdd3d1d589b25309a9b52d6705688"
       }
     },
     {
       "qid": 16,
       "sourcePage": 3,
       "bboxPx": [
-        590,
-        870,
+        600,
+        990,
         1100,
-        1480
+        1180
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "2b6f4a81c1c86dff23ddd0a0dc092d49bddac460990c36e64998faed4945a4aa",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q16.png",
-      "assetSha256": "15a2bd31d9667df7ef2f08a11d8c5c834b82cbfe5d420d09913caac7accf9ac5",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q16-r1.png",
+      "assetSha256": "80fc31960f58e8d4c8661db1e68541f805b99bc248f30d638d58328cfe5d7b9f",
       "pixelSize": [
-        510,
-        610
+        500,
+        220
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop includes surrounding stem and answer choices with the top line clipped; image boundary needs review."
+        "reviewNote": "Original page 3 and final two-graphs-only crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q16.png",
+        "assetSha256": "15a2bd31d9667df7ef2f08a11d8c5c834b82cbfe5d420d09913caac7accf9ac5"
       }
     },
     {
@@ -775,31 +810,36 @@
       "qid": 22,
       "sourcePage": 4,
       "bboxPx": [
-        610,
-        900,
-        1090,
-        1320
+        600,
+        930,
+        1100,
+        1250
       ],
-      "bboxCoordinateSpace": "rendered original PDF full-page PNG pixels, origin top-left",
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
       "sourcePdfSha256": "0bf6bb2dc0951744424da8548a3cbedfb9cf618ed64b7b33b8cf21d2952f9a1d",
       "fullPageRasterSha256": "9a253348d8f39c513c3940cadab8840a8647377560aad0b150676e9ac1038f3b",
-      "cropMethod": "direct pixel crop from original PDF page render; no redraw or reconstruction",
-      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q22.png",
-      "assetSha256": "489b9a4e6597e72e346526108c5711d45d68ccb655d9199eb6282e41b039c8a5",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q22-r1.png",
+      "assetSha256": "f916671edd8b40f788e43edfd3aa2bf97acfa23c868a1a61ec376a2bb68ba7b7",
       "pixelSize": [
-        480,
-        420
+        500,
+        320
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD_CROP_REVIEW",
-        "cropPurity": "HOLD_CROP_REVIEW",
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
-        "reviewNote": "Crop includes a clipped prompt fragment and lower answer-choice text."
+        "reviewNote": "Original page 4 and final scatterplot-only crop directly opened and compared."
+      },
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/21_금당중_2학기_기말_중3_기출/q22.png",
+        "assetSha256": "489b9a4e6597e72e346526108c5711d45d68ccb655d9199eb6282e41b039c8a5"
       }
     },
     {
@@ -834,17 +874,7 @@
       }
     }
   ],
-  "examHold": [
-    "q3: Crop includes a clipped score fragment from the same question at the upper edge.",
-    "q4: Crop includes a clipped score fragment above the boxed condition; trim/review needed.",
-    "q5: Crop includes clipped prompt fragments around the diagram.",
-    "q8: Crop includes a clipped prompt fragment at the upper edge.",
-    "q13: Crop omits part of the source table header/row and includes clipped choice text.",
-    "q14: Crop includes surrounding prompt/choice fragments around the full table.",
-    "q16: Crop includes surrounding stem and answer choices with the top line clipped; image boundary needs review.",
-    "q22: Crop includes a clipped prompt fragment and lower answer-choice text.",
-    "qid 24 struck-through student text was ignored; the operative printed prompt was directly transcribed from page 5."
-  ],
-  "cropReviewStatus": "DIRECT_FULL_PAGE_AND_FINAL_CROP_REVIEWED; ASSET HOLDS qids 3,4,5,8,13,14,16,22.",
-  "notes": "Page 5 qid 24 was directly reviewed: crossed-out student text was omitted and the printed operative prompt was transcribed. All 17 final crops were directly opened and compared with their source pages; uncertain boundaries are itemized as HOLD without pixel retouching."
+  "examHold": [],
+  "cropReviewStatus": "SOURCE_QA_READY",
+  "notes": "Only the eight previously flagged crops were repaired; no answer or solution fields were added."
 }
