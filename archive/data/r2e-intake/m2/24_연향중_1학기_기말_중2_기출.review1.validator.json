@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R1",
+  "validatorMode": "FULL",
+  "canonicalOrdinal": 26,
+  "examUid": "M2-1-24-YEONHYANG-1FINAL",
+  "examFile": "24_연향중_1학기_기말_중2_기출.js",
+  "finalArtifactSha": "fb7cd225b3981eaad2b069f8824a9c20ab8aa9ad",
+  "examSha256": "sha256:539011e4b5f7a41eccd8c88381dc4d670bb1ee3e0a2d17cf69107247b96aedcb",
+  "evidenceGitBlob": "434774d77f2ca74bd374b2e2394dfdb59b1f2af4",
+  "evidenceRef": "archive/data/r2e-intake/m2/24_연향중_1학기_기말_중2_기출.review1.physical-evidence.json",
+  "validationExecutor": "CI_TARGET_CURRENT_MAIN_CANONICAL_REVIEW_EVIDENCE_GATE",
+  "canonicalMain": "6def8e6632ae70b95e725ff854cf4e92664948ae",
+  "stageValidatorGitBlob": "95529bb62b4e239a11faec8f6030e10b4f86b56c",
+  "compatValidatorGitBlob": "80b0b81032aac147d463fa82d3c99d6ac9b1f18b",
+  "reviewEvidenceGateGitBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "calibrationGateGitBlob": "b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+  "workflowRunId": 37254804151,
+  "workflowJobId": 111589482697,
+  "workflowUrl": "https://github.com/icefoxtail/AP------/actions/runs/37254804151",
+  "validationMarker": "M2_O26_R1_CANONICAL_REPORT",
+  "executionBinding": {
+    "artifactShaReadback": "fb7cd225b3981eaad2b069f8824a9c20ab8aa9ad",
+    "evidenceBlobReadback": "434774d77f2ca74bd374b2e2394dfdb59b1f2af4",
+    "expectedQidCount": 23,
+    "targetGateExecutedOnPr": 206,
+    "prHeadAtExecution": "afe2696d50da9dc4eee9296ebba3bd0f9c5880d2"
+  },
+  "result": {
+    "ok": true,
+    "validatorMode": "FULL",
+    "stage": "R1",
+    "denominator": 23,
+    "rowCount": 23,
+    "metaRows": 23,
+    "itemHoldCount": 0,
+    "itemHoldQids": [],
+    "disposition": "PASS",
+    "issues": []
+  },
+  "ambientCi": {
+    "overallConclusion": "failure",
+    "targetR1Gate": "PASS",
+    "nonTargetFailures": [
+      "apmath-student-teacher-preview.test.js",
+      "archive-target-selection-phase3-contract.test.js",
+      "print-render-authority-mixer-ecosystem.test.js",
+      "student-portal-omr-history-routes.test.js"
+    ],
+    "supersededLowerStageFailure": "m2-o26-create-gate-manual.test.js:EVIDENCE_EXAM_SHA_MISMATCH after R1 repair"
+  }
+}
