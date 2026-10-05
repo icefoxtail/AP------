@@ -1,0 +1,3199 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "CREATE",
+  "examPath": "archive/_generated/source-only/m2-20261004/21_신흥중_2학기_기말_중2_기출.js",
+  "examSha256": "sha256:d1debd4bd3d6213198471a68106ede0291a783b00dec808f5cf5ea97de1dd73b",
+  "questionCount": 24,
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:95b26ea6f819ee92a382ffb8f9e60eef13eb4c6aa321c1dac4d0b9246f32add1",
+        "gitBlobSha": "d0dc3efa842166431ac80ffebec01c25aca94772"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:4356b26ed50982de92ec09019973ec585be3f10283a518d0f327faad6282cec5",
+        "gitBlobSha": "223801f580fbe2900dd27126db953a7cc41eb6b8"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:329661aff619c0107182db73dea73e2791036644f6451056284a40c340896f62",
+        "solutionExcerpt": "따라서 정답은 ②이다.",
+        "observation": "Short discrete probability solution names the favorable count and closes with the matching choice."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:06df7f53181f80df70f025e00d21d8eb2b2a88f9d5fc9e270ce53b83239f72a0",
+        "solutionExcerpt": "따라서 정답은 ①이다.",
+        "observation": "Geometry solution states centroid ratio and midpoint construction before computing the target length."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:9612e024e585303c7fa1c7726c902fafd7eb78ea0aba89be00039dc79775fa0f",
+        "solutionExcerpt": "따라서 정답은 ③이다.",
+        "observation": "Similarity solution calculates scale factor and applies it to the corresponding edge."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "qid": 4,
+        "solutionSha256": "sha256:4b71a757ae4b8d8fb967c36f229ae2957bf3d527c9bf22446a32331acf633640",
+        "solutionExcerpt": "따라서 정답은 ⑤이다.",
+        "observation": "Solution establishes similar triangles from angle equalities before transferring the length ratio."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+        "sha256": "sha256:93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf",
+        "gitBlobSha": "bfc5672371832703aa8b13a60123ccda296653bf"
+      }
+    ]
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Source text and printed choices match source evidence; known issue retained separately: 원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다."
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+          "observedEvidence": {
+            "sourcePage": 1,
+            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
+            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
+            "observedValues": {
+              "bdCm": 6,
+              "ecCm": 8,
+              "derivedBcCm": 12,
+              "derivedAcCm": 16
+            },
+            "missing": "AB or an equivalent condition fixing AD"
+          },
+          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
+          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
+          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
+          "authorityLookupAttempted": [
+            "2021 source PDF page 1",
+            "source-only evidence q1 asset/hash",
+            "RPM Primary 2015 M2-2",
+            "middle2 crosswalk"
+          ],
+          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
+        }
+      },
+      "solutionMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+          "observedEvidence": {
+            "sourcePage": 1,
+            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
+            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
+            "observedValues": {
+              "bdCm": 6,
+              "ecCm": 8,
+              "derivedBcCm": 12,
+              "derivedAcCm": 16
+            },
+            "missing": "AB or an equivalent condition fixing AD"
+          },
+          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
+          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
+          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
+          "authorityLookupAttempted": [
+            "2021 source PDF page 1",
+            "source-only evidence q1 asset/hash",
+            "RPM Primary 2015 M2-2",
+            "middle2 crosswalk"
+          ],
+          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
+        }
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-05."
+      },
+      "visualNecessity": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+          "observedEvidence": {
+            "sourcePage": 1,
+            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
+            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
+            "observedValues": {
+              "bdCm": 6,
+              "ecCm": 8,
+              "derivedBcCm": 12,
+              "derivedAcCm": 16
+            },
+            "missing": "AB or an equivalent condition fixing AD"
+          },
+          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
+          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
+          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
+          "authorityLookupAttempted": [
+            "2021 source PDF page 1",
+            "source-only evidence q1 asset/hash",
+            "RPM Primary 2015 M2-2",
+            "middle2 crosswalk"
+          ],
+          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
+        }
+      },
+      "meta": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+          "observedEvidence": {
+            "sourcePage": 1,
+            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
+            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
+            "observedValues": {
+              "bdCm": 6,
+              "ecCm": 8,
+              "derivedBcCm": 12,
+              "derivedAcCm": 16
+            },
+            "missing": "AB or an equivalent condition fixing AD"
+          },
+          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
+          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
+          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
+          "authorityLookupAttempted": [
+            "2021 source PDF page 1",
+            "source-only evidence q1 asset/hash",
+            "RPM Primary 2015 M2-2",
+            "middle2 crosswalk"
+          ],
+          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
+        }
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q2: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ① is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ①; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-07."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q2; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q3: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ③ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ③; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-07."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q3; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q4: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ④ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ④; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-07."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q4; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q5: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ② is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ②; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-05."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q5; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=4 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q6: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ③ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ③; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-07."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q6; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=4 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q7: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ④ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ④; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-05."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q7; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=4 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q8: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ④ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ④; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-05."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q8; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=4 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q9: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ③ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ③; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-06."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q9; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=5 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q10: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ③ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ③; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q10; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q11: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ② is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ②; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q11; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=1 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q12: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ⑤ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ⑤; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q12; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q13: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ② is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ②; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q13; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q14: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ① is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ①; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08b."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q14; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q15: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ⑤ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ⑤; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q15; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q16: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ② is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ②; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08b."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q16; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q17: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ① is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ①; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08b."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q17; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Source text and printed choices match source evidence; known issue retained separately: 독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다."
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
+          "observedEvidence": {
+            "sourcePage": 3,
+            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+            "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
+            "probabilityNoStrawberryPerDraw": "2/3",
+            "independentTwoDrawComplement": "4/9",
+            "computedAnswer": "5/9",
+            "offeredChoices": [
+              "1/9",
+              "8/9",
+              "7/12",
+              "1/16",
+              "15/16"
+            ]
+          },
+          "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
+          "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
+          "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
+          "authorityLookupAttempted": [
+            "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
+            "2021 source PDF page 3",
+            "source-only evidence q18"
+          ],
+          "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
+        }
+      },
+      "solutionMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
+          "observedEvidence": {
+            "sourcePage": 3,
+            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+            "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
+            "probabilityNoStrawberryPerDraw": "2/3",
+            "independentTwoDrawComplement": "4/9",
+            "computedAnswer": "5/9",
+            "offeredChoices": [
+              "1/9",
+              "8/9",
+              "7/12",
+              "1/16",
+              "15/16"
+            ]
+          },
+          "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
+          "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
+          "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
+          "authorityLookupAttempted": [
+            "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
+            "2021 source PDF page 3",
+            "source-only evidence q18"
+          ],
+          "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
+        }
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08b."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Discrete probability complement has no spatial or graph relation to visualize."
+      },
+      "meta": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
+          "observedEvidence": {
+            "sourcePage": 3,
+            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+            "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
+            "probabilityNoStrawberryPerDraw": "2/3",
+            "independentTwoDrawComplement": "4/9",
+            "computedAnswer": "5/9",
+            "offeredChoices": [
+              "1/9",
+              "8/9",
+              "7/12",
+              "1/16",
+              "15/16"
+            ]
+          },
+          "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
+          "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
+          "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
+          "authorityLookupAttempted": [
+            "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
+            "2021 source PDF page 3",
+            "source-only evidence q18"
+          ],
+          "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
+        }
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q19: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ④ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ④; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q19; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=4 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q20: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer ⑤ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer ⑤; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q20; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q21: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer $10$ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer $10$; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-07."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q21; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q22: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer $0$ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer $0$; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08b."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q22; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=2 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q23: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer $\\dfrac{3}{5}$ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer $\\dfrac{3}{5}$; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-08."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q23; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "q24: source, answer, solution and runtime strings were compared against the current JS and source-only provenance."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Stored answer $13$ is consistent with the previously derived result and printed choices in the completed solution."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Student-facing solution has a coherent decisive relation, displayed calculation, and conclusion matching answer $13$; no answer re-solve performed in this follow-up."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Single prompt with no independently enumerated subparts requiring split blocks."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-07."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Source figure is retained when present; solution computation is sufficient and no separate explanatory SVG adds a new relation."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM Primary and current crosswalk/ACTIVE lookup is physically recorded in CREATE.meta-resolver-evidence.json#q24; projection null reasons are explicit."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "difficultyBucket=3 from number of decisive reasoning moves, structure and calculation; no school/exam-level inference."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM-evaluated questionBank values have single-escaped TeX strings; source and choices are preserved."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "HOLD",
+      "primaryMethod": "무게중심의 중선 분할비; 중점의 정의",
+      "decisiveStep": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+      "rpmDisposition": "SOURCE_ITEM_HOLD",
+      "projectionDisposition": "NOT_ATTEMPTED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ],
+      "holdEvidence": {
+        "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+        "observedEvidence": {
+          "sourcePage": 1,
+          "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+          "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
+          "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
+          "observedValues": {
+            "bdCm": 6,
+            "ecCm": 8,
+            "derivedBcCm": 12,
+            "derivedAcCm": 16
+          },
+          "missing": "AB or an equivalent condition fixing AD"
+        },
+        "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
+        "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
+        "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
+        "authorityLookupAttempted": [
+          "2021 source PDF page 1",
+          "source-only evidence q1 asset/hash",
+          "RPM Primary 2015 M2-2",
+          "middle2 crosswalk"
+        ],
+        "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
+      }
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "피타고라스 정리",
+      "decisiveStep": "직각삼각형에서 빗변은 25 cm이고 한 직각변은 24 cm이다. 피타고라스 정리에 따라 $x^2=25^2-24^2=625-576=49$이므로 $x=7$이다. 따라서 정답은 ①이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "피타고라스 정리의 역",
+      "decisiveStep": "가장 긴 변을 빗변으로 보고 제곱의 합을 비교한다. ③은 $8^2+17^2=353$이고 $19^2=361$이므로 직각삼각형이 아니다. 나머지는 각각 피타고라스 수를 이루므로 조건에 맞는 것은 ③이다. 따라서 정답은 ③이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "피타고라스 정리의 활용; 사다리꼴의 둘레",
+      "decisiveStep": "사다리꼴의 두 밑변의 차는 $14-6=8$ cm이다. 왼쪽 변 17 cm를 빗변으로 하는 직각삼각형에서 높이를 $h$라 하면 $h^2+8^2=17^2$이므로 $h=15$ cm이다. 따라서 둘레는 $17+6+15+14=52$ cm이고 정답은 ④이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "무게중심이 만드는 넓이비",
+      "decisiveStep": "삼각형 $GBC$에서 $Gprime$는 무게중심이고 $D$는 $BC$의 중점이므로, 무게중심이 만드는 세 작은 삼각형 중 $\triangle Gprime BD$의 넓이는 $\triangle GBC$ 넓이의 $dfrac{1}{6}$이다. 따라서 $[GBC]=6\times6=36$ cm$^2$이다. $G$가 $\triangle ABC$의 무게중심이므로 세 삼각형 $ABG$, $BGC$, $CGA$의 넓이가 같아 $[AGC]=36$ cm$^2$이다. 따라서 정답은 ②이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "피타고라스 정리의 경우 분류",
+      "decisiveStep": "15 cm와 17 cm가 두 직각변이면 세 번째 변의 제곱은 $15^2+17^2=514$이다. 17 cm가 빗변이면 나머지 변은 $x^2=17^2-15^2=64$이고, 15 cm는 17 cm보다 짧아 빗변이 될 수 없다. 가능한 $x^2$의 차는 $514-64=450$이므로 정답은 ③이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "삼각형의 합동; 직각삼각형의 넓이",
+      "decisiveStep": "두 직각삼각형에서 $AB=CD=6$ cm, $BC=DE=8$ cm이므로 빗변 $AC=CE=10$ cm이다. 삼각형 $ABC$의 두 예각의 합은 $90^circ$이고 합동 대응에 따라 그 두 각은 각각 $angle ACE$를 이루므로 $angle ACE=90^circ$이다. 따라서 $[ACE]=dfrac{1}{2}\times10\times10=50$ cm$^2$이고 정답은 ④이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "nullReason": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "무게중심의 중선 분할비; 직각삼각형의 외접원 성질",
+      "decisiveStep": "$D$는 빗변 $BC$의 중점이므로 직각삼각형에서 $AD=BD=CD=dfrac{BC}{2}$이다. 무게중심 $G$는 중선 $AD$를 $AG:GD=2:1$로 나누므로 $AD=3\times5=15$ cm, 따라서 $BC=30$ cm이다. 직각삼각형의 외접원의 반지름은 빗변의 절반인 15 cm이므로 넓이는 $pi\times15^2=225pi$ cm$^2$이다. 따라서 정답은 ④이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "무게중심의 평행선 비; 내심과 넓이",
+      "decisiveStep": "무게중심을 지나고 $BC$와 평행한 선분은 $A$에서 $BC$까지의 높이를 $2:1$로 나누므로 $DE=dfrac{2}{3}BC$이다. 이 선분이 내심 $I$도 지나므로, 내심의 높이를 $r$, 삼각형의 높이를 $h$라 하면 $r=dfrac{h}{3}$이다. 넓이를 두 방법으로 나타내면 $dfrac{1}{2}BCcdot h=rcdotdfrac{AB+AC+BC}{2}$이므로 $dfrac{BC}{AB+AC+BC}=dfrac{r}{h}=dfrac{1}{3}$. $AB+AC=30$이므로 $BC=15$ cm이고 $DE=dfrac{2}{3}\times15=10$ cm이다. 따라서 정답은 ③이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_REUSE",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "nullReason": null,
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "유한한 경우의 수 세기",
+      "decisiveStep": "1부터 12까지 중 홀수는 $1,3,5,7,9,11$의 6개이다. 따라서 경우의 수는 6이고 정답은 ③이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "합의 법칙",
+      "decisiveStep": "남학생 후보 4명과 여학생 후보 5명은 서로 다른 후보이므로 한 명을 대표로 뽑는 경우의 수는 $4+5=9$이다. 따라서 정답은 ②이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "곱의 법칙",
+      "decisiveStep": "집에서 학교까지 가는 방법은 2가지이고, 각 경우마다 학교에서 도서관까지 가는 방법이 4가지이다. 곱의 법칙에 따라 전체 경우의 수는 $2\times4=8$이다. 따라서 정답은 ⑤이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "순서쌍 세기; 합의 법칙",
+      "decisiveStep": "눈의 차가 2인 순서쌍은 $(1,3)$부터 $(4,6)$까지와 그 반대 순서로 모두 8개이다. 차가 5인 순서쌍은 $(1,6),(6,1)$의 2개이다. 두 경우는 겹치지 않으므로 $8+2=10$개이고 정답은 ②이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "확률의 뜻; 유한한 표본공간",
+      "decisiveStep": "주사위 눈은 1부터 6까지이다. 이 중 12의 약수는 1, 2, 3, 4, 6이므로 그 확률은 $dfrac{5}{6}$이다. 9의 배수일 확률과 7 이상일 확률은 0이고, 정수일 확률과 6 이하일 확률은 1이다. 따라서 0이나 1이 아닌 것은 ①이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "경우의 수에 의한 확률",
+      "decisiveStep": "$EXCITING MATH$의 알파벳은 공백을 빼면 12개이고, 모음은 E, I, I, A의 4개이다. 따라서 모음을 고를 확률은 $dfrac{4}{12}=dfrac{1}{3}$이므로 정답은 ⑤이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "확률의 뜻; 합집합 사건",
+      "decisiveStep": "우산은 모두 $7+5+4=16$개이고 노란 우산은 없다. 빨간 우산 또는 노란 우산을 꺼내는 경우는 빨간 우산 7개이므로 확률은 $dfrac{7}{16}$이다. 따라서 정답은 ②이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "독립 시행의 곱셈",
+      "decisiveStep": "A 주머니에서 노란 구슬이 나올 확률은 $dfrac{5}{8}$이고, B 주머니에서 파란 구슬이 나올 확률은 $dfrac{6}{10}$이다. 두 주머니의 선택은 독립이므로 구하는 확률은 $dfrac{5}{8}\timesdfrac{6}{10}=dfrac{3}{8}$이다. 따라서 정답은 ①이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 18,
+      "result": "HOLD",
+      "primaryMethod": "확률의 뜻; 독립 시행",
+      "decisiveStep": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
+      "rpmDisposition": "SOURCE_ITEM_HOLD",
+      "projectionDisposition": "NOT_ATTEMPTED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ],
+      "holdEvidence": {
+        "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
+        "observedEvidence": {
+          "sourcePage": 3,
+          "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+          "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
+          "probabilityNoStrawberryPerDraw": "2/3",
+          "independentTwoDrawComplement": "4/9",
+          "computedAnswer": "5/9",
+          "offeredChoices": [
+            "1/9",
+            "8/9",
+            "7/12",
+            "1/16",
+            "15/16"
+          ]
+        },
+        "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
+        "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
+        "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
+        "authorityLookupAttempted": [
+          "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
+          "2021 source PDF page 3",
+          "source-only evidence q18"
+        ],
+        "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
+      }
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "경우 분류; 순서쌍에 의한 확률",
+      "decisiveStep": "시계 방향으로 A에서 C까지는 A→E→D→C의 3칸이다. 따라서 두 번 던진 눈의 합을 5로 나눈 나머지가 3이어야 한다. 가능한 합은 3과 8이고, 각각의 순서쌍은 2개와 5개이다. 그러므로 확률은 $\\dfrac{2+5}{36}=\\dfrac{7}{36}$이고 정답은 ④이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "순서쌍 세기; 경우의 수에 의한 확률",
+      "decisiveStep": "$2x+y<7$을 만족하는 경우를 $x$별로 센다. $x=1$이면 $y=1,2,3,4$의 4개, $x=2$이면 $y=1,2$의 2개, $x=3$이면 $y=1$의 1개이며 $xge4$일 때는 없다. 전체 36개 중 7개이므로 확률은 $dfrac{7}{36}$이고 정답은 ⑤이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "넓이로부터 정사각형의 변 계산; 피타고라스 정리",
+      "decisiveStep": "두 정사각형의 한 변의 길이는 각각 $sqrt{4}=2$ cm, $sqrt{36}=6$ cm이다. $B,C,E$가 한 직선 위에 있으므로 $BE=BC+CE=2+6=8$ cm이고 $EF=6$ cm이다. 직각삼각형 $BEF$에서 $BF=sqrt{8^2+6^2}=10$ cm이다. 따라서 구하는 값은 $10$이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "경우의 수에 의한 확률; 불가능한 사건의 확률",
+      "decisiveStep": "상자에는 감귤초콜릿 7개와 녹차초콜릿 3개뿐이므로 바나나초콜릿은 없다. 따라서 $p=dfrac{7}{10}$, $q=0$이고 $pq=0$이다. 따라서 구하는 값은 $0$이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "조합에 준하는 두 장 선택 경우 세기; 경우의 수에 의한 확률",
+      "decisiveStep": "서로 다른 두 장을 고르는 전체 경우는 $\binom{5}{2}=10$가지이다. 작은 수가 십의 자리이므로 일의 자리인 큰 수가 홀수이면 두 자리 수가 홀수이다. 큰 수가 3이면 2가지, 5이면 4가지로 유리한 경우는 6가지이다. 따라서 확률은 $dfrac{6}{10}=dfrac{3}{5}$이고 구하는 값은 $dfrac{3}{5}$이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "EXACT_ACTIVE_BINDING_PENDING",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "삼각형의 넓이; 이등변삼각형의 성질; 피타고라스 정리",
+      "decisiveStep": "밑변 $BC=10$ cm의 절반은 5 cm이고, 삼각형의 넓이가 60 cm$^2$이므로 높이는 $dfrac{2\times60}{10}=12$ cm이다. 이등변삼각형의 꼭짓점에서 밑변에 내린 높이는 밑변을 이등분하므로, 직각삼각형에서 $AB^2=5^2+12^2=169$이다. 따라서 구하는 값은 $13$이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "lookupRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+          "bytes": 1839,
+          "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "bytes": 558996,
+          "sha256": "sha256:c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+          "bytes": 5809,
+          "sha256": "sha256:3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "bytes": 153671,
+          "sha256": "sha256:e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/registry_index.json",
+          "bytes": 14035,
+          "sha256": "sha256:5d184f93f62c649302ffe9c6382eaaacb54efae5cc2c28c6721afadb208c14d6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+          "bytes": 914,
+          "sha256": "sha256:905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+          "bytes": 2106,
+          "sha256": "sha256:f8a75db823ddaf92682d8947f14b0d5b5ecd4bcd4671c5ddf62c2baf437b8dc6",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "bytes": 1655704,
+          "sha256": "sha256:469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+          "bytes": 158736,
+          "sha256": "sha256:c642209a8f954a8ce5ddda5f534a3d7a554f775acc305b17ff5009c08b5920d0",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "bytes": 2148,
+          "sha256": "sha256:8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        },
+        {
+          "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "bytes": 743114,
+          "sha256": "sha256:a0620757901056bce3922ea892ac2d6d1ccd270a2d0c2c16cb6b14c38b38b248",
+          "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 2
+  }
+}
