@@ -1,0 +1,190 @@
+{
+  "schemaVersion": "ARCHIVE_R1_SOLUTION_VISUAL_EVIDENCE_v1",
+  "qid": 11,
+  "sourceArtifactSha": "sha1:1ae8676efaf33d40c474e2b349678d9018bbdf5d",
+  "sourcePdfSha256": "416e00dd6f12cf12b5bc1f41285fee1a3156420b6f7620c684a38303c671b0c7",
+  "studentSourceItemSha256": "sha256:c7d90670c86a0774dcd099dbcdc52150fe2d6426f3110755c23aa876018a440d",
+  "solutionSha256": "sha256:51444be5400f1244fa223bc622de0c26ee87c9874ab0568f09f15c8ce6b14b79",
+  "visualAction": "ADD_NEW_VISUAL",
+  "visualRequirement": "VISUAL_REQUIRED",
+  "visualRole": "DECISIVE_REASONING",
+  "sourceFigurePresence": true,
+  "sourceFigureSufficiency": "Source figure shows triangle ABC and D on AB but not the solution-added perpendicular foot H; the current algebra depends on the new right triangles AHC and BHC.",
+  "newVisualInformation": [
+    "H is the foot of C perpendicular to AB",
+    "H lies between A and D"
+  ],
+  "marginalBenefitReason": "The diagram identifies the auxiliary point and right-angle relation that the solution introduces; it avoids asking students to imagine an unmarked construction.",
+  "coordinateModel": {
+    "coordinateProvenance": "CONSTRUCTED_REALIZATION",
+    "rationale": "Use source side lengths to realize triangle ABC and project C orthogonally to AB; normalized to 18 SVG units per cm with A at (75,150).",
+    "unitScalePxPerUnit": 18,
+    "sourceCoordinates": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        16,
+        0
+      ],
+      "D": [
+        7,
+        0
+      ],
+      "H": [
+        5.5,
+        0
+      ],
+      "C": [
+        5.5,
+        5.809475019311125
+      ]
+    },
+    "svgCoordinates": {
+      "A": [
+        75,
+        150
+      ],
+      "B": [
+        363,
+        150
+      ],
+      "D": [
+        201,
+        150
+      ],
+      "H": [
+        174,
+        150
+      ],
+      "C": [
+        174,
+        45.42945
+      ]
+    },
+    "constructionSteps": [
+      "AB=AD+DB=7+9=16",
+      "Set AB on horizontal axis with A=(0,0), B=(16,0), D=(7,0).",
+      "Let H be the perpendicular projection of C onto AB.",
+      "From AC=8 and BC=12, solve AH=(AC²+AB²−BC²)/(2AB)=5.5.",
+      "Then CH²=AC²−AH²=64−30.25=135/4.",
+      "Map source coordinates to SVG with scale 18 and translation (75,150)."
+    ],
+    "expectedFacts": [
+      {
+        "fact": "AB",
+        "expected": 16,
+        "unit": "cm"
+      },
+      {
+        "fact": "AD",
+        "expected": 7,
+        "unit": "cm"
+      },
+      {
+        "fact": "DB",
+        "expected": 9,
+        "unit": "cm"
+      },
+      {
+        "fact": "AC",
+        "expected": 8,
+        "unit": "cm"
+      },
+      {
+        "fact": "BC",
+        "expected": 12,
+        "unit": "cm"
+      },
+      {
+        "fact": "CH_perpendicular_AB",
+        "expected": true
+      },
+      {
+        "fact": "H_between_A_and_D",
+        "expected": true
+      },
+      {
+        "fact": "CD",
+        "expected": 6,
+        "unit": "cm",
+        "role": "derived-check"
+      }
+    ]
+  },
+  "expectedToObserved": {
+    "sourceConditionCoverage": [
+      "AB=AD+DB=16",
+      "AC=8",
+      "BC=12",
+      "CH⊥AB",
+      "A-H-D-B point order"
+    ],
+    "decisiveRelationCovered": true,
+    "uncoveredCriticalConditions": [],
+    "observed": {
+      "AB": 16,
+      "AD": 7,
+      "DB": 9,
+      "AC": 8,
+      "BC": 12,
+      "CD": 5.999999999999999,
+      "CHperpendicularAB": true,
+      "HBetweenAAndD": true
+    },
+    "deltas": {
+      "AB": 0,
+      "AD": 0,
+      "DB": 0,
+      "AC": 0,
+      "BC": 0,
+      "CD": -8.881784197001252e-16
+    },
+    "tolerance": 0.002,
+    "expectedFactCompletenessStatus": "PASS"
+  },
+  "actualSvg": {
+    "sha256": "sha256:e0e371dee16f281337039a72d698c800658c2601ddbbae31a347e7a96037b2a5",
+    "gitBlobSha": "sha1:b9d749b643618063fdd6f5b3828c4cbc903f46e8",
+    "xmlExpectedRoot": "svg",
+    "path": "archive/analysis/archive-2.0-pilot-20261005/20_향림중_2학기_기말_중2_기출/R1.q11-solution.svg",
+    "auxiliaryLine": "x1=174 y1=45.42945 x2=174 y2=150",
+    "rightAngleMarker": "M174 150 h14 v-14",
+    "labels": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "H",
+      "7 cm",
+      "9 cm",
+      "8 cm",
+      "12 cm"
+    ],
+    "labelOwnerBindings": {
+      "7 cm": "AD",
+      "9 cm": "DB",
+      "8 cm": "AC",
+      "12 cm": "BC"
+    },
+    "visualRole": {
+      "sourceLengths": "GIVEN_STYLE",
+      "auxiliaryFoot": "DERIVED_STYLE",
+      "CD": "NOT_RENDERED"
+    },
+    "pathPrimitive": "M75 150 L363 150 L174 45.42945 Z",
+    "whiteBackground": true
+  },
+  "staticXmlParseStatus": "PASS",
+  "browserRenderStatus": "RENDER_BLOCKED_POLICY",
+  "nativeSvgRender": {
+    "renderer": "archive/tools/pipeline-core/svg-native-render.mjs",
+    "path": "archive/analysis/archive-2.0-pilot-20261005/20_향림중_2학기_기말_중2_기출/R1.q11-solution-preview.png",
+    "sha256": "sha256:4167049e956d1a74cb6042f6b645d98a1302ca01fe7c3b5b7c8289128ed87a1e",
+    "gitBlobSha": "sha1:06261b9b9e87cf33bbf8ad7e137080d966ed14d1",
+    "sizeBytes": 19685,
+    "status": "PASS_STANDALONE_ASSET_ONLY"
+  },
+  "browserRenderEvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/20_향림중_2학기_기말_중2_기출/R1.render-blocker.json"
+}

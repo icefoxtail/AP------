@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "ARCHIVE_R1_REPAIR_PROVENANCE_v1",
+  "examUid": "source-only-m2-20261004/20_향림중_2학기_기말_중2_기출",
+  "sourceBeforeSha": "sha1:f198e18e0b368bd84307e874b22a2be3cf8a1b45",
+  "sourceAfterSha": "sha1:1ae8676efaf33d40c474e2b349678d9018bbdf5d",
+  "changedQids": [
+    11,
+    14,
+    23
+  ],
+  "changes": [
+    {
+      "qid": 11,
+      "path": "solution",
+      "before": "No solution visual; solution introduces perpendicular foot H.",
+      "after": "Added one inline solution SVG for triangle ABC and perpendicular foot H.",
+      "reason": "Show the new auxiliary foot and right-angle relation used by the two right triangles."
+    },
+    {
+      "qid": 14,
+      "path": "answer",
+      "before": "④",
+      "after": "⑤",
+      "reason": "Original source PDF figure plus independent ratio calculation give x=16, displayed choice ⑤; ROOT approved answer-only repair."
+    },
+    {
+      "qid": 14,
+      "path": "solution / decisiveStep final choice labels",
+      "before": "④",
+      "after": "⑤",
+      "reason": "Direct conclusion-label dependency of the repaired answer."
+    },
+    {
+      "qid": 23,
+      "path": "solution / decisiveStep source-value descriptor",
+      "before": "corresponding base diameters 5 cm and 10 cm",
+      "after": "corresponding slant-generator lengths 5 cm and 10 cm",
+      "reason": "Original PDF labels the cone slant generators; correct source-faithful description."
+    }
+  ],
+  "unchangedStudentFields": [
+    "all content",
+    "all choices",
+    "all problem image refs"
+  ],
+  "unchangedMeta": true,
+  "directDependencyScope": [
+    "q11 solution SVG / coordinate model / XML / solution layout",
+    "q14 answer / solution label / decisiveStep / math comparison",
+    "q23 solution wording / decisiveStep / solution layout"
+  ]
+}

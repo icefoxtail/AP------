@@ -1,0 +1,71 @@
+{
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:95b26ea6f819ee92a382ffb8f9e60eef13eb4c6aa321c1dac4d0b9246f32add1",
+        "gitBlobSha": "d0dc3efa842166431ac80ffebec01c25aca94772"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:2b06a6d44e8d2bc74746f42c4e7ef361c58fee266da034a0989689637a56271a",
+        "gitBlobSha": "1762208980141069a87c4c4c103444523fdd8da0"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:329661aff619c0107182db73dea73e2791036644f6451056284a40c340896f62",
+        "solutionExcerpt": "6,12$로 모두 6개이다.\n따라서 정답은 ②이다.",
+        "observation": "Enumerates favorable divisors explicitly and concludes with the matching option."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 15,
+        "solutionSha256": "sha256:4ebd5c71feb80eb07e2a41b87eb2eb945121285176befd4a14e417e6c12b2114",
+        "solutionExcerpt": "$5!=120$이다.\n따라서 정답은 ①이다.",
+        "observation": "Uses a single ordered block and exposes the arrangement count before concluding."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 21,
+        "solutionSha256": "sha256:4669e9360661043e63d7bfbda3e459fb9921c878bb2eb710dec157cd4c16c012",
+        "solutionExcerpt": "$AC^2=AB^2-BC^2=13^2-5^2=169-25=144$이다.",
+        "observation": "Determines the missing leg before identifying cone radius/height and computing volume."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 23,
+        "solutionSha256": "sha256:0408b16de7afcce1ee47ac99743a08463bf54d5d7bdb72d349e07d7afec14220",
+        "solutionExcerpt": "$\\dfrac{x}{x+8}=\\dfrac23$이다.\n양변을 곱하면 $3x=2x+16$이므로 $x=16$이다.",
+        "observation": "Defines the unknown, states the probability equation, and solves it in visible steps."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read the false-PASS regression lessons: actual SVG geometry, separated enumerated judgments, exact ACTIVE Meta resolution, and runtime escape checks."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "sha256:1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+        "gitBlobSha": "67fa6456c55de7a59b6c43d8fe25b9a815d6381a",
+        "observation": "Read the frozen failure SVG; actual plotted primitive does not realize the labeled parabola points/ratio."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR"
+  }
+}

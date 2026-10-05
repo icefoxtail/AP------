@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "ARCHIVE_R1_DURABLE_CONTINUATION_v1",
+  "stage": "R1",
+  "examUid": "source-only-m2-20261004/20_향림중_2학기_기말_중2_기출",
+  "inputArtifactSha": "sha1:f198e18e0b368bd84307e874b22a2be3cf8a1b45",
+  "finalArtifactSha": "sha1:1ae8676efaf33d40c474e2b349678d9018bbdf5d",
+  "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/20_향림중_2학기_기말_중2_기출/R1.q11-visual-evidence.json",
+  "completedStep": "R1_Q11_STANDALONE_SVG_STATIC_GEOMETRY_XML_AND_NATIVE_RASTER_QA",
+  "firstMissingClosureStep": "R1_Q11_ACTUAL_ARCHIVE_ENGINE_RENDER_DESKTOP_AND_MOBILE",
+  "exactReason": "The changed q11 instructional SVG passes coordinate-model checks, XML parse and standalone native SVG raster QA. Actual Archive engine desktop/mobile render and DOM layout evidence remain missing because browser policy rejected the file:// engine page and explicitly forbids obtaining the same result through a local HTTP server, Playwright/Chrome, raw CDP, another browser surface or workaround. No approved non-browser Archive engine-layout renderer was found; svg-native-render.mjs only rasterizes a standalone SVG and cannot verify engine layout, MathJax integration, viewport scaling, clipping or mobile behavior.",
+  "browserAttempt": {
+    "action": "Open the official Archive engine page in solution mode against the exact R1 fixture.",
+    "requestedUrl": "file:///C:/Users/USER/Desktop/AP------/archive/engine.html?data=exams/test-fixtures/r1-20-hyangrim-stage.js&mode=sol",
+    "initialIabError": "IAB visibility is not supported in a subagent thread",
+    "securityDenial": "Browser Use rejected this action due to browser security policy. Reason: The browser URL policy blocks this action. Browser use cannot visit the requested page. The requested URL protocol is not allowed. Allowed protocols: \"http:\", \"https:\".",
+    "securityInstruction": "The agent must not attempt to achieve the same outcome via workaround, indirect execution, raw CDP or browser commands, alternate browser surfaces, or policy circumvention. Proceed only with a materially safer alternative that does not require this blocked browser action; if none exists, stop and request user input.",
+    "workaroundAttempted": false
+  },
+  "officialRendererSupport": {
+    "archiveEngine": "archive/engine.html via actual browser",
+    "solutionExecutor": "archive/solution-render-executor.js / APSolutionRenderExecutor.render",
+    "pipelineCapture": "archive/tools/pipeline-core/render.mjs uses Playwright/Chrome and a local HTTP server; same outcome is prohibited by browser denial",
+    "standaloneSvgRenderer": {
+      "path": "archive/tools/pipeline-core/svg-native-render.mjs",
+      "status": "AVAILABLE",
+      "scope": "Standalone SVG raster only; not engine layout or mobile render"
+    }
+  },
+  "requiredHumanOrApprovedResource": "A trusted browser tab opened by the user, or a newly approved browser resource/route that permits the exact Archive engine page with the current fixture and exposes actual desktop plus requested mobile output.",
+  "reviewArtifacts": {
+    "candidateJs": "archive/_generated/source-only/m2-20261004/20_향림중_2학기_기말_중2_기출.js",
+    "candidateSolutionSvg": "archive/analysis/archive-2.0-pilot-20261005/20_향림중_2학기_기말_중2_기출/R1.q11-solution.svg",
+    "standalonePreviewPng": "archive/analysis/archive-2.0-pilot-20261005/20_향림중_2학기_기말_중2_기출/R1.q11-solution-preview.png",
+    "engineFixture": "archive/exams/test-fixtures/r1-20-hyangrim-stage.js",
+    "engineUrlTemplate": "http://127.0.0.1:<approved-local-port>/archive/engine.html?data=exams/test-fixtures/r1-20-hyangrim-stage.js&mode=sol (not running; template only)"
+  },
+  "qualityGateStatus": "RENDER_PENDING_NO_V2_R1_PASS_CONSUMPTION"
+}
