@@ -60,9 +60,9 @@ jobs:
             "archive/tools/geometry-equation/visual_engine/visual_spec.schema.json"
           )
           printf '%s\n' "${expected[@]}" | sort > /tmp/expected
-          git diff --name-only | sort > /tmp/actual
-          diff -u /tmp/expected /tmp/actual
           git add -- "${expected[@]}"
+          git diff --cached --name-only | sort > /tmp/actual
+          diff -u /tmp/expected /tmp/actual
           test "$(git diff --cached --name-only | wc -l)" -eq 37
           test -z "$(git diff --name-only)"
           test -z "$(git ls-files --others --exclude-standard)"
