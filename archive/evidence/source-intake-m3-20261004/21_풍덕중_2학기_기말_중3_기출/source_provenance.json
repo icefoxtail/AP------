@@ -246,7 +246,7 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "PASS_TEXT",
+      "itemDisposition": "PASS",
       "holdReason": null
     },
     {
@@ -853,11 +853,39 @@
         "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS"
       }
+    },
+    {
+      "qid": 22,
+      "sourceQuestionNo": "서술형 1",
+      "sourcePage": 4,
+      "sourcePdfSha256": "e51bca24b2a8a885c41778d47942db9d88e5250aba4aae95b858d3057ef222af",
+      "sourcePageRenderSha256": "64e49e52594adfcf6f037f91248a239d81d3cc70b79a6c78dbf4f5bf33cae081",
+      "highDpiRenderPath": "tmp\\pdfs\\m3-repair\\wangun400-4.png",
+      "highDpiRenderSha256": "cdff5e0748df6d1a4fd530e74284906fee1d5ba350bc68c411bfc3d0d2eb5433",
+      "sourceDiagramBBoxPxAt400Dpi": [
+        1700,
+        680,
+        2450,
+        1390
+      ],
+      "assetPath": "assets/images/21_풍덕중_2학기_기말_중3_기출/q22-clean.svg",
+      "assetSha256": "0c34ce0bd8e5f6d2d101cd7990219656460c842bbba3986b3aa574e61539d332",
+      "assetKind": "source-derived-svg",
+      "repairMethod": "SVG redraw of the printed cyclic quadrilateral and two labeled angles; scan blot excluded. Topology and labels A, B, C, D plus angle expressions are taken from the directly viewed source page and typed stem. No answer or solution included.",
+      "visualChecks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "foreignChoicesIncluded": "NO",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
+        "fullSourcePageAndFinalSvgOpenedAndCompared": "PASS"
+      }
     }
   ],
   "examHold": [
-    "q20: printed diagram choices are obscured by student marks; retain the printed stem and HOLD the visual choices without derivation.",
-    "q22: source figure has a blot/mark over geometry; prompt transcribed and item held."
+    "q20: printed diagram choices are obscured by student marks; retain the printed stem and HOLD the visual choices without derivation."
   ],
   "cropRevisionNotes": [
     "q10 initial crop included answer-choice text and was removed to a temp hold file; current q10 is a direct pixel crop from source page 2 bbox [140,1140,430,1360].",
@@ -867,12 +895,13 @@
   ],
   "assetCount": 18,
   "questionInventoryCount": 25,
-  "notes": "q22’s printed conditions and question are legible; the marked figure was left unreferenced in the source-only JS, and the complete prompt remains in text. q20 was reread from original page 4. The prompt is legible; the five graphical choices contain student marks over printed details. The derived text options and answer inference were removed; choices remain HOLD.",
+  "notes": "q22 scan blot was removed by an SVG reconstruction of the unambiguously printed cyclic quadrilateral; q20 marked option diagrams remain held for separate review.",
   "sourceOnlyScopeCorrections": [
     {
       "qid": 20,
       "action": "REVERTED_TO_HOLD",
       "reason": "A prior conversion interpreted the marked diagrams into mathematical conditions and recorded an answer. That is outside SOURCE_ONLY; the printed choices cannot be transcribed exactly from the marked source."
     }
-  ]
+  ],
+  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS"
 }
