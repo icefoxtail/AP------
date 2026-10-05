@@ -37,7 +37,7 @@ jobs:
         env:
           GEOMETRY_BROWSER_CHANNEL: chromium
         run: node archive/tools/geometry-equation/tests/run-publication-browser.mjs
-      - name: Actual Archive mode sol 390 integration
+      - name: Actual Archive desktop publication integration
         env:
           GEOMETRY_BROWSER_CHANNEL: chromium
         run: node archive/tools/geometry-equation/tests/run-publication-archive.mjs
