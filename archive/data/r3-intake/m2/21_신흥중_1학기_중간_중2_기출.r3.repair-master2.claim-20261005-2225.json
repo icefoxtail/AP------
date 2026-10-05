@@ -11,12 +11,23 @@
   "sourceHandoffCommit": "ece26da9560d42a4c15db29f44893b0b541b219e",
   "sourceArtifactBlob": "15cecd4931fc78853eb638cf16d43fee41c38578",
   "latestMainObserved": "5eec7856dc524c3d8d5adfc656efbf7e58302c1c",
-  "leaseStatus": "ACTIVE",
+  "leaseStatus": "RELINQUISHED",
   "claimType": "CAS_REPAIR_LEASE",
   "sourceOriginalParityClaimed": false,
   "repairModes": {
     "q18": "REPAIR_MASTER_GENERATED_REPLACEMENT",
     "q19": "DETERMINISTIC_MINIMAL_REPAIR"
   },
-  "claimedAtKST": "2026-10-05T22:25:00+09:00"
+  "claimedAtKST": "2026-10-05T22:25:00+09:00",
+  "ownerRelinquished": true,
+  "result": "WRITE_RECOVERY_DEBT",
+  "exactError": "PRODUCTION_Q18_Q19_WRITE_BLOCKED_BY_SAFETY_GATE",
+  "completedStep": "REPAIR_DESIGN_AND_FRESH_STATE_REVALIDATION",
+  "firstMissingClosureStep": "PRODUCTION_Q18_Q19_WRITE",
+  "triedPaths": [
+    "contents update_file",
+    "git-object create_blob"
+  ],
+  "nextAction": "Persist q18/q19 only, then changed-qid R3 evidence, canonical R3 validator/receipt, RELEASE_QUEUE.",
+  "relinquishedAtKST": "2026-10-05T22:25:00+09:00"
 }
