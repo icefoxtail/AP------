@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_PREFLIGHT_v1",
+  "stage": "R1",
+  "examPath": "archive/_generated/source-only/m2-20261004/21_왕운중_2학기_기말_중2_기출.js",
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:565076beed7e248b2d35a4befa508af48d555fdc0f51557e8891d8d2dc1f6c7f",
+        "gitBlobSha": "04cbb139d23384114b0db942aff1423c35a29b8c"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:2b06a6d44e8d2bc74746f42c4e7ef361c58fee266da034a0989689637a56271a",
+        "gitBlobSha": "1762208980141069a87c4c4c103444523fdd8da0"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js",
+        "qid": 7,
+        "observation": "The right-triangle solution exposes the known hypotenuse and leg, writes the subtraction of squares, then states the positive length and answer.",
+        "solutionSha256": "sha256:a265cc145a6fade871dc94b527c65f0fb7e7cd15bfd166f9a334d55e1ecbdf5b",
+        "solutionExcerpt": "[키포인트] 직각삼각형에서 빗변의 제곱은 두 직각변의 제곱의 합과 같다.\n$BC=17\\mathrm{cm}$가 빗변이고 $AB=15\\mathrm{cm}$이므로 $AC^2=17^2-15^2=289-225=64$이다.\n따라서 $AC=8\\mathrm{cm}$"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js",
+        "qid": 11,
+        "observation": "The multi-claim geometry solution separates each truth judgment and shows the segment/area ratios used for each claim.",
+        "solutionSha256": "sha256:33c0cb582fd868f297f3b94c132f95b7caffd8d0d3612cb5dd334cb4e683c8a7",
+        "solutionExcerpt": "[키포인트] 중점연결선과 무게중심이 중선을 나누는 위치를 넓이비와 함께 이용한다.\n$H$는 중점연결선 $FE$와 중선 $AD$의 교점이므로 $AH=\\dfrac12AD$이다. 무게중심은 $AG=\\dfrac23AD$이므로 $HG=\\left(\\dfrac23"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 21,
+        "observation": "The geometry solution connects the perpendicular/right-triangle givens to a Pythagorean calculation and then to the requested cone volume in visible steps.",
+        "solutionSha256": "sha256:4669e9360661043e63d7bfbda3e459fb9921c878bb2eb710dec157cd4c16c012",
+        "solutionExcerpt": "[키포인트] 회전체는 밑면의 반지름이 $BC$이고 높이가 $AC$인 원뿔이므로 먼저 피타고라스 정리로 $AC$를 구한다.\n그림에서 $AB=13\\rm\\,cm$, $BC=5\\rm\\,cm$, $\\angle C=90^\\circ$이므로\n$AC^2=AB^2-BC"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 23,
+        "observation": "The probability solution defines the unknown, writes the total count, forms the equation, and solves it in separate steps.",
+        "solutionSha256": "sha256:0408b16de7afcce1ee47ac99743a08463bf54d5d7bdb72d349e07d7afec14220",
+        "solutionExcerpt": "[키포인트] 흰 공의 개수를 $x$개라 두고 전체 공의 개수에 대한 확률식을 세운다.\n전체 공의 개수는 $3+5+x=x+8$개이고, 흰 공은 $x$개이다.\n따라서 $\\dfrac{x}{x+8}=\\dfrac23$이다.\n양변을 곱하면 $3x=2x+16$이므"
+      }
+    ],
+    "negativeSamplePaths": [
+      "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg"
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "recoveryPassId": "R1-TARGETED-CORRECTION-REVIEW-01",
+    "targetScopeQids": [
+      3,
+      9,
+      13
+    ],
+    "priorAttemptRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.initial-quality-attempt.json",
+    "timingNote": "This preflight applies only to the new targeted correction-review pass. The earlier attempt retains sampleReadBeforeWork=false and is not retroactively relabeled.",
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "sha256:1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+        "gitBlobSha": "67fa6456c55de7a59b6c43d8fe25b9a815d6381a"
+      }
+    ]
+  },
+  "sampleObservations": [
+    {
+      "source": "archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js",
+      "qids": [
+        7,
+        11
+      ],
+      "quality": "explicit quantities and formulas; separately reasoned geometry claims"
+    },
+    {
+      "source": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+      "qids": [
+        21,
+        23
+      ],
+      "quality": "visible derivation order, condition use, and student-facing conclusion"
+    },
+    {
+      "source": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "qids": [
+        2,
+        7,
+        17
+      ],
+      "quality": "false-pass families include unseparated enumeration, SVG coordinate/topology mismatch, Meta-null mapping, and runtime TeX escape"
+    },
+    {
+      "source": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "qids": [
+        7
+      ],
+      "quality": "read the frozen failure SVG; coordinate primitives do not satisfy the labeled point/fact relationship"
+    }
+  ]
+}

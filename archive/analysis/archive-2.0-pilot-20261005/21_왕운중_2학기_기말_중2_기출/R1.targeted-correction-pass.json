@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TARGETED_CORRECTION_REVIEW_v1",
+  "passId": "R1-TARGETED-CORRECTION-REVIEW-01",
+  "examUid": "source-only-m2-20261004/21_왕운중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "startedAtUtc": "2026-10-05T14:27:02Z",
+  "preflightRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.targeted-correction-preflight.json",
+  "preflightCommand": "node archive/tools/solution-calibration-gate.mjs --exam archive/_generated/source-only/m2-20261004/21_왕운중_2학기_기말_중2_기출.js --evidence archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.targeted-correction-preflight.json --stage R1 --preflight",
+  "preflightStatus": "PASS",
+  "priorAttemptRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.initial-quality-attempt.json",
+  "scope": {
+    "changedQids": [3, 9, 13, 21],
+    "fields": ["q3.answer", "q3.solution", "q9.solution", "q9.image", "q13.solution", "q21.solution"],
+    "directDependencies": ["q3 source prompt/figure and two-answer cardinality", "q9 source page 2 crop, BC=9 label, similarity derivation", "q13 parallelogram midpoint/area relations", "q21 ordered-pair list and coin/die favorable cases"],
+    "fullExamMathAnswerFreezeOrComparisonReexecuted": false,
+    "fullExamSolutionQualityCompareAfterPreflight": "24/24; unchanged 21 qids compared only on solution-layout quality, not mathematics or answer accuracy",
+    "unchangedQidPriorReviewRowsReused": 21,
+    "q23InitialFreezeAndPostComparisonCorrectionPreserved": true
+  },
+  "scopeExpansion": {
+    "qid": 21,
+    "reason": "The approved 24/24 solution-quality compare found an unbroken 16-outcome ordered-pair list that needs meaning-based line breaks.",
+    "addedAfterPreflight": true,
+    "preflightStillPrecedesQ21Mutation": true
+  },
+  "targetedReviewWork": "After the successful sample preflight, compare all 24 existing solution strings against the five-axis quality floor without re-solving or comparing answers. Re-review changed solution/asset dependencies only for q3/q9/q13/q21 and repair only q21's unbroken outcome list."
+}
