@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "NONSTOP_ERROR_REPORT_v1",
+  "lane": "M2-1 REPAIR-MASTER",
+  "target": "o14",
+  "qid": 17,
+  "stage": "R3",
+  "exactError": [
+    "PROVIDER_BLOCKED_UPDATE_FILE",
+    "PROVIDER_BLOCKED_CREATE_BLOB"
+  ],
+  "completedStep": [
+    "CALIBRATION_WRITTEN",
+    "DETERMINISTIC_Q17_VISUAL_WRITTEN"
+  ],
+  "firstMissingClosureStep": "Q17_EXAM_JS_WRITE_BIND_SVG_AND_CORRECT_TANGENT_SOLUTION",
+  "triedPaths": [
+    "CONTENTS_UPDATE_FILE",
+    "GIT_OBJECT_WRITE"
+  ],
+  "nextAction": "BIND_PREPARED_SVG_AND_TANGENT_SOLUTION_THEN_R3_CHANGED_LOCUS_VALIDATOR_RECEIPTS",
+  "passClaim": false,
+  "releaseEligible": false,
+  "ownerRelinquished": true,
+  "relinquishSidecarCommit": "e8295a1ec507ada5e2374011763edf3f4b8e858d"
+}
