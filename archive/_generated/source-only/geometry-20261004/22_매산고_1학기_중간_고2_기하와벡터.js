@@ -241,7 +241,7 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "쌍곡선 $x^2-\\dfrac{y^2}{2}=1$ 위의 점 $(3,4)$에서의 접선의 $y$절편을 구하면? [5점]",
+    "content": "&lt;단답형1&gt;<br>쌍곡선 $x^2-\\dfrac{y^2}{2}=1$ 위의 점 $(3,4)$에서의 접선의 $y$절편을 구하면? [5점]",
     "choices": []
   },
   {
@@ -250,7 +250,7 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "삼각형 $ABC$에서 $\\overline{AB}=4,\\angle B=90^\\circ,\\angle C=30^\\circ$이다. 점 $P$가 $\\overrightarrow{PB}+\\overrightarrow{PC}=\\vec0$을 만족시킬 때, $|\\overrightarrow{PA}|^2$의 값을 구하면? [5점]",
+    "content": "&lt;단답형2&gt;<br>삼각형 $ABC$에서 $\\overline{AB}=4,\\angle B=90^\\circ,\\angle C=30^\\circ$이다. 점 $P$가 $\\overrightarrow{PB}+\\overrightarrow{PC}=\\vec0$을 만족시킬 때, $|\\overrightarrow{PA}|^2$의 값을 구하면? [5점]",
     "choices": []
   },
   {
@@ -260,7 +260,7 @@ window.questionBank = [
       "단답형",
       "도형"
     ],
-    "content": "두 초점이 $F,F'$인 타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$이 있다. 타원 위의 두 점 $P,Q$에 대하여 직선 $PQ$가 원점 $O$를 지나고 삼각형 $PF'Q$의 둘레의 길이가 $13$일 때, 선분 $OP$의 길이는? (단, 점 $P$는 제1사분면 위의 점이다.) [5점]",
+    "content": "&lt;단답형3&gt;<br>두 초점이 $F,F'$인 타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$이 있다. 타원 위의 두 점 $P,Q$에 대하여 직선 $PQ$가 원점 $O$를 지나고 삼각형 $PF'Q$의 둘레의 길이가 $13$일 때, 선분 $OP$의 길이는? (단, 점 $P$는 제1사분면 위의 점이다.) [5점]",
     "choices": [],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터/q18.png"
   },
@@ -270,7 +270,7 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "content": "타원 $\\dfrac{x^2}{36}+\\dfrac{y^2}{20}=1$ 위의 점 $P$와 두 초점 $F,F'$에 대하여 다음 물음에 답하시오.\n(1) $\\overrightarrow{PF}+\\overrightarrow{PF'}=k\\overrightarrow{PO}$를 만족하는 실수 $k$의 값을 구하시오. [4점]\n(2) $|\\overrightarrow{PF}+\\overrightarrow{PF'}|$의 최댓값을 구하시오. [6점]",
+    "content": "&lt;서술형1&gt;<br>타원 $\\dfrac{x^2}{36}+\\dfrac{y^2}{20}=1$ 위의 점 $P$와 두 초점 $F,F'$에 대하여 다음 물음에 답하시오.\n(1) $\\overrightarrow{PF}+\\overrightarrow{PF'}=k\\overrightarrow{PO}$를 만족하는 실수 $k$의 값을 구하시오. [4점]\n(2) $|\\overrightarrow{PF}+\\overrightarrow{PF'}|$의 최댓값을 구하시오. [6점]",
     "choices": []
   },
   {
@@ -280,7 +280,7 @@ window.questionBank = [
       "서술형",
       "도형"
     ],
-    "content": "선분 $CD$를 $1:4$로 내분하는 점을 $Q$, 직사각형 $ABCD$의 두 변 $AD=6, AB=8$, $\\overrightarrow{CD}-\\overrightarrow{BQ}=\\vec a$라 하자. 선분 $CD$를 지름으로 하고 중심이 $O$인 원 위를 움직이는 점 $P$에 대하여 $\\overrightarrow{BP}=\\vec b$라 할 때, 다음 물음에 답하시오.\n(1) $|\\vec a|$의 값을 구하시오. [2점]\n(2) $|\\vec b|$의 최댓값을 구하시오. [3점]\n(3) $|\\vec a+\\vec b|$의 최댓값을 구하시오. [5점]",
+    "content": "&lt;서술형2&gt;<br>선분 $CD$를 $1:4$로 내분하는 점을 $Q$, 직사각형 $ABCD$의 두 변 $AD=6, AB=8$, $\\overrightarrow{CD}-\\overrightarrow{BQ}=\\vec a$라 하자. 선분 $CD$를 지름으로 하고 중심이 $O$인 원 위를 움직이는 점 $P$에 대하여 $\\overrightarrow{BP}=\\vec b$라 할 때, 다음 물음에 답하시오.\n(1) $|\\vec a|$의 값을 구하시오. [2점]\n(2) $|\\vec b|$의 최댓값을 구하시오. [3점]\n(3) $|\\vec a+\\vec b|$의 최댓값을 구하시오. [5점]",
     "choices": [],
     "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터/q20.png"
   }
