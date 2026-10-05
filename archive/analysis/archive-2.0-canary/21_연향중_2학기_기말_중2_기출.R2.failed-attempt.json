@@ -1,0 +1,14 @@
+{
+  "stage": "R2",
+  "examUid": "source-only-m2-20261004/21_연향중_2학기_기말_중2_기출",
+  "inputArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "finalArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "evidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R2.evidence.json",
+  "validatorReportRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R2.validation.json",
+  "validatorResult": "PASS",
+  "validatorMeaning": "Historical structural V2 result for the original evidence snapshot only",
+  "result": "FAILED_ATTEMPT",
+  "completedStep": "INDEPENDENT_CONTENT_REVIEW_AND_ONE_GENERIC_VALIDATOR_RUN",
+  "firstMissingClosureStep": "BLIND_ANSWER_FREEZE_INTEGRITY",
+  "exactReason": "Stored answers and solutions appeared in the initial search output before blindAnswer freeze. The blind-order condition cannot be certified. Evidence freeze flags were corrected to false and all rows marked SUSPICIOUS/CONTINUATION. consumeValidationPass was not called. A fresh archive_r2 must repeat the blind sweep from an isolated pre-answer view; no MASTER continuation is requested."
+}
