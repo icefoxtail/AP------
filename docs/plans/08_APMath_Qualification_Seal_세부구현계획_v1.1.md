@@ -1,5 +1,7 @@
 # APMath Qualification & Seal 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 08 / Qualification & Seal  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -15,7 +17,7 @@
 
 ## 0. 이 문서의 목적
 
-이 문서는 APMath Visual Production Engine의 여덟 번째이자 마지막 세부계획으로, Detail 01~07에서 구현한 모든 capability를 실제로 **지원 가능 / 미지원 / 부분지원**으로 판정하고, 대표 synthetic fixture·실제 Archive 문항·negative mutation·독립 reviewer·재현성·변경 영향 재검까지 닫은 뒤에만 시스템을 `PUBLICATION_READY`로 봉인하는 qualification 계획이다.
+이 문서는 APMath Visual Production Engine의 여덟 번째이자 마지막 세부계획으로, Detail 01~07에서 구현한 모든 capability를 실제로 **지원 가능 / 미지원 / 부분지원**으로 판정하고, 대표 synthetic fixture·실제 Archive 문항·negative mutation·독립 reviewer·재현성·변경 영향 재검까지 닫은 뒤 시스템을 SEALED로 봉인하는 qualification 계획이다. PUBLICATION_READY는 D05가 판정하는 별도 ordinary 문항 결과다.
 
 최종 체인:
 
@@ -980,7 +982,7 @@ runtime qualification은 external network 없이 실행 가능한지 검증.
 
 같은 frozen input에서:
 
-- plan SHA
+- 승인·freeze된 plan SHA (fresh LLM call의 동일 bytes 요구 아님)
 - model snapshot SHA
 - fragment SHA
 - layout SHA
@@ -1263,7 +1265,7 @@ Seal은 engine qualification.
 
 D05 reducer가 다음을 모두 확인한 ordinary `PRODUCTION_CANDIDATE` 결과만 PUBLICATION_READY다.
 
-- 동일 engine/dependency/profile scope의 유효 Seal
+- 동일 capability implementation/dependency fingerprint 및 profile scope의 유효 Seal
 - 해당 capability/op/profile의 Seal-bound ACTIVE
 - 요청별 source/fact/math/typography/layout/independent artifact audit가 모두 유효
 - Actual Archive PASS 및 동일 bytes/placement의 독립 review PASS
@@ -1778,3 +1780,37 @@ qualification-seal.json
 # 140. 최종 한 문장
 
 > **APMath Qualification & Seal v1은 테스트 수를 많이 만드는 단계가 아니라, 구현된 각 capability의 지원 범위를 먼저 고정하고 synthetic·negative·real Archive·독립 review를 모두 통과한 범위만 ACTIVE로 봉인해, `PUBLICATION_READY`라는 상태가 실제 수학 정확성·조판 품질·제품 렌더 증거를 함께 의미하도록 만드는 최종 release gate다.**
+
+---
+
+# 141. 상위 재검토: qualification을 유지 가능한 제품 계약으로 만들기
+
+기존 Geometry ≥6 + Graph ≥4/required feature/독립 전수 review 분모는 유지한다. 조기 vertical slice는 구현 위험을 먼저 발견하는 단계이며 전체 Seal의 대체물이 아니다. 아래는 기존 L0–L5에 **편입할** 시험이며 새 전수 심사 단계를 추가하지 않는다.
+
+| 교차 계약 | 필수 검증 |
+|---|---|
+| wire/hash | JS/Python 1/1.0/-0/NFC/exact scalar, prefix/file/object hash 구분 |
+| construction | 비좌표 realization, branch/args hidden dependency, stable DAG order, worker timeout 회수 |
+| notation | pi/π·entity/product·degree/unit·programmatic AST precedence; serializer 공통 오류 |
+| graph | family별 실제 독립 bound, repeated root/hole, sqrt singular endpoint, clipped visible component |
+| layout/Archive | medium/full envelope, frame 확대 후 가독성, 전체 reflow closure, capture 없는 reuse 거부 |
+| persistence/cache | cold vs warm output, verifier-only change, concurrent writer, crash/partial commit, single repair budget |
+| planning/review | 실제 provider/parent continuation, source에서 독립 condition 확인, frozen replay/fresh replan 분리 |
+
+## 141.1 qualification identity
+
+Git sourceRevision은 provenance다. 활성화·reuse의 실질 identity는 **capability scope별 implementation/dependency closure fingerprint**다. producer뿐 아니라 observer, schema/normalizer, serializer, numeric policy, profile, font/toolchain/browser와 parent adapter의 적용 계약을 포함한다. dynamic import/dependency를 빠뜨리면 무효다. source commit만 같거나 version 문자열만 같아서 유효한 것이 아니며, 무관 docs commit만 달라졌다고 모든 scope를 재검하지도 않는다.
+
+새 fingerprint는 이전 Seal의 증거를 원본 그대로 참조하고 영향받은 시험/UID를 fresh 검증한 뒤 새 Seal을 만든다. 변경된 op와 그 의존성의 영향을 받는 scope를 계산한다. 공유 dispatcher/canonicalizer 변경은 광범위 영향으로 처리한다. Seal을 수동으로 rewrite하거나 서로 다른 fingerprint의 ACTIVE를 빌려오지 않는다.
+
+## 141.2 durable evidence와 revocation
+
+`archive/_generated` 및 14일 CI artifact는 실행 workspace이며 장기 Seal authority 저장소가 아니다. Seal activation 전에 manifest/ref를 포함한 증거 묶음을 프로젝트의 지속 보관 위치에 저장하고 content hash로 다시 읽을 수 있어야 한다. 작은 index/Seal은 version control에, 큰 SVG/capture는 승인된 durable artifact storage에 둘 수 있다. 새 원격 서비스 구축을 필수로 하지 않으며 로컬 운영이면 보존·백업된 content-addressed 경로를 명시한다.
+
+Seal/ACTIVE registry의 writer와 신뢰 root를 지정하고 폐기/revocation은 append-only 기록으로 남긴다. hash는 bytes integrity이지 승인 주체 인증이 아니다. 요청자가 만든 PASS JSON만으로 활성화하지 않는다. evidence 유실/취소/참조 불일치는 해당 scope 비활성 또는 NOT_VERIFIED이고 기존 legacy production 파일을 변경하지 않는다. 보존 중인 valid Seal/accepted root가 참조하는 blob은 cache cleanup에서 제거하지 않는다.
+
+## 141.3 qualification 측정의 의미
+
+동일 frozen plan의 model/fragment/layout/SVG 재현과 새 planner 실행의 semantic quality를 별도 측정한다. cold/warm 실행, Python/Node startup, typeset batching, capture/review latency, peak memory, SVG/font bytes를 기록한다. 대표 10 UID의 p95는 운영 통계로 일반화하지 않고 smoke 분포로 보고하며 실제 workload 측정 후 최적화를 결정한다.
+
+기존 강한 mutation suite에 source 해석 공통 오류와 수식 serializer 공통 오류를 추가한다. CindyJS 등 peer agreement는 해당 graph의 검산이며 source completeness 또는 일반 정리 증명을 대신하지 않는다. graph family의 수학적 enclosure를 구현하지 못했으면 unsupported 범위를 솔직히 유지하고 해당 full v1 Seal을 선언하지 않는다.
