@@ -11,10 +11,26 @@
   "inputArtifactSha": "eda74041cb7e65817b57ccca2a798faf9618a53e",
   "inputEvidenceSha": "ba2134a7ff32a8f9ac76a27387dfdbe91f0de451",
   "r1ValidatorReceiptSha": "37d6219c970f0f630ac0c8b31b1b42d1db19af56",
-  "status": "ACTIVE",
-  "leaseRelinquished": false,
+  "status": "RELINQUISHED_TO_RESCUE",
+  "leaseRelinquished": true,
   "claimedAtKst": "2026-10-05T17:40:04+09:00",
-  "completedStep": "CAS_CLAIMED_AFTER_CLAIM_ONLY_CONCURRENCY_CHECK",
-  "firstMissingClosureStep": "R2_REVIEW_COMPARE",
-  "selectorEligible": true
+  "completedStep": "FULL_R2_RECHECK_AND_FORMAL_COMPARE_COMPLETE_IN_RUN_CONTEXT",
+  "firstMissingClosureStep": "PERSIST_R2_STAGE_EVIDENCE_THEN_RUN_CANONICAL_VALIDATOR",
+  "selectorEligible": true,
+  "handoffReason": "GitHub evidence-write side effect blocked before commit by connected write safety layer after safe retries; exam artifact itself required no deterministic repair.",
+  "recheckSummary": {
+    "questionCount": 24,
+    "formalCompare": "24/24 MATCH",
+    "deterministicRepairCount": 0,
+    "itemHoldCount": 0,
+    "visualPixelRecheck": "q10 source pixel PASS; q22 rendered solution visual PASS",
+    "metaAuthorityRechecked": true
+  },
+  "currentAuthority": {
+    "mainSha": "3a7b2cb712fb192f3728f4df4a7ccc1e99d79427",
+    "r2V2Blob": "91db2475cf32f9f4170edf72ef4b56ce747f110a",
+    "commonV2Blob": "e1e331b52e9af51e81bba8361d89ac11910e0f72",
+    "physicalGateBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "goldenBlob": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2"
+  }
 }
