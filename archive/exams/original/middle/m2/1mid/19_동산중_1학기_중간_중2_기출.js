@@ -3,7 +3,7 @@ window.questionBank = [
   {
     "id": 1,
     "category": "유리수와 순환소수",
-    "content": "다음 보기의 분수를 소수로 나타낼 때, 유한소수인 것을 모두 고르면? [4점]",
+    "content": "다음 보기의 분수를 소수로 나타낼 때, 유한소수인 것을 모두 고르면? [4점]\n\n㉠ $\\frac{3}{75}$  ㉡ $\\frac{5}{12}$  ㉢ $\\frac{6}{60}$  ㉣ $\\frac{7}{30}$  ㉤ $\\frac{15}{25}$",
     "choices": [
       "㉠, ㉡",
       "㉠, ㉢",
@@ -30,12 +30,13 @@ window.questionBank = [
       "소인수분해"
     ],
     "wide": false,
-    "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수입니다.\n㉠ $\\frac{3}{75}=\\frac{1}{25}$ 이므로 유한소수입니다.\n㉡ $\\frac{25}{24}$ 는 분모에 $3$이 남아 유한소수가 아닙니다.\n㉢ $\\frac{6}{2^2\\times3\\times5}=\\frac{1}{10}$ 이므로 유한소수입니다.\n㉣ $\\frac{12}{3\\times2\\times5^2}=\\frac{2}{25}$ 가 아니고, 원문 보기대로 약분 후 분모에 $3$이 남으므로 유한소수가 아닙니다.\n㉤ $\\frac{15}{5}=3$ 이므로 유한소수입니다.\n따라서 정답은 ④입니다.",
+    "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수입니다.\n㉠ $\\frac{3}{75}=\\frac{1}{25}$ 이므로 유한소수입니다.\n㉡ $\\frac{5}{12}$는 기약분수의 분모에 $3$이 남으므로 유한소수가 아닙니다.\n㉢ $\\frac{6}{60}=\\frac{1}{10}$ 이므로 유한소수입니다.\n㉣ $\\frac{7}{30}$은 기약분수의 분모에 $3$이 남으므로 유한소수가 아닙니다.\n㉤ $\\frac{15}{25}=\\frac{3}{5}$ 이므로 유한소수입니다.\n따라서 유한소수인 것은 ㉠, ㉢, ㉤이고 정답은 ④입니다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "provenance": "REPAIR_MASTER_GENERATED_REPLACEMENT"
   },
   {
     "id": 2,
@@ -228,7 +229,7 @@ window.questionBank = [
       "$2$",
       "$3$"
     ],
-    "answer": "2",
+    "answer": "3",
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
@@ -246,7 +247,7 @@ window.questionBank = [
       "나머지활용"
     ],
     "wide": false,
-    "solution": "$\\frac{2}{55}=0.0363636\\cdots=0.0\\dot{3}\\dot{6}$ 입니다.\n첫째 자리는 $0$이고, 그 다음부터 $3,6$이 반복됩니다.\n$50$번째 자리는 반복 부분의 $49$번째 자리이므로 홀수 번째인 $3$입니다.\n$60$번째 자리는 반복 부분의 $59$번째 자리이므로 홀수 번째인 $3$이 아니라, $59=2\\times29+1$이므로 실제 소수 배열을 세면 짝을 이루는 다음 자리 $6$이 됩니다.\n따라서 $a=3$, $b=6$이므로 $\\frac{a}{b}=\\frac{1}{2}$ 입니다.\n정답은 ②입니다.",
+    "solution": "$\\frac{2}{55}=0.0363636\\cdots=0.0\\dot{3}\\dot{6}$ 입니다.\n소수점 아래 첫째 자리는 $0$이고, 둘째 자리부터 $3,6$이 반복됩니다. 따라서 짝수 번째 자리에는 $3$, 홀수 번째 자리에는 $6$이 놓입니다.\n$50$과 $60$은 모두 짝수이므로 $a=3$, $b=3$입니다.\n따라서 $\\frac{a}{b}=1$이고 정답은 ③입니다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
