@@ -6,40 +6,12 @@
   "examFile": "23_향림중_1학기_기말_중2_기출.js",
   "owner": "M2-1 R1-2",
   "ownerState": "RELINQUISHED",
-  "selectorEligible": true,
-  "supersedesClaimGitBlob": "f0f09c23614e9ba4b4870617db7e6888a194df1b",
-  "disposition": "R1_CLOSURE_DEBT",
-  "nextStage": "NOT_READY_FOR_REVIEW2",
-  "finalArtifactSha": "a9d9b7bd800e4eb4fa71b929d52cc0bd04af0e31",
-  "physicalEvidenceGitBlob": "d702f3a0ef42fcf65b94cd4481e1b0d7f524d8f6",
-  "r1AuditCount": "24/24",
-  "deterministicRepairCount": 0,
-  "itemHoldCount": 0,
-  "itemHoldQids": [],
-  "firstMissingClosureStep": "ACTUAL_CANONICAL_R1_VALIDATOR_EXECUTION",
-  "nextRequiredSteps": [
-    "run current canonical R1 validator against exact artifact/evidence",
-    "materialize validator receipt from actual PASS run",
-    "materialize REVIEW1 receipt with REVIEW1_DONE -> READY_FOR_REVIEW2 and exact R2 input pointer",
-    "remote readback exact artifact/evidence/receipt bindings"
-  ],
-  "nonStopErrorReport": {
-    "errorClass": "VALIDATOR_TRIGGER_SIDE_EFFECT_BLOCKED",
-    "actualWorkComplete": "full R1 24/24 audit and physical evidence already complete; artifact unchanged",
-    "attempts": [
-      "fresh validation PR creation from R1-2 branch blocked before side effect",
-      "owner issue-comment /archive-stage-validate on existing open PR #207 blocked before side effect",
-      "target-specific CI test write on PR #207 transport branch blocked before side effect"
-    ],
-    "retryReviewRequired": false,
-    "exactContinuationAllowed": true
-  },
-  "transportPr": 207,
-  "transportBranch": "work/middle/m2/23-hyangrim-1final-temp-create4-20261004-1436",
-  "transportEvidenceGitBlob": "d702f3a0ef42fcf65b94cd4481e1b0d7f524d8f6",
-  "baseMainAtClaim": "bae7e4b6b50b6967c497c79f50c0f401d5f3c54b",
-  "latestMainAtRelinquish": "b08ba2db04ba3be4d172b718aee29e169f8655d3",
-  "mainAdvanceOverlap": "NONE_OBSERVED: latest main advance is docs-only non-stop escalation; o30 exam blob remains exact",
-  "mutationScope": "o30 R1 claim/release only",
-  "unrelatedMutationCount": 0
+  "selectorEligible": false,
+  "supersedesClaimSha": "2633f7a27d94347b2a4fa6c41d431d00ce87d7ea",
+  "disposition": "REVIEW1_DONE",
+  "nextStage": "READY_FOR_REVIEW2",
+  "validatorRunId": 37268718509,
+  "validatorJobId": 111630945658,
+  "validatorReceiptSha": "35a060b918dad903813d6f6e31a0202ac0dda1b9",
+  "review1ReceiptSha": "014f6b12f1ab1c270e329154806f571bd729c1cc"
 }
