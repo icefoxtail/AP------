@@ -7,6 +7,7 @@ import {
 } from '../archive/tools/archive-stage-validator.mjs';
 import { validateCommonEvidence } from '../archive/tools/archive-stage-validator-common-v2.mjs';
 import { validateR1Evidence } from '../archive/tools/archive-stage-validator-r1-v2.mjs';
+import { validateCreateEvidence } from '../archive/tools/archive-stage-validator-create-v2.mjs';
 
 const fixturePath = path.resolve('archive/fixtures/stage-validator-pilot/o34-r2-targeted.json');
 const o34 = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
@@ -175,3 +176,54 @@ assert.equal(r1MismatchWithoutDispositionReport.ok, false);
 assert.ok(r1MismatchWithoutDispositionReport.issues.includes('R1_DISPOSITION_REQUIRED:q2'));
 
 console.log('ARCHIVE_STAGE_VALIDATOR_R1_V2_PASS');
+
+
+const createBase = {
+  schemaVersion: 'JS_ARCHIVE_STAGE_EVIDENCE_v2',
+  stage: 'CREATE',
+  examUid: 'fixture-create',
+  artifactSha: 'artifact-create',
+  rows: [{
+    qid: 1,
+    sourceMode: 'ORIGINAL',
+    axisEvidence: ['question-layout', 'solution-layout', 'meta', 'visual'],
+    provenanceEvidence: { sourceParity: 'bound' },
+  }],
+};
+
+function runCreate(evidence) {
+  return validateCreateEvidence({
+    examUid: 'fixture-create',
+    artifactSha: 'artifact-create',
+    actualArtifactSha: 'artifact-create',
+    evidenceRef: 'fixture://create-v2',
+    evidence,
+    expectedQids: [1],
+  });
+}
+
+assert.equal(runCreate(createBase).ok, true);
+
+const createMissingAxis = structuredClone(createBase);
+createMissingAxis.rows[0].axisEvidence = ['question-layout', 'solution-layout', 'meta'];
+assert.equal(runCreate(createMissingAxis).ok, false);
+
+const createAuditedMissing = structuredClone(createBase);
+createAuditedMissing.rows[0].sourceMode = 'AUDITED_REPAIR';
+createAuditedMissing.rows[0].provenanceEvidence = { repairedTruth: 'bound' };
+assert.equal(runCreate(createAuditedMissing).ok, false);
+
+const createAliveMissing = structuredClone(createBase);
+createAliveMissing.rows[0].sourceMode = 'ALIVE_REPLACEMENT';
+createAliveMissing.rows[0].provenanceEvidence = { curriculum: 'bound' };
+assert.equal(runCreate(createAliveMissing).ok, false);
+
+const createAliveNoParity = structuredClone(createBase);
+createAliveNoParity.rows[0].sourceMode = 'ALIVE_REPLACEMENT';
+createAliveNoParity.rows[0].provenanceEvidence = {
+  curriculum: 'bound',
+  answerCardinality: 'bound',
+};
+assert.equal(runCreate(createAliveNoParity).ok, true);
+
+console.log('ARCHIVE_STAGE_VALIDATOR_CREATE_V2_PASS');
