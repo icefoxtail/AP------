@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
   "stage": "R1",
   "examUid": "source-only-m2-20261004/21_신흥중_2학기_기말_중2_기출",
-  "artifactSha": "93dc7d3c8e16fe726ffaca0bbb36f3e9baa66d65",
+  "artifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
   "inputArtifactSha": "5bfbd2a37f0436195d017f5fe0c19c969eb4f083",
   "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
   "studentInputRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R1.student-input.json",
@@ -1180,9 +1180,9 @@
     {
       "qid": 18,
       "sourceMode": "AUDITED_REPAIR",
-      "sourceProvenance": "CREATE.source-repair-proposals.json#q18: option ③ restored to 5/9 under independent probability.",
+      "sourceProvenance": "R3 AUDITED_REPAIR: q18 prompt explicitly states replacement after each draw and independence; this closes the R2 ambiguity while retaining the existing corrected option ③=5/9.",
       "independentAnswer": "5/9",
-      "independentWork": "Using the stated single-draw probability and the implied independent draws, P(at least one strawberry)=1-(2/3)^2=5/9.",
+      "independentWork": "With replacement after each draw, the draws are independent; P(at least one strawberry)=1-(2/3)^2=5/9.",
       "independentAnswerFrozenBeforeStoredAnswer": true,
       "storedAnswer": "③",
       "compareResult": "MATCH",
@@ -1239,7 +1239,10 @@
           "solutionVisualNeeded": false,
           "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
         }
-      }
+      },
+      "artifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R3.evidence.json",
+      "r3RebindNote": "Changed locus rechecked; no answer or full-solution re-review performed."
     },
     {
       "qid": 19,
@@ -1304,7 +1307,10 @@
           "solutionVisualNeeded": false,
           "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. Clockwise pentagon vertex order checked."
         }
-      }
+      },
+      "artifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R3.evidence.json",
+      "r3RebindNote": "Current source choice ①=2/9 verified against source-page-3.png; R2 frozen input SHA 901054a97fdf11dc4a7cb9e49658e12e1f66fefc6e3aa94d7df0904fef3b24bc retained the prior duplicate snapshot, so its finding is stale against current R1 source."
     },
     {
       "qid": 20,
@@ -1630,5 +1636,19 @@
         }
       }
     }
-  ]
+  ],
+  "postMutationRebind": {
+    "inputArtifactSha": "93dc7d3c8e16fe726ffaca0bbb36f3e9baa66d65",
+    "finalArtifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+    "changedQids": [
+      18
+    ],
+    "directDependencyQids": [
+      19
+    ],
+    "scopeQids": [
+      18,
+      19
+    ]
+  }
 }
