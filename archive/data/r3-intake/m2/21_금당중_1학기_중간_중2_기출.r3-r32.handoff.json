@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_HANDOFF_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 13,
+  "examUid": "m2/1mid/21-geumdang",
+  "status": "HANDOFF_READY",
+  "ownerState": "RELINQUISHED",
+  "selectorEligible": true,
+  "finalArtifactSha": "6076a3bcd76374aa52a63f018b68a77d09806fcb",
+  "physicalEvidenceBlob": "c79c4cd56bf574699040b1165711a1194e67e2e5",
+  "decisionSnapshotBlob": "f0c0ba0df10a276a0a5e6b7ed49d1e857cc76eab",
+  "auditResult": "26/26_PASS_CANDIDATE",
+  "examMutationCount": 0,
+  "deterministicRepairCount": 0,
+  "sourceRepairRequired": false,
+  "openQids": [],
+  "actualCanonicalValidator": "NOT_RUN",
+  "r3PassDeclared": false,
+  "releaseQueueDeclared": false,
+  "validationSurface": {
+    "branch": "validation/m2-o13-r3-r32-20261005-1346",
+    "commit": "2b41353ef6053efe0c03587cc95a7cd72041c098",
+    "currentMainBase": "b08ba2db04ba3be4d172b718aee29e169f8655d3",
+    "existingO13PullRequest": 256,
+    "prHeadEvidenceCommit": "c3cf32e71bb7e2da0b1d19c81a22ea9d6586d4f6"
+  },
+  "capabilityBlocker": "GitHub connector exposed no workflow-dispatch action, and PR/comment trigger writes were blocked before side effect.",
+  "firstMissingClosureStep": "CANONICAL_R3_VALIDATOR_EXECUTION",
+  "requiredNextAction": "Run Archive Stage Validator by workflow_dispatch on validation/m2-o13-r3-r32-20261005-1346 with stage=R3, the o13 exam path, and the r3-r32 physical-evidence path; on PASS materialize validator/R3 receipts, transition R3_PASS->RELEASE_QUEUE, then remote readback."
+}
