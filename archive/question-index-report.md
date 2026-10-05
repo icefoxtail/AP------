@@ -9,8 +9,8 @@
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 485632 bytes
-- 시험지 JS 총 크기: 19630539 bytes
-- 인덱스 크기: 12373015 bytes
+- 시험지 JS 총 크기: 19673033 bytes
+- 인덱스 크기: 12373721 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(11620)" 기준이다.
@@ -29,7 +29,7 @@
 - 누락 id: 0
 - 누락 content: 0
 - 누락 choices: 0
-- 누락 level: 478
+- 누락 level: 455
 - 누락 standardUnit: 0
 - 누락 standardUnitKey: 0
 - 누락 standardCourse: 12
@@ -37,11 +37,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 2350
+- q.image 보유: 2349
 - content 내부 <img>: 26
 - content 내부 <svg>: 79
 - content 내부 <table>: 177
-- 시각요소 보유(hasImage=true, OR 합산): 2625
+- 시각요소 보유(hasImage=true, OR 합산): 2624
 
 ## 누락 예시
 
@@ -55,14 +55,14 @@
   - 없음
 
 ### level
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#1
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#2
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#3
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#4
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#5
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#6
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#7
-  - original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js#8
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_e096c669bb99f512a57e7383e36d57ef2534ab78aeb794605c9c197430bc48a3
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_47f15fd93f79484f6b466be24bd688d5abbfba734895462d97674396280d8219
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_e2625f0daf829b818c03659ac5c15f973a15a2a557ce4d9b7a64860155ac62d6
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_1d3d39f7f7a680bb3533173b8eecb519aecbb1ac78329baa2397856dce86273a
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_81b028a97af61d9c5c85f34737b9e38ae63c37818a14bb40a0f74f2c59708d07
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_685ceda707cd7842ae2889000b6b75efda29af06ad2fce6a19a10f5ffcadd118
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_0251148df84aac752249499886748271b339fb63a6172551608793f9162e0368
+  - textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js#qid_v1_0c587370973c7d176eb219c11f5aa99f7771d53ba225fe222730eb1fd0f333bb
 
 ### standardUnit
   - 없음
