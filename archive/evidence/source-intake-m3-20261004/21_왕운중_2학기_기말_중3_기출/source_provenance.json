@@ -206,8 +206,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "No crop can exclude adjacent answer choices without clipping the full circle/diagram."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 19,
@@ -815,11 +815,38 @@
         "directFullPageToFinalCropComparison": "PASS",
         "sameQuestionStemIncluded": "YES"
       }
+    },
+    {
+      "qid": 18,
+      "sourceQuestionNo": "18",
+      "sourcePage": 3,
+      "bboxPx": [
+        620,
+        940,
+        1125,
+        1460
+      ],
+      "bboxCoordinateSpace": "rendered source-page PNG pixels, origin top-left",
+      "sourcePdfSha256": "31aa3d78b0fd87e8b66f756a7e2636448e2a10031dca9d81f7ddf6f15f9127c4",
+      "fullPageRasterSha256": "266b95fbfb5bd8e2a10f34cae22a8672b89bb4c5923266676910e3124986d540",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/21_왕운중_2학기_기말_중3_기출/q18-r1.png",
+      "assetSha256": "80d38bb27ad45771f280752ce05593ea4a8bd29d576ee898690ba7d07a0f39d0",
+      "visualChecks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "foreignChoicesIncluded": "NO",
+        "sameQuestionChoicesIncluded": "YES",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
+        "directFullPageToFinalCropComparison": "PASS",
+        "reviewNote": "Complete q18 stem, circle, labels, shaded region and its five choices; no adjacent question included."
+      }
     }
   ],
   "examHold": [
-    "q18: source diagram crop cannot be isolated from choices without clipping.",
-    "q18: crop isolation would clip the circle or include its answer-choice text.",
     "q22 visual crop review remains HOLD: partial same-question stem fragment is clipped at the crop top edge and the source scan blot is present; source prompt itself was directly transcribed and is complete."
   ],
   "transcriptionRepairs": [
@@ -846,5 +873,6 @@
       "answerFieldAdded": false
     }
   ],
-  "notes": "q1’s marked word remains readable in the page-1 original. q12’s table headers are blurred, so visible entries were stated explicitly in text; the table image is omitted. q22’s readable measurements were retained and the scan-blotted figure reference was replaced by a text-only condition. q1 and q12 were reread from original page-1/page-2 pixels; student pencil marks were ignored. q12 prompt was restored to the printed wording, table values transcribed from the source, and its original crop remains linked. q22 printed prompt was reread and transcribed exactly; the existing image crop remains unchanged and its crop-quality HOLD is retained separately."
+  "notes": "q1’s marked word remains readable in the page-1 original. q12’s table headers are blurred, so visible entries were stated explicitly in text; the table image is omitted. q22’s readable measurements were retained and the scan-blotted figure reference was replaced by a text-only condition. q1 and q12 were reread from original page-1/page-2 pixels; student pencil marks were ignored. q12 prompt was restored to the printed wording, table values transcribed from the source, and its original crop remains linked. q22 printed prompt was reread and transcribed exactly; the existing image crop remains unchanged and its crop-quality HOLD is retained separately.",
+  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS"
 }
