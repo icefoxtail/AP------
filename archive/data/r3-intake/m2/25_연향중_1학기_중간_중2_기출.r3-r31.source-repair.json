@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOURCE_REPAIR_RECORD_v1",
+  "status": "D_SOURCE_CONFIRMED_TARGETED_RECHECK_PASS",
+  "sourceStatus": "D_SOURCE_CONFIRMED",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "canonicalOrdinal": 3,
+  "examUid": "m2/1mid/25-yeonhyang",
+  "examPath": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+  "branch": "work/middle/m2/25-yeonhyang-1mid-r3-1-20261004-1143",
+  "branchHeadBefore": "1c4ca87b86deba907aed10c8115b7aa91cb8fd97",
+  "latestMainSha": "8c1c918679f3df7b31df18598d75cb429e6ec35a",
+  "baseMainSha": "d5463a336d95ce7f8d018860d8413f08d267f29d",
+  "inputArtifactGitBlob": "1688365b9050d5aef814c878acaabc845456c0d7",
+  "finalArtifactGitBlob": "8ea533a4c437d7831bed4561acaaf04cf98dbd60",
+  "finalArtifactSha256": "sha256:037899d30270ac77d26a19c7c33e7f7e5486b086ecde7cce084dbb810b2d8e00",
+  "source": {
+    "problemPdf": "D:/기출/(1)1중간/(1)1중간/중2/2025_연향중2_수학_1중간.pdf",
+    "problemPdfSha256": "C5ABD1C5053DD4FF04471B10C6066C679D0328822D1BE8EC044BAD5EDBB1C4F4",
+    "pages": 4,
+    "answerPdf": "D:/기출/(1)1중간/(1)1중간/중2/2025_연향중2_정답_1중간.pdf",
+    "answerPdfSha256": "DD4B946D1135426339F0092975B517195EFB9EA8BD8E5B159BD7EC9A2ED2CD35",
+    "answerKeyPage": 2,
+    "identity": {
+      "school": "순천연향중학교",
+      "grade": "2학년 수학",
+      "examYear": 2025,
+      "semester": 1,
+      "examType": "중간고사"
+    },
+    "questionMapping": {
+      "qid": 23,
+      "printedOrdinal": "서술형 3",
+      "pdfPage": 4,
+      "printedPage": "4/4",
+      "adjacentContext": "same page contains written-response 1 and 2; stem and graph match",
+      "exactStemParity": true
+    },
+    "facts": {
+      "numberLineBoundary": -1,
+      "endpoint": "closed",
+      "direction": "rightward",
+      "solutionSet": "x≥-1"
+    },
+    "answerKey": "a+b=-6"
+  },
+  "locus": {
+    "qid": 23,
+    "changedFields": [
+      "image",
+      "solution",
+      "tags"
+    ],
+    "unchangedFields": [
+      "content",
+      "choices",
+      "answer"
+    ],
+    "removedSourceDebtTag": "원본대조필요",
+    "sourceAsset": {
+      "field": "image",
+      "ref": "assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+      "path": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+      "sha256": "sha256:5ba80c17565e096150c68dcc8b09abae047f98a5ff6d01649ef46a5f050290d3",
+      "gitBlobSha": "25d9f507a9388d44db244732e8fc9898a97d4476",
+      "dimensions": {
+        "width": 675,
+        "height": 340
+      },
+      "cropBoxOn300DpiPagePx": [
+        1470,
+        520,
+        2145,
+        860
+      ]
+    }
+  },
+  "math": {
+    "inequality": "(4+a)x≤b+2",
+    "coefficientCondition": "a<-4 therefore 4+a<0",
+    "solutionAfterDivision": "x≥(b+2)/(4+a)",
+    "boundaryEquation": "(b+2)/(4+a)=-1",
+    "result": "a+b=-6"
+  },
+  "metaResolution": {
+    "recordPath": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.q23-rpm-resolution.json",
+    "recordId": "M2-RPM-141",
+    "path": "M2-1 > 해의 조건 > 계수 조건",
+    "resolverEvidenceSha": "sha256:59c12432fd667a3cc5c631d96bddfa70a7685c354fa8bd69eb0f71869f08226a",
+    "inputBundleSha": "sha256:e2f59e233ef54c0bee44580edb56aa43fc96327e6003b29f26e9be2d30d2952f",
+    "validatorStatus": "PASS",
+    "semanticStatus": "FINAL",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+    "noPTTPLInvented": true
+  },
+  "calibration": {
+    "repairPreflight": "R3_REPAIR PASS",
+    "r3RecheckPreflight": "R3 PASS",
+    "lockedScopeQualityComparisons": "22/22 inherited from unchanged R3_LOCKED baseline",
+    "changedScopeQualityComparisons": "q23 1/1 after source repair"
+  },
+  "lockedScope": {
+    "questionIds": "1-22",
+    "examQuestionMutationCount": 0
+  },
+  "validation": {
+    "nodeSyntax": "PASS",
+    "nodeLoad": "PASS",
+    "sourceAssetDecode": "PASS",
+    "assetReferenceExists": true,
+    "rpmResolver": "PASS",
+    "targetedReviewEvidenceGate": "PASS",
+    "lockedScopeMutationCount": 0,
+    "targetedReviewEvidencePath": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.q23-targeted-review-evidence.json",
+    "targetedReviewEvidenceGitBlob": "3897080c2186653d1df8d23f128563e5bafeea85",
+    "targetedReviewEvidenceSha256": "sha256:f7924eea34eb5925db2a2e5c9f9833dc933f98e233ca2d61c922da363e037315",
+    "targetedReviewGatePath": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.q23-targeted-review-gate.json",
+    "targetedReviewGateGitBlob": "3e0d48f5a4c3ae3f253d6ca3068165a08939a440",
+    "targetArtifactGitBlob": "a9eade12d649768036ef076ff01fdd4e19599394",
+    "targetedGateQuestionCount": 1,
+    "targetedGateItemHoldCount": 0,
+    "reviewEvidenceGate": "PASS_TARGETED_Q23"
+  },
+  "files": {
+    "exam": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+    "sourceAsset": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+    "metaSidecar": "archive/data/r2e-intake/m2/25_연향중_1학기_중간_중2_기출.create.meta-v2.metadata.json",
+    "r3PhysicalEvidence": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.physical-evidence.json",
+    "checkpoint": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.checkpoint.json",
+    "resolver": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.q23-rpm-resolution.json",
+    "sourceRepairRecord": "archive/data/r3-intake/m2/25_연향중_1학기_중간_중2_기출.r3-r31.source-repair.json"
+  },
+  "mainMutationCount": 0,
+  "next": "Source repair queue item is closed. The same R3 continuation has a q23 targeted canonical gate PASS and q1-q22 unchanged; only any remaining source-free stage receipt/release closure remains."
+}
