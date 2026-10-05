@@ -1,5 +1,16 @@
 # JS Archive Automation Stable Operating Contract v1
 
+## ABSOLUTE FIRST RULE — NON-STOP LANES — HARD (2026-10-05)
+
+형님의 현재 명시 지시: **THANOS / R1 / R2 / R3 / MAIN-MERGE 및 그 TEMP·복제 레인은 어떤 오류가 있어도 스스로 멈추지 않는다. 이 규칙이 아래 모든 운영 문구보다 우선한다.**
+
+- worker가 스스로 `self-disable`, pause, retire, OFF 전환, schedule 비활성화·삭제, “오류 때문에 다음 run 중단”을 결정하는 것을 금지한다.
+- validator FAIL, write/merge 충돌, tool/provider 실패, receipt/권한/stale/source/infra blocker가 생겨도 **lane 자체는 ON 유지**한다. 특정 target을 안전하게 진행할 수 없으면 그 target만 멈추고 다음 run은 계속 돈다.
+- current run에서 해결 가능하면 **state refresh → 최소 수정 → materially different safe path → validator/readback → stage closure** 순으로 직접 해결한다.
+- current run에서 해결 불가하면 `NONSTOP_ERROR_REPORT`를 남긴다: `lane / target / stage / exact error / completedStep / firstMissingClosureStep / attempted paths / required next action`.
+- 오류 보고는 LANE CURRENT 및 WATCHDOG-visible ERROR_QUEUE에 남긴다. WATCHDOG/상위 GPT가 전부 수집해 해결 계획을 세우고, 상위 GPT도 해결 불가하거나 사용자 판단이 필요할 때만 형님에게 결정 요청한다.
+- `NO_WORK`는 이번 run의 eligible target이 0이라는 뜻일 뿐 **lane 정지 사유가 아니다**. 다음 scheduled run은 그대로 실행한다.
+- 오직 **형님의 명시적 지시**만 이들 lane을 OFF/휴식/중지/삭제할 수 있다. 과거의 오류 시 stop/global blocker 시 lane stop 문구는 superseded다.
 - 상태: **ACTIVE — M2-1 THANOS MASTER ×5 / CURRENT**
 - 동결일: 2026-10-03
 - 최상위 authority: 형님의 현재 명시 지시
@@ -12,7 +23,7 @@
 - 신규 학년·학기·시험지 묶음의 예약 worker 생성, cohort 전환, 공통 prompt 결함 수정 시 반드시 `docs/rules/02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md`을 COPY SOURCE로 사용한다.
 - 기존 active automation prompt는 runtime instance이지 template authority가 아니다.
 - 일반화 가능한 incident는 **canonical prompt template 수정 → version bump → Notion ACTIVE/CURRENT 동기화 → 필요한 active role prompt 일괄 migration → readback** 순서로 닫는다.
-- current template version: **PROMPT_TEMPLATE_V1.3.1**.
+- current template version: **PROMPT_TEMPLATE_V1.3.2**.
 - template의 NEVER DELETE 철학: EXAM-LEVEL CONVEYOR, dedicated worker=throughput owner, THANOS=rescue/closure owner, first-refusal, one-exam max, single-writer, physical PASS authority, handoff+lease relinquish, handed-off target 자동 재점유 금지, recurring worker self-disable 금지.
 
 
