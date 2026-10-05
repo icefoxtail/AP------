@@ -54,7 +54,11 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
           await inspector.close();if(result.status!=='PASS')errors.push(...result.errors.map(v=>target.id+':'+v));
           const matches=page.locator('#print-area .sol-image-wrap img[src*="'+asset.path.replace(/^archive\//,'')+'"]');
-          if(await matches.count())await matches.first().screenshot({path:path.join(folder,prefix+'-'+target.id+'.png')});
+          if(await matches.count()){
+            await matches.first().screenshot({path:path.join(folder,prefix+'-'+target.id+'.png')});
+            const nativeBox=matches.first().locator('xpath=ancestor::div[contains(@class,"q-box")][1]');
+            if(await nativeBox.count())await nativeBox.screenshot({path:path.join(folder,prefix+'-'+target.id+'-context.png')});
+          }
         }
         await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});
       }catch(error){errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}

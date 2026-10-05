@@ -1,0 +1,226 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import {invokeVisualContinuation,nativeImageInput} from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
+import {canonicalJson,objectSha,bytesSha,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
+import {questionUidV2,normalizeSourceExamIdRegistry} from '../../pipeline-core/question-uid.mjs';
+import {loadBank} from '../build-visual-render-matrix.mjs';
+import {recordArchiveEvidence} from '../record-visual-browser-evidence.mjs';
+import {assetIdentity,planHash} from './contracts.mjs';
+import {commitStage,generatedPath,GENERATED_ROOT,calculationStage} from './store.mjs';
+import {pythonWorker} from './worker.mjs';
+import {reconstruct,compareReconstruction} from './cindy-observer.mjs';
+import {dependency,dependencyRoot} from './dependencies.mjs';
+import {typesetter} from './typography.mjs';
+import {scopeFingerprint,mathFingerprint} from './fingerprint.mjs';
+import {RepairBudget} from './repair-budget.mjs';
+import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
+
+const root=fileURLToPath(new URL('../../../../',import.meta.url));
+const schema={type:'object',properties:{status:{type:'string',enum:['PASS','FAIL','UNSUPPORTED']},payload:{type:'string'}},required:['status','payload'],additionalProperties:false};
+const compilerContract=`Return payload as a JSON object. For geometry: {capability:'construction-spike-v1',mathPlan:{schemaVersion:'construction-spike-v1',nodes:[...]},displaySegments:[{id,refs:[pointId,pointId]}],coordinateLabels:[pointId],caption:string}. Each node has id (ASCII alphanumeric starts letter), op, inputs, args, outputType, factRole GIVEN/DERIVED_INTERMEDIATE/CONCLUSION. Supported ops SOURCE_POINT (args coordinates=[typedScalar,typedScalar]), NORMALIZATION_ORIGIN(args {}), NORMALIZATION_AXIS(args length=typedScalar), MIDPOINT, LINE_THROUGH, PERPENDICULAR_FOOT, CIRCLE_CENTER_RADIUS(args radius=typedScalar), INTERSECTION (POINT_SET), SELECT_POINT (branch {kind:'SIDE_OF_ORIENTED_LINE',refs:[A,B],sign:1|-1}). All other point outputs POINT, lines LINE, circles CIRCLE. Derived points must never have raw coordinates. typedScalar={kind:'integer',value:'decimal integer'} or {kind:'rational',numerator:'...',denominator:'...'} or {kind:'expression',op:'sqrt'|'add'|'sub'|'mul'|'div'|'neg'|'pow',args:[typedScalars]}. For coordinate-free SSS use realization:{recipeId:'SSS_POSITIVE_SIDE_v1',unit:'source-length',reflectionEquivalent:true} inside mathPlan, A origin, B positive x at source AB distance, C selected positive side of two circles. Use source length values, and compute any necessary missing distance exactly from verified solution (e.g sqrt(34)). Explicitly state source bindings for each introduced normalization/label in conditions. Do not add unused construction circles to displaySegments. For graph: {capability:'polynomial-spike-v1',graphPlan:{family:'polynomial',coefficients:['constant','x coefficient','x squared coefficient',...],domain:[lo,hi],viewport:[xmin,xmax,ymin,ymax]},caption:string}. Coefficients are exact integer or rational strings; max degree4. Domain/viewports must show the source's decisive structure. Do not guess symbolic coefficients. Reject unsupported source. caption is short student-facing Korean, with no internal/debug terms. Either plan must have sourceConditions:[{id,condition,mappedTo}] and newVisualInformation:[string] and no unsupported source condition. No SVG, raw derived coordinates, or measurements.`;
+async function provider(purpose,packet,images,traceDir,allowFailure=false){
+  const response=await invokeVisualContinuation({root,traceDir,purpose,input:[{type:'text',text:canonicalJson(packet)},...images.map(nativeImageInput)],outputSchema:schema});
+  const payload=JSON.parse(response.output.payload);
+  if(response.output.status!=='PASS'&&!allowFailure)throw Error(purpose+':'+response.output.status+':'+response.output.payload);
+  return {...response,payload,inputPacket:packet,inputSha256:objectSha(packet),imageShas:images.map(i=>bytesSha(Buffer.from(i.split(',')[1],'base64')))};
+}
+function receipt(stage,outputs,provenance){return commitStage(root,{stage,key:objectSha({outputsSha:Object.fromEntries(Object.entries(outputs).map(([k,v])=>[k,bytesSha(Buffer.from(v))])),invocation:crypto.randomUUID()}),outputs,provenance});}
+function freeze(stage,value,provenance){return receipt(stage,{[stage.toLowerCase()+'.json']:canonicalJson(value)},provenance);}
+async function worker(payload){const r=await pythonWorker(payload);if(r.status!=='OK')throw Error(r.result.code);return r.result;}
+function specFor(plan,model,id){
+  if(plan.capability==='polynomial-spike-v1'){
+    const p=plan.graphPlan,v=p.viewport;const terms=p.coefficients.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
+    const expr=terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c;const coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join('');
+    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:0},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{},objects:[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain},{id:'formula',kind:'EQUATION_LABEL',text:'y='+expr,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}]};
+  }
+  const points=model.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);
+  const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1),pad=span*.35;
+  const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation}));const notationByLabel={},factRolesByLabel={};
+  for(const s of plan.displaySegments||[]){if(!points[s.refs[0]]||!points[s.refs[1]])throw Error('DISPLAY_SEGMENT_UNKNOWN_REF');objects.push({id:s.id,kind:'SEGMENT',from:points[s.refs[0]].approximation,to:points[s.refs[1]].approximation});}
+  for(const id of plan.coordinateLabels||[]){const node=plan.mathPlan.nodes.find(n=>n.id===id);if(node?.op!=='SOURCE_POINT')throw Error('ONLY_SOURCE_COORDINATE_LABEL_SUPPORTED');objects.push({id:id+'-coordinate',kind:'COORDINATE_LABEL',target:id,exact:node.args.coordinates.map(v=>v.kind==='integer'?v.value:v.kind==='rational'?v.numerator+'/'+v.denominator:(()=>{throw Error('UNSUPPORTED_COORDINATE_NOTATION');})())});}
+  for(const label of plan.scalarLabels||[]){
+    const scalar=model.scalars[label.nodeId];if(!scalar)throw Error('SCALAR_LABEL_UNKNOWN_NODE');
+    const segment=plan.displaySegments.find(s=>s.id===label.ownerSegment);if(!segment)throw Error('SCALAR_LABEL_OWNER_MISSING');
+    const [a,b]=segment.refs.map(r=>points[r].approximation);
+    const role=plan.mathPlan.nodes.find(n=>n.id===label.nodeId).factRole;
+    const sourceLength=!!label.unit&&role!=='CONCLUSION';
+    const id=label.nodeId+'-value';objects.push({id,kind:sourceLength?'LENGTH_LABEL':'EQUATION_LABEL',target:label.ownerSegment,...(sourceLength?{refs:[label.ownerSegment],value:scalar.approximation}:{}),text:(sourceLength?'':label.prefix+'=')+scalarExpression(scalar.exact),at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
+    notationByLabel[id]={...(!sourceLength&&/^[A-Z]{2}$/.test(label.prefix)?{entity:label.prefix}:{}),...(label.unit?{unit:label.unit}:{})};factRolesByLabel[id]=role;
+  }
+  for(const label of plan.segmentLabels||[]){
+    const segment=plan.displaySegments.find(s=>s.id===label.ownerSegment);if(!segment||!/^[A-Za-z]$/.test(label.variable))throw Error('UNSUPPORTED_SEGMENT_NOTATION');
+    const [a,b]=segment.refs.map(r=>points[r].approximation);objects.push({id:label.id,kind:'EQUATION_LABEL',target:label.ownerSegment,text:label.variable,at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
+    notationByLabel[label.id]=label.unit?{unit:label.unit}:{};factRolesByLabel[label.id]=label.factRole;
+  }
+  for(const angle of plan.rightAngles||[])objects.push({id:angle.id,kind:'ANGLE_MARK',refs:angle.refs,value:90});
+  return {id,visualType:'line_circle_geometry',viewport:{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad,width:384,height:320,panel:0},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id)},objects};
+}
+
+export async function runPhase2({sourcePath,ordinal,replayResultRef=null}){
+  const sourceRef=fileRef(root,sourcePath),raw=readBoundFile(root,sourceRef).toString('utf8'),bank=loadBank(raw),question=JSON.parse(JSON.stringify(bank.find(q=>q.id===ordinal)));
+  if(!question)throw Error('SOURCE_QUESTION_NOT_FOUND');
+  const context={window:{}}; // title is a locator; stable id is fixed by the generated registry.
+  const sourceExamId=path.basename(sourcePath,'.js');const uid=questionUidV2(sourceExamId,ordinal),identity=assetIdentity(uid,'SOLUTION_VISUAL');
+  const journal=GENERATED_ROOT+'/phase2/'+identity.assetId+'/'+crypto.randomUUID();const folder=generatedPath(root,journal);fs.mkdirSync(folder,{recursive:true});
+  const provenance={identity,sourceRef};let stages=[],result;const repairBudget=new RepairBudget();
+  try{
+    const registry=normalizeSourceExamIdRegistry({schemaVersion:'SOURCE_EXAM_ID_REGISTRY_v1',entries:[{canonicalSourceExamId:sourceExamId,sourceExamId,sourceIdentityKey:'ARCHIVE_ORIGINAL:'+sourceExamId,status:'ACTIVE',sourceQuestionOrdinal:ordinal,questionUidV2:uid,legacyQuestionUid:sourcePath+'|'+sourceExamId+'|'+ordinal,sourcePath,sourceSha256:sourceRef.sha256}]});
+    stages.push(freeze('UID_AUTHORITY',registry,provenance));
+    const images=[];for(const imagePath of [question.image].filter(Boolean)){const relative='archive/'+imagePath;const bytes=readBoundFile(root,fileRef(root,relative));images.push('data:image/'+(imagePath.endsWith('.svg')?'svg+xml':imagePath.endsWith('.jpg')?'jpeg':'png')+';base64,'+bytes.toString('base64'));}
+    const sourceOnly={content:question.content,choices:question.choices??null,sourceImageRequired:!!question.image};
+    let frozen,plan,planReceipt,solutionRef;
+    if(replayResultRef){
+      const previous=JSON.parse(readBoundFile(root,replayResultRef));
+      if(previous.identity.questionUid!==uid||previous.sourceRef.sha256!==sourceRef.sha256)throw Error('REPLAY_SOURCE_MISMATCH');
+      const priorStages=previous.stages.map(ref=>({ref,value:JSON.parse(readBoundFile(root,ref))}));
+      const plans=priorStages.filter(s=>s.value.stage==='PLAN');if(!plans.length)throw Error('REPLAY_PLAN_REQUIRED');
+      const ref=plans.at(-1).value.outputs[0];frozen=JSON.parse(readBoundFile(root,ref));
+      if(planHash(frozen)!==frozen.planSha256)throw Error('REPLAY_PLAN_HASH_MISMATCH');
+      const reviews=priorStages.filter(s=>s.value.stage==='SOURCE_REVIEW').map(s=>JSON.parse(readBoundFile(root,s.value.outputs[0])));
+      let sourceReview=reviews.find(r=>r.inputSha256===frozen.sourceReviewInputSha256&&r.output.status==='PASS');
+      if(!sourceReviewClosed(sourceReview))throw Error('REPLAY_SOURCE_REVIEW_REQUIRED');
+      const verified=JSON.parse(readBoundFile(root,frozen.verifiedSolutionRef));if(!verificationClosed(verified))throw Error('REPLAY_SOLUTION_NOT_VERIFIED');
+      const currentImageShas=images.map(i=>bytesSha(Buffer.from(i.split(',')[1],'base64')));
+      if(canonicalJson(sourceReview.imageShas)!==canonicalJson(currentImageShas)||canonicalJson(verified.imageShas)!==canonicalJson(currentImageShas))throw Error('REPLAY_SOURCE_IMAGE_STALE');
+      solutionRef=frozen.solutionRef;readBoundFile(root,solutionRef);
+      const {schemaVersion,questionUid,visualAssetKey,sourceRef:sourceBinding,solutionRef:solutionBinding,verifiedSolutionRef,sourceReviewInputSha256,sourceReviewPolicySha256,planSha256,...semantic}=frozen;plan=semantic;
+      if(objectSha(sourceReview.inputPacket.proposedPlan)!==objectSha(plan))throw Error('REPLAY_PLAN_REVIEW_BINDING_MISMATCH');
+      stages.push(...priorStages.filter(s=>['PLAN','SOURCE_REVIEW','VERIFIED_SOLUTION','PLANNER'].includes(s.value.stage)).map(s=>({...s.value,manifestRef:s.ref})));
+      planReceipt={outputs:[ref]};
+      console.log(JSON.stringify({stage:'FROZEN_PLAN_REPLAY',uid}));
+      const currentPolicy=sourcePolicyFingerprint(root);
+      if(frozen.sourceReviewPolicySha256!==currentPolicy){
+        console.log(JSON.stringify({stage:'SOURCE_POLICY_REVALIDATION',uid}));
+        sourceReview=await provider('REVIEW_SOURCE_CONDITIONS',{instruction:SOURCE_REVIEW_INSTRUCTION,reviewPolicySha256:currentPolicy,source:sourceOnly,proposedPlan:plan},images,folder,true);
+        stages.push(freeze('SOURCE_REVIEW',sourceReview,provenance));if(!sourceReviewClosed(sourceReview))throw Error('CURRENT_SOURCE_POLICY_REVIEW_FAIL');
+        frozen={...frozen,sourceReviewInputSha256:sourceReview.inputSha256,sourceReviewPolicySha256:currentPolicy};delete frozen.planSha256;frozen.planSha256=planHash(frozen);
+        planReceipt=freeze('PLAN',frozen,provenance);stages.push(planReceipt);
+      }
+    }else{
+    console.log(JSON.stringify({stage:'VERIFIED_SOLUTION',uid}));
+    const verified=await provider('VERIFY_SOURCE_SOLUTION',{instruction:'Independently solve this actual Archive question using supplied source/image, then compare with existing answer and solution. Do not trust the solution. Return PASS only if fully correct. Payload must include independentlyExtractedSourceConditions:[string], recomputedAnswer:string, solutionComparison:string, uncoveredConditions:[].',source:sourceOnly,answer:question.answer,solution:question.solution},images,folder);
+    if(!verificationClosed(verified))throw Error('VERIFIED_SOLUTION_CONDITION_COVERAGE_MISSING');
+    const verifiedReceipt=freeze('VERIFIED_SOLUTION',verified,provenance);stages.push(verifiedReceipt);
+    solutionRef=receipt('SOLUTION_INPUT',{'solution.txt':question.solution},provenance).outputs[0];
+    console.log(JSON.stringify({stage:'PLANNER',uid}));
+    const extendedContract=compilerContract+' Also supported: SEGMENT_LENGTH(inputs two POINT, args{}, outputType SCALAR) and SCALAR_SQUARE(inputs one SCALAR,args{},outputType SCALAR). Geometry must actually calculate decisive distance/length using these nodes when relevant; scalarLabels:[{nodeId,ownerSegment,prefix,unit?:string}] displays that exact result near the owner segment. prefix is source entity, e.g AB or x^2. Also supported rightAngles:[{id,refs:[rayPoint,vertex,rayPoint],factRole:GIVEN|DERIVED_INTERMEDIATE}] for square markers and segmentLabels:[{id,ownerSegment,variable:single-letter,unit?:cm|m,factRole:GIVEN}] for source variable/unit labels. Do not create duplicate labels with same owner and content. Avoid unnecessary LINE_THROUGH nodes when only a display segment is needed. All scalar node dependencies may follow SELECT_POINT. Display segments must use distinct IDs from mathPlan point/scalar IDs. Original question content, score, choices, answer and solution remain unchanged in the actual Archive bank. You need not redraw those as visual labels; map these conditions to PRESERVED_ARCHIVE_BANK.';
+    let planner=await provider('PLAN_VISUAL',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,verification:verified.payload},images,folder);
+    plan=planner.payload;
+    stages.push(freeze('PLANNER',planner,provenance));
+    if(!plan.sourceConditions?.length||!plan.newVisualInformation?.length){
+      const repair=repairBudget.consume('PLANNER_SCHEMA',objectSha(plan),'MISSING_COVERAGE_OR_BENEFIT');
+      planner=await provider('REPAIR_PLAN_SCHEMA',{instruction:extendedContract+' REQUIRED TOP-LEVEL sourceConditions:[{id,condition,mappedTo}] AND newVisualInformation:[string]. No wrapper around plan. Include them in your full corrected output.',source:sourceOnly,verifiedSolution:question.solution,previousPlan:plan,defect:'PLANNER_SOURCE_COVERAGE_OR_BENEFIT_MISSING'},images,folder);plan=planner.payload;
+      stages.push(freeze('PLANNER',planner,provenance));
+      repairBudget.complete(repair,objectSha(plan));
+      if(!plan.sourceConditions?.length||!plan.newVisualInformation?.length)throw Error('PLANNER_SOURCE_COVERAGE_OR_BENEFIT_MISSING');
+    }
+    if(!['construction-spike-v1','polynomial-spike-v1'].includes(plan.capability))throw Error('UNSUPPORTED_CAPABILITY');
+    console.log(JSON.stringify({stage:'INDEPENDENT_SOURCE_CONDITIONS',uid}));
+    let sourceReview;
+    for(let revision=0;revision<=3;revision++){
+      stages.push(freeze('PLANNER',planner,provenance));
+      if(plan.mathPlan){
+        const normalized=await pythonWorker({action:'construction',graph:plan.mathPlan});
+        if(normalized.status!=='OK'){
+          stages.push(freeze('NORMALIZATION_REJECTION',normalized,provenance));
+          if(revision===3)throw Error('NORMALIZATION_REPAIR_BUDGET_EXHAUSTED');
+          const repair=repairBudget.consume('NORMALIZER',objectSha(plan),normalized.result.code);
+          planner=await provider('REPAIR_TYPED_PLAN',{instruction:extendedContract+' IMPORTANT SELECT_POINT must have args:{} and branch:{kind,refs,sign} at the NODE TOP LEVEL. Never put branch inside args. Return full corrected plan.',source:sourceOnly,verifiedSolution:question.solution,previousPlan:plan,normalizerError:normalized.result},images,folder);plan=planner.payload;repairBudget.complete(repair,objectSha(plan));continue;
+        }
+      }
+      sourceReview=await provider('REVIEW_SOURCE_CONDITIONS',{instruction:SOURCE_REVIEW_INSTRUCTION,reviewPolicySha256:sourcePolicyFingerprint(root),source:sourceOnly,proposedPlan:plan},images,folder,true);
+      stages.push(freeze('SOURCE_REVIEW',sourceReview,provenance));
+      if(sourceReviewClosed(sourceReview))break;
+      if(revision===3)throw Error('SOURCE_REVIEW_REPAIR_BUDGET_EXHAUSTED');
+      console.log(JSON.stringify({stage:'PLAN_REPAIR',uid,revision:revision+1}));
+      const repair=repairBudget.consume('SOURCE_REVIEW',objectSha(plan),objectSha(sourceReview.payload));
+      planner=await provider('REPAIR_VISUAL_PLAN',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,previousPlan:plan,defects:sourceReview.payload},images,folder);plan=planner.payload;repairBudget.complete(repair,objectSha(plan));
+    }
+    if(!sourceReviewClosed(sourceReview))throw Error('SOURCE_REVIEW_NOT_CLOSED');
+    frozen={...plan,schemaVersion:'VISUAL_PHASE2_PLAN_v1',questionUid:uid,visualAssetKey:identity.visualAssetKey,sourceRef,solutionRef,verifiedSolutionRef:verifiedReceipt.outputs[0],sourceReviewInputSha256:sourceReview.inputSha256,sourceReviewPolicySha256:sourcePolicyFingerprint(root)};
+    frozen.planSha256=planHash(frozen);planReceipt=freeze('PLAN',frozen,provenance);stages.push(planReceipt);
+    }
+    const fingerprint=scopeFingerprint(root,plan.capability);
+    console.log(JSON.stringify({stage:'MATH',uid}));
+    const action=plan.mathPlan?{action:'construction',graph:plan.mathPlan}:{action:'graph',graphPlan:plan.graphPlan};
+    const math=await calculationStage(root,{stage:'MATH',key:objectSha({action,implementation:mathFingerprint(root,plan.capability)}),provenance},async()=>({'model.json':canonicalJson(await worker(action))}));stages.push(math.receipt);
+    const model=JSON.parse(readBoundFile(root,math.receipt.outputs[0]));
+    let reconstruction;
+    if(plan.mathPlan){const peer=reconstruct(plan.mathPlan);reconstruction={...compareReconstruction(model,peer),peer};}
+    else reconstruction=await workerGraphAudit(plan.graphPlan,model.svg,model.transform);
+    stages.push(freeze('MATH_REVIEW',reconstruction,provenance));if(reconstruction.status!=='PASS')throw Error('MATH_RECONSTRUCTION_FAIL');
+    const spec=specFor(plan,model,identity.assetId);stages.push(freeze('NORMALIZE',spec,provenance));
+    const displayEnvelope={schemaVersion:'DISPLAY_ENVELOPE_v1',targetUid:uid,occurrence:0,sizeClass:'full',maxWidthCssPx:390,maxHeightCssPx:null,expectedMinimumScale:.6,fit:'NONE',viewport:{width:1440,height:1000},provenance:{engineRef:fileRef(root,'archive/engine.html'),policy:'PHASE2_GENERATED_FULL_v1',measurementStatus:'POLICY_BOUND_NOT_MEASURED'}};
+    stages.push(freeze('DISPLAY_ENVELOPE',displayEnvelope,provenance));
+    const prepared=await worker({action:'prepare',spec});const t=typesetter(),fragments={};
+    for(const label of prepared.labels){
+      if(label.kind==='CONDITION_BOX')throw Error('UNSUPPORTED_MULTILINE_PHASE2_LABEL');
+      const numericTick=label.kind==='GRAPH_ANNOTATION'&&/^[-−\d.]+$/.test(label.text);
+      const role=spec.displayFacts.factRolesByLabel?.[label.id]||plan.mathPlan?.nodes.find(n=>n.id===label.target)?.factRole||'DERIVED_INTERMEDIATE';
+      fragments[label.id]=t({id:label.id,owner:label.target||label.id,factRole:role,fontPx:20,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);
+    }
+    stages.push(freeze('TYPESET',fragments,provenance));
+    const browser=await dependency('playwright').chromium.launch({channel:'chrome',headless:true});const measurements={};
+    try{const page=await browser.newPage();for(const [id,fragment] of Object.entries(fragments)){await page.setContent(fragment.svg);const bbox=await page.locator('svg').first().evaluate(e=>{const b=e.getBBox(),r=e.getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,height:b.height,viewportWidth:r.width,viewportHeight:r.height};});if(bbox.width<=0||bbox.height<=0)throw Error('FRAGMENT_BROWSER_MEASUREMENT_MISSING');measurements[id]=[bbox.viewportWidth,bbox.viewportHeight];fragment.observedBBox=bbox;}}finally{await browser.close();}
+    stages.push(freeze('MEASURE',{measurements,observedFragments:fragments,displayEnvelope},provenance));
+    const built=await worker({action:'build',spec,measurements,fragments});
+    if(built.witness.layout.unresolved.length||built.witness.layout.suppressed.length)throw Error('LAYOUT_INVENTORY_INCOMPLETE:'+JSON.stringify(built.witness.layout));
+    const builtReceipt=receipt('BUILD',{'visual.svg':built.svg,'witness.json':canonicalJson(built.witness)},provenance);stages.push(builtReceipt);const asset=builtReceipt.outputs.find(r=>r.path.endsWith('.svg'));
+    const staticAudit=await workerPrimitiveAudit({svg:built.svg,points:reconstruction.peer?.points??null,segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:built.witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'});
+    if(plan.graphPlan)staticAudit.graph=await workerGraphAudit(plan.graphPlan,built.svg,{...built.witness.coordinateModel,displayScale:1});
+    stages.push(freeze('STATIC_AUDIT',staticAudit,provenance));if(staticAudit.status!=='PASS'||staticAudit.graph&&staticAudit.graph.status!=='PASS')throw Error('STATIC_AUDIT_FAIL:'+JSON.stringify(staticAudit.errors));
+    console.log(JSON.stringify({stage:'ACTUAL_ARCHIVE',uid}));
+    const patch={solutionImage:asset.path.replace(/^archive\//,''),solutionImageSize:'full',solutionImageAlt:plan.caption};
+    const candidate=raw+'\n;Object.assign(window.questionBank.find(q=>q.id==='+ordinal+'),'+JSON.stringify(patch)+');\n';
+    const patched=JSON.parse(JSON.stringify(loadBank(candidate))),original=JSON.parse(JSON.stringify(bank));
+    const touched=['solutionImage','solutionImageSize','solutionImageAlt'];
+    for(let i=0;i<original.length;i++){const before={...original[i]},after={...patched[i]};if(before.id===ordinal)for(const field of touched){delete before[field];delete after[field];}if(canonicalJson(before)!==canonicalJson(after))throw Error('ARCHIVE_PROTECTED_FIELD_MUTATION');}
+    const protectedParity={status:'PASS',sourceRef,originalQuestionSha256:objectSha(question),questionCount:bank.length,protectedFields:['content','choices','answer','solution','image'],changedFields:touched,targetOrdinal:ordinal};
+    const candidateReceipt=receipt('ARCHIVE_BANK',{'candidate.js':candidate,'protected-parity.json':canonicalJson(protectedParity)},provenance);const candidateRef=candidateReceipt.outputs.find(o=>o.path.endsWith('/candidate.js'));stages.push(candidateReceipt);
+    // Existing collector uses bare RAW-file hex, not the Python object hash.
+    // This explicit adapter preserves that legacy meaning and keeps new refs intact.
+    const rawHex=ref=>ref.sha256.slice(7);
+    const bankInfo={id:identity.assetId,sourcePath,sourceSha256:rawHex(sourceRef),candidatePath:candidateRef.path,candidateSha256:rawHex(candidateRef),questionCount:bank.length,assets:[{id:identity.assetId,path:asset.path,sha256:rawHex(asset),questionId:ordinal}]};
+    const matrix={synthetic:false,legacyHashAlgorithm:'SHA256_RAW_HEX_v1',engineSha256:rawHex(fileRef(root,'archive/engine.html')),sources:[bankInfo],rows:[{...bankInfo,mode:'sol',viewport:'desktop',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))}]};
+    fs.writeFileSync(path.join(folder,'archive-render-matrix.json'),canonicalJson(matrix));
+    process.env.GEOMETRY_NODE_MODULES ||= path.join(dependencyRoot,'node_modules');
+    const archive=await recordArchiveEvidence({run:folder});
+    const captureFolder=path.join(folder,'archive-render/attempt-01'),captureOutputs={};
+    for(const name of fs.readdirSync(captureFolder))captureOutputs[name]=fs.readFileSync(path.join(captureFolder,name));
+    const captureReceipt=receipt('CAPTURE',captureOutputs,provenance);stages.push(captureReceipt);
+    if(archive.status!=='PASS')throw Error('ACTUAL_ARCHIVE_FAIL:'+JSON.stringify(archive.rows));
+    if(plan.graphPlan){
+      const rowFile=fs.readdirSync(captureFolder).find(n=>n.endsWith('desktop.json'));
+      const row=JSON.parse(fs.readFileSync(path.join(captureFolder,rowFile),'utf8'));const rect=row.state.targets[0].rect;
+      const observedScale=Math.min(rect.width/spec.viewport.width,rect.height/spec.viewport.height);
+      const displayAudit=await workerGraphAudit(plan.graphPlan,built.svg,{...built.witness.coordinateModel,displayScale:observedScale});
+      stages.push(freeze('DISPLAY_GRAPH_REVIEW',displayAudit,provenance));if(displayAudit.status!=='PASS')throw Error('ACTUAL_DISPLAY_GRAPH_BOUND_FAIL');
+    }
+    const screenshotName=fs.readdirSync(captureFolder).find(n=>n.endsWith('-'+identity.assetId+'.png'));const screenshot=fs.readFileSync(path.join(captureFolder,screenshotName));
+    const contextName=fs.readdirSync(captureFolder).find(n=>n.endsWith('-'+identity.assetId+'-context.png'));if(!contextName)throw Error('NATIVE_ARCHIVE_CONTEXT_SCREENSHOT_REQUIRED');
+    const contextScreenshot=fs.readFileSync(path.join(captureFolder,contextName));
+    console.log(JSON.stringify({stage:'INDEPENDENT_VISUAL_REVIEW',uid}));
+    const visualReview=await provider('REVIEW_FINAL_VISUAL',{instruction:'Review the actual frozen Archive solution-image and native solution block screenshots against the supplied original source and verified solution. Check decisive relation, all geometry/curve/axis semantics, source names, owner ambiguity, Korean and math glyph readability, clipping/collision, density, integration with surrounding solution, and black-white meaning. The actual required mode is sol. Its native reminder deliberately omits answer choices and original problem images; those appear in exam mode and are supplied in the original source packet for this review. Original body/choices/answer/solution/image fields remain byte-equivalent in the candidate bank; do not require exam-mode content to appear in sol-mode screenshots. This is a candidate review, not engine qualification or publication authority. Return PASS only if satisfactory. payload {observations:[string],errors:[]}.',source:sourceOnly,solution:question.solution,archiveMode:'sol',protectedParity,finalSvgSha256:asset.sha256,screenshotSha256:bytesSha(screenshot),nativeContextScreenshotSha256:bytesSha(contextScreenshot),plan:frozen},[...images,'data:image/png;base64,'+screenshot.toString('base64'),'data:image/png;base64,'+contextScreenshot.toString('base64')],folder,true);
+    stages.push(freeze('VISUAL_REVIEW',visualReview,provenance));
+    if(visualReview.output.status!=='PASS')throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL:'+canonicalJson(visualReview.payload));
+    if(!Array.isArray(visualReview.payload.errors)||visualReview.payload.errors.length||!Array.isArray(visualReview.payload.observations)||!visualReview.payload.observations.length)throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL');
+    result={status:'PHASE2_SLICE_COMPLETE',productionAuthorized:false,qualificationStatus:'NOT_QUALIFIED',identity,sourceRef,solutionRef,planRef:planReceipt.outputs[0],fingerprint,finalSvgRef:asset,actualArchive:archive,independentVisualReviewRef:stages.at(-1).outputs[0],stages:stages.map(s=>s.manifestRef)};
+  }catch(error){result={status:'UNRESOLVED',productionAuthorized:false,identity,sourceRef,error:error.message,stages:stages.map(s=>s.manifestRef)};}
+  result.repairLedger=repairBudget.ledger;
+  Object.assign(result,{schemaVersion:'VISUAL_RESULT_v1',phase:2,engineStatus:'EXPERIMENTAL'});
+  const final=freeze('RESULT',result,provenance);console.log(JSON.stringify({uid,status:result.status,error:result.error,resultRef:final.outputs[0]}));return {result,receipt:final};
+}
+function scalarExpression(v){
+  if(v.kind==='integer')return v.value;if(v.kind==='rational')return '('+v.numerator+'/'+v.denominator+')';
+  if(v.kind==='constant')return v.name;
+  if(v.kind==='expression'){const a=v.args.map(scalarExpression);if(v.op==='sqrt')return 'sqrt('+a[0]+')';if(v.op==='neg')return '-('+a[0]+')';const ops={add:'+',sub:'-',mul:'*',div:'/',pow:'^'};if(ops[v.op])return '('+a.join(ops[v.op])+')';}
+  throw Error('UNSUPPORTED_SCALAR_NOTATION');
+}
+async function workerGraphAudit(graphPlan,svg,transform){const {aspectPolicy,...frame}=transform;return (await pythonWorker({graphPlan,svg,transform:frame},{script:fileURLToPath(new URL('graph-observer-worker.py',import.meta.url))})).result;}
+async function workerPrimitiveAudit(payload){return (await pythonWorker(payload,{script:fileURLToPath(new URL('primitive-observer-worker.py',import.meta.url))})).result;}
+if(process.argv[1]===fileURLToPath(import.meta.url)){
+  const index=process.argv.indexOf('--source'),ordinal=Number(process.argv[process.argv.indexOf('--ordinal')+1]);
+  const resume=process.argv.indexOf('--resume');const output=await runPhase2({sourcePath:process.argv[index+1],ordinal,replayResultRef:resume>=0?fileRef(root,process.argv[resume+1]):null});if(output.result.status!=='PHASE2_SLICE_COMPLETE')process.exitCode=1;
+}

@@ -16,6 +16,11 @@ export function validateScalar(v, depth = 0) {
   throw Error('INVALID_EXACT_SCALAR');
 }
 export function freezeWire(payload) {
+  function keys(value){
+    if(Array.isArray(value))value.forEach(keys);
+    else if(isObject(value))for(const [key,child] of Object.entries(value)){if(key!==key.normalize('NFC'))throw Error('WIRE_KEY_MUST_BE_NFC');keys(child);}
+  }
+  keys(payload);
   const blob = canonicalJson(payload);
   return {wireVersion:WIRE_VERSION, canonicalBlob:blob, objectSha256:bytesSha(Buffer.from(blob))};
 }
@@ -36,6 +41,12 @@ export function planHash(plan) {
   const computed = objectSha(payload);
   if (planSha256 && planSha256 !== computed) throw Error('STALE_PLAN_HASH');
   return computed;
+}
+export function validateFrozenPlan(plan) {
+  const allowed=['schemaVersion','questionUid','visualAssetKey','sourceRef','solutionRef','mathPlan','graphPlan','labels','displayEnvelope','planSha256'];
+  if(plan?.schemaVersion!=='VISUAL_SPIKE_PLAN_v1'||Object.keys(plan).some(k=>!allowed.includes(k))||Boolean(plan.mathPlan)===Boolean(plan.graphPlan))throw Error('INVALID_FROZEN_PLAN');
+  if(!plan.sourceRef||!plan.solutionRef)throw Error('PLAN_SOURCE_REFS_REQUIRED');
+  return planHash(plan);
 }
 export function stageKey(stage, projection, fingerprint) {
   return objectSha({schemaVersion:WIRE_VERSION,stage,projection,fingerprint});

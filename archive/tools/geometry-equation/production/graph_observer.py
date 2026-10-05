@@ -79,7 +79,9 @@ def audit(plan,svg,transform):
     try:f,den,poly,evaluate,topology=resolve(plan)
     except (ValueError,KeyError,TypeError) as error:return {'status':'UNSUPPORTED','errors':[str(error)]}
     if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(v) for v in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0: return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
-    tolerance=.35;scale=transform['sy']*transform['displayScale'];errors=[];rows=[];intervals=[];markers=[]
+    tolerance=.35;scale=transform['sy']*transform['displayScale'];errors=[];rows=[];intervals=[];markers=[];observed_roots=[]
+    required_roots=[r for r,_ in topology['roots'] if plan['viewport'][0]<=r<=plan['viewport'][1] and not any(abs(r-h)<1e-9 for h in topology['holes']+topology['poles'])] if plan['viewport'][2]<=0<=plan['viewport'][3] else []
+    if any((b-a)*transform['sx']*transform['displayScale']<1 for a,b in zip(required_roots,required_roots[1:])):return {'status':'UNSUPPORTED','errors':['GRAPH_ROOT_FEATURE_BELOW_DISPLAY_RESOLUTION'],'topology':topology}
     root=ET.fromstring(svg)
     paths=[n for n in root.iter() if n.tag.split('}')[-1]=='polyline' and n.get('data-role')=='curve']
     if not paths:return {'status':'FAIL','errors':['NO_CURVE_PRIMITIVE']}
@@ -95,6 +97,9 @@ def audit(plan,svg,transform):
         for (a,ya),(b,yb) in zip(points,points[1:]):
             if not a<b: errors.append('NONMONOTONE_SEGMENT');continue
             if any(a<r<b for r in topology['holes']+topology['poles']+topology['boundary']):errors.append('DOMAIN_CROSSING');continue
+            if abs(ya)<1e-9:observed_roots.append(a)
+            if abs(yb)<1e-9:observed_roots.append(b)
+            if ya*yb<0:observed_roots.append(a+(b-a)*(-ya)/(yb-ya))
             try:
                 fa,fb=float(evaluate(a)),float(evaluate(b));vertex=max(abs(ya-fa),abs(yb-fb))*scale
                 if plan['family']=='sqrt-affine':
@@ -118,6 +123,8 @@ def audit(plan,svg,transform):
             except (ValueError,ZeroDivisionError,TypeError):errors.append('NONREAL_CURVE')
     # Coverage comes from source/viewport intersection, never producer branchCount.
     x_tol=.35/(transform['sx']*transform['displayScale'])
+    for r in required_roots:
+        if not any(abs(r-o)<=x_tol for o in observed_roots):errors.append('REQUIRED_ROOT_FEATURE_MISSING')
     merged=[]
     for a,b in sorted(intervals):
         if merged and a<=merged[-1][1]+1e-9:merged[-1][1]=max(b,merged[-1][1])
