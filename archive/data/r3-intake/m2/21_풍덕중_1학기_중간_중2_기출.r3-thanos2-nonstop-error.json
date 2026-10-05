@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "NONSTOP_ERROR_REPORT_v1",
+  "lane": "M2-1 THANOS-MASTER-2",
+  "target": "o8",
+  "stage": "R3",
+  "exactError": "No workflow-dispatch write action is exposed; validation PR creation was blocked before side effect.",
+  "completedStep": "R3_SAME_STAGE_PINPOINT_REPAIR_WRITE_AND_V2_EVIDENCE_BIND",
+  "firstMissingClosureStep": "CANONICAL_R3_VALIDATOR_EXECUTION",
+  "triedPaths": [
+    "direct contents write",
+    "Git object blob/tree/commit path",
+    "draft validation PR"
+  ],
+  "nextAction": "Run canonical Archive Stage Validator for R3 against the repaired artifact/evidence, then write validator receipt, R3 receipt and release manifest.",
+  "automationMustRemainOn": true
+}
