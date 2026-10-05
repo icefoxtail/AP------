@@ -28,7 +28,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; answers/solutions blank.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_QA_READY",
   "questions": [
     {
       "qid": 1,
@@ -83,12 +83,12 @@
     {
       "qid": 6,
       "sourceQuestionNo": "6",
-      "sourcePage": 1,
+      "sourcePage": 2,
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "The handwritten mark overlaps the angle label in the original figure; underlying source was read, but the original crop is preserved without alteration and is not suitable as a clean student asset."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 7,
@@ -769,9 +769,36 @@
         "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS"
       }
+    },
+    {
+      "qid": 6,
+      "sourcePage": 2,
+      "bboxPx": [
+        235,
+        245,
+        500,
+        455
+      ],
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
+      "sourcePdfSha256": "6ebc50156d2c35a2b88fd1f81e9613dda7b97ec972d06f2a26e9bb009c58d8fe",
+      "fullPageRasterSha256": "017337e9ccd25fb184d3c07de96d87cb8e9883b24dbd949c4644268c989cfb98",
+      "assetPath": "assets/images/21_팔마중_2학기_기말_중3_기출/q06-clean.svg",
+      "assetSha256": "fd3293037dd23586dcc604c07de0e002c62d1fa45f6cfad8753de02a982c9021",
+      "assetKind": "source-derived-svg",
+      "repairMethod": "SVG redrawn from directly inspected printed geometry; the handwritten shaded mark is excluded; all printed point labels, angle labels, circle and chords are retained.",
+      "visualChecks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "choicesIncluded": "NO",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
+        "fullSourcePageAndFinalSvgOpenedAndCompared": "PASS"
+      }
     }
   ],
-  "examHold": [
-    "q6: student pen mark overlaps angle label; source prompt/options transcribed from the original page, source crop not altered."
-  ]
+  "examHold": [],
+  "cropReviewStatus": "SOURCE_QA_READY",
+  "notes": "The q6 student shading obscured the angle-mark region. Replaced that figure with a source-derived SVG traced from the original page; kept the printed geometry and text exactly as transcribed, omitted the handwritten shading, and added no solution or answer."
 }
