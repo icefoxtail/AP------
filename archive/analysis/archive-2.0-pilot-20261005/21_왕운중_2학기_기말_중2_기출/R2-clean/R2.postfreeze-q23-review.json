@@ -1,0 +1,30 @@
+{
+  "examUid": "21_왕운중_2학기_기말_중2_기출",
+  "stage": "R2",
+  "scope": "q23 only; triggered by blind-vs-stored mismatch after immutable freeze",
+  "answerFreezeSha256": "e2fd7c36c3bcbea6c8237807d4f285d7001c1cdbc798b9809cc82e7337da54f1",
+  "studentInputSha256": "ce520bb148e873d3942ab9533332a151f3b442589bc9aed159d36bb74d0c7769",
+  "qid": 23,
+  "blindAnswerRetained": "x+y=7 cm",
+  "postFreezeIndependentReview": {
+    "figureOpened": true,
+    "observations": [
+      "AB=6 cm",
+      "EF=9 cm",
+      "BF=10 cm",
+      "AB ∥ CD ∥ EF",
+      "A,C,F collinear",
+      "B,C,E collinear",
+      "B,D,F collinear"
+    ],
+    "derivation": [
+      "△ABC ∼ △FCE, so BC:CE=AB:FE=2:3.",
+      "Thus BC:BE=2:5.",
+      "△BCD ∼ △BFE, so BD:BF=CD:EF=2:5.",
+      "BD=4 cm and CD=9·(2/5)=18/5 cm.",
+      "x+y=4+18/5=38/5 cm."
+    ],
+    "confirmedStoredAnswer": "38/5",
+    "resolution": "The source stored answer is correct; the initial frozen blind answer was incorrect. Freeze remains immutable."
+  }
+}
