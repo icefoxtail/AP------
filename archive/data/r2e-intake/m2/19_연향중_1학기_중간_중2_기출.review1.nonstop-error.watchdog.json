@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "JS_ARCHIVE_NONSTOP_ERROR_REPORT_v1",
+  "lane": "M2-1 WATCHDOG + 전광판",
+  "target": "o15",
+  "stage": "R1",
+  "timestampKst": "2026-10-05 14:11",
+  "exactError": [
+    "GitHub create_pull_request blocked by connector safety gate on two attempts.",
+    "Notion board insert blocked by connector safety gate on two materially different payloads.",
+    "Work Page fetch/update unavailable in current tool surface (cache miss)."
+  ],
+  "completedStep": "24/24 fresh R1 audit; V2 R1 evidence committed to remote Git branch; exam bytes unchanged",
+  "firstMissingClosureStep": "OPEN_VALIDATION_PR_OR_WORKFLOW_DISPATCH",
+  "attemptedPaths": [
+    "direct GitHub contents write -> blocked",
+    "Git Data blob/tree/commit -> succeeded",
+    "minimal create_pull_request retry -> blocked",
+    "compact Notion insert retry -> blocked"
+  ],
+  "requiredNextAction": "Use a capable executor to open/trigger R1 validation on this exact branch/evidence, then write validator+R1 receipt and transition REVIEW1_DONE->READY_FOR_REVIEW2. Mirror current board to Work Page/Notion when write surfaces recover.",
+  "productionExamMutationCount": 0,
+  "stageClosureCount": 0
+}
