@@ -547,8 +547,8 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "content": "그림에서 점 $I$는 $\\triangle ABC$의 내심이다. $\\triangle ABC$의 둘레의 길이가 $22\\text{cm}$이고 $\\overline{AD}=4\\text{cm}$, $\\overline{DB}=5\\text{cm}$일 때, $\\overline{EC}$의 길이를 구하면? [4점]",
-    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17.png",
+    "content": "점 $I$는 $\\triangle ABC$의 내심이고, 내접원이 세 변 $AB$, $BC$, $CA$와 만나는 점을 각각 $D$, $E$, $F$라 하자. $\\triangle ABC$의 둘레의 길이가 $22\\text{cm}$이고 $\\overline{AD}=4\\text{cm}$, $\\overline{DB}=5\\text{cm}$일 때, $\\overline{EC}$의 길이를 구하면? [4점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-repair-master.svg",
     "choices": [
       "$1\\text{cm}$",
       "$1.2\\text{cm}$",
@@ -573,12 +573,14 @@ window.questionBank = [
       "활용"
     ],
     "wide": false,
-    "solution": "1단계: 삼각형의 내심에서 세 변에 내린 접점까지의 거리는 같으므로 $\\overline{AF}=\\overline{AD}=4cm$, $\\overline{BE}=\\overline{DB}=5cm$이다.\n2단계: $\\overline{CE}=\\overline{CF}=x$라 하면 $\\triangle ABC$의 둘레는 $2(\\overline{AD}+\\overline{DB}+\\overline{CE}) = 2(4+5+x) = 22$이다.\n3단계: $9+x=11$에서 $x=2$이므로 $\\overline{EC}=2cm$이다.",
+    "solution": "[핵심]\n한 점에서 원에 그은 두 접선의 길이는 같다.\n[풀이]\n내접원이 $AB$, $BC$, $CA$에 접하는 점이 각각 $D$, $E$, $F$이므로, 같은 꼭짓점에서 그은 접선의 길이가 같다. 따라서 $AD=AF=4$, $BD=BE=5$, $CE=CF=x$라 둘 수 있다.\n삼각형의 둘레는 $(AD+DB)+(BE+EC)+(CF+FA)$이므로 $22=(4+5)+(5+x)+(x+4)=18+2x$이다. 따라서 $2x=4$이고 $x=2$이다.\n[확인]\n$AB=9$, $BC=7$, $CA=6$이므로 둘레는 $9+7+6=22$로 조건과 일치한다.\n[결론]\n따라서 $EC=2\\text{cm}$이고 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "provenance": "REPAIR_MASTER_GENERATED_REPLACEMENT",
+    "sourceOriginalParityClaimed": false
   },
   {
     "id": 18,
