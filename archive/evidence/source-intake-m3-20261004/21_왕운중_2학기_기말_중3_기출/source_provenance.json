@@ -533,7 +533,7 @@
         "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
         "sameQuestionStemIncluded": "YES",
-        "reviewNote": "ITEM_HOLD_SOURCE_READABILITY_OR_MARKS"
+        "tableHeaderAndValues": "DIRECTLY_REVIEWED_FROM_ORIGINAL_PAGE"
       }
     },
     {
@@ -778,11 +778,11 @@
         "otherQuestionIncluded": "NO",
         "choicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
-        "clipping": "NO",
+        "clipping": "YES_PARTIAL_STEM_FRAGMENT_AT_TOP_EDGE",
         "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS",
         "sameQuestionStemIncluded": "YES",
-        "reviewNote": "ITEM_HOLD_SOURCE_READABILITY_OR_MARKS"
+        "reviewNote": "SOURCE_PROMPT_TRANSCRIPTION_PASS; CROP_REVIEW_HOLD: partial same-question stem is clipped at top edge and scan blot remains in source pixels; no retouch applied."
       }
     },
     {
@@ -818,12 +818,9 @@
     }
   ],
   "examHold": [
-    "q1: handwriting over prompt.",
-    "q12: table header ambiguous.",
     "q18: source diagram crop cannot be isolated from choices without clipping.",
-    "서술형2 q22: hand marks/scan blot overlap source.",
-    "q12: table headers are too blurred to transcribe exactly.",
-    "q18: crop isolation would clip the circle or include its answer-choice text."
+    "q18: crop isolation would clip the circle or include its answer-choice text.",
+    "q22 visual crop review remains HOLD: partial same-question stem fragment is clipped at the crop top edge and the source scan blot is present; source prompt itself was directly transcribed and is complete."
   ],
   "transcriptionRepairs": [
     {
@@ -849,5 +846,5 @@
       "answerFieldAdded": false
     }
   ],
-  "notes": "q1’s marked word remains readable in the page-1 original. q12’s table headers are blurred, so visible entries were stated explicitly in text; the table image is omitted. q22’s readable measurements were retained and the scan-blotted figure reference was replaced by a text-only condition."
+  "notes": "q1’s marked word remains readable in the page-1 original. q12’s table headers are blurred, so visible entries were stated explicitly in text; the table image is omitted. q22’s readable measurements were retained and the scan-blotted figure reference was replaced by a text-only condition. q1 and q12 were reread from original page-1/page-2 pixels; student pencil marks were ignored. q12 prompt was restored to the printed wording, table values transcribed from the source, and its original crop remains linked. q22 printed prompt was reread and transcribed exactly; the existing image crop remains unchanged and its crop-quality HOLD is retained separately."
 }
