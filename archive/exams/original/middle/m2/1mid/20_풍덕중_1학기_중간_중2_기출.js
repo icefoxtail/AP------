@@ -548,7 +548,7 @@ window.questionBank = [
   {
     "id": 17,
     "content": "그림에서 점 $I$는 $\\triangle ABC$의 내심이다. $\\triangle ABC$의 둘레의 길이가 $22\\text{cm}$이고 $\\overline{AD}=4\\text{cm}$, $\\overline{DB}=5\\text{cm}$일 때, $\\overline{EC}$의 길이를 구하면? [4점]",
-    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17.png",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-repair-master.svg",
     "choices": [
       "$1\\text{cm}$",
       "$1.2\\text{cm}$",
@@ -573,7 +573,7 @@ window.questionBank = [
       "활용"
     ],
     "wide": false,
-    "solution": "1단계: 삼각형의 내심에서 세 변에 내린 접점까지의 거리는 같으므로 $\\overline{AF}=\\overline{AD}=4cm$, $\\overline{BE}=\\overline{DB}=5cm$이다.\n2단계: $\\overline{CE}=\\overline{CF}=x$라 하면 $\\triangle ABC$의 둘레는 $2(\\overline{AD}+\\overline{DB}+\\overline{CE}) = 2(4+5+x) = 22$이다.\n3단계: $9+x=11$에서 $x=2$이므로 $\\overline{EC}=2cm$이다.",
+    "solution": "1단계: 한 점에서 원에 그은 두 접선의 길이는 같으므로 $\\overline{AD}=\\overline{AF}=4\\text{cm}$, $\\overline{BD}=\\overline{BE}=5\\text{cm}$이다.\n2단계: $\\overline{CE}=\\overline{CF}=x$라 하면 $\\triangle ABC$의 둘레는 $2(\\overline{AD}+\\overline{DB}+\\overline{CE})=2(4+5+x)=22$이다.\n3단계: $9+x=11$이므로 $x=2$이다. 따라서 $\\overline{EC}=2\\text{cm}$이고 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
