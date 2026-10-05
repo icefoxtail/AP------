@@ -846,3 +846,22 @@ REAL RENDER FOR FINAL PASS.
 NO FAKE BROWSER EVIDENCE.
 NO STOP BEFORE BUILD JUST BECAUSE RENDER IS BLOCKED.
 ```
+
+## Constructed-coordinate evidence HARD
+
+For geometry publication candidates, never treat convenient coordinates as source
+facts. Declare coordinate provenance as `SOURCE_COORDINATES` or
+`CONSTRUCTED_REALIZATION`.
+
+If coordinates are constructed, freeze before rendering: rationale; origin/x-axis/
+unit-scale normalization; every point coordinate; free variables; every geometry
+condition; construction steps; per-condition residual+tolerance; degeneracy checks.
+Every condition must be verified within tolerance, every point must be covered by
+the construction ledger, and unsupported conditions fail closed rather than being
+silently omitted.
+
+The publication builder witness must bind the coordinate evidence hash, and the
+independent final-SVG audit must separately recompute the frozen coordinate
+conditions and bind source/solution/review/coordinate-evidence/final-SVG SHA
+identities. Builder metadata alone is never evidence that a constructed
+realization is mathematically faithful.

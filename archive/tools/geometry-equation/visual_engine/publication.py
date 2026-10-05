@@ -10,6 +10,7 @@ import re
 from .geometry_model import finite, point
 from .math_expression import parse, evaluate, serialize
 from .label_layout import Box, segment_hits_box
+from .coordinate_evidence import validate_coordinate_evidence
 
 PROFILE = 'geometry-publication-v1'
 ROLES = {'GIVEN', 'DERIVED_INTERMEDIATE', 'CONCLUSION'}
@@ -39,6 +40,7 @@ def normalize(spec):
     # The scoped auditor covers Euclidean diagrams, not a second graph system.
     if core['axes'] or any(o.get('kind') == 'FUNCTION_GRAPH' for o in core.get('objects', [])):
         raise ValueError('PUBLICATION_AXIS_FREE_GEOMETRY_ONLY')
+    validate_coordinate_evidence(core)
     return core, {**cfg, 'fontSize': font}
 
 
