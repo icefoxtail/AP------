@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_USER_AUTHORIZED_MANUAL_RED_CLEAR_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 12,
+  "examUid": "o12",
+  "exam": "21_신흥중_1학기_중간_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+  "userDirective": "수동으로 레드 해제",
+  "sourceOriginalParityClaimed": false,
+  "priorR3FullAudit": "24/24 fresh",
+  "priorSourceHandoffCommit": "ece26da9560d42a4c15db29f44893b0b541b219e",
+  "priorSourceArtifactBlob": "15cecd4931fc78853eb638cf16d43fee41c38578",
+  "finalArtifactSha": "4de3899349b4aaa6fa94b4f52023d5c27502a845",
+  "changedQids": [
+    18,
+    19
+  ],
+  "lockedScopeMutationCount": 0,
+  "repairs": {
+    "q18": {
+      "mode": "REPAIR_MASTER_GENERATED_REPLACEMENT",
+      "provenance": "REPAIR_MASTER_GENERATED_REPLACEMENT",
+      "result": "PASS_AFTER_REPLACEMENT",
+      "answer": "⑤",
+      "mathCheck": "①~④는 문장과 부등식이 일치하고 ⑤는 '작지 않다'를 >로 잘못 표현하므로 ⑤ 유일"
+    },
+    "q19": {
+      "mode": "DETERMINISTIC_MINIMAL_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "answer": "①",
+      "mathCheck": "2x+1>3x-1 => -x>-2 => x<2"
+    }
+  },
+  "itemHoldCount": 0,
+  "sourceRepairRequiredCount": 0,
+  "openQids": [],
+  "redCleared": true,
+  "validationMode": "USER_AUTHORIZED_MANUAL_RED_CLEAR",
+  "canonicalValidatorExecuted": false,
+  "rationale": "형님의 현재 명시적 지시에 따라 이미 24/24 fresh R3 audit에서 열린 q18/q19만 수동 폐쇄. canonical validator PASS를 위조하지 않음."
+}
