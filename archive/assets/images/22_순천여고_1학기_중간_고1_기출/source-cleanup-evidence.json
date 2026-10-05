@@ -1,0 +1,366 @@
+{
+  "examTitle": "22_순천여고_1학기_중간_고1_기출",
+  "purpose": "q18 point repair only: rebuild the printed source diagram as a clean SVG and bind it to the existing stem. No answer or solution fields changed.",
+  "visuals": [
+    {
+      "qid": 18,
+      "sourceExam": "2022 Suncheon Girls High School, 1학기 중간, 고1, 수학",
+      "sourcePdf": "C:/Users/USER/Desktop/기출정리 파일/(1)1중간/수학(상)/2022_순여고1_1중간.pdf",
+      "sourceExamSha256": "7b71c41260feb12d618b87b78f4797c8d0c59dc08d554981bb7d51163ce8842a",
+      "sourcePage": 4,
+      "sourcePageRasterPath": "tmp/pdfs/h1-2022-suncheon-girls/300-4.png",
+      "sourcePageRasterSizePx": [
+        2481,
+        3508
+      ],
+      "sourcePageRasterSha256": "44dfac8a758917ed94ba596d98d4aa59e4d4890b410a7f3daa0ac40eb1959f9b",
+      "sourceFigureBBoxPx": [
+        300,
+        700,
+        700,
+        365
+      ],
+      "bboxBasis": "Manual bounds around the printed q18 diagram only; the entire triangle, 5 bracket, angle mark, P/Q/R and base labels are inside; q18 choices and the adjacent q20 table are outside.",
+      "sourceReviewCropSha256": "5c9f99646eec448262c197ce3877cde872835451a81c350c7b6505a5974ff2b2",
+      "assetPath": "archive/assets/images/22_순천여고_1학기_중간_고1_기출/q18-source-clean.svg",
+      "finalSvgSha256": "sha256:1a3fdc663a197db072e6439bfff8b0ca5a7aa63682b8bdac155a815f2133fbd1",
+      "finalSvgGitBlobSha": "86b7fe1a2ddb288df79770a2fd45356f4765ff12",
+      "dimensions": [
+        560,
+        360
+      ],
+      "pixelErasureDecision": "NOT_NEEDED: the source print is legible; vector rebuild contains only the printed diagram facts and no neighboring content.",
+      "sourceConditionCoverage": [
+        {
+          "fact": "Triangle ABC; angle A=90°",
+          "role": "GIVEN",
+          "visualization": "right-angle-A marker and triangle-ABC path",
+          "result": "PASS"
+        },
+        {
+          "fact": "Angle B=60°",
+          "role": "GIVEN",
+          "visualization": "angle-arc-B-60 and label-angle-B",
+          "result": "PASS"
+        },
+        {
+          "fact": "AB=5",
+          "role": "GIVEN",
+          "visualization": "dimension-AB brace and label-AB",
+          "result": "PASS"
+        },
+        {
+          "fact": "P is an interior point on AB",
+          "role": "GIVEN",
+          "visualization": "P lies on triangle-ABC side AB; no exact position is asserted",
+          "result": "PASS"
+        },
+        {
+          "fact": "PQ is perpendicular to BC and Q lies on BC",
+          "role": "GIVEN",
+          "visualization": "perpendicular-PQ-BC and right-angle-Q",
+          "result": "PASS"
+        },
+        {
+          "fact": "PR is parallel to BC and R lies on AC",
+          "role": "GIVEN",
+          "visualization": "parallel-PR-BC",
+          "result": "PASS"
+        }
+      ],
+      "decisiveRelationCovered": true,
+      "uncoveredCriticalConditions": [],
+      "expectedFactCompletenessStatus": "PASS",
+      "pythonInputs": {
+        "AB": 5,
+        "angleA_deg": 90,
+        "angleB_deg": 60,
+        "pointPParameterForSchematicOnly": 0.4,
+        "screenScale_pxPerUnit": 46
+      },
+      "pythonCalculatedOutputs": {
+        "A_math": [
+          2.5,
+          4.330127018922193
+        ],
+        "B_math": [
+          0,
+          0
+        ],
+        "C_math": [
+          10,
+          0
+        ],
+        "BC": 10,
+        "AC": 8.660254037844386,
+        "maximumArea_check": "10√3 at schematic parameter t=0.8; used only for independent semantic confirmation, not inserted into SVG"
+      },
+      "coordinateModel": "x_svg=50+46x; y_svg=300−46y. P uses t=0.4 only as a schematic interior placement; no numeric position is stated or labeled.",
+      "actualSvgPrimitives": [
+        {
+          "id": "triangle-ABC",
+          "svgPath": "M165 100.814 L50 300 L510 300 Z"
+        },
+        {
+          "id": "right-angle-A",
+          "svgPath": "M159 111.207 L169.392 117.207 L175.392 106.815"
+        },
+        {
+          "id": "parallel-PR-BC",
+          "svgPath": "M96 220.326 L372 220.326"
+        },
+        {
+          "id": "perpendicular-PQ-BC",
+          "svgPath": "M96 220.326 L96 300"
+        },
+        {
+          "id": "right-angle-Q",
+          "svgPath": "M96 288 L108 288 L108 300"
+        },
+        {
+          "id": "angle-arc-B-60",
+          "svgPath": "M68 300 A18 18 0 0 0 59 284.412"
+        }
+      ],
+      "observedFacts": [
+        {
+          "fact": "AB length",
+          "expected": 5,
+          "observed": 5.000002958222187,
+          "delta": 2.958222187e-06,
+          "tolerance": 0.001,
+          "result": "PASS"
+        },
+        {
+          "fact": "BC length",
+          "expected": 10,
+          "observed": 10,
+          "delta": 0,
+          "tolerance": 0.001,
+          "result": "PASS"
+        },
+        {
+          "fact": "AC length",
+          "expected": 8.660254037844386,
+          "observed": 8.6602557457751,
+          "delta": 1.707930714e-06,
+          "tolerance": 0.001,
+          "result": "PASS"
+        },
+        {
+          "fact": "angle A",
+          "expectedDeg": 90,
+          "observedDeg": 89.9999608571384,
+          "deltaDeg": -3.91428616e-05,
+          "toleranceDeg": 0.001,
+          "result": "PASS"
+        },
+        {
+          "fact": "angle B",
+          "expectedDeg": 60,
+          "observedDeg": 60.00001957142693,
+          "deltaDeg": 1.957142693e-05,
+          "toleranceDeg": 0.001,
+          "result": "PASS"
+        },
+        {
+          "fact": "PQ perpendicular BC",
+          "expectedDot": 0,
+          "observedDot": 0,
+          "delta": 0,
+          "tolerance": 0.001,
+          "result": "PASS"
+        },
+        {
+          "fact": "PR parallel BC",
+          "expectedCross": 0,
+          "observedCross": 0,
+          "delta": 0,
+          "tolerance": 0.001,
+          "result": "PASS"
+        }
+      ],
+      "labelOwnerBindings": [
+        {
+          "label": "A",
+          "owner": "triangle apex A",
+          "result": "PASS"
+        },
+        {
+          "label": "B",
+          "owner": "triangle vertex B",
+          "result": "PASS"
+        },
+        {
+          "label": "C",
+          "owner": "triangle vertex C",
+          "result": "PASS"
+        },
+        {
+          "label": "5",
+          "owner": "side AB",
+          "result": "PASS"
+        },
+        {
+          "label": "60°",
+          "owner": "angle ABC",
+          "result": "PASS"
+        },
+        {
+          "label": "P",
+          "owner": "interior point on AB",
+          "result": "PASS"
+        },
+        {
+          "label": "Q",
+          "owner": "perpendicular foot on BC",
+          "result": "PASS"
+        },
+        {
+          "label": "R",
+          "owner": "intersection of AC and line through P parallel to BC",
+          "result": "PASS"
+        }
+      ],
+      "sourceSemanticIdentity": {
+        "applicable": true,
+        "checks": [
+          {
+            "semanticRole": "triangle vertex",
+            "sourceLabel": "A",
+            "artifactLabel": "A",
+            "result": "PASS"
+          },
+          {
+            "semanticRole": "triangle vertex",
+            "sourceLabel": "B",
+            "artifactLabel": "B",
+            "result": "PASS"
+          },
+          {
+            "semanticRole": "triangle vertex",
+            "sourceLabel": "C",
+            "artifactLabel": "C",
+            "result": "PASS"
+          },
+          {
+            "semanticRole": "interior/foot/intersection point",
+            "sourceLabel": "P",
+            "artifactLabel": "P",
+            "result": "PASS"
+          },
+          {
+            "semanticRole": "interior/foot/intersection point",
+            "sourceLabel": "Q",
+            "artifactLabel": "Q",
+            "result": "PASS"
+          },
+          {
+            "semanticRole": "interior/foot/intersection point",
+            "sourceLabel": "R",
+            "artifactLabel": "R",
+            "result": "PASS"
+          }
+        ]
+      },
+      "xmlParse": "PASS",
+      "staticChecks": {
+        "allLabelsInsideViewBox": true,
+        "labelBBoxOverlapPairs": [],
+        "printBlackWhite": "PASS",
+        "noChoiceOrPageFurniture": "PASS"
+      },
+      "styleFloorStatus": "PASS",
+      "styleNormalizationAction": "NORMALIZED",
+      "styleVersion": "AP_GEOMETRY_PRINT_V1_0_DRAFT / MINIMAL_EXAM_DIAGRAM",
+      "appliedStyleTokens": {
+        "mainShapeStrokePx": 2.1,
+        "secondaryShapeStrokePx": 1.6,
+        "indicatorStrokePx": 1,
+        "textMathFont": "Times New Roman, Cambria Math, serif"
+      },
+      "browserRenderEvidence": {
+        "browser": "Chromium Playwright CLI and Archive engine",
+        "archiveUrl": "http://127.0.0.1:8766/archive/engine.html?data=exams%2Foriginal%2Fhigh%2Fh1%2F1mid%2F22_%EC%88%9C%EC%B2%9C%EC%97%AC%EA%B3%A0_1%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A01_%EA%B8%B0%EC%B6%9C.js&mode=exam&qpp=4&fit=screen&prewarm=0&snapshotCache=0",
+        "viewportCssPx": [
+          1280,
+          720
+        ],
+        "imageComplete": true,
+        "naturalSizePx": [
+          560,
+          360
+        ],
+        "renderedImgCssPx": [
+          297.171875,
+          190
+        ],
+        "finalViewportCssFontPx": 13.797265625,
+        "textLabelBboxesInsideViewBox": true,
+        "textLabelOverlapPairs": [],
+        "screenshotTempPath": ".playwright-cli/page-2026-10-05T07-33-22-848Z.png",
+        "screenshotSha256": "6be082a3b568a6f06bf74c35706b5f1c4854dbe143cf0b3897de73bdd107137c",
+        "renderedSvgSha256": "sha256:1a3fdc663a197db072e6439bfff8b0ca5a7aa63682b8bdac155a815f2133fbd1",
+        "assetShaBoundToBrowserRender": true,
+        "status": "PASS",
+        "fontAvailability": {
+          "Times New Roman": true,
+          "Cambria Math": true,
+          "fallbackSerif": true
+        },
+        "renderedTextFontFamily": "\"Times New Roman\", \"Cambria Math\", serif"
+      },
+      "checks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "noOtherQuestionChoicesOrPageDecoration": "PASS",
+        "noClipping": "PASS",
+        "requiredTriangleAnglesLengthsAndRelationsPreserved": "PASS",
+        "actualArchivePathLoads": "PASS",
+        "directSourcePageVisualComparison": "PASS",
+        "deterministicVectorReconstruction": "PASS"
+      }
+    }
+  ],
+  "calibration": {
+    "goldenSamples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:ab37a1bdb3343be7b31db66ac2ee204abec339f35a4bc8eb9ca6252f92656f99",
+        "gitBlobSha": "7f4a3ee06170fc8aa426080e58f7b33bc351b62f"
+      }
+    ],
+    "representativeQuestionsRead": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 1
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "qid": 2
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+    },
+    "sampleReadBeforeWork": true,
+    "visualRepairPreflight": "PASS",
+    "independentRecheckPreflight": "PASS"
+  },
+  "reviewRenderTempDisposition": "The source crop and Archive screenshot were used for direct comparison; only their SHA-256 values are retained in this sidecar. Temporary PNGs are removed after the targeted repair review."
+}

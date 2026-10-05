@@ -61,7 +61,7 @@ window.questionBank = [
     "id": 9,
     "questionType": "객관식",
     "tags": ["객관식", "복소수", "근호"],
-    "content": "0이 아닌 두 실수 $x$, $y$에 대하여 $\frac{\sqrt y}{\sqrt x}=\sqrt{\frac yx}$가 성립하고 등식 $x^2+x-(y-5)i=20+2i$를 만족한다. 이때, $x+y$의 값은? [3.8점]",
+    "content": "0이 아닌 두 실수 $x$, $y$에 대하여 $\\frac{\\sqrt{y}}{\\sqrt{x}}=-\\sqrt{\\frac{y}{x}}$가 성립하고 등식 $x^2+x-(y-5)i=20+2i$를 만족한다. 이때, $x+y$의 값은? [3.8점]",
     "choices": ["$7$", "$5$", "$0$", "$-1$", "$-2$"]
   },
   {
