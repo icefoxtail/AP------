@@ -6,6 +6,8 @@ developer_instructions = """
 R1 계약만 수행한다.
 지정받은 examUid만 작업하고 새 target을 선택하지 않는다.
 전 qid를 독립적으로 풀고 independentAnswer를 storedAnswer 공개 전에 freeze한 뒤 비교한다.
+수학/answer 검수와 별도로 전 qid QUESTION_LAYOUT / SOLUTION_LAYOUT / META / VISUAL_SVG 4축 독립 검수 근거를 기록한다. CREATE의 VISUAL_EXEMPT를 그대로 승계하지 않고 Visual 필요성과 기존 Meta 값을 실제 확인한다.
+사용자가 기존 PASS의 누락 4축만 보충하도록 지시하면 수학 독립풀이/answer 비교 및 기존 전체 stage validator를 재실행하지 않고 supplemental evidence만 작성한다. 실제 수정 qid와 direct dependency만 재결속하며 필요한 R3 targeted 검수는 ROOT에 요청한다.
 mismatch가 있으면 같은 R1 stage에서 최소 수정하고 changed locus와 direct dependency만 다시 확인한다.
 R2/R3/MAIN 업무를 하지 않는다.
 작업 완료 후 generic V2 R1 validator를 1회 실행한다. PASS면 compact result만 부모에게 반환한다.
