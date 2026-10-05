@@ -5,9 +5,9 @@
   "stage": "CREATE",
   "canonicalOrdinal": 32,
   "executionMode": "ACTUAL_NODE_CLI_GITHUB_ACTIONS_PR_VALIDATION",
-  "workflowRunId": 37191232979,
-  "workflowJobId": 111403671343,
-  "workflowHeadSha": "0a6c04f54f4320648cb4cc49f85f10d4716d124b",
+  "workflowRunId": 37247701003,
+  "workflowJobId": 111568773329,
+  "workflowHeadSha": "ea5946b4e243cf00ca2dd6077cd5629799a316d6",
   "validationBranch": "work/middle/m2/23-sinheung-1final-thanos5-create-20261004-1752",
   "validationPrNumber": 210,
   "workflowOverallConclusion": "failure",
@@ -31,7 +31,6 @@
   "calibrationPreflight": {
     "ok": true,
     "stage": "CREATE",
-    "gate": "CALIBRATION_PREFLIGHT",
     "questionCount": 24,
     "issues": []
   },
@@ -50,5 +49,12 @@
     "disposition": "PASS",
     "issues": []
   },
-  "targetGateLogMarker": "M2 o32 CREATE canonical gates PASS"
+  "targetGateLogMarker": "M2 o32 CREATE canonical gates PASS",
+  "unrelatedBlockingFailureCount": 4,
+  "unrelatedBlockingFailures": [
+    "apmath-student-teacher-preview.test.js",
+    "archive-target-selection-phase3-contract.test.js",
+    "print-render-authority-mixer-ecosystem.test.js",
+    "student-portal-omr-history-routes.test.js"
+  ]
 }
