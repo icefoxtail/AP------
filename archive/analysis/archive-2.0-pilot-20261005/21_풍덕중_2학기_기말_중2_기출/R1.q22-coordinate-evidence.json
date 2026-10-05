@@ -1,0 +1,91 @@
+{
+  "coordinateProvenance": "SOURCE_COORDINATES",
+  "originX": 130.0,
+  "originY": 330.0,
+  "sx": 80.0,
+  "sy": 80.0,
+  "screenX": "originX + sx*x",
+  "screenY": "originY - sy*y",
+  "points": {
+    "P": {
+      "math": [
+        0,
+        -2
+      ],
+      "screen": [
+        130.0,
+        490.0
+      ]
+    },
+    "Q": {
+      "math": [
+        2,
+        0
+      ],
+      "screen": [
+        290.0,
+        330.0
+      ]
+    },
+    "R": {
+      "math": [
+        2,
+        2
+      ],
+      "screen": [
+        290.0,
+        170.0
+      ]
+    }
+  },
+  "expectedFacts": [
+    {
+      "type": "INTERSECTION",
+      "point": "P",
+      "expected": [
+        0,
+        -2
+      ]
+    },
+    {
+      "type": "INTERSECTION",
+      "point": "Q",
+      "expected": [
+        2,
+        0
+      ]
+    },
+    {
+      "type": "INTERSECTION",
+      "point": "R",
+      "expected": [
+        2,
+        2
+      ]
+    },
+    {
+      "type": "LINE_SLOPE",
+      "line": "y=2x-2",
+      "expected": 2
+    },
+    {
+      "type": "LINE_SLOPE",
+      "line": "y=x-2",
+      "expected": 1
+    },
+    {
+      "type": "VERTICAL_LINE",
+      "line": "x=2",
+      "expected": 2
+    },
+    {
+      "type": "AREA",
+      "expected": 2
+    }
+  ],
+  "pythonCalculatedOutputs": {
+    "baseQR": 2.0,
+    "horizontalHeightFromPToX2": 2.0,
+    "triangleArea": 2.0
+  }
+}

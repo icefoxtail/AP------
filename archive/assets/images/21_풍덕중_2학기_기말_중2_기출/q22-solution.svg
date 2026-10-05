@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" data-graph-style-version="AP_GRAPH_PRINT_V1_1_DRAFT" data-graph-preset="SOLUTION_GRAPH" data-axis-scale-mode="EQUAL_UNIT" data-visual-provenance="SOURCE_COORDINATES">
+  <title>세 직선의 교점과 삼각형 넓이</title>
+  <desc>세 직선의 교점은 P(0, -2), Q(2, 0), R(2, 2)이며, 밑변과 높이가 각각 2인 삼각형을 나타낸다.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 z" fill="#475569"/></marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#ffffff"/>
+  <text x="42" y="48" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="32" font-weight="700" fill="#0f172a">교점 좌표와 삼각형 넓이</text>
+  <text x="42" y="82" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="23" fill="#475569">교점 세 개를 표시하고 밑변·높이를 읽는다.</text>
+
+  <!-- Coordinate frame: origin (130,330), equal scale 80 px per unit. -->
+  <line id="x-axis" x1="50" y1="330" x2="380" y2="330" stroke="#475569" stroke-width="3" marker-end="url(#axis-arrow)"/>
+  <line id="y-axis" x1="130" y1="535" x2="130" y2="82" stroke="#475569" stroke-width="3" marker-end="url(#axis-arrow)"/>
+  <text x="382" y="338" font-family="Cambria Math, Georgia, serif" font-size="25" font-style="italic" fill="#334155">x</text>
+  <text x="120" y="76" font-family="Cambria Math, Georgia, serif" font-size="25" font-style="italic" fill="#334155">y</text>
+  <line x1="123" y1="170" x2="137" y2="170" stroke="#64748b" stroke-width="2"/>
+  <text x="98" y="178" font-family="Cambria Math, Georgia, serif" font-size="22" fill="#334155">2</text>
+  <line x1="123" y1="490" x2="137" y2="490" stroke="#64748b" stroke-width="2"/>
+  <text x="76" y="498" font-family="Cambria Math, Georgia, serif" font-size="22" fill="#334155">−2</text>
+  <circle cx="130" cy="330" r="4" fill="#334155"/>
+  <text x="139" y="355" font-family="Cambria Math, Georgia, serif" font-size="20" fill="#334155">O</text>
+
+  <!-- Derived triangle P(0,-2), Q(2,0), R(2,2). -->
+  <polygon id="triangle-region" points="130,490 290,330 290,170" fill="#fef3c7" fill-opacity="0.78" stroke="none"/>
+  <line id="line-y-2x-minus-2" data-equation="y=2x-2" x1="130" y1="490" x2="330" y2="90" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+  <line id="line-y-x-minus-2" data-equation="y=x-2" x1="130" y1="490" x2="370" y2="250" stroke="#0f766e" stroke-width="5" stroke-linecap="round"/>
+  <line id="line-x-2" data-equation="x=2" x1="290" y1="530" x2="290" y2="90" stroke="#c2410c" stroke-width="5" stroke-linecap="round"/>
+  <line x1="300" y1="170" x2="300" y2="330" stroke="#b45309" stroke-width="3" stroke-dasharray="8 7"/>
+  <line x1="130" y1="500" x2="290" y2="500" stroke="#b45309" stroke-width="3" stroke-dasharray="8 7"/>
+  <circle id="point-p" data-coordinate="0,-2" cx="130" cy="490" r="8" fill="#1d4ed8" stroke="#ffffff" stroke-width="3"/>
+  <circle id="point-q" data-coordinate="2,0" cx="290" cy="330" r="8" fill="#0f766e" stroke="#ffffff" stroke-width="3"/>
+  <circle id="point-r" data-coordinate="2,2" cx="290" cy="170" r="8" fill="#c2410c" stroke="#ffffff" stroke-width="3"/>
+  <text id="label-p" data-owner-point="P" x="30" y="460" font-family="Cambria Math, Georgia, serif" font-size="24" fill="#1e3a8a">P (0, −2)</text>
+  <text id="label-q" data-owner-point="Q" x="306" y="320" font-family="Cambria Math, Georgia, serif" font-size="24" fill="#115e59">Q (2, 0)</text>
+  <text id="label-r" data-owner-point="R" x="306" y="165" font-family="Cambria Math, Georgia, serif" font-size="24" fill="#9a3412">R (2, 2)</text>
+  <text x="306" y="258" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="21" fill="#92400e">밑변 2</text>
+  <text x="170" y="526" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="21" fill="#92400e">높이 2</text>
+
+  <rect x="445" y="108" width="320" height="362" rx="22" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="472" y="150" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="27" font-weight="700" fill="#0f172a">세 직선</text>
+  <line x1="474" y1="190" x2="525" y2="190" stroke="#2563eb" stroke-width="5"/>
+  <text x="540" y="198" font-family="Cambria Math, Georgia, serif" font-size="23" fill="#1e3a8a">y = 2x − 2</text>
+  <line x1="474" y1="230" x2="525" y2="230" stroke="#0f766e" stroke-width="5"/>
+  <text x="540" y="238" font-family="Cambria Math, Georgia, serif" font-size="23" fill="#115e59">y = x − 2</text>
+  <line x1="474" y1="270" x2="525" y2="270" stroke="#c2410c" stroke-width="5"/>
+  <text x="540" y="278" font-family="Cambria Math, Georgia, serif" font-size="23" fill="#9a3412">x = 2</text>
+  <line x1="472" y1="302" x2="738" y2="302" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="472" y="342" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="23" fill="#334155">세 꼭짓점</text>
+  <text x="472" y="378" font-family="Cambria Math, Georgia, serif" font-size="22" fill="#334155">P(0, −2), Q(2, 0), R(2, 2)</text>
+  <text x="472" y="422" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="23" fill="#334155">넓이 = ½ × 2 × 2 = 2</text>
+  <text x="42" y="575" font-family="Noto Sans KR, Malgun Gothic, sans-serif" font-size="19" fill="#64748b">세로 변 QR의 길이는 2이고, P에서 x = 2까지의 수평 거리는 2이다.</text>
+</svg>
