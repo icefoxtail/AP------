@@ -1,4 +1,5 @@
-window.examTitle = "21_매산중_2학기_기말_중3_기출";\nwindow.questionBank = [
+window.examTitle = "21_매산중_2학기_기말_중3_기출";
+window.questionBank = [
   {
     "id": 1,
     "content": "다음 그림에서 $\\\\overline{AB}$의 중심각의 크기는? (3점)",
@@ -19,7 +20,7 @@ window.examTitle = "21_매산중_2학기_기말_중3_기출";\nwindow.questionBa
   },
   {
     "id": 2,
-    "content": "다음 그림에서 호 $x$의 길이를 구하면? (4점)\\\\n[인쇄 원문: $\\\\overline{AB}=9$, $\\\\overline{BC}=x$; 그림 위에 $6$이 수기로 기입되어 있어 HOLD]",
+    "content": "다음 그림에서 호 $x$의 길이를 구하면? (4점)",
     "choices": [
       "$3$",
       "$4$",
@@ -367,7 +368,7 @@ window.examTitle = "21_매산중_2학기_기말_중3_기출";\nwindow.questionBa
   },
   {
     "id": 22,
-    "content": "[서답형 2] [서술형] 다음 그림과 같이 삼각형 $ABC$의 외심 $O$에서 $\\\\overline{BC}$에 내린 수선의 발을 $D$라 하고, $\\\\overline{OD}=2\\\\rm\\,cm$이다. 두 점 $A$, $C$에서 각각 $\\\\overline{BC}$, $\\\\overline{AB}$에 내린 수선의 발을 $E$, $F$라 하고 $\\\\overline{AE}$와 $\\\\overline{CF}$의 교점을 $G$, $\\\\overline{OB}$의 연장선이 원 $O$와 만나는 점을 $H$라고 할 때, 다음에 답하시오.\\\\n(1) 사각형 $AGCH$는 어떤 사각형인지 말하시오. (2점)\\\\n(2) $\\\\overline{OD}:\\\\overline{HC}$의 길이의 비를 구하시오. (2점)\\\\n(3) $\\\\overline{AG}$의 길이를 구하시오. (1점)\\\\n[발문에 인쇄값과 수기 덮어쓰기 표시가 있어 HOLD]",
+    "content": "[서답형 2] [서술형] 다음 그림과 같이 삼각형 $ABC$의 외심 $O$에서 $\\\\overline{BC}$에 내린 수선의 발을 $D$라 하고, $\\\\overline{OD}=2\\\\rm\\,cm$이다. 두 점 $A$, $C$에서 각각 $\\\\overline{BC}$, $\\\\overline{AB}$에 내린 수선의 발을 $E$, $F$라 하고 $\\\\overline{AE}$와 $\\\\overline{CF}$의 교점을 $G$, $\\\\overline{OB}$의 연장선이 원 $O$와 만나는 점을 $H$라고 할 때, 다음에 답하시오.\\\\n(1) 사각형 $AGCH$는 어떤 사각형인지 말하시오. (2점)\\\\n(2) $\\\\overline{OD}:\\\\overline{HC}$의 길이의 비를 구하시오. (2점)\\\\n(3) $\\\\overline{AG}$의 길이를 구하시오. (1점)",
     "choices": [],
     "answer": "",
     "solution": "",
@@ -399,4 +400,4 @@ window.examTitle = "21_매산중_2학기_기말_중3_기출";\nwindow.questionBa
     ],
     "image": "assets/images/21_매산중_2학기_기말_중3_기출/q24.png"
   }
-];\n
+];
