@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R1",
+  "canonicalOrdinal": 11,
+  "examUid": "o11",
+  "examFile": "21_연향중_1학기_중간_중2_기출.js",
+  "finalArtifactSha": "2009fc141fa6d7a8bb38627784c25e8864d17d5b",
+  "examSha256": "sha256:f9d1791e4c2c2dfd4622d91d1d1fb127dbaa4947ac2533adaf568e84a8ab6aeb",
+  "physicalEvidenceGitBlob": "efb1d89732550a575b62d85a1951b27f7ef98f2b",
+  "stageEvidenceGitBlob": "efb1d89732550a575b62d85a1951b27f7ef98f2b",
+  "evidenceSchema": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "calibrationEvidenceGitBlob": "8262a02c2bb0ec822fe74dea62b385d2a064f2c8",
+  "validationMode": "CONNECTED_TOOL_EXACT_CURRENT_MAIN_CANONICAL_R1_V2_FUNCTION_REPLAY",
+  "validatorAuthorityMainSha": "b9556e59500c9312981ab491f1d280634294b408",
+  "authorityCodeParity": {
+    "commonV2": "e1e331b52e9af51e81bba8361d89ac11910e0f72",
+    "r1V2": "b00d2d1ca69b9f95c4c380a82754234c46f29525",
+    "exactMatchToLatestMain": true
+  },
+  "targetBinding": {
+    "examBlobSha": "2009fc141fa6d7a8bb38627784c25e8864d17d5b",
+    "evidenceBlobSha": "efb1d89732550a575b62d85a1951b27f7ef98f2b",
+    "expectedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ]
+  },
+  "repairClosure": {
+    "redTargetQids": [
+      6
+    ],
+    "repairMode": "C",
+    "generatedReplacementCount": 1,
+    "generatedReplacementQids": [
+      6
+    ],
+    "generatedRepairProvenance": "REPAIR_MASTER_GENERATED_REPLACEMENT",
+    "sourceOriginalParityClaimed": false,
+    "priorR1HandoffBlob": "b918e1155972af4c5d1b8fb860ddf243fdcf7013",
+    "priorRepairArtifactBlob": "2009fc141fa6d7a8bb38627784c25e8864d17d5b",
+    "finalQ6Math": "x >= -17/4; among 10,-9,7,-4,5 only -9 is not a solution; answer ②",
+    "itemHoldAfterRepair": 0
+  },
+  "calibration": {
+    "evidenceBlob": "8262a02c2bb0ec822fe74dea62b385d2a064f2c8",
+    "sampleReadBeforeWork": true,
+    "goldenSampleBlobs": [
+      "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+    ],
+    "negativeSampleBlob": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+    "calibrationStatus": "PASS"
+  },
+  "writeRecovery": {
+    "primaryPath": "GitHub contents update_file",
+    "primaryResult": "BLOCKED_BEFORE_SIDE_EFFECT",
+    "alternatePath": "Git blob -> tree -> commit -> non-force ref update",
+    "alternateResult": "PASS",
+    "forcePushUsed": false
+  },
+  "latestMainRevalidation": {
+    "latestMainSha": "b9556e59500c9312981ab491f1d280634294b408",
+    "targetBlobOnLatestMain": "541cfa587bc8f2f4bfa112a4637793ccb12310d3",
+    "targetOverlapSinceClaim": false,
+    "validatorCodeOverlapSinceClaim": false
+  },
+  "result": {
+    "ok": true,
+    "validatorMode": "R1_V2",
+    "stage": "R1",
+    "denominator": 21,
+    "rowCount": 21,
+    "disposition": "PASS",
+    "commonValid": true,
+    "itemHoldCount": 0,
+    "itemHoldQids": [],
+    "issues": []
+  },
+  "canonicalStageGate": "PASS"
+}
