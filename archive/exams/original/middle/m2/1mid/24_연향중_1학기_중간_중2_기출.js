@@ -273,7 +273,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "content": "$(\\frac{25}{3})^a = \\frac{5^b}{81}$ 일 때, 두 자연수 $a, b$의 합 $a+b$는?",
+    "content": "$(\\frac{25}{3})^a = \\frac{5^b}{81}$일 때, 두 자연수 $a, b$의 값으로 옳은 것은?",
     "choices": [
       "$a=2, b=4$",
       "$a=3, b=3$",
@@ -298,7 +298,7 @@ window.questionBank = [
       "자연수조건"
     ],
     "wide": false,
-    "solution": "$\\left(\\frac{25}{3}\\right)^a=\\frac{5^{2a}}{3^a}=\\frac{5^b}{3^4}$이므로 $a=4$, $b=8$이다. 따라서 $a+b=12$이고, 주어진 보기의 쌍으로는 ④에 해당한다.",
+    "solution": "$\\left(\\frac{25}{3}\\right)^a=\\frac{5^{2a}}{3^a}=\\frac{5^b}{3^4}$이다. 분모의 지수를 비교하면 $a=4$이고, 분자의 지수를 비교하면 $b=2a=8$이다. 따라서 $(a,b)=(4,8)$이므로 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",

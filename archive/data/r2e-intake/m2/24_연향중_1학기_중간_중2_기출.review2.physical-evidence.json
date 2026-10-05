@@ -97,8 +97,7 @@
     "formalR1CompareCompleted": true,
     "formalR1CompareResult": "R2 independent 23-item snapshot agrees with R1 on all mathematical/solution/meta axes and independently preserves only q9 source/answer authority hold; no deterministic artifact repair is justified without source pixels.",
     "r1EvidenceBlob": "655a475b47b848798e9d71bd182eecd8b6fd205d",
-    "blindFreezeSha256": "sha256:b74650c7492a9eae605e4c526a61e42c46f7aca029a1f1fc14e0d62cfa319618",
-    "blindFreezeGitBlob": "e9b483b8033a0ef59994397dc007a3281488486a"
+    "blindFreezeSha256": "sha256:b74650c7492a9eae605e4c526a61e42c46f7aca029a1f1fc14e0d62cfa319618"
   },
   "summary": {
     "questionCount": 23,
@@ -1488,7 +1487,7 @@
       "projectionDisposition": "MATERIALIZED",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
-      "nullReason": "Exact PT/TPL are materialized in the canonical CREATE Meta payload; the production exam JS does not embed projection keys at this stage.",
+      "nullReason": "Current exam artifact leaves problemTypeKey/templateKey unset for this cross-grade M1 solid-measure item; R2 records the semantic lookup as evidence only and does not mutate the exam during validator closure.",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
