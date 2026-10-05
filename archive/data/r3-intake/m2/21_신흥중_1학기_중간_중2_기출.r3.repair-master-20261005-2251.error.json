@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "M2_1_NONSTOP_ERROR_REPORT_v1",
+  "lane": "M2-1 REPAIR-MASTER",
+  "examUid": "o12",
+  "exam": "21_신흥중_1학기_중간_중2_기출.js",
+  "stage": "R3",
+  "targetQids": [
+    18,
+    19
+  ],
+  "latestMainObserved": "5eec7856dc524c3d8d5adfc656efbf7e58302c1c",
+  "inputArtifactBlob": "e5ba26a3d69f41a508f87f6483810254994b990f",
+  "exactError": "PRODUCTION_Q18_Q19_WRITE_BLOCKED_BY_SAFETY_GATE",
+  "completedStep": "LATEST_MAIN_REVALIDATION_AND_Q18_Q19_REPAIR_DESIGN",
+  "firstMissingClosureStep": "PERSIST_Q18_Q19_TARGETED_REPAIR",
+  "triedPaths": [
+    "GitHub contents update_file on fresh branch",
+    "Git object create_blob on fresh branch after readback-confirmed unchanged state"
+  ],
+  "intendedRepair": {
+    "q18": {
+      "mode": "REPAIR_MASTER_GENERATED_REPLACEMENT",
+      "content": "다음 문장 \"x에서 4를 뺀 수의 2배는 17보다 작지 않다.\"를 부등식으로 바르게 나타낸 것은? [4점]",
+      "correctChoice": "⑤: 2(x-4) ≥ 17",
+      "answer": "⑤",
+      "provenance": "REPAIR_MASTER_GENERATED_REPLACEMENT"
+    },
+    "q19": {
+      "mode": "DETERMINISTIC_MINIMAL_REPAIR",
+      "content": "부등식 2x+1 > 3x-1의 해로 옳은 것은? [4점]",
+      "answer": "①: x < 2"
+    }
+  },
+  "sourceOriginalParityClaimed": false,
+  "leaseStatus": "RELINQUISHED_NON_BLOCKING",
+  "ownerRelinquished": true,
+  "nextAction": "Persist q18/q19 only from current main, produce changedQids=[18,19] R3 evidence, run current canonical R3 validator, bind validator/R3 receipts, then R3_PASS→RELEASE_QUEUE. Do not reopen locked qids.",
+  "recordedAtKST": "2026-10-05T22:51:00+09:00"
+}
