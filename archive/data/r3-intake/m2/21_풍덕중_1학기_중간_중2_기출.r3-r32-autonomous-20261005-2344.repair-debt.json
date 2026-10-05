@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_REPAIR_DEBT_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 8,
+  "examUid": "o8",
+  "exam": "21_풍덕중_1학기_중간_중2_기출.js",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+  "sourceMainSha": "d47b235937829fba90be71dd05f0f5fb3cfda034",
+  "inputArtifactSha": "3740558f447fde6fe020446f4e5b7e8f9e781451",
+  "inputR2ReceiptSha": "0b38737f37fb6c7981a5a66bed3a0afa19fc04df",
+  "inputR2ValidatorSha": "31c18f179ad41b91ee6d5965472d713e23b62137",
+  "calibration": {
+    "status": "PASS",
+    "goldenSampleBlobs": [
+      "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+    ],
+    "negativeSampleBlob": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+  },
+  "freshAudit": {
+    "questionCount": 24,
+    "answerMathCheckedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "sourceRepairQids": [],
+    "deterministicFindings": [
+      {
+        "qid": 11,
+        "axis": "META",
+        "repair": "set problemTypeKey=PT_ISOSCELES_TRIANGLE; templateKey=TPL_ISOSCELES_BASE_ANGLES",
+        "authority": "M2-RPM-060"
+      },
+      {
+        "qid": 12,
+        "axis": "META",
+        "repair": "set problemTypeKey=PT_ISOSCELES_TRIANGLE; templateKey=TPL_ISOSCELES_BASE_ANGLES",
+        "authority": "M2-RPM-060"
+      },
+      {
+        "qid": 13,
+        "axis": "META",
+        "repair": "set problemTypeKey=PT_ISOSCELES_TRIANGLE; templateKey=TPL_ISOSCELES_VERTEX_BISECTOR",
+        "authority": "M2-RPM-061"
+      },
+      {
+        "qid": 14,
+        "axis": "SOLUTION",
+        "repair": "expand derivation for the internal/external angle-bisector geometry; answer remains ②"
+      },
+      {
+        "qid": 15,
+        "axis": "META",
+        "repair": "set problemTypeKey=PT_RIGHT_TRIANGLE_CONGRUENCE; templateKey=TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "authority": "M2-RPM-070"
+      },
+      {
+        "qid": 16,
+        "axis": "META",
+        "repair": "move standard/subunit classification to M2-07 / M2-07-PYTHAGOREAN_THEOREM; PT/TPL remains null because M2-RPM-104 is RPM_ONLY"
+      },
+      {
+        "qid": 18,
+        "axis": "SOLUTION+META",
+        "repair": "expand incenter-angle derivation; set PT_TRIANGLE_CENTERS / TPL_TRIANGLE_INCENTER",
+        "authority": "M2-RPM-066"
+      },
+      {
+        "qid": 19,
+        "axis": "META",
+        "repair": "set PT_TRIANGLE_CENTERS / TPL_TRIANGLE_CIRCUMCENTER",
+        "authority": "M2-RPM-064/065"
+      },
+      {
+        "qid": 21,
+        "axis": "META",
+        "repair": "set PT_TRIANGLE_CENTERS / TPL_TRIANGLE_CENTERS_COMBINED",
+        "authority": "M2-RPM-068/069 family selection"
+      },
+      {
+        "qid": 24,
+        "axis": "META",
+        "repair": "set PT_TRIANGLE_CENTERS / TPL_TRIANGLE_CENTERS_COMBINED",
+        "authority": "M2-RPM-068/069 family selection"
+      }
+    ]
+  },
+  "repairScopeQids": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19,
+    21,
+    24
+  ],
+  "sourceTruthUncertain": false,
+  "sourceRepairRequired": false,
+  "productionMutationAttempted": true,
+  "productionMutationApplied": false,
+  "blocker": "CONNECTED_GITHUB_WRITE_SAFETY_BLOCKED_EXAM_UPDATE_BEFORE_SIDE_EFFECT",
+  "firstMissingClosureStep": "R3_SAME_STAGE_PINPOINT_REPAIR_WRITE",
+  "downstreamRequired": [
+    "apply only listed deterministic repair loci",
+    "recheck changed qids plus direct dependencies and locked-scope integrity",
+    "write canonical R3 V2 evidence and validator receipt",
+    "write R3 stage receipt and release manifest with releaseDebt=0",
+    "declare R3_PASS -> RELEASE_QUEUE and remote-readback"
+  ],
+  "r3PassDeclared": false,
+  "releaseQueueDeclared": false
+}
