@@ -7,15 +7,24 @@
   "exam": "21_신흥중_1학기_중간_중2_기출.js",
   "inputArtifactBlob": "15cecd4931fc78853eb638cf16d43fee41c38578",
   "sourceDebtCommit": "20db40143fead50fe2e04cbfb6ebf3de44f2d569",
-  "state": "R3_RESCUE_ACTIVE",
-  "ownerState": "ACTIVE",
-  "leaseStatus": "ACTIVE",
+  "state": "R3_CLOSURE_DEBT",
+  "ownerState": "RELINQUISHED",
+  "leaseStatus": "RELINQUISHED",
   "claimType": "CAS_MASTER_LEASE",
   "selectorEligible": true,
   "targetedQids": [
     18,
     19
   ],
+  "exactError": "PRODUCTION_Q18_Q19_WRITE_BLOCKED_BY_SAFETY_GATE",
+  "completedStep": "CAS_MASTER_LEASE_AND_FRESH_REVALIDATION",
   "firstMissingClosureStep": "PRODUCTION_Q18_Q19_WRITE",
-  "claimedAtKST": "2026-10-05T22:37:00+09:00"
+  "triedPaths": [
+    "contents update_file",
+    "lease contents update_file"
+  ],
+  "nextAction": "Persist q18/q19 only, then targeted R3 evidence → validator/receipt → release manifest.",
+  "ownerRelinquished": true,
+  "claimedAtKST": "2026-10-05T22:37:00+09:00",
+  "relinquishedAtKST": "2026-10-05T22:42:00+09:00"
 }
