@@ -26,7 +26,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; all answer/solution fields blank.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_DERIVED_REPAIR_WITH_OTHER_HOLDS",
   "questions": [
     {
       "qid": 1,
@@ -182,11 +182,11 @@
       "qid": 16,
       "sourceQuestionNo": "16",
       "sourcePage": 3,
-      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "transcriptionStatus": "SOURCE_DERIVED_REPAIR",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Source table has an unreadable/blank B deviation entry; exact transcription cannot be confirmed."
+      "itemDisposition": "SOURCE_DERIVED_REPAIR",
+      "holdReason": null
     },
     {
       "qid": 17,
@@ -775,5 +775,18 @@
   ],
   "examHold": [
     "q16: source table B deviation is blank/unreadable. Preserve as HOLD; no inference."
+  ],
+  "notes": "q16 source page 3 has an unreadable blank in the B deviation cell. Since deviations from a common mean sum to zero, the missing entry is determined as -10 from the four legible entries. The item is now self-contained in text; its blank-table image is not referenced.",
+  "transcriptionRepairs": [
+    {
+      "qid": 16,
+      "sourcePage": 3,
+      "preRepairJsSha256": "dc786d86fad0788930ba1fee0d4b3954e8b95ba3e2fc646cf7d082d57f257288",
+      "backupPath": "tmp/source-slot-backups/21_신흥중_2학기_기말_중3_기출.js.pre-q16-repair",
+      "before": "B deviation [blank]",
+      "after": "B deviation -10",
+      "reason": "The sum of deviations from the mean is zero: -6 + B + 11 + 9 - 4 = 0.",
+      "answerFieldAdded": false
+    }
   ]
 }
