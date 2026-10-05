@@ -1,0 +1,1634 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "source-only-m2-20261004/21_신흥중_2학기_기말_중2_기출",
+  "artifactSha": "93dc7d3c8e16fe726ffaca0bbb36f3e9baa66d65",
+  "inputArtifactSha": "5bfbd2a37f0436195d017f5fe0c19c969eb4f083",
+  "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+  "studentInputRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R1.student-input.json",
+  "independentAnswerFreezeRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+  "independentAnswerFreezeSha1": "BC37C43001B956C025648CB822ACA22FA696D4EA",
+  "freezeBeforeStoredAnswerVerified": true,
+  "solutionQualityAudit": {
+    "status": "PASS",
+    "denominator": 24,
+    "solutionQualityCompareCount": "24/24",
+    "axes": [
+      "mathematical reproducibility",
+      "decisive-step completeness",
+      "student-readable solution structure",
+      "runtime TeX serialization"
+    ],
+    "samplePreflight": {
+      "performedBeforeEdits": true,
+      "goldenSamples": [
+        "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js#q1",
+        "#q4",
+        "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js#q1",
+        "#q4"
+      ],
+      "negativeSamples": [
+        "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg"
+      ],
+      "observations": [
+        "Golden examples state the governing relation and necessary computation before the conclusion.",
+        "Negative sample requires checking actual geometry/topology, not only labels."
+      ]
+    }
+  },
+  "sourceProvenance": {
+    "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+    "sourcePage3Ref": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
+    "repairsApplied": [
+      1,
+      18,
+      19,
+      20
+    ],
+    "repairRationale": "q1/q18 upstream audited repairs retained; q19 option restored to source scan; q20 answer and strict-inequality solution corrected to match source choices and independent count.",
+    "metaReboundQids": [
+      14,
+      16,
+      17,
+      18,
+      22
+    ],
+    "metaRebindAuthority": "archive/data/master_tables/js_archive_tag_master.json: M2-08 label=확률; M2-08-PROBABILITY_BASIC parent=M2-08. Replaced invalid M2-08b in final artifact; standardUnit, order, category and subunit retained."
+  },
+  "changedQids": [
+    5,
+    7,
+    8,
+    9,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceProvenance": "CREATE.source-repair-proposals.json#q1: explicit AD=6 and label relocation retained.",
+      "independentAnswer": "6 cm",
+      "independentWork": "Centroid divides median AD in 2:1; AD=6, so AG=4, GD=2 and x+y=6.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "AD=6 prompt and repaired diagram label x=AG, y=GD, 6 cm on AD."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질",
+            "category": "도형의 성질",
+            "originalCategory": "도형의 성질",
+            "questionType": "객관식",
+            "tags": [
+              "무게중심",
+              "선분의 길이"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "중선과 무게중심",
+              "l4": "좌표·길이"
+            },
+            "rpmL3": "중선과 무게중심",
+            "rpmL4": "좌표·길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for the selected centroid-length path."
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Before answer freeze, directly inspected only the student-facing SVG path/visible-label source (no answer, solution, CREATE evidence, or repair proposal exposed). After freeze, opened the rendered PNG and checked readability and label ownership: x on AG, y on GD, 6 cm on AD, 8 cm on EC. No solution SVG is required.",
+          "reviewTiming": {
+            "studentFacingSvgSourceInspected": "before independent-answer freeze",
+            "rasterRenderInspected": "after independent-answer freeze"
+          }
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "7 cm",
+      "independentWork": "Right triangle has hypotenuse 25 and leg 24; x=sqrt(25^2-24^2)=7.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "subUnit": "피타고라스 정리",
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "questionType": "객관식",
+            "tags": [
+              "직각삼각형",
+              "피타고라스 정리"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "피타고라스 정리",
+              "l4": "직각삼각형의 변 길이"
+            },
+            "rpmL3": "피타고라스 정리",
+            "rpmL4": "직각삼각형의 변 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q02.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "choice 3",
+      "independentWork": "Only 8^2+17^2=353 differs from 19^2=361; the other four triples satisfy Pythagoras.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "subUnit": "피타고라스 정리",
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "questionType": "객관식",
+            "tags": [
+              "직각삼각형",
+              "피타고라스 정리"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "피타고라스 정리의 역",
+              "l4": "직각삼각형 판정"
+            },
+            "rpmL3": "피타고라스 정리의 역",
+            "rpmL4": "직각삼각형 판정",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "52 cm",
+      "independentWork": "Horizontal offset is 14-6=8; height=sqrt(17^2-8^2)=15. Perimeter=17+6+15+14=52.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "subUnit": "피타고라스 정리",
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "questionType": "객관식",
+            "tags": [
+              "사다리꼴",
+              "둘레"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "도형에의 활용",
+              "l4": "평면도형 길이"
+            },
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q04.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "36 cm^2",
+      "independentWork": "If [ABC]=S, centroid G gives [GBC]=S/3. G' on GD is the centroid of GBC, so its height above BC is h/9; [G'BD]=S/18=6, hence S=108. The centroid partitions ABC into three equal areas, so [AGC]=36.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질",
+            "category": "도형의 성질",
+            "originalCategory": "도형의 성질",
+            "questionType": "객관식",
+            "tags": [
+              "무게중심",
+              "넓이"
+            ],
+            "level": "상",
+            "difficultyBucket": 4,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "넓이와 무게중심",
+              "l4": "무게중심을 이용한 복합도형"
+            },
+            "rpmL3": "넓이와 무게중심",
+            "rpmL4": "무게중심을 이용한 복합도형",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q05-r2.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "450",
+      "independentWork": "For x as a leg, x^2=17^2-15^2=64; for x as hypotenuse, x^2=17^2+15^2=514. Difference=450.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "subUnit": "피타고라스 정리",
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "questionType": "객관식",
+            "tags": [
+              "직각삼각형",
+              "피타고라스 정리"
+            ],
+            "level": "상",
+            "difficultyBucket": 4,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "도형에의 활용",
+              "l4": "평면도형 길이"
+            },
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "50 cm^2",
+      "independentWork": "From ABC≡CDE, AB=CD=6 and BC=DE=8. Coordinates B=(0,0), C=(8,0), D=(14,0), A=(0,6), E=(14,8) give [ACE]=50.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "MATERIALIZED",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질",
+            "category": "도형의 성질",
+            "originalCategory": "도형의 성질",
+            "questionType": "객관식",
+            "tags": [
+              "합동",
+              "넓이"
+            ],
+            "level": "상",
+            "difficultyBucket": 4,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "삼각형의 성질",
+              "midUnit": "삼각형의 성질",
+              "l3": "직각삼각형의 합동",
+              "l4": "RHS"
+            },
+            "rpmL3": "직각삼각형의 합동",
+            "rpmL4": "RHS",
+            "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+            "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+            "metaNullReason": null
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q07.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "225π cm^2",
+      "independentWork": "D is midpoint of hypotenuse BC and G is centroid, so GD=AD/3=5, hence AD=BC/2=15. Circumradius=15; area=225π.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "standardUnit": "도형의 성질",
+            "standardUnitOrder": 5,
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질",
+            "category": "도형의 성질",
+            "originalCategory": "도형의 성질",
+            "questionType": "객관식",
+            "tags": [
+              "직각삼각형",
+              "무게중심",
+              "외접원"
+            ],
+            "level": "상",
+            "difficultyBucket": 4,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "중선과 무게중심",
+              "l4": "2:1 비"
+            },
+            "rpmL3": "중선과 무게중심",
+            "rpmL4": "2:1 비",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q08.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "10 cm",
+      "independentWork": "The figure places G and I on DE, with DE parallel BC. Since G is the centroid, its parallel cross-section is at one-third the altitude from BC, so DE=(2/3)BC. The incenter height is the inradius; equality with h/3 implies 3a=AB+AC+a, hence BC=a=(18+12)/2=15. Thus DE=10.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "MATERIALIZED",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "standardUnit": "도형의 닮음",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "subUnit": "평행선 사이의 선분의 길이의 비",
+            "category": "도형의 닮음",
+            "originalCategory": "도형의 닮음",
+            "questionType": "객관식",
+            "tags": [
+              "무게중심",
+              "내심",
+              "평행선과 선분의 길이"
+            ],
+            "level": "상",
+            "difficultyBucket": 5,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "비례 활용",
+              "l4": "선분비를 이용한 복합도형"
+            },
+            "rpmL3": "비례 활용",
+            "rpmL4": "선분비를 이용한 복합도형",
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "metaNullReason": null
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q09.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "6",
+      "independentWork": "Odd numbers from 1 through 12 are 1,3,5,7,9,11: six cases.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "경우의 수"
+            ],
+            "level": "하",
+            "difficultyBucket": 1,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "합의 법칙과 곱의 법칙",
+              "l4": "중복 없이 세기"
+            },
+            "rpmL3": "합의 법칙과 곱의 법칙",
+            "rpmL4": "중복 없이 세기",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "9",
+      "independentWork": "The male and female candidate sets are disjoint; 4+5=9.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "경우의 수"
+            ],
+            "level": "하",
+            "difficultyBucket": 1,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "합의 법칙과 곱의 법칙",
+              "l4": "단계별 선택"
+            },
+            "rpmL3": "합의 법칙과 곱의 법칙",
+            "rpmL4": "단계별 선택",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "8",
+      "independentWork": "By the multiplication principle, 2 house-to-school routes times 4 school-to-library routes gives 8; the diagram's branches meet only at the school.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "경우의 수"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "합의 법칙과 곱의 법칙",
+              "l4": "단계별 선택"
+            },
+            "rpmL3": "합의 법칙과 곱의 법칙",
+            "rpmL4": "단계별 선택",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q12.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "10",
+      "independentWork": "Ordered dice outcomes with absolute difference 2: 8; difference 5: 2. Total=10.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "PASS",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "경우의 수"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "배열과 선택",
+              "l4": "순서가 있는 경우"
+            },
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 있는 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "choice 1",
+      "independentWork": "A die roll is a divisor of 12 with probability 5/6, strictly between 0 and 1. The other statements have probability 0 or 1.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Rechecked current standard course/unit/subunit/category against archive/data/master_tables/js_archive_tag_master.json; repaired invalid former M2-08b to canonical M2-08, with the existing basic-probability subunit parent now matching. Other RPM/ACTIVE nulls remain explicit with nullReason.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 성질",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "확률"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 뜻",
+              "l4": "확률 계산"
+            },
+            "rpmL3": "확률의 뜻",
+            "rpmL4": "확률 계산",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "1/3",
+      "independentWork": "EXCITING MATH has 12 letters total; vowels E,I,I,A occur 4 times, so 4/12=1/3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "확률"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 뜻",
+              "l4": "동등가능한 경우"
+            },
+            "rpmL3": "확률의 뜻",
+            "rpmL4": "동등가능한 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "7/16",
+      "independentWork": "There are 16 umbrellas total; 7 are red and none are yellow, giving 7/16.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Rechecked current standard course/unit/subunit/category against archive/data/master_tables/js_archive_tag_master.json; repaired invalid former M2-08b to canonical M2-08, with the existing basic-probability subunit parent now matching. Other RPM/ACTIVE nulls remain explicit with nullReason.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 성질",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "확률"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 성질",
+              "l4": "사건의 합"
+            },
+            "rpmL3": "확률의 성질",
+            "rpmL4": "사건의 합",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "3/8",
+      "independentWork": "P(A yellow and B blue)=(5/8)(6/10)=3/8.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Rechecked current standard course/unit/subunit/category against archive/data/master_tables/js_archive_tag_master.json; repaired invalid former M2-08b to canonical M2-08, with the existing basic-probability subunit parent now matching. Other RPM/ACTIVE nulls remain explicit with nullReason.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 성질",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "확률"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 활용",
+              "l4": "연속 시행"
+            },
+            "rpmL3": "확률의 활용",
+            "rpmL4": "연속 시행",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceProvenance": "CREATE.source-repair-proposals.json#q18: option ③ restored to 5/9 under independent probability.",
+      "independentAnswer": "5/9",
+      "independentWork": "Using the stated single-draw probability and the implied independent draws, P(at least one strawberry)=1-(2/3)^2=5/9.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "객관식 structure checked against prompt; five choices; prompt and image reference agree."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Rechecked current standard course/unit/subunit/category against archive/data/master_tables/js_archive_tag_master.json; repaired invalid former M2-08b to canonical M2-08, with the existing basic-probability subunit parent now matching. Other RPM/ACTIVE nulls remain explicit with nullReason.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 성질",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "확률"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 활용",
+              "l4": "연속 시행"
+            },
+            "rpmL3": "확률의 활용",
+            "rpmL4": "연속 시행",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path."
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceProvenance": "source-page-3.png: printed choice ①=2/9; duplicate digital choice corrected to source value.",
+      "independentAnswer": "7/36",
+      "independentWork": "Clockwise from A to C requires 3 steps modulo 5. For two die results 1..6, sums 3 or 8 work, with 2+5=7 ordered pairs. This value occurs twice among the choices.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Five choices retained; duplicate 7/36 removed by restoring source choice ①=2/9."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "확률",
+              "경우의 수"
+            ],
+            "level": "상",
+            "difficultyBucket": 4,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "배열과 선택",
+              "l4": "순서가 있는 경우"
+            },
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 있는 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q19.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. Clockwise pentagon vertex order checked."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceProvenance": "source-page-3.png: printed choice ①=1/6; strict 2x+y<7 excludes x=3,y=1; answer and solution corrected.",
+      "independentAnswer": "1/6",
+      "independentWork": "Count 2x+y<7: x=1 permits 4 values of y; x=2 permits 2; total 6/36=1/6.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Five choices retained; source-backed answer now points to choice ①=1/6."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "객관식",
+            "tags": [
+              "확률"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 활용",
+              "l4": "경우를 나누어 구하는 확률"
+            },
+            "rpmL3": "확률의 활용",
+            "rpmL4": "경우를 나누어 구하는 확률",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "10 cm",
+      "independentWork": "The joined square side lengths are 2 and 6; B-to-F displacement has perpendicular components 8 and 6, so BF=sqrt(8^2+6^2)=10.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$10$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Constructed response; no choices; two square areas and B,C,E collinearity stated."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "subUnit": "피타고라스 정리",
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "questionType": "서술형",
+            "tags": [
+              "정사각형",
+              "선분의 길이"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "도형에의 활용",
+              "l4": "평면도형 길이"
+            },
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q21.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "0",
+      "independentWork": "P(citrus)=7/10 and P(banana)=0 because the box contains only citrus and green-tea chocolates; pq=0.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$0$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Constructed response; p and q events defined."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Rechecked current standard course/unit/subunit/category against archive/data/master_tables/js_archive_tag_master.json; repaired invalid former M2-08b to canonical M2-08, with the existing basic-probability subunit parent now matching. Other RPM/ACTIVE nulls remain explicit with nullReason.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "subUnit": "확률의 뜻과 성질",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "서술형",
+            "tags": [
+              "확률"
+            ],
+            "level": "하",
+            "difficultyBucket": 2,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 뜻",
+              "l4": "확률 계산"
+            },
+            "rpmL3": "확률의 뜻",
+            "rpmL4": "확률 계산",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "3/5",
+      "independentWork": "There are C(5,2)=10 equally likely pairs. The larger digit must be odd (3 or 5), giving 2+4=6 favorable pairs; 6/10=3/5.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$\\dfrac{3}{5}$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Constructed response; two-card selection and digit ordering explicit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "standardUnit": "확률",
+            "standardUnitOrder": 8,
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "subUnit": "경우의 수와 확률",
+            "category": "확률",
+            "originalCategory": "확률",
+            "questionType": "서술형",
+            "tags": [
+              "경우의 수",
+              "확률"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "배열과 선택",
+              "l4": "순서가 없는 경우"
+            },
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 없는 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": false,
+          "problemImage": null,
+          "problemImageExists": null,
+          "solutionVisualNeeded": false,
+          "evidence": "No figure is mathematically needed: text fully specifies the task; no solution SVG is needed."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceMode": "SOURCE_ONLY",
+      "sourceProvenance": "CREATE source provenance reviewed; no qid-specific source repair.",
+      "independentAnswer": "13 cm",
+      "independentWork": "Altitude is 2(60)/10=12; half-base is 5. By Pythagoras, AB=sqrt(12^2+5^2)=13.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "storedAnswer": "$13$",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "disposition": "MINIMAL_R1_REPAIR_RECHECKED",
+      "fourAxisReview": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Constructed response; base and area conditions explicit."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Recomputed from frozen student input, then compared against final solution and answer. Decisive steps and conclusion are readable; runtime TeX/control-character audit passes. Changed locus recalculated after repair."
+        },
+        "META": {
+          "status": "PASS",
+          "projectionState": "EXPLICIT_NULL_OR_PENDING",
+          "evidence": "Actual curriculum/unit/subunit/category, tags, level, difficulty, RPM path and advanced key/null reason independently checked against prompt and method; explicit projection nulls retained.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "standardUnit": "피타고라스 정리",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "subUnit": "피타고라스 정리",
+            "category": "피타고라스 정리",
+            "originalCategory": "피타고라스 정리",
+            "questionType": "서술형",
+            "tags": [
+              "이등변삼각형",
+              "넓이",
+              "선분의 길이"
+            ],
+            "level": "중",
+            "difficultyBucket": 3,
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "도형에의 활용",
+              "l4": "평면도형 길이"
+            },
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "problemVisualNeeded": true,
+          "problemImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q24.png",
+          "problemImageExists": true,
+          "solutionVisualNeeded": false,
+          "evidence": "Required prompt figure file exists and was inspected; labels/topology agree with conditions. No additional solution SVG is needed for the calculation."
+        }
+      }
+    }
+  ]
+}
