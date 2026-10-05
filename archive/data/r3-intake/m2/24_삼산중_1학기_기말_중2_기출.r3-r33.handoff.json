@@ -9,13 +9,18 @@
   "finalArtifactSha": "a9349b4a9975ca575402d596ab5ef124defbffc7",
   "physicalEvidenceBlob": "46e4abd16962250a5709c636ee63052013e93c0a",
   "decisionSnapshotBlob": "053c6c9b1e22aa03947002b75dd23666ea89ff8f",
+  "stageEvidenceBlob": "580305a1f578b80e9a32e8ee25fe8101d8c5e0c0",
+  "validatorReceiptBlob": "9737b2b3ebbd4a4a4af11d49d466f57fdd9962e2",
+  "stageReceiptBlob": "2727d02f7568e6c1166fa636704d044c868fba46",
   "auditResult": "24/24_PASS_CANDIDATE",
   "examMutationCount": 0,
   "deterministicRepairCount": 0,
   "sourceRepairRequired": false,
   "openQids": [],
-  "actualCanonicalValidator": "NOT_RUN",
-  "r3PassDeclared": false,
-  "releaseQueueDeclared": false,
-  "firstMissingClosureStep": "CANONICAL_R3_VALIDATOR_EXECUTION"
+  "canonicalValidator": "PASS_R3_V2",
+  "r3PassDeclared": true,
+  "releaseQueueDeclared": true,
+  "releaseBranchCreated": true,
+  "firstMissingClosureStep": "DURABLE_CLAIM_CLOSE_AND_RELEASE_MANIFEST_WRITE",
+  "writeBlocker": "CONNECTED_GITHUB_WRITE_SAFETY_BLOCKED_FINAL_CLAIM_AND_MANIFEST_MUTATIONS"
 }
