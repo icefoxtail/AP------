@@ -1,0 +1,61 @@
+name: Geometry publication qualification
+on:
+  push:
+    branches: ['codex/geometry-visual-publication-v2-20261005']
+    paths: ['archive/tools/geometry-equation/**', '.github/workflows/geometry-publication-tests.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python geometry regressions
+        run: python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py' -v
+      - name: Node geometry regressions
+        if: always()
+        run: node --test archive/tools/geometry-equation/tests/*.test.mjs
+      - name: Install browser for publication qualification
+        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
+        run: |
+          npm install --no-save --package-lock=false playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Publication static and deterministic fixtures
+        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
+        run: python archive/tools/geometry-equation/tests/build_publication_fixtures.py
+      - name: Publication Chromium regression
+        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
+        env:
+          GEOMETRY_BROWSER_CHANNEL: chromium
+        run: node archive/tools/geometry-equation/tests/run-publication-browser.mjs
+      - name: Actual Archive mode sol 390 integration
+        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
+        env:
+          GEOMETRY_BROWSER_CHANNEL: chromium
+        run: node archive/tools/geometry-equation/tests/run-publication-archive.mjs
+      - name: Recoverable source snapshot
+        if: always()
+        run: |
+          git rev-parse HEAD > source-commit.txt
+          python - <<'PY'
+          import subprocess, tarfile
+          paths = subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')
+          with tarfile.open('geometry-source.tar.gz', 'w:gz') as archive:
+              for p in paths:
+                  if p and (p.startswith(('archive/tools/geometry-equation/', 'archive/tools/past-exam-pipeline/', 'archive/vendor/', 'archive/css/', 'docs/rules/', '.codex/skills/apmath-visual-upgrade/')) or (p.startswith('archive/') and p.count('/') == 1) or p == '.github/workflows/geometry-publication-tests.yml'):
+                      archive.add(p, arcname=p, recursive=False)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-publication-qualification
+          path: |
+            source-commit.txt
+            geometry-source.tar.gz
+            archive/_generated/geometry-visual-engine/publication-tests/
+          retention-days: 14
