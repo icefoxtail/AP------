@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M2_R2_RECHECK_DECISION_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "canonicalOrdinal": 3,
+  "stage": "R2",
+  "lane": "R2-2",
+  "examPath": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+  "inputArtifactGitBlob": "d93fcc046b398155032fa7117297778db38ef5db",
+  "inputArtifactSha256": "sha256:4e82004dbd006eaa4131eec467308c413f6ba2f0858b9d4c6bed56ae4069d66c",
+  "finalArtifactGitBlob": "d93fcc046b398155032fa7117297778db38ef5db",
+  "finalArtifactSha256": "sha256:4e82004dbd006eaa4131eec467308c413f6ba2f0858b9d4c6bed56ae4069d66c",
+  "protectedBaselineGitBlob": "a52472e3bc167e4fb84ab2868ae12161a7bedb01",
+  "protectedFieldsDirectCompare": "content/choices/answer/image 23/23 exact by direct current-vs-main JSON comparison",
+  "sourcePixelChecks": [
+    {
+      "qid": 14,
+      "result": "SOURCE_TEXT_SUFFICIENT",
+      "evidence": "Stem states all decisive radius/height ratios."
+    },
+    {
+      "qid": 23,
+      "result": "SOURCE_TRUTH_HOLD",
+      "evidence": "R2 direct check: current q23 has no image/solutionImage field and conventional target q23.png/q23.webp/q23.jpg asset paths are absent; the stem delegates the decisive boundary/direction to a number-line figure."
+    }
+  ],
+  "sourceAuthorityLookups": [
+    "latest origin/main 9e31a748b07d6edac468fa2eb262c5da214f54fe",
+    "protected baseline a52472e3bc167e4fb84ab2868ae12161a7bedb01",
+    "current artifact d93fcc046b398155032fa7117297778db38ef5db",
+    "q23 png/webp/jpg probes NOT_FOUND",
+    "current middle2 crosswalk"
+  ],
+  "runtimeStringCheck": {
+    "result": "PASS",
+    "checkedFields": [
+      "content",
+      "choices",
+      "answer",
+      "solution"
+    ],
+    "qidCount": 23,
+    "malformedDoubleTexQids": []
+  },
+  "solutionVisualCount": 0,
+  "metaAuthority": {
+    "currentCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "verifiedRpmIds": [
+      "M2-RPM-122",
+      "M2-RPM-121",
+      "M2-RPM-123",
+      "M2-RPM-120",
+      "M2-RPM-129",
+      "M2-RPM-125",
+      "M2-RPM-126",
+      "M2-RPM-132",
+      "M2-RPM-133",
+      "M2-RPM-142",
+      "M2-RPM-139",
+      "M2-RPM-136",
+      "M2-RPM-141",
+      "M2-RPM-144"
+    ],
+    "missingRpmIds": [],
+    "q15Boundary": "EXPLICIT_BOUNDARY:RPM_PRIMARY",
+    "q23Disposition": "M2-RPM-141:SOURCE_HOLD"
+  },
+  "deterministicRepairs": [],
+  "itemHoldCount": 1,
+  "itemHoldQids": [
+    23
+  ],
+  "deterministicRepairRequired": false,
+  "decision": "PASS_WITH_ITEM_HOLDS_CANDIDATE_FROZEN_BEFORE_FORMAL_R1_COMPARE",
+  "independentMathSummary": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "recalculation": "$0.\\dot2\\dot7$은 순환마디 2자리이므로 $100x-x$에서 반복부가 소거되어 ②."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "recalculation": "$1.23444\\cdots$는 4가 반복되는 무한소수이고 $1000x-100x=1111$이므로 옳지 않은 설명은 ③."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "recalculation": "$1/3$의 순환마디 길이는 1, $8/11=0.\\overline{72}$의 길이는 2이므로 합은 3, ②."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "recalculation": "$6/13=0.\\overline{461538}$, $123=6\\times20+3$이므로 123번째 숫자는 1, ①."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "recalculation": "$14/(40x)=7/(20x)$가 유한소수가 되려면 약분 뒤 분모 소인수가 2,5뿐. 가능한 한 자리 $x=1,2,4,5,7,8$, 합 27, ④."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "recalculation": "①③④⑤는 모두 $a^6$, ②는 $a^{10}$이므로 ②."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "recalculation": "$1MB=2^{20}B=2^{23}bit$, $16=2^4$이므로 $16MB=2^{27}bit$, ⑤."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "recalculation": "$27^8=(3^3)^8=3^{24}=(3^4)^6=A^6$이므로 $1/A^6$, ②."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "recalculation": "좌변은 $16x^{2A+3-B}y^{8+2B}$. 지수 비교로 $B=5,A=4$, 계수 $C=16$, 합 25, ⑤."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "recalculation": "$a(8a-6b)-a(9a-12b)=-a^2+6ab$, 따라서 $A+B=-1+6=5$, ③."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "recalculation": "빈칸 $P=(15x^2y-25xy^2)x^2y\\cdot3/(5xy)=9x^3y-15x^2y^2$, ③."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "recalculation": "원래 다항식 $P=-9a+27b$, 이를 $-ab/3$로 나누면 $27/b-81/a$, ④."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "recalculation": "$(3x-x^3)/x-(6x^3-5x^5)/x^3=(3-x^2)-(6-5x^2)=4x^2-3$, ①."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "recalculation": "B/A=3^2\\times1/2=9/2$이므로 A는 B의 $2/9$배, ④."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "recalculation": "①은 방정식, ⑤는 분모에 $x$가 남고, ④는 이차항 소거 후 일차부등식이므로 ①,⑤."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "recalculation": "⑤의 책 6권 가격은 $8000\\times6$이어야 하므로 제시식이 틀림, ⑤."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "recalculation": "$1-0.4x\\le0.2\\Rightarrow x\\ge2$, 가장 작은 정수 2, ②."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "recalculation": "$a<b\\Rightarrow5-a>5-b$이므로 ④가 옳지 않음."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "recalculation": "첫 식 $x<2$, 둘째 $x<5a/4$, 경계를 같게 두어 $a=8/5$, ①."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "recalculation": "$x/2+1/2+x/3\\le2\\Rightarrow x\\le9/5$, 최대 $9/5$km, ③."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "recalculation": "$A=2^4$, $B=2^{12}$, 따라서 $B/A=2^8$."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "recalculation": "첫 몫 $-2x+5y$, 둘째 $2x-2+4y$, 차 $-4x+y+2$; 대입하면 $9/5$."
+    },
+    {
+      "qid": 23,
+      "result": "HOLD",
+      "recalculation": "$(4+a)x\\le b+2$, $a<-4$라서 $x\\ge(b+2)/(4+a)$. 저장 -6은 수직선이 $x\\ge-1$일 때 일관되지만 원본 경계/방향 픽셀이 없어 HOLD."
+    }
+  ]
+}
