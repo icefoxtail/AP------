@@ -18,21 +18,16 @@
     "5-8": [
       2
     ],
-    "9": [
-      2,
-      3
-    ],
-    "10-12": [
+    "9-12": [
       3
     ],
     "13-16": [
       4
     ],
-    "17": [
-      4,
+    "17-18": [
       5
     ],
-    "18 and essay1": [
+    "essay1": [
       5
     ],
     "essay2-3": [
@@ -128,8 +123,10 @@
         2,
         3
       ],
-      "transcriptionStatus": "HOLD",
-      "choicesStatus": "HOLD"
+      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 10,
@@ -201,8 +198,10 @@
         4,
         5
       ],
-      "transcriptionStatus": "HOLD",
-      "choicesStatus": "HOLD"
+      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 18,
@@ -272,14 +271,17 @@
       }
     }
   ],
-  "holds": [
-    {
-      "qid": 9,
-      "reason": "p.2 and p.3 contain different prompts printed as q9."
-    },
-    {
-      "qid": 17,
-      "reason": "p.4 and p.5 contain different prompts printed as q17."
-    }
-  ]
-}
+  "holds": [],
+  "priorGeneratedCandidateSha256": "5b91e6a7d255ebb1cc0cd0117ec2d7a61313d321109a9240f82ad7c7cd9ae15a",
+  "status": "SOURCE_QA_READY",
+  "duplicateQuestionNumbers": {},
+  "sourceCorrectionProtocol": {
+    "authorization": "USER_APPROVED_MINIMUM_SOURCE_CORRECTION_PROTOCOL",
+    "directPageInventory": "Original source pages 1-6 were opened; q9 is printed on page 3 and q17 on page 5. The conflicting page mappings were false.",
+    "actions": [
+      "Restored q9 and q17 directly from printed source text and choices."
+    ],
+    "answerSolutionFields": "Remain blank."
+  },
+  "notes": "q9 and q17 were directly transcribed from their actual printed pages; no answer or solution added."
+}\n
