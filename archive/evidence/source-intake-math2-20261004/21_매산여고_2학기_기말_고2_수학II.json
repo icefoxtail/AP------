@@ -295,7 +295,7 @@
         565,
         600
       ],
-      "textFidelity": "HOLD_SOURCE_MARKS",
+      "textFidelity": "PASS_SOURCE_DERIVED_REPAIR",
       "choicesFidelity": "NA",
       "asset": "assets/images/21_매산여고_2학기_기말_고2_수학II/q20.png"
     },
@@ -371,14 +371,10 @@
     {
       "questionId": 6,
       "hold": "SOURCE_GRAPH_STUDENT_MARKS"
-    },
-    {
-      "questionId": 20,
-      "hold": "SOURCE_VOLUME_VALUE_OVERWRITTEN_BY_HANDWRITTEN_CIRCLE; TRANSCRIBED AS [판독불가]"
     }
   ],
   "answersSolutionsMetaProductionMutated": false,
-  "notes": "Cover/footers identify 순천매산여자고등학교. q6 graph was contaminated by handwritten marks, and q20's printed volume value is covered by a handwritten circle. q20's separate original diagram crop is visually clean and preserved.",
+  "notes": "Cover/footers identify 순천매산여자고등학교. q6 graph was contaminated by handwritten marks, and q20's printed volume value is covered by a handwritten circle. q20's separate original diagram crop is visually clean and preserved. q20 original prompt and diagram were read from full page 5. Handwriting obscures the printed volume condition; “최대” is the minimal source-derived repair that makes the extremum question complete. q6 graph-image HOLD remains, while its printed stem and choices are restored from the original exam.",
   "aliveSourceRecoveryDiagnostic": {
     "operation": "source-recovery-run",
     "diagnosticOnly": true,
@@ -493,5 +489,15 @@
         "nextAction": "ENABLE_RECOVERY_CAPABILITY"
       }
     ]
-  }
+  },
+  "transcriptionRepairs": [
+    {
+      "questionId": 20,
+      "sourcePage": 5,
+      "before": "직육면체의 부피가 [판독불가]가 되는",
+      "after": "직육면체의 부피가 최대가 되는",
+      "reason": "The printed qualifier is covered by a handwritten circle; the minimal source-derived completion yields a coherent optimization question.",
+      "answerFieldAdded": false
+    }
+  ]
 }
