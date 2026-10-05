@@ -123,6 +123,10 @@ repair가 필요하면 같은 stage에서 최소 수정 후 changed locus만 다
 
 `blindAnswer`를 R1/stored answer 공개 전에 freeze한다.
 
+freeze 전에는 시험지 JS 전체 출력이나 answer/solution을 노출할 수 있는 검색을 하지 않는다. 안전한 파서로 학생용 지문/선택지/문제 그림 필드만 별도 입력으로 추출하고 그 입력만 읽는다.
+
+freeze 전 저장 답/해설이 노출되면 해당 실행의 freeze 증거를 사실대로 기록하고 `FAILED_ATTEMPT`로 보존한다. 구조 validator가 PASS여도 closure를 소비하지 않는다. ROOT는 새 `archive_r2`를 clean context에서 spawn하며, 이 품질 재실행을 MASTER에 넘기지 않는다.
+
 MATCH는 빠르게 통과하고 mismatch/suspicious locus만 깊게 처리한다.
 
 ### R3
