@@ -1,30 +1,21 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "M2-1-TEMP-MAIN-MERGE-4-20261006T0834+0900-O5",
-  "owner": "M2-1 TEMP-MAIN-MERGE-4",
-  "status": "RELINQUISHED_WITH_EXACT_DEBT",
+  "leaseId": "M2-1-WATCHDOG-20261006T0853+0900-O16",
+  "owner": "M2-1 WATCHDOG + 전광판",
+  "status": "ACTIVE",
   "baseMainSha": "b9a5f2d4239c33ba003b134b1511d73425f434b0",
-  "claimedAt": "2026-10-06T08:34:30+09:00",
-  "expiresAt": "2026-10-06T10:04:30+09:00",
-  "lastProgressAt": "2026-10-06T08:36:30+09:00",
-  "relinquishedAt": "2026-10-06T08:36:30+09:00",
-  "expectedCompletionGate": "M2_1_O5_MAIN_DONE",
-  "scope": "M2-1:PUBLISH:O5",
+  "claimedAt": "2026-10-06T08:53:30+09:00",
+  "expiresAt": "2026-10-06T09:23:30+09:00",
+  "lastProgressAt": "2026-10-06T08:53:30+09:00",
+  "expectedCompletionGate": "M2_1_O16_MAIN_DONE",
+  "scope": "M2-1:PUBLISH:O16",
   "targets": [
-    "o5:24_연향중_1학기_중간_중2_기출.js"
+    "o16:19_동산중_1학기_중간_중2_기출.js"
   ],
-  "result": "PUBLISH_PENDING",
-  "finalArtifactSha": "68c5db1146db43419f15800d3471078f1dd22e69",
-  "releaseBranch": "release/m2/o5-yeonhyang-1mid-r3-repair-20261005",
-  "releaseManifestBlob": "572317acc1dc1d3f264cb4408df0b1d1f45cbcde",
-  "validatorReceiptBlob": "d1f8a26400236e7eacdbc90836967560398ea1b5",
-  "r3ReceiptBlob": "9652f0f6d7665fb7236913331b0a1a2f1265a10c",
+  "result": "PUBLISH_ACTIVE",
+  "finalArtifactSha": "a87f61158fbdac5d349faccab61d2d8beb213ca3",
+  "releaseBranch": "release/m2/o16-dongsan-1mid-20261006-r3",
   "releaseDebt": 0,
-  "preparedPublishCommitSha": "2edc5b4786eb3b447025564c3bfb0d3b76c9b991",
-  "preparedPublishBranch": "publish/m2/temp-main-merge4-20261006-0834-o5",
-  "firstMissingClosureStep": "MAIN_PUBLISH_WRITE",
-  "triedPaths": [
-    "non-force main ref update with expected SHA",
-    "pull request creation from clean target-only publish branch"
-  ]
+  "preparedPublishBranch": "publish/m2/main-merge-20261006-0830-o16",
+  "firstMissingClosureStep": "MAIN_PUBLISH_WRITE"
 }
