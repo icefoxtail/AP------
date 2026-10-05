@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "M2-1-MAIN-MERGE-20261005T233617+0900-O29",
   "owner": "M2-1 MAIN-MERGE",
-  "status": "ACTIVE",
+  "status": "CLAIM_STAGED_NOT_GLOBAL",
   "baseMainSha": "d47b235937829fba90be71dd05f0f5fb3cfda034",
   "claimedAt": "2026-10-05T23:36:17+09:00",
   "expiresAt": "2026-10-06T00:36:17+09:00",
@@ -12,7 +12,12 @@
   "targets": [
     "o29:24_금당중_1학기_기말_중2_기출.js"
   ],
-  "firstMissingClosureStep": "LATEST_MAIN_REVALIDATION",
+  "firstMissingClosureStep": "GLOBAL_PUBLISH_LEASE_CAS_ACQUIRE",
   "mainMutation": 0,
-  "result": "IN_PROGRESS"
+  "result": "BLOCKED_PROVIDER_SAFETY",
+  "notes": [
+    "This branch is staging evidence only and is not global lease authority.",
+    "Direct global contents CAS, non-force global ref CAS, and PR-to-global were blocked before side effect.",
+    "Latest main already matches o29 final exam and metadata sidecar exactly; only MAIN closeout remains after lease acquisition."
+  ]
 }
