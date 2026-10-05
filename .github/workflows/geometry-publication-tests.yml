@@ -15,26 +15,29 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Require publication implementation and qualification entrypoints
+        run: |
+          test -s archive/tools/geometry-equation/visual_engine/publication.py
+          test -s archive/tools/geometry-equation/audit_publication.py
+          test -s archive/tools/geometry-equation/tests/build_publication_fixtures.py
+          test -s archive/tools/geometry-equation/tests/run-publication-browser.mjs
+          test -s archive/tools/geometry-equation/tests/run-publication-archive.mjs
       - name: Python geometry regressions
         run: python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py' -v
       - name: Node geometry regressions
         if: always()
         run: node --test archive/tools/geometry-equation/tests/*.test.mjs
       - name: Install browser for publication qualification
-        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
         run: |
           npm install --no-save --package-lock=false playwright@1.56.1
           npx playwright install --with-deps chromium
       - name: Publication static and deterministic fixtures
-        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
         run: python archive/tools/geometry-equation/tests/build_publication_fixtures.py
       - name: Publication Chromium regression
-        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
         env:
           GEOMETRY_BROWSER_CHANNEL: chromium
         run: node archive/tools/geometry-equation/tests/run-publication-browser.mjs
       - name: Actual Archive mode sol 390 integration
-        if: hashFiles('archive/tools/geometry-equation/tests/build_publication_fixtures.py') != ''
         env:
           GEOMETRY_BROWSER_CHANNEL: chromium
         run: node archive/tools/geometry-equation/tests/run-publication-archive.mjs

@@ -31,7 +31,8 @@ try{
   page.on('pageerror',e=>pageErrors.push(String(e)));
   page.on('response',r=>pending.push((async()=>{try{responses.push({url:r.url(),status:r.status(),sha256:sha256(await r.body())});}catch{}})()));
   const base='http://127.0.0.1:'+server.address().port;
-  await page.goto(base+'/archive/engine.html?preview=1&mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace('/archive/','')),{waitUntil:'domcontentloaded',timeout:60000});
+  result.url=base+'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace('/archive/',''));
+  await page.goto(result.url,{waitUntil:'domcontentloaded',timeout:60000});
   await page.waitForFunction(count=>{
     const area=document.querySelector('#print-area');
     const imgs=[...(area?.querySelectorAll('.sol-image-wrap img')||[])].filter(i=>i.getBoundingClientRect().width>0);

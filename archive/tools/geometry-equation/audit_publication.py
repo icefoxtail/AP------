@@ -91,6 +91,29 @@ def _check(condition, message):
         raise ValueError(message)
 
 
+def _power_spans(element):
+    """Observe superscript ranges in flattened text, including nested powers.
+
+    Frozen review rows declare powerSpans as [start, end] character offsets.
+    Comparing text alone cannot distinguish 23 from 2 raised to 3.
+    """
+    spans, cursor = [], 0
+    def visit(node):
+        nonlocal cursor
+        span = None
+        if node.get('baseline-shift') == 'super':
+            span = [cursor, None]
+            spans.append(span)
+        cursor += len(node.text or '')
+        for child in node:
+            visit(child)
+            cursor += len(child.tail or '')
+        if span is not None:
+            span[1] = cursor
+    visit(element)
+    return spans
+
+
 def _visible_tree(root):
     """Fail closed on hidden, transformed, inherited or unobserved rendering."""
     allowed = {
@@ -213,9 +236,10 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
         def pt(oid):
             _check(oid in source_points, 'UNKNOWN_SOURCE_POINT:'+str(oid))
             return _xy(read(oid, 'circle'))[0]
-        def label(oid, expected, owner=None, annotation=None, kind=None):
+        def label(oid, expected, owner=None, annotation=None, kind=None, power_spans=()):
             e = read(oid, 'text')
             _check(isinstance(expected, str) and ''.join(e.itertext()) == expected, 'LABEL_TEXT_MISMATCH:'+oid)
+            _check(_power_spans(e) == list(power_spans), 'LABEL_POWER_SCOPE_MISMATCH:'+oid)
             if owner is not None:
                 _check(e.get('data-owner') == owner, 'LABEL_OWNER_IDENTITY_MISMATCH:'+oid)
             if annotation is not None:
@@ -228,7 +252,7 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
             oid = row['id']; e = read(oid, 'circle'); actual = inverse(pt(oid))
             _check(math.dist(actual, source_points[oid]) < 1e-6, 'SOURCE_POINT_COORDINATE_MISMATCH:'+oid)
             _check(e.get('data-role') == 'point' and e.get('data-owner') == oid and e.get('data-source-label') == row['name'] and .5 <= _number(e.get('r')) <= 4, 'SOURCE_POINT_IDENTITY_MISMATCH:'+oid)
-            anchor, font, le = label(row.get('labelId', oid+'-name'), row['name'], oid, kind='POINT_NAME')
+            anchor, font, le = label(row.get('labelId', oid+'-name'), row['name'], oid, kind='POINT_NAME', power_spans=row.get('powerSpans', []))
             _check(le.get('data-source-label') == row['name'] and math.dist(anchor, pt(oid)) <= font*5, 'POINT_NAME_SOURCE_BINDING_MISMATCH:'+oid)
             observations.append({'id': oid, 'type': 'POINT_IDENTITY', 'observed': actual, 'sourceLabel': row['name']})
         for row in facts['segments']:
@@ -288,7 +312,7 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
                 _check(row['sweep'] in {'CW', 'CCW'} and (turn_sign > 0) == (row['sweep'] == 'CW'), 'ANGLE_EXPLICIT_SWEEP_MISMATCH:'+oid)
             if abs(value-180) < 1e-7:
                 _check(row.get('sweep') in {'CW', 'CCW'}, 'STRAIGHT_ANGLE_EXPLICIT_SWEEP_REQUIRED')
-            anchor, font, le = label(oid+'-label', row['text'], oid, oid, 'ANGLE_LABEL'); owner_mark(le, row, 'ANGLE', oid)
+            anchor, font, le = label(oid+'-label', row['text'], oid, oid, 'ANGLE_LABEL', row.get('powerSpans', [])); owner_mark(le, row, 'ANGLE', oid)
             theta, start = math.atan2(anchor[1]-v[1], anchor[0]-v[0]), math.atan2(a[1]-v[1], a[0]-v[0])
             _check(0 < (turn_sign*(theta-start)) % (2*math.pi) < math.radians(value)+1e-7 and math.dist(anchor, v) <= min(math.dist(a, v), math.dist(b, v)), 'ANGLE_LABEL_OUTSIDE_OWNER_WEDGE:'+oid)
             observations.append({'id': oid, 'type': 'ANGLE', 'ownerVertex': refs[1], 'expectedAngleDeg': value, 'observedAngleDeg': observed, 'radiusPx': radius})
@@ -299,7 +323,7 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
             _check(owner in declared_segments and owner not in length_owners, 'INVALID_OR_DUPLICATE_LENGTH_OWNER:'+oid); length_owners.add(owner)
             a, b = _xy(read(owner, 'line')); value = math.dist(inverse(a), inverse(b))
             _check(abs(value-_number(row['value'])) < 1e-7, 'LENGTH_VALUE_MISMATCH:'+oid)
-            anchor, font, le = label(oid+'-label', row['text'], owner, oid, 'LENGTH_LABEL'); owner_mark(le, row, 'LENGTH', owner)
+            anchor, font, le = label(oid+'-label', row['text'], owner, oid, 'LENGTH_LABEL', row.get('powerSpans', [])); owner_mark(le, row, 'LENGTH', owner)
             fraction, distance = _distance(anchor, a, b)
             _check(.05 <= fraction <= .95 and distance < font*7, 'LENGTH_LABEL_DETACHED:'+oid)
             if row['mode'] == 'DIMENSION':
@@ -325,7 +349,7 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
             _check(3 <= len(refs) <= 32 and len(set(refs)) == len(refs) and _ring(p) == _ring(list(map(pt, refs))) and e.get('data-owner-points') == ' '.join(refs), 'REGION_BOUNDARY_OWNER_MISMATCH:'+oid)
             value = _area(list(map(inverse, p)))
             _check(value > 0 and abs(value-_number(row['value'])) < 1e-7, 'REGION_AREA_MISMATCH:'+oid)
-            anchor, font, le = label(oid+'-label', row['text'], oid, oid, 'AREA_LABEL'); owner_mark(le, row, 'REGION', oid)
+            anchor, font, le = label(oid+'-label', row['text'], oid, oid, 'AREA_LABEL', row.get('powerSpans', [])); owner_mark(le, row, 'REGION', oid)
             if row.get('leader', False):
                 leader = read(oid+'-leader', 'line'); owner_mark(leader, row, 'REGION', oid); a, b = _xy(leader)
                 _check(_inside(a, p, True) and math.dist(b, anchor) < font*4 and math.dist(a, b) <= font*6, 'REGION_LEADER_OWNER_MISMATCH:'+oid)
@@ -333,7 +357,7 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
                 _check(_inside(anchor, p), 'AREA_LABEL_OUTSIDE_OWNER_REGION:'+oid)
             observations.append({'id': oid, 'type': 'REGION', 'observedArea': value, 'ownerPoints': refs, 'leader': row.get('leader', False)})
         for row in facts['otherLabels']:
-            _, _, e = label(row['id'], row['text'])
+            _, _, e = label(row['id'], row['text'], power_spans=row.get('powerSpans', []))
             _check([''.join(n.itertext()) for n in e.iter() if n.get('baseline-shift') == 'super'] == row.get('powers', []), 'OTHER_LABEL_POWER_SCOPE_MISMATCH:'+row['id'])
             if e.get('data-label-kind') == 'CONDITION_BOX':
                 read(row['id']+'-box', 'rect')

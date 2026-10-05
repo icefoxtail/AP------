@@ -23,7 +23,7 @@ ET.register_namespace('', NS)
 
 
 def load(name='owner-triangle'):
-    return json.loads((FIXTURES/(name+'.spec.json')).read_text()), json.loads((FIXTURES/(name+'.review.json')).read_text())
+    return json.loads((FIXTURES/(name+'.spec.json')).read_text(encoding='utf-8')), json.loads((FIXTURES/(name+'.review.json')).read_text(encoding='utf-8'))
 
 
 def check(svg, review, name='owner-triangle', **override):
@@ -53,7 +53,7 @@ class PublicationTests(unittest.TestCase):
 
     def test_idempotent_pure_rebuild(self):
         for f in FIXTURES.glob('*.spec.json'):
-            spec = json.loads(f.read_text()); before = copy.deepcopy(spec)
+            spec = json.loads(f.read_text(encoding='utf-8')); before = copy.deepcopy(spec)
             a, b = build(spec), build(spec)
             self.assertEqual(a, b); self.assertEqual(spec, before)
             self.assertFalse(a['witness']['publicationAuthorized'])
@@ -140,7 +140,7 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'MARKER'):build(s)
 
     def test_independent_observer_has_no_generator_import(self):
-        tree=ast.parse((Path(__file__).resolve().parents[1]/'audit_publication.py').read_text())
+        tree=ast.parse((Path(__file__).resolve().parents[1]/'audit_publication.py').read_text(encoding='utf-8'))
         imports=[n.module for n in ast.walk(tree) if isinstance(n,ast.ImportFrom)]
         imports += [a.name for n in ast.walk(tree) if isinstance(n,ast.Import) for a in n.names]
         allowed={'__future__','argparse','hashlib','json','math','pathlib','re','xml.etree.ElementTree'}
@@ -210,6 +210,27 @@ class PublicationTests(unittest.TestCase):
                 text=e.text;e.text=None;ET.SubElement(e,NS+'tspan',attrs).text=text
             self.assertEqual(check(edit(svg,'lAB-label',mutate),r)['status'],'FAIL')
 
+    def test_annotation_power_scope_cannot_change_without_text_change(self):
+        s, r = load(); svg = build(s)['svg'].encode()
+        self.assertEqual(check(svg, r)['status'], 'PASS')
+        for oid in ('a90-label', 'lAB-label', 'area-label', 'A-name'):
+            def superscript(e, root):
+                text = e.text; e.text = None
+                ET.SubElement(e, NS+'tspan', {'baseline-shift':'super', 'font-size':'70%'}).text = text
+            with self.subTest(oid=oid):
+                result = check(edit(svg, oid, superscript), r)
+                self.assertEqual(result['status'], 'FAIL')
+                self.assertIn('LABEL_POWER_SCOPE_MISMATCH', str(result['errors']))
+
+    def test_frozen_annotation_power_spans_accept_only_declared_scope(self):
+        s, r = load()
+        s['publication']['annotations'][1]['text'] = '3^1'
+        r['lengths'][0].update(text='31', powerSpans=[[1, 2]])
+        svg = build(s)['svg'].encode()
+        self.assertEqual(check(svg, r)['status'], 'PASS')
+        r['lengths'][0]['powerSpans'] = [[0, 1]]
+        self.assertEqual(check(svg, r)['status'], 'FAIL')
+
     def test_arc_observation_uses_real_samples(self):
         name='multi-angle-owner';s,r=load(name);svg=build(s)['svg'].encode()
         def wrong_center(e,root):
@@ -230,7 +251,7 @@ class PublicationTests(unittest.TestCase):
     def test_audit_cli_output_cannot_write_production(self):
         s,r=load()
         with tempfile.TemporaryDirectory() as tmp:
-            svg=Path(tmp)/'f.svg';svg.write_text(build(s)['svg'])
+            svg=Path(tmp)/'f.svg';svg.write_text(build(s)['svg'], encoding='utf-8')
             cmd=[sys.executable,str(Path(__file__).resolve().parents[1]/'audit_publication.py'),'--svg',str(svg),'--review',str(FIXTURES/'owner-triangle.review.json'),'--source',str(FIXTURES/'owner-triangle.source.txt'),'--solution',str(FIXTURES/'owner-triangle.solution.txt'),'--out',str(Path(tmp)/'should-not-exist.json')]
             result=subprocess.run(cmd,capture_output=True,text=True)
             self.assertNotEqual(result.returncode,0);self.assertIn('OUTPUT_SCOPE',result.stderr)
