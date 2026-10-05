@@ -1,0 +1,22 @@
+name: Temporary geometry bundle export
+on:
+  push:
+    branches: ['tmp/geometry-publication-bundle-export-20261005']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build bundle
+        run: |
+          git bundle create geometry-base.bundle 5a20240fbc612d8e984bd11c78c304582def380f
+      - uses: actions/upload-artifact@v4
+        with:
+          name: geometry-base-bundle
+          path: geometry-base.bundle
+          retention-days: 1
