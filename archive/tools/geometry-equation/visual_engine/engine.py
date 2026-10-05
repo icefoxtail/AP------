@@ -23,7 +23,7 @@ def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,s
 def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 def prepare(spec):
-    semantic=validate(spec);geometry=semantic['geometry'];tokens=load();critical=[]
+    semantic=validate(spec);spec=semantic['spec'];geometry=semantic['geometry'];tokens=load();critical=[]
     symbols={name:evaluate(parse(expression)) for name,expression in spec['displayFacts'].get('symbolDefinitions',{}).items()}
     for name,value in symbols.items():
         if not name.isalpha() or isinstance(value,(bool,tuple,complex)) or not math.isfinite(float(value)):raise ValueError('INVALID_EXACT_SYMBOL_DEFINITION')
@@ -112,13 +112,20 @@ def prepare(spec):
                 label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
                 if kind=='LENGTH_LABEL' and abs(float(evaluate(tree))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
             labels.append(label)
-    return {'primitives':primitives,'title':spec.get('title','도형과 핵심 점'),'factHash':sha(canonical(spec['sourceFacts']))},labels,obstacles,vp,semantic,sampling
+    prepared = {'primitives':primitives,'title':spec.get('title','도형과 핵심 점'),'factHash':sha(canonical(spec['sourceFacts']))}
+    if 'publication' in semantic:
+        from .publication import decorate
+        decorate(prepared, labels, obstacles, vp, semantic)
+    return prepared,labels,obstacles,vp,semantic,sampling
 
 def build(spec,measurements=None):
     prepared,labels,obstacles,vp,semantic,sampling=prepare(spec)
     safe=Box(vp.margin,vp.margin,vp.width-2*vp.margin,vp.height-2*vp.margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
     result=layout(labels,obstacles,safe,panel,measurements)
+    if 'publication' in semantic:
+        from .publication import finalize
+        finalize(prepared, result, obstacles)
     svg=compose(prepared,result,vp)
     from .tikz_adapter import draft
     tex=draft(prepared,result)
@@ -127,6 +134,14 @@ def build(spec,measurements=None):
         'texSha256':sha(tex),'coordinateModel':vp.model(),'relations':semantic['relations'],
         'layout':result,'sampling':sampling,'semanticStatus':'PASS',
         'status':'POLISH_REQUIRED' if result['unresolved'] or any(v['status']!='PASS' for v in sampling) else 'CANDIDATE_REQUIRES_QA'}
+    if 'publication' in semantic:
+        witness['publicationProfile'] = prepared['publicationProfile']
+        witness['requiredGates'] = ['INDEPENDENT_PUBLICATION_AUDIT','RENDERED_LAYOUT','ARCHIVE_MODE_SOL_390','INDEPENDENT_VISUAL_REVIEW']
+        witness['publicationSpecSha256'] = sha(canonical(spec['publication']))
+        coordinate_evidence = spec['sourceFacts']['coordinateEvidence']
+        witness['coordinateEvidenceMode'] = coordinate_evidence['mode']
+        witness['coordinateEvidenceSha256'] = sha(canonical(coordinate_evidence))
+        witness['texStatus'] = 'LEGACY_DRAFT_NOT_PUBLICATION_PARITY'
     witness['semanticWitnessSha256']=sha(canonical({'sourceFacts':spec['sourceFacts'],'derivedFacts':spec['derivedFacts'],'displayFacts':spec['displayFacts'],'objects':spec['objects'],'relations':semantic['relations']}))
     return {'svg':svg,'tex':tex,'witness':witness,'spec':spec}
 

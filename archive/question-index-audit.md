@@ -80,7 +80,7 @@
 | id | 0 |
 | content | 0 |
 | choices(배열) | 0 |
-| level | 478 |
+| level | 455 |
 | standardUnit | 0 |
 | standardUnitKey | 0 |
 | standardCourse | 12 |
@@ -91,10 +91,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 2350 |
+| q.image 보유 | 2349 |
 | content <img> | 26 |
 | content <svg> | 79 |
 | content <table> | 177 |
-| 시각요소 보유(hasImage=true) | 2625 |
+| 시각요소 보유(hasImage=true) | 2624 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
