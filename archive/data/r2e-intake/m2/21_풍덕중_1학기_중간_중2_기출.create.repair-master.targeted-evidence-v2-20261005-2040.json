@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "o8",
+  "artifactSha": "f61f62651d12c3a07555ff96eeef09fc1086d091",
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "axisEvidence": {
+        "questionLayout": "grid preserved; five choices and explicit two-answer instruction retained",
+        "solutionLayout": "two-answer solution checks rational/irrational classification and returns ②, ④",
+        "meta": "M2-01 repeating-decimal classification retained",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "repair": "deterministic TeX repair only; broken relation token normalized without changing mathematical intent",
+        "repairedTruth": "fraction-form definition uses nonzero denominator; ② π and ④ nonrepeating infinite decimal are the two non-rational choices"
+      }
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "axisEvidence": {
+        "questionLayout": "grid preserved; five exponent-law choices remain single-select",
+        "solutionLayout": "choice ② verified by (a^m)^n=a^(mn)=(a^n)^m",
+        "meta": "M2-01 exponent-law classification retained",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "repair": "deterministic TeX repair only; relation/operator token normalized",
+        "repairedTruth": "② is uniquely true for a≠0 and natural m,n; other four choices violate exponent laws"
+      }
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "axisEvidence": {
+        "questionLayout": "five statement block plus five combination choices preserved",
+        "solutionLayout": "all statements (가)~(마) recalculated; true set is (가),(나),(라)",
+        "meta": "M2-01 polynomial-operations difficulty/category retained",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "curriculum": "중2 단항식의 곱셈·나눗셈 및 지수법칙 범위",
+        "answerCardinality": "single-select; only choice ② lists exactly the true statements (가),(나),(라)"
+      }
+    },
+    {
+      "qid": 15,
+      "verdict": "PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "axisEvidence": {
+        "questionLayout": "two right triangles and four given conditions stated textually; five numeric choices",
+        "solutionLayout": "RHS congruence establishes ∠E=40°, then ∠D=50°",
+        "meta": "M2-05 triangle-properties/congruence classification retained",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "curriculum": "중2 직각삼각형 합동(RHS)과 삼각형 내각의 합",
+        "answerCardinality": "single-select; x=50 matches only choice ③"
+      }
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "axisEvidence": {
+        "questionLayout": "right-angle condition and two side lengths fully stated; five numeric choices",
+        "solutionLayout": "Pythagorean theorem gives AC=12, area=54",
+        "meta": "M2-07 Pythagorean application classification retained",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "curriculum": "중2 피타고라스 정리와 직각삼각형 넓이",
+        "answerCardinality": "single-select; area 54 matches only choice ③"
+      }
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "axisEvidence": {
+        "questionLayout": "incircle tangency points D,E,F and lengths AD=4, CE=6 fully stated; five numeric choices",
+        "solutionLayout": "equal tangents give AF=4 and CF=6, hence AC=10",
+        "meta": "M2-05 triangle/incircle tangent-property classification retained",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "curriculum": "중2 삼각형의 내심/내접원과 한 점에서 그은 두 접선의 길이",
+        "answerCardinality": "single-select; AC=10 matches only choice ⑤"
+      }
+    }
+  ]
+}
