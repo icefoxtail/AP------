@@ -1,5 +1,7 @@
 # APMath Construction Kernel 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 01 / Construction Kernel  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -1057,7 +1059,7 @@ Construction 계층의 완료 상태는 내부 gate `CONSTRUCTION_KERNEL_QUALIFI
 - [ ] existing APMath semantic/final primitive audit가 별도 축으로 유지된다.
 - [ ] ConstructionSnapshot과 executable evidence v2가 immutable hash로 결박된다.
 - [ ] 동일 frozen graph + 동일 dependency version은 deterministic snapshot을 만든다.
-- [ ] free parameter 변경 시 descendant closure만 재계산된다.
+- [ ] free parameter 변경의 정확한 dependency closure를 계산하며, node cache 활성화 시 해당 closure만 재계산한다. 초기 stage 단위 재계산은 §23에 따라 허용한다.
 - [ ] 기존 legacy visualSpec / geometry regression이 깨지지 않는다.
 - [ ] generated candidate 외 production exam/asset에는 write하지 않는다.
 - [ ] 이 단계 완료만으로 PUBLICATION_READY를 주장하지 않는다.
@@ -1122,3 +1124,35 @@ Construction Kernel 단계를 자동 호출하고 cache/repair/result를 관리�
 # 22. 최종 한 문장
 
 > **APMath Construction Kernel v1은 기하 공식을 새로 만드는 프로젝트가 아니라, 검증된 SymPy Geometry를 실행 가능한 typed construction graph 뒤에 두고 CindyJS로 독립 재구성 검산한 뒤, 그 결과만 기존 APMath publication engine에 전달하는 얇고 결정론적인 수학 계층이다.**
+
+---
+
+# 23. 구현 전 확정: realization·완전한 의존성·독립 검산
+
+## 23.1 좌표 없는 source를 실제로 만드는 책임
+
+D07은 normalization/자유도/branch 의미를 제안하고 D01은 **닫힌 realization recipe**를 기존 typed op로 전개한다. 임의 제약을 자동 풀겠다는 계약이 아니다. recipe id/version, 보존하는 source 조건, 좌표계 선택, 선택한 free parameter와 유효 domain을 frozen mathPlan에 포함한다. 원문에 길이가 있으면 길이 단위를 보존한다. mirrored realization을 허용하는 것은 의미 동등성의 source 검토가 있을 때뿐이다.
+
+최초 recipe에는 anchor origin/positive-axis와 원문 scalar 거리의 연결을 명시한다. 예를 들어 SSS 삼각형은 A=(0,0), B=(c,0)를 normalization+주어진 AB 길이로 만들고, C는 중심 A/B·반지름 b/a 두 원의 교점과 명시적 방향 선택으로 정의한다. 이 anchor는 SOURCE_POINT로 위장하지 않는다. normalization primitive의 type/입력과 independent construction도 registry에 등록한다. `FREE_POINT`에 임의 DERIVED 좌표를 넣어 recipe를 생략하지 않는다. recipe 밖의 조건은 UNSUPPORTED 또는 필요한 의미 입력 대기로 남긴다.
+
+원문이 하나의 branch를 정하지 않지만 반사/회전으로 동등한 실현을 허용하는 경우, 검토된 normalization 선택은 허용한다. 실제 다른 해/다른 결론이 되는 branch를 같은 이유로 고르면 안 된다. 동등성 승인과 선택 근거가 없으면 AMBIGUOUS_BRANCH다. 자유 parameter의 몇 값에서 관계가 유지된다는 검사는 그림 실현의 회귀이며 일반 명제의 증명이 아니다.
+
+## 23.2 dependency closure
+
+의존성은 `inputs`만이 아니다. schema가 지정한 **args의 scalar expression refs, branch guard refs, normalization refs, constraints refs**를 추출한다. 예를 들어 SELECT_POINT의 SIDE_OF_ORIENTED_LINE(A,B)는 intersection result뿐 아니라 A/B에도 의존한다. unknown ref/cycle/type 검증, topological order, node key, invalidation과 crosscheck scope 모두 같은 선언적 ref inventory를 소비한다. 문자열 전체에서 이름을 추측해 검색하지 않는다.
+
+준비된 node들의 실행 순서는 stable node id로 정렬한다. graphlib 사용만으로 입력 배열 순서와 무관한 실행 순서가 보장된다고 가정하지 않는다. node array 순서 변경은 의미가 같은 경우 결과를 보존하고, ordered op inputs/ray/branch 순서는 보존한다.
+
+## 23.3 exact scalar / execution boundary
+
+Snapshot의 exact 값은 진단용 SymPy 문자열과 별개로 **검증된 typed scalar AST 또는 numerator/denominator 문자열**로 전달한다. Python repr/srepr/string을 다른 런타임에서 eval/sympify하지 않는다. numeric coordinate는 approximation/precision/단위를 갖고 원문의 domain restriction을 단순화로 없애지 않는다. 공통 hash 규칙은 D05 §75를 따른다.
+
+per-node timeout은 thread timer만으로 구현하지 않는다. Node supervisor가 중단 가능한 Python subprocess 경계를 소유하고 graph 총 시간/메모리·출력 크기·식 깊이를 제한한다. timeout 후 worker를 종료·회수하고 완료된 snapshot만 commit한다. Windows에서도 중단되는 smoke를 필수로 한다. 초기에는 node마다 프로세스를 시작하기보다 graph 단위 worker와 stage cache를 우선한다.
+
+## 23.4 crosscheck는 검증 전략을 명시한 receipt
+
+CindyJS를 기본 independent reconstruction으로 유지한다. 실행 state는 요청마다 초기화하며 incremental peer cache는 reset와 동일 결과임을 검증하기 전까지 사용하지 않는다. master §4.4의 기존 독립 relation observer 대안은 **op별 frozen verification strategy와 동일 branch/constraint/primitive coverage를 qualification한 경우만** 허용한다. runtime 장애에 따라 자동 fallback하지 않는다. D08 matrix에는 전략과 observer version/hash를 명시한다.
+
+source 해석이 틀린 같은 graph를 두 엔진이 실행해 일치하는 경우도 있다. crosscheck PASS는 graph가 source를 올바르게 해석했다는 증거가 아니다. source condition의 독립 추출/검토와 graph mapping 검토를 D07에서 별도로 닫는다.
+
+필수 추가 회귀: 비좌표 SSS/수선 recipe, normalization 단위 오류, branch ref만 바뀐 경우, args의 hidden cycle, 입력 node 배열 순서, exact scalar wire, timeout 후 resume, 잘못된 graph에 두 backend가 모두 동의해도 source gate에서 거부.

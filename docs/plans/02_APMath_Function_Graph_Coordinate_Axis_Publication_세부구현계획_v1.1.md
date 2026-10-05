@@ -1,5 +1,7 @@
 # APMath Function Graph & Coordinate Axis Publication 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 02 / Function Graph & Coordinate Axis Publication  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -1897,3 +1899,19 @@ graph final bytes를 검증한다.
 # 36. 최종 한 문장
 
 > **APMath Graph Publication v1은 새 그래프 라이브러리를 만드는 프로젝트가 아니라, 이미 구축된 adaptive function sampling·derivative·axis·viewport·SVG·browser audit를 domain topology와 axis/feature/owner 검증으로 완성해, 함수 그래프와 좌표축도 같은 One-Click Visual Production Engine 안에서 정식 publication capability로 승격시키는 프로젝트다.**
+
+---
+
+# 37. 구현 전 확정: graph verifier의 실제 지원 가능 범위
+
+§15의 독립 선분 내부 오차 보증은 유지한다. 다만 이것은 기존 vertex observer에 필드 몇 개를 붙이는 작업이 아니다. **topology·visible coverage·오차 enclosure를 만드는 신규 수학 검증 작업**으로 비용을 잡는다. parser가 허용하는 bounded composition 전체를 v1 publication 가능으로 선언하지 않는다.
+
+Phase 0에서 family별 `expression grammar / domain resolver / feature resolver / independent bound method / limits / observer version / positive+negative` 표를 실행 예제로 확정한다. 최초 vertical slice는 다항함수로 시작한다. 유리함수는 분모가 0에서 떨어진 연속 구간의 bound, sqrt 경계는 미분 상계가 발산하는 끝구간을 다룰 별도 envelope, abs/piecewise는 corner 분할이 필요하다. log/trig/exp와 합성식은 실제 bound 방법이 통과하는 조합만 활성화한다. 일반 interval arithmetic 엔진을 직접 만드는 것을 숨은 필수 과제로 두지 않는다.
+
+생산 sampler의 polynomial root isolation은 현재 float 계수·고정 threshold를 사용한다. “polynomial이면 topology가 자동으로 완전하다”는 전제를 금지한다. repeated/clustered roots, leading coefficient cancellation, scale 변화를 포함한 독립 topology 확인 또는 검토된 frozen domain 근거를 요구한다. 원문 식의 hole/domain은 SymPy 단순화 결과와 분리 보존한다.
+
+**함수의 수학적 branch와 viewport로 잘린 visible component를 분리**한다. 같은 연속 함수도 화면 안에서 여러 조각일 수 있다. clipped endpoint는 source의 열린/닫힌 끝점이 아니며 자동 open marker를 만들지 않는다. 현재 sampler는 clipping 교차점을 chord 보간으로 만들므로 그런 끝점에 exact `y=f(x)` 오차 0을 요구하면 정상 근사도 실패할 수 있다. 원곡선에 대한 허용오차와 clip-boundary membership을 함께 검사한다. curve와 viewport 경계의 실제 교차/visible coverage를 frozen AST에서 독립 확인하고 metadata의 branch count를 정답으로 쓰지 않는다.
+
+`maxChordErrorPx`의 계산은 D04/D06의 actual display transform에 의존한다. font/label 변경이 framing/plotWidth를 바꾸면 sampling도 무효화한다. font 변경 시 model samples 재사용은 **sampling transform과 topology가 동일함을 확인한 경우에만** 허용한다.
+
+추가 positive/negative: repeated pole·removable hole·sqrt endpoint·화면 재진입 함수·clipped chord endpoint·표시 크기 변경·정상 curve가 과도한 bound 때문에 영구 UNVERIFIED가 되는 사례. 실패를 줄이려고 threshold를 넓히지 않고 해당 family의 알고리즘/범위 결정을 재검토한다.

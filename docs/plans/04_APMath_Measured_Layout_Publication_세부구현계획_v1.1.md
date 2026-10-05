@@ -1,5 +1,7 @@
 # APMath Measured Layout & Publication 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 04 / Measured Layout & Publication  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -1923,3 +1925,24 @@ final composition을 실제 Archive `mode=sol` 화면에서 검증.
 # 53. 최종 한 문장
 
 > **APMath Measured Layout & Publication v1은 이미 존재하는 deterministic label layout과 publication owner 규칙을 버리지 않고, 실제 최종 fragment의 실측값을 강제 입력으로 승격해 owner-safe 배치·collision 해결·framing·annotation cue·SVG compose·browser 검증을 하나의 결정론적 publication 계층으로 완성하는 프로젝트다.**
+
+---
+
+# 54. 구현 전 확정: Archive 표시 한계와 수렴하는 layout
+
+layout은 모델 좌표를 바꾸지 않지만 **실제 배치 가능한 표시 크기**를 알아야 한다. D06이 제공하는 `DisplayEnvelope`를 TYPESET/MEASURE/LAYOUT 전에 resolve한다. 최소 target UID/occurrence, Archive profile/runtime hash, 승인된 size class, container inline-size, max-width/max-height, expected fit/object-fit/transform과 provenance를 갖는다. 이것은 최종 render PASS가 아니라 계획용 제약이다.
+
+현재 Archive는 size 미지정 시 medium을 선택하고 max-height가 145px다. 390×360 SVG에서 16 user-unit label은 높이 제한만 고려해도 약 6.44 CSS px가 된다. viewBox를 더 크게 만드는 repair는 오히려 글자를 작게 할 수 있다. **가독성 제약을 최종 capture에서만 발견하는 설계로 구현하지 않는다.**
+
+1. 승인된 display envelope에서 필요한 intrinsic label size와 canvas/plot 배분을 선택한다.
+2. 동일 frozen fragment를 측정하고 owner-safe layout을 계산한다.
+3. actual Archive image content transform(단순 img box뿐 아니라 contain/letterbox·ancestor transform 포함)을 관측한다.
+4. 예상 envelope와 다르면 영향받은 projection/sampling/layout/audit만 새 revision에서 계산한다. display policy 변경은 명시적 input revision이다.
+
+frame 확장·font 변경·panel 추가는 label inventory나 tick set을 바꿀 수 있다. 따라서 immutable inventory는 **하나의 composition revision 안에서** 고정한다. tick/새 panel label이 추가되면 새 inventory→typeset/measure를 거쳐야 한다. placement-only 변경이면 fragment intrinsic metrics를 재사용한다. panelId가 바뀌면 D03 owner-bound fragment도 새로 생성한다.
+
+초기 layout은 기존 greedy engine과 deterministic bounded repair로 시작한다. local obstacle cache는 전체 재배치와의 결과/충돌 동등성을 증명한 뒤 도입한다. owner 한 개의 이동이 다른 후보를 연쇄로 바꿀 수 있으므로 최초 collision 이웃 한 번만 계산하고 종료하지 않는다. closure를 고정점까지 확장하거나 해당 작은 asset의 layout 전체를 재계산한다.
+
+repair count/termination은 D05 단일 controller가 소유한다. 단계별 3회씩 중첩하지 않는다. error code 집합이 같아도 overlap 면적·owner 거리 등이 개선될 수 있으므로 같은 error 이름만으로 stagnation을 선언하지 않는다. 동일 input/action/output cycle 또는 frozen objective의 실제 무개선을 사용한다. 필요한 cue/framing repair를 선택하며 불필요한 relocation을 반드시 먼저 소비하지 않는다. 최대 3회 제한은 유지한다.
+
+필수 추가 회귀: medium에서 작은 SVG label, full로 무단 변경 거부, frame 확장 후 font floor 악화, font→frame→sampler invalidation, panel/tick inventory 갱신, local-layout 연쇄 영향, 반복 error 이름이지만 수치가 개선되는 경우.
