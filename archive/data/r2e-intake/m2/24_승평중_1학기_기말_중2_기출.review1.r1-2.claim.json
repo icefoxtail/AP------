@@ -5,16 +5,21 @@
   "examUid": "M2-1-24-SEUNGPYEONG-1FINAL",
   "canonicalOrdinal": 27,
   "examFile": "24_승평중_1학기_기말_중2_기출.js",
-  "owner": "M2-1 R1-2",
-  "status": "ACTIVE",
+  "owner": "RELINQUISHED",
+  "status": "HANDOFF_READY",
   "baseMainSha": "f5ccabf35f0552762c655c2a1e755204cb349c61",
   "inputArtifactSha": "9000b8ca55f86ea74b512a43c3f027a786eddc53",
   "claimedAt": "2026-10-05T10:40:44+09:00",
-  "expiresAt": "2026-10-05T12:10:44+09:00",
   "expectedCompletionGate": "canonical R1 validator + validator/R1 receipt + REVIEW1_DONE->READY_FOR_REVIEW2 + remote readback",
-  "firstMissingClosureStep": "R1_DETERMINISTIC_REPAIR_WRITE",
+  "firstMissingClosureStep": "ACTUAL_CANONICAL_R1_VALIDATOR_EXECUTION",
   "supersedesRelinquishedPointers": [
     "work/middle/m2/o27-seungpyeong-1final-r1-1-autonomous-20261005-1008",
     "work/middle/m2/o27-seungpyeong-1final-temp-r1-3-autonomous-20261005-1024-v2"
-  ]
+  ],
+  "finalArtifactSha": "5b754dad0483575628c9868573279a5c4f295507",
+  "physicalEvidenceGitBlob": "5a2f48b8a21ed4f8c7861442427fdfdd30e97904",
+  "selectorEligible": true,
+  "closureDebt": "R1_VALIDATOR_TRIGGER_DEBT",
+  "closureDebtDetail": "Exact repaired artifact and full R1 physical evidence are materialized and byte-bound. Existing canonical workflow requires workflow_dispatch or PR issue-comment validation; this connection exposes no workflow_dispatch action, PR creation is safety-blocked, and temporary workflow creation is safety-blocked. REVIEW1_DONE not declared.",
+  "latestMainObserved": "754ea353ac565fb11612de4b2262b4616f8efbb3"
 }
