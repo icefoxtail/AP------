@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_CLOSURE_v1",
+  "stage": "CREATE",
+  "examPath": "archive/_generated/source-only/m2-20261004/21_풍덕중_2학기_기말_중2_기출.js",
+  "questionCount": 24,
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:95b26ea6f819ee92a382ffb8f9e60eef13eb4c6aa321c1dac4d0b9246f32add1",
+        "gitBlobSha": "d0dc3efa842166431ac80ffebec01c25aca94772"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:2b06a6d44e8d2bc74746f42c4e7ef361c58fee266da034a0989689637a56271a",
+        "gitBlobSha": "1762208980141069a87c4c4c103444523fdd8da0"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:329661aff619c0107182db73dea73e2791036644f6451056284a40c340896f62",
+        "solutionExcerpt": "6,12$로 모두 6개이다.\n따라서 정답은 ②이다.",
+        "observation": "Lists the favorable divisors before closing with the matching choice."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+        "qid": 15,
+        "solutionSha256": "sha256:4ebd5c71feb80eb07e2a41b87eb2eb945121285176befd4a14e417e6c12b2114",
+        "solutionExcerpt": " 수는 $5!=120$이다.\n따라서 정답은 ①이다.",
+        "observation": "Makes the ordered pair a single block and then counts arrangements."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 21,
+        "solutionSha256": "sha256:4669e9360661043e63d7bfbda3e459fb9921c878bb2eb710dec157cd4c16c012",
+        "solutionExcerpt": " 구하는 값은 $100\\pi\\rm\\,cm^3$이다.",
+        "observation": "Finds the missing leg before naming the radius and height in the volume calculation."
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "qid": 23,
+        "solutionSha256": "sha256:0408b16de7afcce1ee47ac99743a08463bf54d5d7bdb72d349e07d7afec14220",
+        "solutionExcerpt": "$x=16$이다.\n따라서 구하는 값은 $16$이다.",
+        "observation": "Defines the unknown, writes the probability equation, then solves it in visible steps."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read regression lessons: independently separate enumerated judgments, compute visual geometry from actual primitives, resolve exact ACTIVE Meta reuse, and check runtime TeX escapes."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "sha256:1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+        "gitBlobSha": "67fa6456c55de7a59b6c43d8fe25b9a815d6381a",
+        "observation": "Read the frozen failure SVG and noted that coordinate primitives do not realize the labeled parabola points/ratio."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "SOURCE_ONLY_CREATE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "qualityCompareCount": "24/24",
+    "finalCompareAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "finalCompareEvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_풍덕중_2학기_기말_중2_기출/CREATE.physical-evidence.json",
+    "actualSolutionRenderPages": [
+      {
+        "page": 1,
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_풍덕중_2학기_기말_중2_기출/CREATE.solution-render-page-1.png",
+        "sha256": "sha256:6b5ada9b6926741d952bcc9b181f1ada51bee088a34bc278b2ddab660c330829",
+        "gitBlobSha": "b5eb98bf3fc5975ba622f31c8397660c4ebe5eac",
+        "widthPx": 794,
+        "heightPx": 1123,
+        "status": "PASS",
+        "review": "Actual engine solution page opened; all question cards legible without clipping or overflow."
+      },
+      {
+        "page": 2,
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_풍덕중_2학기_기말_중2_기출/CREATE.solution-render-page-2.png",
+        "sha256": "sha256:5af616834c992af9f82a8c8e9f69a9b612d880f119de9ac80716f52aac33344a",
+        "gitBlobSha": "05fa44d35bdc9cbc1ff552f090975536fe6435de",
+        "widthPx": 794,
+        "heightPx": 1124,
+        "status": "PASS",
+        "review": "Actual engine solution page opened; all question cards legible without clipping or overflow."
+      },
+      {
+        "page": 3,
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_풍덕중_2학기_기말_중2_기출/CREATE.solution-render-page-3.png",
+        "sha256": "sha256:487f4e3edc75402d4a012f91733cc8a6ce102c30308bc94b8baf2c8aad5da815",
+        "gitBlobSha": "91aab231ef0523530997a90842ef61eb739f1e6a",
+        "widthPx": 794,
+        "heightPx": 1123,
+        "status": "PASS",
+        "review": "Actual engine solution page opened; all question cards legible without clipping or overflow."
+      },
+      {
+        "page": 4,
+        "path": "archive/analysis/archive-2.0-pilot-20261005/21_풍덕중_2학기_기말_중2_기출/CREATE.solution-render-page-4.png",
+        "sha256": "sha256:d2f1b58afab79d4b6b380180ef64dcb3e84e3eaef649b81646e9d22694d23887",
+        "gitBlobSha": "380c6ca68439cfea3f23c0f24a198ffe93224cb5",
+        "widthPx": 794,
+        "heightPx": 1124,
+        "status": "PASS",
+        "review": "Actual engine solution page opened; all question cards legible without clipping or overflow."
+      }
+    ],
+    "finalCompareConclusion": "24/24 final solutions compared on actual engine-rendered small-board pages against Golden/Negative quality floor."
+  },
+  "validation": {
+    "ok": true,
+    "gate": "CALIBRATION_CLOSURE",
+    "issues": []
+  },
+  "command": "node archive/tools/solution-calibration-gate.mjs --exam archive/_generated/source-only/m2-20261004/21_풍덕중_2학기_기말_중2_기출.js --evidence archive/analysis/archive-2.0-pilot-20261005/21_풍덕중_2학기_기말_중2_기출/CREATE.solution-preflight.json --stage CREATE"
+}
