@@ -201,7 +201,7 @@
         "requiredLabelsAxesAndTableBoundariesPreserved": true,
         "fullSourcePageAndFinalCropOpenedAndCompared": true
       },
-      "reviewNote": "학생 필기/낙서가 원본에 남아 있음"
+      "reviewNote": "학생 표시는 원본 크롭에 보존됨. 확대 원본에서 인쇄 경로선은 구분되어 HOLD 해제."
     },
     {
       "qid": 13,
@@ -287,12 +287,13 @@
     "finalAssetDirectoryContainsOnlyReferencedFinalCrops": true,
     "everyFinalCropOpenedDirectly": true
   },
-  "holds": [
+  "holds": [],
+  "sourceVisualInspection": "원본 4쪽 전체와 300dpi 페이지를 직접 열어 전사와 그림을 대조했다. q11의 인쇄 경로선은 확대 원본에서 구분되며 굵은 바깥 루프와 교차선은 학생 표시로 판별했다. 최종 7개 원본 픽셀 크롭은 직접 열어 대조했고 OCR만으로 원문 일치를 판정하지 않았다.",
+  "resolvedHolds": [
     {
       "qid": 11,
       "scope": "figure interpretation",
-      "reason": "원본 경로 그림에 학생 필기가 겹쳐 일부 연결선이 구분되지 않음. 발문·보기는 직접 판독 후 전사했고 원본 크롭은 보존함."
+      "resolution": "원본 2쪽을 확대해 확인한 결과, 얇은 인쇄 경로선은 A-B와 B-C 사이에서 구분된다. 굵은 바깥 루프와 교차선은 학생 표시로 판별해 제외했다. 원본 크롭은 수정하지 않았다."
     }
-  ],
-  "sourceVisualInspection": "원본 4쪽 전체를 직접 열어 전사와 그림을 대조함. 학생 필기가 있어도 읽히는 문항은 전사했으며 OCR만으로 원문 일치를 판정하지 않음. 최종 7개 크롭도 각각 직접 열어 원본 페이지와 대조함."
+  ]
 }
