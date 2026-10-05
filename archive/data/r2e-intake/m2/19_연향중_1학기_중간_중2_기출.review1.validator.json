@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REVIEW_EVIDENCE_GATE_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R1",
+  "canonicalOrdinal": 15,
+  "examUid": "o15",
+  "examFile": "19_연향중_1학기_중간_중2_기출.js",
+  "finalArtifactSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
+  "examSha256": "sha256:980154bcd3cea0f9c841ee016ea63d1f7368e12a9dd150e879e1121e18fdb8cd",
+  "physicalEvidenceGitBlob": "107463e7175568af3f81e165dd1525495643a156",
+  "stageEvidenceGitBlob": "107463e7175568af3f81e165dd1525495643a156",
+  "evidenceSchema": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "validationMode": "LOCAL_EXACT_CURRENT_CANONICAL_R1_V2_MODULE_EXECUTION",
+  "validatorAuthorityMainSha": "b08ba2db04ba3be4d172b718aee29e169f8655d3",
+  "authorityCodeParity": {
+    "wrapper": "455ad1ec7210e34e2724cc801a9b642f701678c9",
+    "commonV2": "e1e331b52e9af51e81bba8361d89ac11910e0f72",
+    "r1V2": "b00d2d1ca69b9f95c4c380a82754234c46f29525",
+    "exactMatchToCurrentMain": true
+  },
+  "targetBinding": {
+    "examBlobSha": "337b0952921f6fd9c2802ff9e9d4f23c96a98c4b",
+    "evidenceBlobSha": "107463e7175568af3f81e165dd1525495643a156",
+    "expectedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "calibration": {
+    "sampleReadBeforeClosure": true,
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "d527a003528a14b82d8b1cebc4094d1b72d324c3"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "calibrationStatus": "PASS"
+  },
+  "auditContinuation": {
+    "sourceBranch": "rescue/m2/o15-r1-watchdog-handoff-20261005-1411",
+    "sourceHandoffCommit": "1d376cbc3acfc28e0bb78cf7c4ea9386b25354e8",
+    "inheritedCompletedStep": "FULL_24Q_R1_AUDIT_AND_V2_EVIDENCE_MATERIALIZED",
+    "freshAuditRepeatedByTempR1_3": false,
+    "productionExamMutationCount": 0
+  },
+  "result": {
+    "ok": true,
+    "validatorMode": "R1_V2",
+    "stage": "R1",
+    "denominator": 24,
+    "rowCount": 24,
+    "disposition": "PASS",
+    "commonValid": true,
+    "itemHoldCount": 0,
+    "itemHoldQids": [],
+    "issues": []
+  },
+  "canonicalStageGate": "PASS"
+}
