@@ -200,7 +200,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "1단계: ㄱ. $a^{3+1}=a^4$ (참), ㄴ. $a^{3 \\times 2}=a^6$ (참)이다.\n2단계: ㄷ. $a^3 \\div a^5 = \\frac{1}{a^2}$이므로 거짓이고, ㄹ. $(-1)^2 \\frac{a^4}{b^6} = \\frac{a^4}{b^6}$ (참)이다.\n3단계: ㅁ. $a^8 \\times b^6$이므로 $a^{14}$이 될 수 없다(거짓). 따라서 옳은 것은 ㄱ, ㄴ, ㄹ로 3개이다.",
+    "solution": "1단계: 각 식에 지수법칙을 하나씩 적용한다.\nㄱ. $a^{3+1}=a^4$이므로 참이다.\nㄴ. $a^{3 \\times 2}=a^6$이므로 참이다.\nㄷ. $a^3 \\div a^5 = \\frac{1}{a^2}$이므로 거짓이다.\nㄹ. $(-1)^2 \\frac{a^4}{b^6} = \\frac{a^4}{b^6}$이므로 참이다.\nㅁ. $a^8 \\times b^6$이므로 $a^{14}$가 될 수 없어 거짓이다.\n2단계: 옳은 것은 ㄱ, ㄴ, ㄹ로 모두 3개이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -348,8 +348,9 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "content": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle C$의 외각의 크기가 $130^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='120' viewBox='0 0 160 120'><path d='M80,20 L40,100 L120,100 Z M120,100 L150,100' fill='none' stroke='black'/><text x='75' y='15' font-size='10'>A</text><text x='30' y='110' font-size='10'>B</text><text x='115' y='110' font-size='10'>C</text><path d='M130,100 A10,10 0 0 0 125,95' fill='none' stroke='black'/><text x='130' y='90' font-size='9'>130°</text></svg>",
-    "choices": [],
+    "content": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle x$의 크기는? [4점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q11.png",
+    "choices": ["$50^\\circ$", "$60^\\circ$", "$65^\\circ$", "$70^\\circ$", "$80^\\circ$"],
     "answer": "⑤",
     "category": "이등변삼각형의 성질",
     "originalCategory": "이등변삼각형의 성질",
@@ -361,7 +362,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "단답형",
+      "객관식",
       "계산",
       "도형"
     ],
@@ -443,7 +444,8 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "content": "그림은 직각삼각형 $ABC$의 세 변을 한 변으로 하는 세 정사각형 $AFGB, IBHC, ACDE$를 그린 것이다. $AFGB$의 넓이가 $46\\text{cm}^2$, $IBHC$의 넓이가 $25\\text{cm}^2$일 때, $ACDE$의 넓이는? [4점]<br><Figure src='image_d7bada.png' />",
+    "content": "그림은 직각삼각형 $ABC$의 세 변을 한 변으로 하는 세 정사각형 $AFGB, IBHC, ACDE$를 그린 것이다. $AFGB$의 넓이가 $46\\text{cm}^2$, $IBHC$의 넓이가 $25\\text{cm}^2$일 때, $ACDE$의 넓이는? [4점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q14.png",
     "choices": [
       "$14\\text{cm}^2$",
       "$16\\text{cm}^2$",
@@ -512,7 +514,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='120' viewBox='0 0 160 120'><path d='M80,20 L30,100 L130,100 Z M30,100 L80,75 L130,100' fill='none' stroke='black'/><circle cx='80' cy='75' r='2' fill='black'/><text x='75' y='15' font-size='10'>A</text><text x='20' y='105' font-size='10'>B</text><text x='135' y='105' font-size='10'>C</text><text x='78' y='72' font-size='9'>I</text><text x='70' y='92' font-size='9'>110°</text></svg>",
+    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='130' viewBox='0 0 160 130'><path d='M80,18.84 L45,115 L115,115 Z M45,115 L80,90.49 L115,115' fill='none' stroke='black'/><circle cx='80' cy='90.49' r='2' fill='black'/><text x='76' y='14' font-size='10'>A</text><text x='35' y='122' font-size='10'>B</text><text x='119' y='122' font-size='10'>C</text><text x='83' y='88' font-size='9'>I</text><text x='68' y='108' font-size='9'>110°</text></svg>",
     "choices": [
       "$37^\\circ$",
       "$40^\\circ$",
@@ -546,7 +548,7 @@ window.questionBank = [
   {
     "id": 17,
     "content": "그림에서 점 $I$는 $\\triangle ABC$의 내심이다. $\\triangle ABC$의 둘레의 길이가 $22\\text{cm}$이고 $\\overline{AD}=4\\text{cm}$, $\\overline{DB}=5\\text{cm}$일 때, $\\overline{EC}$의 길이를 구하면? [4점]",
-    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17.png",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-repair-master.svg",
     "choices": [
       "$1\\text{cm}$",
       "$1.2\\text{cm}$",
@@ -571,7 +573,7 @@ window.questionBank = [
       "활용"
     ],
     "wide": false,
-    "solution": "1단계: 삼각형의 내심에서 세 변에 내린 접점까지의 거리는 같으므로 $\\overline{AF}=\\overline{AD}=4cm$, $\\overline{BE}=\\overline{DB}=5cm$이다.\n2단계: $\\overline{CE}=\\overline{CF}=x$라 하면 $\\triangle ABC$의 둘레는 $2(\\overline{AD}+\\overline{DB}+\\overline{CE}) = 2(4+5+x) = 22$이다.\n3단계: $9+x=11$에서 $x=2$이므로 $\\overline{EC}=2cm$이다.",
+    "solution": "1단계: 한 점에서 원에 그은 두 접선의 길이는 같으므로 $\\overline{AD}=\\overline{AF}=4\\text{cm}$, $\\overline{BD}=\\overline{BE}=5\\text{cm}$이다.\n2단계: $\\overline{CE}=\\overline{CF}=x$라 하면 $\\triangle ABC$의 둘레는 $2(\\overline{AD}+\\overline{DB}+\\overline{CE})=2(4+5+x)=22$이다.\n3단계: $9+x=11$이므로 $x=2$이다. 따라서 $\\overline{EC}=2\\text{cm}$이고 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -580,7 +582,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><svg width='160' height='120' viewBox='0 0 160 120'><circle cx='80' cy='60' r='50' fill='none' stroke='black'/><path d='M80,10 L30,60 L130,60 Z M80,60 L80,10 M80,60 L30,60 M80,60 L130,60' fill='none' stroke='black'/><text x='75' y='55' font-size='10'>O</text><text x='25' y='35' font-size='9'>30°</text><text x='105' y='35' font-size='9'>40°</text></svg>",
+    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><svg width='160' height='130' viewBox='0 0 160 130'><circle cx='80' cy='65' r='50' fill='none' stroke='black'/><path d='M80,15 L36.70,90 L129.24,73.68 Z M80,65 L80,15 M80,65 L36.70,90 M80,65 L129.24,73.68' fill='none' stroke='black'/><text x='75' y='69' font-size='10'>O</text><text x='61' y='38' font-size='9'>30°</text><text x='91' y='38' font-size='9'>40°</text><text x='76' y='12' font-size='10'>A</text><text x='27' y='96' font-size='10'>B</text><text x='132' y='78' font-size='10'>C</text></svg>",
     "choices": [
       "$18^\\circ$",
       "$20^\\circ$",
@@ -604,7 +606,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "1단계: 삼각형의 외심에서 세 꼭짓점에 이르는 거리는 같으므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다.\n2단계: 외심의 성질에 의해 $\\angle OAB + \\angle OBC + \\angle OCA = 90^\\circ$가 성립한다.\n3단계: $30^\\circ + \\angle OBC + 40^\\circ = 90^\\circ$에서 $\\angle OBC = 20^\\circ$이다.",
+    "solution": "1단계: 외심 $O$에 대하여 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이므로 $\\triangle OAB$, $\\triangle OBC$, $\\triangle OCA$는 모두 이등변삼각형이다. 그림에서 $\\angle OAB=30^\\circ$, $\\angle OAC=40^\\circ$이고, $\\overline{OA}=\\overline{OC}$이므로 $\\angle OCA=40^\\circ$이다.\n2단계: $\\angle OBC=x$라 하면 $\\overline{OB}=\\overline{OC}$이므로 $\\angle BCO=x$이다. 따라서 $\\angle A=70^\\circ$, $\\angle B=30^\\circ+x$, $\\angle C=40^\\circ+x$이다.\n3단계: 삼각형의 내각의 합에서 $70+(30+x)+(40+x)=180$이므로 $2x=40$, $x=20^\\circ$이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -648,7 +650,8 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "content": "삼각형의 성질이 옳으면 '예' 방향으로 이동하고, 옳지 않으면 '아니오' 방향으로 이동할 때, 도착지는? [4점]<br><Figure src='image_d76062.jpg' />",
+    "content": "삼각형의 성질이 옳으면 '예' 방향으로 이동하고, 옳지 않으면 '아니오' 방향으로 이동할 때, 도착지는? [4점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q20.png",
     "choices": [
       "서울",
       "대전",
@@ -674,7 +677,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "1단계: '두 내각의 크기가 같은 삼각형은 이등변삼각형이다'는 참이므로 '예' 방향으로 이동한다.\n2단계: '한 변의 길이와 한 예각의 크기가 각각 같은 두 직각삼각형은 서로 합동이다'는 RHA 합동으로 참이므로 '예' 방향으로 이동한다.\n3단계: '삼각형의 내접원의 중심에서 세 꼭짓점에 이르는 거리는 같다'는 거짓(외심의 성질)이므로 '아니오' 방향으로 이동한다.\n4단계: 최종 도착지는 '대구'이다.",
+    "solution": "1단계: 두 내각의 크기가 같은 삼각형은 이등변삼각형이므로 '예' 방향으로 간다.\n2단계: 한 변의 길이와 한 예각의 크기만으로는 두 직각삼각형이 반드시 합동이라고 할 수 없으므로 '아니오' 방향으로 간다.\n3단계: 둔각삼각형에도 외심이 있으므로 '둔각삼각형의 외심은 존재하지 않는다'는 거짓이다. '아니오' 방향으로 간다.\n4단계: 직각삼각형의 외심은 빗변의 중점이므로 '직각삼각형의 외심은 빗변의 중점이다'는 참이다. '예' 방향으로 간다.\n5단계: 직각삼각형의 빗변의 제곱은 두 직각변의 제곱의 합과 같으므로 '예' 방향으로 이동한다. 도착지는 대구이다.",
     "level": "중",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -740,7 +743,8 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "content": "[서술형 3] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 외접원의 반지름의 길이와 내접원의 반지름의 길이를 각각 구하시오. (단, $\\overline{AB}=20\\text{cm}, \\overline{AC}=12\\text{cm}, \\overline{BC}=16\\text{cm}$) [5점]<br><Figure src='image_d7bada.png' />",
+    "content": "[서술형 3] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 외접원의 반지름의 길이와 내접원의 반지름의 길이를 각각 구하시오. (단, $\\overline{AB}=20\\text{cm}, \\overline{AC}=12\\text{cm}, \\overline{BC}=16\\text{cm}$) [5점]",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q23.png",
     "choices": [],
     "answer": "외접원:, $10\\text{cm}$, 내접원:, $4\\text{cm}$",
     "category": "삼각형의 내심과 외심",
