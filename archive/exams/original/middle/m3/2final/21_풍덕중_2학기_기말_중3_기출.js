@@ -339,8 +339,14 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "content": "다음 중 네 점 $A,B,C,D$가 한 원 위에 있지 않은 것은? (4점)",
-    "choices": [],
+    "content": "다음은 사각형 $ABCD$의 네 내각의 크기를 $(\\angle A,\\angle B,\\angle C,\\angle D)$의 순서로 나타낸 것이다. 원에 내접할 수 없는 사각형은? (4점)",
+    "choices": [
+        "$(70^\\circ,80^\\circ,110^\\circ,100^\\circ)$",
+        "$(65^\\circ,95^\\circ,115^\\circ,85^\\circ)$",
+        "$(72^\\circ,108^\\circ,105^\\circ,75^\\circ)$",
+        "$(82^\\circ,88^\\circ,98^\\circ,92^\\circ)$",
+        "$(60^\\circ,105^\\circ,120^\\circ,75^\\circ)$"
+      ],
     "answer": "",
     "solution": "",
     "tags": [
