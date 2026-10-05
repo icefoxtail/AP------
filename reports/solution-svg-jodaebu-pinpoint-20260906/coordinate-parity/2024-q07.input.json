@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_INPUT_v1",
+  "questionId": 7,
+  "svg": "archive/assets/images/24_조대부고_2학기_중간_고2_수학II/q07-solution.svg",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 140,
+    "originY": 220,
+    "sx": 45,
+    "sy": 45,
+    "anchors": {
+      "origin": {
+        "element": "anchor-origin-o140",
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "anchor-xaxis-o140",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "anchor-yaxis-o140",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "tolerance": 1E-05,
+  "expectedFacts": [
+    {
+      "factId": "q07-f-minus1-value",
+      "type": "POINT",
+      "element": "point-o140-xm1-y1",
+      "expected": [
+        -1,
+        1
+      ]
+    },
+    {
+      "factId": "q07-f-minus1-right",
+      "type": "POINT",
+      "element": "point-o140-xm1-ym1",
+      "expected": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "factId": "q07-f-one-left",
+      "type": "POINT",
+      "element": "point-o140-x1-y1",
+      "expected": [
+        1,
+        1
+      ]
+    },
+    {
+      "factId": "q07-f-one-value",
+      "type": "POINT",
+      "element": "point-o140-x1-ym1",
+      "expected": [
+        1,
+        -1
+      ]
+    },
+    {
+      "factId": "q07-f-right-branch",
+      "type": "LINE_SLOPE",
+      "element": "line-main-line-o140-x11-y1m1-x23-y2m1",
+      "expected": 0
+    }
+  ],
+  "renderResult": "PASS"
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "h1-one-pass-sol-hidden-l3-decision-rules-working-v1",
+  "status": "SOL_WORKING_NOT_FINAL",
+  "denominator": 80,
+  "blindWorkersNeverReceiveThisFile": true,
+  "referencePolicy": "The old Stage3 candidate is a comparison point, not an answer key. Narrower descriptions count as a match only when they express the same decisive L3 method. A source-grounded different primary method is DIFF_PLAUSIBLE.",
+  "unscorableExistingL3HoldRows": [7],
+  "defaultCategoryForOtherRows": "MATCH_GROUNDED",
+  "workerA": {
+    "MATCH_WEAK_REASON": [],
+    "DIFF_PLAUSIBLE": [21, 22, 26, 34, 35, 37, 38, 41, 47, 48, 50, 53, 57, 58, 59, 61, 63, 64, 66, 69, 70, 73, 79],
+    "DIFF_ERROR": [29, 31, 55]
+  },
+  "workerB": {
+    "MATCH_WEAK_REASON": [],
+    "DIFF_PLAUSIBLE": [21, 22, 26, 29, 31, 34, 35, 37, 38, 41, 47, 48, 50, 53, 57, 58, 59, 61, 63, 64, 66, 69, 70, 73, 79],
+    "DIFF_ERROR": []
+  },
+  "materialAB_L3_conflictRows": [22, 29, 31, 55, 70],
+  "candidateExistingL3ReviewRows": [21, 22, 26, 29, 31, 34, 35, 37, 38, 41, 47, 48, 50, 53, 57, 58, 59, 61, 63, 64, 66, 69, 70, 73, 79],
+  "notesByRow": {
+    "7": "Existing Stage3 L3 is HOLD because the source route diagram is too degraded to verify the path counts; neither worker is scored against a nonexistent old key.",
+    "21": "The stem constrains a polynomial through f(x)f(-x)=f(x²) for all real x; A/B/C identify a functional equation, while the old key emphasizes polynomial coefficient identity. Both readings have source support, and the curriculum-level owner needs review.",
+    "22": "The decisive condition is D(k)≡0 for every k, then coefficient comparison in k. The old POLY_OPERATION_EXPANSION key misses the repeated-root parameter test; A's discriminant identity and B's universal-parameter proposition are plausible but differ in primary emphasis.",
+    "26": "Three cuboid edge lengths are recovered from pairwise face areas. The old polynomial-expansion type does not describe the decisive geometry/product reconstruction; both worker candidates are source-grounded.",
+    "29": "The equation in P(x) is completed to a square and the positive leading coefficient selects a polynomial. A's FUNCTIONAL_EQUATION key overstates a functional relation absent from the source; B's reconstruction candidate fits the decisive step. The old coefficient-identity label is broad enough to merit review.",
+    "31": "The identity (3P−2)²=[x(2x−3)]² and leading-sign restriction recover P. A's FUNCTIONAL_EQUATION is the wrong primary category; B's polynomial-recovery description follows the actual solution. The old identity-coefficient label should be checked for granularity.",
+    "34": "The quartic product is paired around a common quadratic to form a perfect square. The worker candidates foreground square recognition/factorization rather than the old symmetric-formula key; both are mathematically grounded.",
+    "35": "The polynomial relation f(x)f(−x)=f(x²) is tested by substitutions and coefficient comparisons. Functional-equation treatment from A/B is plausible alongside the old polynomial-identity key; C independently selected the functional-equation family for the analogous row21.",
+    "37": "A high reciprocal power sum is derived from a quadratic root relation, not chiefly by comparing coefficients of an identity; both worker descriptions are grounded alternatives to the old key.",
+    "38": "Conjugate complex roots parameterize a real quartic, but minimizing a+b+c+d is the decisive final step. A/C select extrema and B names constrained complex-root minimization; the old complex-condition type captures a prerequisite rather than the complete primary method.",
+    "41": "Tangency of two lines to a parabola gives m²=t and their perpendicular slopes fix t. A/B/C independently classify graph intersection/tangency; the old quadratic-extrema key does not describe the decisive method.",
+    "47": "Graph roots 1 and 3 shift to a+1 and a+3 under f(x−a); their product fixes a. A/B/C classify translation or graph transformation, whereas the old discriminant key is not used by the solution.",
+    "48": "The item judges statements from a supplied parabola graph, symmetry, and sign intervals. Graph-property classification from A/B is grounded; the old reconstruction key implies coefficient recovery that is not requested.",
+    "50": "Number-line intervals determine coefficients of a system of inequalities; the old SYSTEM_EQUATION key names equations rather than the graphed inequalities. A/B descriptions are plausible.",
+    "53": "The four-solution count is determined by intersections of a line with two absolute-value parabola branches. A/B/C select graph-intersection counting; the old absolute-value equation/inequality key is a plausible ingredient but not the decisive L3.",
+    "55": "After z=(1+i)/(1−i)=i, powers cycle with period four before polynomial evaluation. B and C retain the complex-power method; A's generic FUNCTION_VALUE loses the decisive periodic structure and is an error.",
+    "57": "The source asks only the minimum of x²−4x−5 and completes the square to −9. A/B extrema is directly grounded; the old quadratic-reconstruction type has no reconstruction step.",
+    "58": "Vieta gives α²+β²=k²−2k+14, then completing the square gives its minimum 13. A/B extrema is a grounded primary-method alternative; the old root-coefficient relation records the prerequisite.",
+    "59": "Six-seat nonadjacent seating first selects positions and then permutes distinct students. A/B arrangement is a grounded alternative to the old selection/distribution emphasis.",
+    "61": "A 7-person split into 3,2,2 groups uses choosing a triple and dividing out exchange of equal-size pairs. A/B selection-distribution is more specific than the old general counting-principle key.",
+    "63": "Five draws with replacement and order inequalities can be viewed as repeated assignment or constrained selection. A/B selection-distribution differs from the old repeated-assignment emphasis but follows the counted choices.",
+    "64": "Four-region coloring uses an adjacency graph with repeated colors permitted. A's repeated assignment and B's graph-coloring candidate are grounded refinements of the old general counting type; C independently used repeated assignment.",
+    "66": "The prompt merely evaluates 5P2+7C4. Worker candidates correctly name mixed formula evaluation; the old selection/distribution key implies an application absent from the source. A separate new type may still be overclassification.",
+    "69": "Five replacement draws are counted by cases for a1 and ordered pair/sum restrictions. A/B selection-distribution is a grounded alternative to old repeated-assignment naming.",
+    "70": "The pictured fixed bracket and the solution's /2 treatment of the four-team half create a slot-equivalence ambiguity. A selects group/pair selection, B arrangement, C selects selection/distribution but HOLD; the old general counting key is too broad to settle the source ambiguity.",
+    "73": "Two permutation equations are reduced by cancelling common factorial factors to find m,n. Worker permutation-identity/arrangement labels are grounded refinements of the old general-counting type.",
+    "79": "Two matrix quadratic-form constraints are expanded and optimized over x,y. The old MATRIX_EQUATION key records the representation, while A/B candidates identify the decisive norm maximum problem."
+  }
+}

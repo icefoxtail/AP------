@@ -1,0 +1,1622 @@
+{
+  "schemaVersion": "rpm-primary-active-crosswalk-v1",
+  "status": "ACTIVE_REFERENCE",
+  "grade": "H2",
+  "subjectFamily": "PROBABILITY_STATISTICS",
+  "generatedAgainstMain": "04176115393b5028647731892c7e49774c567315",
+  "rpmAuthority": {
+    "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "status": "LOCKED",
+    "source": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+  },
+  "activeAuthority": {
+    "source": "archive/data/meta-foundation/canonical/",
+    "packs": [
+      "PROBABILITY_STATISTICS"
+    ]
+  },
+  "policy": {
+    "purpose": "2015/2022 확률과통계 RPM semantic path를 현재 ACTIVE production machine key로 번역하는 deterministic reference",
+    "doesNotCreateCanonicalKeys": true,
+    "DIRECT_ACTIVE": "mapped PT/TPL과 exact binding이 ACTIVE.",
+    "FAMILY_ACTIVE": "listed candidate에서 decisive step 선택.",
+    "DIRECT_BINDING_GAP": "PT/TPL ACTIVE, exact binding 없음. RPM_PRIMARY_MIGRATION_GAP.",
+    "FAMILY_BINDING_GAP": "PT ACTIVE, exact binding 없음.",
+    "RPM_ONLY": "현재 ACTIVE에 안전한 대응 key 없음. 2022 모비율 추정은 별도 exact template 부재로 보수적 유지.",
+    "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
+  },
+  "summary": {
+    "recordCount": 64,
+    "DIRECT_ACTIVE": 38,
+    "FAMILY_ACTIVE": 2,
+    "DIRECT_BINDING_GAP": 22,
+    "FAMILY_BINDING_GAP": 0,
+    "RPM_ONLY": 2,
+    "byCurriculum": {
+      "2015": {
+        "DIRECT_ACTIVE": 24,
+        "FAMILY_ACTIVE": 1,
+        "DIRECT_BINDING_GAP": 6,
+        "FAMILY_BINDING_GAP": 0,
+        "RPM_ONLY": 0
+      },
+      "2022": {
+        "DIRECT_ACTIVE": 14,
+        "FAMILY_ACTIVE": 1,
+        "DIRECT_BINDING_GAP": 16,
+        "FAMILY_BINDING_GAP": 0,
+        "RPM_ONLY": 2
+      }
+    }
+  },
+  "records": [
+    {
+      "id": "H2-PS-RPM-001",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "일렬 배열"
+      },
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "problemTypeLabelKo": "순열",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "templateLabelKo": "일반 순열·조건 배열",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "subUnitKey": "H15-PS-01-PERMUTATION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-002",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "problemTypeLabelKo": "순열",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+          "templateLabelKo": "같은 것이 있는 순열"
+        },
+        {
+          "templateKey": "TPL_CIRCULAR_PERMUTATION",
+          "templateLabelKo": "원순열"
+        }
+      ],
+      "selectionRule": "같은 것이 있는 배열인지 원순열인지에 따라 listed template 선택",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "subUnitKey": "H15-PS-01-PERMUTATION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-003",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "templateLabelKo": "조합과 선택",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-004",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "분할·분배"
+      },
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "templateLabelKo": "조합과 선택",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-005",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "중복을 허용한 선택"
+      },
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "templateLabelKo": "중복조합·정수해·동일물 분배",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-006",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "정수해 개수"
+      },
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "templateLabelKo": "중복조합·정수해·동일물 분배",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-007",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항정리",
+        "l4": "전개식의 항"
+      },
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "templateLabelKo": "전개식의 항·계수",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-008",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항정리",
+        "l4": "특정 항의 계수"
+      },
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "templateLabelKo": "전개식의 항·계수",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-009",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항계수",
+        "l4": "이항계수의 성질"
+      },
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "templateLabelKo": "이항계수의 성질·활용",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-010",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항계수",
+        "l4": "조합 항등식"
+      },
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "templateLabelKo": "이항계수의 성질·활용",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-011",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 기본",
+        "l4": "표본공간과 사건"
+      },
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "templateLabelKo": "확률의 뜻·기본 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-012",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 기본",
+        "l4": "확률 계산"
+      },
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "templateLabelKo": "확률의 뜻·기본 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-013",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 덧셈정리",
+        "l4": "배반사건"
+      },
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "templateLabelKo": "사건의 관계·덧셈정리·여사건",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-014",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 덧셈정리",
+        "l4": "여사건"
+      },
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "templateLabelKo": "사건의 관계·덧셈정리·여사건",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-03",
+        "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-015",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "조건부확률",
+        "l4": "조건부확률 계산"
+      },
+      "standardUnitKey": "H15-PS-04",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "problemTypeLabelKo": "조건부확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "templateLabelKo": "조건부확률의 직접 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-04",
+        "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-016",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "사건의 독립",
+        "l4": "독립 판정"
+      },
+      "standardUnitKey": "H15-PS-04",
+      "subUnitKey": "H15-PS-04-INDEPENDENCE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "problemTypeLabelKo": "사건의 독립과 종속",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "templateLabelKo": "독립·종속 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-017",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "사건의 독립",
+        "l4": "독립사건의 확률"
+      },
+      "standardUnitKey": "H15-PS-04",
+      "subUnitKey": "H15-PS-04-INDEPENDENCE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "problemTypeLabelKo": "사건의 독립과 종속",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "templateLabelKo": "독립·종속 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-018",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "독립시행",
+        "l4": "이항형 시행"
+      },
+      "standardUnitKey": "H15-PS-04",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "problemTypeLabelKo": "독립시행의 확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "templateLabelKo": "독립시행의 확률",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-019",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "독립시행",
+        "l4": "반복 시행의 확률"
+      },
+      "standardUnitKey": "H15-PS-04",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "problemTypeLabelKo": "독립시행의 확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "templateLabelKo": "독립시행의 확률",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-020",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "확률변수와 확률분포",
+        "l4": "이산확률변수"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "problemTypeLabelKo": "확률변수와 확률분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateLabelKo": "이산확률변수와 확률분포",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-021",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "확률변수와 확률분포",
+        "l4": "확률질량함수"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "problemTypeLabelKo": "확률변수와 확률분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateLabelKo": "이산확률변수와 확률분포",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-022",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "기댓값과 분산",
+        "l4": "기댓값"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "problemTypeLabelKo": "기댓값과 표준편차",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "templateLabelKo": "기댓값과 확률변수의 변환",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-023",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "기댓값과 분산",
+        "l4": "분산·표준편차"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "problemTypeLabelKo": "기댓값과 표준편차",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "templateLabelKo": "분산·표준편차와 변환",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-024",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "이항분포",
+        "l4": "이항분포의 확률"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "problemTypeLabelKo": "이항분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_PROBABILITY",
+      "templateLabelKo": "이항분포의 확률",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-025",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "이항분포",
+        "l4": "평균·분산"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "problemTypeLabelKo": "이항분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "templateLabelKo": "이항분포의 평균·분산·모수",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-026",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "정규분포",
+        "l4": "표준정규분포"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "problemTypeLabelKo": "정규분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "templateLabelKo": "정규분포의 표준화",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-027",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "정규분포",
+        "l4": "정규분포 확률"
+      },
+      "standardUnitKey": "H15-PS-05",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "problemTypeLabelKo": "정규분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "templateLabelKo": "정규분포의 확률·활용",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-028",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모집단과 표본",
+        "l4": "표본평균"
+      },
+      "standardUnitKey": "H15-PS-06",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "problemTypeLabelKo": "표본평균과 모평균의 관계",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "templateLabelKo": "표본평균의 분포",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-029",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모집단과 표본",
+        "l4": "표본분포"
+      },
+      "standardUnitKey": "H15-PS-06",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "problemTypeLabelKo": "표본평균과 모평균의 관계",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "templateLabelKo": "표본평균의 분포",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-030",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모평균 추정",
+        "l4": "신뢰구간"
+      },
+      "standardUnitKey": "H15-PS-06",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "problemTypeLabelKo": "통계적 추정",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "templateLabelKo": "모평균의 추정",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-031",
+      "curriculum": "2015",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모평균 추정",
+        "l4": "표본크기"
+      },
+      "standardUnitKey": "H15-PS-06",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "problemTypeLabelKo": "통계적 추정",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "templateLabelKo": "신뢰구간·표본크기",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-032",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "일렬 배열"
+      },
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "problemTypeLabelKo": "순열",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "templateLabelKo": "일반 순열·조건 배열",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-01",
+        "subUnitKey": "H22-PS-01-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-033",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "순열",
+        "l4": "중복·원순열"
+      },
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "problemTypeLabelKo": "순열",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+          "templateLabelKo": "같은 것이 있는 순열"
+        },
+        {
+          "templateKey": "TPL_CIRCULAR_PERMUTATION",
+          "templateLabelKo": "원순열"
+        }
+      ],
+      "selectionRule": "같은 것이 있는 배열인지 원순열인지에 따라 listed template 선택",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-01",
+        "subUnitKey": "H22-PS-01-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-034",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "선택"
+      },
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "templateLabelKo": "조합과 선택",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-01",
+        "subUnitKey": "H22-PS-01-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-035",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "조합",
+        "l4": "분할·분배"
+      },
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "templateLabelKo": "조합과 선택",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-01",
+        "subUnitKey": "H22-PS-01-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-036",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "중복을 허용한 선택"
+      },
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "templateLabelKo": "중복조합·정수해·동일물 분배",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-01",
+        "subUnitKey": "H22-PS-01-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-037",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "순열과 조합",
+        "l3": "중복조합",
+        "l4": "정수해 개수"
+      },
+      "standardUnitKey": "H22-PS-01",
+      "subUnitKey": "H22-PS-01-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "problemTypeLabelKo": "조합·중복조합",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "templateLabelKo": "중복조합·정수해·동일물 분배",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-01",
+        "subUnitKey": "H22-PS-01-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-038",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항정리",
+        "l4": "전개식의 항"
+      },
+      "standardUnitKey": "H22-PS-02",
+      "subUnitKey": "H22-PS-02-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "templateLabelKo": "전개식의 항·계수",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "subUnitKey": "H22-PS-02-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-039",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항정리",
+        "l4": "특정 항의 계수"
+      },
+      "standardUnitKey": "H22-PS-02",
+      "subUnitKey": "H22-PS-02-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "templateLabelKo": "전개식의 항·계수",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "subUnitKey": "H22-PS-02-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-040",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항계수",
+        "l4": "이항계수의 성질"
+      },
+      "standardUnitKey": "H22-PS-02",
+      "subUnitKey": "H22-PS-02-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "templateLabelKo": "이항계수의 성질·활용",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "subUnitKey": "H22-PS-02-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-041",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "경우의 수",
+        "midUnit": "이항정리",
+        "l3": "이항계수",
+        "l4": "조합 항등식"
+      },
+      "standardUnitKey": "H22-PS-02",
+      "subUnitKey": "H22-PS-02-CORE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "problemTypeLabelKo": "이항정리",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "templateLabelKo": "이항계수의 성질·활용",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-02",
+        "subUnitKey": "H22-PS-02-CORE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-042",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 기본",
+        "l4": "표본공간과 사건"
+      },
+      "standardUnitKey": "H22-PS-03",
+      "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "templateLabelKo": "확률의 뜻·기본 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-03",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-043",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 기본",
+        "l4": "확률 계산"
+      },
+      "standardUnitKey": "H22-PS-03",
+      "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "templateLabelKo": "확률의 뜻·기본 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-03",
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-044",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 덧셈정리",
+        "l4": "배반사건"
+      },
+      "standardUnitKey": "H22-PS-03",
+      "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "templateLabelKo": "사건의 관계·덧셈정리·여사건",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-045",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "확률의 뜻과 활용",
+        "l3": "확률의 덧셈정리",
+        "l4": "여사건"
+      },
+      "standardUnitKey": "H22-PS-03",
+      "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "problemTypeLabelKo": "확률의 기본 성질과 활용",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "templateLabelKo": "사건의 관계·덧셈정리·여사건",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-046",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "조건부확률",
+        "l4": "조건부확률 계산"
+      },
+      "standardUnitKey": "H22-PS-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "problemTypeLabelKo": "조건부확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "templateLabelKo": "조건부확률의 직접 계산",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-04",
+        "subUnitKey": null,
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-047",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "사건의 독립",
+        "l4": "독립 판정"
+      },
+      "standardUnitKey": "H22-PS-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "problemTypeLabelKo": "사건의 독립과 종속",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "templateLabelKo": "독립·종속 판정",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-04",
+        "subUnitKey": null,
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-048",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "사건의 독립",
+        "l4": "독립사건의 확률"
+      },
+      "standardUnitKey": "H22-PS-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "problemTypeLabelKo": "사건의 독립과 종속",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "templateLabelKo": "독립·종속 판정",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H22-PS-04",
+        "subUnitKey": null,
+        "ownerPack": "PROBABILITY_STATISTICS"
+      }
+    },
+    {
+      "id": "H2-PS-RPM-049",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "독립시행",
+        "l4": "이항형 시행"
+      },
+      "standardUnitKey": "H22-PS-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "problemTypeLabelKo": "독립시행의 확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "templateLabelKo": "독립시행의 확률",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-050",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "확률",
+        "midUnit": "조건부확률",
+        "l3": "독립시행",
+        "l4": "반복 시행의 확률"
+      },
+      "standardUnitKey": "H22-PS-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "problemTypeLabelKo": "독립시행의 확률",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "templateLabelKo": "독립시행의 확률",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-051",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "확률변수와 확률분포",
+        "l4": "이산확률변수"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "problemTypeLabelKo": "확률변수와 확률분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateLabelKo": "이산확률변수와 확률분포",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-052",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "확률변수와 확률분포",
+        "l4": "확률질량함수"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "problemTypeLabelKo": "확률변수와 확률분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateLabelKo": "이산확률변수와 확률분포",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-053",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "기댓값과 분산",
+        "l4": "기댓값"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "problemTypeLabelKo": "기댓값과 표준편차",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "templateLabelKo": "기댓값과 확률변수의 변환",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-054",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "기댓값과 분산",
+        "l4": "분산·표준편차"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "problemTypeLabelKo": "기댓값과 표준편차",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "templateLabelKo": "분산·표준편차와 변환",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-055",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "이항분포",
+        "l4": "이항분포의 확률"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "problemTypeLabelKo": "이항분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_PROBABILITY",
+      "templateLabelKo": "이항분포의 확률",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-056",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "이항분포",
+        "l4": "평균·분산"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "problemTypeLabelKo": "이항분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "templateLabelKo": "이항분포의 평균·분산·모수",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-057",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "정규분포",
+        "l4": "표준정규분포"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "problemTypeLabelKo": "정규분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "templateLabelKo": "정규분포의 표준화",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-058",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "확률분포",
+        "l3": "정규분포",
+        "l4": "정규분포 확률"
+      },
+      "standardUnitKey": "H22-PS-05",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "problemTypeLabelKo": "정규분포",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "templateLabelKo": "정규분포의 확률·활용",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-059",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모집단과 표본",
+        "l4": "표본평균"
+      },
+      "standardUnitKey": "H22-PS-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "problemTypeLabelKo": "표본평균과 모평균의 관계",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "templateLabelKo": "표본평균의 분포",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-060",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모집단과 표본",
+        "l4": "표본분포"
+      },
+      "standardUnitKey": "H22-PS-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "problemTypeLabelKo": "표본평균과 모평균의 관계",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "templateLabelKo": "표본평균의 분포",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-061",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모평균 추정",
+        "l4": "신뢰구간"
+      },
+      "standardUnitKey": "H22-PS-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "problemTypeLabelKo": "통계적 추정",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "templateLabelKo": "모평균의 추정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-062",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모평균 추정",
+        "l4": "표본크기"
+      },
+      "standardUnitKey": "H22-PS-06",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "problemTypeLabelKo": "통계적 추정",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "templateLabelKo": "신뢰구간·표본크기",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-PS-RPM-063",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모비율 추정",
+        "l4": "표본비율"
+      },
+      "standardUnitKey": "H22-PS-06",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-PS-RPM-064",
+      "curriculum": "2022",
+      "scope": "확률과통계",
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "통계적 추정",
+        "l3": "모비율 추정",
+        "l4": "신뢰구간"
+      },
+      "standardUnitKey": "H22-PS-06",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    }
+  ]
+}

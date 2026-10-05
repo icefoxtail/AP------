@@ -1,0 +1,200 @@
+{
+  "reviewDate": "2026-08-27",
+  "scope": {
+    "examCount": 8,
+    "questionCount": 178,
+    "generatedAssetCount": 21,
+    "originalCropCounterparts": 21,
+    "sourceAssetsEdited": false,
+    "dbOrQuestionIndexEdited": false
+  },
+  "documentsApplied": [
+    {
+      "path": "docs/rules/JS아카이브_1차검수_프로토콜.md",
+      "lines": 211,
+      "sha256": "85633E285F20946186D96CE038A83D584FDC8D306EA8CA48B472E7853D5F203A",
+      "evidence": "전체 파일·후반 문항·필수 필드·그림/이미지·경로를 생략하지 않고 확인"
+    },
+    {
+      "path": "docs/rules/JS아카이브_2차검수_프로토콜.md",
+      "lines": 173,
+      "sha256": "FAE4F4597E6DD683739EDD5AF7EC0787C325A39961CF4ED7808A3A84FF71744B",
+      "evidence": "문항 성립·정답 유일성·도형 조건·이미지의 발문 대응을 분리 확인"
+    },
+    {
+      "path": "docs/rules/JS아카이브_3차검수_프로토콜.md",
+      "lines": 287,
+      "sha256": "DB7BF0B2863558E9E2B255442B9D75AF6D0E6A4AB0FB08F3DE0AC5D1F24B0CEF",
+      "evidence": "전 문항 메타데이터·시각자료 태그·layout/wide·최종 보고 게이트 확인"
+    },
+    {
+      "path": "docs/rules/무결성검수.md",
+      "lines": 667,
+      "sha256": "82E75EB543F9B3C2561E2077AC6D32EF6BC61AAB985350801E7FD29DC5E61289",
+      "evidence": "실제 파일·이미지·후반 문항·SVG viewBox·PNG decode·렌더·출력 넘침을 근거로 판정"
+    },
+    {
+      "path": "docs/rules/도형추출.md",
+      "lines": 332,
+      "sha256": "64400465EF42338E7714889ACB477EA020F408876151FC996719D1E0F04D42FA",
+      "evidence": "원본 도형의 구조·상대 위치·라벨·엔진 연결 규칙을 기준으로 시각 대조"
+    },
+    {
+      "path": "docs/rules/해설프로토콜.md",
+      "lines": 650,
+      "sha256": "09605EE6B7546F9F326FC5EE3A1A0E204AF128A2481B0F41CB6556B591D2FEE2",
+      "evidence": "학생용 해설·정답 결론·시각자료 위치·운영 흔적 금지 규칙을 재확인"
+    },
+    {
+      "path": ".codex/skills/apmath-archive-exams/SKILL.md",
+      "evidence": "archive JS·assets/images 연결, 실제 에셋 확인, exam/sol/ans 엔진 QA를 적용"
+    },
+    {
+      "path": ".codex/skills/apmath-archive-exams/references/archive-layout.md",
+      "evidence": "archive/exams 및 archive/assets/images의 시험지명별 경로 규칙을 적용"
+    }
+  ],
+  "stageRecheck": {
+    "stage1": {
+      "script": "reports/h1-similar-full-audit-loop-20260826/stage1_static_audit.mjs",
+      "questions": 178,
+      "fail": 0,
+      "warn": 22,
+      "pass": 156,
+      "sourcePdfQuestionCoverage": {
+        "available": 113,
+        "missing": 65
+      },
+      "reviewStatusGate": "FAIL",
+      "warningMeaning": "문항 발문 안의 직접 비교 기호를 정적 규칙이 표시한 경고이며 생성 이미지 결함은 아님"
+    },
+    "stage2": {
+      "script": "reports/h1-similar-full-audit-loop-20260826/stage2_source_compare.mjs",
+      "planRows": 178,
+      "planStatus": "PASS",
+      "sourcePdfExamsAvailable": 5,
+      "sourcePdfExamsMissing": 3,
+      "renderedSourcePages": 27,
+      "sourcePageMapped": 113,
+      "sourcePageCoveragePass": 113,
+      "fieldLevelComparisonBlocked": 178,
+      "visualRows": 21,
+      "gates": {
+        "sourcePdfInventory": "PARTIAL",
+        "sourcePageRender": "PASS",
+        "sourceFieldLevelTranscription": "BLOCKED",
+        "visualCropProvenance": "BLOCKED"
+      },
+      "missingSourceExams": [
+        "25_금당고_2학기_중간_고1_유사.js",
+        "25_매산고_2학기_중간_고1_유사.js",
+        "25_팔마고_2학기_기말_고1_유사.js"
+      ]
+    },
+    "stage3": {
+      "solutionAudit": {
+        "questions": 178,
+        "fail": 0,
+        "warn": 0,
+        "gate": "PASS"
+      },
+      "metadataAudit": {
+        "questions": 178,
+        "fail": 0,
+        "warn": 0,
+        "standardCourseUnitSubUnit": "PASS",
+        "questionTypeTags": "PASS",
+        "levelIndependent": "BLOCKED",
+        "overall": "BLOCKED"
+      }
+    }
+  },
+  "assetReview": {
+    "filesFound": 21,
+    "missingFiles": 0,
+    "orphanSimilarAssets": 0,
+    "svg": {
+      "count": 19,
+      "xmlParseFailures": 0,
+      "externalReferenceCount": 0,
+      "viewBoxFailures": 0
+    },
+    "png": {
+      "count": 2,
+      "decodeFailures": 0
+    },
+    "visualReview": {
+      "pass": 14,
+      "marginWarn": 7,
+      "definiteClippingFail": 0,
+      "reviewMethod": "각 생성 에셋을 브라우저 원본 크기로 직접 확인하고 동일 문항의 archive *_기출 PNG와 구조·라벨·선·그래프·해칭을 대조"
+    },
+    "items": [
+      {"exam":"25_금당고_2학기_중간_고1_유사","question":14,"asset":"q14.svg","original":"25_금당고_2학기_중간_고1_기출/q14.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_매산고_2학기_중간_고1_유사","question":10,"asset":"q10.svg","original":"25_매산고_2학기_중간_고1_기출/q10.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_순천고_2학기_중간_고1_유사","question":11,"asset":"q11.svg","original":"25_순천고_2학기_중간_고1_기출/q11.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_순천고_2학기_중간_고1_유사","question":18,"asset":"q18.svg","original":"25_순천고_2학기_중간_고1_기출/q18.png","size":"760x500 SVG","visual":"MARGIN_WARN"},
+      {"exam":"25_금당고_2학기_기말_고1_유사","question":6,"asset":"q06.svg","original":"25_금당고_2학기_기말_고1_기출/q06.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_금당고_2학기_기말_고1_유사","question":16,"asset":"q16.svg","original":"25_금당고_2학기_기말_고1_기출/q16.png","size":"760x500 SVG","visual":"MARGIN_WARN"},
+      {"exam":"25_순천고_2학기_기말_고1_유사","question":4,"asset":"q04.svg","original":"25_순천고_2학기_기말_고1_기출/q4.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_순천고_2학기_기말_고1_유사","question":10,"asset":"q10.svg","original":"25_순천고_2학기_기말_고1_기출/q10.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_순천고_2학기_기말_고1_유사","question":13,"asset":"q13.svg","original":"25_순천고_2학기_기말_고1_기출/q13.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_순천고_2학기_기말_고1_유사","question":16,"asset":"q16.png","original":"25_순천고_2학기_기말_고1_기출/q16.png","size":"1100x620 PNG","visual":"PASS"},
+      {"exam":"25_제일고_2학기_기말_고1_유사","question":10,"asset":"q10.svg","original":"25_제일고_2학기_기말_고1_기출/q10.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_제일고_2학기_기말_고1_유사","question":12,"asset":"q12.svg","original":"25_제일고_2학기_기말_고1_기출/q12.png","size":"760x500 SVG","visual":"MARGIN_WARN"},
+      {"exam":"25_제일고_2학기_기말_고1_유사","question":17,"asset":"q17.svg","original":"25_제일고_2학기_기말_고1_기출/q17.png","size":"760x500 SVG","visual":"MARGIN_WARN"},
+      {"exam":"25_팔마고_2학기_기말_고1_유사","question":1,"asset":"q01.svg","original":"25_팔마고_2학기_기말_고1_기출/q01.png","size":"760x430 SVG","visual":"PASS"},
+      {"exam":"25_팔마고_2학기_기말_고1_유사","question":2,"asset":"q02.svg","original":"25_팔마고_2학기_기말_고1_기출/q02.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_팔마고_2학기_기말_고1_유사","question":3,"asset":"q03.svg","original":"25_팔마고_2학기_기말_고1_기출/q03.png","size":"760x500 SVG","visual":"PASS"},
+      {"exam":"25_팔마고_2학기_기말_고1_유사","question":5,"asset":"q05.svg","original":"25_팔마고_2학기_기말_고1_기출/q05.png","size":"760x500 SVG","visual":"MARGIN_WARN"},
+      {"exam":"25_팔마고_2학기_기말_고1_유사","question":18,"asset":"q18.png","original":"25_팔마고_2학기_기말_고1_기출/q18.png","size":"1100x700 PNG","visual":"PASS"},
+      {"exam":"25_팔마고_2학기_기말_고1_유사","question":19,"asset":"q19.svg","original":"25_팔마고_2학기_기말_고1_기출/q19.png","size":"760x500 SVG","visual":"MARGIN_WARN"},
+      {"exam":"25_효천고_2학기_기말_고1_유사","question":13,"asset":"q13.svg","original":"25_효천고_2학기_기말_고1_기출/q13.png","size":"760x500 SVG","visual":"MARGIN_WARN"},
+      {"exam":"25_효천고_2학기_기말_고1_유사","question":17,"asset":"q17.svg","original":"25_효천고_2학기_기말_고1_기출/q17.png","size":"760x500 SVG","visual":"PASS"}
+    ]
+  },
+  "printRenderQA": {
+    "method": "engine.html?mode=exam|sol|ans&qpp=4, each mode in an isolated browser tab",
+    "cases": 24,
+    "pass": 24,
+    "fail": 0,
+    "byMode": {"exam":"8/8 PASS","sol":"8/8 PASS","ans":"8/8 PASS"},
+    "perExam": [
+      {"file":"25_금당고_2학기_중간_고1_유사.js","questionCount":22,"examPages":6,"solutionPages":10,"answerPages":1},
+      {"file":"25_매산고_2학기_중간_고1_유사.js","questionCount":20,"examPages":5,"solutionPages":7,"answerPages":1},
+      {"file":"25_순천고_2학기_중간_고1_유사.js","questionCount":23,"examPages":6,"solutionPages":8,"answerPages":1},
+      {"file":"25_금당고_2학기_기말_고1_유사.js","questionCount":22,"examPages":6,"solutionPages":7,"answerPages":1},
+      {"file":"25_순천고_2학기_기말_고1_유사.js","questionCount":23,"examPages":6,"solutionPages":9,"answerPages":1},
+      {"file":"25_제일고_2학기_기말_고1_유사.js","questionCount":22,"examPages":6,"solutionPages":6,"answerPages":1},
+      {"file":"25_팔마고_2학기_기말_고1_유사.js","questionCount":23,"examPages":6,"solutionPages":7,"answerPages":1},
+      {"file":"25_효천고_2학기_기말_고1_유사.js","questionCount":23,"examPages":6,"solutionPages":7,"answerPages":1}
+    ],
+    "checks": {
+      "questionCountMatch": "24/24",
+      "solutionCountMatch": "8/8",
+      "answerCountMatch": "8/8",
+      "generatedImageDecode": "21/21",
+      "imageOutOfPage": 0,
+      "questionBoxOverflow": 0,
+      "pageOverflow": 0,
+      "visibleLoadError": 0,
+      "isolatedConsoleErrorOrWarn": 0
+    },
+    "printCSSReference": {
+      "pageRule": "@page { size: A4; margin: 0; }",
+      "pageSize": "210mm × 297mm",
+      "printPageHeight": "296.5mm",
+      "printPageOverflow": "hidden",
+      "pageBreak": "page-break-after: always"
+    }
+  },
+  "gates": {
+    "assetFileAndDecode": "PASS",
+    "assetVisualQuality": "PASS_WITH_7_MARGIN_WARNINGS",
+    "examSolutionAnswerPrintProxy": "PASS",
+    "sourcePdfAndCropProvenance": "BLOCKED",
+    "officialReviewStatus": "FAIL",
+    "independentLevelGate": "BLOCKED",
+    "overallArchiveApproval": "BLOCKED"
+  }
+}

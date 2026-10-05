@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "eqineq-sol-semantic-summary-v1",
+  "status": "BATCH5_SOL_REVIEW_COMPLETE_WITH_HOLDS",
+  "authority": "SOL_EXHAUSTIVE_SOURCE_REVIEW",
+  "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+  "preprocessCommit": "ca12e66d918e271d26bada63b4e725ffb0c430fc",
+  "scope": {
+    "start": 281,
+    "end": 350,
+    "denominator": 70
+  },
+  "coverage": {
+    "rows": 70,
+    "uniqueUid": 70,
+    "uniqueSourceIdentity": 70,
+    "fingerprintMismatch": 0
+  },
+  "queueCounts": {
+    "H22-C-04": 37,
+    "H22-C-05": 33
+  },
+  "compositionPattern": {
+    "NONE": 25,
+    "SEQUENTIAL": 22,
+    "CASE_BRANCH": 8,
+    "INTERDEPENDENT": 8,
+    "REINTERPRETATION": 7
+  },
+  "holdCount": 16,
+  "sourceIssues": [
+    {
+      "workIndex": 285,
+      "code": "SOLUTION_INTERNAL_GROUPING_CONTRADICTION",
+      "verifiedAnswer": "② / 1"
+    },
+    {
+      "workIndex": 293,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "③"
+    },
+    {
+      "workIndex": 294,
+      "code": "SOLUTION_OFF_TOPIC_STUB",
+      "verifiedAnswer": "② / 2"
+    },
+    {
+      "workIndex": 295,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "③ / 3"
+    },
+    {
+      "workIndex": 296,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "① / x^2-26x-27=0"
+    },
+    {
+      "workIndex": 303,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "① / 4"
+    },
+    {
+      "workIndex": 304,
+      "code": "SOLUTION_CONTENT_MISMATCH",
+      "verifiedAnswer": "③ / 5+4i"
+    },
+    {
+      "workIndex": 305,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "④ / 4"
+    },
+    {
+      "workIndex": 306,
+      "code": "ANSWER_KEY_MATH_CONTRADICTION_AND_GENERIC_SOLUTION",
+      "verifiedAnswer": "⑤ / -5"
+    },
+    {
+      "workIndex": 307,
+      "code": "ANSWER_KEY_MATH_CONTRADICTION_AND_GENERIC_SOLUTION",
+      "verifiedAnswer": "③ / -3"
+    },
+    {
+      "workIndex": 308,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "② / -2"
+    },
+    {
+      "workIndex": 309,
+      "code": "ANSWER_SOLUTION_MATH_CONTRADICTION",
+      "verifiedAnswer": "24x^2+4x-2=0"
+    },
+    {
+      "workIndex": 310,
+      "code": "ANSWER_KEY_MATH_CONTRADICTION_AND_GENERIC_SOLUTION",
+      "verifiedAnswer": "④ / 8i"
+    },
+    {
+      "workIndex": 311,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "④ / 33"
+    },
+    {
+      "workIndex": 312,
+      "code": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+      "verifiedAnswer": "④ / -21"
+    },
+    {
+      "workIndex": 313,
+      "code": "ANSWER_KEY_MATH_CONTRADICTION_AND_GENERIC_SOLUTION",
+      "verifiedAnswer": "④ / 199"
+    }
+  ],
+  "answerContradictionWorkIndices": [
+    306,
+    307,
+    309,
+    310,
+    313
+  ],
+  "visualReviewPendingWorkIndices": [
+    327,
+    335,
+    338,
+    344,
+    347,
+    350
+  ],
+  "newDefiniteL1L2RejoinCount": 0,
+  "progressAfterBatch": {
+    "eqineq": "350/583",
+    "overall": "567/1170"
+  },
+  "cumulativeEqineq": {
+    "holdCount": 28,
+    "definiteL1L2RejoinCount": 44
+  },
+  "nextStart": {
+    "workIndex": 351,
+    "questionUid": "qid_v1_69b23a2603c78be5c0d76fb63fb7df9252267b253b8b99edb6dfa9701dd96278",
+    "sourceOrdinal": 4,
+    "queueId": "H22-C-05"
+  },
+  "physicalAuthority": {
+    "sourcePack": "EQINEQ_PREPROCESS_BATCH5_SOURCE_PACK_281_350.jsonl",
+    "solDecisionLedger": "EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl"
+  },
+  "note": "Sol reread all 70 source-pack rows. Codex draft labels were not final authority. Six external binary visuals remain render-fidelity pending; inline SVG rows were directly inspectable."
+}

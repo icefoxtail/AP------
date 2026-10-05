@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-08-28",
+  "protocol": "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+  "sourceOfTruth": "production JS",
+  "pdfRequired": false,
+  "batch": {
+    "year": 2021,
+    "grade": "고1",
+    "subject": "수학(상)",
+    "curriculumVersion": "H15",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "examType": "기출",
+    "originalExamCount": 3,
+    "targetQuestionCount": 7,
+    "scopeRule": "H15-SA-11 원의 방정식 문항만 대상. 대상 밖 문항과 보호 문항은 읽기·기록만 하며 사용자 승인 없이는 수정하지 않는다.",
+    "discovery": {
+      "scannedOriginalHighH1Files": 15,
+      "availableSemesters": ["2학기 중간", "2학기 기말"],
+      "missingSemesters": ["1학기 중간", "1학기 기말"],
+      "similarExcludedTargetCount": 3,
+    "selectionBasis": "production JS와 DB/index의 standardUnitKey를 대조하여 H15-SA-11만 선별; H15-SA-12 변환·대칭 문항은 제외",
+    "examMetadataNote": "H15-SA-11 문항의 문항별 교육과정은 production JS의 standardCourse=수학(상)을 기준으로 한다. 세 시험지는 H15-SA와 H15-SB가 함께 들어간 2학기 혼합 시험지이므로 archive/db.js의 시험지 subject=수학(하), primaryStandardCourse 공란은 시험지 메타데이터로 유지한다."
+    }
+  },
+  "allowedChangedFields": [
+    "answer",
+    "tags",
+    "solution",
+    "solutionImage",
+    "solutionImageAlt",
+    "solutionImageCaption",
+    "solutionImageSize"
+  ],
+  "policy": {
+    "solutionChange": "기존 해설의 정답·논리를 보존하고 [보강]으로 학생 재현에 필요한 시각 읽기, 조건 분기, 좌표·거리 연결을 추가. 독립검수에서 확인된 복성고 q1의 answer/결론 불일치는 원문 그림과 선지 대조 후 ③으로 교정하고, 도형 태그 누락은 대상 5문항에만 보완",
+    "svg": "원의 위치·접선·현·교점 관계를 이해하는 데 필요한 대상 7문항에 해설용 SVG를 신규 연결; 문제 원본 이미지 변경 없음",
+    "protected": "대상 밖 문항은 변경하지 않음"
+  },
+  "exams": [
+    {
+      "file": "original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "title": "21 복성고 2학기 중간 고1 기출",
+      "db": {"school":"복성고","grade":"고1","year":2021,"semester":"2","examType":"mid","subject":"수학(하)","contentType":"기출","qCount":22},
+      "questionIndexCount": 22,
+      "targetIds": [1,2,9,16],
+      "protectedIds": [3,4,5,6,7,8,10,11,12,13,14,15,17,18,19,20,21,22],
+      "sourceSha256Before": "646e9e775791d320ba34e65a0dbe4ecc8d51b4a8c807e4df0864f2992a072925",
+      "solutionSha256Before": {
+        "q1":"071f817d118c28a771de22ecdeadfbcae51d0f342aa382a1f0015bdc2ea9060a",
+        "q2":"5430d4d50ab56318340e655017423c73165ca4c0a19ef52a4735350c0fe65fc6",
+        "q9":"c395ade27bd44c231864c921a740b2a21c1b6ae38f6b4b07919eadcefe494153",
+        "q16":"37d379442edf8599312f8dd3256b962fd0c3353dc17b76a1375f4677e9ecc805"
+      },
+      "questionImageDirectory": "archive/assets/images/21_복성고_2학기_중간_고1_기출",
+      "existingSolutionImageCount": 0,
+      "candidatePath": "archive/_generated/past-exams/2021-2024-2mid-import/21_복성고_2학기_중간_고1_기출/candidate/21_복성고_2학기_중간_고1_기출.js",
+      "targetAssets": [
+        {"question":1,"path":"archive/assets/images/21_복성고_2학기_중간_고1_기출/q01-solution.svg","sha256":"6fbeaba03c07e3e85edb7f739f0c57b565b1d99c70c20bdcea95d61d0281c045","width":640,"height":280},
+        {"question":2,"path":"archive/assets/images/21_복성고_2학기_중간_고1_기출/q02-solution.svg","sha256":"b65ea9e99d377972c705acd445d2d801698e6488f5ef2967463a3411270dd357","width":640,"height":280},
+        {"question":9,"path":"archive/assets/images/21_복성고_2학기_중간_고1_기출/q09-solution.svg","sha256":"07c250be951cb273f5184c9ae96bd209a2c36ad5c8813f77d05f3f5d51f24797","width":640,"height":280},
+        {"question":16,"path":"archive/assets/images/21_복성고_2학기_중간_고1_기출/q16-solution.svg","sha256":"f384dbc726377e5d8f3643fbdb812ce79c351edbe1de13b70b85059377d62a5d","width":640,"height":280}
+      ]
+    },
+    {
+      "file": "original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+      "title": "21 순천고 2학기 중간 고1 기출",
+      "db": {"school":"순천고","grade":"고1","year":2021,"semester":"2","examType":"mid","subject":"수학(하)","contentType":"기출","qCount":22},
+      "questionIndexCount": 22,
+      "targetIds": [9,20],
+      "protectedIds": [1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,21,22],
+      "sourceSha256Before": "c3df2cbed31bd884b02f24a940573c3cda6623d5ef971e4d4a11f1190f0e587d",
+      "solutionSha256Before": {
+        "q9":"11a6b94cfade9b8cdf5148cfb08f0c409461fb33038c658e72d35ad3babc467c",
+        "q20":"17ce79110b60f1ba73d567e65f16b0c4a30370285ca251b09343db05077a76e9"
+      },
+      "questionImageDirectory": "archive/assets/images/21_순천고_2학기_중간_고1_기출",
+      "existingSolutionImageCount": 0,
+      "candidatePath": "archive/_generated/past-exams/2021-2024-2mid-import/21_순천고_2학기_중간_고1_기출/candidate/21_순천고_2학기_중간_고1_기출.js",
+      "targetAssets": [
+        {"question":9,"path":"archive/assets/images/21_순천고_2학기_중간_고1_기출/q09-solution.svg","sha256":"81ea0a0cbc4dce9cecff62d2bd600a24da38905a27d8457a569bc62bd6234672","width":640,"height":280},
+        {"question":20,"path":"archive/assets/images/21_순천고_2학기_중간_고1_기출/q20-solution.svg","sha256":"31faeada72cb4507d9ed6d123936c0a35187a0dfb887f3cf930c77e2ba2862fb","width":640,"height":280}
+      ]
+    },
+    {
+      "file": "original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "title": "21 제일고 2학기 중간 고1 기출",
+      "db": {"school":"제일고","grade":"고1","year":2021,"semester":"2","examType":"mid","subject":"수학(하)","contentType":"기출","qCount":22},
+      "questionIndexCount": 22,
+      "targetIds": [18],
+      "protectedIds": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22],
+      "sourceSha256Before": "18801069134c821f68515664190ce6e3293655d9a4f576bbd7221d582abe11fd",
+      "solutionSha256Before": {"q18":"3cd51ce74429f5cb568daf2b586ec740d295095a8b333d6d1ac5001b089f7810"},
+      "questionImageDirectory": "archive/assets/images/21_제일고_2학기_중간_고1_기출",
+      "existingSolutionImageCount": 0,
+      "candidatePath": "archive/_generated/past-exams/2021-2024-2mid-import/21_제일고_2학기_중간_고1_기출/candidate/21_제일고_2학기_중간_고1_기출.js",
+      "targetAssets": [
+        {"question":18,"path":"archive/assets/images/21_제일고_2학기_중간_고1_기출/q18-solution.svg","sha256":"37b35c955187dab769e457f637b2c84f619e4c73662cbd7e191400137635fdcd","width":640,"height":280}
+      ]
+    }
+  ],
+  "correction": {
+    "source": "2021 독립검수 FAIL 재수정",
+    "targetFixes": [
+      "복성고 q1: 원본 그림·선지 대조 결과 x^2+y^2=5인 ③으로 answer와 solution 결론을 일치시킴",
+      "복성고 q9: 그림 위치 표현을 제거하고 b=3±2√3 및 제1사분면 조건으로 음의 해를 제외하도록 보강",
+      "복성고 q16: 위·아래 수평선의 원 교점 수를 a 구간별로 전개하여 정확히 3개인 a=1을 확인",
+      "복성고 q2·q16, 순천고 q9·q20, 제일고 q18: 해설 도형 태그를 대상 문항에만 추가"
+    ],
+    "dbMetadataDisposition": "archive/db.js는 변경하지 않음. H15-SA 대상 문항의 과정은 production JS standardCourse=수학(상)을 기준으로 하고, H15-SA/H15-SB 혼합 2학기 시험지의 기존 시험-level subject=수학(하), primaryStandardCourse 공란은 유지",
+    "independentReview": "재검수 대기"
+  },
+  "selfCheck": {
+    "static": [
+      "node --check: production 3/3, SVG XML 7/7 PASS",
+      "audit_archive_batch: PASS; 3/3 JS, 66/66 indexed, candidate SHA equal",
+      "audit-latex-escapes: PASS (evaluationErrors 0, staticOccurrences 0, affectedFields 0)",
+      "view-label-lint: PASS (0 failures)",
+      "build-question-index: 10868/10868, duplicate qKey 0",
+      "HEAD 대비 허용 필드 대조: 대상 7문항만 answer/tags 또는 solution 및 solutionImage 메타 필드 변경; 보호 문항 0건"
+    ],
+    "production": {
+      "sol": "3/3 PASS; 각 22문항 q-box; 대상 SVG 7/7 naturalWidth 640, load 완료; print-area overflow 0; load/error/warn 0",
+      "exam": "3/3 PASS; 각 22문항 q-box; 원본 이미지 bad image 0; print-area overflow 0",
+      "ans": "3/3 PASS; 각 22답; print-area overflow 0"
+    },
+    "visual": "복성고 q1·q2·q9·q16, 순천고 q9·q20, 제일고 q18을 실제 sol 화면에서 확인; 도형·라벨·계산 카드 잘림/겹침 없음"
+  },
+  "independentReview": "pending_recheck"
+}

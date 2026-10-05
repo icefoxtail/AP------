@@ -1,0 +1,3343 @@
+{
+  "schemaVersion": "m3-direct-canonical-tagging-mother-final-2h-v1.2",
+  "status": "MOTHER_FINALIZED_AFTER_FULL_A_B_FREEZE",
+  "targetGrade": "MIDDLE3",
+  "semester": "2H",
+  "batchNo": "033",
+  "sourceA": "A_DIRECT_2H_BATCH_033.json",
+  "sourceB": "B_DIRECT_2H_BATCH_033.json",
+  "sourceMotherDecision": "M3_DIRECT_2H_BATCH_033_MOTHER_DECISIONS.json",
+  "recordCount": 20,
+  "finalizedCount": 20,
+  "adjudicationMode": "MOTHER_FULL_SOURCE_EVIDENCE_ADJUDICATION_AFTER_A_B_FREEZE",
+  "records": [
+    {
+      "questionUid": "qid_v1_50420e20370de4341a6e1c32103ee9a79317b9c6274011542d5f56fee39d30c5",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "25a9786fd35e1746cfe6649462630d7445efccf0e27a9154c76402dfa89ed7b9",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.2",
+        "L2": "삼각비의 활용",
+        "L3Key": "L3-1.2.1",
+        "L3": "평면도형",
+        "L4Key": "L4-1.2.1.2",
+        "L4": "다각형의 길이·넓이",
+        "primaryConcept": "대각선과 높이를 이용한 사각형 넓이 분할",
+        "primaryConceptReason": "[키포인트] 대각선 $AC$로 사각형을 두 삼각형으로 나누고, 먼저 $AC$의 길이를 구한다.\n조건 정리: $AB=8\\sqrt2$, $BC=20$, $CD=10$, $\\angle ABC=45^\\circ$, $\\angle ACD=30^\\circ$이다.\n풀이 방향: $A$에서 $BC$에 내린 높이로 $AC$와 $\\triangle ABC$의 넓이를 구한 뒤 $\\triangle ACD$의 넓이를 더한다.\n정석 풀이: $A$에서 $BC$에 내린 수선의 발을 $H$라 하면 $AH=AB\\sin45^\\circ=8$, $BH=AB\\cos45^\\circ=8$이다. 따라서 $HC=20-8=12$, $AC=\\sqrt{8^2+12^2}=4\\sqrt{13}$이다. $\\triangle ABC$의 넓이는 $\\dfrac12\\times20\\times8=80$이고, $\\triangle ACD$의 넓이는 $\\dfrac12\\times4\\sqrt{13}\\times10\\times\\sin30^\\circ=10\\sqrt{13}$이다. 그러므로 사각형의 넓이는 $80+10\\sqrt{13}=10(8+\\sqrt{13})$이다.\n따라서 정답은 ④이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 대각선 $AC$로 사각형을 두 삼각형으로 나누고, 먼저 $AC$의 길이를 구한다.\n조건 정리: $AB=8\\sqrt2$, $BC=20$, $CD=10$, $\\angle ABC=45^\\circ$, $\\angle ACD=30^\\circ$이다.\n풀이 방향: $A$에서 $BC$에 내린 높이로 $AC$와 $\\triangle ABC$의 넓이를 구한 뒤 $\\triangle ACD$의 넓이를 더한다.\n정석 풀이: $A$에서 $BC$에 내린 수선의 발을 $H$라 하면 $AH=AB\\sin45^\\circ=8$, $BH=AB\\cos45^\\circ=8$이다. 따라서 $HC=20-8=12$, $AC=\\sqrt{8^2+12^2}=4\\sqrt{13}$이다. $\\triangle ABC$의 넓이는 $\\dfrac12\\times20\\times8=80$이고, $\\triangle ACD$의 넓이는 $\\dfrac12\\times4\\sqrt{13}\\times10\\times\\sin30^\\circ=10\\sqrt{13}$이다. 그러므로 사각형의 넓이는 $80+10\\sqrt{13}=10(8+\\sqrt{13})$이다.\n따라서 정답은 ④이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 다각형의 길이·넓이에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.2.1.2",
+          "L4": "다각형의 길이·넓이"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 다각형의 길이·넓이 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#13",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림과 같은 사각형 $ABCD$의 넓이는? [5점]",
+          "choices": [
+            "$10(4+\\sqrt{13})$",
+            "$10(4+\\sqrt{39})$",
+            "$20(2+\\sqrt{13})$",
+            "$10(8+\\sqrt{13})$",
+            "$10(8+\\sqrt{39})$"
+          ],
+          "answer": "④",
+          "solution": "[키포인트] 대각선 $AC$로 사각형을 두 삼각형으로 나누고, 먼저 $AC$의 길이를 구한다.\n조건 정리: $AB=8\\sqrt2$, $BC=20$, $CD=10$, $\\angle ABC=45^\\circ$, $\\angle ACD=30^\\circ$이다.\n풀이 방향: $A$에서 $BC$에 내린 높이로 $AC$와 $\\triangle ABC$의 넓이를 구한 뒤 $\\triangle ACD$의 넓이를 더한다.\n정석 풀이: $A$에서 $BC$에 내린 수선의 발을 $H$라 하면 $AH=AB\\sin45^\\circ=8$, $BH=AB\\cos45^\\circ=8$이다. 따라서 $HC=20-8=12$, $AC=\\sqrt{8^2+12^2}=4\\sqrt{13}$이다. $\\triangle ABC$의 넓이는 $\\dfrac12\\times20\\times8=80$이고, $\\triangle ACD$의 넓이는 $\\dfrac12\\times4\\sqrt{13}\\times10\\times\\sin30^\\circ=10\\sqrt{13}$이다. 그러므로 사각형의 넓이는 $80+10\\sqrt{13}=10(8+\\sqrt{13})$이다.\n따라서 정답은 ④이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q13.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q13.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.1",
+            "L4-1.2.1.2"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.1",
+            "L4-1.2.1.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "path": [
+          "L1-1",
+          "L2-1.2",
+          "L3-1.2.1",
+          "L4-1.2.1.2"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_7fad6ed9e5fa9b42efa230a0ccfb793e236c419cfcc1d0a4795a950a2be6bd01",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "94d92f904295c062d053bb4da14420ef29b5b1adbfc5777bf660d64cbf66ae25",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.1",
+        "L3": "원의 중심과 현",
+        "L4Key": "L4-2.1.1.1",
+        "L4": "중심에서 현에 내린 수선",
+        "primaryConcept": "중심에서 현에 내린 수선의 현 이등분 성질",
+        "primaryConceptReason": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $OA=6$, $OM=2$, $OM\\perp AB$이다.\n풀이 방향: 직각삼각형 $OAM$에서 $AM$을 구한 뒤 두 배한다.\n정석 풀이: $AM=\\sqrt{OA^2-OM^2}=\\sqrt{36-4}=4\\sqrt2$이다. $M$은 $AB$의 중점이므로 $AB=2AM=8\\sqrt2\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $OA=6$, $OM=2$, $OM\\perp AB$이다.\n풀이 방향: 직각삼각형 $OAM$에서 $AM$을 구한 뒤 두 배한다.\n정석 풀이: $AM=\\sqrt{OA^2-OM^2}=\\sqrt{36-4}=4\\sqrt2$이다. $M$은 $AB$의 중점이므로 $AB=2AM=8\\sqrt2\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 중심에서 현에 내린 수선에 매핑했다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.1.1",
+          "L4": "중심에서 현에 내린 수선"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 중심에서 현에 내린 수선 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#14",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림의 원 $O$에서 $AB\\perp OM$이고 $OA=6\\,\\mathrm{cm}$, $OM=2\\,\\mathrm{cm}$일 때, $AB$의 길이는? [4점]",
+          "choices": [
+            "$10\\,\\mathrm{cm}$",
+            "$11\\,\\mathrm{cm}$",
+            "$8\\sqrt2\\,\\mathrm{cm}$",
+            "$7\\sqrt3\\,\\mathrm{cm}$",
+            "$6\\sqrt5\\,\\mathrm{cm}$"
+          ],
+          "answer": "③",
+          "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $OA=6$, $OM=2$, $OM\\perp AB$이다.\n풀이 방향: 직각삼각형 $OAM$에서 $AM$을 구한 뒤 두 배한다.\n정석 풀이: $AM=\\sqrt{OA^2-OM^2}=\\sqrt{36-4}=4\\sqrt2$이다. $M$은 $AB$의 중점이므로 $AB=2AM=8\\sqrt2\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q14.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q14.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 2,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.1"
+          ],
+          "difficultyBucket": 2,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.1"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 14,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.1",
+          "L4-2.1.1.1"
+        ],
+        "difficultyBucket": 2,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_e8cec6640682d8f85852202cc3fd12915a9de5fd9c08ca1a45309e8294f90025",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "ece75aebd8a49e3aca1feb6942120634cfe7cbe5a5c179de22686176b28fca1e",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.1",
+        "L3": "원의 중심과 현",
+        "L4Key": "L4-2.1.1.2",
+        "L4": "현의 수직이등분선과 중심",
+        "primaryConcept": "현의 수직이등분선이 원의 중심을 지난다는 성질",
+        "primaryConceptReason": "[키포인트] 현의 수직이등분선은 원의 중심을 지나므로 중심을 $CD$ 위에 잡는다.\n조건 정리: $AD=4$, $CD=2$이고 $D$는 현 $AB$의 중점이다.\n풀이 방향: 반지름을 $r$라 두고 직각삼각형에서 피타고라스 정리를 사용한다.\n정석 풀이: 중심을 $O$라 하면 $OC=r$, $OD=r-2$이다. $OA=r$이고 $AD=4$이므로 $r^2=(r-2)^2+4^2$이다. 전개하면 $r^2=r^2-4r+20$이므로 $4r=20$, $r=5$이다.\n따라서 정답은 ①이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 현의 수직이등분선은 원의 중심을 지나므로 중심을 $CD$ 위에 잡는다.\n조건 정리: $AD=4$, $CD=2$이고 $D$는 현 $AB$의 중점이다.\n풀이 방향: 반지름을 $r$라 두고 직각삼각형에서 피타고라스 정리를 사용한다.\n정석 풀이: 중심을 $O$라 하면 $OC=r$, $OD=r-2$이다. $OA=r$이고 $AD=4$이므로 $r^2=(r-2)^2+4^2$이다. 전개하면 $r^2=r^2-4r+20$이므로 $4r=20$, $r=5$이다.\n따라서 정답은 ①이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 현의 수직이등분선과 중심에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.1.2",
+          "L4": "현의 수직이등분선과 중심"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 현의 수직이등분선과 중심 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#15",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림에서 $\\widehat{AB}$는 원의 일부분이다. $CD$가 $AB$의 수직이등분선일 때, 원의 반지름의 길이는? [4점]",
+          "choices": [
+            "$5$",
+            "$4$",
+            "$2\\sqrt2$",
+            "$3\\sqrt3$",
+            "$6\\sqrt5$"
+          ],
+          "answer": "①",
+          "solution": "[키포인트] 현의 수직이등분선은 원의 중심을 지나므로 중심을 $CD$ 위에 잡는다.\n조건 정리: $AD=4$, $CD=2$이고 $D$는 현 $AB$의 중점이다.\n풀이 방향: 반지름을 $r$라 두고 직각삼각형에서 피타고라스 정리를 사용한다.\n정석 풀이: 중심을 $O$라 하면 $OC=r$, $OD=r-2$이다. $OA=r$이고 $AD=4$이므로 $r^2=(r-2)^2+4^2$이다. 전개하면 $r^2=r^2-4r+20$이므로 $4r=20$, $r=5$이다.\n따라서 정답은 ①이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q15.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q15.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.2"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 15,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.1",
+          "L4-2.1.1.2"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8121df11cf45bc2a3dbf232a0dd1d0dbde082755afa7ec207d1e4ce1bcf20c6b",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "2aca1a41f0167ceda6dbf277427cbdfec8c3ea27cc14fa642d203b0605d3beb0",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.1",
+        "L3": "원의 중심과 현",
+        "L4Key": "L4-2.1.1.2",
+        "L4": "현의 수직이등분선과 중심",
+        "primaryConcept": "접은 선이 반지름 선분의 수직이등분선이 되는 성질",
+        "primaryConceptReason": "[키포인트] 접는 선은 옮겨지는 점과 원의 중심을 잇는 선분의 수직이등분선이다.\n조건 정리: 원 위의 점과 중심 사이의 거리는 반지름 $4$이고, 접는 선이 현 $AB$이다.\n풀이 방향: 중심에서 현까지의 거리를 구한 뒤 현의 반쪽 길이를 구한다.\n정석 풀이: 접는 선까지의 거리는 $4$의 절반인 $2$이다. 현의 중점을 $M$이라 하면 $AM=\\sqrt{4^2-2^2}=2\\sqrt3$이다. 따라서 $AB=2AM=4\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 접는 선은 옮겨지는 점과 원의 중심을 잇는 선분의 수직이등분선이다.\n조건 정리: 원 위의 점과 중심 사이의 거리는 반지름 $4$이고, 접는 선이 현 $AB$이다.\n풀이 방향: 중심에서 현까지의 거리를 구한 뒤 현의 반쪽 길이를 구한다.\n정석 풀이: 접는 선까지의 거리는 $4$의 절반인 $2$이다. 현의 중점을 $M$이라 하면 $AM=\\sqrt{4^2-2^2}=2\\sqrt3$이다. 따라서 $AB=2AM=4\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 현의 수직이등분선과 중심에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.1.2",
+          "L4": "현의 수직이등분선과 중심"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 현의 수직이등분선과 중심 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#16",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림과 같이 반지름의 길이가 $4\\,\\mathrm{cm}$인 원 $O$ 위의 한 점이 원의 중심에 오도록 접었을 때, $AB$의 길이는? [4점]",
+          "choices": [
+            "$6\\,\\mathrm{cm}$",
+            "$4\\sqrt3\\,\\mathrm{cm}$",
+            "$7\\,\\mathrm{cm}$",
+            "$8\\,\\mathrm{cm}$",
+            "$5\\sqrt3\\,\\mathrm{cm}$"
+          ],
+          "answer": "②",
+          "solution": "[키포인트] 접는 선은 옮겨지는 점과 원의 중심을 잇는 선분의 수직이등분선이다.\n조건 정리: 원 위의 점과 중심 사이의 거리는 반지름 $4$이고, 접는 선이 현 $AB$이다.\n풀이 방향: 중심에서 현까지의 거리를 구한 뒤 현의 반쪽 길이를 구한다.\n정석 풀이: 접는 선까지의 거리는 $4$의 절반인 $2$이다. 현의 중점을 $M$이라 하면 $AM=\\sqrt{4^2-2^2}=2\\sqrt3$이다. 따라서 $AB=2AM=4\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q16.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q16.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.2"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [
+              "L4"
+            ],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [
+            "L4"
+          ],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.1",
+          "L4-2.1.1.2"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "aaff310244dc679513546d47a234fd81236bc1545df194da1ea418a444f907f2",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.1",
+        "L3": "원의 중심과 현",
+        "L4Key": "L4-2.1.1.3",
+        "L4": "중심거리와 현의 길이",
+        "primaryConcept": "중심에서 같은 거리에 있는 현의 길이 같음과 이등변삼각형",
+        "primaryConceptReason": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같고, 수선끼리의 각으로 꼭짓각을 구한다.\n조건 정리: $OM=ON$, $OM\\perp AB$, $ON\\perp AC$, $\\angle MON=130^\\circ$이다.\n풀이 방향: $AB=AC$를 확인하고 $\\angle A$를 구한 뒤 이등변삼각형의 밑각을 구한다.\n정석 풀이: 중심에서 같은 거리에 있는 현은 길이가 같으므로 $AB=AC$이다. 또한 $OM$, $ON$은 각각 $AB$, $AC$에 수직이므로 그림에서 $\\angle A+\\angle MON=180^\\circ$이다. 따라서 $\\angle A=50^\\circ$이고, 이등변삼각형 $ABC$의 밑각은 $\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ$이다.\n따라서 정답은 ④이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같고, 수선끼리의 각으로 꼭짓각을 구한다.\n조건 정리: $OM=ON$, $OM\\perp AB$, $ON\\perp AC$, $\\angle MON=130^\\circ$이다.\n풀이 방향: $AB=AC$를 확인하고 $\\angle A$를 구한 뒤 이등변삼각형의 밑각을 구한다.\n정석 풀이: 중심에서 같은 거리에 있는 현은 길이가 같으므로 $AB=AC$이다. 또한 $OM$, $ON$은 각각 $AB$, $AC$에 수직이므로 그림에서 $\\angle A+\\angle MON=180^\\circ$이다. 따라서 $\\angle A=50^\\circ$이고, 이등변삼각형 $ABC$의 밑각은 $\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ$이다.\n따라서 정답은 ④이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 중심거리와 현의 길이에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.1.3",
+          "L4": "중심거리와 현의 길이"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 중심거리와 현의 길이 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#17",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림과 같이 두 현 $AB$와 $AC$가 원 $O$의 중심으로부터 같은 거리에 있다. $\\angle MON=130^\\circ$일 때, $\\angle B$의 크기는? [3점]",
+          "choices": [
+            "$50^\\circ$",
+            "$55^\\circ$",
+            "$60^\\circ$",
+            "$65^\\circ$",
+            "$70^\\circ$"
+          ],
+          "answer": "④",
+          "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같고, 수선끼리의 각으로 꼭짓각을 구한다.\n조건 정리: $OM=ON$, $OM\\perp AB$, $ON\\perp AC$, $\\angle MON=130^\\circ$이다.\n풀이 방향: $AB=AC$를 확인하고 $\\angle A$를 구한 뒤 이등변삼각형의 밑각을 구한다.\n정석 풀이: 중심에서 같은 거리에 있는 현은 길이가 같으므로 $AB=AC$이다. 또한 $OM$, $ON$은 각각 $AB$, $AC$에 수직이므로 그림에서 $\\angle A+\\angle MON=180^\\circ$이다. 따라서 $\\angle A=50^\\circ$이고, 이등변삼각형 $ABC$의 밑각은 $\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ$이다.\n따라서 정답은 ④이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q17.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q17.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.3"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.1",
+            "L4-2.1.1.3"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.1",
+          "L4-2.1.1.3"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d7ce3475089d18b48ccbd53fa0d1caae84b7b52a823178a5803750ae14cfac31",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "4fe0809977cb5c93e1f4a5a8b1db066d9a17fe0d57fe3eac6f9e59e960cdf260",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.2",
+        "L3": "원의 접선",
+        "L4Key": "L4-2.1.2.2",
+        "L4": "한 점에서 그은 두 접선",
+        "primaryConcept": "한 점에서 원에 그은 두 접선의 길이 같음과 접선-반지름 직각",
+        "primaryConceptReason": "[키포인트] 두 접선의 길이가 같아 $OP$가 꼭짓각을 이등분하고, 반지름은 접선에 수직이다.\n조건 정리: $OA=OB=2$, $OA\\perp PA$, $OB\\perp PB$, $\\angle APB=60^\\circ$이다.\n풀이 방향: 직각삼각형 $AOP$에서 $PA$를 구한 뒤 합동인 두 삼각형의 넓이를 더한다.\n정석 풀이: $\\angle APO=30^\\circ$이므로 $\\tan30^\\circ=\\dfrac{OA}{PA}=\\dfrac{2}{PA}$이다. 따라서 $PA=2\\sqrt3$이다. 사각형 $APBO$는 합동인 두 직각삼각형 $AOP$, $BOP$로 나뉘므로 넓이는 $2\\times\\dfrac12\\times2\\times2\\sqrt3=4\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 두 접선의 길이가 같아 $OP$가 꼭짓각을 이등분하고, 반지름은 접선에 수직이다.\n조건 정리: $OA=OB=2$, $OA\\perp PA$, $OB\\perp PB$, $\\angle APB=60^\\circ$이다.\n풀이 방향: 직각삼각형 $AOP$에서 $PA$를 구한 뒤 합동인 두 삼각형의 넓이를 더한다.\n정석 풀이: $\\angle APO=30^\\circ$이므로 $\\tan30^\\circ=\\dfrac{OA}{PA}=\\dfrac{2}{PA}$이다. 따라서 $PA=2\\sqrt3$이다. 사각형 $APBO$는 합동인 두 직각삼각형 $AOP$, $BOP$로 나뉘므로 넓이는 $2\\times\\dfrac12\\times2\\times2\\sqrt3=4\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 한 점에서 그은 두 접선에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.2.2",
+          "L4": "한 점에서 그은 두 접선"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 한 점에서 그은 두 접선 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#18",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림에서 $PA$, $PB$는 반지름의 길이가 $2\\,\\mathrm{cm}$인 원 $O$의 접선이고 두 점 $A$, $B$는 접점이다. $\\angle APB=60^\\circ$일 때, 사각형 $APBO$의 넓이는? [4점]",
+          "choices": [
+            "$\\sqrt3\\,\\mathrm{cm}^2$",
+            "$2\\sqrt3\\,\\mathrm{cm}^2$",
+            "$4\\sqrt3\\,\\mathrm{cm}^2$",
+            "$6\\sqrt3\\,\\mathrm{cm}^2$",
+            "$8\\sqrt3\\,\\mathrm{cm}^2$"
+          ],
+          "answer": "③",
+          "solution": "[키포인트] 두 접선의 길이가 같아 $OP$가 꼭짓각을 이등분하고, 반지름은 접선에 수직이다.\n조건 정리: $OA=OB=2$, $OA\\perp PA$, $OB\\perp PB$, $\\angle APB=60^\\circ$이다.\n풀이 방향: 직각삼각형 $AOP$에서 $PA$를 구한 뒤 합동인 두 삼각형의 넓이를 더한다.\n정석 풀이: $\\angle APO=30^\\circ$이므로 $\\tan30^\\circ=\\dfrac{OA}{PA}=\\dfrac{2}{PA}$이다. 따라서 $PA=2\\sqrt3$이다. 사각형 $APBO$는 합동인 두 직각삼각형 $AOP$, $BOP$로 나뉘므로 넓이는 $2\\times\\dfrac12\\times2\\times2\\sqrt3=4\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q18.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q18.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.2"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [
+              "L4"
+            ],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [
+            "L4"
+          ],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.2",
+          "L4-2.1.2.2"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_337fee2425d80f0a2a846abd7d9a57a522868138dbab53eba82a7af4f0cf1e16",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "e80be8722d16380ef81d56ec7f401f28a70034b8d0da8bd92248c600beb53f60",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.2",
+        "L3": "원의 접선",
+        "L4Key": "L4-2.1.2.3",
+        "L4": "접선 조건으로 길이 구하기",
+        "primaryConcept": "여러 꼭짓점에서의 동일 접선 길이로 삼각형 둘레 소거",
+        "primaryConceptReason": "[키포인트] 한 점에서 같은 원에 그은 두 접선의 길이가 같다는 성질을 세 꼭짓점에 적용한다.\n조건 정리: $OT\\perp AT$, $AO=17$, $OT=8$이고 $B$, $C$에서도 접선 길이 관계를 사용할 수 있다.\n풀이 방향: 먼저 $AT$를 구하고, 삼각형의 둘레를 $AT+AT^{\\prime}$로 바꾼다.\n정석 풀이: 직각삼각형 $AOT$에서 $AT=\\sqrt{17^2-8^2}=15$이다. 점 $A$에서 그은 접선이므로 $AT=AT^{\\prime}=15$이다. 또 $BT=BE$, $CT^{\\prime}=CE$이므로 $AB+BC+CA=AB+(BE+CE)+AC=(AB+BT)+(AC+CT^{\\prime})=AT+AT^{\\prime}=15+15=30$이다.\n따라서 정답은 ③이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 한 점에서 같은 원에 그은 두 접선의 길이가 같다는 성질을 세 꼭짓점에 적용한다.\n조건 정리: $OT\\perp AT$, $AO=17$, $OT=8$이고 $B$, $C$에서도 접선 길이 관계를 사용할 수 있다.\n풀이 방향: 먼저 $AT$를 구하고, 삼각형의 둘레를 $AT+AT^{\\prime}$로 바꾼다.\n정석 풀이: 직각삼각형 $AOT$에서 $AT=\\sqrt{17^2-8^2}=15$이다. 점 $A$에서 그은 접선이므로 $AT=AT^{\\prime}=15$이다. 또 $BT=BE$, $CT^{\\prime}=CE$이므로 $AB+BC+CA=AB+(BE+CE)+AC=(AB+BT)+(AC+CT^{\\prime})=AT+AT^{\\prime}=15+15=30$이다.\n따라서 정답은 ③이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 접선 조건으로 길이 구하기에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.2.3",
+          "L4": "접선 조건으로 길이 구하기"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 접선 조건으로 길이 구하기 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#19",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림에서 $AT$, $AT^{\\prime}$, $BC$는 원 $O$의 접선이고 세 점 $T$, $T^{\\prime}$, $E$는 접점이다. $AO=17\\,\\mathrm{cm}$, $OT=8\\,\\mathrm{cm}$일 때, $\\triangle ABC$의 둘레의 길이는? [4점]",
+          "choices": [
+            "$26\\,\\mathrm{cm}$",
+            "$28\\,\\mathrm{cm}$",
+            "$30\\,\\mathrm{cm}$",
+            "$32\\,\\mathrm{cm}$",
+            "$34\\,\\mathrm{cm}$"
+          ],
+          "answer": "③",
+          "solution": "[키포인트] 한 점에서 같은 원에 그은 두 접선의 길이가 같다는 성질을 세 꼭짓점에 적용한다.\n조건 정리: $OT\\perp AT$, $AO=17$, $OT=8$이고 $B$, $C$에서도 접선 길이 관계를 사용할 수 있다.\n풀이 방향: 먼저 $AT$를 구하고, 삼각형의 둘레를 $AT+AT^{\\prime}$로 바꾼다.\n정석 풀이: 직각삼각형 $AOT$에서 $AT=\\sqrt{17^2-8^2}=15$이다. 점 $A$에서 그은 접선이므로 $AT=AT^{\\prime}=15$이다. 또 $BT=BE$, $CT^{\\prime}=CE$이므로 $AB+BC+CA=AB+(BE+CE)+AC=(AB+BT)+(AC+CT^{\\prime})=AT+AT^{\\prime}=15+15=30$이다.\n따라서 정답은 ③이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q19.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q19.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.3"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.3"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 19,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.2",
+          "L4-2.1.2.3"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_5e62895e0ca54b43c240c36ac94565a29ab013e0a32ff7111223237232c3c08f",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "63955434941c8d3cc36df665a4858ee22df1c43855b951d28b8be1954c4c639d",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.2",
+        "L3": "원의 접선",
+        "L4Key": "L4-2.1.2.3",
+        "L4": "접선 조건으로 길이 구하기",
+        "primaryConcept": "접선 길이 equality와 반원의 지름을 이용한 둘레 계산",
+        "primaryConceptReason": "[키포인트] 한 점에서 그은 접선의 길이가 같다는 성질로 두 변의 합을 $DC$로 바꾼다.\n조건 정리: $AO=5$이므로 지름 $AB=10$이고, $DA=DE$, $CB=CE$이다.\n풀이 방향: $AD+BC$와 $DC$의 관계를 이용해 둘레를 계산한다.\n정석 풀이: $AD+BC=DE+CE=DC=14$이다. 따라서 사각형의 둘레는 $AB+BC+CD+DA=10+14+14=38\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 한 점에서 그은 접선의 길이가 같다는 성질로 두 변의 합을 $DC$로 바꾼다.\n조건 정리: $AO=5$이므로 지름 $AB=10$이고, $DA=DE$, $CB=CE$이다.\n풀이 방향: $AD+BC$와 $DC$의 관계를 이용해 둘레를 계산한다.\n정석 풀이: $AD+BC=DE+CE=DC=14$이다. 따라서 사각형의 둘레는 $AB+BC+CD+DA=10+14+14=38\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 접선 조건으로 길이 구하기에 매핑했다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.2.3",
+          "L4": "접선 조건으로 길이 구하기"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 접선 조건으로 길이 구하기 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#20",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림에서 $DA$, $CB$, $CD$는 반원 $O$의 접선이고 세 점 $A$, $B$, $E$는 접점이다. $AO=5\\,\\mathrm{cm}$, $DC=14\\,\\mathrm{cm}$일 때, 사각형 $ABCD$의 둘레의 길이는? [5점]",
+          "choices": [
+            "$35\\,\\mathrm{cm}$",
+            "$36\\,\\mathrm{cm}$",
+            "$37\\,\\mathrm{cm}$",
+            "$38\\,\\mathrm{cm}$",
+            "$39\\,\\mathrm{cm}$"
+          ],
+          "answer": "④",
+          "solution": "[키포인트] 한 점에서 그은 접선의 길이가 같다는 성질로 두 변의 합을 $DC$로 바꾼다.\n조건 정리: $AO=5$이므로 지름 $AB=10$이고, $DA=DE$, $CB=CE$이다.\n풀이 방향: $AD+BC$와 $DC$의 관계를 이용해 둘레를 계산한다.\n정석 풀이: $AD+BC=DE+CE=DC=14$이다. 따라서 사각형의 둘레는 $AB+BC+CD+DA=10+14+14=38\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q20.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q20.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 2,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.3"
+          ],
+          "difficultyBucket": 2,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.3"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 20,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.2",
+          "L4-2.1.2.3"
+        ],
+        "difficultyBucket": 2,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_7cab381aa1964afe56c02ca94552f98ab34da430c16bb61d75ac913fd30a5f36",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "740fab8f845aaff88255c48c177426d5dc5dfd6bb908062ca4854766b02dfdfc",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.2",
+        "L2": "삼각비의 활용",
+        "L3Key": "L3-1.2.3",
+        "L3": "복합도형",
+        "L4Key": "L4-1.2.3.2",
+        "L4": "피타고라스 결합",
+        "primaryConcept": "직육면체의 밑면 대각선과 공간 대각선으로 cos 계산",
+        "primaryConceptReason": "[키포인트] 각 $x$가 있는 직각삼각형 $AGE$에서 밑면의 대각선과 공간대각선을 구한다.\n조건 정리: 직육면체의 가로, 세로, 높이는 각각 $6\\,\\mathrm{cm}$, $8\\,\\mathrm{cm}$, $4\\,\\mathrm{cm}$이다.\n풀이 방향: 밑면 대각선 $EG$를 구하고, 직각삼각형 $AEG$에서 $AG$를 구한다.\n정석 풀이: $EG=\\sqrt{6^2+8^2}=10$이고 $AE=4$이므로 $AG=\\sqrt{10^2+4^2}=2\\sqrt{29}$이다. 따라서 $\\cos x=\\dfrac{EG}{AG}=\\dfrac{10}{2\\sqrt{29}}=\\dfrac{5\\sqrt{29}}{29}$이다.\n따라서 구하는 값은 $\\dfrac{5\\sqrt{29}}{29}$이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 각 $x$가 있는 직각삼각형 $AGE$에서 밑면의 대각선과 공간대각선을 구한다.\n조건 정리: 직육면체의 가로, 세로, 높이는 각각 $6\\,\\mathrm{cm}$, $8\\,\\mathrm{cm}$, $4\\,\\mathrm{cm}$이다.\n풀이 방향: 밑면 대각선 $EG$를 구하고, 직각삼각형 $AEG$에서 $AG$를 구한다.\n정석 풀이: $EG=\\sqrt{6^2+8^2}=10$이고 $AE=4$이므로 $AG=\\sqrt{10^2+4^2}=2\\sqrt{29}$이다. 따라서 $\\cos x=\\dfrac{EG}{AG}=\\dfrac{10}{2\\sqrt{29}}=\\dfrac{5\\sqrt{29}}{29}$이다.\n따라서 구하는 값은 $\\dfrac{5\\sqrt{29}}{29}$이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 피타고라스 결합에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.2.3.2",
+          "L4": "피타고라스 결합"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 피타고라스 결합 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#21",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "[서술형] 다음 그림과 같은 직육면체에서 $\\angle AGE=\\angle x$라 할 때, $\\cos x$의 값을 구하시오. [6점]",
+          "choices": [],
+          "answer": "$\\dfrac{5\\sqrt{29}}{29}$",
+          "solution": "[키포인트] 각 $x$가 있는 직각삼각형 $AGE$에서 밑면의 대각선과 공간대각선을 구한다.\n조건 정리: 직육면체의 가로, 세로, 높이는 각각 $6\\,\\mathrm{cm}$, $8\\,\\mathrm{cm}$, $4\\,\\mathrm{cm}$이다.\n풀이 방향: 밑면 대각선 $EG$를 구하고, 직각삼각형 $AEG$에서 $AG$를 구한다.\n정석 풀이: $EG=\\sqrt{6^2+8^2}=10$이고 $AE=4$이므로 $AG=\\sqrt{10^2+4^2}=2\\sqrt{29}$이다. 따라서 $\\cos x=\\dfrac{EG}{AG}=\\dfrac{10}{2\\sqrt{29}}=\\dfrac{5\\sqrt{29}}{29}$이다.\n따라서 구하는 값은 $\\dfrac{5\\sqrt{29}}{29}$이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q21.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q21.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.3",
+            "L4-1.2.3.2"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.3",
+            "L4-1.2.3.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "path": [
+          "L1-1",
+          "L2-1.2",
+          "L3-1.2.3",
+          "L4-1.2.3.2"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_b0e8a002e9d7658f7bb3c7bfb1cf3f3e48c126152ea149652b9f5482d52bf5e0",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "7df5b9e5d9ebb0d616c68fec06cdbedd921e52bfd7ba9724d2bac5f960ca0263",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.2",
+        "L2": "삼각비의 활용",
+        "L3Key": "L3-1.2.3",
+        "L3": "복합도형",
+        "L4Key": "L4-1.2.3.2",
+        "L4": "피타고라스 결합",
+        "primaryConcept": "좌표 거리와 수선 분할을 이용한 tan 계산",
+        "primaryConceptReason": "[키포인트] 점 $A$에서 $BC$에 내린 수선으로 직각삼각형을 만들고 피타고라스 정리를 두 번 사용한다.\n조건 정리: $AB=2\\sqrt{10}$, $BC=5$, $AC=\\sqrt{29}$이다.\n풀이 방향: $A$에서 $BC$에 내린 수선의 발을 $H$라 하고 $BH$, $AH$를 구한다.\n정석 풀이: 좌표의 거리 공식으로 $AB^2=40$, $BC=5$, $AC^2=29$이다. $BH=t$, $AH=h$라 하면 $h^2+t^2=40$, $h^2+(5-t)^2=29$이다. 두 식을 빼면 $t^2-(5-t)^2=11$, 즉 $10t-25=11$이므로 $t=\\dfrac{18}{5}$이다. 따라서 $h^2=40-\\dfrac{324}{25}=\\dfrac{676}{25}$이므로 $h=\\dfrac{26}{5}$이다. 그러므로 $\\tan B=\\dfrac{AH}{BH}=\\dfrac{26/5}{18/5}=\\dfrac{13}{9}$이다.\n따라서 구하는 값은 $\\dfrac{13}{9}$이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 점 $A$에서 $BC$에 내린 수선으로 직각삼각형을 만들고 피타고라스 정리를 두 번 사용한다.\n조건 정리: $AB=2\\sqrt{10}$, $BC=5$, $AC=\\sqrt{29}$이다.\n풀이 방향: $A$에서 $BC$에 내린 수선의 발을 $H$라 하고 $BH$, $AH$를 구한다.\n정석 풀이: 좌표의 거리 공식으로 $AB^2=40$, $BC=5$, $AC^2=29$이다. $BH=t$, $AH=h$라 하면 $h^2+t^2=40$, $h^2+(5-t)^2=29$이다. 두 식을 빼면 $t^2-(5-t)^2=11$, 즉 $10t-25=11$이므로 $t=\\dfrac{18}{5}$이다. 따라서 $h^2=40-\\dfrac{324}{25}=\\dfrac{676}{25}$이므로 $h=\\dfrac{26}{5}$이다. 그러므로 $\\tan B=\\dfrac{AH}{BH}=\\dfrac{26/5}{18/5}=\\dfrac{13}{9}$이다.\n따라서 구하는 값은 $\\dfrac{13}{9}$이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 피타고라스 결합에 매핑했다.",
+        "difficultyBucket": 4,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.2.3.2",
+          "L4": "피타고라스 결합"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 피타고라스 결합 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#22",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "[서술형] 좌표평면 위의 세 점 $A(4,3)$, $B(-2,1)$, $C(2,-2)$를 꼭짓점으로 하는 $\\triangle ABC$에 대하여 $\\tan B$의 값을 구하여라. [7점]",
+          "choices": [],
+          "answer": "$\\dfrac{13}{9}$",
+          "solution": "[키포인트] 점 $A$에서 $BC$에 내린 수선으로 직각삼각형을 만들고 피타고라스 정리를 두 번 사용한다.\n조건 정리: $AB=2\\sqrt{10}$, $BC=5$, $AC=\\sqrt{29}$이다.\n풀이 방향: $A$에서 $BC$에 내린 수선의 발을 $H$라 하고 $BH$, $AH$를 구한다.\n정석 풀이: 좌표의 거리 공식으로 $AB^2=40$, $BC=5$, $AC^2=29$이다. $BH=t$, $AH=h$라 하면 $h^2+t^2=40$, $h^2+(5-t)^2=29$이다. 두 식을 빼면 $t^2-(5-t)^2=11$, 즉 $10t-25=11$이므로 $t=\\dfrac{18}{5}$이다. 따라서 $h^2=40-\\dfrac{324}{25}=\\dfrac{676}{25}$이므로 $h=\\dfrac{26}{5}$이다. 그러므로 $\\tan B=\\dfrac{AH}{BH}=\\dfrac{26/5}{18/5}=\\dfrac{13}{9}$이다.\n따라서 구하는 값은 $\\dfrac{13}{9}$이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q22.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q22.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 4,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.3",
+            "L4-1.2.3.2"
+          ],
+          "difficultyBucket": 4,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.3",
+            "L4-1.2.3.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "path": [
+          "L1-1",
+          "L2-1.2",
+          "L3-1.2.3",
+          "L4-1.2.3.2"
+        ],
+        "difficultyBucket": 4,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_41451db38eee97cd4557be6e8b15460be77459a2a42dbd1e1ff90b85a1e8f81c",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "sourceFingerprint": "9140cdf5802293b800d1d9dc26d06fa79a12897f1e924f3dd1bbd51a186db90b",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-2",
+        "L1": "원의 성질",
+        "L2Key": "L2-2.1",
+        "L2": "원과 직선",
+        "L3Key": "L3-2.1.2",
+        "L3": "원의 접선",
+        "L4Key": "L4-2.1.2.3",
+        "L4": "접선 조건으로 길이 구하기",
+        "primaryConcept": "내접원의 접선 길이 equality로 반지름을 구한 뒤 넓이 차 계산",
+        "primaryConceptReason": "[키포인트] 한 점에서 그은 두 접선의 길이가 같다는 성질로 세 변을 반지름 $r$로 나타낸다.\n조건 정리: $AF=AD=8$, $CF=CE=12$이고 직각 꼭짓점 $B$에서 두 접선의 길이는 반지름 $r$와 같다.\n풀이 방향: 피타고라스 정리로 $r$을 구한 뒤 삼각형 넓이에서 내접원 넓이를 뺀다.\n정석 풀이: $AB=8+r$, $BC=12+r$, $AC=8+12=20$이다. 따라서 $(8+r)^2+(12+r)^2=20^2$이다. 전개하면 $2r^2+40r-192=0$, 즉 $r^2+20r-96=0$이고 $(r-4)(r+24)=0$이므로 $r=4$이다. 두 직각변은 $12$, $16$이므로 삼각형의 넓이는 $\\dfrac12\\times12\\times16=96$이고, 내접원의 넓이는 $\\pi\\times4^2=16\\pi$이다. 따라서 색칠한 부분의 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 한 점에서 그은 두 접선의 길이가 같다는 성질로 세 변을 반지름 $r$로 나타낸다.\n조건 정리: $AF=AD=8$, $CF=CE=12$이고 직각 꼭짓점 $B$에서 두 접선의 길이는 반지름 $r$와 같다.\n풀이 방향: 피타고라스 정리로 $r$을 구한 뒤 삼각형 넓이에서 내접원 넓이를 뺀다.\n정석 풀이: $AB=8+r$, $BC=12+r$, $AC=8+12=20$이다. 따라서 $(8+r)^2+(12+r)^2=20^2$이다. 전개하면 $2r^2+40r-192=0$, 즉 $r^2+20r-96=0$이고 $(r-4)(r+24)=0$이므로 $r=4$이다. 두 직각변은 $12$, $16$이므로 삼각형의 넓이는 $\\dfrac12\\times12\\times16=96$이고, 내접원의 넓이는 $\\pi\\times4^2=16\\pi$이다. 따라서 색칠한 부분의 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 접선 조건으로 길이 구하기에 매핑했다.",
+        "difficultyBucket": 4,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-2.1.2.3",
+          "L4": "접선 조건으로 길이 구하기"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 접선 조건으로 길이 구하기 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#23",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "[서술형] 다음 그림에서 원 $O$는 $\\angle B=90^\\circ$인 직각삼각형 $ABC$의 내접원이고, 세 점 $D$, $E$, $F$는 접점이다. $AF=8\\,\\mathrm{cm}$, $CF=12\\,\\mathrm{cm}$일 때, 색칠한 부분의 넓이를 구하시오. [7점]",
+          "choices": [],
+          "answer": "$(96-16\\pi)\\,\\mathrm{cm}^2$",
+          "solution": "[키포인트] 한 점에서 그은 두 접선의 길이가 같다는 성질로 세 변을 반지름 $r$로 나타낸다.\n조건 정리: $AF=AD=8$, $CF=CE=12$이고 직각 꼭짓점 $B$에서 두 접선의 길이는 반지름 $r$와 같다.\n풀이 방향: 피타고라스 정리로 $r$을 구한 뒤 삼각형 넓이에서 내접원 넓이를 뺀다.\n정석 풀이: $AB=8+r$, $BC=12+r$, $AC=8+12=20$이다. 따라서 $(8+r)^2+(12+r)^2=20^2$이다. 전개하면 $2r^2+40r-192=0$, 즉 $r^2+20r-96=0$이고 $(r-4)(r+24)=0$이므로 $r=4$이다. 두 직각변은 $12$, $16$이므로 삼각형의 넓이는 $\\dfrac12\\times12\\times16=96$이고, 내접원의 넓이는 $\\pi\\times4^2=16\\pi$이다. 따라서 색칠한 부분의 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.",
+          "image": "assets/images/25_연향중_2학기_중간_중3_수학/q23.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_연향중_2학기_중간_중3_수학/q23.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 4,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.3"
+          ],
+          "difficultyBucket": 4,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.3"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 23,
+        "path": [
+          "L1-2",
+          "L2-2.1",
+          "L3-2.1.2",
+          "L4-2.1.2.3"
+        ],
+        "difficultyBucket": 4,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1879f5e1d630fe7274a001a41a705ee2ce2153e9361b5c148b5102e7d1a7d550",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "51ea30d45bd8cb2ab73465bd83f59cdb03e4830c551987aef14e2766530db703",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.1",
+        "L3": "삼각비의 뜻",
+        "L4Key": "L4-1.1.1.1",
+        "L4": "sin·cos·tan",
+        "primaryConcept": "직각삼각형에서 기준각의 사인 정의(맞은편 변/빗변)",
+        "primaryConceptReason": "[키포인트] 직각삼각형에서 사인은 ‘기준각의 맞은편 변의 길이 ÷ 빗변의 길이’이다.\n조건 정리: $\\angle B=90^\\circ$, $BC=6$, $AC=10$이고 기준각은 $A$이다.\n풀이 방향: $A$의 맞은편 변 $BC$와 빗변 $AC$를 사인의 정의에 대입한다.\n정석 풀이: $\\sin A=\\dfrac{BC}{AC}=\\dfrac{6}{10}=\\dfrac{3}{5}$이다.\n따라서 정답은 ③이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 직각삼각형에서 사인은 ‘기준각의 맞은편 변의 길이 ÷ 빗변의 길이’이다.\n조건 정리: $\\angle B=90^\\circ$, $BC=6$, $AC=10$이고 기준각은 $A$이다.\n풀이 방향: $A$의 맞은편 변 $BC$와 빗변 $AC$를 사인의 정의에 대입한다.\n정석 풀이: $\\sin A=\\dfrac{BC}{AC}=\\dfrac{6}{10}=\\dfrac{3}{5}$이다.\n따라서 정답은 ③이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 sin·cos·tan에 매핑했다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.1.1.1",
+          "L4": "sin·cos·tan"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected sin·cos·tan from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#1",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "오른쪽 그림과 같은 직각삼각형 $ABC$에서 $\\sin A$의 값을 구하면? [3점]",
+          "choices": [
+            "$\\dfrac{4}{3}$",
+            "$\\dfrac{3}{4}$",
+            "$\\dfrac{3}{5}$",
+            "$\\dfrac{4}{5}$",
+            "$1$"
+          ],
+          "answer": "③",
+          "solution": "[키포인트] 직각삼각형에서 사인은 ‘기준각의 맞은편 변의 길이 ÷ 빗변의 길이’이다.\n조건 정리: $\\angle B=90^\\circ$, $BC=6$, $AC=10$이고 기준각은 $A$이다.\n풀이 방향: $A$의 맞은편 변 $BC$와 빗변 $AC$를 사인의 정의에 대입한다.\n정석 풀이: $\\sin A=\\dfrac{BC}{AC}=\\dfrac{6}{10}=\\dfrac{3}{5}$이다.\n따라서 정답은 ③이다.",
+          "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q1.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_왕운중_2학기_중간_중3_수학/q1.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 1,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.1"
+          ],
+          "difficultyBucket": 1,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.1"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 1,
+        "path": [
+          "L1-1",
+          "L2-1.1",
+          "L3-1.1.1",
+          "L4-1.1.1.1"
+        ],
+        "difficultyBucket": 1,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c8ea036aa76e2046e6d1b6ce62b0f95f053d89f06a08f31b90a78b8d3b4110c9",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "6b21ec0169a5873cf08f8d15c4deac0dbf9c46ec4965b77f7717c92801399fe0",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.3",
+        "L3": "삼각비와 길이",
+        "L4Key": "L4-1.1.3.1",
+        "L4": "직각삼각형의 변",
+        "primaryConcept": "tan으로 두 직각변의 비를 정한 뒤 피타고라스 정리로 cos 계산",
+        "primaryConceptReason": "[키포인트] 탄젠트로 두 직각변의 비를 정한 뒤 피타고라스 정리로 빗변을 구한다.\n조건 정리: $\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로 $BC=12k$, $AB=5k$로 둘 수 있다.\n풀이 방향: 빗변 $AC$를 구한 뒤 $\\cos A=\\dfrac{AB}{AC}$를 이용한다.\n정석 풀이: 피타고라스 정리에 의해 $AC=\\sqrt{(5k)^2+(12k)^2}=13k$이다. 따라서 $\\cos A=\\dfrac{AB}{AC}=\\dfrac{5k}{13k}=\\dfrac{5}{13}$이다.\n따라서 정답은 ⑤이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 탄젠트로 두 직각변의 비를 정한 뒤 피타고라스 정리로 빗변을 구한다.\n조건 정리: $\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로 $BC=12k$, $AB=5k$로 둘 수 있다.\n풀이 방향: 빗변 $AC$를 구한 뒤 $\\cos A=\\dfrac{AB}{AC}$를 이용한다.\n정석 풀이: 피타고라스 정리에 의해 $AC=\\sqrt{(5k)^2+(12k)^2}=13k$이다. 따라서 $\\cos A=\\dfrac{AB}{AC}=\\dfrac{5k}{13k}=\\dfrac{5}{13}$이다.\n따라서 정답은 ⑤이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 직각삼각형의 변에 매핑했다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.1.3.1",
+          "L4": "직각삼각형의 변"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution; selected 직각삼각형의 변 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#2",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "$\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\tan A=\\dfrac{12}{5}$일 때, $\\cos A$의 값을 구하면? [3점]",
+          "choices": [
+            "$\\dfrac{12}{5}$",
+            "$\\dfrac{13}{5}$",
+            "$\\dfrac{5}{12}$",
+            "$\\dfrac{13}{12}$",
+            "$\\dfrac{5}{13}$"
+          ],
+          "answer": "⑤",
+          "solution": "[키포인트] 탄젠트로 두 직각변의 비를 정한 뒤 피타고라스 정리로 빗변을 구한다.\n조건 정리: $\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로 $BC=12k$, $AB=5k$로 둘 수 있다.\n풀이 방향: 빗변 $AC$를 구한 뒤 $\\cos A=\\dfrac{AB}{AC}$를 이용한다.\n정석 풀이: 피타고라스 정리에 의해 $AC=\\sqrt{(5k)^2+(12k)^2}=13k$이다. 따라서 $\\cos A=\\dfrac{AB}{AC}=\\dfrac{5k}{13k}=\\dfrac{5}{13}$이다.\n따라서 정답은 ⑤이다.",
+          "image": "",
+          "visualDependency": {
+            "hasImageField": false,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": false,
+              "path": "",
+              "exists": false,
+              "positiveBytes": false,
+              "linkedToSource": false
+            },
+            "required": false
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 2,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.3",
+            "L4-1.1.3.1"
+          ],
+          "difficultyBucket": 2,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": false,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "no required visual; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.3",
+            "L4-1.1.3.1"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 2,
+        "path": [
+          "L1-1",
+          "L2-1.1",
+          "L3-1.1.3",
+          "L4-1.1.3.1"
+        ],
+        "difficultyBucket": 2,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": false,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "no required visual; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ca9668a1ebdfda727a4dbda5ccd194f99e69acf80c24433d61827ffa9c52f8bc",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "68232c2310bf4d1e7609c31ffe8a1f57be68319b952ac1634e47ddbc35a4739e",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.2",
+        "L3": "특수각의 삼각비",
+        "L4Key": "L4-1.1.2.2",
+        "L4": "특수각 계산",
+        "primaryConcept": "특수각 삼각비를 대입하여 식 계산",
+        "primaryConceptReason": "[키포인트] 특수각의 삼각비 값을 정확히 대입한다.\n조건 정리: $\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt{3}}{2}$이다.\n풀이 방향: 각 삼각비를 수로 바꾼 뒤 곱셈부터 계산한다.\n정석 풀이: $\\sqrt{2}\\tan45^\\circ-\\sqrt{3}\\sin60^\\circ=\\sqrt{2}\\cdot1-\\sqrt{3}\\cdot\\dfrac{\\sqrt{3}}{2}=\\sqrt{2}-\\dfrac{3}{2}$이다.\n따라서 정답은 ④이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 특수각의 삼각비 값을 정확히 대입한다.\n조건 정리: $\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt{3}}{2}$이다.\n풀이 방향: 각 삼각비를 수로 바꾼 뒤 곱셈부터 계산한다.\n정석 풀이: $\\sqrt{2}\\tan45^\\circ-\\sqrt{3}\\sin60^\\circ=\\sqrt{2}\\cdot1-\\sqrt{3}\\cdot\\dfrac{\\sqrt{3}}{2}=\\sqrt{2}-\\dfrac{3}{2}$이다.\n따라서 정답은 ④이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 특수각 계산에 매핑했다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.1.2.2",
+          "L4": "특수각 계산"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution; selected 특수각 계산 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#3",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "$\\sqrt{2}\\tan45^\\circ-\\sqrt{3}\\sin60^\\circ$를 계산한 값을 고르면? [3점]",
+          "choices": [
+            "$0$",
+            "$\\sqrt{2}-1$",
+            "$\\sqrt{3}-\\sqrt{2}$",
+            "$\\sqrt{2}-\\dfrac{3}{2}$",
+            "$\\sqrt{2}-3$"
+          ],
+          "answer": "④",
+          "solution": "[키포인트] 특수각의 삼각비 값을 정확히 대입한다.\n조건 정리: $\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt{3}}{2}$이다.\n풀이 방향: 각 삼각비를 수로 바꾼 뒤 곱셈부터 계산한다.\n정석 풀이: $\\sqrt{2}\\tan45^\\circ-\\sqrt{3}\\sin60^\\circ=\\sqrt{2}\\cdot1-\\sqrt{3}\\cdot\\dfrac{\\sqrt{3}}{2}=\\sqrt{2}-\\dfrac{3}{2}$이다.\n따라서 정답은 ④이다.",
+          "image": "",
+          "visualDependency": {
+            "hasImageField": false,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": false,
+              "path": "",
+              "exists": false,
+              "positiveBytes": false,
+              "linkedToSource": false
+            },
+            "required": false
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 1,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.2",
+            "L4-1.1.2.2"
+          ],
+          "difficultyBucket": 1,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": false,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "no required visual; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.2",
+            "L4-1.1.2.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "path": [
+          "L1-1",
+          "L2-1.1",
+          "L3-1.1.2",
+          "L4-1.1.2.2"
+        ],
+        "difficultyBucket": 1,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": false,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "no required visual; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9636e5f1f521f5e8aebfbe82a8e744aa4fa8d4593fc9bedccba11692d21e67c3",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "2eb9ff83fd9707693428cdc4e9969013be39239cacb6615d2f1e5d7d55f6dfa6",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.1",
+        "L3": "삼각비의 뜻",
+        "L4Key": "",
+        "L4": "",
+        "primaryConcept": "일반각 삼각비표 역조회",
+        "primaryConceptReason": "주어진 sin·cos 값을 삼각비표에서 찾아 해당 각을 역으로 읽는 source-derived 유형이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "sin과 cos 열에서 주어진 수치를 찾아 각각의 각을 역조회한다.",
+        "taxonomyReason": "삼각비의 뜻을 표 역조회로 적용하지만 현재 taxonomy에 exact L4가 없어 GAP으로 둔다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "삼각비표에서 두 수치를 찾아 각을 읽는 직접 역조회형이다.",
+        "curriculumApplicability": "UNKNOWN",
+        "defaultSelectable": false,
+        "status": "FOUNDATION_DEFECT_CANDIDATE",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": true,
+        "foundationDefectReason": "삼각비표에서 일반각을 역조회하는 유형이지만 현재 M3-2에는 역조회 전용 exact L4가 없어 L4를 비워 둔다.",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "GAP",
+          "L4Key": "",
+          "L4": "",
+          "gapReason": "삼각비표에서 일반각을 역조회하는 유형이지만 현재 M3-2에는 역조회 전용 exact L4가 없어 L4를 비워 둔다.",
+          "sourceDerivedType": "일반각 삼각비표 역조회"
+        }
+      },
+      "motherAdjudication": "Pinpoint source adjudication: retained the source-derived L4 GAP without nearest-L4 fallback; difficulty bucket 1.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#4",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 삼각비의 표를 보고 $\\sin x=0.9816$, $\\cos y=0.2250$을 만족하는 $x$, $y$의 값을 차례대로 구하면? [3점]",
+          "choices": [
+            "$77^\\circ, 79^\\circ$",
+            "$78^\\circ, 79^\\circ$",
+            "$77^\\circ, 78^\\circ$",
+            "$79^\\circ, 77^\\circ$",
+            "$78^\\circ, 77^\\circ$"
+          ],
+          "answer": "④",
+          "solution": "[키포인트] 표에서 주어진 값과 정확히 같은 사인값과 코사인값을 각각 찾는다.\n조건 정리: $\\sin x=0.9816$, $\\cos y=0.2250$이다.\n풀이 방향: 사인 열에서 $0.9816$, 코사인 열에서 $0.2250$이 있는 행의 각을 읽는다.\n정석 풀이: 표에서 $\\sin79^\\circ=0.9816$이므로 $x=79^\\circ$이다. 또 $\\cos77^\\circ=0.2250$이므로 $y=77^\\circ$이다.\n따라서 정답은 ④이다.",
+          "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q4.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_왕운중_2학기_중간_중3_수학/q4.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 1,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.1"
+          ],
+          "difficultyBucket": 1,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.1"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 4,
+        "path": [
+          "L1-1",
+          "L2-1.1",
+          "L3-1.1.1",
+          "L4-1.1.1.1"
+        ],
+        "difficultyBucket": 1,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_354f9b83e5e54324890fc7911aa431354d76bca337c76a9be346e03b1a1cb475",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "56e81d352eed7f0ff6fd9cc59d458a90ce3864c11bbca6463cd66997795e39dc",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.1",
+        "L3": "삼각비의 뜻",
+        "L4Key": "L4-1.1.1.2",
+        "L4": "삼각비의 관계",
+        "primaryConcept": "삼각비의 관계",
+        "primaryConceptReason": "제곱근을 절댓값으로 바꾸고 예각 삼각비의 부호를 판단하여 식을 정리하는 문항이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "√(X²)=|X|를 적용한 뒤 tan A+1과 sin A−1의 부호를 각각 판단한다.",
+        "taxonomyReason": "특수각 값 계산이 아니라 삼각비 식의 절댓값과 부호 관계가 결정적이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "예각 조건으로 절댓값의 부호를 판단하는 표준 관계 적용형이다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.1.1.2",
+          "L4": "삼각비의 관계"
+        }
+      },
+      "motherAdjudication": "Pinpoint source adjudication: updated to the confirmed canonical exact path; difficulty bucket 2.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#5",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "$\\angle A$가 예각일 때, $\\sqrt{(\\tan A+\\sin90^\\circ)^2}-\\sqrt{(\\sin A-\\sin90^\\circ)^2}$의 값을 간단히 구하면? [3점]",
+          "choices": [
+            "$\\sin A$",
+            "$\\sin A+1$",
+            "$\\tan A+1$",
+            "$2\\sin A+\\tan A$",
+            "$\\sin A+\\tan A$"
+          ],
+          "answer": "⑤",
+          "solution": "[키포인트] $\\sqrt{X^2}=|X|$이므로 각 괄호 안 식의 부호를 먼저 판단한다.\n조건 정리: $A$는 예각이므로 $\\tan A>0$, $0<\\sin A<1$이고 $\\sin90^\\circ=1$이다.\n풀이 방향: 두 제곱근을 절댓값으로 바꾼 뒤 부호에 따라 절댓값을 푼다.\n정석 풀이: $\\tan A+1>0$이므로 $\\sqrt{(\\tan A+1)^2}=\\tan A+1$이다. 또 $\\sin A-1<0$이므로 $\\sqrt{(\\sin A-1)^2}=1-\\sin A$이다. 따라서 전체 식은 $(\\tan A+1)-(1-\\sin A)=\\tan A+\\sin A$이다.\n따라서 정답은 ⑤이다.",
+          "image": "",
+          "visualDependency": {
+            "hasImageField": false,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": false,
+              "path": "",
+              "exists": false,
+              "positiveBytes": false,
+              "linkedToSource": false
+            },
+            "required": false
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 2,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.2",
+            "L4-1.1.2.2"
+          ],
+          "difficultyBucket": 2,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": false,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "no required visual; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.2",
+            "L4-1.1.2.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 5,
+        "path": [
+          "L1-1",
+          "L2-1.1",
+          "L3-1.1.2",
+          "L4-1.1.2.2"
+        ],
+        "difficultyBucket": 2,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": false,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "no required visual; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d45521fc7fb98052bd19d164ef4b5301285b307d9421bf85d70c358691d85dc8",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "820d8ec85fda6ac0a43b8ae72d2a07bc4e066c73f891dc595ede3abf0b1dfb36",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.2",
+        "L2": "삼각비의 활용",
+        "L3Key": "L3-1.2.1",
+        "L3": "평면도형",
+        "L4Key": "L4-1.2.1.1",
+        "L4": "삼각형의 높이·넓이",
+        "primaryConcept": "두 변과 끼인각의 사인으로 삼각형 넓이 계산",
+        "primaryConceptReason": "[키포인트] 두 변의 길이와 그 끼인각이 주어졌으므로 $\\dfrac{1}{2}ab\\sin C$를 이용한다.\n조건 정리: 끼인 두 변은 $AB=5$, $BC=2$이고 끼인각은 $120^\\circ$이다.\n풀이 방향: 삼각형 넓이 공식에 세 값을 그대로 대입한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\cdot5\\cdot2\\cdot\\sin120^\\circ=5\\cdot\\dfrac{\\sqrt{3}}{2}=\\dfrac{5\\sqrt{3}}{2}$이다.\n따라서 정답은 ①이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 두 변의 길이와 그 끼인각이 주어졌으므로 $\\dfrac{1}{2}ab\\sin C$를 이용한다.\n조건 정리: 끼인 두 변은 $AB=5$, $BC=2$이고 끼인각은 $120^\\circ$이다.\n풀이 방향: 삼각형 넓이 공식에 세 값을 그대로 대입한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\cdot5\\cdot2\\cdot\\sin120^\\circ=5\\cdot\\dfrac{\\sqrt{3}}{2}=\\dfrac{5\\sqrt{3}}{2}$이다.\n따라서 정답은 ①이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 삼각형의 높이·넓이에 매핑했다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.2.1.1",
+          "L4": "삼각형의 높이·넓이"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 삼각형의 높이·넓이 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#6",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림과 같이 $AB=5$, $BC=2$, $\\angle ABC=120^\\circ$인 삼각형에 대하여 $\\triangle ABC$의 넓이를 구하면? [4점]",
+          "choices": [
+            "$\\dfrac{5\\sqrt{3}}{2}$",
+            "$\\dfrac{7\\sqrt{3}}{2}$",
+            "$\\dfrac{9\\sqrt{3}}{2}$",
+            "$\\dfrac{11\\sqrt{3}}{2}$",
+            "$\\dfrac{13\\sqrt{3}}{2}$"
+          ],
+          "answer": "①",
+          "solution": "[키포인트] 두 변의 길이와 그 끼인각이 주어졌으므로 $\\dfrac{1}{2}ab\\sin C$를 이용한다.\n조건 정리: 끼인 두 변은 $AB=5$, $BC=2$이고 끼인각은 $120^\\circ$이다.\n풀이 방향: 삼각형 넓이 공식에 세 값을 그대로 대입한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\cdot5\\cdot2\\cdot\\sin120^\\circ=5\\cdot\\dfrac{\\sqrt{3}}{2}=\\dfrac{5\\sqrt{3}}{2}$이다.\n따라서 정답은 ①이다.",
+          "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q6.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_왕운중_2학기_중간_중3_수학/q6.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 2,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.1",
+            "L4-1.2.1.1"
+          ],
+          "difficultyBucket": 2,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.1",
+            "L4-1.2.1.1"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "path": [
+          "L1-1",
+          "L2-1.2",
+          "L3-1.2.1",
+          "L4-1.2.1.1"
+        ],
+        "difficultyBucket": 2,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0dd10b5dcfcf58ed72d73eef59124cd4bb850f9a5b84a47edb1aca14dd2921e1",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "8175331b04027c1c047aeb1b94efec7918521d0ce35e22a7d7e6d9cbe1ab93b4",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.1",
+        "L3": "삼각비의 뜻",
+        "L4Key": "L4-1.1.1.2",
+        "L4": "삼각비의 관계",
+        "primaryConcept": "여각 관계와 사분원 좌표로 삼각비 값 비교",
+        "primaryConceptReason": "[키포인트] 그림의 점 $A$의 좌표는 $(\\cos47^\\circ,\\sin47^\\circ)$이고, 여각 관계도 함께 이용한다.\n조건 정리: 그림에서 $A$의 가로 좌표는 $0.68$, 세로 좌표는 $0.73$이며 직선 $OP$의 기울기는 약 $1.07$이다.\n풀이 방향: $47^\\circ$의 사인·코사인·탄젠트를 읽고 $43^\\circ=90^\\circ-47^\\circ$를 이용한다.\n정석 풀이: $\\cos47^\\circ=0.68$, $\\sin47^\\circ=0.73$, $\\tan47^\\circ=1.07$이다. 또한 $\\sin43^\\circ=\\cos47^\\circ=0.68$, $\\cos43^\\circ=\\sin47^\\circ=0.73$이다. 따라서 $\\sin47^\\circ=0.68$이라는 ②가 옳지 않다.\n따라서 정답은 ②이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 그림의 점 $A$의 좌표는 $(\\cos47^\\circ,\\sin47^\\circ)$이고, 여각 관계도 함께 이용한다.\n조건 정리: 그림에서 $A$의 가로 좌표는 $0.68$, 세로 좌표는 $0.73$이며 직선 $OP$의 기울기는 약 $1.07$이다.\n풀이 방향: $47^\\circ$의 사인·코사인·탄젠트를 읽고 $43^\\circ=90^\\circ-47^\\circ$를 이용한다.\n정석 풀이: $\\cos47^\\circ=0.68$, $\\sin47^\\circ=0.73$, $\\tan47^\\circ=1.07$이다. 또한 $\\sin43^\\circ=\\cos47^\\circ=0.68$, $\\cos43^\\circ=\\sin47^\\circ=0.73$이다. 따라서 $\\sin47^\\circ=0.68$이라는 ②가 옳지 않다.\n따라서 정답은 ②이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 삼각비의 관계에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.1.1.2",
+          "L4": "삼각비의 관계"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 삼각비의 관계 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#7",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에 대하여 다음 중 옳지 않은 것을 고르면? [4점]",
+          "choices": [
+            "$\\sin43^\\circ=0.68$",
+            "$\\sin47^\\circ=0.68$",
+            "$\\cos43^\\circ=0.73$",
+            "$\\cos47^\\circ=0.68$",
+            "$\\tan47^\\circ=1.07$"
+          ],
+          "answer": "②",
+          "solution": "[키포인트] 그림의 점 $A$의 좌표는 $(\\cos47^\\circ,\\sin47^\\circ)$이고, 여각 관계도 함께 이용한다.\n조건 정리: 그림에서 $A$의 가로 좌표는 $0.68$, 세로 좌표는 $0.73$이며 직선 $OP$의 기울기는 약 $1.07$이다.\n풀이 방향: $47^\\circ$의 사인·코사인·탄젠트를 읽고 $43^\\circ=90^\\circ-47^\\circ$를 이용한다.\n정석 풀이: $\\cos47^\\circ=0.68$, $\\sin47^\\circ=0.73$, $\\tan47^\\circ=1.07$이다. 또한 $\\sin43^\\circ=\\cos47^\\circ=0.68$, $\\cos43^\\circ=\\sin47^\\circ=0.73$이다. 따라서 $\\sin47^\\circ=0.68$이라는 ②가 옳지 않다.\n따라서 정답은 ②이다.",
+          "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q7.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_왕운중_2학기_중간_중3_수학/q7.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 2,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.2"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": true,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 7,
+        "path": [
+          "L1-1",
+          "L2-1.1",
+          "L3-1.1.1",
+          "L4-1.1.1.2"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "b033d2a0cb2015a2cd586f755494d68ec296f9e4c015a1ffea10302ec3845731",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.2",
+        "L2": "삼각비의 활용",
+        "L3Key": "L3-1.2.3",
+        "L3": "복합도형",
+        "L4Key": "L4-1.2.3.2",
+        "L4": "피타고라스 결합",
+        "primaryConcept": "고도선으로 분할한 직각삼각형에서 피타고라스 정리 결합",
+        "primaryConceptReason": "[키포인트] 먼저 직각이등변삼각형 $ABH$에서 $AH$와 $BH$를 구한 뒤, 직각삼각형 $AHC$에 피타고라스 정리를 적용한다.\n조건 정리: $AH\\perp BC$, $\\angle ABH=45^\\circ$이므로 $\\triangle ABH$는 $45^\\circ$-$45^\\circ$-$90^\\circ$ 삼각형이다.\n풀이 방향: $AB=4\\sqrt{2}$에서 두 직각변을 구하고, $HC=BC-BH$를 계산한다.\n정석 풀이: $AH=BH=\\dfrac{4\\sqrt{2}}{\\sqrt{2}}=4$이다. 따라서 $HC=10-4=6$이다. $\\triangle AHC$에서 $AC=\\sqrt{AH^2+HC^2}=\\sqrt{4^2+6^2}=2\\sqrt{13}$이다. 그러므로 $AH+AC=4+2\\sqrt{13}$이다.\n따라서 정답은 ③이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 먼저 직각이등변삼각형 $ABH$에서 $AH$와 $BH$를 구한 뒤, 직각삼각형 $AHC$에 피타고라스 정리를 적용한다.\n조건 정리: $AH\\perp BC$, $\\angle ABH=45^\\circ$이므로 $\\triangle ABH$는 $45^\\circ$-$45^\\circ$-$90^\\circ$ 삼각형이다.\n풀이 방향: $AB=4\\sqrt{2}$에서 두 직각변을 구하고, $HC=BC-BH$를 계산한다.\n정석 풀이: $AH=BH=\\dfrac{4\\sqrt{2}}{\\sqrt{2}}=4$이다. 따라서 $HC=10-4=6$이다. $\\triangle AHC$에서 $AC=\\sqrt{AH^2+HC^2}=\\sqrt{4^2+6^2}=2\\sqrt{13}$이다. 그러므로 $AH+AC=4+2\\sqrt{13}$이다.\n따라서 정답은 ③이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 피타고라스 결합에 매핑했다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.2.3.2",
+          "L4": "피타고라스 결합"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution and the required visual asset; selected 피타고라스 결합 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#8",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "다음 그림과 같이 $AB=4\\sqrt{2}$, $BC=10$, $\\angle ABH=45^\\circ$인 $\\triangle ABC$에서 $AH+AC$의 길이를 구하면? [4점]",
+          "choices": [
+            "$8$",
+            "$8+2\\sqrt{3}$",
+            "$4+2\\sqrt{13}$",
+            "$8+2\\sqrt{13}$",
+            "$10+2\\sqrt{13}$"
+          ],
+          "answer": "③",
+          "solution": "[키포인트] 먼저 직각이등변삼각형 $ABH$에서 $AH$와 $BH$를 구한 뒤, 직각삼각형 $AHC$에 피타고라스 정리를 적용한다.\n조건 정리: $AH\\perp BC$, $\\angle ABH=45^\\circ$이므로 $\\triangle ABH$는 $45^\\circ$-$45^\\circ$-$90^\\circ$ 삼각형이다.\n풀이 방향: $AB=4\\sqrt{2}$에서 두 직각변을 구하고, $HC=BC-BH$를 계산한다.\n정석 풀이: $AH=BH=\\dfrac{4\\sqrt{2}}{\\sqrt{2}}=4$이다. 따라서 $HC=10-4=6$이다. $\\triangle AHC$에서 $AC=\\sqrt{AH^2+HC^2}=\\sqrt{4^2+6^2}=2\\sqrt{13}$이다. 그러므로 $AH+AC=4+2\\sqrt{13}$이다.\n따라서 정답은 ③이다.",
+          "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q8.png",
+          "visualDependency": {
+            "hasImageField": true,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": true,
+              "path": "assets/images/25_왕운중_2학기_중간_중3_수학/q8.png",
+              "exists": true,
+              "positiveBytes": true,
+              "linkedToSource": true
+            },
+            "required": true
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 3,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.3",
+            "L4-1.2.3.2"
+          ],
+          "difficultyBucket": 3,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": true,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.3",
+            "L4-1.2.3.2"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution",
+            "image_or_svg_or_table"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 8,
+        "path": [
+          "L1-1",
+          "L2-1.2",
+          "L3-1.2.3",
+          "L4-1.2.3.2"
+        ],
+        "difficultyBucket": 3,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": true,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "visual/table evidence and context only; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    },
+    {
+      "questionUid": "qid_v1_7574f5a19dd6e61318919f09cb4bbfa24bb8e3c2c5682adff866c55dcce3e476",
+      "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "7e2a0eda280719c7713a8fea1db9c279fbb64f197514b61f6507f57d635b7dcc",
+      "finalDecision": {
+        "curriculumKey": "2015",
+        "courseKey": "중3 수학",
+        "L1Key": "L1-1",
+        "L1": "삼각비",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.3",
+        "L3": "삼각비와 길이",
+        "L4Key": "L4-1.1.3.1",
+        "L4": "직각삼각형의 변",
+        "primaryConcept": "직각삼각형의 변의 비와 피타고라스 정리로 cos 계산",
+        "primaryConceptReason": "[키포인트] 두 직각변의 비를 문자로 나타내고 피타고라스 정리로 빗변을 구한다.\n조건 정리: $AB=t$라 두면 $AC=3t$이고 빗변은 $BC$이다.\n풀이 방향: $BC$를 구한 뒤 $C$에 대한 코사인의 정의를 적용한다.\n정석 풀이: $BC=\\sqrt{AB^2+AC^2}=\\sqrt{t^2+(3t)^2}=\\sqrt{10}t$이다. 따라서 $\\cos C=\\dfrac{AC}{BC}=\\dfrac{3t}{\\sqrt{10}t}=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ④이다.",
+        "rejectedAlternativeConcepts": [],
+        "secondaryConceptKeys": [],
+        "decisiveSolutionStep": "[키포인트] 두 직각변의 비를 문자로 나타내고 피타고라스 정리로 빗변을 구한다.\n조건 정리: $AB=t$라 두면 $AC=3t$이고 빗변은 $BC$이다.\n풀이 방향: $BC$를 구한 뒤 $C$에 대한 코사인의 정의를 적용한다.\n정석 풀이: $BC=\\sqrt{AB^2+AC^2}=\\sqrt{t^2+(3t)^2}=\\sqrt{10}t$이다. 따라서 $\\cos C=\\dfrac{AC}{BC}=\\dfrac{3t}{\\sqrt{10}t}=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ④이다.",
+        "taxonomyReason": "원문의 결정적 풀이 전략을 직각삼각형의 변에 매핑했다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "원문 조건, 풀이 단계, 경우 분기와 계산 결합도를 source evidence 기준으로 판정했다.",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "status": "RESOLVED",
+        "hold": false,
+        "holdReason": "",
+        "foundationDefectCandidate": false,
+        "foundationDefectReason": "",
+        "conflictStatus": "NONE",
+        "sourceDefectCandidate": false,
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.1.3.1",
+          "L4": "직각삼각형의 변"
+        }
+      },
+      "motherAdjudication": "Mother read source content/choices/answer/solution; selected 직각삼각형의 변 from the decisive source-solving strategy.",
+      "motherEvidence": {
+        "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#9",
+        "sourceFieldsRead": {
+          "content": true,
+          "choices": true,
+          "answer": true,
+          "solution": true,
+          "requiredImageSvgTable": true
+        },
+        "sourceEvidence": {
+          "content": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AC=3AB$일 때, $\\cos C$의 값을 구하면? [5점]",
+          "choices": [
+            "$\\dfrac{1}{10}$",
+            "$\\dfrac{\\sqrt{2}}{10}$",
+            "$\\dfrac{\\sqrt{10}}{10}$",
+            "$\\dfrac{3\\sqrt{10}}{10}$",
+            "$\\dfrac{7\\sqrt{10}}{10}$"
+          ],
+          "answer": "④",
+          "solution": "[키포인트] 두 직각변의 비를 문자로 나타내고 피타고라스 정리로 빗변을 구한다.\n조건 정리: $AB=t$라 두면 $AC=3t$이고 빗변은 $BC$이다.\n풀이 방향: $BC$를 구한 뒤 $C$에 대한 코사인의 정의를 적용한다.\n정석 풀이: $BC=\\sqrt{AB^2+AC^2}=\\sqrt{t^2+(3t)^2}=\\sqrt{10}t$이다. 따라서 $\\cos C=\\dfrac{AC}{BC}=\\dfrac{3t}{\\sqrt{10}t}=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ④이다.",
+          "image": "",
+          "visualDependency": {
+            "hasImageField": false,
+            "embeddedImg": false,
+            "embeddedSvg": false,
+            "embeddedTable": false,
+            "asset": {
+              "declared": false,
+              "path": "",
+              "exists": false,
+              "positiveBytes": false,
+              "linkedToSource": false
+            },
+            "required": false
+          },
+          "sharedMaterialDependency": {
+            "present": false,
+            "explicitFields": [],
+            "contentCue": false
+          }
+        },
+        "frozenA": {
+          "path": null,
+          "difficultyBucket": 2,
+          "primaryConcept": "",
+          "reason": "",
+          "decisiveSolutionStep": ""
+        },
+        "frozenB": {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.3",
+            "L4-1.1.3.1"
+          ],
+          "difficultyBucket": 2,
+          "status": "B_DIRECT_FROZEN",
+          "reviewOutcome": "",
+          "hold": false,
+          "foundationDefectCandidate": false,
+          "sourceDefectCandidate": false,
+          "reason": "",
+          "evidence": {
+            "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+            "sourceContentChoicesAnswerSolutionRead": true,
+            "requiredVisualRead": false,
+            "canonicalPathStatus": "EXACT_SUPPORTED",
+            "representationRole": "no required visual; primary selected by decisive mathematical structure"
+          }
+        },
+        "abDiff": {
+          "normalizedDifferences": {
+            "path": [],
+            "secondary": false,
+            "difficulty": false,
+            "status": [],
+            "primaryConcept": true
+          },
+          "rawDifferences": [],
+          "motherStatusBeforeAdjudication": "PENDING"
+        },
+        "resolution": {
+          "selectedFrom": "B_SOURCE_SUPPORTED_AFTER_MOTHER_REVIEW",
+          "selectedPath": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.3",
+            "L4-1.1.3.1"
+          ],
+          "sourceReason": "원문 content·choices·answer·solution 및 필요한 asset을 읽고 결정적 풀이 전략을 primary로 선택했다.",
+          "actualSourceEvidenceUsed": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ]
+        }
+      },
+      "independentB": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 9,
+        "path": [
+          "L1-1",
+          "L2-1.1",
+          "L3-1.1.3",
+          "L4-1.1.3.1"
+        ],
+        "difficultyBucket": 2,
+        "status": "B_DIRECT_FROZEN",
+        "reviewOutcome": "",
+        "hold": false,
+        "foundationDefectCandidate": false,
+        "sourceDefectCandidate": false,
+        "reason": "",
+        "evidence": {
+          "independentMethod": "B_INDEPENDENT_TAGGER_DIRECT_CANONICAL_TAGGING_v1.1",
+          "sourceContentChoicesAnswerSolutionRead": true,
+          "requiredVisualRead": false,
+          "canonicalPathStatus": "EXACT_SUPPORTED",
+          "representationRole": "no required visual; primary selected by decisive mathematical structure"
+        },
+        "reviewedBy": "B_INDEPENDENT_REVIEWER"
+      }
+    }
+  ]
+}

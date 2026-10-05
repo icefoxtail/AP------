@@ -1,0 +1,357 @@
+{
+  "schemaVersion": "h1-l4-candidate-comparison-checkpoint-v1",
+  "status": "CANDIDATE_BOUNDARY_REVIEW_COMPLETE_RELATIONAL_DIMENSION_REVIEW_NEXT_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "basisHead": "4d59afa6bfb9f0255c9b79eef68b136892a7088d",
+  "l3AuthorityPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE3_L3_GLOBAL_NORMALIZED_1170.jsonl",
+  "freshSkeletonCoverage": 1113,
+  "explicitHoldRows": 57,
+  "rowAssignmentCoverage": 1170,
+  "uniqueQuestionUid": 1170,
+  "templateKeysAssigned": 1113,
+  "parentCompatibleAssignments": 1113,
+  "previousCandidateParentMismatchesOnReviewedRows": 183,
+  "candidateDecisionCounts": {
+    "RETAIN_PARENT_COMPATIBLE_KEY": 761,
+    "NEW_L4_CANDIDATE": 144,
+    "REFINE_OR_COMPRESS_CANDIDATE_BOUNDARY": 112,
+    "HOLD_UPSTREAM_L3": 17,
+    "REASSIGN_AFTER_NORMALIZED_L3": 96,
+    "HOLD_L3_PARENT_CHALLENGE": 40
+  },
+  "templateKeyStatusCounts": {
+    "RETAIN_WORKING_CANDIDATE": 826,
+    "NEW_L4_CANDIDATE": 144,
+    "HOLD": 57,
+    "REUSE_ACTIVE": 143
+  },
+  "newL4CandidateFamilyCount": 21,
+  "newL4CandidateLedgerPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_NEW_L4_CANDIDATE_LEDGER_021.jsonl",
+  "newL4CandidateLedgerSha256": "72f33e04f485cdcaadc63fb237399edbff3edfc99cc674628a7bbec589d5cdac",
+  "newL4CandidateRowCount": 144,
+  "newL4CandidateFamilies": [
+    {
+      "templateKeyCandidate": "TPL_H1_POLY_DIVISION_EXECUTION",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+      "canonicalLabelKo": "다항식 나눗셈 직접 실행",
+      "supportingUidCount": 11,
+      "supportingFreshSkeletonClusters": {
+        "SYNTHETIC_DIVISION_TABLE_COMPLETION": 3,
+        "DIRECT_LONG_DIVISION": 2,
+        "NONMONIC_LINEAR_SYNTHETIC_SCALING": 2,
+        "DIRECT_SYNTHETIC_DIVISION": 2,
+        "LONG_DIVISION_TABLE_COMPLETION": 2
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "Prior division keys belong to the former combined L3 parent; this repeated execution/table skeleton has no parent-compatible key."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_POLY_DIVISION_IDENTITY_RECONSTRUCTION",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+      "canonicalLabelKo": "나눗셈 항등식 자료 복원",
+      "supportingUidCount": 23,
+      "supportingFreshSkeletonClusters": {
+        "DIVISION_DEGREE_CONSTRAINT_AND_ROOT_CONDITIONS": 1,
+        "DIVISION_IDENTITY_COEFFICIENT_RECONSTRUCTION": 3,
+        "READ_GIVEN_REMAINDER_COEFFICIENTS": 1,
+        "TRANSFORM_DIVISION_IDENTITY": 2,
+        "RECONSTRUCT_DIVIDEND_THEN_DIVIDE": 1,
+        "NESTED_REMAINDER_RELATIONS": 1,
+        "DEGREE_AND_REMAINDER_CONDITION_RECONSTRUCTION": 1,
+        "EVALUATE_DIVIDEND_FROM_KNOWN_DIVISION_DATA": 2,
+        "DIVISION_IDENTITY_AND_ROOT_CONDITIONS": 1,
+        "DIVISOR_ROOT_REMAINDER_AND_QUOTIENT_EVALUATION": 2,
+        "HIGH_DEGREE_REMAINDER_MODULAR_REDUCTION": 1,
+        "QUOTIENT_EQUALS_REMAINDER_STRUCTURE": 1,
+        "NESTED_QUOTIENT_REMAINDER": 1,
+        "FUNCTIONAL_IDENTITY_SPECIAL_VALUE_RECONSTRUCTION": 1,
+        "HIGH_POWER_FACTOR_QUOTIENT_EVALUATION": 1,
+        "MUTUAL_QUOTIENT_COMMON_REMAINDER": 1,
+        "MULTIPLE_DIVISION_DATA_COMMON_REMAINDER": 1,
+        "DIVISIBILITY_BY_QUADRATIC_AND_LINEAR_FACTORS": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "Prior remainder keys are parent-mismatched; this division-identity reconstruction skeleton repeats under normalized PT_H1_POLY_DIVISION."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_REMAINDER_SINGLE_LINEAR_EVALUATION",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "canonicalLabelKo": "일차식 나머지 한 값 계산",
+      "supportingUidCount": 12,
+      "supportingFreshSkeletonClusters": {
+        "SINGLE_LINEAR_REMAINDER_EVALUATION": 7,
+        "RECONSTRUCT_CUBIC_FROM_TRANSFORMED_REMAINDER": 1,
+        "SINGLE_LINEAR_REMAINDER_PARAMETER": 1,
+        "NUMERIC_REMAINDER_BY_SUBSTITUTION": 2,
+        "COMPLEX_ROOT_FUNCTIONAL_DIVISION_RECONSTRUCTION": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "Prior linear-remainder key has the former L3 parent; repeated single-value evaluation needs a current-parent candidate."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "canonicalLabelKo": "합성 제수 나머지 조건 결합",
+      "supportingUidCount": 10,
+      "supportingFreshSkeletonClusters": {
+        "COMPOSITE_DIVISOR_REMAINDER_INTERPOLATION": 5,
+        "COMPOSITE_DIVISOR_REMAINDER_SPECIAL_VALUE": 1,
+        "COMPOSITE_DIVISOR_REMAINDER_FROM_TWO_DIVISIONS": 1,
+        "DIVISIBILITY_AND_QUOTIENT_PARAMETER": 1,
+        "QUADRATIC_DIVISOR_REMAINDER_COEFFICIENTS": 1,
+        "COMPOSITE_DIVISOR_REMAINDER_VALUE_FROM_HIGHER_MULTIPLICITY": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "No existing family has the normalized parent; repeated composite-divisor conditions have a distinct factor-and-remainder sequence."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_REMAINDER_MULTI_VALUE_INTERPOLATION",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "canonicalLabelKo": "여러 나머지 값으로 보간",
+      "supportingUidCount": 5,
+      "supportingFreshSkeletonClusters": {
+        "REMAINDER_VALUES_TO_COEFFICIENTS_AND_VIETA": 1,
+        "TWO_LINEAR_REMAINDER_VALUES_TO_COEFFICIENTS": 1,
+        "MULTIPLE_REMAINDER_VALUES_LINEAR_INTERPOLATION": 2,
+        "LINEAR_REMAINDER_FROM_TWO_VALUES": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "No parent-compatible family covers the repeated multi-value-to-coefficient sequence."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "canonicalLabelKo": "중첩 나눗셈 몫·나머지 관계",
+      "supportingUidCount": 4,
+      "supportingFreshSkeletonClusters": {
+        "NESTED_QUOTIENT_REMAINDER_CANCELLATION": 2,
+        "NESTED_DIVISION_REMAINDER_CONDITIONS": 2
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "No current-parent key covers the repeated nested quotient/remainder cancellation pattern."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_FACTOR_THEOREM_ROOT_CONDITION",
+      "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "canonicalLabelKo": "근 조건에서 인수·계수 결정",
+      "supportingUidCount": 14,
+      "supportingFreshSkeletonClusters": {
+        "TWO_LINEAR_ROOTS_TO_COEFFICIENTS_AND_FACTOR": 1,
+        "QUADRATIC_DIVISOR_ROOTS_TO_COEFFICIENTS": 1,
+        "PRODUCT_DIVISIBILITY_ROOT_CASE_SPLIT": 1,
+        "ALL_QUADRATICS_FROM_VALUE_CONSTRAINTS": 1,
+        "PARAMETER_FROM_FACTOR_ROOT_THEN_QUOTIENT_VALUE": 1,
+        "FACTOR_THEOREM_OPTION_TEST": 1,
+        "REPEATED_LINEAR_FACTOR_VIA_REPEATED_REMAINDER": 2,
+        "LINEAR_FACTOR_PARAMETER_BY_REMAINDER": 1,
+        "SINGLE_FACTOR_THEOREM_PARAMETER": 1,
+        "QUOTIENT_EQUALS_REMAINDER_AND_PRODUCT_DIVISIBILITY": 1,
+        "TWO_LINEAR_ROOTS_TO_COEFFICIENTS": 1,
+        "FACTOR_THEOREM_PARAMETER_FROM_SINGLE_ROOT": 1,
+        "COMMON_FACTOR_OF_TWO_POLYNOMIALS": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The prior divisibility-factor key belongs to the former division parent; this normalized factor-theorem parent has no reusable key."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_EQUATION_APPLICATION_MODEL",
+      "parentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "canonicalLabelKo": "상황 관계를 방정식으로 모델링",
+      "supportingUidCount": 3,
+      "supportingFreshSkeletonClusters": {
+        "EQUATION_APPLICATION_FACTOR_OR_MODEL": 1,
+        "CYLINDER_WITH_SQUARE_TUNNEL_SURFACE_AREA_EQUATION": 1,
+        "INSCRIBED_RECTANGLE_DIAGONAL_AND_RATIO": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "No parent-compatible family exists; three source items repeat the application→equation→feasible solution order, so the family remains candidate-only."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_INEQUALITY_APPLICATION_MODEL",
+      "parentProblemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "canonicalLabelKo": "상황 조건을 부등식 구간으로 변환",
+      "supportingUidCount": 5,
+      "supportingFreshSkeletonClusters": {
+        "TRIANGLE_SIDE_BOUNDS_AND_ACUTE_CONDITION": 1,
+        "WORD_PROBLEM_TO_INTEGER_DOUBLE_BOUNDS": 2,
+        "INEQUALITY_APPLICATION_TO_RANGE_INTERSECTION": 1,
+        "QUADRATIC_SYSTEM_SOLUTION_EXISTENCE_PARAMETER": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "No parent-compatible family exists for this normalized L3; nine items share the applied-inequality workflow."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+      "parentProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "canonicalLabelKo": "순열·조합 관계로 매개변수 결정",
+      "supportingUidCount": 11,
+      "supportingFreshSkeletonClusters": {
+        "BINOMIAL_PARAMETER_RELATION_SOLVING": 11
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The active subset-selection key does not express the repeated identity/ratio-to-parameter sequence."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+      "parentProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "canonicalLabelKo": "조합 항등식 증명·판정",
+      "supportingUidCount": 4,
+      "supportingFreshSkeletonClusters": {
+        "BINOMIAL_IDENTITY_DEFINITION_OR_PROOF": 4
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The active subset-selection family does not describe the repeated identity-proof/statement-check sequence."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_SELECTION_BOX_IDENTITY",
+      "parentProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "canonicalLabelKo": "상자 배정에서 동일·서로 다른 대상 구분",
+      "supportingUidCount": 3,
+      "supportingFreshSkeletonClusters": {
+        "BOX_ASSIGNMENT_OBJECT_IDENTITY_CONTRAST": 3
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "Generic subset selection misses the repeated object-identity contrast in box assignment."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_SELECTION_NONADJACENT_PLACEMENT",
+      "parentProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "canonicalLabelKo": "비인접 자리 패턴 후 배정",
+      "supportingUidCount": 4,
+      "supportingFreshSkeletonClusters": {
+        "NONADJACENT_SEATING_OR_ARRANGEMENT": 4
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The active subset key does not represent the repeated position-pattern-then-assignment sequence."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+      "parentProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "canonicalLabelKo": "기하 점 선택 후 퇴화 경우 제외",
+      "supportingUidCount": 4,
+      "supportingFreshSkeletonClusters": {
+        "GEOMETRIC_TRIANGLE_COUNT_CHOOSE_THEN_EXCLUDE_COLLINEAR": 4
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The generic combination key does not express the repeated choose-triples-then-remove-collinear skeleton."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+      "parentProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "canonicalLabelKo": "수용량 제약이 있는 대상 분배",
+      "supportingUidCount": 3,
+      "supportingFreshSkeletonClusters": {
+        "ADULT_CHILD_CAPACITY_CONSTRAINED_DISTRIBUTION": 3
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "Simple subset selection cannot absorb the repeated adult-first capacity-constrained distribution step."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_SELECTION_COMPLEMENT",
+      "parentProblemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "canonicalLabelKo": "여사건으로 제한 선택 계산",
+      "supportingUidCount": 5,
+      "supportingFreshSkeletonClusters": {
+        "COMPLEMENT_COUNTING_FOR_RESTRICTED_SELECTION": 5
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The current selection template does not state the recurring total-minus-invalid order."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_COUNT_TOURNAMENT_BRACKET",
+      "parentProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "canonicalLabelKo": "부전승·대진표 자리 배치",
+      "supportingUidCount": 3,
+      "supportingFreshSkeletonClusters": {
+        "TOURNAMENT_BRACKET_SLOTS_AND_BYES": 3
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The generic count family does not specify the repeated bye/bracket-slot sequence."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_COUNT_FORMULA_EVALUATION",
+      "parentProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "canonicalLabelKo": "순열·조합·계승식 직접 계산",
+      "supportingUidCount": 3,
+      "supportingFreshSkeletonClusters": {
+        "DIRECT_MIXED_COUNTING_EXPRESSION_EVALUATION": 3
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The general case-decomposition family is not direct symbolic evaluation; the exact expression workflow repeats."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+      "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "canonicalLabelKo": "사전식 순열 순위·역순위",
+      "supportingUidCount": 7,
+      "supportingFreshSkeletonClusters": {
+        "LEXICOGRAPHIC_PERMUTATION_RANK_UNRANK": 6,
+        "LEXICOGRAPHIC_RANK_INTERVAL_COUNT": 1
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The active standard-permutation key does not describe prefix-block rank/unrank."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_ARRANGEMENT_DICE_ORDERED_COUNT",
+      "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "canonicalLabelKo": "순서 있는 주사위 결과의 조건별 개수",
+      "supportingUidCount": 5,
+      "supportingFreshSkeletonClusters": {
+        "ORDERED_DICE_OUTCOMES_BY_SUM_OR_CONDITION": 5
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "The active permutation template concerns arranging distinct objects, not repeated face outcomes classified by sum/difference."
+    },
+    {
+      "templateKeyCandidate": "TPL_H1_COMPLEX_NONREAL_DISCRIMINANT",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "canonicalLabelKo": "판별식으로 허근 조건 판정",
+      "supportingUidCount": 5,
+      "supportingFreshSkeletonClusters": {
+        "QUADRATIC_DISCRIMINANT_FOR_NONREAL_ROOT_CONDITION": 5
+      },
+      "repeatedSkeletonWithinL3": true,
+      "whyExistingL4CannotAbsorb": "Existing complex templates focus on component constraints or conjugate roots; this repeated D<0 root-type skeleton is distinct."
+    }
+  ],
+  "sameStageCandidateComparisonStartedAfterSkeletonComplete": true,
+  "sameStageCandidateArtifactsUsedOnlyForPostSemanticFamilyReuseMergeCompression": true,
+  "l4Final": false,
+  "difficultyStarted": false,
+  "canonicalPromotions": 0,
+  "provenance": {
+    "freshSkeletonCheckpoint": {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_SKELETON_CHECKPOINT_1113.json",
+      "sha256": "f0c842f665ce96fe85f4ae1e9f6f048634f99bb1bc5d409f860fe7e4125039aa"
+    },
+    "inputBundle": {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_DECISION_INPUT_1170_V14.jsonl",
+      "sha256": "57852c3aeb07103afc87fa00153475e0de17cba83f76112d2ba66bdddb448ae8"
+    },
+    "oldAssignments": {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE3_L4_CANDIDATE_ASSIGNMENTS_1170.jsonl",
+      "sha256": "0f415702a92e5f046f92e123819f556e52808598ff51c6c928047bf889aac686"
+    },
+    "oldDesign": {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE3_L4_DESIGN_CANDIDATE.json",
+      "sha256": "c42cbcd7586e8ba9f3138b021e4d767545486c5b6e96ffdb8056408773a50191"
+    },
+    "activeRegistry": {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "e0b982a871a0405a778b3a2da8ab2ec2bd260c4ae7474b0ae6fc7dc242fe3b8f"
+    }
+  },
+  "nextStep": "Continue CrossConcept/Condition/IntegrationPattern reconciliation from the joined prior working decisions; do not start difficulty until L3/L4 holds and candidate status are resolved.",
+  "candidateBoundaryAuditPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_CANDIDATE_BOUNDARY_AUDIT_1170.json",
+  "candidateBoundaryAuditSha256": "36ac9c1880ef47c166a28ead2c9cbe7fe545cd678ca85b88fcdddcb3cd000f0a",
+  "joinedRelationalArtifactPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_RELATIONAL_WORKING_JOIN_1170.jsonl",
+  "joinedRelationalArtifactSha256": "1208b3232b01b4eb7370dcc22d693e4f92b30435ae0be01282b395bdf6afe2ff",
+  "candidateBoundaryReviewedFamilies": 21,
+  "candidateBoundaryReviewComplete": true,
+  "supersededArtifacts": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_NEW_L4_CANDIDATE_LEDGER_024.jsonl",
+      "reason": "Earlier 24-family draft before source-based boundary compression and parent-challenge reconciliation; do not use. Current ledger is H1_NEW_L4_CANDIDATE_LEDGER_021.jsonl."
+    }
+  ]
+}

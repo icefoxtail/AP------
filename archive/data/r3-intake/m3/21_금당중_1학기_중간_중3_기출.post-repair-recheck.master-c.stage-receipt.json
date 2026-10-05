@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "JS_ARCHIVE_POST_REPAIR_RECHECK_RECEIPT_v1",
+  "recordType": "POST_REPAIR_RECHECK_STAGE_RECEIPT",
+  "canonicalOrdinal": 19,
+  "examUid": "m3/1mid/21-geumdang",
+  "exam": "21_금당중_1학기_중간_중3_기출.js",
+  "status": "POST_REPAIR_RECHECK_PASS",
+  "verdict": "PASS",
+  "stage": "R3",
+  "nextState": "RELEASE_QUEUE",
+  "nextOwner": "PUBLISH",
+  "masterLeaseId": "MASTER-C-O19-POST-REPAIR-RECHECK-20261003T0744+0900",
+  "finalArtifactSha": "sha256:283692bf7fcb4007a287a3ff4e701f346c194dfa1fcaf4dd4e91244fe56f0b05",
+  "finalArtifactGitBlobSha": "965b7406f48eb1cc9c9b97810e13f5a74a7f3907",
+  "repairedMetaGitBlobSha": "7c24df33ea7a055b16dc10856ce340bdfce80929",
+  "evidencePath": "archive/data/r3-intake/m3/21_금당중_1학기_중간_중3_기출.post-repair-recheck.master-c.physical-evidence.json",
+  "evidenceGitBlobSha": "3dac2ef0793582d63a5fc013b92d4635a548484e",
+  "validatorReceiptPath": "archive/data/r3-intake/m3/21_금당중_1학기_중간_중3_기출.post-repair-recheck.master-c.validator-receipt.json",
+  "validationRunId": 37075168494,
+  "validationJobId": 111063313772,
+  "currentAuthorityMain": "073353a8177358cb45623b059af7a42cf263c94c",
+  "q14Disposition": {
+    "semantic": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+    "routing": "META_ONLY_UNRESOLVED_NONBLOCKING",
+    "rpmCandidates": [
+      "M3-RPM-015",
+      "M3-RPM-016",
+      "M3-RPM-017"
+    ],
+    "productionMetaMutationRequired": false
+  },
+  "q18Disposition": {
+    "semantic": "M3-RPM-021",
+    "routing": "RPM_SEMANTIC_FINAL",
+    "projection": "PROJECTION_UNMATERIALIZED_NONBLOCKING"
+  },
+  "remainingBlockingFailureCodes": [],
+  "supersededFailureCodes": [
+    "R3_ITEM_HOLD_FORBIDDEN:14",
+    "META_PRIMARY_TIEBREAK_UNSUPPORTED_BY_CURRENT_AUTHORITY:14",
+    "FRESH_REVIEWER_REQUIRED",
+    "ACTUAL_FRESH_REVIEWER_START"
+  ],
+  "lockedScopeMutationCount": 0,
+  "productionMutationCount": 0,
+  "mainMutation": 0,
+  "additionalR3Retry": false,
+  "firstMissingClosureStep": null,
+  "closedAt": "2026-10-03T07:59:00+09:00"
+}

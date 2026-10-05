@@ -1,0 +1,113 @@
+/* ======================================================================
+   EIE Classroom — 클래스룸 출결 보드
+   - eie.css에서 기능별로 분리한 파일이다 (디자인 변경 없음).
+   - 로딩 순서: eie.css(공통) 다음에 로드한다.
+   - eie-classroom-v4-* 보드 전용 스타일. 그 외 클래스룸 화면 CSS는 .eie-v2-* 공유 셸과 얽혀 있어 eie.css에 유지.
+   ====================================================================== */
+.eie-classroom-v4-board {
+    display: grid;
+    gap: 0;
+    margin-top: 8px;
+    border: 1px solid var(--eie-border);
+    border-radius: 14px;
+    background: var(--eie-surface);
+    overflow: hidden;
+}
+
+.eie-classroom-v4-head,
+.eie-classroom-v4-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 54px 54px;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--eie-border);
+}
+
+.eie-classroom-v4-head {
+    min-height: 30px;
+    background: var(--eie-surface-2);
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.eie-classroom-v4-head span:first-child {
+    text-align: left;
+}
+
+.eie-classroom-v4-row:last-child {
+    border-bottom: 0;
+}
+
+.eie-classroom-v4-name {
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: var(--eie-text);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.eie-classroom-v4-name strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.eie-classroom-v4-name span {
+    flex: 0 0 auto;
+    color: var(--eie-muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.eie-classroom-v4-status {
+    width: 48px;
+    min-width: 48px;
+    height: 34px;
+    min-height: 34px;
+    border: 1px solid var(--eie-border);
+    border-radius: 11px;
+    background: transparent;
+    color: var(--eie-muted);
+    font-size: 14px;
+    font-weight: 900;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.eie-classroom-v4-status.is-present {
+    border-color: var(--eie-p-present-border, rgba(0, 184, 148, 0.18));
+    background: var(--eie-p-present-bg, rgba(0, 184, 148, 0.10));
+    color: var(--eie-p-present-text, #008f72);
+}
+
+.eie-classroom-v4-status.is-absent {
+    border-color: var(--eie-p-absent-border, rgba(232, 65, 79, 0.18));
+    background: var(--eie-p-absent-bg, rgba(232, 65, 79, 0.10));
+    color: var(--eie-p-absent-text, #d92d3a);
+}
+
+.eie-classroom-v4-status.is-empty {
+    border-style: dashed;
+    background: transparent;
+    color: var(--eie-muted);
+}
+
+.eie-classroom-v4-status.is-consult {
+    border-color: rgba(124, 58, 237, 0.18);
+    background: rgba(124, 58, 237, 0.08);
+    color: #7c3aed;
+}

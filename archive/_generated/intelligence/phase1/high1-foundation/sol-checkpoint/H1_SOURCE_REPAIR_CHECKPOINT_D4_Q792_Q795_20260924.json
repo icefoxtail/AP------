@@ -1,0 +1,65 @@
+{
+  "schema": "H1_SOURCE_REPAIR_CHECKPOINT_D4_Q792_Q795_20260924.v1",
+  "sourceJs": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+  "beforeRawSha256": "A02EECABF026EC881EBBD5F1FACE31D62CE8BB789463E34BFCF2D1E8D00ECEF3",
+  "afterRawSha256": "739449FBD5BECA0EA205619779FB247E3C98FBDEDC28D48B88C76F907164EAC0",
+  "changedQuestionIds": [
+    13,
+    14,
+    18,
+    21
+  ],
+  "changedQueueIndices": [
+    792,
+    793,
+    794,
+    795
+  ],
+  "changedUids": [
+    "qid_v1_afeda2f814aeaee65914010a03a6d75a4d56dbf678dc59d5edd52d0103818ebc",
+    "qid_v1_05f4370382639ab7ffdbb1f5376c6e7a4f5f2e0d5204ecb38631e9306154f492",
+    "qid_v1_87dfd7564526306254c5142c4a7e92a3d6e8c3afbbb783e7b47ec93b1873478b",
+    "qid_v1_6b12e084e21559f0fb966494d4e247cd02646cfb6cd5d90e7d7cff03e2d5f1e9"
+  ],
+  "changedFieldsById": {
+    "13": [
+      "solution"
+    ],
+    "14": [
+      "answer",
+      "solution"
+    ],
+    "18": [
+      "answer",
+      "solution"
+    ],
+    "21": [
+      "solution"
+    ]
+  },
+  "d5QuestionIdsPreserved": [
+    2,
+    16,
+    22
+  ],
+  "priorD4PilotQuestionIdPreserved": 10,
+  "other14QuestionObjectsExactToHead": true,
+  "ledger": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_SOURCE_ORIGINAL_LUNA_D4_Q792_Q795_4.jsonl",
+    "sha256": "37065D1B3D6A75FBA2819223FEA1B77058AE442BAD194336C992E45226D567DE"
+  },
+  "sourceExamPdfSha256": "6E4CB249E57D66986D1C7C3C30078B5A051EBD64CCAB33DB28AED467E5E279D3",
+  "workedSolutionPdfSha256": "FDEF19E2C420952467FB4068090DA3D0D3ABF64B886AAC69DABEFA2ADCDF8C73",
+  "checks": {
+    "nodeCheck": "PASS",
+    "schemaScan": "PASS; one file, 22 sequential questions, no missing required fields",
+    "examLint": "PASS; one file, 22 questions, zero fail/warn",
+    "realBrowserRender": {
+      "examDefault": "PASS; stem and options visible",
+      "solutionDefault": "PASS; corrected answer and MathJax derivation visible",
+      "answerDefault": "PASS; corrected answer shown in printed table"
+    }
+  },
+  "physicalEvidenceDirectory": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/q792-q795",
+  "finalGate": "Targeted A/B rereview of four changed UIDs and Sol validation required before FINAL."
+}

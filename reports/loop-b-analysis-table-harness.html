@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loop B 학교시험 분석표 하니스</title>
+  <link rel="stylesheet" href="../apmath/css/apms-theme-override.css">
+  <link rel="stylesheet" href="../apmath/css/apms-ui-foundation.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--bg, #f2f4f6); color: var(--text, #191f28); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .shell { max-width: 980px; margin: 0 auto; padding: 22px 16px; }
+    .panel { background: var(--surface, #fff); border: 1px solid var(--border, #e5e8eb); border-radius: 14px; padding: 16px; }
+    h1 { margin: 0 0 6px; font-size: 18px; }
+    p { margin: 0 0 12px; color: var(--secondary, #6b7280); font-size: 13px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 14px; border-radius: 10px; border: 1px solid var(--border, #e5e8eb); background: var(--primary, #1a5cff); color: #fff; font-weight: 800; cursor: pointer; }
+    #toast-root { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 3000; display: grid; gap: 8px; }
+    .toast { padding: 10px 14px; border-radius: 999px; background: #111827; color: #fff; font-size: 13px; font-weight: 800; }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel">
+      <h1>Loop B 학교시험 분석표 하니스</h1>
+      <p>23문항 mock 시험으로 문항 분석표, 행 펼침, 인쇄 문서 버튼을 확인합니다.</p>
+      <button class="btn" onclick="openHarness()">분석표 열기</button>
+    </section>
+  </main>
+  <div id="toast-root"></div>
+
+  <script>
+    const archiveFile = 'exams/loop-b-analysis-table.js';
+    const students = Array.from({ length: 12 }, (_, index) => ({ id: 's' + (index + 1), name: ['김가온','박도윤','최서진','이나윤','정하준','오서연','한지호','문예린','강도현','유민재','신아린','배시우'][index] }));
+    const classes = [{ id: 'c1', name: '중2A' }, { id: 'c2', name: '중2B' }];
+    const class_students = students.map((student, index) => ({ student_id: student.id, class_id: index < 6 ? 'c1' : 'c2' }));
+    const exam_sessions = students.map((student, index) => ({ id: 'e' + (index + 1), student_id: student.id, archive_file: archiveFile, exam_title: 'Loop B 기말 분석', school: '왕지중', grade: '중2', score: 64 + (index % 5) * 6, question_count: 23, exam_date: '2026-07-04' }));
+    const wrong_answers = [];
+    exam_sessions.forEach((session, index) => {
+      for (let q = 1; q <= 23; q += 1) {
+        if ((q + index) % 5 === 0 || (q <= 3 && index < 4) || (q === 12 && index < 8)) wrong_answers.push({ session_id: session.id, question_id: q });
+      }
+    });
+    const units = ['이차방정식', '함수', '도형', '확률', '식의 계산'];
+    const levels = ['하', '중하', '중', '상', '최상'];
+    const exam_blueprints = Array.from({ length: 23 }, (_, index) => ({
+      archive_file: archiveFile,
+      question_no: index + 1,
+      standard_unit: units[index % units.length],
+      difficulty: levels[index % levels.length],
+      questionType: index % 4 === 0 ? '주관식' : '객관식',
+      score: index % 5 === 0 ? 4 : 3
+    }));
+    const exam_question_reviews = exam_blueprints.filter((_, index) => index % 3 !== 2).map(bp => ({
+      archive_file: archiveFile,
+      question_no: bp.question_no,
+      answer: String((bp.question_no % 5) + 1),
+      review_text: JSON.stringify({
+        concept: `${bp.standard_unit} 핵심 조건 정리`,
+        tag: ['계산·검산', '풀이 순서', '조건 해석', '개념 재정리'][bp.question_no % 4],
+        asks: `${bp.standard_unit}에서 묻는 조건을 한 줄로 판별한다.`,
+        trap: '문제의 제한 조건을 마지막에 확인하면 오답으로 이어질 수 있다.',
+        key: '조건을 먼저 표시하고 계산 결과를 다시 대입한다.',
+        teach: '수업에서 같은 조건을 다른 표현으로 바꿔 읽는 연습을 진행한다.',
+        source: bp.question_no % 6 === 0 ? 'ai' : 'human'
+      })
+    }));
+    window.state = { db: { students, classes, class_students, exam_sessions, wrong_answers, exam_blueprints, exam_question_reviews, exam_analysis_meta: [{ archive_file: archiveFile, overview_text: '표 기반으로 수업 보강 문항을 빠르게 확인하는 하니스입니다.' }] } };
+    window.apEscapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    window.toast = message => {
+      const root = document.getElementById('toast-root');
+      const node = document.createElement('div');
+      node.className = 'toast';
+      node.textContent = message;
+      root.appendChild(node);
+      setTimeout(() => node.remove(), 2400);
+    };
+    window.setButtonBusy = function(button, busy, label) {
+      if (!button) return;
+      button.disabled = !!busy;
+      if (busy && label) button.dataset.originalText = button.textContent, button.textContent = label;
+      if (!busy && button.dataset.originalText) button.textContent = button.dataset.originalText;
+    };
+    window.api = { get: async () => ({ success: false }), post: async () => ({ success: false }) };
+    window.fetch = async () => ({ ok: false, text: async () => '' });
+  </script>
+  <script src="../apmath/js/report-text.js"></script>
+  <script src="../apmath/js/report-center.js"></script>
+  <script src="../apmath/js/report-print.js"></script>
+  <script>
+    function openHarness() {
+      reportCenterNavTo('exam', { archiveFile, studentId: 's1' });
+      openReportCenterModal('s1', 'daily', { forceDrilldown: true });
+    }
+    window.addEventListener('load', () => setTimeout(openHarness, 60));
+  </script>
+</body>
+</html>

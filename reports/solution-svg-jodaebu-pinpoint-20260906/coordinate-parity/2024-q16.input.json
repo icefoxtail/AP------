@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_INPUT_v1",
+  "questionId": 16,
+  "svg": "archive/assets/images/24_조대부고_2학기_중간_고2_수학II/q16-solution.svg",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 200,
+    "originY": 180,
+    "sx": 45,
+    "sy": 12,
+    "anchors": {
+      "origin": {
+        "element": "anchor-origin-o200",
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "anchor-xaxis-o200",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "anchor-yaxis-o200",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "tolerance": 1E-05,
+  "expectedFacts": [
+    {
+      "factId": "q16-join",
+      "type": "POINT",
+      "element": "point-o200-x2-ym4",
+      "expected": [
+        2,
+        -4
+      ]
+    },
+    {
+      "factId": "q16-line-slope",
+      "type": "LINE_SLOPE",
+      "element": "line-tangent-o200-x12-y1m4-x23p0-y2m16",
+      "expected": -12
+    }
+  ],
+  "renderResult": "PASS"
+}

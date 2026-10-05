@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>Mixed print layout QA launcher</title></head>
+<body>
+<script src="/archive/exams/original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js"></script>
+<script>
+  const bank = Array.isArray(window.questionBank) ? window.questionBank : [];
+  const byNo = number => bank.find((q, index) => Number(q.id || q.questionNo || index + 1) === number);
+  const overflow = new URLSearchParams(location.search).get('overflow') === '1';
+  const order = overflow ? [21, 20, 19] : [22, 21, 20, 21, 20, 22];
+  const questions = order.map(byNo).filter(Boolean).map(q => JSON.parse(JSON.stringify(q)));
+  if (overflow && questions[0]) {
+    questions[0].content = Array.from({ length: 15 }, (_, index) =>
+      `${index + 1}번째 조건에서 함수 $f(x)=x^2+1$의 값과 주어진 수열의 관계를 설명하고 계산 과정을 쓰시오.`
+    ).join(' ');
+    questions[0].layoutTag = 'grid';
+  }
+  sessionStorage.setItem('mixedQuestions', JSON.stringify(questions));
+  sessionStorage.setItem('mixedMeta', JSON.stringify({ title: 'Mixed 2up 교차 검수', qpp: 4 }));
+  location.replace('/archive/mixed_engine.html?fit=screen&mode=exam&qpp=4&qa=' + Date.now());
+</script>
+</body>
+</html>

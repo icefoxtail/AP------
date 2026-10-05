@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Proposition final render harness</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; color: #111827; }
+    #status { position: sticky; top: 0; background: #fff; padding: 12px 0; border-bottom: 1px solid #d1d5db; z-index: 2; }
+    #progress { font-weight: 700; }
+    #links { display: flex; gap: 16px; margin: 12px 0; }
+    #links a { pointer-events: none; color: #1d4ed8; }
+    #links a.ready { pointer-events: auto; }
+    #stage { width: 100%; min-height: 900px; margin-top: 16px; border: 1px solid #cbd5e1; }
+    #stage iframe { display: block; width: 100%; height: 900px; border: 0; }
+    .pass { color: #166534; }
+    .fail { color: #b91c1c; }
+    pre { white-space: pre-wrap; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div id="status">
+    <div id="progress">Starting...</div>
+    <div id="summary"></div>
+    <div id="links">
+      <a id="matrix-download" download="proposition_render_matrix.csv">matrix download</a>
+      <a id="failures-download" download="proposition_render_failures.csv">failures download</a>
+    </div>
+  </div>
+  <div id="stage"></div>
+  <pre id="log"></pre>
+  <script>
+    const root = document.getElementById('stage');
+    const progress = document.getElementById('progress');
+    const summary = document.getElementById('summary');
+    const log = document.getElementById('log');
+    const matrixColumns = [
+      'examId', 'mode', 'targetQuestionCount', 'renderedTargetCount',
+      'imageExpected', 'imageDecoded', 'solutionImageExpected',
+      'solutionImageDecoded', 'overflowCount', 'consoleErrorCount',
+      'pageErrorCount', 'status', 'evidenceNote'
+    ];
+    const failureColumns = ['examId', 'mode', 'status', 'failureReason', 'evidenceNote'];
+    const modes = ['exam', 'solution', 'answer'];
+    const harnessParams = new URLSearchParams(location.search);
+    const batchStart = Math.max(0, Number(harnessParams.get('start') || 0));
+    const batchLimit = Math.max(1, Number(harnessParams.get('limit') || 5));
+    const selectedModes = modes.includes(harnessParams.get('mode')) ? [harnessParams.get('mode')] : modes;
+    const matrix = [];
+    const failures = [];
+
+    function csvCell(value) {
+      const text = String(value == null ? '' : value);
+      return /[",\r\n]/.test(text) ? '"' + text.replaceAll('"', '""') + '"' : text;
+    }
+    function toCsv(rows, columns) {
+      return [columns.join(','), ...rows.map(row => columns.map(column => csvCell(row[column])).join(','))].join('\n') + '\n';
+    }
+    function parseCsvLine(line) {
+      const cells = [];
+      let cell = '';
+      let quoted = false;
+      for (let index = 0; index < line.length; index += 1) {
+        const char = line[index];
+        if (char === '"' && quoted && line[index + 1] === '"') {
+          cell += '"';
+          index += 1;
+        } else if (char === '"') {
+          quoted = !quoted;
+        } else if (char === ',' && !quoted) {
+          cells.push(cell);
+          cell = '';
+        } else {
+          cell += char;
+        }
+      }
+      cells.push(cell);
+      return cells;
+    }
+    async function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function withTimeout(promise, ms) {
+      return Promise.race([promise, sleep(ms).then(() => 'HARNESS_TIMEOUT')]);
+    }
+    function setProgress(text, isFail) {
+      progress.textContent = text;
+      progress.className = isFail ? 'fail' : '';
+    }
+    function qNumber(box) {
+      return Number(String(box.querySelector('.q-num')?.textContent || '').replace(/[^\d]/g, ''));
+    }
+    function targetBoxes(doc, targetNumbers) {
+      return [...doc.querySelectorAll('#print-area .q-box')].filter(box => targetNumbers.has(qNumber(box)));
+    }
+    function targetAnswerCells(doc, targetNumbers) {
+      return [...doc.querySelectorAll('#print-area .ans-cell:not(.ans-cell-empty)')].filter(cell => {
+        const number = Number(String(cell.querySelector('.ans-n')?.textContent || '').replace(/[^\d]/g, ''));
+        return targetNumbers.has(number);
+      });
+    }
+    function contentHasMath(value) {
+      return /[$]/.test(String(value || ''));
+    }
+    function decodedImages(images) {
+      return images.filter(image => image.complete && image.naturalWidth > 0 && image.naturalHeight > 0);
+    }
+    async function waitForImages(doc) {
+      const images = [...doc.querySelectorAll('#print-area img')];
+      await Promise.all(images.map(image => withTimeout(
+        typeof image.decode === 'function' ? image.decode().catch(() => {}) : Promise.resolve(),
+        8000
+      )));
+      await sleep(150);
+    }
+    async function waitForEngineRender(child) {
+      const deadline = Date.now() + 30000;
+      while (Date.now() < deadline) {
+        const hasData = Array.isArray(child?.questionBank) && child.questionBank.length > 0;
+        const hasPage = Boolean(child?.document?.querySelector('#print-area .page'));
+        if (hasData && hasPage) {
+          const renderReady = child.__AP_RENDER_READY__;
+          if (renderReady && typeof renderReady.then === 'function') {
+            const settled = await withTimeout(renderReady, 30000);
+            if (settled === 'HARNESS_TIMEOUT') return false;
+          }
+          await sleep(200);
+          if (child.document.querySelector('#print-area .page')) return true;
+        }
+        await sleep(100);
+      }
+      return false;
+    }
+    function installChildInstrumentation(child, consoleErrors, pageErrors) {
+      child.addEventListener('error', event => {
+        pageErrors.push(String(event?.message || event?.error || 'child error'));
+      });
+      child.addEventListener('unhandledrejection', event => {
+        pageErrors.push(String(event?.reason || 'unhandled rejection'));
+      });
+      if (child.console && typeof child.console.error === 'function') {
+        const originalError = child.console.error.bind(child.console);
+        child.console.error = (...args) => {
+          consoleErrors.push(args.map(value => String(value)).join(' '));
+          originalError(...args);
+        };
+      }
+    }
+    async function openEngine(url) {
+      const iframe = document.createElement('iframe');
+      iframe.title = 'active engine render';
+      const consoleErrors = [];
+      const pageErrors = [];
+      const loaded = new Promise(resolve => {
+        iframe.addEventListener('load', () => resolve(true), { once: true });
+        iframe.addEventListener('error', () => resolve(false), { once: true });
+      });
+      iframe.src = url;
+      root.replaceChildren(iframe);
+      const didLoad = await withTimeout(loaded, 30000);
+      const child = iframe.contentWindow;
+      if (child) installChildInstrumentation(child, consoleErrors, pageErrors);
+      if (didLoad === 'HARNESS_TIMEOUT' || !child) {
+        return { iframe, child, consoleErrors, pageErrors, ready: false };
+      }
+      const ready = await waitForEngineRender(child);
+      if (child.document) await waitForImages(child.document);
+      await sleep(250);
+      return { iframe, child, consoleErrors, pageErrors, ready };
+    }
+    function makeUrl(row, mode) {
+      const modeValue = mode === 'solution' ? 'sol' : (mode === 'answer' ? 'ans' : 'exam');
+      return location.origin + '/archive/engine.html?mode=' + modeValue +
+        '&qpp=4&data=' + encodeURIComponent(row.sourceJsPath.replace(/^archive\//, ''));
+    }
+    async function inspect(row, mode) {
+      const consoleErrors = [];
+      const pageErrors = [];
+      const opened = await openEngine(makeUrl(row, mode));
+      consoleErrors.push(...opened.consoleErrors);
+      pageErrors.push(...opened.pageErrors);
+      const child = opened.child;
+      const doc = child?.document;
+      const data = Array.isArray(child?.questionBank) ? child.questionBank : [];
+      const targetIds = String(row.targetQuestionIds || '').split('|').filter(Boolean);
+      const targetIndexes = targetIds.map(id => data.findIndex(question => String(question?.id) === String(id)));
+      const targetNumbers = new Set(targetIndexes.filter(index => index >= 0).map(index => index + 1));
+      const targetQuestions = targetIndexes.filter(index => index >= 0).map(index => data[index]);
+      const boxes = doc ? targetBoxes(doc, targetNumbers) : [];
+      const answerCells = doc ? targetAnswerCells(doc, targetNumbers) : [];
+      const renderedTargetCount = mode === 'answer'
+        ? new Set(answerCells.map(cell => cell.querySelector('.ans-n')?.textContent)).size
+        : new Set(boxes.map(box => qNumber(box))).size;
+      const targetImages = mode === 'exam'
+        ? targetQuestions.filter(question => question && question.image).length
+        : 0;
+      const targetSolutionImages = mode === 'solution'
+        ? targetQuestions.filter(question => question && question.solutionImage).length
+        : 0;
+      const imageNodes = boxes.flatMap(box => [...box.querySelectorAll('.q-image-wrap img')]);
+      const solutionImageNodes = boxes.flatMap(box => [...box.querySelectorAll('.sol-image-wrap img')]);
+      const imageDecoded = decodedImages(imageNodes).length;
+      const solutionImageDecoded = decodedImages(solutionImageNodes).length;
+      const overflowPages = doc ? [...doc.querySelectorAll('#print-area .page-body')].filter(page =>
+        page.scrollWidth > page.clientWidth + 2
+      ).length : 0;
+      const clippedPages = doc ? [...doc.querySelectorAll('#print-area .page-body')].filter(page =>
+        page.scrollHeight > page.clientHeight + 2
+      ).length : 0;
+      const visibleBodyText = doc?.body?.innerText || '';
+      const loadErrorTextCount = /시험지 데이터를 불러올 수 없습니다|시험지 렌더링 중 오류|아카이브 엔진 오류/.test(visibleBodyText) ? 1 : (doc ? 0 : 1);
+      const allTargetBoxContent = mode === 'answer'
+        ? answerCells.length === targetQuestions.length && answerCells.every(cell => (cell.querySelector('.ans-v')?.textContent || '').trim())
+        : boxes.length >= targetQuestions.length && boxes.every(box => (box.textContent || '').trim());
+      const choicesExpected = mode === 'exam'
+        ? targetQuestions.filter(question => Array.isArray(question.choices) && question.choices.length > 0).length
+        : 0;
+      const choicesDisplayed = mode === 'exam'
+        ? boxes.filter(box => box.querySelector('.choices')).length >= choicesExpected
+        : true;
+      const answerDisplayed = mode === 'solution'
+        ? boxes.length >= targetQuestions.length && boxes.every(box => (box.querySelector('.sol-ans')?.textContent || '').trim())
+        : mode === 'answer'
+          ? allTargetBoxContent
+          : true;
+      const solutionDisplayed = mode === 'solution'
+        ? boxes.length >= targetQuestions.length && boxes.every(box => (box.querySelector('.sol-exp')?.textContent || '').trim())
+        : true;
+      const textForMath = targetQuestions.map(question => mode === 'solution'
+        ? String(question.solution || '')
+        : mode === 'answer' ? String(question.answer || '') : String(question.content || '')).join(' ');
+      const mathExpected = contentHasMath(textForMath);
+      const mathRendered = !mathExpected || boxes.some(box => box.querySelector('mjx-container')) ||
+        (mode === 'answer' && doc?.querySelector('#print-area mjx-container'));
+      const failureReasons = [];
+      if (!opened.ready) failureReasons.push('render-ready timeout');
+      if (targetIndexes.some(index => index < 0)) failureReasons.push('target question missing from loaded bank');
+      if (renderedTargetCount !== Number(row.targetQuestionCount)) failureReasons.push('target DOM count mismatch');
+      if (!allTargetBoxContent) failureReasons.push('content/answer display missing');
+      if (!choicesDisplayed) failureReasons.push('choices display missing');
+      if (!answerDisplayed) failureReasons.push('answer display missing');
+      if (!solutionDisplayed) failureReasons.push('solution display missing');
+      if (targetImages !== imageDecoded) failureReasons.push('question image decode mismatch');
+      if (targetSolutionImages !== solutionImageDecoded) failureReasons.push('solution image decode mismatch');
+      if (!mathRendered) failureReasons.push('MathJax output missing');
+      if (overflowPages) failureReasons.push('horizontal overflow');
+      if (clippedPages) failureReasons.push('vertical clipping');
+      if (loadErrorTextCount) failureReasons.push('load/render error text');
+      if (consoleErrors.length) failureReasons.push('console.error');
+      if (pageErrors.length) failureReasons.push('pageerror');
+      const status = failureReasons.length ? 'FAIL' : 'PASS';
+      const evidenceNote = [
+        'pageLoad=' + (opened.ready ? 'PASS' : 'FAIL'),
+        'targetIds=' + targetIds.length,
+        'choicesExpected=' + choicesExpected,
+        'contentOrAnswer=' + (allTargetBoxContent ? 'PASS' : 'FAIL'),
+        'choices=' + (choicesDisplayed ? 'PASS' : 'FAIL'),
+        'answer=' + (answerDisplayed ? 'PASS' : 'FAIL'),
+        'solution=' + (solutionDisplayed ? 'PASS' : 'FAIL'),
+        'math=' + (mathRendered ? 'PASS' : 'FAIL'),
+        'clippedPages=' + clippedPages,
+        'loadErrorText=' + loadErrorTextCount
+      ].join(';');
+      const result = {
+        examId: row.examId,
+        mode,
+        targetQuestionCount: Number(row.targetQuestionCount),
+        renderedTargetCount,
+        imageExpected: targetImages,
+        imageDecoded,
+        solutionImageExpected: targetSolutionImages,
+        solutionImageDecoded,
+        overflowCount: overflowPages,
+        consoleErrorCount: consoleErrors.length,
+        pageErrorCount: pageErrors.length,
+        status,
+        failureReason: failureReasons.join('|'),
+        evidenceNote
+      };
+      matrix.push(result);
+      if (status === 'FAIL') {
+        failures.push({
+          examId: row.examId,
+          mode,
+          status,
+          failureReason: failureReasons.join('|'),
+          evidenceNote: evidenceNote + ';console=' + consoleErrors.join(' || ') + ';page=' + pageErrors.join(' || ')
+        });
+      }
+      return result;
+    }
+    async function main() {
+      const csvText = await (await fetch('target_render_exams.csv')).text();
+      const lines = csvText.trim().split(/\r?\n/).filter(Boolean);
+      const headers = parseCsvLine(lines.shift());
+      const allRows = lines.map(line => Object.fromEntries(parseCsvLine(line).map((value, index) => [headers[index], value])));
+      const rows = allRows.slice(batchStart, batchStart + batchLimit);
+      const batchName = 'batch' + batchStart + '-' + (batchStart + rows.length - 1);
+      document.getElementById('matrix-download').download = 'proposition_render_matrix_' + batchName + '.csv';
+      document.getElementById('failures-download').download = 'proposition_render_failures_' + batchName + '.csv';
+      let step = 0;
+      for (const row of rows) {
+        for (const mode of selectedModes) {
+          step += 1;
+          setProgress('Rendering ' + step + '/' + (rows.length * selectedModes.length) + ': ' + row.examId + ' / ' + mode);
+          const result = await inspect(row, mode);
+          log.textContent = matrix.map(item => item.examId + ' / ' + item.mode + ' / ' + item.status + (item.failureReason ? ' / ' + item.failureReason : '')).join('\n');
+          if (result.status === 'FAIL') log.className = 'fail';
+        }
+      }
+      const matrixUrl = URL.createObjectURL(new Blob([toCsv(matrix, matrixColumns)], { type: 'text/csv;charset=utf-8' }));
+      const failuresUrl = URL.createObjectURL(new Blob([toCsv(failures, failureColumns)], { type: 'text/csv;charset=utf-8' }));
+      const matrixLink = document.getElementById('matrix-download');
+      const failuresLink = document.getElementById('failures-download');
+      matrixLink.href = matrixUrl;
+      failuresLink.href = failuresUrl;
+      matrixLink.classList.add('ready');
+      failuresLink.classList.add('ready');
+      const failed = failures.length;
+      summary.textContent = 'Completed: exams=' + rows.length + ', expectedRows=' + (rows.length * selectedModes.length) +
+        ', actualRows=' + matrix.length + ', failedRows=' + failed;
+      summary.className = failed ? 'fail' : 'pass';
+      setProgress(failed ? 'RENDER_FAIL' : 'RENDER_PASS', Boolean(failed));
+      document.title = 'Proposition render ' + (failed ? 'FAIL' : 'PASS') + ' ' + batchName + ' ' + matrix.length + ' rows';
+    }
+    main().catch(error => {
+      setProgress('HARNESS_ERROR', true);
+      summary.textContent = String(error?.stack || error);
+      summary.className = 'fail';
+    });
+  </script>
+</body>
+</html>

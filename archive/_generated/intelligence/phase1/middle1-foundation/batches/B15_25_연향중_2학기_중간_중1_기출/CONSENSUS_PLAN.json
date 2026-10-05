@@ -1,0 +1,249 @@
+{
+  "schemaVersion": "m1-consensus-plan-v1",
+  "batchNo": 15,
+  "denominator": 24,
+  "rootDirectReadOrdinals": [
+    15,
+    23
+  ],
+  "rootPolicy": "Frozen M1-04/M1-05/M1-07 parents remain upstream baseline for all 24 UIDs; A/B found no L1/L2 conflict. C independently read only the three actual method/source conflicts #15/#20/#23. Root directly read the unresolved #15 image/answer and #23 folded-rectangle image/answer. #15 is underdetermined and SOURCE_BLOCKED; #23 is source-verifiable at 124 degrees with a separate generic-solution quality finding. Off-topic solutions #17–#24 are quality findings, not automatic broad Root or difficulty rechecks. Reuse the same primary and repeatable skeleton where prior candidate names encode incidental counts or output format; global compression will handle neutral aliases.",
+  "decisions": [
+    {
+      "sourceOrdinal": 1,
+      "chosenRole": "A",
+      "reason": "Read the map point coordinates and identify the one mismatched label. Reuse the earlier coordinate-point matching type and skeleton; a map graphic does not create a separate primary method.",
+      "overrides": {
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_MATCH_CHOICE",
+        "l3SemanticReason": "지도에 표시된 점의 순서쌍을 좌표축에 따라 읽어 보기와 대조하는 기존 좌표 판독 유형이다.",
+        "l4SemanticReason": "각 표시점의 x,y를 읽고 제시된 좌표 설명 하나의 불일치를 고르는 기존 반복 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "chosenRole": "A",
+      "reason": "Determine the signs of transformed coordinates from the second-quadrant premise. Reuse the established quadrant-from-signs type and sign-transform template.",
+      "overrides": {
+        "problemTypeKey": "PT_QUADRANT_FROM_COORDINATE_SIGNS",
+        "templateKey": "TPL_POINT_SIGN_TRANSFORM_QUADRANT",
+        "l3SemanticReason": "기준 점의 사분면 부호에서 변형된 좌표의 부호를 판정하는 기존 유형이다.",
+        "l4SemanticReason": "둘째 사분면의 x<0,y>0를 식에 대입해 새 점의 사분면을 읽는 기존 골격이다.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "chosenRole": "A",
+      "reason": "Read the temperature-time graph's repeated rise and fall, then test each time/value claim. A/B describe the same periodic-graph reading; keep one question-level type."
+    },
+    {
+      "sourceOrdinal": 4,
+      "chosenRole": "A",
+      "reason": "With constant filling rate, cross-section width determines height-graph slope. A/B agree on ㄱ-A, ㄴ-C, ㄷ-B; reuse the existing graph-to-container-shape skeleton and retain one genuine rate/shape cross concept rather than split L3 by vessel silhouette.",
+      "overrides": {
+        "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+        "templateKey": "TPL_CONSTANT_FILL_RATE_PIECEWISE_SLOPE_SHAPE",
+        "l3SemanticReason": "일정한 유입량에서 용기의 단면 변화와 높이-시간 그래프 기울기를 대응시키는 기존 유형이다.",
+        "l4SemanticReason": "넓어짐·좁아짐·일정한 단면을 각각 감소·증가·일정한 높이 상승률에 짝짓는 기존 골격이다.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "chosenRole": "A",
+      "reason": "Use one plotted point to recover the direct coefficient and one to recover the inverse constant, then subtract. B's direct/inverse labels restate the primary two-graph computation and are not extra CrossConcept tags."
+    },
+    {
+      "sourceOrdinal": 6,
+      "chosenRole": "A",
+      "reason": "Check the fixed graph y=−x against statements about slope, quadrants and coordinates. Reuse prior function-graph property checking rather than a special key for this one negative line.",
+      "overrides": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "l3SemanticReason": "주어진 함수 그래프의 좌표·증감·사분면 성질을 보기별로 검증하는 기존 유형이다.",
+        "l4SemanticReason": "y=−x의 각 진술을 그래프와 식에 대조해 참인 진술을 선택하는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "chosenRole": "A",
+      "reason": "Classify real situations by fixed product versus fixed quotient. Reuse direct/inverse context classification; named contexts in B's CrossConcept list are examples within the primary task.",
+      "overrides": {
+        "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+        "templateKey": "TPL_CONTEXT_DIRECT_INVERSE_PROPORTION_PAIRING",
+        "l3SemanticReason": "상황 속 두 양의 곱 또는 비가 일정한지로 정비례·반비례를 구분하는 기존 유형이다.",
+        "l4SemanticReason": "여러 문장 상황에서 일정한 곱을 찾아 반비례 관계를 선택하는 기존 반복 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "chosenRole": "A",
+      "reason": "Recover the inverse-proportion constant from a graph point and evaluate the requested coordinate. Both workers use xy=k; one substitution skeleton suffices."
+    },
+    {
+      "sourceOrdinal": 9,
+      "chosenRole": "A",
+      "reason": "Successively use midpoint relations on one segment to recover a length. Reuse the nested-midpoint type and consecutive-midpoint skeleton; a third midpoint does not define a new L3.",
+      "overrides": {
+        "problemTypeKey": "PT_SEGMENT_LENGTH_FROM_NESTED_MIDPOINTS",
+        "templateKey": "TPL_M1_CONSECUTIVE_MIDPOINTS_ON_LINE",
+        "l3SemanticReason": "한 직선 위의 반복 중점 관계로 구간 길이를 복원하는 기존 유형이다.",
+        "l4SemanticReason": "앞선 절반 구간을 다시 절반으로 나누고 남은 길이를 결합하는 기존 중점 연쇄 골격이다.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "chosenRole": "A",
+      "reason": "Transfer vertical/right-angle relations at intersecting lines and subtract the requested angles. B's vertical-angle label is intrinsic to this primary angle computation.",
+      "overrides": {
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "chosenRole": "A",
+      "reason": "Partition a straight angle with two given ratios and sum the requested parts. A/B share the same ratio-to-angle calculation.",
+      "overrides": {
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "chosenRole": "B",
+      "reason": "Verify incidence and right-angle claims on the pictured right trapezoid. Both workers test the same statement set; retain one primary property-check type.",
+      "overrides": {
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "chosenRole": "B",
+      "reason": "Check the listed edge/face properties of a pentagonal prism. Reuse the prism edge-face relation L3 and keep a multi-statement L4 for this actual audit skeleton.",
+      "overrides": {
+        "problemTypeKey": "PT_M1_PRISM_EDGE_FACE_RELATION_JUDGMENT",
+        "l3SemanticReason": "각기둥의 모서리·면의 평행·수직·포함 관계를 실제 입체에서 검사하는 기존 유형이다.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "chosenRole": "A",
+      "reason": "Identify all angles alternate to the labeled angle across the displayed parallel lines; position, not numerical angle calculation, is decisive."
+    },
+    {
+      "sourceOrdinal": 15,
+      "chosenRole": "C",
+      "reason": "C independently identifies the second falling transversal as unconstrained. Root original-image proof confirms a=50 degrees but b varies while l∥m and the marked 50 degrees remain fixed. Neither the frozen 120-degree key nor a 130-degree alternative is uniquely supported. Preserve SOURCE_BLOCKED/HOLD under baseline M1-05, no taxonomy/writeback.",
+      "overrides": {
+        "reviewStatus": "HOLD",
+        "sourceIssue": "The printed l∥m and 50-degree angle determine a only; b belongs to a separate unconstrained falling transversal. The keyed 120-degree value is not uniquely determined by the source diagram or text.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "chosenRole": "A",
+      "reason": "Transfer the lower inclination across parallel lines and use the apex angle to obtain exterior x=120 degrees. Reuse existing parallel-zigzag L3/L4; separate named triangle/parallel support tags would duplicate the primary chain.",
+      "overrides": {
+        "problemTypeKey": "PT_PARALLEL_LINES_ZIGZAG_ANGLE",
+        "templateKey": "TPL_PARALLEL_ZIGZAG_WITH_TWO_GIVEN_ANGLES",
+        "l3SemanticReason": "평행선 사이 꺾인 선의 방향각을 이동시켜 미지각을 구하는 기존 유형이다.",
+        "l4SemanticReason": "아래 각도에서 첫 기울기를 얻고 꼭짓점 각을 더해 위쪽 외각을 구하는 기존 골격이다.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "chosenRole": "A",
+      "reason": "Inspect equal-radius arcs and the transferred chord to validate compass angle copying. Reuse the existing angle-copy construction type and arc/chord template; unrelated stored solution text is quality finding only.",
+      "overrides": {
+        "problemTypeKey": "PT_M1_ANGLE_COPY_CONSTRUCTION",
+        "templateKey": "TPL_M1_ARC_AND_CHORD_TRANSFER_SEQUENCE",
+        "l3SemanticReason": "컴퍼스의 같은 반지름 호와 현 길이로 각을 옮기는 기존 작도 유형이다.",
+        "l4SemanticReason": "원각의 호·교점을 새 꼭짓점에서 같은 호와 현으로 재현하는 기존 절차 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "chosenRole": "A",
+      "reason": "Enumerate valid side-length triples using the longest-side triangle inequality. Reuse the prior fixed-length triangle-feasibility count L3/L4; the stored congruence prose is a separate quality defect.",
+      "overrides": {
+        "problemTypeKey": "PT_TRIANGLE_SIDE_FEASIBILITY_COUNT",
+        "templateKey": "TPL_COUNT_VALID_TRIPLES_FROM_FIXED_LENGTHS",
+        "l3SemanticReason": "주어진 길이 중 세 개를 골라 삼각형 부등식을 만족하는 조합을 세는 기존 유형이다.",
+        "l4SemanticReason": "가장 긴 변을 정해 나머지 두 변의 합을 검사하며 중복 없는 길이 삼중쌍을 세는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "chosenRole": "A",
+      "reason": "ASA and SAS fix a triangle while SSA can have two realizations and AAA omits scale. Reuse the prior unique-triangle-data classification L3/L4; B's ASA/SSA/AAA tags are intrinsic cases.",
+      "overrides": {
+        "problemTypeKey": "PT_UNIQUE_TRIANGLE_DETERMINATION_FROM_GIVEN_DATA",
+        "templateKey": "TPL_CLASSIFY_TRIANGLE_DATA_BY_UNIQUENESS",
+        "l3SemanticReason": "주어진 변·각 조건이 삼각형을 하나로 정하는지 분류하는 기존 유형이다.",
+        "l4SemanticReason": "ASA·SAS의 유일성과 SSA·AAA의 비유일성을 조건별로 대조하는 기존 골격이다."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "chosenRole": "C",
+      "reason": "C independently recovers the midpoint's orthogonal projection and equal perpendicular heights, then AE=10 and area=50. A's equal-area argument and B's symmetry argument converge on this decisive projection skeleton; choose C's explicit source-grounded derivation. The archived angle boilerplate remains a solution-quality finding; do not promote its method.",
+      "overrides": {
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "chosenRole": "A",
+      "reason": "Substitute x=8 into the direct-proportion graph to get y=10, then use the right triangle area 40. The coordinate-to-area chain is primary; B's two named steps do not require decorative cross tags.",
+      "overrides": {
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "l3SemanticReason": "좌표 또는 함수 그래프에서 꼭짓점 좌표를 얻어 삼각형 넓이를 계산하는 기존 유형이다."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "chosenRole": "B",
+      "reason": "Four collinear points and one external point give five distinct lines, fourteen rays, ten segments, total29. Reuse the existing collinear-point object-count L3/L4 despite the older template name encoding three baseline points; global alias must generalize its numeric wording. Collinearity is the given condition, not an extra CrossConcept.",
+      "overrides": {
+        "problemTypeKey": "PT_COLLINEAR_POINTS_OBJECT_COUNT",
+        "templateKey": "TPL_THREE_COLLINEAR_ONE_OFFLINE_LINE_RAY_SEGMENT_COUNTS",
+        "l3SemanticReason": "한 직선 위의 여러 점과 밖의 한 점으로 서로 다른 직선·반직선·선분을 세는 기존 유형이다.",
+        "l4SemanticReason": "동일 직선 중복을 합치고 반직선 방향별 중복을 제거한 뒤 선분 쌍을 세는 기존 골격이다.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "chosenRole": "B",
+      "reason": "A/B obtain 124 degrees; C held because generic solution does not identify a fold-ray correspondence. Root read original diagram: BA/BD form a straight line, BC∥DF are original rectangle edges, so DB is 114 degrees from DF, DE is 58 degrees clockwise from DB, and angle EDF is 56. The triangle's other angles sum to124. Keep the source answer, with a separate solution-quality HOLD, and record the proof rather than relying on the generic explanation.",
+      "overrides": {
+        "decisiveStep": "In the original diagram BA and BD are opposite rays and BC∥DF. Since angle ABC=66 degrees, DB makes 114 degrees with rightward DF; angle BDE=58 degrees leaves angle EDF=56 degrees. Therefore angle DEF+angle DFE=180−56=124 degrees.",
+        "crossConceptKeys": [],
+        "crossConceptReasons": [],
+        "semanticReason": "The pictured original rectangle sides and continuous BA–BD line transfer the 66-degree angle to D; subtracting 58 degrees and using the triangle angle sum gives124 independently of the generic stored solution.",
+        "sourceIssue": "The source answer 124 degrees is verifiable from the original diagram, but the archived generic solution omits the necessary straight-ray and parallel-side transfer and remains a separate solution-quality finding.",
+        "conditionKeys": [],
+        "conditionReasons": []
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "chosenRole": "A",
+      "reason": "Central-square diagonals give equal 45-degree radii; the equal small squares give matching angles, allowing ASA congruence and area transfer to 16 and32. A/B use the same congruence-and-area chain; keep one auxiliary transfer concept rather than enumerate intrinsic square, ASA and area tags."
+    }
+  ]
+}

@@ -1,0 +1,393 @@
+﻿{
+    "meta":  {
+                 "generatedAt":  "2026-05-25T22:30:00+09:00",
+                 "workspace":  "C:\\Users\\USER\\Desktop\\AP------",
+                 "textbookRoot":  "archive/textbook",
+                 "status":  "draft_report_only",
+                 "hermesReference":  {
+                                         "repository":  "https://github.com/NousResearch/hermes-agent",
+                                         "checked":  true,
+                                         "checkedItems":  [
+                                                              "README.md",
+                                                              "AGENTS.md",
+                                                              "skills",
+                                                              "optional-skills",
+                                                              ".plans",
+                                                              "plans",
+                                                              "tools",
+                                                              "plugins",
+                                                              "mcp_serve.py",
+                                                              "trajectory_compressor.py"
+                                                          ],
+                                         "importPolicy":  "reference_structure_only_no_install_no_copy_no_dependency"
+                                     },
+                 "hardBans":  [
+                                  ".agent actual creation",
+                                  "docs structure finalization",
+                                  "Hermes install or execution",
+                                  "dependency addition or package install",
+                                  "generated/js modification",
+                                  "generated/reports overwrite",
+                                  "pipeline code modification",
+                                  "PDF conversion",
+                                  "daemon/cron/MCP server implementation",
+                                  "apmath modification",
+                                  "archive operational HTML modification",
+                                  "archive/exams modification",
+                                  "git add/commit/push"
+                              ]
+             },
+    "purpose":  "Draft boot manifest for future archive/textbook workers. Read-only operating layer; does not define a permanent .agent structure.",
+    "firstReadCommands":  [
+                              "Get-ChildItem -Force | Sort-Object Name"
+                          ],
+    "firstReadFiles":  [
+                           "archive/textbook/CODEX_RESULT.md",
+                           "archive/textbook/tools/textbook-pipeline/README.md",
+                           "archive/textbook/pipeline.config.json",
+                           "archive/textbook/textbook_pipeline_queue.config.json",
+                           "archive/textbook/tools/textbook-pipeline/tests/pipeline-stage-contract.test.mjs",
+                           "archive/textbook/reports/hermes_agent_textbook_pipeline_migration_assessment_20260525.md"
+                       ],
+    "operatingScope":  {
+                           "operatingJs":  "archive/textbook/{book}/generated/js/**/*.js",
+                           "reportDraftRoot":  "archive/textbook/reports",
+                           "doNotOverwrite":  [
+                                                  "archive/textbook/**/generated/reports/**",
+                                                  "archive/textbook/**/generated/review_pack/**",
+                                                  "archive/textbook/**/generated/assets/**"
+                                              ],
+                           "doNotTouch":  [
+                                              "apmath/**",
+                                              "archive/index.html",
+                                              "archive/mixer.html",
+                                              "archive/mixed_engine.html",
+                                              "archive/exams/**",
+                                              "package.json",
+                                              "package-lock.json"
+                                          ]
+                       },
+    "localInventory":  {
+                           "bookDirectories":  [
+                                                   "_동아_고등_공통수학1_교과서",
+                                                   "_동아_고등_공통수학2_교과서",
+                                                   "_미래앤_고등_공통수학1_교과서",
+                                                   "_미래앤_고등_공통수학2_교과서",
+                                                   "_비상교육_ 고등_공통수학1(김원경)_교과서",
+                                                   "_비상교육_ 고등_공통수학2(김원경)_교과서",
+                                                   "_비상교육_고등_대수_교과서",
+                                                   "_비상교육_고등_확률과통계",
+                                                   "22개정 RPM 2-1",
+                                                   "22개정 RPM 2-2",
+                                                   "22개정 RPM 공통수학1",
+                                                   "22개정 RPM 공통수학2",
+                                                   "22개정_라이트쎈_ 대수",
+                                                   "22개정_라이트쎈_공통수학1",
+                                                   "22개정_라이트쎈_공통수학2",
+                                                   "22개정_라이트쎈_중1-1",
+                                                   "22개정_라이트쎈_중1-2",
+                                                   "22개정_라이트쎈_중2-1",
+                                                   "22개정_마플시너지_공통수학1",
+                                                   "22개정_마플시너지_공통수학2"
+                                               ],
+                           "stageFiles":  [
+                                              "00-rulebook-gate.mjs",
+                                              "01-detect-environment.mjs",
+                                              "02-detect-pdfs.mjs",
+                                              "03-read-rules-and-samples.mjs",
+                                              "04b-question-id-mapping-guard.mjs",
+                                              "04-detect-sections.mjs",
+                                              "05-page-crop.mjs",
+                                              "06b-review-crop-quality.mjs",
+                                              "06c-question-page-mapping-audit.mjs",
+                                              "06d-question-page-mapping-repair.mjs",
+                                              "06-question-full-crop.mjs",
+                                              "07a-visual-asset-link-audit.mjs",
+                                              "07-visual-asset-crop.mjs",
+                                              "08a-quick-answer-table.mjs",
+                                              "08b-answer-solution-crop.mjs",
+                                              "09-build-internal-model.mjs",
+                                              "10b-fail-empty-content-cause-classify.mjs",
+                                              "10b-scan-broken-formula-strings.mjs",
+                                              "10b-transcribe-content-choices.mjs",
+                                              "10c-answer-fill-and-verify.mjs",
+                                              "10c-fail-missing-answer-cause-classify.mjs",
+                                              "10c-scan-answer-string-risk.mjs",
+                                              "10-emit-output-profiles.mjs",
+                                              "11-validate.mjs",
+                                              "12b-gemini-formula-patch-dry-run.mjs",
+                                              "12d-apply-gemini-formula-patches.mjs",
+                                              "12-formula-repair-target-extract.mjs",
+                                              "12-make-input-packs.mjs",
+                                              "13-apply-corrections.mjs",
+                                              "14-final-pre-review-validate.mjs"
+                                          ],
+                           "libFiles":  [
+                                            "column-detect.mjs",
+                                            "config.mjs",
+                                            "correction-utils.mjs",
+                                            "crop-utils.mjs",
+                                            "env-loader.mjs",
+                                            "internal-model-utils.mjs",
+                                            "js-archive-utils.mjs",
+                                            "js-normalization-utils.mjs",
+                                            "output-profile-utils.mjs",
+                                            "paths.mjs",
+                                            "pdf-tools.mjs",
+                                            "report-utils.mjs",
+                                            "rulebook-gate-utils.mjs",
+                                            "section-utils.mjs",
+                                            "stage-result-utils.mjs",
+                                            "standard-unit-utils.mjs",
+                                            "zip-utils.mjs"
+                                        ],
+                           "helperFiles":  [
+                                               "build_donga_fresh_packs.py",
+                                               "build_lightssen_fresh_packs.py",
+                                               "build_miraen_fresh_packs.py",
+                                               "build_miraen2_fresh_packs.py",
+                                               "build_new4_fresh_packs.py",
+                                               "build_rpm_fresh_packs.py",
+                                               "build_visang2_fresh_packs.py",
+                                               "crop_answer_candidate_pages_all.py",
+                                               "crop_visual_assets.py",
+                                               "inspect_lightssen_pdf_structure.py",
+                                               "make_content_review_contact_sheet.py",
+                                               "make_fresh_unit_crop_review_folders.mjs",
+                                               "make_gpt_unit_packs.mjs",
+                                               "make_unit_review_packs.mjs",
+                                               "normalize-generated-js.mjs",
+                                               "render_pdf_page_crops.py",
+                                               "review_crop_quality.py",
+                                               "review_textbook_crop_quality.py",
+                                               "run_10b_all_generated.mjs",
+                                               "test_crop_quality_review.py",
+                                               "test_lightssen_tight_recrop.py",
+                                               "tighten_lightssen_crops.py",
+                                               "validate_rpm_book_sequential_ids.py",
+                                               "write_generated_codex_results.py"
+                                           ],
+                           "fileCounts":  [
+                                              {
+                                                  "extension":  ".png",
+                                                  "count":  42779
+                                              },
+                                              {
+                                                  "extension":  ".json",
+                                                  "count":  3495
+                                              },
+                                              {
+                                                  "extension":  ".js",
+                                                  "count":  929
+                                              },
+                                              {
+                                                  "extension":  ".py",
+                                                  "count":  532
+                                              },
+                                              {
+                                                  "extension":  ".pyc",
+                                                  "count":  520
+                                              },
+                                              {
+                                                  "extension":  ".zip",
+                                                  "count":  389
+                                              },
+                                              {
+                                                  "extension":  ".md",
+                                                  "count":  212
+                                              },
+                                              {
+                                                  "extension":  ".h",
+                                                  "count":  89
+                                              },
+                                              {
+                                                  "extension":  ".jpg",
+                                                  "count":  85
+                                              },
+                                              {
+                                                  "extension":  ".mjs",
+                                                  "count":  80
+                                              },
+                                              {
+                                                  "extension":  "(none)",
+                                                  "count":  47
+                                              },
+                                              {
+                                                  "extension":  ".pdf",
+                                                  "count":  36
+                                              },
+                                              {
+                                                  "extension":  ".txt",
+                                                  "count":  35
+                                              },
+                                              {
+                                                  "extension":  ".typed",
+                                                  "count":  16
+                                              },
+                                              {
+                                                  "extension":  ".exe",
+                                                  "count":  12
+                                              }
+                                          ],
+                           "recentRootReports":  [
+                                                     {
+                                                         "name":  "hermes_agent_textbook_pipeline_migration_assessment_20260525.md",
+                                                         "lastWriteTime":  "2026-05-25T22:08:49",
+                                                         "bytes":  16973
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_actual_completion_protected_scan.json",
+                                                         "lastWriteTime":  "2026-05-25T21:35:11",
+                                                         "bytes":  338
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_manual_review_reclassified.json",
+                                                         "lastWriteTime":  "2026-05-25T21:34:56",
+                                                         "bytes":  1016684
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_actual_completion_report.json",
+                                                         "lastWriteTime":  "2026-05-25T21:21:13",
+                                                         "bytes":  429689
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_post_completion_validation_report.json",
+                                                         "lastWriteTime":  "2026-05-25T21:03:29",
+                                                         "bytes":  442
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_answer_completion_report.json",
+                                                         "lastWriteTime":  "2026-05-25T21:02:33",
+                                                         "bytes":  382819
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_excluded_items_report.json",
+                                                         "lastWriteTime":  "2026-05-25T21:02:33",
+                                                         "bytes":  6678
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_cleanup_and_completion_report.json",
+                                                         "lastWriteTime":  "2026-05-25T21:02:33",
+                                                         "bytes":  15442
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_content_completion_report.json",
+                                                         "lastWriteTime":  "2026-05-25T21:02:33",
+                                                         "bytes":  43256
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_reset_plan.json",
+                                                         "lastWriteTime":  "2026-05-25T20:49:21",
+                                                         "bytes":  74776
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_random_review_pack_report.json",
+                                                         "lastWriteTime":  "2026-05-25T20:34:08",
+                                                         "bytes":  355195
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_exclude_candidates.json",
+                                                         "lastWriteTime":  "2026-05-25T20:27:16",
+                                                         "bytes":  12918
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_item_fix_candidates.json",
+                                                         "lastWriteTime":  "2026-05-25T20:27:16",
+                                                         "bytes":  27742
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_unit_reset_candidates.json",
+                                                         "lastWriteTime":  "2026-05-25T20:27:16",
+                                                         "bytes":  30
+                                                     },
+                                                     {
+                                                         "name":  "maple_synergy_unit_mapping_audit_report.json",
+                                                         "lastWriteTime":  "2026-05-25T20:27:16",
+                                                         "bytes":  249745
+                                                     },
+                                                     {
+                                                         "name":  "maple_common2_answer_fill_summary.json",
+                                                         "lastWriteTime":  "2026-05-25T17:41:47",
+                                                         "bytes":  2158
+                                                     },
+                                                     {
+                                                         "name":  "bisang_algebra_answer_apply_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T10:37:29",
+                                                         "bytes":  3402
+                                                     },
+                                                     {
+                                                         "name":  "bisang_probstat_answer_apply_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T10:37:14",
+                                                         "bytes":  2821
+                                                     },
+                                                     {
+                                                         "name":  "bisang_common2_answer_apply_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T10:36:46",
+                                                         "bytes":  3024
+                                                     },
+                                                     {
+                                                         "name":  "answer_ocr_by_id_apply_report_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T10:33:17",
+                                                         "bytes":  415
+                                                     },
+                                                     {
+                                                         "name":  "answer_ocr_apply_report_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T10:08:59",
+                                                         "bytes":  2184
+                                                     },
+                                                     {
+                                                         "name":  "answer_pdf_apply_report_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T09:55:32",
+                                                         "bytes":  4871
+                                                     },
+                                                     {
+                                                         "name":  "answer_manual_review_operating_js_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T09:15:52",
+                                                         "bytes":  3693666
+                                                     },
+                                                     {
+                                                         "name":  "handoff_operating_js_status_20260525.json",
+                                                         "lastWriteTime":  "2026-05-25T07:30:41",
+                                                         "bytes":  3889
+                                                     },
+                                                     {
+                                                         "name":  "operating_js_current_status_20260525_resume.json",
+                                                         "lastWriteTime":  "2026-05-25T07:19:35",
+                                                         "bytes":  3755
+                                                     },
+                                                     {
+                                                         "name":  "operating_js_current_status_latest.json",
+                                                         "lastWriteTime":  "2026-05-24T20:54:59",
+                                                         "bytes":  3757
+                                                     },
+                                                     {
+                                                         "name":  "operating_js_current_status_after_agent_batch.json",
+                                                         "lastWriteTime":  "2026-05-24T20:44:34",
+                                                         "bytes":  3756
+                                                     },
+                                                     {
+                                                         "name":  "operating_js_pipeline_summary.json",
+                                                         "lastWriteTime":  "2026-05-24T20:36:10",
+                                                         "bytes":  7741
+                                                     },
+                                                     {
+                                                         "name":  "operating_js_scope_summary_20260524.json",
+                                                         "lastWriteTime":  "2026-05-24T15:44:04",
+                                                         "bytes":  13722
+                                                     },
+                                                     {
+                                                         "name":  "operating_js_scope_report_20260524.json",
+                                                         "lastWriteTime":  "2026-05-24T15:43:07",
+                                                         "bytes":  102919
+                                                     }
+                                                 ]
+                       },
+    "bootChecklist":  [
+                          "Confirm current user task and latest prohibitions before reading older task context.",
+                          "Resolve operating JS scope before any data work.",
+                          "Prefer root archive/textbook/reports for draft-only operating layer reports.",
+                          "Do not run crop/PDF conversion unless explicitly requested in a later task.",
+                          "Do not update generated/reports while creating Hermes operating-layer drafts.",
+                          "Before final, run git diff/status path checks for banned paths."
+                      ]
+}

@@ -1,0 +1,114 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "auditType": "SOURCE_FIRST_CALIBRATION_BATCH",
+  "unit": "unit-02-line",
+  "standardUnitKeys": ["H15-SA-10"],
+  "batchId": "H15-SA-10-BATCH-001-CALIBRATION",
+  "questionUids": [
+    "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js|23_강남여고_1학기_기말_고1_기출|5",
+    "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js|23_강남여고_1학기_기말_고1_기출|12",
+    "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js|23_강남여고_1학기_기말_고1_기출|13",
+    "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js|23_강남여고_1학기_기말_고1_기출|22",
+    "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js|23_강남여고_1학기_기말_고1_기출|24"
+  ],
+  "sourceArtifacts": {
+    "questionPdf": {
+      "path": "D:/기출/(2)1기말/(2)1기말/수학(상)/2023_강남여고1_1기말.pdf",
+      "bytes": 3483588,
+      "sha256": "sha256:e99cd5f3e1a3f9417886e3fd2aaabd5f0aadae1c5747b9e1cb3d5f62a491742c",
+      "pageCount": 4,
+      "schoolFooter": "순천강남여자고등학교"
+    },
+    "answerHwp": {
+      "path": "D:/기출/(2)1기말/(2)1기말/수학(상)/2023_강남여고1_1기말_정답.hwp",
+      "bytes": 20992,
+      "sha256": "sha256:0bf5d0fd42831f1b6f58404c173394bee53bf8aeb9b1e2ae24c1782a8836df86",
+      "decodedMultipleChoiceEntries": {"5": "①", "12": "①", "13": "③"},
+      "essayAnswerKey": "not encoded as numeric entries in the decoded answer paragraphs"
+    },
+    "productionJs": {
+      "path": "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js",
+      "sha256": "sha256:7cd1b285d9909ca881a31648d75f8a094f4d26f3901d438f8a10a72733e0a7a7"
+    },
+    "renderedSourcePages": {
+      "page1": "sha256:39b1c4ecd0e6a302f5d2097f3175c78eb1a9718689f743d569c1db94ba4a7e1a",
+      "page2": "sha256:36e870dc04f2a150f73a41c206ac46b16228e3ba8a42c4105da79bc09448ed53",
+      "page3": "sha256:4e47d9dd816261c215db49c4a2646030479156e00f0d2058330bdb8b5f8a6f8b",
+      "page4": "sha256:328a2e2d234bc9e7df7b2307c2942560ae9849893c0a9fe8006c1f822b8c9e5b"
+    }
+  },
+  "independentFactHashAlgorithm": "SHA-256(JSON.stringify({questionUid,facts,independentAnswer})) with insertion-order canonical objects",
+  "questionReviews": [
+    {
+      "id": 5,
+      "sourcePage": 1,
+      "sourceObservation": "점 (5,1), 2x+y−3=0에 평행",
+      "sourceFactHash": "bb021682da294f4030ef154dada57a1c0badad7af9a135b4326702dfc2842483",
+      "sourceContentParity": "PASS",
+      "sourceChoicesParity": "PASS",
+      "independentFacts": {"point": [5, 1], "givenLine": "2x+y-3=0", "slope": -2, "answerLine": "y=-2x+11"},
+      "independentAnswer": "①",
+      "answerKeyParity": "PASS",
+      "finalStatus": "SOURCE_ONLY_REVIEWED"
+    },
+    {
+      "id": 12,
+      "sourcePage": 2,
+      "sourceObservation": "세 직선 x+2y=3, 4x−3y=6, ax+y=3의 교점으로 직각삼각형",
+      "sourceFactHash": "731efea29cce8c8499a15b090d0d01628834e4189759e8bb7c630477b79f45ed",
+      "sourceContentParity": "PASS",
+      "sourceChoicesParity": "PASS",
+      "independentFacts": {"slopes": {"L1": "-1/2", "L2": "4/3", "L3": "-a"}, "rightAngleAValues": ["-2", "3/4"], "fixedPairNotPerpendicular": true, "product": "-3/2"},
+      "independentAnswer": "①",
+      "answerKeyParity": "PASS",
+      "finalStatus": "SOURCE_ONLY_REVIEWED"
+    },
+    {
+      "id": 13,
+      "sourcePage": 2,
+      "sourceObservation": "2x+y+3+k(x+2y)=0의 고정점과 2x−y+10=0까지의 거리",
+      "sourceFactHash": "57fcf37b8f11c32f04265485a2a9d4f59121c05d53fa16ac905be1a2bb71eef4",
+      "sourceContentParity": "PASS",
+      "sourceChoicesParity": "PASS",
+      "independentFacts": {"fixedPoint": [-2, 1], "familyConstantPart": "2x+y+3=0", "familyKPart": "x+2y=0", "distanceLine": "2x-y+10=0", "distance": "√5"},
+      "independentAnswer": "③",
+      "answerKeyParity": "PASS",
+      "finalStatus": "SOURCE_ONLY_REVIEWED"
+    },
+    {
+      "id": 22,
+      "sourcePage": 4,
+      "sourceObservation": "서술형 1: 점 (−4,3)을 지나고 3x−9y+4=0에 수직",
+      "sourceFactHash": "63056954626963a6a0fbfd834f6c2fc397e79ac33fcb1f249ec92c0c73184131",
+      "sourceContentParity": "PASS",
+      "sourceChoicesParity": "NOT_APPLICABLE",
+      "independentFacts": {"point": [-4, 3], "givenLine": "3x-9y+4=0", "givenSlope": "1/3", "perpendicularSlope": "-3", "answerLine": "y=-3x-9"},
+      "independentAnswer": "$y=-3x-9$",
+      "answerKeyParity": "SOURCE_ONLY_INDEPENDENT_ANSWER",
+      "finalStatus": "SOURCE_ONLY_REVIEWED"
+    },
+    {
+      "id": 24,
+      "sourcePage": 4,
+      "sourceObservation": "서술형 3: l⊥m, l∥n인 세 직선의 a²+b²",
+      "sourceFactHash": "858e31c7a13de150ef2a3a69884ec058f81b6ca733b26cf8674a04d1ea0efc92",
+      "sourceContentParity": "PASS",
+      "sourceChoicesParity": "NOT_APPLICABLE",
+      "independentFacts": {"lines": {"l": "x-ay+2=0", "m": "4x+by+2=0", "n": "x-(b-3)y-2=0"}, "relations": ["l⊥m", "l∥n"], "solutions": [{"a": 1, "b": 4}, {"a": -4, "b": -1}], "answer": "17"},
+      "independentAnswer": "$17$",
+      "answerKeyParity": "SOURCE_ONLY_INDEPENDENT_ANSWER",
+      "finalStatus": "SOURCE_ONLY_REVIEWED"
+    }
+  ],
+  "productionComparison": {
+    "contentAndChoices": "all five visually match the D source pages, including line signs, point coordinates, conditions and essay labels",
+    "answers": {"q5": "①", "q12": "①", "q13": "③", "q22": "$y=-3x-9$", "q24": "$17$"},
+    "answerParity": "PASS for all five",
+    "solutionMutation": false,
+    "problemContentMutation": false,
+    "sourceDefectCount": 0
+  },
+  "batchStatus": "CALIBRATION_PASS_UNIT_REMAINS_OPEN",
+  "remainingUnitQuestionCount": 89,
+  "noFalsePass": true
+}

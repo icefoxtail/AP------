@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apmath://geometry-visual-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "visualType",
+    "viewport",
+    "objects",
+    "sourceFacts",
+    "derivedFacts",
+    "displayFacts"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "visualType": {
+      "enum": [
+        "coordinate_geometry",
+        "line_circle_geometry",
+        "function_graph",
+        "calculus_graph",
+        "explanation_card"
+      ]
+    },
+    "viewport": {
+      "type": "object",
+      "required": [
+        "xMin",
+        "xMax",
+        "yMin",
+        "yMax"
+      ],
+      "properties": {
+        "xMin": {
+          "type": "number"
+        },
+        "xMax": {
+          "type": "number"
+        },
+        "yMin": {
+          "type": "number"
+        },
+        "yMax": {
+          "type": "number"
+        }
+      }
+    },
+    "axes": {
+      "type": "boolean"
+    },
+    "sourceFacts": {
+      "type": "object"
+    },
+    "derivedFacts": {
+      "type": "object"
+    },
+    "displayFacts": {
+      "type": "object"
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "kind": {
+            "enum": [
+              "POINT",
+              "POINT_NAME",
+              "COORDINATE_LABEL",
+              "LINE",
+              "SEGMENT",
+              "CIRCLE",
+              "FUNCTION_GRAPH",
+              "INTERSECTION",
+              "TANGENT",
+              "PARALLEL",
+              "PERPENDICULAR",
+              "PERPENDICULAR_MARK",
+              "ANGLE_MARK",
+              "LENGTH_LABEL",
+              "EQUATION_LABEL",
+              "GRAPH_ANNOTATION",
+              "CONDITION_BOX",
+              "AUXILIARY_LINE",
+              "LEADER_LINE"
+            ]
+          },
+          "to": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "criticalX": {},
+          "sourceDecimalEvidence": {},
+          "radius": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "text": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exact": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "string"
+            }
+          },
+          "math": {
+            "type": "boolean"
+          },
+          "center": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "target": {
+            "type": "string"
+          },
+          "coefficients": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          },
+          "breaks": {},
+          "from": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "allowSuppress": {
+            "type": "boolean"
+          },
+          "lines": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "text"
+                  ],
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "math": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "domain": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "expression": {
+            "type": "string"
+          },
+          "at": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "ANGLE_MARK"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "refs",
+                "value"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "AUXILIARY_LINE"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "coefficients"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "CIRCLE"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "center",
+                "radius"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "CONDITION_BOX"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "at",
+                "lines"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "COORDINATE_LABEL"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "exact",
+                "target"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "EQUATION_LABEL"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "at",
+                "text"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "FUNCTION_GRAPH"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "domain",
+                "expression"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "GRAPH_ANNOTATION"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "at",
+                "text"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "INTERSECTION"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "refs",
+                "target"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "LEADER_LINE"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "from",
+                "to"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "LENGTH_LABEL"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "at",
+                "refs",
+                "text",
+                "value"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "LINE"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "coefficients"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "PARALLEL"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "refs"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "PERPENDICULAR"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "refs"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "PERPENDICULAR_MARK"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "at",
+                "refs"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "POINT"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "at"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "POINT_NAME"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "target",
+                "text"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "SEGMENT"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "from",
+                "to"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "TANGENT"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "at",
+                "refs"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

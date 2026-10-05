@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">22 순천고 8번 홀함수와 좌우극한 해설</title>
+  <desc id="desc">원본 그래프와 홀함수 대응을 이용해 음수 쪽 우극한을 양수 쪽 좌극한으로 바꾸는 해설 그림</desc>
+  <style>
+    .background{fill:#fff}
+    .axis{stroke:#171717;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .curve{stroke:#111;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .guide{stroke:#777;stroke-width:.95;stroke-dasharray:4 4;fill:none}
+    .point-open{stroke:#111;stroke-width:1.4;fill:#fff}
+    .point-closed{stroke:#111;stroke-width:1;fill:#111}
+    .panel{fill:#f7f8fa;stroke:#c7cbd1;stroke-width:1}
+    .title{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:15px;font-weight:700;fill:#111}
+    .label{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:12px;fill:#222}
+    .small{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:11px;fill:#333}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:13px;fill:#111}
+    .tick{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:11.5px;fill:#222}
+  </style>
+  <defs>
+    <marker id="axis-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#171717"/></marker>
+  </defs>
+  <rect class="background" x="0" y="0" width="640" height="440"/>
+  <text class="title" x="32" y="28">q8  홀함수의 대응으로 음수 쪽 극한 읽기</text>
+  <text class="small" x="32" y="47">f(−x)=−f(x): 입력을 t=−x로 바꾸면 접근 방향과 부호가 함께 보인다.</text>
+
+  <g aria-label="odd function graph">
+    <rect class="panel" x="32" y="65" width="365" height="300" rx="8"/>
+    <line class="axis" x1="52" y1="250" x2="378" y2="250" marker-end="url(#axis-arrow)"/>
+    <line class="axis" x1="240" y1="345" x2="240" y2="82" marker-end="url(#axis-arrow)"/>
+    <text class="math" x="380" y="255">x</text>
+    <text class="math" x="246" y="90">y</text>
+    <path class="curve" d="M100 150 L170 200"/>
+    <path class="curve" d="M170 300 L240 250"/>
+    <path class="curve" d="M240 250 L310 200"/>
+    <path class="curve" d="M310 300 L380 350"/>
+    <circle class="point-closed" cx="100" cy="150" r="4" fill="#111"/>
+    <circle class="point-open" cx="170" cy="200" r="4.6" fill="#fff"/>
+    <circle class="point-closed" cx="170" cy="300" r="4" fill="#111"/>
+    <circle class="point-closed" cx="310" cy="200" r="4" fill="#111"/>
+    <circle class="point-open" cx="310" cy="300" r="4.6" fill="#fff"/>
+    <circle class="point-closed" cx="380" cy="350" r="4" fill="#111"/>
+    <line class="guide" x1="170" y1="150" x2="170" y2="310"/>
+    <line class="guide" x1="310" y1="190" x2="310" y2="310"/>
+    <text class="tick" x="164" y="270">−1</text>
+    <text class="tick" x="304" y="270">1</text>
+    <text class="tick" x="94" y="270">−2</text>
+    <text class="tick" x="374" y="270">2</text>
+    <text class="tick" x="221" y="205">1</text>
+    <text class="tick" x="218" y="305">−1</text>
+    <text class="tick" x="207" y="155">2</text>
+    <text class="tick" x="205" y="355">−2</text>
+    <text class="small" x="76" y="342">x→−2+ : f(x)→2</text>
+    <text class="small" x="247" y="342">x→−1+ : f(x)→−1</text>
+  </g>
+
+  <g aria-label="calculation panel">
+    <rect class="panel" x="416" y="65" width="192" height="300" rx="8"/>
+    <text class="title" x="434" y="92">극한 변환</text>
+    <text class="math" x="434" y="126">x→−1+ ⇒ t=−x→1−</text>
+    <text class="math" x="434" y="153">f(t)→1</text>
+    <text class="math" x="434" y="180">f(x)=−f(t)→−1</text>
+    <line class="guide" x1="434" y1="196" x2="590" y2="196"/>
+    <text class="math" x="434" y="229">x→−2+ ⇒ t→2−</text>
+    <text class="math" x="434" y="256">f(t)→−2</text>
+    <text class="math" x="434" y="283">f(x)=−f(t)→2</text>
+    <line class="guide" x1="434" y1="299" x2="590" y2="299"/>
+    <text class="label" x="434" y="330">합 = −1+2 = 1</text>
+    <text class="small" x="434" y="351">정답: ④</text>
+  </g>
+</svg>

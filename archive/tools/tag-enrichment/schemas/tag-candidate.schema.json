@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JS Archive Tag Candidate",
+  "type": "object",
+  "required": [
+    "sourceFile",
+    "examTitle",
+    "questionId",
+    "originalIndex",
+    "standardCourse",
+    "standardUnitKey",
+    "standardUnit",
+    "currentLevel",
+    "currentQuestionType",
+    "currentLayoutTag",
+    "currentTags",
+    "subUnitKeyCandidate",
+    "subUnitCandidate",
+    "advancedMetaAuthority",
+    "advancedMetaDisposition",
+    "tagConfidence",
+    "tagStatus",
+    "reasons",
+    "conflicts",
+    "reviewNotes"
+  ],
+  "properties": {
+    "sourceFile": { "type": "string" },
+    "examTitle": { "type": "string" },
+    "questionId": { "type": ["string", "number", "null"] },
+    "originalIndex": { "type": "integer", "minimum": 0 },
+    "standardCourse": { "type": "string" },
+    "standardUnitKey": { "type": "string" },
+    "standardUnit": { "type": "string" },
+    "currentLevel": { "type": "string" },
+    "currentQuestionType": { "type": "string" },
+    "currentLayoutTag": { "type": "string" },
+    "currentTags": { "type": "array", "items": { "type": "string" } },
+    "subUnitKeyCandidate": { "type": "string" },
+    "subUnitCandidate": { "type": "string" },
+    "advancedMetaAuthority": { "const": "RPM_ACTIVE_RESOLVER_ONLY" },
+    "advancedMetaDisposition": { "const": "NOT_CLASSIFIED" },
+    "tagConfidence": { "enum": ["high", "medium", "low"] },
+    "tagStatus": { "enum": ["hint_only", "manual_review"] },
+    "reasons": { "type": "array", "items": { "type": "string" } },
+    "conflicts": { "type": "array", "items": { "type": "string" } },
+    "reviewNotes": { "type": "string" }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["conceptClusterKeyCandidate"] },
+      { "required": ["problemTypeKeyCandidate"] },
+      { "required": ["templateKeyCandidate"] },
+      { "required": ["difficultyBucketCandidate"] }
+    ]
+  },
+  "additionalProperties": true
+}

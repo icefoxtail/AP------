@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { sha256 } from './lib/canonicalize.mjs';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive/tools/logic-visual-audit/reports');
+const inventory = JSON.parse(fs.readFileSync(path.join(OUT, 'target_inventory.json'), 'utf8'));
+const ids = new Set(inventory.rows.map((row) => row.questionUid));
+const read = (relative) => fs.readFileSync(path.join(ROOT, 'archive/tools/logic-visual-audit', relative), 'utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
+const calibration = read('corpus/calibration/known-set-seed.jsonl');
+const holdout = read('corpus/holdout/unseen-set-seed.jsonl');
+const result = { generatedAtKst: '2026-09-05', calibrationCount: calibration.length, holdoutCount: holdout.length, calibrationMissing: calibration.filter((row) => !ids.has(row.questionUid)).map((row) => row.questionUid), holdoutMissing: holdout.filter((row) => !ids.has(row.questionUid)).map((row) => row.questionUid), calibrationCorpusSha: sha256(calibration), holdoutCorpusSha: sha256(holdout), calibrationStatus: 'SEED_COVERAGE_READY_NOT_INDEPENDENTLY_ADJUDICATED', holdoutStatus: 'UNSEEN', status: 'PILOT_INPUTS_READY' };
+fs.writeFileSync(path.join(OUT, 'corpus_pilot.json'), JSON.stringify(result, null, 2) + '\n', 'utf8');
+console.log(JSON.stringify({ status: result.status, calibrationCount: result.calibrationCount, holdoutCount: result.holdoutCount, calibrationMissing: result.calibrationMissing.length, holdoutMissing: result.holdoutMissing.length }, null, 2));

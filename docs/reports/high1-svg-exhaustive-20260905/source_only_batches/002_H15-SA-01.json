@@ -1,0 +1,83 @@
+{
+  "batchId": "H15-SA-01-batch-002",
+  "reviewPass": 1,
+  "questionCount": 5,
+  "rows": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js|23_부영여고_1학기_중간_고1_기출|1",
+      "independentAnswer": "③",
+      "facts": {
+        "reduction": "2A-(A-B)=A+B",
+        "expectedExpression": "-x^2-8x+11",
+        "expectedChoiceIndex": 3
+      },
+      "expectedFactHash": "fb681b7013f5ce0cdd4f0111ff6233d162aa219734bb7d15d40d6286c62fe8af",
+      "status": "SOURCE_ONLY_REVIEWED",
+      "reviewPass": 1,
+      "batchId": "H15-SA-01-batch-002",
+      "evidence": "2A-(A-B)=A+B=(-2x^2-3x+5)+(x^2-5x+6)=-x^2-8x+11"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js|23_부영여고_1학기_중간_고1_기출|4",
+      "independentAnswer": "SOURCE_REVIEW",
+      "facts": {
+        "reason": "c is referenced in the assembly-division process but is not defined in content and no image is attached",
+        "expectedChoiceIndex": null
+      },
+      "expectedFactHash": "999160e30584ce5b8f88c00cd3c829a692858d464f0b9d53c45f905e51e7bc60",
+      "status": "SOURCE_REVIEW",
+      "reviewPass": 1,
+      "batchId": "H15-SA-01-batch-002",
+      "evidence": "Source-only pass cannot determine a,b,c without the missing division-process data"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js|23_부영여고_1학기_중간_고1_기출|9",
+      "independentAnswer": "⑤",
+      "facts": {
+        "sums": {
+          "aPlusB": -2,
+          "aTimesB": -1,
+          "a5PlusB5": -82
+        },
+        "mixedTerm": -2,
+        "expectedValue": -84,
+        "expectedChoiceIndex": 5
+      },
+      "expectedFactHash": "e427ffa5a2a56522218dcc0a13e16accf5aef86372102eeb7d3d728d6ad9645e",
+      "status": "SOURCE_ONLY_REVIEWED",
+      "reviewPass": 1,
+      "batchId": "H15-SA-01-batch-002",
+      "evidence": "Use S_n=(a+b)S_(n-1)-ab S_(n-2): S5=-82; a^2b^3+a^3b^2=(ab)^2(a+b)=-2; total=-84"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js|23_부영여고_1학기_중간_고1_기출|10",
+      "independentAnswer": "③",
+      "facts": {
+        "modulus": 250,
+        "reducedBase": 2,
+        "power": 1024,
+        "remainder": 24,
+        "expectedChoiceIndex": 3
+      },
+      "expectedFactHash": "f87cc723afb1b7b0f01baeb19e77cfb2106159081dfecb7847317b9ad4e14661",
+      "status": "SOURCE_ONLY_REVIEWED",
+      "reviewPass": 1,
+      "batchId": "H15-SA-01-batch-002",
+      "evidence": "1002≡2 (mod 250), so 1002^10≡2^10=1024≡24 (mod 250)"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js|23_부영여고_1학기_중간_고1_기출|19",
+      "independentAnswer": "6",
+      "facts": {
+        "quotient": "x+3",
+        "coefficientA": 6,
+        "expectedValue": 6
+      },
+      "expectedFactHash": "ef5d9322ec360cf1bca1a9b53accf72985016a2f815fd361526259ec953d8828",
+      "status": "SOURCE_ONLY_REVIEWED",
+      "reviewPass": 1,
+      "batchId": "H15-SA-01-batch-002",
+      "evidence": "(x^2-2x+2)(x+3)=x^3+x^2-4x+6"
+    }
+  ]
+}

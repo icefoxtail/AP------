@@ -1,0 +1,99 @@
+{
+  "version": "APMATH_VISUAL_FACT_v2",
+  "semanticsOnlyHash": true,
+  "envelope": {
+    "type": "object", "additionalProperties": false,
+    "required": ["schemaVersion", "questionUid", "visualType", "semantic"],
+    "properties": {
+      "schemaVersion": {"const": "APMATH_VISUAL_FACT_v2"},
+      "questionUid": {"type": "string", "minLength": 1},
+      "visualType": {"enum": ["set-regions", "set-inclusion", "set-cardinality", "number-line", "case-table", "cartesian", "geometry", "proof-flow", "quantifier-negation"]},
+      "semantic": {"type": "object"}
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z][A-Za-z0-9_]*$"},
+    "count": {"type": "integer", "minimum": 0},
+    "number": {"type": "number"},
+    "point": {
+      "type": "object", "additionalProperties": false, "required": ["id", "x", "y"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "x": {"$ref": "#/$defs/number"}, "y": {"$ref": "#/$defs/number"}}
+    },
+    "interval": {
+      "type": "object", "additionalProperties": false, "required": ["left", "right", "leftClosed", "rightClosed"],
+      "properties": {"left": {"type": ["number", "null"]}, "right": {"type": ["number", "null"]}, "leftClosed": {"type": "boolean"}, "rightClosed": {"type": "boolean"}}
+    },
+    "caseRow": {
+      "type": "object", "additionalProperties": false, "required": ["id", "cells", "disposition", "reason"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "cells": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "disposition": {"enum": ["KEEP", "REJECT", "NEUTRAL"]}, "reason": {"type": "string", "minLength": 1}}
+    },
+    "proofStep": {
+      "type": "object", "additionalProperties": false, "required": ["id", "statement", "justification", "premiseIds"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "statement": {"type": "string", "minLength": 1}, "justification": {"type": "string", "minLength": 1}, "premiseIds": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}}
+    },
+    "circle": {
+      "type": "object", "additionalProperties": false, "required": ["id", "x", "y", "radius"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "x": {"type": "number"}, "y": {"type": "number"}, "radius": {"type": "number", "minimum": 0}}
+    },
+    "segment": {
+      "type": "object", "additionalProperties": false, "required": ["id", "start", "end"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "start": {"$ref": "#/$defs/id"}, "end": {"$ref": "#/$defs/id"}}
+    },
+    "edge": {
+      "type": "object", "additionalProperties": false, "required": ["from", "to", "relation"],
+      "properties": {"from": {"$ref": "#/$defs/id"}, "to": {"$ref": "#/$defs/id"}, "relation": {"enum": ["segment", "parallel", "perpendicular", "implies", "contains", "equal", "disjoint"]}}
+    },
+    "branch": {
+      "type": "object", "additionalProperties": false, "required": ["id", "formula", "points", "leftClosed", "rightClosed"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "formula": {"type": "string", "minLength": 1}, "points": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/point"}}, "leftClosed": {"type": "boolean"}, "rightClosed": {"type": "boolean"}}
+    }
+  },
+  "families": {
+    "proof-flow": {
+      "type": "object", "additionalProperties": false, "required": ["steps", "conclusionStepId", "contradictionTarget"],
+      "properties": {"steps": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/proofStep"}}, "conclusionStepId": {"$ref": "#/$defs/id"}, "contradictionTarget": {"type": ["string", "null"], "minLength": 1}}
+    },
+    "quantifier-negation": {
+      "type": "object", "additionalProperties": false, "required": ["variable", "domain", "predicate", "originalQuantifier", "negatedQuantifier", "negatedPredicate"],
+      "properties": {"variable": {"$ref": "#/$defs/id"}, "domain": {"type": "string", "minLength": 1}, "predicate": {"type": "string", "minLength": 1}, "originalQuantifier": {"enum": ["FOR_ALL", "EXISTS"]}, "negatedQuantifier": {"enum": ["FOR_ALL", "EXISTS"]}, "negatedPredicate": {"type": "string", "minLength": 1}}
+    },
+    "set-regions": {
+      "type": "object", "additionalProperties": false, "required": ["setIds", "universeId", "regions", "decisiveSteps"],
+      "properties": {
+        "setIds": {"type": "array", "minItems": 2, "maxItems": 3, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "universeId": {"$ref": "#/$defs/id"},
+        "regions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[01]{2,3}$"}},
+        "decisiveSteps": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "set-inclusion": {
+      "type": "object", "additionalProperties": false, "required": ["inner", "outer", "universeId", "relation"],
+      "properties": {"inner": {"$ref": "#/$defs/id"}, "outer": {"$ref": "#/$defs/id"}, "universeId": {"$ref": "#/$defs/id"}, "relation": {"enum": ["SUBSET_OR_EQUAL", "PROPER_SUBSET", "EQUAL", "DISJOINT"]}}
+    },
+    "set-cardinality": {
+      "type": "object", "additionalProperties": false, "required": ["setIds", "universeId", "universeCount", "aCount", "bCount", "maximumIntersection", "minimumIntersection"],
+      "properties": {"setIds": {"type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}, "universeId": {"$ref": "#/$defs/id"}, "universeCount": {"$ref": "#/$defs/count"}, "aCount": {"$ref": "#/$defs/count"}, "bCount": {"$ref": "#/$defs/count"}, "maximumIntersection": {"$ref": "#/$defs/count"}, "minimumIntersection": {"$ref": "#/$defs/count"}}
+    },
+    "number-line": {
+      "type": "object", "additionalProperties": false, "required": ["variable", "intervals"],
+      "properties": {"variable": {"$ref": "#/$defs/id"}, "intervals": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/interval"}}}
+    },
+    "case-table": {
+      "type": "object", "additionalProperties": false, "required": ["columns", "rows", "exhaustivenessReason"],
+      "properties": {"columns": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}, "rows": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/caseRow"}}, "exhaustivenessReason": {"type": "string", "minLength": 1}}
+    },
+    "cartesian": {
+      "type": "object", "additionalProperties": false, "required": ["xMin", "xMax", "yMin", "yMax", "branches", "keyPoints"],
+      "properties": {"xMin": {"type": "number"}, "xMax": {"type": "number"}, "yMin": {"type": "number"}, "yMax": {"type": "number"}, "branches": {"type": "array", "items": {"$ref": "#/$defs/branch"}}, "keyPoints": {"type": "array", "items": {"$ref": "#/$defs/point"}}}
+    },
+    "geometry": {
+      "type": "object", "additionalProperties": false, "required": ["points", "circles", "segments", "relations", "scalePolicy"],
+      "properties": {"points": {"type": "array", "items": {"$ref": "#/$defs/point"}}, "circles": {"type": "array", "items": {"$ref": "#/$defs/circle"}}, "segments": {"type": "array", "items": {"$ref": "#/$defs/segment"}}, "relations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/edge"}}, "scalePolicy": {"enum": ["EXACT_EQUAL_UNITS", "SCHEMATIC_DECLARED"]}}
+    }
+  },
+  "setCollections": {"set-regions": ["regions"], "case-table": ["rows:id"], "cartesian": ["keyPoints:id", "branches:id"], "geometry": ["points:id", "circles:id", "segments:id", "relations:canonical"]},
+  "sequenceCollections": ["setIds", "intervals", "columns", "cells", "branch.points", "steps"],
+  "nonSemanticNarrativeFields": {"set-regions": ["decisiveSteps"], "case-table": ["exhaustivenessReason", "rows[].reason"], "proof-flow": ["steps[].justification"]},
+  "narrativePolicy": "Narratives are required source/observed evidence and checked independently by V3 decisiveStep/completeness; their wording does not define semantic equality.",
+  "identityProjectionPolicy": "Case row ids and segment storage ids are not mathematical identity. Case rows sort by semantic cells; segment relations resolve to named endpoint pairs and symmetric relations sort their operands. Cartesian sample ids/count are numeric witnesses; semantic branches bind a safe arithmetic AST, plotted window and endpoint markers, not an inferred full function domain. Samples and intervening intervals must satisfy numerical/domain verification; actual artifact extraction remains mandatory V2/V3 evidence."
+}

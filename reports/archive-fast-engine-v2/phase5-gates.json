@@ -1,0 +1,17 @@
+{
+  "phase": "5",
+  "gates": {
+    "PREWARM_CANCEL": "PASS",
+    "LATEST_WINS": "PASS",
+    "FOREGROUND_PRIORITY": "PASS",
+    "FIRST_RENDER_NO_REGRESSION": "PASS"
+  },
+  "BACKGROUND_SIDE_EFFECT_COUNT": 0,
+  "firstRenderEvidence": "Every background attempt starts after VISIBLE_READY; pending foreground work cannot start prewarm.",
+  "evidence": [
+    "phase5-browser.json",
+    "phase5-regression.json",
+    "phase5-static.tap"
+  ],
+  "publishTarget": "feature branch only; no main merge"
+}

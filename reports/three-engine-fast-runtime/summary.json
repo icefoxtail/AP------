@@ -1,0 +1,50 @@
+{
+  "status": "SELF_TESTED_BRANCH_READY_FOR_REVIEW",
+  "baseline": "6d93da5bea3ecfdcb7d164b78ad72659eeec4ab4",
+  "branch": "codex/archive-three-engine-fast-runtime",
+  "implementationCommits": [
+    "110d7ccf6",
+    "d448dddc8"
+  ],
+  "browserChecks": {
+    "outputParity": 53,
+    "lifecycle": 15,
+    "protocols": 8,
+    "archiveRegression": 19
+  },
+  "pdfChecks": {
+    "documentsMatchingScreenPageCount": 53,
+    "baselineAndFastDocumentsWithEqualPerPageText": 6,
+    "publicRouteDocuments": [
+      {
+        "kind": "packet",
+        "pages": 6
+      },
+      {
+        "kind": "set",
+        "pages": 6
+      },
+      {
+        "kind": "compact",
+        "pages": 4
+      }
+    ]
+  },
+  "staticTests": {
+    "total": 74,
+    "pass": 72,
+    "fail": 2,
+    "failuresAlsoReproducedOnBaseline": true,
+    "failureNames": [
+      "The ledger records current production differences rather than a desired-but-unverified common implementation",
+      "Phase 0 SHA baseline locks the current bytes of every frozen closure member"
+    ]
+  },
+  "limitations": [
+    "Physical printer/PCL/GDI transport was not sent; Chrome PDF output and print-button preflight were tested.",
+    "Business API calls were intercepted with deterministic responses; no production records were written.",
+    "Historical Phase 0 SHA lock and drift-ledger tests already fail on the frozen baseline.",
+    "Archive retains its stricter adapter/snapshot contract and measured layout materializer; Mixer uses the shared executor observed placement strategy; Wrong uses the shared composed placement strategy."
+  ],
+  "mergedToMain": false
+}

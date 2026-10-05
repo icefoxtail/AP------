@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "middle-geometry-candidate-compile-audit-v1",
+  "status": "CANDIDATE_VALIDATION_ONLY_REVIEW_PENDING_FAIL_CLOSED",
+  "productionPromotion": "NOT_ATTEMPTED",
+  "productionCompiledMutation": 0,
+  "productionRuntimeMutation": 0,
+  "mergedCounts": {
+    "problemTypes": 125,
+    "templates": 431,
+    "bindings": 301,
+    "concepts": 88,
+    "conditions": 6
+  },
+  "candidateCounts": {
+    "problemTypes": 11,
+    "templates": 36,
+    "bindings": 22,
+    "runtimeRecords": 928,
+    "archive2Joined": 928,
+    "autoEligible": 0
+  },
+  "gates": {
+    "exactDenominator": true,
+    "uniqueUid": true,
+    "uniqueSourceIdentity": true,
+    "candidateL3KeyCollision": [],
+    "candidateL4KeyCollision": [],
+    "parentMismatchCount": 0,
+    "candidateBindingParentMismatch": [],
+    "packOwnedDomainViolationCount": 0,
+    "packOwnedDomainViolations": [],
+    "workingMetadataConfusion": [],
+    "unregisteredL3": [],
+    "brokenL4Parent": [],
+    "brokenBinding": [],
+    "unregisteredCrossConcept": [],
+    "unregisteredCondition": [],
+    "duplicateRelational": [],
+    "identityJoinMissing": [],
+    "archive2JoinMissing": [],
+    "aliasAuditStatus": "EXECUTED",
+    "aliasLookupEntryCount": 177,
+    "aliasAuthoritySource": "compiled/aliases.json plus canonical pack/shard embedded alias parity",
+    "aliasAuthorityParity": {
+      "compiledAliasCount": 177,
+      "compiledDistinctAliasCount": 177,
+      "rawAliasRows": 274,
+      "rawAliasDistinct": 177,
+      "rawToCompiledDistinctParity": true
+    },
+    "aliasCollisionCount": 0,
+    "aliasCollisions": [],
+    "candidateLeakageIntoProduction": 0
+  },
+  "runtimeStatus": "ELIGIBILITY_REVIEW_PENDING",
+  "difficulty": {
+    "bucketCounts": {
+      "1": 160,
+      "2": 376,
+      "3": 308,
+      "4": 78,
+      "5": 1,
+      "UNKNOWN": 5
+    },
+    "confidenceCounts": {
+      "high": 837,
+      "medium": 86,
+      "UNKNOWN": 5
+    },
+    "compatibilityCounts": {
+      "BORDERLINE_REVIEW": 270,
+      "NORMAL": 602,
+      "STRONG_CONFLICT": 51,
+      "UNKNOWN": 5
+    },
+    "independentRecheckTargetCount": 894
+  },
+  "nextGate": "Independent GPT review, then explicit approval before any canonical/compiled/runtime production promotion"
+}

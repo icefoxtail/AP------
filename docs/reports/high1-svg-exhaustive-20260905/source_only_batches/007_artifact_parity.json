@@ -1,0 +1,13 @@
+{
+  "batchId": "H15-SA-01-batch-007",
+  "pass1": "SOURCE_ONLY_REVIEWED",
+  "pass3": "ARTIFACT_PARITY_REVIEWED_WITH_REPAIR_HOLD",
+  "rows": [
+    {"id": 1, "independentAnswer": "①", "currentAnswer": "①", "answerParity": "PASS", "solutionParity": "PASS"},
+    {"id": 2, "independentAnswer": "③", "currentAnswer": "③", "answerParity": "PASS", "solutionParity": "PASS"},
+    {"id": 12, "independentAnswer": "④", "currentAnswer": "④", "answerParity": "PASS", "solutionParity": "PASS"},
+    {"id": 15, "independentAnswer": "10x+9", "currentAnswer": "10x+9", "answerParity": "PASS", "solutionParity": "FAIL_FORMAT", "finding": "solution starts with $<b>[키포인트]</b>$, exposing an HTML tag inside a math delimiter; confirmed solution-format defect. Repair is held until the required main-branch gate is restored."},
+    {"id": 1, "independentAnswer": "②", "currentAnswer": "②", "answerParity": "PASS", "solutionParity": "PASS"}
+  ],
+  "batchVerdict": "REPAIR_REQUIRED_WITH_BRANCH_HOLD"
+}

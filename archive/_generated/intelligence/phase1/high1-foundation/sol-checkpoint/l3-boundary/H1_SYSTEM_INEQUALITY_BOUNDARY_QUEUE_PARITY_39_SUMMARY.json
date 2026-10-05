@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "status": "UID_BOUND_QUEUE_PARITY_REPAIR_NOT_SEMANTIC_REVIEW",
+  "denominator": 39,
+  "stableQueueIndexes": 38,
+  "mismatchedQueueIndexes": 1,
+  "sourceFingerprintChanges": [
+    {
+      "workerBundleQueueIndex": 762,
+      "currentQueueIndex": 762,
+      "reason": "q762 original-question heading repair with current A/B/C supersession"
+    }
+  ],
+  "mismatches": [
+    {
+      "workerBundleQueueIndex": 290,
+      "currentQueueIndex": 307,
+      "questionUid": "qid_v1_19c9abc532552c660b7d6e7bcfec8be97e807036033776c629f03c060ad44e38"
+    }
+  ],
+  "decision": "Keep A/B/C raw verdicts immutable; join to the current queue by questionUid, sourceIdentity, and sourceFingerprint."
+}

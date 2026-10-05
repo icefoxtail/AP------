@@ -1,0 +1,345 @@
+{
+  "schemaVersion": "h1-stage3-l4-design-candidate-v1",
+  "status": "CANDIDATE_NOT_FINAL",
+  "generatedAt": "2026-09-23",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "sourceL3Checkpoint": "H1_STAGE3_L3_BOUNDARY_REVIEW_CHECKPOINT_1170.json",
+  "newTemplateCount": 47,
+  "templates": [
+    {
+      "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+      "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "canonicalLabelKo": "다항식의 직접 연산",
+      "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+      "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "canonicalLabelKo": "전개식의 특정 계수",
+      "definition": "전체 또는 필요한 항만 전개하여 특정 차수의 계수를 구한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "parentProblemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "canonicalLabelKo": "곱셈공식·대칭식 변형",
+      "definition": "곱셈공식의 변형이나 대칭식으로 목표식을 계산한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_RECIPROCAL_POWER_SYMMETRIC",
+      "parentProblemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "canonicalLabelKo": "역수형 거듭제곱 대칭식",
+      "definition": "x+1/x 등의 값을 만든 뒤 거듭제곱 대칭식을 연쇄 적용한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "canonicalLabelKo": "항등식의 계수비교",
+      "definition": "양변 전개 후 같은 차수의 계수를 비교해 미정계수를 정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+      "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "canonicalLabelKo": "항등식의 특수값 대입",
+      "definition": "특정 값을 대입하여 항을 소거하고 미정계수 또는 목표값을 구한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_REMAINDER_LINEAR_EVALUATION",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION_REMAINDER",
+      "canonicalLabelKo": "일차식으로 나눈 나머지",
+      "definition": "나머지정리로 P(a)를 계산하거나 주어진 나머지를 직접 해석한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_DIVISION_RECONSTRUCTION",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION_REMAINDER",
+      "canonicalLabelKo": "몫·나머지로 다항식 복원",
+      "definition": "P=제수×몫+나머지 관계로 다항식을 복원하거나 다시 나눈다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_DIVISIBILITY_FACTOR_CONDITION",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION_REMAINDER",
+      "canonicalLabelKo": "나누어떨어짐·인수 조건",
+      "definition": "나누어떨어짐 또는 인수 조건을 값 대입·계수비교와 결합한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "parentProblemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "canonicalLabelKo": "표준 인수분해",
+      "definition": "공식·묶기·치환으로 다항식을 인수분해한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "parentProblemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "canonicalLabelKo": "인수분해 구조의 활용",
+      "definition": "인수분해 후 정수·소수·근·값 조건을 적용한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "canonicalLabelKo": "복소수의 성분별 연산",
+      "definition": "실수부·허수부를 분리해 연산·상등 조건을 처리한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "canonicalLabelKo": "켤레복소수·노름의 활용",
+      "definition": "켤레복소수의 곱·노름·분수 유리화를 이용한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "canonicalLabelKo": "허수단위 i의 거듭제곱 주기",
+      "definition": "i의 4주기를 이용해 거듭제곱과 합을 계산한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "canonicalLabelKo": "단위근·복소근의 주기",
+      "definition": "세제곱근 등 단위근의 대수관계와 주기를 이용한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "canonicalLabelKo": "실수·순허수 조건",
+      "definition": "실수부 또는 허수부가 0이 되는 조건과 부호·비영 조건을 결합한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "canonicalLabelKo": "켤레근과 방정식의 근",
+      "definition": "실계수 방정식의 켤레근과 근과 계수의 관계를 이용한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "canonicalLabelKo": "판별식으로 근의 존재·중복 판정",
+      "definition": "D의 부호로 실근·중근·허근 또는 접점 조건을 판정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "canonicalLabelKo": "매개변수와 무관한 판별식 조건",
+      "definition": "모든 매개변수에서 성립하도록 판별식을 항등식으로 만든다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "canonicalLabelKo": "근의 합·곱으로 대칭식 계산",
+      "definition": "근의 합·곱을 이용해 제곱합·역수합 등 대칭식을 계산한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "canonicalLabelKo": "변환된 근과 매개변수",
+      "definition": "변환된 근·근의 범위·매개변수 조건을 근과 계수의 관계로 처리한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "parentProblemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "canonicalLabelKo": "고차방정식의 인수분해",
+      "definition": "정수근·인수정리·인수분해로 삼차 이상 방정식의 근을 구한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+      "parentProblemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "canonicalLabelKo": "치환을 이용한 차수 축소",
+      "definition": "공통부분·짝함수형·역수형 치환으로 고차방정식을 낮은 차수로 바꾼다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "parentProblemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "canonicalLabelKo": "연립방정식의 직접 해결",
+      "definition": "대입·가감·대칭합으로 연립방정식을 푼다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+      "parentProblemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "canonicalLabelKo": "인수 분기·공통근 연립",
+      "definition": "인수분해로 경우를 나누거나 공통근 조건을 두 식의 차와 결합한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "연립부등식의 공통 구간",
+      "definition": "각 부등식의 해를 구해 교집합 구간을 정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+      "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "정수 개수·매개변수 조건",
+      "definition": "정수해 개수나 지정 해구간이 되도록 매개변수 범위를 정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+      "parentProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "canonicalLabelKo": "절댓값의 직접 구간 변환",
+      "definition": "|ax+b| 관계를 이중부등식 또는 거리 조건으로 바꾼다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "parentProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "canonicalLabelKo": "절댓값의 구간별 분기",
+      "definition": "절댓값 내부의 부호가 바뀌는 점을 기준으로 여러 구간을 나눈다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "canonicalLabelKo": "이차식의 근과 부호 구간",
+      "definition": "근 또는 인수분해를 이용해 이차식의 부호와 해구간을 정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "canonicalLabelKo": "항상 성립·해 없음의 매개변수",
+      "definition": "모든 실수에서의 부호 또는 해 없음 조건을 판별식과 최고차항 부호로 정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "이차함수와 직선의 교점·접점",
+      "definition": "두 그래프를 연립해 만든 이차방정식의 근 또는 판별식으로 교점 관계를 판정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "교점 좌표와 그래프·도형 관계",
+      "definition": "교점·축·근의 대칭을 좌표·거리·넓이 등 후속 관계와 결합한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "canonicalLabelKo": "꼭짓점·제한구간의 최대·최소",
+      "definition": "꼭짓점의 위치와 구간 끝점을 비교해 최대·최소를 구한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "canonicalLabelKo": "조건·도형을 이차함수로 모델링",
+      "definition": "넓이·길이·이익 등 목표량을 이차식으로 나타내 극값을 구한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "canonicalLabelKo": "근·축·꼭짓점으로 이차함수 결정",
+      "definition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "canonicalLabelKo": "복합 조건으로 이차함수 결정",
+      "definition": "부등식·그래프 관계 등 여러 조건을 계수관계로 바꾸어 함수식을 정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "parentProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "canonicalLabelKo": "합·곱의 법칙과 경우 분해",
+      "definition": "독립 선택은 곱하고 서로 배타적인 경우는 합하여 센다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "parentProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "canonicalLabelKo": "경로·그래프·색칠 경우의 수",
+      "definition": "경로·인접관계·색칠 구조를 경우별로 분해하여 센다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+      "parentProblemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "canonicalLabelKo": "행렬의 기본 성분 연산",
+      "definition": "행렬의 크기·성분·덧셈·뺄셈·스칼라배를 직접 계산한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_BASIC_EQUALITY",
+      "parentProblemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "canonicalLabelKo": "행렬의 상등과 성분 비교",
+      "definition": "대응 성분의 상등 조건으로 미지수를 정한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+      "parentProblemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "canonicalLabelKo": "행렬곱·제곱의 직접 계산",
+      "definition": "행렬곱 또는 제곱의 각 성분을 계산한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_PRODUCT_MODEL",
+      "parentProblemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "canonicalLabelKo": "행렬곱의 자료·관계 해석",
+      "definition": "행렬곱을 표·자료·상황의 결합으로 해석한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+      "parentProblemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "canonicalLabelKo": "행렬 방정식과 성분 연립",
+      "definition": "행렬식을 미지 행렬에 대해 정리하거나 대응 성분을 연립한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+      "parentProblemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "canonicalLabelKo": "교환·인수·비선형 행렬 조건",
+      "definition": "AB=BA, 행렬 다항식 등 구조 조건을 성분식과 결합한다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_POWER_PERIOD",
+      "parentProblemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "canonicalLabelKo": "행렬 거듭제곱의 주기",
+      "definition": "A²=E 등 반복 관계로 큰 거듭제곱이나 합을 줄인다.",
+      "status": "CANDIDATE"
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_POWER_POLYNOMIAL",
+      "parentProblemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "canonicalLabelKo": "행렬의 다항식 항등관계",
+      "definition": "행렬이 만족하는 다항식 관계로 거듭제곱·성분을 결정한다.",
+      "status": "CANDIDATE"
+    }
+  ],
+  "principles": [
+    "L4 only for repeated decisive-step skeleton",
+    "numeric/context/condition differences do not create L4",
+    "relational detail goes to CrossConcept/Condition/IntegrationPattern",
+    "existing ACTIVE template reused for existing ACTIVE L3"
+  ]
+}

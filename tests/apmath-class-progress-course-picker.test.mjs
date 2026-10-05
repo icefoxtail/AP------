@@ -1,0 +1,607 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import test from 'node:test';
+import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const classroomSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/classroom.js'), 'utf8');
+const textbookSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/textbook.js'), 'utf8');
+
+function makeGroup(curriculumKey, level, courseKey, courseLabel = courseKey) {
+    const key = [curriculumKey, level, courseKey].join('|');
+    return {
+        key,
+        curriculumKey,
+        level,
+        courseKey,
+        courseLabel,
+        gradeKey: level === 'middle' ? '중1' : '고1',
+        items: [{
+            canonicalPathKey: `${key}|단원|소단원`,
+            curriculumKey,
+            level,
+            courseKey,
+            l1: '단원',
+            l2: '소단원'
+        }]
+    };
+}
+
+const groups = [
+    makeGroup('2015', 'high', '수학 하'),
+    makeGroup('2022', 'middle', 'M1-1', '중1 과정 · 1학기'),
+    makeGroup('2022', 'middle', 'M1-2', '중1 과정 · 2학기'),
+    makeGroup('2022', 'middle', 'M2-1', '중2 과정 · 1학기'),
+    makeGroup('2022', 'middle', 'M2-2', '중2 과정 · 2학기'),
+    makeGroup('2022', 'middle', 'M3-1', '중3 과정 · 1학기'),
+    makeGroup('2022', 'middle', 'M3-2', '중3 과정 · 2학기'),
+    makeGroup('2022', 'high', '공통수학1'),
+    makeGroup('2022', 'high', '공통수학2'),
+    makeGroup('2022', 'high', '대수'),
+    makeGroup('2022', 'high', '미적분I'),
+    makeGroup('2022', 'high', '미적분II'),
+    makeGroup('2022', 'high', '확률과통계', '확률과 통계'),
+    makeGroup('2022', 'high', '기하')
+];
+
+function makeContext(gradeKey = '중1') {
+    const elements = new Map();
+    const books = [
+        { id: 'book-a', class_id: 'class-1', title: '학교부교재', status: 'active', start_date: '2026-03-01' },
+        { id: 'book-b', class_id: 'class-1', title: '개념서', status: 'active', start_date: '2026-03-01' }
+    ];
+    const state = {
+        db: {
+            classes: [{ id: 'class-1', name: `${gradeKey} 테스트반` }],
+            class_textbooks: books.map(book => ({ ...book }))
+        },
+        ui: {
+            classProgressModalMeta: { classId: 'class-1', date: '2026-09-17', gradeKey },
+            classProgressModalState: {
+                classId: 'class-1',
+                className: `${gradeKey} 테스트반`,
+                date: '2026-09-17',
+                gradeKey,
+                books: books.map(book => ({ ...book })),
+                allBooks: books.map(book => ({ ...book })),
+                progressByTextbook: {
+                    'book-a': { progressText: '', isChecked: false },
+                    'book-b': { progressText: '', isChecked: false }
+                },
+                selectedTextbookId: 'book-a',
+                groups,
+                savedPaths: [],
+                activeGroupKeys: [],
+                courseAddOpen: true,
+                courseAddShowAll: false,
+                courseAddSelectedGroupKey: '',
+                courseAddBookIds: [],
+                courseAddNewTextbookOpen: false
+            }
+        }
+    };
+    const context = {
+        console,
+        window: {},
+        state,
+        document: {
+            getElementById(id) { return elements.get(id) || null; },
+            querySelector() { return null; },
+            querySelectorAll(selector) {
+                if (selector === '.ap-class-progress-course-book-choice:checked') {
+                    return (context._courseBookCheckboxes || []).filter(input => input.checked !== false);
+                }
+                if (selector === '.ap-class-progress-course-book-choice') return context._courseBookCheckboxes || [];
+                return [];
+            }
+        },
+        apEscapeHtml(value) {
+            return String(value ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        },
+        api: {
+            patch: async (path, payload) => {
+                const textbookId = String(path || '').split('/').pop();
+                const current = state.db.class_textbooks.find(book => String(book.id) === textbookId);
+                return current ? { success: true, item: { ...current, ...payload } } : { success: false, error: 'not found' };
+            }
+        },
+        toast() {},
+        _elements: elements,
+        _courseBookCheckboxes: [],
+        _addHandlerCalls: []
+    };
+    vm.createContext(context);
+    vm.runInContext(classroomSource, context, { filename: 'apmath/js/classroom.js' });
+    vm.runInContext(textbookSource, context, { filename: 'apmath/js/textbook.js' });
+    return context;
+}
+
+function optionKeys(html) {
+    return Array.from(html.matchAll(/<option value="([^"]*)"/g))
+        .map(match => match[1])
+        .filter(Boolean);
+}
+
+test('course options match each grade, hide 2015, remove recommendation copy, and expand for middle grades', () => {
+    const expectedByGrade = {
+        중1: ['M1-1', 'M1-2', 'M2-1', 'M2-2', 'M3-1', 'M3-2'],
+        중2: ['M2-1', 'M2-2', 'M3-1', 'M3-2', '공통수학1', '공통수학2'],
+        중3: ['M3-1', 'M3-2', '공통수학1', '공통수학2', '대수', '미적분I', '미적분II', '확률과통계', '기하'],
+        고1: ['공통수학1', '공통수학2', '대수', '미적분I', '미적분II', '확률과통계', '기하'],
+        고2: ['대수', '미적분I', '미적분II', '확률과통계', '기하'],
+        고3: ['대수', '미적분I', '미적분II', '확률과통계', '기하']
+    };
+    const keyFor = courseKey => groups.find(group => group.curriculumKey === '2022' && group.courseKey === courseKey).key;
+
+    for (const [gradeKey, expectedCourseKeys] of Object.entries(expectedByGrade)) {
+        const context = makeContext(gradeKey);
+        const html = context.renderClassProgressCourseAddControl();
+        const expected = expectedCourseKeys.map(keyFor);
+        assert.deepEqual(optionKeys(html), expected, `${gradeKey} 기본 과정 범위`);
+        assert.doesNotMatch(html, /2015|추천/, `${gradeKey} 신규 선택에서 2015/추천 표시 제거`);
+        assert.equal(html.includes('교육과정 더보기'), gradeKey.startsWith('중'), `${gradeKey} 더보기 노출`);
+        assert.match(html, /class="ap-class-progress-course-book-choice"/);
+    }
+
+    const middleContext = makeContext('중1');
+    middleContext.toggleClassProgressCourseCatalog();
+    const expandedHtml = middleContext.renderClassProgressCourseAddControl();
+    assert.deepEqual(optionKeys(expandedHtml), groups.filter(group => group.curriculumKey === '2022').map(group => group.key));
+    assert.doesNotMatch(expandedHtml, /2015|추천/);
+});
+
+test('existing saved 2015 course panels remain visible when the new picker excludes 2015', () => {
+    const context = makeContext('고1');
+    const modalState = context.state.ui.classProgressModalState;
+    modalState.activeGroupKeys = ['2015|high|수학 하'];
+    modalState.groups = groups;
+    const detail = context.renderClassProgressTextbookDetail(modalState.books[0]);
+    const picker = context.renderClassProgressCourseAddControl();
+    assert.match(detail, /data-progress-group="2015\|high\|수학 하"/);
+    assert.doesNotMatch(picker, /2015/);
+    assert.doesNotMatch(detail, /추천/);
+});
+
+test('empty textbook state still renders the course picker and course panel area', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    modalState.books = [];
+    modalState.selectedTextbookId = '';
+    modalState.courseAddOpen = false;
+
+    const detail = context.renderClassProgressTextbookDetail(null);
+
+    assert.match(detail, /등록된 교재가 없습니다/);
+    assert.match(detail, /toggleClassProgressCourseAdd\(\)/);
+    assert.match(detail, /record-progress-course-panels/);
+});
+
+test('left and integrated textbook forms use distinct input IDs', () => {
+    const context = makeContext('고1');
+    context.state.ui.classProgressModalState.courseAddNewTextbookOpen = true;
+    const combinedHtml = context.renderClassProgressInlineAddForm()
+        + context.renderClassProgressCourseAddControl();
+
+    for (const id of ['new-tb-class', 'new-tb-title', 'new-tb-start']) {
+        const occurrences = Array.from(combinedHtml.matchAll(new RegExp(`id="${id}"`, 'g'))).length;
+        assert.equal(occurrences, 1, `${id} must be unique across the two forms`);
+    }
+    for (const id of ['class-progress-course-new-tb-class', 'class-progress-course-new-tb-title', 'class-progress-course-new-tb-start']) {
+        assert.equal(combinedHtml.includes(`id="${id}"`), true, `${id} must identify the integrated form input`);
+    }
+});
+
+test('applying a selected course and active books adds a course card and collapses the picker', async () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const key = '2022|middle|M1-1';
+    context._courseBookCheckboxes = [{ value: 'book-a' }, { value: 'book-b' }];
+    const inserted = [];
+    let emptyRemoved = false;
+    const root = {
+        querySelectorAll() { return []; },
+        querySelector() { return { remove() { emptyRemoved = true; } }; },
+        insertAdjacentHTML(_position, html) { inserted.push(html); }
+    };
+    const control = { outerHTML: '' };
+    const detail = { innerHTML: '' };
+    context._elements.set('record-progress-course-panels', root);
+    context._elements.set('record-progress-course-add', control);
+    context._elements.set('record-progress-course-select', { value: key, options: [{ value: key, disabled: false }] });
+    context._elements.set('record-progress-detail', detail);
+
+    await context.applyClassProgressCourseAndTextbooks();
+
+    assert.equal(emptyRemoved, true);
+    assert.match(inserted[0], /data-progress-group="2022\|middle\|M1-1"/);
+    assert.deepEqual(Array.from(modalState.activeGroupKeys), [key]);
+    assert.equal(modalState.progressByTextbook['book-a'].isChecked, true);
+    assert.equal(modalState.progressByTextbook['book-b'].isChecked, true);
+    assert.equal(modalState.courseAddOpen, false);
+    assert.match(detail.innerHTML, /onclick="toggleClassProgressCourseAdd\(\)"/);
+});
+
+test('partial course DOM updates only rendered groups and preserves unrendered course selections', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const firstGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M1-2');
+    const secondGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const firstPath = firstGroup.items[0].canonicalPathKey;
+    const secondPath = secondGroup.items[0].canonicalPathKey;
+    modalState.activeGroupKeys = [firstGroup.key, secondGroup.key];
+    modalState.selectedPathDraft = [firstPath, secondPath];
+
+    const checkedFirst = {
+        value: firstPath,
+        getAttribute(name) {
+            return name === 'data-canonical-path-key' ? firstPath : '';
+        }
+    };
+    const root = {
+        querySelectorAll(selector) {
+            if (selector === '[data-progress-group]') {
+                return [{ getAttribute(name) { return name === 'data-progress-group' ? firstGroup.key : ''; } }];
+            }
+            if (selector === '.record-unit-check:checked') return [checkedFirst];
+            return [];
+        }
+    };
+    context._elements.set('record-progress-course-panels', root);
+
+    const nextDraft = context.syncClassProgressUnitDraftsFromDom();
+
+    assert.deepEqual(Array.from(nextDraft), [firstPath, secondPath]);
+    const snapshot = context.buildClassProgressSnapshotItems();
+    assert.deepEqual(Array.from(snapshot.errors), []);
+    assert.deepEqual(Array.from(snapshot.items, item => item.canonical_path_key), [firstPath, secondPath]);
+});
+
+test('last clicked unit becomes the single current unit and earlier units render complete', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const group = {
+        key: '2022|middle|M2-1',
+        curriculumKey: '2022',
+        level: 'middle',
+        courseKey: 'M2-1',
+        courseLabel: '중2 과정 · 1학기',
+        gradeKey: '중2',
+        items: [
+            { canonicalPathKey: 'm2-1-1', curriculumKey: '2022', level: 'middle', courseKey: 'M2-1', l1: '수와 식', l2: '유리수와 순환소수' },
+            { canonicalPathKey: 'm2-1-2', curriculumKey: '2022', level: 'middle', courseKey: 'M2-1', l1: '식의 계산', l2: '단항식의 계산' },
+            { canonicalPathKey: 'm2-1-3', curriculumKey: '2022', level: 'middle', courseKey: 'M2-1', l1: '연립일차방정식', l2: '연립일차방정식의 활용' }
+        ]
+    };
+    modalState.groups = [group];
+    modalState.activeGroupKeys = [group.key];
+    modalState.selectedPathDraft = ['m2-1-1', 'm2-1-2'];
+    modalState.books[0].progress_curriculum_key = '2022';
+    modalState.books[0].progress_level_key = 'middle';
+    modalState.books[0].progress_course_key = 'M2-1';
+    modalState.selectedTextbookId = modalState.books[0].id;
+    context._elements.set('record-progress-detail', { innerHTML: '' });
+
+    context.setClassProgressCurrentUnit(group.key, 'm2-1-3', true);
+
+    assert.deepEqual(Array.from(modalState.selectedPathDraft), ['m2-1-3']);
+    assert.equal(context.getClassProgressItemStatus(group, 0, modalState.selectedPathDraft), 'complete');
+    assert.equal(context.getClassProgressItemStatus(group, 1, modalState.selectedPathDraft), 'complete');
+    assert.equal(context.getClassProgressItemStatus(group, 2, modalState.selectedPathDraft), 'current');
+    const html = context.renderClassProgressCoursePanel(group, modalState.selectedPathDraft);
+    assert.equal((html.match(/ checked/g) || []).length, 1);
+    assert.match(html, /연립일차방정식의 활용/);
+});
+
+test('snapshot serialization uses the full draft instead of visible checked DOM only', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const firstGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M1-2');
+    const secondGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const firstPath = firstGroup.items[0].canonicalPathKey;
+    const secondPath = secondGroup.items[0].canonicalPathKey;
+    modalState.activeGroupKeys = [firstGroup.key, secondGroup.key];
+    modalState.selectedPathDraft = [firstPath, secondPath];
+
+    const snapshot = context.buildClassProgressSnapshotItems();
+
+    assert.deepEqual(Array.from(snapshot.errors), []);
+    assert.deepEqual(Array.from(snapshot.items, item => item.canonical_path_key), [firstPath, secondPath]);
+    assert.deepEqual(Array.from(snapshot.items, item => item.course_key), ['M1-2', 'M2-1']);
+});
+
+test('unsaved unit selection survives adding a second course before record save', async () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const firstGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M1-2');
+    const secondGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const firstPath = firstGroup.items[0].canonicalPathKey;
+
+    modalState.activeGroupKeys = [firstGroup.key];
+    modalState.savedPaths = [];
+    modalState.selectedPathDraft = [];
+    modalState.courseAddSelectedGroupKey = secondGroup.key;
+    context._courseBookCheckboxes = [{ value: 'book-a' }];
+
+    const checkedUnit = {
+        value: firstPath,
+        getAttribute(name) {
+            return name === 'data-canonical-path-key' ? firstPath : '';
+        }
+    };
+    const inserted = [];
+    const root = {
+        querySelectorAll(selector) {
+            if (selector === '.record-unit-check:checked') return [checkedUnit];
+            if (selector === '[data-progress-group]') {
+                return [{ getAttribute(name) { return name === 'data-progress-group' ? firstGroup.key : ''; } }];
+            }
+            return [];
+        },
+        querySelector() { return { remove() {} }; },
+        insertAdjacentHTML(_position, html) { inserted.push(html); }
+    };
+    const detail = { innerHTML: '' };
+    context._elements.set('record-progress-course-panels', root);
+    context._elements.set('record-progress-detail', detail);
+
+    await context.applyClassProgressCourseAndTextbooks();
+
+    assert.deepEqual(Array.from(modalState.selectedPathDraft), [firstPath]);
+    assert.equal(modalState.activeGroupKeys.includes(firstGroup.key), true);
+    assert.equal(modalState.activeGroupKeys.includes(secondGroup.key), true);
+    const snapshot = context.buildClassProgressSnapshotItems();
+    assert.equal(snapshot.items.some(item => item.canonical_path_key === firstPath), true);
+    assert.equal(modalState.activeGroupKeys.includes(secondGroup.key), true);
+    assert.equal(inserted.some(html => html.includes(secondGroup.key)), true);
+});
+
+test('clicking textbooks switches the visible canonical course by persisted textbook binding', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const firstGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M1-2');
+    const secondGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    modalState.activeGroupKeys = [firstGroup.key, secondGroup.key];
+    modalState.books[0].progress_curriculum_key = firstGroup.curriculumKey;
+    modalState.books[0].progress_level_key = firstGroup.level;
+    modalState.books[0].progress_course_key = firstGroup.courseKey;
+    modalState.books[1].progress_curriculum_key = secondGroup.curriculumKey;
+    modalState.books[1].progress_level_key = secondGroup.level;
+    modalState.books[1].progress_course_key = secondGroup.courseKey;
+
+    const firstHtml = context.renderClassProgressTextbookDetail(modalState.books[0]);
+    const secondHtml = context.renderClassProgressTextbookDetail(modalState.books[1]);
+
+    assert.match(firstHtml, new RegExp(`data-progress-group="${firstGroup.key.replace(/[|]/g, '\\|')}"`));
+    assert.doesNotMatch(firstHtml, new RegExp(`data-progress-group="${secondGroup.key.replace(/[|]/g, '\\|')}"`));
+    assert.match(secondHtml, new RegExp(`data-progress-group="${secondGroup.key.replace(/[|]/g, '\\|')}"`));
+    assert.doesNotMatch(secondHtml, new RegExp(`data-progress-group="${firstGroup.key.replace(/[|]/g, '\\|')}"`));
+});
+
+test('binding an already-active course to a textbook persists the relationship', async () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const group = groups.find(item => item.curriculumKey === '2022' && item.courseKey === 'M2-1');
+    modalState.activeGroupKeys = [group.key];
+    modalState.courseAddSelectedGroupKey = group.key;
+    context._courseBookCheckboxes = [{ value: 'book-b' }];
+    const calls = [];
+    context.api.patch = async (path, payload) => {
+        calls.push({ path, payload });
+        const id = path.split('/').pop();
+        const current = modalState.books.find(book => book.id === id);
+        return { success: true, item: { ...current, ...payload } };
+    };
+
+    await context.applyClassProgressCourseAndTextbooks();
+
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].path, 'class-textbooks/book-b');
+    assert.equal(JSON.stringify(calls[0].payload), JSON.stringify({
+        progress_curriculum_key: '2022',
+        progress_level_key: 'middle',
+        progress_course_key: 'M2-1'
+    }));
+    assert.equal(context.getClassProgressTextbookGroupKey(modalState.books[1]), group.key);
+});
+
+test('changing course selection preserves manually checked textbooks', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const targetGroup = groups.find(group => group.curriculumKey === '2022' && group.courseKey === 'M2-1');
+    const bookA = { value: 'book-a', checked: true };
+    const bookB = { value: 'book-b', checked: false };
+    context._courseBookCheckboxes = [bookA, bookB];
+    modalState.courseAddBookIds = ['book-a'];
+
+    context.setClassProgressCourseSelection(targetGroup.key);
+
+    assert.equal(modalState.courseAddBookIds.includes('book-a'), true);
+    assert.equal(bookA.checked, true);
+});
+
+test('opening course picker defaults to the currently selected textbook', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    modalState.courseAddOpen = false;
+    modalState.courseAddBookIds = [];
+    modalState.selectedTextbookId = 'book-b';
+    const detail = { innerHTML: '' };
+    context._elements.set('record-progress-detail', detail);
+
+    context.toggleClassProgressCourseAdd();
+
+    assert.equal(modalState.courseAddOpen, true);
+    assert.deepEqual(Array.from(modalState.courseAddBookIds), ['book-b']);
+});
+
+test('removing a course unbinds only the selected textbook and keeps another textbook using the same course', async () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const group = groups.find(item => item.curriculumKey === '2022' && item.courseKey === 'M1-2');
+    const pathKey = group.items[0].canonicalPathKey;
+    modalState.activeGroupKeys = [group.key];
+    modalState.selectedPathDraft = [pathKey];
+    modalState.selectedTextbookId = 'book-a';
+    for (const book of modalState.books) {
+        book.progress_curriculum_key = group.curriculumKey;
+        book.progress_level_key = group.level;
+        book.progress_course_key = group.courseKey;
+    }
+    modalState.allBooks = modalState.books.map(book => ({ ...book }));
+    context.state.db.class_textbooks = modalState.books.map(book => ({ ...book }));
+
+    const checkedUnit = {
+        value: pathKey,
+        getAttribute(name) {
+            if (name === 'data-canonical-path-key') return pathKey;
+            return '';
+        }
+    };
+    const root = {
+        querySelectorAll(selector) {
+            if (selector === '[data-progress-group]') {
+                return [{ getAttribute(name) { return name === 'data-progress-group' ? group.key : ''; } }];
+            }
+            if (selector === '.record-unit-check:checked') return [checkedUnit];
+            return [];
+        }
+    };
+    context._elements.set('record-progress-course-panels', root);
+    context._elements.set('record-progress-books-panel', { innerHTML: '' });
+    context._elements.set('record-progress-detail', { innerHTML: '' });
+
+    const calls = [];
+    context.api.patch = async (path, payload) => {
+        calls.push({ path, payload });
+        const id = path.split('/').pop();
+        const current = modalState.books.find(book => book.id === id);
+        return {
+            success: true,
+            item: {
+                ...current,
+                progress_curriculum_key: null,
+                progress_level_key: null,
+                progress_course_key: null
+            }
+        };
+    };
+
+    await context.removeClassProgressCourse(group.key);
+
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].path, 'class-textbooks/book-a');
+    assert.equal(context.getClassProgressTextbookGroupKey(modalState.books.find(book => book.id === 'book-a')), '');
+    assert.equal(context.getClassProgressTextbookGroupKey(modalState.books.find(book => book.id === 'book-b')), group.key);
+    assert.equal(modalState.activeGroupKeys.includes(group.key), true);
+    assert.equal(modalState.selectedPathDraft.includes(pathKey), true);
+
+    modalState.selectedTextbookId = 'book-b';
+    const bookBHtml = context.renderClassProgressTextbookDetail(modalState.books.find(book => book.id === 'book-b'));
+    assert.match(bookBHtml, /data-progress-group="2022\|middle\|M1-2"/);
+});
+
+test('an unbound textbook does not inherit another textbook course once bindings exist', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    const group = groups.find(item => item.curriculumKey === '2022' && item.courseKey === 'M2-1');
+    modalState.activeGroupKeys = [group.key];
+    modalState.books[1].progress_curriculum_key = group.curriculumKey;
+    modalState.books[1].progress_level_key = group.level;
+    modalState.books[1].progress_course_key = group.courseKey;
+
+    const unboundHtml = context.renderClassProgressTextbookDetail(modalState.books[0]);
+    const boundHtml = context.renderClassProgressTextbookDetail(modalState.books[1]);
+
+    assert.doesNotMatch(unboundHtml, /data-progress-group="2022\|middle\|M2-1"/);
+    assert.match(boundHtml, /data-progress-group="2022\|middle\|M2-1"/);
+});
+
+test('inline textbook registration reuses handleAddTextbook and carries the apply draft through modal reopen', async () => {
+    const context = makeContext('고1');
+    const modalState = context.state.ui.classProgressModalState;
+    const key = '2022|high|공통수학2';
+    modalState.courseAddSelectedGroupKey = key;
+    context._courseBookCheckboxes = [{ value: 'book-a' }];
+    modalState.courseAddNewTextbookOpen = true;
+    context._elements.set('new-tb-class', { value: 'left-class' });
+    context._elements.set('new-tb-title', { value: '왼쪽 기존 교재 폼 값' });
+    context._elements.set('new-tb-start', { value: '2026-01-01' });
+    context._elements.set('class-progress-course-new-tb-class', { value: 'class-1' });
+    context._elements.set('class-progress-course-new-tb-title', { value: '개념원리 공통수학2' });
+    context._elements.set('class-progress-course-new-tb-start', { value: '2026-09-17' });
+    context.state.db.class_textbooks = [];
+    context.state.ui.modalReturnView = { type: 'classDetail', classId: 'class-1' };
+    context.api = {
+        post: async (path, payload) => {
+            context._addHandlerCalls.push({ path, payload, action: context.state.ui.classProgressInlineTextbookAction });
+            return {
+                success: true,
+                item: {
+                    id: 'book-new',
+                    class_id: 'class-1',
+                    title: payload.title,
+                    status: 'active',
+                    start_date: payload.start_date,
+                    progress_curriculum_key: payload.progress_curriculum_key,
+                    progress_level_key: payload.progress_level_key,
+                    progress_course_key: payload.progress_course_key
+                }
+            };
+        },
+        patch: async (path, payload) => {
+            context._addHandlerCalls.push({ path, payload, action: context.state.ui.classProgressInlineTextbookAction });
+            return { success: true, item: { id: path.split('/').pop(), class_id: 'class-1', ...payload } };
+        }
+    };
+    context.loadData = async () => {
+        context.state.db.class_textbooks.push({ id: 'book-new', class_id: 'class-1', title: '개념원리 공통수학2', status: 'active', start_date: '2026-09-17' });
+    };
+    context.toast = () => {};
+    let reopened = null;
+    context.openClassRecordModal = (classId, date) => { reopened = [classId, date]; };
+
+    await context.applyClassProgressCourseAndTextbooks();
+
+    assert.equal(context._addHandlerCalls.length, 2);
+    assert.equal(context._addHandlerCalls[0].path, 'class-textbooks');
+    assert.equal(JSON.stringify(context._addHandlerCalls[0].payload), JSON.stringify({
+        class_id: 'class-1',
+        title: '개념원리 공통수학2',
+        start_date: '2026-09-17',
+        progress_curriculum_key: '2022',
+        progress_level_key: 'high',
+        progress_course_key: '공통수학2'
+    }));
+    assert.equal(context._addHandlerCalls[1].path, 'class-textbooks/book-a');
+    assert.equal(context._addHandlerCalls[0].action.mode, 'add');
+    assert.equal(context._addHandlerCalls[0].action.courseApplyDraft.groupKey, key);
+    assert.deepEqual(Array.from(context._addHandlerCalls[0].action.courseApplyDraft.selectedBookIds), ['book-a']);
+    assert.equal(context._addHandlerCalls[0].action.courseApplyDraft.newTextbookTitle, '개념원리 공통수학2');
+    assert.deepEqual(reopened, ['class-1', '2026-09-17']);
+    assert.equal(context.state.ui.pendingClassProgressCourseApply.groupKey, key);
+    assert.equal(context.state.ui.pendingClassProgressCourseApply.addedTextbookId, 'book-new');
+
+    const progressByTextbook = {
+        'book-a': { progressText: '', isChecked: false },
+        'book-new': { progressText: '', isChecked: false }
+    };
+    const activeKeys = context.applyPendingClassProgressCourseApply(
+        'class-1',
+        '2026-09-17',
+        groups,
+        new Set(),
+        progressByTextbook,
+        context.state.db.class_textbooks
+    );
+    assert.equal(activeKeys.has(key), true);
+    assert.equal(progressByTextbook['book-a'].isChecked, true);
+    assert.equal(progressByTextbook['book-new'].isChecked, true);
+    assert.equal(context.state.ui.pendingClassProgressCourseApply, null);
+});

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "h1-eqineq-1-280-semantic-restore-v1",
+  "status": "PHYSICAL_LEDGER_RESTORED_SOURCE_SOLUTION_MATERIALIZED",
+  "authority": "CURRENT_SOURCE_CONTENT_AND_SOLUTION_DIRECT_MATERIALIZATION",
+  "baseMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "scope": { "unit": "EQINEQ", "start": 1, "end": 280, "denominator": 280 },
+  "coverage": {
+    "rows": 280,
+    "uidUnique": 280,
+    "sourceIdentityUnique": 280,
+    "fingerprintMismatch": 0,
+    "requiredFieldMissing": 0,
+    "legacyL3L4DifficultyUsed": false
+  },
+  "sourceBoundary": {
+    "h15Rows": 247,
+    "h22C04Rows": 33,
+    "legacyZipAuthority": false,
+    "legacyZipStatus": "TRUNCATED_CORRUPT_NOT_USED"
+  },
+  "ledgerFiles": [
+    { "file": "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl", "rows": 70, "sha256": "411705763b34deff239a25d37a6f3333a4460c4b500bfaf68b1e8637255754ed" },
+    { "file": "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl", "rows": 70, "sha256": "0603d90b251447315ef6335d293602eac3ade3222daae470ac11a368c947ac90" },
+    { "file": "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl", "rows": 70, "sha256": "7cda228bbf3a2d322f582b33dc9bcd393ed23c283453a91b9c2f59e2d6f9ed98" },
+    { "file": "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl", "rows": 70, "sha256": "ad977ac613e36b6d9dc65a8cc6792f396d6375b82aad9741e899000b0f94a39e" }
+  ],
+  "mutation": { "production": 0, "canonical": 0, "compiled": 0, "runtime": 0, "mainMerge": 0 }
+}

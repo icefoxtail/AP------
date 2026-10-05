@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 3,
+  "denominator": 23,
+  "defaultDisposition": "SOLUTION_REPAIR_REQUIRED",
+  "defaultIssueType": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+  "overrides": [
+    { "sourceOrdinal": 3, "issueType": "OFF_TOPIC_SOLUTION", "reason": "Both reviewers found angle-geometry guidance in the archived solution to a number-theory question." },
+    { "sourceOrdinal": 12, "issueType": "MISLEADING_SOLUTION", "reason": "The archived explanation discusses case counting but omits the requested product comparison and its decisive calculation." },
+    { "sourceOrdinal": 14, "issueType": "OFF_TOPIC_SOLUTION", "reason": "The source's magic-square image supplies the partial grid, but the archived solution discusses unrelated angle geometry instead of row/column sum constraints." },
+    { "sourceOrdinal": 20, "issueType": "OFF_TOPIC_SOLUTION", "reason": "The archived solution gives coordinate/graph guidance instead of evaluating the expression in the source question." }
+  ],
+  "sourceAnswerHoldOrdinals": [],
+  "semanticMappingPolicy": "Classify from independently read source text/image/answer while the archived explanation remains on explicit solution-quality HOLD; preserve all student-facing fields."
+}

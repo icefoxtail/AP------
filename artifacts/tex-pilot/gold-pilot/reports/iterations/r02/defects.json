@@ -1,0 +1,17 @@
+{
+  "schema": "APMATH_GOLD_DEFECT_LIST_v1",
+  "closed": [
+    {"id":"P0-01","question":"06_function_tangent_triple_root","description":"Removed invalid PERPENDICULAR_MARK; TANGENT relation now checks curve point and derivative slope."},
+    {"id":"P0-02","question":"10_moving_segment_intersection","description":"Computed AB, PQ, and R numerically; handcrafted TeX is checked against the R witness."},
+    {"id":"P1-01","question":"all","description":"Separated equal-unit geometry aspect from readability graph aspect and capped graph intrinsic width for mobile."},
+    {"id":"P1-02","question":"all","description":"Stopped automatic LINE equation labels; explicit EQUATION_LABEL controls visible math."},
+    {"id":"P1-03","question":"02_coordinate_parallel","description":"Condition box now has math-aware multiline content, padding, and width bounds."}
+  ],
+  "remaining": [
+    {"id":"P1-04","question":"01_coordinate_perpendicular","severity":"POLISH_REQUIRED","description":"Slope note and equation labels remain visually dense near the origin."},
+    {"id":"P1-05","question":"06_function_tangent_triple_root","severity":"POLISH_REQUIRED","description":"Triple-root annotation is close to the upper axis label."},
+    {"id":"P1-06","question":"08_calculus_min_slope","severity":"POLISH_REQUIRED","description":"Minimum-slope note needs a more deliberate AUTO placement candidate."},
+    {"id":"P1-07","question":"all","severity":"NOT_RUN","description":"Archive engine container render is reserved for a later GOLD iteration."}
+  ],
+  "aggregate": {"semanticFail": 0, "factParityFail": 0, "renderFail": 0, "unresolvedCollision": 0, "polishRequired": 3, "rebuild": 0}
+}

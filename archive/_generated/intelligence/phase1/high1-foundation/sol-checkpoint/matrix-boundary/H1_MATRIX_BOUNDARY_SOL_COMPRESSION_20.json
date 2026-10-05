@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_WORKING_COMPRESSION_NOT_FINAL",
+  "scope": "20 independently reviewed H1 matrix L3 boundaries",
+  "sourceComparison": "H1_MATRIX_BOUNDARY_AB_COMPARISON_20.jsonl",
+  "sourceAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/공통수학1.md#L3-4.1",
+  "denominator": 20,
+  "pass": 19,
+  "sourceHold": [1169],
+  "postRepairSupersession": "../post-d-q1169/H1_Q1169_POST_D_AB_ADAPTER_SUMMARY.json",
+  "postRepairState": "Original question choices restored; matrix display/conditions remain HOLD. A/B independently re-reviewed the changed UID on its current fingerprint and both retained HOLD.",
+  "parentAgreement": 18,
+  "parentConflictSolDirect": [1156],
+  "parentConflictDecisionFile": "H1_SOL_MATRIX_BOUNDARY_Q1156.json",
+  "l4WorkingFamilies": [
+    {
+      "family": "MATRIX_PRODUCT_COMPONENT_OR_COMPATIBILITY",
+      "queueIndices": [1099, 1156],
+      "decisiveDifferencePreserved": "q1099 expands two row-matrix-column products into quadratic scalar conditions; q1156 tests inner dimensions without computing entries.",
+      "draftL4Owner": "행렬의 곱셈",
+      "newKeyPromoted": false
+    },
+    {
+      "family": "MATRIX_UNKNOWN_FROM_COMPONENT_CONSTRAINTS",
+      "queueIndices": [1100, 1104, 1117, 1151],
+      "decisiveDifferencePreserved": "Recover unknown matrix entries from vector images, a quadratic identity, skew-symmetry constraints, or AB=CA component equations respectively.",
+      "draftL4Owner": "조건을 만족하는 행렬",
+      "newKeyPromoted": false
+    },
+    {
+      "family": "MATRIX_MULTIPLICATION_PROPERTY_MANIPULATION",
+      "queueIndices": [1105, 1115],
+      "decisiveDifferencePreserved": "q1105 inserts and subtracts BAB to use AB+BA; q1115 derives idempotence from AB=O and A+B=E.",
+      "draftL4Owner": "곱셈의 성질",
+      "newKeyPromoted": false
+    },
+    {
+      "family": "MATRIX_POWER_RELATION_REDUCTION",
+      "queueIndices": [1114, 1122, 1131, 1135, 1139, 1150, 1158],
+      "decisiveDifferencePreserved": "Period three, period four, idempotence, square-zero triangular growth, period six, square-zero power sum, and square-zero lower-entry growth are retained in item reasons in that order.",
+      "draftL4Owner": "곱셈의 성질",
+      "newKeyPromoted": false,
+      "nextGate": "Check all 83 matrix items before deciding whether repeated power-reduction skeleton merits its own L4."
+    },
+    {
+      "family": "MATRIX_LAW_TRUTH_TEST",
+      "queueIndices": [1121, 1130, 1164],
+      "decisiveDifferencePreserved": "Universal statement tests use identity expansion and counterexamples, additive cancellation, and noncommutative matrix-equation manipulation respectively.",
+      "draftL4Owner": "곱셈의 성질 / 덧셈·뺄셈·실수배 boundary",
+      "newKeyPromoted": false,
+      "nextGate": "Compare mixed-law statement items across the full 83 before creating or merging an L4."
+    },
+    {
+      "family": "MATRIX_SHAPE_COMPONENT_READING",
+      "queueIndices": [1149],
+      "decisiveDifferencePreserved": "Reads row/column counts and a component, then rejects an undefined product within a mixed assertion item.",
+      "draftL4Owner": "행·열·성분",
+      "newKeyPromoted": false
+    }
+  ],
+  "activeL3Promotions": 0,
+  "activeL4Promotions": 0,
+  "pendingFullMatrix83Review": true
+}

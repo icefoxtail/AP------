@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_INPUT_v1",
+  "questionId": 23,
+  "svg": "archive/assets/images/23_조대부고_2학기_중간_고2_수학II/q23-solution.svg",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 100,
+    "originY": 350,
+    "sx": 100,
+    "sy": 100,
+    "anchors": {
+      "origin": {
+        "element": "anchor-origin-o100",
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "anchor-xaxis-o100",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "anchor-yaxis-o100",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "tolerance": 1E-05,
+  "expectedFacts": [
+    {
+      "factId": "q23-A",
+      "type": "POINT",
+      "element": "point-o100-x1-y1p7320508075688772",
+      "expected": [
+        1,
+        1.7320508075688772
+      ]
+    },
+    {
+      "factId": "q23-B",
+      "type": "POINT",
+      "element": "point-o100-x2-y0",
+      "expected": [
+        2,
+        0
+      ]
+    },
+    {
+      "factId": "q23-C",
+      "type": "MIDPOINT",
+      "element": "point-o100-x1p5-y0p8660254037844386",
+      "points": [
+        "point-o100-x1-y1p7320508075688772",
+        "point-o100-x2-y0"
+      ],
+      "expected": [
+        1.5,
+        0.8660254037844386
+      ]
+    },
+    {
+      "factId": "q23-D",
+      "type": "POINT",
+      "element": "point-o100-x2-y1p1547005383792517",
+      "expected": [
+        2,
+        1.1547005383792517
+      ]
+    },
+    {
+      "factId": "q23-perpendicular",
+      "type": "PERPENDICULAR",
+      "elements": [
+        "line-main-line-o100-x11-y11p7320508075688772-x22-y20",
+        "line-main-line-o100-x11p5-y10p8660254037844386-x22-y21p1547005383792517"
+      ],
+      "expected": true
+    }
+  ],
+  "renderResult": "PASS"
+}

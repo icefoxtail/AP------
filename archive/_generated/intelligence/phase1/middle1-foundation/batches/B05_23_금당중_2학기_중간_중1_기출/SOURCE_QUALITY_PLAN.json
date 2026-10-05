@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 5,
+  "denominator": 24,
+  "defaultDisposition": "HOLD_RESOLVED_NO_SOURCE_MUTATION",
+  "defaultIssueType": "NONE",
+  "defaultReason": "A/B/C source and solution review identified no material source, answer or solution defect for this UID.",
+  "overrides": [
+    { "sourceOrdinal": 15, "issueType": "ABBREVIATED_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The fold-angle answer is independently derivable as 94°, but the archived explanation omits the intermediate 36° and 58° angle transfer. Preserve source text and record solution-quality HOLD." }
+  ],
+  "sourceAnswerHoldOrdinals": [],
+  "semanticMappingPolicy": "Apply semantic mapping from frozen source, image and root proof; preserve student-facing fields and separate the #15 abbreviated-solution quality HOLD."
+}

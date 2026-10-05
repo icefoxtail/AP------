@@ -1,0 +1,87 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>고1 직선의 방정식 H15/H22 전수 실렌더 검수</title>
+<style>
+  body { margin: 20px; font-family: "Noto Sans KR", "Malgun Gothic", sans-serif; color: #111827; }
+  table { border-collapse: collapse; width: 100%; font-size: 12px; }
+  th, td { border: 1px solid #d1d5db; padding: 5px; text-align: left; }
+  th { background: #f3f4f6; }
+  .PASS { color: #166534; font-weight: 700; }
+  .RUNNING { color: #92400e; }
+  .FAIL { color: #b91c1c; font-weight: 700; }
+  #frame { position: fixed; left: -12000px; top: 0; width: 1280px; height: 900px; border: 0; }
+</style>
+<h1>고1 「직선의 방정식」 H15/H22 전수 실제 브라우저 렌더</h1>
+<p id="summary">RUNNING · 대상 목록 로딩 중</p>
+<table><thead><tr><th>시험지</th><th>mode</th><th>기대 문항</th><th>표시 수</th><th>페이지</th><th>이미지</th><th>MathJax/visual</th><th>overflow</th><th>판정</th></tr></thead><tbody id="rows"></tbody></table>
+<iframe id="frame" width="1280" height="900"></iframe>
+<script>
+const rels = [
+  '1final/22_금당고_1학기_기말_고1_기출.js', '1final/22_매산고_1학기_기말_고1_기출.js', '1final/22_순천여고_1학기_기말_고1_기출.js', '1final/22_제일고_1학기_기말_고1_기출.js', '1final/22_팔마고_1학기_기말_고1_기출.js', '1final/22_효천고_1학기_기말_고1_기출.js',
+  '1final/23_강남여고_1학기_기말_고1_기출.js', '1final/23_금당고_1학기_기말_고1_기출.js', '1final/23_매산고_1학기_기말_고1_기출.js', '1final/23_복성고_1학기_기말_고1_기출.js', '1final/23_순천여고_1학기_기말_고1_기출.js', '1final/23_제일고_1학기_기말_고1_기출.js', '1final/23_팔마고_1학기_기말_고1_기출.js',
+  '1final/24_금당고_1학기_기말_고1_기출.js', '1final/24_매산고_1학기_기말_고1_기출.js', '1final/24_제일고_1학기_기말_고1_기출.js', '1mid/24_제일고_1학기_중간_고1_기출.js', '2final/25_제일고_2학기_기말_고1_기출.js',
+  '2mid/21_복성고_2학기_중간_고1_기출.js', '2mid/21_순천고_2학기_중간_고1_기출.js', '2mid/21_효천고_2학기_중간_고1_기출.js', '2mid/22_강남여고_2학기_중간_고1_기출.js',
+  '2mid/25_금당고_2학기_중간_고1_기출.js', '2mid/25_매산고_2학기_중간_고1_기출.js', '2mid/25_순천고_2학기_중간_고1_기출.js', '2mid/25_순천여고_2학기_중간_고1_공통수학2.js', '2mid/25_제일고_2학기_중간_고1_기출.js', '2mid/25_효천고_2학기_중간_고1_기출.js'
+];
+const modes = ['exam', 'sol', 'ans'], rowsEl = document.getElementById('rows'), frame = document.getElementById('frame'), results = [];
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sourceUrl = rel => '../../exams/original/high/h1/' + rel;
+async function expectedCount(rel) {
+  const text = await fetch(sourceUrl(rel)).then(r => r.text());
+  const sandbox = { window: {} };
+  new Function('window', text)(sandbox.window);
+  const bank = Array.isArray(sandbox.window.questionBank) ? sandbox.window.questionBank : [];
+  return { count: bank.length, targetIds: bank.filter(q => q.standardUnitKey === 'H15-SA-10' || q.standardUnitKey === 'H22-C2-02').map(q => Number(q.id)) };
+}
+function addRow(rel, mode, expected) {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${rel}</td><td>${mode}</td><td>${expected}</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td class="RUNNING">RUNNING</td>`;
+  rowsEl.appendChild(tr);
+  return tr;
+}
+function inspect(doc, mode, expected, targetIds) {
+  const nums = mode === 'ans' ? [...doc.querySelectorAll('.ans-n')] : [...doc.querySelectorAll('#staging .q-box')];
+  const imgs = [...doc.querySelectorAll('img')];
+  const errors = [...doc.querySelectorAll('.error,.load-error')].map(x => x.textContent).filter(Boolean);
+  const scope = doc.querySelector('#staging') || doc;
+  const targetBoxes = [...scope.querySelectorAll('.q-box')].filter(x => targetIds.includes(Number((x.querySelector('.q-num')?.textContent || '').replace(/\D/g, ''))));
+  const overflow = targetBoxes.filter(x => x.scrollWidth > x.clientWidth + 2).length;
+  const visual = doc.querySelectorAll('.mjx-container,.MathJax,svg[role="img"],img[alt]').length;
+  const count = nums.length, broken = imgs.filter(x => !x.complete || x.naturalWidth <= 0).length;
+  const pass = count === expected && broken === 0 && overflow === 0 && !errors.length && (mode === 'ans' || visual > 0);
+  return { count, pages: doc.querySelectorAll('.page').length, images: imgs.length, broken, visual, overflow, errors, pass };
+}
+async function runMode(rel, expected, targetIds, mode) {
+  const tr = addRow(rel, mode, expected);
+  frame.src = '../../engine.html?mode=' + mode + '&qpp=4&data=' + encodeURIComponent('exams/original/high/h1/' + rel);
+  let result = null;
+  for (let attempt = 0; attempt < 16; attempt++) {
+    await sleep(1000);
+    try {
+      const doc = frame.contentDocument;
+      if (doc) {
+        result = inspect(doc, mode, expected, targetIds);
+        if (result.pass || attempt === 15) break;
+      }
+    } catch (e) {
+      result = { count: 0, pages: 0, images: 0, broken: 0, visual: 0, overflow: 0, errors: [String(e)], pass: false };
+    }
+  }
+  result ||= { count: 0, pages: 0, images: 0, broken: 0, visual: 0, overflow: 0, errors: ['frame unavailable'], pass: false };
+  const cells = tr.children;
+  cells[3].textContent = result.count; cells[4].textContent = result.pages; cells[5].textContent = `${result.images} (broken ${result.broken})`; cells[6].textContent = result.visual; cells[7].textContent = result.overflow; cells[8].textContent = result.pass ? 'PASS' : 'FAIL'; cells[8].className = result.pass ? 'PASS' : 'FAIL';
+  results.push({ rel, mode, expected, ...result });
+  document.getElementById('summary').textContent = `${results.length}/${rels.length * modes.length} complete · pass ${results.filter(x => x.pass).length}`;
+}
+async function run() {
+  const cases = [];
+  for (const rel of rels) { const meta = await expectedCount(rel); cases.push([rel, meta.count, meta.targetIds]); }
+  const total = cases.reduce((sum, [, n]) => sum + n, 0);
+  document.getElementById('summary').textContent = `RUNNING · ${cases.length} files · ${total} questions · ${total * modes.length} modes`;
+  for (const [rel, n, targetIds] of cases) for (const mode of modes) await runMode(rel, n, targetIds, mode);
+  window.renderResults = results;
+  const pass = results.filter(x => x.pass).length;
+  document.getElementById('summary').textContent = `DONE · ${results.length} modes · pass ${pass} · fail ${results.length - pass}`;
+}
+run();
+</script>

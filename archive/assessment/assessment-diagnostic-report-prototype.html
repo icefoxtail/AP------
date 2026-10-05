@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP수학 진단평가 출력폼</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18202f;
+      --muted: #5d6879;
+      --line: #d9dee8;
+      --soft: #f4f6fa;
+      --panel: #ffffff;
+      --accent: #2454a6;
+      --accent-soft: #e8eefb;
+      --ok: #1d7a56;
+      --warn: #9a6218;
+      --focus: #a44343;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #e8ebf1;
+      color: var(--ink);
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.42;
+    }
+
+    .screen-only {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 22px;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .screen-only strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .screen-only span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    button {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .sheet-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 13mm 12mm;
+      background: var(--panel);
+      box-shadow: 0 18px 50px rgba(20, 30, 50, 0.14);
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .report-header,
+    .evidence-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      padding-bottom: 11px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .evidence-head { align-items: end; }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      margin-top: 6px;
+      font-size: 25px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .page-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 9px;
+      border-radius: 7px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-top: 11px;
+    }
+
+    .meta {
+      min-height: 45px;
+      padding: 8px 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .meta b {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .meta span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .score-box {
+      min-width: 36mm;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      text-align: center;
+      background: var(--soft);
+    }
+
+    .score-box b {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .score-box strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .section { margin-top: 12px; }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+
+    .section-title span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .summary-card,
+    .notice-box,
+    .block {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+    }
+
+    .summary-card {
+      padding: 11px 12px;
+      min-height: 58px;
+    }
+
+    .notice-box {
+      padding: 10px 12px;
+      border-style: dashed;
+      min-height: 44px;
+    }
+
+    .placeholder {
+      color: #2b3345;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .placeholder small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .three-blocks {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .block {
+      min-height: 83px;
+      padding: 10px;
+      background: var(--panel);
+    }
+
+    .block h3 {
+      margin-bottom: 7px;
+    }
+
+    .block ul {
+      margin: 0;
+      padding-left: 17px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 11px;
+    }
+
+    th,
+    td {
+      padding: 7px 6px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      word-break: keep-all;
+    }
+
+    th {
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      text-align: left;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 21px;
+      padding: 0 7px;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .tag.ok { background: #e7f4ee; color: var(--ok); }
+    .tag.warn { background: #fff4df; color: var(--warn); }
+    .tag.focus { background: #fdeaea; color: var(--focus); }
+    .tag.neutral { background: var(--soft); color: var(--muted); }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .internal-only {
+      margin: 16px 24px 24px;
+      padding: 10px;
+      border: 1px dashed #a9b4c7;
+      border-radius: 8px;
+      background: #fffdf5;
+      color: #5f4a16;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .print-hidden { display: block; }
+
+    @media screen and (max-width: 900px) {
+      .sheet {
+        width: min(100%, 210mm);
+        min-height: auto;
+      }
+
+      .meta-grid,
+      .three-blocks,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body { background: #fff; }
+
+      .screen-only,
+      .print-hidden,
+      .internal-only {
+        display: none !important;
+      }
+
+      .sheet-stack {
+        display: block;
+        padding: 0;
+      }
+
+      .sheet {
+        width: auto;
+        min-height: 297mm;
+        margin: 0;
+        padding: 12mm 11mm;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .section,
+      .summary-card,
+      .block,
+      .notice-box {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-only print-hidden">
+    <div>
+      <strong>APMS 진단평가 출력폼 prototype</strong>
+      <span>screen-only review guide · mock data only · production 연결 없음</span>
+    </div>
+    <button type="button" onclick="window.print()">인쇄 미리보기</button>
+  </div>
+
+  <main class="sheet-stack parent-print">
+    <section class="sheet" aria-label="1페이지 상담 요약">
+      <header class="report-header">
+        <div>
+          <span class="page-kicker">상담 요약면</span>
+          <h1>AP수학 진단평가</h1>
+        </div>
+        <div class="score-box">
+          <b>전체 결과</b>
+          <strong>18/24</strong>
+          <b>부분확인 3 · 확인필요 3</b>
+        </div>
+      </header>
+
+      <div class="meta-grid" aria-label="학생과 평가 기본 정보">
+        <div class="meta"><b>학생</b><span>김AP</span></div>
+        <div class="meta"><b>학년/반</b><span>중2 A반</span></div>
+        <div class="meta"><b>평가명</b><span>1학기 진단</span></div>
+        <div class="meta"><b>평가일</b><span>2026.06.02</span></div>
+        <div class="meta"><b>작성일 또는 출력일</b><span>2026.06.02</span></div>
+        <div class="meta"><b>평가 범위</b><span>일차함수 · 연립방정식</span></div>
+        <div class="meta"><b>문항 수</b><span>24문항</span></div>
+        <div class="meta"><b>상태</b><span>상담 확인용</span></div>
+      </div>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>[전체 결과 요약]</h2>
+          <span>사용자 확정 문구 슬롯</span>
+        </div>
+        <div class="summary-card">
+          <p class="placeholder">[전체 결과 요약]<small>점수와 결과 분포를 상담 흐름에 맞춰 배치하는 자리입니다.</small></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>진단 요약</h2>
+          <span>최종 문장 대신 슬롯명만 표시</span>
+        </div>
+        <div class="three-blocks">
+          <article class="block">
+            <h3>[현재 강점]</h3>
+            <ul>
+              <li>정답 문항이 모인 단원/유형</li>
+              <li>안정적으로 유지할 학습 흐름</li>
+            </ul>
+          </article>
+          <article class="block">
+            <h3>[주요 보완 사인]</h3>
+            <ul>
+              <li>부분확인과 확인필요가 모인 지점</li>
+              <li>다음 확인 순서</li>
+            </ul>
+          </article>
+          <article class="block">
+            <h3>[수업 관리 방향]</h3>
+            <ul>
+              <li>다음 수업에서 확인할 우선순위</li>
+              <li>상담 후 관리 체크 포인트</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>단원별 요약</h2>
+          <span>1페이지 밀도 축소</span>
+        </div>
+        <table aria-label="단원별 요약">
+          <thead>
+            <tr><th>단원</th><th>결과</th><th>확인 사인</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>일차함수 기본</td><td><span class="tag ok">강점</span></td><td>[현재 강점]</td></tr>
+            <tr><td>연립방정식 활용</td><td><span class="tag warn">부분확인</span></td><td>[주요 보완 사인]</td></tr>
+            <tr><td>그래프 해석</td><td><span class="tag focus">확인필요</span></td><td>[수업 관리 방향]</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>[출력물 안내 문구]</h2>
+          <span>사용자 확정 문구 슬롯</span>
+        </div>
+        <div class="notice-box">
+          <p class="placeholder">[출력물 안내 문구]<small>실제 문장은 사용자가 확정합니다.</small></p>
+        </div>
+      </section>
+    </section>
+
+    <section class="sheet" aria-label="2페이지 문항별 근거표">
+      <header class="evidence-head">
+        <div>
+          <span class="page-kicker">문항별 근거면</span>
+          <h2>문항별 근거표</h2>
+        </div>
+        <div class="score-box">
+          <b>표시 기준</b>
+          <strong>24</strong>
+          <b>문항</b>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>문항별 결과표</h2>
+          <span>공개 가능한 항목 중심</span>
+        </div>
+        <table aria-label="문항별 결과표">
+          <thead>
+            <tr>
+              <th style="width:9%;">문항</th>
+              <th style="width:13%;">결과</th>
+              <th style="width:18%;">단원</th>
+              <th style="width:17%;">유형</th>
+              <th style="width:12%;">난이도</th>
+              <th style="width:23%;">[문항별 확인 사인]</th>
+              <th style="width:8%;">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td><span class="tag ok">정답</span></td><td>일차함수 기본</td><td>계산</td><td>기본</td><td>[현재 강점] 근거</td><td></td></tr>
+            <tr><td>7</td><td><span class="tag warn">부분확인</span></td><td>연립방정식 활용</td><td>조건 해석</td><td>중간</td><td>[주요 보완 사인] 근거</td><td></td></tr>
+            <tr><td>12</td><td><span class="tag focus">확인필요</span></td><td>그래프 해석</td><td>적용</td><td>상</td><td>[수업 관리 방향] 근거</td><td></td></tr>
+            <tr><td>18</td><td><span class="tag warn">부분확인</span></td><td>일차함수 활용</td><td>서술</td><td>중간</td><td>[문항별 확인 사인]</td><td></td></tr>
+            <tr><td>23</td><td><span class="tag neutral">미응답</span></td><td>복합 유형</td><td>적용</td><td>상</td><td>[문항별 확인 사인]</td><td></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <div class="evidence-grid">
+          <div>
+            <div class="section-title">
+              <h2>유형별 요약</h2>
+              <span>2페이지 상세</span>
+            </div>
+            <table aria-label="유형별 요약">
+              <thead><tr><th>유형</th><th>결과</th><th>확인</th></tr></thead>
+              <tbody>
+                <tr><td>계산</td><td><span class="tag ok">유지</span></td><td>[현재 강점]</td></tr>
+                <tr><td>조건 해석</td><td><span class="tag warn">부분</span></td><td>[주요 보완 사인]</td></tr>
+                <tr><td>적용</td><td><span class="tag focus">확인</span></td><td>[수업 관리 방향]</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <div class="section-title">
+              <h2>난이도별 요약</h2>
+              <span>2페이지 상세</span>
+            </div>
+            <table aria-label="난이도별 요약">
+              <thead><tr><th>난이도</th><th>결과</th><th>배치</th></tr></thead>
+              <tbody>
+                <tr><td>기본</td><td><span class="tag ok">안정</span></td><td>[현재 강점]</td></tr>
+                <tr><td>중간</td><td><span class="tag warn">부분</span></td><td>[주요 보완 사인]</td></tr>
+                <tr><td>상</td><td><span class="tag focus">확인</span></td><td>[수업 관리 방향]</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <aside class="internal-only print-hidden">
+    내부 검토 전용 영역입니다. 부모 출력 기본 영역에는 내부 필드명, 교사용 판단 메모, 검토자 메모를 넣지 않습니다.
+  </aside>
+</body>
+</html>

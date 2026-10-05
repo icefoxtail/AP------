@@ -1,0 +1,4566 @@
+{
+  "schemaVersion": "middle-geometry-luna200-final-adjudication-v1",
+  "status": "FINAL_CLOSED_200_OF_200",
+  "scope": {
+    "manifest": "luna6-review-601-800 n=601..800",
+    "count": 200,
+    "uidUnique": 200
+  },
+  "baseBranch": "codex/meta-foundation/middle-geometry",
+  "baseBranchSha": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "checkedMainSha": "f550a0a5b6212a156b587b9ae75534fa92a094d6",
+  "authority": "GPT1 independent review + Luna1 independent review + GPT2 conflict-only final adjudication",
+  "statusCounts": {
+    "PASS": 190,
+    "ADJUDICATED_HOLD": 8,
+    "SOURCE_HOLD": 2
+  },
+  "metadataDeltaUidCount": 60,
+  "sourceL2MutationUidCount": 22,
+  "records": [
+    {
+      "n": 601,
+      "gptIndex": 256,
+      "questionUid": "qid_v1_a9a4562b79627d7afeaee2c3c085200a6e7012ab47ce92cec5b54417f793d52f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "ae89177bdc61f27da7e9564cdae3809011cdadd24e61bf990b4272a903d9090c"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "ROUTE_OUT",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": null
+    },
+    {
+      "n": 602,
+      "gptIndex": 257,
+      "questionUid": "qid_v1_a9ae09608eb4d5b6a031c3fb54affa375839c4d212591f9f9b2f69fe9531a86f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "8dc2e7ca05ae40912755dc16898590e1879d17242362f795e89318aea6ff76e7"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "일반 사각형 내부의 닮음비를 넓이 계산으로 연결한다."
+    },
+    {
+      "n": 603,
+      "gptIndex": 534,
+      "questionUid": "qid_v1_a9bf82420f265643bbe59712ecb5cb358918ca7677256bc2b15207914d176462",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "09667637b00700f63171ca4ac80468a7a090dffafdf86a1ca60cc297910f4c82"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 길이 계산과 두 삼각형 넓이 합을 연쇄한다."
+    },
+    {
+      "n": 604,
+      "gptIndex": 258,
+      "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "cb7135c3684253a1890d0e646e98209fcb939f40e124e16c835d00e693ca584a"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "무게중심의 중선 2:1 관계가 두 단계로 연쇄되어 목표 길이를 결정한다."
+    },
+    {
+      "n": 605,
+      "gptIndex": 864,
+      "questionUid": "qid_v1_aa2152836380cf64e52bd50d0f5003e42d62cd8f2444b66c793867d676cd477c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "0bbdcbccc3eacb6bcc2b3a69b5d3f6beb3d3dad780becd15640d5f51cee4daa2"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "지름의 반원과 외부 할선각의 호 차 관계를 결합"
+    },
+    {
+      "n": 606,
+      "gptIndex": 259,
+      "questionUid": "qid_v1_aa3817a7415824131cc15cfba245b0cae4ce9f0df2cbd2e4f6428047c83754c6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "eddee1da60fbd9e09156cca32b4eab068cafe495d6f74710c206b1d96abf1746"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심의 등거리와 정삼각형의 변 관계가 외접원 반지름을 결정한다."
+    },
+    {
+      "n": 607,
+      "gptIndex": 260,
+      "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "01c96bfe288dc228a9fbfd85016a2abef98182ab9718014a5702590db3978c0e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내심의 각 이등분선이 평행선과 결합되어 이등변삼각형과 길이 관계를 만든다."
+    },
+    {
+      "n": 608,
+      "gptIndex": 701,
+      "questionUid": "qid_v1_ab1ed1af925a924cf90ec8f3e94c66f7ae52b07ac17faa277ab571c89c853c09",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "26f43d394ab184bdd3684407a948dea8e7a3bf1878bc9b8201693e0d33029dcf"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "현 중점과 중심거리·반지름 관계를 직각삼각형으로 풀어 원 넓이를 계산한다."
+    },
+    {
+      "n": 609,
+      "gptIndex": 261,
+      "questionUid": "qid_v1_ab4736ee0a41702e65353233a32f961d78f53f86aa58b7146eaa4170db836ff3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "3534aa7e1b04f1899ba69a52cdb07dee07644cea8fe701c9d3982ea0c0bf2af0"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "수선·평행선의 각 관계를 평행사변형의 대응각과 결합한다."
+    },
+    {
+      "n": 610,
+      "gptIndex": 865,
+      "questionUid": "qid_v1_ac231d89920800c27a9dffdae2d9f312fcca2ce437c36cf69ddee161668c6420",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "baa6811bfab37b71b8048cd350d37bfa4f27a74acbeda1b462933031ceeefc2e"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "지름의 반원·동일 호·두 현 교점각을 연쇄하는 복합 원의 각 관계"
+    },
+    {
+      "n": 611,
+      "gptIndex": 702,
+      "questionUid": "qid_v1_ac46f1ab88c21417faaa3afafbd6775acee63ed186e6faa6101677d8e5260e8b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "1f9f2f0274069dd0c185110bf6bfa1925e5e81c7fe6e82d4334c1baad783e4d1"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "현 수선 이등분과 두 반지름 합동으로 빈칸을 채운다."
+    },
+    {
+      "n": 612,
+      "gptIndex": 262,
+      "questionUid": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "d62cf1e922de302af1aa18103f6c8af7af5663363079efcbcf1108e20b2d4eb3"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "항상 닮음 여부 판정은 닮음비 계산과 다른 skeleton이며 현재 안전한 정확 대응 L4가 없어 명시 HOLD."
+    },
+    {
+      "n": 613,
+      "gptIndex": 263,
+      "questionUid": "qid_v1_ac76fca55ee9e58a2b085bbba26f02f860a678136ec0900cb7a74be808aa54e3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "6871f8e1f9f2b7eefe7e4a1c0bfc2ef3be0b270c2643013a9e20235893c851a3"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형의 꼭짓점 수선/중선 성질이 결정적이며 기존 꼭지각 이등분선 L4는 불일치, 정확 대응 L4가 없어 명시 HOLD."
+    },
+    {
+      "n": 614,
+      "gptIndex": 264,
+      "questionUid": "qid_v1_aca6babe19625c333c7f3657310327b97a1b2557c2cac54d59ef929f021a7bbc",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "8c858d961b3ba1f3362bf40db2a412d3fc70891f9a9fcf8d190ac0ec3e5f921e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행사변형의 길이·대각선 성질이 두 미지수를 독립적으로 결정한다."
+    },
+    {
+      "n": 615,
+      "gptIndex": 265,
+      "questionUid": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "3f3e311f16406bcb6ac52e3dbb664889759183890fe130dbed73db2cda7f0959"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각형 닮음과 중점연결정리를 같은 평행선 구조에서 차례로 적용한다."
+    },
+    {
+      "n": 616,
+      "gptIndex": 535,
+      "questionUid": "qid_v1_ad2d0a8d7055daa183852f9e62f1b0e6b0596f9aca20a436e84c651d9c4c42c3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "8e5c1b0234892139ce020384972cbdca9eef945cefc1ed48113a81675c8625d8"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "범위 조건에 따른 절댓값 부호 처리가 핵심이다."
+    },
+    {
+      "n": 617,
+      "gptIndex": 266,
+      "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "0753a661babcebbeef8667ae21a5c8321c1a2ccb2c2a61386ad4a2f6fdf2c0ee"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "닮음비를 넓이비와 부피 계산으로 확장한다."
+    },
+    {
+      "n": 618,
+      "gptIndex": 536,
+      "questionUid": "qid_v1_adc5b8076cf0415bbe3c12620827c9ce058d2352e08f319df0740319bc8f3f16",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "de8d6cddca91c76a2e8732a5bdb0583275f7799656fb123f1977989981b89ed2"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "두 관측점에서 공통 건물 높이를 공유하는 측량식을 연립한다."
+    },
+    {
+      "n": 619,
+      "gptIndex": 267,
+      "questionUid": "qid_v1_add0145ba3ff99270bed5f582002dc72d07e7eb4d6e7c55508304906ae224365",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "75808a1994a672b5b81fc2f9b793446e0fa34196a5cfc3e1bb07cdb0b5908a1a"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "사다리꼴의 평행 구조와 삼각형 넓이비가 핵심이며 기존 평행사변형 성질 L4는 정확 대응이 아니어서 명시 HOLD."
+    },
+    {
+      "n": 620,
+      "gptIndex": 268,
+      "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "8593a9e4d4d1722d4200822bd418994691d9122af449b0a0e4cc704d74abe12a"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "주어진 삼각형 닮음의 대응각과 각의 이등분선을 이용해 목표각을 구하는 삼각형 닮음 활용 유형."
+    },
+    {
+      "n": 621,
+      "gptIndex": 703,
+      "questionUid": "qid_v1_ae0f586504d29100366a1c1e8c13d376b7a941eb7fd8c0794e6d4880f09b7fd7",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "90377e37634609b9c4d8cbfa2a50727327166073128fbea308d4a421fcab12c6"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선 길이와 직각삼각형 길이 관계를 결합한다."
+    },
+    {
+      "n": 622,
+      "gptIndex": 269,
+      "questionUid": "qid_v1_ae3c63c0188bf5de758e103a70cc90c0b27756523d1958ceb335669852c08f3d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "361abc029b7b8079e721b8a16cd7b9a4d95ba2818d7218b183f911c711138283"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선과 각의 이등분선이 만드는 이등변삼각형의 길이 관계를 평행사변형에 적용한다."
+    },
+    {
+      "n": 623,
+      "gptIndex": 537,
+      "questionUid": "qid_v1_ae5d7c4aec3190a689cf32a79024d6afaa43818477a734917fb056e02e21d15b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "bcf06947b0ec47060459af532b392f2ec9fdc590f8d09e5264fa1ca045e593f4"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 삼각비를 직접 적용한다."
+    },
+    {
+      "n": 624,
+      "gptIndex": 704,
+      "questionUid": "qid_v1_aec444d7f251786d3d5ee4d5f5ed0a48a16da1be8ffb131080186e16e0c41aa3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "71adb6be847fc0eec98bc9b56aa0c3a5d7d1a6f7497caa589ee88f6e50358276"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "동일 접선 길이가 삼각형 둘레를 결정한다."
+    },
+    {
+      "n": 625,
+      "gptIndex": 866,
+      "questionUid": "qid_v1_aee304e0166d9a224cdc5ef0dc11e2316d54980a37c266926ece2dff25828c32",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "da384f1dc9f183dc36962b922455b049f894f6a07030f2f64d562e0b5835ae72"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "두 이등변 중심삼각형의 중심각과 원주각을 연쇄하는 복합 원의 각 관계"
+    },
+    {
+      "n": 626,
+      "gptIndex": 867,
+      "questionUid": "qid_v1_af60ae9ca24e077f39ba464cd8d767b47f4544d90d4f648202f7c105534ac910",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "f1dcfb7acbc993ea205c4038f64f96ec83ae53666005c830876575f834f394c9"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접사각형·지름·접선-현각을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 627,
+      "gptIndex": 868,
+      "questionUid": "qid_v1_af915e8311ee3443936d0e65c4ca4ad1886484c3fc43f4e04087981343295665",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "a3a3514d3605e0fc7d6c20d6737f1f60ad06c971fe8b818bc68e75bf7adc13ec"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "원주각·두 현 교점각·전체 호 관계를 연쇄하는 복합 원의 각 관계"
+    },
+    {
+      "n": 628,
+      "gptIndex": 538,
+      "questionUid": "qid_v1_afb7405379a870f39cd14d9ace9aa55ff5da0588d0f033a133985fe701b81e6a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "25905ea8eb9d5d3fdf0ea1557f3429083aaa190995a178612b53e9d3e5176bbe"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_SIMILARITY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "같은 기준각에서 삼각비 정의와 닮음 관계를 비교한다."
+    },
+    {
+      "n": 629,
+      "gptIndex": 539,
+      "questionUid": "qid_v1_b0e8a002e9d7658f7bb3c7bfb1cf3f3e48c126152ea149652b9f5482d52bf5e0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "7df5b9e5d9ebb0d616c68fec06cdbedd921e52bfd7ba9724d2bac5f960ca0263"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_DISTANCE_TWO_POINTS",
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "좌표 거리와 직각삼각형 관계를 결합해 삼각비를 도형에서 유도한다."
+    },
+    {
+      "n": 630,
+      "gptIndex": 270,
+      "questionUid": "qid_v1_b115dd886da2a9fdbf5592a703c142b1f451a5a6b9efc9ea11a61d378856f01d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "3605c832b462a9c4d17a9158e3c40ef1bb8c534c43959bf967ca04e7fb08ca9f"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행사변형의 한 쌍의 대변 판정 조건을 각의 평행 조건과 길이 조건으로 분해한다."
+    },
+    {
+      "n": 631,
+      "gptIndex": 540,
+      "questionUid": "qid_v1_b1302a27a5035b7ae0a6bea743c24076fe5d75f079e36fcce037aa71579c1924",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "fcb5ebd2d31de9fc4f66a06931a093f547ea21556fd0c97456da283763945b3b"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "첫 직각삼각형의 삼각비 결과를 두 번째 삼각형 길이 계산으로 연결한다."
+    },
+    {
+      "n": 632,
+      "gptIndex": 869,
+      "questionUid": "qid_v1_b13b4c191f7a0ef3e1d4a29b30ee332561ed42657023324757dd246c4820a884",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "5d6908422d7315acfc1bb9d176358699f5f0bb6493f635adcb930d9471f81384"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "두 반원·접선-현각·호 길이비를 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 633,
+      "gptIndex": 271,
+      "questionUid": "qid_v1_b1773b7e1c25fc3ec0745881f96fdfe1b8f2ea663c7d45c3b36fb40190da70e5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "d566ab2b1ca26e9c46e916bd2032778373ebcfff71490373f93c94e32b100e36"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수한 사각형의 정의와 판정 조건을 충분성 기준으로 검증한다."
+    },
+    {
+      "n": 634,
+      "gptIndex": 541,
+      "questionUid": "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "892ca0abbd9c53b550faeeb64c7fe4ffd7cafe9e1f7fd82b88cc8fcecba5fdc4"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "한 직각삼각형 측량으로 목표 높이를 직접 구한다."
+    },
+    {
+      "n": 635,
+      "gptIndex": 272,
+      "questionUid": "qid_v1_b1f42e39aee464c5f72e0cdbab9f91dcd4a31d67b9e5c2c23d46d84f849c4d6c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "f38aca5dd898a5c6086d0e08155be4c9db8faa8456d6255a24fae9ce073c09f1"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선의 엇각과 각의 이등분을 결합해 이등변삼각형의 길이 관계를 만든다."
+    },
+    {
+      "n": 636,
+      "gptIndex": 705,
+      "questionUid": "qid_v1_b207ae5e08f97f03c78b9c6543dd2b911c3c41b232604de0b91915dab1a5f0e6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "b3363cc81fa1035a6f88ef159a76786f1e0f0db9d59f219bbf2e5946d6f76c20"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "현 길이와 중심거리 관계를 직접 적용한다."
+    },
+    {
+      "n": 637,
+      "gptIndex": 542,
+      "questionUid": "qid_v1_b2459b7bdd888ac20deb5238711cdeab16bff250a9e5f9b580e615c38b2728a3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "aface8e373e025a31e0d7a66ec367d1272be9a34cb68c3079c9d0027b2c686ce"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "회전 도형의 삼각비 길이 계산을 넓이 계산으로 연결한다."
+    },
+    {
+      "n": 638,
+      "gptIndex": 706,
+      "questionUid": "qid_v1_b26012318f59fa9a19a6aab59d304fdce44d6936e22913161d448ccdf3d5513a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "218236d20ef1bd48caa53622c8f7919150cae73b603d93ea9b4779e92802b4cd"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "지름·현 수선·피타고라스 관계를 결합한다."
+    },
+    {
+      "n": 639,
+      "gptIndex": 707,
+      "questionUid": "qid_v1_b27f9b0951e1911be696a953a0487fd045fe4223484b5208afa67eba28109fd7",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "858ba8edb36d410f5934fcbd5aa6be89a2415c17a8368eeab58bdb257c193af6"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "현 길이 같음과 정삼각형 외심 분할 관계를 적용한다."
+    },
+    {
+      "n": 640,
+      "gptIndex": 543,
+      "questionUid": "qid_v1_b29597dbf7771a8a0962414c122116b8aa5b0bebe6d18879e2ad309e811ccd78",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "4905e315c442d3e59fdde27946aed486db08245d2f246335d52061a4f360795d"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "밑면 도형 길이와 삼각비 높이 계산을 부피로 연결한다."
+    },
+    {
+      "n": 641,
+      "gptIndex": 273,
+      "questionUid": "qid_v1_b349e060d34c595bca4c90f37b9ab6aebe8ac9da38cca8f78c3fbd0bb8d7a868",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "3d2aa2a49f02f3b7b97029cceb9d0082308ace6b0888198ca11f5dac72301730"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심의 등거리 성질이 세 이등변삼각형의 각 관계를 만들고 목표각을 결정한다."
+    },
+    {
+      "n": 642,
+      "gptIndex": 274,
+      "questionUid": "qid_v1_b37b517aae3d99c5a2cc5f5adf764888c7c377e99785918cceacd7290dc5c49c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "c565dc9cf361a7aafc83052600f5d6a1220710ad9149afb3ee0ee88ad710e154"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직각삼각형의 빗변·한 변 조건이 실제 합동을 보장하는지 확인한다."
+    },
+    {
+      "n": 643,
+      "gptIndex": 870,
+      "questionUid": "qid_v1_b387917356c7533097b35dc5fee74cb1f16179f0d94156a1dfc861c82bfdc1a2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "3db045a1196079c7ce2f8a68b66fa24ad85659b02fff7249aff53c9ad029edda"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접사각형 대각합과 외각 보각을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 644,
+      "gptIndex": 275,
+      "questionUid": "qid_v1_b421e9722c10ae9352bdc3b96c83d2463b4169c1bdbf7f743977bcca04912e4b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 25,
+        "sourceQuestionNo": "25",
+        "sourceFingerprint": "42dc74025f92e39a3d26c12d50d0d642d7f4f2087d36b36f5730691a14830e3c"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "한 쌍의 대변 평행·같음 조건을 합동과 평행사변형 판정으로 연결한다."
+    },
+    {
+      "n": 645,
+      "gptIndex": 544,
+      "questionUid": "qid_v1_b4876493b7e531af2f809f4cc17ba44f87b6b22108806266a49aaa522556a24c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "dcb900aed022bb727cf5c44d7efb81e25ba577d0864fd17b0f713c382b49a4a2"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 값의 산술 비교가 명제를 결정한다."
+    },
+    {
+      "n": 646,
+      "gptIndex": 545,
+      "questionUid": "qid_v1_b4e9852d2f58815037d4f04e8e35938c3883243b1e34f7f13918595101565c3c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "de0cb6bc55bb026523f05d63c513da06cd69a8ee6f7bb62dd68f39d1e43050a8"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "여각 항등 관계와 탄젠트 역수 관계로 식을 단순화한다."
+    },
+    {
+      "n": 647,
+      "gptIndex": 871,
+      "questionUid": "qid_v1_b4f67ee82e20fb02934c327c15c870a924218dc764d6b9bdb4ff6ac186688858",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "c6c717907b76df9520dc73f4bdc8c9a30633090338ae0335bbb6242b4928b459"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "원주각과 대응 호 관계로 목표 원주각을 결정"
+    },
+    {
+      "n": 648,
+      "gptIndex": 276,
+      "questionUid": "qid_v1_b54475bafe0fc231fa7c803607535b73330eb03bdf3742fb94b0e2668834e480",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "d7a9a58a114b7f866f8292544395558072e1e549e1b93659209233454853952a"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "무게중심 분할비와 중점연결정리를 연속 적용해 목표 선분을 구한다."
+    },
+    {
+      "n": 649,
+      "gptIndex": 277,
+      "questionUid": "qid_v1_b57044d4ecb38f8387217a247ea8dd776921014122477d9d4155b85d2350ecaf",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "7f77843d3da3f882a29a0d961e034c7750552f52d26957823accb38afc2b913a"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_CONVERSE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "두 내각의 같음에서 이등변삼각형을 판정하는 역관계를 합동으로 증명한다."
+    },
+    {
+      "n": 650,
+      "gptIndex": 278,
+      "questionUid": "qid_v1_b5d0b5b71b6df8b92dc6e1c4573644fdd7ba822da2d24a990b0c50674c4eacb2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "976563a748678f0856c31e08fd3908aadd48cc2c62266d7ee446d2bb3c0031c6"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "crossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "중점삼각형의 닮음비가 둘레와 넓이비에 각각 어떻게 변환되는지 비교한다."
+    },
+    {
+      "n": 651,
+      "gptIndex": 708,
+      "questionUid": "qid_v1_b5db42055bd2b3bf6625d23f9bad19cfa6e55b7025e701a2abc6bb215bf708dd",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "82deefbbc6a8e55d9c1ad711910ec9d229c94e733dc15aeb43e2c639d0a63b29"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "source+solution semantic evidence recorded"
+    },
+    {
+      "n": 652,
+      "gptIndex": 872,
+      "questionUid": "qid_v1_b6b5c1630993e7f062eab6a63ae8880c4fd66c16798b169190229067b0f1d887",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "5f79ab61600d95a0a30fc30d25b56fee98885edf03c530f783b4853943b086af"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "호 길이·중심각 비례와 원주각 관계를 결합"
+    },
+    {
+      "n": 653,
+      "gptIndex": 873,
+      "questionUid": "qid_v1_b6e3f38f0674b0575d0adc3db444c9e1c72a7bcd6656b609385fb7c9efac7715",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "f40a1c15f6e411ea52238e8597ac676d3d208d2d62d4340966140238fb9cb98b"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "지름·호의 중점·원주각을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 654,
+      "gptIndex": 279,
+      "questionUid": "qid_v1_b6fa000f54812cd7671106e3f8e0bf3b26888820fd4570deb448966050bffab9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "b22bd86360f341dbf94c4da2c96b80a310d3f813ca5847adf0c7b82d37871752"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심의 등거리·현 수선 성질이 길이와 합동 판단을 결정한다."
+    },
+    {
+      "n": 655,
+      "gptIndex": 874,
+      "questionUid": "qid_v1_b6fa817d0ffd6c5ed50f45b6e889e5096911709c1a3e568e922bb126c6d22083",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "49c60d976182a566db4f7a09e7508d6e8ae1d6205f13feff3caa23107b22c9d7"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접오각형의 원주각과 중심각으로 대응 호를 분리"
+    },
+    {
+      "n": 656,
+      "gptIndex": 280,
+      "questionUid": "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "8b22857a713cffe10ab896af94d82d92c2b0dfa0f6118936432603f720ebc993"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행사변형의 평행·각 이등분·넓이 관계를 단계적으로 결합한다."
+    },
+    {
+      "n": 657,
+      "gptIndex": 875,
+      "questionUid": "qid_v1_b73460d7bbe9cd4a22dc8d79f52109b6ae6859bfe55cda7ea3b458e4210af7d4",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "9fd8c915e10e804ff2e7539d23b02d72651984caaff5a16d7ee33b9d21279904"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접육각형의 여러 원주각과 전체 호 관계를 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 658,
+      "gptIndex": 709,
+      "questionUid": "qid_v1_b75bc7ad531957ce2919891ec55457e1af92dafed67a8938a695aa585e071218",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "b3a691fd4a69f1807913bfdd0a531148351d4a6db73a740c337a4765c533431f"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "source+solution semantic evidence recorded"
+    },
+    {
+      "n": 659,
+      "gptIndex": 546,
+      "questionUid": "qid_v1_b7756906cb5b2b641338a82d94e19a50f69a39a308d70dc6e3c4a8a2611a503a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "c64a73fae127a7452271e99e186428aa72971aad23f92fc8cbf7d9e53eb1b28b"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 길이·삼각형 넓이·내접원 반지름 관계를 연쇄한다."
+    },
+    {
+      "n": 660,
+      "gptIndex": 710,
+      "questionUid": "qid_v1_b787d9bab647db310fb29e812b7fbc540a9f37f96e11e4ea028cb38020b6cc9e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "ef9a8a49ebaccd4f026efc2851a77e55ae322ba6870b6ffbcdf62f7b60fad735"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "주어진 접선 길이와 반지름-접선 직각삼각형으로 반지름을 구하는 접선 길이 유형."
+    },
+    {
+      "n": 661,
+      "gptIndex": 281,
+      "questionUid": "qid_v1_b7c505dcc3f847919e894557673b49339190129fc0da4076f25e1ee6206abe90",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "8a45b02f729e3df3a5fa074586f4dfe0a48c7363743f50cde242d6504d54448e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내심의 각 이등분선과 삼각형 높이의 직각 조건이 목표각을 결정한다."
+    },
+    {
+      "n": 662,
+      "gptIndex": 876,
+      "questionUid": "qid_v1_b7c602e9a1a0c3bf412e623e2f10d954a2123a5d2b0fc54beeae69348c8fe1a0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "20f262f4b43e0c0117a771169f26316920c64c9ce37323d9f90232b0ddc8fd62"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접오각형의 원주각과 중심각으로 목표 원주각의 호를 분리"
+    },
+    {
+      "n": 663,
+      "gptIndex": 547,
+      "questionUid": "qid_v1_b80c2821aa690cb62996294b6bc7c7c877df8ccd23ab84b43a8545bbe812a8cf",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "b1f392ba072c9ac12ce92e951b303644c88850b73dc1fd1fc82a723726f80c00"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직각삼각형의 사인 정의로 원뿔 높이를 직접 구한다."
+    },
+    {
+      "n": 664,
+      "gptIndex": 282,
+      "questionUid": "qid_v1_b81d5ac864223213346b312a2049a33e98e3423c6cd8fb53f37c2f83a90fb009",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "b178702e2f4f2042228ef46a686a447bea339cb8cd72b42ca13b391b5ae432bb"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선과 각의 이등분선이 만드는 이등변삼각형의 길이 관계를 평행사변형에 적용한다."
+    },
+    {
+      "n": 665,
+      "gptIndex": 877,
+      "questionUid": "qid_v1_b84004e3bc2a05d6ea00514e1051f48d78d3776666ee16f15932eb311b06fbf1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "53897347d9572e7484ef08407908cd720529a79fc08cf2920a3c4e624674798e"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선-현각·지름의 원주각·삼각형 넓이를 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 666,
+      "gptIndex": 548,
+      "questionUid": "qid_v1_b87d57ef04701290854e403f2ee6b9f5d7ed7621be3aec2619db7528cc876b97",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "edb08f07620b27f7455ed92f93ede207d2a4027ce4e4b2df081615387295e156"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직각삼각형 측량으로 목표 높이를 직접 계산한다."
+    },
+    {
+      "n": 667,
+      "gptIndex": 549,
+      "questionUid": "qid_v1_b8c88f2d46f8c3a9eca82c8030cec43efa5f95b3cd498728264201dea596b335",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "5afcc34b965d1c51e2446a4d1844081cc366728970269af931f740a833d0d30e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "표의 정확한 행·열 값을 읽는다."
+    },
+    {
+      "n": 668,
+      "gptIndex": 283,
+      "questionUid": "qid_v1_b8c8926ff95ad795ba170e36602fb6a5706387f4c2e1f4a9f64307af71ca078f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "0a08775d788ab004960fd6c5d53e2fc53313a53e16730f1c6867ac9b19cff6af"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "입체도형의 닮음비를 대응 모서리 길이로 변환한다."
+    },
+    {
+      "n": 669,
+      "gptIndex": 711,
+      "questionUid": "qid_v1_b8da039d9305489dc54d94b68d0ee47675549d7f2cebedd1bb317a023f2bb6db",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "30bd9ee7ad9e56ef4bd6aff37d7916cd1ec81c04d0f9146d97254edcf8ac2cb7"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접원·접선길이·피타고라스·넓이-반둘레 관계를 함께 쓰며 현재 정확 대응 단일 L4가 없어 명시 HOLD."
+    },
+    {
+      "n": 670,
+      "gptIndex": 550,
+      "questionUid": "qid_v1_b9615c6b1c214e23271e9efd37238a3a5c3e1bde638739d38c4e2f7070b5a414",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "1dfb8f04bf45615588402e8533403bb1bc3a7a86e1027828fdc96c8575502e8e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA",
+        "CC_MIDPOINT"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "도형 넓이·피타고라스·수선으로 삼각비를 기하적으로 유도한다."
+    },
+    {
+      "n": 671,
+      "gptIndex": 878,
+      "questionUid": "qid_v1_b97fa717859f03ed60fe6320ffc0e361cc1289003b3866399774d52ab02c7ccf",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "4a313512df4e7c6988beacbc77b3d0694aecf93933858ee0d64ade7884a45be2"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "원주각과 중심각의 대응을 두 사례에 적용"
+    },
+    {
+      "n": 672,
+      "gptIndex": 879,
+      "questionUid": "qid_v1_b9ae345d31f803b666a40b6279c38434fffcb803f58d6c0e56dcd064fd21a379",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "2c08963cece3b5a87d4894154e4bceb0c9cfc155ffcaedaf4fe5b1fdefffc8cc"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내부 현 교점과 외부 할선의 각 관계를 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 673,
+      "gptIndex": 551,
+      "questionUid": "qid_v1_b9bb8d4ace10d292ab68efb2acd20162e1d7e08d929994a6cce781790b10e558",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "b7be7b5106b0b006d8d73aea4bc22b92e4768d867de9f99e7c0197a5c86ad0ad"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각비표를 통한 두 값의 역조회가 핵심이다."
+    },
+    {
+      "n": 674,
+      "gptIndex": 284,
+      "questionUid": "qid_v1_b9ee6ecb8a42d55e5ca61f6bdf4ecbaffe490a87b2ddc9505791c9cbaa0fe893",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "9a9d17f773ed77968a9008e8fefcb24dba70009f1ed01e26a1604dcfc88e6e02"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선의 각 관계와 각의 이등분이 평행사변형의 목표각을 순차 결정한다."
+    },
+    {
+      "n": 675,
+      "gptIndex": 285,
+      "questionUid": "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "664bade4f685b0e16e5bc7081da8020bbababb795aab6a755cc63d13042f849b"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [
+        "CC_MIDPOINT",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "중점과 무게중심의 위치 관계가 같은 밑변 삼각형의 높이비를 결정한다."
+    },
+    {
+      "n": 676,
+      "gptIndex": 286,
+      "questionUid": "qid_v1_bb041a51a6cb613d8a6d33bb2ef938a5d31aea93e4005a3dbf2055c2c64018fb",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "38e88fbafb0e3e6b662eb0af8bf8441991124452efe5a4a1d80b1aa1cb7e8141"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "빗변과 한 예각이 각각 같은 두 직각삼각형의 RHA 합동을 확인하는 유형."
+    },
+    {
+      "n": 677,
+      "gptIndex": 880,
+      "questionUid": "qid_v1_bb2854581dc5cc9dbe45bda88abbd5022817440a39a676795032e4933575d63d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "efe3dc1488cc2aca3d2585ccd6a2e0fcef22e0167498bbb273583b99c7a23baf"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선-현각·지름의 원주각·외부 할선각을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 678,
+      "gptIndex": 287,
+      "questionUid": "qid_v1_bb513f28d6cf0fd2714ca22b4749d3e199396df43cbd20c2cefc34de354c56b6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "3ddc9bcb875323050a7182a2c422391b4544f3f31488f76bbe50a237d49d6d66"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선과 각의 이등분이 만드는 이등변삼각형의 길이 관계를 사용한다."
+    },
+    {
+      "n": 679,
+      "gptIndex": 552,
+      "questionUid": "qid_v1_bb994a1c383fcfa316a376ca6eb1c7511a95ccc859f97f4b245052b20e498f47",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "8df29f55a7bb33a8894705996437ca2a50ea4052de8e83e9a2f07e903a9b6b06"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "사각형을 두 삼각형으로 나누어 사인 넓이를 각각 계산하고 합산하는 연쇄 측정 유형."
+    },
+    {
+      "n": 680,
+      "gptIndex": 712,
+      "questionUid": "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "d472796f1ca327c38515755b180e87149a69c5e970893d67edda6285adf0e542"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "source+solution semantic evidence recorded"
+    },
+    {
+      "n": 681,
+      "gptIndex": 288,
+      "questionUid": "qid_v1_bc1b038b63d37c296c6e496f81fe14592683c4b461dda66845ebb01e06397246",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "4e15015482fc81df6de200d77b6a2601a2c46fba718f782b250ae1b3fb52ae9d"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형의 밑각 관계가 두 호의 중심각 관계를 결정한다."
+    },
+    {
+      "n": 682,
+      "gptIndex": 289,
+      "questionUid": "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "ad3a06e346601a87c234ffba3c437bf87b4560fc2ce08143084b9dba5b2d9500"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "crossConceptKeys": [
+        "CC_SIMILARITY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각형 내부의 평행선이 만드는 두 닮음비를 연쇄해 목표 선분을 결정한다."
+    },
+    {
+      "n": 683,
+      "gptIndex": 290,
+      "questionUid": "qid_v1_bc37aead9fba599f5b6b55880688107f418d234ed8cee2823250181180781ea5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "0e5c953b2f65ab621854e54f4d77ade10e23fc0f671d8284316eae0b16793ccc"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선과 각의 이등분을 평행사변형의 각 계산에 결합한다."
+    },
+    {
+      "n": 684,
+      "gptIndex": 553,
+      "questionUid": "qid_v1_bc5e0d801f3b417aa0cb403613ab0193caee55fd6ee4d16021c66a9f9759b06f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "612747a5e7dcd02af24eb40bbbc85de42c4d4e2c3c57d0b0c88efe48f841502d"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "사인값으로 삼각형 넓이라는 다른 도형량을 계산하므로 삼각비 연쇄 측정 유형."
+    },
+    {
+      "n": 685,
+      "gptIndex": 291,
+      "questionUid": "qid_v1_bc92164a5cc53e32e29f59bfaa5ad2be4378dd68398c275728ac982774f23916",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "b1680dd50f0f9a24b54616e5ab7a4a8876549826b64cd2c49c7ba8946860ffc2"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내심의 각 이등분선이 삼각형 BIC의 한 각을 결정한다."
+    },
+    {
+      "n": 686,
+      "gptIndex": 554,
+      "questionUid": "qid_v1_bca86464734ae48b1e5ec2915661dcf0c964a45649b060f8854a467d6494f708",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "5a5f80f38fd7a209281c9e348d9fedd879ad46956ed9daf45017532995387a85"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각비표 좌표와 여각 관계로 보기의 참거짓을 판정한다."
+    },
+    {
+      "n": 687,
+      "gptIndex": 292,
+      "questionUid": "qid_v1_bcaffd2248f2b961017c8f134b1652fe281e413c6394453bc1d9e4982d7e036f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "a4d3644cdb112cafdd4088ed55eb8f53f8086645f4b49fac85a9702c01ebbef6"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심과 내심의 서로 다른 반지름 관계를 함께 적용한다."
+    },
+    {
+      "n": 688,
+      "gptIndex": 293,
+      "questionUid": "qid_v1_bd3aab7e5d981ad5f29b6f39680e53b026f06225d1d962de884539341c24404c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "03845f1e029d446c8f6e48a49bfef60c71591a00e42a0646e8dff0d23717dc73"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "ROUTE_OUT",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": null
+    },
+    {
+      "n": 689,
+      "gptIndex": 294,
+      "questionUid": "qid_v1_bda210e82412d550c6aca259a8001852baec3b8448d61fdaabee05436336630e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "ef53b1807bc69c1632920fd6f93dd9e5819b03f134cef6f7b7be9223e4f7a518"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내심·평행선 조건이 작은 이등변삼각형의 길이 관계와 둘레 차를 결정한다."
+    },
+    {
+      "n": 690,
+      "gptIndex": 555,
+      "questionUid": "qid_v1_bde01f44c3af4689b83ff8de048552e2270edad7a7ff3665262ec0f321a0c20a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "14ee88a70857e3b30c8207275d9f89ea4506e5c3705a86a3f5297a32a821a096"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "수선 삼각형 길이 복원과 두 영역 넓이 계산을 연쇄한다."
+    },
+    {
+      "n": 691,
+      "gptIndex": 556,
+      "questionUid": "qid_v1_be40c67108a3c777ce00c414cc3dee651c8982bfa41013e61aae86a1322814d6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "f4d828c8a7be38accf6274caf99c487f0a08f944fb3acd0e71f80986e9d8f0ac"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "탄젠트 정의와 피타고라스·코사인 정의를 결합한다."
+    },
+    {
+      "n": 692,
+      "gptIndex": 713,
+      "questionUid": "qid_v1_bead3554f9bcfd7bdec0684d4b5130fd76facd1e74e28ba6dca02631c60b8821",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "ae2a2a4cd2b7ea1c89ffbe0d48eaf69df7117e3d296a5e2ac2cda1e58c356fa3"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선과 반지름의 직각삼각형에서 접선 길이 관계로 반지름을 구하는 접선 길이 유형."
+    },
+    {
+      "n": 693,
+      "gptIndex": 295,
+      "questionUid": "qid_v1_bef22d99e615a1ba54cb64cf019e10db9523686aa57ccae67984c3442b185f1e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "b5d8fd83ebf296c8ae63195447038f2f673ab76315b9e77f64666f47b335b642"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "빗변·한 예각 대응을 이용하는 RHA 합동이 빈칸과 목표 길이를 결정한다."
+    },
+    {
+      "n": 694,
+      "gptIndex": 296,
+      "questionUid": "qid_v1_bf02eb64a71acfb1aa328a07eb434234b4f89895fd58f47ce9128bfff9021b51",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "4a3fb82e85b9fbcdb3c219dad9fcca01bd0827ce097b3b090ed95bbe4e200150"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "두 쌍의 대응각이 닮음 조건을 완성한다."
+    },
+    {
+      "n": 695,
+      "gptIndex": 297,
+      "questionUid": "qid_v1_bfacf66f0d31dc54d139693878dcd757f0e3643f8fd80fd79b2202331e0f7af5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "d5b4be3940117b850329c1eabb447b29e983f122a78e8d0b776e4cb4959ac4c9"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "frozen L3가 직각삼각형 합동이지만 실제 source solution은 좌표·기울기 계산이며 합동 조건을 사용하지 않으므로 단일 L4 skeleton으로 강제하지 않고 명시적 HOLD한다."
+    },
+    {
+      "n": 696,
+      "gptIndex": 714,
+      "questionUid": "qid_v1_bfd294b95008c4847e29edeead6ef68af185bda67573af3b502933d5ef1589b3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "9d3486291c1c1cac99fc4260e2bd6571e545ab34c15fe41c94e5a54a416decc3"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "같은 현 길이의 중심거리 관계와 삼각형 넓이를 결합한다."
+    },
+    {
+      "n": 697,
+      "gptIndex": 881,
+      "questionUid": "qid_v1_bfdd5d7e4107a44645a4def8098c38a7f038f55eb8d86d7de7f67f83aaf99cee",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "6803805026a7d027f2b808be49edaeb7806a98ab4c5ef5c0202c56b3227ad839"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선-현각과 이등변삼각형을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 698,
+      "gptIndex": 557,
+      "questionUid": "qid_v1_c020e0a1d08c78e200bec946309e5f15331bc45af0177e22e49d938668c6c7c9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "f77b56466496aa7424f0358ee9bb2a0a7ca8758c64acdcfee23085cd1651ec87"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각비표와 여각·평행 관계로 목표 삼각비를 역조회한다."
+    },
+    {
+      "n": 699,
+      "gptIndex": 882,
+      "questionUid": "qid_v1_c0e1f59be8499e6f2f4fd0d4bf07911c922b5ab3861139c80cd91fd8d6dff631",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "07d54e8346c58dd71af378feb36ec77a7191766d6df7fc85eaee62ff8d309eff"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "지름원·현 교점각·중심과 호의 관계를 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 700,
+      "gptIndex": 298,
+      "questionUid": "qid_v1_c0fa63b49892190df928cff07960058b8012d7c807931d776a4dfd7ab6a78e7c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "13dd23ea781c0e9df2c6b62e2ac85c228b76e8eece50fd714ea79e4ea60ea4c0"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형의 밑각 관계가 삼등분된 내·외각과 결합되어 목표각을 결정한다."
+    },
+    {
+      "n": 701,
+      "gptIndex": 558,
+      "questionUid": "qid_v1_c12f9fcda8c6522021a9902d12ddb0a1dd5b8a9772dabab979891ed6297a7a1f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "ad9a6ddb1c21aaac14d5a1910833c58449b1cf240e27d44f3b5076f0a414d503"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각비표의 값을 목표 길이에 직접 적용한다."
+    },
+    {
+      "n": 702,
+      "gptIndex": 299,
+      "questionUid": "qid_v1_c17ceb1f4f708094127580f300fff478efd095ee4a3371dc0af48eb6ad11589d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "18ca2866180bbc7d7df4148017c3a6143b90e59eaaeaa5e9d473251fe2c18c72"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "마름모의 대각선 넓이와 같은 높이 삼각형의 넓이비를 결합한다."
+    },
+    {
+      "n": 703,
+      "gptIndex": 559,
+      "questionUid": "qid_v1_c17d34311e8456c431f15a5111a37fe43dd34d42b626d8b9ff78f7c7f066f456",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "3a1b966bf287c562540e7ef18de745860a05808609f6fe4b0ea517806d19d6d2"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "도형의 각 관계와 피타고라스 길이 복원을 삼각비에 연결한다."
+    },
+    {
+      "n": 704,
+      "gptIndex": 300,
+      "questionUid": "qid_v1_c1a371f9126afcca271cbbb653a7571a579d4035360639b7ea40e76813ac2331",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "157d7c273b2a2b44b56a986e2ad0d80b08c402ad9b5b8f14e60fe1424376a958"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직사각형의 직각·대변·대각선 구조가 합동과 각 계산을 결정한다."
+    },
+    {
+      "n": 705,
+      "gptIndex": 560,
+      "questionUid": "qid_v1_c1d77426ac2e7e632abcc52d04d7ff5f890bd9300c37b2f23d8e2fc8abe7ffa0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "98a2e25770f8ab2fad04eb0a487599f3bf748ceb60f4616ff44d648056ee411b"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "첫 직각삼각형 삼각비 결과를 두 번째 길이 계산으로 연결한다."
+    },
+    {
+      "n": 706,
+      "gptIndex": 561,
+      "questionUid": "qid_v1_c1e53b22da5971db1f65d867e3b0ae33cd422f13079d9e5d4a6db8be3a59957d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "b48009cd6ab8ac0c2ed240e7e8b00ebea8b87d9d48514f599a1b7d4d92922bf9"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "근의 범위 조건과 삼각비 항등 관계로 값을 결정한다."
+    },
+    {
+      "n": 707,
+      "gptIndex": 301,
+      "questionUid": "qid_v1_c23cd794995f2092597e22f1af7b0f35423e538d15e1582f803e5969020177a3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "eba1e907b0bb4bcf4a9a69311c3ad95dac68767f58f14fbed624dc0be79a222c"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "등변사다리꼴의 대각선·대칭 성질이 길이와 각을 함께 결정한다."
+    },
+    {
+      "n": 708,
+      "gptIndex": 715,
+      "questionUid": "qid_v1_c2f698969ecc2c3a25f4a02f14dedfdac862634ee41cfc129fc818430ad3fb9c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "c93353265f658b80b2a2786f24b1abb85aab77dd4ef341c822b6a34acafd0a1e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "동일 접선 길이와 접선 반지름 직각삼각형을 결합한다."
+    },
+    {
+      "n": 709,
+      "gptIndex": 562,
+      "questionUid": "qid_v1_c2f8b89b4e54fa22d893e1aa837c3f600e40d9d9496792ba21e4e9a5f95f15b3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "78c3d59f33cffcdfc48fee088c8c978b189f9e97701fdd325b1972ebe8bc3f94"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 삼각형의 길이 관계를 다른 각의 삼각비로 연결한다."
+    },
+    {
+      "n": 710,
+      "gptIndex": 883,
+      "questionUid": "qid_v1_c32668aa2b2154aa78729796280b217d09bd39192ef30100931b02dd96efc488",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "5a125932ad810a429be2f061b24661e492c387c0967dab3a9caa4a246d42d96d"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접사각형·접선-현각·삼각형 내각합을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 711,
+      "gptIndex": 716,
+      "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "aaff310244dc679513546d47a234fd81236bc1545df194da1ea418a444f907f2"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "현 길이 같음과 수선의 각 관계를 결합한다."
+    },
+    {
+      "n": 712,
+      "gptIndex": 717,
+      "questionUid": "qid_v1_c422d9f951827804f4dbd3755d7433887e39c63eb040d0bd7e8850c8be213ab3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "ea69f284ca738f24c2e0ed56fe8ca1611feaf63f28ee32106101ae15fab70373"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선 길이 같음과 피타고라스·직사각형 변 관계를 연쇄한다."
+    },
+    {
+      "n": 713,
+      "gptIndex": 302,
+      "questionUid": "qid_v1_c44b869578422235c076e993f43ba01014e75d35e3af7a5555d7eaf5104b0dae",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "e772579a02665ac5fa48fed913577a6cd95554edb7c853a545f7bbc2f8d908d3"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_CONVERSE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형의 성질과 역을 구분해 명제의 충분성을 검증한다."
+    },
+    {
+      "n": 714,
+      "gptIndex": 718,
+      "questionUid": "qid_v1_c4a376e540879fc952ffc11ad69787cffe02eea257b94686fd0d0a30e2af6bf5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "28cc77902ca1a73645013368b108f8263becb22ca27d0f6cfacfb39e5c5ca43d"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "동심원에서 현 길이와 중심거리 관계로 반지름을 구하는 원-현 길이 유형."
+    },
+    {
+      "n": 715,
+      "gptIndex": 563,
+      "questionUid": "qid_v1_c50d6b573fa518ccbfca333378e99c0ae61b538d165091f7c1c2e8895cd9b08b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "d98a906f0a5f7ee4d837ace0c1ccc96e16249f1ceac9b21cfc3857e30dfd78ef"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "ROUTE_OUT",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": null
+    },
+    {
+      "n": 716,
+      "gptIndex": 303,
+      "questionUid": "qid_v1_c5524a8bff9d8bad7279da2327a470ceef7ef562f69759fc5d3b0000d9e08cef",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "8b430e785b78a37e8098f1ed8f46f957850ca8c37eb3213a60ca94aba74db501"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심과 내심에서 얻는 두 반지름을 같은 원 넓이 계산에 결합한다."
+    },
+    {
+      "n": 717,
+      "gptIndex": 304,
+      "questionUid": "qid_v1_c5b07c11f914f9d6addd00cf47bf1b6449d1f21d5ae5d98bbd23dafe2d41d6d4",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "713483acde526f2428cf8682f42501b745c301357cb98901561cad29fabfe175"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "한 문항에서 여러 직각삼각형 합동 skeleton을 동시에 비교하는 선택형이므로 단일 L4 key로 강제하지 않고 명시적 HOLD한다."
+    },
+    {
+      "n": 718,
+      "gptIndex": 564,
+      "questionUid": "qid_v1_c60eb1ec277931476109399e0b39e2b9b5e866e1aefec8962f802149eb2cd3c3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "720f5fb2e147145e4c7ec3e34861bd1f8711441db0023c802d361b4b01727ce8"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "기본 코사인 정의를 사분원 도형에 직접 적용한다."
+    },
+    {
+      "n": 719,
+      "gptIndex": 565,
+      "questionUid": "qid_v1_c6406ed5ada6bf1bba425cc8a0e8bcd461ba3501e34a7e51c659a4c6b3475d94",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "5719c733c0989d6466d29d16a0396939841c9935ee8f451625e3cd3803db232c"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA",
+        "CC_SIMILARITY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직각삼각형 높이·닮음으로 두 삼각비를 복원한다."
+    },
+    {
+      "n": 720,
+      "gptIndex": 566,
+      "questionUid": "qid_v1_c6cb2f7b40eba6d81db9e932c3c6439e61b55c5fd27effbebcad22eaaf28ad34",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "3e1d4be3214af3b1f53214d1333291c001f62ff6c7925c0951aa45c544322b8b"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_MIDPOINT"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "중점·피타고라스·직각삼각형 삼각비를 결합한다."
+    },
+    {
+      "n": 721,
+      "gptIndex": 305,
+      "questionUid": "qid_v1_c6f036b50b8bc1718b49da15858eb640d591dcc6665ea8118dc9aaaaf11cdf10",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "e7d8b3d975ee909b9dd69727bf1e64aabd2fb4f4dc687f1fce380b9e614e0a9f"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "입체도형의 닮음비가 부피와 겉넓이에 각각 세제곱·제곱으로 변환된다."
+    },
+    {
+      "n": 722,
+      "gptIndex": 567,
+      "questionUid": "qid_v1_c70d30edca03dce3ae98aeeaea2e0de04c0a4113903f23a65cc8ec90edd32148",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "aa43537802aad12d28fc11fd79cfd29c52c7791038034c88e22d85747a193804"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형과 특수각 직각삼각형의 기하 관계로 삼각비를 유도한다."
+    },
+    {
+      "n": 723,
+      "gptIndex": 884,
+      "questionUid": "qid_v1_c74619c365dc1af578f70de7afcfe5941b5947c2e0c188882baade570e815b76",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "f72f977f9319371b07af6bf3617db0ad74b262cdab79062148da301f65f37ced"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "지름의 원주각과 중심각-원주각 관계를 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 724,
+      "gptIndex": 306,
+      "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "80b06c0c216d7b8b23dc6f015a5a5438096cb1f7b875b27f379da2549f3b289a"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "무게중심의 중선 분할과 넓이 분할이 명제 판정을 결정한다."
+    },
+    {
+      "n": 725,
+      "gptIndex": 307,
+      "questionUid": "qid_v1_c8a5e1820215e7468f382af7e81321e41dae636f0ed1c7a2e46642eae9adae02",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "99764082097a683ce9446eed66ff526b4ca3d63512b163a70ef6af170977eb5d"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_REFLECTION"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "대각선의 넓이 분할과 중심대칭이 영역 넓이 관계를 결정한다."
+    },
+    {
+      "n": 726,
+      "gptIndex": 308,
+      "questionUid": "qid_v1_c8c011841066ee28a93fce7a86c89f102c9f371de4d2fe011803006b57751f63",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "47c7e00d99d2ad0a7a1c2a5b0639d0d04dcac4ee9f64cb47dc6dc77209afb4d4"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "RHA 합동이 두 보조변을 결정하고 후속 길이·넓이 계산으로 연결된다."
+    },
+    {
+      "n": 727,
+      "gptIndex": 568,
+      "questionUid": "qid_v1_c8ea036aa76e2046e6d1b6ce62b0f95f053d89f06a08f31b90a78b8d3b4110c9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "6b21ec0169a5873cf08f8d15c4deac0dbf9c46ec4965b77f7717c92801399fe0"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "탄젠트 변비와 피타고라스·코사인 정의를 결합한다."
+    },
+    {
+      "n": 728,
+      "gptIndex": 885,
+      "questionUid": "qid_v1_c940b1cd925f44676ee7252973f2efc590b66728ae8c2fda1e2b9c00f045ac21",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "68ff0f90d7857f4125057d24a0ce7975c317a32d4f29208b036fe940959f638e"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접오각형의 원주각과 전체 호 합으로 특정 중심각을 결정"
+    },
+    {
+      "n": 729,
+      "gptIndex": 309,
+      "questionUid": "qid_v1_c961f1a5ee08148d71e1e1b8cd0df068707114f8d57392581a5b42bf5031898e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "888bb3292ecb3aade2fa58a3247dd582e7b00c6cd00f2c8e550360fac6282a27"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형의 밑각 관계와 밑각 B의 이등분선을 이용해 작은 이등변삼각형의 각을 판정."
+    },
+    {
+      "n": 730,
+      "gptIndex": 569,
+      "questionUid": "qid_v1_c9c3f23437c9db41e99e412f28cbb7eee2b6442dbf996d59307708b4fb862366",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "e0ddad391ac228e0079970241d04fc6556825545ea6fbaa91617afcdbd1c8393"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_SIMILARITY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "입체 도형의 길이 관계와 닮음을 삼각비 식으로 연결한다."
+    },
+    {
+      "n": 731,
+      "gptIndex": 570,
+      "questionUid": "qid_v1_ca9668a1ebdfda727a4dbda5ccd194f99e69acf80c24433d61827ffa9c52f8bc",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "68232c2310bf4d1e7609c31ffe8a1f57be68319b952ac1634e47ddbc35a4739e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 삼각비를 직접 적용한다."
+    },
+    {
+      "n": 732,
+      "gptIndex": 310,
+      "questionUid": "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "8989915f362ec246c3530e8f1b325ece08ef447e72e7d97f70726581bcbf4d02"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "일반 두 직선과 세 평행선의 대응 선분비가 미지 길이를 결정한다."
+    },
+    {
+      "n": 733,
+      "gptIndex": 571,
+      "questionUid": "qid_v1_cafbde01d6a8fd4209d56828060b5090bb09b725ecf15de2a21c6933d5bd80ed",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "5cadee80f59c9fad9ab6abb4abdd4aa0d400178597dd26482c54280e3d804132"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 삼각비를 직접 대입한다."
+    },
+    {
+      "n": 734,
+      "gptIndex": 311,
+      "questionUid": "qid_v1_cbce79d66d044679031372d0ff5232970943ba595f1ea3cf7155ec62d5625ef1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "75ade13b77d41c124fa23a72434207bb506d1383a66bf4dd99ae677666a9bf65"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "수선의 직각과 평행사변형 각 관계를 순차 적용한다."
+    },
+    {
+      "n": 735,
+      "gptIndex": 886,
+      "questionUid": "qid_v1_cc443ce4e5abb28767b87b17032e0491e5be17dfc899fb905e3b74a10d31704b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "9ba6129d45ad44272b926b136c81dcf8bb451dbe2cfe5c9e071dd70114b521a2"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "원주각·부채꼴 넓이·정삼각형·원주각을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 736,
+      "gptIndex": 572,
+      "questionUid": "qid_v1_cc44d06ccfc5958c4d46719cdc85dadbe422808e0824e171a71989f8d413bd03",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "5a586db6866f1662d49999b510ef7deeb3c7e9ff3fcb7118767c2b1418210953"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "여각의 사인·코사인 관계와 기본 정의를 결합한다."
+    },
+    {
+      "n": 737,
+      "gptIndex": 887,
+      "questionUid": "qid_v1_cc7a02e5b43abdc08090ae419119967056e57fec90398ddf3114be3355370ee1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "8c422a40e231d6c34b892f0521db9d4edfac45a3cbe43eac21c67d22278cba76"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접사각형의 대각합·같은 현의 원주각 조건을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 738,
+      "gptIndex": 888,
+      "questionUid": "qid_v1_cc8ea1e449102b1d6fe55a08670c620f63d792f0b3405c334a960d0bbdc8785a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "87337c37a2602cee66c6e49e82b26139f264a2d6b5d348b984096f823a253f2a"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "호 길이와 중심각 비례 및 원주각 관계를 결합"
+    },
+    {
+      "n": 739,
+      "gptIndex": 312,
+      "questionUid": "qid_v1_ccb0885c708a4548b4b785c378cd6907d3c677bbe9369ab9ecf75f8643efaac3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "0fc24210ab324098af274a51bc7ade9a7f7eeaa72967624bae48af7e1f06a9f7"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형의 밑각 관계와 밑각 C의 이등분선을 연쇄하여 목표 길이를 구함."
+    },
+    {
+      "n": 740,
+      "gptIndex": 573,
+      "questionUid": "qid_v1_cd253142b9b146b73dad00fade31e4c3529bc3aa65e7c235deb347f29ec452e2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "6d3554e777bae746f1e207585b7389913404e4983a0c8b2cf13dd5eb4b910de0"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직각삼각형 측량으로 목표 높이를 직접 구한다."
+    },
+    {
+      "n": 741,
+      "gptIndex": 313,
+      "questionUid": "qid_v1_cd28c7a0b278f890343ab76b6c2da6959f68cb98cc9b099512b40718c600b9c8",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "87dc5a711580e92c521abc186d54287e44fccc19af72ca4a8ba6f435491cc2fd"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외각에서 밑각을 복원해 이등변삼각형의 꼭짓각을 결정한다."
+    },
+    {
+      "n": 742,
+      "gptIndex": 314,
+      "questionUid": "qid_v1_cd6d35a7c21bc99be28e5b8c72b373fe999a0e83c95531d487762b8e2a73a863",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "c6d71f713524f64be7c6f5c0e963138606c2f69de234c9b0b2f6bbeb054e6190"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "항상 닮음인 도형의 예와 닮음의 정의를 설명하는 유형으로 기존 닮음비 L4와 달라 명시 HOLD."
+    },
+    {
+      "n": 743,
+      "gptIndex": 315,
+      "questionUid": "qid_v1_cdf01ad0c92eb6bbebeb49d10acfbea6c45e2104925c7d98eec6913f20aafdbf",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "ca79237ec72e09d27ad0fb87089a12d161203e0e4a7223a4bbb6af065a729f5f"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "닮은 입체도형의 길이비에서 부피비를 도출한다."
+    },
+    {
+      "n": 744,
+      "gptIndex": 574,
+      "questionUid": "qid_v1_cdf16d69f5e1daa2eef9ccf8e34b631844c4cfb6b3f9aaf6825912494f422228",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "d6f5e07b0eccbe8b579cf81689f5ea807d0a2ad3269d7ae8f8c299f0144e94fd"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "주어진 사인값을 이용해 삼각형 넓이를 계산하므로 삼각비 연쇄 측정 유형."
+    },
+    {
+      "n": 745,
+      "gptIndex": 575,
+      "questionUid": "qid_v1_ce908404875d39119a8d396184bf95d567562a8a1a5e84623473ca4825f6705e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "5bc33871b4f5cd9094f5b987a72416f191bdaafb9383589a2589fb9246c2c022"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA",
+        "CC_MIDPOINT"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "도형 넓이·피타고라스·삼각비 항등을 연결한다."
+    },
+    {
+      "n": 746,
+      "gptIndex": 316,
+      "questionUid": "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "8919a8483dce8e9dfb24a3eb91e9a3f033329cde427cb6e845a4249d86dfa1d7"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각형 내부 평행선이 만드는 닮음비가 미지 길이를 결정한다."
+    },
+    {
+      "n": 747,
+      "gptIndex": 719,
+      "questionUid": "qid_v1_cf0add391777da84e8067a8e4acaca5d6d5f153b47ddd0b64ec168ae9b7ab82d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "2b01059cd26192804086fd283794a12d94dd18575d33896ded712ab3c1f08e60"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "현 수직이등분선과 반지름 관계를 적용한다."
+    },
+    {
+      "n": 748,
+      "gptIndex": 720,
+      "questionUid": "qid_v1_cf508756ee75298ff7a497d8fab531106eca4845540fce0b75cfb04534ecf7ea",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "63e546d4094267dc1d30cea296dd9bca726b843c10a9040020ba29dfc7475e80"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선과 반지름 직각, 중심각, 부채꼴 넓이를 결합한다."
+    },
+    {
+      "n": 749,
+      "gptIndex": 889,
+      "questionUid": "qid_v1_cfa270d0b9d1fa25a07ffc7ee1471b1cffe70a6d8f6cb0524a0e5cc260065499",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "681505dcf2f640e65d06698af098c9b231f233ff97db4dc873ef0837bb018bf9"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "원주각·중심각·두 접선의 외각을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 750,
+      "gptIndex": 576,
+      "questionUid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "db2607cfb1a8425ccc84dc8a00da2006dbe5e11f55857804815d13ab1bab5f7f"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각비로 기울기를 만든 뒤 한 점을 지나는 직선식으로 연결하는 연쇄 측정 유형"
+    },
+    {
+      "n": 751,
+      "gptIndex": 890,
+      "questionUid": "qid_v1_d0a852791e20751ea7e0793a297cca822681d6be48d30a51284b1958d79e5670",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "fa77309389386e5bd4089b5eaa8769b2747b97af034f80c71b6b9a4713f85b53"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내접오각형의 여러 원주각과 중심각·전체 호 관계를 결합"
+    },
+    {
+      "n": 752,
+      "gptIndex": 577,
+      "questionUid": "qid_v1_d0e77d798224e9f9c2f800343a11de99f3df9da77933bf37d1116c275e9859e2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "02ca6a67fb3485c30670eae3673dea1ccfe8d9cf91c9de86132a1aec8cda5d39"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "대수 항등식과 특수각 값으로 식을 단순화한다."
+    },
+    {
+      "n": 753,
+      "gptIndex": 578,
+      "questionUid": "qid_v1_d0ef81f1a68d86ace97107fdec8d9a5e92e8a93afb470fc8b304e6196329d21f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "8fc67f037fffceef521e0698c78e1b1976af501658c4a3f8e49fd8a6218a91c1"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_MIDPOINT"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 길이 계산과 중점 조건, 피타고라스를 연쇄한다."
+    },
+    {
+      "n": 754,
+      "gptIndex": 579,
+      "questionUid": "qid_v1_d1086ae360a89dbbbbf250902596402a4b32e395a270183eeb7263afc65de432",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "b55c715fef7c67985b16dd674f16c79465cf1bc97a1899c4a05b0461ba4f16e2"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "보조각으로 높이를 구한 뒤 삼각형 넓이로 연결하므로 삼각비 연쇄 측정 유형."
+    },
+    {
+      "n": 755,
+      "gptIndex": 317,
+      "questionUid": "qid_v1_d143c4903e7842b0b13c8e8335d1f552eb7b206512ea33a8d6083ba0b51eeb73",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "84b00d7fea91e70ec61b98b187eb3f1bc34a3e4650a7a3bea7882e672899ac40"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "crossConceptKeys": [
+        "CC_REFLECTION",
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접기에서 보존된 길이와 직각삼각형 계산이 SSS 닮음 조건을 완성한다."
+    },
+    {
+      "n": 756,
+      "gptIndex": 721,
+      "questionUid": "qid_v1_d20e5fb44065d096b9131a559220b2bb48e1cfc62ea67c162a04b132df167149",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "cc1d28f2e85148579b9c8116911f450c1cc55f618fda8bd74a44c15cb2258df4"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "연속 접선 길이 같음과 직사각형 변 관계를 결합한다."
+    },
+    {
+      "n": 757,
+      "gptIndex": 891,
+      "questionUid": "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "5fd89993155b9fb847e45533a82b701295157255b31e0ad317b81462592de12d"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직각으로 만들어지는 원주각과 내접사각형 조건을 결합하는 복합 원의 각 관계"
+    },
+    {
+      "n": 758,
+      "gptIndex": 318,
+      "questionUid": "qid_v1_d260452eb4b9eeab948cf46d6861aba3e37da755dc333f670f589ca34c912220",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "ddc99ab88bc77f9222de3e99f3154a162c6abe7458c1229b2a850de084b264a0"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "SOURCE_HOLD",
+      "sourceIssue": "SOURCE_INCOMPLETE: 발문이 절단되어 원문 조건을 독립 재검증할 수 없음.",
+      "l4SemanticReason": "내심의 접점과 접선 길이 관계가 목표 변을 결정한다."
+    },
+    {
+      "n": 759,
+      "gptIndex": 319,
+      "questionUid": "qid_v1_d263b796e661da93d9dc42c1519a0f064c1fe87d40f95c80a12e45d1e0cd7ffe",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "3d6dfe9819015c1740e6b90e5ad636f935075e84ec5adca760d87b57a65ca1e8"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "EXPLICIT_HOLD",
+      "finalStatus": "ADJUDICATED_HOLD",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형·RHA 합동·내심/외심 판정을 순차 결합하는 multi-route 문항이라 단일 기존 L4로 강제하지 않고 명시 HOLD."
+    },
+    {
+      "n": 760,
+      "gptIndex": 722,
+      "questionUid": "qid_v1_d2cbc30d9662df1b4c91db360ec96239648c4658ac184c83ebe9d4cca29134f9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "7bb7c2ba969db64e515c108511332feecce343c8737d2beeba20d041c210427f"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선 조건·중심각·부채꼴 넓이를 연결한다."
+    },
+    {
+      "n": 761,
+      "gptIndex": 320,
+      "questionUid": "qid_v1_d31a0ac582f6caf524088510149a1a99cb521778936702dd9f903793769d2dc2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "3195c6b74099f34ec852e946ca52b75d84e341d9e9d460599f7e46a8fb44add3"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "입체도형 닮음의 길이비가 겉넓이비로 변환된다."
+    },
+    {
+      "n": 762,
+      "gptIndex": 892,
+      "questionUid": "qid_v1_d31ea1633e462022d48c6d01cf9720fcc450905b62bbf5a1768f19bf8e6da0fd",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "7cd76115349e1d9c9a2a1101e3ba4da574c274359749c87fd52cdcf4cc2c4f8a"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "같은 중심거리의 현·같은 현의 원주각·삼각형 내각합을 결합하는 복합 원의 각 관계."
+    },
+    {
+      "n": 763,
+      "gptIndex": 580,
+      "questionUid": "qid_v1_d34d5cae69eef26f3dab533aa8dc973fc1b53b76dfc19f44f079a2ca4e9aff99",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "a5fd1125ab2d4928b1400ee0c4772e71a79e43fe402492bcc31f1081bc503960"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각비의 기본 정의를 직접 적용한다."
+    },
+    {
+      "n": 764,
+      "gptIndex": 321,
+      "questionUid": "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "dfa7eb68ed4e02caee0a2b82f34dc0fe05f13c3381f465ce6012f8052e316357"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각형 내부의 중점 조건과 평행선이 두 선분비를 차례로 결정한다."
+    },
+    {
+      "n": 765,
+      "gptIndex": 893,
+      "questionUid": "qid_v1_d3f6b430c6435c8ea47e3ef28419c695d2f8507c46b380e645f7b82ece7f2ee3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "8edb70ad98c0071dc16c543a688426b54d6931d0eb35c4b2468a8d206300d62e"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선-현각과 대응 원주각의 관계를 직접 적용"
+    },
+    {
+      "n": 766,
+      "gptIndex": 322,
+      "questionUid": "qid_v1_d44910ac4eed7ee435978bcdb8620a485723d0c56533c3c9735bb50d053bfec3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "52bd1266eba1a5e818182e41b7c8577d67f1a153730f5082c9848f650b801065"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "중점이 제공하는 빗변 대응과 주어진 수선 길이가 RHS 합동을 완성한다."
+    },
+    {
+      "n": 767,
+      "gptIndex": 581,
+      "questionUid": "qid_v1_d45521fc7fb98052bd19d164ef4b5301285b307d9421bf85d70c358691d85dc8",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "820d8ec85fda6ac0a43b8ae72d2a07bc4e066c73f891dc595ede3abf0b1dfb36"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "끼인각의 사인으로 삼각형 넓이를 계산하므로 삼각비 연쇄 측정 유형."
+    },
+    {
+      "n": 768,
+      "gptIndex": 323,
+      "questionUid": "qid_v1_d4aa1b6dd61fdb3a5410a6ba95022cd647543979c1ee19a50edeab454180e6b8",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "335de902e2a6c461020682c97743f78543ae69d5073544aa867b8b1a04d8f821"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심·현의 수선과 중심각 이등분 관계를 결합한다."
+    },
+    {
+      "n": 769,
+      "gptIndex": 723,
+      "questionUid": "qid_v1_d4d9b6d64a756eab8ff48b23f5d8b3bbbd6c5fc667ee3ffaeb59346394b6da42",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "0a10b1d9de98a4d6822cef285230692890789c2ec93f964942e2389a48fa237b"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "현 수직이등분선이 원 중심을 지나는 작도 성질을 적용한다."
+    },
+    {
+      "n": 770,
+      "gptIndex": 324,
+      "questionUid": "qid_v1_d4edb719f8af918f15ffc77a3eec6158c856bb18dba548ad89d3e8de9b43bf9b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "a89368ff41c94bcd83032385d8c21b9a884528732b291f022a8d9cf12beb3202"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "SOURCE_HOLD",
+      "sourceIssue": "SOURCE_DIMENSIONAL_ISSUE: x는 길이, y는 각도인데 x+y를 요구해 차원이 일치하지 않음.",
+      "l4SemanticReason": "마름모의 대각선·각 성질과 평행사변형의 각 관계를 순차 적용한다."
+    },
+    {
+      "n": 771,
+      "gptIndex": 325,
+      "questionUid": "qid_v1_d51fcaa9d38ad85c26bcccf8e01fa07e14299e7aca2728d32c5b129fd2bb9c4e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "6d133343b32d0416e29216e9a2e11c6e85966abbe04fd38d939e79550609ecb6"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심과 내심의 반지름을 각각 다른 중심 성질로 결정한다."
+    },
+    {
+      "n": 772,
+      "gptIndex": 326,
+      "questionUid": "qid_v1_d52b98d397b36d4690ffd2d5aeae3e4ededc63f975e6751acdb8e998d38abcf3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "f3971b6611a41ccdd0a066f35d83849214ecdc8f7110bacd9319e2cfd995e036"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [
+        "CC_SIMILARITY",
+        "CC_MIDPOINT",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "무게중심의 2:1 분할을 중심으로 평행선 닮음·중점·넓이비를 연결하는 무게중심 활용 유형."
+    },
+    {
+      "n": 773,
+      "gptIndex": 327,
+      "questionUid": "qid_v1_d534b474a17fd63c95d863ca79a657960a9616319f64f553b57f0ce886698e9b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "b6e8f50472bd3fcddf20881b455b5f3feeb4966daff5a35298667beb6889ae48"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내심의 세 변까지 등거리 성질이 내접원 반지름과 작도 방법을 결정한다."
+    },
+    {
+      "n": 774,
+      "gptIndex": 582,
+      "questionUid": "qid_v1_d5647fc0b6ae1c7a9e44653ea0d80f476b08792c2620f3777960d4124e2e35d2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "a630006eecbb3a90fd7a525b8895e270f565bb6b2a5b03a9cc131aef1e725971"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 보조선과 이등변 구조를 연쇄해 목표 변을 구한다."
+    },
+    {
+      "n": 775,
+      "gptIndex": 894,
+      "questionUid": "qid_v1_d696f9c29d0f86287ec875d415b027f1f3672476674e9ff74587ad9fab975f59",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "9d74ee47d1cda4352d6c4197e11a6ae4cec07403ae6a0633364a11e163c36d82"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선-현각과 삼각형 내각합을 결합"
+    },
+    {
+      "n": 776,
+      "gptIndex": 328,
+      "questionUid": "qid_v1_d73f321d3488f5b6c220bd5cfc4b742cef64f34861434d3447e3c22a24fd6a09",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "a093762f5a187b6fe45287143c7c22e42fc4adb278d927a233ba306233f087d9"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직사각형 대각선의 길이·이등분 성질이 이등변삼각형의 각 관계를 만든다."
+    },
+    {
+      "n": 777,
+      "gptIndex": 724,
+      "questionUid": "qid_v1_d7ce3475089d18b48ccbd53fa0d1caae84b7b52a823178a5803750ae14cfac31",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "4fe0809977cb5c93e1f4a5a8b1db066d9a17fe0d57fe3eac6f9e59e960cdf260"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "동일 접선 길이·반지름 직각과 넓이를 결합한다."
+    },
+    {
+      "n": 778,
+      "gptIndex": 329,
+      "questionUid": "qid_v1_d7e5277f2acfc875e8776a50f3095f27f4d5f933567e0af5cf5a50c8f80752aa",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "4692ccdc4fa73cfecccf8b4bd71ec980b9e071fae3c13a79f6382ef19e5b6ae6"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "일반 두 직선과 세 평행선의 대응 선분비를 직접 적용한다."
+    },
+    {
+      "n": 779,
+      "gptIndex": 725,
+      "questionUid": "qid_v1_d7fec583bac81e84c5727580bcf4e401d8dba87bfee8ebcb2fea77391ee23890",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "4ffeba1d1b262ac3f0ba1facc79b4f6b4d79d375f3e0e6e061b284af0993a952"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "같은 외부점에서의 접선 길이 같음을 이용해 길이와 지름을 결정하는 접선 길이 유형."
+    },
+    {
+      "n": 780,
+      "gptIndex": 895,
+      "questionUid": "qid_v1_d8042496d199fa6784bbb97ccf747ae3bdad1a2e39cef4fec8f15a211ada4f78",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "6db6fc62ebf4d77507263a41e8cd940b82d6e7e013ccd1f14e0c189f62432e6e"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "원주각·중심각·호·현 관계를 함께 판정하는 복합 원의 각 관계"
+    },
+    {
+      "n": 781,
+      "gptIndex": 896,
+      "questionUid": "qid_v1_d81b0ca6ee3a8238598e586f84197df3e173cdbe2f8081fdc57165e435acb717",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "38baa4e2f88d04cf6f6309f0977b8faee2e8d7324c4282b0bed794b8860ec07c"
+      },
+      "lunaVerdict": "HOLD",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES",
+        "CC_DIAMETER"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "접선-현각·평행선·지름·두 현 교점각을 연쇄하는 복합 원의 각 관계"
+    },
+    {
+      "n": 782,
+      "gptIndex": 330,
+      "questionUid": "qid_v1_d862d59f4625031a650a248354067f171f186055685e14c5585f2e70891288bf",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "4828971950c48afd1f1f03b0a13c510c7dbb36467e1ee3a7501fa8569d177998"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "정사각형 대각선과 합동 성질이 목표각을 결정한다."
+    },
+    {
+      "n": 783,
+      "gptIndex": 331,
+      "questionUid": "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "61ee02ce6222e200b04360e4addfff3a4ceaf48ffff8dc50acaf85634ea0b5ad"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "무게중심의 중선 2:1 관계가 목표 길이를 직접 결정하는 무게중심 활용 유형."
+    },
+    {
+      "n": 784,
+      "gptIndex": 332,
+      "questionUid": "qid_v1_d9144370e24221fb5dbfafe0ca335142b274253161bc0c8da5b5051dd3c53b80",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "d271cd7902d30695a3c7a03794cc147e37685f7986dc3fe189e524ab7d6b979f"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "이등변삼각형의 밑각 관계가 목표각을 직접 결정한다."
+    },
+    {
+      "n": 785,
+      "gptIndex": 583,
+      "questionUid": "qid_v1_d923745c2dc8001bd522354fa916db2c9b9c1938f6a617df5e9ae826b9b3fedb",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "3599810c3238dc9f9a07521c445ffe218e7841528b126fd24755f1024b6fe548"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR_THEOREM"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 길이 계산과 각의 이등분선 비례를 연쇄한다."
+    },
+    {
+      "n": 786,
+      "gptIndex": 333,
+      "questionUid": "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "94446a38ad01f00da2db206e464357e1c072a99726476f7787736e8a744caa89"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선 닮음과 각의 이등분선 정리를 연속 적용한다."
+    },
+    {
+      "n": 787,
+      "gptIndex": 584,
+      "questionUid": "qid_v1_d938153ef69147163e468bf140ffeb8fe076c277e3f9050cad372965754f74ef",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "0c56a6d201f0c3bd881be8afa485acd5a5c1db27c4c506b8c9e2ea76add65a49"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직각삼각형 닮음과 피타고라스 길이 관계를 삼각비에 연결한다."
+    },
+    {
+      "n": 788,
+      "gptIndex": 334,
+      "questionUid": "qid_v1_d95b323069d9e36833f9646a3db0dbc8e5942b6696da48bdebc6e69e081f2e74",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "6ae8109e81f0639b47a906e8ba56ef56879e4a58f01849db0ff1ecb01bc66531"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심의 등거리와 삼각형 내각 합이 목표 꼭짓각을 결정한다."
+    },
+    {
+      "n": 789,
+      "gptIndex": 335,
+      "questionUid": "qid_v1_da67635473b15e366800e4e59d9fd943df3dd6f734f0ac0636d3ac0f3476249c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "55aefe9ad717ef35cd73a8dd551708d586d5f9ee9544d4f0841d6c6e8e685f96"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각형 닮음으로 확보한 대응변비를 목표 길이 계산에 적용한다."
+    },
+    {
+      "n": 790,
+      "gptIndex": 336,
+      "questionUid": "qid_v1_da8b30f15b81ef1e6c1e003f3c02685c497fd4c8e78107f7a416249c24a3b04d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "c480b1f3e1d9ec239681440694a02a6104775d616f776de1385aee88910ebe1e"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행선이 만드는 선분비와 두 삼각형 닮음을 연속 적용한다."
+    },
+    {
+      "n": 791,
+      "gptIndex": 337,
+      "questionUid": "qid_v1_da9fe12023001cefbadb3fa9c9602455b1cc8312427154fc4019740bf2de0526",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "f499c70b22858db53e9d53953fa28ca789bcbb8ef4ffb49496115c3d39c5df6e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "평행사변형의 평행 관계와 수선의 직각 관계가 목표각을 결정한다."
+    },
+    {
+      "n": 792,
+      "gptIndex": 338,
+      "questionUid": "qid_v1_dac810bf3b89381938743c5d437577d0a6f110a2aca3b641cb951416b1e8e053",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "3381aaa19b73396c962346e86ab52bfa73d3b8ea36800c232fa4baf57bca9d4c"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "외심의 기본 성질과 현에 대한 수선 관계를 함께 검증한다."
+    },
+    {
+      "n": 793,
+      "gptIndex": 339,
+      "questionUid": "qid_v1_dae9924d1894bb1e01d68e12a0b43b70b55ad749b62662630e0b6f3ee640eb48",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "89ea3a3286ee52cc9adc57c35687b1dff234b55a57feb7098e6106610be69e7e"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "삼각형의 각·평행 관계와 각의 이등분선에서 출발하는 비례 구조를 검증한다."
+    },
+    {
+      "n": 794,
+      "gptIndex": 340,
+      "questionUid": "qid_v1_db427fd87ee953052befca90424b5296ceaef7541eb354749506efb82a12c628",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "92b2b4ff4b0a92ade059af1689dafb093c54b3e2ed3a84aea746f0b02e4dca5d"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수한 사각형의 포함 관계와 판정 조건을 비교한다."
+    },
+    {
+      "n": 795,
+      "gptIndex": 341,
+      "questionUid": "qid_v1_dbb60c41a9f4c54ce180f53a1d60c0ba6fb10202262959097d6550a59d356f40",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "2904e4eef66ecac95b33ca3f0bfa5cd07912ce2114d70c7ef66c7868a3c36776"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-SIMILAR_FIGURE",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "대응각의 순서를 정확히 정렬해 닮음비를 적용한다."
+    },
+    {
+      "n": 796,
+      "gptIndex": 342,
+      "questionUid": "qid_v1_dbbaac91c93f140d081752884fa5aabf89303ae007578b5e4eb86e0c5ce389c6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "c96e2d1742da1d00ec41d2c6ac05554bdd2a2130492e22f21e1b169bc316e56a"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "정사각형 대각선과 이등변삼각형의 밑각 관계를 연쇄한다."
+    },
+    {
+      "n": 797,
+      "gptIndex": 343,
+      "questionUid": "qid_v1_dbe75705e39c315c4f85d2f3ab8400eceadbd3427c4f826b9ed75874359fe2a1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "4555fe354e125149f36fe9241d8d00c376cd95930576abc78c8cd1151dd8f46a"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_REFLECTION"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "직사각형 접기에서 수직이등분선과 대칭 각 관계를 연결한다."
+    },
+    {
+      "n": 798,
+      "gptIndex": 344,
+      "questionUid": "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "c20185a7a1c3154e1af65c825138cbadedd562f9e34cbac49cafcbb8b3654c8c"
+      },
+      "lunaVerdict": "DEFECT",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "crossConceptKeys": [],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "두 무게중심의 2:1 분할을 연속 적용해 목표 길이를 결정하는 무게중심 활용 유형."
+    },
+    {
+      "n": 799,
+      "gptIndex": 726,
+      "questionUid": "qid_v1_dd7e975ddeb63d1c416534dd51dc690c6dfb6e35e3d576bf8364b504e84a2440",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "3a7d9c1108db10fef1bc40cb045072dd127b46db5a6eec6525a9c8a0dc200bba"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "내심의 내접원 반지름 관계와 피타고라스·넓이를 결합한다."
+    },
+    {
+      "n": 800,
+      "gptIndex": 585,
+      "questionUid": "qid_v1_dda144a88b0d2464c2a75a16dad3cd548ff789565eea548bf5072e06b0911463",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "eea0a172b896e86e637774652f682101eef6909ae3730f27b5a7a66c105f3fee"
+      },
+      "lunaVerdict": "MATCH",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4ReviewStatus": "FINAL",
+      "finalStatus": "PASS",
+      "sourceIssue": null,
+      "l4SemanticReason": "특수각 수선 구조와 길이 계산을 연쇄한다."
+    }
+  ],
+  "sourceL2Mutations": [
+    {
+      "uid": "qid_v1_a9ae09608eb4d5b6a031c3fb54affa375839c4d212591f9f9b2f69fe9531a86f",
+      "path": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "ord": 2,
+      "before": "M2-06-SIMILAR_FIGURE",
+      "after": "M2-06-PARALLEL_LENGTH_RATIO"
+    },
+    {
+      "uid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
+      "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+      "ord": 7,
+      "before": "M2-06-SIMILAR_FIGURE",
+      "after": "M2-05-TRIANGLE_PROPERTIES"
+    },
+    {
+      "uid": "qid_v1_b421e9722c10ae9352bdc3b96c83d2463b4169c1bdbf7f743977bcca04912e4b",
+      "path": "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+      "ord": 25,
+      "before": "M2-05-TRIANGLE_PROPERTIES",
+      "after": "M2-05-QUADRILATERAL_PROPERTIES"
+    },
+    {
+      "uid": "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2",
+      "path": "archive/exams/original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+      "ord": 23,
+      "before": "M2-05-TRIANGLE_PROPERTIES",
+      "after": "M2-05-QUADRILATERAL_PROPERTIES"
+    },
+    {
+      "uid": "qid_v1_c17ceb1f4f708094127580f300fff478efd095ee4a3371dc0af48eb6ad11589d",
+      "path": "archive/exams/original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+      "ord": 10,
+      "before": "M2-05-TRIANGLE_PROPERTIES",
+      "after": "M2-05-QUADRILATERAL_PROPERTIES"
+    },
+    {
+      "uid": "qid_v1_d52b98d397b36d4690ffd2d5aeae3e4ededc63f975e6751acdb8e998d38abcf3",
+      "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+      "ord": 19,
+      "before": "M2-06-PARALLEL_LENGTH_RATIO",
+      "after": "M2-05-TRIANGLE_PROPERTIES"
+    },
+    {
+      "uid": "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+      "path": "archive/exams/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+      "ord": 3,
+      "before": "M2-06-SIMILAR_FIGURE",
+      "after": "M2-05-TRIANGLE_PROPERTIES"
+    },
+    {
+      "uid": "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966",
+      "path": "archive/exams/original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+      "ord": 19,
+      "before": "M2-06-SIMILAR_FIGURE",
+      "after": "M2-05-TRIANGLE_PROPERTIES"
+    },
+    {
+      "uid": "qid_v1_a9bf82420f265643bbe59712ecb5cb358918ca7677256bc2b15207914d176462",
+      "path": "archive/exams/original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+      "ord": 23,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_c6406ed5ada6bf1bba425cc8a0e8bcd461ba3501e34a7e51c659a4c6b3475d94",
+      "path": "archive/exams/original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+      "ord": 5,
+      "before": "M3-05-TRIG_RATIO_APPLICATION",
+      "after": "M3-05-TRIG_RATIO"
+    },
+    {
+      "uid": "qid_v1_d923745c2dc8001bd522354fa916db2c9b9c1938f6a617df5e9ae826b9b3fedb",
+      "path": "archive/exams/original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+      "ord": 6,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_bb994a1c383fcfa316a376ca6eb1c7511a95ccc859f97f4b245052b20e498f47",
+      "path": "archive/exams/original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+      "ord": 22,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_bc5e0d801f3b417aa0cb403613ab0193caee55fd6ee4d16021c66a9f9759b06f",
+      "path": "archive/exams/original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+      "ord": 4,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_c9c3f23437c9db41e99e412f28cbb7eee2b6442dbf996d59307708b4fb862366",
+      "path": "archive/exams/original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+      "ord": 21,
+      "before": "M3-05-TRIG_RATIO_APPLICATION",
+      "after": "M3-05-TRIG_RATIO"
+    },
+    {
+      "uid": "qid_v1_bde01f44c3af4689b83ff8de048552e2270edad7a7ff3665262ec0f321a0c20a",
+      "path": "archive/exams/original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+      "ord": 11,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_c2f8b89b4e54fa22d893e1aa837c3f600e40d9d9496792ba21e4e9a5f95f15b3",
+      "path": "archive/exams/original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "ord": 13,
+      "before": "M3-05-TRIG_RATIO_APPLICATION",
+      "after": "M3-05-TRIG_RATIO"
+    },
+    {
+      "uid": "qid_v1_cdf16d69f5e1daa2eef9ccf8e34b631844c4cfb6b3f9aaf6825912494f422228",
+      "path": "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "ord": 21,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_d45521fc7fb98052bd19d164ef4b5301285b307d9421bf85d70c358691d85dc8",
+      "path": "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "ord": 6,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+      "path": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+      "ord": 10,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_d0ef81f1a68d86ace97107fdec8d9a5e92e8a93afb470fc8b304e6196329d21f",
+      "path": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "ord": 24,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_d5647fc0b6ae1c7a9e44653ea0d80f476b08792c2620f3777960d4124e2e35d2",
+      "path": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+      "ord": 11,
+      "before": "M3-05-TRIG_RATIO",
+      "after": "M3-05-TRIG_RATIO_APPLICATION"
+    },
+    {
+      "uid": "qid_v1_d4d9b6d64a756eab8ff48b23f5d8b3bbbd6c5fc667ee3ffaeb59346394b6da42",
+      "path": "archive/exams/original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+      "ord": 23,
+      "before": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "after": "M3-06-CIRCLE_LINE"
+    }
+  ]
+}

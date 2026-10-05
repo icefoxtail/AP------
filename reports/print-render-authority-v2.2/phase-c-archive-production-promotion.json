@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "planVersion": "v2.2",
+  "phase": "PHASE_C_ARCHIVE_SHARED_RENDER_PATHS",
+  "status": "PASS",
+  "promotionStartSha": "78feb6f4b84194064e2337c139c36a4c708c8076",
+  "productionAuthority": {
+    "exam": "APExamRenderExecutor by default",
+    "solution": "APSolutionRenderExecutor by default",
+    "answer": "APAnswerRenderExecutor by default"
+  },
+  "legacyRollback": {
+    "exam": "renderExamLegacy via examAuthority=legacy",
+    "solution": "renderSolLegacy via solutionAuthority=legacy",
+    "answer": "renderAnsLegacy via answerAuthority=legacy"
+  },
+  "browserEvidence": {
+    "fixture": "archive/exams/test-fixtures/render-authority-golden.js",
+    "qpp": 4,
+    "exam": {
+      "defaultShared": true,
+      "pages": 4,
+      "questions": 8,
+      "pageColumnParity": true,
+      "contentChoicesParity": true,
+      "problemImageCount": 1,
+      "brokenImageCount": 0,
+      "mathJaxRendered": true,
+      "overflow": false,
+      "omissionCount": 0,
+      "duplicationCount": 0,
+      "readiness": "RENDER_READY"
+    },
+    "solution": {
+      "defaultShared": true,
+      "pages": 3,
+      "q5": "page1/column2",
+      "q6": ["page2/column1/primary", "page2/column2/continuation", "page3/column1/continuation"],
+      "solutionImagePrimaryOnly": true,
+      "mathJaxRendered": true,
+      "overflow": false,
+      "omissionCount": 0,
+      "duplicationCount": 0,
+      "readiness": "RENDER_READY"
+    },
+    "answer": {
+      "defaultShared": true,
+      "pages": 1,
+      "answerEntryCount": 8,
+      "columnOrderParity": true,
+      "mathJaxRendered": true,
+      "overflow": false,
+      "omissionCount": 0,
+      "duplicationCount": 0,
+      "readiness": "RENDER_READY"
+    }
+  },
+  "printTransport": {
+    "browserPrintEntry": "available",
+    "rasterButton": "available",
+    "nativeGdiButton": "available",
+    "readinessTransportRegressionSuite": "PASS",
+    "printAreaA4Shell": "PASS"
+  },
+  "correction": {
+    "issue": "problem data-SVG quotes were not escaped in the HTML src attribute",
+    "fix": "renderQuestionImageHTML now uses escapeArchiveHtmlAttribute",
+    "mixerParity": "same attribute-safe fix applied to archive/mixed_engine.html",
+    "browserResult": "problem SVG loads with brokenImageCount=0"
+  },
+  "fatalRenderErrors": 0,
+  "nonGoals": ["No Mixer production promotion", "No Clinic production promotion", "No legacy deletion", "No Phase 7 redesign"]
+}

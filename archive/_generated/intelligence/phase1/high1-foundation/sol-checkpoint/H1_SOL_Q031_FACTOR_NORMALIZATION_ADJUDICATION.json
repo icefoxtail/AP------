@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_DIRECT_ADJUDICATION_WORKING",
+  "queueIndex": 31,
+  "questionUid": "qid_v1_2c107f88430fa3af5dcb5f20770e2abbe1f86f721dbddacfe0d90982a1caf970",
+  "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#24",
+  "sourceFingerprint": "66c95f63ea88f9c96a9089a62d49e147779c4824053e1b03a58a3084f1591d36",
+  "contentHash": "1461406ce319029095c8274e04ff4b3f2db6af4ed16e6ff88d02dd21c6e156ec",
+  "solutionHash": "a9d114037b470759136e8d1e597e2544e479f9c217e0736926d3920445ac643d",
+  "aStatus": "PASS",
+  "bStatus": "PASS",
+  "cStatus": "HOLD",
+  "solDecision": "SOURCE_ORIGINAL_CONFIRMED_AMBIGUITY_HOLD",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "reason": "The printed JS statement says only that g and h are polynomial factors and g-h=2; it does not require g,h to be monic. With a=-1,b=6, f=(x+1)(x+2)(x-1)(x-3) and f(0)=6. The solution's g=x-1,h=x-3 give g(a)h(b)/f(0)=-1. But g=3-x and h=1-x are also factors, still satisfy g-h=2, and give 4*(-5)/6=-10/3. Thus the requested value is not uniquely fixed by the current statement.",
+  "currentWorkerEvidence": [
+    "H1_STAGEA_LUNA_A_BATCH02_021_040.jsonl",
+    "H1_STAGEA_LUNA_B_BATCH02_021_040.jsonl",
+    "H1_STAGEA_LUNA6_C_FIRST50_REMAINING6.jsonl"
+  ],
+  "originalQuestionEvidence": "source-evidence/D-q31-question-only/D-q31-question-only-ledger.md",
+  "worktreeParityEvidence": "source-evidence/D-q31-question-only/D-q31-worktree-parity.json",
+  "jsEdit": false,
+  "originalQuestionGate": "D confirmed that the printed 2026 효천고 #24 question also omits degree/monic normalization; source question fields match the task worktree item.",
+  "correctionProtocolCandidate": "If the original question has the same ambiguity, separately consider an explicit monic-linear-factor condition. Do not make a guessed source-exact D edit.",
+  "finalMetadataStatus": "HOLD_PENDING_CORRECTION_PROTOCOL"
+}

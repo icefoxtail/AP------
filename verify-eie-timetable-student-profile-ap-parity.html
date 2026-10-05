@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EIE timetable student profile AP parity</title>
+  <base href="http://127.0.0.1:8766/eie/">
+  <link rel="stylesheet" href="./css/eie.css">
+  <link rel="stylesheet" href="./css/eie-timetable-board-fixes.css">
+  <style>
+    body { margin: 0; background: #f3f4f6; font-family: Arial, "Noto Sans KR", sans-serif; }
+    .verify-frame { max-width: 494px; min-height: 100vh; margin: 0 auto; background: #f8fafc; }
+  </style>
+</head>
+<body>
+  <main class="verify-frame">
+    <aside class="eie-v2-detail-panel eie-v2-student-panel eie-p-panel eie-v2-ap-profile-panel">
+      <div class="eie-v2-ap-appbar">
+        <button type="button" class="eie-v2-ap-appbar-cancel">취소</button>
+        <strong></strong>
+        <span></span>
+      </div>
+      <div class="eie-v2-ap-profile-shell">
+        <header class="eie-v2-ap-profile-head">
+          <div class="eie-v2-ap-head-main">
+            <div class="eie-v2-ap-head-title">
+              <h1>한세아</h1>
+              <span class="eie-v2-ap-status-dot is-active"></span>
+              <span class="eie-v2-ap-status-text is-active">재원</span>
+            </div>
+            <div class="eie-v2-ap-meta-line">왕운중 · 중1 · 중1A · 담임 박준성</div>
+          </div>
+          <button type="button" class="eie-v2-ap-head-btn">수정</button>
+        </header>
+        <div class="eie-v2-ap-tabs">
+          <button type="button" class="eie-v2-ap-tab is-active">기본</button>
+          <button type="button" class="eie-v2-ap-tab">상담</button>
+          <button type="button" class="eie-v2-ap-tab">성적</button>
+        </div>
+        <div class="eie-v2-ap-tab-body">
+          <section class="eie-v2-ap-card">
+            <div class="eie-v2-ap-section-head">
+              <h3>학생 상세 정보</h3>
+            </div>
+            <div class="eie-v2-ap-info-list">
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">학생 연락처</span><span class="eie-v2-ap-info-value"></span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">보호자 정보</span><span class="eie-v2-ap-info-value">(모)</span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">주소</span><span class="eie-v2-ap-info-value"></span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">차량</span><span class="eie-v2-ap-info-value"></span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">등원일</span><span class="eie-v2-ap-info-value">미등록</span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">메모</span><span class="eie-v2-ap-info-value">메모</span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">PIN 번호</span><span class="eie-v2-ap-info-value">1101</span></div>
+            </div>
+          </section>
+          <section class="eie-v2-ap-card">
+            <div class="eie-v2-ap-section-head"><h3>최근 활동</h3></div>
+            <div class="eie-v2-ap-info-list">
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">최근 수업</span><span class="eie-v2-ap-info-value">3교시 · 중1A</span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">최근 시험</span><span class="eie-v2-ap-info-value"></span></div>
+              <div class="eie-v2-ap-info-row"><span class="eie-v2-ap-info-label">마지막 상담</span><span class="eie-v2-ap-info-value">2026-04-24 출결</span></div>
+            </div>
+          </section>
+          <section class="eie-v2-ap-card">
+            <div class="eie-v2-ap-history-head">
+              <div><h3>학생 이력</h3><p>상태 변경 0건 · 반 이동 0건</p></div>
+              <div><button class="eie-v2-ap-mini-btn">상태 변경 이력</button><button class="eie-v2-ap-mini-btn">반 이동 이력</button></div>
+            </div>
+            <div class="eie-v2-ap-attendance-save">
+              <label><span>등원일</span><input type="date" value="2026-06-14"></label>
+              <button class="eie-v2-ap-mini-btn is-primary">등원 저장</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

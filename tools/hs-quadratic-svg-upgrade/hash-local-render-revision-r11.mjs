@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..','..'); const REPORT=path.join(ROOT,'reports','hs-quadratic-svg-upgrade-20260908'); const REVIEW=JSON.parse(fs.readFileSync(path.join(REPORT,'96_deterministic_local_render_review_r11_revision2.json'),'utf8')); const OUTPUT=path.join(REPORT,'97_deterministic_render_artifact_hashes_r11_revision2.json');
+function fileRow(relative){const absolute=path.join(ROOT,relative);const bytes=fs.readFileSync(absolute);return {path:relative,bytes:bytes.length,sha256:`sha256:${crypto.createHash('sha256').update(bytes).digest('hex')}`};}
+const rows=REVIEW.rows.map(row=>({...row,desktop:fileRow(row.desktopPath),mobile:fileRow(row.mobilePath)})); const output={schemaVersion:'HS_QUADRATIC_DETERMINISTIC_RENDER_ARTIFACT_HASHES_R11_REVISION2',status:'LOCAL_RENDER_ARTIFACT_HASHES_RECORDED_NO_FINAL_PASS',productionAuthorized:false,renderer:REVIEW.renderer,rows,overflowLabelCount:REVIEW.overflowLabelCount,note:'Immutable hashes for the refreshed local r11 desktop/mobile PNG previews after decisive-label updates. Browser provider capture and independent provider render review remain required.'}; fs.writeFileSync(OUTPUT,`${JSON.stringify(output,null,2)}\n`,'utf8');console.log(JSON.stringify({status:output.status,rows:rows.length,overflowLabelCount:output.overflowLabelCount},null,2));

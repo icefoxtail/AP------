@@ -1,0 +1,3 @@
+import importlib.util
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2]; TARGET=Path(__file__).with_name('render-approved-candidate-local-r9.py'); spec=importlib.util.spec_from_file_location('render_full_target_r60',TARGET); module=importlib.util.module_from_spec(spec); assert spec.loader is not None; spec.loader.exec_module(module); module.MANIFEST=ROOT/'reports'/'hs-quadratic-svg-upgrade-20260908'/'762_full_target_visual_manifest_r60.json'; module.OUT_ROOT=ROOT/'reports'/'hs-quadratic-svg-upgrade-20260908'/'render-full-target-r60'; module.OUTPUT=ROOT/'reports'/'hs-quadratic-svg-upgrade-20260908'/'763_full_target_local_render_review_r60.json'; module.main()

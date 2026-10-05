@@ -1,0 +1,950 @@
+{
+  "schemaVersion": "m3-direct-canonical-tagging-source-manifest-v1",
+  "status": "SOURCE_ONLY_FOR_DIRECT_AGENT_TAGGING",
+  "targetGrade": "MIDDLE3",
+  "semester": "2H",
+  "scopeLabel": "2학기 삼각비·원의 성질·통계",
+  "sourceInventory": "archive/_generated/intelligence/phase1/middle3-foundation/M3_FRESH_INVENTORY.json",
+  "sourceInventoryDigest": "63d6961efd47b753b3c6cd8f0552ad31da97e2d0a675729e73cfd98f9af1d8d5",
+  "batchNo": "015",
+  "batchSize": 20,
+  "semanticFieldsExcluded": [
+    "currentStandardUnitKey",
+    "currentStandardUnit",
+    "currentSubUnitKey",
+    "currentSubUnit",
+    "currentConceptClusterKey",
+    "currentProblemTypeKey",
+    "currentTemplateKey",
+    "currentLevel",
+    "currentDifficultyBucket",
+    "reviewStatus",
+    "existingSidecar",
+    "queueId",
+    "queueExpectedTaxonomy"
+  ],
+  "records": [
+    {
+      "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+      "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceJsSha256": "867dacbd9052d5861186da642d549a313748c39a2d671849333ad03f4a691e54",
+      "sourceFingerprint": "27e4ab50d6b0c2e5b56061a83e0de15106dc1519d2782b22e425e6c550de9fab",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "서술형2. 다음 그림에서 두 점 $B$와 $C$는 점 $A$에서 원 $O$에 그은 두 접선의 접점이다. 원 $O$ 위의 점 $D$에 대하여 $\\angle BDC=54^\\circ$일 때, $\\angle BAC$의 크기를 구하는 과정과 답을 쓰시오. (5점)",
+        "choices": [],
+        "answer": "$72^\\circ$",
+        "solution": "[키포인트] 원주각으로 두 접점 사이의 중심각을 구한 뒤 두 접선이 이루는 각을 구한다.\n$\\angle BDC=54^\\circ$는 호 $BC$에 대한 원주각이므로 중심각 $\\angle BOC=108^\\circ$이다.\n접점에서는 반지름과 접선이 수직이므로 $\\angle ABO=\\angle ACO=90^\\circ$이다. 사각형 $ABOC$의 내각의 합을 이용하면\n$\\angle BAC=360^\\circ-90^\\circ-90^\\circ-108^\\circ=72^\\circ$이다.\n따라서 구하는 값은 $72^\\circ$이다.",
+        "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q22.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_신흥중_2학기_기말_중3_기출/q22.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ef19ec2bd9f1276f4f2b77a9a8ae307445f896a0ba9a937c883482e61b3817f5",
+      "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "sourceJsSha256": "867dacbd9052d5861186da642d549a313748c39a2d671849333ad03f4a691e54",
+      "sourceFingerprint": "602695e43137afcf63116d5bd37469ffb6f84db00255a123106abde13d630598",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "서술형3. 평균, 중앙값, 최빈값 중에서 다음 각 자료의 특징을 더 잘 나타낼 수 있는 대푯값을 선택하여 구하고, 대푯값으로 선택한 이유를 작성하시오. (6점)\n(1) 중학생 $10$명이 한 달 동안 읽은 책의 권수 (단위: 권)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>$3$</td><td>$4$</td><td>$7$</td><td>$5$</td><td>$8$</td><td>$30$</td><td>$6$</td><td>$7$</td><td>$3$</td><td>$5$</td></tr></tbody></table></div>\n(2) 학생들이 사용하는 $10$개의 USB 메모리의 용량 (단위: GB)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>$1$</td><td>$1$</td><td>$2$</td><td>$2$</td><td>$4$</td><td>$4$</td><td>$4$</td><td>$4$</td><td>$4$</td><td>$8$</td></tr></tbody></table></div>\n(3) 학생 $10$명의 통학 시간 (단위: 분)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>$13$</td><td>$14$</td><td>$9$</td><td>$11$</td><td>$12$</td><td>$10$</td><td>$17$</td><td>$8$</td><td>$12$</td><td>$14$</td></tr></tbody></table></div>",
+        "choices": [],
+        "answer": "(1) 중앙값 $5.5$권 / (2) 최빈값 $4\\rm\\,GB$ / (3) 평균 $12$분",
+        "solution": "[키포인트] 극단적인 값의 유무와 자료에서 가장 자주 나타나는 값이 의미가 있는지를 보고 대푯값을 선택한다.\n(1) 자료를 정리하면 $3,3,4,5,5,6,7,7,8,30$이다. $30$권은 다른 값들에 비해 매우 크므로 평균보다 극단값의 영향을 적게 받는 중앙값이 적절하다. 중앙값은 $\\dfrac{5+6}{2}=5.5$권이다.\n(2) USB 용량은 실제로 가장 많이 사용하는 용량을 나타내는 것이 적절하다. $4\\rm\\,GB$가 $5$번으로 가장 많이 나타나므로 최빈값 $4\\rm\\,GB$가 적절하다.\n(3) 통학 시간에는 다른 값과 크게 동떨어진 값이 없으므로 모든 자료를 반영하는 평균이 적절하다. 합은 $120$분이므로 평균은 $\\dfrac{120}{10}=12$분이다.\n따라서 구하는 대푯값은 (1) 중앙값 $5.5$권, (2) 최빈값 $4\\rm\\,GB$, (3) 평균 $12$분이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": true,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_b9251ef4bd9d64e448fbef136f9e6aa35273811c06e4f95f0984df88f458311c",
+      "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": "24",
+      "sourceJsSha256": "867dacbd9052d5861186da642d549a313748c39a2d671849333ad03f4a691e54",
+      "sourceFingerprint": "5da884092c9e4eca85d7ec98e9759338b0f3ec031c50ea87fa14a3f33f71bde3",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "서술형4. 다음 그림은 학생 $50$명의 용돈과 저축액을 조사하여 나타낸 것이다.",
+        "choices": [],
+        "answer": "(1) ㄴ, ㄷ / ㄴ. 용돈이 많을수록 대체로 저축도 많이 한다. ㄷ. E는 용돈에 비하여 저축을 적게 하는 편이다. / (2) 예: D는 용돈과 저축액이 모두 많은 편이다.",
+        "solution": "[키포인트] 산점도의 전체적인 방향과 각 점이 전체 경향에서 얼마나 벗어나는지를 함께 본다.\n(1) 점들이 전체적으로 오른쪽 위 방향으로 분포하므로 용돈과 저축액은 양의 상관관계가 있어 ㄱ은 옳다. 따라서 ㄴ의 “용돈이 많을수록 대체로 저축은 적게 한다.”는 잘못되었고, “용돈이 많을수록 대체로 저축도 많이 한다.”로 고쳐야 한다.\n점 E는 비슷한 용돈의 다른 학생들보다 저축액이 낮은 쪽에 있으므로 ㄷ도 잘못되었다. “E는 용돈에 비하여 저축을 적게 하는 편이다.”로 고칠 수 있다.\n(2) 예를 들어 점 D는 오른쪽 위에 있으므로 용돈과 저축액이 모두 많은 편이라고 할 수 있다.\n따라서 (1)의 잘못된 것은 ㄴ, ㄷ이고, (2)는 산점도에서 확인되는 다른 특징을 한 가지 쓰면 된다.",
+        "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q24.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_신흥중_2학기_기말_중3_기출/q24.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2b145ea17d1845b6cc4b6729b16f2417f4c4934657d4faf840968c844bc9c686",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "1af835218a298c2e529e517e79f63756594eb0c9775f82c39495aab163b42bd1",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림과 같이 반지름의 길이가 $6\\rm\\,cm$인 원의 중심 $O$와 현 $\\overline{AB}$ 사이의 거리는? (3점)",
+        "choices": [
+          "$2\\sqrt3\\rm\\,cm$",
+          "$3\\sqrt2\\rm\\,cm$",
+          "$2\\sqrt5\\rm\\,cm$",
+          "$2\\sqrt6\\rm\\,cm$",
+          "$5\\rm\\,cm$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n현 $AB$의 길이가 $8\\rm\\,cm$이므로 현의 절반은 $4\\rm\\,cm$이다. 중심 $O$에서 현 $AB$에 내린 수선의 길이를 $d$라 하면 직각삼각형에서\n$d^2+4^2=6^2$이다.\n따라서 $d^2=20$이므로 $d=2\\sqrt5\\rm\\,cm$이다.\n따라서 정답은 ③이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q1.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q1.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3d81a351ac3e9b43bbdf93a491c893e373882bf821af0ac92cd4567e4523975c",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "eaaf83e8f24dadbc339f07075af5eb30e8228e6dafed918ee7fcd6b006cacbe0",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 $\\overline{PA}$, $\\overline{PB}$는 원 $O$의 접선이고, $\\overline{OA}=6\\rm\\,cm$, $\\overline{OP}=11\\rm\\,cm$일 때, $\\overline{PB}$의 길이는? (3점)",
+        "choices": [
+          "$4\\sqrt5\\rm\\,cm$",
+          "$\\sqrt{83}\\rm\\,cm$",
+          "$2\\sqrt{21}\\rm\\,cm$",
+          "$\\sqrt{85}\\rm\\,cm$",
+          "$\\sqrt{87}\\rm\\,cm$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 접점에서 그은 반지름은 접선에 수직이다.\n$OB\\perp PB$이므로 $\\triangle OPB$는 직각삼각형이다. 따라서\n$PB^2=OP^2-OB^2=11^2-6^2=121-36=85$이다.\n그러므로 $PB=\\sqrt{85}\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q2.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q2.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1b199abf421337dda0c41d7d3a522cf58f4d9abc63be744893b82e300570efbd",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "11e0e1f7a73aa536cbf371e6ca856b0fba1719301c5c4efa1759716d12eba956",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 $\\overline{AD}$, $\\overline{BC}$, $\\overline{CD}$는 반지름의 길이가 $3\\rm\\,cm$인 반원 $O$에 접하고 세 점 $A,B,E$는 접점이다. $\\overline{CD}=9\\rm\\,cm$일 때, $\\square ABCD$의 둘레의 길이는? (4점)",
+        "choices": [
+          "$24\\rm\\,cm$",
+          "$25\\rm\\,cm$",
+          "$26\\rm\\,cm$",
+          "$27\\rm\\,cm$",
+          "$28\\rm\\,cm$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 서로 같다.\n점 $D$에서 그은 접선이므로 $DA=DE$, 점 $C$에서 그은 접선이므로 $CB=CE$이다. 따라서\n$AD+BC=DE+CE=DC=9\\rm\\,cm$이다.\n또 $AB$는 반원의 지름이므로 $AB=6\\rm\\,cm$이다.\n따라서 사각형 $ABCD$의 둘레는 $AB+AD+DC+CB=6+9+9=24\\rm\\,cm$이다.\n따라서 정답은 ①이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q3.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q3.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1df2366d1de336f1eafb2c8eaf9d15ae263e4ddf68779694a8f3b5ec675c00b3",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "69103483bcb630c38a688ff2593183f06e3e12b6e9f1c9eaf76d1ebb397515aa",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 $\\square ABCD$는 원 $O$에 내접하고 $\\angle P=35^\\circ$, $\\angle ABC=95^\\circ$일 때, $\\angle PCD$의 크기는? (4점)",
+        "choices": [
+          "$55^\\circ$",
+          "$60^\\circ$",
+          "$65^\\circ$",
+          "$70^\\circ$",
+          "$75^\\circ$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 두 직선의 일직선 관계와 원에 내접하는 사각형의 대각의 합을 이용한다.\n$P,B,C$가 한 직선 위에 있으므로 $\\angle PBA=180^\\circ-95^\\circ=85^\\circ$이다.\n$\\triangle PAB$에서 $\\angle PAB=180^\\circ-35^\\circ-85^\\circ=60^\\circ$이다.\n또 $P,A,D$가 한 직선 위에 있으므로 $\\angle DAB=180^\\circ-60^\\circ=120^\\circ$이다.\n원에 내접하는 사각형에서 $\\angle DAB+\\angle BCD=180^\\circ$이므로 $\\angle BCD=60^\\circ$이다. $C,P,B$는 같은 반직선 위에 있으므로 $\\angle PCD=60^\\circ$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q4.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q4.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6a1361f9eb0f176534755fa7c2f70bfa204c0d368d5c3f2ec323a4e4a98c5782",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "59fda996721fb008dfc0caa01a3a4a4202571474a39e858d3cb74c9f29ed57a0",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 $\\wideparen{AB}$는 원의 일부분이다. $\\overline{AD}=\\overline{BD}$, $\\overline{AB}\\perp\\overline{CD}$일 때, 이 원의 반지름의 길이는? (5점)",
+        "choices": [
+          "$6\\rm\\,cm$",
+          "$12\\rm\\,cm$",
+          "$13\\rm\\,cm$",
+          "$25\\rm\\,cm$",
+          "$26\\rm\\,cm$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 현의 중점을 지나는 수선은 원의 중심을 지나므로, 현의 절반과 화살높이로 반지름을 구할 수 있다.\n그림에서 $AD=BD=5\\rm\\,cm$, $CD=1\\rm\\,cm$이다. 원의 반지름을 $r\\rm\\,cm$라 하면 중심은 $CD$가 놓인 수선 위에 있고, 중심에서 현 $AB$까지의 거리는 $r-1$이다.\n직각삼각형에서\n$r^2=(r-1)^2+5^2$이다.\n정리하면 $r^2=r^2-2r+1+25$이므로 $2r=26$, 따라서 $r=13$이다.\n따라서 정답은 ③이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q5.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q5.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9d2ea50be186defdd6e2c422fe21d6a6636e45dcd161ac34f73d64f834cf02f1",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "e60d886026a1249ae71434aa2e5fa02fb4d4e2a28c5561322ea93d77f7b2244b",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림과 같이 $\\triangle ABC$의 내접원은 $\\triangle DEF$의 외접원이다. $\\angle A=60^\\circ$, $\\angle B=70^\\circ$일 때, $\\angle x$의 크기는? (4점)",
+        "choices": [
+          "$65^\\circ$",
+          "$67^\\circ$",
+          "$70^\\circ$",
+          "$75^\\circ$",
+          "$80^\\circ$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 접선과 현이 이루는 각은 그 현이 만드는 원주각과 같다.\n$\\angle C=180^\\circ-60^\\circ-70^\\circ=50^\\circ$이다. 반지름 $OE$, $OF$는 각각 변 $BC$, $AC$에 수직이므로\n$\\angle EOF=180^\\circ-\\angle C=130^\\circ$이다.\n따라서 호 $EF$에 대한 원주각 $\\angle EDF=\\dfrac{130^\\circ}{2}=65^\\circ$이다.\n점 $E$에서의 접선 $EC$와 현 $EF$가 이루는 각 $x$는 접선과 현의 정리에 의해 $\\angle EDF$와 같으므로 $x=65^\\circ$이다.\n따라서 정답은 ①이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q6.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q6.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_e726aebb44233c3f7ffdbbac637aad529999d4b77c215762a12672132d3f34e7",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "bcfa305f29fe191144c8be9fa5cf7ab7d53904618ac56584901cf7e1f51c7800",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 $\\overrightarrow{PA}$, $\\overrightarrow{PB}$는 원 $O$의 접선이고, 두 점 $A,B$는 접점이다. $\\overline{AC}$는 원 $O$의 지름이고 $\\angle BAC=32^\\circ$일 때, $\\angle APB$의 크기는? (4점)",
+        "choices": [
+          "$54^\\circ$",
+          "$56^\\circ$",
+          "$58^\\circ$",
+          "$62^\\circ$",
+          "$64^\\circ$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 지름에 대한 원주각과 접선과 현이 이루는 각을 함께 이용한다.\n$AC$가 지름이므로 $\\angle ABC=90^\\circ$이다. 따라서 $\\triangle ABC$에서\n$\\angle ACB=180^\\circ-90^\\circ-32^\\circ=58^\\circ$이다.\n접선과 현의 정리에 의해 $\\angle PAB=\\angle ACB=58^\\circ$이고, 두 접선의 길이가 같아 $PA=PB$이므로 $\\angle PBA=58^\\circ$이다.\n따라서 $\\angle APB=180^\\circ-58^\\circ-58^\\circ=64^\\circ$이다.\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q7.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q7.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5dcb8542cf6691de45932898df65d47b17d7dfc5e47676fda9e0086721caa47b",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "000544f1b5884f565d7ea7f088ec91a3dcb8b7d46e3294008d2f9ac3b8ec3f23",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 $\\overline{PT}$는 원 $O$의 접선이고 점 $T$는 접점이다. $\\angle TPO=30^\\circ$, $\\overline{PA}=6\\rm\\,cm$일 때, $\\overline{PT}$의 길이는? (4점)",
+        "choices": [
+          "$5\\sqrt3\\rm\\,cm$",
+          "$6\\sqrt3\\rm\\,cm$",
+          "$7\\sqrt3\\rm\\,cm$",
+          "$8\\sqrt3\\rm\\,cm$",
+          "$9\\sqrt3\\rm\\,cm$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 접점의 반지름과 접선은 수직이므로 $30^\\circ$-$60^\\circ$-$90^\\circ$ 직각삼각형을 만든다.\n원의 반지름을 $r\\rm\\,cm$라 하면 그림에서 $P,A,O$가 한 직선 위에 있으므로 $PO=r+6$이다.\n$OT\\perp PT$이고 $\\angle TPO=30^\\circ$이므로 $30^\\circ$-$60^\\circ$-$90^\\circ$ 삼각형에서 $PO=2OT=2r$이다.\n따라서 $r+6=2r$에서 $r=6$이다. 그러므로 $PT=r\\sqrt3=6\\sqrt3\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q8.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q8.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8fdc1f3cc10f5adf05b8b9c59eed329f50450d5cff598e604c3e68f78ba545f1",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "093c357c2a6d25d6ff69096cfec08580f5ba8e1dd885a71cc91cd648c37e9910",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 원 $I$는 $\\angle C=90^\\circ$인 직각삼각형 $ABC$의 내접원이고, 세 점 $D,E,F$는 접점이다. $\\overline{AB}=15\\rm\\,cm$, $\\overline{AC}=9\\rm\\,cm$일 때, 원 $I$의 넓이는? (4점)",
+        "choices": [
+          "$6\\pi\\rm\\,cm^2$",
+          "$7\\pi\\rm\\,cm^2$",
+          "$8\\pi\\rm\\,cm^2$",
+          "$9\\pi\\rm\\,cm^2$",
+          "$10\\pi\\rm\\,cm^2$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 직각삼각형의 세 변을 구한 뒤 내접원의 반지름을 이용한다.\n$AB=15$, $AC=9$이고 $\\angle C=90^\\circ$이므로 피타고라스 정리에 의해\n$BC=\\sqrt{15^2-9^2}=\\sqrt{144}=12\\rm\\,cm$이다.\n직각삼각형의 내접원 반지름은 $r=\\dfrac{9+12-15}{2}=3\\rm\\,cm$이다.\n따라서 원 $I$의 넓이는 $\\pi r^2=9\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ④이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q9.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q9.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7fd1d0df93f12b2bf0cba4d8acce363ee93d04accde5c02af4a2a688531fc5a8",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "8f40bd8f5fc248e2d9db3fbd187a418bc9f44a3acd1029a56e3e6d01e95ea4ad",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\wideparen{AC}=\\wideparen{CD}=\\wideparen{DE}=\\wideparen{EB}$일 때, $\\angle x+\\angle y$의 크기는? (4점)",
+        "choices": [
+          "$50^\\circ$",
+          "$45^\\circ$",
+          "$40^\\circ$",
+          "$35^\\circ$",
+          "$30^\\circ$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 지름이 만드는 반원은 $180^\\circ$이고, 원주각은 대응하는 호의 크기의 절반이다.\n아래쪽 반원에서 $\\wideparen{AC}=\\wideparen{CD}=\\wideparen{DE}=\\wideparen{EB}$이므로 각 호의 크기는 $180^\\circ\\div4=45^\\circ$이다.\n$\\angle x$는 호 $DE$에 대한 원주각이므로 $x=\\dfrac{45^\\circ}{2}=22.5^\\circ$이고, $\\angle y$는 호 $CD$에 대한 원주각이므로 $y=22.5^\\circ$이다.\n따라서 $x+y=45^\\circ$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q10.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q10.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_a491e76571259129b6269808997ea780f8329cd28b9f1f8b1051c0f3b1b570a2",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "088a609fadd05c6d134a9e2fb6d5834aa7233d639e5b64e5a1f795780a3ac35d",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 그림에서 원 $O$는 $\\triangle ABC$의 외접원이고, $\\overline{AQ}$는 원 $O$의 지름이다. $\\overline{AH}\\perp\\overline{BC}$, $\\overline{AB}=16$, $\\overline{AC}=10$, $\\overline{CH}=5$일 때, 원 $O$의 반지름의 길이는? (5점)",
+        "choices": [
+          "$4\\sqrt3$",
+          "$\\dfrac{13\\sqrt3}{3}$",
+          "$\\dfrac{14\\sqrt3}{3}$",
+          "$5\\sqrt3$",
+          "$\\dfrac{16\\sqrt3}{3}$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 지름에 대한 원주각과 닮음을 이용해 지름 $AQ$를 구한다.\n$AH\\perp BC$이고 $AC=10$, $CH=5$이므로 직각삼각형 $AHC$에서\n$AH=\\sqrt{10^2-5^2}=5\\sqrt3$이다.\n$AQ$가 원의 지름이므로 $\\angle ACQ=90^\\circ$이다. 또 $AH\\perp BC$이므로 $\\angle AHB=90^\\circ$이고, $H$가 $BC$ 위에 있으므로 $\\angle ABH=\\angle ABC$이다. 한편 같은 호 $AC$에 대한 원주각이므로 $\\angle ABC=\\angle AQC$이다.\n따라서 $\\triangle ABH\\sim\\triangle AQC$이고, 대응변의 비에서\n$\\dfrac{AB}{AQ}=\\dfrac{AH}{AC}$이다. 그러므로\n$AQ=\\dfrac{AB\\cdot AC}{AH}=\\dfrac{16\\cdot10}{5\\sqrt3}=\\dfrac{32\\sqrt3}{3}$이다.\n원의 반지름은 지름의 절반이므로 $R=\\dfrac{AQ}{2}=\\dfrac{16\\sqrt3}{3}$이다.\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q11.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q11.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4200efa4630909faeda7350f7983fbc00590f0c0b91c0b49f78595e89edf3126",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "17e8bc0c6d6552273134a95d0c00cd1f0ab5ca336841fce9ecdd115ecd6d4d29",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 자료 중 중앙값이 평균보다 자료의 중심적인 경향을 더 잘 나타내는 것은? (3점)",
+        "choices": [
+          "$1,5,3,6,4,8$",
+          "$6,8,6,8,6,8$",
+          "$2,4,4,4,40,1,1$",
+          "$0.7,0.5,0.8,0.3,0.7,0.2$",
+          "$-0.9,-1,0.3,0.6,-0.5,0.2,-0.8$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 극단적으로 크거나 작은 값이 있으면 평균이 크게 영향을 받으므로 중앙값이 자료의 중심을 더 잘 나타낼 수 있다.\n③의 자료에는 다른 값들에 비해 매우 큰 값 $40$이 있다. 이 값 때문에 평균은 크게 올라가지만, 중앙값은 가운데 자료의 위치를 기준으로 하므로 영향이 작다.\n따라서 중앙값이 평균보다 중심적인 경향을 더 잘 나타내는 자료는 ③이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        },
+        "sharedMaterialDependency": {
+          "present": true,
+          "explicitFields": [],
+          "contentCue": true
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_e66df3f9df67900f96ec72d10205d1c6ac8403993d3e4e3b6e2391ad116d5bc7",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "739850c414a3e7c9ca0ba6bbbbce3bfb0dfd44febc6260176c10a508e79c0585",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 표는 진희네 반 학생 $50$명의 일주일 동안의 TV 시청 시간을 조사하여 나타낸 것이다. TV 시청 시간의 중앙값을 $a$시간, 최빈값을 $b$시간이라 할 때, $a+b$의 값은? (4점)",
+        "choices": [
+          "$15.1$",
+          "$15.2$",
+          "$15.3$",
+          "$15.4$",
+          "$15.5$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 자료의 개수가 짝수이면 중앙의 두 값의 평균이 중앙값이고, 도수가 가장 큰 값이 최빈값이다.\n누적 학생 수는 $3,13,25,42,50$이다. 따라서 $25$번째 자료는 $7$시간, $26$번째 자료는 $8$시간이므로\n$a=\\dfrac{7+8}{2}=7.5$이다.\n학생 수가 가장 많은 시청 시간은 $8$시간이므로 $b=8$이다.\n따라서 $a+b=7.5+8=15.5$이다.\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q13.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q13.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f50a5fd904ccd1a3ba4ed6d5b4caf469d5ef1064a10f1bcd07f03b9e98ceaf91",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "17ed40dada9e7e1163625ef4687bb29fea5f59bb103c1192fb9d3cae31ff7747",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음은 독서 동호회 회원 $4$명의 나이를 변량으로 한 자료에 대한 설명이다. 회원들의 나이의 중앙값은? (4점)",
+        "choices": [
+          "$24$살",
+          "$24.5$살",
+          "$26$살",
+          "$26.5$살",
+          "$27$살"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 평균으로 전체 합을 구한 뒤 최빈값 조건을 이용해 네 나이를 확정한다.\n회원 $4$명의 평균이 $25$살이므로 나이의 합은 $100$이다. 최빈값이 $27$살이고 $2$명이 있으므로 두 명의 나이는 $27,27$이고, 가장 어린 회원은 $20$살이다.\n나머지 한 명의 나이를 $x$라 하면 $20+27+27+x=100$이므로 $x=26$이다.\n따라서 정렬한 나이는 $20,26,27,27$이고 중앙값은 $\\dfrac{26+27}{2}=26.5$살이다.\n따라서 정답은 ④이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q14.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q14.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9d0795b4b39b5cbd3bb0305b9704f978c1d02c7b118c57ba567870ac94312fc5",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "a3e5a4d830b41b24af72e7619a1ca39cf85dcf78c0f2511917e335a96351a9ac",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 자료에 대한 설명 중 옳지 않은 것은? (5점)",
+        "choices": [
+          "평균은 $8$이다.",
+          "평균보다 큰 값의 변량은 $4$개이다.",
+          "각 변량의 편차의 제곱의 합은 $42$이다.",
+          "분산은 $\\dfrac{21}{4}$이다.",
+          "표준편차는 $\\dfrac{\\sqrt{21}}2$이다."
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 평균을 먼저 구한 뒤 각 선택지를 차례로 검산한다.\n자료의 합은 $9+6+10+8+12+7+8+4=64$이므로 평균은 $64\\div8=8$이다. 평균보다 큰 값은 $9,10,12$의 $3$개이므로 ②의 설명은 옳지 않다.\n편차는 $1,-2,2,0,4,-1,0,-4$이고 편차의 제곱의 합은 $1+4+4+0+16+1+0+16=42$이다. 따라서 분산은 $\\dfrac{42}{8}=\\dfrac{21}{4}$, 표준편차는 $\\sqrt{\\dfrac{21}{4}}=\\dfrac{\\sqrt{21}}2$이므로 나머지 설명은 모두 옳다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q15.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q15.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": true,
+          "explicitFields": [],
+          "contentCue": true
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_07791f58bce33236f7b00f9d3e81cfd5f502ec14c65800c43b062c581c1711e8",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "b74733f36eb0e81ea7252835c359c33c6832670fcb31d80c7a47136307cd1c73",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음은 어느 병원에서 환자 $5$명의 접수 후 대기 시간에 대한 편차를 조사하여 나타낸 것이다. 대기 시간의 평균이 $15$분일 때, 환자 B의 대기 시간을 구하면? (4점)",
+        "choices": [
+          "$9$분",
+          "$10$분",
+          "$11$분",
+          "$12$분",
+          "$13$분"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 편차의 합은 항상 $0$이다.\n환자 B의 편차를 $x$라 하면\n$9+x+3-7-2=0$이다.\n따라서 $x=-3$이다. 편차는 각 변량에서 평균을 뺀 값이므로 환자 B의 대기 시간은 $15+(-3)=12$분이다.\n따라서 정답은 ④이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q16.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q16.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9d24dcd6a040a4bbc8c8e9fe04d261fd599d4f95d7d22e2f44d37176581ded46",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceJsSha256": "e3195875079ab8feeaf4f162fa7e19c201d0d133d337d5c9f17e03d30bcd4ac0",
+      "sourceFingerprint": "285dbe9dafef15723e47a9b05eb99f859ad59eb7f37cf2d915cb5f3ba1c4491b",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음 두 조건을 모두 만족시키는 $a+b$의 값은? (4점)",
+        "choices": [
+          "$19$",
+          "$20$",
+          "$21$",
+          "$22$",
+          "$23$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 첫 번째 중앙값 조건으로 $a$의 범위를 정하고, 두 번째 중앙값 조건에서 $b$를 먼저 확정한다.\n$5,8,13,15,a$의 중앙값이 $8$이므로 $a\\le8$이다.\n두 번째 자료 $2,15,a,b,14$에서 $a\\le8$이고 중앙값이 $12$이므로 가운데 값이 되려면 $b=12$여야 한다.\n평균이 $b-2=10$이므로 다섯 자료의 합은 $50$이다. 따라서\n$2+15+a+12+14=50$에서 $a=7$이다.\n그러므로 $a+b=7+12=19$이다.\n따라서 정답은 ①이다.",
+        "image": "assets/images/24_연향중_2학기_기말_중3_기출/q17.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/24_연향중_2학기_기말_중3_기출/q17.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    }
+  ]
+}

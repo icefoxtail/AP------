@@ -1,0 +1,43 @@
+{
+  "status": "AMENDED_SOURCE_TARGETED_REVIEW_COMPLETE_WITH_ONE_INTEGRATION_CONFLICT",
+  "row": 5,
+  "questionUid": "qid_v1_3959b557db1d5f1b5525ca32676b73e2959f9009158e680d2ebfd8e93093b5ef",
+  "sourceFingerprint": "dd8ec4688b1b3141ffde659c2696f24b23492708283d3ae9163727dc70835e96",
+  "sourceRepairLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_SOURCE_ORIGINAL_LUNA_D4_PILOT_ROW05_1.json",
+  "originalPilotInputAndLedgersPreserved": true,
+  "A": {
+    "L1": "H22-C-06",
+    "L2": "H22-C-06-HIGHER_EQUATION",
+    "L3Kind": "NEW_L3_CANDIDATE",
+    "L4Kind": "NEW_L4_CANDIDATE",
+    "CrossConcepts": [
+      "CC_DISCRIMINANT",
+      "CC_ROOTS_COEFFICIENTS"
+    ],
+    "Conditions": [],
+    "IntegrationPattern": "CASE_BRANCH",
+    "Status": "REVIEWED"
+  },
+  "B": {
+    "L1": "H22-C-06",
+    "L2": "H22-C-06-HIGHER_EQUATION",
+    "L3Kind": "NEW_L3_CANDIDATE",
+    "L4Kind": "NEW_L4_CANDIDATE",
+    "CrossConcepts": [
+      "CC_DISCRIMINANT",
+      "CC_ROOTS_COEFFICIENTS"
+    ],
+    "Conditions": [],
+    "IntegrationPattern": "SEQUENTIAL",
+    "Status": "REVIEWED"
+  },
+  "fieldDifferences": [
+    "IntegrationPattern"
+  ],
+  "solIntegrationAdjudication": {
+    "key": "CASE_BRANCH",
+    "reason": "The shared quadratic substitution produces A=-2 and A=-5 branches, and the real-root discriminant test eliminates one branch; canonical integration rule defines CASE_BRANCH when conditional branches are required. Sequential operations occur inside that branch structure."
+  },
+  "answerMath": "A=x²−4x. (A+2)(A+5)=0. A=-5 gives no real x; A=-2 gives roots 2±√2 with product2, answer②.",
+  "hiddenMatchFeedbackToWorkers": false
+}

@@ -1,0 +1,37 @@
+{
+  "project": "H2 MathII Continuity Foundation",
+  "stage": 1,
+  "status": "DENOMINATOR_FROZEN",
+  "branch": "codex/metadata-foundation-h2-math2-continuity",
+  "baselineCommit": "8269189d9b121459da62278e5c506d874a74562e",
+  "scopeRoot": "archive/exams/original/high/h2",
+  "productionMathIIFiles": 28,
+  "productionMathIIQuestions": 631,
+  "forwardMetadataCandidates": 82,
+  "reverseContentUnionCandidates": 98,
+  "reverseOnlyReviewed": 16,
+  "reverseOnlyRecovered": 3,
+  "reverseOnlyExcluded": 13,
+  "finalContinuityQuestions": 85,
+  "recovered": [
+    {"path":"archive/exams/original/high/h2/2mid/23_순천여고_2학기_중간_고2_수학II.js","id":18,"reason":"piecewise g(x) is required to be continuous for all real x; continuity matching determines k"},
+    {"path":"archive/exams/original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js","id":22,"reason":"explicitly asks continuity at x=2 using the definition of continuity"},
+    {"path":"archive/exams/original/high/h2/2mid/23_팔마고_2학기_중간_고2_수학II.js","id":16,"reason":"global continuity of piecewise g(x) is a decisive condition on the quadratic branch"}
+  ],
+  "excludedReverseOnly": [
+    {"file":"22_순천고_2학기_중간_고2_수학II.js","id":7,"reason":"primary task is a mixed function-limit truth-value item; continuity appears only in some statements"},
+    {"file":"23_매산여고_2학기_중간_고2_수학II.js","id":23,"reason":"primary task is derivative/application and extrema of a moving interval maximum"},
+    {"file":"23_제일고_2학기_중간_고2_수학II.js","id":17,"reason":"mean-value/derivative bound application; continuity is theorem hypothesis"},
+    {"file":"23_제일고_2학기_중간_고2_수학II.js","id":19,"reason":"primary task is differentiability-count function; discontinuity is a property of derived g"},
+    {"file":"23_복성고_2학기_기말_고2_수학II.js","id":20,"reason":"primary task is recovering f from f' and evaluating by integration"},
+    {"file":"23_순천여고_2학기_기말_고2_수학II.js","id":5,"reason":"definite-integral properties; continuity is a standing hypothesis"},
+    {"file":"23_제일고_2학기_기말_고2_수학II.js","id":8,"reason":"definite-integral properties; continuity is a standing hypothesis"},
+    {"file":"23_제일고_2학기_기말_고2_수학II.js","id":18,"reason":"area/integration application; continuity supplies a parameter relation"},
+    {"file":"23_팔마고_2학기_기말_고2_수학II.js","id":13,"reason":"definite-integral computation; continuity is a standing hypothesis"},
+    {"file":"24_매산여고_2학기_기말_고2_수학II.js","id":10,"reason":"derivative/integration reconstruction; continuity belongs to f' condition"},
+    {"file":"24_매산여고_2학기_기말_고2_수학II.js","id":14,"reason":"integral equation; continuity is a standing hypothesis"},
+    {"file":"25_강남여고_2학기_기말_고2_수학II.js","id":6,"reason":"mean value theorem application; continuity is theorem hypothesis"},
+    {"file":"25_제일고_2학기_기말_고2_수학II.js","id":12,"reason":"periodic definite-integral computation; continuity is a standing hypothesis"}
+  ],
+  "stage1Rule": "No L3/L4/Foundation design performed in stage 1."
+}

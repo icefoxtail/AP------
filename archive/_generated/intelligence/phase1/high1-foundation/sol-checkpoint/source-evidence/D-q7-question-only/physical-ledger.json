@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "task": "D question-only source audit, H1 queueIndex 7",
+  "status": "SOURCE_MATCH",
+  "disposition": "NO_JS_CHANGE_SOURCE_HAS_NO_MONIC_OR_POSITIVE_LEADING_COEFFICIENT_CONDITION",
+  "queueIndex": 7,
+  "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+  "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19",
+  "targetJs": "archive/exams/original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js",
+  "sourceScope": "Original question PDF page 5/7 only: polynomial, f(x) square wording, coefficient/normalization conditions, target, and choices status. No official answer or solution page inspected or used.",
+  "queueIdentityValidation": {
+    "status": "PASS",
+    "queueIndex": 7,
+    "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+    "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19"
+  },
+  "source": {
+    "pdf": {
+      "path": "D:\\기출\\1학기중간\\고1\\23 한영고+\\수학 상 (23 한영고).pdf",
+      "page": 5,
+      "printedPage": "5/7",
+      "sha256": "5F0B691BDF26419052E9542C1C576FB4D39A5AB9A9D2CB34E39834978BADBF85"
+    }
+  },
+  "itemBefore": {
+    "id": 19,
+    "questionType": "서술형",
+    "content": "[서술형 1] 다항식 $(x^2-3x+2)(x^2-7x+12)+k$가 어떤 이차식 $f(x)$의 완전제곱식으로 인수분해 될 때, 상수 $k$와 $f(5)$의 합 $k+f(5)$를 구하시오. [7점]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "itemAfter": {
+    "id": 19,
+    "questionType": "서술형",
+    "content": "[서술형 1] 다항식 $(x^2-3x+2)(x^2-7x+12)+k$가 어떤 이차식 $f(x)$의 완전제곱식으로 인수분해 될 때, 상수 $k$와 $f(5)$의 합 $k+f(5)$를 구하시오. [7점]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "sourceConfirmed": {
+    "stem": "다항식 (x²−3x+2)(x²−7x+12)+k가 x에 대한 이차식 f(x)의 제곱으로 인수분해 될 때, 상수 k와 f(5)의 합을 구하시오.",
+    "target": "k+f(5)",
+    "score": "7점",
+    "choices": "None; written-response item.",
+    "fDegree": "x에 대한 이차식 f(x)",
+    "normalizationCondition": "No monic, leading coefficient 1, or positive-leading-coefficient/sign-normalization condition is printed."
+  },
+  "fieldDispositions": {
+    "content": "SOURCE_MATCH",
+    "fDegree": "SOURCE_MATCH",
+    "monicOrSignNormalization": "SOURCE_MATCH_NONE_IN_SOURCE_OR_JS",
+    "requestedTarget": "SOURCE_MATCH",
+    "choices": "SOURCE_MATCH_NONE",
+    "answer": "NOT_INSPECTED_OR_CHANGED",
+    "solution": "NOT_INSPECTED_OR_CHANGED",
+    "metadata": "NOT_INSPECTED_OR_CHANGED"
+  },
+  "validation": {
+    "queueParity": {
+      "status": "PASS",
+      "queueIndex": 7,
+      "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19"
+    },
+    "currentQuestionContentHash": "475c4fd131892c8d0cdd23f8e018c8e2e1ce940a21e58b8f9840f81ca1b223e0",
+    "syntax": {
+      "command": "node --check archive/exams/original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js",
+      "status": "PASS",
+      "exitCode": 0
+    },
+    "itemSchema": {
+      "status": "PASS",
+      "checks": [
+        "questionBank array and unique IDs",
+        "q19 is written response with no choices",
+        "factor expression and +k match source",
+        "source only defines f as an x-quadratic squared; no leading-sign normalization clause",
+        "target k+f(5) and 7-point score match source"
+      ]
+    },
+    "render": {
+      "status": "NOT_TESTED_NO_EDIT"
+    }
+  },
+  "contentSha256": "475c4fd131892c8d0cdd23f8e018c8e2e1ce940a21e58b8f9840f81ca1b223e0",
+  "evidenceFiles": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q7-question-only/source-question-page-5.png",
+      "role": "Original question PDF page 5/7 full-page render",
+      "sha256": "291B9279E5BE813A7BF35E0ADFB5391B5EBAF2F50C25A014B2B1517CDEB8E3BD"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q7-question-only/source-q19-detail.png",
+      "role": "q19 source crop with polynomial, f(x) square wording, target, and score",
+      "sha256": "34872A68E03340E21C3D60E0574D41BA4E6B90C15E8BC6D2611FF231AE02E4C9"
+    }
+  ],
+  "officialAnswerPageInspected": false,
+  "officialSolutionPageInspected": false,
+  "officialAnswerOrSolutionUsed": false,
+  "model": {
+    "identity": "gpt-6-luna",
+    "reasoningEffort": "xhigh"
+  }
+}

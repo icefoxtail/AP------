@@ -1,0 +1,58 @@
+=== git fetch origin ===
+
+=== git status --short ===
+
+=== git branch --show-current ===
+main
+
+=== git rev-parse HEAD ===
+4c44bf10bdf4073b349cf1ba4f5898b118dcb3cd
+
+=== final required precommit checks ===
+COMMAND: git status --short --untracked-files=all
+RESULT: two locked production JS files and three locked index/report files modified; final-pinpoint evidence files untracked under the allowed evidence root; the following unrelated files were also present:
+  archive/tools/function-family/build-final-graph-review-manifest.mjs
+  docs/plans/JS아카이브_전수품질업그레이드_다중독립검수_최종봉인_공통프로토콜_v1.2.10_정본.md
+  docs/reports/function-family-20260904/final-seal/function_family_exception_closure_v1.json
+  docs/reports/function-family-20260904/final-seal/function_family_exception_closure_v1.md
+  docs/reports/function-family-20260904/final-seal/function_family_graph_review_manifest_v1.json
+  docs/reports/function-family-20260904/final-seal/function_family_graph_review_manifest_v1.md
+  docs/reports/function-family-20260904/final-seal/graph-review-harness.html
+
+COMMAND: git diff --name-only
+RESULT:
+archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js
+archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js
+archive/question-index-audit.md
+archive/question-index-report.md
+archive/question-index.js
+
+COMMAND: git diff --stat
+RESULT:
+5 files changed, 12 insertions(+), 12 deletions(-)
+
+COMMAND: git diff
+RESULT: executed; the complete command output was inspected in the terminal. The tracked diff contains only the two locked JS files and the three locked index/report files listed above. No commit was run because unauthorizedChangedFiles=7.
+
+UNAUTHORIZED_SCOPE_CHANGE = YES
+UNAUTHORIZED_CHANGED_FILE_COUNT = 7
+COMMIT_ALLOWED = false
+
+=== final git refs after last git fetch origin ===
+COMMAND: git rev-parse HEAD
+e2354149a34812cd3c40f0350567a62a5d95d216
+COMMAND: git rev-parse main
+e2354149a34812cd3c40f0350567a62a5d95d216
+COMMAND: git rev-parse origin/main
+64ad6d9e6bbe787bb6c18742277f31bc299d9cb3
+COMMAND: git status --short
+RESULT: worktree not clean; locked proposition files/index reports plus unrelated function-family files and final-pinpoint evidence files are present.
+HEAD == main == origin/main = false
+WORKTREE_CLEAN = false
+COMMIT/PUSH/MERGE = NOT_RUN (scope and ref gates blocked)
+
+=== git rev-parse main ===
+4c44bf10bdf4073b349cf1ba4f5898b118dcb3cd
+
+=== git rev-parse origin/main ===
+4c44bf10bdf4073b349cf1ba4f5898b118dcb3cd

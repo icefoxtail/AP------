@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "middle-geometry-checkpoints-v2",
+  "activeCheckpointId": "MG_PRODUCTION_PROMOTED_MAIN_20260923",
+  "checkpoints": [
+    {
+      "checkpointId": "L4_CROSSCONCEPT_SEMANTIC_FREEZE",
+      "schemaVersion": "middle-geometry-physical-inventory-v1",
+      "BASE_MAIN_SHA": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+      "branch": "codex/meta-foundation/middle-geometry",
+      "branchHead": "2b952bc69d3249f9f819fc9c9a31052f0a50405e",
+      "denominator": 928,
+      "mapped": 921,
+      "routeOut": 7,
+      "currentStage": "L4_CROSSCONCEPT_SEMANTIC_FREEZE",
+      "completedUidCount": 921,
+      "completedUidSetDigest": "347c180c79c1766105ddee50e8c405f35dec2d434fb083effa0381876d0c95e1",
+      "artifactPaths": [
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_template_semantic_registry_candidate.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/crossconcept_candidate_proposals.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/L4_CROSSCONCEPT_SEMANTIC_SUMMARY.md"
+      ],
+      "artifactSha256": {
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json": "e56482d0353ae6bd3ed217f38fa2384c1cf5e9ce60ffac59a57acd912812fdd3",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_template_semantic_registry_candidate.json": "0c00cfa0e064e2e3f9de4b3c7477fc16abc6ddd63eba5445daaf5f49028a595f",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/crossconcept_candidate_proposals.json": "c8ba557f7df54e45b88ad09b8d6a33ff40824d64e0c2b59df097ff05a4a8886b",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/L4_CROSSCONCEPT_SEMANTIC_SUMMARY.md": "e35b0883b55ab3639fe808e7ef48900d47abd5d03b971631e934acf2048fb46d"
+      },
+      "blockingIssues": [],
+      "nextStartPoint": "L4 + CrossConcept semantic freeze handoff; Condition/IntegrationPattern/difficulty not started",
+      "active": false,
+      "legacy": true
+    },
+    {
+      "checkpointId": "GPT143_LUNA90_APPLICATION_COMPLETE_20260923",
+      "active": false,
+      "branchRef": "codex/meta-foundation/middle-geometry",
+      "semanticHead": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
+      "applicationCommit": "21302ea89bcef4cd24ead524ed9fce84a085c94f",
+      "parityRepairCommit": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
+      "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+      "denominator": 928,
+      "mappedFinal": 920,
+      "routeOut": 8,
+      "explicitL4Hold": 20,
+      "inputCoverage": {
+        "frozen143": 143,
+        "new90": 90,
+        "total": 233
+      },
+      "applied": {
+        "l3ChangedUidCount": 67,
+        "l4CrossConceptAdjudicationRows": 230,
+        "l3L4ParityRepairCount": 6,
+        "sourceL2MutationUidCount": 37,
+        "sourceFileCount": 17,
+        "protectedStudentFieldMutationCount": 0
+      },
+      "deferred": {
+        "crossParentL2CorrectionUidCount": 28
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l3_semantic_final_928.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_conflict_adjudication_final_143_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/MIDDLE_GEOMETRY_LUNA401_600_CONFLICT_ADJUDICATION_FINAL_90_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/MIDDLE_GEOMETRY_LUNA401_600_CONFLICT_ADJUDICATION_FINAL_90_VALIDATION_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_validation_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json"
+      ],
+      "blockingIssues": [
+        "CROSS_PARENT_L2_CORRECTION_GATE_REQUIRED_FOR_28_UID",
+        "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
+      ],
+      "nextStartPoint": "Independent branch review of application commit + parity repair; then separate L1/L2 correction gate for 28 cross-parent UIDs. Do not re-adjudicate frozen143/new90 unless source changes."
+    },
+    {
+      "checkpointId": "CROSS_PARENT_L1_L2_GATE_CLOSED_20260923",
+      "active": false,
+      "branchRef": "codex/meta-foundation/middle-geometry",
+      "gateApplicationBaseHead": "15df8e0d039029f73e2bc4f1a736ce5a04c3237a",
+      "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+      "denominator": 28,
+      "decisions": {
+        "crossParentApplied": 2,
+        "sameParentL2Refined": 10,
+        "keptCurrent": 16,
+        "remainingHold": 0
+      },
+      "sourceMutation": {
+        "uidCount": 12,
+        "fileCount": 10,
+        "protectedStudentFieldMutationCount": 0
+      },
+      "q513": {
+        "decision": "KEEP_CURRENT_L1_L2",
+        "basis": "PROBLEM_STATEMENT_AND_FIGURE_ONLY"
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/cross_parent_l1_l2_gate_final_28_20260923.json"
+      ],
+      "blockingIssues": [
+        "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
+      ],
+      "nextStartPoint": "Affected-set parent/parity validation, then canonical/compiled/runtime promotion decision."
+    },
+    {
+      "checkpointId": "Q513_PROBLEM_ONLY_HOLD_RESOLVED_20260923",
+      "active": false,
+      "branchRef": "codex/meta-foundation/middle-geometry",
+      "baseHead": "a43fc8f1f180059406bd6f6e09aeb32d923b4793",
+      "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+      "questionUid": "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
+      "decision": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "basis": "PROBLEM_STATEMENT_AND_FIGURE_ONLY",
+        "solutionUsed": false
+      },
+      "counts": {
+        "l3MappedFinal": 921,
+        "l3RouteOut": 7,
+        "l4MappedFinal": 901,
+        "l4ExplicitHold": 20,
+        "l4RouteOut": 7
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/q513_problem_only_semantic_adjudication_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/q513_problem_only_semantic_validation_20260923.json"
+      ],
+      "blockingIssues": [
+        "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
+      ],
+      "nextStartPoint": "Affected-set parent/parity validation, then canonical/compiled/runtime promotion decision."
+    },
+    {
+      "checkpointId": "PROMOTION_PREFLIGHT_BLOCKED_20260923",
+      "status": "PROMOTION_BLOCKED_AUTHORITATIVE_FREEZES_AND_SOURCE_TUPLES",
+      "active": true,
+      "branchRef": "codex/meta-foundation/middle-geometry",
+      "sourceBaselineMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+      "synchronizedMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
+      "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
+      "branchHead": "f770f2f3ef2b7eaa1389faa162915e8c133eb268",
+      "promotionCommitSha": null,
+      "denominator": 928,
+      "l3": {
+        "final": 921,
+        "routeOut": 7
+      },
+      "l4": {
+        "final": 901,
+        "explicitHold": 20,
+        "routeOut": 7
+      },
+      "affectedSetValidationPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/affected_set_validation_20260923.json",
+      "inventoryPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/promotion_inventory_20260923.json",
+      "blockerCodes": [
+        "FINAL_DIFFICULTY_RECHECK_PENDING",
+        "FINAL_RELATIONAL_METADATA_FREEZE_MISSING",
+        "UNRESOLVED_L1_L2_L3_TUPLE_MISMATCH",
+        "GLOBAL_INTEGRITY_AUTHORITY_PENDING"
+      ],
+      "nextStartPoint": "Obtain/finalize physical difficulty and relational freeze authorities; resolve the two listed source/L1/L2/L3 tuple mismatches; then resume affected-set validation. No 928 semantic re-review was performed."
+    },
+    {
+      "id": "MG_PRODUCTION_PROMOTION_READY_20260923",
+      "status": "PASS_WITH_EXPLICIT_HOLDS",
+      "branch": "codex/meta-foundation/middle-geometry",
+      "synchronizedBranchSha": "fe719e62ce21a1e4e6a7553907627c35f565cc14",
+      "synchronizedMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
+      "counts": {
+        "l3Final": 921,
+        "routeOut": 7,
+        "l4Final": 901,
+        "l4Hold": 20,
+        "difficultyHold": 781,
+        "runtime": 928,
+        "archive2Join": 928
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/aliases.json",
+        "archive/data/meta-foundation/canonical/registry_index.json",
+        "archive/data/meta-foundation/compiled/aliases.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/meta-foundation-runtime.js",
+        "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
+      ],
+      "completedAt": "2026-09-23T13:37:34.897Z",
+      "next": "Commit, push branch, re-fetch and merge latest main."
+    },
+    {
+      "id": "MG_PRODUCTION_PROMOTED_MAIN_20260923",
+      "status": "PRODUCTION_PROMOTED_MAIN",
+      "promotionCommitSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+      "mainMergeCommitSha": "ddccf631024dc08999531a57e2cb0566bc7073d2",
+      "branch": "codex/meta-foundation/middle-geometry",
+      "synchronizedBranchSha": "ddccf631024dc08999531a57e2cb0566bc7073d2",
+      "synchronizedMainSha": "508edf075f1fa303fff65752731178b53a9fcdd5",
+      "latestMainDrift": {
+        "commit": "508edf075f1fa303fff65752731178b53a9fcdd5",
+        "files": [
+          "archive/question-index-audit.md",
+          "archive/question-index-report.md",
+          "archive/question-index.js"
+        ],
+        "scope": "Generated Archive question-index registration artifacts only.",
+        "indexPayloadSha256": "27045ec80a938889c36e85e2c1a7bec989a0c326b35da8a6b221bce490954a36",
+        "indexPayloadParityWithPromotion": "IDENTICAL",
+        "middleGeometrySourceSemanticDrift": 0,
+        "resolution": "Latest main commit is the second parent of the promotion merge commit. Its generated index payload matches the already-synchronized promotion payload; only generation timestamp/report measurements differ."
+      },
+      "mainPromotionMode": "MERGE_COMMIT_THEN_FAST_FORWARD",
+      "headEqualsOriginMain": true,
+      "counts": {
+        "l3Final": 921,
+        "routeOut": 7,
+        "l4Final": 901,
+        "l4Hold": 20,
+        "difficultyHold": 781,
+        "runtime": 928,
+        "archive2Join": 928
+      },
+      "completedAt": "2026-09-23T13:48:43.508Z",
+      "next": "Publish final promotion state to origin/main and verify HEAD parity."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "schema": "H1_SOURCE_ORIGINAL_LUNA_D4_PILOT_ROW05_1.v1",
+  "worker": "D4 SOURCE REPAIR WORKER",
+  "pilotRow": 5,
+  "stageAQueueIndex": 791,
+  "questionUid": "qid_v1_3959b557db1d5f1b5525ca32676b73e2959f9009158e680d2ebfd8e93093b5ef",
+  "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#10",
+  "sourceExamMapping": {
+    "school": "순천팔마고등학교",
+    "year": 2026,
+    "grade": "고1",
+    "course": "공통수학1",
+    "exam": "1학기 1차 평가",
+    "printedDate": "2026-04-29",
+    "sourceExamPage": 2,
+    "sourceSolutionPage": 2,
+    "printedQuestionNo": 10,
+    "jsId": 10,
+    "jsArrayOrdinal1Based": 10,
+    "uidVerified": true
+  },
+  "sourceDocuments": [
+    {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\공통수학1\\2026_팔마고1_공통수학1_1중간.pdf",
+      "sha256": "6E4CB249E57D66986D1C7C3C30078B5A051EBD64CCAB33DB28AED467E5E279D3",
+      "role": "six-page original exam PDF"
+    },
+    {
+      "path": "D:\\기출\\(1)1중간\\(1)1중간\\공통수학1\\2026_팔마고1_공통수학1_1중간_해설.pdf",
+      "sha256": "FDEF19E2C420952467FB4068090DA3D0D3ABF64B886AAC69DABEFA2ADCDF8C73",
+      "role": "separate six-page worked solution PDF; handwritten q10 derivation and marked choice ②"
+    }
+  ],
+  "portableEvidence": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/pilot-row05/exam-p1-header.png",
+      "sha256": "345D45364320D785B643E0BBB8D07FA3872905B7BD9B9B530A496A877775FDC4",
+      "bytes": 170062,
+      "role": "original exam header/date"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/pilot-row05/exam-p2-full.png",
+      "sha256": "328BC0756BB65ECAC6876F589BA61030FCDC7E07D1DA8E69F34A0B70875FDB91",
+      "bytes": 266656,
+      "role": "full source exam page2"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/pilot-row05/exam-q10-crop.png",
+      "sha256": "3AEE2196D94830395D6D5CE99B861D4B55563B1EC25D2995934C88C44ABFDECB",
+      "bytes": 30444,
+      "role": "q10 printed stem and five choices",
+      "bboxPx": [
+        950,
+        1450,
+        1901,
+        2550
+      ],
+      "fullPageSize": [
+        1901,
+        2687
+      ]
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/pilot-row05/solution-p2-full.png",
+      "sha256": "C62781C1904EAC6942CFD3ED1B0EBB5D120C5012F4B835E533E972A0EDC99AF7",
+      "bytes": 2104531,
+      "role": "full worked solution page2"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/d4/pilot-row05/solution-q10-crop.png",
+      "sha256": "D65CCB87D639DAFEA129E34C1ECB5FE5F2DB0D42B44A335310F7F988E32388A8",
+      "bytes": 426349,
+      "role": "q10 substitution/factorization/discriminant and ②",
+      "bboxPx": [
+        0,
+        1550,
+        1050,
+        2600
+      ],
+      "fullPageSize": [
+        1901,
+        2687
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "printedStemAndChoicesMatchJs": true,
+    "answerMatchesSolutionPdf": true,
+    "printedScore": "4.4점",
+    "jsScoreInContent": false,
+    "scoreUntouchedBecauseScopeSolutionOnly": true,
+    "sourceSolutionObserved": "A=x²−4x; A(A+7)+10=(A+2)(A+5)=0; x²−4x+5 has discriminant −4<0; two real roots are from x²−4x+2=0, with product 2, choice ②."
+  },
+  "independentSolve": "Set A=x²−4x. (A+2)(A+5)=0. x²−4x+5=(x−2)²+1 has no real root; x²−4x+2=0 has roots 2±√2, whose product is 2. Thus exactly two distinct real roots and answer ②.",
+  "verdict": "SOURCE_CONFIRMED_CORRECTION",
+  "correctionKind": "SOURCE_CONFIRMED_CORRECTION of generic filler with source-consistent derivation; archived answer already matches source and independent solve",
+  "beforeQ10": {
+    "answer": "②",
+    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "questionPayloadSha256": "F345EA3B4F138D43FC6EC9FF4E61A1A39935E61C7D4CA023ED85FFC6A6066A88",
+    "answerSha256": "DFDE05A3668030E99CA64D8D4AE5F6B64C7A87CEE61C0BA43904B92EF210191D",
+    "solutionSha256": "5FF95D183AB72FE6E788DC21D4D41973BA103639E2C31CC6B11E4199CD8A971B"
+  },
+  "afterQ10": {
+    "answer": "②",
+    "solution": "$A=x^2-4x$라 두면 주어진 방정식은 $A(A+7)+10=(A+2)(A+5)=0$이다. 따라서 $x^2-4x+2=0$ 또는 $x^2-4x+5=0$이다.\n후자의 판별식은 $(-4)^2-4\\cdot1\\cdot5=-4\\lt0$이므로 실근이 없다. 전자의 판별식은 $16-8=8\\gt0$이므로 서로 다른 두 실근 $\\alpha,\\beta$는 모두 $x^2-4x+2=0$의 근이다. 근과 계수의 관계에 따라 $\\alpha\\beta=2$이므로 정답은 ②이다.",
+    "questionPayloadSha256": "DD1009D3F3F7A90AA3772D365855597F475901CA2E0260521154860A67FA41F4",
+    "answerSha256": "DFDE05A3668030E99CA64D8D4AE5F6B64C7A87CEE61C0BA43904B92EF210191D",
+    "solutionSha256": "3C70709E707CE91BC2B1EAE52E33C4B8932CB0029AE6E4A7E13B4D531628C778"
+  },
+  "changedFields": [
+    "solution"
+  ],
+  "unchangedQ10FieldsExact": [
+    "id",
+    "level",
+    "category",
+    "originalCategory",
+    "standardCourse",
+    "standardUnitKey",
+    "standardUnit",
+    "standardUnitOrder",
+    "questionType",
+    "layoutTag",
+    "tags",
+    "wide",
+    "content",
+    "choices",
+    "answer",
+    "subUnitKey",
+    "subUnit",
+    "subUnitConfidence",
+    "subUnitClassificationDepth"
+  ],
+  "sameFileConcurrencyGate": {
+    "d5PriorCheckpointAfterRawSha256": "67C464E2C52084171ABB9FC0F390798F6BC9E24DD26538D67F41D0AB7D22867F",
+    "d4BeforeRawSha256": "67C464E2C52084171ABB9FC0F390798F6BC9E24DD26538D67F41D0AB7D22867F",
+    "currentRawSha256": "A02EECABF026EC881EBBD5F1FACE31D62CE8BB789463E34BFCF2D1E8D00ECEF3",
+    "d5QuestionIdsPreserved": [
+      2,
+      16,
+      22
+    ],
+    "allOtherQuestionObjectsExactToHead": true
+  },
+  "frozenPilotInput": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/one-pass-pilot/worker-input/H1_ONE_PASS_PILOT_BLIND_INPUT_80.jsonl",
+    "sha256BeforeAndAfter": "2001E7B2C079A5D202CE8DD2A8C49D93E3678F9E81B567BE3CEB9A1EF51CDC1B",
+    "changed": false,
+    "oldTuple": {
+      "sourceFingerprint": "1ba3ffde15f295296761838e23e27fcd9be5a563e347df53ea1aa50a942a09f6",
+      "contentHash": "2af2216393254dfbcac274c64c78e1e0318db73b61471347e7b8c1d123c9bf2d",
+      "solutionHash": "9d21af1ec207cdeec6808388113bd6e27998e22a374950777a03a0ca50186484",
+      "inputBundleSha": "85a7d9c52f627bbf23d5fe4614944a72604e825e377600b9dd10fc54c012a1c7"
+    },
+    "newTargetedBlindTuple": {
+      "sourceFingerprint": "dd8ec4688b1b3141ffde659c2696f24b23492708283d3ae9163727dc70835e96",
+      "contentHash": "2af2216393254dfbcac274c64c78e1e0318db73b61471347e7b8c1d123c9bf2d",
+      "solutionHash": "016662ba5950d4c4d863da494aee07485cd20230a6d26b9f94169283f48b3a8d",
+      "inputBundleSha": "16d89c3b787d79ba271be8828a179d39c9512a882ec90defe8483250dbc710d9"
+    },
+    "oldInputFormulaReproduced": true,
+    "workerLedgersChanged": false
+  },
+  "machineChecks": {
+    "nodeCheck": "PASS",
+    "targetedSchemaScan": "PASS; 1 file, 22 sequential questions, 0 missing required fields",
+    "examLint": "PASS; 1 file, 22 questions, 0 fail and 0 warn",
+    "browserRender": {
+      "examDefault": "PASS; q10 stem and choices visible",
+      "solutionDefault": "PASS; q10 ② and factorization/discriminant derivation visibly MathJax rendered",
+      "answerDefault": "PASS; q10 ② visible in printed answer table"
+    }
+  },
+  "rereviewRequired": [
+    "Targeted blind pilot Luna A on modified q10 solution/new tuple",
+    "Targeted blind pilot Luna B on modified q10 solution/new tuple"
+  ],
+  "solReviewNeededBeforeFinal": true
+}

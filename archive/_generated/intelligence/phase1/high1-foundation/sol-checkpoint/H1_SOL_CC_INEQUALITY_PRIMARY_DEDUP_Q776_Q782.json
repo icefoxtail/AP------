@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "field": "crossConcepts",
+  "value": [],
+  "parentAuthority": "l3-boundary/H1_SYSTEM_INEQUALITY_PARENT_WORKING_39.jsonl",
+  "items": [
+    {
+      "queueIndex": 776,
+      "questionUid": "qid_v1_fffebe353b1c401615e553b592a0851e65614349e1497fda4d6a68dde8a29fcb",
+      "sourceIdentity": "original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "1e04a621b3d8686eb94c81bd1882d35a243fe6eca33f3f146960fb15b9a997fb",
+      "workingPrimaryL3": "PT_H1_QUADRATIC_INEQUALITY",
+      "reason": "The first quadratic gives the four integer candidates x=3,4,5,6. The second factors as (x−n)(x−n+2)≥0, excluding only x=n−1 among integers. Requiring three common integer solutions means n−1 is one of those four candidates, so n=4,5,6,7. Both the quadratic interval intersection and finite integer enumeration belong to this primary inequality task; CC_INEQUALITY_QUADRATIC duplicates the primary and CC_COMBINATORICS_COUNTING would overtag a direct four-value check."
+    },
+    {
+      "queueIndex": 782,
+      "questionUid": "qid_v1_29aedeed6a1622ba0a271eb1815c4ea4a33644d27f79915ce42303ccc6361c11",
+      "sourceIdentity": "original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js#17",
+      "sourceFingerprint": "2cf9850193502f627fe508e7995174b1c63346b3d7ac608e0b7359a33cfa0529",
+      "workingPrimaryL3": "PT_H1_QUADRATIC_INEQUALITY",
+      "reason": "The solution branches on the sign and allowed values of m, intersects the two polynomial-inequality integer solution sets, then lists the ten admissible (m,n) parameter pairs. Quadratic inequality sign/interval work is the primary method. Counting the explicitly enumerated pairs uses no independent arrangement, selection, or distribution principle; CC_INEQUALITY_QUADRATIC repeats the primary and CC_COMBINATORICS_COUNTING fails the outside-primary counterfactual gate."
+    }
+  ],
+  "newCanonicalCandidate": false,
+  "finality": "WORKING_NOT_FINAL"
+}

@@ -1,0 +1,81 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "checkpointId": "20260901_M105",
+  "phase": "Phase 5",
+  "scope": "M1-05 BASIC_FIGURE_ANGLE_CLASSIFICATION + POSITION_RELATION_LINE_PAIR bounded slices",
+  "status": "ACTIVE_BOUNDED",
+  "unitKey": "M1-05",
+  "familyId": "M1-05_MULTI_FAMILY",
+  "capabilities": {
+    "BASIC_FIGURE_ANGLE_CLASSIFICATION": {
+      "A_numeric": "ACTIVE_BOUNDED",
+      "B_representation": "ACTIVE_BOUNDED",
+      "C_parameter_recovery": "HOLD"
+    },
+    "POSITION_RELATION_LINE_PAIR": {
+      "A_numeric": "ACTIVE_BOUNDED",
+      "B_representation": "ACTIVE_BOUNDED",
+      "C_parameter_recovery": "HOLD"
+    }
+  },
+  "fixtures": {
+    "count": 12,
+    "general": true,
+    "boundary": true,
+    "composite": true,
+    "coverage": ["예각", "직각", "둔각", "평각", "평행", "수직", "교차"],
+    "visualDependency": "MANDATORY",
+    "visualType": "segment_geometry"
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-basic-geometry-a03",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "096680123969d35a90832714c72bf6d31e2e565d7f3ebee713c92171b05f8a92",
+      "render": {
+        "exam": "PASS",
+        "solution": "PASS",
+        "answer": "PASS",
+        "lastQuestion": 12,
+        "pageCounts": {"exam": 3, "solution": 6, "answer": 1},
+        "svgImageCounts": {"exam": 24, "solution": 12, "answer": 0},
+        "svgImageFailures": 0,
+        "unrenderedMath": 0,
+        "overflow": 0
+      },
+      "resume": "PASS",
+      "closure": "PASS",
+      "publicationStatus": "NOT_PUBLISHED"
+    },
+    {
+      "runId": "20260901-middle-basic-geometry-b03",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "a2bb02385ad526a0ebeba6741dc483a0f5f6c63bb4fbaa191eae9779039fe680",
+      "render": {
+        "exam": "PASS",
+        "solution": "PASS",
+        "answer": "PASS",
+        "lastQuestion": 12,
+        "pageCounts": {"exam": 3, "solution": 6, "answer": 1},
+        "svgImageCounts": {"exam": 24, "solution": 12, "answer": 0},
+        "svgImageFailures": 0,
+        "unrenderedMath": 0,
+        "overflow": 0
+      },
+      "resume": "PASS",
+      "closure": "PASS",
+      "publicationStatus": "NOT_PUBLISHED"
+    }
+  ],
+  "tests": {
+    "basicGeometryEngineTests": 3,
+    "fullRegressionTests": 279,
+    "status": "PASS",
+    "compileall": "PASS",
+    "packageRoundTrip": "PASS"
+  },
+  "productionArchiveRegistration": "NOT_PERFORMED"
+}

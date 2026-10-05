@@ -1,0 +1,175 @@
+{
+  "checkedAt": "2026-09-10T21:07:55.318Z",
+  "phase0GateCount": 10,
+  "phase1aGateCount": 18,
+  "gates": {
+    "CANONICAL_INTENT_ENUM": {
+      "status": "PASS",
+      "evidence": "browser: canonical schema; runtime unit enum validation"
+    },
+    "CANDIDATE_RENDER_STATE": {
+      "status": "PASS",
+      "evidence": "browser: immutable candidate and all state intents"
+    },
+    "RENDER_AFFECTING_TRANSITIVE_IMMUTABILITY": {
+      "status": "PASS",
+      "evidence": "unit: deep copy/rejection; browser: external header mutation and malformed source"
+    },
+    "KEY_INPUT_DIGEST_BUILD_INPUT_DIGEST_PARITY": {
+      "status": "PASS",
+      "evidence": "browser: every committed attempt keyBuildParity; unit: semantic key and provenance exclusion"
+    },
+    "ALL_RENDER_ENTRY_ROUTED": {
+      "status": "PASS",
+      "evidence": "six guarded compatibility handlers plus print recovery; explicit QPP and invalidation APIs"
+    },
+    "RENDER_TRANSACTION_CONTEXT": {
+      "status": "PASS",
+      "evidence": "browser: isolated roots/ledgers; unit: metrics isolation"
+    },
+    "PENDING_RENDER_SESSION": {
+      "status": "PASS",
+      "evidence": "browser: source load/schema/image failures preserve current session"
+    },
+    "PENDING_TO_CURRENT_MATERIALIZATION_GATE": {
+      "status": "PASS",
+      "evidence": "unit: separate complete materialization; browser: real source promotion"
+    },
+    "PENDING_TARGET_SESSION_ID_PARITY": {
+      "status": "PASS",
+      "evidence": "browser: candidate/snapshot/current source session parity"
+    },
+    "RENDER_STATE_2PC": {
+      "status": "PASS",
+      "evidence": "browser: PREPARE preserves root/state/URL/tab and immutable latest header"
+    },
+    "SYNCHRONOUS_ATOMIC_COMMIT": {
+      "status": "PASS",
+      "evidence": "commit static no-yield/no-measurement check; browser state/status transitions"
+    },
+    "SNAPSHOT_STATUS_COMMIT": {
+      "status": "PASS",
+      "evidence": "unit status transition and rollback; browser ACTIVE root ownership"
+    },
+    "COMMIT_ROLLBACK": {
+      "status": "PASS",
+      "evidence": "browser injected history failure; unit source COMMIT failure"
+    },
+    "REQUEST_GENERATION_STALENESS_ONLY": {
+      "status": "PASS",
+      "evidence": "unit: provenance excluded from key; browser: latest request wins"
+    },
+    "DIRECT_RENDER_BYPASS": {
+      "status": "PASS",
+      "actual": 0,
+      "evidence": "guarded caller audit and canonical browser routing"
+    },
+    "SIDE_EFFECT_DELIVERY_FAILURE_CONTRACT": {
+      "status": "PASS",
+      "evidence": "browser: HTTP failure/next activation retry/deduplication/class assignment"
+    },
+    "SIDE_EFFECT_COMPENSATION_CONTRACT": {
+      "status": "PASS",
+      "evidence": "Phase 0 allows no precommit external effect; unit rejects execution; unresolved required compensation zero"
+    },
+    "BACKGROUND_SIDE_EFFECT_COUNT": {
+      "status": "PASS",
+      "actual": 0,
+      "evidence": "Phase 1A rejects background requests before build/effect execution"
+    }
+  },
+  "parity": [
+    {
+      "width": 1440,
+      "mode": "exam",
+      "fields": [
+        "text",
+        "sourceRefs",
+        "pages",
+        "shapes",
+        "images",
+        "ledger"
+      ],
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "mode": "sol",
+      "fields": [
+        "text",
+        "sourceRefs",
+        "pages",
+        "shapes",
+        "images",
+        "solutionLedger"
+      ],
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "mode": "ans",
+      "fields": [
+        "text",
+        "sourceRefs",
+        "pages",
+        "shapes",
+        "images"
+      ],
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "mode": "exam",
+      "fields": [
+        "text",
+        "sourceRefs",
+        "pages",
+        "shapes",
+        "images",
+        "ledger"
+      ],
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "mode": "sol",
+      "fields": [
+        "text",
+        "sourceRefs",
+        "pages",
+        "shapes",
+        "images",
+        "solutionLedger"
+      ],
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "mode": "ans",
+      "fields": [
+        "text",
+        "sourceRefs",
+        "pages",
+        "shapes",
+        "images"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "staticTests": 46,
+  "browserScenarios": 19,
+  "legacySmokeCases": 6,
+  "baselineSamples": 48,
+  "implementationHashes": {
+    "engine.html": "963f361540e1f0107eec9ada61bcf6e99338ed754ecc571d98177c75680dac1a",
+    "screen-runtime.js": "dc9a9c9cff4d0a5d74ded063116e20077cb225bf5b6725d3e6e78e1258853afa",
+    "screen-runtime-adapter.js": "7c53eb3cb64bdef410e346e03477e3e891567d90501556ae0d017f468134bc3e",
+    "render-state-normalizer.js": "ba3deda4313db80ff75eaddd1cb9e13ae894ff2c855811892ab522d389a43a01",
+    "side-effect-ledger.js": "00cb757605d329bad73e5ff53c1c3ee71c2ceb54083661303a2a440c6e7cc9ff",
+    "mathjax_render_loop.js": "a648c4c8a701a7b5e672fe4b11c9cb3b51af15332b6790a55c0e4a2c9f5d554d",
+    "exam-render-executor.js": "ee35238583992757498f048ae0a01c129a306a6d760d880d4ea459535a2f1158",
+    "solution-render-executor.js": "dded7b2903469665ea4fd354ad579067672295765ac8527d1e584f9b40a0d0dd",
+    "answer-render-executor.js": "c04d21ad13a20d54ce485191fc10db36438b04b7e47975041fd5bb45327f9ee6"
+  },
+  "scope": "Phase 0 and Phase 1A only. No cache hit, prewarm, background build scheduling, measurement batching or layout promotion."
+}

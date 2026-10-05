@@ -1,0 +1,399 @@
+{
+  "schema": "JS_ARCHIVE_R3_RELEASE_GATE_LEDGER_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "R3_FAIL_REENTRY_REQUIRED",
+  "examId": "26_복성고_2학기_중간_고1_기출",
+  "reviewedAtKst": "2026-10-01T09:34:09+09:00",
+  "r3Input": {
+    "review2Branch": "work/line3/26-bokseong-h1-2mid-review2-20261001",
+    "sealedHead": "3eaea79c7831411600ffa8363e99487dd2090c8d",
+    "review2ReceiptBlobSha": "218e1996b063eb3c0322759a176e827d868974f8",
+    "review2CommitSha": "6110f48fd8110d661a79347aa25c5a8e059372bd",
+    "finalArtifactSha": "969d36b10906a4c3b9c5203ba664a8796ec2fb5e",
+    "itemHoldCount": 5,
+    "heldQids": [
+      2,
+      6,
+      8,
+      9,
+      19
+    ]
+  },
+  "latestRemoteMainAtAudit": "94f293ceb4f4a7d0e2ed2d23630ed8d182bed09d",
+  "authorityRefs": {
+    "r3Protocol": {
+      "path": "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md",
+      "blobSha": "86fdeca5c4138c0be6ae1c0352600ca75e7a4ec7"
+    },
+    "unitMaster": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "blobSha": "8e2a8562f3e4daad70c9af4efd038dffb7b7ae82"
+    },
+    "compiledTagMaster": {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "blobSha": "ca504997b839c6265dc4714294bcb54d83430e54"
+    },
+    "visualCanonical": {
+      "path": "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+      "blobSha": "a333220a0762ef935f20a59efa7ec88dd9a4fe49"
+    },
+    "metaResolverContract": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md",
+      "blobSha": "779aa2f9b78997505104492cf2adfe07f520a475"
+    },
+    "q2PixelSourceRepair": {
+      "commitSha": "d3bc3867d0abf54b483f7b45d30b25517e3fc362",
+      "evidencePath": "archive-work/new-imports/2026-2mid-prompt-assets/26_복성고_2학기_중간_고1_기출/run-v5/reports/source_pixel_repair_q02.json",
+      "sourceEvidenceSha256": "1f66899ad6b2685e28e5459073afebd68f47bc9b2ab24c6b0aaff309e1fc8e34"
+    }
+  },
+  "questionCount": 22,
+  "curriculumMethodAuditCount": "22/22",
+  "curriculumViolationQids": [
+    7,
+    20
+  ],
+  "curriculumMethodInventory": [
+    {
+      "qid": 1,
+      "method": "두 점의 기울기→직선식/y절편",
+      "status": "PASS"
+    },
+    {
+      "qid": 2,
+      "method": "집합 원소관계·부분집합·원소수·차집합 판정",
+      "status": "SOURCE_AUTHORITY_DRIFT"
+    },
+    {
+      "qid": 3,
+      "method": "점과 직선 사이 거리 공식+양수 조건",
+      "status": "PASS"
+    },
+    {
+      "qid": 4,
+      "method": "평행이동 좌표 치환으로 이동 직선식",
+      "status": "PASS"
+    },
+    {
+      "qid": 5,
+      "method": "수직선 거리 절댓값+두 점 사이 거리",
+      "status": "PASS"
+    },
+    {
+      "qid": 6,
+      "method": "기울기 평행·수직 조건",
+      "status": "PASS"
+    },
+    {
+      "qid": 7,
+      "method": "이차함수 절편+내분점",
+      "status": "CURRICULUM_FAIL",
+      "evidence": "solution의 C=(A+4B)/5 점 산술은 H22-C2-01 Hard Rule에서 금지; 좌표별 내분 공식 필요"
+    },
+    {
+      "qid": 8,
+      "method": "접선 후보 기울기+원점-직선 거리=반지름",
+      "status": "PASS"
+    },
+    {
+      "qid": 9,
+      "method": "직선 그래프 기울기·절편 부호+평행/수직",
+      "status": "PASS"
+    },
+    {
+      "qid": 10,
+      "method": "완전제곱→반지름제곱 양수 조건+정수 범위",
+      "status": "PASS"
+    },
+    {
+      "qid": 11,
+      "method": "y=x 대칭점+삼각부등식/펴기 최단거리",
+      "status": "PASS"
+    },
+    {
+      "qid": 12,
+      "method": "원 접선 거리조건+포물선 접선 판별식",
+      "status": "PASS"
+    },
+    {
+      "qid": 13,
+      "method": "y=x 대칭 직선식+절편/교점+다각형 넓이",
+      "status": "PASS"
+    },
+    {
+      "qid": 14,
+      "method": "소인수분해+집합 포함배제 계수",
+      "status": "PASS"
+    },
+    {
+      "qid": 15,
+      "method": "합집합 원소수 공식+교집합 범위",
+      "status": "PASS"
+    },
+    {
+      "qid": 16,
+      "method": "집합 분할 합 t+구간에서 곱의 최소",
+      "status": "PASS"
+    },
+    {
+      "qid": 17,
+      "method": "차집합·여집합·교집합 항등식",
+      "status": "PASS"
+    },
+    {
+      "qid": 18,
+      "method": "점의 평행이동/대칭이동 반복 규칙+거리 주기",
+      "status": "PASS"
+    },
+    {
+      "qid": 19,
+      "method": "원 자취+원점에서 그은 접선 기울기 극값+근의 합",
+      "status": "PASS"
+    },
+    {
+      "qid": 20,
+      "method": "수선의 발 조건",
+      "status": "CURRICULUM_FAIL",
+      "evidence": "solution이 \\overrightarrow{PH}=(3k,4k) 벡터/법선방향을 핵심 도구로 사용; H22-C2-02 Hard Rule은 좌표·기울기·수직 관계로 구성"
+    },
+    {
+      "qid": 21,
+      "method": "집합 원소수 방정식+소인수 조건별 경우 나누기",
+      "status": "PASS"
+    },
+    {
+      "qid": 22,
+      "method": "집합식 단순화+원-직선 거리/접선 경계",
+      "status": "PASS"
+    }
+  ],
+  "visualNecessityAuditCount": "22/22",
+  "visualNecessityInventory": [
+    {
+      "qid": 1,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-02 직선의 기울기·절편이 핵심"
+    },
+    {
+      "qid": 2,
+      "status": "NOT_REQUIRED"
+    },
+    {
+      "qid": 3,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-02 점-직선 거리; 수선의 발/수선분 필요"
+    },
+    {
+      "qid": 4,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-04 평행이동 전후 직선 대응 필요"
+    },
+    {
+      "qid": 5,
+      "status": "NOT_REQUIRED_DIRECT_METRIC",
+      "reason": "단순 거리 계산이며 위치/내분 판단이 핵심 아님"
+    },
+    {
+      "qid": 6,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-02 평행·수직 관계가 핵심"
+    },
+    {
+      "qid": 7,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-01 내분점 위치·내분비가 핵심"
+    },
+    {
+      "qid": 8,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-03 원의 접선; 중심-접점 반지름/수직 필요"
+    },
+    {
+      "qid": 9,
+      "status": "SATISFIED_BY_PROBLEM_IMAGE",
+      "asset": "q009_visual.png",
+      "assetBlobSha": "db464990a515f88fd058aa970ff09016f8d376a6"
+    },
+    {
+      "qid": 10,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-03 매개변수에 따른 반지름/원이 되는 조건이 핵심"
+    },
+    {
+      "qid": 11,
+      "status": "EXISTING_VISUAL_PASS",
+      "asset": "q11-solution.svg",
+      "assetBlobSha": "b77d72f5197ca4e8f989ea83f5444ae972b68636",
+      "facts": "A(1,4)↔A'(4,1), y=x, P(4,4), B(4,8), A'-P-B 정렬 parity 확인"
+    },
+    {
+      "qid": 12,
+      "status": "SOLUTION_VISUAL_INCOMPLETE",
+      "asset": "q12-solution.svg",
+      "assetBlobSha": "3146ac6d974c0b12321e6e57436db4c395847a09",
+      "reason": "원 접점/접선은 있으나 중심-접점 반지름과 수직 관계가 없음"
+    },
+    {
+      "qid": 13,
+      "status": "SOLUTION_VISUAL_INCOMPLETE",
+      "asset": "q13-solution.svg",
+      "assetBlobSha": "88ebe907def60eab9d360d4eca8ce34ce17d4613",
+      "reason": "ℓ,ℓ' 좌표 parity는 맞지만 대칭축 y=x를 실제 선으로 표시하지 않음"
+    },
+    {
+      "qid": 14,
+      "status": "NOT_REQUIRED"
+    },
+    {
+      "qid": 15,
+      "status": "NOT_REQUIRED"
+    },
+    {
+      "qid": 16,
+      "status": "NOT_REQUIRED"
+    },
+    {
+      "qid": 17,
+      "status": "NOT_REQUIRED"
+    },
+    {
+      "qid": 18,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-04 반복 평행/대칭 이동의 단계·대응이 핵심"
+    },
+    {
+      "qid": 19,
+      "status": "SOLUTION_VISUAL_INCOMPLETE",
+      "asset": "q19-solution.svg",
+      "assetBlobSha": "07d09e55b0c3518b79c667b685bbdd2335ddeb79",
+      "reason": "두 접선/접점은 있으나 중심-접점 반지름과 수직 관계가 없음"
+    },
+    {
+      "qid": 20,
+      "status": "SOLUTION_VISUAL_MISSING",
+      "reason": "H22-C2-02 수선의 발 H, PH, 직각 관계가 핵심"
+    },
+    {
+      "qid": 21,
+      "status": "NOT_REQUIRED"
+    },
+    {
+      "qid": 22,
+      "status": "SOLUTION_VISUAL_INCOMPLETE",
+      "asset": "q22-solution.svg",
+      "assetBlobSha": "3d7451e911444d34d5e8ddf864132dd6259455e3",
+      "reason": "경계 접선/접점은 맞지만 중심-접점 반지름·수직 관계가 없음"
+    }
+  ],
+  "unresolvedSolutionVisualMissingQids": [
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    12,
+    13,
+    18,
+    19,
+    20,
+    22
+  ],
+  "unresolvedSolutionVisualMissingCount": 13,
+  "existingSolutionSvgAuditCount": "5/5",
+  "problemImageReferenceAuditCount": "1/1",
+  "problemImagePublicationPixelAuditNote": "q9 PNG path/blob identity verified; this GitHub connector cannot decode repository PNG bytes for a fresh pixel render. No PASS claim is based on that limitation; exam already fails independent release gates.",
+  "sourceContentChoicesAuditCount": "22/22",
+  "sourceAuthorityDriftQids": [
+    2
+  ],
+  "sourceAuthorityEvidence": {
+    "qid": 2,
+    "r2Observed": "ㄱ {1,3,5}⊂A; ㄷ B⊄A; answer blank",
+    "pixelVerifiedAuthority": "ㄱ {1,3,5}∈A; ㄷ B⊂A; only ㄹ true; answer ①",
+    "conclusion": "latest R2 artifact is stale against pixel-verified source authority"
+  },
+  "solutionReproducibilityAuditCount": "22/22",
+  "smallBoardStudentLanguageAuditCount": "22/22",
+  "metaAuditCount": "22/22",
+  "unresolvedTrueMetaQids": [
+    2,
+    6,
+    8,
+    9,
+    19
+  ],
+  "metaProjectionPolicy": "RPM semantic FINAL projection-only gaps are META_ONLY and not elevated; these qids remain unresolved in input lineage or are invalidated by q2 source repair.",
+  "difficultyAuditCount": "22/22",
+  "difficultyReleaseDefectQids": [],
+  "layoutAuditCount": "22/22",
+  "tagAuditCount": "22/22",
+  "tagFindings": [
+    {
+      "qid": 9,
+      "code": "VISUAL_TAG_MISSING",
+      "expected": "그래프"
+    },
+    {
+      "qid": 11,
+      "code": "VISUAL_TAG_MISSING",
+      "expected": "도형"
+    },
+    {
+      "qid": 12,
+      "code": "VISUAL_TAG_MISSING",
+      "expected": "도형"
+    },
+    {
+      "qid": 13,
+      "code": "VISUAL_TAG_MISSING",
+      "expected": "도형"
+    },
+    {
+      "qid": 19,
+      "code": "VISUAL_TAG_MISSING",
+      "expected": "도형"
+    },
+    {
+      "qid": 22,
+      "code": "VISUAL_TAG_MISSING",
+      "expected": "도형"
+    },
+    {
+      "qid": 20,
+      "code": "QUESTIONTYPE_TAG_MISSING",
+      "expected": "서술형"
+    },
+    {
+      "qid": 21,
+      "code": "QUESTIONTYPE_TAG_MISSING",
+      "expected": "서술형"
+    },
+    {
+      "qid": 22,
+      "code": "QUESTIONTYPE_TAG_MISSING",
+      "expected": "서술형"
+    }
+  ],
+  "integrityAudit": {
+    "questionCountExact": true,
+    "examBlobMatchesR2FinalArtifactSha": true,
+    "sourceIdentityKeyPatternStable": "22/22",
+    "review2BranchRaceCheck": "IDENTICAL sealedHead; ahead=0 behind=0",
+    "examOrAssetMutationByR3": false,
+    "mainMutation": false
+  },
+  "releaseGate": {
+    "result": "FAIL",
+    "itemHoldGate": "FAIL_5",
+    "curriculumGate": "FAIL",
+    "visualCompletenessGate": "FAIL",
+    "sourceAuthorityGate": "FAIL",
+    "metaGate": "FAIL",
+    "finalEligible": false
+  },
+  "failureClass": "FULL_REENTRY",
+  "requiredRoute": "FULL_R1_THEN_FULL_R2_THEN_R3",
+  "nextOwner": "R1_FULL_REOPEN"
+}
