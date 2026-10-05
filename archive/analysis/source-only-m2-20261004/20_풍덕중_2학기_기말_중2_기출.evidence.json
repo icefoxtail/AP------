@@ -194,45 +194,39 @@
       "qid": 20,
       "page": 3,
       "bboxPx": [
-        1870,
-        560,
-        2630,
+        1880,
+        570,
+        2580,
         900
       ],
       "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
       "sourcePagePixelSha256": "1ceaf2340d9494820487babc4eb72d60b310a784c0ec18ef792c566e84d50adb",
       "assetPath": "archive/assets/images/20_풍덕중_2학기_기말_중2_기출/q20.png",
-      "assetSha256": "14affa369329f945a8f136af6f4670cf6ee7de9ec76b343f3e85d659bc97cc9a",
+      "assetSha256": "1f9090e5e60ad0f90d6927ce2f5cef92dcb4c5cc712766df0a2dedfccda23c38",
       "checks": {
         "questionMeaningMatch": "pass",
-        "cropPurity": "pass; only this question’s graph, diagram, table, or letter panel",
+        "cropPurity": "pass; complete genotype table only",
         "otherQuestionChoicesOrPageDecorMix": "none",
         "clipping": "none",
-        "requiredFigureLabelsAxesAndBoundaries": "preserved; complete genotype table and all row/column labels",
-        "manualReview": "full source page and final crop each directly opened"
-      }
-    },
-    {
-      "qid": 21,
-      "page": 3,
-      "bboxPx": [
-        1600,
-        2045,
-        2840,
-        2850
-      ],
-      "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
-      "sourcePagePixelSha256": "1ceaf2340d9494820487babc4eb72d60b310a784c0ec18ef792c566e84d50adb",
-      "assetPath": "archive/assets/images/20_풍덕중_2학기_기말_중2_기출/q21.png",
-      "assetSha256": "a196943c588749015fe52cc6de404042778a8f07c881e41db580aac69261774e",
-      "checks": {
-        "questionMeaningMatch": "pass",
-        "cropPurity": "pass; only this question’s graph, diagram, table, or letter panel",
-        "otherQuestionChoicesOrPageDecorMix": "none",
-        "clipping": "none",
-        "requiredFigureLabelsAxesAndBoundaries": "preserved; complete handwritten letter panel and its border",
-        "manualReview": "full source page and final crop each directly opened"
+        "requiredFigureLabelsAxesAndBoundaries": "preserved",
+        "manualReview": "opened embedded original page and final crop directly; exact original-pixel bbox verified"
+      },
+      "cropReview": {
+        "questionMatch": "PASS",
+        "cropPurity": "PASS: complete genotype table only",
+        "onlyThisQuestionContext": "PASS",
+        "otherQuestionChoicesOrPageDecoration": "NONE",
+        "clipping": "NONE",
+        "requiredLabelsAxesOrBorders": "PRESERVED",
+        "reviewMethod": "opened original embedded full page and final crop directly"
       }
     }
+  ],
+  "sourceOnlyJsPath": "archive/_generated/source-only/m2-20261004/20_풍덕중_2학기_기말_중2_기출.js",
+  "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe",
+  "outputJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe",
+  "sourceAuditNotes": [
+    "The source contains 21 multiple-choice questions and 4 essay questions (25 total). The JS previously omitted the fourth essay and attached a foreign q21 hexagon crop to the D'Mere multiple-choice item; the essay numbering and q25 bag question are now restored.",
+    "The ABO genotype table for q20 is restored as an original-pixel crop; the unrelated q20 coloring figure and q21 hexagon asset were removed. All remaining crops match embedded 3035×4299 page images byte-for-byte."
   ]
 }
