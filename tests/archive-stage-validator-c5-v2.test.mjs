@@ -1,3 +1,6 @@
-import assert from 'node:assert/strict';
-import { validateC5Evidence } from '../archive/tools/archive-stage-validator-c5-v2.mjs';
-console.log('C5_TEST_BOOT');
+import './archive-stage-validator-c5-case-pass.test.mjs';
+import './archive-stage-validator-c5-case-axis.test.mjs';
+import './archive-stage-validator-c5-case-audit.test.mjs';
+import './archive-stage-validator-c5-case-replacement-missing.test.mjs';
+import './archive-stage-validator-c5-case-replacement-no-parity.test.mjs';
+console.log('C5_V2_OK');
