@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_SOURCE_REPAIR_EVIDENCE_v1",
+  "status": "SOURCE_REPAIR_REQUIRED",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04",
+  "lane": "M2-1 R3-1",
+  "canonicalOrdinal": 12,
+  "examUid": "m2/1mid/21-sinheung",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+  "inputArtifactGitBlob": "15cecd4931fc78853eb638cf16d43fee41c38578",
+  "currentArtifactGitBlob": "520da1ed5704000b6cf409b1ec0e51a05eda1790",
+  "sourceAuthority": {
+    "type": "ORIGINAL_EXAM_PDF",
+    "problemPdfLocator": "2021_신흥중2_수학_1중간.pdf",
+    "problemPdfSha256": "sha256:7401304a7531974402fc48852b2158e833227f74df2ff8619fdbe75dac0c43fe",
+    "problemPdfGitBlob": "bcb99804bd03df3620d106751d877a4277fb0ef8",
+    "answerPdfLocator": "2021_신흥중2_수학_1중간_정답.pdf",
+    "answerPdfSha256": "sha256:5455398d9fd7277485bfe5e1deb4b4b3a6a1a55b7063cc6797130f4186f01037",
+    "answerPdfGitBlob": "678b7b6f0450628b717df4e4c86fada46119dae3",
+    "priorSourceRepairReceiptBlob": "2da9573d51aa7d09d5992e91f228a179c7704d78"
+  },
+  "scope": {
+    "sourceRepairQids": [
+      18,
+      19
+    ],
+    "lockedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "onlySourceConfirmedChangesAllowed": true
+  },
+  "records": [
+    {
+      "qid": 18,
+      "confirmedLocator": {
+        "problemPage": 3,
+        "answerPage": 3,
+        "answerKey": "⑤"
+      },
+      "priorReceiptConfirmed": "Page 3 prints '다음 문장' and choice ⑤ as x-4×2>17; the source phrase behind ⑤ means 2(x-4)≥17.",
+      "currentDefect": "The current artifact contains the inequality expressions but not the original sentence premises paired with ①–⑤. A student cannot determine which translation is wrong, and R3 cannot independently certify ①–④ source parity.",
+      "requiredRepair": "Re-open original problem PDF page 3 pixels, recover all five printed sentence premises and their pairing, restore them source-faithfully without correcting the intentionally wrong source option, then recheck unique answer ⑤ and solution."
+    },
+    {
+      "qid": 19,
+      "confirmedLocator": {
+        "problemPage": "TO_CONFIRM_FROM_ORIGINAL_PDF",
+        "answerPage": "TO_CONFIRM_FROM_ANSWER_PDF"
+      },
+      "currentDefect": "The stem asks for the solution represented on a number line, but the current artifact contains only textual inequality choices and no linked image/asset. Algebra on the current text gives x<2/①, but original choice modality is unverified.",
+      "requiredRepair": "Inspect original source pixels, recover the exact number-line/text choice presentation and any required crop/asset, preserve only source-confirmed wording/choices, then recheck answer, solution, layout and direct dependencies."
+    }
+  ],
+  "completedDeterministicRepair": {
+    "examArtifactGitBlob": "520da1ed5704000b6cf409b1ec0e51a05eda1790",
+    "questionTypeRepairQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "subjectiveChoicesRepairQids": [
+      22,
+      23,
+      24
+    ],
+    "metaTagRepairQids": [
+      1,
+      5,
+      14,
+      21,
+      22,
+      23,
+      24
+    ],
+    "metaSidecarGitBlob": "8ae8a87abd1eebaedca406f70c47e34310f94b63"
+  },
+  "nextAction": "Bounded original-PDF repair for q18/q19 only; then same R3 continuation rechecks q18/q19 plus direct dependencies and locked scope, runs canonical R3 validator, writes validator/R3 receipts, transitions R3_PASS→RELEASE_QUEUE, and performs remote readback."
+}

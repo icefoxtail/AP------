@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_SOURCE_REPAIR_HANDOFF_v1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04",
+  "stage": "R3",
+  "debtType": "SOURCE_REPAIR_REQUIRED",
+  "examUid": "m2/1mid/21-sinheung",
+  "canonicalOrdinal": 12,
+  "inputArtifactSha": "15cecd4931fc78853eb638cf16d43fee41c38578",
+  "branch": "work/middle/m2/21-sinheung-1mid-r3-1-20261005-0911",
+  "targetHeadAtHandoff": "da822fbc0eba598db2415cf07a6a208886d9480c",
+  "finalArtifactSha": "520da1ed5704000b6cf409b1ec0e51a05eda1790",
+  "evidence": {
+    "physicalEvidenceBlob": "12603d66ba0b9daef994872fa5e84363ab3db0cc",
+    "decisionSnapshotBlob": "b4b8886904a647c6288df26a1c262d3c97ae49e1",
+    "sourceRepairEvidenceBlob": "f9a5c5ce4f4d19d9bb0453b02e0b5b99dbc68b71",
+    "repairedMetaSidecarBlob": "8ae8a87abd1eebaedca406f70c47e34310f94b63"
+  },
+  "openQids": [
+    18,
+    19
+  ],
+  "repairLocus": {
+    "completedQuestionTypeRepairQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "completedSubjectiveChoicesRepairQids": [
+      22,
+      23,
+      24
+    ],
+    "completedMetaRepairQids": [
+      1,
+      5,
+      14,
+      21,
+      22,
+      23,
+      24
+    ],
+    "pendingSourceRepairQids": [
+      18,
+      19
+    ]
+  },
+  "completedStep": "R3 full audit 24/24 plus deterministic schema/Meta repairs; q18/q19 bounded source-repair debt isolated with exact source fingerprints.",
+  "firstMissingClosureStep": "SOURCE_REPAIR_Q18_Q19_ORIGINAL_PDF_PIXEL_RECOVERY",
+  "exactCapabilityError": "Original PDF blobs are identified by exact SHA/fingerprint, but the connected Git text runtime cannot render binary source pixels. Current artifact/receipts do not contain all q18 premises or q19 original number-line choice pixels.",
+  "requiredNextAction": "Use the exact original PDF source to repair q18/q19 only, then continue the same R3 through changed-locus/direct-dependency/locked-scope recheck, canonical validator, validator/R3 receipts, RELEASE_QUEUE transition, and remote readback.",
+  "rescueQueue": {
+    "queue": "SOURCE_REPAIR_REQUIRED",
+    "entryKey": "R3_SOURCE_REPAIR_DEBT:m2/1mid/21-sinheung",
+    "status": "REGISTERED_DURABLE_GIT"
+  },
+  "owner": "RELINQUISHED",
+  "handoffIsPass": false,
+  "mainPublishEligible": false,
+  "sourceDebtBlocksAutonomousR3Selector": true,
+  "returnToAutonomousR3PoolWhenSourceFree": true
+}
