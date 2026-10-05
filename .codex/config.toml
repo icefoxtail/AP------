@@ -3,3 +3,23 @@ enabled = true
 max_concurrent_threads_per_session = 5
 default_subagent_model = "gpt-6-luna"
 default_subagent_reasoning_effort = "high"
+
+[agents.archive_create]
+description = "Archive 2.0 CREATE 전용 production worker"
+config_file = "./agents/archive-create.toml"
+
+[agents.archive_r1]
+description = "Archive 2.0 R1 DEEP 전용 worker"
+config_file = "./agents/archive-r1.toml"
+
+[agents.archive_r2]
+description = "Archive 2.0 R2 BLIND SWEEP 전용 worker"
+config_file = "./agents/archive-r2.toml"
+
+[agents.archive_r3]
+description = "Archive 2.0 R3 TARGETED RELEASE 전용 worker"
+config_file = "./agents/archive-r3.toml"
+
+[agents.archive_master]
+description = "Archive 2.0 continuation 전용 MASTER"
+config_file = "./agents/archive-master.toml"
