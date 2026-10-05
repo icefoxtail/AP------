@@ -11,10 +11,10 @@
   "inputArtifactSha": "2e218e645dfae1f573cf536cc761d18f572473e5",
   "inputEvidenceSha": "e0fa5fda9a311a9d55f30681f786d105eae83c7f",
   "r1ValidatorReceiptSha": "b5d55b1994a9fd6f7a71dcea3ebb278b0c8bf9a1",
-  "status": "HANDOFF_READY",
-  "leaseRelinquished": true,
-  "completedStep": "R2_REVIEW_COMPARE_PREFLIGHT_PASS",
-  "firstMissingClosureStep": "R2_PHYSICAL_EVIDENCE_WRITE",
+  "status": "ACTIVE_RESCUE",
+  "leaseRelinquished": false,
+  "completedStep": "R2_PHYSICAL_EVIDENCE_WRITE",
+  "firstMissingClosureStep": "CANONICAL_R2_VALIDATOR_RECEIPT",
   "selectorEligible": true,
   "r2ReviewResult": "PASS_NO_R2_MUTATION",
   "r2TargetedScopeQids": [],
@@ -29,5 +29,9 @@
     "rowCount": 25,
     "issues": []
   },
-  "next": "R2_PHYSICAL_EVIDENCE_WRITE→CANONICAL_R2_VALIDATOR_RECEIPT→REVIEW2_RECEIPT→READY_FOR_R3"
+  "next": "R2_PHYSICAL_EVIDENCE_WRITE→CANONICAL_R2_VALIDATOR_RECEIPT→REVIEW2_RECEIPT→READY_FOR_R3",
+  "rescueOwner": "M2-1 THANOS-MASTER-4",
+  "rescueClaimedAtKst": "2026-10-05T14:55:00+09:00",
+  "r2V2EvidenceSha": "b9b6b3f235c579f46f568e24a730feb50bdd95dd",
+  "r2PhysicalEvidenceSha": "a53d85556b801e26ab8ab90d915977d1a7a6699d"
 }
