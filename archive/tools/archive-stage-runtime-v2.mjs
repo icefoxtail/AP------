@@ -1,4 +1,11 @@
 const STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'MAIN']);
+const NEXT_STAGE = Object.freeze({
+  CREATE: 'R1',
+  R1: 'R2',
+  R2: 'R3',
+  R3: 'MAIN',
+});
+const V2_VALIDATOR_MODES = new Set(['CREATE_V2', 'R1_V2', 'R2_V2', 'R3_V2']);
 
 const nonEmpty = value => typeof value === 'string' && value.trim().length > 0;
 
@@ -76,6 +83,42 @@ export function resolveClosurePending(state) {
   return {
     ...current,
     closurePending: false,
+  };
+}
+
+export function consumeValidationPass({ state, validationReport } = {}) {
+  const current = buildStageState(state);
+  required(current.stage !== 'MAIN', 'CLOSURE_MAIN_VALIDATION_FORBIDDEN');
+  required(current.workComplete === true, 'CLOSURE_WORK_COMPLETE_REQUIRED');
+  required(validationReport && validationReport.ok === true, 'CLOSURE_VALIDATION_PASS_REQUIRED');
+  required(String(validationReport.disposition || '').toUpperCase() === 'PASS', 'CLOSURE_VALIDATION_DISPOSITION_REQUIRED');
+  required(V2_VALIDATOR_MODES.has(validationReport.validatorMode), 'CLOSURE_V2_VALIDATOR_REQUIRED');
+
+  const reportStage = normalizeStage(validationReport.stage);
+  required(reportStage === current.stage, 'CLOSURE_VALIDATION_STAGE_MISMATCH');
+  required(nonEmpty(validationReport.examUid), 'CLOSURE_EXAM_UID_REQUIRED');
+  required(nonEmpty(validationReport.artifactSha), 'CLOSURE_ARTIFACT_SHA_REQUIRED');
+  required(nonEmpty(validationReport.evidenceRef), 'CLOSURE_EVIDENCE_REF_REQUIRED');
+
+  const nextStage = NEXT_STAGE[current.stage];
+  required(nonEmpty(nextStage), 'CLOSURE_NEXT_STAGE_REQUIRED');
+
+  return {
+    state: buildStageState({
+      stage: nextStage,
+      workComplete: false,
+      closurePending: false,
+    }),
+    nextStageEligible: true,
+    receipt: {
+      examUid: validationReport.examUid,
+      completedStage: current.stage,
+      nextStage,
+      artifactSha: validationReport.artifactSha,
+      evidenceRef: validationReport.evidenceRef,
+      validatorMode: validationReport.validatorMode,
+      disposition: 'PASS',
+    },
   };
 }
 
