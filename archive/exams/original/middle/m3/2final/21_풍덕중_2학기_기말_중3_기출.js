@@ -340,7 +340,7 @@ window.questionBank = [
   {
     "id": 20,
     "content": "다음 중 네 점 $A,B,C,D$가 한 원 위에 있지 않은 것은? (4점)",
-    "choices": ["$\\angle A+\\angle C=180^\\circ$","$\\angle B+\\angle D=180^\\circ$","$\\angle A=\\angle C=90^\\circ$","사각형 $ABCD$는 등변사다리꼴이다.","$\\angle A+\\angle C=170^\\circ$"],
+    "choices": [],
     "answer": "",
     "solution": "",
     "tags": [
