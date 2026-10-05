@@ -12,7 +12,7 @@ jobs:
         run: |
           git clone --filter=blob:none --sparse --depth=1 --single-branch --branch codex/geometry-visual-publication-v2-20261005 https://github.com/icefoxtail/AP------.git mini
           cd mini
-          git sparse-checkout set archive/tools/geometry-equation .github/workflows/geometry-publication-tests.yml
+          git sparse-checkout set archive/tools/geometry-equation .github/workflows
           test "$(git rev-parse HEAD)" = "5a20240fbc612d8e984bd11c78c304582def380f"
           git status --short --branch
           cd ..
