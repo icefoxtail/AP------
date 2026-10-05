@@ -1,0 +1,10 @@
+{
+  "stage": "R2",
+  "examUid": "21_왕운중_2학기_기말_중2_기출",
+  "inputArtifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+  "finalArtifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+  "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2.evidence.json",
+  "completedStep": "24-qid blind freeze and one R2_V2 structural validation; targeted mismatch/figure review recorded",
+  "firstMissingClosureStep": "CLEAN_BLIND_REEXECUTION_ALL_24_QIDS_WITH_STUDENT_FIGURE_ASSETS_INCLUDED_BEFORE_FREEZE",
+  "exactReason": "The immutable blind freeze has mismatches at q3/q15 and undeterminable values at q13/q18/q22/q23 because the separate student input omitted their figure assets. Those assets were inspected only after R1 stored answers were exposed, so post-freeze corroboration cannot repair blindAnswer or support consuming the structurally passing validator report. ROOT should route a fresh clean archive_r2 session for this same examUid; do not send to MASTER."
+}
