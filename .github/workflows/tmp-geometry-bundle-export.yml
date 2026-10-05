@@ -2,22 +2,23 @@ name: Temporary geometry bundle export
 on:
   push:
     branches: ['tmp/geometry-publication-bundle-export-20261005']
-  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   export:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Build bundle
+      - name: Sparse clone target branch
         run: |
-          git bundle create geometry-base.bundle refs/remotes/origin/codex/geometry-visual-publication-v2-20261005
-          git bundle verify geometry-base.bundle
+          git clone --filter=blob:none --sparse --depth=1 --single-branch --branch codex/geometry-visual-publication-v2-20261005 https://github.com/icefoxtail/AP------.git mini
+          cd mini
+          git sparse-checkout set archive/tools/geometry-equation .github/workflows/geometry-publication-tests.yml
+          test "$(git rev-parse HEAD)" = "5a20240fbc612d8e984bd11c78c304582def380f"
+          git status --short --branch
+          cd ..
+          tar -czf geometry-sparse-worktree.tgz mini
       - uses: actions/upload-artifact@v4
         with:
-          name: geometry-base-bundle
-          path: geometry-base.bundle
+          name: geometry-sparse-worktree
+          path: geometry-sparse-worktree.tgz
           retention-days: 1
