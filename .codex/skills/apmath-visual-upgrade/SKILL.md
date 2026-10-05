@@ -481,12 +481,15 @@ relocate
 
 4px/6px 같은 “들어가기는 하지만 학생이 못 읽는” label은 PASS가 아니다.
 
-**Final viewport HARD:** authored SVG `font-size`가 아니라 실제 Archive required render profile에서의
+**Publication render HARD:** authored SVG `font-size`가 아니라 **PC 기준 실제 Archive solution render**에서의
 `finalViewportCssFontPx`를 본다.
 
-Archive solution geometry/SVG의 기본 publication reference profile은 **실제 Archive `mode=sol`, 390×844 viewport**다.
-이 기준에서 학생에게 읽혀야 하는 point/length/angle/math/text label은 **11 CSS px 미만이면 HARD FAIL**, 12 CSS px 이상을 기본 목표로 한다.
-320px 등 더 좁은 폭은 responsive 참고 프로필이며, 별도 작업 지시가 없으면 390px HARD floor를 자동 대체하지 않는다.
+기본 publication reference는 **screen-fit/page-fit 축소가 걸리지 않은 desktop Archive `mode=sol` 실제 해설 화면**이다.
+기본 qualification viewport는 **1440×1000 desktop**으로 사용하되, 제품의 desktop canonical viewport가 따로 정해지면 그 값을 따른다.
+이 PC reference에서 학생에게 읽혀야 하는 point/length/angle/math/text label은 **11 CSS px 미만이면 HARD FAIL**, 12 CSS px 이상을 기본 목표로 한다.
+
+모바일/좁은 화면에서 A4/page 전체가 통째로 축소되는 것은 SVG publication 품질 gate가 아니다.
+완성된 SVG는 `viewBox` 기반으로 비례 확대·축소되게 두며, **모바일 별도 render PASS나 모바일 absolute font floor를 요구하지 않는다.**
 
 ### 8.1 GEOMETRY ANNOTATION SCALE / POSITION — CURRENT HARD
 
@@ -498,7 +501,7 @@ Archive solution geometry/SVG의 기본 publication reference profile은 **실�
 
 - label은 SVG user-space에서 도형과 함께 비례 축소·확대되게 한다.
 - fixed viewport CSS px로 도형과 분리된 크기를 강제하지 않는다.
-- 긴 식 때문에 예외적으로 크기를 달리해야 하면 먼저 위치·viewBox·composition을 조정하고, 예외 사유를 남기며 390px HARD floor는 지킨다.
+- 긴 식 때문에 예외적으로 크기를 달리해야 하면 먼저 위치·viewBox·composition을 조정하고, 예외 사유를 남기며 desktop publication reference의 11px HARD floor는 지킨다.
 - point label은 해당 점의 외곽 free sector를 우선 사용하고, 점·선분·원·arc·숫자·canvas edge와 붙지 않게 한다.
 - angle value는 실제 owner wedge 안 또는 명확한 인접 위치에 두고 arc와 하나의 묶음으로 읽혀야 한다.
 - length value는 owner가 명백하면 선분 인접 배치를 우선하고, 애매할 때만 offset dimension, 필요할 때만 짧은 leader를 사용한다.
@@ -533,7 +536,7 @@ relocate label
 - critical point
 - interval topology
 - label density
-- mobile width
+- desktop/reference display width
 
 equal-unit은 geometry truth에 필요할 때만 사용한다.
 함수 그래프에서 equal-unit 때문에 plot이 지나치게 세로/가로로 찌그러지면 다른 scale/viewport를 사용한다.
@@ -569,7 +572,7 @@ source + frozen solution facts
 → static layout/typography review
 → actual SVG parity
 → real browser render
-→ actual font / bbox / collision / clipping / mobile readability
+→ actual font / bbox / collision / clipping / desktop publication readability
 → visual polish
 → backend escalation if needed
 → rerender
@@ -621,8 +624,8 @@ triage
 - `getBBox()` / `getBoundingClientRect()` 등 real DOM measurement
 - clipping / label collision / overflow 확인
 - 각 student-facing label의 `finalViewportCssFontPx` 기록
-- required render profile에서 `finalViewportCssFontPx >= 11` HARD
-- 가능하면 native Archive solution column에서도 확인
+- **desktop publication reference**에서 `finalViewportCssFontPx >= 11` HARD
+- native Archive desktop solution column에서 확인
 
 금지:
 - static script가 `overlapCount: 0`을 하드코딩
@@ -633,9 +636,14 @@ triage
 가능하면 repository의 공식 browser verifier / runtime을 사용한다.
 환경 제약으로 공식 route가 안 되면 `RENDER_PENDING`을 유지한다.
 
-## 12.1 GEOMETRY CHANGE — ACTUAL ARCHIVE RENDER MANDATORY
+## 12.1 GEOMETRY CHANGE — ACTUAL ARCHIVE DESKTOP RENDER MANDATORY
 
-다음 중 하나라도 바꾼 solution geometry SVG는 최종 visual PASS 전에 **실제 Archive `mode=sol` 390×844**에서 반드시 확인한다.
+다음 중 하나라도 바꾼 solution geometry SVG는 최종 visual PASS 전에 **screen-fit/page-fit 축소가 없는 실제 Archive desktop `mode=sol` reference**에서 반드시 확인한다.
+기본 qualification viewport는 **1440×1000**이다.
+
+모바일/좁은 화면의 page-fit 결과는 이 gate의 대상이 아니다.
+모바일에서는 완성된 SVG가 브라우저/상위 컨테이너에 의해 비례 scale되는 것을 정상 동작으로 본다.
+따라서 모바일에서 축소된 절대 CSS px만으로 SVG를 FAIL 처리하지 않으며, 모바일 별도 render qualification도 요구하지 않는다.
 
 - point/angle/length/region label 위치 또는 크기
 - angle arc / right-angle / dimension / leader
@@ -684,7 +692,7 @@ KEEP_SEMANTIC
 
 - current canonical stroke hierarchy: main / auxiliary / derived / conclusion의 선 굵기·선종류
 - TEXT_FONT / MATH_FONT 역할 분리와 수학 변수의 일관된 조판
-- required viewport의 final CSS font-size HARD gate
+- desktop publication reference의 final CSS font-size HARD gate
 - point / length / angle label owner와 여백·충돌·clipping
 - 의미가 있는 제한적 accent color와 black-and-white survivability
 - canvas / viewBox / information density / whitespace의 일관성
@@ -701,7 +709,7 @@ style normalization 과정에서 실제 geometry 또는 decisive relation을 바
 - `styleNormalizationAction = ALREADY_CURRENT | NORMALIZED`
 - `styleVersion / appliedStyleTokens`
 - `semanticGeometryPreserved = true | false`
-- required viewport의 font/bbox/collision evidence
+- desktop publication reference의 font/bbox/collision evidence
 
 **최종 KEEP은 `styleFloorStatus=PASS`일 때만 허용한다.**
 
