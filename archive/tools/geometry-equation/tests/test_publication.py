@@ -38,6 +38,35 @@ def edit(svg, oid, mutate):
     return ET.tostring(root, encoding='utf-8')
 
 
+
+def constructed_evidence():
+    return {
+        'mode':'CONSTRUCTED_REALIZATION',
+        'rationale':'Synthetic regression realizes the triangle from metric and perpendicular constraints.',
+        'normalization':{'originPoint':'A','xAxisPoint':'B','unitScale':3},
+        'freeVariables':[],
+        'pointCoordinates':{'A':[0,0],'B':[3,0],'C':[0,3]},
+        'conditions':[
+            {'id':'AB_LENGTH','kind':'DISTANCE','refs':['A','B'],'expected':3,'tolerance':1e-9},
+            {'id':'AC_LENGTH','kind':'DISTANCE','refs':['A','C'],'expected':3,'tolerance':1e-9},
+            {'id':'A_RIGHT','kind':'PERPENDICULAR','refs':['A','B','A','C'],'tolerance':1e-9},
+        ],
+        'constructionSteps':[
+            {'id':'STEP_A','operation':'ANCHOR_ORIGIN','output':'A','inputs':[]},
+            {'id':'STEP_B','operation':'PLACE_POSITIVE_X','output':'B','inputs':['A','AB_LENGTH']},
+            {'id':'STEP_C','operation':'PERPENDICULAR_DISTANCE_INTERSECTION','output':'C','inputs':['A','B','AC_LENGTH','A_RIGHT']},
+        ],
+        'residualChecks':[
+            {'conditionId':'AB_LENGTH','residual':0,'tolerance':1e-9},
+            {'conditionId':'AC_LENGTH','residual':0,'tolerance':1e-9},
+            {'conditionId':'A_RIGHT','residual':0,'tolerance':1e-9},
+        ],
+        'degeneracyChecks':[
+            {'id':'TRIANGLE_NONDEGENERATE','kind':'NONCOLLINEAR','refs':['A','B','C'],'observed':1,'minimum':0.1},
+        ],
+    }
+
+
 class PublicationTests(unittest.TestCase):
     def test_positive_fixture_inventory(self):
         self.assertEqual(len(list(FIXTURES.glob('*.spec.json'))), 5)
@@ -119,15 +148,61 @@ class PublicationTests(unittest.TestCase):
                 s,_=load();mutate(s)
                 with self.assertRaises(ValueError): build(s)
 
+    def test_coordinate_evidence_required_and_source_coverage(self):
+        s,_=load()
+        self.assertEqual(s['sourceFacts']['coordinateEvidence']['mode'],'SOURCE_COORDINATES')
+        missing=copy.deepcopy(s);missing['sourceFacts'].pop('coordinateEvidence')
+        with self.assertRaisesRegex(ValueError,'COORDINATE_EVIDENCE_REQUIRED'):build(missing)
+        bad=copy.deepcopy(s);bad['sourceFacts']['coordinateEvidence']['sourcePointIds'].pop()
+        with self.assertRaisesRegex(ValueError,'SOURCE_COORDINATE_ID_COVERAGE_FAIL'):build(bad)
+
+    def test_constructed_realization_requires_complete_verified_evidence(self):
+        s,r=load();e=constructed_evidence()
+        s['sourceFacts']['coordinateEvidence']=copy.deepcopy(e)
+        r['coordinateEvidence']=copy.deepcopy(e)
+        result=build(s);report=check(result['svg'].encode(),r)
+        self.assertEqual(report['status'],'PASS')
+        self.assertEqual(result['witness']['coordinateEvidenceMode'],'CONSTRUCTED_REALIZATION')
+        self.assertEqual(report['coordinateEvidenceMode'],'CONSTRUCTED_REALIZATION')
+        self.assertEqual(len(result['witness']['coordinateEvidenceSha256']),64)
+        self.assertEqual(len(report['coordinateEvidenceSha256']),64)
+        for mutate,code in [
+            (lambda x:x['constructionSteps'].pop(),'CONSTRUCTED_STEP_COVERAGE_FAIL'),
+            (lambda x:x['residualChecks'][0].update(residual=.25),'CONSTRUCTED_RESIDUAL_EVIDENCE_MISMATCH'),
+            (lambda x:x['degeneracyChecks'][0].update(observed=.5),'CONSTRUCTED_DEGENERACY_EVIDENCE_MISMATCH'),
+            (lambda x:x['pointCoordinates']['C'].__setitem__(1,2.5),'CONSTRUCTED_POINT_COORDINATE_MISMATCH'),
+        ]:
+            with self.subTest(code=code):
+                bad=copy.deepcopy(s);mutate(bad['sourceFacts']['coordinateEvidence'])
+                with self.assertRaisesRegex(ValueError,code):build(bad)
+
+    def test_independent_auditor_recomputes_constructed_coordinate_evidence(self):
+        s,r=load();e=constructed_evidence()
+        s['sourceFacts']['coordinateEvidence']=copy.deepcopy(e)
+        r['coordinateEvidence']=copy.deepcopy(e)
+        svg=build(s)['svg'].encode()
+        report=check(svg,r)
+        self.assertEqual(report['status'],'PASS')
+        self.assertEqual(report['coordinateEvidenceMode'],'CONSTRUCTED_REALIZATION')
+        self.assertEqual(report['observations'][0]['type'],'COORDINATE_EVIDENCE')
+        bad=copy.deepcopy(r);bad['coordinateEvidence']['residualChecks'][0]['residual']=.25
+        report=check(svg,bad)
+        self.assertEqual(report['status'],'FAIL')
+        self.assertIn('CONSTRUCTED_RESIDUAL_EVIDENCE_MISMATCH',str(report['errors']))
+        missing=copy.deepcopy(r);missing.pop('coordinateEvidence')
+        self.assertIn('COORDINATE_EVIDENCE_REQUIRED',str(check(svg,missing)['errors']))
+
     def test_collinear_ray_alias_does_not_duplicate_the_same_angle(self):
         s,_=load();s['objects'].append({'id':'M','kind':'POINT','at':[1.5,0]})
         s['publication']['sourcePointLabels']['M']='M'
+        s['sourceFacts']['coordinateEvidence']['sourcePointIds'].append('M')
         s['publication']['annotations'].append({'id':'alias','kind':'ANGLE','refs':['M','A','C'],'value':90})
         with self.assertRaisesRegex(ValueError,'DUPLICATE_SEMANTIC'):build(s)
 
     def test_straight_angle_needs_explicit_direction(self):
         s,_=load();s['publication']['annotations']=[{'id':'straight','kind':'ANGLE','refs':['B','A','D'],'value':180}]
         s['objects'].append({'id':'D','kind':'POINT','at':[-3,0]});s['publication']['sourcePointLabels']['D']='D'
+        s['sourceFacts']['coordinateEvidence']['sourcePointIds'].append('D')
         with self.assertRaisesRegex(ValueError,'EXPLICIT_SWEEP'):build(s)
         s['publication']['annotations'][0]['sweep']='CW'
         self.assertIn('straight',build(s)['svg'])

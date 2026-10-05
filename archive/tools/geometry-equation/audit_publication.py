@@ -174,6 +174,143 @@ def _visible_tree(root):
     _check(not regions or not ink or max(regions) < min(ink), 'REGION_OCCLUDES_GEOMETRY')
 
 
+
+def _coordinate_condition_residual(points, row):
+    kind, refs = row.get('kind'), row.get('refs')
+    _check(isinstance(refs, list) and all(r in points for r in refs), 'CONSTRUCTED_CONDITION_SCHEMA:'+str(row.get('id')))
+    p = [points[r] for r in refs]
+    def vector(a, b): return b[0]-a[0], b[1]-a[1]
+    if kind == 'DISTANCE':
+        _check(len(p) == 2 and 'expected' in row, 'CONSTRUCTED_CONDITION_SCHEMA:'+str(row.get('id')))
+        return abs(math.dist(p[0], p[1])-_number(row['expected']))
+    if kind in {'PERPENDICULAR', 'PARALLEL'}:
+        _check(len(p) == 4 and 'expected' not in row, 'CONSTRUCTED_CONDITION_SCHEMA:'+str(row.get('id')))
+        u, v = vector(p[0], p[1]), vector(p[2], p[3]); nu, nv = math.hypot(*u), math.hypot(*v)
+        _check(nu > 1e-12 and nv > 1e-12, 'CONSTRUCTED_DEGENERATE_CONDITION:'+row['id'])
+        value = u[0]*v[0]+u[1]*v[1] if kind == 'PERPENDICULAR' else u[0]*v[1]-u[1]*v[0]
+        return abs(value)/(nu*nv)
+    if kind == 'COLLINEAR':
+        _check(len(p) == 3 and 'expected' not in row, 'CONSTRUCTED_CONDITION_SCHEMA:'+str(row.get('id')))
+        u, v = vector(p[0], p[1]), vector(p[0], p[2]); nu, nv = math.hypot(*u), math.hypot(*v)
+        _check(nu > 1e-12 and nv > 1e-12, 'CONSTRUCTED_DEGENERATE_CONDITION:'+row['id'])
+        return abs(u[0]*v[1]-u[1]*v[0])/(nu*nv)
+    if kind == 'MIDPOINT':
+        _check(len(p) == 3 and 'expected' not in row, 'CONSTRUCTED_CONDITION_SCHEMA:'+str(row.get('id')))
+        return math.dist(p[0], ((p[1][0]+p[2][0])/2, (p[1][1]+p[2][1])/2))
+    if kind == 'EQUAL_DISTANCE':
+        _check(len(p) == 4 and 'expected' not in row, 'CONSTRUCTED_CONDITION_SCHEMA:'+str(row.get('id')))
+        return abs(math.dist(p[0], p[1])-math.dist(p[2], p[3]))
+    raise ValueError('UNSUPPORTED_CONSTRUCTED_CONDITION:'+str(kind))
+
+
+def _coordinate_degeneracy_metric(points, row):
+    kind, refs = row.get('kind'), row.get('refs')
+    _check(isinstance(refs, list) and all(r in points for r in refs), 'CONSTRUCTED_DEGENERACY_SCHEMA:'+str(row.get('id')))
+    p = [points[r] for r in refs]
+    if kind == 'NONCOLLINEAR':
+        _check(len(p) == 3, 'CONSTRUCTED_DEGENERACY_SCHEMA:'+row['id'])
+        u, v = (p[1][0]-p[0][0], p[1][1]-p[0][1]), (p[2][0]-p[0][0], p[2][1]-p[0][1])
+        nu, nv = math.hypot(*u), math.hypot(*v)
+        _check(nu > 1e-12 and nv > 1e-12, 'CONSTRUCTED_DEGENERACY_FAIL:'+row['id'])
+        return abs(u[0]*v[1]-u[1]*v[0])/(nu*nv)
+    if kind == 'DISTINCT_POINTS':
+        _check(len(p) == 2, 'CONSTRUCTED_DEGENERACY_SCHEMA:'+row['id'])
+        return math.dist(p[0], p[1])
+    raise ValueError('UNSUPPORTED_CONSTRUCTED_DEGENERACY:'+str(kind))
+
+
+def _audit_coordinate_evidence(evidence, points):
+    _check(isinstance(evidence, dict), 'COORDINATE_EVIDENCE_REQUIRED')
+    mode = evidence.get('mode')
+    _check(mode in {'SOURCE_COORDINATES', 'CONSTRUCTED_REALIZATION'}, 'COORDINATE_EVIDENCE_MODE_REQUIRED')
+    rationale = evidence.get('rationale')
+    _check(isinstance(rationale, str) and 8 <= len(rationale.strip()) <= 2000, 'COORDINATE_EVIDENCE_RATIONALE_REQUIRED')
+    if mode == 'SOURCE_COORDINATES':
+        _check(set(evidence) == {'mode', 'rationale', 'sourcePointIds'}, 'SOURCE_COORDINATE_EVIDENCE_SCHEMA')
+        ids = evidence.get('sourcePointIds')
+        _check(isinstance(ids, list) and len(ids) == len(set(ids)) and set(ids) == set(points),
+               'SOURCE_COORDINATE_ID_COVERAGE_FAIL')
+        return {'type':'COORDINATE_EVIDENCE','mode':mode,'conditionCount':0,'residualPassCount':0,'degeneracyPassCount':0}
+
+    required = {'mode', 'rationale', 'normalization', 'freeVariables', 'pointCoordinates',
+                'conditions', 'constructionSteps', 'residualChecks', 'degeneracyChecks'}
+    _check(set(evidence) == required, 'CONSTRUCTED_COORDINATE_EVIDENCE_SCHEMA')
+    coords = evidence['pointCoordinates']
+    _check(isinstance(coords, dict) and set(coords) == set(points), 'CONSTRUCTED_POINT_COORDINATE_COVERAGE_FAIL')
+    coords = {k:_pair(v) for k,v in coords.items()}
+    _check(all(math.dist(coords[k], points[k]) <= 1e-12 for k in points), 'CONSTRUCTED_POINT_COORDINATE_MISMATCH')
+
+    norm = evidence['normalization']
+    _check(isinstance(norm, dict) and set(norm) == {'originPoint','xAxisPoint','unitScale'}, 'CONSTRUCTED_NORMALIZATION_SCHEMA')
+    origin, axis, scale = norm.get('originPoint'), norm.get('xAxisPoint'), _number(norm.get('unitScale'))
+    _check(origin in points and axis in points and origin != axis and scale > 0, 'CONSTRUCTED_NORMALIZATION_INVALID')
+    _check(math.dist(coords[origin], (0.0,0.0)) <= 1e-12 and abs(coords[axis][1]) <= 1e-12 and abs(coords[axis][0]-scale) <= 1e-12,
+           'CONSTRUCTED_NORMALIZATION_MISMATCH')
+
+    variables = evidence['freeVariables']
+    _check(isinstance(variables, list) and len(variables) <= 100, 'CONSTRUCTED_FREE_VARIABLES_SCHEMA')
+    variable_ids = []
+    for row in variables:
+        _check(isinstance(row, dict) and set(row) == {'id','value'} and isinstance(row.get('id'), str) and re.fullmatch('[A-Za-z0-9_-]{1,100}', row['id']),
+               'CONSTRUCTED_FREE_VARIABLE_SCHEMA')
+        _number(row['value']); variable_ids.append(row['id'])
+    _check(len(variable_ids) == len(set(variable_ids)), 'CONSTRUCTED_FREE_VARIABLE_DUPLICATE')
+
+    conditions = evidence['conditions']
+    _check(isinstance(conditions, list) and 1 <= len(conditions) <= 100, 'CONSTRUCTED_CONDITION_ARRAY_REQUIRED')
+    computed, order = {}, []
+    for row in conditions:
+        _check(isinstance(row, dict) and set(row) <= {'id','kind','refs','expected','tolerance'} and
+               {'id','kind','refs','tolerance'} <= set(row) and isinstance(row.get('id'), str) and re.fullmatch('[A-Za-z0-9_-]{1,100}', row['id']),
+               'CONSTRUCTED_CONDITION_SCHEMA:'+str(row.get('id')))
+        tolerance = _number(row['tolerance'])
+        _check(0 < tolerance <= 1e-6, 'CONSTRUCTED_TOLERANCE_OUT_OF_RANGE:'+row['id'])
+        residual = _coordinate_condition_residual(coords, row)
+        _check(residual <= tolerance, 'CONSTRUCTED_CONDITION_RESIDUAL_FAIL:'+row['id'])
+        _check(row['id'] not in computed, 'CONSTRUCTED_CONDITION_DUPLICATE')
+        computed[row['id']] = (residual, tolerance); order.append(row['id'])
+
+    steps = evidence['constructionSteps']
+    _check(isinstance(steps, list) and 1 <= len(steps) <= 200, 'CONSTRUCTED_STEP_ARRAY_REQUIRED')
+    step_ids, outputs = [], []
+    for row in steps:
+        _check(isinstance(row, dict) and set(row) == {'id','operation','output','inputs'} and
+               isinstance(row.get('id'), str) and re.fullmatch('[A-Za-z0-9_-]{1,100}', row['id']) and
+               isinstance(row.get('operation'), str) and re.fullmatch('[A-Z0-9_]{2,80}', row['operation']) and
+               row.get('output') in points and isinstance(row.get('inputs'), list) and all(isinstance(v,str) and v for v in row['inputs']),
+               'CONSTRUCTED_STEP_SCHEMA:'+str(row.get('id')))
+        step_ids.append(row['id']); outputs.append(row['output'])
+    _check(len(step_ids) == len(set(step_ids)) and len(outputs) == len(set(outputs)) and set(outputs) == set(points),
+           'CONSTRUCTED_STEP_COVERAGE_FAIL')
+
+    checks = evidence['residualChecks']
+    _check(isinstance(checks, list) and len(checks) == len(conditions), 'CONSTRUCTED_RESIDUAL_COVERAGE_FAIL')
+    seen = set()
+    for row in checks:
+        _check(isinstance(row, dict) and set(row) == {'conditionId','residual','tolerance'} and row.get('conditionId') in computed and row['conditionId'] not in seen,
+               'CONSTRUCTED_RESIDUAL_SCHEMA')
+        seen.add(row['conditionId']); residual, tolerance = computed[row['conditionId']]
+        declared, declared_tolerance = _number(row['residual']), _number(row['tolerance'])
+        _check(abs(declared_tolerance-tolerance) <= 1e-15 and abs(declared-residual) <= max(1e-12,tolerance*1e-6),
+               'CONSTRUCTED_RESIDUAL_EVIDENCE_MISMATCH:'+row['conditionId'])
+        _check(declared <= declared_tolerance, 'CONSTRUCTED_RESIDUAL_FAIL:'+row['conditionId'])
+    _check(seen == set(order), 'CONSTRUCTED_RESIDUAL_COVERAGE_FAIL')
+
+    degeneracy = evidence['degeneracyChecks']
+    _check(isinstance(degeneracy, list) and 1 <= len(degeneracy) <= 100, 'CONSTRUCTED_DEGENERACY_COVERAGE_REQUIRED')
+    deg_ids = set()
+    for row in degeneracy:
+        _check(isinstance(row, dict) and set(row) == {'id','kind','refs','observed','minimum'} and
+               isinstance(row.get('id'), str) and re.fullmatch('[A-Za-z0-9_-]{1,100}', row['id']) and row['id'] not in deg_ids,
+               'CONSTRUCTED_DEGENERACY_SCHEMA:'+str(row.get('id')))
+        deg_ids.add(row['id']); observed, minimum = _number(row['observed']), _number(row['minimum'])
+        metric = _coordinate_degeneracy_metric(coords, row)
+        _check(abs(observed-metric) <= 1e-9, 'CONSTRUCTED_DEGENERACY_EVIDENCE_MISMATCH:'+row['id'])
+        _check(minimum >= 0 and metric > minimum, 'CONSTRUCTED_DEGENERACY_FAIL:'+row['id'])
+    return {'type':'COORDINATE_EVIDENCE','mode':mode,'conditionCount':len(conditions),
+            'residualPassCount':len(checks),'degeneracyPassCount':len(degeneracy)}
+
+
 def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, solution_bytes: bytes | None = None) -> dict:
     errors, observations = [], []
     report = {'schemaVersion': 'geometry-publication-audit-v1', 'authority': 'INDEPENDENT_STATIC_OBSERVER', 'publicationAuthorized': False,
@@ -181,7 +318,7 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
               'svgSha256': hashlib.sha256(svg_bytes).hexdigest(), 'errors': errors, 'observations': observations}
     try:
         groups = ('points', 'segments', 'circles', 'lines', 'angles', 'lengths', 'regions', 'otherLabels')
-        allowed = {'schemaVersion', 'sourceSha256', 'solutionSha256', 'coordinateModel'} | set(groups)
+        allowed = {'schemaVersion', 'sourceSha256', 'solutionSha256', 'coordinateModel', 'coordinateEvidence'} | set(groups)
         _check(isinstance(review, dict) and not set(review)-allowed and review.get('schemaVersion') == 'geometry-publication-review-v1', 'FROZEN_REVIEW_CONTRACT_REQUIRED')
         for k, data in [('sourceSha256', source_bytes), ('solutionSha256', solution_bytes)]:
             _check(isinstance(data, bytes) and len(data) > 0, 'SOURCE_SOLUTION_BYTES_REQUIRED')
@@ -199,6 +336,10 @@ def audit(svg_bytes: bytes, review: dict, *, source_bytes: bytes | None = None, 
         inverse = lambda p: ((p[0]-ox)/sx, (oy-p[1])/sy)
         source_points = {r['id']: _pair(r['at']) for r in facts['points']}
         _check(len(set(source_points.values())) == len(source_points), 'COINCIDENT_SOURCE_IDENTITY_UNSUPPORTED')
+        coordinate_observation = _audit_coordinate_evidence(review.get('coordinateEvidence'), source_points)
+        report['coordinateEvidenceMode'] = coordinate_observation['mode']
+        report['coordinateEvidenceSha256'] = hashlib.sha256(json.dumps(review['coordinateEvidence'], sort_keys=True, ensure_ascii=False, separators=(',', ':'), allow_nan=False).encode()).hexdigest()
+        observations.append(coordinate_observation)
         raw = svg_bytes.decode('utf-8')
         _check('<!DOCTYPE' not in raw.upper() and '<!ENTITY' not in raw.upper(), 'UNSUPPORTED_SVG_DTD')
         root = ET.fromstring(raw)
