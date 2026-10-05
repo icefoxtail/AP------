@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_CLOSURE_DEBT_v1",
+  "stage": "R2",
+  "lane": "R2-2",
+  "canonicalOrdinal": 25,
+  "examUid": "M2-1-24-WANGUN-1FINAL",
+  "examPath": "archive/exams/original/middle/m2/1final/24_왕운중_1학기_기말_중2_기출.js",
+  "inputArtifactSha": "59028f7f9b6bb6cd9db79ba15dd6517db7da2f18",
+  "sourceBranch": "work/middle/m2/o25-wangun-1final-r1-repair-20261005-latest",
+  "sourceHead": "44d9b542082a079a70a9a823fa0798ef6b227c97",
+  "workBranch": "work/middle/m2/o25-wangun-1final-r2-2-autonomous-20261005-0935",
+  "recheckedQids": [
+    13,
+    16,
+    19,
+    20
+  ],
+  "completedStep": "Golden/Negative calibration; q13/q16/q19/q20 math-answer-solution-Meta compare; q20 asset path/blob existence check",
+  "decision": "q13/q16/q19 PASS; q20 math-answer-solution-Meta PASS, image pixel parity pending",
+  "q20Image": {
+    "path": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q20.png",
+    "gitBlobSha": "e592071a67e231ab25657a8030dc98ab47849f8d"
+  },
+  "firstMissingClosureStep": "Q20_PROBLEM_IMAGE_PIXEL_RECHECK",
+  "requiredNextAction": "Inspect q20 PNG pixels in an authorized binary-capable runtime; materialize repaired R1 artifact on latest-main R2 branch; produce targeted R2 evidence; run approved non-empty targeted R2 validator; write validator receipt and REVIEW2 receipt; remote readback.",
+  "currentTargetedValidatorConstraint": "R2_TARGETED_NONEMPTY_SCOPE_NOT_YET_SUPPORTED",
+  "status": "R2_CLOSURE_DEBT",
+  "owner": "RELINQUISHED_TO_THANOS",
+  "r2PassDeclared": false,
+  "review2DoneDeclared": false,
+  "r3Eligible": false
+}
