@@ -297,7 +297,7 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "content": "매개변수로 나타낸 함수 $\\begin{cases}x=2t+3\\\\y=3t^2+2t\\end{cases}$에 대하여 $t=1$에서 접선의 방정식을 구하면? [5점]",
+    "content": "[서술형1] 매개변수로 나타낸 함수 $\\begin{cases}x=2t+3\\\\y=3t^2+2t\\end{cases}$에 대하여 $t=1$에서 접선의 방정식을 구하면? [5점]",
     "choices": []
   },
   {
@@ -306,7 +306,7 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "content": "영벡터가 아닌 두 벡터 $\\vec a,\\vec b$가 서로 평행하지 않고 평면 위의 서로 다른 네 점 $O,A,B,C$와 실수 $k$에 대하여 $\\overrightarrow{OA}=\\vec a+\\vec b,\\overrightarrow{OB}=-4\\vec a+2\\vec b,\\overrightarrow{OC}=3\\vec a-k\\vec b$일 때, 다음 물음에 답하여라.\n(1) 두 벡터 $\\overrightarrow{AB},\\overrightarrow{AC}$를 $\\vec a,\\vec b$로 각각 나타내면? [2점]\n(2) 세 점 $A,B,C$가 한 직선 위에 있도록 하는 실수 $k$의 값을 구하면? [3점]",
+    "content": "[서술형2] 영벡터가 아닌 두 벡터 $\\vec a,\\vec b$가 서로 평행하지 않고 평면 위의 서로 다른 네 점 $O,A,B,C$와 실수 $k$에 대하여 $\\overrightarrow{OA}=\\vec a+\\vec b,\\overrightarrow{OB}=-4\\vec a+2\\vec b,\\overrightarrow{OC}=3\\vec a-k\\vec b$일 때, 다음 물음에 답하여라.\n(1) 두 벡터 $\\overrightarrow{AB},\\overrightarrow{AC}$를 $\\vec a,\\vec b$로 각각 나타내면? [2점]\n(2) 세 점 $A,B,C$가 한 직선 위에 있도록 하는 실수 $k$의 값을 구하면? [3점]",
     "choices": []
   },
   {
@@ -316,7 +316,7 @@ window.questionBank = [
       "서술형",
       "도형"
     ],
-    "content": "오른쪽 그림과 같이 쌍곡선 $\\dfrac{x^2}{6}-\\dfrac{y^2}{2}=1$ 위의 점 $P(3,1)$에서 그은 접선이 두 점근선과 만나는 점을 각각 $A,B$라 할 때, $\\overline{OA}\\times\\overline{OB}$의 값을 구하여라. (단, 풀이 과정을 자세히 쓰시오.) [5점]",
+    "content": "[서술형3] 오른쪽 그림과 같이 쌍곡선 $\\dfrac{x^2}{6}-\\dfrac{y^2}{2}=1$ 위의 점 $P(3,1)$에서 그은 접선이 두 점근선과 만나는 점을 각각 $A,B$라 할 때, $\\overline{OA}\\times\\overline{OB}$의 값을 구하여라. (단, 풀이 과정을 자세히 쓰시오.) [5점]",
     "choices": [],
     "image": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터/q22.png"
   },
@@ -327,7 +327,7 @@ window.questionBank = [
       "서술형",
       "그래프"
     ],
-    "content": "오른쪽 그림은 모눈종이 위에 세 벡터 $\\vec a,\\vec b,\\vec c$를 나타낸 것이다. 평면벡터의 성분을 이용하여 $\\vec c=p\\vec a+q\\vec b$가 성립하도록 하는 실수 $p,q$에 대하여 $p+q$의 값을 구하시오. (단, 모눈종이의 가로, 세로 한 칸의 크기는 $1$임.) [5점]",
+    "content": "[서술형4] 오른쪽 그림은 모눈종이 위에 세 벡터 $\\vec a,\\vec b,\\vec c$를 나타낸 것이다. 평면벡터의 성분을 이용하여 $\\vec c=p\\vec a+q\\vec b$가 성립하도록 하는 실수 $p,q$에 대하여 $p+q$의 값을 구하시오. (단, 모눈종이의 가로, 세로 한 칸의 크기는 $1$임.) [5점]",
     "choices": [],
     "image": "assets/images/15_강남여고_2학기_중간_고2_기하와벡터/q23.png"
   }
