@@ -1,4 +1,5 @@
-window.examTitle = "21_왕운중_2학기_기말_중3_기출";\nwindow.questionBank = [
+window.examTitle = "21_왕운중_2학기_기말_중3_기출";
+window.questionBank = [
   {
     "id": 1,
     "content": "다음 한 원에 대한 설명 중 옳지 않은 것은? (3점)",
@@ -195,7 +196,7 @@ window.examTitle = "21_왕운중_2학기_기말_중3_기출";\nwindow.questionBa
   },
   {
     "id": 12,
-    "content": "다음은 두 반 $A$, $B$의 수학 성적의 평균과 분산을 나타낸 표이다. 이때 $A$, $B$ 두 반 전체 학생의 평균을 $a$점, 분산을 $b$라 할 때, $a+b$의 값은? (4점)",
+    "content": "두 반 A, B의 수학 성적에서 A반은 학생 수 26명, 평균 70점, 분산 4이고 B반은 학생 수 24명, 평균 70점, 분산 9이다. 두 반 전체 학생의 평균을 $a$점, 분산을 $b$라 할 때, $a+b$의 값은? (4점)",
     "choices": [
       "78.5",
       "77.4",
@@ -209,7 +210,6 @@ window.examTitle = "21_왕운중_2학기_기말_중3_기출";\nwindow.questionBa
       "통계",
       "평균과 분산"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q12.png"
   },
   {
     "id": 13,
@@ -355,7 +355,7 @@ window.examTitle = "21_왕운중_2학기_기말_중3_기출";\nwindow.questionBa
   },
   {
     "id": 22,
-    "content": "서술형 2. 아래 그림에서 $\\\\overline{AB}=\\\\overline{AC}=3\\\\sqrt5\\\\rm\\,cm$, $\\\\overline{BC}=12\\\\rm\\,cm$인 이등변삼각형 $ABC$의 외접원의 반지름의 길이를 구하는 풀이과정과 답을 모두 서술하시오. (7점)\\\\n[그림/발문 주변에 수기 표시와 scan blot이 있어 HOLD]",
+    "content": "서술형 2. 이등변삼각형 $ABC$에서 $\\\\overline{AB}=\\\\overline{AC}=3\\\\sqrt5\\\\rm\\,cm$, $\\\\overline{BC}=12\\\\rm\\,cm$일 때, 삼각형 $ABC$의 외접원의 반지름의 길이를 구하는 풀이과정과 답을 모두 서술하시오. (7점)",
     "choices": [],
     "answer": "",
     "solution": "",
@@ -363,7 +363,6 @@ window.examTitle = "21_왕운중_2학기_기말_중3_기출";\nwindow.questionBa
       "도형",
       "삼각형과 원"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q22.png"
   },
   {
     "id": 23,
