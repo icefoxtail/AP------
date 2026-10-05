@@ -683,7 +683,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 빗변 위의 꼭짓점이 만드는 닮은꼴 삼각형을 이용해 직사각형의 두 변 사이의 관계를 세운다.\n조건 정리: 직사각형의 가로를 $a$, 세로를 $b$라 하면 $0<a<8$, $0<b<6$이다.\n풀이 방향: 닮음으로 $a$를 $b$의 식으로 나타내고 넓이를 완전제곱식으로 바꾸어 최댓값을 찾는다.\n정석 풀이: 직각삼각형의 두 변의 길이가 $8,6$이므로 빗변 위의 점에 대해 $\\dfrac{a}{8}+\\dfrac{b}{6}=1$이다. 따라서 $a=8-\\dfrac{4}{3}b$이다. 직사각형의 넓이는 $ab=8b-\\dfrac{4}{3}b^2=-\\dfrac{4}{3}(b-3)^2+12$이므로 $b=3$일 때 최대이고, 이때 $a=4$이다. 둘레의 길이는 $2(a+b)=2(4+3)=14$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_순천여고_2학기_중간_고1_기출/q19.png",
+    "image": "assets/images/22_순천여고_2학기_중간_고1_기출/q19-source-clean.svg",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
