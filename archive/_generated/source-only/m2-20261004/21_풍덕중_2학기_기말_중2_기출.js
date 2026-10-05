@@ -955,8 +955,7 @@ window.questionBank = [
     "id": 17,
     "questionType": "객관식",
     "tags": [
-      "확률",
-      "일차방정식"
+      "확률"
     ],
     "content": "다음 그림과 같은 도로가 있다. A지점에서 출발하여 B지점까지 최단 거리로 갈 때, P지점을 지날 확률은? (4점)",
     "choices": [
