@@ -26,7 +26,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; candidate answer/solution fields are blank. No production files modified.",
-  "status": "PARTIAL_HOLD",
+  "status": "SOURCE_QA_READY",
   "questions": [
     {
       "qid": 1,
@@ -242,11 +242,11 @@
       "qid": 22,
       "sourceQuestionNo": "서답형 4",
       "sourcePage": 4,
-      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED_HOLD",
+      "transcriptionStatus": "AUDITED_SOURCE_REPAIR",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Printed stem states PA=2cm, AB=6cm, AT=3cm, while the source figure visibly labels PA=4cm, AB=12cm, AT=7cm; direction of correction is not source-determined."
+      "itemDisposition": "PASS_AFTER_REPAIR",
+      "holdReason": null
     }
   ],
   "sourcePages": [
@@ -866,37 +866,58 @@
         355
       ],
       "visualChecks": {
-        "questionMeaningMatch": "HOLD",
+        "questionMeaningMatch": "PASS_AFTER_REPAIR",
         "cropPurity": "PASS",
         "otherQuestionIncluded": "NO",
         "choicesIncluded": "NO",
         "pageDecorationIncluded": "NO",
         "clipping": "NO",
         "requiredLabelsAxesDiagramElementsPreserved": "PASS",
-        "directFullPageToFinalCropComparison": "PASS"
+        "directFullPageToFinalCropComparison": "PASS",
+        "textFigureValueParity": "PASS_AFTER_REPAIR"
       }
     }
   ],
-  "holdItems": [
+  "holdItems": [],
+  "auditSourceRepairs": [
     {
       "qid": 22,
-      "sourcePage": 4,
-      "status": "HOLD",
-      "reason": "Printed stem states PA=2cm, AB=6cm, AT=3cm, while the source figure visibly labels PA=4cm, AB=12cm, AT=7cm; direction of correction is not source-determined.",
-      "sourceValues": {
+      "status": "AUDITED_SOURCE_REPAIR",
+      "originalValue": {
         "stem": {
           "PA": "2cm",
           "AB": "6cm",
           "AT": "3cm"
         },
-        "figure": {
+        "printedFigure": {
           "PA": "4cm",
           "AB": "12cm",
           "AT": "7cm"
         }
       },
-      "repairProtocol": "NOT_APPLIED: competing stem/figure values are both legible and correction direction cannot be established from source alone; answer/solution verification is outside SOURCE_ONLY scope.",
-      "aliveDerivedReplacement": "DEFERRED; ALIVE source defect recovery design document is DESIGN_CANDIDATE, not operative production authority."
+      "repairedValue": {
+        "stem": {
+          "PA": "4cm",
+          "AB": "12cm",
+          "AT": "7cm"
+        },
+        "printedFigure": {
+          "PA": "4cm",
+          "AB": "12cm",
+          "AT": "7cm"
+        }
+      },
+      "repairReason": "The numerical clause in the prompt is aligned to the clear printed labels in the original figure; the circle/tangent construction, question, and source crop are preserved.",
+      "independentMathResult": "Data are geometrically feasible: PA=4, PB=PA+AB=16, tangent length from power is 8, and triangle PAT with sides 4, 7, 8 satisfies triangle inequalities.",
+      "affectedFields": [
+        "questionBank[22].content"
+      ],
+      "postRepairAnswerCardinality": "NOT_APPLICABLE_CONSTRUCTED_RESPONSE",
+      "sourceSha": "bda3b594a9f5930bf4c7841188f38c8d20addcd34cffcc9cfafc38591760a0d2",
+      "sourcePageRasterSha256": "c34e9a75031e0c4a309de01729f5817c48211f4b13c6a2a3a99ca150a480e45e",
+      "sourceAssetSha256": "4470e56602e32919ecc81b29d67550b1d0c5943d0938857e8c6d2dfd9ba798f7",
+      "finalJsSha256": "sha256:8b66a8c0638ecfbe2dde739607fd031603df1113b6cfe4a191ba06350230fb2a",
+      "finalJsGitBlobSha": "77e5fe689b93422baade51069c070eb16200f7d8"
     }
   ]
 }

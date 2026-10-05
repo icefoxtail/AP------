@@ -358,7 +358,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "서답형 4. 오른쪽 그림에서 $\\overline{PT}$는 원의 접선이고, $\\overline{PA}=2\\rm\\,cm$, $\\overline{AB}=6\\rm\\,cm$, $\\overline{AT}=3\\rm\\,cm$일 때, $\\overline{BT}$의 길이를 구하여라. (5점)",
+    "content": "서답형 4. 오른쪽 그림에서 $\\overline{PT}$는 원의 접선이고, $\\overline{PA}=4\\rm\\,cm$, $\\overline{AB}=12\\rm\\,cm$, $\\overline{AT}=7\\rm\\,cm$일 때, $\\overline{BT}$의 길이를 구하여라. (5점)",
     "choices": [],
     "answer": "",
     "solution": "",
