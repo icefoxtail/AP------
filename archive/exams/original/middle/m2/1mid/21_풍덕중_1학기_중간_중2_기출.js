@@ -364,6 +364,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -398,6 +400,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -432,6 +436,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -484,7 +490,7 @@ window.questionBank = [
       "$22^\\circ$"
     ],
     "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> $\\angle D = \\frac{1}{2} \\angle A$ 성질 이용.\\n$\\therefore \\angle D = \\frac{38}{2} = 19^\\circ$",
+    "solution": "$\\angle B=\\angle C=\\frac{180^\\circ-38^\\circ}{2}=71^\\circ$이다.\\n$\\angle B$의 이등분선은 $\\overline{BC}$와 $35.5^\\circ$를 이루고, $\\angle C$의 외각은 $180^\\circ-71^\\circ=109^\\circ$이므로 그 외각 이등분선은 $\\overline{CB}$와 $54.5^\\circ$를 이룬다.\\n따라서 두 이등분선 사이의 각은 $54.5^\\circ-35.5^\\circ=19^\\circ$이다.\\n$\\therefore \\angle BDC=19^\\circ$이므로 정답은 ②이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -500,6 +506,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -530,10 +538,12 @@ window.questionBank = [
     "category": "삼각형의 분류",
     "originalCategory": "삼각형의 분류",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-05",
-    "standardUnit": "도형의 성질",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M2-07",
+    "standardUnit": "피타고라스 정리",
+    "standardUnitOrder": 7,
     "questionType": "",
+    "problemTypeKey": null,
+    "templateKey": null,
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -553,8 +563,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "가장 긴 변을 $c$라 할 때, 삼각형이 성립하고 $c^2>a^2+b^2$이면 둔각삼각형이다.\\n① $20^2=400$, $12^2+16^2=400$이므로 직각삼각형이다.\\n② $7+21=28$이므로 삼각형이 성립하지 않는다.\\n③ $5+7>9$이고 $9^2=81>5^2+7^2=74$이므로 둔각삼각형이다.\\n④ $5^2=25$, $3^2+4^2=25$이므로 직각삼각형이다.\\n⑤ $13^2=169$, $5^2+12^2=169$이므로 직각삼각형이다.\\n$\\therefore$ ③",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -603,6 +613,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -621,7 +633,7 @@ window.questionBank = [
       "$120^\\circ$"
     ],
     "answer": "④",
-    "solution": "$\\angle BIC = 90 + \\frac{1}{2} \\angle A = 90 + 25 = 115^\\circ$\\n$\\therefore$ ④",
+    "solution": "$I$가 내심이므로 $BI$, $CI$는 각각 $\\angle B$, $\\angle C$의 이등분선이다.\\n따라서 $\\angle IBC=\\frac12\\angle B$, $\\angle ICB=\\frac12\\angle C$이고,\\n$\\angle BIC=180^\\circ-\\frac12(\\angle B+\\angle C)=180^\\circ-\\frac12(180^\\circ-\\angle A)=90^\\circ+\\frac12\\angle A$이다.\\n$\\angle A=50^\\circ$이므로 $\\angle BIC=90^\\circ+25^\\circ=115^\\circ$.\\n$\\therefore$ ④",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -637,6 +649,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -705,6 +719,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -807,6 +823,8 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
     "layoutTag": "grid",
     "tags": [
       "객관식",
