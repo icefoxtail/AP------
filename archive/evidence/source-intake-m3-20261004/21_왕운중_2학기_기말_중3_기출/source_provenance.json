@@ -27,7 +27,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; all answers and solutions blank.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_QA_READY",
   "questions": [
     {
       "qid": 1,
@@ -241,12 +241,12 @@
     },
     {
       "qid": 22,
-      "sourceQuestionNo": "작성형 4",
+      "sourceQuestionNo": "서술형 2",
       "sourcePage": 4,
       "transcriptionStatus": "SOURCE_DERIVED_REPAIR",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "SOURCE_DERIVED_REPAIR",
+      "itemDisposition": "PASS",
       "holdReason": null
     },
     {
@@ -754,38 +754,6 @@
       }
     },
     {
-      "qid": 22,
-      "sourcePage": 4,
-      "bboxPx": [
-        620,
-        200,
-        950,
-        500
-      ],
-      "bboxCoordinateSpace": "rendered original PDF page PNG pixels, origin top-left",
-      "sourcePdfSha256": "31aa3d78b0fd87e8b66f756a7e2636448e2a10031dca9d81f7ddf6f15f9127c4",
-      "fullPageRasterSha256": "99712bd487223310f33592435a2a6ff1e6a73d5dac01d97f3ef878d6a42e45b8",
-      "cropMethod": "direct pixel crop from original PDF page raster; no redraw or reconstruction",
-      "assetPath": "assets/images/21_왕운중_2학기_기말_중3_기출/q22.png",
-      "assetSha256": "94e66923478baeb88e71b898018b6beb1bfc7e85f0cf6dc0f8dfac0a9795d3c7",
-      "pixelSize": [
-        330,
-        300
-      ],
-      "visualChecks": {
-        "questionMeaningMatch": "PASS",
-        "cropPurity": "PASS",
-        "otherQuestionIncluded": "NO",
-        "choicesIncluded": "NO",
-        "pageDecorationIncluded": "NO",
-        "clipping": "YES_PARTIAL_STEM_FRAGMENT_AT_TOP_EDGE",
-        "requiredLabelsAxesTableBordersPreserved": "PASS",
-        "directFullPageToFinalCropComparison": "PASS",
-        "sameQuestionStemIncluded": "YES",
-        "reviewNote": "SOURCE_PROMPT_TRANSCRIPTION_PASS; CROP_REVIEW_HOLD: partial same-question stem is clipped at top edge and scan blot remains in source pixels; no retouch applied."
-      }
-    },
-    {
       "qid": 23,
       "sourcePage": 4,
       "bboxPx": [
@@ -844,11 +812,37 @@
         "directFullPageToFinalCropComparison": "PASS",
         "reviewNote": "Complete q18 stem, circle, labels, shaded region and its five choices; no adjacent question included."
       }
+    },
+    {
+      "qid": 22,
+      "sourceQuestionNo": "서술형 2",
+      "sourcePage": 4,
+      "sourceFigureBBoxPx": [
+        620,
+        225,
+        950,
+        520
+      ],
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left; reference region only",
+      "sourcePdfSha256": "31aa3d78b0fd87e8b66f756a7e2636448e2a10031dca9d81f7ddf6f15f9127c4",
+      "fullPageRasterSha256": "99712bd487223310f33592435a2a6ff1e6a73d5dac01d97f3ef878d6a42e45b8",
+      "assetPath": "assets/images/21_왕운중_2학기_기말_중3_기출/q22-clean.svg",
+      "assetSha256": "e1163db0f3ef5327ad785f3124514b8d16109c73e45ed0aabcd5dd422570f723",
+      "assetKind": "source-derived-svg-minimum-figure-repair",
+      "repairMethod": "Redrawn only the clean circumcircle and inscribed isosceles triangle from the directly read source: AB=AC=3√5 cm, BC=12 cm, and the explicit circumcircle relation. The blot is omitted; no answer/solution work included.",
+      "visualChecks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "choicesIncluded": "NO",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAndGeometryPreserved": "PASS",
+        "fullSourcePageAndFinalSvgOpenedAndCompared": "PASS"
+      }
     }
   ],
-  "examHold": [
-    "q22 visual crop review remains HOLD: partial same-question stem fragment is clipped at the crop top edge and the source scan blot is present; source prompt itself was directly transcribed and is complete."
-  ],
+  "examHold": [],
   "transcriptionRepairs": [
     {
       "qid": 12,
@@ -873,6 +867,6 @@
       "answerFieldAdded": false
     }
   ],
-  "notes": "q1’s marked word remains readable in the page-1 original. q12’s table headers are blurred, so visible entries were stated explicitly in text; the table image is omitted. q22’s readable measurements were retained and the scan-blotted figure reference was replaced by a text-only condition. q1 and q12 were reread from original page-1/page-2 pixels; student pencil marks were ignored. q12 prompt was restored to the printed wording, table values transcribed from the source, and its original crop remains linked. q22 printed prompt was reread and transcribed exactly; the existing image crop remains unchanged and its crop-quality HOLD is retained separately.",
-  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS"
+  "notes": "q22 was rebuilt from the typed stem and readable lower geometry; the scan blot over the outer arc was excluded. q20 student-marked answer diagrams remain held for separate verification.",
+  "cropReviewStatus": "SOURCE_QA_READY"
 }

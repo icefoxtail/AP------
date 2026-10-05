@@ -365,7 +365,7 @@ window.questionBank = [
       "도형",
       "삼각형과 원"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q22.png"
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q22-clean.svg"
   },
   {
     "id": 23,
