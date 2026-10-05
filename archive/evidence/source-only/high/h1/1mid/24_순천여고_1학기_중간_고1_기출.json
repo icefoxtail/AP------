@@ -45,12 +45,13 @@
       "18-20": 5,
       "21-23": 6
     },
-    "manualTranscriptionReview": "21/23; q9 and q19 ITEM_HOLD",
+    "manualTranscriptionReview": "23/23; q9 minus sign restored from source page 2 and q19 endpoint 2 confirmed from enlarged page-5 source.",
     "notes": [
       "The cover/footer identifies 순천여자고등학교; source filename alias 순여고 was normalized to the requested saved identity 순천여고.",
       "q20 prompt and conditions are legible under surrounding pen marks; printed text only was transcribed.",
       "No answer or solution source was used.",
-      "q9’s handwritten-over relation was changed to the positive radical equality to make the real conditions consistent with the remaining printed equation. q19’s printed interval starts at 2; handwriting was disregarded."
+      "q9 source page 2 visibly prints a minus before the right-hand radical; the JS preserves that sign. q19’s lower interval endpoint is 2, confirmed from enlarged original page-5 pixels.",
+      "q9 source page 2 visibly prints a minus before the right-hand radical; the JS preserves that sign. q19’s lower interval endpoint is 2, confirmed from enlarged original page-5 pixels."
     ],
     "holds": [],
     "transcriptionCorrections": [
@@ -62,6 +63,15 @@
         "after": "2",
         "confirmedFrom": "original page-5 raster, enlarged directly",
         "kind": "direct source transcription"
+      },
+      {
+        "qid": 9,
+        "page": 2,
+        "field": "radical relation sign",
+        "before": "positive radical equality",
+        "after": "negative radical equality: sqrt(y)/sqrt(x) = -sqrt(y/x)",
+        "confirmedFrom": "direct original page-2 pixel review",
+        "kind": "restore printed source sign"
       }
     ],
     "editorialRepairs": [
@@ -111,5 +121,5 @@
       "note": "A same-question pencil mark remains in the upper-left white margin of the source crop and does not cover or alter the diagram."
     }
   ],
-  "status": "SOURCE_DERIVED_EDITORIAL_REPAIR"
+  "status": "SOURCE_ONLY_COMPLETE"
 }

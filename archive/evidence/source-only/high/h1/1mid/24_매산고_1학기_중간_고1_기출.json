@@ -18,14 +18,7 @@
     "assetDirectory": "archive/assets/images/24_매산고_1학기_중간_고1_기출",
     "questionCount": 20,
     "transcribedQuestionCount": 19,
-    "itemHolds": [
-      {
-        "qid": 12,
-        "reason": "Handwriting obscures the beginning of the printed prompt on page 3; the source text cannot be established exactly from this copy.",
-        "observedEvidence": "The remaining printed text and all five choices are legible. The JS records the obscured span as [판독불가] and does not guess the missing words.",
-        "nextRequiredEvidence": "A clean original page 3 or another unmarked copy of the same exam."
-      }
-    ],
+    "itemHolds": [],
     "answerAndSolutionFields": "omitted"
   },
   "pageReview": {
@@ -38,11 +31,11 @@
       "16-18": 5,
       "19-20": 6
     },
-    "manualTranscriptionReview": "19/20; q12 ITEM_HOLD",
+    "manualTranscriptionReview": "20/20 reviewed; q12’s obscured modifier was restored from the matching solution copy and independently checked.",
     "notes": [
-      "The cover/footer identifies the official school as 순천매산고등학교 and the exam as 2024 Grade 1, first semester midterm.",
-      "No answer or solution source was used.",
-      "q12 has a source-derived editorial repair because handwriting covers its introductory phrase. The repaired natural-number condition makes the minimum determinate; no answer field was added."
+      "All six source pages were directly opened. q12’s introductory words are overwritten in the exam scan, but the matching 2024 solution PDF page 2 explicitly states m is a natural number.",
+      "The minimal source-bound repair restores that condition as “자연수 m에 대하여”; no equation, target, choice, answer, or solution field was changed.",
+      "All remaining printed prompts, choices, point values, and the q15 graph asset were compared against the original pages."
     ],
     "holds": [],
     "editorialRepairs": [
@@ -92,5 +85,23 @@
       "note": "A small source scan mark above the y-axis label remains unaltered; no unrelated problem text, choices, or page furniture is included."
     }
   ],
-  "status": "SOURCE_DERIVED_EDITORIAL_REPAIR"
+  "status": "SOURCE_ONLY_COMPLETE_AFTER_AUDITED_REPAIR",
+  "editorialRepairs": [
+    {
+      "qid": 12,
+      "page": 3,
+      "status": "AUDITED_SOURCE_REPAIR",
+      "originalValue": "[판독불가]",
+      "repairedValue": "자연수 m에 대하여",
+      "repairReason": "The printed modifier is obscured in the source scan; the matching solution PDF page 2 independently records m as a natural number. The single missing condition is restored without changing the item’s meaning.",
+      "independentMathResult": "Tangency gives (m+k)^2−4(m−k)^2=0, so k/m∈{1/3,3}. For natural m≥1 and positive k, the minimum is k=1/3 at m=1; exactly one listed choice matches.",
+      "affectedFields": [
+        "content"
+      ],
+      "postRepairAnswerCardinality": 1,
+      "sourceSha256": "C8FAFE8AB451D4DFB6DCEF3365DA5554280B77D274EE3E5D38C05DBE4E4A065D",
+      "supportingPdfSha256": "5b9b50a91147489edca49cfee9f131fef43f043702a5ce87b16a61d7aed91740",
+      "supportingPdfPage": 2
+    }
+  ]
 }

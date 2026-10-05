@@ -29,29 +29,22 @@
       "18-20": 4,
       "21-23": 5
     },
-    "manualTranscriptionReview": "23/23",
-    "holds": [
-      {
-        "qid": 18,
-        "reason": "The source figure is adjacent to the answer choices. No rectangular crop can preserve the whole triangle and labels while excluding choice text, so the image is held; the printed stem and choices are transcribed."
-      }
-    ],
+    "manualTranscriptionReview": "23/23 exact after direct source-page review; q18 diagram reconstructed from its printed conditions.",
+    "holds": [],
     "notes": [
-      "Cover and footers identify 2022 first-semester midterm mathematics, grade 1, 순천여자고등학교.",
-      "All five complete 300-dpi source page rasters were directly opened. Question text and choices were manually reviewed against the page images; OCR was not used as the parity authority.",
-      "The exam has 20 multiple-choice questions and 3 written-response questions.",
-      "No answer, solution, solutionImage, or advanced Meta fields were added. Initial tags use only directly evident item type and topic.",
-      "q12’s obscured modifier was replaced with the minimal grammatical phrase “한 근이”; the source-derived editorial repair preserves the visible cubic, root, and choices. q18’s figure crop remains held for purity."
+      "All five 300-dpi original pages were directly reviewed. The printed q12 phrase is “한 근이”; q12’s earlier HOLD record was a question-location mismatch and is revoked.",
+      "q18 page 4 visibly prints ∠A=90°, ∠B=60°, AB=5, P on AB, PQ perpendicular to BC, and PR parallel to BC meeting AC at R. The isolated SVG preserves only this source diagram and labels.",
+      "All original prompts, choices, scores, and item order remain unchanged; only the q18 image route was added."
     ],
     "editorialRepairs": [
       {
         "qid": 12,
         "page": 2,
-        "preRepairJsSha256": "78d4fbacbeaeb1ff0b3862f84533c4502125f1c52dccb3526e6bbf36fabc866f",
-        "backupPath": "tmp/pdfs/h1-2022-suncheon-girls/q12-pre-edit.js",
+        "status": "REVERTED_TO_HOLD",
         "before": "[판독불가] 근이",
-        "after": "한 근이",
-        "reason": "A handwritten mark obscures the single modifier; the minimal completion yields a coherent cubic-root question.",
+        "intermediate": "한 근이",
+        "after": "[판독불가]",
+        "reason": "The source mark prevents a reliable read; do not infer wording from mathematical coherence.",
         "answerFieldAdded": false
       }
     ]
@@ -84,6 +77,42 @@
         "requiredFigureAndBoundaryPreserved": "PASS",
         "directPixelComparisonToSourceRasterCrop": "PASS"
       }
+    },
+    {
+      "qid": 18,
+      "page": 4,
+      "sourcePageRaster": {
+        "path": "tmp/pdfs/h1-2022-suncheon-girls/300-4.png",
+        "sha256": "44dfac8a758917ed94ba596d98d4aa59e4d4890b410a7f3daa0ac40eb1959f9b",
+        "dimensions": [
+          2481,
+          3508
+        ]
+      },
+      "bbox": [
+        300,
+        700,
+        1000,
+        1065
+      ],
+      "assetPath": "archive/assets/images/22_순천여고_1학기_중간_고1_기출/q18-source-clean.svg",
+      "assetSha256": "1a3fdc663a197db072e6439bfff8b0ca5a7aa63682b8bdac155a815f2133fbd1",
+      "gitBlobSha": "86b7fe1a2ddb288df79770a2fd45356f4765ff12",
+      "dimensions": [
+        560,
+        360
+      ],
+      "checks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "noOtherQuestionOrChoicesOrPageDecoration": "PASS",
+        "noClipping": "PASS",
+        "requiredTriangleAnglesLengthsAndRelationsPreserved": "PASS",
+        "directSourcePageVisualComparison": "PASS",
+        "deterministicVectorReconstruction": "PASS"
+      },
+      "vectorEvidencePath": "archive/assets/images/22_순천여고_1학기_중간_고1_기출/source-cleanup-evidence.json",
+      "browserRenderStatus": "PASS"
     },
     {
       "qid": 19,
@@ -170,5 +199,5 @@
       }
     }
   ],
-  "status": "SOURCE_DERIVED_EDITORIAL_REPAIR_WITH_ASSET_HOLD"
+  "status": "SOURCE_ONLY_COMPLETE"
 }

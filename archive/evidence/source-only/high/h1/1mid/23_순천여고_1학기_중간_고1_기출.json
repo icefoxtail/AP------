@@ -30,13 +30,11 @@
       "21-22": 5,
       "23": 6
     },
-    "manualTranscriptionReview": "21/23 exact; 2 HOLD",
+    "manualTranscriptionReview": "22/23 directly legible; q2 target symbol restored to z from the matching solution copy and independently recalculated.",
     "notes": [
-      "The cover header and footer identify the paper as 2023 first-semester midterm, grade 1, 순천여자고등학교. The source filename abbreviation 순여고 is stored under the canonical identity 순천여고.",
-      "All six source pages were directly opened. Question 1 has a handwritten mark over its first printed term; question 2 has a dense handwritten mark over the requested answer notation. Both are marked [판독불가] and held without guessing.",
-      "The remaining printed prompts, choices, and conditions were transcribed manually from page images. OCR was not used to establish exact parity.",
-      "No answer, solution, solutionImage, or advanced Meta fields were added. Initial tags use only question type and directly evident topic.",
-      "q1 and q2 were directly re-read from enlarged original page-1 pixels. q1 begins with 1; q2 asks for z."
+      "All six source pages were directly opened. q2’s target symbol is covered by a dense handwritten mark in the exam scan.",
+      "The matching 2023 solution PDF page 1 identifies the target as z and boxes z=3−3i; independent calculation from (1+i)̅z=6i gives z=3−3i and distinct conjugate 3+3i, confirming the requested object.",
+      "q1’s first term is directly identifiable as 1 in the enlarged source. All remaining prompts, choices, scores, and figures were compared against the original pages."
     ],
     "holds": [],
     "transcriptionCorrections": [
@@ -46,34 +44,12 @@
         "field": "first term",
         "before": "[판독불가]",
         "after": "1",
-        "confirmedFrom": "original page-1 raster, enlarged directly",
-        "kind": "direct source transcription"
-      },
-      {
-        "qid": 2,
-        "page": 1,
-        "field": "requested quantity",
-        "before": "[판독불가]",
-        "after": "z",
-        "confirmedFrom": "original page-1 raster, enlarged directly",
+        "confirmedFrom": "1200-dpi original page-1 crop; the printed numeral remains identifiable beneath the mark",
         "kind": "direct source transcription"
       }
     ]
   },
-  "holdItems": [
-    {
-      "qid": 1,
-      "page": 1,
-      "status": "HOLD",
-      "reason": "Handwriting obscures the first printed term of the complex-number sum. The JS uses [판독불가] for that term."
-    },
-    {
-      "qid": 2,
-      "page": 1,
-      "status": "HOLD",
-      "reason": "A dense handwritten circle obscures the printed quantity requested after the equation. The JS uses [판독불가] there."
-    }
-  ],
+  "holdItems": [],
   "assets": [
     {
       "qid": 18,
@@ -172,5 +148,25 @@
       }
     }
   ],
-  "status": "SOURCE_ONLY_WITH_HOLDS"
+  "status": "SOURCE_ONLY_COMPLETE_AFTER_AUDITED_REPAIR",
+  "transcriptionCorrections": [
+    {
+      "qid": 2,
+      "page": 1,
+      "field": "requested symbol",
+      "before": "[판독불가]",
+      "after": "$z$",
+      "status": "AUDITED_SOURCE_REPAIR",
+      "confirmedFrom": "Matching 2023 solution PDF, page 1; its worked line solves and states z=3−3i.",
+      "independentMathResult": "Set z=a+bi and z̅=a−bi. (1+i)z̅=6i gives a+b=0 and a−b=6, hence z=3−3i; z̅=3+3i is a different choice.",
+      "affectedFields": [
+        "content"
+      ],
+      "answerFieldChanged": false,
+      "solutionFieldChanged": false,
+      "sourcePdfSha256": "CB00D466458F7E67370CD30536A7EB28CFC76FE6AC790F33D12F92F7F0E69971",
+      "supportingPdfSha256": "53395c1483e2bb649f50ec1d82a1926bab297cc7c5570c82e6d822020c5309be",
+      "supportingPdfPage": 1
+    }
+  ]
 }

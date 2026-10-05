@@ -27,12 +27,51 @@
       "13-18": 3,
       "19-22": 4
     },
-    "manualTranscriptionReview": "22/22",
+    "manualTranscriptionReview": "22/22; q20–q22 corrected from direct page-4 pixel review; q23–q25 removed because they do not appear in the source PDF.",
     "notes": [
       "The cover title and page footer identify 2022 first-semester midterm, grade 1, 순천팔마고등학교.",
       "All four original full-page renders were directly opened and manually reviewed. OCR was not used to establish exact parity.",
       "The printed paper contains 17 selected questions and 5 written-response questions. The source instructions identify selected items as 1–17 and written-response items as 1–5; JS IDs are sequential from 1 through 22.",
-      "No answer, solution, solutionImage, or advanced Meta fields were added. Initial tags use only question type and directly evident topic."
+      "No answer, solution, solutionImage, or advanced Meta fields were added. Initial tags use only question type and directly evident topic.",
+      "Independent full-page audit found JS q20–q22 did not match source page 4 and q23–q25 were absent from the four-page original. The three source prompts were transcribed from page 4; unsupported extra questions were removed. Answer, solution, solutionImage, and advanced Meta remain omitted."
+    ],
+    "transcriptionCorrections": [
+      {
+        "qid": 20,
+        "page": 4,
+        "field": "content",
+        "before": "A, B, C polynomial-expression question; not present on source page 4",
+        "after": "[서술형1] 실수 $a$, $b$에 대하여 이차방정식 $2x^2-ax+b=0$의 한 근이 $2+i$일 때, $ab$의 값을 구하시오. [6점]",
+        "confirmedFrom": "original PDF page 4, enlarged direct pixel crop",
+        "kind": "direct source transcription"
+      },
+      {
+        "qid": 21,
+        "page": 4,
+        "field": "content",
+        "before": "complex-number z+1/z question; not present on source page 4",
+        "after": "[서술형2] 삼각형 $ABC$의 세 변의 길이 $a$, $b$, $c$에 대하여 $a^3c+a^2bc-ac^3+ab^2c+b^3c-bc^3=0$이 성립할 때, 삼각형 $ABC$의 넓이를 구하시오. [7점]",
+        "confirmedFrom": "original PDF page 4, enlarged direct pixel crop",
+        "kind": "direct source transcription"
+      },
+      {
+        "qid": 22,
+        "page": 4,
+        "field": "content",
+        "before": "three nonzero reals and triangle-area identity; not present on source page 4",
+        "after": "[서술형3] 이차함수 $y=x^2+2mx-5$의 그래프와 직선 $y=2x-m^2$의 그래프가 서로 다른 두 점을 동시에 지난다. 두 교점의 $x$좌표가 각각 $\\alpha$, $\\beta$일 때, $(\\alpha-1)(\\beta-1)$의 최솟값을 구하시오. (단, $m$은 실수) [7점]",
+        "confirmedFrom": "original PDF page 4, enlarged direct pixel crop",
+        "kind": "direct source transcription"
+      },
+      {
+        "qid": "23–25",
+        "page": null,
+        "field": "questionBank entries",
+        "before": "three questions present in JS with no matching source items",
+        "after": "removed; the source contains only 22 questions total",
+        "confirmedFrom": "all four original PDF pages, especially final pages 3–4",
+        "kind": "source-unsupported item removal"
+      }
     ]
   },
   "assets": [],
