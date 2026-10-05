@@ -6,7 +6,7 @@
   "canonicalOrdinal": 9,
   "examFilename": "21_팔마중_1학기_중간_중2_기출.js",
   "owner": "M2-1 TEMP-R2-3",
-  "ownerState": "ACTIVE",
+  "ownerState": "RELINQUISHED",
   "selectorEligible": true,
   "claimedAt": "2026-10-05T17:37:00+09:00",
   "latestMainAtClaim": "3a7b2cb712fb192f3728f4df4a7ccc1e99d79427",
@@ -20,7 +20,40 @@
     "freshR2PhysicalProgress": false,
     "disposition": "CLAIM_ONLY_NOT_BLOCKING_BY_CURRENT_SELECTOR_CONTRACT"
   },
-  "disposition": "R2_IN_PROGRESS",
-  "completedStep": "CAS_CLAIMED_PHYSICAL_REVALIDATED",
-  "firstMissingClosureStep": "R2_TARGETED_REVIEW_COMPARE"
+  "disposition": "R2_CLOSURE_DEBT",
+  "completedStep": "R2_REVIEW_COMPARE_AND_CANONICAL_R2_V2_EXECUTION_PASS",
+  "firstMissingClosureStep": "VALIDATOR_RECEIPT_PERSIST",
+  "leaseRelinquished": true,
+  "relinquishedAt": "2026-10-05T17:37:00+09:00",
+  "r2Result": {
+    "targetedScopeQids": [
+      9,
+      17,
+      21,
+      22
+    ],
+    "deterministicRepairQids": [],
+    "itemHoldQids": [],
+    "finalArtifactSha": "eda74041cb7e65817b57ccca2a798faf9618a53e",
+    "stageEvidenceGitBlob": "19f452bcef8a6d7e0c87e5c541f8c3c682f608b0",
+    "physicalEvidenceGitBlob": "f1a5bee249d5c84fc943b9e23667449924d6376f",
+    "canonicalR2V2": {
+      "ok": true,
+      "validatorMode": "R2_V2",
+      "denominator": 24,
+      "rowCount": 24,
+      "disposition": "PASS",
+      "issues": [],
+      "authorityMainSha": "3a7b2cb712fb192f3728f4df4a7ccc1e99d79427",
+      "commonV2Blob": "e1e331b52e9af51e81bba8361d89ac11910e0f72",
+      "r2V2Blob": "91db2475cf32f9f4170edf72ef4b56ce747f110a",
+      "executionMode": "DIRECT_EXACT_CURRENT_MAIN_MODULES"
+    }
+  },
+  "exactDebt": [
+    "PERSIST_CANONICAL_R2_VALIDATOR_RECEIPT",
+    "PERSIST_REVIEW2_RECEIPT",
+    "TRANSITION_REVIEW2_DONE_TO_READY_FOR_R3",
+    "REMOTE_READBACK"
+  ]
 }
