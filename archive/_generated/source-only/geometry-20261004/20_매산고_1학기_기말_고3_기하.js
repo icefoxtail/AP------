@@ -233,7 +233,7 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "두 초점 $F(0,3),F'(0,-3)$으로부터 거리의 차가 $4$인 쌍곡선의 방정식은 $\\dfrac{x^2}{a}-\\dfrac{y^2}{b}=-1$이다. $a+b$의 값을 구하시오. [4.0점]",
+    "content": "&lt;단답형1&gt; 두 초점 $F(0,3),F'(0,-3)$으로부터 거리의 차가 $4$인 쌍곡선의 방정식은 $\\dfrac{x^2}{a}-\\dfrac{y^2}{b}=-1$이다. $a+b$의 값을 구하시오. [4.0점]",
     "choices": []
   },
   {
@@ -242,7 +242,7 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "두 점 $A,B$의 위치벡터를 각각 $\\vec a,\\vec b$라 할 때, 선분 $AB$를 $2:1$로 외분하는 점의 위치벡터를 나타내면 $m\\vec a+n\\vec b$이다. 이때, $m^2+n^2$의 값을 구하시오. [5.0점]",
+    "content": "&lt;단답형2&gt; 두 점 $A,B$의 위치벡터를 각각 $\\vec a,\\vec b$라 할 때, 선분 $AB$를 $2:1$로 외분하는 점의 위치벡터를 나타내면 $m\\vec a+n\\vec b$이다. 이때, $m^2+n^2$의 값을 구하시오. [5.0점]",
     "choices": []
   },
   {
@@ -251,7 +251,7 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "좌표평면 위의 두 점 $A(-2,0),B(2,2)$와 직선 $y=x-1$ 위를 움직이는 점 $P$에 대하여 $|\\overrightarrow{AP}+\\overrightarrow{BP}|$의 최솟값을 $a$라고 할 때, $a^2$를 구하시오. [6.0점]",
+    "content": "&lt;단답형3&gt; 좌표평면 위의 두 점 $A(-2,0),B(2,2)$와 직선 $y=x-1$ 위를 움직이는 점 $P$에 대하여 $|\\overrightarrow{AP}+\\overrightarrow{BP}|$의 최솟값을 $a$라고 할 때, $a^2$를 구하시오. [6.0점]",
     "choices": []
   },
   {
@@ -261,7 +261,7 @@ window.questionBank = [
       "서술형",
       "도형"
     ],
-    "content": "두 초점 $F,F'$이 $x$축 위에 있는 쌍곡선 $\\dfrac{x^2}{4}-\\dfrac{y^2}{a}=1$ 위의 점 $P$가 $\\overline{FP}=11$을 만족시킨다. 점 $F$에서 직선 $PF'$에 내린 수선의 발 $H$에 대하여 $\\overline{FH}=2\\sqrt{10}$일 때, 다음을 구하시오.\n(1) $\\overline{F'H}$의 길이 [4점]\n(2) 상수 $a$의 값 [6점]",
+    "content": "&lt;서술형1&gt; 두 초점 $F,F'$이 $x$축 위에 있는 쌍곡선 $\\dfrac{x^2}{4}-\\dfrac{y^2}{a}=1$ 위의 점 $P$가 $\\overline{FP}=11$을 만족시킨다. 점 $F$에서 직선 $PF'$에 내린 수선의 발 $H$에 대하여 $\\overline{FH}=2\\sqrt{10}$일 때, 다음을 구하시오.\n(1) $\\overline{F'H}$의 길이 [4점]\n(2) 상수 $a$의 값 [6점]",
     "choices": [],
     "image": "assets/images/20_매산고_1학기_기말_고3_기하/q19.png"
   },
@@ -271,7 +271,7 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "content": "좌표평면에서 점 $A(9,0)$와 원 $(x-3)^2+(y-4)^2=40$ 위의 점 $P$에 대하여 다음 물음에 답하시오.\n(1) 원의 중심을 $B$라 할 때, $\\overrightarrow{OA}+\\overrightarrow{OB}$의 성분을 구하시오. [3.0점]\n(2) $|\\overrightarrow{OA}+\\overrightarrow{OP}|$의 최댓값을 $M$이라고 할 때, $M^2$의 값을 구하시오. (단, $O$는 원점이다.) [7.0점]",
+    "content": "&lt;서술형2&gt; 좌표평면에서 점 $A(9,0)$와 원 $(x-3)^2+(y-4)^2=40$ 위의 점 $P$에 대하여 다음 물음에 답하시오.\n(1) 원의 중심을 $B$라 할 때, $\\overrightarrow{OA}+\\overrightarrow{OB}$의 성분을 구하시오. [3.0점]\n(2) $|\\overrightarrow{OA}+\\overrightarrow{OP}|$의 최댓값을 $M$이라고 할 때, $M^2$의 값을 구하시오. (단, $O$는 원점이다.) [7.0점]",
     "choices": []
   }
 ];
