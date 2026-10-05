@@ -209,7 +209,7 @@ window.questionBank = [
     "tags": [
       "통계",
       "평균과 분산"
-     ],
+    ],
     "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q12.png"
   },
   {
@@ -316,7 +316,8 @@ window.questionBank = [
     "tags": [
       "도형",
       "원의 넓이"
-    ]
+    ],
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q18-r1.png"
   },
   {
     "id": 19,
@@ -363,7 +364,7 @@ window.questionBank = [
     "tags": [
       "도형",
       "삼각형과 원"
-     ],
+    ],
     "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q22.png"
   },
   {
