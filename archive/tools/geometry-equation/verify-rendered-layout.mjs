@@ -17,7 +17,11 @@ export async function collectRenderedLayout(page) {
       for(let i=0;i<e.getNumberOfChars();i++){const c=value[i];if(c&&!/\s/.test(c)){const b=e.getExtentOfChar(i);if(!b.width||!b.height)missing++;}}
       return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',priority:Number(e.getAttribute('data-priority')||2),value,bbox:rect(bbox),client:rect(client),missingGlyphCount:missing,font:getComputedStyle(e).fontFamily,baseFontPx:parseFloat(getComputedStyle(e).fontSize),effectiveFontPx:parseFloat(getComputedStyle(e).fontSize)*Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b),owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation')};
     });
-    const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"]')].map(e=>{
+    for(const e of svg.querySelectorAll('g[data-fragment-sha]')){
+      const bbox=e.getBBox(),client=e.getBoundingClientRect(),matrix=e.getScreenCTM(),font=Number(e.getAttribute('data-font-px'));
+      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox:rect(bbox),client:rect(client),missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx:font*Math.hypot(matrix.a,matrix.b),owner:e.getAttribute('data-owner'),annotation:null});
+    }
+    const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"]')].filter(e=>!e.closest('g[data-fragment-sha]')).map(e=>{
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
       const style=getComputedStyle(e),matrix=e.getScreenCTM();
       const strokeWidthPx=style.stroke==='none'?0:parseFloat(style.strokeWidth)*(style.vectorEffect==='non-scaling-stroke'?1:Math.max(Math.hypot(matrix.a,matrix.b),Math.hypot(matrix.c,matrix.d)));
@@ -29,7 +33,8 @@ export async function collectRenderedLayout(page) {
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
       return{id:e.id,kind:e.getAttribute('data-role')||'line',points,client,strokeWidthPx,owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean)};
     });
-    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},safeMargin:32,publicationProfile:svg.getAttribute('data-publication-profile'),labels,geometry,fontStatus:document.fonts.status};
+    const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
+    return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},safeMargin,publicationProfile:svg.getAttribute('data-publication-profile'),labels,geometry,fontStatus:document.fonts.status};
   });
 }
 const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
@@ -80,7 +85,7 @@ export function analyzeRenderedLayout(capture) {
       if(hit){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
     }
   }
-  const publication=capture.publicationProfile==='geometry-publication-v1';
+  const publication=['geometry-publication-v1','fragment-publication-spike-v1'].includes(capture.publicationProfile);
   if(publication) {
     const kinds=new Set(['POINT_NAME','ANGLE_LABEL','LENGTH_LABEL','AREA_LABEL','COORDINATE_LABEL','EQUATION_LABEL']);
     const labels=capture.labels.filter(v=>kinds.has(v.kind));

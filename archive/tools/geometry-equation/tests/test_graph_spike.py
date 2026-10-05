@@ -28,6 +28,20 @@ class GraphSpike(unittest.TestCase):
         p=plan('rational',numerator=['-1','1'],denominator=['-1','1']);o=produce(p);r=audit(p,o['svg'],o['transform'])
         self.assertEqual(r['topology']['holes'],[1]);self.assertIn('REMOVABLE_HOLE_MARKER_MISSING',r['errors'])
         p=plan('rational',numerator=['1'],denominator=['0','0','1']);self.assertEqual(resolve(p)[-1]['poles'],[0])
+    def test_repeated_root_cannot_be_lifted_even_with_subpixel_vertex_error(self):
+        import xml.etree.ElementTree as ET
+        p=plan(coefficients=['1','-2','1']);o=produce(p);self.assertEqual(audit(p,o['svg'],o['transform'])['status'],'PASS')
+        root=ET.fromstring(o['svg'])
+        for curve in root:
+            points=[tuple(map(float,s.split(','))) for s in curve.get('points').split()]
+            curve.set('points',' '.join(f'{x},{y-.1}' for x,y in points))
+        self.assertIn('REQUIRED_ROOT_FEATURE_MISSING',audit(p,ET.tostring(root,encoding='unicode'),o['transform'])['errors'])
+    def test_clustered_root_display_is_unsupported_and_pole_crossing_fails(self):
+        p=plan(coefficients=['1000001/1000000','-2000001/1000000','1']);o=produce(p)
+        self.assertEqual(audit(p,o['svg'],o['transform'])['status'],'UNSUPPORTED')
+        p=plan('rational',numerator=['1'],denominator=['0','0','1']);o=produce(p);m=o['transform']
+        points=' '.join(f'{m["originX"]+v*m["sx"]},{m["originY"]-m["sy"]}' for v in [-1,1])
+        self.assertIn('DOMAIN_CROSSING',audit(p,'<svg><polyline data-role="curve" points="'+points+'"/></svg>',m)['errors'])
     def test_sqrt_missing_endpoint_and_visible_reentry(self):
         p=plan('sqrt-affine',radicand=['0','1'],domain=[0,4],viewport=[0,4,-1,3]);o=produce(p)
         import xml.etree.ElementTree as ET

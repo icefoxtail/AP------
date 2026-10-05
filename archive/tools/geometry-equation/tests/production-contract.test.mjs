@@ -7,6 +7,7 @@ import {canonicalJson,objectSha,bytesSha,fileRef,readBoundFile} from '../../pipe
 import {freezeWire,validateScalar,assetIdentity,stageKey,capabilityFingerprint,bindLegacy} from '../production/contracts.mjs';
 import {commitStage,loadStage,calculationStage,GENERATED_ROOT,generatedPath} from '../production/store.mjs';
 import {pythonWorker} from '../production/worker.mjs';
+import {RepairBudget} from '../production/repair-budget.mjs';
 const root=fs.mkdtempSync(path.join(os.tmpdir(),'apmath-wire-'));
 test.after(()=>fs.rmSync(root,{recursive:true,force:true}));
 test('Node authority normalizes 1/1.0, -0, NFC; Python binds identical raw blob',async()=>{
@@ -21,6 +22,7 @@ test('unsafe numbers and executable/untyped exact scalars rejected',()=>{
   for(const n of [NaN,Infinity,9007199254740992])assert.throws(()=>freezeWire({n}));
   for(const v of [{kind:'rational',numerator:'1',denominator:'0'},{kind:'integer',value:'01'},{kind:'expression',op:'eval',args:[]}])assert.throws(()=>validateScalar(v));
   validateScalar({kind:'expression',op:'sqrt',args:[{kind:'integer',value:'2'}]});
+  assert.throws(()=>freezeWire({'e\u0301':1}),/WIRE_KEY_MUST_BE_NFC/);
 });
 test('raw SHA, object SHA, legacy SHA retain distinct meanings',()=>{
   const relative='source.json';fs.writeFileSync(path.join(root,relative),'{"x":1.0,"s":"e\\u0301"}\n');
@@ -78,4 +80,10 @@ test('timeout terminates worker; next request uses a fresh subprocess',async()=>
   const script=path.join(root,'sleep.py');fs.writeFileSync(script,'import time\ntime.sleep(30)\n');
   await assert.rejects(pythonWorker({action:'echo',value:1},{script,timeoutMs:100}),/WORKER_TIMEOUT/);
   assert.equal((await pythonWorker({action:'echo',value:2})).result,2);
+});
+test('one controller rejects fourth repair and repeated input/action/output',()=>{
+  const b=new RepairBudget();for(let i=0;i<3;i++)b.complete(b.consume('PLAN',objectSha(i),'schema'),objectSha(i+1));
+  assert.throws(()=>b.consume('LAYOUT',objectSha(4),'collision'),/REPAIR_BUDGET_EXHAUSTED/);
+  const s=new RepairBudget();s.complete(s.consume('PLAN',objectSha(0),'schema'),objectSha(1));
+  assert.throws(()=>s.complete(s.consume('PLAN',objectSha(0),'schema'),objectSha(1)),/STAGNATION/);
 });

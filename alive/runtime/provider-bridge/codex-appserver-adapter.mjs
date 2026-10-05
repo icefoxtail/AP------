@@ -13,7 +13,8 @@ import { APP_SERVER_PHASES, getOrCreateLaunchContext, phaseContextForLaunch } fr
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
 const HISTORY_RPC_TIMEOUT_MS = 1000;
-const JOB = process.argv[process.argv.indexOf('--job') + 1];
+const jobIndex = process.argv.indexOf('--job');
+const JOB = jobIndex >= 0 ? process.argv[jobIndex + 1] : null;
 const MODEL = process.env.APMATH_CODEX_MODEL || 'gpt-5.6-luna';
 const REASONING_EFFORT = process.env.APMATH_CODEX_REASONING_EFFORT || 'xhigh';
 const MODEL_ROUTE = `${MODEL}/${REASONING_EFFORT}`;
@@ -170,15 +171,15 @@ const writeState = state => {
 const readState = () => JSON.parse(fs.readFileSync(statePath, 'utf8'));
 
 class AppServerClient {
-  constructor() {
-    this.proc = spawn('codex', ['app-server', '--stdio'], { stdio: ['pipe', 'pipe', 'ignore'], windowsHide: true });
+  constructor({ traceDir = stateDir } = {}) {
+    this.proc = spawn(process.env.CODEX_CLI_PATH || 'codex', ['app-server', '--stdio'], { stdio: ['pipe', 'pipe', 'ignore'], windowsHide: true });
     this.buffer = '';
     this.nextId = 1;
     this.pending = new Map();
     this.notifications = [];
-    this.tracePath = path.join(stateDir, 'appserver-message-trace.jsonl');
+    this.tracePath = traceDir ? path.join(traceDir, 'appserver-message-trace.jsonl') : null;
     this.traceSequence = 0;
-    fs.mkdirSync(stateDir, { recursive: true });
+    if (traceDir) fs.mkdirSync(traceDir, { recursive: true });
     this.proc.stdout.setEncoding('utf8');
     this.proc.stdout.on('data', chunk => this.consume(chunk));
     this.proc.on('exit', (code, signal) => {
@@ -197,7 +198,7 @@ class AppServerClient {
       try { message = JSON.parse(line); } catch { continue; }
       const route = classifyAppServerMessage(message, this.pending);
       try {
-        fs.appendFileSync(this.tracePath, `${JSON.stringify(summarizeAppServerMessage(message, route, ++this.traceSequence))}\n`, 'utf8');
+        if (this.tracePath) fs.appendFileSync(this.tracePath, `${JSON.stringify(summarizeAppServerMessage(message, route, ++this.traceSequence))}\n`, 'utf8');
       } catch {
         // Diagnostics must never change provider behavior.
       }
@@ -237,6 +238,40 @@ const threadParams = (phase, developerInstructions) => ({
   runtimeWorkspaceRoots: [ROOT],
   sessionStartSource: 'startup'
 });
+
+/** Narrow engine continuation using the existing authenticated AppServer.
+ * This is not a work-batch FINAL_AUDIT or a Seal. Each call has a fresh ephemeral
+ * input context, no tools, and returns provider-issued thread/turn identities.
+ */
+export async function invokeVisualContinuation({root,traceDir,purpose,input,outputSchema,timeoutMs=180000}) {
+  if(!root||!purpose||!Array.isArray(input)||!outputSchema)throw new Error('VISUAL_CONTINUATION_INPUT_REQUIRED');
+  const app=new AppServerClient({traceDir});
+  try {
+    const initialized=await withTimeout(app.request('initialize',{clientInfo:{name:'apmath-visual-continuation',version:'1.0.0'},capabilities:{experimentalApi:true}}),15000,'VISUAL_PROVIDER_INITIALIZE_TIMEOUT');
+    app.proc.stdin.write(JSON.stringify({jsonrpc:'2.0',method:'initialized',params:{}})+'\n');
+    const catalog=await withTimeout(app.request('model/list',{limit:100}),15000,'VISUAL_PROVIDER_CATALOG_TIMEOUT');
+    const selected=(catalog.data||[]).find(m=>m.isDefault)||(catalog.data||[]).find(m=>m.model===MODEL||m.id===MODEL);
+    const selectedModel=process.env.APMATH_CODEX_MODEL||selected?.model||selected?.id||MODEL;
+    const efforts=(selected?.supportedReasoningEfforts||[]).map(e=>typeof e==='string'?e:e.reasoningEffort);
+    const selectedEffort=process.env.APMATH_CODEX_REASONING_EFFORT||(efforts.includes(REASONING_EFFORT)?REASONING_EFFORT:selected?.defaultReasoningEffort||'high');
+    const start=await withTimeout(app.request('thread/start',{...threadParams(purpose,'You are an isolated APMath visual planning or review worker. Use only supplied inputs. Do not call tools or spawn subagents. Return the requested JSON. A missing condition or unsupported construction must remain unresolved.'),model:selectedModel,cwd:root,runtimeWorkspaceRoots:[root]}),15000,'VISUAL_PROVIDER_THREAD_TIMEOUT');
+    const thread=start.thread;
+    const response=await withTimeout(app.request('turn/start',{threadId:thread.id,model:selectedModel,effort:selectedEffort,input,outputSchema,approvalPolicy:'never',sandboxPolicy:{type:'readOnly',networkAccess:false},collaborationMode:{mode:'default',settings:{model:selectedModel,developer_instructions:null}}}),15000,'VISUAL_PROVIDER_TURN_TIMEOUT');
+    const turn=turnFromStartResponse(response);if(!turn?.id)throw new Error('VISUAL_PROVIDER_TURN_ID_MISSING');
+    const deadline=Date.now()+timeoutMs;let text='';
+    while(Date.now()<deadline){
+      text=completedTurnText(app.notifications,thread.id,turn.id);
+      const completion=completedTurnFor(app.notifications,thread.id,turn.id);
+      if(completion){
+        if(completion.params.turn.status!=='completed')throw new Error('VISUAL_PROVIDER_TURN_'+completion.params.turn.status+':'+JSON.stringify(completion.params.turn.error||{}));
+        if(!text)throw new Error('VISUAL_PROVIDER_EMPTY_OUTPUT');
+        return {provider:'CodexAppServer',model:selectedModel+'/'+selectedEffort,purpose,sessionId:thread.sessionId,contextId:thread.id,providerInvocationId:turn.id,appServerVersion:initialized?.serverInfo?.version||thread.cliVersion||null,subagentToolsEnabled:false,rawOutput:text,output:JSON.parse(text)};
+      }
+      await new Promise(resolve=>setTimeout(resolve,50));
+    }
+    throw new Error('VISUAL_PROVIDER_TIMEOUT');
+  }finally{app.close();}
+}
 
 async function daemonMain() {
   const app = new AppServerClient();

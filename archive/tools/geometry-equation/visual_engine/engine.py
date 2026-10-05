@@ -11,7 +11,7 @@ from .semantic_model import validate
 from .geometry_model import Circle,Line,clip_line
 from .viewport import for_spec
 from .function_sampling import sample
-from .math_expression import parse,serialize,evaluate,exact_coordinate
+from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
 from .label_layout import Box,layout,approximate_size
 from .svg_composer import compose
 from .style_tokens import load
@@ -91,6 +91,10 @@ def prepare(spec):
             if not vp.equal:raise ValueError('ANGLE_REQUIRES_EQUAL_UNITS')
             a,v,b=(vp.screen(geometry[r]) for r in obj['refs']);start=math.atan2(a[1]-v[1],a[0]-v[0]);end=math.atan2(b[1]-v[1],b[0]-v[0]);delta=(end-start+math.pi)%(2*math.pi)-math.pi
             pts=[(v[0]+tokens['angleArcRadius']*math.cos(start+delta*i/32),v[1]+tokens['angleArcRadius']*math.sin(start+delta*i/32)) for i in range(33)]
+            if oid in spec['displayFacts'].get('squareAngleIds',[]):
+                if abs(obj['value']-90)>1e-9:raise ValueError('SQUARE_REQUIRES_RIGHT_ANGLE')
+                size=tokens['rightAngleSize'];u=[(a[i]-v[i])/math.dist(a,v)*size for i in range(2)];w=[(b[i]-v[i])/math.dist(b,v)*size for i in range(2)]
+                pts=[(v[0]+u[0],v[1]+u[1]),(v[0]+u[0]+w[0],v[1]+u[1]+w[1]),(v[0]+w[0],v[1]+w[1])]
             primitive({'id':oid,'kind':'polyline','points':pts,'token':'indicator','layer':60,'role':'indicator'},'curve')
         elif kind in {'POINT_NAME','COORDINATE_LABEL','EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX','LENGTH_LABEL'}:
             label={**obj,'font':tokens['pointName'] if kind=='POINT_NAME' else tokens['coordinateLabel'] if kind=='COORDINATE_LABEL' else tokens['conditionBox'] if kind=='CONDITION_BOX' else tokens['mathLabel'],'priority':obj.get('priority',1 if kind in {'POINT_NAME','CONDITION_BOX'} else 2)}
@@ -101,16 +105,22 @@ def prepare(spec):
                 label['panelPrefix']=obj['target']+': '
                 trees=[parse(v) for v in obj['exact']]
                 trees=[parse(str(value)) if isinstance(value:=evaluate(tree,symbols),Fraction) else tree for tree in trees]
-                label.update(markup='('+','.join(serialize(tree,'svg') for tree in trees)+')',math=True)
+                label.update(markup='('+','.join(serialize(tree,'svg') for tree in trees)+')',tex='('+','.join(serialize(tree,'tex') for tree in trees)+')',math=True)
             elif kind=='CONDITION_BOX':
                 rows=[{'text':row,'math':False} if isinstance(row,str) else row for row in obj['lines']]
                 label['renderedLines']=[{**row,'markup':serialize(parse(row['text']),'svg') if row['math'] else None} for row in rows]
                 label['lines']=[serialize(parse(row['text']),'plain') if row['math'] else row['text'] for row in rows]
                 label['text']='\n'.join(label['lines']);label['hasMath']=any(v['math'] for v in rows)
             elif kind in {'EQUATION_LABEL','LENGTH_LABEL'} or obj.get('math'):
-                tree=parse(obj['text']);label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),sourceMath=obj['text'],math=True)
+                tree=parse(obj['text']);notation=spec['displayFacts'].get('notationByLabel',{}).get(oid,{})
+                entity=notation.get('entity')
+                if entity and tree.kind=='binary' and tree.value=='=' and tree.args[0].kind=='symbol' and tree.args[0].value==entity:tree=Expr('binary','=',(Expr('entity',entity),tree.args[1]))
+                if notation.get('unit'):
+                    if tree.kind=='binary' and tree.value=='=':tree=Expr('binary','=',(tree.args[0],Expr('unit',notation['unit'],(tree.args[1],))))
+                    else:tree=Expr('unit',notation['unit'],(tree,))
+                label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),tex=serialize(tree,'tex'),sourceMath=obj['text'],math=True)
                 label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
-                if kind=='LENGTH_LABEL' and abs(float(evaluate(tree))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
+                if kind=='LENGTH_LABEL' and abs(float(evaluate(parse(obj['text'])))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
             labels.append(label)
     prepared = {'primitives':primitives,'title':spec.get('title','도형과 핵심 점'),'factHash':sha(canonical(spec['sourceFacts']))}
     if 'publication' in semantic:
@@ -118,15 +128,25 @@ def prepare(spec):
         decorate(prepared, labels, obstacles, vp, semantic)
     return prepared,labels,obstacles,vp,semantic,sampling
 
-def build(spec,measurements=None):
+def build(spec,measurements=None,fragments=None):
     prepared,labels,obstacles,vp,semantic,sampling=prepare(spec)
-    safe=Box(vp.margin,vp.margin,vp.width-2*vp.margin,vp.height-2*vp.margin)
+    if fragments is not None:
+        prepared['fragmentProfile']='fragment-publication-spike-v1'
+        for label in labels:
+            label['allowSuppress']=False
+            if label['kind']=='GRAPH_ANNOTATION':
+                label['gaps']=(12,20,32,48)
+                if label['id'].startswith('tick-y-'):label['directions']=('W','E');label['priority']=0
+                elif label['id'].startswith('tick-x-'):label['directions']=('S','N');label['priority']=0
+    label_margin=12 if fragments is not None else vp.margin
+    safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
     result=layout(labels,obstacles,safe,panel,measurements)
+    if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'
     if 'publication' in semantic:
         from .publication import finalize
         finalize(prepared, result, obstacles)
-    svg=compose(prepared,result,vp)
+    svg=compose(prepared,result,vp,fragments=fragments)
     from .tikz_adapter import draft
     tex=draft(prepared,result)
     witness={'engineVersion':ENGINE_VERSION,'authority':'BUILD_SIDE_ONLY','publicationAuthorized':False,
