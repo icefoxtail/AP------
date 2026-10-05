@@ -1,21 +1,16 @@
 {
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
-  "leaseId": "M2-1-THANOS-MASTER-1-20261006T0005+0900-O29",
-  "owner": "M2-1 THANOS-MASTER-1",
-  "status": "CLOSED",
-  "baseMainSha": "d47b235937829fba90be71dd05f0f5fb3cfda034",
-  "claimedAt": "2026-10-06T00:05:00+09:00",
-  "expiresAt": "2026-10-06T01:35:00+09:00",
-  "lastProgressAt": "2026-10-06T00:11:16+09:00",
-  "closedAt": "2026-10-06T00:11:16+09:00",
-  "expectedCompletionGate": "M2_1_O29_MAIN_DONE",
-  "scope": "M2-1:PUBLISH:O29",
+  "leaseId": "M2-1-MAIN-MERGE-20261006T0032+0900-O32",
+  "owner": "M2-1 MAIN-MERGE",
+  "status": "ACTIVE",
+  "baseMainSha": "b8141778870982ef93294f1e7673851996b65676",
+  "claimedAt": "2026-10-06T00:32:17+09:00",
+  "expiresAt": "2026-10-06T02:02:17+09:00",
+  "lastProgressAt": "2026-10-06T00:32:17+09:00",
+  "expectedCompletionGate": "M2_1_O32_MAIN_DONE",
+  "scope": "M2-1:PUBLISH:O32",
   "targets": [
-    "o29:24_금당중_1학기_기말_중2_기출.js"
+    "o32:23_신흥중_1학기_기말_중2_기출.js"
   ],
-  "finalMainSha": "b8141778870982ef93294f1e7673851996b65676",
-  "terminalReceiptSha": "44b57e0e57af8ea87a70701388d787cd5227022f",
-  "firstMissingClosureStep": "NONE",
-  "mainMutation": 0,
-  "result": "RESCUE_CLOSED"
+  "firstMissingClosureStep": "LATEST_MAIN_REVALIDATE_THEN_TARGET_ONLY_PUBLISH"
 }
