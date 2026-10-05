@@ -10,7 +10,7 @@
   "owner": "RELINQUISHED",
   "claimedAtKst": "2026-10-05 15:35 KST",
   "latestMainAtClaim": "32102c5e4f6016ed8ff3d4e85b367e084aa5814b",
-  "status": "HANDOFF_READY",
+  "status": "CLOSED_REVIEW2_DONE",
   "selectorEvidence": {
     "excludedFreshActive": [
       "o29"
@@ -19,14 +19,16 @@
     "ordering": "year DESC then inventory ordinal",
     "note": "o29 has valid same-stage ACTIVE_RESCUE with fresh physical progress; o25-o28/o30/o32/o33 and other newer candidates are REVIEW2_DONE/downstream."
   },
-  "completedStep": "R2_TARGETED_MINIMAL_REVIEW_AND_PHYSICAL_EVIDENCE_MATERIALIZED",
-  "firstMissingClosureStep": "ACTUAL_CANONICAL_R2_V2_VALIDATOR_EXECUTION",
+  "completedStep": "REVIEW2_DONE_READY_FOR_R3",
+  "firstMissingClosureStep": null,
   "leaseRelinquished": true,
   "r2ReviewResult": "PASS_NO_R2_MUTATION",
   "r2V2EvidenceSha": "1c090bb089166d201091bc8b94df1f5889a01930",
   "r2PhysicalEvidenceSha": "be332d933ce6f6e2fa57adfe4e6532b7c454f429",
-  "passDeclared": false,
-  "review2Done": false,
-  "r3Eligible": false,
-  "updatedAtKst": "2026-10-05 15:52 KST"
+  "passDeclared": true,
+  "review2Done": true,
+  "r3Eligible": true,
+  "updatedAtKst": "2026-10-05 15:58 KST",
+  "validatorReceiptSha": "35e360ddd0f90b4728c11b79fb4803d3c822e099",
+  "review2ReceiptSha": "e817663f234c9183a89c6070a9b36c3fd15afe0b"
 }
