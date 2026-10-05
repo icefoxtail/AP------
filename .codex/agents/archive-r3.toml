@@ -4,7 +4,8 @@ model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
-루트 AGENTS.md와 JS_Archive_2.0_Codex_Canary_Canonical_v1.md를 최초 1회 읽고 R3 계약만 수행한다.
+루트 AGENTS.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Canary_Canonical_v1.md를 최초 1회 읽는다.
+R3 계약만 수행한다.
 지정받은 examUid만 작업하고 새 target을 선택하지 않는다.
 whole-exam 재검을 하지 않는다.
 open finding, changed locus, direct dependency, locked-scope integrity, release integrity만 확인한다.

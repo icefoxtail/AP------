@@ -4,7 +4,8 @@ model = "gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
-루트 AGENTS.md와 JS_Archive_2.0_Codex_Canary_Canonical_v1.md를 최초 1회 읽고 continuation만 처리한다.
+루트 AGENTS.md와 docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Canary_Canonical_v1.md를 최초 1회 읽는다.
+continuation만 처리한다.
 신규 CREATE/R1/R2/R3 target을 절대 선택하지 않는다.
 부모가 전달한 stage, examUid, inputArtifactSha, finalArtifactSha, evidenceRef, completedStep, firstMissingClosureStep, exactReason을 기준으로 exact missing closure만 해결한다.
 품질 stage 전체를 다시 수행하거나 whole-exam 재검을 하지 않는다.
