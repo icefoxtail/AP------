@@ -1,0 +1,1361 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R2",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examUid": "o11",
+  "canonicalInventoryOrdinal": 11,
+  "examPath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+  "finalArtifactGitBlob": "2009fc141fa6d7a8bb38627784c25e8864d17d5b",
+  "examSha256": "sha256:f9d1791e4c2c2dfd4622d91d1d1fb127dbaa4947ac2533adaf568e84a8ab6aeb",
+  "questionCount": 21,
+  "sourceAuthority": {
+    "r1ReceiptGitBlob": "c63affe9075853be8e97b23d9cd36f3205c26a41",
+    "r1ValidatorGitBlob": "49497debbcbbd9a51e83cb0032e6bb1c5c0f78c9",
+    "r1EvidenceGitBlob": "efb1d89732550a575b62d85a1951b27f7ef98f2b",
+    "generatedReplacementQids": [
+      6
+    ],
+    "sourceOriginalParityClaimedForGeneratedReplacement": false
+  },
+  "targetedScope": {
+    "mode": "TARGETED_MINIMAL",
+    "qids": [
+      3,
+      6,
+      11,
+      12,
+      13,
+      14,
+      17,
+      18
+    ],
+    "reason": "R1 changed qids/fields plus direct dependency only; whole-exam R2 re-review is forbidden by current override.",
+    "deterministicRepairQids": [],
+    "openFindingQids": [],
+    "itemHoldQids": []
+  },
+  "independence": {
+    "blindDecisionFrozenBeforeR1Compare": true,
+    "blindFreezeSha256": "sha256:b1a0f7f47a9660f2e22a7d42266dd299f31bcc1f1d66efe985585f25b94c5971",
+    "currentContract": "R2_TARGETED_MINIMAL_REVIEW",
+    "wholeExamR2ReReview": false,
+    "targetedIndependentRecheckQids": [
+      3,
+      6,
+      11,
+      12,
+      13,
+      14,
+      17,
+      18
+    ],
+    "priorR1ReceiptUsedForEligibilityAndChangedLocus": true
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "21/21",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "Intermediate work is explicit and reproducible."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "Core concept precedes substitution."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다.",
+        "observation": "Option judgments are separated clearly."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다.",
+        "observation": "Visual decision rule is stated before cases."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-121",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "CURRENT_SCOPE_BOUNDARY_NO_EXACT_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "CURRENT_SCOPE_RPM_LOOKUP",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-01-EXPONENT_LAW against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-129",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-119",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-120",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-02-LINEAR_INEQUALITY against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-139",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-137",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-131",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "CURRENT_SCOPE_BOUNDARY_NO_EXACT_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "CURRENT_SCOPE_RPM_LOOKUP",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-121",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-01-EXPONENT_LAW against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-125",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-01-EXPONENT_LAW against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-128",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-01-EXPONENT_LAW against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-129",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-01-EXPONENT_LAW against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-126",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-141",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-136",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-02-LINEAR_INEQUALITY_WORD against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-143",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_META_RECHECK",
+      "decisiveStep": "Verified M2-02-LINEAR_INEQUALITY against the problem's decisive method and stored RPM primary.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-140",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-122",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-133",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserved exact R1 full-audit disposition.",
+      "rpmDisposition": "EXACT_ACTIVE_RPM_PRIMARY",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "M2-RPM-144",
+        "R1_EVIDENCE:efb1d89732550a575b62d85a1951b27f7ef98f2b"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by the current R1 canonical evidence; null is intentionally preserved."
+    }
+  ],
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "④, ⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 minimal recheck completed on the R1 changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent monomial exponent check: choices ② and ④ are the two incorrect computations."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. Independent monomial exponent check: choices ② and ④ are the two incorrect computations."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Targeted locus does not require a new solution visual; no visual dependency changed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Changed subunit recheck: exponent-law/monomial operation semantics fit M2-01-EXPONENT_LAW and M2-RPM-129."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "②, ④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Current replacement authority is exact to R1 final artifact; q6 is explicitly REPAIR_MASTER_GENERATED_REPLACEMENT and original-source parity is not claimed."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent inequality solve gives x >= -17/4; among 10,-9,7,-4,5 only -9 is not a solution, so ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. Independent inequality solve gives x >= -17/4; among 10,-9,7,-4,5 only -9 is not a solution, so ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Targeted locus does not require a new solution visual; no visual dependency changed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Generated replacement remains in M2-02-LINEAR_INEQUALITY with M2-RPM-139; provenance preserved and original-source parity is not claimed."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 minimal recheck completed on the R1 changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "3^(2x+11-15)=3^(2x-4)=3^-2 gives x=1, so ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. 3^(2x+11-15)=3^(2x-4)=3^-2 gives x=1, so ①."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Targeted locus does not require a new solution visual; no visual dependency changed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Changed subunit recheck: exponent equation is M2-01-EXPONENT_LAW; M2-RPM-125 matches."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "①",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 minimal recheck completed on the R1 changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Let box=A. 24a^4/A=-12a^2 gives A=-2a^2, so ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. Let box=A. 24a^4/A=-12a^2 gives A=-2a^2, so ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Targeted locus does not require a new solution visual; no visual dependency changed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Changed subunit recheck: monomial division is M2-01-EXPONENT_LAW; M2-RPM-128 matches."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 minimal recheck completed on the R1 changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Cylinder ratio (pi a^2 b)/(pi b^2 a)=a/b, so ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. Cylinder ratio (pi a^2 b)/(pi b^2 a)=a/b, so ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Problem image is source context only; content states both cylinder dimensions and the solution is complete without an additional solution visual."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Changed subunit recheck: monomial ratio/exponent cancellation fits M2-01-EXPONENT_LAW; M2-RPM-129 matches."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 minimal recheck completed on the R1 changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "1/9^30=3^-60=(3^10)^-6=A^-6, so ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. 1/9^30=3^-60=(3^10)^-6=A^-6, so ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Targeted locus does not require a new solution visual; no visual dependency changed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Changed subunit recheck: power-of-a-power is M2-01-EXPONENT_LAW; M2-RPM-126 matches."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "④",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "②",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "③",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 minimal recheck completed on the R1 changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "150x+60(8-x)>=900 gives x>=14/3, minimum integer 5, so ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. 150x+60(8-x)>=900 gives x>=14/3, minimum integer 5, so ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Targeted locus does not require a new solution visual; no visual dependency changed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Changed subunit recheck: word-problem application is M2-02-LINEAR_INEQUALITY_WORD; M2-RPM-143 matches."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 minimal recheck completed on the R1 changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "x<a-10 has exactly natural numbers 1,2,3 iff 3<a-10<=4, hence 13<a<=14, so ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Targeted solution compare PASS. x<a-10 has exactly natural numbers 1,2,3 iff 3<a-10<=4, hence 13<a<=14, so ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted solution remains readable and reproducible at small-board scale; no new structural defect found."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Only middle-school grade-2 arithmetic/algebra/linear-inequality methods are used in the targeted locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Targeted locus does not require a new solution visual; no visual dependency changed."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Changed subunit recheck: integer-solution condition is core M2-02-LINEAR_INEQUALITY; M2-RPM-140 matches."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Difficulty bucket retained after targeted math/semantic recheck; no boundary change required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "⑤",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "(1) 41/330; (2) 33",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "-36x^3+9x^2-21x+24",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Outside R2 targeted scope; inherited exact R1 full-audit PASS because this qid/field was not changed and has no direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent frozen answer preserved; no changed answer/math locus in R2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit solution PASS; no R1 changed solution/open finding/direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit small-board PASS; no changed locus."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited R1 curriculum PASS; no changed method locus."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Inherited R1 visual-necessity PASS; no changed locus."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited R1 full-audit Meta PASS; no changed Meta locus."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited R1 difficulty PASS; no changed locus."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 2009fc141fa6d7a8bb38627784c25e8864d17d5b; no R2 semantic mutation."
+      },
+      "blindAnswer": "33/16 km",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    }
+  ],
+  "summary": {
+    "questionCount": 21,
+    "questionEvidenceRows": 21,
+    "targetedRecheckCount": 8,
+    "targetedRecheckQids": [
+      3,
+      6,
+      11,
+      12,
+      13,
+      14,
+      17,
+      18
+    ],
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 21,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 0,
+    "deterministicRepairQids": []
+  }
+}
