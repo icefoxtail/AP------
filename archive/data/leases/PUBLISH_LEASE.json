@@ -2,17 +2,21 @@
   "schemaVersion": "JS_ARCHIVE_PUBLISH_LEASE_v1",
   "leaseId": "M2-1-THANOS-1-20261006T0400+0900-O32",
   "owner": "M2-1 THANOS-MASTER-1",
-  "status": "ACTIVE",
+  "status": "RELINQUISHED_NON_BLOCKING",
   "baseMainSha": "4be876566452b7b5536d43d36de53531857cd563",
   "claimedAt": "2026-10-06T04:00:00+09:00",
   "expiresAt": "2026-10-06T05:30:00+09:00",
   "lastProgressAt": "2026-10-06T04:00:00+09:00",
+  "relinquishedAt": "2026-10-06T04:00:00+09:00",
   "expectedCompletionGate": "M2_1_O32_MAIN_DONE",
   "scope": "M2-1:PUBLISH:O32",
   "targets": [
     "o32:23_신흥중_1학기_기말_중2_기출.js"
   ],
+  "completedStep": "CAS_ACQUIRED_AND_EXACT_R3_RELEASE_REVALIDATED",
   "firstMissingClosureStep": "MAIN_PUBLISH_WRITE",
-  "predecessorDisposition": "MAIN-MERGE_RELINQUISHED_NON_BLOCKING",
-  "sourcePublishCommit": "1979cc64e112328cff32c2ea7ef850f924de494a"
+  "sourcePublishCommit": "1979cc64e112328cff32c2ea7ef850f924de494a",
+  "exactReleaseBlobSha": "5d5349d0f3aa15e21257439cbd8d863647b9144f",
+  "exactError": "non-force main ref update and target-only contents update were both blocked by OpenAI/provider safety checks before side effect",
+  "nextRecommendedAction": "MAIN-MERGE retry target-only non-force publish from publish/m2/watchdog-o32-20261006-0258; do not rerun R3"
 }
