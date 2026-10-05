@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cleanup Candidate",
+  "type": "object",
+  "required": [
+    "candidateId",
+    "severity",
+    "actionType",
+    "sourceFile",
+    "currentValue",
+    "suggestedValue",
+    "reason",
+    "autoFixSafe",
+    "requiresMasterReview"
+  ],
+  "properties": {
+    "candidateId": { "type": "string" },
+    "severity": { "enum": ["info", "warn", "error", "critical"] },
+    "actionType": {
+      "enum": [
+        "DB_ADD_MISSING_FILE",
+        "DB_REMOVE_MISSING_FILE",
+        "DB_FIX_QCOUNT",
+        "DB_FIX_METADATA",
+        "FIX_EXAM_TITLE_MISMATCH",
+        "FIX_MISSING_DEFAULT_FIELD",
+        "FIX_STANDARD_UNIT_MAPPING",
+        "FIX_IMAGE_PATH",
+        "REVIEW_ORPHAN_IMAGE",
+        "REVIEW_MISSING_ANSWER",
+        "REVIEW_MISSING_SOLUTION",
+        "REVIEW_EMPTY_CONTENT",
+        "REVIEW_INVALID_CHOICES",
+        "REVIEW_RAW_UNIT",
+        "REVIEW_UNKNOWN_STANDARD_UNIT_KEY",
+        "REVIEW_SPECIAL_LAYOUT"
+      ]
+    },
+    "sourceFile": { "type": "string" },
+    "questionId": {},
+    "dbFile": { "type": "string" },
+    "currentValue": {},
+    "suggestedValue": {},
+    "reason": { "type": "string" },
+    "autoFixSafe": { "type": "boolean" },
+    "requiresMasterReview": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

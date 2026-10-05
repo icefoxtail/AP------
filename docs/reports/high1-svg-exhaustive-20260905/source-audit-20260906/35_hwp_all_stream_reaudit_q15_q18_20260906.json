@@ -1,0 +1,68 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "auditType": "HWP_ALL_STREAM_READONLY_REAUDIT",
+  "scope": "checked SOURCE_HOLD q15/q18 only",
+  "source": {
+    "path": "D:/기출/23,24 고1/2024년/1학기 중간고사/수학 상 (24 여수고) - 답 x.hwp",
+    "sha256": "sha256:2b08a4fc98054294da169e044bb5f01ba05532428547474ddaeaa4d598d827b9",
+    "streamCount": 11,
+    "bodyTextStream": {
+      "rawBytes": 22029,
+      "decodedBytes": 104503,
+      "recordCount": 2598,
+      "tagCounts": {
+        "0x042": 634,
+        "0x043": 277,
+        "0x044": 634,
+        "0x045": 634,
+        "0x047": 174,
+        "0x048": 40,
+        "0x049": 1,
+        "0x04a": 2,
+        "0x04b": 3,
+        "0x04c": 20,
+        "0x04d": 1,
+        "0x04e": 2,
+        "0x04f": 12,
+        "0x052": 1,
+        "0x055": 2,
+        "0x057": 1,
+        "0x058": 160
+      },
+      "decodedTextParagraphCount": 277
+    },
+    "binData": [
+      {
+        "stream": "BinData/BIN0001.tmp",
+        "type": "JPEG",
+        "sha256": "sha256:5508e1cb729395cc79b6f91d4e3d11ead9447037e9b953b3640c6e1edb2d5dfb",
+        "finding": "tetrahedron illustration; no q15 condition equation or q18 condition block"
+      },
+      {
+        "stream": "BinData/BIN0002.bmp",
+        "type": "BMP",
+        "sha256": "sha256:69b870776fb6faec0fd62ea30f524504bdd5e4cc3254f159a7002c7a3b829d9e",
+        "finding": "quadratic graph illustration; no q15 condition equation or q18 condition block"
+      }
+    ]
+  },
+  "q15": {
+    "questionTextPresent": true,
+    "equationControlPresenceInQuestionCondition": false,
+    "postAnswerSectionMarker": "15번 (조건 누락)",
+    "finding": "all OLE streams and decoded BodyText contain no recoverable q15 condition equation",
+    "disposition": "SOURCE_HOLD_HWP_TRANSCRIPTION_UNRESOLVED"
+  },
+  "q18": {
+    "questionTextPresent": true,
+    "z1z2ControlTextPresent": true,
+    "conditionBlockBeforeChoices": false,
+    "postAnswerSolutionTextPresent": true,
+    "finding": "post-answer solution records contain an inferred pair and answer, but no source condition block before the choices",
+    "disposition": "SOURCE_HOLD_HWP_TRANSCRIPTION_UNRESOLVED"
+  },
+  "variantDisposition": "existing similar candidates remain QUARANTINED_NOT_PRODUCTION",
+  "sourceMutation": false,
+  "newlyResolvableHoldCount": 0,
+  "finalStatus": "SOURCE_HOLD_RECONFIRMED_AFTER_ALL_STREAM_INSPECTION"
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/archive/">
+  <title>Archive Output Envelope Browser QA</title>
+  <style>html,body{margin:0;min-height:100%;}#archive2-preview-frame{display:block;width:100%;height:100vh;border:0;}</style>
+  <script src="/archive/mixer-selector.js"></script>
+  <script src="/archive/archive2-canonical.js"></script>
+  <script src="/archive/archive2-core.js"></script>
+  <script src="/archive/archive2-source.js"></script>
+  <script src="/archive/archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
+  <script src="/archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
+</head>
+<body>
+  <main>
+    <h1>Archive Output Envelope Browser QA</h1>
+    <p id="status" role="status">원본 source와 catalog를 확인하고 있습니다.</p>
+  </main>
+  <script>
+    (async () => {
+      try {
+        const params = new URLSearchParams(location.search);
+        const mode = ["exam", "sol", "ans"].includes(params.get("mode")) ? params.get("mode") : "exam";
+        const preview = params.get("preview") === "1";
+        const embedded = params.get("embed") === "1";
+        const qpp = [1, 2, 4, 6, 8].includes(Number(params.get("qpp"))) ? Number(params.get("qpp")) : 4;
+        const engine = params.get("engine") === "screen" ? "engine.html" : "mixed_engine.html";
+        const requestedCount = Math.max(1, Math.min(50, Number(params.get("count")) || 1));
+        const catalogResponse = await fetch("/archive/data/archive2-catalog.json");
+        if (!catalogResponse.ok) throw new Error(`catalog load failed: ${catalogResponse.status}`);
+        const catalog = Archive2Core.decodeCatalog(await catalogResponse.json());
+        const exam = params.get("file")
+          ? catalog.exams.find(row => row.file === params.get("file"))
+          : catalog.exams.find(row => row.qCount > 0);
+        if (!exam) throw new Error("source exam fixture is unavailable");
+        const records = catalog.records
+          .filter(row => row.identityStatus === "VERIFIED" && row.sourceFile === exam.file)
+          .sort((left, right) => left.sourceOrdinal - right.sourceOrdinal)
+          .slice(0, requestedCount);
+        if (!records.length) throw new Error("verified source fixture is unavailable");
+        const questions = await Archive2Source.restore(records, catalog);
+        if (params.get("slotFixture") === "1") {
+          questions.forEach((question, index) => {
+            question.layoutTag = index === 1 ? "subjective-4up" : "subjective-2up";
+          });
+        }
+        const questionUids = records.map(row => row.questionUid);
+        const meta = {
+          sourceKind: "archive2-original",
+          sourceArchiveFile: exam.file,
+          identityTitle: exam.identityTitle || exam.file,
+          title: `Envelope QA ${mode} ${qpp}`,
+          questionUids,
+          printHeaderOptions: { title: `Envelope QA ${mode} ${qpp}`, showNameLine: true, showScoreLine: false },
+          qpp,
+          includeQr: false,
+        };
+        const envelope = await Archive2Output.publishOutputEnvelope({
+          sourceKind: "archive2-original",
+          sourceId: exam.file,
+          mode,
+          questionCount: questions.length,
+          questionUids,
+          meta,
+          questions,
+        });
+        // Poison every old generic/split key. Strict Archive2 consumers must ignore them.
+        localStorage.setItem("mixedQuestions_stale-browser-qa", JSON.stringify([{ question: "STALE PAYLOAD" }]));
+        localStorage.setItem("mixedMeta_stale-browser-qa", JSON.stringify({ title: "STALE META" }));
+        sessionStorage.setItem("mixedQuestions", JSON.stringify([{ question: "GENERIC STALE PAYLOAD" }]));
+        sessionStorage.setItem("mixedMeta", JSON.stringify({ title: "GENERIC STALE META" }));
+        const url = Archive2Output.outputEnvelopeUrl(
+          engine,
+          new URL("/archive/workspace.html", location.href).href,
+          envelope,
+          { studio: true, preview },
+        );
+        url.searchParams.set("archive2OutputQa", "1");
+        document.getElementById("status").textContent = `opening ${mode}/${qpp} with ${envelope.outputRequestId}`;
+        if (params.get("popup") === "1") {
+          const button = document.createElement("button");
+          button.id = "archive2-open-output";
+          button.type = "button";
+          button.textContent = "출력 열기";
+          button.addEventListener("click", () => window.open(url.href, "_blank"));
+          document.body.replaceChildren(button);
+          return;
+        }
+        if (embedded) {
+          const frame = document.createElement("iframe");
+          frame.id = "archive2-preview-frame";
+          frame.title = "Archive Output Envelope preview";
+          frame.src = url.href;
+          document.body.replaceChildren(frame);
+          return;
+        }
+        location.replace(url.href);
+      } catch (error) {
+        document.getElementById("status").textContent = `FAILED: ${error?.message || error}`;
+        document.documentElement.dataset.outputQaFailure = "true";
+      }
+    })();
+  </script>
+</body>
+</html>

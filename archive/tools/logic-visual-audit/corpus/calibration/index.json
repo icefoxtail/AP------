@@ -1,0 +1,76 @@
+{
+  "corpusVersion": "logic-visual-calibration-v1",
+  "calibrationPolicy": "known-good and known-bad anchors may tune the candidate verifier; they are not holdout evidence",
+  "cases": [
+    {
+      "caseId": "22-gangnam-q14-good",
+      "questionUid": "22_강남여고_2학기_중간_고1_기출:q14",
+      "label": "KNOWN_GOOD_NUMBER_LINE",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_NUMBER_LINE", "intervalComponents": [ { "from": 110, "to": "2", "fromEndpoint": { "kind": "UNMARKED" }, "toEndpoint": { "kind": "OPEN" } }, { "from": "4", "to": 690, "fromEndpoint": { "kind": "OPEN" }, "toEndpoint": { "kind": "UNMARKED" } }, { "from": "−1", "to": "4", "fromEndpoint": { "kind": "CLOSED" }, "toEndpoint": { "kind": "CLOSED" } } ] }
+    },
+    {
+      "caseId": "22-bokseong-q09-good",
+      "questionUid": "22_복성고_2학기_중간_고1_기출:q09",
+      "label": "KNOWN_GOOD_THREE_SET_VENN",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_REGION_VENN_3", "boundaryTopology": [ { "cx": 248, "cy": 165, "r": 88 }, { "cx": 305, "cy": 228, "r": 88 }, { "cx": 190, "cy": 228, "r": 88 } ], "highlightedExpressions": ["B∩C∩Aᶜ"], "highlightTopology": "clip-mask-highlight" }
+    },
+    {
+      "caseId": "22-bokseong-q17-good",
+      "questionUid": "22_복성고_2학기_중간_고1_기출:q17",
+      "label": "KNOWN_GOOD_NUMBER_LINE",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_NUMBER_LINE", "intervalComponents": [ { "from": "−3", "to": "5", "fromEndpoint": { "kind": "CLOSED" }, "toEndpoint": { "kind": "CLOSED" } }, { "from": "−3", "to": "2", "fromEndpoint": { "kind": "CLOSED" }, "toEndpoint": { "kind": "CLOSED" } } ] }
+    },
+    {
+      "caseId": "22-hyocheon-q11-good",
+      "questionUid": "22_효천고_2학기_중간_고1_기출:q11",
+      "label": "KNOWN_GOOD_EQUALITY_VENN",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_REGION_VENN_2", "boundaryTopology": [ { "cx": 243, "cy": 151, "r": 135 }, { "cx": 243, "cy": 151, "r": 135 } ], "highlightedExpressions": ["A−B=∅ → A⊆B", "B−A=∅ → B⊆A"], "highlightTopology": "coincident-boundaries" }
+    },
+    {
+      "caseId": "22-palma-q18-good",
+      "questionUid": "22_팔마고_2학기_중간_고1_기출:q18",
+      "label": "KNOWN_GOOD_COORDINATE_GRID",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_GRAPH_DEFINED", "pointCount": 8, "axisLabels": ["x", "y"] }
+    },
+    {
+      "caseId": "22-palma-q14-bad",
+      "questionUid": "22_팔마고_2학기_중간_고1_기출:q14",
+      "label": "KNOWN_BAD_COMPLEMENT_REGION_INCOMPLETE",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_REGION_VENN_2", "boundaryTopology": [ { "cx": 138, "cy": 196, "r": 64 }, { "cx": 232, "cy": 196, "r": 64 } ], "highlightedExpressions": ["U={a,b,c,d,e,f}, A♥B=(A−B)ᶜ∩(B−A)ᶜ", "A∩B"], "highlightTopology": "same-membership-region-highlight" }
+    },
+    {
+      "caseId": "22-maesan-q17-bad",
+      "questionUid": "22_매산고_2학기_중간_고1_기출:q17",
+      "label": "KNOWN_BAD_PAIR_INFORMATION_NOT_VISUALIZED",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_CASE_PARTITION", "caseRows": [ { "caseId": "a-and-21-minus-a", "complete": true } ] }
+    },
+    {
+      "caseId": "synthetic-good-force-free",
+      "questionUid": "synthetic:force-free-good",
+      "label": "KNOWN_GOOD_FORCE_FORBID_FREE",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_FORCE_FORBID_FREE", "forcedElements": ["3"], "forbiddenElements": ["1"], "freeElements": ["2"] },
+      "observedFactOverride": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_FORCE_FORBID_FREE", "forcedElements": ["3"], "forbiddenElements": ["1"], "freeElements": ["2"] }
+    },
+    {
+      "caseId": "synthetic-bad-force-free",
+      "questionUid": "synthetic:force-free-bad",
+      "label": "KNOWN_BAD_FORCE_TO_FREE_SWAP",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_FORCE_FORBID_FREE", "forcedElements": ["3"], "forbiddenElements": ["1"], "freeElements": ["2"] },
+      "observedFactOverride": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_FORCE_FORBID_FREE", "forcedElements": [], "forbiddenElements": ["1"], "freeElements": ["2", "3"] }
+    },
+    {
+      "caseId": "synthetic-good-implication",
+      "questionUid": "synthetic:implication-good",
+      "label": "KNOWN_GOOD_IMPLICATION",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "IMPLICATION_FLOW", "proofEdges": [ { "key": "p-to-q", "from": "p", "to": "q", "direction": "FORWARD" } ] },
+      "observedFactOverride": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "IMPLICATION_FLOW", "proofEdges": [ { "key": "p-to-q", "from": "p", "to": "q", "direction": "FORWARD" } ] }
+    },
+    {
+      "caseId": "synthetic-bad-implication",
+      "questionUid": "synthetic:implication-bad",
+      "label": "KNOWN_BAD_ARROW_REVERSE",
+      "expectedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "IMPLICATION_FLOW", "proofEdges": [ { "key": "p-to-q", "from": "p", "to": "q", "direction": "FORWARD" } ] },
+      "observedFactOverride": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "IMPLICATION_FLOW", "proofEdges": [ { "key": "p-to-q", "from": "q", "to": "p", "direction": "REVERSE" } ] }
+    }
+  ]
+}

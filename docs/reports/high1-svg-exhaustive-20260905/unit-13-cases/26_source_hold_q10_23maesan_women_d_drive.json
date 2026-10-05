@@ -1,0 +1,42 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "targetQuestionUid": "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js|23_매산여고_2학기_기말_고1_기출|10",
+  "targetProduction": {
+    "content": "hiking route: entrance to waterfall to summit count P, entrance-to-waterfall or waterfall-to-summit count Q, ask P+Q",
+    "assetPath": "archive/assets/images/23_매산여고_2학기_기말_고1_기출/q10.png",
+    "assetSha256": "sha256:7055c9f7ccf6ec8eef94e91e3395eee0c4c069892d7909d770e0a3cfbc7c7bbd",
+    "assetReadability": "INSUFFICIENT_FOR_TOPOLOGY_CONFIRMATION: low-resolution partial crop with visible occlusion/artefacts; it cannot serve as a clean original diagram"
+  },
+  "sourceSearch": {
+    "scope": "D:/",
+    "method": "rg --files D:/ | school/year/term filename inspection",
+    "exactSourceFound": false,
+    "observedCandidates": [
+      {
+        "path": "D:/기출/(2)1기말/(2)1기말/수학(상)/2023_매산고1_1기말.pdf",
+        "sha256": "sha256:6751fac483c34ebd19a37ca1562de41d70763ce9d76d764cc7c8f5fa9f9e005b",
+        "renderedPage3Sha256": "sha256:21667dd8a02800a7e8ab1a431b3350aa5ebb24674127bbcf3e4b8d72326bb38e",
+        "observedSchool": "순천매산고등학교",
+        "observedTerm": "2023 1학기 기말고사",
+        "observedQuestion10": "cubic equation with three distinct roots 5, 2+√2, p; not the target hiking-route question",
+        "disposition": "WRONG_SCHOOL_OR_TERM_AND_CONTENT_REJECTED"
+      },
+      {
+        "path": "D:/기출/23,24 고1/2023년/2학기 기말고사/공통수학2 고1 2학기 기말고사 2023년.hwp",
+        "sha256": "sha256:cf2271f8b45b5105e4cc423247a1eda1a54ccbbf587ac4f1655ba2db13a19903",
+        "observedSchool": "not school-specific; generic 2023 second-semester final packet",
+        "observedTerm": "2023 2학기 기말기출 (generic HWP metadata)",
+        "observedQuestion10": "condition/proposition item; not the target hiking-route P/Q question",
+        "disposition": "GENERIC_SOURCE_CONTENT_REJECTED"
+      }
+    ],
+    "noExactFemaleSchoolSecondTermFileObserved": true
+  },
+  "similarVariant": {
+    "existingUnrelatedCandidate": "archive/exams/similar/high/h1/1mid/23_매산고_1학기_중간_고1_유사.js",
+    "disposition": "NOT_USED_OR_PROMOTED; it is an unrelated 1학기 중간 similar set and cannot establish q10 source fidelity"
+  },
+  "approvedFallbackAssessment": "Production content and solution internally imply P=4·3=12 and Q=4+3=7, hence 19, but the original route topology is not source-verified. This may support a later provisional reconstruction under the approved reconstruction protocol; it does not close the source gate.",
+  "productionMutation": "none",
+  "finalStatus": "SOURCE_HOLD_ORIGINAL_NOT_FOUND_PROVISIONAL_RECONSTRUCTION_POSSIBLE_NOT_PROMOTED"
+}

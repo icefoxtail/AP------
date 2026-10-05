@@ -1,0 +1,223 @@
+window.examTitle = "비상 공통수학2 집합과 명제 대단원 학습평가 고1";
+
+window.questionBank = [
+  {
+    "id": "qid_v1_b5ac58df704f0880648fc8daa408b4266590851bc5f71271c5dd7b215ed8884d",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "다음 집합 중 나머지 넷과 다른 하나는?",
+    "choices": [
+      "① $\\{3,6\\}$",
+      "② $\\{x \\mid x$는 $x>2$인 $6$의 약수$\\}$",
+      "③ $\\{x \\mid x^2-9x+18=0\\}$",
+      "④ $\\{x \\mid x$는 $3\\le x\\le6$인 자연수$\\}$",
+      "⑤ $\\{x \\mid x$는 $0<x<9$인 $3$의 배수$\\}$"
+    ],
+    "answer": "④",
+    "solution": "①은 $\\{3,6\\}$이다. ②는 6의 약수 중 2보다 큰 수이므로 $\\{3,6\\}$이다.\n③은 $x^2-9x+18=(x-3)(x-6)=0$을 만족하는 수의 집합이므로 $\\{3,6\\}$이다. ⑤도 0보다 크고 9보다 작은 3의 배수의 집합이므로 $\\{3,6\\}$이다.\n반면 ④는 3 이상 6 이하인 자연수의 집합 $\\{3,4,5,6\\}$이다. 따라서 나머지 넷과 다른 것은 ④이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_8822d65fb60b81dff286d74426a727cbde5a15213a774db26db6d098880185d9",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "두 집합 $A=\\{x \\mid x$는 $5$의 약수$\\}$, $B=\\{a,b\\}$에 대하여 $A=B$일 때, $ab$의 값을 구하시오.\n(단, $a,b$는 실수)",
+    "choices": [], "answer": "$5$",
+    "solution": "$5$의 양의 약수는 $1,5$이므로 $A=\\{1,5\\}$이다. $A=B$이므로 $a,b$는 순서에 관계없이 $1,5$이다.\n따라서 $ab=1\\cdot5=5$이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_319157921771e9c5cb2410fb7b350aee3c0d6624d26e11c193299fd17c75c6f0",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "두 집합 $A=\\{2,4\\}$, $B=\\{2,4,6,8\\}$에 대하여 $A\\subset X\\subset B$를 만족시키는 집합 $X$를 모두 구하시오.",
+    "choices": [], "answer": "$\\{2,4\\}$, $\\{2,4,6\\}$, $\\{2,4,8\\}$, $\\{2,4,6,8\\}$",
+    "solution": "$A\\subset X$이므로 $X$에는 2와 4가 들어간다. 또 $X\\subset B$이므로 X에 더 넣을 수 있는 원소는 6과 8뿐이다. 두 원소를 각각 넣거나 빼는 모든 경우를 살펴보면\n$X=\\{2,4\\}$, $\\{2,4,6\\}$, $\\{2,4,8\\}$, $\\{2,4,6,8\\}$이다.\n따라서 가능한 집합은 이 네 개이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_d1adb99b325801df5cd77a19b440477aaf42837b56b510dba9d60440091c80f0",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "전체집합 $U=\\{0,1,2,3,4,5,6\\}$의 두 부분집합 $A=\\{0,2,3,5\\}$, $B=\\{3,4,5,6\\}$에 대하여 다음 벤 다이어그램의 색칠한 부분을 나타내는 집합의 원소의 개수를 기호로 바르게 나타낸 것은?",
+    "choices": [
+      "① $n(U-A)=3$", "② $n(U-B)=3$", "③ $n(B-A)=2$", "④ $n(A\\cup B^c)=5$", "⑤ $n((A-B)^c)=5$"
+    ],
+    "image": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q04_source.png",
+    "answer": "⑤",
+    "solution": "$A-B=\\{0,2\\}$이므로 $n(A-B)=2$이다. 그림에서 색칠한 부분은 전체집합 $U$에서 $A-B$ 부분만 제외한 영역, 즉 $(A-B)^c$이다.\n따라서 색칠한 부분의 원소의 개수는 $n((A-B)^c)=n(U)-n(A-B)=7-2=5$이다. 그러므로 정답은 ⑤이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_2b8c59e1f2ab4fddbc663f3d0086e6ea34d27e5ec0086095bbc1dca15f32b224",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "전체집합 $U$의 두 부분집합 $A,B$에 대하여 $A\\cup B=B$일 때, 다음 중 항상 성립한다고 할 수 없는 것은?",
+    "choices": ["① $A\\subset B$", "② $B^c\\subset A^c$", "③ $A\\cap B=A$", "④ $B-A=\\varnothing$", "⑤ $A^c\\cup B^c=U-A$"],
+    "answer": "④",
+    "solution": "$A\\cup B=B$이므로 $A\\subset B$이다. 따라서 ①은 참이다. 포함관계에 여집합을 취하면 포함 방향이 바뀌어 $B^c\\subset A^c$이므로 ②도 참이다. 또 $A\\subset B$이면 $A\\cap B=A$이므로 ③은 참이다.\n드모르간 법칙으로 $A^c\\cup B^c=(A\\cap B)^c=A^c=U-A$이므로 ⑤도 참이다. 그러나 $A\\subset B$에서 $A=B$일 필요는 없으므로 $B-A=\\varnothing$은 항상 성립하지 않는다.\n따라서 항상 성립한다고 할 수 없는 것은 ④이다.",
+    "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q05_subset-cases.svg",
+    "solutionImageAlt": "Two cases under A subset-or-equal B: A equals B with empty B minus A, and A properly contained in B with nonempty B minus A.",
+    "solutionImageCaption": "Both cases satisfy A subset B; therefore B minus A need not be empty.",
+    "solutionImageSize": "large",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_5a3b7c1be2a70dfae32eef0cc2f3234719d5ce68585e510b4e1c061f6d6a999d",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "학생 30명이 참여한 재난 안전 교육에서 방독면 사용 교육을 선택한 학생은 15명, 소화기 사용 교육을 선택한 학생은 9명, 두 교육을 모두 선택한 학생은 6명이다. 두 교육 중에서 어느 것도 선택하지 않은 학생은 몇 명인지 구하시오.",
+    "choices": [], "answer": "$12$",
+    "solution": "방독면 교육을 선택한 집합을 $A$, 소화기 교육을 선택한 집합을 $B$라 하면\n$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)=15+9-6=18$이다.\n두 교육 중 어느 것도 선택하지 않은 학생은 $U-(A\\cup B)$에 속하므로 그 수는 $30-18=12$명이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_d762921500ffe50d4089b1a18c42b904266ca903cd80de29b2a8d064934c3032",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "명제 ‘어떤 실수 $x$에 대하여 $x^2-ax+1\\le0$이다.’의 부정이 참이 되도록 하는 정수 $a$의 값을 모두 구하시오.",
+    "choices": [], "answer": "$a=-1,0,1$",
+    "solution": "주어진 명제는 ‘어떤 실수 $x$가 존재하여 $x^2-ax+1\\le0$이다’이다. 그 부정은 ‘모든 실수 $x$에 대하여 $x^2-ax+1>0$이다’이다.\n이 이차식은 $x^2-ax+1=(x-a/2)^2+1-a^2/4$로 쓸 수 있다. 모든 실수 $x$에서 양수가 되려면 최솟값 $1-a^2/4$가 양수여야 하므로 $a^2<4$, 즉 $-2<a<2$이다.\n이 범위에 들어가는 정수는 $-1,0,1$이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_d8b658db1b18ff1f41ff73b50ebf831f37e94b0fb7948b68e8adc041812d1895",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "다음 명제의 참, 거짓을 판별하시오.\n(1) 순환소수는 유리수이다.\n(2) 직각삼각형의 빗변이 아닌 두 변의 길이의 합은 빗변의 길이와 같다.",
+    "choices": [], "answer": "(1) 참, (2) 거짓",
+    "solution": "(1) 순환소수는 분수로 나타낼 수 있으므로 유리수이다. 따라서 참이다.\n(2) 직각삼각형의 두 직각변의 길이의 합이 빗변의 길이와 같다는 것은 일반적으로 성립하지 않는다. 예를 들어 두 직각변이 각각 3,4이면 빗변은 5이고 $3+4\\ne5$이다. 따라서 거짓이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_c14a1b3d5aa7b48c266dc528473c3dd23c13b1e00f22b3afc0cce28f56bbac7b",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "명제 ‘$k-1<x\\le k+2$이면 $2<x<7$이다.’가 참이 되도록 하는 모든 자연수 $k$의 값의 합을 구하시오.",
+    "choices": [], "answer": "$7$",
+    "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q09_implication-interval.svg",
+    "solutionImageAlt": "P=(k−1,k+2]가 Q=(2,7)에 포함되도록 비교한 수직선",
+    "solutionImageCaption": "P⊆Q이려면 k−1≥2이고 k+2<7이다.",
+    "solutionImageSize": "large",
+    "solution": "$p$의 진리집합은 $P=(k-1,k+2]$, $q$의 진리집합은 $Q=(2,7)$이다. 명제 $p\\to q$가 참이려면 $P\\subset Q$여야 한다.\n왼쪽 끝에서 $P$의 원소는 $k-1$보다 크므로 $k-1=2$일 때도 $P$의 모든 원소는 2보다 크다. 따라서 $k-1\\ge2$이다. 오른쪽 끝 $k+2$는 P에 포함되지만 7은 Q에 포함되지 않으므로 $k+2<7$이어야 한다.\n두 조건에서 $3\\le k<5$이므로 자연수 $k$는 3,4이다. 그 합은 7이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_987d66641563c6f13f87b14477c7fa02312e952155ce7fd0dc73474640fbdd20",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "아래 그림에서 각 단계에 주어진 명제가 참이고 그 명제의 역이 거짓이면 왼쪽으로, 명제가 거짓이고 그 명제의 역이 참이면 오른쪽으로, 명제와 그 명제의 역이 모두 참이거나 모두 거짓이면 가운데로 이동한다. 각 단계에 주어진 명제가 다음과 같을 때, 지점 $A$에서 출발한 후 도착하는 지점을 구하시오.\n[1단계] $ab<0$이면 $a<0$, $b>0$이다.\n[2단계] $a^2=b^2$이면 $a=b$이다.\n[3단계] $a,b$가 정수이면 $ab$가 정수이다.",
+    "choices": [], "image": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q10_source.png", "answer": "ㅁ",
+    "solution": "[1단계] $ab<0$이어도 $a>0,b<0$일 수 있으므로 명제는 거짓이다. 그러나 $a<0,b>0$이면 항상 $ab<0$이므로 그 역은 참이다. 따라서 오른쪽으로 이동한다.\n[2단계] $a=2,b=-2$이면 $a^2=b^2$이지만 $a\\ne b$이므로 명제는 거짓이다. 그 역 ‘$a=b$이면 $a^2=b^2$’는 참이므로 오른쪽으로 이동한다.\n[3단계] 정수 두 개의 곱은 정수이므로 명제는 참이다. 그 역은 $a=\\frac12,b=4$이면 $ab=2$는 정수지만 $a$가 정수가 아니므로 거짓이다. 따라서 왼쪽으로 이동한다.\n그림에서 첫 단계와 둘째 단계는 오른쪽, 셋째 단계는 왼쪽으로 이동하면 도착 지점은 ㅁ이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_541907843338c5d045fe5b0107dd88e9880d7c46b16845204571eeaa98e5a989",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "객관식", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "$a,b$가 유리수일 때, 다음 보기의 조건 중 $a=b=0$이기 위한 필요조건이지만 충분조건이 아닌 것을 고르시오.",
+    "choices": ["ㄱ. $a^2+b^2\\le0$", "ㄴ. $a+b\\sqrt2=0$", "ㄷ. $|a+b|=0$", "ㄹ. $|a|+|b|>0$"], "answer": "ㄷ",
+    "solution": "조건 $a=b=0$이면 ㄱ, ㄴ, ㄷ은 각각 성립하고 ㄹ은 성립하지 않는다. ㄱ은 두 제곱의 합이 0 이하라는 뜻이므로 $a=b=0$과 동치이다. ㄴ에서 $a=-b\\sqrt2$이고 $a,b$가 유리수이므로 $b=0$, 이어서 $a=0$이어야 하여 역시 동치이다.\nㄷ은 $a+b=0$이라는 뜻이므로 $a=b=0$이면 성립해 필요조건이지만, $a=1,b=-1$도 만족하므로 충분조건은 아니다. ㄹ은 $a=b=0$일 때 성립하지 않아 필요조건이 아니다.\n따라서 필요조건이지만 충분조건이 아닌 것은 ㄷ이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_e1ac8d968134556e436f298fbcc6e058543f003fff994b4859d010178c9df681",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "2 이상의 자연수 $k$에 대하여 집합 $A_k=\\{x \\mid x$는 $k$의 배수$\\}$라고 할 때, $(A_4\\cap A_6)\\subset A_k$를 만족시키는 모든 자연수 $k$의 개수를 구하시오.",
+    "choices": [], "answer": "$5$",
+    "solution": "$A_4\\cap A_6$은 4와 6의 공배수의 집합이므로 $A_4\\cap A_6=A_{12}$이다. 따라서 조건은 모든 12의 배수가 k의 배수가 되는 것, 즉 $k$가 12의 약수인 것이다.\n2 이상의 12의 약수는 $2,3,4,6,12$이므로 그 개수는 5이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_a4a340f0a9f82efd40c9e73a9a1de859c4242461ca17ad3686479a71e40c2739",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "전체집합 $U$의 두 부분집합 $A,B$에 대하여 $n(U)=60$, $n(A)=40$, $n(B)=25$, $n(A-B)=16$일 때, $n((B-A)^c)$를 구하시오.",
+    "choices": [], "answer": "$59$",
+    "solution": "$A-B$와 $A\\cap B$는 서로소이고 그 합집합이 $A$이므로 $n(A\\cap B)=n(A)-n(A-B)=40-16=24$이다.\n$B$는 $(A\\cap B)$와 $(B-A)$의 합집합이므로 $n(B-A)=n(B)-n(A\\cap B)=25-24=1$이다. 따라서 $n((B-A)^c)=n(U)-n(B-A)=60-1=59$이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_920286ad604c586a622e1ebaffa7741e59184f413905f8e1a453a494f932fd23",
+    "level": "", "category": "집합", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-05", "standardUnit": "집합", "standardUnitOrder": 5,
+    "subUnitKey": "H22-C2-05-CORE", "subUnit": "집합 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "집합", "대단원학습평가"], "wide": false,
+    "content": "전체집합 $U=\\{x \\mid x$는 7 이하의 자연수$\\}$의 두 부분집합 $A,B$에 대하여 $A-B=\\{1,2\\}$, $A\\cap B=\\{3\\}$, $B\\cap(A\\cap B)^c=\\{4,5\\}$일 때, 집합 $(A\\cup B)^c$의 모든 원소의 합을 구하시오.",
+    "choices": [], "answer": "$13$",
+    "solution": "$A-B=\\{1,2\\}$, $A\\cap B=\\{3\\}$이므로 $A=\\{1,2,3\\}$이다. 또한 $B\\cap(A\\cap B)^c=B-A=\\{4,5\\}$이므로 $B=\\{3,4,5\\}$이다.\n따라서 $A\\cup B=\\{1,2,3,4,5\\}$. 전체집합 $U=\\{1,2,3,4,5,6,7\\}$에서 이를 제외하면 $(A\\cup B)^c=\\{6,7\\}$이고 원소의 합은 $6+7=13$이다.",
+    "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q14_complement-venn.svg",
+    "solutionImageAlt": "A-only={1,2}, 교집합={3}, B-only={4,5}, 합집합 바깥={6,7}인 벤 다이어그램",
+    "solutionImageCaption": "(A∪B)ᶜ={6,7}이고 원소의 합은 13이다.",
+    "solutionImageSize": "large",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_aab91e2425f2481ba5b0d285aa5b29dc384adecbd88f302cbeca983c5e2019d6",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "세 조건 $p:3\\le x\\le5$, $q:x>a-4$, $r:x<b+2$에 대하여 다음 물음에 답하시오.\n(1) 명제 $p\\to q$가 참일 때, 정수 $a$의 최댓값을 구하시오.\n(2) 명제 $p\\to r$가 거짓일 때, 정수 $b$의 최댓값을 구하시오.",
+    "choices": [], "answer": "(1) $6$\n(2) $3$",
+    "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q15_condition-intervals.svg",
+    "solutionImageAlt": "진리집합 P=[3,5]를 q의 오른쪽 반직선과 r의 왼쪽 반직선에 비교한 수직선",
+    "solutionImageCaption": "p→q는 P⊆Q일 때 참이며, p→r가 거짓이면 P의 끝점 5가 r 밖에 있다.",
+    "solutionImageSize": "large",
+    "solution": "(1) $p$의 진리집합은 $[3,5]$, $q$의 진리집합은 $(a-4,\\infty)$이다. $p\\to q$가 참이려면 $[3,5]\\subset(a-4,\\infty)$여야 하므로 특히 $3>a-4$, 즉 $a<7$이다. 정수 $a$의 최댓값은 6이다.\n(2) $p\\to r$가 거짓이려면 $p$는 참이고 $r$은 거짓인 $x$가 적어도 하나 있어야 한다. $p$에서 가장 큰 값은 5이고 $r$은 $x<b+2$이므로 $b+2\\le5$이면 $x=5$에서 $r$이 거짓이 된다. 따라서 가능한 정수 $b$는 $b\\le3$이고 최댓값은 3이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_221e90dcba6d1c0ac55dcef679dfda458cb212ffa1a51972381d1374fb09ee22",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "$a,b,c$가 자연수일 때, 명제 ‘$a^2+b^2=c^2$이면 $a,b,c$ 중 적어도 하나는 짝수이다.’가 참임을 대우를 이용하여 증명하시오.",
+    "choices": [], "answer": "증명",
+    "solution": "대우는 ‘$a,b,c$가 모두 홀수이면 $a^2+b^2\\ne c^2$이다.’이다. 홀수의 제곱은 4로 나눈 나머지가 1이므로, $a,b,c$가 모두 홀수라면 $a^2+b^2$를 4로 나눈 나머지는 $1+1=2$이고 $c^2$를 4로 나눈 나머지는 1이다. 따라서 $a^2+b^2$와 $c^2$는 같을 수 없다. 대우가 참이므로 원래 명제도 참이다.",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  },
+  {
+    "id": "qid_v1_3f1c803353ee2da13bbd5c04c9d294e19c0037d3072c87f6d605cbf1a92f7f93",
+    "level": "", "category": "명제", "originalCategory": "집합과 명제",
+    "standardCourse": "공통수학2", "standardUnitKey": "H22-C2-06", "standardUnit": "명제", "standardUnitOrder": 6,
+    "subUnitKey": "H22-C2-06-CORE", "subUnit": "명제 핵심 개념", "subUnitConfidence": "candidate_evidence", "subUnitClassificationDepth": "complete_candidate",
+    "questionType": "단답형", "layoutTag": "grid", "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "대단원학습평가"], "wide": false,
+    "content": "$x>0$, $y>0$일 때, $(x+y)\\left(\\dfrac9x+\\dfrac4y\\right)$의 최솟값을 구하시오.",
+    "choices": [], "answer": "$25$",
+    "solution": "식을 전개하면 $(x+y)(9/x+4/y)=13+4x/y+9y/x$이다. 산술·기하 평균 부등식에 따라\n$4x/y+9y/x\\ge2\\sqrt{(4x/y)(9y/x)}=12$\n이므로 주어진 식은 25 이상이다. $2x=3y$일 때 등호가 성립하며, 예를 들어 $x=3,y=2$는 조건을 만족하므로 최솟값 25가 실제로 얻어진다.",
+    "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q17_amgm-equality.svg",
+    "solutionImageAlt": "For u=4x/y and v=9y/x, uv=36; equality u=v=6 occurs when 2x=3y.",
+    "solutionImageCaption": "At x=3 and y=2, the expression is 13+6+6=25.",
+    "solutionImageSize": "large",
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+  }
+];

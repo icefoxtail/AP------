@@ -1,0 +1,38 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_FINAL_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "date": "2026-09-01",
+  "status": "BOUNDED_PASS",
+  "promotion": "ACTIVE_BOUNDED",
+  "productionArchiveRegistration": "NOT_PERFORMED",
+  "publicationStatus": "NOT_PUBLISHED",
+  "canonicalCatalog": {
+    "courseCount": 17,
+    "unitCount": 142,
+    "registeredMiddleUnits": ["M1-03", "M2-03"],
+    "unregisteredUnitCount": 140,
+    "unregisteredUnitPolicy": "HOLD"
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-equations-a03",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "questionCount": 6,
+      "browser": {"examPages": 2, "solutionPages": 3, "answerPages": 1, "lastQuestion": 6, "unrenderedMath": 0, "overflow": 0, "badImages": 0},
+      "packageSha256": "8db74ca0e01ca52a2b757a57ba5344f82507fc89fb06d0baf1a8454956ae2362",
+      "resume": "PASS"
+    },
+    {
+      "runId": "20260901-middle-equations-b03",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "questionCount": 6,
+      "browser": {"examPages": 2, "solutionPages": 3, "answerPages": 1, "lastQuestion": 6, "unrenderedMath": 0, "overflow": 0, "badImages": 0},
+      "packageSha256": "ee4957c2a9b9828e00bb763b16714aeb63ac0fc69667bd383caf1c5cd3ef2303",
+      "resume": "PASS"
+    }
+  ],
+  "regression": {"unittestCount": 236, "unittestStatus": "PASS", "compileall": "PASS", "gitDiffCheck": "PASS_WITH_LINE_ENDING_WARNINGS"},
+  "hold": ["middle-school C parameter recovery", "140 canonical units without registered adapter", "unregistered prose families"]
+}

@@ -1,0 +1,66 @@
+{
+  "questionUid": "source|exam|qid",
+  "batchId": "2022-set-pilot-next-01",
+  "batchRevision": 1,
+  "visualDecision": "KEEP_EXISTING",
+  "visualRequirement": "VISUAL_REQUIRED",
+  "visualAction": "KEEP",
+  "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+  "expectedLogicalFactSha": "sha256:...",
+  "observedVisualFactSha": "sha256:...",
+  "expectedSemanticSha": "sha256:...",
+  "observedSemanticSha": "sha256:...",
+  "structureFingerprint": "sha256:...",
+  "reviewProvenance": {
+    "v1": {
+      "reviewerRole": "V1_EXPECTED",
+      "reviewerId": "...",
+      "reviewerModelOrAgent": "...",
+      "reviewSessionId": "...",
+      "inputVisibilityProfile": "SOURCE_ONLY",
+      "inputBundleSha": "sha256:...",
+      "firstPassEvidenceSha": "sha256:...",
+      "freshBlind": true
+    },
+    "v2": {
+      "reviewerRole": "V2_OBSERVED",
+      "reviewerId": "...",
+      "reviewerModelOrAgent": "...",
+      "reviewSessionId": "...",
+      "inputVisibilityProfile": "ARTIFACT_ONLY",
+      "inputBundleSha": "sha256:...",
+      "firstPassEvidenceSha": "sha256:...",
+      "freshBlind": true
+    },
+    "v3": {
+      "reviewerRole": "V3_PARITY",
+      "reviewerId": "...",
+      "reviewerModelOrAgent": "...",
+      "reviewSessionId": "...",
+      "inputVisibilityProfile": "FROZEN_V1_V2",
+      "inputBundleSha": "sha256:...",
+      "firstPassEvidenceSha": "sha256:...",
+      "freshBlind": false
+    }
+  },
+  "mathVerification": {
+    "status": "INDEPENDENTLY_VERIFIED",
+    "verifierId": "...",
+    "evidenceSha": "sha256:..."
+  },
+  "renderEvidence": {
+    "desktop": {
+      "viewport": { "width": 1280, "height": 720 },
+      "screenshotSha": "sha256:...",
+      "accessibilitySnapshotSha": "sha256:...",
+      "status": "PASS"
+    },
+    "mobile": {
+      "viewport": { "width": 390, "height": 844 },
+      "screenshotSha": "sha256:...",
+      "accessibilitySnapshotSha": "sha256:...",
+      "status": "PASS"
+    }
+  },
+  "logicVisualItemStatus": "PASS"
+}

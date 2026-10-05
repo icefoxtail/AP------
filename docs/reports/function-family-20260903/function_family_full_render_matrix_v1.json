@@ -1,0 +1,28 @@
+{
+  "reportType": "FUNCTION_FAMILY_FULL_BROWSER_RENDER_QA",
+  "generatedAt": "2026-09-04",
+  "status": "FULL_BROWSER_RENDER_PASS",
+  "browserSurface": "Chrome via Codex computer-use extension",
+  "harness": "archive/tools/function-family/full-render-harness.html",
+  "scope": "original only; similar excluded",
+  "sourceCount": 50,
+  "modes": ["exam", "sol", "ans"],
+  "expectedCases": 150,
+  "observedCases": 150,
+  "passCases": 150,
+  "failCases": 0,
+  "perMode": {
+    "exam": {"expected": 50, "observed": 50, "pass": 50, "fail": 0},
+    "sol": {"expected": 50, "observed": 50, "pass": 50, "fail": 0},
+    "ans": {"expected": 50, "observed": 50, "pass": 50, "fail": 0}
+  },
+  "checksPerCase": [
+    "print-area has at least one .page",
+    "rendered content is non-empty",
+    "all images in print-area are complete with naturalWidth > 0",
+    "documentElement[data-ap-render-error] is absent",
+    "exam data load error text is absent"
+  ],
+  "lastFailure": null,
+  "note": "The result is taken from the visible same-origin browser harness summary after completion; no counts are synthesized by the harness. This render gate does not replace the user's pedagogical review of graph semantics or release SHA seal."
+}

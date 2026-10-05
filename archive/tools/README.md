@@ -1,0 +1,110 @@
+# archive/tools
+
+## Archive 시험지 등록 자동 동기화
+
+신규 시험지 JS를 production 경로에 넣은 뒤 기존처럼 `python archive/build_db.py`만 실행하면
+DB 등록뿐 아니라 UID, 신규 문항 metadata HOLD, question index, Archive 2.0 catalog/crosswalk까지 한 번에 갱신된다.
+L3/L4/CrossConcept/difficulty 같은 semantic 정본은 자동 승격하지 않고 `review_required`로 남긴다.
+
+- 전체 자동 동기화: `python archive/build_db.py`
+- DB만 다시 만들기: `python archive/build_db.py --db-only`
+- `main`에 시험지/DB 변경이 들어오면 GitHub Actions가 같은 동기화를 실행하고 생성 산출물을 자동 커밋한다.
+
+
+## Common pipeline quality closure
+
+New archive work uses [pipeline-core](pipeline-core/README.md) for typed facts,
+candidate-only generation, independent evidence, UID/revision, render witnesses
+and final aggregation. Historical batch PASS and successful extraction are not
+release authority. The core covers visual, original, textbook, ALIVE and metadata
+routes while preserving their distinct algorithms and review scopes.
+
+## review-evidence-gate.mjs
+
+CREATE / R1 / R2 / R3의 PASS/DONE 자기보고를 item-level physical evidence로 검증하는 공용 fail-closed gate다.
+
+```bash
+node archive/tools/review-evidence-gate.mjs \
+  --exam archive/exams/original/.../시험지.js \
+  --evidence <physical-evidence.json> \
+  --stage CREATE|R1|R2|R3
+```
+
+검사:
+- final exam SHA + question denominator
+- qid별 source/math/small-board/curriculum/visual/meta/difficulty/runtime evidence
+- runtime doubled TeX escape
+- ㄱ/ㄴ/ㄷ 등 enumerated small-board block
+- linked solutionImage ↔ visual evidence row 및 asset SHA
+- SVG PASS의 physical method(`COORDINATE_COMPUTE / TOPOLOGY_COMPUTE / SOURCE_PIXEL / TARGETED_RENDER`)
+- Meta null reason / `META_NULL_BUT_RESOLVABLE`
+- R2 blind freeze / R3 fresh-byte independence
+- summary count가 item rows와 일치하는지
+
+`ok=false`이면 stage PASS/DONE 금지.
+
+회귀 테스트:
+
+```bash
+node archive/tools/review-evidence-gate.test.mjs
+```
+
+정본 계약: `docs/rules/03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`.
+
+## exam-lint.mjs
+
+기출 JS 파일의 구조·표기를 자동 검수한다. 룰북 §14의 **1차 게이트**에 해당한다.
+정오답(2차)은 사람이 직접 재풀이해야 하므로 다루지 않는다.
+
+```bash
+node archive/tools/exam-lint.mjs            # 아카이브 전체
+node archive/tools/exam-lint.mjs 25_        # 파일명에 '25_' 포함된 것만
+node archive/tools/exam-lint.mjs --json     # JSON 출력 (CI용)
+```
+
+FAIL이 하나라도 있으면 종료 코드 1.
+
+### 왜 이 검사들인가
+
+2025년 기출 49개 파일 1,118문항을 전수 검수(2026-07-17)하면서 **실제로 결함을 잡아낸 것만** 넣었다.
+특히 아래 두 검사는 사람이 눈으로 훑어서는 놓치기 쉬운 것들이다.
+
+**`해설 결론과 answer 불일치`** — 가장 값어치 있는 검사다.
+해설은 "따라서 정답은 ⑤이다"로 맞게 끝나는데 `answer` 필드만 ④인 경우를 잡는다.
+2025년 정오답 오류 5건 중 3건이 이 패턴이었고, 이 검사를 아카이브 전체에 돌리자
+**다른 연도 파일에서 2건이 더 나왔다**(21_연향중 q12는 실제 오답, 25_풍덕중 q16은 해설이 다른 그래프를 설명).
+
+**`해설에 추측성 표현`** — 룰북 §10은 추측을 금지하는데,
+해설이 스스로 "근사치 ④ 선택", "원본 조건 기반 추정" 같은 말을 남긴 경우를 잡는다.
+이런 문항은 원본 대조 없이는 신뢰할 수 없다.
+
+나머지: 파싱, id 중복·불연속, content/answer/solution 누락, 선택지 범위 밖 answer,
+이미지 경로(`_generated` 임시경로 잔존 / 파일 부재), 플레이스홀더(`[도형필요]` 등) 잔존,
+`$` 짝 안 맞음, `$` 밖 LaTeX 노출, `\neq`류 표기 깨짐, answer 표기(원문자/숫자) 혼재,
+메타 필드 누락, 학년 폴더와 `standardCourse` 불일치.
+
+### 오탐 주의 (설계상 의도한 것)
+
+- **선택지가 이미지 안에 있는 그래프 문항**(예: "다음 중 그래프로 알맞은 것은?")은
+  `choices`가 비고 `answer`만 원문자다. 정상이므로 `image`가 있으면 FAIL로 잡지 않는다.
+- 선택지 문자열의 원문자 접두(`"① $-3$"`)는 **결함이 아니다**.
+  `engine.html` / `mixed_engine.html` / `wrong_print_engine.html` 모두
+  `stripChoicePrefix()`로 선행 번호를 제거한 뒤 자체 번호를 붙인다.
+
+### 검수 도구를 만들 때 배운 것
+
+검수 스크립트가 `\n`(백슬래시+n)을 개행으로 치환해 출력하면
+**정상적인 `\neq`도 깨진 것처럼 보인다.** 실제로 이 오탐 때문에 최초 리포트에
+멀쩡한 파일 5개가 오염된 것으로 잘못 기록됐다.
+소스에서 깨진 것은 `\\n eq`(공백 있음), 정상은 `\\neq`(공백 없음)로 구분된다.
+표시용 변환과 검사용 원본을 섞지 말 것.
+
+---
+
+## 그 외
+
+- `build-question-index.mjs` — 문항 인덱스 생성
+- `view-label-lint.mjs` — 발문 안의 `<보기>에서`, `[보기]의` 같은 인라인 보기 라벨 오용 전수 검사
+- `js-bank-cleanup/` — JS 뱅크 스키마 검증
+- `past-exam-pipeline/` — PDF → JS 변환 파이프라인
+- `tag-enrichment/` — 태그 보강

@@ -1,0 +1,6 @@
+# B16 #14 L1/L2 parent audit
+
+- Frozen UID `qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194`; image `archive/assets/images/25_왕운중_2학기_중간_중1_수학/q14.png` read at original resolution with frozen SHA-256 `199c6a13000043d1c957ed99d0d8862c17af73b8b1fc8a9a6c4e98edfae07c59`.
+- The source explicitly names parallelogram `ABCD`, marks `AO=OC`, `BO=OD`, and `AC⊥BD`, and asks which statement about this configuration is false. The decisive check distinguishes a diagonal being the perpendicular bisector of the *whole* `AC` from the false claim that it bisects only `AO`, whose endpoint is O. The keyed false option ① is source-supported.
+- This is a parallelogram/quadrilateral diagonal-property audit. Its decisive structure is not a general M1-05 line-position exercise despite the perpendicular notation. The same source-grounded parent distinction was made for B13 #11. Open `L1_L2_CONFLICT` for this UID only and correct frozen `M1-05/M1-05-POSITION_RELATION` to `M1-06/M1-06-POLYGON_CIRCLE`.
+- A and B retained the baseline without flagging the conflict; their independent source ledgers remain intact. The accepted consensus parent and metadata-only writeback must carry this Root-opened correction with this proof. No student content, choice, answer, solution, or image is edited.

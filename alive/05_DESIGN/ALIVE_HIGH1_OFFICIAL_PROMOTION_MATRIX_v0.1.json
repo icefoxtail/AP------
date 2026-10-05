@@ -1,0 +1,541 @@
+{
+  "schemaVersion": "0.1.0",
+  "artifactType": "ALIVE_HIGH1_OFFICIAL_PROMOTION_MATRIX",
+  "status": "ACTIVE_PRODUCTION",
+  "canonical": {
+    "sourcePath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "courseKeys": [
+      "H22-C",
+      "H22-C2"
+    ],
+    "unitTableIsAuthority": true,
+    "detailedSubtypePolicy": "Detailed coverage labels are internal planning labels. They do not create, rename, or override canonical keys."
+  },
+  "promotionStates": [
+    "NOT_AUDITED",
+    "PARTIAL",
+    "EXPERIMENTAL",
+    "CANDIDATE",
+    "ACTIVE_UNIT",
+    "ACTIVE_PRODUCTION",
+    "HOLD"
+  ],
+  "promotionGates": {
+    "canonicalMapping": "Exact courseKey/unitKey/label/order match with the canonical unit table and the current rule snapshot.",
+    "math": "Independent deterministic checks cover the declared model, answer, boundary cases, and response form.",
+    "visual": "Only required visual relations are rendered; required SVG semantics, labels, topology, and hashes pass.",
+    "solution": "Student-facing solutionDetail is complete and all mandatory explanation diagrams are bound to the solution.",
+    "browser": "exam, solution, and answer are actually rendered and the last question is checked with zero unrendered math, overflow, or bad images.",
+    "operation": "A whole-exam Run completes with checkpointed resume, bounded retries, fail-closed unsupported handling, assembly, and package round-trip.",
+    "fixturesPerCoverage": {
+      "minimum": 3,
+      "recommended": 5,
+      "requiredKinds": [
+        "ordinary",
+        "boundary_or_degenerate",
+        "composite_or_exam_like"
+      ]
+    }
+  },
+  "units": [
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-01",
+      "label": "다항식의 연산",
+      "order": 1,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "NO_DIAGRAM_BY_DEFAULT",
+      "coverage": [
+        "다항식의 덧셈·뺄셈",
+        "곱셈과 나눗셈",
+        "식의 정리와 계산"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214707Z-staged-alive-고1-h22-c-01-operati-83157f59",
+        "packageSha256": "7d1895482446bd41e269f571ddef6ec79817b0989f32724ebf9070af450ca637",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-02",
+      "label": "항등식과 나머지 정리",
+      "order": 2,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "NO_DIAGRAM_BY_DEFAULT",
+      "coverage": [
+        "항등식의 성립 조건",
+        "계수 비교",
+        "나머지정리와 인수정리"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214708Z-staged-alive-고1-h22-c-02-operati-33685e1f",
+        "packageSha256": "dae50c10be2afda07bb3bf8948e251c983ea7007965f742715794cd496ff10e1",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-03",
+      "label": "인수분해",
+      "order": 3,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "NO_DIAGRAM_BY_DEFAULT",
+      "coverage": [
+        "기본 인수분해",
+        "치환을 이용한 인수분해",
+        "인수분해 활용"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214710Z-staged-alive-고1-h22-c-03-operati-c7a02adc",
+        "packageSha256": "d594edb737fd100883511736aeba46b908c9201d8c37430d2d77b887d828ad9b",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-04",
+      "label": "복소수와 이차방정식",
+      "order": 4,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "NO_DIAGRAM_BY_DEFAULT",
+      "coverage": [
+        "복소수 계산",
+        "허수단위와 켤레복소수",
+        "이차방정식의 근과 판별식"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214712Z-staged-alive-고1-h22-c-04-operati-b0c14995",
+        "packageSha256": "67bcbde6ea922e8a79759432b11ec90e3a840b7bd11a3d780a2ddc46643dc80a",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-05",
+      "label": "이차방정식과 이차함수",
+      "order": 5,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GRAPH",
+      "coverage": [
+        "근과 계수의 관계",
+        "이차함수의 그래프",
+        "판별식과 그래프의 관계",
+        "최대·최소"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214714Z-staged-alive-고1-h22-c-05-operati-3e38a048",
+        "packageSha256": "3182f33d79ea53e523e74eed57fb34d016bb7e7c28932b9e29c487a132fe3978",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-06",
+      "label": "여러 가지 방정식과 부등식",
+      "order": 6,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_NUMBER_LINE_OR_GRAPH",
+      "coverage": [
+        "고차방정식",
+        "연립방정식",
+        "이차부등식",
+        "연립부등식",
+        "방정식·부등식의 활용"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214716Z-staged-alive-고1-h22-c-06-operati-4ecfb03f",
+        "packageSha256": "fe0a310f3ae2f8e71672f4adfdf5954b61a8ed8af4ed5dad09c841da6f7e7aff",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-07",
+      "label": "합의 법칙과 곱의 법칙",
+      "order": 7,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "NO_DIAGRAM_BY_DEFAULT",
+      "coverage": [
+        "합의 법칙",
+        "곱의 법칙",
+        "경우 분류와 중복 방지"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214718Z-staged-alive-고1-h22-c-07-operati-47f2fd92",
+        "packageSha256": "9eaa14fe408cc1242c353bbeff4d86a95859caa418359de59913210ef2603c5b",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-08",
+      "label": "순열과 조합",
+      "order": 8,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "NO_DIAGRAM_BY_DEFAULT",
+      "coverage": [
+        "순열",
+        "조합",
+        "조건이 있는 경우의 수"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214719Z-staged-alive-고1-h22-c-08-operati-75bfc444",
+        "packageSha256": "49b7a2807df1bdcfb4cc4282ffb9bf95c01c80b9df185a94f6237af7a86274d5",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C",
+      "unitKey": "H22-C-09",
+      "label": "행렬과 그 연산",
+      "order": 9,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_TABLE",
+      "coverage": [
+        "행렬의 뜻과 표현",
+        "행렬의 연산",
+        "행렬의 활용"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214722Z-staged-alive-고1-h22-c-09-operati-1515fff0",
+        "packageSha256": "f85911991ac47a7a6f59bfb98ba02f21707579da3df0512bf31fedd370ad6873",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-01",
+      "label": "평면좌표",
+      "order": 1,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GEOMETRY",
+      "coverage": [
+        "좌표와 거리",
+        "중점·내분점·무게중심",
+        "도형 관계의 좌표화",
+        "자취"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214724Z-staged-alive-고1-h22-c2-01-operat-56a90103",
+        "packageSha256": "507055c18c35a331e57e1641730038166cd92cd9f046aade761a1f645c0cd83b",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-02",
+      "label": "직선의 방정식",
+      "order": 2,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GEOMETRY",
+      "coverage": [
+        "두 점을 지나는 직선",
+        "기울기와 절편",
+        "평행·수직",
+        "교점과 직선의 관계",
+        "점과 직선 사이 거리"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214726Z-staged-alive-고1-h22-c2-02-operat-f57bf39a",
+        "packageSha256": "5ccc311503af341a4f65fd277604f9a9ce8c7562c0a2dc2884b0a377d5668503",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-03",
+      "label": "원의 방정식",
+      "order": 3,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GEOMETRY_WITH_SOLUTION_DIAGRAM",
+      "coverage": [
+        "표준형과 일반형",
+        "중심·반지름",
+        "원과 직선의 관계",
+        "원과 원의 관계",
+        "접선·현·공통현"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214729Z-staged-alive-고1-h22-c2-03-operat-2fd738f7",
+        "packageSha256": "fdac9ce8a9ba9283a52eb6501d5986e532a94087705f776b606e99a1868f3dbe",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-04",
+      "label": "도형의 이동",
+      "order": 4,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GEOMETRY",
+      "coverage": [
+        "평행이동",
+        "대칭이동",
+        "점·도형의 대응",
+        "방정식의 변환"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214731Z-staged-alive-고1-h22-c2-04-operat-f2004339",
+        "packageSha256": "524bb1e54e7ac0ae2b4025802e7cb5d2d5700af53a5f8da5c6e33a1ac737ff69",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-05",
+      "label": "집합",
+      "order": 5,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_SET_DIAGRAM",
+      "coverage": [
+        "집합의 표현",
+        "부분집합",
+        "연산과 포함 관계",
+        "벤다이어그램 해석"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214733Z-staged-alive-고1-h22-c2-05-operat-9fb1d07e",
+        "packageSha256": "1bb8b87383c37083367c8e1dee5ceb930aaa5bfaf7f2d800b8cedaffbbcab31c",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-06",
+      "label": "명제",
+      "order": 6,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "NO_DIAGRAM_BY_DEFAULT",
+      "coverage": [
+        "명제와 조건",
+        "역·이·대우",
+        "필요조건·충분조건",
+        "증명과 반례"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214735Z-staged-alive-고1-h22-c2-06-operat-c00c8377",
+        "packageSha256": "6c4a3b0cc53ddbca265c30911be21ea58cab2a05f19d09762bbf21435d84cada",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-07",
+      "label": "함수",
+      "order": 7,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GRAPH",
+      "coverage": [
+        "함수의 뜻과 그래프",
+        "합성함수",
+        "역함수"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214737Z-staged-alive-고1-h22-c2-07-operat-3156f1fd",
+        "packageSha256": "365c82a1813d9d4213a625688c0b0bac5e37c109266dfb55f4b1d600830c4e10",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-08",
+      "label": "유리함수",
+      "order": 8,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GRAPH",
+      "coverage": [
+        "유리함수의 정의역",
+        "그래프와 점근선",
+        "그래프의 이동과 관계"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214739Z-staged-alive-고1-h22-c2-08-operat-09293619",
+        "packageSha256": "c87e19fe3433079ca7745e29d350f8f29f3c41fdb1d4d8347da8fa66d890a264",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    },
+    {
+      "courseKey": "H22-C2",
+      "unitKey": "H22-C2-09",
+      "label": "무리함수",
+      "order": 9,
+      "promotionState": "ACTIVE_UNIT",
+      "visualPolicy": "CONDITIONAL_GRAPH",
+      "coverage": [
+        "무리함수의 정의역",
+        "그래프",
+        "그래프의 이동과 관계"
+      ],
+      "promotionEvidence": {
+        "status": "PASS",
+        "operationRunId": "20260829T214741Z-staged-alive-고1-h22-c2-09-operat-f0abbeb9",
+        "packageSha256": "58f8e8d3c17abebb9e70aa4c81167cc8e4ce2be8b9f1982be4e5454db39d4dcc",
+        "evidence": {
+          "unitBenchmark": "alive/runtime/high1-benchmarks/20260830T-high1-official-preflight/summary.json",
+          "operation": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+          "browser": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json"
+        }
+      }
+    }
+  ],
+  "firstVerticalSlice": {
+    "releaseId": "H22-C2-GEOMETRY-UNIT-RELEASE-1",
+    "status": "COMPLETE",
+    "unitKeys": [
+      "H22-C2-01",
+      "H22-C2-02",
+      "H22-C2-03",
+      "H22-C2-04"
+    ],
+    "implementationOrder": [
+      "H22-C2-01",
+      "H22-C2-02",
+      "H22-C2-03",
+      "H22-C2-04"
+    ],
+    "rule": "Promote each unit only after its own gates pass; aggregate the four units only after all are ACTIVE_UNIT."
+  },
+  "currentEvidence": {
+    "stagedEngineVersion": "0.1.7-high1-official-promotion",
+    "experimentalVisualRendererVersion": "0.1.1-coordinate-geometry",
+    "benchmarkStatus": "PASS",
+    "productionPromotion": "ACTIVE_PRODUCTION",
+    "coordinatePlaneUnitBenchmark": {
+      "command": "coordinate-benchmark",
+      "fixtureCount": 5,
+      "status": "PASS_STRUCTURAL_ONLY",
+      "browserRender": "NOT_RUN",
+      "productionPromotion": "NOT_PROMOTED"
+    },
+    "high1UnitBenchmark": {
+      "command": "high1-benchmark",
+      "fixtureCount": 57,
+      "unitCount": 18,
+      "status": "PASS_STRUCTURAL",
+      "mathValidation": "PASS",
+      "solutionValidation": "PASS",
+      "independentReview": "PASS",
+      "determinism": "PASS",
+      "visualValidation": "PASS_STRUCTURAL_ONLY",
+      "browserRender": "PASS",
+      "operation": "PASS_RENDERED_PACKAGED",
+      "productionPromotion": "ACTIVE_PRODUCTION"
+    },
+    "note": "All 18 bounded High-1 unit contracts passed the structural, independent, actual-browser, whole-exam resume, assembly, and package gates. Generated operation fixtures remain staging-only.",
+    "high1OfficialPromotionReport": "alive/05_DESIGN/ALIVE_HIGH1_FINAL_PROMOTION_REPORT_v0.1.json",
+    "high1Operation": {
+      "summary": "alive/runtime/high1-operation-benchmarks/latest-v5/summary.json",
+      "status": "PASS_RENDERED_PACKAGED",
+      "unitCount": 18,
+      "checkpointCount": 108,
+      "packageCount": 18,
+      "browserRender": "PASS",
+      "package": "PASS",
+      "publicationStatus": "NOT_PUBLISHED"
+    },
+    "high1BrowserRender": {
+      "evidence": "alive/05_DESIGN/ALIVE_HIGH1_BROWSER_RENDER_EVIDENCE_v0.1.json",
+      "status": "PASS",
+      "unitCount": 18,
+      "modeCount": 54,
+      "screenshotCount": 54,
+      "requiredSolutionVisualCount": 4
+    }
+  },
+  "promotion": {
+    "status": "ACTIVE_PRODUCTION",
+    "activatedAt": "2026-08-29T22:01:50Z",
+    "unitState": "ACTIVE_UNIT",
+    "unitCount": 18,
+    "gate": "PASS",
+    "report": "alive/05_DESIGN/ALIVE_HIGH1_FINAL_PROMOTION_REPORT_v0.1.json",
+    "productionArchiveRegistration": "NOT_PERFORMED",
+    "publicationStatus": "NOT_PUBLISHED"
+  }
+}

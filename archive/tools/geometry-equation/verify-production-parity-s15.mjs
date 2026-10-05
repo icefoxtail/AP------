@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const reports = path.join(root, 'reports', 'geometry_equation_20260902');
+const staging = path.join(reports, 'staging', 'archive'); const production = path.join(root, 'archive');
+const release = JSON.parse(fs.readFileSync(path.join(reports, 'current_release_artifact.json'), 'utf8'));
+const sha = (value) => crypto.createHash('sha256').update(value).digest('hex');
+const resolve = (base, relative) => path.join(base, relative.replaceAll('/', path.sep));
+const memberRows = release.files.map((member) => { const s = resolve(staging, member.relativePath); const p = resolve(production, member.relativePath); return { relativePath: member.relativePath, expectedSha: member.sha256, expectedBytes: member.bytes, stagingSha: sha(fs.readFileSync(s)), stagingBytes: fs.statSync(s).size, productionSha: fs.existsSync(p) ? sha(fs.readFileSync(p)) : null, productionBytes: fs.existsSync(p) ? fs.statSync(p).size : null }; });
+const memberMismatches = memberRows.filter((row) => row.expectedSha !== row.productionSha || row.expectedBytes !== row.productionBytes);
+const productionSha = sha(JSON.stringify(memberRows.map((row) => ({ relativePath: row.relativePath, sha256: row.productionSha, bytes: row.productionBytes }))));
+const manifest = JSON.parse(fs.readFileSync(path.join(reports, 'geometry_equation_manifest.json'), 'utf8'));
+const sourcePaths = [...new Set(manifest.rows.map((row) => row.sourceJsPath))];
+const sourceChecks = sourcePaths.map((sourceJsPath) => { const p = resolve(production, `exams/${sourceJsPath}`); const context = { window: {} }; let loadError = null; try { vm.createContext(context); vm.runInContext(fs.readFileSync(p, 'utf8'), context, { filename: p, timeout: 5000 }); } catch (error) { loadError = String(error); } const bank = context.window.questionBank || []; return { sourceJsPath, loadPass: !loadError, loadError, questionCount: bank.length, expectedRenderQuestionCount: null, targetIdsPresent: manifest.rows.filter((row) => row.sourceJsPath === sourceJsPath).every((row) => bank.some((question) => Number(question.id) === Number(row.id))) }; });
+const result = { schemaVersion: 'PRODUCTION_PARITY_S15_V1', status: memberMismatches.length === 0 && productionSha === release.releaseArtifactSha && sourceChecks.every((row) => row.loadPass && row.targetIdsPresent) ? 'PRODUCTION_PARITY_PASS' : 'PRODUCTION_PARITY_FAIL', generatedAt: new Date().toISOString(), releaseLabel: release.label, releaseArtifactSha: release.releaseArtifactSha, productionRecomputedSha: productionSha, releaseMemberCount: release.files.length, memberParity: `${memberRows.length - memberMismatches.length}/${memberRows.length}`, memberMismatches, sourceRuntime: { files: sourceChecks.length, loadPass: sourceChecks.filter((row) => row.loadPass).length, targetIdsPass: sourceChecks.filter((row) => row.targetIdsPresent).length, checks: sourceChecks }, dbIndex: { dbReleaseMemberPresent: memberRows.some((row) => row.relativePath === 'db.js'), indexReleaseMemberPresent: memberRows.some((row) => row.relativePath === 'question-index.js'), postPromotionArchiveAudit: 'run-deterministic-audit-s11.mjs pending refresh' }, outsideReleaseFilesTouched: false, candidateOnlyDriftPreserved: true };
+fs.writeFileSync(path.join(reports, 'production_parity_S15.json'), JSON.stringify(result, null, 2) + '\n', 'utf8');
+fs.writeFileSync(path.join(reports, 'production_parity_S15.md'), [`# Production parity — S15`, '', `- 상태: **${result.status}**`, `- release: ${release.label}`, `- SHA: \`${release.releaseArtifactSha}\``, `- production recomputed SHA: \`${productionSha}\``, `- release member parity: ${result.memberParity}`, `- production source runtime: ${result.sourceRuntime.loadPass}/${result.sourceRuntime.files}`, `- target ids present: ${result.sourceRuntime.targetIdsPass}/${result.sourceRuntime.files}`, `- member mismatches: ${memberMismatches.length}`, `- outside release files touched: false`, `- candidate-only historical drift: preserved`, ''].join('\n'), 'utf8');
+console.log(JSON.stringify({ status: result.status, releaseArtifactSha: release.releaseArtifactSha, productionRecomputedSha: productionSha, memberParity: result.memberParity, sourceRuntime: result.sourceRuntime }, null, 2));

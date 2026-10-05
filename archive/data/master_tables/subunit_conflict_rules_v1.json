@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "archive-subunit-conflict-rules-v1",
+  "status": "DRAFT",
+  "productionWriteAllowed": false,
+  "decisionOrder": ["target_object", "required_action", "solution_anchor", "conflict_guard"],
+  "rules": [
+    {"subUnitKey":"M2-04-LINEAR_FUNCTION_BASIC","include":["y=ax+b","기울기","절편","그래프 위의 점","두 점을 지나는 직선"],"exclude":["ax+by+c=0","교점","일치","평행"],"conflictWith":["M2-04-LINEAR_FUNCTION_EQUATION"]},
+    {"subUnitKey":"M2-04-LINEAR_FUNCTION_EQUATION","include":["ax+by+c=0","두 직선의 교점","해의 개수","일치","평행"],"exclude":["단일 일차함수의 기울기","단일 일차함수의 절편"],"conflictWith":["M2-04-LINEAR_FUNCTION_BASIC"]},
+    {"subUnitKey":"M2-05-TRIANGLE_PROPERTIES","include":["이등변","직각삼각형","합동","내심","외심","무게중심","삼각형의 내각"],"exclude":["평행사변형","사다리꼴","직사각형","마름모","정사각형"],"conflictWith":["M2-05-QUADRILATERAL_PROPERTIES"]},
+    {"subUnitKey":"M2-05-QUADRILATERAL_PROPERTIES","include":["평행사변형","사다리꼴","직사각형","마름모","정사각형","사각형의 대각선"],"exclude":["삼각형의 합동","내심","외심"],"conflictWith":["M2-05-TRIANGLE_PROPERTIES"]},
+    {"subUnitKey":"M2-08-PROBABILITY_BASIC","include":["표본공간","사건","확률의 범위","여사건","확률의 기본 성질"],"exclude":["합의 법칙","곱의 법칙","경우의 수 계산"],"conflictWith":["M2-08-PROBABILITY_COUNTING"]},
+    {"subUnitKey":"M2-08-PROBABILITY_COUNTING","include":["합의 법칙","곱의 법칙","나열","선택","분류","경우의 수 계산"],"exclude":["확률의 정의","확률의 범위만"],"conflictWith":["M2-08-PROBABILITY_BASIC"]},
+    {"subUnitKey":"M3-03-QUADRATIC_EQUATION","include":["인수분해","완전제곱","근의 공식","판별식","근과 계수"],"exclude":["넓이","수량","연속 정수","속력","변수 설정 후 식 수립"],"conflictWith":["M3-03-QUADRATIC_EQUATION_WORD"]},
+    {"subUnitKey":"M3-03-QUADRATIC_EQUATION_WORD","include":["넓이","수량","연속 정수","길이","속력","변수 설정","식 수립"],"exclude":["주어진 이차방정식의 순수 풀이"],"conflictWith":["M3-03-QUADRATIC_EQUATION"]},
+    {"subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","include":["꼭짓점","축","절편","개형","평행이동","계수와 그래프"],"exclude":["실생활 모델","최댓값","최솟값","넓이 문장제"],"conflictWith":["M3-04-QUADRATIC_FUNCTION_APPLICATION"]},
+    {"subUnitKey":"M3-04-QUADRATIC_FUNCTION_APPLICATION","include":["넓이","울타리","수익","높이","실생활 모델","최댓값","최솟값"],"exclude":["꼭짓점·축만 해석"],"conflictWith":["M3-04-QUADRATIC_FUNCTION_GRAPH"]},
+    {"subUnitKey":"M3-05-TRIG_RATIO","include":["sin","cos","tan","특수각","삼각비 표","직각삼각형에서 비"],"exclude":["그림자","높이","거리","앙각","부각","측량"],"conflictWith":["M3-05-TRIG_RATIO_APPLICATION"]},
+    {"subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","include":["그림자","높이","거리","경사","앙각","부각","측량","입체"],"exclude":["삼각비 값","표 읽기","정의 확인"],"conflictWith":["M3-05-TRIG_RATIO"]}
+  ],
+  "gate": {"boundaryAccuracyMin":0.9,"contentSolutionAgreementMin":0.85,"samplePlan":{"strong":20,"boundary":20,"disagreement":10}}
+}

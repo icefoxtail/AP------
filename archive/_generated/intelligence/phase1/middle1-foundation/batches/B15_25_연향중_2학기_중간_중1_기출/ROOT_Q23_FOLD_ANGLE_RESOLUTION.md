@@ -1,0 +1,6 @@
+# B15 #23 targeted source resolution
+
+- Frozen UID `qid_v1_7e7daaa8de9d161000e9669ff4da4f7bf381397beaa4ad5f3b499110fb9d0125`; original-resolution `archive/assets/images/25_연향중_2학기_중간_중1_기출/q23.png` matches frozen SHA-256 `27ed99530b96d6d4611f9414807a999ee6933eb2aa4cfee362ae36b9a695df53`.
+- A and B independently obtained 124° but used different explanations. C held because its fold-ray correspondence was not certified by the generic stored solution. Root directly read only this unresolved UID.
+- The displayed top and bottom dashed sides of the original rectangle are parallel: `BC∥DF`. The solid ray `BA` continues through `B` to `D`, so `BA` and `BD` are opposite rays. Given `∠ABC=66°`, the angle between `BC` and `BD` is `180°−66°=114°`. Reversing `BD` to `DB` and transferring across the parallel sides places `DB` at 114° from rightward `DF`. Given `∠BDE=58°`, `DE` points at `114°−58°=56°` from `DF`. Thus `∠EDF=56°`, and in triangle `DEF`, `∠DEF+∠DFE=180°−56°=124°`.
+- The fold is part of the displayed configuration, but this deduction needs only the pictured straight ray through B,D and the original rectangle's parallel top/bottom sides. The stored generic solution omits these steps and remains a separate `SOLUTION_REPAIR_REQUIRED` quality finding. The source answer itself is supported, so semantic disposition is `PROPOSED` with no SOURCE_BLOCK.

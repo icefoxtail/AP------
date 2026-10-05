@@ -1,0 +1,98 @@
+{
+  "task": "D-first50-missing-stem-batch",
+  "queueIndex": 45,
+  "questionUid": "qid_v1_407efb2cf43120511ba8befe8ec893212addde8886155d68c6d60ccd6b932ac2",
+  "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#18",
+  "status": "PARTIAL_AUDIT_HOLD",
+  "queue": {
+    "uidOnlyQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-first50-missing-stem-batch\\queue-uid-only.jsonl",
+    "comparisonQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_AB_WORKING_COMPARISON_CURRENT.json",
+    "directFieldQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_SOL_DIRECT_FIELD_QUEUE.jsonl",
+    "parity": "PASS",
+    "sourceFingerprintBefore": "0b5a590460570c37a6cd649b859c298edffb6e4115f935815e49e83b5030f76e",
+    "sourceFingerprintAfter": "0b5a590460570c37a6cd649b859c298edffb6e4115f935815e49e83b5030f76e",
+    "sourceFingerprintUnchanged": true
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\1mid\\24_여수고_1학기_중간_고1_기출.js",
+    "questionId": 18,
+    "arrayIndex": 17,
+    "jsSha256AtBatchStart": "e6ebbd974eb6b55eb06502f7fb5dec0902a70e260b592c58a2efc888248bb715",
+    "jsSha256AtFinalAudit": "147c892a5c7329cac507254fe7b71acb96d234fb8905db015152dd3af7fd4759",
+    "questionFieldsSha256Before": "29130fc6b0b5e76b231d35bf99a8cc59c633d5b3993c3923219c259b2bda607d",
+    "questionFieldsSha256After": "29130fc6b0b5e76b231d35bf99a8cc59c633d5b3993c3923219c259b2bda607d",
+    "edited": false,
+    "before": {
+      "questionType": "객관식",
+      "content": "$z_1\\bar{z_1}=13$ 등을 만족하는 자연수 $a, b, c, d$에 대해 $z_1-z_2$는? [4.6점]",
+      "choices": [
+        "-3+i",
+        "-1+i",
+        "1+i",
+        "1-3i",
+        "3-i"
+      ],
+      "image": null,
+      "layoutTag": "grid",
+      "wide": false
+    },
+    "after": {
+      "questionType": "객관식",
+      "content": "$z_1\\bar{z_1}=13$ 등을 만족하는 자연수 $a, b, c, d$에 대해 $z_1-z_2$는? [4.6점]",
+      "choices": [
+        "-3+i",
+        "-1+i",
+        "1+i",
+        "1-3i",
+        "3-i"
+      ],
+      "image": null,
+      "layoutTag": "grid",
+      "wide": false
+    }
+  },
+  "source": {
+    "type": "original question HWP",
+    "path": "D:\\기출\\23,24 고1\\2024년\\1학기 중간고사\\수학 상 (24 여수고) - 답 x.hwp",
+    "sha256": "2b08a4fc98054294da169e044bb5f01ba05532428547474ddaeaa4d598d827b9",
+    "questionOrdinal": 18,
+    "physicalPage": null,
+    "physicalPageStatus": "UNRESOLVED_BY_HWP_PARSER",
+    "pageImage": null,
+    "textExcerpt": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-first50-missing-stem-batch\\q45\\q18-source-text-excerpt.txt",
+      "sha256": "89f9891b4414049aa45b6c072b6c2f837ec130781cfe05ef0c9cfb70146f40f7",
+      "tool": "PyHWP hwp5txt",
+      "lines": "263-267"
+    },
+    "hwpClassification": {
+      "sourceDirectory": "2024년 1학기 중간고사",
+      "bodyTextSections": 1,
+      "separateOfficialAnswerSolutionStreamFound": false,
+      "fileHeaderScriptFlag": 0,
+      "officialAnswerPagesOpened": false,
+      "officialSolutionPagesOpened": false
+    }
+  },
+  "comparison": {
+    "prosePartial": "HWP text extraction yields q18 prose about two complex numbers, a natural-number condition, and following conditions.",
+    "equationAndTarget": "HOLD: condition objects and requested target are omitted.",
+    "choices": "HOLD: only choice labels ①-⑤ are extracted; values are omitted.",
+    "visual": "No q18-specific image marker surfaced in the targeted excerpt; page itself was not rendered.",
+    "repair": "None; exact source parity cannot be established."
+  },
+  "validation": {
+    "syntax": "PASS (node --check)",
+    "targetedSchema": "PASS (q18 id, 객관식, nonempty content, five choices)",
+    "queueIdentity": "PASS",
+    "q18ItemFingerprintUnchanged": "PASS",
+    "sourceVisualReview": "NOT_TESTED",
+    "archiveBrowserRender": "NOT_TESTED",
+    "physicalLedgerJson": "PASS"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  }
+}

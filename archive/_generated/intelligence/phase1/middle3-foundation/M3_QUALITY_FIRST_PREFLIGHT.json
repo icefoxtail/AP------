@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "metadata-foundation-quality-first-preflight-v1",
+  "status": "PREFLIGHT_PASS_WITH_PROVISIONAL_RUN_INVALIDATED",
+  "targetGrade": "MIDDLE3",
+  "targetBranch": "codex/metadata-foundation-m3",
+  "startSha": "20b1de2dec92d30f6202e234cb9f54ac90789b83",
+  "previousProvisionalHead": "abc87ea5f14e814e361beb8d77693d5442739df7",
+  "curriculumScope": [
+    "2015/M3-1",
+    "2015/M3-2",
+    "2022/M3-1",
+    "2022/M3-2"
+  ],
+  "targetQueueList": "archive/_generated/intelligence/phase1/middle3-foundation/M3_L1_WORK_QUEUE.json",
+  "expectedDenominatorReference": null,
+  "actualDenominator": {
+    "sourceFileCount": 69,
+    "questionCount": 1646,
+    "2015QuestionCount": 1646,
+    "2022QuestionCount": 0,
+    "explicitScopeHoldCount": 2,
+    "canonicalAssignedCountInProvisionalRun": 1644
+  },
+  "sourceScope": {
+    "included": "archive/exams/original/middle/m3/**/*.js",
+    "excluded": [
+      "archive/exams/types/middle/m3",
+      "archive/exams/similar/middle/m3"
+    ],
+    "sourceFilesLoad": "PASS",
+    "contentAccess": "PASS",
+    "choicesAccess": "PASS",
+    "solutionAccess": "PASS",
+    "visualSvgTableAccess": "PASS",
+    "validatedVisualAssetMissingCount": 0,
+    "validatedVisualAssetEmptyCount": 0,
+    "sharedMaterialDependencyCount": 23
+  },
+  "identityAndDb": {
+    "freshInventory": "archive/_generated/intelligence/phase1/middle3-foundation/M3_FRESH_INVENTORY.json",
+    "inventoryDigest": "63d6961efd47b753b3c6cd8f0552ad31da97e2d0a675729e73cfd98f9af1d8d5",
+    "identityUidJoin": "PASS",
+    "sourceFingerprintJoin": "PASS",
+    "sourceJsShaJoin": "PASS",
+    "dbQuestionCountParity": "PASS",
+    "duplicateUid": "PASS",
+    "duplicateSourceTuple": "PASS"
+  },
+  "authority": {
+    "taxonomy": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "taxonomyStatus": "TAXONOMY_AUTHORITY=LOCKED",
+    "metadataContract": "docs/rules/01_CANONICAL/JS아카이브_Metadata_Contract_v2.md",
+    "metadataContractStatus": "METADATA_CONTRACT_V2=LOCKED",
+    "difficulty": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "difficultyStatus": "LOCKED",
+    "curriculumApplicability": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md"
+  },
+  "codeUnderReview": {
+    "generation": "archive/tools/intelligence/build-m3-l1-metadata.mjs",
+    "apply": "archive/tools/intelligence/apply-m3-l1-metadata.mjs",
+    "existingRecheck": "same-context rule pass inside build-m3-l1-metadata.mjs; not independent evidence",
+    "existingDifficulty": "structuralScore heuristic in build-m3-l1-metadata.mjs; quality-first replacement required",
+    "existingHoldRouting": "candidate HOLD plus source-unit scope hold; must be evidence-backed",
+    "existingApplicability": "canonical master path lookup; must remain locked"
+  },
+  "agentAvailability": {
+    "multiAgent": "AVAILABLE",
+    "reviewerAgentId": "01a0a9c1-406b-75a0-8445-69a4bfd0fa0c",
+    "reviewerNickname": "Descartes",
+    "reviewerScope": "read-only independent Gate 0/1/2 pilot and root-cause review",
+    "reviewStatusAtCapture": "RUNNING"
+  },
+  "workingTreeAtStart": "CLEAN",
+  "preflightGates": {
+    "repository": "PASS",
+    "targetBranch": "PASS",
+    "startSha": "PASS",
+    "targetGradeOnly": "PASS",
+    "freshDenominator": "PASS",
+    "sourceAccess": "PASS",
+    "authorityAccess": "PASS",
+    "qualityFirstBlocker": "PROVISIONAL_RUN_INVALIDATED_BEFORE_RERUN"
+  },
+  "provisionalRunDisposition": {
+    "status": "INVALID_FOR_QUALITY_FIRST",
+    "reasons": [
+      "same-context independent_recheck was not an independent reviewer",
+      "sourceStandardUnitKey and queue target filtered primary L1 before content-first classification",
+      "keyword and nearest fallback logic violated blind taxonomy contract",
+      "boolean/structural difficulty evidence lacked decisiveSolutionStep and difficultyReason",
+      "apply receipt set parity claims without independently recomputing all checks"
+    ],
+    "sourceContentMutation": 0,
+    "sourceJsMutation": 0
+  }
+}

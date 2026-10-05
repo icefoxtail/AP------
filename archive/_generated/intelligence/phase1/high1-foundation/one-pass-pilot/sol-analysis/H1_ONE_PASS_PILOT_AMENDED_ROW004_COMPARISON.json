@@ -1,0 +1,45 @@
+{
+  "status": "AMENDED_SOURCE_TARGETED_REVIEW_COMPLETE",
+  "row": 4,
+  "mainQueueIndex": 646,
+  "questionUid": "qid_v1_2c95c2e052c61e0c48ed173d1ccf40bec0d7e411c2bd97c3a3249afe527a33c4",
+  "oldSourceFingerprint": "26d13b2ec74b3a3446a6e145e12ae73c9427e8819ac30badcc5b8f4d122c1e97",
+  "newSourceFingerprint": "483a58d7b1539eb252b61a0807847d3e93ddb8f65e583f8e6499f5c35714f095",
+  "oldAnswer": "25",
+  "newAnswer": "120",
+  "sourceRepairLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_SOURCE_ORIGINAL_LUNA_D5_BATCH01_3.jsonl",
+  "originalPilotInputAndLedgersPreserved": true,
+  "a": {
+    "l1": "H22-C-05",
+    "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "l4": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+    "crossConcepts": [
+      "CC_DISCRIMINANT",
+      "CC_ROOTS_COEFFICIENTS"
+    ],
+    "conditions": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "status": "REVIEWED"
+  },
+  "b": {
+    "l1": "H22-C-05",
+    "l2": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "l3": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "l4": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+    "crossConcepts": [
+      "CC_DISCRIMINANT",
+      "CC_ROOTS_COEFFICIENTS"
+    ],
+    "conditions": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "status": "REVIEWED"
+  },
+  "exactSemanticAgreement": true,
+  "sourceMathCheck": "f contributes two valid intersections for m<=2 and one for m>2; g has one tangent intersection at -2+2sqrt(3), two for (-2+2sqrt(3),2), one at 2, and one for m>2; exactly three occur at the two boundary slopes, giving 10S^2=120.",
+  "hiddenMatchFeedbackToWorkers": false
+}

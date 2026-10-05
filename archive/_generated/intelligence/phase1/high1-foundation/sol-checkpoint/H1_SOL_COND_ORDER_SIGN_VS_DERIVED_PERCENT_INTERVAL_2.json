@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "field": "conditions",
+  "items": [
+    {
+      "queueIndex": 223,
+      "questionUid": "qid_v1_01fa7810502c157339d77e1f53ccac96bc6fbeffce2e5b07d9f72edbbd01fbe0",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#20",
+      "sourceFingerprint": "9c8345b9ef52ba3a91e8c6c0e8a6e2d3781e6e1ba53a2f2b0de32dec53eb1e28",
+      "value": ["COND_POSITIVE"],
+      "reason": "The stem explicitly states x>y. From x+y=−3 and xy=1, (x−y)²=5, and the strict order is exactly x−y>0, selecting +√5 rather than −√5. This positive-sign restriction changes the signs of all three requested differences, so COND_POSITIVE is decisive; a generic range label would obscure the specific sign choice."
+    },
+    {
+      "queueIndex": 270,
+      "questionUid": "qid_v1_25854dfa3e7360c3693b3b9cd29b230003ced6ce6d314155013982e85d32f954",
+      "sourceIdentity": "original/high/h1/1final/22_팔마고_1학기_기말_고1_기출.js#11",
+      "sourceFingerprint": "e382b65a5bd23c0faf21a51799252a6170127e95cb000d382bc15875ae169963",
+      "value": [],
+      "reason": "The source describes a price increase x% and sales decline x/2%, then asks for the interval a≤x≤b that makes revenue rise by at least 8%. The revenue inequality itself reduces to (x−20)(x−80)≤0 and yields 20≤x≤80. Positivity of x is already automatic in that resulting interval, and a≤x≤b is the answer to find rather than an external range constraint. Neither sign nor range adds an independent decisive filter."
+    }
+  ],
+  "newConditionKey": false,
+  "finality": "WORKING_NOT_FINAL"
+}

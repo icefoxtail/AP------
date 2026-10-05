@@ -1,0 +1,113 @@
+{
+  "task": "D-q98-question-only",
+  "status": "PARTIAL_AUDIT_HOLD",
+  "queue": {
+    "queueIndex": 98,
+    "questionUid": "qid_v1_65454c398b883d71b6dcf6b7bd8f15ea1bbbe935649f44d22a1da5ff36cce773",
+    "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#14",
+    "comparisonPath": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_AB_WORKING_COMPARISON_CURRENT.json",
+    "currentSourceFingerprint": "28cf55731481659043296c4a3d1ed7e900f23b128b53ebd3aa81b2a7b385f850",
+    "currentSourceFileSha256": "40ad237a16be633f6705ee0adf0a5e46e5ac99d2ba767da7db0993f94cbb8bf4",
+    "actualJsSha256": "40AD237A16BE633F6705EE0ADF0A5E46E5AC99D2BA767DA7DB0993F94CBB8BF4",
+    "parity": "PASS"
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\1mid\\23_충무고_1학기_중간_고1_기출.js",
+    "questionId": 14,
+    "arrayIndex": 13,
+    "questionFieldsSha256Before": "e42eecec852c719c453944c31ae1fa40ce1ac140756473dfaa03bb23bc784773",
+    "questionFieldsSha256After": "e42eecec852c719c453944c31ae1fa40ce1ac140756473dfaa03bb23bc784773",
+    "jsSha256Before": "40AD237A16BE633F6705EE0ADF0A5E46E5AC99D2BA767DA7DB0993F94CBB8BF4",
+    "jsSha256After": "40AD237A16BE633F6705EE0ADF0A5E46E5AC99D2BA767DA7DB0993F94CBB8BF4",
+    "edited": false,
+    "before": {
+      "questionType": "객관식",
+      "content": "모든 실수 $x$에 대하여 부등식<br>$4x^3 - 2x^2 + x + \\frac{1}{2} = a\\left(x - \\frac{1}{2}\\right)^3 + b\\left(x - \\frac{1}{2}\\right)^2 + c\\left(x - \\frac{1}{2}\\right) + d$<br>가 성립할 때, 상수 $a, b, c, d$에 대하여 $ac + b + d$의 값을 구하면?",
+      "choices": [
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "imageFieldPresent": false,
+      "imageValue": null,
+      "layoutTag": "grid",
+      "wide": false
+    },
+    "after": {
+      "questionType": "객관식",
+      "content": "모든 실수 $x$에 대하여 부등식<br>$4x^3 - 2x^2 + x + \\frac{1}{2} = a\\left(x - \\frac{1}{2}\\right)^3 + b\\left(x - \\frac{1}{2}\\right)^2 + c\\left(x - \\frac{1}{2}\\right) + d$<br>가 성립할 때, 상수 $a, b, c, d$에 대하여 $ac + b + d$의 값을 구하면?",
+      "choices": [
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "imageFieldPresent": false,
+      "imageValue": null,
+      "layoutTag": "grid",
+      "wide": false
+    }
+  },
+  "source": {
+    "type": "original question HWP",
+    "path": "D:\\기출\\23,24 고1\\2023년\\1학기 중간고사\\수학 상 (23 충무고).hwp",
+    "sha256": "DA9BAE3B6A7CCE1AF70E93544B4969FBEAB82195CBBB80C87C4E3A5E5CC6C9D8",
+    "sourceScope": "question paper only",
+    "questionOrdinal": 14,
+    "physicalPage": null,
+    "physicalPageStatus": "UNRESOLVED",
+    "pageImage": null,
+    "detailCrop": null,
+    "textExcerpt": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q98-question-only\\q14-prose-excerpt.txt",
+      "sha256": "E0E71E177E6FE1807C94F58ADAA8CB01C71871F5BCA8EC30F062781520CAA58A",
+      "method": "PyHWP hwp5txt",
+      "excerptLines": "271-278"
+    },
+    "officialAnswerPagesOpened": false,
+    "officialSolutionPagesOpened": false,
+    "nearbyRasterPagesDisposition": "NOT_USED_UNVERIFIED: image001.jpg-image007.jpg are in the same folder but their visible q14 differs from the exact HWP text extraction; no file linkage to the target HWP was confirmed."
+  },
+  "comparison": {
+    "proseWord": "SOURCE_TEXT_MATCH: HWP extraction explicitly reads 부등식, same as JS.",
+    "equationRelationSymbol": "HOLD: HWP equation/control object omitted by available exporters; cannot determine whether it prints = or an inequality symbol.",
+    "requestedTarget": "HOLD: equation/control object omitted; JS target not cross-confirmed.",
+    "choices": "PARTIAL/HOLD: option labels ①-⑤ are extracted, option values are omitted.",
+    "score": "HWP text extraction reads [5.1점]; JS content does not include a score. No edit because original page equation and full visual mapping remain unavailable under the fail-closed gate.",
+    "overall": "No wording repair supported: original prose itself says 부등식; relation symbol cannot be visually verified."
+  },
+  "renderAttempts": [
+    {
+      "tool": "PyHWP hwp5txt",
+      "result": "PARTIAL",
+      "detail": "Prose extracted; HWP math/control objects omitted."
+    },
+    {
+      "tool": "PyHWP hwp5html",
+      "result": "PARTIAL",
+      "detail": "HTML flow export drops equation objects and loses original physical page split."
+    },
+    {
+      "tool": "Hancom HWP COM SaveAs PDF",
+      "result": "NOT_COMPLETED",
+      "detail": "Hidden COM open did not complete within 30 seconds after FilePathCheck registration; automation was interrupted; PDF created=False"
+    }
+  ],
+  "validation": {
+    "jsSyntax": "PASS (node --check)",
+    "targetedQuestionSchema": "PASS (q14 id, nonempty content, five choices)",
+    "queueIdentity": "PASS",
+    "onlyQuestionFieldsInspected": true,
+    "jsEdited": false,
+    "render": "NOT_TESTED",
+    "physicalLedgerJson": "PASS"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  }
+}

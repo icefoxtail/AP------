@@ -1,0 +1,3 @@
+ALTER TABLE attendance ADD COLUMN tags TEXT DEFAULT '';
+ALTER TABLE attendance ADD COLUMN memo TEXT DEFAULT '';
+ALTER TABLE attendance ADD COLUMN updated_at TEXT DEFAULT '';

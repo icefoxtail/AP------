@@ -1,0 +1,7 @@
+# B15 #15 source answer block
+
+- Frozen UID: `qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270` in `INPUT_BUNDLE.jsonl` ordinal 15; image `archive/assets/images/25_연향중_2학기_중간_중1_기출/q15.png` was read at original resolution and matched frozen SHA-256 `47619b4fa89eb48389d043d6f6eb0e6c72874d6a3b4f3fd5b88a906d77df5741`.
+- Printed condition: only `l∥m` and a 50° angle between the rising diagonal and `m` are specified. The archived answer is ① 120°, and its generic solution supplies no additional angle relationship.
+- The angle `a` below `l` and left of the rising diagonal equals 50° by alternate interior angles. The angle `b` above `m` and right of its leftward ray depends on the *other*, falling diagonal. No angle, equality, perpendicularity, or other relation constrains that line's slope. The apparent short stroke at the upper left is the line crossing `l`, not a labeled condition.
+- For example, keep `l`, `m`, and the rising 50° diagonal fixed and rotate only the falling line through the lower intersection. Choosing `b=70°` gives `a+b=120°`; choosing `b=80°` gives `a+b=130°`. Both satisfy every printed condition. Thus neither the keyed ① nor B's proposed ② can be certified from the source.
+- Root disposition: `SOURCE_BLOCKED` / semantic `HOLD`, difficulty `UNKNOWN`, no metadata writeback, no protected field edit. C remains independent and may give its own reading; this source proof controls final fail-closed disposition unless a missing printed condition is found.

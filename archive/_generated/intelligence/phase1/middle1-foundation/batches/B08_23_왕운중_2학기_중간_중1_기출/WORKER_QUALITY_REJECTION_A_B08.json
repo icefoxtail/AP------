@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "m1-worker-quality-rejection-v1",
+  "batchNo": 8,
+  "worker": "A",
+  "status": "RESOLVED_TARGETED_REVIEW",
+  "rejectedQuestionUids": [
+    "qid_v1_83d05b680a2392417699ac180a0c346588efe041210b5704f52847a01a9fee0f"
+  ],
+  "rejectedSourceOrdinals": [
+    12
+  ],
+  "oldLedgerSha256": "06ff3371f99ff0e029437f949deb88ddbb1bbe0153518854e6dd6bc61283f54a",
+  "reviewInputSha256": "9cb7d0cefd4ba973114954aec327c74d8017ffd83814f1b32d0e3e997c298d9f",
+  "reason": "A #12 semantic math is copied from same-exam #8 triangle uniqueness despite #12 frozen source asking parallel-line x+y angle transfer; UID/hashes alone cannot establish source reading. Initial ready message preceded a final whole-ledger rewrite; the early draft is separately preserved and the final A ledger is now the rejection baseline. q12 remains source/math-mismatched in both.",
+  "revisionFile": "LUNA_A_REVISION_12.jsonl",
+  "earlyDraftSha256": "1280c336c81a883f7d6f93f1c9e445b9e6cc2becfefe4d26f85075b3babfdf39",
+  "earlyDraftFile": "LUNA_A_EARLY_DRAFT.jsonl",
+  "correctedLedgerSha256": "b4d3dc69a684fe5243d31126bfcb1f9eb4c708c18b479ab4e9a483272300b428",
+  "revisionSha256": "c64f97c69057ab29e4fb4da3f6e2ec2c3982791b3a998e670bb9b7c1fa3df418",
+  "resolution": "Final A ledger was frozen after its late whole-ledger rewrite; only q12 was replaced with isolated source-first parallel-angle verdict x+y=275."
+}

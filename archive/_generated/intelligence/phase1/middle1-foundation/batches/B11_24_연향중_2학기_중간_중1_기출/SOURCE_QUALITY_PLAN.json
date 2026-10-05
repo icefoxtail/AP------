@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 11,
+  "denominator": 22,
+  "defaultDisposition": "SOLUTION_REPAIR_REQUIRED",
+  "defaultIssueType": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+  "defaultReason": "The archived solution repeats a broad geometry or data instruction and the keyed choice without the item-specific numerical/visual derivation. Record a physical solution-quality HOLD only; this does not independently trigger Root rereading or difficulty recheck.",
+  "overrides": [
+    { "sourceOrdinal": 6, "issueType": "MISSING_ZIGZAG_ANGLE_PROOF", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits x=180+40−α and y=α+50, while Root's source/image proof establishes 270°. Semantic mapping may proceed with separate solution-quality HOLD." },
+    { "sourceOrdinal": 7, "issueType": "MISSING_CUBE_NET_EDGE_MAPPING", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation does not fold the four lateral panels or show AB∥DE. Root proves keyed ⑤ and the M1-07 parent from the original image; solution quality remains a separate finding." },
+    { "sourceOrdinal": 8, "issueType": "MISSING_PARALLEL_TURN_SUM", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation does not identify a,b,c,d as successive turns or use the closing 25° mark. Root proves their 155° sum from the image; solution quality remains a separate finding." },
+    { "sourceOrdinal": 10, "issueType": "UNVERIFIABLE_RASTER_CONSTRUCTION_ORDER", "disposition": "SOURCE_BLOCKED", "reason": "The five raster-only choices and six circled operation labels cannot be bound to one exact stage order in the available scan. A gives only a general construction, B/C HOLD, and Root cannot certify keyed ②. Preserve source and semantic HOLD without taxonomy/writeback." },
+    { "sourceOrdinal": 11, "issueType": "OFF_TOPIC_SOLUTION_AND_CROSS_GRADE_WORKER_PROOF", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The archived angle-law explanation does not show the ambiguous SSA construction. Root provides the middle1 compass-circle/two-position route, replacing A/B's unnecessary sine-rule calculation without changing source or opening a solution-repair pass." },
+    { "sourceOrdinal": 14, "issueType": "OFF_TOPIC_SOLID_RELATION_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The stored solution discusses solid edges while this item is an equilateral-triangle SAS criterion. Root's source/image proof validates the answer and L2 correction; protected solution is not edited in this Meta Foundation batch." },
+    { "sourceOrdinal": 15, "issueType": "MISSING_SHARED_IMAGE_STEM_LEAF_DERIVATION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits the image-footer a×b−c prompt and the a=5,b=8,c=7 stem-and-leaf calculation. Root proves choice ④ from the frozen image; solution quality remains a finding." },
+    { "sourceOrdinal": 18, "issueType": "MISSING_SHARED_IMAGE_FREQUENCY_DERIVATION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits the image-footer 160–170 cm target and the 30×20%−3=3 calculation. Root proves choice ①; solution quality remains a finding." },
+    { "sourceOrdinal": 19, "issueType": "MISSING_SHARED_TABLE_CUMULATIVE_DERIVATION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits 30−9−6=15 below 150 cm. Root confirms the shared table and rejects C's false 5+10 intermediate values; the source answer remains valid and protected solution unchanged." },
+    { "sourceOrdinal": 22, "issueType": "MISSING_FOLD_REFLECTION_ANGLE_PROOF", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits the crease angle-bisector/parallel-transfer chain. Root proves 30° from ∠EGF=120° and rejects C's misread exterior-angle evidence; source remains unchanged." }
+  ],
+  "sourceAnswerHoldOrdinals": [10],
+  "semanticMappingPolicy": "All 22 UID remain in the exam denominator. #10 SOURCE_BLOCKED semantic HOLD remains source-byte unchanged and absent from taxonomy/writeback. The other 21 solution-quality HOLDs do not themselves trigger Root rereading or difficulty recheck. Root proofs and C quality-defect receipt are separate physical evidence; protected student fields are untouched."
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "h1-stage3-l3-boundary-review-checkpoint-v1",
+  "status": "STAGE3_L3_CANDIDATE_FREEZE_READY_FOR_L4",
+  "generatedAt": "2026-09-23",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "branchHeadBeforeCheckpoint": "1bcfadb9ea2b42bf30c7248b13ef101fabd34a1e",
+  "currentMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "coverage": {
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "files": [
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_POLYNOMIAL_217.jsonl",
+        "rows": 217,
+        "blobSha": "fcb9f4bea98a32a0f41a1e427b41cb3b62674ac2"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_EQINEQ_001_350.jsonl",
+        "rows": 350,
+        "blobSha": "ef665217439d2113d527117c2539723efe93abd1"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_EQINEQ_351_583.jsonl",
+        "rows": 233,
+        "blobSha": "d8f48c2a28d3ae04271dc8652d69c509366122be"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_PERMCOMB_287.jsonl",
+        "rows": 287,
+        "blobSha": "40ec741ac8b41566a3e0970b74503f5eb539255e"
+      },
+      {
+        "file": "H1_STAGE3_L3_CANDIDATE_MATRIX_83.jsonl",
+        "rows": 83,
+        "blobSha": "faad3d94856080b2feaf3c8788750babff0c6c50"
+      }
+    ]
+  },
+  "boundaryRepair": {
+    "artifact": "H1_STAGE3_L3_BOUNDARY_REPAIR_24.jsonl",
+    "actualRows": 25,
+    "note": "artifact filename was created before final boundary count; physical file contains 25 rows."
+  },
+  "keyStatusCounts": {
+    "NEW_CANDIDATE": 968,
+    "HOLD": 12,
+    "REUSE_ACTIVE": 190
+  },
+  "problemTypeDistribution": {
+    "PT_COUNTING_SELECTION_DISTRIBUTION": 103,
+    "PT_H1_COUNTING_PRINCIPLE_GENERAL": 99,
+    "PT_H1_POLY_DIVISION_REMAINDER": 87,
+    "PT_H1_QUADRATIC_DISCRIMINANT": 81,
+    "PT_COUNTING_ARRANGEMENT": 81,
+    "PT_H1_QUADRATIC_EXTREMA": 79,
+    "PT_H1_SYSTEM_EQUATION": 76,
+    "PT_H1_COMPLEX_POWER_ROOT": 48,
+    "PT_H1_COMPLEX_OPERATION": 46,
+    "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY": 44,
+    "PT_H1_QUADRATIC_INEQUALITY": 40,
+    "PT_H1_QUADRATIC_GRAPH_INTERSECTION": 40,
+    "PT_H1_POLY_FACTORIZATION": 38,
+    "PT_H1_POLY_OPERATION_EXPANSION": 38,
+    "PT_H1_COMPLEX_CONDITION_EQUATION": 38,
+    "PT_H1_MATRIX_BASIC_OPERATION": 35,
+    "PT_H1_MATRIX_MULTIPLICATION": 31,
+    "PT_H1_POLY_IDENTITY_COEFFICIENT": 29,
+    "PT_H1_HIGHER_DEGREE_EQUATION": 26,
+    "PT_H1_LINEAR_SYSTEM_INEQUALITY": 24,
+    "PT_H1_POLY_FORMULA_SYMMETRIC": 23,
+    "PT_H1_ROOT_COEFFICIENT_RELATION": 20,
+    "HOLD": 12,
+    "PT_H1_MATRIX_EQUATION": 12,
+    "PT_H1_QUADRATIC_RECONSTRUCTION": 9,
+    "PT_H1_MATRIX_POWER_IDENTITY": 5,
+    "PT_ABSOLUTE_INEQUALITY_EXTREMUM": 3,
+    "PT_COUNTING_REPEATED_ASSIGNMENT": 2,
+    "PT_FUNCTION_COUNTING": 1
+  },
+  "usedProblemTypeFamilyCount": 28,
+  "unassignedDueSourceBlock": 12,
+  "newCandidateFamilies": [
+    "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+    "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "PT_H1_COMPLEX_OPERATION",
+    "PT_H1_COMPLEX_POWER_ROOT",
+    "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "PT_H1_HIGHER_DEGREE_EQUATION",
+    "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "PT_H1_MATRIX_BASIC_OPERATION",
+    "PT_H1_MATRIX_EQUATION",
+    "PT_H1_MATRIX_MULTIPLICATION",
+    "PT_H1_MATRIX_POWER_IDENTITY",
+    "PT_H1_POLY_DIVISION_REMAINDER",
+    "PT_H1_POLY_FACTORIZATION",
+    "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "PT_H1_POLY_IDENTITY_COEFFICIENT",
+    "PT_H1_POLY_OPERATION_EXPANSION",
+    "PT_H1_QUADRATIC_DISCRIMINANT",
+    "PT_H1_QUADRATIC_EXTREMA",
+    "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "PT_H1_QUADRATIC_INEQUALITY",
+    "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "PT_H1_SYSTEM_EQUATION"
+  ],
+  "activeReuseFamilies": [
+    "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+    "PT_COUNTING_ARRANGEMENT",
+    "PT_COUNTING_REPEATED_ASSIGNMENT",
+    "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "PT_FUNCTION_COUNTING"
+  ],
+  "next": "L4 candidate compression within each L3 + relational metadata synthesis from existing semantic ledger; no source full reread"
+}

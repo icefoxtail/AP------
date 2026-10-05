@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "field": "conditions",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "canonicalDecision": ["COND_RANGE"],
+  "rule": "Use the feasible geometric interval or explicit order restriction that selects the answer. Do not duplicate it with COND_POSITIVE when positivity is already implied by that range and removing the separate positivity label does not change the decisive computation.",
+  "items": [
+    {
+      "queueIndex": 442,
+      "questionUid": "qid_v1_8ea03640fb933156e1f0dca437f50429e980c9986d3a82b032f93e040b0505af",
+      "sourceFingerprint": "66ad94f55b97d0846d6bfe0bb59d16e6d8e0b7b6b28573ec8889c09c8d6d9ba6",
+      "reason": "The inscribed rectangle width must satisfy 0<x<8, which makes y=10-5x/4 positive and permits the vertex x=4. The feasible interval already contains the geometric positivity requirement."
+    },
+    {
+      "queueIndex": 792,
+      "questionUid": "qid_v1_afeda2f814aeaee65914010a03a6d75a4d56dbf678dc59d5edd52d0103818ebc",
+      "sourceFingerprint": "75980123db3eab960775c976732a9bda9bcabcfbafbf5fd56fd0155b7585eea4",
+      "reason": "The wire equations yield side-length candidates 13 and 7; the explicit a>b condition selects a=13. Both candidates are already positive, so a separate positivity label adds no decisive restriction."
+    }
+  ],
+  "jsEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}

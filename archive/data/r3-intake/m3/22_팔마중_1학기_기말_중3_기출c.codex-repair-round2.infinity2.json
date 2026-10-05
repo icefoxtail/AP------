@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CODEX_R3_REPAIR_EVIDENCE_v2",
+  "recordType": "CODEX_R3_REPAIR_ROUND2_EVIDENCE",
+  "status": "CODEX_R3_REPAIR_DONE",
+  "nextState": "READY_FOR_CODEX_INDEPENDENT_REVIEW",
+  "canonicalOrdinal": 35,
+  "examUid": "m3/o35/22-palma-1final",
+  "exam": "22_팔마중_1학기_기말_중3_기출c.js",
+  "repairRound": 2,
+  "baseMainSha": "c105ea93ccc9316e75359011e498a08a9e88caaa",
+  "baseExamGitBlobSha": "85987815739e0b55c2b06504655c6c19737edd08",
+  "repairBranch": "codex/r3-repair-palma-o35-round2-20261003-infinity2",
+  "repairCommit": "521fb8ecd95fc5e9f2d4fde090f9076fe55b8200",
+  "finalArtifactGitBlobSha": "b1b4ca97a071a00d2422173463bf056924d277c7",
+  "finalArtifactSha": "sha256:2751bf2758899779681f89386d1008b80f611b1ae5000d723e3a87ce5bc9f7f5",
+  "originalIndependentReviewFail": {
+    "branch": "codex/r3-independent-review-palma-m3-o35-20261002",
+    "failPacketPath": "archive/data/r3-intake/m3/22_팔마중_1학기_기말_중3_기출c.codex-independent-review-round1.fail-packet.json",
+    "failPacketGitBlobSha": "55cf3dd65aa9b70a2c88f2d427e7f2382025e5ae",
+    "remainingFailureCodes": [
+      "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:q18,q22",
+      "R3_ITEM_HOLD_FORBIDDEN:18,22"
+    ],
+    "newDirectDefect": "META_PRIMARY_TIEBREAK_UNSUPPORTED_BY_CURRENT_AUTHORITY:q18,q22"
+  },
+  "currentAuthorityRevalidation": {
+    "notionRouter": "GPT 작업 전 필독 라우터",
+    "notionStartPage": "Archive 2.0 / JS Archive 시작 페이지",
+    "notionLifecycle": "Archive 전체 작업 생명주기 — 단계별 필독 문서",
+    "currentPolicy": "COMPLEX_QUESTION_PRIMARY_KEY_FIRST",
+    "rule": "복합문항이라는 이유만으로 HOLD하지 않고 Primary L3 1개 → L4 1개 → 나머지 결정 보조 의미는 secondary/CrossConcept 축으로 분리한다.",
+    "precedent": "o57 q15 R3/current PRIMARY KEY FIRST resolution",
+    "inclusiveEligibility": "advanced Meta/RPM capability debt is not a BASIC release blocker when source/answer/solution and required release gates are otherwise clean"
+  },
+  "repair": {
+    "changedProductionFiles": [
+      "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js"
+    ],
+    "changedQids": [
+      18
+    ],
+    "changedFields": [
+      "q18.solution"
+    ],
+    "q18": {
+      "action": "SMALLBOARD_ENUMERATION_REPAIR",
+      "result": "ALL_FIVE_STATEMENTS_INDEPENDENTLY_JUDGED",
+      "verifiedFacts": {
+        "statement1": "FALSE — x>0 implies y=x^2+6x+5>0, so quadrant IV is not visited",
+        "statement2": "FALSE — y-intercept is (0,5)",
+        "statement3": "FALSE — vertex is (-3,-4)",
+        "statement4": "TRUE — (-1,0) lies on graph and leading coefficient is positive",
+        "statement5": "TRUE — y=(x+3)^2-4 is y=x^2 translated left 3 and down 4",
+        "lockedAnswer": "④, ⑤"
+      }
+    },
+    "q22": {
+      "action": "NO_PRODUCTION_CONTENT_MUTATION",
+      "reason": "existing solution already separately executes the source-required square-root method and completing-square method"
+    }
+  },
+  "metaHoldRevalidation": {
+    "productionMetaPayloadPath": "archive/data/r2e-intake/m3/22_팔마중_1학기_기말_중3_기출c.meta-review2.meta-v2.payload.json",
+    "productionMetaPayloadGitBlobSha": "7756adffbbcc0f556b8e995ef3569fc2246e2426",
+    "currentPayloadItemHoldCount": 0,
+    "q18": {
+      "priorHold": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "currentDisposition": "PRIMARY_KEY_FIRST_RESOLVABLE",
+      "primaryRpmRecordId": "M3-RPM-049",
+      "primaryPath": "이차함수 → 이차함수 y=ax²+bx+c의 그래프 → 꼭짓점형 → 평행이동",
+      "secondaryRpmChecks": [
+        "M3-RPM-047",
+        "M3-RPM-045",
+        "M3-RPM-053"
+      ],
+      "secondaryRole": "option verification / graph-position confirmation; no invented machine key"
+    },
+    "q22": {
+      "priorHold": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "currentDisposition": "PRIMARY_KEY_FIRST_RESOLVABLE",
+      "primaryRpmRecordId": "M3-RPM-033",
+      "primaryPath": "이차방정식 → 이차방정식의 풀이 → 제곱근·완전제곱식을 이용한 풀이 → 제곱근 이용",
+      "secondaryRpmChecks": [
+        "M3-RPM-034"
+      ],
+      "secondaryRole": "second explicitly required subpart method; retained as secondary semantic evidence"
+    },
+    "releaseBlockReclassification": {
+      "R3_ITEM_HOLD_FORBIDDEN:18,22": "STALE_FALSE_BLOCKER — current Meta payload itemHoldCount is 0; these were advanced semantic HOLD rows, not question item holds",
+      "TRUE_META_HOLD_MULTI_L4_NO_UNIQUE_PRIMARY:q18,q22": "STALE_UNDER_CURRENT_PRIMARY_KEY_FIRST — must be freshly independently rechecked, not automatically inherited"
+    },
+    "productionMetaMutation": 0
+  },
+  "validation": {
+    "jsSyntaxParse": "PASS",
+    "compareBaseToRepair": {
+      "productionChangedPathCount": 1,
+      "onlyProductionPath": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "additions": 1,
+      "deletions": 1
+    },
+    "protectedSourceMutationCount": 0,
+    "answerMutationCount": 0,
+    "choicesMutationCount": 0,
+    "linkedAssetMutationCount": 0
+  },
+  "lockedScope": {
+    "allowedQids": [
+      18,
+      22
+    ],
+    "actualProductionMutationQids": [
+      18
+    ],
+    "outOfScopeMutationCount": 0
+  },
+  "independentReviewRequirement": {
+    "required": true,
+    "fresh": true,
+    "blindDecisionClaimedByRepairer": false,
+    "instruction": "Fresh reviewer must independently recheck q18 solution + q18/q22 current PRIMARY KEY FIRST Meta disposition against latest authority and locked-scope regression before PASS.",
+    "additionalGPT_R3_retry": false
+  },
+  "mainMutation": 0
+}

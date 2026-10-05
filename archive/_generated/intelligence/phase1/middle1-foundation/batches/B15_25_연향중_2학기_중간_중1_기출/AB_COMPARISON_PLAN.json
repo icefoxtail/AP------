@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "m1-ab-comparison-plan-v1",
+  "batchNo": 15,
+  "denominator": 24,
+  "comparisonRule": "The pre-existing L1/L2 parents are the baseline. A/B independently read all 24 source questions and 19 images. C receives only substantive source-answer or solution-method disagreements. Candidate key wording, reason wording and intrinsic arithmetic/geometry support labels do not create conflicts by themselves.",
+  "conflicts": [
+    { "sourceOrdinal": 15, "reason": "A accepts the frozen answer and derives a+b=120 degrees from parallel-line transfer; B reads the marked 50-degree sector as straight-angle complement a+b=130 degrees and marks the frozen 120-degree answer HOLD. The diagram-answer binding is a real source dispute." },
+    { "sourceOrdinal": 20, "reason": "A derives equal perpendicular heights BD=CE from equal-area triangles sharing midpoint M, whereas B derives BD=CE from projection symmetry about M. These are distinct decisive justifications of the geometry step and its auxiliary concept role." },
+    { "sourceOrdinal": 23, "reason": "A attributes the key 56-degree angle to fold-reflection angle preservation, whereas B uses the rectangle's parallel sides plus the straight angle at D. The stated decisive route and CrossConcept role differ materially despite the same numeric answer." }
+  ],
+  "nameOnlyOrEquivalentOrdinals": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,21,22,24],
+  "rootGateDifferencesOutsideCTrigger": [
+    { "sourceOrdinal": 4, "field": "CROSS_CONCEPT_KEY_NAME", "note": "Both workers use fixed inflow and variable cross-section to interpret height-time slope; labels differ, semantic step agrees." },
+    { "sourceOrdinal": 22, "field": "CONDITION_VERSUS_CROSS_CONCEPT", "note": "A's four-collinear-points label is a source condition intrinsic to counting distinct lines/rays, not an independent C conflict; preserve the geometry explanation without decorative CrossConcept." },
+    { "sourceOrdinal": 24, "field": "INTRINSIC_SUPPORT_LABELS", "note": "Both workers use diagonal 45-degree geometry, ASA congruence, and area transfer; B names these embedded steps individually, while A records one area-transfer support. The decisive method agrees." }
+  ]
+}

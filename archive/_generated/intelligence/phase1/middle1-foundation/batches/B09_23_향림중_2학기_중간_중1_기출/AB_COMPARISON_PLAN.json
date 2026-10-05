@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "m1-ab-comparison-plan-v1",
+  "batchNo": 9,
+  "denominator": 26,
+  "comparisonRule": "Compare L1/L2, primary mathematical goal, decisive step, L3/L4 semantic boundary, CrossConcept, HOLD and ROUTE_OUT. Candidate spelling alone is equivalent. B #18 previous-exam midpoint contamination is excluded; this plan uses only the corrected B ledger with isolated source-first revision and frozen pre-correction receipt.",
+  "conflicts": [
+    { "sourceOrdinal": 5, "reason": "A places perpendicular/ratio angle chase in M1-05 basic figures with CC_PERPENDICULAR; B places it in position relation with no CrossConcept. L2 and primary/cross boundary differ." },
+    { "sourceOrdinal": 6, "reason": "A makes perpendicular-edge counting in the triangular prism M1-07 solid-figure topology; B makes spatial position relations M1-05 primary. L1/L2 differ." },
+    { "sourceOrdinal": 8, "reason": "A HOLD cannot bind the y/3x sectors to the given 150°/55° rays; B proposes a 145° zigzag angle answer. HOLD and decisive-step verification differ." },
+    { "sourceOrdinal": 9, "reason": "A tags CC_REFLECTION for folded-tape angle difference; B treats reflection as intrinsic to the folding primary type and leaves CrossConcept empty. Primary/cross boundary differs." },
+    { "sourceOrdinal": 12, "reason": "Both count six unordered triangle side triples under fixed perimeter 20, but A adds CC_TRIANGLE_INEQUALITY whereas B treats strict side feasibility as the primary type's intrinsic criterion. CrossConcept necessity differs." },
+    { "sourceOrdinal": 13, "reason": "A makes SAS triangle congruence primary and checks correspondence order; B uses an equilateral-triangle angle-relation primary type for the same false correspondence option. L3 primary boundary differs." },
+    { "sourceOrdinal": 15, "reason": "A treats the dodecagon option failure as diagonal-count L3 (54 not 60); B treats it as regular-polygon property-statement L3 covering angles and diagonals. L3 split/merge boundary differs." },
+    { "sourceOrdinal": 21, "reason": "A/B both HOLD because x/80° ray bounds are unclear, but A tags CC_PERPENDICULAR and B leaves perpendicularity inside angle chase. CrossConcept role differs and C must assess source topology blindly." },
+    { "sourceOrdinal": 22, "reason": "A HOLD cannot confidently bind faint c/d sectors and adds CC_REGULAR_HEXAGON; B proposes ③ using pentagon/hexagon angles with no CrossConcept. HOLD and cross boundary differ." },
+    { "sourceOrdinal": 24, "reason": "Both prove ASA congruence from equal connector segments and parallel-line angles, but A tags CC_PARALLEL_LINES while B treats parallel transfer as intrinsic to the primary congruence method. CrossConcept necessity differs." }
+  ],
+  "nameOnlyOrEquivalentOrdinals": [1, 2, 3, 4, 7, 10, 11, 14, 16, 17, 18, 19, 20, 23, 25, 26],
+  "rootGateDifferencesOutsideCTrigger": [
+    { "sourceOrdinal": 14, "field": "SOURCE_HOLD", "note": "A/B independently HOLD: two equilateral triangles and ∠BCD=42° may not fix ∠CAE without a side-length ratio; root source/image audit is needed for a SOURCE_BLOCK decision, but C is reserved for actual A/B conflicts." },
+    { "sourceOrdinal": 18, "field": "workerQualityCorrection", "note": "B's q18 prior B08 segment-midpoint math was rejected and replaced by isolated polygon-angle source-first proof; old ledger, input, revision and SHA receipt are preserved." }
+  ]
+}
