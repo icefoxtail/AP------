@@ -52,7 +52,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q03.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q03-r1.png"
   },
   {
     "id": 4,
@@ -70,7 +70,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q04.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q04-r1.png"
   },
   {
     "id": 5,
@@ -88,7 +88,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q05.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q05-r2.png"
   },
   {
     "id": 6,
@@ -142,7 +142,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q08.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q08-r1.png"
   },
   {
     "id": 9,
@@ -230,7 +230,7 @@ window.questionBank = [
       "통계",
       "분산과 편차"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q13.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q13-r1.png"
   },
   {
     "id": 14,
@@ -248,7 +248,7 @@ window.questionBank = [
       "통계",
       "평균과 편차"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q14.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q14-r1.png"
   },
   {
     "id": 15,
@@ -283,7 +283,7 @@ window.questionBank = [
       "통계",
       "산점도와 분산"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q16.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q16-r1.png"
   },
   {
     "id": 17,
@@ -388,7 +388,7 @@ window.questionBank = [
       "통계",
       "산점도"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q22.png"
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q22-r1.png"
   },
   {
     "id": 23,
