@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "o16",
+  "artifactSha": "a1a5b86ce3d995afd396caefcfae004685edf1fa",
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "sourceMode": "ALIVE_REPLACEMENT",
+      "axisEvidence": {
+        "questionLayout": "grid preserved; five explicit fractions supplied with existing five combination choices",
+        "solutionLayout": "all five fractions individually classified and conclusion bound to choice ④",
+        "meta": "M2-01 repeating-decimal / terminating-decimal semantics, existing tags, subUnit and difficulty preserved and aligned",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "curriculum": "중2 M2-01 유리수와 순환소수 — 기약분수의 분모 소인수로 유한소수 판별",
+        "answerCardinality": "single-select; terminating set exactly {㉠,㉢,㉤}, so existing combination choice ④ is uniquely correct"
+      }
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "axisEvidence": {
+        "questionLayout": "content and five choices unchanged",
+        "solutionLayout": "decimal-position parity recalculated; 50th and 60th digits both derived explicitly",
+        "meta": "M2-01 repeating-decimal semantics, existing tags, subUnit and difficulty preserved and aligned",
+        "visualSvg": "NOT_APPLICABLE"
+      },
+      "provenanceEvidence": {
+        "repair": "answer changed ②→③ and solution corrected; content/choices unchanged",
+        "repairedTruth": "2/55=0.0363636...; from position 2 the digits 3,6 repeat, so positions 50 and 60 are both 3 and a/b=1=choice ③"
+      }
+    }
+  ]
+}
