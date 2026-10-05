@@ -59,6 +59,10 @@ CREATE/R1/R2/R3/MASTER의 resolved model/effort는 반드시:
 
 임의의 generic/explorer/reviewer subagent를 새로 만들어 production 역할을 대체하지 않는다.
 
+project config의 global spawned-agent concurrency cap은 **5**다.
+
+이번 1시험지 canary에서는 정상 production stage worker를 순차적으로 하나씩 사용한다. continuation이 실제 발생하면 MASTER가 추가될 수 있다. 이후 multi-exam pilot에서는 별도 사용자 지시에 따라 최대 5개 spawned-agent thread까지 병렬 사용 가능하다.
+
 ## 4. Spawn Policy
 
 5개 agent를 처음부터 동시에 spawn하지 않는다.
@@ -72,9 +76,7 @@ CREATE/R1/R2/R3/MASTER의 resolved model/effort는 반드시:
 5. R3 V2 PASS → MAIN closure
 6. `archive_master`는 durable continuation이 실제 발생했을 때만 spawn
 
-정상 상황에서 production stage worker는 동시에 1개만 실행한다.
-
-MASTER continuation이 병행될 때만 최대 2개 thread를 허용한다.
+이번 1시험지 canary에서는 정상 상황에서 production stage worker는 동시에 1개만 실행한다.
 
 ## 5. ROOT Routing-Only HARD
 
