@@ -2570,3 +2570,428 @@ body[data-archive-view="compose"] .compose-create-bar {
   }
 }
 
+
+
+/* AP Archive Next visual direction — Compose 1D
+   DESIGN-ONLY HARD RULE: preserve current Compose DOM/actions/routes/API/save semantics. */
+body[data-archive-view="compose"] {
+  background: #fbfaf6;
+}
+body[data-archive-view="compose"] main {
+  max-width: 1480px;
+}
+body[data-archive-view="compose"] .intro {
+  align-items: center;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e7e2d9;
+}
+body[data-archive-view="compose"] .intro h1 {
+  color: #142033;
+  font-size: 30px;
+  letter-spacing: -.04em;
+}
+body[data-archive-view="compose"] .intro h1 .badge {
+  margin-left: 6px;
+  padding: 4px 8px;
+  border: 1px solid #dfd2ba;
+  border-radius: 999px;
+  background: #f5eee2;
+  color: #795a2f;
+  font-size: 11px;
+  vertical-align: middle;
+}
+body[data-archive-view="compose"] .intro p {
+  max-width: 760px;
+  color: #77808e;
+}
+body[data-archive-view="compose"] .intro > .actions {
+  gap: 7px;
+}
+body[data-archive-view="compose"] .intro > .actions button {
+  min-height: 38px;
+  border-color: #dcd7ce;
+  background: #fff;
+  color: #3e4b5e;
+}
+body[data-archive-view="compose"] .workspace {
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 28px;
+}
+body[data-archive-view="compose"] .workspace > div {
+  min-width: 0;
+}
+body[data-archive-view="compose"] .panel {
+  border-color: #dfdad2;
+  border-radius: 12px;
+  background: rgba(255,255,255,.84);
+  box-shadow: 0 3px 14px rgba(20,32,51,.025);
+}
+body[data-archive-view="compose"] .compose-setup {
+  background: rgba(255,255,255,.9);
+}
+body[data-archive-view="compose"] .compose-step {
+  padding: 18px;
+  border-top-color: #ece7df;
+}
+body[data-archive-view="compose"] .compose-step-head {
+  margin-bottom: 14px;
+}
+body[data-archive-view="compose"] .compose-step-head h2 {
+  color: #172033;
+  font-size: 16px;
+  letter-spacing: -.02em;
+}
+body[data-archive-view="compose"] .compose-step-number {
+  width: 27px;
+  height: 27px;
+  border: 1px solid #d9def3;
+  border-radius: 8px;
+  background: #eef0fb;
+  color: #4659bd;
+}
+body[data-archive-view="compose"] input,
+body[data-archive-view="compose"] select {
+  border-color: #ddd8ce;
+  border-radius: 8px;
+  background: #fffefa;
+  color: #243044;
+}
+body[data-archive-view="compose"] input:focus,
+body[data-archive-view="compose"] select:focus {
+  border-color: #9aa8df;
+}
+body[data-archive-view="compose"] .scope-list {
+  gap: 10px;
+}
+body[data-archive-view="compose"] .scope-group {
+  border-color: #e0dbd2;
+  border-radius: 9px;
+  background: #fff;
+}
+body[data-archive-view="compose"] .scope-group .group-head {
+  padding: 9px 11px;
+  border-bottom: 1px solid #eee9e2;
+  background: #f8f6f1;
+}
+body[data-archive-view="compose"] .scope-group .group-head h3 {
+  color: #394659;
+  font-size: 12px;
+}
+body[data-archive-view="compose"] .scope-item {
+  padding: 10px 11px;
+  border-top-color: #f0ece6;
+}
+body[data-archive-view="compose"] .scope-item:has(input:checked) {
+  background: #f3f4fc;
+}
+body[data-archive-view="compose"] .scope-item label {
+  color: #394659;
+}
+body[data-archive-view="compose"] .compose-detail {
+  border-color: #e0dbd2;
+  border-radius: 9px;
+  background: #fbfaf7;
+}
+body[data-archive-view="compose"] .compose-detail > summary {
+  color: #536073;
+}
+body[data-archive-view="compose"] .composition {
+  margin: 13px 0;
+}
+body[data-archive-view="compose"] .composition th,
+body[data-archive-view="compose"] .composition td {
+  border-bottom-color: #ece7df;
+  padding: 10px 7px;
+}
+body[data-archive-view="compose"] .composition th {
+  color: #707a89;
+}
+body[data-archive-view="compose"] .bucket-set button {
+  min-height: 36px;
+  border-color: #dcd7ce;
+  border-radius: 7px;
+  background: #fff;
+}
+body[data-archive-view="compose"] .compose-create-bar {
+  border-top-color: #e8e3db;
+}
+body[data-archive-view="compose"] .compose-create-bar button.primary {
+  border-color: #142842;
+  background: #142842;
+}
+body[data-archive-view="compose"] .plan-panel {
+  border-color: #dfdad2;
+  background: rgba(255,255,255,.82);
+}
+body[data-archive-view="compose"] .plan-panel > summary {
+  color: #455267;
+  font-weight: 750;
+}
+body[data-archive-view="compose"] .paper-panel {
+  border-color: #dcd7ce;
+  background: #fff;
+}
+body[data-archive-view="compose"] .paper-toolbar {
+  gap: 10px;
+  padding: 11px 14px;
+  border-bottom-color: #e8e3db;
+  background: #fffefa;
+}
+body[data-archive-view="compose"] .mode-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid #ded9d1;
+  border-radius: 8px;
+  background: #f5f3ee;
+}
+body[data-archive-view="compose"] .mode-switch button {
+  min-height: 34px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 6px;
+  color: #677180;
+}
+body[data-archive-view="compose"] .mode-switch button.active {
+  background: #fff;
+  color: #4356bd;
+  box-shadow: 0 1px 3px rgba(20,32,51,.08);
+}
+body[data-archive-view="compose"] .part-select {
+  color: #6f7987;
+}
+body[data-archive-view="compose"] .part-select select {
+  background: #fff;
+}
+body[data-archive-view="compose"] .question-manager {
+  padding: 11px 15px;
+  border-bottom-color: #e8e3db;
+  background: #faf9f6;
+}
+body[data-archive-view="compose"] .question-manager > summary {
+  color: #586477;
+  font-weight: 700;
+}
+body[data-archive-view="compose"] .batch-tools {
+  gap: 6px;
+}
+body[data-archive-view="compose"] .batch-tools button {
+  border-color: #ddd8ce;
+  background: #fff;
+}
+body[data-archive-view="compose"] .paper-list {
+  border-color: #e0dbd2;
+  border-radius: 9px;
+}
+body[data-archive-view="compose"] .paper-row {
+  grid-template-columns: 27px minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 9px 10px;
+  border-bottom-color: #eee9e2;
+  background: #fff;
+}
+body[data-archive-view="compose"] .paper-row:hover {
+  background: #fbfaf7;
+}
+body[data-archive-view="compose"] .paper-row.pinned {
+  background: #f2f4fc;
+  box-shadow: inset 3px 0 #5268c7;
+}
+body[data-archive-view="compose"] .paper-row > strong {
+  color: #7a8492;
+}
+body[data-archive-view="compose"] .paper-row .description {
+  color: #455267;
+  line-height: 1.55;
+}
+body[data-archive-view="compose"] .paper-row .actions {
+  gap: 5px;
+}
+body[data-archive-view="compose"] .paper-row .actions button {
+  min-height: 34px;
+  border-color: #ddd8ce;
+  border-radius: 7px;
+  background: #fff;
+}
+body[data-archive-view="compose"] .preview {
+  background: #f0eee9;
+}
+body[data-archive-view="compose"] .inspector {
+  top: 84px;
+}
+body[data-archive-view="compose"] .inspector .panel {
+  padding: 16px;
+  border-color: #dcd7ce;
+  background: #fffefa;
+}
+body[data-archive-view="compose"] .inspector .tabs {
+  gap: 3px;
+  margin: 0 0 16px;
+  padding: 3px;
+  border: 1px solid #ded9d1;
+  border-radius: 8px;
+  background: #f5f3ee;
+}
+body[data-archive-view="compose"] .inspector .tabs button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  color: #707a89;
+}
+body[data-archive-view="compose"] .inspector .tabs button.active {
+  border-bottom-color: transparent;
+  background: #fff;
+  color: #4356bd;
+  box-shadow: 0 1px 3px rgba(20,32,51,.08);
+}
+body[data-archive-view="compose"] .summary-number {
+  margin: 10px 0 12px;
+  color: #1f314c;
+  font-size: 26px;
+}
+body[data-archive-view="compose"] .summary-line {
+  padding: 8px 0;
+  border-bottom-color: #ebe6de;
+  color: #697382;
+}
+body[data-archive-view="compose"] .summary-line strong {
+  color: #26354b;
+}
+body[data-archive-view="compose"] .inspector .actions {
+  gap: 7px;
+}
+body[data-archive-view="compose"] .inspector .actions button {
+  border-color: #dcd7ce;
+}
+body[data-archive-view="compose"] .inspector .actions button.primary {
+  border-color: #142842;
+  background: #142842;
+}
+body[data-archive-view="compose"] .header-fields {
+  gap: 10px;
+}
+body[data-archive-view="compose"] .callout {
+  border-left-color: #b88a49;
+  background: #fbf6eb;
+}
+body[data-archive-view="compose"] .callout.good {
+  border-left-color: #2f7c69;
+  background: #eef7f3;
+}
+body[data-archive-view="compose"] .callout.danger {
+  border-left-color: #a84a54;
+  background: #fff1f2;
+}
+body[data-archive-view="compose"] .compose-saved-continuity {
+  margin-bottom: 18px;
+  border-color: #cfe0d9;
+  background: #f4faf7;
+}
+body[data-archive-view="compose"] .compose-saved-continuity-head h2 {
+  color: #1f5f51;
+}
+body[data-archive-view="compose"] .compose-saved-continuity-paper {
+  border-top-color: #d8e8e1;
+}
+body[data-archive-view="compose"] .compose-saved-continuity-paper > strong {
+  color: #327665;
+}
+body[data-archive-view="compose"] .compose-saved-continuity-paper .actions button {
+  border-color: #cfdcd7;
+  background: #fff;
+}
+body[data-archive-view="compose"] .compose-saved-continuity-paper .actions button.primary {
+  border-color: #2f6659;
+  background: #2f6659;
+}
+body[data-archive-view="compose"] .compose-saved-continuity-more > summary {
+  border-color: #cfdcd7;
+  background: #fff;
+}
+body[data-archive-view="compose"] .compose-save-recovery {
+  border-radius: 9px;
+}
+body[data-archive-view="compose"] .mobile-actions {
+  background: rgba(255,254,250,.98);
+  border-top-color: #ddd8ce;
+  box-shadow: 0 -8px 24px rgba(20,32,51,.07);
+}
+body[data-archive-view="compose"] .mobile-actions button {
+  border-color: #dcd7ce;
+}
+body[data-archive-view="compose"] .mobile-actions button.primary {
+  border-color: #142842;
+  background: #142842;
+}
+
+@media (max-width: 1100px) {
+  body[data-archive-view="compose"] .workspace {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
+  }
+}
+@media (max-width: 1000px) {
+  body[data-archive-view="compose"] .workspace {
+    gap: 18px;
+  }
+  body[data-archive-view="compose"] .inspector {
+    position: static;
+  }
+  body[data-archive-view="compose"] .inspector .panel {
+    background: #fff;
+  }
+}
+@media (max-width: 700px) {
+  body[data-archive-view="compose"] .intro {
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+  }
+  body[data-archive-view="compose"] .intro h1 {
+    font-size: 24px;
+  }
+  body[data-archive-view="compose"] .intro > .actions {
+    width: 100%;
+  }
+  body[data-archive-view="compose"] .intro > .actions button {
+    flex: 1 1 auto;
+    min-height: 44px;
+  }
+  body[data-archive-view="compose"] .compose-step {
+    padding: 14px;
+  }
+  body[data-archive-view="compose"] .scope-list {
+    grid-template-columns: 1fr;
+  }
+  body[data-archive-view="compose"] .paper-toolbar {
+    flex-wrap: wrap;
+  }
+  body[data-archive-view="compose"] .part-select {
+    width: 100%;
+    margin-left: 0;
+  }
+  body[data-archive-view="compose"] .part-select select {
+    flex: 1;
+    width: auto;
+  }
+  body[data-archive-view="compose"] .paper-row {
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: start;
+  }
+  body[data-archive-view="compose"] .paper-row .actions {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body[data-archive-view="compose"] .paper-row .actions button {
+    min-height: 42px;
+  }
+  body[data-archive-view="compose"] .compose-saved-continuity-paper .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body[data-archive-view="compose"] .compose-saved-continuity-paper .actions > * {
+    width: 100%;
+  }
+}
