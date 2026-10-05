@@ -1,5 +1,7 @@
 # APMath Typography & Font 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 03 / Typography & Font  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -1862,3 +1864,21 @@ final SVG의 실제 `<img>` rendering과 fragment/font evidence를 결박한다.
 # 38. 최종 한 문장
 
 > **APMath Typography & Font v1은 기존 SVG의 글꼴을 사후 수정하는 작업이 아니라, 수학 AST와 한글 텍스트를 고정된 MathJax SVG·Korean font fragment로 먼저 확정하고 그 동일 fragment를 측정·배치·감사·Archive 렌더까지 일관되게 사용하는 deterministic publication typography 계층이다.**
+
+---
+
+# 39. 구현 전 확정: 계산 AST와 표기 의미의 경계
+
+기존 `math_expression.py`를 재사용하되 **현재 serializer를 곧바로 수학 표기 정본으로 승인하지 않는다.** 기준 main에서 `parse("pi")`는 계산 시 π이지만 TeX는 `pi`이고, programmatic `Mul(Add(x,1),2)`는 `x+1\cdot 2`로 직렬화되어 괄호 의미를 잃는다. 현재 parser가 source 괄호를 group node로 보존하는 경우와 새 SymPy/normalizer가 직접 만든 AST를 구분해야 한다.
+
+기존 Expr에 좁은 versioned 확장을 적용한다. scalar computation AST와 표시용 notation node의 적용범위를 schema로 구분한다. 별도 범용 언어를 만들지는 않는다.
+
+- 상수 π/e, 변수/함수명, source entity label은 타입/의미를 구분한다. `pi`→π alias는 승인된 constant에서만 정규화하고 실제 변수명을 바꾸지 않는다.
+- 직선/선분명 AB와 A×B를 텍스트만으로 구분하지 않는다. owner/source entity binding을 통해 entity notation을 만든다.
+- degree/unit/angle/segment notation은 typed suffix 또는 LabelRun으로 제공한다. `40°`를 현재 scalar parser가 지원한다고 가정하지 않는다. 한글/unit을 unrestricted TeX로 전달하지 않는다.
+- serializer는 precedence/associativity를 기준으로 괄호를 생성한다. parser-produced AST와 programmatic AST 모두 같은 의미를 보존해야 한다. 정확값과 domain restriction을 표시 전 단순화로 손실시키지 않는다.
+- AST→TeX→reference fragment 양쪽이 같은 잘못된 serializer를 호출하면 glyph parity만 맞고 의미는 틀릴 수 있다. source에서 고정한 notation 기대값과 별도 serializer golden/semantic tests로 이 공통 오류를 검출한다. 동일 MathJax는 trusted typesetter 공유이며 독립 수학 검산은 아니다.
+
+font subset scope도 고정한다. v1은 **asset 단위 text subset**을 기본으로 두고 해당 subset hash를 모든 text/mixed fragment의 dependency에 넣는다. 하나의 한글 변경으로 subset bytes가 바뀌면 그 subset을 공유하는 fragment/metrics도 무효화한다. asset 간 공유 subset은 v1에서 만들지 않는다. 최종 outline 전략을 선택하면 같은 원칙을 실제 shaping/font dependency에 적용한다. codepoint coverage뿐 아니라 mixed-run shaping/공백/결합문자도 실제 glyph로 확인한다.
+
+필수 추가 회귀: pi/π 및 변수 pi 구분, AB entity/product 구분, 40°와 길이 단위, programmatic AST의 `(x+1)*2`·`x-(y-z)`·거듭제곱 결합, subset 한 글자 추가에 대한 전체 관련 fragment invalidation. metrics의 intrinsic 좌표와 최종 CSS scale은 D04 §54로 연결한다.
