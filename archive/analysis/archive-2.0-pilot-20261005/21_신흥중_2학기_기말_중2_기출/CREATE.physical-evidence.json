@@ -2,7 +2,7 @@
   "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
   "stage": "CREATE",
   "examPath": "archive/_generated/source-only/m2-20261004/21_신흥중_2학기_기말_중2_기출.js",
-  "examSha256": "sha256:d1debd4bd3d6213198471a68106ede0291a783b00dec808f5cf5ea97de1dd73b",
+  "examSha256": "sha256:8e4fd43661430da23b3ae43d8ab6208aebc4294eb473d675ada019981f617e72",
   "questionCount": 24,
   "solutionQualityCalibration": {
     "sampleReadBeforeWork": true,
@@ -77,65 +77,15 @@
       "qid": 1,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "Source text and printed choices match source evidence; known issue retained separately: 원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다."
+        "evidence": "Original PDF/crop transcription retained; approved repair adds AD=6 cm and remaps only the source figure label."
       },
       "answerMath": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
-          "observedEvidence": {
-            "sourcePage": 1,
-            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
-            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
-            "observedValues": {
-              "bdCm": 6,
-              "ecCm": 8,
-              "derivedBcCm": 12,
-              "derivedAcCm": 16
-            },
-            "missing": "AB or an equivalent condition fixing AD"
-          },
-          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
-          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
-          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
-          "authorityLookupAttempted": [
-            "2021 source PDF page 1",
-            "source-only evidence q1 asset/hash",
-            "RPM Primary 2015 M2-2",
-            "middle2 crosswalk"
-          ],
-          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
-        }
+        "status": "PASS",
+        "evidence": "x=AG, y=GD, so x+y=AD=6 cm; matches ①."
       },
       "solutionMath": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
-          "observedEvidence": {
-            "sourcePage": 1,
-            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
-            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
-            "observedValues": {
-              "bdCm": 6,
-              "ecCm": 8,
-              "derivedBcCm": 12,
-              "derivedAcCm": 16
-            },
-            "missing": "AB or an equivalent condition fixing AD"
-          },
-          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
-          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
-          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
-          "authorityLookupAttempted": [
-            "2021 source PDF page 1",
-            "source-only evidence q1 asset/hash",
-            "RPM Primary 2015 M2-2",
-            "middle2 crosswalk"
-          ],
-          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
-        }
+        "status": "PASS",
+        "evidence": "The final two-step segment addition solution matches answer ①."
       },
       "smallBoard": {
         "status": "PASS",
@@ -146,62 +96,12 @@
         "evidence": "Methods recorded in the CREATE row inventory are within the cumulative middle-school grade 2 curriculum; source unit M2-05."
       },
       "visualNecessity": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
-          "observedEvidence": {
-            "sourcePage": 1,
-            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
-            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
-            "observedValues": {
-              "bdCm": 6,
-              "ecCm": 8,
-              "derivedBcCm": 12,
-              "derivedAcCm": 16
-            },
-            "missing": "AB or an equivalent condition fixing AD"
-          },
-          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
-          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
-          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
-          "authorityLookupAttempted": [
-            "2021 source PDF page 1",
-            "source-only evidence q1 asset/hash",
-            "RPM Primary 2015 M2-2",
-            "middle2 crosswalk"
-          ],
-          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
-        }
+        "status": "PASS",
+        "evidence": "The source figure requires a labeled median; repaired source SVG visibly owns x/y on AG/GD and 6 cm on AD."
       },
       "meta": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
-          "observedEvidence": {
-            "sourcePage": 1,
-            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-            "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
-            "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
-            "observedValues": {
-              "bdCm": 6,
-              "ecCm": 8,
-              "derivedBcCm": 12,
-              "derivedAcCm": 16
-            },
-            "missing": "AB or an equivalent condition fixing AD"
-          },
-          "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
-          "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
-          "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
-          "authorityLookupAttempted": [
-            "2021 source PDF page 1",
-            "source-only evidence q1 asset/hash",
-            "RPM Primary 2015 M2-2",
-            "middle2 crosswalk"
-          ],
-          "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
-        }
+        "status": "PASS",
+        "evidence": "RPM resolver current-pass q1: 중선과 무게중심/좌표·길이; projection PROJECTION_UNMATERIALIZED with exact null reason and authorityRefs."
       },
       "difficulty": {
         "status": "PASS",
@@ -840,67 +740,15 @@
       "qid": 18,
       "sourceExact": {
         "status": "PASS",
-        "evidence": "Source text and printed choices match source evidence; known issue retained separately: 독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다."
+        "evidence": "Prompt unchanged; approved source correction updates only choice ③ to 5/9."
       },
       "answerMath": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
-          "observedEvidence": {
-            "sourcePage": 3,
-            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-            "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
-            "probabilityNoStrawberryPerDraw": "2/3",
-            "independentTwoDrawComplement": "4/9",
-            "computedAnswer": "5/9",
-            "offeredChoices": [
-              "1/9",
-              "8/9",
-              "7/12",
-              "1/16",
-              "15/16"
-            ]
-          },
-          "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
-          "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
-          "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
-          "authorityLookupAttempted": [
-            "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
-            "2021 source PDF page 3",
-            "source-only evidence q18"
-          ],
-          "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
-        }
+        "status": "PASS",
+        "evidence": "Complement calculation gives 1-(2/3)^2=5/9, unique in the corrected choices."
       },
       "solutionMath": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
-          "observedEvidence": {
-            "sourcePage": 3,
-            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-            "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
-            "probabilityNoStrawberryPerDraw": "2/3",
-            "independentTwoDrawComplement": "4/9",
-            "computedAnswer": "5/9",
-            "offeredChoices": [
-              "1/9",
-              "8/9",
-              "7/12",
-              "1/16",
-              "15/16"
-            ]
-          },
-          "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
-          "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
-          "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
-          "authorityLookupAttempted": [
-            "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
-            "2021 source PDF page 3",
-            "source-only evidence q18"
-          ],
-          "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
-        }
+        "status": "PASS",
+        "evidence": "Two independent draws and complement steps lead to answer ③."
       },
       "smallBoard": {
         "status": "PASS",
@@ -912,37 +760,11 @@
       },
       "visualNecessity": {
         "status": "PASS",
-        "evidence": "Discrete probability complement has no spatial or graph relation to visualize."
+        "evidence": "This discrete probability computation has no spatial relation requiring a source or solution figure."
       },
       "meta": {
-        "status": "HOLD",
-        "holdEvidence": {
-          "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
-          "observedEvidence": {
-            "sourcePage": 3,
-            "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-            "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
-            "probabilityNoStrawberryPerDraw": "2/3",
-            "independentTwoDrawComplement": "4/9",
-            "computedAnswer": "5/9",
-            "offeredChoices": [
-              "1/9",
-              "8/9",
-              "7/12",
-              "1/16",
-              "15/16"
-            ]
-          },
-          "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
-          "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
-          "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
-          "authorityLookupAttempted": [
-            "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
-            "2021 source PDF page 3",
-            "source-only evidence q18"
-          ],
-          "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
-        }
+        "status": "PASS",
+        "evidence": "RPM current-pass input re-bound to corrected q18 choice and final solution; projection PROJECTION_UNMATERIALIZED/CROSSWALK_PROJECTION_ROW_MISSING."
       },
       "difficulty": {
         "status": "PASS",
@@ -1192,14 +1014,14 @@
   "metaRows": [
     {
       "qid": 1,
-      "result": "HOLD",
-      "primaryMethod": "무게중심의 중선 분할비; 중점의 정의",
-      "decisiveStep": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
-      "rpmDisposition": "SOURCE_ITEM_HOLD",
-      "projectionDisposition": "NOT_ATTEMPTED",
+      "result": "PASS",
+      "primaryMethod": "분할선분의 길이를 더해 중선 전체 길이를 구함",
+      "decisiveStep": "그림에서 $x=AG$, $y=GD$이므로 $x+y=AG+GD=AD$이다. 주어진 $AD=6$ cm를 대입하면 $x+y=6$ cm이다. 따라서 정답은 ①이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
-      "nullReason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
       "lookupRefs": [
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
@@ -1270,32 +1092,8 @@
           "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
         }
       ],
-      "holdEvidence": {
-        "reason": "원문 그림에서 x,y는 중선 AD의 두 부분, BD=6 cm, EC=8 cm이다. 무게중심·중점 관계로 BC=12 cm, AC=16 cm는 얻지만 AB가 주어지지 않아 AD=x+y를 정할 수 없다.",
-        "observedEvidence": {
-          "sourcePage": 1,
-          "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-          "sourceAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
-          "sourceAssetSha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4",
-          "observedValues": {
-            "bdCm": 6,
-            "ecCm": 8,
-            "derivedBcCm": 12,
-            "derivedAcCm": 16
-          },
-          "missing": "AB or an equivalent condition fixing AD"
-        },
-        "unresolvedPoint": "x+y=AD is not determined from the source conditions.",
-        "nextRequiredEvidenceOrCapability": "Apply an approved q1 source repair that supplies AD directly or otherwise makes the median unique.",
-        "repairAttempted": "Compared the original PDF page, question crop, centroid marks, and choices; no candidate correction has been applied.",
-        "authorityLookupAttempted": [
-          "2021 source PDF page 1",
-          "source-only evidence q1 asset/hash",
-          "RPM Primary 2015 M2-2",
-          "middle2 crosswalk"
-        ],
-        "whyDeterministicClosureImpossible": "No unique AD follows from fixed AC and BC without AB; the independent drawing proportions are not numeric constraints."
-      }
+      "inputBundleSha": "sha256:0c70df34668416a5161b09d9e336fd36b6c86755a23370e310ba3d70b09780a4",
+      "sourceFingerprint": "sha256:f8f47a9bc23c466f2e87e65930e2273061be32d61cb901eb8d21db1768a49756"
     },
     {
       "qid": 2,
@@ -2595,14 +2393,14 @@
     },
     {
       "qid": 18,
-      "result": "HOLD",
-      "primaryMethod": "확률의 뜻; 독립 시행",
-      "decisiveStep": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
-      "rpmDisposition": "SOURCE_ITEM_HOLD",
-      "projectionDisposition": "NOT_ATTEMPTED",
+      "result": "PASS",
+      "primaryMethod": "독립 시행의 여사건을 이용해 적어도 한 번 딸기맛이 나올 확률을 구함",
+      "decisiveStep": "한 번 뽑을 때 딸기맛이 나오지 않을 확률은 $1-\\dfrac{1}{3}=\\dfrac{2}{3}$이다. 두 번의 추출은 독립이므로 두 번 모두 딸기맛이 나오지 않을 확률은 $\\dfrac{2}{3}\\times\\dfrac{2}{3}=\\dfrac{4}{9}$이다. 따라서 적어도 한 번 딸기맛이 나올 확률은 $1-\\dfrac{4}{9}=\\dfrac{5}{9}$이므로 정답은 ③이다.",
+      "rpmDisposition": "RPM_SEMANTIC_FINAL",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED",
       "problemTypeKey": null,
       "templateKey": null,
-      "nullReason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
+      "nullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
       "lookupRefs": [
         {
           "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
@@ -2673,33 +2471,8 @@
           "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
         }
       ],
-      "holdEvidence": {
-        "reason": "독립 기본 해석에서 두 번의 추출 중 적어도 한 번 딸기맛일 확률은 1-(2/3)^2=5/9이며 원문 보기에는 5/9가 없다.",
-        "observedEvidence": {
-          "sourcePage": 3,
-          "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
-          "sourcePageRender": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
-          "probabilityNoStrawberryPerDraw": "2/3",
-          "independentTwoDrawComplement": "4/9",
-          "computedAnswer": "5/9",
-          "offeredChoices": [
-            "1/9",
-            "8/9",
-            "7/12",
-            "1/16",
-            "15/16"
-          ]
-        },
-        "unresolvedPoint": "Computed answer 5/9 is absent from the choices.",
-        "nextRequiredEvidenceOrCapability": "Apply an approved q18 answer-choice correction or provide authoritative evidence of a different source reading.",
-        "repairAttempted": "Read q18 from original source page and applied current independence interpretation; no final artifact correction applied.",
-        "authorityLookupAttempted": [
-          "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
-          "2021 source PDF page 3",
-          "source-only evidence q18"
-        ],
-        "whyDeterministicClosureImpossible": "Source wording and current independence rule uniquely give 5/9, but the recorded source options contain no matching choice."
-      }
+      "inputBundleSha": "sha256:10698327cc83bc57a1db7ed2ee55e619a747b5115966ad32d34e95c1aad59372",
+      "sourceFingerprint": "sha256:c36d0778e1e333ebe3ce300dfef43f6b54040153ae42fb2b486fd7230f8d2510"
     },
     {
       "qid": 19,
@@ -3194,6 +2967,24 @@
     "linkedSolutionVisualCount": 0,
     "visualEvidenceRows": 0,
     "metaEvidenceRows": 24,
-    "itemHoldCount": 2
-  }
+    "itemHoldCount": 0
+  },
+  "repairAppliedQids": [
+    1,
+    18
+  ],
+  "repairArtifacts": [
+    {
+      "qid": 1,
+      "path": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+      "sha256": "sha256:78289790e3d9b1f46fedf0ad81983a75161a865e5b044dfbe8e1bb8a7b113ba1",
+      "gitBlobSha": "2d531fdb881b4c3b2d7c78d61ade755265da06ba"
+    },
+    {
+      "qid": 18,
+      "choiceIndex": 3,
+      "old": "7/12",
+      "new": "5/9"
+    }
+  ]
 }
