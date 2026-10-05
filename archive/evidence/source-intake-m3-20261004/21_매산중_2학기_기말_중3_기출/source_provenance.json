@@ -235,8 +235,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Multiple separated diagrams/subparts do not have a confirmed clean visual crop."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 22,
@@ -822,11 +822,47 @@
         "directFullPageToFinalCropComparison": "PASS",
         "sameQuestionTextFragmentIncluded": "YES"
       }
+    },
+    {
+      "qid": 21,
+      "sourceQuestionNo": "서답형 1",
+      "sourcePage": 3,
+      "bboxPxParts": [
+        [
+          775,
+          930,
+          935,
+          1090
+        ],
+        [
+          780,
+          1320,
+          1020,
+          1460
+        ]
+      ],
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left; two separated source crops embedded without retouching",
+      "sourcePdfSha256": "e331057a58cf53a159815acd5d32b31c4856cc7f7774b5474f2e6cc45bc93090",
+      "fullPageRasterSha256": "d6e01cb5dc55cac3fbd66dccd76f164f8286727baa6ef0d19b6a10d1d2a796f2",
+      "assetPath": "assets/images/21_매산중_2학기_기말_중3_기출/q21-r1.svg",
+      "assetSha256": "4e7515e12f6f873e7345ab62077daf690ab38b8b67790c0826a4fa3dcfce5751",
+      "assetKind": "svg-composite-of-direct-source-pixel-crops",
+      "repairMethod": "SVG wrapper stacks the two original pixel crops for the two printed subparts; no geometry, labels, or values redrawn.",
+      "visualChecks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "foreignChoicesIncluded": "NO",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
+        "fullSourcePageAndFinalSvgOpenedAndCompared": "PASS"
+      }
     }
   ],
   "examHold": [
-    "서답형1 q21: two subproblem figures in separated regions; no isolated image crop selected.",
-    "서답형4 q24: original graph legibility is poor; preserve source crop and HOLD."
+    "서답형 4 (qid 24): Low contrast source graph needs manual legibility review."
   ],
-  "notes": "q2’s printed figure labels 8, 30°, 60°, and x were directly enlarged from the original page 1; student-added pen marks were disregarded, and the source figure crop contains the printed labels. q22’s printed condition OD=2 cm was directly confirmed in the page-4 original. The prompt is complete; the handwritten figure mark is not transcribed. q2 page-1 original pixels and the q02 crop show the printed labels 8, 30°, 60°, and x; a student mark is disregarded and not transcribed. q22 page-4 original prompt directly reads OD=2 cm; the printed condition is complete and no handwriting is transcribed. q2 and q22 were directly reread from original page pixels; student handwriting is ignored in the transcription. q22 diagram crop was added as an exact page-4 pixel crop, with all labels and the printed OD=2 cm retained."
+  "notes": "q21 carries both source diagrams in an SVG wrapper containing direct original pixel crops. q24 remains held; its source graph cannot be made legible without inferring data.",
+  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS"
 }

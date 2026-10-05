@@ -364,7 +364,8 @@ window.questionBank = [
     "tags": [
       "도형",
       "원의 성질"
-    ]
+    ],
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q21-r1.svg"
   },
   {
     "id": 22,
