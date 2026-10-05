@@ -197,8 +197,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "직사각형의 짧은 변을 $x$cm, 긴 변을 $y$cm라 하자.\n그림의 길이 관계에서 $3y-2x=19$, $y+3x=21$을 얻는다.\n$y=21-3x$를 첫째 식에 대입하면 $63-11x=19$이므로 $x=4$, $y=9$이다.\n넓이는 $4\\cdot9=36\\text{ cm}^2$이므로 정답은 ④이다.",
     "image": "assets/images/24_연향중_1학기_기말_중2_기출/q6.png",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
-    "subUnit": "연립일차방정식",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+    "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -433,8 +433,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "세 점이 한 직선 위에 있으므로 기울기가 같다.\n$\\dfrac{k+3}{5}=\\dfrac{k+7}{7}$에서 $7k+21=5k+35$이다.\n따라서 $k=7$이고 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -469,8 +469,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "그래프의 점 $(4,-3)$을 $2x+ky-5k=0$에 대입하면 $8-8k=0$이므로 $k=1$이다.\n따라서 직선은 $2x+y-5=0$이다.\n$y=0$에서 $x=\\dfrac52$이므로 교점은 $(\\dfrac52,0)$이다.\n정답은 ③이다.",
     "image": "assets/images/24_연향중_1학기_기말_중2_기출/q14.png",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -540,8 +540,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$3x+2y-6=0$을 정리하면 $y=-\\dfrac32x+3$이다.\n따라서 $x$절편은 2, $y$절편은 3이다.\n옳은 설명은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -607,8 +607,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "두 직선의 교점은 $-x+2=\\dfrac15x+\\dfrac45$에서 $(1,1)$이다.\n각 $x$절편은 2와 -4이므로 밑변은 6, 높이는 1이다.\n넓이는 $\\dfrac12\\cdot6\\cdot1=3$이므로 정답은 ④이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -727,7 +727,7 @@ window.questionBank = [
       "함수식"
     ],
     "wide": false,
-    "content": "[서술형 2]\n어느 댐에서 오늘 정오에 수문을 열어 $700$톤의 물을 흘려보낸 후 수문을 닫고, 오후 3시부터 다시 수문을 열어 20분당 50톤의 물을 일정하게 흘려보낸다고 한다. 오후 3시부터 $x$시간이 지났을 때, 오늘 정오부터 흘려보낸 물의 전체 양을 $y$톤이라 하자. 이때, 다음 물음에 답하시오. [6점]\n(1) 물 $x$에 대한 식으로 나타내시오. [3점]\n(2) 이 댐에서 오늘 정오부터 흘려보낸 물의 전체 양이 1500톤이 되는 시각은 오후 몇 시 몇 분인지 구하시오. [3점]",
+    "content": "[서술형 2]\n어느 댐에서 오늘 정오에 수문을 열어 $700$톤의 물을 흘려보낸 후 수문을 닫고, 오후 3시부터 다시 수문을 열어 20분당 50톤의 물을 일정하게 흘려보낸다고 한다. 오후 3시부터 $x$시간이 지났을 때, 오늘 정오부터 흘려보낸 물의 전체 양을 $y$톤이라 하자. 이때, 다음 물음에 답하시오. [6점]\n(1) $y$를 $x$에 대한 식으로 나타내시오. [3점]\n(2) 이 댐에서 오늘 정오부터 흘려보낸 물의 전체 양이 1500톤이 되는 시각은 오후 몇 시 몇 분인지 구하시오. [3점]",
     "choices": [],
     "answer": "(1) $y=150x+700$ (2) 오후 8시 20분",
     "solution": "20분당 50톤은 1시간당 150톤이다.\n오후 3시부터 $x$시간 후 전체 양은 $y=150x+700$이다.\n$150x+700=1500$에서 $x=\\dfrac{16}{3}=5\\dfrac13$시간이다.\n오후 3시에서 5시간 20분 뒤이므로 오후 8시 20분이다.\n(1) $y=150x+700$, (2) 오후 8시 20분이다.",
