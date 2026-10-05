@@ -15,6 +15,7 @@ on:
       - "archive/fixtures/stage-validator-pilot/**"
       - "tests/archive-stage-validator-pilot.test.mjs"
       - "tests/archive-stage-validator-v2-routing.test.mjs"
+      - "tests/archive2-v2-shadow.test.mjs"
       - "tests/archive-repair-alive-v2.test.mjs"
       - "tests/archive-stage-runtime-v2.test.mjs"
       - "tests/archive-stage-validator-r2-v2.test.mjs"
@@ -78,6 +79,9 @@ jobs:
 
       - name: V2 generic routing and closure consumer
         run: node tests/archive-stage-validator-v2-routing.test.mjs
+
+      - name: V2 shadow regression
+        run: node tests/archive2-v2-shadow.test.mjs
 
       - name: R2 v2 regression
         run: node tests/archive-stage-validator-r2-v2.test.mjs
