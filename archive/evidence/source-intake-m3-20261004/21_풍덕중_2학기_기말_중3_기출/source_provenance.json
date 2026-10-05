@@ -27,7 +27,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; answers/solutions blank.",
-  "status": "SOURCE_DERIVED_REPAIR_WITH_REMAINING_VISUAL_HOLDS",
+  "status": "SOURCE_QA_HOLD_ITEMS",
   "questions": [
     {
       "qid": 1,
@@ -224,10 +224,10 @@
       "sourceQuestionNo": "20",
       "sourcePage": 4,
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
-      "choicesStatus": "SOURCE_DERIVED_REPAIR",
+      "choicesStatus": "SOURCE_VISUAL_CHOICES_HOLD",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "SOURCE_DERIVED_REPAIR",
-      "holdReason": null
+      "itemDisposition": "HOLD",
+      "holdReason": "The five answer options are source diagrams with student marks obscuring printed labels/details. Do not infer textual conditions or the answer."
     },
     {
       "qid": 21,
@@ -856,7 +856,7 @@
     }
   ],
   "examHold": [
-    "q20: diagram choices have handwritten marks; source text transcribed, visual options held.",
+    "q20: printed diagram choices are obscured by student marks; retain the printed stem and HOLD the visual choices without derivation.",
     "q22: source figure has a blot/mark over geometry; prompt transcribed and item held."
   ],
   "cropRevisionNotes": [
@@ -867,17 +867,12 @@
   ],
   "assetCount": 18,
   "questionInventoryCount": 25,
-  "transcriptionRepairs": [
+  "notes": "q22’s printed conditions and question are legible; the marked figure was left unreferenced in the source-only JS, and the complete prompt remains in text. q20 was reread from original page 4. The prompt is legible; the five graphical choices contain student marks over printed details. The derived text options and answer inference were removed; choices remain HOLD.",
+  "sourceOnlyScopeCorrections": [
     {
       "qid": 20,
-      "sourcePage": 4,
-      "preRepairJsSha256": "07a3d51c9bcb03b6291be8356fbc7c1e4da0037567b0b2caef62e82a6313b132",
-      "backupPath": "tmp/source-slot-backups/21_풍덕중_2학기_기말_중3_기출.js.pre-text-choice-repair",
-      "reason": "All five source choices are diagrams with student marks over some printed labels.",
-      "repair": "Replace the marked diagrams with explicit conditions: options 1–4 guarantee cyclicity, while option 5 specifies opposite-angle sum 170 degrees and is not cyclic.",
-      "uniqueAnswer": "⑤",
-      "answerFieldAdded": false
+      "action": "REVERTED_TO_HOLD",
+      "reason": "A prior conversion interpreted the marked diagrams into mathematical conditions and recorded an answer. That is outside SOURCE_ONLY; the printed choices cannot be transcribed exactly from the marked source."
     }
-  ],
-  "notes": "q22’s printed conditions and question are legible; the marked figure was left unreferenced in the source-only JS, and the complete prompt remains in text."
+  ]
 }
