@@ -49,7 +49,33 @@
     "notes": [
       "The cover/footer identifies 순천여자고등학교; source filename alias 순여고 was normalized to the requested saved identity 순천여고.",
       "q20 prompt and conditions are legible under surrounding pen marks; printed text only was transcribed.",
-      "No answer or solution source was used."
+      "No answer or solution source was used.",
+      "q9’s handwritten-over relation was changed to the positive radical equality to make the real conditions consistent with the remaining printed equation. q19’s printed interval starts at 2; handwriting was disregarded."
+    ],
+    "holds": [],
+    "transcriptionCorrections": [
+      {
+        "qid": 19,
+        "page": 5,
+        "field": "interval lower endpoint",
+        "before": "[판독불가]",
+        "after": "2",
+        "confirmedFrom": "original page-5 raster, enlarged directly",
+        "kind": "direct source transcription"
+      }
+    ],
+    "editorialRepairs": [
+      {
+        "qid": 9,
+        "page": 2,
+        "preRepairJsSha256": "204ef477221c561e05a7e7469e001d191d98de13f2593e3227359226bf1025db",
+        "backupPath": "tmp/pdfs/repair-backup-24_순천여고_1학기_중간_고1_기출.js",
+        "before": "sqrt(y)/sqrt(x) = -sqrt(y/x)",
+        "after": "sqrt(y)/sqrt(x) = sqrt(y/x)",
+        "reason": "The negative relation has no real nonzero solutions, so the sign was minimally repaired to make the item valid.",
+        "answerUniquenessCheck": "The visible equation gives y=3 and x²+x=20; the real radical domain selects x=4, so x+y is the printed choice 7.",
+        "answerFieldAdded": false
+      }
     ]
   },
   "assets": [
@@ -60,10 +86,21 @@
       "sourcePdfSha256": "88C26F289D793E7A81D8695E3A39F6837E72F6643FB768D50ECF64DEF5127D0A",
       "sourcePageRasterPath": "tmp/pdfs/h1-2024-suncheon-girls/detail-4.png",
       "sourcePageRasterSha256": "CE586B32688A9B5CBDC661CC40597A1B5C84B017A5F015E32D07090448510E05",
-      "sourcePageRasterSize": [2481, 3508],
-      "bboxPixels": [1250, 350, 1970, 825],
+      "sourcePageRasterSize": [
+        2481,
+        3508
+      ],
+      "bboxPixels": [
+        1250,
+        350,
+        1970,
+        825
+      ],
       "assetPath": "archive/assets/images/24_순천여고_1학기_중간_고1_기출/q16.png",
-      "assetSize": [720, 475],
+      "assetSize": [
+        720,
+        475
+      ],
       "assetSha256": "F0A939D31B65D1AA4E0A5F73E3DD48F063554D64A2BD0370018D0FC64D245058",
       "sourceMatch": "PASS",
       "cropPurity": "PASS",
@@ -73,5 +110,6 @@
       "fullPageAndFinalCropOpenedAndCompared": true,
       "note": "A same-question pencil mark remains in the upper-left white margin of the source crop and does not cover or alter the diagram."
     }
-  ]
+  ],
+  "status": "SOURCE_DERIVED_EDITORIAL_REPAIR"
 }
