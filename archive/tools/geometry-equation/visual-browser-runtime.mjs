@@ -17,5 +17,6 @@ export function assertOutput(file) {
   return target;
 }
 export async function launchBrowser() {
-  return playwright().chromium.launch({channel:process.env.GEOMETRY_BROWSER_CHANNEL||'chrome',headless:true});
+  const executablePath=process.env.GEOMETRY_BROWSER_EXECUTABLE;
+  return playwright().chromium.launch({...(executablePath?{executablePath}:{channel:process.env.GEOMETRY_BROWSER_CHANNEL||'chrome'}),headless:true});
 }
