@@ -1,4 +1,5 @@
-window.examTitle = "21_풍덕중_2학기_기말_중3_기출";\nwindow.questionBank = [
+window.examTitle = "21_풍덕중_2학기_기말_중3_기출";
+window.questionBank = [
   {
     "id": 1,
     "content": "오른쪽 원 $O$에서 $\\\\angle x$의 크기는? (3점)",
@@ -339,7 +340,7 @@ window.examTitle = "21_풍덕중_2학기_기말_중3_기출";\nwindow.questionBa
   {
     "id": 20,
     "content": "다음 중 네 점 $A,B,C,D$가 한 원 위에 있지 않은 것은? (4점)",
-    "choices": [],
+    "choices": ["$\\angle A+\\angle C=180^\\circ$","$\\angle B+\\angle D=180^\\circ$","$\\angle A=\\angle C=90^\\circ$","사각형 $ABCD$는 등변사다리꼴이다.","$\\angle A+\\angle C=170^\\circ$"],
     "answer": "",
     "solution": "",
     "tags": [
