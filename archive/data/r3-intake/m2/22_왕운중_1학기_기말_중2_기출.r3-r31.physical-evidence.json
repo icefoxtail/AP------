@@ -1,0 +1,1476 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m2/1final/22_왕운중_1학기_기말_중2_기출.js",
+  "examSha256": "sha256:0572a73246b61ec5b988799349f03c339a71c1d3bff7d98bb1c76e05adccb70f",
+  "questionCount": 24,
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.",
+        "observation": "explicit intermediate construction"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면",
+        "observation": "condition before algebra"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "inputs explicit"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "relation before algebra"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: y=1은 상수함수, y=6/x는 반비례이므로 일차함수가 아닌 것은 ①,⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: y=1은 상수함수, y=6/x는 반비례이므로 일차함수가 아닌 것은 ①,⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: x절편은 ①~④가 2, ⑤가 1이므로 ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: x절편은 ①~④가 2, ⑤가 1이므로 ⑤."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: x+y=8, 4x+2y=20이므로 ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: x+y=8, 4x+2y=20이므로 ②."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: ①×3-②×2로 x 소거 → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: ①×3-②×2로 x 소거 → ③."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: ②에서 2x-2y=2와 2x-2y=1 모순."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: ②에서 2x-2y=2와 2x-2y=1 모순."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: y=2x-3+n에 (2,5) 대입 → n=4."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: y=2x-3+n에 (2,5) 대입 → n=4."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: 3-a<0이므로 나눌 때 부등호 반전 → x<5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: 3-a<0이므로 나눌 때 부등호 반전 → x<5."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: 3w-n=5, 2n-3w=14 → n=19,w=8."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: 3w-n=5, 2n-3w=14 → n=19,w=8."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: |m| 최소 1/2 → ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: |m| 최소 1/2 → ④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: y=4x-11에 (3k,k) 대입 → k=1."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: y=4x-11에 (3k,k) 대입 → k=1."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: 제2사분면 회피 조건 0≤m≤2 → 최댓값 2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: 제2사분면 회피 조건 0≤m≤2 → 최댓값 2."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation. Linked problem PNG freshly read."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: fresh source PNG: 양의 기울기·음의 y절편 → b<0,c<0."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: fresh source PNG: 양의 기울기·음의 y절편 → b<0,c<0."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Problem PNG freshly inspected at blob 848656aa1aae0ebc8d0d223ddcad0ba4b48ef42d; source figure sufficient, no duplicate solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: y=2x-6에서 ②,④,⑤ 참."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: y=2x-6에서 ②,④,⑤ 참."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation. Linked problem PNG freshly read."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: fresh source PNG: a=-3,b=2 → a-b=-5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: fresh source PNG: a=-3,b=2 → a-b=-5."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Problem PNG freshly inspected at blob 4f683b4d69f19c597a0d96833c5ecf3f1b938cd4; source figure sufficient, no duplicate solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: 3x-2y=11, 3x+4y=5 → (x,y)=(3,-1)."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: 3x-2y=11, 3x+4y=5 → (x,y)=(3,-1)."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: x=(y+10)/2, 6x-y=-10 → x=-5,y=-20,k=0."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: x=(y+10)/2, 6x-y=-10 → x=-5,y=-20,k=0."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: 가·나·다·마 참, 라 거짓; q17 repaired solution의 보기별 독립 판정 구조도 PASS."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: 가·나·다·마 참, 라 거짓; q17 repaired solution의 보기별 독립 판정 구조도 PASS."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh check: 가/나/다/라/마 judgments are separately stated; no collapsed enumeration regression."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: x=y+4 및 자리바꿈 조건 → x=7,y=3 → 73."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: x=y+4 및 자리바꿈 조건 → x=7,y=3 → 73."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: x/3+1/6+x/4≤2/3 → x≤6/7."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: x/3+1/6+x/4≤2/3 → x≤6/7."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation. Linked problem PNG freshly read."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: fresh source PNG 띠 구조: 6+2x+3y=30, x=y+2 → x=6,y=4."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: fresh source PNG 띠 구조: 6+2x+3y=30, x=y+2 → x=6,y=4."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Problem PNG freshly inspected at blob 3feb13e5dea6423c332a9e3942fb812831fcd04e; source figure sufficient, no duplicate solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: 평행 a=3, 원점 b=0, 이동 m=1."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: 평행 a=3, 원점 b=0, 이동 m=1."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: x+1=2(y-1), y+1=x-1 → x=7,y=5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: x+1=2(y-1), y+1=x-1 → x=7,y=5."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No additional problem/solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation. Linked problem PNG freshly read."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: fresh source PNG의 분리 삼각형·사각형과 일치; x+y=9,3x+4y=32 → x=4."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: fresh source PNG의 분리 삼각형·사각형과 일치; x+y=9,3x+4y=32 → x=4."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Problem PNG freshly inspected at blob 208bbb2dfa5be3c2f5bb3cf11d086159b11ed4ea; source figure sufficient, no duplicate solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Byte-exact upstream source-bound finalArtifact retained (03a6a74721f0c18e67d5dbe2106c2a71740d062a); no R3 content/choices/answer mutation. Linked problem PNG freshly read."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R3 independent recomputation: fresh source PNG: A on y=2x, D on y=-x+10 → k=2, 넓이16,D(6,4), y=-2x+16."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R3 fresh re-derivation agrees with stored solution: fresh source PNG: A on y=2x, D on y=-x+10 → k=2, 넓이16,D(6,4), y=-2x+16."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 fresh structure check: decisive condition, calculation, and conclusion remain student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Middle-2 scope or lower prerequisite mathematics only."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Problem PNG freshly inspected at blob ae153ad398bea9c3d363441b0ea44e3eaec5e48f; source figure sufficient, no duplicate solution visual required."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Current middle2 RPM crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 and M2-1 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d remain current; classification unchanged and consistent."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R3 fresh difficulty sanity check found no repair-triggering boundary defect."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R3 runtime-loaded final JS questionBank successfully with 24 questions; byte-exact upstream artifact retains prior runtime-escape certification."
+      },
+      "verdict": "PASS",
+      "repairApplied": false,
+      "sourceMode": "R3_FRESH_AUDIT_WITH_EXACT_UPSTREAM_SOURCE_BINDING"
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "함수 꼴 판별",
+      "decisiveStep": "①,⑤ 제외",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "x절편 비교",
+      "decisiveStep": "⑤ x절편 1",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "마리 수와 다리 수 모델링",
+      "decisiveStep": "x+y=8,4x+2y=20",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "가감법",
+      "decisiveStep": "①×3-②×2",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "모순 판정",
+      "decisiveStep": "2x-2y=2와 =1",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "평행이동 후 점대입",
+      "decisiveStep": "n=4",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "계수 부호 판정",
+      "decisiveStep": "3-a<0",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "변화량 연립",
+      "decisiveStep": "n=19,w=8",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "기울기 절댓값 비교",
+      "decisiveStep": "|m| 최소 1/2",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "두 점으로 직선식",
+      "decisiveStep": "y=4x-11에 대입",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "사분면 조건 범위",
+      "decisiveStep": "0≤m≤2",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "그래프 부호 판정",
+      "decisiveStep": "b<0,c<0",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "직선 성질 판정",
+      "decisiveStep": "y=2x-6",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "그래프 절편 판독",
+      "decisiveStep": "a=-3,b=2",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "정규화 후 가감법",
+      "decisiveStep": "y=-1,x=3",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "해 조건 대입",
+      "decisiveStep": "x=-5,y=-20",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "보기별 그래프 판정",
+      "decisiveStep": "라만 거짓",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "자릿수 모델링",
+      "decisiveStep": "x=7,y=3",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "시간 부등식",
+      "decisiveStep": "x≤6/7",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "도형 넓이 연립",
+      "decisiveStep": "x=6,y=4",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "평행·원점·이동 순차 적용",
+      "decisiveStep": "a=3,b=0,m=1",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "짐 이동 연립",
+      "decisiveStep": "x=7,y=5",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "성냥개비 연립",
+      "decisiveStep": "x=4",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "좌표와 직선 조건 결합",
+      "decisiveStep": "k=2,D=(6,4),y=-2x+16",
+      "rpmDisposition": "FINAL",
+      "projectionDisposition": "UNMATERIALIZED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md@5423e0867708382d9d9e3ae58583c6f02affc07d"
+      ],
+      "nullReason": "Current authority lookup did not establish an exact ACTIVE curriculum-bound PT/TPL projection; unchanged artifact metadata retained."
+    }
+  ],
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 0,
+    "directRepairQids": [],
+    "sourceRepairRequiredCount": 0,
+    "problemVisualAuditCount": 5
+  },
+  "generation": "M2_1_CREATE_FIRST_2026_10_03_R3_20261005_R3_1",
+  "examUid": "M2-1-22-WANGUN-1FINAL",
+  "canonicalInventoryOrdinal": 33,
+  "finalArtifactGitBlob": "03a6a74721f0c18e67d5dbe2106c2a71740d062a",
+  "sourceAuthority": "R3 used the byte-exact R2 source-bound finalArtifact; all 24 runtime questions were freshly inspected/recomputed, and q12/q14/q20/q23/q24 problem PNGs were freshly read. Prior-stage aggregate counts were not used as R3 math/solution PASS authority.",
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "upstreamSourceBindingUsedOnlyForExactSourceParity": true,
+    "upstreamReview2ReceiptBlob": "a0e8a5fa602c0a3950ca1b9cdae652cd7a38c4c2",
+    "upstreamReview2PhysicalEvidenceBlob": "81016d5352d977107b602c54acc44593437c9d7a",
+    "upstreamRepairQids": [
+      17
+    ],
+    "r3FreshMathAndSolutionAuditCompleted": true,
+    "reviewAttemptId": "R3:M2-1-22-WANGUN-1FINAL:03a6a74721f0c18e67d5dbe2106c2a71740d062a:r3-1-20261005-1810"
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      17
+    ],
+    "directDependencyQids": []
+  },
+  "formalCompare": {
+    "upstreamR2FinalArtifactSha": "03a6a74721f0c18e67d5dbe2106c2a71740d062a",
+    "upstreamDeterministicRepairQids": [
+      17
+    ],
+    "changedLocusRechecked": true,
+    "result": "PASS"
+  },
+  "problemVisualRows": [
+    {
+      "qid": 12,
+      "result": "PASS",
+      "method": "SOURCE_PIXEL_FRESH_READ",
+      "assetBlob": "848656aa1aae0ebc8d0d223ddcad0ba4b48ef42d",
+      "observed": "positive slope, negative y-intercept"
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "method": "SOURCE_PIXEL_FRESH_READ",
+      "assetBlob": "4f683b4d69f19c597a0d96833c5ecf3f1b938cd4",
+      "observed": "x-intercept -3 / y-intercept 2"
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "method": "SOURCE_PIXEL_FRESH_READ",
+      "assetBlob": "3feb13e5dea6423c332a9e3942fb812831fcd04e",
+      "observed": "3×2 base with extension strips"
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "method": "SOURCE_PIXEL_FRESH_READ",
+      "assetBlob": "208bbb2dfa5be3c2f5bb3cf11d086159b11ed4ea",
+      "observed": "separate triangle and square"
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "method": "SOURCE_PIXEL_FRESH_READ",
+      "assetBlob": "ae153ad398bea9c3d363441b0ea44e3eaec5e48f",
+      "observed": "square ABCD with A on y=2x and D on y=-x+10"
+    }
+  ]
+}
