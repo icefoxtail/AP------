@@ -6,11 +6,13 @@ on:
     paths:
       - "archive/tools/archive-stage-validator.mjs"
       - "archive/tools/archive-repair-alive-v2.mjs"
+      - "archive/tools/archive-stage-runtime-v2.mjs"
       - "archive/tools/archive-stage-validator-r2-v2.mjs"
       - "archive/tools/archive-stage-validator-r3-v2.mjs"
       - "archive/fixtures/stage-validator-pilot/**"
       - "tests/archive-stage-validator-pilot.test.mjs"
       - "tests/archive-repair-alive-v2.test.mjs"
+      - "tests/archive-stage-runtime-v2.test.mjs"
       - "tests/archive-stage-validator-r2-v2.test.mjs"
       - "tests/archive-stage-validator-r3-v2.test.mjs"
       - ".github/workflows/archive-stage-validator.yml"
@@ -66,6 +68,9 @@ jobs:
 
       - name: Repair / ALIVE v2 regression
         run: node tests/archive-repair-alive-v2.test.mjs
+
+      - name: Stage runtime v2 regression
+        run: node tests/archive-stage-runtime-v2.test.mjs
 
       - name: R2 v2 regression
         run: node tests/archive-stage-validator-r2-v2.test.mjs
