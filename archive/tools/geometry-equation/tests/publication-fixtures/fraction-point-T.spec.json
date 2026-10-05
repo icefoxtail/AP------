@@ -1,0 +1,111 @@
+{
+  "id": "fraction-point-T",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -2,
+    "xMax": 18,
+    "yMin": -2,
+    "yMax": 18,
+    "width": 384,
+    "height": 384,
+    "panel": 0
+  },
+  "axes": false,
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        13.333333333333334,
+        0
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "AT",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        0
+      ],
+      "to": [
+        13.333333333333334,
+        0
+      ]
+    },
+    {
+      "id": "TC",
+      "kind": "SEGMENT",
+      "from": [
+        13.333333333333334,
+        0
+      ],
+      "to": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "CA",
+      "kind": "SEGMENT",
+      "from": [
+        0,
+        10
+      ],
+      "to": [
+        0,
+        0
+      ]
+    }
+  ],
+  "publication": {
+    "profile": "geometry-publication-v1",
+    "fontSize": 16,
+    "sourcePointLabels": {
+      "A": "A",
+      "T": "T",
+      "C": "C"
+    },
+    "segmentPointRefs": {
+      "AT": [
+        "A",
+        "T"
+      ],
+      "TC": [
+        "T",
+        "C"
+      ],
+      "CA": [
+        "C",
+        "A"
+      ]
+    },
+    "annotations": [
+      {
+        "id": "lAT",
+        "kind": "LENGTH",
+        "owner": "AT",
+        "value": 13.333333333333334,
+        "text": "40/3"
+      }
+    ]
+  }
+}

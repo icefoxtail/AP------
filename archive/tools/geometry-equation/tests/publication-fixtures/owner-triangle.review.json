@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "49c48c12fa148d32ee8b977a6220d9dae8c5813436e57f0f86f4912130001669",
+  "solutionSha256": "f57d46f32f605aa27bf26e7fda8dbe40a2ea4bb203c391677b263c70fc3ee7ab",
+  "coordinateModel": {
+    "originX": 96,
+    "originY": 288,
+    "sx": 64,
+    "sy": 64
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        0,
+        3
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "angles": [
+    {
+      "id": "a90",
+      "points": [
+        "B",
+        "A",
+        "C"
+      ],
+      "degrees": 90,
+      "marker": "SQUARE",
+      "text": "90°",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "lengths": [
+    {
+      "id": "lAB",
+      "segment": "AB",
+      "value": 3,
+      "mode": "DIMENSION",
+      "text": "3",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [
+    {
+      "id": "area",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "value": 4.5,
+      "text": "9/2",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}
