@@ -1,5 +1,7 @@
 # APMath Problem → Visual Request 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 07 / Problem → Visual Request  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -1635,7 +1637,7 @@ Detail 07 완료 상태:
 - [ ] source/solution conflict는 NEEDS_INPUT으로 남긴다.
 - [ ] branch ambiguity는 자동 임의 선택하지 않는다.
 - [ ] plan이 source/solution/policy SHA에 결박된다.
-- [ ] same input에 stable semantic plan을 만든다.
+- [ ] 승인된 frozen plan을 stable하게 replay하고 fresh planning의 provenance/semantic quality를 별도 검증한다.
 - [ ] old frozen plan의 stale reuse를 거부한다.
 - [ ] 사용자가 별도 facts JSON을 수동 작성하지 않아도 runner로 이어진다.
 - [ ] planner PASS만으로 publication PASS를 주장하지 않는다.
@@ -1696,3 +1698,19 @@ VisualRequest
 # 103. 최종 한 문장
 
 > **APMath Problem → Visual Request v1은 LLM이 SVG를 직접 그리는 계층이 아니라, 문항의 source와 verified solution을 읽어 visual 필요성·decisive relation·critical facts·capability·label intent를 구조화된 FrozenVisualPlan으로 고정하고, deterministic geometry/graph/publication engine이 안전하게 실행할 수 있도록 넘기는 semantic planning 계층이다.**
+
+---
+
+# 104. 구현 전 확정: planning provider와 source 검토의 연결
+
+문항 지정 한 번이 실제 실행으로 이어지려면 strict JSON schema 외에 **호출 가능한 parent/provider adapter**가 있어야 한다. D05 RESOLVE/PLAN의 입력에 `sourceAuthorityRef`, `verifiedSolutionEvidenceRef`, `plannerAdapterId/version`, 필요 시 `parentContinuationRef`를 resolve한다. 이는 새 public 필드를 무작정 늘리라는 뜻이 아니라 기존 parentContext/config authority를 구체화하는 책임이다. 초기 단계에서 실제 파일/함수와 한 UID로 검증한다.
+
+첫 통합은 기존 Archive worker의 planning continuation을 사용한다. standalone CLI의 UID-only 경로는 configured planner adapter가 있을 때만 완전 자동이다. adapter 부재는 TOOLCHAIN_UNAVAILABLE, source/solution authority 부재는 NEEDS_INPUT으로 나누고 durable checkpoint를 남긴다. parent가 돌려준 결과는 동일 요청에 다시 결박하며 사용자가 facts JSON을 수동 작성하도록 떠넘기지 않는다. 별도 AI 서비스/credential 시스템을 이번 계획에 암묵 추가하지 않는다.
+
+독립 source/fact reviewer는 planner의 condition inventory만 보지 않고 bound source text/필수 problem image와 verified solution에서 expected conditions를 다시 확인해야 한다. 이후 proposed graph/branch/표현과 대조한다. source에서 빠진 조건을 두 math backend가 함께 빠뜨려도 PASS하지 않도록 `source → independently established condition inventory → plan mapping` 경계를 둔다. 기존 유효 부모 evidence가 이를 이미 덮으면 재사용한다. 같은 plan JSON의 hash는 독립 검토 receipt가 아니다.
+
+정상화/실현은 D01 §23의 recipe를 선택하고 source 조건/자유도/허용 대칭을 명시하는 일이다. source가 좌표를 안 주었다는 이유로 자유 좌표 모두를 임의 선택하지 않는다. 동등한 normalization branch와 실제 수학적 다해 ambiguity를 구분한다.
+
+fresh LLM call의 동일 bytes를 완료 기준으로 요구하지 않는다. raw response, provider/model/prompt/schema/policy hashes와 검증 결과를 provenance로 보존한다. 한번 승인·freeze한 plan은 명시적 replan 또는 의미 입력 변경 전까지 재사용한다. freeze 후에는 D05 deterministic pipeline으로 replay한다. 낮은 temperature와 stable id만으로 생성의 결정성을 주장하지 않는다.
+
+추가 회귀: fresh UID→실제 adapter 호출→정규화→review continuation, adapter 부재와 missing facts 분리, timeout 뒤 동일 dispatch 확인, planner가 critical condition을 누락한 valid JSON, 승인되지 않은 free choice, frozen replay와 fresh replan의 구분. source image bytes도 source semantic dependency에 포함한다.

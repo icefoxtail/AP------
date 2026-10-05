@@ -1,5 +1,7 @@
 # APMath One-Click Runner 세부 구현계획 v1.1
 
+> **상위 재검토 반영 기준:** `0bb88da58e41ae1154911d4e711f6247e60e5f16`. 본문의 기존 조사 이력은 보존한다. 이번 재검토의 최종 결정은 마지막 추가 절과 [검토 보고서](APMath_Construction_Visual_Production_아키텍처재검토_2026-10-05.md)에 기록하며, 해당 항목은 앞선 초안의 포괄적 표현보다 우선한다. 제품 코드·신규 engine qualification은 이번 변경 범위가 아니다.
+
 **상위 문서:** `APMath Construction & Visual Production Engine — 최종 구현 계획서`  
 **문서 역할:** Detail 05 / One-Click Runner  
 **작성일:** 2026-10-05 (Asia/Seoul)  
@@ -386,7 +388,7 @@ Actual Archive 연결은 Detail 06에서 완성한다.
 
 | mode | 실행 허용 | 결과 권한 |
 |---|---|---|
-| `PRODUCTION_CANDIDATE` | 해당 engine revision의 유효 Seal에 의해 ACTIVE인 capability/op/profile 조합만 | 요청별 필수 audit·Actual Archive·독립 review까지 PASS해야 `PUBLICATION_READY`; production write 권한은 없음 |
+| `PRODUCTION_CANDIDATE` | 해당 capability implementation/dependency fingerprint의 유효 Seal에 의해 ACTIVE인 capability/op/profile 조합만 | 요청별 필수 audit·Actual Archive·독립 review까지 PASS해야 `PUBLICATION_READY`; production write 권한은 없음 |
 | `QUALIFICATION` | 검증된 frozen qualification manifest에 포함된 사례·scope이고, 필요한 구현이 존재하는 ACTIVE/EXPERIMENTAL 조합 | 같은 planner/runner/auditor/Archive 경로로 시험하되 `PUBLICATION_READY` 금지. 완료는 `QUALIFICATION_COMPLETE` |
 
 `QUALIFICATION`에서는 `qualificationManifestRef={path,sha256}`가 필수다. manifest는 engine/dependency/contract revision, 시험 source·solution bytes, case identity, 허용 capability/op/profile 범위를 동결한다. 실제 UID와 synthetic fixture identity는 구분한다. 미래 planner 결과의 hash를 사전에 요구하지 않으며, 생성 후 plan SHA와 실제 실행 결과를 manifest의 case에 결박한다.
@@ -792,7 +794,7 @@ canonical UID를 그대로 filename으로 사용하지 않는다.
 
 안전한:
 
-`assetId = digest(questionUid + surface + planVersion)`
+`assetId = digest(questionUid + surface + visualAssetKey)` (revision은 planSha256로 별도 결박)
 
 방식.
 
@@ -938,11 +940,10 @@ cache를 단계별로 분리.
 key:
 
 ```text
-source SHA
-+ solution SHA
-+ plan SHA
-+ kernel version
+math input projection SHA
++ kernel/adapter implementation closure SHA
 + numeric policy
+# 전체 plan/source/solution identity는 별도 provenance/evidence binding
 ```
 
 ---
@@ -1302,7 +1303,7 @@ adapter/migration 필요.
 
 registry에는 capability/op/profile/dependency와 실제 qualification/Seal refs를 함께 둔다. `implemented`와 `effectiveActivation`은 다르다. 이 문서에서 어떤 row도 현재 ACTIVE로 선언하지 않는다.
 
-- 일반 candidate: 동일 engine revision의 유효 Seal과 정확히 맞는 ACTIVE 조합만 실행한다.
+- 일반 candidate: 동일 capability implementation/dependency fingerprint의 유효 Seal과 정확히 맞는 ACTIVE 조합만 실행한다.
 - qualification: §4.3의 frozen manifest에 포함된 구현 완료 EXPERIMENTAL/ACTIVE 조합만 실행한다. 미구현/disabled/범위 밖은 거부한다.
 - 파서 또는 builder만 구현되었거나 auditor/Archive/review가 빠진 capability는 일반 ACTIVE가 아니다.
 - `NUMBER_LINE/COMPOSITE_PANEL/SPECIAL_VISUAL` 같은 지원 후보도 독립 required gate 없이 자동 승격하지 않는다.
@@ -1745,3 +1746,39 @@ planner/resolver의 source/solution 이해를 더 구체화한다.
 # 74. 최종 한 문장
 
 > **APMath One-Click Runner v1은 새로운 수학/조판 알고리즘을 만드는 계층이 아니라, Construction·Graph·Typography·Measured Layout capability를 하나의 versioned request와 immutable attempt 흐름으로 묶고, static/browser 검증·부분 캐시·bounded repair·명시적 failure state까지 자동으로 끝내는 production orchestrator다.**
+
+---
+
+# 75. 구현 전 확정: 실행·hash·cache·불변 저장 계약
+
+## 75.1 Node/Python wire와 hash authority
+
+기존 Python `json.dumps(sort_keys=True)`와 PC `canonicalJson`은 같지 않다. 예를 들어 Python의 1.0/-0.0/decomposed Unicode는 PC의 1/0/NFC와 다르며 PC hash에는 `sha256:` prefix가 있다. **새 공통 object hash는 Node의 PC canonical serializer 한 곳에서 계산**한다. Python은 typed JSON payload와 자기 raw output bytes를 반환하고, Node가 validate/canonicalize하여 canonical object blob을 freeze한다. Python/독립 observer가 binding을 검사할 때는 그 frozen blob의 raw bytes SHA를 확인한다. 별도로 객체 hash를 재구현해야 한다면 양 언어 conformance vectors를 먼저 통과해야 한다.
+
+새 bound file ref는 PC와 호환되는 `{path, bytes, sha256}`다. 문서의 `{path,sha256}`는 축약 표기이며 실제 wire에는 bytes가 필수다. semantic plan payload의 hash와 JSON 파일 bytes hash를 구분한다. 기존 GE bare-hex/Python canonical hash는 versioned legacy field로 보존하고 adapter가 검증한 후 새 ref로 감싼다. prefix만 추가하여 같은 object hash로 재해석하지 않는다. NaN/Infinity/정밀도 초과 숫자는 거부하고 exact rational/대형 정수는 typed 문자열로 전달한다. raw source bytes는 NFC로 바꾸지 않는다.
+
+`planSha256`는 전체 frozen plan의 identity다. root plan의 hash 제외 규칙은 하나만 존재한다. child ref/file path는 locator로서 plan에 포함된 경우 그대로 hash되며, 순수 계산 cache의 semantic projection에서는 제외할 수 있다. hash 순환을 막기 위해 SVG metadata에 넣는 layout/metrics object에는 screenshot/time/run/후속 review refs를 포함하지 않는다.
+
+## 75.2 deterministic 범위와 input projection
+
+LLM fresh planning 자체의 byte determinism은 보장하지 않는다. provider/model/prompt/schema/policy/input과 raw output을 기록하고 **검증 후 고정된 plan부터** deterministic replay를 보장한다. 같은 source의 새 planning 실행은 새 revision이고, reproducibility test는 frozen plan replay와 planner 품질 평가를 구분한다.
+
+각 stage key는 `stage implementation closure + schema/policy/dependency + 실제 소비 input projection`의 hash다. 전체 plan SHA는 provenance이지 모든 cache key가 아니다. math key에 label/font/display intent를 넣으면 label-only 변경에도 math cache가 깨진다. graph branch/constraint/normalization refs는 math projection에 포함한다. viewBox가 변하면 graph screen sampling이 영향받는다.
+
+계산 cache hit와 review reuse는 다르다. immutable output bytes가 같아도 source authority·required gates·observer/rule version·review lifecycle이 달라지면 해당 audit/review를 새로 닫는다. 감사기 코드도 dependency다. 단계 receipt는 component self-report PASS 대신 실제 input/output/ref 검증을 거친다. cache를 전부 끈 cold build를 정확성 reference로 두고 warm build 결과를 대조한다.
+
+## 75.3 저장·동시성·resume
+
+`assetId`는 stable `questionUid + surface + visualAssetKey`에서 계산하고 plan revision은 별도 `planSha256`로 둔다. same UID의 여러 visual/panel 출력 충돌을 방지한다. 한 요청에 최초 build + repair 최대 3회이므로 최대 4 candidate revision이며, attempt 번호 자체를 content hash에 넣지 않는다.
+
+stage는 임시 staging directory에 쓰고 output 검증 후 manifest를 마지막으로 원자적으로 commit한다. committed manifest가 없는 partial output은 cache/ready가 아니다. append-only 파일 쓰기만으로 여러 파일의 완료 transaction이 보장되지는 않는다. durable checkpoint journal은 별도이고 committed attempt/result는 덮어쓰지 않는다. resume은 새 downstream evidence/result ref를 만들고 이전 결과를 supersede한다.
+
+request/output 충돌과 content-cache key별 writer를 구분해 잠근다. 기존 OS lock/recovery 원칙을 재사용하되 이 artifact build 때문에 새 provider work-batch job을 만들지 않는다. timeout/취소 시 worker/browser/server를 finally에서 회수하고 crash-injection으로 stage 중간/commit 직전/직후를 확인한다. generated-only 검사는 resolved realpath와 symlink/junction도 확인하며 lexical prefix만 믿지 않는다.
+
+## 75.4 실행과 repair의 단일 소유자
+
+TYPESET/MEASURE가 browser를 필요로 하면 해당 stage부터 browser를 쓸 수 있다. §48의 static 선행조건은 **최종 BROWSER_AUDIT/Archive capture**에 적용하고 사전 measurement를 금지하지 않는다. standalone·Archive·후기 visual repair는 하나의 repair ledger/count를 소비한다. 일관된 새 input revision과 side effect receipt로 duplicate dispatch/retry를 구분한다.
+
+Source/fact review 및 최종 review 호출은 D07의 기존 parent continuation/provider adapter를 사용한다. runner가 새로운 독립 reviewer identity를 발급해 PASS하지 않는다. registry/Seal은 승인된 source에서 resolve하고 사용자 요청이 arbitrary Seal 경로를 지정해 활성화하지 못하게 한다.
+
+추가 회귀: JS/Python hash vectors, raw/file/object hash 혼용, label-only math cache hit, verifier-only audit invalidation, crash/concurrent writer, partial manifest, browser-measure bootstrap, 네 번째 repair 거부, stale approval/revocation, frozen plan replay.
