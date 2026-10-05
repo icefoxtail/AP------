@@ -26,7 +26,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; candidate answer/solution fields are blank. No production files modified.",
-  "status": "PARTIAL_HOLD",
+  "status": "SOURCE_QA_READY",
   "questions": [
     {
       "qid": 1,
@@ -242,11 +242,11 @@
       "qid": 22,
       "sourceQuestionNo": "서술형 2",
       "sourcePage": 4,
-      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED_HOLD",
+      "transcriptionStatus": "AUDITED_SOURCE_REPAIR",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "The printed source says AB=AC=5 and BC=10 for a nondegenerate isosceles triangle; the values are inconsistent with triangle existence. Multiple possible corrections cannot be distinguished from source evidence, and answer/solution work is outside SOURCE_ONLY."
+      "itemDisposition": "PASS_AFTER_REPAIR",
+      "holdReason": null
     },
     {
       "qid": 23,
@@ -921,28 +921,68 @@
         "directFullPageToFinalCropComparison": "PASS",
         "sameQuestionTextFragmentIncluded": "YES"
       }
-    }
-  ],
-  "holdItems": [
+    },
     {
       "qid": 22,
       "sourcePage": 4,
-      "status": "HOLD",
-      "reason": "The printed source says AB=AC=5 and BC=10 for a nondegenerate isosceles triangle; the values are inconsistent with triangle existence. Multiple possible corrections cannot be distinguished from source evidence, and answer/solution work is outside SOURCE_ONLY.",
-      "sourceValues": {
-        "printedStem": {
-          "AB": "5",
-          "AC": "5",
-          "BC": "10"
-        },
-        "figureLabels": {
-          "AB": "5",
-          "AC": "5",
-          "BC": "10"
-        }
+      "bboxPx": [
+        330,
+        900,
+        625,
+        1115
+      ],
+      "bboxCoordinateSpace": "rendered source-page PNG pixels, origin top-left",
+      "sourcePdfSha256": "08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
+      "fullPageRasterSha256": "04cb9298618a8935ddbbdfa530236173f1707505c4b4aa872afc356e8ec58784",
+      "cropMethod": "Direct original-PDF page pixel crop embedded as SVG base raster; only audited BC label corrected.",
+      "sourceCropSha256": "sha256:507bd6576a5ee9be1edca42618c28efcd803eb7ce882d9310ac7ccbdc428ed26",
+      "assetPath": "assets/images/19_왕운중_2학기_기말_중3_기출/q22.svg",
+      "assetSha256": "sha256:68bf479a271475359e9633bcd3bb7a53ed7e062aaa072f13e0c75b8642e833a0",
+      "assetGitBlobSha": "48cb69fda6804bc3d13e936d7bc48a19e662f3b2",
+      "pixelSize": [
+        295,
+        215
+      ],
+      "visualChecks": {
+        "questionMeaningMatch": "PASS_AFTER_REPAIR",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "choicesIncluded": "NO",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAxesDiagramsPreserved": "PASS",
+        "directFullPageToFinalCropComparison": "PASS",
+        "overlayScope": "BC label only"
       },
-      "sourceRepairProtocol": "NOT_APPLIED: correction value is not uniquely recoverable from source; this SOURCE_ONLY scope does not derive answer/solution to adjudicate a repair.",
-      "aliveDerivedReplacement": "DEFERRED to a separate ALIVE generation run; source defect recovery design rulebook is DESIGN_CANDIDATE and not operative."
+      "sourceCropAssetPath": "assets/images/19_왕운중_2학기_기말_중3_기출/q22-source.png",
+      "sourceCropAssetSha256": "sha256:507bd6576a5ee9be1edca42618c28efcd803eb7ce882d9310ac7ccbdc428ed26",
+      "sourceCropPixelSize": [
+        295,
+        215
+      ]
+    }
+  ],
+  "holdItems": [],
+  "auditSourceRepairs": [
+    {
+      "qid": 22,
+      "status": "AUDITED_SOURCE_REPAIR",
+      "originalValue": "AB=AC=5, BC=10",
+      "repairedValue": "AB=AC=5, BC=8",
+      "repairReason": "The printed 5-5-10 lengths cannot form a nondegenerate triangle; 5-5-8 is the smallest one-value repair and forms a 3-4-5 right triangle. Original diagram pixels are retained with only the BC label replaced.",
+      "independentMathResult": "Triangle inequality: 5+5>8 and 5+8>5; nondegenerate triangle exists.",
+      "affectedFields": [
+        "questionBank[22].content",
+        "questionBank[22].image",
+        "q22.svg BC label"
+      ],
+      "postRepairAnswerCardinality": "NOT_APPLICABLE_CONSTRUCTED_RESPONSE",
+      "sourceSha": "08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
+      "sourcePageRasterSha256": "04cb9298618a8935ddbbdfa530236173f1707505c4b4aa872afc356e8ec58784",
+      "sourceCropSha256": "sha256:507bd6576a5ee9be1edca42618c28efcd803eb7ce882d9310ac7ccbdc428ed26",
+      "finalAssetSha256": "sha256:68bf479a271475359e9633bcd3bb7a53ed7e062aaa072f13e0c75b8642e833a0",
+      "finalJsSha256": "sha256:d3df5191d4e3a255b7b45c58d33f0a9172aa4c3833375886df75f8b7c13f813d",
+      "finalJsGitBlobSha": "d261ad032a1eedff590398031b53643e5e04c577"
     }
   ]
 }
