@@ -242,7 +242,7 @@ window.questionBank = [
       "단답형",
       "도형"
     ],
-    "content": "한 모서리의 길이가 $4$인 정육면체 $ABCD-EFGH$가 있다. 선분 $AD$의 중점이 $M$이고 평면 $MEG$와 평면 $EFGH$가 이루는 각을 $\\theta$라 할 때, $30\\cos\\theta$의 값을 구하여라. [5점]",
+    "content": "단답형1. 한 모서리의 길이가 $4$인 정육면체 $ABCD-EFGH$가 있다. 선분 $AD$의 중점이 $M$이고 평면 $MEG$와 평면 $EFGH$가 이루는 각을 $\\theta$라 할 때, $30\\cos\\theta$의 값을 구하여라. [5점]",
     "choices": [],
     "image": "assets/images/22_매산고_1학기_기말_고2_기하/q16.png"
   },
@@ -253,7 +253,7 @@ window.questionBank = [
       "단답형",
       "그래프"
     ],
-    "content": "초점이 $F$인 포물선 $y^2=4x$ 위에 서로 다른 두 점 $A,B$가 있다. 두 점 $A,B$의 $x$좌표는 $1$보다 큰 자연수이고 삼각형 $AFB$의 무게중심의 $x$좌표가 $4$일 때, $\\overline{AF}\\times\\overline{BF}$의 최댓값을 구하시오. [5점]",
+    "content": "단답형2. 초점이 $F$인 포물선 $y^2=4x$ 위에 서로 다른 두 점 $A,B$가 있다. 두 점 $A,B$의 $x$좌표는 $1$보다 큰 자연수이고 삼각형 $AFB$의 무게중심의 $x$좌표가 $4$일 때, $\\overline{AF}\\times\\overline{BF}$의 최댓값을 구하시오. [5점]",
     "choices": [],
     "image": "assets/images/22_매산고_1학기_기말_고2_기하/q17.png"
   },
@@ -263,17 +263,19 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "삼각형 $ABC$에서 $\\overline{AB}=4,\\angle B=90^\\circ,\\angle C=30^\\circ$이다. 점 $P$가 $\\overrightarrow{PB}+\\overrightarrow{PC}=\\vec0$을 만족시킬 때, $|\\overrightarrow{PA}|^2$의 값을 구하면? [5점]",
+    "content": "단답형3. 좌표평면 위의 네 점 $O,A,B,P$는 다음 조건을 만족한다.\n(가) $|\\overrightarrow{OP}|=5, |\\overrightarrow{AB}|=2$\n(나) 두 점 $A,B$는 직선 $l$을 지난다.\n(다) $\\overrightarrow{OP}\\cdot\\overrightarrow{AB}=0,\\overrightarrow{OP}\\cdot\\overrightarrow{OA}=-15$\n삼각형 $ABP$의 넓이를 구하시오. [5점]",
     "choices": []
   },
   {
     "id": 19,
-    "questionType": "단답형",
+    "questionType": "서술형",
     "tags": [
-      "단답형"
+      "서술형",
+      "도형"
     ],
-    "content": "좌표평면 위의 네 점 $O,A,B,P$는 다음 조건을 만족한다.\n(가) $|\\overrightarrow{OP}|=5, |\\overrightarrow{AB}|=2$\n(나) 두 점 $A,B$는 직선 $l$을 지난다.\n(다) $\\overrightarrow{OP}\\cdot\\overrightarrow{AB}=0,\\overrightarrow{OP}\\cdot\\overrightarrow{OA}=-15$\n삼각형 $ABP$의 넓이를 구하시오. [5점]",
-    "choices": []
+    "content": "서술형1. 사면체 $ABCD$에 대하여 $\\overline{AB}=\\overline{AC}=4,\\overline{AD}=8,\\overline{BD}=\\overline{CD},\\angle ABD=90^\\circ$이고 평면 $ABD$와 평면 $ACD$가 이루는 각이 $60^\\circ$이다. 직선 $AD$와 평면 $DBC$가 이루는 각을 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오. [10점]",
+    "choices": [],
+    "image": "assets/images/22_매산고_1학기_기말_고2_기하/q19.png"
   },
   {
     "id": 20,
@@ -282,19 +284,8 @@ window.questionBank = [
       "서술형",
       "도형"
     ],
-    "content": "사면체 $ABCD$에 대하여 $\\overline{AB}=\\overline{AC}=4,\\overline{AD}=8,\\overline{BD}=\\overline{CD},\\angle ABD=90^\\circ$이고 평면 $ABD$와 평면 $ACD$가 이루는 각이 $60^\\circ$이다. 직선 $AD$와 평면 $DBC$가 이루는 각을 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오. [10점]",
+    "content": "서술형2. 같은 평면 위의 네 점 $A,B,O,P$에 대하여 $AB=8$, 선분 $AB$의 중점을 $O$, 선분 $AB$를 지름으로 하는 반원 위의 한 점을 $P$, 선분 $AO$를 지름으로 하는 반원의 점을 $Q$라 하자. $\\angle ABP=30^\\circ$일 때, $\\overrightarrow{AQ}\\cdot\\overrightarrow{BP}$의 최솟값과 최댓값을 구하시오. [10점]",
     "choices": [],
     "image": "assets/images/22_매산고_1학기_기말_고2_기하/q20.png"
-  },
-  {
-    "id": 21,
-    "questionType": "서술형",
-    "tags": [
-      "서술형",
-      "도형"
-    ],
-    "content": "같은 평면 위의 네 점 $A,B,O,P$에 대하여 $AB=8$, 선분 $AB$의 중점을 $O$, 선분 $AB$를 지름으로 하는 반원 위의 한 점을 $P$, 선분 $AO$를 지름으로 하는 반원의 점을 $Q$라 하자. $\\angle ABP=30^\\circ$일 때, $\\overrightarrow{AQ}\\cdot\\overrightarrow{BP}$의 최솟값과 최댓값을 구하시오. [10점]",
-    "choices": [],
-    "image": "assets/images/22_매산고_1학기_기말_고2_기하/q21.png"
   }
 ];
