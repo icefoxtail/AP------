@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "5e57105d65ecc7981665ce20788d6656fb99dc1e74b155735be1c2859cd5f411",
+  "solutionSha256": "905cd4034cf4fffd094ce7e23df4f2b3b5fba37d8b9819690985a8082faf9547",
+  "coordinateModel": {
+    "originX": 96,
+    "originY": 288,
+    "sx": 64,
+    "sy": 64
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        0,
+        3
+      ],
+      "name": "C"
+    },
+    {
+      "id": "M",
+      "at": [
+        3,
+        3
+      ],
+      "name": "M"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AM",
+      "points": [
+        "A",
+        "M"
+      ]
+    }
+  ],
+  "angles": [
+    {
+      "id": "lower",
+      "points": [
+        "B",
+        "A",
+        "M"
+      ],
+      "degrees": 45,
+      "marker": "ARC",
+      "text": "45°",
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "upper",
+      "points": [
+        "M",
+        "A",
+        "C"
+      ],
+      "degrees": 45,
+      "marker": "ARC",
+      "text": "45°",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "lengths": [],
+  "regions": []
+}

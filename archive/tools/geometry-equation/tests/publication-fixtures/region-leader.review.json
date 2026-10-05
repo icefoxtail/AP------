@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "c339f1c0fd3c2d17a74152d29c7e2bdd6bfa97e44ec005f8911205da35079849",
+  "solutionSha256": "f1f692c3dcd36549f1796d807025bba8c9848a67f10002d965cdd5f5b46e0e61",
+  "coordinateModel": {
+    "originX": 96,
+    "originY": 288,
+    "sx": 64,
+    "sy": 64
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "B",
+      "at": [
+        3,
+        0
+      ],
+      "name": "B"
+    },
+    {
+      "id": "C",
+      "at": [
+        0,
+        3
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "points": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "points": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [],
+  "regions": [
+    {
+      "id": "area",
+      "points": [
+        "A",
+        "B",
+        "C"
+      ],
+      "value": 4.5,
+      "text": "9/2",
+      "leader": true,
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}
