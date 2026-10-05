@@ -70,7 +70,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q04.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q04-r1.png"
   },
   {
     "id": 5,
@@ -106,7 +106,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q06.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q06-r2.png"
   },
   {
     "id": 7,
@@ -124,7 +124,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q07.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q07-r3.png"
   },
   {
     "id": 8,
@@ -160,7 +160,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q09.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q09-r2.png"
   },
   {
     "id": 10,
@@ -323,7 +323,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q21.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q19-r1.png"
   },
   {
     "id": 20,
@@ -335,7 +335,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q22.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q20-r3.png"
   },
   {
     "id": 21,
@@ -347,6 +347,6 @@ window.questionBank = [
       "통계",
       "표"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q23.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q21-r1.png"
   }
 ];
