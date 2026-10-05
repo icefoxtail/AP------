@@ -18,6 +18,22 @@
 
 이 1개가 MAIN까지 닫히면 즉시 종료하고 보고한다.
 
+### 승인된 5시험지 파일럿 — 2026-10-05
+
+사용자가 승인한 이번 후속 파일럿에서는 위 1시험지 제한 대신 아래 5개만 대상으로 한다. 모두 `archive/_generated/source-only/m2-20261004/` 아래의 JS다. 기존 `21_연향중`은 재실행하지 않는다.
+
+- `21_신흥중_2학기_기말_중2_기출.js`
+- `21_왕운중_2학기_기말_중2_기출.js`
+- `21_이수중_2학기_기말_중2_기출.js`
+- `21_풍덕중_2학기_기말_중2_기출.js`
+- `20_향림중_2학기_기말_중2_기출.js`
+
+시험지별 CREATE → R1 → R2 → R3 → MAIN 순서를 유지하며, 최대 5개 stage worker를 병렬 실행한다. 같은 시험지의 stage worker는 동시에 실행하지 않는다. 모든 작업자는 자기 시험지 파일과 별도 evidence만 소유하며 공용 파일을 수정하지 않는다.
+
+공유 Git index의 병렬 충돌을 방지하기 위해 이번 파일럿에서는 worker가 파일 목록과 validator/closure 결과를 반환하고, ROOT가 해당 목록만 명시적으로 stage하여 stage별 독립 commit을 만든다. worker는 git add/commit/merge/push를 실행하지 않는다. MASTER는 실제 durable continuation에만 사용한다.
+
+5개가 MAIN까지 닫히면 종료한다. 기존 모델, blind 입력 분리, read-once, validator 1회 및 routing-only 규칙은 그대로 적용한다. 사용자 안내는 결과/오류 중심으로 짧게 하고, 변화 없는 대기 안내를 반복하지 않는다.
+
 ## 2. Read-Once / Token Budget HARD
 
 ROOT는 이 문서를 session 시작 시 1회 읽고 실행한다.
