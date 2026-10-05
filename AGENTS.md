@@ -13,5 +13,5 @@
 6. Notion 전체 재조회는 정상 stage routing의 prerequisite가 아니다. Git canonical과 현재 코드가 실행 authority다.
 7. nested `AGENTS.md`가 추가로 존재하면 해당 scope에서는 더 구체적인 지시를 함께 따른다.
 8. R2 blind 입력은 정답/해설을 제외한 학생용 필드만 먼저 추출한다. freeze 전 답 노출은 실패 실행으로 보존하고, 새 `archive_r2`에서 clean blind 실행을 수행한다. 구조 validator PASS만으로 이 실패를 닫지 않는다.
-9. multi-exam pilot은 CREATE/R1/R2/R3 각각 한 담당을 재사용하는 stage별 직렬 컨베이어다. CREATE 5개 동시 실행은 금지하며 concurrency 5는 상한이다. MAIN은 ROOT의 기술 routing, MASTER는 실제 continuation에만 사용한다.
+9. multi-exam pilot은 CREATE/R1/R2/R3 각각 동시 담당 1개를 유지하는 stage별 직렬 컨베이어다. 역할은 고정하되 다음 시험지는 새 subagent 세션으로 시작한다. 같은 시험지의 동일 stage 수정·재확인·closure는 기존 세션에서 이어간다. CREATE 5개 동시 실행은 금지하며 concurrency 5는 상한이다. MAIN은 ROOT의 기술 routing, MASTER는 실제 continuation에만 사용한다.
 10. R1 DEEP는 수학/answer 검수와 별도로 전 qid의 QUESTION_LAYOUT / SOLUTION_LAYOUT / META / VISUAL_SVG 4축 독립 검수를 기록한다. MAIN_DONE은 실제 production canonical 반영, asset reference 확인, 최종 production SHA에 결속된 closeout receipt까지 완료해야 한다.

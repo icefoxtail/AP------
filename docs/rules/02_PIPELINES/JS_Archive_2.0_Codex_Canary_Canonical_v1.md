@@ -30,9 +30,20 @@
 
 시험지별 CREATE → R1 → R2 → R3 → MAIN 순서를 유지하는 stage별 직렬 컨베이어다. CREATE/R1/R2/R3 담당은 각각 1개이며, 각 담당은 한 번에 시험지 하나만 처리한다. 시험지별 CREATE worker 5개를 동시에 spawn하는 방식은 금지한다.
 
-CREATE가 A를 R1에 넘기면 같은 CREATE 담당은 B를 시작한다. R1이 A를 R2에 넘기면 같은 R1 담당은 B를 받고, CREATE는 C를 시작한다. 시험지별 순서와 각 담당의 처리 순서를 유지하며 같은 역할을 시험지마다 병렬 증식하지 않는다. 다음 담당이 바쁘면 완료 산출물을 보존하고 해당 담당이 비는 즉시 인계한다. 별도 READY/QUEUE ceremony를 만들지 않는다.
+CREATE가 A를 R1에 넘기면 새 `archive_r1` 세션이 A를 받고 새 `archive_create` 세션이 B를 시작한다. R1이 A를 R2에 넘기면 새 `archive_r2` 세션이 A를 받고, 새 `archive_r1` 세션이 B를 받으며, CREATE는 새 세션으로 C를 시작한다. 시험지별 순서와 각 역할의 처리 순서를 유지하며 같은 역할의 worker를 동시에 여러 개 실행하지 않는다. 다음 담당이 바쁘면 완료 산출물을 보존하고 해당 역할이 비는 즉시 인계한다. 별도 READY/QUEUE ceremony를 만들지 않는다.
 
-MAIN publication/closeout은 ROOT의 기술 routing이다. 정상 품질 담당은 4개이며 MASTER는 실제 durable continuation이 발생할 때만 추가한다. concurrency cap 5는 상한이며 상시 5개 worker 실행 지시가 아니다. 역할별 담당은 다음 시험지에 재사용하되 R1/R2의 새 시험지 독립 답 freeze 전 해당 시험지의 stored answer나 upstream 답 evidence를 노출하지 않는다.
+MAIN publication/closeout은 ROOT의 기술 routing이다. 정상 품질 역할은 4개이며 MASTER는 실제 durable continuation이 발생할 때만 추가한다. concurrency cap 5는 동시 실행 상한이며 상시 5개 worker 실행 지시도, 누적 spawn 수의 제한도 아니다.
+
+#### 에이전트 세션 수명과 인계
+
+- 고정하는 것은 역할과 stage별 동시 처리 슬롯이다. 동일한 agent thread를 시험지 100개까지 계속 유지하는 방식은 기본 운영으로 사용하지 않는다.
+- 새 `(examUid, stage)` 작업은 해당 custom role의 새 세션으로 시작한다. 기본 `fork_turns="none"`으로 ROOT의 누적 작업 이력을 상속하지 않고, 적용 지침과 해당 작업의 필요한 입력만 전달한다.
+- 같은 시험지의 동일 stage 안에서 최소 수정·재확인·closure를 할 때는 기존 세션을 이어간다. 수정마다 새 worker를 spawn하지 않는다. 실제 세션 손실이나 blind 오염 등 새 세션이 필요한 오류는 해당 기록을 보존하고 필요한 범위만 재개한다. MASTER는 실제 durable continuation의 missing closure만 처리한다.
+- 인계의 authority는 에이전트 기억이 아니라 저장된 final artifact, 입력/final SHA, PASS evidence 및 closure receipt다. 다음 담당에게 시험지 경로, SHA, 허용된 evidence, 변경 qid, direct dependency 및 남은 finding만 compact하게 전달한다.
+- R1/R2의 독립 답 freeze 전에는 해당 시험지의 stored answer, 해설 또는 upstream 답 evidence를 전달하거나 읽지 않는다. 필요한 student-facing 입력과 답 evidence의 공개 순서를 분리한다.
+- 각 새 worker는 자기 세션에서 필요한 지침을 최초 1회 읽는다. ROOT는 정상 인계마다 canonical이나 시험지/evidence 전체를 반복 읽지 않는다.
+- 대규모 작업도 bounded 작업 단위를 유지한다. 기본은 시험지 하나이며, 대형 문제집은 단원·공통 자료·의존성을 보존하는 작은 묶음으로 나눈다. 실제 분할 범위와 대상은 별도 승인된 작업 범위에 따른다.
+- 세션 재사용 최적화는 기본 fresh-session 운영과 비교 측정한 후 별도로 적용한다. MAIN_DONE당 실제 token/시간, 재작업·누락 보충·ROOT 개입을 함께 기록하며, 확인 불가능한 usage는 추정하지 않는다. spawn 수 감소만으로 효율 향상을 선언하지 않는다.
 
 모든 작업자는 자기 시험지 파일과 별도 evidence만 소유하며 공용 파일을 수정하지 않는다.
 
