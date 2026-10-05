@@ -12706,6 +12706,37 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+      "school": "신흥중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-05",
+      "rangeStartUnit": "도형의 성질",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M2-08",
+      "rangeEndUnit": "확률",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-05",
+          "rangeStartUnit": "도형의 성질",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
       "school": "신흥중",
       "topic": "",
@@ -12794,6 +12825,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M2-02",
           "rangeEndUnit": "일차부등식",
           "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/2final/21_왕운중_2학기_기말_중2_기출.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중2 수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-05",
+      "rangeStartUnit": "도형의 성질",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M2-08",
+      "rangeEndUnit": "확률",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-05",
+          "rangeStartUnit": "도형의 성질",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
         }
       ],
       "primaryStandardCourse": "중2 수학"
