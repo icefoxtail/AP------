@@ -1,0 +1,1494 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R2",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examUid": "o8",
+  "canonicalInventoryOrdinal": 8,
+  "examPath": "archive/exams/original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+  "finalArtifactGitBlob": "3740558f447fde6fe020446f4e5b7e8f9e781451",
+  "examSha256": "sha256:22f0ef806b2c5525b12fa40af466055b1eec74aca74dfc644c04faf12d3f49c4",
+  "questionCount": 24,
+  "sourceAuthority": {
+    "r1ReceiptGitBlob": "5890b82c83b14a4c70464747fb9a0a7e3b3aa167",
+    "r1ValidatorGitBlob": "30be59771565d0759f3df887edc9124a0f97daaa",
+    "r1EvidenceGitBlob": "2c4b11088d3fa92dc510749217ab19cef040c690",
+    "deterministicRepairQids": [
+      21,
+      22
+    ],
+    "sourceOriginalParityClaimedForRepairs": false
+  },
+  "targetedScope": {
+    "mode": "TARGETED_MINIMAL",
+    "qids": [
+      21,
+      22
+    ],
+    "reason": "R1 deterministic repair loci plus direct dependency only; whole-exam R2 re-review is forbidden by current override.",
+    "deterministicRepairQids": [],
+    "openFindingQids": [],
+    "itemHoldQids": []
+  },
+  "independence": {
+    "blindDecisionFrozenBeforeR1Compare": true,
+    "blindFreezeSha256": "sha256:e372b8741bfe1b4876d86d9ed0cb3addfbd0ecfa9603a1031c65e1fdc5fb9a5b",
+    "currentContract": "R2_TARGETED_MINIMAL_REVIEW",
+    "wholeExamR2ReReview": false,
+    "targetedIndependentRecheckQids": [
+      21,
+      22
+    ],
+    "priorR1ReceiptUsedForEligibilityAndChangedLocus": true
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "Representative current Golden solution checked before target review."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "Representative current Golden solution checked before target review."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다",
+        "observation": "Representative current Golden solution checked before target review."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는",
+        "observation": "Representative current Golden solution checked before target review."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_LOCUS_RECHECK",
+      "decisiveStep": "R1 repair changed wording/logic only; current subUnit classification remains semantically aligned.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "TARGETED_CHANGED_LOCUS_RECHECK",
+      "decisiveStep": "R1 repair changed wording/logic only; current subUnit classification remains semantically aligned.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "R1_FULL_AUDIT_INHERITANCE",
+      "decisiveStep": "No R1 Meta change; preserve exact R1 full-audit disposition.",
+      "rpmDisposition": "R1_CURRENT_AUTHORITY_INHERITED",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R1_EVIDENCE:2c4b11088d3fa92dc510749217ab19cef040c690"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "No unique ACTIVE problemType/template binding was established by current R1 authority; null intentionally preserved."
+    }
+  ],
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "2,4",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "1",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "5",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "5",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "4",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "1",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "3",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "4",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "2",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "3",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "3",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "3",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "4",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "5",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "5",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q21; no unresolved finding."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R2 recheck: ∠BIC=150° in △OBC gives ∠BOC=120°; ∠A<90° excludes the 120° inscribed-angle branch, so ∠A=60°=④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent R2 recheck: ∠BIC=150° in △OBC gives ∠BOC=120°; ∠A<90° excludes the 120° inscribed-angle branch, so ∠A=60°=④."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q21; no unresolved finding."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q21; no unresolved finding."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q21; no unresolved finding."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q21; no unresolved finding."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "4",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q22; no unresolved finding."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Independent R2 recheck: 0.2dot5=23/90 and 0.1dot4=13/90; reduced-form conditions force original denominator 90 and numerator 13, hence 13/90=0.1dot4."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Independent R2 recheck: 0.2dot5=23/90 and 0.1dot4=13/90; reduced-form conditions force original denominator 90 and numerator 13, hence 13/90=0.1dot4."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q22; no unresolved finding."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q22; no unresolved finding."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q22; no unresolved finding."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Targeted R2 compare PASS on R1 repair locus q22; no unresolved finding."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "0.1\\dot{4}",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "TARGETED_R2_RECHECK"
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "10",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Exact R1 full-audit PASS inherited; this qid has no R1 changed locus or direct dependency."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No solutionImage is linked and no visual dependency changed in this R2 scope."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Inherited exact R1 full-audit PASS outside R2 targeted scope; no changed locus/direct dependency."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 branch is bound to exact R1 final artifact blob 3740558f447fde6fe020446f4e5b7e8f9e781451; no R2 semantic mutation."
+      },
+      "blindAnswer": "153\\pi",
+      "compareResult": "MATCH",
+      "verdict": "PASS",
+      "sourceMode": "R1_INHERITED_OUTSIDE_R2_SCOPE"
+    }
+  ],
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "targetedRecheckCount": 2,
+    "targetedRecheckQids": [
+      21,
+      22
+    ],
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 0,
+    "deterministicRepairQids": []
+  }
+}
