@@ -138,6 +138,9 @@ def build(spec,measurements=None):
         witness['publicationProfile'] = prepared['publicationProfile']
         witness['requiredGates'] = ['INDEPENDENT_PUBLICATION_AUDIT','RENDERED_LAYOUT','ARCHIVE_MODE_SOL_390','INDEPENDENT_VISUAL_REVIEW']
         witness['publicationSpecSha256'] = sha(canonical(spec['publication']))
+        coordinate_evidence = spec['sourceFacts']['coordinateEvidence']
+        witness['coordinateEvidenceMode'] = coordinate_evidence['mode']
+        witness['coordinateEvidenceSha256'] = sha(canonical(coordinate_evidence))
         witness['texStatus'] = 'LEGACY_DRAFT_NOT_PUBLICATION_PARITY'
     witness['semanticWitnessSha256']=sha(canonical({'sourceFacts':spec['sourceFacts'],'derivedFacts':spec['derivedFacts'],'displayFacts':spec['displayFacts'],'objects':spec['objects'],'relations':semantic['relations']}))
     return {'svg':svg,'tex':tex,'witness':witness,'spec':spec}

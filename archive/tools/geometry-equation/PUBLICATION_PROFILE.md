@@ -88,6 +88,47 @@ failure classes, NOT source reconstructions or PASS verdicts for its exam qids.
 - SVG is the qualified publication backend. The inherited TikZ output remains a
   legacy draft; it is explicitly marked NOT publication parity in the witness.
 
+## Coordinate provenance / constructed realization HARD
+
+Every publication candidate must bind `sourceFacts.coordinateEvidence` and every
+independent review must bind the matching top-level `coordinateEvidence`.
+
+Two modes are allowed:
+
+- `SOURCE_COORDINATES`: the source itself explicitly fixes every point coordinate.
+  Record a rationale and the complete `sourcePointIds` set.
+- `CONSTRUCTED_REALIZATION`: coordinates were chosen to realize geometry that the
+  source/solution specifies without absolute coordinates. This is not allowed to
+  hide behind a plausible drawing.
+
+A constructed realization must record, before SVG construction:
+
+- why construction is needed;
+- normalization: origin point, positive x-axis point, and unit scale;
+- every point coordinate;
+- all free variables, including an explicit empty list when there are none;
+- every supported geometry condition used by the realization;
+- one construction step producing every point;
+- a residual row for every condition, with tolerance `<= 1e-6`;
+- at least one explicit degeneracy check.
+
+The current fail-closed condition vocabulary is `DISTANCE`, `PERPENDICULAR`,
+`PARALLEL`, `COLLINEAR`, `MIDPOINT`, and `EQUAL_DISTANCE`. Unsupported
+conditions are not silently accepted; extend the contract first.
+
+The builder verifies this evidence against the numeric point objects and emits
+`coordinateEvidenceMode` + `coordinateEvidenceSha256` in its non-authoritative
+witness. The independent auditor separately recomputes conditions and degeneracy
+metrics from the frozen review coordinates. It never imports the builder-side
+coordinate-evidence validator.
+
+The final independent audit therefore binds five identities together:
+`sourceSha256`, `solutionSha256`, `reviewSha256`,
+`coordinateEvidenceSha256`, and final `svgSha256`. Missing evidence, incomplete
+point/condition/step coverage, loose tolerance, residual mismatch, or failed
+degeneracy is a hard static FAIL. A static PASS still does not authorize
+publication.
+
 ## Independent review input
 
 Use schemaVersion `geometry-publication-review-v1`, `sourceSha256`,
@@ -167,18 +208,9 @@ PASS never closes those production tasks or automatically sets FINAL SEAL.
 
 ## Delivery status — 2026-10-05
 
-The implementation in this package is a LOCAL TESTED CANDIDATE. The remote branch
-`codex/geometry-visual-publication-v2-20261005` at
-`5a20240fbc612d8e984bd11c78c304582def380f` contains the qualification workflow ONLY,
-not these source changes. The GitHub source-upload tool request was blocked while
-it could not determine the request security state. No source commit was created.
-The green infrastructure run `37251382281` tested the old baseline and skipped the
-new publication fixtures: it is NOT qualification of this implementation.
-
-The accompanying patch is against the unchanged geometry baseline at main
-`2782155cab4a16a83610cf6786c7ea75a3c743aa`; it does not include workflow changes
-(the workflow already exists on the working branch). Check/apply only on the
-working branch after checking for overlapping edits. Actual Archive integration
-is NOT_RUN locally; the harness error is preserved verbatim, not relabeled PASS.
-No ten-exam SVG rebuild, source-source parity approval, production seal or main
-merge has been performed.
+Geometry publication engine v2 is already integrated on main through
+`0ea6096e560c7b13d1fd766036a172d17e4655e4`. The constructed-coordinate
+evidence hardening is developed separately on
+`codex/geometry-coordinate-realization-evidence-20261005` and does not mutate
+production exam JS/SVG assets. Qualification on that branch must pass before any
+main promotion of this follow-up.
