@@ -26,7 +26,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; answers and solutions blank; no production files modified.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_QA_READY",
   "questions": [
     {
       "qid": 1,
@@ -235,8 +235,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop purity/complete schematic cannot be confirmed while excluding adjacent stem; no asset committed."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 22,
@@ -905,9 +905,37 @@
         "requiredLabelsAxesTableBordersPreserved": "PASS",
         "directFullPageToFinalCropComparison": "PASS"
       }
+    },
+    {
+      "qid": 21,
+      "sourceQuestionNo": "서술형 4",
+      "sourcePage": 4,
+      "bboxPx": [
+        610,
+        100,
+        1110,
+        480
+      ],
+      "bboxCoordinateSpace": "rendered original source-page PNG pixels, origin top-left",
+      "sourcePdfSha256": "bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e",
+      "fullPageRasterSha256": "b2c926414bfb81bc6a95056b2226641fa62372829bcf42eff55cf49ca45ea873",
+      "cropMethod": "direct pixel crop from original full-page PDF render; no redraw or retouch",
+      "assetPath": "assets/images/20_이수중_2학기_기말_중3_기출/q21-r1.png",
+      "assetSha256": "0d8a868325e1a9a9aceac4e137da6fbf4c6ba035bf731afebda6237b0a7a582c",
+      "visualChecks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "foreignChoicesIncluded": "NO",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
+        "directFullPageToFinalCropComparison": "PASS",
+        "reviewNote": "Full same-question prompt and complete rail/camera schematic are preserved; no adjacent item or answer choices."
+      }
     }
   ],
-  "examHold": [
-    "서술형 4 (qid 21): camera rail illustration crop could not be confirmed free of adjacent stem text while preserving full schematic. The source text is transcribed; image omitted; HOLD."
-  ]
+  "examHold": [],
+  "cropReviewStatus": "SOURCE_QA_READY",
+  "notes": "Only the previously held q21 schematic crop was repaired; no answer or solution fields were added."
 }
