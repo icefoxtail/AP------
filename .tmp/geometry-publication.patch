@@ -997,7 +997,8 @@ index 0000000000000000000000000000000000000000..d96b69c492f4adc565a378b841987d43
 +        10
 +      ]
 +    },
-+    {+      "id": "AT",
++    {
++      "id": "AT",
 +      "kind": "SEGMENT",
 +      "from": [
 +        0,
@@ -1996,7 +1997,8 @@ index 0000000000000000000000000000000000000000..8580d3bda0a2b5025412478a6943b34d
 +
 +    def test_idempotent_pure_rebuild(self):
 +        for f in FIXTURES.glob('*.spec.json'):
-+            spec = json.loads(f.read_text()); before = copy.deepcopy(spec)+            a, b = build(spec), build(spec)
++            spec = json.loads(f.read_text()); before = copy.deepcopy(spec)
++            a, b = build(spec), build(spec)
 +            self.assertEqual(a, b); self.assertEqual(spec, before)
 +            self.assertFalse(a['witness']['publicationAuthorized'])
 +            self.assertIn('INDEPENDENT_PUBLICATION_AUDIT', a['witness']['requiredGates'])
@@ -2995,7 +2997,8 @@ index a48bd95af883ee1f0b61b66c521e1761743de9c5..2f39bb0d5c31fcfaccc185b8d6c87649
 +                }
 +              },
 +              {
-+                "type": "object",+                "additionalProperties": false,
++                "type": "object",
++                "additionalProperties": false,
 +                "required": [
 +                  "id",
 +                  "kind",
