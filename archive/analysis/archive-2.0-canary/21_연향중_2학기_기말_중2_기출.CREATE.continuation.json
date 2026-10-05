@@ -1,0 +1,12 @@
+{
+  "stage": "CREATE",
+  "examUid": "source-only-m2-20261004/21_연향중_2학기_기말_중2_기출",
+  "inputArtifactSha": "sha256:fffe509c8af029de70032acb7d2b6e59fd451518b3ffc7b7c5d9848f89055fac",
+  "finalArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "evidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.CREATE.evidence.json",
+  "completedStep": "CREATE_FIELDS_AND_EVIDENCE_COMPLETE;_GENERIC_CREATE_V2_VALIDATOR_RAN_ONCE",
+  "firstMissingClosureStep": "CREATE_V2_VALIDATION_PASS",
+  "exactReason": "The single CREATE V2 validator run failed with COMMON_ACTUAL_ARTIFACT_SHA_MISMATCH because evidence.artifactSha was computed using SHA-256 over a Git blob header; the validator requires the canonical SHA-1 Git blob ID. Evidence artifactSha has now been corrected to the canonical gitBlobSha value, but the required one-run limit prevents confirming a PASS or consumingValidationPass in this CREATE execution.",
+  "validatorReportRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.CREATE.validation.json",
+  "validatorReportArtifactSha": "f5e991cea94571f6fcd2d6139afd7da807cdb3c8"
+}
