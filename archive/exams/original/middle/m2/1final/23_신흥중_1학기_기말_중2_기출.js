@@ -124,8 +124,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 나이를 주고받은 뒤 두 사람의 나이를 식으로 나타낸다.\n을이 갑에게 $8$세를 주면 갑은 $x+8$, 을은 $y-8$이므로\n$x+8=2(y-8)$, 즉 $x-2y=-24$이다.\n갑이 을에게 $8$세를 주면 갑은 $x-8$, 을은 $y+8$이므로\n$x-8=y+8$, 즉 $x-y=16$이다.\n따라서 $\\begin{cases}x-2y=-24\\\\x-y=16\\end{cases}$인 ①이 정답이다.",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
-    "subUnit": "연립일차방정식",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+    "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -524,8 +524,8 @@ window.questionBank = [
     "solution": "[키포인트] $y$축의 방향으로 $k$만큼 이동한 식은 $y=-3x+k$이다.\n이 그래프가 $(2,-1)$을 지나므로\n$-1=-3\\cdot2+k=-6+k$이다.\n따라서 $k=5$이므로 정답은 ⑤이다.",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -677,8 +677,8 @@ window.questionBank = [
     "choices": [],
     "answer": "151장 이상",
     "solution": "[키포인트] 회원 비용이 비회원 비용보다 작아지는 자연수 $x$를 구한다.\n(1) 사진을 $x$장 현상하면\n① 회원 비용은 $3000+100x$원이다.\n② 비회원 비용은 $120x$원이다.\n(2) 회원이 더 유리하려면 $3000+100x<120x$이어야 한다.\n$3000<20x$이므로 $x>150$이다.\n(3) 사진의 장수 $x$는 자연수이므로 $151$장 이상일 때 회원 가입이 더 유리하다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-    "subUnit": "일차부등식",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
