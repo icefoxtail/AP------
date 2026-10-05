@@ -14,7 +14,8 @@ jobs:
           fetch-depth: 0
       - name: Build bundle
         run: |
-          git bundle create geometry-base.bundle 5a20240fbc612d8e984bd11c78c304582def380f
+          git bundle create geometry-base.bundle refs/remotes/origin/codex/geometry-visual-publication-v2-20261005
+          git bundle verify geometry-base.bundle
       - uses: actions/upload-artifact@v4
         with:
           name: geometry-base-bundle
