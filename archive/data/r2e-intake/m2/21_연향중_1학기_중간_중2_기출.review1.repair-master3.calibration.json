@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REPAIR_CALIBRATION_NOTE_v1",
+  "cohort": "M2-1",
+  "lane": "M2-1 REPAIR-MASTER-3",
+  "stage": "REPAIR",
+  "originalConveyorStage": "R1",
+  "examUid": "o11",
+  "canonicalOrdinal": 11,
+  "examFile": "21_연향중_1학기_중간_중2_기출.js",
+  "targetQids": [
+    6
+  ],
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "TARGETED_REPAIR",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+      "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+    }
+  ],
+  "goldenSampleQuestionRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 1,
+      "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+      "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+      "observation": "중간식과 계산 근거가 학생이 그대로 재현할 수 있게 단계화되어 있다."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+      "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+      "observation": "핵심 개념을 먼저 명시하고 조건 대입을 짧고 명확하게 이어 간다."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "qid": 1,
+      "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+      "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다.",
+      "observation": "보기별 판정을 분리해 학생이 오개념 위치를 바로 확인할 수 있다."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+      "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다.",
+      "observation": "시각 조건을 판단 기준으로 먼저 고정한 뒤 보기별 의미를 설명한다."
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+    }
+  ],
+  "defectScope": {
+    "priorR1HandoffBlob": "b918e1155972af4c5d1b8fb860ddf243fdcf7013",
+    "priorR1RepairedArtifactBlob": "47213fd4bd8b5cecc005b729625285269911a4f4",
+    "preRepairMainArtifactBlob": "541cfa587bc8f2f4bfa112a4637793ccb12310d3",
+    "contradiction": "q6 solves to x >= -17/4; stored choices -9 and -6 were both non-solutions while stored answer was ②, so the item was not uniquely answerable.",
+    "sourceTruthState": "AUTHORITATIVE_ORIGINAL_NOT_AVAILABLE"
+  },
+  "repairDecision": {
+    "mode": "C",
+    "action": "GENERATED_REPLACEMENT_SAME_QID",
+    "qid": 6,
+    "contentChanged": false,
+    "choicesChanged": true,
+    "choiceChange": {
+      "④": {
+        "from": "$-6$",
+        "to": "$-4$"
+      }
+    },
+    "answerChanged": false,
+    "answer": "②",
+    "solutionRewritten": true,
+    "metaRevalidated": true,
+    "difficultyRevalidated": true,
+    "visual": "NOT_APPLICABLE",
+    "provenance": "REPAIR_MASTER_GENERATED_REPLACEMENT",
+    "sourceOriginalParityClaimed": false
+  },
+  "variantEngine": {
+    "contractBlob": "64f87a983a7cc466f8c6ab3115f5a0f1fdaf5797",
+    "engineSupportClaimed": false,
+    "disposition": "MANUAL_REPAIR_REPLACEMENT_OUTSIDE_CURRENT_BOUNDED_M2_VARIANT_ADAPTER",
+    "note": "Current bounded middle-school variant adapter covers M1-03 and M2-03, not this M2-02 item; no engine-generated provenance is claimed."
+  },
+  "mathRecheck": {
+    "inequality": "-(x+2) <= 3(x+5)",
+    "derivedRange": "x >= -17/4 = -4.25",
+    "finalChoices": [
+      "10",
+      "-9",
+      "7",
+      "-4",
+      "5"
+    ],
+    "uniqueNonSolution": "-9",
+    "answer": "②",
+    "result": "PASS"
+  },
+  "finalArtifactSha": "2009fc141fa6d7a8bb38627784c25e8864d17d5b",
+  "finalExamSha256": "sha256:f9d1791e4c2c2dfd4622d91d1d1fb127dbaa4947ac2533adaf568e84a8ab6aeb",
+  "latestMainAtClosure": "b9556e59500c9312981ab491f1d280634294b408",
+  "latestMainTargetBlob": "541cfa587bc8f2f4bfa112a4637793ccb12310d3",
+  "latestMainR1ValidatorBlob": "b00d2d1ca69b9f95c4c380a82754234c46f29525",
+  "latestMainCommonV2Blob": "e1e331b52e9af51e81bba8361d89ac11910e0f72",
+  "mainAdvanceOverlap": "NONE_TARGET_OR_R1_VALIDATOR"
+}
