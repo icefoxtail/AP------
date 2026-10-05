@@ -1,0 +1,1472 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examUid": "o8",
+  "canonicalInventoryOrdinal": 8,
+  "examPath": "archive/exams/original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+  "finalArtifactGitBlob": "3740558f447fde6fe020446f4e5b7e8f9e781451",
+  "examSha256": "sha256:bbc41ae187dac457094140e2b658fd5e544e1d7b9ebb299c0940dd893c89f158",
+  "questionCount": 24,
+  "sourceAuthority": {
+    "r1ReceiptGitBlob": "5890b82c83b14a4c70464747fb9a0a7e3b3aa167",
+    "r1ValidatorGitBlob": "30be59771565d0759f3df887edc9124a0f97daaa",
+    "r1EvidenceGitBlob": "2c4b11088d3fa92dc510749217ab19cef040c690",
+    "deterministicRepairQids": [
+      21,
+      22
+    ],
+    "sourceOriginalParityClaimedForRepairs": false
+  },
+  "targetedScope": {
+    "mode": "TARGETED_MINIMAL",
+    "qids": [
+      21,
+      22
+    ],
+    "reason": "R1 deterministic repair loci plus direct dependency only; whole-exam R2 re-review is forbidden by current override.",
+    "deterministicRepairQids": [],
+    "openFindingQids": [],
+    "itemHoldQids": []
+  },
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "continuationFromR3RepairDebtBlob": "838be6d64f9b3a01a23bba766532e412df52fdc7",
+    "targetedPostRepairRecheckQids": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      21,
+      24
+    ]
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "Representative current Golden solution checked before target review."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "Representative current Golden solution checked before target review."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다",
+        "observation": "Representative current Golden solution checked before target review."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는",
+        "observation": "Representative current Golden solution checked before target review."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-060",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-060"
+      ],
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-060",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-060"
+      ],
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-061",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-061"
+      ],
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR"
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-070",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-070"
+      ],
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE"
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-104",
+      "projectionDisposition": "RPM_ONLY_NO_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-104"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "M2-RPM-104 is RPM_ONLY; PT/TPL intentionally null."
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-066",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-066"
+      ],
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER"
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-064/065",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-064/065"
+      ],
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-068/069",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-068/069"
+      ],
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED"
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "Fresh R3 audit found no unresolved Meta defect; current projection retained.",
+      "rpmDisposition": "NO_NEW_DETERMINISTIC_MAPPING",
+      "projectionDisposition": "NO_UNIQUE_ACTIVE_PROJECTION",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7"
+      ],
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Fresh R3 audit found no unique ACTIVE PT/TPL projection for the null field; null intentionally retained."
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "R3_FRESH_META_AUDIT",
+      "decisiveStep": "R3 deterministic repair/readback confirmed current Meta projection.",
+      "rpmDisposition": "M2-RPM-068/069",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "R3_REPAIR_DEBT:838be6d64f9b3a01a23bba766532e412df52fdc7",
+        "M2-RPM-068/069"
+      ],
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED"
+    }
+  ],
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q1; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q1 content/choices/answer passed; stored answer ②, ④ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q1."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q1 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-REPEATING_DECIMAL; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q1 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q1; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q1 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q2; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q2 content/choices/answer passed; stored answer ① is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q2."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q2 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-REPEATING_DECIMAL; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q2 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q2; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q2 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q3; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q3 content/choices/answer passed; stored answer ⑤ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q3."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q3 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-REPEATING_DECIMAL; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q3 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q3; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q3 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q4; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q4 content/choices/answer passed; stored answer ② is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q4."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q4 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-REPEATING_DECIMAL; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q4 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q4; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q4 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q5; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q5 content/choices/answer passed; stored answer ⑤ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q5."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q5 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-REPEATING_DECIMAL; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q5 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q5; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q5 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q6; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q6 content/choices/answer passed; stored answer ④ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q6."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q6 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-REPEATING_DECIMAL; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q6 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q6; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q6 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q7; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q7 content/choices/answer passed; stored answer ② is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q7."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q7 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-EXPONENT_LAW; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q7 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q7; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q7 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q8; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q8 content/choices/answer passed; stored answer ① is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q8."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q8 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-EXPONENT_LAW; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q8 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q8; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q8 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q9; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q9 content/choices/answer passed; stored answer ② is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q9."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q9 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-POLYNOMIAL_OPERATIONS; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q9 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q9; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q9 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q10; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q10 content/choices/answer passed; stored answer ③ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q10."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q10 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-POLYNOMIAL_OPERATIONS; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q10 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q10; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q10 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q11; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q11 content/choices/answer passed; stored answer ② is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q11."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q11 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q11 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q11; current PT=PT_ISOSCELES_TRIANGLE, TPL=TPL_ISOSCELES_BASE_ANGLES."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q11 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q12; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q12 content/choices/answer passed; stored answer ② is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q12."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q12 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q12 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q12; current PT=PT_ISOSCELES_TRIANGLE, TPL=TPL_ISOSCELES_BASE_ANGLES."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q12 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q13; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q13 content/choices/answer passed; stored answer ④ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q13."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q13 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q13 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q13; current PT=PT_ISOSCELES_TRIANGLE, TPL=TPL_ISOSCELES_VERTEX_BISECTOR."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q13 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q14; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q14 content/choices/answer passed; stored answer ② is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Post-repair R3 recheck of q14 solution derivation passed against the preserved answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 pinpoint repair made q14 derivation self-contained for small-board reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q14 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q14; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q14 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q15; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q15 content/choices/answer passed; stored answer ③ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q15."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q15 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q15 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q15; current PT=PT_RIGHT_TRIANGLE_CONGRUENCE, TPL=TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q15 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q16; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q16 content/choices/answer passed; stored answer ③ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q16."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q16 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-07/M2-07-PYTHAGOREAN_THEOREM; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q16 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q16; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q16 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q17; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q17 content/choices/answer passed; stored answer ③ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q17."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q17 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-07/M2-07-PYTHAGOREAN_APPLICATION; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q17 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q17; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 하 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q17 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q18; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q18 content/choices/answer passed; stored answer ④ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Post-repair R3 recheck of q18 solution derivation passed against the preserved answer."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R3 pinpoint repair made q18 derivation self-contained for small-board reproduction."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q18 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q18; current PT=PT_TRIANGLE_CENTERS, TPL=TPL_TRIANGLE_INCENTER."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q18 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q19; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q19 content/choices/answer passed; stored answer ⑤ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q19."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q19 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q19 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q19; current PT=PT_TRIANGLE_CENTERS, TPL=TPL_TRIANGLE_CIRCUMCENTER."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q19 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q20; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q20 content/choices/answer passed; stored answer ⑤ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q20."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q20 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q20 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q20; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q20 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q21; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q21 content/choices/answer passed; stored answer ④ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q21."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q21 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q21 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q21; current PT=PT_TRIANGLE_CENTERS, TPL=TPL_TRIANGLE_CENTERS_COMBINED."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 상 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q21 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q22; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q22 content/choices/answer passed; stored answer $0.1\\dot{4}$ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q22."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q22 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-REPEATING_DECIMAL; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q22 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q22; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q22 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q23; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q23 content/choices/answer passed; stored answer 10 is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q23."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q23 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-01/M2-01-POLYNOMIAL_OPERATIONS; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q23 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q23; current PT=null, TPL=null."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 중 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q23 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Fresh R3 final-artifact readback q24; sourceRepairRequired=false and no unresolved source-truth finding remains."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 mathematical check of q24 content/choices/answer passed; stored answer $153\\pi$ is consistent."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh R3 solution-to-answer consistency check passed for q24."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Fresh R3 readback found the q24 explanation sufficiently ordered and reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "Fresh R3 curriculum check passed for M2-05/M2-05-TRIANGLE_PROPERTIES; no out-of-scope method detected."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "q24 has no linked solutionImage; current text/formula solution is self-contained and no mandatory auxiliary visual was found."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh R3 Meta readback passed for q24; current PT=PT_TRIANGLE_CENTERS, TPL=TPL_TRIANGLE_CENTERS_COMBINED."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Stored difficulty 상 retained after fresh R3 review; no deterministic difficulty defect opened."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Final artifact f829ec4f4ed06e3bb56e590de62bcec837eba0de remote-readback exact; q24 runtime text/TeX inspection found no blocking string defect."
+      },
+      "verdict": "PASS",
+      "sourceMode": "R3_FRESH_FINAL_ARTIFACT_AUDIT"
+    }
+  ],
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "targetedRecheckCount": 10,
+    "targetedRecheckQids": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      21,
+      24
+    ],
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 10,
+    "deterministicRepairQids": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      21,
+      24
+    ]
+  }
+}
