@@ -27,7 +27,11 @@
     "kind": "EXECUTION_PATH_BLOCKED",
     "detail": "GitHub pull-request creation was blocked before side effect by the connected write safety gate; no workflow-dispatch action is exposed by the current GitHub connector, so no actual canonical validator run was generated.",
     "retryReviewRequired": false,
-    "exactContinuationAllowed": true
+    "exactContinuationAllowed": true,
+    "alternatePathAttempt": "Existing o30 CREATE PR #207 was tested as validator transport: exact R1 evidence was copied to its head, but the owner-only /archive-stage-validate issue-comment side effect was also blocked before creation. Therefore no canonical R1 Actions run exists.",
+    "transportBranch": "work/middle/m2/23-hyangrim-1final-temp-create4-20261004-1436",
+    "transportEvidenceStatus": "BRANCH_ONLY_NO_R1_CLAIM_NO_VALIDATOR_RUN_NON_BLOCKING",
+    "cleanupNote": "Delete side effect for the transport copy was blocked; per selector contract this claim-less stale branch-only evidence is not blocking authority."
   },
   "mainAtClaim": "4572a0873e052a2554b269dccebf84643886e620",
   "latestMainAtRelinquish": "bae7e4b6b50b6967c497c79f50c0f401d5f3c54b",
