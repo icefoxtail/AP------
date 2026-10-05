@@ -43,9 +43,14 @@ export function validateCreateEvidence({
       continue;
     }
 
-    const axes = Array.isArray(row?.axisEvidence) ? row.axisEvidence : [];
-    if (axes.length !== 4 || axes.some(value => !has(value))) {
+    const axes = row?.axisEvidence;
+    const requiredAxes = ['questionLayout', 'solutionLayout', 'meta', 'visualSvg'];
+    if (!axes || typeof axes !== 'object' || Array.isArray(axes)) {
       issues.push('CREATE_AXIS_EVIDENCE_REQUIRED:q' + qid);
+    } else {
+      for (const axis of requiredAxes) {
+        if (!has(axes[axis])) issues.push('CREATE_AXIS_EVIDENCE_REQUIRED:' + axis + ':q' + qid);
+      }
     }
 
     const provenance = row?.provenanceEvidence || {};

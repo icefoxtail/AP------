@@ -186,7 +186,12 @@ const createBase = {
   rows: [{
     qid: 1,
     sourceMode: 'ORIGINAL',
-    axisEvidence: ['question-layout', 'solution-layout', 'meta', 'visual'],
+    axisEvidence: {
+      questionLayout: 'bound',
+      solutionLayout: 'bound',
+      meta: 'bound',
+      visualSvg: 'bound',
+    },
     provenanceEvidence: { sourceParity: 'bound' },
   }],
 };
@@ -205,8 +210,12 @@ function runCreate(evidence) {
 assert.equal(runCreate(createBase).ok, true);
 
 const createMissingAxis = structuredClone(createBase);
-createMissingAxis.rows[0].axisEvidence = ['question-layout', 'solution-layout', 'meta'];
+delete createMissingAxis.rows[0].axisEvidence.visualSvg;
 assert.equal(runCreate(createMissingAxis).ok, false);
+
+const createUnnamedAxes = structuredClone(createBase);
+createUnnamedAxes.rows[0].axisEvidence = { a: 'bound', b: 'bound', c: 'bound', d: 'bound' };
+assert.equal(runCreate(createUnnamedAxes).ok, false);
 
 const createAuditedMissing = structuredClone(createBase);
 createAuditedMissing.rows[0].sourceMode = 'AUDITED_REPAIR';
