@@ -27,7 +27,7 @@
     "provenance"
   ],
   "answerSolutionMetaProductionChanges": "NONE; all candidate answer/solution fields are blank. No production files modified.",
-  "status": "SOURCE_QA_HOLD_ITEMS",
+  "status": "SOURCE_QA_READY",
   "questions": [
     {
       "qid": 1,
@@ -76,8 +76,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Crop includes clipped stem text at the left and upper edges around the diagram."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 6,
@@ -394,38 +394,6 @@
       "supersededSourceCrop": {
         "assetPath": "assets/images/20_연향중_2학기_기말_중3_기출/q04.png",
         "assetSha256": "ec8793fd7e2de2e2c3947ce247d2d6dfd26719c30f3be5674272eb9d7029ed1b"
-      }
-    },
-    {
-      "qid": 5,
-      "sourcePage": 1,
-      "bboxPx": [
-        1080,
-        300,
-        1310,
-        550
-      ],
-      "bboxCoordinateSpace": "rendered source-page PNG pixels, origin top-left",
-      "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
-      "fullPageRasterSha256": "f85ade7d61a9223b35930f49cbd9b90afd23130f4db567db350ad2639d0900bf",
-      "cropMethod": "direct pixel crop from original PDF full-page render; no redraw or reconstruction",
-      "assetPath": "assets/images/20_연향중_2학기_기말_중3_기출/q05.png",
-      "assetSha256": "4cea4d4dc3a30f6f9feb29df63c8ffe5495fc593589984084f34c43250d7bccd",
-      "pixelSize": [
-        310,
-        320
-      ],
-      "visualChecks": {
-        "questionMeaningMatch": "PASS_WITH_CROP_HOLD",
-        "cropPurity": "HOLD_CROP_REVIEW",
-        "otherQuestionIncluded": "NO",
-        "choicesIncluded": "REVIEW_REQUIRED",
-        "pageDecorationIncluded": "NO",
-        "clipping": "YES",
-        "requiredLabelsAxesTableBordersPreserved": "REVIEW_REQUIRED",
-        "directFullPageToFinalCropComparison": "PASS",
-        "sameQuestionTextFragmentIncluded": "YES",
-        "reviewNote": "Crop includes clipped stem text at the left and upper edges around the diagram."
       }
     },
     {
@@ -761,11 +729,42 @@
         "assetPath": "assets/images/20_연향중_2학기_기말_중3_기출/q23.png",
         "assetSha256": "fa1d2283bd144b098a313fa788f107cbbcd58e8d888987bff6d47a12ca0faecb"
       }
+    },
+    {
+      "qid": 5,
+      "sourceQuestionNo": "5",
+      "sourcePage": 1,
+      "bboxPx": [
+        3220,
+        2545,
+        3720,
+        3000
+      ],
+      "bboxCoordinateSpace": "400-dpi rendered original PDF page PNG pixels, origin top-left",
+      "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+      "fullPageRasterSha256": "6e8eae411d571f57779ae410d88a7bce40666f42ae6ac33ed995ab3ee459b593",
+      "renderDpi": 400,
+      "assetPath": "assets/images/20_연향중_2학기_기말_중3_기출/q05-hires-r1.png",
+      "assetSha256": "2c7d4f04db920553aa4eb71815312ea5786cf5d50ca9b2868ac4535e152a3334",
+      "cropMethod": "direct pixel crop from high-resolution original PDF full-page render; no redraw or retouch",
+      "supersededSourceCrop": {
+        "assetPath": "assets/images/20_연향중_2학기_기말_중3_기출/q05.png",
+        "assetSha256": "4cea4d4dc3a30f6f9feb29df63c8ffe5495fc593589984084f34c43250d7bccd"
+      },
+      "visualChecks": {
+        "questionMeaningMatch": "PASS",
+        "cropPurity": "PASS",
+        "otherQuestionIncluded": "NO",
+        "foreignChoicesIncluded": "NO",
+        "pageDecorationIncluded": "NO",
+        "clipping": "NO",
+        "requiredLabelsAxesTableBordersPreserved": "PASS",
+        "directFullPageToFinalCropComparison": "PASS",
+        "reviewNote": "Diagram only; all vertices, chords, angle values, equal-length marks and 3 cm label are present."
+      }
     }
   ],
-  "examHold": [
-    "q5: Crop includes clipped stem text at the left and upper edges around the diagram."
-  ],
-  "cropReviewStatus": "SOURCE_QA_HOLD_ITEMS",
-  "notes": "Targeted repairs were made only for previously held crop items. q5 remains held because current source geometry places its essential figure labels at the crop edge alongside prompt/page boundary; no source pixels were reconstructed."
+  "examHold": [],
+  "cropReviewStatus": "SOURCE_QA_READY",
+  "notes": "q5 was recropped directly from a 400-dpi source-page render to exclude the clipped stem and page boundary while retaining the complete diagram."
 }

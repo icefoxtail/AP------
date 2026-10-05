@@ -88,7 +88,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q05.png"
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q05-hires-r1.png"
   },
   {
     "id": 6,
