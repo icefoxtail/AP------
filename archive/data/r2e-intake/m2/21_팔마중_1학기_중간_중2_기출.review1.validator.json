@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M2_R1_VALIDATOR_RECEIPT_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_04",
+  "stage": "R1",
+  "examUid": "o9",
+  "canonicalOrdinal": 9,
+  "examFilename": "21_팔마중_1학기_중간_중2_기출.js",
+  "finalArtifactSha": "eda74041cb7e65817b57ccca2a798faf9618a53e",
+  "physicalEvidenceGitBlob": "ba2134a7ff32a8f9ac76a27387dfdbe91f0de451",
+  "stageEvidenceGitBlob": "0d4bc0a80b8a89bad29cf6adb6ec43b458e391e9",
+  "validatorAuthorityMainSha": "32102c5e4f6016ed8ff3d4e85b367e084aa5814b",
+  "authorityCodeParity": {
+    "physicalGate": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "stageValidator": "455ad1ec7210e34e2724cc801a9b642f701678c9",
+    "commonV2": "e1e331b52e9af51e81bba8361d89ac11910e0f72",
+    "r1V2": "b00d2d1ca69b9f95c4c380a82754234c46f29525"
+  },
+  "actualValidation": {
+    "mode": "GITHUB_ACTIONS_CURRENT_CANONICAL_R1_PHYSICAL_AND_R1_V2",
+    "pullRequest": 283,
+    "validationHead": "79eba6e60d570fddd2f0a01138e2bd412c1796f6",
+    "runId": 37276984804,
+    "jobId": 111656066432,
+    "overallWorkflowConclusion": "failure",
+    "physicalGate": {
+      "ok": true,
+      "disposition": "PASS",
+      "questionCount": 24,
+      "questionEvidenceRows": 24,
+      "itemHoldCount": 0,
+      "itemHoldQids": [],
+      "issues": []
+    },
+    "stageGate": {
+      "ok": true,
+      "validatorMode": "R1_V2",
+      "denominator": 24,
+      "rowCount": 24,
+      "disposition": "PASS",
+      "commonValid": true,
+      "issues": []
+    },
+    "nonTargetFailures": [
+      {
+        "test": "tests/m2-o9-create-gate-thanos1-v2.test.js",
+        "reason": "STALE_LOWER_STAGE_CREATE_EVIDENCE_EXAM_SHA_MISMATCH_AFTER_R1_ARTIFACT_MUTATION"
+      },
+      {
+        "test": "tests/apmath-student-teacher-preview.test.js",
+        "reason": "UNRELATED_GLOBAL_APMATH_TEST_FAILURE"
+      }
+    ]
+  },
+  "targetGate": "PASS",
+  "safeToCloseR1": true,
+  "itemHoldCount": 0,
+  "issues": []
+}
