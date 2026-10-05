@@ -1,24 +1,76 @@
-name: Temporary geometry bundle export
+name: Apply geometry publication commit
 on:
   push:
     branches: ['tmp/geometry-publication-bundle-export-20261005']
 permissions:
-  contents: read
+  contents: write
 jobs:
-  export:
+  apply:
     runs-on: ubuntu-latest
     steps:
-      - name: Sparse clone target branch
-        run: |
-          git clone --filter=blob:none --sparse --depth=1 --single-branch --branch codex/geometry-visual-publication-v2-20261005 https://github.com/icefoxtail/AP------.git mini
-          cd mini
-          git sparse-checkout set archive/tools/geometry-equation .github/workflows
-          test "$(git rev-parse HEAD)" = "5a20240fbc612d8e984bd11c78c304582def380f"
-          git status --short --branch
-          cd ..
-          tar -czf geometry-sparse-worktree.tgz mini
-      - uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v4
         with:
-          name: geometry-sparse-worktree
-          path: geometry-sparse-worktree.tgz
-          retention-days: 1
+          fetch-depth: 0
+      - name: Apply exact local patch and push target branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp .tmp/geometry-publication.patch /tmp/geometry-publication.patch
+          git fetch origin codex/geometry-visual-publication-v2-20261005
+          git checkout -B codex/geometry-visual-publication-v2-20261005 origin/codex/geometry-visual-publication-v2-20261005
+          test "$(git rev-parse HEAD)" = "5a20240fbc612d8e984bd11c78c304582def380f"
+          git apply /tmp/geometry-publication.patch
+          mapfile -t expected <<'EOF'
+archive/tools/geometry-equation/PUBLICATION_PROFILE.md
+archive/tools/geometry-equation/audit_publication.py
+archive/tools/geometry-equation/record-visual-browser-evidence.mjs
+archive/tools/geometry-equation/tests/build_publication_fixtures.py
+archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.review.json
+archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.solution.txt
+archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.source.txt
+archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.spec.json
+archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.review.json
+archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.solution.txt
+archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.source.txt
+archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.spec.json
+archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.review.json
+archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.solution.txt
+archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.source.txt
+archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.spec.json
+archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.review.json
+archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.solution.txt
+archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.source.txt
+archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.spec.json
+archive/tools/geometry-equation/tests/publication-fixtures/region-leader.review.json
+archive/tools/geometry-equation/tests/publication-fixtures/region-leader.solution.txt
+archive/tools/geometry-equation/tests/publication-fixtures/region-leader.source.txt
+archive/tools/geometry-equation/tests/publication-fixtures/region-leader.spec.json
+archive/tools/geometry-equation/tests/publication-layout.test.mjs
+archive/tools/geometry-equation/tests/run-publication-archive.mjs
+archive/tools/geometry-equation/tests/run-publication-browser.mjs
+archive/tools/geometry-equation/tests/test_publication.py
+archive/tools/geometry-equation/verify-rendered-layout.mjs
+archive/tools/geometry-equation/visual-browser-runtime.mjs
+archive/tools/geometry-equation/visual_engine/engine.py
+archive/tools/geometry-equation/visual_engine/label_layout.py
+archive/tools/geometry-equation/visual_engine/past_exam_adapter.py
+archive/tools/geometry-equation/visual_engine/publication.py
+archive/tools/geometry-equation/visual_engine/semantic_model.py
+archive/tools/geometry-equation/visual_engine/svg_composer.py
+archive/tools/geometry-equation/visual_engine/visual_spec.schema.json
+EOF
+          printf '%s\n' "${expected[@]}" | sort > /tmp/expected
+          git diff --name-only | sort > /tmp/actual
+          diff -u /tmp/expected /tmp/actual
+          git add -- "${expected[@]}"
+          test "$(git diff --cached --name-only | wc -l)" -eq 37
+          test -z "$(git diff --name-only)"
+          test -z "$(git ls-files --others --exclude-standard)"
+          git config user.name "ChatGPT"
+          git config user.email "chatgpt@openai.com"
+          git commit -m "feat(geometry): upgrade publication visual engine and independent audit"
+          git push origin HEAD:codex/geometry-visual-publication-v2-20261005
+          local_sha="$(git rev-parse HEAD)"
+          remote_sha="$(git ls-remote origin refs/heads/codex/geometry-visual-publication-v2-20261005 | cut -f1)"
+          test "$local_sha" = "$remote_sha"
+          echo "COMMIT_SHA=$local_sha" >> "$GITHUB_ENV"
