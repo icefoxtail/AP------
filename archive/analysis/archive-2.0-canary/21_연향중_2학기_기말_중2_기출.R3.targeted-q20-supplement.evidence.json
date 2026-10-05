@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "source-only-m2-20261004/21_연향중_2학기_기말_중2_기출",
+  "artifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "inputArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "finalArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "evidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R3.targeted-q20-supplement.evidence.json",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      20
+    ],
+    "directDependencyQids": [
+      20
+    ],
+    "rationale": "R3 supplement for the assigned q20 asset-crop change and its direct JS image linkage only; historical R3 PASS is preserved and whole-exam review is not repeated."
+  },
+  "rows": [
+    {
+      "qid": 20,
+      "verdict": "PASS",
+      "disposition": "TARGETED_CHANGED_ASSET_AND_DIRECT_DEPENDENCY",
+      "evidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R1.axes-supplement.evidence.json",
+      "evidenceSha256": "3d8d2035c6bd510e5e4a490d87cda7dba88a260cfdff593b2765b19af8f72839",
+      "checks": {
+        "contentIntegrity": "PASS",
+        "layout": "PASS",
+        "imageLinkage": "PASS",
+        "lockedScopeIntegrity": "PASS",
+        "releaseIntegrity": "PASS"
+      },
+      "asset": {
+        "path": "archive/assets/images/21_연향중_2학기_기말_중2_기출/q20.png",
+        "sha256": "4b49b6950224ceb73314cc122fcc40425b40ba5c5d7f217a8198b8977f0e12eb",
+        "gitBlobSha": "c46ea216addf668b8dd492ee1058e5a083f0de89",
+        "content": "Image contains triangle ABC, labels AB=12, AC=5, BC=13, and altitude AH; duplicated prose has been removed.",
+        "linkage": "The unchanged q20 image field in the bound source-only JS resolves to this archive-relative asset path."
+      }
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "lockedScopeBasis": "The assigned source-only exam remains at Git blob d0dc3efa842166431ac80ffebec01c25aca94772; the review is limited to q20 and its direct image dependency.",
+  "releaseIntegrity": true,
+  "releaseIntegrityBasis": "The q20 crop SHA256 and Git blob match the R1 supplemental record; that record binds the unchanged exam artifact and q20 image linkage. Historical R3 PASS remains preserved; no other exam or source artifact is included.",
+  "sourceRepair": false,
+  "result": "PASS"
+}
