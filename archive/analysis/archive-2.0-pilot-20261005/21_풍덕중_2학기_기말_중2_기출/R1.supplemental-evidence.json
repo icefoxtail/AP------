@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "archive-r1-supplemental-evidence-v1",
+  "examUid": "21_풍덕중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "scope": "q15,q17 current student input; q22 changed solution-image direct dependency render",
+  "sourceArtifact": "archive/_generated/source-only/m2-20261004/21_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha1AtFreeze": "24796887c0d92c693256654ec9e0e84d62c5a9a8",
+  "studentInputProjectionSha256": {
+    "q15": "2fda4f1b13568e810fde6e93e2bb5f0e9b1e84690522acb42ddcdadead8d52d1",
+    "q17": "428d12fa6ca469aa544e68ac0fea631e1147b7c5bb891204957c0bda5680c36c"
+  },
+  "priorCoverage": "Composite review retains valid prior math freeze/evidence for 22 qids and the recorded q23 original freeze/adjudication. q15/q17 old freezes are invalid for current student bodies. This artifact supplies only the two current-input supplements and the q22 direct visual render; it does not claim 24 fresh independent solves or a full 24-qid re-review.",
+  "q15": {
+    "answerReview": {
+      "independentAnswer": "4가지 / ④",
+      "freezeRef": "R1.current-input-independent-supplement-freeze.json#q15",
+      "storedAnswerAfterFreeze": "④",
+      "comparison": "MATCH",
+      "reasoning": "For two throws with ordered outcomes (m,n), the intersection x-coordinate is m-n. The condition m-n=2 gives (3,1),(4,2),(5,3),(6,4): four outcomes."
+    },
+    "questionLayout": {
+      "status": "PASS",
+      "evidence": "Current body asks for an ordered two-throw outcome count and shows five one-per-line count choices; layoutTag=grid, wide=false. No figure/table or special placement is needed."
+    },
+    "solutionLayout": {
+      "status": "PASS",
+      "evidence": "Rendered the current final exam source in archive/engine.html solution mode over project-local HTTP (temporary engine data fixture blob equals the final source blob). Actual viewport review showed q15 prompt, answer ④ and the complete derivation/ordered pairs in one readable solution box; no clipping or overflow."
+    },
+    "meta": {
+      "status": "PASS",
+      "observed": {
+        "questionType": "객관식",
+        "tags": [
+          "확률"
+        ],
+        "level": "중",
+        "category": "확률",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "primaryMethod": "두 주사위 결과의 차가 2인 순서쌍 세기",
+        "integrationPattern": "NONE"
+      },
+      "evidence": "Values read from current q15 object after the independent answer freeze; the existing null advanced projection fields are consistent with RPM_ONLY compatibility projection."
+    },
+    "visualSvg": {
+      "status": "NO_VISUAL_REQUIRED",
+      "evidence": "The condition and decisive comparison are symbolic/algebraic; no source diagram or solution SVG is needed. This is an independent necessity finding."
+    }
+  },
+  "q17": {
+    "answerReview": {
+      "initialFrozenAnswer": "12/20 = 3/5; no listed option",
+      "initialFreezeDisposition": "PRESERVED_FAILED_CALCULATION_ATTEMPT; never overwritten",
+      "postFreezeTargetedAdjudicationRef": "R1.q17-path-adjudication.json",
+      "correctedIndependentConclusion": "12/19 = ③",
+      "storedAnswerAfterFreeze": "③",
+      "comparison": "MATCH_AFTER_POST_FREEZE_TOPOLOGY_ADJUDICATION",
+      "reasoning": "The actual diagram omits the bottom-left vertical edge and lower-left horizontal road, so the bottom-left grid node is absent. Dynamic path counts by rows are 1,1,1,1; 1,2,3,4; 1,3,6,10; then (absent),3,9,19. Six routes reach P and two continue from P to B, giving 12/19."
+    },
+    "questionLayout": {
+      "status": "PASS",
+      "evidence": "Current content, five probability choices, image reference and layoutTag=grid/wide=false were verified. The actual referenced q17 PNG was opened before the initial freeze, and enlarged for edge inspection. The absent lower-left road and P intersection are visible."
+    },
+    "solutionLayout": {
+      "status": "PASS",
+      "evidence": "Rendered the current final exam source in archive/engine.html solution mode over project-local HTTP (temporary engine data fixture blob equals the final source blob). Actual viewport review showed q17 prompt, answer ③ and all four row-count lines plus 12/19 conclusion in one readable solution box; no clipping or overflow. The solution view intentionally contains no duplicate prompt PNG; the prompt asset itself was opened for the independent topology review."
+    },
+    "meta": {
+      "status": "PASS_AFTER_MINIMAL_REPAIR",
+      "observed": {
+        "questionType": "객관식",
+        "tags": [
+          "확률"
+        ],
+        "level": "상",
+        "category": "확률",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPath": {
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "도형·경로",
+          "l4": "최단경로"
+        },
+        "primaryMethod": "최단경로 전체 수와 P를 통과하는 경로 수 비교",
+        "integrationPattern": "NONE"
+      },
+      "evidence": "Current q17 asks only for shortest-path probability and its decisive method is path counting. The current tag '일차방정식' has no corresponding role in the body, solution or RPM path; assess as stale source-replacement metadata. All other observed fields are consistent.",
+      "repair": {
+        "field": "tags",
+        "before": [
+          "확률",
+          "일차방정식"
+        ],
+        "after": [
+          "확률"
+        ],
+        "reason": "The current shortest-path probability question and solution use no linear-equation method; removed the stale tag after source replacement.",
+        "changedQid": 17,
+        "requiresTargetedR3": true
+      }
+    },
+    "visualSvg": {
+      "status": "PROBLEM_IMAGE_REQUIRED_AND_OPENED; NO_SOLUTION_SVG_REQUIRED",
+      "evidence": "The actual prompt PNG is required to identify the road graph and missing lower-left connection; it was opened. The student solution's row-count recurrence adequately communicates the counting; an additional solution SVG is not necessary."
+    }
+  },
+  "q22DirectDependency": {
+    "locus": "solutionImage SVG browser rendering only; math values were not recomputed",
+    "asset": "archive/assets/images/21_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+    "assetSha256": "4201EC26915F8D3F60BA749B54A277CABAD55A9FB79C75A2423E5BA8CD988ECF",
+    "priorEvidence": "R1.q22-coordinate-evidence.json records coordinate verification 5/5 and numeric area 2; ImageMagick view is recorded in R1.q22-visual-calibration.json.",
+    "browserRender": {
+      "status": "PASS",
+      "environment": "project-local HTTP on existing server 127.0.0.1:8810",
+      "url": "http://127.0.0.1:8810/archive/assets/images/21_%ED%92%8D%EB%8D%95%EC%A4%91_2%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EC%A4%912_%EA%B8%B0%EC%B6%9C/q22-solution.svg",
+      "browserTitle": "세 직선의 교점과 삼각형 넓이",
+      "renderedObservedText": [
+        "P (0, −2)",
+        "Q (2, 0)",
+        "R (2, 2)",
+        "y = 2x − 2",
+        "y = x − 2",
+        "x = 2",
+        "넓이 = ½ × 2 × 2 = 2"
+      ],
+      "visualObservation": "Actual browser screenshot shows the three labelled lines, P/Q/R points, shaded triangle, base/height guides both labelled 2, and area expression. Rendered SVG is legible at the visible viewport. This was an actual HTTP-served browser render; no local-file URI was used."
+    }
+  },
+  "sourceGitBlobSha1Final": "bb1135038c4d854e95834786cf0decbefa934c2d",
+  "changedLocus": {
+    "qid": 17,
+    "fields": [
+      "tags"
+    ],
+    "directDependencies": [
+      "q17 Meta evidence",
+      "R1 current composite evidence",
+      "source artifact final SHA"
+    ],
+    "targetedR3": {
+      "required": true,
+      "scope": "q17 tags only"
+    }
+  },
+  "engineRender": {
+    "engine": "archive/engine.html",
+    "dataFixture": "archive/exams/test-fixtures/_temp_pungdeok_r1_render.js",
+    "dataFixtureGitBlobSha1": "bb1135038c4d854e95834786cf0decbefa934c2d",
+    "mode": "sol",
+    "qpp": 1,
+    "origin": "http://127.0.0.1:8810",
+    "observedQids": [
+      15,
+      17,
+      22
+    ],
+    "note": "The original source-only artifact remained authoritative; the fixture was a task-owned byte-identical copy used only to load it through the engine URL contract."
+  }
+}

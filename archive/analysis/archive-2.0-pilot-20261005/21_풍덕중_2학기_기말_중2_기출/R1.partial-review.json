@@ -2,15 +2,17 @@
   "schemaVersion": "JS_ARCHIVE_R1_PARTIAL_REVIEW_v1",
   "examUid": "source-only-m2-20261004/21_풍덕중_2학기_기말_중2_기출",
   "stage": "R1",
-  "result": "PARTIAL_SOURCE_REPAIR_COMPLETE",
-  "closureStatus": "OPEN",
+  "result": "R1_SUPPLEMENT_COMPLETE_PENDING_V2_VALIDATION",
+  "closureStatus": "R1_V2_PASS_CONSUMED_R2_ELIGIBLE",
   "sourceArtifact": {
     "path": "archive/_generated/source-only/m2-20261004/21_풍덕중_2학기_기말_중2_기출.js",
-    "sourceSha256": "7df3ed7fd7df4f50495e27e10a7d0840aaa36c86cbc3dbc17683d0429a855df8",
-    "workingTreeRawGitBlobSha1": "24796887c0d92c693256654ec9e0e84d62c5a9a8",
+    "sourceSha256": "69f23a51bd8112f7989dc6ed731217594e5bd66cb89b5cb21958208785ad8f8b",
+    "workingTreeRawGitBlobSha1": "bb1135038c4d854e95834786cf0decbefa934c2d",
     "providedPreRepairGitBlobSha1": "a2f5550203f44b37386a2ae825d5469a9a2c8c44",
     "studentInputRef": "R1.post-source-repair-student-input.json",
-    "studentInputSha256": "373013e6516f92e0dc9879ac7310817dba738b89404ad2aa5336118f9b2ead53"
+    "studentInputSha256": "373013e6516f92e0dc9879ac7310817dba738b89404ad2aa5336118f9b2ead53",
+    "finalSourceGitBlobSha1": "bb1135038c4d854e95834786cf0decbefa934c2d",
+    "currentSupplementRef": "R1.supplemental-evidence.json"
   },
   "denominator": 24,
   "originalIndependentFreezeRef": "R1.independent-freeze.json",
@@ -23,7 +25,15 @@
       15,
       17
     ],
-    "applicableQids": []
+    "applicableQids": [],
+    "originalRecordPreserved": true,
+    "originalFreezeCurrentQidStatus": {
+      "q15": "INVALID_FOR_CURRENT_STUDENT_BODY",
+      "q17": "INVALID_FOR_CURRENT_STUDENT_BODY"
+    },
+    "currentInputSupplementRef": "R1.current-input-independent-supplement-freeze.json",
+    "q15": "CURRENT_FREEZE_VALID_MATCH",
+    "q17": "ORIGINAL_CURRENT_FREEZE_12_20_PRESERVED; POST_FREEZE_TOPOLOGY_ADJUDICATION_12_19_MATCH"
   },
   "sourceRepairRef": "R1.source-repair-provenance.json",
   "postSourceRepairMathRef": "R1.post-source-repair-math.json",
@@ -144,39 +154,26 @@
     },
     "staticRenderReviewed": true,
     "browserRenderStatus": "BLOCKED_SECURITY_POLICY_LOCAL_FILE_URL",
-    "svgFinalStatus": "RENDER_PENDING"
+    "svgFinalStatus": "RENDER_PENDING",
+    "status": "PASS",
+    "browserRender": "PASS",
+    "renderEvidenceRef": "R1.supplemental-evidence.json#q22DirectDependency",
+    "coordinateParity": "5/5 (existing evidence retained)",
+    "imageMagickView": "PASS (existing record retained)",
+    "actualEngineRender": "PASS; embedded q22 solutionImage visible on current solution page via local HTTP engine"
   },
   "axisReviewCount": {
     "QUESTION_LAYOUT": "24/24",
-    "SOLUTION_LAYOUT": "24/24 reviewed with q15/q17 stale final render noted",
-    "META": "24/24 runtime values captured/current lookup performed for q15/q17",
-    "VISUAL_SVG": "24/24 need decisions; q22 visual added with browser pending"
+    "SOLUTION_LAYOUT": "24/24; q15/q17 current final-source engine render PASS",
+    "META": "24/24; q17 tag corrected and bound to final source",
+    "VISUAL_SVG": "24/24 necessity/review; q22 actual engine/browser render PASS"
   },
   "openFindings": [
     {
-      "qid": 15,
-      "code": "CURRENT_INDEPENDENT_FREEZE_REQUIRED",
-      "reason": "Source text/choices changed after original freeze; q15 current body has no clean independent freeze."
-    },
-    {
       "qid": 17,
-      "code": "CURRENT_INDEPENDENT_FREEZE_REQUIRED",
-      "reason": "Source text/choices changed after original freeze; q17 current body has no clean independent freeze."
-    },
-    {
-      "qid": 15,
-      "code": "SOLUTION_RENDER_STALE_AFTER_SOURCE_REPAIR",
-      "reason": "Previous CREATE solution page shows the corrupted q15 body; current source-backed replacement solution has not been rendered in the Archive engine."
-    },
-    {
-      "qid": 17,
-      "code": "SOLUTION_RENDER_STALE_AFTER_SOURCE_REPAIR",
-      "reason": "Previous CREATE page shows the corrupted q17 student body; current final pair has not been rendered in the Archive engine."
-    },
-    {
-      "qid": 22,
-      "code": "SOLUTION_VISUAL_BROWSER_RENDER_PENDING",
-      "reason": "SVG XML/coordinate parity and static render pass; local file URL browser open was rejected by browser security policy, so no browser PASS is claimed."
+      "code": "TARGETED_R3_REVIEW_REQUIRED",
+      "reason": "q17 tags changed [확률, 일차방정식]→[확률]; targeted R3 review remains ROOT-routed.",
+      "status": "REQUESTED_TO_ROOT"
     }
   ],
   "rows": [
@@ -1211,8 +1208,8 @@
         "visualSource": null
       },
       "solutionLayout": {
-        "status": "RENDER_STALE_AFTER_SOURCE_REPAIR",
-        "evidence": "CREATE solution pages 3 render against the previous corrupted student bodies; current final solution-page render is stale and must be refreshed."
+        "status": "PASS",
+        "evidence": "Current final-source question 15 and solution rendered in archive/engine.html solution mode over project-local HTTP. On-screen solution box showed [정답] ④, x=m−n, and all four ordered pairs without clipping."
       },
       "meta": {
         "qid": 15,
@@ -1263,21 +1260,13 @@
       "answerReview": {
         "qid": 15,
         "independentAnswerFrozenBeforeStoredAnswer": true,
-        "independentAnswerFromOriginalFreeze": {
-          "choiceIndex": 2,
-          "choiceText": "주사위 1개를 던질 때 홀수 또는 짝수가 나올 확률"
-        },
-        "freezeInputSha256": "15ceb74b00c28d2b3138d68f4a45d957ec1356c68b5e61c57041c8e53703db72",
-        "freezeValidForCurrentStudentInput": false,
+        "independentAnswer": "4가지 / ④",
+        "currentInputFreezeRef": "R1.current-input-independent-supplement-freeze.json#q15",
+        "freezeInputSha256": "2fda4f1b13568e810fde6e93e2bb5f0e9b1e84690522acb42ddcdadead8d52d1",
+        "freezeValidForCurrentStudentInput": true,
         "storedAnswer": "④",
-        "compareToOriginalFreeze": "MISMATCH",
-        "baselineAnswerBeforeSourceRepair": "③",
-        "postSourceRepairMath": {
-          "value": "4 cases",
-          "selectedChoice": "④",
-          "independentFreeze": false,
-          "reason": "source-backed calculation from repaired PDF transcription, recorded after stored answer visibility"
-        }
+        "compareToCurrentFreeze": "MATCH",
+        "previousOriginalFreezeValidForCurrentBody": false
       }
     },
     {
@@ -1358,12 +1347,12 @@
       "sourcePage": 3,
       "questionLayout": {
         "status": "REVIEWED",
-        "evidence": "Source PDF page 3 was rendered/opened directly; current runtime content/choices and layoutTag=grid, wide=false were compared to the page. The transcription and five choices were corrected from page 3; the original q17 image was opened and matches the road grid. No special layout mutation was made.",
+        "evidence": "Current question body, five displayed choices, image reference, layoutTag=grid and wide=false were verified. The actual q17 PNG was opened at original size and enlarged before freeze; the missing lower-left road connection and P intersection were visible.",
         "visualSource": "assets/images/21_풍덕중_2학기_기말_중2_기출/q17.png"
       },
       "solutionLayout": {
-        "status": "RENDER_STALE_AFTER_SOURCE_REPAIR",
-        "evidence": "CREATE solution pages 3 render against the previous corrupted student bodies; current final solution-page render is stale and must be refreshed."
+        "status": "PASS",
+        "evidence": "Current final-source question 17 and solution rendered in archive/engine.html solution mode over project-local HTTP. On-screen solution box showed [정답] ③, all four row-count lines ending (absent),3,9,19 and the 12/19 conclusion without clipping."
       },
       "meta": {
         "qid": 17,
@@ -1399,36 +1388,43 @@
           "integrationPattern": "NONE",
           "projectionStatus": "PROJECTION_UNMATERIALIZED",
           "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "tags": [
+            "확률"
+          ]
         },
         "currentActiveCandidatesForSubunit": [],
         "exactCrosswalkRecord": [],
-        "assessment": "Source-corrected shortest-path probability maps to M2-RPM-111; current crosswalk says RPM_ONLY/no active binding; null advanced keys are supported."
+        "assessment": "Current shortest-path probability metadata is consistent after the minimum source-replacement repair removing stale tag 일차방정식; remaining observed fields and RPM_ONLY null projection remain supported.",
+        "changedField": {
+          "field": "tags",
+          "before": [
+            "확률",
+            "일차방정식"
+          ],
+          "after": [
+            "확률"
+          ],
+          "targetedR3Required": true
+        }
       },
       "visualSvg": {
         "status": "PROBLEM_IMAGE_OPENED_NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
-        "evidence": "q17 raster opened: A-to-B road grid and P at the interior grid intersection.",
-        "problemImage": "q17 raster opened: A-to-B road grid and P at the interior grid intersection.",
+        "evidence": "The actual required q17 road-grid PNG was opened for independent topology review. The solution page uses a row-count recurrence; an extra solution SVG is unnecessary.",
+        "problemImage": "archive/assets/images/21_풍덕중_2학기_기말_중2_기출/q17.png",
         "solutionImage": null
       },
       "answerReview": {
         "qid": 17,
         "independentAnswerFrozenBeforeStoredAnswer": true,
-        "independentAnswerFromOriginalFreeze": {
-          "value": "5/36",
-          "choiceIndex": 5
-        },
-        "freezeInputSha256": "15ceb74b00c28d2b3138d68f4a45d957ec1356c68b5e61c57041c8e53703db72",
-        "freezeValidForCurrentStudentInput": false,
+        "originalFrozenAnswer": "12/20 = 3/5 (preserved failed calculation attempt)",
+        "originalFreezeRef": "R1.current-input-independent-supplement-freeze.json#q17",
+        "postFreezeTargetedAdjudicationRef": "R1.q17-path-adjudication.json",
+        "correctedIndependentConclusion": "12/19 = ③",
         "storedAnswer": "③",
-        "compareToOriginalFreeze": "MISMATCH",
-        "baselineAnswerBeforeSourceRepair": "③",
-        "postSourceRepairMath": {
-          "value": "12/19",
-          "selectedChoice": "③",
-          "independentFreeze": false,
-          "reason": "source-backed calculation from repaired PDF transcription and opened q17 grid, recorded after stored answer visibility"
-        }
+        "comparison": "MATCH_AFTER_POST_FREEZE_TOPOLOGY_ADJUDICATION",
+        "currentStudentInputProjectionSha256": "428d12fa6ca469aa544e68ac0fea631e1147b7c5bb891204957c0bda5680c36c",
+        "previousOriginalFreezeValidForCurrentBody": false
       }
     },
     {
@@ -1955,5 +1951,9 @@
       }
     }
   ],
-  "freezeDispositionNote": "Original q23 independent freeze was part (2)=3 and is preserved; after source wording review this was adjudicated as 36, but the adjudication is post-compare and is not a replacement blind freeze."
+  "freezeDispositionNote": "Original q23 independent freeze was part (2)=3 and is preserved; after source wording review this was adjudicated as 36, but the adjudication is post-compare and is not a replacement blind freeze.",
+  "supplementalCoverageNote": "Composite math evidence uses 22 valid prior independent qid freezes plus current q15 freeze and q17 original freeze with preserved post-freeze topology adjudication. It does not claim 24 fresh blind solves. q23 original freeze/adjudication and the other 22 qid records are unchanged.",
+  "validationRef": "R1.validation.json",
+  "closureReceiptRef": "R1.closure.json",
+  "finalArtifactSha": "bb1135038c4d854e95834786cf0decbefa934c2d"
 }
