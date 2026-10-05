@@ -1,4 +1,5 @@
-window.examTitle = "21_팔마중_2학기_기말_중3_기출";\nwindow.questionBank = [
+window.examTitle = "21_팔마중_2학기_기말_중3_기출";
+window.questionBank = [
   {
     "id": 1,
     "content": "다음 그림의 원 $O$에서 $\\\\angle x$의 크기는? (3점)",
@@ -104,7 +105,8 @@ window.examTitle = "21_팔마중_2학기_기말_중3_기출";\nwindow.questionBa
     "tags": [
       "도형",
       "원의 성질"
-    ]
+    ],
+    "image": "assets/images/21_팔마중_2학기_기말_중3_기출/q06-clean.svg"
   },
   {
     "id": 7,
@@ -415,4 +417,4 @@ window.examTitle = "21_팔마중_2학기_기말_중3_기출";\nwindow.questionBa
       "분산"
     ]
   }
-];\n
+];
