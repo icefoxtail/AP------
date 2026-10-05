@@ -44,3 +44,20 @@ assert.equal(targetedOnlyReport.scopeCount, 1);
 assert.equal(targetedOnlyReport.rowCount, 1);
 
 console.log('ARCHIVE_STAGE_VALIDATOR_R3_V2_OK');
+
+
+import path from 'node:path';
+import { validateStageEvidence } from '../archive/tools/archive-stage-validator.mjs';
+
+const o27Report = validateStageEvidence({
+  examFile: path.resolve('archive/exams/original/middle/m2/1final/24_승평중_1학기_기말_중2_기출.js'),
+  evidenceFile: path.resolve('archive/data/r3-intake/m2/24_승평중_1학기_기말_중2_기출.r3-current.evidence-v2.json'),
+  stage: 'R3',
+});
+console.log('M2_O27_R3_CANONICAL_REPORT=' + JSON.stringify(o27Report));
+assert.equal(o27Report.ok, true, JSON.stringify(o27Report));
+assert.equal(o27Report.validatorMode, 'R3_V2');
+assert.equal(o27Report.disposition, 'PASS');
+assert.equal(o27Report.scopeCount, 1);
+assert.equal(o27Report.rowCount, 1);
+assert.deepEqual(o27Report.issues, []);
