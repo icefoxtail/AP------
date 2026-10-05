@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "NONSTOP_ERROR_REPORT_v1",
+  "lane": "M2-1 THANOS-MASTER-3",
+  "target": "o14",
+  "stage": "R3",
+  "exactError": [
+    "OPENAI_SAFETY_GATE_CREATE_PULL_REQUEST"
+  ],
+  "completedStep": [
+    "MASTER_LEASE_CLAIMED",
+    "EXACT_R3_ARTIFACT_REVALIDATED",
+    "CURRENT_MAIN_VALIDATION_SURFACE_CREATED"
+  ],
+  "firstMissingClosureStep": "TRIGGER_CANONICAL_R3_VALIDATOR_ON_EXACT_VALIDATION_SURFACE",
+  "triedPaths": [
+    "CREATE_PULL_REQUEST_WITH_VALIDATION_DESCRIPTION",
+    "CREATE_PULL_REQUEST_MINIMAL_ARGS"
+  ],
+  "validationBranch": "validation/m2-o14-r3-thanos3-current-20261005",
+  "validationSurfaceCommit": "5693a1be74677bec94fac994488fed14ae930c72",
+  "finalArtifactSha": "3f94ad75068898b5cb1ba01fd389e78c2bfdc0fa",
+  "physicalEvidenceBlob": "e26f7ebd2f233ef1d4cb69315e7d0bfaa80d20a9",
+  "nextAction": "Trigger the canonical R3 validator against validation commit 5693a1be74677bec94fac994488fed14ae930c72, then bind validator/R3 receipts and RELEASE_QUEUE on PASS.",
+  "passClaim": false,
+  "releaseEligible": false,
+  "ownerRelinquished": false,
+  "state": "ACTIVE_PROGRESS"
+}
