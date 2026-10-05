@@ -1,0 +1,1558 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R1",
+  "generation": "M2_1_CREATE_FIRST_2026_10_04",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+  "examSha256": "sha256:6af19f609dba78437391223ef9a74d354a699abde968bfed40f596743321c876",
+  "finalArtifactGitBlob": "d95518fd914581d61f59110297226d6e088e9679",
+  "questionCount": 26,
+  "sourceAuthority": {
+    "createReceiptPath": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.receipt.json",
+    "createReceiptBlob": "9e5763c1e7c1c54ed8ee0f6ce2d07021d45318ba",
+    "sourceRepairReceiptPath": "archive/data/r2e-intake/m2/21_금당중_1학기_중간_중2_기출.create.source-repair.receipt.json",
+    "sourceRepairReceiptBlob": "a279cf7264cbbf1f7570dfcf8cf1bbc25712e3a0",
+    "sourceRepairStatus": "PASS_AFTER_REPAIR",
+    "sourceRepairQids": [
+      11,
+      18,
+      23
+    ],
+    "protectedFieldCompare": "26/26 content/choices/answer/svg/image/layout and current solution independently rechecked; R1 repairs limited to classification metadata."
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "26/26",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "조건→중간값→결론의 학생 재현 가능한 흐름을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "조건 해석과 계산 단계가 분리된 구조를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "결정적 공식의 입력값이 명시되는 구조를 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "숨은 단계 없이 조건→식→결론으로 이어지는 구조를 확인했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "freshFromCurrentArtifactBytes": true,
+    "priorCreateReceiptUsedOnlyForEligibilityAndProvenance": true,
+    "contextTolerantRecheck": true,
+    "currentAuthorityRecomputedBeforeFormalCompare": true,
+    "reviewAttemptId": "R1:m2/1mid/21-geumdang:d95518fd914581d61f59110297226d6e088e9679:1",
+    "decisionSnapshot": "26/26 independent R1 audit PASS after deterministic classification repairs q14/q16/q20/q21; source-repaired q11/q18/q23 revalidated; inline SVG coordinate/topology audit q11/q13/q17/q20/q24 PASS; itemHold=0."
+  },
+  "formalCompare": {
+    "performedAfterCurrentPassSnapshot": true,
+    "priorStageCompared": "CREATE",
+    "outcome": "Deterministic classification drift repaired at q14/q16/q20/q21; no math/answer/solution/source/runtime regression and no additional repair locus."
+  },
+  "summary": {
+    "questionCount": 26,
+    "questionEvidenceRows": 26,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 26,
+    "itemHoldCount": 0
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q1; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ④ — 342가 반복되므로 2.34̇2 표기는 실제 순환마디와 불일치한다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q1 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q1: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q1: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q1: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q1."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q1: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q1: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q2; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ③ — 15/42=5/14에서 분모에 7이 남는다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q2 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q2: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q2: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q2: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q2."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q2: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q2: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q3; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ④, 77 — 11과 7을 모두 약분시키는 최소 자연수이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q3 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q3: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q3: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q3: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q3."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q3: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q3: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q4; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ② — ㄱ, ㄷ만 참이다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q4 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q4: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q4: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q4: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q4."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q4: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q4: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q5; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ③, 35 — 빈칸 12+7+7+6+3."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q5 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q5: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q5: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q5: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q5."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q5: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q5: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q6; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ① — 3^x=A/9이므로 9^x=A^2/81."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q6 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q6: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q6: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q6: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q6."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q6: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q6: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q7; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ② — 잘못 나눈 단항식은 -3x^3y^6, 바른 곱은 -36x^7y^15."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q7 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q7: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q7: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q7: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q7."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q7: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q7: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q8; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ⑤ — A=1/4, B=-1/2."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q8 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q8: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q8: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q8: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q8."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q8: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q8: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q9; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ①, 0 — -2x^2-5x-7에서 a+b-c=0."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q9 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q9: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q9: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q9: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q9."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q9: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q9: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q10; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ⑤ — 나눗셈 결과 -3x+9y, 전체 5x^2+13x-9y."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q10 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q10: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q10: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q10: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q10."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q10: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q10: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q11; CREATE source-repair receipt a279cf7264cbbf1f7570dfcf8cf1bbc25712e3a0 verifies original-source repair and current protected content/answer remains consistent."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ②, 5 — A=-9, B=42, C=-7이므로 A+C+B/2=5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q11 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q11: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q11: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Actual SVG topology rechecked: 6x×7y rectangle, upper-right triangle endpoint leaves vertical segment 3x, lower-right endpoint leaves bottom segment 2y; primitive coordinates/topology support the two triangle area expressions."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q11."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q11: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q11: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q12; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ③ — x=1 대입 시 x-1≤0만 참."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q12 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q12: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q12: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q12: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q12."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q12: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q12: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q13; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ⑤ — a<b<0<c<d에서 d^2>0>ad."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q13 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q13: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q13: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Actual SVG coordinates rechecked: x positions encode a<b<0<c<d in the stated order; labels attach to the intended points."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q13."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q13: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q13: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q14; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ② — 2≤(x+9)/3<5에서 -3≤x<6."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q14 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q14: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q14: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q14: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 deterministic Meta repair q14: crosswalk M2-RPM-020 requires M2-02-LINEAR_INEQUALITY / 일차부등식; stale WORD subunit repaired."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q14: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q14: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q15; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ④ — 5x-1<1-5x만 정리 후 일차부등식이 남는다."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q15 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q15: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q15: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q15: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q15."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q15: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q15: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q16; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ②, 3개 — x≤3의 자연수 해는 1,2,3."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q16 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q16: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q16: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q16: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 deterministic Meta repair q16: crosswalk M2-RPM-022 requires M2-02-LINEAR_INEQUALITY / 일차부등식; stale WORD subunit repaired."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q16: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q16: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q17; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ③, a=3 — 해 경계 (1-a)/2=-1."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q17 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q17: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q17: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Actual SVG topology rechecked: closed point at -1 and highlighted ray extends right, so the picture is x≥-1."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q17."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q17: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q17: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q18; CREATE source-repair receipt a279cf7264cbbf1f7570dfcf8cf1bbc25712e3a0 verifies original-source repair and current protected content/answer remains consistent."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ① — 최소 정수 -3 조건은 -4<6-2a≤-3, 즉 9/2≤a<5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q18 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q18: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q18: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q18: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q18."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q18: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q18: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q19; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ④ — 1-a>0이므로 나누어 x>-1."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q19 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q19: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q19: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q19: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q19."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q19: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q19: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q20; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ⑤ — x+3<(x-1)+(x+1)에서 x>3."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q20 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q20: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q20: triangle-side existence is prior prerequisite knowledge; the target operation is an M2-1 linear-inequality application, with no out-of-scope method."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Actual SVG coordinates/labels rechecked: the three triangle sides are labeled x-1, x+1, x+3 on distinct edges with no label-owner mismatch."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 deterministic Meta repair q20: crosswalk M2-RPM-029 is M2-02 / M2-02-LINEAR_INEQUALITY_WORD; stale M2-05 geometry classification repaired while keeping triangle inequality as prerequisite reasoning."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q20: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q20: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q21; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ①, 4개 — (1,10),(2,7),(3,4),(4,1)."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q21 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q21: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q21: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q21: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 deterministic Meta repair q21: crosswalk M2-RPM-032 is M2-03-SIMULTANEOUS_LINEAR_EQUATION; stale WORD subunit repaired."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q21: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q21: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q22; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: ② — (3,1)을 두 식에 대입하면 x+y=4, 2x-y=5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q22 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q22: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q22: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q22: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q22."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q22: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q22: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q23; CREATE source-repair receipt a279cf7264cbbf1f7570dfcf8cf1bbc25712e3a0 verifies original-source repair and current protected content/answer remains consistent."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: (1) 10x=21.666…, 100x=216.666…; (2) 13/6."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q23 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q23: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible across the requested subparts."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q23: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q23: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q23."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q23: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q23: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q24; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: (1) 2x+8y; (2) 3x+4y 또는 5x-6y."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q24 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q24: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible across the requested subparts."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q24: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Actual SVG topology rechecked: target sectors contain the listed polynomials and the arrow endpoint points to the 4x-y sector; the algebraic options used by the solution are physically present."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q24."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q24: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q24: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 25,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q25; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: x<3 — 양변에 6을 곱하면 129>43x."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q25 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q25: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible across the requested subparts."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q25: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q25: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q25."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q25: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q25: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    },
+    {
+      "qid": 26,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R1 source/current authority PASS q26; protected content/choices/answer/svg/layout were compared against current CREATE final artifact 968ca3ab58be108b288da693a2d29b910df0ff3e; R1 mutation is metadata-only."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R1 independent recomputation: (1) 47000+150x, (2) 50000+120x, (3) x>100, (4) 100분 초과."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R1 independently followed the current q26 solution from conditions through decisive calculation to the stored answer; no mathematical contradiction or hidden upper-grade step remains."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R1 explanation audit q26: 핵심→풀이→확인/결론 structure exposes the decisive intermediate work and is student-reproducible across the requested subparts."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R1 curriculum PASS q26: 2015 middle-2 first-semester target scope or prerequisite only; no upper-grade method used."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R1 visual audit q26: no decisive external problem image/solutionImage is required; textual conditions are sufficient and no missing explanatory visual blocks student reproduction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R1 tags/category/unit/RPM/CrossConcept/Condition/IntegrationPattern rechecked against current M2 crosswalk; no deterministic drift found q26."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R1 difficulty recheck q26: stored level/bucket is plausible for the number and depth of required reasoning steps; no boundary escalation required."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R1 runtime/layout recheck q26: TeX/HTML/choices/answer/solution strings and layoutTag are coherent; no doubled-escape or truncation defect observed."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "순환마디와 점 표기를 실제 반복 부분과 비교한다.",
+      "decisiveStep": "④만 실제 순환마디 342를 점 두 개로 표시하지 않았다.",
+      "rpmDisposition": "FINAL:M2-RPM-003:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "기약분수 분모의 소인수를 확인한다.",
+      "decisiveStep": "③의 기약분수 분모에 7이 남는다.",
+      "rpmDisposition": "FINAL:M2-RPM-002:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "분모의 7과 11을 약분할 최소 공배수를 찾는다.",
+      "decisiveStep": "A는 11과 7의 공배수이며 최소값은 77이다.",
+      "rpmDisposition": "FINAL:M2-RPM-002:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "유리수와 유한·순환소수의 포함 관계를 판정한다.",
+      "decisiveStep": "참인 문장은 ㄱ과 ㄷ이다.",
+      "rpmDisposition": "FINAL:M2-RPM-005:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "지수법칙으로 각 빈칸의 지수를 계산한다.",
+      "decisiveStep": "12+7+7+6+3=35이다.",
+      "rpmDisposition": "FINAL:M2-RPM-007:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "A에서 3^x를 분리해 9^x로 변환한다.",
+      "decisiveStep": "9^x=(A/9)^2=A^2/81이다.",
+      "rpmDisposition": "FINAL:M2-RPM-008:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "잘못 나눈 결과에서 곱할 단항식을 역산한다.",
+      "decisiveStep": "곱할 식 -3x^3y^6을 복원한다.",
+      "rpmDisposition": "FINAL:M2-RPM-011:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "괄호를 풀고 동류항을 정리한다.",
+      "decisiveStep": "A=1/4, B=-1/2이다.",
+      "rpmDisposition": "FINAL:M2-RPM-013:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "다항식의 뺄셈 후 계수를 대입한다.",
+      "decisiveStep": "-2-5-(-7)=0이다.",
+      "rpmDisposition": "FINAL:M2-RPM-013:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "단항식 나눗셈을 먼저 계산해 혼합식을 정리한다.",
+      "decisiveStep": "나눗셈 결과 -3x+9y를 빼 선택지 ⑤를 얻는다.",
+      "rpmDisposition": "FINAL:M2-RPM-015:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "문제 SVG의 실제 좌표·길이 라벨로 넓이식을 재계산한다.",
+      "decisiveStep": "음영 두 직각삼각형의 넓이 합은 -9x^2+42xy-7y^2이고, A+C+B/2=5이다.",
+      "rpmDisposition": "FINAL:M2-RPM-017:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "x=1을 각 부등식에 대입한다.",
+      "decisiveStep": "③의 0≤0만 참이다.",
+      "rpmDisposition": "FINAL:M2-RPM-018:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "수직선의 대소관계에 부등식 성질을 적용한다.",
+      "decisiveStep": "d^2>0, ad<0이므로 ⑤가 거짓이다.",
+      "rpmDisposition": "FINAL:M2-RPM-018:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "연속부등식의 세 변을 같은 연산으로 변형한다.",
+      "decisiveStep": "-3≤x<6을 얻는다.",
+      "rpmDisposition": "FINAL:M2-RPM-020:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "정리 후 일차항이 남는 부등식을 판별한다.",
+      "decisiveStep": "④만 10x<2로 정리된다.",
+      "rpmDisposition": "FINAL:M2-RPM-020:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "부등식의 자연수 해를 직접 센다.",
+      "decisiveStep": "자연수 해 1,2,3으로 3개이다.",
+      "rpmDisposition": "FINAL:M2-RPM-022:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "식의 경계와 수직선의 닫힌 점을 비교한다.",
+      "decisiveStep": "(1-a)/2=-1에서 a=3이다.",
+      "rpmDisposition": "FINAL:M2-RPM-023:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "해의 최소 정수 조건을 경계 구간으로 바꾼다.",
+      "decisiveStep": "x≥6-2a의 경계가 -4<6-2a≤-3이므로 9/2≤a<5, 선택지 ①이다.",
+      "rpmDisposition": "FINAL:M2-RPM-025:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "1-a의 부호를 확인해 부등식을 나눈다.",
+      "decisiveStep": "1-a>0이므로 x>-1이다.",
+      "rpmDisposition": "FINAL:M2-RPM-023:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "삼각형의 가장 긴 변에 삼각부등식을 적용한다.",
+      "decisiveStep": "x+3<2x에서 x>3이다.",
+      "rpmDisposition": "FINAL:M2-RPM-029:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "자연수 x를 열거해 y=13-3x를 확인한다.",
+      "decisiveStep": "자연수해 네 쌍을 확정한다.",
+      "rpmDisposition": "FINAL:M2-RPM-032:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "주어진 순서쌍을 두 식에 동시에 대입한다.",
+      "decisiveStep": "②의 두 식만 동시에 성립한다.",
+      "rpmDisposition": "FINAL:M2-RPM-032:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "누락된 원문 없이 저장 답만으로 발문을 역구성하지 않는다.",
+      "decisiveStep": "x=2.1dot6에서 100x-10x=195이므로 x=13/6이다.",
+      "rpmDisposition": "FINAL:M2-RPM-004:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "덧셈으로 상대 식을 구하고 뺄셈 순서 두 경우를 나눈다.",
+      "decisiveStep": "Y=2x+8y; 차의 순서에 따라 3x+4y 또는 5x-6y이다.",
+      "rpmDisposition": "FINAL:M2-RPM-012:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 25,
+      "result": "PASS",
+      "primaryMethod": "최소공배수 6을 곱해 분수 부등식을 푼다.",
+      "decisiveStep": "129>43x에서 x<3이다.",
+      "rpmDisposition": "FINAL:M2-RPM-021:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    },
+    {
+      "qid": 26,
+      "result": "PASS",
+      "primaryMethod": "두 요금식을 세우고 비용 비교 부등식을 푼다.",
+      "decisiveStep": "50000+120x<47000+150x에서 x>100이다.",
+      "rpmDisposition": "FINAL:M2-RPM-028:RPM_ONLY",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md"
+      ]
+    }
+  ],
+  "repairSummary": {
+    "changedQids": [
+      14,
+      16,
+      20,
+      21
+    ],
+    "changedFields": [
+      "q14 subUnitKey/subUnit",
+      "q16 subUnitKey/subUnit",
+      "q20 standardUnitKey/standardUnit/standardUnitOrder/subUnitKey/subUnit",
+      "q21 subUnitKey/subUnit"
+    ],
+    "reason": "align stored classification with current 2015 M2-1 RPM crosswalk while preserving protected source/math fields",
+    "unrelatedMutationCount": 0
+  }
+}
