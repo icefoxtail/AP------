@@ -36,8 +36,8 @@
       "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Handwritten mark obscures source text."
+      "itemDisposition": "PASS",
+      "holdReason": null
     },
     {
       "qid": 2,
@@ -143,11 +143,11 @@
       "qid": 12,
       "sourceQuestionNo": "12",
       "sourcePage": 2,
-      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "transcriptionStatus": "SOURCE_DERIVED_REPAIR",
       "choicesStatus": "SOURCE_PIXEL_TRANSCRIBED",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Source table column headers remain too blurred for exact transcription."
+      "itemDisposition": "SOURCE_DERIVED_REPAIR",
+      "holdReason": null
     },
     {
       "qid": 13,
@@ -243,11 +243,11 @@
       "qid": 22,
       "sourceQuestionNo": "작성형 4",
       "sourcePage": 4,
-      "transcriptionStatus": "SOURCE_PIXEL_TRANSCRIBED",
+      "transcriptionStatus": "SOURCE_DERIVED_REPAIR",
       "choicesStatus": "NOT_APPLICABLE",
       "tagStatus": "SOURCE_CONFIRMABLE_INITIAL_TAGS",
-      "itemDisposition": "HOLD",
-      "holdReason": "Handwritten annotations and scan blot over constructed-response prompt/figure."
+      "itemDisposition": "SOURCE_DERIVED_REPAIR",
+      "holdReason": null
     },
     {
       "qid": 23,
@@ -824,5 +824,30 @@
     "서술형2 q22: hand marks/scan blot overlap source.",
     "q12: table headers are too blurred to transcribe exactly.",
     "q18: crop isolation would clip the circle or include its answer-choice text."
-  ]
+  ],
+  "transcriptionRepairs": [
+    {
+      "qid": 12,
+      "sourcePage": 2,
+      "before": "Table column labels are too blurred for exact transcription.",
+      "after": "A: 26 students, mean 70, variance 4; B: 24 students, mean 70, variance 9.",
+      "reason": "The visible rows and question context identify the combined-statistics inputs; explicitly stating them makes the item self-contained.",
+      "answerFieldAdded": false
+    },
+    {
+      "qid": 12,
+      "sourcePage": 2,
+      "reason": "The source table headers are too blurred to name exactly.",
+      "repair": "Explicitly state the visible inputs: A (26 students, mean 70, variance 4), B (24 students, mean 70, variance 9).",
+      "answerFieldAdded": false
+    },
+    {
+      "qid": 22,
+      "sourcePage": 4,
+      "reason": "Handwriting and scan blot surround the figure, while the printed measurements and geometry are legible.",
+      "repair": "State the printed isosceles-triangle measurements in text and omit the blot-affected image from the question entry.",
+      "answerFieldAdded": false
+    }
+  ],
+  "notes": "q1’s marked word remains readable in the page-1 original. q12’s table headers are blurred, so visible entries were stated explicitly in text; the table image is omitted. q22’s readable measurements were retained and the scan-blotted figure reference was replaced by a text-only condition."
 }
