@@ -31,7 +31,7 @@ window.questionBank = [
       "$\\frac{1}{3}$"
     ],
     "answer": "②, ④",
-    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\n e 0$) 꼴로 나타낼 수 있는 수임.\\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\\n$\\therefore$ ②, ④",
+    "solution": "<b>[Logical Anchor]</b> 유리수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있는 수임.\\n② $\\pi$는 비순환 무한소수(무리수)이므로 유리수가 아님.\\n④ $1.121231234...$는 순환하지 않는 무한소수이므로 분수 꼴로 나타낼 수 없음.\\n$\\therefore$ ②, ④",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -234,7 +234,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "content": "$a \\n eq 0$이고 $m, n$이 자연수일 때 옳은 것은? [4점]",
+    "content": "$a \\ne 0$이고 $m, n$이 자연수일 때 옳은 것은? [4점]",
     "choices": [
       "$a^m \\times a^n = a^{m \\times n}$",
       "$(a^m)^n = (a^n)^m$",
@@ -302,7 +302,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "content": "다음 보기 중 옳은 것을 모두 고르면? [4점]<br>(가) $5x^2 \\times (-6y^3) = -30x^2y^3$ (나) $-xy \\times (-2x^2y)^3 = 8x^7y^4$ (라) $(3a^2)^2 \\div (-27a^{11}) = -\\frac{1}{3a^7}$",
+    "content": "다음 보기 중 옳은 것을 모두 고르면? [4점]<br>(가) $5x^2 \\times (-6y^3) = -30x^2y^3$<br>(나) $-xy \\times (-2x^2y)^3 = 8x^7y^4$<br>(다) $12a^5b^2 \\div 3a^2b = 4a^2b$<br>(라) $(3a^2)^2 \\div (-27a^{11}) = -\\frac{1}{3a^7}$<br>(마) $(-2x^2y)^2 = -4x^4y^2$",
     "choices": [
       "(가), (나), (다)",
       "(가), (나), (라)",
@@ -311,7 +311,7 @@ window.questionBank = [
       "(나), (라), (마)"
     ],
     "answer": "②",
-    "solution": "(가) $-30x^2y^3$ (참)\\n(나) $-xy \\times (-8x^6y^3) = 8x^7y^4$ (참)\\n(라) $9a^4 \\div (-27a^{11}) = -\\frac{1}{3a^7}$ (참)\\n$\\therefore$ ②",
+    "solution": "각 식을 차례로 계산한다.\\n(가) $5x^2 \\times (-6y^3)=-30x^2y^3$이므로 참이다.\\n(나) $(-2x^2y)^3=-8x^6y^3$이므로 $-xy \\times (-8x^6y^3)=8x^7y^4$로 참이다.\\n(다) $12a^5b^2 \\div 3a^2b=4a^3b$이므로 거짓이다.\\n(라) $9a^4 \\div (-27a^{11})=-\\frac{1}{3a^7}$이므로 참이다.\\n(마) $(-2x^2y)^2=4x^4y^2$이므로 거짓이다.\\n따라서 옳은 것은 (가), (나), (라)이므로 정답은 ②이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -509,7 +509,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$\\angle C=90^\\circ$인 직각삼각형 ABC에서 $\\overline{BC}=\\overline{BD}, \\overline{AB} \\perp \\overline{ED}$일 때 $x$의 값은? (단, $\\angle DBF=25^\\circ$ 기준 보정) [4점]",
+    "content": "두 직각삼각형 $ABC$, $DEF$에서 $\\angle C=\\angle F=90^\\circ$, $\\overline{AB}=\\overline{DE}$, $\\overline{BC}=\\overline{EF}$이다. $\\angle B=40^\\circ$일 때 $\\angle D=x^\\circ$라 하면 $x$의 값은? [4점]",
     "choices": [
       "$40$",
       "$41$",
@@ -518,7 +518,7 @@ window.questionBank = [
       "$65$"
     ],
     "answer": "③",
-    "solution": "$\\triangle EBC \\equiv \\triangle EBD$ (RHS 합동)\\n$\\implies \\angle ABC = 2 \\times 25 = 50^\\circ$\\n$\\therefore x = 50$",
+    "solution": "두 삼각형은 직각삼각형이고 빗변 $\\overline{AB}=\\overline{DE}$, 한 변 $\\overline{BC}=\\overline{EF}$이므로 RHS 합동이다.\\n따라서 대응하는 각의 크기가 같아 $\\angle B=\\angle E=40^\\circ$이다.\\n직각삼각형 $DEF$에서 $\\angle F=90^\\circ$이므로 $\\angle D=180^\\circ-90^\\circ-40^\\circ=50^\\circ$이다.\\n따라서 $x=50$이므로 정답은 ③이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -547,12 +547,12 @@ window.questionBank = [
     "choices": [
       "$12, 16, 20$",
       "$7, 21, 28$",
-      "$5, 8, 9$",
+      "$5, 7, 9$",
       "$3, 4, 5$",
       "$5, 12, 13$"
     ],
     "answer": "③",
-    "solution": "가장 긴 변 $c$에 대해 $c^2 > a^2 + b^2$ 이면 둔각임.\\n③ $9^2=81 > 5^2+8^2=89$ (오타 확인, 원문 기반 $81 < 89$이나 논리적 둔각 후보 선정)\\n$\\therefore$ ③",
+    "solution": "가장 긴 변을 $c$라 할 때, 삼각형이 성립하고 $c^2>a^2+b^2$이면 둔각삼각형이다.\\n① $20^2=400$, $12^2+16^2=400$이므로 직각삼각형이다.\\n② $7+21=28$이므로 삼각형이 성립하지 않는다.\\n③ $5+7>9$이고 $9^2=81>5^2+7^2=74$이므로 둔각삼각형이다.\\n④ $5^2=25$, $3^2+4^2=25$이므로 직각삼각형이다.\\n⑤ $13^2=169$, $5^2+12^2=169$이므로 직각삼각형이다.\\n$\\therefore$ ③",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -578,7 +578,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "히포크라테스의 초승달 넓이 구하기 ($BC=9, AB=15$ 일 때) [4점]",
+    "content": "$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB}=15$, $\\overline{BC}=9$일 때, $\\triangle ABC$의 넓이는? [4점]",
     "choices": [
       "$36$",
       "$48$",
@@ -587,7 +587,7 @@ window.questionBank = [
       "$108$"
     ],
     "answer": "③",
-    "solution": "$AC = \\sqrt{15^2-9^2} = 12$\\n넓이 $= \\frac{1}{2} \\times 9 \\times 12 = 54$\\n$\\therefore$ ③",
+    "solution": "직각삼각형에서 피타고라스 정리를 사용한다.\\n$AC^2=AB^2-BC^2=15^2-9^2=225-81=144$이므로 $AC=12$이다.\\n따라서 $\\triangle ABC$의 넓이는 $\\frac12 \\times BC \\times AC=\\frac12 \\times 9 \\times 12=54$이다.\\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -680,7 +680,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "내접원 $I$에서 $\\overline{BE}=10, \\overline{BD}=10$ 등 수치 적용 시 $\\overline{AC}$의 길이는? [4점]",
+    "content": "$\\triangle ABC$의 내접원이 세 변 $AB$, $BC$, $CA$와 각각 $D$, $E$, $F$에서 접한다. $\\overline{AD}=4$, $\\overline{CE}=6$일 때 $\\overline{AC}$의 길이는? [4점]",
     "choices": [
       "$2$",
       "$4$",
@@ -689,7 +689,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "⑤",
-    "solution": "접선 성질 이용 $\\overline{AC} = \\overline{AF} + \\overline{FC} = 10cm$\\n$\\therefore$ ⑤",
+    "solution": "한 점에서 원에 그은 두 접선의 길이는 같다.\\n점 $A$에서 그은 접선이므로 $AD=AF=4$이다.\\n점 $C$에서 그은 접선이므로 $CE=CF=6$이다.\\n따라서 $AC=AF+FC=4+6=10$이다.\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -714,7 +714,7 @@ window.questionBank = [
       "상난도"
     ],
     "wide": false,
-    "content": "$O$는 $\\triangle ABC$ 외심, $I$는 $\\triangle OBC$ 내심. $\\angle BIC=150^\\circ$ 일 때 $\\angle A$는? [4점]",
+    "content": "$O$는 $\\triangle ABC$의 외심, $I$는 $\\triangle OBC$의 내심이고 $\\angle A<90^\\circ$이다. $\\angle BIC=150^\\circ$일 때 $\\angle A$는? [4점]",
     "choices": [
       "$45^\\circ$",
       "$50^\\circ$",
@@ -723,7 +723,7 @@ window.questionBank = [
       "$65^\\circ$"
     ],
     "answer": "④",
-    "solution": "(1) $\\angle BIC = 90 + \\frac{1}{2} \\angle BOC = 150 \\implies \\angle BOC = 120^\\circ$\\n(2) $O$가 외심이므로 $\\angle BOC = 2 \\angle A = 120 \\implies \\angle A = 60^\\circ$\\n$\\therefore$ 60",
+    "solution": "(1) $\\angle BIC = 90 + \\frac{1}{2} \\angle BOC = 150 \\implies \\angle BOC = 120^\\circ$\\n(2) $\\angle A<90^\\circ$이므로 둔각인 반대 배치를 제외하면 $\\angle BOC = 2\\angle A$이다. 따라서 $2\\angle A=120^\\circ$이므로 $\\angle A=60^\\circ$이다.\\n$\\therefore$ ④",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -748,7 +748,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "수빈이는 분자를 잘못 봐서 $0.2\\dot{5}$, 준서는 분모를 잘못 봐서 $0.1\\dot{4}$로 나타냄. 처음 기약분수를 순환소수로? [5점]",
+    "content": "어떤 기약분수에서 수빈이는 분자를 잘못 읽어 $0.2\\dot{5}$, 준서는 분모를 잘못 읽어 $0.1\\dot{4}$로 나타냈다. 두 사람이 잘못 읽어 만든 분수도 각각 기약분수일 때, 처음 기약분수를 순환소수로 나타내면? [5점]",
     "choices": [
       " ",
       " ",
@@ -757,7 +757,7 @@ window.questionBank = [
       " "
     ],
     "answer": "$0.1\\dot{4}$",
-    "solution": "(1) 수빈: $\\frac{23}{90} \\implies$ 분모 $90$ 채택\\n(2) 준서: $\\frac{13}{90} \\implies$ 분자 $13$ 채택\\n(3) 처음 분수: $\\frac{13}{90} = 0.1\\dot{4}$",
+    "solution": "(1) $0.2\\dot{5}=\\frac{23}{90}$이고 수빈이가 잘못 읽어 만든 분수도 기약분수이므로 원래 분모는 $90$이다.\\n(2) $0.1\\dot{4}=\\frac{13}{90}$이고 준서가 잘못 읽어 만든 분수도 기약분수이므로 원래 분자는 $13$이다.\\n(3) 따라서 처음 분수는 $\\frac{13}{90}=0.1\\dot{4}$이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
