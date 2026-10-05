@@ -5,14 +5,14 @@ window.questionBank = [
     "id": 1,
     "questionType": "객관식",
     "tags": ["객관식", "복소수"],
-    "content": "[판독불가] $+i+i^2+i^3+\\cdots+i^8+i^9+\\dfrac{1}{i}$의 값은? (단, $i=\\sqrt{-1}$이다.) [3.6점]",
+    "content": "$1+i+i^2+i^3+\\cdots+i^8+i^9+\\dfrac{1}{i}$의 값은? (단, $i=\\sqrt{-1}$이다.) [3.6점]",
     "choices": ["$-1$", "$0$", "$1$", "$2$", "$3$"]
   },
   {
     "id": 2,
     "questionType": "객관식",
     "tags": ["객관식", "복소수"],
-    "content": "복소수 $z=a+bi$와 켤레복소수 $\\overline{z}$에 대하여 $(1+i)\\overline{z}=6i$를 만족할 때, [판독불가]의 값은? (단, $i=\\sqrt{-1}$이다.) [3.7점]",
+    "content": "복소수 $z=a+bi$와 켤레복소수 $\\overline{z}$에 대하여 $(1+i)\\overline{z}=6i$를 만족할 때, $z$의 값은? (단, $i=\\sqrt{-1}$이다.) [3.7점]",
     "choices": ["$3$", "$3-3i$", "$3+3i$", "$6$", "$6-6i$"]
   },
   {
