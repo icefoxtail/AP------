@@ -20,45 +20,45 @@ jobs:
           git checkout -B codex/geometry-visual-publication-v2-20261005 origin/codex/geometry-visual-publication-v2-20261005
           test "$(git rev-parse HEAD)" = "5a20240fbc612d8e984bd11c78c304582def380f"
           git apply /tmp/geometry-publication.patch
-          mapfile -t expected <<'EOF'
-archive/tools/geometry-equation/PUBLICATION_PROFILE.md
-archive/tools/geometry-equation/audit_publication.py
-archive/tools/geometry-equation/record-visual-browser-evidence.mjs
-archive/tools/geometry-equation/tests/build_publication_fixtures.py
-archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.review.json
-archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.solution.txt
-archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.source.txt
-archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.spec.json
-archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.review.json
-archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.solution.txt
-archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.source.txt
-archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.spec.json
-archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.review.json
-archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.solution.txt
-archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.source.txt
-archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.spec.json
-archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.review.json
-archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.solution.txt
-archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.source.txt
-archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.spec.json
-archive/tools/geometry-equation/tests/publication-fixtures/region-leader.review.json
-archive/tools/geometry-equation/tests/publication-fixtures/region-leader.solution.txt
-archive/tools/geometry-equation/tests/publication-fixtures/region-leader.source.txt
-archive/tools/geometry-equation/tests/publication-fixtures/region-leader.spec.json
-archive/tools/geometry-equation/tests/publication-layout.test.mjs
-archive/tools/geometry-equation/tests/run-publication-archive.mjs
-archive/tools/geometry-equation/tests/run-publication-browser.mjs
-archive/tools/geometry-equation/tests/test_publication.py
-archive/tools/geometry-equation/verify-rendered-layout.mjs
-archive/tools/geometry-equation/visual-browser-runtime.mjs
-archive/tools/geometry-equation/visual_engine/engine.py
-archive/tools/geometry-equation/visual_engine/label_layout.py
-archive/tools/geometry-equation/visual_engine/past_exam_adapter.py
-archive/tools/geometry-equation/visual_engine/publication.py
-archive/tools/geometry-equation/visual_engine/semantic_model.py
-archive/tools/geometry-equation/visual_engine/svg_composer.py
-archive/tools/geometry-equation/visual_engine/visual_spec.schema.json
-EOF
+          expected=(
+            "archive/tools/geometry-equation/PUBLICATION_PROFILE.md"
+            "archive/tools/geometry-equation/audit_publication.py"
+            "archive/tools/geometry-equation/record-visual-browser-evidence.mjs"
+            "archive/tools/geometry-equation/tests/build_publication_fixtures.py"
+            "archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.review.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.solution.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.source.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/equal-length-owners.spec.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.review.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.solution.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.source.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/fraction-point-T.spec.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.review.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.solution.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.source.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/multi-angle-owner.spec.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.review.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.solution.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.source.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/owner-triangle.spec.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/region-leader.review.json"
+            "archive/tools/geometry-equation/tests/publication-fixtures/region-leader.solution.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/region-leader.source.txt"
+            "archive/tools/geometry-equation/tests/publication-fixtures/region-leader.spec.json"
+            "archive/tools/geometry-equation/tests/publication-layout.test.mjs"
+            "archive/tools/geometry-equation/tests/run-publication-archive.mjs"
+            "archive/tools/geometry-equation/tests/run-publication-browser.mjs"
+            "archive/tools/geometry-equation/tests/test_publication.py"
+            "archive/tools/geometry-equation/verify-rendered-layout.mjs"
+            "archive/tools/geometry-equation/visual-browser-runtime.mjs"
+            "archive/tools/geometry-equation/visual_engine/engine.py"
+            "archive/tools/geometry-equation/visual_engine/label_layout.py"
+            "archive/tools/geometry-equation/visual_engine/past_exam_adapter.py"
+            "archive/tools/geometry-equation/visual_engine/publication.py"
+            "archive/tools/geometry-equation/visual_engine/semantic_model.py"
+            "archive/tools/geometry-equation/visual_engine/svg_composer.py"
+            "archive/tools/geometry-equation/visual_engine/visual_spec.schema.json"
+          )
           printf '%s\n' "${expected[@]}" | sort > /tmp/expected
           git diff --name-only | sort > /tmp/actual
           diff -u /tmp/expected /tmp/actual
