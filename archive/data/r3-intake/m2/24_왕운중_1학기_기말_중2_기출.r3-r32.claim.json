@@ -6,13 +6,19 @@
   "inputArtifactSha": "59028f7f9b6bb6cd9db79ba15dd6517db7da2f18",
   "finalArtifactSha": "59028f7f9b6bb6cd9db79ba15dd6517db7da2f18",
   "owner": "M2-1 R3-2",
-  "status": "ACTIVE",
-  "ownerState": "ACTIVE",
+  "status": "HANDOFF_READY",
+  "ownerState": "RELINQUISHED",
   "sourceMainSha": "89462a1c59567a652ab5f500a8b96f4ccaa7052a",
   "openQids": [],
   "sourceRepairQids": [],
   "r3PassDeclared": false,
   "releaseQueueDeclared": false,
-  "completedStep": "CAS_CLAIMED",
-  "firstMissingClosureStep": "MATERIALIZE_CANONICAL_R3_PHYSICAL_EVIDENCE"
+  "completedStep": "R3_AUDIT_AND_LOCAL_EXACT_CANONICAL_PREFLIGHT_PASS",
+  "firstMissingClosureStep": "APPROVED_CANONICAL_R3_EXECUTOR_AND_DURABLE_VALIDATOR_RECEIPT",
+  "physicalEvidenceGitBlob": "0e6d9242f87fde76a0b9b44e4c36dcf0efbb251d",
+  "localExactCanonicalPreflight": {
+    "ok": true,
+    "issues": []
+  },
+  "disposition": "R3_CLOSURE_DEBT"
 }

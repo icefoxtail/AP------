@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_CONTINUATION_v1",
+  "stage": "R3",
+  "canonicalOrdinal": 25,
+  "examUid": "M2-1-24-WANGUN-1FINAL",
+  "disposition": "R3_CLOSURE_DEBT",
+  "owner": "M2-1 R3-2",
+  "ownerState": "RELINQUISHED",
+  "sourceMainSha": "89462a1c59567a652ab5f500a8b96f4ccaa7052a",
+  "completedStep": "R3_AUDIT_AND_LOCAL_EXACT_CANONICAL_PREFLIGHT_PASS",
+  "firstMissingClosureStep": "APPROVED_CANONICAL_R3_EXECUTOR_AND_DURABLE_VALIDATOR_RECEIPT",
+  "finalArtifactGitBlob": "59028f7f9b6bb6cd9db79ba15dd6517db7da2f18",
+  "examSha256": "sha256:93bc2cb6994b5da91497510d4ce7ce43b085465ccf7b1ec5cda63e82522a5be9",
+  "physicalEvidenceGitBlob": "0e6d9242f87fde76a0b9b44e4c36dcf0efbb251d",
+  "questionCount": 24,
+  "openQids": [],
+  "sourceRepairQids": [],
+  "productionExamMutationCount": 0,
+  "localValidatorParity": {
+    "ok": true,
+    "issues": []
+  },
+  "blocker": "CANONICAL_VALIDATOR_EXECUTION_SURFACE_WRITE_BLOCKED",
+  "attemptedPaths": [
+    "create validation PR from audit-v2 branch -> blocked before side effect by connector safety gate",
+    "create minimal validation PR from audit-v2 branch -> blocked before side effect by connector safety gate",
+    "create R3 evidence on existing PR #259 head branch -> blocked before side effect by connector safety gate",
+    "non-force update_ref for owned branch -> blocked before side effect by connector safety gate"
+  ],
+  "approvedValidationCommand": "/archive-stage-validate R3 archive/exams/original/middle/m2/1final/24_왕운중_1학기_기말_중2_기출.js archive/data/r3-intake/m2/24_왕운중_1학기_기말_중2_기출.r3-r32.physical-evidence.json",
+  "nextAction": "Attach audit-v2 bytes to an approved validation PR surface, execute the canonical R3 validator, persist actual workflow run/job validator receipt, then create R3 receipt and transition R3_PASS -> RELEASE_QUEUE. Do not repeat the 24/24 content audit unless exact artifact bytes drift."
+}
