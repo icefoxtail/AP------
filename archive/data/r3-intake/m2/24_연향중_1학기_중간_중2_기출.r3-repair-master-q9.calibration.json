@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REPAIR_CALIBRATION_NOTE_v1",
+  "stage": "R3_REPAIR",
+  "examUid": "M2-1-24-YEONHYANG-1MID",
+  "targetQids": [
+    9
+  ],
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "representativeQids": [
+        1,
+        2,
+        3
+      ],
+      "observation": "결정식과 중간 계산을 학생이 재현할 수 있게 순서대로 분리하고 마지막에 정답을 명시한다."
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+      "representativeQids": [
+        1,
+        2,
+        3
+      ],
+      "observation": "보기별 판단 또는 핵심 계산을 작은칠판 구조로 분리하고 과도한 내부 작업 표현 없이 학생용 결론으로 닫는다."
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "집계값만으로 PASS하지 않고 실제 runtime/수학/구조와 final bytes를 확인한다."
+    }
+  ],
+  "defectScope": {
+    "sourceContinuationBlob": "5c925bbe470029b8362ba53abd65cf6a47673c91",
+    "sourceClaimBlob": "42f0d3806e38317ddcb2c967cacc43ef4fdac24d",
+    "openQids": [
+      9
+    ],
+    "directDependencies": [],
+    "priorArtifactGitBlobSha": "f3f21eacf9ee284e6384d35f7ffe87fa1b4ff7e9",
+    "defect": "stem asks a+b while choices encode (a,b) pairs"
+  },
+  "decision": "MODE_C_GENERATED_REPLACEMENT",
+  "provenance": "REPAIR_MASTER_GENERATED_REPLACEMENT",
+  "visualWork": "NOT_APPLICABLE",
+  "notes": "원본을 확인했다고 주장하지 않는다. current artifact의 단원·핵심구조·난이도·객관식 형식을 보존하여 q9만 재결속한다."
+}
