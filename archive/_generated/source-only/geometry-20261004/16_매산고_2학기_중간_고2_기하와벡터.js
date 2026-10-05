@@ -179,10 +179,10 @@ window.questionBank = [
     "tags": [
       "객관식"
     ],
-    "content": "삼각형 $ABC$의 내부의 한 점 $P$에 대하여 $2\\overrightarrow{AP}+\\overrightarrow{BP}+3\\overrightarrow{CP}=\\vec0$가 성립하고, 세 선분 $AP,BP,CP$의 연장선이 각각 세 변 $BC,CA,AB$와 만나는 점을 각각 $D,E,F$라 할 때, 옳은 것만을 보기에서 있는 대로 고른 것은? [4.6점]\n(ㄱ) $AF:FB=1:2$\n(ㄴ) $2\\overrightarrow{BP}=\\overrightarrow{BC}+\\overrightarrow{BF}$\n(ㄷ) $\\triangle APE$의 넓이가 $3$이면 $\\triangle AFP$의 넓이는 $5$이다.",
+    "content": "삼각형 $ABC$의 내부의 한 점 $P$에 대하여 $2\\overrightarrow{AP}+\\overrightarrow{BP}+3\\overrightarrow{CP}=\\vec0$가 성립하고, 세 선분 $AP,BP,CP$의 연장선이 각각 세 변 $BC,CA,AB$와 만나는 점을 각각 $D,E,F$라 할 때, 옳은 것만을 보기에서 있는 대로 고른 것은? [4.6점]\n(ㄱ) $\\overline{AF}:\\overline{FB}=1:2$\n(ㄴ) $2\\overrightarrow{BP}=\\overrightarrow{BC}+\\overrightarrow{BF}$\n(ㄷ) $\\triangle APE$의 넓이가 $3$이면 $\\triangle AFP$의 넓이는 $5$이다.",
     "choices": [
       "ㄱ",
-      "ㄴ",
+      "ㄷ",
       "ㄱ, ㄴ",
       "ㄴ, ㄷ",
       "ㄱ, ㄴ, ㄷ"
@@ -211,7 +211,7 @@ window.questionBank = [
     "tags": [
       "객관식"
     ],
-    "content": "좌표평면 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $(x,y)$가 $x=\\sin t-\\cos t, y=\\dfrac12\\cos^2t+1$이다. 점 $P$가 나타내는 곡선을 $C$라고 하고, $t=\\dfrac\\pi2$일 때 곡선 $C$ 위의 점에서의 접선을 $l$이라 하자. $t=\\alpha$ $(\\dfrac\\pi2<\\alpha<2\\pi)$에서 점 $P$가 직선 $l$ 위에 있을 때, $t=\\dfrac\\pi2$에서 $t=\\alpha$까지 점 $P$가 움직인 거리는? [4.6점]",
+    "content": "좌표평면 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $(x,y)$가 $x=\\sin t-\\cos t, y=\\dfrac12\\cos^2t+1$이다. 점 $P$가 나타내는 곡선을 $C$라고 하고, $t=\\dfrac\\pi2$일 때 곡선 $C$ 위의 점 $P$에서의 접선을 $l$이라 하자. $t=\\alpha$ $(\\dfrac\\pi2<\\alpha<2\\pi)$에서 점 $P$가 직선 $l$ 위에 있을 때, $t=\\dfrac\\pi2$에서 $t=\\alpha$까지 점 $P$가 움직인 거리는? [4.6점]",
     "choices": [
       "$\\dfrac\\pi2$",
       "$\\pi$",
@@ -227,7 +227,7 @@ window.questionBank = [
       "단답형",
       "도형"
     ],
-    "content": "삼각형 $OAB$에서 $\\overrightarrow{OA}$의 중점을 $M$, $\\overrightarrow{OB}$를 $1:2$로 내분하는 점을 $N$이라 하고, $BM$과 $AN$의 교점을 $P$라고 한다. $\\overrightarrow{OA}=\\vec a,\\overrightarrow{OB}=\\vec b$라고 할 때, $\\overrightarrow{OP}=m\\vec a+n\\vec b$라 하면 $m+n$의 값은? [6점]",
+    "content": "[단답형1] 삼각형 $OAB$에서 $\\overline{OA}$의 중점을 $M$, $\\overline{OB}$를 $1:2$로 내분하는 점을 $N$이라 하고, $\\overline{BM}$과 $\\overline{AN}$의 교점을 $P$라고 한다. $\\overrightarrow{OA}=\\vec a,\\overrightarrow{OB}=\\vec b$라고 할 때, $\\overrightarrow{OP}=m\\vec a+n\\vec b$라 하면 $m+n$의 값은? [6점]",
     "choices": [],
     "image": "assets/images/16_매산고_2학기_중간_고2_기하와벡터/q15.png"
   },
@@ -237,7 +237,7 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "좌표평면 위를 움직이는 점 $P$의 시각 $t$에서 위치벡터의 성분이 $(x,y)$이고 $x=\\dfrac12t^2-\\ln(2t), y=2t$ $(t>0)$로 나타내어진다. 속력이 최소일 때의 시각 $t$의 값을 구하고, 속력이 최소일 때부터 점 $P$가 $3$초 동안 움직인 거리를 구하여라. [6점]",
+    "content": "[단답형2] 좌표평면 위를 움직이는 점 $P$의 시각 $t$에서 위치벡터의 성분이 $(x,y)$이고 $x=\\dfrac12t^2-\\ln 2t, y=2t$ $(t>0)$로 나타내어진다. 속력이 최소일 때의 시각 $t$의 값을 구하고, 속력이 최소일 때부터 점 $P$가 $3$초 동안 움직인 거리를 구하여라. [6점]",
     "choices": []
   },
   {
@@ -246,7 +246,7 @@ window.questionBank = [
     "tags": [
       "단답형"
     ],
-    "content": "원 $C_1:x^2+(y-2)^2=25$에 내접하고 원 $C_2:x^2+(y+1)^2=10$에 외접하면서 움직이는 원 $C_3$의 중심을 $P$라고 할 때, 점 $P$가 그리는 도형의 방정식을 구하여라. [6점]",
+    "content": "[단답형3] 원 $C_1:x^2+(y-2)^2=25$에 내접하고 원 $C_2:x^2+(y+1)^2=10$에 외접하면서 움직이는 원 $C_3$의 중심을 $P$라고 할 때, 점 $P$가 그리는 도형의 방정식을 구하여라. [6점]",
     "choices": []
   },
   {
@@ -255,7 +255,7 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "content": "점 $(p,0)$을 지나고 기울기가 $p$인 직선이 포물선 $y^2=4px$와 두 점 $A,B$에서 만날 때, 선분 $AB$의 길이를 $p$로 나타내어라. (단, $p>0$) [7점]\n선분 $AB$의 방정식을 구하고 선분 $AB$의 길이를 구한 후 $p$를 사용하여 나타낼 수 있는 근거가 반드시 논리적으로 제시되어야 점수가 인정이 된다.",
+    "content": "[서술형1] 점 $(p,0)$을 지나고 기울기가 $p$인 직선이 포물선 $y^2=4px$와 두 점 $A,B$에서 만날 때, 선분 $AB$의 길이를 $p$로 나타내어라. (단, $p>0$) [7점]\n선분 $AB$의 방정식을 구하고 선분 $AB$의 길이를 구한 후 $p$를 사용하여 나타낼 수 있는 근거가 반드시 논리적으로 제시되어야 점수가 인정이 된다.",
     "choices": []
   },
   {
@@ -264,7 +264,7 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "content": "곡선 $y=x^2$ $(x\\ge0)$ 위를 움직이는 점에서 $x$축에 내린 수선의 발을 $Q$, 이 곡선과 $x$축, 그리고 선분 $PQ$로 둘러싸인 부분의 넓이를 $S$라고 하자. 시각에 대한 넓이 $S$의 변화율이 $2$라고 할 때, 점 $(2,4)$를 지나는 순간의 점 $P$의 속력을 구하여라. [7점]",
+    "content": "[서술형2] 곡선 $y=x^2$ $(x\\ge0)$ 위를 움직이는 점에서 $x$축에 내린 수선의 발을 $Q$, 이 곡선과 $x$축, 그리고 선분 $PQ$로 둘러싸인 부분의 넓이를 $S$라고 하자. 시각에 대한 넓이 $S$의 변화율이 $2$라고 할 때, 점 $(2,4)$를 지나는 순간의 점 $P$의 속력을 구하여라. [7점]",
     "choices": []
   },
   {
@@ -273,7 +273,7 @@ window.questionBank = [
     "tags": [
       "서술형"
     ],
-    "content": "삼각형 $OAB$에서 $AB=6,\\angle AOB=90^\\circ$이고 점 $P$가 다음 조건을 만족할 때, 선분 $BP$의 길이를 구하여라. (가) $2\\overrightarrow{OP}\\cdot(\\overrightarrow{OA}-\\overrightarrow{OB})=|\\overrightarrow{OA}|^2-|\\overrightarrow{OB}|^2$ (나) $2\\overrightarrow{OP}\\cdot\\overrightarrow{OB}=|\\overrightarrow{OB}|^2$ [7점]",
+    "content": "[서술형3] 삼각형 $OAB$에서 $AB=6,\\angle AOB=90^\\circ$이고 점 $P$가 다음 조건을 만족할 때, 선분 $BP$의 길이를 구하여라. (가) $2\\overrightarrow{OP}\\cdot(\\overrightarrow{OA}-\\overrightarrow{OB})=|\\overrightarrow{OA}|^2-|\\overrightarrow{OB}|^2$ (나) $2\\overrightarrow{OP}\\cdot\\overrightarrow{OB}=|\\overrightarrow{OB}|^2$ [7점]",
     "choices": []
   }
 ];
