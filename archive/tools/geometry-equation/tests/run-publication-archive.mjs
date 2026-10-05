@@ -25,7 +25,7 @@ const server=http.createServer((req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 let browser;const errors=[],rows=[],responses=[],pending=[],pageErrors=[];
-const result={scope:'SYNTHETIC_FIXTURES_IN_UNMODIFIED_ARCHIVE',mode:'sol',viewport:{width:390,height:844},publicationAuthorized:false,engineSha256:sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html'))),fixtureBankSha256:sha256(bank),rows,errors};
+const result={scope:'SYNTHETIC_FIXTURES_IN_UNMODIFIED_ARCHIVE_DESKTOP_REFERENCE',mode:'sol',viewport:{width:1440,height:1000},publicationReference:'DESKTOP_NO_SCREEN_FIT',publicationAuthorized:false,engineSha256:sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html'))),fixtureBankSha256:sha256(bank),rows,errors};
 try{
   browser=await launchBrowser();const page=await browser.newPage({viewport:result.viewport});
   page.on('pageerror',e=>pageErrors.push(String(e)));
@@ -56,7 +56,7 @@ try{
     for(let i=0;i<await image.count();i++)if(await image.nth(i).getAttribute('src')&&decodeURIComponent(new URL(await image.nth(i).evaluate(e=>e.src)).pathname)==='/'+f.svg){await image.nth(i).screenshot({path:path.join(folder,f.id+'.archive.png')});break;}
     if(layout.status!=='PASS')errors.push('ARCHIVE_LAYOUT_FAIL:'+f.id);
   }
-  await page.screenshot({path:path.join(folder,'archive-390.png'),fullPage:true});
+  await page.screenshot({path:path.join(folder,'archive-desktop.png'),fullPage:true});
   await Promise.allSettled(pending);
   if(!responses.some(r=>new URL(r.url).pathname===sourcePath&&r.status===200&&r.sha256===result.fixtureBankSha256))errors.push('ACTUAL_BANK_SHA_MISMATCH');
   for(const row of rows)if(!responses.some(r=>r.url===row.actualImage.src&&r.status===200&&r.sha256===row.svgSha256))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+row.id);

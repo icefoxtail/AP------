@@ -18,7 +18,7 @@ test('render result preserves per-label final CSS font evidence',()=>{
   assert.equal(result.labelMeasurements[0].finalViewportCssFontPx,13);
   assert.equal(result.labelMeasurements[0].id,'A-name');
 });
-test('publication explanatory text also obeys the mobile font floor',()=>{
+test('publication explanatory text obeys the reference font floor',()=>{
   const c=sample();c.labels.push({...c.labels[0],id:'note',kind:'GRAPH_ANNOTATION',effectiveFontPx:8,client:{x:110,y:70,width:20,height:10}});
   assert.ok(analyzeRenderedLayout(c).errors.includes('PUBLICATION_FONT_BELOW_11_CSS_PX:note'));
 });

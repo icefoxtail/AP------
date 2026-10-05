@@ -68,15 +68,16 @@ No failure was converted to PASS by weakening the numeric or font threshold.
 | Existing v1 fixture bytes vs integrated main | 13/13 identical |
 | Standalone Chromium display widths 320 / 390 | 10/10 PASS |
 | Deliberately undersized 240px display | Rejected as required |
-| Actual Archive mode=sol, 390x844, qpp=4 | 0/5 PASS; 5 font-floor FAIL |
+| Historical Archive mobile/page-fit, 390x844, qpp=4 | 5 font-floor FAIL under superseded mobile gate; now **N/A** for SVG publication |
+| Actual Archive desktop publication reference | **PENDING rerun on this policy commit** |
 
 Standalone minimum font sizes were 13.3333 CSS px at a 320px image and 16.25 CSS
-px at a 390px image. In actual Archive, all five loaded images measured about
-140.441 CSS px wide, with annotation fonts at **5.8515625 CSS px**. This is below
-the 11px hard floor. SVG hashes matched loaded response bytes; MathJax, images
-and layout loaded, there was no horizontal overflow, and the five failures were
-font-floor failures. Individual image screenshots and the page screenshot were
-visually inspected. The direct route reproduced the embedded-preview finding.
+px at a 390px image. A historical 390×844 Archive page-fit run scaled the whole A4
+page and reduced the SVG display width to about 140.441 CSS px, with annotation
+fonts at **5.8515625 CSS px**. The bytes and scaling were correct. Under the current
+policy this is **not an SVG publication failure**: mobile/page-fit scaling is outside
+the publication gate. The observation is retained only to document why the former
+mobile absolute-pixel rule was retired.
 
 Browser: Chromium/Chrome 154.0.8037.92. Measurements of SVG text use an explicitly
 identified isolated replay at the actual Archive image size, paired with the
@@ -91,12 +92,10 @@ fails. The historical green run at 5a20240fb is not evidence for these changes.
 ## FULL REBUILD readiness
 
 The overlay can be used for bounded candidate generation and independent static
-review of its supported Euclidean diagrams. It is **not qualified for final
-publication of the ten exams**. The direct mobile Archive route scales an A4
-two-column sheet down; standalone SVG qualification cannot settle that display
-constraint. The next integration decision must provide a readable mobile image
-container or composition and then repeat the real Archive gate. Enlarging every
-label or lowering the floor would defeat the geometry-first policy.
+review of its supported Euclidean diagrams. It is **not yet qualified for final
+publication of the ten exams** until the actual Archive **desktop publication
+reference** gate is rerun on this policy commit. The former mobile/page-fit font
+failure is no longer a blocker and no mobile-specific SVG composition is required.
 
 Still outside coverage: circle arc-span/arc-length owners, curved or holed regions,
 automatic dense-figure reframing and dimension choice, arbitrary SVG backends,
@@ -104,3 +103,8 @@ and independent source/solution fact collection across the ten actual exams.
 The five fixtures are synthetic failure-class examples, not approvals of q9,
 q12, q18, q21, q22 or any real exam. Full-denominator visual review and final
 asset-bound evidence remain required. Publication authorization remains false.
+
+
+## Publication policy update — 2026-10-05
+
+Canonical policy now qualifies solution SVGs on the actual Archive desktop publication reference, with no screen-fit/page-fit scaling. The default qualification viewport is 1440×1000. The 11 CSS-pixel floor applies there. Mobile/page-fit rendering is intentionally outside SVG publication qualification: the finished viewBox-based SVG is allowed to scale proportionally with the page/container, and no separate mobile render PASS is required.

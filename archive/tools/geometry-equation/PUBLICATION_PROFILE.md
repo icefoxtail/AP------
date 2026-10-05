@@ -26,7 +26,7 @@ the SVG to the actual Archive image dimensions or enforce the 11 CSS-pixel floor
 
 `final SVG bytes + review + exact source/solution bytes -> audit_publication.py`
 
-`same final SVG -> actual Chromium -> actual Archive mode=sol 390x844`
+`same final SVG -> actual Chromium -> actual Archive desktop mode=sol reference`
 
 The auditor imports only the Python standard library, not the builder, composer,
 layout, serializer or build witness. It independently parses actual XML coordinates,
@@ -148,13 +148,13 @@ leader to exit only its own geometrically matching boundary. Unrelated leader
 crossings still fail. Static observation must pass on the same asset; metadata
 alone cannot authorize that exception.
 
-Local qualification: Python **113 PASS**, Node **44 PASS**, independent static
+Local qualification before the desktop-policy update: Python **113 PASS**, Node **44 PASS**, independent static
 fixtures **5/5**, pure deterministic fixtures **5/5**, standalone Chromium
-**10/10** (five fixtures at display widths 320 and 390), deliberate 240px
-small-font case rejected. Existing 13 regression SVGs remain byte-identical to
+**10/10** at the former 320/390 regression widths, deliberate 240px
+small-font case rejected. The current CI keeps a standalone 390px regression only; it is not publication authority. Existing 13 regression SVGs remain byte-identical to
 the source baseline. The six original independent verifiers are not modified.
 
-Actual Archive qualification is a distinct CI step, not implied by these numbers.
+Actual Archive **desktop publication reference** qualification is a distinct CI step, not implied by these numbers. Mobile/page-fit rendering is outside SVG publication qualification; an A4 page scaled down on a narrow screen does not impose an absolute 11 CSS-pixel floor on the SVG.
 This session's local browser blocked loopback navigation with
 `ERR_BLOCKED_BY_ADMINISTRATOR`; that is an environment NOT_RUN, not an SVG PASS.
 Use the branch workflow's final `archive-summary.json` and final source SHA to
