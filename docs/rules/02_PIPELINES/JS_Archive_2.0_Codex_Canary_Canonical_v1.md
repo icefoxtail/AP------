@@ -113,6 +113,12 @@ project config의 global spawned-agent concurrency cap은 **5**다.
 
 ## 5. ROOT Routing-Only HARD
 
+### 위임된 운영 결정권
+
+사용자는 이번 운영 라인의 최소 수정안 적용 여부와 정상 오류 복구를 ROOT에게 위임했다. ROOT는 worker의 compact 검증 결과와 provenance를 근거로 수정안 적용, 보류/재개, 다음 stage 인계 및 승인 범위 내 production publication을 자율 결정한다. 정상 운영의 같은 적용 여부를 사용자에게 반복 질문하지 않는다.
+
+이 결정권은 ROOT가 수학·Meta·Visual·source를 직접 풀이하거나 재검수한다는 뜻이 아니다. 품질 판단과 필요한 최소 재검은 해당 custom stage worker가 수행하며, ROOT는 그 결과를 근거로 운영 결정을 한다. 원문 오류 수정은 원문 증거를 보존하고 sourceMode/수정 내역을 명시하며 독립 검수를 거친다. 검증 실패나 미해결 finding을 강제 PASS로 바꾸지 않는다. 위임 범위를 벗어난 신규 목표나 worker가 해결할 수 없는 필수 입력 부족만 사용자에게 요청한다.
+
 ROOT가 직접 하지 않는 일:
 
 - 문제 풀이

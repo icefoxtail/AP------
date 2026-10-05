@@ -15,3 +15,4 @@
 8. R2 blind 입력은 정답/해설을 제외한 학생용 필드만 먼저 추출한다. freeze 전 답 노출은 실패 실행으로 보존하고, 새 `archive_r2`에서 clean blind 실행을 수행한다. 구조 validator PASS만으로 이 실패를 닫지 않는다.
 9. multi-exam pilot은 CREATE/R1/R2/R3 각각 동시 담당 1개를 유지하는 stage별 직렬 컨베이어다. 역할은 고정하되 다음 시험지는 새 subagent 세션으로 시작한다. 같은 시험지의 동일 stage 수정·재확인·closure는 기존 세션에서 이어간다. CREATE 5개 동시 실행은 금지하며 concurrency 5는 상한이다. MAIN은 ROOT의 기술 routing, MASTER는 실제 continuation에만 사용한다.
 10. R1 DEEP는 수학/answer 검수와 별도로 전 qid의 QUESTION_LAYOUT / SOLUTION_LAYOUT / META / VISUAL_SVG 4축 독립 검수를 기록한다. MAIN_DONE은 실제 production canonical 반영, asset reference 확인, 최종 production SHA에 결속된 closeout receipt까지 완료해야 한다.
+11. 사용자에게 위임받은 이번 운영 라인에서 ROOT는 routing과 최종 운영 결정권을 가진다. worker의 검증된 근거에 따라 최소 수정안 적용, 오류 복구, 보류/인계 및 승인 범위 내 publication을 자율 결정하며 같은 적용 여부를 사용자에게 반복 확인하지 않는다. 수학·Meta·Visual·source의 직접 검수는 여전히 해당 worker가 수행한다. 원문 대비 수정은 provenance와 evidence에 명시하고 검증 실패를 강제 PASS로 처리하지 않는다. 위임 범위 밖의 새 목표나 복구 불가능한 필수 입력 부족만 사용자에게 요청한다.
