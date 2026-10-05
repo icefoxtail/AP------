@@ -2,6 +2,26 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {analyzeRenderedLayout,captureAtDisplaySize} from '../verify-rendered-layout.mjs';
 function sample(){return{runtime:'playwright-chromium',synthetic:false,publicationProfile:'geometry-publication-v1',fontStatus:'loaded',svg:{x:0,y:0,width:384,height:384},viewBox:{width:384,height:384},safeMargin:32,labels:[{id:'A-name',kind:'POINT_NAME',priority:1,baseFontPx:16,effectiveFontPx:13,client:{x:70,y:70,width:12,height:16},bbox:{width:12,height:16},missingGlyphCount:0}],geometry:[]};}
+
+test('stroke edge touching text fails even when the centerline misses',()=>{
+  const c=sample();
+  c.geometry=[{id:'AB',kind:'line',points:[[40,69],[110,69]],strokeWidthPx:4,client:{x:40,y:69,width:70,height:0}}];
+  assert.ok(analyzeRenderedLayout(c).errors.includes('LABEL_GEOMETRY_COLLISION:A-name:AB'));
+});
+test('circle stroke edge touching text fails even when its centerline misses',()=>{
+  const c=sample();
+  c.geometry=[{id:'circle',kind:'circle',at:[50,78],radius:19,strokeWidthPx:4,client:{x:31,y:59,width:38,height:38}}];
+  assert.ok(analyzeRenderedLayout(c).errors.includes('LABEL_GEOMETRY_COLLISION:A-name:circle'));
+});
+test('render result preserves per-label final CSS font evidence',()=>{
+  const result=analyzeRenderedLayout(sample());
+  assert.equal(result.labelMeasurements[0].finalViewportCssFontPx,13);
+  assert.equal(result.labelMeasurements[0].id,'A-name');
+});
+test('publication explanatory text also obeys the mobile font floor',()=>{
+  const c=sample();c.labels.push({...c.labels[0],id:'note',kind:'GRAPH_ANNOTATION',effectiveFontPx:8,client:{x:110,y:70,width:20,height:10}});
+  assert.ok(analyzeRenderedLayout(c).errors.includes('PUBLICATION_FONT_BELOW_11_CSS_PX:note'));
+});
 test('publication text needs an actual effective CSS font floor',()=>{const c=sample();assert.equal(analyzeRenderedLayout(c).status,'PASS');c.labels[0].effectiveFontPx=10.99;assert.ok(analyzeRenderedLayout(c).errors.some(e=>e.startsWith('PUBLICATION_FONT_BELOW')));});
 test('publication mixed point/numeric base sizes fail',()=>{const c=sample();c.labels.push({...c.labels[0],id:'length',kind:'LENGTH_LABEL',baseFontPx:14,client:{x:100,y:100,width:12,height:16}});assert.ok(analyzeRenderedLayout(c).errors.includes('PUBLICATION_BASE_FONT_INCONSISTENT'));});
 test('publication empty/skeleton labels cannot pass',()=>{const c=sample();c.labels=[];assert.equal(analyzeRenderedLayout(c).status,'FAIL');});

@@ -19,18 +19,21 @@ export async function collectRenderedLayout(page) {
     });
     const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"]')].map(e=>{
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
-      if(tag==='circle'){const at=project(e,e.cx.baseVal.value,e.cy.baseVal.value);const radius=e.r.baseVal.value*Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b);return{id:e.id,kind:e.getAttribute('data-role')==='point'?'point':'circle',at,radius,client};}
-      if(tag==='rect')return{id:e.id,kind:'conditionBox',client};
+      const style=getComputedStyle(e),matrix=e.getScreenCTM();
+      const strokeWidthPx=style.stroke==='none'?0:parseFloat(style.strokeWidth)*(style.vectorEffect==='non-scaling-stroke'?1:Math.max(Math.hypot(matrix.a,matrix.b),Math.hypot(matrix.c,matrix.d)));
+      if(tag==='circle'){const at=project(e,e.cx.baseVal.value,e.cy.baseVal.value);const radius=e.r.baseVal.value*Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b);return{id:e.id,kind:e.getAttribute('data-role')==='point'?'point':'circle',at,radius,client,strokeWidthPx};}
+      if(tag==='rect')return{id:e.id,kind:'conditionBox',client,strokeWidthPx};
       let points=[];
       if(tag==='line')points=[project(e,e.x1.baseVal.value,e.y1.baseVal.value),project(e,e.x2.baseVal.value,e.y2.baseVal.value)];
       else if(tag==='polyline'||tag==='polygon'){for(let i=0;i<e.points.numberOfItems;i++){const p=e.points.getItem(i);points.push(project(e,p.x,p.y));}if(tag==='polygon'&&points.length)points.push(points[0]);}
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
-      return{id:e.id,kind:e.getAttribute('data-role')||'line',points,client,owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean)};
+      return{id:e.id,kind:e.getAttribute('data-role')||'line',points,client,strokeWidthPx,owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean)};
     });
     return{runtime:'playwright-chromium',synthetic:false,svg:rect(r),viewBox:{x:v.x,y:v.y,width:v.width,height:v.height},safeMargin:32,publicationProfile:svg.getAttribute('data-publication-profile'),labels,geometry,fontStatus:document.fonts.status};
   });
 }
 const right=b=>b.x+b.width,bottom=b=>b.y+b.height;
+const expand=(b,p)=>({x:b.x-p,y:b.y-p,width:b.width+2*p,height:b.height+2*p});
 const overlap=(a,b)=>a.x<right(b)-.1&&b.x<right(a)-.1&&a.y<bottom(b)-.1&&b.y<bottom(a)-.1;
 const contains=(a,b)=>a.x-.1<=b.x&&right(b)<=right(a)+.1&&a.y-.1<=b.y&&bottom(b)<=bottom(a)+.1;
 function segmentBox(p,q,b) {
@@ -64,14 +67,16 @@ export function analyzeRenderedLayout(capture) {
     for(const other of capture.labels.slice(i+1))if(overlap(box,other.client)){labelCollisionCount++;if(Math.min(label.priority,other.priority)<=2)criticalCollisionCount++;errors.push('LABEL_OVERLAP:'+label.id+':'+other.id);}
     for(const g of capture.geometry) {
       let hit=false;
+      const strokePad=(g.strokeWidthPx??0)/2;
+      if(!Number.isFinite(strokePad)||strokePad<0){errors.push('INVALID_STROKE_MEASUREMENT:'+g.id);continue;}
       if(g.kind==='conditionBox'){
         if(g.id===label.id+'-box'){if(!contains(g.client,box)){overflowCount++;errors.push('CONDITION_BOX_OVERFLOW:'+label.id);}continue;}
-        hit=overlap(box,g.client);
+        hit=overlap(box,expand(g.client,strokePad));
       } else if(g.kind==='point'||g.kind==='circle'){
         const [x,y]=g.at;const near=Math.hypot(Math.max(box.x-x,0,x-right(box)),Math.max(box.y-y,0,y-bottom(box)));
         const far=Math.max(...[box.x,right(box)].flatMap(a=>[box.y,bottom(box)].map(b=>Math.hypot(a-x,b-y))));
-        hit=near<=g.radius&&(g.kind==='point'||far>=g.radius);
-      } else hit=g.points?.some((p,j)=>j>0&&segmentBox(g.points[j-1],p,box));
+        hit=near<=g.radius+strokePad&&(g.kind==='point'||far>=Math.max(0,g.radius-strokePad));
+      } else hit=g.points?.some((p,j)=>j>0&&segmentBox(g.points[j-1],p,expand(box,strokePad)));
       if(hit){labelCollisionCount++;if(label.priority<=2)criticalCollisionCount++;errors.push('LABEL_GEOMETRY_COLLISION:'+label.id+':'+g.id);}
     }
   }
@@ -80,7 +85,7 @@ export function analyzeRenderedLayout(capture) {
     const kinds=new Set(['POINT_NAME','ANGLE_LABEL','LENGTH_LABEL','AREA_LABEL','COORDINATE_LABEL','EQUATION_LABEL']);
     const labels=capture.labels.filter(v=>kinds.has(v.kind));
     if(!labels.length||capture.fontStatus!=='loaded')errors.push('PUBLICATION_TEXT_NOT_READY');
-    for(const label of labels) {
+    for(const label of capture.labels) {
       if(!Number.isFinite(label.effectiveFontPx)||label.effectiveFontPx<11-1e-7)errors.push('PUBLICATION_FONT_BELOW_11_CSS_PX:'+label.id);
       if(![label.client.x,label.client.y,label.client.width,label.client.height].every(Number.isFinite)||label.client.width<=0||label.client.height<=0)errors.push('PUBLICATION_TEXT_BOUNDS_INVALID:'+label.id);
     }
@@ -91,10 +96,11 @@ export function analyzeRenderedLayout(capture) {
     if(publication&&isOwnRegionExit(leader,other,capture.geometry))continue;
     if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
   }
-  for(const g of capture.geometry){if(!contains(capture.svg,g.client)){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
+  for(const g of capture.geometry){if(!contains(capture.svg,expand(g.client,(g.strokeWidthPx??0)/2))){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
   if(missingGlyphCount)errors.push('MISSING_GLYPH');
   return{status:errors.length?'FAIL':'PASS',HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,
     labelCollisionCount,criticalCollisionCount,clippedTextCount,overflowCount,missingGlyphCount,errors,
+    labelMeasurements:capture.labels.map(v=>({id:v.id,kind:v.kind,owner:v.owner,annotation:v.annotation,finalViewportCssFontPx:v.effectiveFontPx,baseFontPx:v.baseFontPx,font:v.font,client:v.client,bbox:v.bbox})),
     measurements:Object.fromEntries(capture.labels.map(v=>[v.id,[v.bbox.width+2,v.bbox.height+2]]))};
 }
 export async function captureAtDisplaySize(page,svg,display) {
