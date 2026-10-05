@@ -372,14 +372,15 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "[서술형 2] 오른쪽 그림의 원 $O$는 $\\overline{AB}=\\overline{AC}=5$, $\\overline{BC}=10$인 이등변삼각형 $ABC$의 외접원이고, 점 $Q$는 $\\overline{AP}$의 연장선과 $\\overline{BC}$의 연장선의 교점이다. $\\overline{AP}:\\overline{PQ}=1:3$일 때, $\\overline{BQ}$의 길이를 구하시오. [6점]",
+    "content": "[서술형 2] 오른쪽 그림의 원 $O$는 $\\overline{AB}=\\overline{AC}=5$, $\\overline{BC}=8$인 이등변삼각형 $ABC$의 외접원이고, 점 $Q$는 $\\overline{AP}$의 연장선과 $\\overline{BC}$의 연장선의 교점이다. $\\overline{AP}:\\overline{PQ}=1:3$일 때, $\\overline{BQ}$의 길이를 구하시오. [6점]",
     "choices": [],
     "answer": "",
     "solution": "",
     "tags": [
       "도형",
       "원"
-    ]
+    ],
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q22.svg"
   },
   {
     "id": 23,
