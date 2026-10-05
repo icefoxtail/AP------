@@ -175,3 +175,10 @@ assert.equal(r1MismatchWithoutDispositionReport.ok, false);
 assert.ok(r1MismatchWithoutDispositionReport.issues.includes('R1_DISPOSITION_REQUIRED:q2'));
 
 console.log('ARCHIVE_STAGE_VALIDATOR_R1_V2_PASS');
+
+
+const o9R1Exam = path.resolve('archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js');
+const o9R1Evidence = path.resolve('archive/data/r2e-intake/m2/21_팔마중_1학기_중간_중2_기출.review1.physical-evidence.json');
+const o9R1Report = validateStageEvidence({ examFile: o9R1Exam, evidenceFile: o9R1Evidence, stage: 'R1' });
+console.log('M2_O9_R1_CANONICAL_REPORT=' + JSON.stringify(o9R1Report));
+assert.equal(o9R1Report.ok, true, JSON.stringify(o9R1Report));
