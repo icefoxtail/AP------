@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "APMATH_PHASE4_RATIONAL_ATTEMPT_LEDGER_v1",
+  "classification": "FAILED_AND_SUPERSEDED_ATTEMPTS_PRESERVED_NOT_CURRENT_SUPPORT",
+  "attempts": [
+    {
+      "runId": "phase4-rational-final-regression-6b3adf6f95614a14a8cb21395eb7a349",
+      "status": "FAILED_THEN_CORRECTED",
+      "failureClass": "STALE_TEST_EXPECTATION_AFTER_RATIONAL_CAPABILITY_WAS_ADDED",
+      "failedTest": "test_non_cubic_quartic_and_non_polynomial_families_are_not_routed_into_policy",
+      "disposition": "The negative intended to exercise an unsupported non-polynomial family but supplied family=rational, which now has a separate route. The fixture was changed to exponential; no rational production gate was relaxed.",
+      "rawLog": {
+        "path": "payload/attempts/stale-python-expectation-failure.txt",
+        "bytes": 20365,
+        "sha256": "sha256:5876dfc04baf1d9d9441b27b7fb57a9a62f715bd22a115ab74bd98ee0562a537"
+      },
+      "summary": {
+        "path": "payload/attempts/stale-python-expectation-summary.json",
+        "bytes": 956,
+        "sha256": "sha256:e9f5b10c9931d0d3d25dadfecf802bc9b409bf5a844c5d9f4446980e67b959b3"
+      }
+    },
+    {
+      "runId": "phase4-rational-hole-33c545b6-958d-44d5-9c9a-f1d5fb480a96",
+      "kind": "hole",
+      "status": "SUPERSEDED_BY_MARKER_READABILITY_POLICY",
+      "reason": "Prior profile audit selected medium without enforcing the later 4.5 CSS px hole-marker diameter floor. The independent marker policy now rejects small/medium and selects large.",
+      "originalSelectedSizeClass": "medium",
+      "candidateSvgSha256": "sha256:7e43fd1b2597ae949ed808cb67d7ba153e5cbfa40570290634e658e944476586",
+      "result": {
+        "path": "payload/attempts/pre-marker-hole/fixture-result.json",
+        "bytes": 774623,
+        "sha256": "sha256:4063bab4c2abf2bdf7e8d074465bff9f11d5bf79d68dfdb51fe939873b7ceeb4"
+      },
+      "archiveRow": {
+        "path": "payload/attempts/pre-marker-hole/archive-row.json",
+        "bytes": 35887,
+        "sha256": "sha256:044c1a7b9a46256b82de794a6457019780f782400d40bb2df84b7737233b72a8"
+      },
+      "screenshot": {
+        "path": "payload/attempts/pre-marker-hole/archive-screenshot.png",
+        "bytes": 1085443,
+        "sha256": "sha256:82f760bbc182c0c0def50d68f018eae65ac322d0121e03eb58c0057a3957802b"
+      }
+    }
+  ]
+}

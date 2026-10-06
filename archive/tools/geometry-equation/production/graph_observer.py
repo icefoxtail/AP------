@@ -198,6 +198,90 @@ def overview_audit(plan,poly,points,transform):
         measured.append({'arm':name,'horizontalCssPx':horizontal,'riseCssPx':rise})
     return {'status':'FAIL' if errors else 'PASS','errors':errors,'vertex':[h,k],'opening':'UP' if a>0 else 'DOWN','plotCssSize':[width,height],'arms':measured,'policy':'QUADRATIC_OVERVIEW_v1'}
 
+def rational_overview_audit(plan,poly,points,transform,topology,svg_root):
+    errors=[]
+    if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:return {'status':'UNSUPPORTED','errors':['RATIONAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS']}
+    if plan.get('overviewPolicy')!='RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['RATIONAL_OVERVIEW_POLICY_REQUIRED']}
+    try:
+        numerator=polynomial(plan.get('numerator'),1);denominator=polynomial(plan.get('denominator'),1)
+    except (ValueError,TypeError):return {'status':'UNSUPPORTED','errors':['RATIONAL_LINEAR_OVER_LINEAR_GRAMMAR_REQUIRED']}
+    if numerator.degree()!=1 or denominator.degree()!=1:return {'status':'UNSUPPORTED','errors':['RATIONAL_LINEAR_OVER_LINEAR_GRAMMAR_REQUIRED']}
+    singularity_x=-denominator.nth(0)/denominator.nth(1)
+    numerator_root=-numerator.nth(0)/numerator.nth(1)
+    horizontal=numerator.LC()/denominator.LC()
+    is_hole=numerator.eval(singularity_x)==0
+    expected={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1','singularity':{'kind':'REMOVABLE_HOLE','x':str(singularity_x),'y':str(horizontal)} if is_hole else {'kind':'VERTICAL_POLE','x':str(singularity_x)},'horizontalAsymptoteY':str(horizontal),'xIntercept':None if is_hole else str(numerator_root)}
+    policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
+    if plan.get('rationalFeatures')!=expected:errors.append('RATIONAL_FEATURE_INVENTORY_MISMATCH')
+    if plan.get('rationalFeaturePolicy')!=policy:errors.append('RATIONAL_FEATURE_POLICY_MISMATCH')
+    x0,x1,y0,y1=plan['viewport'];lo,hi=plan['domain'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
+    width=(x1-x0)*sx;height=(y1-y0)*sy
+    pole=float(singularity_x);asym=float(horizontal);root_x=float(numerator_root)
+    if not x0+.05*(x1-x0)<pole<x1-.05*(x1-x0):errors.append('RATIONAL_SINGULARITY_OUTSIDE_OVERVIEW')
+    if not x0<0<x1 or not y0<0<y1:errors.append('RATIONAL_AXES_ORIGIN_NOT_VISIBLE')
+    if not y0+.05*(y1-y0)<asym<y1-.05*(y1-y0):errors.append('RATIONAL_HORIZONTAL_ASYMPTOTE_OUTSIDE_OVERVIEW')
+    if is_hole:
+        hole_y=float(horizontal)
+        if not x0+.05*(x1-x0)<pole<x1-.05*(x1-x0) or not y0+.05*(y1-y0)<hole_y<y1-.05*(y1-y0):errors.append('RATIONAL_HOLE_OUTSIDE_OVERVIEW')
+    else:
+        if not x0+.05*(x1-x0)<root_x<x1-.05*(x1-x0):errors.append('RATIONAL_NUMERATOR_ZERO_OUTSIDE_OVERVIEW')
+        if abs(root_x-pole)*sx<1:return {'status':'UNSUPPORTED','errors':['RATIONAL_ROOT_FEATURE_BELOW_DISPLAY_RESOLUTION'],'features':expected}
+    pole_list=topology.get('poles',[]);hole_list=topology.get('holes',[])
+    if is_hole:
+        if len(hole_list)!=1 or abs(hole_list[0]-pole)>.00000001 or pole_list:errors.append('RATIONAL_HOLE_TOPOLOGY_MISMATCH')
+    elif len(pole_list)!=1 or abs(pole_list[0]-pole)>.00000001 or hole_list:errors.append('RATIONAL_POLE_TOPOLOGY_MISMATCH')
+    x_tolerance=.35/max(1e-12,sx);left_points=[point for point in points if point[0]<pole];right_points=[point for point in points if point[0]>pole]
+    if not left_points or not right_points:errors.append('RATIONAL_BRANCH_SIDE_MISSING')
+    branch_width_floor=max(20,width*.10)
+    if left_points and (pole-min(point[0] for point in left_points))*sx<branch_width_floor:errors.append('RATIONAL_LEFT_BRANCH_TOO_NARROW')
+    if right_points and (max(point[0] for point in right_points)-pole)*sx<branch_width_floor:errors.append('RATIONAL_RIGHT_BRANCH_TOO_NARROW')
+    if not is_hole and left_points and right_points:
+        residue=float((numerator.eval(singularity_x)/denominator.diff().eval(singularity_x)))
+        left_edge=y1 if residue<0 else y0
+        right_edge=y1 if residue>0 else y0
+        nearest_left=max(left_points,key=lambda point:point[0]);nearest_right=min(right_points,key=lambda point:point[0])
+        if abs(nearest_left[1]-left_edge)*sy>1.25:errors.append('RATIONAL_LEFT_POLE_BRANCH_WRONG_SIDE')
+        if abs(nearest_right[1]-right_edge)*sy>1.25:errors.append('RATIONAL_RIGHT_POLE_BRANCH_WRONG_SIDE')
+        if max(abs(point[1]-asym) for point in left_points)*sy<max(18,height*.12):errors.append('RATIONAL_LEFT_BRANCH_TOO_SHORT')
+        if max(abs(point[1]-asym) for point in right_points)*sy<max(18,height*.12):errors.append('RATIONAL_RIGHT_BRANCH_TOO_SHORT')
+        left_end=min(points,key=lambda point:point[0]);right_end=max(points,key=lambda point:point[0])
+        if abs(left_end[1]-asym)*sy>height*.35 or abs(right_end[1]-asym)*sy>height*.35:errors.append('RATIONAL_HORIZONTAL_TAIL_NOT_VISIBLE')
+    elif is_hole and left_points and right_points:
+        nearest_left=max(left_points,key=lambda point:point[0]);nearest_right=min(right_points,key=lambda point:point[0])
+        if abs(nearest_left[0]-pole)*sx>.35 or abs(nearest_right[0]-pole)*sx>.35:errors.append('RATIONAL_HOLE_BRANCH_GAP_TOO_WIDE')
+    asymptote_lines=[]
+    for node in svg_root.iter():
+        if node.tag.split('}')[-1]=='line' and node.get('data-role')=='asymptote':
+            if not node.get('stroke-dasharray'):errors.append('RATIONAL_ASYMPTOTE_MUST_BE_DASHED')
+            try:asymptote_lines.append(tuple(float(node.get(key)) for key in ('x1','y1','x2','y2')))
+            except (TypeError,ValueError):errors.append('RATIONAL_ASYMPTOTE_LINE_INVALID')
+    expected_line_count=2 if not is_hole else 1
+    if len(asymptote_lines)!=expected_line_count:errors.append('RATIONAL_ASYMPTOTE_INVENTORY_MISMATCH')
+    seen_horizontal=seen_vertical=0
+    px_tolerance=.5/max(1e-12,sx);py_tolerance=.5/max(1e-12,sy)
+    for x_a,y_a,x_b,y_b in asymptote_lines:
+        mx_a,mx_b=(x_a-transform['originX'])/transform['sx'],(x_b-transform['originX'])/transform['sx']
+        my_a,my_b=(transform['originY']-y_a)/transform['sy'],(transform['originY']-y_b)/transform['sy']
+        if abs(my_a-asym)<=py_tolerance and abs(my_b-asym)<=py_tolerance and abs(mx_a-x0)<=px_tolerance and abs(mx_b-x1)<=px_tolerance:seen_horizontal+=1
+        elif not is_hole and abs(mx_a-pole)<=px_tolerance and abs(mx_b-pole)<=px_tolerance and abs(my_a-y0)<=py_tolerance and abs(my_b-y1)<=py_tolerance:seen_vertical+=1
+        else:errors.append('RATIONAL_ASYMPTOTE_GEOMETRY_MISMATCH')
+    if seen_horizontal!=1:errors.append('RATIONAL_HORIZONTAL_ASYMPTOTE_MISSING_OR_WRONG')
+    if not is_hole and seen_vertical!=1:errors.append('RATIONAL_VERTICAL_ASYMPTOTE_MISSING_OR_WRONG')
+    expected_hole=[]
+    for node in svg_root.iter():
+        if node.tag.split('}')[-1]=='circle' and node.get('data-role')=='hole' and node.get('fill') in {'white','#fff','#ffffff'}:
+            try:expected_hole.append({'point':((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy']),'radius':float(node.get('r')),'stroke':node.get('stroke'),'strokeWidth':float(node.get('stroke-width'))})
+            except (TypeError,ValueError):errors.append('RATIONAL_HOLE_MARKER_INVALID')
+    if is_hole:
+        if len(expected_hole)!=1:errors.append('REMOVABLE_HOLE_MARKER_MISSING_OR_WRONG')
+        else:
+            marker=expected_hole[0]
+            if abs(marker['point'][0]-pole)*sx>.35 or abs(marker['point'][1]-asym)*sy>.35:errors.append('REMOVABLE_HOLE_MARKER_MISSING_OR_WRONG')
+            if marker['radius']<policy['holeMarkerRadiusIntrinsicPx']-.01 or marker['stroke'] in (None,'none','') or marker['strokeWidth']<=0:errors.append('RATIONAL_HOLE_MARKER_OUTLINE_INVALID')
+            if 2*marker['radius']*transform['displayScale']<policy['minimumHoleMarkerDiameterCssPx']:return {'status':'UNSUPPORTED','errors':['RATIONAL_HOLE_MARKER_BELOW_DISPLAY_RESOLUTION'],'features':expected,'plotCssSize':[width,height]}
+    elif expected_hole:errors.append('UNEXPECTED_RATIONAL_HOLE_MARKER')
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'features':expected,'plotCssSize':[width,height],'topology':{'poles':pole_list,'holes':hole_list,'visibleIntervals':topology.get('visibleIntervals')},'asymptoteLines':len(asymptote_lines),'branchSideCounts':[len(left_points),len(right_points)],'mathMethod':'EXACT_LINEAR_OVER_LINEAR_RATIONAL_TOPOLOGY'}
+
 def audit(plan,svg,transform):
     try:f,den,poly,evaluate,topology=resolve(plan)
     except (ValueError,KeyError,TypeError) as error:return {'status':'UNSUPPORTED','errors':[str(error)]}
@@ -211,7 +295,7 @@ def audit(plan,svg,transform):
     if len(paths)>32 or sum(len(n.get('points','')) for n in paths)>500000:return {'status':'UNSUPPORTED','errors':['OBSERVER_BUDGET_EXCEEDED']}
     second=S.together(S.diff(f,x,2));second_num,second_den=second.as_numer_denom()
     for n in root.iter():
-        if n.tag.split('}')[-1]=='circle' and n.get('data-role')=='hole' and n.get('fill')=='white':
+        if n.tag.split('}')[-1]=='circle' and n.get('data-role')=='hole' and n.get('fill') in {'white','#fff','#ffffff'}:
             markers.append(((float(n.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(n.get('cy')))/transform['sy']))
     for path in paths:
         values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',path.get('points',''))]
@@ -264,7 +348,8 @@ def audit(plan,svg,transform):
     for hole in topology['holes']:
         lim=float(S.limit(f,x,S.Rational(str(hole))))
         if plan['viewport'][2]<=lim<=plan['viewport'][3] and not any(abs(mx-hole)<1e-7 and abs(my-lim)*scale<=tolerance for mx,my in markers):errors.append('REMOVABLE_HOLE_MARKER_MISSING')
-    overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
+    if plan.get('family')=='rational' and plan.get('shapeIntent')=='OVERVIEW':overview=rational_overview_audit(plan,poly,actual_points,transform,topology,root)
+    else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}

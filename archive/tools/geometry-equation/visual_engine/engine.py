@@ -57,6 +57,24 @@ def prepare(spec):
                 if abs(value-1)>1e-12:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick'},'line')
                 text=(str(int(value)) if float(value).is_integer() else f'{value:.10g}').replace('-','−')
                 labels.append({'id':oid+'-label','kind':'GRAPH_ANNOTATION','target':axis+'-axis','at':p,'text':text,'font':tokens['tickLabel'],'priority':4,'allowSuppress':True,'preferred':'S' if axis=='x' else 'W','gaps':(8,12)})
+    rational_features=spec['displayFacts'].get('rationalGraphFeatures')
+    if rational_features is not None:
+        if rational_features.get('schemaVersion')!='RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1':raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
+        xmin,xmax,ymin,ymax=vp.bounds
+        horizontal=float(Fraction(rational_features['horizontalAsymptoteY']))
+        a,b=vp.screen((xmin,horizontal)),vp.screen((xmax,horizontal))
+        primitive({'id':'rational-asymptote-horizontal','kind':'line','from':a,'to':b,'token':'auxiliary','layer':25,'role':'asymptote','dash':'5 4'},'line')
+        singularity=rational_features['singularity'];singular_x=float(Fraction(singularity['x']))
+        if singularity['kind']=='VERTICAL_POLE':
+            a,b=vp.screen((singular_x,ymin)),vp.screen((singular_x,ymax))
+            primitive({'id':'rational-asymptote-vertical','kind':'line','from':a,'to':b,'token':'auxiliary','layer':25,'role':'asymptote','dash':'5 4'},'line')
+        elif singularity['kind']=='REMOVABLE_HOLE':
+            at=vp.screen((singular_x,float(Fraction(singularity['y']))))
+            rational_policy=spec['displayFacts'].get('rationalGraphPolicy',{})
+            marker_radius=rational_policy.get('holeMarkerRadiusIntrinsicPx')
+            if not isinstance(marker_radius,(int,float)) or isinstance(marker_radius,bool) or marker_radius<=0:raise ValueError('RATIONAL_HOLE_MARKER_POLICY_REQUIRED')
+            primitive({'id':'rational-removable-hole','kind':'circle','at':at,'radius':marker_radius,'token':'indicator','layer':65,'role':'hole','fill':'#fff'},'circle')
+        else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
     by_id={v['id']:v for v in spec['objects']}
     tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
     graph_index=0

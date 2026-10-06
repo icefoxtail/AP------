@@ -106,17 +106,24 @@ PASS alone cannot close the overview axis.
 `sourceDomain:{kind:'ALL_REALS'}` permits a wider drawing interval; an older
 frozen interval is never enlarged by inference. Restricted domains require a
 separate context representation and remain unsupported here. Local zoom views
-cannot stand in for the main overview. General overview rules for cubic/quartic,
-exponential, rational, sqrt and mixed panels are not declared complete. The
-bounded Phase 4 cubic/quartic experiment now frames exact degree-3/4 rational
-polynomials only when the source domain is explicitly `ALL_REALS`; it preserves
-the source domain, freezes roots/critical points/inflections and tail directions,
-and fails closed for repeated roots, restricted intervals, or features below the
-measured display resolution. Its controlled cubic/quartic Archive fixtures pass
-at large and full respectively. These synthetic fixtures do not qualify a real
-UID or authorize publication; the full cubic/quartic family remains
-`EXPERIMENTAL / CONTROLLED FIXTURE ONLY` until canonical UID evidence and the
-remaining family coverage exist.
+cannot stand in for the main overview. The bounded Phase 4 cubic/quartic
+experiment frames exact degree-3/4 rational-coefficient polynomials only when
+the source domain is explicitly `ALL_REALS`; it preserves the source domain,
+freezes roots/critical points/inflections and tail directions, and fails closed
+for repeated roots, restricted intervals, or features below measured display
+resolution. Its controlled cubic/quartic Archive fixtures select large and full.
+
+The separate `rational-spike-v1` experiment accepts only exact linear-over-linear
+coefficient strings with `sourceDomain:{kind:'ALL_REALS'}` and one simple
+denominator root. It preserves the natural denominator exclusion, classifies the
+root exactly as one pole or one removable hole, and audits the horizontal
+asymptote, visible branches, and final SVG cues. A hole uses a white outlined
+marker with a 4 intrinsic px radius and a 4.5 CSS px minimum diameter at the
+measured Archive profile. The controlled Archive fixtures select medium for the
+pole and large for the hole. Both families remain `EXPERIMENTAL / CONTROLLED
+FIXTURE ONLY`; neither establishes real-UID publication support or canonical
+qualification. General overview rules for exponential, square-root, absolute-
+value, piecewise, trigonometric, and mixed panels remain incomplete.
 
 - Construction: source points, closed SSS normalization, midpoint, line through
   points, perpendicular foot, circle radius, circle/circle and line/circle
@@ -133,11 +140,14 @@ remaining family coverage exist.
   positive-slope affine sqrt with a boundary secant envelope. Independent root
   isolation/coverage/interior bounds observe final polylines. Subpixel clustered
   root features return UNSUPPORTED, and missing hole markers/pole crossings fail.
-  The experimental cubic/quartic overview extension supports only all-real
-  degree-3/4 polynomial source domains and is not publication-qualified.
-  Real UID publication currently dispatches polynomial only. Trig/log/exp/abs/
-  piecewise/general compositions and mixed geometry/graph publication are not
-  qualified or enabled.
+  Experimental cubic/quartic framing accepts only all-real degree-3/4 polynomial
+  source domains. The distinct rational capability accepts only all-real
+  linear-over-linear inputs with one simple real denominator root, classified as
+  a pole or removable hole; higher degrees, multiple denominator roots,
+  oblique asymptotes, and additional source intervals fail closed. Both routes
+  are controlled-fixture-only, not publication-qualified. Trig/log/exp/abs/
+  piecewise general compositions and mixed geometry/graph publication remain
+  unsupported.
 - Typography: the tested inventory includes Korean, fractions, radicals, powers,
   subscripts, prime, pi, degree/unit, entity/product and generated AST precedence.
   General TeX/Korean mixed shaping and a full notation/glyph qualification are
