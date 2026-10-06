@@ -6,7 +6,7 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {fileRef,objectSha,readBoundFile} from '../../pipeline-core/canonical.mjs';
-import {blindThenCompare,reuseReviewAuthority,validateReviewLineage,verificationBinding,assertStudentOnly} from '../production/blinded-review.mjs';
+import {blindThenCompare,reuseReviewAuthority,validateReviewLineage,verificationBinding,conditionBinding,assertStudentOnly} from '../production/blinded-review.mjs';
 import {sourceReviewClosed,verificationClosed,verifiedSolutionPolicyFingerprint} from '../production/source-policy.mjs';
 import {scalar,compareReconstruction} from '../production/cindy-observer.mjs';
 import {runPhase2} from '../production/phase2.mjs';
@@ -58,6 +58,27 @@ test('replay reuses only current review authority and requires a valid fresh rep
       await assert.rejects(reuseReviewAuthority({root:h.root,record:original,kind,policySha256:objectSha('policy-v2'),inputBindingSha256:originalBinding,closed,refresh:()=>original}),/REFRESHED_REVIEW_AUTHORITY_INVALID/);
     }finally{fs.rmSync(h.root,{recursive:true,force:true});}
   }
+});
+test('changed proposed visual plan invalidates the source-condition replay binding',async()=>{
+  const h=harness('CONDITIONS'),kind='CONDITIONS',closed=sourceReviewClosed;
+  const source={content:'triangle',choices:['34'],sourceImageRequired:false},images=[];
+  const sourceRef={path:'archive/exams/original/source.js',bytes:17,sha256:objectSha('source-blob')};
+  const policySha256=objectSha('condition-policy-v1');
+  const planA={sourceConditions:[{id:'given1',condition:'AB=5'}],displaySegments:['AB'],caption:'삼각형'};
+  const planB={sourceConditions:[{id:'given1',condition:'AB=5'}],displaySegments:['AC'],caption:'삼각형'};
+  const bindingA=conditionBinding({sourceRef,source,images,plan:planA,policySha256});
+  const bindingB=conditionBinding({sourceRef,source,images,plan:planB,policySha256});
+  assert.notEqual(bindingA,bindingB);
+  const original=await blindThenCompare({...h,kind,source,images,comparison:{proposedPlan:planA},policySha256,inputBindingSha256:bindingA});
+  try{
+    const warm=await reuseReviewAuthority({root:h.root,record:original,kind,policySha256,inputBindingSha256:bindingA,closed,refresh:()=>{throw Error('UNEXPECTED_CONDITION_REFRESH');}});
+    assert.equal(warm.reused,true);
+    let refreshCount=0;
+    const refreshed=await reuseReviewAuthority({root:h.root,record:original,kind,policySha256,inputBindingSha256:bindingB,closed,refresh:async()=>{refreshCount++;return blindThenCompare({...h,kind,source,images,comparison:{proposedPlan:planB},policySha256,inputBindingSha256:bindingB});}});
+    assert.equal(refreshCount,1);assert.equal(refreshed.reused,false);assert.equal(closed(refreshed.record),true);
+    assert.equal(validateReviewLineage(h.root,refreshed.record,kind,policySha256,bindingB),true);
+    await assert.rejects(reuseReviewAuthority({root:h.root,record:original,kind,policySha256,inputBindingSha256:bindingB,closed,refresh:()=>original}),/REFRESHED_REVIEW_AUTHORITY_INVALID/);
+  }finally{fs.rmSync(h.root,{recursive:true,force:true});}
 });
 test('no comparison call after blind failure, leak, absent image or non-durable freeze',async()=>{
   for(const source of [{content:'q',answer:'upstream'}, {content:'q',choices:[{solution:'leak'}]}])assert.throws(()=>assertStudentOnly(source),/LEAK/);

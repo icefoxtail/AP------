@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "PHASE3D_CONDITION_PLAN_BINDING_v1",
+  "unit": "proposed-plan-condition-review-invalidation",
+  "status": "PASS",
+  "contract": "A source-condition review is reusable only for the exact bound proposed plan. Changing a displayed segment in that plan changes conditionBinding; the prior blind/compare receipt is rejected and a current fresh receipt is required.",
+  "cases": {
+    "unchangedPlan": "receipt reused without refresh",
+    "changedPlan": "conditionBinding SHA changes and exactly one fresh CONDITIONS review is run",
+    "staleFreshReceipt": "rejected with REFRESHED_REVIEW_AUTHORITY_INVALID",
+    "exactTarget": "plan A source condition AB=5 maps display segment AB; plan B preserves the condition but changes displayed segment to AC"
+  },
+  "focused": {
+    "command": "node --test --test-name-pattern 'changed proposed visual plan invalidates' archive/tools/geometry-equation/tests/p1-boundaries.test.mjs (10 repetitions)",
+    "runs": 10,
+    "passes": 10,
+    "failures": 0,
+    "log": "plan-binding-negative-10x.log",
+    "sha256": "3390be3916d0da562e2936852308dfa9cfe2cbf6c486d5489c94cc50d5115ba1"
+  },
+  "regressionSubset": {
+    "command": "node --test archive/tools/geometry-equation/tests/p1-boundaries.test.mjs archive/tools/geometry-equation/tests/production-runner.test.mjs archive/tools/geometry-equation/tests/production-contract.test.mjs archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+    "pass": 48,
+    "fail": 0,
+    "log": "node-phase3d-subset.log",
+    "sha256": "99fb703331182b12130d672860cd337f44839666367bb7574bd2645feca77776"
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/p1-boundaries.test.mjs",
+      "sha256": "4a8c461c77e035c14a125efd7b66f8a816209e80ef3fbd9d974639c916f9954a"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/blinded-review.mjs",
+      "sha256": "863c55c1333bd5f91230aa4ad3c64c5eac4f112ff988114d5aba8951bf205a2c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/source-policy.mjs",
+      "sha256": "b7fd19cd33c750772b489127e32c90ee4bf217656a20658bacf0033bc30ca533"
+    }
+  ],
+  "limits": [
+    "Contract/provider harness only; no external provider call or actual Archive render.",
+    "This closes explicit proposal-plan invalidation; full source/image/provider/observer and cache invalidation variants remain open."
+  ],
+  "lastUpdatedUtc": "2026-10-06T08:29:19Z"
+}
