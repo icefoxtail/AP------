@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_WORKER_REQUIRED_RESULT_RECOVERY_v1",
+  "classification": "MALFORMED_WORKER_RESULT_FIELD_REJECTED_AT_WIRE_BOUNDARY",
+  "status": "PASS",
+  "contract": {
+    "requiredField": "result",
+    "rule": "Every syntactically valid worker response must carry its result member, including null-valued results; missing result is INVALID_WORKER_RESPONSE before consumer code runs."
+  },
+  "cases": [
+    {
+      "name": "missing-result-field",
+      "failure": "INVALID_WORKER_RESPONSE at validateResponse",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "malformed-json-frame",
+      "failure": "SyntaxError from JSON.parse",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "invalid-worker-status",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "invalid-wire-version",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    },
+    {
+      "name": "valid-json-wrong-request-hash",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "sameKeyRecovery": "PASS",
+      "warmReuse": "PASS"
+    }
+  ],
+  "failedAttempt": {
+    "schemaVersion": "WORKER_MISSING_RESULT_PRE_FIX_FAILURE_v1",
+    "status": "FAILED_TEST_PRESERVED",
+    "test": "malformed JSON framing and invalid status schemas stay uncached until same-key recovery",
+    "case": "missing-result-field",
+    "preFixContractCommit": "dc466abee",
+    "preFixContractsGitBlobSha1": "36b4f0600696d7b92ed127f3e9570816253c3ce3",
+    "expected": "INVALID_WORKER_RESPONSE",
+    "observed": "NON_JSON_VALUE",
+    "note": "The worker response passed wireVersion/hash/status checks without a result member; the consumer failed later during canonicalization. The run output showed this assertion mismatch. The failed run did not reach the test assertions for lock/staging cleanup, so those are not attributed to this attempt."
+  },
+  "observations": {
+    "focusedRepetitions": 10,
+    "topLevelTestsPerRun": 2,
+    "invalidProtocolCasesPerRun": 5,
+    "focusedExitCodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "nodeTests": 60,
+    "nodePasses": 60,
+    "nodeFailures": 0,
+    "pythonTests": 141,
+    "pythonPasses": 141,
+    "pythonFailures": 0
+  },
+  "currentFingerprint": {
+    "capability": "polynomial-spike-v1",
+    "sha256": "sha256:187556d34052ce0a09ad98e97783629e33f945ce1de713dba0fa3900ce4c3cea",
+    "q10RepairCount": 3,
+    "replaysRequired": true
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+      "bytes": 7475,
+      "sha256": "sha256:73ee1a6b8ced773db283e2cab5cce5382868c5db856070ef2a707d42a7ca917d"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/contracts.mjs",
+      "bytes": 5164,
+      "sha256": "sha256:7649e5215c7bfb9eb622512ee9b539099378f88569c8f5c7489b0ea72f0f900e"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 2163,
+      "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    }
+  ],
+  "logs": {
+    "focused": [
+      "logs/focused-01.json",
+      "logs/focused-02.json",
+      "logs/focused-03.json",
+      "logs/focused-04.json",
+      "logs/focused-05.json",
+      "logs/focused-06.json",
+      "logs/focused-07.json",
+      "logs/focused-08.json",
+      "logs/focused-09.json",
+      "logs/focused-10.json"
+    ],
+    "node": "logs/node-regression-60.json",
+    "python": "logs/python-regression-141.json",
+    "summary": "logs/summary.json",
+    "testSource": "logs/worker-malformed-recovery.test.mjs",
+    "runnerSource": "logs/run-malformed-result-regression.mjs",
+    "failedAttemptPath": "attempts/missing-result-before-contract-fix.json"
+  },
+  "openDebt": [
+    "Other worker protocol defects beyond malformed JSON, missing result, invalid status, invalid wire version, and wrong request hash remain open.",
+    "Provider timeout cleanup and remote-turn cancellation remain DEBT in the provider-timeout probe.",
+    "Canonical UID authority and qualification remain unresolved; these tests do not produce a candidate or student result."
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "currentHead": "dc466abee",
+  "lastUpdatedUtc": "2026-10-06T16:38:04.287Z"
+}
