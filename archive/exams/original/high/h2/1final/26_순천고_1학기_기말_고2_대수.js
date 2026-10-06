@@ -517,7 +517,7 @@ window.questionBank = [
       "삼각함수"
     ],
     "wide": false,
-    "content": "함수 $y=2|\\sin2x|$와 모든 자연수 $n$에 대하여 직선 $y=\\dfrac{2}{n\\pi}x$의 교점의 개수를 $f(n)$이라고 하자. 이때, $f(1)+f(2)+f(3)$의 값은? [4.7점]",
+    "content": "함수 $y=2|\\sin2x|$와 모든 자연수 $n$에 대하여 <br>직선 $y=\\dfrac{2}{n\\pi}x$의 교점의 개수를 $f(n)$이라고 하자. 이때, $f(1)+f(2)+f(3)$의 값은? [4.7점]",
     "choices": [
       "24",
       "25",
@@ -609,13 +609,13 @@ window.questionBank = [
     "standardUnit": "수학적 귀납법",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "수학적 귀납법"
     ],
     "wide": false,
-    "content": "다음은 수열 $\\{a_n\\}$이 $a_1=1$이고, 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}a_k=n^2a_n$을 만족시킬 때, 모든 자연수 $n$에 대하여<br>$a_n=\\dfrac2{n(n+1)}\\qquad\\cdots(*)$<br>임을 수학적 귀납법을 이용하여 증명한 것이다.<br><div class=\"note-box\">(ⅰ) $n=1$일 때, (좌변)$=1$이고 (우변)$=\\dfrac2{1\\times2}=1$이므로 $(*)$이 성립한다.<br><br>(ⅱ) $n=m$일 때, $a_m=\\dfrac2{m(m+1)}$이 성립한다고 가정하자.<br>$n=m+1$일 때, $\\displaystyle\\sum_{k=1}^{m+1}a_k=(m+1)^2a_{m+1}$이다.<br>$\\displaystyle\\sum_{k=1}^{m+1}a_k=\\sum_{k=1}^{m}a_k+a_{m+1}$이고, 주어진 식과 가정에 의하여<br>$\\displaystyle\\sum_{k=1}^{m}a_k=m^2a_m=<span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(가)</span> 이므로<br><span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(가)</span>$+a_{m+1}=(m+1)^2a_{m+1}$이다.<br>식을 $a_{m+1}$에 대하여 묶어서 정리하면<br><span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(가)</span>$=<span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(나)</span>$\\times a_{m+1}$이다.<br>따라서 $a_{m+1}=\\dfrac2{(m+1)(m+2)}$이다.<br>그러므로 $n=m+1$일 때도 $(*)$이 성립한다.<br><br>(ⅰ), (ⅱ)에 의하여 모든 자연수 $n$에 대하여 $(*)$이 성립한다.</div><br>위의 (가), (나)에 알맞은 식을 각각 $f(m)$, $g(m)$이라 할 때, $f(4)\\times g(3)$의 값은? [4.8점]",
+    "content": "다음은 수열 $\\{a_n\\}$이 $a_1=1$이고, 모든 자연수 $n$에 대하여 $\\displaystyle\\sum_{k=1}^{n}a_k=n^2a_n$을 만족시킬 때, 모든 자연수 $n$에 대하여<br>$a_n=\\dfrac2{n(n+1)}\\qquad\\cdots(*)$<br>임을 수학적 귀납법을 이용하여 증명한 것이다.<br><div class=\"note-box\">(ⅰ) $n=1$일 때, (좌변)$=1$이고 (우변)$=\\dfrac2{1\\times2}=1$이므로 $(*)$이 성립한다.<br><br>(ⅱ) $n=m$일 때, $a_m=\\dfrac2{m(m+1)}$이 성립한다고 가정하자.<br>$n=m+1$일 때, $\\displaystyle\\sum_{k=1}^{m+1}a_k=(m+1)^2a_{m+1}$이다.<br>$\\displaystyle\\sum_{k=1}^{m+1}a_k=\\sum_{k=1}^{m}a_k+a_{m+1}$이고, 주어진 식과 가정에 의하여<br>$\\displaystyle\\sum_{k=1}^{m}a_k=m^2a_m=$<span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(가)</span> 이므로<br><span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(가)</span>$+a_{m+1}=(m+1)^2a_{m+1}$이다.<br>식을 $a_{m+1}$에 대하여 묶어서 정리하면<br><span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(가)</span>$=$<span style=\"display:inline-block;border:1px solid #777;padding:0 8px;min-width:34px;text-align:center;\">(나)</span>$\\times a_{m+1}$이다.<br>따라서 $a_{m+1}=\\dfrac2{(m+1)(m+2)}$이다.<br>그러므로 $n=m+1$일 때도 $(*)$이 성립한다.<br><br>(ⅰ), (ⅱ)에 의하여 모든 자연수 $n$에 대하여 $(*)$이 성립한다.</div><br>위의 (가), (나)에 알맞은 식을 각각 $f(m)$, $g(m)$이라 할 때, $f(4)\\times g(3)$의 값은? [4.8점]",
     "choices": [
       "6",
       "12",

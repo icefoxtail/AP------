@@ -47,7 +47,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 이차정사각행렬 $A,B$에 대하여 $A=\\begin{pmatrix}-1&1\\\\-1&3\\end{pmatrix}$, $AB=\\begin{pmatrix}-1&-2\\\\1&-8\\end{pmatrix}$일 때, 행렬 $B$의 모든 성분의 합은? [3.4점]",
+    "content": "두 이차정사각행렬 $A,B$에 대하여 $A=\\begin{pmatrix}-1&1\\\\-1&3\\end{pmatrix}$, <br>$AB=\\begin{pmatrix}-1&-2\\\\1&-8\\end{pmatrix}$일 때, 행렬 $B$의 모든 성분의 합은? [3.4점]",
     "choices": [
       "$-1$",
       "0",
