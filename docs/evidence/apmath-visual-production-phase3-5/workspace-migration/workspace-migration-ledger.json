@@ -57,6 +57,15 @@
   "phase2Authority": {
     "status": "INPUT_REQUIRED",
     "reason": "No current SOURCE_EXAM_ID_REGISTRY_v1 authority file or parent/current registry reference exists in this checkout.",
+    "searchEvidence": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/authority-search.json",
+    "identityMapFound": {
+      "path": "archive/data/question_identity_map.json",
+      "schemaVersion": "question-identity-map-v1",
+      "sourceCommit": "4883920cfba88849166ccc15ff7eef9121d3721d",
+      "sourceCommitAncestorOfFetchedMain": true,
+      "sourceFilesUnchangedSinceSnapshot": true,
+      "limitation": "Exact sourceArchiveFile/ordinal and qid_v1 records exist, but canonicalSourceExamId, exam-level sourceIdentityKey, ACTIVE/RETIRED state, questionUidV2, raw sourceSha256, and a parent verified-solution run are absent."
+    },
     "uidsAttempted": [
       "25_효천고_2학기_중간_고1_기출|1",
       "25_연향중_1학기_기말_중3_기출c|10",
@@ -71,8 +80,13 @@
   },
   "evidenceManifest": {
     "path": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/artifact-manifest.json",
-    "sha256": "50f845b446d8427200b93aa18535e6fe5f41707011a8cf64b9d1c5557c4193dc",
-    "contains": "Raw test logs, fixture manifest, standalone-browser summary, actual-Archive summary, five target crops, and the desktop Archive screenshot."
+    "sha256": "d0df9f369f5d090b2cdc08e63d80f9a34973a8a095b3fbda55533ed4aa6f1957",
+    "contains": "Raw test logs, fixture manifest, standalone-browser summary, actual-Archive summary, five target crops, desktop Archive screenshot, and exact UID authority search."
+  },
+  "authoritySearch": {
+    "path": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/authority-search.json",
+    "sha256": "eb956746f4fc991f27c41232bff2f08be937c92094071eb9e0d74cdbbad84b8d",
+    "conclusion": "The available qid_v1 map preserves source/version lineage but cannot supply the missing v2 active source identity and parent verification fields without inventing authority."
   },
   "nextAction": "Continue Phase 3A: derive and bind the actual Archive DisplayEnvelope before layout, use captured image policy/size for medium and full profiles, and retain readability negatives. Canonical Phase 2 remains INPUT_REQUIRED until a bound authority is supplied."
 }
