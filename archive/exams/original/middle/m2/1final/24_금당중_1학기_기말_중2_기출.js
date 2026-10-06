@@ -29,7 +29,7 @@ window.questionBank = [
       "$9x+6y$"
     ],
     "answer": "③",
-    "solution": "[핵심] $A,B$를 먼저 $x,y$로 바꾼 뒤 식 전체를 정리한다.\\n$2A-3B=2(2x-y)-3(-x+2y)=7x-8y$이다.\\n따라서 $2(2A-3B)=14x-16y$이다.\\n또 $3A-2B=3(2x-y)-2(-x+2y)=8x-7y$이다.\\n그러므로 $2(2A-3B)-(3A-2B)=14x-16y-(8x-7y)=6x-9y$이다.\\n따라서 정답은 ③이다.",
+    "solution": "[핵심] $A,B$를 먼저 $x,y$로 바꾼 뒤 식 전체를 정리한다.\n$2A-3B=2(2x-y)-3(-x+2y)=7x-8y$이다.\n따라서 $2(2A-3B)=14x-16y$이다.\n또 $3A-2B=3(2x-y)-2(-x+2y)=8x-7y$이다.\n그러므로 $2(2A-3B)-(3A-2B)=14x-16y-(8x-7y)=6x-9y$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -62,7 +62,7 @@ window.questionBank = [
       "$x^2+5x+9$"
     ],
     "answer": "②",
-    "solution": "[핵심] 잘못 더한 식을 되돌려 원래 식을 구한 다음, 문제에서 요구한 뺄셈을 다시 한다.\\n원래 어떤 식을 $P$라 하면 $P+(3x^2-2x+5)=5x^2+x+1$이다.\\n따라서 $P=2x^2+3x-4$이다.\\n바른 계산은 $P-(3x^2-2x+5)$이므로\\n$2x^2+3x-4-(3x^2-2x+5)=-x^2+5x-9$이다.\\n따라서 정답은 ②이다.",
+    "solution": "[핵심] 잘못 더한 식을 되돌려 원래 식을 구한 다음, 문제에서 요구한 뺄셈을 다시 한다.\n원래 어떤 식을 $P$라 하면 $P+(3x^2-2x+5)=5x^2+x+1$이다.\n따라서 $P=2x^2+3x-4$이다.\n바른 계산은 $P-(3x^2-2x+5)$이므로\n$2x^2+3x-4-(3x^2-2x+5)=-x^2+5x-9$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -95,7 +95,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "①",
-    "solution": "[핵심] 가장 안쪽 괄호부터 풀면 부호 실수를 줄일 수 있다.\\n$5x-2y-(x-3y)=4x+y$이다.\\n따라서 $x+2y-\\{4x+y\\}=-3x+y$이고,\\n$3x-[-3x+y]=6x-y$이다.\\n즉 $a=6$, $b=-1$이므로 $ab=-6$이다.\\n따라서 정답은 ①이다.",
+    "solution": "[핵심] 가장 안쪽 괄호부터 풀면 부호 실수를 줄일 수 있다.\n$5x-2y-(x-3y)=4x+y$이다.\n따라서 $x+2y-\\{4x+y\\}=-3x+y$이고,\n$3x-[-3x+y]=6x-y$이다.\n즉 $a=6$, $b=-1$이므로 $ab=-6$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -128,7 +128,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "②",
-    "solution": "[핵심] 두 곱을 각각 전개한 뒤 두 번째 식 전체를 빼 준다.\\n$2x(2x-4)=4x^2-8x$, $(2x-1)(-3x)=-6x^2+3x$이다.\\n따라서 $4x^2-8x-(-6x^2+3x)=10x^2-11x$이다.\\n$a=10$, $b=-11$이므로 $a+b=-1$이다.\\n따라서 정답은 ②이다.",
+    "solution": "[핵심] 두 곱을 각각 전개한 뒤 두 번째 식 전체를 빼 준다.\n$2x(2x-4)=4x^2-8x$, $(2x-1)(-3x)=-6x^2+3x$이다.\n따라서 $4x^2-8x-(-6x^2+3x)=10x^2-11x$이다.\n$a=10$, $b=-11$이므로 $a+b=-1$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -161,7 +161,7 @@ window.questionBank = [
       "$2x^2+3x+6$"
     ],
     "answer": "④",
-    "solution": "[핵심] 각 분수를 항별로 나눈 뒤 마지막에 뺄셈을 정리한다.\\n$\\dfrac{-2x^2+3x^3}{x^2}=-2+3x$이고 $\\dfrac{4x^3-2x^5}{x^3}=4-2x^2$이다.\\n따라서 $(-2+3x)-(4-2x^2)=2x^2+3x-6$이다.\\n따라서 정답은 ④이다.",
+    "solution": "[핵심] 각 분수를 항별로 나눈 뒤 마지막에 뺄셈을 정리한다.\n$\\dfrac{-2x^2+3x^3}{x^2}=-2+3x$이고 $\\dfrac{4x^3-2x^5}{x^3}=4-2x^2$이다.\n따라서 $(-2+3x)-(4-2x^2)=2x^2+3x-6$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -193,7 +193,7 @@ window.questionBank = [
       "$3x-2=2x-7$"
     ],
     "answer": "①,⑤",
-    "solution": "[핵심] 부등식은 부등호로 두 식의 대소 관계를 나타낸 식이다.\\n① $x+2$에는 부등호가 없고, ⑤ $3x-2=2x-7$은 등식이다.\\n②, ③, ④는 모두 부등호 $<,\\le,\\ge$를 사용하므로 부등식이다.\\n따라서 부등식이 아닌 것은 ①,⑤이다.",
+    "solution": "[핵심] 부등식은 부등호로 두 식의 대소 관계를 나타낸 식이다.\n① $x+2$에는 부등호가 없고, ⑤ $3x-2=2x-7$은 등식이다.\n②, ③, ④는 모두 부등호 $<,\\le,\\ge$를 사용하므로 부등식이다.\n따라서 부등식이 아닌 것은 ①,⑤이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -226,7 +226,7 @@ window.questionBank = [
       "$\\dfrac{a}{2}\\le \\dfrac{b}{2}$"
     ],
     "answer": "⑤",
-    "solution": "[핵심] 먼저 $a,b$의 대소 관계를 확정한다.\\n$-2a-1\\le-2b-1$에서 1을 더하면 $-2a\\le-2b$이고, $-2$로 나누면 부등호가 바뀌어 $a\\ge b$이다.\\n따라서 $a/2\\ge b/2$이어야 하므로 ⑤의 $a/2\\le b/2$는 일반적으로 옳지 않다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심] 먼저 $a,b$의 대소 관계를 확정한다.\n$-2a-1\\le-2b-1$에서 1을 더하면 $-2a\\le-2b$이고, $-2$로 나누면 부등호가 바뀌어 $a\\ge b$이다.\n따라서 $a/2\\ge b/2$이어야 하므로 ⑤의 $a/2\\le b/2$는 일반적으로 옳지 않다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -258,7 +258,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "①",
-    "solution": "[핵심] 부등식을 풀어 보기의 수가 해의 범위에 들어가는지 확인한다.\\n$10+x\\le3(x-1)$에서 $10+x\\le3x-3$, $13\\le2x$이므로 $x\\ge\\dfrac{13}{2}=6.5$이다.\\n보기 중 6만 이 범위에 들어가지 않는다.\\n따라서 정답은 ①이다.",
+    "solution": "[핵심] 부등식을 풀어 보기의 수가 해의 범위에 들어가는지 확인한다.\n$10+x\\le3(x-1)$에서 $10+x\\le3x-3$, $13\\le2x$이므로 $x\\ge\\dfrac{13}{2}=6.5$이다.\n보기 중 6만 이 범위에 들어가지 않는다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
@@ -291,7 +291,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "④",
-    "solution": "[핵심] 해가 $x\\le$ 꼴이면 오른쪽 경계가 가장 큰 해이다.\\n$\\dfrac14x-1\\ge x-a$에서 $a-1\\ge\\dfrac34x$이므로 $x\\le\\dfrac43(a-1)$이다.\\n가장 큰 해가 8이므로 $\\dfrac43(a-1)=8$이다.\\n$a-1=6$에서 $a=7$이다.\\n따라서 정답은 ④이다.",
+    "solution": "[핵심] 해가 $x\\le$ 꼴이면 오른쪽 경계가 가장 큰 해이다.\n$\\dfrac14x-1\\ge x-a$에서 $a-1\\ge\\dfrac34x$이므로 $x\\le\\dfrac43(a-1)$이다.\n가장 큰 해가 8이므로 $\\dfrac43(a-1)=8$이다.\n$a-1=6$에서 $a=7$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -325,7 +325,7 @@ window.questionBank = [
       "13"
     ],
     "answer": "③",
-    "solution": "[핵심] 두 부등식의 해가 같으므로 같은 방향과 같은 경계값을 가져야 한다.\\n첫째 식은 $0.5x-0.5\\le0.3x-3.5$이므로 $0.2x\\le-3$, 즉 $x\\le-15$이다.\\n둘째 식에 6을 곱하면 $4-2x\\ge3a+1$이므로 $x\\le\\dfrac{3-3a}{2}$이다.\\n따라서 $\\dfrac{3-3a}{2}=-15$이고 $a=11$이다.\\n따라서 정답은 ③이다.",
+    "solution": "[핵심] 두 부등식의 해가 같으므로 같은 방향과 같은 경계값을 가져야 한다.\n첫째 식은 $0.5x-0.5\\le0.3x-3.5$이므로 $0.2x\\le-3$, 즉 $x\\le-15$이다.\n둘째 식에 6을 곱하면 $4-2x\\ge3a+1$이므로 $x\\le\\dfrac{3-3a}{2}$이다.\n따라서 $\\dfrac{3-3a}{2}=-15$이고 $a=11$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -359,7 +359,7 @@ window.questionBank = [
       "95°"
     ],
     "answer": "③",
-    "solution": "[핵심] 대각선이 만든 삼각형의 각과 평행사변형의 평행선을 차례로 이용한다.\\n$\\triangle AOD$에서 $\\angle AOD=115^\\circ$, $\\angle ADO=30^\\circ$이므로 $\\angle OAD=35^\\circ$이다.\\n$AD\\parallel BC$이므로 $x=35^\\circ$이다.\\n또 $\\angle BAD=65^\\circ+35^\\circ=100^\\circ$이므로 이웃각 $\\angle ADC=80^\\circ$이다.\\n따라서 $y=80^\\circ-30^\\circ=50^\\circ$이고 $x+y=85^\\circ$이다.\\n따라서 정답은 ③이다.",
+    "solution": "[핵심] 대각선이 만든 삼각형의 각과 평행사변형의 평행선을 차례로 이용한다.\n$\\triangle AOD$에서 $\\angle AOD=115^\\circ$, $\\angle ADO=30^\\circ$이므로 $\\angle OAD=35^\\circ$이다.\n$AD\\parallel BC$이므로 $x=35^\\circ$이다.\n또 $\\angle BAD=65^\\circ+35^\\circ=100^\\circ$이므로 이웃각 $\\angle ADC=80^\\circ$이다.\n따라서 $y=80^\\circ-30^\\circ=50^\\circ$이고 $x+y=85^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q11.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -394,7 +394,7 @@ window.questionBank = [
       "8cm"
     ],
     "answer": "④",
-    "solution": "[핵심] 평행사변형은 마주 보는 두 변의 길이가 각각 같다.\\n$AB:AD=3:4$이므로 $AB=3k$, $AD=4k$라 두자.\\n둘레가 28cm이므로 $2(3k+4k)=28$, 즉 $14k=28$에서 $k=2$이다.\\n$CD=AB=3k=6$cm이다.\\n따라서 정답은 ④이다.",
+    "solution": "[핵심] 평행사변형은 마주 보는 두 변의 길이가 각각 같다.\n$AB:AD=3:4$이므로 $AB=3k$, $AD=4k$라 두자.\n둘레가 28cm이므로 $2(3k+4k)=28$, 즉 $14k=28$에서 $k=2$이다.\n$CD=AB=3k=6$cm이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q12.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -429,7 +429,7 @@ window.questionBank = [
       "$2x-y$"
     ],
     "answer": "⑤",
-    "solution": "[핵심] 각의 이등분선과 평행선으로 이등변삼각형을 만든다.\\n$AE$가 $\\angle A$의 이등분선이고 $AD\\parallel BC$이므로 $\\angle BAE=\\angle AEB$이다. 따라서 $BE=AB=x$이다.\\n같은 방법으로 $DF$에 대하여 $CF=CD=x$이다.\\n$BC=y$이므로 $BF=y-x$이고, 그림에서 $EF=BE-BF=x-(y-x)=2x-y$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심] 각의 이등분선과 평행선으로 이등변삼각형을 만든다.\n$AE$가 $\\angle A$의 이등분선이고 $AD\\parallel BC$이므로 $\\angle BAE=\\angle AEB$이다. 따라서 $BE=AB=x$이다.\n같은 방법으로 $DF$에 대하여 $CF=CD=x$이다.\n$BC=y$이므로 $BF=y-x$이고, 그림에서 $EF=BE-BF=x-(y-x)=2x-y$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q13.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -464,7 +464,7 @@ window.questionBank = [
       "두 대각선이 서로 다른 것을 이등분한다."
     ],
     "answer": "④",
-    "solution": "[핵심] 한 쌍의 대변이 평행하고 그 길이가 같으면 평행사변형이다.\\n$\\angle A+\\angle B=120^\\circ+60^\\circ=180^\\circ$이므로 같은 쪽 내각의 합으로부터 $AD\\parallel BC$이다.\\n또 주어진 조건에서 $AD=BC=7$cm이다.\\n따라서 한 쌍의 대변 $AD,BC$가 평행하고 길이도 같으므로 ABCD는 평행사변형이다.\\n따라서 정답은 ④이다.",
+    "solution": "[핵심] 한 쌍의 대변이 평행하고 그 길이가 같으면 평행사변형이다.\n$\\angle A+\\angle B=120^\\circ+60^\\circ=180^\\circ$이므로 같은 쪽 내각의 합으로부터 $AD\\parallel BC$이다.\n또 주어진 조건에서 $AD=BC=7$cm이다.\n따라서 한 쌍의 대변 $AD,BC$가 평행하고 길이도 같으므로 ABCD는 평행사변형이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q14.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -499,7 +499,7 @@ window.questionBank = [
       "$\\overline{AC}=\\overline{BD},\\ \\overline{AC}\\perp\\overline{BD}$"
     ],
     "answer": "②,③",
-    "solution": "[핵심] 정사각형이 되려면 직사각형 조건과 마름모 조건이 함께 필요하다.\\n① $AB=BC$는 마름모 조건, $AC=BD$는 직사각형 조건이므로 정사각형이 된다.\\n②는 대각선 길이가 같아지는 조건으로 직사각형은 보장하지만 네 변이 같음은 보장하지 않는다.\\n③은 직각 조건만 주므로 직사각형일 수 있으나 정사각형을 보장하지 않는다.\\n④는 직각과 이웃한 두 변의 길이 같음으로 정사각형이 된다.\\n⑤는 대각선의 길이가 같고 서로 수직이므로 직사각형이면서 마름모여서 정사각형이다.\\n따라서 정사각형이 되는 조건이 아닌 것은 ②,③이다.",
+    "solution": "[핵심] 정사각형이 되려면 직사각형 조건과 마름모 조건이 함께 필요하다.\n① $AB=BC$는 마름모 조건, $AC=BD$는 직사각형 조건이므로 정사각형이 된다.\n②는 대각선 길이가 같아지는 조건으로 직사각형은 보장하지만 네 변이 같음은 보장하지 않는다.\n③은 직각 조건만 주므로 직사각형일 수 있으나 정사각형을 보장하지 않는다.\n④는 직각과 이웃한 두 변의 길이 같음으로 정사각형이 된다.\n⑤는 대각선의 길이가 같고 서로 수직이므로 직사각형이면서 마름모여서 정사각형이다.\n따라서 정사각형이 되는 조건이 아닌 것은 ②,③이다.",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -533,7 +533,7 @@ window.questionBank = [
       "한 내각이 직각인 마름모이다."
     ],
     "answer": "①,⑤",
-    "solution": "[핵심] 접힌 종이를 펼치면 자른 선분의 대칭이 반복되어 네 변의 길이가 같은 사각형이 만들어진다.\\n따라서 완성된 도형은 마름모이다. 마름모는 평행사변형이고 두 대각선이 서로 수직하므로 ②,③,④는 성립한다.\\n반면 일반 마름모를 직사각형이라고 할 수 없고 한 내각이 반드시 직각인 것도 아니다.\\n따라서 옳지 않은 것은 ①,⑤이다.",
+    "solution": "[핵심] 접힌 종이를 펼치면 자른 선분의 대칭이 반복되어 네 변의 길이가 같은 사각형이 만들어진다.\n따라서 완성된 도형은 마름모이다. 마름모는 평행사변형이고 두 대각선이 서로 수직하므로 ②,③,④는 성립한다.\n반면 일반 마름모를 직사각형이라고 할 수 없고 한 내각이 반드시 직각인 것도 아니다.\n따라서 옳지 않은 것은 ①,⑤이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q16.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -569,7 +569,7 @@ window.questionBank = [
       "$\\overline{AB}\\parallel\\overline{DC},\\ \\overline{AB}=\\overline{DC},\\ \\angle AOB=90^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[핵심] 먼저 평행사변형을 보장한 뒤 대각선 수직 조건을 사용한다.\\n⑤에서 $AB\\parallel DC$이고 $AB=DC$이므로 ABCD는 평행사변형이다.\\n또 $\\angle AOB=90^\\circ$이므로 두 대각선이 서로 수직이다.\\n평행사변형의 대각선이 서로 수직이면 네 변의 길이가 같으므로 마름모이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심] 먼저 평행사변형을 보장한 뒤 대각선 수직 조건을 사용한다.\n⑤에서 $AB\\parallel DC$이고 $AB=DC$이므로 ABCD는 평행사변형이다.\n또 $\\angle AOB=90^\\circ$이므로 두 대각선이 서로 수직이다.\n평행사변형의 대각선이 서로 수직이면 네 변의 길이가 같으므로 마름모이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q17.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -604,7 +604,7 @@ window.questionBank = [
       "$\\overline{PQ}=\\overline{SR}$"
     ],
     "answer": "②",
-    "solution": "[핵심] 평행사변형의 이웃한 두 각은 보각이므로 그 각의 이등분선은 서로 수직이다.\\n따라서 네 내각의 이등분선으로 만든 PQRS는 직사각형이다.\\n직사각형은 $PS=QR$, $PQ=SR$, $\\angle P=\\angle R=90^\\circ$, $PR=QS$를 만족한다.\\n그러나 대각선 $PR,QS$가 항상 서로 수직인 것은 아니다.\\n따라서 옳지 않은 것은 ②이다.",
+    "solution": "[핵심] 평행사변형의 이웃한 두 각은 보각이므로 그 각의 이등분선은 서로 수직이다.\n따라서 네 내각의 이등분선으로 만든 PQRS는 직사각형이다.\n직사각형은 $PS=QR$, $PQ=SR$, $\\angle P=\\angle R=90^\\circ$, $PR=QS$를 만족한다.\n그러나 대각선 $PR,QS$가 항상 서로 수직인 것은 아니다.\n따라서 옳지 않은 것은 ②이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q18.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -673,7 +673,7 @@ window.questionBank = [
       "등변사다리꼴 - 마름모"
     ],
     "answer": "①",
-    "solution": "[핵심] 각 변의 중점을 연결한 사각형의 각 변은 원래 사각형의 대각선과 평행하고 그 절반 길이이다.\\n그래서 원래 사각형의 대각선이 같으면 중점 사각형은 마름모, 대각선이 수직이면 직사각형이 된다.\\n직사각형→마름모, 마름모→직사각형, 정사각형→정사각형, 등변사다리꼴→마름모가 성립한다.\\n하지만 일반 평행사변형의 대각선은 수직일 필요가 없으므로 중점 사각형이 항상 직사각형은 아니다.\\n따라서 옳지 않은 것은 ①이다.",
+    "solution": "[핵심] 각 변의 중점을 연결한 사각형의 각 변은 원래 사각형의 대각선과 평행하고 그 절반 길이이다.\n그래서 원래 사각형의 대각선이 같으면 중점 사각형은 마름모, 대각선이 수직이면 직사각형이 된다.\n직사각형→마름모, 마름모→직사각형, 정사각형→정사각형, 등변사다리꼴→마름모가 성립한다.\n하지만 일반 평행사변형의 대각선은 수직일 필요가 없으므로 중점 사각형이 항상 직사각형은 아니다.\n따라서 옳지 않은 것은 ①이다.",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -707,7 +707,7 @@ window.questionBank = [
       "100°"
     ],
     "answer": "③",
-    "solution": "[핵심] 평행선의 엇각과 이등변삼각형을 이어서 사용한다.\\n$AD\\parallel BC$이므로 $\\angle ADB=\\angle DBC=30^\\circ$이다.\\n$AB=AD$이므로 $\\triangle ABD$는 이등변삼각형이고 $\\angle ABD=30^\\circ$이다.\\n따라서 $\\angle BAD=120^\\circ$이다. 등변사다리꼴에서 같은 밑변 위의 밑각은 같으므로 $\\angle ADC=120^\\circ$이다.\\n그러므로 $\\angle BDC=120^\\circ-30^\\circ=90^\\circ$이다.\\n따라서 정답은 ③이다.",
+    "solution": "[핵심] 평행선의 엇각과 이등변삼각형을 이어서 사용한다.\n$AD\\parallel BC$이므로 $\\angle ADB=\\angle DBC=30^\\circ$이다.\n$AB=AD$이므로 $\\triangle ABD$는 이등변삼각형이고 $\\angle ABD=30^\\circ$이다.\n따라서 $\\angle BAD=120^\\circ$이다. 등변사다리꼴에서 같은 밑변 위의 밑각은 같으므로 $\\angle ADC=120^\\circ$이다.\n그러므로 $\\angle BDC=120^\\circ-30^\\circ=90^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q21.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -736,7 +736,7 @@ window.questionBank = [
     "content": "[서술형 1] $x=\\dfrac{4}{7}$, $y=2$일 때, 식 $y-[2x-\\{3y+(8y^2-6xy)\\div4y\\}]$의 값을 구하려고 한다. 다음 물음에 답하시오.\\n\n(1) $y-[2x-\\{3y+(8y^2-6xy)\\div4y\\}]$를 계산하시오. [3점]\\n\n\n\n\n(2) (1)의 결과에 $x=\\dfrac{4}{7}$와 $y=2$를 대입하여 주어진 식의 값을 구하시오. [2점]",
     "choices": [],
     "answer": "(1) $-\\dfrac{7}{2}x+6y$  (2) 10",
-    "solution": "[핵심] 나눗셈부터 간단히 한 뒤 괄호를 안쪽부터 정리한다.\\n(1) $(8y^2-6xy)\\div4y=2y-\\dfrac32x$이다.\\n따라서 $3y+(8y^2-6xy)\\div4y=5y-\\dfrac32x$이고,\\n$2x-\\{5y-\\dfrac32x\\}=\\dfrac72x-5y$이다.\\n그러므로 전체 식은 $y-(\\dfrac72x-5y)=-\\dfrac72x+6y$이다.\\n(2) $x=\\dfrac47$, $y=2$를 대입하면 $-\\dfrac72\\cdot\\dfrac47+12=-2+12=10$이다.\\n따라서 (1) $-\\dfrac72x+6y$, (2) 10이다.",
+    "solution": "[핵심] 나눗셈부터 간단히 한 뒤 괄호를 안쪽부터 정리한다.\n(1) $(8y^2-6xy)\\div4y=2y-\\dfrac32x$이다.\n따라서 $3y+(8y^2-6xy)\\div4y=5y-\\dfrac32x$이고,\n$2x-\\{5y-\\dfrac32x\\}=\\dfrac72x-5y$이다.\n그러므로 전체 식은 $y-(\\dfrac72x-5y)=-\\dfrac72x+6y$이다.\n(2) $x=\\dfrac47$, $y=2$를 대입하면 $-\\dfrac72\\cdot\\dfrac47+12=-2+12=10$이다.\n따라서 (1) $-\\dfrac72x+6y$, (2) 10이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -764,7 +764,7 @@ window.questionBank = [
     "content": "[서술형 2] 주호는 집에서 6km 떨어진 공원까지 가는 데, 처음에는 자전거를 타고 시속 8km로 가다가 도중에 자전거가 고장이 나서 멈추고 10분 동안 살펴본 후, 다시 자전거를 끌고 시속 4km로 걸어갔다. 공원까지 가는 데 걸린 시간이 1시간을 넘지 않았을 때, 자전거가 고장 난 지점은 집에서 몇 km 이상 떨어진 곳인지 구하려고 한다. 다음 물음에 답하시오.\\n\n(1) 전체 걸리는 시간이 1시간을 넘지 않음을 이용하여 부등식을 세우시오. [3점]\\n\n\n\n\n(2) 자전거가 고장 난 지점은 집에서 몇 km 이상 떨어진 곳인지 구하시오. [2점]",
     "choices": [],
     "answer": "$\\dfrac{x}{8}+\\dfrac{10}{60}+\\dfrac{6-x}{4}\\le1$, $x\\ge\\dfrac{16}{3}$",
-    "solution": "[핵심] 이동 시간은 거리÷속력이고, 멈춘 10분은 $\\dfrac16$시간이다.\\n고장 난 지점까지의 거리를 $x$km라 하면 자전거 이동 시간은 $\\dfrac{x}{8}$시간, 걸어간 시간은 $\\dfrac{6-x}{4}$시간이다.\\n따라서 (1) $\\dfrac{x}{8}+\\dfrac{10}{60}+\\dfrac{6-x}{4}\\le1$이다.\\n양변에 24를 곱하면 $3x+4+6(6-x)\\le24$이고, $-3x\\le-16$이다.\\n따라서 (2) $x\\ge\\dfrac{16}{3}$이다. 즉 고장 지점은 집에서 $\\dfrac{16}{3}$km 이상 떨어져 있어야 한다.",
+    "solution": "[핵심] 이동 시간은 거리÷속력이고, 멈춘 10분은 $\\dfrac16$시간이다.\n고장 난 지점까지의 거리를 $x$km라 하면 자전거 이동 시간은 $\\dfrac{x}{8}$시간, 걸어간 시간은 $\\dfrac{6-x}{4}$시간이다.\n따라서 (1) $\\dfrac{x}{8}+\\dfrac{10}{60}+\\dfrac{6-x}{4}\\le1$이다.\n양변에 24를 곱하면 $3x+4+6(6-x)\\le24$이고, $-3x\\le-16$이다.\n따라서 (2) $x\\ge\\dfrac{16}{3}$이다. 즉 고장 지점은 집에서 $\\dfrac{16}{3}$km 이상 떨어져 있어야 한다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -792,7 +792,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림과 같이 $\\overline{AD}\\parallel\\overline{BC}$인 사다리꼴 ABCD에서 두 대각선의 교점을 O라고 할 때, $\\overline{AO}:\\overline{OC}=3:5$이다. $\\triangle ODC$의 넓이가 $12\\text{cm}^2$일 때, 다음 물음에 답하시오.\\n(1) $\\triangle OAB$와 $\\triangle ODC$의 넓이가 같은 이유를 설명하시오. [3점]\\n(2) $\\triangle OBC$의 넓이를 구하시오. [3점]",
     "choices": [],
     "answer": "(1) 같은 높이를 갖는 두 큰 삼각형의 넓이 차를 이용한다.  (2) $20\\text{cm}^2$",
-    "solution": "[핵심] 평행한 두 밑변 때문에 같은 밑변을 가진 큰 삼각형의 높이가 같다.\\n(1) $AD\\parallel BC$이므로 $\\triangle ABC$와 $\\triangle DBC$는 공통 밑변 $BC$에 대한 높이가 같아 넓이가 같다. 두 삼각형에서 공통인 $\\triangle OBC$를 빼면 $[\\triangle OAB]=[\\triangle ODC]$이다.\\n따라서 $[\\triangle OAB]=12\\text{cm}^2$이다.\\n(2) $\\triangle OAB$와 $\\triangle OBC$는 점 B에서 직선 AC까지의 높이가 같으므로 넓이의 비는 $AO:OC=3:5$이다.\\n따라서 $[\\triangle OBC]=12\\times\\dfrac53=20\\text{cm}^2$이다.",
+    "solution": "[핵심] 평행한 두 밑변 때문에 같은 밑변을 가진 큰 삼각형의 높이가 같다.\n(1) $AD\\parallel BC$이므로 $\\triangle ABC$와 $\\triangle DBC$는 공통 밑변 $BC$에 대한 높이가 같아 넓이가 같다. 두 삼각형에서 공통인 $\\triangle OBC$를 빼면 $[\\triangle OAB]=[\\triangle ODC]$이다.\n따라서 $[\\triangle OAB]=12\\text{cm}^2$이다.\n(2) $\\triangle OAB$와 $\\triangle OBC$는 점 B에서 직선 AC까지의 높이가 같으므로 넓이의 비는 $AO:OC=3:5$이다.\n따라서 $[\\triangle OBC]=12\\times\\dfrac53=20\\text{cm}^2$이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -822,7 +822,7 @@ window.questionBank = [
     "content": "[서술형 4] 다음 그림과 같이 평행사변형 ABCD에서 $\\angle CAB=a$, $\\angle ODC=b$일 때 다음 물음에 답하시오.\\n\n(1) $a=b$이면 직사각형임을 설명하시오. [2점]\\n\n(2) $a+b=90^\\circ$이면 마름모임을 설명하시오. [2점]",
     "choices": [],
     "answer": "(1) 직사각형  (2) 마름모",
-    "solution": "[핵심] 평행사변형의 대각선은 서로를 이등분한다는 사실을 출발점으로 삼는다.\\n$AB\\parallel DC$이므로 $\\angle ODC=b=\\angle ABO$이다. 또 $a=\\angle CAB=\\angle OAB$이다.\\n(1) $a=b$이면 $\\triangle AOB$의 두 밑각이 같아 $OA=OB$이다. 대각선이 서로를 이등분하므로 $AC=2OA$, $BD=2OB$에서 $AC=BD$이다. 평행사변형의 두 대각선 길이가 같으므로 ABCD는 직사각형이다.\\n(2) $a+b=90^\\circ$이면 $\\angle OAB+\\angle ABO=90^\\circ$이므로 $\\angle AOB=90^\\circ$이다. 따라서 두 대각선이 서로 수직이고, 평행사변형의 대각선이 서로 수직이면 마름모이다.",
+    "solution": "[핵심] 평행사변형의 대각선은 서로를 이등분한다는 사실을 출발점으로 삼는다.\n$AB\\parallel DC$이므로 $\\angle ODC=b=\\angle ABO$이다. 또 $a=\\angle CAB=\\angle OAB$이다.\n(1) $a=b$이면 $\\triangle AOB$의 두 밑각이 같아 $OA=OB$이다. 대각선이 서로를 이등분하므로 $AC=2OA$, $BD=2OB$에서 $AC=BD$이다. 평행사변형의 두 대각선 길이가 같으므로 ABCD는 직사각형이다.\n(2) $a+b=90^\\circ$이면 $\\angle OAB+\\angle ABO=90^\\circ$이므로 $\\angle AOB=90^\\circ$이다. 따라서 두 대각선이 서로 수직이고, 평행사변형의 대각선이 서로 수직이면 마름모이다.",
     "image": "assets/images/24_금당중_1학기_기말_중2_기출/q25.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
