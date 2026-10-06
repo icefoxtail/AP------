@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_V2",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "stage": "R3_REPAIR",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "calibrationOrderNotes": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$\n$=\\dfrac{14+4}{3}$\n$=\\dfrac{18}{3}=6$이다.\n따라서\n$P=(1,6)$이다.\n이제 선분 $AB$의 중점 $M$을 구한다.\n중점은 두 끝점의 $x$좌표끼리, $y$좌표끼리 더한 뒤 각각 $2$로 나눈다.\n$M=\\left(\\dfrac{9+(-3)}2,\\dfrac",
+        "observation": "Observed the solution state its formula choice and show equations/substitutions in separate board lines before its final conclusion."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$이므로\n$m=-3$이다.\n이제 직선 $y=-3x+n$이 점 $(1,-2)$를 지난다는 조건을 사용한다.\n점을 지난다는 것은 그 점의 $x$, $y$좌표를 직선의 식에 대입했을 때 등식이 성립한다는 뜻이다.\n$x=1$, $y=-2$를 대입하면\n$-2=-3\\cdot1+n$\n$-2=-3+n$이다.\n양변에 $3$을 더하면\n$n=-2+3=1$이다.\n따라서\n$m+n=-3+1=-2$이다.\n\n그러므로 정답은 ①이다.",
+        "observation": "Observed the solution explain the criterion, expose the decisive equation and carry the result through explicit steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{50}$\n$=5\\sqrt2$이다.\n\n따라서 정답은 ③이다.",
+        "observation": "Observed the solution state its formula choice and show equations/substitutions in separate board lines before its final conclusion."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이다.\n$-\\dfrac{k}{6}=-1$\n$k=6$이다.\n\n따라서 정답은 ①이다.",
+        "observation": "Observed the solution explain the criterion, expose the decisive equation and carry the result through explicit steps.",
+        "visualSha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualRef": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "visualObservation": "Rendered the current SVG and inspected its coordinate axes, line directions, intersection and label placement. ImageMagick substitutes some Korean glyphs, so judged plot geometry and used the JS text for Korean reading.",
+        "axes": [
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로 $1\\in A$는 참이다.\n\n② $1$은 집합이 아니라 수이므로 $1\\subset A$라고 나타낼 수 없다. 거짓이다.\n\n③ $\\{1\\}$은 $A$의 원소이므로 $\\{1\\}\\in A$는 참이다.\n\n④ $\\{1\\}$의 원소 $1$이 $A$에 속하므로 $\\{1\\}\\subset A$는 참이다.\n\n⑤ $\\{\\{1\\}\\}$의 원소 $\\{1\\}$이 $A$에 속하므로 $\\{\\{1\\}\\}\\subset A$는 참이다.\n\n따라서 옳지 않은 것은 ②이다.",
+        "observation": "Observed the solution state its formula choice and show equations/substitutions in separate board lines before its final conclusion."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는지 살펴본다.\n\n① 서로 다른 $x$좌표에 점들이 하나씩 있으므로 함수의 그래프가 될 수 있다.\n\n② 원의 가운데를 지나는 수직선은 원과 두 점에서 만난다. 한 $x$값에 두 $y$값이 대응하므로 함수의 그래프가 아니다.\n\n③ 기울어진 직선은 각 수직선과 많아야 한 점에서 만나므로 함수의 그래프가 될 수 있다.\n\n④ 두 선분의 $x$좌표 범위가 맞닿는 경계에서는 오른쪽 선분의 아래쪽 끝점이 뚫린 점이라 포함되지 않는다. 따라서 각 $x$값에 포함되는 점은 하나뿐이므로 함수의 그래프가 될 수 있다.\n\n⑤ 포물선도 각 수직선과 많아야 한 점에서 만나므로 함수의 그래프가 될 수 있다.\n\n따라서 함수의 그래프",
+        "observation": "Observed the solution explain the criterion, expose the decisive equation and carry the result through explicit steps."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read the current false-PASS regression families: actual SVG coordinate/topology review, separated solution blocks, full Meta disposition and runtime TeX escape checks. Relevant warning for this locus is that visible solution text and actual visual artifact must agree."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR"
+  }
+}

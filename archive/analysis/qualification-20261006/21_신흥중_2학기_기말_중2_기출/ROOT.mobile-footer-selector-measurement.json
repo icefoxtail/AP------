@@ -1,0 +1,62 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "RENDER",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "artifactSha": "d351266d6874278b839200d03aae07a903da921c",
+  "result": "NARROW_BROWSER_MEASUREMENT",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "css": {
+    "selector": "html[data-archive2-context=\"archive2\"][data-ap-render-ready=\"true\"] .page > div[style*=\"bottom: 15mm\"]",
+    "path": "archive/archive2-preview-mobile.css",
+    "sha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1"
+  },
+  "measurementMethod": "Loaded current original exam JS in Playwright at 390x844; after render set the two target context flags on the rendered document to evaluate the archive2 render-ready mobile rule; no exam data changed.",
+  "serializedStyle": "position: absolute; bottom: 15mm; left: 0px; width: 100%; text-align: center; font-size: 9pt; color: rgb(85, 85, 85);",
+  "before": {
+    "oldSelectorMatches": false,
+    "newSelectorMatches": true,
+    "computedPosition": "absolute",
+    "cssSha256": "0351b465bc3f5bf9361c68149347a34ce0e643f95c144895e8df553fbf9e2141",
+    "marginTop": "0px",
+    "page6Bounds": {
+      "height": 14,
+      "bottom": 5827.984375,
+      "width": 374,
+      "x": 8,
+      "y": 5813.984375
+    },
+    "oldSelector": "[style*=\"bottom:15mm\"]"
+  },
+  "after": {
+    "newSelectorMatches": true,
+    "computedPosition": "static",
+    "marginTop": "12px",
+    "pageBoxBounds": {
+      "bottom": 6040.671875,
+      "top": 5023.015625
+    },
+    "page6FooterBounds": {
+      "height": 14,
+      "bottom": 6026.671875,
+      "width": 350,
+      "x": 20,
+      "y": 6012.671875
+    },
+    "page6BodyBounds": {
+      "bottom": 6000.671875,
+      "top": 5037.015625
+    },
+    "gapAfterBodyPx": 12
+  },
+  "verification": "CLOSED_SELECTOR_MATCH_AND_FLOW_GEOMETRY_ONLY",
+  "remaining": "ROOT must perform actual mobile case rerender/capture and own final receipts; this measurement is not RENDER_PASS.",
+  "session": {
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "role": "archive_master"
+  }
+}

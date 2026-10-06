@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_TARGETED_ADJUDICATION_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "stage": "R3",
+  "qid": 21,
+  "sourceAuthority": {
+    "r1EvidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+    "r1ArtifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a",
+    "r1OwnerVerdict": "PASS_AFTER_REPAIR",
+    "r1IndependentAnswer": "10 cm",
+    "r1StoredAnswer": "$10$",
+    "r1FreezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+    "r2EvidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R2.evidence.json",
+    "r2BlindAnswer": "10 cm",
+    "r2FinalStoredAnswer": "$10$",
+    "r2Verdict": "PASS",
+    "r2FreezeRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R2.independent-freeze.json",
+    "r2FreezeAnswer": "10 cm",
+    "r2FreezeReasoning": "The square sides are sqrt(4)=2 and sqrt(36)=6. With B,C,E collinear, BF has horizontal span 2+6=8 and vertical span 6; BF=sqrt(8^2+6^2)=10."
+  },
+  "currentArtifact": {
+    "artifactSha": "296cd6f232abb6add4ff8fcb0900695fdc56bb21",
+    "rawFileSha256": "1400b75a23a50da72cb8b84e50736083382f2e80d7f49ac9c75ed84c91129e80",
+    "answer": "$10$",
+    "solutionSha256": "e4717e5a5701ec6425c7e3e408334d9f3ca9c3f82247b1b8c1b7ad622295a3f7",
+    "decisiveStep": "$=8^2+6^2=64+36=100$ $BF=10\\text{ cm}$ 따라서 구하는 길이는 $10\\text{ cm}$이다.",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageSha256": "c358944ae9ddd7ffc91ac741cfb5e9588414ce5ecd102dd214f165fc63c02f83",
+    "changedFields": [
+      "solution",
+      "decisiveStep",
+      "solutionImage"
+    ]
+  },
+  "minimalRepair": {
+    "solution": "Clarified the final result as $10\\text{ cm}$ to match the R1 independent answer, R2 blind freeze and stored answer; no answer/value was recomputed or changed.",
+    "decisiveStep": "Rebound the decisive conclusion to the same explicit $10\\text{ cm}$ wording.",
+    "solutionImage": "Moved the existing 6²+8²=10² legend below EF=6 cm; no coordinates, geometry or text content changed."
+  },
+  "freezeValidity": {
+    "status": "VALID",
+    "reason": "The repair changes only the explicit final unit wording and the non-geometric placement of an existing equation legend. Student content, choices, q21 problem image bytes and answer are unchanged; the complete R2 freeze remains applicable."
+  },
+  "renderParityFinding": {
+    "reportedPriorCapture": "The supplied q21 solution screenshots visibly displayed a final 100 while the red answer was 10.",
+    "nativeEnvelope": {
+      "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/render/sol-desktop-native-envelope.json",
+      "q21SolutionSha256": "e5233d16323d21e70bf40c58b9ed7685e7c19c699296fcec45d4134fb7cc65d6",
+      "q21FinalSentence": "따라서 구하는 길이는 10이다."
+    },
+    "currentCandidateFinalSentence": "따라서 구하는 길이는 $10\\text{ cm}$이다.",
+    "disposition": "R3_BOUND_SOLUTION_TEXT_TO_UPSTREAM_10CM; ROOT final render must rebind current artifact and confirm the displayed line matches the native source."
+  }
+}

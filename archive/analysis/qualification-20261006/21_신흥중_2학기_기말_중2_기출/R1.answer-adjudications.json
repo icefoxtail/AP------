@@ -1,0 +1,71 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "sourceFreezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+  "sourceFreezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+  "freezeMutated": false,
+  "adjudications": [
+    {
+      "qid": 14,
+      "kind": "POST_FREEZE_REASONING_CORRECTION",
+      "preComparisonFreeze": "choice ①; reasoning omitted 4 as a divisor of 12 and stated 4/6.",
+      "postComparisonCorrection": "On die outcomes 1–6, divisors of 12 are 1, 2, 3, 4, 6, so the probability is 5/6. This remains strictly between 0 and 1; options ② and ④ are 0, and ③ and ⑤ are 1. The unique answer remains choice ①.",
+      "finalIndependentAnswer": "나오는 눈의 수가 12의 약수일 확률",
+      "storedAnswer": "①",
+      "finalComparison": "MATCH",
+      "freezeValidity": "VALID; the student input included the complete die-event options. Only the written count in the preserved reasoning was corrected after comparison.",
+      "candidateChanged": false
+    },
+    {
+      "qid": 19,
+      "kind": "POST_FREEZE_MATH_CORRECTION",
+      "preComparisonFreeze": "2/9, choice ①; the freeze used A→C as a two-step clockwise move.",
+      "postComparisonCorrection": "The source diagram is clockwise A→E→D→C, so C is reached after 3 moves. A two-roll sum of 3 reaches C directly; a sum of 8 makes one full 5-move circuit and then 3 more. These ordered pairs number 2 and 5, so the probability is 7/36, choice ④.",
+      "finalIndependentAnswer": "7/36",
+      "storedAnswer": "④",
+      "finalComparison": "MATCH",
+      "freezeValidity": "VALID for the complete student input and preserved as a genuine pre-comparison calculation error; no answer was exposed before the freeze.",
+      "candidateChanged": true,
+      "changedFields": [
+        "solution"
+      ],
+      "directDependency": "solution uses clockwise vertex order from the current problem figure; current problem image and student fields did not change."
+    }
+  ],
+  "sourceCorrectionReview": {
+    "qid": 1,
+    "candidateStudentFreezeApplicability": "VALID_AFTER_SINGLE_LOCUS_LABEL_OWNER_REPAIR",
+    "preComparisonReasoning": "The frozen student bundle already stated AD=6 and showed x=AG, y=GD, so the frozen derivation x+y=AG+GD=AD=6 is directly grounded in its prompt.",
+    "originalPdfRead": {
+      "path": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/source/2021_신흥중2_수학_2기말.pdf",
+      "sha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+      "page": 1,
+      "interpretation": "x is on AG and y is on GD of median AD; the 6 cm text owner is BG; EC carries 8 cm."
+    },
+    "observedSource": "Original PDF p1 directly shows x on AG, y on GD, 6 cm attached to BG, and 8 cm on EC; the prompt omits an AD value. Thus the only printed 6 cm datum is attached to a segment that does not determine the requested adjacent-segment sum.",
+    "decision": "AUDITED_SOURCE_REPAIR_PASS",
+    "reason": "The PDF does not identify a transcription/OCR locus that authorizes replacing BG=6 with AD=6. The added condition and corresponding relabeling constitute a new mathematical premise; selecting this repair because its result fits an existing choice would violate the source-correction rule. Preserve the existing candidate and all freezes, but do not seal q1 until an authorized source correction is supplied.",
+    "freshBlindRequired": "NO; complete frozen input and q01 reasoning remain valid after this one visual-owner repair.",
+    "repair": {
+      "originalValue": "6 cm owner = BG (source PDF page 1)",
+      "repairedValue": "6 cm owner = AD; repaired source condition is AD=6 cm",
+      "repairReason": "Original x/y labels are AG and GD on median AD. The requested sum is the total AD; the sole printed length datum is 6 cm on BG, which leaves AD undetermined. Correcting only that data owner to AD repairs one semantic locus while preserving x,y, the requested quantity, choices, and centroid structure. The answer was not inferred from any choice.",
+      "independentMathResult": "x+y=AG+GD=AD=6 cm, unique choice ①",
+      "affectedFields": [
+        "content condition owner",
+        "problem SVG dimension label owner"
+      ],
+      "postRepairAnswerCardinality": "1",
+      "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa"
+    },
+    "studentInputChangeImpact": {
+      "changedStudentField": "q01 image bytes only; content, choices, image reference path, and q01 frozen derivation unchanged.",
+      "previousAssetSha256": "78289790e3d9b1f46fedf0ad81983a75161a865e5b044dfbe8e1bb8a7b113ba1",
+      "currentAssetSha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721",
+      "freezeValidity": "VALID: q01 freeze used the unchanged prompt AD=6 and x=AG,y=GD, not the misplaced redundant visual label. Moving only that label owner to AD leaves the independent derivation valid.",
+      "freshBlindRequired": false
+    }
+  }
+}

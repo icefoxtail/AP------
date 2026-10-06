@@ -1,0 +1,160 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "stage": "R2",
+  "status": "R2_VERIFIED",
+  "finalArtifact": {
+    "path": ".tmp\\archive\\qualification-20261006\\21_신흥중_2학기_기말_중2_기출\\21_신흥중_2학기_기말_중2_기출.js",
+    "gitBlobSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "rawFileSha256": "6eec7045f0aa960accf842639d9bac5df0d1eee69495655bee015f41c765ea2b"
+  },
+  "studentBundle": {
+    "path": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R2-student.json",
+    "rawSha256": "9e95c656f4631679feacc48f872ac655f535ff93961924ec7e13ec083850775d",
+    "questionCount": 24,
+    "assetCount": 11,
+    "studentFieldsParity": "EXACT_CURRENT_VM_FIELD_COPY"
+  },
+  "freeze": {
+    "path": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R2.independent-freeze.json",
+    "rawSha256": "444b8f39d65a18a27f9342b7643ab692e38bb932e4da60bbfa2588bb94dc516c",
+    "status": "FREEZE_COMPLETE",
+    "visualReadCoverage": true
+  },
+  "comparison": {
+    "qids": 24,
+    "directMatches": 22,
+    "q19": {
+      "initial": "MISMATCH",
+      "postFreezeCorrection": "7/36 / choice ④",
+      "final": "MATCH",
+      "freezePreserved": true
+    },
+    "q20": {
+      "initial": "SUSPICIOUS",
+      "r1CandidateAnswer": "①",
+      "reason": "①=1/6 and ③=3/18 are equivalent",
+      "finalAnswer": "①, ③",
+      "final": "MULTIPLE_ANSWER_VERIFIED",
+      "changedFields": [
+        "answer",
+        "solution",
+        "decisiveStep"
+      ]
+    },
+    "openFindings": []
+  },
+  "postMutationEvidence": {
+    "path": "archive\\analysis\\qualification-20261006\\21_신흥중_2학기_기말_중2_기출\\R2.evidence.json",
+    "rawSha256": "e0ad13c3a95c03683df4ae6ac3f16af9c194d855460fc89be097ee3cbfad2b67",
+    "boundArtifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "solutionSha256Q20": "dacb8b5ed19d69edc1c054827b6aa10e1b5d3f82f686f2eea30a303028598696",
+    "changedQids": [
+      20
+    ],
+    "inheritedArtifactDispositions": true
+  },
+  "sampleReview": {
+    "sequenceErrorRecorded": "Initial q20 solution mutation happened before Golden/Negative read; this is not retroactively claimed as preflight.",
+    "correctionReviewAfterSampleRead": true,
+    "reviewedGoldenSamples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b"
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the preserved false-PASS regression families: actual SVG geometry, small-board physical structure, Meta lookup, and runtime escape."
+    },
+    "changedLocus": "q20 answer/solution/decisiveStep only"
+  },
+  "validator": {
+    "path": "archive\\analysis\\qualification-20261006\\21_신흥중_2학기_기말_중2_기출\\R2.validation.json",
+    "rawSha256": "e93496ddbd418cd65d673ea64f342a283e72ee812bbd0a2ff984a6fc304a2a78",
+    "status": "PASS",
+    "rowCount": 24,
+    "denominator": 24,
+    "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+    "executionLine": "CODEX",
+    "priorFailedReport": {
+      "path": "archive\\analysis\\qualification-20261006\\21_신흥중_2학기_기말_중2_기출\\R2.validation.attempt1.json",
+      "rawSha256": "bd73d69be23013e494ea5fe38c8a185a71aba7b38bb4bf899b9ad22fd50083ba",
+      "reason": "The inherited artifactDispositions block was initially nested under solutionBindings; it was bound at the R2 evidence top level, retaining all R1 disposition rows and rebinding them to the final artifact SHA."
+    }
+  },
+  "r1Seal": {
+    "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+    "rawSha256": "a6a00713140e15522da957d923905dcc6ef895bdac114e68fbeb18fc9e2443dd",
+    "physicalEvidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.physical-evidence.json",
+    "physicalEvidenceRawSha256": "ace2ed6a5f4a728b61cdf6c3a450ffd6fc5e3c75fe3b7d16aa91a6011a9dceb1",
+    "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a"
+  },
+  "assetHashes": [
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+      "sha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721",
+      "verifiedSha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q02.png",
+      "sha256": "e573dc7736bd41688dbbd89488bd5fbaa262849eb0c1e2482754aa95aec156e9",
+      "verifiedSha256": "e573dc7736bd41688dbbd89488bd5fbaa262849eb0c1e2482754aa95aec156e9"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q04.png",
+      "sha256": "fb29f5b01a6951ebae689035d2a6db593a1e2cb2f7d8568603808cc7f4e35463",
+      "verifiedSha256": "fb29f5b01a6951ebae689035d2a6db593a1e2cb2f7d8568603808cc7f4e35463"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q05-r2.png",
+      "sha256": "0fa7412dcddadc8c2f3b543e7c6ab41cf6813a5451c8ef17b8539821c3da509d",
+      "verifiedSha256": "0fa7412dcddadc8c2f3b543e7c6ab41cf6813a5451c8ef17b8539821c3da509d"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q07.png",
+      "sha256": "2ce48353fc64a93af8a556fd205c9fbc1f4608f165c5cdc7e115e09cad0332d0",
+      "verifiedSha256": "2ce48353fc64a93af8a556fd205c9fbc1f4608f165c5cdc7e115e09cad0332d0"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q08.png",
+      "sha256": "d3533d2bd8040ff88e06fb8f39f45fd06f7060127e855cd04bd4011f2b178193",
+      "verifiedSha256": "d3533d2bd8040ff88e06fb8f39f45fd06f7060127e855cd04bd4011f2b178193"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q09.png",
+      "sha256": "b95ca60478e3610e14c0e7b84c2d98db55a1594e4efad414d7fa5c5656f55e51",
+      "verifiedSha256": "b95ca60478e3610e14c0e7b84c2d98db55a1594e4efad414d7fa5c5656f55e51"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q12.png",
+      "sha256": "90741a362f68b971f3a194c27b8043acb0a0af68d14b27b83dfbcbe7cd162c21",
+      "verifiedSha256": "90741a362f68b971f3a194c27b8043acb0a0af68d14b27b83dfbcbe7cd162c21"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q19.png",
+      "sha256": "75bbd30df5d8d526ec5084ee9df31b9bf6f1699f9061c67d6ab7f7e7ff670397",
+      "verifiedSha256": "75bbd30df5d8d526ec5084ee9df31b9bf6f1699f9061c67d6ab7f7e7ff670397"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q21.png",
+      "sha256": "c35601c38170e72827d5360130fe2c0e67470370153f64078ea27fa3a8608b91",
+      "verifiedSha256": "c35601c38170e72827d5360130fe2c0e67470370153f64078ea27fa3a8608b91"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q24.png",
+      "sha256": "603bc5a9822414cb0d93cb79efceccff2f2f9b7a092e3b788d70f9c6168e5f59",
+      "verifiedSha256": "603bc5a9822414cb0d93cb79efceccff2f2f9b7a092e3b788d70f9c6168e5f59"
+    }
+  ]
+}

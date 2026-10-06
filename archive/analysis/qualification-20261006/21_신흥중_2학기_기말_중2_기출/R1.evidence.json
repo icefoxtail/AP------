@@ -1,0 +1,3575 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a",
+  "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+  "inputArtifactSha": "6835f92d2f43e4aae11154769b6deec383a19a7a",
+  "inputFileSha256": "bf104e984d3464df1662114b68adc9f07e3274d0835a3cac97aefb2747d8f0aa",
+  "finalFileSha256": "d40c3a4eb5929e86a4bdfde04a5d94df3f48e0432ca84df8383b5ae9e66cfcbf",
+  "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+  "sourceArtifactSha": "cc6336b14dc4238a4775e3790c209483b8e86e85",
+  "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+  "sourcePdfPath": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/source/2021_신흥중2_수학_2기말.pdf",
+  "studentInput": {
+    "path": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.postrepair-current.json",
+    "sha256": "f18b29270b5afda8bded25377f5ef8fbc0352c6737ccc12b2206b6afee7d8cb5",
+    "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a",
+    "fileSha256": "d40c3a4eb5929e86a4bdfde04a5d94df3f48e0432ca84df8383b5ae9e66cfcbf",
+    "studentFieldsParity": "EXACT_CURRENT_VM_FIELD_COPY",
+    "qids": 24,
+    "assetRefs": 11,
+    "changedAssetQids": [
+      1
+    ]
+  },
+  "independentFreeze": {
+    "path": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+    "sha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+    "frozenBeforeStoredAnswerExposure": true,
+    "denominator": 24,
+    "postRepairCurrentStudentBundle": {
+      "path": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.postrepair-current.json",
+      "sha256": "f18b29270b5afda8bded25377f5ef8fbc0352c6737ccc12b2206b6afee7d8cb5",
+      "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a",
+      "fileSha256": "d40c3a4eb5929e86a4bdfde04a5d94df3f48e0432ca84df8383b5ae9e66cfcbf",
+      "studentFieldsParity": "EXACT_CURRENT_VM_FIELD_COPY",
+      "qids": 24,
+      "assetRefs": 11,
+      "changedAssetQids": [
+        1
+      ]
+    }
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$",
+            "observation": "내분점 좌표를 x/y로 나눠 계수와 중간 계산을 판서로 보이고, 이어 중점과 거리 계산으로 흐름을 나눈다.",
+            "axes": []
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$이므로\n$m=-3$이다.\n이제 직선 $y=-3x+n$이 점 $(1,-2)$를 지난다는 조건을 사용한다.\n점을 지난다는 것은 그 점의 $x$, $y$좌표를 직선의 식에 대입했을 때 등식이 성립한다는 뜻이다.\n$x=1$, $y=-2$를 대입하면",
+            "observation": "평행 조건으로 첫 기울기를 잡고, 좌표 대입으로 두 번째 계수를 구한 뒤 합으로 결론을 낸다.",
+            "axes": []
+          },
+          {
+            "qid": 18,
+            "solutionSha256": "fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585",
+            "solutionExcerpt": "먼저 조건 (가)\n$A\\cap X=X\\cup B$\n가 뜻하는 포함관계를 정리한다.\n항상\n$A\\cap X\\subset X$\n이고\n$X\\subset X\\cup B$\n이다.\n\n그런데 두 집합이 같다고 했으므로\n$A\\cap X=X$이고\n$X\\cup B=X$가 되어야 한다.\n따라서\n$X\\subset A$이고\n$B\\subset X$이다.\n즉\n$B\\subset X\\subset A$이다.\n집합 $A$는 $0,1,2$를 좌표로 갖는 $3\\times3$ 격자점 아홉 개이고,\n집합 $B$는\n$\\{(0,0),(1,0),(2,0)\\}$이다.\n따라서 $X$에는 아래쪽 세 점\n$(0,0),(1,0),(2,0)$이 반드시 들어간다.\n나머지 여섯 점은\n$(0,1),(1,1),(2,1),(0,2),(1,2),(2,2)$이다.\n\n이제 조건 (나)를 사용한다.\n집합 $A$ 안에서 두 점 사이의 가장 큰 거리는 가로와 세로가 각각 $2$인 정사각형의 대각선 길이\n$\\sqrt{2^2+2^2}=2\\sqrt2$이다.\n이미 $(0,0)$과 $(2,0)$이 $X$에 들어 있으므로,\n두 점 사이 거리의 최댓값이 정확히",
+            "observation": "Condition (a) is separated into set inclusions; B⊂X⊂A identifies the six optional grid points before the distance condition is applied.",
+            "visualSha256": "818597daa71a6d400644def7ed26d7d8eb8a82ecc41157a70f991f1aad405c3b",
+            "visualObservation": "The solution SVG was directly rendered and inspected: a labelled 3×3 lattice, required bottom row, crossing distance candidates and a count panel are visible. ImageMagick substitutes some math glyphs, so only geometry/topology was used.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$",
+            "observation": "좌표차를 각각 산출한 뒤 거리식 대입과 단계별 근호 계산을 분리한다.",
+            "axes": []
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면",
+            "observation": "두 직선 식을 각각 y에 대해 정리해 기울기를 드러내고 수직 조건에 곱을 대입한다.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "원점 축 위에서 음의 기울기 파랑선과 양의 기울기 빨강선이 실제로 교차한다. ImageMagick 대체 폰트로 한글 수식문자는 일부 대체되므로 시각 샘플은 선의 위치/방향만 판정했다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로 $1\\in A$는 참이다.\n\n② $1$은 집합이 아니라 수이므로 $1\\subset A$라고 나타낼 수 없다. 거짓이다.\n\n③ $\\{1\\}$은 $A$의 원소이므로 $\\{1\\}\\in A$는 참이다.\n\n④ $\\{1\\}$의 원소 $1$이 $A$에 속하므로 $\\{1\\}\\subset A$는 참이다.\n\n⑤ $\\{\\{1\\}\\}$의 원소 $\\{1\\}$이 $A$에 속하므로",
+            "observation": "보기별 판단을 독립 단락으로 두고 원소와 부분집합 관계의 이유를 각 결론 옆에 쓴다.",
+            "axes": []
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는지 살펴본다.\n\n① 서로 다른 $x$좌표에 점들이 하나씩 있으므로 함수의 그래프가 될 수 있다.\n\n② 원의 가운데를 지나는 수직선은 원과 두 점에서 만난다. 한 $x$값에 두 $y$값이 대응하므로 함수의 그래프가 아니다.\n\n③ 기울어진 직선은 각 수직선과 많아야 한 점에서 만나므로 함수의 그래프가 될 수 있다.\n\n④ 두 선분의 $x$좌표 범위가 맞닿는 경계에서는 오른쪽 선분의 아래쪽 끝점이 뚫린 점이라 포함되지 않는다.",
+            "observation": "각 보기의 조건을 별도 단락에서 판단하고 vertical-line 조건을 근거로 분기한다.",
+            "axes": []
+          },
+          {
+            "qid": 20,
+            "solutionSha256": "76e9d24b9281566a50f5b83f8628093447d71381349004a4f218f6863f59bbcc",
+            "solutionExcerpt": "두 점 $A(1,3)$, $B(3,6)$ 사이의 거리는\n$AB=\\sqrt{(3-1)^2+(6-3)^2}$,\n$AB=\\sqrt{4+9}=\\sqrt{13}$이다.\n$AP:PB=2:1$이므로 $P$는 $A$에서 $B$ 쪽으로 전체 선분의 $\\dfrac23$만큼 간 점이다. 내분점 공식으로\n$P=\\left(\\dfrac{1\\cdot1+2\\cdot3}{3},\\dfrac{1\\cdot3+2\\cdot6}{3}\\right)$,\n$P=\\left(\\dfrac73,5\\right)$이다.\n\n따라서 두 점 사이의 거리는 $\\sqrt{13}$이고, $P$의 좌표는 $\\left(\\dfrac73,5\\right)$이다.",
+            "observation": "First names the two points, shows the distance substitutions and intermediate roots, then applies the 2:1 internal division to obtain P. The directly viewed SVG shows A, B, the 2:1 point P, and AB length; its geometry matches the text.",
+            "visualSha256": "7021056499a21aff9b85b82799915e4da24901f3b401559f84192ede3b5840c9",
+            "visualObservation": "Actual solution SVG read via local render; plotted segment and point P visibly match the solution geometry.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read current false-PASS regression families: actual SVG geometry, enum-separated small-board blocks, resolvable Meta, and runtime TeX escape. These are direct R1 review targets."
+    }
+  },
+  "independence": {
+    "createReceiptUsedAsAuthority": false
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "independentAnswer": "6 cm",
+      "independentReasoning": "G is the centroid, so it divides median AD in the ratio AG:GD=2:1. AD=6 gives AG=4 and GD=2. Thus x+y=6.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "AUDITED_SOURCE_REPAIR",
+      "repairApplied": true,
+      "sourceMode": "AUDITED_REPAIR",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "①",
+        "independentAnswer": "6 cm",
+        "independentChoiceIndex": 1,
+        "matchedChoice": "$6\\text{ cm}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q1",
+        "id": 1,
+        "contentHash": "593e8cc764ce3296d149869ccc6d2146b0b177d2066cd277c7d7eaac2b03bfde",
+        "choicesHash": "bbc81bcf0a8ad76605cbe09e183bba12d2adea3a81985c50d050b507141548ab",
+        "imageRefHash": "5bbc1f15674ad92ccf8920368c09be66ba5ec78aeed98cec9e21d0a9788afb43",
+        "sourceIdentityFingerprint": "898f269921f07eb8cd0e81f71a22cfcf253bd600a80616ed45aeceb6676b831e",
+        "beforeSolutionHash": "f5c9d5fb9969f29ee323b97db44726d9df9bbe59e07a37ea6c09122980a8a92a"
+      },
+      "sourceParityStatus": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+      "sourceTextExactParityStatus": "AUDITED_SOURCE_REPAIR",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "5a4c9d5fe78b72ad8390839d9b8d622c754736d4298fdfdd6b21a8387eb1a29e",
+      "beforeSolutionSha256": "5a4c9d5fe78b72ad8390839d9b8d622c754736d4298fdfdd6b21a8387eb1a29e",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "분할선분의 길이를 더해 중선 전체 길이를 구함",
+      "decisiveStep": "$x+y=AG+GD=AD=6\\text{ cm}$ 따라서 정답은 ①이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Centroid median ratio and adjacent segment addition; M2-2 L2-3.3/L3-3.3.1."
+        ],
+        "formulas": [
+          "Centroid median ratio and adjacent segment addition; M2-2 L2-3.3/L3-3.3.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Centroid median ratio and adjacent segment addition; M2-2 L2-3.3/L3-3.3.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rationale": "Audited source repair makes q1 a direct adjacent-segment sum (bucket 1); legacy level 中 is retained and its borderline compatibility is explicitly adjudicated."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+          "evidence": "One source owner correction is recorded as AUDITED_SOURCE_REPAIR: original 6cm owner BG repaired to AD; all other q1 content/choices preserved."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "x=AG, y=GD; separates x+y=AG+GD=AD=6. Current audited source repair keeps this derivation."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-05/M2-05-TRIANGLE_PROPERTIES; centroid/median-length RPM semantics and null projection recorded, but reviewed against the audited source correction.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "rpmL3": "중선과 무게중심",
+            "rpmL4": "좌표·길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for the selected centroid-length path."
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The repaired source figure identifies x=AG,y=GD and the 6cm dimension on AD; this is the decisive length relation.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for the selected centroid-length path.",
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The repaired source figure identifies x=AG,y=GD and the 6cm dimension on AD; this is the decisive length relation.",
+      "auditedSourceRepair": {
+        "originalValue": "6 cm owner BG",
+        "repairedValue": "6 cm owner AD; AD=6 is explicit in candidate prompt and dimension SVG",
+        "repairReason": "x=AG and y=GD are adjacent pieces of the requested median AD; the source supplies a single 6 cm datum on BG which cannot determine AD. Reassigning the existing value to the sum-owner AD repairs exactly that locus and preserves target, variables, choices and centroid structure; no choice value was used to infer the answer.",
+        "independentMathResult": "x+y=AG+GD=AD=6 cm; answer ①",
+        "affectedFields": [
+          "content condition owner",
+          "image label owner"
+        ],
+        "postRepairAnswerCardinality": "1",
+        "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa"
+      },
+      "changedFields": [
+        "difficultyBucket",
+        "legacyLevelCompatibility",
+        "decisiveStep"
+      ]
+    },
+    {
+      "qid": 2,
+      "independentAnswer": "7 cm",
+      "independentReasoning": "The right triangle has hypotenuse 25 and one leg 24. By the Pythagorean theorem, x^2=25^2-24^2=49, so x=7.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "①",
+        "independentAnswer": "7 cm",
+        "independentChoiceIndex": 1,
+        "matchedChoice": "$7\\text{ cm}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q2",
+        "id": 2,
+        "contentHash": "a8bb049946439cee0abcbc111252fa28ec5d1cbdbc784a2702daba7e3bf83bd2",
+        "choicesHash": "d7d48b6f58cf990e164c65bd3c71f70e6e7f1e01d22bc106e94a3c0b6691f3f0",
+        "imageRefHash": "50f3ecdf5ff0fde95afbd42fcc9705a2489f11c985d42ced4f68aa453ef825dd",
+        "sourceIdentityFingerprint": "9c779a0aab263f58af6974de0c33167625464022918059b82a416cf46be568d3",
+        "beforeSolutionHash": "2f9de8e052463678641dfc61f57e63880bf2386456c006e9443e7a4feb1833fb"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "c1efc5333f40de2bc4ebcdd9071d9174d5dbb6ad94624e3d76638a9323119550",
+      "beforeSolutionSha256": "c1efc5333f40de2bc4ebcdd9071d9174d5dbb6ad94624e3d76638a9323119550",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "피타고라스 정리",
+      "decisiveStep": "$=625-576$ $=49$ 길이는 양수이므로 $x=7$이다. 따라서 정답은 ①이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Pythagorean theorem; M2-2 L2-3.4/L3-3.4.1."
+        ],
+        "formulas": [
+          "Pythagorean theorem; M2-2 L2-3.4/L3-3.4.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Pythagorean theorem; M2-2 L2-3.4/L3-3.4.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "One Pythagorean subtraction and positive-length selection; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 1 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "24²+x²=25² → x²=625−576=49 → x=7; each decisive line is separate."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-07 Pythagorean side-length path; null keys have RPM_ONLY_COMPATIBILITY_PROJECTION debt, not semantic hold.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "rpmL3": "피타고라스 정리",
+            "rpmL4": "직각삼각형의 변 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The source image already shows the right-angle marker and 24/25/x segment owners; a second triangle would repeat the same information.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q02.png",
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The source image already shows the right-angle marker and 24/25/x segment owners; a second triangle would repeat the same information.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 3,
+      "independentAnswer": "8 cm, 17 cm, 19 cm",
+      "independentReasoning": "Check largest-side squares: 3^2+4^2=5^2; 5^2+12^2=13^2; 10^2+24^2=26^2; 7^2+24^2=25^2. For 8,17,19, 8^2+17^2=353, while 19^2=361, so it is not a right triangle.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "③",
+        "independentAnswer": "8 cm, 17 cm, 19 cm",
+        "independentChoiceIndex": 3,
+        "matchedChoice": "$8\\text{ cm}, 17\\text{ cm}, 19\\text{ cm}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q3",
+        "id": 3,
+        "contentHash": "0c5d4ce0ca9cbee1b9128b6eced0a2d7506edb66f0c67f672e760958c211157f",
+        "choicesHash": "db8f30710469cdf4ff1c1f697ae21bfdfe38b09a32e6e6ab7171983ab2a39ed4",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "f8c5dd013059272c4097582a0281c5ba13f2b8d831a1f31c755f512504733b73",
+        "beforeSolutionHash": "49ff3452521c9ef0af74ebfb7d9e099473c874a754f9fa6eea6c84d43748bb8e"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "bb6d1d8607fcc18faea4a4c172c5ab63c29af3531efb0fc2d4530b5dc03f46ce",
+      "beforeSolutionSha256": "bb6d1d8607fcc18faea4a4c172c5ab63c29af3531efb0fc2d4530b5dc03f46ce",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "피타고라스 정리의 역",
+      "decisiveStep": "④ $10^2+24^2=100+576=676=26^2$ ⑤ $7^2+24^2=49+576=625=25^2$ 따라서 직각삼각형이 아닌 것은 ③이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Pythagorean converse; M2-2 L2-3.4/L3-3.4.2."
+        ],
+        "formulas": [
+          "Pythagorean converse; M2-2 L2-3.4/L3-3.4.2."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Pythagorean converse; M2-2 L2-3.4/L3-3.4.2.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Five-option converse check; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 1 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Checks all five options; ③ has 353≠361; other four equality checks are shown."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-07 converse/Pythagorean-triple path; null keys have RPM_ONLY_COMPATIBILITY_PROJECTION debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "rpmL3": "피타고라스 정리의 역",
+            "rpmL4": "직각삼각형 판정",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "Finite numerical triples are decided by square comparisons; no spatial fact is used.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "Finite numerical triples are decided by square comparisons; no spatial fact is used.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 4,
+      "independentAnswer": "52 cm",
+      "independentReasoning": "The horizontal offset between the bases is 14-6=8. With slanted side 17, trapezoid height is sqrt(17^2-8^2)=15. Perimeter=17+6+15+14=52 cm.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "SOLUTION_VISUAL_ADD",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "④",
+        "independentAnswer": "52 cm",
+        "independentChoiceIndex": 4,
+        "matchedChoice": "$52\\text{ cm}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q4",
+        "id": 4,
+        "contentHash": "43e20509c85407d89b2385ec77561c737965017dfaa40400140de623af15138b",
+        "choicesHash": "68928e778d413c133a7b16a2359d03c60fd2c155ad9599d027da345d88a43b61",
+        "imageRefHash": "83a8e7416f6efc11ec1c546d614729057fac489ef2f923af5990275fa673adf3",
+        "sourceIdentityFingerprint": "348659f3fd2fa5499cb2140f56a15366eb5b68eb7751dd5b539b3282667822e2",
+        "beforeSolutionHash": "fe5a0e411231e3023900b13aae8823adee95c002d1fb440172154787fc009265"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "24469fc8aeebed1dfa825eead30dfe209bdf147b93f5a7e2b61d4f5513fda616",
+      "beforeSolutionSha256": "24469fc8aeebed1dfa825eead30dfe209bdf147b93f5a7e2b61d4f5513fda616",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "피타고라스 정리의 활용; 사다리꼴의 둘레",
+      "decisiveStep": "$h=15\\text{ cm}$ 따라서 사다리꼴의 둘레는 $17+6+15+14=52\\text{ cm}$이다. 정답은 ④이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Trapezoid base difference and Pythagorean application; M2-2 L1-2.2.2/L3-3.4.3."
+        ],
+        "formulas": [
+          "Trapezoid base difference and Pythagorean application; M2-2 L1-2.2.2/L3-3.4.3."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Trapezoid base difference and Pythagorean application; M2-2 L1-2.2.2/L3-3.4.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "One trapezoid height and perimeter sum; bucket 3, level 中."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 1 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Shows base difference 8, height equation, positive height 15, and perimeter addition."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-07 right-trapezoid length path; candidate carries explicit crosswalk mismatch debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The solution derives the 8cm horizontal offset and 15cm height; the added right-triangle visual shows the derived auxiliary leg.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q04.png",
+          "solutionImageRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q04-solution.svg"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The solution derives the 8cm horizontal offset and 15cm height; the added right-triangle visual shows the derived auxiliary leg.",
+      "changedFields": [
+        "legacyLevelCompatibility",
+        "solutionImage"
+      ]
+    },
+    {
+      "qid": 5,
+      "independentAnswer": "36 cm^2",
+      "independentReasoning": "Let area ABC be S. Since G is the centroid, height from G to BC is one third the altitude from A, so area GBC=S/3. In triangle GBC, G' is the centroid, hence its distance from BC is one third of that triangle's altitude, or h/9 if ABC's altitude is h. D is midpoint of BC, so area G'BD=(1/2)(BC/2)(h/9)=S/18. Given this is 6, S=108. Using coordinates A=(0,h), B=(0,0), C=(c,0), G=(c/3,h/3), the determinant gives area AGC=ch/6=(1/3)·area ABC=36 cm^2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "SOLUTION_VISUAL_ADD",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "②",
+        "independentAnswer": "36 cm^2",
+        "independentChoiceIndex": 2,
+        "matchedChoice": "$36\\text{ cm}^2$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q5",
+        "id": 5,
+        "contentHash": "b420182d66893509860121786ef16d8c570f78532dc9582ee14e78f94be4f63e",
+        "choicesHash": "47cc0fd519906c74f35f11f898c400a1a5b1bc1f515e9493ea2dbdc08b90df95",
+        "imageRefHash": "faca2bcb40323da2a7432d13518f27421bedecb25c0c65459d62846d4558a765",
+        "sourceIdentityFingerprint": "61812e05c5afd58330ec94267ebbb41bebf218db899c96a5d079512287998e0d",
+        "beforeSolutionHash": "580b5e3a7e6704a8c803f8b07dcbea91f066cd1c7f6a3b8b4eab1d2c6042c50c"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "f7c6f526cefd4f5da697b56c21cf39383371c1a894ca5a6c2fc03a592691023e",
+      "beforeSolutionSha256": "280918e07d336ee8b83ed8bac87dd33b81284bf885e85b49c86803698d789060",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "무게중심이 만드는 넓이비",
+      "decisiveStep": "$=\\dfrac1{18}S$ $6=\\dfrac1{18}S$이므로 $S=108\\text{ cm}^2$이다. 무게중심은 삼각형을 넓이가 같은 세 부분으로 나누므로 $[AGC]=\\dfrac13S=36\\text{ cm}^2$이다. 따라서 정답은 ②이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Centroid area ratios; M2-2 L2-3.3/L3-3.3.1–3.3.2."
+        ],
+        "formulas": [
+          "Centroid area ratios; M2-2 L2-3.3/L3-3.3.1–3.3.2."
+        ],
+        "notations": [
+          "[XYZ] means area of triangle XYZ; defined in the final solution."
+        ],
+        "methods": [
+          {
+            "method": "Centroid area ratios; M2-2 L2-3.3/L3-3.3.1–3.3.2.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Nested centroid area ratios and back-solve; bucket 4, level 上."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 1 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Defines [XYZ], derives [GBC]=S/3, [G′BD]=S/18, S=108, then [AGC]=36."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-05 centroid-area path; candidate carries explicit missing crosswalk projection debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "rpmL3": "넓이와 무게중심",
+            "rpmL4": "무게중심을 이용한 복합도형",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The nested centroid proof uses S/3 and S/18 area regions; the visual distinguishes G′BD and AGC.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q05-r2.png",
+          "solutionImageRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q05-solution.svg"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The nested centroid proof uses S/3 and S/18 area regions; the visual distinguishes G′BD and AGC.",
+      "changedFields": [
+        "solution",
+        "legacyLevelCompatibility",
+        "solutionImage"
+      ]
+    },
+    {
+      "qid": 6,
+      "independentAnswer": "450",
+      "independentReasoning": "A right triangle can use 17 as hypotenuse, giving x^2=17^2-15^2=64, or use x as hypotenuse, giving x^2=17^2+15^2=514. The difference is 514-64=450.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "SOLUTION_CASE_BOUNDARY_REPAIR",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "③",
+        "independentAnswer": "450",
+        "independentChoiceIndex": 3,
+        "matchedChoice": "450",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q6",
+        "id": 6,
+        "contentHash": "a12878f3f603b94cf2b611f63fe9d1b1239b0f47f58d74391d18e8ea636f46dd",
+        "choicesHash": "5acb3f4046ab98061b932769ec65c9d56d11e9982979a5d2718bfedd9e287163",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "922cb65929fb0df692103498bd2b7550d9c522937af1b1310fa78a1f5ae59a58",
+        "beforeSolutionHash": "147342b99a2609051c15be05726e5df0ddb64e44e727a6cd1e83bfdd48fa13b3"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "f5cc9059e0a464ae035b103962dc8d14673ba847330c67e7dda45071713aaeab",
+      "beforeSolutionSha256": "62fd7d8065854f4fcfdd248e63c197f94d6cf1f6622293806134538743486983",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "피타고라스 정리의 경우 분류",
+      "decisiveStep": "$x<17$: $x^2=64$. $x=17$이면 빗변이 다른 변보다 길어야 하므로 불가능하다. $x>17$: $x^2=514$. 따라서 가능한 $x^2$의 차는 $514-64=450$이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Longest-side case split and Pythagorean theorem; M2-2 L2-3.4."
+        ],
+        "formulas": [
+          "Longest-side case split and Pythagorean theorem; M2-2 L2-3.4."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Longest-side case split and Pythagorean theorem; M2-2 L2-3.4.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Three side-order cases; bucket 4, level 上."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 2 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Separates x<17, x=17 impossible, x>17; derives 64 and 514 and their difference."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-07 Pythagorean application; candidate carries explicit crosswalk mismatch debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The solution compares numerical side lengths and cases; no geometric placement is needed.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The solution compares numerical side lengths and cases; no geometric placement is needed.",
+      "changedFields": [
+        "solution",
+        "legacyLevelCompatibility",
+        "decisiveStep"
+      ]
+    },
+    {
+      "qid": 7,
+      "independentAnswer": "50 cm^2",
+      "independentReasoning": "From △ABC≡△CDE, corresponding sides give CD=AB=6 and BC=DE=8. Place B=(0,0), C=(8,0), D=(14,0), A=(0,6); the right angle at D and DE=8 give E=(14,8). The shoelace/determinant area of △ACE is |(C-A)×(E-A)|/2=|(8,-6)×(14,2)|/2=100/2=50 cm^2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "META_TEMPLATE_PROJECTION_DEBT",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "④",
+        "independentAnswer": "50 cm^2",
+        "independentChoiceIndex": 4,
+        "matchedChoice": "$50\\text{ cm}^2$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q7",
+        "id": 7,
+        "contentHash": "2d84d46edd4f9d15516d866aa1c097032fafe627e315f14ab5b4b1e80899f43c",
+        "choicesHash": "ff2fd1e1d5a7a3d28d82480739eb1442d53a3abf6a4dcb6d355f8fe17c1d9c61",
+        "imageRefHash": "5e2e6c659a0a487343dd4a609779b02888d65656096f2c72f5349321808e9c99",
+        "sourceIdentityFingerprint": "5d7c5c056b0ba671fd1312a33a7fc420e4a1d2fef7b8bf4ab837f8426f149de2",
+        "beforeSolutionHash": "c86be72092e50b4628371fbac37fbbb4870ab82c5de64c64090062184e15803e"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "ca9a45543cd1f64235795f5711ac578ba72da6645ffc052966aefb589ef63e25",
+      "beforeSolutionSha256": "5296e9c3bd4da7e97151c3a3c36f49ab174c09fd919c90750cece9fb376b605e",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "삼각형의 합동; 직각삼각형의 넓이",
+      "decisiveStep": "사각형 $ABCE$의 넓이는 $[ABE]+[BCE]$이고, 이는 $[ABC]+[ACE]$와 같다. $[ABC]=\\dfrac12\\cdot6\\cdot8=24\\text{ cm}^2$ $[ACE]=42+32-24=50\\text{ cm}^2$이다. 따라서 정답은 ④이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Congruence correspondence (cumulative M1-2 L1-1.3.3) and triangle area decomposition."
+        ],
+        "formulas": [
+          "Congruence correspondence (cumulative M1-2 L1-1.3.3) and triangle area decomposition."
+        ],
+        "notations": [
+          "[XYZ] means area of triangle XYZ; defined in the final solution."
+        ],
+        "methods": [
+          {
+            "method": "Congruence correspondence (cumulative M1-2 L1-1.3.3) and triangle area decomposition.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Congruence correspondence and area decomposition; bucket 4, level 上."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 2 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Defines [XYZ], transfers congruent side lengths, computes three component areas, then target area 50."
+        },
+        "META": {
+          "status": "PASS_WITH_PROJECTION_DEBT",
+          "evidence": "PT_RIGHT_TRIANGLE_CONGRUENCE is retained as the broad active primary key. The RHS template was removed because congruence is given; no RHS construction is used. templateKey=null with PROJECTION_UNMATERIALIZED debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "rpmL3": "직각삼각형의 합동",
+            "rpmL4": "RHS",
+            "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "NO_EXACT_ACTIVE_TEMPLATE_FOR_GIVEN_CONGRUENCE_AREA_DECOMPOSITION",
+            "metaNullReason": "The source gives the right-triangle congruence directly; the solution transfers corresponding side lengths and decomposes area, not an RHS construction. Keep the broader active PT_RIGHT_TRIANGLE_CONGRUENCE classification; no exact current active template maps this given-congruence area-decomposition method, so templateKey remains explicit projection debt."
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The added figure binds the given side correspondences to the right-triangle area decomposition and target ACE.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q07.png",
+          "solutionImageRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q07-solution.svg"
+        }
+      },
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "metaDebtReason": "The source gives the right-triangle congruence directly; the solution transfers corresponding side lengths and decomposes area, not an RHS construction. Keep the broader active PT_RIGHT_TRIANGLE_CONGRUENCE classification; no exact current active template maps this given-congruence area-decomposition method, so templateKey remains explicit projection debt.",
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The added figure binds the given side correspondences to the right-triangle area decomposition and target ACE.",
+      "changedFields": [
+        "solution",
+        "legacyLevelCompatibility",
+        "projectionStatus",
+        "projectionReasonCode",
+        "templateKey",
+        "metaNullReason",
+        "solutionImage"
+      ]
+    },
+    {
+      "qid": 8,
+      "independentAnswer": "225π cm^2",
+      "independentReasoning": "G divides median AD in the ratio AG:GD=2:1, so AD=15. In a right triangle, the median to the hypotenuse equals half the hypotenuse, so the circumradius is AD=15. Circumcircle area is π·15^2=225π cm^2.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "④",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "SOLUTION_VISUAL_ADD",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "④",
+        "independentAnswer": "225π cm^2",
+        "independentChoiceIndex": 4,
+        "matchedChoice": "$225\\pi\\text{ cm}^2$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q8",
+        "id": 8,
+        "contentHash": "79db5146256920f4ad0844ccb9b6cff3e9c9530c7b1c3246863dbfcb81de2059",
+        "choicesHash": "260e8995f58bdf130cd0ef606d0eb78f16ad8a2058122acb48416fbdc0c8ef52",
+        "imageRefHash": "ae3aa7b4b94eb74f687819b7560adeb48d0d55710f44f4d0d9d1d95163a2afb8",
+        "sourceIdentityFingerprint": "e07189d2e4085d52a311bf13b1035da0cf97f55db6061bcfe325c8456b20fc94",
+        "beforeSolutionHash": "778cfe0ef51c36e122cfed94566f0775a694568ca31ee9bfbbac4a9302020dc3"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "b3ffff6f84f912011e7dbdc66b1bd1c2fd3c8e3e5c4b138ee342c321a3cc70a8",
+      "beforeSolutionSha256": "b3ffff6f84f912011e7dbdc66b1bd1c2fd3c8e3e5c4b138ee342c321a3cc70a8",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "무게중심의 중선 분할비; 직각삼각형의 외접원 성질",
+      "decisiveStep": "직각삼각형의 외접원에서 빗변은 지름이므로 반지름은 $15\\text{ cm}$이다. $\\pi\\cdot15^2=225\\pi\\text{ cm}^2$ 따라서 정답은 ④이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Centroid median ratio and right-triangle median/circumcircle property; M2-2 L2-3.3/L1-1.2–1.3."
+        ],
+        "formulas": [
+          "Centroid median ratio and right-triangle median/circumcircle property; M2-2 L2-3.3/L1-1.2–1.3."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Centroid median ratio and right-triangle median/circumcircle property; M2-2 L2-3.3/L1-1.2–1.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Centroid/median and circumcircle; bucket 4, level 上."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 2 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Uses centroid 2:1, AD=15, BC=30, radius 15, then circle area 225π."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-05 centroid 2:1 path; candidate carries explicit missing crosswalk projection debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "rpmL3": "중선과 무게중심",
+            "rpmL4": "2:1 비",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The solution uses BC as the circumcircle diameter; the circle and median make this property visible.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q08.png",
+          "solutionImageRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q08-solution.svg"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The solution uses BC as the circumcircle diameter; the circle and median make this property visible.",
+      "changedFields": [
+        "legacyLevelCompatibility",
+        "solutionImage"
+      ]
+    },
+    {
+      "qid": 9,
+      "independentAnswer": "10 cm",
+      "independentReasoning": "The parallel line DE through centroid G is at 2/3 of the altitude from A toward BC, so AD/AB=AE/AC=DE/BC=2/3. Since the same line contains incenter I, whose distance-fraction from A toward BC is (AB+AC)/(AB+BC+AC), set 2/3=30/(BC+30). This gives BC=15, hence DE=(2/3)·15=10 cm.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "SOLUTION_VISUAL_ADD",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "③",
+        "independentAnswer": "10 cm",
+        "independentChoiceIndex": 3,
+        "matchedChoice": "$10\\text{ cm}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q9",
+        "id": 9,
+        "contentHash": "1dc745db93a0bfaba28326e279ffed3fff9cfeb18f841e534466160038bc2f87",
+        "choicesHash": "83cf1a38906d192c0a801bd9818a43dd4fcceed501acdd285c1d18c2bd97ed21",
+        "imageRefHash": "d368c57fd9f18c6e21859af4b6c59e4871ac795cb0bbde0b2ee6b8a21b0919a4",
+        "sourceIdentityFingerprint": "2a3498ed81284bd64337ebdafc1852696b0409fa65f7d56bd52f9ec7d33aceb6",
+        "beforeSolutionHash": "714325d27f0b75f6df5e2ad06e1e6d61621efba28b9e091d16cb0a37977725a6"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "4e921b245c224bb114c1f2e1e4bbab0dd09d07c7951685ece4c6eee2a908fef0",
+      "beforeSolutionSha256": "adcfe4178bf88887aeaa86b52ff227dde388b0a8ae0c5b57f0d4ddce345e81f4",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "무게중심의 평행선 비; 내심과 넓이",
+      "decisiveStep": "$BC=15\\text{ cm}$ $DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다. $G$가 중선 위에서 꼭짓점으로부터 $\\dfrac23$ 위치이므로 $\\dfrac{AD}{AB}=\\dfrac{AE}{AC}=\\dfrac23$. 따라서 $DE=\\dfrac23BC=\\dfrac23\\cdot15=10\\text{ cm}$이다. 정답은 ③이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Incenter equal distances, area identity and similarity; M2-2 L2-3.1–3.3."
+        ],
+        "formulas": [
+          "Incenter equal distances, area identity and similarity; M2-2 L2-3.1–3.3."
+        ],
+        "notations": [
+          "[XYZ] means area of triangle XYZ; defined in the final solution."
+        ],
+        "methods": [
+          {
+            "method": "Incenter equal distances, area identity and similarity; M2-2 L2-3.1–3.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "상",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Centroid + incenter + area + similarity integration; bucket 5, level 上."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 2 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Defines [XYZ], derives r=h/3 from G,I on DE; area equation gives BC=15; similarity gives DE=10."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "PT_PARALLEL_SEGMENT_RATIO and TPL_PARALLEL_SEGMENT_RATIO_GENERAL are active and match the similarity/parallel-line solution; exact 2015 M2-06 binding reviewed.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "rpmL3": "비례 활용",
+            "rpmL4": "선분비를 이용한 복합도형",
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "projectionStatus": "PROJECTION_REUSE",
+            "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+            "metaNullReason": null
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The proof depends on DE∥BC and G,I on DE with equal incenter distances; the visual shows those constructed relations.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q09.png",
+          "solutionImageRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q09-solution.svg"
+        }
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The proof depends on DE∥BC and G,I on DE with equal incenter distances; the visual shows those constructed relations.",
+      "changedFields": [
+        "solution",
+        "legacyLevelCompatibility",
+        "solutionImage"
+      ]
+    },
+    {
+      "qid": 10,
+      "independentAnswer": "6",
+      "independentReasoning": "Among 1 through 12, the odd numbers are 1,3,5,7,9,11: six outcomes.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "③",
+        "independentAnswer": "6",
+        "independentChoiceIndex": 3,
+        "matchedChoice": "6",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q10",
+        "id": 10,
+        "contentHash": "6b6b3b3143e0a28401d79f1984615fecc84dbf4eb2b38c7884dbfdfbcc99d8e7",
+        "choicesHash": "d238063e92781ac8c4073b1a4967318e89a02ac970944422d1ac19392509ce57",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "0e05b3165725d4b09a90003646995af189f8f932c7e5ad6366bf3b20f8a3e285",
+        "beforeSolutionHash": "0712d671326b10eb6de3b1db844fb745caf1617ca8c4e6a6eff6ec6a21f03fff"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "a4c31b3dffa2c60f874eececde80c21de8d58f27d7b3722fbfe704b615f1f95a",
+      "beforeSolutionSha256": "a4c31b3dffa2c60f874eececde80c21de8d58f27d7b3722fbfe704b615f1f95a",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "유한한 경우의 수 세기",
+      "decisiveStep": "홀수는 $1,3,5,7,9,11$이다. 경우의 수는 $6$가지이다. 따라서 정답은 ③이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Count odd values; M2-2 L2-4.1."
+        ],
+        "formulas": [
+          "Count odd values; M2-2 L2-4.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Count odd values; M2-2 L2-4.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Direct odd-number count; bucket 1, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 2 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Lists all six odd integers before counting."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 counting without repetition path; null keys carry RPM-only projection debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "합의 법칙과 곱의 법칙",
+            "rpmL4": "중복 없이 세기",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "A direct list of odd values fully presents the event set.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "A direct list of odd values fully presents the event set.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 11,
+      "independentAnswer": "9",
+      "independentReasoning": "The two groups are disjoint choices: 4 male candidates plus 5 female candidates gives 4+5=9 representatives.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "②",
+        "independentAnswer": "9",
+        "independentChoiceIndex": 2,
+        "matchedChoice": "9",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q11",
+        "id": 11,
+        "contentHash": "006382b6df33627f79f780bf63aa8b5f05cbbf9b5e377108a952c9d7397881de",
+        "choicesHash": "bcd2e662fd7cda85931154123fe670a0f23b5e9939c027784c8762606360648f",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "cd16f19cf59e093646484645f469f0833bcde384063faeb1f91d9ab606f35e2d",
+        "beforeSolutionHash": "468e99b5ebdedbf5709d9c828afb7bec49fa6dca5b2f5b3c88cbc88b8a0ee8d1"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "66075060146f42bc24215d44cabb1ba3dff5963da08e3c4bdc7d877115602ce0",
+      "beforeSolutionSha256": "66075060146f42bc24215d44cabb1ba3dff5963da08e3c4bdc7d877115602ce0",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "합의 법칙",
+      "decisiveStep": "남학생 4명과 여학생 5명은 서로 겹치지 않는 후보이다. 남학생을 뽑는 경우와 여학생을 뽑는 경우를 더한다. $4+5=9$ 따라서 대표를 뽑는 경우의 수는 9가지이고 정답은 ②이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Addition rule; M2-2 L3-4.1.1."
+        ],
+        "formulas": [
+          "Addition rule; M2-2 L3-4.1.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Addition rule; M2-2 L3-4.1.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "One disjoint-choice sum; bucket 1, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 2 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Identifies disjoint groups, writes 4+5=9, then concludes."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 addition rule for disjoint choices; null keys carry RPM-only projection debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "합의 법칙과 곱의 법칙",
+            "rpmL4": "단계별 선택",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "Disjoint candidate groups are completely represented by the addition expression.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "Disjoint candidate groups are completely represented by the addition expression.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 12,
+      "independentAnswer": "8",
+      "independentReasoning": "Choose one of 2 home-to-school routes and one of 4 school-to-library routes. Each combination gives a route, so 2·4=8. The diagram has separate route branches and no repeated junction on a selected route.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "⑤",
+        "independentAnswer": "8",
+        "independentChoiceIndex": 5,
+        "matchedChoice": "8",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q12",
+        "id": 12,
+        "contentHash": "3ae146aeca54766f64ccdbe8a79bdf7ff274b20a66593d58239e3fef01ca33a0",
+        "choicesHash": "9943fc209a236a09e2527eed0f319f8a60ac55bca979c6582790fa0443f2cbde",
+        "imageRefHash": "973192727ded2a4de5e9da67964a8478cb58a235ab489cf621143acb837e287a",
+        "sourceIdentityFingerprint": "c90fb6f83b85f126a8fe528b90e0bb77118872a63cf9cfffa38f2333cc39cd39",
+        "beforeSolutionHash": "24527d0b94dc7b744ee3df83fefa6c3fbe5ac45b211c4b771f1e812d69ac4813"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "b51f029e2065bbd3b7bc4a0b2921b323a688d7728ebe5319420714cad7389b9e",
+      "beforeSolutionSha256": "b51f029e2065bbd3b7bc4a0b2921b323a688d7728ebe5319420714cad7389b9e",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "곱의 법칙",
+      "decisiveStep": "집에서 학교까지 가는 길을 하나 고른 뒤, 학교에서 도서관까지 가는 길을 하나 고른다. 같은 지점을 두 번 지나지 않는 각 구간의 길 선택은 서로 연결된다. $2\\times4=8$ 따라서 모든 경우의 수는 8이고 정답은 ⑤이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Product rule and path choices; M2-2 L3-4.1.1/L3-4.1.3."
+        ],
+        "formulas": [
+          "Product rule and path choices; M2-2 L3-4.1.1/L3-4.1.3."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Product rule and path choices; M2-2 L3-4.1.1/L3-4.1.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Two-stage route product; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 2 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Explains two consecutive choices, writes 2×4=8, then concludes."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 sequential choices/path counting; null keys carry RPM-only projection debt.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "합의 법칙과 곱의 법칙",
+            "rpmL4": "단계별 선택",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+            "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The source road graph already displays 2 and 4 route choices; the product rule adds no geometry.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q12.png",
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The source road graph already displays 2 and 4 route choices; the product rule adds no geometry.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 13,
+      "independentAnswer": "10",
+      "independentReasoning": "For absolute difference 2 there are 4 ordered pairs in each direction, total 8. For absolute difference 5 there are 1 in each direction, total 2. Altogether 8+2=10.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "②",
+        "independentAnswer": "10",
+        "independentChoiceIndex": 2,
+        "matchedChoice": "10",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q13",
+        "id": 13,
+        "contentHash": "2d294768ec236726b3e5b13d8beded15cc01ef27ab0812373cb7a77a1d7a467e",
+        "choicesHash": "1da35ca8bb317762d9de79d2ab23a6c86b8d3fb800041fdd1c5dea18984e699c",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "f95e3593c1f9853366a009ac4b7c37560db17bd66d04cb5ff2569d8801edd626",
+        "beforeSolutionHash": "910819f2e897a879b2d16cbb0b92579ca14de636610e30d00c439e8d28d4f18f"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "997672de89cef95cbd76c1475e1dcd07b56f71c0b86d7283e8191224d54afef2",
+      "beforeSolutionSha256": "997672de89cef95cbd76c1475e1dcd07b56f71c0b86d7283e8191224d54afef2",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "순서쌍 세기; 합의 법칙",
+      "decisiveStep": "$(1,3),(2,4),(3,5),(4,6)$과 그 순서를 바꾼 4개로 모두 8개이다. 차가 5인 순서쌍은 $(1,6),(6,1)$의 2개이다. 두 경우는 겹치지 않으므로 $8+2=10$가지이다. 따라서 정답은 ②이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Ordered pair enumeration; M2-2 L3-4.1.2.1."
+        ],
+        "formulas": [
+          "Ordered pair enumeration; M2-2 L3-4.1.2.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Ordered pair enumeration; M2-2 L3-4.1.2.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Two ordered-pair difference cases; bucket 3, level 中."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 3 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Counts difference-2 and difference-5 ordered pairs in separate groups; total 10."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 ordered choices; exact active binding remains pending and is separately recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 있는 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_BINDING_PENDING",
+            "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+            "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "Ordered-pair lists show the two difference classes completely.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "Ordered-pair lists show the two difference classes completely.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 14,
+      "independentAnswer": "나오는 눈의 수가 12의 약수일 확률",
+      "independentReasoning": "A die outcome 1–6 is always an integer, always at most 6, and never at least 7 or a multiple of 9. Exactly 1,2,3,6 divide 12, giving probability 4/6, strictly between 0 and 1.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": {
+        "kind": "POST_FREEZE_REASONING_CORRECTION",
+        "path": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.answer-adjudications.json",
+        "finalIndependentAnswer": "나오는 눈의 수가 12의 약수일 확률",
+        "reasonCorrection": "12 divisors on outcomes 1–6 are 1,2,3,4,6, so the probability is 5/6; answer choice remains ①."
+      },
+      "verdict": "PASS_AFTER_ADJUDICATION",
+      "disposition": "POST_FREEZE_REASONING_CORRECTION",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "①",
+        "independentAnswer": "나오는 눈의 수가 12의 약수일 확률",
+        "independentChoiceIndex": 1,
+        "matchedChoice": "나오는 눈의 수가 12의 약수일 확률",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q14",
+        "id": 14,
+        "contentHash": "0fce629577c50f7324c15d950a913461b891424cd5a9e80717092a7f0e076a4f",
+        "choicesHash": "28f3b712dabc7192e0914ad5b94a29dbb8cccc3f208f56208f1d342d7747c388",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "a0f6246411ac5fc31009f848f877abacfbe15535e0ef07bec8174dad7830dac2",
+        "beforeSolutionHash": "7471ab78000beb19a0a7fb39f3fe99562723f546a9edf24a96ddd993822d5d5b"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "52842a0f85957c42340b46df1dcf5c44ea27908c88bf87b8a7d1dd912923b252",
+      "beforeSolutionSha256": "52842a0f85957c42340b46df1dcf5c44ea27908c88bf87b8a7d1dd912923b252",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "확률의 뜻; 유한한 표본공간",
+      "decisiveStep": "④ 7 이상인 눈은 없어 확률이 0이다. ⑤ 모든 눈이 6 이하이므로 확률이 1이다. 따라서 확률이 0이나 1이 아닌 것은 ①이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Event probability; M2-2 L2-4.2/L3-4.2.1."
+        ],
+        "formulas": [
+          "Event probability; M2-2 L2-4.2/L3-4.2.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Event probability; M2-2 L2-4.2/L3-4.2.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Inspect six outcomes and one divisor event; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 3 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Lists die outcomes; divisor set includes 1,2,3,4,6; distinguishes 0,1,5/6."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 probability definition/event outcomes; null projection row recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "rpmL3": "확률의 뜻",
+            "rpmL4": "확률 계산",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The six die outcomes and divisor event are listed in text.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The six die outcomes and divisor event are listed in text.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 15,
+      "independentAnswer": "1/3",
+      "independentReasoning": "EXCITING MATH contains 12 letters counting repeats. The vowels are E, I, I, A, four letters, so the probability is 4/12=1/3.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "⑤",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "⑤",
+        "independentAnswer": "1/3",
+        "independentChoiceIndex": 5,
+        "matchedChoice": "$\\dfrac{1}{3}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q15",
+        "id": 15,
+        "contentHash": "6eb354b22f12c9036260238a6ae21fb60e201dfcf7ce4c080f70538f68d56fef",
+        "choicesHash": "e1bdb617742c02055eba010af7debd0f7ceae219c807410c375e5d73f20ad236",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "4bf5ba6d6fa68be7e42ba29cc2c6c9093c318f0ce01bf39ce4b3c2aa43ad0408",
+        "beforeSolutionHash": "496337496d47828f847f86f62984fa92f0b18e1e3c59989a87b99fccb2c2c1a1"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "41df7a9f5375165e32ff19d547843960dd02ab24fdd98724cf84df25417c5a59",
+      "beforeSolutionSha256": "41df7a9f5375165e32ff19d547843960dd02ab24fdd98724cf84df25417c5a59",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "경우의 수에 의한 확률",
+      "decisiveStep": "전체 알파벳은 $12$개이고, 모음은 $E,I,I,A$의 $4$개이다. $P(모음)=\\dfrac4{12}=\\dfrac13$ 따라서 정답은 ⑤이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Equally likely outcomes; M2-2 L3-4.2.1.1."
+        ],
+        "formulas": [
+          "Equally likely outcomes; M2-2 L3-4.2.1.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Equally likely outcomes; M2-2 L3-4.2.1.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Count 12 letter positions and four vowels; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 3 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Excludes the space; counts 12 letter positions and four vowel positions; computes 1/3."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 equally likely outcome counting; null crosswalk mismatch recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "확률의 뜻",
+            "rpmL4": "동등가능한 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "Letter-position counting has no spatial structure.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "Letter-position counting has no spatial structure.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 16,
+      "independentAnswer": "7/16",
+      "independentReasoning": "There are 7+5+4=16 umbrellas. No yellow umbrella is listed, so favorable outcomes are the 7 red umbrellas. Probability=7/16.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "②",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "②",
+        "independentAnswer": "7/16",
+        "independentChoiceIndex": 2,
+        "matchedChoice": "$\\dfrac{7}{16}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q16",
+        "id": 16,
+        "contentHash": "dc40db17d04d9a52ff43b7086cec60629a9f844cbd0846be44ec684e4db20bc5",
+        "choicesHash": "0dd2a48567dc173643916fbde535ccc19e4fd9dfb23610e7759943e244d3c005",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "1b01a2e0866b034a29432c83144d2f2f8ea66ec387d7629444b0f4356a615659",
+        "beforeSolutionHash": "b388f2e7d067f471b76eff842a12db26780db56336fa95c20b7c133fc43be1f9"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "846fca3233c63a050ed92fb8484a44a67b7edd9b9d3cbe1e15b5fcfcf5e706b6",
+      "beforeSolutionSha256": "846fca3233c63a050ed92fb8484a44a67b7edd9b9d3cbe1e15b5fcfcf5e706b6",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "확률의 뜻; 합집합 사건",
+      "decisiveStep": "노란 우산은 없으므로 빨간색 또는 노란색인 우산은 빨간 우산 7개뿐이다. $P=\\dfrac7{16}$ 따라서 정답은 ②이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Event union and impossible event; M2-2 L3-4.2.2."
+        ],
+        "formulas": [
+          "Event union and impossible event; M2-2 L3-4.2.2."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Event union and impossible event; M2-2 L3-4.2.2.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Sixteen equiprobable umbrellas, seven favorable; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 3 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Shows total 7+5+4=16; absent yellow category; probability 7/16."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 event sum/union; null projection row recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "rpmL3": "확률의 성질",
+            "rpmL4": "사건의 합",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "Color category counts fully represent the event.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "Color category counts fully represent the event.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 17,
+      "independentAnswer": "3/8",
+      "independentReasoning": "P(A yellow)=5/8 and P(B blue)=6/10=3/5. The draws are from separate bags, so multiply: (5/8)(3/5)=3/8.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "①",
+        "independentAnswer": "3/8",
+        "independentChoiceIndex": 1,
+        "matchedChoice": "$\\dfrac{3}{8}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q17",
+        "id": 17,
+        "contentHash": "0c5691990ab5a9d52d1d117c2fd6fb2f40d6f1edee2c3fdd7e59cb5fa311c145",
+        "choicesHash": "f18a4528fd21c152b2cdf3e7772d18b41794a24087aefb4357e716a443c49f86",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "cdd2b6fe0e18fc385b6328440f118104a0cc263cb489a1e818d5c1b6ec14fb57",
+        "beforeSolutionHash": "b245da935a8831e96ff3d7eb7cc50c489e65a4e74bc232c5c42639f5bb14437e"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "5e2ace68d0ea25ec9520ecc5dff0390ea92a4e38ff580778d4bdadbde72839cf",
+      "beforeSolutionSha256": "5e2ace68d0ea25ec9520ecc5dff0390ea92a4e38ff580778d4bdadbde72839cf",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "독립 시행의 곱셈",
+      "decisiveStep": "두 주머니에서의 선택은 독립이므로 두 확률을 곱한다. $\\dfrac58\\times\\dfrac35=\\dfrac38$ 따라서 정답은 ①이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Independent event product; M2-2 L3-4.2.3."
+        ],
+        "formulas": [
+          "Independent event product; M2-2 L3-4.2.3."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Independent event product; M2-2 L3-4.2.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Two simple ratios and independent product; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 3 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Computes 5/8 and 6/10 separately, then independent product 3/8."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 independent sequential event product; null projection row recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "rpmL3": "확률의 활용",
+            "rpmL4": "연속 시행",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "Both bag probabilities and the independent product are explicit.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "Both bag probabilities and the independent product are explicit.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 18,
+      "independentAnswer": "5/9",
+      "independentReasoning": "With replacement, the two draws are independent. The chance of no strawberry on either draw is (2/3)^2=4/9. The complement, at least one strawberry, is 1-4/9=5/9.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "③",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "AUDITED_REPAIR",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "③",
+        "independentAnswer": "5/9",
+        "independentChoiceIndex": 3,
+        "matchedChoice": "$\\dfrac{5}{9}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q18",
+        "id": 18,
+        "contentHash": "39342e0f7673bc726b9372e21e5dc00577272eab0d22a92c556a2a41d996568a",
+        "choicesHash": "58cc6ed272d260bf0d738001355f42749b9e0b26990f186dfd21402905723a62",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "08f99fe122ec836fda7c31606a92f0bfe65214aae5a4ff4c94678a5b4bf13fed",
+        "beforeSolutionHash": "b21d2c1e4dbaea82cefabc5e24532487dd0ad05f2efd04ca63b249a90a7c95a7"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "552361da8813257b9202b56f55615aa53dd71bace9106ad0f39bdac9e407c5cd",
+      "beforeSolutionSha256": "552361da8813257b9202b56f55615aa53dd71bace9106ad0f39bdac9e407c5cd",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "독립 시행의 여사건을 이용해 적어도 한 번 딸기맛이 나올 확률을 구함",
+      "decisiveStep": "적어도 한 번 딸기맛일 확률은 여사건을 이용해 $1-\\dfrac49=\\dfrac59$이다. 따라서 정답은 ③이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Complement and repeated independent trials; M2-2 L3-4.2.2/L3-4.2.3."
+        ],
+        "formulas": [
+          "Complement and repeated independent trials; M2-2 L3-4.2.2/L3-4.2.3."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Complement and repeated independent trials; M2-2 L3-4.2.2/L3-4.2.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Two replacement trials and complement; bucket 3, level 中."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 3 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Shows complement 2/3, independent product 4/9, then complement 5/9."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 replacement trials/complement; null crosswalk row recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "rpmL3": "확률의 활용",
+            "rpmL4": "연속 시행",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path."
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The two-trial complement product is fully represented symbolically.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path.",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The two-trial complement product is fully represented symbolically.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 19,
+      "independentAnswer": "2/9",
+      "independentReasoning": "Clockwise from A to C is a net advance of 2 vertices modulo 5. The sum of two die results must be 2, 7, or 12. These have 1, 6, and 1 ordered outcomes, total 8 of 36, so the probability is 2/9.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "④",
+      "compareResult": "MISMATCH",
+      "postComparisonAdjudication": {
+        "kind": "POST_FREEZE_MATH_CORRECTION",
+        "path": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.answer-adjudications.json",
+        "finalIndependentAnswer": "7/36",
+        "reasonCorrection": "Clockwise A→E→D→C is three moves; sums 3 and 8 give 2+5 favorable ordered pairs, so 7/36 (choice ④)."
+      },
+      "verdict": "PASS_AFTER_ADJUDICATION",
+      "disposition": "POST_FREEZE_MATH_CORRECTION",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "④",
+        "independentAnswer": "2/9",
+        "independentChoiceIndex": 1,
+        "matchedChoice": "$\\dfrac{2}{9}$",
+        "freezeCompare": "MISMATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q19",
+        "id": 19,
+        "contentHash": "7aa9cde8631a696a6aa632419492735d09f81abc76f6dcdf0ef31ea2e7ef7704",
+        "choicesHash": "e0e6166ae52003882b82b2b308d81d483d22ff696d30bf432ddc068c4884a565",
+        "imageRefHash": "d62a967743257afb8fb9fb17b9c84ad0b789e80eccadd95296af54cdc3996f0d",
+        "sourceIdentityFingerprint": "0e13e7eeff01f0b074ec9fa7cb32ac114baa20c63a6b1b696f12cff6e28468ec",
+        "beforeSolutionHash": "7fc2d57440eda5d7fda79c6051b189c4ad1d63e9feee67bb682eb222c43afe47"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "db61c2fea688e9a9bad352b29002aa77b33833623595be2952d390db9fedde37",
+      "beforeSolutionSha256": "486a78b86173f44a6413ee90d75d465a079e860cbdfa2613c69974a450dfad60",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "경우 분류; 순서쌍에 의한 확률",
+      "decisiveStep": "따라서 유리한 경우는 $2+5=7$개이고 전체 경우는 $6\\times6=36$개이다. $P=\\dfrac7{36}$ 정답은 ④이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Five-step cycle and ordered outcome enumeration; M2-2 L2-4.1/L3-4.1.2.1."
+        ],
+        "formulas": [
+          "Five-step cycle and ordered outcome enumeration; M2-2 L2-4.1/L3-4.1.2.1."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Five-step cycle and ordered outcome enumeration; M2-2 L2-4.1/L3-4.1.2.1.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Clockwise cycle and two ordered-pair sums; bucket 4, level 上."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 3 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Uses clockwise A→E→D→C; sums 3 and 8; lists 2+5 favorable ordered pairs; probability 7/36."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 ordered choices on a labelled pentagon; exact active binding pending, not a semantic hold.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 있는 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_BINDING_PENDING",
+            "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+            "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_OPTIONAL",
+          "evidence": "The source pentagon already shows the labelled clockwise order and start A; solution enumerates the two valid sums.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q19.png",
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING",
+      "visualDisposition": "VISUAL_OPTIONAL",
+      "visualReason": "The source pentagon already shows the labelled clockwise order and start A; solution enumerates the two valid sums.",
+      "changedFields": [
+        "solution",
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 20,
+      "independentAnswer": "1/6",
+      "independentReasoning": "Count ordered outcomes satisfying 2x+y<7. If x=1, y=1,2,3,4 (4 outcomes); if x=2, y=1,2 (2 outcomes); if x≥3, none. Thus 6/36=1/6.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "①",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_CORRECT_OPTION",
+        "storedAnswer": "①",
+        "independentAnswer": "1/6",
+        "independentChoiceIndex": 1,
+        "matchedChoice": "$\\dfrac{1}{6}$",
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q20",
+        "id": 20,
+        "contentHash": "4a73333e4703cb8b8e1fc09492c9be1126ba1189bba321467e45b77a92f515d0",
+        "choicesHash": "7f899372ac53bf6d762ef63d724907df05efec58ffbd431445852b27eda6088e",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "e1e07a64c0b5a49153746efc998152313b50d1aa0be33ce04e3457ae24f3ae3a",
+        "beforeSolutionHash": "0f416a5d780bcbf5e016b189c9d8a7e6bab30b5fe0c4cd5d00746a07f17e7efb"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "44532efc8994a7be6fff9a9993517cded1d58f83aebf0d06740d3f62a1db1174",
+      "beforeSolutionSha256": "44532efc8994a7be6fff9a9993517cded1d58f83aebf0d06740d3f62a1db1174",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "순서쌍 세기; 경우의 수에 의한 확률",
+      "decisiveStep": "유리한 경우는 $4+2=6$개이고 전체 경우는 $36$개이다. $P=\\dfrac6{36}=\\dfrac16$ 따라서 정답은 ①이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Inequality cases over ordered pairs; M2-2 L2-4.1/L2-4.2."
+        ],
+        "formulas": [
+          "Inequality cases over ordered pairs; M2-2 L2-4.1/L2-4.2."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Inequality cases over ordered pairs; M2-2 L2-4.1/L2-4.2.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Three inequality cases and 36 outcomes; bucket 3, level 中."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 4 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Splits x=1, x=2, x≥3 and counts the allowed y values before 6/36."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 probability by case split; null crosswalk mismatch recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "확률의 활용",
+            "rpmL4": "경우를 나누어 구하는 확률",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The x cases and allowed y outcomes are explicit.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The x cases and allowed y outcomes are explicit.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 21,
+      "independentAnswer": "10 cm",
+      "independentReasoning": "The square side lengths are sqrt(4)=2 and sqrt(36)=6. With B,C,E collinear, the horizontal distance from B to E is 2+6=8 and the vertical distance from E to F is 6. Therefore BF=sqrt(8^2+6^2)=10 cm.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "$10$",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "CURRICULUM_NOTATION_REPAIR",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_FREE_RESPONSE_VALUE",
+        "storedAnswer": "$10$",
+        "independentAnswer": "10 cm",
+        "independentChoiceIndex": null,
+        "matchedChoice": null,
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q21",
+        "id": 21,
+        "contentHash": "7696324fe3fe92c540f4b60a039e08fc32a9bb8d8d540d176d1081e7f9c2b28c",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "ccdc6b56a9b83130a6e0e802d33f91c551689752fe31ab65f5a59da7fd2e373f",
+        "sourceIdentityFingerprint": "bbd9a59a2ce6d5ff11452de319dc855947fff60b136cf15cd9dddc9741f0d295",
+        "beforeSolutionHash": "895699c071981de658b41835c324ecd0a1f703c996db24f25ee0d16df7d6708a"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "e5233d16323d21e70bf40c58b9ed7685e7c19c699296fcec45d4134fb7cc65d6",
+      "beforeSolutionSha256": "80b19a27ee747e6fa546e7dde509cbc4ac156309c645775ea7148ce0da29b582",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "넓이로부터 정사각형의 변 계산; 피타고라스 정리",
+      "decisiveStep": "$=8^2+6^2=64+36=100$ $BF=10\\text{ cm}$ 따라서 구하는 길이는 10이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Square area side×side, segment addition and Pythagorean theorem; M1-2 L1-2 and M2-2 L3-3.4.3."
+        ],
+        "formulas": [
+          "Square area side×side, segment addition and Pythagorean theorem; M1-2 L1-2 and M2-2 L3-3.4.3."
+        ],
+        "notations": [
+          "No radical notation in final solution; the earlier √4/√36 notation was removed."
+        ],
+        "methods": [
+          {
+            "method": "Square area side×side, segment addition and Pythagorean theorem; M1-2 L1-2 and M2-2 L3-3.4.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Square area sides, addition and Pythagorean theorem; bucket 3, level 中."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 4 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Uses side×side facts 2×2=4, 6×6=36, then BE=8 and Pythagorean sequence; no radicals."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-07 square-area side facts and Pythagorean application; null crosswalk mismatch recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The new diagram constructs BEF from the adjacent squares and marks BE=8, EF=6, BF=10.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q21.png",
+          "solutionImageRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q21-solution.svg"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The new diagram constructs BEF from the adjacent squares and marks BE=8, EF=6, BF=10.",
+      "changedFields": [
+        "solution",
+        "legacyLevelCompatibility",
+        "solutionImage"
+      ]
+    },
+    {
+      "qid": 22,
+      "independentAnswer": "0",
+      "independentReasoning": "p=7/10 for citrus chocolate. There is no banana chocolate in the box, so q=0. Hence pq=(7/10)·0=0.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "$0$",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_FREE_RESPONSE_VALUE",
+        "storedAnswer": "$0$",
+        "independentAnswer": "0",
+        "independentChoiceIndex": null,
+        "matchedChoice": null,
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q22",
+        "id": 22,
+        "contentHash": "0b5610028d3b3eec4a6d43d831d91e57c32b1da28a1c0e6d3fe456ddad82a28f",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "c51e9dd37db1d51074ceef908471e800b3230c76ff47953a27b6df91204aedac",
+        "beforeSolutionHash": "25effe04992882431ed032cde1a02fc9db839b09d257ccec12a95c9e95892fa9"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "31205dfddfa37f0f9a1dd33feeaad7b9803b09ec93640600e64826a919efc71e",
+      "beforeSolutionSha256": "31205dfddfa37f0f9a1dd33feeaad7b9803b09ec93640600e64826a919efc71e",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "경우의 수에 의한 확률; 불가능한 사건의 확률",
+      "decisiveStep": "$q=0$이다. $pq=\\dfrac7{10}\\cdot0=0$ 따라서 구하는 값은 0이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Probability and impossible event; M2-2 L2-4.2."
+        ],
+        "formulas": [
+          "Probability and impossible event; M2-2 L2-4.2."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Probability and impossible event; M2-2 L2-4.2.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Simple probability with impossible category; bucket 2, level 하."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 4 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Derives p=7/10, q=0 from absent banana chocolate, then pq=0."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 probability of event/impossible event; null crosswalk row recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC",
+            "rpmL3": "확률의 뜻",
+            "rpmL4": "확률 계산",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+            "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The impossible event and product are symbolic count facts only.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The impossible event and product are symbolic count facts only.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 23,
+      "independentAnswer": "3/5",
+      "independentReasoning": "Two cards determine one number because the smaller digit is tens and the larger is units. There are C(5,2)=10 equally likely pairs. The number is odd exactly when its units digit (the larger digit) is odd. Larger digit 3 allows {1,3},{2,3} (2 pairs); larger digit 5 allows four pairs with 1,2,3,4 (4 pairs); total 6 favorable. Probability=6/10=3/5.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "$\\dfrac{3}{5}$",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS",
+      "disposition": "DIFFICULTY_COMPATIBILITY_RECHECK",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_FREE_RESPONSE_VALUE",
+        "storedAnswer": "$\\dfrac{3}{5}$",
+        "independentAnswer": "3/5",
+        "independentChoiceIndex": null,
+        "matchedChoice": null,
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q23",
+        "id": 23,
+        "contentHash": "bb1e4bfc7cb8f6443b2b09129acf2e384fa24de193b843ff9c3ed5fe063d5cfd",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "66a4afaa8d5fa6297d10ea2d34dc9a54c93004a7632230981fecce56684884fd",
+        "beforeSolutionHash": "dc6dda9a32ff4da6488a264bd7cf8bac9345aab6ef29fdfe83aeaa17a6286b64"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "75845a14e4e0d19daea253d7326b484c73f53705e685b25feb1726d18e57e643",
+      "beforeSolutionSha256": "75845a14e4e0d19daea253d7326b484c73f53705e685b25feb1726d18e57e643",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "조합에 준하는 두 장 선택 경우 세기; 경우의 수에 의한 확률",
+      "decisiveStep": "큰 수가 5이면 $(1,5),(2,5),(3,5),(4,5)$의 4가지이다. 유리한 경우는 $2+4=6$가지이므로 $P=\\dfrac6{10}=\\dfrac35$이다.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Unordered pair enumeration without factorial/binomial notation; M2-2 L3-4.1.2.2."
+        ],
+        "formulas": [
+          "Unordered pair enumeration without factorial/binomial notation; M2-2 L3-4.1.2.2."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Unordered pair enumeration without factorial/binomial notation; M2-2 L3-4.1.2.2.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Ten unordered pairs, six favorable; bucket 3, level 中."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page 4 visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Defines [XYZ] not needed; enumerates all unordered pairs by smaller digit and counts six favorable."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-08 unordered selection by enumeration; exact active binding pending, no combination formula used.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+            "rpmL3": "배열과 선택",
+            "rpmL4": "순서가 없는 경우",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_BINDING_PENDING",
+            "projectionReasonCode": "EXACT_ACTIVE_BINDING_PENDING",
+            "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_EXEMPT",
+          "evidence": "The ten unordered pairs and six favorable cases are enumerated directly.",
+          "problemAssetRef": null,
+          "solutionImageRef": null
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING",
+      "visualDisposition": "VISUAL_EXEMPT",
+      "visualReason": "The ten unordered pairs and six favorable cases are enumerated directly.",
+      "changedFields": [
+        "legacyLevelCompatibility"
+      ]
+    },
+    {
+      "qid": 24,
+      "independentAnswer": "13 cm",
+      "independentReasoning": "The altitude bisects the 10 cm base into 5 cm halves. Area 60=(1/2)(10)(h) gives h=12 cm. Each equal side is sqrt(5^2+12^2)=13 cm.",
+      "independentAnswerFrozenBeforeStoredAnswer": true,
+      "freezeRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.independent-freeze.json",
+      "freezeSha256": "5b225d9059e5ae53c497b500041468124fd868546ce101cd37fd412d7076da78",
+      "studentBundleRef": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1-student.json",
+      "studentBundleSha256": "9af2138fae26541ac3437409eabfec59d922db96636730cfe3dc724d30dde740",
+      "storedAnswer": "$13$",
+      "compareResult": "MATCH",
+      "postComparisonAdjudication": null,
+      "verdict": "PASS_AFTER_REPAIR",
+      "disposition": "SOLUTION_VISUAL_ADD",
+      "repairApplied": true,
+      "sourceMode": "ORIGINAL",
+      "answerCardinality": {
+        "status": "SINGLE_FREE_RESPONSE_VALUE",
+        "storedAnswer": "$13$",
+        "independentAnswer": "13 cm",
+        "independentChoiceIndex": null,
+        "matchedChoice": null,
+        "freezeCompare": "MATCH",
+        "finalAfterAdjudication": "MATCH"
+      },
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+        "questionUid": "21_신흥중_2학기_기말_중2_기출:q24",
+        "id": 24,
+        "contentHash": "a4115fc4de3a3ea6c328f042086156f8dd8988fd3f51efc8b0124468151c8cde",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "707d0966eaeddc0eebef7bb47a586f0541120f108701073f8d8347a8d2dfb412",
+        "sourceIdentityFingerprint": "3535868a6e7642ba969b9876a2ad041d3ccb8a21800a629395b3e5e2e5d72aea",
+        "beforeSolutionHash": "61b1f831ba39f6ad931607bc5c5c105b49dac8b022bac2bd701d9f24974c57b5"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "8268525eaba23036c50e53d70b9ef6421d93623aeea056baecfb851d9f8479b5",
+      "beforeSolutionSha256": "8268525eaba23036c50e53d70b9ef6421d93623aeea056baecfb851d9f8479b5",
+      "smallBoardContinuityStatus": "PASS",
+      "primaryMethod": "삼각형의 넓이; 이등변삼각형의 성질; 피타고라스 정리",
+      "decisiveStep": "$AB^2=12^2+5^2=144+25=169$ $AB=13\\text{ cm}$ 따라서 구하는 길이는 13.",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "Triangle area, isosceles altitude split and Pythagorean theorem; M1-2 L1-2 and M2-2 L3-3.4.3."
+        ],
+        "formulas": [
+          "Triangle area, isosceles altitude split and Pythagorean theorem; M1-2 L1-2 and M2-2 L3-3.4.3."
+        ],
+        "notations": [],
+        "methods": [
+          {
+            "method": "Triangle area, isosceles altitude split and Pythagorean theorem; M1-2 L1-2 and M2-2 L3-3.4.3.",
+            "status": "ALLOWED",
+            "authority": "2015 RPM M2-2 current scope plus cumulative M1-2 where stated."
+          }
+        ],
+        "toolsNotUsed": {
+          "factorial": "NOT_USED",
+          "binomialCoefficient": "NOT_USED; q23 enumerates pairs directly",
+          "vector": "NOT_USED",
+          "projection": "NOT_USED"
+        },
+        "status": "PASS"
+      },
+      "outOfCurriculumDependencies": [],
+      "difficultyRecheck": {
+        "legacyLevel": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Area height, isosceles split and Pythagorean theorem; bucket 3, level 中."
+      },
+      "axisEvidence": {
+        "QUESTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Student body exact parity 24/24; original PDF page undefined visually read; choices/text layout boundaries preserve all atoms."
+        },
+        "SOLUTION_LAYOUT": {
+          "status": "PASS",
+          "evidence": "Derives h=12, altitude split 5/5, then 5²+12²=13²."
+        },
+        "META": {
+          "status": "PASS",
+          "evidence": "M2-07 isosceles altitude and Pythagorean length; null crosswalk mismatch recorded.",
+          "values": {
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+            "rpmL3": "도형에의 활용",
+            "rpmL4": "평면도형 길이",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "projectionReasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+            "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+          }
+        },
+        "VISUAL_SVG": {
+          "status": "PASS",
+          "decision": "VISUAL_REQUIRED",
+          "evidence": "The altitude and 5-12-13 right triangle show the key isosceles split.",
+          "problemAssetRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q24.png",
+          "solutionImageRef": "assets/images/21_신흥중_2학기_기말_중2_기출/q24-solution.svg"
+        }
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "visualDisposition": "VISUAL_REQUIRED",
+      "visualReason": "The altitude and 5-12-13 right triangle show the key isosceles split.",
+      "changedFields": [
+        "legacyLevelCompatibility",
+        "solutionImage"
+      ]
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for the selected centroid-length path."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "The source gives the right-triangle congruence directly; the solution transfers corresponding side lengths and decomposes area, not an RHS construction. Keep the broader active PT_RIGHT_TRIANGLE_CONGRUENCE classification; no exact current active template maps this given-congruence area-decomposition method, so templateKey remains explicit projection debt."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": "No explicit current Meta projection debt; actual fields independently reviewed."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      }
+    ]
+  },
+  "summary": {
+    "denominator": 24,
+    "studentFieldsExactParity": "24/24",
+    "sourceTextExactParity": "23/24 exact + q1 AUDITED_SOURCE_REPAIR",
+    "choicesExactParity": "24/24",
+    "sourceCorrectionCount": 1,
+    "answerComparisonBeforeAdjudication": {
+      "matches": 23,
+      "mismatches": 1
+    },
+    "postFreezeCorrections": 2,
+    "finalAnswersAfterAdjudication": "24/24",
+    "questionLayoutReview": "24/24; 1 audited source repair",
+    "solutionLayoutReview": "24/24",
+    "metaReview": "24/24; q1/q2–q6 etc projection debt explicit, q7 template debt explicit",
+    "visualSvgReview": "24/24; 7 solution visuals added; q01 problem SVG owner repaired",
+    "curriculumMethodAudit": "24/24 ALLOWED final methods; prior q21 root symbol and q19 remainder method removed",
+    "legacyLevels": "preserved as 하/중/상; difficultyBucket reviewed independently",
+    "openFindings": [],
+    "modifiedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "modifiedQidCount": 24,
+    "changedAssetCount": 8
+  },
+  "modifiedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "changedFieldsByQid": {
+    "1": [
+      "difficultyBucket",
+      "legacyLevelCompatibility",
+      "decisiveStep"
+    ],
+    "2": [
+      "legacyLevelCompatibility"
+    ],
+    "3": [
+      "legacyLevelCompatibility"
+    ],
+    "4": [
+      "legacyLevelCompatibility",
+      "solutionImage"
+    ],
+    "5": [
+      "solution",
+      "legacyLevelCompatibility",
+      "solutionImage"
+    ],
+    "6": [
+      "solution",
+      "legacyLevelCompatibility",
+      "decisiveStep"
+    ],
+    "7": [
+      "solution",
+      "legacyLevelCompatibility",
+      "projectionStatus",
+      "projectionReasonCode",
+      "templateKey",
+      "metaNullReason",
+      "solutionImage"
+    ],
+    "8": [
+      "legacyLevelCompatibility",
+      "solutionImage"
+    ],
+    "9": [
+      "solution",
+      "legacyLevelCompatibility",
+      "solutionImage"
+    ],
+    "10": [
+      "legacyLevelCompatibility"
+    ],
+    "11": [
+      "legacyLevelCompatibility"
+    ],
+    "12": [
+      "legacyLevelCompatibility"
+    ],
+    "13": [
+      "legacyLevelCompatibility"
+    ],
+    "14": [
+      "legacyLevelCompatibility"
+    ],
+    "15": [
+      "legacyLevelCompatibility"
+    ],
+    "16": [
+      "legacyLevelCompatibility"
+    ],
+    "17": [
+      "legacyLevelCompatibility"
+    ],
+    "18": [
+      "legacyLevelCompatibility"
+    ],
+    "19": [
+      "solution",
+      "legacyLevelCompatibility"
+    ],
+    "20": [
+      "legacyLevelCompatibility"
+    ],
+    "21": [
+      "solution",
+      "legacyLevelCompatibility",
+      "solutionImage"
+    ],
+    "22": [
+      "legacyLevelCompatibility"
+    ],
+    "23": [
+      "legacyLevelCompatibility"
+    ],
+    "24": [
+      "legacyLevelCompatibility",
+      "solutionImage"
+    ]
+  },
+  "sourceCorrectionReview": {
+    "qid": 1,
+    "candidateStudentFreezeApplicability": "VALID_AFTER_SINGLE_LOCUS_LABEL_OWNER_REPAIR",
+    "preComparisonReasoning": "The frozen student bundle already stated AD=6 and showed x=AG, y=GD, so the frozen derivation x+y=AG+GD=AD=6 is directly grounded in its prompt.",
+    "originalPdfRead": {
+      "path": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/source/2021_신흥중2_수학_2기말.pdf",
+      "sha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+      "page": 1,
+      "interpretation": "x is on AG and y is on GD of median AD; the 6 cm text owner is BG; EC carries 8 cm."
+    },
+    "observedSource": "Original PDF p1 directly shows x on AG, y on GD, 6 cm attached to BG, and 8 cm on EC; the prompt omits an AD value. Thus the only printed 6 cm datum is attached to a segment that does not determine the requested adjacent-segment sum.",
+    "decision": "AUDITED_SOURCE_REPAIR_PASS",
+    "reason": "The PDF does not identify a transcription/OCR locus that authorizes replacing BG=6 with AD=6. The added condition and corresponding relabeling constitute a new mathematical premise; selecting this repair because its result fits an existing choice would violate the source-correction rule. Preserve the existing candidate and all freezes, but do not seal q1 until an authorized source correction is supplied.",
+    "freshBlindRequired": "NO; complete frozen input and q01 reasoning remain valid after this one visual-owner repair.",
+    "repair": {
+      "originalValue": "6 cm owner = BG (source PDF page 1)",
+      "repairedValue": "6 cm owner = AD; repaired source condition is AD=6 cm",
+      "repairReason": "Original x/y labels are AG and GD on median AD. The requested sum is the total AD; the sole printed length datum is 6 cm on BG, which leaves AD undetermined. Correcting only that data owner to AD repairs one semantic locus while preserving x,y, the requested quantity, choices, and centroid structure. The answer was not inferred from any choice.",
+      "independentMathResult": "x+y=AG+GD=AD=6 cm, unique choice ①",
+      "affectedFields": [
+        "content condition owner",
+        "problem SVG dimension label owner"
+      ],
+      "postRepairAnswerCardinality": "1",
+      "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa"
+    },
+    "studentInputChangeImpact": {
+      "changedStudentField": "q01 image bytes only; content, choices, image reference path, and q01 frozen derivation unchanged.",
+      "previousAssetSha256": "78289790e3d9b1f46fedf0ad81983a75161a865e5b044dfbe8e1bb8a7b113ba1",
+      "currentAssetSha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721",
+      "freezeValidity": "VALID: q01 freeze used the unchanged prompt AD=6 and x=AG,y=GD, not the misplaced redundant visual label. Moving only that label owner to AD leaves the independent derivation valid.",
+      "freshBlindRequired": false
+    }
+  },
+  "changedAssets": [
+    {
+      "qid": 1,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+      "baselineSha256": "78289790e3d9b1f46fedf0ad81983a75161a865e5b044dfbe8e1bb8a7b113ba1",
+      "finalSha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721",
+      "repair": "6 cm owner corrected BG→AD"
+    }
+  ],
+  "addedSolutionAssets": [
+    {
+      "qid": 4,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q04-solution.svg"
+    },
+    {
+      "qid": 5,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q05-solution.svg"
+    },
+    {
+      "qid": 7,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q07-solution.svg"
+    },
+    {
+      "qid": 8,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q08-solution.svg"
+    },
+    {
+      "qid": 9,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q09-solution.svg"
+    },
+    {
+      "qid": 21,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q21-solution.svg"
+    },
+    {
+      "qid": 24,
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q24-solution.svg"
+    }
+  ]
+}

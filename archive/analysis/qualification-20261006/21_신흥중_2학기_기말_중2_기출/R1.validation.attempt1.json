@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a",
+  "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+  "evidenceSha256BeforeCorrection": "b05d2e52c5f80d203964105c88427508a995d6b6ec26bfc1785b2e19e1e7e2f5",
+  "result": "FAIL",
+  "validatorMode": "R1_V2",
+  "commonValid": true,
+  "issues": [
+    "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED"
+  ],
+  "exactReason": "The first and only validator call before evidence repair found that selected Maesan representative q1/q2 did not bind a visual although the sample JS contains solutionImage. Maesan q18 solution and SVG had actually been read before target solution review; their physical sample row is now added. This failure attempt is preserved; final generic validator requires ROOT authorization for one post-repair call."
+}

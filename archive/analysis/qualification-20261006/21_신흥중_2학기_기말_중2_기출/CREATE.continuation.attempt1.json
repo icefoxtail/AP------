@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TECHNICAL_CONTINUATION_V1",
+  "stage": "CREATE",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "result": "BLOCKED_VALIDATOR_FAIL",
+  "artifactSha": "fedd4bd340780fc638070eae01d537f3196ad288",
+  "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/CREATE.evidence.json",
+  "validationRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/CREATE.validation.json",
+  "firstMissingClosureStep": "REPAIR_ENGINE_SAFE_SOLUTION_ESCAPES_AND_LEGACY_LEVEL_FIELDS",
+  "exactReason": [
+    "ARTIFACT_CONTROL_ESCAPE on solution/decisiveStep q1,q2,q4,q5,q7,q8,q9,q12,q17,q18,q19,q20,q21,q24: several TeX backslashes were lost in the generated runtime strings; restore canonical TeX escapes and regenerate SHA-bound solution evidence.",
+    "ARTIFACT_LEGACY_LEVEL_INVALID q1-q24: artifact level currently uses Korean string labels, while V2 requires numeric legacy level 1..3; map and update with canonical compatibility evidence.",
+    "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_READ_REQUIRED: choose/read a representative Golden sample solutionImage and bind its visualSha256 in that sample item."
+  ],
+  "preserveFailedAttempt": true,
+  "downstreamAllowed": false
+}

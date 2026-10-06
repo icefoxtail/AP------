@@ -1,0 +1,492 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "inputArtifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+  "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+  "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.evidence.json",
+  "rawFileSha256": "6eec7045f0aa960accf842639d9bac5df0d1eee69495655bee015f41c765ea2b",
+  "physicalEvidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json",
+  "physicalEvidenceSha256": "e1b0e89aaabfe4ac19f22a0d8763b58549c06eb512a48b9016bb5f7d22159daa",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      14,
+      19,
+      20,
+      21,
+      24
+    ],
+    "directDependencyQids": [
+      1,
+      4,
+      8,
+      21,
+      24
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS_AUTHORIZED_BOUNDED_AUDITED_REPAIR",
+      "evidenceRefs": [
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.answer-adjudications.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.q01-operational-decision.json"
+      ]
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS_SOURCE_ASSET_RENDER_REPAIR",
+      "evidenceRefs": [
+        "R1.evidence.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json"
+      ]
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS_SOURCE_ASSET_RENDER_REPAIR",
+      "evidenceRefs": [
+        "R1.evidence.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json"
+      ]
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS_AFTER_POST_FREEZE_ADJUDICATION",
+      "evidenceRefs": [
+        "R1.answer-adjudications.json",
+        "R2.evidence.json"
+      ]
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS_AFTER_POST_FREEZE_ADJUDICATION",
+      "evidenceRefs": [
+        "R1.answer-adjudications.json",
+        "R2.evidence.json"
+      ]
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS_MULTIPLE_ANSWER_VERIFIED",
+      "evidenceRefs": [
+        "R2.evidence.json"
+      ]
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS_SOURCE_ASSET_RENDER_REPAIR",
+      "evidenceRefs": [
+        "R1.evidence.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json"
+      ]
+    },
+    {
+      "qid": 24,
+      "verdict": "PASS_SOURCE_ASSET_RENDER_REPAIR",
+      "evidenceRefs": [
+        "R1.evidence.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json"
+      ]
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "releaseDisposition": "R3_RELEASE_READY",
+  "openFindings": [],
+  "r1Seal": {
+    "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+    "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a"
+  },
+  "r2Seal": {
+    "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R2.evidence.json",
+    "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "rawFileSha256": "6eec7045f0aa960accf842639d9bac5df0d1eee69495655bee015f41c765ea2b"
+  },
+  "artifactDispositions": {
+    "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for the selected centroid-length path."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "The source gives the right-triangle congruence directly; the solution transfers corresponding side lengths and decomposes area, not an RHS construction. Keep the broader active PT_RIGHT_TRIANGLE_CONGRUENCE classification; no exact current active template maps this given-congruence area-decomposition method, so templateKey remains explicit projection debt."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": "No explicit current Meta projection debt; actual fields independently reviewed."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      }
+    ]
+  },
+  "studentInputParity": {
+    "ref": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3-student.json",
+    "sha256": "ebaaeeacf6b72fbe5a8112c54fe2692d743c4cda0e1a281030794b604b52b4f3",
+    "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "fileSha256": "6eec7045f0aa960accf842639d9bac5df0d1eee69495655bee015f41c765ea2b",
+    "studentFieldsParity": "EXACT_CURRENT_VM_FIELD_COPY",
+    "questionCount": 24,
+    "assetCount": 11
+  },
+  "physicalEvidence": {
+    "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json",
+    "sha256": "e1b0e89aaabfe4ac19f22a0d8763b58549c06eb512a48b9016bb5f7d22159daa"
+  },
+  "resolvedFindings": [
+    {
+      "qid": 1,
+      "status": "RESOLVED_BY_AUTHORIZED_BOUNDED_REPAIR",
+      "historicalConflict": "The older sourceCorrectionReview.reason said not to seal absent authorization and described the label move as adding a premise; current R1 owner row adjudicates the locus as BG→AD with prompt/choices unchanged, and ROOT now authorizes precisely that implementation.",
+      "resolutionBasis": "Current student body already contains AD=6 cm; q1 content and choices are exact current R2 student bundle copies, repaired q1 image SHA matches current evidence, and the ROOT decision authorizes only the owner-verified figure datum repair.",
+      "rootDecisionRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.q01-operational-decision.json",
+      "rootDecisionSha256": "2152a71d4516108288eff78d1818e56eadabfef7b19b15b99b100692580236f9",
+      "remainingSemanticFinding": "NONE_WITHIN_AUTHORIZED_Q01_LOCUS"
+    }
+  ],
+  "rootOperationalDecision": {
+    "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.q01-operational-decision.json",
+    "sha256": "2152a71d4516108288eff78d1818e56eadabfef7b19b15b99b100692580236f9",
+    "decision": "AUTHORIZED_BOUNDED_AUDITED_REPAIR_IMPLEMENTATION",
+    "scope": "R1 adjudicated sole 6cm datum-owner repair BG to AD; prompt, choices, target retained; no additional source rewrite"
+  },
+  "currentStudentBundle": {
+    "ref": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3-student.json",
+    "sha256": "ebaaeeacf6b72fbe5a8112c54fe2692d743c4cda0e1a281030794b604b52b4f3",
+    "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "fileSha256": "6eec7045f0aa960accf842639d9bac5df0d1eee69495655bee015f41c765ea2b",
+    "studentFieldsParity": "EXACT_CURRENT_VM_FIELD_COPY",
+    "questionCount": 24,
+    "assetCount": 11
+  },
+  "assetBindings": [
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+      "sha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721",
+      "verifiedSha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721",
+      "fileSha256": "07bd86b7ad566efa6c7312f915d5a4b2a5ab127b57f0c55652620bfeaa91d721"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q02.png",
+      "sha256": "e573dc7736bd41688dbbd89488bd5fbaa262849eb0c1e2482754aa95aec156e9",
+      "verifiedSha256": "e573dc7736bd41688dbbd89488bd5fbaa262849eb0c1e2482754aa95aec156e9",
+      "fileSha256": "e573dc7736bd41688dbbd89488bd5fbaa262849eb0c1e2482754aa95aec156e9"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q04.png",
+      "sha256": "b8c0d7d4c20b764b868243e29222c5be36004df7f1b1427f1f047e222d93af2e",
+      "verifiedSha256": "b8c0d7d4c20b764b868243e29222c5be36004df7f1b1427f1f047e222d93af2e",
+      "fileSha256": "b8c0d7d4c20b764b868243e29222c5be36004df7f1b1427f1f047e222d93af2e"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q05-r2.png",
+      "sha256": "0fa7412dcddadc8c2f3b543e7c6ab41cf6813a5451c8ef17b8539821c3da509d",
+      "verifiedSha256": "0fa7412dcddadc8c2f3b543e7c6ab41cf6813a5451c8ef17b8539821c3da509d",
+      "fileSha256": "0fa7412dcddadc8c2f3b543e7c6ab41cf6813a5451c8ef17b8539821c3da509d"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q07.png",
+      "sha256": "2ce48353fc64a93af8a556fd205c9fbc1f4608f165c5cdc7e115e09cad0332d0",
+      "verifiedSha256": "2ce48353fc64a93af8a556fd205c9fbc1f4608f165c5cdc7e115e09cad0332d0",
+      "fileSha256": "2ce48353fc64a93af8a556fd205c9fbc1f4608f165c5cdc7e115e09cad0332d0"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q08.png",
+      "sha256": "8627aec36762856891d5dbd40d230214e00e1c529e6814e332428005063c3181",
+      "verifiedSha256": "8627aec36762856891d5dbd40d230214e00e1c529e6814e332428005063c3181",
+      "fileSha256": "8627aec36762856891d5dbd40d230214e00e1c529e6814e332428005063c3181"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q09.png",
+      "sha256": "b95ca60478e3610e14c0e7b84c2d98db55a1594e4efad414d7fa5c5656f55e51",
+      "verifiedSha256": "b95ca60478e3610e14c0e7b84c2d98db55a1594e4efad414d7fa5c5656f55e51",
+      "fileSha256": "b95ca60478e3610e14c0e7b84c2d98db55a1594e4efad414d7fa5c5656f55e51"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q12.png",
+      "sha256": "90741a362f68b971f3a194c27b8043acb0a0af68d14b27b83dfbcbe7cd162c21",
+      "verifiedSha256": "90741a362f68b971f3a194c27b8043acb0a0af68d14b27b83dfbcbe7cd162c21",
+      "fileSha256": "90741a362f68b971f3a194c27b8043acb0a0af68d14b27b83dfbcbe7cd162c21"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q19.png",
+      "sha256": "75bbd30df5d8d526ec5084ee9df31b9bf6f1699f9061c67d6ab7f7e7ff670397",
+      "verifiedSha256": "75bbd30df5d8d526ec5084ee9df31b9bf6f1699f9061c67d6ab7f7e7ff670397",
+      "fileSha256": "75bbd30df5d8d526ec5084ee9df31b9bf6f1699f9061c67d6ab7f7e7ff670397"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q21.png",
+      "sha256": "2ab2bbd7d8808b1e88e8aff16ec3fa5b3c815ffc46aa913ca196e759868d942a",
+      "verifiedSha256": "2ab2bbd7d8808b1e88e8aff16ec3fa5b3c815ffc46aa913ca196e759868d942a",
+      "fileSha256": "2ab2bbd7d8808b1e88e8aff16ec3fa5b3c815ffc46aa913ca196e759868d942a"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q24.png",
+      "sha256": "65397813a5ac55142731dc54f6747d5a34d671f21814736d7b339a8d22545693",
+      "verifiedSha256": "65397813a5ac55142731dc54f6747d5a34d671f21814736d7b339a8d22545693",
+      "fileSha256": "65397813a5ac55142731dc54f6747d5a34d671f21814736d7b339a8d22545693"
+    }
+  ],
+  "assetRepairDelta": [
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q04.png",
+      "sha256": "b8c0d7d4c20b764b868243e29222c5be36004df7f1b1427f1f047e222d93af2e",
+      "verifiedSha256": "b8c0d7d4c20b764b868243e29222c5be36004df7f1b1427f1f047e222d93af2e",
+      "fileSha256": "b8c0d7d4c20b764b868243e29222c5be36004df7f1b1427f1f047e222d93af2e",
+      "previousR2Sha256": "fb29f5b01a6951ebae689035d2a6db593a1e2cb2f7d8568603808cc7f4e35463",
+      "changeType": "DUPLICATE_STEM_CROP"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q08.png",
+      "sha256": "8627aec36762856891d5dbd40d230214e00e1c529e6814e332428005063c3181",
+      "verifiedSha256": "8627aec36762856891d5dbd40d230214e00e1c529e6814e332428005063c3181",
+      "fileSha256": "8627aec36762856891d5dbd40d230214e00e1c529e6814e332428005063c3181",
+      "previousR2Sha256": "d3533d2bd8040ff88e06fb8f39f45fd06f7060127e855cd04bd4011f2b178193",
+      "changeType": "DUPLICATE_STEM_CROP"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q21.png",
+      "sha256": "2ab2bbd7d8808b1e88e8aff16ec3fa5b3c815ffc46aa913ca196e759868d942a",
+      "verifiedSha256": "2ab2bbd7d8808b1e88e8aff16ec3fa5b3c815ffc46aa913ca196e759868d942a",
+      "fileSha256": "2ab2bbd7d8808b1e88e8aff16ec3fa5b3c815ffc46aa913ca196e759868d942a",
+      "previousR2Sha256": "c35601c38170e72827d5360130fe2c0e67470370153f64078ea27fa3a8608b91",
+      "changeType": "RESTORE_CLIPPED_LABEL_FROM_SOURCE"
+    },
+    {
+      "ref": "assets/images/21_신흥중_2학기_기말_중2_기출/q24.png",
+      "sha256": "65397813a5ac55142731dc54f6747d5a34d671f21814736d7b339a8d22545693",
+      "verifiedSha256": "65397813a5ac55142731dc54f6747d5a34d671f21814736d7b339a8d22545693",
+      "fileSha256": "65397813a5ac55142731dc54f6747d5a34d671f21814736d7b339a8d22545693",
+      "previousR2Sha256": "603bc5a9822414cb0d93cb79efceccff2f2f9b7a092e3b788d70f9c6168e5f59",
+      "changeType": "DUPLICATE_STEM_CROP"
+    }
+  ],
+  "priorRenderFindingRefs": [
+    {
+      "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/render/exam-desktop-page1.png",
+      "sha256": "ecaf67b49246e8ee98650a58ecfaaf683db0ed29c5969c3c58d968ef44fe5744"
+    },
+    {
+      "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/render/exam-desktop-page2.png",
+      "sha256": "cd042c93cb64815c0bd435f92fce0de7294cdbe8140f86e2f7eac018e731aaab"
+    },
+    {
+      "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/render/exam-desktop-page6.png",
+      "sha256": "9cfe92683503423023e80847aa084d239b958161a0ca800a69d44e57eaf1fd9a"
+    }
+  ]
+}

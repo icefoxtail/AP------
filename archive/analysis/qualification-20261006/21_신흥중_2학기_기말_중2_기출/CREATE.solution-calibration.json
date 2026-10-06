@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_CALIBRATION_V2",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sampleReadBeforeWork": true,
+  "calibrationOrder": [
+    "Golden samples: three fixed registry paths, representative q1/q2 read directly",
+    "Negative regression README read directly",
+    "Only after preflight: target source/answer first-solve and solution drafting"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+      "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+    }
+  ],
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+      "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$\n$=\\dfrac{14+4}{3}$\n$=\\dfrac{18}{3}=6$이다.\n따라서\n$P=(1,6)$이다.\n이제 선분 $AB$의 중점 $M$을 구한다.\n중점은 두 끝점의 $x$좌표끼리, $y$좌표끼리 더한 뒤 각각 $2$로 나눈다.\n$M=\\left(\\dfrac{9+(-3)}2,\\dfrac{14+2}2\\ri",
+          "observation": "식을 세운 이유를 문장으로 놓고, 중간 변형을 실제 판서로 남긴다."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+          "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$이므로\n$m=-3$이다.\n이제 직선 $y=-3x+n$이 점 $(1,-2)$를 지난다는 조건을 사용한다.\n점을 지난다는 것은 그 점의 $x$, $y$좌표를 직선의 식에 대입했을 때 등식이 성립한다는 뜻이다.\n$x=1$, $y=-2$를 대입하면\n$-2=-3\\cdot1+n$\n$-2=-3+n$이다.\n양변에 $3$을 더하면\n$n=-2+3=1$이다.\n따라서\n$m+n=-3+1=-2$이다.\n\n그러므로 정답은 ①이다.",
+          "observation": "식을 세운 이유를 문장으로 놓고, 중간 변형을 실제 판서로 남긴다."
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n$(x+3)^2+(y-1)^2=9$이다.\n즉\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n처음 원의 중심은 $(-3,1)$이고\n반지름은 $3$이다.\n\n이제 중심만 이동 순서대로 따라간다.\n먼저 $x$축의 방향으로 $-2$만큼,\n$y$축의 방향으로 $1$만큼 평행이동한다.\n$x$좌표는 $-3-2=-5$,\n$y$좌표는 $1+1=2$이므로\n$(-3,1)\\rightarrow(-5,2)$이다.\n그다음 원점에 대하여 대칭이동한다.\n원점 대칭에서는 두 좌표의 부호가 모두 바뀌므로\n$(x,y)\\rightarrow(-x,-y)$이다.\n따라서\n$(-5,2)\\rightarrow(5,-2)$이다.\n평행이동이나 대칭이동을 해도 원의 크기는 변하지 않으므로\n반지름은 계속 $3$이다.\n최종 원의 중심은 $(5,-2)$이고\n반지름은 $3$이므로\n$(x-5)^2+(y+2)^2=9$이다.\n\n그러므로 정답은 ⑤이다.",
+          "observation": "중심 이동 전개와 반지름 보존을 식으로 먼저 전개하고, 중심 좌표 이동과 대칭을 별도 줄로 나눈다. SVG는 중심 좌표와 반지름 3의 원 궤적을 실제로 표시한다.",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{50}$\n$=5\\sqrt2$이다.\n\n따라서 정답은 ③이다.",
+          "observation": "기울기/조건 적용을 식의 대입 단계로 분리해 학생이 재현할 수 있게 한다."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이다.\n$-\\dfrac{k}{6}=-1$\n$k=6$이다.\n\n따라서 정답은 ①이다.",
+          "observation": "두 직선의 기울기를 각각 식 변형으로 구하고 곱이 -1인 조건을 따로 대입한다. SVG에는 양의 기울기와 음의 완만한 기울기의 두 직선 및 교점이 그려져 있다.",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+          "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로 $1\\in A$는 참이다.\n\n② $1$은 집합이 아니라 수이므로 $1\\subset A$라고 나타낼 수 없다. 거짓이다.\n\n③ $\\{1\\}$은 $A$의 원소이므로 $\\{1\\}\\in A$는 참이다.\n\n④ $\\{1\\}$의 원소 $1$이 $A$에 속하므로 $\\{1\\}\\subset A$는 참이다.\n\n⑤ $\\{\\{1\\}\\}$의 원소 $\\{1\\}$이 $A$에 속하므로 $\\{\\{1\\}\\}\\subset A$는 참이다.\n\n따라서 옳지 않은 것은 ②이다.",
+          "observation": "보기별 판정을 나누고 명제의 근거를 실제로 적는다."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+          "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는지 살펴본다.\n\n① 서로 다른 $x$좌표에 점들이 하나씩 있으므로 함수의 그래프가 될 수 있다.\n\n② 원의 가운데를 지나는 수직선은 원과 두 점에서 만난다. 한 $x$값에 두 $y$값이 대응하므로 함수의 그래프가 아니다.\n\n③ 기울어진 직선은 각 수직선과 많아야 한 점에서 만나므로 함수의 그래프가 될 수 있다.\n\n④ 두 선분의 $x$좌표 범위가 맞닿는 경계에서는 오른쪽 선분의 아래쪽 끝점이 뚫린 점이라 포함되지 않는다. 따라서 각 $x$값에 포함되는 점은 하나뿐이므로 함수의 그래프가 될 수 있다.\n\n⑤ 포물선도 각 수직선과 많아야 한 점에서 만나므로 함수의 그래프가 될 수 있다.\n\n따라서 함수의 그래프가 될 수 없는 것",
+          "observation": "보기별 판정을 나누고 명제의 근거를 실제로 적는다."
+        },
+        {
+          "qid": 6,
+          "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+          "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$보다 클 수 없다.\n이 값은 $A\\cap B$에 5개, $A-B$에 15개, $B-A$에 10개를 두고 바깥에 원소를 두지 않으면 가능하다. 이때 $n(A)=5+15=20$, $n(B)=5+10=15$, $n(U)=5+15+10=30$이다.\n\n그러므로 최댓값은 25이다.",
+          "observation": "포함배제 부등식으로 교집합 최소를 구하고, Venn diagram은 A=20, B=15, intersection y, union bound 30을 표시한다.",
+          "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ]
+        }
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "False PASS can hide SVG geometry mismatch, merged enumerated reasoning, Meta exact-binding omissions, and runtime TeX escape defects. Check actual structures and evaluated field bytes."
+    }
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "status": "CALIBRATION_PREFLIGHT_PASS",
+  "observation": "Golden samples show explanatory prompts adjacent to visible multi-line equations; each derivation change is a separate board step, with cases/choice reasoning split into distinct blocks. Negative fixture confirms that aggregate counts do not substitute for inspecting actual SVG primitives, paragraph blocks, exact Meta binding, or sandbox runtime fields. Target solutions must follow source conditions and middle-school methods, use meaningful breaks, and display geometry facts only where source provides them.",
+  "targetWorkMode": "FRESH_SOURCE_AND_ANSWER_SOLUTION",
+  "correctionReviewVisualSupplement": {
+    "sampleReadBeforeCorrection": true,
+    "preflightOrder": [
+      "existing CREATE correction locus locked",
+      "Golden solution+SVG samples q7/q2/q6 inspected directly and SVGs rendered for geometry/layout review",
+      "Bokseong Negative README re-read; target changed loci not yet modified"
+    ],
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n$(x+3)^2+(y-1)^2=9$이다.\n즉\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n처음 원의 중심은 $(-3,1)$이고\n반지름은 $3$이다.\n\n이제 중심만 이동 순서대로 따라간다.\n먼저 $x$축의 방향으로 $-2$만큼,\n$y$축의 방향으로 $1$만큼 평행이동한다.\n$x$좌표는 $-3-2=-5$,\n$y$좌표는 $1+1=2$이므로\n$(-3,1)\\rightarrow(-5,2)$이다.\n그다음 원점에 대하여 대칭이동한다.\n원점 대칭에서는 두 좌표의 부호가 모두 바뀌므로\n$(x,y)\\rightarrow(-x,-y)$이다.\n따라서\n$(-5,2)\\rightarrow(5,-2)$이다.\n평행이동이나 대칭이동을 해도 원의 크기는 변하지 않으므로\n반지름은 계속 $3$이다.\n최종 원의 중심은 $(5,-2)$이고\n반지름은 $3$이므로\n$(x-5)^2+(y+2)^2=9$이다.\n\n그러므로 정답은 ⑤이다.",
+        "observation": "중심 이동 전개와 반지름 보존을 식으로 먼저 전개하고, 중심 좌표 이동과 대칭을 별도 줄로 나눈다. SVG는 중심 좌표와 반지름 3의 원 궤적을 실제로 표시한다.",
+        "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "visualGitBlobSha": "145bb00f7bbe034d259877b9d7a34c9e70bf8728",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이다.\n$-\\dfrac{k}{6}=-1$\n$k=6$이다.\n\n따라서 정답은 ①이다.",
+        "observation": "두 직선의 기울기를 각각 식 변형으로 구하고 곱이 -1인 조건을 따로 대입한다. SVG에는 양의 기울기와 음의 완만한 기울기의 두 직선 및 교점이 그려져 있다.",
+        "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "visualGitBlobSha": "43028e415d716ebac63e6a5dd5981bd9340f12c1",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$보다 클 수 없다.\n이 값은 $A\\cap B$에 5개, $A-B$에 15개, $B-A$에 10개를 두고 바깥에 원소를 두지 않으면 가능하다. 이때 $n(A)=5+15=20$, $n(B)=5+10=15$, $n(U)=5+15+10=30$이다.\n\n그러므로 최댓값은 25이다.",
+        "observation": "포함배제 부등식으로 교집합 최소를 구하고, Venn diagram은 A=20, B=15, intersection y, union bound 30을 표시한다.",
+        "visualPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg",
+        "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+        "visualGitBlobSha": "60885afc9874c6dff2a0e7984413c35ba5c083a1",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "Reconfirmed actual SVG geometry/topology must be computed, enumeration blocks must remain separate, exact-active Meta nulls require lookup, and sandbox runtime TeX escapes must be inspected."
+    },
+    "status": "CALIBRATION_PREFLIGHT_PASS"
+  }
+}

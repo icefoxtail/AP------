@@ -1,0 +1,960 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_CURRICULUM_SUPPLEMENTARY_V1",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "supplementaryReview": true,
+  "reviewTiming": "AFTER_CREATE_PASS; CURRENT FINAL CANDIDATE METHOD INVENTORY",
+  "reviewedAtUtc": "2026-10-06 04:55:46 UTC",
+  "candidatePath": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/21_신흥중_2학기_기말_중2_기출.js",
+  "artifactSha": "ad0efd1d868e75c4fff7d1fb56f834fedde01eab",
+  "artifactRawSha256": "ea66716b4c1b9a32999d57495355b682d92dd10e39df7c3dc37cad6e09d8a762",
+  "createEvidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/CREATE.evidence.json",
+  "scope": "Read-only actual solution methods and student notations for q1–q24. No source/answer restart, no JS/assets changes, no generic validator rerun.",
+  "curriculumRule": "Allowed methods are cumulative through current grade/scope. Later-course dependencies would fail. M2-2 RPM L1/L2 status is RPM_VERIFIED; L3/L4 v0.3 are CANONICAL_DRAFT and used descriptively only.",
+  "authorities": [
+    {
+      "path": "docs/rules/02_PIPELINES/해설프로토콜.md",
+      "version": "v1.5 FINAL; CURRENT HARD GATE 2026-10-01 §A",
+      "unit": "CURRICULUM METHOD INVENTORY: concepts/formulas/notations/methods, ALLOWED/NOT_ALLOWED/UNCERTAIN; cumulative lower-scope rule."
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "version": "v1",
+      "unit": "§5 교육과정 용어와 학생용 언어."
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+      "version": "2015 RPM Primary Canonical Draft v0.3",
+      "unit": "M2-2 L1/L2: triangle/circumcenter/incenter/RHS; similarity/parallel segment ratios/centroid/Pythagorean; counting/probability. L1/L2 RPM_VERIFIED."
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+      "version": "2015 RPM Primary Canonical Draft v0.3",
+      "unit": "M1-1 cumulative number/integer/rational and symbolic-expression prerequisites."
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+      "version": "2015 RPM Primary Canonical Draft v0.3",
+      "unit": "M1-2 cumulative basic geometry/area-circle sector vocabulary."
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md",
+      "version": "2015 RPM Primary Canonical Draft v0.3",
+      "unit": "M2-1 cumulative rational and algebraic calculation prerequisites."
+    }
+  ],
+  "curriculumMethodAuditCount": "24/24",
+  "curriculumViolationQids": [],
+  "rows": [
+    {
+      "qid": 1,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q1",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "solutionSha256": "5a4c9d5fe78b72ad8390839d9b8d622c754736d4298fdfdd6b21a8387eb1a29e",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "인접 선분의 덧셈; 그림 label x=AG,y=GD; checked against M2-05/M2-05-TRIANGLE_PROPERTIES and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "x+y=AG+GD=AD; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "x,y; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "선분기호 AG,GD,AD; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "선분을 이어 전체 길이 구하기; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 2,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q2",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "solutionSha256": "c1efc5333f40de2bc4ebcdd9071d9174d5dbb6ad94624e3d76638a9323119550",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "직각삼각형; 피타고라스 정리; checked against M2-07/M2-07-PYTHAGOREAN_THEOREM and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "a²+b²=c²; 양의 길이 선택; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "빗변, 직각변, 제곱; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "빗변·직각변을 식에 대응해 미지변 구하기; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 3,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q3",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "solutionSha256": "bb6d1d8607fcc18faea4a4c172c5ab63c29af3531efb0fc2d4530b5dc03f46ce",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "피타고라스 정리의 역; checked against M2-07/M2-07-PYTHAGOREAN_THEOREM and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "최장변²=두 다른 변²의 합; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "제곱, 보기 기호; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "보기별 제곱 계산 비교; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 4,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q4",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "solutionSha256": "24469fc8aeebed1dfa825eead30dfe209bdf147b93f5a7e2b61d4f5513fda616",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "사다리꼴의 평행 밑변; 직각삼각형; checked against M2-07/M2-07-PYTHAGOREAN_THEOREM and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "BC−AD; 피타고라스; 네 변 길이 합; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "높이 h; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "평행·직각 관계; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "밑변 차를 수평변으로 두어 높이 구하고 둘레 합산; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 5,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q5",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "solutionSha256": "280918e07d336ee8b83ed8bac87dd33b81284bf885e85b49c86803698d789060",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "무게중심 2:1; 무게중심 넓이 분할; 밑변비×높이비; checked against M2-05/M2-05-TRIANGLE_PROPERTIES and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "넓이비 1/3; base-height area ratio; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "S는 ABC 넓이로 정의; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "UNCERTAIN",
+          "detail": "[XYZ] 넓이 약호 미정의. Student solution does not define [XYZ]; classifying its student familiarity as uncertain."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "두 centroid area ratios를 결합해 S를 역산하고 AGC 넓이 계산; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "UNCERTAIN_NOTATION",
+      "finding": "Undefined bracketed triangle-area shorthand [XYZ] needs R1 adjudication."
+    },
+    {
+      "qid": 6,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q6",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "solutionSha256": "f5cc9059e0a464ae035b103962dc8d14673ba847330c67e7dda45071713aaeab",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "직각삼각형의 빗변 최장변; 피타고라스 정리; checked against M2-07/M2-07-PYTHAGOREAN_THEOREM and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "x<17, x=17, x>17 case split 및 피타고라스 식; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "부등식, 제곱; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "빗변 후보별 경우를 나누고 동률 최장변 경우를 제외; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 7,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q7",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "solutionSha256": "5296e9c3bd4da7e97151c3a3c36f49ab174c09fd919c90750cece9fb376b605e",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "직각삼각형 합동 대응변; 삼각형 넓이; 사각형 대각선 분할; checked against M2-05/M2-05-TRIANGLE_PROPERTIES and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "넓이=밑변×높이/2; 사각형 면적 분할; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "UNCERTAIN",
+          "detail": "[ABE],[BCE],[ABC],[ACE] 면적 약호 미정의. Student solution does not define [XYZ]; classifying its student familiarity as uncertain."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "합동으로 변 길이를 옮겨 직각 삼각형 넓이를 더하고 빼기; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "UNCERTAIN_NOTATION",
+      "finding": "Undefined bracketed triangle-area shorthand [XYZ] needs R1 adjudication."
+    },
+    {
+      "qid": 8,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q8",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "solutionSha256": "b3ffff6f84f912011e7dbdc66b1bd1c2fd3c8e3e5c4b138ee342c321a3cc70a8",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "무게중심 2:1; 직각삼각형 빗변 중선; 외심·외접원; checked against M2-05/M2-05-TRIANGLE_PROPERTIES and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "AG:GD=2:1; 빗변 중선=빗변/2; 원 넓이 πr²; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "비, 중선, 지름·반지름, π; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "GD에서 AD, BC, 원 반지름을 순서대로 구함; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 9,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q9",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-06",
+      "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "solutionSha256": "adcfe4178bf88887aeaa86b52ff227dde388b0a8ae0c5b57f0d4ddce345e81f4",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "무게중심 높이; 내심 등거리; 삼각형 넓이 가법; 평행선 닮음; checked against M2-06/M2-06-PARALLEL_LENGTH_RATIO and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "내심 거리 r; 작은 삼각형 면적 합; 대응변 닮음비; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "h,r, ∥, ∼; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "UNCERTAIN",
+          "detail": "[ABC] 면적 약호 미정의. Student solution does not define [XYZ]; classifying its student familiarity as uncertain."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "r=h/3에서 둘레·높이 관계로 BC를 구하고 닮음으로 DE 계산; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "UNCERTAIN_NOTATION",
+      "finding": "Undefined bracketed triangle-area shorthand [XYZ] needs R1 adjudication."
+    },
+    {
+      "qid": 10,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q10",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "a4c31b3dffa2c60f874eececde80c21de8d58f27d7b3722fbfe704b615f1f95a",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "홀수 판정; 유한 경우 수; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "1~12의 홀수 열거; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "정수 목록; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "유한 집합의 원소를 열거해 수 세기; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 11,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q11",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "66075060146f42bc24215d44cabb1ba3dff5963da08e3c4bdc7d877115602ce0",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "서로소 범주; 합의 법칙; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "4+5; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "경우 수 단위; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "남녀 집단의 disjoint 선택을 합산; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 12,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q12",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "b51f029e2065bbd3b7bc4a0b2921b323a688d7728ebe5319420714cad7389b9e",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "단계별 선택; 곱의 법칙; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "2×4; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "곱셈 기호; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "연속 구간에서의 독립적 route choice를 곱함; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 13,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q13",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "997672de89cef95cbd76c1475e1dcd07b56f71c0b86d7283e8191224d54afef2",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "절댓값 눈 차; 순서쌍; 합의 법칙; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "차 2 8쌍, 차 5 2쌍; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "ordered pair (a,b); defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "각 눈 차에 해당하는 ordered outcomes를 열거해 합산; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 14,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q14",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_BASIC",
+      "solutionSha256": "52842a0f85957c42340b46df1dcf5c44ea27908c88bf87b8a7d1dd912923b252",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "유한 표본공간; 불가능·확실 사건; checked against M2-08/M2-08-PROBABILITY_BASIC and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "사건 원소 수와 전체 경우 수; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "확률 0/1; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "각 die event를 {1,...,6}과 대조; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 15,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q15",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "41df7a9f5375165e32ff19d547843960dd02ab24fdd98724cf84df25417c5a59",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "등가능한 결과; 확률; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "4/12; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "P(사건); defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "중복 I 두 번 각각 세기; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "공백 제외 글자 위치 12개 중 모음 4개 세기; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 16,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q16",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_BASIC",
+      "solutionSha256": "846fca3233c63a050ed92fb8484a44a67b7edd9b9d3cbe1e15b5fcfcf5e706b6",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "확률; 불가능 사건; 서로소 색 범주; checked against M2-08/M2-08-PROBABILITY_BASIC and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "유리/전체 7/16; yellow count 0; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "“또는” 사건; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "색 범주별 실제 개수를 세고 불가능 색의 경우를 0 처리; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 17,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q17",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_BASIC",
+      "solutionSha256": "5e2ace68d0ea25ec9520ecc5dff0390ea92a4e38ff580778d4bdadbde72839cf",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "독립 사건 확률; checked against M2-08/M2-08-PROBABILITY_BASIC and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "두 주머니 확률의 곱; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "분수, 곱셈; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "주머니별 확률을 곱해 동시사건 산출; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 18,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q18",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_BASIC",
+      "solutionSha256": "552361da8813257b9202b56f55615aa53dd71bace9106ad0f39bdac9e407c5cd",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "복원추출 독립시행; 여사건; checked against M2-08/M2-08-PROBABILITY_BASIC and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "1−(2/3)²; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "여사건, 제곱; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "두 번 모두 실패할 여사건을 구해 1에서 뺌; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 19,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q19",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "db61c2fea688e9a9bad352b29002aa77b33833623595be2952d390db9fedde37",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "정오각형 순환 이동; ordered dice outcomes; 확률; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "5칸 주기; favorable/36; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "순서쌍; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "주기 관계를 문장으로 표현; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "두 눈의 합 3 또는 8인 순서쌍을 세어 확률 산출; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 20,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q20",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "44532efc8994a7be6fff9a9993517cded1d58f83aebf0d06740d3f62a1db1174",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "정수변수 부등식; 순서쌍; 확률; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "2x+y<7; favorable/36; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "1≤x,y≤6; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "≥; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "x값마다 허용 y를 열거해 유리한 경우 계산; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 21,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q21",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "solutionSha256": "e5233d16323d21e70bf40c58b9ed7685e7c19c699296fcec45d4134fb7cc65d6",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "정사각형 넓이와 변; 직선상 선분 덧셈; 직각삼각형; checked against M2-07/M2-07-PYTHAGOREAN_THEOREM and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "s²=A; BE=BC+CE; 피타고라스; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "cm²; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "⟂; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "제곱; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "perfect-square areas로 변 길이를 찾아 선분합과 피타고라스로 계산; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 22,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q22",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_BASIC",
+      "solutionSha256": "31205dfddfa37f0f9a1dd33feeaad7b9803b09ec93640600e64826a919efc71e",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "확률; 불가능 사건; 곱셈; checked against M2-08/M2-08-PROBABILITY_BASIC and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "p=7/10,q=0,pq=0; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "p,q; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "각 확률변수를 구해 곱함; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 23,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q23",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-08",
+      "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+      "solutionSha256": "75845a14e4e0d19daea253d7326b484c73f53705e685b25feb1726d18e57e643",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "두 장 선택의 경우 수; 자리값; 홀수 판정; checked against M2-08/M2-08-PROBABILITY_COUNTING and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "전체 4+3+2+1; 유리 2+4; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "십의 자리/일의 자리; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "조합기호 미사용; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "작은 수별로 쌍을 세고 큰 수 홀수 cases 분류; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    },
+    {
+      "qid": 24,
+      "questionUid": "21_신흥중_2학기_기말_중2_기출:q24",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "solutionSha256": "8268525eaba23036c50e53d70b9ef6421d93623aeea056baecfb851d9f8479b5",
+      "concepts": [
+        {
+          "classification": "ALLOWED",
+          "detail": "삼각형 넓이; 이등변삼각형 높이의 밑변 이등분; 피타고라스; checked against M2-07/M2-07-PYTHAGOREAN_THEOREM and cumulative 2015 scopes."
+        }
+      ],
+      "formulas": [
+        {
+          "classification": "ALLOWED",
+          "detail": "A=bh/2; 12²+5²; current or cumulative middle-school scope."
+        }
+      ],
+      "notations": [
+        {
+          "classification": "ALLOWED",
+          "detail": "높이 h; defined locally or ordinary in the current/cumulative middle-school representation."
+        },
+        {
+          "classification": "ALLOWED",
+          "detail": "cm²; defined locally or ordinary in the current/cumulative middle-school representation."
+        }
+      ],
+      "methods": [
+        {
+          "classification": "ALLOWED",
+          "detail": "높이 산출, 반 밑변, 직각삼각형으로 AB 구하기; directly observed in current solution."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "itemStatus": "ALLOWED",
+      "finding": null
+    }
+  ],
+  "findings": [
+    {
+      "qid": 5,
+      "classification": "UNCERTAIN",
+      "locus": "undefined bracketed triangle-area notation [XYZ]",
+      "reason": "The solution uses [GBC]/[ABE]/[ABC] style area shorthand without defining it. Directly inspected student-language authority §5 but found no authority establishing this shorthand as understood middle-school notation."
+    },
+    {
+      "qid": 7,
+      "classification": "UNCERTAIN",
+      "locus": "undefined bracketed triangle-area notation [XYZ]",
+      "reason": "The solution uses [GBC]/[ABE]/[ABC] style area shorthand without defining it. Directly inspected student-language authority §5 but found no authority establishing this shorthand as understood middle-school notation."
+    },
+    {
+      "qid": 9,
+      "classification": "UNCERTAIN",
+      "locus": "undefined bracketed triangle-area notation [XYZ]",
+      "reason": "The solution uses [GBC]/[ABE]/[ABC] style area shorthand without defining it. Directly inspected student-language authority §5 but found no authority establishing this shorthand as understood middle-school notation."
+    }
+  ],
+  "overallStatus": "SUPPLEMENTARY_REVIEW_COMPLETE_WITH_NOTATION_UNCERTAINTY",
+  "routing": "Return the three notation findings to ROOT/R1 for adjudication; no candidate changes.",
+  "reviewStartedAtUtc": "2026-10-06 04:53:18 UTC",
+  "reviewCompletedAtUtc": "2026-10-06 04:55:46 UTC"
+}

@@ -1,0 +1,357 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "inputArtifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+  "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+  "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.evidence.json",
+  "rawFileSha256": "6eec7045f0aa960accf842639d9bac5df0d1eee69495655bee015f41c765ea2b",
+  "physicalEvidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json",
+  "physicalEvidenceSha256": "684307716fef7fdd5fd5c79ae7f93d68c40d27c46f2699ffcf4b0fec41f7c759",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      14,
+      19,
+      20,
+      21,
+      24
+    ],
+    "directDependencyQids": [
+      1
+    ]
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS_AUTHORIZED_BOUNDED_AUDITED_REPAIR",
+      "evidenceRefs": [
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.answer-adjudications.json",
+        "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.q01-operational-decision.json"
+      ]
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 6,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS_AFTER_POST_FREEZE_ADJUDICATION",
+      "evidenceRefs": [
+        "R1.answer-adjudications.json",
+        "R2.evidence.json"
+      ]
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS_AFTER_POST_FREEZE_ADJUDICATION",
+      "evidenceRefs": [
+        "R1.answer-adjudications.json",
+        "R2.evidence.json"
+      ]
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS_MULTIPLE_ANSWER_VERIFIED",
+      "evidenceRefs": [
+        "R2.evidence.json"
+      ]
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    },
+    {
+      "qid": 24,
+      "verdict": "PASS_CHANGED_LOCUS_INHERITED",
+      "evidenceRefs": [
+        "R1.evidence.json"
+      ]
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "releaseDisposition": "R3_RELEASE_READY",
+  "openFindings": [],
+  "r1Seal": {
+    "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R1.evidence.json",
+    "artifactSha": "b4dcf3807287fbb10891875b2604284aacbb911a"
+  },
+  "r2Seal": {
+    "evidenceRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R2.evidence.json",
+    "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "rawFileSha256": "6eec7045f0aa960accf842639d9bac5df0d1eee69495655bee015f41c765ea2b"
+  },
+  "artifactDispositions": {
+    "artifactSha": "c1c508f5581efee046eb236fa2ba0ca6d96a2ad2",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for the selected centroid-length path."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "The source gives the right-triangle congruence directly; the solution transfers corresponding side lengths and decomposes area, not an RHS construction. Keep the broader active PT_RIGHT_TRIANGLE_CONGRUENCE classification; no exact current active template maps this given-congruence area-decomposition method, so templateKey remains explicit projection debt."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": "No explicit current Meta projection debt; actual fields independently reviewed."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "EXACT_ACTIVE_BINDING_PENDING"
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+      }
+    ]
+  },
+  "studentInputParity": {
+    "ref": ".tmp/archive/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R2-student.json",
+    "rawSha256": "9e95c656f4631679feacc48f872ac655f535ff93961924ec7e13ec083850775d",
+    "studentFieldsParity": "EXACT_CURRENT_VM_FIELD_COPY",
+    "questionCount": 24,
+    "assetCount": 11
+  },
+  "physicalEvidence": {
+    "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/R3.physical-evidence.json",
+    "sha256": "684307716fef7fdd5fd5c79ae7f93d68c40d27c46f2699ffcf4b0fec41f7c759"
+  },
+  "resolvedFindings": [
+    {
+      "qid": 1,
+      "status": "RESOLVED_BY_AUTHORIZED_BOUNDED_REPAIR",
+      "historicalConflict": "The older sourceCorrectionReview.reason said not to seal absent authorization and described the label move as adding a premise; current R1 owner row adjudicates the locus as BG→AD with prompt/choices unchanged, and ROOT now authorizes precisely that implementation.",
+      "resolutionBasis": "Current student body already contains AD=6 cm; q1 content and choices are exact current R2 student bundle copies, repaired q1 image SHA matches current evidence, and the ROOT decision authorizes only the owner-verified figure datum repair.",
+      "rootDecisionRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.q01-operational-decision.json",
+      "rootDecisionSha256": "2152a71d4516108288eff78d1818e56eadabfef7b19b15b99b100692580236f9",
+      "remainingSemanticFinding": "NONE_WITHIN_AUTHORIZED_Q01_LOCUS"
+    }
+  ],
+  "rootOperationalDecision": {
+    "ref": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.q01-operational-decision.json",
+    "sha256": "2152a71d4516108288eff78d1818e56eadabfef7b19b15b99b100692580236f9",
+    "decision": "AUTHORIZED_BOUNDED_AUDITED_REPAIR_IMPLEMENTATION",
+    "scope": "R1 adjudicated sole 6cm datum-owner repair BG to AD; prompt, choices, target retained; no additional source rewrite"
+  }
+}
