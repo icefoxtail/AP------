@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "source-only-m2-20261004/21_신흥중_2학기_기말_중2_기출",
+  "artifactSha": "cfc34503855d8266e9e2a6a73a4e1d0860487a58",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      23
+    ],
+    "directDependencyQids": []
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "rows": [
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "field": "decisiveStep",
+      "sourceMode": "AUDITED_REPAIR",
+      "repairType": "LATEX_ESCAPE_SERIALIZATION_ONLY",
+      "before": {
+        "rawSourceSequence": "$\\binom",
+        "parsedControlCodePoint": 8,
+        "parsedFragment": "$\\binom"
+      },
+      "after": {
+        "rawSourceSequence": "$\\\\binom",
+        "parsedFragment": "$\\binom",
+        "c0Count": 0
+      },
+      "scopeIntegrity": {
+        "questionContentChanged": false,
+        "choicesChanged": false,
+        "answerChanged": false,
+        "solutionFieldChanged": false,
+        "metaClassificationChanged": false
+      },
+      "directDependencyRefs": [
+        "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R1.evidence.json#qid23",
+        "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R3.scope-coverage-supplement.json#q23"
+      ],
+      "technicalCheck": "Raw JS source now encodes the LaTeX command with an escaped backslash; parsed q23.decisiveStep contains no C0 control characters.",
+      "artifactSha": "cfc34503855d8266e9e2a6a73a4e1d0860487a58",
+      "evidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R3.recovery.evidence.json"
+    }
+  ],
+  "lockedScopeAudit": {
+    "qid1": {
+      "artifact": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+      "sha256": "78289790E3D9B1F46FEDF0AD81983A75161A865E5B044DFBE8E1BB8A7B113BA1",
+      "preFreezeVisualReview": true,
+      "sourceGeometryReview": "R2.visual-input-evidence.json says the q01 PNG render was inspected for triangle ABC, median AD, centroid G, AG/GD labels, E on AC, and 6 cm/8 cm labels.",
+      "renderedPng": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/q01-r2-render.png",
+      "renderedPngSha256": "6f45ac281701ebd5df909160471836f6ac5eb82572063315194f75edac9c3abe",
+      "freezeRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R2.independent-freeze.json",
+      "freezeHasQ01Render": true,
+      "referencedStudentImagesReviewed": true,
+      "referencedVisualCount": 11,
+      "referencedImageCount": 11,
+      "renderedPngIsAdditionalToReferencedImages": true,
+      "freezeBeforeStoredAnswerAccess": true
+    },
+    "q18q19": {
+      "r2StudentInputSha256": "901054a97fdf11dc4a7cb9e49658e12e1f66fefc6e3aa94d7df0904fef3b24bc",
+      "r2FrozenInputImmutable": true,
+      "r2BlindFreezeBeforeStoredAnswer": true
+    }
+  },
+  "releaseAudit": {
+    "finalArtifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+    "expectedQuestionCount": 24,
+    "sourceFileExists": true,
+    "noOtherExamFilesTouched": true
+  },
+  "postMutationRebind": {
+    "inputArtifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+    "finalArtifactSha": "cfc34503855d8266e9e2a6a73a4e1d0860487a58",
+    "changedQids": [
+      23
+    ],
+    "directDependencyQids": [],
+    "scopeQids": [
+      23
+    ]
+  },
+  "postPublishErrorRecovery": {
+    "priorR3PassArtifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+    "reason": "MAIN publish technical guard found a U+0008 control character in q23.decisiveStep serialization.",
+    "recoveryValidatorScopeOnly": [
+      23
+    ],
+    "priorPassRecordRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R3.validation.json"
+  }
+}

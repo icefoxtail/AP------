@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "source-only-m2-20261004/21_신흥중_2학기_기말_중2_기출",
+  "artifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+  "targetedScope": {
+    "openFindingQids": [
+      18,
+      19
+    ],
+    "changedQids": [
+      18
+    ],
+    "directDependencyQids": [
+      19
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "rows": [
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceProvenance": {
+        "sourcePage": "source-page-3.png",
+        "priorRepair": "CREATE.source-repair-proposals.json#q18 changed choice ③ from 7/12 to 5/9",
+        "r3Repair": "Added explicit replacement after each draw, stating that the two draws are independent.",
+        "inputArtifactSha": "93dc7d3c8e16fe726ffaca0bbb36f3e9baa66d65",
+        "finalArtifactSha": "a7e4d03200d883240daeab1961554f82cea92a26"
+      },
+      "findingResolution": "R2 OPEN_SOURCE_AMBIGUITY closed. The source prompt omitted replacement/independence; amended current prompt now says to return each candy before the next draw and makes the draws independent. Existing 5/9 choice and key are thereby well-defined.",
+      "changedFields": [
+        "content"
+      ],
+      "directDependencies": [
+        "R1.evidence.json#q18",
+        "R2.evidence.json#q18"
+      ],
+      "answerReview": "No new full solution or answer review performed; existing 5/9 solution depends on the now-explicit replacement/independence condition."
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS",
+      "sourceMode": "ORIGINAL",
+      "sourceProvenance": {
+        "currentSourceChoice1": "$\\dfrac{2}{9}$",
+        "sourceImage": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/source-page-3.png",
+        "currentStudentBankChoice1": "$\\dfrac{2}{9}$",
+        "frozenR2StudentInputSha256": "901054a97fdf11dc4a7cb9e49658e12e1f66fefc6e3aa94d7df0904fef3b24bc"
+      },
+      "findingResolution": "R2 OPEN_DUPLICATE_CORRECT_CHOICE is stale against the current post-R1 artifact. Current source and student bank both show choice ①=2/9; choice ④=7/36 remains the sole correct option. The frozen R2 student input and blind finding are preserved as the earlier snapshot. No source mutation.",
+      "changedFields": [],
+      "directDependencies": [
+        "R1.evidence.json#q19",
+        "R2.evidence.json#q19",
+        "R2.student-input.json#SHA256"
+      ],
+      "answerReview": "Targeted option/source concordance only; no full question solution review."
+    }
+  ],
+  "lockedScopeAudit": {
+    "qid1": {
+      "artifact": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+      "sha256": "78289790E3D9B1F46FEDF0AD81983A75161A865E5B044DFBE8E1BB8A7B113BA1",
+      "preFreezeVisualReview": true,
+      "sourceGeometryReview": "R2.visual-input-evidence.json says the q01 PNG render was inspected for triangle ABC, median AD, centroid G, AG/GD labels, E on AC, and 6 cm/8 cm labels.",
+      "renderedPng": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/q01-r2-render.png",
+      "renderedPngSha256": "6f45ac281701ebd5df909160471836f6ac5eb82572063315194f75edac9c3abe",
+      "freezeRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R2.independent-freeze.json",
+      "freezeHasQ01Render": true,
+      "referencedStudentImagesReviewed": true,
+      "referencedVisualCount": 11,
+      "referencedImageCount": 11,
+      "renderedPngIsAdditionalToReferencedImages": true,
+      "freezeBeforeStoredAnswerAccess": true
+    },
+    "q18q19": {
+      "r2StudentInputSha256": "901054a97fdf11dc4a7cb9e49658e12e1f66fefc6e3aa94d7df0904fef3b24bc",
+      "r2FrozenInputImmutable": true,
+      "r2BlindFreezeBeforeStoredAnswer": true
+    }
+  },
+  "releaseAudit": {
+    "finalArtifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+    "expectedQuestionCount": 24,
+    "sourceFileExists": true,
+    "noOtherExamFilesTouched": true
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_TARGETED_REVIEW_v1",
+  "examUid": "source-only-m2-20261004/21_왕운중_2학기_기말_중2_기출",
+  "stage": "R3",
+  "inputArtifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+  "finalArtifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+  "authority": {
+    "createEvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/CREATE.evidence.json",
+    "r1EvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.evidence.json",
+    "r1ClosureRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.closure.json",
+    "r2EvidenceRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2-clean/R2.evidence.json",
+    "r2ClosureRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2-clean/R2.closure.json",
+    "r2ValidationRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2-clean/R2.validation.json",
+    "r2FailedAttemptEvidenceExcluded": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R2.evidence.json"
+  },
+  "scope": {
+    "openFindingQids": [],
+    "changedQids": [
+      1,
+      3,
+      9,
+      10,
+      13,
+      21
+    ],
+    "directDependencyQids": [
+      23
+    ]
+  },
+  "checks": {
+    "openFindings": {
+      "result": "CLEAR",
+      "evidence": "Current R1 correction-review closure PASS and clean R2 V2 PASS; q23 post-freeze mismatch has targeted diagram review confirming stored 38/5. Prior failed R1 calibration attempt and prior R2 figure-input failure remain preserved as non-authority audit records."
+    },
+    "sourceCorrections": {
+      "result": "PASS",
+      "q1": {
+        "sourceMode": "AUDITED_REPAIR",
+        "repairId": "RESTORED_MISSING_SOURCE_STATEMENTS",
+        "finding": "Six omitted printed statements restored from source page 1; R1 confirms text-only student prompt and five choices."
+      },
+      "q10": {
+        "sourceMode": "AUDITED_REPAIR",
+        "repairId": "CHOICE_1_MINIMAL_SOURCE_REPAIR",
+        "finding": "Only choice ① corrected to 110/9 per source page 2 givens; choices ②–⑤, stem, diagram and order retained; R1 confirms source alignment."
+      }
+    },
+    "changedLoci": {
+      "result": "PASS",
+      "qids": [
+        3,
+        9,
+        13,
+        21
+      ],
+      "finding": "R1 targeted correction pass covers answer/solution/label/crop/ordered-pair layout loci; R1 V2 closure binds final artifact SHA."
+    },
+    "directDependency": {
+      "result": "PASS",
+      "qids": [
+        23
+      ],
+      "finding": "Clean R2 mismatch is explicitly post-freeze; opened q23 figure and corrected derivation confirm x=4, y=18/5, sum=38/5. Immutable blind freeze x+y=7 and correction record remain retained."
+    },
+    "lockedScopeIntegrity": {
+      "result": "PASS",
+      "artifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+      "rawSha256": "14b1debb7cd3f688093899ff2be59047a373558a5a44371553e066a800fb0ad8",
+      "finding": "Source-only JS matches supplied Git blob SHA; no production JS mutation is made in R3; work is restricted to the declared targeted scope."
+    },
+    "releaseIntegrity": {
+      "result": "PASS",
+      "assets": {
+        "3": {
+          "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q03.png",
+          "sha256": "bb18fe551ea4469b0230fd33040aa9d7df2ca1cb9b720b341743765a2b5f9ac3"
+        },
+        "9": {
+          "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q09-r3.png",
+          "sha256": "c88b3629ba197787821f180bf22e98114f28ac8ffc829513e095e6283ec5593d"
+        },
+        "10": {
+          "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q10-r3.png",
+          "sha256": "60738709986d5152f517f0338014f57e4da3a462f6e8873c1cbcdcbf1b166549"
+        },
+        "13": {
+          "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q13-r3.png",
+          "sha256": "d66770c68dfa75095f7ed114eacb09b93d49efa77b1af4671c57b5ccacadb9f2"
+        },
+        "23": {
+          "path": "archive/assets/images/21_왕운중_2학기_기말_중2_기출/q23-r2.png",
+          "sha256": "96929b3f3d970c050b8e35966d3b41cbdfa0de47ff6bff378d368a5e0064a0ee"
+        }
+      },
+      "finding": "All referenced figures for reviewed visual loci exist with expected SHA-256; effective q9 R1 crop includes AD=6, BC=9 and P/Q; q10 crop preserves AF=8 and parallel-line layout; q23 figure opened for mismatch resolution."
+    }
+  },
+  "findings": [],
+  "repair": {
+    "applied": false,
+    "reason": "No unresolved R3 finding; no production repair required."
+  }
+}

@@ -594,13 +594,13 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "문장을 부등식으로 나타낸 것으로 옳지 않은 것은? [4점]",
+    "content": "다음 문장을 부등식으로 나타낸 것 중 옳지 않은 것은? [4점]\\n① $x$의 3배에서 7을 뺀 수는 9보다 작다.\\n② $x$의 3배에 5를 더한 수는 7보다 작지 않다.\\n③ 한 개에 600원인 물건 $x$개의 값은 5000원을 넘지 않는다.\\n④ $x$의 2배와 $y$의 4배의 합은 55보다 크다.\\n⑤ $x$에서 4를 뺀 수의 2배는 17보다 작지 않다.",
     "choices": [
       "$3x-7 < 9$",
       "$3x+5 \\ge 7$",
       "$600x \\le 5000$",
       "$2x+4y > 55$",
-      "$2(x-4) \\ge 17$"
+      "$2(x-4) > 17$"
     ],
     "answer": "⑤",
     "category": "부등식의 표현",
@@ -609,18 +609,18 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "부등식",
-      "표해석",
-      "참거짓",
-      "오류판별",
-      "개념"
+      "일차부등식",
+      "문장제",
+      "조건해석",
+      "오류판별"
     ],
     "wide": false,
-    "solution": "'작지 않다'는 '크거나 같다($\\ge$)'를 의미함.\\n⑤ $2(x-4) \\ge 17$로 표기해야 옳음.\\n$\\therefore$ ⑤",
+    "solution": "[핵심] 문장의 수량 관계를 부등식 기호와 괄호에 맞게 옮긴다.\\n[풀이] ① $3x-7<9$, ② $3x+5\\ge7$, ③ $600x\\le5000$, ④ $2x+4y>55$는 각각 문장을 바르게 나타낸다. ⑤에서 ‘$x$에서 4를 뺀 수의 2배’는 $2(x-4)$이고 ‘17보다 작지 않다’는 $\\ge17$이므로 $2(x-4)\\ge17$이어야 한다. 보기의 $2(x-4)>17$은 옳지 않다.\\n[결론] ⑤",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -629,7 +629,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "부등식 $2x+1 > 3x-1$의 해를 수직선에 바르게 나타낸 것은? [4점]",
+    "content": "부등식 $2x+1 > 3x-1$의 해로 옳은 것은? [4점]",
     "choices": [
       "$x < 2$",
       "$x > 2$",
@@ -644,18 +644,18 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
       "부등식",
       "일차부등식",
-      "수직선",
-      "참거짓",
+      "해구하기",
+      "계산",
       "개념"
     ],
     "wide": false,
-    "solution": "$2x - 3x > -1 - 1$\\n$-x > -2 \\implies x < 2$\\n$\\therefore x < 2$",
+    "solution": "[핵심] 미지수 항은 한쪽으로, 상수항은 다른 쪽으로 이항한다.\\n[풀이] $2x+1>3x-1$에서 $2x-3x>-1-1$이므로 $-x>-2$이다. 양변에 $-1$을 곱하면 부등호 방향이 바뀌어 $x<2$이다.\\n[결론] ①",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",

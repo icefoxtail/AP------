@@ -18,6 +18,39 @@
 
 이 1개가 MAIN까지 닫히면 즉시 종료하고 보고한다.
 
+### 승인된 5시험지 파일럿 — 2026-10-05
+
+사용자가 승인한 이번 후속 파일럿에서는 위 1시험지 제한 대신 아래 5개만 대상으로 한다. 모두 `archive/_generated/source-only/m2-20261004/` 아래의 JS다. 기존 `21_연향중`은 재실행하지 않는다.
+
+- `21_신흥중_2학기_기말_중2_기출.js`
+- `21_왕운중_2학기_기말_중2_기출.js`
+- `21_이수중_2학기_기말_중2_기출.js`
+- `21_풍덕중_2학기_기말_중2_기출.js`
+- `20_향림중_2학기_기말_중2_기출.js`
+
+시험지별 CREATE → R1 → R2 → R3 → MAIN 순서를 유지하는 stage별 직렬 컨베이어다. CREATE/R1/R2/R3 담당은 각각 1개이며, 각 담당은 한 번에 시험지 하나만 처리한다. 시험지별 CREATE worker 5개를 동시에 spawn하는 방식은 금지한다.
+
+CREATE가 A를 R1에 넘기면 새 `archive_r1` 세션이 A를 받고 새 `archive_create` 세션이 B를 시작한다. R1이 A를 R2에 넘기면 새 `archive_r2` 세션이 A를 받고, 새 `archive_r1` 세션이 B를 받으며, CREATE는 새 세션으로 C를 시작한다. 시험지별 순서와 각 역할의 처리 순서를 유지하며 같은 역할의 worker를 동시에 여러 개 실행하지 않는다. 다음 담당이 바쁘면 완료 산출물을 보존하고 해당 역할이 비는 즉시 인계한다. 별도 READY/QUEUE ceremony를 만들지 않는다.
+
+MAIN publication/closeout은 ROOT의 기술 routing이다. 정상 품질 역할은 4개이며 MASTER는 실제 durable continuation이 발생할 때만 추가한다. concurrency cap 5는 동시 실행 상한이며 상시 5개 worker 실행 지시도, 누적 spawn 수의 제한도 아니다.
+
+#### 에이전트 세션 수명과 인계
+
+- 고정하는 것은 역할과 stage별 동시 처리 슬롯이다. 동일한 agent thread를 시험지 100개까지 계속 유지하는 방식은 기본 운영으로 사용하지 않는다.
+- 새 `(examUid, stage)` 작업은 해당 custom role의 새 세션으로 시작한다. 기본 `fork_turns="none"`으로 ROOT의 누적 작업 이력을 상속하지 않고, 적용 지침과 해당 작업의 필요한 입력만 전달한다.
+- 같은 시험지의 동일 stage 안에서 최소 수정·재확인·closure를 할 때는 기존 세션을 이어간다. 수정마다 새 worker를 spawn하지 않는다. 실제 세션 손실이나 blind 오염 등 새 세션이 필요한 오류는 해당 기록을 보존하고 필요한 범위만 재개한다. MASTER는 실제 durable continuation의 missing closure만 처리한다.
+- 인계의 authority는 에이전트 기억이 아니라 저장된 final artifact, 입력/final SHA, PASS evidence 및 closure receipt다. 다음 담당에게 시험지 경로, SHA, 허용된 evidence, 변경 qid, direct dependency 및 남은 finding만 compact하게 전달한다.
+- R1/R2의 독립 답 freeze 전에는 해당 시험지의 stored answer, 해설 또는 upstream 답 evidence를 전달하거나 읽지 않는다. 필요한 student-facing 입력과 답 evidence의 공개 순서를 분리한다.
+- 각 새 worker는 자기 세션에서 필요한 지침을 최초 1회 읽는다. ROOT는 정상 인계마다 canonical이나 시험지/evidence 전체를 반복 읽지 않는다.
+- 대규모 작업도 bounded 작업 단위를 유지한다. 기본은 시험지 하나이며, 대형 문제집은 단원·공통 자료·의존성을 보존하는 작은 묶음으로 나눈다. 실제 분할 범위와 대상은 별도 승인된 작업 범위에 따른다.
+- 세션 재사용 최적화는 기본 fresh-session 운영과 비교 측정한 후 별도로 적용한다. MAIN_DONE당 실제 token/시간, 재작업·누락 보충·ROOT 개입을 함께 기록하며, 확인 불가능한 usage는 추정하지 않는다. spawn 수 감소만으로 효율 향상을 선언하지 않는다.
+
+모든 작업자는 자기 시험지 파일과 별도 evidence만 소유하며 공용 파일을 수정하지 않는다.
+
+공유 Git index의 병렬 충돌을 방지하기 위해 이번 파일럿에서는 worker가 파일 목록과 validator/closure 결과를 반환하고, ROOT가 해당 목록만 명시적으로 stage하여 stage별 독립 commit을 만든다. worker는 git add/commit/merge/push를 실행하지 않는다. MASTER는 실제 durable continuation에만 사용한다.
+
+5개가 MAIN까지 닫히면 종료한다. 기존 모델, blind 입력 분리, read-once, validator 1회 및 routing-only 규칙은 그대로 적용한다. 사용자 안내는 결과/오류 중심으로 짧게 하고, 변화 없는 대기 안내를 반복하지 않는다.
+
 ## 2. Read-Once / Token Budget HARD
 
 ROOT는 이 문서를 session 시작 시 1회 읽고 실행한다.
@@ -80,6 +113,12 @@ project config의 global spawned-agent concurrency cap은 **5**다.
 
 ## 5. ROOT Routing-Only HARD
 
+### 위임된 운영 결정권
+
+사용자는 이번 운영 라인의 최소 수정안 적용 여부와 정상 오류 복구를 ROOT에게 위임했다. ROOT는 worker의 compact 검증 결과와 provenance를 근거로 수정안 적용, 보류/재개, 다음 stage 인계 및 승인 범위 내 production publication을 자율 결정한다. 정상 운영의 같은 적용 여부를 사용자에게 반복 질문하지 않는다.
+
+이 결정권은 ROOT가 수학·Meta·Visual·source를 직접 풀이하거나 재검수한다는 뜻이 아니다. 품질 판단과 필요한 최소 재검은 해당 custom stage worker가 수행하며, ROOT는 그 결과를 근거로 운영 결정을 한다. 원문 오류 수정은 원문 증거를 보존하고 sourceMode/수정 내역을 명시하며 독립 검수를 거친다. 검증 실패나 미해결 finding을 강제 PASS로 바꾸지 않는다. 위임 범위를 벗어난 신규 목표나 worker가 해결할 수 없는 필수 입력 부족만 사용자에게 요청한다.
+
 ROOT가 직접 하지 않는 일:
 
 - 문제 풀이
@@ -113,15 +152,27 @@ qid별 `sourceMode` provenance와 필요한 evidence를 만든다.
 
 전 qid DEEP review.
 
+수학 독립풀이/answer 비교와 별도로 전 qid의 QUESTION_LAYOUT / SOLUTION_LAYOUT / META / VISUAL_SVG 4축을 독립 검수하고 qid별 근거를 기록한다. CREATE의 PASS나 VISUAL_EXEMPT를 그대로 승계하지 않는다. Visual/SVG 필요성 및 Meta의 기존 값을 실제로 확인하며 validator는 Meta를 재분류하지 않는다.
+
+기존 수학/answer PASS에 4축 검수만 누락된 경우 사용자 승인 범위의 supplemental evidence로 보충한다. 수학 독립풀이/answer 비교와 전체 CREATE/R1/R2/R3를 재실행하지 않는다. 실제 수정 qid와 direct dependency만 evidence를 재결속하고 필요한 R3도 해당 locus만 targeted 검수한다.
+
 `independentAnswer`를 `storedAnswer` 공개 전에 freeze한다.
 
 repair가 필요하면 같은 stage에서 최소 수정 후 changed locus만 다시 확인한다.
+
+완전한 current student input으로 freeze한 계산 오답이나 선택기호 encoding 오류는 blind 오염과 구별한다. 원 freeze와 사전 추론을 보존하고 해당 locus의 post-comparison adjudication/encoding correction으로 처리한다. 정답을 맞힐 때까지 fresh agent를 반복 호출하지 않는다. student body의 실제 교체, freeze 전 답 노출 또는 필요한 그림의 누락 때문에 기존 freeze가 적용 불가능할 때만 영향 qid를 새 clean 세션에서 독립 검수한다.
 
 ### R2
 
 전 qid BLIND SWEEP.
 
 `blindAnswer`를 R1/stored answer 공개 전에 freeze한다.
+
+학생용 bundle은 실제 current final source에서 추출하며 학생 필드와 참조 자산의 current source 일치를 freeze 전에 확인한다. old CREATE/student bundle에 현재 SHA만 적어 재사용하지 않는다. artifact SHA는 Git blob SHA-1이고 raw 파일 SHA-256과 다르다. 각 calibration gate가 요구하는 raw/clean-filter hash 계약도 구별한다.
+
+freeze 전에는 시험지 JS 전체 출력이나 answer/solution을 노출할 수 있는 검색을 하지 않는다. 안전한 파서로 학생용 지문/선택지/문제 그림 필드만 별도 입력으로 추출하고 그 입력만 읽는다.
+
+freeze 전 저장 답/해설이 노출되면 해당 실행의 freeze 증거를 사실대로 기록하고 `FAILED_ATTEMPT`로 보존한다. 구조 validator가 PASS여도 closure를 소비하지 않는다. ROOT는 새 `archive_r2`를 clean context에서 spawn하며, 이 품질 재실행을 MASTER에 넘기지 않는다.
 
 MATCH는 빠르게 통과하고 mismatch/suspicious locus만 깊게 처리한다.
 
@@ -222,6 +273,12 @@ worker는 우선 아래만 compact하게 반환한다.
 - 중간 stage마다 latest-main reconciliation 반복 금지
 - MAIN 반영 직전에만 latest main / overlap 최종 확인
 - unrelated production/M2-1 mutation 금지
+
+### 실제 MAIN_DONE 조건
+
+R3→MAIN state receipt는 publication 완료 증거가 아니다. `_generated/source-only/`의 final artifact만으로 MAIN_DONE을 선언하지 않는다. 실제 production canonical 파일에 final artifact를 반영하고 필요한 asset reference가 유효한지 최소 확인한 뒤, production path 및 최종 Git blob SHA에 결속된 MAIN_DONE/closeout receipt를 남긴다.
+
+현재 `21_연향중_2학기_기말_중2_기출`의 production 대상은 `archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js`다. source-only/generated에서 시작한 구조의 재설계는 별도 작업이며 이번 보충 검수/publication에서는 변경하지 않는다.
 
 ## 11. Quality References for Workers Only
 

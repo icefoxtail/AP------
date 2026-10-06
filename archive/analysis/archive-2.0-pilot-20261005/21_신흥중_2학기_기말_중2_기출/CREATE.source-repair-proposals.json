@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "CREATE_SOURCE_REPAIR_PROPOSALS_v1",
+  "examUid": "source-only-m2-20261004/21_신흥중_2학기_기말_중2_기출",
+  "status": "APPLIED_TO_FINAL_CANDIDATE",
+  "sourceMode": "AUDITED_REPAIR",
+  "proposals": [
+    {
+      "qid": 1,
+      "sourceModeProposed": "AUDITED_REPAIR",
+      "sourcePage": 1,
+      "originalProblem": "The figure places 6 cm on BD and 8 cm on EC; x and y label AG and GD, so x+y=AD is not fixed without AB.",
+      "minimalChange": {
+        "kind": "figure_label_relocation",
+        "exactPromptText": "다음 그림에서 점 $G$가 $\\triangle ABC$의 무게중심일 때, $x+y$의 값을 구하면? (단, $\\overline{AD}=6\\text{ cm}$) (4점)",
+        "exactImageInstruction": "Remove the existing “6 cm” label from segment BD and place the same “6 cm” label on the full median AD. Preserve the 8 cm label on EC and all other source labels."
+      },
+      "proposedAnswer": "① ($6\\text{ cm}$)",
+      "independentBasis": "The proposed text states AD=6 cm. Since x=AG and y=GD are the two parts of AD, x+y=AG+GD=AD=6 cm.",
+      "differenceFromSource": "One numeric label is relocated from BD to AD and the matching explicit condition is added to the prompt; all other wording, choices, and geometry remain as printed.",
+      "notApplied": false,
+      "applicationStatus": "APPLIED",
+      "appliedArtifactPath": "archive/_generated/source-only/m2-20261004/21_신흥중_2학기_기말_중2_기출.js",
+      "appliedFinalAsset": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+      "appliedArtifactSha": "5bfbd2a37f0436195d017f5fe0c19c969eb4f083"
+    },
+    {
+      "qid": 18,
+      "sourceModeProposed": "AUDITED_REPAIR",
+      "sourcePage": 3,
+      "originalProblem": "Independent draws with P(strawberry)=1/3 give P(at least one strawberry)=5/9, but the answer choices omit 5/9.",
+      "minimalChange": {
+        "kind": "replace_one_choice",
+        "choiceIndex": 3,
+        "oldChoice": "$\\frac{7}{12}$",
+        "newChoice": "$\\dfrac{5}{9}$"
+      },
+      "proposedAnswer": "③ ($\\dfrac{5}{9}$)",
+      "independentBasis": "By the current middle-school independence rule, P(no strawberry on either draw)=(2/3)^2=4/9, so P(at least one strawberry)=1-4/9=5/9.",
+      "differenceFromSource": "Only choice ③ changes from 7/12 to 5/9. The prompt and other four choices stay as printed.",
+      "notApplied": false,
+      "applicationStatus": "APPLIED",
+      "appliedArtifactPath": "archive/_generated/source-only/m2-20261004/21_신흥중_2학기_기말_중2_기출.js",
+      "appliedFinalAsset": null,
+      "appliedArtifactSha": "5bfbd2a37f0436195d017f5fe0c19c969eb4f083"
+    }
+  ]
+}

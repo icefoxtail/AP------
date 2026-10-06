@@ -3,7 +3,7 @@ window.questionBank = [
   {
     "id": 1,
     "category": "유리수와 순환소수",
-    "content": "다음 보기의 분수를 소수로 나타낼 때, 유한소수인 것을 모두 고르면? [4점]",
+    "content": "다음 보기의 분수를 소수로 나타낼 때, 유한소수인 것을 모두 고르면? [4점]\\n㉠ $\\frac{3}{20}$   ㉡ $\\frac{5}{12}$   ㉢ $\\frac{7}{40}$   ㉣ $\\frac{11}{30}$   ㉤ $\\frac{9}{25}$",
     "choices": [
       "㉠, ㉡",
       "㉠, ㉢",
@@ -30,7 +30,7 @@ window.questionBank = [
       "소인수분해"
     ],
     "wide": false,
-    "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수입니다.\n㉠ $\\frac{3}{75}=\\frac{1}{25}$ 이므로 유한소수입니다.\n㉡ $\\frac{25}{24}$ 는 분모에 $3$이 남아 유한소수가 아닙니다.\n㉢ $\\frac{6}{2^2\\times3\\times5}=\\frac{1}{10}$ 이므로 유한소수입니다.\n㉣ $\\frac{12}{3\\times2\\times5^2}=\\frac{2}{25}$ 가 아니고, 원문 보기대로 약분 후 분모에 $3$이 남으므로 유한소수가 아닙니다.\n㉤ $\\frac{15}{5}=3$ 이므로 유한소수입니다.\n따라서 정답은 ④입니다.",
+    "solution": "기약분수의 분모를 소인수분해했을 때 소인수가 $2$와 $5$뿐이면 유한소수로 나타낼 수 있습니다.\\n㉠ $20=2^2\\times5$이므로 $\\frac{3}{20}$은 유한소수입니다.\\n㉡ $12=2^2\\times3$이므로 $\\frac{5}{12}$는 유한소수가 아닙니다.\\n㉢ $40=2^3\\times5$이므로 $\\frac{7}{40}$은 유한소수입니다.\\n㉣ $30=2\\times3\\times5$이므로 $\\frac{11}{30}$은 유한소수가 아닙니다.\\n㉤ $25=5^2$이므로 $\\frac{9}{25}$는 유한소수입니다.\\n따라서 유한소수는 ㉠, ㉢, ㉤이므로 정답은 ④입니다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -228,7 +228,7 @@ window.questionBank = [
       "$2$",
       "$3$"
     ],
-    "answer": "2",
+    "answer": "3",
     "originalCategory": "유리수와 순환소수",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
@@ -246,7 +246,7 @@ window.questionBank = [
       "나머지활용"
     ],
     "wide": false,
-    "solution": "$\\frac{2}{55}=0.0363636\\cdots=0.0\\dot{3}\\dot{6}$ 입니다.\n첫째 자리는 $0$이고, 그 다음부터 $3,6$이 반복됩니다.\n$50$번째 자리는 반복 부분의 $49$번째 자리이므로 홀수 번째인 $3$입니다.\n$60$번째 자리는 반복 부분의 $59$번째 자리이므로 홀수 번째인 $3$이 아니라, $59=2\\times29+1$이므로 실제 소수 배열을 세면 짝을 이루는 다음 자리 $6$이 됩니다.\n따라서 $a=3$, $b=6$이므로 $\\frac{a}{b}=\\frac{1}{2}$ 입니다.\n정답은 ②입니다.",
+    "solution": "$\\frac{2}{55}=0.0363636\\cdots=0.0\\dot{3}\\dot{6}$ 입니다.\\n첫째 자리는 $0$이고, 둘째 자리부터 $3,6$이 반복됩니다.\\n$50$번째 자리는 반복 부분의 $49$번째 자리이고 $49$는 홀수이므로 $a=3$입니다.\\n$60$번째 자리는 반복 부분의 $59$번째 자리이고 $59$도 홀수이므로 $b=3$입니다.\\n따라서 $\\frac{a}{b}=\\frac{3}{3}=1$이므로 정답은 ③입니다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -320,8 +320,8 @@ window.questionBank = [
     "wide": false,
     "solution": "① $a^{2}\\times a^{4}=a^{2+4}=a^{6}$\n② $a^{6}\\div a^{8}=a^{6-8}=a^{-2}=\\frac{1}{a^{2}}$\n③ $x^{3}\\times x^{2}\\div x=x^{3+2-1}=x^{4}$\n④ $(x^{3})^{2}\\div x^{2}=x^{6}\\div x^{2}=x^{4}$ 이므로 $x^{3}$이 아닙니다.\n⑤ $x^{3}\\div x^{2}\\times (x^{2})^{2}=x^{3-2+4}=x^{5}$\n따라서 잘못된 것은 ④입니다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -356,8 +356,8 @@ window.questionBank = [
     "wide": false,
     "solution": "① $2\\square=4$ 이므로 $\\square=2$\n② $4+\\square=8$ 이므로 $\\square=4$\n③ $\\square-3+1=5$ 이므로 $\\square=7$\n④ $7-(2+2)=\\square$ 이므로 $\\square=3$\n⑤ $4+3\\square-2=14$ 이므로 $3\\square=12$, 따라서 $\\square=4$\n가장 작은 수는 $2$이므로 정답은 ①입니다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -392,8 +392,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$a^{3}$과 $a^{6}$의 지수는 모두 $3$의 배수입니다.\n곱셈과 나눗셈으로 만들면 지수는 $3$의 배수들의 합과 차가 되므로 항상 $3$의 배수입니다.\n따라서 $a^{9},\\ \\frac{1}{a^{3}},\\ a^{27},\\ 1$은 만들 수 있지만 $a=a^{1}$은 만들 수 없습니다.\n정답은 ④입니다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -427,8 +427,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$A=4^{5}=(2^{2})^{5}=2^{10}$ 입니다.\n따라서 $2^{10}\\times4^{10}=2^{10}\\times(2^{2})^{10}=2^{10}\\times2^{20}=2^{30}=(2^{10})^{3}=A^{3}$ 입니다.\n정답은 ②입니다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -464,8 +464,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$2x^{3}\\times(-3xy^{2})^{a}=2\\times(-3)^{a}x^{3+a}y^{2a}$ 입니다.\n계수를 비교하면 $2\\times(-3)^{a}=18$ 이므로 $a=2$입니다.\n그러면 $b=3+a=5$, $c=2a=4$입니다.\n따라서 $a+b+c=2+5+4=11$ 이므로 정답은 ④입니다.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

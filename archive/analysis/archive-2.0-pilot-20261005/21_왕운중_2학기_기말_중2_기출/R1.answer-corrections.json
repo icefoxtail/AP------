@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_POST_FREEZE_CORRECTIONS_v1",
+  "examUid": "source-only-m2-20261004/21_왕운중_2학기_기말_중2_기출",
+  "freezeRef": "archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.answer-freeze.json",
+  "freezeMutation": "NONE; original frozen record is preserved",
+  "corrections": [
+    {
+      "qid": 3,
+      "kind": "STORED_ANSWER_AND_SOLUTION_LABEL_REPAIR",
+      "frozenIndependentAnswer": "③, ⑤",
+      "storedAnswerBeforeRepair": "②",
+      "finding": "The stored solution itself identifies statements ③ and ⑤ as false, but ends by labeling the answer ②. The displayed student prompt requests two false statements, and statement ② (EF=15 cm) is true under the given 3:5 similarity ratio and BC=9 cm.",
+      "independentVerification": "Correspondence A↔D, B↔E, C↔F gives ∠F=50°, EF=15 cm, and AC:DF=3:5. The diagram does not mark ∠A as a right angle. Corresponding ∠B and ∠E are equal, so their ratio is 1:1, not 3:5. Thus the false statements are ③ and ⑤.",
+      "action": "Correct the answer label and the final label in the solution to ③,⑤; preserve the source stem, choices, and diagram.",
+      "provenance": "CREATE sourceMode was ORIGINAL; q3 source page 1 and q03.png were previously source-compared. This is an answer/solution consistency repair to the generated exam artifact, not a claim that the printed source answer key was independently recovered."
+    },
+    {
+      "qid": 9,
+      "kind": "INDEPENDENT_SOLUTION_CORRECTION_AFTER_FREEZE",
+      "frozenIndependentAnswer": "② (18/7 cm)",
+      "correction": "No answer change. The initial freeze reasoning omitted the explicit similarity relation; a fresh derivation from the student prompt and source page confirms BC=9 cm and PQ=18/7 cm.",
+      "derivation": "Let B=(0,0), C=(9,0), A=(u,h), D=(u+6,h), M=(9/2,0). Then P=AM∩BD=(3u/7+18/7,3h/7) and Q=DM∩AC=(3u/7+36/7,3h/7), so PQ=18/7 cm.",
+      "provenance": "The existing q09-r3.png clipped the lower BC=9 cm label. Source PDF page 2, rendered from the PDF SHA stored in CREATE evidence, visibly confirms AD=6 cm and BC=9 cm. A restored full-diagram crop is recorded in the R1 visual evidence."
+    },
+    {
+      "qid": 23,
+      "kind": "INDEPENDENT_SOLVER_RECHECK_AFTER_FREEZE",
+      "frozenIndependentAnswer": "10 cm",
+      "storedAnswerAfterFreezeComparison": "38/5 cm",
+      "correction": "The original frozen computation incorrectly used DC/EF=2/3 for the second triangle. Rechecking the diagram: BC/BE=2/3, while ΔBCD∼ΔBFE gives BD/BF=CD/FE=BC/BE=2/5. With BF=10 and FE=9, x=4 and y=18/5, so x+y=38/5 cm. The frozen record remains unchanged and this solver correction is explicitly post-comparison.",
+      "disposition": "Stored answer and solution are correct; no exam artifact repair is indicated. Preserve the correction as part of the R1 audit trail."
+    },
+    {
+      "qid": 21,
+      "kind": "SOLUTION_LAYOUT_REPAIR_AFTER_QUALITY_COMPARE",
+      "finding": "The original solution placed all sixteen ordered pairs in one unbroken inline string; the long list lacked meaning-based breaks required for small-screen reading.",
+      "repair": "Separate the ordered pairs into front and back outcome lines while preserving all sixteen outcomes, the three favorable cases, and the independent frozen answer.",
+      "answerComparisonRerun": false,
+      "provenance": "Found during the first valid 24/24 solution-quality compare in R1-TARGETED-CORRECTION-REVIEW-01 after Golden/Negative preflight PASS."
+    }
+  ]
+}

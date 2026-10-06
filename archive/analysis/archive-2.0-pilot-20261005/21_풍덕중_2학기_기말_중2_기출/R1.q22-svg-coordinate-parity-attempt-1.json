@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1",
+  "questionId": 22,
+  "svg": "archive/assets/images/21_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+  "svgSha256": null,
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 130,
+    "originY": 330,
+    "sx": 80,
+    "sy": 80,
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "type": "POINT",
+        "element": "x-axis",
+        "pointIndex": 0,
+        "expected": [
+          -1,
+          0
+        ]
+      },
+      "yAxis": {
+        "type": "POINT",
+        "element": "y-axis",
+        "pointIndex": 1,
+        "expected": [
+          0,
+          3.1
+        ]
+      }
+    }
+  },
+  "expectedFactCount": 5,
+  "observedFactCount": 0,
+  "factParityPassCount": 0,
+  "coordinateModelParity": "NOT_TESTED",
+  "coordinateModelAnchors": [],
+  "tolerancePolicy": {
+    "maxTolerance": 0.05,
+    "defaultTolerance": 0.000001,
+    "status": "PASS"
+  },
+  "elementExtractionStatus": "FAIL",
+  "observedFactStatus": "NOT_TESTED",
+  "expectedObservedParity": "FAIL",
+  "facts": [],
+  "svgMathStatus": "FAIL",
+  "renderResult": "NOT_TESTED",
+  "svgFinalStatus": "FAIL",
+  "failures": [
+    "SVG_READ_FAIL:ENOENT",
+    "COORDINATE_MODEL_PARITY_NOT_RUN"
+  ]
+}

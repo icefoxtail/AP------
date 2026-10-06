@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1",
+  "questionId": 22,
+  "svg": "archive/assets/images/21_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+  "svgSha256": "sha256:4201ec26915f8d3f60ba749b54a277cabad55a9fb79c75a2423e5ba8cd988ecf",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 130,
+    "originY": 330,
+    "sx": 80,
+    "sy": 80,
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "type": "POINT",
+        "element": "x-axis",
+        "pointIndex": 0,
+        "expected": [
+          -1,
+          0
+        ]
+      },
+      "yAxis": {
+        "type": "POINT",
+        "element": "y-axis",
+        "pointIndex": 1,
+        "expected": [
+          0,
+          3.1
+        ]
+      }
+    }
+  },
+  "expectedFactCount": 5,
+  "observedFactCount": 5,
+  "factParityPassCount": 5,
+  "coordinateModelParity": "PASS",
+  "coordinateModelAnchors": [
+    {
+      "role": "origin",
+      "type": "INTERSECTION",
+      "element": [
+        "x-axis",
+        "y-axis"
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "observed": [
+        0,
+        0
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "xAxis",
+      "type": "POINT",
+      "element": "x-axis",
+      "expected": [
+        -1,
+        0
+      ],
+      "observed": [
+        -1,
+        0
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "yAxis",
+      "type": "POINT",
+      "element": "y-axis",
+      "expected": [
+        0,
+        3.1
+      ],
+      "observed": [
+        0,
+        3.1
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "tolerancePolicy": {
+    "maxTolerance": 0.05,
+    "defaultTolerance": 0.000001,
+    "status": "PASS"
+  },
+  "elementExtractionStatus": "PASS",
+  "observedFactStatus": "PASS",
+  "expectedObservedParity": "PASS",
+  "facts": [
+    {
+      "factId": "P_intersection",
+      "type": "INTERSECTION",
+      "element": [
+        "line-y-2x-minus-2",
+        "line-y-x-minus-2"
+      ],
+      "expected": [
+        0,
+        -2
+      ],
+      "observed": [
+        0,
+        -2
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "Q_intersection",
+      "type": "INTERSECTION",
+      "element": [
+        "line-y-x-minus-2",
+        "line-x-2"
+      ],
+      "expected": [
+        2,
+        0
+      ],
+      "observed": [
+        2,
+        0
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "R_intersection",
+      "type": "INTERSECTION",
+      "element": [
+        "line-y-2x-minus-2",
+        "line-x-2"
+      ],
+      "expected": [
+        2,
+        2
+      ],
+      "observed": [
+        2,
+        2
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "slope_y_2x_minus_2",
+      "type": "LINE_SLOPE",
+      "element": "line-y-2x-minus-2",
+      "expected": 2,
+      "observed": 2,
+      "delta": 0,
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "slope_y_x_minus_2",
+      "type": "LINE_SLOPE",
+      "element": "line-y-x-minus-2",
+      "expected": 1,
+      "observed": 1,
+      "delta": 0,
+      "tolerance": 0.000001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "svgMathStatus": "PASS",
+  "renderResult": "NOT_TESTED",
+  "svgFinalStatus": "FAIL",
+  "failures": []
+}

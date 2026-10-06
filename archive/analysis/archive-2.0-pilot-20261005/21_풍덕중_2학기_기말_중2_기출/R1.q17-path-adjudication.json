@@ -1,0 +1,75 @@
+{
+  "status": "POST_FREEZE_TARGETED_ADJUDICATION",
+  "examUid": "21_풍덕중_2학기_기말_중2_기출",
+  "qid": 17,
+  "sourceGitBlobSha1AtReview": "24796887c0d92c693256654ec9e0e84d62c5a9a8",
+  "studentInputProjectionSha256": "428d12fa6ca469aa544e68ac0fea631e1147b7c5bb891204957c0bda5680c36c",
+  "image": "archive/assets/images/21_풍덕중_2학기_기말_중2_기출/q17.png",
+  "imageSha256": "07CB4DF35E6CD78EDF9AA1956A9D581C061FEFE4CB15C9E5D29A683B78FE0D85",
+  "actualImageInspection": "Opened the supplied student-facing PNG at original resolution and enlarged view. The network has three east and three south steps between A and B, with the lower-left node absent because there is no road connection down from the left boundary or across the lower-left edge. P is two east and two south steps from A.",
+  "originalFrozenAnswer": "12/20 = 3/5; no option",
+  "originalFreezeRef": "R1.current-input-independent-supplement-freeze.json#q17",
+  "originalFreezeDisposition": "PRESERVED_FAILED_CALCULATION_ATTEMPT",
+  "pathCountTableBySouthwardRow": [
+    {
+      "row": 0,
+      "countsByEastPosition": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "row": 1,
+      "countsByEastPosition": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "row": 2,
+      "countsByEastPosition": [
+        1,
+        3,
+        6,
+        10
+      ]
+    },
+    {
+      "row": 3,
+      "countsByEastPosition": [
+        null,
+        3,
+        9,
+        19
+      ]
+    }
+  ],
+  "totalShortestPaths": 19,
+  "pathsThroughP": {
+    "AtoP": 6,
+    "PtoB": 2,
+    "product": 12
+  },
+  "targetedAdjudicationConclusion": "12/19 = ③",
+  "storedAnswerComparisonAfterFreeze": "MATCH",
+  "solutionConsistency": "Current solution's last row (absent),3,9,19 and P-through count 6×2=12 match the actual diagram topology.",
+  "scopeGuard": "Corrected conclusion is a post-freeze targeted topology adjudication. The original frozen 12/20 was not rewritten as 12/19. This resolves the calculation error using the student source image; it does not claim a fresh blinded freeze after stored-answer exposure.",
+  "sourceGitBlobSha1AfterMetaRepair": "bb1135038c4d854e95834786cf0decbefa934c2d",
+  "metaReview": {
+    "field": "tags",
+    "before": [
+      "확률",
+      "일차방정식"
+    ],
+    "after": [
+      "확률"
+    ],
+    "reason": "The current q17 source asks only for shortest-path probability. The stale unrelated tag was removed as the minimum metadata repair.",
+    "changedLocus": true,
+    "targetedR3Required": true
+  }
+}

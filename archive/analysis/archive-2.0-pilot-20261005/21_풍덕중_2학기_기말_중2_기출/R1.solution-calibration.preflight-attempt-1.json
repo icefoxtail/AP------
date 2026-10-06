@@ -1,0 +1,117 @@
+{
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "e23fc34093196f68aff6fef48d66b9830e6d9c12"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "기울기 조건과 점 통과 조건을 순서대로 식으로 바꾸고 각 대수 단계를 한 줄씩 보여 학생이 재현할 수 있다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.",
+        "observation": "중심 이동을 단계별 좌표로 전개하며 최종 방정식과 도식의 원 중심이 대응한다; SVG는 넓은 좌우 패널과 선명한 핵심 원으로 읽힌다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "두 직선을 각각 y=mx+n 꼴로 정리한 뒤 기울기 곱 조건을 적용한다. 텍스트의 유도와 도식의 두 직선 방향이 일치한다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.",
+        "observation": "완전제곱 전개 뒤 중심과 반지름을 표준형과 대조해 도식에 표시한다. 실제 렌더에서 중심 C(-1,3), 반지름 2, 원점 기준 축이 읽힌다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+        "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다.",
+        "observation": "객관식 보기 판단을 각각 문단으로 분리해 작은 화면에서 조건과 결론이 섞이지 않는다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+        "solutionExcerpt": "드모르간의 법칙으로",
+        "observation": "집합 수의 하한 유도와 등호가 성립하는 분할을 따로 제시한다. SVG는 영역 수를 조건에 맞게 배분하지만 ImageMagick 렌더에서 일부 글리프 대체가 보여 browser 검증은 후속 target 비교 시 실제 지원 환경에서 확인한다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "negativeSampleAssets": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+        "sha256": "sha256:93ee8484a9bb236e4f6731b3870005b8dba90351448744004d31bb123ef512bf",
+        "gitBlobSha": "952e3492201bfa100a22c3af830320f84abd14fa",
+        "observation": "실제 렌더의 직선은 표기 기울기/절편과 불일치."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+        "sha256": "sha256:d54d2d297072ff1fcb53f4f60b7ebb2516eaa286f1afee04e8b8ba47caeddaf2",
+        "gitBlobSha": "3598d979a174c87faf66ef93aadb962b2047b5df",
+        "observation": "표기 직선의 기울기와 실제 선분 기울기가 반대 방향."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+        "sha256": "sha256:1f27f49ea87c642782535cc34aac937bb3f4e8f69682c1566c95704fedab90a5",
+        "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7",
+        "observation": "포물선 primitive가 라벨한 절편점을 실제로 지나지 않는다."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+        "sha256": "sha256:d053c5a22193029c675069fe6aa22e1014f96bb3821788f1095180c350681a41",
+        "gitBlobSha": "04aeff3b443b94c68a714b27eddd8321ece9bd52",
+        "observation": "접선 직선의 실제 기울기와 접점 관계가 표기와 맞지 않는다."
+      },
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q20-solution.bad.svg",
+        "sha256": "sha256:9715c6a819eb4d16379087a759f73523442f59bd46ed761011fc0a6680ab98c8",
+        "gitBlobSha": "b8f831b5eda9867206962454451014e67ca36156",
+        "observation": "실제 선형 primitive의 기울기 부호가 표기/수직 관계와 불일치."
+      }
+    ],
+    "preflightTargetFreezeSha256": "69ff06586feb851769ab1854f3882b73cd23de61d5bf101de97ca54288fedfbb",
+    "qualityCompareCount": "PENDING_AFTER_TARGET_COMPARE"
+  }
+}

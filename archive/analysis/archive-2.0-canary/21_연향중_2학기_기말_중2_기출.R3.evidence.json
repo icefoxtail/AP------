@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "R3",
+  "examUid": "source-only-m2-20261004/21_연향중_2학기_기말_중2_기출",
+  "artifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "inputArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "finalArtifactSha": "d0dc3efa842166431ac80ffebec01c25aca94772",
+  "evidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R3.evidence.json",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [],
+    "directDependencyQids": [
+      14,
+      18
+    ],
+    "rationale": "Only the two resolved finding loci are retained as direct evidence dependencies; there are no open findings or changed source loci."
+  },
+  "rows": [
+    {
+      "qid": 14,
+      "verdict": "PASS",
+      "disposition": "R1_RECALCULATION_RESOLVED_NO_SOURCE_REPAIR",
+      "evidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R1.evidence.json",
+      "evidenceSha256": "1480e63dcf02b6736457c5067b6e1f098eadd5c5dd873b77275a4e1f7ff5dc85",
+      "review": "R1 final independent answer 12/25 matches stored choice ⑤; initial 6/25 mismatch was resolved by recounting both mutually exclusive win orders. No source repair."
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS",
+      "disposition": "RESOLVED_BLIND_RECOUNT_STORED_ANSWER_CONFIRMED_NO_SOURCE_REPAIR",
+      "evidenceRef": "archive/analysis/archive-2.0-canary/21_연향중_2학기_기말_중2_기출.R2.clean.evidence.json",
+      "evidenceSha256": "04ac46eeb66c4972fbd7397412555bd95fc9403907385097371348c0d99b57a6",
+      "review": "Clean R2 recorded blind 1/36 and independently recounted two favorable ordered outcomes as 2/36=1/18, confirming stored choice ②. No source repair."
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "lockedScopeBasis": "The sole target exam is unchanged in the worktree and remains bound to the specified Git blob SHA d0dc3efa842166431ac80ffebec01c25aca94772.",
+  "releaseIntegrity": true,
+  "releaseIntegrityBasis": "R2 clean evidence SHA256 and clean freeze-v2 SHA256 match the assigned values; the R2 clean closure advances this same exam and artifact to R3; no other exam artifact is included.",
+  "sourceRepair": false,
+  "result": "PASS"
+}

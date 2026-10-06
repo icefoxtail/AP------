@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "ARCHIVE2_R3_PUBLISH_INTEGRITY_SUPPLEMENT_v1",
+  "stage": "R3",
+  "examUid": "source-only-m2-20261004/21_신흥중_2학기_기말_중2_기출",
+  "recoveryReason": "Post-publish technical guard detected U+0008 in q23.decisiveStep.",
+  "inputArtifactSha": "a7e4d03200d883240daeab1961554f82cea92a26",
+  "finalArtifactSha": "cfc34503855d8266e9e2a6a73a4e1d0860487a58",
+  "changedLocus": {
+    "qid": 23,
+    "field": "decisiveStep",
+    "rawSourceEscapeBefore": "$\\binom",
+    "rawSourceEscapeAfter": "$\\\\binom",
+    "parsedControlCodePointBefore": 8,
+    "parsedControlCharacterCountAfter": 0
+  },
+  "scope": {
+    "studentFacingFieldsChanged": false,
+    "solutionFieldChanged": false,
+    "answerChanged": false,
+    "metaClassificationChanged": false,
+    "mathReviewRepeated": false,
+    "wholeExamReviewRepeated": false
+  },
+  "q18q19FreshR2Binding": {
+    "resultRef": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/R2-targeted-18-19/R2.targeted-result.json",
+    "resultSha256": "13a82efa32be2833a4e753f74dffdc82086938884254fcbfd0b8e57cfee08c72",
+    "sourceBlobAtFreshFreeze": "a7e4d03200d883240daeab1961554f82cea92a26",
+    "studentFieldsUnchangedAfterQ23Repair": true,
+    "qids": [
+      18,
+      19
+    ],
+    "priorR2History": "UNCHANGED"
+  },
+  "currentArtifact": {
+    "sourcePath": "archive/_generated/source-only/m2-20261004/21_신흥중_2학기_기말_중2_기출.js",
+    "sourceGitBlobSha1": "cfc34503855d8266e9e2a6a73a4e1d0860487a58",
+    "q23ControlCharacters": {
+      "decisiveStep": [],
+      "solution": []
+    }
+  },
+  "mutation": {
+    "sourceFieldOnly": "q23.decisiveStep",
+    "serializationOnly": true,
+    "rawLaTexCommand": "\\binom",
+    "literalMathAndProsePreserved": true
+  },
+  "validationPlan": "Run the generic R3 validator once against q23-only recovery evidence; retain original a7e4d032 R3 PASS evidence and validator report unchanged."
+}

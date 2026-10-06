@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "CREATE_PROBLEM_VISUAL_PHYSICAL_EVIDENCE_v1",
+  "qid": 1,
+  "visualRole": "PROBLEM_VISUAL",
+  "sourceMode": "AUDITED_REPAIR",
+  "sourcePdfSha256": "85f4581996cbcecfe199c5ca35858cc945ea8eafb31ccf187f75f101ddb94efa",
+  "originalImage": {
+    "path": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01.png",
+    "sha256": "3422276a9e47ea69a94b4df0579ef0a08d831d9c6225c28a19beb56a915bb9e4"
+  },
+  "finalSvg": {
+    "path": "archive/assets/images/21_신흥중_2학기_기말_중2_기출/q01-repaired.svg",
+    "sha256": "sha256:78289790e3d9b1f46fedf0ad81983a75161a865e5b044dfbe8e1bb8a7b113ba1",
+    "gitBlobSha": "2d531fdb881b4c3b2d7c78d61ade755265da06ba"
+  },
+  "render": {
+    "path": "archive/analysis/archive-2.0-pilot-20261005/21_신흥중_2학기_기말_중2_기출/q01-repaired-render.png",
+    "sha256": "sha256:e87c51a9c549d2fcd51d13247d3c7d6e9f9b707217f6891a67b41d366c1e3aaf",
+    "tool": "ImageMagick SVG render",
+    "visualInspection": "Viewed native render; full AD dimension and x/y/EC labels are legible and separated."
+  },
+  "sourceConditionCoverage": [
+    "A,B,C triangle vertices unchanged",
+    "D is midpoint of BC",
+    "E is midpoint of AC",
+    "G is centroid at intersection of medians AD and BE",
+    "x labels AG",
+    "y labels GD",
+    "8 cm labels EC",
+    "6 cm now labels full AD"
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "coordinateModel": {
+    "type": "CONSTRUCTED_REALIZATION",
+    "rationale": "The source sketch is schematic; coordinates preserve all point/segment ownership and centroid constraints without claiming metric scale.",
+    "points": {
+      "A": [
+        150,
+        18
+      ],
+      "B": [
+        30,
+        150
+      ],
+      "C": [
+        280,
+        150
+      ],
+      "D": [
+        155,
+        150
+      ],
+      "E": [
+        215,
+        84
+      ],
+      "G": [
+        153.333333,
+        106
+      ]
+    },
+    "constraints": [
+      {
+        "fact": "D midpoint BC",
+        "expected": [
+          155,
+          150
+        ],
+        "observed": [
+          155,
+          150
+        ],
+        "delta": 0,
+        "tolerance": 0.001
+      },
+      {
+        "fact": "E midpoint AC",
+        "expected": [
+          215,
+          84
+        ],
+        "observed": [
+          215,
+          84
+        ],
+        "delta": 0,
+        "tolerance": 0.001
+      },
+      {
+        "fact": "G centroid",
+        "expected": [
+          153.333333,
+          106
+        ],
+        "observed": [
+          153.333333,
+          106
+        ],
+        "delta": 0,
+        "tolerance": 0.001
+      },
+      {
+        "fact": "G divides AD in 2:1 ratio",
+        "expected": "AG:GD=2:1",
+        "observed": "AG:GD=2:1",
+        "delta": 0,
+        "tolerance": 0.001
+      }
+    ],
+    "degeneracyChecks": {
+      "triangleAreaPositive": true,
+      "mediansMeetInterior": true
+    }
+  },
+  "actualSvgPrimitives": {
+    "triangleSides": [
+      "A-B",
+      "B-C",
+      "C-A"
+    ],
+    "medians": [
+      "A-D",
+      "B-E"
+    ],
+    "dimension": {
+      "ownerSegment": "A-D",
+      "start": [
+        150,
+        18
+      ],
+      "end": [
+        155,
+        150
+      ],
+      "displayText": "6 cm"
+    },
+    "labels": {
+      "x": {
+        "ownerSegment": "A-G",
+        "text": "x cm"
+      },
+      "y": {
+        "ownerSegment": "G-D",
+        "text": "y cm"
+      },
+      "eight": {
+        "ownerSegment": "E-C",
+        "text": "8 cm"
+      }
+    }
+  },
+  "observedFacts": [
+    {
+      "fact": "x+y=AD",
+      "observed": true,
+      "delta": 0,
+      "tolerance": 0
+    },
+    {
+      "fact": "6 cm owner is AD",
+      "observed": true,
+      "delta": 0,
+      "tolerance": 0
+    },
+    {
+      "fact": "source label identities A/B/C/D/E/G",
+      "observed": "preserved",
+      "delta": 0,
+      "tolerance": 0
+    }
+  ],
+  "labelOwnerBindings": [
+    {
+      "label": "x cm",
+      "owner": "AG",
+      "result": "PASS"
+    },
+    {
+      "label": "y cm",
+      "owner": "GD",
+      "result": "PASS"
+    },
+    {
+      "label": "8 cm",
+      "owner": "EC",
+      "result": "PASS"
+    },
+    {
+      "label": "6 cm",
+      "owner": "AD",
+      "result": "PASS"
+    }
+  ],
+  "xmlParse": "PASS; SVG rendered successfully",
+  "browserRenderEvidence": "NOT_RUN; problem figure inspected in generated raster render",
+  "sourcePromptRepaired": "AD=6 cm explicitly stated in q1 prompt.",
+  "sourceExamSha256": "sha256:8e4fd43661430da23b3ae43d8ab6208aebc4294eb473d675ada019981f617e72",
+  "sourceSolutionSha256": "sha256:f5c9d5fb9969f29ee323b97db44726d9df9bbe59e07a37ea6c09122980a8a92a"
+}

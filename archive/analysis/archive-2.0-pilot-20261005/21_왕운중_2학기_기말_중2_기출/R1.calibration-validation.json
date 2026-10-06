@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_SOLUTION_CALIBRATION_VALIDATION_v1",
+  "examUid": "source-only-m2-20261004/21_왕운중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "recoveryPassId": "R1-TARGETED-CORRECTION-REVIEW-01",
+  "finalArtifactSha": "204f61cd73bbd4b54ddc6dbb7c41ce29ce601627",
+  "preflight": {
+    "command": "node archive/tools/solution-calibration-gate.mjs --exam archive/_generated/source-only/m2-20261004/21_왕운중_2학기_기말_중2_기출.js --evidence archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.targeted-correction-preflight.json --stage R1 --preflight",
+    "ok": true,
+    "stage": "R1",
+    "gate": "CALIBRATION_PREFLIGHT",
+    "questionCount": 24,
+    "issues": []
+  },
+  "closure": {
+    "command": "node archive/tools/solution-calibration-gate.mjs --exam archive/_generated/source-only/m2-20261004/21_왕운중_2학기_기말_중2_기출.js --evidence archive/analysis/archive-2.0-pilot-20261005/21_왕운중_2학기_기말_중2_기출/R1.evidence.json --stage R1",
+    "ok": true,
+    "stage": "R1",
+    "gate": "CALIBRATION_CLOSURE",
+    "questionCount": 24,
+    "issues": []
+  },
+  "qualityCompareCount": "24/24",
+  "scopeNote": "Solution-quality axes only. No 24-question mathematics/answer comparison was repeated; 21 unchanged solution rows were quality-compared without re-solving, while q3/q9/q13/q21 changed loci received targeted re-review."
+}

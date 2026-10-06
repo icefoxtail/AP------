@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "R1_FAILED_ATTEMPT_V1",
+  "examUid": "21_이수중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "inputArtifactSha": "597b398e92b034d238951955474fe8767fed8c19",
+  "independentFreezeSha256": "c0c1d7bd18b47885645e5048b5bca4c9fcfea7f1a0845c32a68546ac481d43cd",
+  "failure": "R1_TARGET_BASELINE_READ_BEFORE_GOLDEN_NEGATIVE_PREFLIGHT",
+  "details": "After independent answer freeze, target stored answers and prior solutions were extracted for comparison before Golden/Negative sample preflight had been read. No target solution mutation occurred before preflight. This attempt is retained; subsequent target solution quality compare follows preflight and the q23 correction-review remains bounded to its changed locus.",
+  "recovery": "Preserve this record, perform actual Golden/Negative preflight, then continue current-stage q23 correction-review and required single-pass solution calibration evidence.",
+  "independentAnswerFreezeValid": true,
+  "targetSolutionMutationBeforePreflight": false,
+  "recoveryCorrectionRef": "R1.independent-freeze-correction.json",
+  "additionalFailedAttempts": [
+    {
+      "failure": "R1_FREEZE_Q6_CHOICE_INDEX_SERIALIZATION_ERROR",
+      "details": "The independent derivation x=14 cm was frozen before stored answer exposure, but its option index was serialized as 2 instead of 5. Stored answer comparison later exposed the field error. The base freeze is retained unchanged; a correction record changes only the choice-index encoding and does not recompute math."
+    },
+    {
+      "failure": "R1_FREEZE_Q9_CHOICE_INDEX_SERIALIZATION_ERROR",
+      "details": "The independent derivation x=5 was frozen before stored answer exposure, but its option index was serialized as 3 instead of 1. Stored answer comparison later exposed the field error. The base freeze remains unchanged; this correction relies only on the already frozen derivation and student choices."
+    },
+    {
+      "failure": "R1_CALIBRATION_PREFLIGHT_REF_BLOB_SHA_MISMATCH",
+      "details": "The first sample preflight attempt used an incorrectly constructed Git blob SHA for the two Golden files and Negative README. No target mutation occurred. The refs were recomputed from exact file bytes; the next preflight completed PASS before the q23 solution edit."
+    }
+  ],
+  "additionalCorrectionRefs": [
+    "R1.independent-freeze-correction.json",
+    "R1.independent-freeze-correction-q9.json"
+  ]
+}
