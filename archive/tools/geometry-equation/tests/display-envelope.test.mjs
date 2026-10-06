@@ -50,8 +50,14 @@ function fixture(t,{minimumByClass={small:6.56,medium:9.06,large:11.25,full:20},
   const candidateSvgRef=write(root,'candidate/q01-solution.svg',`<svg xmlns="http://www.w3.org/2000/svg" width="${candidateSize.width}" height="${candidateSize.height}" viewBox="0 0 ${candidateSize.width} ${candidateSize.height}"></svg>`);
   const uid='fixture-exam|1';
   const observedProfiles=classes.map(profile);
-  const observation={status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:uid,questionId:1,sourceRef,qBoxRect:rect(820,460),solutionMetaRect:rect(790,370),profiles:observedProfiles};
-  const plan=planDisplayEnvelope({questionUid:uid,requestedSizeClass:'medium',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation,archiveEngineSha256:policyRefs[0].ref.sha256,sourceRef,solutionRef,policyRefs});
+  const observation={status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:uid,questionId:1,sourceRef,qBoxRect:rect(820,460),solutionMetaRect:rect(790,370),solutionMetaContentWidth:772,intrinsicSvg:intrinsic,profiles:observedProfiles};
+  const candidateSourceRef=write(root,'.tmp/archive/control-fixture/exam/visual-engine/production/source.js',fs.readFileSync(path.join(root,...sourceRef.path.split('/'))));
+  const preflightScreenshotRef=write(root,'.tmp/archive/control-fixture/exam/visual-engine/production/capture/context.png',fakePng(1440,1000));
+  const rawObservation={id:'control-target',questionId:1,status:'PASS',qBoxRect:observation.qBoxRect,solutionMetaRect:observation.solutionMetaRect,solutionMetaContentWidth:observation.solutionMetaContentWidth,intrinsicSvg:intrinsic,profiles:observedProfiles};
+  const archiveRowRef=write(root,'.tmp/archive/control-fixture/exam/visual-engine/production/capture/archive-row.json',canonicalJson({status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',engineSha256:policyRefs[0].ref.sha256.slice(7),sourceSha256:sourceRef.sha256.slice(7),state:{displayEnvelopes:[rawObservation]}}));
+  const preflightMeasurementRef=write(root,'.tmp/archive/control-fixture/exam/visual-engine/production/capture/preflight.json',canonicalJson({schemaVersion:'DISPLAY_ENVELOPE_PREFLIGHT_v1',status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:uid,targetId:'control-target',sourceRef,candidateRef:candidateSourceRef,archiveRowRef,screenshotRef:preflightScreenshotRef,screenshotViewport:{width:1440,height:1000},observation,sourceAuthorityStatus:'CONTROL_FIXTURE'}));
+  const preflightEvidence={measurementRef:preflightMeasurementRef,archiveRowRef,screenshotRef:preflightScreenshotRef};
+  const plan=planDisplayEnvelope({root,questionUid:uid,requestedSizeClass:'medium',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation,preflightEvidence,archiveEngineSha256:policyRefs[0].ref.sha256,sourceRef,solutionRef,policyRefs});
   const profileAudits=classes.map(([sizeClass,width,height],index)=>{
     const pngRef=write(root,`capture/${sizeClass}.png`,fakePng(width,height));
     const base={
@@ -67,7 +73,7 @@ function fixture(t,{minimumByClass={small:6.56,medium:9.06,large:11.25,full:20},
     const measurementRef=write(root,`measurement/${sizeClass}.json`,canonicalJson(base));
     return {sizeClass,measurementRef};
   });
-  return {root,plan,profileAudits,candidateSvgRef,sourceRef,solutionRef,policyRefs,uid};
+  return {root,plan,profileAudits,candidateSvgRef,sourceRef,solutionRef,policyRefs,preflightEvidence,uid};
 }
 const qualify=fx=>qualifyDisplayEnvelope(fx.plan,{root:fx.root,candidateSvgRef:fx.candidateSvgRef,profileAudits:fx.profileAudits});
 const mutateAudit=(fx,sizeClass,mutate)=>{
@@ -102,7 +108,8 @@ test('logic: preflight remains provisional and independently selects the smalles
 
 test('logic: full-only success does not qualify medium or silently change to full',t=>{
   const fx=fixture(t,{minimumByClass:{small:6.56,medium:9.06,large:9.5,full:20}});
-  fx.plan=planDisplayEnvelope({questionUid:fx.uid,requestedSizeClass:'full',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation:{status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:fx.uid,sourceRef:fx.sourceRef,qBoxRect:rect(820,460),solutionMetaRect:rect(790,370),profiles:classes.map(profile)},archiveEngineSha256:fx.policyRefs[0].ref.sha256,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:fx.policyRefs});
+  const preflight=JSON.parse(fs.readFileSync(path.join(fx.root,...fx.preflightEvidence.measurementRef.path.split('/')),'utf8')).observation;
+  fx.plan=planDisplayEnvelope({root:fx.root,questionUid:fx.uid,requestedSizeClass:'full',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation:preflight,preflightEvidence:fx.preflightEvidence,archiveEngineSha256:fx.policyRefs[0].ref.sha256,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:fx.policyRefs});
   const envelope=qualify(fx);
   assert.equal(envelope.sizeClass,'full');
   assert.equal(envelope.policyChange,null);
@@ -160,6 +167,17 @@ test('logic: archive-engine policy hash and candidate SVG intrinsic/viewBox matc
   assert.throws(()=>qualifyDisplayEnvelope(mismatchedPolicy,{root:fx.root,candidateSvgRef:fx.candidateSvgRef,profileAudits:fx.profileAudits}),/DISPLAY_ENVELOPE_ARCHIVE_ENGINE_POLICY_MISMATCH/);
   const mismatch=fixture(t,{candidateSize:{width:400,height:320}});
   assert.throws(()=>qualify(mismatch),/DISPLAY_ENVELOPE_CANDIDATE_INTRINSIC_MISMATCH/);
+});
+
+test('logic: the measured solution-meta content box is bound as the CSS scaling denominator',t=>{
+  const fx=fixture(t);
+  assert.equal(fx.plan.container.solutionMetaRect.width,790);
+  assert.equal(fx.plan.container.solutionMetaContentWidth,772);
+  const preflight=JSON.parse(fs.readFileSync(path.join(fx.root,...fx.preflightEvidence.measurementRef.path.split('/')),'utf8'));
+  preflight.observation.solutionMetaContentWidth=790;
+  fs.writeFileSync(path.join(fx.root,...fx.preflightEvidence.measurementRef.path.split('/')),canonicalJson(preflight));
+  fx.preflightEvidence.measurementRef=fileRef(fx.root,fx.preflightEvidence.measurementRef.path);
+  assert.throws(()=>planDisplayEnvelope({root:fx.root,questionUid:fx.uid,requestedSizeClass:'medium',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation:preflight.observation,preflightEvidence:fx.preflightEvidence,archiveEngineSha256:fx.policyRefs[0].ref.sha256,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:fx.policyRefs}),/ACTUAL_ARCHIVE_PREFLIGHT_MEASUREMENT_MISMATCH/);
 });
 
 test('logic: every expected label requires a finite final viewport CSS font metric',t=>{
@@ -222,8 +240,10 @@ test('logic: raw measurement and screenshot refs are mandatory, unique, hash-bou
 });
 
 function actualCaptureRef(fx,patch={}){
-  const envelope=qualify(fx),pngRef=write(fx.root,'actual/archive-context.png',fakePng(1440,1000));
-  const actual={schemaVersion:'DISPLAY_ARCHIVE_ACTUAL_v1',status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:fx.uid,sizeClass:'large',candidateSvgRef:fx.candidateSvgRef,candidateSvgSha256:fx.candidateSvgRef.sha256,naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:envelope.policyRefs,inputIdentitySha256:envelope.inputIdentitySha256,screenshotRef:pngRef,screenshotViewport:{width:1440,height:1000},qBoxRect:rect(820,470),solutionMetaRect:rect(790,430),imageRect:rect(216,180),computedStyle:{maxWidth:'92%',maxHeight:'180px',objectFit:'contain',transform:'none'},minimumCssFontPx:11.25,...patch};
+  const envelope=qualify(fx),pngRef=write(fx.root,'actual/archive-context.png',fakePng(1440,1000)),archiveAssetPath='assets/images/fixture-exam/q01-solution.svg',targetId='fixture-asset';
+  const target={id:targetId,src:`http://archive.invalid/archive/${archiveAssetPath}`,loaded:true,sizeClass:'large',naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,rect:rect(216,180),computedStyle:{maxWidth:'92%',maxHeight:'180px',objectFit:'contain',transform:'none'},solutionMetaRect:rect(790,430),solutionMetaContentWidth:772,qBoxRect:rect(820,470)};
+  const archiveRowRef=write(fx.root,'actual/archive-row.json',canonicalJson({status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',state:{targets:[target]},responses:[{url:target.src,status:200,sha256:fx.candidateSvgRef.sha256}]}));
+  const actual={schemaVersion:'DISPLAY_ARCHIVE_ACTUAL_v1',status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:fx.uid,sizeClass:'large',candidateSvgRef:fx.candidateSvgRef,candidateSvgSha256:fx.candidateSvgRef.sha256,naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:envelope.policyRefs,inputIdentitySha256:envelope.inputIdentitySha256,screenshotRef:pngRef,screenshotViewport:{width:1440,height:1000},archiveRowRef,archiveAssetPath,targetId,qBoxRect:rect(820,470),solutionMetaRect:rect(790,430),solutionMetaContentWidth:772,imageRect:rect(216,180),computedStyle:{maxWidth:'92%',maxHeight:'180px',objectFit:'contain',transform:'none'},minimumCssFontPx:11.25,...patch};
   const actualRef=write(fx.root,'actual/archive-capture.json',canonicalJson(actual));
   return {envelope,actualRef};
 }

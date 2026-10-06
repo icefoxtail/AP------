@@ -6,7 +6,7 @@ This is the first implementation checkpoint, not final review readiness.
 
 | Master phase | Status | Evidence |
 |---|---|---|
-| Phase 3 | In progress. The new-output workspace boundary passes. Actual Archive profile preflight is measured; final candidate per-label support, display-aware layout, repair closure, and full/medium support remain open. | [Workspace migration evidence](../evidence/apmath-visual-production-phase3-5/workspace-migration/workspace-migration-ledger.json), [DisplayEnvelope preflight evidence](../evidence/apmath-visual-production-phase3-5/display-envelope-preflight/phase3a1-ledger.json) |
+| Phase 3 | In progress. The new-output workspace boundary passes. Actual Archive profile preflight is measured with a corrected `.sol-meta` content-box denominator; final candidate per-label support, display-aware layout, repair closure, and full/medium support remain open. | [Workspace migration evidence](../evidence/apmath-visual-production-phase3-5/workspace-migration/workspace-migration-ledger.json), [Original DisplayEnvelope preflight](../evidence/apmath-visual-production-phase3-5/display-envelope-preflight/phase3a1-ledger.json), [Content-box correction amendment](../evidence/apmath-visual-production-phase3-5/display-envelope-preflight-amendment/amendment-ledger.json) |
 | Phase 4 | Not started. Construction and graph capability expansion is not claimed. | — |
 | Phase 5 | Not started. No qualification denominator, full real-UID review set, Seal, or ACTIVE state is claimed. | — |
 
@@ -29,7 +29,7 @@ This closes only the workspace boundary. The existing production runner still us
 
 ### Phase 3A preflight measurement
 
-I added a measurement-only pass that opens the real Archive in `mode=sol`, retains the target `.q-box` and `.sol-meta` rectangles, and probes the Archive's actual image CSS classes with a 384×320 SVG at the measured target width. The three target source pages each measured a 316.15625 CSS px solution area. The Archive then displayed the probe at 126×105 px for small, 174×145 px for medium, 216×180 px for large, and 316.140625×263.453125 px for full. The raw profile CSS rules, transform chain, source refs, and screenshots are in the linked preflight evidence.
+I added a measurement-only pass that opens the real Archive in `mode=sol`, retains the target `.q-box` and `.sol-meta` rectangles, and probes the Archive's actual image CSS classes with a 384×320 SVG at the measured `.sol-meta` content width. The first pass used the border-box width as the percentage denominator and overstated the full profile. A same-unit correction now measures 316.15625 CSS px for the border box and 298.15625 CSS px for the `.sol-meta` content box. Small, medium, and large remain 126×105, 174×145, and 216×180 px; full is 298.140625×248.453125 px. The original measurement remains preserved and is superseded only for the full-profile denominator by the linked amendment, which includes fresh raw rows and screenshots for all three source pages.
 
 This is a pre-layout constraint measurement only. It does not establish candidate font readability for any profile. The profile policy module keeps this state `PLANNED` and requires a later final-SVG audit of every label, stroke, and graph topology at each profile before any profile is marked supported. The three pages were selected through the qid_v1 source map for measurement only; no v2 UID authority was created or inferred. The capture observed an external qrious CDN request, so offline runtime closure remains unverified.
 
@@ -41,7 +41,7 @@ This is a pre-layout constraint measurement only. It does not establish candidat
 - Static publication fixtures: 5/5 pass.
 - Standalone Chromium layout: 5/5 pass at 390 CSS px; minimum observed label font 16.25 CSS px.
 - Actual Archive desktop solution-mode fixture: 5/5 synthetic rows pass. Each final relative asset reference loaded the mapped temporary SVG; measured image box was 298.15625 × 298.15625 CSS px and minimum audited font was 12.423 CSS px.
-- DisplayEnvelope planning/final-audit contract: 6/6 unit tests pass. Actual source-page CSS preflight: 3/3 measurement rows pass, with no candidate SVG or profile support verdict.
+- DisplayEnvelope planning/final-audit contract: 16/16 fixture logic tests pass; these are not actual-profile evidence. Corrected actual source-page CSS preflight: 3/3 measurement rows pass, with no candidate SVG support verdict.
 - `git diff --check`: pass.
 
 The Archive capture is synthetic workspace-integration evidence, not real-UID qualification. It observed an external qrious CDN request and therefore does not prove offline runtime closure. Raw logs, result summaries, SVG layout crops, screenshots, and the authority search are in the linked evidence package; the artifact-manifest SHA-256 is `d0df9f369f5d090b2cdc08e63d80f9a34973a8a095b3fbda55533ed4aa6f1957`.

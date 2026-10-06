@@ -51,6 +51,10 @@ function readJson(root,ref){
   return JSON.parse(bytes.toString('utf8'));
 }
 
+function decodedUrlPath(value){
+  try{return decodeURIComponent(new URL(value,'http://archive.invalid').pathname);}catch{return null;}
+}
+
 function verifyInputIdentity(root,plannedEnvelope){
   const identity=plannedEnvelope.inputIdentity;
   if(!identity||identity.questionUid!==plannedEnvelope.questionUid||!validRef(identity.sourceRef)||!validRef(identity.solutionRef)||!Array.isArray(identity.policyRefs)||objectSha(identity)!==plannedEnvelope.inputIdentitySha256)throw Error('DISPLAY_ENVELOPE_INPUT_IDENTITY_INVALID');
@@ -60,6 +64,24 @@ function verifyInputIdentity(root,plannedEnvelope){
   readBoundFile(root,identity.solutionRef);
   for(const item of policies)readBoundFile(root,item.ref);
   return identity;
+}
+
+function verifyActualArchivePreflight(root,preflightEvidence,{questionUid,sourceRef,archiveEngineSha256}){
+  if(!preflightEvidence||!validRef(preflightEvidence.measurementRef)||!validRef(preflightEvidence.archiveRowRef)||!validRef(preflightEvidence.screenshotRef))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_REFS_REQUIRED');
+  const measurement=readJson(root,preflightEvidence.measurementRef),row=readJson(root,preflightEvidence.archiveRowRef);
+  const screenshot=readBoundFile(root,preflightEvidence.screenshotRef),screenshotSize=pngInfo(screenshot);
+  if(!screenshotSize||measurement.screenshotViewport?.width!==screenshotSize.width||measurement.screenshotViewport?.height!==screenshotSize.height)throw Error('ACTUAL_ARCHIVE_PREFLIGHT_SCREENSHOT_INVALID');
+  if(measurement.schemaVersion!=='DISPLAY_ENVELOPE_PREFLIGHT_v1'||measurement.status!=='PASS'||measurement.synthetic!==false||measurement.runtime!=='playwright-chromium'||measurement.questionUid!==questionUid||!same(measurement.sourceRef,sourceRef))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_BINDING_INVALID');
+  if(!same(measurement.archiveRowRef,preflightEvidence.archiveRowRef)||!same(measurement.screenshotRef,preflightEvidence.screenshotRef))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_REF_MISMATCH');
+  if(!validRef(measurement.candidateRef)||!measurement.candidateRef.path.startsWith('.tmp/archive/'))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_TEMP_CANDIDATE_REQUIRED');
+  const sourceBytes=readBoundFile(root,sourceRef),candidateBytes=readBoundFile(root,measurement.candidateRef);
+  if(!sourceBytes.equals(candidateBytes))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_SOURCE_COPY_MISMATCH');
+  if(row.status!=='PASS'||row.synthetic!==false||row.runtime!=='playwright-chromium'||row.browserVersion!==measurement.browserVersion||row.engineSha256!==archiveEngineSha256.slice(7))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_ROW_INVALID');
+  if(row.sourceSha256!==sourceRef.sha256.slice(7)||!same(row.sourceRef||measurement.sourceRef,sourceRef))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_SOURCE_MISMATCH');
+  const observed=(row.state?.displayEnvelopes||[]).find(value=>value.id===measurement.targetId);
+  if(!observed||observed.status!=='PASS'||!same(observed.profiles,measurement.observation?.profiles)||!same(observed.qBoxRect,measurement.observation?.qBoxRect)||!same(observed.solutionMetaRect,measurement.observation?.solutionMetaRect)||observed.solutionMetaContentWidth!==measurement.observation?.solutionMetaContentWidth||!same(observed.intrinsicSvg,measurement.observation?.intrinsicSvg))throw Error('ACTUAL_ARCHIVE_PREFLIGHT_MEASUREMENT_MISMATCH');
+  if(measurement.observation?.sourceRef&&measurement.observation.sourceRef.path!==sourceRef.path)throw Error('ACTUAL_ARCHIVE_PREFLIGHT_SOURCE_PATH_MISMATCH');
+  return measurement;
 }
 
 function crc32(bytes){
@@ -150,14 +172,17 @@ function checkProfileWorkerArtifact(root,ref,{kind,plannedProfile,plannedEnvelop
 }
 
 /** Resolve a measured, Archive-bound planning envelope. This is not a support verdict. */
-export function planDisplayEnvelope({questionUid,requestedSizeClass='medium',intrinsicSvg,candidateLabelInventory,observation,fontFloorCssPx=11,archiveEngineSha256,sourceRef,solutionRef,policyRefs}){
+export function planDisplayEnvelope({root,questionUid,requestedSizeClass='medium',intrinsicSvg,candidateLabelInventory,observation,preflightEvidence,fontFloorCssPx=11,archiveEngineSha256,sourceRef,solutionRef,policyRefs}){
   if(typeof questionUid!=='string'||!questionUid||!DISPLAY_SIZE_CLASSES.includes(requestedSizeClass))throw Error('DISPLAY_ENVELOPE_INPUT_INVALID');
   if(!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1||!Number.isFinite(fontFloorCssPx)||fontFloorCssPx<11)throw Error('DISPLAY_ENVELOPE_INTRINSIC_INVALID');
-  if(observation?.status!=='PASS'||observation?.synthetic!==false||observation?.runtime!=='playwright-chromium'||observation?.questionUid!==questionUid||!validRef(observation.sourceRef)||!finiteRect(observation.qBoxRect)||!finiteRect(observation.solutionMetaRect)||!Array.isArray(observation.profiles))throw Error('ACTUAL_ARCHIVE_ENVELOPE_OBSERVATION_REQUIRED');
+  if(observation?.status!=='PASS'||observation?.synthetic!==false||observation?.runtime!=='playwright-chromium'||observation?.questionUid!==questionUid||!validRef(observation.sourceRef)||!finiteRect(observation.qBoxRect)||!finiteRect(observation.solutionMetaRect)||!Number.isFinite(observation.solutionMetaContentWidth)||observation.solutionMetaContentWidth<=0||!Array.isArray(observation.profiles))throw Error('ACTUAL_ARCHIVE_ENVELOPE_OBSERVATION_REQUIRED');
   if(!same(observation.sourceRef,sourceRef))throw Error('DISPLAY_ENVELOPE_SOURCE_OBSERVATION_MISMATCH');
   if(!HASH_PATTERN.test(archiveEngineSha256||''))throw Error('DISPLAY_ENVELOPE_ARCHIVE_ENGINE_SHA_REQUIRED');
   const {identity,inputIdentitySha256,archiveEngineSha256:policyArchiveEngineSha256}=createInputIdentity({questionUid,sourceRef,solutionRef,policyRefs});
   if(archiveEngineSha256!==policyArchiveEngineSha256)throw Error('DISPLAY_ENVELOPE_ARCHIVE_ENGINE_POLICY_MISMATCH');
+  if(!root)throw Error('DISPLAY_ENVELOPE_ROOT_REQUIRED');
+  const preflight=verifyActualArchivePreflight(root,preflightEvidence,{questionUid,sourceRef,archiveEngineSha256});
+  if(!same(preflight.observation.profiles,observation.profiles)||!same(preflight.observation.qBoxRect,observation.qBoxRect)||!same(preflight.observation.solutionMetaRect,observation.solutionMetaRect)||preflight.observation.solutionMetaContentWidth!==observation.solutionMetaContentWidth)throw Error('ACTUAL_ARCHIVE_PREFLIGHT_OBSERVATION_NOT_BOUND');
   const profiles=measuredProfiles(observation,intrinsicSvg,candidateLabelInventory),start=DISPLAY_SIZE_CLASSES.indexOf(requestedSizeClass);
   const provisional=profiles.slice(start).find(profile=>profile.provisionalMinimumCssFontPx>=fontFloorCssPx-1e-7);
   return {
@@ -166,8 +191,8 @@ export function planDisplayEnvelope({questionUid,requestedSizeClass='medium',int
     policyChange:provisional&&provisional.sizeClass!==requestedSizeClass?{from:requestedSizeClass,to:provisional.sizeClass,reason:'PROVISIONAL_LABEL_INVENTORY_FLOOR_ONLY'}:null,
     intrinsicSvg:{...intrinsicSvg},candidateLabelInventory:candidateLabelInventory.map(v=>({id:v.id,fontPx:v.fontPx})),fontFloorCssPx,
     provisionalMinimumCssFontPx:provisional?.provisionalMinimumCssFontPx??null,
-    fit:'NONE',container:{qBoxRect:observation.qBoxRect,solutionMetaRect:observation.solutionMetaRect},
-    profiles,archiveEngineSha256,sourceRef,solutionRef,policyRefs:identity.policyRefs,inputIdentity:identity,inputIdentitySha256,
+    fit:'NONE',container:{qBoxRect:observation.qBoxRect,solutionMetaRect:observation.solutionMetaRect,solutionMetaContentWidth:observation.solutionMetaContentWidth},
+    profiles,archiveEngineSha256,sourceRef,solutionRef,policyRefs:identity.policyRefs,inputIdentity:identity,inputIdentitySha256,preflightEvidence,preflightEvidenceSha256:objectSha(preflightEvidence),
     measurementStatus:'ACTUAL_ARCHIVE_DOM_PREFLIGHT_NOT_FINAL_SUPPORT',
     provenance:{runtime:observation.runtime,browserVersion:observation.browserVersion,archiveSourceRef:observation.sourceRef,sourceAuthorityStatus:observation.sourceAuthorityStatus||'MEASUREMENT_ONLY'}
   };
@@ -265,12 +290,25 @@ export function compareActualDisplayEnvelope(envelope,{root,actualRef}={}, {tole
         else if(actual.screenshotViewport?.width!==image.width||actual.screenshotViewport?.height!==image.height)errors.push('ACTUAL_DISPLAY_SCREENSHOT_DIMENSION_MISMATCH');
       }catch{errors.push('ACTUAL_DISPLAY_SCREENSHOT_REF_INVALID');}
     }
+    if(!validRef(actual.archiveRowRef))errors.push('ACTUAL_DISPLAY_ARCHIVE_ROW_REF_REQUIRED');
+    else{
+      try{
+        const row=readJson(root,actual.archiveRowRef),expectedPath=typeof actual.archiveAssetPath==='string'?'/archive/'+actual.archiveAssetPath:null;
+        if(row.status!=='PASS'||row.synthetic!==false||row.runtime!=='playwright-chromium'||row.browserVersion!==actual.browserVersion)errors.push('ACTUAL_DISPLAY_ARCHIVE_ROW_INVALID');
+        const target=(row.state?.targets||[]).find(value=>value.id===actual.targetId);
+        if(!target||target.loaded!==true||target.sizeClass!==actual.sizeClass||!same(target.rect,actual.imageRect)||!same(target.solutionMetaRect,actual.solutionMetaRect)||target.solutionMetaContentWidth!==actual.solutionMetaContentWidth||!same(target.qBoxRect,actual.qBoxRect)||!same(target.computedStyle,actual.computedStyle)||target.naturalWidth!==candidateIntrinsic?.width||target.naturalHeight!==candidateIntrinsic?.height)errors.push('ACTUAL_DISPLAY_ARCHIVE_TARGET_MISMATCH');
+        if(!expectedPath||decodedUrlPath(target?.src)!==expectedPath)errors.push('ACTUAL_DISPLAY_ARCHIVE_ASSET_PATH_MISMATCH');
+        const responseVerified=(row.responses||[]).some(response=>response.status===200&&response.sha256===envelope.candidateSvgRef.sha256&&decodedUrlPath(response.url)===expectedPath);
+        if(!responseVerified)errors.push('ACTUAL_DISPLAY_ARCHIVE_ASSET_SHA_MISMATCH');
+      }catch{errors.push('ACTUAL_DISPLAY_ARCHIVE_ROW_REF_INVALID');}
+    }
   }
   if(actual?.sizeClass!==envelope.sizeClass)errors.push('ACTUAL_DISPLAY_SIZE_CLASS_MISMATCH');
   if(!finiteRect(actual?.imageRect)||!finiteRect(actual?.solutionMetaRect)||!finiteRect(actual?.qBoxRect))errors.push('ACTUAL_DISPLAY_GEOMETRY_MISSING');
   if(finiteRect(actual?.imageRect)&&!near(actual.imageRect.width,envelope.selectedProfile?.imageRect.width,toleranceCssPx))errors.push('ACTUAL_DISPLAY_WIDTH_DIFFERS_FROM_PREFLIGHT');
   if(finiteRect(actual?.imageRect)&&!near(actual.imageRect.height,envelope.selectedProfile?.imageRect.height,toleranceCssPx))errors.push('ACTUAL_DISPLAY_HEIGHT_DIFFERS_FROM_PREFLIGHT');
   if(finiteRect(actual?.solutionMetaRect)&&!near(actual.solutionMetaRect.width,envelope.container.solutionMetaRect.width,toleranceCssPx))errors.push('ACTUAL_SOLUTION_CONTAINER_WIDTH_DIFFERS_FROM_PREFLIGHT');
+  if(!near(actual?.solutionMetaContentWidth,envelope.container.solutionMetaContentWidth,toleranceCssPx))errors.push('ACTUAL_SOLUTION_CONTENT_WIDTH_DIFFERS_FROM_PREFLIGHT');
   if(finiteRect(actual?.qBoxRect)&&!near(actual.qBoxRect.width,envelope.container.qBoxRect.width,toleranceCssPx))errors.push('ACTUAL_QBOX_WIDTH_DIFFERS_FROM_PREFLIGHT');
   const style=envelope.selectedProfile?.computedStyle;
   for(const key of ['maxWidth','maxHeight','objectFit','transform'])if(actual?.computedStyle?.[key]!==style?.[key])errors.push('ACTUAL_DISPLAY_POLICY_DIFFERS_FROM_PREFLIGHT:'+key);

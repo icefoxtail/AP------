@@ -8,6 +8,10 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layo
 import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
 import {loadBank} from './build-visual-render-matrix.mjs';
 
+export function normalizeArchiveImageUrlPath(url){
+  try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
+}
+
 export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
   if(!/^[A-Za-z0-9_-]+$/.test(attempt))throw Error('INVALID_EVIDENCE_ATTEMPT');
   run=assertOutput(run);const matrix=JSON.parse(fs.readFileSync(path.join(run,'archive-render-matrix.json'),'utf8'));
@@ -46,25 +50,26 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           const numberNodes=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')];
           const numbers=numberNodes.map(v=>v.textContent.match(/^\s*(\d+)/)?.[1]).filter(Boolean);const count=new Set(numbers).size;
           const rect=b=>b?{x:b.x,y:b.y,width:b.width,height:b.height}:null;
-          const styleRecord=e=>{const s=getComputedStyle(e);return{width:s.width,height:s.height,maxWidth:s.maxWidth,maxHeight:s.maxHeight,objectFit:s.objectFit,transform:s.transform};};
+          const styleRecord=e=>{const s=getComputedStyle(e);return{width:s.width,height:s.height,maxWidth:s.maxWidth,maxHeight:s.maxHeight,objectFit:s.objectFit,transform:s.transform,paddingLeft:s.paddingLeft,paddingRight:s.paddingRight,borderLeftWidth:s.borderLeftWidth,borderRightWidth:s.borderRightWidth};};
+          const contentWidth=e=>{if(!e)return null;const r=e.getBoundingClientRect(),s=getComputedStyle(e),px=v=>parseFloat(v)||0;return r.width-px(s.paddingLeft)-px(s.paddingRight)-px(s.borderLeftWidth)-px(s.borderRightWidth);};
           const images=[...root.querySelectorAll('img')];const targets=assets.map(asset=>{
             const expected=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
-            const image=images.find(i=>new URL(i.src).pathname===expected),wrapper=image?.closest('.sol-image-wrap'),meta=image?.closest('.sol-meta'),box=image?.closest('.q-box');
+            const image=images.find(i=>{try{return decodeURIComponent(new URL(i.src).pathname)===expected;}catch{return false;}}),wrapper=image?.closest('.sol-image-wrap'),meta=image?.closest('.sol-meta'),box=image?.closest('.q-box');
             const b=image?.getBoundingClientRect();
-            return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:rect(b),sizeClass:asset.sizeClass||wrapper?.className?.match(/image-(small|medium|large|full)/)?.[1]||null,naturalWidth:image?.naturalWidth||null,naturalHeight:image?.naturalHeight||null,computedStyle:image?styleRecord(image):null,wrapperRect:rect(wrapper?.getBoundingClientRect()),solutionMetaRect:rect(meta?.getBoundingClientRect()),qBoxRect:rect(box?.getBoundingClientRect()),sourceRef:box?.dataset.sourceRef||null};
+            return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:rect(b),sizeClass:asset.sizeClass||wrapper?.className?.match(/image-(small|medium|large|full)/)?.[1]||null,naturalWidth:image?.naturalWidth||null,naturalHeight:image?.naturalHeight||null,computedStyle:image?styleRecord(image):null,wrapperRect:rect(wrapper?.getBoundingClientRect()),solutionMetaRect:rect(meta?.getBoundingClientRect()),solutionMetaContentWidth:contentWidth(meta),qBoxRect:rect(box?.getBoundingClientRect()),sourceRef:box?.dataset.sourceRef||null};
           });
           const displayEnvelopes=[];
           for(const target of envelopeTargets||[]){
             const number=Number(target.displayOrdinal||target.questionId);
             const box=[...root.querySelectorAll('.q-box')].find(candidate=>Number(candidate.querySelector('.q-num')?.textContent.match(/^\s*(\d+)/)?.[1])===number);
-            const meta=box?.querySelector('.sol-meta'),qBoxRect=rect(box?.getBoundingClientRect()),solutionMetaRect=rect(meta?.getBoundingClientRect());
-            const errors=[];if(!box)errors.push('ENVELOPE_TARGET_QBOX_MISSING');if(!meta)errors.push('ENVELOPE_TARGET_SOLUTION_META_MISSING');
+            const meta=box?.querySelector('.sol-meta'),qBoxRect=rect(box?.getBoundingClientRect()),solutionMetaRect=rect(meta?.getBoundingClientRect()),solutionMetaContentWidth=contentWidth(meta);
+            const errors=[];if(!box)errors.push('ENVELOPE_TARGET_QBOX_MISSING');if(!meta)errors.push('ENVELOPE_TARGET_SOLUTION_META_MISSING');if(!Number.isFinite(solutionMetaContentWidth)||solutionMetaContentWidth<=0)errors.push('ENVELOPE_TARGET_SOLUTION_META_CONTENT_WIDTH_MISSING');
             const profiles=[];
-            if(meta&&solutionMetaRect){
+            if(meta&&solutionMetaRect&&Number.isFinite(solutionMetaContentWidth)&&solutionMetaContentWidth>0){
               const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+target.intrinsicSvg.width+'" height="'+target.intrinsicSvg.height+'" viewBox="0 0 '+target.intrinsicSvg.width+' '+target.intrinsicSvg.height+'"><rect width="100%" height="100%" fill="white"/></svg>';
               const dataUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
               for(const sizeClass of target.sizeClasses||[]){
-                const host=document.createElement('div');host.style.cssText='position:fixed;left:-100000px;top:0;width:'+solutionMetaRect.width+'px;margin:0;padding:0;border:0;overflow:visible;visibility:hidden;pointer-events:none;';
+              const host=document.createElement('div');host.style.cssText='position:fixed;left:-100000px;top:0;width:'+solutionMetaContentWidth+'px;margin:0;padding:0;border:0;overflow:visible;visibility:hidden;pointer-events:none;';
                 const wrapper=document.createElement('span');wrapper.className='sol-image-wrap image-'+sizeClass;
                 const image=document.createElement('img');image.src=dataUrl;wrapper.appendChild(image);host.appendChild(wrapper);document.body.appendChild(host);
                 try{
@@ -75,7 +80,7 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
                 host.remove();
               }
             }
-            displayEnvelopes.push({status:errors.length||profiles.some(p=>p.status!=='PASS')?'FAIL':'PASS',id:target.id,questionId:target.questionId,displayOrdinal:number,sourceRef:box?.dataset.sourceRef||null,sourceAuthorityStatus:target.sourceAuthorityStatus||'MEASUREMENT_ONLY',qBoxRect,solutionMetaRect,existingSolutionImage:meta?.querySelector('.sol-image-wrap img')?(()=>{const img=meta.querySelector('.sol-image-wrap img');return{src:img.src,rect:rect(img.getBoundingClientRect()),computedStyle:styleRecord(img)};})():null,intrinsicSvg:target.intrinsicSvg,profiles,errors});
+            displayEnvelopes.push({status:errors.length||profiles.some(p=>p.status!=='PASS')?'FAIL':'PASS',id:target.id,questionId:target.questionId,displayOrdinal:number,sourceRef:box?.dataset.sourceRef||null,sourceAuthorityStatus:target.sourceAuthorityStatus||'MEASUREMENT_ONLY',qBoxRect,solutionMetaRect,solutionMetaContentWidth,existingSolutionImage:meta?.querySelector('.sol-image-wrap img')?(()=>{const img=meta.querySelector('.sol-image-wrap img');return{src:img.src,rect:rect(img.getBoundingClientRect()),computedStyle:styleRecord(img)};})():null,intrinsicSvg:target.intrinsicSvg,profiles,errors});
           }
           const overflow=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+2;
           return{questionBlocks:count,rawQuestionBlocks:numberNodes.length,lastQuestionNo:Math.max(...numbers.map(Number)),pageCount:root.querySelectorAll('.page').length,readiness:document.documentElement.dataset.apPrintReadiness||null,nativeRenderMetrics:document.documentElement.dataset.apRenderMetrics?JSON.parse(document.documentElement.dataset.apRenderMetrics):null,targets,displayEnvelopes,horizontalOverflow:overflow,errorText:document.documentElement.dataset.apRenderError||'',mathJaxReady:!!window.MathJax?.startup?.document,allImagesLoaded:images.every(i=>i.complete&&i.naturalWidth>0),imageCount:images.length};
@@ -92,8 +97,10 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
           await inspector.close();if(result.status!=='PASS')errors.push(...result.errors.map(v=>target.id+':'+v));
           const expectedImagePath=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
-          const matches=page.locator('#print-area .sol-image-wrap img[src*="'+expectedImagePath+'"]');
-          if(await matches.count()){
+          const imageNodes=page.locator('#print-area .sol-image-wrap img');
+          const matchingIndex=await imageNodes.evaluateAll((nodes,expected)=>nodes.findIndex(node=>{try{return decodeURIComponent(new URL(node.src).pathname)===expected;}catch{return false;}}),expectedImagePath);
+          if(matchingIndex>=0){
+            const matches=imageNodes.nth(matchingIndex);
             await matches.first().screenshot({path:path.join(folder,prefix+'-'+target.id+'.png')});
             const nativeBox=matches.first().locator('xpath=ancestor::div[contains(@class,"q-box")][1]');
             if(await nativeBox.count())await nativeBox.screenshot({path:path.join(folder,prefix+'-'+target.id+'-context.png')});
