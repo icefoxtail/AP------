@@ -1,6 +1,6 @@
 # JS Archive 2.0 — Common Quality Contract v1
 
-status: DRAFT / TWO-LANE FOUNDATION
+status: CURRENT / TWO-LANE QUALITY FOUNDATION
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 
 ## 1. Two execution lines, one quality contract
@@ -134,3 +134,16 @@ Do not collapse these into one generic PASS. GPT 예약라인에서는 `NOT_RUN_
 
 A new qualityContractVersion does not automatically delete or invalidate old artifacts.
 Keep prior artifacts/evidence, calculate the missing axes under the new contract, repair only the missing/defective locus, and rebind the changed final artifact to the required seal.
+
+## 13. Codex 구현 연결 보강 — 2026-10-06
+
+이 절은 Codex 실행 라인에 적용한다. GPT 예약 라인의 renderer prerequisite·MASTER 운용을 변경하지 않는다.
+
+- 신규 Codex 검수는 `--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`을 명시한다. evidence의 버전 누락/오타 및 legacy schema로 신규 gate를 우회할 수 없다. 명시적으로 요청한 역사 검수만 버전 강제 없이 legacy 경로를 사용한다.
+- artifact gate는 기본 schema/필드 타입, L1/L2의 물리 필드, nullable PT/TPL과 debt, difficulty 허용값, 모든 stage의 answer/solution, 실제 자산과 SVG 외부 의존성을 검사한다. 학생 bank의 EXCLUDED marker는 완제품으로 통과시키지 않는다.
+- `artifactDispositions={artifactSha,rows:[...]}`는 현재 artifact에 결속된 Meta disposition이다. R3의 `rows`는 변경/open/direct dependency scope만 유지하고, 미변경 문항의 합법적인 null debt는 별도 disposition에서 인계한다. 전수 의미 검수를 반복하는 구조가 아니다.
+- Codex Golden registry: `archive/data/codex-quality-calibration-registry-v2.json`. 사용자가 고정한 세 Golden을 모든 Codex 과정의 판서/조판/시각 표현 floor로 사용한다. 고1의 풀이 방법·Meta·difficulty를 중등/다른 과목에 복사하지 않는다. 교과별 방법은 해당 교육과정 정본으로 판정한다.
+- 실제 Golden 파일/대표 문항 solution/필요 SVG/Negative sample의 SHA와 판독 observation을 남긴다. boolean이나 파일명 목록만으로 preflight를 대신하지 않는다. 알려진 Golden visual 예외는 모델로 복제하지 않는다.
+- actual render와 MAIN_DONE의 physical receipt는 `archive/tools/archive-codex-closeout-v2.mjs`로 소비한다. 품질 수학 판정은 worker의 책임이며 이 helper는 증거·파일·SHA·범위·remote parity만 검사한다.
+
+신규 evidence에는 `executionLine:CODEX` 또는 `executionLine:GPT_SCHEDULED`를 명시한다. Codex CURRENT CLI는 CODEX를 강제하며, 공통 qualityContractVersion만 보고 GPT R3를 RENDER로 전환하지 않는다. render/MAIN_DONE receipt 및 저장된 R3 validation report도 executionLine:CODEX로 결속한다. GPT 예약 라인의 MAIN handoff는 유지한다.
