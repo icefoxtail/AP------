@@ -135,7 +135,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "하",
+    "level": "중",
     "category": "복소수의 실수부·허수부",
     "originalCategory": "복소수와 이차방정식",
     "standardCourse": "공통수학1",
@@ -309,7 +309,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "하",
+    "level": "중",
     "category": "다항식의 연산",
     "originalCategory": "다항식의 연산",
     "standardCourse": "공통수학1",
@@ -398,7 +398,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "상",
+    "level": "중",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "공통수학1",
@@ -488,7 +488,7 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "level": "상",
+    "level": "중",
     "category": "이차방정식의 항등조건",
     "originalCategory": "복소수와 이차방정식",
     "standardCourse": "공통수학1",
@@ -577,7 +577,7 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "level": "상",
+    "level": "중",
     "category": "이차함수의 최대최소",
     "originalCategory": "이차방정식과 이차함수",
     "standardCourse": "공통수학1",
@@ -915,7 +915,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "level": "중",
+    "level": "상",
     "category": "이차함수의 도형 넓이 최댓값",
     "originalCategory": "이차방정식과 이차함수",
     "standardCourse": "공통수학1",
