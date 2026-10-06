@@ -12,10 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "좌표평면과 그래프",
-      "좌표"
-    ],
+    "tags": ["좌표평면과 그래프","좌표","그래프"],
     "wide": false,
     "content": "다음 중 오른쪽 좌표평면 위의 점 $A$, $B$, $C$, $D$, $E$의 좌표를 나타낸 것으로 옳은 것은? (3점)",
     "choices": [
@@ -68,7 +65,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "④",
-    "solution": "두 순서쌍이 같으므로 대응하는 성분이 각각 같다. $3a=8-a$에서 $4a=8$, $a=2$이다. 또 $2b+2=-2b+6$에서 $4b=4$, $b=1$이다. 따라서 $ab=2$이므로 정답은 ④이다.",
+    "solution": "두 순서쌍이 같으므로 대응하는 성분이 각각 같다.\n$3a=8-a$에서 $4a=8$, $a=2$이다.\n또 $2b+2=-2b+6$에서 $4b=4$, $b=1$이다.\n따라서 $ab=2$이므로 정답은 ④이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -108,7 +105,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "$x$축 위의 점의 $y$좌표는 $0$이므로 $\\dfrac a3-1=0$에서 $a=3$이다. $y$축 위의 점의 $x$좌표는 $0$이므로 $2-b=0$에서 $b=2$이다. 따라서 $a+b=5$이므로 정답은 ⑤이다.",
+    "solution": "$x$축 위의 점의 $y$좌표는 $0$이므로 $\\dfrac a3-1=0$에서 $a=3$이다.\n$y$축 위의 점의 $x$좌표는 $0$이므로 $2-b=0$에서 $b=2$이다.\n따라서 $a+b=5$이므로 정답은 ⑤이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -148,7 +145,7 @@ window.questionBank = [
       "$(-2,\\,-3)$"
     ],
     "answer": "①",
-    "solution": "$(a,b)$가 제4사분면 위에 있으므로 $a\\gt0$, $b\\lt0$이다. 따라서 $-\\dfrac ab\\gt0$이므로 $\\left(a,-\\dfrac ab\\right)$는 제1사분면 위의 점이다. 보기 중 제1사분면 위의 점은 $(2,5)$이므로 정답은 ①이다.",
+    "solution": "$(a,b)$가 제4사분면 위에 있으므로 $a\\gt0$, $b\\lt0$이다.\n따라서 $-\\dfrac ab\\gt0$이므로 $\\left(a,-\\dfrac ab\\right)$는 제1사분면 위의 점이다.\n보기 중 제1사분면 위의 점은 $(2,5)$이므로 정답은 ①이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -183,7 +180,7 @@ window.questionBank = [
     "content": "오른쪽 그래프는 어떤 그릇에 매초 일정한 양의 물을 채울 때, 경과 시간 $x$초에 따른 물의 높이 $y\\,\\mathrm{cm}$의 변화를 나타낸 것이다. 다음 중 해당하는 그릇의 모양으로 가장 적절한 것은? (4점)",
     "choices": [],
     "answer": "②",
-    "solution": "매초 같은 부피의 물을 넣을 때 그래프의 기울기가 클수록 그 높이에서 그릇의 단면적이 작다. 처음에는 기울기가 일정하다가 마지막에 기울기가 더 커지므로, 아래쪽은 원기둥이고 위쪽은 더 좁은 목으로 된 ②가 알맞다.",
+    "solution": "매초 같은 부피의 물을 넣을 때 그래프의 기울기가 클수록 그 높이에서 그릇의 단면적이 작다.\n처음에는 기울기가 일정하다가 마지막에 기울기가 더 커지므로, 아래쪽은 원기둥이고 위쪽은 더 좁은 목으로 된 ②가 알맞다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q5.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
@@ -227,7 +224,7 @@ window.questionBank = [
       "$20$분, $60$분"
     ],
     "answer": "⑤",
-    "solution": "두 동물이 만날 때에는 같은 시각에 출발점에서 떨어진 거리가 같으므로 두 그래프의 교점을 찾는다. 교점의 $x$좌표는 $20$, $60$이므로 거북이가 출발한 지 $20$분, $60$분 후에 만난다. 따라서 정답은 ⑤이다.",
+    "solution": "두 동물이 만날 때에는 같은 시각에 출발점에서 떨어진 거리가 같으므로 두 그래프의 교점을 찾는다.\n교점의 $x$좌표는 $20$, $60$이므로 거북이가 출발한 지 $20$분, $60$분 후에 만난다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q6.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-04-GRAPH_RELATION",
@@ -359,7 +356,7 @@ window.questionBank = [
       "$18\\,\\mathrm{cm}$"
     ],
     "answer": "⑤",
-    "solution": "$N$은 $\\overline{AM}$의 중점이므로 $\\overline{NM}=\\dfrac12\\overline{AM}=3$에서 $\\overline{AM}=6$이다. $M$은 $\\overline{AB}$의 중점이므로 $\\overline{AB}=12$이다. $\\overline{AB}=2\\overline{BC}$이므로 $\\overline{BC}=6$이고, $\\overline{AC}=\\overline{AB}+\\overline{BC}=18\\,\\mathrm{cm}$이다. 따라서 정답은 ⑤이다.",
+    "solution": "$N$은 $\\overline{AM}$의 중점이므로 $\\overline{NM}=\\dfrac12\\overline{AM}=3$에서 $\\overline{AM}=6$이다.\n$M$은 $\\overline{AB}$의 중점이므로 $\\overline{AB}=12$이다.\n$\\overline{AB}=2\\overline{BC}$이므로 $\\overline{BC}=6$이고, $\\overline{AC}=\\overline{AB}+\\overline{BC}=18\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q9.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -445,7 +442,7 @@ window.questionBank = [
       "$5$개"
     ],
     "answer": "③",
-    "solution": "나머지 한 변의 길이를 $x$라 하면 삼각형의 성립 조건에 의해 $8-5\\lt x\\lt8+5$, 즉 $3\\lt x\\lt13$이다. 보기 중 $5$, $9$, $11$의 $3$개가 가능하므로 정답은 ③이다.",
+    "solution": "나머지 한 변의 길이를 $x$라 하면 삼각형의 성립 조건에 의해 $8-5\\lt x\\lt8+5$,\n\n즉 $3\\lt x\\lt13$이다.\n보기 중 $5$, $9$, $11$의 $3$개가 가능하므로 정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -487,7 +484,7 @@ window.questionBank = [
       "면 $AEGC$와 수직인 면은 면 $ABCD$, 면 $EFGH$이다."
     ],
     "answer": "③",
-    "solution": "점과 평면 사이의 거리는 그 점에서 평면에 내린 수선의 길이이다. 면 $AEHD$는 직육면체의 뒤쪽 면이므로 점 $G$에서 이 면까지의 거리는 $\\overline{GH}$의 길이인 $4\\,\\mathrm{cm}$이다. 따라서 ‘$3\\,\\mathrm{cm}$이다.’라고 한 ③이 옳지 않다.",
+    "solution": "점과 평면 사이의 거리는 그 점에서 평면에 내린 수선의 길이이다.\n면 $AEHD$는 직육면체의 뒤쪽 면이므로 점 $G$에서 이 면까지의 거리는 $\\overline{GH}$의 길이인 $4\\,\\mathrm{cm}$이다.\n따라서 ‘$3\\,\\mathrm{cm}$이다.’라고 한 ③이 옳지 않다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q12.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-07-SOLID_FIGURE",
@@ -532,7 +529,7 @@ window.questionBank = [
       "$80^{\\circ}$"
     ],
     "answer": "①",
-    "solution": "$l\\parallel m$이므로 윗부분의 선분이 수평선과 이루는 각은 $40^{\\circ}$이다. 첫 번째 꺾이는 점에서 표시된 $30^{\\circ}$를 이용하면 가운데 선분이 수평선과 이루는 각은 $40^{\\circ}+30^{\\circ}=70^{\\circ}$이다. 아랫부분의 선분은 $m$과 $30^{\\circ}$를 이루므로 $x=70^{\\circ}+30^{\\circ}=100^{\\circ}$이다. 따라서 정답은 ①이다.",
+    "solution": "$l\\parallel m$이므로 윗부분의 선분이 수평선과 이루는 각은 $40^{\\circ}$이다.\n첫 번째 꺾이는 점에서 표시된 $30^{\\circ}$를 이용하면 가운데 선분이 수평선과 이루는 각은 $40^{\\circ}+30^{\\circ}=70^{\\circ}$이다.\n아랫부분의 선분은 $m$과 $30^{\\circ}$를 이루므로 $x=70^{\\circ}+30^{\\circ}=100^{\\circ}$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q13.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -574,7 +571,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄹ"
     ],
     "answer": "④",
-    "solution": "ㄴ: 평면에 수직인 직선과 평행한 직선도 그 평면에 수직이므로 옳다. ㄹ: 한 평면에 수직인 두 직선은 서로 평행하므로 옳다. ㄱ은 두 직선이 만나지 않을 수 있고, ㄷ은 같은 평면과 평행한 두 직선의 방향이 서로 다를 수 있으므로 항상 성립하지 않는다. 따라서 정답은 ④이다.",
+    "solution": "ㄴ: 평면에 수직인 직선과 평행한 직선도 그 평면에 수직이므로 옳다.\nㄹ: 한 평면에 수직인 두 직선은 서로 평행하므로 옳다.\nㄱ은 두 직선이 만나지 않을 수 있고, ㄷ은 같은 평면과 평행한 두 직선의 방향이 서로 다를 수 있으므로 항상 성립하지 않는다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -616,7 +613,7 @@ window.questionBank = [
       "$108^{\\circ}$"
     ],
     "answer": "②",
-    "solution": "종이를 접으면 접는 선을 기준으로 포개지는 두 선이 접는 선과 이루는 각의 크기가 같다. 이 성질과 직사각형의 네 각이 직각임을 이용하여 $50^{\\circ}$와 $18^{\\circ}$를 점 $E$로 차례로 옮겨 각을 정리하면 $\\angle CEG+\\angle CEF=94^{\\circ}$이다. 따라서 정답은 ②이다.",
+    "solution": "종이를 접으면 접는 선을 기준으로 포개지는 두 선이 접는 선과 이루는 각의 크기가 같다.\n이 성질과 직사각형의 네 각이 직각임을 이용하여 $50^{\\circ}$와 $18^{\\circ}$를 점 $E$로 차례로 옮겨 각을 정리하면 $\\angle CEG+\\angle CEF=94^{\\circ}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q15.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -659,7 +656,7 @@ window.questionBank = [
       "‘엇각의 크기가 같으면 두 직선은 서로 평행하다.’는 성질을 이용한 것이다."
     ],
     "answer": "③",
-    "solution": "이 작도는 주어진 각과 같은 크기의 각을 옮겨 엇각이 같게 만드는 과정이다. 원의 반지름과 같은 길이로 옮긴 선분은 $PB$와 $DQ$이고, $AB=PA$라는 관계는 작도에서 보장되지 않는다. 따라서 옳지 않은 것은 ③이다.",
+    "solution": "이 작도는 주어진 각과 같은 크기의 각을 옮겨 엇각이 같게 만드는 과정이다.\n원의 반지름과 같은 길이로 옮긴 선분은 $PB$와 $DQ$이고, $AB=PA$라는 관계는 작도에서 보장되지 않는다.\n따라서 옳지 않은 것은 ③이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q16.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-POSITION_RELATION",
@@ -701,7 +698,7 @@ window.questionBank = [
       "$\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{AC}=5\\,\\mathrm{cm}$, $\\angle B=30^{\\circ}$"
     ],
     "answer": "②",
-    "solution": "②는 한 변 $\\overline{BC}$와 그 양 끝각 $\\angle B$, $\\angle C$가 주어졌으므로 삼각형이 한 가지로 정해진다. ①은 주어진 조건으로 삼각형이 만들어지지 않고, ③은 $5+6=11$이어서 삼각형이 만들어지지 않는다. ④는 세 각만 주어져 크기가 정해지지 않는다. ⑤는 $\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{AC}=5\\,\\mathrm{cm}$, $\\angle B=30^{\\circ}$일 때 점 $C$의 위치가 두 곳 가능하므로 한 가지로 정해지지 않는다. 따라서 정답은 ②이다.",
+    "solution": "②는 한 변 $\\overline{BC}$와 그 양 끝각 $\\angle B$, $\\angle C$가 주어졌으므로 삼각형이 한 가지로 정해진다.\n①은 주어진 조건으로 삼각형이 만들어지지 않고, ③은 $5+6=11$이어서 삼각형이 만들어지지 않는다.\n④는 세 각만 주어져 크기가 정해지지 않는다.\n⑤는 $\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{AC}=5\\,\\mathrm{cm}$, $\\angle B=30^{\\circ}$일 때 점 $C$의 위치가 두 곳 가능하므로 한 가지로 정해지지 않는다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -742,7 +739,7 @@ window.questionBank = [
       "$\\overline{AC}=\\overline{DF}$, $\\angle A=\\angle D$"
     ],
     "answer": "⑤",
-    "solution": "이미 $\\overline{BC}=\\overline{EF}$가 주어져 있다. ①은 ASA, ②와 ③은 SAS, ④는 SSS 합동 조건이 된다. ⑤는 두 변과 그 사이의 각이 아닌 각이 주어진 경우이므로 합동이 보장되지 않는다. 따라서 정답은 ⑤이다.",
+    "solution": "이미 $\\overline{BC}=\\overline{EF}$가 주어져 있다.\n①은 ASA, ②와 ③은 SAS, ④는 SSS 합동 조건이 된다.\n⑤는 두 변과 그 사이의 각이 아닌 각이 주어진 경우이므로 합동이 보장되지 않는다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q18.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -786,7 +783,7 @@ window.questionBank = [
       "$55^{\\circ}$"
     ],
     "answer": "①",
-    "solution": "$ABCD$가 정사각형이므로 $\\overline{BC}=\\overline{CD}$이고 $\\angle EBC=\\angle FCD=90^{\\circ}$이다. 또 $\\overline{EB}=\\overline{FC}$이므로 $\\triangle EBC\\equiv\\triangle FCD$ (SAS)이다. 따라서 $\\angle BCE=\\angle CDF=15^{\\circ}$이다. $\\angle BCD=90^{\\circ}$이므로 $\\angle DCE=90-15=75^{\\circ}$이다. 정답은 ①이다.",
+    "solution": "$ABCD$가 정사각형이므로 $\\overline{BC}=\\overline{CD}$이고 $\\angle EBC=\\angle FCD=90^{\\circ}$이다.\n또 $\\overline{EB}=\\overline{FC}$이므로 $\\triangle EBC\\equiv\\triangle FCD$ (SAS)이다.\n따라서 $\\angle BCE=\\angle CDF=15^{\\circ}$이다.\n$\\angle BCD=90^{\\circ}$이므로 $\\angle DCE=90-15=75^{\\circ}$이다.\n정답은 ①이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q19.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -830,7 +827,7 @@ window.questionBank = [
       "$135^{\\circ}$"
     ],
     "answer": "④",
-    "solution": "$\\triangle ABC$와 $\\triangle CDE$는 정삼각형이므로 $AC=BC$, $CD=CE$, $\\angle BCA=\\angle DCE=60^{\\circ}$이다. 따라서 $\\angle ACD=\\angle BCE$이고, $\\triangle ACD\\equiv\\triangle BCE$ (SAS)이다. 그러므로 $\\angle CAD=\\angle CBE$이다. $\\angle CAD=\\angle CBE=\\alpha$라 하면 $\\angle BAD=60^{\\circ}-\\alpha$이고, $\\angle ABE=60^{\\circ}+\\alpha$이다. 또 $\\angle DBE=70^{\\circ}$이므로 $\\angle ABD=\\alpha-10^{\\circ}$이다. 따라서 $\\triangle ABD$에서 $x=180^{\\circ}-(60^{\\circ}-\\alpha)-(\\alpha-10^{\\circ})=130^{\\circ}$이다. 따라서 정답은 ④이다.",
+    "solution": "$\\triangle ABC$와 $\\triangle CDE$는 정삼각형이므로 $AC=BC$, $CD=CE$, $\\angle BCA=\\angle DCE=60^{\\circ}$이다.\n따라서 $\\angle ACD=\\angle BCE$이고, $\\triangle ACD\\equiv\\triangle BCE$ (SAS)이다.\n그러므로 $\\angle CAD=\\angle CBE$이다.\n$\\angle CAD=\\angle CBE=\\alpha$라 하면 $\\angle BAD=60^{\\circ}-\\alpha$이고, $\\angle ABE=60^{\\circ}+\\alpha$이다.\n또 $\\angle DBE=70^{\\circ}$이므로 $\\angle ABD=\\alpha-10^{\\circ}$이다.\n따라서 $\\triangle ABD$에서 $x=180^{\\circ}-(60^{\\circ}-\\alpha)-(\\alpha-10^{\\circ})=130^{\\circ}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q20.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -869,7 +866,7 @@ window.questionBank = [
     "content": "[서술형1] 좌표평면 위의 세 점 $A(-1,\\,4)$, $B(-1,\\,-1)$, $C(3,\\,0)$을 꼭짓점으로 하는 삼각형 $ABC$가 있다. 삼각형 $ABC$의 넓이를 풀이과정을 포함하여 서술하시오. (4점)",
     "choices": [],
     "answer": "$10$",
-    "solution": "$A$와 $B$의 $x$좌표가 같으므로 $AB=4-(-1)=5$이다. 직선 $AB$는 $x=-1$이고 점 $C$의 $x$좌표는 $3$이므로, $C$에서 $AB$까지의 거리는 $3-(-1)=4$이다. 따라서 $\\triangle ABC$의 넓이는 $\\dfrac12\\times5\\times4=10$이다.",
+    "solution": "$A$와 $B$의 $x$좌표가 같으므로 $AB=4-(-1)=5$이다.\n직선 $AB$는 $x=-1$이고 점 $C$의 $x$좌표는 $3$이므로, $C$에서 $AB$까지의 거리는 $3-(-1)=4$이다.\n따라서 $\\triangle ABC$의 넓이는 $\\dfrac12\\times5\\times4=10$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q21.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
@@ -909,7 +906,7 @@ window.questionBank = [
     "content": "[서술형2] 다음 그림에서 $\\angle a$의 크기를 구하시오. (5점)",
     "choices": [],
     "answer": "$63^{\\circ}$",
-    "solution": "두 대각선이 이루는 맞꼭지각의 크기는 같으므로 위쪽의 각은 $3x+36^{\\circ}$이다. 직선 위의 각의 합을 이용하면 $(2x-18)+(3x+36)+x=180$이다. 따라서 $6x+18=180$, $x=27$이다. 수직선과 수평선이 이루는 각은 직각이므로 $a+x=90$이고, $a=90-27=63^{\\circ}$이다.",
+    "solution": "두 대각선이 이루는 맞꼭지각의 크기는 같으므로 위쪽의 각은 $3x+36^{\\circ}$이다.\n직선 위의 각의 합을 이용하면 $(2x-18)+(3x+36)+x=180$이다.\n따라서 $6x+18=180$, $x=27$이다.\n수직선과 수평선이 이루는 각은 직각이므로 $a+x=90$이고, $a=90-27=63^{\\circ}$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q22.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -947,7 +944,7 @@ window.questionBank = [
     "content": "[서술형3] 다음 그림에서 $\\overline{AB}\\perp\\overline{CO}$이고 $\\angle AOD=4\\angle COD$, $\\angle DOB=6\\angle DOE$일 때, $\\angle COE$의 크기를 구하시오. (5점)",
     "choices": [],
     "answer": "$40^{\\circ}$",
-    "solution": "$\\angle COD=x$라 하면 $AB\\perp CO$이므로 $\\angle AOC=90^{\\circ}$이고 $\\angle AOD=90^{\\circ}+x$이다. $\\angle AOD=4\\angle COD$이므로 $90+x=4x$, $x=30$이다. 따라서 $\\angle AOD=120^{\\circ}$, $\\angle DOB=60^{\\circ}$이다. $\\angle DOB=6\\angle DOE$이므로 $\\angle DOE=10^{\\circ}$이다. 그러므로 $\\angle COE=30+10=40^{\\circ}$이다.",
+    "solution": "$\\angle COD=x$라 하면 $AB\\perp CO$이므로 $\\angle AOC=90^{\\circ}$이고 $\\angle AOD=90^{\\circ}+x$이다.\n$\\angle AOD=4\\angle COD$이므로 $90+x=4x$, $x=30$이다.\n따라서 $\\angle AOD=120^{\\circ}$, $\\angle DOB=60^{\\circ}$이다.\n$\\angle DOB=6\\angle DOE$이므로 $\\angle DOE=10^{\\circ}$이다.\n그러므로 $\\angle COE=30+10=40^{\\circ}$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q23.png",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -986,7 +983,7 @@ window.questionBank = [
     "content": "[서술형4] 다음 그림과 같이 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\angle A=\\angle B=90^{\\circ}$인 사다리꼴 $ABCD$의 변 $\\overline{BC}$의 연장선 위의 점을 $E$, $\\overline{AE}$와 $\\overline{CD}$의 교점을 $F$라 하자. $\\overline{AF}=\\overline{EF}$일 때, 다음 물음에 답하시오. (6점)",
     "choices": [],
     "answer": "(1) $\\triangle AFD\\equiv\\triangle EFC$ (ASA 합동)  (2) $20\\,\\mathrm{cm}^2$",
-    "solution": "$\\overline{AF}=\\overline{EF}$이고, 맞꼭지각이므로 $\\angle AFD=\\angle EFC$이다. 또 $\\overline{AD}\\parallel\\overline{CE}$이므로 엇각 $\\angle FAD=\\angle FEC$이다. 따라서 $\\triangle AFD\\equiv\\triangle EFC$ (ASA 합동)이다. 합동인 대응변에서 $\\overline{AD}=\\overline{EC}$이다. $\\overline{BE}=\\overline{BC}+\\overline{CE}=\\overline{BC}+\\overline{AD}=10\\,\\mathrm{cm}$이고 높이 $\\overline{AB}=4\\,\\mathrm{cm}$이므로 사다리꼴 $ABCD$의 넓이는 $\\dfrac{AD+BC}{2}\\times AB=\\dfrac{10}{2}\\times4=20\\,\\mathrm{cm}^2$이다.",
+    "solution": "$\\overline{AF}=\\overline{EF}$이고, 맞꼭지각이므로 $\\angle AFD=\\angle EFC$이다.\n또 $\\overline{AD}\\parallel\\overline{CE}$이므로 엇각 $\\angle FAD=\\angle FEC$이다.\n따라서 $\\triangle AFD\\equiv\\triangle EFC$ (ASA 합동)이다.\n합동인 대응변에서 $\\overline{AD}=\\overline{EC}$이다.\n$\\overline{BE}=\\overline{BC}+\\overline{CE}=\\overline{BC}+\\overline{AD}=10\\,\\mathrm{cm}$이고 높이 $\\overline{AB}=4\\,\\mathrm{cm}$이므로 사다리꼴 $ABCD$의 넓이는 $\\dfrac{AD+BC}{2}\\times AB=\\dfrac{10}{2}\\times4=20\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q24.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
