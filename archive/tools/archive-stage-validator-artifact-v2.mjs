@@ -200,7 +200,9 @@ function validateAssetRefs(question,qid,assetRoot,issues) {
 
 function validateGoldenProvenance(evidence,repoRoot,issues) {
   try {
-    const registry=JSON.parse(fs.readFileSync(resolveInside(repoRoot,'archive/data/codex-quality-calibration-registry-v2.json'),'utf8'));
+    const registryPath = evidence.executionLine === 'GPT_SCHEDULED' ? 'archive/data/gpt-quality-calibration-registry-v2.json' : 'archive/data/codex-quality-calibration-registry-v2.json';
+    const registry=JSON.parse(fs.readFileSync(resolveInside(repoRoot,registryPath),'utf8'));
+    if (registry.executionLine && registry.executionLine !== evidence.executionLine) throw new Error('REGISTRY_EXECUTION_LINE_MISMATCH');
     if(registry.qualityContractVersion!==QUALITY_CONTRACT_V2) throw new Error('REGISTRY_VERSION_MISMATCH');
     const negative=evidence.goldenCalibration?.negativeSample;
     if(!negative || !registry.negativePaths?.includes(negative.path) || !nonEmpty(negative.observation) || solutionSha256(fs.readFileSync(resolveInside(repoRoot,negative.path),'utf8'))!==negative.sha256) throw new Error('NEGATIVE_SAMPLE_BINDING_REQUIRED');

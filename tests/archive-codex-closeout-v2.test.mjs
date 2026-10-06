@@ -35,7 +35,7 @@ test('MAIN_DONE requires render receipt, origin/main production blob, asset byte
 
 test('caller cannot omit a real JS asset or change the expected question set',()=>{const f=fixture();try{assert.equal(validateCodexRenderReceipt({...f,assets:[]}).ok,false);assert.equal(validateCodexRenderReceipt({...f,qids:[2]}).ok,false);}finally{f.cleanup();}});
 
-test('GPT scheduled R3 does not acquire a Codex render prerequisite',()=>{const f=fixture();try{assert.equal(consumeValidationPass({state:{stage:'R3',workComplete:true},validationReport:{...f.r3,executionLine:'GPT_SCHEDULED'}}).state.stage,'MAIN');}finally{f.cleanup();}});
+test('GPT scheduled R3 does not acquire a Codex render prerequisite',()=>{const f=fixture();try{const identity={qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'GPT_SCHEDULED',campaignId:'H1_GPT2_20261006',stream:'A'};assert.equal(consumeValidationPass({state:{stage:'R3',workComplete:true,...identity},validationReport:{...f.r3,...identity}}).state.stage,'MAIN');}finally{f.cleanup();}});
 
 test('declared current Codex state rejects downgrade and carries its contract onward',()=>{
  const f=fixture();try{
