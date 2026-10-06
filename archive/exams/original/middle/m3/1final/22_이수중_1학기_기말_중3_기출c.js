@@ -374,7 +374,6 @@ window.questionBank = [
       "이차함수",
       "일차함수",
       "함수",
-      "그래프",
       "계산"
     ],
     "wide": false,
@@ -442,8 +441,7 @@ window.questionBank = [
       "이차함수",
       "함수",
       "도형",
-      "원",
-      "그래프"
+      "원"
     ],
     "wide": false,
     "content": "이차함수 $y = -2x^2$의 그래프에 대한 다음 설명 중 옳은 것은? [4점]",
@@ -476,7 +474,6 @@ window.questionBank = [
       "객관식",
       "이차함수",
       "함수",
-      "그래프",
       "대입",
       "계산"
     ],
@@ -512,7 +509,6 @@ window.questionBank = [
       "이차함수",
       "지수",
       "함수",
-      "그래프",
       "표해석",
       "좌표",
       "대입"
@@ -548,7 +544,6 @@ window.questionBank = [
       "객관식",
       "이차함수",
       "함수",
-      "그래프",
       "대입",
       "조건해석",
       "계산"
@@ -765,7 +760,9 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "image": "assets/images/22_이수중_1학기_기말_중3_기출/q23.png",
+    "imageAlt": "20m×15m 직사각형 밭에 가로와 세로로 폭이 같은 두 길이 난 그림"
   },
   {
     "id": 24,
