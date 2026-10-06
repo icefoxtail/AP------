@@ -1,5 +1,11 @@
 # APMath Construction & Visual Production — Phase 0–2 완료 보고
 
+> **2026-10-06 P1 검토 정정:** 이 보고서의 세 UID 완료는 locator 기반 물리 E2E
+> 실험을 뜻한다. Canonical/current UID authority가 닫혔다거나 기존 검수가
+> Blind/Freeze→Compare였다는 해석은 철회한다. 새 경계와 수정 검증은
+> `APMath_Visual_Production_P1_Repair_20261006.md`를 따른다. 기존 evidence는
+> before-repair 이력으로 보존하며 새 검수 자격으로 자동 승격하지 않는다.
+
 - branch: `codex/apmath-visual-production-phase0-2-20261005`
 - 시작 main: `4309245e57abc8f9318fb76a506b0c68b3d2aa6c` (fetch 결과 사용자 기준과 일치)
 - 범위: Phase 0 / 1 / 2의 요청된 최소 종료 기준 완료. Phase 3 이후, 전체 qualification, Seal/ACTIVE, production 쓰기, main merge는 수행하지 않았다.

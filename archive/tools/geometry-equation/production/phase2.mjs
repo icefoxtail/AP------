@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {invokeVisualContinuation,nativeImageInput} from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
 import {canonicalJson,objectSha,bytesSha,fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
-import {questionUidV2,normalizeSourceExamIdRegistry} from '../../pipeline-core/question-uid.mjs';
+import {questionUidV2} from '../../pipeline-core/question-uid.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence} from '../record-visual-browser-evidence.mjs';
 import {assetIdentity,planHash} from './contracts.mjs';
@@ -15,7 +15,10 @@ import {dependency,dependencyRoot} from './dependencies.mjs';
 import {typesetter} from './typography.mjs';
 import {scopeFingerprint,mathFingerprint} from './fingerprint.mjs';
 import {RepairBudget} from './repair-budget.mjs';
-import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
+import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
+
+import {resolveQuestion,runQuestion} from './resolve-request.mjs';
+import {blindThenCompare,validateReviewLineage,verificationBinding,conditionBinding} from './blinded-review.mjs';
 
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 const schema={type:'object',properties:{status:{type:'string',enum:['PASS','FAIL','UNSUPPORTED']},payload:{type:'string'}},required:['status','payload'],additionalProperties:false};
@@ -58,18 +61,41 @@ function specFor(plan,model,id){
   return {id,visualType:'line_circle_geometry',viewport:{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad,width:384,height:320,panel:0},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id)},objects};
 }
 
-export async function runPhase2({sourcePath,ordinal,replayResultRef=null}){
+export async function runPhase2({questionUid,sourceRegistryRef=null,sourcePath,ordinal,replayResultRef=null,experimentalLocator=false}){
+  let authority=null;
+  if(sourceRegistryRef){
+    if(sourceRegistryRef.path.startsWith(GENERATED_ROOT+'/'))throw Error('ENGINE_SCOPED_REGISTRY_NOT_AUTHORITY');
+    authority=resolveQuestion(root,{questionUid,sourceRegistryRef});
+    sourcePath=authority.sourceRef.path;ordinal=authority.question.id;
+  }else if(!experimentalLocator){
+    return runQuestion(root,{questionUid:questionUid||questionUidV2(path.basename(sourcePath,'.js'),ordinal)});
+  }
+
   const sourceRef=fileRef(root,sourcePath),raw=readBoundFile(root,sourceRef).toString('utf8'),bank=loadBank(raw),question=JSON.parse(JSON.stringify(bank.find(q=>q.id===ordinal)));
   if(!question)throw Error('SOURCE_QUESTION_NOT_FOUND');
-  const context={window:{}}; // title is a locator; stable id is fixed by the generated registry.
-  const sourceExamId=path.basename(sourcePath,'.js');const uid=questionUidV2(sourceExamId,ordinal),identity=assetIdentity(uid,'SOLUTION_VISUAL');
+  const uid=authority?.questionUid||questionUid||questionUidV2(path.basename(sourcePath,'.js'),ordinal),identity=assetIdentity(uid,'SOLUTION_VISUAL');
   const journal=GENERATED_ROOT+'/phase2/'+identity.assetId+'/'+crypto.randomUUID();const folder=generatedPath(root,journal);fs.mkdirSync(folder,{recursive:true});
   const provenance={identity,sourceRef};let stages=[],result;const repairBudget=new RepairBudget();
   try{
-    const registry=normalizeSourceExamIdRegistry({schemaVersion:'SOURCE_EXAM_ID_REGISTRY_v1',entries:[{canonicalSourceExamId:sourceExamId,sourceExamId,sourceIdentityKey:'ARCHIVE_ORIGINAL:'+sourceExamId,status:'ACTIVE',sourceQuestionOrdinal:ordinal,questionUidV2:uid,legacyQuestionUid:sourcePath+'|'+sourceExamId+'|'+ordinal,sourcePath,sourceSha256:sourceRef.sha256}]});
-    stages.push(freeze('UID_AUTHORITY',registry,provenance));
+    if(authority)stages.push(freeze('UID_AUTHORITY',{sourceRegistryRef,entry:authority.sourceRegistryEntry,status:'CANONICAL_CURRENT'},provenance));
+    else stages.push(freeze('SOURCE_LOCATOR',{sourceRef,status:'EXPERIMENTAL_LOCATOR',authority:false},provenance));
     const images=[];for(const imagePath of [question.image].filter(Boolean)){const relative='archive/'+imagePath;const bytes=readBoundFile(root,fileRef(root,relative));images.push('data:image/'+(imagePath.endsWith('.svg')?'svg+xml':imagePath.endsWith('.jpg')?'jpeg':'png')+';base64,'+bytes.toString('base64'));}
     const sourceOnly={content:question.content,choices:question.choices??null,sourceImageRequired:!!question.image};
+    const verifyPolicy=verifiedSolutionPolicyFingerprint(root);
+    const verificationInputSha256=verificationBinding({sourceRef,source:sourceOnly,images,answer:question.answer,solution:question.solution,policySha256:verifyPolicy});
+    const reviewCall=(purpose,packet,pixels)=>provider(purpose,packet,pixels,folder,true);
+    const reviewFreeze=(stage,value)=>{const r=freeze(stage,value,provenance);stages.push(r);return r;};
+    const verify=async()=>{
+      const record=await blindThenCompare({root,kind:'SOLUTION',source:sourceOnly,images,comparison:{answer:question.answer,solution:question.solution},policySha256:verifyPolicy,inputBindingSha256:verificationInputSha256,call:reviewCall,freeze:reviewFreeze});
+      const r=reviewFreeze('VERIFIED_SOLUTION',record);
+      if(!verificationClosed(record))throw Error('VERIFIED_SOLUTION_COMPARE_FAIL');
+      return {record,receipt:r};
+    };
+    const reviewConditions=async proposedPlan=>{
+      const policy=sourcePolicyFingerprint(root);
+      const binding=conditionBinding({sourceRef,source:sourceOnly,images,plan:proposedPlan,policySha256:policy});
+      return blindThenCompare({root,kind:'CONDITIONS',source:sourceOnly,images,comparison:{proposedPlan},policySha256:policy,inputBindingSha256:binding,call:reviewCall,freeze:reviewFreeze});
+    };
     let frozen,plan,planReceipt,solutionRef;
     if(replayResultRef){
       const previous=JSON.parse(readBoundFile(root,replayResultRef));
@@ -78,31 +104,29 @@ export async function runPhase2({sourcePath,ordinal,replayResultRef=null}){
       const plans=priorStages.filter(s=>s.value.stage==='PLAN');if(!plans.length)throw Error('REPLAY_PLAN_REQUIRED');
       const ref=plans.at(-1).value.outputs[0];frozen=JSON.parse(readBoundFile(root,ref));
       if(planHash(frozen)!==frozen.planSha256)throw Error('REPLAY_PLAN_HASH_MISMATCH');
-      const reviews=priorStages.filter(s=>s.value.stage==='SOURCE_REVIEW').map(s=>JSON.parse(readBoundFile(root,s.value.outputs[0])));
-      let sourceReview=reviews.find(r=>r.inputSha256===frozen.sourceReviewInputSha256&&r.output.status==='PASS');
-      if(!sourceReviewClosed(sourceReview))throw Error('REPLAY_SOURCE_REVIEW_REQUIRED');
-      const verified=JSON.parse(readBoundFile(root,frozen.verifiedSolutionRef));if(!verificationClosed(verified))throw Error('REPLAY_SOLUTION_NOT_VERIFIED');
-      const currentImageShas=images.map(i=>bytesSha(Buffer.from(i.split(',')[1],'base64')));
-      if(canonicalJson(sourceReview.imageShas)!==canonicalJson(currentImageShas)||canonicalJson(verified.imageShas)!==canonicalJson(currentImageShas))throw Error('REPLAY_SOURCE_IMAGE_STALE');
-      solutionRef=frozen.solutionRef;readBoundFile(root,solutionRef);
-      const {schemaVersion,questionUid,visualAssetKey,sourceRef:sourceBinding,solutionRef:solutionBinding,verifiedSolutionRef,sourceReviewInputSha256,sourceReviewPolicySha256,planSha256,...semantic}=frozen;plan=semantic;
-      if(objectSha(sourceReview.inputPacket.proposedPlan)!==objectSha(plan))throw Error('REPLAY_PLAN_REVIEW_BINDING_MISMATCH');
-      stages.push(...priorStages.filter(s=>['PLAN','SOURCE_REVIEW','VERIFIED_SOLUTION','PLANNER'].includes(s.value.stage)).map(s=>({...s.value,manifestRef:s.ref})));
-      planReceipt={outputs:[ref]};
-      console.log(JSON.stringify({stage:'FROZEN_PLAN_REPLAY',uid}));
-      const currentPolicy=sourcePolicyFingerprint(root);
-      if(frozen.sourceReviewPolicySha256!==currentPolicy){
-        console.log(JSON.stringify({stage:'SOURCE_POLICY_REVALIDATION',uid}));
-        sourceReview=await provider('REVIEW_SOURCE_CONDITIONS',{instruction:SOURCE_REVIEW_INSTRUCTION,reviewPolicySha256:currentPolicy,source:sourceOnly,proposedPlan:plan},images,folder,true);
-        stages.push(freeze('SOURCE_REVIEW',sourceReview,provenance));if(!sourceReviewClosed(sourceReview))throw Error('CURRENT_SOURCE_POLICY_REVIEW_FAIL');
-        frozen={...frozen,sourceReviewInputSha256:sourceReview.inputSha256,sourceReviewPolicySha256:currentPolicy};delete frozen.planSha256;frozen.planSha256=planHash(frozen);
-        planReceipt=freeze('PLAN',frozen,provenance);stages.push(planReceipt);
+      const {schemaVersion,questionUid:planUid,visualAssetKey,sourceRef:sourceBinding,solutionRef:solutionBinding,verifiedSolutionRef,verifiedSolutionPolicySha256,verificationInputSha256:priorVerificationBinding,sourceReviewInputSha256,sourceReviewPolicySha256,sourceRegistryRef:priorRegistry,planSha256,...semantic}=frozen;plan=semantic;
+      if(planUid!==uid||sourceBinding.sha256!==sourceRef.sha256)throw Error('REPLAY_PLAN_SOURCE_MISMATCH');
+      stages.push(...priorStages.filter(s=>['PLAN','SOURCE_REVIEW','VERIFIED_SOLUTION','PLANNER','SOLUTION_BLIND_FREEZE','SOLUTION_COMPARE','CONDITIONS_BLIND_FREEZE','CONDITIONS_COMPARE'].includes(s.value.stage)).map(s=>({...s.value,manifestRef:s.ref})));
+      let verified=JSON.parse(readBoundFile(root,frozen.verifiedSolutionRef));
+      if(!verificationClosed(verified)||!validateReviewLineage(root,verified,'SOLUTION',verifyPolicy,verificationInputSha256)){
+        const fresh=await verify();verified=fresh.record;frozen={...frozen,verifiedSolutionRef:fresh.receipt.outputs[0]};
       }
+      solutionRef=receipt('SOLUTION_INPUT',{'solution.txt':question.solution},provenance).outputs[0];
+      const currentPolicy=sourcePolicyFingerprint(root);
+      const binding=conditionBinding({sourceRef,source:sourceOnly,images,plan,policySha256:currentPolicy});
+      const reviews=priorStages.filter(s=>s.value.stage==='SOURCE_REVIEW').map(s=>JSON.parse(readBoundFile(root,s.value.outputs[0])));
+      let sourceReview=reviews.find(r=>r.inputSha256===frozen.sourceReviewInputSha256);
+      if(!sourceReviewClosed(sourceReview)||!validateReviewLineage(root,sourceReview,'CONDITIONS',currentPolicy,binding)){
+        sourceReview=await reviewConditions(plan);reviewFreeze('SOURCE_REVIEW',sourceReview);
+        if(!sourceReviewClosed(sourceReview))throw Error('CURRENT_SOURCE_POLICY_REVIEW_FAIL');
+      }
+      frozen={...frozen,solutionRef,sourceRegistryRef,verifiedSolutionPolicySha256:verifyPolicy,verificationInputSha256,sourceReviewInputSha256:sourceReview.inputSha256,sourceReviewPolicySha256:currentPolicy};
+      delete frozen.planSha256;frozen.planSha256=planHash(frozen);
+      planReceipt=freeze('PLAN',frozen,provenance);stages.push(planReceipt);
+      console.log(JSON.stringify({stage:'FROZEN_PLAN_REPLAY',uid}));
     }else{
     console.log(JSON.stringify({stage:'VERIFIED_SOLUTION',uid}));
-    const verified=await provider('VERIFY_SOURCE_SOLUTION',{instruction:'Independently solve this actual Archive question using supplied source/image, then compare with existing answer and solution. Do not trust the solution. Return PASS only if fully correct. Payload must include independentlyExtractedSourceConditions:[string], recomputedAnswer:string, solutionComparison:string, uncoveredConditions:[].',source:sourceOnly,answer:question.answer,solution:question.solution},images,folder);
-    if(!verificationClosed(verified))throw Error('VERIFIED_SOLUTION_CONDITION_COVERAGE_MISSING');
-    const verifiedReceipt=freeze('VERIFIED_SOLUTION',verified,provenance);stages.push(verifiedReceipt);
+    const verification=await verify();const verified=verification.record,verifiedReceipt=verification.receipt;
     solutionRef=receipt('SOLUTION_INPUT',{'solution.txt':question.solution},provenance).outputs[0];
     console.log(JSON.stringify({stage:'PLANNER',uid}));
     const extendedContract=compilerContract+' Also supported: SEGMENT_LENGTH(inputs two POINT, args{}, outputType SCALAR) and SCALAR_SQUARE(inputs one SCALAR,args{},outputType SCALAR). Geometry must actually calculate decisive distance/length using these nodes when relevant; scalarLabels:[{nodeId,ownerSegment,prefix,unit?:string}] displays that exact result near the owner segment. prefix is source entity, e.g AB or x^2. Also supported rightAngles:[{id,refs:[rayPoint,vertex,rayPoint],factRole:GIVEN|DERIVED_INTERMEDIATE}] for square markers and segmentLabels:[{id,ownerSegment,variable:single-letter,unit?:cm|m,factRole:GIVEN}] for source variable/unit labels. Do not create duplicate labels with same owner and content. Avoid unnecessary LINE_THROUGH nodes when only a display segment is needed. All scalar node dependencies may follow SELECT_POINT. Display segments must use distinct IDs from mathPlan point/scalar IDs. Original question content, score, choices, answer and solution remain unchanged in the actual Archive bank. You need not redraw those as visual labels; map these conditions to PRESERVED_ARCHIVE_BANK.';
@@ -130,7 +154,7 @@ export async function runPhase2({sourcePath,ordinal,replayResultRef=null}){
           planner=await provider('REPAIR_TYPED_PLAN',{instruction:extendedContract+' IMPORTANT SELECT_POINT must have args:{} and branch:{kind,refs,sign} at the NODE TOP LEVEL. Never put branch inside args. Return full corrected plan.',source:sourceOnly,verifiedSolution:question.solution,previousPlan:plan,normalizerError:normalized.result},images,folder);plan=planner.payload;repairBudget.complete(repair,objectSha(plan));continue;
         }
       }
-      sourceReview=await provider('REVIEW_SOURCE_CONDITIONS',{instruction:SOURCE_REVIEW_INSTRUCTION,reviewPolicySha256:sourcePolicyFingerprint(root),source:sourceOnly,proposedPlan:plan},images,folder,true);
+      sourceReview=await reviewConditions(plan);
       stages.push(freeze('SOURCE_REVIEW',sourceReview,provenance));
       if(sourceReviewClosed(sourceReview))break;
       if(revision===3)throw Error('SOURCE_REVIEW_REPAIR_BUDGET_EXHAUSTED');
@@ -139,7 +163,7 @@ export async function runPhase2({sourcePath,ordinal,replayResultRef=null}){
       planner=await provider('REPAIR_VISUAL_PLAN',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,previousPlan:plan,defects:sourceReview.payload},images,folder);plan=planner.payload;repairBudget.complete(repair,objectSha(plan));
     }
     if(!sourceReviewClosed(sourceReview))throw Error('SOURCE_REVIEW_NOT_CLOSED');
-    frozen={...plan,schemaVersion:'VISUAL_PHASE2_PLAN_v1',questionUid:uid,visualAssetKey:identity.visualAssetKey,sourceRef,solutionRef,verifiedSolutionRef:verifiedReceipt.outputs[0],sourceReviewInputSha256:sourceReview.inputSha256,sourceReviewPolicySha256:sourcePolicyFingerprint(root)};
+    frozen={...plan,schemaVersion:'VISUAL_PHASE2_PLAN_v1',questionUid:uid,visualAssetKey:identity.visualAssetKey,sourceRef,solutionRef,sourceRegistryRef,verifiedSolutionRef:verifiedReceipt.outputs[0],verifiedSolutionPolicySha256:verifyPolicy,verificationInputSha256,sourceReviewInputSha256:sourceReview.inputSha256,sourceReviewPolicySha256:sourcePolicyFingerprint(root)};
     frozen.planSha256=planHash(frozen);planReceipt=freeze('PLAN',frozen,provenance);stages.push(planReceipt);
     }
     const fingerprint=scopeFingerprint(root,plan.capability);
@@ -206,8 +230,8 @@ export async function runPhase2({sourcePath,ordinal,replayResultRef=null}){
     stages.push(freeze('VISUAL_REVIEW',visualReview,provenance));
     if(visualReview.output.status!=='PASS')throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL:'+canonicalJson(visualReview.payload));
     if(!Array.isArray(visualReview.payload.errors)||visualReview.payload.errors.length||!Array.isArray(visualReview.payload.observations)||!visualReview.payload.observations.length)throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL');
-    result={status:'PHASE2_SLICE_COMPLETE',productionAuthorized:false,qualificationStatus:'NOT_QUALIFIED',identity,sourceRef,solutionRef,planRef:planReceipt.outputs[0],fingerprint,finalSvgRef:asset,actualArchive:archive,independentVisualReviewRef:stages.at(-1).outputs[0],stages:stages.map(s=>s.manifestRef)};
-  }catch(error){result={status:'UNRESOLVED',productionAuthorized:false,identity,sourceRef,error:error.message,stages:stages.map(s=>s.manifestRef)};}
+    result={status:authority?'PHASE2_SLICE_COMPLETE':'EXPERIMENTAL_LOCATOR_COMPLETE',identityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR',sourceRegistryRef,productionAuthorized:false,qualificationStatus:'NOT_QUALIFIED',identity,sourceRef,solutionRef,planRef:planReceipt.outputs[0],fingerprint,finalSvgRef:asset,actualArchive:archive,independentVisualReviewRef:stages.at(-1).outputs[0],stages:stages.map(s=>s.manifestRef)};
+  }catch(error){result={status:error.message.startsWith('UNSUPPORTED_CINDY_')?'UNSUPPORTED_NUMERIC_SCOPE':'UNRESOLVED',productionAuthorized:false,identity,sourceRef,error:error.message,stages:stages.map(s=>s.manifestRef)};}
   result.repairLedger=repairBudget.ledger;
   Object.assign(result,{schemaVersion:'VISUAL_RESULT_v1',phase:2,engineStatus:'EXPERIMENTAL'});
   const final=freeze('RESULT',result,provenance);console.log(JSON.stringify({uid,status:result.status,error:result.error,resultRef:final.outputs[0]}));return {result,receipt:final};
@@ -222,5 +246,5 @@ async function workerGraphAudit(graphPlan,svg,transform){const {aspectPolicy,...
 async function workerPrimitiveAudit(payload){return (await pythonWorker(payload,{script:fileURLToPath(new URL('primitive-observer-worker.py',import.meta.url))})).result;}
 if(process.argv[1]===fileURLToPath(import.meta.url)){
   const index=process.argv.indexOf('--source'),ordinal=Number(process.argv[process.argv.indexOf('--ordinal')+1]);
-  const resume=process.argv.indexOf('--resume');const output=await runPhase2({sourcePath:process.argv[index+1],ordinal,replayResultRef:resume>=0?fileRef(root,process.argv[resume+1]):null});if(output.result.status!=='PHASE2_SLICE_COMPLETE')process.exitCode=1;
+  const resume=process.argv.indexOf('--resume');const output=await runPhase2({sourcePath:process.argv[index+1],ordinal,replayResultRef:resume>=0?fileRef(root,process.argv[resume+1]):null,experimentalLocator:process.argv.includes('--experimental-locator')});if(output.result.status!=='PHASE2_SLICE_COMPLETE')process.exitCode=1;
 }

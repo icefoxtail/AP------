@@ -22,7 +22,7 @@ export function resolveQuestion(root,{questionUid,sourceRegistryRef,parentRunRef
   const matches=bank.filter(q=>q.id===entry.sourceQuestionOrdinal);
   if(matches.length!==1)throw Error('SOURCE_QUESTION_MISSING_OR_DUPLICATE');
   const question=JSON.parse(JSON.stringify(matches[0]));
-  const source={questionUid:identity.questionUidV2,sourceRef,sourceRegistryRef,questionObjectSha256:objectSha(question),question};
+  const source={questionUid:identity.questionUidV2,sourceRef,sourceRegistryRef,sourceRegistryEntry:entry,questionObjectSha256:objectSha(question),question};
   if(!parentRunRef)return {...source,status:'VERIFIED_SOLUTION_AUTHORITY_REQUIRED',verifiedSolution:null};
   const parent=JSON.parse(readBoundFile(root,parentRunRef));
   const matching=parent.questions?.find(q=>q.questionUid===identity.questionUidV2);

@@ -1,15 +1,33 @@
 /** Independent numeric reconstruction: consumes only primitives/operations, never producer coordinates. */
 import {dependency} from './dependencies.mjs';
 import {objectSha} from '../../pipeline-core/canonical.mjs';
-function scalar(v,depth=0) {
+function numericEnvelope(value) {
+  if(!Number.isFinite(value)||Math.abs(value)>1e6||(value!==0&&Math.abs(value)<1e-9))throw Error('UNSUPPORTED_CINDY_NUMERIC_ENVELOPE');
+  return value;
+}
+export function scalar(v,depth=0) {
   if(depth>24)throw Error('SCALAR_DEPTH');
-  if(v.kind==='integer' && /^(0|-?[1-9][0-9]*)$/.test(v.value))return Number(v.value);
-  if(v.kind==='rational' && /^(0|-?[1-9][0-9]*)$/.test(v.numerator) && /^[1-9][0-9]*$/.test(v.denominator))return Number(v.numerator)/Number(v.denominator);
+  if(v.kind==='integer' && /^(0|-?[1-9][0-9]*)$/.test(v.value)){
+    const exact=BigInt(v.value);
+    if(exact>1000000n||exact< -1000000n)throw Error('UNSUPPORTED_CINDY_EXACT_INTEGER');
+    return numericEnvelope(Number(exact));
+  }
+  if(v.kind==='rational' && /^(0|-?[1-9][0-9]*)$/.test(v.numerator) && /^[1-9][0-9]*$/.test(v.denominator)){
+    const n=BigInt(v.numerator),d=BigInt(v.denominator);
+    // Deliberately conservative peer scope: preserve operand precision before
+    // division, and reject ratios too sensitive for the numeric branch policy.
+    if(n>1000000000n||n< -1000000000n||d>1000000000n)throw Error('UNSUPPORTED_CINDY_EXACT_RATIONAL');
+    return numericEnvelope(Number(n)/Number(d));
+  }
   if(v.kind==='constant' && ['pi','e'].includes(v.name))return v.name==='pi'?Math.PI:Math.E;
   if(v.kind==='expression'){
     const a=v.args.map(x=>scalar(x,depth+1));
     const ops={sqrt:()=>Math.sqrt(a[0]),neg:()=>-a[0],add:()=>a[0]+a[1],sub:()=>a[0]-a[1],mul:()=>a[0]*a[1],div:()=>a[0]/a[1],pow:()=>a[0]**a[1]};
-    if(ops[v.op])return ops[v.op]();
+    if(Object.hasOwn(ops,v.op)){
+      const result=numericEnvelope(ops[v.op]());
+      if(['sub','add'].includes(v.op)&&result!==0&&Math.abs(result)<=1e-9*Math.max(1,...a.map(Math.abs)))throw Error('UNSUPPORTED_CINDY_CANCELLATION');
+      return result;
+    }
   }
   throw Error('UNSUPPORTED_CINDY_SCALAR');
 }
@@ -81,11 +99,13 @@ export function reconstruct(graph) {
         scalars[n.id]=value.value.real;
       }else scalars[n.id]=scalars[n.inputs[0]]**2;
     }
-    return {engine:'CindyJS',version:'0.0.5',inputSha256:objectSha(graph),points,scalars};
+    return {engine:'CindyJS',version:'0.0.5',verificationKind:'NUMERIC_PEER_NOT_EXACT_PROOF',numericPolicy:'CINDY_SAFE_ENVELOPE_v1',inputSha256:objectSha(graph),points,scalars};
   } finally {instance.shutdown();}
 }
 export function compareReconstruction(snapshot, observation, tolerance=1e-8) {
   if(!Number.isFinite(tolerance)||tolerance<=0||tolerance>1e-8)throw Error('INVALID_OBSERVER_TOLERANCE');
+  for(const value of Object.values(snapshot.points))if(value.exact)value.exact.forEach(v=>scalar(v));
+  for(const value of Object.values(snapshot.scalars||{}))if(value.exact)scalar(value.exact);
   const expected=Object.keys(snapshot.points).sort(),actual=Object.keys(observation.points).sort();
   if(JSON.stringify(expected)!==JSON.stringify(actual))return {status:'FAIL',errors:['POINT_COVERAGE_MISMATCH']};
   const rows=expected.map(id=>({id,delta:Math.hypot(...snapshot.points[id].approximation.map((v,i)=>v-observation.points[id][i]))}));

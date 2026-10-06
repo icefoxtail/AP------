@@ -7,8 +7,7 @@ import {scopeFingerprint,mathFingerprint} from './fingerprint.mjs';
 import {reconstruct,compareReconstruction} from './cindy-observer.mjs';
 import {commitStage,calculationStage} from './store.mjs';
 import {pythonWorker} from './worker.mjs';
-import {runQuestion} from './resolve-request.mjs';
-import {locatedSourceCandidates} from './resolve-request.mjs';
+import {runQuestion,locatedSourceCandidates} from './resolve-request.mjs';
 import {runPhase2} from './phase2.mjs';
 
 export const repoRoot = fileURLToPath(new URL('../../../../',import.meta.url));
@@ -48,15 +47,20 @@ export async function runFrozen(root, request) {
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   try {
-    const allowedFlags=new Set(['--request','--question-uid','--resume']);
+    const allowedFlags=new Set(['--request','--question-uid','--resume','--source-registry','--experimental-locator']);
     for(const arg of process.argv.slice(2))if(arg.startsWith('--')&&!allowedFlags.has(arg))throw Error('UNSUPPORTED_CLI_OPTION:'+arg);
     const uidIndex=process.argv.indexOf('--question-uid');
     if(uidIndex>=0){
       const questionUid=process.argv[uidIndex+1];
-      const candidates=locatedSourceCandidates(repoRoot,questionUid);
-      if(candidates.length!==1||!candidates[0].questionFound)throw Error('AMBIGUOUS_OR_MISSING_UID_SOURCE');
       const resumeIndex=process.argv.indexOf('--resume');
-      const output=await runPhase2({sourcePath:candidates[0].sourceRef.path,ordinal:candidates[0].ordinal,replayResultRef:resumeIndex>=0?fileRef(repoRoot,process.argv[resumeIndex+1]):null});
+      const registryIndex=process.argv.indexOf('--source-registry');
+      let options={questionUid,sourceRegistryRef:registryIndex>=0?fileRef(repoRoot,process.argv[registryIndex+1]):null,replayResultRef:resumeIndex>=0?fileRef(repoRoot,process.argv[resumeIndex+1]):null};
+      if(process.argv.includes('--experimental-locator')){
+        const candidates=locatedSourceCandidates(repoRoot,questionUid);
+        if(candidates.length!==1||!candidates[0].questionFound)throw Error('AMBIGUOUS_OR_MISSING_UID_SOURCE');
+        options={...options,sourcePath:candidates[0].sourceRef.path,ordinal:candidates[0].ordinal,experimentalLocator:true};
+      }
+      const output=await runPhase2(options);
       if(output.result.status!=='PHASE2_SLICE_COMPLETE')process.exitCode=2;
     }else{
     const index = process.argv.indexOf('--request');
