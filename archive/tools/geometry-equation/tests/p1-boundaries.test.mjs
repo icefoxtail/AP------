@@ -6,8 +6,8 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {fileRef,objectSha,readBoundFile} from '../../pipeline-core/canonical.mjs';
-import {blindThenCompare,validateReviewLineage,verificationBinding,assertStudentOnly} from '../production/blinded-review.mjs';
-import {verifiedSolutionPolicyFingerprint} from '../production/source-policy.mjs';
+import {blindThenCompare,reuseReviewAuthority,validateReviewLineage,verificationBinding,assertStudentOnly} from '../production/blinded-review.mjs';
+import {sourceReviewClosed,verificationClosed,verifiedSolutionPolicyFingerprint} from '../production/source-policy.mjs';
 import {scalar,compareReconstruction} from '../production/cindy-observer.mjs';
 import {runPhase2} from '../production/phase2.mjs';
 import {resolveQuestion} from '../production/resolve-request.mjs';
@@ -37,6 +37,27 @@ for(const kind of ['SOLUTION','CONDITIONS'])test(kind+': source-only freeze phys
     const altered={...record,payload:{...record.payload,...(kind==='SOLUTION'?{recomputedAnswer:'35'}:{sourceConditions:[]})}};
     assert.equal(validateReviewLineage(h.root,altered,kind,policy,binding),false);
   }finally{fs.rmSync(h.root,{recursive:true,force:true});}
+});
+test('replay reuses only current review authority and requires a valid fresh replacement',async()=>{
+  for(const kind of ['SOLUTION','CONDITIONS']){
+    const h=harness(kind),closed=kind==='SOLUTION'?verificationClosed:sourceReviewClosed;
+    const source={content:'triangle',choices:['34'],sourceImageRequired:false},images=[];
+    const comparison=kind==='SOLUTION'?{answer:'34',solution:'5²+3²=34'}:{proposedPlan:{sourceConditions:[{id:'given1',condition:'legs 5,3'}]}};
+    const originalPolicy=objectSha('policy-v1'),originalBinding=objectSha('binding-v1');
+    const makeReview=(policySha256,inputBindingSha256)=>blindThenCompare({ ...h,kind,source,images,comparison,policySha256,inputBindingSha256 });
+    try{
+      const original=await makeReview(originalPolicy,originalBinding);
+      const current=await reuseReviewAuthority({root:h.root,record:original,kind,policySha256:originalPolicy,inputBindingSha256:originalBinding,closed,refresh:()=>{throw Error('UNEXPECTED_REFRESH');}});
+      assert.equal(current.reused,true);assert.equal(current.record,original);
+      for(const [policySha256,inputBindingSha256] of [[objectSha('policy-v2'),originalBinding],[originalPolicy,objectSha('binding-v2')]]){
+        let refreshCount=0;
+        const refreshed=await reuseReviewAuthority({root:h.root,record:original,kind,policySha256,inputBindingSha256,closed,refresh:async()=>{refreshCount++;return makeReview(policySha256,inputBindingSha256);}});
+        assert.equal(refreshCount,1);assert.equal(refreshed.reused,false);assert.equal(closed(refreshed.record),true);
+        assert.equal(validateReviewLineage(h.root,refreshed.record,kind,policySha256,inputBindingSha256),true);
+      }
+      await assert.rejects(reuseReviewAuthority({root:h.root,record:original,kind,policySha256:objectSha('policy-v2'),inputBindingSha256:originalBinding,closed,refresh:()=>original}),/REFRESHED_REVIEW_AUTHORITY_INVALID/);
+    }finally{fs.rmSync(h.root,{recursive:true,force:true});}
+  }
 });
 test('no comparison call after blind failure, leak, absent image or non-durable freeze',async()=>{
   for(const source of [{content:'q',answer:'upstream'}, {content:'q',choices:[{solution:'leak'}]}])assert.throws(()=>assertStudentOnly(source),/LEAK/);

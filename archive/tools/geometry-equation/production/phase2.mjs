@@ -20,7 +20,7 @@ import {RepairBudget} from './repair-budget.mjs';
 import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
-import {blindThenCompare,validateReviewLineage,verificationBinding,conditionBinding} from './blinded-review.mjs';
+import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding} from './blinded-review.mjs';
 
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 const schema={type:'object',properties:{status:{type:'string',enum:['PASS','FAIL','UNSUPPORTED']},payload:{type:'string'}},required:['status','payload'],additionalProperties:false};
@@ -185,19 +185,16 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
       const {schemaVersion,questionUid:planUid,visualAssetKey,sourceRef:sourceBinding,solutionRef:solutionBinding,verifiedSolutionRef,verifiedSolutionPolicySha256,verificationInputSha256:priorVerificationBinding,sourceReviewInputSha256,sourceReviewPolicySha256,sourceRegistryRef:priorRegistry,planSha256,...semantic}=frozen;plan=semantic;
       if(planUid!==uid||sourceBinding.sha256!==sourceRef.sha256)throw Error('REPLAY_PLAN_SOURCE_MISMATCH');
       stages.push(...priorStages.filter(s=>['PLAN','SOURCE_REVIEW','VERIFIED_SOLUTION','PLANNER','SOLUTION_BLIND_FREEZE','SOLUTION_COMPARE','CONDITIONS_BLIND_FREEZE','CONDITIONS_COMPARE'].includes(s.value.stage)).map(s=>({...s.value,manifestRef:s.ref})));
-      let verified=JSON.parse(readBoundFile(root,frozen.verifiedSolutionRef));
-      if(!verificationClosed(verified)||!validateReviewLineage(root,verified,'SOLUTION',verifyPolicy,verificationInputSha256)){
-        const fresh=await verify();verified=fresh.record;frozen={...frozen,verifiedSolutionRef:fresh.receipt.outputs[0]};
-      }
+      const priorVerification=JSON.parse(readBoundFile(root,frozen.verifiedSolutionRef));
+      const verificationReplay=await reuseReviewAuthority({root,record:priorVerification,kind:'SOLUTION',policySha256:verifyPolicy,inputBindingSha256:verificationInputSha256,closed:verificationClosed,refresh:verify});
+      if(!verificationReplay.reused)frozen={...frozen,verifiedSolutionRef:verificationReplay.refreshResult.receipt.outputs[0]};
       solutionRef=receipt('SOLUTION_INPUT',{'solution.txt':question.solution},provenance).outputs[0];
       const currentPolicy=sourcePolicyFingerprint(root);
       const binding=conditionBinding({sourceRef,source:sourceOnly,images,plan,policySha256:currentPolicy});
       const reviews=priorStages.filter(s=>s.value.stage==='SOURCE_REVIEW').map(s=>JSON.parse(readBoundFile(root,s.value.outputs[0])));
-      let sourceReview=reviews.find(r=>r.inputSha256===frozen.sourceReviewInputSha256);
-      if(!sourceReviewClosed(sourceReview)||!validateReviewLineage(root,sourceReview,'CONDITIONS',currentPolicy,binding)){
-        sourceReview=await reviewConditions(plan);reviewFreeze('SOURCE_REVIEW',sourceReview);
-        if(!sourceReviewClosed(sourceReview))throw Error('CURRENT_SOURCE_POLICY_REVIEW_FAIL');
-      }
+      const priorSourceReview=reviews.find(r=>r.inputSha256===frozen.sourceReviewInputSha256);
+      const sourceReviewReplay=await reuseReviewAuthority({root,record:priorSourceReview,kind:'CONDITIONS',policySha256:currentPolicy,inputBindingSha256:binding,closed:sourceReviewClosed,refresh:async()=>{const value=await reviewConditions(plan);reviewFreeze('SOURCE_REVIEW',value);return value;}});
+      const sourceReview=sourceReviewReplay.record;
       frozen={...frozen,solutionRef,sourceRegistryRef,verifiedSolutionPolicySha256:verifyPolicy,verificationInputSha256,sourceReviewInputSha256:sourceReview.inputSha256,sourceReviewPolicySha256:currentPolicy};
       delete frozen.planSha256;frozen.planSha256=planHash(frozen);
       planReceipt=freeze('PLAN',frozen,provenance);stages.push(planReceipt);
