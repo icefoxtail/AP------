@@ -661,8 +661,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:EQUAL_QUOTIENT_REMAINDER_WITH_FACTOR_CONSTRAINT"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -706,8 +705,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:NESTED_REMAINDER_VALUE_TRANSFER"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -753,8 +751,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL",
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:COMPLEX_POWER_PERIODIC_SUM"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -983,7 +980,6 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:MUTUAL_QUOTIENT_COMMON_REMAINDER_DEGREE_RECOVERY"
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
