@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "R1_SOURCE_CORRECTION_REVIEW_V1",
+  "examUid": "20_왕의중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "rows": [
+    {
+      "qid": 8,
+      "status": "SOURCE_CORRECTION_CONFIRMED",
+      "sourceMode": "AUDITED_REPAIR",
+      "studentField": "content",
+      "originalValue": "A6 용지와 A9 용지",
+      "currentValue": "A5 용지와 A9 용지",
+      "independentEvidence": {
+        "sourcePage": "source/source-page-2.png",
+        "sourcePageSha256": "9f9111721d82fa9ac1c85b59e897f682ce3fb7f1de4da87721faabae5f56b095",
+        "observation": "The printed full-page question visibly labels the compared sheets A5 and A9; the current content matches the page."
+      },
+      "mathCheck": "Four area halvings give area ratio 16:1, so the length similarity ratio is sqrt(16):1=4:1; stored choice ② is consistent after the freeze correction.",
+      "disposition": "KEEP_AUDITED_REPAIR"
+    },
+    {
+      "qid": 23,
+      "status": "AUDITED_SOURCE_REPAIR_CONFIRMED",
+      "sourceMode": "AUDITED_REPAIR",
+      "studentField": "content",
+      "originalValue": "AB=8 cm, AC=6 cm; no explicit right-angle condition in printed wording",
+      "currentValue": "The single condition ∠BAC=90° is included",
+      "independentEvidence": {
+        "questionPage": "source/source-hi-4.png",
+        "questionPageSha256": "3ff53880ae6a893474b6af58654085e79793824695385062bef3c06156d0b68f",
+        "answerPage": "source/answer-page-2.png",
+        "answerPageSha256": "11621f6f672e82b83354222c3d784cd195f72bdeb6c73ef2b2b80c232e1e4607",
+        "questionObservation": "The full-page source wording has no printed right-angle condition and the triangle drawing has no explicit right-angle box.",
+        "answerObservation": "The official solution entry for 서술형3 gives area ④ as 1/14×(1/2×6×8) and ⑤ as 12/7, which explicitly uses AB and AC as perpendicular legs."
+      },
+      "independentMathCheck": "In a triangle with sides AB=8, AC=6 and included angle A, area is 24 sin(A). The official keyed construction 1/2×8×6=24 is possible only for A=90°. Adding the single missing condition ∠BAC=90° restores a unique answer and leaves the intended incenter/centroid ratio method unchanged.",
+      "disposition": "KEEP_AUDITED_SOURCE_REPAIR"
+    }
+  ]
+}

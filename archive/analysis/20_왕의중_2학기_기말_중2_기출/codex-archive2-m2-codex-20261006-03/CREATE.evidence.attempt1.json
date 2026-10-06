@@ -1,0 +1,2995 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "20_왕의중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "2c8e58922e8c3ea5a34a951f599ce3ec40c64692",
+  "sourceInputArtifactSha": "e8c32eb854c2cc5b2ed8a337c87de86b2ba73f17",
+  "rawArtifactSha256": "3ae24e5252cc35b8de59699aa41129400fd972a16e7e1edef8fe4867e8a62b0e",
+  "rawInputSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+  "evidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.evidence.json",
+  "createdAt": "2026-10-06T18:04:48.497Z",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "sampleReadBeforeWork": true,
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Read the solution directly: coordinates of the internal division point and midpoint are computed in separate x/y steps, then the distance formula is substituted and simplified."
+          },
+          {
+            "qid": 18,
+            "solutionSha256": "fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585",
+            "visualSha256": "818597daa71a6d400644def7ed26d7d8eb8a82ecc41157a70f991f1aad405c3b",
+            "observation": "Read the solution directly: set inclusion is reduced to B⊆X⊆A, distance condition requires one of two opposite upper corners, then subtract the excluded selections. Physical visual inspected: 3×3 lattice, bottom required points and two alternative diagonal endpoints match the reasoning."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "Read the solution directly: element membership and subset relations are judged separately item by item with each truth claim on its own block."
+          },
+          {
+            "qid": 20,
+            "solutionSha256": "76e9d24b9281566a50f5b83f8628093447d71381349004a4f218f6863f59bbcc",
+            "visualSha256": "7021056499a21aff9b85b82799915e4da24901f3b401559f84192ede3b5840c9",
+            "observation": "Read the solution directly: compute distance from coordinate differences, apply the internal division formula with opposite weights, then state both requested results. Physical visual inspected: A-P-B order, AP:PB=2:1, labels, equal-axis scale and AB=√13 agree with source."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Inspect actual SVG geometry instead of labels; split enumerated small-board judgements; null Meta requires lookup evidence and nullReason, and unique active exact mappings disallow null; inspect runtime TeX escapes."
+    }
+  },
+  "preflightEvidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.solution-preflight.json",
+  "sourceInputAuditRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.source-input-audit.json",
+  "sourceInputAuditSha256": "c33f413bbda7eec66a2200d88fd537ade0be0244f8d76ed474eed840d840549b",
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "2e7979703cd4025b1f33f0b1ed585d160d65e42ea78b0a9ffe55e227f2b54718",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "평행사변형의 각 성질과 각의 비",
+            "primaryMethod": "인접 내각과 일직선각을 적용해 x 결정",
+            "decisiveStep": "인접 내각과 일직선각을 적용해 x 결정",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q01.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fce529edf9dd06768400bbb7f8dfc168fefe48ffe32cf2234acbb970f3a3f711",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "평행사변형의 각 성질과 각의 비"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "인접 내각과 일직선각을 적용해 x 결정"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 1,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q01.png",
+        "assetSha256": "3f90d75e820190870155c9864ef6a3a49baaf3a3d1b15c2385db2788ee555023",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "평행사변형의 각 성질과 각의 비",
+        "primaryMethod": "인접 내각과 일직선각을 적용해 x 결정",
+        "decisiveStep": "인접 내각과 일직선각을 적용해 x 결정",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 1,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "2e7979703cd4025b1f33f0b1ed585d160d65e42ea78b0a9ffe55e227f2b54718"
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "0e9bff389bcb2e33e94c673d998bc62721bc2dc07ed152ca99eae00eec85c27e",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "사각형의 대각선 성질",
+            "primaryMethod": "대각선이 서로를 이등분하는 도형과 아닌 도형 판별",
+            "decisiveStep": "대각선이 서로를 이등분하는 도형과 아닌 도형 판별",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "No diagram/graph/table is needed to decide or explain this item; visual necessity audited and exempt."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NO_ASSET_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0c1ace2ce20ffb614da193f4ffcc058c209e4c5475c67097db4ab8c313eca8f5",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "사각형의 대각선 성질"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "대각선이 서로를 이등분하는 도형과 아닌 도형 판별"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 2,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "NOT_APPLICABLE",
+        "disposition": "VISUAL_EXEMPT",
+        "assetRef": null,
+        "assetSha256": null,
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "문항이 도형 자료를 요구하지 않아 추가 visual이 결정 단계를 돕지 않는다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "사각형의 대각선 성질",
+        "primaryMethod": "대각선이 서로를 이등분하는 도형과 아닌 도형 판별",
+        "decisiveStep": "대각선이 서로를 이등분하는 도형과 아닌 도형 판별",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 2,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "0e9bff389bcb2e33e94c673d998bc62721bc2dc07ed152ca99eae00eec85c27e"
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "1526c2ff1ab85300d04e4caec9e25401670f39039ff5afe6ed0ade0888ba58f7",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "평행사변형의 판정",
+            "primaryMethod": "대각선 길이 하나만으로 평행사변형이 보장되지 않음을 판별",
+            "decisiveStep": "대각선 길이 하나만으로 평행사변형이 보장되지 않음을 판별",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q03.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4334044a9510ae162335b16114b5ff429676469a406e8284ed6d67f85f3872fd",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "평행사변형의 판정"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "대각선 길이 하나만으로 평행사변형이 보장되지 않음을 판별"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 3,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q03.png",
+        "assetSha256": "ff567e7ebb12703a6d61317d9b7e566c46344a813e9b8aed8d1c4ac53cba7281",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "평행사변형의 판정",
+        "primaryMethod": "대각선 길이 하나만으로 평행사변형이 보장되지 않음을 판별",
+        "decisiveStep": "대각선 길이 하나만으로 평행사변형이 보장되지 않음을 판별",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 3,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "1526c2ff1ab85300d04e4caec9e25401670f39039ff5afe6ed0ade0888ba58f7"
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "033ff01e238aefcbe3b427f43b204971499b9cdd131933bc97b9b41ea8947671",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "평행사변형의 대각선과 직사각형 판정",
+            "primaryMethod": "이등변 삼각형 조건에서 대각선이 같아짐을 얻고 결과 명제 두 개 선택",
+            "decisiveStep": "이등변 삼각형 조건에서 대각선이 같아짐을 얻고 결과 명제 두 개 선택",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q04.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "395890badfb8a48335ee4c6da67dc28c620abf99e7dc49c683dad72dda9a86c4",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "평행사변형의 대각선과 직사각형 판정"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "이등변 삼각형 조건에서 대각선이 같아짐을 얻고 결과 명제 두 개 선택"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 4,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q04.png",
+        "assetSha256": "6c285f9975aa1e2de96dca2e6ea2f72880816806a93f3396921c4d6e9df64f6f",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "평행사변형의 대각선과 직사각형 판정",
+        "primaryMethod": "이등변 삼각형 조건에서 대각선이 같아짐을 얻고 결과 명제 두 개 선택",
+        "decisiveStep": "이등변 삼각형 조건에서 대각선이 같아짐을 얻고 결과 명제 두 개 선택",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 4,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "033ff01e238aefcbe3b427f43b204971499b9cdd131933bc97b9b41ea8947671"
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "504b7a254a4008cae77f7c38bd015e45baaeb7bf1c0617c4b3ec5fc5d8e2feb0",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "마름모의 성질",
+            "primaryMethod": "마름모에서 일반적으로 성립하지 않는 대각선 길이 등식 판별",
+            "decisiveStep": "마름모에서 일반적으로 성립하지 않는 대각선 길이 등식 판별",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q05.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "eb768d92c64dad071389851ee82c0f06e984cca2f16fd3b49b4936f898713bb9",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "마름모의 성질"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "마름모에서 일반적으로 성립하지 않는 대각선 길이 등식 판별"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 5,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q05.png",
+        "assetSha256": "292f848467a276abc71dfb42aec259180287ba2c504a0c2d8203ef656c77ae95",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "마름모의 성질",
+        "primaryMethod": "마름모에서 일반적으로 성립하지 않는 대각선 길이 등식 판별",
+        "decisiveStep": "마름모에서 일반적으로 성립하지 않는 대각선 길이 등식 판별",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 5,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "504b7a254a4008cae77f7c38bd015e45baaeb7bf1c0617c4b3ec5fc5d8e2feb0"
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "a3c2bc6d9b234f21c94063ea67af199363f9bca8f9edeb827f7481d12ca136a9",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "평행사변형에서 직사각형 판정",
+            "primaryMethod": "한 내각이 직각인 조건으로 직사각형 판정",
+            "decisiveStep": "한 내각이 직각인 조건으로 직사각형 판정",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "No diagram/graph/table is needed to decide or explain this item; visual necessity audited and exempt."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NO_ASSET_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "95783c1796a4518e0cf0a241c8e543e7362d603fd6578e56979e9963b47dc7e5",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "평행사변형에서 직사각형 판정"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "한 내각이 직각인 조건으로 직사각형 판정"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 6,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "NOT_APPLICABLE",
+        "disposition": "VISUAL_EXEMPT",
+        "assetRef": null,
+        "assetSha256": null,
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "문항이 도형 자료를 요구하지 않아 추가 visual이 결정 단계를 돕지 않는다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "평행사변형에서 직사각형 판정",
+        "primaryMethod": "한 내각이 직각인 조건으로 직사각형 판정",
+        "decisiveStep": "한 내각이 직각인 조건으로 직사각형 판정",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 6,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "a3c2bc6d9b234f21c94063ea67af199363f9bca8f9edeb827f7481d12ca136a9"
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "657205165ff6470cb249e093609f1843f22304bc57a03f239a5cf2ca9eb0e969",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "삼각형의 닮음",
+            "primaryMethod": "두 각의 대응으로 닮음비와 선분 길이 계산",
+            "decisiveStep": "두 각의 대응으로 닮음비와 선분 길이 계산",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q07.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "cf5332f041d28e2e8042a0c12f30a99e463695a6cb62b6fde16285fd8e6feda9",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "삼각형의 닮음"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "두 각의 대응으로 닮음비와 선분 길이 계산"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 7,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q07.png",
+        "assetSha256": "f2d37af2be65910c06976093eed643062d2880dd6dc5cb56f560a7c87b189d39",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "삼각형의 닮음",
+        "primaryMethod": "두 각의 대응으로 닮음비와 선분 길이 계산",
+        "decisiveStep": "두 각의 대응으로 닮음비와 선분 길이 계산",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 7,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "657205165ff6470cb249e093609f1843f22304bc57a03f239a5cf2ca9eb0e969"
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "verdict": "HOLD",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "ecab47cc5cc0e1834edea7fbcaa48efafaf4b622b07c74d5417f6fe64e069d46",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "detail": "Source states linear similarity ratio A6:A9, three successive area halvings imply linear ratio (√2)^3=2√2:1, but no choice equals this. The 8:1 choice is area ratio, not similarity ratio. Preserve exact source and choices; no answer can be selected without changing source."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_SIMILAR_FIGURES",
+            "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "종이 크기의 닮음비",
+            "primaryMethod": "세 단계 접기에서 선형 닮음비와 선택지의 수학적 불일치 확인",
+            "decisiveStep": "세 단계 접기에서 선형 닮음비와 선택지의 수학적 불일치 확인",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "HOLD",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q08.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": null,
+      "curriculumMethodInventory": {
+        "concepts": [
+          "종이 크기의 닮음비"
+        ],
+        "formulas": [],
+        "notations": [],
+        "methods": [
+          "세 단계 접기에서 선형 닮음비와 선택지의 수학적 불일치 확인"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "HOLD_SOURCE_AMBIGUITY"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 8,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "SOURCE_HOLD",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q08.png",
+        "assetSha256": "59c52dc0c9eb5a052749ebaef720e5e832b2229b2b0ec8571c1ef626340fbea4",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "종이 크기의 닮음비",
+        "primaryMethod": "세 단계 접기에서 선형 닮음비와 선택지의 수학적 불일치 확인",
+        "decisiveStep": "세 단계 접기에서 선형 닮음비와 선택지의 수학적 불일치 확인",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 8,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "ecab47cc5cc0e1834edea7fbcaa48efafaf4b622b07c74d5417f6fe64e069d46"
+      },
+      "sourceDefect": {
+        "code": "NO_OPTION_MATCHES_STATED_LINEAR_SIMILARITY_RATIO",
+        "reason": "Source states linear similarity ratio A6:A9, three successive area halvings imply linear ratio (√2)^3=2√2:1, but no choice equals this. The 8:1 choice is area ratio, not similarity ratio. Preserve exact source and choices; no answer can be selected without changing source.",
+        "repairAttempted": "Checked all five printed choices against (√2)^3:1 from three successive area halvings; no choice equals 2√2:1.",
+        "authorityLookupAttempted": "Opened the exact source PDF page 2, candidate image q08.png and locked source question/choices; preserved content and choices byte-for-byte.",
+        "whyDeterministicClosureImpossible": "Source states linear similarity ratio A6:A9, three successive area halvings imply linear ratio (√2)^3=2√2:1, but no choice equals this. The 8:1 choice is area ratio, not similarity ratio. Preserve exact source and choices; no answer can be selected without changing source.",
+        "nextRequiredEvidenceOrCapability": "Authorized correction of the printed question/choices or authoritative answer key confirming a different intended quantity."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "f23d1f1fef78464a1f08125a9b1d3bb301068bc3cd803fdd87fd8b8c4318948e",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "직각삼각형의 닮음과 빗변 높이",
+            "primaryMethod": "고도정리와 대응각으로 보기 판별",
+            "decisiveStep": "고도정리와 대응각으로 보기 판별",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q09.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9a553ab15f2937365d8cd8e92b3f2dc5781d95aa0d01f2b10132153ae5c78abb",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "직각삼각형의 닮음과 빗변 높이"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "고도정리와 대응각으로 보기 판별"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 9,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q09.png",
+        "assetSha256": "585a19257019a0a3c603c95fc43e458d7f5f38b56c0a14b7e25b65ed5dde0ccb",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "직각삼각형의 닮음과 빗변 높이",
+        "primaryMethod": "고도정리와 대응각으로 보기 판별",
+        "decisiveStep": "고도정리와 대응각으로 보기 판별",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 9,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "f23d1f1fef78464a1f08125a9b1d3bb301068bc3cd803fdd87fd8b8c4318948e"
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "6a7dcdb45471534b0717699e796d4f4cf31a64066439a8e2f5154afe05f4e38d",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "평행선과 선분의 길이의 비",
+            "primaryMethod": "평행사변형에 생긴 닮은 삼각형에서 길이비 적용",
+            "decisiveStep": "평행사변형에 생긴 닮은 삼각형에서 길이비 적용",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q10.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2da21edd01174cff19d7b67ec180ab97aa1b61f83a47a4969d34713c29b8a927",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "평행선과 선분의 길이의 비"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "평행사변형에 생긴 닮은 삼각형에서 길이비 적용"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 10,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q10.png",
+        "assetSha256": "3f7bf04111e5514f9de733d493198190fd4a5eb4b748914d04747dc1b64dcde4",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "평행선과 선분의 길이의 비",
+        "primaryMethod": "평행사변형에 생긴 닮은 삼각형에서 길이비 적용",
+        "decisiveStep": "평행사변형에 생긴 닮은 삼각형에서 길이비 적용",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 10,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "6a7dcdb45471534b0717699e796d4f4cf31a64066439a8e2f5154afe05f4e38d"
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "257cb984669772661ce40a6ed95e3e147c954eba45abda0b5946676d381b3383",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "평행선 사이 선분의 비",
+            "primaryMethod": "두 횡선의 대응 구간 비례식",
+            "decisiveStep": "두 횡선의 대응 구간 비례식",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q11.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fda63fbc62522995b9fb8c3a4becb3d74951080c8791586905e49e9e6382334f",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "평행선 사이 선분의 비"
+        ],
+        "formulas": [
+          "대응 선분의 비례식"
+        ],
+        "notations": [],
+        "methods": [
+          "두 횡선의 대응 구간 비례식"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 11,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q11.png",
+        "assetSha256": "38057e9ffba27a21c4bd8fd38bf724be67bff3b6248de49e264948881458b434",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "평행선 사이 선분의 비",
+        "primaryMethod": "두 횡선의 대응 구간 비례식",
+        "decisiveStep": "두 횡선의 대응 구간 비례식",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 11,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "257cb984669772661ce40a6ed95e3e147c954eba45abda0b5946676d381b3383"
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "5ef7b8b7c5f037327d28664c56db989e1cb50349c2aa47a32a577a30813d56c0",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+            "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "삼각형의 닮음과 평행선 판정",
+            "primaryMethod": "두 변을 같은 비로 나눈 점을 연결해 평행선 판정",
+            "decisiveStep": "두 변을 같은 비로 나눈 점을 연결해 평행선 판정",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q12.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f222771716df3efb25d73a008aff3cefb03892650d462543f5d0287aae9c96de",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "삼각형의 닮음과 평행선 판정"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "두 변을 같은 비로 나눈 점을 연결해 평행선 판정"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 12,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q12.png",
+        "assetSha256": "65c09a5bc243adcc8e5fe94292027dfe2550695b226ba1e2dc845321119b7622",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "삼각형의 닮음과 평행선 판정",
+        "primaryMethod": "두 변을 같은 비로 나눈 점을 연결해 평행선 판정",
+        "decisiveStep": "두 변을 같은 비로 나눈 점을 연결해 평행선 판정",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 12,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "5ef7b8b7c5f037327d28664c56db989e1cb50349c2aa47a32a577a30813d56c0"
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "7aabddd31f63c46a4dcb02b347b78d39d578a6f7cdaa279377045c9b8dcdb533",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "사다리꼴 중점선과 대각선 중점",
+            "primaryMethod": "중점선 조각 길이와 밑변의 절반 관계 사용",
+            "decisiveStep": "중점선 조각 길이와 밑변의 절반 관계 사용",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q13.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "adcf32a1f8afa3f6c10826b93ae8cd84f19fb4e97a252d287e3ce07ba34b0958",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "사다리꼴 중점선과 대각선 중점"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "중점선 조각 길이와 밑변의 절반 관계 사용"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 13,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q13.png",
+        "assetSha256": "e4a051617a7f20239a12e306a1095e9d4e455ed698a6d4f324b5a7ec9c9b4d83",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "사다리꼴 중점선과 대각선 중점",
+        "primaryMethod": "중점선 조각 길이와 밑변의 절반 관계 사용",
+        "decisiveStep": "중점선 조각 길이와 밑변의 절반 관계 사용",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 13,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "7aabddd31f63c46a4dcb02b347b78d39d578a6f7cdaa279377045c9b8dcdb533"
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "af97e149a38c2ee44292d3d359aa1d9320a74a5456c2d5921dfd2da50b0637f6",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "평행사변형 중점과 대각선의 비",
+            "primaryMethod": "중점으로 정해진 BD 내분비의 차를 구함",
+            "decisiveStep": "중점으로 정해진 BD 내분비의 차를 구함",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q14.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7e1da4773403f3c934713a55e6a5de67d336874baa38becc7d85613d73414b8c",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "평행사변형 중점과 대각선의 비"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "중점으로 정해진 BD 내분비의 차를 구함"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 14,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q14.png",
+        "assetSha256": "7c78d747cc2082651a3efcce440b40275aee372606c5c7c2528728f962ac29df",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "평행사변형 중점과 대각선의 비",
+        "primaryMethod": "중점으로 정해진 BD 내분비의 차를 구함",
+        "decisiveStep": "중점으로 정해진 BD 내분비의 차를 구함",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 14,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "af97e149a38c2ee44292d3d359aa1d9320a74a5456c2d5921dfd2da50b0637f6"
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "6e61898b7aeedc8898c2609527f97a2763977c30af4ecde048b0d297655b8888",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_TRIANGLE_CENTERS",
+            "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "삼각형 무게중심과 넓이비",
+            "primaryMethod": "중선의 길이비와 공통 높이 넓이비 사용",
+            "decisiveStep": "중선의 길이비와 공통 높이 넓이비 사용",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q15.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "01e9f848dc881efd7e0bd64fab9ca2b1ad88e9388a7856b614fb730d2afc0775",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "삼각형 무게중심과 넓이비"
+        ],
+        "formulas": [
+          "무게중심의 2:1 분할"
+        ],
+        "notations": [],
+        "methods": [
+          "중선의 길이비와 공통 높이 넓이비 사용"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 15,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q15.png",
+        "assetSha256": "2ca61384e2cfa52c569cf93b4a1c8d6d960e741ba6ad4554a10119af601259f1",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "삼각형 무게중심과 넓이비",
+        "primaryMethod": "중선의 길이비와 공통 높이 넓이비 사용",
+        "decisiveStep": "중선의 길이비와 공통 높이 넓이비 사용",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 15,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "6e61898b7aeedc8898c2609527f97a2763977c30af4ecde048b0d297655b8888"
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "4e3b5e8d2d4b0f39c02f8e7528380d2a1f23e3fe4c6ef0cd0b222e1dcf6c092e",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "피타고라스 정리의 역",
+            "primaryMethod": "세 변을 대입해 직각삼각형 후보 판정",
+            "decisiveStep": "세 변을 대입해 직각삼각형 후보 판정",
+            "projectionStatus": "UNMATERIALIZED",
+            "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+            "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+            "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "No diagram/graph/table is needed to decide or explain this item; visual necessity audited and exempt."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NO_ASSET_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "17232c7c2818a9ee8c8213783bcc0db006d6eeaaa71ebc3d985ebebaa0c2d64f",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "피타고라스 정리의 역"
+        ],
+        "formulas": [
+          "피타고라스 정리"
+        ],
+        "notations": [],
+        "methods": [
+          "세 변을 대입해 직각삼각형 후보 판정"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 16,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "NOT_APPLICABLE",
+        "disposition": "VISUAL_EXEMPT",
+        "assetRef": null,
+        "assetSha256": null,
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "문항이 도형 자료를 요구하지 않아 추가 visual이 결정 단계를 돕지 않는다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "피타고라스 정리의 역",
+        "primaryMethod": "세 변을 대입해 직각삼각형 후보 판정",
+        "decisiveStep": "세 변을 대입해 직각삼각형 후보 판정",
+        "projectionStatus": "UNMATERIALIZED",
+        "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+        "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+        "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+      },
+      "sourceIdentity": {
+        "qid": 16,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "4e3b5e8d2d4b0f39c02f8e7528380d2a1f23e3fe4c6ef0cd0b222e1dcf6c092e"
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "3c4cbc04668b1fbc6b8776d8fdc76c933dd412d82b30574edc2ce950a66cb92d",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "정사각형의 넓이 분할",
+            "primaryMethod": "바깥 정사각형에서 네 모서리 직각삼각형 넓이 차감",
+            "decisiveStep": "바깥 정사각형에서 네 모서리 직각삼각형 넓이 차감",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q17.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a7b72b4cceddaa96469e9b463896e1b9466f02759f0e7b925fc61451c2b7f9af",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "정사각형의 넓이 분할"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "바깥 정사각형에서 네 모서리 직각삼각형 넓이 차감"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 17,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q17.png",
+        "assetSha256": "3bbbf1d0a766aac682c2a1b269cfcd76624a3b24453dc8a10e9dc32b597cfb1c",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "정사각형의 넓이 분할",
+        "primaryMethod": "바깥 정사각형에서 네 모서리 직각삼각형 넓이 차감",
+        "decisiveStep": "바깥 정사각형에서 네 모서리 직각삼각형 넓이 차감",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 17,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "3c4cbc04668b1fbc6b8776d8fdc76c933dd412d82b30574edc2ce950a66cb92d"
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "6556e2ce7e17960bda12876fc2c4392d209822b3eb5cf9adf302a48a79ad4ea5",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "피타고라스 정리의 도형 활용",
+            "primaryMethod": "큰 정사각형과 작은 정사각형 배치에서 직각삼각형 구성",
+            "decisiveStep": "큰 정사각형과 작은 정사각형 배치에서 직각삼각형 구성",
+            "projectionStatus": "UNMATERIALIZED",
+            "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+            "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+            "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q18.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "216ce280988db0b935da505bbba2584df4eaad53e9f8b6ede18ed8c53524eac9",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "피타고라스 정리의 도형 활용"
+        ],
+        "formulas": [
+          "피타고라스 정리"
+        ],
+        "notations": [],
+        "methods": [
+          "큰 정사각형과 작은 정사각형 배치에서 직각삼각형 구성"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 18,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q18.png",
+        "assetSha256": "00c44088e6e9d880e7c579b02c6cc0e5db51acd00a2e286ce09bff62d1822d3d",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "피타고라스 정리의 도형 활용",
+        "primaryMethod": "큰 정사각형과 작은 정사각형 배치에서 직각삼각형 구성",
+        "decisiveStep": "큰 정사각형과 작은 정사각형 배치에서 직각삼각형 구성",
+        "projectionStatus": "UNMATERIALIZED",
+        "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+        "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+        "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+      },
+      "sourceIdentity": {
+        "qid": 18,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "6556e2ce7e17960bda12876fc2c4392d209822b3eb5cf9adf302a48a79ad4ea5"
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "1a6dd95b8c1d407d7167f948e39addc7aa56b2def095850f33ae0dc98108d53c",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "피타고라스 정리와 반원 넓이 관계",
+            "primaryMethod": "빗변과 직각변의 길이, 직각삼각형 넓이 사용",
+            "decisiveStep": "빗변과 직각변의 길이, 직각삼각형 넓이 사용",
+            "projectionStatus": "UNMATERIALIZED",
+            "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+            "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+            "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q19.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b41cc91b6823077f3019891a108af9c94e7f6df009b96a8d9c95ea16c71f8855",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "피타고라스 정리와 반원 넓이 관계"
+        ],
+        "formulas": [
+          "피타고라스 정리"
+        ],
+        "notations": [],
+        "methods": [
+          "빗변과 직각변의 길이, 직각삼각형 넓이 사용"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 19,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q19.png",
+        "assetSha256": "544ebd5f020d4d1c1f79722706ac73c6e8eedd3f99314c0e911878040ed12ce4",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "피타고라스 정리와 반원 넓이 관계",
+        "primaryMethod": "빗변과 직각변의 길이, 직각삼각형 넓이 사용",
+        "decisiveStep": "빗변과 직각변의 길이, 직각삼각형 넓이 사용",
+        "projectionStatus": "UNMATERIALIZED",
+        "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+        "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+        "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+      },
+      "sourceIdentity": {
+        "qid": 19,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "1a6dd95b8c1d407d7167f948e39addc7aa56b2def095850f33ae0dc98108d53c"
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "f96eec094f9fddb0ba10d809f04222ba0ac0075b23346372f8cb5fdc777bc7af",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "직사각형의 넓이와 대각선 수선",
+            "primaryMethod": "같은 밑변 대각선을 둔 두 삼각형의 넓이 합으로 수선거리 합 결정",
+            "decisiveStep": "같은 밑변 대각선을 둔 두 삼각형의 넓이 합으로 수선거리 합 결정",
+            "projectionStatus": "UNMATERIALIZED",
+            "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+            "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+            "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q20.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9190bac6396694f8a0dd278efb1b795234abd2b8429654e5feef9234f9d66b2a",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "직사각형의 넓이와 대각선 수선"
+        ],
+        "formulas": [
+          "피타고라스 정리"
+        ],
+        "notations": [],
+        "methods": [
+          "같은 밑변 대각선을 둔 두 삼각형의 넓이 합으로 수선거리 합 결정"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 20,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q20.png",
+        "assetSha256": "a8d9c692382bcbd9fcdb34e4494b3db2caaf88b88b8e232c77e7bb8281bd5e20",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "직사각형의 넓이와 대각선 수선",
+        "primaryMethod": "같은 밑변 대각선을 둔 두 삼각형의 넓이 합으로 수선거리 합 결정",
+        "decisiveStep": "같은 밑변 대각선을 둔 두 삼각형의 넓이 합으로 수선거리 합 결정",
+        "projectionStatus": "UNMATERIALIZED",
+        "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+        "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+        "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+      },
+      "sourceIdentity": {
+        "qid": 20,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "f96eec094f9fddb0ba10d809f04222ba0ac0075b23346372f8cb5fdc777bc7af"
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "84e5f69e649fc03f84187967b17d99f392f694639da19ee672f4b5065100a96a",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_SIMILAR_FIGURES",
+            "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "항상 닮은 도형 판별",
+            "primaryMethod": "대응각과 대응변비가 고정되는 도형 분류",
+            "decisiveStep": "대응각과 대응변비가 고정되는 도형 분류",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "No diagram/graph/table is needed to decide or explain this item; visual necessity audited and exempt."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NO_ASSET_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "06dd75122a004472135b6711f28d66fd6efcf4add24ece21ade693bfb35dedc1",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "항상 닮은 도형 판별"
+        ],
+        "formulas": [
+          "해당 도형의 성질과 길이비"
+        ],
+        "notations": [],
+        "methods": [
+          "대응각과 대응변비가 고정되는 도형 분류"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 21,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "NOT_APPLICABLE",
+        "disposition": "VISUAL_EXEMPT",
+        "assetRef": null,
+        "assetSha256": null,
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "문항이 도형 자료를 요구하지 않아 추가 visual이 결정 단계를 돕지 않는다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "항상 닮은 도형 판별",
+        "primaryMethod": "대응각과 대응변비가 고정되는 도형 분류",
+        "decisiveStep": "대응각과 대응변비가 고정되는 도형 분류",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 21,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "84e5f69e649fc03f84187967b17d99f392f694639da19ee672f4b5065100a96a"
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "e4e5201bcfb8d7c4edfb667de8fe0dac212803f60c41fe4c5529219917ea55eb",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": "PT_SIMILAR_FIGURES",
+            "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "닮은 입체도형의 대응변비",
+            "primaryMethod": "대응 면의 꼭짓점 순서에 맞춰 세 변의 비를 적용",
+            "decisiveStep": "대응 면의 꼭짓점 순서에 맞춰 세 변의 비를 적용",
+            "projectionStatus": "REUSE",
+            "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+            "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "bindingLookup": "ACTIVE"
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q22.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "8dd63370839aa171df563cd400f26d343f7b879e5098938ef78707648554b93a",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "닮은 입체도형의 대응변비"
+        ],
+        "formulas": [
+          "닮은 입체도형의 대응변의 비"
+        ],
+        "notations": [],
+        "methods": [
+          "대응 면의 꼭짓점 순서에 맞춰 세 변의 비를 적용"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 22,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "PROBLEM_ASSET_SUFFICIENT",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q22.png",
+        "assetSha256": "7994b86a3777669210ce3b1be25ede4d68b9594e0d4246f02050b123e4ad8513",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "닮은 입체도형의 대응변비",
+        "primaryMethod": "대응 면의 꼭짓점 순서에 맞춰 세 변의 비를 적용",
+        "decisiveStep": "대응 면의 꼭짓점 순서에 맞춰 세 변의 비를 적용",
+        "projectionStatus": "REUSE",
+        "crosswalkLookup": "ACTIVE exact curriculum/L1/L2 binding in archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "activeTaxonomyLookup": "Unique GLOBAL ACTIVE PT/TPL found in archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bindingLookup": "ACTIVE"
+      },
+      "sourceIdentity": {
+        "qid": 22,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "e4e5201bcfb8d7c4edfb667de8fe0dac212803f60c41fe4c5529219917ea55eb"
+      }
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "verdict": "HOLD",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "baa556c3d16babff760ad47d0223c1408915e1ae491f0792e8b46c37d5ce799a",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "detail": "Source gives AB=8 and AC=6 plus only definitions of incenter I and centroid G. Those determine BE:EC=4:3 and D as midpoint, hence DE:BC=1:14, but do not determine BC or altitude/area of ABC. Continuous triangle shapes satisfy the data with different areas, so [ADE] is not unique."
+        },
+        "meta": {
+          "status": "HOLD",
+          "detail": {
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "HOLD",
+            "rpmPrimaryPath": "내심 각의 이등분선과 무게중심 중선",
+            "primaryMethod": "밑변 내분비는 구해지나 전체 삼각형 넓이는 원문으로 결정 불가",
+            "decisiveStep": "밑변 내분비는 구해지나 전체 삼각형 넓이는 원문으로 결정 불가",
+            "projectionStatus": "INVALID",
+            "crosswalkLookup": "M2 crosswalk exact semantic candidate reviewed; candidate decision not frozen because source does not determine an answer",
+            "activeTaxonomyLookup": "No unique source-grounded exact primary can close q23 while item is on source-integrity hold",
+            "bindingLookup": "Not bound pending source correction/clarification",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "Source gives AB=8 and AC=6 plus only definitions of incenter I and centroid G. Those determine BE:EC=4:3 and D as midpoint, hence DE:BC=1:14, but do not determine BC or altitude/area of ABC. Continuous triangle shapes satisfy the data with different areas, so [ADE] is not unique."
+          }
+        },
+        "visualSvg": {
+          "status": "HOLD",
+          "detail": "Reviewed source problem asset assets/images/20_왕의중_2학기_기말_중2_기출/q23.png visually; its labels/relations support the source. Independent solution SVG is not necessary because the solution uses that same geometry and each decisive fact is directly stated in the small board."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "SOURCE_ASSET_SHA_VERIFIED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": null,
+      "curriculumMethodInventory": {
+        "concepts": [
+          "내심 각의 이등분선과 무게중심 중선"
+        ],
+        "formulas": [],
+        "notations": [],
+        "methods": [
+          "밑변 내분비는 구해지나 전체 삼각형 넓이는 원문으로 결정 불가"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "HOLD_SOURCE_UNDERDETERMINED"
+      },
+      "difficultyEvidence": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 23,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "OPENED_AND_HASH_VERIFIED",
+        "disposition": "SOURCE_HOLD",
+        "assetRef": "assets/images/20_왕의중_2학기_기말_중2_기출/q23.png",
+        "assetSha256": "9aa7fa5ec83e4a1da15fdd1bbac5c0ae0f2c872a289549392c47ef65f0ec9455",
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "원본 그림에 필요한 geometry/topology와 라벨이 모두 있어 풀이에서 같은 내용을 다시 그릴 필요가 없다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "rpmSemanticStatus": "HOLD",
+        "rpmPrimaryPath": "내심 각의 이등분선과 무게중심 중선",
+        "primaryMethod": "밑변 내분비는 구해지나 전체 삼각형 넓이는 원문으로 결정 불가",
+        "decisiveStep": "밑변 내분비는 구해지나 전체 삼각형 넓이는 원문으로 결정 불가",
+        "projectionStatus": "INVALID",
+        "crosswalkLookup": "M2 crosswalk exact semantic candidate reviewed; candidate decision not frozen because source does not determine an answer",
+        "activeTaxonomyLookup": "No unique source-grounded exact primary can close q23 while item is on source-integrity hold",
+        "bindingLookup": "Not bound pending source correction/clarification",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Source gives AB=8 and AC=6 plus only definitions of incenter I and centroid G. Those determine BE:EC=4:3 and D as midpoint, hence DE:BC=1:14, but do not determine BC or altitude/area of ABC. Continuous triangle shapes satisfy the data with different areas, so [ADE] is not unique."
+      },
+      "sourceIdentity": {
+        "qid": 23,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "baa556c3d16babff760ad47d0223c1408915e1ae491f0792e8b46c37d5ce799a"
+      },
+      "sourceDefect": {
+        "code": "AREA_NOT_UNIQUELY_DETERMINED",
+        "reason": "Source gives AB=8 and AC=6 plus only definitions of incenter I and centroid G. Those determine BE:EC=4:3 and D as midpoint, hence DE:BC=1:14, but do not determine BC or altitude/area of ABC. Continuous triangle shapes satisfy the data with different areas, so [ADE] is not unique.",
+        "repairAttempted": "Applied angle-bisector ratio and centroid median facts; derived only DE:BC=1:14.",
+        "authorityLookupAttempted": "Opened exact source PDF page 4, q23 crop, source JS and provenance; verified only AB=8, AC=6 and definitions of I/G are given.",
+        "whyDeterministicClosureImpossible": "Source gives AB=8 and AC=6 plus only definitions of incenter I and centroid G. Those determine BE:EC=4:3 and D as midpoint, hence DE:BC=1:14, but do not determine BC or altitude/area of ABC. Continuous triangle shapes satisfy the data with different areas, so [ADE] is not unique.",
+        "nextRequiredEvidenceOrCapability": "A further source condition such as BC, included angle A, or the area of ABC."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourcePath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+          "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+          "sourceSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "lockedExpectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+          "sourcePdfPath": ".tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+          "sourcePdfSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+          "sourceEvidencePath": "archive/analysis/source-only-m2-20261004/20_왕의중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "3f1f323c624090b66820fb1d5f6cd77969f603ceede36ef750fbd60d928c22b5",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "sourceFingerprint": "471f132b2d7a0286208389e75c4f96585aa08d4d8639d8c5b6ca2ab33d936bb8",
+          "studentFieldsCompared": [
+            "content",
+            "choices"
+          ],
+          "exactEquality": true
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "detail": "Static item-by-item AUTO-FIRST review; preserve source wording/choices; layoutTag grid. Render disposition NOT_RUN_CODEX_HANDOFF."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "detail": "Small-board steps visibly separate givens, relation/equation, substitution, intermediate value, and conclusion; line-wrap render not run, NOT_RUN_CODEX_HANDOFF."
+        },
+        "meta": {
+          "status": "PASS",
+          "detail": {
+            "problemTypeKey": null,
+            "templateKey": null,
+            "rpmSemanticStatus": "FINAL",
+            "rpmPrimaryPath": "피타고라스 정리의 활용",
+            "primaryMethod": "빗변 후보별 방정식과 삼각형 부등식 검토",
+            "decisiveStep": "빗변 후보별 방정식과 삼각형 부등식 검토",
+            "projectionStatus": "UNMATERIALIZED",
+            "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+            "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+            "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+            "metaDebtFields": [
+              "problemTypeKey",
+              "templateKey"
+            ],
+            "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+          }
+        },
+        "visualSvg": {
+          "status": "VISUAL_EXEMPT",
+          "detail": "No diagram/graph/table is needed to decide or explain this item; visual necessity audited and exempt."
+        }
+      },
+      "questionLayoutEvidence": {
+        "beforeDisposition": "SOURCE_AUTO_LAYOUT",
+        "finalDisposition": "LAYOUT_KEEP",
+        "issueCodes": [],
+        "changedFields": [],
+        "sourceTextExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "assetStatus": "NO_ASSET_REQUIRED",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "reason": "AUTO-FIRST; no source wording or choices changed; keep grid; semantic condition and question boundaries remain intact."
+      },
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "720d709835cc19c27de0d221780f61b78f48512a91ce69697211b760d54e4593",
+      "curriculumMethodInventory": {
+        "concepts": [
+          "피타고라스 정리의 활용"
+        ],
+        "formulas": [
+          "피타고라스 정리"
+        ],
+        "notations": [],
+        "methods": [
+          "빗변 후보별 방정식과 삼각형 부등식 검토"
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "PASS"
+      },
+      "difficultyEvidence": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평가에는 핵심 추론 단계 수, 분기/대응 설정, 조건 결합을 사용했다. 문항 번호·선택형 형식·풀이 길이는 사용하지 않았다."
+      },
+      "visualNecessityEvidence": {
+        "qid": 24,
+        "visualNecessityAudit": "COMPLETE",
+        "existingVisualAudit": "NOT_APPLICABLE",
+        "disposition": "VISUAL_EXEMPT",
+        "assetRef": null,
+        "assetSha256": null,
+        "solutionSvg": "NOT_REQUIRED",
+        "reason": "문항이 도형 자료를 요구하지 않아 추가 visual이 결정 단계를 돕지 않는다."
+      },
+      "metaEvidence": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryPath": "피타고라스 정리의 활용",
+        "primaryMethod": "빗변 후보별 방정식과 삼각형 부등식 검토",
+        "decisiveStep": "빗변 후보별 방정식과 삼각형 부등식 검토",
+        "projectionStatus": "UNMATERIALIZED",
+        "crosswalkLookup": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json records matching M2-07 path as RPM_ONLY / NO_ACTIVE_MAPPING",
+        "activeTaxonomyLookup": "No exact active MIDDLE_GEOMETRY Pythagorean PT/TPL projection",
+        "bindingLookup": "No active M2-07 PT binding in compiled curriculum_bindings.json",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "RPM Primary middle2.json crosswalk records the exact M2-07 Pythagorean L3/L4 as RPM_ONLY with NO_ACTIVE_MAPPING; compiled global active taxonomy/binding lookup contains no unique exact projection PT/TPL. Preserve semantic path as final and record nonblocking projection debt; do not invent keys."
+      },
+      "sourceIdentity": {
+        "qid": 24,
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+        "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+        "sourceBranch": "codex/m2-geometry-source-paths-20261006",
+        "sourceCommit": "dbf1286902ca13bc641e98e198887365a1dfd5be",
+        "sourceFingerprint": "471f132b2d7a0286208389e75c4f96585aa08d4d8639d8c5b6ca2ab33d936bb8"
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "JS_ARCHIVE_TARGETED_REPAIR_SCOPE_v1",
+  "stage": "CREATE",
+  "examUid": "20_왕의중_2학기_기말_중2_기출",
+  "scopeFrozenAfterCalibrationPreflight": true,
+  "calibrationPreflightRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.targeted-repair-preflight.json",
+  "calibrationPreflightSha256": "378c63393f9196604596a34c08ddd554661886c8f82a09f4e56032f57c1067df",
+  "inputCandidateAtReview": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+    "gitBlobSha": "f7ac465f9771d06d0aa108b79aca3afe45ce4cbb",
+    "rawSha256": "f5ff78c59ceaf7c0624487fb8f9ce05b496d9564e7dad495abe9459dc8f2be13"
+  },
+  "sourcePdfs": [
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+      "sha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87"
+    },
+    {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2020_왕의중2_수학_2기말_정답.pdf",
+      "sha256": "8d50ed44afab09f9e8a38f67708f3db5acffbb9db4b14fff8cafc9ef006614b9"
+    }
+  ],
+  "sourcePagesOpened": [
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/source-hi-2.png",
+      "observation": "Full page 2 opened at 300 dpi; q08 prompt visibly reads A5 and A9, with diagram labels A4 through A9."
+    },
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/source-hi-4.png",
+      "observation": "Full page 4 opened at 300 dpi; q23 prompt provides incenter/centroid definitions and AB=8, AC=6; figure has no visible right-angle marker."
+    }
+  ],
+  "answerKeyPagesOpened": [
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/answer-page-1.png",
+      "sha256": "31415f1aa5229a8f8bb626ead225f1c9a9397cd9f1583b4df208746a67d18645",
+      "observation": "In the 수학 column, row 8 is answer 2 (choice ②)."
+    },
+    {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/answer-page-2.png",
+      "sha256": "11621f6f672e82b83354222c3d784cd195f72bdeb6c73ef2b2b80c232e1e4607",
+      "observation": "서술형 3 lists ① 4:3 (or 8:6), ② 1:1, ③ 7:1:6, ④ 1/14×(1/2×6×8) [or 1/14×24], ⑤ 12/7."
+    }
+  ],
+  "repairs": [
+    {
+      "qid": 8,
+      "classification": "SOURCE_TRANSCRIPTION_REPAIR",
+      "changedFields": [
+        "content",
+        "answer",
+        "solution"
+      ],
+      "originalCandidateText": "A6 용지와 A9 용지",
+      "fullPageTranscription": "A5 용지와 A9 용지",
+      "answerKey": "②",
+      "independentDerivation": "A5→A9 has four halvings; every half-sized similar sheet has linear ratio √2:1, so A5:A9=(√2)^4:1=4:1, choice ②.",
+      "decision": "Repair the upstream candidate transcription A6 to the full-page printed A5; preserve all five printed choices."
+    },
+    {
+      "qid": 23,
+      "classification": "AUDITED_SOURCE_REPAIR",
+      "changedFields": [
+        "content",
+        "answer",
+        "solution",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "integrationPattern"
+      ],
+      "originalCandidateText": "AB=8 cm, AC=6 cm; no right angle condition stated or marked.",
+      "repairedCondition": "Add the single missing condition ∠BAC=90°.",
+      "answerKey": "서술형 3 exact keyed sequence: ① 4:3, ② 1:1, ③ 7:1:6, ④ 1/14×(1/2×6×8), ⑤ 12/7.",
+      "independentDerivation": "The answer-key formula uses AB and AC as perpendicular legs. With ∠A=90°, [ABC]=24; angle-bisector and centroid ratios give DE:BC=1:14; hence [ADE]=12/7.",
+      "decision": "Repair the omitted right-angle condition, supported by the full answer-key derivation; do not infer geometry from diagram proportions."
+    }
+  ],
+  "lockedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    24
+  ],
+  "downstreamInvalidation": {
+    "changedQids": [
+      8,
+      23
+    ],
+    "studentInputFreeze": "INVALIDATED_FOR_Q08_Q23",
+    "answerAndSolutionFreeze": "INVALIDATED_FOR_Q08_Q23",
+    "metaFreeze": "INVALIDATED_FOR_Q23",
+    "questionLayoutFreeze": "INVALIDATED_FOR_Q08_Q23",
+    "visualSourceFreeze": "INVALIDATED_FOR_Q23",
+    "futureR1R2MustRefreshChangedQidsOnly": true,
+    "unaffectedQidsUnchanged": true
+  }
+}

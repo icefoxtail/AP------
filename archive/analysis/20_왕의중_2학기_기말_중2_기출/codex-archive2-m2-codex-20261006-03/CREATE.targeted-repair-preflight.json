@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "JS_ARCHIVE_REPAIR_CALIBRATION_PREFLIGHT_v1",
+  "stage": "REPAIR",
+  "examUid": "20_왕의중_2학기_기말_중2_기출",
+  "targetQids": [
+    8,
+    23
+  ],
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "읽은 풀이에서 P, M을 분리 계산하고 마지막에 두 점 사이 거리식을 대입한다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 18,
+        "solutionSha256": "sha256:fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585",
+        "solutionExcerpt": "먼저 조건 (가)",
+        "observation": "읽은 풀이에서 B⊆X⊆A를 도출하고 거리 조건을 대각선 끝점 선택으로 바꾼다. SVG도 직접 렌더를 열어 3×3 격자·필수 하단 세 점·두 대각선 끝점이 풀이와 맞음을 확인했다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ],
+        "visualSha256": "sha256:818597daa71a6d400644def7ed26d7d8eb8a82ecc41157a70f991f1aad405c3b",
+        "visualRef": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q18-solution.svg",
+        "visualObservation": "읽은 풀이에서 B⊆X⊆A를 도출하고 거리 조건을 대각선 끝점 선택으로 바꾼다. SVG도 직접 렌더를 열어 3×3 격자·필수 하단 세 점·두 대각선 끝점이 풀이와 맞음을 확인했다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "solutionExcerpt": "집합 $A$의 원소는",
+        "observation": "읽은 풀이에서 각 보기를 원소 관계와 부분집합 관계로 분리 판정한다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 20,
+        "solutionSha256": "sha256:76e9d24b9281566a50f5b83f8628093447d71381349004a4f218f6863f59bbcc",
+        "solutionExcerpt": "두 점 $A(1,3)$, $B(3,6)$ 사이의 거리는",
+        "observation": "읽은 풀이와 직접 열어 본 SVG에서 A-P-B 순서와 AP:PB=2:1, AB=√13을 확인했다.",
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY",
+          "VISUAL_SEMANTIC_PARITY",
+          "VISUAL_READABILITY"
+        ],
+        "visualSha256": "sha256:7021056499a21aff9b85b82799915e4da24901f3b401559f84192ede3b5840c9",
+        "visualRef": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q20-solution.svg",
+        "visualObservation": "읽은 풀이와 직접 열어 본 SVG에서 A-P-B 순서와 AP:PB=2:1, AB=√13을 확인했다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read false-PASS regressions: do not accept label-only visual checks, merged small-board enumerations, null Meta without lookup, or runtime escape issues."
+      }
+    ]
+  },
+  "scopeNote": "Actual Golden/Negative samples and selected visuals were read and bound before any repair; only the assigned OPEN q08/q23 loci are in scope."
+}

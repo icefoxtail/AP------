@@ -1,0 +1,87 @@
+{
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "P=(1,6)",
+        "observation": "좌표 내분에서 대응하는 반대쪽 비를 적용하고 분자·분모 계산을 각 줄로 분리해 중간값과 최종 순서쌍까지 학생이 재현할 수 있다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "-2=-3+n",
+        "observation": "기울기 결정 → 점 대입 → 절편 계산 → 요구값 계산의 설명과 식이 순서대로 분리되어 있다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+        "solutionExcerpt": "x^2+y^2+6x-2y+1=0",
+        "observation": "Actual circle-center SVG checked against the board flow: equal radius 3 is preserved, C0=(-3,1) translates by (-2,1) to C1=(-5,2), origin symmetry gives C2=(5,-2), and the final circle equation is (x-5)^2+(y+2)^2=9.",
+        "visualSha256": "sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "5^2+(-5)^2",
+        "observation": "차이를 먼저 확정한 다음 거리식에 대입하고 제곱근 단계를 보이는 판서 흐름이 명료하다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "k=6",
+        "observation": "각 직선의 기울기를 독립적으로 식 변형해 구한 뒤 수직 조건과 방정식 계산을 별도 단계로 이어간다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+        "observation": "Read the required false-PASS regressions: actual SVG primitive geometry must be checked, enumerated solution branches must be physically separated, resolvable Meta may not remain null, and runtime TeX escapes must be checked."
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "notes": "Failed attempt 1 is preserved separately. This preflight authorizes only the post-calibration current-source re-review and minimum repairs; prior answer freeze remains unchanged. Selected Hyocheon q2 solution SVG was read as actual SVG bytes; viewBox/width/height and line model/equation were checked. data-equation 1x+3y+2=0 matches endpoints (-2,0),(3,-5/3); data-equation 6x−2y−1=0 matches endpoints (-5/6,-3),(3/2,4).",
+    "visualSampleRefs": [
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "sha256": "sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "observation": "Actual SVG markup inspected; dimensions and model coordinates checked against displayed equations. No target visual is being copied."
+      },
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+        "sha256": "sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+        "observation": "Actual SVG bytes and numeric coordinates read; viewBox/size and all three center/radius transitions match the solution facts."
+      }
+    ],
+    "qualityCompareCount": "24/24"
+  }
+}

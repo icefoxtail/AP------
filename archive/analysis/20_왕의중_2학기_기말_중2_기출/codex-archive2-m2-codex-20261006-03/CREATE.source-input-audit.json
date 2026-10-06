@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_SOURCE_AUDIT_v2",
+  "examUid": "20_왕의중_2학기_기말_중2_기출",
+  "runId": "archive2-m2-codex-20261006-03",
+  "candidateFinalSha": "69435f6e4627bcc6689e5b96bc9d5289f0715519",
+  "candidateRawSha256": "871050f08605a64b8686706459c2f0c50cd021818dbaa95cab06f9a68963cec6",
+  "inputSource": {
+    "path": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/middle/m2/20_왕의중_2학기_기말_중2_기출/20_왕의중_2학기_기말_중2_기출.js",
+    "expectedSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+    "actualSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+    "gitBlobSha": "e8c32eb854c2cc5b2ed8a337c87de86b2ba73f17"
+  },
+  "sourcePdf": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말.pdf",
+    "expectedSha256": "32088827c2afa79bb3bf2fdf16abacf18ee2206567a42b27fd3ceb4652820a87",
+    "actualSha256": "ad19a55952571341f4db00dce6adb4cd298718dc43b2cd92dd7e22a78e994933",
+    "fullPagesDirectlyOpened": [
+      2,
+      4
+    ]
+  },
+  "answerPdf": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/2020_왕의중2_수학_2기말_정답.pdf",
+    "expectedSha256": "8d50ed44afab09f9e8a38f67708f3db5acffbb9db4b14fff8cafc9ef006614b9",
+    "actualSha256": "da5117cc73094d2957ca9d2fec2be3bc2230f2a57fe330f5df339c66eec0ecef",
+    "fullPagesDirectlyOpened": [
+      1,
+      2
+    ]
+  },
+  "lockedInputIdentity": {
+    "expectedRawSha256": "00729dade54f7c21923f0c37b6f0f261db2010b7c8e9d312faa1807f22cc5246",
+    "expectedGitBlobSha": "e8c32eb854c2cc5b2ed8a337c87de86b2ba73f17"
+  },
+  "sourceHoldsClosed": [
+    {
+      "qid": 8,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repair": {
+        "repairType": "SOURCE_TRANSCRIPTION_REPAIR",
+        "originalValue": "A6 용지와 A9 용지",
+        "repairedValue": "A5 용지와 A9 용지",
+        "repairReason": "Full-page source page 2 at 300 dpi visibly prints A5. The locked source JS transcribed A6. The answer key gives ②; A5→A9 spans four halvings, so the area ratio is 16:1 and the similarity ratio is 4:1, matching printed choice ②.",
+        "independentMathResult": "A5:A9 similarity ratio=4:1; answer key choice ②.",
+        "affectedFields": [
+          "content"
+        ],
+        "postRepairAnswerCardinality": 1,
+        "sourceSha256": "ad19a55952571341f4db00dce6adb4cd298718dc43b2cd92dd7e22a78e994933",
+        "sourceFingerprintBefore": "ecab47cc5cc0e1834edea7fbcaa48efafaf4b622b07c74d5417f6fe64e069d46",
+        "sourceFingerprintAfter": "48f262887710152e4c3ab1a727e289efc304bbf55777f709c28b2bb409734617",
+        "sourceSelection": "full-page PDF direct inspection; answer key corroboration"
+      },
+      "repairedTruth": {
+        "sourcePath": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/source-hi-2.png",
+        "printedPrompt": "이때 A5 용지와 A9 용지의 닮음비는?",
+        "answerKey": "Math answer-key table: row 8 under 수학 is 2, meaning answer ②.",
+        "calculation": "Four successive halvings: area ratio 2^4:1=16:1. Similar figures have area ratio equal to the square of the linear ratio, so k^2=16 and k=4."
+      }
+    },
+    {
+      "qid": 23,
+      "disposition": "PASS_AFTER_REPAIR",
+      "repair": {
+        "repairType": "AUDITED_SOURCE_REPAIR",
+        "originalValue": "AB=8 cm, AC=6 cm; no right-angle condition in the printed stem or visible diagram.",
+        "repairedValue": "Add the single condition ∠BAC=90°.",
+        "repairReason": "The authoritative answer PDF’s 서술형3 entry explicitly computes the first triangle area as 1/2×6×8 and the final area as 1/14×24=12/7. This determines that AB and AC are intended as perpendicular legs; the printed question omitted that one condition. The repair restores a unique area without changing the solution method or unit.",
+        "independentMathResult": "BE:EC=8:6=4:3; BD:DC=1:1; BD:DE:EC=7:1:6; DE:BC=1:14; [ABC]=24; [ADE]=12/7.",
+        "affectedFields": [
+          "content"
+        ],
+        "postRepairAnswerCardinality": "5 explicitly numbered answer entries",
+        "sourceSha256": "ad19a55952571341f4db00dce6adb4cd298718dc43b2cd92dd7e22a78e994933",
+        "sourceFingerprintBefore": "baa556c3d16babff760ad47d0223c1408915e1ae491f0792e8b46c37d5ce799a",
+        "sourceFingerprintAfter": "a22ad04b353b3418ce0de675d71c14abfb4cc4d6e1d69c10250bda368da9fe28",
+        "sourceSelection": "full-page PDF plus exact official answer-key sequence"
+      },
+      "repairedTruth": {
+        "sourcePath": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/source/source-hi-4.png",
+        "printedQuestionText": "AB=8 cm, AC=6 cm; find the area of △ADE; no right-angle fact is printed or marked.",
+        "answerKey": "Answer PDF page 2, 서술형 3: ① 4:3 (or 8:6); ② 1:1; ③ 7:1:6; ④ 1/14×(1/2×6×8) (or 1/14×24); ⑤ 12/7.",
+        "fullPageObservation": "The source full-page diagram has no visible right-angle marker at A; no values were inferred from its proportions.",
+        "repairInterpretation": "The official keyed area formula 1/2×6×8 is the source authority for the missing perpendicular condition."
+      }
+    }
+  ],
+  "parity": {
+    "denominator": 24,
+    "choicesExactParityCount": 24,
+    "lockedJsContentParityCount": 22,
+    "auditedRepairCount": 2,
+    "fullPageDirectTranscriptQ08": "PASS_AFTER_A5_TRANSCRIPTION_REPAIR",
+    "q23": "AUDITED_SOURCE_REPAIR",
+    "items": [
+      {
+        "qid": 1,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 2,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 3,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 4,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 5,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 6,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 7,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 8,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "REPAIRED",
+        "sourceMode": "AUDITED_REPAIR"
+      },
+      {
+        "qid": 9,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 10,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 11,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 12,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 13,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 14,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 15,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 16,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 17,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 18,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 19,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 20,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 21,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 22,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      },
+      {
+        "qid": 23,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "REPAIRED",
+        "sourceMode": "AUDITED_REPAIR"
+      },
+      {
+        "qid": 24,
+        "choicesExactParity": "PASS",
+        "contentVsLockedCandidate": "PASS",
+        "sourceMode": "ORIGINAL"
+      }
+    ]
+  },
+  "repairPreflightRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.targeted-repair-preflight.json",
+  "repairPreflightValidationRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.targeted-repair-preflight.validation.json",
+  "repairScopeFreezeRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.targeted-repair-scope.json",
+  "metaResolverRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_왕의중_2학기_기말_중2_기출/CREATE.q23-meta-resolver-evidence.json",
+  "downstreamFreezeInvalidation": {
+    "changedQids": [
+      8,
+      23
+    ],
+    "studentInputFreeze": "INVALIDATED_FOR_Q08_Q23",
+    "independentAnswerFreeze": "INVALIDATED_FOR_Q08_Q23",
+    "solutionFreeze": "INVALIDATED_FOR_Q08_Q23",
+    "metaFreeze": "INVALIDATED_FOR_Q23",
+    "questionLayoutFreeze": "INVALIDATED_FOR_Q08_Q23",
+    "futureR1R2RequiresFreshCurrentFinalStudentBundleForChangedQids": true,
+    "unaffectedQidsRemainLocked": true
+  }
+}

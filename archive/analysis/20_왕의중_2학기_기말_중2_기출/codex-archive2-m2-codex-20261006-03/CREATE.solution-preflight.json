@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_PREFLIGHT_V2",
+  "examUid": "20_왕의중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "sampleReadBeforeWork": true,
+  "calibrationOrder": [
+    "Locked roster/source/PDF identity checked; target candidate answer/solution fields were not opened",
+    "Golden representative solutions for Maesan q1/q18 and Jeil q1/q20 read directly",
+    "Golden q18 and q20 solution SVGs and rendered PNGs read/visually inspected; raw SVG and rendered PNG SHA bound",
+    "Bokseong Negative README read directly",
+    "Target answer freeze and solution drafting began only after preflight completion"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b"
+    }
+  ],
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "Read the solution directly: coordinates of the internal division point and midpoint are computed in separate x/y steps, then the distance formula is substituted and simplified."
+        },
+        {
+          "qid": 18,
+          "solutionSha256": "fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585",
+          "visualSha256": "818597daa71a6d400644def7ed26d7d8eb8a82ecc41157a70f991f1aad405c3b",
+          "observation": "Read the solution directly: set inclusion is reduced to B⊆X⊆A, distance condition requires one of two opposite upper corners, then subtract the excluded selections. Physical visual inspected: 3×3 lattice, bottom required points and two alternative diagonal endpoints match the reasoning."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+          "observation": "Read the solution directly: element membership and subset relations are judged separately item by item with each truth claim on its own block."
+        },
+        {
+          "qid": 20,
+          "solutionSha256": "76e9d24b9281566a50f5b83f8628093447d71381349004a4f218f6863f59bbcc",
+          "visualSha256": "7021056499a21aff9b85b82799915e4da24901f3b401559f84192ede3b5840c9",
+          "observation": "Read the solution directly: compute distance from coordinate differences, apply the internal division formula with opposite weights, then state both requested results. Physical visual inspected: A-P-B order, AP:PB=2:1, labels, equal-axis scale and AB=√13 agree with source."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "read": true,
+    "observations": "Inspect actual SVG geometry instead of labels; split enumerated small-board judgements; null Meta requires lookup evidence and nullReason, and unique active exact mappings disallow null; inspect runtime TeX escapes."
+  },
+  "targetSolutionReadBeforePreflight": false,
+  "preflightStatus": "PASS"
+}
