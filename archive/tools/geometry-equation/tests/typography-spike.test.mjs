@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {typesetter} from '../production/typography.mjs';
 import {bytesSha} from '../../pipeline-core/canonical.mjs';
 import {typographyLabels} from '../production/typography-spike.mjs';
-const fontPath=fileURLToPath(new URL('../../../_generated/geometry-visual-engine/production/dependencies/NotoSansKR.ttf',import.meta.url));
+const fontPath=fileURLToPath(new URL('../../../../.tmp/apmath-visual-engine/dependencies/NotoSansKR.ttf',import.meta.url));
 const fontSha256=bytesSha(fs.readFileSync(fontPath));
 test('actual MathJax SVG and Korean outlines for required notation inventory',()=>{
   const t=typesetter({fontPath,fontSha256});

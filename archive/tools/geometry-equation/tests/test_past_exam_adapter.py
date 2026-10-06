@@ -29,6 +29,11 @@ def sample():
         "axes": True,
     }
 
+def output_config(run, output_root=None):
+    return {"engineVersion":"geometry-visual-v1","runId":run,"examUid":"adapter-tests",
+            "outputRoot":output_root or f".tmp/archive/{run}/adapter-tests/visual-engine/production",
+            "productionBaselinePolicy":"READ_ONLY","allowProductionWrite":False}
+
 
 class PastExamAdapterTests(unittest.TestCase):
     def test_hash_tracks_frozen_expected_fact_bytes(self):
@@ -61,14 +66,14 @@ class PastExamAdapterTests(unittest.TestCase):
             facts = Path(tmp) / "facts.json"
             facts.write_text(json.dumps(bad), encoding="utf-8")
             with self.assertRaises(ValueError):
-                build_candidate(bad, {"engineVersion": "geometry-visual-v1", "runId": "adapter-test", "outputRoot": "archive/_generated/geometry-visual-engine/adapter-test", "productionBaselinePolicy": "READ_ONLY", "allowProductionWrite": False})
+                build_candidate(bad, output_config("adapter-test"))
 
     def test_production_output_root_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "PRODUCTION_WRITE_FORBIDDEN"):
-            build_candidate(sample(), {"engineVersion": "geometry-visual-v1", "runId": "adapter-test", "outputRoot": "archive/assets/images/adapter-test", "productionBaselinePolicy": "READ_ONLY", "allowProductionWrite": False})
+            build_candidate(sample(), output_config("adapter-test", "archive/assets/images/adapter-test"))
 
     def test_candidate_path_is_accepted(self):
-        result = build_candidate(sample(), {"engineVersion": "geometry-visual-v1", "runId": "adapter-regression", "outputRoot": "archive/_generated/geometry-visual-engine/adapter-regression", "productionBaselinePolicy": "READ_ONLY", "allowProductionWrite": False})
+        result = build_candidate(sample(), output_config("adapter-regression"))
         self.assertEqual(result["route"], "STANDARD")
         self.assertTrue((Path(__file__).resolve().parents[4] / result["path"] / "visual.svg").is_file())
 
@@ -98,13 +103,13 @@ class PastExamAdapterTests(unittest.TestCase):
         bad["route"] = "SPECIAL"
         bad["specialVisual"] = {"adapter": "UNKNOWN", "candidateSvg": "<svg/>"}
         with self.assertRaisesRegex(ValueError, "SPECIAL_REQUIRES"):
-            build_candidate(bad, {"engineVersion": "geometry-visual-v1", "runId": "adapter-test", "outputRoot": "archive/_generated/geometry-visual-engine/adapter-test", "productionBaselinePolicy": "READ_ONLY", "allowProductionWrite": False})
+            build_candidate(bad, output_config("adapter-test"))
 
     def test_registered_special_route_stays_candidate_only(self):
         special = sample()
         special["route"] = "SPECIAL"
         special["specialVisual"] = {"adapter": "HANDCRAFTED_SVG", "candidateSvg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2"/></svg>'}
-        result = build_candidate(special, {"engineVersion": "geometry-visual-v1", "runId": "adapter-special", "outputRoot": "archive/_generated/geometry-visual-engine/adapter-special", "productionBaselinePolicy": "READ_ONLY", "allowProductionWrite": False})
+        result = build_candidate(special, output_config("adapter-special"))
         self.assertEqual(result["route"], "SPECIAL")
         witness = json.loads((Path(__file__).resolve().parents[4] / result["path"] / "witness.json").read_text(encoding="utf-8"))
         self.assertFalse(witness["publicationAuthorized"])

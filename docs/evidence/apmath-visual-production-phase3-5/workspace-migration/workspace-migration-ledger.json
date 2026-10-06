@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "APMATH_VISUAL_PHASE_LEDGER_v1",
+  "checkpoint": "PHASE3_WORKSPACE_BOUNDARY",
+  "status": "PASS",
+  "createdAt": "2026-10-06",
+  "branch": "codex/apmath-visual-production-phase3-5-20261006",
+  "worktree": "C:/Users/USER/Desktop/AP-worktrees/apmath-visual-phase3-5/AP------",
+  "startingEngineSha": "f87422b6e18cd170c03481e8a6426a8656e29509",
+  "fetchedMainSha": "13525fde8e9a547f385f8dd225c43031d2b92cc1",
+  "mergeBaseSha": "4309245e57abc8f9318fb76a506b0c68b3d2aa6c",
+  "mainDriftAtStart": {
+    "mainOnlyCommits": 117,
+    "engineOnlyCommits": 5,
+    "mergeCommit": "a44fa83b8",
+    "conflicts": 0,
+    "note": "The prior production prototype and reports were branch-only additions, not main-side deletions. Current main was merged into this continuation branch; no main merge or force push occurred."
+  },
+  "acceptance": {
+    "condition": "All new engine stage outputs, exam candidate JS, solution SVGs, browser captures, fixture outputs, and pinned dependencies stay outside archive/_generated; per-run exam outputs use .tmp/archive/<runId>/<examUid>/ and retain final exam/SVG names and archive-relative asset refs.",
+    "result": "PASS",
+    "runWorkspace": ".tmp/archive/apmath-visual-phase3-5-20261006/engine-infrastructure/visual-engine/production/evidence/workspace-migration",
+    "dependencyCache": ".tmp/apmath-visual-engine/dependencies",
+    "concurrencyBoundary": "AsyncLocalStorage; a fresh run receives its own run ID; a replay uses the referenced temporary workspace. No process-global workspace environment variable."
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "nodeTests": "30/34 pass",
+      "failure": "Unscoped direct test writes and direct INPUT_REQUIRED helper calls had no workspace context; frozen-run cache could not reuse bytes across new run scopes."
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "nodeTests": "33/34 pass",
+      "failure": "A label-only frozen-plan revision got a different workspace ID and missed its math cache."
+    },
+    {
+      "attempt": 3,
+      "status": "PASS",
+      "nodeTests": "34/34 pass",
+      "repairBudget": "Bounded within three attempts; failure causes were fixed, not reclassified."
+    }
+  ],
+  "verification": {
+    "nodeCommand": "node --test archive/tools/geometry-equation/tests/production-contract.test.mjs archive/tools/geometry-equation/tests/production-runner.test.mjs archive/tools/geometry-equation/tests/p1-boundaries.test.mjs archive/tools/geometry-equation/tests/source-policy.test.mjs archive/tools/geometry-equation/tests/past-exam-visual-adapter.test.mjs archive/tools/geometry-equation/tests/typography-spike.test.mjs",
+    "nodeResult": "34/34 PASS",
+    "pythonCommand": "python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py'",
+    "pythonResult": "137/137 PASS",
+    "fixtureResult": "13 generated fixtures; 0 unresolved",
+    "staticPublicationResult": "5/5 PASS",
+    "standaloneBrowserResult": "5/5 PASS at 390 CSS px; minimum observed label font 16.25 CSS px",
+    "actualArchiveResult": "5/5 synthetic fixture rows PASS in the unmodified Archive desktop solution mode; displayed image boxes were 298.15625 × 298.15625 CSS px and the minimum audited font was 12.423 CSS px.",
+    "actualArchiveLimit": "Synthetic fixture evidence only, not a real-UID qualification. The page also made an external qrious CDN request, so this run does not prove offline runtime closure.",
+    "whitespaceCheck": "git diff --check PASS"
+  },
+  "phase2Authority": {
+    "status": "INPUT_REQUIRED",
+    "reason": "No current SOURCE_EXAM_ID_REGISTRY_v1 authority file or parent/current registry reference exists in this checkout.",
+    "uidsAttempted": [
+      "25_효천고_2학기_중간_고1_기출|1",
+      "25_연향중_1학기_기말_중3_기출c|10",
+      "25_삼산중_2학기_기말_중2_기출|1"
+    ],
+    "outcome": "Each canonical CLI run returned INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED (exit 2). No locator experiment was promoted and no canonical Phase 2 closure is claimed."
+  },
+  "codeFingerprint": {
+    "method": "SHA-256 over sorted {path, rawFileSha256} rows for the 30 modified tracked code/config/test files at this checkpoint.",
+    "fileCount": 30,
+    "sha256": "8967891b97d5fc6e7ad507d2c56baced8d09dbbe2b3ef023f28b7aca7c4139ef"
+  },
+  "evidenceManifest": {
+    "path": "docs/evidence/apmath-visual-production-phase3-5/workspace-migration/artifact-manifest.json",
+    "sha256": "50f845b446d8427200b93aa18535e6fe5f41707011a8cf64b9d1c5557c4193dc",
+    "contains": "Raw test logs, fixture manifest, standalone-browser summary, actual-Archive summary, five target crops, and the desktop Archive screenshot."
+  },
+  "nextAction": "Continue Phase 3A: derive and bind the actual Archive DisplayEnvelope before layout, use captured image policy/size for medium and full profiles, and retain readability negatives. Canonical Phase 2 remains INPUT_REQUIRED until a bound authority is supplied."
+}

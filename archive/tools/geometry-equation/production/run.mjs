@@ -5,13 +5,18 @@ import {canonicalJson,objectSha,readBoundFile,fileRef} from '../../pipeline-core
 import {assetIdentity,stageKey,validateFrozenPlan,reduceResult} from './contracts.mjs';
 import {scopeFingerprint,mathFingerprint} from './fingerprint.mjs';
 import {reconstruct,compareReconstruction} from './cindy-observer.mjs';
-import {commitStage,calculationStage} from './store.mjs';
+import {commitStage,calculationStage,bindRunWorkspace,withWorkRoot} from './store.mjs';
 import {pythonWorker} from './worker.mjs';
 import {runQuestion,locatedSourceCandidates} from './resolve-request.mjs';
 import {runPhase2} from './phase2.mjs';
 
 export const repoRoot = fileURLToPath(new URL('../../../../',import.meta.url));
 export async function runFrozen(root, request) {
+  const runId=request.runId||'frozen-'+objectSha({questionUid:request.questionUid,surface:request.surface,capability:request.capability}).slice(7,19);
+  const workspace=bindRunWorkspace(root,{questionUid:request.questionUid,replayResultRef:request.replayResultRef,runId});
+  return withWorkRoot(workspace.workRoot,()=>runFrozenInWorkspace(root,request,workspace));
+}
+async function runFrozenInWorkspace(root, request, workspace) {
   const identity = assetIdentity(request.questionUid,request.surface,request.visualRole);
   if (request.mode !== 'PHASE0_2_EXPERIMENT') throw Error('ONLY_PHASE0_2_EXPERIMENT_SUPPORTED');
   const plan = JSON.parse(readBoundFile(root,request.frozenPlanRef));
@@ -40,7 +45,7 @@ export async function runFrozen(root, request) {
     observation=response.result;axis='GRAPH_INTERIOR_BOUND';
   }
   const auditReceipt=commitStage(root,{stage:'AUDIT',key:objectSha({key,fingerprint,invocation:crypto.randomUUID()}),provenance,outputs:{'observation.json':canonicalJson(observation)}});
-  const result = {schemaVersion:'VISUAL_RESULT_v1',...identity,planSha256,capability,fingerprint,stages:[stage.receipt.manifestRef,auditReceipt.manifestRef],cacheHit:stage.cacheHit,evidence:{[axis]:{status:observation.status,ref:auditReceipt.outputs[0]}},...reduceResult(capability,{[axis]:observation})};
+  const result = {schemaVersion:'VISUAL_RESULT_v1',...identity,planSha256,capability,fingerprint,workRoot:workspace.workRoot,runId:workspace.runId,examUid:workspace.examUid,stages:[stage.receipt.manifestRef,auditReceipt.manifestRef],cacheHit:stage.cacheHit,evidence:{[axis]:{status:observation.status,ref:auditReceipt.outputs[0]}},...reduceResult(capability,{[axis]:observation})};
   // Each invocation gets a new immutable result; no cached evidence approval.
   const resultKey = objectSha({result,invocation:crypto.randomUUID()});
   return commitStage(root,{stage:'RESULT',key:resultKey,provenance,outputs:{'result.json':canonicalJson(result)}});
@@ -61,6 +66,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         options={...options,sourcePath:candidates[0].sourceRef.path,ordinal:candidates[0].ordinal,experimentalLocator:true};
       }
       const output=await runPhase2(options);
+      const resultRef=output.receipt.outputs.find(v=>v.path.endsWith('/result.json'))||output.receipt.outputs[0];
+      console.log(JSON.stringify({status:output.result.status,reason:output.result.reason||output.result.error||null,identityStatus:output.result.identityStatus||null,workRoot:output.result.workRoot||null,resultRef}));
       if(output.result.status!=='PHASE2_SLICE_COMPLETE')process.exitCode=2;
     }else{
     const index = process.argv.indexOf('--request');

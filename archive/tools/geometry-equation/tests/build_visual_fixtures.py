@@ -73,8 +73,9 @@ def main():
     if any(v['status']=='POLISH_REQUIRED' for v in manifest):raise SystemExit(1)
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--run',default='archive/_generated/geometry-visual-engine/main-integration-v1');args=parser.parse_args()
-    RUN=(ROOT/args.run).resolve();family=(ROOT/'archive/_generated/geometry-visual-engine').resolve()
-    if not RUN.is_relative_to(family):raise ValueError('EVIDENCE_OUTPUT_SCOPE_VIOLATION')
-    CONFIG={'engineVersion':'geometry-visual-v1','runId':RUN.name,'outputRoot':RUN.relative_to(ROOT).as_posix(),'productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'maxRelayoutPasses':3}
+    parser=argparse.ArgumentParser();parser.add_argument('--run',default='.tmp/archive/visual-engine-tests/phase2-visual-fixtures');args=parser.parse_args()
+    RUN=(ROOT/args.run).resolve();family=(ROOT/'.tmp/archive').resolve()
+    if not RUN.is_relative_to(family) or len(RUN.relative_to(family).parts)<2:raise ValueError('EVIDENCE_OUTPUT_SCOPE_VIOLATION')
+    relative=RUN.relative_to(ROOT).as_posix();segments=RUN.relative_to(family).parts
+    CONFIG={'engineVersion':'geometry-visual-v1','runId':segments[0],'examUid':segments[1],'outputRoot':relative,'productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'maxRelayoutPasses':3}
     main()

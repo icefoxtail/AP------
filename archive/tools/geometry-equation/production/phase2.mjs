@@ -8,7 +8,7 @@ import {questionUidV2} from '../../pipeline-core/question-uid.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence} from '../record-visual-browser-evidence.mjs';
 import {assetIdentity,planHash} from './contracts.mjs';
-import {commitStage,generatedPath,GENERATED_ROOT,calculationStage} from './store.mjs';
+import {commitStage,generatedPath,currentWorkRoot,bindRunWorkspace,withWorkRoot,isEngineOutputPath,calculationStage} from './store.mjs';
 import {pythonWorker} from './worker.mjs';
 import {reconstruct,compareReconstruction} from './cindy-observer.mjs';
 import {dependency,dependencyRoot} from './dependencies.mjs';
@@ -61,20 +61,27 @@ function specFor(plan,model,id){
   return {id,visualType:'line_circle_geometry',viewport:{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad,width:384,height:320,panel:0},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id)},objects};
 }
 
-export async function runPhase2({questionUid,sourceRegistryRef=null,sourcePath,ordinal,replayResultRef=null,experimentalLocator=false}){
+export async function runPhase2(options){
+  const {questionUid,sourcePath,ordinal,replayResultRef}=options;
+  const requestedUid=questionUid||(sourcePath&&ordinal!==undefined?questionUidV2(path.basename(sourcePath,'.js'),ordinal):null);
+  const workspace=bindRunWorkspace(root,{questionUid:requestedUid,sourcePath,replayResultRef});
+  return withWorkRoot(workspace.workRoot,()=>runPhase2InWorkspace({...options,requestedUid,workspace}));
+}
+
+async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePath,ordinal,replayResultRef=null,experimentalLocator=false,requestedUid,workspace}){
   let authority=null;
   if(sourceRegistryRef){
-    if(sourceRegistryRef.path.startsWith(GENERATED_ROOT+'/'))throw Error('ENGINE_SCOPED_REGISTRY_NOT_AUTHORITY');
-    authority=resolveQuestion(root,{questionUid,sourceRegistryRef});
+    if(isEngineOutputPath(sourceRegistryRef.path))throw Error('ENGINE_SCOPED_REGISTRY_NOT_AUTHORITY');
+    authority=resolveQuestion(root,{questionUid:requestedUid,sourceRegistryRef});
     sourcePath=authority.sourceRef.path;ordinal=authority.question.id;
   }else if(!experimentalLocator){
-    return runQuestion(root,{questionUid:questionUid||questionUidV2(path.basename(sourcePath,'.js'),ordinal)});
+    return runQuestion(root,{questionUid:requestedUid});
   }
 
   const sourceRef=fileRef(root,sourcePath),raw=readBoundFile(root,sourceRef).toString('utf8'),bank=loadBank(raw),question=JSON.parse(JSON.stringify(bank.find(q=>q.id===ordinal)));
   if(!question)throw Error('SOURCE_QUESTION_NOT_FOUND');
-  const uid=authority?.questionUid||questionUid||questionUidV2(path.basename(sourcePath,'.js'),ordinal),identity=assetIdentity(uid,'SOLUTION_VISUAL');
-  const journal=GENERATED_ROOT+'/phase2/'+identity.assetId+'/'+crypto.randomUUID();const folder=generatedPath(root,journal);fs.mkdirSync(folder,{recursive:true});
+  const uid=authority?.questionUid||requestedUid,identity=assetIdentity(uid,'SOLUTION_VISUAL');
+  const journal=currentWorkRoot()+'/phase2/'+identity.assetId+'/'+crypto.randomUUID();const folder=generatedPath(root,journal);fs.mkdirSync(folder,{recursive:true});
   const provenance={identity,sourceRef};let stages=[],result;const repairBudget=new RepairBudget();
   try{
     if(authority)stages.push(freeze('UID_AUTHORITY',{sourceRegistryRef,entry:authority.sourceRegistryEntry,status:'CANONICAL_CURRENT'},provenance));
@@ -197,22 +204,25 @@ export async function runPhase2({questionUid,sourceRegistryRef=null,sourcePath,o
     stages.push(freeze('MEASURE',{measurements,observedFragments:fragments,displayEnvelope},provenance));
     const built=await worker({action:'build',spec,measurements,fragments});
     if(built.witness.layout.unresolved.length||built.witness.layout.suppressed.length)throw Error('LAYOUT_INVENTORY_INCOMPLETE:'+JSON.stringify(built.witness.layout));
-    const builtReceipt=receipt('BUILD',{'visual.svg':built.svg,'witness.json':canonicalJson(built.witness)},provenance);stages.push(builtReceipt);const asset=builtReceipt.outputs.find(r=>r.path.endsWith('.svg'));
+    const solutionImageName=`q${String(ordinal).padStart(2,'0')}-solution.svg`;
+    const archiveAssetRef=`assets/images/${workspace.examUid}/${solutionImageName}`;
+    const builtReceipt=receipt('BUILD',{[solutionImageName]:built.svg,'witness.json':canonicalJson(built.witness)},provenance);stages.push(builtReceipt);const asset=builtReceipt.outputs.find(r=>r.path.endsWith('/'+solutionImageName));
     const staticAudit=await workerPrimitiveAudit({svg:built.svg,points:reconstruction.peer?.points??null,segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:built.witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'});
     if(plan.graphPlan)staticAudit.graph=await workerGraphAudit(materialPlan.graphPlan,built.svg,{...built.witness.coordinateModel,displayScale:1});
     stages.push(freeze('STATIC_AUDIT',staticAudit,provenance));if(staticAudit.status!=='PASS'||staticAudit.graph&&staticAudit.graph.status!=='PASS')throw Error('STATIC_AUDIT_FAIL:'+JSON.stringify(staticAudit.errors));
     console.log(JSON.stringify({stage:'ACTUAL_ARCHIVE',uid}));
-    const patch={solutionImage:asset.path.replace(/^archive\//,''),solutionImageSize:'full',solutionImageAlt:plan.caption};
+    const patch={solutionImage:archiveAssetRef,solutionImageSize:'full',solutionImageAlt:plan.caption};
     const candidate=raw+'\n;Object.assign(window.questionBank.find(q=>q.id==='+ordinal+'),'+JSON.stringify(patch)+');\n';
     const patched=JSON.parse(JSON.stringify(loadBank(candidate))),original=JSON.parse(JSON.stringify(bank));
     const touched=['solutionImage','solutionImageSize','solutionImageAlt'];
     for(let i=0;i<original.length;i++){const before={...original[i]},after={...patched[i]};if(before.id===ordinal)for(const field of touched){delete before[field];delete after[field];}if(canonicalJson(before)!==canonicalJson(after))throw Error('ARCHIVE_PROTECTED_FIELD_MUTATION');}
     const protectedParity={status:'PASS',sourceRef,originalQuestionSha256:objectSha(question),questionCount:bank.length,protectedFields:['content','choices','answer','solution','image'],changedFields:touched,targetOrdinal:ordinal};
-    const candidateReceipt=receipt('ARCHIVE_BANK',{'candidate.js':candidate,'protected-parity.json':canonicalJson(protectedParity)},provenance);const candidateRef=candidateReceipt.outputs.find(o=>o.path.endsWith('/candidate.js'));stages.push(candidateReceipt);
+    const examFileName=workspace.examUid+'.js';
+    const candidateReceipt=receipt('ARCHIVE_BANK',{[examFileName]:candidate,'protected-parity.json':canonicalJson(protectedParity)},provenance);const candidateRef=candidateReceipt.outputs.find(o=>o.path.endsWith('/'+examFileName));stages.push(candidateReceipt);
     // Existing collector uses bare RAW-file hex, not the Python object hash.
     // This explicit adapter preserves that legacy meaning and keeps new refs intact.
     const rawHex=ref=>ref.sha256.slice(7);
-    const bankInfo={id:identity.assetId,sourcePath,sourceSha256:rawHex(sourceRef),candidatePath:candidateRef.path,candidateSha256:rawHex(candidateRef),questionCount:bank.length,assets:[{id:identity.assetId,path:asset.path,sha256:rawHex(asset),questionId:ordinal}]};
+    const bankInfo={id:identity.assetId,sourcePath,sourceSha256:rawHex(sourceRef),candidatePath:candidateRef.path,candidateSha256:rawHex(candidateRef),questionCount:bank.length,assets:[{id:identity.assetId,path:asset.path,archivePath:archiveAssetRef,sha256:rawHex(asset),questionId:ordinal}]};
     const matrix={synthetic:false,legacyHashAlgorithm:'SHA256_RAW_HEX_v1',engineSha256:rawHex(fileRef(root,'archive/engine.html')),sources:[bankInfo],rows:[{...bankInfo,mode:'sol',viewport:'desktop',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))}]};
     fs.writeFileSync(path.join(folder,'archive-render-matrix.json'),canonicalJson(matrix));
     process.env.GEOMETRY_NODE_MODULES ||= path.join(dependencyRoot,'node_modules');
@@ -236,10 +246,10 @@ export async function runPhase2({questionUid,sourceRegistryRef=null,sourcePath,o
     stages.push(freeze('VISUAL_REVIEW',visualReview,provenance));
     if(visualReview.output.status!=='PASS')throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL:'+canonicalJson(visualReview.payload));
     if(!Array.isArray(visualReview.payload.errors)||visualReview.payload.errors.length||!Array.isArray(visualReview.payload.observations)||!visualReview.payload.observations.length)throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL');
-    result={status:authority?'PHASE2_SLICE_COMPLETE':'EXPERIMENTAL_LOCATOR_COMPLETE',identityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR',sourceRegistryRef,productionAuthorized:false,qualificationStatus:'NOT_QUALIFIED',identity,sourceRef,solutionRef,planRef:planReceipt.outputs[0],fingerprint,finalSvgRef:asset,actualArchive:archive,independentVisualReviewRef:stages.at(-1).outputs[0],stages:stages.map(s=>s.manifestRef)};
+    result={status:authority?'PHASE2_SLICE_COMPLETE':'EXPERIMENTAL_LOCATOR_COMPLETE',identityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR',sourceRegistryRef,workRoot:workspace.workRoot,runId:workspace.runId,examUid:workspace.examUid,productionAuthorized:false,qualificationStatus:'NOT_QUALIFIED',identity,sourceRef,solutionRef,planRef:planReceipt.outputs[0],fingerprint,finalSvgRef:asset,actualArchive:archive,independentVisualReviewRef:stages.at(-1).outputs[0],stages:stages.map(s=>s.manifestRef)};
   }catch(error){result={status:error.message.startsWith('UNSUPPORTED_CINDY_')?'UNSUPPORTED_NUMERIC_SCOPE':'UNRESOLVED',productionAuthorized:false,identity,sourceRef,error:error.message,stages:stages.map(s=>s.manifestRef)};}
   result.repairLedger=repairBudget.ledger;
-  Object.assign(result,{schemaVersion:'VISUAL_RESULT_v1',phase:2,engineStatus:'EXPERIMENTAL'});
+  Object.assign(result,{schemaVersion:'VISUAL_RESULT_v1',phase:2,engineStatus:'EXPERIMENTAL',workRoot:workspace.workRoot,runId:workspace.runId,examUid:workspace.examUid});
   const final=freeze('RESULT',result,provenance);console.log(JSON.stringify({uid,status:result.status,error:result.error,resultRef:final.outputs[0]}));return {result,receipt:final};
 }
 function scalarExpression(v){

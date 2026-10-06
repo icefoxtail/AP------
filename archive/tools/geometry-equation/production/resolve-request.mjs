@@ -6,7 +6,7 @@ import {normalizeSourceExamIdRegistry,parseQuestionUidV2,questionIdentityFromRec
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {auditV2Run} from '../../pipeline-core/v2-audit.mjs';
 import {prepareProviderReview,dispatchProviderReview} from '../../pipeline-core/provider-bridge.mjs';
-import {commitStage} from './store.mjs';
+import {commitStage,currentWorkRoot,hasWorkRoot,bindRunWorkspace,withWorkRoot} from './store.mjs';
 
 export function resolveQuestion(root,{questionUid,sourceRegistryRef,parentRunRef}) {
   if(!sourceRegistryRef)throw Error('UID_AUTHORITY_REGISTRY_REQUIRED');
@@ -52,11 +52,20 @@ export function locatedSourceCandidates(root,questionUid) {
 }
 
 export function runQuestion(root,request) {
+  if(!hasWorkRoot()){
+    const workspace=bindRunWorkspace(root,{questionUid:request.questionUid});
+    return withWorkRoot(workspace.workRoot,()=>runQuestionInWorkspace(root,request,workspace));
+  }
+  return runQuestionInWorkspace(root,request);
+}
+
+function runQuestionInWorkspace(root,request,workspace) {
   let resolution,reason;
   try {resolution=resolveQuestion(root,request);reason=resolution.status;}catch(error){reason=error.message;}
   let located=[];
   if(!request.sourceRegistryRef){try{located=locatedSourceCandidates(root,request.questionUid);}catch{}}
-  const result={schemaVersion:'VISUAL_RESULT_v1',questionUid:request.questionUid,status:'INPUT_REQUIRED',reason,phase:2,productionAuthorized:false,sourceResolution:resolution??null,locatedSourceCandidates:located,completedStages:resolution?['SOURCE_RESOLVE']:[],unrunStages:['VERIFIED_SOLUTION_RESOLVE','PLANNER','INDEPENDENT_SOURCE_REVIEW','FROZEN_PLAN','NORMALIZE','MATH','INDEPENDENT_RECONSTRUCTION','TYPESET','MEASURE','LAYOUT','SVG','STATIC_AUDIT','ACTUAL_ARCHIVE','INDEPENDENT_VISUAL_REVIEW']};
+  const workRoot=workspace?.workRoot||currentWorkRoot(),segments=workRoot.split('/');
+  const result={schemaVersion:'VISUAL_RESULT_v1',questionUid:request.questionUid,status:'INPUT_REQUIRED',reason,phase:2,workRoot,runId:segments[2],examUid:segments[3],productionAuthorized:false,sourceResolution:resolution??null,locatedSourceCandidates:located,completedStages:resolution?['SOURCE_RESOLVE']:[],unrunStages:['VERIFIED_SOLUTION_RESOLVE','PLANNER','INDEPENDENT_SOURCE_REVIEW','FROZEN_PLAN','NORMALIZE','MATH','INDEPENDENT_RECONSTRUCTION','TYPESET','MEASURE','LAYOUT','SVG','STATIC_AUDIT','ACTUAL_ARCHIVE','INDEPENDENT_VISUAL_REVIEW']};
   const receipt=commitStage(root,{stage:'RESULT',key:objectSha({request,result,invocation:crypto.randomUUID()}),provenance:{requestSha256:objectSha(request)},outputs:{'result.json':canonicalJson(result)}});
   return {result,receipt};
 }
