@@ -267,7 +267,7 @@ window.questionBank = [
   {
     "id": 7,
     "level": "중",
-    "category": "이차방정식과 이차함수",
+    "category": "이차함수의 최대최소",
     "originalCategory": "이차방정식과 이차함수",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
@@ -276,7 +276,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "그래프"
+      "객관식",
+      "이차함수",
+      "최대최소",
+      "그래프",
+      "구간"
     ],
     "wide": false,
     "content": "$1 \\le x \\le 3$에서 이차함수 $y=x^2-2x$의 최댓값과 최솟값의 합을 구하면?",
@@ -288,11 +292,20 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n정의역에서 꼭짓점과 양 끝점의 함수값을 비교한다.\n\n풀이 과정\n$y=x^2-2x=(x-1)^2-1$이므로 꼭짓점은 $(1,-1)$이다. 정의역 $1\\le x\\le3$에 꼭짓점이 포함되므로 최솟값은 $-1$이다. 위로 열린 포물선이므로 최댓값은 양 끝점에서 비교하고, $y(1)=-1$, $y(3)=3$이므로 최댓값은 $3$이다. 따라서 최댓값과 최솟값의 합은 $3+(-1)=2$이고, 정답은 ②이다.\n\n결론\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-C-05-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "solution": "[키포인트] 구간에서 이차함수의 최댓값과 최솟값을 구할 때는 먼저 꼭짓점을 확인하고, 꼭짓점과 양 끝점의 함숫값을 비교한다.\n\n주어진 함수는\n$y=x^2-2x$이다.\n완전제곱식으로 고치면\n$y=x^2-2x+1-1$\n$=(x-1)^2-1$이다.\n\n따라서 그래프는 위로 열린 포물선이고 꼭짓점은 $(1,-1)$이다.\n문제의 범위는 $1\\le x\\le3$이므로 꼭짓점의 $x$좌표 $1$이 이 구간에 포함된다. 따라서 최솟값은 꼭짓점에서의 함숫값\n$-1$이다.\n\n최댓값은 구간의 양 끝점에서의 값을 비교한다.\n$x=1$일 때\n$y=1^2-2\\cdot1=-1$이고,\n$x=3$일 때\n$y=3^2-2\\cdot3=9-6=3$이다.\n\n따라서 최댓값은 $3$, 최솟값은 $-1$이다.\n두 값의 합은\n$3+(-1)=2$이다.\n\n보기에서 $2$는 ②이므로 정답은 ②이다.",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -323,16 +336,25 @@ window.questionBank = [
       "56"
     ],
     "answer": "③",
-    "solution": "[키포인트] 켤레인 두 수의 합과 곱을 먼저 구해 세제곱의 합 공식에 대입한다.\n\n$x+y=4$, $xy=(2+\\sqrt3)(2-\\sqrt3)=1$이다. 따라서\n$x^3+y^3=(x+y)^3-3xy(x+y)=4^3-3\\cdot1\\cdot4=52$이다.\n\n따라서 정답은 ③이다.",
-    "subUnitKey": "H22-C-01-CORE",
-    "subUnit": "지수의 뜻과 성질 핵심 개념",
+    "solution": "[키포인트] $x$와 $y$가 서로 켤레인 꼴이므로 $x+y$와 $xy$를 먼저 구한 뒤 세제곱의 합 공식을 사용한다.\n\n$x=2+\\sqrt3$, $y=2-\\sqrt3$이므로 두 수의 합은\n$x+y=(2+\\sqrt3)+(2-\\sqrt3)=4$이다.\n\n두 수의 곱은 합차공식을 이용하면\n$xy=(2+\\sqrt3)(2-\\sqrt3)$\n$=2^2-(\\sqrt3)^2$\n$=4-3=1$이다.\n\n세제곱의 합 공식\n$x^3+y^3=(x+y)^3-3xy(x+y)$\n에 $x+y=4$, $xy=1$을 대입하면\n$x^3+y^3=4^3-3\\cdot1\\cdot4$\n$=64-12$\n$=52$이다.\n\n보기에서 $52$는 ③이므로 정답은 ③이다.",
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
     "level": "중",
-    "category": "항등식과 나머지 정리",
+    "category": "인수정리와 다항식의 결정",
     "originalCategory": "항등식과 나머지 정리",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-02",
@@ -358,11 +380,21 @@ window.questionBank = [
       "10"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 인수 $(x-3)(x+2)$를 각각 대입해 $a,b$에 대한 연립방정식을 만든다.\n\n$P(3)=0$에서\n$-27+18+3a+b=0$, 즉 $3a+b=9$이다.\n$P(-2)=0$에서\n$8+8-2a+b=0$, 즉 $2a-b=16$이다.\n두 식을 더하면 $5a=25$이므로 $a=5$, $b=-6$이다. 따라서\n$3a+b=15-6=9$이고, 정답은 ④이다.",
+    "solution": "[키포인트] $P(x)$가 $x^2-x-6$으로 나누어떨어지므로 먼저 제수를 인수분해하고, 각 일차인수의 근을 $P(x)$에 대입한다.\n\n제수를 인수분해하면\n$x^2-x-6=(x-3)(x+2)$이다.\n\n따라서 $P(x)$는 $x-3$과 $x+2$를 모두 인수로 가지므로 인수정리에 의해\n$P(3)=0$, $P(-2)=0$이다.\n\n먼저 $x=3$을 대입하면\n$P(3)=-(3)^3+2(3)^2+3a+b$\n$=-27+18+3a+b$\n$=-9+3a+b=0$이다.\n따라서\n$3a+b=9$이다.\n\n다음으로 $x=-2$를 대입하면\n$P(-2)=-(-2)^3+2(-2)^2-2a+b$\n$=8+8-2a+b$\n$=16-2a+b=0$이다.\n따라서\n$2a-b=16$이다.\n\n두 식\n$3a+b=9$,\n$2a-b=16$\n을 더하면\n$5a=25$이므로 $a=5$이다.\n이를 $3a+b=9$에 대입하면\n$15+b=9$이므로 $b=-6$이다.\n\n문제에서 구하는 값은\n$3a+b=3\\cdot5+(-6)=15-6=9$이다.\n\n보기에서 $9$는 ④이므로 정답은 ④이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:FACTOR_THEOREM_TWO_ROOT_PARAMETER_RECOVERY"
   },
   {
     "id": 10,
