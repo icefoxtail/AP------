@@ -6,27 +6,28 @@ PUBLICATION_READY, production asset write, or main merge is granted.
 ## Run
 
 Use the existing Node/Python/Chrome and authenticated Codex AppServer runtime.
-Install the pinned spike dependencies only under generated output:
+Install the pinned spike dependencies only under generated output. Supply the
+actual parent/current SOURCE_EXAM_ID_REGISTRY_v1; the engine does not mint it:
 
 ```powershell
 node archive/tools/geometry-equation/production/setup-spikes.mjs
-node archive/tools/geometry-equation/production/run.mjs --question-uid '25_효천고_2학기_중간_고1_기출|1'
-node archive/tools/geometry-equation/production/run.mjs --question-uid '25_연향중_1학기_기말_중3_기출c|10'
-node archive/tools/geometry-equation/production/run.mjs --question-uid '25_삼산중_2학기_기말_중2_기출|1'
+node archive/tools/geometry-equation/production/run.mjs --question-uid '<canonical UID>' --source-registry '<current parent registry path>'
 ```
 
-The UID-only entry locates one unambiguous current original bank, freezes a
-scoped SOURCE_EXAM_ID_REGISTRY_v1 using pipeline-core UID v2, freshly verifies
-the solution through the existing provider, plans, independently checks source
-conditions, executes, reconstructs, typesets, measures, lays out, audits and
-captures the actual Archive solution column. Registry ACTIVE means the selected
-current source mapping, not an ACTIVE engine capability. Promotion/migration of
-this scoped mapping into another parent's canonical registry is outside this
-experiment. Explicit existing registry/parent-run resolution is available in
-`resolve-request.mjs`; it never promotes an unreviewed solution string.
+The UID entry goes through `resolveQuestion()` and the bound current registry.
+Missing authority yields INPUT_REQUIRED, even if filename search finds the bank.
+Retired/stale mappings fail; an old engine-generated scoped registry cannot be
+used as canonical authority. Explicit `--experimental-locator` permits the
+physical experiment, but only EXPERIMENTAL_LOCATOR_COMPLETE, never
+PHASE2_SLICE_COMPLETE or ACTIVE authority. The old three real-UID results were
+locator experiments, not canonical UID closure.
 
-Source review, planner and visual review use separate provider-issued ephemeral
-contexts with no tools. The continuation extends the existing AppServer adapter;
+Solution and condition review now use SOURCE_ONLY → committed BLIND_FREEZE →
+COMPARE_ONLY contexts. Stored answer/solution and proposed plan are disclosed
+only after the immutable decision is read back. Missing images, failed blind
+decisions or non-durable freeze prevent comparison. Compare cannot rewrite the
+frozen answer/inventory. Planner and final visual review have separate contexts.
+The continuation extends the existing AppServer adapter;
 it creates no AI service, credential provisioner or separate final-audit job.
 The provider's configured/default model and actual context/turn identity are
 recorded. Failed/unsupported provider calls and schema/math/render failures
@@ -35,11 +36,13 @@ remain UNRESOLVED. Failed artifacts and reviewer defects are preserved.
 A frozen result can be replayed without re-planning or editing facts:
 
 ```powershell
-node archive/tools/geometry-equation/production/run.mjs --question-uid '<same UID>' --resume 'archive/_generated/geometry-visual-engine/production/stages/RESULT/<key>/result.json'
+node archive/tools/geometry-equation/production/run.mjs --question-uid '<same canonical UID>' --source-registry '<current parent registry path>' --resume 'archive/_generated/geometry-visual-engine/production/stages/RESULT/<key>/result.json'
 ```
 
-Replay checks raw source/solution/image refs, Node plan hash and accepted source
-review binding. Calculation bytes may be cached; reconstruction, captures and
+Replay checks current UID authority, raw source/image refs, Node plan hash and
+both verification lineages. Source/answer/solution/policy/provider closure changes
+invalidate solution verification and require fresh blind/compare. Legacy unblinded
+receipts cannot qualify. Calculation bytes may be cached; reconstruction, captures and
 final review are fresh. The `--request` entry is a bounded synthetic
 VISUAL_SPIKE_PLAN_v1 math-contract runner, not the full real-UID workflow.
 
@@ -87,6 +90,10 @@ Review receives source pixels plus final image and native solution-block capture
   Cindy rebuilds only from source primitives. Selected-point descendants beyond
   scalar calculations, line/line peer intersections, generic constraints,
   scalar node refs and general realization solving are unsupported.
+  Cindy is a numeric peer, not an exact proof: integer operands outside ±1e6,
+  rational operands outside ±1e9/denominator 1e9, magnitudes outside 1e-9..1e6
+  (apart from zero), and sensitive cancellation are UNSUPPORTED. Large exact
+  wire values remain supported by the wire format, not by Cindy peer validation.
 - Graph verification: bounded rational-coefficient degree ≤4 polynomial;
   rational numerator ≤4/denominator ≤2 on bounded nonsingular segments;
   positive-slope affine sqrt with a boundary secant envelope. Independent root

@@ -1,8 +1,12 @@
 import {readBoundFile,objectSha} from '../../pipeline-core/canonical.mjs';
 import {planHash} from './contracts.mjs';
-import {sourcePolicyFingerprint} from './source-policy.mjs';
+import {sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint} from './source-policy.mjs';
+import {validateReviewLineage} from './blinded-review.mjs';
+import {resolveQuestion} from './resolve-request.mjs';
 export function auditSlice(root,resultRef){
   const result=JSON.parse(readBoundFile(root,resultRef)),errors=[],stages=[];
+  if(result.identityStatus!=='CANONICAL_CURRENT'||!result.sourceRegistryRef)errors.push('CANONICAL_UID_AUTHORITY_REQUIRED');
+  else {try{const authority=resolveQuestion(root,{questionUid:result.identity.questionUid,sourceRegistryRef:result.sourceRegistryRef});if(authority.sourceRef.sha256!==result.sourceRef.sha256)errors.push('CANONICAL_SOURCE_MISMATCH');}catch(error){errors.push(error.message);}}
   if(result.status!=='PHASE2_SLICE_COMPLETE'||result.productionAuthorized!==false||result.qualificationStatus!=='NOT_QUALIFIED')errors.push('NOT_A_COMPLETE_EXPERIMENTAL_SLICE');
   for(const ref of result.stages||[]){
     const {receiptSha256,...stage}=JSON.parse(readBoundFile(root,ref));
@@ -13,8 +17,10 @@ export function auditSlice(root,resultRef){
   const plan=JSON.parse(readBoundFile(root,result.planRef));if(planHash(plan)!==plan.planSha256)errors.push('STALE_PLAN');
   if(plan.sourceReviewPolicySha256!==sourcePolicyFingerprint(root))errors.push('STALE_SOURCE_REVIEW_POLICY');
   const verification=JSON.parse(readBoundFile(root,plan.verifiedSolutionRef));
+  if(plan.verifiedSolutionPolicySha256!==verifiedSolutionPolicyFingerprint(root)||!validateReviewLineage(root,verification,'SOLUTION',plan.verifiedSolutionPolicySha256,plan.verificationInputSha256))errors.push('STALE_OR_UNBLINDED_SOLUTION_VERIFICATION');
   const sourceReview=stages.filter(s=>s.stage==='SOURCE_REVIEW').map(s=>JSON.parse(readBoundFile(root,s.outputs[0]))).find(r=>r.inputSha256===plan.sourceReviewInputSha256);
   const visual=JSON.parse(readBoundFile(root,result.independentVisualReviewRef));
+  if(!sourceReview||!validateReviewLineage(root,sourceReview,'CONDITIONS',plan.sourceReviewPolicySha256,sourceReview.inputBindingSha256))errors.push('SOURCE_REVIEW_BLIND_FREEZE_COMPARE_REQUIRED');
   for(const record of [verification,sourceReview,visual])if(record?.output?.status!=='PASS'||record.subagentToolsEnabled!==false||!record.providerInvocationId||!record.contextId)errors.push('PROVIDER_REVIEW_NOT_BOUND');
   if(new Set([verification.contextId,sourceReview?.contextId,visual.contextId]).size!==3)errors.push('REVIEW_CONTEXT_NOT_INDEPENDENT');
   if(visual.inputPacket.finalSvgSha256!==result.finalSvgRef.sha256)errors.push('REVIEW_SVG_BINDING_MISMATCH');
