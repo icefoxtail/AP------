@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "APMATH_VISUAL_PHASE_LEDGER_v1",
+  "checkpoint": "PHASE3A_ACTUAL_ARCHIVE_DISPLAY_PREFLIGHT",
+  "status": "PASS_MEASUREMENT_ONLY",
+  "createdAt": "2026-10-06",
+  "branch": "codex/apmath-visual-production-phase3-5-20261006",
+  "worktree": "C:/Users/USER/Desktop/AP-worktrees/apmath-visual-phase3-5/AP------",
+  "startingEngineSha": "f87422b6e18cd170c03481e8a6426a8656e29509",
+  "fetchedMainSha": "13525fde8e9a547f385f8dd225c43031d2b92cc1",
+  "checkpoint1Sha": "f4761630170d4b674c6a3afd9814a69006394acd",
+  "phase2AuthorityAuditSha": "59946f32f",
+  "acceptance": {
+    "condition": "Measure actual Archive desktop mode=sol q-box/sol-meta dimensions and actual <img> policy for small/medium/large/full before layout; preserve each profile's observed CSS limits, image rect, natural dimensions, transform chain, and target source binding.",
+    "result": "PASS_MEASUREMENT_ONLY",
+    "runId": "visual-envelope-preflight-f0d038aa-72b1-4b07-a1d4-5050e158f47a",
+    "runDirectory": ".tmp/archive/visual-envelope-preflight-f0d038aa-72b1-4b07-a1d4-5050e158f47a/engine-infrastructure/visual-engine/production",
+    "captureMode": "Actual unmodified Archive desktop solution mode; source banks were copied byte-for-byte to the temporary workspace and no solution asset or question field was patched."
+  },
+  "actualArchiveMeasurements": {
+    "viewport": {"width": 1440, "height": 1000},
+    "browser": "Chromium 154.0.8037.98",
+    "intrinsicProbeSvg": {"width": 384, "height": 320},
+    "targetCount": 3,
+    "status": "3/3 PASS",
+    "externalResponsesObserved": ["https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"],
+    "offlineRuntimeClosure": "NOT_VERIFIED",
+    "qBoxAndSolutionMetaWidthCssPx": 316.15625,
+    "profiles": [
+      {"sizeClass":"small","imageWidthCssPx":126,"imageHeightCssPx":105,"maxWidth":"48%","maxHeight":"105px","objectFit":"contain","transform":"none"},
+      {"sizeClass":"medium","imageWidthCssPx":174,"imageHeightCssPx":145,"maxWidth":"72%","maxHeight":"145px","objectFit":"contain","transform":"none"},
+      {"sizeClass":"large","imageWidthCssPx":216,"imageHeightCssPx":180,"maxWidth":"92%","maxHeight":"180px","objectFit":"contain","transform":"none"},
+      {"sizeClass":"full","imageWidthCssPx":316.140625,"imageHeightCssPx":263.453125,"maxWidth":"100%","maxHeight":"none","objectFit":"contain","transform":"none"}
+    ]
+  },
+  "targets": [
+    {"targetId":"geometry-q01","questionUid":"25_효천고_2학기_중간_고1_기출|1","sourceAuthorityStatus":"QID_V1_MAP_MEASUREMENT_ONLY","rawSourceSha256":"sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"},
+    {"targetId":"graph-q10","questionUid":"25_연향중_1학기_기말_중3_기출c|10","sourceAuthorityStatus":"QID_V1_MAP_MEASUREMENT_ONLY","rawSourceSha256":"sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54"},
+    {"targetId":"coordinate-free-geometry-q01","questionUid":"25_삼산중_2학기_기말_중2_기출|1","sourceAuthorityStatus":"QID_V1_MAP_MEASUREMENT_ONLY","rawSourceSha256":"sha256:f2b726065d3802ccdb9d3454ad92a2deece34772674188c24cd4f4b96374796e"}
+  ],
+  "verification": {
+    "policyTests": "6/6 PASS",
+    "checks": ["preflight is provisional", "all profile gates are independent", "medium failure does not become full support", "final label inventory must match", "graph/topology/stroke gates remain required", "actual final loaded rect/policy must match preflight"],
+    "scopeLimit": "No candidate SVG was present in this preflight. It does not qualify medium/large/full and does not claim a per-label actual candidate font PASS. Those require the next unit's final SVG profile audit."
+  },
+  "codeFingerprint": {
+    "method": "SHA-256 over sorted {path, rawFileSha256} rows for the five modified tracked code/test files at this checkpoint.",
+    "fileCount": 5,
+    "sha256": "3a50526f97633b438f44d3ee52ee9972de7e46210a9116d849e1f9fa8fd2dad7"
+  },
+  "evidenceManifest": {
+    "path": "docs/evidence/apmath-visual-production-phase3-5/display-envelope-preflight/display-envelope-manifest.json",
+    "sha256": "38d0d60b3194eae693e89f69a7d8f10ba6629f910c9dac74c45de47849593602",
+    "contains": "Raw Archive capture JSON, exact measured profile limits/rects, three solution-block screenshots, preflight summaries, and the 6/6 policy-test log."
+  },
+  "nextAction": "Integrate the measured preflight into the runner before layout, then audit the final candidate SVG at all four observed profile sizes. Compute the real minimum across every candidate label, retain CSS/stroke/topology evidence per profile, and compare the final loaded Archive image against the preflight."
+}

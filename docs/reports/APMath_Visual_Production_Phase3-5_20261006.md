@@ -6,7 +6,7 @@ This is the first implementation checkpoint, not final review readiness.
 
 | Master phase | Status | Evidence |
 |---|---|---|
-| Phase 3 | In progress. The new-output workspace boundary and per-run isolation unit pass. DisplayEnvelope-aware layout, repair closure, and full/medium support remain open. | [Workspace migration evidence](../evidence/apmath-visual-production-phase3-5/workspace-migration/workspace-migration-ledger.json) |
+| Phase 3 | In progress. The new-output workspace boundary passes. Actual Archive profile preflight is measured; final candidate per-label support, display-aware layout, repair closure, and full/medium support remain open. | [Workspace migration evidence](../evidence/apmath-visual-production-phase3-5/workspace-migration/workspace-migration-ledger.json), [DisplayEnvelope preflight evidence](../evidence/apmath-visual-production-phase3-5/display-envelope-preflight/phase3a1-ledger.json) |
 | Phase 4 | Not started. Construction and graph capability expansion is not claimed. | — |
 | Phase 5 | Not started. No qualification denominator, full real-UID review set, Seal, or ACTIVE state is claimed. | — |
 
@@ -27,6 +27,12 @@ The workspace is carried with `AsyncLocalStorage`, so concurrent runs do not sha
 
 This closes only the workspace boundary. The existing production runner still uses a guessed/full-size envelope and does not yet resolve actual Archive dimensions before layout.
 
+### Phase 3A preflight measurement
+
+I added a measurement-only pass that opens the real Archive in `mode=sol`, retains the target `.q-box` and `.sol-meta` rectangles, and probes the Archive's actual image CSS classes with a 384×320 SVG at the measured target width. The three target source pages each measured a 316.15625 CSS px solution area. The Archive then displayed the probe at 126×105 px for small, 174×145 px for medium, 216×180 px for large, and 316.140625×263.453125 px for full. The raw profile CSS rules, transform chain, source refs, and screenshots are in the linked preflight evidence.
+
+This is a pre-layout constraint measurement only. It does not establish candidate font readability for any profile. The profile policy module keeps this state `PLANNED` and requires a later final-SVG audit of every label, stroke, and graph topology at each profile before any profile is marked supported. The three pages were selected through the qid_v1 source map for measurement only; no v2 UID authority was created or inferred. The capture observed an external qrious CDN request, so offline runtime closure remains unverified.
+
 ## Verification
 
 - Node: 34/34 pass across workspace, runner, P1 boundary, source-policy, Past Exam adapter, and typography tests.
@@ -35,6 +41,7 @@ This closes only the workspace boundary. The existing production runner still us
 - Static publication fixtures: 5/5 pass.
 - Standalone Chromium layout: 5/5 pass at 390 CSS px; minimum observed label font 16.25 CSS px.
 - Actual Archive desktop solution-mode fixture: 5/5 synthetic rows pass. Each final relative asset reference loaded the mapped temporary SVG; measured image box was 298.15625 × 298.15625 CSS px and minimum audited font was 12.423 CSS px.
+- DisplayEnvelope planning/final-audit contract: 6/6 unit tests pass. Actual source-page CSS preflight: 3/3 measurement rows pass, with no candidate SVG or profile support verdict.
 - `git diff --check`: pass.
 
 The Archive capture is synthetic workspace-integration evidence, not real-UID qualification. It observed an external qrious CDN request and therefore does not prove offline runtime closure. Raw logs, result summaries, SVG layout crops, screenshots, and the authority search are in the linked evidence package; the artifact-manifest SHA-256 is `d0df9f369f5d090b2cdc08e63d80f9a34973a8a095b3fbda55533ed4aa6f1957`.
@@ -49,4 +56,4 @@ The canonical CLI attempts for Geometry UID `25_효천고_2학기_중간_고1_�
 
 ## Next unit
 
-Proceed to Phase 3A: bind Archive image/container policy and actual target dimensions before layout, then verify medium and full envelopes separately. Keep readability failures visible; do not promote a profile based on a different size class. Phase 4 and Phase 5 work follows only after the remaining Phase 3 units are addressed or recorded as unresolved.
+Proceed to Phase 3A runner integration: resolve the measured envelope before layout, render the final candidate at each measured profile size, and compute the actual minimum from every candidate label while retaining stroke and graph-topology results per profile. Then compare the selected envelope against the loaded target image in the final Archive capture. Keep medium failures visible even when large or full passes. Phase 4 and Phase 5 work follows only after the remaining Phase 3 units are addressed or recorded as unresolved.
