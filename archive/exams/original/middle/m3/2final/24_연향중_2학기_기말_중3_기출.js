@@ -94,7 +94,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "반원의 반지름이 3 cm이므로 AB=6 cm이다. 점 D에서 DA=DE, 점 C에서 CB=CE이다.\n따라서 AD+BC=DE+EC=DC=9 cm이다. 둘레는 6+9+9=24 cm. 정답 ①.",
+    "solution": "반원의 반지름이 $3\\,\\mathrm{cm}$이므로\n지름 $AB=2\\times3=6\\,\\mathrm{cm}$이다.\n같은 점에서 한 원에 그은 두 접선의 길이는 같으므로\n$DA=DE$, $CB=CE$이다.\n따라서\n$AD+BC=DE+EC=DC=9\\,\\mathrm{cm}$이다.\n사각형 $ABCD$의 둘레는\n$AB+BC+CD+DA$\n$=6+9+9$\n$=24\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q3.svg"
   },
   {
@@ -190,7 +190,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "∠C=50°. OE⊥BC, OF⊥AC이므로 사각형 OECF에서 ∠EOF=130°.\nOE=OF이므로 ∠OEF=25°. OE⊥EC이므로 x=90°-25°=65°. 정답 ①.",
+    "solution": "삼각형 $ABC$에서\n$\\angle C=180^\\circ-60^\\circ-70^\\circ=50^\\circ$이다.\n원 $O$는 $\\triangle ABC$의 내접원이므로\n$OE\\perp BC$, $OF\\perp AC$이다.\n따라서 사각형 $OECF$에서\n$\\angle OEC=\\angle OFC=90^\\circ$이다.\n그러므로\n$\\angle EOF\n=360^\\circ-90^\\circ-90^\\circ-50^\\circ\n=130^\\circ$이다.\n또 $OE=OF$이므로 $\\triangle OEF$는 이등변삼각형이다.\n따라서\n$\\angle OEF=\\dfrac{180^\\circ-130^\\circ}{2}=25^\\circ$이다.\n$OE\\perp EC$이므로\n$x=90^\\circ-25^\\circ=65^\\circ$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q6.svg"
   },
   {
@@ -222,7 +222,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "AC가 지름이므로 ∠ABC=90°. ∠BAC=32°이므로 ∠ACB=58°, 따라서 ∠AOB=116°.\n두 접선의 각 ∠APB=180°-116°=64°. 정답 ⑤.",
+    "solution": "$AC$는 원 $O$의 지름이므로\n$\\angle ABC=90^\\circ$이다.\n삼각형 $ABC$에서\n$\\angle BAC=32^\\circ$이므로\n$\\angle ACB=180^\\circ-90^\\circ-32^\\circ=58^\\circ$이다.\n$\\angle ACB$는 호 $AB$를 보는 원주각이므로\n같은 호를 보는 중심각은\n$\\angle AOB=2\\times58^\\circ=116^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n,80^\\circ-\\angle AOB$이므로\n$\\angle APB=180^\\circ-116^\\circ=64^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q7.svg"
   },
   {
@@ -318,7 +318,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "AB가 지름이므로 아래 반원의 네 같은 호 AC,CD,DE,EB의 합은 180°, 각 호는 45°.\nx,y는 각각 45°인 호 하나를 보는 원주각이므로 x=y=22.5°. 따라서 x+y=45°. 정답 ②.",
+    "solution": "$AB$가 지름이므로\n호 $AB$인 반원의 크기는 ,80^\\circ$이다.\n또\n$\\wideparen{AC}=\\wideparen{CD}=\\wideparen{DE}=\\wideparen{EB}$이므로\n각 호의 크기는\n,80^\\circ\\div4=45^\\circ$이다.\n원주각의 크기는 그 원주각이 보는 호의 크기의 절반이므로\n$x=\\dfrac{45^\\circ}{2}=22.5^\\circ$,\n$y=\\dfrac{45^\\circ}{2}=22.5^\\circ$이다.\n따라서\n$x+y=22.5^\\circ+22.5^\\circ=45^\\circ$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q10.svg"
   },
   {
@@ -410,7 +410,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "누적도수: 5시간까지 3명, 6시간까지 13명, 7시간까지 25명, 8시간까지 42명.\n25번째=7, 26번째=8이므로 중앙값 a=7.5. 최빈값 b=8. a+b=15.5. 정답 ⑤."
+    "solution": "학생 수가 $50$명이므로 중앙값은\n크기순으로 나열했을 때 $25$번째와 $26$번째 값의 평균이다.\n표의 누적도수를 계산하면\n$5$시간 이하가 $3$명,\n$6$시간 이하가 3$명,\n$7$시간 이하가 $25$명,\n$8$시간 이하가 $42$명이다.\n따라서\n$25$번째 값은 $7$시간,\n$26$번째 값은 $8$시간이다.\n그러므로\n$a=\\dfrac{7+8}{2}=7.5$이다.\n도수가 가장 큰 값은 $8$시간이므로\n$b=8$이다.\n따라서\n$a+b=7.5+8=15.5$이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 14,
@@ -439,7 +439,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "나이를 20,x,27,27이라 두면 평균 25이므로 합 100. x=26.\n중앙값=(26+27)/2=26.5살. 정답 ④."
+    "solution": "회원들의 나이를 작은 순서대로\n$20,\\ x,\\ 27,\\ 27$이라 하자.\n평균이 $25$살이고 회원 수가 $4$명이므로\n나이의 합은\n$25\\times4=100$이다.\n따라서\n$20+x+27+27=100$이다.\n$x+74=100$이므로\n$x=26$이다.\n따라서 나이는\n$20,26,27,27$이다.\n자료가 $4$개이므로 중앙값은 가운데 두 값의 평균이어서\n$\\dfrac{26+27}{2}=26.5$살이다.\n따라서 정답은 ④이다."
   },
   {
     "id": 15,
@@ -623,7 +623,7 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "사회 점수보다 과학 점수가 높은 점, 즉 y=x 위쪽의 점은 4개.\n전체 15명이므로 비율은 4/15. 정답 ③."
+    "solution": "산점도의 가로축을 사회 점수,\n세로축을 과학 점수라 하자.\n사회 점수보다 과학 점수가 높다는 것은\n$y>x$인 점을 뜻한다.\n즉 직선 $y=x$보다 위쪽에 있는 점을 세면 된다.\n산점도에서 이 조건을 만족하는 점은 $4$개이다.\n전체 학생은 5$명이므로\n구하는 비율은\n$\\dfrac4{15}$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 21,
