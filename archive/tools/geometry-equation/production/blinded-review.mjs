@@ -56,6 +56,13 @@ export function validateReviewLineage(root,record,kind,policySha256,inputBinding
     return true;
   }catch{return false;}
 }
+export async function reuseReviewAuthority({root,record,kind,policySha256,inputBindingSha256,closed,refresh}){
+  if(typeof closed!=='function'||typeof refresh!=='function')throw Error('REPLAY_REVIEW_POLICY_REQUIRED');
+  if(closed(record)&&validateReviewLineage(root,record,kind,policySha256,inputBindingSha256))return{record,reused:true,refreshResult:null};
+  const refreshResult=await refresh(),fresh=refreshResult?.record??refreshResult;
+  if(!closed(fresh)||!validateReviewLineage(root,fresh,kind,policySha256,inputBindingSha256))throw Error('REFRESHED_REVIEW_AUTHORITY_INVALID');
+  return{record:fresh,reused:false,refreshResult};
+}
 export function verificationBinding({sourceRef,source,images,answer,solution,policySha256}){
   return objectSha({sourceRef,source,imageShas:images.map(i=>bytesSha(Buffer.from(i.split(',')[1],'base64'))),answer:answer??null,solution,policySha256});
 }

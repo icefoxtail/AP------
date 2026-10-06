@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "PHASE3D_REPLAY_REVIEW_INVALIDATION_v1",
+  "unit": "replay-review-authority-invalidation",
+  "status": "PASS",
+  "contract": "A review receipt is reusable only when its closed status, blind/compare lineage, current policy fingerprint, and current source/answer/solution/plan input binding all validate. Otherwise the runner obtains a fresh receipt and validates the replacement before continuing.",
+  "scenarios": [
+    {
+      "kind": "SOLUTION",
+      "unchangedBinding": "reused without refresh",
+      "changedPolicy": "old receipt rejected; one fresh receipt validated",
+      "changedInputBinding": "old receipt rejected; one fresh receipt validated",
+      "staleRefresh": "rejected with REFRESHED_REVIEW_AUTHORITY_INVALID"
+    },
+    {
+      "kind": "CONDITIONS",
+      "unchangedBinding": "reused without refresh",
+      "changedPolicy": "old receipt rejected; one fresh receipt validated",
+      "changedInputBinding": "old receipt rejected; one fresh receipt validated",
+      "staleRefresh": "rejected with REFRESHED_REVIEW_AUTHORITY_INVALID"
+    }
+  ],
+  "stress": {
+    "command": "node --test --test-name-pattern 'replay reuses only current review authority' archive/tools/geometry-equation/tests/p1-boundaries.test.mjs (10 repetitions)",
+    "runs": 10,
+    "passes": 10,
+    "failCount": 0,
+    "log": "docs/evidence/apmath-visual-production-phase3-5/phase3d-review-invalidation/replay-review-invalidation-10x.log",
+    "sha256": "76f9b4dc7041feb1fb75fd17ee1aec099185715ea7efa9784405286e33ad01b2"
+  },
+  "regressionSubset": {
+    "command": "node --test archive/tools/geometry-equation/tests/p1-boundaries.test.mjs archive/tools/geometry-equation/tests/production-runner.test.mjs archive/tools/geometry-equation/tests/production-contract.test.mjs",
+    "runtime": "v24.14.1",
+    "tests": 28,
+    "pass": 28,
+    "fail": 0,
+    "log": "docs/evidence/apmath-visual-production-phase3-5/phase3d-review-invalidation/replay-runner-subset.log",
+    "sha256": "e65413a1fef8a332527d3048f16016bd72f8a0728daa0602f14de125ae0f00ff"
+  },
+  "implementation": [
+    {
+      "path": "archive/tools/geometry-equation/production/blinded-review.mjs",
+      "sha256": "863c55c1333bd5f91230aa4ad3c64c5eac4f112ff988114d5aba8951bf205a2c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "sha256": "f14137c92a819059e85563d979ebfc8257acb2258b8ab09db8d177a8477fcd8c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/p1-boundaries.test.mjs",
+      "sha256": "a7c28c33a9b8261b8b17565b3528955748f39fe8028d74a54a14b3f5aabb7e8c"
+    }
+  ],
+  "limits": [
+    "This is a contract/test-harness replay test; no external provider or actual Archive capture was invoked.",
+    "Provider/runtime fingerprint mutations are covered by existing fingerprint tests; the full policy, observer, source, answer and solution replay invalidation matrix remains open.",
+    "Repair closure, full profile composition and canonical UID runs remain open."
+  ],
+  "lastUpdatedUtc": "2026-10-06T06:38:39Z"
+}
