@@ -182,6 +182,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
+    "image": "assets/images/22_팔마중_1학기_중간_중3_기출/q6.png",
     "level": "상",
     "content": "그림은 수직선 위의 두 점 $A(1)$과 $B(2)$에 대하여 $AB$를 한 변으로 하는 정사각형 $ABCD$를 그린 것이다. $\\overline{AC}=\\overline{AP}=\\overline{AQ}$일 때, 두 점 $P(a)$와 $Q(b)$에 대하여 $\\frac{P(a)}{Q(b)}$의 값을 구하면?",
     "choices": [
@@ -416,6 +417,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
+    "image": "assets/images/22_팔마중_1학기_중간_중3_기출/q13.png",
     "level": "중",
     "content": "그림에서 설명하는 곱셈 공식으로 옳은 것은?",
     "choices": [
@@ -481,6 +483,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
+    "image": "assets/images/22_팔마중_1학기_중간_중3_기출/q15.png",
     "level": "중",
     "content": "그림과 같이 넓이가 각각 $x^2$, $x$, $1$인 직사각형 6개를 빈틈없이 겹치지 않게 이어 붙여 하나의 직사각형을 만들려고 한다. 이 직사각형의 둘레의 길이는? (4점)",
     "choices": [
@@ -721,6 +724,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
+    "image": "assets/images/22_팔마중_1학기_중간_중3_기출/q22.png",
     "level": "중",
     "content": "[서술형 1] 그림과 같이 넓이의 비가 $9:4:1$인 세 정사각형 $A, B, C$를 겹치지 않게 이어붙인 도형의 넓이가 $84cm^2$일 때, 다음 물음에 답하시오. (8점)\\n(1) 세 정사각형 $A, B, C$의 넓이와 한 변의 길이를 각각 구하시오. (6점)\\n(2) 이 도형의 전체 둘레의 길이를 구하시오. (2점)",
     "choices": [],
@@ -793,6 +797,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
+    "image": "assets/images/22_팔마중_1학기_중간_중3_기출/q25.png",
     "level": "중",
     "content": "[서술형 4] 반지름의 길이가 각각 $52.52cm, 47.48cm$인 원 모양의 피자를 다음 그림과 같이 8등분 하였다. 큰 피자 한 조각의 넓이는 작은 피자 한 조각의 넓이보다 얼마만큼 더 큰지 인수분해를 이용하여 계산하시오. (단, 두께는 일정하다.) (6점)",
     "choices": [],
