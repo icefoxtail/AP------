@@ -157,7 +157,8 @@ window.questionBank = [
       "제곱근",
       "수직선",
       "정사각형",
-      "피타고라스"
+      "피타고라스",
+      "도형"
     ],
     "wide": false,
     "image": "assets/images/21_신흥중_1학기_중간_중3_기출/q5.png",
@@ -342,7 +343,7 @@ window.questionBank = [
       "$2\\sqrt{5}$"
     ],
     "answer": "1",
-    "solution": "$\\sqrt{(2-\\sqrt5)^2}=|2-\\sqrt5|=\\sqrt5-2$이고, $\\sqrt{(3-\\sqrt5)^2}=|3-\\sqrt5|=3-\\sqrt5$이다. 두 값을 더하면 1이므로 정답은 ①이다.",
+    "solution": "$2<\\sqrt5<3$이므로 $2-\\sqrt5<0$, $3-\\sqrt5>0$이다.\n따라서\n$\\sqrt{(2-\\sqrt5)^2}=|2-\\sqrt5|=\\sqrt5-2$,\n$\\sqrt{(3-\\sqrt5)^2}=|3-\\sqrt5|=3-\\sqrt5$이다.\n그러므로\n$(\\sqrt5-2)+(3-\\sqrt5)=1$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -376,7 +377,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "2",
-    "solution": "[키포인트] 무리수 부분의 계수를 0으로 둔다.\n식을 정리하면 $2-\\sqrt{\\frac23}-(a\\sqrt6-1)=3-(a+\\frac13)\\sqrt6$이다. $\\sqrt6$은 무리수이고 $a$는 유리수이므로 결과가 유리수가 되려면 $a+\\frac13=0$이어야 한다. 따라서 $a=-\\frac13$이고 정답은 ②이다.",
+    "solution": "$\\sqrt2\\left(\\dfrac2{\\sqrt2}-\\dfrac1{\\sqrt3}\\right)=2-\\dfrac{\\sqrt6}{3}$이고,\n$\\sqrt3\\left(a\\sqrt2-\\dfrac1{\\sqrt3}\\right)=a\\sqrt6-1$이다.\n따라서 전체 식은\n$2-\\dfrac{\\sqrt6}{3}-(a\\sqrt6-1)=3-\\left(a+\\dfrac13\\right)\\sqrt6$이다.\n$a$가 유리수일 때 결과가 유리수가 되려면 $\\sqrt6$의 계수가 $0$이어야 하므로\n$a+\\dfrac13=0$이다.\n따라서 $a=-\\dfrac13$이고 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -410,7 +411,7 @@ window.questionBank = [
       "$(2y+5)(3y-3) = 6y^2+9y-15$"
     ],
     "answer": "3",
-    "solution": "③에서 $(2x-y)(-2x+y)=-(2x-y)^2=-4x^2+4xy-y^2$이다. 제시식 $-4x^2-y^2$에는 $4xy$항이 빠져 있으므로 ③이 옳지 않다.",
+    "solution": "각 식을 전개해 제시식과 비교한다.\n① $(-5+b)^2=b^2-10b+25$\n② $(3x-4y)^2=9x^2-24xy+16y^2$\n③ $(2x-y)(-2x+y)=-(2x-y)^2=-4x^2+4xy-y^2$\n④ $(a+2b)(a-5b)=a^2-3ab-10b^2$\n⑤ $(2y+5)(3y-3)=6y^2+9y-15$\n③의 제시식에는 $4xy$항이 빠져 있으므로 옳지 않은 것은 ③이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -429,7 +430,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "2",
-    "solution": "$(x+a)(x-b)=x^2+(a-b)x-ab$이다. $x^2+x-2$와 계수를 비교하면 $a-b=1$, $ab=2$이다. 따라서 $a-b+ab=1+2=3$이므로 정답은 ②이다.",
+    "solution": "좌변을 전개하면\n$(x+a)(x-b)=x^2+(a-b)x-ab$이다.\n$x^2+x-2$와 계수를 비교하면\n$a-b=1$, $-ab=-2$이므로 $ab=2$이다.\n따라서\n$a-b+ab=1+2=3$이다.\n정답은 ②이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",
@@ -463,7 +464,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "5",
-    "solution": "$(2x-3y)(-3x+7y)$의 $xy$ 계수는 $14+9=23$이고, $(-2x+3y)^2$의 $xy$ 계수는 $-12$이다. 따라서 전체 식의 $xy$ 계수는 $23-12=11$이므로 정답은 ⑤이다.",
+    "solution": "첫째 곱에서 $xy$항만 모으면\n$(2x)(7y)+(-3y)(-3x)=14xy+9xy=23xy$이다.\n또\n$(-2x+3y)^2=4x^2-12xy+9y^2$이므로 $xy$의 계수는 $-12$이다.\n따라서 전체 식의 $xy$의 계수는\n$23-12=11$이다.\n정답은 ⑤이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",
@@ -498,7 +499,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "1",
-    "solution": "분자는 $1001\\times1002-1002=1002(1001-1)$이고, 분모는 $1001^2-1=(1001-1)(1001+1)$이다. $1001+1=1002$이므로 공통인수를 약분하면 1이다. 따라서 정답은 ①이다.",
+    "solution": "분자는\n$1001\\times1002-1002=1002(1001-1)$이다.\n분모는 합차 공식으로\n$1001^2-1=(1001-1)(1001+1)=(1001-1)1002$이다.\n따라서 공통인수 $1002(1001-1)$을 약분하면 값은 $1$이다.\n정답은 ①이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",
@@ -532,7 +533,7 @@ window.questionBank = [
       "$3x+1$"
     ],
     "answer": "5",
-    "solution": "$6x^2-13x-5$에서 곱이 $-30$, 합이 $-13$인 두 수는 $-15,2$이다. $6x^2-15x+2x-5=3x(2x-5)+1(2x-5)=(3x+1)(2x-5)$이므로 인수는 $3x+1$이다. 따라서 정답은 ⑤이다.",
+    "solution": "곱이 $6\\times(-5)=-30$, 합이 $-13$인 두 수는 $-15,2$이다.\n따라서\n$6x^2-13x-5=6x^2-15x+2x-5$\n$=3x(2x-5)+(2x-5)$\n$=(3x+1)(2x-5)$이다.\n그러므로 인수는 $3x+1$이고 정답은 ⑤이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",
@@ -566,7 +567,7 @@ window.questionBank = [
       "$2x^2+5x-3=(2x+1)(x-3)$"
     ],
     "answer": "5",
-    "solution": "⑤의 우변을 전개하면 $(2x+1)(x-3)=2x^2-5x-3$이어서 $2x^2+5x-3$과 다르다. 실제로 $2x^2+5x-3=(2x-1)(x+3)$이다. 따라서 옳지 않은 것은 ⑤이다.",
+    "solution": "⑤의 우변을 전개하면\n$(2x+1)(x-3)=2x^2-6x+x-3=2x^2-5x-3$이다.\n이는 제시된 $2x^2+5x-3$과 다르다.\n실제로\n$2x^2+5x-3=(2x-1)(x+3)$이다.\n따라서 옳지 않은 것은 ⑤이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",
@@ -600,7 +601,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "2",
-    "solution": "완전제곱식은 $(3a+b)^2=9a^2+6ab+b^2$ 또는 $(3a-b)^2=9a^2-6ab+b^2$이다. 따라서 빈칸에는 $\\pm6$이 들어가므로 정답은 ②이다.",
+    "solution": "완전제곱식의 가운데항을 비교한다.\n$(3a+b)^2=9a^2+6ab+b^2$,\n$(3a-b)^2=9a^2-6ab+b^2$이다.\n따라서 빈칸에는 $6$ 또는 $-6$, 즉 $\\pm6$이 들어간다.\n정답은 ②이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",
@@ -634,7 +635,7 @@ window.questionBank = [
       "$(x+4)(x+1)$"
     ],
     "answer": "2",
-    "solution": "$(x-1)^2-(2x-3)=x^2-2x+1-2x+3=x^2-4x+4=(x-2)^2$이다. 따라서 정답은 ②이다.",
+    "solution": "먼저 제곱을 전개하면\n$(x-1)^2-(2x-3)=x^2-2x+1-2x+3$\n$=x^2-4x+4$이다.\n$x^2-4x+4=(x-2)^2$이므로 정답은 ②이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",
@@ -695,7 +696,7 @@ window.questionBank = [
     "category": "제곱근과 실수",
     "content": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^2+\\sqrt{(-5)^2}$을 계산하시오. (4점)",
     "answer": "6",
-    "solution": "$\\sqrt{169}=13$, $(-\\sqrt{12})^2=12$, $\\sqrt{(-5)^2}=|-5|=5$이다. 따라서 $13-12+5=6$이다.",
+    "solution": "$\\sqrt{169}=13$,\n$(-\\sqrt{12})^2=12$,\n$\\sqrt{(-5)^2}=|-5|=5$이다.\n따라서\n$13-12+5=6$이다.\n따라서 구하는 값은 $6$이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-01",
@@ -781,7 +782,7 @@ window.questionBank = [
     "category": "인수분해",
     "content": "[서답형 4-2] 이차식 $2x^2-ax-3$이 정수 계수로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
     "answer": "0",
-    "solution": "정수 계수로 $(2x+m)(x+n)$이라 두면 $mn=-3$이고 $m+2n=-a$이다. $(m,n)=(1,-3),(-1,3),(3,-1),(-3,1)$에서 $a=5,-5,-1,1$을 얻는다. 가능한 모든 $a$의 합은 $5-5-1+1=0$이다.",
+    "solution": "정수 계수의 두 일차식의 곱으로\n$2x^2-ax-3=(2x+m)(x+n)$이라 두면\n$mn=-3$, $2n+m=-a$이다.\n$mn=-3$인 정수쌍을 모두 대입하면\n$(m,n)=(1,-3),(-1,3),(3,-1),(-3,1)$이다.\n이에 대응하는 $a$는 각각\n$5,-5,-1,1$이다.\n따라서 가능한 모든 $a$의 합은\n$5+(-5)+(-1)+1=0$이다.",
     "originalCategory": "",
     "standardCourse": "",
     "standardUnitKey": "M3-02",

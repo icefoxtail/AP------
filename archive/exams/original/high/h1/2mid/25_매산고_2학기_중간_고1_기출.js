@@ -439,7 +439,7 @@ window.questionBank = [
       "절댓값"
     ],
     "wide": false,
-    "content": "두 실수 $x,y$에 대하여 두 행렬 $A=\\begin{pmatrix}2&2\\\\1&|x|\\end{pmatrix}$, $B=\\begin{pmatrix}|y|&2\\\\1&1\\end{pmatrix}$이라 할 때, 집합 $X=\\{(x,y)\\mid A^2-B^2=(A+B)(A-B)\\}$가 나타내는 도형의 둘레의 길이는? [4.7점]",
+    "content": "두 실수 $x,y$에 대하여 두 행렬 $A=\\begin{pmatrix}2&2\\\\1&|x|\\end{pmatrix}$, \n$B=\\begin{pmatrix}|y|&2\\\\1&1\\end{pmatrix}$이라 할 때, 집합 $X=\\{(x,y)\\mid A^2-B^2=(A+B)(A-B)\\}$가 나타내는 도형의 둘레의 길이는? [4.7점]",
     "choices": [
       "$11\\sqrt2$",
       "$12\\sqrt2$",

@@ -29,7 +29,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "④에서 $-\\sqrt{0.16}=-0.4$이므로 $0.4$라고 한 것은 틀리다. 나머지는 모두 $\\sqrt{a^2}=|a|$에 맞는다.\\n$\\therefore$ ④",
+    "solution": "각 보기의 값을 직접 확인한다.\n① $\\sqrt{49}=7$\n② $\\sqrt{(-5)^2}=|-5|=5$\n③ $\\sqrt{\\dfrac{25}{4}}=\\dfrac52$\n④ $-\\sqrt{0.16}=-0.4$\n⑤ $-\\sqrt{(-\\dfrac13)^2}=-\\dfrac13$\n따라서 $0.4$라고 한 ④가 틀렸다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -210,7 +210,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$a,b>0$이므로 $a\\sqrt{b/a}=\\sqrt{ab}$, $b\\sqrt{a/b}=\\sqrt{ab}$. 따라서 $5\\sqrt{ab}=10$.\\n$\\therefore$ ①",
+    "solution": "$a,b>0$이므로\n$a\\sqrt{\\dfrac ba}=\\sqrt{a^2\\cdot\\dfrac ba}=\\sqrt{ab}$,\n$b\\sqrt{\\dfrac ab}=\\sqrt{b^2\\cdot\\dfrac ab}=\\sqrt{ab}$이다.\n따라서\n$2a\\sqrt{\\dfrac ba}+3b\\sqrt{\\dfrac ab}=5\\sqrt{ab}$이다.\n$ab=4$이므로 $5\\sqrt4=10$이다.\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -282,7 +282,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$4\\sqrt2>5$이므로 $A>B$, 또 $C-A=\\sqrt2>0$이므로 $B<A<C$.\\n$\\therefore$ ④",
+    "solution": "먼저 $A$와 $B$를 비교한다.\n$A>B$는 $4\\sqrt2-1>4$, 즉 $4\\sqrt2>5$와 같다.\n양변이 양수이고 $32>25$이므로 $4\\sqrt2>5$이다.\n또\n$C-A=(5\\sqrt2-1)-(4\\sqrt2-1)=\\sqrt2>0$이다.\n따라서 $B<A<C$이고 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -318,7 +318,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{175}=5a$, $\\sqrt{2.8}=b/5$이므로 $5a+b/5$.\\n$\\therefore$ ④",
+    "solution": "$\\sqrt{175}=\\sqrt{25\\cdot7}=5\\sqrt7=5a$이다.\n또\n$\\sqrt{2.8}=\\sqrt{\\dfrac{70}{25}}=\\dfrac{\\sqrt{70}}5=\\dfrac b5$이다.\n따라서\n$\\sqrt{175}+\\sqrt{2.8}=5a+\\dfrac15b$이다.\n정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -354,7 +354,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x=7-4\\sqrt3$, $1/x=7+4\\sqrt3$이므로 $x+1/x=14$, 따라서 $x^2-14x=-1$. 주어진 식은 $(-1+5)(-1-5)=-24$.\\n$\\therefore$ ②",
+    "solution": "분모를 유리화하면\n$x=\\dfrac{2-\\sqrt3}{2+\\sqrt3}\n=\\dfrac{(2-\\sqrt3)^2}{4-3}=7-4\\sqrt3$이다.\n따라서\n$\\dfrac1x=7+4\\sqrt3$이고 $x+\\dfrac1x=14$이다.\n양변에 $x$를 곱하면 $x^2+1=14x$이므로\n$x^2-14x=-1$이다.\n주어진 식은\n$(-1+5)(-1-5)=4\\cdot(-6)=-24$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -390,7 +390,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{48}=4\\sqrt3$, $3/(4\\sqrt3)=\\sqrt3/4$. 따라서 값은 $7\\sqrt3/4$.\\n$\\therefore$ ②",
+    "solution": "$\\sqrt{48}=4\\sqrt3$이고\n$\\dfrac3{4\\sqrt3}=\\dfrac{3\\sqrt3}{12}=\\dfrac{\\sqrt3}{4}$이다.\n따라서\n$4\\sqrt3-\\dfrac{\\sqrt3}{4}-2\\sqrt3\n=2\\sqrt3-\\dfrac{\\sqrt3}{4}\n=\\dfrac{7\\sqrt3}{4}$이다.\n정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -426,7 +426,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x-1$이 인수이므로 $x=1$을 대입해 $3+A-5=0$, 따라서 $A=2$.\\n$\\therefore$ ②",
+    "solution": "$x-1$이 인수이므로 인수정리에 따라 $x=1$을 대입한 값이 $0$이다.\n$3(1)^2+A(1)-5=0$\n$3+A-5=0$\n$A=2$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -462,7 +462,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\frac12x^2-4x+k=\\frac12(x-4)^2+k-8$. 완전제곱식이 되려면 $k=8$.\\n$\\therefore$ ⑤",
+    "solution": "$\\dfrac12x^2-4x+k\n=\\dfrac12(x^2-8x)+k$\n$=\\dfrac12\\{(x-4)^2-16\\}+k$\n$=\\dfrac12(x-4)^2+(k-8)$이다.\n완전제곱식이 되려면 남는 상수항이 $0$이어야 하므로\n$k-8=0$이다.\n따라서 $k=8$이고 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -490,7 +490,6 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "곱셈공식",
-      "도형",
       "사다리꼴",
       "넓이",
       "문자식",
@@ -498,7 +497,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "사다리꼴 넓이는 $(4x-3)h$이고 $8x^2+6x-9=(4x-3)(2x+3)$이므로 높이는 $2x+3$.\\n$\\therefore$ ③",
+    "solution": "사다리꼴의 높이를 $h$라 하자.\n넓이는\n$\\dfrac{(3x-2)+(5x-4)}2h=(4x-3)h$이다.\n한편\n$8x^2+6x-9=(4x-3)(2x+3)$이다.\n따라서\n$(4x-3)h=(4x-3)(2x+3)$이므로\n$h=2x+3$이다.\n정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -570,7 +569,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x^2-y^2+z^2-2xz=(x-z)^2-y^2=(x-y-z)(x+y-z)$.\\n$\\therefore$ ①",
+    "solution": "앞의 세 항을 묶으면\n$x^2-y^2+z^2-2xz=(x-z)^2-y^2$이다.\n합차 공식으로\n$(x-z)^2-y^2=\\{(x-z)-y\\}\\{(x-z)+y\\}$\n$=(x-y-z)(x+y-z)$이다.\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -606,7 +605,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x^2+Ax-18=(x+p)(x+q)$에서 $pq=-18$, $A=p+q$. 가능한 합은 $\\pm17,\\pm7,\\pm3$이므로 $13$은 불가능하다.\\n$\\therefore$ ④",
+    "solution": "$x^2+Ax-18=(x+p)(x+q)$라 두면\n$pq=-18$, $A=p+q$이다.\n정수 인수쌍을 확인하면 합은\n$\\pm17,\\ \\pm7,\\ \\pm3$이 될 수 있다.\n보기 중 $13$은 만들 수 없으므로 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -642,7 +641,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$a+b=13$, $k=ab$. 자연수의 합이 고정되었을 때 곱은 두 수가 가장 가까울 때 최대이므로 $a,b=6,7$, $k=42$.\\n$\\therefore$ ④",
+    "solution": "$(x+a)(x+b)=x^2+(a+b)x+ab$이므로\n$a+b=13$, $k=ab$이다.\n합이 $13$인 두 자연수의 곱은 두 수가 가장 가까울 때 최대이다.\n따라서 $a,b=6,7$일 때\n$k=6\\cdot7=42$가 최댓값이다.\n정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -678,7 +677,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$t=a+b$로 두면 $t^2-4t-5=(t+1)(t-5)$.\\n$\\therefore$ ①",
+    "solution": "$t=a+b$로 놓으면\n$(a+b)^2-4(a+b)-5=t^2-4t-5$이다.\n$t^2-4t-5=(t+1)(t-5)$이므로\n원래 식은\n$(a+b+1)(a+b-5)$이다.\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -714,7 +713,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$2x^2-11x+5=(2x-1)(x-5)$이므로 두 일차식의 합은 $3x-6$.\\n$\\therefore$ ⑤",
+    "solution": "$2x^2-11x+5$에서 곱이 $10$, 합이 $-11$이 되도록 나누면\n$2x^2-x-10x+5$\n$=x(2x-1)-5(2x-1)$\n$=(2x-1)(x-5)$이다.\n두 일차식의 합은\n$(2x-1)+(x-5)=3x-6$이다.\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -786,7 +785,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x=-2$를 대입하면 $4-2(a-2)+6=0$, 따라서 $a=7$.\\n$\\therefore$ ③",
+    "solution": "주어진 방정식에 한 근 $x=-2$를 대입한다.\n$(-2)^2+(a-2)(-2)+6=0$\n$4-2a+4+6=0$\n$14-2a=0$\n따라서 $a=7$이고 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
@@ -816,7 +815,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "$39-n$이 $39$보다 작은 양의 완전제곱수여야 하므로 $n=3,14,23,30,35,38$.",
+    "solution": "$\\sqrt{39-n}$이 자연수이므로\n$39-n=k^2$인 자연수 $k$가 존재해야 한다.\n$n$도 자연수이므로 $k^2<39$이고\n$k=1,2,3,4,5,6$이다.\n따라서\n$n=39-1,39-4,39-9,39-16,39-25,39-36$\n$=38,35,30,23,14,3$이다.\n따라서 가능한 $n$은 $3,14,23,30,35,38$이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -846,7 +845,7 @@ window.questionBank = [
       "계산과정"
     ],
     "wide": false,
-    "solution": "$2x^2+5x-12=(2x-3)(x+4)$, $2x^2-x-3=(2x-3)(x+1)$이므로 공통인수는 $2x-3$.",
+    "solution": "두 식을 각각 인수분해한다.\n$2x^2+5x-12=2x^2+8x-3x-12$\n$=(2x-3)(x+4)$이다.\n또\n$2x^2-x-3=2x^2-3x+2x-3$\n$=(2x-3)(x+1)$이다.\n따라서 두 다항식의 공통인수는 $2x-3$이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -876,7 +875,7 @@ window.questionBank = [
       "대입"
     ],
     "wide": false,
-    "solution": "주어진 식은 $(a+b+1)^2$이다. $a+b=\\sqrt3-1$이므로 $(a+b+1)^2=(\\sqrt3)^2=3$.\\n$\\therefore 3$",
+    "solution": "주어진 식을 묶으면\n$a^2+b^2+2ab+2a+2b+1$\n$=(a+b)^2+2(a+b)+1$\n$=(a+b+1)^2$이다.\n$a+b=\\sqrt3-1$이므로\n$a+b+1=\\sqrt3$이다.\n따라서 값은\n$(\\sqrt3)^2=3$이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
