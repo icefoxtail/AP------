@@ -60,7 +60,7 @@ test('same-name solution mutation and excluded marker cannot hide missing requir
  assert.equal(run([question({answer:'__EXCLUDED__',templateKey:undefined,solution:''})]).ok,false);
 });
 
-test('Codex enforcement rejects GPT line; explicit generic GPT validation preserves its line',()=>{assert.equal(run(undefined,{change:e=>e.executionLine='GPT_SCHEDULED'}).ok,false);assert.equal(run(undefined,{strict:false,change:e=>e.executionLine='GPT_SCHEDULED'}).executionLine,'GPT_SCHEDULED');});
+test('Codex enforcement rejects GPT line; explicit generic GPT validation preserves its line',()=>{assert.equal(run(undefined,{change:e=>{e.executionLine='GPT_SCHEDULED';e.campaignId='H1_GPT2_20261006';e.stream='A';}}).ok,false);const report=run(undefined,{strict:false,change:e=>{e.executionLine='GPT_SCHEDULED';e.campaignId='H1_GPT2_20261006';e.stream='A';}});assert.equal(report.executionLine,'GPT_SCHEDULED');assert.equal(report.campaignId,'H1_GPT2_20261006');assert.equal(report.stream,'A');});
 
 test('known HOLD axes, invalid Meta array entries and duplicate qids cannot become PASS',()=>{
  assert.equal(run(undefined,{change:e=>e.rows[0].axisEvidence.meta={status:'HOLD'}}).ok,false);
