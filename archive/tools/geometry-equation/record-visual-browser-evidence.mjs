@@ -5,6 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {repoRoot,assertOutput,launchBrowser} from './visual-browser-runtime.mjs';
 import {sha256} from './verify-visual-engine-static.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
+import {fileRef,readBoundFile} from '../pipeline-core/canonical.mjs';
+import {loadBank} from './build-visual-render-matrix.mjs';
 
 export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
   if(!/^[A-Za-z0-9_-]+$/.test(attempt))throw Error('INVALID_EVIDENCE_ATTEMPT');
@@ -39,18 +41,50 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           return new Set(numbers).size===count;
         },{mode:item.mode,count:item.questionCount},{timeout:60000});
         await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));if(window.APPrintRuntime?.waitUntilReady)await window.APPrintRuntime.waitUntilReady();});
-        state=await page.evaluate(({mode,assets})=>{
+        state=await page.evaluate(async({mode,assets,envelopeTargets})=>{
           const root=document.getElementById('print-area');
           const numberNodes=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')];
           const numbers=numberNodes.map(v=>v.textContent.match(/^\s*(\d+)/)?.[1]).filter(Boolean);const count=new Set(numbers).size;
-          const images=[...root.querySelectorAll('img')];const targets=assets.map(asset=>{const expected=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');const image=images.find(i=>new URL(i.src).pathname===expected);const b=image?.getBoundingClientRect();return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:b?{x:b.x,y:b.y,width:b.width,height:b.height}:null};});
+          const rect=b=>b?{x:b.x,y:b.y,width:b.width,height:b.height}:null;
+          const styleRecord=e=>{const s=getComputedStyle(e);return{width:s.width,height:s.height,maxWidth:s.maxWidth,maxHeight:s.maxHeight,objectFit:s.objectFit,transform:s.transform};};
+          const images=[...root.querySelectorAll('img')];const targets=assets.map(asset=>{
+            const expected=asset.archivePath?'/archive/'+asset.archivePath:'/'+asset.path.replace(/^archive\//,'');
+            const image=images.find(i=>new URL(i.src).pathname===expected),wrapper=image?.closest('.sol-image-wrap'),meta=image?.closest('.sol-meta'),box=image?.closest('.q-box');
+            const b=image?.getBoundingClientRect();
+            return{id:asset.id,src:image?.src||'',loaded:!!image?.complete&&image.naturalWidth>0,rect:rect(b),sizeClass:asset.sizeClass||wrapper?.className?.match(/image-(small|medium|large|full)/)?.[1]||null,naturalWidth:image?.naturalWidth||null,naturalHeight:image?.naturalHeight||null,computedStyle:image?styleRecord(image):null,wrapperRect:rect(wrapper?.getBoundingClientRect()),solutionMetaRect:rect(meta?.getBoundingClientRect()),qBoxRect:rect(box?.getBoundingClientRect()),sourceRef:box?.dataset.sourceRef||null};
+          });
+          const displayEnvelopes=[];
+          for(const target of envelopeTargets||[]){
+            const number=Number(target.displayOrdinal||target.questionId);
+            const box=[...root.querySelectorAll('.q-box')].find(candidate=>Number(candidate.querySelector('.q-num')?.textContent.match(/^\s*(\d+)/)?.[1])===number);
+            const meta=box?.querySelector('.sol-meta'),qBoxRect=rect(box?.getBoundingClientRect()),solutionMetaRect=rect(meta?.getBoundingClientRect());
+            const errors=[];if(!box)errors.push('ENVELOPE_TARGET_QBOX_MISSING');if(!meta)errors.push('ENVELOPE_TARGET_SOLUTION_META_MISSING');
+            const profiles=[];
+            if(meta&&solutionMetaRect){
+              const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+target.intrinsicSvg.width+'" height="'+target.intrinsicSvg.height+'" viewBox="0 0 '+target.intrinsicSvg.width+' '+target.intrinsicSvg.height+'"><rect width="100%" height="100%" fill="white"/></svg>';
+              const dataUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+              for(const sizeClass of target.sizeClasses||[]){
+                const host=document.createElement('div');host.style.cssText='position:fixed;left:-100000px;top:0;width:'+solutionMetaRect.width+'px;margin:0;padding:0;border:0;overflow:visible;visibility:hidden;pointer-events:none;';
+                const wrapper=document.createElement('span');wrapper.className='sol-image-wrap image-'+sizeClass;
+                const image=document.createElement('img');image.src=dataUrl;wrapper.appendChild(image);host.appendChild(wrapper);document.body.appendChild(host);
+                try{
+                  await image.decode();const imageRect=rect(image.getBoundingClientRect()),wrapperRect=rect(wrapper.getBoundingClientRect()),computedStyle=styleRecord(image);
+                  const chain=[image,wrapper,meta,box].map(node=>getComputedStyle(node).transform);
+                  profiles.push({status:image.naturalWidth===target.intrinsicSvg.width&&image.naturalHeight===target.intrinsicSvg.height?'PASS':'FAIL',sizeClass,imageRect,wrapperRect,naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,computedStyle,transformChain:chain});
+                }catch(error){profiles.push({status:'FAIL',sizeClass,error:String(error)});}
+                host.remove();
+              }
+            }
+            displayEnvelopes.push({status:errors.length||profiles.some(p=>p.status!=='PASS')?'FAIL':'PASS',id:target.id,questionId:target.questionId,displayOrdinal:number,sourceRef:box?.dataset.sourceRef||null,sourceAuthorityStatus:target.sourceAuthorityStatus||'MEASUREMENT_ONLY',qBoxRect,solutionMetaRect,existingSolutionImage:meta?.querySelector('.sol-image-wrap img')?(()=>{const img=meta.querySelector('.sol-image-wrap img');return{src:img.src,rect:rect(img.getBoundingClientRect()),computedStyle:styleRecord(img)};})():null,intrinsicSvg:target.intrinsicSvg,profiles,errors});
+          }
           const overflow=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+2;
-          return{questionBlocks:count,rawQuestionBlocks:numberNodes.length,lastQuestionNo:Math.max(...numbers.map(Number)),pageCount:root.querySelectorAll('.page').length,readiness:document.documentElement.dataset.apPrintReadiness||null,nativeRenderMetrics:document.documentElement.dataset.apRenderMetrics?JSON.parse(document.documentElement.dataset.apRenderMetrics):null,targets,horizontalOverflow:overflow,errorText:document.documentElement.dataset.apRenderError||'',mathJaxReady:!!window.MathJax?.startup?.document,allImagesLoaded:images.every(i=>i.complete&&i.naturalWidth>0),imageCount:images.length};
-        },{mode:item.mode,assets:item.assets});
+          return{questionBlocks:count,rawQuestionBlocks:numberNodes.length,lastQuestionNo:Math.max(...numbers.map(Number)),pageCount:root.querySelectorAll('.page').length,readiness:document.documentElement.dataset.apPrintReadiness||null,nativeRenderMetrics:document.documentElement.dataset.apRenderMetrics?JSON.parse(document.documentElement.dataset.apRenderMetrics):null,targets,displayEnvelopes,horizontalOverflow:overflow,errorText:document.documentElement.dataset.apRenderError||'',mathJaxReady:!!window.MathJax?.startup?.document,allImagesLoaded:images.every(i=>i.complete&&i.naturalWidth>0),imageCount:images.length};
+        },{mode:item.mode,assets:item.assets,envelopeTargets:item.envelopeTargets||[]});
         if(state.questionBlocks!==item.questionCount)errors.push('ARCHIVE_QCOUNT_FAIL');
         if(!state.pageCount||!state.mathJaxReady||state.errorText)errors.push('ARCHIVE_RENDER_NOT_READY');
         if(state.horizontalOverflow)errors.push('ARCHIVE_HORIZONTAL_OVERFLOW');
         if(!state.allImagesLoaded)errors.push('ARCHIVE_IMAGE_LOAD_FAIL');
+        for(const envelope of state.displayEnvelopes||[])if(envelope.status!=='PASS')errors.push(...(envelope.errors||['DISPLAY_ENVELOPE_PROBE_FAIL']));
         if(item.mode==='sol')for(const target of state.targets) {
           if(!target.loaded){errors.push('TARGET_SVG_LOAD_FAIL:'+target.id);continue;}
           const asset=item.assets.find(v=>v.id===target.id);
@@ -70,13 +104,38 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
       await Promise.allSettled(responsePromises);
         if(item.mode==='sol')for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===asset?.sha256))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
         if(consoleErrors.length)errors.push(...consoleErrors);
+      if(item.mode==='sol')for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
       const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:base+item.urlPath,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,
         capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:item.mode==='sol'?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:item.mode==='sol'?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
       fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();
     }
   }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
-  const result={status:rows.every(v=>v.status==='PASS')?'PASS':'FAIL',runtime:'playwright-chromium',synthetic:false,scope:'bound code regression candidates in unmodified archive runtime',rows:rows.map(v=>({id:v.id,status:v.status,capture:v.capture,errors:v.errors})),matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json')))};
+      const result={status:rows.every(v=>v.status==='PASS')?'PASS':'FAIL',runtime:'playwright-chromium',synthetic:false,scope:'bound code regression candidates in unmodified archive runtime',rows:rows.map(v=>({id:v.id,status:v.status,capture:v.capture,errors:v.errors})),matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json')))};
   fs.writeFileSync(path.join(folder,'summary.json'),JSON.stringify(result,null,2)+'\n');return result;
+}
+
+export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal,targetId,questionUid=null,intrinsicSvg,sizeClasses=['small','medium','large','full'],sourceAuthorityStatus='MEASUREMENT_ONLY'}){
+  run=assertOutput(run);
+  if(!sourceRef?.path?.startsWith('archive/exams/original/')||!Number.isSafeInteger(sourceOrdinal)||sourceOrdinal<1||!/^[-A-Za-z0-9_]{1,96}$/.test(targetId)||!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||!Array.isArray(sizeClasses)||!sizeClasses.length)throw Error('DISPLAY_ENVELOPE_PREFLIGHT_INPUT_INVALID');
+  if(sizeClasses.some(v=>!['small','medium','large','full'].includes(v))||new Set(sizeClasses).size!==sizeClasses.length)throw Error('DISPLAY_ENVELOPE_PROFILE_SET_INVALID');
+  const sourceBytes=readBoundFile(repoRoot,sourceRef),bank=loadBank(sourceBytes.toString('utf8'));
+  const index=bank.findIndex(q=>q.id===sourceOrdinal);if(index<0)throw Error('DISPLAY_ENVELOPE_SOURCE_ORDINAL_MISSING');
+  const candidateName=path.basename(sourceRef.path),candidatePath=assertOutput(path.join(run,candidateName));
+  if(fs.existsSync(candidatePath))throw Error('IMMUTABLE_PREFLIGHT_CANDIDATE_EXISTS');
+  fs.writeFileSync(candidatePath,sourceBytes,{flag:'wx'});
+  const rawSha=ref=>ref.sha256.slice(7),candidateRef=fileRef(repoRoot,path.relative(repoRoot,candidatePath).replaceAll('\\','/'));
+  const sourceInfo={id:targetId,sourcePath:sourceRef.path,sourceSha256:rawSha(sourceRef),candidatePath:path.relative(repoRoot,candidatePath).replaceAll('\\','/'),candidateSha256:rawSha(candidateRef),questionCount:bank.length,assets:[]};
+  const row={...sourceInfo,mode:'sol',viewport:'desktop-envelope',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourceRef.path.replace(/^archive\//,'')),envelopeTargets:[{id:targetId,questionId:sourceOrdinal,displayOrdinal:index+1,intrinsicSvg,sizeClasses,sourceAuthorityStatus}]};
+  const matrix={schemaVersion:'GEOMETRY_ARCHIVE_DISPLAY_ENVELOPE_MATRIX_v1',synthetic:false,measurementOnly:true,engineSha256:sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html'))),sources:[sourceInfo],rows:[row]};
+  fs.writeFileSync(path.join(run,'archive-render-matrix.json'),JSON.stringify(matrix,null,2)+'\n');
+  const archive=await recordArchiveEvidence({run,attempt:'envelope-preflight'});
+  const captureFolder=path.join(run,'archive-render','envelope-preflight');
+  const rowPath=path.join(captureFolder,targetId+'-sol-desktop-envelope.json');
+  const rowEvidence=JSON.parse(fs.readFileSync(rowPath,'utf8'));
+  const rawObservation=rowEvidence.state?.displayEnvelopes?.find(v=>v.id===targetId);
+  const observation=rawObservation?{...rawObservation,...(questionUid?{questionUid}:{}),synthetic:false,runtime:rowEvidence.runtime,browserVersion:rowEvidence.browserVersion,sourceRef,sourceAuthorityStatus}:null;
+  if(archive.status!=='PASS'||rowEvidence.status!=='PASS'||observation?.status!=='PASS')throw Error('ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL:'+JSON.stringify({archive:archive.status,row:rowEvidence.status,observation:observation?.status,errors:rowEvidence.errors}));
+  return {status:'PASS',measurementOnly:true,sourceAuthorityStatus,sourceRef,candidateRef,matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json'))),archive,rowEvidence,observation,captureFolder};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const arg=k=>process.argv[process.argv.indexOf(k)+1];const result=await recordArchiveEvidence({run:arg('--run'),attempt:process.argv.includes('--attempt')?arg('--attempt'):'attempt-01'});console.log(JSON.stringify(result));if(result.status!=='PASS')process.exitCode=1;
