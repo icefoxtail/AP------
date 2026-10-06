@@ -1,5 +1,9 @@
 # Archive 작업 전 Golden Sample Calibration v1
 
+## 품질 판독 보강 — 2026-10-06 — 작은칠판·발문 줄바꿈
+
+Golden 판독에서는 설명 길이나 줄 수를 모방하지 않는다. 실제 핵심 식 변형·중간값·대입·최종값이 별도 줄/수식 블록으로 이어지는지, 필요한 조건/기하 근거가 짧게 결속되는지 확인한다. 발문은 원문 text atom을 보존하면서 상황·조건·질문·보기의 의미 경계가 읽히는지 확인한다. 직접 읽은 sample의 구체적 단계/줄바꿈 관찰을 calibration evidence에 남기고, target의 전 qid 판정은 해설/문항조판 정본에 따라 별도로 완료한다. sample 판독만으로 target 나머지 문항을 PASS 처리하지 않는다.
+
 ## CURRENT HARD RULE — 2026-10-03 — RECHECK PREFLIGHT ORDER
 
 모든 REVIEW/repair worker의 calibration과 재검 순서는 다음으로 고정한다.

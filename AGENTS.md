@@ -1,5 +1,15 @@
 # Repository Agent Instructions
 
+## Archive 발문·해설 줄바꿈 — 필수 품질 기준
+
+작은칠판 해설과 발문 조판에서 줄바꿈은 필수 품질 기준이다. 해설은 필요한 한글만 두고 식 세우기 → 식 변형 → 중간값 → 대입 → 최종값의 핵심 단계를 별도 줄/수식 블록으로 보여준다. 여러 계산 단계를 한 문장이나 한 줄에 압축하거나, 생략한 식을 긴 한글 설명으로 대신하지 않는다. 발문은 조건·질문·보기·공통 자료의 의미 경계에서 줄을 나누고, 수식·단위·조건의 결속은 유지한다. 줄 수 자체로 PASS를 판단하지 않는다. GPT 예약 라인은 정적 검수 후 미실행 render를 NOT_RUN_CODEX_HANDOFF로 인계하며, Codex의 실제 render 담당이 desktop/mobile 줄바꿈과 수식 흐름의 가독성을 확인한다. 정본은 docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md §3/§6/§11 및 JS아카이브_문항조판_운영규칙_v1.md §4/§5다.
+
+## Archive 시험지 임시 경로 — 모든 Archive 시험지 작업에 적용
+
+JS·문제 이미지·해설 SVG는 임시 작업 때부터 최종 시험지/문항 명명 규칙과 최종 상대 참조를 사용한다. 승격은 확정된 이름과 참조를 유지하고 저장 위치만 바꾸는 것을 기본으로 한다.
+
+신규 중간 JS/자산은 `.tmp/archive/<runId>/<examUid>/`에만 기록한다. 파일명은 `<examUid>.js`로 유지하며 generated 경로/파일명으로 상태를 표현하지 않는다. `archive/_generated/`, `archive/exams/_generated/`는 역사 조회 전용으로 생성·갱신·stage 금지다. 승격과 SHA/receipt 결속은 `docs/rules/02_PIPELINES/Archive_Exam_Temporary_Workspace_v1.md`를 따른다. 기존 production의 bounded 수정과 과거 evidence는 보존한다.
+
 ## Archive 2.0 Codex Canary
 
 이 섹션은 사용자가 **Archive 2.0 Codex multi-agent canary / Phase 10 pilot**을 명시한 경우에만 적용한다. 다른 작업에는 적용하지 않는다.

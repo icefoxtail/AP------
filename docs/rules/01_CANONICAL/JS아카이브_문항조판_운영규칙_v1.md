@@ -47,6 +47,14 @@ layout-only 변화는 JS `\n`/실제 newline/HTML `<br>`, 문단 경계 공백·
 설명→조건→질문 전환 개행, 긴 상황과 최종 질문 분리, nested marker 시각 분리, 참고문/조건박스 구획,
 problem image 표시 크기·배치, 선택지 block/column, 실제 가독성에 필요한 layout field를 허용한다.
 
+### 의미 경계 줄바꿈 — 필수 검수
+
+줄바꿈은 발문 구조를 드러내는 필수 품질 기준이다. 긴 상황 설명 → 조건 → 최종 질문, `(가)/(나)`·`ㄱ/ㄴ/ㄷ`·소문항, 별도 정의·단서·공통 자료의 전환이 학생에게 보이도록 완결된 의미 단위 사이에서 나눈다. 짧고 명확한 발문에 불필요한 개행을 늘리지는 않는다.
+
+원문 문구·문자·수식·단위·순서와 choices exact parity를 보존한다. 줄바꿈을 위해 원문을 요약하거나 한글 연결 문장을 추가하지 않는다. 수식·좌표쌍·범위 조건의 내부를 쪼개거나 수치와 단위를 분리하지 않는다. choices의 번호·배치·자동 wrapping은 engine 책임이며, 번호를 문자열에 추가하거나 renderer 책임을 source 수정으로 대신하지 않는다.
+
+전 qid에서 의미 경계의 분리와 수식/조건의 결속을 직접 판정한다. JS `\n`/HTML `<br>`의 개수만으로 layout PASS를 선언하지 않는다. GPT는 정적 판정과 알려진 결함 수정을 수행하고 미실행 render는 `NOT_RUN_CODEX_HANDOFF`; Codex actual render는 desktop/mobile의 최종 질문 매몰, 식 일부 고립, 보기 부자연스러운 분할과 page flow를 확인한다.
+
 **AUTO-FIRST:** 자동 choice/image/layout이 적정하면 `choiceColumns`, `imageSize`, `layoutTag`, `wide`를 불필요하게 추가·변경하지 않는다.
 수동 override는 actual render evidence 또는 deterministic 표시 결함이 있을 때만 사용한다. render 미실행 GPT는 추측 override보다 `NOT_RUN_CODEX_HANDOFF`를 우선한다.
 
@@ -140,9 +148,13 @@ defect: `PROMPT_WALL_OF_TEXT`, `FORMULA_BREAK_RISK`, `NESTED_STRUCTURE_FLAT`, `Q
 `CHOICE_WRAP_BAD`, `QUESTION_INTERNAL_SPLIT`, `AUTO_FIT_OVERCOMPRESSION`,
 `UNNECESSARY_LAYOUT_OVERRIDE`, `SOURCE_TEXT_EXACT_PARITY_FAIL`, `CHOICES_EXACT_PARITY_FAIL`.
 
+의미 경계 개행 누락은 위 `PROMPT_WALL_OF_TEXT` / `NESTED_STRUCTURE_FLAT` / `QUESTION_ASK_BURIED`, 부적절한 수식 분할은 `FORMULA_BREAK_RISK`로 기록한다. 새로운 결함 코드로 같은 결함을 중복 기록하지 않는다.
+
 ## 8. CREATE HARD GATE
 
 전 문항 판정 후 known POLISH/REFORMAT은 직접 수정하고 exact parity를 다시 검사한다.
+
+이 전 문항 판정에는 §4 의미 경계 줄바꿈과 §5 수식 결속이 포함된다. 판정하지 않은 문항은 완료 분모에 포함하지 않는다.
 
 ```text
 QUESTION_LAYOUT_COVERAGE = denominator / denominator
@@ -160,6 +172,8 @@ CREATE_SELF_CHECK에도 QUESTION MICRO_LAYOUT을 포함한다. READY_FOR_REVIEW 
 ## 9. REVIEW1 HARD GATE
 
 CREATE PASS 자기보고를 자동 신뢰하지 않는다. 전 문항 fresh layout/source exact/choices exact와 formula/nested/problem asset/choices/page-flow를 독립 감사한다.
+
+원문이 보존됐다는 사실만으로 줄바꿈 가독성을 PASS로 처리하지 않는다. 문항별 layout evidence의 `reason` / `issueCodes[]`에 실제 의미 경계·수식 결속 판정 근거를 남긴다.
 안전한 결함은 최소 수정 후 exact parity를 재검한다.
 READY_FOR_REVIEW2 전 question layout/exact/choices PASS, `knownQuestionLayoutRepairPending=0`, `questionLayoutHoldCount=0`.
 

@@ -1,3 +1,7 @@
+## CURRENT — 시험지 임시 경로 2026-10-06
+
+신규 시험지 중간물은 `.tmp/archive/`만 사용한다. 경로와 승격 정본: [Archive_Exam_Temporary_Workspace_v1](02_PIPELINES/Archive_Exam_Temporary_Workspace_v1.md). 기존 generated 정책은 `90_ARCHIVE/generated-workspace/`의 역사 자료이며 신규 출력에 적용하지 않는다.
+
 ## CURRENT — 2026-10-03 — M2-1 THANOS MASTER ×5
 
 - automation 실행 authority: `02_PIPELINES/JS_Archive_Automation_Stable_Operating_Contract_v1.md` 최신 main.
@@ -468,7 +472,7 @@ L3/L4/CrossConcept/Condition/alias/curriculum binding 및 Pack/Shard/Compiled/Ow
 
 다음 영역은 현재 규칙으로 승격하지 않는다.
 
-- `../../archive/_generated/`: 자동 생성된 inventory·audit·review 결과
+- `../../.tmp/archive/`: 신규 시험지 임시 작업물(로컬 전용); 기존 generated 자료는 역사 조회 전용
 - `../../archive/textbook/`: 교재 전용 파이프라인과 결과
 - `../../archive/archive/docs/`: historical rulebook·구현계획·이전 설계
 - `../../archive/analysis/`: 특정 작업의 분석·계획 메모
