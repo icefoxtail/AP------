@@ -1413,16 +1413,21 @@
   }
   async function openFinderOutput(exam, mode = "exam") {
     const safeMode = ["exam", "sol", "ans"].includes(mode) ? mode : "exam";
-    const popup = window.open("about:blank", "_blank");
-    try {
-      if (!popup) throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
-      const settings = originalSettingsForExam(exam);
-      const output = await buildOriginalSourceOutput(exam, safeMode, settings, false);
-      popup.location.href = output.url.href;
-    } catch (error) {
-      popup?.close();
-      throw error;
-    }
+    const file = String(exam?.file || "");
+    if (!file || file.includes("..") || /^(?:[a-z]+:|[\\/])/i.test(file))
+      throw new Error("원본 기출 경로를 확인할 수 없습니다.");
+    // The same original-file route used by Archive 1 goEngine: no copied
+    // question bank, IndexedDB or localStorage is needed to open a raw source.
+    const url = new URL("engine.html", location.href);
+    url.searchParams.set("data", "exams/" + file);
+    url.searchParams.set("mode", safeMode);
+    url.searchParams.set("title", O.displayTitle(exam));
+    url.searchParams.set("subject", exam.subject || "");
+    if (exam.qCount) url.searchParams.set("q", String(exam.qCount));
+    O.applyUrl(url, originalSettingsForExam(exam));
+    url.searchParams.set("v", "20261006-archive1-source-route-1");
+    if (!window.open(url.href, "_blank"))
+      throw new Error("팝업을 허용한 뒤 다시 열어 주세요.");
   }
 
   function renderHome() {

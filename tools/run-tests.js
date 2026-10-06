@@ -32,6 +32,10 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive2-original-source-route.test.cjs',
+    args: ['--test', 'tests/archive2-original-source-route.test.cjs']
+  },
+  {
     label: 'tests/archive2-compose-performance.test.cjs',
     args: ['--test', 'tests/archive2-compose-performance.test.cjs']
   },

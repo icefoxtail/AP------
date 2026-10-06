@@ -30,7 +30,7 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(engine, /history\.replaceState\(null, '', outputUrl\.toString\(\)\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261003-reader-controls-s1-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261003-navigation-s5-3/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261006-compose-performance-1/);
+  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261006-archive1-source-route-1/);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {
@@ -49,7 +49,7 @@ test("preview stays embedded and mode actions do not reset an iframe", () => {
 });
 
 test("Finder, Saved Paper, and Assignment print URLs are standalone outputs", () => {
-  assert.match(workspace, /buildOriginalSourceOutput\(exam, safeMode, settings, false\)/);
+  assert.match(workspace, /url\.searchParams\.set\("data", "exams\/" \+ file\)/);
   assert.match(workspace, /originalOutputUrl\("exam", false\)/);
   assert.match(library, /outputUrl\(paper, envelope, envelope\.mode, false\)/);
   assert.match(workspace, /outputEnvelopeUrl\("mixed_engine\.html", location\.href, envelope, \{\s*studio: true,\s*assignmentId,/);
