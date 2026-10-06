@@ -25,7 +25,7 @@ window.questionBank = [
       "6개"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "소수는 $1$과 자기 자신만을 약수로 갖는 수이다.\n\n$17,\\ 23$\n\n두 수만 소수이다.\n\n따라서 $2$개, 정답은 ①이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -64,7 +64,7 @@ window.questionBank = [
       "$2\\times 3^2\\times 4$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$72=8\\times9$\n\n$=2^3\\times3^2$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -103,7 +103,7 @@ window.questionBank = [
       "$3^3\\times 5^2$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "$3^2\\times5^3$의 약수는\n$3$의 지수가 $0,1,2$,\n$5$의 지수가 $0,1,2,3$이어야 한다.\n\n$3^3\\times5^2$는 $3$의 지수가 $3$이므로 약수가 아니다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -142,7 +142,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "첫째 수는 $3^a\\times7^2$,\n둘째 수는 $3^2\\times b\\times7^c$이다.\n\n최대공약수가 $3\\times7$이므로\n$a=1,\\ c=1$\n\n최소공배수에 $5$가 있으므로\n$b=5$\n\n따라서\n\n$a+b+c=1+5+1=7$\n\n정답은 ②이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -181,7 +181,7 @@ window.questionBank = [
       "36"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$\\dfrac{120}{n},\\dfrac{192}{n}$이 모두 자연수이려면\n$n$은 $120,192$의 공약수이다.\n\n가장 큰 값은 최대공약수이다.\n\n$120=2^3\\times3\\times5$\n$192=2^6\\times3$\n\n$\\gcd(120,192)=2^3\\times3=24$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -220,7 +220,7 @@ window.questionBank = [
       "5바퀴"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "같은 톱니에서 다시 만나려면\n지나간 톱니 수가 $36,48$의 공배수여야 한다.\n\n$\\operatorname{lcm}(36,48)=144$\n\nB의 회전 수는\n\n$144\\div48=3$\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -259,7 +259,7 @@ window.questionBank = [
       "서로 다른 두 유리수 사이에는 무수히 많은 유리수가 존재한다."
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "$0$도 유리수이다.\n\n따라서 유리수는\n양의 유리수, $0$, 음의 유리수로 이루어진다.\n\n“양의 유리수와 음의 유리수로 이루어진다.”는 ③이 옳지 않다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -298,7 +298,7 @@ window.questionBank = [
       "$+5$"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "수직선에서는 오른쪽에 있을수록 큰 수이다.\n\n$-6<-3<0<2<5$\n\n가장 오른쪽의 수는 $+5$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -337,7 +337,7 @@ window.questionBank = [
       "$\\dfrac{4}{3}$"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "절댓값이 같고 서로 다른 두 수이므로\n\n$A=-B$\n\n또\n\n$A-B=\\dfrac43$\n\n$A-(-A)=\\dfrac43$\n\n$2A=\\dfrac43$\n\n$A=\\dfrac23$\n\n$B=-\\dfrac23$\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -377,7 +377,7 @@ window.questionBank = [
       "$+5$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "밑변의 합은\n\n$-3+0+2+6=5$\n\n왼쪽 변에서 윗수를 $x$라 하면\n\n$-3+7-5+x=5$\n\n$x=6$\n\n오른쪽 빈칸을 $y$라 하면\n\n$6+y-4+6=5$\n\n$y=-3$\n\n따라서\n\n$x+y=6-3=3$\n\n정답은 ④이다.",
     "image": "assets/images/23_동산중_1학기_중간_중1_기출/q10.png",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
@@ -417,7 +417,7 @@ window.questionBank = [
       "$\\dfrac{11}{30}$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "$\\dfrac35+\\dfrac23-\\dfrac7{10}-\\dfrac43$\n\n$=\\left(\\dfrac35-\\dfrac7{10}\\right)\n+\\left(\\dfrac23-\\dfrac43\\right)$\n\n$=-\\dfrac1{10}-\\dfrac23$\n\n$=-\\dfrac3{30}-\\dfrac{20}{30}$\n\n$=-\\dfrac{23}{30}$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -457,7 +457,7 @@ window.questionBank = [
       "$220$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$(-10)\\times(+11)\\times(-2)$\n\n$=(-10)\\times(-2)\\times(+11)$\n— 교환법칙\n\n$=\\{(-10)\\times(-2)\\}\\times(+11)$\n— 결합법칙\n\n$=20\\times11$\n\n$=220$\n\n따라서 ②의 “분배법칙”이 옳지 않다.",
     "image": "assets/images/23_동산중_1학기_중간_중1_기출/q12.png",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
@@ -497,7 +497,7 @@ window.questionBank = [
       "$\\dfrac{5}{2}$"
     ],
     "answer": "③",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "세 수를 고른 곱을 모두 계산한다.\n\n$\\left(-\\dfrac53\\right)\\left(-\\dfrac32\\right)\\left(\\dfrac13\\right)=\\dfrac56$\n\n$\\left(-\\dfrac53\\right)\\left(-\\dfrac32\\right)(-2)=-5$\n\n$\\left(-\\dfrac53\\right)\\left(\\dfrac13\\right)(-2)=\\dfrac{10}{9}$\n\n$\\left(-\\dfrac32\\right)\\left(\\dfrac13\\right)(-2)=1$\n\n가장 큰 값은 $\\dfrac{10}{9}$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -536,7 +536,7 @@ window.questionBank = [
       "$\\dfrac{(-2)^2}{5}$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "각 값을 계산하면\n\n① $\\left(-\\dfrac25\\right)^2=\\dfrac4{25}$\n\n② $-\\left(\\dfrac25\\right)^2=-\\dfrac4{25}$\n\n③ $\\dfrac{2^2}{5}=\\dfrac45$\n\n④ $\\dfrac2{(-5)^2}=\\dfrac2{25}$\n\n⑤ $\\dfrac{(-2)^2}{5}=\\dfrac45$\n\n작은 순서는\n\n$-\\dfrac4{25}<\\dfrac2{25}<\\dfrac4{25}<\\dfrac45$\n\n세 번째는 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -576,7 +576,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "전개도를 접으면 마주 보는 면은\n\n$a\\leftrightarrow-\\dfrac23$\n\n$c\\leftrightarrow-\\dfrac25$\n\n$b\\leftrightarrow\\dfrac14$\n\n이다.\n\n마주 보는 수가 서로 역수이므로\n\n$a=-\\dfrac32,\\quad\nc=-\\dfrac52,\\quad\nb=4$\n\n따라서\n\n$\\dfrac{a+c}{b}\n=\\dfrac{-\\frac32-\\frac52}{4}\n=\\dfrac{-4}{4}\n=-1$\n\n정답은 ③이다.",
     "image": "assets/images/23_동산중_1학기_중간_중1_기출/q15.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -616,7 +616,7 @@ window.questionBank = [
       "$\\dfrac{8}{3}$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "$\\left(-\\dfrac43\\right)^2=\\dfrac{16}{9}$\n\n$(-4)\\times\\square\\div\\dfrac{16}{9}=6$\n\n$-\\dfrac94\\square=6$\n\n$\\square=6\\times\\left(-\\dfrac49\\right)$\n\n$=-\\dfrac83$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -655,7 +655,7 @@ window.questionBank = [
       "$\\dfrac{4}{3}$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "$(a+b)c=ac+bc$\n\n$-1=\\dfrac45+bc$\n\n$bc=-1-\\dfrac45$\n\n$=-\\dfrac95$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "candidate_evidence",
@@ -694,7 +694,7 @@ window.questionBank = [
       "$(50000-0.8a)$원"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "할인한 가격은\n\n$a\\times(1-0.2)=0.8a$\n\n거스름돈은\n\n$50000-0.8a$\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -733,7 +733,7 @@ window.questionBank = [
       "$(-2)\\times x-3\\div y=-2x-\\dfrac{3}{y}$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "④를 정리하면\n\n$a\\times b\\div(-2)\\times b$\n\n$=ab\\times\\left(-\\dfrac12\\right)\\times b$\n\n$=-\\dfrac12ab^2$\n\n$-2ab^2$가 아니다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -772,7 +772,7 @@ window.questionBank = [
       "$6a-a^2$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$a=\\dfrac13$을 대입한다.\n\n④\n\n$3(a-1)$\n\n$=3\\left(\\dfrac13-1\\right)$\n\n$=3\\left(-\\dfrac23\\right)$\n\n$=-2$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -806,7 +806,7 @@ window.questionBank = [
     "content": "서술형1. 세 자연수 $20$, $50$, $A$의 최대공약수는 $10$이고 최소공배수는 $200$일 때, $A$가 될 수 있는 수를 모두 구하시오. (단, 풀이 과정을 자세히 쓰시오.)",
     "choices": [],
     "answer": "40, 200",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 40, 200이다.",
+    "solution": "$20=2^2\\times5$\n\n$50=2\\times5^2$\n\n$A$를 포함한 최대공약수가 $10$이므로\n$A$는 $10$의 배수이다.\n\n최소공배수가\n\n$200=2^3\\times5^2$\n\n이므로 $A$는 $200$의 약수이고\n$2^3$을 포함해야 한다.\n\n가능한 값은\n\n$2^3\\times5=40$\n\n$2^3\\times5^2=200$\n\n따라서\n\n$A=40,\\ 200$이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -840,7 +840,7 @@ window.questionBank = [
     "content": "서술형2. 세 유리수 $a$, $b$, $c$에 대하여 $a\\times b<0$, $a-b>0$, $b\\div c>0$이 성립할 때, $a\\times b\\times c$의 부호를 구하시오. (단, 풀이 과정을 자세히 쓰시오.)",
     "choices": [],
     "answer": "양수",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 양수이다.",
+    "solution": "$ab<0$이므로\n$a,b$의 부호는 서로 다르다.\n\n$a-b>0$에서\n$a<0,\\ b>0$이면 성립할 수 없다.\n\n따라서\n\n$a>0,\\quad b<0$\n\n또\n\n$\\dfrac bc>0$\n\n이므로 $b,c$의 부호가 같아\n\n$c<0$\n\n따라서\n\n$abc=(+)\\times(-)\\times(-)>0$\n\n부호는 양수이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -875,7 +875,7 @@ window.questionBank = [
     "content": "서술형3. 다음 식의 계산 순서를 차례로 나열하고 계산하시오. (단, 풀이 과정을 자세히 쓰시오.)",
     "choices": [],
     "answer": "ㄹ → ㄷ → ㄴ → ㅁ → ㄱ, -4",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ㄹ → ㄷ → ㄴ → ㅁ → ㄱ, -4이다.",
+    "solution": "주어진 식은\n\n$3-\\left\\{2-4\\div\\left(-\\dfrac23\\right)^2\\right\\}\\times(-1)$\n\n이다.\n\n먼저\n\n$\\left(-\\dfrac23\\right)^2=\\dfrac49$  → ㄹ\n\n$4\\div\\dfrac49=9$  → ㄷ\n\n$2-9=-7$  → ㄴ\n\n$(-7)\\times(-1)=7$  → ㅁ\n\n$3-7=-4$  → ㄱ\n\n따라서 계산 순서는\n\nㄹ → ㄷ → ㄴ → ㅁ → ㄱ\n\n이고 값은 $-4$이다.",
     "image": "assets/images/23_동산중_1학기_중간_중1_기출/q23.png",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
