@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_PROVIDER_TIMEOUT_PROBE_v1",
+  "classification": "PROVIDER_TURN_TIMEOUT_OBSERVED_WITH_CLEANUP_DEBT",
+  "status": "DEBT",
+  "attemptCount": 1,
+  "invocation": {
+    "purpose": "phase3d-provider-timeout-read-only-probe",
+    "toolAccess": "NONE",
+    "sandbox": "read-only",
+    "timeoutMs": 1,
+    "turnStarted": true,
+    "turnCompleted": false,
+    "errorCode": "VISUAL_PROVIDER_TIMEOUT",
+    "totalDurationMs": 2675
+  },
+  "processCleanup": {
+    "before": {
+      "available": true,
+      "pids": []
+    },
+    "after": {
+      "available": true,
+      "pids": []
+    },
+    "newMatchingSurvivors": [],
+    "observedNoMatchingAppServerProcessAfterOneSecond": true,
+    "directChildPidCaptured": false,
+    "childCloseEventCaptured": false,
+    "localCleanupProof": "PROCESS_SNAPSHOT_ONLY",
+    "remoteTurnCancellation": "UNVERIFIED"
+  },
+  "trace": {
+    "path": "payload/appserver-message-trace.jsonl",
+    "entries": 12,
+    "lastMethod": "turn/started",
+    "lastTurnStatus": "inProgress",
+    "completionObserved": false
+  },
+  "probeRecordPath": "payload/provider-timeout-probe.json",
+  "harnessPath": "logs/probe-provider-timeout.mjs",
+  "codeRefs": [
+    {
+      "path": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+      "bytes": 27699,
+      "sha256": "sha256:b5721832af5d93665b83b6ce3cc1a6544c3189792f2311c24a67ddda72daeeb8"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/auditor-turn-output.mjs",
+      "bytes": 3641,
+      "sha256": "sha256:0a5071253c50c86a6bcb72cc78b032725448fe1e716bae18c6407dc9352ef25a"
+    }
+  ],
+  "limitations": [
+    "This was one bounded provider invocation using the existing authenticated AppServer; it is a probe, not repeated timeout-recovery qualification.",
+    "VISUAL_PROVIDER_TIMEOUT was observed after turn/started and before turn/completed.",
+    "The process query observed no matching app-server process before or one second after the call, but did not capture the spawned child PID or its close event. Direct local-child cleanup is therefore not proven.",
+    "The remote provider turn may continue after the local stdio client closes; remote cancellation is unverified.",
+    "No Phase2 stage receipt, cache entry, candidate, or qualification status was produced by this direct invocation."
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "currentHead": "8d5ef0669",
+  "lastUpdatedUtc": "2026-10-06T15:53:57.838Z"
+}
