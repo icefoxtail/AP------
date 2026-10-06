@@ -14,7 +14,7 @@ const negativePath='archive/fixtures/review-negative-regressions/negative/README
 const negativeSample={path:negativePath,sha256:solutionSha256('known negative case'),observation:'생략된 중간식은 PASS 불가'};
 fs.writeFileSync(path.join(root,'archive/data/codex-quality-calibration-registry-v2.json'),JSON.stringify({qualityContractVersion:QUALITY_CONTRACT_V2,goldenPaths:samples.map(s=>s.path),negativePaths:[negativePath]}));
 fs.writeFileSync(path.join(root,'archive/data/gpt-quality-calibration-registry-v2.json'),JSON.stringify({qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'GPT_SCHEDULED',goldenPaths:samples.map(s=>s.path),negativePaths:[negativePath]}));
-const question=(extra={})=>({id:1,level:1,category:'대수',originalCategory:'대수',standardCourse:'중등수학',standardUnitKey:'UNIT',standardUnit:'방정식',standardUnitOrder:1,subUnitKey:'SUB',subUnit:'일차방정식',subUnitConfidence:'candidate_evidence',subUnitClassificationDepth:'complete_candidate',questionType:'객관식',layoutTag:'grid',wide:false,tags:[],content:'x+1=2에서 x를 구하시오.',choices:['1','2','3','4','5'],answer:'①',solution:'x+1=2\nx=2-1=1',problemTypeKey:'PT_SAMPLE',templateKey:'TPL_SAMPLE',crossConceptKeys:[],conditionKeys:[],integrationPattern:'NONE',difficultyBucket:2,difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',...extra});
+const question=(extra={})=>({id:1,level:'하',category:'대수',originalCategory:'대수',standardCourse:'중등수학',standardUnitKey:'UNIT',standardUnit:'방정식',standardUnitOrder:1,subUnitKey:'SUB',subUnit:'일차방정식',subUnitConfidence:'candidate_evidence',subUnitClassificationDepth:'complete_candidate',questionType:'객관식',layoutTag:'grid',wide:false,tags:[],content:'x+1=2에서 x를 구하시오.',choices:['1','2','3','4','5'],answer:'①',solution:'x+1=2\nx=2-1=1',problemTypeKey:'PT_SAMPLE',templateKey:'TPL_SAMPLE',crossConceptKeys:[],conditionKeys:[],integrationPattern:'NONE',difficultyBucket:2,difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',...extra});
 const row=q=>({qid:q.id,sourceMode:'ORIGINAL',axisEvidence:{questionLayout:'PASS',solutionLayout:'PASS',meta:'PASS',visualSvg:'PASS'},provenanceEvidence:{sourceParity:'PASS'},smallBoardContinuityStatus:'PASS',solutionSha256:solutionSha256(q.solution)});
 function run(qs=[question()],{stage='CREATE',change=()=>{},strict=true,omitTitle=false}={}){
  const bytes=Buffer.from((omitTitle?'':'window.examTitle="fixture";')+'window.questionBank='+JSON.stringify(qs)+';'),exam=path.join(root,'fixture.js'),ev=path.join(root,'evidence.json');fs.writeFileSync(exam,bytes);
@@ -86,4 +86,10 @@ test('GPT enforcement requires campaign and stream and uses GPT calibration regi
  assert.equal(report.ok,true,JSON.stringify(report));
  const missing=run(undefined,{strict:false,change:e=>{e.executionLine='GPT_SCHEDULED';delete e.campaignId;e.stream='A';}});
  assert.equal(missing.ok,false);
+});
+
+
+test('canonical legacy 하/중/상 labels pass independently of difficultyBucket; numeric replacements fail',()=>{
+ for(const level of ['하','중','상']) assert.equal(run([question({level,difficultyBucket:4})]).ok,true);
+ for(const level of [1,2,3,null,'UNKNOWN']) assert.equal(run([question({level})]).ok,false);
 });
