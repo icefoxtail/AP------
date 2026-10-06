@@ -24,7 +24,7 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "원의 중심 O에서 두 옆 현에 내린 수선의 길이가 같으므로 두 현의 길이가 같다. 따라서 위 꼭짓점을 기준으로 한 삼각형은 이등변삼각형이고 두 밑각이 모두 50°이다.\n그러므로 x=180°-50°-50°=80°. 정답은 ⑤이다.",
+    "solution": "원의 중심 $O$에서 두 현에 내린 수선의 길이가 같으므로\n두 현의 길이는 서로 같다.\n따라서 두 현을 두 변으로 갖는 삼각형은 이등변삼각형이다.\n그림의 두 밑각이 각각 $50^\\circ$이므로\n삼각형의 내각의 합에서\n$x+50^\\circ+50^\\circ=180^\\circ$이다.\n따라서\n$x=180^\\circ-100^\\circ\n=80^\\circ$이다.\n정답은 ⑤이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q1.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -56,7 +56,7 @@ window.questionBank = [
       "$6\\sqrt5$"
     ],
     "answer": "④",
-    "solution": "OM⊥AR이므로 M은 현 AR의 중점이다. 직각삼각형 OAM에서 OA=6, OM=3이므로 AM=√(6²-3²)=3√3.\n따라서 AR=2AM=6√3이고 정답은 ④이다.",
+    "solution": "$OM\\perp AR$이므로\n원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n따라서\n$AM=MR$이다.\n직각삼각형 $OAM$에서\n$OA=6$, $OM=3$이므로\n피타고라스 정리에 의해\n$AM=\\sqrt{OA^2-OM^2}$\n$=\\sqrt{6^2-3^2}$\n$=\\sqrt{27}$\n$=3\\sqrt3$이다.\n그러므로\n$AR=2AM=6\\sqrt3$이다.\n정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -88,7 +88,7 @@ window.questionBank = [
       "$5\\rm\\,cm$"
     ],
     "answer": "⑤",
-    "solution": "현 AB의 중점을 M이라 하면 AM=3 cm이고, 중심 O는 AB의 수직이등분선 위에 있다. 반지름을 r이라 하면 CM=1 cm이므로 OM=r-1.\n직각삼각형 OAM에서 r²=(r-1)²+3²이므로 r=5. 정답은 ⑤이다.",
+    "solution": "현 $AB$의 중점을 $M$이라 하자.\n$AB=6\\,\\mathrm{cm}$이므로\n$AM=3\\,\\mathrm{cm}$이다.\n원의 중심 $O$는 현 $AB$의 수직이등분선 위에 있으므로\n$OM\\perp AB$이다.\n원의 반지름을 $r$라 하면\n그림에서\n$CM=1\\,\\mathrm{cm}$이므로\n$OM=r-1$이다.\n직각삼각형 $OAM$에서\n$OA=r$이므로\n$r^2=(r-1)^2+3^2$이다.\n전개하면\n$r^2=r^2-2r+1+9$,\n$2r=10$,\n$r=5$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q3.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -120,7 +120,7 @@ window.questionBank = [
       "$18\\sqrt{13}$"
     ],
     "answer": "②",
-    "solution": "한 점에서 원에 그은 두 접선의 길이는 같으므로 AD=AF=2, CF=CE=5이다. BC=12이므로 BE=BD=7.\n또 OD⊥AB이고 OA=3, AD=2이므로 OD=√(3²-2²)=√5. 삼각형 ABC의 반둘레는 AD+BE+CF=14이므로 넓이는 14√5. 정답은 ②이다.",
+    "solution": "한 점에서 같은 원에 그은 두 접선의 길이는 같다.\n따라서\n$AD=AF=2$,\n$CF=CE=5$이다.\n또\n$BC=12$이므로\n$BE=BC-CE=12-5=7$이고\n$BD=BE=7$이다.\n\n$OD\\perp AB$이고\n$OA=3$, $AD=2$이므로\n직각삼각형 $OAD$에서\n$OD=\\sqrt{OA^2-AD^2}$\n$=\\sqrt{3^2-2^2}$\n$=\\sqrt5$이다.\n따라서 내접원의 반지름은 $\\sqrt5$이다.\n\n삼각형 $ABC$의 반둘레는\n$AD+BE+CF$\n$=2+7+5$\n$=14$이다.\n삼각형의 넓이는\n$(\\text{반둘레})\\times(\\text{내접원 반지름})$이므로\n$[ABC]=14\\sqrt5$이다.\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q4.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -152,7 +152,7 @@ window.questionBank = [
       "$84^\\circ$"
     ],
     "answer": "③",
-    "solution": "OA=OC이므로 △AOC는 이등변삼각형이다. ∠OAC=30°이므로 ∠AOC=120°, 따라서 호 AC의 중심각은 120°이다.\n접선과 현 BC가 이루는 각 54°가 보는 호 BC의 중심각은 108°이다. 따라서 작은 호 AB의 중심각은 360°-120°-108°=132°.\n두 접선 PA, PB가 이루는 각은 180°-132°=48°. 정답은 ③이다.",
+    "solution": "$OA=OC$는 같은 원의 반지름이므로\n$\\triangle AOC$는 이등변삼각형이다.\n$\\angle OAC=30^\\circ$이므로\n$\\angle OCA=30^\\circ$이고,\n$\\angle AOC=180^\\circ-30^\\circ-30^\\circ\n=120^\\circ$이다.\n따라서 호 $AC$의 중심각은 ,20^\\circ$이다.\n\n접선과 현 $BC$가 이루는 각이 $54^\\circ$이므로\n같은 현 $BC$를 보는 원주각도 $54^\\circ$이다.\n따라서 호 $BC$의 중심각은\n$2\\times54^\\circ=108^\\circ$이다.\n\n작은 호 $AB$의 중심각은\n$360^\\circ-120^\\circ-108^\\circ\n=132^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n,80^\\circ-132^\\circ\n=48^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q5.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -184,7 +184,7 @@ window.questionBank = [
       "$68^\\circ$"
     ],
     "answer": "④",
-    "solution": "AB가 지름이므로 호 AB의 중심각은 180°이고, ∠COD=50°이므로 호 CD의 중심각은 50°이다.\n원 밖의 점 P에서 그은 두 할선이 이루는 각은 두 호의 중심각 차의 절반이므로 ∠CPD=(180°-50°)/2=65°. 정답은 ④이다.",
+    "solution": "$AB$가 지름이므로\n호 $AB$에 대한 중심각은 ,80^\\circ$이다.\n또\n$\\angle COD=50^\\circ$이므로\n호 $CD$의 중심각은 $50^\\circ$이다.\n원 밖의 점 $P$에서 그은 두 할선이 이루는 각의 크기는\n먼 두 호와 가까운 두 호의 크기 차의 절반이다.\n따라서\n$\\angle CPD\n=\\dfrac{180^\\circ-50^\\circ}{2}$\n$=\\dfrac{130^\\circ}{2}$\n$=65^\\circ$이다.\n정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q6.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -216,7 +216,7 @@ window.questionBank = [
       "$110^\\circ$"
     ],
     "answer": "②",
-    "solution": "15°의 원주각이 보는 호의 중심각은 30°이다. 그 호의 길이가 4 cm이므로 원 둘레는 4×360/30=48 cm.\n길이 8 cm인 호의 중심각은 8/48×360°=60°이므로 y=60°. 같은 호를 보는 원주각은 x=30°.\n따라서 x+y=90°이고 정답은 ②이다.",
+    "solution": ",5^\\circ$인 원주각이 보는 호의 중심각은\n$2\\times15^\\circ=30^\\circ$이다.\n그 호의 길이가 $4\\,\\mathrm{cm}$이므로\n원의 둘레를 $L$이라 하면\n$4=L\\times\\dfrac{30}{360}$이다.\n따라서\n$L=4\\times\\dfrac{360}{30}\n=48\\,\\mathrm{cm}$이다.\n\n길이가 $8\\,\\mathrm{cm}$인 호의 중심각을 $y$라 하면\n$\\dfrac{8}{48}\n=\\dfrac{y}{360}$이다.\n따라서\n$y=60^\\circ$이다.\n같은 호를 보는 원주각 $x$는\n$\\dfrac{60^\\circ}{2}\n=30^\\circ$이다.\n그러므로\n$x+y=30^\\circ+60^\\circ\n=90^\\circ$이다.\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -248,7 +248,7 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "③",
-    "solution": "원 안에서 두 현이 만날 때 생기는 각은 마주 보는 두 호의 중심각 합의 절반이다. ∠APD=80°이므로 호 AD와 호 BC의 중심각 합은 160°.\n두 호의 길이 합은 3π+5π=8π이므로 8π/(2πr)=160/360=4/9. 따라서 2πr=18π, r=9. 정답은 ③이다.",
+    "solution": "원 안에서 두 현이 만날 때\n교점에서 생기는 각의 크기는\n마주 보는 두 호의 크기 합의 절반이다.\n$\\angle APD=80^\\circ$이므로\n호 $AD$와 호 $BC$의 중심각의 합은\n$2\\times80^\\circ\n=160^\\circ$이다.\n\n두 호의 길이의 합은\n$3\\pi+5\\pi=8\\pi$이다.\n원의 반지름을 $r$라 하면\n원의 둘레는 $2\\pi r$이므로\n$\\dfrac{8\\pi}{2\\pi r}\n=\\dfrac{160}{360}\n=\\dfrac49$이다.\n따라서\n$2\\pi r=18\\pi$이고\n$r=9$이다.\n정답은 ③이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q8.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -280,7 +280,7 @@ window.questionBank = [
       "$111^\\circ$"
     ],
     "answer": "②",
-    "solution": "OD=OC이므로 △ODC는 이등변삼각형이다. ∠ODC=44°이므로 ∠DOC=180°-44°-44°=92°, 즉 호 DC의 중심각은 92°.\n∠ABC=115°가 보는 큰 호 ADC의 중심각은 230°이므로 호 AD는 230°-92°=138°.\n따라서 ∠ACD=138°/2=69°. 정답은 ②이다.",
+    "solution": "$OD=OC$는 같은 원의 반지름이므로\n$\\triangle ODC$는 이등변삼각형이다.\n$\\angle ODC=44^\\circ$이므로\n$\\angle OCD=44^\\circ$이다.\n따라서\n$\\angle DOC\n=180^\\circ-44^\\circ-44^\\circ\n=92^\\circ$이다.\n즉 호 $DC$의 크기는 $92^\\circ$이다.\n\n$\\angle ABC=115^\\circ$는 큰 호 $ADC$를 보는 원주각이므로\n큰 호 $ADC$의 크기는\n$2\\times115^\\circ\n=230^\\circ$이다.\n따라서\n호 $AD$의 크기는\n$230^\\circ-92^\\circ\n=138^\\circ$이다.\n$\\angle ACD$는 호 $AD$를 보는 원주각이므로\n$\\angle ACD\n=\\dfrac{138^\\circ}{2}\n=69^\\circ$이다.\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q9.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -312,7 +312,7 @@ window.questionBank = [
       "$62^\\circ$"
     ],
     "answer": "①",
-    "solution": "원에 내접한 사각형에서 마주 보는 두 각의 합은 180°이므로 ∠BAD=180°-124°=56°.\nAD가 지름이므로 ∠ABD=90°, 따라서 ∠ADB=180°-90°-56°=34°.\n접선과 현 AB가 이루는 각은 현 AB를 보는 원주각 ∠ADB와 같으므로 ∠ABT=34°. 정답은 ①이다.",
+    "solution": "원에 내접하는 사각형에서\n마주 보는 두 각의 합은 ,80^\\circ$이다.\n따라서\n$\\angle BAD\n=180^\\circ-124^\\circ\n=56^\\circ$이다.\n또 $AD$가 지름이므로\n지름 $AD$를 보는 원주각\n$\\angle ABD=90^\\circ$이다.\n삼각형 $ABD$에서\n$\\angle ADB\n=180^\\circ-90^\\circ-56^\\circ\n=34^\\circ$이다.\n접선 $BT$와 현 $AB$가 이루는 각은\n같은 현 $AB$를 보는 원주각 $\\angle ADB$와 같으므로\n$\\angle ABT=34^\\circ$이다.\n정답은 ①이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q10.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -344,7 +344,7 @@ window.questionBank = [
       "$16\\pi\\rm\\,cm^2$"
     ],
     "answer": "⑤",
-    "solution": "중심 O에서 세 현 AB, AC, BC까지의 거리가 같으므로 세 현의 길이가 같다. 따라서 △ABC는 정삼각형이다.\nAB=4√3이므로 AM=2√3이고, 중심각 ∠AOB=120°이므로 ∠AOM=60°. 직각삼각형 AOM에서 OA=4.\n따라서 원 O의 넓이는 π·4²=16π cm²이고 정답은 ⑤이다.",
+    "solution": "원의 중심 $O$에서 세 현 $AB,AC,BC$까지의 거리가 모두 같으므로\n세 현의 길이도 모두 같다.\n따라서\n$AB=AC=BC$이고\n$\\triangle ABC$는 정삼각형이다.\n그러므로 중심각\n$\\angle AOB=120^\\circ$이다.\n\n$M$은 현 $AB$의 중점이므로\n$AM=\\dfrac{AB}{2}\n=2\\sqrt3$이다.\n또 $OM\\perp AB$이므로\n$\\triangle AOM$은 직각삼각형이고,\n$\\angle AOM=60^\\circ$이다.\n따라서\n$\\sin60^\\circ\n=\\dfrac{AM}{OA}\n=\\dfrac{2\\sqrt3}{OA}$이다.\n$\\dfrac{\\sqrt3}{2}\n=\\dfrac{2\\sqrt3}{OA}$이므로\n$OA=4$이다.\n따라서 원 $O$의 넓이는\n$\\pi\\times4^2\n=16\\pi\\,\\mathrm{cm}^2$이다.\n정답은 ⑤이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q11.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -376,7 +376,7 @@ window.questionBank = [
       "$(16\\sqrt3+16\\pi)\\rm\\,cm$"
     ],
     "answer": "③",
-    "solution": "단면에서 원의 중심을 O, 실이 원에 닿는 두 점을 A, B라 하자. 반지름이 8 cm이고 P에서 원까지의 최단 거리가 8 cm이므로 OP=16 cm.\nOA⊥PA이므로 직각삼각형 OAP에서 OA:OP=1:2, 따라서 ∠AOP=60°이고 PA=8√3 cm. 같은 이유로 PB=8√3 cm.\n작은 중심각 AOB는 120°이므로 실이 감기는 큰 호는 240°이고 그 길이는 16π×240/360=32π/3 cm.\n따라서 실의 길이는 16√3+32π/3 cm, 정답은 ③이다.",
+    "solution": "단면에서 원의 중심을 $O$,\n실이 원에 닿는 두 점을 $A,B$라 하자.\n원의 반지름은 $8\\,\\mathrm{cm}$이고\n점 $P$에서 원까지의 최단 거리도 $8\\,\\mathrm{cm}$이므로\n$OP=8+8=16\\,\\mathrm{cm}$이다.\n\n접점에서 반지름은 접선과 수직이므로\n$OA\\perp PA$이다.\n직각삼각형 $OAP$에서\n$OA:OP=8:16=1:2$이므로\n$\\angle AOP=60^\\circ$이다.\n또\n$PA=\\sqrt{OP^2-OA^2}$\n$=\\sqrt{16^2-8^2}$\n$=8\\sqrt3$이다.\n같은 방법으로\n$PB=8\\sqrt3$이다.\n\n작은 중심각\n$\\angle AOB=120^\\circ$이므로\n실이 실제로 감기는 큰 호의 중심각은\n$360^\\circ-120^\\circ\n=240^\\circ$이다.\n원주가 ,6\\pi$이므로\n큰 호의 길이는\n,6\\pi\\times\\dfrac{240}{360}\n=\\dfrac{32\\pi}{3}$이다.\n따라서 실의 길이는\n$8\\sqrt3+8\\sqrt3+\\dfrac{32\\pi}{3}$\n$=16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.\n정답은 ③이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q12.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -469,7 +469,7 @@ window.questionBank = [
       "중앙값 : $5$&nbsp;&nbsp;&nbsp;&nbsp;최빈값 : $6$"
     ],
     "answer": "②",
-    "solution": "자료를 작은 수부터 정리하면 1, 1, 2, 3, 5, 6, 6, 7이다. 가운데 두 수가 3과 5이므로 중앙값은 (3+5)/2=4.\n가장 많이 나온 값은 1과 6으로 각각 두 번이므로 최빈값은 1, 6이다. 정답은 ②이다.",
+    "solution": "자료를 작은 수부터 나열하면\n,,1,2,3,5,6,6,7$이다.\n자료가 $8$개이므로 중앙값은 가운데 두 값 $3,5$의 평균이다.\n따라서\n$\\text{중앙값}=\\dfrac{3+5}{2}=4$이다.\n가장 많이 나타나는 값은 ,$과 $6$이고 각각 $2$번씩 나타난다.\n따라서 최빈값은 ,,6$이다.\n그러므로 정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q15.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -498,7 +498,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "④",
-    "solution": "평균이 1이고 자료가 5개이므로 전체 합은 5이다. -1+4-2=1이므로 a+b=4.\n중앙값이 1이려면 다섯 값을 정렬했을 때 가운데 값 자체가 1이어야 한다. 따라서 a=1, b=3이고 b-a=2. 정답은 ④이다.",
+    "solution": "자료는 $-1,4,a,b,-2$이고 평균이 ,$이다.\n자료가 $5$개이므로 전체 합은\n,\\times5=5$이다.\n따라서\n$-1+4+a+b-2=5$이고\n$a+b=4$이다.\n또 중앙값이 ,$이고 $a<b$이다.\n다섯 값을 작은 순서로 놓았을 때 가운데 값이 ,$이 되려면\n$a=1$, $b=3$이어야 한다.\n실제로\n$-2,-1,1,3,4$의 중앙값은 ,$이다.\n따라서\n$b-a=3-1=2$이고 정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q16.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -588,7 +588,7 @@ window.questionBank = [
       "두 과목의 성적 차가 가장 큰 학생은 B이다."
     ],
     "answer": "①",
-    "solution": "산점도에서 두 과목 평균이 80점 이상이라는 것은 수학점수+과학점수≥160이라는 뜻이다. 조건을 만족하는 점은 (80,80), (90,80), (90,90), (100,100)의 4개이다.\n따라서 ①이 옳고 정답은 ①이다.",
+    "solution": "산점도의 한 점을\n$(x,y)=(\\text{수학 점수},\\text{과학 점수})$라 하자.\n두 과목의 평균이 $80$점 이상이라는 것은\n$\\dfrac{x+y}{2}\\ge80$이라는 뜻이다.\n따라서\n$x+y\\ge160$인 점을 세면 된다.\n조건을 만족하는 점은\n$(80,80)$, $(90,80)$, $(90,90)$, $(100,100)$의 $4$개이다.\n따라서 ①의 설명이 옳고 정답은 ①이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q19.png",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
@@ -618,7 +618,7 @@ window.questionBank = [
       "$7$점, $4$점"
     ],
     "answer": "④",
-    "solution": "두 집단의 평균이 모두 7점이므로 7명의 전체 평균도 7점이다. 남학생의 편차제곱 합은 4×5/2=10, 여학생은 3×6=18이다.\n전체 분산은 (10+18)/7=4이므로 표준편차는 2점. 정답은 ④이다.",
+    "solution": "남학생과 여학생의 평균이 모두 $7$점이므로\n$7$명 전체의 평균도 $7$점이다.\n남학생 $4$명의 분산은 $\\dfrac52$이므로 편차 제곱의 합은\n$4\\times\\dfrac52=10$이다.\n여학생 $3$명의 분산은 $6$이므로 편차 제곱의 합은\n$3\\times6=18$이다.\n전체 편차 제곱의 합은\n,0+18=28$이다.\n따라서 전체 분산은\n$\\dfrac{28}{7}=4$이고,\n표준편차는\n$\\sqrt4=2$점이다.\n그러므로 전체 평균과 표준편차는 $7$점, $2$점이고 정답은 ④이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -643,7 +643,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 그림에서 $\\overline{TA}$는 원 $O$의 점 $A$에서의 접선이고, $\\overline{AB}=\\overline{BC}$, $\\wideparen{AB}:\\wideparen{AC}=2:1$이다. $\\angle CAT$의 크기를 구하시오. [5점]",
     "choices": [],
     "answer": "$36^\\circ$",
-    "solution": "AB=BC이므로 같은 원에서 두 현이 보는 작은 호도 같아 호 AB=호 BC이다. 호 AC를 t°라 하면 호 AB=호 BC=2t°.\n원의 한 바퀴가 360°이므로 2t+2t+t=360°, 따라서 t=72°.\n접선과 현 AC가 이루는 각은 호 AC를 보는 원주각과 같으므로 ∠CAT=72°/2=36°이다.",
+    "solution": "$AB=BC$이므로\n같은 원에서 같은 길이의 현이 보는 작은 호의 크기도 같다.\n따라서\n$\\wideparen{AB}=\\wideparen{BC}$이다.\n문제에서\n$\\wideparen{AB}:\\wideparen{AC}=2:1$이므로\n호 $AC$의 크기를 $t^\\circ$라 하면\n호 $AB$와 호 $BC$의 크기는 각각 $2t^\\circ$이다.\n원의 한 바퀴는 $360^\\circ$이므로\n$2t+2t+t=360$이다.\n따라서\n$5t=360$,\n$t=72$이다.\n즉 호 $AC$의 크기는 $72^\\circ$이다.\n접선 $AT$와 현 $AC$가 이루는 각은\n같은 현 $AC$를 보는 원주각과 같으므로\n$\\angle CAT=\\dfrac{72^\\circ}{2}=36^\\circ$이다.\n따라서 구하는 각은 $36^\\circ$이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q21.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -670,7 +670,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림과 같이 원 $O$에 내접하는 오각형 $ABCDE$에서 $\\angle B=121^\\circ$, $\\angle COD=48^\\circ$일 때, $\\angle E$의 크기를 구하시오. [5점]",
     "choices": [],
     "answer": "$83^\\circ$",
-    "solution": "∠B=121°가 보는 B를 지나지 않는 호 AEDC의 중심각은 242°이다. ∠COD=48°이므로 호 CD는 48°.\n따라서 호 AED는 242°-48°=194°. 나머지 호 ABCD는 360°-194°=166°이므로 ∠E=166°/2=83°이다.",
+    "solution": "$\\angle B=121^\\circ$이므로 이 각이 보는 호의 크기는\n$242^\\circ$이다.\n$\\angle COD=48^\\circ$이므로\n호 $CD$의 크기는 $48^\\circ$이다.\n따라서 호 $AED$의 크기는\n$242^\\circ-48^\\circ=194^\\circ$이다.\n원의 전체 호는 $360^\\circ$이므로\n나머지 호 $ABCD$의 크기는\n$360^\\circ-194^\\circ=166^\\circ$이다.\n$\\angle E$는 호 $ABCD$를 보는 원주각이므로\n$\\angle E=\\dfrac{166^\\circ}{2}=83^\\circ$이다.\n따라서 구하는 각은 $83^\\circ$이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q22.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -696,7 +696,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 자료의 중앙값이 $5$이고 최빈값이 $6$일 때, $a+b+c$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "$16$",
-    "solution": "이미 2가 두 번 나오므로 6이 유일한 최빈값이 되려면 a, b, c 중 적어도 두 값이 6이어야 한다. 세 값이 모두 6이면 중앙값도 6이 되어 조건에 맞지 않으므로 정확히 두 값이 6이다.\n나머지 한 값을 t라 하면 자료는 2, 2, 3, t, 6, 6, 6, 7의 순서가 된다. 중앙값이 5이므로 가운데 두 값의 합이 10이고 t+6=10, 따라서 t=4이다.\n그러므로 a, b, c는 4, 6, 6이고 a+b+c=16이다.",
+    "solution": "주어진 자료에는 이미 $2$가 두 번 나타난다.\n최빈값이 $6$이 되려면\n$a,b,c$ 중 적어도 두 값은 $6$이어야 한다.\n세 값이 모두 $6$이면 중앙값도 $6$이 되므로 조건에 맞지 않는다.\n따라서 $a,b,c$ 중 정확히 두 값이 $6$이다.\n\n나머지 한 값을 $t$라 하자.\n자료를 작은 순서로 놓으면\n$2,2,3,t,6,6,6,7$의 형태가 된다.\n자료가 $8$개이므로 중앙값은 네 번째와 다섯 번째 값의 평균이다.\n중앙값이 $5$이므로\n$\\dfrac{t+6}{2}=5$이다.\n따라서\n$t+6=10$,\n$t=4$이다.\n그러므로\n$a,b,c$는 $4,6,6$이고\n$a+b+c=16$이다.",
     "image": "assets/images/23_향림중_2학기_기말_중3_기출/q23.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -721,7 +721,7 @@ window.questionBank = [
     "content": "[서술형 4] $6$개의 변량 $x$, $3$, $4$, $6$, $y$, $7$의 평균이 $5$이고 표준편차가 $\\sqrt{3.5}$일 때, $x^2+y^2$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "$61$",
-    "solution": "평균이 5이므로 x+3+4+6+y+7=30, 따라서 x+y=10.\n표준편차가 √3.5이므로 분산은 3.5, 편차 제곱의 합은 6×3.5=21이다. 3,4,6,7의 편차 제곱 합은 4+1+1+4=10이므로 (x-5)²+(y-5)²=11.\n전개하고 x+y=10을 넣으면 x²+y²-100+50=11, 따라서 x²+y²=61이다.",
+    "solution": "자료는\n$x,3,4,6,y,7$이고 평균이 $5$이다.\n자료가 $6$개이므로 합은\n$5\\times6=30$이다.\n따라서\n$x+3+4+6+y+7=30$이고\n$x+y=10$이다.\n\n표준편차가 $\\sqrt{3.5}$이므로\n분산은 $3.5$이다.\n편차 제곱의 합은\n$6\\times3.5=21$이다.\n평균이 $5$이므로\n$3,4,6,7$의 편차 제곱의 합은\n$(-2)^2+(-1)^2+1^2+2^2=10$이다.\n따라서\n$(x-5)^2+(y-5)^2=11$이다.\n\n전개하면\n$x^2+y^2-10(x+y)+50=11$이다.\n$x+y=10$을 대입하면\n$x^2+y^2-50=11$이므로\n$x^2+y^2=61$이다.\n따라서 구하는 값은 $61$이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
