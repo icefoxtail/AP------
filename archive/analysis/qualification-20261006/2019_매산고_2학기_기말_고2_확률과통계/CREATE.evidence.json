@@ -1,0 +1,1920 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "artifactSha": "1c881ca36dbaf3dd2c363ea23a98180c4f21a5ee",
+  "evidenceRef": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/CREATE.evidence.json",
+  "inputFileSha256": "f88a99bee113ac59eee9420d314fe1c7365d19875f439a07b13090a61511da50",
+  "inputArtifactShaStatus": "NOT_RECONSTRUCTED_AFTER_MUTATION; input raw SHA-256 preserved from assignment only",
+  "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+  "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+  "sourcePdfRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf",
+  "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+  "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+  "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+  "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$\n$=\\dfrac{14+4}{3}$\n$=\\dfrac{18}{3}=6$이다.\n따라서\n$P=(1,6)$이다.\n이제 선분 $AB$의 중점 $M$을 구한다.\n중점은 두 끝점의 $x$좌표끼리, $y$좌표끼리 더한 뒤 각각 $2$로 나눈다.\n$M=\\left(\\dfrac{9+(-3)}2,\\dfrac{14+2}2\\right)$\n$=\\left(\\dfrac62,\\dfrac{16}2\\right)$\n$=(3,8)$이다.\n마지막으로 두 점 $P(1,6)$, $M(3,8)$ 사이의 거리를 구한다.\n두 점 사이의 거리 공식에 $x$좌표의 차와 $y$좌표의 차를 넣으면\n$PM=\\sqrt{(3-1)^2+(8-6)^2}$\n$=\\sqr",
+            "observation": "좌표 정의, 내분 계산, 중간값과 거리 최종값을 식으로 이어 학생이 같은 순서로 재현할 수 있다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n$(x+3)^2+(y-1)^2=9$이다.\n즉\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n처음 원의 중심은 $(-3,1)$이고\n반지름은 $3$이다.\n\n이제 중심만 이동 순서대로 따라간다.\n먼저 $x$축의 방향으로 $-2$만큼,\n$y$축의 방향으로 $1$만큼 평행이동한다.\n$x$좌표는 $-3-2=-5$,\n$y$좌표는 $1+1=2$이므로\n$(-3,1)\\rightarrow(-5,2)$이다.\n그다음 원점에 대하여 대칭이동한다.\n원점 대칭에서는 두 좌표의 부호가 모두 바뀌므로\n$(x,y)\\rightarrow(-x,-y)$이다.\n따라서\n$(-5,2)\\rightarrow(5,-2)$이다.\n평행이동이나 대칭이동을 해도 원의 크기는 변하지 않으",
+            "observation": "중심식 완성, 두 이동, 중심·반지름 최종식을 차례로 기록한다. SVG도 중심 궤적과 r=3을 보인다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{50}$\n$=5\\sqrt2$이다.\n\n따라서 정답은 ③이다.",
+            "observation": "좌표차에서 거리식과 제곱근 정리까지 각 변형이 드러난다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이다.\n$-\\dfrac{k}{6}=-1$\n$k=6$이다.\n\n따라서 정답은 ①이다.",
+            "observation": "두 직선의 기울기를 별도 변형으로 구하고 수직 조건을 대입한다. SVG의 두 실제 직선 기울기 부호와 교점을 확인했다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로 $1\\in A$는 참이다.\n\n② $1$은 집합이 아니라 수이므로 $1\\subset A$라고 나타낼 수 없다. 거짓이다.\n\n③ $\\{1\\}$은 $A$의 원소이므로 $\\{1\\}\\in A$는 참이다.\n\n④ $\\{1\\}$의 원소 $1$이 $A$에 속하므로 $\\{1\\}\\subset A$는 참이다.\n\n⑤ $\\{\\{1\\}\\}$의 원소 $\\{1\\}$이 $A$에 속하므로 $\\{\\{1\\}\\}\\subset A$는 참이다.\n\n따라서 옳지 않은 것은 ②이다.",
+            "observation": "원소 포함 여부와 집합 연산을 보기마다 근거와 함께 판정한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY"
+            ]
+          },
+          {
+            "qid": 6,
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\cap B)$이다.\n$A\\cup B\\subseteq U$이므로\n$20+15-n(A\\cap B)\\le30$,\n$n(A\\cap B)\\ge5$이다.\n따라서 $n(A^C\\cup B^C)$는 $30-5=25$보다 클 수 없다.\n이 값은 $A\\cap B$에 5개, $A-B$에 15개, $B-A$에 10개를 두고 바깥에 원소를 두지 않으면 가능하다. 이때 $n(A)=5+15=20$, $n(B)=5+10=15$, $n(U)=5+15+10=30$이다.\n\n그러므로 최댓값은 25이다.",
+            "observation": "표본영역의 수와 합집합 조건에서 상한과 달성 구성을 모두 제시한다. SVG 영역 수치가 식과 같은 경우를 나타낸다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ],
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd"
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "False PASS regression read before target authoring: check actual SVG geometry, keep enumerated reasoning in separate blocks, search exact ACTIVE metadata before null, and inspect evaluated runtime escapes."
+    }
+  },
+  "goldenCalibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "sampleReadBeforeWork": true,
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "FRESH_SOURCE_AND_ANSWER_REWRITE",
+  "solutionRewrite": "FULL_ALL_QUESTIONS",
+  "solutionRewriteCount": "19/19 (q3,q12,q13 audited source restorations)",
+  "solutionCalibrationEvidenceRef": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/CREATE.evidence.json",
+  "smallBoardContinuityStatus": "19/19_PASS",
+  "curriculumMethodAuditCount": "19/19",
+  "curriculumViolationQids": [],
+  "uncertainCurriculumQids": [],
+  "visualNecessityAuditCount": "19/19",
+  "existingVisualAuditCount": "5/5",
+  "questionLayoutStatus": "19/19_PASS",
+  "sourceTextExactParityStatus": "16/19_EXACT; q3,q12,q13_AUDITED_SOURCE_REPAIR",
+  "choicesExactParityStatus": "19/19_PASS",
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q1",
+        "id": 1,
+        "contentHash": "ef1c381230ac8a304096c21860c5b4a45e1432bb9653fe472abd5dc547c0658c",
+        "choicesHash": "ff782081a4cc25de5ebd8fdb3b10e93e0a2a8b181fb4cabb15c6d4c8f83c7224",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "d152ba6546221edbbcbfdbab477a6bee4ffefd82bce3ae7a6255fc47c6f47933",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "753d0dffad67566bc5de21cecd802bdef69a36b5efb3e7ae88d9b13f178e32bc",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "전수조사에 적합한 것은 전체를 확인해야 하는 ㄱ·ㄷ 두 항목이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "H15-PS-06/통계적 추정; semantic scope reviewed against 2015 H15-PS/RPM. NO_UNIQUE_ACTIVE_SURVEY_MAPPING; no unsupported PT/TPL key assigned.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "전수조사와 표본조사가 적합한 대상을 판별",
+      "decisiveStep": "전수조사에 적합한 것은 전체를 확인해야 하는 ㄱ·ㄷ 두 항목이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "전수조사·표본조사",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "formulas",
+          "item": "해당 없음",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "notations",
+          "item": "ㄱ~ㅁ 선택 표기",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "methods",
+          "item": "조사 대상 범위와 파괴성·비용을 비교해 적합성을 판별",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "NO_UNIQUE_ACTIVE_SURVEY_MAPPING",
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 전수조사에 적합한 것은 전체를 확인해야 하는 ㄱ·ㄷ 두 항목이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q2",
+        "id": 2,
+        "contentHash": "361eff138bbf8a85b58831e31ff6de19dda0753099eaed82a5e83f7d4dd63aa3",
+        "choicesHash": "d601fd23445f2769d635c0f649aaf6d04b385a7d56c029a78b68ab105d958e27",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "4d66afb303c37161c52b82468856009692b269a9255644c848b4c55bd6ee32a0",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "cbb7e36ef1991e0ab08bed570c272068e909feccaad35a1deff4b3be362cb98d",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "a=1/6, E(X)=4a이므로 E(X/a)=4이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_EXPECTATION_VARIANCE/TPL_EXPECTATION_TRANSFORM; H15-PS-05/확률분포; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "확률변수의 기댓값을 선형변환으로 계산",
+      "decisiveStep": "a=1/6, E(X)=4a이므로 E(X/a)=4이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "이산확률변수·확률의 총합·기댓값",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "formulas",
+          "item": "ΣP(X=x)=1; E(X)=ΣxP(X=x); E(cX)=cE(X)",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "notations",
+          "item": "E(X), P(X=x), a",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "methods",
+          "item": "확률의 총합으로 a를 구한 뒤 기댓값을 계산",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: a=1/6, E(X)=4a이므로 E(X/a)=4이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q3",
+        "id": 3,
+        "contentHash": "814dd1199cace64555f974668f0ae05855e5e31f52168c586e606b1ab29438ae",
+        "choicesHash": "bdbe0950482f68de2634a72cef0e7d4acc61b1df33ad5c30196006102a3ee6d0",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "48a42c6f57ca6ef800838471f2b61e4ea07558a8c2bbc89cd3ed1200118c64c0",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "AUDITED_SOURCE_REPAIR",
+      "sourceTextExactParityStatus": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "e4aff8558c9305a4a59ed7f985fb3fed0da9fa912526ef8c0bf620f8cef173e8",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "AUDITED_SOURCE_REPAIR q3: source-derived restoration retained prompt structure; q12 restores σ² and ≥ from the high-resolution source page, q3/q13 corrections are listed separately. The q12 z-table line is a real line break.",
+        "solutionLayout": "x1+x2+x3=10의 비음수 정수해 수는 C(12,2)=66이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION; H15-PS-01/순열과 조합; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "repair": "Directly restore q3 from the checked PDF p.1: 10 identical objects into 3 distinct dishes; preserve exact choices.",
+        "repairedTruth": "Stars and bars gives C(12,2)=66, unique choice ④.",
+        "originalValue": "candidate continuous-density q3 / choices 1–5",
+        "repairedValue": "PDF p.1 q3 identical-object distribution / choices 21,36,45,66,120",
+        "affectedFields": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "standardUnitKey",
+          "subUnitKey"
+        ],
+        "postRepairAnswerCardinality": 1,
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790",
+        "repairKind": "AUDITED_SOURCE_REPAIR"
+      },
+      "primaryMethod": "중복조합 별과 막대 방법으로 비음수 정수해를 센다",
+      "decisiveStep": "x1+x2+x3=10의 비음수 정수해 수는 C(12,2)=66이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "중복조합·비음수 정수해 개수",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-01/순열과 조합; target subunit=H15-PS-01-COMBINATION/조합."
+        },
+        {
+          "axis": "formulas",
+          "item": "x1+x2+x3=10 해의 수=C(10+3-1,3-1)",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-01/순열과 조합; target subunit=H15-PS-01-COMBINATION/조합."
+        },
+        {
+          "axis": "notations",
+          "item": "C(n,r), x1,x2,x3≥0",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-01/순열과 조합; target subunit=H15-PS-01-COMBINATION/조합."
+        },
+        {
+          "axis": "methods",
+          "item": "별 10개와 칸막이 2개의 순서를 세어 조합으로 환산",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-01/순열과 조합; target subunit=H15-PS-01-COMBINATION/조합."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: x1+x2+x3=10의 비음수 정수해 수는 C(12,2)=66이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q4",
+        "id": 4,
+        "contentHash": "b39d92bdf90d2cc6bbe68835aa9f51867b09b4a108ba5447f3af2571659590b0",
+        "choicesHash": "ea8bdaeb85d2beb387715282719cce29451748654dcaf028558875f1156dbda6",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "f7e65502ff090b1ae169a6eeed1eb26f1b60b127eee3d214ea0b35946d1a1305",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "5844f6269a6854bb747c0abd709945decbf5ad1c4d4fb96bb3eac157e4280aca",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "E(Xbar)=25, V(Xbar)=4²/4=4이므로 곱은 100이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_SAMPLE_MEAN_DISTRIBUTION/TPL_SAMPLE_MEAN_DISTRIBUTION; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "표본평균의 기댓값과 분산 공식에 대입",
+      "decisiveStep": "E(Xbar)=25, V(Xbar)=4²/4=4이므로 곱은 100이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "표본평균의 기댓값·분산",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        },
+        {
+          "axis": "formulas",
+          "item": "E(Xbar)=μ; V(Xbar)=σ²/n",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar, E, V, μ, σ, n",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        },
+        {
+          "axis": "methods",
+          "item": "표본평균 공식에 모집단 수치 대입",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: E(Xbar)=25, V(Xbar)=4²/4=4이므로 곱은 100이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q5",
+        "id": 5,
+        "contentHash": "fe16450687b7c36c54a5b8700a4f08ea58b75ec6818a05778fa34a9143fa825e",
+        "choicesHash": "93f1e0cfbfed8f406fc2c7457ced128452d03d8442935f7eb5774257a57f540d",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "67e44ab2a3eaf9e992dd679758a4bcf73086243b105ac962713737da0e56eb99",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "d8e0d7a1dc0e237348447f59c7076a6979974cc3eeb239300f9b71cbc0381296",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "합=4^n이며 4^4<1000<4^5이므로 n=5이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_BINOMIAL_THEOREM/TPL_BINOMIAL_TERM_COEFFICIENT; H15-PS-02/이항정리; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "이항정리로 합을 거듭제곱으로 바꾸고 최소 정수를 비교",
+      "decisiveStep": "합=4^n이며 4^4<1000<4^5이므로 n=5이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "이항정리·거듭제곱 비교",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-02/이항정리; target subunit=H15-PS-02-BINOMIAL_BASIC/이항정리."
+        },
+        {
+          "axis": "formulas",
+          "item": "Σ C(n,r) 3^r=(1+3)^n",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-02/이항정리; target subunit=H15-PS-02-BINOMIAL_BASIC/이항정리."
+        },
+        {
+          "axis": "notations",
+          "item": "C(n,r), n∈N",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-02/이항정리; target subunit=H15-PS-02-BINOMIAL_BASIC/이항정리."
+        },
+        {
+          "axis": "methods",
+          "item": "일반항을 이항전개의 합으로 인식하고 인접 정수값을 대조",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-02/이항정리; target subunit=H15-PS-02-BINOMIAL_BASIC/이항정리."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 합=4^n이며 4^4<1000<4^5이므로 n=5이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q6",
+        "id": 6,
+        "contentHash": "98ef7998d35108d2b6314029d192f2f040b2f9cc107b7bb068878b8b7e041a27",
+        "choicesHash": "fc3dba98889cccd1a96f32fb71f7812a2d3b9dde603c59a1f87b932df48e085f",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "27fd1e557a270af8dbe47be9608806a60dbcaf9741cc288ccf507aac48802b26",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "d90f088f16ec4f9f4bdd730cc57cebf512b64e6121812633af7650eb2b375d81",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "구간 중심 k−1을 평균 9에 맞추어 k=10이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_NORMAL_DISTRIBUTION/TPL_NORMAL_DISTRIBUTION_APPLICATION; H15-PS-05/확률분포; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "같은 길이 정규분포 구간의 확률이 평균을 중심으로 할 때 최대임을 사용",
+      "decisiveStep": "구간 중심 k−1을 평균 9에 맞추어 k=10이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "정규분포의 대칭성과 중심 구간 확률",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "formulas",
+          "item": "정규분포 밀도의 평균 대칭성",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "notations",
+          "item": "N(μ,σ²), P(a≤X≤b)",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "methods",
+          "item": "길이 고정 구간을 평균에 중심화",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 구간 중심 k−1을 평균 9에 맞추어 k=10이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q7",
+        "id": 7,
+        "contentHash": "9be606012a020f328163c05dbd5092bca64e86a5fa512db950b548962b015139",
+        "choicesHash": "d9a7c877da2b03c7929276fd9677f6bcd1dcf13c0921343cbac4bed4b306b5d6",
+        "imageRefHash": "52e159cc706a975a41cb8ebca815f261889a2fda9d221b83405082c1b7fda30e",
+        "sourceIdentityFingerprint": "2166dc85437f52fc7071c4ea0074e908dbfa0788ca3978637ea2b428f9ffe15b",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "df63037ff8af584666d1b77f5a5ed2b0c79f7f8b56f73b7c9265816e3eab216c",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "180은 평균보다 2σ 낮으므로 P(X≥180)=Φ(2)=0.9772이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_NORMAL_DISTRIBUTION/TPL_NORMAL_STANDARDIZATION; H15-PS-05/확률분포; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "The z-table image is source data; it is retained and legible. No new solution SVG is needed because the decision is a single z standardization."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "정규변수를 표준화하고 대칭성으로 상측확률 계산",
+      "decisiveStep": "180은 평균보다 2σ 낮으므로 P(X≥180)=Φ(2)=0.9772이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "정규분포·표준정규분포·대칭성",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "formulas",
+          "item": "Z=(X−μ)/σ",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "notations",
+          "item": "Z, μ, σ, Φ",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "methods",
+          "item": "분 단위를 z점수로 바꾸고 표를 읽는다",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "SOURCE_PROBLEM_VISUAL_REQUIRED",
+        "reason": "The z-table image is source data; it is retained and legible. No new solution SVG is needed because the decision is a single z standardization."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "하",
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 180은 평균보다 2σ 낮으므로 P(X≥180)=Φ(2)=0.9772이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q07.png",
+        "sha256": "0283fbc929dcd3de84b595972cead1d2ff278db09ff14727a5e78bfe9a67eee2",
+        "sourceAsset": true
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q8",
+        "id": 8,
+        "contentHash": "a9f8addb23a9ca3688ff42d36874bb0fb34075a181f5cfaf287b8d72595b4ce8",
+        "choicesHash": "312d1f2b86a81ba3e71d57f40b03526b3515f634b27474272bebc7196082720b",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "7fcae9bd6777053242f195433a206b91d1a2792f9c3c8971a092c8d41ee8d971",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "397ce3059c93000f28ce4d865ac48b95ab4e2e96be8f5f298daf35c62c91232d",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "ㄱ은 평균이 둘 다 m이라 거짓, ㄴ과 ㄷ은 참이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_SAMPLE_MEAN_DISTRIBUTION/TPL_SAMPLE_MEAN_DISTRIBUTION; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "표본평균의 기댓값·분산·표준편차를 각 진술에 적용",
+      "decisiveStep": "ㄱ은 평균이 둘 다 m이라 거짓, ㄴ과 ㄷ은 참이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "표본평균의 표집분포",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        },
+        {
+          "axis": "formulas",
+          "item": "E(Xbar)=μ; V(Xbar)=σ²/n; σ(Xbar)=σ/√n",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,Ybar,n1,n2",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        },
+        {
+          "axis": "methods",
+          "item": "각 명제를 공식과 대조하고 n2=9n1 대입",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-RANDOM_VARIABLE/확률변수."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: ㄱ은 평균이 둘 다 m이라 거짓, ㄴ과 ㄷ은 참이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q9",
+        "id": 9,
+        "contentHash": "d82389e9d6730cbad3a116d8a0d83e098cab536df9014aaf613114d065bda9f5",
+        "choicesHash": "22feb9981ce44611388781094d4ebff5746ee4a7ef556a7097f91a9e7ae3b2f1",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "f874fa63b5b332e62e1ac93d36f849afae0ec7967f78da681fc1c08314ce94a2",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "3fb23ec4a6ef6cf5b16d5507495b7f09350d40541891e75dbda85e32db169c6d",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "철수 승률은 11/16, 영희 승률은 5/16이므로 b/a=5/11이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_PROBABILITY_REPEATED_TRIALS/TPL_INDEPENDENT_TRIAL_PROBABILITY; H15-PS-04/조건부확률; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_BINDING_GAP.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "독립시행의 종료 경로를 세어 공정한 상금 비율을 구한다",
+      "decisiveStep": "철수 승률은 11/16, 영희 승률은 5/16이므로 b/a=5/11이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "독립시행·경우의 수·확률",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-04/조건부확률; target subunit=H15-PS-04-CONDITIONAL_BASIC/조건부확률."
+        },
+        {
+          "axis": "formulas",
+          "item": "각 유한 경로 확률=(1/2)^k; 상호배타 경로 확률의 합",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-04/조건부확률; target subunit=H15-PS-04-CONDITIONAL_BASIC/조건부확률."
+        },
+        {
+          "axis": "notations",
+          "item": "a:b, 이항계수",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-04/조건부확률; target subunit=H15-PS-04-CONDITIONAL_BASIC/조건부확률."
+        },
+        {
+          "axis": "methods",
+          "item": "승리자가 마지막인 경우를 남은 영희 승수별로 분리",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-04/조건부확률; target subunit=H15-PS-04-CONDITIONAL_BASIC/조건부확률."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 철수 승률은 11/16, 영희 승률은 5/16이므로 b/a=5/11이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q10",
+        "id": 10,
+        "contentHash": "336814ceba64d7e19e0be67807abdb058465291adf190679595d72260b2e772a",
+        "choicesHash": "303cb7b082758bcf400feadd8865c725d004fce0e1879d9245a3ccaa355c7878",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "6a3b4a6c6721cb33dbfde65aa7de9545b9c40001f27a22bd032d0aeb992253cc",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "4f6a68e828b4490eb1a8e4c918b3020f4c8583443fdb87f3c1d231b7d786cea3",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "sqrt(n)≥19.6이므로 n≥384.16, 최소 정수는 385이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_STATISTICAL_ESTIMATION/TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "표본평균 표준오차와 중앙 95% 표준정규 범위를 연결해 최소 표본크기를 구한다",
+      "decisiveStep": "sqrt(n)≥19.6이므로 n≥384.16, 최소 정수는 385이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "표본평균 표집분포·표준오차·신뢰도",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "formulas",
+          "item": "SE=σ/√n; central 95% uses z=1.96",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,m,n,Z",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "methods",
+          "item": "요구 오차를 표준오차로 나눠 n 부등식으로 정리",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: sqrt(n)≥19.6이므로 n≥384.16, 최소 정수는 385이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q11",
+        "id": 11,
+        "contentHash": "dec34e755bcbb711b549f69907bf7f4f0e302b27115920019f00093d66beba00",
+        "choicesHash": "ee1a4d7d1c82420312e3107fb33a84416955cb0f7059613242d4d232e12960af",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "6d1c4cf9a7ee5debed6184755f9ad40f096caa539cf11634f2e7cc45f79dbfdb",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "89bd3655ee48f132397739b5757635490c5fa8793f68bb9c82fbef78b07732ee",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "반폭은 0.98과 1.29이므로 (a−b)+(c−d)=−1.96−2.58=−4.54이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_STATISTICAL_ESTIMATION/TPL_POPULATION_MEAN_ESTIMATION; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "모평균의 95%·99% 신뢰구간 두 개를 계산해 네 끝점의 차를 합산",
+      "decisiveStep": "반폭은 0.98과 1.29이므로 (a−b)+(c−d)=−1.96−2.58=−4.54이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "모평균 신뢰구간·표준오차",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        },
+        {
+          "axis": "formulas",
+          "item": "xbar±zσ/√n",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        },
+        {
+          "axis": "notations",
+          "item": "a,b,c,d; z=1.96,2.58",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        },
+        {
+          "axis": "methods",
+          "item": "각 신뢰도별 반폭을 구해 양끝점 차를 합산",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 반폭은 0.98과 1.29이므로 (a−b)+(c−d)=−1.96−2.58=−4.54이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q12",
+        "id": 12,
+        "contentHash": "290c59b993e63d24a3b94163548cae319b1ad8687cc1dfe51b87f7231ff7d353",
+        "choicesHash": "a24d74a821df0430038a5cee094db9c2ccced3aeb451999a8018c507acb81522",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "2b45fd434c491fef2cbdefb08109917d1471f5f57dd20dad9cdc65498aeb1993",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "AUDITED_SOURCE_REPAIR",
+      "sourceTextExactParityStatus": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "3ef8b5e11917f0bcd587ee64729a3b81d455bedd849c695bae3063cbd70174d1",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "AUDITED_SOURCE_REPAIR q12: source-derived restoration retained prompt structure; q12 restores σ² and ≥ from the high-resolution source page, q3/q13 corrections are listed separately. The q12 z-table line is a real line break.",
+        "solutionLayout": "P(Xbar≤43)=Φ(1.5)이므로 조건과 대칭성에서 P(Ybar≤64)=Φ(−1.5); 이에 σ=20, P(Ybar≥66)=0.8413(①). Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_SAMPLE_MEAN_DISTRIBUTION/TPL_SAMPLE_MEAN_DISTRIBUTION; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "repair": "High-resolution q12 PDF p.3 disambiguates the second population parameter as σ² (not 6²) and target inequality as ≥ (not ≤); restore these exact source symbols. Insert an actual layout line break before the printed z table.",
+        "repairedTruth": "P(Xbar≤43)=Φ(1.5), hence the condition and symmetry give P(Ybar≤64)=Φ(−1.5). Solving (64−70)/(σ/5)=−1.5 gives σ=20. Then P(Ybar≥66)=P(Z≥−1)=0.8413, unique choice ①.",
+        "originalValue": "N(70,6²); P(Ybar≤66); runtime literal \n before z-table",
+        "repairedValue": "N(70,σ²); P(Ybar≥66); actual content line break before z-table",
+        "affectedFields": [
+          "content",
+          "answer",
+          "solution",
+          "standardUnitKey",
+          "standardUnit",
+          "standardUnitOrder",
+          "subUnitKey",
+          "subUnit",
+          "problemTypeKey",
+          "templateKey",
+          "difficultyEvidence"
+        ],
+        "postRepairAnswerCardinality": 1,
+        "highResolutionSourceCropRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/q12-p3-region-360dpi.png",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790",
+        "repairKind": "AUDITED_SOURCE_REPAIR"
+      },
+      "primaryMethod": "두 표본평균 정규분포의 조건으로 모표준편차를 역산하고 목표 상측확률을 계산",
+      "decisiveStep": "P(Xbar≤43)=Φ(1.5)이므로 조건과 대칭성에서 P(Ybar≤64)=Φ(−1.5); 이에 σ=20, P(Ybar≥66)=0.8413(①).",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "정규 모집단 표본평균의 표준오차·표준정규분포·상측확률",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "formulas",
+          "item": "SE=σ/√n; Z=(Xbar−μ)/SE; complement/symmetry of Φ",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "notations",
+          "item": "N(μ,σ²), Xbar,Ybar,σ,Z",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "methods",
+          "item": "첫 모집단 확률을 표준화해 조건부 확률을 구하고, 두 번째 z-score 방정식에서 σ를 역산",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: P(Xbar≤43)=Φ(1.5)이므로 조건과 대칭성에서 P(Ybar≤64)=Φ(−1.5); 이에 σ=20, P(Ybar≥66)=0.8413(①). Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q13",
+        "id": 13,
+        "contentHash": "074b41d05d308ab88b0f4a76272e934faab1c83e139e7460a3abfcaab4275a03",
+        "choicesHash": "cc1c507f35a521709b20560d63afa5cd288469bc2e964129c6145f58859d79f6",
+        "imageRefHash": "50016df9071b3472b653debf909803bc1e0201a8280a7d47ca96630831872eb6",
+        "sourceIdentityFingerprint": "a3fbc150ea5e46680e7e011d0236e5fe69e9993261ce2e06e5f8d1a598f69f30",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "AUDITED_SOURCE_REPAIR",
+      "sourceTextExactParityStatus": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "425b84585c2a16a35bc2bd6dbb63500279670f7ee76f39dea5d6524c76e1e510",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "AUDITED_SOURCE_REPAIR q13: source-derived restoration retained prompt structure; q12 restores σ² and ≥ from the high-resolution source page, q3/q13 corrections are listed separately. The q12 z-table line is a real line break.",
+        "solutionLayout": "m=10, σ=5, SE=1이므로 P(9≤Xbar≤12)=0.3413+0.4772=0.8185이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_SAMPLE_MEAN_DISTRIBUTION/TPL_SAMPLE_MEAN_DISTRIBUTION; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "The source normal-density graph is needed to read interval bounds and center; retained exact source crop. No separate solution SVG is needed because the probability follows by standardization and table arithmetic."
+      },
+      "provenanceEvidence": {
+        "repair": "One endpoint in the printed q13 normal-curve range is inconsistent with the symmetric 3σ graph; replace only upper bound 20→25.",
+        "repairedTruth": "The graph labels μ=10, σ=5; −5 and 25 are μ±3σ. The requested sample-mean probability is 0.8185, choice ②.",
+        "originalValue": "P(−5≤X≤20)=0.9974",
+        "repairedValue": "P(−5≤X≤25)=0.9974",
+        "affectedFields": [
+          "content",
+          "answer",
+          "solution"
+        ],
+        "postRepairAnswerCardinality": 1,
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790",
+        "repairKind": "AUDITED_SOURCE_REPAIR"
+      },
+      "primaryMethod": "정규분포의 1σ 구간으로 모수를 정하고 표본평균 분포를 표준화",
+      "decisiveStep": "m=10, σ=5, SE=1이므로 P(9≤Xbar≤12)=0.3413+0.4772=0.8185이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "정규분포의 1σ·2σ·3σ 구간과 표본평균",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "formulas",
+          "item": "SE=σ/√n; P(−1≤Z≤2)=P(0≤Z≤1)+P(0≤Z≤2)",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "notations",
+          "item": "μ,σ,Xbar,Z",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "methods",
+          "item": "대칭 그래프·구간 조건으로 μ,σ 추론 후 표본평균 표준화",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "SOURCE_PROBLEM_VISUAL_REQUIRED",
+        "reason": "The source normal-density graph is needed to read interval bounds and center; retained exact source crop. No separate solution SVG is needed because the probability follows by standardization and table arithmetic."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: m=10, σ=5, SE=1이므로 P(9≤Xbar≤12)=0.3413+0.4772=0.8185이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q13.png",
+        "sha256": "4c797cfc5bba8df45ee9dc3e53900909c7967dccc1f448259f3b10133c31191a",
+        "sourceAsset": true
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q14",
+        "id": 14,
+        "contentHash": "6068e0da7375e591fbb7e5d02ebce4d7c411d41d0f1de3357ef83b282256d647",
+        "choicesHash": "2889812c3120e9b25dbb83f3aa895d30395c75864661a7ebf5f659930e97fa3d",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "95f07e6038177e3eb650dd9662bbc5ddbbf6a17f8748380fae740a7036de218d",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "d4318f1744c82df974bf79e5567b5716585510c20e529091b3813fb9426cc50f",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "새 폭은 2.60, 반폭 1.30의 z는 1.30이고 신뢰도는 0.80이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_STATISTICAL_ESTIMATION/TPL_POPULATION_MEAN_ESTIMATION; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "신뢰구간 폭 비로 표준정규 임계값과 신뢰도를 역산",
+      "decisiveStep": "새 폭은 2.60, 반폭 1.30의 z는 1.30이고 신뢰도는 0.80이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "모평균 신뢰구간 폭·표준오차·신뢰도",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        },
+        {
+          "axis": "formulas",
+          "item": "width=2zσ/√n; confidence=P(−z≤Z≤z)",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        },
+        {
+          "axis": "notations",
+          "item": "a,b,c,d,k,z",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        },
+        {
+          "axis": "methods",
+          "item": "폭의 비를 이용해 z를 정한 후 표에서 중앙면적 계산",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-CONFIDENCE_INTERVAL/신뢰구간."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 새 폭은 2.60, 반폭 1.30의 z는 1.30이고 신뢰도는 0.80이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q15",
+        "id": 15,
+        "contentHash": "0009e276f4127f776b59134cccad2fa3242c81db4067a8ce46e360a82adc173f",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "162eea296e17c70106333e5c0b912b5f5039290007aeba45844e1d51fe3af7d1",
+        "sourceIdentityFingerprint": "453389aec8eb78f9bc3feb7831e173e5be198284bbaa9c7ad25ac92ec3fcccc8",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "NO_CHOICES_IN_SOURCE",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "19122fa16b850eb7633ba8dff0693d9c362af096c031ad6a73b251738e921290",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "그래프 면적 S=1, 표에서 a=1/4,b=1이므로 결과는 9이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "H15-PS-05/확률분포; semantic scope reviewed against 2015 H15-PS/RPM. MULTI_DISTRIBUTION_SEMANTIC_NOT_PROJECTED; no unsupported PT/TPL key assigned.",
+        "visualSvg": "Both source graph and distribution table determine S,a,b; retain both original source boxes."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "확률분포표와 연속확률밀도 그래프의 조건을 함께 사용",
+      "decisiveStep": "그래프 면적 S=1, 표에서 a=1/4,b=1이므로 결과는 9이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "연속확률변수의 밀도 면적·이산확률분포의 총합",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "formulas",
+          "item": "PDF 전체 적분=1; ΣP(Z=z)=1; 삼각형 넓이=밑변×높이/2",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "notations",
+          "item": "f(x), S, P(Z=z), a,b",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        },
+        {
+          "axis": "methods",
+          "item": "두 삼각형 넓이와 표의 확률 합을 각각 계산해 대입",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-PROBABILITY_DISTRIBUTION/확률분포."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "SOURCE_PROBLEM_VISUAL_REQUIRED",
+        "reason": "Both source graph and distribution table determine S,a,b; retain both original source boxes."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "MULTI_DISTRIBUTION_SEMANTIC_NOT_PROJECTED",
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 그래프 면적 S=1, 표에서 a=1/4,b=1이므로 결과는 9이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q15.png",
+        "sha256": "50c9bd1b71cb7c39f4c6fad6d655bc55ec0cf7527048bc6960d769c4653746de",
+        "sourceAsset": true
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q16",
+        "id": 16,
+        "contentHash": "3322a8a816767e0e5ed9e025028de6062a8a4f00cd3285d4fa99c20d794a061f",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "40623105afa5814e08da9ff86525aa5ae5871b0f15df3393a52aec5e6615c009",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "NO_CHOICES_IN_SOURCE",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "93bd28d3e1c635f6eb73e8b715032098f5dd21a1209be9df77e1e9214939076d",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "유효 확률조건으로 a=1/8,b=5/12를 얻고 a+b=13/24이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_SAMPLE_MEAN_DISTRIBUTION/TPL_SAMPLE_MEAN_DISTRIBUTION; H15-PS-05/확률분포; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "모집단 확률 총합과 표본평균 사건 확률로 a,b를 결정",
+      "decisiveStep": "유효 확률조건으로 a=1/8,b=5/12를 얻고 a+b=13/24이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "확률분포·독립 표본추출·표본평균",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "formulas",
+          "item": "확률 합=1; 독립 두 추출의 순서쌍 확률; 표본평균=(X1+X2)/2",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,a,b",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "methods",
+          "item": "표본평균 −2와 2를 만드는 순서쌍을 분리해 이차방정식을 푼다",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 유효 확률조건으로 a=1/8,b=5/12를 얻고 a+b=13/24이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q17",
+        "id": 17,
+        "contentHash": "e5db6180c0fc6627dfecbd91c335207b6eacea84fb261d3d809312f478a27ae2",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "5b0319c55777831f90bb5fe78522983056324d4d91a82330b2c43e764a4d6878",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "NO_CHOICES_IN_SOURCE",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "d03046b0032a21e03041a4141dbdf0985ce4c1ac0ae6fb16e72eabc739a821b2",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "철수 T=160이며 영수식에서 a=100이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "H15-PS-05/확률분포; semantic scope reviewed against 2015 H15-PS/RPM. STANDARD_SCORE_PROJECTION_NOT_VERIFIED; no unsupported PT/TPL key assigned.",
+        "visualSvg": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "두 시험 점수를 제시된 표준점수에 대입해 같게 둔다",
+      "decisiveStep": "철수 T=160이며 영수식에서 a=100이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "평균·표준편차에 따른 선형 표준점수",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "formulas",
+          "item": "T=20((X−m)/σ)+100",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "notations",
+          "item": "T,m,σ,a",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        },
+        {
+          "axis": "methods",
+          "item": "두 점수를 표준점수 식에 대입해 일차방정식으로 정리",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-RANDOM_VARIABLE/확률변수와 기댓값."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "NO_NEW_VISUAL_REQUIRED",
+        "reason": "No visual is mathematically necessary for the decisive step. Existing problem assets, if any, remain source-linked and unchanged."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "STANDARD_SCORE_PROJECTION_NOT_VERIFIED",
+      "difficultyEvidence": {
+        "level": "중",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 철수 T=160이며 영수식에서 a=100이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q18",
+        "id": 18,
+        "contentHash": "174f0389b444a44d1a0aef8319e7f2f8a2aa1019492bdd0ee3ee833c389449b9",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "76e55c8a3b91df32542d7058297b1b0139aaeef06acb949ce75f8fe713e121ea",
+        "sourceIdentityFingerprint": "4d21ad47372dc2cb39bbb93ed5cafc906baf838ec67bf2d569f90e1d73c6eeb1",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "NO_CHOICES_IN_SOURCE",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "2f064d3007acf0dfe71c9264cb96168d20d30a9f962a52347350541ab4f82cf9",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "두 중앙확률의 일치를 통해 σ=4, 이후 우측꼬리 0.0228에서 z=2이므로 x=51이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_SAMPLE_MEAN_DISTRIBUTION/TPL_SAMPLE_MEAN_DISTRIBUTION; H15-PS-06/통계적 추정; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "Source density comparison and normal table are needed; both are retained. No additional solution diagram is needed for the standard-error calculations."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "정규분포 곡선과 표본평균 분포를 연결해 σ와 상위확률 경계값을 결정",
+      "decisiveStep": "두 중앙확률의 일치를 통해 σ=4, 이후 우측꼬리 0.0228에서 z=2이므로 x=51이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "정규분포·표본평균·표준오차·표준정규 우측꼬리",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "formulas",
+          "item": "SE=σ/√n; P(0≤Z≤2)=0.4772",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "notations",
+          "item": "σ,Xbar,Z",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        },
+        {
+          "axis": "methods",
+          "item": "그래프의 중심·퍼짐을 판독하고 동등 중앙확률 및 우측꼬리 조건을 순차 사용",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-06/통계적 추정; target subunit=H15-PS-06-ESTIMATION_BASIC/통계적 추정."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [],
+      "visualNecessity": {
+        "decision": "SOURCE_PROBLEM_VISUAL_REQUIRED",
+        "reason": "Source density comparison and normal table are needed; both are retained. No additional solution diagram is needed for the standard-error calculations."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 두 중앙확률의 일치를 통해 σ=4, 이후 우측꼬리 0.0228에서 z=2이므로 x=51이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q18.png",
+        "sha256": "49b903f2745791ae4b9911af5baeb357015a4ea34b7dfa56d4a414555b269f34",
+        "sourceAsset": true
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+        "questionUid": "2019_매산고_2학기_기말_고2_확률과통계:q19",
+        "id": 19,
+        "contentHash": "535b4b544b59ff2edac80fab646d1a554fd717cfc6573e1238cb0df50bbbe469",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "b8d1e7b3e2ca475e077c39ff3c954444305bfaff11d0ccb0662992b0dbb6aead",
+        "sourceIdentityFingerprint": "fd1fceabf6dd809f23647eb0170caa26ea719d944af55c819c521e6962b94763",
+        "beforeSolutionHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sourceParityStatus": "PASS",
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "NO_CHOICES_IN_SOURCE",
+      "questionLayoutStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "solutionIdentityAlignmentStatus": "PASS",
+      "solutionSha256": "d7574e66048b6d3826140c4c179b878c5648635f61a4dd1535040be73da3589c",
+      "smallBoardContinuityStatus": "PASS",
+      "axisEvidence": {
+        "questionLayout": "Source-backed student text and choice order retained; line breaks follow statement/data/question boundaries without splitting formula units.",
+        "solutionLayout": "가능한 눈은 3,4,5,6이라 p=2/3; X≈N(48,4²), P(X≥44)≈0.8413이다. Equations were placed as separate executable steps; teacher language explains why each formula/condition enters.",
+        "meta": "PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PROBABILITY; H15-PS-05/확률분포; RPM H2 probability-statistics 2015 crosswalk current; projection status DIRECT_ACTIVE.",
+        "visualSvg": "Source z table is required for the final tail probability; retained. Intersection condition is handled algebraically without an additional diagram."
+      },
+      "provenanceEvidence": {
+        "sourceParity": "Source PDF .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf SHA256=3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9; provenance inventory says p.1–p.6 directly opened, 19 source-backed items.",
+        "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+        "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+        "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+        "sourcePatchQaRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_patch_qa.json",
+        "sourcePatchQaSha256": "42dad02aa1b865921b245d103e2b6afae264e5fa2cf2f4b90cdc8ca761c05790"
+      },
+      "primaryMethod": "교점 존재의 판별식으로 주사위 사건 확률을 구한 뒤 이항분포를 정규근사",
+      "decisiveStep": "가능한 눈은 3,4,5,6이라 p=2/3; X≈N(48,4²), P(X≥44)≈0.8413이다.",
+      "curriculumMethodInventory": [
+        {
+          "axis": "concepts",
+          "item": "이차방정식 판별식(선행 대수)·이항분포·정규근사",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-BINOMIAL_NORMAL/이항분포와 정규분포."
+        },
+        {
+          "axis": "formulas",
+          "item": "D≥0; E=np; V=np(1−p); Z=(X−np)/√(np(1−p))",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-BINOMIAL_NORMAL/이항분포와 정규분포."
+        },
+        {
+          "axis": "notations",
+          "item": "D,a,B(n,p),E,V,Z",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-BINOMIAL_NORMAL/이항분포와 정규분포."
+        },
+        {
+          "axis": "methods",
+          "item": "교점 조건을 실근 판별식으로 바꾸고 성공확률을 이항분포 모수로 사용",
+          "status": "ALLOWED",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06. Target unit=H15-PS-05/확률분포; target subunit=H15-PS-05-BINOMIAL_NORMAL/이항분포와 정규분포."
+        }
+      ],
+      "curriculumStatus": "PASS",
+      "curriculumAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md (RPM Primary v1.0; H15-PS; 2015 curriculum). Cumulative prior-scope method evidence uses docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md and H15-PS master unit H15-PS-01..06.",
+      "outOfCurriculumDependencies": [
+        "Quadratic discriminant is a cumulative prior-scope algebra method documented in 2015 HIGH/수학_상; it is allowed for this H2 Probability and Statistics item while target standardCourse remains 확률과 통계."
+      ],
+      "visualNecessity": {
+        "decision": "SOURCE_PROBLEM_VISUAL_REQUIRED",
+        "reason": "Source z table is required for the final tail probability; retained. Intersection condition is handled algebraically without an additional diagram."
+      },
+      "metaDebtFields": [],
+      "metaDebtReason": null,
+      "difficultyEvidence": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Current required solution structure: 가능한 눈은 3,4,5,6이라 p=2/3; X≈N(48,4²), P(X≥44)≈0.8413이다. Bucket is judged from reasoning burden and multi-step inference, independently of legacy level; current 2015 difficulty rule v1.3."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q19.png",
+        "sha256": "4f1b5dc2da0b9d7e6cf99e7082d4470a96024c7128ca01ab144c3909138ead79",
+        "sourceAsset": true
+      }
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "1c881ca36dbaf3dd2c363ea23a98180c4f21a5ee",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "NO_UNIQUE_ACTIVE_SURVEY_MAPPING"
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "MULTI_DISTRIBUTION_SEMANTIC_NOT_PROJECTED"
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "STANDARD_SCORE_PROJECTION_NOT_VERIFIED"
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      }
+    ]
+  },
+  "modifiedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "holdQids": [],
+  "auditSummary": {
+    "denominator": 19,
+    "sourceIdentityCount": "19/19",
+    "questionLayout": "19 PASS including 3 audited source restorations",
+    "studentSolution": "19 complete",
+    "smallBoardContinuity": "19 PASS",
+    "metaAndDifficulty": "19 semantic/projection dispositions",
+    "visualDisposition": "19 assessed",
+    "sourceModeProvenance": "19/19",
+    "sourceRepairs": [
+      3,
+      12,
+      13
+    ],
+    "assetShaContracts": "asset file SHA-256 in row.assetEvidence; artifactSha Git blob SHA-1 via archive/tools/archive-stage-validator.mjs gitBlobSha"
+  },
+  "temporaryWorkspaceContract": {
+    "requestedDoc": "docs/rules/02_PIPELINES/Archive_Exam_Temporary_Workspace_v1.md",
+    "status": "NOT_FOUND_IN_ASSIGNED_WORKTREE",
+    "appliedUserBoundary": "Only .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계; final basename and production-relative asset refs; no generated path."
+  }
+}

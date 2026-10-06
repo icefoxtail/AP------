@@ -1,0 +1,353 @@
+{
+  "sourceKind": "archive2-original",
+  "sourceId": "original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+  "mode": "sol",
+  "questionCount": 19,
+  "questionUids": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "meta": {
+    "title": "2019_매산고_2학기_기말_고2_확률과통계",
+    "identityTitle": "2019_매산고_2학기_기말_고2_확률과통계",
+    "sourceArchiveFile": "original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
+    "qpp": 4,
+    "includeQr": false,
+    "questionUids": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "printHeaderOptions": {
+      "title": "2019_매산고_2학기_기말_고2_확률과통계",
+      "metaRight": "",
+      "subtitle": "",
+      "showNameLine": true,
+      "showScoreLine": true,
+      "applyToSolution": true,
+      "applyToAnswer": true
+    }
+  },
+  "questions": [
+    {
+      "answer": "②",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "content": "다음 중 <보기>에서 전수조사와 표본조사 중 전수조사에 적합한 것의 개수를 고르면?\nㄱ. 매산고등학교 2학년 학생들의 결핵 검사\nㄴ. 동천의 수질 오염도 검사\nㄷ. 대한민국 인구 주택 총조사\nㄹ. OO제약회사의 신약의 임상 시험\nㅁ. △△전구회사의 전구 수명 검사",
+      "id": 1,
+      "layoutTag": "grid",
+      "solution": "전수조사는 조사 대상 전체를 빠짐없이 확인하는 방법이다.\nㄱ은 2학년 학생 모두의 결핵 여부를 확인하므로 전수조사에 적합하다.\nㄴ은 하천의 수질을 모든 지점에서 조사하기 어려워 표본조사가 적합하다.\nㄷ은 국가 전체의 인구와 주택을 조사하므로 전수조사이다.\nㄹ은 신약의 효과와 부작용을 일부 대상으로 확인하는 임상시험이므로 표본조사이다.\nㅁ은 전구 수명을 모두 시험하면 판매할 전구가 소모되므로 표본조사이다.\n따라서 전수조사에 적합한 것은 ㄱ, ㄷ의 2개이다.",
+      "wide": false
+    },
+    {
+      "answer": "③",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "content": "확률변수 $X$의 확률분포를 표로 나타내면 다음과 같을 때, $E(\\dfrac Xa)$의 값을 구하면?\n$X=0,1,2$일 때 $P(X=x)=\\dfrac12,2a,a$이고 합계는 1이다.",
+      "id": 2,
+      "layoutTag": "grid",
+      "solution": "확률의 합이 1이므로\n$\\dfrac12+2a+a=1$\n$3a=\\dfrac12$\n$a=\\dfrac16$이다.\n기댓값은\n$E(X)=0\\cdot\\dfrac12+1\\cdot2a+2\\cdot a=4a$이다.\n따라서\n$E\\left(\\dfrac Xa\\right)=\\dfrac{E(X)}a=4$이다.\n그러므로 정답은 ③이다.",
+      "wide": false
+    },
+    {
+      "answer": "④",
+      "choices": [
+        "$21$",
+        "$36$",
+        "$45$",
+        "$66$",
+        "$120$"
+      ],
+      "content": "같은 종류 물건 10개를 서로 다른 종류 접시 3개에 나누어 담는 경우의 수를 구하면? (단, 접시는 일부만 사용해도 된다.)",
+      "id": 3,
+      "layoutTag": "grid",
+      "solution": "10개의 같은 물건을 3개의 서로 다른 접시에 나누어 담고, 접시는 비워도 된다.\n접시에 담기는 개수를 $x_1,x_2,x_3$이라 두면\n$x_1+x_2+x_3=10$,\n$x_1,x_2,x_3\\ge0$이다.\n별과 막대의 방법으로 10개의 별 사이와 양 끝에 막대 2개를 놓는다.\n별 10개와 막대 2개, 모두 12자리에서 막대 2자리만 고르면 되므로\n$\\binom{12}{2}=\\dfrac{12\\cdot11}{2}=66$이다.\n그러므로 정답은 ④이다.",
+      "wide": false
+    },
+    {
+      "answer": "②",
+      "choices": [
+        "$75$",
+        "$100$",
+        "$125$",
+        "$150$",
+        "$175$"
+      ],
+      "content": "모평균이 25, 모표준편차가 4인 모집단에서 임의추출한 크기가 4인 표본의 표본평균을 $\\overline{X}$라 할 때, $E(\\overline{X})\\times V(\\overline{X})$의 값을 구하면? (4.3점)",
+      "id": 4,
+      "layoutTag": "grid",
+      "solution": "표본평균의 기댓값과 분산은\n$E(\\overline X)=\\mu=25$,\n$V(\\overline X)=\\dfrac{\\sigma^2}{n}=\\dfrac{4^2}{4}=4$이다.\n따라서\n$E(\\overline X)V(\\overline X)=25\\cdot4=100$이다.\n그러므로 정답은 ②이다.",
+      "wide": false
+    },
+    {
+      "answer": "②",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$",
+        "$9$"
+      ],
+      "content": "다음 부등식을 만족시키는 최소 자연수 $n$의 값을 구하면?\n$1000 < {}_nC_0+{}_nC_1\\cdot3+{}_nC_2\\cdot3^2+\\cdots+{}_nC_n\\cdot3^n$",
+      "id": 5,
+      "layoutTag": "grid",
+      "solution": "이항정리를 적용하면 합은\n$\\binom n0+\\binom n1 3+\\binom n2 3^2+\\cdots+\\binom nn3^n=(1+3)^n=4^n$이다.\n따라서 조건은\n$4^n>1000$이다.\n$4^4=256<1000$,\n$4^5=1024>1000$이므로 최소 자연수는\n$n=5$이다.\n그러므로 정답은 ②이다.",
+      "wide": false
+    },
+    {
+      "answer": "⑤",
+      "choices": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "content": "정규분포 $N(9,1^2)$을 따르는 확률변수 $X$에 대하여 $P(k-3\\le X\\le k+1)$이 최대가 되도록 하는 상수 $k$의 값을 구하면? (4.5점)",
+      "id": 6,
+      "layoutTag": "grid",
+      "solution": "$X$의 평균은 9이다.\n구간 $[k-3,k+1]$의 길이는 4이고, 중심은\n$\\dfrac{(k-3)+(k+1)}2=k-1$이다.\n정규분포에서 길이가 같은 구간의 확률은 평균을 중심에 둘 때 가장 크다.\n따라서\n$k-1=9$,\n$k=10$이다.\n그러므로 정답은 ⑤이다.",
+      "wide": false
+    },
+    {
+      "answer": "⑤",
+      "choices": [
+        "$0.3413$",
+        "$0.4772$",
+        "$0.4987$",
+        "$0.8413$",
+        "$0.9772$"
+      ],
+      "content": "매산고등학교 2학년 학생들이 한 달 동안 매점을 이용한 시간은 평균 210분이고 표준편차가 15분인 정규분포를 따른다고 한다. 2학년 학생 중에서 임의로 택한 한 명이 한 달 동안 매점을 이용한 시간이 3시간 이상일 확률을 표준정규분포표를 이용하여 구하면?",
+      "id": 7,
+      "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q07.png",
+      "layoutTag": "grid",
+      "solution": "이용 시간의 평균은 210분, 표준편차는 15분이고 3시간은 180분이다.\n표준화하면\n$Z=\\dfrac{180-210}{15}=-2$이다.\n따라서\n$P(X\\ge180)=P(Z\\ge-2)=P(Z\\le2)$\n$=0.5+P(0\\le Z\\le2)$\n$=0.5+0.4772=0.9772$이다.\n그러므로 정답은 ⑤이다.",
+      "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q07.png",
+      "solutionImageAlt": "표준정규분포표에서 z=1, 2, 3의 확률값.",
+      "solutionImageCaption": "문제의 표준정규분포표에서 z=2의 값을 확인한다.",
+      "solutionImageSize": "full",
+      "wide": false
+    },
+    {
+      "answer": "⑤",
+      "choices": [
+        "ㄱ",
+        "ㄴ",
+        "ㄱ,ㄴ",
+        "ㄱ,ㄷ",
+        "ㄴ,ㄷ"
+      ],
+      "content": "모평균이 $m$, 모표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $n_1$인 표본을 임의추출하여 구한 표본평균을 $\\overline{X}$, 크기가 $n_2$인 표본을 임의추출하여 구한 표본평균을 $\\overline{Y}$라 할 때, 다음 중 옳은 것을 <보기>에서 고르면?\nㄱ. $E(\\overline{X})=m$, $E(\\overline{Y})\\ne m$\nㄴ. $V(\\overline{X})=\\dfrac{\\sigma^2}{n_1}$, $V(\\overline{Y})=\\dfrac{\\sigma^2}{n_2}$이다.\nㄷ. $9n_1=n_2$이면 $\\sigma(\\overline{Y})=\\dfrac13\\times\\sigma(\\overline{X})$이다.",
+      "id": 8,
+      "layoutTag": "grid",
+      "solution": "ㄱ. 표본평균은 모평균을 중심으로 하므로\n$E(\\overline X)=E(\\overline Y)=m$이다.\n따라서 ㄱ은 거짓이다.\n\nㄴ. 표본평균의 분산은 모분산을 표본크기로 나누므로\n$V(\\overline X)=\\dfrac{\\sigma^2}{n_1}$,\n$V(\\overline Y)=\\dfrac{\\sigma^2}{n_2}$이다.\n따라서 ㄴ은 참이다.\n\nㄷ. $n_2=9n_1$이면\n$\\sigma(\\overline Y)=\\dfrac{\\sigma}{\\sqrt{n_2}}$\n$=\\dfrac{\\sigma}{3\\sqrt{n_1}}=\\dfrac13\\sigma(\\overline X)$이다.\n따라서 ㄷ은 참이다.\n\n옳은 것은 ㄴ, ㄷ이므로 정답은 ⑤이다.",
+      "wide": false
+    },
+    {
+      "answer": "①",
+      "choices": [
+        "$\\dfrac{5}{11}$",
+        "$\\dfrac{9}{11}$",
+        "$\\dfrac{5}{16}$",
+        "$\\dfrac{9}{16}$",
+        "$\\dfrac{11}{16}$"
+      ],
+      "content": "이길 확률이 같은 철수와 영희가 게임을 하여 먼저 5번을 이기는 사람이 상금을 모두 갖기로 하였다. 철수가 3번, 영희가 2번 이긴 상태에서 게임이 중지되었을 때, 철수와 영희에게 상금을 $a:b$로 분배하는 것이 공정하다고 한다. 이때, $b/a$의 값은?",
+      "id": 9,
+      "layoutTag": "grid",
+      "solution": "철수는 먼저 두 번 더 이기면 상금을 얻는다.\n마지막 승리는 철수의 두 번째 승리이므로, 그 전에 영희가 이기는 횟수는 0회, 1회, 2회이다.\n영희가 0회 이기는 경우에는\n$\\binom10\\left(\\dfrac12\\right)^2=\\dfrac14$이다.\n영희가 1회 이기는 경우에는\n$\\binom21\\left(\\dfrac12\\right)^2\\dfrac12=\\dfrac14$이다.\n영희가 2회 이기는 경우에는\n$\\binom32\\left(\\dfrac12\\right)^2\\left(\\dfrac12\\right)^2=\\dfrac3{16}$이다.\n따라서\n$P(\\text{철수 승})=\\dfrac14+\\dfrac14+\\dfrac3{16}=\\dfrac{11}{16}$이다.\n영희의 승리 확률은\n$1-\\dfrac{11}{16}=\\dfrac5{16}$이다.\n공정한 분배비는 확률비와 같으므로\n$a:b=11:5$,\n$\\dfrac ba=\\dfrac5{11}$이다.\n그러므로 정답은 ①이다.",
+      "wide": false
+    },
+    {
+      "answer": "③",
+      "choices": [
+        "383",
+        "384",
+        "385",
+        "386",
+        "387"
+      ],
+      "content": "정규분포 $N(m,4)$를 따르는 모집단에서 크기가 $n$인 표본을 임의추출하여 얻은 표본의 표본평균을 $\\overline X$라 할 때, $P(|\\overline X-m|\\le\\dfrac15)$의 확률이 95% 이상이 되게 하는 $n$의 최솟값을 구하면? (단, $P(-1.96\\le Z\\le1.96)=0.95$이다.) (4.9점)",
+      "id": 10,
+      "layoutTag": "grid",
+      "solution": "표본평균의 표준편차는\n$\\sigma(\\overline X)=\\dfrac2{\\sqrt n}$이다.\n중앙 확률이 0.95 이상이 되려면\n$\\dfrac{1/5}{2/\\sqrt n}\\ge1.96$이어야 한다.\n따라서\n$\\sqrt n\\ge1.96\\cdot10=19.6$,\n$n\\ge19.6^2=384.16$이다.\n$n$은 자연수이므로 최솟값은 385이다.\n그러므로 정답은 ③이다.",
+      "wide": false
+    },
+    {
+      "answer": "①",
+      "choices": [
+        "$-4.54$",
+        "$-3.92$",
+        "$-2.58$",
+        "$-1.96$",
+        "$-0.62$"
+      ],
+      "content": "표준편차가 4인 정규분포를 따르는 모집단에서 크기가 64인 표본을 임의추출하여 구한 표본평균이 32일 때,\n모집단 평균 $m$에 대한 신뢰도 95%와 99%의 신뢰구간을 각각 구하면 $a\\le m\\le b$와 $c\\le m\\le d$이다. 이때 $a-b+c-d$의 값을 구하면? (단, $Z$가 표준정규분포를 따르는 확률변수일 때 $P(|Z|\\le1.96)=0.95$, $P(|Z|\\le2.58)=0.99$로 계산한다.) (4.9점)",
+      "id": 11,
+      "layoutTag": "grid",
+      "solution": "표본평균의 표준편차는\n$\\dfrac4{\\sqrt{64}}=\\dfrac12$이다.\n신뢰도 95%의 신뢰구간은\n$32\\pm1.96\\cdot\\dfrac12=32\\pm0.98$,\n따라서 $a=31.02$, $b=32.98$이다.\n신뢰도 99%의 신뢰구간은\n$32\\pm2.58\\cdot\\dfrac12=32\\pm1.29$,\n따라서 $c=30.71$, $d=33.29$이다.\n그러므로\n$a-b+c-d=(31.02-32.98)+(30.71-33.29)$\n$=-1.96-2.58=-4.54$이다.\n정답은 ①이다.",
+      "wide": false
+    },
+    {
+      "answer": "①",
+      "choices": [
+        "$0.8413$",
+        "$0.8644$",
+        "$0.8849$",
+        "$0.9192$",
+        "$0.9452$"
+      ],
+      "content": "정규분포 $N(40,8^2)$을 따르는 모집단에서 크기가 16인 표본을 임의추출하여 구한 표본평균을 $\\overline X$, 정규분포 $N(70,\\sigma^2)$을 따르는 모집단에서 크기가 25인 표본을 임의추출하여 구한 표본평균을 $\\overline Y$라 하자. $P(\\overline X\\le43)+P(\\overline Y\\le64)=1$일 때, $P(\\overline Y\\ge66)$의 값을 표준정규분포표를 이용하여 구한 것은? (5.1점)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>1</td><td>0.3413</td></tr><tr><td>1.2</td><td>0.3849</td></tr><tr><td>1.4</td><td>0.4192</td></tr><tr><td>1.6</td><td>0.4452</td></tr></tbody></table></div>",
+      "id": 12,
+      "layoutTag": "grid",
+      "solution": "먼저 $\\overline X$의 표준편차는\n$\\dfrac8{\\sqrt{16}}=2$이다.\n따라서\n$P(\\overline X\\le43)=P\\left(Z\\le\\dfrac{43-40}{2}\\right)=P(Z\\le1.5)$이다.\n주어진 조건에서\n$P(\\overline Y\\le64)=1-P(Z\\le1.5)$\n$=P(Z\\ge1.5)=P(Z\\le-1.5)$이다.\n$\\overline Y$의 평균은 70, 표준편차는 $\\dfrac{\\sigma}{\\sqrt{25}}=\\dfrac{\\sigma}{5}$이므로\n$\\dfrac{64-70}{\\sigma/5}=-1.5$,\n$\\sigma=20$이다.\n따라서 $\\overline Y$의 표준편차는 4이고,\n$P(\\overline Y\\ge66)=P\\left(Z\\ge\\dfrac{66-70}{4}\\right)$\n$=P(Z\\ge-1)=0.5+P(0\\le Z\\le1)$\n$=0.5+0.3413=0.8413$이다.\n그러므로 정답은 ①이다.",
+      "wide": false
+    },
+    {
+      "answer": "②",
+      "choices": [
+        "$0.6826$",
+        "$0.8185$",
+        "$0.84$",
+        "$0.9759$",
+        "$0.9974$"
+      ],
+      "content": "다음은 정규분포 $N(m,\\sigma^2)$를 따르는 확률변수 $X$에 대한 확률밀도함수 그래프이다. $P(5\\le X\\le15)=0.6826$, $P(0\\le X\\le20)=0.9544$, $P(-5\\le X\\le25)=0.9974$를 만족할 때,\n정규분포 $N(m,\\sigma^2)$를 따르는 모집단에서 크기가 25인 표본을 임의추출한다. 이때 표본평균 $\\overline X$가 9 이상 12 이하일 확률은? (단, $X$의 값과 평균 $m$의 차가 $\\sigma$, $2\\sigma$, $3\\sigma$ 이하일 확률은 각각 0.6826, 0.9544, 0.9974이다.) (5.2점)",
+      "id": 13,
+      "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q13.png",
+      "layoutTag": "grid",
+      "solution": "그래프에서 중심은 10이다.\n$P(5\\le X\\le15)=0.6826$은 평균에서 양쪽으로 표준편차 1만큼의 구간이므로\n$m=10$, $\\sigma=5$이다.\n크기 25인 표본의 표본평균은 평균 10, 표준편차\n$\\dfrac5{\\sqrt{25}}=1$인 정규분포를 따른다.\n따라서\n$P(9\\le\\overline X\\le12)=P(-1\\le Z\\le2)$\n$=P(0\\le Z\\le1)+P(0\\le Z\\le2)$\n$=0.3413+0.4772=0.8185$이다.\n그러므로 정답은 ②이다.",
+      "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q13.png",
+      "solutionImageAlt": "평균 10과 표준편차 5를 읽는 정규분포 곡선과 구간 자료.",
+      "solutionImageCaption": "문제의 정규분포 그래프에서 중심 10과 1σ 구간을 확인한다.",
+      "solutionImageSize": "full",
+      "wide": false
+    },
+    {
+      "answer": "③",
+      "choices": [
+        "50",
+        "72",
+        "80",
+        "94",
+        "96"
+      ],
+      "content": "매산고 학생들의 하루 페이스북 사용시간은 평균이 $m$분, 표준편차가 8분인 정규분포를 따른다고 한다. 매산고 학생 중 64명을 임의추출하여 모집단 평균 $m$을 신뢰도 90%로 추정한 신뢰구간은 $a\\le m\\le b$이고, 신뢰도 $k$%로 추정한 신뢰구간은 $c\\le m\\le d$이다. $26\\times(b-a)=33\\times(d-c)$를 만족할 때, 아래 표준정규분포표를 이용하여 $k$의 값을 구하면? (5.3점)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.66</td><td>0.25</td></tr><tr><td>1.10</td><td>0.36</td></tr><tr><td>1.30</td><td>0.40</td></tr><tr><td>1.65</td><td>0.45</td></tr><tr><td>1.95</td><td>0.47</td></tr><tr><td>2.05</td><td>0.48</td></tr></tbody></table></div>",
+      "id": 14,
+      "layoutTag": "grid",
+      "solution": "표본평균의 표준편차는\n$\\dfrac8{\\sqrt{64}}=1$이다.\n90% 신뢰구간에서 표준정규 임계값은 표에 따라 $z=1.65$이므로\n$b-a=2\\cdot1.65\\cdot1=3.30$이다.\n조건에 대입하면\n$26(3.30)=33(d-c)$,\n$d-c=\\dfrac{26\\cdot3.30}{33}=2.60$이다.\n신뢰구간의 반폭은 $1.30$이므로 임계값은 $z=1.30$이다.\n표에서 $P(0\\le Z\\le1.30)=0.40$이므로 중앙 신뢰도는\n$2\\cdot0.40=0.80$,\n즉 $k=80$이다.\n그러므로 정답은 ③이다.",
+      "wide": false
+    },
+    {
+      "answer": "9",
+      "choices": [],
+      "content": "단답형 1. <보기 1>은 연속확률변수 $X$에 대하여 $0\\le x\\le1$에서 정의된 확률밀도함수이다. <보기 2>는 이산확률변수 $Z$에 대한 확률분포이다.\n<보기 1>의 확률밀도함수와 $x$축 사이의 넓이를 $S$라 할 때, $4(a+b+S)$의 값을 구하시오. (5점)",
+      "id": 15,
+      "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q15.png",
+      "imageSize": "full",
+      "layoutTag": "grid",
+      "solution": "확률밀도함수 아래의 넓이는 두 삼각형 넓이의 합이다. 각 삼각형의 밑변은 $\\dfrac12$, 높이는 2이므로\n$S=2\\cdot\\dfrac12\\cdot\\dfrac12\\cdot2=1$이다.\n확률분포표에서 확률의 합은 1이므로\n$\\dfrac12+\\dfrac14+a=1$,\n$a=\\dfrac14$이고 합계 $b=1$이다.\n따라서\n$4(a+b+S)=4\\left(\\dfrac14+1+1\\right)=9$이다.",
+      "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q15.png",
+      "solutionImageAlt": "확률밀도함수 그래프와 이산확률분포표.",
+      "solutionImageCaption": "문제의 확률밀도함수 그래프와 확률분포표를 풀이에서 참조한다.",
+      "solutionImageSize": "full",
+      "wide": false
+    },
+    {
+      "answer": "$\\dfrac{13}{24}$",
+      "choices": [],
+      "content": "단답형 2. 모집단의 확률분포를 표로 나타내면 다음과 같다. 이 모집단에서 크기가 2인 표본을 임의추출할 때, 표본평균을 $\\overline X$라 하면 $P(\\overline X=-2)+P(\\overline X=2)=\\dfrac38$이다. 이때 상수 $a+b$의 값을 구하시오. (5점)\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$X$</th><th>-4</th><th>0</th><th>4</th><th>합계</th></tr></thead><tbody><tr><th>$P(X=x)$</th><td>$\\dfrac13$</td><td>$2a$</td><td>$b$</td><td>1</td></tr></tbody></table></div>",
+      "id": 16,
+      "layoutTag": "grid",
+      "solution": "모든 확률의 합에서\n$\\dfrac13+2a+b=1$,\n$b=\\dfrac23-2a$이다.\n크기 2의 독립추출에서 표본평균이 $-2$인 경우는 $(-4,0),(0,-4)$이므로 확률은\n$2\\cdot\\dfrac13\\cdot2a=\\dfrac{4a}{3}$이다.\n표본평균이 2인 경우는 $(0,4),(4,0)$이므로 확률은\n$2\\cdot2a\\cdot b=4ab$이다.\n조건에 대입하면\n$\\dfrac{4a}{3}+4a\\left(\\dfrac23-2a\\right)=\\dfrac38$,\n$64a^2-32a+3=0$,\n$(8a-1)(8a-3)=0$이다.\n$a=\\dfrac18$ 또는 $a=\\dfrac38$인데, $a=\\dfrac38$이면 $b=\\dfrac23-\\dfrac34<0$이므로 불가능하다.\n따라서 $a=\\dfrac18$, $b=\\dfrac5{12}$이고\n$a+b=\\dfrac18+\\dfrac5{12}=\\dfrac{13}{24}$이다.",
+      "wide": false
+    },
+    {
+      "answer": "100",
+      "choices": [],
+      "content": "단답형 3. 시행 점수 $X$에 대하여 $X$의 평균이 $m$점이고 표준편차가 $\\sigma$점일 때, $T=20\\left(\\dfrac{X-m}{\\sigma}\\right)+100$을 $X$의 표준점수라 하자. 평균이 60점이고 표준편차가 10점인 수학 시험에서 90점을 맞은 철수의 표준점수가 평균이 55점이고 표준편차가 15점인 확률과 통계 시험에서 $a$점을 맞은 영수의 표준점수와 같다고 할 때,\n$a$의 값을 구하시오. (5점)",
+      "id": 17,
+      "layoutTag": "grid",
+      "solution": "철수의 표준점수는\n$T=20\\left(\\dfrac{90-60}{10}\\right)+100=160$이다.\n영수의 표준점수도 160이므로\n$20\\left(\\dfrac{a-55}{15}\\right)+100=160$,\n$\\dfrac{a-55}{15}=3$,\n$a=100$이다.",
+      "wide": false
+    },
+    {
+      "answer": "1-1: ① 매산고, ② 매산여고; $0<\\sigma<10$. 1-2: $\\sigma=4$분, $\\overline{X}=51$분.",
+      "choices": [],
+      "content": "[서술형1] 매산고 학생들의 하루 SNS 이용시간은 평균이 45분, 표준편차가 10분인 정규분포를 따른다고 한다. 매산여고 학생들을 대상으로 하루 SNS 이용시간을 조사하였더니 평균이 50분이고 표준편차가 $\\sigma$분인 정규분포를 따르는 것을 발견하였다. 위의 내용을 바탕으로 아래의 <자료1>, <자료2>를 활용하여 문제를 해결하시오. (10점)\n1-1. <자료1>은 매산고와 매산여고 학생들의 SNS 사용시간을 정규분포곡선으로 나타낸 것이다. ①, ②에 각각 해당하는 학교를 제시하고, 그래프 분석을 통해 $\\sigma$의 범위를 추측하시오. (3점)\n1-2. 매산고에서 임의추출한 25명의 표본평균이 43분 이상, 47분 이하일 확률과 매산여고에서 임의추출한 16명의 표본평균이 49분 이상 51분 이하일 확률이 같다고 한다. 이를 이용하여 $\\sigma$값을 구하시오. 또한, 매산여고에서 임의추출한 64명에 대하여 사용시간 $\\overline X$분 이상일 확률이 $\\dfrac{57}{2500}$이라고 한다. <자료2>를 활용하여 이 경우의 $\\overline X$값을 구하시오. (7점)",
+      "id": 18,
+      "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q18.png",
+      "layoutTag": "grid",
+      "solution": "자료1에서 평균이 45분인 넓은 곡선은 매산고, 평균이 50분인 좁은 곡선은 매산여고이다.\n매산여고의 표준편차는 매산고보다 작으므로\n$0<\\sigma<10$이다.\n\n매산고 표본 25명의 표본평균 표준편차는\n$\\dfrac{10}{\\sqrt{25}}=2$이다.\n따라서\n$P(43\\le\\overline X\\le47)=P(-1\\le Z\\le1)=0.6826$이다.\n매산여고 표본 16명의 표본평균 표준편차는 $\\dfrac{\\sigma}{4}$이다.\n$P(49\\le\\overline Y\\le51)=0.6826$이므로 그 구간도 평균 50을 중심으로 표준화 폭 1이다.\n$\\dfrac{1}{\\sigma/4}=1$,\n$\\sigma=4$이다.\n\n이제 매산여고 표본 64명의 표본평균 표준편차는\n$\\dfrac4{\\sqrt{64}}=\\dfrac12$이다.\n$P(\\overline X\\ge x)=\\dfrac{57}{2500}=0.0228$이고\n$P(Z\\ge2)=0.5-0.4772=0.0228$이므로\n$\\dfrac{x-50}{1/2}=2$,\n$x=51$분이다.",
+      "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q18.png",
+      "solutionImageAlt": "두 학교의 정규분포 곡선과 표준정규분포표 자료.",
+      "solutionImageCaption": "자료 1의 두 곡선과 자료 2의 표 값을 풀이에서 참조한다.",
+      "solutionImageSize": "full",
+      "wide": false
+    },
+    {
+      "answer": "2-1: $a=3,4,5,6$. 2-2: $E(X)=48$, $V(X)=16$. 2-3: $0.8413$.",
+      "choices": [],
+      "content": "[서술형2] 한 개의 주사위를 던져 나온 눈의 수를 $a$라 하자. 좌표평면에서 이차함수 $y=x^2+2x+2$와 직선 $-x+2y=a$가 만나는 사건을 $A$라 할 때, 주사위를 던지는 시행을 72번 시행하여 사건 $A$가 44번 이상 발생할 확률을 구하고자 한다. 다음을 단계별로 해결하시오. (10점)\n2-1. 이차함수 $y=x^2+2x+2$와 직선 $-x+2y=a$가 만나는 주사위 눈의 수 $a$를 모두 구하시오. (단, $a$는 6 이하의 자연수이다.) (3점)\n2-2. 확률변수 $X$가 주사위를 던졌을 때 사건 $A$가 일어나는 수라고 할 때, 확률변수 $X$는 이항분포 $B(n,p)$를 따른다. 이때 $E(X)$와 $V(X)$의 값을 구하시오. (3점)\n2-3. 72는 충분히 큰 수이므로 확률변수 $X$가 근사적으로 정규분포를 따른다고 할 때, $P(X\\ge44)$의 값을 구하시오. (단, 표준정규분포표를 이용한다.) (4점)\n표: $z=1,2,3$일 때 $P(0\\le Z\\le z)=0.3413,0.4772,0.4987$.",
+      "id": 19,
+      "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q19.png",
+      "layoutTag": "grid",
+      "solution": "교점을 구하려고 직선식을 $y$에 대해 정리한다.\n$-x+2y=a$에서 $y=\\dfrac{x+a}{2}$이다.\n포물선과 만나려면\n$x^2+2x+2=\\dfrac{x+a}{2}$,\n$2x^2+3x+4-a=0$이 실근을 가져야 한다.\n판별식 조건은\n$D=3^2-4\\cdot2(4-a)=8a-23\\ge0$,\n$a\\ge\\dfrac{23}{8}$이다.\n$a$는 6 이하의 자연수이므로 가능한 눈은\n$a=3,4,5,6$이다.\n따라서 한 번 시행에서 사건 $A$의 확률은 $p=\\dfrac46=\\dfrac23$이다.\n\n72번 시행에서 성공 횟수 $X$는 $B(72,\\dfrac23)$를 따르므로\n$E(X)=np=72\\cdot\\dfrac23=48$,\n$V(X)=np(1-p)=72\\cdot\\dfrac23\\cdot\\dfrac13=16$이다.\n\n정규근사를 하면 $X$는 평균 48, 표준편차 4인 정규분포로 근사된다.\n연속성 보정 없이 문제의 경계 44를 표준화하면\n$Z=\\dfrac{44-48}{4}=-1$이다.\n따라서\n$P(X\\ge44)\\approx P(Z\\ge-1)$\n$=0.5+P(0\\le Z\\le1)$\n$=0.5+0.3413=0.8413$이다.",
+      "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q19.png",
+      "solutionImageAlt": "z=1, 2, 3에서의 표준정규분포표 값.",
+      "solutionImageCaption": "문제에 제시된 표준정규분포표 값을 풀이에서 참조한다.",
+      "solutionImageSize": "full",
+      "wide": false
+    }
+  ],
+  "ownerId": "85d75c86-95e4-4f77-ae9e-dfd95958b4db",
+  "contractVersion": "archive2-output-envelope-v1",
+  "outputRequestId": "13bffc68-fba0-4504-822f-ccdb49cb3666",
+  "createdAt": 1791278714067,
+  "expiresAt": 1791280514067,
+  "payloadHash": "4c6f00b4e0ec9d295fd1a5b20d832e8233d2c46deed8b9b29adc13e9d1e0eca0"
+}

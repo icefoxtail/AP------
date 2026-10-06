@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_ITEM_HOLD_v1",
+  "stage": "CREATE",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "qid": 12,
+  "status": "ITEM_HOLD",
+  "holdCode": "SOURCE_CONTRADICTION_NO_SINGLE_LOCUS_REPAIR",
+  "artifactSha": "68a2590ef563ac8d67f357871174d9d4ca91ce9b",
+  "evidenceRef": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/CREATE.q12-hold.json",
+  "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+  "sourcePage": 3,
+  "sourceContentRetainedExactly": true,
+  "studentAssetRef": null,
+  "observedSourceFacts": {
+    "studentPrompt": "정규분포 $N(40,8^2)$을 따르는 모집단에서 크기가 16인 표본을 임의추출하여 구한 표본평균을 $\\overline X$, 정규분포 $N(70,6^2)$을 따르는 모집단에서 크기가 25인 표본을 임의추출하여 구한 표본평균을 $\\overline Y$라 하자. $P(\\overline X\\le43)+P(\\overline Y\\le64)=1$일 때, $P(\\overline Y\\le66)$의 값을 표준정규분포표를 이용하여 구한 것은? (5.1점)\\n| $z$ | $P(0\\le Z\\le z)$ |\\n| 1 | 0.3413 |\\n| 1.2 | 0.3849 |\\n| 1.4 | 0.4192 |\\n| 1.6 | 0.4452 |",
+    "sourceOptions": [
+      "$0.8413$",
+      "$0.8644$",
+      "$0.8849$",
+      "$0.9192$",
+      "$0.9452$"
+    ]
+  },
+  "independentCalculation": {
+    "xbarDistribution": "N(40, (8/√16)^2)=N(40,2^2)",
+    "pX": "P(Xbar≤43)=Φ((43−40)/2)=Φ(1.5)=0.9332",
+    "ybarDistribution": "N(70,(6/√25)^2)=N(70,1.2^2)",
+    "pYCondition": "P(Ybar≤64)=Φ((64−70)/1.2)=Φ(−5)≈0.0000",
+    "conditionSum": "≈0.9332, not 1",
+    "requestedValue": "P(Ybar≤66)=Φ((66−70)/1.2)=Φ(−3.333), not determined by provided z table and does not match listed choices"
+  },
+  "repairBeforeHold": {
+    "protocol": "docs/rules/02_PIPELINES/수정프로토콜.md §CURRENT REVIEW REPAIR AUTHORIZATION / ONE_SEMANTIC_LOCUS_REPAIR",
+    "repairAttempted": "Checked the printed N(40,8²), n1=16, N(70,6²), n2=25, condition cutoff 43/64, requested cutoff 66, the PDF page image, and option list against source crop.",
+    "singleLocusRepairAvailable": false,
+    "whyDeterministicClosureImpossible": "Changing only one source number cannot both restore the condition P(Xbar≤43)+P(Ybar≤64)=1 and make the requested P(Ybar≤66) table-resolvable with the supplied values/options. Repairing mean, variance/sample size, condition cutoff, requested cutoff, or choices requires at least two independent semantic loci or an unsupported intended value.",
+    "nextRequiredEvidenceOrCapability": "Authoritative school answer key or an approved source correction identifying the intended q12 parameter/cutoff/choice."
+  },
+  "preservedFields": {
+    "content": "정규분포 $N(40,8^2)$을 따르는 모집단에서 크기가 16인 표본을 임의추출하여 구한 표본평균을 $\\overline X$, 정규분포 $N(70,6^2)$을 따르는 모집단에서 크기가 25인 표본을 임의추출하여 구한 표본평균을 $\\overline Y$라 하자. $P(\\overline X\\le43)+P(\\overline Y\\le64)=1$일 때, $P(\\overline Y\\le66)$의 값을 표준정규분포표를 이용하여 구한 것은? (5.1점)\\n| $z$ | $P(0\\le Z\\le z)$ |\\n| 1 | 0.3413 |\\n| 1.2 | 0.3849 |\\n| 1.4 | 0.4192 |\\n| 1.6 | 0.4452 |",
+    "choices": [
+      "$0.8413$",
+      "$0.8644$",
+      "$0.8849$",
+      "$0.9192$",
+      "$0.9452$"
+    ],
+    "answer": "",
+    "solution": ""
+  }
+}

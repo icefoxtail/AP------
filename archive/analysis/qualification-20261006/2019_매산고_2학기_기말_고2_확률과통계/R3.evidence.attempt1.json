@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "artifactSha": "4ceb58a353ad4aea049b9a58c984aa9e984bc555",
+  "artifactFileSha256": "2243178959fef8949456c103deae8906da32c64180298ed611ffa3c3492eb614",
+  "artifactRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/2019_매산고_2학기_기말_고2_확률과통계.js",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      9
+    ],
+    "directDependencyQids": [
+      9
+    ],
+    "scopeRationale": "R1 records only q9.solution as changed and q9 as direct dependency; no open findings. R2 is clean 19/19 MATCH with no new defects."
+  },
+  "rows": [
+    {
+      "qid": 9,
+      "verdict": "PASS",
+      "disposition": "TARGETED_SOLUTION_CHANGE_RELEASED",
+      "changedFields": [
+        "solution"
+      ],
+      "openFinding": false,
+      "directDependencyQids": [
+        9
+      ],
+      "solutionSha256": "818b00cf0da71a4281e9561f166921610c9dfbdde3c86d6fc85e9f6dd92ce325",
+      "answerComparison": "R1 independent answer matches ① ($5/11$); R2 blind answer matches 5/11.",
+      "lockedScopeNote": "Student prompt, choices, answer, Meta, difficulty and visual references remain bound to current sealed artifact; R1 audited solution-only change. q3/q12/q13 source restorations were already in the pre-freeze candidate and independently verified.",
+      "evidenceRefs": [
+        "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/R1.evidence.json archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/R2.evidence.json"
+      ]
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "4ceb58a353ad4aea049b9a58c984aa9e984bc555",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "NO_UNIQUE_ACTIVE_SURVEY_MAPPING"
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "MULTI_DISTRIBUTION_SEMANTIC_NOT_PROJECTED"
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "STANDARD_SCORE_PROJECTION_NOT_VERIFIED"
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      }
+    ]
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "releaseNotes": "Candidate uses .tmp/archive/qualification-20261006/<examUid>/<examUid>.js and production-relative refs; archive generated paths are not modified. Current Git blob SHA and raw SHA-256 match R1/R2 seals."
+}

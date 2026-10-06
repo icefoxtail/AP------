@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "JS_ARCHIVE_AUDITED_SOURCE_REPAIR_v1",
+  "stage": "CREATE",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "artifactSha": "1c881ca36dbaf3dd2c363ea23a98180c4f21a5ee",
+  "evidenceRef": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/CREATE.source-corrections.json",
+  "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+  "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+  "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+  "corrections": [
+    {
+      "qid": 3,
+      "sourcePage": 1,
+      "originalValue": "candidate continuous-density q3 / choices 1–5",
+      "repairedValue": "PDF q3 identical-object distribution / choices 21,36,45,66,120",
+      "reason": "Restore source p.1. Stars and bars gives C(12,2)=66, unique ④.",
+      "affectedFields": [
+        "content",
+        "choices",
+        "answer",
+        "solution",
+        "standardUnitKey",
+        "subUnitKey"
+      ],
+      "answer": "④"
+    },
+    {
+      "qid": 12,
+      "sourcePage": 3,
+      "originalValue": {
+        "population2": "N(70,6²)",
+        "target": "P(Ybar≤66)",
+        "tableSeparator": "runtime literal \\n"
+      },
+      "repairedValue": {
+        "population2": "N(70,σ²)",
+        "target": "P(Ybar≥66)",
+        "tableSeparator": "actual content newline"
+      },
+      "reason": "High-resolution 360dpi source read restores the literal σ² and ≥. The probability condition uniquely gives σ=20 by symmetry; the printed z=1 table row then gives 0.8413, unique ①. Full direct adjudication: CREATE.q12-adjudication.json.",
+      "affectedFields": [
+        "content",
+        "answer",
+        "solution",
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "subUnitKey",
+        "subUnit",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyEvidence"
+      ],
+      "answer": "①"
+    },
+    {
+      "qid": 13,
+      "sourcePage": 3,
+      "originalValue": "P(−5≤X≤20)=0.9974",
+      "repairedValue": "P(−5≤X≤25)=0.9974",
+      "reason": "Graph and first two centered normal intervals establish μ=10,σ=5 and ±3σ endpoints −5 and25; requested answer 0.8185, unique ②.",
+      "affectedFields": [
+        "content",
+        "answer",
+        "solution"
+      ],
+      "answer": "②"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CREATE_QID_ADJUDICATION_v1",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "stage": "CREATE",
+  "qid": 12,
+  "status": "RESTORED_FROM_SOURCE",
+  "previousHoldRef": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/CREATE.q12-hold.json",
+  "previousValidatorFailures": [
+    "ARTIFACT_VALUE_REQUIRED:solution:q12",
+    "ARTIFACT_ANSWER_REQUIRED:q12",
+    "ARTIFACT_ANSWER_REQUIRED_WITH_CHOICES:q12",
+    "ARTIFACT_SOLUTION_REQUIRED:q12"
+  ],
+  "currentArtifactSha": "1c881ca36dbaf3dd2c363ea23a98180c4f21a5ee",
+  "sourcePdfRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/2019_매산고2_확통_2기말.pdf",
+  "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+  "sourcePage": 3,
+  "sourceCheck": {
+    "renderDpi": 360,
+    "rasterRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/q12-page3-hi-3.png",
+    "rasterSha256": "719421bc9e2c90e9c6e7266603ffcc759d7bbd5aedcc71113994248e1f7c2e37",
+    "rasterDimensions": "2970x4205",
+    "regionRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/source/q12-p3-region-360dpi.png",
+    "regionSha256": "37c91b038fb133467aeef522e4c2f52a3fb47f00ce9080e5f1eac97a4b38ffff",
+    "regionReview": "Direct visual read at 360dpi: the population parameter prints σ²; the target prints ≥; condition Xbar≤43 plus Ybar≤64 equals 1. All table rows and five options were read directly."
+  },
+  "literalSourceInventory": {
+    "firstPopulation": "N(40, 8²)",
+    "firstSampleSize": 16,
+    "firstSampleMeanSymbol": "Xbar",
+    "secondPopulation": "N(70, σ²)",
+    "secondSampleSize": 25,
+    "secondSampleMeanSymbol": "Ybar",
+    "condition": "P(Xbar≤43)+P(Ybar≤64)=1",
+    "target": "P(Ybar≥66)",
+    "table": {
+      "header": [
+        "z",
+        "P(0≤Z≤z)"
+      ],
+      "rows": [
+        [
+          1,
+          0.3413
+        ],
+        [
+          1.2,
+          0.3849
+        ],
+        [
+          1.4,
+          0.4192
+        ],
+        [
+          1.6,
+          0.4452
+        ]
+      ]
+    },
+    "choices": [
+      "0.8413",
+      "0.8644",
+      "0.8849",
+      "0.9192",
+      "0.9452"
+    ]
+  },
+  "independentReconstruction": {
+    "xbarStandardError": "8/√16=2",
+    "firstProbability": "P(Xbar≤43)=Φ((43−40)/2)=Φ(1.5)",
+    "conditionImplies": "P(Ybar≤64)=1−Φ(1.5)=Φ(−1.5) by symmetry; this does not require an unprinted z=1.5 table row",
+    "sigmaSolve": "(64−70)/(σ/√25)=−1.5; −30/σ=−1.5; σ=20",
+    "ybarStandardError": "σ/√25=20/5=4",
+    "targetStandardization": "(66−70)/4=−1",
+    "targetProbability": "P(Ybar≥66)=P(Z≥−1)=0.5+P(0≤Z≤1)=0.8413",
+    "uniqueChoice": "①"
+  },
+  "semanticLocusAssessment": {
+    "modelParameterRestoration": "One supported model-parameter transcription repair: the printed σ² had been misread as 6². Restoring σ² lets the source probability condition uniquely determine σ=20.",
+    "targetOperatorRestoration": "The source also visibly prints ≥ for the requested tail, while the candidate transcription had ≤. Restoring this operator is exact source transcription, not a model premise rewrite.",
+    "independentPremisesRewritten": 0,
+    "choiceFittingUsedAsEvidence": false,
+    "correctionProtocol": "docs/rules/02_PIPELINES/수정프로토콜.md — REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR / AUDITED_SOURCE_REPAIR",
+    "reason": "Exact high-resolution symbol restoration makes the source internally coherent. The explicit parameter σ is uniquely determined from the probability condition; options are only checked after reconstruction."
+  },
+  "restoredArtifact": {
+    "content": "정규분포 $N(40,8^2)$을 따르는 모집단에서 크기가 16인 표본을 임의추출하여 구한 표본평균을 $\\overline X$, 정규분포 $N(70,\\sigma^2)$을 따르는 모집단에서 크기가 25인 표본을 임의추출하여 구한 표본평균을 $\\overline Y$라 하자. $P(\\overline X\\le43)+P(\\overline Y\\le64)=1$일 때, $P(\\overline Y\\ge66)$의 값을 표준정규분포표를 이용하여 구한 것은? (5.1점)\n| $z$ | $P(0\\le Z\\le z)$ |\n| 1 | 0.3413 |\n| 1.2 | 0.3849 |\n| 1.4 | 0.4192 |\n| 1.6 | 0.4452 |",
+    "answer": "①",
+    "solution": "먼저 $\\overline X$의 표준편차는\n$\\dfrac8{\\sqrt{16}}=2$이다.\n따라서\n$P(\\overline X\\le43)=P\\left(Z\\le\\dfrac{43-40}{2}\\right)=P(Z\\le1.5)$이다.\n주어진 조건에서\n$P(\\overline Y\\le64)=1-P(Z\\le1.5)$\n$=P(Z\\ge1.5)=P(Z\\le-1.5)$이다.\n$\\overline Y$의 평균은 70, 표준편차는 $\\dfrac{\\sigma}{\\sqrt{25}}=\\dfrac{\\sigma}{5}$이므로\n$\\dfrac{64-70}{\\sigma/5}=-1.5$,\n$\\sigma=20$이다.\n따라서 $\\overline Y$의 표준편차는 4이고,\n$P(\\overline Y\\ge66)=P\\left(Z\\ge\\dfrac{66-70}{4}\\right)$\n$=P(Z\\ge-1)=0.5+P(0\\le Z\\le1)$\n$=0.5+0.3413=0.8413$이다.\n그러므로 정답은 ①이다.",
+    "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+    "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+    "standardUnitKey": "H15-PS-06",
+    "subUnitKey": "H15-PS-06-ESTIMATION_BASIC"
+  },
+  "evidenceBinding": {
+    "finalArtifactSha": "1c881ca36dbaf3dd2c363ea23a98180c4f21a5ee",
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionSha256": "3ef8b5e11917f0bcd587ee64729a3b81d455bedd849c695bae3063cbd70174d1"
+  }
+}

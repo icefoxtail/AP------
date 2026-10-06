@@ -1,0 +1,28 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": ["STUDENT_REPRODUCIBILITY","SMALL_BOARD_STRUCTURE","EXPLANATION_DENSITY","VISUAL_SEMANTIC_PARITY","VISUAL_READABILITY"],
+    "goldenSampleRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","sha256":"sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f","gitBlobSha":"4131ec426efffb5c141292d2ea5aabc8983af134"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","sha256":"sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c","gitBlobSha":"38030519a8286fe0c69eaf0f80c423ec2476acc1"}
+    ],
+    "goldenSampleQuestionRefs": [
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":7,"solutionSha256":"sha256:0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","solutionExcerpt":"원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.","observation":"해설은 완전제곱으로 원의 중심·반지름을 구한 뒤 두 변환을 순서대로 좌표화한다. 실제 SVG를 렌더해 최초 중심 (-3,1), 평행이동 중심 (-5,2), 원점대칭 최종 중심 (5,-2), 반지름 3 및 최종식이 일치함을 확인했다.","visualSha256":"sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"},
+      {"path":"archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js","qid":12,"solutionSha256":"sha256:a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171","solutionExcerpt":"원래 원의 중심과 반지름부터 확인한다.","observation":"해설은 이동 후 중심, 반지름, y축 접촉, x축 접촉, a>0 조건을 순서대로 쓴다. 실제 SVG를 렌더해 중심 (-2,2), 반지름 2인 원이 두 축에 접하는 도형과 a+b=6이 맞음을 확인했다.","visualSha256":"sha256:67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":2,"solutionSha256":"sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","solutionExcerpt":"두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.","observation":"해설은 두 직선을 기울기-절편형으로 바꾼 계산과 기울기 곱 -1을 명시한다. 실제 SVG를 렌더해 한 직선 기울기 -1/3, 다른 직선 기울기 3인 교차가 수직 조건과 일치함을 확인했다.","visualSha256":"sha256:cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"},
+      {"path":"archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js","qid":6,"solutionSha256":"sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7","solutionExcerpt":"주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.","observation":"해설은 r²=k(k-8)/4>0의 부호조건과 0,8 경계 제외를 설명한다. 실제 SVG를 렌더해 k=-1,9 예시가 반지름²>0이고 수직수직선 스케치/허용 구간 표현이 해설과 일치함을 확인했다.","visualSha256":"sha256:70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5"}
+    ],
+    "negativeSampleRefs": [
+      {"path":"archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md","sha256":"sha256:39c03a074003c240075547972ddf2f4b6b90181f5a91135d7927c90e3db3f8","gitBlobSha":"773cad1f834811c953b0c88f5245721c9ef3327a"}
+    ],
+    "negativeObservation":"실패 고정 회귀 사례에서 SVG 실제 좌표/위상과 해설 라벨 불일치를 직접 읽었다. 본 target의 해설·Visual 점검에서는 해설 텍스트에 적힌 관계뿐 아니라 픽셀 렌더의 실제 geometry와 작은칠판에서 열거 구조가 각 block으로 분리됐는지 확인한다.",
+    "performedAt":"2026-10-06T07:15:39Z"
+  }
+}

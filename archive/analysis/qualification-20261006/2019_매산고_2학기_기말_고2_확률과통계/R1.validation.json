@@ -1,0 +1,22 @@
+{
+  "stage": "R1",
+  "status": "PASS",
+  "validatorMode": "R1_V2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "artifactSha": "4ceb58a353ad4aea049b9a58c984aa9e984bc555",
+  "evidenceRef": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/R1.evidence.json",
+  "denominator": 19,
+  "rowCount": 19,
+  "commonValid": true,
+  "artifactContractDisposition": "PASS",
+  "issues": [],
+  "validatorRuns": [
+    {"artifactSha":"1c881ca36dbaf3dd2c363ea23a98180c4f21a5ee","status":"PASS","preservedAs":"R1.validation.attempt1.json","supersededByQid9SolutionRepair":true},
+    {"artifactSha":"4ceb58a353ad4aea049b9a58c984aa9e984bc555","status":"PASS","final":true}
+  ],
+  "changedQids": [9],
+  "directDependenciesRechecked": [9],
+  "command": "node archive/tools/archive-stage-validator.mjs --stage R1 --exam .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/2019_매산고_2학기_기말_고2_확률과통계.js --evidence archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/R1.evidence.json --quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006 --execution-line CODEX --asset-root .tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계 --json"
+}

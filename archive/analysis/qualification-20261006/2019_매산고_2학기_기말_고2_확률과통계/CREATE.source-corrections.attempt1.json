@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "JS_ARCHIVE_AUDITED_SOURCE_REPAIR_v1",
+  "stage": "CREATE",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "artifactSha": "68a2590ef563ac8d67f357871174d9d4ca91ce9b",
+  "evidenceRef": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/CREATE.source-corrections.json",
+  "sourcePdfSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+  "sourceProvenanceRef": ".tmp/archive/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/provenance/archive/evidence/source-intake-stats-20261004/2019_매산고_2학기_기말_고2_확률과통계/source_provenance.json",
+  "sourceProvenanceSha256": "a2bb841e25d821ac0693c2ec784767f608198bf57d1e56b7d1075eacc3753534",
+  "corrections": [
+    {
+      "qid": 3,
+      "sourcePage": 1,
+      "originalCandidate": {
+        "content": "연속확률변수 X의 확률밀도함수 문항",
+        "choices": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "repaired": {
+        "content": "같은 종류 물건 10개를 서로 다른 종류 접시 3개에 나누어 담는 경우의 수를 구하면? (단, 접시는 일부만 사용해도 된다.)",
+        "choices": [
+          "$21$",
+          "$36$",
+          "$45$",
+          "$66$",
+          "$120$"
+        ],
+        "answer": "④"
+      },
+      "reason": "Current target q3 did not match the directly viewed original PDF p.1 q3. The exact PDF says 10 identical objects are distributed among 3 distinct plates, plates may be unused; choices are 21,36,45,66,120. This is one source identity/content locus. Stars and bars gives C(12,2)=66, unique choice ④.",
+      "sourceSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+      "affectedFields": [
+        "content",
+        "choices",
+        "answer",
+        "solution",
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "subUnitKey",
+        "subUnit",
+        "difficultyBucket"
+      ],
+      "postRepairAnswerCardinality": 1
+    },
+    {
+      "qid": 13,
+      "sourcePage": 3,
+      "originalValue": "P(−5≤X≤20)=0.9974",
+      "repairedValue": "P(−5≤X≤25)=0.9974",
+      "reason": "The printed graph itself labels −5,0,5,10,15,20,25; q13 also prints P(5≤X≤15)=0.6826 and P(0≤X≤20)=0.9544. Together these identify μ=10, σ=5, so the ±3σ bounds are −5 and 25. Replace only the third interval upper bound. The requested sample-mean probability is 0.8185, matching the unique option ②.",
+      "sourceSha256": "3b0cee3f8908f8e0bd3d522f16ae7d52279e947ebba21ddf2e9283800762d9b9",
+      "affectedFields": [
+        "content",
+        "answer",
+        "solution"
+      ],
+      "postRepairAnswerCardinality": 1
+    }
+  ],
+  "q12SourceContradictionHold": "archive/analysis/qualification-20261006/2019_매산고_2학기_기말_고2_확률과통계/CREATE.q12-hold.json"
+}

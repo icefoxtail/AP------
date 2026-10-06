@@ -1,0 +1,1054 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CURRICULUM_METHOD_INVENTORY_v1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "2019_매산고_2학기_기말_고2_확률과통계",
+  "artifactSha": "4ceb58a353ad4aea049b9a58c984aa9e984bc555",
+  "denominator": 19,
+  "audited": "19/19",
+  "authorities": {
+    "official": "MOE Notice 2015-74 supplement 8; high school H2 applied from 2019-03-01",
+    "rpm": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md v1.0 H15-PS; 2015; L1/L2 RPM_VERIFIED, L3/L4 CANONICAL_DRAFT",
+    "unitMaster": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md ACTIVE H15-PS-01..06",
+    "methodGate": "docs/rules/02_PIPELINES/해설프로토콜.md A; item-level concepts/formulas/notations/methods and cumulative scope",
+    "q19Prior": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학_상.md quadratic discriminant; lower prerequisite allowed at H2"
+  },
+  "cumulativeScope": "H2 uses current 2015 H15-PS plus previously learned lower scope; no H3/future method.",
+  "rows": [
+    {
+      "qid": 1,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "population/sample",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "census/sample suitability",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "notations",
+          "item": "ㄱ~ㅁ",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "methods",
+          "item": "Classify scope, feasibility, destructiveness then count.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 2,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값"
+      },
+      "rpmPath": "통계/확률분포",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "discrete distribution",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "concepts",
+          "item": "expectation",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "concepts",
+          "item": "constant multiple",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "ΣP=1",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "E(X)=ΣxP",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "E(cX)=cE(X)",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "notations",
+          "item": "X,P(X=x),E(X),a",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "methods",
+          "item": "Normalize probabilities then compute expectation and constant scaling.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 3,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-01",
+        "standardUnit": "순열과 조합",
+        "subUnitKey": "H15-PS-01-COMBINATION",
+        "subUnit": "조합"
+      },
+      "rpmPath": "경우의 수/순열과 조합",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "identical-object distribution",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-01/H15-PS-01-COMBINATION"
+        },
+        {
+          "axis": "concepts",
+          "item": "combinations",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-01/H15-PS-01-COMBINATION"
+        },
+        {
+          "axis": "concepts",
+          "item": "nonnegative integer equation",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-01/H15-PS-01-COMBINATION"
+        },
+        {
+          "axis": "formulas",
+          "item": "x1+x2+x3=10, xi≥0",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-01/H15-PS-01-COMBINATION"
+        },
+        {
+          "axis": "formulas",
+          "item": "C(12,2)",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-01/H15-PS-01-COMBINATION"
+        },
+        {
+          "axis": "notations",
+          "item": "x1,x2,x3,C(n,r)",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-01/H15-PS-01-COMBINATION"
+        },
+        {
+          "axis": "methods",
+          "item": "Set dish counts as nonnegative integers and apply stars-and-bars.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-01/H15-PS-01-COMBINATION"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 4,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-RANDOM_VARIABLE",
+        "subUnit": "확률변수"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "sample mean E and V",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "E(Xbar)=μ",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "V(Xbar)=σ²/n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,E,V,μ,σ,n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "methods",
+          "item": "Apply sample-mean formulas independently.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 5,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-02",
+        "standardUnit": "이항정리",
+        "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+        "subUnit": "이항정리"
+      },
+      "rpmPath": "경우의 수/이항정리",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "binomial theorem",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-02/H15-PS-02-BINOMIAL_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "minimum integer",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-02/H15-PS-02-BINOMIAL_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "ΣC(n,i)3^i=4^n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-02/H15-PS-02-BINOMIAL_BASIC"
+        },
+        {
+          "axis": "notations",
+          "item": "nCi",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-02/H15-PS-02-BINOMIAL_BASIC"
+        },
+        {
+          "axis": "methods",
+          "item": "Use binomial expansion and adjacent-power comparison.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-02/H15-PS-02-BINOMIAL_BASIC"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 6,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포"
+      },
+      "rpmPath": "통계/확률분포",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "normal distribution symmetry",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "concepts",
+          "item": "fixed-width interval",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "formulas",
+          "item": "interval midpoint",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "notations",
+          "item": "N(μ,σ²),X,k",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "methods",
+          "item": "Center fixed-length interval at normal mean.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 7,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포"
+      },
+      "rpmPath": "통계/확률분포",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "normal standardization",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "concepts",
+          "item": "symmetric table area",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "formulas",
+          "item": "Z=(X−μ)/σ",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "formulas",
+          "item": "symmetric tail",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "notations",
+          "item": "X,Z,μ,σ",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "methods",
+          "item": "Standardize and read symmetry/table.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 8,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-RANDOM_VARIABLE",
+        "subUnit": "확률변수"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "sample mean E/V/std",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "E(Xbar)=μ",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "V(Xbar)=σ²/n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "σ(Xbar)=σ/√n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,Ybar,n1,n2,μ,σ",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "methods",
+          "item": "Check each proposition independently by formula.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-RANDOM_VARIABLE"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 9,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-04",
+        "standardUnit": "조건부확률",
+        "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+        "subUnit": "조건부확률"
+      },
+      "rpmPath": "확률/조건부확률",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "independent trials",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-04/H15-PS-04-CONDITIONAL_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "stopping cases",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-04/H15-PS-04-CONDITIONAL_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "disjoint stopping-case sum",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-04/H15-PS-04-CONDITIONAL_BASIC"
+        },
+        {
+          "axis": "notations",
+          "item": "p,a:b,C(n,r)",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-04/H15-PS-04-CONDITIONAL_BASIC"
+        },
+        {
+          "axis": "methods",
+          "item": "Partition stopping cases and sum independent paths.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-04/H15-PS-04-CONDITIONAL_BASIC"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 10,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "sample-mean normal law",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "confidence probability",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "σ(Xbar)=σ/√n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "z-bound inequality",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,m,n,Z",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "methods",
+          "item": "Turn confidence condition into integer n inequality.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 11,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "subUnit": "신뢰구간"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "mean CI",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        },
+        {
+          "axis": "concepts",
+          "item": "standard error",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        },
+        {
+          "axis": "formulas",
+          "item": "xbar±zσ/√n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        },
+        {
+          "axis": "notations",
+          "item": "a,b,c,d,z",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        },
+        {
+          "axis": "methods",
+          "item": "Calculate both intervals using SE and z.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 12,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "sample-mean laws",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "normal symmetry",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "complement/symmetry",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "σ(Xbar)=σ/√n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,Ybar,σ²,σ,Z",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "methods",
+          "item": "Use sum-to-one plus symmetry to solve σ and target tail.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 13,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "normal interval probabilities",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "sample mean",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "P(|X−μ|≤σ)=.6826",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "σ(Xbar)=σ/√n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "notations",
+          "item": "X,m,σ,Xbar,Z",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "methods",
+          "item": "Infer μ,σ then transfer to sample mean.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 14,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+        "subUnit": "신뢰구간"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "CI width/confidence",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        },
+        {
+          "axis": "formulas",
+          "item": "CI width=2zσ/√n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        },
+        {
+          "axis": "notations",
+          "item": "a,b,c,d,k,z",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        },
+        {
+          "axis": "methods",
+          "item": "Use width ratio to recover z and confidence.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-CONFIDENCE_INTERVAL"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 15,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+        "subUnit": "확률분포"
+      },
+      "rpmPath": "통계/확률분포",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "density area",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "concepts",
+          "item": "discrete distribution total",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "formulas",
+          "item": "triangle area=bh/2",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "formulas",
+          "item": "ΣP=1",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "notations",
+          "item": "x,S,Z,a,b,P(Z=z)",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        },
+        {
+          "axis": "methods",
+          "item": "Area-sum triangles and normalize discrete probabilities.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-PROBABILITY_DISTRIBUTION"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 16,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값"
+      },
+      "rpmPath": "통계/확률분포",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "sample mean law",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "concepts",
+          "item": "independent sampling",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "concepts",
+          "item": "probability normalization",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "probability products",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "ΣP=1",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "notations",
+          "item": "X,Xbar,a,b,P(X=x)",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "methods",
+          "item": "Enumerate ordered pairs, solve quadratic, reject negative probability.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 17,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+        "subUnit": "확률변수와 기댓값"
+      },
+      "rpmPath": "통계/확률분포",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "given standard score",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "formulas",
+          "item": "T=20((X−m)/σ)+100",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "notations",
+          "item": "X,m,σ,T,a",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        },
+        {
+          "axis": "methods",
+          "item": "Apply supplied score transform.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-RANDOM_VARIABLE"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 18,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-06",
+        "standardUnit": "통계적 추정",
+        "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+        "subUnit": "통계적 추정"
+      },
+      "rpmPath": "통계/통계적 추정",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "normal curves",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "sample mean",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "concepts",
+          "item": "tail table",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "σ(Xbar)=σ/√n",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "formulas",
+          "item": "z=2 tail",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "notations",
+          "item": "Xbar,Ybar,σ,Z",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        },
+        {
+          "axis": "methods",
+          "item": "Compare equal sample-mean probabilities; invert table tail.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-06/H15-PS-06-ESTIMATION_BASIC"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 19,
+      "curriculum": "2015",
+      "grade": "H2",
+      "targetUnit": {
+        "standardCourse": "확률과 통계",
+        "standardUnitKey": "H15-PS-05",
+        "standardUnit": "확률분포",
+        "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+        "subUnit": "이항분포와 정규분포"
+      },
+      "rpmPath": "통계/확률분포",
+      "curriculumStatus": "PASS",
+      "inventory": [
+        {
+          "axis": "concepts",
+          "item": "quadratic intersections",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "concepts",
+          "item": "binomial moments",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "concepts",
+          "item": "normal approximation",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "formulas",
+          "item": "D≥0",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "formulas",
+          "item": "E=np",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "formulas",
+          "item": "V=np(1-p)",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "formulas",
+          "item": "standardization",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "notations",
+          "item": "x,a,A,X,B(n,p),E,V,Z",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        },
+        {
+          "axis": "methods",
+          "item": "Use discriminant, dice outcomes, binomial moments, normal approximation.",
+          "status": "ALLOWED",
+          "authority": "MOE Notice 2015-74 supplement 8; docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/확률과통계.md RPM_PRIMARY_TAXONOMY_v1.0; docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md; docs/rules/02_PIPELINES/해설프로토콜.md A; target H15-PS-05/H15-PS-05-BINOMIAL_NORMAL; prior-scope H15 Math(상) discriminant allowed cumulatively"
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "notAllowed": [],
+      "uncertain": []
+    }
+  ],
+  "aggregate": {
+    "curriculumMethodAuditCount": "19/19",
+    "curriculumStatus": "PASS",
+    "curriculumViolationQids": [],
+    "uncertainCurriculumQids": [],
+    "outOfCurriculumDependencies": []
+  }
+}
