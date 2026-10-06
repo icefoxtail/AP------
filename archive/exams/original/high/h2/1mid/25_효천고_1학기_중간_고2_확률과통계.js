@@ -417,7 +417,7 @@ window.questionBank = [
     "standardUnit": "이항정리",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "전개",
@@ -707,7 +707,7 @@ window.questionBank = [
     "standardUnit": "이항정리",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "항등식",

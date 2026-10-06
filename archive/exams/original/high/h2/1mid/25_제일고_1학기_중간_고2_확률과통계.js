@@ -744,7 +744,7 @@ window.questionBank = [
     "standardUnitKey": "H22-PS-02",
     "standardUnit": "이항정리",
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "전개",
