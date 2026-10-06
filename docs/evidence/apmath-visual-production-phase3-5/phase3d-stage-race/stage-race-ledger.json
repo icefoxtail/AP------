@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "PHASE3D_STAGE_RACE_v1",
+  "unit": "interprocess-immutable-stage-publication",
+  "status": "PASS",
+  "acceptance": "Two separate processes are released from a barrier and attempt the same immutable stage key. Exactly one publishes; the other receives EEXIST or IMMUTABLE_STAGE_EXISTS. The loaded manifest payload matches the winning writer, and the stage parent has no lock or staging residue.",
+  "observed": {
+    "raceRuns": 10,
+    "racePasses": 10,
+    "testFailureCount": 0,
+    "runsWithZeroTestFailures": 10,
+    "winnersPerRun": 1,
+    "rejectedWritersPerRun": 1,
+    "manifestAndPayloadMatchedWinner": true,
+    "noLockOrStagingResidue": true,
+    "combinedGateSubsetPass": 32,
+    "combinedGateSubsetFailures": 0
+  },
+  "implementation": {
+    "source": "archive/tools/geometry-equation/tests/production-contract.test.mjs",
+    "sha256": "f522ec49699b0b28b06bdea21f2ad84d5306f72e4183adb4c0a2283feca4a88b"
+  },
+  "stressRun": {
+    "command": "node --test --test-name-pattern 'separate processes' archive/tools/geometry-equation/tests/production-contract.test.mjs (10 repetitions)",
+    "log": "docs/evidence/apmath-visual-production-phase3-5/phase3d-stage-race/interprocess-stage-race-10x.log",
+    "sha256": "391bdde13278e420d0f5765893bef2dccc78230333313fdd97d7d9543bdcd630"
+  },
+  "gateSubset": {
+    "command": "node --test archive/tools/geometry-equation/tests/production-contract.test.mjs archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+    "runtime": "v24.14.1",
+    "log": "docs/evidence/apmath-visual-production-phase3-5/phase3d-stage-race/profile-gate-subset.log",
+    "sha256": "e2cf7f45fc43ada856f25f7ecbb91d1c4cae4cec34a05e10a23e3b6de562d0eb"
+  },
+  "phase3Debt": [
+    "general owner-safe layout repair remains open",
+    "source/answer/policy/provider/observer replay invalidation matrix remains open",
+    "full profile composition matrix beyond the three experimental locator candidates remains open",
+    "canonical current-UID execution remains INPUT_REQUIRED"
+  ],
+  "lastUpdatedUtc": "2026-10-06T06:32:50Z"
+}

@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {spawn} from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -52,6 +54,61 @@ test('immutable commit, corruption, partial staging, concurrent writer fail clos
   fs.writeFileSync(lock,'held');
   assert.throws(()=>commitStage(root,{stage:'MATH',key:key2,outputs:{'x.json':'{}'},provenance:{}}),/EEXIST/);
 }));
+test('separate processes cannot publish competing bytes for one immutable stage key',async()=>{
+  const runId=`commit-race-${crypto.randomUUID()}`;
+  const raceWorkRoot=`.tmp/archive/${runId}/geometry/visual-engine/production`;
+  const raceKey=objectSha({sameStage:true,runId});
+  const storeUrl=new URL('../production/store.mjs',import.meta.url).href;
+  const writerSource=`
+    import {commitStage,withWorkRoot} from ${JSON.stringify(storeUrl)};
+    const root=process.env.APMATH_RACE_ROOT;
+    const workRoot=process.env.APMATH_RACE_WORK_ROOT;
+    const key=process.env.APMATH_RACE_KEY;
+    const value=process.env.APMATH_RACE_VALUE;
+    process.stdout.write('READY\\n');
+    await new Promise(resolve=>process.stdin.once('data',resolve));
+    try {
+      const receipt=withWorkRoot(workRoot,()=>commitStage(root,{stage:'MATH',key,outputs:{'model.json':JSON.stringify({value})},provenance:{writer:value}}));
+      process.stdout.write('RESULT '+JSON.stringify({status:'COMMITTED',value,manifestRef:receipt.manifestRef})+'\\n');
+    } catch(error) {
+      process.stdout.write('RESULT '+JSON.stringify({status:'REJECTED',error:error.code||error.message})+'\\n');
+    }
+  `;
+  const launchWriter=value=>{
+    const child=spawn(process.execPath,['--input-type=module','-e',writerSource],{
+      env:{...process.env,APMATH_RACE_ROOT:root,APMATH_RACE_WORK_ROOT:raceWorkRoot,APMATH_RACE_KEY:raceKey,APMATH_RACE_VALUE:value},
+      stdio:['pipe','pipe','pipe']
+    });
+    let pending='',stderr='';
+    let readyResolve,resultResolve;
+    const ready=new Promise(resolve=>{readyResolve=resolve;});
+    const result=new Promise(resolve=>{resultResolve=resolve;});
+    child.stdout.setEncoding('utf8');
+    child.stdout.on('data',chunk=>{
+      pending+=chunk;
+      while(pending.includes('\n')){
+        const index=pending.indexOf('\n'),line=pending.slice(0,index);pending=pending.slice(index+1);
+        if(line==='READY')readyResolve();
+        if(line.startsWith('RESULT '))resultResolve(JSON.parse(line.slice(7)));
+      }
+    });
+    child.stderr.setEncoding('utf8');child.stderr.on('data',chunk=>{stderr+=chunk;});
+    const closed=new Promise((resolve,reject)=>child.once('close',code=>code===0?resolve():reject(Error(`race writer exited ${code}: ${stderr}`))));
+    return{child,ready,result,closed};
+  };
+  const writers=[launchWriter('left'),launchWriter('right')];
+  await Promise.all(writers.map(writer=>writer.ready));
+  for(const writer of writers)writer.child.stdin.end('GO\n');
+  const outcomes=await Promise.all(writers.map(async writer=>{const [result]=await Promise.all([writer.result,writer.closed]);return result;}));
+  assert.equal(outcomes.filter(value=>value.status==='COMMITTED').length,1,JSON.stringify(outcomes));
+  assert.equal(outcomes.filter(value=>value.status==='REJECTED').length,1,JSON.stringify(outcomes));
+  assert.ok(['EEXIST','IMMUTABLE_STAGE_EXISTS'].includes(outcomes.find(value=>value.status==='REJECTED').error));
+  const published=withWorkRoot(raceWorkRoot,()=>loadStage(root,'MATH',raceKey));
+  assert.ok(published?.manifestRef);
+  assert.equal(JSON.parse(readBoundFile(root,published.outputs[0])).value,outcomes.find(value=>value.status==='COMMITTED').value);
+  const stageParent=path.join(root,raceWorkRoot,'stages','MATH');
+  assert.deepEqual(fs.readdirSync(stageParent),[raceKey.slice(7)]);
+});
 test('temporary workspace required and traversal rejected',()=>{
   assert.throws(()=>currentWorkRoot(),/VISUAL_WORKSPACE_CONTEXT_REQUIRED/);
   for(const p of ['archive/assets/a.svg',`${workRoot}/../../assets/a.svg`])assert.throws(()=>withWorkRoot(workRoot,()=>generatedPath(root,p)));
