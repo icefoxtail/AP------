@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "APMATH_PHASE3A_CONTENT_BOX_AMENDMENT_v1",
+  "unit": "Phase 3A actual Archive DisplayEnvelope preflight",
+  "classification": "ACTUAL_ARCHIVE_MEASUREMENT_ONLY_NOT_CANDIDATE_SUPPORT",
+  "status": "PASS",
+  "amendmentOf": {
+    "path": "docs/evidence/apmath-visual-production-phase3-5/display-envelope-preflight/phase3a1-ledger.json",
+    "sha256": "sha256:a92f833d135035d06f2323cf79169d8dccb5aea9664221b25fee5ab24471e297"
+  },
+  "runId": "visual-envelope-preflight-36d85f14-e87b-4873-b09a-5b43eaa5ae89",
+  "runDirectory": ".tmp/archive/visual-envelope-preflight-36d85f14-e87b-4873-b09a-5b43eaa5ae89/",
+  "condition": "Measure all CSS size-class probes against the actual .sol-meta content box used by max-width percentages, not the .sol-meta border box.",
+  "observed": {
+    "qBoxBorderBoxWidthCssPx": 316.15625,
+    "solutionMetaBorderBoxWidthCssPx": 316.15625,
+    "solutionMetaContentWidthCssPx": 298.15625,
+    "profiles": [
+      {
+        "sizeClass": "small",
+        "widthCssPx": 126,
+        "heightCssPx": 105
+      },
+      {
+        "sizeClass": "medium",
+        "widthCssPx": 174,
+        "heightCssPx": 145
+      },
+      {
+        "sizeClass": "large",
+        "widthCssPx": 216,
+        "heightCssPx": 180
+      },
+      {
+        "sizeClass": "full",
+        "widthCssPx": 298.140625,
+        "heightCssPx": 248.453125
+      }
+    ],
+    "previousFullProbe": {
+      "widthCssPx": 316.140625,
+      "heightCssPx": 263.453125,
+      "classification": "SUPERSEDED_BORDER_BOX_DENOMINATOR"
+    }
+  },
+  "attempts": 1,
+  "repairBudgetMax": 3,
+  "actualArchive": {
+    "targetsPassed": 3,
+    "targetsFailed": 0,
+    "runtime": "playwright-chromium",
+    "synthetic": false,
+    "uidAuthority": "QID_V1_MAP_MEASUREMENT_ONLY"
+  },
+  "tests": {
+    "command": "node --test archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+    "passed": 16,
+    "failed": 0,
+    "classification": "FIXTURE_LOGIC_TESTS_ONLY",
+    "logPath": "logic-test-run.txt"
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/production/display-envelope.mjs",
+      "sha256": "sha256:69ea44c50766bb0133570cb8bec59b6bd13c9fe89a31d409df5ee61ecb072aae"
+    },
+    {
+      "path": "archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+      "sha256": "sha256:134d9d6c78dc063e6b5a90b4cbc3b0e3c7b3adf7e31b5b6a588865ededf5f347"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/display-envelope.test.mjs",
+      "sha256": "sha256:1c6930c2499bc668365c84218c36ee0109f4128e43a17f9297cd7ef932416151"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+      "sha256": "sha256:73f058dc55213f99083c5e7b3240c4d8c3f1f4bab8bc03450bf90172ac7d3d21"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/run-display-envelope-preflight.mjs",
+      "sha256": "sha256:82e50aef744917a929c9d7a0478431377dae81a586c27a97c0277738e3dd9da1"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "coordinate-free-geometry-q01.archive-context.png",
+      "bytes": 5682,
+      "sha256": "sha256:3850233a1bb28bb8ac4fb0320902a0b41ff68e9d94d2da4465e9b588b29698c9"
+    },
+    {
+      "path": "coordinate-free-geometry-q01.archive-row.json",
+      "bytes": 21231,
+      "sha256": "sha256:e75fa55ab361ec7d1779050d48123951b799cd6a66ef5dd93fdb767500cf6011"
+    },
+    {
+      "path": "coordinate-free-geometry-q01.matrix.json",
+      "bytes": 2214,
+      "sha256": "sha256:6fe1d4699aca8321d4887f8c99cb7817d15a32d8086f646f5f512ba0c012e34f"
+    },
+    {
+      "path": "coordinate-free-geometry-q01.measurement.json",
+      "bytes": 6091,
+      "sha256": "sha256:6b87e64ca31520e24dd9476b25bab2f5bf955a5af892c6992a88b01478d0a14f"
+    },
+    {
+      "path": "coordinate-free-geometry-q01.probe-page.png",
+      "bytes": 600574,
+      "sha256": "sha256:1443ea44516dff9039b7c26977ded9bb5daa1cca0acd569c0d873a6ab06a9c33"
+    },
+    {
+      "path": "geometry-q01.archive-context.png",
+      "bytes": 14181,
+      "sha256": "sha256:7a18c1c42d94d49703b904293f7ebb7f197200d6405fbd3973b418178617ca7a"
+    },
+    {
+      "path": "geometry-q01.archive-row.json",
+      "bytes": 25766,
+      "sha256": "sha256:273be6a11b5ea68d79018bb507f1d98735bb80a8842ffe017f70f3d4a1bf296d"
+    },
+    {
+      "path": "geometry-q01.matrix.json",
+      "bytes": 2154,
+      "sha256": "sha256:828546bd1a326f8d2b197ef170845d9e405a8a29cd7d32e609c0b20ce3be21f9"
+    },
+    {
+      "path": "geometry-q01.measurement.json",
+      "bytes": 6043,
+      "sha256": "sha256:1f7913d16ed50891ae81294598a97a830f001d8af128214c0505c720f0ee1cf2"
+    },
+    {
+      "path": "geometry-q01.probe-page.png",
+      "bytes": 1093617,
+      "sha256": "sha256:b2b67ce1cfff7fedc27d7c8686e32e0d72b7f5e5eb2f0144bc92abcb29b13d30"
+    },
+    {
+      "path": "graph-q10.archive-context.png",
+      "bytes": 9496,
+      "sha256": "sha256:827220ae6c6fb7bae177b112b385e9b05adc11f2e54ac77bb79e7c1504e060c2"
+    },
+    {
+      "path": "graph-q10.archive-row.json",
+      "bytes": 19143,
+      "sha256": "sha256:e2af31a8a45badf1976530a264c708efb91fe576f2ac2c33bd685c781cd2df8d"
+    },
+    {
+      "path": "graph-q10.matrix.json",
+      "bytes": 2166,
+      "sha256": "sha256:05f3ebb0798013b7951c9cb3b59037e9e69c5760db24820c4c5fa43b5b9faf68"
+    },
+    {
+      "path": "graph-q10.measurement.json",
+      "bytes": 6068,
+      "sha256": "sha256:fbb629e42fb002fa6c178c74d6e48781261b1cdb8d6d2d93f5d9a6d1d84e0794"
+    },
+    {
+      "path": "graph-q10.probe-page.png",
+      "bytes": 365576,
+      "sha256": "sha256:445d7fa19e64e8078f54caa7117a5ddbfbf356386bd270c14858b8660262c1e9"
+    },
+    {
+      "path": "logic-test-run.txt",
+      "bytes": 1738,
+      "sha256": "sha256:d22da64d89a4ad1b5564a84b981198d1006c0f71a80ba22cf3185010b2fdb42c"
+    },
+    {
+      "path": "preflight-summary.json",
+      "bytes": 3649,
+      "sha256": "sha256:68cff7e0e45c2aef996222b662c69f6c1ba16caab60cd15e8cb4c689fbab783d"
+    }
+  ],
+  "limitations": [
+    "This corrects the scaling denominator used for the full profile. The actual CSS-capped small, medium and large sizes were unchanged.",
+    "No final engine-generated candidate is qualified by this preflight.",
+    "Canonical UID authority remains INPUT_REQUIRED.",
+    "Offline runtime closure is not established by this measurement."
+  ]
+}
