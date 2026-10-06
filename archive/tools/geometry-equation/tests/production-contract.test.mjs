@@ -137,6 +137,26 @@ test('calculation cache reuses bytes with new provenance, never review authority
   assert.notEqual(key,stageKey('MATH',{graph:{branch:{refs:['B','A']}}},fingerprint));
   await assert.rejects(calculationStage(root,{stage:'REVIEW',key},async()=>({})),/EVIDENCE_CACHE/);
 }));
+test('crashed stage output is invisible to cache and same-key recovery recomputes a complete receipt',async()=>{
+  const recoveryWorkRoot=`.tmp/archive/recover-${crypto.randomUUID()}/exam-recovery/visual-engine/production`;
+  const key=objectSha({sameCalculation:true,kind:'partial-output-recovery'});
+  const stageDir=`${recoveryWorkRoot}/stages/TYPESET/${key.slice(7)}`;
+  withWorkRoot(recoveryWorkRoot,()=>{
+    assert.throws(()=>commitStage(root,{stage:'TYPESET',key,outputs:{'model.json':'partial-bytes'},provenance:{attempt:'interrupted'},crashAt:'outputs'}),/INJECTED_CRASH/);
+    assert.equal(loadStage(root,'TYPESET',key),null);
+    assert.equal(fs.existsSync(path.join(root,stageDir,'manifest.json')),false);
+    const siblings=fs.readdirSync(path.dirname(path.join(root,stageDir)));
+    assert.ok(siblings.some(name=>name.startsWith(path.basename(stageDir)+'.staging-')));
+    assert.equal(fs.existsSync(path.join(root,stageDir+'.lock')),false);
+  });
+  let producerCalls=0;
+  const recovered=await withWorkRoot(recoveryWorkRoot,()=>calculationStage(root,{stage:'TYPESET',key,provenance:{attempt:'recovered'}},async()=>{producerCalls++;return{'model.json':'complete-bytes'};}));
+  assert.equal(recovered.cacheHit,false);assert.equal(producerCalls,1);
+  assert.equal(readBoundFile(root,recovered.receipt.outputs[0]).toString('utf8'),'complete-bytes');
+  const warm=await withWorkRoot(recoveryWorkRoot,()=>calculationStage(root,{stage:'TYPESET',key,provenance:{attempt:'warm'}},async()=>{producerCalls++;return{'model.json':'wrong-recompute'};}));
+  assert.equal(warm.cacheHit,true);assert.equal(producerCalls,1);
+  assert.equal(readBoundFile(root,warm.receipt.outputs[0]).toString('utf8'),'complete-bytes');
+});
 test('scope fingerprint includes observer code, excludes unrelated docs',()=>{
   for(const name of ['worker','observer','docs'])fs.writeFileSync(path.join(root,name),'one');
   const spec={capability:'spike',implementationPaths:['worker'],observerPaths:['observer'],dependencyLock:{sympy:'1.14.0'},policy:{version:1}};
