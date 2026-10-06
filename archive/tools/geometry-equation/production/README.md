@@ -64,18 +64,25 @@ VISUAL_SPIKE_PLAN_v1 math-contract runner, not the full real-UID workflow.
   hard-crash lock needs verified owner/process reconciliation, not age deletion.
 - Provider traces and the existing collector's intermediate files live in a
   request journal. Only committed stage manifests enter result closure.
-- One in-request controller allows at most three schema/source-plan repairs and
-  detects identical input/action/output cycles. Unsupported late layout/render
-  defects remain explicit; Phase 3's general repair controller is not implemented.
+- The one controller allows at most three schema/source-plan repairs and
+  detects identical input/action/output cycles. Frozen replay reloads its existing
+  repair ledger and refuses to reset a missing ledger. Unsupported late layout/
+  render defects remain explicit; a general per-candidate layout repair controller
+  is not implemented.
 
 The fragment profile uses measured MathJax paths and pinned Noto Sans KR
 outlines. Its 12-unit outer label margin is distinct from the legacy 32-unit plot
 margin; legacy publication bytes/profile remain unchanged. Required axis ticks
 keep their coordinate alignment and are placed before auxiliary equation labels.
 Source metric labels use the existing LENGTH_LABEL path with typed unit suffixes.
-The actual CSS font floor is still 11px. Full size is an explicit generated-overlay
-policy; the pre-typesetting envelope is policy-bound and not claimed as measured.
-Actual image dimensions, glyph bounds and font sizes are checked after capture.
+The actual CSS font floor is 11px. Phase 3 resolves the current Archive `.sol-meta`
+content box and small/medium/large/full image policy before layout. It captures the
+same candidate SVG at every measured image size, binds each label/font/stroke and
+topology record to the SVG SHA and browser screenshot, and selects the smallest
+profile at or above the requested class that passes. A selected size change is
+recorded in the temporary bank overlay. The final Archive check binds the loaded
+asset path/SHA, size class, image rectangle and `.sol-meta` content width. Real
+source profile slices are locator-only until the canonical v2 UID authority exists.
 
 The unchanged Archive `mode=sol` renders a source text reminder, answer, solution
 image and solution; choices/problem images belong to exam mode. Candidate bank

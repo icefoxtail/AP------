@@ -21,16 +21,16 @@
   "studentImageSha256": "sha256:9f5dd64f061fa77a87e2b59c9ecd00f611d59b71add6fd477b2b6e0fc246b583",
   "solutionRef": {
     "bytes": 212,
-    "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_INPUT/cff0ae59cf4b2c0b85cf6b5a0b7d5ae5406497edf9842e52e900393fa16e7b87/solution.txt",
+    "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_INPUT/e4ca0efcfa49ea94342e200678f5f9922736f588528180d66219ead5b5741770/solution.txt",
     "sha256": "sha256:c6385f4a00da8b246224a366dd9bb3c1429c6c575acb7f09e85e04a90953668e"
   },
   "candidateSvgRef": {
     "bytes": 18980,
-    "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/ef9a04f98b72d69f3a42ef077f3c0b9054824d8a8eaa9b43328d321600c85309/q01-solution.svg",
+    "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/b7cb8034e9ad8074c60f6a2060ed8e8d471ab8ba8d4436e4bd364564fb183d46/q01-solution.svg",
     "sha256": "sha256:9368fa8f20e2be5f03fee2c4db322362e8cfc3fedbf76e1a779f1d542927b595"
   },
   "candidateSvgSha256": "sha256:9368fa8f20e2be5f03fee2c4db322362e8cfc3fedbf76e1a779f1d542927b595",
-  "fingerprint": "sha256:a2f81e0daa8cf4360207c264d6180274127d112c101399fe284e40f2a38a81e2",
+  "fingerprint": "sha256:0e1598c7b94f7047100822573a94c0f469521c9f676995fb256d4b82a76da667",
   "requestedSizeClass": "medium",
   "selectedSizeClass": "large",
   "policyChange": {
@@ -91,7 +91,7 @@
     }
   ],
   "actualArchive": {
-    "matrixSha256": "8ee4fdfb25405ea4666d85225587e1b237b75ab0c365e326e2fbe23d9c8fd246",
+    "matrixSha256": "b286fb2da7b4283f5420cb27f8dafce4884418cc38db47b642981dec9fc5c448",
     "rows": [
       {
         "capture": {
@@ -115,9 +115,9 @@
     "synthetic": false
   },
   "independentVisualReviewRef": {
-    "bytes": 11926,
-    "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/VISUAL_REVIEW/c28fced362f9f49da72c9ada8d374b552e43cd1244ddac9a792578c5dd22e0a8/visual_review.json",
-    "sha256": "sha256:fae1bd631225098717d84cbd38ea4e0206ed61b67ff35e34bbfb042c5226c35c"
+    "bytes": 11749,
+    "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/VISUAL_REVIEW/7758f935faddc7506c5aad57eed2c828b2cf23d7e5e037a45e7d5fbe8926aeb6/visual_review.json",
+    "sha256": "sha256:531c090d572a3c20a1bfb74b3cb882051c6fbe14365de02b335fae7b22b5e04a"
   },
   "auditSlice": {
     "status": "FAIL",
@@ -152,13 +152,84 @@
     }
   ],
   "repairPolicy": {
+    "budgetId": "frozen-coordinate-free-geometry-q1-v1",
     "maxSameArtifactRepairs": 3,
     "attempts": 3,
-    "ledgerWasNotReset": true
+    "ledgerWasNotReset": true,
+    "budgetReset": false,
+    "replayPreservedSameLedger": true
   },
+  "replayLineage": [
+    {
+      "tag": "attempt-01-cold",
+      "resultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/77c2728a3cc84d22850f954f9c27ae531bc8510d2199102f8b7838925fffdf78/result.json",
+        "bytes": 20392,
+        "sha256": "sha256:ebf49770ef490750be08acda8c85e2613260e4cf1d4f108c3fd0a06de0386f94"
+      },
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "candidateSvgSha256": "sha256:9368fa8f20e2be5f03fee2c4db322362e8cfc3fedbf76e1a779f1d542927b595"
+    },
+    {
+      "tag": "attempt-02-frozen-replay",
+      "resultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/4c8b57e38ad1ef749b238fd0bcfd8f2f2174a355de8ca14d6928923492378711/result.json",
+        "bytes": 20034,
+        "sha256": "sha256:a04940526272ff62917abaa98996fbc4074916eef3d776c21e41052d3effe37c"
+      },
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "candidateSvgSha256": "sha256:9368fa8f20e2be5f03fee2c4db322362e8cfc3fedbf76e1a779f1d542927b595"
+    }
+  ],
   "tests": {
-    "command": "node --test archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
-    "passed": 17,
+    "command": "node --test archive/tools/geometry-equation/tests/production-contract.test.mjs archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+    "passed": 31,
     "failed": 0,
     "classification": "FIXTURE_LOGIC_TESTS_ONLY",
     "logPath": "profile-logic-test-run.txt"
