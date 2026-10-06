@@ -14,7 +14,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "함수 $f(x)=ax^2+bx$에 대하여 $f(1)=5$, $f'(-1)=2$일 때, 상수 $a$, $b$에 대하여 $ab$의 값은? [3.5점]",
+    "content": "함수 $f(x)=ax^2+bx$에 대하여 <br>$f(1)=5$, $f'(-1)=2$일 때, 상수 $a$, $b$에 대하여 $ab$의 값은? [3.5점]",
     "choices": [
       "$2$",
       "$4$",
@@ -101,7 +101,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "수직선 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $x$가 $x=-t^3+3t^2+9t-10$일 때, 점 $P$의 속도가 $0$이 되는 순간의 가속도는? [3.6점]",
+    "content": "수직선 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $x$가 <br>$x=-t^3+3t^2+9t-10$일 때, 점 $P$의 속도가 $0$이 되는 순간의 가속도는? [3.6점]",
     "choices": [
       "$-4$",
       "$-6$",
@@ -222,7 +222,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "함수 $f(x)=x^3-(a+3)x^2+2ax$에 대하여 곡선 $y=f(x)$ 위의 점 $(t,f(t))$에서의 접선의 $y$절편을 $g(t)$라 하자. 함수 $g(t)$가 열린 구간 $(0,6)$에서 증가할 때, $a$의 최솟값은? (단, $a$는 상수이다.) [3.8점]",
+    "content": "함수 $f(x)=x^3-(a+3)x^2+2ax$에 대하여 <br>곡선 $y=f(x)$ 위의 점 $(t,f(t))$에서의 접선의 $y$절편을 $g(t)$라 하자. 함수 $g(t)$가 열린 구간 $(0,6)$에서 증가할 때, $a$의 최솟값은? (단, $a$는 상수이다.) [3.8점]",
     "choices": [
       "$14$",
       "$15$",
@@ -430,7 +430,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $\\displaystyle\\int_1^x f(t)dt=(x+1)f(x)+\\dfrac{2}{3}x^3-2x+a$를 만족시키고, $f(0)=0$일 때, 상수 $a$의 값은? [4.2점]",
+    "content": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 <br>$\\displaystyle\\int_1^x f(t)dt=(x+1)f(x)+\\dfrac{2}{3}x^3-2x+a$를 만족시키고, $f(0)=0$일 때, 상수 $a$의 값은? [4.2점]",
     "choices": [
       "$-\\dfrac{2}{3}$",
       "$-\\dfrac{4}{3}$",
@@ -612,7 +612,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[주관식1 (서술형)] [6점](부분점수 있음)<br>삼차함수 $f(x)=x^3-3x+a$에 대하여 함수 $F(x)=\\displaystyle\\int_0^x f(t)dt$가 오직 하나의 극값을 갖도록 양수 $a$의 최솟값을 구하는 과정을 서술하시오.",
+    "content": "[주관식1 (서술형)] [6점](부분점수 있음)<br>삼차함수 $f(x)=x^3-3x+a$에 대하여 함수 <br>$F(x)=\\displaystyle\\int_0^x f(t)dt$가 오직 하나의 극값을 갖도록 양수 $a$의 최솟값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$2$",
     "solutionImage": "assets/images/25_매산여고_2학기_기말_고2_수학II/q21-solution.svg",
