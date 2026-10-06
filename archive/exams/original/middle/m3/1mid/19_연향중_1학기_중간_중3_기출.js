@@ -170,7 +170,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "유리화: $(2-\\sqrt{2}) - (3\\sqrt{2}+3) = -1-4\\sqrt{2}$\\n$a=-1, b=-4 \\implies a+b=-5$\\n$\\therefore$ ①",
+    "solution": "각 분모의 켤레식을 이용해 유리화한다.\n$\\dfrac{\\sqrt2}{\\sqrt2+1}\n=\\dfrac{\\sqrt2(\\sqrt2-1)}{2-1}=2-\\sqrt2$이다.\n또\n$\\dfrac3{\\sqrt2-1}\n=\\dfrac{3(\\sqrt2+1)}{2-1}=3\\sqrt2+3$이다.\n따라서\n$(2-\\sqrt2)-(3\\sqrt2+3)=-1-4\\sqrt2$이다.\n$a=-1$, $b=-4$이므로 $a+b=-5$이고 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -222,7 +222,7 @@ window.questionBank = [
       "$8$",
       "$10$"
     ],
-    "answer": "②",
+    "answer": "③",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -239,7 +239,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$7\\sqrt{2} + 4\\sqrt{5} + 3\\sqrt{5} - 3\\sqrt{2} = 4\\sqrt{2} + 7\\sqrt{5}$\\n$a=4, b=7 \\implies a-b = -3$\\n$\\therefore$ ③",
+    "solution": "근호를 간단히 하면\n$\\sqrt{80}=4\\sqrt5$, $\\sqrt{18}=3\\sqrt2$이다.\n따라서\n$7\\sqrt2+4\\sqrt5+3\\sqrt5-3\\sqrt2$\n$=4\\sqrt2+7\\sqrt5$이다.\n그러므로 $a=4$, $b=7$이고\n$a-b=4-7=-3$이다.\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -273,7 +273,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "③ $0.6 = \\sqrt{0.36} < \\sqrt{0.6}$ (O)\\n⑤ $\\frac{\\sqrt{3}}{3} \\approx 0.577 < 0.666$ (O)\\n$\\therefore$ ③, ⑤",
+    "solution": "각 보기를 확인한다.\n① $5\\sqrt2<7$을 제곱하면 $50<49$가 되어 거짓이다.\n② $2\\sqrt3=\\sqrt{12}<\\sqrt{14}$이므로 $-2\\sqrt3>-\\sqrt{14}$라서 거짓이다.\n③ $0.6=\\sqrt{0.36}<\\sqrt{0.6}$이므로 참이다.\n④ $\\sqrt8=2\\sqrt2$이므로 부등식이 아니라 등식이다.\n⑤ $\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}<\\dfrac23$이므로 참이다.\n따라서 옳은 것은 ③, ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -308,7 +308,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "② $\\sqrt{300} = 10\\sqrt{3} = 17.32$ (O)\\n$\\therefore$ ②",
+    "solution": "주어진 값을 소수점 이동에 맞게 사용한다.\n① $\\sqrt{0.3}=\\dfrac{\\sqrt{30}}{10}=0.5447$\n② $\\sqrt{300}=10\\sqrt3=17.32$\n③ $\\sqrt{3000}=10\\sqrt{30}=54.47$\n④ $\\sqrt{0.03}=\\dfrac{\\sqrt3}{10}=0.1732$\n⑤ $\\sqrt{0.003}=\\dfrac{\\sqrt{30}}{100}=0.05447$\n따라서 옳은 것은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -344,7 +344,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "합 조건: $a-3=0 \\implies a=3$\\n곱 조건: $(2+3\\sqrt{3})(b-3\\sqrt{3})$에서 무리수 부분 $3b-6=0 \\implies b=2$\\n$a-b = 1$\\n$\\therefore$ ②",
+    "solution": "두 수의 합은\n$(2+a\\sqrt3)+(b-3\\sqrt3)=(2+b)+(a-3)\\sqrt3$이다.\n합이 유리수이므로 $a-3=0$, 즉 $a=3$이다.\n곱은\n$(2+3\\sqrt3)(b-3\\sqrt3)$\n$=(2b-27)+(3b-6)\\sqrt3$이다.\n곱도 유리수이므로 $3b-6=0$, 즉 $b=2$이다.\n따라서 $a-b=3-2=1$이고 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -414,7 +414,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$\\sqrt{112} = 4\\sqrt{7} \\implies 4\\sqrt{7} : x = \\sqrt{7} : 1 \\implies x=4$\\n$\\therefore$ ③",
+    "solution": "가로:세로가 $\\sqrt7:1$이므로 세로를 $x$라 하면\n$\\sqrt{112}:x=\\sqrt7:1$이다.\n$\\sqrt{112}=4\\sqrt7$이므로\n$4\\sqrt7:x=\\sqrt7:1$이다.\n따라서 $x=4$이고 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -448,7 +448,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "$ab(x-y) - b(x-y) = b(x-y)(a-1)$\\n$\\therefore$ ④",
+    "solution": "$y-x=-(x-y)$를 이용하면\n$ab(x-y)+b(y-x)$\n$=ab(x-y)-b(x-y)$\n$=b(x-y)(a-1)$이다.\n따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -482,7 +482,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "$(4x^2+y^2)(4x^2-y^2) = (4x^2+y^2)(2x+y)(2x-y)$\\n$\\therefore$ ⑤",
+    "solution": "먼저 합차 공식을 적용하면\n$16x^4-y^4=(4x^2)^2-(y^2)^2$\n$=(4x^2+y^2)(4x^2-y^2)$이다.\n다시\n$4x^2-y^2=(2x+y)(2x-y)$이므로\n전체 식은\n$(4x^2+y^2)(2x+y)(2x-y)$이다.\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -517,7 +517,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$a = \\pm 2 \\sqrt{16 \\cdot 9} = \\pm 24$\\n$\\therefore$ ①, ⑤",
+    "solution": "완전제곱식은\n$(4x+3)^2=16x^2+24x+9$\n또는\n$(4x-3)^2=16x^2-24x+9$이다.\n따라서 $a=24$ 또는 $a=-24$이다.\n즉 옳은 것은 ①, ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -546,7 +546,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "인수분해",
-      "도형",
       "원",
       "참거짓",
       "오류판별",
@@ -587,7 +586,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "$A = (27+3)^2 = 900$\\n$B = 9(8.5+1.5)(8.5-1.5) = 630$\\n$900-630=270$\\n$\\therefore$ ②",
+    "solution": "$A=27^2+6\\cdot27+9=(27+3)^2=900$이다.\n또\n$B=9(8.5^2-1.5^2)$\n$=9(8.5+1.5)(8.5-1.5)$\n$=9\\cdot10\\cdot7=630$이다.\n따라서\n$A-B=900-630=270$이고 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -621,7 +620,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "$(x^2-3x-4)(x^2-3x+2) = (x-4)(x+1)(x-2)(x-1)$\\n$\\therefore$ ④ ($x+2$)",
+    "solution": "$t=x^2-3x$로 놓으면\n$(x^2-3x)^2-2x^2+6x-8=t^2-2t-8$이다.\n$t^2-2t-8=(t-4)(t+2)$이므로\n$(x^2-3x-4)(x^2-3x+2)$이다.\n각각 인수분해하면\n$(x-4)(x+1)(x-1)(x-2)$이다.\n따라서 인수가 아닌 것은 $x+2$이고 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -692,7 +691,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$x=1$ 대입: $8-13+a=0 \\implies a=5$\\n$\\therefore$ ④",
+    "solution": "$x-1$이 인수이므로 인수정리에 따라 $x=1$을 대입한 값이 $0$이다.\n$8(1)^2-13(1)+a=0$\n$8-13+a=0$\n$a=5$이다.\n따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -720,7 +719,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "(1) $a=-\\sqrt{7}, b=3$\\n(2) $\\sqrt{63} = 3\\sqrt{7} = b \\times (-a) = -ab$",
+    "solution": "(1) $\\sqrt{49}=7$이므로 $7$의 음의 제곱근은\n$a=-\\sqrt7$이다.\n또 $\\sqrt{(-9)^2}=9$이므로 $9$의 양의 제곱근은\n$b=3$이다.\n\n(2) $\\sqrt{63}=3\\sqrt7$이고\n$-ab=-(-\\sqrt7)\\cdot3=3\\sqrt7$이다.\n따라서 $\\sqrt{63}=-ab$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -748,7 +747,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "$3(2-\\sqrt{10}) + (10+\\sqrt{10}) = 16-2\\sqrt{10}$",
+    "solution": "주어진 값을 식에 바로 대입한다.\n$3p+q=3(2-\\sqrt{10})+(10+\\sqrt{10})$\n$=6-3\\sqrt{10}+10+\\sqrt{10}$\n$=16-2\\sqrt{10}$이다.\n따라서 구하는 값은 $16-2\\sqrt{10}$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -778,7 +777,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) $x^2+5x+6 = (x+2)(x+3)$\\n(2) 둘레 $= 2(x+2+x+3) = 4x+10$",
+    "solution": "전체 넓이는\n$x^2+5x+6$이다.\n인수분해하면\n$x^2+5x+6=(x+2)(x+3)$이다.\n따라서 직사각형의 두 변의 길이는 $x+2$, $x+3$으로 볼 수 있다.\n둘레는\n$2\\{(x+2)+(x+3)\\}=2(2x+5)=4x+10$이다.\n따라서 (1) $(x+2)(x+3)$, (2) $4x+10$이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
