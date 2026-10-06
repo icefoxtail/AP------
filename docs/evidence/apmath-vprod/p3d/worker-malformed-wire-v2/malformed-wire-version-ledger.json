@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_MALFORMED_WIRE_VERSION_RECOVERY_v1",
+  "classification": "WORKER_WIRE_VERSION_RESPONSE_NEGATIVE_TEST_ONLY",
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "malformed-json-frame",
+      "failure": "SyntaxError from JSON.parse",
+      "recovery": "Same-key MATH recovery commits valid bytes before warm reuse."
+    },
+    {
+      "name": "invalid-worker-status",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "recovery": "Same-key MATH recovery commits valid bytes before warm reuse."
+    },
+    {
+      "name": "invalid-wire-version",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "response": {
+        "wireVersion": "APMATH_VISUAL_WIRE_v0",
+        "inputObjectSha256": "correct-for-request",
+        "status": "OK"
+      },
+      "recovery": "Same-key MATH recovery commits valid bytes before warm reuse."
+    },
+    {
+      "name": "valid-json-wrong-request-hash",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "preservedInPreviousPackages": true,
+      "recovery": "Same-key MATH recovery commits valid bytes before warm reuse."
+    }
+  ],
+  "observations": {
+    "focusedRepetitions": 10,
+    "topLevelTestsPerRun": 2,
+    "caseCoveragePerRun": 4,
+    "focusedExitCodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "nodeTests": 60,
+    "nodePasses": 60,
+    "nodeFailures": 0,
+    "pythonTests": 141,
+    "pythonPasses": 141,
+    "pythonFailures": 0
+  },
+  "currentFingerprint": {
+    "capability": "polynomial-spike-v1",
+    "sha256": "sha256:e7fb2ead9ebaac5d3219f8d1c55b1dbe6d2aa4b1a61db42a6c2113a2402b3818",
+    "unchangedFromCurrentP3e": true,
+    "q10RepairCount": 3
+  },
+  "previousPackages": [
+    "docs/evidence/apmath-vprod/phase3d-worker-malformed-recovery/worker-malformed-recovery-ledger.json",
+    "docs/evidence/apmath-vprod/p3d/worker-malformed-framing-v1/malformed-framing-ledger.json"
+  ],
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+      "bytes": 7026,
+      "sha256": "sha256:2b76c23a111b18461767f6f2d1d18f17746a5e4c42ec629742817b405083b40a"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 2163,
+      "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/contracts.mjs",
+      "bytes": 5132,
+      "sha256": "sha256:c8a8b0d34f4b8d0a9d29f56d364a73b16ca60404fe6e91003a95d900b7bb767c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    }
+  ],
+  "logs": {
+    "focused": [
+      "logs/focused-01.json",
+      "logs/focused-02.json",
+      "logs/focused-03.json",
+      "logs/focused-04.json",
+      "logs/focused-05.json",
+      "logs/focused-06.json",
+      "logs/focused-07.json",
+      "logs/focused-08.json",
+      "logs/focused-09.json",
+      "logs/focused-10.json"
+    ],
+    "node": "logs/node-regression-60.json",
+    "python": "logs/python-regression-141.json",
+    "summary": "logs/summary.json",
+    "testSource": "logs/worker-malformed-recovery.test.mjs",
+    "runnerSource": "logs/run-malformed-wire-regression.mjs"
+  },
+  "openDebt": [
+    "Additional malformed worker payload/schema variants remain untested beyond invalid JSON framing, invalid status, invalid wire version, and wrong request hash.",
+    "Provider timeout cleanup and remote-turn cancellation remain DEBT in the separate provider-timeout probe.",
+    "Canonical UID authority and qualification remain unresolved; these tests do not produce a candidate or student result."
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "currentHead": "99b05cbce",
+  "lastUpdatedUtc": "2026-10-06T16:20:31.246Z"
+}
