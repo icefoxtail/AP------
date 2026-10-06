@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_MALFORMED_JSON_SCHEMA_RECOVERY_v1",
+  "classification": "MALFORMED_JSON_FRAME_AND_INVALID_STATUS_SCHEMA_CALCULATION_CACHE_NEGATIVE_TEST_ONLY",
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "malformed-json-frame",
+      "failure": "SyntaxError from JSON.parse",
+      "expectation": "No MATH receipt/cache key, lock, or staging residue; same-key valid recovery commits before warm reuse."
+    },
+    {
+      "name": "invalid-status-schema",
+      "failure": "INVALID_WORKER_RESPONSE for unknown worker status",
+      "expectation": "No MATH receipt/cache key, lock, or staging residue; same-key valid recovery commits before warm reuse."
+    },
+    {
+      "name": "valid-json-wrong-request-hash",
+      "failure": "INVALID_WORKER_RESPONSE",
+      "expectation": "Preserved in the preceding malformed-worker package and rerun in each focused repetition."
+    }
+  ],
+  "observations": {
+    "focusedRepetitions": 10,
+    "testsPerRepetition": 2,
+    "focusedExitCodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "nodeTests": 60,
+    "nodePasses": 60,
+    "nodeFailures": 0,
+    "pythonTests": 141,
+    "pythonPasses": 141,
+    "pythonFailures": 0
+  },
+  "currentFingerprint": {
+    "capability": "polynomial-spike-v1",
+    "sha256": "sha256:e7fb2ead9ebaac5d3219f8d1c55b1dbe6d2aa4b1a61db42a6c2113a2402b3818",
+    "unchangedFromCurrentP3e": true,
+    "q10RepairCount": 3
+  },
+  "priorMalformedHashMismatchPackage": "docs/evidence/apmath-vprod/phase3d-worker-malformed-recovery/worker-malformed-recovery-ledger.json",
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+      "bytes": 6526,
+      "sha256": "sha256:c58cb5f03c980621b60291daeda684b4eed64c90d9b3dfced0a7fb4ba01fe476"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 2163,
+      "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/contracts.mjs",
+      "bytes": 5132,
+      "sha256": "sha256:c8a8b0d34f4b8d0a9d29f56d364a73b16ca60404fe6e91003a95d900b7bb767c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    }
+  ],
+  "logs": {
+    "focused": [
+      "logs/focused-01.json",
+      "logs/focused-02.json",
+      "logs/focused-03.json",
+      "logs/focused-04.json",
+      "logs/focused-05.json",
+      "logs/focused-06.json",
+      "logs/focused-07.json",
+      "logs/focused-08.json",
+      "logs/focused-09.json",
+      "logs/focused-10.json"
+    ],
+    "node": "logs/node-regression-60.json",
+    "python": "logs/python-regression-141.json",
+    "summary": "logs/summary.json",
+    "testSource": "logs/worker-malformed-recovery.test.mjs",
+    "runnerSource": "logs/run-malformed-framing-regression.mjs"
+  },
+  "openDebt": [
+    "Other worker protocol response-schema defects beyond malformed JSON framing, invalid status, and mismatched request hash remain untested.",
+    "Provider timeout cleanup and remote-turn cancellation remain DEBT in the separate provider-timeout probe.",
+    "Canonical UID authority and qualification remain unresolved; these tests do not produce a candidate or student result."
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "currentHead": "3c6376c92",
+  "lastUpdatedUtc": "2026-10-06T16:08:14.126Z"
+}
