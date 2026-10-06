@@ -151,7 +151,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
   if(!question)throw Error('SOURCE_QUESTION_NOT_FOUND');
   const uid=authority?.questionUid||requestedUid,identity=assetIdentity(uid,'SOLUTION_VISUAL');
   const journal=currentWorkRoot()+'/phase2/'+identity.assetId+'/'+crypto.randomUUID();const folder=generatedPath(root,journal);fs.mkdirSync(folder,{recursive:true});
-  const provenance={identity,sourceRef};let stages=[],result;const repairBudget=new RepairBudget();
+  const provenance={identity,sourceRef};let stages=[],result,repairBudget=new RepairBudget();
   try{
     if(authority)stages.push(freeze('UID_AUTHORITY',{sourceRegistryRef,entry:authority.sourceRegistryEntry,status:'CANONICAL_CURRENT'},provenance));
     else stages.push(freeze('SOURCE_LOCATOR',{sourceRef,status:'EXPERIMENTAL_LOCATOR',authority:false},provenance));
@@ -176,6 +176,8 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     if(replayResultRef){
       const previous=JSON.parse(readBoundFile(root,replayResultRef));
       if(previous.identity.questionUid!==uid||previous.sourceRef.sha256!==sourceRef.sha256)throw Error('REPLAY_SOURCE_MISMATCH');
+      if(!Array.isArray(previous.repairLedger))throw Error('REPLAY_REPAIR_LEDGER_REQUIRED');
+      repairBudget=new RepairBudget(previous.repairLedger);
       const priorStages=previous.stages.map(ref=>({ref,value:JSON.parse(readBoundFile(root,ref))}));
       const plans=priorStages.filter(s=>s.value.stage==='PLAN');if(!plans.length)throw Error('REPLAY_PLAN_REQUIRED');
       const ref=plans.at(-1).value.outputs[0];frozen=JSON.parse(readBoundFile(root,ref));

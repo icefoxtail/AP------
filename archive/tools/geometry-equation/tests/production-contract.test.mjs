@@ -112,3 +112,17 @@ test('one controller rejects fourth repair and repeated input/action/output',()=
   const s=new RepairBudget();s.complete(s.consume('PLAN',objectSha(0),'schema'),objectSha(1));
   assert.throws(()=>s.complete(s.consume('PLAN',objectSha(0),'schema'),objectSha(1)),/STAGNATION/);
 });
+test('repair ledger hydration carries the same three-attempt budget across replay',()=>{
+  const first=new RepairBudget();
+  for(let i=0;i<2;i++)first.complete(first.consume('SOURCE_REVIEW',objectSha(i),'review-defect'),objectSha(i+1));
+  const persisted=JSON.parse(JSON.stringify(first.ledger)),resumed=new RepairBudget(persisted);
+  assert.deepEqual(resumed.ledger,persisted);
+  resumed.complete(resumed.consume('LAYOUT',objectSha(2),'measured-collision'),objectSha(3));
+  assert.throws(()=>resumed.consume('LAYOUT',objectSha(4),'next-defect'),/REPAIR_BUDGET_EXHAUSTED/);
+  assert.equal(resumed.ledger.length,3);
+  const interrupted=new RepairBudget();interrupted.consume('LAYOUT',objectSha('input'),'interrupted-worker');
+  const recovered=new RepairBudget(JSON.parse(JSON.stringify(interrupted.ledger)));
+  assert.equal(recovered.ledger.length,1);assert.equal(recovered.ledger[0].outputSha,null);
+  recovered.complete(recovered.ledger[0],objectSha('recovered-output'));
+  assert.throws(()=>new RepairBudget([{...recovered.ledger[0],iteration:0}]),/INVALID_REPAIR_LEDGER/);
+});
