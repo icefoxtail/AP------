@@ -1,0 +1,3794 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "20_매산고_1학기_기말_고3_기하_기출",
+  "artifactSha": "b151c7ef1f156368db8dabdd1a2282c38cc1295c",
+  "sourceModeSummary": {
+    "ORIGINAL": 20,
+    "AUDITED_REPAIR": 0,
+    "ALIVE_REPLACEMENT": 0
+  },
+  "sourceInput": {
+    "path": ".tmp/archive/source-batch-20261006/high/geometry/20_매산고_1학기_기말_고3_기하_기출/20_매산고_1학기_기말_고3_기하_기출.js",
+    "sha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+    "sourcePdf": "C:\\Users\\USER\\Desktop\\기출정리 파일\\(2)1기말\\기하\\2020_매산고3_기하_1기말.pdf",
+    "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+    "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+    "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+    "questionCount": 20
+  },
+  "solutionRewrite": "FULL_ALL_QUESTIONS_WITH_Q11_HOLD",
+  "solutionRewriteCount": "19/20",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "내분 공식 계수와 좌표·중점·거리 계산을 별도 판서 단계로 구분."
+          },
+          {
+            "qid": 12,
+            "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+            "observation": "원 이동, 두 축 접선 조건, 절댓값 경우와 양수 조건을 나누어 전개.",
+            "visualSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+            "visualObservation": "q12 SVG actual raster opened; center C(−2,2), equal radius and both axis tangencies align with |a−4| and |b−2| conditions."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "observation": "두 직선의 기울기를 각각 정리하고 수직 조건에서 k를 산출.",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "visualObservation": "q02 SVG actual source opened and rendered; line primitives have slopes −1/3 and 3 and are perpendicular. ImageMagick fallback font made some text glyphs unreadable; geometry was inspectable."
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+            "observation": "집합의 같은 원소를 조건으로 사용해 a를 정한 뒤 나머지 원소로 b를 결정하고 합산."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Negative README directly read: verify SVG actual coordinates/topology, actual solution stages, exact ACTIVE Meta lookup, and runtime escapes; counts/self-report do not substitute."
+    }
+  },
+  "metaAuthority": {
+    "curriculum": "2015",
+    "standardCourse": "기하와 벡터",
+    "standardUnitAuthority": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md H15-GV-01..09",
+    "rpmAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+    "crosswalkStatus": "ACTIVE_REFERENCE; all 82 2015/2022 geometry rows RPM_ONLY",
+    "subUnitAuthority": "archive/data/basic-scope-parent-links.json; all relevant 2015 H15-GV records currently have empty subUnitKey",
+    "requiredMissingPhysicalFields": [
+      "subUnitKey",
+      "subUnit",
+      "subUnitConfidence",
+      "subUnitClassificationDepth"
+    ],
+    "exactReason": "No current registered H15-GV child key exists in parent-link materialization. V2 artifact contract physically requires these four fields and has no subUnit debt mechanism; inventing a key violates the active subunit authority."
+  },
+  "curriculumMethodAuditCount": "19/20 PASS; q11 unresolved",
+  "curriculumViolationQids": [],
+  "q11CorrectionAssessment": {
+    "result": "ONE_SEMANTIC_LOCUS_REPAIR_NOT_CLOSED",
+    "originalValue": "양수 k",
+    "candidateValue": "음수 k",
+    "sourceLiteral": "고해상도 300dpi page 3 crop reconfirms “양수 k”; choices ①–⑤ are all negative.",
+    "independentMath": [
+      {
+        "p": 6,
+        "kValues": "±3√3",
+        "negativeChoice": "③"
+      },
+      {
+        "p": -6,
+        "kValues": "±3√15",
+        "negativeChoice": "none"
+      }
+    ],
+    "exactReason": "No p-positive/sign qualifier is printed. Principal-axis length 6 and vertices (0,0),(0,p) determine |p| only. The one-word sign repair leaves different answers; a second premise would be needed. Source text was kept exact and q11 remains HOLD.",
+    "sourceRecheckRef": "archive/analysis/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/CREATE.q11-source-recheck.json"
+  },
+  "firstMissingClosureStep": "CREATE_META_H15_GV_SUBUNIT_MATERIALIZATION_AND_Q11_SOURCE_TRUTH_RESOLUTION",
+  "exactReason": "High-resolution source confirms the printed positive-k/all-negative-options contradiction and leaves p signed-coordinate ambiguous; H15-GV subUnit fields remain without registered child materialization.",
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_1351c857d50389cc6e5a17bd00b9ad72173660914b507c977666631ca87c14a7",
+        "sourceIdentityKey": "qid_v1_1351c857d50389cc6e5a17bd00b9ad72173660914b507c977666631ca87c14a7",
+        "sourceOrdinal": 1,
+        "contentHash": "sha256:d56427a0bde9055eb5e08c1221bfa07716b800a715ec6ee5a56e9a4c95e374f7",
+        "choicesHash": "sha256:e9a9c85a2576565e5e84ac690f4590c0a4e1e53cc40c857ce4fb55137a608d31",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:336bb2ad73cf25da4250f82bfd7130eac47165ab95abd60d02dfc06eaea63919",
+        "finalSolutionHash": "sha256:7992848e230ae75d8efa8bb968463c4b0fec65556da302b7699a3b355442b963",
+        "sourcePage": 1,
+        "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 1,
+        "sourcePage": 1,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 1,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "표준형에서 초점 매개변수를 읽고 준선을 쓴다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-01",
+            "standardUnit": "포물선",
+            "standardUnitOrder": 1
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-01, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "포물선",
+              "l4": "초점·준선"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "초점/준선 공식 대입만으로 결정되어 별도 도형 불필요",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "포물선 표준형",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-01; 포물선 / 초점·준선"
+          },
+          {
+            "name": "초점과 준선",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-01; 포물선 / 초점·준선"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "y²=4px",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 포물선 / 초점·준선; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "준선 x=−p",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 포물선 / 초점·준선; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "p: 포물선의 축 방향 초점 매개변수",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "표준형에서 초점 매개변수를 읽고 준선을 쓴다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-01; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-01",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "포물선",
+          "L4": "초점·준선",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "459c342a88801b0e04be4f733858ce0e46b889c816ed30e33df479399edd2bfe",
+      "primaryMethod": "표준형에서 초점 매개변수를 읽고 준선을 쓴다",
+      "decisiveSteps": [
+        "표준형에서 초점 매개변수를 읽고 준선을 쓴다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_526f5586a0e68846f27428ac2397b32157781538d2c0dcebe2930485dd54a985",
+        "sourceIdentityKey": "qid_v1_526f5586a0e68846f27428ac2397b32157781538d2c0dcebe2930485dd54a985",
+        "sourceOrdinal": 2,
+        "contentHash": "sha256:c243819e1b0ea8828f0c023357f77e20da61e3d81d1df8290ef86bd65da8422e",
+        "choicesHash": "sha256:ebb443eccdb14874856e0eb5c7b00fa4c968eb3566927473c4dc87d7b7b4719a",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:adf48cb29762a2a6843d1fd26c8c0543ad3f9fa4b4ec63bb123ddb86089041dc",
+        "finalSolutionHash": "sha256:a27424025b95169be37456d3f2032e6a7096b96ffa2c198ce7efc002944b25ef",
+        "sourcePage": 1,
+        "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 2,
+        "sourcePage": 1,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 1,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "벡터를 전개하고 선형독립성으로 계수를 비교한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-05",
+            "standardUnit": "벡터의 연산",
+            "standardUnitOrder": 5
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-05, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "벡터의 연산",
+              "l3": "벡터의 덧셈과 뺄셈",
+              "l4": "삼각형법"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "계수 벡터 전개만 있는 문항",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "평면벡터 덧셈",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 덧셈과 뺄셈 / 삼각형법"
+          },
+          {
+            "name": "선형독립 벡터의 계수 비교",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 덧셈과 뺄셈 / 삼각형법"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "벡터 덧셈·실수배",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 덧셈과 뺄셈 / 삼각형법; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "k,l: a,b의 계수",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "벡터를 전개하고 선형독립성으로 계수를 비교한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-05; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-05",
+          "majorUnit": "평면벡터",
+          "midUnit": "벡터의 연산",
+          "L3": "벡터의 덧셈과 뺄셈",
+          "L4": "삼각형법",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "674e108a8367cbb00ab734c250746a9f8e16baa448f472ea778e08ef12bb49b8",
+      "primaryMethod": "벡터를 전개하고 선형독립성으로 계수를 비교한다",
+      "decisiveSteps": [
+        "벡터를 전개하고 선형독립성으로 계수를 비교한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_b29681eff2adc2f3905625aa6bd8de635fa0477559786e2070f71dad65b58459",
+        "sourceIdentityKey": "qid_v1_b29681eff2adc2f3905625aa6bd8de635fa0477559786e2070f71dad65b58459",
+        "sourceOrdinal": 3,
+        "contentHash": "sha256:0dabda17d64345d8d87ef7dbbd2ee12885e0af48e60f64052307054c6641da97",
+        "choicesHash": "sha256:95ef1fcf81374466f362de305d8f6e2d66f29ed656e4efa599a54f29588afc44",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:25540b3b466b95f3be25d21eaee9363ce6ed2ea37c7dc9a03f1d6a00933f18cd",
+        "finalSolutionHash": "sha256:a9fdfd3b1cc83ea7871d6bf72dd68a310da3178345394c43f55cfb52710b8876",
+        "sourcePage": 1,
+        "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 3,
+        "sourcePage": 1,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 1,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "분모에서 단축 반축을 읽고 2배한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-02",
+            "standardUnit": "타원",
+            "standardUnitOrder": 2
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-02, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "타원",
+              "l4": "초점·장축·단축"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "단축 길이 정의 계산",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "타원의 장축과 단축",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-02; 타원 / 초점·장축·단축"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "단축 길이=2b",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 타원 / 초점·장축·단축; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "a,b: 타원의 반축 길이",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "분모에서 단축 반축을 읽고 2배한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-02; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-02",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "타원",
+          "L4": "초점·장축·단축",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "62293abd42067e7220900dd1985fdb365d7e6a5e06e0a639839881affbbb7651",
+      "primaryMethod": "분모에서 단축 반축을 읽고 2배한다",
+      "decisiveSteps": [
+        "분모에서 단축 반축을 읽고 2배한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_a9d0609aa91ef05e14830aefa51fda097c9f178dbf3ab230affeed7b2fdde742",
+        "sourceIdentityKey": "qid_v1_a9d0609aa91ef05e14830aefa51fda097c9f178dbf3ab230affeed7b2fdde742",
+        "sourceOrdinal": 4,
+        "contentHash": "sha256:7c2f37a2a3e22bedc99b7c65e485a79eff9ffc332d2c1c504a23c91155b4723c",
+        "choicesHash": "sha256:4d51e43a47b7d96d4b1d36abd8a08900535e9cbc73957b5978e5ccf0eae7df2d",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:e6dd863ead92d9b94b73d6c1ddc9126897769002a711c072fe793e9fcbd65a0b",
+        "finalSolutionHash": "sha256:76b254bb6a6f3b1a027b29a7885f52ba782ab98b2d6aae55c3f570fe6b7f73b7",
+        "sourcePage": 1,
+        "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 4,
+        "sourcePage": 1,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 1,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "255c6e5fabc23e6daa57395754ba8e788696d3c457662d7e0756df99cdc0757c",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "이어지는 위치벡터를 삼각형법으로 묶는다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-05",
+            "standardUnit": "벡터의 연산",
+            "standardUnitOrder": 5
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-05, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "벡터의 연산",
+              "l3": "벡터의 덧셈과 뺄셈",
+              "l4": "삼각형법"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "삼각형법 관계를 식으로 완결",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "위치벡터와 삼각형법",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 덧셈과 뺄셈 / 삼각형법"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "AB+BC=AC",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 덧셈과 뺄셈 / 삼각형법; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "AC+CD=AD",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 덧셈과 뺄셈 / 삼각형법; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "AB,BC: 방향벡터",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "이어지는 위치벡터를 삼각형법으로 묶는다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-05; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-05",
+          "majorUnit": "평면벡터",
+          "midUnit": "벡터의 연산",
+          "L3": "벡터의 덧셈과 뺄셈",
+          "L4": "삼각형법",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "85199a2187c6729cc8ef907cc6298e281db487f0801955ea07044b2fd482e291",
+      "primaryMethod": "이어지는 위치벡터를 삼각형법으로 묶는다",
+      "decisiveSteps": [
+        "이어지는 위치벡터를 삼각형법으로 묶는다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_e16a1f477461992724e8446b62b02b840af8baf3a499b9daff36ce2f8dfd5f79",
+        "sourceIdentityKey": "qid_v1_e16a1f477461992724e8446b62b02b840af8baf3a499b9daff36ce2f8dfd5f79",
+        "sourceOrdinal": 5,
+        "contentHash": "sha256:3a1fb9358ca0fa49ab1a3d09e8fa5290e89ddbafce07071476cd760c4a99fd86",
+        "choicesHash": "sha256:09430251b0a241e63e7c84a4e04dfc98b437b38231fa0e5cf4e7a00d85614770",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:3b91ca108d5951e7e22d2c39634cb9592ad32147e0c02d2c6c0895a76d77b4c5",
+        "finalSolutionHash": "sha256:439af8f0ae0e7630cdbadcd43bb73cc48b9dd5af5318495633722c06540be279",
+        "sourcePage": 2,
+        "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 5,
+        "sourcePage": 2,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 2,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "포물선 정의에서 거리 제곱에 y²=8x를 대입한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-01",
+            "standardUnit": "포물선",
+            "standardUnitOrder": 1
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-01, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "포물선",
+              "l4": "초점·준선"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "초점거리 대수 계산으로 결정",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "포물선 초점",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-01; 포물선 / 초점·준선"
+          },
+          {
+            "name": "포물선 정의",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-01; 포물선 / 초점·준선"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "PF²=(x−p)²+y²",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 포물선 / 초점·준선; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "y²=4px",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 포물선 / 초점·준선; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "F: 초점; P: 포물선 위 점",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "포물선 정의에서 거리 제곱에 y²=8x를 대입한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-01; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-01",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "포물선",
+          "L4": "초점·준선",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6cd82a0ff3b37407020410e0c078dbe1ed835b03f28c53c5048c91da188b3134",
+      "primaryMethod": "포물선 정의에서 거리 제곱에 y²=8x를 대입한다",
+      "decisiveSteps": [
+        "포물선 정의에서 거리 제곱에 y²=8x를 대입한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_c16bc880118d4a8d9431dc6e7eea982e2a2b0df8bfacc1620c8e045d17d1fadf",
+        "sourceIdentityKey": "qid_v1_c16bc880118d4a8d9431dc6e7eea982e2a2b0df8bfacc1620c8e045d17d1fadf",
+        "sourceOrdinal": 6,
+        "contentHash": "sha256:86046ec3f7852c08f5293b84314e64f77634f4e1349f6eb376aa98320e1a4827",
+        "choicesHash": "sha256:9ceb6c3d5641474b8440d567a73857f5f3761a6c450bb11e9a89aa3831a57317",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:20038b1690eea221149029a3fc26b594e3f98c44bbf01340795ca5acb364ac8b",
+        "finalSolutionHash": "sha256:82bb81b7e29c70e76d30d0ee3e40e89d98dd343ea5d1177f0e36177f5b18715f",
+        "sourcePage": 2,
+        "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 6,
+        "sourcePage": 2,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 2,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "완전제곱 표준형으로 이동량을 읽는다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-01",
+            "standardUnit": "포물선",
+            "standardUnitOrder": 1
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-01, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "이차곡선의 이동",
+              "l4": "평행이동"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "완전제곱 표준형으로 이동을 확인",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "포물선 평행이동",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-01; 이차곡선의 이동 / 평행이동"
+          },
+          {
+            "name": "완전제곱식",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-01; 이차곡선의 이동 / 평행이동"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "(y−b)²=4(x−a)",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 이차곡선의 이동 / 평행이동; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "a,b: 평행이동량",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "완전제곱 표준형으로 이동량을 읽는다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-01; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-01",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "이차곡선의 이동",
+          "L4": "평행이동",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fdd5ffe63c7a470854420e6ce037c965bf397df823a2d43e153e324807da9646",
+      "primaryMethod": "완전제곱 표준형으로 이동량을 읽는다",
+      "decisiveSteps": [
+        "완전제곱 표준형으로 이동량을 읽는다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_49d58507340e6ec6b6ebbb1ccb989f0b073caa5285f24c3682221506302f5f1a",
+        "sourceIdentityKey": "qid_v1_49d58507340e6ec6b6ebbb1ccb989f0b073caa5285f24c3682221506302f5f1a",
+        "sourceOrdinal": 7,
+        "contentHash": "sha256:c04ab6c9581a0d6510d165f9ad8d7a680b64fd84a06459f81f6847c1f49261dd",
+        "choicesHash": "sha256:30605f22c717bfef7f7ec0dfef84f75c9c79d8c076361351b01c7c49fe9bdccc",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:85fe47569a172b26a71aac2c1daeed4fa9a4cb485efadca7545341ad54ef3808",
+        "finalSolutionHash": "sha256:9c27fc05b87851bff1420f5e23a05157935ee0351672f6d8b52cc090453b3b26",
+        "sourcePage": 2,
+        "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 7,
+        "sourcePage": 2,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 2,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "접점형 접선식에 주어진 좌표를 대입한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-03",
+            "standardUnit": "쌍곡선",
+            "standardUnitOrder": 3
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-03, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선과 직선",
+              "l3": "쌍곡선의 접선",
+              "l4": "접점이 주어진 접선"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "주어진 접점과 접선식 계산이 결정적",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "쌍곡선 접선",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-03; 쌍곡선의 접선 / 접점이 주어진 접선"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "xx₁/a²−yy₁/b²=1",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 쌍곡선의 접선 / 접점이 주어진 접선; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "a,b: 접선 계수",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "접점형 접선식에 주어진 좌표를 대입한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-03; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-03",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선과 직선",
+          "L3": "쌍곡선의 접선",
+          "L4": "접점이 주어진 접선",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "92ca6f1d2032f370e7f3b869bd7dcc7c3999fc29da4d5bb5e24dc34fb07c3e31",
+      "primaryMethod": "접점형 접선식에 주어진 좌표를 대입한다",
+      "decisiveSteps": [
+        "접점형 접선식에 주어진 좌표를 대입한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_7048818656a517864db426c734f402e43cc43f3c8565f2584646c30b283d92b3",
+        "sourceIdentityKey": "qid_v1_7048818656a517864db426c734f402e43cc43f3c8565f2584646c30b283d92b3",
+        "sourceOrdinal": 8,
+        "contentHash": "sha256:56c627d038af65502a116d77db33bd160f2c11df4503c6f535a92409a951d9d9",
+        "choicesHash": "sha256:45d6f48dabb2f5744711daea484850831fdfd4eaad13aebc6ecd8f88a0223da0",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:287b1397a3a3ad32962c7c03f6fe4516b9bc3b9a6fa2c8fa7281a5c3d65c8822",
+        "finalSolutionHash": "sha256:7ed217829cae1c8b042d290fa6765e1060052cc90ecaf90e13f24650ffde036b",
+        "sourcePage": 2,
+        "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 8,
+        "sourcePage": 2,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 2,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "5958f3ab0243496c8f43d52b97db9dc7744242bf44dc070cdd78982760541967",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "벡터 연산을 전개하고 성분별로 합산한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-06",
+            "standardUnit": "평면벡터의 성분과 내적",
+            "standardUnitOrder": 6
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-06, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "평면벡터의 성분과 내적",
+              "l3": "벡터의 성분",
+              "l4": "성분 계산"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "성분 계산 문항",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "벡터 성분별 연산",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-06; 벡터의 성분 / 성분 계산"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "벡터 성분별 덧셈·실수배",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 성분 / 성분 계산; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "(x,y): 벡터 성분",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "벡터 연산을 전개하고 성분별로 합산한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-06; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-06",
+          "majorUnit": "평면벡터",
+          "midUnit": "평면벡터의 성분과 내적",
+          "L3": "벡터의 성분",
+          "L4": "성분 계산",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d8a3af654cee4c5042bf65a0a022c093c488861776a3d941609e9c67a8c39b25",
+      "primaryMethod": "벡터 연산을 전개하고 성분별로 합산한다",
+      "decisiveSteps": [
+        "벡터 연산을 전개하고 성분별로 합산한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_15ba3db2ced369be43d7ad2b50fb41cdd77d854186640bf196cca49631a95a3f",
+        "sourceIdentityKey": "qid_v1_15ba3db2ced369be43d7ad2b50fb41cdd77d854186640bf196cca49631a95a3f",
+        "sourceOrdinal": 9,
+        "contentHash": "sha256:e1756961ee770bbdee39ed27218b0b2caf0ada9895c1cbf2bd684a0bd1c44824",
+        "choicesHash": "sha256:d3b513eba093def1f570b24c40510eec0b00ca49748eda4d023fa531cfa202a7",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:1b5587105b78edb5d9a3d9b3d6c639935a6fdd306087ce015e3babce29c65f8e",
+        "finalSolutionHash": "sha256:cd19eb16544ce726d6d3e788f039ca9cb57e633a9d5d16108e5386902f2e2b74",
+        "sourcePage": 3,
+        "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 9,
+        "sourcePage": 3,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 3,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "초점 거리와 수직 준선 거리를 같게 둔다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-01",
+            "standardUnit": "포물선",
+            "standardUnitOrder": 1
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-01, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "포물선",
+              "l4": "정의와 방정식"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "초점-준선 거리식을 직접 구성",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "포물선 초점-준선 거리",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-01; 포물선 / 정의와 방정식"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "초점 거리=준선 거리",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 포물선 / 정의와 방정식; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "A: 초점; BC: 준선",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "초점 거리와 수직 준선 거리를 같게 둔다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-01; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-01",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "포물선",
+          "L4": "정의와 방정식",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ab5d4d9b0ce923ecff7cc9eeab86bbc2db5753e36c91b7645695347f920adb00",
+      "primaryMethod": "초점 거리와 수직 준선 거리를 같게 둔다",
+      "decisiveSteps": [
+        "초점 거리와 수직 준선 거리를 같게 둔다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_89eafe9dadb0718fa6f4bec105d7d1f3b5638303699cb644ff830f395900fb25",
+        "sourceIdentityKey": "qid_v1_89eafe9dadb0718fa6f4bec105d7d1f3b5638303699cb644ff830f395900fb25",
+        "sourceOrdinal": 10,
+        "contentHash": "sha256:e792da4e175acc7baf8a0bae60d0eae4afa9f7b9297547361477af74b12f6956",
+        "choicesHash": "sha256:83db6a2d4db0625c2aabfce3fdd4101fab58572a8ced43247fbe901e01147748",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:adf14d1cc77f7d3e5ed6390f11425786f38710ebc6db26870fa56d513948699d",
+        "finalSolutionHash": "sha256:f21b7df3b827a5d719502fd4254afc1e4619fd3ef7e003aa6c6e44c50228808e",
+        "sourcePage": 3,
+        "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 10,
+        "sourcePage": 3,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 3,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "접선 방정식의 기울기와 타원 조건을 연립한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-02",
+            "standardUnit": "타원",
+            "standardUnitOrder": 2
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-02, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선과 직선",
+              "l3": "타원의 접선",
+              "l4": "기울기·조건형"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "접선식과 타원식 계산이 결정적",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "타원 접점 접선식",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-02; 타원의 접선 / 기울기·조건형"
+          },
+          {
+            "name": "초점 거리 관계",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-02; 타원의 접선 / 기울기·조건형"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "x₁x/a²+y₁y/b²=1",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 타원의 접선 / 기울기·조건형; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "c²=장반축²−단반축²",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 타원의 접선 / 기울기·조건형; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "a,b: 타원 반축; c: 초점 y좌표",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "접선 방정식의 기울기와 타원 조건을 연립한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-02; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-02",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선과 직선",
+          "L3": "타원의 접선",
+          "L4": "기울기·조건형",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "af14286537eb5e150cff1c4853e3f2fdcc4bdc80d0355d728a9674ed651ab485",
+      "primaryMethod": "접선 방정식의 기울기와 타원 조건을 연립한다",
+      "decisiveSteps": [
+        "접선 방정식의 기울기와 타원 조건을 연립한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "verdict": "HOLD",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_2cb2238fd3fd02da1558ee564d5070c09a0844d39cf9b25d2b14ce35f760113a",
+        "sourceIdentityKey": "qid_v1_2cb2238fd3fd02da1558ee564d5070c09a0844d39cf9b25d2b14ce35f760113a",
+        "sourceOrdinal": 11,
+        "contentHash": "sha256:eeef2b83d4c0675b4d082b2e12fc84b12edaefb6299dc5c952e54523f7dff09e",
+        "choicesHash": "sha256:97aae323e13e2abbecc030ccd51e0220f96ee80921d99e6b5de340ba4a58dae2",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:4f711cff9f3fa85eaec815a79e28dc52b9e36a4fd9d595e86840648ecdb93ff1",
+        "finalSolutionHash": "sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "sourcePage": 3,
+        "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 11,
+        "sourcePage": 3,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 3,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7",
+          "contentAndChoices": "source print preserved exactly; anomaly unresolved"
+        },
+        "itemHold": {
+          "reason": "No p-positive/sign qualifier is printed. Principal-axis length 6 and vertices (0,0),(0,p) determine |p| only. The one-word sign repair leaves different answers; a second premise would be needed. Source text was kept exact and q11 remains HOLD.",
+          "sourceRecheckRef": "archive/analysis/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/CREATE.q11-source-recheck.json",
+          "sourcePage3CropSha256": "f40e9b0abd0a0fb560f1c05b8a2f5296fa34dc6cc34c277e8d1930f6fa810afe",
+          "confirmedPrintedContent": "주축의 길이가 6이고 꼭짓점의 좌표가 (0,0), (0,p)인 쌍곡선의 두 점근선이 서로 수직이다. 이 쌍곡선이 점 (k,9)를 지날 때, 양수 k의 값은?",
+          "confirmedPrintedChoices": [
+            "−2√2",
+            "−2√3",
+            "−3√3",
+            "−4√2",
+            "−4√3"
+          ]
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "HOLD",
+          "studentReproducibility": "NOT_VERIFIED",
+          "smallBoardStructure": "NOT_VERIFIED",
+          "boardFlowContinuity": "NOT_VERIFIED",
+          "decisiveStep": "원문 조건의 수학적 결정성 판정이 남았다",
+          "lineBreakReview": "No solution authored pending source resolution."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-03",
+            "standardUnit": "쌍곡선",
+            "standardUnitOrder": 3
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-03, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "쌍곡선",
+              "l4": "점근선"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "그림은 원문의 p 부호·정답 모순을 결정하지 못함",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "쌍곡선 점근선과 중심",
+            "status": "UNCERTAIN",
+            "evidence": "q11 source condition is underdetermined"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "점근선 기울기 곱=−1",
+            "status": "UNCERTAIN",
+            "evidence": "2015 RPM Primary 쌍곡선 / 점근선; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "p: 꼭짓점의 좌표 변수; k: 점 좌표 변수",
+            "status": "UNCERTAIN",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "원문 조건의 수학적 결정성 판정이 남았다",
+            "status": "UNCERTAIN",
+            "evidence": "Current scope H15-GV H15-GV-03; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "UNCERTAIN",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-03",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "쌍곡선",
+          "L4": "점근선",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "UNCERTAIN",
+      "smallBoardContinuityStatus": "HOLD",
+      "solutionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "primaryMethod": "원문 조건의 수학적 결정성 판정이 남았다",
+      "decisiveSteps": [
+        "원문 조건의 수학적 결정성 판정이 남았다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": false,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_590ed2bd7fbf1bae411ad99155427b6b0511f2c98f4c510df4f4d76e55ed8875",
+        "sourceIdentityKey": "qid_v1_590ed2bd7fbf1bae411ad99155427b6b0511f2c98f4c510df4f4d76e55ed8875",
+        "sourceOrdinal": 12,
+        "contentHash": "sha256:404831aa00db41ecde7501b0b021746ea100e92e3bcd9856c42820eb4a590983",
+        "choicesHash": "sha256:35806b532407df323ba1c995642dd95f6449849bbe4f4225f423063d2388ae6e",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:0bfab5dd20306eb4eb3d9b75babf0f5790146701a08425519950f5ce0281b824",
+        "finalSolutionHash": "sha256:f27eb46540a7d2137a7aef7d928a01ced2418b1fa05d5bcece7a479ce24c04d3",
+        "sourcePage": 3,
+        "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 12,
+        "sourcePage": 3,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 3,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "fa65656b05973899a5be16369458f3880b7b7ffac529619862b2fc7c20a448e7",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "내적 전개로 t의 이차식을 만든 뒤 완전제곱한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-06",
+            "standardUnit": "평면벡터의 성분과 내적",
+            "standardUnitOrder": 6
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-06, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "평면벡터의 성분과 내적",
+              "l3": "내적",
+              "l4": "내적 계산"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "ADD_NEW_SOLUTION_SVG",
+          "solutionSvgRequired": true,
+          "solutionAssetRef": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q12-solution.svg",
+          "sourceAssetRef": null,
+          "reason": "최단 벡터와 b 수직을 보여 주는 해설 SVG",
+          "assetSha256": "a333d5b6f1fbd28e2f46b8c43364828e7f66e5d184c2fd01272af4e4f6b95b53"
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "벡터 내적",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-06; 내적 / 내적 계산"
+          },
+          {
+            "name": "완전제곱",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-06; 내적 / 내적 계산"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "|a+tb|²=(a+tb)·(a+tb)",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 내적 / 내적 계산; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "t: 실수 매개변수",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "내적 전개로 t의 이차식을 만든 뒤 완전제곱한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-06; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-06",
+          "majorUnit": "평면벡터",
+          "midUnit": "평면벡터의 성분과 내적",
+          "L3": "내적",
+          "L4": "내적 계산",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "40f79f653e4bcde27d784ec56d352877cb7991ade53667c22bd0ee653f959b72",
+      "primaryMethod": "내적 전개로 t의 이차식을 만든 뒤 완전제곱한다",
+      "decisiveSteps": [
+        "내적 전개로 t의 이차식을 만든 뒤 완전제곱한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys.",
+      "assetEvidence": {
+        "ref": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q12-solution.svg",
+        "sha256": "a333d5b6f1fbd28e2f46b8c43364828e7f66e5d184c2fd01272af4e4f6b95b53",
+        "workingPath": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/assets/images/20_매산고_1학기_기말_고3_기하_기출/q12-solution.svg"
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_49867e9a575ccc2ea1cf66eed419d84316a7fae381d984904be00ffc862f3faa",
+        "sourceIdentityKey": "qid_v1_49867e9a575ccc2ea1cf66eed419d84316a7fae381d984904be00ffc862f3faa",
+        "sourceOrdinal": 13,
+        "contentHash": "sha256:09d5a2a5df8f970f11f2d056772370d02eeeea25478df258dee327cf506486f0",
+        "choicesHash": "sha256:c8cb7a3252bcd8b6450899f3da09f1f91649e04584a833aa1d645ecfebd2f9ad",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:3d4a87b0c95c90bf0b5142cb0474dd2dc71ab123bc11bf89ed7585f85e3d6012",
+        "finalSolutionHash": "sha256:e391ca24cd4e114ff43cbcf37dd6f9c03f1ee6ce5052a85071357fc9a95a1b39",
+        "sourcePage": 4,
+        "sourcePagePixelSha256": "e2c380b1036c8d629832a1ce2c58b399750783820e19f396c7dccbb1bb7ede9c"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 13,
+        "sourcePage": 4,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 4,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "e2c380b1036c8d629832a1ce2c58b399750783820e19f396c7dccbb1bb7ede9c",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "평행한 두 방향벡터의 실수배 계수를 비교한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-05",
+            "standardUnit": "벡터의 연산",
+            "standardUnitOrder": 5
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-05, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "벡터의 연산",
+              "l3": "벡터의 실수배",
+              "l4": "평행 조건"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "두 벡터의 실수배 식으로 충분",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "위치벡터 차",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 실수배 / 평행 조건"
+          },
+          {
+            "name": "벡터의 평행 조건",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 실수배 / 평행 조건"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "AC=tAB",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 실수배 / 평행 조건; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "k: 실수 계수",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "평행한 두 방향벡터의 실수배 계수를 비교한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-05; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-05",
+          "majorUnit": "평면벡터",
+          "midUnit": "벡터의 연산",
+          "L3": "벡터의 실수배",
+          "L4": "평행 조건",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "31ca65bbfe0f6f040c583e84aec11dffb122532723b851fe8883bc1862c0e9fa",
+      "primaryMethod": "평행한 두 방향벡터의 실수배 계수를 비교한다",
+      "decisiveSteps": [
+        "평행한 두 방향벡터의 실수배 계수를 비교한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_27a46f96dcd7bf5068531e0c3a87fb3b81fb0df2033d39fa0a5c594d0c24136b",
+        "sourceIdentityKey": "qid_v1_27a46f96dcd7bf5068531e0c3a87fb3b81fb0df2033d39fa0a5c594d0c24136b",
+        "sourceOrdinal": 14,
+        "contentHash": "sha256:7eceac1dca286060e11ebf4c610c6733021d0c187a3f9866878d14d0091b2c88",
+        "choicesHash": "sha256:b142fed6d755074188ebb5438d0c053a79e8b5b430ddaf0958fab119b073144d",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:3bd4561d988f0cf22ebc20d34ea34dfa0281033f89e74605ed49fe9228e5cc6f",
+        "finalSolutionHash": "sha256:14637462aef568ad2691b0be5b3a7191fae4b17848f12fabaa1236bd11ea02a7",
+        "sourcePage": 4,
+        "sourcePagePixelSha256": "e2c380b1036c8d629832a1ce2c58b399750783820e19f396c7dccbb1bb7ede9c"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 14,
+        "sourcePage": 4,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 4,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "e2c380b1036c8d629832a1ce2c58b399750783820e19f396c7dccbb1bb7ede9c",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "매개변수 사각형을 평행사변형으로 옮겨 넓이를 구한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-06",
+            "standardUnit": "평면벡터의 성분과 내적",
+            "standardUnitOrder": 6
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-06, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "평면벡터의 성분과 내적",
+              "l3": "도형에의 활용",
+              "l4": "거리·넓이"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "ADD_NEW_SOLUTION_SVG",
+          "solutionSvgRequired": true,
+          "solutionAssetRef": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q14-solution.svg",
+          "sourceAssetRef": null,
+          "reason": "변환된 평행사변형 영역 해설 SVG",
+          "assetSha256": "82045e29f876cce47744340617db5537a2b13c601aa810e1f9150c9fb54fb079"
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "위치벡터 선형결합",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-06; 도형에의 활용 / 거리·넓이"
+          },
+          {
+            "name": "평행사변형 넓이",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-06; 도형에의 활용 / 거리·넓이"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "넓이=밑변×높이",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 도형에의 활용 / 거리·넓이; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "k,l: 실수 매개변수; P: 점",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "매개변수 사각형을 평행사변형으로 옮겨 넓이를 구한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-06; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-06",
+          "majorUnit": "평면벡터",
+          "midUnit": "평면벡터의 성분과 내적",
+          "L3": "도형에의 활용",
+          "L4": "거리·넓이",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0eb275b8d41580c43911749c7076978bd375bb96dda171b243f8c43183f7720f",
+      "primaryMethod": "매개변수 사각형을 평행사변형으로 옮겨 넓이를 구한다",
+      "decisiveSteps": [
+        "매개변수 사각형을 평행사변형으로 옮겨 넓이를 구한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys.",
+      "assetEvidence": {
+        "ref": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q14-solution.svg",
+        "sha256": "82045e29f876cce47744340617db5537a2b13c601aa810e1f9150c9fb54fb079",
+        "workingPath": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/assets/images/20_매산고_1학기_기말_고3_기하_기출/q14-solution.svg"
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_d93469c903a6821aa77ef44df453cb3ff64b694b8375180af8b3b41da3d65756",
+        "sourceIdentityKey": "qid_v1_d93469c903a6821aa77ef44df453cb3ff64b694b8375180af8b3b41da3d65756",
+        "sourceOrdinal": 15,
+        "contentHash": "sha256:96ff793cf6212d11c6852c98738069c409f7513d6201b2a320419dfb19fc912d",
+        "choicesHash": "sha256:646f53730a75961437a6c5800591f0a7bb43705a58b14906bf6a4a70cb88326a",
+        "imageRefHash": "sha256:53d17423011151c8a4f09da019116297293d164c740d771d3bb1ff5a83d1f150",
+        "sourceIdentityFingerprint": "sha256:b3dc5afcefb4727a4cfec21306b067592c0b024ebc70417c5cab386b27622472",
+        "finalSolutionHash": "sha256:f0483f092379cd3eff4d35e431c276665932711c68013f531cbca9d46df9d076",
+        "sourcePage": 4,
+        "sourcePagePixelSha256": "e2c380b1036c8d629832a1ce2c58b399750783820e19f396c7dccbb1bb7ede9c"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 15,
+        "sourcePage": 4,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 4,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "e2c380b1036c8d629832a1ce2c58b399750783820e19f396c7dccbb1bb7ede9c",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "등분점 위치벡터를 합하고 등차합을 계산한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-05",
+            "standardUnit": "벡터의 연산",
+            "standardUnitOrder": 5
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-05, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "벡터의 연산",
+              "l3": "벡터의 덧셈과 뺄셈",
+              "l4": "위치벡터"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q15.png",
+          "reason": "원문 정육각형/등분점 그림을 발문 asset으로 보존",
+          "assetSha256": "ed6a7e516ac7114987316bffbf9e609ee4b2e8ab2fb23acb02545cc8e17f42ae"
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "정육각형 변 벡터",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 덧셈과 뺄셈 / 위치벡터"
+          },
+          {
+            "name": "등차합",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 덧셈과 뺄셈 / 위치벡터"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "BC=OE",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 덧셈과 뺄셈 / 위치벡터; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "1+…+9=45",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 덧셈과 뺄셈 / 위치벡터; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "Pⱼ: BC 등분점",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "등분점 위치벡터를 합하고 등차합을 계산한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-05; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-05",
+          "majorUnit": "평면벡터",
+          "midUnit": "벡터의 연산",
+          "L3": "벡터의 덧셈과 뺄셈",
+          "L4": "위치벡터",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6be32a9f097c069ff4e795888b017f1f52fa9d32c5530ec9d7592b66fca4dc02",
+      "primaryMethod": "등분점 위치벡터를 합하고 등차합을 계산한다",
+      "decisiveSteps": [
+        "등분점 위치벡터를 합하고 등차합을 계산한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys.",
+      "assetEvidence": {
+        "ref": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q15.png",
+        "sha256": "ed6a7e516ac7114987316bffbf9e609ee4b2e8ab2fb23acb02545cc8e17f42ae",
+        "workingPath": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/assets/images/20_매산고_1학기_기말_고3_기하_기출/q15.png"
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_2fecdf1925a53c194de208f9a3779f51ed5d6d705d8637d430e4ede24c4bd121",
+        "sourceIdentityKey": "qid_v1_2fecdf1925a53c194de208f9a3779f51ed5d6d705d8637d430e4ede24c4bd121",
+        "sourceOrdinal": 16,
+        "contentHash": "sha256:0a385335039919968b7d00be7b226019986b888b95fc17b0e8a552ceaa03b70d",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:4ffe728c92d72097837b0182bfea0decc95f115fb0af648f02988eedb05cd991",
+        "finalSolutionHash": "sha256:b44291af7470dc396433edb2ce63759a73dff192604ca3392de7700758828799",
+        "sourcePage": 5,
+        "sourcePagePixelSha256": "7300a43164e59759574d5e653ba13f30ac6490289090caba7d49b08c48da2398"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 16,
+        "sourcePage": 5,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 5,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "7300a43164e59759574d5e653ba13f30ac6490289090caba7d49b08c48da2398",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "초점 거리차와 초점 반거리로 분모를 구한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-03",
+            "standardUnit": "쌍곡선",
+            "standardUnitOrder": 3
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-03, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "쌍곡선",
+              "l4": "정의와 방정식"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "초점·거리차 식으로 충분",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "쌍곡선 초점과 거리 차",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-03; 쌍곡선 / 정의와 방정식"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "2a=초점거리차",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 쌍곡선 / 정의와 방정식; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "c²=a²+b²",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 쌍곡선 / 정의와 방정식; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "a,b: 방정식의 분모",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "초점 거리차와 초점 반거리로 분모를 구한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-03; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-03",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "쌍곡선",
+          "L4": "정의와 방정식",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6a719f287ffcd8f43c422f79fa9c3ceb1b73b272f2305fada95a48f4091796e3",
+      "primaryMethod": "초점 거리차와 초점 반거리로 분모를 구한다",
+      "decisiveSteps": [
+        "초점 거리차와 초점 반거리로 분모를 구한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_0625f1e5163ba3ad8791bd08bc0534e2de6ac9de2f8e676e68bfdff95c913c98",
+        "sourceIdentityKey": "qid_v1_0625f1e5163ba3ad8791bd08bc0534e2de6ac9de2f8e676e68bfdff95c913c98",
+        "sourceOrdinal": 17,
+        "contentHash": "sha256:7e44d4411124dcc23dab3532e8f6f93fe77321b4febdf82e248e0eb3c658b3a9",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:6040d84c887a9ad1dff82bd8d2d3ce9f5bb050ed786548d68c75944a5613bbca",
+        "finalSolutionHash": "sha256:70dfed9ce0ecadf2ecb33d3c7bbf1da3dc8b2d76d40f838015058930c00c0771",
+        "sourcePage": 5,
+        "sourcePagePixelSha256": "7300a43164e59759574d5e653ba13f30ac6490289090caba7d49b08c48da2398"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 17,
+        "sourcePage": 5,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 5,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "7300a43164e59759574d5e653ba13f30ac6490289090caba7d49b08c48da2398",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "외분 위치벡터 공식에 비를 대입한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-05",
+            "standardUnit": "벡터의 연산",
+            "standardUnitOrder": 5
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-05, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "벡터의 연산",
+              "l3": "벡터의 실수배",
+              "l4": "내분·외분"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "VISUAL_EXEMPT",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": null,
+          "reason": "외분 공식 계산으로 충분",
+          "assetSha256": null
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "외분점 위치벡터",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-05; 벡터의 실수배 / 내분·외분"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "(2b−a)/(2−1)",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 벡터의 실수배 / 내분·외분; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "m,n: 위치벡터 계수",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "외분 위치벡터 공식에 비를 대입한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-05; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-05",
+          "majorUnit": "평면벡터",
+          "midUnit": "벡터의 연산",
+          "L3": "벡터의 실수배",
+          "L4": "내분·외분",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a2eeb6869f595a43525f29f58864d80ee132e4ff3039482e71cc0aac84b5fa98",
+      "primaryMethod": "외분 위치벡터 공식에 비를 대입한다",
+      "decisiveSteps": [
+        "외분 위치벡터 공식에 비를 대입한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_f7dbe12e0f7d0413f7376ddc9eb1de9b2195b76ae242055c00ec9837c6b4207d",
+        "sourceIdentityKey": "qid_v1_f7dbe12e0f7d0413f7376ddc9eb1de9b2195b76ae242055c00ec9837c6b4207d",
+        "sourceOrdinal": 18,
+        "contentHash": "sha256:b45298ca665d3188279417dcbe92372b11def343b04f52e2fa28a452e4766e41",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:579f7dea49302ff59f8aca688220aed289ed7fea210b3bbe80cc520e73b3e521",
+        "finalSolutionHash": "sha256:154c82608c964b976f4db08586c51b2f4e6618ebf79604873ef1c2f51a2b29fc",
+        "sourcePage": 5,
+        "sourcePagePixelSha256": "7300a43164e59759574d5e653ba13f30ac6490289090caba7d49b08c48da2398"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 18,
+        "sourcePage": 5,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 5,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "7300a43164e59759574d5e653ba13f30ac6490289090caba7d49b08c48da2398",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "벡터 합을 중점 기준 거리의 두 배로 바꾸고 수선거리를 쓴다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-06",
+            "standardUnit": "평면벡터의 성분과 내적",
+            "standardUnitOrder": 6
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-06, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "평면벡터의 성분과 내적",
+              "l3": "도형에의 활용",
+              "l4": "거리·넓이"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "ADD_NEW_SOLUTION_SVG",
+          "solutionSvgRequired": true,
+          "solutionAssetRef": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q18-solution.svg",
+          "sourceAssetRef": null,
+          "reason": "중점-직선 수선과 최단거리 해설 SVG",
+          "assetSha256": "bfb563b3865114111d29bc1b57c29a8c6041c8fe1675f81234dad1e0cf3c5735"
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "중점 위치벡터",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-06; 도형에의 활용 / 거리·넓이"
+          },
+          {
+            "name": "점-직선 거리",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-06; 도형에의 활용 / 거리·넓이"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "AP+BP=2(OP−OM)",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 도형에의 활용 / 거리·넓이; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "점-직선 거리",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 도형에의 활용 / 거리·넓이; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "M: AB 중점",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "벡터 합을 중점 기준 거리의 두 배로 바꾸고 수선거리를 쓴다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-06; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-06",
+          "majorUnit": "평면벡터",
+          "midUnit": "평면벡터의 성분과 내적",
+          "L3": "도형에의 활용",
+          "L4": "거리·넓이",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6e6ad7734299b851cde90dbfd31cf1ad6bea4dbc6be4d1e8e1d935e742a71c39",
+      "primaryMethod": "벡터 합을 중점 기준 거리의 두 배로 바꾸고 수선거리를 쓴다",
+      "decisiveSteps": [
+        "벡터 합을 중점 기준 거리의 두 배로 바꾸고 수선거리를 쓴다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys.",
+      "assetEvidence": {
+        "ref": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q18-solution.svg",
+        "sha256": "bfb563b3865114111d29bc1b57c29a8c6041c8fe1675f81234dad1e0cf3c5735",
+        "workingPath": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/assets/images/20_매산고_1학기_기말_고3_기하_기출/q18-solution.svg"
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_554e7db69044de506e44b58c6d693788801229898268289508d898a541c9e7e8",
+        "sourceIdentityKey": "qid_v1_554e7db69044de506e44b58c6d693788801229898268289508d898a541c9e7e8",
+        "sourceOrdinal": 19,
+        "contentHash": "sha256:3e141435cd1a34df26251824bd1ddb53916bdceb3250ba04cce2c3b501a4691d",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:6986a1c85e145f018362f1a9225fe0a977b5edf73a447a1da9e6e93894290458",
+        "sourceIdentityFingerprint": "sha256:325f092d62d79bb5cbb16019a78b1f4d9a84bb62b7b0a16e29d5fdde103ef9d0",
+        "finalSolutionHash": "sha256:15e4263015409fdbcccd608e0b2d95de533d1d349ce25462cf1aa0b99c8beef9",
+        "sourcePage": 6,
+        "sourcePagePixelSha256": "b1b5c2642a74c84c78e0fde47da80c472e38d1a6e69ea44ba74780bfd6c983cb"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 19,
+        "sourcePage": 6,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 6,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "b1b5c2642a74c84c78e0fde47da80c472e38d1a6e69ea44ba74780bfd6c983cb",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "쌍곡선 거리차와 직각삼각형 두 개를 차례로 적용한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-03",
+            "standardUnit": "쌍곡선",
+            "standardUnitOrder": 3
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-03, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "이차곡선",
+              "midUnit": "이차곡선",
+              "l3": "쌍곡선",
+              "l4": "정의와 방정식"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "solutionSvgRequired": false,
+          "solutionAssetRef": null,
+          "sourceAssetRef": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q19.png",
+          "reason": "원문 도형에서 P,F′,H의 순서를 사용",
+          "assetSha256": "a25eecca97e665bd37cc1f32630211f66379e8e9f7019f2b4cb7eb5cc6f15a79"
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "쌍곡선 초점 거리 차",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-03; 쌍곡선 / 정의와 방정식"
+          },
+          {
+            "name": "피타고라스 정리",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-03; 쌍곡선 / 정의와 방정식"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "직각삼각형 피타고라스",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 쌍곡선 / 정의와 방정식; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "c²=4+a",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 쌍곡선 / 정의와 방정식; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "H: 수선 발; c: 초점 반거리",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "쌍곡선 거리차와 직각삼각형 두 개를 차례로 적용한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-03; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-03",
+          "majorUnit": "이차곡선",
+          "midUnit": "이차곡선",
+          "L3": "쌍곡선",
+          "L4": "정의와 방정식",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f31f1bf27811305d5bd24268d366652f1315425e60638ca42541a018dba1dccc",
+      "primaryMethod": "쌍곡선 거리차와 직각삼각형 두 개를 차례로 적용한다",
+      "decisiveSteps": [
+        "쌍곡선 거리차와 직각삼각형 두 개를 차례로 적용한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys.",
+      "assetEvidence": {
+        "ref": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q19.png",
+        "sha256": "a25eecca97e665bd37cc1f32630211f66379e8e9f7019f2b4cb7eb5cc6f15a79",
+        "workingPath": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/assets/images/20_매산고_1학기_기말_고3_기하_기출/q19.png"
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "verdict": "CONTINUATION",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/high/h3/1final/20_매산고_1학기_기말_고3_기하_기출.js",
+        "questionUid": "qid_v1_ffad68578d72ba6fc1753b8563cfad33bddfca5d7eb841e17708901d31f21b44",
+        "sourceIdentityKey": "qid_v1_ffad68578d72ba6fc1753b8563cfad33bddfca5d7eb841e17708901d31f21b44",
+        "sourceOrdinal": 20,
+        "contentHash": "sha256:e35f4e12d99804a5e9fbcd5b613bd10cccba6c1fdc3100e028db3802c0f696c2",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+        "sourceIdentityFingerprint": "sha256:afdd02d70039a2e22ec126844f92fba27fb507d48a58853a837248de016c06e0",
+        "finalSolutionHash": "sha256:b727226c1e6cc6f9bbb1d399c8a0ea0a75d1085563c4c35f77e97bb7832cfcf2",
+        "sourcePage": 6,
+        "sourcePagePixelSha256": "b1b5c2642a74c84c78e0fde47da80c472e38d1a6e69ea44ba74780bfd6c983cb"
+      },
+      "sourceParityAudit": {
+        "sourceQuestionNo": 20,
+        "sourcePage": 6,
+        "contentParity": "PASS",
+        "choicesParity": "PASS",
+        "imageRefParity": "PASS",
+        "sourcePixelReview": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+          "sourcePage": 6,
+          "sourceProvenanceRef": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/provenance/archive/analysis/20_매산고_1학기_기말_고3_기하/source-only-evidence.json",
+          "sourceProvenanceSha256": "a556a8a19372c48ac4a1fe2c746da7bdf14ea9990f69f7d3828daf08cf842ca0",
+          "sourceManifestInputFileSha256": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+          "sourcePagePixelSha256": "b1b5c2642a74c84c78e0fde47da80c472e38d1a6e69ea44ba74780bfd6c983cb",
+          "contentAndChoices": "exact source print retained"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "Meaningful source boundaries retained; no text rewording.",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "벡터합으로 원을 평행이동하고 중심에서 먼 끝점을 취한다",
+          "lineBreakReview": "Setup, transformations, intermediate values, condition use and conclusion read as separate mathematical stages."
+        },
+        "meta": {
+          "status": "CONTINUATION",
+          "target": {
+            "curriculum": "2015",
+            "grade": "고3 exam; 2015 course: 기하와 벡터",
+            "standardCourse": "기하와 벡터",
+            "standardUnitKey": "H15-GV-07",
+            "standardUnit": "직선과 원의 방정식",
+            "standardUnitOrder": 7
+          },
+          "subUnit": {
+            "status": "UNMATERIALIZED",
+            "field": "subUnitKey",
+            "path": "archive/data/basic-scope-parent-links.json",
+            "record": "curriculumKey=2015, courseKey=기하, standardUnitKey=H15-GV-07, subUnitKey=\"\"",
+            "rule": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md §4: subUnitKey must be a registered child of standardUnitKey"
+          },
+          "rpm": {
+            "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+            "scope": "기하",
+            "path": {
+              "majorUnit": "평면벡터",
+              "midUnit": "평면벡터의 성분과 내적",
+              "l3": "도형에의 활용",
+              "l4": "거리·넓이"
+            },
+            "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+            "crosswalkStatus": "RPM_ONLY",
+            "projectionStatus": "PROJECTION_UNMATERIALIZED",
+            "problemTypeKey": null,
+            "templateKey": null,
+            "reason": "82/82 2015+2022 geometry crosswalk records are RPM_ONLY; no active PT/TPL mapping, per file policy."
+          },
+          "reason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "ADD_NEW_SOLUTION_SVG",
+          "solutionSvgRequired": true,
+          "solutionAssetRef": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q20-solution.svg",
+          "sourceAssetRef": null,
+          "reason": "중심 이동 후 먼 점을 보이는 해설 SVG",
+          "assetSha256": "9fd300d72eeb2af76f370192ea48220cc25c3d37ccebf122c3513450357988d5"
+        }
+      },
+      "curriculumMethodInventory": {
+        "concepts": [
+          {
+            "name": "원의 중심·반지름",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-07; 도형에의 활용 / 거리·넓이"
+          },
+          {
+            "name": "벡터 평행이동",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-07; 도형에의 활용 / 거리·넓이"
+          },
+          {
+            "name": "삼각부등식",
+            "status": "ALLOWED",
+            "evidence": "2015 기하와 벡터 H15-GV-07; 도형에의 활용 / 거리·넓이"
+          }
+        ],
+        "formulas": [
+          {
+            "name": "이동한 원의 중심·반지름",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 도형에의 활용 / 거리·넓이; prerequisite elementary algebra/coordinate geometry only"
+          },
+          {
+            "name": "최대 거리=중심 거리+반지름",
+            "status": "ALLOWED",
+            "evidence": "2015 RPM Primary 도형에의 활용 / 거리·넓이; prerequisite elementary algebra/coordinate geometry only"
+          }
+        ],
+        "notations": [
+          {
+            "name": "B: 원 중심; M: 최대 크기",
+            "status": "ALLOWED",
+            "evidence": "Current 2015 Geometry notation or symbol defined by source"
+          }
+        ],
+        "methods": [
+          {
+            "name": "벡터합으로 원을 평행이동하고 중심에서 먼 끝점을 취한다",
+            "status": "ALLOWED",
+            "evidence": "Current scope H15-GV H15-GV-07; cumulative prior algebra/coordinate geometry/Pythagorean only"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "authority": {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+          "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+          "targetCourse": "2015 기하와 벡터",
+          "standardUnitKey": "H15-GV-07",
+          "majorUnit": "평면벡터",
+          "midUnit": "평면벡터의 성분과 내적",
+          "L3": "도형에의 활용",
+          "L4": "거리·넓이",
+          "priorScopeEvidence": [
+            "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV-01..09",
+            "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md §5"
+          ]
+        }
+      },
+      "curriculumMethodAuditCount": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "aaabe268f1b838f7814f7e3ef2eed48a1363c5ca7036854d1e75ba3bdc1fa63f",
+      "primaryMethod": "벡터합으로 원을 평행이동하고 중심에서 먼 끝점을 취한다",
+      "decisiveSteps": [
+        "벡터합으로 원을 평행이동하고 중심에서 먼 끝점을 취한다"
+      ],
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "상",
+        "rationale": "Current source structure, reasoning demand and conceptual joins considered; solution length and item number excluded."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "L1/L2 and difficulty are populated. No registered H15-GV subunit exists in the authoritative current parent-link materialization, and crosswalk explicitly prohibits mapping to semantically different active keys.",
+      "assetEvidence": {
+        "ref": "assets/images/20_매산고_1학기_기말_고3_기하_기출/q20-solution.svg",
+        "sha256": "9fd300d72eeb2af76f370192ea48220cc25c3d37ccebf122c3513450357988d5",
+        "workingPath": "C:/Users/USER/Desktop/AP-worktrees/archive-qualification-20261006/AP------/.tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/assets/images/20_매산고_1학기_기말_고3_기하_기출/q20-solution.svg"
+      }
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "b151c7ef1f156368db8dabdd1a2282c38cc1295c",
+    "rows": [
+      {
+        "qid": 1,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 2,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 3,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 4,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 5,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 6,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 7,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 8,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 9,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 10,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 11,
+        "disposition": "HOLD",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 12,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 13,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 14,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 15,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 16,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 17,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 18,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 19,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      },
+      {
+        "qid": 20,
+        "disposition": "CONTINUATION",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "H15-GV active crosswalk is RPM_ONLY; subUnit materialization is absent."
+      }
+    ]
+  },
+  "continuation": {
+    "stage": "CREATE",
+    "examUid": "20_매산고_1학기_기말_고3_기하_기출",
+    "inputArtifactSha": "2cc4eca1fe7868939b023ce63e7ae92639f9bb24a8758a132478368e2afafcc5",
+    "finalArtifactSha": "b151c7ef1f156368db8dabdd1a2282c38cc1295c",
+    "evidenceRef": "archive/analysis/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/CREATE.evidence.json",
+    "completedStep": "19 source-aligned solutions; 4 solution SVGs rendered and inspected; current Golden/Negative preflight; all qids inventoried; q11 adjudication recorded",
+    "firstMissingClosureStep": "CREATE_META_H15_GV_SUBUNIT_MATERIALIZATION_AND_Q11_SOURCE_TRUTH_RESOLUTION",
+    "exactReason": "High-resolution source confirms the printed positive-k/all-negative-options contradiction and leaves p signed-coordinate ambiguous; H15-GV subUnit fields remain without registered child materialization."
+  },
+  "sourceCurriculumIdentity": {
+    "status": "CONFIRMED",
+    "sourcePage1": "CREATE.q11-source-recheck.json §page1",
+    "literalCourse": "기하 (02)",
+    "curriculum": "2015",
+    "rpmScope": "2015/HIGH/기하",
+    "standardUnitFamily": "H15-GV",
+    "mappingAuthority": "archive/data/basic-scope-parent-links.json + docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md · H15-GV label plus courseKey=기하",
+    "conclusion": "The exam is a 2020 Grade 3 assessment for the 2015 curriculum Geometry course. H15-GV maps to the same current 2015/기하 scope; its legacy family label does not indicate a different curriculum."
+  }
+}

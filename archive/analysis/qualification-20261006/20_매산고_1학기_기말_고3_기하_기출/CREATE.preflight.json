@@ -1,0 +1,55 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_1학기_기말_고3_기하_기출",
+  "performedBeforeAnyTargetSolutionWrite": true,
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "내분 공식 계수와 좌표·중점·거리 계산을 별도 판서 단계로 구분."
+        },
+        {
+          "qid": 12,
+          "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+          "observation": "원 이동, 두 축 접선 조건, 절댓값 경우와 양수 조건을 나누어 전개.",
+          "visualSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+          "visualObservation": "q12 SVG actual raster opened; center C(−2,2), equal radius and both axis tangencies align with |a−4| and |b−2| conditions."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "observation": "두 직선의 기울기를 각각 정리하고 수직 조건에서 k를 산출.",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "visualObservation": "q02 SVG actual source opened and rendered; line primitives have slopes −1/3 and 3 and are perpendicular. ImageMagick fallback font made some text glyphs unreadable; geometry was inspectable."
+        },
+        {
+          "qid": 5,
+          "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+          "observation": "집합의 같은 원소를 조건으로 사용해 a를 정한 뒤 나머지 원소로 b를 결정하고 합산."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "Negative README directly read: verify SVG actual coordinates/topology, actual solution stages, exact ACTIVE Meta lookup, and runtime escapes; counts/self-report do not substitute."
+  },
+  "openedVisuals": {
+    "maesanQ12": "preflight-maesan-q12.png",
+    "hyocheonQ02": "preflight-hyocheon-q02.png",
+    "sourceQ11": "preflight-source-page3.png"
+  },
+  "sourcePdfSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe"
+}

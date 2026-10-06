@@ -1,0 +1,68 @@
+{
+  "schema": "CREATE_Q11_SOURCE_FIDELITY_RECHECK_v1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_1학기_기말_고3_기하_기출",
+  "stage": "CREATE",
+  "artifactSha": "b151c7ef1f156368db8dabdd1a2282c38cc1295c",
+  "sourcePdf": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/source/2020_매산고3_기하_1기말.pdf",
+    "sha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe",
+    "sourceEvidenceSha256": "a741bee880a7b04ffa982915da2e1df0b07f82e48ece251209d22cf810289bbe"
+  },
+  "sourcePage1": {
+    "page": 1,
+    "render": "180dpi Poppler render directly from source PDF",
+    "sha256": "1281c9b2a0d7b74e868fbb6a2db31d704efe8361c89978db5dcbeab7bfa8738b",
+    "literalHeader": {
+      "course": "기하 (02)",
+      "schoolYear": "2020학년도",
+      "term": "1학기 기말고사",
+      "grade": "3",
+      "examDate": "2020. 7. 14."
+    },
+    "authorityCrosswalk": {
+      "path": "archive/data/basic-scope-parent-links.json",
+      "curriculumKey": "2015",
+      "courseKey": "기하",
+      "standardUnitKeys": [
+        "H15-GV-01",
+        "H15-GV-02",
+        "H15-GV-03",
+        "H15-GV-05",
+        "H15-GV-06",
+        "H15-GV-07"
+      ],
+      "interpretation": "Exam uses the 2015 curriculum Geometry course (기하); the current RPM Primary scope is 2015/HIGH/기하. H15-GV is the legacy standard-unit family label in the canonical unit table, so the existing standardUnitKey family is compatible."
+    }
+  },
+  "page3": {
+    "page": 3,
+    "render": "300dpi Poppler render directly from source PDF",
+    "sha256": "22b0d8168b3be0724142d6e932d2560a3fe4f0da737c9e4f95c086d1a1f38035",
+    "crop": {
+      "path": ".tmp/archive/qualification-20261006/20_매산고_1학기_기말_고3_기하_기출/source/highres-q11-region.png",
+      "sha256": "f40e9b0abd0a0fb560f1c05b8a2f5296fa34dc6cc34c277e8d1930f6fa810afe",
+      "pixelSize": "1180x650",
+      "cropPixels": "x=1250,y=230 on 2480x3508 300dpi page"
+    }
+  },
+  "literalQuestion": {
+    "content": "주축의 길이가 6이고 꼭짓점의 좌표가 (0,0), (0,p)인 쌍곡선의 두 점근선이 서로 수직이다. 이 쌍곡선이 점 (k,9)를 지날 때, 양수 k의 값은?",
+    "choices": [
+      "−2√2",
+      "−2√3",
+      "−3√3",
+      "−4√2",
+      "−4√3"
+    ],
+    "pixelReview": "All literal terms, symbols, and signs are readable in the 300dpi crop. The printed condition is 양수 k; every printed choice is negative. No printed p>0/p=6 qualifier or other sign restriction appears. Handwritten pencil marks are annotations, not printed conditions."
+  },
+  "singleLocusAssessment": {
+    "candidate": "양수→음수",
+    "status": "DOES_NOT_CLOSE",
+    "reason": "With principal-axis length 6 and vertices (0,0),(0,p), the source fixes only |p|=6. Perpendicular asymptotes give equal semi-axes. For p=6, the negative k candidate is −3√3; for p=−6 it is −3√15, which is absent. The sign edit alone cannot establish one answer; setting p=6 would be a second unsupported source change."
+  },
+  "disposition": "HOLD_SOURCE_CONTRADICTION_CONFIRMED",
+  "requiredRemainingInput": "Authoritative correction/answer-key evidence that resolves both the sign restriction on k and the intended signed vertex coordinate p, or a source-owner corrected page."
+}
