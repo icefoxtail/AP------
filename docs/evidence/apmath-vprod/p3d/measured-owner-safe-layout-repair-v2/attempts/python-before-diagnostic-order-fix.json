@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "MEASURED_OWNER_LAYOUT_PYTHON_REGRESSION_v1",
+  "command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "archive/tools/geometry-equation/tests",
+    "-p",
+    "test_*.py"
+  ],
+  "exitCode": 1,
+  "signal": null,
+  "error": null,
+  "stdout": "",
+  "stderr": "......................................................................................................F.......................................\r\n======================================================================\r\nFAIL: test_production_fragment_build_rejects_estimated_or_stale_measurements (test_publication.PublicationTests.test_production_fragment_build_rejects_estimated_or_stale_measurements)\r\n----------------------------------------------------------------------\r\nValueError: FROZEN_FRAGMENT_OWNER_MISMATCH:A-name\r\n\r\nDuring handling of the above exception, another exception occurred:\r\n\r\nTraceback (most recent call last):\r\n  File \"C:\\Users\\USER\\Desktop\\AP-worktrees\\apmath-visual-phase3-5\\AP------\\archive\\tools\\geometry-equation\\tests\\test_publication.py\", line 120, in test_production_fragment_build_rejects_estimated_or_stale_measurements\r\n    with self.assertRaisesRegex(ValueError,'BROWSER_LABEL_MEASUREMENT_REQUIRED'):\r\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: \"BROWSER_LABEL_MEASUREMENT_REQUIRED\" does not match \"FROZEN_FRAGMENT_OWNER_MISMATCH:A-name\"\r\n\r\n----------------------------------------------------------------------\r\nRan 142 tests in 4.375s\r\n\r\nFAILED (failures=1)\r\n"
+}

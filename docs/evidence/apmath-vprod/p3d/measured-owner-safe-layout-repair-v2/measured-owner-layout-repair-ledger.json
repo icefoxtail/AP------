@@ -1,0 +1,430 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_MEASURED_OWNER_LAYOUT_REPAIR_v1",
+  "classification": "MEASURED_OWNER_SAFE_LABEL_RELOCATION_CONTROLLED_FIXTURE_AND_EXPERIMENTAL_REPLAYS",
+  "status": "PASS",
+  "acceptedUnit": {
+    "failureClass": "Owner-bound point name or coordinate label has no available default placement after strict browser measurement.",
+    "supportedKinds": [
+      "POINT_NAME",
+      "COORDINATE_LABEL"
+    ],
+    "repairMethod": "bounded measured-fragment relocation by an exact extended-gap set; no suppression; unsupported cases remain unresolved",
+    "supportedExtendedGaps": [
+      64,
+      80,
+      96,
+      128
+    ],
+    "ownerPolicy": "EXACT_POINT_VORONOI_BOX_CORNERS",
+    "ownerTolerancePxSquared": 0.000001,
+    "svgBoundsTolerancePx": 0.25,
+    "sharedBudget": {
+      "stage": "LAYOUT",
+      "reason": "MEASURED_OWNER_SAFE_LABEL_RELOCATION",
+      "maximumEntries": 3,
+      "exactReplayReusesExistingEntry": true,
+      "changedInputConsumesDistinctEntry": true
+    }
+  },
+  "proofClosure": {
+    "sourceSolutionPlanFactsAndInventoryHashes": true,
+    "preparedLabelSearchPolicyHash": true,
+    "exactDefaultDirectionAndGapSearch": true,
+    "exactOwnerAndCompetitorPointInventory": true,
+    "selectedDimensionsExactlyEqualMeasuredFragment": true,
+    "xYRecomputedFromSourceAnchorDirectionAndGap": true,
+    "exactExtendedGapSet": true,
+    "exactOwnerTolerance": true,
+    "allFourMeasuredBoxCornersCheckedAgainstEveryCompetingPoint": true,
+    "finalCandidateSvgHashBound": true,
+    "chromiumMeasuresFinalNestedSvgViewportUsingScreenCtm": true,
+    "finalSvgOwnerFactRoleAndFragmentHashChecked": true,
+    "finalSvgBoundsComparedWithinTolerance": true,
+    "observedBoundsRecheckedAgainstOwnerVoronoi": true
+  },
+  "fixtureEvidence": {
+    "pythonLayoutTests": 12,
+    "nodeBinderTests": 3,
+    "focusedChromiumRuns": 10,
+    "focusedFailures": 0,
+    "nodeSuite": {
+      "passed": 124,
+      "failed": 0,
+      "log": {
+        "pathInPackage": "logs/node-regression-124.json",
+        "bytes": 15955,
+        "sha256": "sha256:af71b7a4a75946befeab093d3d3adc413c28a00f8d307bbe3baec7fb06eb6592"
+      }
+    },
+    "pythonSuite": {
+      "passed": 142,
+      "failed": 0,
+      "log": {
+        "pathInPackage": "logs/python-regression-142.json",
+        "bytes": 566,
+        "sha256": "sha256:32155d41cd5907e6a23218944563d9a4291019de890ec248de109b18c157aa14"
+      }
+    },
+    "summary": {
+      "pathInPackage": "logs/regression-summary.json",
+      "bytes": 2487,
+      "sha256": "sha256:504c23fc23e00d4825f69ce28667bd21978c7cade171bec46c1033c3d7551c0d"
+    },
+    "actualChromiumObservation": {
+      "selectedBox": {
+        "x": 26,
+        "y": 45,
+        "width": 30,
+        "height": 10
+      },
+      "observedFragmentViewportBoundsIntrinsicUnits": {
+        "x": 26,
+        "y": 45,
+        "width": 30,
+        "height": 10
+      },
+      "observedGlyphGraphicBoundsIntrinsicUnits": {
+        "x": 26,
+        "y": 45,
+        "width": 2,
+        "height": 2
+      },
+      "ownerCornerRelation": "PASS",
+      "svgBoundsTolerancePx": 0.25,
+      "ownerTolerancePxSquared": 0.000001
+    }
+  },
+  "candidateReplays": [
+    {
+      "candidate": "q10-graph",
+      "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "workRoot": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production",
+      "runId": "visual-d06883b9-68da-48da-ae13-239d90b83c90",
+      "currentFingerprint": "sha256:dfdc474b7f94fddbca7ada4654bfe559eef9cc538d366bb24d0c537684cd64fb",
+      "selectedSizeClass": "full",
+      "repairCount": 3,
+      "repairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "actualArchive": "PASS",
+      "visualReview": "PASS",
+      "visualReviewRef": {
+        "bytes": 9908,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/VISUAL_REVIEW/4bad3a92211ec7339c7dd14738c7c8986906fb8d194679f9765cb068bb606bb0/visual_review.json",
+        "sha256": "sha256:ecb731189c676db76b511b846748172442194f76c7644cad358db2d3c6859a9a"
+      },
+      "finalSvgRef": {
+        "bytes": 23399,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/BUILD/fc4ce5d71872d674d0c6f12f24cd1bea9c86d74f3fb83664f1a905ddafaf8ae8/q10-solution.svg",
+        "sha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5"
+      },
+      "replayLog": {
+        "pathInPackage": "logs/q10-graph-final-replay.json",
+        "bytes": 2833,
+        "sha256": "sha256:42608417b013c40ac75370b2fdee90277f4ab834b825247b3bf1c8af48774792"
+      },
+      "result": {
+        "pathInPackage": "results/q10-graph-result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      }
+    },
+    {
+      "candidate": "q01-geometry",
+      "questionUid": "25_효천고_2학기_중간_고1_기출|1",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "workRoot": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production",
+      "runId": "visual-ed741b36-d931-4999-9850-f76d9af07473",
+      "currentFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "selectedSizeClass": "medium",
+      "repairCount": 0,
+      "repairLedger": [],
+      "actualArchive": "PASS",
+      "visualReview": "PASS",
+      "visualReviewRef": {
+        "bytes": 9729,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/VISUAL_REVIEW/8acd6f1b8948933830bf3afd4182277e622fd571a59102f5b7b55942a2925872/visual_review.json",
+        "sha256": "sha256:ba1baf888b68ad3ee4e44d79cde7390d314e3a9fbfa7bcda30823481d2d21acd"
+      },
+      "finalSvgRef": {
+        "bytes": 27699,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/BUILD/9197d479af85360aef834f5e98d7a9c95e5ffc3300029ad4573fd47ec22ad10f/q01-solution.svg",
+        "sha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f"
+      },
+      "replayLog": {
+        "pathInPackage": "logs/q01-geometry-final-replay.json",
+        "bytes": 2811,
+        "sha256": "sha256:deaca59a843f0622aa72d9d764533ae308033cb4c9ac04d6d8e934ec29801536"
+      },
+      "result": {
+        "pathInPackage": "results/q01-geometry-result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      }
+    },
+    {
+      "candidate": "coordinate-free-q01",
+      "questionUid": "25_삼산중_2학기_기말_중2_기출|1",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "workRoot": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production",
+      "runId": "visual-356c630c-ca80-4baa-8c43-4015bfa41fd2",
+      "currentFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "selectedSizeClass": "medium",
+      "repairCount": 3,
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "actualArchive": "PASS",
+      "visualReview": "PASS",
+      "visualReviewRef": {
+        "bytes": 11817,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/VISUAL_REVIEW/30336719ad51816a9e1f6053f432e6b4e2a0e9c24ff99bf03f7219ed32ccdc6b/visual_review.json",
+        "sha256": "sha256:dd5c26d0cb456bc6b13d8c0ce038269b9fd18962086482448caea82e7f2b1bc1"
+      },
+      "finalSvgRef": {
+        "bytes": 19211,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/fb23b9d18efa876532b55cde6e3a54781588dacff61b8a2ab707c2773f6fcfc3/q01-solution.svg",
+        "sha256": "sha256:6c1daa75b63a69a548f8bd99b0c8bc0c2b8c018f57306c5425904b265fb40ed9"
+      },
+      "replayLog": {
+        "pathInPackage": "logs/coordinate-free-q01-final-replay.json",
+        "bytes": 2822,
+        "sha256": "sha256:ba9d05e2223827e73c34bc4a0231a598b599f5a4583167ffff12485578e68fa0"
+      },
+      "result": {
+        "pathInPackage": "results/coordinate-free-q01-result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "source": "q10-graph-measured-owner-repair-replay.json",
+      "destination": "attempts/q10-prepared-output-access-failure.json",
+      "classification": "PHASE2_INTEGRATION_DEFECT_PRESERVED",
+      "exitCode": 2,
+      "resultStatus": "UNRESOLVED",
+      "error": "Cannot read properties of undefined (reading 'filter')",
+      "logSha256": "sha256:64c9c37ff68cb5bac86fd5fa4868986553978542552e5be945a965462f2c81a2",
+      "result": {
+        "pathInPackage": "attempts/q10-prepared-output-access-failure-result.json",
+        "bytes": 16247,
+        "sha256": "sha256:7914cf3ec4800632e6d0be8f9483c1cd66dedf91ff429238b9531b69a2de2622"
+      }
+    },
+    {
+      "source": "q10-graph-owner-safe-v2-replay.json",
+      "destination": "attempts/q10-pre-diagnostic-order-fix-replay.json",
+      "classification": "SUPERSEDED_CURRENT_FINGERPRINT_REPLAY",
+      "exitCode": 2,
+      "resultStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "logSha256": "sha256:a8012b2b6feb0696adf3d03394f67610309c3c1d8eb73a8beff2681c8a489deb",
+      "result": {
+        "pathInPackage": "attempts/q10-pre-diagnostic-order-fix-replay-result.json",
+        "bytes": 27960,
+        "sha256": "sha256:697b81442670dd02846752b3bd225371c13b19e85991e28ded38655acc5c6236"
+      }
+    },
+    {
+      "source": "q01-geometry-owner-safe-v1-replay.json",
+      "destination": "attempts/q01-pre-diagnostic-order-fix-replay.json",
+      "classification": "SUPERSEDED_CURRENT_FINGERPRINT_REPLAY",
+      "exitCode": 2,
+      "resultStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "logSha256": "sha256:81261dfdd2e23a56996c9593dd29a9c79b832ebbcc7ac3ee1be87258b24c148e",
+      "result": {
+        "pathInPackage": "attempts/q01-pre-diagnostic-order-fix-replay-result.json",
+        "bytes": 25306,
+        "sha256": "sha256:edb29a2a7ad0f34f10e09b685c720141d5e244b5440096f4b54f4aea4b21c422"
+      }
+    },
+    {
+      "source": "coordinate-free-q01-owner-safe-v1-replay.json",
+      "destination": "attempts/coordinate-free-pre-diagnostic-order-fix-replay.json",
+      "classification": "SUPERSEDED_CURRENT_FINGERPRINT_REPLAY",
+      "exitCode": 2,
+      "resultStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "logSha256": "sha256:af281d2f666178e494a95da85beb10d8cb65d4667a0e97b0ff2b2881df440c81",
+      "result": {
+        "pathInPackage": "attempts/coordinate-free-pre-diagnostic-order-fix-replay-result.json",
+        "bytes": 25816,
+        "sha256": "sha256:5fe48eb0d9076ac926b454cf20dd3d9482cc1bdeb259ac00f9769a1d3ac0ecdb"
+      }
+    },
+    {
+      "source": "q10-graph-after-measurement-order-replay.json",
+      "destination": "attempts/q10-pre-label-policy-closure-replay.json",
+      "classification": "SUPERSEDED_CURRENT_FINGERPRINT_REPLAY",
+      "exitCode": 2,
+      "resultStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "logSha256": "sha256:162aab527ccbab18d0bb35d5ba22ada386daca169b7da6cf6544feb6015dc8ce",
+      "result": {
+        "pathInPackage": "attempts/q10-pre-label-policy-closure-replay-result.json",
+        "bytes": 27960,
+        "sha256": "sha256:15121db7bd2f0d31610a448ad0cb3211f4e7b8d0c4328ca73ed028426447ad86"
+      }
+    },
+    {
+      "source": "q01-geometry-after-measurement-order-replay.json",
+      "destination": "attempts/q01-pre-label-policy-closure-replay.json",
+      "classification": "SUPERSEDED_CURRENT_FINGERPRINT_REPLAY",
+      "exitCode": 2,
+      "resultStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "logSha256": "sha256:ac72d92c9e83eabef2850cf6955be3ba088546e2379e3d449be3a6f6d8b33a46",
+      "result": {
+        "pathInPackage": "attempts/q01-pre-label-policy-closure-replay-result.json",
+        "bytes": 25306,
+        "sha256": "sha256:7b1161b86bbfe8e02e487a5a5701a84299c005d0c189b048b816b8d87ac3f14a"
+      }
+    },
+    {
+      "source": "coordinate-free-q01-after-measurement-order-replay.json",
+      "destination": "attempts/coordinate-free-pre-label-policy-closure-replay.json",
+      "classification": "SUPERSEDED_CURRENT_FINGERPRINT_REPLAY",
+      "exitCode": 2,
+      "resultStatus": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "error": null,
+      "logSha256": "sha256:c4ac4ddc8c2e8ca492b926c3976345ed4667803751e0836eee4dbd2b5e7f827c",
+      "result": {
+        "pathInPackage": "attempts/coordinate-free-pre-label-policy-closure-replay-result.json",
+        "bytes": 25816,
+        "sha256": "sha256:d5a82f49b091c89166bf0702b0aa053feb71a709c1e726f42e37bc195bc30fed"
+      }
+    }
+  ],
+  "supersededRegression": {
+    "failedPythonRun": {
+      "pathInPackage": "attempts/python-before-diagnostic-order-fix.json",
+      "bytes": 1611,
+      "sha256": "sha256:f87a6bcde9222dd793887587135c8fb04c5414065449b0a58e72b82e64a970b5"
+    },
+    "failedSummary": {
+      "pathInPackage": "attempts/regression-before-diagnostic-order-fix.json",
+      "bytes": 2179,
+      "sha256": "sha256:1588310ecd45059e948766794e46457ff8a34009dd1cc2e40fb490ccb886e23b"
+    },
+    "classification": "MISSING_MEASUREMENT_PRECHECK_ORDER_DEFECT_FIXED"
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/production/layout-repair.mjs",
+      "bytes": 11877,
+      "sha256": "sha256:8e22c25721738a227b77002ba665ccba400e84338331275500d97384f2abbc3b"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/layout-repair-audit.mjs",
+      "bytes": 13570,
+      "sha256": "sha256:427f3d897cfce15aa7ec8e6682bff418d976e451f580c11c7cf35fedcc70ef70"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "bytes": 62066,
+      "sha256": "sha256:aacff6c9ff202ba7851e59e99509f1cea9594f2db4ccdb0c6acc52eb591651c7"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/fingerprint.mjs",
+      "bytes": 2896,
+      "sha256": "sha256:275b85928c3ef60bc4b6cacc1c3eb66848022866fd626cfee3ce35f918d7ada9"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/repair-budget.mjs",
+      "bytes": 2010,
+      "sha256": "sha256:f5be8019a761ea956f592d91fb6f3ab4e9a1dc4100d9821a6bfd52c623207c46"
+    },
+    {
+      "path": "archive/tools/geometry-equation/visual_engine/label_layout.py",
+      "bytes": 11057,
+      "sha256": "sha256:9d1f3ce5f2569beb6b5d30f313f817503a02ee7abab73547b4f5c9d7c6d7127f"
+    },
+    {
+      "path": "archive/tools/geometry-equation/visual_engine/engine.py",
+      "bytes": 17710,
+      "sha256": "sha256:1bb01b3d27e656a5755d3cc8d6882196211da038342e20d30b0ca78752b48c07"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/layout-repair-binder.test.mjs",
+      "bytes": 7935,
+      "sha256": "sha256:8e4039fe6ef49859aaefe0fd865b4f1b3eee98c7d5f6277f2e9ffaa358c453af"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/test_label_layout.py",
+      "bytes": 8958,
+      "sha256": "sha256:c1e2681d048f24f4da4b444349456e1b55eb640cea0d05b9ec999a48e8e76aae"
+    }
+  ],
+  "priorPackageAttempts": [
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v1/",
+      "status": "PARTIAL_UNMANIFESTED",
+      "reason": "The first packager typo referenced candidateReplays instead of candidateResults after copying payload files. It is preserved locally without a ledger/index/manifest and excluded from this v2 package."
+    }
+  ],
+  "limitations": [
+    "The supported relocation was exercised with a controlled synthetic fixture only; none of the three real-source candidates triggered an owner-relocation action.",
+    "All replay candidates remain EXPERIMENTAL_LOCATOR_COMPLETE and are outside qualification counts.",
+    "Canonical v2 UID authority remains INPUT_REQUIRED; this unit supplies no archive identity authority.",
+    "Other measured-layout defect classes and external provider cleanup debts remain open."
+  ],
+  "q10BudgetStatement": {
+    "count": 3,
+    "expected": 3,
+    "repairReasons": [
+      "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW"
+    ],
+    "noFourthEntry": true
+  },
+  "canonicalAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionAuthorized": false,
+  "currentHeadBeforeCommit": "UNCOMMITTED_MEASURED_OWNER_LAYOUT_REPAIR"
+}

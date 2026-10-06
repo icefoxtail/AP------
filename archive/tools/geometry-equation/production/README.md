@@ -64,11 +64,14 @@ VISUAL_SPIKE_PLAN_v1 math-contract runner, not the full real-UID workflow.
   hard-crash lock needs verified owner/process reconciliation, not age deletion.
 - Provider traces and the existing collector's intermediate files live in a
   request journal. Only committed stage manifests enter result closure.
-- The one controller allows at most three schema/source-plan repairs and
+- The one controller allows at most three schema/source-plan/layout repairs and
   detects identical input/action/output cycles. Frozen replay reloads its existing
-  repair ledger and refuses to reset a missing ledger. Unsupported late layout/
-  render defects remain explicit; a general per-candidate layout repair controller
-  is not implemented.
+  repair ledger and refuses to reset a missing ledger. One measured-fragment
+  relocation action is supported for owner-bound point-name/coordinate labels when
+  their default search has no candidate; the action binds label policy, exact point
+  markers, measured box, owner-safe corners, and the final SVG. This path is proven
+  on a controlled fixture only. Other late layout/render defect classes remain
+  explicit; a general per-candidate repair controller is not implemented.
 
 The fragment profile uses measured MathJax paths and pinned Noto Sans KR
 outlines. Its 12-unit outer label margin is distinct from the legacy 32-unit plot
