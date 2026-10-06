@@ -70,15 +70,15 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "content": "다음 그림은 한 변의 길이가 $2$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때, $x$와 $y$ 사이의 거리는?",
+    "content": "다음 그림은 한 변의 길이가 $\\sqrt2$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}$, $\\overline{BD}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때, $x$와 $y$ 사이의 거리는? (5점)",
     "choices": [
-      "$\\sqrt{2}+1$",
-      "$4-\\sqrt{2}$",
-      "$\\sqrt{2}+2$",
-      "$\\sqrt{2}+3$",
-      "$\\sqrt{2}+4$"
+      "$\\sqrt2+1$",
+      "$4-\\sqrt2$",
+      "$\\sqrt2+2$",
+      "$\\sqrt2+3$",
+      "$\\sqrt2+4$"
     ],
-    "answer": "④",
+    "answer": "②",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -98,12 +98,14 @@ window.questionBank = [
       "수직선"
     ],
     "wide": false,
-    "solution": "정사각형 한 변의 길이가 $2$이므로 대각선 $AC = \\sqrt{2^2+2^2} = 2\\sqrt{2}$\\n점 $C$의 좌표는 $2$이므로 $P(x) = 2 - 2\\sqrt{2}$\\n점 $B$의 좌표는 $0$이고 $BQ = AC = 2\\sqrt{2}$이므로 $Q(y) = 2\\sqrt{2}$\\n거리는 $y-x = 2\\sqrt{2} - (2-2\\sqrt{2}) = 4\\sqrt{2}-2$\\n(※ 원문 보기 데이터와 계산 결과의 차이가 있으나 논리적 최선안 선택)\\n$\\therefore$ ④",
+    "solution": "정사각형의 한 변은 $\\sqrt2$이므로 대각선은\n$AC=BD=\\sqrt{(\\sqrt2)^2+(\\sqrt2)^2}=2$이다.\n수직선에서 $B=0$, $C=\\sqrt2$이므로\n$x=P=C-PC=\\sqrt2-2$, $y=Q=B+BQ=2$이다.\n따라서 두 수 사이의 거리는\n$y-x=2-(\\sqrt2-2)=4-\\sqrt2$이다.\n정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q03.png",
+    "imageAlt": "정사각형 ABCD의 대각선을 이용해 수직선 위의 점 P와 Q를 나타낸 그림"
   },
   {
     "id": 4,
@@ -529,7 +531,7 @@ window.questionBank = [
     "content": "다음 중 인수분해한 것이 옳지 않은 것은?",
     "choices": [
       "$x^2-9=(x+3)(x-3)$",
-      "$3x^2+2x-1=(x+1)(3x-1)$",
+      "$3x^2+2x-1=(x-1)(3x-1)$",
       "$x^2-4x+4=(x-2)^2$",
       "$x^2+7x-18=(x+9)(x-2)$",
       "$9x^2+6xy+y^2=(3x+y)^2$"
@@ -552,7 +554,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "② $(x+1)(3x-1) = 3x^2+2x-1$ (옳음)\\n(※ 원문 상의 오류 점검 필요)\\n$\\therefore$ ②",
+    "solution": "② $(x-1)(3x-1)=3x^2-4x+1$이므로 $3x^2+2x-1$과 같지 않다.\n나머지 식은 각각 인수분해 결과와 같으므로 옳지 않은 것은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -629,7 +631,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "세 원의 중심이 $\\overline{AB}$ 위에 있다. $\\overline{AD}$ 지름 원 둘레 $12\\pi$, 색칠 넓이 $36\\pi$일 때 $\\overline{CD}=a$는?",
+    "content": "다음 그림에서 세 원의 중심은 모두 $\\overline{AB}$ 위에 있고, 점 $D$는 $\\overline{BC}$의 중점이다. $\\overline{AD}$를 지름으로 하는 원의 둘레의 길이는 $12\\pi\\text{cm}$이고, 색칠한 부분의 넓이는 $36\\pi\\text{cm}^2$이다. $\\overline{CD}=a\\text{cm}$일 때, $a$의 값을 구하면?",
     "choices": [
       "$3$",
       "$\\frac{10}{3}$",
@@ -637,7 +639,7 @@ window.questionBank = [
       "$\\frac{21}{4}$",
       "$6$"
     ],
-    "answer": "⑤",
+    "answer": "①",
     "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "다항식의 곱셈과 인수분해",
     "standardCourse": "중3 수학",
@@ -657,12 +659,14 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "$D$가 $\\overline{BC}$ 중점이므로 연립방정식 수립 결과 $a=6$\\n$\\therefore$ ⑤",
+    "solution": "$\\overline{AD}$를 지름으로 하는 원의 둘레가 $12\\pi$이므로\n$\\pi\\cdot AD=12\\pi$, 따라서 $AD=12$이다.\n$D$는 $BC$의 중점이므로 $CD=DB=a$라 두면\n$AC=12-a$, $AB=12+a$이다.\n색칠한 넓이는 큰 원과 작은 원의 넓이 차이이므로\n$\\frac{\\pi}{4}\\left((12+a)^2-(12-a)^2\\right)=36\\pi$.\n$\\frac{\\pi}{4}(48a)=36\\pi$에서 $a=3$이다.\n정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q19.png",
+    "imageAlt": "같은 중심축 AB 위에 세 원과 점 C, D가 표시된 도형"
   },
   {
     "id": 20,
@@ -728,9 +732,9 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "[서술형2] 그림에서 $p=2-\\sqrt{10}, q=10+\\sqrt{10}$일 때, $3p+q$의 값을 구하시오.",
+    "content": "다음 그림에서 두 점 $P, Q$에 대응하는 수를 각각 $p, q$라고 할 때, $3p+q$의 값을 구하는 풀이 과정과 답을 서술하여라. (단, 풀이 과정을 자세히 써라.) (7점)",
     "choices": [],
-    "answer": "$16-2\\sqrt{10}$",
+    "answer": "$-7-2\\sqrt2$",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -744,15 +748,18 @@ window.questionBank = [
       "제곱근",
       "근호",
       "조건해석",
-      "계산"
+      "계산",
+      "도형"
     ],
     "wide": false,
-    "solution": "주어진 값을 식에 바로 대입한다.\n$3p+q=3(2-\\sqrt{10})+(10+\\sqrt{10})$\n$=6-3\\sqrt{10}+10+\\sqrt{10}$\n$=16-2\\sqrt{10}$이다.\n따라서 구하는 값은 $16-2\\sqrt{10}$이다.",
+    "solution": "정사각형의 한 변의 길이가 $1$이므로 대각선의 길이는 $\\sqrt2$이다. 그림에서 $AP=AC=\\sqrt2$, $DQ=DB=\\sqrt2$이다.\n따라서 $p=-2-\\sqrt2$, $q=-1+\\sqrt2$이다.\n$3p+q=3(-2-\\sqrt2)+(-1+\\sqrt2)=-7-2\\sqrt2$이다.\n따라서 답은 $-7-2\\sqrt2$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q22.png",
+    "imageAlt": "한 변의 길이가 1인 정사각형과 대각선, 수직선 위의 P와 Q"
   },
   {
     "id": 23,

@@ -40,11 +40,11 @@ window.questionBank = [
     "id": 2,
     "content": "부등식 $3 < \\sqrt{5n} \\le 5$ 를 만족시키는 자연수 n의 값의 합을 구하면? [4점]",
     "choices": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "10",
+      "11",
+      "12",
+      "13",
+      "14"
     ],
     "answer": "⑤",
     "category": "제곱근과 실수",
@@ -112,11 +112,11 @@ window.questionBank = [
     "id": 4,
     "content": "√108을 $a\\sqrt{b}$로 나타낼 때, $a+b$의 값을 구하면? [3점]",
     "choices": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "7",
+      "8",
+      "9",
+      "12",
+      "13"
     ],
     "answer": "③",
     "category": "근호를 포함한 식의 계산",
@@ -147,11 +147,11 @@ window.questionBank = [
     "id": 5,
     "content": "식 $2\\sqrt{18} \\div \\sqrt{6} \\times 2$ 를 간단히 하면? [3점]",
     "choices": [
-      "√6",
-      "√6",
-      "√3",
-      "√3",
-      "√3"
+      "$2\\sqrt6$",
+      "$3\\sqrt6$",
+      "$3\\sqrt3$",
+      "$4\\sqrt3$",
+      "$5\\sqrt3$"
     ],
     "answer": "④",
     "category": "근호를 포함한 식의 계산",
@@ -183,11 +183,11 @@ window.questionBank = [
     "id": 6,
     "content": "식 $4\\sqrt{5} - \\sqrt{125} + 10/\\sqrt{5}$ 를 간단히 하면? [3점]",
     "choices": [
-      "√5",
-      "-√5",
-      "√5",
-      "-2√5",
-      "√5"
+      "$\\sqrt5$",
+      "$-\\sqrt5$",
+      "$2\\sqrt5$",
+      "$-2\\sqrt5$",
+      "$3\\sqrt5$"
     ],
     "answer": "①",
     "category": "근호를 포함한 식의 계산",
@@ -219,11 +219,11 @@ window.questionBank = [
     "id": 7,
     "content": "식 $\\sqrt{27} + 6 \\div \\sqrt{3} - 8\\sqrt{3}$ 를 간단히 하면? [4점]",
     "choices": [
-      "√3",
-      "√3",
-      "-2√3",
-      "√3",
-      "-3√3"
+      "$\\sqrt3$",
+      "$2\\sqrt3$",
+      "$-2\\sqrt3$",
+      "$3\\sqrt3$",
+      "$-3\\sqrt3$"
     ],
     "answer": "⑤",
     "category": "근호를 포함한 식의 계산",
@@ -328,10 +328,10 @@ window.questionBank = [
     "id": 10,
     "content": "$(x-2y)(x+2y-3)$ 를 전개하여 간단히 하였을 때, $xy$의 계수와 $y$ 계수의 합을 구하면? [3점]",
     "choices": [
-      "",
-      "",
+      "0",
+      "4",
       "-4",
-      "",
+      "6",
       "-6"
     ],
     "answer": "④",
@@ -364,11 +364,11 @@ window.questionBank = [
     "id": 11,
     "content": "식 $(\\sqrt{5}+2)/(\\sqrt{5}-2) + (\\sqrt{5}-2)/(\\sqrt{5}+2)$ 를 간단히 하면? [4점]",
     "choices": [
-      "",
-      "√5",
-      "+4√5",
-      "+8√5",
-      "-8√5"
+      "18",
+      "$2\\sqrt5$",
+      "$9+4\\sqrt5$",
+      "$18+8\\sqrt5$",
+      "$18-8\\sqrt5$"
     ],
     "answer": "①",
     "category": "분모의 유리화",
@@ -436,11 +436,11 @@ window.questionBank = [
     "id": 13,
     "content": "$x=2+3\\sqrt{3}, y=2-3\\sqrt{3}$일 때, $(x+1)(y+1)-xy$ 의 값을 구하면? [4점]",
     "choices": [
-      "",
-      "√3",
-      "",
-      "√3",
-      ""
+      "0",
+      "$2\\sqrt3$",
+      "4",
+      "$4\\sqrt3$",
+      "5"
     ],
     "answer": "⑤",
     "category": "다항식의 곱셈",
@@ -472,11 +472,11 @@ window.questionBank = [
     "id": 14,
     "content": "$a-b=3, a^{2}+b^{2}=13$일 때, $ab$의 값을 구하면? [4점]",
     "choices": [
-      "",
+      "2",
       "-2",
-      "",
+      "3",
       "-3",
-      ""
+      "6"
     ],
     "answer": "①",
     "category": "곱셈 공식의 변형",
@@ -508,11 +508,11 @@ window.questionBank = [
     "id": 15,
     "content": "$x=3-2\\sqrt{2}$일 때, 식 $x^{2}-6x+7$의 값을 구하면? [4점]",
     "choices": [
-      "",
-      "√2",
-      "√2",
-      "",
-      ""
+      "3",
+      "$6\\sqrt2$",
+      "$4\\sqrt2$",
+      "6",
+      "9"
     ],
     "answer": "④",
     "category": "다항식의 값",
@@ -544,11 +544,11 @@ window.questionBank = [
     "id": 16,
     "content": "곱셈공식을 이용하여 다음 식을 계산하면? [4점]\\n$2021 \\times 2023 - 4042 - 2020 \\times 2022$",
     "choices": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "0",
+      "1",
+      "2021",
+      "2022",
+      "2023"
     ],
     "answer": "②",
     "category": "인수분해의 활용",
@@ -580,11 +580,11 @@ window.questionBank = [
     "id": 17,
     "content": "식 $(ax-3)(2x+b)$를 전개하면 $8x^{2}+cx-15$가 된다. 이때, $a+b+c$의 값을 구하면? [4점]",
     "choices": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "5",
+      "9",
+      "10",
+      "19",
+      "23"
     ],
     "answer": "⑤",
     "category": "다항식의 곱셈",
@@ -688,13 +688,13 @@ window.questionBank = [
     "id": 20,
     "content": "$2 < x < 3$일 때, $\\sqrt{(x^{2}-4x+4)}-\\sqrt{(x^{2}-6x+9)}$ 를 간단히 하면? [4점]",
     "choices": [
-      "x-5",
-      "x",
-      "x+1",
-      "x-1",
-      ""
+      "$2x$",
+      "$2x-5$",
+      "$2x+1$",
+      "$2x-1$",
+      "5"
     ],
-    "answer": "①",
+    "answer": "②",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -760,11 +760,11 @@ window.questionBank = [
     "id": 22,
     "content": "다음 중 $2^{8}-1$의 약수가 아닌 것은? [4점]",
     "choices": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "3",
+      "5",
+      "15",
+      "13",
+      "17"
     ],
     "answer": "④",
     "category": "인수분해",
@@ -851,7 +851,9 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/21_동산중_1학기_중간_중3_기출/q24.png",
+    "imageAlt": "두 정사각형과 수직선 위의 점 P, Q 및 각 꼭짓점의 위치"
   },
   {
     "id": 25,
