@@ -164,6 +164,32 @@ test('scope fingerprint includes observer code, excludes unrelated docs',()=>{
   fs.writeFileSync(path.join(root,'docs'),'two');assert.equal(before,capabilityFingerprint(root,spec));
   fs.writeFileSync(path.join(root,'observer'),'two');assert.notEqual(before,capabilityFingerprint(root,spec));
 });
+test('implementation/provider and observer fingerprint changes recompute calculation cache before warm reuse',async()=>{
+  const cacheWorkRoot=`.tmp/archive/fingerprint-cache-${crypto.randomUUID()}/exam-cache/visual-engine/production`;
+  for(const name of ['worker','provider','observer','docs'])fs.writeFileSync(path.join(root,name),'v1');
+  const spec={capability:'spike',implementationPaths:['worker','provider'],observerPaths:['observer'],dependencyLock:{sympy:'1.14.0'},policy:{version:1}};
+  const projection={action:'echo',value:'stable-calculation'},keyFor=fingerprint=>stageKey('MATH',projection,fingerprint);
+  let producerCalls=0;
+  const execute=key=>withWorkRoot(cacheWorkRoot,()=>calculationStage(root,{stage:'MATH',key,provenance:{fingerprint:key}},async()=>{producerCalls++;return{'model.json':'stable-bytes'};}));
+  const fingerprintV1=capabilityFingerprint(root,spec),keyV1=keyFor(fingerprintV1);
+  const coldV1=await execute(keyV1);assert.equal(coldV1.cacheHit,false);assert.equal(producerCalls,1);
+  const warmV1=await execute(keyV1);assert.equal(warmV1.cacheHit,true);assert.equal(producerCalls,1);
+  fs.writeFileSync(path.join(root,'docs'),'unrelated');assert.equal(capabilityFingerprint(root,spec),fingerprintV1);
+  fs.writeFileSync(path.join(root,'observer'),'v2');
+  const fingerprintV2=capabilityFingerprint(root,spec),keyV2=keyFor(fingerprintV2);
+  assert.notEqual(keyV2,keyV1);const coldV2=await execute(keyV2);assert.equal(coldV2.cacheHit,false);assert.equal(producerCalls,2);
+  const warmV2=await execute(keyV2);assert.equal(warmV2.cacheHit,true);assert.equal(producerCalls,2);
+  fs.writeFileSync(path.join(root,'provider'),'v2');
+  const fingerprintV3=capabilityFingerprint(root,spec),keyV3=keyFor(fingerprintV3);
+  assert.notEqual(keyV3,keyV2);const coldV3=await execute(keyV3);assert.equal(coldV3.cacheHit,false);assert.equal(producerCalls,3);
+  const warmV3=await execute(keyV3);assert.equal(warmV3.cacheHit,true);assert.equal(producerCalls,3);
+  for(const [key,receipt] of [[keyV1,coldV1.receipt],[keyV2,coldV2.receipt],[keyV3,coldV3.receipt]]){
+    assert.equal(readBoundFile(root,receipt.outputs[0]).toString('utf8'),'stable-bytes');
+    assert.ok(withWorkRoot(cacheWorkRoot,()=>loadStage(root,'MATH',key)));
+  }
+  const siblings=fs.readdirSync(path.join(root,cacheWorkRoot,'stages','MATH')).sort();
+  assert.deepEqual(siblings,[keyV1.slice(7),keyV2.slice(7),keyV3.slice(7)].sort());
+});
 test('timeout terminates worker; next request uses a fresh subprocess',async()=>{
   const script=path.join(root,'sleep.py');fs.writeFileSync(script,'import time\ntime.sleep(30)\n');
   await assert.rejects(pythonWorker({action:'echo',value:1},{script,timeoutMs:100}),/WORKER_TIMEOUT/);

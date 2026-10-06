@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_OBSERVER_PROVIDER_CALCULATION_CACHE_INVALIDATION_v1",
+  "classification": "BOUNDED_CAPABILITY_FINGERPRINT_STAGE_KEY_CACHE_NEGATIVE_TEST_ONLY",
+  "status": "PASS",
+  "acceptance": {
+    "unchangedImplementation": "same fingerprint/key returns warm bytes without rerunning producer",
+    "unrelatedDocumentation": "does not change capability fingerprint or cache key",
+    "observerMutation": "changes capability fingerprint and key; recomputes complete bytes before warm reuse",
+    "providerImplementationMutation": "changes capability fingerprint and key; recomputes complete bytes before warm reuse"
+  },
+  "observations": {
+    "focusedRepetitions": 10,
+    "focusedFailures": 0,
+    "nodeTests": 61,
+    "nodePasses": 61,
+    "nodeFailures": 0,
+    "pythonTests": 141,
+    "pythonPasses": 141,
+    "pythonFailures": 0
+  },
+  "testMechanism": "Uses the shared capabilityFingerprint, stageKey and calculationStage primitives with isolated implementation/provider/observer fixture files under the temporary test root. It does not claim full runner source/answer/solution/policy invalidation coverage.",
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/production-contract.test.mjs",
+      "bytes": 19944,
+      "sha256": "sha256:e9504415297a6e9ec83aaf32971cb70d063362b8c0d00e910cf8c653af5f0293"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/contracts.mjs",
+      "bytes": 5273,
+      "sha256": "sha256:58d55643d78ce39e5194c87e73ef46c8742615b76279cf58a2d119dc956551bc"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/fingerprint.mjs",
+      "bytes": 2793,
+      "sha256": "sha256:3c3ab27573b726519794210aa5f1ee5b99acc94d9b6a22739f0d5a6fbfa3ad11"
+    }
+  ],
+  "logs": {
+    "focused": [
+      "logs/focused-01.json",
+      "logs/focused-02.json",
+      "logs/focused-03.json",
+      "logs/focused-04.json",
+      "logs/focused-05.json",
+      "logs/focused-06.json",
+      "logs/focused-07.json",
+      "logs/focused-08.json",
+      "logs/focused-09.json",
+      "logs/focused-10.json"
+    ],
+    "node": "logs/node-regression-61.json",
+    "python": "logs/python-regression-141.json",
+    "summary": "logs/summary.json",
+    "testSource": "logs/production-contract.test.mjs",
+    "runnerSource": "logs/run-observer-provider-cache-regression.mjs"
+  },
+  "openDebt": [
+    "The complete provider/observer/cache invalidation matrix remains open; this bounded test covers only calculation-stage cache keys over provider and observer implementation refs.",
+    "Phase2 source/answer/solution review invalidation and provider timeout/remote-turn cancellation are tracked in separate packages; provider timeout remains DEBT.",
+    "Canonical UID authority and qualification remain unresolved."
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionFingerprintChanged": false,
+  "currentHead": "3378a651e",
+  "lastUpdatedUtc": "2026-10-06T17:37:42.023Z"
+}
