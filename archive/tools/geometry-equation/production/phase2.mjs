@@ -49,10 +49,10 @@ function pngSize(bytes){
   if(!Buffer.isBuffer(bytes)||bytes.length<24||bytes.toString('hex',0,8)!=='89504e470d0a1a0a'||bytes.toString('ascii',12,16)!=='IHDR')throw Error('ARCHIVE_SCREENSHOT_PNG_REQUIRED');
   return {width:bytes.readUInt32BE(16),height:bytes.readUInt32BE(20)};
 }
-async function actualArchiveEnvelopePreflight({identity,folder,questionUid,sourcePath,ordinal,sourceRef,solutionRef,intrinsicSvg,sourceAuthorityStatus}){
+async function actualArchiveEnvelopePreflight({identity,folder,questionUid,sourcePath,ordinal,sourceRef,solutionRef,intrinsicSvg,sourceAuthorityStatus,signal,onProgress}){
   process.env.GEOMETRY_NODE_MODULES ||= path.join(dependencyRoot,'node_modules');
   const targetId=identity.assetId,preflightRun=path.join(folder,'display-envelope-preflight');fs.mkdirSync(preflightRun,{recursive:true});
-  const measured=await measureArchiveDisplayEnvelope({run:preflightRun,sourceRef,sourceOrdinal:ordinal,targetId,questionUid,intrinsicSvg,sourceAuthorityStatus});
+  const measured=await measureArchiveDisplayEnvelope({run:preflightRun,sourceRef,sourceOrdinal:ordinal,targetId,questionUid,intrinsicSvg,sourceAuthorityStatus,signal,onProgress});
   if(measured.status!=='PASS')throw Error('ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL');
   const rowName=fs.readdirSync(measured.captureFolder).find(name=>name.endsWith('-sol-desktop-envelope.json'));
   const contextName=fs.readdirSync(measured.captureFolder).find(name=>name.endsWith('-'+targetId+'-envelope-context.png'));
@@ -132,13 +132,13 @@ function specFor(plan,model,id){
 }
 
 export async function runPhase2(options){
-  const {questionUid,sourcePath,ordinal,replayResultRef}=options;
+  const {questionUid,sourcePath,ordinal,replayResultRef,runId}=options;
   const requestedUid=questionUid||(sourcePath&&ordinal!==undefined?questionUidV2(path.basename(sourcePath,'.js'),ordinal):null);
-  const workspace=bindRunWorkspace(root,{questionUid:requestedUid,sourcePath,replayResultRef});
+  const workspace=bindRunWorkspace(root,{questionUid:requestedUid,sourcePath,replayResultRef,runId});
   return withWorkRoot(workspace.workRoot,()=>runPhase2InWorkspace({...options,requestedUid,workspace}));
 }
 
-async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePath,ordinal,replayResultRef=null,experimentalLocator=false,requestedUid,workspace}){
+async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePath,ordinal,replayResultRef=null,experimentalLocator=false,requestedUid,workspace,signal,onArchiveProgress}){
   let authority=null;
   if(sourceRegistryRef){
     if(isEngineOutputPath(sourceRegistryRef.path))throw Error('ENGINE_SCOPED_REGISTRY_NOT_AUTHORITY');
@@ -261,7 +261,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     stages.push(freeze('MATH_REVIEW',reconstruction,provenance));if(reconstruction.status!=='PASS')throw Error('MATH_RECONSTRUCTION_FAIL');
     let spec=specFor(materialPlan,model,identity.assetId);stages.push(freeze('NORMALIZE',spec,provenance));
     let prepared=await worker({action:'prepare',spec});
-    const envelopePreflight=await actualArchiveEnvelopePreflight({identity,folder,questionUid:uid,sourcePath,ordinal,sourceRef,solutionRef,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},sourceAuthorityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR'});
+    const envelopePreflight=await actualArchiveEnvelopePreflight({identity,folder,questionUid:uid,sourcePath,ordinal,sourceRef,solutionRef,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},sourceAuthorityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR',signal,onProgress:onArchiveProgress});
     stages.push(...envelopePreflight.stages);
     const requestedSizeClass=question.solutionImageSize||'medium';
     const typographyPolicy=requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},observation:envelopePreflight.observation,fontFloorCssPx:11});
@@ -306,9 +306,13 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
           if(!sourceConditionParity||!sourceFactParity||!semanticPlanParity||!labelInventoryParity)throw Error('GRAPH_PANEL_COMPOSITION_SEMANTIC_PARITY_FAIL');
           const repairOutput={schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_OUTPUT_v2',repairInputSha256,sourcePlanSha256:sourcePlanAfterSha256,sourceConditionsSha256:sourceConditionsAfterSha256,sourceFactSha256:sourceFactAfterSha256,graphPlanSha256:graphPlanAfterSha256,labelInventorySha256:adjustedLabelInventorySha256,formulaLabelId:formulaId,formulaFragmentSha256:fragments[formulaId].fragmentSha256,formulaText:adjusted.labels.find(label=>label.id===formulaId)?.text,measuredFormulaWidthPx:measuredFormula[0],panelPaddingPx,priorPanelPx,selectedPanelPx};
           const repairOutputSha256=objectSha(repairOutput),repairAction=repairBudget.record('LAYOUT',repairInputSha256,'MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW',repairOutputSha256);
-          if(priorLayoutComposition?.schemaVersion==='MEASURED_GRAPH_FORMULA_PANEL_v2'&&(priorLayoutComposition.repairInputSha256!==repairInputSha256||priorLayoutComposition.repairOutputSha256!==repairOutputSha256||priorLayoutComposition.selectedPanelPx!==selectedPanelPx))throw Error('LAYOUT_REPAIR_REPLAY_MISMATCH');
+          const priorCompositionCurrentSchema=priorLayoutComposition?.schemaVersion==='MEASURED_GRAPH_FORMULA_PANEL_v2';
+          const samePriorRepairInput=priorCompositionCurrentSchema&&priorLayoutComposition.repairInputSha256===repairInputSha256;
+          if(samePriorRepairInput&&(priorLayoutComposition.repairOutputSha256!==repairOutputSha256||priorLayoutComposition.selectedPanelPx!==selectedPanelPx))throw Error('LAYOUT_REPAIR_REPLAY_MISMATCH');
+          if(priorCompositionCurrentSchema&&!samePriorRepairInput&&repairAction.replayed)throw Error('LAYOUT_REPAIR_REPLAY_MISMATCH');
+          const repairReplayRelation=!priorCompositionCurrentSchema?'FIRST_BUDGETED_REPAIR':samePriorRepairInput?'EXACT_REPLAY':'NEW_INPUT_DISTINCT_BUDGET';
           prepared=adjusted;
-          stages.push(freeze('PROFILE_COMPOSITION',{schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_v2',status:'PASS',compositionOnly:true,sourceRef,solutionRef,sourcePlanSha256,sourceConditionsSha256,sourceFactSha256,graphPlanSha256,labelInventoryBeforeSha256:labelInventorySha256,labelInventoryAfterSha256:adjustedLabelInventorySha256,sourceConditionParity,sourceFactParity,semanticPlanParity,labelInventoryParity,requestedSizeClass,typographyPolicy,formulaLabelId:formulaId,fragmentRef:fragments[formulaId].fragmentSha256,measurementRef:measurementReceipt.outputs[0],formulaTextWidthPx:measuredFormula[0],panelPaddingPx,priorPanelPx,selectedPanelPx,repairInput,repairInputSha256,repairOutput,repairOutputSha256,repairIteration:repairAction.row.iteration,repairReplayed:repairAction.replayed,repairResumed:repairAction.resumed,displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256},provenance));
+          stages.push(freeze('PROFILE_COMPOSITION',{schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_v2',status:'PASS',compositionOnly:true,sourceRef,solutionRef,sourcePlanSha256,sourceConditionsSha256,sourceFactSha256,graphPlanSha256,labelInventoryBeforeSha256:labelInventorySha256,labelInventoryAfterSha256:adjustedLabelInventorySha256,sourceConditionParity,sourceFactParity,semanticPlanParity,labelInventoryParity,requestedSizeClass,typographyPolicy,formulaLabelId:formulaId,fragmentRef:fragments[formulaId].fragmentSha256,measurementRef:measurementReceipt.outputs[0],formulaTextWidthPx:measuredFormula[0],panelPaddingPx,priorPanelPx,selectedPanelPx,repairInput,repairInputSha256,repairOutput,repairOutputSha256,repairIteration:repairAction.row.iteration,repairReplayed:repairAction.replayed,repairResumed:repairAction.resumed,repairReplayRelation,previousRepairInputSha256:priorLayoutComposition?.repairInputSha256??null,displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256},provenance));
           finalCompositionBinding={repairInputSha256,repairOutputSha256};
           stages.push(freeze('NORMALIZE_FINAL',spec,{...provenance,compositionStage:'PROFILE_COMPOSITION',displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256}));
         }
@@ -346,7 +350,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     const matrix={synthetic:false,legacyHashAlgorithm:'SHA256_RAW_HEX_v1',engineSha256:rawHex(fileRef(root,'archive/engine.html')),sources:[{...bankInfo,assets:[{...bankInfo.assets[0],sizeClass:finalDisplayEnvelope.sizeClass}]}],rows:[{...bankInfo,assets:[{...bankInfo.assets[0],sizeClass:finalDisplayEnvelope.sizeClass}],mode:'sol',viewport:'desktop',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourcePath.replace(/^archive\//,''))}]};
     fs.writeFileSync(path.join(folder,'archive-render-matrix.json'),canonicalJson(matrix));
     process.env.GEOMETRY_NODE_MODULES ||= path.join(dependencyRoot,'node_modules');
-    const archive=await recordArchiveEvidence({run:folder});
+    const archive=await recordArchiveEvidence({run:folder,signal,onProgress:onArchiveProgress});
     const captureFolder=path.join(folder,'archive-render/attempt-01'),captureOutputs={};
     for(const name of fs.readdirSync(captureFolder))captureOutputs[name]=fs.readFileSync(path.join(captureFolder,name));
     const captureReceipt=receipt('CAPTURE',captureOutputs,provenance);stages.push(captureReceipt);
@@ -380,7 +384,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     if(visualReview.output.status!=='PASS')throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL:'+canonicalJson(visualReview.payload));
     if(!Array.isArray(visualReview.payload.errors)||visualReview.payload.errors.length||!Array.isArray(visualReview.payload.observations)||!visualReview.payload.observations.length)throw Error('INDEPENDENT_VISUAL_REVIEW_FAIL');
     result={status:authority?'PHASE2_SLICE_COMPLETE':'EXPERIMENTAL_LOCATOR_COMPLETE',identityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR',sourceRegistryRef,workRoot:workspace.workRoot,runId:workspace.runId,examUid:workspace.examUid,productionAuthorized:false,qualificationStatus:'NOT_QUALIFIED',identity,sourceRef,solutionRef,planRef:planReceipt.outputs[0],fingerprint,finalSvgRef:asset,displayEnvelopePlanRef:displayEnvelopeReceipt.outputs[0],displayEnvelopeAuditRef:profileAudit.stageReceipts.at(-1).outputs[0],displayEnvelopeFinalRef:displayFinalReceipt.outputs[0],selectedSizeClass:finalDisplayEnvelope.sizeClass,displayPolicyChange:finalDisplayEnvelope.policyChange,actualArchive:archive,independentVisualReviewRef:stages.at(-1).outputs[0],stages:stages.map(s=>s.manifestRef)};
-  }catch(error){result={status:error.message.startsWith('UNSUPPORTED_CINDY_')?'UNSUPPORTED_NUMERIC_SCOPE':error.message.startsWith('UNSUPPORTED_DISPLAY_ENVELOPE:')?'UNSUPPORTED_DISPLAY_ENVELOPE':'UNRESOLVED',productionAuthorized:false,identity,sourceRef,error:error.message,stages:stages.map(s=>s.manifestRef)};}
+  }catch(error){result={status:error.message.startsWith('UNSUPPORTED_CINDY_')?'UNSUPPORTED_NUMERIC_SCOPE':error.message.startsWith('UNSUPPORTED_DISPLAY_ENVELOPE:')?'UNSUPPORTED_DISPLAY_ENVELOPE':'UNRESOLVED',productionAuthorized:false,identity,sourceRef,error:error.message,errorCode:error.code||null,archiveAbortEvidenceRef:error.abortEvidenceRef||null,archiveCleanup:error.cleanup||null,stages:stages.map(s=>s.manifestRef)};}
   result.repairLedger=repairBudget.ledger;
   Object.assign(result,{schemaVersion:'VISUAL_RESULT_v1',phase:2,engineStatus:'EXPERIMENTAL',workRoot:workspace.workRoot,runId:workspace.runId,examUid:workspace.examUid});
   const final=freeze('RESULT',result,provenance);console.log(JSON.stringify({uid,status:result.status,error:result.error,resultRef:final.outputs[0]}));return {result,receipt:final};

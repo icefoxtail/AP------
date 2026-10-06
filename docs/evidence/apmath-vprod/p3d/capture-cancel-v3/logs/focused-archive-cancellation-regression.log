@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "PHASE3D_CANCELLATION_REGRESSION_v1",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "archive/tools/geometry-equation/tests/archive-cancel-recovery.test.mjs"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdout": "{\"stage\":\"FROZEN_PLAN_REPLAY\",\"uid\":\"25_연향중_1학기_기말_중3_기출c|10\"}\n{\"stage\":\"MATH\",\"uid\":\"25_연향중_1학기_기말_중3_기출c|10\"}\n{\"uid\":\"25_연향중_1학기_기말_중3_기출c|10\",\"status\":\"UNRESOLVED\",\"error\":\"ARCHIVE_CAPTURE_CANCELLED\",\"resultRef\":{\"bytes\":12293,\"path\":\".tmp/archive/archive-cancel-b0f8792c-24de-42fe-9069-038b3c6ae787/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/d93e30e0f6b8f126ba445a70cfb524e3ec12171a5f6e211cf6467378b304fe83/result.json\",\"sha256\":\"sha256:400805b46f5474a96ccb76ffa732285712fed45b92d97185c5694e0fff64d3b8\"}}\n✔ Archive readiness cancellation closes Chromium and server without publishing CAPTURE (2153.5769ms)\n✔ the real Chromium collector writes only ABORTED evidence, then succeeds in a fresh workspace (1047.1324ms)\n✔ an abort at the post-cleanup finalization boundary writes ABORTED and suppresses summary (686.2434ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4105.736\n",
+  "stderr": ""
+}

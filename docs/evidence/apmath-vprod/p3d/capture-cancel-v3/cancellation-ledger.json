@@ -1,0 +1,438 @@
+{
+  "schemaVersion": "APMATH_PHASE3D_ARCHIVE_CAPTURE_CANCELLATION_v1",
+  "classification": "ARCHIVE_CAPTURE_CANCELLATION_RECOVERY_EXPERIMENTAL_INFRASTRUCTURE_NOT_QUALIFICATION",
+  "status": "PASS",
+  "priorPackageBuildAttempts": [
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/capture-cancel/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "reason": "The first package builder assigned the same SHA-derived destination to distinct source refs without deduplicating before exclusive write. It remains preserved and excluded from this manifest/index."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/capture-cancel-v2/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "reason": "A second package attempt used path.join(root, absolute Windows retry path), so it stopped before manifest generation. It remains preserved and excluded from this manifest/index."
+    }
+  ],
+  "contract": {
+    "typedError": "ARCHIVE_CAPTURE_CANCELLED",
+    "readinessAbort": "Check cancellation before row, summary, screenshot-on-error, and success receipt writes; write ABORTED evidence with cleanup proof only after Chromium and HTTP server closure settles.",
+    "lateFinalizationAbort": "After awaited cleanup and before summary.json, recheck AbortSignal; persist ABORTED.json and throw the typed error if cancellation is already requested.",
+    "retry": "A separate fresh work root can complete the same controlled capture and write a PASS row and summary."
+  },
+  "cases": {
+    "phase2ReadinessAbort": {
+      "runId": "archive-cancel-b0f8792c-24de-42fe-9069-038b3c6ae787",
+      "workRoot": ".tmp/archive/archive-cancel-b0f8792c-24de-42fe-9069-038b3c6ae787/25_연향중_1학기_기말_중3_기출c/visual-engine/production",
+      "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+      "status": "UNRESOLVED",
+      "errorCode": "ARCHIVE_CAPTURE_CANCELLED",
+      "productionAuthorized": false,
+      "abortEvidencePackagePath": "payload/phase2-readiness/ABORTED.json",
+      "resultPackagePath": "payload/phase2-readiness/UNRESOLVED-result.json",
+      "resultRef": {
+        "bytes": 12293,
+        "path": ".tmp/archive/archive-cancel-b0f8792c-24de-42fe-9069-038b3c6ae787/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/d93e30e0f6b8f126ba445a70cfb524e3ec12171a5f6e211cf6467378b304fe83/result.json",
+        "sha256": "sha256:400805b46f5474a96ccb76ffa732285712fed45b92d97185c5694e0fff64d3b8"
+      },
+      "stageNames": [
+        "SOURCE_LOCATOR",
+        "SOLUTION_BLIND_FREEZE",
+        "SOLUTION_COMPARE",
+        "VERIFIED_SOLUTION",
+        "PLANNER",
+        "PLANNER",
+        "PLANNER",
+        "CONDITIONS_BLIND_FREEZE",
+        "CONDITIONS_COMPARE",
+        "SOURCE_REVIEW",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "SOLUTION_BLIND_FREEZE",
+        "SOLUTION_COMPARE",
+        "VERIFIED_SOLUTION",
+        "CONDITIONS_BLIND_FREEZE",
+        "CONDITIONS_COMPARE",
+        "SOURCE_REVIEW",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "PLAN",
+        "GRAPH_OVERVIEW_FRAME",
+        "MATH",
+        "MATH_REVIEW",
+        "NORMALIZE"
+      ],
+      "stageReceipts": [
+        {
+          "stage": "SOURCE_LOCATOR",
+          "manifestPath": "phase2-stages/SOURCE_LOCATOR-868f2f619077.json",
+          "outputPaths": [
+            "phase2-payload/dbefb0fbb93f738175c2e30e9e66173cc086e0741db5b9c65fbc9d72db6a65c5.json"
+          ]
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "manifestPath": "phase2-stages/SOLUTION_BLIND_FREEZE-4b94c9e2d54d.json",
+          "outputPaths": [
+            "phase2-payload/58a3681067c48b7694ca932ce687ede76ce1670b00a9dd059f352a33a287ae14.json"
+          ]
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "manifestPath": "phase2-stages/SOLUTION_COMPARE-4dd8091bf24b.json",
+          "outputPaths": [
+            "phase2-payload/72b8a38de3ba0db10a9e6ce1386ec37cccb7be5c34b12bd8f27c2ea45b8422bc.json"
+          ]
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "manifestPath": "phase2-stages/VERIFIED_SOLUTION-ef6a6a6ab491.json",
+          "outputPaths": [
+            "phase2-payload/a546564aac6bcbbee419819968f9b4220445f5244cb6a38ddc19a36671defd3e.json"
+          ]
+        },
+        {
+          "stage": "PLANNER",
+          "manifestPath": "phase2-stages/PLANNER-43c2e793aabb.json",
+          "outputPaths": [
+            "phase2-payload/982271027c6659427a9c685eb077bf3503c885dd2d9047f4ee4c39a8648b1c78.json"
+          ]
+        },
+        {
+          "stage": "PLANNER",
+          "manifestPath": "phase2-stages/PLANNER-7c0ab295d7cf.json",
+          "outputPaths": [
+            "phase2-payload/a4184c20a064812cbc9f261dd24fe0e1c966c5073236ba8841f5201fdd0fb4a0.json"
+          ]
+        },
+        {
+          "stage": "PLANNER",
+          "manifestPath": "phase2-stages/PLANNER-e19e1fa0fab0.json",
+          "outputPaths": [
+            "phase2-payload/a4184c20a064812cbc9f261dd24fe0e1c966c5073236ba8841f5201fdd0fb4a0.json"
+          ]
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "manifestPath": "phase2-stages/CONDITIONS_BLIND_FREEZE-9b3c26013d2e.json",
+          "outputPaths": [
+            "phase2-payload/7998c8bcce162c18eb5f8801d5d138b38673aa6fe789392eb99c6449e6de1d48.json"
+          ]
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "manifestPath": "phase2-stages/CONDITIONS_COMPARE-9307eba07b7b.json",
+          "outputPaths": [
+            "phase2-payload/f949c7979ec019a30590fa9d694055f8e694627031e12749371f9390b1ae483d.json"
+          ]
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "manifestPath": "phase2-stages/SOURCE_REVIEW-445335e68413.json",
+          "outputPaths": [
+            "phase2-payload/c1bbecf20481204f3ae2bc6757dcf7bf90f18623ddfa10cc5bae5e2e87820c74.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-abd682910731.json",
+          "outputPaths": [
+            "phase2-payload/e218b8f5a0c1b30dfcbce73aaf35256a52e916ac8cf5a71806e36a89c19932ea.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-daae2a9a7de2.json",
+          "outputPaths": [
+            "phase2-payload/d2a384270f07b0db1df16562af2cc7c47a359b348647e620a5e346ae907ed5c2.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-22bf833bc617.json",
+          "outputPaths": [
+            "phase2-payload/dfdb2e6ad341923d25fbe3e2401578b225b0178ea4925553e7fa6479014f8213.json"
+          ]
+        },
+        {
+          "stage": "SOLUTION_BLIND_FREEZE",
+          "manifestPath": "phase2-stages/SOLUTION_BLIND_FREEZE-69cb238d870e.json",
+          "outputPaths": [
+            "phase2-payload/33998b87cd1f23be7bab97a374c07aa780aad59662a93f559f4aceefa449ceba.json"
+          ]
+        },
+        {
+          "stage": "SOLUTION_COMPARE",
+          "manifestPath": "phase2-stages/SOLUTION_COMPARE-51e2fae9eff5.json",
+          "outputPaths": [
+            "phase2-payload/aed461a576deb5455b6c48ad20e5e5520bf35a9a093d3fec8c8594adf57efdde.json"
+          ]
+        },
+        {
+          "stage": "VERIFIED_SOLUTION",
+          "manifestPath": "phase2-stages/VERIFIED_SOLUTION-324e85ff5a98.json",
+          "outputPaths": [
+            "phase2-payload/aa7fd77123c909e522872709662d392e2a8fee9ad103f94eb360e5a44c4883c8.json"
+          ]
+        },
+        {
+          "stage": "CONDITIONS_BLIND_FREEZE",
+          "manifestPath": "phase2-stages/CONDITIONS_BLIND_FREEZE-05991f371d0a.json",
+          "outputPaths": [
+            "phase2-payload/91cd23b40bc348ba52e23b727e2b1a44e6bb7546a2b458d6d6ff94e3842be44b.json"
+          ]
+        },
+        {
+          "stage": "CONDITIONS_COMPARE",
+          "manifestPath": "phase2-stages/CONDITIONS_COMPARE-06368eedf789.json",
+          "outputPaths": [
+            "phase2-payload/93dd1f8f04e99423f86626f2105b5f5720e174e78eabfb9c0f5866056c04f39e.json"
+          ]
+        },
+        {
+          "stage": "SOURCE_REVIEW",
+          "manifestPath": "phase2-stages/SOURCE_REVIEW-8ab7afb9c288.json",
+          "outputPaths": [
+            "phase2-payload/f94029781b05fc54b310e4432e87cf01fae3eb1f9b92e719324d9b90f324ea97.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-95a3c3609118.json",
+          "outputPaths": [
+            "phase2-payload/7e6f8ae14702cb5148aaa6bdfc57b5bcbcdad6a68576944939267a4148c1f809.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-065d4417118f.json",
+          "outputPaths": [
+            "phase2-payload/06ab63a3560b05a9eed0e040f738bb2559d1cafac77125c96976f2ac64e9b86b.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-d5e7769704cb.json",
+          "outputPaths": [
+            "phase2-payload/5f74b58ba6f5190a9dc3dc5c35e7efce8565f5fa681ca99476dbdb9cefc90944.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-fd482e3f44a8.json",
+          "outputPaths": [
+            "phase2-payload/20d8c607ee3f12f05c380ab2938a30bd8ecbf0072048a2fbaf19ae210acfa8de.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-c74a0b86954e.json",
+          "outputPaths": [
+            "phase2-payload/2a690f75935e7a65530249117c69d922f21d154506ca7dc74af5496bcc18b13a.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-e6738f810e9a.json",
+          "outputPaths": [
+            "phase2-payload/4532a536815a270a2aa613906c91759dc4e7d247ea6838ebbdb60ebf59ded091.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-83733ad451c1.json",
+          "outputPaths": [
+            "phase2-payload/ac6e0d3bcfbd1f7a629dc72eeeaa4909c9b1c1fa502cab234c55358a7a7b3d47.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-4ca39be78e33.json",
+          "outputPaths": [
+            "phase2-payload/f8d3f531377dd0f40b7f870370a82d7947e7c38835bcc3499825917c613e1424.json"
+          ]
+        },
+        {
+          "stage": "PLAN",
+          "manifestPath": "phase2-stages/PLAN-8f77f49c1efb.json",
+          "outputPaths": [
+            "phase2-payload/67298f5b1f09ce45d441bde48ea09d7548292ec862181cc34daf9b0da9f85ab2.json"
+          ]
+        },
+        {
+          "stage": "GRAPH_OVERVIEW_FRAME",
+          "manifestPath": "phase2-stages/GRAPH_OVERVIEW_FRAME-763f408dc12c.json",
+          "outputPaths": [
+            "phase2-payload/7d60eb6b6fcd7eaabd7db2f6b3295f846b14df39443fcde668b4863925dda222.json"
+          ]
+        },
+        {
+          "stage": "MATH",
+          "manifestPath": "phase2-stages/MATH-18964699c171.json",
+          "outputPaths": [
+            "phase2-payload/7c18f7fd3b96d632166b5a62e103e70c9476dd2eeca00277ba474a8390f826c0.json"
+          ]
+        },
+        {
+          "stage": "MATH_REVIEW",
+          "manifestPath": "phase2-stages/MATH_REVIEW-5c8a126f2d75.json",
+          "outputPaths": [
+            "phase2-payload/8fea5fbacf73d584f5aaf3af0b4656e08511bbd1b413cb62d550e642e789faf9.json"
+          ]
+        },
+        {
+          "stage": "NORMALIZE",
+          "manifestPath": "phase2-stages/NORMALIZE-6ae3aa65bdf2.json",
+          "outputPaths": [
+            "phase2-payload/e7583fccb10dc56c8cd70ef5752848e454f09582bb6c612b718c707def437b93.json"
+          ]
+        }
+      ],
+      "progress": [
+        {
+          "event": "SERVER_LISTENING",
+          "attempt": "envelope-preflight",
+          "port": 53922
+        },
+        {
+          "event": "BROWSER_LAUNCHED",
+          "attempt": "envelope-preflight",
+          "browserVersion": "154.0.8037.98"
+        },
+        {
+          "event": "PAGE_READINESS_WAIT",
+          "attempt": "envelope-preflight",
+          "rowId": "va-2a6cc447b6e7c16a252a26e67c36862ebf953eac3614217df476135452cdd838",
+          "urlPath": "/archive/engine.html?mode=sol&qpp=4&data=exams%2Foriginal%2Fmiddle%2Fm3%2F1final%2F25_%EC%97%B0%ED%96%A5%EC%A4%91_1%ED%95%99%EA%B8%B0_%EA%B8%B0%EB%A7%90_%EC%A4%913_%EA%B8%B0%EC%B6%9Cc.js"
+        }
+      ],
+      "cleanup": {
+        "serverWasListening": true,
+        "browserWasLaunched": true,
+        "browserClosed": true,
+        "serverClosed": true,
+        "browserCloseError": null,
+        "serverCloseError": null
+      },
+      "pass": true
+    },
+    "collectorReadinessAbort": {
+      "abortEvidenceRef": ".tmp/archive/archive-cancel-control-0493a76c-ea23-4f2f-afee-0cabf7625288/controlled-capture/visual-engine/production/archive-render/attempt-01/ABORTED.json",
+      "abortEvidenceFolder": ".tmp/archive/archive-cancel-control-0493a76c-ea23-4f2f-afee-0cabf7625288/controlled-capture/visual-engine/production/archive-render/attempt-01",
+      "attemptFiles": [
+        "ABORTED.json"
+      ],
+      "cleanup": {
+        "serverWasListening": true,
+        "browserWasLaunched": true,
+        "browserClosed": true,
+        "serverClosed": true,
+        "browserCloseError": null,
+        "serverCloseError": null
+      },
+      "progressEvents": [
+        "SERVER_LISTENING",
+        "BROWSER_LAUNCHED",
+        "PAGE_READINESS_WAIT"
+      ],
+      "pass": true
+    },
+    "freshWorkspaceRetry": {
+      "runPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\apmath-visual-phase3-5\\AP------\\.tmp\\archive\\archive-cancel-retry-377bc8bd-bd9d-4f2f-9d92-fbc64d33b305\\controlled-capture\\visual-engine\\production",
+      "status": "PASS",
+      "rowStatus": "PASS",
+      "files": [
+        {
+          "name": "archive-cancellation-control-sol-cancellation-control.json",
+          "packagePath": "payload/fresh-retry/archive-cancellation-control-sol-cancellation-control.json"
+        },
+        {
+          "name": "archive-cancellation-control-sol-cancellation-control.png",
+          "packagePath": "payload/fresh-retry/archive-cancellation-control-sol-cancellation-control.png"
+        },
+        {
+          "name": "summary.json",
+          "packagePath": "payload/fresh-retry/summary.json"
+        }
+      ],
+      "pass": true
+    },
+    "postCleanupFinalizationAbort": {
+      "runId": "archive-cancel-finalize-0bbf8c9b-91ff-45a5-9273-3830221f15ca",
+      "abortEvidenceRef": ".tmp/archive/archive-cancel-finalize-0bbf8c9b-91ff-45a5-9273-3830221f15ca/controlled-finalization/visual-engine/production/archive-render/attempt-01/ABORTED.json",
+      "abortEvidenceFolder": ".tmp/archive/archive-cancel-finalize-0bbf8c9b-91ff-45a5-9273-3830221f15ca/controlled-finalization/visual-engine/production/archive-render/attempt-01",
+      "attemptFiles": [
+        "ABORTED.json",
+        "archive-cancellation-finalization-sol-finalization-control.json",
+        "archive-cancellation-finalization-sol-finalization-control.png"
+      ],
+      "cleanup": {
+        "serverWasListening": true,
+        "browserWasLaunched": true,
+        "browserClosed": true,
+        "serverClosed": true,
+        "browserCloseError": null,
+        "serverCloseError": null
+      },
+      "progressEvents": [
+        "SERVER_LISTENING",
+        "BROWSER_LAUNCHED",
+        "PAGE_READINESS_WAIT",
+        "ARCHIVE_RESOURCES_CLEANED"
+      ],
+      "summaryPresent": false,
+      "pass": true
+    }
+  },
+  "tests": {
+    "focusedArchiveCancellation": {
+      "passed": 3,
+      "failed": 0,
+      "logPath": "logs/focused-archive-cancellation-regression.log"
+    },
+    "node": {
+      "passed": 58,
+      "failed": 0,
+      "logPath": "logs/node-regression.log"
+    },
+    "python": {
+      "passed": 141,
+      "failed": 0,
+      "logPath": "logs/python-regression.log"
+    },
+    "suiteSummaryPath": "logs/summary.json"
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+      "bytes": 25027,
+      "sha256": "sha256:54d4ce1b4f3e6fb5928eafff5939d159834fa5d8eb85c3dc79557e038eb38456"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "bytes": 57488,
+      "sha256": "sha256:804cd3bd02f921978c80a3d0cdf497d21f63bf1063d1b0dc0a35612d0abf7152"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/archive-cancel-recovery.test.mjs",
+      "bytes": 10821,
+      "sha256": "sha256:0ed82e4cef9ee5bf990e027580fbfa1fd984f5abd8c6ad3909204b9eb419e50f"
+    }
+  ],
+  "limitations": [
+    "The finalization-boundary abort may occur after a complete row and screenshot have been written; the collector marks the attempt ABORTED and suppresses summary.json.",
+    "This cancellation evidence does not establish canonical UID authority or production visual qualification.",
+    "Cancellation tests use a controlled Archive HTML fixture for direct collector cases and the experimental q10 source locator for Phase2; all candidate runs remain outside qualification counts."
+  ],
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "currentHeadBeforeCommit": "UNCOMMITTED_PHASE3D_CAPTURE_CANCELLATION_UNIT",
+  "lastUpdatedUtc": "2026-10-06T15:19:46.238Z"
+}
