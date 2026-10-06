@@ -76,6 +76,15 @@
     overflow: visible !important;
   }
 
+  /* The page number is inline-positioned at the print footer in makePage().
+     On a flowing mobile page, put it after the body so it cannot cover content. */
+  html[data-archive2-context="archive2"][data-ap-render-ready="true"] .page > div[style*="bottom: 15mm"] {
+    position: static !important;
+    flex: 0 0 auto !important;
+    align-self: center;
+    margin-top: 12px;
+  }
+
   html[data-archive2-context="archive2"][data-ap-render-ready="true"] .page-header.page-header--exam {
     grid-template-columns: minmax(0, 1fr) !important;
     align-items: start !important;
