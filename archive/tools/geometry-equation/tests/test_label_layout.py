@@ -44,7 +44,7 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(r['labels'][0]['box']['width'],80)
         self.assertEqual(r['labels'][0]['box']['height'],30)
     def test_strict_production_layout_requires_complete_positive_browser_measurements(self):
-        item=label('measured',(100,100))
+        item=label('measured',(100,100),kind='EQUATION_LABEL')
         for measurements,code in [
             ({},'BROWSER_LABEL_MEASUREMENT_REQUIRED:measured'),
             ({'measured':(float('nan'),12)},'INVALID_BROWSER_LABEL_MEASUREMENT:measured'),
@@ -61,9 +61,29 @@ class LayoutTests(unittest.TestCase):
         placed=layout([same],[],safe,panel,measurements={'panel':(80,30)},require_measurements=True)
         self.assertEqual(placed['labels'][0]['placement'],'SIDE_PANEL')
         self.assertEqual((placed['labels'][0]['box']['width'],placed['labels'][0]['box']['height']),(80,30))
-        variant=label('owner-panel',(60,50),'(1,2)',kind='COORDINATE_LABEL',directions=(),gaps=(),panelText='A: (1,2)',panelPrefix='A: ')
+        variant=label('owner-panel',(60,50),'(1,2)',kind='COORDINATE_LABEL',target='A',directions=(),gaps=(),panelText='A: (1,2)',panelPrefix='A: ')
+        owner=[{'id':'A','kind':'point','geometry':(60,50,2)}]
         with self.assertRaisesRegex(ValueError,'BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:owner-panel'):
-            layout([variant],[],safe,panel,measurements={'owner-panel':(40,20)},require_measurements=True)
+            layout([variant],owner,safe,panel,measurements={'owner-panel':(40,20)},require_measurements=True)
+    def test_strict_point_label_stays_in_exact_owners_voronoi_cell(self):
+        safe=Box(-40,0,150,100)
+        points=[{'id':'A','kind':'point','geometry':(20,50,2)},{'id':'B','kind':'point','geometry':(72,50,2)}]
+        ambiguous=label('A-name',(20,50),'A',kind='POINT_NAME',target='A',directions=('E',),gaps=(12,))
+        rejected=layout([ambiguous],points,safe,measurements={'A-name':(30,10)},require_measurements=True)
+        self.assertEqual(rejected['unresolved'],['A-name'])
+        self.assertEqual(rejected['suppressed'],[])
+        owned=label('A-name',(20,50),'A',kind='POINT_NAME',target='A',directions=('W',),gaps=(12,))
+        accepted=layout([owned],points,safe,measurements={'A-name':(30,10)},require_measurements=True)
+        self.assertEqual(accepted['status'],'PASS')
+        self.assertEqual(accepted['labels'][0]['placement'],'AUTO_W')
+        coordinate=label('A-coordinate',(20,50),'(1,2)',kind='COORDINATE_LABEL',target='A',directions=('E',),gaps=(12,))
+        rejected_coordinate=layout([coordinate],points,safe,measurements={'A-coordinate':(30,10)},require_measurements=True)
+        self.assertEqual(rejected_coordinate['unresolved'],['A-coordinate'])
+        coordinate_west={**coordinate,'directions':('W',)}
+        accepted_coordinate=layout([coordinate_west],points,safe,measurements={'A-coordinate':(30,10)},require_measurements=True)
+        self.assertEqual(accepted_coordinate['status'],'PASS')
+        with self.assertRaisesRegex(ValueError,'POINT_LABEL_OWNER_MARKER_REQUIRED:A-name'):
+            layout([owned],[points[1]],safe,measurements={'A-name':(30,10)},require_measurements=True)
     def test_circle_and_segment_boundary(self):
         self.assertFalse(collision(Box(15,15,10,10),{'kind':'circle','geometry':(20,20,100)},0))
         self.assertTrue(segment_hits_box((0,0),(100,100),Box(40,40,10,10)))
