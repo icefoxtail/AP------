@@ -20,3 +20,6 @@
 13. R1/R2의 학생용 입력은 지문·보기뿐 아니라 모든 참조 그림·표·도형을 포함한다. 필요한 그림을 실제로 열어 확인하기 전 blind/independent freeze를 하지 않는다. 입력 누락으로 결정할 수 없는 답을 freeze하고 upstream 답을 공개한 경우 해당 실행은 실패 기록으로 보존하고 완전한 학생용 입력으로 새 세션에서 검수한다.
 14. 학생용 bundle은 실제 current final source에서 추출하고 문항별 학생 필드의 일치와 참조 자산을 freeze 전에 확인한다. 기존 CREATE/old student bundle을 현재 SHA만 붙여 재사용하지 않는다. Git blob SHA-1, 파일 SHA-256 및 각 gate의 raw/clean-filter hash 계약을 구별한다.
 15. 완전한 학생 입력으로 답을 먼저 freeze한 뒤 비교에서 발견된 계산·선택기호 표기 오류는 blind 오염이 아니다. 원 freeze와 사전 추론은 보존하고 같은 stage에서 해당 locus만 근거 있는 adjudication/encoding correction을 한다. 정답을 맞힐 때까지 새 agent를 반복 호출하지 않는다. freeze 전 답 노출·그림 누락이나 student body 교체로 기존 freeze가 무효인 경우에만 영향 qid의 fresh 검수를 수행한다.
+
+
+16. JS Archive 2.0 canary/두 라인 작업은 `docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md`를 공통 품질 authority로 최초 1회 읽는다. `qualityContractVersion=JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`인 실행에서는 CREATE=완제품 후보, R1=전 qid 통합 seal, R2=qualification 동안 full blind answer sweep, R3=targeted release, Codex actual render/publication/MAIN_DONE 순서를 따른다. 작은칠판은 선생님의 설명 문장과 위→아래 연속 수식 판서를 함께 보존한다.

@@ -4,6 +4,27 @@
 
 이 문서는 Archive 2.0의 Codex multi-agent canary 실행용 최소 정본이다. 기존 1.x / M2-1 운영을 변경하지 않는다.
 
+
+## CURRENT OVERRIDE — JS ARCHIVE 2.0 CODEX EXECUTION LINE — 2026-10-06
+
+공통 품질 authority:
+`docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md`
+
+이 override가 아래 2026-10-05 canary/pilot의 품질·stage 정의와 충돌하면 이 절을 우선한다. 과거 commit/대상 목록은 실행 history로 보존한다.
+
+현재 기본 흐름:
+`ROOT → CREATE → R1 → R2 → R3 → RENDER → PUBLICATION → MAIN_DONE`
+
+- ROOT는 routing/ownership/Git/publication만 지휘하고 수학·Meta·Visual quality judgement를 대신하지 않는다.
+- CREATE는 source/answer + QUESTION_LAYOUT + 작은칠판 solution + Meta/difficulty + visual disposition/필요 asset + engine-safe JS까지 actual 완제품 후보를 만든다.
+- 작은칠판은 선생님이 말로 설명할 부분을 필요한 위치에 적고 등호·대입·변형을 실제 수식으로 위→아래 한 줄씩 이어 쓴다. 설명문으로 계산 단계를 대체하지 않는다.
+- R1은 전 qid의 source identity·math/answer/cardinality·question layout·small-board continuity·Meta/difficulty·visual을 하나의 final artifact SHA에 통합 봉인한다. 수정 후 changed qid + direct dependency만 재확인한다.
+- R2는 다음 qualification pilot 동안 전 qid blind answer sweep을 유지한다. 완전한 student input으로 freeze한 뒤 MATCH는 빠르게 닫고 mismatch/suspicious만 깊게 처리한다.
+- R3는 changed/open/direct dependency/locked scope/release integrity만 targeted 검수하며 final artifact 구조·asset ref·SHA·escape integrity는 전체 scan한다.
+- actual engine render는 별도 RENDER stage다. render 미실행을 MAIN_DONE으로 간주하지 않는다.
+- publication은 검증된 final filename/reference를 유지한 채 production으로 승격하고 target-only Git 반영 + remote readback 뒤 MAIN_DONE으로 닫는다.
+- `qualityContractVersion=JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`인 evidence는 generic V2 validator의 actual artifact gate를 함께 통과해야 한다.
+
 ## 1. Canary Target
 
 이번 canary 대상은 오직 아래 1개다.
