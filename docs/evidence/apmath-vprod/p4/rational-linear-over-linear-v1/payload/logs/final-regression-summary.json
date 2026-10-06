@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "APMATH_PHASE4_CURRENT_FINGERPRINT_FULL_REGRESSION_v1",
+  "classification": "FULL_ENGINE_REGRESSION_NOT_QUALIFICATION",
+  "node": {
+    "command": "node --test archive/tools/geometry-equation/tests/*.test.mjs",
+    "exitCode": 0,
+    "passed": 136,
+    "failed": 0,
+    "log": ".tmp/archive/phase4-rational-final-regression-6b3adf6f95614a14a8cb21395eb7a349/25_효천고_2학기_중간_고1_기출/visual-engine/production/regression/node-full.log"
+  },
+  "python": {
+    "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py' -v",
+    "exitCode": 0,
+    "ran": 158,
+    "failed": 0,
+    "log": ".tmp/archive/phase4-rational-final-python-2b774f23df124581a086f31756b29f1e/25_효천고_2학기_중간_고1_기출/visual-engine/production/regression/python-full.txt"
+  },
+  "supersededAttempt": {
+    "runId": "phase4-rational-final-regression-6b3adf6f95614a14a8cb21395eb7a349",
+    "pythonExitCode": 1,
+    "pythonFailedTest": "test_non_cubic_quartic_and_non_polynomial_families_are_not_routed_into_policy",
+    "classification": "STALE_NEGATIVE_EXPECTATION_AFTER_EXPLICIT_RATIONAL_CAPABILITY_ROUTE",
+    "correctiveTestExpectation": "Use exponential as the non-polynomial family rejected by quadratic/cubic framing; rational is now a separate capability.",
+    "log": ".tmp/archive/phase4-rational-final-regression-6b3adf6f95614a14a8cb21395eb7a349/25_효천고_2학기_중간_고1_기출/visual-engine/production/regression/python-full.log"
+  },
+  "qualificationStatus": "NOT_QUALIFIED",
+  "productionAuthorized": false
+}

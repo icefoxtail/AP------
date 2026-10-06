@@ -115,7 +115,7 @@ class CubicQuarticOverview(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'UNSUPPORTED_OVERVIEW_DEGREE'):
             fit_overview(plan(['0','1'],source_domain={'kind':'ALL_REALS'}))
         with self.assertRaisesRegex(ValueError,'UNSUPPORTED_OVERVIEW_FAMILY'):
-            fit_overview({'family':'rational','coefficients':['1','0','0','1'],'domain':[-1,1],'viewport':[-1,1,-1,1]})
+            fit_overview({'family':'exponential','coefficients':['1','0','0','1'],'domain':[-1,1],'viewport':[-1,1,-1,1]})
         with self.assertRaisesRegex(ValueError,'INVALID_FRAMING_COEFFICIENTS'):
             fit_overview(plan(['1/0','0','0','1'],source_domain={'kind':'ALL_REALS'}))
 

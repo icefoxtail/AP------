@@ -1,0 +1,96 @@
+{
+  "coefficients": [
+    "0",
+    "-1",
+    "0",
+    "0",
+    "1"
+  ],
+  "domain": [
+    -1.2,
+    1.2
+  ],
+  "family": "polynomial",
+  "requiredPoints": [],
+  "sourceDomain": {
+    "kind": "ALL_REALS"
+  },
+  "viewport": [
+    -1.2,
+    1.2,
+    -1.034380952767164,
+    3.8355105590565866
+  ],
+  "shapeIntent": "OVERVIEW",
+  "overviewPolicy": "POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1",
+  "overviewFeatures": [
+    {
+      "id": "feature-1",
+      "kind": "POLYNOMIAL_FEATURE",
+      "x": 0,
+      "y": 0,
+      "roles": [
+        "ROOT"
+      ],
+      "multiplicity": {
+        "root": 1,
+        "derivative": null,
+        "secondDerivative": null
+      }
+    },
+    {
+      "id": "feature-2",
+      "kind": "POLYNOMIAL_FEATURE",
+      "x": 0.6299605249474352,
+      "y": -0.4724703937105774,
+      "roles": [
+        "STATIONARY_EXTREMUM"
+      ],
+      "multiplicity": {
+        "root": null,
+        "derivative": 1,
+        "secondDerivative": null
+      }
+    },
+    {
+      "id": "feature-3",
+      "kind": "POLYNOMIAL_FEATURE",
+      "x": 1,
+      "y": 0,
+      "roles": [
+        "ROOT"
+      ],
+      "multiplicity": {
+        "root": 1,
+        "derivative": null,
+        "secondDerivative": null
+      }
+    },
+    {
+      "id": "tail-left",
+      "kind": "TAIL_DIRECTION",
+      "side": "LEFT",
+      "endpointX": -1.2,
+      "direction": "UP",
+      "slopeDirection": "DOWN"
+    },
+    {
+      "id": "tail-right",
+      "kind": "TAIL_DIRECTION",
+      "side": "RIGHT",
+      "endpointX": 1.2,
+      "direction": "UP",
+      "slopeDirection": "UP"
+    }
+  ],
+  "overviewFeaturePolicy": {
+    "schemaVersion": "POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1",
+    "repeatedSourceRootPolicy": "UNSUPPORTED",
+    "minimumDistinctFeatureSeparationCssPx": 1,
+    "stationaryInflectionPolicy": "MERGE_ROLES_AT_SAME_POINT"
+  },
+  "overviewEndDirections": {
+    "left": "UP",
+    "right": "UP"
+  }
+}

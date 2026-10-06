@@ -18,7 +18,7 @@ Known numeric peer limit: Cindy is a bounded numeric cross-check, not an exact p
 |---|---|---|---|---|---|
 | Quadratic polynomial | `polynomial-spike-v1` runner accepts exact rational coefficient strings and a bounded domain/viewport; sampler and quadratic framing are active | Independent polynomial observer verifies source curve segments, roots/coverage, and the quadratic overview frame | Vertex, opening direction, and both visible arms are checked; full/large/medium profiles are audited separately | Graph q10 locator selected full; large failed each arm at 39.34px versus a 40px minimum; full passed | `EXPERIMENTAL` vertical slice only; qid_v1 locator is not qualification evidence |
 | Cubic / quartic polynomial | Existing sampler and worker grammar execute bounded polynomial expressions through degree four. Experimental overview accepts exact rational coefficient strings of degree exactly 3 or 4 only when source domain is explicitly `ALL_REALS`; framing is display-only. Restricted intervals remain unsupported. | Separately launched observer recomputes real roots, derivative roots/extrema or stationary inflections, inflection points, multiplicities, and left/right tail directions from the source polynomial; it checks the final SVG polyline. | Every derived/required feature and both tails must remain visible at the actual profile. Coincident feature roles merge; repeated source roots and features below 1 CSS px separation at the audited profile fail closed or return unsupported. | Controlled synthetic-content fixtures exercise measured Chromium fragments, small/medium/large/full profile audits, selected-profile actual Archive capture, candidate-SHA binding, and local-only resources. Cubic selected large; quartic selected full; both final rows PASS. No canonical source candidate. | `EXPERIMENTAL / CONTROLLED FIXTURE ONLY`; `NOT_PUBLICATION_SUPPORTED`; no qualified UID |
-| Rational | AST sampler detects denominator guards; observer code can bound a restricted rational numerator/denominator grammar | Observer accepts numerator degree ≤4 and denominator degree ≤2 on bounded nonsingular intervals | Pole, hole, branch continuity, asymptote ownership, and overview coverage are not closed as a production request family; general family frame resolver is absent | No rational candidate profile slice | `NOT_PUBLICATION_SUPPORTED`; denominator limits and topology remain explicit |
+| Rational | Distinct experimental `rational-spike-v1` route accepts exactly two exact rational coefficient strings each (linear numerator and denominator), with explicit `sourceDomain:ALL_REALS` and no extra interval. The sole simple denominator root is retained as a domain exclusion and classified as either a pole or a removable hole. | Independent observer reconstructs pole/hole class and location, numerator zero, horizontal asymptote, branch-side sign, and visible interval coverage from exact coefficients. It checks final SVG branch separation and actual asymptote/hole primitives. | Dashed horizontal asymptote is required; a pole also requires a dashed vertical asymptote and visible branches on both sides. A removable hole requires a white outlined marker with a 4.5 CSS px minimum diameter at the measured profile. Higher-degree, multiple-root, oblique-asymptote, and additionally restricted-domain plans are unsupported. | Controlled synthetic pole fixture selected medium; removable-hole fixture selected large because the marker is below the 4.5 CSS px floor at small/medium. Both selected profiles passed measured Chromium audits and final local Archive capture. No canonical source candidate. | `EXPERIMENTAL / CONTROLLED FIXTURE ONLY`; `NOT_PUBLICATION_SUPPORTED`; no qualified UID |
 | Square root | AST sampler detects square-root domain guards; observer supports a positive-slope affine radicand | Independent secant-envelope audit exists for that narrow observer grammar | General radical framing, endpoint presentation, and mixed compositions are not closed | No square-root candidate profile slice | `NOT_PUBLICATION_SUPPORTED`; only the observer’s narrow grammar is available |
 | Absolute value | Expression AST evaluates `abs`; sampler can emit samples | No independent corner/branch observer is connected to the real UID runner | Corner location/ownership and tangent discontinuity treatment are absent | No profile evidence | `NOT_PUBLICATION_SUPPORTED` |
 | Piecewise | No bounded piecewise-function DSL in the Phase 2 provider grammar | No piecewise endpoint/branch observer | Open/closed endpoint ownership, discontinuities, and interval coverage are absent | No profile evidence | `UNSUPPORTED` |
@@ -60,6 +60,40 @@ The [tracked fixture ledger](../evidence/apmath-vprod/p4/cubic-quartic-overview-
 [evidence index](../evidence/apmath-vprod/p4/cubic-quartic-overview-v4/evidence-index.json),
 and [hash manifest](../evidence/apmath-vprod/p4/cubic-quartic-overview-v4/evidence-manifest.json) preserve the machine inputs and actual captures.
 
+## Phase 4 rational linear-over-linear fixture evidence
+
+This separate `rational-spike-v1` route accepts only exact linear-over-linear
+plans on `ALL_REALS` with the denominator's natural zero retained as an excluded
+point. Exact cancellation produces one removable hole; otherwise the simple
+denominator root is a vertical pole. The independent observer recomputes the
+horizontal asymptote and branch directions, verifies that curve segments do not
+cross the singularity, and checks the required dashed asymptote and hole
+primitives on the final SVG. The hole marker is 4 intrinsic SVG px in radius,
+with a 4.5 CSS px minimum diameter at the audited Archive profile; a smaller
+profile is `UNSUPPORTED` for that marker.
+
+| Fixture | Exact source function | Derived feature | Small | Medium | Large | Full | Selected Archive result |
+|---|---|---|---|---|---|---|---|
+| Pole | `y=(x+1)/(x−1)` | Pole `x=1`; horizontal asymptote `y=1`; zero `x=−1`; branches have opposite pole-side directions. | Fail | Pass | Pass | Pass | medium; PASS |
+| Removable hole | `y=(x−1)/(x−1)`, `x≠1` | Open hole `(1,1)`; horizontal asymptote `y=1`; the function is not assigned at `x=1`. | Unsupported: hole marker below 4.5 CSS px | Unsupported: hole marker below 4.5 CSS px | Pass | Pass | large; PASS |
+
+Measured Archive image boxes are small `126×105`, medium `174×145`, large
+`216×180`, and full `298.140625×248.453125` CSS px. Both final rows blocked
+external requests, loaded the exact candidate SVG SHA and local QRious, and
+captured the same measured candidate bytes audited at all four profiles. These
+are synthetic controlled fixtures only; they do not qualify a real UID.
+
+Positive/negative tests cover pole and hole reconstruction, restricted-domain
+and higher-degree rejection, sub-resolution root/pole spacing, missing or moved
+asymptotes, missing or unoutlined hole markers, pole-crossing wrong branches,
+and clipped branch coverage. Legacy rational expression sampling remains
+covered independently by the existing graph-spike and function-sampler suites.
+Current full regressions after the contract updates pass Node 136/136 and Python
+158/158. The current-fingerprint package combines these rational fixtures with
+fresh cubic/quartic fixture replays: [ledger](../evidence/apmath-vprod/p4/rational-linear-over-linear-v1/phase4-ledger.json),
+[index](../evidence/apmath-vprod/p4/rational-linear-over-linear-v1/evidence-index.json),
+and [manifest](../evidence/apmath-vprod/p4/rational-linear-over-linear-v1/evidence-manifest.json).
+
 ## Cross-family publication gates
 
 | Gate | Current evidence | Remaining debt |
@@ -72,7 +106,7 @@ and [hash manifest](../evidence/apmath-vprod/p4/cubic-quartic-overview-v4/eviden
 
 ## Negative tests still required for capability expansion
 
-The cubic/quartic controlled slice now covers wrong chord and omitted-feature rejection, repeated/clustered roots, restricted/missing source domains, viewport-out-and-back curves, clipped/unreadable tails, and profile-scaled feature/font resolution. These fixture negatives do not qualify a real Graph UID. Other family-specific cases remain open until their own bounded slices: rational poles/removable holes; square-root endpoints; absolute-value corners; piecewise open/closed endpoints; exponential/logarithmic/trigonometric branch and asymptote coverage. Cross-family profile fixtures continue to reject sub-11px labels and mismatched final Archive image/profile bindings, but they do not replace a family-specific actual-source review.
+The cubic/quartic and rational controlled slices cover their bounded feature and topology negatives, including pole/hole branches and missing asymptote cues. These synthetic fixtures do not qualify a real Graph UID. Other family-specific cases remain open until their own bounded slices: square-root endpoints; absolute-value corners; piecewise open/closed endpoints; exponential/logarithmic/trigonometric branch and asymptote coverage. Cross-family profile fixtures continue to reject sub-11px labels and mismatched final Archive image/profile bindings, but they do not replace a family-specific actual-source review.
 
 ## Qualification disposition
 

@@ -1,0 +1,85 @@
+{
+  "id": "rational-hole-fixture",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": -7,
+    "xMax": 9,
+    "yMin": -0.35,
+    "yMax": 1.35,
+    "width": 384,
+    "height": 320,
+    "panel": 140
+  },
+  "axes": true,
+  "title": "합성 유리함수의 뚫린 점",
+  "sourceFacts": {},
+  "derivedFacts": {},
+  "displayFacts": {
+    "rationalGraphFeatures": {
+      "schemaVersion": "RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1",
+      "singularity": {
+        "kind": "REMOVABLE_HOLE",
+        "x": "1",
+        "y": "1"
+      },
+      "horizontalAsymptoteY": "1",
+      "xIntercept": null
+    },
+    "rationalGraphPolicy": {
+      "schemaVersion": "RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1",
+      "sourceDomain": "ALL_REALS_WITH_DENOMINATOR_EXCLUSION",
+      "degreeGrammar": "LINEAR_OVER_LINEAR",
+      "singularityPolicy": "ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE",
+      "horizontalAsymptotePolicy": "EXACT_LEADING_COEFFICIENT_RATIO",
+      "minimumFeatureSeparationCssPx": 1,
+      "holeMarkerRadiusIntrinsicPx": 4,
+      "minimumHoleMarkerDiameterCssPx": 4.5
+    }
+  },
+  "objects": [
+    {
+      "id": "f",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "(x-1)/(x-1)",
+      "domain": [
+        -7,
+        9
+      ],
+      "breaks": [
+        1
+      ],
+      "criticalX": []
+    },
+    {
+      "id": "formula",
+      "kind": "EQUATION_LABEL",
+      "text": "y=(x-1)/(x-1)",
+      "at": [
+        -3,
+        1.1460000000000001
+      ],
+      "priority": 0
+    },
+    {
+      "id": "horizontal-asymptote-label",
+      "kind": "GRAPH_ANNOTATION",
+      "text": "y=1",
+      "at": [
+        4.52,
+        1.119
+      ],
+      "math": true,
+      "priority": 0
+    },
+    {
+      "id": "removable-hole-label",
+      "kind": "GRAPH_ANNOTATION",
+      "text": "뚫린 점",
+      "at": [
+        2.2800000000000002,
+        1.1360000000000001
+      ],
+      "priority": 0
+    }
+  ]
+}

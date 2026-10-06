@@ -87,6 +87,7 @@ def _fit_cubic_quartic(plan,coefficients):
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def fit_overview(plan):
+    if plan.get('family')=='rational':return _fit_rational_overview(plan)
     if plan.get('family')!='polynomial':raise ValueError('UNSUPPORTED_OVERVIEW_FAMILY')
     values=plan.get('coefficients')
     if not isinstance(values,list) or not 1<=len(values)<=5 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
@@ -124,3 +125,67 @@ def fit_overview(plan):
     xpad=(hi-lo)*.1 if required else 0
     fitted={**plan,'domain':[lo,hi],'viewport':[lo-xpad,hi+xpad,ymin,ymax],'shapeIntent':'OVERVIEW'}
     return {'graphPlan':fitted,'policy':'QUADRATIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':{'vertex':[hf,kf],'opening':'UP' if af>0 else 'DOWN','naturalHalfSpan':natural},'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+
+def _rational_coefficients(values,name):
+    if not isinstance(values,list) or len(values)!=2 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):
+        raise ValueError('UNSUPPORTED_RATIONAL_'+name.upper()+'_GRAMMAR')
+    try:coefficients=[Fraction(value) for value in values]
+    except (ValueError,ZeroDivisionError):raise ValueError('INVALID_RATIONAL_'+name.upper()+'_COEFFICIENT') from None
+    if coefficients[1]==0:raise ValueError('UNSUPPORTED_RATIONAL_'+name.upper()+'_DEGREE')
+    return coefficients
+
+def _fraction_text(value):
+    return str(Fraction(value))
+
+def _fit_rational_overview(plan):
+    if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:
+        raise ValueError('RATIONAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')
+    original_domain=plan.get('domain');original_viewport=plan.get('viewport')
+    if not isinstance(original_domain,list) or len(original_domain)!=2 or not all(isinstance(v,(int,float)) and not isinstance(v,bool) and math.isfinite(v) for v in original_domain) or not original_domain[0]<original_domain[1]:
+        raise ValueError('INVALID_RATIONAL_DRAW_INTERVAL')
+    if not isinstance(original_viewport,list) or len(original_viewport)!=4 or not all(isinstance(v,(int,float)) and not isinstance(v,bool) and math.isfinite(v) for v in original_viewport) or not original_viewport[0]<original_viewport[1] or not original_viewport[2]<original_viewport[3]:
+        raise ValueError('INVALID_RATIONAL_VIEWPORT')
+    numerator=_rational_coefficients(plan.get('numerator'),'numerator')
+    denominator=_rational_coefficients(plan.get('denominator'),'denominator')
+    pole_or_hole=-denominator[0]/denominator[1]
+    numerator_root=-numerator[0]/numerator[1]
+    horizontal=numerator[1]/denominator[1]
+    is_hole=(numerator[0]+numerator[1]*pole_or_hole)==0
+    if is_hole:
+        singularity={'kind':'REMOVABLE_HOLE','x':_fraction_text(pole_or_hole),'y':_fraction_text(horizontal)}
+        x_intercept=None
+    else:
+        singularity={'kind':'VERTICAL_POLE','x':_fraction_text(pole_or_hole)}
+        x_intercept=_fraction_text(numerator_root)
+    required=plan.get('requiredPoints',[])
+    if not isinstance(required,list) or len(required)>16:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+    ids=set();required_x=[];required_y=[]
+    for point in required:
+        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids or any(isinstance(point[k],bool) or not isinstance(point[k],(int,float)) or not math.isfinite(point[k]) or abs(point[k])>1e6 for k in ('x','y')):
+            raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        ids.add(point['id']);exact_x=Fraction(str(point['x']))
+        exact_denominator=denominator[0]+denominator[1]*exact_x
+        if exact_denominator==0:raise ValueError('REQUIRED_GRAPH_POINT_OUTSIDE_RATIONAL_DOMAIN')
+        expected=(numerator[0]+numerator[1]*exact_x)/exact_denominator
+        if abs(float(expected)-float(point['y']))>1e-8:raise ValueError('REQUIRED_GRAPH_POINT_NOT_ON_CURVE')
+        required_x.append(float(exact_x));required_y.append(float(point['y']))
+    singularity_x=float(pole_or_hole);root_x=float(numerator_root)
+    if any(not math.isfinite(value) or abs(value)>1e6 for value in (singularity_x,root_x,float(horizontal))):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
+    radius=max(8.0,abs(singularity_x)*1.25+.5,abs(root_x-singularity_x)*4,*[abs(px-singularity_x)*1.2 for px in required_x])
+    lo,hi=singularity_x-radius,singularity_x+radius
+    def evaluate_exact(x_value):
+        exact_x=Fraction(str(x_value));den=numerator[0]*0+denominator[0]+denominator[1]*exact_x
+        if den==0:raise ValueError('RATIONAL_FRAME_ENDPOINT_IS_SINGULAR')
+        return float((numerator[0]+numerator[1]*exact_x)/den)
+    endpoint_values=[evaluate_exact(lo),evaluate_exact(hi)]
+    key_values=[0.0,float(horizontal),*required_y]
+    if x_intercept is not None:key_values.append(0.0)
+    if is_hole:key_values.append(float(singularity['y']))
+    low=min([*endpoint_values,*key_values]);high=max([*endpoint_values,*key_values])
+    span=max(1.0,high-low,abs(low),abs(high));padding=.35*span
+    ymin=min(0.0,low)-padding;ymax=max(0.0,high)+padding
+    if not all(math.isfinite(value) and abs(value)<=1e6 for value in (lo,hi,ymin,ymax)):raise ValueError('UNSUPPORTED_RATIONAL_NUMERIC_SCOPE')
+    features={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1','singularity':singularity,'horizontalAsymptoteY':_fraction_text(horizontal),'xIntercept':x_intercept}
+    policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
+    fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','rationalFeatures':features,'rationalFeaturePolicy':policy}
+    return {'graphPlan':fitted,'policy':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
