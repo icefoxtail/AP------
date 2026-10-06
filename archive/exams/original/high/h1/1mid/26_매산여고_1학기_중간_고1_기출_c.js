@@ -12,13 +12,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "다항식",
-      "계수비교",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "다항식의 연산", "계수", "계산"],
     "wide": false,
     "content": "두 다항식\n$A=a^3-2a-1$\n$B=2a^3-3a^2+2a+4$\n에 대하여 $A+2B$의 $a$항의 계수와 $a^3$항의 계수의 합을 구하면?",
     "choices": [
@@ -55,14 +49,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "다항식",
-      "전개",
-      "계수비교",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "다항식의 곱셈", "전개", "계수"],
     "wide": false,
     "content": "$(x^2+3x+3)(2x^2-x-3)$을 전개한 식에서 $x^2$의 계수를 구하면?",
     "choices": [
@@ -99,14 +86,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "다항식",
-      "항등식",
-      "나머지정리",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "나머지정리", "다항식의 나눗셈"],
     "wide": false,
     "content": "다항식 $P(x)=x^3+2x^2-x+7$을 $x-2$로 나누었을 때, 나머지의 값을 구하면?",
     "choices": [
@@ -144,13 +124,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "복소수",
-      "이차방정식",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "복소수", "켤레복소수", "실수부", "허수부"],
     "wide": false,
     "content": "등식 $(4x+2i)+(-8+2yi)=\\overline{6+4i}$를 만족시키는 실수 $x, y$에 대하여 $2x+y$의 값을 구하면?",
     "choices": [
@@ -187,13 +161,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "복소수",
-      "복소수의 나눗셈",
-      "켤레복소수",
-      "계산"
-    ],
+    "tags": ["객관식", "복소수", "복소수의 나눗셈", "켤레복소수"],
     "wide": false,
     "content": "$\\dfrac{3+i}{1-i}+4+2i$를 $a+bi$꼴로 바르게 나타낸 것은? (단, $a, b$는 실수)",
     "choices": [
@@ -230,15 +198,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차방정식",
-      "이차함수",
-      "함수",
-      "그래프",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "이차함수", "그래프", "x축과의 교점", "완전제곱", "꼭짓점"],
     "wide": false,
     "content": "$x$에 대한 이차함수 $y=x^2-6x+k^2-27$의 그래프와 $x$축이 한 점에서 만나도록 하는 실수 $k$의 값을 모두 구하면?",
     "choices": [
@@ -275,13 +235,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "최대최소",
-      "그래프",
-      "구간"
-    ],
+    "tags": ["객관식", "이차함수", "최대최소", "구간", "완전제곱", "꼭짓점"],
     "wide": false,
     "content": "$1 \\le x \\le 3$에서 이차함수 $y=x^2-2x$의 최댓값과 최솟값의 합을 구하면?",
     "choices": [
@@ -318,14 +272,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "제곱근",
-      "근호",
-      "다항식",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "곱셈공식", "근호", "대칭식"],
     "wide": false,
     "content": "$x=2+\\sqrt{3}, y=2-\\sqrt{3}$일 때, $x^3+y^3$의 값을 구하면?",
     "choices": [
@@ -362,14 +309,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "다항식",
-      "항등식",
-      "나머지정리",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "인수정리", "인수분해", "연립방정식"],
     "wide": false,
     "content": "다항식 $P(x)=-x^3+2x^2+ax+b$가 $x^2-x-6$으로 나누어떨어질 때, 실수 $a, b$에 대하여 $3a+b$의 값을 구하면?",
     "choices": [
@@ -407,13 +347,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "다항식",
-      "인수분해",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "인수정리", "중복인수", "다항식의 나눗셈", "인수분해"],
     "wide": false,
     "content": "다항식 $x^3+ax+b$가 $(x-1)^2$을 인수로 가질 때, 상수 $a, b$에 대하여 $b-a$의 값을 구하면?",
     "choices": [
@@ -451,16 +385,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "복소수",
-      "이차방정식",
-      "판별식",
-      "자연수조건",
-      "개수세기",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "이차방정식", "허근", "판별식", "자연수조건"],
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2+3x+7-k=0$이 서로 다른 두 허근을 갖도록 하는 자연수 $k$의 개수를 구하면?",
     "choices": [
@@ -497,13 +422,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "복소수",
-      "이차방정식",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "항등식", "미정계수법", "연립방정식"],
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2+k(2a-1)x-(a^2+2)k+b+3=0$이 실수 $k$의 값에 관계없이 항상 $-1$을 근으로 가질 때, 두 상수 $a,b$에 대하여 $a+b$의 값을 구하면? [4.0점]",
     "choices": [
@@ -540,16 +459,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차방정식",
-      "이차함수",
-      "최대최소",
-      "함수",
-      "그래프",
-      "자연수조건",
-      "조건해석"
-    ],
+    "tags": ["객관식", "이차함수", "직선", "교점", "이차방정식", "판별식", "자연수조건"],
     "wide": false,
     "content": "이차함수 $y=x^2+4x+k$의 그래프와 직선 $y=-2x+3$이 서로 다른 두 점에서 만나도록 하는 자연수 $k$의 최댓값을 구하면?",
     "choices": [
@@ -586,13 +496,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "최대최소",
-      "구간",
-      "그래프"
-    ],
+    "tags": ["객관식", "이차함수", "최대최소", "구간", "완전제곱", "꼭짓점"],
     "wide": false,
     "content": "실수 $t$에 대하여 $t \\le x \\le t+2$에서 이차함수 $f(x)=2x^2-4x+7$의 최솟값을 $g(t)$라고 할 때, 방정식 $g(t)=5$를 만족시키는 모든 실수 $t$의 값의 범위를 구하면?",
     "choices": [
@@ -629,15 +533,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "다항식",
-      "항등식",
-      "나머지정리",
-      "계수비교",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "다항식의 나눗셈", "몫과 나머지", "인수분해", "인수정리"],
     "wide": false,
     "content": "최고차항의 계수가 1인 삼차다항식 $P(x)$를 $x^2-4$로 나눈 몫과 나머지는 서로 같다. $(x+2)P(x)$가 $x^2-4$로 나누어떨어질 때, $P(3)$의 값을 구하면?",
     "choices": [
@@ -674,14 +570,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "다항식",
-      "항등식",
-      "나머지정리",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "다항식", "나머지정리", "다항식의 나눗셈", "고차식"],
     "wide": false,
     "content": "다항식 $f(x)$를 $(x-2)^3$으로 나누었을 때의 나머지는 $x^2+2x+3$이고, $(x-1)^2$으로 나누었을 때의 나머지는 $2x+1$이다. $f(x)$를 $(x-2)^2(x-1)$로 나누었을 때의 나머지를 $g(x)$라고 할 때, $g(2)$의 값을 구하면?",
     "choices": [
@@ -718,16 +607,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "제곱근",
-      "근호",
-      "복소수",
-      "이차방정식",
-      "자연수조건",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "복소수", "거듭제곱", "주기성", "자연수조건"],
     "wide": false,
     "content": "자연수 $n$에 대하여 $z_n=\\left(\\dfrac{1-i}{\\sqrt{2}}\\right)^{2n}+\\dfrac{n}{\\left(\\dfrac{1-i}{\\sqrt{2}}\\right)^{2n}}$이라 할 때, $z_1+z_2+\\cdots+z_{50}=a+bi$를 만족시키는 실수 $a,b$에 대하여 $a+b$의 값을 구하면? (단, $i=\\sqrt{-1}$) [4.4점]",
     "choices": [
@@ -764,13 +644,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "복소수",
-      "이차방정식",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "이차방정식", "근과 계수의 관계", "연립방정식", "이차식"],
     "wide": false,
     "content": "이차방정식 $x^2+5x-4=0$의 두 근 $\\alpha, \\beta$에 대하여 이차식 $f(x)$가 $\\beta f(\\alpha) = \\alpha f(\\beta) = -8, f(-2)=16$을 만족시킬 때, $f(1)$의 값을 구하면?",
     "choices": [
@@ -807,10 +681,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "그래프",
-      "도형"
-    ],
+    "tags": ["객관식", "이차함수", "그래프", "교점", "완전제곱", "꼭짓점", "경우분기"],
     "wide": false,
     "content": "좌표평면에서 직선 $y=t$가 두 이차함수 $y=x^2-2x+1, y=-x^2+4x+1$의 그래프와 만날 때, 만나는 서로 다른 점의 개수가 3인 모든 실수 $t$의 값의 합을 구하면?",
     "choices": [
@@ -847,14 +718,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "최대최소",
-      "구간",
-      "조건해석",
-      "표"
-    ],
+    "tags": ["객관식", "이차함수", "최대최소", "구간", "꼭짓점", "경우분기", "표"],
     "wide": false,
     "content": "실수 $a$에 대하여 이차함수 $f(x)=(x-a)^2$이 다음 조건 (가), (나)를 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td style=\"text-align:left;\">(가) $1 \\le x \\le 9$에서 함수 $f(x)$의 최솟값은 0이다.</td></tr>\n<tr><td style=\"text-align:left;\">(나) $1 \\le x \\le 5$에서 함수 $f(x)$의 최댓값과 $5 \\le x \\le 9$에서 함수 $f(x)$의 최솟값은 같다.</td></tr>\n</table>\n</div>\n$f(0)$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하면?",
     "choices": [
@@ -891,9 +755,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형"
-    ],
+    "tags": ["서술형", "이차방정식", "근과 계수의 관계", "근으로 방정식 구성"],
     "wide": false,
     "content": "[주관식1 (서술형)] [6점] (부분점수 있음)<br>이차방정식 $x^2-5x+3=0$의 두 근을 $\\alpha,\\beta$라 할 때, 다음을 구하는 풀이 과정과 답을 자세히 서술하시오.<br>(1) 두 근의 합 $\\alpha+\\beta$와 두 근의 곱 $\\alpha\\beta$를 각각 구하시오. (2점)<br>(2) 두 수 $\\dfrac{1}{\\alpha^2-3\\alpha-1}$, $\\dfrac{1}{\\beta^2-3\\beta-1}$을 근으로 하고, $x^2$의 계수가 24인 이차방정식을 구하시오. (4점)",
     "choices": [],
@@ -924,10 +786,7 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "도형"
-    ],
+    "tags": ["서술형", "도형", "이차함수", "최대최소", "직선의 방정식", "수직", "평행", "교점", "완전제곱"],
     "wide": false,
     "content": "[주관식2 (서술형)] [7점] (부분점수 있음)<br>아래의 그림과 같이 $\\angle A=90^\\circ$이고 $\\overline{AB}=6$인 직각이등변삼각형 $ABC$가 있다. $\\overline{AB}$의 내부의 한 점 $P$에서 $\\overline{BC}$에 내린 수선의 발을 $Q$라 하고, 점 $P$를 지나고 $\\overline{BC}$와 평행한 직선이 $\\overline{AC}$와 만나는 점을 $R$이라 할 때, 사각형 $PQCR$의 넓이의 최댓값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
     "image": "assets/images/26_매산여고_1학기_중간_고1_기출/q22.png",
@@ -959,10 +818,7 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "표"
-    ],
+    "tags": ["서술형", "표", "다항식", "다항식의 나눗셈", "몫과 나머지", "차수"],
     "wide": false,
     "content": "[주관식 3 (서술형)]\n최고차항의 계수가 1인 삼차 다항식 $f(x)$와 모든 항의 계수가 실수인 두 다항식 $P(x), Q(x)$가 다음 조건을 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td style=\"text-align:left;\">(가) $f(x)$를 $P(x)$로 나누었을 때의 몫은 $Q(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\n<tr><td style=\"text-align:left;\">(나) $f(x)$를 $Q(x)$로 나누었을 때의 몫은 $P(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\n</table>\n</div>\n$P(0)=-1, Q(0)=2$일 때, $f(2)$의 값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
     "choices": [],
