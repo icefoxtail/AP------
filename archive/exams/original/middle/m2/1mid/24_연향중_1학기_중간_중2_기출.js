@@ -129,7 +129,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "$0.\\dot5\\dot3=\\frac{53}{99}$에서 분자 $53$, $0.\\dot3\\dot6=\\frac4{11}$에서 분모 $11$을 얻는다. 따라서 원래 수는 $\\frac{53}{11}=4.\\dot8\\dot1$이므로 정답은 ④이다.",
+    "solution": "$0.\\dot5\\dot3=\\dfrac{53}{99}$이므로 원래 분자는 $53$이다.\n\n또 $0.\\dot3\\dot6=\\dfrac4{11}$이고 은준이는 분자만 잘못 보았으므로 원래 분모는 $11$이다.\n\n따라서 원래 분수는\n\n$\\dfrac{53}{11}=4.818181\\cdots=4.\\dot8\\dot1$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -163,7 +163,7 @@ window.questionBank = [
       "자릿수"
     ],
     "wide": false,
-    "solution": "$\\frac17=0.\\dot14285\\dot7$이고 순환마디 길이는 $6$이다. $30$번째는 $7$, $50=6\\cdot8+2$이므로 $50$번째는 $4$이다. 따라서 $a+b=11$, 정답은 ⑤이다.",
+    "solution": "$\\dfrac17=0.142857142857\\cdots$이고 순환마디의 길이는 $6$이다.\n\n$30=6\\times5$이므로 $a=7$이다.\n\n$50=6\\times8+2$이므로 $b=4$이다.\n\n따라서\n\n$a+b=11$이다.\n\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -230,7 +230,7 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "solution": "$A=45x^4y^7$, $B=15xy^3$이므로 $A\\div B=3x^3y^4$이다. 따라서 정답은 ③이다.",
+    "solution": "$A=5x^2y^3\\times(-3xy^2)^2$\n\n$=45x^4y^7$이다.\n\n$B=21x^3y^4\\div\\dfrac75x^2y$\n\n$=15xy^3$이다.\n\n따라서\n\n$A\\div B\n=45x^4y^7\\div15xy^3$\n\n$=3x^3y^4$이다.\n\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -402,7 +402,7 @@ window.questionBank = [
       "역산"
     ],
     "wide": false,
-    "solution": "원래 식을 $M$이라 하면 $M-(-2x^2+3x-11)=6x^2-x-10$에서 $M=4x^2+2x-21$이다. 바르게 더하면 $2x^2+5x-32$이므로 정답은 ③이다.",
+    "solution": "더해야 할 식을 $P=-2x^2+3x-11$, 원래 식을 $M$이라 하자.\n\n잘못 계산했으므로\n\n$M-P=6x^2-x-10$이다.\n\n따라서\n\n$M=4x^2+2x-21$이다.\n\n바르게 계산하면\n\n$M+P\n=2x^2+5x-32$이다.\n\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -436,7 +436,7 @@ window.questionBank = [
       "대입"
     ],
     "wide": false,
-    "solution": "$(12x^2-6xy)\\div4x=3x-\\frac32y$이므로 전체 식은 $4x-\\frac72y$이다. $x=3,\\ y=\\frac47$을 대입하면 $10$, 정답은 ①이다.",
+    "solution": "$(12x^2-6xy)\\div4x\n=3x-\\dfrac32y$이다.\n\n따라서 전체 식은\n\n$7x-\\left(5y+3x-\\dfrac32y\\right)$\n\n$=4x-\\dfrac72y$이다.\n\n$x=3$, $y=\\dfrac47$을 대입하면\n\n$12-2=10$이다.\n\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -606,7 +606,7 @@ window.questionBank = [
       "매개변수범위"
     ],
     "wide": false,
-    "solution": "$x-3\\le-2x+3a$에서 $x\\le a+1$이다. 가장 큰 정수가 $-2$이려면 $-2\\le a+1<-1$이다. 따라서 $-3\\le a<-2$, 정답은 ②이다.",
+    "solution": "$x-3\\le-2x+3a$\n\n$3x\\le3a+3$\n\n$x\\le a+1$이다.\n\n가장 큰 정수해가 $-2$이려면\n\n$-2\\le a+1<-1$이다.\n\n따라서\n\n$-3\\le a<-2$이다.\n\n따라서 정답은 ②이다.",
     "level": "상",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -675,7 +675,7 @@ window.questionBank = [
       "최대값"
     ],
     "wide": false,
-    "solution": "구매 시간을 빼면 왕복 이동에 $60$분을 쓸 수 있다. 편도 거리를 $x$m라 하면 $\\frac{x}{40}+\\frac{x}{40}\\le60$이므로 $x\\le1200$. 따라서 최대 $1.2$km, 정답은 ①이다.",
+    "solution": "왕복 이동에 사용할 수 있는 시간은\n\n$75-15=60$분이다.\n\n편도 거리를 $x\\text{ m}$라 하면\n\n$\\dfrac{x}{40}+\\dfrac{x}{40}\\le60$\n\n$x\\le1200$이다.\n\n따라서 최대 거리는\n\n$1200\\text{ m}=1.2\\text{ km}$이다.\n\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -710,7 +710,7 @@ window.questionBank = [
       "비율"
     ],
     "wide": false,
-    "solution": "원뿔의 부피는 $\\frac13\\pi a^2(3b)=\\pi a^2b$, 원기둥의 부피는 $\\pi(2b)^2a=4\\pi ab^2$이다. 따라서 부피의 비는 $\\frac{a}{4b}$이다.",
+    "solution": "원뿔의 부피는\n\n$\\dfrac13\\pi a^2(3b)=\\pi a^2b$이다.\n\n원기둥의 부피는\n\n$\\pi(2b)^2a=4\\pi ab^2$이다.\n\n따라서 부피의 비는\n\n$\\dfrac{\\pi a^2b}{4\\pi ab^2}\n=\\dfrac a{4b}$이다.\n\n따라서 원뿔의 부피는 원기둥의\n\n$\\dfrac a{4b}$배이다.",
     "level": "중",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
@@ -744,7 +744,7 @@ window.questionBank = [
       "계수결정"
     ],
     "wide": false,
-    "solution": "첫째 부등식은 $x\\le3$, 둘째 부등식은 $x\\le\\frac{9-a}{2}$이다. 해가 같으므로 $\\frac{9-a}{2}=3$, 따라서 $a=3$이다.",
+    "solution": "첫째 부등식은\n\n$3x-2\\le x+4$\n\n$x\\le3$이다.\n\n둘째 부등식은\n\n$3x-a\\ge5(x-2)+1$\n\n$x\\le\\dfrac{9-a}{2}$이다.\n\n두 해가 같으므로\n\n$\\dfrac{9-a}{2}=3$\n\n$a=3$이다.\n\n따라서 구하는 값은 $3$이다.",
     "level": "상",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -779,7 +779,7 @@ window.questionBank = [
       "최대값"
     ],
     "wide": false,
-    "solution": "어른을 $x$명이라 하면 $1000x+600(25-x)\\le21000$이다. 정리하면 $x\\le15$이므로 어른은 최대 $15$명이다.",
+    "solution": "어른 수를 $x$명이라 하면 어린이는 $25-x$명이다.\n\n$1000x+600(25-x)\\le21000$\n\n$400x\\le6000$\n\n$x\\le15$이다.\n\n따라서 어른은 최대 $15$명이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
