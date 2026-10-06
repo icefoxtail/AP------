@@ -354,7 +354,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "[도형필요]좌표평면 위에서 상하 방향으로는 한 번에 1만큼씩, 좌우 방향으로는 한 번에 2만큼씩 움직이는 점 $P$가 있다.\\n원점을 출발한 점 $P$가 7번 움직여서 도착한 최종 위치가 점 $A(6,2)$가 되는 경우의 수는? [4.1점]",
+    "content": "좌표평면 위에서 상하 방향으로는 한 번에 1만큼씩, 좌우 방향으로는 한 번에 2만큼씩 움직이는 점 $P$가 있다.\\n원점을 출발한 점 $P$가 7번 움직여서 도착한 최종 위치가 점 $A(6,2)$가 되는 경우의 수는? [4.1점]",
     "choices": [
       "10",
       "35",
@@ -461,7 +461,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "어느 양궁 선수가 활을 500번 쏘아 각 점수를 맞힌 횟수를 나타낸 것이다.\\n이 선수가 활을 한 번 쏘아 8점 또는 9점을 맞힐 확률을 구하면? [3.9점]\\n\\n<table class=\"question-table\">\\n  <tr>\\n    <th>점수(점)</th>\\n    <th>맞힌 횟수(회)</th>\\n  </tr>\\n  <tr>\\n    <td>7</td>\\n    <td>103</td>\\n  </tr>\\n  <tr>\\n    <td>8</td>\\n    <td>167</td>\\n  </tr>\\n  <tr>\\n    <td>9</td>\\n    <td>133</td>\\n  </tr>\\n  <tr>\\n    <td>10</td>\\n    <td>97</td>\\n  </tr>\\n</table>",
+    "content": "어느 양궁 선수가 활을 500번 쏘아 각 점수를 맞힌 횟수를 나타낸 것이다.\n이 선수가 활을 한 번 쏘아 8점 또는 9점을 맞힐 확률을 구하면? [3.9점]\n\n<table class=\"question-table\">\n  <tr>\n    <th>점수(점)</th>\n    <th>맞힌 횟수(회)</th>\n  </tr>\n  <tr>\n    <td>7</td>\n    <td>103</td>\n  </tr>\n  <tr>\n    <td>8</td>\n    <td>167</td>\n  </tr>\n  <tr>\n    <td>9</td>\n    <td>133</td>\n  </tr>\n  <tr>\n    <td>10</td>\n    <td>97</td>\n  </tr>\n</table>",
     "choices": [
       "$\\frac{3}{5}$",
       "$\\frac{3}{10}$",
