@@ -490,7 +490,9 @@ window.questionBank = [
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "conditionKeys": ["COND_NATURAL_NUMBER"]
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ]
   },
   {
     "id": 15,
@@ -509,7 +511,6 @@ window.questionBank = [
       "이차함수",
       "일차함수",
       "함수",
-      "그래프",
       "조건해석",
       "계산"
     ],
@@ -545,7 +546,6 @@ window.questionBank = [
       "나머지정리",
       "이차함수",
       "함수",
-      "그래프",
       "참거짓",
       "오류판별",
       "대입"
@@ -583,7 +583,6 @@ window.questionBank = [
       "계수비교",
       "이차함수",
       "함수",
-      "도형",
       "원",
       "그래프"
     ],
@@ -604,7 +603,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-    "crossConceptKeys": ["CC_FUNCTION_SYMMETRY"]
+    "crossConceptKeys": [
+      "CC_FUNCTION_SYMMETRY"
+    ]
   },
   {
     "id": 18,
@@ -621,7 +622,6 @@ window.questionBank = [
       "객관식",
       "이차함수",
       "함수",
-      "그래프",
       "대입",
       "조건해석",
       "계산"
@@ -689,7 +689,6 @@ window.questionBank = [
       "계수비교",
       "이차함수",
       "함수",
-      "그래프",
       "대입",
       "조건해석",
       "식세우기"
@@ -735,8 +734,12 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
-    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
-    "conditionKeys": ["COND_POSITIVE"]
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ]
   },
   {
     "id": 22,
@@ -837,7 +840,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-    "crossConceptKeys": ["CC_FUNCTION_SYMMETRY"]
+    "crossConceptKeys": [
+      "CC_FUNCTION_SYMMETRY"
+    ]
   },
   {
     "id": 26,
