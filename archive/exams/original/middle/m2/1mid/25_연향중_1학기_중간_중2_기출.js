@@ -28,7 +28,7 @@ window.questionBank = [
       "$1000x-10x$"
     ],
     "answer": "②",
-    "solution": "[핵심]\n순환마디가 두 자리이면 소수점 아래 반복 부분을 같게 만들기 위해 $100x$와 $x$를 비교한다.\n[풀이]\n$x=0.272727\\cdots$이므로 $100x=27.272727\\cdots$이다.\n두 식을 빼면 반복되는 소수 부분이 소거되어 $100x-x$가 정수식으로 정리된다. $10x-x$는 반복 부분의 위치가 맞지 않는다.\n[결론]\n가장 편리한 식은 $100x-x$이므로 정답은 ②이다.",
+    "solution": "순환마디가 두 자리이면 소수점 아래 반복 부분을 같게 만들기 위해 $100x$와 $x$를 비교한다.\n$x=0.272727\\cdots$이므로 $100x=27.272727\\cdots$이다.\n두 식을 빼면 반복되는 소수 부분이 소거되어 $100x-x$가 정수식으로 정리된다. $10x-x$는 반복 부분의 위치가 맞지 않는다.\n가장 편리한 식은 $100x-x$이므로 정답은 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -69,7 +69,7 @@ window.questionBank = [
       "$1000x-100x$를 이용하면 분수로 나타낼 수 있다."
     ],
     "answer": "③",
-    "solution": "[핵심]\n$1.23444\\cdots$는 4가 계속 반복되는 무한소수이며, 반복이 시작되기 전에는 23이 있다.\n[풀이]\n순환마디는 4이고 $x=1.23\\dot4$로 쓸 수 있다.\n또 $1000x-100x=1234.444\\cdots-123.444\\cdots=1111$이므로 $x=\\frac{1111}{900}=\\frac{1234-123}{900}$이다.\n따라서 “$x$는 무한소수가 아니다”라는 ③만 옳지 않다.\n[결론]\n정답은 ③이다.",
+    "solution": "$1.23444\\cdots$는 4가 계속 반복되는 무한소수이며, 반복이 시작되기 전에는 23이 있다.\n순환마디는 4이고 $x=1.23\\dot4$로 쓸 수 있다.\n또 $1000x-100x=1234.444\\cdots-123.444\\cdots=1111$이므로 $x=\\frac{1111}{900}=\\frac{1234-123}{900}$이다.\n따라서 “$x$는 무한소수가 아니다”라는 ③만 옳지 않다.\n정답은 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
@@ -109,7 +109,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "②",
-    "solution": "[핵심]\n각 분수를 소수로 나타내어 최소 순환마디의 길이를 센다.\n[풀이]\n$\\frac13=0.333\\cdots=0.\\dot3$이므로 $x=1$이다.\n$\\frac8{11}=0.727272\\cdots=0.\\dot7\\dot2$이므로 $y=2$이다.\n따라서 $x+y=1+2=3$이다.\n[결론]\n정답은 ②이다.",
+    "solution": "각 분수를 소수로 나타내어 최소 순환마디의 길이를 센다.\n$\\frac13=0.333\\cdots=0.\\dot3$이므로 $x=1$이다.\n$\\frac8{11}=0.727272\\cdots=0.\\dot7\\dot2$이므로 $y=2$이다.\n따라서 $x+y=1+2=3$이다.\n정답은 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -150,7 +150,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "①",
-    "solution": "[핵심]\n$\\frac6{13}$의 순환마디를 구한 뒤 123을 그 길이로 나눈 나머지를 이용한다.\n[풀이]\n$\\frac6{13}=0.461538461538\\cdots=0.\\dot4 6153\\dot8$이고 순환마디는 461538, 길이는 6이다.\n$123=6\\times20+3$이므로 123번째 숫자는 순환마디의 3번째 숫자와 같다.\n461538의 3번째 숫자는 1이다.\n[결론]\n정답은 ①이다.",
+    "solution": "$\\frac6{13}$의 순환마디를 구한 뒤 123을 그 길이로 나눈 나머지를 이용한다.\n$\\frac6{13}=0.461538461538\\cdots=0.\\dot4 6153\\dot8$이고 순환마디는 461538, 길이는 6이다.\n$123=6\\times20+3$이므로 123번째 숫자는 순환마디의 3번째 숫자와 같다.\n461538의 3번째 숫자는 1이다.\n정답은 ①이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "37"
     ],
     "answer": "④",
-    "solution": "[핵심]\n기약분수의 분모에 소인수 2와 5만 남아야 유한소수가 된다.\n[풀이]\n$\\frac{14}{40x}=\\frac7{20x}$이다. 한 자리 자연수 $x$에 2와 5 이외의 소인수가 있으면 원칙적으로 분모에 남지만, $x$의 인수 7은 분자의 7과 약분될 수 있다.\n따라서 가능한 $x$는 $1,2,4,5,7,8$이다. $3,6,9$는 분모에 3이 남는다.\n합은 $1+2+4+5+7+8=27$이다.\n[결론]\n정답은 ④이다.",
+    "solution": "기약분수의 분모에 소인수 2와 5만 남아야 유한소수가 된다.\n$\\frac{14}{40x}=\\frac7{20x}$이다. 한 자리 자연수 $x$에 2와 5 이외의 소인수가 있으면 원칙적으로 분모에 남지만, $x$의 인수 7은 분자의 7과 약분될 수 있다.\n따라서 가능한 $x$는 $1,2,4,5,7,8$이다. $3,6,9$는 분모에 3이 남는다.\n합은 $1+2+4+5+7+8=27$이다.\n정답은 ④이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -232,7 +232,7 @@ window.questionBank = [
       "$a \\times a^2 \\times a^3$"
     ],
     "answer": "②",
-    "solution": "[핵심]\n각 식을 같은 밑 $a$의 거듭제곱으로 간단히 하여 지수를 비교한다.\n[풀이]\n① $a^4\\times a^2=a^6$.\n② $a^{12}\\div a^2=a^{10}$.\n③ $(a^2)^3=a^6$.\n④ $(ab)^3\\div(\\frac ba)^3=a^3b^3\\times\\frac{a^3}{b^3}=a^6$.\n⑤ $a\\times a^2\\times a^3=a^6$.\n②만 결과가 다르다.\n[결론]\n정답은 ②이다.",
+    "solution": "각 식을 같은 밑 $a$의 거듭제곱으로 간단히 하여 지수를 비교한다.\n① $a^4\\times a^2=a^6$.\n② $a^{12}\\div a^2=a^{10}$.\n③ $(a^2)^3=a^6$.\n④ $(ab)^3\\div(\\frac ba)^3=a^3b^3\\times\\frac{a^3}{b^3}=a^6$.\n⑤ $a\\times a^2\\times a^3=a^6$.\n②만 결과가 다르다.\n정답은 ②이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -273,7 +273,7 @@ window.questionBank = [
       "$2^{27}$ bit"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n표의 단위 관계를 차례로 곱해 MB를 bit로 바꾼다.\n[풀이]\n$1\\mathrm{MB}=2^{10}\\mathrm{KB}=2^{20}\\mathrm{B}$이고 $1\\mathrm{B}=2^3\\mathrm{bit}$이므로 $1\\mathrm{MB}=2^{23}\\mathrm{bit}$이다.\n$16=2^4$이므로 $16\\mathrm{MB}=2^4\\times2^{23}=2^{27}\\mathrm{bit}$이다.\n[결론]\n정답은 ⑤이다.",
+    "solution": "표의 단위 관계를 차례로 곱해 MB를 bit로 바꾼다.\n$1\\mathrm{MB}=2^{10}\\mathrm{KB}=2^{20}\\mathrm{B}$이고 $1\\mathrm{B}=2^3\\mathrm{bit}$이므로 $1\\mathrm{MB}=2^{23}\\mathrm{bit}$이다.\n$16=2^4$이므로 $16\\mathrm{MB}=2^4\\times2^{23}=2^{27}\\mathrm{bit}$이다.\n정답은 ⑤이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -313,7 +313,7 @@ window.questionBank = [
       "$A^6$"
     ],
     "answer": "②",
-    "solution": "[핵심]\n$27$을 3의 거듭제곱으로 바꾸고 $3^4=A$를 이용한다.\n[풀이]\n$27^8=(3^3)^8=3^{24}=(3^4)^6=A^6$이다.\n따라서 $\\frac1{27^8}=\\frac1{A^6}$이다.\n[결론]\n정답은 ②이다.",
+    "solution": "$27$을 3의 거듭제곱으로 바꾸고 $3^4=A$를 이용한다.\n$27^8=(3^3)^8=3^{24}=(3^4)^6=A^6$이다.\n따라서 $\\frac1{27^8}=\\frac1{A^6}$이다.\n정답은 ②이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -354,7 +354,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n좌변을 한 단항식으로 정리한 뒤 $x,y$의 지수와 계수를 각각 비교한다.\n[풀이]\n$(-4x^Ay^3)^2\\times x^3y^2\\div(\\frac{x}{y^2})^B\n=16x^{2A+3-B}y^{8+2B}$이다.\n우변 $Cx^6y^{18}$과 비교하면 $C=16$, $8+2B=18$이므로 $B=5$이다.\n또 $2A+3-B=6$이므로 $2A-2=6$, 따라서 $A=4$이다.\n$A+B+C=4+5+16=25$이다.\n[결론]\n정답은 ⑤이다.",
+    "solution": "좌변을 한 단항식으로 정리한 뒤 $x,y$의 지수와 계수를 각각 비교한다.\n$(-4x^Ay^3)^2\\times x^3y^2\\div(\\frac{x}{y^2})^B\n=16x^{2A+3-B}y^{8+2B}$이다.\n우변 $Cx^6y^{18}$과 비교하면 $C=16$, $8+2B=18$이므로 $B=5$이다.\n또 $2A+3-B=6$이므로 $2A-2=6$, 따라서 $A=4$이다.\n$A+B+C=4+5+16=25$이다.\n정답은 ⑤이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -395,7 +395,7 @@ window.questionBank = [
       "35"
     ],
     "answer": "③",
-    "solution": "[핵심]\n괄호를 분배법칙으로 풀고 동류항을 정리한 뒤 계수를 읽는다.\n[풀이]\n$a(8a-6b)-a(9a-12b)=8a^2-6ab-9a^2+12ab=-a^2+6ab$이다.\n따라서 $A=-1$, $B=6$이고 $A+B=5$이다.\n[결론]\n정답은 ③이다.",
+    "solution": "괄호를 분배법칙으로 풀고 동류항을 정리한 뒤 계수를 읽는다.\n$a(8a-6b)-a(9a-12b)=8a^2-6ab-9a^2+12ab=-a^2+6ab$이다.\n따라서 $A=-1$, $B=6$이고 $A+B=5$이다.\n정답은 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -436,7 +436,7 @@ window.questionBank = [
       "$25x^3y - \\frac{125}{3}x^2y^2$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n빈칸의 식을 $P$라 두고 주어진 등식에서 역연산으로 $P$를 고립시킨다.\n[풀이]\n$\\frac53xy\\times P\\div x^2y=15x^2y-25xy^2$이므로\n$P=(15x^2y-25xy^2)\\times x^2y\\times\\frac3{5xy}$이다.\n$x^2y\\times\\frac3{5xy}=\\frac{3x}{5}$이므로\n$P=(15x^2y-25xy^2)\\frac{3x}{5}=9x^3y-15x^2y^2$이다.\n[결론]\n정답은 ③이다.",
+    "solution": "빈칸의 식을 $P$라 두고 주어진 등식에서 역연산으로 $P$를 고립시킨다.\n$\\frac53xy\\times P\\div x^2y=15x^2y-25xy^2$이므로\n$P=(15x^2y-25xy^2)\\times x^2y\\times\\frac3{5xy}$이다.\n$x^2y\\times\\frac3{5xy}=\\frac{3x}{5}$이므로\n$P=(15x^2y-25xy^2)\\frac{3x}{5}=9x^3y-15x^2y^2$이다.\n정답은 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -477,7 +477,7 @@ window.questionBank = [
       "$\\frac{1}{3}a^4b^3 - a^3b^4$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n잘못 곱한 결과에서 원래 다항식을 먼저 복원한 뒤, 원래 해야 했던 나눗셈을 한다.\n[풀이]\n원래 다항식을 $P$라 하면 $P\\times(-\\frac13ab)=3a^2b-9ab^2$이다.\n따라서 $P=(3a^2b-9ab^2)\\div(-\\frac13ab)=-9a+27b$이다.\n바르게 계산하면\n$P\\div(-\\frac13ab)=(-9a+27b)\\times(-\\frac3{ab})\n=\\frac{27}{b}-\\frac{81}{a}$이다.\n[결론]\n정답은 ④이다.",
+    "solution": "잘못 곱한 결과에서 원래 다항식을 먼저 복원한 뒤, 원래 해야 했던 나눗셈을 한다.\n원래 다항식을 $P$라 하면 $P\\times(-\\frac13ab)=3a^2b-9ab^2$이다.\n따라서 $P=(3a^2b-9ab^2)\\div(-\\frac13ab)=-9a+27b$이다.\n바르게 계산하면\n$P\\div(-\\frac13ab)=(-9a+27b)\\times(-\\frac3{ab})\n=\\frac{27}{b}-\\frac{81}{a}$이다.\n정답은 ④이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -518,7 +518,7 @@ window.questionBank = [
       "$4x^2-6x-3$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n각 분수를 항별로 나눈 뒤 두 결과를 뺀다.\n[풀이]\n$\\frac{3x-x^3}{x}=3-x^2$이고\n$\\frac{6x^3-5x^5}{x^3}=6-5x^2$이다.\n따라서 $(3-x^2)-(6-5x^2)=4x^2-3$이다.\n[결론]\n정답은 ①이다.",
+    "solution": "각 분수를 항별로 나눈 뒤 두 결과를 뺀다.\n$\\frac{3x-x^3}{x}=3-x^2$이고\n$\\frac{6x^3-5x^5}{x^3}=6-5x^2$이다.\n따라서 $(3-x^2)-(6-5x^2)=4x^2-3$이다.\n정답은 ①이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -559,7 +559,7 @@ window.questionBank = [
       "$\\frac{9}{2}$배"
     ],
     "answer": "④",
-    "solution": "[핵심]\n원기둥의 부피는 밑면 반지름의 제곱과 높이에 비례한다.\n[풀이]\nA의 반지름을 $r$, 높이를 $h$라 하면 $V_A=\\pi r^2h$이다.\nB의 반지름은 $3r$, 높이는 $\\frac12h$이므로\n$V_B=\\pi(3r)^2\\frac h2=\\frac92\\pi r^2h=\\frac92V_A$이다.\n따라서 $V_A=\\frac29V_B$이다.\n[결론]\n정답은 ④이다.",
+    "solution": "원기둥의 부피는 밑면 반지름의 제곱과 높이에 비례한다.\nA의 반지름을 $r$, 높이를 $h$라 하면 $V_A=\\pi r^2h$이다.\nB의 반지름은 $3r$, 높이는 $\\frac12h$이므로\n$V_B=\\pi(3r)^2\\frac h2=\\frac92\\pi r^2h=\\frac92V_A$이다.\n따라서 $V_A=\\frac29V_B$이다.\n정답은 ④이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -600,7 +600,7 @@ window.questionBank = [
       "$-\\frac{1}{3x} - \\frac{5}{2} \\ge \\frac{1}{6x}$"
     ],
     "answer": "①, ⑤",
-    "solution": "[핵심]\n부등호가 있고, 정리했을 때 미지수의 최고차항이 1차인 부등식인지 확인한다.\n[풀이]\n①은 등호만 있는 방정식이므로 일차부등식이 아니다.\n②와 ③은 바로 일차부등식이다.\n④는 양변의 $3x^2$을 소거하면 $-x\\ge x-1$, 즉 $-2x+1\\ge0$이 되어 일차부등식이다.\n⑤는 분모에 미지수 $x$가 있어 일차식으로 정리되는 일차부등식이 아니다.\n[결론]\n일차부등식이 아닌 것은 ①, ⑤이다.",
+    "solution": "부등호가 있고, 정리했을 때 미지수의 최고차항이 1차인 부등식인지 확인한다.\n①은 등호만 있는 방정식이므로 일차부등식이 아니다.\n②와 ③은 바로 일차부등식이다.\n④는 양변의 $3x^2$을 소거하면 $-x\\ge x-1$, 즉 $-2x+1\\ge0$이 되어 일차부등식이다.\n⑤는 분모에 미지수 $x$가 있어 일차식으로 정리되는 일차부등식이 아니다.\n일차부등식이 아닌 것은 ①, ⑤이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
@@ -641,7 +641,7 @@ window.questionBank = [
       "한 권에 8000원인 책 6권의 값과 배송비 2500원을 합한 금액이 20000원보다 적다. $\\rightarrow 8000 + 6 + 2500 < 20000$"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n문장 속 수량 관계와 ‘이상·보다 크다·짧다’ 같은 표현을 부등호와 연산으로 정확히 옮긴다.\n[풀이]\n① $x-5>2x$, ② $x\\ge19$, ③ $500x\\ge3000$, ④ $x-3<2$는 문장과 일치한다.\n⑤에서 책 6권의 값은 $8000\\times6$이므로 식은 $8000\\times6+2500<20000$이어야 한다. 제시식은 곱셈을 덧셈으로 잘못 나타냈다.\n[결론]\n옳지 않은 것은 ⑤이다.",
+    "solution": "문장 속 수량 관계와 ‘이상·보다 크다·짧다’ 같은 표현을 부등호와 연산으로 정확히 옮긴다.\n① $x-5>2x$, ② $x\\ge19$, ③ $500x\\ge3000$, ④ $x-3<2$는 문장과 일치한다.\n⑤에서 책 6권의 값은 $8000\\times6$이므로 식은 $8000\\times6+2500<20000$이어야 한다. 제시식은 곱셈을 덧셈으로 잘못 나타냈다.\n옳지 않은 것은 ⑤이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -682,7 +682,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[핵심]\n소수 계수를 없앤 뒤 음수로 나눌 때 부등호 방향이 바뀌는 것에 주의한다.\n[풀이]\n$1-0.4x\\le0.2$의 양변에 10을 곱하면 $10-4x\\le2$이다.\n$-4x\\le-8$이므로 $x\\ge2$이다.\n이를 만족하는 가장 작은 정수는 2이다.\n[결론]\n정답은 ②이다.",
+    "solution": "소수 계수를 없앤 뒤 음수로 나눌 때 부등호 방향이 바뀌는 것에 주의한다.\n$1-0.4x\\le0.2$의 양변에 10을 곱하면 $10-4x\\le2$이다.\n$-4x\\le-8$이므로 $x\\ge2$이다.\n이를 만족하는 가장 작은 정수는 2이다.\n정답은 ②이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
@@ -723,7 +723,7 @@ window.questionBank = [
       "$-\\frac{a+2}{3} > -\\frac{b+2}{3}$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n부등식의 양변에 음수를 곱하거나 나누면 부등호 방향이 반대로 바뀐다.\n[풀이]\n$a<b$에서 $-a>-b$이므로 양변에 5를 더하면 $5-a>5-b$이다.\n따라서 ④의 $5-a<5-b$는 옳지 않다.\n①, ②, ③, ⑤는 각각 같은 수의 덧셈 또는 양수·음수 배에 따른 방향 변화와 일치한다.\n[결론]\n정답은 ④이다.",
+    "solution": "부등식의 양변에 음수를 곱하거나 나누면 부등호 방향이 반대로 바뀐다.\n$a<b$에서 $-a>-b$이므로 양변에 5를 더하면 $5-a>5-b$이다.\n따라서 ④의 $5-a<5-b$는 옳지 않다.\n①, ②, ③, ⑤는 각각 같은 수의 덧셈 또는 양수·음수 배에 따른 방향 변화와 일치한다.\n정답은 ④이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -764,7 +764,7 @@ window.questionBank = [
       "$\\frac{12}{5}$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n두 부등식을 각각 $x<$ 꼴로 풀고 해의 경계가 같다는 조건을 이용한다.\n[풀이]\n$\\frac13x<\\frac25+\\frac2{15}x$에 15를 곱하면 $5x<6+2x$이므로 $x<2$이다.\n$2(a-0.3x)>x$는 $2a-0.6x>x$, 즉 $2a>1.6x$이므로 $x<\\frac{5a}{4}$이다.\n두 해가 같으려면 $\\frac{5a}{4}=2$이므로 $a=\\frac85$이다.\n[결론]\n정답은 ①이다.",
+    "solution": "두 부등식을 각각 $x<$ 꼴로 풀고 해의 경계가 같다는 조건을 이용한다.\n$\\frac13x<\\frac25+\\frac2{15}x$에 15를 곱하면 $5x<6+2x$이므로 $x<2$이다.\n$2(a-0.3x)>x$는 $2a-0.6x>x$, 즉 $2a>1.6x$이므로 $x<\\frac{5a}{4}$이다.\n두 해가 같으려면 $\\frac{5a}{4}=2$이므로 $a=\\frac85$이다.\n정답은 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
@@ -805,7 +805,7 @@ window.questionBank = [
       "$\\frac{11}{5}$km"
     ],
     "answer": "③",
-    "solution": "[핵심]\n올라가는 시간, 쉬는 시간, 내려오는 시간의 합이 2시간 이하라는 부등식을 세운다.\n[풀이]\n올라간 거리를 $x$ km라 하면 올라가는 시간은 $\\frac x2$시간, 내려오는 시간은 $\\frac x3$시간, 휴식은 $\\frac12$시간이다.\n따라서 $\\frac x2+\\frac12+\\frac x3\\le2$이다.\n양변에 6을 곱하면 $3x+3+2x\\le12$, 즉 $5x\\le9$이므로 $x\\le\\frac95$이다.\n[결론]\n최대로 $\\frac95$ km까지 올라갈 수 있으므로 정답은 ③이다.",
+    "solution": "올라가는 시간, 쉬는 시간, 내려오는 시간의 합이 2시간 이하라는 부등식을 세운다.\n올라간 거리를 $x$ km라 하면 올라가는 시간은 $\\frac x2$시간, 내려오는 시간은 $\\frac x3$시간, 휴식은 $\\frac12$시간이다.\n따라서 $\\frac x2+\\frac12+\\frac x3\\le2$이다.\n양변에 6을 곱하면 $3x+3+2x\\le12$, 즉 $5x\\le9$이므로 $x\\le\\frac95$이다.\n최대로 $\\frac95$ km까지 올라갈 수 있으므로 정답은 ③이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -840,7 +840,7 @@ window.questionBank = [
     "content": "$A=2^3+2^3$, $B=4^5+4^5+4^5+4^5$일 때, 다음 물음에 답하시오. [6점]<br>(단, 풀이과정에 지수법칙을 적용한 과정을 나타낼 것)<br><br>(1) $A, B$를 각각 2의 거듭제곱을 사용하여 나타내시오. [4점]<br>(2) $B \\div A$의 값을 구하시오. [2점]",
     "choices": [],
     "answer": "(1) $A=2^4, B=2^{12}$  (2) $2^8$",
-    "solution": "[핵심]\n같은 거듭제곱의 합을 곱셈으로 바꾸고 밑을 2로 통일한다.\n[풀이]\n(1) $A=2^3+2^3=2\\times2^3=2^4$이다.\n$B=4^5+4^5+4^5+4^5=4\\times4^5=4^6=(2^2)^6=2^{12}$이다.\n(2) $B\\div A=2^{12}\\div2^4=2^{12-4}=2^8$이다.\n[결론]\n(1) $A=2^4,\\ B=2^{12}$, (2) $2^8$이다.",
+    "solution": "같은 거듭제곱의 합을 곱셈으로 바꾸고 밑을 2로 통일한다.\n(1) $A=2^3+2^3=2\\times2^3=2^4$이다.\n$B=4^5+4^5+4^5+4^5=4\\times4^5=4^6=(2^2)^6=2^{12}$이다.\n(2) $B\\div A=2^{12}\\div2^4=2^{12-4}=2^8$이다.\n(1) $A=2^4,\\ B=2^{12}$, (2) $2^8$이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
@@ -876,7 +876,7 @@ window.questionBank = [
     "content": "$x=\\frac{4}{5}, y=3$일 때, 식 $(6x^2-15xy) \\div (-3x) - (5x^2y-5xy+10xy^2) \\div \\frac{5}{2}xy$의 값을 구하려고 한다. 다음 물음에 답하시오. [7점]<br>(단, 다항식의 사칙계산을 이용한 풀이과정을 나타낼 것)<br><br>(1) 주어진 식을 계산하시오. [4점]<br>(2) (1)의 결과에 $x=\\frac{4}{5}, y=3$을 대입하여 주어진 식의 값을 구하시오. [3점]",
     "choices": [],
     "answer": "(1) $-4x+y+2$  (2) $\\frac{9}{5}$",
-    "solution": "[핵심]\n두 다항식의 나눗셈을 각각 먼저 정리한 뒤 전체 식을 간단히 하고 값을 대입한다.\n[풀이]\n(1) $(6x^2-15xy)\\div(-3x)=-2x+5y$이다.\n또 $(5x^2y-5xy+10xy^2)\\div\\frac52xy\n=(5x^2y-5xy+10xy^2)\\frac2{5xy}=2x-2+4y$이다.\n따라서 전체 식은 $(-2x+5y)-(2x-2+4y)=-4x+y+2$이다.\n(2) $x=\\frac45, y=3$을 대입하면 $-\\frac{16}{5}+5=\\frac95$이다.\n[결론]\n(1) $-4x+y+2$, (2) $\\frac95$이다.",
+    "solution": "두 다항식의 나눗셈을 각각 먼저 정리한 뒤 전체 식을 간단히 하고 값을 대입한다.\n(1) $(6x^2-15xy)\\div(-3x)=-2x+5y$이다.\n또 $(5x^2y-5xy+10xy^2)\\div\\frac52xy\n=(5x^2y-5xy+10xy^2)\\frac2{5xy}=2x-2+4y$이다.\n따라서 전체 식은 $(-2x+5y)-(2x-2+4y)=-4x+y+2$이다.\n(2) $x=\\frac45, y=3$을 대입하면 $-\\frac{16}{5}+5=\\frac95$이다.\n(1) $-4x+y+2$, (2) $\\frac95$이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -911,7 +911,7 @@ window.questionBank = [
     "content": "다음 그림은 일차부등식 $4x-2 \\le -ax+b$의 해를 수직선 위에 나타낸 것이다. 이때, $a+b$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a$와 $b$는 상수이고 $a < -4$이다.) [7점]",
     "choices": [],
     "answer": "-6",
-    "solution": "[핵심]\n부등식의 해집합을 원본 수직선의 경계와 비교한다.\n[풀이]\n$4x-2\\le-ax+b$에서 $(4+a)x\\le b+2$이다. 조건 $a<-4$로 $4+a<0$이므로 양변을 $4+a$로 나누면 부등호가 바뀌어 $x\\ge\\frac{b+2}{4+a}$이다.\n원본 수직선은 경계 $-1$을 포함하고 오른쪽을 나타내므로 $\\frac{b+2}{4+a}=-1$이다. 따라서 $b+2=-(4+a)$이고 $a+b=-6$이다.\n[결론]\n정답은 $-6$이다.",
+    "solution": "부등식의 해집합을 원본 수직선의 경계와 비교한다.\n$4x-2\\le-ax+b$에서 $(4+a)x\\le b+2$이다. 조건 $a<-4$로 $4+a<0$이므로 양변을 $4+a$로 나누면 부등호가 바뀌어 $x\\ge\\frac{b+2}{4+a}$이다.\n원본 수직선은 경계 $-1$을 포함하고 오른쪽을 나타내므로 $\\frac{b+2}{4+a}=-1$이다. 따라서 $b+2=-(4+a)$이고 $a+b=-6$이다.\n정답은 $-6$이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
