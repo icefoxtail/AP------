@@ -12,9 +12,30 @@ export function normalizeArchiveImageUrlPath(url){
   try{return decodeURIComponent(new URL(url,'http://archive.invalid').pathname);}catch{return null;}
 }
 
-export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
+function writeArchiveAbortEvidence(run,attempt,cleanup){
+  const folder=assertOutput(path.join(run,'archive-render',attempt));fs.mkdirSync(folder,{recursive:true});
+  const evidence={schemaVersion:'ARCHIVE_BROWSER_CAPTURE_ABORTED_v1',status:'ABORTED',attempt,reason:'ARCHIVE_CAPTURE_CANCELLED',cleanup};
+  const abortPath=path.join(folder,'ABORTED.json');fs.writeFileSync(abortPath,JSON.stringify(evidence,null,2)+'\n',{flag:'wx'});
+  const error=Error('ARCHIVE_CAPTURE_CANCELLED');error.code='ARCHIVE_CAPTURE_CANCELLED';error.cleanup=cleanup;error.abortEvidenceRef=path.relative(repoRoot,abortPath).replaceAll('\\','/');return error;
+}
+
+function persistArchiveAbortEvidence(run,attempt,error,cleanup){
+  const folder=assertOutput(path.join(run,'archive-render',attempt));fs.mkdirSync(folder,{recursive:true});
+  const evidence={schemaVersion:'ARCHIVE_BROWSER_CAPTURE_ABORTED_v1',status:'ABORTED',attempt,reason:'ARCHIVE_CAPTURE_CANCELLED',cleanup};
+  const abortPath=path.join(folder,'ABORTED.json');
+  if(fs.existsSync(abortPath)){
+    const previous=JSON.parse(fs.readFileSync(abortPath,'utf8'));
+    if(previous.schemaVersion!=='ARCHIVE_BROWSER_CAPTURE_ABORTED_v1'||previous.status!=='ABORTED'||previous.attempt!==attempt||previous.reason!=='ARCHIVE_CAPTURE_CANCELLED')throw Error('ARCHIVE_ABORT_EVIDENCE_CONFLICT');
+  }else fs.writeFileSync(abortPath,JSON.stringify(evidence,null,2)+'\n',{flag:'wx'});
+  error.code='ARCHIVE_CAPTURE_CANCELLED';error.cleanup=cleanup;error.abortEvidenceRef=path.relative(repoRoot,abortPath).replaceAll('\\','/');return error;
+}
+
+export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onProgress}={}) {
+  if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('ARCHIVE_CAPTURE_SIGNAL_INVALID');
+  if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('ARCHIVE_PROGRESS_HOOK_INVALID');
   if(!/^[A-Za-z0-9_-]+$/.test(attempt))throw Error('INVALID_EVIDENCE_ATTEMPT');
-  run=assertOutput(run);const matrix=JSON.parse(fs.readFileSync(path.join(run,'archive-render-matrix.json'),'utf8'));
+  run=assertOutput(run);if(signal?.aborted)throw writeArchiveAbortEvidence(run,attempt,{serverWasListening:false,browserWasLaunched:false,browserClosed:true,serverClosed:true});
+  const matrix=JSON.parse(fs.readFileSync(path.join(run,'archive-render-matrix.json'),'utf8'));
   if(matrix.synthetic!==false||sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html')))!==matrix.engineSha256)throw Error('STALE_ENGINE_MATRIX');
   const overrides=new Map(matrix.sources.map(v=>['/'+v.sourcePath,assertOutput(path.join(repoRoot,v.candidatePath))]));
   for(const source of matrix.sources)for(const asset of source.assets||[])if(asset.archivePath){
@@ -26,17 +47,29 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
   const server=http.createServer((req,res)=>{
     try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);const file=overrides.get(pathname)||path.resolve(repoRoot,'.'+pathname);const extension=path.extname(file).toLowerCase();if(!file.startsWith(path.resolve(repoRoot)+path.sep)||!types[extension]||!fs.existsSync(file)){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':types[extension],'Cache-Control':'no-store'});res.end(fs.readFileSync(file));}catch(error){res.writeHead(400);res.end();}
   });
-  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const base='http://127.0.0.1:'+server.address().port;
-  const browser=await launchBrowser();const rows=[];const folder=assertOutput(path.join(run,'archive-render',attempt));fs.mkdirSync(folder,{recursive:true});
+  let browser=null,serverWasListening=false,browserClosePromise=null,serverClosePromise=null,browserCloseError=null,serverCloseError=null,cancellationError=null,base='';
+  const closeBrowser=()=>{if(!browser)return Promise.resolve();browserClosePromise||=browser.close().catch(error=>{browserCloseError=String(error);});return browserClosePromise;};
+  const closeServer=()=>{if(!server.listening)return serverClosePromise||Promise.resolve();serverClosePromise||=new Promise(resolve=>{server.close(error=>{if(error)serverCloseError=String(error);resolve();});server.closeAllConnections?.();});return serverClosePromise;};
+  const makeCancellationError=()=>{if(!cancellationError){cancellationError=Error('ARCHIVE_CAPTURE_CANCELLED');cancellationError.code='ARCHIVE_CAPTURE_CANCELLED';}return cancellationError;};
+  const checkCancelled=()=>{if(signal?.aborted)throw makeCancellationError();};
+  const abortListener=()=>{makeCancellationError();if(server.listening){server.closeAllConnections?.();void closeServer();}if(browser)void closeBrowser();};
+  signal?.addEventListener('abort',abortListener,{once:true});
+  const rows=[],folder=assertOutput(path.join(run,'archive-render',attempt));fs.mkdirSync(folder,{recursive:true});
   try {
+    checkCancelled();
+    await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});serverWasListening=true;
+    checkCancelled();base='http://127.0.0.1:'+server.address().port;onProgress?.({event:'SERVER_LISTENING',attempt,port:server.address().port});
+    browser=await launchBrowser();
+    checkCancelled();onProgress?.({event:'BROWSER_LAUNCHED',attempt,browserVersion:browser.version()});
     for(const item of matrix.rows) {
+      checkCancelled();
       const page=await browser.newPage({viewport:{width:item.width,height:item.height}});const consoleErrors=[];const responses=[];const responsePromises=[];
       page.on('pageerror',error=>consoleErrors.push(String(error)));
       page.on('response',r=>{responsePromises.push((async()=>{try{const bytes=await r.body();responses.push({url:r.url(),status:r.status(),sha256:sha256(bytes),bytes:bytes.length});}catch(error){responses.push({url:r.url(),status:r.status(),error:String(error)});}})());});
       const prefix=item.id+'-'+item.mode+'-'+item.viewport;const errors=[];let state={};const layouts=[];
       try {
-        await page.goto(base+item.urlPath,{waitUntil:'domcontentloaded',timeout:60000});
-        await page.waitForFunction(({mode,count})=>{
+        await page.goto(base+item.urlPath,{waitUntil:'domcontentloaded',timeout:60000});checkCancelled();
+        const readiness=page.waitForFunction(({mode,count})=>{
           const root=document.getElementById('print-area');
           if(!root||!root.querySelector('.page'))return false;
           const readiness=document.documentElement.dataset.apPrintReadiness;
@@ -44,7 +77,12 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           const numbers=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')].map(v=>v.textContent.match(/^\s*(\d+)/)?.[1]).filter(Boolean);
           return new Set(numbers).size===count;
         },{mode:item.mode,count:item.questionCount},{timeout:60000});
-        await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));if(window.APPrintRuntime?.waitUntilReady)await window.APPrintRuntime.waitUntilReady();});
+        const readinessResult=readiness.then(()=>null,error=>error);
+        onProgress?.({event:'PAGE_READINESS_WAIT',attempt,rowId:item.id,urlPath:item.urlPath});
+        const readinessError=await readinessResult;
+        if(readinessError){if(signal?.aborted)checkCancelled();throw readinessError;}
+        checkCancelled();
+        await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));if(window.APPrintRuntime?.waitUntilReady)await window.APPrintRuntime.waitUntilReady();});checkCancelled();
         state=await page.evaluate(async({mode,assets,envelopeTargets})=>{
           const root=document.getElementById('print-area');
           const numberNodes=[...root.querySelectorAll(mode==='ans'?'.ans-n':'.q-num')];
@@ -106,23 +144,40 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
             if(await nativeBox.count())await nativeBox.screenshot({path:path.join(folder,prefix+'-'+target.id+'-context.png')});
           }
         }
-        await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});
-      }catch(error){errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
+        await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});checkCancelled();
+      }catch(error){if(signal?.aborted)throw makeCancellationError();errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
       await Promise.allSettled(responsePromises);
+      checkCancelled();
         if(item.mode==='sol')for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===asset?.sha256))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
         if(consoleErrors.length)errors.push(...consoleErrors);
       if(item.mode==='sol')for(const target of item.envelopeTargets||[]){const index=Number(target.displayOrdinal||target.questionId)-1;if(index>=0&&index<item.questionCount){const block=page.locator('#print-area .q-box').nth(index);if(await block.count())await block.screenshot({path:path.join(folder,prefix+'-'+target.id+'-envelope-context.png')});}}
       const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:base+item.urlPath,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,
         capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:item.mode==='sol'?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:item.mode==='sol'?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
-      fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();
+      checkCancelled();fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();checkCancelled();
     }
-  }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
-      const result={status:rows.every(v=>v.status==='PASS')?'PASS':'FAIL',runtime:'playwright-chromium',synthetic:false,scope:'bound code regression candidates in unmodified archive runtime',rows:rows.map(v=>({id:v.id,status:v.status,capture:v.capture,errors:v.errors})),matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json')))};
+    checkCancelled();
+  }catch(error){if(signal?.aborted)throw makeCancellationError();throw error;}
+  finally{
+    await closeBrowser();await closeServer();
+    if(cancellationError){
+      cancellationError.cleanup={serverWasListening,browserWasLaunched:Boolean(browser),browserClosed:!browser||!browser.isConnected(),serverClosed:!server.listening,browserCloseError,serverCloseError};
+      persistArchiveAbortEvidence(run,attempt,cancellationError,cancellationError.cleanup);
+    }
+    signal?.removeEventListener('abort',abortListener);
+  }
+  const cleanup={serverWasListening,browserWasLaunched:Boolean(browser),browserClosed:!browser||!browser.isConnected(),serverClosed:!server.listening,browserCloseError,serverCloseError};
+  onProgress?.({event:'ARCHIVE_RESOURCES_CLEANED',attempt,cleanup});
+  if(signal?.aborted&&!cancellationError)cancellationError=makeCancellationError();
+  if(cancellationError)throw persistArchiveAbortEvidence(run,attempt,cancellationError,cancellationError.cleanup||cleanup);
+  const result={status:rows.every(v=>v.status==='PASS')?'PASS':'FAIL',runtime:'playwright-chromium',synthetic:false,scope:'bound code regression candidates in unmodified archive runtime',rows:rows.map(v=>({id:v.id,status:v.status,capture:v.capture,errors:v.errors})),matrixSha256:sha256(fs.readFileSync(path.join(run,'archive-render-matrix.json')))};
   fs.writeFileSync(path.join(folder,'summary.json'),JSON.stringify(result,null,2)+'\n');return result;
 }
 
-export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal,targetId,questionUid=null,intrinsicSvg,sizeClasses=['small','medium','large','full'],sourceAuthorityStatus='MEASUREMENT_ONLY'}){
+export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal,targetId,questionUid=null,intrinsicSvg,sizeClasses=['small','medium','large','full'],sourceAuthorityStatus='MEASUREMENT_ONLY',signal,onProgress}){
   run=assertOutput(run);
+  if(signal!==undefined&&(!signal||typeof signal.aborted!=='boolean'||typeof signal.addEventListener!=='function'||typeof signal.removeEventListener!=='function'))throw Error('ARCHIVE_CAPTURE_SIGNAL_INVALID');
+  if(signal?.aborted)throw writeArchiveAbortEvidence(run,'envelope-preflight',{serverWasListening:false,browserWasLaunched:false,browserClosed:true,serverClosed:true});
+  if(onProgress!==undefined&&typeof onProgress!=='function')throw Error('ARCHIVE_PROGRESS_HOOK_INVALID');
   if(!sourceRef?.path?.startsWith('archive/exams/original/')||!Number.isSafeInteger(sourceOrdinal)||sourceOrdinal<1||!/^[-A-Za-z0-9_]{1,96}$/.test(targetId)||!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||!Array.isArray(sizeClasses)||!sizeClasses.length)throw Error('DISPLAY_ENVELOPE_PREFLIGHT_INPUT_INVALID');
   if(sizeClasses.some(v=>!['small','medium','large','full'].includes(v))||new Set(sizeClasses).size!==sizeClasses.length)throw Error('DISPLAY_ENVELOPE_PROFILE_SET_INVALID');
   const sourceBytes=readBoundFile(repoRoot,sourceRef),bank=loadBank(sourceBytes.toString('utf8'));
@@ -135,7 +190,7 @@ export async function measureArchiveDisplayEnvelope({run,sourceRef,sourceOrdinal
   const row={...sourceInfo,mode:'sol',viewport:'desktop-envelope',width:1440,height:1000,urlPath:'/archive/engine.html?mode=sol&qpp=4&data='+encodeURIComponent(sourceRef.path.replace(/^archive\//,'')),envelopeTargets:[{id:targetId,questionId:sourceOrdinal,displayOrdinal:index+1,intrinsicSvg,sizeClasses,sourceAuthorityStatus}]};
   const matrix={schemaVersion:'GEOMETRY_ARCHIVE_DISPLAY_ENVELOPE_MATRIX_v1',synthetic:false,measurementOnly:true,engineSha256:sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html'))),sources:[sourceInfo],rows:[row]};
   fs.writeFileSync(path.join(run,'archive-render-matrix.json'),JSON.stringify(matrix,null,2)+'\n');
-  const archive=await recordArchiveEvidence({run,attempt:'envelope-preflight'});
+  const archive=await recordArchiveEvidence({run,attempt:'envelope-preflight',signal,onProgress});
   const captureFolder=path.join(run,'archive-render','envelope-preflight');
   const rowPath=path.join(captureFolder,targetId+'-sol-desktop-envelope.json');
   const rowEvidence=JSON.parse(fs.readFileSync(rowPath,'utf8'));
