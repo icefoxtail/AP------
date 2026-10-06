@@ -13,7 +13,7 @@ campaign authority: JS_Archive_2.0_GPT_Campaign_Generation_v1.md
 새 GPT 2.0 예약 worker는 legacy JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md를 authority 또는 copy source로 사용하지 않는다.
 
 새 15라인의 유일한 예약 prompt copy source는 JS_Archive_2.0_GPT_Scheduled_Prompt_Template_v1.md다.
-현재 campaign/generation 및 A/B/C 고정 partition authority는 JS_Archive_2.0_GPT_Campaign_Generation_v1.md와 해당 generation의 frozen campaign-manifest다.
+현재 campaign/generation 및 A/B/C 고정 partition authority는 JS_Archive_2.0_GPT_Campaign_Generation_v1.md와 Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json`이다.
 
 ## 1. 정상 생명주기
 
@@ -65,7 +65,6 @@ activation 후 worker가 임의로 stream을 바꾸지 않는다.
 Archive2-GPT/
   generations/
     H1_GPT2_20261006/
-      campaign-manifest.json
       A/
         <examUid>/
           source/
@@ -97,7 +96,7 @@ campaignId 또는 stream이 다른 artifact는 현재 stage 계산에 사용할 
 
 ## 5. Fixed stream manifest HARD
 
-campaign-manifest.json이 activation authority다.
+Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json`이 activation authority다.
 
 필수:
 - campaignId
@@ -234,7 +233,7 @@ legacy/current generation 밖 PASS는 상태 계산에서 0으로 본다.
 15라인 ON 전 반드시:
 1. campaignId = H1_GPT2_20261006 고정
 2. 새 generation root 생성
-3. campaign-manifest partitionStatus=FROZEN
+3. Git `archive/data/gpt-campaigns/H1_GPT2_20261006.json`의 partitionStatus=FROZEN
 4. denominator = A+B+C assignment total
 5. duplicate/unassigned = 0
 6. 15개 worker가 각각 자기 STREAM=A/B/C를 명시
