@@ -1,0 +1,2860 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "20_풍덕중_2학기_기말_중2_기출",
+  "artifactSha": "a46dcc847870af31d83676728f972ea6830b1512",
+  "evidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/CREATE.evidence.json",
+  "inputArtifact": {
+    "path": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+    "sha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+    "sourceSelection": "COMMITTED_BRANCH_SNAPSHOT",
+    "rosterPath": ".tmp/archive/archive2-m2-codex-20261006-03/roster.json",
+    "rosterPosition": 9,
+    "selectedPath": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js"
+  },
+  "finalArtifactPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+  "sourceEvidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/20_풍덕중_2학기_기말_중2_기출.evidence.json",
+  "sourcePdf": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+    "sha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "status": "PREFLIGHT_COMPLETE_BEFORE_AUTHORING",
+    "protocol": "docs/rules/02_PIPELINES/해설프로토콜.md; docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md §§3/6/11",
+    "goldenCalibrationSet": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    ],
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 1,
+            "observation": "내분점 비의 반대 곱과 중점 좌표를 각각 구한 뒤 두 점 사이 거리 식으로 이어 계산한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE"
+            ],
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3"
+          },
+          {
+            "qid": 2,
+            "observation": "평행 조건으로 기울기를 고정하고 점 대입으로 절편을 구한 후 m+n을 계산한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE"
+            ],
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba"
+          },
+          {
+            "qid": 7,
+            "observation": "실선 원의 최종 중심과 점선을 이용한 이동·대칭 순서가 그림에서 구별된다.",
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+          }
+        ],
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "items": [
+          {
+            "qid": 1,
+            "observation": "좌표 차를 각각 계산하고 거리 공식에 대입해 루트와 최종 간단화를 보여 준다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE"
+            ],
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+          },
+          {
+            "qid": 2,
+            "observation": "수직 직선 두 개의 기울기 도출과 곱=-1 조건을 실제 직선 그림의 방향으로 확인한다.",
+            "axes": [
+              "VISUAL_SEMANTIC_PARITY"
+            ],
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+          }
+        ],
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "실제 좌표·위상 검산 없이 SVG 라벨/집계만 보고 통과시킨 오류와 ㄱㄴ 열거 판단의 한 문단 압축을 부정 예로 확인했다."
+    },
+    "negativeReadCompleted": true,
+    "visualReviews": [
+      {
+        "sample": "25_매산여고 q7",
+        "renderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/preflight-samples/golden-maesan-q7.png",
+        "observation": "두 원의 이동 및 원점대칭 뒤 최종 위치가 분리되어 표현됨"
+      },
+      {
+        "sample": "25_효천고 q2",
+        "renderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/preflight-samples/golden-hyocheon-q2.png",
+        "observation": "기울기 방향이 반대이고 두 직선이 직교하는 실제 선형을 확인"
+      }
+    ]
+  },
+  "questionLayoutAuditCount": "25/25",
+  "questionLayoutStatus": "PASS",
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "visualNecessityAuditCount": "25/25",
+  "curriculumMethodAuditCount": "25/25",
+  "curriculumViolationQids": [],
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "619c0f9f32fe8698d8cf72206bc60c922558c4a2593276d0100747fddacf777b",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q1",
+        "id": 1,
+        "sourceOrdinal": 1,
+        "sourcePage": 1,
+        "contentHash": "bae56b08e88a3c9541bc9ebe473ca1ae006769ad78e51bb6c90c8aa729ba6fc2",
+        "choicesHash": "0fb25cd630959ddf826e9eb573e0db37b5beb7b51b8320ec2c8a5ed7811f28aa",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "cd49f44e548780284b2a013aa3ce2791fe21bbe3a54b1269cfb08b002b4768e1"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 1,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": true
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "④"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "식의 정리로 일차함수의 정의 판별",
+      "decisiveStep": "④",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "327e7150bb3c98ab9c8243ee28f5c57eea775488429897208c07018db212c742",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q2",
+        "id": 2,
+        "sourceOrdinal": 2,
+        "sourcePage": 1,
+        "contentHash": "c7835c4bd5eba1628704b7554325206a90f036b4f330ca5617d0e00ae316373c",
+        "choicesHash": "ff85716cf54ecfa7be28c2b0ae9a6d4a8ab520774d4ca0a40179cbbd2fc89126",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "c401779bcd697dd7ec2510e8b707ba135c1c1d94cda7ce98aee91c461f39f048"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 1,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "④"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "y축 방향 평행이동 후 점 대입",
+      "decisiveStep": "④",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "ab8741f7ab2430476dd509fd63446fed8650f62b0467999d7a081483821cdfbb",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q3",
+        "id": 3,
+        "sourceOrdinal": 3,
+        "sourcePage": 1,
+        "contentHash": "c68ce21e043b275a8fdc0902cd1c82f7c32e54bdfbfd48017e9279162cd5526d",
+        "choicesHash": "5a2e8e043db72afc3efbdf20a473b54dd1647a84895786aa7fb14cf34d9cb730",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "a67b8473bfe4df08e440b093a60a0553204bfaa480d98e52497bc0c686553900"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 1,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "③"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "축과 만나는 점에서 좌표 하나를 0으로 두기",
+      "decisiveStep": "③",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "a9d7b498768248e3be11159f1fdb2a660bd9ac5ece887b6d483e303d0acd7d1d",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q4",
+        "id": 4,
+        "sourceOrdinal": 4,
+        "sourcePage": 1,
+        "contentHash": "aa7bda2102a6bc96bebc96f9151647ded024ce516885c81012ad0357e200eb6a",
+        "choicesHash": "9f32b99ddc3a3c4160dfe768b333e64d22f2ae885f580adeeb999231d004d03e",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "ed384a7fc46160369217d03da433d8744c4614ba282d7fe3572e0f1d72633d30"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 1,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "①"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "두 점으로 직선을 정하고 세 번째 점 조건 대입",
+      "decisiveStep": "①",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "17e343c5a3280e5f9811cd063590b64f0813d1a73a5dc0527d8a016ef771abc3",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q5",
+        "id": 5,
+        "sourceOrdinal": 5,
+        "sourcePage": 1,
+        "contentHash": "4bcb3655702beb251d2f5b1f8d23b315d7a26f276f3717ada673bcc62a709bfc",
+        "choicesHash": "b142fed6d755074188ebb5438d0c053a79e8b5b430ddaf0958fab119b073144d",
+        "imageRefHash": "bba4d93e71560390a26891e29ab5a0f8b75f5841682c485c9350ee949c3d382a",
+        "sourceIdentityFingerprint": "ecabe747af3b1b0105f827d19eeb0e735dbf1f3f308f38efe16c568f031ecea8"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 1,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q05.png",
+          "questionImageSha256": "171574d8d24bafdc27d8b8b731e21e1f0e2a8819b6293589c75cc6d85e493abf",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "⑤"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "그래프의 두 점으로 기울기 비교",
+      "decisiveStep": "⑤",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "285e42331d9af1d14cecb7ed78a32007b23506ed92d1aaa418b479d1e2a8f473",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q6",
+        "id": 6,
+        "sourceOrdinal": 6,
+        "sourcePage": 1,
+        "contentHash": "0046644685e6d9cbc7f34ba656759c32c80dc02e7bc4266c74673bf93f2ae938",
+        "choicesHash": "eb8212f3843b8d6fa38eb0555e5a35a7011d2111fc1cc2b2dbbd5bd03eaafad8",
+        "imageRefHash": "694862a1aefa83fd62a81b73719f4f543ef8f22a1deec1516c2d6c6f23dd2380",
+        "sourceIdentityFingerprint": "038eab1aae6634a8c4310d700d0c1eeab104c3f7f835a5353d8255863f34cbca"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 1,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": true
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q06.png",
+          "questionImageSha256": "3dbd3c903bd8bd7989833ce063fcc40806211b4c8bce751a8fce2c3eba19ca48",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "①, ⑤"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "절편으로 기울기와 점 포함·평행 여부 판정",
+      "decisiveStep": "①, ⑤",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "3f459725fcd8d0ccba69799a3bab51f459e24ce3161ca0880b1ad27629670854",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q7",
+        "id": 7,
+        "sourceOrdinal": 7,
+        "sourcePage": 1,
+        "contentHash": "ddcb3566ea45dfa06a6f199e3be3e2b749cdbeb13a9966d71b1d422f1227b61f",
+        "choicesHash": "fdd44b2fc05ef9b676d75d10d5974516dfb84bb40f35956d28708af33c200270",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "ff0dc13ba1e4420f08ff50ee7559046566f0d0357624196aba4521f3c3050d35"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 1,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "⑤"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "두 점을 지나는 직선의 기울기와 절편 결정",
+      "decisiveStep": "⑤",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "17e8e97b3a1ba7982867a92c9b36d94dbcd2fdeb29e35c33e0ff789157daaa35",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q8",
+        "id": 8,
+        "sourceOrdinal": 8,
+        "sourcePage": 2,
+        "contentHash": "17a590d5a7e078ebac0c429485e42888f29e1ec8490e4fc6e12d7ca033222b46",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "577b0fbe1c5fd8d37219e5c47ba1aa159995ea2a79082f652716b708da85395f",
+        "sourceIdentityFingerprint": "44fc5d16cafa70a758fa388ec94b7cb4781139a5a65fd57d4f2a9d5a8c5447e6"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 2,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q08.png",
+          "questionImageSha256": "2e263072f7ad37806f37d0870cc59af0fdcbda7caeef5495a988aa6ea04cd5aa",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "⑤"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "일차방정식을 절편 형태로 고쳐 그래프 고르기",
+      "decisiveStep": "⑤",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "f8779c27ed753d50ee60591110ce539e68cf3f1cc3fb19e6f23e97d56e7a470a",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q9",
+        "id": 9,
+        "sourceOrdinal": 9,
+        "sourcePage": 2,
+        "contentHash": "3ae184b1fbdcef54431790777a47dba98a5aa0186b2fbc9c4896002adc0606ed",
+        "choicesHash": "f7cfe0744b4a52f3c4da2a7c336d1b8c385e498173986de67c059faaf2ac3cdc",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "abb507cf51f9d9ca958fdc06923bfb3f3f5251cc0fde467377137c9072998398"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 2,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "③"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "y=0을 대입해 점의 x좌표와 수직선 방정식 결정",
+      "decisiveStep": "③",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "99377cc08cc34e248246f24666c6782ffa64dbad43714247106fad41041d0de8",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q10",
+        "id": 10,
+        "sourceOrdinal": 10,
+        "sourcePage": 2,
+        "contentHash": "fafe84bbc97c1c008f693bc96095417675db048faa7941c81a68165861a92050",
+        "choicesHash": "777643af9129e615e35af6c28fb842233aa615b7a90c7553dbe12719fde12dd9",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "f320e7ba8e31d9fc79a66789dc90f43d50c93859daa244734ffe2b709f0043b1"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 2,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "②"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "두 직선의 기울기와 절편 비교로 해 없음 조건",
+      "decisiveStep": "②",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "6e026abc27b2dc025628c25a2df60d7e4da102fc7703c6f27a8df601f1f575cf",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q11",
+        "id": 11,
+        "sourceOrdinal": 11,
+        "sourcePage": 2,
+        "contentHash": "1f4ef97614ad9a12872c6cd4316777d7961ab712785867cc5275262ce8e53539",
+        "choicesHash": "783ced069503c036e69d2b41ef0c2ced28b127f5a553e881994bc1b152985221",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "e5802842c4c5699c5da7e27ea95fbfbb5756679683019b47d7ab339165854ebf"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 2,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "③"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "6의 약수를 순서대로 세기",
+      "decisiveStep": "③",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "e9cfc68904f5490b92e8cfc807e9d7311f9d9535a5ea21e9c56abe09570d2f12",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q12",
+        "id": 12,
+        "sourceOrdinal": 12,
+        "sourcePage": 2,
+        "contentHash": "686a6178303a27bc59dfbf2792af2b2a753b6c217a9f6267ddc0df1b77dabf53",
+        "choicesHash": "c1b4d4b3efc31f000a3bdb843c1f914f6a998123ea309fdf1b7b3e55297bb8a9",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "7d9957433d052812ac71ca8bb24d179b6183f972768839cccbc24e99e2dc5445"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 2,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "①"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "비기는 세 가지 같은 손 모양 열거",
+      "decisiveStep": "①",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "cbc9228ebf54d6221b4bda75bf800901b446db264022ceecf6293603faa9929b",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q13",
+        "id": 13,
+        "sourceOrdinal": 13,
+        "sourcePage": 2,
+        "contentHash": "89d439021d1c48db448cabb4ec7b4743816f74c013e07d4ea6b56ecfb6371633",
+        "choicesHash": "5e6c88692ff33f2ca0a09e0c2ffde450d355abd6c92c862155580227e2388b26",
+        "imageRefHash": "aecd3385ed807d4046f79e9ab0e753d0435e6422176756e03ea46a377eaa892b",
+        "sourceIdentityFingerprint": "acc6ae06e00894f9f645ea631d58fcc64103a1ab77fbc025a231cdb313fa1c19"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 2,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q13.png",
+          "questionImageSha256": "b83a62d97a5110beed5c168f6b5ef346733886dacd503522fe46394cf90a5990",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "①"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "배수 두 집합의 공통 원소를 중복 없이 세기",
+      "decisiveStep": "①",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "2babea945d998728b4a2dda0e8c8a484c41823b8d74f311164dfaea30c747414",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q14",
+        "id": 14,
+        "sourceOrdinal": 14,
+        "sourcePage": 2,
+        "contentHash": "764685aca91eb531b494bde2ba873f6be838476f5c8fdbc672ca5bc0b4689ab2",
+        "choicesHash": "0a0b8137435754090ea7ac37bc2b114d04d43905b793ecc18b4f9f584cb088ef",
+        "imageRefHash": "6dd214f73c37418d96f1a5d41454d8eff13db76f90876ea17eb966c59099218f",
+        "sourceIdentityFingerprint": "4f91a55dc13ce870f4e0c52bb82c3d63d324b3386130ef2493a10d63c729c335"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 2,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q14.png",
+          "questionImageSha256": "af301a528dd452e783e5ae59d1c86df8852277808b332eacfb34267f18491230",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "④"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "두 선택 단계의 곱의 법칙",
+      "decisiveStep": "④",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "cf779321085507b9a4f716a426508ffa6ffe5c3d794b4f0bb8527dbe7e63480e",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q15",
+        "id": 15,
+        "sourceOrdinal": 15,
+        "sourcePage": 3,
+        "contentHash": "012cd74780b39401580b590521cfb640d5be646d9adede060239cab31d8639dd",
+        "choicesHash": "7a407457d0bb37e4a504e615e4f22b15345b989f6dcf2ea610677370b50d04d5",
+        "imageRefHash": "1b0e408431fc2483df9e940c3491188eb53b656b33abc67d82cab8a4a3d77e1f",
+        "sourceIdentityFingerprint": "8cefa827fdbc372b3f7a55141632e2f466fcd6910f6c084edf88cf08bf0312b4"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 3,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": true
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q15.png",
+          "questionImageSha256": "be335db7cf7328e8a0295e3087017db83aa13bf5d6ea721f7b2c393c22f25c40",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "⑤"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "표의 스트라이크·볼 조건에 후보 숫자를 대조",
+      "decisiveStep": "⑤",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "e4f8da66dd8794927716f215bc7171af2f8c3d4684da12a17be5ae62c9d25da2",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q16",
+        "id": 16,
+        "sourceOrdinal": 16,
+        "sourcePage": 3,
+        "contentHash": "8a68a98882f504e39444e6772b0b188ed3ef1e1b860ca8aaffd0b55aec11195d",
+        "choicesHash": "ed495f710fb7325df71177545bb3140786dc1477f650f7f86a73d5d15053a173",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "c5a9b5549bf584c0186f1ddbbcfc185ecd2467d3f7968d9e9f8a886d5a0ddcb2"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 3,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "①"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "불량품 수를 전체 제품 수로 나누기",
+      "decisiveStep": "①",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "9c41fbf2d6940ae17440d5de479692faa2f63cad1a84f99ae2314d37893c7902",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q17",
+        "id": 17,
+        "sourceOrdinal": 17,
+        "sourcePage": 3,
+        "contentHash": "6ec645288dc78974bffa1d86bb32498f4ce837a2a04f39aef31d7b59ab8a8283",
+        "choicesHash": "952244b6cfb5872e7d011a264786484e11410281b8ab39fc76582e1e5040cce0",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "d4c9cca3ea3284bb7bb83410d6d2414fb388567214265d3ce152833b47354f5b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 3,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "③"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "동전과 주사위의 독립적인 경우를 곱하기",
+      "decisiveStep": "③",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "eb53912c8c585d7607f50dbcb7d4b35f209657c529cefc0787cadc8e35962422",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q18",
+        "id": 18,
+        "sourceOrdinal": 18,
+        "sourcePage": 3,
+        "contentHash": "c07c4e7f396056d1d7a0707c8967a2f6569b555342ad006bd2fa5b0b82d76972",
+        "choicesHash": "2f531e3291e4a7301380404369e36a6bf40558fe0291a0bdb28038d362a145d3",
+        "imageRefHash": "de277da19eab81dccfab30829ba1d20b22aa17a21e577fbfae364d0b8f369011",
+        "sourceIdentityFingerprint": "c8ebefce7ba67ab63fdbcbfc4914010984cdc514e55b430348c6f7b0addefa97"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 3,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q18.png",
+          "questionImageSha256": "94fae7c66b7368940a0caa5d3b122e6a2669ede452f0f7ca6dd80cdec4515cf8",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "③"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "10개 같은 넓이 영역에서 소수 라벨 수를 세기",
+      "decisiveStep": "③",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "efe2788fd3ed59f2b66b615d54b4dbbe39eb870108c970d1b930d66c83e7195e",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q19",
+        "id": 19,
+        "sourceOrdinal": 19,
+        "sourcePage": 3,
+        "contentHash": "03a2302e87ecc1dea5aeb0e38b5f9726229a177d7a8f1d35fae7822e18ff773e",
+        "choicesHash": "7903714496e91dba97e84b6d6248265767e469dfe4708c6584c1a79dbc468bd5",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "2ae0a265b46bef65970aa0ce9c1d1d709868fb40eda6d456b194ec6cc45c5323"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 3,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "④"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "두 동전의 전체 결과에서 앞면이 없는 경우 빼기",
+      "decisiveStep": "④",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 1,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "6dd26baa42c8261b5e6fcf9e2932177787a6a34066ac8c95823a4606050a93da",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q20",
+        "id": 20,
+        "sourceOrdinal": 20,
+        "sourcePage": 3,
+        "contentHash": "0d8f868a0e8993b533ac9006ad6325e0eaa9d92b5e3e0d3bc6e724ec6099479f",
+        "choicesHash": "7903714496e91dba97e84b6d6248265767e469dfe4708c6584c1a79dbc468bd5",
+        "imageRefHash": "65d011939588ccf53937322ab13af53397c4c6f540e6d1069614e514851fb56a",
+        "sourceIdentityFingerprint": "5b05a21d165387c370f6bf186904a5c5ca3d217d922e1525e5ba3b92f52db3da"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 3,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "EXACT_SOURCE_ASSET_REFERENCE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+          "questionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q20.png",
+          "questionImageSha256": "1f9090e5e60ad0f90d6927ce2f5cef92dcb4c5cc712766df0a2dedfccda23c38",
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "The source figure is preserved at its exact locked relative ref and all labels/structure were checked against the source crop."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "②"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "두 유전인자 조합 네 가지 중 AB형을 세기",
+      "decisiveStep": "②",
+      "visualDisposition": "SOURCE_FIGURE_PRESERVED_NO_SOLUTION_SVG",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "9f7e508c3af2bf0576e47e6d1284844cfc74ca7c87ad2ab583aceebe669faf71",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q21",
+        "id": 21,
+        "sourceOrdinal": 21,
+        "sourcePage": 3,
+        "contentHash": "e366fe469ca3b42874fc4dadc8bc61e7fecb1d7059effda5f85c460ee6a94f1f",
+        "choicesHash": "4b53b09b11fc29b74ea6b8ea8638761f883150eb9f649b7088c2a112d0054ac9",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "8bbdec1825c60d9898454c44e9dbc9271b2bcf96c48d2d099335ec6f643e8a6a"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 3,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "②"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "남은 시합의 경우를 나누어 승리 확률에 따라 상금 분배",
+      "decisiveStep": "②",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "a9143b4be2c0c02113e2b63e290fa814362f8cf02817d68faa1c0a2ad1de1a70",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q22",
+        "id": 22,
+        "sourceOrdinal": 22,
+        "sourcePage": 4,
+        "contentHash": "6888e119a11a7deb6fcceacb58acbee5345c82313518ec78e09f6b5965debd80",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "cd555068975092863fc487a9b2a9e470391170330edf16d34d150fa935bee897"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 4,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": false
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "(1) y=90-3x; (2) 20초"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "초기 높이와 일정한 감소량으로 함수식 구성 후 대입",
+      "decisiveStep": "(1) y=90-3x; (2) 20초",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "b114d5be81511393919128dfd3522464abbfaede8609f6f1744db90a5ac011b9",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q23",
+        "id": 23,
+        "sourceOrdinal": 23,
+        "sourcePage": 4,
+        "contentHash": "f746ff22b594a172130b9fc9e8f8b18ef0f4fbb1446a88fc530be3e0ce2276de",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "b25bdc5a9372a1378f9a15ec449203759f5f7d3a8bed316cf97bce4dbe67d8e7"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 4,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": true
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 3,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "SOLUTION_SVG_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": "assets/images/20_풍덕중_2학기_기말_중2_기출/q23-solution.svg",
+          "solutionImageSha256": "33992e1008af2588775c653ad9af95fc392d8f6c35677f06fe03e34d8ececa32",
+          "reason": "The source explicitly asks for both line graphs. The labeled graph now places both y-intercepts and intersection on the actual lines; the shaded triangle uses vertices (0,2), (0,-4), and (2,-2)."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "(1) 그래프; (2) (2,-2); (3) 6"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "절편으로 두 직선을 그리고 연립해 교점·삼각형 넓이 결정",
+      "decisiveStep": "(1) 그래프; (2) (2,-2); (3) 6",
+      "visualDisposition": "SOLUTION_SVG_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "390cf0ddddde827a67d9e3a2b3c8ab88e79d389426ac9f12fedb6fda5a81bdde",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q24",
+        "id": 24,
+        "sourceOrdinal": 24,
+        "sourcePage": 4,
+        "contentHash": "d4d30a6a59d5c96798f9b11a62c718aa1d94e728a3392e58f072fd26b76d2264",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "a17dcbab39ca3ba9f3231dcbe91e0cfc4e89be3d517815e8c08515e92be933a6"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 4,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": true
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 4,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "8/9"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "주사위 순서쌍을 세고 두 직선의 기울기 비교",
+      "decisiveStep": "8/9",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    },
+    {
+      "qid": 25,
+      "sourceMode": "ORIGINAL",
+      "verdict": "PASS",
+      "solutionSha256": "24c5517b859fd5cc31e1b571ba6fb63b1ed9880c613ffa24a0037853b8dacbd2",
+      "smallBoardContinuityStatus": "PASS",
+      "sourceIdentity": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+        "questionUid": "20_풍덕중_2학기_기말_중2_기출:q25",
+        "id": 25,
+        "sourceOrdinal": 25,
+        "sourcePage": 4,
+        "contentHash": "86900bdaedc6b350388e9bd385799927108b3fa677402c1697baffd82dfd9198",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "9205981fb81ffdecf731c3a9c2bb45d7de11695ed792b8f2fa9eb09743fd54cf"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "sourceInputPath": ".tmp/archive/source-batch-20261006/middle/m2/20_풍덕중_2학기_기말_중2_기출/20_풍덕중_2학기_기말_중2_기출.js",
+          "sourceInputSha256": "eec491d1bfa995068bce233f9b1aabe6d1c1211ef6899550641fe8a71c3f4e85",
+          "sourcePdfPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/source/2020_풍덕중2_수학_2기말.pdf",
+          "sourcePdfSha256": "b692e9ae68440787f2d2f699b5e757f65f2691aa342019316d6d5832feae8fdf",
+          "sourcePage": 4,
+          "contentParity": "EXACT_LOCKED_INPUT",
+          "choicesParity": "EXACT_LOCKED_INPUT",
+          "imageRefParity": "NO_SOURCE_IMAGE",
+          "sourceOnlyJsSha256": "49447521fa5bdde1d0e6095b86105a1635bef1e160619dd9312df916061f37fe"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "KEEP",
+          "finalDisposition": "KEEP_GRID",
+          "disposition": "KEEP_GRID",
+          "layoutTag": "grid",
+          "wide": false,
+          "reason": "Locked source wording/order and choices are unchanged. Existing paragraph and source image boundaries preserve each condition and ask; AUTO-FIRST grid is retained."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "structure": "Teacher board sequence shows setup, transformations, intermediate values, condition use, and result in separate readable blocks.",
+          "enumeratedBlocksSeparated": true
+        },
+        "meta": {
+          "status": "PASS",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 2,
+          "confidence": "medium",
+          "legacyLevelCompatibility": "NORMAL",
+          "projectionStatus": "RPM_ONLY",
+          "projectionReasonCode": "RPM_ONLY",
+          "metaNullReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+          "lookupEvidence": "Source and verified solution establish primaryMethod/decisiveStep and curricular unit. PT/TPL are explicitly deferred because RPM semantic + crosswalk + GLOBAL ACTIVE exact binding closure is not recorded in this CREATE evidence."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "disposition": "NO_VISUAL_REQUIRED",
+          "questionImageRef": null,
+          "questionImageSha256": null,
+          "solutionImageRef": null,
+          "solutionImageSha256": null,
+          "reason": "No graph, diagram, or visual relation is required beyond the equations and counts."
+        }
+      },
+      "smallBoardEvidence": {
+        "equationFlow": "SETUP_TO_TRANSFORMATION_TO_INTERMEDIATE_TO_SUBSTITUTION_TO_RESULT",
+        "solutionIdentityAlignment": "ALIGNMENT_PASS",
+        "keyStepsPresent": true,
+        "finalAnswerMatches": "7/15"
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE.",
+      "primaryMethod": "첫 공의 색으로 경우를 나누어 비복원 추출 확률을 더하기",
+      "decisiveStep": "7/15",
+      "visualDisposition": "NO_VISUAL_REQUIRED",
+      "difficultyEvidence": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL",
+        "reason": "Fresh item-level judgment from the source structure, number of linked steps, condition use, and calculation load."
+      },
+      "crossConceptKeys": [],
+      "calibrationCompare": {
+        "axes": [
+          "STUDENT_REPRODUCIBILITY",
+          "SMALL_BOARD_STRUCTURE",
+          "EXPLANATION_DENSITY"
+        ],
+        "outcome": "MEETS_GOLDEN_FLOOR",
+        "observation": "Calibrated against the two fixed H1 Golden samples; intermediate expressions and enumerated cases are displayed on separate lines."
+      }
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "a46dcc847870af31d83676728f972ea6830b1512",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 24,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      },
+      {
+        "qid": 25,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2 RPM semantic path requires current projection review; no exact ACTIVE PT/TPL mapping is asserted by CREATE."
+      }
+    ]
+  },
+  "preflightEvidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/CREATE.solution-preflight.json",
+  "sourceModeCounts": {
+    "ORIGINAL": 25,
+    "AUDITED_REPAIR": 0,
+    "ALIVE_REPLACEMENT": 0
+  },
+  "completeCoverage": true
+}

@@ -1,0 +1,85 @@
+{
+  "status": "PREFLIGHT_COMPLETE_BEFORE_AUTHORING",
+  "protocol": "docs/rules/02_PIPELINES/해설프로토콜.md; docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md §§3/6/11",
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "items": [
+        {
+          "qid": 1,
+          "observation": "내분점 비의 반대 곱과 중점 좌표를 각각 구한 뒤 두 점 사이 거리 식으로 이어 계산한다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE"
+          ],
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3"
+        },
+        {
+          "qid": 2,
+          "observation": "평행 조건으로 기울기를 고정하고 점 대입으로 절편을 구한 후 m+n을 계산한다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE"
+          ],
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba"
+        },
+        {
+          "qid": 7,
+          "observation": "실선 원의 최종 중심과 점선을 이용한 이동·대칭 순서가 그림에서 구별된다.",
+          "axes": [
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d"
+        }
+      ],
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf"
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "items": [
+        {
+          "qid": 1,
+          "observation": "좌표 차를 각각 계산하고 거리 공식에 대입해 루트와 최종 간단화를 보여 준다.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE"
+          ],
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+        },
+        {
+          "qid": 2,
+          "observation": "수직 직선 두 개의 기울기 도출과 곱=-1 조건을 실제 직선 그림의 방향으로 확인한다.",
+          "axes": [
+            "VISUAL_SEMANTIC_PARITY"
+          ],
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4"
+        }
+      ],
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "실제 좌표·위상 검산 없이 SVG 라벨/집계만 보고 통과시킨 오류와 ㄱㄴ 열거 판단의 한 문단 압축을 부정 예로 확인했다."
+  },
+  "negativeReadCompleted": true,
+  "visualReviews": [
+    {
+      "sample": "25_매산여고 q7",
+      "renderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/preflight-samples/golden-maesan-q7.png",
+      "observation": "두 원의 이동 및 원점대칭 뒤 최종 위치가 분리되어 표현됨"
+    },
+    {
+      "sample": "25_효천고 q2",
+      "renderPath": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/preflight-samples/golden-hyocheon-q2.png",
+      "observation": "기울기 방향이 반대이고 두 직선이 직교하는 실제 선형을 확인"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "examUid": "20_풍덕중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "originalFreeze": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/20_풍덕중_2학기_기말_중2_기출/R1.independent-freeze.json",
+    "sha256": "57875e8cc4b404a7f0b73edadde30ef87b0a01823ba2d61e05eeb0a4ad465e6a",
+    "studentBundleSha256": "4b286e581e5b4e9f16df21cd1d7ae4603f3344f32f954b8814378fa39bd1af69"
+  },
+  "items": [
+    {
+      "qid": 1,
+      "initialFrozenAnswer": "5개",
+      "adjudicatedAnswer": "4개",
+      "storedAnswer": "④",
+      "adjudicatedCompareResult": "MATCH",
+      "reason": "The nonzero coefficient condition in the Grade 8 definition y=ax+b excludes y=5 (a=0). The other four statements are linear functions. The initial frozen answer incorrectly counted the constant function; the candidate solution's exclusion and stored ④ are correct.",
+      "candidateChanged": false,
+      "sourceBodyChanged": false
+    },
+    {
+      "qid": 15,
+      "initialFrozenAnswer": "369",
+      "targetedPostRepairAnswer": "369",
+      "storedAnswer": "⑤",
+      "adjudicatedCompareResult": "MATCH",
+      "sourcePage": 2,
+      "reason": "The PDF table lists guesses 123, 349, 396 with judgments one ball, two strikes, and one strike/two balls. In the final candidate the exact table cells remain in an HTML table, which the engine preserves as table markup; the duplicate cropped image reference is removed. Rechecking the full table gives 369 and agrees with stored ⑤.",
+      "changedFields": [
+        "content",
+        "image"
+      ],
+      "semanticQuestionDataChanged": false
+    }
+  ],
+  "difficultyAdjudications": [
+    {
+      "qid": 15,
+      "legacyLevel": "상",
+      "difficultyBucket": 3,
+      "initialCompatibility": "NORMAL",
+      "finalCompatibility": "BORDERLINE_ACCEPTABLE",
+      "difficultyBoundaryFlag": "NONE",
+      "independentRecheck": true,
+      "reason": "The three baseball judgments require coordinating conditions and eliminating candidates, but once the scoring rules are read the finite choices are checked by a standard procedure; bucket 3 remains appropriate. The adjacent legacy upper label is retained as BORDERLINE_ACCEPTABLE after this recheck."
+    },
+    {
+      "qid": 23,
+      "legacyLevel": "상",
+      "difficultyBucket": 3,
+      "initialCompatibility": "NORMAL",
+      "finalCompatibility": "BORDERLINE_ACCEPTABLE",
+      "difficultyBoundaryFlag": "NONE",
+      "independentRecheck": true,
+      "reason": "The three parts chain familiar line-intercept, simultaneous-equation, and triangle-area procedures; there is no nonroutine condition split or obstructing insight that requires bucket 4. Bucket 3 remains appropriate, and the adjacent legacy upper label is retained as BORDERLINE_ACCEPTABLE after this recheck."
+    }
+  ]
+}

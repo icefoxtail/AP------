@@ -1,0 +1,44 @@
+{
+  "examUid": "20_풍덕중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sampleReadBeforeWork": true,
+  "calibrationOrder": "Student-only bundle and independent-answer freeze were completed without stored answer/solution exposure; Golden/Negative samples were read before opening the target solutions and before any solution-quality verdict. No target solution was authored or changed.",
+  "calibrationAxes": ["STUDENT_REPRODUCIBILITY", "SMALL_BOARD_STRUCTURE", "EXPLANATION_DENSITY", "VISUAL_SEMANTIC_PARITY", "VISUAL_READABILITY"],
+  "calibrationStatus": "PASS",
+  "solutionWorkMode": "INDEPENDENT_REVIEW_NO_SOLUTION_EDIT",
+  "qualityCompareCount": "25/25",
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+        "items": [
+          {"qid":2,"solutionSha256":"b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba","observation":"The parallel-line slope is identified first; point substitution and the resulting intercept are each shown on separate board lines before the final value."},
+          {"qid":7,"solutionSha256":"0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9","visualSha256":"6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d","visualGitBlobSha":"d6922fb8bf801d2ef4fcb19fadea40f57bcbe778","observation":"Completing the square exposes center and radius; the two translations and origin reflection are tracked as distinct center updates. The SVG matches those center positions and the final equation."}
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "items": [
+          {"qid":2,"solutionSha256":"84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2","visualSha256":"cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4","visualGitBlobSha":"f82defa94ca5ec41e76f7bf5977fcfa37db888ca","observation":"The solution text cleanly rearranges both equations to slope-intercept form, then applies the perpendicular slope product and shows the algebra. The attached q02 SVG actually draws parallel lines while this solution requires perpendicular lines; this is recorded as a Golden visual exception and was not used as a positive visual model."},
+          {"qid":7,"solutionSha256":"8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a","visualSha256":"cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca","visualGitBlobSha":"decf7f57e5e0554906cb341b5565e280277d6b53","observation":"The parallel-line distance formula is stated, the constant-term condition is isolated, both absolute-value cases are solved, and the final product is shown. SVG line primitives encode the stated parallel equations and distance relation."}
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "Read the documented false-PASS regressions for enumeration blocks, actual SVG geometry rather than labels, exact ACTIVE Meta mappings, and runtime/source escape parity. Used the enumeration-block warning when checking q1/q6/q15 and verified target graph geometry directly for q23."
+    }
+  }
+}
