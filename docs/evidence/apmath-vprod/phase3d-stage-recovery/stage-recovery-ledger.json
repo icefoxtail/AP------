@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "PHASE3D_INTERRUPTED_STAGE_RECOVERY_v1",
+  "unit": "partial-calculation-stage-recovery",
+  "status": "PASS",
+  "acceptance": "A crash after durable output bytes but before manifest/atomic rename cannot be loaded or returned as a cache hit. Re-running the same calculation key recomputes complete bytes, commits one valid immutable receipt, and only that receipt can be reused warm.",
+  "observed": {
+    "focusedRuns": 10,
+    "focusedPasses": 10,
+    "focusedFailures": 0,
+    "incompleteStageLoadable": false,
+    "lockRemovedAfterCrash": true,
+    "stagingDirectoryRetainedButUnpublished": true,
+    "sameKeyRecoveryCacheHit": false,
+    "recoveryProducerCalls": 1,
+    "recoveredPayload": "complete-bytes",
+    "warmCacheHit": true,
+    "warmProducerCalls": 0,
+    "phase3NodeSubsetPass": 47,
+    "phase3NodeSubsetFailures": 0
+  },
+  "implementation": {
+    "source": "archive/tools/geometry-equation/tests/production-contract.test.mjs",
+    "sha256": "206e19c75b8ed267460c9ac8fcc19301b360c1c9e8d5fc877ce0eea833d5ff71"
+  },
+  "stress": {
+    "command": "node --test --test-name-pattern 'crashed stage output is invisible' archive/tools/geometry-equation/tests/production-contract.test.mjs (10 repetitions)",
+    "log": "crashed-stage-negative-10x.log",
+    "sha256": "185df05ab7b5a2da48e9ccd58b7eeb5ff7d5eaf34a80344ab8a5dd6e3fb8f605"
+  },
+  "regressionSubset": {
+    "command": "node --test archive/tools/geometry-equation/tests/p1-boundaries.test.mjs archive/tools/geometry-equation/tests/production-runner.test.mjs archive/tools/geometry-equation/tests/production-contract.test.mjs archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+    "runtime": "v24.14.1",
+    "log": "phase3d-node-subset.log",
+    "sha256": "88c5b7c198db154e23640ec64d2e6c09d63af82dff970b7db210470ce76ef952"
+  },
+  "classification": "RESUME_CACHE_RECOVERY_NEGATIVE; synthetic temp workspace; no student candidate modified",
+  "openDebt": [
+    "worker timeout/error equivalence matrix is not complete",
+    "provider/observer/source/answer/cache invalidation matrix is not complete",
+    "canonical current-UID execution remains INPUT_REQUIRED"
+  ],
+  "lastUpdatedUtc": "2026-10-06T08:21:00Z"
+}
