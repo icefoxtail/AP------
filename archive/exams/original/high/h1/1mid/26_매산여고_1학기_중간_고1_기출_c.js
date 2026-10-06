@@ -404,7 +404,7 @@ window.questionBank = [
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
-    "standardUnitOrder": 3,
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -448,7 +448,7 @@ window.questionBank = [
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
-    "standardUnitOrder": 4,
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -494,7 +494,7 @@ window.questionBank = [
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
-    "standardUnitOrder": 4,
+    "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -626,7 +626,7 @@ window.questionBank = [
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -761,7 +761,7 @@ window.questionBank = [
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
-    "standardUnitOrder": 4,
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -888,7 +888,7 @@ window.questionBank = [
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
-    "standardUnitOrder": 4,
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -956,7 +956,7 @@ window.questionBank = [
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
-    "standardUnitOrder": 2,
+    "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
