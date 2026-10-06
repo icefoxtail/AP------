@@ -1,0 +1,44 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "RENDER",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "artifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+  "result": "FIX_APPLIED_ROOT_RENDER_REQUIRED",
+  "changedFiles": [
+    {
+      "sha256": "4cd8629446a9f21f733331af53b898d96321202b663f40ab1106977d446f27f1",
+      "path": "archive/archive2-preview-mobile.css"
+    }
+  ],
+  "repair": {
+    "cause": "makePage() page number uses inline position:absolute; bottom:15mm",
+    "selector": "html[data-archive2-context=\"archive2\"][data-ap-render-ready=\"true\"] .page > div[style*=\"bottom: 15mm\"]",
+    "sourceAndExamArtifact": "unchanged",
+    "behavior": "Mobile archive2 screen page number becomes static flow content after .page-body with 12px top margin",
+    "impactScope": "@media screen and (max-width:640px), archive2 context, render-ready page number elements across exam/solution/answer screens",
+    "desktopAndPrint": "unchanged",
+    "selectorCorrection": "Playwright observed styleAttribute uses bottom: 15mm; old bottom:15mm substring did not match. Corrected the CSS selector to the actual serialized value."
+  },
+  "preFixCapture": {
+    "sha256": "f80e68c498970e78065f01b68ce9f0b9472a3b0047265de1224f7d0b94c5b731",
+    "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/render/exam-mobile-page2.png"
+  },
+  "verification": {
+    "status": "NARROW_BROWSER_SELECTOR_AND_FLOW_MEASURED_ROOT_RENDER_PENDING",
+    "note": "Actual source exam rendered in Chromium at 390x844. CSS selector match was measured with archive2/render-ready root flags set after render because the direct source route lacks those runtime flags; final native-context mobile rerender remains ROOT-owned."
+  },
+  "session": {
+    "effort": "high",
+    "role": "archive_master",
+    "model": "gpt-6-luna"
+  },
+  "closedStep": "MOBILE_FOOTER_FLOW_MINIMUM_TECHNICAL_FIX",
+  "nextMissingClosureStep": "ROOT_TARGETED_MOBILE_RERENDER_AND_SIX_CASE_RECEIPTS",
+  "selectorMeasurementRef": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.mobile-footer-selector-measurement.json",
+  "browserMeasurement": {
+    "path": "archive/analysis/qualification-20261006/21_신흥중_2학기_기말_중2_기출/ROOT.mobile-footer-selector-measurement.json",
+    "measuredExamUid": "21_신흥중_2학기_기말_중2_기출",
+    "artifactSha": "d351266d6874278b839200d03aae07a903da921c"
+  }
+}

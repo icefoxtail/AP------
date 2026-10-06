@@ -1,0 +1,69 @@
+{
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "stage": "CREATE",
+  "preflightBeforeTargetWork": true,
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Coordinates, internal-division, midpoint, and distance are shown as separate equations with substitutions and intermediate arithmetic; concise teacher prompts explain the formula transitions."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Parallel-slope condition, point substitution, solving n, and requested sum are broken into visible steps; short explanations connect each equation."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Coordinate differences and the distance substitution are each explicit; simplification continues through the radical reduction before the answer."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "observation": "Slope conversion and perpendicular product are explicitly solved; inspected referenced SVG line primitives and labels. Both equations match stated slopes -1/3 and 3, with k=6."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "Set membership and subset relations are distinguished; each choice is assessed independently with its element-level reason."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "observation": "Vertical-line test is applied separately to each option; the shared graph-image condition remains visible in the reasoning."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the approved Negative fixture. Applied regressions: do not replace enumerated decision blocks with prose; inspect actual SVG geometry rather than labels; check runtime TeX/control escapes; do not accept null advanced Meta when an exact ACTIVE mapping exists."
+    }
+  },
+  "targetPreflightComparison": "Golden fixes expression floor only. Target methods come from the 2015 high-school Math II curriculum/RPM unit scope. Target solutions were independently derived from current target source after preflight.",
+  "status": "INCOMPLETE_INITIAL_ATTEMPT",
+  "sequenceFinding": "Initial preflight read two representative solutions from each selected Golden and the Hyocheon q2 SVG, but omitted SVG inspection for the selected Maesan and Jeil files even though each file contains solutionImage fields. This record is not promoted to complete preflight.",
+  "recoveryEvidence": "CREATE.correction-review.json"
+}

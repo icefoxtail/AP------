@@ -1,0 +1,100 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "stage": "R3",
+  "priorArtifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+  "finalArtifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+  "changedFields": [
+    {
+      "qid": 2,
+      "field": "solution",
+      "freezeValidity": "VALID_LAYOUT_ONLY",
+      "oldValue": "극솟값을 갖는 점에서는 도함수가 $0$이고, 함수값은 $3$이다.\n$f'(x)=3x^2+2ax+b$이므로\n$f'(3)=27+6a+b=0$\n$f(3)=27+9a+3b+3=3$\n두 번째 식을 정리하면 $3a+b=-9$이다.\n첫 번째 식 $6a+b=-27$과 빼면 $3a=-18$이므로 $a=-6$이다.\n$3a+b=-9$에 대입하여 $b=9$를 얻는다.\n$f''(x)=6x+2a$이므로 $f''(3)=18-12=6>0$이다.\n따라서 $a+b=3$이고 정답은 ③이다.",
+      "newValue": "극솟값을 갖는 $x=3$에서 도함수는 $0$이고, 함수값은 $3$이다.\n\\[\n\\begin{aligned}f'(x)&=3x^2+2ax+b\\\\f'(3)&=27+6a+b=0\\\\f(3)&=27+9a+3b+3=3\\end{aligned}\n\\]\n두 번째 식을 정리한다.\n\\[\n9a+3b=-27\n\\]\n\\[\n3a+b=-9\n\\]\n첫 번째 식에서 두 번째 식을 빼면\n\\[\n\\begin{aligned}(6a+b)-(3a+b)&=-27-(-9)\\\\3a&=-18\\\\a&=-6\\end{aligned}\n\\]\n이 값을 $3a+b=-9$에 대입한다.\n\\[\n-18+b=-9\n\\]\n\\[\nb=9\n\\]\n극소가 되는지도 확인한다.\n\\[\nf''(x)=6x+2a\n\\]\n\\[\nf''(3)=18-12=6>0\n\\]\n따라서 $a+b=3$이고 정답은 ③이다.",
+      "reason": "Same verified derivatives, equations, elimination, substitutions, second-derivative check, and answer ③. Only equations previously compressed in prose are placed in separate aligned/display math blocks.",
+      "currentFieldSha256": "25cb75de773deba321e0f5df0758e149930cddd324855d532664eb30456e2262"
+    },
+    {
+      "qid": 10,
+      "field": "solutionImage",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "oldValue": null,
+      "newValue": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "reason": "The pre-existing original q10 graph is the exact parabola-and-rectangle context used by the solution. The same asset bytes are now rendered in sol context; no problem data or solution mathematics changed.",
+      "currentFieldSha256": "0f294185e228aa82b42b3f86757c225859f9fb7dfa39783c1a78bea8d16975ab"
+    },
+    {
+      "qid": 11,
+      "field": "solutionImage",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "oldValue": null,
+      "newValue": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "reason": "The pre-existing original q11 derivative graph supplies the roots and signs discussed in the solution. The same asset bytes are now rendered in sol context; source text and solution mathematics changed neither.",
+      "currentFieldSha256": "7fbb40f0a7940267b0091192ea746a92a4ca57a3310f34154246107ec5c13b67"
+    },
+    {
+      "qid": 16,
+      "field": "content",
+      "freezeValidity": "VALID_MATH_DATA_UNCHANGED",
+      "oldValue": "[단답형1] 다음은 극대에 대한 정의이다.\n함수 $f(x)$에서 $x=a$를 포함하는 어떤 열린구간에 속하는 모든 $x$에 대하여 $f(x)\\le f(a)$일 때, 함수 $f(x)$는 $x=a$에서 극대라 하고, $f(a)$를 극댓값이라고 한다.\n다음 함수의 정의역 중 극대가 되는 정수 $x$값을 모두 구하시오. [4점]\n$f(x)=\\begin{cases}x&(x<0)\\0&(0\\le x<2)\\-x^2+6x-8&(2\\le x)\\end{cases}$",
+      "newValue": "[단답형1] 다음은 극대에 대한 정의이다.\n함수 $f(x)$에서 $x=a$를 포함하는 어떤 열린구간에 속하는 모든 $x$에 대하여 $f(x)\\le f(a)$일 때, 함수 $f(x)$는 $x=a$에서 극대라 하고, $f(a)$를 극댓값이라고 한다.\n다음 함수의 정의역 중 극대가 되는 정수 $x$값을 모두 구하시오. [4점]\n\\[\nf(x)=\\begin{cases}x&(x<0)\\\\0&(0\\le x<2)\\\\-x^2+6x-8&(2\\le x)\\end{cases}\n\\]",
+      "reason": "Only display/cases TeX row encoding changed. The pieces x, 0, -x^2+6x-8, conditions x<0, 0≤x<2, 2≤x, and requested integer-x target are unchanged. R1 answer and R2 freeze remain 0,1,3.",
+      "currentFieldSha256": "6c2f218ed73ea36686421672e2bad76d7145e188e7bbd2300ead6d27e6084b8c"
+    },
+    {
+      "qid": 17,
+      "field": "answer",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "oldValue": "f(x)=-(3/8)(x-3)^4+3(x-3)^2-2",
+      "newValue": "$f(x)=-\\dfrac{3}{8}(x-3)^4+3(x-3)^2-2$",
+      "reason": "TeX form denotes the identical frozen polynomial f(x)=-(3/8)(x-3)^4+3(x-3)^2-2; R2 already matched the ASCII form and R1 noted equivalent minus glyphs.",
+      "currentFieldSha256": "5a052e9bb26f5a4e10e7172da03971daaf4bcd1c211bb987683331c3b09adf60"
+    },
+    {
+      "qid": 18,
+      "field": "answer",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "oldValue": "4/3",
+      "newValue": "$\\dfrac{4}{3}$",
+      "reason": "TeX fraction denotes the identical R1/R2 frozen scalar 4/3.",
+      "currentFieldSha256": "43d5313eb0a3308b02f6539b4a36a6ec0ce378f7d0b49c7125c19e7642912844"
+    },
+    {
+      "qid": 19,
+      "field": "answer",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "oldValue": "4+2√3",
+      "newValue": "$4+2\\sqrt{3}$",
+      "reason": "TeX radical denotes the identical R1 value 4+2√3 and R2 blind freeze 4+2sqrt(3).",
+      "currentFieldSha256": "68de268733c9a840e79a6d6788e5b5fb75099452daef821643ca57bdfbf2190f"
+    },
+    {
+      "qid": 20,
+      "field": "answer",
+      "freezeValidity": "VALID_POST_ADJUDICATION_ENCODING_ONLY",
+      "oldValue": "64/3",
+      "newValue": "$\\dfrac{64}{3}$",
+      "reason": "Preserve original R2 blind freeze -40/3 and its calculation trail. The documented same-stage arithmetic adjudication establishes 64/3, matching R1 and candidate; TeX fraction changes presentation only.",
+      "currentFieldSha256": "a8f59b66cdd60bccb99a58040506875e50d22c92afa38f6700fcaf7543d53364"
+    }
+  ],
+  "solutionContextAssets": [
+    {
+      "qid": 10,
+      "image": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "fileSha256": "0b6532b5af27588b3ff8b74992dbb77d4e42ef2c4d81aeea3849ea356f405a3e",
+      "assetPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "status": "EXISTS_AND_BYTE_IDENTICAL_TO_ORIGINAL_SOURCE_ASSET"
+    },
+    {
+      "qid": 11,
+      "image": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "fileSha256": "5c5132b2083739c98b7410495923ffa4d97aa179052762bef570a2d393d1555f",
+      "assetPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "status": "EXISTS_AND_BYTE_IDENTICAL_TO_ORIGINAL_SOURCE_ASSET"
+    }
+  ]
+}

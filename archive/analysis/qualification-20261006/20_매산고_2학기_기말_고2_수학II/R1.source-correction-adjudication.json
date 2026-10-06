@@ -1,0 +1,110 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "stage": "R1",
+  "status": "SOURCE_EXACT_PARITY_REPAIRED_FREEZE_VALID",
+  "adjudicatedAt": "2026-10-06T07:01:15.145Z",
+  "originalFreeze": {
+    "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R1.independent-freeze.json",
+    "sha256": "aedceb0e95bdfec0815a760c9a6b6744f63a835d46a0df933e7312d37e3feeb1",
+    "status": "PRESERVED"
+  },
+  "sourcePdf": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+    "sha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d"
+  },
+  "pageViews": [
+    {
+      "page": 1,
+      "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/R1-source-p1.png",
+      "sha256": "631e62173ddffb947ea28ed88e0685a63f3e28645881eb279f2b76b821df89e4"
+    },
+    {
+      "page": 2,
+      "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/R1-source-p2.png",
+      "sha256": "6f0aaf8d43123eb5b696d55e274af8dd7ce1ef108998f8e8d1f4274baf754f43"
+    },
+    {
+      "page": 3,
+      "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/R1-source-p3.png",
+      "sha256": "8e0f44bf39f389811feec5d71bf8256cb2a53c86b843a3b8ad19f20f5c585fe1"
+    },
+    {
+      "page": 4,
+      "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/R1-source-p4.png",
+      "sha256": "f9dfb61b82110dd1aaaa718823f6ed7d6a4c95dd20de66075fe07ddd70f5bec3"
+    },
+    {
+      "page": 5,
+      "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/R1-source-p5.png",
+      "sha256": "40470f8611ccb74bf131f6e59b30c0f450be2e2f922f48c344b14fe7113ab4d9"
+    },
+    {
+      "page": 6,
+      "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/R1-source-p6.png",
+      "sha256": "4879cc3d0286860be6ceba5d8becfe6d40177c5c6df8cf6b6a3cd44a112cc97a4"
+    }
+  ],
+  "rows": [
+    {
+      "qid": 3,
+      "field": "content",
+      "sourcePage": 1,
+      "old": "\\int_0^x(t^2-3t+7),dt",
+      "new": "\\int_0^x(t^2-3t+7)dt",
+      "freezeValidity": "VALID",
+      "reason": "Only an inserted comma separator before the differential was removed. Bounds, integrand, differential, and frozen FTC-to-difference-quotient reasoning are unchanged."
+    },
+    {
+      "qid": 8,
+      "field": "content,choices",
+      "sourcePage": 2,
+      "old": "3,\\mathrm{cm}; 1,\\mathrm{cm}; 150,\\mathrm{cm}^2; 75..95,\\mathrm{cm}^3/\\mathrm{s}",
+      "new": "3\\mathrm{cm}; 1\\mathrm{cm}; 150\\mathrm{cm}^2; 75..95\\mathrm{cm}^3/\\mathrm{s}",
+      "freezeValidity": "VALID",
+      "reason": "The commas were inserted typography between unchanged numerical magnitudes and their units. Source, frozen reasoning, values, dimensions, conditions, and choice values all agree; no mathematical input changed."
+    },
+    {
+      "qid": 11,
+      "field": "content",
+      "sourcePage": 3,
+      "old": "\\int_{-3}^3f'(x),dx=2\\int_0^3f'(x),dx",
+      "new": "\\int_{-3}^3f'(x)dx=2\\int_0^3f'(x)dx",
+      "freezeValidity": "VALID",
+      "reason": "The f-prime source correction was already present in the exact pre-exposure student bundle and frozen reasoning. This delta removes only the comma separator before dx; evenness and both integration bounds/integrands remain unchanged."
+    },
+    {
+      "qid": 14,
+      "field": "content",
+      "sourcePage": 4,
+      "old": "\\int_0^x f(t),dt; \\int_0^1 f(t),dt",
+      "new": "\\int_0^x f(t)dt; \\int_0^1 f(t)dt",
+      "freezeValidity": "VALID",
+      "reason": "Both commas were separator punctuation only. The same two definite integrals and bounds remain; frozen differentiation of the identity is unchanged."
+    },
+    {
+      "qid": 18,
+      "field": "content",
+      "sourcePage": 5,
+      "old": "\\int_1^3f(x),dx; \\int_0^xg(t),dt; \\int_3^xf(t),dt",
+      "new": "\\int_1^3f(x)dx; \\int_0^xg(t)dt; \\int_3^xf(t)dt",
+      "freezeValidity": "VALID",
+      "reason": "Only separator commas before dx/dt were removed. Each integrand, bound, inequality, and natural-number condition is identical to the frozen reasoning."
+    }
+  ],
+  "candidateArtifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+  "currentStudentBundle": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R1-student.json",
+    "sha256": "7515d5b0b91aec5a5c3bbe6fb6c31af1363d4958f83b82aba2f3afacea4a73f1",
+    "artifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+    "status": "REEXTRACTED_FROM_CURRENT_CANDIDATE_AFTER_SOURCE_TEXT_NORMALIZATION"
+  },
+  "q11AuditedSemanticRepair": {
+    "originalSourceValue": "\\int_{-3}^3f(x)dx=2\\int_0^3f(x)dx",
+    "repairedValue": "\\int_{-3}^3f'(x)dx=2\\int_0^3f'(x)dx",
+    "repairClass": "ONE_SEMANTIC_LOCUS_REPAIR",
+    "sourceMode": "AUDITED_SOURCE_REPAIR",
+    "evidence": "Page 3 shows y=f'(x) even. The original f-integral equality is underdetermined by this data; inserting the missing prime in the single ㄷ assertion makes it follow from evenness and yields exactly ㄱ and ㄷ."
+  }
+}

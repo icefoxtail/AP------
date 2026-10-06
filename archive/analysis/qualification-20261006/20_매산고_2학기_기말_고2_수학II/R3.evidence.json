@@ -1,0 +1,689 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+  "currentArtifact": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+    "gitBlobSha1": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+    "fileSha256": "7f02f2c70c34b28a07b01799726f42564924806dd4f54ec55f919abd1388ec21"
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      10,
+      11,
+      12,
+      14,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "directDependencyQids": [
+      10,
+      11
+    ]
+  },
+  "upstreamSeals": {
+    "r1": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R1.evidence.json",
+      "sha256": "bd123435a4f05bcef2ed0937e000033817b60524d16e286f89afa937a4a22a2d",
+      "artifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+      "validation": "PASS"
+    },
+    "r2": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R2.evidence.json",
+      "sha256": "66787203873cd388c5556c2ea17ff53dea729c69f3db8b4d4fb1ffa13ed53847",
+      "artifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+      "validation": "PASS",
+      "physicalReportHistory": "MISSING_PHYSICAL_REPORT_RECORDED history preserved; current full report is PASS"
+    },
+    "r1SourceCorrection": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R1.source-correction-adjudication.json",
+      "sha256": "a38a51b5c689c2b529b7d36d0bc81f1481e84ac66dc478faae238840b957b70f",
+      "status": "SOURCE_EXACT_PARITY_REPAIRED_FREEZE_VALID"
+    },
+    "r2AnswerAdjudication": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R2.answer-adjudication.json",
+      "sha256": "c4e54d541b9ab3da4a471143dd9d041cf1e5ea2f13a13a2fec096a471770426d",
+      "status": "ANSWER_ADJUDICATION_COMPLETE"
+    }
+  },
+  "lockedScopeIntegrity": true,
+  "lockedScopeEvidence": {
+    "denominator": 20,
+    "targetedRows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      10,
+      11,
+      12,
+      14,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "additionalDirectDependencies": [
+      10,
+      11
+    ],
+    "changedFields": [
+      {
+        "qid": 2,
+        "field": "solution"
+      },
+      {
+        "qid": 10,
+        "field": "solutionImage"
+      },
+      {
+        "qid": 11,
+        "field": "solutionImage"
+      },
+      {
+        "qid": 16,
+        "field": "content"
+      },
+      {
+        "qid": 17,
+        "field": "answer"
+      },
+      {
+        "qid": 18,
+        "field": "answer"
+      },
+      {
+        "qid": 19,
+        "field": "answer"
+      },
+      {
+        "qid": 20,
+        "field": "answer"
+      }
+    ],
+    "untouchedQids": [
+      6,
+      9,
+      13,
+      15
+    ],
+    "unexpectedFieldChanges": [],
+    "note": "The candidate changed only the listed R3 render loci. Existing R1/R2 freezes remain semantically valid as adjudicated per qid; inherited current Meta values are unchanged."
+  },
+  "releaseIntegrity": true,
+  "releaseIntegrityEvidence": {
+    "candidateRawGitBlobSha1": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+    "candidateFileSha256": "7f02f2c70c34b28a07b01799726f42564924806dd4f54ec55f919abd1388ec21",
+    "assetRoot": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II",
+    "checkedAssets": [
+      {
+        "qid": 10,
+        "ref": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+        "sha256": "0b6532b5af27588b3ff8b74992dbb77d4e42ef2c4d81aeea3849ea356f405a3e",
+        "status": "EXISTS_AND_BYTE_IDENTICAL_TO_ORIGINAL_SOURCE_ASSET"
+      },
+      {
+        "qid": 11,
+        "ref": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+        "sha256": "5c5132b2083739c98b7410495923ffa4d97aa179052762bef570a2d393d1555f",
+        "status": "EXISTS_AND_BYTE_IDENTICAL_TO_ORIGINAL_SOURCE_ASSET"
+      }
+    ],
+    "validationReportPath": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R3.validation.json",
+    "gate": "generic V2 R3 full-artifact structural contract"
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 2,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "Same verified derivatives, equations, elimination, substitutions, second-derivative check, and answer ③. Only equations previously compressed in prose are placed in separate aligned/display math blocks.",
+      "freezeValidity": "VALID_LAYOUT_ONLY",
+      "changedField": "solution",
+      "currentFieldSha256": "25cb75de773deba321e0f5df0758e149930cddd324855d532664eb30456e2262",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 3,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 source punctuation/unit normalization; original independent freeze validity documented as VALID. R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 4,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 5,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 7,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 8,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 source punctuation/unit normalization; original independent freeze validity documented as VALID. R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 10,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "The pre-existing original q10 graph is the exact parabola-and-rectangle context used by the solution. The same asset bytes are now rendered in sol context; no problem data or solution mathematics changed.",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "changedField": "solutionImage",
+      "currentFieldSha256": "0f294185e228aa82b42b3f86757c225859f9fb7dfa39783c1a78bea8d16975ab",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 11,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "The pre-existing original q11 derivative graph supplies the roots and signs discussed in the solution. The same asset bytes are now rendered in sol context; source text and solution mathematics changed neither.",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "changedField": "solutionImage",
+      "currentFieldSha256": "7fbb40f0a7940267b0091192ea746a92a4ca57a3310f34154246107ec5c13b67",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "R1 source punctuation/unit normalization; original independent freeze validity documented as VALID. R1 current Meta/difficulty disposition rechecked and inherited.",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "Only display/cases TeX row encoding changed. The pieces x, 0, -x^2+6x-8, conditions x<0, 0≤x<2, 2≤x, and requested integer-x target are unchanged. R1 answer and R2 freeze remain 0,1,3.",
+      "freezeValidity": "VALID_MATH_DATA_UNCHANGED",
+      "changedField": "content",
+      "currentFieldSha256": "6c2f218ed73ea36686421672e2bad76d7145e188e7bbd2300ead6d27e6084b8c",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 17,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "TeX form denotes the identical frozen polynomial f(x)=-(3/8)(x-3)^4+3(x-3)^2-2; R2 already matched the ASCII form and R1 noted equivalent minus glyphs.",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "changedField": "answer",
+      "currentFieldSha256": "5a052e9bb26f5a4e10e7172da03971daaf4bcd1c211bb987683331c3b09adf60",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 18,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "TeX fraction denotes the identical R1/R2 frozen scalar 4/3.",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "changedField": "answer",
+      "currentFieldSha256": "43d5313eb0a3308b02f6539b4a36a6ec0ce378f7d0b49c7125c19e7642912844",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 19,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "TeX radical denotes the identical R1 value 4+2√3 and R2 blind freeze 4+2sqrt(3).",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "changedField": "answer",
+      "currentFieldSha256": "68de268733c9a840e79a6d6788e5b5fb75099452daef821643ca57bdfbf2190f",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    },
+    {
+      "qid": 20,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "observation": "Preserve original R2 blind freeze -40/3 and its calculation trail. The documented same-stage arithmetic adjudication establishes 64/3, matching R1 and candidate; TeX fraction changes presentation only.",
+      "freezeValidity": "VALID_POST_ADJUDICATION_ENCODING_ONLY",
+      "changedField": "answer",
+      "currentFieldSha256": "a8f59b66cdd60bccb99a58040506875e50d22c92afa38f6700fcaf7543d53364",
+      "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+    "rows": [
+      {
+        "qid": 1,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "하",
+          "bucket": 1,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Direct derivative sign test; the factored negative interval is immediate."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 2,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS",
+        "difficulty": {
+          "level": "중",
+          "bucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Two standard extremum equations determine two coefficients; f″ validates local minimum."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 3,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "중",
+          "bucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "FTC plus a derivative-defined difference quotient; two routine calculus transformations."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 4,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "하",
+          "bucket": 1,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Position-to-velocity direct derivative and one substitution."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 5,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "하",
+          "bucket": 1,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Direct given-derivative evaluation."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 6,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS",
+        "difficulty": {
+          "level": "중",
+          "bucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "One intersection solve followed by a standard signed-area integral."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 7,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "중",
+          "bucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Critical point and endpoints plus a single vertical shift parameter."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 8,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "중",
+          "bucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Related-rate model with surface-area substitution and chain rule."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 9,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS",
+        "difficulty": {
+          "level": "상",
+          "bucket": 4,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Parameterized cubic tangency at two derivative critical values."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 10,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 4,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Model a geometric quantity then optimize it with a derivative and range selection."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 11,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "중",
+          "bucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Read a sign graph and decide three linked claims; even integral property is direct."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 12,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 3,
+          "confidence": "medium",
+          "boundaryFlag": "B34",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "rationale": "Standard discriminant inequality plus integer filtering; boundary between routine and upper parameter treatment."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 13,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS",
+        "difficulty": {
+          "level": "중",
+          "bucket": 3,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Direct auxiliary-function endpoint substitution inside the printed Rolle proof."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 14,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 4,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Differentiate a functional integral identity then determine a constant from an integral and point value."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 15,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS",
+        "difficulty": {
+          "level": "상",
+          "bucket": 4,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Mean-value theorem controls a fixed-width difference as the interior point tends to infinity."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 16,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 3,
+          "confidence": "medium",
+          "boundaryFlag": "B34",
+          "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+          "rationale": "Non-strict extremum definition across three pieces and integer filtering; B34 upper edge."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 17,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 4,
+          "confidence": "high",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Symmetric quartic coefficient reconstruction from extremum structure."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 18,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 5,
+          "confidence": "medium",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Several conditions jointly restrict integer roots, then two integrals must be compared."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 19,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 5,
+          "confidence": "medium",
+          "boundaryFlag": "B45",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Parameter range plus Vieta/odd symmetry monotonic root analysis; 4/5 boundary."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 20,
+        "artifactSha": "1a078ae099bf6fd6c39f61e4f4d4977983d3939e",
+        "metaDisposition": "PASS_AFTER_RECHECK",
+        "difficulty": {
+          "level": "상",
+          "bucket": 4,
+          "confidence": "medium",
+          "boundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "rationale": "Four average-increment constraints determine a quartic and its endpoint derivative."
+        },
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      }
+    ]
+  },
+  "repairSnapshot": {
+    "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R3.render-repair-snapshot.json",
+    "sha256": "9ad993774df004996d0d7ac3c7b7eb7e44b14fe7f880c720842c05e06d313506",
+    "status": "FROZEN_BEFORE_MUTATION"
+  },
+  "calibrationPreflight": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R3.repair-calibration.json",
+    "sha256": "f6751619394b634881d336a0d1ee59cf837d8b89d8f5c52ee02836b8fd9fcef6",
+    "status": "PASS",
+    "stage": "R3_REPAIR"
+  },
+  "renderRepairAdjudications": [
+    {
+      "qid": 2,
+      "field": "solution",
+      "freezeValidity": "VALID_LAYOUT_ONLY",
+      "oldValue": "극솟값을 갖는 점에서는 도함수가 $0$이고, 함수값은 $3$이다.\n$f'(x)=3x^2+2ax+b$이므로\n$f'(3)=27+6a+b=0$\n$f(3)=27+9a+3b+3=3$\n두 번째 식을 정리하면 $3a+b=-9$이다.\n첫 번째 식 $6a+b=-27$과 빼면 $3a=-18$이므로 $a=-6$이다.\n$3a+b=-9$에 대입하여 $b=9$를 얻는다.\n$f''(x)=6x+2a$이므로 $f''(3)=18-12=6>0$이다.\n따라서 $a+b=3$이고 정답은 ③이다.",
+      "newValue": "극솟값을 갖는 $x=3$에서 도함수는 $0$이고, 함수값은 $3$이다.\n\\[\n\\begin{aligned}f'(x)&=3x^2+2ax+b\\\\f'(3)&=27+6a+b=0\\\\f(3)&=27+9a+3b+3=3\\end{aligned}\n\\]\n두 번째 식을 정리한다.\n\\[\n9a+3b=-27\n\\]\n\\[\n3a+b=-9\n\\]\n첫 번째 식에서 두 번째 식을 빼면\n\\[\n\\begin{aligned}(6a+b)-(3a+b)&=-27-(-9)\\\\3a&=-18\\\\a&=-6\\end{aligned}\n\\]\n이 값을 $3a+b=-9$에 대입한다.\n\\[\n-18+b=-9\n\\]\n\\[\nb=9\n\\]\n극소가 되는지도 확인한다.\n\\[\nf''(x)=6x+2a\n\\]\n\\[\nf''(3)=18-12=6>0\n\\]\n따라서 $a+b=3$이고 정답은 ③이다.",
+      "reason": "Same verified derivatives, equations, elimination, substitutions, second-derivative check, and answer ③. Only equations previously compressed in prose are placed in separate aligned/display math blocks.",
+      "currentFieldSha256": "25cb75de773deba321e0f5df0758e149930cddd324855d532664eb30456e2262"
+    },
+    {
+      "qid": 10,
+      "field": "solutionImage",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "oldValue": null,
+      "newValue": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "reason": "The pre-existing original q10 graph is the exact parabola-and-rectangle context used by the solution. The same asset bytes are now rendered in sol context; no problem data or solution mathematics changed.",
+      "currentFieldSha256": "0f294185e228aa82b42b3f86757c225859f9fb7dfa39783c1a78bea8d16975ab"
+    },
+    {
+      "qid": 11,
+      "field": "solutionImage",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "oldValue": null,
+      "newValue": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "reason": "The pre-existing original q11 derivative graph supplies the roots and signs discussed in the solution. The same asset bytes are now rendered in sol context; source text and solution mathematics changed neither.",
+      "currentFieldSha256": "7fbb40f0a7940267b0091192ea746a92a4ca57a3310f34154246107ec5c13b67"
+    },
+    {
+      "qid": 16,
+      "field": "content",
+      "freezeValidity": "VALID_MATH_DATA_UNCHANGED",
+      "oldValue": "[단답형1] 다음은 극대에 대한 정의이다.\n함수 $f(x)$에서 $x=a$를 포함하는 어떤 열린구간에 속하는 모든 $x$에 대하여 $f(x)\\le f(a)$일 때, 함수 $f(x)$는 $x=a$에서 극대라 하고, $f(a)$를 극댓값이라고 한다.\n다음 함수의 정의역 중 극대가 되는 정수 $x$값을 모두 구하시오. [4점]\n$f(x)=\\begin{cases}x&(x<0)\\0&(0\\le x<2)\\-x^2+6x-8&(2\\le x)\\end{cases}$",
+      "newValue": "[단답형1] 다음은 극대에 대한 정의이다.\n함수 $f(x)$에서 $x=a$를 포함하는 어떤 열린구간에 속하는 모든 $x$에 대하여 $f(x)\\le f(a)$일 때, 함수 $f(x)$는 $x=a$에서 극대라 하고, $f(a)$를 극댓값이라고 한다.\n다음 함수의 정의역 중 극대가 되는 정수 $x$값을 모두 구하시오. [4점]\n\\[\nf(x)=\\begin{cases}x&(x<0)\\\\0&(0\\le x<2)\\\\-x^2+6x-8&(2\\le x)\\end{cases}\n\\]",
+      "reason": "Only display/cases TeX row encoding changed. The pieces x, 0, -x^2+6x-8, conditions x<0, 0≤x<2, 2≤x, and requested integer-x target are unchanged. R1 answer and R2 freeze remain 0,1,3.",
+      "currentFieldSha256": "6c2f218ed73ea36686421672e2bad76d7145e188e7bbd2300ead6d27e6084b8c"
+    },
+    {
+      "qid": 17,
+      "field": "answer",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "oldValue": "f(x)=-(3/8)(x-3)^4+3(x-3)^2-2",
+      "newValue": "$f(x)=-\\dfrac{3}{8}(x-3)^4+3(x-3)^2-2$",
+      "reason": "TeX form denotes the identical frozen polynomial f(x)=-(3/8)(x-3)^4+3(x-3)^2-2; R2 already matched the ASCII form and R1 noted equivalent minus glyphs.",
+      "currentFieldSha256": "5a052e9bb26f5a4e10e7172da03971daaf4bcd1c211bb987683331c3b09adf60"
+    },
+    {
+      "qid": 18,
+      "field": "answer",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "oldValue": "4/3",
+      "newValue": "$\\dfrac{4}{3}$",
+      "reason": "TeX fraction denotes the identical R1/R2 frozen scalar 4/3.",
+      "currentFieldSha256": "43d5313eb0a3308b02f6539b4a36a6ec0ce378f7d0b49c7125c19e7642912844"
+    },
+    {
+      "qid": 19,
+      "field": "answer",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "oldValue": "4+2√3",
+      "newValue": "$4+2\\sqrt{3}$",
+      "reason": "TeX radical denotes the identical R1 value 4+2√3 and R2 blind freeze 4+2sqrt(3).",
+      "currentFieldSha256": "68de268733c9a840e79a6d6788e5b5fb75099452daef821643ca57bdfbf2190f"
+    },
+    {
+      "qid": 20,
+      "field": "answer",
+      "freezeValidity": "VALID_POST_ADJUDICATION_ENCODING_ONLY",
+      "oldValue": "64/3",
+      "newValue": "$\\dfrac{64}{3}$",
+      "reason": "Preserve original R2 blind freeze -40/3 and its calculation trail. The documented same-stage arithmetic adjudication establishes 64/3, matching R1 and candidate; TeX fraction changes presentation only.",
+      "currentFieldSha256": "a8f59b66cdd60bccb99a58040506875e50d22c92afa38f6700fcaf7543d53364"
+    }
+  ],
+  "repairAssets": [
+    {
+      "qid": 10,
+      "image": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "fileSha256": "0b6532b5af27588b3ff8b74992dbb77d4e42ef2c4d81aeea3849ea356f405a3e",
+      "assetPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "status": "EXISTS_AND_BYTE_IDENTICAL_TO_ORIGINAL_SOURCE_ASSET"
+    },
+    {
+      "qid": 11,
+      "image": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "solutionImage": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "fileSha256": "5c5132b2083739c98b7410495923ffa4d97aa179052762bef570a2d393d1555f",
+      "assetPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "status": "EXISTS_AND_BYTE_IDENTICAL_TO_ORIGINAL_SOURCE_ASSET"
+    }
+  ],
+  "repairHistory": {
+    "preservedInitialPassEvidence": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R3.evidence.initial-pass.json",
+    "preservedInitialPassEvidenceSha256": "4315d47641306b92ef7d45a58f3f59cf7b64420d35209f501713fe3be11f9848",
+    "preservedInitialPassReport": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R3.validation.initial-pass.json",
+    "preservedInitialPassReportSha256": "38f6d2a1db8e10bb2f21ff2a50e823a7cad51a40876b9200ec8c3078323f7cea"
+  }
+}

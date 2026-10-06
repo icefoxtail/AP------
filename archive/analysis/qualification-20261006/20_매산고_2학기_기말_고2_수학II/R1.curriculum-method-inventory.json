@@ -1,0 +1,258 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "stage": "R1",
+  "status": "COMPLETE",
+  "curriculumContext": {
+    "sourceExamYear": 2020,
+    "grade": "H2",
+    "curriculum": "2015",
+    "standardCourse": "수학II",
+    "sourcePageCount": 6,
+    "sourcePagesViewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "canonicalL1L2Status": "RPM_VERIFIED",
+    "canonicalL3L4Status": "CANONICAL_DRAFT",
+    "rpmSource": "RPM_H15_M2",
+    "l1Units": [
+      "미분",
+      "적분"
+    ],
+    "unitPaths": [
+      "H15-M2-03 미분계수",
+      "H15-M2-04 도함수",
+      "H15-M2-06 도함수의 활용",
+      "H15-M2-08 정적분",
+      "H15-M2-09 적분의 활용"
+    ]
+  },
+  "authorities": {
+    "studentRules": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "sha256": "80c6ac583351320043e50fe504456b0383140b75d51ba7a9b579357e725bcff9"
+    },
+    "solutionProtocol": {
+      "path": "docs/rules/02_PIPELINES/해설프로토콜.md",
+      "sha256": "d6b62662edc191b0c67aee06dbc1d3a2be9744250baf47f59f63b37091c91306"
+    },
+    "mathIICanonical": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+      "sha256": "2d59b666cf15a015cca408eb5cc4ac22da65cc7d37f690a9a406765eea9c5d96"
+    },
+    "metadataRules": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    },
+    "difficultyRules": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+    },
+    "derivativeTaxonomy": {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+      "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+    },
+    "integralTaxonomy": {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+      "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+    },
+    "conditionRegistry": {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "sha256": "bbb8e0c4c10211e5faadeb5cfe462aa5a9b06890ad4052690b24002dc5511c4e"
+    }
+  },
+  "methodStatuses": {
+    "overall": "ALLOWED",
+    "uncertainCount": 0,
+    "notAllowedCount": 0,
+    "scopeNote": "No higher-course method was used. Rolle/Mean Value Theorem use is explicitly printed in q13 and explicitly requested in q15; the RPM Math II canonical includes mean-value theorem basics. No integration by parts, L’Hôpital, Taylor expansion, or unsupplied numeric root solver is used."
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "primaryMethod": "도함수 부호와 삼차함수의 감소 구간",
+      "allowedMethods": "다항함수 미분, 도함수 인수분해, 도함수 음수 구간 판정",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 2,
+      "primaryMethod": "극소점 도함수·함숫값 조건",
+      "allowedMethods": "미분계수 0 조건, 함숫값 대입, 두 선형식 연립, 이계도함수로 극소 확인",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 3,
+      "primaryMethod": "적분으로 정의된 함수와 차분극한",
+      "allowedMethods": "미적분 기본정리, 미분계수 정의에 따른 극한 환원",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 4,
+      "primaryMethod": "위치에서 속도 계산",
+      "allowedMethods": "위치함수 미분, 시각 대입",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 5,
+      "primaryMethod": "주어진 도함숫값 대입",
+      "allowedMethods": "다항식 도함수값 직접 계산",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 6,
+      "primaryMethod": "두 곡선 사이 넓이",
+      "allowedMethods": "교점 계산, 위·아래 함수 비교, 정적분과 원시함수 대입",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 7,
+      "primaryMethod": "닫힌구간 최댓값·최솟값",
+      "allowedMethods": "도함수 임계점과 양끝점 후보 비교, 상수항 조건 적용",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 8,
+      "primaryMethod": "정육면체 부피 변화율",
+      "allowedMethods": "겉넓이 식, 길이의 시간 변화, 연쇄법칙으로 관련변화율 계산",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 9,
+      "primaryMethod": "두 곡선 교점의 개수 경계",
+      "allowedMethods": "차함수의 극값, 수평선 접점, 매개변수 대입",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 10,
+      "primaryMethod": "내접 직사각형 넓이 최적화",
+      "allowedMethods": "포물선 같은 높이의 좌우 대칭, 넓이 함수, 도함수와 변수 범위",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 11,
+      "primaryMethod": "도함수 그래프의 명제 판정",
+      "allowedMethods": "부호표로 극값·증가 판정, 우함수 정적분 대칭성",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 12,
+      "primaryMethod": "극값이 없는 삼차함수의 정수 매개변수",
+      "allowedMethods": "도함수 판별식 비양수 조건, 이차부등식, 정수 개수",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 13,
+      "primaryMethod": "평균값정리 증명 빈칸",
+      "allowedMethods": "할선과 함수의 차로 보조함수 구성, 양끝점 대입, 롤의 정리",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 14,
+      "primaryMethod": "적분 포함 함수 항등식",
+      "allowedMethods": "미적분 기본정리로 양변 미분, 상한 적분 상수, 원시함수와 주어진 값 대입",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 15,
+      "primaryMethod": "평균값정리와 무한대 극한",
+      "allowedMethods": "고정 폭 구간에 평균값정리, 중간점의 무한대 거동",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 16,
+      "primaryMethod": "정의에 따른 조각함수 극대",
+      "allowedMethods": "각 구간과 접합점 이웃 비교, 평탄 구간의 비엄격 극대, 정수 조건",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 17,
+      "primaryMethod": "대칭 사차함수 계수 결정",
+      "allowedMethods": "대칭축 이동으로 짝수식, 도함수 임계점, 극값 차와 함숫값 조건",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 18,
+      "primaryMethod": "양의 부분 적분과 정수근 구조",
+      "allowedMethods": "g=2 max(f,0), 누적적분 영점 조건, 정수근 부호 구간, 두 적분 후보 비교",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 19,
+      "primaryMethod": "세 실근 삼차방정식의 절댓값 합",
+      "allowedMethods": "도함수 그래프의 세근 범위, 비에타 근의 합, 양의 근 단조 변화와 대칭성",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    },
+    {
+      "qid": 20,
+      "primaryMethod": "평균변화율 자료로 사차함수 미분값",
+      "allowedMethods": "합성 절댓값 함수값 계산, 구간별 증가량, 사차다항식 계수 연립, 도함숫값",
+      "curriculumStatus": "ALLOWED",
+      "authority": "2015 high-school Mathematics II current RPM L1/L2; L3/L4 path read from canonical",
+      "notAllowed": [],
+      "uncertain": []
+    }
+  ]
+}

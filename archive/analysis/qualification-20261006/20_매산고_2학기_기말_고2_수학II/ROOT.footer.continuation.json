@@ -1,0 +1,17 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "RENDER",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "inputArtifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+  "finalArtifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+  "evidenceRef": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/ROOT.mobile-footer-repair.json",
+  "completedStep": "MOBILE_FOOTER_FLOW_MINIMUM_TECHNICAL_FIX_AND_SELECTOR_MEASUREMENT",
+  "firstMissingClosureStep": "ROOT_TARGETED_MOBILE_RERENDER_AND_SIX_CASE_RECEIPTS",
+  "exactReason": "Corrected selector now matches the browser-serialized footer style and measured flow placement is static with a 12px gap. ROOT must rerender affected mobile cases and own final render receipts.",
+  "priorBlocker": {
+    "firstMissingClosureStep": "MOBILE_FOOTER_FLOW_MINIMUM_TECHNICAL_FIX",
+    "exactReason": "Native mobile page-footer absolute positioning overlaps q8 choice glyphs; current render cannot honestly PASS until screen-only footer placement is corrected.",
+    "findingRef": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/ROOT.mobile-footer-finding.json"
+  }
+}

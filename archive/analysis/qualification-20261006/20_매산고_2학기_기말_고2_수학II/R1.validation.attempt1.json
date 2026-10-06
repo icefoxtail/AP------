@@ -1,0 +1,17 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "stage": "R1",
+  "attempt": 1,
+  "status": "FAIL",
+  "validator": "archive/tools/archive-stage-validator.mjs",
+  "evidenceSha256": "095ee6c4b341a4989eaea1a94efa89edac88f4c43844ad4c883df3849e6785c9",
+  "evidenceArtifactSha": "ac871c9ac49309cddb36215cc44a5ea3a213b55c",
+  "actualRawGitBlobSha1": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+  "issues": [
+    "COMMON_ACTUAL_ARTIFACT_SHA_MISMATCH",
+    "ARTIFACT_GOLDEN_PROVENANCE_INVALID:GOLDEN_VISUAL_BINDING_REQUIRED"
+  ],
+  "repair": "Rebound artifact SHA to raw Git blob SHA-1 required by validator; corrected Hyocheon q2 golden visual SHA in both preflight and evidence. No question bytes or math were changed after this validator attempt."
+}

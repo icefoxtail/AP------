@@ -1,0 +1,54 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "stage": "R2",
+  "status": "FREEZE_COMPLETE",
+  "frozenAt": "2026-10-06T07:17:10Z",
+  "artifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+  "studentInput": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R2-student.json",
+    "rawSha256": "067aede0e063348525e5a86f223291358b5cd5cfe59d097703e238ada108d8a6",
+    "studentFieldsParity": "EXACT_CURRENT_VM_FIELD_COPY",
+    "questionCount": 20
+  },
+  "visualReadCoverage": [
+    {
+      "qid": 10,
+      "ref": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "sha256": "0b6532b5af27588b3ff8b74992dbb77d4e42ef2c4d81aeea3849ea356f405a3e",
+      "openedAtUsableResolution": true,
+      "observed": "Downward-opening y=-x^2+4x, with rectangle ABCD inscribed beneath the curve; A and B lie on the x-axis, with left/right vertical sides and a horizontal top."
+    },
+    {
+      "qid": 11,
+      "ref": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "sha256": "5c5132b2083739c98b7410495923ffa4d97aa179052762bef570a2d393d1555f",
+      "openedAtUsableResolution": true,
+      "observed": "Even graph y=f'(x), zeros at -3,-1,1,3; positive on (-3,-1) and (1,3), negative on the adjacent outside and middle intervals."
+    }
+  ],
+  "blindAnswers": [
+    {"qid": 1, "answer": "②", "reasoning": "f'(x)=3(x^2-1), negative exactly on (-1,1); the matching listed interval is [-1,1]."},
+    {"qid": 2, "answer": "③", "reasoning": "f(3)=3 gives 3a+b=-9; f'(3)=0 gives 6a+b=-27. Thus a=-6,b=9 and a+b=3."},
+    {"qid": 3, "answer": "⑤", "reasoning": "By the fundamental theorem, f(t)=t^2-3t+7; the limit is f'(4)=8-3=5."},
+    {"qid": 4, "answer": "⑤", "reasoning": "Velocity is x'(t)=6t-6, so x'(2)=6."},
+    {"qid": 5, "answer": "⑤", "reasoning": "The value is directly f'(1)=3+2+1=6."},
+    {"qid": 6, "answer": "③", "reasoning": "Intersections satisfy x=-2,1; upper minus lower is -2x^2-2x+4. Its integral from -2 to 1 is 9."},
+    {"qid": 7, "answer": "②", "reasoning": "For x^3-12x+a on [-1,4], the maximum occurs at 4, so 16+a=6 and a=-10. The minimum is at x=2 and equals -26."},
+    {"qid": 8, "answer": "①", "reasoning": "6s^2=150 gives s=5. Since ds/dt=1, dV/dt=3s^2 ds/dt=75 cm^3/s."},
+    {"qid": 9, "answer": "①", "reasoning": "Two distinct intersections occur when the cubic difference has a repeated root but is not triple. Its discriminant condition is 27a^2+37a-132=0; the two values sum to -37/27."},
+    {"qid": 10, "answer": "④", "reasoning": "The graph symmetry gives x_A=u and x_B=4-u; area (4-2u)(-u^2+4u) is maximal at u=2-2sqrt(3)/3. Hence x_B=(6+2sqrt(3))/3 and a+b=8."},
+    {"qid": 11, "answer": "③", "reasoning": "The sign changes at all four zeros give four extrema. f' is negative on (0,1), so f is not increasing throughout (0,2). Evenness gives integral[-3,3] f'=2 integral[0,3] f'. Thus ㄱ, ㄷ."},
+    {"qid": 12, "answer": "②", "reasoning": "The derivative discriminant is 8a(2a-3). Having no two distinct critical points requires this to be nonpositive, giving integer a=0,1: two values."},
+    {"qid": 13, "answer": "④", "reasoning": "For the secant line L through A and B, g(a)=f(a)-L(a)=0 and g(b)=f(b)-L(b)=0."},
+    {"qid": 14, "answer": "④", "reasoning": "Let C=integral[0,1]f. Differentiating the identity yields xf'=3x^2C, so f=(3/2)Cx^2+D. The definition of C gives D=C/2; f(4)=49 implies C=2, hence f(3)=28."},
+    {"qid": 15, "answer": "②", "reasoning": "By the mean value theorem, f(x+3)-f(x+1)=2f'(c_x) for c_x in (x+1,x+3). As x tends to infinity, c_x does too, so the limit is 20."},
+    {"qid": 16, "answer": "0, 1, 3", "reasoning": "At 0 the neighboring values are at most 0; every interior point of [0,2) is locally constant, including integer 1; the right branch rises immediately after 2 and has a local maximum at its vertex x=3."},
+    {"qid": 17, "answer": "f(x)=-(3/8)(x-3)^4+3(x-3)^2-2", "reasoning": "Symmetry about 3 gives f=c+bu^2+au^4 (u=x-3). Extrema at u=0,±2 imply b=-8a. The outer-minus-central extreme difference is -16a=6, so a=-3/8,b=3. The outer maximum is 4, giving c=-2."},
+    {"qid": 18, "answer": "4/3", "reasoning": "Condition (c) with f(3)<=0 forces f(3)=0 and f(x)>=0 for x>3. Write the other integer roots r<s; f=(x-3)(x-r)(x-s). Exactly one natural x has zero accumulated positive part, while g(0)=0, forces f<=0 on [0,1] and f>0 somewhere before 2. This requires r=1 and s>=2. Condition (c) then excludes s>3 because f is negative immediately right of 3, leaving s=2 or 3. The integrals on [1,3] are 0 and 4/3 respectively, so the maximum is 4/3."},
+    {"qid": 19, "answer": "4+2sqrt(3)", "reasoning": "Set c=a/2; the roots solve x^3-3x=c, with three real roots for |c|<=2. By symmetry the absolute-root sum depends on |c|; it is twice the magnitude of the lone outer root, increasing from 2sqrt(3) at c=0 to 4 at |c|=2. Therefore M+m=4+2sqrt(3)."},
+    {"qid": 20, "answer": "-40/3", "reasoning": "g(0..4)=(4,0,4,0,4). The average-change conditions and h(4)=g(4) fix h's values at 0..4. Newton interpolation gives h(x)=4-4C(x,1)+8C(x,2)-16C(x,3)+32C(x,4), so h'(4)=-4+28-208/3+32=-40/3."}
+  ],
+  "freezePolicy": "All 20 answers frozen from complete student-visible text and both referenced figures before any stored answer, solution, R1 evidence, or upstream answer was exposed."
+}

@@ -1,0 +1,198 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "stage": "R3_REPAIR_SNAPSHOT",
+  "snapshotStatus": "FROZEN_BEFORE_MUTATION",
+  "candidate": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+    "gitBlobSha1": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc",
+    "fileSha256": "ae6360db28a400751d0f2927eeaf7b1319309caad617987be130848917293573"
+  },
+  "upstream": {
+    "r1Evidence": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R1.evidence.json",
+      "artifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc"
+    },
+    "r2Evidence": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R2.evidence.json",
+      "artifactSha": "265879a1052fb129d1b5dfbcbbe57175b7c4f6fc"
+    },
+    "r2Freeze": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R2.independent-freeze.json",
+      "status": "FREEZE_COMPLETE"
+    },
+    "r2Adjudication": {
+      "path": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R2.answer-adjudication.json",
+      "status": "ANSWER_ADJUDICATION_COMPLETE"
+    }
+  },
+  "preflight": {
+    "path": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/R3.repair-calibration.json",
+    "status": "PASS"
+  },
+  "decisions": [
+    {
+      "qid": 2,
+      "field": "solution",
+      "beforeValue": "극솟값을 갖는 점에서는 도함수가 $0$이고, 함수값은 $3$이다.\n$f'(x)=3x^2+2ax+b$이므로\n$f'(3)=27+6a+b=0$\n$f(3)=27+9a+3b+3=3$\n두 번째 식을 정리하면 $3a+b=-9$이다.\n첫 번째 식 $6a+b=-27$과 빼면 $3a=-18$이므로 $a=-6$이다.\n$3a+b=-9$에 대입하여 $b=9$를 얻는다.\n$f''(x)=6x+2a$이므로 $f''(3)=18-12=6>0$이다.\n따라서 $a+b=3$이고 정답은 ③이다.",
+      "beforeSha256": "5a3de8a6d728f59c2278ae8c49820e4cc3bb292f5ab861cc4025f02d9d97d6d7",
+      "plannedChange": "split the already verified derivative/value equations, elimination, substitution, local-minimum check, and result into separate visible math blocks",
+      "freezeValidity": "VALID_LAYOUT_ONLY",
+      "reason": "Content, choices, and answer remain unchanged; q2 R1/R2 freezes both store answer ③ and independently agree.",
+      "r1Answer": "③",
+      "r1StoredAnswer": "③",
+      "r2BlindAnswer": "③",
+      "r2StoredAnswer": "③",
+      "r2AdjudicatedAnswer": null
+    },
+    {
+      "qid": 10,
+      "field": "solutionImage",
+      "beforeValue": null,
+      "beforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "plannedChange": "bind existing q10 source graph as the solution-context image",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "reason": "The existing source graph is the figure directly used by the already verified solution; the bytes and source problem are unchanged.",
+      "r1Answer": "④",
+      "r1StoredAnswer": "④",
+      "r2BlindAnswer": "④",
+      "r2StoredAnswer": "④",
+      "r2AdjudicatedAnswer": null
+    },
+    {
+      "qid": 11,
+      "field": "solutionImage",
+      "beforeValue": null,
+      "beforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "plannedChange": "bind existing q11 even derivative graph as the solution-context image",
+      "freezeValidity": "VALID_CONTEXT_DEPENDENCY_RESTORATION",
+      "reason": "The existing source graph supplies the roots and signs directly used by the already verified solution; the bytes and source problem are unchanged.",
+      "r1Answer": "③",
+      "r1StoredAnswer": "③",
+      "r2BlindAnswer": "③",
+      "r2StoredAnswer": "③",
+      "r2AdjudicatedAnswer": null
+    },
+    {
+      "qid": 16,
+      "field": "content",
+      "beforeValue": "[단답형1] 다음은 극대에 대한 정의이다.\n함수 $f(x)$에서 $x=a$를 포함하는 어떤 열린구간에 속하는 모든 $x$에 대하여 $f(x)\\le f(a)$일 때, 함수 $f(x)$는 $x=a$에서 극대라 하고, $f(a)$를 극댓값이라고 한다.\n다음 함수의 정의역 중 극대가 되는 정수 $x$값을 모두 구하시오. [4점]\n$f(x)=\\begin{cases}x&(x<0)\\0&(0\\le x<2)\\-x^2+6x-8&(2\\le x)\\end{cases}$",
+      "beforeSha256": "ec41dffaa05cd4db77c5cdc9ac88b3881798ad3f4c662e58982ad44e20423bab",
+      "plannedChange": "restore the same three piecewise rows with correctly escaped TeX row separators in a display cases block",
+      "freezeValidity": "VALID_MATH_DATA_UNCHANGED",
+      "reason": "Only TeX block/row encoding changes; piece values x, 0, -x^2+6x-8, conditions x<0, 0≤x<2, 2≤x, and requested integer x targets remain unchanged. R1 answer and R2 frozen answer both remain 0,1,3.",
+      "r1Answer": "0, 1, 3",
+      "r1StoredAnswer": "0, 1, 3",
+      "r2BlindAnswer": "0, 1, 3",
+      "r2StoredAnswer": "0, 1, 3",
+      "r2AdjudicatedAnswer": null
+    },
+    {
+      "qid": 17,
+      "field": "answer",
+      "beforeValue": "f(x)=-(3/8)(x-3)^4+3(x-3)^2-2",
+      "beforeSha256": "ef968f420ece259fcae06f0e382d72d0b46f57bf6088bf1a02484b7b12369e96",
+      "plannedChange": "encode the same polynomial f(x)=-(3/8)(x-3)^4+3(x-3)^2-2 in TeX",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "reason": "R1/R2 frozen and stored values are the same polynomial; ASCII versus Unicode minus notation was already adjudicated as equivalent.",
+      "r1Answer": "f(x)=−(3/8)(x−3)^4+3(x−3)^2−2",
+      "r1StoredAnswer": "f(x)=-(3/8)(x-3)^4+3(x-3)^2-2",
+      "r2BlindAnswer": "f(x)=-(3/8)(x-3)^4+3(x-3)^2-2",
+      "r2StoredAnswer": "f(x)=-(3/8)(x-3)^4+3(x-3)^2-2",
+      "r2AdjudicatedAnswer": null
+    },
+    {
+      "qid": 18,
+      "field": "answer",
+      "beforeValue": "4/3",
+      "beforeSha256": "88a09c48f589386b2d18d8be987cffe6a938c9e22314f3542082f7f6243efdb5",
+      "plannedChange": "encode the same value 4/3 as a TeX fraction",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "reason": "R1/R2 freeze and stored answer are both 4/3.",
+      "r1Answer": "4/3",
+      "r1StoredAnswer": "4/3",
+      "r2BlindAnswer": "4/3",
+      "r2StoredAnswer": "4/3",
+      "r2AdjudicatedAnswer": null
+    },
+    {
+      "qid": 19,
+      "field": "answer",
+      "beforeValue": "4+2√3",
+      "beforeSha256": "e0343a6d78e1acb23f3e23e0b11a9ffdca38a0bbc79a20febc249d36a01fdb0b",
+      "plannedChange": "encode the same value 4+2√3 using TeX radical notation",
+      "freezeValidity": "VALID_ANSWER_ENCODING_ONLY",
+      "reason": "R1 stores 4+2√3; R2 blind freeze uses equivalent 4+2sqrt(3).",
+      "r1Answer": "4+2√3",
+      "r1StoredAnswer": "4+2√3",
+      "r2BlindAnswer": "4+2sqrt(3)",
+      "r2StoredAnswer": "4+2√3",
+      "r2AdjudicatedAnswer": null
+    },
+    {
+      "qid": 20,
+      "field": "answer",
+      "beforeValue": "64/3",
+      "beforeSha256": "2a4df23275c2608175c2959741d0e500bfb3dc0010da01aa1fb82aa45d1038d4",
+      "plannedChange": "encode the adjudicated value 64/3 as a TeX fraction",
+      "freezeValidity": "VALID_POST_ADJUDICATION_ENCODING_ONLY",
+      "reason": "Preserve R2 initial freeze -40/3 and its trail. Same-stage adjudication and R1 answer both establish 64/3; formatting encodes that adjudicated value only.",
+      "r1Answer": "64/3",
+      "r1StoredAnswer": "64/3",
+      "r2BlindAnswer": "-40/3",
+      "r2StoredAnswer": "64/3",
+      "r2AdjudicatedAnswer": "64/3"
+    }
+  ],
+  "imageBindings": [
+    {
+      "qid": 10,
+      "sourceImageRef": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+      "sourceImageSha256": "0b6532b5af27588b3ff8b74992dbb77d4e42ef2c4d81aeea3849ea356f405a3e",
+      "solutionImageBefore": null,
+      "relation": "the pictured parabola and inscribed rectangle provide the points and equal-height relation used in solution"
+    },
+    {
+      "qid": 11,
+      "sourceImageRef": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+      "sourceImageSha256": "5c5132b2083739c98b7410495923ffa4d97aa179052762bef570a2d393d1555f",
+      "solutionImageBefore": null,
+      "relation": "the pictured even derivative graph provides roots and sign intervals used in solution"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/exam-desktop-page4.png",
+      "sha256": "37fad6952b6d0f9f4b724590ad57d98689c431162f38749eac376cd43337dc05"
+    },
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/exam-mobile-page4.png",
+      "sha256": "430de285bd5f49e9ca5d6f6b8103afd1385c3cb02c566a55c63d290061b0550e"
+    },
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/sol-desktop-page4.png",
+      "sha256": "e2d60e0696dc8ed756d4bb44b9ca3637093eb8c9373ffef57d31ab5fafce174e"
+    },
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/sol-mobile-page4.png",
+      "sha256": "e6da246d36b246667d3546b379deded8a2af46fbcf24d4e087422d80b6d443ee"
+    },
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/sol-desktop-page3.png",
+      "sha256": "1b8d8e6e2a07a9a3a454b93d5d2c4132dc605de16773ff2f787e1adc3151718f"
+    },
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/sol-mobile-page3.png",
+      "sha256": "6c6c4559c4e761841b7cd20ecd9c74ddb781ac5c850442874f766aac2c58915d"
+    },
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/sol-desktop-page5.png",
+      "sha256": "3324db342866ef66bac5743dc9b03c5f2575979d4e32d42a6cae40f4fc42f96d"
+    },
+    {
+      "path": ".tmp/archive/qualification-20261006/qa/20_매산고_2학기_기말_고2_수학II/sol-mobile-page5.png",
+      "sha256": "a06818c49242e8c39a4b1fe939e632150a3af87d3a2a39e3230b9a290e7b87bc"
+    }
+  ]
+}

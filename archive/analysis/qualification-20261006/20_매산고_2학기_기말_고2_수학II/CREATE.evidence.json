@@ -1,0 +1,3076 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "20_매산고_2학기_기말_고2_수학II",
+  "artifactSha": "4e8d56e815f15f33687d3dbde49b57c7f38834e1",
+  "evidenceRef": "archive/analysis/qualification-20261006/20_매산고_2학기_기말_고2_수학II/CREATE.evidence.json",
+  "inputArtifactSha": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+  "source": {
+    "sourceMode": "ORIGINAL",
+    "sourceInputPath": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+    "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+    "sourcePdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+    "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+    "sourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+    "sourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+    "sourceModeSummary": "18 ORIGINAL; q11 and q13 AUDITED_REPAIR"
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "Coordinates, internal-division, midpoint, and distance are shown as separate equations with substitutions and intermediate arithmetic; concise teacher prompts explain the formula transitions."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "Parallel-slope condition, point substitution, solving n, and requested sum are broken into visible steps; short explanations connect each equation."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "observation": "Supplemental correction-review read: the SVG plots equal-radius circles at C0=(-3,1), C1=(-5,2), C2=(5,-2), with dashed translation/reflection path. Pixel geometry matches the labeled centers and final circle; local raster fallback affects a few glyphs only."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+            "observation": "Coordinate differences and the distance substitution are each explicit; simplification continues through the radical reduction before the answer."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "observation": "Slope conversion and perpendicular product are explicitly solved; inspected referenced SVG line primitives and labels. Both equations match stated slopes -1/3 and 3, with k=6."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+            "observation": "Set membership and subset relations are distinguished; each choice is assessed independently with its element-level reason."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "e4cbc4345de0472f738d2ec8384d459350a6d7cc5a180f61f7ebf2335b05bb21",
+            "observation": "Vertical-line test is applied separately to each option; the shared graph-image condition remains visible in the reasoning."
+          },
+          {
+            "qid": 6,
+            "solutionSha256": "d0f4f175a52f855f023664f546904c8fd0e91235868222a8fd542cac5d7188af",
+            "visualSha256": "70731ee9517c0fe8dbe87695f86f87061b123a0a98310b184e3793bfdbf05cfd",
+            "observation": "Supplemental correction-review read: Venn circles show regions 20-y, y, and 15-y inside a universe of 30; labeled inequality y≥20+15−30 gives minimum overlap 5. Diagram is schematic and communicates the set-count relation."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Read the approved Negative fixture. Applied regressions: do not replace enumerated decision blocks with prose; inspect actual SVG geometry rather than labels; check runtime TeX/control escapes; do not accept null advanced Meta when an exact ACTIVE mapping exists."
+    }
+  },
+  "curriculumMethodAuditCount": "20/20",
+  "curriculumViolationQids": [],
+  "existingVisualAuditCount": "2/2",
+  "visualNecessityAuditCount": "20/20",
+  "questionLayoutCoverage": "20/20",
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "solutionRewrite": "FRESH_SOURCE_TO_SOLUTION",
+  "solutionRewriteAttempted": "20/20",
+  "solutionRewriteResolved": "20/20",
+  "solutionRewriteHeldQids": [],
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q01",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 1,
+        "sourceFingerprint": "9f21dcd7fef371971abd375411172b96ee3902cbd3c7f02704ba885cc9b3b8b5",
+        "contentSha256": "4ef2a99a48282adadf6035878e825af988a857eb25f519651cebec8886271d73",
+        "choicesSha256": "2173a0adc708b9081723175e8af7cb374cb12431d0dfbc796ec33b5bab97b29a",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 1,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 1,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "c7a6eefdf2d188442f6d87e804b01c565917d3768d1c2ab6499046ddc14c8bd4",
+          "primaryMethod": "도함수 인수분해와 부호판정",
+          "decisiveSteps": [
+            "임계점 x=-1,1",
+            "도함수 인수분해와 부호판정"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "도함수 인수분해와 부호판정",
+          "decisiveStep": "임계점 x=-1,1",
+          "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+          "templateKey": "TPL_MONOTONICITY_DIRECT",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "도함수의 부호와 증가·감소",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "다항함수의 도함수, f'(x)<0",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "임계점 x=-1,1",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "도함수 인수분해와 부호판정",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c7a6eefdf2d188442f6d87e804b01c565917d3768d1c2ab6499046ddc14c8bd4"
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q02",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 2,
+        "sourceFingerprint": "b51c1219ed59d37433c90be22fcd088a62669da9b73faa4cf48e6301f67ebae4",
+        "contentSha256": "c021cd353f7095a9e6c744a43b40daf761c637f82c22763a7c2855ee217db3c3",
+        "choicesSha256": "ff782081a4cc25de5ebd8fdb3b10e93e0a2a8b181fb4cabb15c6d4c8f83c7224",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 1,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 1,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e37f3e923427c12d20b26119861deb3b6fb99c5c954e5a28fca1c81e3df6d7f3",
+          "primaryMethod": "도함수 조건과 함수값 조건을 연립",
+          "decisiveSteps": [
+            "a,b",
+            "도함수 조건과 함수값 조건을 연립"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "도함수 조건과 함수값 조건을 연립",
+          "decisiveStep": "a,b",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "극솟값의 도함수 조건, 계수결정",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "다항함수의 도함수, f'(3)=0, f(3)=3",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "a,b",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "도함수 조건과 함수값 조건을 연립",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e37f3e923427c12d20b26119861deb3b6fb99c5c954e5a28fca1c81e3df6d7f3"
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q03",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 3,
+        "sourceFingerprint": "0df42d3c0bef4c8f041974edd71256ca283263f4c2af51246dac1165a7f03863",
+        "contentSha256": "c57cd3a1d04de06b4eb8a62f8a0f4e2dee0a3adcd6ab8a4da82dbb3877356f32",
+        "choicesSha256": "ff782081a4cc25de5ebd8fdb3b10e93e0a2a8b181fb4cabb15c6d4c8f83c7224",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 1,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 1,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7ae06f8e9c786308e81b1897939849e01768bbda3abbefad42afb8d7cf2c1048",
+          "primaryMethod": "적분함수를 먼저 구해 차분극한을 도함수 값으로 환원",
+          "decisiveSteps": [
+            "f(x), f'(4)",
+            "적분함수를 먼저 구해 차분극한을 도함수 값으로 환원"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-03",
+          "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+          "primaryMethod": "적분함수를 먼저 구해 차분극한을 도함수 값으로 환원",
+          "decisiveStep": "f(x), f'(4)",
+          "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+          "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-03",
+        "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "미적분의 기본정리, 미분계수",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "상한이 x인 적분의 도함수, 차분극한",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "f(x), f'(4)",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "적분함수를 먼저 구해 차분극한을 도함수 값으로 환원",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-03",
+          "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7ae06f8e9c786308e81b1897939849e01768bbda3abbefad42afb8d7cf2c1048"
+    },
+    {
+      "qid": 4,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q04",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 4,
+        "sourceFingerprint": "02533c58c263b8c0890365a0b3106f0e022966aac03e7b3f03f8f983a1da6359",
+        "contentSha256": "979b17861426b22b6dac693d009a4649fed0996814730b1377335e2a022a164d",
+        "choicesSha256": "d601fd23445f2769d635c0f649aaf6d04b385a7d56c029a78b68ab105d958e27",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 1,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 1,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "6220c5b6197514e56222981a3afab379ed369b555fe3dd88f13855962218d9d0",
+          "primaryMethod": "위치함수를 미분한 뒤 시각 대입",
+          "decisiveSteps": [
+            "t=2",
+            "위치함수를 미분한 뒤 시각 대입"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "위치함수를 미분한 뒤 시각 대입",
+          "decisiveStep": "t=2",
+          "problemTypeKey": "PT_DERIVATIVE_MOTION",
+          "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "위치와 순간속도",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "v=dx/dt",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "t=2",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "위치함수를 미분한 뒤 시각 대입",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6220c5b6197514e56222981a3afab379ed369b555fe3dd88f13855962218d9d0"
+    },
+    {
+      "qid": 5,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q05",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 5,
+        "sourceFingerprint": "aff438071bb795397707b590d540f3e1a4e3f54659f767af3a9fa732a1f0b0cc",
+        "contentSha256": "1ecbaad9a50614baaf38f2950b7a9d8b010cbb888f2e554a0b38e5fb354be2f3",
+        "choicesSha256": "d601fd23445f2769d635c0f649aaf6d04b385a7d56c029a78b68ab105d958e27",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 1,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 1,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "a850bf5b5c3a28976dec7c65c23db3d8e55385490156f18906b0a68016d4977b",
+          "primaryMethod": "주어진 도함수에 입력값 대입",
+          "decisiveSteps": [
+            "f'(1)",
+            "주어진 도함수에 입력값 대입"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-04",
+          "subUnitKey": "H15-M2-04-DERIVATIVE",
+          "primaryMethod": "주어진 도함수에 입력값 대입",
+          "decisiveStep": "f'(1)",
+          "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+          "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-04",
+        "subUnitKey": "H15-M2-04-DERIVATIVE",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "다항함수의 도함수 계산",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "거듭제곱 미분법",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "f'(1)",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "주어진 도함수에 입력값 대입",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-04",
+          "subUnitKey": "H15-M2-04-DERIVATIVE",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a850bf5b5c3a28976dec7c65c23db3d8e55385490156f18906b0a68016d4977b"
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q06",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 6,
+        "sourceFingerprint": "b988cd7ce8ad9a4a8dc973729df4306f887e8cfef320ed9a9df4caf71ea73e01",
+        "contentSha256": "fe49b49faea1ab35e9495419f503548d7508b46160deb980da7c1d233003ecbe",
+        "choicesSha256": "47033b69ef3e934a32371dd68d992e91d31084183390a83867b7c2877c798cbd",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 1,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 1,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "6ba4e9414b9555eb7ff30ad9facbe70d4e845da341d9ad5652e87817c7c71942",
+          "primaryMethod": "교점으로 적분구간을 정하고 차를 적분",
+          "decisiveSteps": [
+            "위함수-아래함수",
+            "교점으로 적분구간을 정하고 차를 적분"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "primaryMethod": "교점으로 적분구간을 정하고 차를 적분",
+          "decisiveStep": "위함수-아래함수",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_INTERSECTION_SIGN_AREA",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-09",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "두 곡선 사이 넓이",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "교점방정식, 정적분으로 넓이",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "위함수-아래함수",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "교점으로 적분구간을 정하고 차를 적분",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6ba4e9414b9555eb7ff30ad9facbe70d4e845da341d9ad5652e87817c7c71942"
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q07",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 7,
+        "sourceFingerprint": "b858f919c1683943f35889fc495e5d1f1d7b04412a4f00941d11995da008c4fe",
+        "contentSha256": "b8b851ab4d8597d5bdf78a61a0bbd627372d28c87728373712a624a30a0fc081",
+        "choicesSha256": "7af34db89349b19b2dc6118ab30cc004a768cd534141ec363c55f8d0827fe5b7",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 2,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 2,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "54e811656963cb66323fe8523efe7e111adb96ca247714444b177e9c9aa1f24a",
+          "primaryMethod": "도함수로 임계점을 찾고 주어진 최대조건으로 a 결정",
+          "decisiveSteps": [
+            "임계점, 양 끝점",
+            "도함수로 임계점을 찾고 주어진 최대조건으로 a 결정"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "도함수로 임계점을 찾고 주어진 최대조건으로 a 결정",
+          "decisiveStep": "임계점, 양 끝점",
+          "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+          "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "닫힌구간 최댓값·최솟값",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "임계점과 양 끝점 비교",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "임계점, 양 끝점",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "도함수로 임계점을 찾고 주어진 최대조건으로 a 결정",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "54e811656963cb66323fe8523efe7e111adb96ca247714444b177e9c9aa1f24a"
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q08",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 8,
+        "sourceFingerprint": "28c9431274c7ee72ee792ac8c63cd519227b83a6209fbf0fe7417525ce091614",
+        "contentSha256": "3bfeade89a1a837eae1e652585fb4bfd00848d4a29bdd306a9dfe3dac3960bb1",
+        "choicesSha256": "373e6d228be57661bfbb6d9d20b09430778f6828c8323cc7cdfed330934f9f7a",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 2,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 2,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e5c501ced9ab021f1a486c754a108af8270df07f11987e5007e4e93cbbcfc894",
+          "primaryMethod": "겉넓이 조건에서 순간 변 길이를 찾고 부피를 시간 미분",
+          "decisiveSteps": [
+            "ds/dt, dV/dt",
+            "겉넓이 조건에서 순간 변 길이를 찾고 부피를 시간 미분"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "겉넓이 조건에서 순간 변 길이를 찾고 부피를 시간 미분",
+          "decisiveStep": "ds/dt, dV/dt",
+          "problemTypeKey": "PT_DERIVATIVE_MOTION",
+          "templateKey": "TPL_MOTION_EVENT_ANALYSIS",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "관련 변화율, 겉넓이와 부피",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "겉넓이 6s^2, 부피 s^3, 연쇄법칙",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "ds/dt, dV/dt",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "겉넓이 조건에서 순간 변 길이를 찾고 부피를 시간 미분",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e5c501ced9ab021f1a486c754a108af8270df07f11987e5007e4e93cbbcfc894"
+    },
+    {
+      "qid": 9,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q09",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 9,
+        "sourceFingerprint": "7f38b57c36215efbef45139a0b77a23f28abc1f066462ffc601584f5779f834f",
+        "contentSha256": "9f50adfd7f68f2493103af0388e69f28b36df1188cc46ac205f16add44fdf43b",
+        "choicesSha256": "7c9dffa68a00cbceed065d7aed17d3b89c88f5bcd6516124a31627bd9ee9ddc3",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 2,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 2,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "e22bfbd34fbd21b31a95e922d19ccb3c8720548e0f7486570c39829005f3b0b7",
+          "primaryMethod": "교점조건을 a=h(x)로 바꾸고 접하는 두 경계값 산출",
+          "decisiveSteps": [
+            "a, h(x)",
+            "교점조건을 a=h(x)로 바꾸고 접하는 두 경계값 산출"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "교점조건을 a=h(x)로 바꾸고 접하는 두 경계값 산출",
+          "decisiveStep": "a, h(x)",
+          "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "곡선 교점 수, 매개변수와 극값",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "교점방정식, 도함수로 극값",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "a, h(x)",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "교점조건을 a=h(x)로 바꾸고 접하는 두 경계값 산출",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "e22bfbd34fbd21b31a95e922d19ccb3c8720548e0f7486570c39829005f3b0b7"
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q10",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 10,
+        "sourceFingerprint": "3236c3d89028a6b08242bf26b9370fc3164565c1a5f816019c3999043c68de21",
+        "contentSha256": "e8369fbf2f6528d53cd400a70b6928590dbff18d613a7782b60f1c21f884e99b",
+        "choicesSha256": "48a6a42247cc221568b17352f8cec2c68c50aa0d46a3d19717a8f46e44cdcf17",
+        "imageRef": "assets/images/20_매산고_2학기_기말_고2_수학II/q10.png",
+        "imageSha256": "0b6532b5af27588b3ff8b74992dbb77d4e42ef2c4d81aeea3849ea356f405a3e"
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 2,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 2,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact student text and choice parity hold; complete-sentence or condition-boundary line breaks keep the original atoms intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "02b53e5eed8e352fcfc4672cead267207808405a8a5b33d9686b675c4d96e742",
+          "primaryMethod": "같은 높이의 두 근 합으로 너비·높이를 세우고 미분",
+          "decisiveSteps": [
+            "오른쪽 꼭짓점 x",
+            "같은 높이의 두 근 합으로 너비·높이를 세우고 미분"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "같은 높이의 두 근 합으로 너비·높이를 세우고 미분",
+          "decisiveStep": "오른쪽 꼭짓점 x",
+          "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+          "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "SOURCE_PROBLEM_IMAGE_REQUIRED_AND_RETAINED",
+          "problemImageRetained": true,
+          "problemImageSha256": "0b6532b5af27588b3ff8b74992dbb77d4e42ef2c4d81aeea3849ea356f405a3e",
+          "solutionVisualNeeded": false,
+          "reason": "The source graph already supplies the parabola, axes, and rectangle vertices needed to form width and height; the decisive optimization is algebraic and derivative-based."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "포물선 대칭, 직사각형 넓이 최적화",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "포물선 y=-x^2+4x, 넓이함수와 도함수",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "오른쪽 꼭짓점 x",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "같은 높이의 두 근 합으로 너비·높이를 세우고 미분",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "02b53e5eed8e352fcfc4672cead267207808405a8a5b33d9686b675c4d96e742"
+    },
+    {
+      "qid": 11,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q11",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 11,
+        "sourceFingerprint": "0c751ff01c50cdfe690e991961f7af36a1f5a8c5fe81ecb10c8037db5de6acfe",
+        "contentSha256": "4ed07c2abbe47a98eefb6a2890539222c5ef56383551a2101cf1b4963543357c",
+        "choicesSha256": "cbb51efd34b277f98bee5b51e4e93e2ccd28d033c32715f81f8ef790586831ca",
+        "imageRef": "assets/images/20_매산고_2학기_기말_고2_수학II/q11.png",
+        "imageSha256": "5c5132b2083739c98b7410495923ffa4d97aa179052762bef570a2d393d1555f",
+        "originalSourceFingerprint": "ce5fdcd04b052879868a66554b262fa770c0a221926e17024e327607ebd379e9"
+      },
+      "sourceParity": {
+        "status": "AUDITED_SOURCE_REPAIR",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 3,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+        "repairedField": "content"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS_AFTER_AUDITED_REPAIR",
+          "mode": "AUDITED_REPAIR",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 3,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        },
+        "repair": {
+          "repairClass": "ONE_SEMANTIC_LOCUS_REPAIR",
+          "recordType": "AUDITED_SOURCE_REPAIR",
+          "originalValue": "\\displaystyle\\int_{-3}^3f(x),dx=2\\displaystyle\\int_0^3f(x),dx",
+          "repairedValue": "\\displaystyle\\int_{-3}^3f'(x),dx=2\\displaystyle\\int_0^3f'(x),dx",
+          "repairReason": "The complete stem, graph, three claims, and choices identify the sole omitted prime in statement ㄷ. Only f′ is shown as even; replacing both integrands within that single enumerated claim makes the symmetry assertion decidable, preserves the graph-analysis strategy and Math II unit, and creates no new condition or option.",
+          "independentMathResult": {
+            "a": "TRUE; f′ sign changes -→+ at -3 and 1, +→- at -1 and 3, giving four extrema.",
+            "b": "FALSE; f′<0 on (0,1), so f is not increasing throughout (0,2).",
+            "c": "TRUE_AFTER_REPAIR; f′ is even, so the integral over [-3,3] is twice the integral over [0,3].",
+            "trueStatements": [
+              "ㄱ",
+              "ㄷ"
+            ],
+            "answer": "③"
+          },
+          "affectedFields": [
+            "content",
+            "answer",
+            "solution"
+          ],
+          "postRepairAnswerCardinality": 1,
+          "postRepairTrueStatementSet": [
+            "ㄱ",
+            "ㄷ"
+          ],
+          "sourceSha": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourcePage": 3,
+          "questionUid": "20_매산고_2학기_기말_고2_수학II:q11",
+          "originalSourceFingerprint": "ce5fdcd04b052879868a66554b262fa770c0a221926e17024e327607ebd379e9",
+          "repairUniqueness": "The alternate repair f even would require changes in two independent loci (the premise and graph label), while changing unspecified function values cannot determine ㄷ. The f′ integrand repair is the single-locus repair directly supported by the supplied evenness condition."
+        },
+        "repairedTruth": {
+          "sourcePdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourcePage": 3,
+          "studentInputsVerified": {
+            "stem": true,
+            "allChoices": true,
+            "referencedGraphOpened": true
+          },
+          "repairTruth": "Verified solely from the displayed y=f′ graph and statement definitions; no candidate answer was used."
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS_AFTER_REPAIR",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS_AFTER_AUDITED_SOURCE_REPAIR",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "One statement-level missing-prime source repair; all other text/choices/images preserved. Formula and statement boundaries remain visible."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "3b9628223e9c5baaa1ef24d5710fab0868f793ceb23e449e0238a4283b976766",
+          "primaryMethod": "도함수 그래프의 부호 해석과 우함수의 정적분 대칭성",
+          "decisiveSteps": [
+            "f′ 부호의 네 번의 전환으로 극값 네 개 판정",
+            "(0,1)에서 감소하므로 ㄴ 거짓 판정",
+            "복원된 f′ 적분식에 우함수 대칭성을 적용해 ㄷ 판정"
+          ],
+          "reason": "Graph sign intervals, the interval counterexample to ㄴ, the even-integrand identity, and the selected option each appear as separate visible steps."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "도함수 그래프 정성 해석; ㄷ에서 정적분 대칭성 보조 사용",
+          "decisiveStep": "f′ 그래프 부호와 우함수 정적분 대칭성으로 ㄱ/ㄷ을 판정",
+          "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+          "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "RPM_COVERAGE_GAP_OR_BINDING_PENDING",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Primary classification remains derivative-graph qualitative analysis; the secondary integral fact is a current Math II definite-integral property and does not change L1/L2."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "SOURCE_PROBLEM_GRAPH_REQUIRED_AND_RETAINED",
+          "problemImageRetained": true,
+          "problemImageSha256": "5c5132b2083739c98b7410495923ffa4d97aa179052762bef570a2d393d1555f",
+          "solutionVisualNeeded": false,
+          "reason": "The source graph is needed to read the zeros, sign intervals, and even symmetry of f′; it remains attached. No new solution visual is needed because sign and integral steps are explicit."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "도함수 그래프의 부호와 함수의 증감·극값",
+            "status": "ALLOWED"
+          },
+          {
+            "item": "우함수의 정적분 대칭성",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "f′ sign change gives local extrema; integral over symmetric bounds of an even function is twice the half-interval integral",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "f′(x), ∫ f′(x) dx",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "Read graph signs, then apply definite-integral symmetry to the repaired statement",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "primaryStandardUnitKey": "H15-M2-06",
+          "supplementalStandardUnitKey": "H15-M2-08",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Derivative sign analysis and symmetry of definite integrals are both within 2015 Math II; no post-course tool is used."
+        },
+        "supplementalScope": {
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "standardUnit": "정적분",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "authorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "status": "ALLOWED",
+          "reason": "정적분 L2 includes symmetry; this is a secondary fact supporting the graph-analysis item."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "3b9628223e9c5baaa1ef24d5710fab0868f793ceb23e449e0238a4283b976766",
+      "sourceCorrection": {
+        "repairClass": "ONE_SEMANTIC_LOCUS_REPAIR",
+        "recordType": "AUDITED_SOURCE_REPAIR",
+        "originalValue": "\\displaystyle\\int_{-3}^3f(x),dx=2\\displaystyle\\int_0^3f(x),dx",
+        "repairedValue": "\\displaystyle\\int_{-3}^3f'(x),dx=2\\displaystyle\\int_0^3f'(x),dx",
+        "repairReason": "The complete stem, graph, three claims, and choices identify the sole omitted prime in statement ㄷ. Only f′ is shown as even; replacing both integrands within that single enumerated claim makes the symmetry assertion decidable, preserves the graph-analysis strategy and Math II unit, and creates no new condition or option.",
+        "independentMathResult": {
+          "a": "TRUE; f′ sign changes -→+ at -3 and 1, +→- at -1 and 3, giving four extrema.",
+          "b": "FALSE; f′<0 on (0,1), so f is not increasing throughout (0,2).",
+          "c": "TRUE_AFTER_REPAIR; f′ is even, so the integral over [-3,3] is twice the integral over [0,3].",
+          "trueStatements": [
+            "ㄱ",
+            "ㄷ"
+          ],
+          "answer": "③"
+        },
+        "affectedFields": [
+          "content",
+          "answer",
+          "solution"
+        ],
+        "postRepairAnswerCardinality": 1,
+        "postRepairTrueStatementSet": [
+          "ㄱ",
+          "ㄷ"
+        ],
+        "sourceSha": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "sourcePage": 3,
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q11",
+        "originalSourceFingerprint": "ce5fdcd04b052879868a66554b262fa770c0a221926e17024e327607ebd379e9",
+        "repairUniqueness": "The alternate repair f even would require changes in two independent loci (the premise and graph label), while changing unspecified function values cannot determine ㄷ. The f′ integrand repair is the single-locus repair directly supported by the supplied evenness condition."
+      },
+      "answerStatus": "PASS_AFTER_REPAIR"
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q12",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 12,
+        "sourceFingerprint": "bf8a3d4065e1f2a2088a421cea7a4b4847569d7ce14897b064b471caa0cd74a5",
+        "contentSha256": "a6be6e3344531c8009f53eac71a607f805cc710b8f6d262a7a2dcc9b45dfa4b6",
+        "choicesSha256": "ff782081a4cc25de5ebd8fdb3b10e93e0a2a8b181fb4cabb15c6d4c8f83c7224",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 3,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 3,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "d14e640b35e0dd5d57e0db7d411d960eba4021985f3c79f86e981e83905cf326",
+          "primaryMethod": "도함수의 서로 다른 실근 조건을 판별식으로 세기",
+          "decisiveSteps": [
+            "정수 a",
+            "도함수의 서로 다른 실근 조건을 판별식으로 세기"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "도함수의 서로 다른 실근 조건을 판별식으로 세기",
+          "decisiveStep": "정수 a",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "도함수의 판별식과 극값 존재",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "이차방정식 판별식 D≤0",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "정수 a",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "도함수의 서로 다른 실근 조건을 판별식으로 세기",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "d14e640b35e0dd5d57e0db7d411d960eba4021985f3c79f86e981e83905cf326"
+    },
+    {
+      "qid": 13,
+      "sourceMode": "AUDITED_REPAIR",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q13",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 13,
+        "sourceFingerprint": "7a1bb5f829b7c26ac40722f0424a1d56c5e3b3b684b086211acaf060c7e09a0f",
+        "contentSha256": "2e3769763974c8ddf880e089e56d856593df652f321fc50c271c83d6fbeefa24",
+        "choicesSha256": "8905f1bc70e4244194ceac3d52cee58905e65813c327ae8041b5f1625833886e",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 3,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS_AFTER_ENGINE_SAFE_TE X_DELIMITER_REPAIR",
+        "encodingRepair": "TeX brace delimiters escaped for engine-safe rendering; visible source atoms preserved."
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "AUDITED_REPAIR",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 3,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        },
+        "repair": {
+          "type": "TE X delimiter serialization correction",
+          "field": "content",
+          "sourcePdfPage": 3,
+          "originalRuntimeFragment": "\\left{...\\right}",
+          "finalRuntimeFragment": "\\left\\{...\\right\\}",
+          "reason": "The scanned source visibly contains balanced grouping braces; escaped delimiters are required for safe MathJax rendering and display the same source brace glyphs."
+        },
+        "repairedTruth": {
+          "sourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+          "sourcePdfPage": 3,
+          "visualBasis": "Opened original PDF page 3; displayed MVT proof has matching left and right grouping braces."
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Source text and choices remain exact in visible atoms; q13 received only the balanced-brace TeX delimiter escape needed for safe rendering. Other line breaks follow complete sentences and condition boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "27abd1952364efb9a262378dc4b9c874485799e351ffc2bca155fb5e8d930953",
+          "primaryMethod": "끝점 대입으로 보조함수의 두 값이 0임을 확인",
+          "decisiveSteps": [
+            "g(x)",
+            "끝점 대입으로 보조함수의 두 값이 0임을 확인"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "끝점 대입으로 보조함수의 두 값이 0임을 확인",
+          "decisiveStep": "g(x)",
+          "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+          "templateKey": "TPL_MVT_ROLLE_DIRECT",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "롤의 정리, 보조함수",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "두 점을 잇는 직선과 g(a),g(b)",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "g(x)",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "끝점 대입으로 보조함수의 두 값이 0임을 확인",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "27abd1952364efb9a262378dc4b9c874485799e351ffc2bca155fb5e8d930953"
+    },
+    {
+      "qid": 14,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q14",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 14,
+        "sourceFingerprint": "9522c0d55014ae20859934762f903600f16093aa0f766734ad48f802c5833742",
+        "contentSha256": "a7fbc97962a89149dcdcac16178ae1b8ef78315f0169c6b683e03ddfe68487b3",
+        "choicesSha256": "ade824c49061c7cf006ccfe89a3ef0a864a6342e06f9bbfa7690fbb1067d6e2b",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 4,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 4,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "5238718c3177eb064dcda89c7b95e44a5cbb7661fc5e9e89e97e475dd4ad1eb9",
+          "primaryMethod": "등식 미분 후 적분 정의와 f(4)를 차례로 대입",
+          "decisiveSteps": [
+            "I=∫₀¹f(t)dt, 적분상수 C",
+            "등식 미분 후 적분 정의와 f(4)를 차례로 대입"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-08",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "primaryMethod": "등식 미분 후 적분 정의와 f(4)를 차례로 대입",
+          "decisiveStep": "I=∫₀¹f(t)dt, 적분상수 C",
+          "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+          "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-08",
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "미적분의 기본정리, 정적분 조건과 함수 결정",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "곱의 미분, 상한 변수 적분의 도함수, 부정적분",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "I=∫₀¹f(t)dt, 적분상수 C",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "등식 미분 후 적분 정의와 f(4)를 차례로 대입",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-08",
+          "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "5238718c3177eb064dcda89c7b95e44a5cbb7661fc5e9e89e97e475dd4ad1eb9"
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q15",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 15,
+        "sourceFingerprint": "2d008299ce0f5644375574024ec75faac4510dc1337cbd98af622e252d8abb15",
+        "contentSha256": "83049e9b1605e32c54e071b4424c9211558639e09d27922dd4d6e18d07b6771b",
+        "choicesSha256": "4aa22ebdfc1136abfa427be2d79eacc7a39e16e5d187dffac889e4f7b124e09e",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 4,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 4,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "768c0b084b231ebc8c1c37ae9fb59af5f3768120bd0b9cf3a28d1874c0ad76bd",
+          "primaryMethod": "평균값정리를 적용하고 c_x→∞를 이용",
+          "decisiveSteps": [
+            "c_x∈(x+1,x+3)",
+            "평균값정리를 적용하고 c_x→∞를 이용"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "평균값정리를 적용하고 c_x→∞를 이용",
+          "decisiveStep": "c_x∈(x+1,x+3)",
+          "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+          "templateKey": "TPL_MVT_BOUND_LIMIT",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "RPM_COVERAGE_GAP_OR_BINDING_PENDING",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "평균값정리와 무한대에서 도함수 극한",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "f(x+3)-f(x+1)=2f'(c_x)",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "c_x∈(x+1,x+3)",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "평균값정리를 적용하고 c_x→∞를 이용",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "768c0b084b231ebc8c1c37ae9fb59af5f3768120bd0b9cf3a28d1874c0ad76bd"
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q16",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 16,
+        "sourceFingerprint": "c82051df32d14dcc1bce576d7b25017ae99c344e2a2c74bbd1bcbf8e95072834",
+        "contentSha256": "ec41dffaa05cd4db77c5cdc9ac88b3881798ad3f4c662e58982ad44e20423bab",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 4,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 4,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact source text and choice parity; current breakpoints preserve conditions, formulas, and question boundaries."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "2b5514d76f57bd2a88e44628a4437c41e992a737d0e4f722552c94ce0c15abcd",
+          "primaryMethod": "각 경계와 구간 내부의 정수값을 이웃과 비교",
+          "decisiveSteps": [
+            "경계 x=0,2와 꼭짓점 x=3",
+            "각 경계와 구간 내부의 정수값을 이웃과 비교"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "각 경계와 구간 내부의 정수값을 이웃과 비교",
+          "decisiveStep": "경계 x=0,2와 꼭짓점 x=3",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "극대의 정의, 구간별 함수, 이차함수 꼭짓점",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "국소적 극대 정의",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "경계 x=0,2와 꼭짓점 x=3",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "각 경계와 구간 내부의 정수값을 이웃과 비교",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2b5514d76f57bd2a88e44628a4437c41e992a737d0e4f722552c94ce0c15abcd"
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q17",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 17,
+        "sourceFingerprint": "ac53da00718498eebbf987a68e522338a3685bac6261c6e0a280654410f43c6e",
+        "contentSha256": "781d5d9b35136df65de6908ad9a790570fe09ff3d86715c04fceb0864203c750",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 5,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 5,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact student text and choice parity hold; complete-sentence or condition-boundary line breaks keep the original atoms intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7051d1dcc7fa7e862b8ceaf6a6c34de692b0df9caad95205f020abecd13d585c",
+          "primaryMethod": "대칭식으로 계수를 줄이고 극점·극댓값 차 조건을 대입",
+          "decisiveSteps": [
+            "u=x-3, 계수 A,B,C",
+            "대칭식으로 계수를 줄이고 극점·극댓값 차 조건을 대입"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "대칭식으로 계수를 줄이고 극점·극댓값 차 조건을 대입",
+          "decisiveStep": "u=x-3, 계수 A,B,C",
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "대칭 사차함수, 극값 조건",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "짝수 거듭제곱 표현, 도함수 0 조건",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "u=x-3, 계수 A,B,C",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "대칭식으로 계수를 줄이고 극점·극댓값 차 조건을 대입",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7051d1dcc7fa7e862b8ceaf6a6c34de692b0df9caad95205f020abecd13d585c"
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q18",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 18,
+        "sourceFingerprint": "ed3ef52af5d65a1f741d1be319d7ab29f2bfb3ec3fd9cf2d2986293d278c10ee",
+        "contentSha256": "a3ac168cf0404d2638ba1c894aff38a4edcfa65226a8005fe212e89eccc71d5e",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 5,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 5,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact student text and choice parity hold; complete-sentence or condition-boundary line breaks keep the original atoms intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "da4c2318a806fa115e1f157fedadcccc75cb3546abc6abead1400e8d8bb2cac0",
+          "primaryMethod": "적분 영점 조건과 부호 조건으로 유일한 근 후보를 분류",
+          "decisiveSteps": [
+            "정수근 r_i",
+            "적분 영점 조건과 부호 조건으로 유일한 근 후보를 분류"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "primaryMethod": "적분 영점 조건과 부호 조건으로 유일한 근 후보를 분류",
+          "decisiveStep": "정수근 r_i",
+          "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+          "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-09",
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "절댓값으로 만든 비음수 함수, 정수근과 부호, 정적분 최댓값",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "g=2max(f,0), 정수근 인수분해, 정적분",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "정수근 r_i",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "적분 영점 조건과 부호 조건으로 유일한 근 후보를 분류",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-09",
+          "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "da4c2318a806fa115e1f157fedadcccc75cb3546abc6abead1400e8d8bb2cac0"
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q19",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 19,
+        "sourceFingerprint": "7c5db477da29881c02e64160d034018e8c9a29d83f8aa5b6a7cc2fc51638919c",
+        "contentSha256": "ef0ec47dd2baa5b26a9d365ba2516eb237c2f13405f37adf1cb74719a3c99791",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 6,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 6,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact student text and choice parity hold; complete-sentence or condition-boundary line breaks keep the original atoms intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "7bfaaafbf1da1caf7f04a0f1d05f825152ac2160338226bf296083a1787f89b7",
+          "primaryMethod": "세 실근 범위와 극값을 구해 절댓값 합의 양 끝·대칭 중심 비교",
+          "decisiveSteps": [
+            "p(x), a/2, M,m",
+            "세 실근 범위와 극값을 구해 절댓값 합의 양 끝·대칭 중심 비교"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "primaryMethod": "세 실근 범위와 극값을 구해 절댓값 합의 양 끝·대칭 중심 비교",
+          "decisiveStep": "p(x), a/2, M,m",
+          "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+          "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-06",
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "삼차함수 극값, 매개변수 실근, 비에타 관계",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "도함수, 비에타 근의 합",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "p(x), a/2, M,m",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "세 실근 범위와 극값을 구해 절댓값 합의 양 끝·대칭 중심 비교",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-06",
+          "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7bfaaafbf1da1caf7f04a0f1d05f825152ac2160338226bf296083a1787f89b7"
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "sourceIdentity": {
+        "questionUid": "20_매산고_2학기_기말_고2_수학II:q20",
+        "sourceArchiveFile": "C:/Users/USER/Desktop/AP------/.tmp/archive/source-batch-20261006/high/math2/20_매산고_2학기_기말_고2_수학II/20_매산고_2학기_기말_고2_수학II.js",
+        "sourceOrdinal": 20,
+        "sourceFingerprint": "c07969052c8482955c82d705024a00eae9deb6c664d03a64ac29f49585b61734",
+        "contentSha256": "4a271682cc3f3e27761ea5a34dfd45cdb1409cef996a313a56341dad517da19a",
+        "choicesSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceParity": {
+        "status": "PASS",
+        "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "sourceManifestInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+        "originalPdfPath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/source/2020_매산고2_수2_2기말.pdf",
+        "originalPdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+        "lockedSourceEvidencePath": ".tmp/archive/qualification-20261006/20_매산고_2학기_기말_고2_수학II/provenance/archive/evidence/source-intake-math2-20261004/20_매산고_2학기_기말_고2_수학II.json",
+        "lockedSourceEvidenceSha256": "ecf3a6224bfe4e848df8148221839ef2d5fad6a0c2be67b9e3f56b476236e3a9",
+        "sourcePage": 6,
+        "sourceRead": "LOCKED_FULL_PAGE_PIXEL_REVIEW + direct page image review for q11; graph crops q10/q11 opened",
+        "contentExactParity": "PASS",
+        "choicesExactParity": "PASS",
+        "sourceTextExactParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "mode": "ORIGINAL",
+          "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+          "sourceQuestionPage": 6,
+          "sourceInputSha256": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "disposition": "LAYOUT_KEEP",
+          "sourceTextExactParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakReview": "Conditions/question/definition and separate formula blocks remain at meaning boundaries; existing line breaks preserved; formulas and units are not split.",
+          "reason": "Exact student text and choice parity hold; complete-sentence or condition-boundary line breaks keep the original atoms intact."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "smallBoardContinuityStatus": "PASS",
+          "solutionSha256": "ffca0cc16e6ba3b03260b14f1770a8384e6dfdaae83b9423104e24e2006b613a",
+          "primaryMethod": "정수점 함수값을 복원한 뒤 사차식 계수방정식을 풀어 끝점 도함수 산출",
+          "decisiveSteps": [
+            "t=4-x, A,B,C,D",
+            "정수점 함수값을 복원한 뒤 사차식 계수방정식을 풀어 끝점 도함수 산출"
+          ],
+          "reason": "Equations, conditions, intermediate values, substitutions, and conclusion are separated at decision boundaries."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "수학II",
+          "curriculumVersion": "2015 revised curriculum (2020 grade 11 cohort)",
+          "standardUnitKey": "H15-M2-03",
+          "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+          "primaryMethod": "정수점 함수값을 복원한 뒤 사차식 계수방정식을 풀어 끝점 도함수 산출",
+          "decisiveStep": "t=4-x, A,B,C,D",
+          "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+          "templateKey": "TPL_AVERAGE_RATE_DERIVATIVE_LINK",
+          "globalCanonical": "ACTIVE",
+          "rpmCrosswalk": "DIRECT_ACTIVE/ACTIVE",
+          "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+          "unitAuthorityPath": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "rpmAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "reason": "Source + independently solved decisive method; selected current ACTIVE PT/TPL and curriculum parent. Exact 2015 crosswalk checked; unresolved exact binding is recorded as metadata-only gap where applicable."
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessityStatus": "AUDITED",
+          "disposition": "NO_ADDITIONAL_SOLUTION_VISUAL_NEEDED",
+          "problemImageRetained": false,
+          "problemImageSha256": null,
+          "solutionVisualNeeded": false,
+          "reason": "The decisive calculations are one-dimensional algebraic, derivative, or integral steps; an additional diagram would not encode a missing mathematical relation."
+        }
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015 revised high-school curriculum; applicable 2020 grade 11 Mathematics II",
+        "standardUnitKey": "H15-M2-03",
+        "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+        "authorityPaths": [
+          "docs/rules/02_PIPELINES/해설프로토콜.md",
+          "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
+        ],
+        "concepts": [
+          {
+            "item": "합성 절댓값 함수, 평균변화율, 사차다항식 결정, 도함수",
+            "status": "ALLOWED"
+          }
+        ],
+        "formulas": [
+          {
+            "item": "평균변화율, 다항식 계수비교, 도함수",
+            "status": "ALLOWED"
+          }
+        ],
+        "notations": [
+          {
+            "item": "t=4-x, A,B,C,D",
+            "status": "ALLOWED"
+          }
+        ],
+        "methods": [
+          {
+            "item": "정수점 함수값을 복원한 뒤 사차식 계수방정식을 풀어 끝점 도함수 산출",
+            "status": "ALLOWED"
+          }
+        ],
+        "outOfCurriculumDependencies": [],
+        "curriculumStatus": "ALLOWED",
+        "inventoryDecisionEvidence": {
+          "version": "2015 curriculum / 2020 grade 2 cohort",
+          "standardCourse": "수학II",
+          "standardUnitKey": "H15-M2-03",
+          "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+          "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+          "curriculumRule": "docs/rules/02_PIPELINES/해설프로토콜.md CURRENT HARD GATE A",
+          "decision": "ALLOWED",
+          "reason": "Each method was checked against the listed 2015 Math II derivative, polynomial, and/or definite-integral scope. No later-course dependency is used."
+        }
+      },
+      "verdict": "PASS",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ffca0cc16e6ba3b03260b14f1770a8384e6dfdaae83b9423104e24e2006b613a"
+    }
+  ],
+  "artifactDispositions": {
+    "artifactSha": "4e8d56e815f15f33687d3dbde49b57c7f38834e1",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": ""
+      }
+    ]
+  },
+  "closure": {
+    "result": "PASS_AFTER_REPAIR",
+    "firstMissingClosureStep": "NONE",
+    "exactReason": "Q11 was repaired at one semantic locus under the current source correction protocol; independent math confirms one answer choice and current curriculum scope."
+  },
+  "curriculumAuthorities": {
+    "scope": "2020 school year grade 2 final exam; 2015 revised high-school Mathematics II",
+    "implementationEvidence": {
+      "title": "2015 개정 교육과정의 적용시기 안내",
+      "path": "NCIC official rollout notice, bwrId 902",
+      "observation": "High-school grade 2 adopted in 2019 and grade 3 in 2020; 2020 grade 2 follows the 2015 curriculum."
+    },
+    "courseAuthority": {
+      "title": "2015개정 수학II — RPM Primary Canonical Draft v0.3",
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+      "scope": "2015 / high / 수학II; differentiation and integration L1/L2"
+    },
+    "methodRule": {
+      "path": "docs/rules/02_PIPELINES/해설프로토콜.md",
+      "section": "CURRENT HARD GATE A; item-level concepts/formulas/notations/methods"
+    }
+  },
+  "sourceModeSummary": "18 ORIGINAL; q11 and q13 AUDITED_REPAIR",
+  "goldenCalibrationUse": "SUPPLEMENTAL_CORRECTION_REVIEW; original incomplete preflight preserved separately; no retroactive preflight claim",
+  "correctionReview": {
+    "status": "COMPLETED_AFTER_SAMPLE_READ",
+    "sampleVisualsAdded": [
+      "25_매산여고 q7-solution.svg",
+      "25_제일고 q06-solution.svg"
+    ],
+    "changedLocusReviewed": [
+      {
+        "qid": 13,
+        "artifactField": "solution",
+        "review": "Reread final solution after supplemental samples. Auxiliary function from the secant line is explained, substitutions g(a)=0 and g(b)=0 are separate visible steps, and the conclusion selects ④; no additional solution edit required."
+      }
+    ],
+    "targetChangedQidsAfterCorrectionReview": []
+  },
+  "sourceCorrections": [
+    {
+      "repairClass": "ONE_SEMANTIC_LOCUS_REPAIR",
+      "recordType": "AUDITED_SOURCE_REPAIR",
+      "originalValue": "\\displaystyle\\int_{-3}^3f(x),dx=2\\displaystyle\\int_0^3f(x),dx",
+      "repairedValue": "\\displaystyle\\int_{-3}^3f'(x),dx=2\\displaystyle\\int_0^3f'(x),dx",
+      "repairReason": "The complete stem, graph, three claims, and choices identify the sole omitted prime in statement ㄷ. Only f′ is shown as even; replacing both integrands within that single enumerated claim makes the symmetry assertion decidable, preserves the graph-analysis strategy and Math II unit, and creates no new condition or option.",
+      "independentMathResult": {
+        "a": "TRUE; f′ sign changes -→+ at -3 and 1, +→- at -1 and 3, giving four extrema.",
+        "b": "FALSE; f′<0 on (0,1), so f is not increasing throughout (0,2).",
+        "c": "TRUE_AFTER_REPAIR; f′ is even, so the integral over [-3,3] is twice the integral over [0,3].",
+        "trueStatements": [
+          "ㄱ",
+          "ㄷ"
+        ],
+        "answer": "③"
+      },
+      "affectedFields": [
+        "content",
+        "answer",
+        "solution"
+      ],
+      "postRepairAnswerCardinality": 1,
+      "postRepairTrueStatementSet": [
+        "ㄱ",
+        "ㄷ"
+      ],
+      "sourceSha": "a5caec6efb7e327b3df0fbe770b2940f9ee4597f000bb93d8ca3493f7b270ae9",
+      "sourcePdfSha256": "6bfbf502cdb094e282ad2e59b9ecbe3fba9d7d46d6efa98e987e8e3431d4b96d",
+      "sourcePage": 3,
+      "questionUid": "20_매산고_2학기_기말_고2_수학II:q11",
+      "originalSourceFingerprint": "ce5fdcd04b052879868a66554b262fa770c0a221926e17024e327607ebd379e9",
+      "repairUniqueness": "The alternate repair f even would require changes in two independent loci (the premise and graph label), while changing unspecified function values cannot determine ㄷ. The f′ integrand repair is the single-locus repair directly supported by the supplied evenness condition."
+    }
+  ]
+}
