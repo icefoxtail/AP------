@@ -175,7 +175,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 점 $(3,5)$, $(1,-1)$을 지나는 직선의 방정식을 $y=ax+b$라 할 때, $3a+b$의 값을 구하면? (단, $a,b$는 상수) [3.6점]",
+    "content": "두 점 $(3,5)$, $(1,-1)$을 지나는 직선의 방정식을<br>$y=ax+b$라 할 때, $3a+b$의 값을 구하면? (단, $a,b$는 상수) [3.6점]",
     "choices": [
       "1",
       "2",
@@ -279,7 +279,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 집합 $A=\\{1,2,3,a\\}$, $B=\\{2,4,6\\}$에 대하여 집합 $X=\\{x+y\\mid x\\in A,\\ y\\in B\\}$라 할 때, $n(X)=8$이 되도록 하는 자연수 $a$의 최댓값을 구하면? (단, $a\\notin\\{1,2,3\\}$이다.) [3.7점]",
+    "content": "두 집합 $A=\\{1,2,3,a\\}$, $B=\\{2,4,6\\}$에 대하여 집합 $X=\\{x+y\\mid x\\in A,\\ y\\in B\\}$라 할 때, $n(X)=8$이 되도록 하는 자연수 $a$의 최댓값을 구하면?<br>(단, $a\\notin\\{1,2,3\\}$이다.) [3.7점]",
     "choices": [
       "8",
       "7",
@@ -661,7 +661,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "세 집합 $A$, $B$, $C$가 다음 &lt;조건&gt;을 만족시킨다.<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $n(A\\cup B)=n(A)+n(B)$<br>(나) $n((A\\cup C)\\cap(B\\cup C))=3\\times n(B-C)$</div>$n(B\\cup C)=16$일 때, $n(C)$의 값을 구하면? [4.2점]",
+    "content": "세 집합 $A$, $B$, $C$가 다음 &lt;조건&gt;을 만족시킨다.<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $n(A\\cup B)=n(A)+n(B)$<br>(나) $n((A\\cup C)\\cap(B\\cup C))=3\\times n(B-C)$</div><br>$n(B\\cup C)=16$일 때, $n(C)$의 값을 구하면? [4.2점]",
     "choices": [
       "4",
       "8",
@@ -711,7 +711,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "세 직선 $l:x-2y+2=0$, $m:2x+y-1=0$, $n:3x-y+11=0$으로 둘러싸인 삼각형의 외접원의 넓이를 구하면? [4.2점]",
+    "content": "세 직선 $l:x-2y+2=0$, $m:2x+y-1=0$,<br>$n:3x-y+11=0$으로 둘러싸인 삼각형의 외접원의 넓이를 구하면? [4.2점]",
     "choices": [
       "$6\\pi$",
       "$7\\pi$",
@@ -767,7 +767,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 자연수 $k$, $m(k\\ge m)$에 대하여 전체집합 $U=\\{x\\mid x$는 $k$ 이하의 자연수$\\}$의 두 부분집합 $A=\\{x\\mid x$는 $m$의 약수$\\}$, $B$가 다음 &lt;조건&gt;을 만족시킨다.<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $B-A=\\{3,8\\}$, $n(A\\cup B^c)=8$<br>(나) 집합 $A$의 모든 원소의 합과 집합 $B$의 모든 원소의 합은 서로 같다.</div>집합 $A^c\\cap B^c$의 모든 원소의 합을 구하면? [4.3점]",
+    "content": "두 자연수 $k$, $m(k\\ge m)$에 대하여 전체집합<br>$U=\\{x\\mid x$는 $k$ 이하의 자연수$\\}$의 두 부분집합<br>$A=\\{x\\mid x$는 $m$의 약수$\\}$, $B$가 다음 &lt;조건&gt;을 만족시킨다.<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $B-A=\\{3,8\\}$, $n(A\\cup B^c)=8$<br>(나) 집합 $A$의 모든 원소의 합과 집합 $B$의 모든 원소의 합은 서로 같다.</div>집합 $A^c\\cap B^c$의 모든 원소의 합을 구하면? [4.3점]",
     "choices": [
       "24",
       "25",
@@ -821,7 +821,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "집합 $X=\\{1,2,3,4,5,6,7,8,9,10\\}$이 있다. 다음 &lt;조건&gt;을 만족시키는 집합 $X$의 두 부분집합 $A$, $B$에 대하여 집합 $B-A$의 모든 원소의 합의 최솟값을 구하면? [4.3점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $n(A\\cap B)=2$, $n(B-A)=3$<br>(나) $p\\in A\\cap B$이면 $\\dfrac{p+1}{2}\\in B-A$이다.<br>(다) $q\\in B-A$이면 $q+4\\in A$이다.</div>",
+    "content": "집합 $X=\\{1,2,3,4,5,6,7,8,9,10\\}$이 있다.<br>다음 &lt;조건&gt;을 만족시키는 집합 $X$의 두 부분집합 $A$, $B$에 대하여 집합 $B-A$의 모든 원소의 합의 최솟값을 구하면? [4.3점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $n(A\\cap B)=2$, $n(B-A)=3$<br>(나) $p\\in A\\cap B$이면 $\\dfrac{p+1}{2}\\in B-A$이다.<br>(다) $q\\in B-A$이면 $q+4\\in A$이다.</div>",
     "choices": [
       "6",
       "7",
@@ -1104,7 +1104,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형"
     ],

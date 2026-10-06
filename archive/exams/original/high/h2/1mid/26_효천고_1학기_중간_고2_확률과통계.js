@@ -1137,7 +1137,7 @@ window.questionBank = [
       "past_exam"
     ],
     "wide": false,
-    "content": "두 사건 $A,B$에 대하여 $P(A\\mid B)=\\dfrac{1}{5}$, $P(B\\mid A)=\\dfrac{2}{3}$일 때, $P(A\\cap B)$의 최댓값을 $\\dfrac{q}{p}$라 할 때, $p+q$의 값을 구하고 그 과정을 서술하시오. [5점]\n(단, $p,q$는 서로소인 자연수이다.)",
+    "content": "두 사건 $A,B$에 대하여 $P(A\\mid B)=\\dfrac{1}{5}$,<br>$P(B\\mid A)=\\dfrac{2}{3}$일 때, $P(A\\cap B)$의 최댓값을 $\\dfrac{q}{p}$라 할 때, $p+q$의 값을 구하고 그 과정을 서술하시오. [5점]\n(단, $p,q$는 서로소인 자연수이다.)",
     "choices": [],
     "answer": "13",
     "solution": "[키포인트] 조건부확률을 $P(A\\cap B)$로 나타낸 뒤, 전체확률 $P(A\\cup B)\\le1$을 이용한다.\n조건 정리: $x=P(A\\cap B)$라 두면 $P(A\\mid B)=\\dfrac{x}{P(B)}=\\dfrac15$, $P(B\\mid A)=\\dfrac{x}{P(A)}=\\dfrac23$이다.\n풀이 방향: $P(A)$와 $P(B)$를 $x$로 표현하고, 합사건의 확률이 $1$을 넘을 수 없다는 조건에서 $x$의 최댓값을 구한다.\n정석 풀이: $\\dfrac{x}{P(B)}=\\dfrac15$이므로 $P(B)=5x$이다. 또 $\\dfrac{x}{P(A)}=\\dfrac23$이므로 $P(A)=\\dfrac32x$이다. 따라서 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=\\dfrac32x+5x-x=\\dfrac{11}{2}x$이다. 확률은 $1$ 이하이므로 $\\dfrac{11}{2}x\\le1$, 즉 $x\\le\\dfrac{2}{11}$이다. 최댓값은 $\\dfrac{2}{11}$이므로 $q=2$, $p=11$이고 $p+q=13$이다.\n따라서 구하는 값은 $13$이다.",
