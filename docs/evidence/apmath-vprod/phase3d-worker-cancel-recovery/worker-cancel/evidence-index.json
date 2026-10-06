@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "PHASE3D_WORKER_CANCEL_EVIDENCE_INDEX_v1",
+  "classification": "RESUME_CACHE_RECOVERY_NEGATIVE; synthetic isolated temp workspace; no student candidate modified",
+  "entries": [
+    {
+      "path": "logs/worker-cancel-focused-10x.log",
+      "bytes": 2539,
+      "sha256": "sha256:4421ba22435ea3e7a5b9115129fd3a18e6a0be1cb6aa1c79132e81f3d53b32b7",
+      "command": "node --test --test-name-pattern=\"cancellation terminates its worker\" archive/tools/geometry-equation/tests/worker-cancel-recovery.test.mjs (10 repetitions)"
+    },
+    {
+      "path": "logs/phase3d-cancel-node-regression.log",
+      "bytes": 5999,
+      "sha256": "sha256:acbe57fdc2678ab8ce6ae51209af94a86c945fc7ffb0d3fed2c71289e3368b49",
+      "command": "node --test Phase3D six test files plus worker-cancel-recovery and repair-budget-replay"
+    },
+    {
+      "path": "logs/phase3d-cancel-python-regression.log",
+      "bytes": 337,
+      "sha256": "sha256:c6bc80df887a868c0a12ce511e095db9e29c3f687ea570a96073379488327212",
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py"
+    }
+  ],
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 2163,
+      "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-cancel-recovery.test.mjs",
+      "bytes": 3472,
+      "sha256": "sha256:99f03033492c0f7549706d40e9639a0be8070e0b633fd613990d5e2e170d7477"
+    }
+  ]
+}
