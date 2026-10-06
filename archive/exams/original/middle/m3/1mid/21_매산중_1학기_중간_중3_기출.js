@@ -94,14 +94,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 무리수인 것은? (4점)",
     "choices": [
-      "2.111222...",
-      "$2-\\sqrt{49}$",
+      "2.111222",
+      "$-\\sqrt{49}$",
       "$\\sqrt{\\frac{1}{1000}}$",
       "$\\sqrt{25}-9$",
-      "0.29"
+      "$0.\\dot{2}\\dot{9}$"
     ],
     "answer": "3",
-    "solution": "③ $\\sqrt{\\frac{1}{1000}} = \\frac{1}{10\\sqrt{10}}$로 근호가 제거되지 않는 무리수임.",
+    "solution": "① $2.111222$는 유한소수이므로 유리수이다.\n② $-\\sqrt{49}=-7$, ④ $\\sqrt{25}-9=5-9=-4$는 정수이다.\n⑤ $0.2\\dot{9}=0.3$이므로 유리수이다.\n③ $\\sqrt{\\frac{1}{1000}}$에서 $1000$은 완전제곱수가 아니므로 무리수이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -124,7 +124,8 @@ window.questionBank = [
       "근호",
       "표해석",
       "조건해석",
-      "계산"
+      "계산",
+      "표"
     ],
     "wide": false,
     "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
@@ -140,7 +141,9 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/21_매산중_1학기_중간_중3_기출/q04.png",
+    "imageAlt": "제곱근표: 4.2부터 4.4까지 행, 0부터 4까지 열의 제곱근 근삿값"
   },
   {
     "id": 5,
@@ -164,14 +167,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음에서 두 수의 대소 관계가 옳지 않은 것은? (4점)",
     "choices": [
-      "$\\sqrt{2}-3 < \\sqrt{3}-3$",
-      "$1 < \\sqrt{10}-2$",
-      "$\\sqrt{12}+1 < \\sqrt{13}+1$",
-      "$3-\\sqrt{2} < \\sqrt{(-4)^2}$",
-      "$\\sqrt{15}-\\sqrt{10} < -\\sqrt{10}+4$"
+      "$\\sqrt{2}-3<\\sqrt{3}-3$",
+      "$1<\\sqrt{10}-2$",
+      "$\\sqrt{12}+1<\\sqrt{13}+1$",
+      "$6-\\sqrt2<\\sqrt{(-4)^2}$",
+      "$\\sqrt{15}-\\sqrt{10}<-\\sqrt{10}+4$"
     ],
-    "answer": "2",
-    "solution": "② $1 < \\sqrt{10}-2 \\implies 3 < \\sqrt{10} \\implies \\sqrt{9} < \\sqrt{10}$ (참). 정답지 번호 대조 필요.",
+    "answer": "4",
+    "solution": "각 대소 관계를 확인한다.\n① $\\sqrt2<\\sqrt3$이므로 참이다.\n② $\\sqrt{10}>3$이므로 $\\sqrt{10}-2>1$이다.\n③ $12<13$이므로 $\\sqrt{12}+1<\\sqrt{13}+1$이다.\n④ $\\sqrt{(-4)^2}=4$이고 $6-\\sqrt2>4$이므로 거짓이다.\n⑤ $\\sqrt{15}<4$이므로 $\\sqrt{15}-\\sqrt{10}<4-\\sqrt{10}$이다.\n따라서 옳지 않은 것은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -316,7 +319,9 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/21_매산중_1학기_중간_중3_기출/q09.png",
+    "imageAlt": "수직선 위의 한 변이 1인 정사각형 ABCD와 대각선, 점 P와 Q"
   },
   {
     "id": 10,
@@ -373,14 +378,14 @@ window.questionBank = [
     "wide": false,
     "content": "$(a-2b)(3a+2 b)$를 전개하면? (3점)",
     "choices": [
-      "$3a^2-4ab+4b^2$",
-      "$3a^2-4ab-4b^2$",
+      "$-3a^2-4ab+4b^2$",
+      "$-3a^2-4ab+4b^2$",
       "$3a^2+4ab-4b^2$",
       "$3a^2-4ab-4b^2$",
       "$3a^2+4ab+4b^2$"
     ],
-    "answer": "2",
-    "solution": "$3a^2 + 2ab - 6ab - 4b^2 = 3a^2 - 4ab - 4b^2$.",
+    "answer": "4",
+    "solution": "전개하면\n$(a-2b)(3a+2b)=3a^2+2ab-6ab-4b^2$\n$=3a^2-4ab-4b^2$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
