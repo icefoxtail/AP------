@@ -829,7 +829,7 @@ window.questionBank = [
     "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
     "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
     "crossConceptKeys": ["CC_COMPLETE_SQUARE", "CC_VERTEX", "CC_QUADRATIC_FUNCTION"],
-    "conditionKeys": ["COND_RANGE"],
+    "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
