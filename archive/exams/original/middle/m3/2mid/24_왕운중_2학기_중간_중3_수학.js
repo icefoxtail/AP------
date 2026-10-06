@@ -73,8 +73,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "도형"
+      "객관식"
     ],
     "wide": false,
     "content": "다음 그림과 같은 규칙으로 바둑돌을 배열하려고 한다. $x$단계에서 사용한 바둑돌의 개수를 $y$개라고 할 때, $y$를 $x$의 식으로 나타내면 $y=ax^2+bx+c$이다. 이때, $a-b-c$의 값을 구하면? [4점]",
