@@ -81,3 +81,10 @@ assert.rejects(() => drainMasterContinuations({
 }), /MASTER_DUPLICATE_CONTINUATION/);
 
 console.log('ARCHIVE_STAGE_RUNTIME_V2_PASS');
+
+const gptState = buildStageState({stage:'R1',workComplete:true,qualityContractVersion:'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006',executionLine:'GPT_SCHEDULED',campaignId:'H1_GPT2_20261006',stream:'A'});
+assert.equal(gptState.campaignId,'H1_GPT2_20261006');
+assert.equal(gptState.stream,'A');
+assert.throws(()=>buildStageState({stage:'R1',qualityContractVersion:'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006',executionLine:'GPT_SCHEDULED'}),/STAGE_GPT_CAMPAIGN_ID_REQUIRED/);
+const gptContinuation=buildContinuation({stage:'R2',qualityContractVersion:'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006',executionLine:'GPT_SCHEDULED',campaignId:'H1_GPT2_20261006',stream:'B',examUid:'gpt-1',inputArtifactSha:'in',finalArtifactSha:'out',evidenceRef:'ev',completedStep:'work',firstMissingClosureStep:'validator',exactReason:'pending'});
+assert.equal(gptContinuation.stream,'B');
