@@ -25,7 +25,7 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "직육면체의 꼭짓점은\na=8개\n\n모서리는\nb=12개\n\n따라서\na+b=8+12=20\n\n정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q1.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -65,7 +65,7 @@ window.questionBank = [
       "$10$개"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "원 위의 5점 중 두 점을 고르면 직선 하나가 정해진다.\n\n직선의 개수는\n\\dfrac{5\\times4}{2}=10\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q2.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -105,7 +105,7 @@ window.questionBank = [
       "$130^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "맞꼭지각이므로\na=b\n\na+b=120^\\circ이므로\n2a=120^\\circ\n\na=b=60^\\circ\n\nx는 a와 한 직선 위의 이웃한 각이므로\nx=180^\\circ-60^\\circ=120^\\circ\n\n따라서 정답은 ③이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q3.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -145,7 +145,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "점 A(5,4)와 x축 사이의 거리는\na=|4|=4\n\n점 B(2,7)와 y축 사이의 거리는\nb=|2|=2\n\n따라서\na+b=4+2=6\n\n정답은 ①이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q4.png",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
@@ -185,7 +185,7 @@ window.questionBank = [
       "$45^\\circ$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "\\angle EOD=t^\\circ라 하자.\n\nA,O,D가 한 직선 위에 있으므로\n\\angle AOE=180^\\circ-t\n\n조건에서\n180^\\circ-t=2t\n\n3t=180^\\circ\n\nt=60^\\circ\n\nOF\\perp AD이므로\n\\angle FOD=90^\\circ\n\n따라서\n\\angle FOE=90^\\circ-60^\\circ=30^\\circ\n\n맞꼭지각에 의해\n\\angle BOC=30^\\circ\n\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q5.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -225,7 +225,7 @@ window.questionBank = [
       "모서리 $AB$와 꼬인 위치에 있는 모서리는 $2$개이다."
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "삼각기둥의 모서리와 면의 관계를 하나씩 확인한다.\n\n① 면 ABC와 평행한 면은 1개\n② BE와 수직인 면이 3개는 아님\n③ BE와 평행한 모서리가 3개는 아님\n④ EF와 수직으로 만나는 모서리는 3개\n⑤ AB와 꼬인 위치인 모서리가 2개는 아님\n\n따라서 옳은 것은 ④이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q6.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -263,7 +263,7 @@ window.questionBank = [
       "주어진 선분의 길이를 옮길 때는 컴퍼스를 사용한다."
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "작도에서는 눈금 없는 자와 컴퍼스를 사용한다.\n\n선분을 연장 → 눈금 없는 자\n원 그리기 → 컴퍼스\n선분 길이 옮기기 → 컴퍼스\n\n눈금 없는 자로 선분의 길이를 재지는 않는다.\n\n따라서 옳지 않은 것은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -302,7 +302,7 @@ window.questionBank = [
       "$149^\\circ$"
     ],
     "answer": "①",
-    "solution": "첫 번째와 두 번째 꺾인 선분이 이루는 각은 180°−150°=30°이다. 평행선 l,m에서 옮긴 각이 2x와 3x이므로 3x−2x=30°, 따라서 x=30°이고 3x=90°이다. 두 번째 선분은 l,m,n에 수직이므로 마지막 선분과 n이 이루는 55°를 이용하면 y=180°−(90°−55°)=145°이다.",
+    "solution": "l\\parallel m\\parallel n이다.\n\n첫 번째 꺾인 점에서\n두 선분의 방향 차는\n\n180^\\circ-150^\\circ=30^\\circ\n\n평행선에서 옮긴 각이\n2x,\\ 3x이므로\n\n3x-2x=30^\\circ\n\nx=30^\\circ\n\n따라서\n3x=90^\\circ\n\n두 번째 선분은 평행선들에 수직이다.\n\n마지막 선분이 n과 이루는 각이 55^\\circ이므로\n작은 각은\n\n90^\\circ-55^\\circ=35^\\circ\n\n표시된 y는 그 보각이므로\n\ny=180^\\circ-35^\\circ\n=145^\\circ\n\n정답은 ①이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q8.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -346,7 +346,7 @@ window.questionBank = [
       "$36^\\circ$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "AD\\parallel BC이다.\n\n접는 선 FG가 윗변과 이루는 각에서\n\\angle(\\text{GF,수평})=70^\\circ\n\n평행선이므로\nx=70^\\circ\n\n접으면 원래 윗변과 접힌 변이 FG를 기준으로 같은 각을 이루므로\nG에서 접힌 변의 방향은 대칭이다.\n\n따라서\ny=40^\\circ\n\n그러므로\nx-y=70^\\circ-40^\\circ=30^\\circ\n\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q9.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -386,7 +386,7 @@ window.questionBank = [
       "$\\angle AOB=\\angle CPD$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "각 복사 작도에서는\n\nOA=OB=PC=PD\n(같은 반지름)\n\n또\nAB=CD\n(컴퍼스로 같은 현의 길이를 옮김)\n\n따라서\n\\angle AOB=\\angle CPD\n\n하지만\nPC=CD\n라는 조건은 작도에서 나오지 않는다.\n\n따라서 옳지 않은 것은 ④이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q10.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -424,7 +424,7 @@ window.questionBank = [
       "$\\overline{BC}$, $\\angle C$"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "AB의 길이가 이미 주어져 있다.\n\n① AC,\\angle A → SAS\n② BC,CA → SSS\n③ \\angle B,\\angle C → 한 변과 양 끝 각\n④ \\angle A,\\angle B → 한 변과 양 끝 각\n\n⑤ BC,\\angle C는\n두 변과 끼인각이 아닌 한 각이 주어진 경우이므로\n삼각형이 하나로 정해진다고 할 수 없다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -463,7 +463,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "세 변의 길이를\na\\le b\\le c\n라 하자.\n\na+b+c=20,\\quad a\\ge4,\\quad a+b>c\n\n가능한 경우는\n\n(4,7,9)\n(4,8,8)\n(5,6,9)\n(5,7,8)\n(6,6,8)\n(6,7,7)\n\n따라서 모두 6개이고 정답은 ①이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q12.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -503,7 +503,7 @@ window.questionBank = [
       "$\\triangle ACD\\equiv\\triangle BEC$"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "\\triangle ABC와 \\triangle ECD는 정삼각형이므로\n\nAC=BC,\\quad CD=CE\n\n또 B,C,D가 한 직선 위이므로\n\n\\angle ACD\n=180^\\circ-60^\\circ\n=120^\\circ\n\n\\angle BCE\n=180^\\circ-60^\\circ\n=120^\\circ\n\n따라서\n\\triangle ACD\\equiv\\triangle BCE\n(SAS)\n\n합동의 올바른 대응 순서는\nACD \\leftrightarrow BCE이다.\n\n\\triangle ACD\\equiv\\triangle BEC라고 쓴 ⑤는 대응 순서가 맞지 않는다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q13.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -543,7 +543,7 @@ window.questionBank = [
       "$22^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "\\triangle DCE가 정삼각형이고\nB,D,E가 한 직선 위이므로\n\n\\angle BDC=180^\\circ-60^\\circ=120^\\circ\n\n\\triangle BCD에서\n\n\\angle CBD\n=180^\\circ-120^\\circ-42^\\circ\n=18^\\circ\n\nC를 중심으로 60^\\circ만큼 같은 방향으로 보면\n정삼각형 ABC에서 B가 A로,\n정삼각형 DCE에서 D가 E로 대응한다.\n\n따라서 직선 BD와 AE도 같은 만큼 방향이 바뀌므로\n\n\\angle CAE=\\angle CBD=18^\\circ\n\n정답은 ③이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -581,7 +581,7 @@ window.questionBank = [
       "한 꼭짓점에서 그을 수 있는 대각선의 개수는 $9$이다."
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "조건을 만족하는 도형은 정십이각형이다.\n\n한 외각\n=\\dfrac{360^\\circ}{12}\n=30^\\circ\n\n내각의 합\n=(12-2)\\times180^\\circ\n=1800^\\circ\n\n한 꼭짓점에서 그을 수 있는 대각선\n=12-3=9\n\n전체 대각선\n=\\dfrac{12\\times9}{2}\n=54\n\n따라서 대각선이 60개라고 한 ④가 옳지 않다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -620,7 +620,7 @@ window.questionBank = [
       "$18^\\circ$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "왼쪽 삼각형에서 교점의 각을 z라 하면\n\n40^\\circ+45^\\circ+z=180^\\circ\n\nz=95^\\circ\n\n맞꼭지각에 의해 오른쪽 삼각형의 교점 각도\n95^\\circ\n\n따라서\n\n95^\\circ+60^\\circ+y=180^\\circ\n\ny=25^\\circ\n\nx는 95^\\circ와 한 직선 위의 이웃한 각이므로\n\nx=180^\\circ-95^\\circ=85^\\circ\n\n따라서\n\nx-y=85^\\circ-25^\\circ=60^\\circ\n\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q16.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -660,7 +660,7 @@ window.questionBank = [
       "$135^\\circ$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "점 O에서 표시된 작은 각을 x라 하자.\n\n사각형 A-B-O-C의 O에서의 안쪽 각은\n360^\\circ-x\n\n사각형의 내각의 합을 이용하면\n\n85^\\circ+20^\\circ+25^\\circ+(360^\\circ-x)=360^\\circ\n\n130^\\circ-x=0\n\nx=130^\\circ\n\n따라서 정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q17.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -698,7 +698,7 @@ window.questionBank = [
       "$24^\\circ$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "n각형의 내각의 합과 외각의 합을 더하면\n\n(n-2)180^\\circ+360^\\circ\n=180n^\\circ\n\n문제에서\n180n=1440\n\nn=8\n\n따라서 한 외각의 크기는\n\n\\dfrac{360^\\circ}{8}\n=45^\\circ\n\n정답은 ①이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -735,7 +735,7 @@ window.questionBank = [
       "$170^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "한 변 위의 점에서 각 꼭짓점으로 선분을 그어\n생기는 삼각형의 수가 14개이므로\n\nn-1=14\n\nn=15\n\n정십오각형의 한 외각은\n\n\\dfrac{360^\\circ}{15}\n=24^\\circ\n\n따라서 한 내각은\n\n180^\\circ-24^\\circ\n=156^\\circ\n\n정답은 ③이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -772,7 +772,7 @@ window.questionBank = [
       "십각형"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "n각형이라 하면\n\nA=n\n\n한 꼭짓점에서 그을 수 있는 대각선\nB=n-3\n\n그 대각선들로 생기는 삼각형\nC=n-2\n\n따라서\n\nA-B+C\n=n-(n-3)+(n-2)\n=n+1\n\nn+1=8\n\nn=7\n\n따라서 칠각형이고 정답은 ②이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -811,7 +811,7 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "②",
-    "solution": "오각형의 한 외각씩의 합은 360°이다. 표시된 외각은 60°, 80°, 65°, 90°, x이므로 x=360°−(60°+80°+65°+90°)=65°이다.",
+    "solution": "다각형의 한 외각씩의 합은\n360^\\circ\n\n표시된 외각은\n\n60^\\circ,\\ 80^\\circ,\\ 65^\\circ,\\ 90^\\circ,\\ x\n\n따라서\n\nx\n=360^\\circ-(60^\\circ+80^\\circ+65^\\circ+90^\\circ)\n=65^\\circ\n\n정답은 ②이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q21.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
@@ -855,7 +855,7 @@ window.questionBank = [
       "$\\angle e+\\angle f=156^\\circ$"
     ],
     "answer": "③",
-    "solution": "정오각형의 내각은 108°, 외각은 72°이고 정육각형의 내각은 120°, 외각은 60°이다. 공통 꼭짓점에서 c=360°−108°−120°=132°이고 d=72°이므로 c+d=204°로 208°가 아니다. 따라서 옳지 않은 것은 ③이다.",
+    "solution": "정오각형의 한 내각은\n108^\\circ\n\n정육각형의 한 내각은\n120^\\circ\n\n따라서 공통 꼭짓점에서\n\nc=360^\\circ-108^\\circ-120^\\circ\n=132^\\circ\n\n또 정오각형의 한 외각은\n\nd=180^\\circ-108^\\circ\n=72^\\circ\n\n그러므로\n\nc+d=132^\\circ+72^\\circ\n=204^\\circ\n\n208^\\circ라고 한 ③이 옳지 않다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q22.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
@@ -894,7 +894,7 @@ window.questionBank = [
     "content": "서술형1. 아래 그림과 같이 $l\\parallel m$일 때, $\\angle x$의 크기를 구하시오. [5점]",
     "choices": [],
     "answer": "$50^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $50^\\circ$이다.",
+    "solution": "l\\parallel m이므로 표시된 두 각은 같은 쪽 내각 관계이다.\n\n(2x+50^\\circ)+(x-20^\\circ)=180^\\circ\n\n3x+30=180\n\n3x=150\n\nx=50^\\circ\n\n따라서 답은 50^\\circ이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q23.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -929,7 +929,7 @@ window.questionBank = [
     "content": "서술형2. 아래 그림과 같이 $\\overline{AB}\\parallel\\overline{ED}$, $\\overline{AC}\\parallel\\overline{FD}$이고, $\\overline{BF}=\\overline{CE}$이다.",
     "choices": [],
     "answer": "(1) $\\triangle ABC\\equiv\\triangle DEF$ (2) 한 변의 길이와 그 양 끝 각의 크기가 각각 같은 경우; $\\overline{BC}=\\overline{EF}$, $\\angle ABC=\\angle DEF$, $\\angle ACB=\\angle DFE$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) $\\triangle ABC\\equiv\\triangle DEF$ (2) 한 변의 길이와 그 양 끝 각의 크기가 각각 같은 경우; $\\overline{BC}=\\overline{EF}$, $\\angle ABC=\\angle DEF$, $\\angle ACB=\\angle DFE$이다.",
+    "solution": "B,F,C,E가 한 직선 위에 있고\nBF=CE이므로\n\nBC=BF+FC\nEF=EC+CF\n\n따라서\nBC=EF\n\n또\nAB\\parallel ED이므로\n\\angle ABC=\\angle DEF\n\nAC\\parallel FD이므로\n\\angle ACB=\\angle DFE\n\n따라서 한 변과 그 양 끝 각이 각각 같으므로\n\n\\triangle ABC\\equiv\\triangle DEF\n(ASA 합동)이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q24.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -964,7 +964,7 @@ window.questionBank = [
     "content": "서술형3. 한 내각의 크기가 $162^\\circ$인 정다각형의 대각선의 개수를 구하려고 한다. 다음 물음에 답하시오. (1)~(2) [5점]<br>(1) 위에서 설명된 정다각형의 이름을 쓰시오. (정답만 쓰기:2점)<br>(2) 문제에서 설명된 정다각형의 대각선의 개수를 구하는 풀이 과정과 답을 쓰시오. (3점)",
     "choices": [],
     "answer": "(1) 정이십각형 (2) $170$개",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 (1) 정이십각형 (2) $170$개이다.",
+    "solution": "한 내각이 162^\\circ이므로\n한 외각은\n\n180^\\circ-162^\\circ\n=18^\\circ\n\n변의 수는\n\nn=\\dfrac{360^\\circ}{18^\\circ}\n=20\n\n따라서 정이십각형이다.\n\n대각선의 개수는\n\n\\dfrac{20(20-3)}{2}\n=\\dfrac{20\\times17}{2}\n=170\n\n(1) 정이십각형\n(2) 170개",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -997,7 +997,7 @@ window.questionBank = [
     "content": "서술형4. 내각의 크기의 비가 $3:5:5:6:8$인 오각형에서 가장 작은 내각의 크기를 $a^\\circ$, 가장 작은 외각의 크기를 $b^\\circ$라고 할 때, $a+b$의 값을 구하려 한다. 다음 물음에 답하시오. (1)~(3) [5점]<br>(1) $a$를 구하는 풀이 과정과 답을 쓰시오. (2점)<br>(2) $b$를 구하는 풀이 과정과 답을 쓰시오. (2점)<br>(3) $a+b$의 값을 구하시오. (정답만 쓰기:1점)",
     "choices": [],
     "answer": "(1) $60^\\circ$ (2) $20^\\circ$ (3) $80^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 (1) $60^\\circ$ (2) $20^\\circ$ (3) $80^\\circ$이다.",
+    "solution": "오각형의 내각의 합은\n\n(5-2)\\times180^\\circ\n=540^\\circ\n\n내각의 비의 합은\n\n3+5+5+6+8=27\n\n한 부분은\n\n540^\\circ\\div27=20^\\circ\n\n가장 작은 내각\n\na=3\\times20^\\circ\n=60^\\circ\n\n가장 큰 내각은\n\n8\\times20^\\circ=160^\\circ\n\n따라서 가장 작은 외각은\n\nb=180^\\circ-160^\\circ\n=20^\\circ\n\n그러므로\n\na+b=60^\\circ+20^\\circ\n=80^\\circ",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
