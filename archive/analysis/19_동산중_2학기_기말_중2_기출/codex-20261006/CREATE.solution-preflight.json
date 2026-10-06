@@ -1,0 +1,83 @@
+{
+  "examUid": "19_동산중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "preflightOrder": "Golden and related Negative sample inspection completed before target solution authoring.",
+  "sampleReadBeforeWork": true,
+  "qualityAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "fileSha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+      "items": [
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "excerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다. 먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.",
+          "observation": "source equation is completed to standard form; center, translation steps, and final equation appear in separate board lines."
+        },
+        {
+          "qid": 18,
+          "solutionSha256": "fefba6a6d76b654b79ec2859fcf1de86b57187979008f366c97947b959e8e585",
+          "visualSha256": "818597daa71a6d400644def7ed26d7d8eb8a82ecc41157a70f991f1aad405c3b",
+          "excerpt": "먼저 조건 (가) $A\\cap X=X\\cup B$가 뜻하는 포함관계를 정리한다. 항상 $A\\cap X\\subset X$이고 $X\\subset X\\cup B$이다.",
+          "observation": "conditions are transformed to set inclusion before counting; sample includes a solution visual whose referenced bytes were opened."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "fileSha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "items": [
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "excerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다. 먼저 직선 $x+3y+2=0$을 $y$에 대하여 정리한다. $3y=-x-2$ $y=-\\dfrac13x-\\dfrac23$",
+          "observation": "each line is rearranged independently and slopes are substituted into the perpendicular condition with the intermediate equation shown."
+        },
+        {
+          "qid": 10,
+          "solutionSha256": "600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+          "visualSha256": "ca1cd9e5b55b1dbd5439bf461318d95d5b4b5fd47fc9fdd504d551016c0b1119",
+          "excerpt": "주어진 조건 $A\\cap B=B$는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다. 따라서 $B\\subseteq A$이다. 이 포함관계를 이용해 각 보기를 확인한다.",
+          "observation": "enumerated alternatives are separated into individual blocks; the referenced solution visual was checked."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "fileSha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4",
+      "items": [
+        {
+          "qid": 4,
+          "solutionSha256": "f644427bc93e3b5853d0d6c597d3e5b56dde904ce78f0615e45edeb595097083",
+          "excerpt": "차집합을 교집합으로 바꾸고 드모르간의 법칙을 적용하여 보기들을 같은 꼴로 나타낸다. ① $(X-Y)\\cap Z^C=X\\cap Y^C\\cap Z^C$이다.",
+          "observation": "each choice is independently transformed to a common form before the unique mismatch is identified."
+        },
+        {
+          "qid": 12,
+          "solutionSha256": "d7804138ca5964bbd84a9f1147bbae6c70eabbaaad399c9192148929d05e9426",
+          "visualSha256": "8c58df3509fd907928d00ce5ee12608ae76681554fa54883f1826627c33fb601",
+          "excerpt": "주어진 직선을 $y$에 대하여 정리하면 $y=-\\dfrac abx-\\dfrac cb$이다. 그림에서 기울기는 양수이고 $y$절편은 음수이므로 $-\\dfrac ab>0$, $-\\dfrac cb<0$이다.",
+          "observation": "graph evidence is translated into sign constraints first, then those constraints are applied to the transformed line; referenced visual bytes were checked."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+    "observation": "Read the regression note and confirmed the required checks: actual geometry/topology, distinct enumerated blocks, null-but-resolvable Meta, and runtime escape parity."
+  }
+}
