@@ -26,6 +26,19 @@ function measuredProfiles(observation,intrinsicSvg,candidateLabelInventory){
   });
 }
 
+export function requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg,observation,fontFloorCssPx=11,comfortCssPx=.25,minimumBaseFontPx=20,maximumBaseFontPx=32}){
+  if(!DISPLAY_SIZE_CLASSES.includes(requestedSizeClass)||!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_INPUT_INVALID');
+  if(observation?.status!=='PASS'||observation.synthetic!==false||observation.runtime!=='playwright-chromium'||!Array.isArray(observation.profiles))throw Error('ACTUAL_ARCHIVE_PROFILE_TYPOGRAPHY_MEASUREMENT_REQUIRED');
+  if(!Number.isFinite(fontFloorCssPx)||fontFloorCssPx<11||!Number.isFinite(comfortCssPx)||comfortCssPx<0||!Number.isFinite(minimumBaseFontPx)||minimumBaseFontPx<11||!Number.isFinite(maximumBaseFontPx)||maximumBaseFontPx<minimumBaseFontPx)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_POLICY_INVALID');
+  const profile=observation.profiles.find(value=>value.sizeClass===requestedSizeClass);
+  if(profile?.status!=='PASS'||!finiteRect(profile.imageRect)||profile.naturalWidth!==intrinsicSvg.width||profile.naturalHeight!==intrinsicSvg.height)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_MEASUREMENT_INVALID');
+  const displayScale=Math.min(profile.imageRect.width/intrinsicSvg.width,profile.imageRect.height/intrinsicSvg.height);
+  const cssTargetFontPx=fontFloorCssPx+comfortCssPx,requiredBaseFontPx=cssTargetFontPx/displayScale;
+  const baseFontPx=Math.max(minimumBaseFontPx,Math.ceil((requiredBaseFontPx-1e-9)*10)/10);
+  if(!Number.isFinite(displayScale)||displayScale<=0||!Number.isFinite(baseFontPx)||baseFontPx>maximumBaseFontPx)throw Error('UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE');
+  return{schemaVersion:'REQUESTED_PROFILE_TYPOGRAPHY_v1',requestedSizeClass,displayScale,cssTargetFontPx,fontFloorCssPx,comfortCssPx,minimumBaseFontPx,maximumBaseFontPx,baseFontPx,rounding:'CEIL_TO_TENTH_BASE_PX'};
+}
+
 function normalizePolicyRefs(policyRefs){
   if(!Array.isArray(policyRefs)||policyRefs.length===0)throw Error('DISPLAY_ENVELOPE_POLICY_REFS_REQUIRED');
   const refs=policyRefs.map(item=>{
@@ -184,7 +197,7 @@ function checkProfileWorkerArtifact(root,ref,{kind,plannedProfile,plannedEnvelop
 }
 
 /** Resolve a measured, Archive-bound planning envelope. This is not a support verdict. */
-export function planDisplayEnvelope({root,questionUid,requestedSizeClass='medium',intrinsicSvg,candidateLabelInventory,observation,preflightEvidence,fontFloorCssPx=11,archiveEngineSha256,sourceRef,solutionRef,policyRefs}){
+export function planDisplayEnvelope({root,questionUid,requestedSizeClass='medium',intrinsicSvg,candidateLabelInventory,observation,preflightEvidence,fontFloorCssPx=11,typographyPolicy=null,archiveEngineSha256,sourceRef,solutionRef,policyRefs}){
   if(typeof questionUid!=='string'||!questionUid||!DISPLAY_SIZE_CLASSES.includes(requestedSizeClass))throw Error('DISPLAY_ENVELOPE_INPUT_INVALID');
   if(!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1||!Number.isFinite(fontFloorCssPx)||fontFloorCssPx<11)throw Error('DISPLAY_ENVELOPE_INTRINSIC_INVALID');
   if(observation?.status!=='PASS'||observation?.synthetic!==false||observation?.runtime!=='playwright-chromium'||observation?.questionUid!==questionUid||!validRef(observation.sourceRef)||!finiteRect(observation.qBoxRect)||!finiteRect(observation.solutionMetaRect)||!Number.isFinite(observation.solutionMetaContentWidth)||observation.solutionMetaContentWidth<=0||!Array.isArray(observation.profiles))throw Error('ACTUAL_ARCHIVE_ENVELOPE_OBSERVATION_REQUIRED');
@@ -196,12 +209,16 @@ export function planDisplayEnvelope({root,questionUid,requestedSizeClass='medium
   const preflight=verifyActualArchivePreflight(root,preflightEvidence,{questionUid,sourceRef,archiveEngineSha256});
   if(!same(preflight.observation.profiles,observation.profiles)||!same(preflight.observation.qBoxRect,observation.qBoxRect)||!same(preflight.observation.solutionMetaRect,observation.solutionMetaRect)||preflight.observation.solutionMetaContentWidth!==observation.solutionMetaContentWidth)throw Error('ACTUAL_ARCHIVE_PREFLIGHT_OBSERVATION_NOT_BOUND');
   const profiles=measuredProfiles(observation,intrinsicSvg,candidateLabelInventory),start=DISPLAY_SIZE_CLASSES.indexOf(requestedSizeClass);
+  if(typographyPolicy){
+    const requested=profiles.find(profile=>profile.sizeClass===requestedSizeClass);
+    if(typographyPolicy.schemaVersion!=='REQUESTED_PROFILE_TYPOGRAPHY_v1'||typographyPolicy.requestedSizeClass!==requestedSizeClass||!near(typographyPolicy.displayScale,requested.displayScale,1e-9)||typographyPolicy.fontFloorCssPx!==fontFloorCssPx||candidateLabelInventory.some(label=>label.fontPx!==typographyPolicy.baseFontPx)||typographyPolicy.baseFontPx*requested.displayScale<typographyPolicy.cssTargetFontPx-1e-7||typographyPolicy.cssTargetFontPx<fontFloorCssPx||typographyPolicy.baseFontPx<typographyPolicy.minimumBaseFontPx||typographyPolicy.baseFontPx>typographyPolicy.maximumBaseFontPx)throw Error('REQUESTED_PROFILE_TYPOGRAPHY_BINDING_INVALID');
+  }
   const provisional=profiles.slice(start).find(profile=>profile.provisionalMinimumCssFontPx>=fontFloorCssPx-1e-7);
   return {
     schemaVersion:'DISPLAY_ENVELOPE_v1',status:provisional?'PLANNED':'PLANNED_RECOMPOSITION_REQUIRED',questionUid,occurrence:0,
     requestedSizeClass,plannedSizeClass:provisional?.sizeClass||null,
     policyChange:provisional&&provisional.sizeClass!==requestedSizeClass?{from:requestedSizeClass,to:provisional.sizeClass,reason:'PROVISIONAL_LABEL_INVENTORY_FLOOR_ONLY'}:null,
-    intrinsicSvg:{...intrinsicSvg},candidateLabelInventory:candidateLabelInventory.map(v=>({id:v.id,fontPx:v.fontPx})),fontFloorCssPx,
+    intrinsicSvg:{...intrinsicSvg},candidateLabelInventory:candidateLabelInventory.map(v=>({id:v.id,fontPx:v.fontPx})),fontFloorCssPx,typographyPolicy,
     provisionalMinimumCssFontPx:provisional?.provisionalMinimumCssFontPx??null,
     fit:'NONE',container:{qBoxRect:observation.qBoxRect,solutionMetaRect:observation.solutionMetaRect,solutionMetaContentWidth:observation.solutionMetaContentWidth},
     profiles,archiveEngineSha256,sourceRef,solutionRef,policyRefs:identity.policyRefs,inputIdentity:identity,inputIdentitySha256,preflightEvidence,preflightEvidenceSha256:objectSha(preflightEvidence),

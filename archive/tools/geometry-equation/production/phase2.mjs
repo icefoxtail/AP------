@@ -15,7 +15,7 @@ import {dependency,dependencyRoot} from './dependencies.mjs';
 import {typesetter} from './typography.mjs';
 import {scopeFingerprint,mathFingerprint} from './fingerprint.mjs';
 import {captureDisplayProfiles} from './display-profile-audit.mjs';
-import {planDisplayEnvelope,qualifyDisplayEnvelope,compareActualDisplayEnvelope} from './display-envelope.mjs';
+import {planDisplayEnvelope,qualifyDisplayEnvelope,compareActualDisplayEnvelope,requestedProfileTypographyPolicy} from './display-envelope.mjs';
 import {RepairBudget} from './repair-budget.mjs';
 import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
 
@@ -39,6 +39,7 @@ function envelopePolicyRefs(){
     {name:'archive-engine',ref:fileRef(root,'archive/engine.html')},
     {name:'archive-capture',ref:fileRef(root,'archive/tools/geometry-equation/record-visual-browser-evidence.mjs')},
     {name:'display-envelope-contract',ref:fileRef(root,'archive/tools/geometry-equation/production/display-envelope.mjs')},
+    {name:'display-typography',ref:fileRef(root,'archive/tools/geometry-equation/production/typography.mjs')},
     {name:'rendered-layout-observer',ref:fileRef(root,'archive/tools/geometry-equation/verify-rendered-layout.mjs')},
     {name:'source-review-policy',ref:fileRef(root,'archive/tools/geometry-equation/production/source-policy.mjs')},
     {name:'verified-solution-policy',ref:fileRef(root,'archive/tools/geometry-equation/production/blinded-review.mjs')}
@@ -256,25 +257,44 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     if(plan.mathPlan){const peer=reconstruct(plan.mathPlan);reconstruction={...compareReconstruction(model,peer),peer};}
     else reconstruction=await workerGraphAudit(materialPlan.graphPlan,model.svg,model.transform);
     stages.push(freeze('MATH_REVIEW',reconstruction,provenance));if(reconstruction.status!=='PASS')throw Error('MATH_RECONSTRUCTION_FAIL');
-    const spec=specFor(materialPlan,model,identity.assetId);stages.push(freeze('NORMALIZE',spec,provenance));
-    const prepared=await worker({action:'prepare',spec});
+    let spec=specFor(materialPlan,model,identity.assetId);stages.push(freeze('NORMALIZE',spec,provenance));
+    let prepared=await worker({action:'prepare',spec});
     const envelopePreflight=await actualArchiveEnvelopePreflight({identity,folder,questionUid:uid,sourcePath,ordinal,sourceRef,solutionRef,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},sourceAuthorityStatus:authority?'CANONICAL_CURRENT':'EXPERIMENTAL_LOCATOR'});
     stages.push(...envelopePreflight.stages);
     const requestedSizeClass=question.solutionImageSize||'medium';
-    const candidateLabelInventory=prepared.labels.map(label=>({id:label.id,fontPx:20}));
-    const displayEnvelopePlan=planDisplayEnvelope({root,questionUid:uid,requestedSizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},candidateLabelInventory,observation:envelopePreflight.observation,preflightEvidence:envelopePreflight.preflightEvidence,archiveEngineSha256:envelopePreflight.archiveEngineSha256,sourceRef,solutionRef,policyRefs:envelopePreflight.policyRefs,fontFloorCssPx:11});
+    const typographyPolicy=requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},observation:envelopePreflight.observation,fontFloorCssPx:11});
+    stages.push(freeze('DISPLAY_TYPOGRAPHY_POLICY',typographyPolicy,{...provenance,requestedSizeClass,preflightEvidence:envelopePreflight.preflightEvidence}));
+    const candidateLabelInventory=prepared.labels.map(label=>({id:label.id,fontPx:typographyPolicy.baseFontPx}));
+    const displayEnvelopePlan=planDisplayEnvelope({root,questionUid:uid,requestedSizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},candidateLabelInventory,observation:envelopePreflight.observation,preflightEvidence:envelopePreflight.preflightEvidence,archiveEngineSha256:envelopePreflight.archiveEngineSha256,sourceRef,solutionRef,policyRefs:envelopePreflight.policyRefs,fontFloorCssPx:11,typographyPolicy});
     const displayEnvelopeReceipt=freeze('DISPLAY_ENVELOPE',displayEnvelopePlan,{...provenance,preflightEvidence:envelopePreflight.preflightEvidence,inputIdentitySha256:displayEnvelopePlan.inputIdentitySha256});stages.push(displayEnvelopeReceipt);
     const t=typesetter(),fragments={};
     for(const label of prepared.labels){
       if(label.kind==='CONDITION_BOX')throw Error('UNSUPPORTED_MULTILINE_PHASE2_LABEL');
       const numericTick=label.kind==='GRAPH_ANNOTATION'&&/^[-−\d.]+$/.test(label.text);
       const role=spec.displayFacts.factRolesByLabel?.[label.id]||plan.mathPlan?.nodes.find(n=>n.id===label.target)?.factRole||'DERIVED_INTERMEDIATE';
-      fragments[label.id]=t({id:label.id,owner:label.target||label.id,factRole:role,fontPx:20,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);
+      fragments[label.id]=t({id:label.id,owner:label.target||label.id,factRole:role,fontPx:typographyPolicy.baseFontPx,...(label.math||label.kind==='POINT_NAME'||numericTick?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);
     }
     stages.push(freeze('TYPESET',fragments,provenance));
     const browser=await dependency('playwright').chromium.launch({channel:'chrome',headless:true});const measurements={};
     try{const page=await browser.newPage();for(const [id,fragment] of Object.entries(fragments)){await page.setContent(fragment.svg);const bbox=await page.locator('svg').first().evaluate(e=>{const b=e.getBBox(),r=e.getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,height:b.height,viewportWidth:r.width,viewportHeight:r.height};});if(bbox.width<=0||bbox.height<=0)throw Error('FRAGMENT_BROWSER_MEASUREMENT_MISSING');measurements[id]=[bbox.viewportWidth,bbox.viewportHeight];fragment.observedBBox=bbox;}}finally{await browser.close();}
-    stages.push(freeze('MEASURE',{measurements,observedFragments:fragments,displayEnvelope:displayEnvelopePlan,preflightEvidence:envelopePreflight.preflightEvidence},provenance));
+    const measurementReceipt=freeze('MEASURE',{measurements,observedFragments:fragments,displayEnvelope:displayEnvelopePlan,preflightEvidence:envelopePreflight.preflightEvidence},provenance);stages.push(measurementReceipt);
+    if(materialPlan.graphPlan){
+      const formulaId=prepared.labels.find(label=>label.kind==='EQUATION_LABEL')?.id;
+      const measuredFormula=measurements[formulaId];
+      if(formulaId&&measuredFormula){
+        const panelPaddingPx=24,maximumPanelPx=200,requiredPanelPx=Math.ceil((measuredFormula[0]+panelPaddingPx)*10)/10;
+        if(requiredPanelPx>maximumPanelPx)throw Error('UNSUPPORTED_DISPLAY_ENVELOPE:GRAPH_FORMULA_PANEL_LIMIT');
+        if(requiredPanelPx>spec.viewport.panel){
+          const priorPanelPx=spec.viewport.panel,priorLabelInventory=prepared.labels.map(label=>({id:label.id,kind:label.kind,target:label.target??null,text:label.text,sourceMath:label.sourceMath??null}));
+          spec={...spec,viewport:{...spec.viewport,panel:requiredPanelPx}};
+          const adjusted=await worker({action:'prepare',spec}),adjustedLabelInventory=adjusted.labels.map(label=>({id:label.id,kind:label.kind,target:label.target??null,text:label.text,sourceMath:label.sourceMath??null}));
+          if(canonicalJson(priorLabelInventory)!==canonicalJson(adjustedLabelInventory))throw Error('GRAPH_PANEL_COMPOSITION_LABEL_INVENTORY_CHANGED');
+          prepared=adjusted;
+          stages.push(freeze('PROFILE_COMPOSITION',{schemaVersion:'MEASURED_GRAPH_FORMULA_PANEL_v1',status:'PASS',compositionOnly:true,sourceRef,solutionRef,sourcePlanSha256:planHash(frozen),requestedSizeClass,typographyPolicy,formulaLabelId:formulaId,fragmentRef:fragments[formulaId].fragmentSha256,measurementRef:measurementReceipt.outputs[0],formulaTextWidthPx:measuredFormula[0],panelPaddingPx,priorPanelPx,selectedPanelPx:requiredPanelPx,displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256},provenance));
+          stages.push(freeze('NORMALIZE_FINAL',spec,{...provenance,compositionStage:'PROFILE_COMPOSITION',displayEnvelopeInputIdentitySha256:displayEnvelopePlan.inputIdentitySha256}));
+        }
+      }
+    }
     const built=await worker({action:'build',spec,measurements,fragments});
     if(built.witness.layout.unresolved.length||built.witness.layout.suppressed.length)throw Error('LAYOUT_INVENTORY_INCOMPLETE:'+JSON.stringify(built.witness.layout));
     const solutionImageName=`q${String(ordinal).padStart(2,'0')}-solution.svg`;

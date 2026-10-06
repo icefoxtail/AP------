@@ -7,7 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import {canonicalJson,fileRef} from '../../pipeline-core/canonical.mjs';
-import {compareActualDisplayEnvelope,planDisplayEnvelope,qualifyDisplayEnvelope} from '../production/display-envelope.mjs';
+import {compareActualDisplayEnvelope,planDisplayEnvelope,qualifyDisplayEnvelope,requestedProfileTypographyPolicy} from '../production/display-envelope.mjs';
 
 const intrinsic={width:384,height:320};
 const rect=(width,height)=>({x:20,y:30,width,height});
@@ -17,6 +17,17 @@ const classes=[
   ['large',216,180,'92%','180px'],
   ['full',384,320,'100%','none']
 ];
+test('requested profile font composition targets the measured CSS floor and refuses unsafe scale',()=>{
+  const observation={status:'PASS',synthetic:false,runtime:'playwright-chromium',profiles:classes.map(([sizeClass,width,height])=>({sizeClass,status:'PASS',imageRect:rect(width,height),naturalWidth:intrinsic.width,naturalHeight:intrinsic.height}))};
+  const medium=requestedProfileTypographyPolicy({requestedSizeClass:'medium',intrinsicSvg:intrinsic,observation});
+  assert.equal(medium.displayScale,145/320);
+  assert.equal(medium.cssTargetFontPx,11.25);
+  assert.equal(medium.baseFontPx,24.9);
+  assert.equal(medium.baseFontPx*medium.displayScale>=medium.cssTargetFontPx,true);
+  assert.equal(requestedProfileTypographyPolicy({requestedSizeClass:'large',intrinsicSvg:intrinsic,observation}).baseFontPx,20);
+  assert.throws(()=>requestedProfileTypographyPolicy({requestedSizeClass:'small',intrinsicSvg:intrinsic,observation}),/UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE/);
+  assert.throws(()=>requestedProfileTypographyPolicy({requestedSizeClass:'medium',intrinsicSvg:intrinsic,observation:{...observation,synthetic:true}}),/ACTUAL_ARCHIVE_PROFILE_TYPOGRAPHY_MEASUREMENT_REQUIRED/);
+});
 const profile=([sizeClass,width,height,maxWidth,maxHeight])=>({
   status:'PASS',sizeClass,imageRect:rect(width,height),naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,
   computedStyle:{maxWidth,maxHeight,objectFit:'contain',transform:'none'},transformChain:['none','none','none']
