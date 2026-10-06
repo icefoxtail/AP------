@@ -28,7 +28,7 @@ window.questionBank = [
       "$0.\\dot{3}$은 유한소수이다."
     ],
     "answer": "②",
-    "solution": "[핵심]\n유한소수와 순환소수의 성질을 보기마다 확인한다.\n[풀이]\n① $0.\\dot{3}=0.333\\cdots$이므로 $0.3$보다 크다. ② $\\frac{1}{6}=0.1666\\cdots$이므로 유한소수가 아니라 순환소수이다. ③ 모든 순환소수는 유리수이다. ④ 기약분수의 분모에 $2,5$ 이외의 소인수가 남으면 유한소수가 아니다. ⑤ $0.\\dot{3}$은 끝나지 않는 순환소수이다.\n[결론]\n옳은 것은 ②이다.",
+    "solution": "유한소수와 순환소수의 성질을 보기마다 확인한다.\n① $0.\\dot{3}=0.333\\cdots$이므로 $0.3$보다 크다. ② $\\frac{1}{6}=0.1666\\cdots$이므로 유한소수가 아니라 순환소수이다. ③ 모든 순환소수는 유리수이다. ④ 기약분수의 분모에 $2,5$ 이외의 소인수가 남으면 유한소수가 아니다. ⑤ $0.\\dot{3}$은 끝나지 않는 순환소수이다.\n옳은 것은 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -68,7 +68,7 @@ window.questionBank = [
       "(마) $0.75$"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n분모를 10의 거듭제곱으로 만든다.\n[풀이]\n$\\frac{3}{40}=\\frac{3}{2^3\\times5}=\\frac{3\\times5^2}{2^3\\times5\\times5^2}=\\frac{75}{10^3}=0.075$이다. 따라서 (가),(나)는 $5^2$, (다)는 $75$, (라)는 $10^3$이다.\n[결론]\n(마)를 $0.75$라 한 ⑤가 옳지 않다.",
+    "solution": "분모를 10의 거듭제곱으로 만든다.\n$\\frac{3}{40}=\\frac{3}{2^3\\times5}=\\frac{3\\times5^2}{2^3\\times5\\times5^2}=\\frac{75}{10^3}=0.075$이다. 따라서 (가),(나)는 $5^2$, (다)는 $75$, (라)는 $10^3$이다.\n(마)를 $0.75$라 한 ⑤가 옳지 않다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -108,7 +108,7 @@ window.questionBank = [
       "$\\frac{33}{3^2 \\times 5 \\times 11}$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n기약분수의 분모 소인수가 2와 5뿐이면 유한소수이다.\n[풀이]\n① $\\frac1{15}$에는 3이 남고, ② $\\frac{15}{54}=\\frac5{18}$에도 3이 남는다. ③은 분모에 7이 남는다. ④ $\\frac{14}{2^3\\times5\\times7}=\\frac1{2^2\\times5}$이므로 유한소수이다. ⑤ $\\frac{33}{3^2\\times5\\times11}=\\frac1{3\\times5}$이므로 순환소수이다.\n[결론]\n정답은 ④이다.",
+    "solution": "기약분수의 분모 소인수가 2와 5뿐이면 유한소수이다.\n① $\\frac1{15}$에는 3이 남고, ② $\\frac{15}{54}=\\frac5{18}$에도 3이 남는다. ③은 분모에 7이 남는다. ④ $\\frac{14}{2^3\\times5\\times7}=\\frac1{2^2\\times5}$이므로 유한소수이다. ⑤ $\\frac{33}{3^2\\times5\\times11}=\\frac1{3\\times5}$이므로 순환소수이다.\n정답은 ④이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -148,7 +148,7 @@ window.questionBank = [
       "$3.123123... = 3.\\dot{1}2\\dot{3}$"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n순환점은 최소 순환마디의 첫 숫자와 끝 숫자에 찍는다.\n[풀이]\n①의 순환마디는 16, ②는 734, ③은 47, ④는 08이다. ⑤의 $3.123123\\cdots$은 123이 반복되므로 $3.\\dot{1}2\\dot{3}$으로 나타낸 것이 맞다.\n[결론]\n정답은 ⑤이다.",
+    "solution": "순환점은 최소 순환마디의 첫 숫자와 끝 숫자에 찍는다.\n①의 순환마디는 16, ②는 734, ③은 47, ④는 08이다. ⑤의 $3.123123\\cdots$은 123이 반복되므로 $3.\\dot{1}2\\dot{3}$으로 나타낸 것이 맞다.\n정답은 ⑤이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -188,7 +188,7 @@ window.questionBank = [
       "(마) $\\frac{131}{99}$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n순환부분이 같은 자리에서 맞도록 두 식을 만든다.\n[풀이]\n$x=1.32323\\cdots$라 두면 $1000x=1323.2323\\cdots$, $10x=13.2323\\cdots$이다. 두 식을 빼면 $990x=1310$이고 $x=\\frac{131}{99}$이다.\n[결론]\n(다)는 900이 아니라 990이므로 ③이다.",
+    "solution": "순환부분이 같은 자리에서 맞도록 두 식을 만든다.\n$x=1.32323\\cdots$라 두면 $1000x=1323.2323\\cdots$, $10x=13.2323\\cdots$이다. 두 식을 빼면 $990x=1310$이고 $x=\\frac{131}{99}$이다.\n(다)는 900이 아니라 990이므로 ③이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -228,7 +228,7 @@ window.questionBank = [
       "$42$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n약분 후 분모에 2,5 이외의 소인수가 남는지 본다.\n[풀이]\n$\\frac{63}{3^2\\times2\\times x}=\\frac7{2x}$이다. 한 자리 자연수에서 $x=3,6,9$이면 약분 후 분모에 3이 남는다. $x=7$이면 $\\frac7{14}=\\frac12$이고, $x=1,2,4,5,8$도 유한소수가 된다.\n[결론]\n가능한 값의 합은 $3+6+9=18$이므로 ①이다.",
+    "solution": "약분 후 분모에 2,5 이외의 소인수가 남는지 본다.\n$\\frac{63}{3^2\\times2\\times x}=\\frac7{2x}$이다. 한 자리 자연수에서 $x=3,6,9$이면 약분 후 분모에 3이 남는다. $x=7$이면 $\\frac7{14}=\\frac12$이고, $x=1,2,4,5,8$도 유한소수가 된다.\n가능한 값의 합은 $3+6+9=18$이므로 ①이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -267,7 +267,7 @@ window.questionBank = [
       "$\\frac{16}{99}$"
     ],
     "answer": "②",
-    "solution": "[핵심]\n각 학생이 잘못 보지 않은 분모와 분자를 이용한다.\n[풀이]\n민주는 분자만 잘못 보았으므로 분모는 맞다. $1.0\\dot8=\\frac{49}{45}$이므로 원래 분모는 45이다. 현주는 분모만 잘못 보았으므로 분자는 맞다. $0.1\\dot7=\\frac8{45}$이므로 원래 분자는 8이다.\n[결론]\n원래 기약분수는 $\\frac8{45}$이므로 ②이다.",
+    "solution": "각 학생이 잘못 보지 않은 분모와 분자를 이용한다.\n민주는 분자만 잘못 보았으므로 분모는 맞다. $1.0\\dot8=\\frac{49}{45}$이므로 원래 분모는 45이다. 현주는 분모만 잘못 보았으므로 분자는 맞다. $0.1\\dot7=\\frac8{45}$이므로 원래 분자는 8이다.\n원래 기약분수는 $\\frac8{45}$이므로 ②이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -306,7 +306,7 @@ window.questionBank = [
       "$(-\\frac{a^2}{b})^2 = \\frac{a^4}{b^2}$"
     ],
     "answer": "⑤",
-    "solution": "[핵심]\n지수법칙을 보기마다 직접 적용한다.\n[풀이]\n① $a^7a^2=a^9$, ② $a^9\\div a^3=a^6$, ③ $(a^4)^3=a^{12}$, ④ $(2a^2b)^3=8a^6b^3$, ⑤ $\\left(-\\frac{a^2}{b}\\right)^2=\\frac{a^4}{b^2}$이다.\n[결론]\n옳은 것은 ⑤이다.",
+    "solution": "지수법칙을 보기마다 직접 적용한다.\n① $a^7a^2=a^9$, ② $a^9\\div a^3=a^6$, ③ $(a^4)^3=a^{12}$, ④ $(2a^2b)^3=8a^6b^3$, ⑤ $\\left(-\\frac{a^2}{b}\\right)^2=\\frac{a^4}{b^2}$이다.\n옳은 것은 ⑤이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -346,7 +346,7 @@ window.questionBank = [
       "$18$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n거듭제곱의 거듭제곱에서는 지수를 곱한다.\n[풀이]\n$\\left(\\frac{x^{2a}}{2y^6}\\right)^3=\\frac{x^{6a}}{8y^{18}}$이다. 우변과 비교하면 $6a=12$, $2b=18$이므로 $a=2$, $b=9$이다.\n[결론]\n$a+b=11$이므로 ①이다.",
+    "solution": "거듭제곱의 거듭제곱에서는 지수를 곱한다.\n$\\left(\\frac{x^{2a}}{2y^6}\\right)^3=\\frac{x^{6a}}{8y^{18}}$이다. 우변과 비교하면 $6a=12$, $2b=18$이므로 $a=2$, $b=9$이다.\n$a+b=11$이므로 ①이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -385,7 +385,7 @@ window.questionBank = [
       "$23$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n$2^n\\times5^n=10^n$을 이용한다.\n[풀이]\n$2^7\\times5^{10}=10^7\\times125$이다. 따라서 125 뒤에 0이 7개 붙은 10자리 수이므로 $n=10$이고, 각 자리 숫자의 합은 $a=1+2+5=8$이다.\n[결론]\n$a+n=18$이므로 ③이다.",
+    "solution": "$2^n\\times5^n=10^n$을 이용한다.\n$2^7\\times5^{10}=10^7\\times125$이다. 따라서 125 뒤에 0이 7개 붙은 10자리 수이므로 $n=10$이고, 각 자리 숫자의 합은 $a=1+2+5=8$이다.\n$a+n=18$이므로 ③이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -425,7 +425,7 @@ window.questionBank = [
       "$(-x^2y^3)^2 \\div \\frac{x^3y^3}{2} = -2xy^3$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n계수와 같은 문자의 지수를 따로 계산한다.\n[풀이]\n① $-6x^7$, ② $-12b$, ③ $-72x^7y^8$, ④ $-\\frac4x$, ⑤ $2xy^3$이 된다.\n[결론]\n제시식과 일치하는 것은 ④이다.",
+    "solution": "계수와 같은 문자의 지수를 따로 계산한다.\n① $-6x^7$, ② $-12b$, ③ $-72x^7y^8$, ④ $-\\frac4x$, ⑤ $2xy^3$이 된다.\n제시식과 일치하는 것은 ④이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -465,7 +465,7 @@ window.questionBank = [
       "$-6$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n괄호 앞의 마이너스를 분배한 뒤 동류항을 정리한다.\n[풀이]\n$(2x^2-x+3)-(3x^2-5x+8)=-x^2+4x-5$이다. $x$의 계수는 4, 상수항은 -5이다.\n[결론]\n합은 $-1$이므로 ③이다.",
+    "solution": "괄호 앞의 마이너스를 분배한 뒤 동류항을 정리한다.\n$(2x^2-x+3)-(3x^2-5x+8)=-x^2+4x-5$이다. $x$의 계수는 4, 상수항은 -5이다.\n합은 $-1$이므로 ③이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -504,7 +504,7 @@ window.questionBank = [
       "판단 불가"
     ],
     "answer": "①",
-    "solution": "[핵심]\n다항식을 단항식으로 나눌 때 각 항을 같은 단항식으로 나눈다.\n[풀이]\n(가)는 $(12x^2-9x)\\div(-3x)=-4x+3$이므로 제시식이 틀리다. (나)는 $(10x^2y-8xy^2)\\div\\frac23xy=15x-12y$로 맞다.\n[결론]\n틀린 식은 (가)뿐이므로 ①이다.",
+    "solution": "다항식을 단항식으로 나눌 때 각 항을 같은 단항식으로 나눈다.\n(가)는 $(12x^2-9x)\\div(-3x)=-4x+3$이므로 제시식이 틀리다. (나)는 $(10x^2y-8xy^2)\\div\\frac23xy=15x-12y$로 맞다.\n틀린 식은 (가)뿐이므로 ①이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -543,7 +543,7 @@ window.questionBank = [
       "$3x^2y-2xy$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n나눗셈을 곱셈으로 되돌려 괄호 안 식을 구한다.\n[풀이]\n$x^2y-\\square+2y^2=(9x^2-6x+6y)\\times\\frac19y=x^2y-\\frac23xy+\\frac23y^2$이다. 따라서 $\\square=\\frac23xy+\\frac43y^2$이다.\n[결론]\n정답은 ④이다.",
+    "solution": "나눗셈을 곱셈으로 되돌려 괄호 안 식을 구한다.\n$x^2y-\\square+2y^2=(9x^2-6x+6y)\\times\\frac19y=x^2y-\\frac23xy+\\frac23y^2$이다. 따라서 $\\square=\\frac23xy+\\frac43y^2$이다.\n정답은 ④이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -583,7 +583,7 @@ window.questionBank = [
       "삼각형 넓이는 8 미만이다. $\\rightarrow 3x \\le 8$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n문장에 쓰인 이상·많다·적다의 뜻을 부등호로 옮긴다.\n[풀이]\n① ‘작지 않다’는 $\\ge$이고, ③ ‘40쪽보다 많다’는 $>$이다. ②는 두 사람의 나이를 더한 식이어야 하고 ⑤는 삼각형 넓이식이 필요하다. ④ $a+10<2a$는 문장을 정확히 나타낸다.\n[결론]\n정답은 ④이다.",
+    "solution": "문장에 쓰인 이상·많다·적다의 뜻을 부등호로 옮긴다.\n① ‘작지 않다’는 $\\ge$이고, ③ ‘40쪽보다 많다’는 $>$이다. ②는 두 사람의 나이를 더한 식이어야 하고 ⑤는 삼각형 넓이식이 필요하다. ④ $a+10<2a$는 문장을 정확히 나타낸다.\n정답은 ④이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -622,7 +622,7 @@ window.questionBank = [
       "$-\\frac{a}{5}+3 < -\\frac{b}{5}+3$"
     ],
     "answer": "③",
-    "solution": "[핵심]\n부등식에 음수를 곱하면 부등호 방향이 바뀐다.\n[풀이]\n$a>b$에서 $-a<-b$이고 1을 더하면 $1-a<1-b$이다. 따라서 ③의 $1-a>1-b$는 옳지 않다. 나머지는 부등식의 성질을 바르게 적용했다.\n[결론]\n정답은 ③이다.",
+    "solution": "부등식에 음수를 곱하면 부등호 방향이 바뀐다.\n$a>b$에서 $-a<-b$이고 1을 더하면 $1-a<1-b$이다. 따라서 ③의 $1-a>1-b$는 옳지 않다. 나머지는 부등식의 성질을 바르게 적용했다.\n정답은 ③이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -662,7 +662,7 @@ window.questionBank = [
       "$x \\ge -2$"
     ],
     "answer": "②",
-    "solution": "[핵심]\n괄호를 풀고 $x$항을 한쪽으로 모은다.\n[풀이]\n$2x-6\\le4x+2$에서 $-2x\\le8$이다. 양변을 $-2$로 나누면 부등호가 바뀌어 $x\\ge-4$이다.\n[결론]\n정답은 ②이다.",
+    "solution": "괄호를 풀고 $x$항을 한쪽으로 모은다.\n$2x-6\\le4x+2$에서 $-2x\\le8$이다. 양변을 $-2$로 나누면 부등호가 바뀌어 $x\\ge-4$이다.\n정답은 ②이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -702,7 +702,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "④",
-    "solution": "[핵심]\n소수와 분수가 섞인 부등식을 정리한 뒤 자연수 해만 고른다.\n[풀이]\n$0.4x+1>0.7x-\\frac12$의 양변에 10을 곱하면 $4x+10>7x-5$이다. 따라서 $-3x>-15$, 즉 $x<5$이다. 자연수 해는 $1,2,3,4$이다.\n[결론]\n합은 10이므로 ④이다.",
+    "solution": "소수와 분수가 섞인 부등식을 정리한 뒤 자연수 해만 고른다.\n$0.4x+1>0.7x-\\frac12$의 양변에 10을 곱하면 $4x+10>7x-5$이다. 따라서 $-3x>-15$, 즉 $x<5$이다. 자연수 해는 $1,2,3,4$이다.\n합은 10이므로 ④이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -741,7 +741,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n식으로 구한 해의 경계와 주어진 해의 경계를 같게 둔다.\n[풀이]\n$3x-4\\ge a-x$에서 $4x\\ge a+4$, 즉 $x\\ge\\frac{a+4}{4}$이다. 이것이 $x\\ge-1$과 같으므로 $\\frac{a+4}{4}=-1$이다.\n[결론]\n$a=-8$이므로 ①이다.",
+    "solution": "식으로 구한 해의 경계와 주어진 해의 경계를 같게 둔다.\n$3x-4\\ge a-x$에서 $4x\\ge a+4$, 즉 $x\\ge\\frac{a+4}{4}$이다. 이것이 $x\\ge-1$과 같으므로 $\\frac{a+4}{4}=-1$이다.\n$a=-8$이므로 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -781,7 +781,7 @@ window.questionBank = [
       "$1300m$"
     ],
     "answer": "①",
-    "solution": "[핵심]\n왕복 시간과 물건을 사는 시간을 모두 합해 60분 이하로 둔다.\n[풀이]\n거리를 $x$ m라 하면 $\\frac{x}{45}+10+\\frac{x}{30}\\le60$이다. 따라서 $\\frac{5x}{90}\\le50$, 즉 $x\\le900$이다.\n[결론]\n최대 거리는 $900m$이므로 ①이다.",
+    "solution": "왕복 시간과 물건을 사는 시간을 모두 합해 60분 이하로 둔다.\n거리를 $x$ m라 하면 $\\frac{x}{45}+10+\\frac{x}{30}\\le60$이다. 따라서 $\\frac{5x}{90}\\le50$, 즉 $x\\le900$이다.\n최대 거리는 $900m$이므로 ①이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -815,7 +815,7 @@ window.questionBank = [
     "content": "$\\frac{5}{7}$를 소수로 나타낼 때, 소수점 아래 $100$번째 자리까지의 숫자 중 $4$가 나오는 횟수를 구하시오. [6점]",
     "choices": [],
     "answer": "17회",
-    "solution": "[핵심]\n$\\frac57$의 순환마디 길이와 숫자 4의 위치를 이용한다.\n[풀이]\n$\\frac57=0.\\overline{714285}$이고 순환마디 길이는 6이다. $100=6\\times16+4$이므로 완전한 16개 마디에서 4가 16번 나온다. 남은 네 자리 $7,1,4,2$에도 4가 한 번 있다.\n[결론]\n총 17회이다.",
+    "solution": "$\\frac57$의 순환마디 길이와 숫자 4의 위치를 이용한다.\n$\\frac57=0.\\overline{714285}$이고 순환마디 길이는 6이다. $100=6\\times16+4$이므로 완전한 16개 마디에서 4가 16번 나온다. 남은 네 자리 $7,1,4,2$에도 4가 한 번 있다.\n총 17회이다.",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "rule_inferred",
@@ -849,7 +849,7 @@ window.questionBank = [
     "content": "밑면 가로 $24$, 세로 $36$인 직사각형이고 부피가 $360a^3b^2$인 사각뿔의 높이를 구하시오. [5점]",
     "choices": [],
     "answer": "$\\frac{5a^3b^2}{4}$",
-    "solution": "[핵심]\n사각뿔의 부피는 $\\frac13\\times\\text{밑넓이}\\times\\text{높이}$이다.\n[풀이]\n높이를 $h$라 하면 밑넓이는 $24\\times36=864$이고, $360a^3b^2=\\frac13\\times864\\times h=288h$이다. 따라서 $h=\\frac54a^3b^2$이다.\n[결론]\n높이는 $\\frac{5a^3b^2}{4}$이다.",
+    "solution": "사각뿔의 부피는 $\\frac13\\times\\text{밑넓이}\\times\\text{높이}$이다.\n높이를 $h$라 하면 밑넓이는 $24\\times36=864$이고, $360a^3b^2=\\frac13\\times864\\times h=288h$이다. 따라서 $h=\\frac54a^3b^2$이다.\n높이는 $\\frac{5a^3b^2}{4}$이다.",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
     "subUnitConfidence": "rule_inferred",
@@ -882,7 +882,7 @@ window.questionBank = [
     "content": "어떤 식에서 $3x^2+5x-6$을 빼야 할 것을 더했더니 $7x^2+10x-4$가 되었다. 바르게 계산한 식을 구하시오. [4점]",
     "choices": [],
     "answer": "$x^2+8$",
-    "solution": "[핵심]\n잘못 더한 결과에서 먼저 원래 식을 복원한다.\n[풀이]\n원래 식을 $A$라 하면 $A+(3x^2+5x-6)=7x^2+10x-4$이므로 $A=4x^2+5x+2$이다. 바르게 계산하면 $A-(3x^2+5x-6)=x^2+8$이다.\n[결론]\n정답은 $x^2+8$이다.",
+    "solution": "잘못 더한 결과에서 먼저 원래 식을 복원한다.\n원래 식을 $A$라 하면 $A+(3x^2+5x-6)=7x^2+10x-4$이므로 $A=4x^2+5x+2$이다. 바르게 계산하면 $A-(3x^2+5x-6)=x^2+8$이다.\n정답은 $x^2+8$이다.",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -916,7 +916,7 @@ window.questionBank = [
     "content": "$40000$원 중 포장비 $4000$원을 제외하고 한 송이 $1600$원인 장미를 최대 몇 송이까지 살 수 있는지 구하시오. [5점]",
     "choices": [],
     "answer": "22송이",
-    "solution": "[핵심]\n포장비와 장미값의 합이 가진 돈을 넘지 않도록 부등식을 세운다.\n[풀이]\n장미를 $x$송이라 하면 $1600x+4000\\le40000$이다. 따라서 $x\\le22.5$이고 송이 수는 자연수이다.\n[결론]\n최대 22송이까지 살 수 있다.",
+    "solution": "포장비와 장미값의 합이 가진 돈을 넘지 않도록 부등식을 세운다.\n장미를 $x$송이라 하면 $1600x+4000\\le40000$이다. 따라서 $x\\le22.5$이고 송이 수는 자연수이다.\n최대 22송이까지 살 수 있다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
