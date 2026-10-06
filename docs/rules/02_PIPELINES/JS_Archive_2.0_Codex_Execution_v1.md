@@ -25,6 +25,8 @@ ROOT
 ROOT는 routing과 기술 closure를 담당한다.
 수학·Meta·Visual·source의 의미 품질 판단을 ROOT가 대신하지 않는다.
 
+Archive 2.0 런타임 구현·개선·출력 경로 변경의 기술 closure에는 `../01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 반드시 함께 적용한다. 원본 기출의 Archive 1 직접 경로, 사용자 응답 속도, 저장소 장애·용량 초과 시 동작은 기능 추가와 리팩터링에서도 유지해야 하는 완료 조건이다. `node tools/check-archive2-runtime.cjs` 결과와 변경 흐름의 실제 브라우저 검증 없이 해당 런타임 변경을 MAIN_DONE으로 선언하지 않는다. 원본 시험지 source만 다루는 stage 검수의 절차를 이 규칙으로 대체하지 않는다.
+
 ## 2. ROOT
 
 ROOT 책임:

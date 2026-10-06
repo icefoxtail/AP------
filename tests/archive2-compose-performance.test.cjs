@@ -33,6 +33,7 @@ function app() {
 
 test('production-size compose curriculum and scope interactions stay responsive', async t => {
   const a = app();
+  assert.ok(a.state.catalog.records.length >= 10000, 'performance requires the full production-size archive');
   for (const curriculumKey of ['', '2015', '2022']) {
     a.state.filters.curriculumKey = curriculumKey;
     const start = performance.now();
@@ -40,7 +41,7 @@ test('production-size compose curriculum and scope interactions stay responsive'
     const elapsed = performance.now() - start;
     t.diagnostic(`curriculum ${curriculumKey || 'all'}: ${elapsed.toFixed(1)}ms`);
     assert.match(a.nodes.content.innerHTML, /data-scope=/);
-    assert.ok(elapsed < 1500, `compose blocks input for ${elapsed.toFixed(1)}ms`);
+    assert.ok(elapsed < 500, `compose blocks input for ${elapsed.toFixed(1)}ms`);
   }
   const scope = a.nodes.content.innerHTML.match(/data-scope="([^"]+)"/)[1];
   const start = performance.now();
@@ -49,7 +50,7 @@ test('production-size compose curriculum and scope interactions stay responsive'
   t.diagnostic(`scope checkbox: ${elapsed.toFixed(1)}ms`);
   assert.ok(a.state.scopes.includes(scope));
   assert.match(a.nodes.content.innerHTML, /data-scope="[^"]+" checked/);
-  assert.ok(elapsed < 1500, `scope selection blocks input for ${elapsed.toFixed(1)}ms`);
+  assert.ok(elapsed < 500, `scope selection blocks input for ${elapsed.toFixed(1)}ms`);
 
   // A new render must recheck quality, even if the filter did not change.
   for (const record of a.state.catalog.records) record.sourceStatus = 'HOLD';
