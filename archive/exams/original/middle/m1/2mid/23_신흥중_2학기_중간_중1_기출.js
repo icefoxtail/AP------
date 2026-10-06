@@ -70,7 +70,7 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "⑤",
-    "solution": "A, B, C 중 두 점을 이은 직선은 하나이고 D와 A, B, C를 잇는 직선이 3개이므로 a=4이다. 반직선은 A, B, C에서 각각 생기는 4개와 D에서 다른 점으로 향하는 3개, 다른 점에서 D로 향하는 3개를 합쳐 b=10개이다. 선분은 두 점의 조합인 c=6개이다. 따라서 a+b+c=4+10+6=20이므로 정답은 ⑤이다.",
+    "solution": "A, B, C 중 두 점을 이은 직선은 하나이고 D와 A, B, C를 잇는 직선이 3개이므로 a=4이다.\n반직선은 A, B, C에서 각각 생기는 4개와 D에서 다른 점으로 향하는 3개, 다른 점에서 D로 향하는 3개를 합쳐 b=10개이다.\n선분은 두 점의 조합인 c=6개이다.\n따라서 a+b+c=4+10+6=20이므로 정답은 ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q2.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -108,7 +108,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "④",
-    "solution": "CD를 x cm라 하면 BC=x/3 cm, BD=4x/3 cm이다. 조건에 의해 AB=BD/2=2x/3 cm이므로 AD=AB+BC+CD=2x이다. AD=24이므로 x=12이다.",
+    "solution": "CD를 x cm라 하면 BC=x/3 cm, BD=4x/3 cm이다.\n조건에 의해 AB=BD/2=2x/3 cm이므로 AD=AB+BC+CD=2x이다.\nAD=24이므로 x=12이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -189,7 +189,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "연속한 각의 비가 모두 3:2이므로 각을 27t, 18t, 12t, 8t로 둘 수 있다. 그러면 ∠AOD=57t, ∠BOE=38t이므로 a=57/38=3/2이다.",
+    "solution": "연속한 각의 비가 모두 3:2이므로 각을 27t, 18t, 12t, 8t로 둘 수 있다.\n그러면 ∠AOD=57t, ∠BOE=38t이므로 a=57/38=3/2이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q5.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -271,7 +271,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "ㄱ은 한 직선에 수직인 두 직선이 서로 평행하므로 거짓이다. ㄴ은 한 직선에 수직인 두 직선이 서로 평행하므로 참이다. ㄷ은 l과 m이 평행이고 l이 n에 수직이면 m도 n에 수직이므로 거짓이다. 따라서 ㄴ만 옳다.",
+    "solution": "ㄱ은 한 직선에 수직인 두 직선이 서로 평행하므로 거짓이다.\nㄴ은 한 직선에 수직인 두 직선이 서로 평행하므로 참이다.\nㄷ은 l과 m이 평행이고 l이 n에 수직이면 m도 n에 수직이므로 거짓이다.\n따라서 ㄴ만 옳다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -310,7 +310,7 @@ window.questionBank = [
       "공간에서 직선과 평면이 한 점에서 만나지 않으면 직선이 평면에 포함된다."
     ],
     "answer": "③",
-    "solution": "평면에서 한 직선에 수직인 두 직선은 서로 평행하다. 나머지는 일치, 꼬인 위치, 포함 관계를 잘못 설명한 것이므로 정답은 ③이다.",
+    "solution": "평면에서 한 직선에 수직인 두 직선은 서로 평행하다.\n나머지는 일치, 꼬인 위치, 포함 관계를 잘못 설명한 것이므로 정답은 ③이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -351,7 +351,7 @@ window.questionBank = [
       "모서리 $HE$와 꼬인 위치에 있는 모서리는 $3$개이다."
     ],
     "answer": "④",
-    "solution": "전개도를 접으면 JC와 IH는 서로 평행하지 않고 한 평면에 함께 놓이지도 않는다. 따라서 두 모서리는 꼬인 위치이고, 정답은 ④이다.",
+    "solution": "전개도를 접으면 JC와 IH는 서로 평행하지 않고 한 평면에 함께 놓이지도 않는다.\n따라서 두 모서리는 꼬인 위치이고, 정답은 ④이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q9.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -393,7 +393,7 @@ window.questionBank = [
       "$75^\\circ$"
     ],
     "answer": "②",
-    "solution": "AD와 BE가 평행이므로 ∠BAD와 ∠ABE는 보각이다. ∠BAD=3u라 하면 ∠BAC=2u이고 ∠ABE=180-3u이므로 ∠ABC=120-2u이다. 삼각형 ABC의 내각의 합에서 ∠ACB=180-2u-(120-2u)=60도이다.",
+    "solution": "AD와 BE가 평행이므로 ∠BAD와 ∠ABE는 보각이다.\n∠BAD=3u라 하면 ∠BAC=2u이고 ∠ABE=180-3u이므로 ∠ABC=120-2u이다.\n삼각형 ABC의 내각의 합에서 ∠ACB=180-2u-(120-2u)=60도이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q10.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -473,7 +473,7 @@ window.questionBank = [
       "㉢→㉠→㉡→㉣"
     ],
     "answer": "⑤",
-    "solution": "각 XOY를 그대로 옮기려면 먼저 O를 중심으로 원을 그려 A, B를 잡고(㉢), P를 중심으로 같은 반지름의 원을 그려 D를 잡은 뒤(㉠), D를 중심으로 AB를 반지름으로 원을 그려 C를 잡는다(㉡). 마지막으로 PC를 그린다(㉣). 따라서 ㉢→㉠→㉡→㉣이다.",
+    "solution": "각 XOY를 그대로 옮기려면 먼저 O를 중심으로 원을 그려 A, B를 잡고(㉢), P를 중심으로 같은 반지름의 원을 그려 D를 잡은 뒤(㉠), D를 중심으로 AB를 반지름으로 원을 그려 C를 잡는다(㉡).\n마지막으로 PC를 그린다(㉣).\n따라서 ㉢→㉠→㉡→㉣이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q12.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -513,7 +513,7 @@ window.questionBank = [
       "$6$개"
     ],
     "answer": "④",
-    "solution": "세 막대의 가장 긴 길이가 나머지 두 길이의 합보다 작아야 한다. 가능한 조합은 (3,4,5), (3,8,10), (4,5,8), (4,8,10), (5,8,10)의 5개이므로 정답은 ④이다.",
+    "solution": "세 막대의 가장 긴 길이가 나머지 두 길이의 합보다 작아야 한다.\n가능한 조합은 (3,4,5), (3,8,10), (4,5,8), (4,8,10), (5,8,10)의 5개이므로 정답은 ④이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -554,7 +554,7 @@ window.questionBank = [
       "$\\angle ABD=\\angle ACE$"
     ],
     "answer": "④",
-    "solution": "두 정삼각형의 회전·대칭 관계를 이용하면 ①, ②, ③, ⑤의 대응 길이와 각은 각각 같다. 반면 그림의 F에서 만들어지는 ∠CDF와 ∠ADF는 같은 대응각이 아니며 크기가 서로 다르므로 ④가 옳지 않다.",
+    "solution": "$\\triangle ABC,\\triangle ADE$는 모두 정삼각형이므로\n\n$AB=BC=CA$\n$AD=DE=EA$\n\n또 각 정삼각형의 내각은 모두\n$60^\\circ$이다.\n\n따라서 같은 길이의 변과 $60^\\circ$ 각을 대응시키면\n①, ②, ③, ⑤의 길이·각 관계는 성립한다.\n\n하지만\n$\\angle CDF$와 $\\angle ADF$는\n같은 대응각이 아니다.\n\n따라서 옳지 않은 것은 ④이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -594,7 +594,7 @@ window.questionBank = [
       "$\\overline{BC}=6\\,\\mathrm{cm}$, $\\angle B=95^\\circ$, $\\angle C=85^\\circ$"
     ],
     "answer": "③",
-    "solution": "첫 번째 조건은 세 변이 주어진 경우지만 5+7=12로 삼각형이 만들어지지 않는다. 두 번째는 두 변과 끼이지 않은 각이 주어진 경우라서 모호하고, 네 번째는 세 각만 주어져 크기가 정해지지 않는다. 다섯 번째는 두 각의 합이 180도라 삼각형이 되지 않는다. 세 번째는 한 변과 두 각이 주어져 하나로 정해진다.",
+    "solution": "첫 번째 조건은 세 변이 주어진 경우지만 5+7=12로 삼각형이 만들어지지 않는다.\n두 번째는 두 변과 끼이지 않은 각이 주어진 경우라서 모호하고, 네 번째는 세 각만 주어져 크기가 정해지지 않는다.\n다섯 번째는 두 각의 합이 180도라 삼각형이 되지 않는다.\n세 번째는 한 변과 두 각이 주어져 하나로 정해진다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -633,7 +633,7 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "⑤",
-    "solution": "AC=5 cm와 ∠C=30도가 주어져 있다. ㄴ은 두 변 AC, BC와 그 끼인각 C가 주어지는 SAS이고, ㄷ은 두 각 A, C와 한 변 AC가 주어지는 ASA이며, ㄹ도 두 각 B, C와 한 변 AC가 주어지는 ASA이다. 따라서 ㄴ, ㄷ, ㄹ인 ⑤이다.",
+    "solution": "AC=5 cm와 ∠C=30도가 주어져 있다.\nㄴ은 두 변 AC, BC와 그 끼인각 C가 주어지는 SAS이고, ㄷ은 두 각 A, C와 한 변 AC가 주어지는 ASA이며, ㄹ도 두 각 B, C와 한 변 AC가 주어지는 ASA이다.\n따라서 ㄴ, ㄷ, ㄹ인 ⑤이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -667,7 +667,7 @@ window.questionBank = [
     "content": "다음 중에서 보기의 삼각형과 합동인 것은? [3점]",
     "choices": [],
     "answer": "⑤",
-    "solution": "보기의 삼각형은 밑변 5, 밑각 30도와 70도이므로 나머지 각은 80도이다. ⑤는 두 각 70도, 80도와 그 사이의 변 5가 주어진 ASA 조건이므로 보기의 삼각형과 합동이다.",
+    "solution": "보기의 삼각형은 밑변 5, 밑각 30도와 70도이므로 나머지 각은 80도이다.\n⑤는 두 각 70도, 80도와 그 사이의 변 5가 주어진 ASA 조건이므로 보기의 삼각형과 합동이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q17.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -710,7 +710,7 @@ window.questionBank = [
       "$100^\\circ$"
     ],
     "answer": "②",
-    "solution": "AC=CD이므로 삼각형 ACD에서 ∠CAD=∠ADC=x이다. AD와 DF가 한 직선이고 ∠FDE=80도이므로 ∠ADE=100도이다. 따라서 ∠CDE=100-x이다. CD=DE이므로 삼각형 CDE의 밑각은 (180-(100-x))/2=40+x/2이다. 그림의 일직선 관계와 AB=AC를 함께 쓰면 ∠ACE=180-x/2이고, 한편 ∠ACE=180-2x+40+x/2이다. 두 식을 같게 두면 x=40도이다.",
+    "solution": "AC=CD이므로 삼각형 ACD에서 ∠CAD=∠ADC=x이다.\nAD와 DF가 한 직선이고 ∠FDE=80도이므로 ∠ADE=100도이다.\n따라서 ∠CDE=100-x이다.\nCD=DE이므로 삼각형 CDE의 밑각은 (180-(100-x))/2=40+x/2이다.\n그림의 일직선 관계와 AB=AC를 함께 쓰면 ∠ACE=180-x/2이고, 한편 ∠ACE=180-2x+40+x/2이다.\n두 식을 같게 두면 x=40도이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q18.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -752,7 +752,7 @@ window.questionBank = [
       "내각의 크기의 합은 정육각형의 내각의 크기의 합보다 $360^\\circ$만큼 더 크다."
     ],
     "answer": "④",
-    "solution": "내각이 외각의 3배이므로 외각을 e라 하면 4e=180도, e=45도이다. 따라서 정팔각형이고, 한 꼭짓점에서 대각선을 모두 그으면 8-2=6개의 삼각형이 생긴다. 5개라고 한 ④가 옳지 않다.",
+    "solution": "내각이 외각의 3배이므로 외각을 e라 하면 4e=180도, e=45도이다.\n따라서 정팔각형이고, 한 꼭짓점에서 대각선을 모두 그으면 8-2=6개의 삼각형이 생긴다.\n5개라고 한 ④가 옳지 않다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -792,7 +792,7 @@ window.questionBank = [
       "$64$"
     ],
     "answer": "③",
-    "solution": "정다각형의 한 꼭짓점에서 내각과 외각의 합은 180도이다. 모든 꼭짓점에서의 합이 2160도이므로 변의 수 n은 2160/180=12이다. 대각선의 총 개수는 12(12-3)/2=54이다.",
+    "solution": "정다각형의 한 꼭짓점에서 내각과 외각의 합은 180도이다.\n모든 꼭짓점에서의 합이 2160도이므로 변의 수 n은 2160/180=12이다.\n대각선의 총 개수는 12(12-3)/2=54이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -832,7 +832,7 @@ window.questionBank = [
       "이십각형"
     ],
     "answer": "①",
-    "solution": "육각형의 대각선 총수는 6(6-3)/2=9개이다. n각형의 한 꼭짓점에서 그을 수 있는 대각선은 n-3개이므로 n-3=9, n=12이다.",
+    "solution": "육각형의 대각선 총수는 6(6-3)/2=9개이다.\nn각형의 한 꼭짓점에서 그을 수 있는 대각선은 n-3개이므로 n-3=9, n=12이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -873,7 +873,7 @@ window.questionBank = [
       "$84^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "정삼각형, 정사각형, 정오각형의 내각과 외각을 이용해 그림의 해당 방향각을 차례로 합성하면 표시된 각은 84도이다. 따라서 정답은 ⑤이다.",
+    "solution": "정삼각형, 정사각형, 정오각형의 내각과 외각을 이용해 그림의 해당 방향각을 차례로 합성하면 표시된 각은 84도이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q22.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
@@ -914,7 +914,7 @@ window.questionBank = [
       "$46$"
     ],
     "answer": "①",
-    "solution": "(x-2)×180=1440에서 x=10이다. 정십각형의 한 내각은 y=144도이므로 x+y=10+144=154이다.",
+    "solution": "(x-2)×180=1440에서 x=10이다.\n정십각형의 한 내각은 y=144도이므로 x+y=10+144=154이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -950,7 +950,7 @@ window.questionBank = [
     "content": "다음 물음에 대하여 서술하시오.<br>(1) 공간에서 두 평면의 위치관계를 모두 서술하시오. [2점]<br>(2) 다음 전개도로 만들 수 있는 직육면체가 있다. 모서리 $IH$와 꼬인 위치에 있는 모서리를 모두 서술하시오. [3점]",
     "choices": [],
     "answer": "(1) 평행하다, 한 직선에서 만난다, 일치한다. (2) $\\overline{NK}$, $\\overline{CF}$, $\\overline{KJ}(=\\overline{KL})$, $\\overline{FG}(=\\overline{FE})$",
-    "solution": "(1) 공간에서 두 평면은 평행하거나, 한 직선에서 만나거나, 일치한다. (2) 전개도를 접은 직육면체에서 IH와 평행하지 않고 IH와 같은 면에 놓이지 않는 모서리를 찾으면 NK, CF, KJ(=KL), FG(=FE)이다.",
+    "solution": "(1) 공간에서 두 평면은 평행하거나, 한 직선에서 만나거나, 일치한다.\n(2) 전개도를 접은 직육면체에서 IH와 평행하지 않고 IH와 같은 면에 놓이지 않는 모서리를 찾으면 NK, CF, KJ(=KL), FG(=FE)이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q24.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -987,7 +987,7 @@ window.questionBank = [
     "content": "다음 그림과 같이 한 변의 길이가 $8\\,\\mathrm{cm}$인 두 정사각형이 있다. 한 정사각형의 두 대각선의 교점 $O$에 다른 정사각형의 한 꼭짓점이 놓여 있을 때, 다음 물음에 대하여 자세하게 서술하시오.",
     "choices": [],
     "answer": "(1) $\\overline{BO}=\\overline{CO}$, $\\angle OBH=\\angle OCI$, $\\angle BOH=\\angle COI$이므로 $\\triangle BOH\\equiv\\triangle COI$ (한 변의 길이와 그 양 끝각의 크기가 각각 같다). (2) $16\\,\\mathrm{cm}^2$",
-    "solution": "(1) 정사각형 ABCD의 대각선은 서로 수직으로 이등분하므로 BO=CO이다. 두 정사각형의 변과 대각선이 이루는 각이 같아서 ∠OBH=∠OCI, ∠BOH=∠COI이다. 따라서 ASA로 삼각형 BOH와 COI가 합동이다. (2) 합동으로 OH=OI이고, 그림에서 OHCI는 한 변이 4 cm인 정사각형이므로 넓이는 4×4=16 cm²이다.",
+    "solution": "(1) 정사각형 ABCD의 대각선은 서로 수직으로 이등분하므로 BO=CO이다.\n두 정사각형의 변과 대각선이 이루는 각이 같아서 ∠OBH=∠OCI, ∠BOH=∠COI이다.\n따라서 ASA로 삼각형 BOH와 COI가 합동이다.\n(2) 합동으로 OH=OI이고, 그림에서 OHCI는 한 변이 4 cm인 정사각형이므로 넓이는 4×4=16 cm²이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q25.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -1024,7 +1024,7 @@ window.questionBank = [
     "content": "다양한 형태의 도형을 서로 겹치지 않으면서 빈틈 없이 채워 평면을 완전히 덮는 것을 쪽매맞춤 또는 테셀레이션(tessellation)이라고 한다. 다음 물음에 자세하게 서술하시오.<br>(1) 정다각형 중에서 한 가지 정다각형으로 테셀레이션을 만들 수 있는 정다각형을 모두 서술하고 한 꼭짓점에 각각 몇 개의 정다각형이 모이는지 서술하시오. [3점]<br>(2) 정오각형으로 테셀레이션을 만들 수 없는 이유를 서술하시오. [2점]<br>(3) 정다각형의 한 내각의 크기와 한 외각의 크기의 비가 $7:2$일 때, 이 정다각형의 내각의 합을 구하는 과정을 서술하시오. [3점]",
     "choices": [],
     "answer": "(1) 정삼각형 6개, 정사각형 4개, 정육각형 3개 (2) 한 꼭짓점에서 내각의 합이 $360^\\circ$가 되지 않는다. (3) $1260^\\circ$",
-    "solution": "(1) 한 내각이 60도인 정삼각형은 6개, 90도인 정사각형은 4개, 120도인 정육각형은 3개가 한 꼭짓점에 모일 수 있다. (2) 정오각형의 한 내각은 108도이므로 같은 정오각형만으로는 108도의 정수배가 360도가 되지 않아 테셀레이션이 불가능하다. (3) 내각:외각=7:2이고 내각과 외각의 합이 180도이므로 내각은 126도, 외각은 36도이다. 외각의 합은 360도이므로 변의 수는 10개이고 내각의 합은 (10-2)×180=1260도이다.",
+    "solution": "(1) 한 내각이 60도인 정삼각형은 6개, 90도인 정사각형은 4개, 120도인 정육각형은 3개가 한 꼭짓점에 모일 수 있다.\n(2) 정오각형의 한 내각은 108도이므로 같은 정오각형만으로는 108도의 정수배가 360도가 되지 않아 테셀레이션이 불가능하다.\n(3) 내각:외각=7:2이고 내각과 외각의 합이 180도이므로 내각은 126도, 외각은 36도이다.\n외각의 합은 360도이므로 변의 수는 10개이고 내각의 합은 (10-2)×180=1260도이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
