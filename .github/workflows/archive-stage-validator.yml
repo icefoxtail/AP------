@@ -6,6 +6,9 @@ on:
     paths:
       - "archive/tools/archive-stage-validator.mjs"
       - "archive/tools/archive-codex-closeout-v2.mjs"
+      - "archive/tools/archive-gpt-closeout-v2.mjs"
+      - "archive/data/gpt-quality-calibration-registry-v2.json"
+      - "tests/archive-gpt-closeout-v2.test.mjs"
       - "archive/data/codex-quality-calibration-registry-v2.json"
       - "tests/archive-codex-closeout-v2.test.mjs"
       - ".codex/agents/**"
@@ -85,6 +88,9 @@ jobs:
 
       - name: Codex render and publication receipt regression
         run: node --test tests/archive-codex-closeout-v2.test.mjs
+
+      - name: GPT publication receipt regression
+        run: node --test tests/archive-gpt-closeout-v2.test.mjs
 
       - name: Generic validator pilot
         run: node tests/archive-stage-validator-pilot.test.mjs

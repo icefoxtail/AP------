@@ -81,6 +81,7 @@ B/C도 동일하다.
 ## 6. Generation identity in artifacts
 
 현재 generation의 stage artifact/evidence/PASS/continuation/MAIN_DONE은 최소:
+- executionLine = GPT_SCHEDULED
 - campaignId
 - stream
 - examUid
@@ -118,3 +119,8 @@ campaignId 또는 stream이 다르면 current selector에서 무효다.
 10. old pilot automation OFF 유지
 
 이 gate가 닫힌 뒤에만 예약 생성/가동으로 넘어간다.
+
+## 9. Machine identity gate
+
+current generation의 모든 validator/state/continuation/MAIN_DONE receipt는 `executionLine=GPT_SCHEDULED`, `campaignId=H1_GPT2_20261006`, manifest-fixed stream을 함께 가진다.
+세 값 중 하나라도 누락/불일치하면 current generation artifact로 인정하지 않는다.
