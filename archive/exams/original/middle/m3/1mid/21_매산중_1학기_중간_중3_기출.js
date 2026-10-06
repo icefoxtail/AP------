@@ -31,7 +31,7 @@ window.questionBank = [
       "음이 아닌 정수의 제곱근은 2개다."
     ],
     "answer": "3",
-    "solution": "① $\\sqrt{5}$는 5의 제곱근임. ② $\\sqrt{9}=3$의 제곱근은 $\\pm\\sqrt{3}$임. ③ $\\sqrt{(-7)^{2}}=7$의 음의 제곱근은 $-\\sqrt{7}$ (참). ④ $(-2)^{2}=4$의 제곱근은 $\\pm 2$. ⑤ 0의 제곱근은 1개임.",
+    "solution": "① $\\sqrt5$를 제곱하면 $5$이므로 $25$의 제곱근이 아니다.\n② $\\sqrt9=3$이고, $3$의 제곱근은 $\\pm\\sqrt3$이다.\n③ $\\sqrt{(-7)^2}=7$이고, $7$의 음의 제곱근은 $-\\sqrt7$이다.\n④ $(-2)^2=4$의 제곱근은 $\\pm2$이다.\n⑤ $0$의 제곱근은 $0$ 하나뿐이다.\n따라서 옳은 것은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -67,7 +67,7 @@ window.questionBank = [
       "$\\sqrt{50}=5\\sqrt{2}$"
     ],
     "answer": "3",
-    "solution": "③ $\\sqrt{(-6)^{2}} = |-6| = 6$이 되어야 하므로 옳지 않음.",
+    "solution": "각 보기를 계산한다.\n① $\\sqrt{3^2}=3$\n② $-\\sqrt{5^2}=-5$\n③ $\\sqrt{(-6)^2}=|-6|=6$이므로 $-6$이 아니다.\n④ $-\\sqrt{48}=-4\\sqrt3$\n⑤ $\\sqrt{50}=5\\sqrt2$\n따라서 옳지 않은 것은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -206,7 +206,7 @@ window.questionBank = [
       "$\\sqrt{15}$"
     ],
     "answer": "4",
-    "solution": "④ $\\sqrt{25}=5$는 $\\sqrt{24}$보다 큰 수이므로 범위에 속하지 않음.",
+    "solution": "$\\sqrt5\\approx2.24$, $\\sqrt{24}\\approx4.90$이므로 두 수 사이의 값인지 확인한다.\n$3,\\sqrt{18},\\sqrt{10},\\sqrt{15}$는 모두 $\\sqrt5$보다 크고 $\\sqrt{24}$보다 작다.\n하지만 $\\sqrt{25}=5>\\sqrt{24}$이다.\n따라서 두 수 사이에 있지 않은 것은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -241,7 +241,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "1",
-    "solution": "$320 = 2^{6} \\times 5$이므로 $x=5$일 때 근호 안이 $8^2$이 되어 자연수가 됨.",
+    "solution": "$\\sqrt{\\dfrac{320}{x}}$가 자연수이려면 $\\dfrac{320}{x}$가 완전제곱수여야 한다.\n$320=2^6\\times5$이므로 가장 작은 $x$는 홀수 지수인 $5$를 없애는 $x=5$이다.\n이때 $\\dfrac{320}{5}=64$이고 $\\sqrt{64}=8$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "$-3\\sqrt{2}+4\\sqrt{5}$"
     ],
     "answer": "5",
-    "solution": "$2\\sqrt{2} - (\\sqrt{50}-2\\sqrt{20}) = 2\\sqrt{2} - 5\\sqrt{2} + 4\\sqrt{5} = -3\\sqrt{2}+4\\sqrt{5}$.",
+    "solution": "$\\dfrac4{\\sqrt2}=2\\sqrt2$이고,\n$(\\sqrt5-2\\sqrt2)\\div\\dfrac1{\\sqrt{10}}\n=(\\sqrt5-2\\sqrt2)\\sqrt{10}\n=5\\sqrt2-4\\sqrt5$이다.\n따라서\n$2\\sqrt2-(5\\sqrt2-4\\sqrt5)\n=-3\\sqrt2+4\\sqrt5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -346,7 +346,7 @@ window.questionBank = [
       "$2\\sqrt{5}$"
     ],
     "answer": "1",
-    "solution": "$|2-\\sqrt{5}| + |3-\\sqrt{5}| = (\\sqrt{5}-2) + (3-\\sqrt{5}) = 1$.",
+    "solution": "$\\sqrt{A^2}=|A|$를 이용한다.\n$\\sqrt5>2$이므로 $|2-\\sqrt5|=\\sqrt5-2$이고,\n$3>\\sqrt5$이므로 $|3-\\sqrt5|=3-\\sqrt5$이다.\n따라서\n$(\\sqrt5-2)+(3-\\sqrt5)=1$이다.\n정답은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -414,7 +414,7 @@ window.questionBank = [
       "$(2y+5)(3y-3) = 6y^2+9y-15$"
     ],
     "answer": "3",
-    "solution": "③ $(2x-y)(-2x+y) = -(2x-y)^2 = -4x^2+4xy-y^2$이므로 옳지 않음.",
+    "solution": "각 식을 확인한다.\n① $(-5+b)^2=b^2-10b+25$\n② $(3x-4y)^2=9x^2-24xy+16y^2$\n③ $(2x-y)(-2x+y)=-(2x-y)^2=-4x^2+4xy-y^2$\n④ $(a+2b)(a-5b)=a^2-3ab-10b^2$\n⑤ $(2y+5)(3y-3)=6y^2+9y-15$\n따라서 옳지 않은 것은 ③이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -448,7 +448,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "2",
-    "solution": "$(x+a)(x-b) = x^2+(a-b)x-ab$이므로 $a-b=1, ab=2$임. $a-b+ab = 1+2=3$. \\\\ \\therefore 2",
+    "solution": "좌변을 전개하면\n$(x+a)(x-b)=x^2+(a-b)x-ab$이다.\n$x^2+x-2$와 계수를 비교하면\n$a-b=1$, $-ab=-2$이므로 $ab=2$이다.\n따라서\n$a-b+ab=1+2=3$이다.\n정답은 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -483,7 +483,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "5",
-    "solution": "첫째 항: $xy$ 계수 $14+9=23$. 둘째 항: $(-2x+3y)^2$에서 $xy$ 계수 $-12$. 합: $23-12=11$. \\\\ \\therefore 5",
+    "solution": "첫째 식에서 $xy$항만 계산하면\n$(2x)(7y)+(-3y)(-3x)=14xy+9xy=23xy$이다.\n둘째 식 $(-2x+3y)^2$의 $xy$항은 $-12xy$이다.\n따라서 전체 식에서 $xy$의 계수는\n$23-12=11$이다.\n정답은 ⑤이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -517,7 +517,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "1",
-    "solution": "분자: $1002(1001-1)$. 분모: $(1001-1)(1001+1)$. 약분하면 $1$. \\\\ \\therefore 1",
+    "solution": "분자를 묶으면\n$1001\\times1002-1002=1002(1001-1)$이다.\n분모는\n$1001^2-1=(1001-1)(1001+1)=(1001-1)1002$이다.\n따라서 약분하면 값은 $1$이다.\n정답은 ①이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -551,7 +551,7 @@ window.questionBank = [
       "$3x+1$"
     ],
     "answer": "5",
-    "solution": "$6x^2-13x-5 = (2x-5)(3x+1)$. 인수는 $3x+1$. \\\\ \\therefore 5",
+    "solution": "$6x^2-13x-5$에서 곱이 $-30$, 합이 $-13$인 두 수는 $-15,2$이다.\n따라서\n$6x^2-13x-5\n=6x^2-15x+2x-5\n=3x(2x-5)+(2x-5)\n=(3x+1)(2x-5)$이다.\n보기 중 인수는 $3x+1$이므로 정답은 ⑤이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -585,7 +585,7 @@ window.questionBank = [
       "$2x^{2}+5x-3=(2x+1)(x-3)$"
     ],
     "answer": "5",
-    "solution": "⑤ $2x^2+5x-3 = (2x-1)(x+3)$이 되어야 하므로 틀림. \\\\ \\therefore 5",
+    "solution": "① $(x-2y)^2=x^2-4xy+4y^2$\n② $(x-\\frac13)^2=x^2-\\frac23x+\\frac19$\n③ $(5x+3y)(5x-3y)=25x^2-9y^2$\n④ $(x+1)(x-4)=x^2-3x-4$\n⑤ $(2x+1)(x-3)=2x^2-5x-3$으로 $2x^2+5x-3$과 다르다.\n따라서 옳지 않은 것은 ⑤이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -619,7 +619,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "2",
-    "solution": "$9a^2 \\pm 6ab + b^2 = (3a \\pm b)^2$이므로 $\\pm 6$이 적절함. \\\\ \\therefore 2",
+    "solution": "완전제곱식은\n$(3a+b)^2=9a^2+6ab+b^2$,\n$(3a-b)^2=9a^2-6ab+b^2$이다.\n따라서 $\\Box$에는 $\\pm6$이 들어갈 수 있다.\n정답은 ②이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -653,7 +653,7 @@ window.questionBank = [
       "$(x+4)(x+1)$"
     ],
     "answer": "2",
-    "solution": "$x^2-2x+1-2x+3 = x^2-4x+4$. $(x-2)^2$으로 인수분해됨. \\\\ \\therefore 2",
+    "solution": "식을 정리하면\n$(x-1)^2-(2x-3)\n=x^2-2x+1-2x+3\n=x^2-4x+4\n=(x-2)^2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -687,7 +687,7 @@ window.questionBank = [
       "$(x+3)(x-6)$"
     ],
     "answer": "1",
-    "solution": "한승: $x^2+3x-18 \\implies$ 상수항 $-18$ 채택. 수정: $x^2-7x+12 \\implies x$ 계수 $-7$ 채택. 처음 식: $x^2-7x-18 = (x-9)(x+2)$. \\\\ \\therefore 1",
+    "solution": "한승이는 $x$의 계수만 잘못 보았으므로\n$(x-3)(x+6)=x^2+3x-18$에서 원래 식의 상수항은 $-18$이다.\n수정이는 상수항만 잘못 보았으므로\n$(x-4)(x-3)=x^2-7x+12$에서 원래 식의 $x$의 계수는 $-7$이다.\n따라서 원래 식은\n$x^2-7x-18=(x+2)(x-9)$이다.\n정답은 ①이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -714,7 +714,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^{2}+\\sqrt{(-5)^{2}}$을 계산하시오. (4점)",
     "answer": "6",
-    "solution": "$13 - 12 + 5 = 6$.",
+    "solution": "$\\sqrt{169}=13$,\n$(-\\sqrt{12})^2=12$,\n$\\sqrt{(-5)^2}=5$이다.\n따라서\n$13-12+5=6$이다.",
     "choices": [],
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -743,7 +743,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\frac{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
     "answer": "$-\\frac{5}{2}a$",
-    "solution": "$|3a| - |-\\frac{1}{2}a| = -3a - (\\frac{1}{2}a) = -\\frac{5}{2}a$.",
+    "solution": "$\\sqrt{(3a)^2}=|3a|$, $\\sqrt{(-\\frac12a)^2}=|-\\frac12a|$이다.\n$a<0$이므로 $3a<0$, $-\\frac12a>0$이다.\n따라서\n$|3a|-|-\\frac12a|\n=-3a-(-\\frac12a)\n=-\\frac52a$이다.",
     "choices": [],
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -772,7 +772,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
     "answer": "$-40\\sqrt{6}$",
-    "solution": "$x=5-2\\sqrt{6}, y=5+2\\sqrt{6}$. $xy(x+y)(x-y) = 1 \\times 10 \\times (-4\\sqrt{6}) = -40\\sqrt{6}$.",
+    "solution": "두 식을 곱하면\n$xy=1$이다.\n또 유리화하면\n$x=5-2\\sqrt6$, $y=5+2\\sqrt6$이므로\n$x+y=10$, $x-y=-4\\sqrt6$이다.\n따라서\n$x^3y-xy^3\n=xy(x^2-y^2)\n=xy(x+y)(x-y)\n=1\\cdot10\\cdot(-4\\sqrt6)\n=-40\\sqrt6$이다.",
     "choices": [],
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -801,7 +801,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서답형 4-2] 이차식 $2x^2-ax-3$의 계수와 상수항이 모두 정수인 두 일차식의 곱으로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
     "answer": "0",
-    "solution": "$a=1, -1, 5, -5$ 가능. 모든 $a$의 합은 $0$임.",
+    "solution": "정수 계수의 두 일차식의 곱으로\n$2x^2-ax-3=(2x+m)(x+n)$이라 둘 수 있다.\n이때 $mn=-3$이므로\n$(m,n)=(1,-3),(-1,3),(3,-1),(-3,1)$을 확인한다.\n$x$의 계수 $2n+m=-a$이므로 가능한 $a$는\n$5,-5,-1,1$이다.\n따라서 모든 $a$의 합은\n$5+(-5)+(-1)+1=0$이다.",
     "choices": [],
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
