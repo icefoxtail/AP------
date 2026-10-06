@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "PHASE3D_OBSERVER_PROVIDER_REVIEW_INVALIDATION_v1",
+  "unit": "source-condition-review-observer-provider-closure-invalidation",
+  "status": "PASS",
+  "contract": "The current sourcePolicyFingerprint, current conditionBinding, and shared replay review guard are exercised end to end in a temporary provider harness. Observer and provider adapter changes each invalidate the saved CONDITIONS review; a fresh blind/compare receipt is required and validated.",
+  "mutatedClosures": [
+    "archive/tools/geometry-equation/production/graph_observer.py",
+    "alive/runtime/provider-bridge/codex-appserver-adapter.mjs"
+  ],
+  "observed": {
+    "mutationsTested": 2,
+    "oldFingerprintRejected": true,
+    "oldConditionBindingRejected": true,
+    "freshReviewCallsPerMutation": 1,
+    "freshLineageValidated": true,
+    "actualArchiveCalls": 0,
+    "externalProviderCalls": 0
+  },
+  "focused": {
+    "command": "node --test --test-name-pattern 'observer and provider closure mutations' archive/tools/geometry-equation/tests/p1-boundaries.test.mjs (10 repetitions)",
+    "runs": 10,
+    "passes": 10,
+    "failures": 0,
+    "log": "observer-provider-policy-negative-10x.log",
+    "sha256": "fe753b3d398243d0f09755fd9d4802891b212755d04fca681a018b056e5803fb"
+  },
+  "regressionSubset": {
+    "command": "node --test archive/tools/geometry-equation/tests/p1-boundaries.test.mjs archive/tools/geometry-equation/tests/production-runner.test.mjs archive/tools/geometry-equation/tests/production-contract.test.mjs archive/tools/geometry-equation/tests/display-envelope.test.mjs archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+    "passed": 49,
+    "failed": 0,
+    "log": "node-phase3d-subset.log",
+    "sha256": "3dea41ac7d878256e96e6dcd46cd044fd75292d0871c2e5307df3ebc609f17e0"
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/production/source-policy.mjs",
+      "sha256": "b7fd19cd33c750772b489127e32c90ee4bf217656a20658bacf0033bc30ca533"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/blinded-review.mjs",
+      "sha256": "863c55c1333bd5f91230aa4ad3c64c5eac4f112ff988114d5aba8951bf205a2c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/p1-boundaries.test.mjs",
+      "sha256": "7bb829c08428fe04f691c83ac7da7f5d758b2012bdbb54d68ff15784089f4cbd"
+    }
+  ],
+  "limitations": [
+    "Contract/provider harness only; no external model call or Actual Archive run.",
+    "Full invalidation matrix for every worker runtime, source image, and observer downstream cache remains open.",
+    "Current UID authority remains INPUT_REQUIRED for the three requested source identifiers."
+  ],
+  "lastUpdatedUtc": "2026-10-06T08:38:25Z"
+}

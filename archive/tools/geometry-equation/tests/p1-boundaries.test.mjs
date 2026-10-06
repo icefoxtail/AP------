@@ -7,7 +7,7 @@ import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {fileRef,objectSha,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {blindThenCompare,reuseReviewAuthority,validateReviewLineage,verificationBinding,conditionBinding,assertStudentOnly} from '../production/blinded-review.mjs';
-import {sourceReviewClosed,verificationClosed,verifiedSolutionPolicyFingerprint} from '../production/source-policy.mjs';
+import {sourceReviewClosed,verificationClosed,sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint} from '../production/source-policy.mjs';
 import {scalar,compareReconstruction} from '../production/cindy-observer.mjs';
 import {runPhase2} from '../production/phase2.mjs';
 import {resolveQuestion} from '../production/resolve-request.mjs';
@@ -79,6 +79,29 @@ test('changed proposed visual plan invalidates the source-condition replay bindi
     assert.equal(validateReviewLineage(h.root,refreshed.record,kind,policySha256,bindingB),true);
     await assert.rejects(reuseReviewAuthority({root:h.root,record:original,kind,policySha256,inputBindingSha256:bindingB,closed,refresh:()=>original}),/REFRESHED_REVIEW_AUTHORITY_INVALID/);
   }finally{fs.rmSync(h.root,{recursive:true,force:true});}
+});
+test('observer and provider closure mutations invalidate source-condition replay authority',async()=>{
+  const policyFiles=['archive/tools/geometry-equation/production/source-policy.mjs','archive/tools/geometry-equation/production/blinded-review.mjs','archive/tools/geometry-equation/production/construction.py','archive/tools/geometry-equation/production/graph_observer.py','alive/runtime/provider-bridge/codex-appserver-adapter.mjs'];
+  for(const changedFile of [policyFiles[3],policyFiles[4]]){
+    const h=harness('CONDITIONS'),kind='CONDITIONS',closed=sourceReviewClosed;
+    const source={content:'triangle',choices:['34'],sourceImageRequired:false},images=[];
+    const sourceRef={path:'archive/exams/original/source.js',bytes:17,sha256:objectSha('source-blob')};
+    const plan={sourceConditions:[{id:'given1',condition:'AB=5'}],displaySegments:['AB'],caption:'삼각형'};
+    try{
+      for(const file of policyFiles){const absolute=path.join(h.root,file);fs.mkdirSync(path.dirname(absolute),{recursive:true});fs.writeFileSync(absolute,'policy-v1');}
+      const policyBefore=sourcePolicyFingerprint(h.root);
+      const bindingBefore=conditionBinding({sourceRef,source,images,plan,policySha256:policyBefore});
+      const original=await blindThenCompare({...h,kind,source,images,comparison:{proposedPlan:plan},policySha256:policyBefore,inputBindingSha256:bindingBefore});
+      fs.appendFileSync(path.join(h.root,changedFile),'policy-v2');
+      const policyAfter=sourcePolicyFingerprint(h.root);
+      const bindingAfter=conditionBinding({sourceRef,source,images,plan,policySha256:policyAfter});
+      assert.notEqual(policyBefore,policyAfter);assert.notEqual(bindingBefore,bindingAfter);
+      let refreshCount=0;
+      const refreshed=await reuseReviewAuthority({root:h.root,record:original,kind,policySha256:policyAfter,inputBindingSha256:bindingAfter,closed,refresh:async()=>{refreshCount++;return blindThenCompare({...h,kind,source,images,comparison:{proposedPlan:plan},policySha256:policyAfter,inputBindingSha256:bindingAfter});}});
+      assert.equal(refreshCount,1);assert.equal(refreshed.reused,false);
+      assert.equal(validateReviewLineage(h.root,refreshed.record,kind,policyAfter,bindingAfter),true);
+    }finally{fs.rmSync(h.root,{recursive:true,force:true});}
+  }
 });
 test('no comparison call after blind failure, leak, absent image or non-durable freeze',async()=>{
   for(const source of [{content:'q',answer:'upstream'}, {content:'q',choices:[{solution:'leak'}]}])assert.throws(()=>assertStudentOnly(source),/LEAK/);
