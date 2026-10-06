@@ -661,7 +661,7 @@ window.questionBank = [
       "$46^\\circ$"
     ],
     "answer": "①",
-    "solution": "호 $BC$의 길이가 원 둘레의 $\\dfrac15$이므로 호 $BC=72^\\circ$. 호 $AD=d^\\circ$라 하자.\n$E$는 두 현 $AC$, $BD$의 교점이므로 $\\angle ABE=\\dfrac d2$, $\\angle AED=\\dfrac{d+72^\\circ}{2}$.\n$5\\angle ABE=3\\angle AED$에서 $5d=3(d+72)$, 따라서 $d=108$.\n$\\angle ACD$는 호 $AD$를 보는 원주각이므로 $\\angle ACD=54^\\circ$.\n따라서 정답은 ①이다.",
+    "solution": "호 $BC$의 길이가 원 둘레의 $\\dfrac15$이므로\n$\\wideparen{BC}=360^\\circ\\times\\dfrac15=72^\\circ$.\n호 $AD=d^\\circ$라 하자. 두 현 $AC$, $BD$가 $E$에서 만나므로 두 현이 원 안에서 만날 때의 각 성질에서\n$\\angle ABE=\\dfrac d2$, $\\angle AED=\\dfrac{d+72^\\circ}{2}$.\n조건 $5\\angle ABE=3\\angle AED$에 대입하면\n$5\\times\\dfrac d2=3\\times\\dfrac{d+72}{2}$\n$5d=3(d+72)=3d+216$\n$2d=216$, 따라서 $d=108$.\n$\\angle ACD$는 호 $AD$를 보는 원주각이므로\n$\\angle ACD=\\dfrac{108^\\circ}{2}=54^\\circ$.\n따라서 구하는 각은 $54^\\circ$이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
