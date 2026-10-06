@@ -25,7 +25,7 @@ window.questionBank = [
       "제주민속촌 $(-2,-1)$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "지도에서 각 점의 좌표를 눈금에 맞춰 읽는다.\n이호테우해수욕장 $(-1,2)$\n한라산 $(0,0)$\n천제연폭포 $(-1,-2)$\n비자림 $(2,1)$\n제주민속촌 $(3,-1)$\n따라서 옳지 않은 것은 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q1.png",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
@@ -63,7 +63,7 @@ window.questionBank = [
       "제4사분면"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "점 $(a,b)$가 제2사분면 위에 있으므로\n$a<0$, $b>0$이다.\n$a-b<0$\n$ab<0$\n따라서 $(a-b,ab)$는 제3사분면 위의 점이므로 정답은 ④이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -102,7 +102,7 @@ window.questionBank = [
       "$30$분과 $150$분에 냉장실의 온도는 같다."
     ],
     "answer": "③",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "그래프에서 가장 낮은 온도는 $1^\\circ\\mathrm{C}$, 가장 높은 온도는 $6^\\circ\\mathrm{C}$이다.\n최저점은 $15,45,75,105,135,\\ldots$분으로 $30$분 간격이다.\n$90$분과 $120$분 사이에서도 최저 온도는 $1^\\circ\\mathrm{C}$이므로 $0^\\circ\\mathrm{C}$가 되지 않는다.\n또 $30$분과 $150$분의 온도는 모두 $6^\\circ\\mathrm{C}$이다.\n따라서 옳지 않은 것은 ③이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q3.png",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
@@ -142,7 +142,7 @@ window.questionBank = [
       "ㄱ-C, ㄴ-B, ㄷ-A"
     ],
     "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "같은 양의 물을 넣을 때 단면적이 클수록 물의 높이는 천천히 올라간다.\nA: 위로 갈수록 넓어짐 $\\rightarrow$ 처음 빠르고 점점 느려짐 $\\rightarrow$ ㄱ\nB: 아래는 넓고 위 관은 좁음 $\\rightarrow$ 처음 느리고 나중 빠름 $\\rightarrow$ ㄷ\nC: 단면적이 일정함 $\\rightarrow$ 일정한 비율로 증가 $\\rightarrow$ ㄴ\n따라서 ㄱ-A, ㄴ-C, ㄷ-B이므로 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q4.png",
     "imageSize": "full",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
@@ -183,7 +183,7 @@ window.questionBank = [
       "$\\dfrac{29}{2}$"
     ],
     "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "정비례 그래프가 $(-4,2)$를 지나므로\n$2=-4a$\n$a=-\\dfrac12$\n반비례 그래프가 $(3,5)$를 지나므로\n$b=3\\times5=15$\n$a-b=-\\dfrac12-15=-\\dfrac{31}{2}$\n따라서 정답은 ①이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q5.png",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
@@ -223,7 +223,7 @@ window.questionBank = [
       "제1사분면과 제3사분면을 지난다."
     ],
     "answer": "②, ③",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②, ③이다.",
+    "solution": "$y=-x$는 정비례 관계이고 그래프는 원점을 지나는 직선이다.\n① 반비례 관계가 아니다.\n② 그래프는 직선이다.\n③ 원점을 지난다.\n④ $x=-2$이면 $y=2$이므로 $(-2,-2)$를 지나지 않는다.\n⑤ 제2사분면과 제4사분면을 지난다.\n따라서 옳은 것은 ②, ③이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -260,7 +260,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "ㄱ. $\\dfrac12xy=18$\n$xy=36$\n$y=\\dfrac{36}{x}$이므로 반비례한다.\nㄴ. $xy=500$\n$y=\\dfrac{500}{x}$이므로 반비례한다.\nㄷ. $y=\\dfrac16x$이므로 정비례한다.\n따라서 ㄱ, ㄴ이므로 정답은 ③이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -299,7 +299,7 @@ window.questionBank = [
       "$-16$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "그래프가 $(4,2)$를 지나므로\n$2=\\dfrac{a}{4}$\n$a=8$\n따라서 $y=\\dfrac8x$이다.\n$x=-1$일 때\n$y=\\dfrac8{-1}=-8$\n따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q8.png",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
@@ -339,7 +339,7 @@ window.questionBank = [
       "$20\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "$P$는 $\\overline{AB}$의 중점이므로\n$AP=PB=20\\,\\mathrm{cm}$\n$Q$는 $\\overline{AP}$의 중점이므로\n$AQ=QP=10\\,\\mathrm{cm}$\n따라서 $QB=10+20=30\\,\\mathrm{cm}$이다.\n$R$은 $\\overline{QB}$의 중점이므로\n$QR=\\dfrac{30}{2}=15\\,\\mathrm{cm}$\n따라서 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q9.png",
     "imageSize": "medium",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -380,7 +380,7 @@ window.questionBank = [
       "$46^\\circ$"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "가로선과 세로선은 수직이므로 한 각은 $90^\\circ$이다.\n$\\angle x$는 $27^\\circ$인 각의 맞꼭지각이므로\n$x=27$\n$y+27=90$\n$y=63$\n따라서 $y-x=63-27=36$이므로 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q10.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -420,7 +420,7 @@ window.questionBank = [
       "$40^\\circ$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$\\angle COD=x^\\circ$, $\\angle DOE=y^\\circ$라 하자.\n$\\angle BOC=3x^\\circ$\n$\\angle EOF=3y^\\circ$\n$\\angle AOF$는 평각이므로\n$40+3x+x+y+3y=180$\n$4x+4y=140$\n$x+y=35$\n따라서 $\\angle COE=x+y=35^\\circ$이므로 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q11.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -460,7 +460,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ, ㄹ"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "ㄱ. $AB\\perp BC$이고 $AB=2\\,\\mathrm{cm}$이므로 점 $A$와 직선 $BC$ 사이의 거리는 $2\\,\\mathrm{cm}$이다.\nㄴ. $AD\\perp AB$이므로 점 $D$에서 직선 $AB$에 내린 수선의 발은 $A$이다.\nㄷ. $AB\\perp CB$이다.\nㄹ. 직선 $AD$, $BC$, $CD$는 각각 직선 $AB$와 만나므로 해당 직선은 $3$개이다.\n따라서 ㄱ, ㄴ, ㄷ, ㄹ이 모두 옳으므로 정답은 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q12.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -502,7 +502,7 @@ window.questionBank = [
       "모서리 $AB$는 모서리 $IJ$와 평행하다."
     ],
     "answer": "④, ⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④, ⑤이다.",
+    "solution": "① $FG$와 $BG$는 점 $G$에서 만난다.\n② 면 $ABCDE$에 수직인 옆모서리는 $AF,BG,CH,DI,EJ$의 $5$개이다.\n③ 모서리 $EA$는 면 $ABCDE$에 포함된다.\n④ $DI$와 만나지도 않고 평행하지도 않는 모서리는\n$AB,BC,EA,FG,GH,JF$의 $6$개이므로 옳지 않다.\n⑤ $AB$와 평행한 대응 모서리는 $FG$이고, $IJ$가 아니므로 옳지 않다.\n따라서 옳지 않은 것은 ④, ⑤이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q13.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -542,7 +542,7 @@ window.questionBank = [
       "$\\angle d$, $\\angle l$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$\\angle h$를 기준으로 엇각의 위치를 각각 확인한다.\n위쪽 교점에서는 $\\angle b$가 $\\angle h$의 엇각이다.\n오른쪽 교점에서는 $\\angle j$가 $\\angle h$의 엇각이다.\n따라서 $\\angle b$, $\\angle j$이므로 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -582,7 +582,7 @@ window.questionBank = [
       "$160^\\circ$"
     ],
     "answer": "①",
-    "solution": "평행선의 같은 쪽 내각은 합이 180°이므로 b=180°-110°=70°이다. 엇각의 크기는 같으므로 a=50°이다. 따라서 a+b=50°+70°=120°이다.",
+    "solution": "$l\\parallel m$이다.\n$50^\\circ$와 $\\angle a$는 엇각이므로\n$a=50^\\circ$\n그림의 $110^\\circ$와 $\\angle b$는 같은 쪽 내각이므로\n$b=180^\\circ-110^\\circ=70^\\circ$\n따라서\n$a+b=50^\\circ+70^\\circ=120^\\circ$\n이므로 정답은 ①이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q15.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -626,7 +626,7 @@ window.questionBank = [
       "$150^\\circ$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$l\\parallel m$이다.\n아래쪽 선분이 $m$과 이루는 각은 $30^\\circ$이다.\n꺾인 점의 각이 $70^\\circ$이므로 위쪽 선분이 평행선과 이루는 각은\n$70^\\circ-30^\\circ=40^\\circ$이다.\n윗부분의 삼각형에서\n$40^\\circ+80^\\circ+(180^\\circ-x)=180^\\circ$\n$300^\\circ-x=180^\\circ$\n$x=120^\\circ$\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q16.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -666,7 +666,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ, ㄹ"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "같은 각을 옮겨 그리는 작도에서는 호의 반지름과 두 호의 교점 사이 거리를 그대로 옮긴다.\nㄱ. 같은 반지름으로 그린 호이므로 $OC=OD$이다.\nㄴ. 작도한 각은 원래 각과 같으므로 $\\angle COD=\\angle EO'F$이다.\nㄷ. $O'E$는 호의 반지름이고 $EF$는 옮긴 현의 길이이므로 일반적으로 같지 않다.\nㄹ. 제시된 순서는 필요한 호와 교점을 정하는 순서와 맞지 않는다.\n따라서 옳은 것은 ㄱ, ㄴ이므로 정답은 ①이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q17.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -704,7 +704,7 @@ window.questionBank = [
       "$10$가지"
     ],
     "answer": "②",
-    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "세 막대를 고른 뒤 가장 긴 변이 나머지 두 변의 합보다 작은 경우만 센다.\n가능한 세 변은\n$(2,3,4)$\n$(2,4,5)$\n$(2,5,6)$\n$(3,4,5)$\n$(3,4,6)$\n$(3,5,6)$\n$(4,5,6)$\n이다.\n따라서 모두 $7$가지이므로 정답은 ②이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -741,7 +741,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ, ㄹ"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "ㄱ. 한 변 $AB$와 그 양 끝 각 $\\angle A$, $\\angle B$가 주어져 하나로 정해진다.\nㄴ. 두 변 $AC,BC$와 그 끼인각 $\\angle C$가 주어져 하나로 정해진다.\nㄷ. 두 변과 끼인각이 아닌 한 각이 주어져 하나로 정해진다고 할 수 없다.\nㄹ. 세 각만 주어지면 크기가 다른 삼각형을 만들 수 있다.\n따라서 ㄱ, ㄴ이므로 정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -780,7 +780,7 @@ window.questionBank = [
       "$50\\,\\mathrm{cm}^2$"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "$M$은 $BC$의 중점이므로\n$BM=CM$이다.\n$BD\\perp AM$, $CE\\perp AM$이고\n$\\angle BMD=\\angle CME$이므로\n$\\triangle BDM\\equiv\\triangle CEM$이다.\n따라서\n$CE=BD=10\\,\\mathrm{cm}$\n$EM=DM=4\\,\\mathrm{cm}$\n이다.\n$AM=AD-DM=18-4=14\\,\\mathrm{cm}$\n$AE=AM-EM=14-4=10\\,\\mathrm{cm}$\n따라서\n$[\\triangle ACE]=\\dfrac12\\times10\\times10=50\\,\\mathrm{cm}^2$\n이므로 정답은 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q20.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -815,7 +815,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 그림과 같이 정비례 관계 $y=\\dfrac54x$의 그래프 위의 점 $A$에서 $x$축에 수선을 그었을 때, $x$축과 만나는 점 $B$의 좌표는 $(8,0)$이다. 다음 물음에 답하시오. [5점]",
     "choices": [],
     "answer": "(1) $(8,10)$ (2) $40$",
-    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) $(8,10)$ (2) $40$이다.",
+    "solution": "(1) 점 $B=(8,0)$이므로 점 $A$의 $x$좌표는 $8$이다.\n$y=\\dfrac54\\times8=10$\n따라서 $A=(8,10)$이다.\n\n(2) $OB=8$, $AB=10$이므로\n$[\\triangle AOB]=\\dfrac12\\times8\\times10=40$\n이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q21.png",
     "imageSize": "tall",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
@@ -851,7 +851,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림과 같이 직선 $l$ 위에 있는 네 점 $A$, $B$, $C$, $D$와 직선 $l$ 위에 있지 않은 한 점 $P$가 있다. 이 중 두 점을 골라 만들 수 있는 직선의 개수를 $a$, 반직선의 개수를 $b$, 선분의 개수를 $c$라 할 때, $a+b+c$의 값을 구하는 과정을 자세히 서술하시오. [4점]",
     "choices": [],
     "answer": "$29$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $29$이다.",
+    "solution": "점 $A,B,C,D$는 한 직선 $l$ 위에 있고 $P$만 직선 밖에 있다.\n\n직선:\n$l,PA,PB,PC,PD$\n이므로 $a=5$이다.\n\n반직선:\n직선 $l$ 위에서는\n$AB,BA,BC,CB,CD,DC$ 방향의 $6$개,\n점 $P$와 연결되는 것은\n$PA,PB,PC,PD,AP,BP,CP,DP$의 $8$개이다.\n따라서 $b=6+8=14$이다.\n\n선분은 두 점을 고르면 되므로\n$c={}_5C_2=10$이다.\n\n따라서\n$a+b+c=5+14+10=29$이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q22.png",
     "imageSize": "medium",
     "subUnitKey": "M1-05-BASIC_FIGURE",
@@ -887,7 +887,7 @@ window.questionBank = [
     "content": "[서·논술형 3] 다음 그림은 직사각형 모양의 종이를 선분 $CD$와 선분 $EF$를 접는 선으로 하여 접은 것이다. $\\angle ABC=66^\\circ$, $\\angle BDE=58^\\circ$일 때, $\\angle DEF+\\angle DFE$의 크기를 구하고, 구하는 풀이 과정을 자세히 설명하시오. [5점]",
     "choices": [],
     "answer": "$124^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $124^\\circ$이다.",
+    "solution": "직사각형의 위쪽 변과 아래쪽 변은 평행하다.\n$\\angle ABC=66^\\circ$이므로 점 $D$에서\n$\\angle BDF=180^\\circ-66^\\circ=114^\\circ$이다.\n또 $\\angle BDE=58^\\circ$이므로\n$\\angle EDF=114^\\circ-58^\\circ=56^\\circ$이다.\n$\\triangle DEF$에서\n$\\angle DEF+\\angle DFE=180^\\circ-56^\\circ=124^\\circ$이다.\n따라서 구하는 값은 $124^\\circ$이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q23.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -922,7 +922,7 @@ window.questionBank = [
     "content": "[서·논술형 4] 다음 그림과 같이 한 변의 길이가 $8\\,\\mathrm{cm}$인 정사각형 $ABCD$의 두 대각선의 교점 $O$를 꼭짓점으로 가지고 한 변의 길이가 $6\\,\\mathrm{cm}$인 정사각형 $OEFG$, $OHIJ$를 그렸다. 다음 물음에 답하시오. [6점]",
     "choices": [],
     "answer": "(1) $\\angle POC=\\angle QOD$, $\\overline{OC}=\\overline{OD}$, $\\angle PCO=\\angle QDO=45^\\circ$이므로 $\\triangle OPC\\equiv\\triangle OQD$ (ASA 합동) (2) $16\\,\\mathrm{cm}^2$ (3) $32\\,\\mathrm{cm}^2$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) $\\angle POC=\\angle QOD$, $\\overline{OC}=\\overline{OD}$, $\\angle PCO=\\angle QDO=45^\\circ$이므로 $\\triangle OPC\\equiv\\triangle OQD$ (ASA 합동) (2) $16\\,\\mathrm{cm}^2$ (3) $32\\,\\mathrm{cm}^2$이다.",
+    "solution": "(1) 정사각형 $ABCD$의 대각선은 서로 수직이고 서로를 이등분하므로\n$OC=OD$이고 $\\angle PCO=\\angle QDO=45^\\circ$이다.\n또 정사각형 $OHIJ$에서 $OP\\perp OQ$, 정사각형 $ABCD$에서 $OC\\perp OD$이므로\n$\\angle POC=\\angle QOD$이다.\n따라서\n$\\triangle OPC\\equiv\\triangle OQD$\n(ASA 합동)이다.\n\n(2) (1)에서\n$[\\triangle OPC]=[\\triangle OQD]$이다.\n따라서\n$[OPCQ]=[\\triangle OPC]+[\\triangle OCQ]\n=[\\triangle OQD]+[\\triangle OCQ]\n=[\\triangle OCD]$\n이다.\n정사각형 $ABCD$의 넓이는\n$8^2=64\\,\\mathrm{cm}^2$\n이고 두 대각선이 넓이를 $4$등분하므로\n$[\\triangle OCD]=\\dfrac{64}{4}=16\\,\\mathrm{cm}^2$이다.\n\n(3) 반대쪽 색칠 부분도 정사각형 $OEFG$에 대해 같은 방법으로 $16\\,\\mathrm{cm}^2$이다.\n따라서 색칠한 부분의 넓이는\n$16+16=32\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q24.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-POSITION_RELATION",
