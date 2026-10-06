@@ -306,7 +306,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "삼각형의 세 변의 길이 $a,b,c$에 대하여 $a^3+b^3+c^3=3abc$를 만족하는 삼각형의 둘레의 길이가 $12$일 때, 이 삼각형의 넓이는?",
+    "content": "삼각형의 세 변의 길이 $a,b,c$에 대하여 \n$a^3+b^3+c^3=3abc$를 만족하는 삼각형의 둘레의 길이가 $12$일 때, 이 삼각형의 넓이는?",
     "choices": [
       "① $2\\sqrt{3}$",
       "② $\\frac{3}{4}\\sqrt{3}$",
@@ -734,7 +734,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "[서술형2] 이차방정식 $x^2+ax+b=0$의 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 $f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.) [5점]",
+    "content": "[서술형2] 이차방정식 $x^2+ax+b=0$의 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 \n$f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.) [5점]",
     "choices": [],
     "answer": null,
     "solution": null,
@@ -753,7 +753,7 @@ window.questionBank = [
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "제곱근",
