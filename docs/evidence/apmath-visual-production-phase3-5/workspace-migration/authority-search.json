@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "APMATH_VISUAL_AUTHORITY_SEARCH_v1",
+  "searchedAt": "2026-10-06",
+  "worktree": "C:/Users/USER/Desktop/AP-worktrees/apmath-visual-phase3-5/AP------",
+  "fetchedMainSha": "13525fde8e9a547f385f8dd225c43031d2b92cc1",
+  "registrySearch": {
+    "scope": "archive/**/*.json and archive/**/*.jsonl",
+    "query": "SOURCE_EXAM_ID_REGISTRY_v1",
+    "matches": [
+      "archive/tools/pipeline-core/contracts/source-exam-id-registry-v1.schema.json"
+    ],
+    "result": "Schema only; no registry instance exists in the current repository checkout."
+  },
+  "existingArchiveIdentitySources": [
+    {
+      "path": "archive/data/question_identity_map.json",
+      "schemaVersion": "question-identity-map-v1",
+      "generatedAt": "2026-10-05T17:22:02.229Z",
+      "sourceCommit": "4883920cfba88849166ccc15ff7eef9121d3721d",
+      "sourceCommitAncestorOfFetchedMain": true,
+      "sourceCommitSourceFilesStillMatchFetchedMain": true,
+      "identityAlgorithm": "qid_v1_ + SHA-256(normalized sourceArchiveFile + '#' + sourceOrdinal)",
+      "recordCount": 11747,
+      "targetRows": [
+        {
+          "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+          "sourceOrdinal": 1,
+          "questionUid": "qid_v1_8316a99f7186a54d81bd97b990841c95a4412b7a47b55db90acb6e172dda9681",
+          "sourceFingerprint": "80af810756bab4e8915828187c49d687263afc13458682df691add99864c543e"
+        },
+        {
+          "sourceArchiveFile": "original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+          "sourceOrdinal": 10,
+          "questionUid": "qid_v1_835085cfab28e669e9393535592ba2ccd31d94e0466ea62edd292099736db0e6",
+          "sourceFingerprint": "ba38757a7f041304f18a183ff8b635324f2c21bbda0f9b5b711d97d0ab4cdaf4"
+        },
+        {
+          "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+          "sourceOrdinal": 1,
+          "questionUid": "qid_v1_eece26cc298c8fc7196d228c253c7733ec3e542306cb419b65881c82a1f8eccd",
+          "sourceFingerprint": "d49e3d457ef4678cecd5d7a26191fcf3e9e98526119c0b23c72a3f84bc6cd447"
+        }
+      ],
+      "sourceFingerprintContract": "SHA-256(JSON.stringify({content, choices, answer, solution, image})); audit-only and never used to decide questionUid.",
+      "authorityGap": "These records use qid_v1 and have no canonicalSourceExamId, sourceIdentityKey, ACTIVE/RETIRED status, questionUidV2, or raw sourceSha256 fields. The builder states sourceFingerprint is audit-only and does not decide questionUid."
+    },
+    {
+      "path": "archive/question-identity.js",
+      "schemaVersion": "question-identity-runtime-v1",
+      "sourceCommit": "4883920cfba88849166ccc15ff7eef9121d3721d",
+      "behavior": "Resolves qid_v1 or sourceFile+ordinal to qid_v1. It does not provide SOURCE_EXAM_ID_REGISTRY_v1 or QUESTION_UID_v2 authority."
+    },
+    {
+      "path": "archive/question-index.js",
+      "generatedBy": "archive/tools/build-question-index.mjs",
+      "identityFields": ["qKey", "sourceFile", "sourceOrdinal"],
+      "reportPath": "archive/question-index-report.md",
+      "reportScope": "git-tracked and db-listed production questions; 11,739 records",
+      "authorityGap": "This is an Archive browsing/index projection, not the v2 source registry and does not carry active source-version lineage or parent-run evidence."
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "schemaVersion": "archive-question-metadata-v1",
+      "generatedAt": "2026-10-05T17:22:02.719Z",
+      "identityVersion": "qid_v1",
+      "authorityGap": "Contains taxonomy and metadata review fields, not a v2 source identity registry or a parent verified-solution run."
+    },
+    {
+      "paths": [
+        "archive/data/basic-scope-source-links.json",
+        "archive/data/basic-scope-parent-links.json"
+      ],
+      "status": "REVIEWED_SCOPE_LINKS / DERIVED_READ_ONLY",
+      "authorityGap": "These artifacts link curriculum scopes and parent taxonomy; they do not bind a questionUidV2 to current source bytes or a verified-solution parent run."
+    }
+  ],
+  "currentSourceVersionLineage": {
+    "identityMapSourceCommit": "4883920cfba88849166ccc15ff7eef9121d3721d",
+    "sourceCommitAncestorOfFetchedMain": true,
+    "sourceFilesUnchangedSinceIdentityMapSourceCommit": true,
+    "targetSources": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "lastSourceCommit": "25e53c3f63df0950fd43834578209b66a16b76db",
+        "rawFileSha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      },
+      {
+        "path": "archive/exams/original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+        "lastSourceCommit": "482f2b6422bb90281ff82c45fe3bcf176ffad681",
+        "rawFileSha256": "8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "lastSourceCommit": "cc2376c069f4de22331cb093e50883a652453adb",
+        "rawFileSha256": "f2b726065d3802ccdb9d3454ad92a2deece34772674188c24cd4f4b96374796e"
+      }
+    ],
+    "note": "The qid_v1 map records an audit fingerprint over content/choices/answer/solution/image, not a raw-file SHA. Current raw SHA values were computed from the source files; they are not registered in an approved v2 authority artifact."
+  },
+  "parentRunSearch": {
+    "scope": "archive/analysis/**/*.json and archive/analysis/**/*.jsonl",
+    "queries": ["SOURCE_EXAM_ID_REGISTRY_v1", "questionUidV2", "PARENT_SOURCE_BINDING_MISMATCH"],
+    "matchingAuthorityArtifacts": [],
+    "parentRunRefSuppliedToTask": false,
+    "resolverContract": "archive/tools/geometry-equation/production/resolve-request.mjs requires a bound registry; after source resolution it requires a parentRunRef whose inputs bind the same source path/SHA and whose v2 audit passes. No such reference or result was supplied."
+  },
+  "v2RegistryImplementationSearch": {
+    "query": "create.*SourceExamIdRegistry|build.*SOURCE_EXAM_ID_REGISTRY_v1|SOURCE_EXAM_ID_REGISTRY_v1 across archive/tools JS/Python",
+    "result": "No current registry builder or persisted registry instance was found. pipeline-core/question-uid.mjs provides questionUidV2(), normalizeSourceExamIdRegistry(), sourceExamIdRegistrySha(), and migration-evidence validation; pipeline-core/prepare.mjs consumes a supplied sourceExamIdRegistryRef in V2. Registry construction in search results was limited to synthetic unit tests.",
+    "legacyMigrationPath": "archive/tools/intelligence/migrate-question-identity-map-v1.mjs migrates records within question-identity-map-v1/qid_v1; it does not create SOURCE_EXAM_ID_REGISTRY_v1 or UID_MIGRATION_EVIDENCE_v1 for qid_v2."
+  },
+  "decision": {
+    "status": "INPUT_REQUIRED",
+    "reason": "The existing qid_v1 identity map preserves a useful current source/version snapshot and exact sourceArchiveFile+ordinal rows. Its contract does not define the v2 source identity key, canonical source ID, active/retired mapping, or approved parent verification lineage. Converting it to ACTIVE by deriving sourceExamId/sourceIdentityKey from its paths would invent the missing authority fields and exceed the artifact's contract. The CLI's separate --experimental-locator route can find a source file, but it only returns EXPERIMENTAL_LOCATOR_COMPLETE and cannot close canonical Phase 2.",
+    "canonicalCliResults": [
+      {"questionUid":"25_효천고_2학기_중간_고1_기출|1","status":"INPUT_REQUIRED","reason":"UID_AUTHORITY_REGISTRY_REQUIRED","exitCode":2},
+      {"questionUid":"25_연향중_1학기_기말_중3_기출c|10","status":"INPUT_REQUIRED","reason":"UID_AUTHORITY_REGISTRY_REQUIRED","exitCode":2},
+      {"questionUid":"25_삼산중_2학기_기말_중2_기출|1","status":"INPUT_REQUIRED","reason":"UID_AUTHORITY_REGISTRY_REQUIRED","exitCode":2}
+    ],
+    "noPromotion": "No locator result, qid_v1 map, taxonomy link, or generated temporary registry was promoted to current v2 authority."
+  }
+}
