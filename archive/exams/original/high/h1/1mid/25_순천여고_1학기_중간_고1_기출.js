@@ -728,7 +728,7 @@ window.questionBank = [
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차방정식",
