@@ -1,0 +1,42 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "19_신흥중_2학기_기말_중2_기출",
+  "finalArtifactSha": "1146493bfee4a32fe3b0ae5eb4b5d3093db66bef",
+  "freezeRef": "R2.independent-freeze.json",
+  "freezeSha256": "94cfb8ab674d99a862d45addeb9de8787dbff725d2499732ffeb26daa09ba996",
+  "items": [
+    {
+      "qid": 4,
+      "preComparisonBlindAnswer": "8 cm^2 (choice 3)",
+      "postComparisonAdjudicatedAnswer": "4 cm^2 (choice 1)",
+      "currentStoredAnswer": "①",
+      "r1IndependentAnswer": "①",
+      "finding": "Initial blind region boundary incorrectly included extra polygon area. The shaded locus is triangle P-Q-C; coordinate area is 4 cm^2.",
+      "disposition": "CALCULATION_CORRECTION_AFTER_FREEZE; preserve initial freeze."
+    },
+    {
+      "qid": 9,
+      "preComparisonBlindAnswer": "No unique answer; suspicious",
+      "postComparisonAdjudicatedAnswer": "④",
+      "currentStoredAnswer": "④",
+      "r1IndependentAnswer": "No unique answer; intended ④",
+      "finding": "Full source exam page 2 and the complete visible geometry establish four equal area expressions AB^2/2; BCI has expression AC(AB+AC)/2. Answer key page 1 confirms ④ after the independent proof. The omitted top D label in current crop is non-decisive; no student projection mutation.",
+      "disposition": "CLOSED_FALSE_HOLD_SOURCE_SUFFICIENT; source comparison only; no asset/source repair.",
+      "priorAttempt": {
+        "priorPostComparisonAdjudicatedAnswer": "UNRESOLVED",
+        "priorFinding": "The source key ④ is intended, but the visible geometry does not establish that BCI differs from four equal areas for arbitrary right-triangle legs. Mathematical uniqueness remains unresolved.",
+        "priorDisposition": "OPEN_SOURCE_AMBIGUITY; requires ROOT routing/adjudication, no force PASS."
+      }
+    },
+    {
+      "qid": 13,
+      "preComparisonBlindAnswer": "5 ways (choice 1)",
+      "postComparisonAdjudicatedAnswer": "6 ways (choice 2)",
+      "currentStoredAnswer": "②",
+      "r1IndependentAnswer": "②",
+      "finding": "Enumeration omitted the c=2 case (a,b,c)=(5,5,2); full bounded enumeration has six triples.",
+      "disposition": "COUNTING_CORRECTION_AFTER_FREEZE; preserve initial freeze."
+    }
+  ]
+}

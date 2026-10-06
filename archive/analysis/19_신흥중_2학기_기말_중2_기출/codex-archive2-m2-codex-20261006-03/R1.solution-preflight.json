@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "JS_ARCHIVE_SOLUTION_PREFLIGHT_V2",
+  "examUid": "19_신흥중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "registryPath": "archive/data/codex-quality-calibration-registry-v2.json",
+  "registryRawSha256": "f42e82d8c6c6f83d294d7d825eb0cc2c7cc939f1e62db3ed6faaea0cd9f0733d",
+  "goldenSamples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+      "gitBlobSha": "95f7e733fd3f786b6bcb98f9662a6ae568f82949",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n$P$의 $x$좌표는\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n$=\\dfrac{9-6}{3}$\n$=\\dfrac33=1$이다.\n$P$의 $y$좌표는\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$\n$=\\dfrac{14+4}{3}$\n$=\\dfrac{18}{3}=6$이다",
+          "observation": "Coordinate computations show the ratio weights, intermediate coordinates, and final distance in separate readable steps.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 3,
+          "solutionSha256": "77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+          "solutionExcerpt": "원의 중심과 반지름을 읽으려면 주어진 식을 원의 표준형으로 바꾸어야 한다.\n주어진 식은\n$x^2+y^2-6x+4y+9=0$이다.\n먼저 상수항 $9$를 오른쪽으로 옮겨\n$x$에 대한 항과 $y$에 대한 항을 모은다.\n$x^2-6x+y^2+4y=-9$이다.\n이제 각각 완전제곱식을 만든다.\n$x^2-6x$에는 $9$를 더하면\n$x^2-6x+9=(x-3)^2$이 된다.\n$y^2+4y$에는 $4$를 더하면\n$y^2+4y+4=(y+2)^2$가 된다.\n왼쪽에 $9$와 $4$를 더했으므로 오른쪽에도 똑같이 $9$와 $4$를 더한다.\n$(x^2-6",
+          "observation": "Completing-square transformations are shown term by term, including balancing both sides before reading center and radius.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+          "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n$(x+3)^2+(y-1)^2=9$이다.\n즉\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n처음 원의 중심은 $(-3,1)$이고\n반지름은 $3$이다.\n\n이제 중심만 이동 순서대로 따라간다.\n먼저 $x$축의 방향으로 $-2$만큼,\n$y$축의 방향으로 $1$만큼 평행이동한다.\n$x$좌표는 $-3-2=-5$,\n$y$좌표는 $1+1=2$이므로\n$(-3,1)\\rightarrow(-5,2)$이다.\n그다음 원점에 대하여 대칭이동한다.\n원점 대칭에서는 두 좌표의 부호가",
+          "observation": "Golden representative solution and physical visual were read/rendered before the q13 correction-review pass. Rendered and inspected: plotted C0→C1 translation and origin-reflected C2 centers align with labels; radius remains 3. Dashed prior circles and final solid circle are distinct.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ],
+          "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+          "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+          "renderedReviewArtifact": ".tmp/archive/archive2-m2-codex-20261006-03/19_신흥중_2학기_기말_중2_기출/golden-m201-q7.png",
+          "renderedReviewArtifactSha256": "37b3df0865a4cbe5abe2a88f948befe90470c95bab3ad2c691ab5a9045f9565d",
+          "visualObservation": "Rendered and inspected: plotted C0→C1 translation and origin-reflected C2 centers align with labels; radius remains 3. Dashed prior circles and final solid circle are distinct."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+          "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=-5$이다.\n따라서 두 점 사이의 거리는\n$\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}$\n$=\\sqrt{5^2+(-5)^2}$\n$=\\sqrt{25+25}$\n$=\\sqrt{50}$\n$=5\\sqrt2$이다.\n\n따라서 정답은 ③이다.",
+          "observation": "Coordinate differences are shown before substitution, then each radical simplification is separated onto a new line.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 5,
+          "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+          "solutionExcerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.\n$A=\\{3,2a,b-4\\}$에는 원소 $3$이 반드시 들어 있다.\n따라서 $B=\\{3a,4,2\\}$에도 원소 $3$이 들어 있어야 한다.\n$B$에서 $4$와 $2$는 $3$이 아니므로\n$3a=3$이어야 한다.\n따라서\n$a=1$이다.\n이 값을 두 집합에 대입하면\n$A=\\{3,2,b-4\\}$,\n$B=\\{3,4,2\\}$이다.\n두 집합이 같으려면 $A$의 남은 원소 $b-4$가 $4$여야 하므로\n$b-4=4$\n$b=8$이다.\n따라서\n$a+b=1+8=9$",
+          "observation": "Set equality is reduced by testing a required element, substituting, and resolving the remaining parameter explicitly.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY"
+          ]
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+          "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$이므로\n둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n두 직선이 수직이므로\n$-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이다.\n$-\\dfrac{k}{6}=-1$\n$k=6$이다.\n\n따라서 정답은 ①이다.",
+          "observation": "Golden representative solution and physical visual were read/rendered before the q13 correction-review pass. Rendered and inspected: blue shallow negative line and red steep positive line have the perpendicular geometry used to solve k=6. Local ImageMagick font fallback boxes the Korean text labels; the geometry remains visible and this fallback is not taken as target visual authority.",
+          "axes": [
+            "STUDENT_REPRODUCIBILITY",
+            "SMALL_BOARD_STRUCTURE",
+            "EXPLANATION_DENSITY",
+            "VISUAL_SEMANTIC_PARITY",
+            "VISUAL_READABILITY"
+          ],
+          "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+          "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+          "renderedReviewArtifact": ".tmp/archive/archive2-m2-codex-20261006-03/19_신흥중_2학기_기말_중2_기출/golden-hyocheon-q2.png",
+          "renderedReviewArtifactSha256": "3e0610f0fea7f300bf5540e62520a16e8e33f3d51ad1ca3076a95506fe3659cb",
+          "visualObservation": "Rendered and inspected: blue shallow negative line and red steep positive line have the perpendicular geometry used to solve k=6. Local ImageMagick font fallback boxes the Korean text labels; the geometry remains visible and this fallback is not taken as target visual authority."
+        }
+      ]
+    }
+  ],
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "Read the cross-axis false-PASS regressions: actual SVG coordinates/topology, separated enumeration blocks, resolvable Meta nulls, and evaluated runtime escapes."
+    }
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "sampleReadBeforeSolutionCorrectionReview": true,
+  "priorTargetReviewBeforePreflight": true,
+  "lateOrderFailurePreserved": true,
+  "calibrationStatus": "PASS_FOR_POST_PREFLIGHT_CORRECTION_REVIEW",
+  "calibrationOrder": "The original student-only freeze preceded stored answers. Target solutions were first examined before the initial calibration attempt, which is preserved as failed. Golden solution samples, actual SVG renders for both samples, and the related Negative README have now all been read and SHA-bound. Only the q13 enumeration locus was re-read after this completed preflight; no sample answer or Meta fact was copied.",
+  "physicalGoldenVisualsReviewed": [
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "qid": 7,
+      "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+      "renderedReviewArtifact": ".tmp/archive/archive2-m2-codex-20261006-03/19_신흥중_2학기_기말_중2_기출/golden-m201-q7.png",
+      "renderedReviewArtifactSha256": "37b3df0865a4cbe5abe2a88f948befe90470c95bab3ad2c691ab5a9045f9565d",
+      "observation": "Rendered and inspected: plotted C0→C1 translation and origin-reflected C2 centers align with labels; radius remains 3. Dashed prior circles and final solid circle are distinct."
+    },
+    {
+      "samplePath": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "qid": 2,
+      "visualPath": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+      "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+      "renderedReviewArtifact": ".tmp/archive/archive2-m2-codex-20261006-03/19_신흥중_2학기_기말_중2_기출/golden-hyocheon-q2.png",
+      "renderedReviewArtifactSha256": "3e0610f0fea7f300bf5540e62520a16e8e33f3d51ad1ca3076a95506fe3659cb",
+      "observation": "Rendered and inspected: blue shallow negative line and red steep positive line have the perpendicular geometry used to solve k=6. Local ImageMagick font fallback boxes the Korean text labels; the geometry remains visible and this fallback is not taken as target visual authority."
+    }
+  ]
+}

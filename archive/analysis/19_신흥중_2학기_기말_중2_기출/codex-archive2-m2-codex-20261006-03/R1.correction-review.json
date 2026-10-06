@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_CORRECTION_REVIEW_V1",
+  "examUid": "19_신흥중_2학기_기말_중2_기출",
+  "stage": "R1",
+  "changedQids": [
+    13
+  ],
+  "preflightRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_신흥중_2학기_기말_중2_기출/R1.solution-preflight.json",
+  "preflightSha256": "153380237f96abeb3b0bd1a62f179ccf4f2d166d2d43c4cc93d06e54299e81c5",
+  "reviewedAfterPreflight": true,
+  "reviewedLocus": "q13.solution: explicit exclusion of c=0,1 in bounded coin enumeration",
+  "solutionSha256": "1b1210c63af2506eec1c4db5376eb554585afdb8bf86ccccb1f726e925822afb",
+  "review": "For c=0 or 1, a+5b would need 50 or 40, but 0≤a,b≤5 implies a+5b≤30, so neither is possible. For c=2,3,4,5 the listed nonnegative pairs respect a,b≤5 and exhaust the integer solutions. Count 1+2+2+1=6 matches stored choice ②. No further edit was needed after the completed sample preflight.",
+  "disposition": "PASS_CHANGED_LOCUS_REVIEW",
+  "initialFailedAttemptPreserved": true
+}
