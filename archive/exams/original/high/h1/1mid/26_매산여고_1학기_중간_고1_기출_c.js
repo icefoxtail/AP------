@@ -33,7 +33,16 @@ window.questionBank = [
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -68,7 +77,16 @@ window.questionBank = [
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -103,12 +121,22 @@ window.questionBank = [
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "templateNullReason": "ACTIVE_H1_TEMPLATE_LOOKUP_NO_EXACT_MATCH:DIRECT_LINEAR_DIVISOR_REMAINDER"
   },
   {
     "id": 4,
     "level": "하",
-    "category": "복소수와 이차방정식",
+    "category": "복소수의 실수부·허수부",
     "originalCategory": "복소수와 이차방정식",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-04",
@@ -133,16 +161,25 @@ window.questionBank = [
       "8"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H22-C-04-COMPLEX_ROOT",
-    "subUnit": "복소수와 이차방정식",
+    "solution": "[키포인트] 켤레복소수를 먼저 구한 뒤 복소수의 실수부와 허수부를 각각 비교한다.\n\n오른쪽의 켤레복소수는\n$\\overline{6+4i}=6-4i$이다.\n\n왼쪽을 실수부와 허수부로 정리하면\n$(4x+2i)+(-8+2yi)$\n$=(4x-8)+(2+2y)i$이다.\n\n따라서 두 복소수가 같으려면 실수부끼리, 허수부끼리 각각 같아야 한다.\n\n실수부를 비교하면\n$4x-8=6$\n$4x=14$\n$x=\\dfrac72$이다.\n\n허수부를 비교하면\n$2+2y=-4$\n$2y=-6$\n$y=-3$이다.\n\n그러므로\n$2x+y=2\\cdot\\dfrac72+(-3)=7-3=4$이다.\n\n보기에서 $4$는 ①이므로 정답은 ①이다.",
+    "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
     "level": "중",
-    "category": "복소수와 이차방정식",
+    "category": "복소수의 계산",
     "originalCategory": "복소수와 이차방정식",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-04",
@@ -153,9 +190,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "복소수",
-      "이차방정식",
-      "참거짓",
-      "개념"
+      "복소수의 나눗셈",
+      "켤레복소수",
+      "계산"
     ],
     "wide": false,
     "content": "$\\dfrac{3+i}{1-i}+4+2i$를 $a+bi$꼴로 바르게 나타낸 것은? (단, $a, b$는 실수)",
@@ -167,11 +204,20 @@ window.questionBank = [
       "$6+5i$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $f(x)=(x-a)^2$의 꼭짓점 위치와 제한구간의 끝점 함숫값을 비교한다.\n(가)에서 $1\\le a\\le9$이다. $1\\le a\\le5$일 때 $[5,9]$에서의 최솟값은 $(5-a)^2$이고, $[1,5]$에서의 최댓값은 $(a-1)^2$ 또는 $(5-a)^2$ 중 큰 값이다. 두 값이 같아지는 범위는 $1\\le a\\le3$이다. $5\\le a\\le9$이면 오른쪽 구간의 최솟값은 $0$이지만 왼쪽 구간의 최댓값은 양수이므로 조건 (나)를 만족하지 않는다. 따라서 $1\\le a\\le3$이다.\n이때 $f(0)=a^2$이므로 최댓값 $M=3^2=9$, 최솟값 $m=1^2=1$이다.\n따라서 $M+m=9+1=10$이고 정답은 ③이다.",
-    "subUnitKey": "H22-C-04-COMPLEX_ROOT",
-    "subUnit": "복소수와 이차방정식",
+    "solution": "[키포인트] 복소수의 나눗셈에서는 분모가 실수가 되도록 분모의 켤레복소수를 분자와 분모에 함께 곱한다.\n\n먼저\n$\\dfrac{3+i}{1-i}$\n를 계산한다. 분모 $1-i$의 켤레복소수는 $1+i$이므로\n$\\dfrac{3+i}{1-i}=\\dfrac{(3+i)(1+i)}{(1-i)(1+i)}$이다.\n\n분자를 전개하면\n$(3+i)(1+i)=3+3i+i+i^2$\n$=3+4i-1$\n$=2+4i$이다.\n\n분모는\n$(1-i)(1+i)=1-i^2=1-(-1)=2$이다.\n\n따라서\n$\\dfrac{3+i}{1-i}=\\dfrac{2+4i}{2}=1+2i$이다.\n\n이제 문제의 나머지 항을 더하면\n$(1+2i)+(4+2i)$\n$=(1+4)+(2i+2i)$\n$=5+4i$이다.\n\n따라서 $a=5$, $b=4$이고, 보기에서 $5+4i$는 ③이므로 정답은 ③이다.",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -203,11 +249,20 @@ window.questionBank = [
       "-6, 6"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n이차함수의 그래프가 $x$축과 한 점에서 만나는 조건은 꼭짓점의 $y$좌표가 $0$인 경우이다.\n\n풀이 과정\n$y=x^2-6x+k^2-27=(x-3)^2+k^2-36$이다. 꼭짓점은 $(3,k^2-36)$이고, 그래프가 $x$축과 한 점에서 만나려면 꼭짓점이 $x$축 위에 있어야 한다. $k^2-36=0$이므로 $k=\\pm6$이다. 보기에서 $-6,6$은 ⑤이다.\n\n결론\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 이차함수의 그래프가 $x$축과 한 점에서 만난다는 것은 대응하는 이차방정식이 중근을 갖는다는 뜻이다. 완전제곱식으로 고쳐 꼭짓점의 높이를 확인한다.\n\n주어진 함수는\n$y=x^2-6x+k^2-27$이다.\n\n$x$에 관한 부분을 완전제곱식으로 만들면\n$x^2-6x=(x-3)^2-9$이므로\n$y=(x-3)^2-9+k^2-27$\n$=(x-3)^2+k^2-36$이다.\n\n이 그래프는 위로 열린 포물선이고 꼭짓점은\n$(3,k^2-36)$이다.\n그래프가 $x$축과 정확히 한 점에서 만나려면 꼭짓점이 $x$축 위에 있어야 하므로 꼭짓점의 $y$좌표가 $0$이어야 한다.\n\n따라서\n$k^2-36=0$\n$k^2=36$\n$k=6$ 또는 $k=-6$이다.\n\n그러므로 구하는 모든 실수 $k$는 $-6,6$이고, 보기에서 이는 ⑤이므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
