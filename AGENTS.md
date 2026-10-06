@@ -1,5 +1,15 @@
 # Repository Agent Instructions
 
+## Archive 2.0 코드 구현의 최우선 필수 조건
+
+Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연결, 공통 엔진 및 저장소 코드를 구현·수정할 때 반드시 `docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 먼저 읽고 따른다. 기능 추가·리팩터링·업데이트에도 동일하게 적용한다. 기능이 동작한다는 이유로 느린 클릭, 무응답, 빈 창, 저장소 의존 회귀를 허용하지 않는다.
+
+- 원본 기출의 시험·해설·정답은 Archive 1의 `engine.html?data=exams/<file>&mode=exam|sol|ans` 직접 열기 경로를 유지한다. IndexedDB/localStorage에 원본 전체를 복사해야 열리는 구조로 되돌리지 않는다.
+- 사용자의 클릭에 즉시 반응한다. 오래 걸리는 준비는 첫 화면 반응과 분리하고, 빈 화면이나 끝나지 않는 로딩으로 숨기지 않는다. 실제 아카이브 크기의 클릭 성능과 저장소 오류·용량 초과를 검증한다.
+- 구현 완료·병합·MAIN_DONE 전에 `node tools/check-archive2-runtime.cjs`를 실행하고 결과를 확인한다. 해당 흐름을 바꿨다면 실제 Chrome 검증도 실행한다. 검증하지 않은 항목은 PASS로 기록하지 않는다.
+- 이 검사를 생략·격리하거나 데이터 분모를 줄이고, 시간 상한·검증 조건을 완화하여 통과시키지 않는다. 구조 변경이 필요해도 기존 동작·응답성·내용 검증을 먼저 보존한다. 이 계약 자체의 변경은 명시적인 사용자 지시와 근거를 필요로 한다.
+- 시험지 source만 수정하는 CREATE/R1/R2/R3 작업은 기존 시험지 품질 절차를 따른다. 런타임 흐름도 바꾸는 경우에는 이 계약을 함께 적용한다.
+
 ## Archive 2.0 Codex 실행 라인
 
 이 섹션은 일반 production·qualification·canary를 포함한 **모든 Archive 2.0 Codex 실행 작업**에 적용한다. GPT 예약 실행 라인은 별도 실행 정본을 따른다.
