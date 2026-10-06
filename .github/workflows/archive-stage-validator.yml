@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - "archive/tools/archive-stage-validator.mjs"
+      - "archive/tools/archive-codex-closeout-v2.mjs"
+      - "archive/data/codex-quality-calibration-registry-v2.json"
+      - "tests/archive-codex-closeout-v2.test.mjs"
+      - ".codex/agents/**"
       - "archive/tools/archive-stage-validator-artifact-v2.mjs"
       - "archive/tools/archive-stage-validator-common-v2.mjs"
       - "archive/tools/archive-stage-validator-create-v2.mjs"
@@ -32,6 +36,12 @@ on:
         required: true
         default: "main"
         type: string
+      quality_contract:
+        description: "CURRENT enforces Codex V2; LEGACY is explicit historical validation"
+        required: true
+        default: "CURRENT"
+        type: choice
+        options: [CURRENT, LEGACY]
       stage:
         description: "CREATE, R1, R2, or R3"
         required: true
@@ -73,6 +83,9 @@ jobs:
       - name: Artifact contract v2 regression
         run: node tests/archive-stage-validator-artifact-v2.test.mjs
 
+      - name: Codex render and publication receipt regression
+        run: node --test tests/archive-codex-closeout-v2.test.mjs
+
       - name: Generic validator pilot
         run: node tests/archive-stage-validator-pilot.test.mjs
 
@@ -94,13 +107,6 @@ jobs:
       - name: R3 v2 regression
         run: node tests/archive-stage-validator-r3-v2.test.mjs
 
-      - name: Full-evidence control through generic entrypoint
-        run: |
-          node archive/tools/archive-stage-validator.mjs \
-            --stage R2 \
-            --exam "archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js" \
-            --evidence "archive/data/r2e-intake/m2/25_매산중_1학기_중간_중2_기출.review2.physical-evidence.json" \
-            --json
 
   validate:
     if: github.event_name == 'workflow_dispatch'
@@ -126,20 +132,26 @@ jobs:
 
       - name: Validate target stage
         shell: bash
+        env:
+          QUALITY: ${{ inputs.quality_contract }}
+          STAGE: ${{ inputs.stage }}
+          EXAM: ${{ inputs.exam_path }}
+          EVIDENCE: ${{ inputs.evidence_path }}
         run: |
           set -euo pipefail
+          quality_args=()
+          if [[ "$QUALITY" != LEGACY ]]; then quality_args=(--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006); fi
           node validator-src/archive/tools/archive-stage-validator.mjs \
-            --stage "${{ inputs.stage }}" \
-            --exam "$GITHUB_WORKSPACE/target/${{ inputs.exam_path }}" \
-            --evidence "$GITHUB_WORKSPACE/target/${{ inputs.evidence_path }}" \
-            --json
+            "${quality_args[@]}" --stage "$STAGE" \
+            --exam "$GITHUB_WORKSPACE/target/$EXAM" \
+            --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" --json
 
   validate-pr-comment:
     if: >-
       github.event_name == 'issue_comment' &&
       github.event.issue.pull_request &&
       github.event.comment.user.login == github.repository_owner &&
-      startsWith(github.event.comment.body, '/archive-stage-validate ')
+      (startsWith(github.event.comment.body, '/archive-stage-validate ') || startsWith(github.event.comment.body, '/archive-stage-validate-legacy '))
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -151,7 +163,7 @@ jobs:
         run: |
           set -euo pipefail
           read -r cmd stage exam evidence extra <<< "$COMMENT"
-          [[ "$cmd" == "/archive-stage-validate" ]]
+          [[ "$cmd" == "/archive-stage-validate" || "$cmd" == "/archive-stage-validate-legacy" ]]
           [[ "$stage" =~ ^(CREATE|R1|R2|R3)$ ]]
           [[ -z "${extra:-}" ]]
           for value in "$exam" "$evidence"; do
@@ -159,6 +171,7 @@ jobs:
             [[ "$value" != *".."* ]]
           done
           {
+            if [[ "$cmd" == "/archive-stage-validate-legacy" ]]; then echo "contract=LEGACY"; else echo "contract=CURRENT"; fi
             echo "stage=$stage"
             echo "exam=$exam"
             echo "evidence=$evidence"
@@ -183,10 +196,16 @@ jobs:
 
       - name: Validate live PR stage
         shell: bash
+        env:
+          QUALITY: ${{ steps.args.outputs.contract }}
+          STAGE: ${{ steps.args.outputs.stage }}
+          EXAM: ${{ steps.args.outputs.exam }}
+          EVIDENCE: ${{ steps.args.outputs.evidence }}
         run: |
           set -euo pipefail
+          quality_args=()
+          if [[ "$QUALITY" != LEGACY ]]; then quality_args=(--quality-contract JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006); fi
           node validator-src/archive/tools/archive-stage-validator.mjs \
-            --stage "${{ steps.args.outputs.stage }}" \
-            --exam "$GITHUB_WORKSPACE/target/${{ steps.args.outputs.exam }}" \
-            --evidence "$GITHUB_WORKSPACE/target/${{ steps.args.outputs.evidence }}" \
-            --json
+            "${quality_args[@]}" --stage "$STAGE" \
+            --exam "$GITHUB_WORKSPACE/target/$EXAM" \
+            --evidence "$GITHUB_WORKSPACE/target/$EVIDENCE" --json
