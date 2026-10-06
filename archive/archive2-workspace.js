@@ -120,7 +120,7 @@
     };
     delete selectionFilters.scopeQuestionUids;
     for (const record of state.catalog.records || []) {
-      if (!C.eligibility(record, state).ok || !C.matches(record, selectionFilters, state)) continue;
+      if (!C.matches(record, selectionFilters, state) || !C.eligibility(record, state).ok) continue;
       const parent = C.basicScopeParent(
         record,
         state.catalog.basicScopeLinks,
@@ -703,7 +703,10 @@
       coverage: null,
     };
   }
+  let scopeRenderCache = null;
+  let renderingScopes = false;
   function scopeOptions() {
+    if (renderingScopes && scopeRenderCache) return scopeRenderCache;
     const canonicalRows = taxonomyRowsForFilters(state.filters);
     const units = new Map();
     for (const row of canonicalRows) {
@@ -719,7 +722,7 @@
     const seenUids = new Set();
     for (const record of state.catalog.records || []) {
       if (!record.questionUid || seenUids.has(record.questionUid)) continue;
-      if (!C.eligibility(record, state).ok || !C.matches(record, selectionFilters, state)) continue;
+      if (!C.matches(record, selectionFilters, state) || !C.eligibility(record, state).ok) continue;
       if (!C.rowMatches(record, { difficultyBuckets: state.buckets }) || excluded.has(record.questionUid)) continue;
       const parent = C.basicScopeParent(
         record,
@@ -771,7 +774,7 @@
       const key = scopeText(group.L1) + "|" + scopeText(group.L2);
       displayKeys.set(key, (displayKeys.get(key) || 0) + 1);
     }
-    return groups.map((group, index) => {
+    const result = groups.map((group, index) => {
       const sources = unique(group.units.flatMap((unit) => [...unit.records.values()]));
       const paths = unique(sources.map((record) => C.pathKey(record, 4)));
       const displayKey = scopeText(group.L1) + "|" + scopeText(group.L2);
@@ -793,6 +796,8 @@
         eligibleCount: sources.length,
       };
     });
+    if (renderingScopes) scopeRenderCache = result;
+    return result;
   }
   function scopeIsSelected(scope) {
     return (
@@ -2165,6 +2170,18 @@
       invalidateRecentRequests();
   }
   function render() {
+    // Reuse scope counts only within this render. Every interaction rechecks
+    // the current filters, catalog quality gates and previous-round exclusions.
+    scopeRenderCache = null;
+    renderingScopes = true;
+    try {
+      renderContent();
+    } finally {
+      renderingScopes = false;
+      scopeRenderCache = null;
+    }
+  }
+  function renderContent() {
     noteRenderedViewTransition();
     if (state.view !== "saved") window.Archive2Library?.invalidatePendingRequests?.();
     if (state.view === "saved") {
