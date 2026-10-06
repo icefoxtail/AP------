@@ -50,7 +50,7 @@ def main():
         elif action == 'build':
             sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
             from visual_engine.engine import build
-            result = build(payload['spec'],payload.get('measurements'),payload.get('fragments'))
+            result = build(payload['spec'],payload.get('measurements'),payload.get('fragments'),strict_measured_fragments=True)
         elif action == 'prepare':
             sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
             from visual_engine.engine import prepare

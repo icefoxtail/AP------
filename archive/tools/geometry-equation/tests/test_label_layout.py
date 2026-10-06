@@ -43,6 +43,27 @@ class LayoutTests(unittest.TestCase):
         r=layout([label('n',(100,100))],[],Box(32,32,556,436),measurements={'n':(80,30)})
         self.assertEqual(r['labels'][0]['box']['width'],80)
         self.assertEqual(r['labels'][0]['box']['height'],30)
+    def test_strict_production_layout_requires_complete_positive_browser_measurements(self):
+        item=label('measured',(100,100))
+        for measurements,code in [
+            ({},'BROWSER_LABEL_MEASUREMENT_REQUIRED:measured'),
+            ({'measured':(float('nan'),12)},'INVALID_BROWSER_LABEL_MEASUREMENT:measured'),
+            ({'measured':(12,0)},'INVALID_BROWSER_LABEL_MEASUREMENT:measured'),
+            ({'measured':(12,)},'INVALID_BROWSER_LABEL_MEASUREMENT:measured'),
+        ]:
+            with self.subTest(measurements=measurements):
+                with self.assertRaisesRegex(ValueError,code):layout([item],[],Box(32,32,556,436),measurements=measurements,require_measurements=True)
+        placed=layout([item],[],Box(32,32,556,436),measurements={'measured':(80,30)},require_measurements=True)
+        self.assertEqual(placed['labels'][0]['box']['width'],80)
+    def test_strict_panel_uses_measured_box_and_rejects_unmeasured_text_variant(self):
+        safe=Box(0,0,120,100);panel=Box(0,0,120,100)
+        same=label('panel',(60,50),'P',kind='EQUATION_LABEL',directions=(),gaps=(),panelText='P')
+        placed=layout([same],[],safe,panel,measurements={'panel':(80,30)},require_measurements=True)
+        self.assertEqual(placed['labels'][0]['placement'],'SIDE_PANEL')
+        self.assertEqual((placed['labels'][0]['box']['width'],placed['labels'][0]['box']['height']),(80,30))
+        variant=label('owner-panel',(60,50),'(1,2)',kind='COORDINATE_LABEL',directions=(),gaps=(),panelText='A: (1,2)',panelPrefix='A: ')
+        with self.assertRaisesRegex(ValueError,'BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:owner-panel'):
+            layout([variant],[],safe,panel,measurements={'owner-panel':(40,20)},require_measurements=True)
     def test_circle_and_segment_boundary(self):
         self.assertFalse(collision(Box(15,15,10,10),{'kind':'circle','geometry':(20,20,100)},0))
         self.assertTrue(segment_hits_box((0,0),(100,100),Box(40,40,10,10)))

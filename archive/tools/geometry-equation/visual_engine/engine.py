@@ -8,7 +8,7 @@ from fractions import Fraction
 from pathlib import Path
 from . import ENGINE_VERSION
 from .semantic_model import validate
-from .geometry_model import Circle,Line,clip_line
+from .geometry_model import Circle,Line,clip_line,finite
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
@@ -128,8 +128,26 @@ def prepare(spec):
         decorate(prepared, labels, obstacles, vp, semantic)
     return prepared,labels,obstacles,vp,semantic,sampling
 
-def build(spec,measurements=None,fragments=None):
+def build(spec,measurements=None,fragments=None,strict_measured_fragments=False):
     prepared,labels,obstacles,vp,semantic,sampling=prepare(spec)
+    if strict_measured_fragments:
+        if not isinstance(measurements,dict) or not isinstance(fragments,dict):raise ValueError('BROWSER_MEASURED_TYPOGRAPHY_REQUIRED')
+        label_ids={label['id'] for label in labels}
+        if set(fragments)!=label_ids:raise ValueError('FROZEN_FRAGMENT_INVENTORY_MISMATCH')
+        if set(measurements)-label_ids:raise ValueError('BROWSER_MEASUREMENT_INVENTORY_MISMATCH')
+        for label_id,fragment in fragments.items():
+            if not isinstance(fragment,dict):raise ValueError('INVALID_FROZEN_FRAGMENT:'+label_id)
+            fragment_hash=fragment.get('fragmentSha256');intrinsic=fragment.get('intrinsic')
+            if (fragment.get('labelId')!=label_id or not fragment.get('owner') or not fragment.get('factRole')
+                or not isinstance(fragment.get('svg'),str) or '<svg' not in fragment['svg']
+                or not isinstance(fragment_hash,str) or not fragment_hash.startswith('sha256:')
+                or len(fragment_hash)!=71 or not all(c in '0123456789abcdef' for c in fragment_hash[7:])
+                or not isinstance(intrinsic,dict)):
+                raise ValueError('INVALID_FROZEN_FRAGMENT:'+label_id)
+            if fragment_hash!='sha256:'+hashlib.sha256(fragment['svg'].encode('utf-8')).hexdigest():raise ValueError('FROZEN_FRAGMENT_HASH_MISMATCH:'+label_id)
+            try:intrinsic_width=finite(intrinsic.get('width'));intrinsic_height=finite(intrinsic.get('height'))
+            except ValueError:raise ValueError('INVALID_FROZEN_FRAGMENT:'+label_id) from None
+            if intrinsic_width<=0 or intrinsic_height<=0:raise ValueError('INVALID_FROZEN_FRAGMENT:'+label_id)
     if fragments is not None:
         prepared['fragmentProfile']='fragment-publication-spike-v1'
         for label in labels:
@@ -141,7 +159,7 @@ def build(spec,measurements=None,fragments=None):
     label_margin=12 if fragments is not None else vp.margin
     safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
-    result=layout(labels,obstacles,safe,panel,measurements)
+    result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments)
     if fragments is not None:result['basis']='BROWSER_MEASURED_FROZEN_FRAGMENTS'
     if 'publication' in semantic:
         from .publication import finalize

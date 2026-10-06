@@ -149,6 +149,12 @@ test('timeout terminates worker; next request uses a fresh subprocess',async()=>
   await assert.rejects(pythonWorker({action:'echo',value:1},{script,timeoutMs:100}),/WORKER_TIMEOUT/);
   assert.equal((await pythonWorker({action:'echo',value:2})).result,2);
 });
+test('production build worker rejects approximate fallback when browser measurements are absent',async()=>{
+  const spec=JSON.parse(fs.readFileSync(new URL('publication-fixtures/owner-triangle.spec.json',import.meta.url),'utf8'));
+  const response=await pythonWorker({action:'build',spec});
+  assert.equal(response.status,'ERROR');
+  assert.equal(response.result.code,'BROWSER_MEASURED_TYPOGRAPHY_REQUIRED');
+});
 test('concurrent async runs keep generated output in their own Archive temp workspaces',async()=>{
   const left='.tmp/archive/concurrent-left/exam-left/visual-engine/production';
   const right='.tmp/archive/concurrent-right/exam-right/visual-engine/production';
