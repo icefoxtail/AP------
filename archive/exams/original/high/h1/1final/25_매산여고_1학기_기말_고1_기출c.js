@@ -529,7 +529,7 @@ window.questionBank = [
       "자연수조건"
     ],
     "wide": false,
-    "content": "삼차방정식 $kx^3+(5k-8)x^2+(8k-22)x+4k-14=0$이 서로 다른 세 실근을 갖도록 하는 자연수 $k$의 개수를 구하면? [4.2점]",
+    "content": "삼차방정식 <br>$kx^3+(5k-8)x^2+(8k-22)x+4k-14=0$이 서로 다른 세 실근을 갖도록 하는 자연수 $k$의 개수를 구하면? [4.2점]",
     "choices": [
       "$3$",
       "$4$",
@@ -673,7 +673,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "content": "다음 조건을 만족시키는 이차정사각행렬 $A$에 대하여 $A+A^2 = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$일 때, $a+b+c+d$의 값을 구하면? (단, $E$는 단위행렬이다.) [4.5점]\n\n<조건>\n(가) $A^2=3A-6E$\n(나) $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$",
+    "content": "다음 조건을 만족시키는 이차정사각행렬 $A$에 대하여 <br>$A+A^2 = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$일 때, $a+b+c+d$의 값을 구하면? (단, $E$는 단위행렬이다.) [4.5점]\n\n<조건>\n(가) $A^2=3A-6E$\n(나) $A\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}=\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$",
     "choices": [
       "$-8$",
       "$-4$",

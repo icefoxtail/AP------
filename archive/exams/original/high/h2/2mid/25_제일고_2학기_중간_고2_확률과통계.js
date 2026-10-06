@@ -16,7 +16,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "content": "확률변수 $X$의 확률질량함수가 $P(X=x)=a$ $(x=1,2,4)$, $P(X=3)=\\dfrac{1}{4}$일 때, $a$의 값은?",
+    "content": "확률변수 $X$의 확률질량함수가 <br>$P(X=x)=a$ $(x=1,2,4)$, $P(X=3)=\\dfrac{1}{4}$일 때, $a$의 값은?",
     "choices": [
       "$\\dfrac{1}{4}$",
       "$\\dfrac{3}{8}$",
@@ -202,7 +202,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "content": "두 확률변수 $X,Y$가 각각 정규분포 $N(15,3^2)$, $N(24,5^2)$을 따르고, $P(12\\le X\\le21)=P(a\\le Y\\le29)$일 때, 실수 $a$의 값을 구하면?",
+    "content": "두 확률변수 $X,Y$가 각각 정규분포 $N(15,3^2)$, $N(24,5^2)$을 따르고, <br>$P(12\\le X\\le21)=P(a\\le Y\\le29)$일 때, 실수 $a$의 값을 구하면?",
     "choices": [
       "$10$",
       "$11$",
@@ -357,7 +357,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "확률변수 $X$의 확률질량함수가 $P(X=x)={}_{625}C_x\\left(\\dfrac{1}{5}\\right)^x\\left(\\dfrac{4}{5}\\right)^{625-x}$ $(x=0,1,\\cdots,625)$일 때, $P(X=105)+P(X=106)+\\cdots+P(X=140)$의 값을 아래 표준정규분포표를 이용하여 구한 것은?",
+    "content": "확률변수 $X$의 확률질량함수가 $P(X=x)={}_{625}C_x\\left(\\dfrac{1}{5}\\right)^x\\left(\\dfrac{4}{5}\\right)^{625-x}$ $(x=0,1,\\cdots,625)$일 때, <br>$P(X=105)+P(X=106)+\\cdots+P(X=140)$의 값을 아래 표준정규분포표를 이용하여 구한 것은?",
     "image": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q12.png",
     "choices": [
       "$0.6687$",

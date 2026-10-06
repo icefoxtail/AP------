@@ -88,7 +88,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "content": "두 행렬 $A = \\begin{pmatrix} 2 & 0 \\\\ 2 & 5 \\end{pmatrix}, B = \\begin{pmatrix} 1 & 9 \\\\ 1 & 0 \\end{pmatrix}$에 대하여 행렬 $A - B$의 모든 성분의 합은? [3.9점]",
+    "content": "두 행렬 $A = \\begin{pmatrix} 2 & 0 \\\\ 2 & 5 \\end{pmatrix}, B = \\begin{pmatrix} 1 & 9 \\\\ 1 & 0 \\end{pmatrix}$에 대하여 행렬 <br>$A - B$의 모든 성분의 합은? [3.9점]",
     "choices": [
       "$-1$",
       "$-2$",
@@ -375,7 +375,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "두 실수 $x, y$에 대하여 두 행렬 $A, B$를 $A = \\begin{pmatrix} 1 & x \\\\ -2 & 0 \\end{pmatrix}, B = \\begin{pmatrix} -2 & y \\\\ 0 & x \\end{pmatrix}$라 하자. $A^2-B^2 = (A-B)(A+B)$를 만족시킬 때, 행렬 $(A-B)(A^2+AB+B^2)$의 모든 성분의 합은? [4.6점]",
+    "content": "두 실수 $x, y$에 대하여 두 행렬 $A, B$를 $A = \\begin{pmatrix} 1 & x \\\\ -2 & 0 \\end{pmatrix}, B = \\begin{pmatrix} -2 & y \\\\ 0 & x \\end{pmatrix}$라 하자. $A^2-B^2 = (A-B)(A+B)$를 만족시킬 때, 행렬 <br>$(A-B)(A^2+AB+B^2)$의 모든 성분의 합은? [4.6점]",
     "choices": [
       "$-21$",
       "$-23$",
