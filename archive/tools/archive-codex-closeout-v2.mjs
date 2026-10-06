@@ -1,0 +1,84 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { QUALITY_CONTRACT_V2 } from './archive-stage-validator-artifact-v2.mjs';
+import { gitBlobSha } from './archive-stage-validator-compat-v1.mjs';
+
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const CASES = ['exam/desktop','exam/mobile','sol/desktop','sol/mobile','ans/desktop','ans/mobile'];
+function readBound(root, ref) {
+  if (!ref || typeof ref.path !== 'string' || path.isAbsolute(ref.path)) throw new Error('PHYSICAL_REF_REQUIRED');
+  const file=path.resolve(root,ref.path),rel=path.relative(path.resolve(root),file);
+  if(rel.startsWith('..') || path.isAbsolute(rel))throw new Error('REF_PATH_ESCAPE');
+  const real=fs.realpathSync(file),rr=path.relative(fs.realpathSync(root),real);
+  if(rr.startsWith('..') || path.isAbsolute(rr))throw new Error('REF_SYMLINK_ESCAPE');
+  const bytes=fs.readFileSync(file);if(hash(bytes)!==ref.sha256)throw new Error('PHYSICAL_REF_SHA_MISMATCH');return bytes;
+}
+export function validateCodexRenderReceipt({receipt,root,artifactSha,assets=[],qids=[]}) {
+  const issues=[];
+  try {
+    if(receipt?.executionLine!=='CODEX' || receipt?.qualityContractVersion!==QUALITY_CONTRACT_V2 || receipt.status!=='RENDER_PASS' || receipt.artifactSha!==artifactSha)throw new Error('RENDER_ARTIFACT_BINDING_REQUIRED');
+    const loaded=readBound(root,receipt.loadedJs);
+    if(gitBlobSha(loaded)!==artifactSha)throw new Error('RENDER_LOADED_JS_MISMATCH');
+    const r3=JSON.parse(readBound(root,receipt.r3Validation));
+    if(r3.ok!==true || r3.validatorMode!=='R3_V2' || r3.artifactSha!==artifactSha || r3.qualityContractVersion!==QUALITY_CONTRACT_V2 || r3.executionLine!=='CODEX' || r3.artifactContract?.active!==true)throw new Error('R3_RELEASE_READY_REQUIRED');
+    const box={window:{}};vm.runInNewContext(loaded.toString('utf8'),box,{timeout:1000});
+    const bank=box.window.questionBank||box.window.questions;
+    if(!Array.isArray(bank) || !bank.length)throw new Error('RENDER_QUESTION_BANK_REQUIRED');
+    const actualQids=bank.map(q=>Number(q.id));
+    if(new Set(actualQids).size!==actualQids.length || actualQids.some(q=>!qids.includes(q)) || qids.some(q=>!actualQids.includes(q)))throw new Error('RENDER_EXPECTED_QIDS_MISMATCH');
+    const refs=new Set();
+    for(const q of bank){
+      for(const field of ['image','solutionImage','visualAsset'])if(q[field])refs.add(q[field]);
+      for(const field of ['content','solution'])if(typeof q[field]==='string')for(const m of q[field].matchAll(/<(?:img|image)\b[^>]*?(?:src|href|xlink:href)\s*=\s*["']([^"']+)["']/gi))if(!/^(?:data:|#)/.test(m[1]))refs.add(m[1]);
+    }
+    // Include SVG dependencies from the bound file actually loaded, not an unrelated production copy.
+    for(const ref of refs)if(ref.endsWith('.svg')){
+      const entry=receipt.cases?.[0]?.loadedAssets?.find(a=>a.ref===ref);
+      if(!entry)throw new Error('RENDER_SVG_LOADED_FILE_REQUIRED');
+      for(const m of readBound(root,entry.file).toString('utf8').matchAll(/(?:href|xlink:href)\s*=\s*["']([^"']+)["']/gi))if(!/^(?:data:|#)/.test(m[1]))refs.add(path.posix.normalize(path.posix.join(path.posix.dirname(ref),m[1])));
+    }
+    if(new Set(assets.map(a=>a.ref)).size!==assets.length || refs.size!==assets.length || assets.some(a=>!refs.has(a.ref)))throw new Error('RENDER_EXPECTED_ASSET_SET_MISMATCH');
+    const cases=receipt.cases;
+    if(!Array.isArray(cases) || cases.length!==CASES.length || new Set(cases.map(c=>c.id)).size!==CASES.length || CASES.some(id=>!cases.some(c=>c.id===id)))throw new Error('RENDER_SIX_CASES_REQUIRED');
+    for(const c of cases){
+      if(c.status!=='PASS' || !Number.isInteger(c.viewport?.width) || c.viewport.width<=0 || !Number.isInteger(c.viewport?.height) || c.viewport.height<=0 || !Array.isArray(c.captures) || !c.captures.length)throw new Error('RENDER_CASE_INCOMPLETE:'+c.id);
+      if(c.id.endsWith('/mobile') && c.viewport.width>600)throw new Error('RENDER_MOBILE_VIEWPORT_REQUIRED');
+      const covered=new Set();
+      for(const capture of c.captures){
+        const bytes=readBound(root,capture.image);
+        if(!bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))throw new Error('RENDER_PNG_CAPTURE_REQUIRED');
+        if(!Array.isArray(capture.qids))throw new Error('RENDER_CAPTURE_QIDS_REQUIRED');
+        capture.qids.forEach(q=>covered.add(Number(q)));
+      }
+      if(!qids.length || qids.some(q=>!covered.has(Number(q))))throw new Error('RENDER_QID_COVERAGE_REQUIRED:'+c.id);
+      if(!Array.isArray(c.loadedAssets) || c.loadedAssets.length!==assets.length)throw new Error('RENDER_ASSET_SET_REQUIRED:'+c.id);
+      for(const asset of assets){
+        const matches=c.loadedAssets.filter(a=>a.ref===asset.ref);
+        if(matches.length!==1 || matches[0].sha256!==asset.sha256 || hash(readBound(root,matches[0].file))!==asset.sha256)throw new Error('RENDER_LOADED_ASSET_MISMATCH:'+c.id+':'+asset.ref);
+      }
+      if(c.mathJaxStatus!=='PASS' || c.layoutReviewStatus!=='PASS' || c.assetDecodeStatus!=='PASS')throw new Error('RENDER_REVIEW_REQUIRED:'+c.id);
+    }
+  }catch(error){issues.push(error.message);}
+  return {ok:!issues.length,disposition:issues.length?'FAIL':'PASS',issues};
+}
+export function validateCodexMainDoneReceipt({receipt,root,renderReceipt,assets=[],qids=[]}) {
+  const issues=[];
+  try {
+    if(receipt?.executionLine!=='CODEX' || receipt?.status!=='MAIN_DONE' || receipt.qualityContractVersion!==QUALITY_CONTRACT_V2)throw new Error('MAIN_DONE_CONTRACT_REQUIRED');
+    if(!/^archive\/exams\/(original|similar|types)\//.test(receipt.productionPath||'') || /generated/i.test(receipt.productionPath))throw new Error('PRODUCTION_PATH_REQUIRED');
+    const read=JSON.parse(readBound(root,receipt.renderReceipt));
+    if(JSON.stringify(read)!==JSON.stringify(renderReceipt))throw new Error('RENDER_RECEIPT_PARITY_REQUIRED');
+    const rendered=validateCodexRenderReceipt({receipt:read,root,artifactSha:receipt.artifactSha,assets,qids});
+    if(!rendered.ok)throw new Error(rendered.issues.join(','));
+    const main=execFileSync('git',['-C',root,'rev-parse','origin/main'],{encoding:'utf8'}).trim();
+    if(execFileSync('git',['-C',root,'rev-parse','HEAD'],{encoding:'utf8'}).trim()!==main)throw new Error('WORKING_HEAD_MAIN_PARITY_REQUIRED');
+    if(main!==receipt.remoteMainSha)throw new Error('REMOTE_MAIN_SHA_MISMATCH');
+    const readBlob=p=>execFileSync('git',['-C',root,'show',main+':'+p]);
+    if(gitBlobSha(readBlob(receipt.productionPath))!==receipt.artifactSha)throw new Error('REMOTE_PRODUCTION_BLOB_MISMATCH');
+    for(const asset of assets){if(!asset.ref.startsWith('assets/images/') || asset.ref.includes('..'))throw new Error('REMOTE_ASSET_PATH_INVALID');if(hash(readBlob('archive/'+asset.ref))!==asset.sha256)throw new Error('REMOTE_ASSET_SHA_MISMATCH:'+asset.ref);}
+  }catch(error){issues.push(error.message);}
+  return {ok:!issues.length,disposition:issues.length?'FAIL':'PASS',issues};
+}
