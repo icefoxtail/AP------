@@ -12,7 +12,7 @@
 - `NO_WORK`는 이번 run의 eligible target이 0이라는 뜻일 뿐 **lane 정지 사유가 아니다**. 다음 scheduled run은 그대로 실행한다.
 - 오직 **형님의 명시적 지시**만 이들 lane을 OFF/휴식/중지/삭제할 수 있다. 과거의 오류 시 stop/global blocker 시 lane stop 문구는 superseded다.
 - status: **CURRENT / COPY SOURCE**
-- version: **PROMPT_TEMPLATE_V1.4.0**
+- version: **PROMPT_TEMPLATE_V1.4.1**
 - scope: JS Archive scheduled production/review/rescue/publish workers
 - authority order: **current explicit user instruction → latest Notion CURRENT/router → this template → active operating contract → latest Git physical state**
 - purpose: 학년·학기·시험지 묶음이 바뀌어도 예약 worker의 운영 철학과 실패 처리 방식이 drift하지 않도록, 새 예약을 만들 때 이 문서를 그대로 복제하고 placeholder만 치환한다.
@@ -65,7 +65,7 @@
 `docs/rules/02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md`
 
 - **Codex 실행 라인:** ROOT + stage subagent → CREATE → R1 → R2 → R3 → actual RENDER → PUBLICATION → MAIN_DONE.
-- **GPT 예약 실행 라인:** Library/selector/lease → CREATE → R1 → R2 → R3 → `NOT_RUN_CODEX_HANDOFF`. GPT가 actual render/MAIN_DONE을 대신 선언하지 않는다.
+- **GPT 예약 실행 라인:** Library/selector/lease → CREATE → R1 → R2 → R3 → MASTER → MAIN_DONE. GPT 예약라인은 actual engine render를 실행조건이나 완료상태로 사용하지 않는다. MASTER가 R3 완료 artifact의 target-only publication/main merge를 담당한다.
 - CREATE는 4축 자기보고가 아니라 actual final JS에 source/answer, question layout, small-board solution, Meta/difficulty, visual disposition/asset, engine-safe structure를 물리화한다.
 - 작은칠판은 기존 학생용해설 정본을 그대로 따른다. 선생님이 말로 설명할 문장은 필요한 위치에 두고, 실제 등호·대입·변형은 위→아래 한 줄씩 추적 가능해야 한다. 설명문으로 중간 수식을 대신하지 않는다.
 - R1은 전 qid 통합 봉인 owner다. 수정 뒤에는 changed qid + direct dependency만 재확인한다.
@@ -74,6 +74,7 @@
 - Golden은 학생노출 품질 floor이며 Meta/difficulty authority가 아니다.
 - 실제 final artifact가 바뀌면 evidence와 seal을 새 final SHA에 rebind한다.
 - validator는 semantic judge가 아니라 actual artifact/evidence binding gate다.
+- GPT 2.0 실행 정본: `docs/rules/02_PIPELINES/JS_Archive_2.0_GPT_Scheduled_Execution_v1.md`.
 
 ## 1. PLACEHOLDERS
 
@@ -175,7 +176,7 @@ disable은 **사용자 명시 지시 또는 CURRENT topology의 role 종료**만
 prompt에 박힌 특정 target/branch/HEAD는 selector hint일 뿐 authority가 아니다.
 실행 시점 physical state에서 target을 다시 계산한다.
 
-PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.4.0 / {ROLE}
+PROMPT_TEMPLATE_REF = PROMPT_TEMPLATE_V1.4.1 / {ROLE}
 ~~~
 
 ## 3.1 GPT VISUAL PRODUCTION CONTRACT — HARD
@@ -297,6 +298,39 @@ COMMON HANDOFF BLOCK(stage=R3)을 적용하며,
 stalled bounded source-repair continuation도 THANOS rescue 대상이다.
 ~~~
 
+
+## 8.1 ROLE TEMPLATE — GPT 2.0 MASTER
+
+~~~text
+ROLE = GPT 2.0 MASTER / CONTINUATION + PUBLICATION OWNER.
+
+이 role은 qualityContractVersion=JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006인
+GPT 예약 2.0 cohort에서만 사용한다.
+
+selector priority:
+1) continuation.json이 있는 CREATE/R1/R2/R3 target
+2) R3_RELEASE_READY + MAIN_DONE 없음 + valid publish lease 없음
+
+continuation이면 firstMissingClosureStep부터 exact technical closure만 닫는다.
+R1/R2/R3 semantic review를 새로 하지 않는다.
+
+clean R3 publication이면:
+global GPT publish lease → latest main 1회 → same-exam overlap/drift →
+Library final JS + 필요한 final asset만 production canonical에 반영 →
+대상 파일만 stage → 시험지 1건=publication commit 1건 →
+non-force push/merge → remote main production blob/readback → MAIN_DONE.
+
+GPT 예약라인에서 actual engine render, NOT_RUN_CODEX_HANDOFF, RENDER_PASS를
+stage prerequisite/완료상태/blocker로 만들지 않는다.
+render 실행을 주장하지 않는다.
+
+publication 중 artifact bytes가 바뀌면 changed locus만 해당 canonical으로
+최소 재확인하고 새 finalArtifactSha/evidence를 결속한 뒤 계속한다.
+
+신규 CREATE/R1/R2/R3 target을 고르지 않는다.
+self-disable 금지.
+~~~
+
 ## 9. ROLE TEMPLATE — THANOS
 
 ~~~text
@@ -401,6 +435,12 @@ incident
 개별 automation prompt만 수정하고 종료하지 않는다.
 
 ## 14. CHANGELOG
+
+### V1.4.1 — 2026-10-06
+- GPT 예약 2.0 마감을 Codex handoff에서 독립 MASTER publication/main merge로 수정.
+- GPT 2.0 정상 경로를 CREATE×3 / R1×3 / R2×3 / R3×3 / MASTER×3로 정의.
+- GPT 예약라인에서 NOT_RUN_CODEX_HANDOFF / RENDER_PASS / actual render completion requirement 제거.
+- GPT 2.0 MASTER에 continuation first + clean R3 publication second selector, global publish lease, target-only main merge 계약 추가.
 
 ### V1.4.0 — 2026-10-06
 - JS Archive 2.0을 공통 품질 계약 아래 Codex 실행 / GPT 예약 실행 두 라인으로 분리.

@@ -8,7 +8,7 @@ qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 JS Archive 2.0 keeps one product-quality contract and separates execution into two lines.
 
 - **Codex execution line:** ROOT + stage subagent conveyor, actual engine render, production publication, Git MAIN_DONE.
-- **GPT scheduled execution line:** scheduled stage workers + selector/lease/Library handoff. GPT does not claim actual engine render or MAIN_DONE; after R3 it uses `NOT_RUN_CODEX_HANDOFF`.
+- **GPT scheduled execution line:** scheduled stage workers + selector/lease/Library handoff. `CREATE → R1 → R2 → R3 → MASTER → MAIN_DONE`. GPT 예약라인은 실제 engine render를 실행조건이나 완료상태로 두지 않는다. MASTER가 R3 완료 artifact를 target-only로 production/main에 반영하고 MAIN_DONE을 닫는다.
 
 A PASS in one execution line is not automatically inherited or invalidated by the other line. Artifact bytes, evidence, and the current contract decide.
 
@@ -124,11 +124,11 @@ The artifact gate does **not** decide mathematical multiple-answer equivalence, 
 - `R1_QUALITY_SEALED`
 - `R2_VERIFIED`
 - `R3_RELEASE_READY`
-- `NOT_RUN_CODEX_HANDOFF`
-- `RENDER_PASS`
+- `GPT_MASTER_PUBLICATION_READY` — GPT 예약라인 전용
 - `MAIN_DONE`
+- `RENDER_PASS` — Codex 실행라인에서만 사용하는 별도 상태
 
-Do not collapse these into one generic PASS.
+Do not collapse these into one generic PASS. GPT 예약라인에서는 `NOT_RUN_CODEX_HANDOFF`를 사용하지 않으며 render 상태는 completion prerequisite가 아니다.
 
 ## 12. Existing artifacts
 
