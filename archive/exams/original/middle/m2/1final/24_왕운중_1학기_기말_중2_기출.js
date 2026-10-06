@@ -489,7 +489,7 @@ window.questionBank = [
       "5개"
     ],
     "answer": "②",
-    "solution": "$3x+4y=23$에서 $x,y$가 자연수가 되도록 확인하면 $(x,y)=(1,5),(5,2)$이다.\n그 밖의 자연수 $x$에서는 $y$가 자연수가 되지 않는다.\n따라서 순서쌍은 2개이고 정답은 ②이다.",
+    "solution": "$3x+4y=23$에서\n$x,y$가 자연수이므로 가능한 $y$를 확인한다.\n\n$y=1$이면\n\n$3x+4=23$\n\n$3x=19$\n\n$x=\\dfrac{19}{3}$이므로 자연수가 아니다.\n\n$y=2$이면\n\n$3x+8=23$\n\n$3x=15$\n\n$x=5$이다.\n\n$y=3$이면\n\n$3x+12=23$\n\n$3x=11$\n\n$x=\\dfrac{11}{3}$이므로 자연수가 아니다.\n\n$y=4$이면\n\n$3x+16=23$\n\n$3x=7$\n\n$x=\\dfrac73$이므로 자연수가 아니다.\n\n$y=5$이면\n\n$3x+20=23$\n\n$3x=3$\n\n$x=1$이다.\n\n따라서 자연수 해는\n\n$(5,2),\\ (1,5)$\n\n의 $2$개이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -626,7 +626,7 @@ window.questionBank = [
       "$6\\le a<8$"
     ],
     "answer": "④",
-    "solution": "$2x-a<0$을 풀면 $x<\\dfrac a2$이다.\n자연수 해가 정확히 $1,2,3$이 되려면 $3<\\dfrac a2\\le4$이어야 한다.\n따라서 $6<a\\le8$이고 정답은 ④이다.",
+    "solution": "주어진 부등식을 풀면\n\n$2x-a<0$\n\n$2x<a$\n\n$x<\\dfrac a2$이다.\n\n자연수 해가 정확히 $3$개이려면\n$x=1,2,3$은 해이고\n$x=4$는 해가 아니어야 한다.\n\n$x=3$이 해이므로\n\n$3<\\dfrac a2$이다.\n\n$x=4$가 해가 아니므로\n\n$4\\ge\\dfrac a2$,\n\n즉\n\n$\\dfrac a2\\le4$이다.\n\n따라서\n\n$3<\\dfrac a2\\le4$이다.\n\n양변에 $2$를 곱하면\n\n$6<a\\le8$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
@@ -661,7 +661,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "ㄱ. 직사각형의 넓이는 $(6-2)(5-3)=8$이므로 옳다.\n\nㄴ. 직선 $y=ax-2$가 직사각형과 만나는 $a$의 최솟값은 $(6,3)$을 지날 때의 $\\dfrac56$, 최댓값은 $(2,5)$를 지날 때의 $\\dfrac72$이다.\n따라서 $5m=\\dfrac{35}{2}=21n$이므로 옳다.\n\nㄷ. $a=\\dfrac32$이면 $y=\\dfrac32x-2$이고 직사각형의 중심 $(4,4)$를 지난다.\n직사각형은 중심에 대해 점대칭이므로 중심을 지나는 직선은 넓이를 이등분한다. 따라서 옳다.\n\n그러므로 정답은 ⑤이다.",
+    "solution": "ㄱ.\n직사각형의 가로 길이는\n\n$6-2=4$,\n\n세로 길이는\n\n$5-3=2$이다.\n\n따라서 넓이는\n\n$4\\times2=8$이므로 ㄱ은 옳다.\n\nㄴ.\n직선\n$y=ax-2$\n가 점 $(x,y)$를 지나면\n\n$a=\\dfrac{y+2}{x}$이다.\n\n직사각형 안에서는\n$x$가 클수록 $a$가 작아지고,\n$y$가 작을수록 $a$가 작아진다.\n\n따라서 최솟값 $n$은\n점 $(6,3)$을 지날 때이므로\n\n$n=\\dfrac{3+2}{6}$\n\n$=\\dfrac56$이다.\n\n최댓값 $m$은\n점 $(2,5)$를 지날 때이므로\n\n$m=\\dfrac{5+2}{2}$\n\n$=\\dfrac72$이다.\n\n따라서\n\n$5m=5\\times\\dfrac72$\n\n$=\\dfrac{35}{2}$이고,\n\n$21n=21\\times\\dfrac56$\n\n$=\\dfrac{35}{2}$이다.\n\n그러므로\n$5m=21n$이어서 ㄴ은 옳다.\n\nㄷ.\n$a=\\dfrac32$이면\n\n$y=\\dfrac32x-2$이다.\n\n직사각형의 중심은\n\n$\\left(\\dfrac{2+6}{2},\\dfrac{3+5}{2}\\right)$\n\n$=(4,4)$이다.\n\n$x=4$를 대입하면\n\n$y=\\dfrac32\\times4-2$\n\n$=6-2$\n\n$=4$이다.\n\n따라서 이 직선은 직사각형의 중심 $(4,4)$을 지난다.\n\n직사각형은 중심에 대하여 점대칭이므로\n중심을 지나는 직선은 넓이를 두 부분으로 같게 나눈다.\n\n따라서 ㄷ도 옳다.\n\n그러므로 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_1학기_기말_중2_기출/q20.png",
     "imageSize": "medium",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
