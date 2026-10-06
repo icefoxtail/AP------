@@ -26,7 +26,7 @@ GPT 작업 전 필독 라우터
 {SCOPE_DESCRIPTION}
 {CAMPAIGN_ID}
 {GENERATION_ROOT}
-{CAMPAIGN_MANIFEST}
+{CAMPAIGN_MANIFEST}   # Git: archive/data/gpt-campaigns/H1_GPT2_20261006.json
 {SOURCE_AUTHORITY}
 {ROLE}
 {STREAM}
@@ -45,7 +45,7 @@ LANE_INDEX 1/2/3 공용-pool 방식은 GPT 2.0에서 사용하지 않는다.
 campaignId = {CAMPAIGN_ID}
 stream = {STREAM}
 generationRoot = {GENERATION_ROOT}
-campaignManifest = {CAMPAIGN_MANIFEST}
+campaignManifest = {CAMPAIGN_MANIFEST}  # latest main Git authority; Library mirror 불필요
 sourceAuthority = {SOURCE_AUTHORITY}
 qualityContractVersion = JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006
 executionLine = GPT_SCHEDULED
