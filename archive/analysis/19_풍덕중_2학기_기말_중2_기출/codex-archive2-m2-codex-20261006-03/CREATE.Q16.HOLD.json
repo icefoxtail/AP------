@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "ARCHIVE_CREATE_ITEM_HOLD_v1",
+  "examUid": "19_풍덕중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "qid": 16,
+  "disposition": "HOLD",
+  "reason": "SOURCE_TRUTH_UNDERDETERMINED",
+  "sourceText": "두 자연수 $a$, $b$가 짝수일 확률이 각각 $\\frac{1}{2}$, $\\frac{2}{3}$일 때, $a+b$가 홀수일 확률은? [4점]",
+  "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+  "sourcePdfPage": 3,
+  "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+  "answerKeyChoice": "⑤",
+  "mathematicalNonUniqueness": {
+    "jointDistributionA": {
+      "evenEven": "1/2",
+      "evenOdd": "0",
+      "oddEven": "1/6",
+      "oddOdd": "1/3",
+      "marginals": {
+        "aEven": "1/2",
+        "bEven": "2/3"
+      },
+      "oddSumProbability": "1/6"
+    },
+    "jointDistributionB": {
+      "evenEven": "1/6",
+      "evenOdd": "1/3",
+      "oddEven": "1/2",
+      "oddOdd": "0",
+      "marginals": {
+        "aEven": "1/2",
+        "bEven": "2/3"
+      },
+      "oddSumProbability": "5/6"
+    }
+  },
+  "repairAttempted": {
+    "attempted": true,
+    "actions": [
+      "Read the complete q16 wording from original PDF page 3 at 300 dpi.",
+      "Read original HWP answer-key preview; it lists q16 as option ⑤.",
+      "Test the independence assumption separately and construct distinct joint distributions with the same marginals."
+    ]
+  },
+  "authorityLookupAttempted": [
+    {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_풍덕중2_수학_2기말.pdf",
+      "page": 3,
+      "sha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+      "result": "Full page readable; no independence or joint-distribution condition appears in q16."
+    },
+    {
+      "path": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_풍덕중2_수학_2기말_정답.hwp",
+      "sha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+      "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+      "result": "Answer key preview lists q16=⑤ (1/2), but provides no independence premise."
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/수정프로토콜.md",
+      "result": "No source correction authorized without a unique original repair."
+    }
+  ],
+  "fullPageLookupResult": {
+    "status": "FOUND_AND_READABLE",
+    "page": 3,
+    "renderPath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/source/rendered/original-q16/page-3.png",
+    "renderSha256": "caba5d0605886358ba984cc381f3d94788404476a77a3e917eebab9e6b13f24b",
+    "sourceText": "두 자연수 $a$, $b$가 짝수일 확률이 각각 $\\frac{1}{2}$, $\\frac{2}{3}$일 때, $a+b$가 홀수일 확률은? [4점]",
+    "visibleExtraCondition": "none"
+  },
+  "whyDeterministicClosureImpossible": "P(A_even)=1/2 and P(B_even)=2/3 do not determine P(exactly one even). If A_even is a subset of B_even, P(odd sum)=1/6; another joint distribution with the same marginals can yield 5/6. The answer key value 1/2 is consistent with independence but the source never states or implies a unique joint distribution.",
+  "nextRequiredEvidenceOrCapability": "An authoritative source correction stating a and b are selected independently, or a joint parity distribution, is required.",
+  "answerSolutionStatus": "NOT_WRITTEN; answer key alone does not supply the missing dependence assumption."
+}

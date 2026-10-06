@@ -1,0 +1,48 @@
+{
+  "stage": "R1",
+  "examUid": "19_풍덕중_2학기_기말_중2_기출",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "inputArtifactSha": "fb8822dca5939ba354508fbacdb3bfc538531eaf",
+  "inputArtifactRawSha256": "80c4c082641f1478d99157197d46094fd3c871b9d348c6cbbce776045d6a6630",
+  "finalArtifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976",
+  "finalArtifactRawSha256": "88a1a285e80ec0b08764dc146a09f1ff809a6f7f146b2f8c8b2816bc4f91c4bb",
+  "evidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R1.FINAL.EVIDENCE.json",
+  "evidenceSha256": "bd1e30bfe44e66cb67e8938ce4ee534e0fa96686735e5b43f76ea99906fd5445",
+  "failedEvidenceAttempt": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R1.EVIDENCE.ATTEMPT01.FAIL.json",
+    "sha256": "a3b431adbd842dac70a2dcf295039ce98a443fd2f80292a9ed02a1f8f7ff12b8",
+    "preserved": true
+  },
+  "failedValidatorAttempt": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R1.V2.VALIDATOR.json",
+    "sha256": "0dc2f830c7aace7fc6ce178ada2849f2bca28d859636d4e9b28344bb5e41448a",
+    "preserved": true,
+    "disposition": "FAIL",
+    "issue": "ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED"
+  },
+  "completedStep": "R1_DEEP_REVIEW_AND_AUTHORIZED_Q13_MINIMUM_REPAIR",
+  "firstMissingClosureStep": "NONE",
+  "exactReason": "The earlier hash-format evidence defect and missing Golden visual sample binding were repaired; corrected final R1 generic V2 validation passed.",
+  "coverage": {
+    "denominator": 23,
+    "independentAnswerFreezes": 23,
+    "questionLayout": 23,
+    "solutionLayout": 23,
+    "meta": 23,
+    "visualSvg": 23,
+    "studentProjectionExactParity": 23,
+    "changedQids": [
+      13
+    ]
+  },
+  "nextAction": "ROOT technical closure: review corrected evidence SHA binding and decide whether a new generic V2 R1 validator invocation is authorized/required before downstream handoff.",
+  "status": "CLOSED",
+  "resolvedBy": {
+    "closeoutPath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R1.CLOSEOUT.json",
+    "closeoutSha256": "f00a4b050dbdc6b29a2435f920f09511faf40af21df1c388fbf447f71191dbf8",
+    "finalEvidenceSha256": "f9915ca3452100e266c48031368a44d9716c087dad7b537dce74c3ddeb89fea5",
+    "finalValidatorReportSha256": "527d8a029fbfa4fc1b16abcc83b39545586818e0a098709e078cf6c4f1ccf46a",
+    "validatorResult": "PASS"
+  }
+}

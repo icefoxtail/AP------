@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "ARCHIVE_CREATE_QID_RECHECK_v1",
+  "examUid": "19_풍덕중_2학기_기말_중2_기출",
+  "stage": "CREATE",
+  "qid": 16,
+  "disposition": "PASS_AFTER_POLICY_ADJUDICATION",
+  "priorHold": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.Q16.HOLD.json",
+    "sha256": "12087aa135b1f7baf1a66418a77062b06d6c83a3985fd34ed8c2af52785c7dff",
+    "preserved": true,
+    "priorDisposition": "HOLD",
+    "priorReason": "SOURCE_TRUTH_UNDERDETERMINED",
+    "adjudication": "FALSE_HOLD_UNDER_CURRENT_M2_INDEPENDENCE_DEFAULT"
+  },
+  "policyBasis": {
+    "path": "docs/rules/00_RULES_INDEX.md",
+    "sha256": "5d66b324a18d331cac01412bc345d9bc9d411329ef4a74fab893c3b6b0aae48c",
+    "section": "MIDDLE-SCHOOL PROBABILITY INDEPENDENCE DEFAULT — CURRENT HARD RULE (2026-09-28)",
+    "rule": "For middle-school probability, assume independent selections/trials unless the source provides a dependency condition or linking rule. Unstated independence is not a valid HOLD reason."
+  },
+  "preflight": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.CALIBRATION_PREFLIGHT.json",
+    "sha256": "e9b3ae887602585a0f6be0d33cef859459c8a19517eb831fe9d8b29575ae2365",
+    "performedBeforeAnySolutionAuthoring": true,
+    "verified": true,
+    "goldenSampleCount": 2,
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "axes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ]
+  },
+  "source": {
+    "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+    "content": "두 자연수 $a$, $b$가 짝수일 확률이 각각 $\\frac{1}{2}$, $\\frac{2}{3}$일 때, $a+b$가 홀수일 확률은? [4점]",
+    "choices": [
+      "$\\frac{1}{8}$",
+      "$\\frac{3}{8}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{3}{4}$",
+      "$\\frac{1}{2}$"
+    ],
+    "unchanged": true,
+    "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+    "sourcePdfPage": 3,
+    "answerKeyHwpPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_풍덕중2_수학_2기말_정답.hwp",
+    "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+    "answerKeyPreviewSha256": "d4be67f923393b41783a98c64b52025411335f20ef7f3cf39bbab61dc57b0511",
+    "answerKeyChoice": "⑤"
+  },
+  "independentMath": {
+    "assumption": "Use the current M2 independence default because no dependent relation is stated.",
+    "aEven": "1/2",
+    "aOdd": "1/2",
+    "bEven": "2/3",
+    "bOdd": "1/3",
+    "aEvenBodd": "1/2×1/3=1/6",
+    "aOddBeven": "1/2×2/3=1/3",
+    "oddSum": "1/6+1/3=1/2",
+    "answer": "⑤",
+    "solutionSha256": "f0ba3310a8f11691edd1a0d7c2617504561c275ccc673a7d607f924ccb153056",
+    "decisiveStep": "Split the odd-sum event into (a even,b odd) and (a odd,b even); multiply independent probabilities for each disjoint case and add."
+  },
+  "candidate": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/19_풍덕중_2학기_기말_중2_기출.js",
+    "rawSha256": "80c4c082641f1478d99157197d46094fd3c871b9d348c6cbbce776045d6a6630",
+    "gitBlobSha": "fb8822dca5939ba354508fbacdb3bfc538531eaf",
+    "answer": "⑤",
+    "sourceTextAndChoicesUnchanged": true
+  },
+  "resolution": "The earlier HOLD treated unstated independence as missing source truth, contrary to the current M2 policy. The original answer key and independently calculated result agree at ⑤."
+}

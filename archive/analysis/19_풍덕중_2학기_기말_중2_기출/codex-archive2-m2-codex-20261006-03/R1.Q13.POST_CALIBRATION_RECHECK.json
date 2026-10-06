@@ -1,0 +1,26 @@
+{
+  "stage": "R1",
+  "qid": 13,
+  "status": "PASS",
+  "calibrationPreflightPath": ".tmp\\archive\\archive2-m2-codex-20261006-03\\19_풍덕중_2학기_기말_중2_기출\\R1.FINAL.CALIBRATION_PREFLIGHT.json",
+  "changedLocusOnly": true,
+  "sourcePrompt": "13명의 신사, 숙녀 모두가 서로 빠짐없이 한 번씩 악수를 했다고 할 때, 악수의 횟수를 구하면?",
+  "independentResult": 78,
+  "storedAnswer": "②",
+  "solution": "악수 한 번은 서로 다른 두 사람의 한 쌍이다.\n각 사람은 나머지 12명과 악수하므로\n$13\\times12=156$\n으로 세어진다.\n하지만 한 악수는 두 사람의 계산에 각각 한 번씩 포함된다.\n따라서\n$156\\div2=78$\n이다.\n따라서 정답은 ②이다.",
+  "solutionSha256": "515793419a1b9f916acc89759439998c46d7ed77c2aea64bdde7d758a5595958",
+  "solutionReview": "Each handshake is an unordered pair; 13×12=156 counts each pair twice, so 156÷2=78. Conclusion and choice ② match.",
+  "meta": {
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "authority": "M2-RPM-110; active PT_COUNTING_SELECTION_DISTRIBUTION/TPL_COMBINATION_SELECTION",
+    "status": "PASS"
+  },
+  "protectedFieldsUnchanged": {
+    "content": true,
+    "choices": true,
+    "answer": true,
+    "image": true,
+    "layoutTag": true
+  }
+}

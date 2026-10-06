@@ -1,0 +1,3523 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "stage": "CREATE",
+  "examUid": "19_풍덕중_2학기_기말_중2_기출",
+  "artifactSha": "fb8822dca5939ba354508fbacdb3bfc538531eaf",
+  "evidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.FINAL.EVIDENCE.json",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "sourceBundle": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/19_풍덕중_2학기_기말_중2_기출.js",
+    "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+    "pdfPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_풍덕중2_수학_2기말.pdf",
+    "pdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+    "answerKeyPath": "C:/Users/USER/Desktop/기출정리 파일/(4)2기말/중2/2019_풍덕중2_수학_2기말_정답.hwp",
+    "answerKeySha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+    "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+    "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda",
+    "inputJsGitBlobSha": "a370b276353d2863e53f810a469552b0a02624c3"
+  },
+  "preflight": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.CALIBRATION_PREFLIGHT.json",
+    "sha256": "e9b3ae887602585a0f6be0d33cef859459c8a19517eb831fe9d8b29575ae2365",
+    "sampleReadBeforeWork": true,
+    "verifiedGoldenCount": 2,
+    "negativeSample": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "jeilQ18Modeled": false
+  },
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "4ea487f28b2302535f0b6516179b0508d784b69d959b4f957790b66c5e094ebf",
+        "gitBlobSha": "f9e2c18cf8bcf0a27e1c10d8e8d68b222df2fe6a",
+        "items": [
+          {
+            "qid": 7,
+            "solutionSha256": "0928ae260780fdaeac970f8c40c6d6953e84930fbce299f0c7e6a39e465aacd9",
+            "solutionExcerpt": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n$x^2+y^2+6x-2y+1=0$\n상수항 $1$을 오른쪽으로 옮기면\n$x^2+6x+y^2-2y=-1$이다.\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.",
+            "visualRef": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+            "visualSha256": "6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+            "observation": "표준형 변환, 중심 좌표 변화, 이동 순서가 식과 별도 행으로 드러나 학생이 재현할 수 있다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          },
+          {
+            "qid": 12,
+            "solutionSha256": "a555355216573e25a87a2b09d6164a6f02b0d688bc01e0bacac1eca42dead171",
+            "solutionExcerpt": "원래 원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n반지름은 $|a|$이지만 문제에서 $a>0$이므로 반지름은 $a$이다.\n이 원을 $x$축의 방향으로 $-4$만큼,\n$y$축의 방향으로 $-2$만큼 평행이동하면 중심은\n$(a,b)\\rightarrow(a-4,b-2)$가 된다.\n따라서 이동한 원의 중심은 $(a-4,",
+            "visualRef": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+            "visualSha256": "67d04157729407bb19bc50d68ad0f68b72044088c1e6f599df82c7c6428e56df",
+            "observation": "이동 원의 중심과 축까지의 거리 조건을 차례로 세워 절댓값 경우와 b>0 조건을 처리한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+        "items": [
+          {
+            "qid": 2,
+            "solutionSha256": "84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+            "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째 직선의 기울기는 $-\\dfrac13$이다.\n\n다음으로 직선\n$kx-2y-1=0$\n을 $y$에 대하여 정리하면\n$-2y=-kx+1$\n$y=\\dfrac{k}{2}x-\\dfrac12$",
+            "visualRef": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+            "visualSha256": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+            "observation": "두 직선을 y=mx+n 꼴로 각각 정리하고 기울기 곱 조건에 대입한 식을 분리했다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          },
+          {
+            "qid": 5,
+            "solutionSha256": "8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109",
+            "solutionExcerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.\n$A=\\{3,2a,b-4\\}$에는 원소 $3$이 반드시 들어 있다.\n따라서 $B=\\{3a,4,2\\}$에도 원소 $3$이 들어 있어야 한다.\n$B$에서 $4$와 $2$는 $3$이 아니므로\n$3a=3$이어야 한다.\n따라서\n$a=1$이다.\n이 값을 두 집합에 대입하면\n$A=\\{3,2,b-4\\}$",
+            "visualRef": null,
+            "visualSha256": null,
+            "observation": "집합 원소 일치 조건에서 a를 먼저 확정하고 남은 원소 대조로 b를 구한다.",
+            "axes": [
+              "STUDENT_REPRODUCIBILITY",
+              "SMALL_BOARD_STRUCTURE",
+              "EXPLANATION_DENSITY",
+              "VISUAL_SEMANTIC_PARITY",
+              "VISUAL_READABILITY"
+            ]
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906",
+      "observation": "복성고 regression README를 실제 판독. 자기보고 N/N만으로 통과 처리하지 말고 각 열거 소항목의 실제 block 분리, visual actual geometry, runtime source parity를 보아야 한다. 본 target에는 solution/SVG 작성 전 calibration 기준으로 적용.",
+      "axes": [
+        "STUDENT_REPRODUCIBILITY",
+        "SMALL_BOARD_STRUCTURE",
+        "EXPLANATION_DENSITY",
+        "VISUAL_SEMANTIC_PARITY",
+        "VISUAL_READABILITY"
+      ]
+    }
+  },
+  "coverage": {
+    "questionCount": 23,
+    "sourceModeOriginal": 23,
+    "sourceTextExactParity": "23/23",
+    "choicesExactParity": "23/23",
+    "questionLayoutAudit": "23/23",
+    "solutionRewrite": "FULL_ALL_QUESTIONS",
+    "solutionRewriteCount": "23/23",
+    "smallBoardAuditCount": "23/23",
+    "metaAudit": "23/23",
+    "difficultyAudit": "23/23",
+    "visualNecessityAuditCount": "23/23",
+    "existingProblemImageAuditCount": "6/6",
+    "curriculumMethodAuditCount": "23/23",
+    "heldQids": []
+  },
+  "artifactRawSha256": "80c4c082641f1478d99157197d46094fd3c871b9d348c6cbbce776045d6a6630",
+  "artifactGitBlobSha": "fb8822dca5939ba354508fbacdb3bfc538531eaf",
+  "rows": [
+    {
+      "qid": 1,
+      "questionUid": "sourceOrdinal:1:fp:f57ff63d6a70826d7f49ba59fc0dd710b2ad7c5435d7d9eab4e7beb3f81a1f89",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 1,
+        "contentHash": "55e257d6137019430600907dbcdcdb6e43b76ed7471d108eca0eb5947ba9e5d7",
+        "choicesHash": "0b9c3d8ecdef162ca42e148c3d9e0386120d1ffffdb839ec7c9d8e0d77216749",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "f57ff63d6a70826d7f49ba59fc0dd710b2ad7c5435d7d9eab4e7beb3f81a1f89",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 1,
+          "contentHash": "55e257d6137019430600907dbcdcdb6e43b76ed7471d108eca0eb5947ba9e5d7",
+          "choicesHash": "0b9c3d8ecdef162ca42e148c3d9e0386120d1ffffdb839ec7c9d8e0d77216749",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "f57ff63d6a70826d7f49ba59fc0dd710b2ad7c5435d7d9eab4e7beb3f81a1f89",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "②, ③",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 6,
+          "decisiveStep": "일차함수의 식이 y=ax+b이고 a≠0인지 각 보기를 식의 차수와 기울기로 판정한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-047",
+          "mappingStatus": "RPM_ONLY",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "ACTIVE RPM crosswalk path M2-RPM-047 is RPM_ONLY; no unique mapped PT/TPL for linear-function identification.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "ACTIVE RPM crosswalk path M2-RPM-047 is RPM_ONLY; no unique mapped PT/TPL for linear-function identification.",
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "여러 식의 꼴과 차수를 구분하므로 단순 정의 대입보다 판단 부담이 있다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "bf7b7ad80112ee2ce1ee85f2803826bea67634acc15316ea35c91ef18463a7dd",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "일차함수의 식이 y=ax+b이고 a≠0인지 각 보기를 식의 차수와 기울기로 판정한다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "ACTIVE RPM crosswalk path M2-RPM-047 is RPM_ONLY; no unique mapped PT/TPL for linear-function identification.",
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "여러 식의 꼴과 차수를 구분하므로 단순 정의 대입보다 판단 부담이 있다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "일차함수의 정의"
+        ],
+        "formulas": [
+          "y=ax+b, a≠0"
+        ],
+        "notations": [
+          "a,b"
+        ],
+        "methods": [
+          "보기별 식을 y=ax+b와 대조"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "②, ③",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 2,
+      "questionUid": "sourceOrdinal:2:fp:0e7431af4b69e328910954075c25de159efdc6ba477cd540f196d70a58c90dc0",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "contentHash": "937da6a73a5830250943873502fa857ed4ec9da277799abf9baeebfb78876da6",
+        "choicesHash": "edc025c82bc9ee23a8444c4206f53b68968d4c5f5954a4e0d15d8fe79b9d95f9",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "0e7431af4b69e328910954075c25de159efdc6ba477cd540f196d70a58c90dc0",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 2,
+          "contentHash": "937da6a73a5830250943873502fa857ed4ec9da277799abf9baeebfb78876da6",
+          "choicesHash": "edc025c82bc9ee23a8444c4206f53b68968d4c5f5954a4e0d15d8fe79b9d95f9",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "0e7431af4b69e328910954075c25de159efdc6ba477cd540f196d70a58c90dc0",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "③",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 4,
+          "decisiveStep": "f(a)=1에 x=a를 대입해 a를 푼다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-046",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_FUNCTION_VALUE",
+          "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "현재 M2-04 함숫값 경로의 mapped ACTIVE key를 적용; exact curriculum binding gap은 Meta-only debt.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "함숫값 식에 한 번 대입해 일차방정식을 푸는 직접 적용이다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "da384507464ffd4c37e57f2ec1ff6393fc5a2227fb4e795961f80ea5520590a6",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "f(a)=1에 x=a를 대입해 a를 푼다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "함숫값 식에 한 번 대입해 일차방정식을 푸는 직접 적용이다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "함숫값"
+        ],
+        "formulas": [
+          "f(a)=2a+3"
+        ],
+        "notations": [
+          "f(a)"
+        ],
+        "methods": [
+          "대입 후 일차방정식 풀이"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "③",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 3,
+      "questionUid": "sourceOrdinal:3:fp:b4cfef8d1e688b90b6c4d8e618b6e4e48c0a01bb9d924f1e49831d00a5194927",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 3,
+        "contentHash": "fb9a4ef94154191725682a541aabbe025d92ad6ee26f3f4f0f390e23452c62c9",
+        "choicesHash": "d3bb104a8e215fcbc1442590fd77b074582fb03968bd8de251585c0cf89f8d8b",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "b4cfef8d1e688b90b6c4d8e618b6e4e48c0a01bb9d924f1e49831d00a5194927",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 3,
+          "contentHash": "fb9a4ef94154191725682a541aabbe025d92ad6ee26f3f4f0f390e23452c62c9",
+          "choicesHash": "d3bb104a8e215fcbc1442590fd77b074582fb03968bd8de251585c0cf89f8d8b",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "b4cfef8d1e688b90b6c4d8e618b6e4e48c0a01bb9d924f1e49831d00a5194927",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "⑤",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 4,
+          "decisiveStep": "y축 방향 -2 이동은 y값에서 2를 빼는 것이므로 식의 상수항만 -2 이동한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-050",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "수직 평행이동은 같은 기울기의 평행한 직선으로 이동; mapped ACTIVE line-relation keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "평행이동량을 y절편에 바로 반영하는 한 단계 적용이다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "9fdc69930c58fdf7b6c2a534ae56181b32225b5222c97f55fb2b82f37e7d88eb",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "y축 방향 -2 이동은 y값에서 2를 빼는 것이므로 식의 상수항만 -2 이동한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "평행이동량을 y절편에 바로 반영하는 한 단계 적용이다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "그래프의 y축 방향 평행이동"
+        ],
+        "formulas": [
+          "y=3x-2"
+        ],
+        "notations": [],
+        "methods": [
+          "이동량을 y절편에 반영"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "⑤",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 4,
+      "questionUid": "sourceOrdinal:4:fp:f3a52447374ae033b70c634c6327b056794b882c880f497f4ccc8640c3c7f38d",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 4,
+        "contentHash": "0669f20fba95b532c3763402ae4de7c40441068fd234927c815cef7bb6d73b90",
+        "choicesHash": "ea9331e5579bf0e25d8166c7739d9405a89aac20d5f40064105d46348b0c38b0",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "f3a52447374ae033b70c634c6327b056794b882c880f497f4ccc8640c3c7f38d",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 4,
+          "contentHash": "0669f20fba95b532c3763402ae4de7c40441068fd234927c815cef7bb6d73b90",
+          "choicesHash": "ea9331e5579bf0e25d8166c7739d9405a89aac20d5f40064105d46348b0c38b0",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "f3a52447374ae033b70c634c6327b056794b882c880f497f4ccc8640c3c7f38d",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "③",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 5,
+          "decisiveStep": "두 절편을 구해 축과 직선으로 생긴 삼각형 넓이를 계산한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-058",
+          "mappingStatus": "RPM_ONLY",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Area from intercepts is M2-RPM-058 RPM_ONLY; current crosswalk has no safe mapped ACTIVE PT/TPL.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "Area from intercepts is M2-RPM-058 RPM_ONLY; current crosswalk has no safe mapped ACTIVE PT/TPL.",
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "절편 두 개와 넓이 공식을 연결한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "cd2507dd58176e10b32a80167d1d4d05c492569cd8724b719403b33dbf331d2d",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "두 절편을 구해 축과 직선으로 생긴 삼각형 넓이를 계산한다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Area from intercepts is M2-RPM-058 RPM_ONLY; current crosswalk has no safe mapped ACTIVE PT/TPL.",
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "절편 두 개와 넓이 공식을 연결한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "절편",
+          "삼각형 넓이"
+        ],
+        "formulas": [
+          "넓이=밑변×높이÷2"
+        ],
+        "notations": [
+          "x절편",
+          "y절편"
+        ],
+        "methods": [
+          "절편 계산 후 넓이 계산"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "③",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 5,
+      "questionUid": "sourceOrdinal:5:fp:d2e98c9d1177e6c12c6a581fed427706c344ffa484e5eb68cbffbd8bf71fb2aa",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 5,
+        "contentHash": "4e6e88590e8604b64a2a9215435c65cd747831c05e62659b5fd32bcc5370e804",
+        "choicesHash": "e079f6b835c1bf5b41295f8acbf5d5784af681c68ae54af8e987aac8b51deeb1",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "d2e98c9d1177e6c12c6a581fed427706c344ffa484e5eb68cbffbd8bf71fb2aa",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 5,
+          "contentHash": "4e6e88590e8604b64a2a9215435c65cd747831c05e62659b5fd32bcc5370e804",
+          "choicesHash": "e079f6b835c1bf5b41295f8acbf5d5784af681c68ae54af8e987aac8b51deeb1",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "d2e98c9d1177e6c12c6a581fed427706c344ffa484e5eb68cbffbd8bf71fb2aa",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "①",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 6,
+          "decisiveStep": "각 보기의 절편·점 대입·기울기·평행·증감 사실을 대조해 x절편 문장만 거짓임을 찾는다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-051",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "그래프 성질 진술의 참·거짓을 판정; M2-04 graph-properties mapped ACTIVE keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "절편·점·기울기·평행·증감을 비교하는 복수 진술 판정이다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "2ae1fca8596569f6c3bca24fbecbf6f75bb05ea724dd186fee460e9e1aee2957",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "각 보기의 절편·점 대입·기울기·평행·증감 사실을 대조해 x절편 문장만 거짓임을 찾는다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "절편·점·기울기·평행·증감을 비교하는 복수 진술 판정이다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "기울기",
+          "절편",
+          "평행",
+          "증감"
+        ],
+        "formulas": [
+          "x절편은 y=0의 해"
+        ],
+        "notations": [
+          "기울기"
+        ],
+        "methods": [
+          "각 진술을 대입·기울기와 대조"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "①",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 6,
+      "questionUid": "sourceOrdinal:6:fp:2559477448966874215070f4e6a38bae802aee92b8c2c1fd02e463db4e446d93",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 6,
+        "contentHash": "56376445389fa97fc2a13e25faa535fb8fb7179960d248de693c6a63c96f055c",
+        "choicesHash": "0710ba36cc1c105eacd358232012e692999d54429345130e47eca93f6fe38048",
+        "imageRefHash": "ed10584235cc9e5633a1653af1ad5292150d7c67949328fcd2f54ca93722c72a",
+        "sourceIdentityFingerprint": "2559477448966874215070f4e6a38bae802aee92b8c2c1fd02e463db4e446d93",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 6,
+          "contentHash": "56376445389fa97fc2a13e25faa535fb8fb7179960d248de693c6a63c96f055c",
+          "choicesHash": "0710ba36cc1c105eacd358232012e692999d54429345130e47eca93f6fe38048",
+          "imageRefHash": "ed10584235cc9e5633a1653af1ad5292150d7c67949328fcd2f54ca93722c72a",
+          "sourceIdentityFingerprint": "2559477448966874215070f4e6a38bae802aee92b8c2c1fd02e463db4e446d93",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png",
+          "assetSha256": "cb400566b1a46a91cf70ad48458e2bdfbd9dd84c9ad789d7d52bb3498ec63e13",
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "①",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 6,
+          "decisiveStep": "기존 그래프에서 a>0,b<0을 읽고 새 직선의 기울기, 절편, x절편 부호로 사분면을 정한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": null,
+          "mappingStatus": "NO_EXACT_PATH",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "reason": "The exact quadrant deduction from graph parameter signs has no unique mapped ACTIVE PT/TPL in current M2 crosswalk.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "The exact quadrant deduction from graph parameter signs has no unique mapped ACTIVE PT/TPL in current M2 crosswalk.",
+          "difficulty": {
+            "bucket": 3,
+            "confidence": "medium",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "기존 그래프의 부호 정보를 새 직선의 사분면으로 옮기는 추론이 필요하다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "NO_UNIQUE_RPM_L3_L4_EXACT_MAPPING;ADVANCED_META_DEBT"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+            "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png",
+            "imageSha256": "cb400566b1a46a91cf70ad48458e2bdfbd9dd84c9ad789d7d52bb3498ec63e13"
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "7b3746811af137afb93e28b5ffb30f3905a1d503d68bbae98e15a51e7a63411f",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "기존 그래프에서 a>0,b<0을 읽고 새 직선의 기울기, 절편, x절편 부호로 사분면을 정한다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The exact quadrant deduction from graph parameter signs has no unique mapped ACTIVE PT/TPL in current M2 crosswalk.",
+      "difficultyEvidence": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "기존 그래프의 부호 정보를 새 직선의 사분면으로 옮기는 추론이 필요하다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "기울기 부호",
+          "절편",
+          "사분면"
+        ],
+        "formulas": [
+          "x절편=b/a"
+        ],
+        "notations": [
+          "a>0",
+          "b<0"
+        ],
+        "methods": [
+          "그래프에서 부호 추론 후 사분면 판단"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+        "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png",
+        "imageSha256": "cb400566b1a46a91cf70ad48458e2bdfbd9dd84c9ad789d7d52bb3498ec63e13"
+      },
+      "sourceAnswerKeyExpected": "①",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 7,
+      "questionUid": "sourceOrdinal:7:fp:cfa7bbe12d81c9432fcc77f9003e692adef2640e4d525b999c01bbd25f2c7c38",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 7,
+        "contentHash": "4b1f7570fcdddeee9c359ed80bf0903e6a798c4e667cf5db10f44d3db6b3b743",
+        "choicesHash": "e0a2d515b9432b7ce272fe4d09d2234810d327b803650316fda86b74a012a5e6",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "cfa7bbe12d81c9432fcc77f9003e692adef2640e4d525b999c01bbd25f2c7c38",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 7,
+          "contentHash": "4b1f7570fcdddeee9c359ed80bf0903e6a798c4e667cf5db10f44d3db6b3b743",
+          "choicesHash": "e0a2d515b9432b7ce272fe4d09d2234810d327b803650316fda86b74a012a5e6",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "cfa7bbe12d81c9432fcc77f9003e692adef2640e4d525b999c01bbd25f2c7c38",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "⑤",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 4,
+          "decisiveStep": "주어진 점을 직선 방정식에 대입해 a를 푼다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-054",
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "직선 방정식 그래프에서 점 조건으로 계수를 정함; ACTIVE PT family는 있으나 exact template 없음.",
+          "nullDebtFields": [
+            "templateKey"
+          ],
+          "difficulty": {
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "점 좌표를 대입해 계수를 구하는 직접 적용이다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "4ad9b4c19dc8090a750eb25cdc4f448d0280591146aa3e0852316ac9c7ea9543",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "주어진 점을 직선 방정식에 대입해 a를 푼다.",
+      "metaDebtFields": [
+        "templateKey"
+      ],
+      "difficultyEvidence": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "점 좌표를 대입해 계수를 구하는 직접 적용이다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "직선 방정식의 점 대입"
+        ],
+        "formulas": [
+          "x+ay+8=0"
+        ],
+        "notations": [
+          "좌표쌍"
+        ],
+        "methods": [
+          "주어진 좌표를 대입"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "⑤",
+      "verdict": "PASS",
+      "metaDebtReason": "The current M2-RPM-054 row is FAMILY_BINDING_GAP: the mapped ACTIVE PT_LINE_EQUATION family is supported, but there is no exact template binding. Keep templateKey null as explicit Meta-only debt."
+    },
+    {
+      "qid": 8,
+      "questionUid": "sourceOrdinal:8:fp:8f0f29c732a5f924073649d44c7bda1e5b10d35ef04b2f5c345444d1d34a3255",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 8,
+        "contentHash": "9f5db4f5a7dab08472e847f23b93522ba8de888cb00aa69a8d6fccbd3cece1d9",
+        "choicesHash": "0885c704717e57c177d4396c16beedfb1beb450b13f2e7d49aa271983fbd38a0",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "8f0f29c732a5f924073649d44c7bda1e5b10d35ef04b2f5c345444d1d34a3255",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 8,
+          "contentHash": "9f5db4f5a7dab08472e847f23b93522ba8de888cb00aa69a8d6fccbd3cece1d9",
+          "choicesHash": "0885c704717e57c177d4396c16beedfb1beb450b13f2e7d49aa271983fbd38a0",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "8f0f29c732a5f924073649d44c7bda1e5b10d35ef04b2f5c345444d1d34a3255",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "②",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 5,
+          "decisiveStep": "첫 직선의 x절편을 구한 뒤 그 점을 지나고 기울기 2인 평행선을 정한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-057",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "주어진 직선과 평행한 직선을 조건점으로 결정; mapped ACTIVE relation key.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "기존 x절편과 평행 조건을 결합해 새 직선식을 만든다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "cdf61f0024815431ba0ef5f0dc60bd961157fa520a001c39ed2b73b7ee3b2f75",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "첫 직선의 x절편을 구한 뒤 그 점을 지나고 기울기 2인 평행선을 정한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "기존 x절편과 평행 조건을 결합해 새 직선식을 만든다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "x절편",
+          "평행한 직선"
+        ],
+        "formulas": [
+          "y=mx+n"
+        ],
+        "notations": [
+          "기울기"
+        ],
+        "methods": [
+          "원래 x절편 계산 후 평행선 식 결정"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "②",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 9,
+      "questionUid": "sourceOrdinal:9:fp:404161fe1fb29c652ab612b252f7abc3500c8be1363abc2f209eb4e19ec5c31a",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 9,
+        "contentHash": "aab7d6e0c2cf9b647d3df4b07686653a97ff424d96c02e7028a99a4b48ca773e",
+        "choicesHash": "ccfa4af06ebfd033d89665a81a2ca4ed070ab0ef41b6d818517d3496f0e32833",
+        "imageRefHash": "03c6e59e8b00425bffb3c2a8e874dd7040085a94f783baa9adc3790d024e8d1c",
+        "sourceIdentityFingerprint": "404161fe1fb29c652ab612b252f7abc3500c8be1363abc2f209eb4e19ec5c31a",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 9,
+          "contentHash": "aab7d6e0c2cf9b647d3df4b07686653a97ff424d96c02e7028a99a4b48ca773e",
+          "choicesHash": "ccfa4af06ebfd033d89665a81a2ca4ed070ab0ef41b6d818517d3496f0e32833",
+          "imageRefHash": "03c6e59e8b00425bffb3c2a8e874dd7040085a94f783baa9adc3790d024e8d1c",
+          "sourceIdentityFingerprint": "404161fe1fb29c652ab612b252f7abc3500c8be1363abc2f209eb4e19ec5c31a",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q09.png",
+          "assetSha256": "646dfd94acdf4acfffeb98293f0b4985d0ca137a679621c2ea2d7c55ad4774e5",
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "①",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 3,
+          "decisiveStep": "그래프의 x=-2를 방정식에 대입해 k를 구한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": "M2-RPM-055",
+          "mappingStatus": "RPM_ONLY",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "The graph is a vertical line parallel to the y-axis; M2-RPM-055 is RPM_ONLY and has no safe mapped ACTIVE PT/TPL.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "The graph is a vertical line parallel to the y-axis; M2-RPM-055 is RPM_ONLY and has no safe mapped ACTIVE PT/TPL.",
+          "difficulty": {
+            "bucket": 1,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "그래프의 x좌표를 읽어 식에 대입하는 직접 적용이다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q09.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+            "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q09.png",
+            "imageSha256": "646dfd94acdf4acfffeb98293f0b4985d0ca137a679621c2ea2d7c55ad4774e5"
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "463ba9d1dffb8c3227048d3e0833fef1b05f7788ad00d48f044eec3db841bd47",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "그래프의 x=-2를 방정식에 대입해 k를 구한다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The graph is a vertical line parallel to the y-axis; M2-RPM-055 is RPM_ONLY and has no safe mapped ACTIVE PT/TPL.",
+      "difficultyEvidence": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "그래프의 x좌표를 읽어 식에 대입하는 직접 적용이다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "직선 방정식의 그래프",
+          "수직선"
+        ],
+        "formulas": [
+          "2x-1=k"
+        ],
+        "notations": [
+          "x=-2"
+        ],
+        "methods": [
+          "그래프 좌표를 방정식에 대입"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q09.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+        "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q09.png",
+        "imageSha256": "646dfd94acdf4acfffeb98293f0b4985d0ca137a679621c2ea2d7c55ad4774e5"
+      },
+      "sourceAnswerKeyExpected": "①",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 10,
+      "questionUid": "sourceOrdinal:10:fp:7a26f651ac416413fdd2f60e8b4fc9ba939c4933f5ae4de0999bf701edcbf60a",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 10,
+        "contentHash": "05223f6defa420341d086e6f557ca8cf3a29247a31f4f4926a8965e3ece9f12e",
+        "choicesHash": "6ae82629187cec94799064ce9949d4656acf358026f2d9a113be53c41a69ab19",
+        "imageRefHash": "1b62670a7f31318f81f6a6825b3cad580bc5b2ac05e4e19ce0a8b10241f72549",
+        "sourceIdentityFingerprint": "7a26f651ac416413fdd2f60e8b4fc9ba939c4933f5ae4de0999bf701edcbf60a",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 10,
+          "contentHash": "05223f6defa420341d086e6f557ca8cf3a29247a31f4f4926a8965e3ece9f12e",
+          "choicesHash": "6ae82629187cec94799064ce9949d4656acf358026f2d9a113be53c41a69ab19",
+          "imageRefHash": "1b62670a7f31318f81f6a6825b3cad580bc5b2ac05e4e19ce0a8b10241f72549",
+          "sourceIdentityFingerprint": "7a26f651ac416413fdd2f60e8b4fc9ba939c4933f5ae4de0999bf701edcbf60a",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q10.png",
+          "assetSha256": "395ac63d2884d500b342cab6e1de15cee755b8c9f748e8892c4b5bb06b76474c",
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "①",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 7,
+          "decisiveStep": "그래프 교점 (2,1)을 두 식에 각각 대입해 a,b를 구한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "rpmPath": "M2-RPM-056",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "그래프의 교점 좌표를 연립식에 대입해 계수를 결정; mapped ACTIVE graph-intersection keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "그래프의 교점을 읽고 두 방정식에서 계수를 각각 구한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q10.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+            "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q10.png",
+            "imageSha256": "395ac63d2884d500b342cab6e1de15cee755b8c9f748e8892c4b5bb06b76474c"
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "bae442dced944ded81b656abc2458c4ccb0652d5cc60377545985a01e1dc0dbe",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "그래프 교점 (2,1)을 두 식에 각각 대입해 a,b를 구한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "그래프의 교점을 읽고 두 방정식에서 계수를 각각 구한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "concepts": [
+          "연립일차방정식",
+          "그래프의 교점"
+        ],
+        "formulas": [
+          "ax+2y=4",
+          "x+by=-2"
+        ],
+        "notations": [
+          "교점 (2,1)"
+        ],
+        "methods": [
+          "교점 좌표를 각 식에 대입"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q10.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+        "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q10.png",
+        "imageSha256": "395ac63d2884d500b342cab6e1de15cee755b8c9f748e8892c4b5bb06b76474c"
+      },
+      "sourceAnswerKeyExpected": "①",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 11,
+      "questionUid": "sourceOrdinal:11:fp:c4d1c4a7e5f1a57afc1eb522846404c6a4b7475788d7cb9dc5e77b0c333f68af",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 11,
+        "contentHash": "1e4cc2024e7fd4dc8c59dcb591240586e2777961de3dbe78502c75814b648f7b",
+        "choicesHash": "3176b67a98544228651bbd50d6d1a4fd922156297e18464612afb32e2eed1ea1",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "c4d1c4a7e5f1a57afc1eb522846404c6a4b7475788d7cb9dc5e77b0c333f68af",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 11,
+          "contentHash": "1e4cc2024e7fd4dc8c59dcb591240586e2777961de3dbe78502c75814b648f7b",
+          "choicesHash": "3176b67a98544228651bbd50d6d1a4fd922156297e18464612afb32e2eed1ea1",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "c4d1c4a7e5f1a57afc1eb522846404c6a4b7475788d7cb9dc5e77b0c333f68af",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "④",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 5,
+          "decisiveStep": "3의 배수와 4의 배수 목록을 합집합으로 세고 공통수 12를 한 번만 센다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "rpmPath": "M2-RPM-108",
+          "mappingStatus": "RPM_ONLY",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Counting a union of two multiple sets with an overlap has no exact mapped ACTIVE PT/TPL in current M2 crosswalk.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "Counting a union of two multiple sets with an overlap has no exact mapped ACTIVE PT/TPL in current M2 crosswalk.",
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "두 배수 집합의 겹치는 수를 한 번만 세어야 한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "07b2a4810ca5e96b0b7039ef3929f4964f2d6a17dbca85ff5de9b44bf059b50f",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "3의 배수와 4의 배수 목록을 합집합으로 세고 공통수 12를 한 번만 센다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Counting a union of two multiple sets with an overlap has no exact mapped ACTIVE PT/TPL in current M2 crosswalk.",
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "두 배수 집합의 겹치는 수를 한 번만 세어야 한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "concepts": [
+          "배수",
+          "합집합의 경우 세기"
+        ],
+        "formulas": [
+          "공통 원소를 한 번만 센다"
+        ],
+        "notations": [],
+        "methods": [
+          "두 배수 목록 작성 후 중복 제거"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "④",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 12,
+      "questionUid": "sourceOrdinal:12:fp:daecb44a0b25e83e7769b72109a43666596b4770651ed02dd9b13ca5afa4ff1f",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 12,
+        "contentHash": "c7b6b6ecee03de377f1d07a3eb9eefbf509b07803fe14cac1334f3c01ea587c2",
+        "choicesHash": "24393c497169d6839b2122ca2176cbb4811249fbc679e6beb68caec277a3d35b",
+        "imageRefHash": "62ea02cec926eb51c6e78bbe9b05d36fe3a50db4dc86434fe015136151cec806",
+        "sourceIdentityFingerprint": "daecb44a0b25e83e7769b72109a43666596b4770651ed02dd9b13ca5afa4ff1f",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 12,
+          "contentHash": "c7b6b6ecee03de377f1d07a3eb9eefbf509b07803fe14cac1334f3c01ea587c2",
+          "choicesHash": "24393c497169d6839b2122ca2176cbb4811249fbc679e6beb68caec277a3d35b",
+          "imageRefHash": "62ea02cec926eb51c6e78bbe9b05d36fe3a50db4dc86434fe015136151cec806",
+          "sourceIdentityFingerprint": "daecb44a0b25e83e7769b72109a43666596b4770651ed02dd9b13ca5afa4ff1f",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png",
+          "assetSha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9",
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "④",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Prompt/choices remain exact; production-relative image ref is stable and faithful recrop displays the missing edge."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 10,
+          "decisiveStep": "전체 20경로에서 끊긴 가운데 가로 구간을 지나는 3×2=6경로를 제외한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "rpmPath": "M2-RPM-111",
+          "mappingStatus": "RPM_ONLY",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Shortest-grid-path counting is M2-RPM-111 RPM_ONLY; no safe mapped ACTIVE PT/TPL exists.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "Shortest-grid-path counting is M2-RPM-111 RPM_ONLY; no safe mapped ACTIVE PT/TPL exists.",
+          "difficulty": {
+            "bucket": 3,
+            "confidence": "medium",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "격자 경로 누적과 단절 구간을 지나는 경로 제외를 결합한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+            "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png",
+            "imageSha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9"
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "7e474bb7f767deba30b7258f2c9f268594941e993dfa1a1d79aed691a12d56be",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "전체 20경로에서 끊긴 가운데 가로 구간을 지나는 3×2=6경로를 제외한다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Shortest-grid-path counting is M2-RPM-111 RPM_ONLY; no safe mapped ACTIVE PT/TPL exists.",
+      "difficultyEvidence": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "격자 경로 누적과 단절 구간을 지나는 경로 제외를 결합한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "concepts": [
+          "곱의 법칙",
+          "최단경로의 점별 누적",
+          "빠진 간선"
+        ],
+        "formulas": [
+          "20-3×2=14"
+        ],
+        "notations": [
+          "오른쪽·위쪽 이동"
+        ],
+        "methods": [
+          "격자 교차점별 경로 수를 누적하고 빠진 구간 사용 경로를 뺌"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+        "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png",
+        "imageSha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9"
+      },
+      "sourceAnswerKeyExpected": "④",
+      "verdict": "PASS",
+      "q12RecoveryReference": {
+        "evidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.Q12_RECOVERY.json",
+        "priorFalseHoldPreserved": true,
+        "correctedSourceCropSha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9",
+        "priorCropSha256": "d4f8fa4ba92aeaf97a46caf7317b6c3374dae44a9170a6d7a20d47c9450a3a1f",
+        "answerKeyIndex": 4,
+        "routeCount": 14
+      }
+    },
+    {
+      "qid": 13,
+      "questionUid": "sourceOrdinal:13:fp:358115fca4dc5e69f67f81ff162e61d2e008056cf7fc5a5dae89a796c1c26045",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 13,
+        "contentHash": "d37174f5f887f3e5895ef8c0665bb3e14fcab2664b3c803313a901042e3b0665",
+        "choicesHash": "e71febd64ade116eb131d25479b96c016f0f5670758fe686747c035f8087fa10",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "358115fca4dc5e69f67f81ff162e61d2e008056cf7fc5a5dae89a796c1c26045",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 13,
+          "contentHash": "d37174f5f887f3e5895ef8c0665bb3e14fcab2664b3c803313a901042e3b0665",
+          "choicesHash": "e71febd64ade116eb131d25479b96c016f0f5670758fe686747c035f8087fa10",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "358115fca4dc5e69f67f81ff162e61d2e008056cf7fc5a5dae89a796c1c26045",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "②",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 4,
+          "decisiveStep": "B,C를 하나의 블록으로 묶어 블록·A·D 배열 6가지에 블록 내부 순서 2가지를 곱한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "rpmPath": "M2-RPM-109",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "B,C 인접 조건의 순서 있는 일렬 배열; mapped ACTIVE arrangement keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "인접 조건을 블록으로 바꾸고 블록 내부 순서를 곱한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "bcf950d1bc7ebf9422fd14471eef7e7ef833aeaaca6a7df6b7f9056ffc2b6775",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "B,C를 하나의 블록으로 묶어 블록·A·D 배열 6가지에 블록 내부 순서 2가지를 곱한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "인접 조건을 블록으로 바꾸고 블록 내부 순서를 곱한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "concepts": [
+          "곱의 법칙",
+          "블록 배열"
+        ],
+        "formulas": [
+          "3×2×1×2=12"
+        ],
+        "notations": [
+          "BC 블록"
+        ],
+        "methods": [
+          "이웃하는 두 사람을 블록으로 묶어 배열"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "②",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 14,
+      "questionUid": "sourceOrdinal:14:fp:5e510ad5b2a97771634ad918fd718b4957df41d1b5c63588e36819f12606b5c4",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 14,
+        "contentHash": "ec590229f8cfc88f593e276fb623b794ddefa04200c1c7b506ca00622b8ca668",
+        "choicesHash": "22210a210335a81328e7ef091441ee930338eecbabe5e16b8753ea2cce45e8e8",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "5e510ad5b2a97771634ad918fd718b4957df41d1b5c63588e36819f12606b5c4",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 14,
+          "contentHash": "ec590229f8cfc88f593e276fb623b794ddefa04200c1c7b506ca00622b8ca668",
+          "choicesHash": "22210a210335a81328e7ef091441ee930338eecbabe5e16b8753ea2cce45e8e8",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "5e510ad5b2a97771634ad918fd718b4957df41d1b5c63588e36819f12606b5c4",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "④",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 4,
+          "decisiveStep": "16개의 동전 결과 중 앞면 3개인 4개 결과를 센다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "rpmPath": "M2-RPM-114",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "동등가능한 16개 경우 중 유리한 4개를 세어 확률을 계산; mapped ACTIVE probability-count keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "전체 결과와 유리한 결과를 세어 비율을 구한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "37d519e56895d6ed2f17fda243b7e263b0d71efaa9f91e59529c6f465403bbc5",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "16개의 동전 결과 중 앞면 3개인 4개 결과를 센다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "전체 결과와 유리한 결과를 세어 비율을 구한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "concepts": [
+          "동등가능한 경우",
+          "확률"
+        ],
+        "formulas": [
+          "유리한 경우÷전체 경우"
+        ],
+        "notations": [],
+        "methods": [
+          "16 결과를 세고 앞면 3개 결과 4개 확인"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "④",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 15,
+      "questionUid": "sourceOrdinal:15:fp:b20bf3e5437e36d1b8150522ef58eae7919200c36c1a669b3d0386c6a9189a44",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 15,
+        "contentHash": "30a4d1eabbd4661607fee0b0af205a6bc59544b39ed3c423f2461a207b43a54a",
+        "choicesHash": "8d49515f4ba83aa1480734f9d8ef1e3eef6bf55aef9ea20e06c9e3927c6ae548",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "b20bf3e5437e36d1b8150522ef58eae7919200c36c1a669b3d0386c6a9189a44",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 15,
+          "contentHash": "30a4d1eabbd4661607fee0b0af205a6bc59544b39ed3c423f2461a207b43a54a",
+          "choicesHash": "8d49515f4ba83aa1480734f9d8ef1e3eef6bf55aef9ea20e06c9e3927c6ae548",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "b20bf3e5437e36d1b8150522ef58eae7919200c36c1a669b3d0386c6a9189a44",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "③",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 6,
+          "decisiveStep": "전체 7명 중 2명 선택과 남자끼리·여자끼리 선택을 각각 세어 확률을 구한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "rpmPath": "M2-RPM-110",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "순서 없는 대표 2명 선택에서 조건을 만족하는 경우를 셈; mapped ACTIVE selection keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "전체 선택과 두 조건의 유리한 선택을 구분한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "3e77c462ad32fe7b0e1bac1eb809cddc21e5069b8615270b10f96d506ca5a79f",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "전체 7명 중 2명 선택과 남자끼리·여자끼리 선택을 각각 세어 확률을 구한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "전체 선택과 두 조건의 유리한 선택을 구분한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "concepts": [
+          "순서 없는 두 명 선택",
+          "확률"
+        ],
+        "formulas": [
+          "전체 쌍 7×6÷2",
+          "유리한 쌍 4×3÷2+3×2÷2"
+        ],
+        "notations": [],
+        "methods": [
+          "전체 경우와 동성 쌍을 분리해 계산"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "③",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 16,
+      "questionUid": "sourceOrdinal:16:fp:b2e05713fce60c0d431c84acac13a5c7e2afb69d51c82a6960362579625362c5",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 16,
+        "contentHash": "d56cae268a7d10f468f0fdfdd489dd84a2cdf81e1f0a0dbafb70cb544e507430",
+        "choicesHash": "8dd1a09477148090ca4feb9f453e36602c0831d25ed2944592170c29ec9f5406",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "b2e05713fce60c0d431c84acac13a5c7e2afb69d51c82a6960362579625362c5",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 16,
+          "contentHash": "d56cae268a7d10f468f0fdfdd489dd84a2cdf81e1f0a0dbafb70cb544e507430",
+          "choicesHash": "8dd1a09477148090ca4feb9f453e36602c0831d25ed2944592170c29ec9f5406",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "b2e05713fce60c0d431c84acac13a5c7e2afb69d51c82a6960362579625362c5",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "⑤",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 7,
+          "decisiveStep": "Split the odd-sum event into (a even,b odd) and (a odd,b even); multiply independent probabilities for each disjoint case and add.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Two disjoint parity cases are shown on separate lines, multiplied under the M2 independence default, then added."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "rpmPath": "M2-RPM-114",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "M2-RPM-114 exact probability-calculation path; mapped active keys are preserved and binding gap is Meta-only.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "difficultyBucket": 2,
+            "difficultyConfidence": "high",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "Two disjoint parity cases and direct multiplication/addition under the M2 independence convention."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "No graph or geometry is needed; q16 is held for an unstated probability dependence, not a missing visual.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "f0ba3310a8f11691edd1a0d7c2617504561c275ccc673a7d607f924ccb153056",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "Split the odd-sum event into (a even,b odd) and (a odd,b even); multiply independent probabilities for each disjoint case and add.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "Two disjoint parity cases and direct multiplication/addition under the M2 independence convention."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "concepts": [
+          "홀짝에 따른 합의 경우 분리",
+          "서로 독립인 선택의 확률"
+        ],
+        "formulas": [
+          "P(A∩B)=P(A)P(B) for independent choices",
+          "서로소인 두 경우의 확률은 더한다"
+        ],
+        "notations": [
+          "P(a even)",
+          "P(b even)"
+        ],
+        "methods": [
+          "두 홀짝 조합을 나누어 독립확률을 곱하고 더함"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "현재 M2 독립성 기본 규칙 적용."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "No graph or geometry is needed; q16 is held for an unstated probability dependence, not a missing visual.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "⑤",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 17,
+      "questionUid": "sourceOrdinal:17:fp:2c97bb82d43faade9ea1d24e5d2123e98ce21384e776470eb5ceaa3146fbecbf",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 17,
+        "contentHash": "2d08e8f15069fef3b45d28851a71db3f7ed8cd9e7baa8bd456bef6e8e525533e",
+        "choicesHash": "f7a62ec120a6c718e19127dd7dca97a881a2c4652babaae304472f19fb068c07",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "2c97bb82d43faade9ea1d24e5d2123e98ce21384e776470eb5ceaa3146fbecbf",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 17,
+          "contentHash": "2d08e8f15069fef3b45d28851a71db3f7ed8cd9e7baa8bd456bef6e8e525533e",
+          "choicesHash": "f7a62ec120a6c718e19127dd7dca97a881a2c4652babaae304472f19fb068c07",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "2c97bb82d43faade9ea1d24e5d2123e98ce21384e776470eb5ceaa3146fbecbf",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "④",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 4,
+          "decisiveStep": "36개 주사위 결과에서 같은 눈 6개를 제외해 승부가 결정되는 경우를 센다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "rpmPath": "M2-RPM-115",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "동점 사건의 여사건으로 승부 결정 확률 계산; mapped ACTIVE event-relation keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "동점 경우를 세어 전체에서 제외한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "5712872c65758f981a2f7d550cb8f595d28ab58cbc148b4e791e039152326c08",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "36개 주사위 결과에서 같은 눈 6개를 제외해 승부가 결정되는 경우를 센다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "동점 경우를 세어 전체에서 제외한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "concepts": [
+          "동등가능한 주사위 경우",
+          "여사건"
+        ],
+        "formulas": [
+          "(36-6)/36"
+        ],
+        "notations": [],
+        "methods": [
+          "비기는 경우를 제외"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "④",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 18,
+      "questionUid": "sourceOrdinal:18:fp:6a2276da92ce26758a04175ec820f53326807eee5bf09dfaf1eb4d1a5c88f711",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 18,
+        "contentHash": "aa518b38e675c58beccd544471ff8885f875cab09f54dde5e3aac1aca13d79ae",
+        "choicesHash": "bd5278d61d23fd987ea7e6dbe0e1adbaf57a02ed47757a21b077f7c5487078dc",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "6a2276da92ce26758a04175ec820f53326807eee5bf09dfaf1eb4d1a5c88f711",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 18,
+          "contentHash": "aa518b38e675c58beccd544471ff8885f875cab09f54dde5e3aac1aca13d79ae",
+          "choicesHash": "bd5278d61d23fd987ea7e6dbe0e1adbaf57a02ed47757a21b077f7c5487078dc",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "6a2276da92ce26758a04175ec820f53326807eee5bf09dfaf1eb4d1a5c88f711",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "⑤",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 5,
+          "decisiveStep": "모두 뒷면의 여사건으로 적어도 하나 앞면 확률을 구하고 더한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "rpmPath": "M2-RPM-115",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "여사건 확률과 보완 사건의 합을 계산; mapped ACTIVE event-relation keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "여사건과 보완확률을 사용한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "f675cae927dd6f0a71e282da0a3ea8c378701c0e6c2cc7dcfc3fc683551d535b",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "모두 뒷면의 여사건으로 적어도 하나 앞면 확률을 구하고 더한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "여사건과 보완확률을 사용한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "concepts": [
+          "여사건",
+          "확률의 합"
+        ],
+        "formulas": [
+          "a=1/8",
+          "b=1-a"
+        ],
+        "notations": [
+          "a,b"
+        ],
+        "methods": [
+          "모두 뒷면과 적어도 하나 앞면의 관계 사용"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "⑤",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 19,
+      "questionUid": "sourceOrdinal:19:fp:344390b56b5d37301414a9d0dda84b4207ba46db580da8cfef3a6b4c1c7872cb",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 19,
+        "contentHash": "005fffdc9f1bbb57f5362e731fbf2597655ef29c3d1e6b0c763832e62e10c82a",
+        "choicesHash": "6c8fc470f48ba5ad20a318ed8cc62dc8ae4c769fe8abc975f7b049d4acf2918c",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "344390b56b5d37301414a9d0dda84b4207ba46db580da8cfef3a6b4c1c7872cb",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 19,
+          "contentHash": "005fffdc9f1bbb57f5362e731fbf2597655ef29c3d1e6b0c763832e62e10c82a",
+          "choicesHash": "6c8fc470f48ba5ad20a318ed8cc62dc8ae4c769fe8abc975f7b049d4acf2918c",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "344390b56b5d37301414a9d0dda84b4207ba46db580da8cfef3a6b4c1c7872cb",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "②",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 5,
+          "decisiveStep": "세 문제 모두 틀리는 확률을 구한 뒤 여사건을 취한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "rpmPath": "M2-RPM-115",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "세 문항 모두 틀리는 여사건으로 적어도 한 문항 정답 확률 계산; mapped ACTIVE event-relation keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "세 번의 독립 선택에서 여사건 확률을 계산한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "edde641c00b9a234eff4a3d04dd1d0203796acdb468fcf609138a1e5c6d9b573",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "세 문제 모두 틀리는 확률을 구한 뒤 여사건을 취한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "세 번의 독립 선택에서 여사건 확률을 계산한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "concepts": [
+          "독립 시행",
+          "여사건"
+        ],
+        "formulas": [
+          "1-(2/3)^3"
+        ],
+        "notations": [],
+        "methods": [
+          "모두 오답인 여사건 사용"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "②",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 20,
+      "questionUid": "sourceOrdinal:20:fp:e0b2e51d55421ae36b1494efcfff4af1a42c1628af74d70c7399d6d44eb6a62d",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 20,
+        "contentHash": "621c219e3cdd39b61e8dd7ef8dc1123695d0702a7de89dc0e5fdc74e4d3c492b",
+        "choicesHash": "5706aa30ff0bed36e55716bd5e324bcea56a934386beabd84b89213e3396631e",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "e0b2e51d55421ae36b1494efcfff4af1a42c1628af74d70c7399d6d44eb6a62d",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 20,
+          "contentHash": "621c219e3cdd39b61e8dd7ef8dc1123695d0702a7de89dc0e5fdc74e4d3c492b",
+          "choicesHash": "5706aa30ff0bed36e55716bd5e324bcea56a934386beabd84b89213e3396631e",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "e0b2e51d55421ae36b1494efcfff4af1a42c1628af74d70c7399d6d44eb6a62d",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "①",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 4,
+          "decisiveStep": "첫 당첨 뒤 남은 당첨 제비 3개와 전체 제비 9개를 이용해 두 추첨 확률을 곱한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "rpmPath": "M2-RPM-118",
+          "mappingStatus": "MAPPED_TEMPLATE_MISMATCH",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "reason": "Without-replacement successive draws have no exact mapped ACTIVE PT/TPL; the nearby independent-trial template would misstate the source condition.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "Without-replacement successive draws have no exact mapped ACTIVE PT/TPL; the nearby independent-trial template would misstate the source condition.",
+          "difficulty": {
+            "bucket": 2,
+            "confidence": "high",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "비복원으로 두 번째 추첨의 분모·분자를 갱신한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "6a78a5a2c62059b597a081a203fad50bced878ebac1871ed17a46699f3d0bb65",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "첫 당첨 뒤 남은 당첨 제비 3개와 전체 제비 9개를 이용해 두 추첨 확률을 곱한다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Without-replacement successive draws have no exact mapped ACTIVE PT/TPL; the nearby independent-trial template would misstate the source condition.",
+      "difficultyEvidence": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "비복원으로 두 번째 추첨의 분모·분자를 갱신한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "concepts": [
+          "비복원 추출",
+          "곱의 법칙"
+        ],
+        "formulas": [
+          "4/10×3/9"
+        ],
+        "notations": [],
+        "methods": [
+          "첫 추첨 후 남은 제비 수 갱신"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "①",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 21,
+      "questionUid": "sourceOrdinal:21:fp:a6fa1dd0b58b82c7df62121c98898fb2b793209a369d4b8aef7bc0b508db3916",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 21,
+        "contentHash": "a39cf0cd06bd91ee7e569057f2233b7bab4f60538e6cd33a5eeb164ad41c4f48",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "fe0dcd1c8ba8b28ef7d5ae284e5c7e6c94f1da29e9b549a1578c11cb43d034d8",
+        "sourceIdentityFingerprint": "a6fa1dd0b58b82c7df62121c98898fb2b793209a369d4b8aef7bc0b508db3916",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 21,
+          "contentHash": "a39cf0cd06bd91ee7e569057f2233b7bab4f60538e6cd33a5eeb164ad41c4f48",
+          "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "fe0dcd1c8ba8b28ef7d5ae284e5c7e6c94f1da29e9b549a1578c11cb43d034d8",
+          "sourceIdentityFingerprint": "a6fa1dd0b58b82c7df62121c98898fb2b793209a369d4b8aef7bc0b508db3916",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png",
+          "assetSha256": "e84a06afa354ba0c9bf2855d4f82980c31ef748a7e5651d5f0665f817972bbbc",
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "(1) 8 cm, (2) y=8x+4, (3) 68 cm",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Source newline/subquestion boundaries preserved; default grid remains appropriate."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 9,
+          "decisiveStep": "정육각형을 하나 붙일 때 둘레가 8cm씩 증가함을 확인해 y=12+8(x-1)을 만든다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "rpmPath": null,
+          "mappingStatus": "NO_EXACT_PATH",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "reason": "The perimeter-growth linear rule has no exact mapped ACTIVE PT/TPL in current M2 crosswalk.",
+          "nullDebtFields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "metaDebtReason": "The perimeter-growth linear rule has no exact mapped ACTIVE PT/TPL in current M2 crosswalk.",
+          "difficulty": {
+            "bucket": 3,
+            "confidence": "medium",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "둘레 증가 규칙을 일반식으로 만들고 특정 항을 대입한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "NO_UNIQUE_RPM_L3_L4_EXACT_MAPPING;ADVANCED_META_DEBT"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+            "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png",
+            "imageSha256": "e84a06afa354ba0c9bf2855d4f82980c31ef748a7e5651d5f0665f817972bbbc"
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "ea8bb5aede0c6ce52cd5837983b8ac1e36405d5b60aab1908daf71189288f378",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "정육각형을 하나 붙일 때 둘레가 8cm씩 증가함을 확인해 y=12+8(x-1)을 만든다.",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "The perimeter-growth linear rule has no exact mapped ACTIVE PT/TPL in current M2 crosswalk.",
+      "difficultyEvidence": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "둘레 증가 규칙을 일반식으로 만들고 특정 항을 대입한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "concepts": [
+          "정육각형 둘레",
+          "일차식의 규칙성"
+        ],
+        "formulas": [
+          "y=12+8(x-1)=8x+4"
+        ],
+        "notations": [
+          "x,y"
+        ],
+        "methods": [
+          "공유 변 길이로 매회 증가량을 구해 일반화"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+        "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png",
+        "imageSha256": "e84a06afa354ba0c9bf2855d4f82980c31ef748a7e5651d5f0665f817972bbbc"
+      },
+      "sourceAnswerKeyExpected": "(1) 8 cm, (2) y=8x+4, (3) 68 cm",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 22,
+      "questionUid": "sourceOrdinal:22:fp:8c93b060dff10c3e8f0b7077a8b7a0baaad2796fb2931645c32863509df985c8",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 22,
+        "contentHash": "12a5e547a2905f4b36e892264160e5021a60505c7135e598f750887e58c49e88",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sourceIdentityFingerprint": "8c93b060dff10c3e8f0b7077a8b7a0baaad2796fb2931645c32863509df985c8",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 22,
+          "contentHash": "12a5e547a2905f4b36e892264160e5021a60505c7135e598f750887e58c49e88",
+          "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceIdentityFingerprint": "8c93b060dff10c3e8f0b7077a8b7a0baaad2796fb2931645c32863509df985c8",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": null,
+          "assetSha256": null,
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "2",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Exact source content/choices kept; default grid is readable without override."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 5,
+          "decisiveStep": "두 직선이 일치해야 하므로 둘째 식을 2배해 계수를 비교한다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "rpmPath": "M2-RPM-057",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "무수히 많은 교점 조건은 두 직선의 일치; mapped ACTIVE line-relation keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 3,
+            "confidence": "medium",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "두 직선의 일치 조건으로 계수 비례를 판단한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-1",
+          "semanticScopeRelation": "PRIOR_SAME_GRADE_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+            "imageRef": null,
+            "imageSha256": null
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "4d3b6338ab56552959c3227a5f4859f5acaef87f074f451e737b46ca5f2a15d6",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "두 직선이 일치해야 하므로 둘째 식을 2배해 계수를 비교한다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "두 직선의 일치 조건으로 계수 비례를 판단한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "concepts": [
+          "두 직선의 일치",
+          "연립일차방정식"
+        ],
+        "formulas": [
+          "2(2x-y=1)"
+        ],
+        "notations": [
+          "계수 비교"
+        ],
+        "methods": [
+          "일치 조건에 따라 식을 같은 계수로 맞춤"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The item is text-only and algebra/counting steps fully show the decisive reasoning; no new SVG is needed.",
+        "imageRef": null,
+        "imageSha256": null
+      },
+      "sourceAnswerKeyExpected": "2",
+      "verdict": "PASS"
+    },
+    {
+      "qid": 23,
+      "questionUid": "sourceOrdinal:23:fp:7a9bd53a4d362870a307078a7e69017b81a2f9780096bf40a63bb2d264b9a70f",
+      "sourceMode": "ORIGINAL",
+      "sourceIdentityEvidence": {
+        "sourceArchiveFile": "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 23,
+        "contentHash": "ad0a3c8d8cfe4a0473bff2cb091231e7db5ced0e0036a05c1fdd08a1882b42b5",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "75571414f3bec909c2f4fcad83f8b67fa0fc05cb137bcf9aad1c90feea31e068",
+        "sourceIdentityFingerprint": "7a9bd53a4d362870a307078a7e69017b81a2f9780096bf40a63bb2d264b9a70f",
+        "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "inputJsSha256": "58503b2f6fe5898dbffedbc502582154779a237f2bf6a1c12a38bccaac18745b",
+          "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+          "sourceQuestionOrdinal": 23,
+          "contentHash": "ad0a3c8d8cfe4a0473bff2cb091231e7db5ced0e0036a05c1fdd08a1882b42b5",
+          "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "75571414f3bec909c2f4fcad83f8b67fa0fc05cb137bcf9aad1c90feea31e068",
+          "sourceIdentityFingerprint": "7a9bd53a4d362870a307078a7e69017b81a2f9780096bf40a63bb2d264b9a70f",
+          "contentExact": true,
+          "choicesExact": true,
+          "imageRefExact": true,
+          "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png",
+          "assetSha256": "aad0300674c046c9b5bcfae93457a02f888459cef1796277ef88aaac65aebf22",
+          "sourceEvidencePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/archive/analysis/source-only-m2-20261004/19_풍덕중_2학기_기말_중2_기출.evidence.json",
+          "sourceEvidenceSha256": "29a17f820f8284fe9eb0d62928eac09f998d40c551f1aeea468aa4ebe8bf8dda"
+        },
+        "answerKey": {
+          "answerKeyHwpSha256": "b58234feefd83c0ae5c9c7c51be6bd82a6de4270be2716b53ccd673ae53a3e0c",
+          "answerKeyPreviewSha256": "9a65489975afdd498b34c13da82b285cacedb4fd3c0878db991656c8543f5f95",
+          "questionAnswer": "$\\frac{2}{9}$",
+          "lookupStatus": "CONFIRMED"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "beforeDisposition": "LAYOUT_KEEP",
+          "finalDisposition": "LAYOUT_KEEP",
+          "reason": "Source newline/subquestion boundaries preserved; default grid remains appropriate."
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "runtimeLineCount": 8,
+          "decisiveStep": "12칸 주기에서 곱 6,18,30을 찾고 각 곱에 해당하는 순서쌍 8개를 센다.",
+          "smallBoardContinuityStatus": "PASS",
+          "reason": "Actual solution blocks expose the condition, equation/counting step, result, and answer separately."
+        },
+        "meta": {
+          "status": "PASS",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "rpmPath": "M2-RPM-117",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+          "projectionStatus": "PROJECTION_BINDING_PENDING",
+          "reason": "곱의 경우를 나누어 세고 유리한 경우의 비율로 확률 계산; mapped ACTIVE probability-application keys.",
+          "nullDebtFields": [],
+          "metaDebtReason": null,
+          "difficulty": {
+            "bucket": 4,
+            "confidence": "medium",
+            "boundary": "NONE",
+            "legacyLevelCompatibility": "NORMAL",
+            "rationale": "주기 조건으로 가능한 곱을 찾고 순서쌍을 세어 확률로 연결한다."
+          },
+          "targetScope": "M2-2",
+          "semanticSourceScope": "M2-2",
+          "semanticScopeRelation": "CURRENT_SCOPE",
+          "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "rpmCrosswalkSha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29",
+          "projectionAuthority": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "projectionRegistrySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
+          "semanticStatus": "FINAL_SOURCE_AND_VERIFIED_SOLUTION"
+        },
+        "visualSvg": {
+          "status": "PASS",
+          "necessity": {
+            "needed": false,
+            "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+            "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png",
+            "imageSha256": "aad0300674c046c9b5bcfae93457a02f888459cef1796277ef88aaac65aebf22"
+          },
+          "existingSolutionImage": null
+        }
+      },
+      "solutionSha256": "8607cfa05628354c7bca277f60e339e43e7a39c17ba650b5fbb41fb3df5abe27",
+      "smallBoardContinuityStatus": "PASS",
+      "decisiveStep": "12칸 주기에서 곱 6,18,30을 찾고 각 곱에 해당하는 순서쌍 8개를 센다.",
+      "metaDebtFields": [],
+      "difficultyEvidence": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rationale": "주기 조건으로 가능한 곱을 찾고 순서쌍을 세어 확률로 연결한다."
+      },
+      "curriculumMethodInventory": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "concepts": [
+          "곱의 법칙",
+          "순서쌍",
+          "주기",
+          "확률"
+        ],
+        "formulas": [
+          "8/36=2/9"
+        ],
+        "notations": [
+          "시계 방향 12칸 주기"
+        ],
+        "methods": [
+          "도착 숫자에 맞는 곱을 찾고 순서쌍을 열거"
+        ],
+        "status": "ALLOWED",
+        "outOfCurriculumDependencies": [],
+        "rationale": "All concepts, formulas, notations, and methods are middle-school grade 2 or earlier."
+      },
+      "visualNecessityEvidence": {
+        "needed": false,
+        "reason": "The source figure assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png already supplies the decisive visual facts; the solution is fully reproducible from it and no new explanatory SVG is needed.",
+        "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png",
+        "imageSha256": "aad0300674c046c9b5bcfae93457a02f888459cef1796277ef88aaac65aebf22"
+      },
+      "sourceAnswerKeyExpected": "$\\frac{2}{9}$",
+      "verdict": "PASS"
+    }
+  ],
+  "assetEvidence": [
+    {
+      "qid": 6,
+      "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png",
+      "sha256": "cb400566b1a46a91cf70ad48458e2bdfbd9dd84c9ad789d7d52bb3498ec63e13",
+      "observation": "source graph is an increasing line with negative x-intercept and positive y-intercept; axes and line label retained.",
+      "gitBlobSha": "f259b542cd49de8d5bfb7f36339fb9722862e86c",
+      "bytes": 105498
+    },
+    {
+      "qid": 9,
+      "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q09.png",
+      "sha256": "646dfd94acdf4acfffeb98293f0b4985d0ca137a679621c2ea2d7c55ad4774e5",
+      "observation": "source graph is a vertical line x=-2 with labeled coordinate axis.",
+      "gitBlobSha": "a13e34397fc0f2255620079045aec59e17e5c9ea",
+      "bytes": 13330
+    },
+    {
+      "qid": 10,
+      "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q10.png",
+      "sha256": "395ac63d2884d500b342cab6e1de15cee755b8c9f748e8892c4b5bb06b76474c",
+      "observation": "source graph marks the intersection at (2,1).",
+      "gitBlobSha": "b18665ed7978c0f08af9baa72b40dd83d317f6a4",
+      "bytes": 19076
+    },
+    {
+      "qid": 12,
+      "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png",
+      "sha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9",
+      "observation": "300dpi crop from original PDF page 2 shows A,B and the missing middle horizontal road edge; prior crop preserved; no answer-mark included.",
+      "gitBlobSha": "67f976c5b43cfb41a94395a5b920c6f95256f512",
+      "bytes": 53221
+    },
+    {
+      "qid": 21,
+      "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png",
+      "sha256": "e84a06afa354ba0c9bf2855d4f82980c31ef748a7e5651d5f0665f817972bbbc",
+      "observation": "source illustration shows one, two, and three attached hexagons sharing one full side each time.",
+      "gitBlobSha": "922cd18972e237b444f1eab1be8d920ccd6b711f",
+      "bytes": 101129
+    },
+    {
+      "qid": 23,
+      "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png",
+      "sha256": "aad0300674c046c9b5bcfae93457a02f888459cef1796277ef88aaac65aebf22",
+      "observation": "source clock drawing labels 12 positions and clockwise movement.",
+      "gitBlobSha": "82555be85d583864e447f76a2d6f89a4b2532d4b",
+      "bytes": 50868
+    }
+  ],
+  "originalFullPageEvidence": {
+    "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+    "pagePixelEvidence": [
+      {
+        "page": 1,
+        "pixelWidth": 1188,
+        "pixelHeight": 1682,
+        "pixelSha256": "694ff0319ce27847c16512ecb8a26fed49dd406f814a5490157aee5a99e60598"
+      },
+      {
+        "page": 2,
+        "pixelWidth": 1188,
+        "pixelHeight": 1682,
+        "pixelSha256": "06839791c427a68cfd82257b68cd614b2ab461b7d59561c4a2504a467165d19d"
+      },
+      {
+        "page": 3,
+        "pixelWidth": 1188,
+        "pixelHeight": 1682,
+        "pixelSha256": "83aff6f350d902af9170f5055477e785a2b65d69d1702d2cbf07897b14a44e6c"
+      },
+      {
+        "page": 4,
+        "pixelWidth": 1188,
+        "pixelHeight": 1682,
+        "pixelSha256": "ca43b685e660351135f6d8b1ad92479b9eadf635891d67366faadd8a59a6263a"
+      }
+    ],
+    "sourceVisualRefs": [
+      {
+        "qid": 6,
+        "assetPath": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q06-r2.png",
+        "assetSha256": "cb400566b1a46a91cf70ad48458e2bdfbd9dd84c9ad789d7d52bb3498ec63e13",
+        "bboxPx": [
+          570,
+          730,
+          1135,
+          1100
+        ],
+        "manualReview": "opened original full page and final crop directly; exact original-pixel bbox verified"
+      },
+      {
+        "qid": 9,
+        "assetPath": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q09-r1.png",
+        "assetSha256": "646dfd94acdf4acfffeb98293f0b4985d0ca137a679621c2ea2d7c55ad4774e5",
+        "bboxPx": [
+          380,
+          460,
+          585,
+          650
+        ],
+        "manualReview": "source full page and final crop each directly opened"
+      },
+      {
+        "qid": 10,
+        "assetPath": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q10-r1.png",
+        "assetSha256": "395ac63d2884d500b342cab6e1de15cee755b8c9f748e8892c4b5bb06b76474c",
+        "bboxPx": [
+          335,
+          980,
+          580,
+          1130
+        ],
+        "manualReview": "source full page and final crop each directly opened"
+      },
+      {
+        "qid": 12,
+        "assetPath": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q12-r2.png",
+        "assetSha256": "d4f8fa4ba92aeaf97a46caf7317b6c3374dae44a9170a6d7a20d47c9450a3a1f",
+        "bboxPx": [
+          620,
+          160,
+          1120,
+          445
+        ],
+        "manualReview": "opened original full page and final crop directly; exact original-pixel bbox verified"
+      },
+      {
+        "qid": 21,
+        "assetPath": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png",
+        "assetSha256": "e84a06afa354ba0c9bf2855d4f82980c31ef748a7e5651d5f0665f817972bbbc",
+        "bboxPx": [
+          75,
+          140,
+          570,
+          525
+        ],
+        "manualReview": "opened original full page and final crop directly; exact original-pixel bbox verified"
+      },
+      {
+        "qid": 23,
+        "assetPath": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png",
+        "assetSha256": "aad0300674c046c9b5bcfae93457a02f888459cef1796277ef88aaac65aebf22",
+        "bboxPx": [
+          700,
+          350,
+          1040,
+          670
+        ],
+        "manualReview": "source full page and final crop each directly opened"
+      }
+    ],
+    "q12Direct300DpiCrop": {
+      "path": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png",
+      "sha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9",
+      "sourcePage": 2,
+      "sourcePdfSha256": "6e632c4ff5bc157a43f910a301708a59b272242ea3b6b44a8d8ec1ee2e7d0545",
+      "sourcePixelCrop": {
+        "x": 1833,
+        "y": 469,
+        "width": 500,
+        "height": 354
+      },
+      "previousCropPreservedAt": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/attempts/q12-original-source-crop-before-recrop.png",
+      "gitBlobSha": "67f976c5b43cfb41a94395a5b920c6f95256f512",
+      "rawSha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9",
+      "previousCropRawSha256": "d4f8fa4ba92aeaf97a46caf7317b6c3374dae44a9170a6d7a20d47c9450a3a1f",
+      "previousCropGitBlobSha": "6d9af1a6bd2476369e9bb7745af24767d9244f06"
+    }
+  },
+  "attemptHistory": {
+    "q12OnlyCandidatePath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/provenance/attempts/q12-only-candidate.js",
+    "q12OnlyCandidateSha256": "9b9ebbcf5005cf0fd5a59f92c4c774bb1c1591f2dff3ec0bfbc5648a77ed67ca",
+    "q12OnlyValidatorAttemptPath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.V2.EVIDENCE.json",
+    "q12OnlyValidatorAttemptSha256": "b15bcbed9b92796da3034308e89ba946177b9e1cd75fa29419832659bcbf57d5",
+    "q12OnlyValidatorDisposition": "FAIL; preserved; superseded by complete 23-row attempt",
+    "q12OnlyValidatorResultSha256": "9974cfbcc031f8e82fca086c08768e2fb54212f95dd761017e476965e8d2c520",
+    "finalCreateValidatorAttempt": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.VALIDATOR.ATTEMPT02.FAIL.json",
+      "sha256": "63021c1b547c8be8234d2cbda2ad239b16908fab2b46b2a00f5051610ed246f8",
+      "disposition": "FAIL",
+      "runCount": 1,
+      "issue": "ARTIFACT_META_DEBT_REASON_REQUIRED:q7",
+      "repair": "Added explicit q7 templateKey null-debt reason bound to current M2-RPM-054 FAMILY_BINDING_GAP."
+    },
+    "pathFailureAttempt": {
+      "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.VALIDATOR.ATTEMPT03.PATHFAIL.json",
+      "sha256": "3f3bb23e8aa2c79fc03492b703caa4b0c9892ae018d959e642a8420631380371",
+      "disposition": "FAIL_INVOCATION_PATH_ERROR",
+      "validatorNotReached": true
+    }
+  },
+  "authorityHashes": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md",
+      "sha256": "b592921444db8bfeb32d19e0a3554f4ca1718b738eb8a8aa0dd14c30ecd61fe9"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "sha256": "80c6ac583351320043e50fe504456b0383140b75d51ba7a9b579357e725bcff9"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md",
+      "sha256": "79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+      "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "e14b2176b1a241dcb280cc159081195e9f22ba3de47991ab4393229ea765ef29"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a"
+    },
+    {
+      "path": "docs/rules/00_RULES_INDEX.md",
+      "sha256": "5d66b324a18d331cac01412bc345d9bc9d411329ef4a74fab893c3b6b0aae48c"
+    }
+  ],
+  "q12Recovery": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.Q12_RECOVERY.json",
+    "sha256": "f2eda72678d0651524c77b9a6e493c517f2238a6f607ba0a7f05d68ac900968e",
+    "disposition": "FALSE_HOLD_NO_REPAIR_NEEDED",
+    "updatedCropRawSha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9"
+  },
+  "priorQ12Hold": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.HOLD.json",
+    "sha256": "e3c91511abeae8ae0400ac154aeac0f8d140e6ad2005674c17ce5f960d04b6ed",
+    "preserved": true,
+    "disposition": "superseded false hold"
+  },
+  "q16HoldAttemptSuperseded": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.Q16.HOLD.json",
+    "sha256": "12087aa135b1f7baf1a66418a77062b06d6c83a3985fd34ed8c2af52785c7dff",
+    "priorDisposition": "HOLD",
+    "currentDisposition": "PASS_AFTER_POLICY_ADJUDICATION",
+    "recheckPath": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.Q16.RECHECK.json",
+    "recheckSha256": "4dfbc570d4463392e007c3ced1f61def16c4124b3e7b5211737e1cda83b07bcf"
+  },
+  "q16Recheck": {
+    "path": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/CREATE.Q16.RECHECK.json",
+    "sha256": "4dfbc570d4463392e007c3ced1f61def16c4124b3e7b5211737e1cda83b07bcf",
+    "policyPath": "docs/rules/00_RULES_INDEX.md",
+    "policySha256": "5d66b324a18d331cac01412bc345d9bc9d411329ef4a74fab893c3b6b0aae48c",
+    "preflightSha256": "e9b3ae887602585a0f6be0d33cef859459c8a19517eb831fe9d8b29575ae2365"
+  }
+}

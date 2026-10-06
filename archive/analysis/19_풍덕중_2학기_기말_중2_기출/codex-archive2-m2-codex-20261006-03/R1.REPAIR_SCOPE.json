@@ -1,0 +1,34 @@
+{
+  "stage": "R1",
+  "examUid": "19_풍덕중_2학기_기말_중2_기출",
+  "changedQids": [
+    13
+  ],
+  "reason": "Current q13 source is a 13-person handshake-count question, while the stored explanation solves an unrelated constrained arrangement and concludes 12; answer key remains ② (78).",
+  "authorizedMinimumFields": [
+    "solution",
+    "problemTypeKey",
+    "templateKey"
+  ],
+  "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "image",
+    "layoutTag"
+  ],
+  "plannedMeta": {
+    "rpmPath": "M2-RPM-110",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION"
+  },
+  "directDependencyReason": "The repaired source-aligned unordered-pair count follows M2-RPM-110 and its mapped ACTIVE PT/TPL; difficulty bucket/category are unchanged.",
+  "q12Resolution": "Independent read of current image q12: one middle horizontal road segment is absent; 20 full-grid shortest routes minus 3×2 routes crossing that edge = 14; answer ④ matches.",
+  "q16Resolution": {
+    "independentAnswer": "⑤",
+    "status": "PASS",
+    "authority": "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
+    "rule": "For middle-school probability with no separate dependence condition, interpret multiple trials/selections as independent; silence alone is not a condition defect.",
+    "application": "The source states no dependence rule; two disjoint parity cases under the default give (1/2)(1/3)+(1/2)(2/3)=1/2."
+  }
+}

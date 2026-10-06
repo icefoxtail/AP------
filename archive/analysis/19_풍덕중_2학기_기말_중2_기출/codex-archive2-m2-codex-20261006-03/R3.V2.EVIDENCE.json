@@ -1,0 +1,426 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "19_풍덕중_2학기_기말_중2_기출",
+  "artifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976",
+  "artifactRawSha256": "88a1a285e80ec0b08764dc146a09f1ff809a6f7f146b2f8c8b2816bc4f91c4bb",
+  "artifactGitBlobSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976",
+  "inputArtifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976",
+  "inputArtifactRawSha256": "88a1a285e80ec0b08764dc146a09f1ff809a6f7f146b2f8c8b2816bc4f91c4bb",
+  "sourceBindings": {
+    "r1": {
+      "evidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R1.FINAL.EVIDENCE.json",
+      "evidenceSha256": "f9915ca3452100e266c48031368a44d9716c087dad7b537dce74c3ddeb89fea5",
+      "validatorRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R1.V2.VALIDATOR.FINAL.json",
+      "validatorSha256": "527d8a029fbfa4fc1b16abcc83b39545586818e0a098709e078cf6c4f1ccf46a",
+      "validatorDisposition": "PASS",
+      "artifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976"
+    },
+    "r2": {
+      "evidenceRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R2.V2.EVIDENCE.json",
+      "evidenceSha256": "e50dbcbe7390696d5a1bfe99bab1fcf918b0d47810d57e4e1dd7deaaa7c22581",
+      "validatorRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R2.V2.VALIDATOR.FINAL.json",
+      "validatorSha256": "38cd45925a577057b30cec32f8df77e0139f12242aeeed293d7a9ed599dbc08f",
+      "validatorDisposition": "PASS",
+      "blindFreezeRef": ".tmp/archive/archive2-m2-codex-20261006-03/19_풍덕중_2학기_기말_중2_기출/R2.INDEPENDENT_FREEZE.json",
+      "blindFreezeSha256": "85d1315c91dc20c05c8900761379918f93f5c86a26201be73d14675e3eab3ca4",
+      "artifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976"
+    }
+  },
+  "targetedScope": {
+    "openFindingQids": [
+      1,
+      12,
+      13,
+      16,
+      23
+    ],
+    "changedQids": [
+      12,
+      13
+    ],
+    "directDependencyQids": [],
+    "directDependencyRefs": [
+      "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png"
+    ],
+    "lockedQids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "lockedQidCount": 18,
+    "scopeReason": "Assigned targeted release only: q12 source crop; q13 solution/Meta; q16 current M2 independence resolution; q1/q23 post-freeze adjudications; direct assets; locked remainder."
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS",
+      "disposition": "POST_FREEZE_ADJUDICATION_RELEASED",
+      "finding": "The source requests two selections. R1 post-comparison cardinality adjudication and R2 complete student-input freeze both resolve ② and ③; the current answer and worked explanation agree.",
+      "r1CompareResult": "MATCH",
+      "r1Adjudication": {
+        "kind": "ANSWER_CARDINALITY_ENCODING_CORRECTION",
+        "originalFrozenAnswer": 2,
+        "correctedAnswer": [
+          2,
+          3
+        ],
+        "reason": "The stem explicitly asks to select two answers; direct evaluation identifies choices ② and ③. Stored answer is ②,③. Original freeze retained."
+      },
+      "r2CompareResult": "MATCH",
+      "finalAnswer": "②, ③",
+      "screenshotCoverage": [
+        "exam/desktop",
+        "exam/mobile",
+        "sol/desktop",
+        "sol/mobile",
+        "ans/desktop",
+        "ans/mobile"
+      ],
+      "evidenceArtifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976"
+    },
+    {
+      "qid": 12,
+      "verdict": "PASS",
+      "disposition": "SOURCE_FAITHFUL_RECROP_RELEASED",
+      "finding": "The candidate uses the source-faithful q12 crop with the intentionally absent road segment visible, and retains the A/B endpoints. The six-image asset is decoded in both viewports and all six render cases.",
+      "imageRef": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png",
+      "imageSha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9",
+      "imageOpened": true,
+      "missingRoadEdgeVisible": true,
+      "sourceQuestionOrdinal": 12,
+      "r1Answer": 4,
+      "r2Answer": "④",
+      "evidenceArtifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976"
+    },
+    {
+      "qid": 13,
+      "verdict": "PASS",
+      "disposition": "SOLUTION_META_CORRECTION_RELEASED",
+      "finding": "The current solution shows 13×12 directed incidences, division by 2, and 78 handshakes. The current M2 counting Meta fields are physically present and the correction is sealed by R1.",
+      "solutionSha256": "515793419a1b9f916acc89759439998c46d7ed77c2aea64bdde7d758a5595958",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "r1Repair": "SAME_STAGE_MINIMUM_REPAIR",
+      "r2Answer": "②",
+      "evidenceArtifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976"
+    },
+    {
+      "qid": 16,
+      "verdict": "PASS",
+      "disposition": "CURRENT_M2_INDEPENDENCE_RESOLUTION_RELEASED",
+      "finding": "No separate dependence condition appears in the source. The current M2 interpretation rule applies independence; the displayed odd-sum calculation is 1/6 + 1/3 = 1/2, matching ⑤.",
+      "policyAuthority": "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
+      "policyResolution": {
+        "sourceHasNoSeparateDependenceCondition": true,
+        "authority": "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md §1-A",
+        "independentInterpretation": "P(even a and odd b)+P(odd a and even b)",
+        "computedProbability": "1/2"
+      },
+      "r2Answer": "⑤",
+      "evidenceArtifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976"
+    },
+    {
+      "qid": 23,
+      "verdict": "PASS",
+      "disposition": "POST_FREEZE_CALCULATION_ADJUDICATION_RELEASED",
+      "finding": "The final solution includes products 6, 18, and 30; lists eight ordered pairs; and displays 8/36 = 2/9. The last problem and answer are fully visible in the final desktop and mobile captures.",
+      "r1Adjudication": {
+        "kind": "INDEPENDENT_CALCULATION_ADJUDICATION",
+        "originalFrozenAnswer": "(1) 6,18; (2) six ordered pairs for products 6,18; (3) 1/6",
+        "correctedAnswer": "(1) 6,18,30; (2) (1,6),(2,3),(3,2),(3,6),(5,6),(6,1),(6,3),(6,5); (3) 2/9",
+        "reason": "Products congruent to 6 modulo 12 include 6,18,30; 30 was omitted in the original blind enumeration. This is a calculation correction after complete-input freeze, not blind contamination."
+      },
+      "r2BlindAnswer": "(1) 6, 18, 30; (2) (1,6),(6,1),(2,3),(3,2),(3,6),(6,3),(5,6),(6,5); (3) 2/9",
+      "finalAnswer": "$\\frac{2}{9}$",
+      "lastQuestionCaptureReviewed": true,
+      "evidenceArtifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976"
+    }
+  ],
+  "coverage": {
+    "fullArtifactQidsStructurallyBound": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "fullArtifactQuestionCount": 23,
+    "semanticReviewQids": [
+      1,
+      12,
+      13,
+      16,
+      23
+    ],
+    "lockedQids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "wholeExamSemanticReview": false,
+    "allSixEngineCasesCoverEveryQid": true,
+    "allSixLinkedImageAssetsDecoded": true,
+    "finalQ23LastQuestionReviewed": true
+  },
+  "structuralIntegrity": {
+    "jsParse": "PASS",
+    "uniqueQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "requiredMetaAndDifficultyDelegatedToGenericV2ArtifactGate": true,
+    "choicesAndControlEscapesDelegatedToGenericV2ArtifactGate": true,
+    "assetRefsResolvedToCandidateBundle": true,
+    "allSixCandidateImageAssetsOpened": true,
+    "shaContractsSeparated": {
+      "artifactGitBlobSha1": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976",
+      "artifactFileRawSha256": "88a1a285e80ec0b08764dc146a09f1ff809a6f7f146b2f8c8b2816bc4f91c4bb",
+      "assetFileRawSha256": [
+        {
+          "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png",
+          "sha256": "cb400566b1a46a91cf70ad48458e2bdfbd9dd84c9ad789d7d52bb3498ec63e13"
+        },
+        {
+          "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q09.png",
+          "sha256": "646dfd94acdf4acfffeb98293f0b4985d0ca137a679621c2ea2d7c55ad4774e5"
+        },
+        {
+          "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q10.png",
+          "sha256": "395ac63d2884d500b342cab6e1de15cee755b8c9f748e8892c4b5bb06b76474c"
+        },
+        {
+          "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q12.png",
+          "sha256": "c9d99e6f7cf2bda4a141cc912e1e664e3e1f664d8f3287b74fcba02d01e5a6b9"
+        },
+        {
+          "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q21.png",
+          "sha256": "e84a06afa354ba0c9bf2855d4f82980c31ef748a7e5651d5f0665f817972bbbc"
+        },
+        {
+          "ref": "assets/images/19_풍덕중_2학기_기말_중2_기출/q23.png",
+          "sha256": "aad0300674c046c9b5bcfae93457a02f888459cef1796277ef88aaac65aebf22"
+        }
+      ]
+    }
+  },
+  "lockedScopeIntegrity": true,
+  "releaseIntegrity": true,
+  "artifactDispositions": {
+    "artifactSha": "c25af607273f1b3d1a7ad7f2d5f83cac71f9e976",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2-RPM-047 is RPM_ONLY with no active mapping for linear-function identification."
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2-RPM-058 is RPM_ONLY; intercept-triangle area has no safe mapped active PT/TPL."
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The exact sign-to-quadrant deduction has no unique mapped active PT/TPL in the current M2 crosswalk."
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "metaDebtReason": "M2-RPM-054 has the active PT family PT_LINE_EQUATION but no exact template; only templateKey remains null."
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2-RPM-055 is RPM_ONLY; a vertical-line graph read has no safe mapped active PT/TPL."
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2-RPM-108 is RPM_ONLY; the union count of two multiples with an overlap has no exact active PT/TPL."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2-RPM-111 is RPM_ONLY; shortest-grid-route counting with a missing edge has no safe mapped active PT/TPL."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "M2-RPM-118 maps to an independent-trial template, which conflicts with the stated no-replacement condition; keep both PT/TPL null."
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "The perimeter-growth rule has no exact mapped active PT/TPL in the current M2 crosswalk."
+      },
+      {
+        "qid": 22,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 23,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      }
+    ]
+  }
+}
