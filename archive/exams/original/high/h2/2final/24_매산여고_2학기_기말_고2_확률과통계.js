@@ -72,7 +72,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "확률변수 $X$가 정규분포 $N(60, 16)$을 따를 때, 확률 $P(56 \\le X \\le 66)$을 오른쪽 표준정규분포표를 이용하여 구하면?[3.6점]\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<thead>\\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\\n</thead>\\n<tbody>\\n<tr><td>0.5</td><td>0.1915</td></tr>\\n<tr><td>1.0</td><td>0.3413</td></tr>\\n<tr><td>1.5</td><td>0.4332</td></tr>\\n<tr><td>2.0</td><td>0.4772</td></tr>\\n</tbody>\\n</table>\\n</div>",
+    "content": "확률변수 $X$가 정규분포 $N(60, 16)$을 따를 때, 확률 $P(56 \\le X \\le 66)$을 오른쪽 표준정규분포표를 이용하여 구하면?[3.6점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>0.5</td><td>0.1915</td></tr>\n<tr><td>1.0</td><td>0.3413</td></tr>\n<tr><td>1.5</td><td>0.4332</td></tr>\n<tr><td>2.0</td><td>0.4772</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [
       "0.6826",
       "0.7745",
@@ -333,7 +333,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "모집단의 확률변수 $X$는 자연수 $m$에 대하여 정규분포 $N(m, 4^2)$을 따르고 다음 조건을 만족시킨다.\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<tbody>\\n<tr><td>(가) $P(X \\ge 11) \\le P(X \\le 16)$</td></tr>\\n<tr><td>(나) $P(X \\le 15) \\le P(X \\ge 10)$</td></tr>\\n</tbody>\\n</table>\\n</div>\\n이 모집단에서 크기가 $36$인 표본을 임의추출하여 구한 표본평균을 $\\overline{X_1}$, 크기가 $4$인 표본을 임의추출하여 구한 표본평균을 $\\overline{X_2}$라 할 때, $P(\\overline{X_1} \\le m-1) + P(\\overline{X_2} \\ge 27-m)$의 값을 오른쪽 표준정규분포표를 이용하여 구하면?[4.1점]\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<thead>\\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\\n</thead>\\n<tbody>\\n<tr><td>0.5</td><td>0.1915</td></tr>\\n<tr><td>1.0</td><td>0.3413</td></tr>\\n<tr><td>1.5</td><td>0.4332</td></tr>\\n<tr><td>2.0</td><td>0.4772</td></tr>\\n</tbody>\\n</table>\\n</div>",
+    "content": "모집단의 확률변수 $X$는 자연수 $m$에 대하여 정규분포 $N(m, 4^2)$을 따르고 다음 조건을 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tbody>\n<tr><td>(가) $P(X \\ge 11) \\le P(X \\le 16)$</td></tr>\n<tr><td>(나) $P(X \\le 15) \\le P(X \\ge 10)$</td></tr>\n</tbody>\n</table>\n</div>\n이 모집단에서 크기가 $36$인 표본을 임의추출하여 구한 표본평균을 $\\overline{X_1}$, 크기가 $4$인 표본을 임의추출하여 구한 표본평균을 $\\overline{X_2}$라 할 때, $P(\\overline{X_1} \\le m-1) + P(\\overline{X_2} \\ge 27-m)$의 값을 오른쪽 표준정규분포표를 이용하여 구하면?[4.1점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>0.5</td><td>0.1915</td></tr>\n<tr><td>1.0</td><td>0.3413</td></tr>\n<tr><td>1.5</td><td>0.4332</td></tr>\n<tr><td>2.0</td><td>0.4772</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [
       "0.3753",
       "0.4328",
@@ -475,7 +475,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "어느 공장에서 생산되는 나사못 $1$개의 길이는 평균이 $3\\text{cm}$, 표준편차가 $\\sigma\\text{cm}$인 정규분포를 따른다고 한다. 이 공장에서 생산된 나사못 중에서 길이가 $2.98\\text{cm}$ 이하이거나 $3.02\\text{cm}$ 이상인 나사못은 불량으로 판정한다. 이 공장에서 생산된 나사못 중에서 임의로 선택한 나사못 $1$개가 불량일 확률을 오른쪽 표준정규분포표를 이용하여 구한 값이 $0.0456$일 때, $\\sigma$의 값을 구하면?[4.4점]\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<thead>\\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\\n</thead>\\n<tbody>\\n<tr><td>0.5</td><td>0.1915</td></tr>\\n<tr><td>1.0</td><td>0.3413</td></tr>\\n<tr><td>1.5</td><td>0.4332</td></tr>\\n<tr><td>2.0</td><td>0.4772</td></tr>\\n</tbody>\\n</table>\\n</div>",
+    "content": "어느 공장에서 생산되는 나사못 $1$개의 길이는 평균이 $3\\text{cm}$, 표준편차가 $\\sigma\\text{cm}$인 정규분포를 따른다고 한다. 이 공장에서 생산된 나사못 중에서 길이가 $2.98\\text{cm}$ 이하이거나 $3.02\\text{cm}$ 이상인 나사못은 불량으로 판정한다. 이 공장에서 생산된 나사못 중에서 임의로 선택한 나사못 $1$개가 불량일 확률을 오른쪽 표준정규분포표를 이용하여 구한 값이 $0.0456$일 때, $\\sigma$의 값을 구하면?[4.4점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>0.5</td><td>0.1915</td></tr>\n<tr><td>1.0</td><td>0.3413</td></tr>\n<tr><td>1.5</td><td>0.4332</td></tr>\n<tr><td>2.0</td><td>0.4772</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [
       "0.05",
       "0.04",
@@ -505,7 +505,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "25명을 채용하는 어느 회사의 입사시험에 1000명이 지원하였다. 이 입사시험의 성적은 정규분포를 이루고, 1000명의 입사시험 성적은 각각 $x_1, x_2, x_3, \\dots, x_{1000}$이다.\\n$\\dfrac{1}{1000}\\sum_{i=1}^{1000} x_i = 60$, $\\dfrac{1}{1000}\\sum_{i=1}^{1000} (x_i - 60)^2 = 100$ 일 때, 이 회사의 입사시험에 합격한 지원자의 입사시험 성적의 최솟값을 오른쪽 표준정규분포표를 이용하여 구한 것은? (단, 입사시험 성적의 동점자는 없다.)[4.4점]\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<thead>\\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\\n</thead>\\n<tbody>\\n<tr><td>1.53</td><td>0.4370</td></tr>\\n<tr><td>1.96</td><td>0.4750</td></tr>\\n<tr><td>2.54</td><td>0.4945</td></tr>\\n<tr><td>2.75</td><td>0.4970</td></tr>\\n<tr><td>3.08</td><td>0.4990</td></tr>\\n</tbody>\\n</table>\\n</div>",
+    "content": "25명을 채용하는 어느 회사의 입사시험에 1000명이 지원하였다. 이 입사시험의 성적은 정규분포를 이루고, 1000명의 입사시험 성적은 각각 $x_1, x_2, x_3, \\dots, x_{1000}$이다.\n$\\dfrac{1}{1000}\\sum_{i=1}^{1000} x_i = 60$, $\\dfrac{1}{1000}\\sum_{i=1}^{1000} (x_i - 60)^2 = 100$ 일 때, 이 회사의 입사시험에 합격한 지원자의 입사시험 성적의 최솟값을 오른쪽 표준정규분포표를 이용하여 구한 것은? (단, 입사시험 성적의 동점자는 없다.)[4.4점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>1.53</td><td>0.4370</td></tr>\n<tr><td>1.96</td><td>0.4750</td></tr>\n<tr><td>2.54</td><td>0.4945</td></tr>\n<tr><td>2.75</td><td>0.4970</td></tr>\n<tr><td>3.08</td><td>0.4990</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [
       "60.53",
       "71.96",
@@ -592,7 +592,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[주관식1 (서술형)] 어느 도서관에서 보유한 도서 현황을 조사하였더니 전체 도서의 $20\\%$가 종교 도서였다. 이 도서관에서 보유한 도서 400권을 임의로 택하였을 때, 종교 도서가 92권 이상일 확률을 구하는 풀이 과정을 자세히 서술하시오. (단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(0 \\le Z \\le z)$는 아래 표의 값을 이용한다.)[6점]\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<thead>\\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\\n</thead>\\n<tbody>\\n<tr><td>0.5</td><td>0.1915</td></tr>\\n<tr><td>1.0</td><td>0.3413</td></tr>\\n<tr><td>1.5</td><td>0.4332</td></tr>\\n<tr><td>2.0</td><td>0.4772</td></tr>\\n<tr><td>2.5</td><td>0.4938</td></tr>\\n<tr><td>3.0</td><td>0.4987</td></tr>\\n</tbody>\\n</table>\\n</div>",
+    "content": "[주관식1 (서술형)] 어느 도서관에서 보유한 도서 현황을 조사하였더니 전체 도서의 $20\\%$가 종교 도서였다. 이 도서관에서 보유한 도서 400권을 임의로 택하였을 때, 종교 도서가 92권 이상일 확률을 구하는 풀이 과정을 자세히 서술하시오. (단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(0 \\le Z \\le z)$는 아래 표의 값을 이용한다.)[6점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>0.5</td><td>0.1915</td></tr>\n<tr><td>1.0</td><td>0.3413</td></tr>\n<tr><td>1.5</td><td>0.4332</td></tr>\n<tr><td>2.0</td><td>0.4772</td></tr>\n<tr><td>2.5</td><td>0.4938</td></tr>\n<tr><td>3.0</td><td>0.4987</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [],
     "answer": "0.0668",
     "solution": "[키포인트] 표본의 크기 $n$이 충분히 클 때 이항분포 $B(n, p)$가 정규분포 $N(np, np(1-p))$에 근사함을 이용한다.\\n조건 정리: 선택 도서 수 $n = 400$, 종교 도서일 확률 $p = 0.2$이다.\\n풀이 방향: 종교 도서의 권수를 이산확률변수 $X$로 두고 정규분포 근사를 거쳐 표준정규분포로 변환한다.\\n정석 풀이:\\n400권 중 종교 도서의 권수를 확률변수 $X$라 하자. $X$는 이항분포 $B(400, 0.2)$를 따른다.\\n이때 $X$의 평균과 분산은 다음과 같다.\\n$E(X) = 400 \\times 0.2 = 80$\\n$V(X) = 400 \\times 0.2 \\times 0.8 = 64 = 8^2$\\n시행 횟수 $n=400$은 충분히 크므로 확률변수 $X$는 근사적으로 정규분포 $N(80, 8^2)$을 따른다고 볼 수 있다.\\n따라서 종교 도서가 92권 이상일 확률 $P(X \\ge 92)$를 표준화하면 다음과 같다.\\n$P(X \\ge 92) = P\\left(\\dfrac{X - 80}{8} \\ge \\dfrac{92 - 80}{8}\\right) = P\\left(Z \\ge \\dfrac{12}{8}\\right) = P(Z \\ge 1.5)$\\n표준정규분포의 성질에 의하여\\n$P(Z \\ge 1.5) = 0.5 - P(0 \\le Z \\le 1.5)$\\n표에서 $P(0 \\le Z \\le 1.5) = 0.4332$이므로 대입하면\\n$= 0.5 - 0.4332 = 0.0668$이다.\\n따라서 구하는 값은 $0.0668$이다.",
@@ -641,7 +641,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[주관식3 (서술형)] 어느 고등학교 2학년의 수학 점수는 표준편차가 6점인 정규분포를 따른다고 한다. 이 학교 2학년 학생 중에서 36명을 임의추출하여 2학년 전체의 수학 점수 평균 $m$을 신뢰도 $90\\%$로 추정한 신뢰구간을 $a \\le m \\le b$이고, 신뢰도 $s\\%$로 추정하면 신뢰구간을 $c \\le m \\le d$라 할 때, $5(b-a) \\ge 16(d-c)$를 만족시키는 실수 $s$의 최댓값을 표준정규분포표를 이용하여 구하고 그 과정을 자세히 서술하시오.[7점]\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<thead>\\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\\n</thead>\\n<tbody>\\n<tr><td>0.3</td><td>0.13</td></tr>\\n<tr><td>0.5</td><td>0.19</td></tr>\\n<tr><td>1</td><td>0.341</td></tr>\\n<tr><td>1.6</td><td>0.45</td></tr>\\n<tr><td>1.9</td><td>0.475</td></tr>\\n</tbody>\\n</table>\\n</div>",
+    "content": "[주관식3 (서술형)] 어느 고등학교 2학년의 수학 점수는 표준편차가 6점인 정규분포를 따른다고 한다. 이 학교 2학년 학생 중에서 36명을 임의추출하여 2학년 전체의 수학 점수 평균 $m$을 신뢰도 $90\\%$로 추정한 신뢰구간을 $a \\le m \\le b$이고, 신뢰도 $s\\%$로 추정하면 신뢰구간을 $c \\le m \\le d$라 할 때, $5(b-a) \\ge 16(d-c)$를 만족시키는 실수 $s$의 최댓값을 표준정규분포표를 이용하여 구하고 그 과정을 자세히 서술하시오.[7점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>0.3</td><td>0.13</td></tr>\n<tr><td>0.5</td><td>0.19</td></tr>\n<tr><td>1</td><td>0.341</td></tr>\n<tr><td>1.6</td><td>0.45</td></tr>\n<tr><td>1.9</td><td>0.475</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [],
     "answer": "38",
     "solution": "[키포인트] 각 신뢰도 조건에 따른 신뢰구간의 길이 공식 $l = 2k \\dfrac{\\sigma}{\\sqrt{n}}$을 수식으로 정리해 조건 부등식을 해결한다.\\n조건 정리: 모표준편차 $\\sigma = 6$, 표본의 크기 $n = 36 \\implies \\sqrt{n} = 6$이므로 $\\dfrac{\\sigma}{\\sqrt{n}} = 1$이 된다.\\n신뢰도 $90\\%$에 해당하는 신뢰상수 $k_1$은 표에서 $P(0 \\le Z \\le k_1) = 0.45 \\implies k_1 = 1.6$이다.\\n신뢰도 $s\\%$에 해당하는 신뢰상수를 $k_2$라 하면 신뢰구간의 길이는 $2k_2$가 된다.\\n풀이 방향: 두 신뢰구간의 길이 공식을 조건식에 채워 넣고 $k_2$의 범위를 추적한다.\\n정석 풀이:\\n두 신뢰구간의 길이를 각각 식으로 기술하면 다음과 같다.\\n$b-a = 2 \\times 1.6 \\times 1 = 3.2$\\n$d-c = 2 \\times k_2 \\times 1 = 2k_2$\\n주어진 부등식 조건인 $5(b-a) \\ge 16(d-c)$에 식을 대입하면\\n$5 \\times 3.2 \\ge 16 \\times 2k_2 \\implies 16 \\ge 32k_2$\\n따라서 $k_2 \\le \\dfrac{16}{32} = 0.5$이다.\\n$k_2$의 상한값이 $0.5$이므로 신뢰도가 최대가 될 때는 $k_2 = 0.5$일 때이다.\\n오른쪽 표에서 $z=0.5$일 때 $P(0 \\le Z \\le 0.5) = 0.19$이다.\\n신뢰도 $s\\%$는 대칭적인 양측 구간의 총합 확률을 나타내므로\\n$\\dfrac{s}{100} = 2 \\times 0.19 = 0.38 \\implies s = 38$이다.\\n따라서 만족하는 실수 $s$의 최댓값은 $38$이다.\\n따라서 구하는 값은 $38$이다.",

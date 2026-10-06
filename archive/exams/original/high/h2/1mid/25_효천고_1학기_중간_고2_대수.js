@@ -583,7 +583,7 @@ window.questionBank = [
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각함수",
@@ -600,7 +600,7 @@ window.questionBank = [
     "solutionImageCaption": "quarter_circle",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
-    "content": "다음 그림과 같이 중심이 $O$, 반지름의 길이가 1인 사분원의 호 $PQ$를 9등분하는 점을 차례로 $P_1,\\ P_2,\\ \\cdots,\\ P_8$이라고 하자. 점 $P_1,\\ P_2,\\ \\cdots,\\ P_8$에서 선분 $OP$에 내린 수선의 발을 각각 $Q_1,\\ Q_2,\\ \\cdots,\\ Q_8$이라고 할 때, $\\overline{OQ_1}^{\\,2}+\\overline{OQ_2}^{\\,2}+\\overline{OQ_3}^{\\,2}+\\cdots+\\overline{OQ_8}^{\\,2}$의 값은? [4.5점]<br><br><div style=\"text-align:center;\">\n<svg width=\"215\" height=\"190\" viewBox=\"0 0 215 190\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M 35 155 L 185 155\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 35 155 L 35 5\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 35 5 A 150 150 0 0 1 185 155\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <g stroke=\"black\" stroke-width=\"0.6\">\n    <line x1=\"35\" y1=\"155\" x2=\"61.0\" y2=\"7.3\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"86.3\" y2=\"14.0\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"110.0\" y2=\"25.1\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"131.4\" y2=\"40.1\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"149.9\" y2=\"58.5\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"165.0\" y2=\"80.0\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"176.0\" y2=\"103.7\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"182.7\" y2=\"129.0\"/>\n  </g>\n  <g stroke=\"black\" stroke-width=\"0.5\" stroke-dasharray=\"2 1\" opacity=\"0.4\">\n    <line x1=\"61\" y1=\"7\" x2=\"61\" y2=\"155\"/>\n    <line x1=\"86\" y1=\"14\" x2=\"86\" y2=\"155\"/>\n    <line x1=\"110\" y1=\"25\" x2=\"110\" y2=\"155\"/>\n    <line x1=\"131\" y1=\"40\" x2=\"131\" y2=\"155\"/>\n    <line x1=\"150\" y1=\"58\" x2=\"150\" y2=\"155\"/>\n    <line x1=\"165\" y1=\"80\" x2=\"165\" y2=\"155\"/>\n    <line x1=\"176\" y1=\"104\" x2=\"176\" y2=\"155\"/>\n    <line x1=\"183\" y1=\"129\" x2=\"183\" y2=\"155\"/>\n  </g>\n  <text x=\"22\" y=\"168\" font-size=\"10px\" font-family=\"serif\">O</text>\n  <text x=\"187\" y=\"168\" font-size=\"10px\" font-family=\"serif\">P</text>\n  <text x=\"22\" y=\"10\" font-size=\"10px\" font-family=\"serif\">Q</text>\n  <g font-size=\"7.2\" font-family=\"serif\">\n    <text x=\"58\" y=\"6\">P₁</text>\n    <text x=\"83\" y=\"11\">P₂</text>\n    <text x=\"108\" y=\"22\">P₃</text>\n    <text x=\"129\" y=\"37\">P₄</text>\n    <text x=\"147\" y=\"55\">P₅</text>\n    <text x=\"162\" y=\"77\">P₆</text>\n    <text x=\"173\" y=\"100\">P₇</text>\n    <text x=\"180\" y=\"126\">P₈</text>\n    <text x=\"61\" y=\"168\" text-anchor=\"middle\">Q₁</text>\n    <text x=\"86\" y=\"168\" text-anchor=\"middle\">Q₂</text>\n    <text x=\"110\" y=\"168\" text-anchor=\"middle\">Q₃</text>\n    <text x=\"131\" y=\"168\" text-anchor=\"middle\">Q₄</text>\n    <text x=\"150\" y=\"168\" text-anchor=\"middle\">Q₅</text>\n    <text x=\"165\" y=\"168\" text-anchor=\"middle\">Q₆</text>\n    <text x=\"176\" y=\"168\" text-anchor=\"middle\">Q₇</text>\n    <text x=\"183\" y=\"168\" text-anchor=\"middle\">Q₈</text>\n  </g>\n  <text x=\"110\" y=\"150\" font-size=\"10px\" font-family=\"serif\">1</text>\n</svg></div>",
+    "content": "다음 그림과 같이 중심이 $O$, 반지름의 길이가 1인 사분원의 호 $PQ$를 9등분하는 점을 차례로 $P_1,\\ P_2,\\ \\cdots,\\ P_8$이라고 하자. 점 $P_1,\\ P_2,\\ \\cdots,\\ P_8$에서 선분 $OP$에 내린 수선의 발을 각각 $Q_1,\\ Q_2,\\ \\cdots,\\ Q_8$이라고 할 때, <br>$\\overline{OQ_1}^{\\,2}+\\overline{OQ_2}^{\\,2}+\\overline{OQ_3}^{\\,2}+\\cdots+\\overline{OQ_8}^{\\,2}$의 값은? [4.5점]<br><br><div style=\"text-align:center;\">\n<svg width=\"215\" height=\"190\" viewBox=\"0 0 215 190\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M 35 155 L 185 155\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 35 155 L 35 5\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 35 5 A 150 150 0 0 1 185 155\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <g stroke=\"black\" stroke-width=\"0.6\">\n    <line x1=\"35\" y1=\"155\" x2=\"61.0\" y2=\"7.3\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"86.3\" y2=\"14.0\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"110.0\" y2=\"25.1\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"131.4\" y2=\"40.1\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"149.9\" y2=\"58.5\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"165.0\" y2=\"80.0\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"176.0\" y2=\"103.7\"/>\n    <line x1=\"35\" y1=\"155\" x2=\"182.7\" y2=\"129.0\"/>\n  </g>\n  <g stroke=\"black\" stroke-width=\"0.5\" stroke-dasharray=\"2 1\" opacity=\"0.4\">\n    <line x1=\"61\" y1=\"7\" x2=\"61\" y2=\"155\"/>\n    <line x1=\"86\" y1=\"14\" x2=\"86\" y2=\"155\"/>\n    <line x1=\"110\" y1=\"25\" x2=\"110\" y2=\"155\"/>\n    <line x1=\"131\" y1=\"40\" x2=\"131\" y2=\"155\"/>\n    <line x1=\"150\" y1=\"58\" x2=\"150\" y2=\"155\"/>\n    <line x1=\"165\" y1=\"80\" x2=\"165\" y2=\"155\"/>\n    <line x1=\"176\" y1=\"104\" x2=\"176\" y2=\"155\"/>\n    <line x1=\"183\" y1=\"129\" x2=\"183\" y2=\"155\"/>\n  </g>\n  <text x=\"22\" y=\"168\" font-size=\"10px\" font-family=\"serif\">O</text>\n  <text x=\"187\" y=\"168\" font-size=\"10px\" font-family=\"serif\">P</text>\n  <text x=\"22\" y=\"10\" font-size=\"10px\" font-family=\"serif\">Q</text>\n  <g font-size=\"7.2\" font-family=\"serif\">\n    <text x=\"58\" y=\"6\">P₁</text>\n    <text x=\"83\" y=\"11\">P₂</text>\n    <text x=\"108\" y=\"22\">P₃</text>\n    <text x=\"129\" y=\"37\">P₄</text>\n    <text x=\"147\" y=\"55\">P₅</text>\n    <text x=\"162\" y=\"77\">P₆</text>\n    <text x=\"173\" y=\"100\">P₇</text>\n    <text x=\"180\" y=\"126\">P₈</text>\n    <text x=\"61\" y=\"168\" text-anchor=\"middle\">Q₁</text>\n    <text x=\"86\" y=\"168\" text-anchor=\"middle\">Q₂</text>\n    <text x=\"110\" y=\"168\" text-anchor=\"middle\">Q₃</text>\n    <text x=\"131\" y=\"168\" text-anchor=\"middle\">Q₄</text>\n    <text x=\"150\" y=\"168\" text-anchor=\"middle\">Q₅</text>\n    <text x=\"165\" y=\"168\" text-anchor=\"middle\">Q₆</text>\n    <text x=\"176\" y=\"168\" text-anchor=\"middle\">Q₇</text>\n    <text x=\"183\" y=\"168\" text-anchor=\"middle\">Q₈</text>\n  </g>\n  <text x=\"110\" y=\"150\" font-size=\"10px\" font-family=\"serif\">1</text>\n</svg></div>",
     "choices": [
       "1",
       "2",
@@ -735,7 +735,7 @@ window.questionBank = [
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형1"
     ],
@@ -758,7 +758,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "layoutTag": "subjective-2up",
+    "layoutTag": "fullwidth",
     "questionType": "",
     "tags": [
       "객관식",
@@ -801,7 +801,7 @@ window.questionBank = [
     "standardUnit": "지수와 로그",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형2"
     ],
@@ -849,7 +849,7 @@ window.questionBank = [
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형4"
     ],
