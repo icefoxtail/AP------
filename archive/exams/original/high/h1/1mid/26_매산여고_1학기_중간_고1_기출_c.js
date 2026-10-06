@@ -73,7 +73,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "②",
-    "solution": "[키포인트] $x^2$항을 만드는 곱만 모아 계산한다.\n\n$(x^2+3x+3)(2x^2-x-3)$에서\n\n$x^2\\cdot(-3)=-3x^2$\n\n$3x\\cdot(-x)=-3x^2$\n\n$3\\cdot2x^2=6x^2$\n\n따라서 $x^2$항은\n\n$-3x^2-3x^2+6x^2$\n$=0x^2$\n\n이므로 $x^2$의 계수는\n\n$-3-3+6=0$\n\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] $x^2$항을 만드는 곱만 모아 계산한다.\n\n$(x^2+3x+3)(2x^2-x-3)$에서\n\n$x^2\\cdot(-3)=-3x^2$\n$3x\\cdot(-x)=-3x^2$\n$3\\cdot2x^2=6x^2$\n\n따라서 $x^2$항은\n\n$-3x^2-3x^2+6x^2$\n$=0x^2$\n\n이므로 $x^2$의 계수는\n\n$-3-3+6=0$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -161,7 +161,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "①",
-    "solution": "[키포인트] 켤레복소수를 구한 뒤 실수부와 허수부를 각각 비교한다.\n\n$\\overline{6+4i}=6-4i$\n\n좌변을 정리하면\n\n$(4x+2i)+(-8+2yi)$\n$=4x-8+2i+2yi$\n$=(4x-8)+(2+2y)i$\n\n따라서\n\n$(4x-8)+(2+2y)i=6-4i$\n\n실수부를 비교하면\n\n$4x-8=6$\n\n$4x=14$\n\n$x=\\dfrac72$\n\n허수부를 비교하면\n\n$2+2y=-4$\n\n$2y=-6$\n\n$y=-3$\n\n따라서\n\n$2x+y$\n$=2\\cdot\\dfrac72+(-3)$\n$=7-3$\n$=4$\n\n정답은 ①이다.",
+    "solution": "[키포인트] 켤레복소수를 구한 뒤 실수부와 허수부를 각각 비교한다.\n\n$\\overline{6+4i}=6-4i$\n\n좌변을 정리하면\n\n$(4x+2i)+(-8+2yi)$\n$=4x-8+2i+2yi$\n$=(4x-8)+(2+2y)i$\n\n따라서\n\n$(4x-8)+(2+2y)i=6-4i$\n\n실수부를 비교하면\n\n$4x-8=6$\n$4x=14$\n$x=\\dfrac72$\n\n허수부를 비교하면\n\n$2+2y=-4$\n$2y=-6$\n$y=-3$\n\n따라서\n\n$2x+y$\n$=2\\cdot\\dfrac72+(-3)$\n$=7-3$\n$=4$\n\n정답은 ①이다.",
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -249,7 +249,7 @@ window.questionBank = [
       "-6, 6"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 그래프가 $x$축과 한 점에서 만나려면 꼭짓점이 $x$축 위에 있어야 한다.\n\n$y=x^2-6x+k^2-27$\n\n완전제곱식으로 정리하면\n\n$y=x^2-6x+9-9+k^2-27$\n\n$=(x-3)^2+k^2-36$\n\n꼭짓점은\n\n$(3,\\ k^2-36)$\n\n이다.\n\n$x$축과 한 점에서 만나므로\n\n$k^2-36=0$\n\n$k^2=36$\n\n$k=\\pm6$\n\n따라서\n\n$k=-6,\\ 6$\n\n정답은 ⑤이다.",
+    "solution": "[키포인트] 그래프가 $x$축과 한 점에서 만나려면 꼭짓점이 $x$축 위에 있어야 한다.\n\n$y=x^2-6x+k^2-27$\n\n완전제곱식으로 정리하면\n\n$y=x^2-6x+9-9+k^2-27$\n$=(x-3)^2+k^2-36$\n\n꼭짓점은\n\n$(3,\\ k^2-36)$\n\n이다.\n\n$x$축과 한 점에서 만나므로\n\n$k^2-36=0$\n$k^2=36$\n$k=\\pm6$\n\n따라서\n\n$k=-6,\\ 6$\n\n정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -292,7 +292,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "[키포인트] 완전제곱식으로 고쳐 꼭짓점과 구간의 끝점에서의 값을 확인한다.\n\n$y=x^2-2x$\n\n$=x^2-2x+1-1$\n\n$=(x-1)^2-1$\n\n꼭짓점은\n\n$(1,-1)$\n\n이고 $1\\le x\\le3$에 포함되므로\n\n최솟값은\n\n$-1$\n\n이다.\n\n끝점에서의 값을 계산하면\n\n$y(1)=1^2-2\\cdot1$\n\n$=1-2$\n\n$=-1$\n\n$y(3)=3^2-2\\cdot3$\n\n$=9-6$\n\n$=3$\n\n따라서 최댓값은\n\n$3$\n\n이고 최솟값은\n\n$-1$\n\n이다.\n\n그러므로\n\n$3+(-1)=2$\n\n정답은 ②이다.",
+    "solution": "[키포인트] 완전제곱식으로 고쳐 꼭짓점과 구간의 끝점에서의 값을 확인한다.\n\n$y=x^2-2x$\n$=x^2-2x+1-1$\n$=(x-1)^2-1$\n\n꼭짓점은\n\n$(1,-1)$\n\n이고 $1\\le x\\le3$에 포함되므로\n\n최솟값은\n\n$-1$\n\n이다.\n\n끝점에서의 값을 계산하면\n\n$y(1)=1^2-2\\cdot1$\n$=1-2$\n$=-1$\n$y(3)=3^2-2\\cdot3$\n$=9-6$\n$=3$\n\n따라서 최댓값은\n\n$3$\n\n이고 최솟값은\n\n$-1$\n\n이다.\n\n그러므로\n\n$3+(-1)=2$\n\n정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -336,7 +336,7 @@ window.questionBank = [
       "56"
     ],
     "answer": "③",
-    "solution": "[키포인트] $x+y$와 $xy$를 구한 뒤 세제곱의 합 공식을 이용한다.\n\n$x=2+\\sqrt3$, $y=2-\\sqrt3$이므로\n\n$x+y$\n\n$=(2+\\sqrt3)+(2-\\sqrt3)$\n\n$=4$\n\n또\n\n$xy$\n\n$=(2+\\sqrt3)(2-\\sqrt3)$\n\n$=2^2-(\\sqrt3)^2$\n\n$=4-3$\n\n$=1$\n\n세제곱의 합 공식\n\n$x^3+y^3=(x+y)^3-3xy(x+y)$\n\n에 대입하면\n\n$x^3+y^3$\n\n$=4^3-3\\cdot1\\cdot4$\n\n$=64-12$\n\n$=52$\n\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] $x+y$와 $xy$를 구한 뒤 세제곱의 합 공식을 이용한다.\n\n$x=2+\\sqrt3$, $y=2-\\sqrt3$이므로\n\n$x+y$\n$=(2+\\sqrt3)+(2-\\sqrt3)$\n$=4$\n\n또\n\n$xy$\n$=(2+\\sqrt3)(2-\\sqrt3)$\n$=2^2-(\\sqrt3)^2$\n$=4-3$\n$=1$\n\n세제곱의 합 공식\n\n$x^3+y^3=(x+y)^3-3xy(x+y)$\n\n에 대입하면\n\n$x^3+y^3$\n$=4^3-3\\cdot1\\cdot4$\n$=64-12$\n$=52$\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "rule_inferred",
@@ -380,7 +380,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "④",
-    "solution": "[키포인트] 제수를 인수분해한 뒤 인수정리를 이용한다.\n\n$x^2-x-6$\n\n$=(x-3)(x+2)$\n\n$P(x)$가 $(x-3)(x+2)$로 나누어떨어지므로\n\n$P(3)=0$, $P(-2)=0$\n\n이다.\n\n$P(3)=0$에서\n\n$-(3)^3+2(3)^2+3a+b=0$\n\n$-27+18+3a+b=0$\n\n$3a+b=9$ ①\n\n$P(-2)=0$에서\n\n$-(-2)^3+2(-2)^2-2a+b=0$\n\n$8+8-2a+b=0$\n\n$2a-b=16$ ②\n\n①+②를 하면\n\n$5a=25$\n\n$a=5$\n\n①에 대입하면\n\n$3\\cdot5+b=9$\n\n$15+b=9$\n\n$b=-6$\n\n따라서\n\n$3a+b$\n\n$=3\\cdot5+(-6)$\n\n$=15-6$\n\n$=9$\n\n정답은 ④이다.",
+    "solution": "[키포인트] 제수를 인수분해한 뒤 인수정리를 이용한다.\n\n$x^2-x-6$\n$=(x-3)(x+2)$\n\n$P(x)$가 $(x-3)(x+2)$로 나누어떨어지므로\n\n$P(3)=0$, $P(-2)=0$\n\n이다.\n\n$P(3)=0$에서\n\n$-(3)^3+2(3)^2+3a+b=0$\n$-27+18+3a+b=0$\n\n$3a+b=9$ ①\n\n$P(-2)=0$에서\n\n$-(-2)^3+2(-2)^2-2a+b=0$\n$8+8-2a+b=0$\n\n$2a-b=16$ ②\n\n①+②를 하면\n\n$5a=25$\n$a=5$\n\n①에 대입하면\n\n$3\\cdot5+b=9$\n$15+b=9$\n$b=-6$\n\n따라서\n\n$3a+b$\n$=3\\cdot5+(-6)$\n$=15-6$\n$=9$\n\n정답은 ④이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -424,7 +424,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $(x-1)^2$이 인수이므로 $x-1$로 두 번 나누어떨어지는 조건을 이용한다.\n\n$P(x)=x^3+ax+b$라 하자.\n\n먼저 $x-1$이 인수이므로\n\n$P(1)=0$\n\n$1+a+b=0$\n\n$a+b=-1$ ①\n\n$P(x)$를 $x-1$로 나누면\n\n$P(x)=(x-1)\\{x^2+x+(a+1)\\}+(a+b+1)$\n\n①에서 $a+b+1=0$이므로\n\n$P(x)=(x-1)\\{x^2+x+(a+1)\\}$\n\n$(x-1)^2$이 인수이려면\n몫 $x^2+x+(a+1)$도 $x-1$을 인수로 가져야 한다.\n\n따라서 $x=1$을 대입하면\n\n$1^2+1+(a+1)=0$\n\n$a+3=0$\n\n$a=-3$\n\n①에 대입하면\n\n$-3+b=-1$\n\n$b=2$\n\n따라서\n\n$b-a=2-(-3)=5$\n\n정답은 ⑤이다.",
+    "solution": "[키포인트] $(x-1)^2$이 인수이므로 $x-1$로 두 번 나누어떨어지는 조건을 이용한다.\n\n$P(x)=x^3+ax+b$라 하자.\n\n먼저 $x-1$이 인수이므로\n\n$P(1)=0$\n$1+a+b=0$\n\n$a+b=-1$ ①\n\n$P(x)$를 $x-1$로 나누면\n\n$P(x)=(x-1)\\{x^2+x+(a+1)\\}+(a+b+1)$\n\n①에서 $a+b+1=0$이므로\n\n$P(x)=(x-1)\\{x^2+x+(a+1)\\}$\n\n$(x-1)^2$이 인수이려면\n몫 $x^2+x+(a+1)$도 $x-1$을 인수로 가져야 한다.\n\n따라서 $x=1$을 대입하면\n\n$1^2+1+(a+1)=0$\n$a+3=0$\n$a=-3$\n\n①에 대입하면\n\n$-3+b=-1$\n$b=2$\n\n따라서\n\n$b-a=2-(-3)=5$\n\n정답은 ⑤이다.",
     "subUnitKey": "H22-C-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -471,7 +471,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 서로 다른 두 허근을 가지려면 판별식이 $0$보다 작아야 한다.\n\n$x^2+3x+7-k=0$에서\n\n$D=3^2-4\\cdot1\\cdot(7-k)$\n\n$=9-28+4k$\n\n$=4k-19$\n\n서로 다른 두 허근을 가지므로\n\n$D<0$\n\n$4k-19<0$\n\n$4k<19$\n\n$k<\\dfrac{19}{4}$\n\n$k$는 자연수이므로\n\n$k=1,2,3,4$\n\n따라서 가능한 자연수 $k$의 개수는\n\n$4$개\n\n정답은 ④이다.",
+    "solution": "[키포인트] 서로 다른 두 허근을 가지려면 판별식이 $0$보다 작아야 한다.\n\n$x^2+3x+7-k=0$에서\n\n$D=3^2-4\\cdot1\\cdot(7-k)$\n$=9-28+4k$\n$=4k-19$\n\n서로 다른 두 허근을 가지므로\n\n$D<0$\n$4k-19<0$\n$4k<19$\n$k<\\dfrac{19}{4}$\n\n$k$는 자연수이므로\n\n$k=1,2,3,4$\n\n따라서 가능한 자연수 $k$의 개수는\n\n$4$개\n\n정답은 ④이다.",
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -514,7 +514,7 @@ window.questionBank = [
       "-5"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $-1$이 모든 실수 $k$에서 항상 근이므로 $x=-1$을 대입한 식이 $k$에 대한 항등식이 되어야 한다.\n\n$x=-1$을 대입하면\n\n$(-1)^2+k(2a-1)(-1)-(a^2+2)k+b+3=0$\n\n$1-(2a-1)k-(a^2+2)k+b+3=0$\n\n상수항과 $k$항을 정리하면\n\n$b+4-\\{(2a-1)+(a^2+2)\\}k=0$\n\n$b+4-(a^2+2a+1)k=0$\n\n$b+4-(a+1)^2k=0$\n\n이 식이 모든 실수 $k$에서 성립하므로\n\n$b+4=0$\n\n$(a+1)^2=0$\n\n따라서\n\n$b=-4$\n\n$a=-1$\n\n그러므로\n\n$a+b=-1+(-4)=-5$\n\n정답은 ⑤이다.",
+    "solution": "[키포인트] $-1$이 모든 실수 $k$에서 항상 근이므로 $x=-1$을 대입한 식이 $k$에 대한 항등식이 되어야 한다.\n\n$x=-1$을 대입하면\n\n$(-1)^2+k(2a-1)(-1)-(a^2+2)k+b+3=0$\n$1-(2a-1)k-(a^2+2)k+b+3=0$\n\n상수항과 $k$항을 정리하면\n\n$b+4-\\{(2a-1)+(a^2+2)\\}k=0$\n$b+4-(a^2+2a+1)k=0$\n$b+4-(a+1)^2k=0$\n\n이 식이 모든 실수 $k$에서 성립하므로\n\n$b+4=0$\n$(a+1)^2=0$\n\n따라서\n\n$b=-4$\n$a=-1$\n\n그러므로\n\n$a+b=-1+(-4)=-5$\n\n정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -560,7 +560,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 그래프의 교점을 나타내는 이차방정식이 서로 다른 두 실근을 가져야 한다.\n\n교점에서\n\n$x^2+4x+k=-2x+3$\n\n$x^2+6x+k-3=0$\n\n서로 다른 두 점에서 만나므로\n\n$D>0$\n\n$D=6^2-4\\cdot1\\cdot(k-3)$\n\n$=36-4k+12$\n\n$=48-4k$\n\n따라서\n\n$48-4k>0$\n\n$-4k>-48$\n\n$k<12$\n\n$k$는 자연수이므로 가능한 최댓값은\n\n$11$\n\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 두 그래프의 교점을 나타내는 이차방정식이 서로 다른 두 실근을 가져야 한다.\n\n교점에서\n\n$x^2+4x+k=-2x+3$\n$x^2+6x+k-3=0$\n\n서로 다른 두 점에서 만나므로\n\n$D>0$\n$D=6^2-4\\cdot1\\cdot(k-3)$\n$=36-4k+12$\n$=48-4k$\n\n따라서\n\n$48-4k>0$\n$-4k>-48$\n$k<12$\n\n$k$는 자연수이므로 가능한 최댓값은\n\n$11$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -603,7 +603,7 @@ window.questionBank = [
       "$t \\ge -1$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 구간 $[t,t+2]$가 꼭짓점의 $x$좌표 $1$을 포함해야 최솟값이 $5$가 된다.\n\n$f(x)=2x^2-4x+7$\n\n$=2(x^2-2x)+7$\n\n$=2\\{(x-1)^2-1\\}+7$\n\n$=2(x-1)^2+5$\n\n따라서\n\n$f(x)\\ge5$\n\n이고\n\n$x=1$\n\n일 때 최솟값 $5$를 갖는다.\n\n$g(t)=5$가 되려면\n\n$1\\in[t,t+2]$\n\n이어야 하므로\n\n$t\\le1\\le t+2$\n\n두 부등식을 나누면\n\n$t\\le1$\n\n$1\\le t+2$\n\n두 번째 식에서\n\n$t\\ge-1$\n\n따라서\n\n$-1\\le t\\le1$\n\n정답은 ①이다.",
+    "solution": "[키포인트] 구간 $[t,t+2]$가 꼭짓점의 $x$좌표 $1$을 포함해야 최솟값이 $5$가 된다.\n\n$f(x)=2x^2-4x+7$\n$=2(x^2-2x)+7$\n$=2\\{(x-1)^2-1\\}+7$\n$=2(x-1)^2+5$\n\n따라서\n\n$f(x)\\ge5$\n\n이고\n\n$x=1$\n\n일 때 최솟값 $5$를 갖는다.\n\n$g(t)=5$가 되려면\n\n$1\\in[t,t+2]$\n\n이어야 하므로\n\n$t\\le1\\le t+2$\n\n두 부등식을 나누면\n\n$t\\le1$\n$1\\le t+2$\n\n두 번째 식에서\n\n$t\\ge-1$\n\n따라서\n\n$-1\\le t\\le1$\n\n정답은 ①이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -648,7 +648,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 몫과 나머지가 같은 일차식이라고 두고, 나누어떨어지는 조건을 이용한다.\n\n$P(x)$는 최고차항의 계수가 $1$인 삼차다항식이다.\n\n$x^2-4$로 나눈 몫은 일차식이고,\n몫과 나머지가 서로 같으므로\n\n몫 $=$ 나머지 $=x+t$\n\n라 두자.\n\n그러면\n\n$P(x)=(x^2-4)(x+t)+(x+t)$\n\n$=(x+t)\\{(x^2-4)+1\\}$\n\n$=(x+t)(x^2-3)$\n\n전개하면\n\n$P(x)=x^3+tx^2-3x-3t$\n\n또\n\n$x^2-4=(x-2)(x+2)$\n\n이고 $(x+2)P(x)$가 $(x-2)(x+2)$로 나누어떨어진다.\n\n따라서 $P(x)$가 $x-2$를 인수로 가져야 하므로\n\n$P(2)=0$\n\n$2^3+t\\cdot2^2-3\\cdot2-3t=0$\n\n$8+4t-6-3t=0$\n\n$t+2=0$\n\n$t=-2$\n\n따라서\n\n$P(x)=x^3-2x^2-3x+6$\n\n그러므로\n\n$P(3)$\n\n$=3^3-2\\cdot3^2-3\\cdot3+6$\n\n$=27-18-9+6$\n\n$=6$\n\n정답은 ④이다.",
+    "solution": "[키포인트] 몫과 나머지가 같은 일차식이라고 두고, 나누어떨어지는 조건을 이용한다.\n\n$P(x)$는 최고차항의 계수가 $1$인 삼차다항식이다.\n\n$x^2-4$로 나눈 몫은 일차식이고,\n몫과 나머지가 서로 같으므로\n\n몫 $=$ 나머지 $=x+t$\n\n라 두자.\n\n그러면\n\n$P(x)=(x^2-4)(x+t)+(x+t)$\n$=(x+t)\\{(x^2-4)+1\\}$\n$=(x+t)(x^2-3)$\n\n전개하면\n\n$P(x)=x^3+tx^2-3x-3t$\n\n또\n\n$x^2-4=(x-2)(x+2)$\n\n이고 $(x+2)P(x)$가 $(x-2)(x+2)$로 나누어떨어진다.\n\n따라서 $P(x)$가 $x-2$를 인수로 가져야 하므로\n\n$P(2)=0$\n$2^3+t\\cdot2^2-3\\cdot2-3t=0$\n$8+4t-6-3t=0$\n$t+2=0$\n$t=-2$\n\n따라서\n\n$P(x)=x^3-2x^2-3x+6$\n\n그러므로\n\n$P(3)$\n$=3^3-2\\cdot3^2-3\\cdot3+6$\n$=27-18-9+6$\n$=6$\n\n정답은 ④이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -693,7 +693,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "①",
-    "solution": "[키포인트] $g(2)=f(2)$를 이용하고, $f(2)$는 주어진 나머지에서 바로 구한다.\n\n$f(x)$를 $(x-2)^2(x-1)$로 나눈 나머지가 $g(x)$이므로\n\n$f(x)=(x-2)^2(x-1)Q(x)+g(x)$\n\n로 나타낼 수 있다.\n\n$x=2$를 대입하면\n\n$f(2)=0+g(2)$\n\n따라서\n\n$g(2)=f(2)$\n\n이다.\n\n또 $f(x)$를 $(x-2)^3$으로 나눈 나머지가\n\n$x^2+2x+3$\n\n이므로\n\n$f(x)=(x-2)^3R(x)+(x^2+2x+3)$\n\n$x=2$를 대입하면\n\n$f(2)$\n\n$=2^2+2\\cdot2+3$\n\n$=4+4+3$\n\n$=11$\n\n따라서\n\n$g(2)=11$\n\n정답은 ①이다.",
+    "solution": "[키포인트] $g(2)=f(2)$를 이용하고, $f(2)$는 주어진 나머지에서 바로 구한다.\n\n$f(x)$를 $(x-2)^2(x-1)$로 나눈 나머지가 $g(x)$이므로\n\n$f(x)=(x-2)^2(x-1)Q(x)+g(x)$\n\n로 나타낼 수 있다.\n\n$x=2$를 대입하면\n\n$f(2)=0+g(2)$\n\n따라서\n\n$g(2)=f(2)$\n\n이다.\n\n또 $f(x)$를 $(x-2)^3$으로 나눈 나머지가\n\n$x^2+2x+3$\n\n이므로\n\n$f(x)=(x-2)^3R(x)+(x^2+2x+3)$\n\n$x=2$를 대입하면\n\n$f(2)$\n$=2^2+2\\cdot2+3$\n$=4+4+3$\n$=11$\n\n따라서\n\n$g(2)=11$\n\n정답은 ①이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -740,7 +740,7 @@ window.questionBank = [
       "-5"
     ],
     "answer": "③",
-    "solution": "[키포인트] 밑의 제곱을 먼저 구한 뒤 $n$을 $4$로 나눈 나머지에 따라 정리한다.\n\n$w=\\dfrac{1-i}{\\sqrt2}$\n\n라 두면\n\n$w^2$\n\n$=\\dfrac{(1-i)^2}{2}$\n\n$=\\dfrac{1-2i+i^2}{2}$\n\n$=\\dfrac{-2i}{2}$\n\n$=-i$\n\n따라서\n\n$w^{2n}=(-i)^n$\n\n이다.\n\n또\n\n$\\dfrac1{w^2}=\\dfrac1{-i}=i$\n\n이므로\n\n$\\dfrac1{w^{2n}}=i^n$\n\n이다.\n\n따라서\n\n$z_n=(-i)^n+ni^n$\n\n이다.\n\n$n$을 $4$로 나눈 나머지에 따라 정리하면\n\n$n\\equiv0\\pmod4$일 때\n\n$z_n=1+n$\n\n$n\\equiv1\\pmod4$일 때\n\n$z_n=(n-1)i$\n\n$n\\equiv2\\pmod4$일 때\n\n$z_n=-(n+1)$\n\n$n\\equiv3\\pmod4$일 때\n\n$z_n=(1-n)i$\n\n이다.\n\n실수부의 양수 부분은\n\n$5+9+13+\\cdots+49$\n\n$=(5+49)+(9+45)+(13+41)+(17+37)+(21+33)+(25+29)$\n\n$=54\\cdot6$\n\n$=324$\n\n이다.\n\n실수부의 음수 부분은\n\n$-(3+7+11+\\cdots+51)$\n\n$=-\\{(3+51)+(7+47)+(11+43)+(15+39)+(19+35)+(23+31)+27\\}$\n\n$=-(54\\cdot6+27)$\n\n$=-351$\n\n이다.\n\n따라서\n\n$a=324-351=-27$\n\n이다.\n\n허수부의 양수 부분은\n\n$0+4+8+\\cdots+48$\n\n$=(0+48)+(4+44)+(8+40)+(12+36)+(16+32)+(20+28)+24$\n\n$=48\\cdot6+24$\n\n$=312$\n\n이다.\n\n허수부의 음수 부분은\n\n$-(2+6+10+\\cdots+46)$\n\n$=-\\{(2+46)+(6+42)+(10+38)+(14+34)+(18+30)+(22+26)\\}$\n\n$=-48\\cdot6$\n\n$=-288$\n\n이다.\n\n따라서\n\n$b=312-288=24$\n\n그러므로\n\n$a+b=-27+24=-3$\n\n정답은 ③이다.",
+    "solution": "[키포인트] 밑의 제곱을 먼저 구한 뒤 $n$을 $4$로 나눈 나머지에 따라 정리한다.\n\n$w=\\dfrac{1-i}{\\sqrt2}$\n\n라 두면\n\n$w^2$\n$=\\dfrac{(1-i)^2}{2}$\n$=\\dfrac{1-2i+i^2}{2}$\n$=\\dfrac{-2i}{2}$\n$=-i$\n\n따라서\n\n$w^{2n}=(-i)^n$\n\n이다.\n\n또\n\n$\\dfrac1{w^2}=\\dfrac1{-i}=i$\n\n이므로\n\n$\\dfrac1{w^{2n}}=i^n$\n\n이다.\n\n따라서\n\n$z_n=(-i)^n+ni^n$\n\n이다.\n\n$n$을 $4$로 나눈 나머지에 따라 정리하면\n\n$n\\equiv0\\pmod4$일 때\n\n$z_n=1+n$\n\n$n\\equiv1\\pmod4$일 때\n\n$z_n=(n-1)i$\n\n$n\\equiv2\\pmod4$일 때\n\n$z_n=-(n+1)$\n\n$n\\equiv3\\pmod4$일 때\n\n$z_n=(1-n)i$\n\n이다.\n\n실수부의 양수 부분은\n\n$5+9+13+\\cdots+49$\n$=(5+49)+(9+45)+(13+41)+(17+37)+(21+33)+(25+29)$\n$=54\\cdot6$\n$=324$\n\n이다.\n\n실수부의 음수 부분은\n\n$-(3+7+11+\\cdots+51)$\n$=-\\{(3+51)+(7+47)+(11+43)+(15+39)+(19+35)+(23+31)+27\\}$\n$=-(54\\cdot6+27)$\n$=-351$\n\n이다.\n\n따라서\n\n$a=324-351=-27$\n\n이다.\n\n허수부의 양수 부분은\n\n$0+4+8+\\cdots+48$\n$=(0+48)+(4+44)+(8+40)+(12+36)+(16+32)+(20+28)+24$\n$=48\\cdot6+24$\n$=312$\n\n이다.\n\n허수부의 음수 부분은\n\n$-(2+6+10+\\cdots+46)$\n$=-\\{(2+46)+(6+42)+(10+38)+(14+34)+(18+30)+(22+26)\\}$\n$=-48\\cdot6$\n$=-288$\n\n이다.\n\n따라서\n\n$b=312-288=24$\n\n그러므로\n\n$a+b=-27+24=-3$\n\n정답은 ③이다.",
     "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -784,7 +784,7 @@ window.questionBank = [
       "-5"
     ],
     "answer": "②",
-    "solution": "[키포인트] $f(x)$를 이차식으로 두고, 두 근의 관계를 이용해 계수를 정한다.\n\n$f(x)=Ax^2+Bx+C$\n\n라 두자.\n\n$\\alpha,\\beta$는\n\n$x^2+5x-4=0$\n\n의 두 근이므로\n\n$\\alpha+\\beta=-5$\n\n$\\alpha\\beta=-4$\n\n이다.\n\n또\n\n$\\alpha^2=-5\\alpha+4$\n\n이므로\n\n$f(\\alpha)$\n\n$=A\\alpha^2+B\\alpha+C$\n\n$=A(-5\\alpha+4)+B\\alpha+C$\n\n$=(-5A+B)\\alpha+(4A+C)$\n\n이다.\n\n같은 방법으로\n\n$f(\\beta)=(-5A+B)\\beta+(4A+C)$\n\n이다.\n\n$u=-5A+B$, $v=4A+C$라 두면\n\n$f(\\alpha)=u\\alpha+v$\n\n$f(\\beta)=u\\beta+v$\n\n이다.\n\n조건에서\n\n$\\beta f(\\alpha)=-8$\n\n이므로\n\n$\\beta(u\\alpha+v)=-8$\n\n$u\\alpha\\beta+v\\beta=-8$\n\n$-4u+v\\beta=-8$ ①\n\n또\n\n$\\alpha f(\\beta)=-8$\n\n이므로\n\n$-4u+v\\alpha=-8$ ②\n\n①-②를 하면\n\n$v(\\beta-\\alpha)=0$\n\n두 근은 서로 다르므로\n\n$v=0$\n\n따라서\n\n$4A+C=0$ ③\n\n①에 대입하면\n\n$-4u=-8$\n\n$u=2$\n\n따라서\n\n$-5A+B=2$ ④\n\n또\n\n$f(-2)=16$\n\n이므로\n\n$4A-2B+C=16$ ⑤\n\n③에서\n\n$C=-4A$\n\n④에서\n\n$B=5A+2$\n\n이를 ⑤에 대입하면\n\n$4A-2(5A+2)-4A=16$\n\n$4A-10A-4-4A=16$\n\n$-10A=20$\n\n$A=-2$\n\n따라서\n\n$B=5(-2)+2=-8$\n\n$C=-4(-2)=8$\n\n그러므로\n\n$f(1)$\n\n$=-2-8+8$\n\n$=-2$\n\n정답은 ②이다.",
+    "solution": "[키포인트] $f(x)$를 이차식으로 두고, 두 근의 관계를 이용해 계수를 정한다.\n\n$f(x)=Ax^2+Bx+C$\n\n라 두자.\n\n$\\alpha,\\beta$는\n\n$x^2+5x-4=0$\n\n의 두 근이므로\n\n$\\alpha+\\beta=-5$\n$\\alpha\\beta=-4$\n\n이다.\n\n또\n\n$\\alpha^2=-5\\alpha+4$\n\n이므로\n\n$f(\\alpha)$\n$=A\\alpha^2+B\\alpha+C$\n$=A(-5\\alpha+4)+B\\alpha+C$\n$=(-5A+B)\\alpha+(4A+C)$\n\n이다.\n\n같은 방법으로\n\n$f(\\beta)=(-5A+B)\\beta+(4A+C)$\n\n이다.\n\n$u=-5A+B$, $v=4A+C$라 두면\n\n$f(\\alpha)=u\\alpha+v$\n$f(\\beta)=u\\beta+v$\n\n이다.\n\n조건에서\n\n$\\beta f(\\alpha)=-8$\n\n이므로\n\n$\\beta(u\\alpha+v)=-8$\n$u\\alpha\\beta+v\\beta=-8$\n\n$-4u+v\\beta=-8$ ①\n\n또\n\n$\\alpha f(\\beta)=-8$\n\n이므로\n\n$-4u+v\\alpha=-8$ ②\n\n①-②를 하면\n\n$v(\\beta-\\alpha)=0$\n\n두 근은 서로 다르므로\n\n$v=0$\n\n따라서\n\n$4A+C=0$ ③\n\n①에 대입하면\n\n$-4u=-8$\n$u=2$\n\n따라서\n\n$-5A+B=2$ ④\n\n또\n\n$f(-2)=16$\n\n이므로\n\n$4A-2B+C=16$ ⑤\n\n③에서\n\n$C=-4A$\n\n④에서\n\n$B=5A+2$\n\n이를 ⑤에 대입하면\n\n$4A-2(5A+2)-4A=16$\n$4A-10A-4-4A=16$\n$-10A=20$\n$A=-2$\n\n따라서\n\n$B=5(-2)+2=-8$\n$C=-4(-2)=8$\n\n그러므로\n\n$f(1)$\n$=-2-8+8$\n$=-2$\n\n정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -824,7 +824,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 포물선과 수평선 $y=t$의 교점 수를 비교하고, 두 포물선의 공통점이 생기는 경우를 확인한다.\n\n첫 번째 함수는\n\n$y=x^2-2x+1$\n\n$=(x-1)^2$\n\n이고,\n\n두 번째 함수는\n\n$y=-x^2+4x+1$\n\n$=-(x-2)^2+5$\n\n이다.\n\n첫 번째 포물선의 최솟값은 $0$이므로\n\n$t<0$이면 교점 $0$개,\n\n$t=0$이면 교점 $1$개,\n\n$t>0$이면 교점 $2$개이다.\n\n두 번째 포물선의 최댓값은 $5$이므로\n\n$t<5$이면 교점 $2$개,\n\n$t=5$이면 교점 $1$개,\n\n$t>5$이면 교점 $0$개이다.\n\n따라서\n\n$t=0$일 때\n\n$1+2=3$\n\n개의 서로 다른 점에서 만난다.\n\n$t=5$일 때도\n\n$2+1=3$\n\n개의 서로 다른 점에서 만난다.\n\n이제 $0<t<5$에서는 각 포물선과 두 점씩 만나므로 원래 교점은 $4$개이다.\n\n서로 다른 점이 $3$개가 되려면 두 포물선의 공통점 하나가 같은 점으로 겹쳐야 한다.\n\n두 포물선의 교점을 구하면\n\n$x^2-2x+1=-x^2+4x+1$\n\n$2x^2-6x=0$\n\n$2x(x-3)=0$\n\n따라서\n\n$x=0$ 또는 $x=3$\n\n이다.\n\n$x=0$일 때\n\n$y=(0-1)^2=1$\n\n이므로\n\n$t=1$\n\n이다.\n\n$x=3$일 때\n\n$y=(3-1)^2=4$\n\n이므로\n\n$t=4$\n\n이다.\n\n따라서 가능한 $t$는\n\n$0,1,4,5$\n\n이고 그 합은\n\n$0+1+4+5=10$\n\n정답은 ④이다.",
+    "solution": "[키포인트] 두 포물선과 수평선 $y=t$의 교점 수를 비교하고, 두 포물선의 공통점이 생기는 경우를 확인한다.\n\n첫 번째 함수는\n\n$y=x^2-2x+1$\n$=(x-1)^2$\n\n이고,\n\n두 번째 함수는\n\n$y=-x^2+4x+1$\n$=-(x-2)^2+5$\n\n이다.\n\n첫 번째 포물선의 최솟값은 $0$이므로\n\n$t<0$이면 교점 $0$개,\n\n$t=0$이면 교점 $1$개,\n\n$t>0$이면 교점 $2$개이다.\n\n두 번째 포물선의 최댓값은 $5$이므로\n\n$t<5$이면 교점 $2$개,\n\n$t=5$이면 교점 $1$개,\n\n$t>5$이면 교점 $0$개이다.\n\n따라서\n\n$t=0$일 때\n\n$1+2=3$\n\n개의 서로 다른 점에서 만난다.\n\n$t=5$일 때도\n\n$2+1=3$\n\n개의 서로 다른 점에서 만난다.\n\n이제 $0<t<5$에서는 각 포물선과 두 점씩 만나므로 원래 교점은 $4$개이다.\n\n서로 다른 점이 $3$개가 되려면 두 포물선의 공통점 하나가 같은 점으로 겹쳐야 한다.\n\n두 포물선의 교점을 구하면\n\n$x^2-2x+1=-x^2+4x+1$\n$2x^2-6x=0$\n$2x(x-3)=0$\n\n따라서\n\n$x=0$ 또는 $x=3$\n\n이다.\n\n$x=0$일 때\n\n$y=(0-1)^2=1$\n\n이므로\n\n$t=1$\n\n이다.\n\n$x=3$일 때\n\n$y=(3-1)^2=4$\n\n이므로\n\n$t=4$\n\n이다.\n\n따라서 가능한 $t$는\n\n$0,1,4,5$\n\n이고 그 합은\n\n$0+1+4+5=10$\n\n정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -868,7 +868,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "③",
-    "solution": "[키포인트] 꼭짓점 $x=a$의 위치를 조건 (가), (나)에 차례로 적용한다.\n\n$f(x)=(x-a)^2$\n\n에서 최솟값 $0$은 $x=a$에서 나온다.\n\n(가)에서 $1\\le x\\le9$일 때 최솟값이 $0$이므로\n\n$1\\le a\\le9$\n\n이다.\n\n먼저\n\n$1\\le a\\le5$\n\n인 경우를 보자.\n\n$5\\le x\\le9$에서는 꼭짓점 $x=a$가 구간의 왼쪽에 있으므로 최솟값은 $x=5$에서\n\n$(5-a)^2$\n\n이다.\n\n$1\\le x\\le5$에서 최댓값은 양 끝점 중 꼭짓점에서 더 먼 쪽에서 나오므로\n\n$(1-a)^2$\n\n와\n\n$(5-a)^2$\n\n중 큰 값이다.\n\n조건 (나)에 의해 이 최댓값이 $(5-a)^2$과 같아야 한다.\n\n따라서\n\n$(1-a)^2\\le(5-a)^2$\n\n$(a-1)^2\\le(5-a)^2$\n\n양변은 $1\\le a\\le5$에서 음이 아닌 수의 제곱이므로\n\n$a-1\\le5-a$\n\n$2a\\le6$\n\n$a\\le3$\n\n따라서\n\n$1\\le a\\le3$\n\n이다.\n\n한편 $5\\le a\\le9$이면\n\n$5\\le x\\le9$에서 최솟값은 $0$이다.\n\n그러나 $1\\le x\\le5$에서의 최댓값은 $0$보다 크므로 조건 (나)를 만족할 수 없다.\n\n따라서 가능한 $a$의 범위는\n\n$1\\le a\\le3$\n\n이다.\n\n$f(0)=a^2$\n\n이므로\n\n$a=1$일 때 최솟값\n\n$m=1$\n\n$a=3$일 때 최댓값\n\n$M=9$\n\n이다.\n\n따라서\n\n$M+m=9+1=10$\n\n정답은 ③이다.",
+    "solution": "[키포인트] 꼭짓점 $x=a$의 위치를 조건 (가), (나)에 차례로 적용한다.\n\n$f(x)=(x-a)^2$\n\n에서 최솟값 $0$은 $x=a$에서 나온다.\n\n(가)에서 $1\\le x\\le9$일 때 최솟값이 $0$이므로\n\n$1\\le a\\le9$\n\n이다.\n\n먼저\n\n$1\\le a\\le5$\n\n인 경우를 보자.\n\n$5\\le x\\le9$에서는 꼭짓점 $x=a$가 구간의 왼쪽에 있으므로 최솟값은 $x=5$에서\n\n$(5-a)^2$\n\n이다.\n\n$1\\le x\\le5$에서 최댓값은 양 끝점 중 꼭짓점에서 더 먼 쪽에서 나오므로\n\n$(1-a)^2$\n\n와\n\n$(5-a)^2$\n\n중 큰 값이다.\n\n조건 (나)에 의해 이 최댓값이 $(5-a)^2$과 같아야 한다.\n\n따라서\n\n$(1-a)^2\\le(5-a)^2$\n$(a-1)^2\\le(5-a)^2$\n\n양변은 $1\\le a\\le5$에서 음이 아닌 수의 제곱이므로\n\n$a-1\\le5-a$\n$2a\\le6$\n$a\\le3$\n\n따라서\n\n$1\\le a\\le3$\n\n이다.\n\n한편 $5\\le a\\le9$이면\n\n$5\\le x\\le9$에서 최솟값은 $0$이다.\n\n그러나 $1\\le x\\le5$에서의 최댓값은 $0$보다 크므로 조건 (나)를 만족할 수 없다.\n\n따라서 가능한 $a$의 범위는\n\n$1\\le a\\le3$\n\n이다.\n\n$f(0)=a^2$\n\n이므로\n\n$a=1$일 때 최솟값\n\n$m=1$\n\n$a=3$일 때 최댓값\n\n$M=9$\n\n이다.\n\n따라서\n\n$M+m=9+1=10$\n\n정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -901,7 +901,7 @@ window.questionBank = [
     "content": "[주관식1 (서술형)] [6점] (부분점수 있음)<br>이차방정식 $x^2-5x+3=0$의 두 근을 $\\alpha,\\beta$라 할 때, 다음을 구하는 풀이 과정과 답을 자세히 서술하시오.<br>(1) 두 근의 합 $\\alpha+\\beta$와 두 근의 곱 $\\alpha\\beta$를 각각 구하시오. (2점)<br>(2) 두 수 $\\dfrac{1}{\\alpha^2-3\\alpha-1}$, $\\dfrac{1}{\\beta^2-3\\beta-1}$을 근으로 하고, $x^2$의 계수가 24인 이차방정식을 구하시오. (4점)",
     "choices": [],
     "answer": "(1) α+β=5, αβ=3; (2) 24x²+4x−2=0",
-    "solution": "[키포인트] 근과 계수의 관계로 $\\alpha+\\beta$, $\\alpha\\beta$를 구한 뒤 새 두 근의 합과 곱을 구한다.\n\n(1)\n\n$\\alpha,\\beta$는\n\n$x^2-5x+3=0$\n\n의 두 근이므로\n\n$\\alpha+\\beta=5$\n\n$\\alpha\\beta=3$\n\n이다.\n\n(2)\n\n$\\alpha$는 방정식의 근이므로\n\n$\\alpha^2-5\\alpha+3=0$\n\n따라서\n\n$\\alpha^2=5\\alpha-3$\n\n이다.\n\n그러므로\n\n$\\alpha^2-3\\alpha-1$\n\n$=(5\\alpha-3)-3\\alpha-1$\n\n$=2\\alpha-4$\n\n이다.\n\n같은 방법으로\n\n$\\beta^2-3\\beta-1=2\\beta-4$\n\n이다.\n\n새 두 근을\n\n$p=\\dfrac1{2\\alpha-4}$,\n\n$q=\\dfrac1{2\\beta-4}$\n\n라 하자.\n\n먼저 두 분모의 합은\n\n$(2\\alpha-4)+(2\\beta-4)$\n\n$=2(\\alpha+\\beta)-8$\n\n$=2\\cdot5-8$\n\n$=2$\n\n이다.\n\n두 분모의 곱은\n\n$(2\\alpha-4)(2\\beta-4)$\n\n$=4\\alpha\\beta-8(\\alpha+\\beta)+16$\n\n$=4\\cdot3-8\\cdot5+16$\n\n$=12-40+16$\n\n$=-12$\n\n이다.\n\n따라서 새 두 근의 합은\n\n$p+q$\n\n$=\\dfrac{(2\\alpha-4)+(2\\beta-4)}{(2\\alpha-4)(2\\beta-4)}$\n\n$=\\dfrac2{-12}$\n\n$=-\\dfrac16$\n\n이다.\n\n새 두 근의 곱은\n\n$pq$\n\n$=\\dfrac1{(2\\alpha-4)(2\\beta-4)}$\n\n$=-\\dfrac1{12}$\n\n이다.\n\n두 근이 $p,q$인 이차방정식은\n\n$x^2-(p+q)x+pq=0$\n\n이므로\n\n$x^2+\\dfrac16x-\\dfrac1{12}=0$\n\n이다.\n\n$x^2$의 계수를 $24$로 만들기 위해 양변에 $24$를 곱하면\n\n$24x^2+4x-2=0$\n\n이다.\n\n따라서\n\n$(1)\\ \\alpha+\\beta=5,\\ \\alpha\\beta=3$\n\n$(2)\\ 24x^2+4x-2=0$",
+    "solution": "[키포인트] 근과 계수의 관계로 $\\alpha+\\beta$, $\\alpha\\beta$를 구한 뒤 새 두 근의 합과 곱을 구한다.\n\n(1)\n\n$\\alpha,\\beta$는\n\n$x^2-5x+3=0$\n\n의 두 근이므로\n\n$\\alpha+\\beta=5$\n$\\alpha\\beta=3$\n\n이다.\n\n(2)\n\n$\\alpha$는 방정식의 근이므로\n\n$\\alpha^2-5\\alpha+3=0$\n\n따라서\n\n$\\alpha^2=5\\alpha-3$\n\n이다.\n\n그러므로\n\n$\\alpha^2-3\\alpha-1$\n$=(5\\alpha-3)-3\\alpha-1$\n$=2\\alpha-4$\n\n이다.\n\n같은 방법으로\n\n$\\beta^2-3\\beta-1=2\\beta-4$\n\n이다.\n\n새 두 근을\n\n$p=\\dfrac1{2\\alpha-4}$,\n\n$q=\\dfrac1{2\\beta-4}$\n\n라 하자.\n\n먼저 두 분모의 합은\n\n$(2\\alpha-4)+(2\\beta-4)$\n$=2(\\alpha+\\beta)-8$\n$=2\\cdot5-8$\n$=2$\n\n이다.\n\n두 분모의 곱은\n\n$(2\\alpha-4)(2\\beta-4)$\n$=4\\alpha\\beta-8(\\alpha+\\beta)+16$\n$=4\\cdot3-8\\cdot5+16$\n$=12-40+16$\n$=-12$\n\n이다.\n\n따라서 새 두 근의 합은\n\n$p+q$\n$=\\dfrac{(2\\alpha-4)+(2\\beta-4)}{(2\\alpha-4)(2\\beta-4)}$\n$=\\dfrac2{-12}$\n$=-\\dfrac16$\n\n이다.\n\n새 두 근의 곱은\n\n$pq$\n$=\\dfrac1{(2\\alpha-4)(2\\beta-4)}$\n$=-\\dfrac1{12}$\n\n이다.\n\n두 근이 $p,q$인 이차방정식은\n\n$x^2-(p+q)x+pq=0$\n\n이므로\n\n$x^2+\\dfrac16x-\\dfrac1{12}=0$\n\n이다.\n\n$x^2$의 계수를 $24$로 만들기 위해 양변에 $24$를 곱하면\n\n$24x^2+4x-2=0$\n\n이다.\n\n따라서\n\n$(1)\\ \\alpha+\\beta=5,\\ \\alpha\\beta=3$\n$(2)\\ 24x^2+4x-2=0$",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -936,7 +936,7 @@ window.questionBank = [
     "image": "assets/images/26_매산여고_1학기_중간_고1_기출/q22.png",
     "choices": [],
     "answer": "12",
-    "solution": "[키포인트] 좌표를 정한 뒤 전체 삼각형에서 두 삼각형의 넓이를 뺀다.\n\n$A=(0,0)$, $B=(6,0)$, $C=(0,6)$\n\n으로 두고\n\n$P=(t,0)$\n\n이라 하자.\n\n$P$는 $\\overline{AB}$의 내부에 있으므로\n\n$0<t<6$\n\n이다.\n\n직선 $BC$의 방정식은\n\n$x+y=6$\n\n이다.\n\n$BC$의 기울기는 $-1$이므로 $BC$에 수직인 직선의 기울기는 $1$이다.\n\n$P(t,0)$을 지나므로\n\n$PQ:\\ y=x-t$\n\n이다.\n\n$Q$는 $BC$와 $PQ$의 교점이므로\n\n$x+y=6$\n\n$y=x-t$\n\n를 연립하면\n\n$x+(x-t)=6$\n\n$2x=t+6$\n\n$x=\\dfrac{t+6}{2}$\n\n따라서\n\n$y=\\dfrac{t+6}{2}-t$\n\n$=\\dfrac{6-t}{2}$\n\n이므로\n\n$Q=\\left(\\dfrac{t+6}{2},\\dfrac{6-t}{2}\\right)$\n\n이다.\n\n또 $PR\\parallel BC$이므로 $PR$의 기울기는 $-1$이다.\n\n$P(t,0)$을 지나므로\n\n$PR:\\ y=-x+t$\n\n이다.\n\n$R$은 $AC$, 즉 $x=0$ 위의 점이므로\n\n$R=(0,t)$\n\n이다.\n\n이제 넓이를 구한다.\n\n$\\triangle ABC$의 넓이는\n\n$\\dfrac12\\cdot6\\cdot6=18$\n\n이다.\n\n$\\triangle APR$의 넓이는\n\n$\\dfrac12\\cdot t\\cdot t$\n\n$=\\dfrac{t^2}{2}$\n\n이다.\n\n$BP=6-t$\n\n이고 $Q$의 $y$좌표가 $\\dfrac{6-t}{2}$이므로\n\n$\\triangle BPQ$의 넓이는\n\n$\\dfrac12\\cdot(6-t)\\cdot\\dfrac{6-t}{2}$\n\n$=\\dfrac{(6-t)^2}{4}$\n\n이다.\n\n따라서 사각형 $PQCR$의 넓이를 $S$라 하면\n\n$S=18-\\dfrac{t^2}{2}-\\dfrac{(6-t)^2}{4}$\n\n$=18-\\dfrac{2t^2}{4}-\\dfrac{t^2-12t+36}{4}$\n\n$=18-\\dfrac{3t^2-12t+36}{4}$\n\n$=9+3t-\\dfrac34t^2$\n\n완전제곱식으로 정리하면\n\n$S=12-\\dfrac34(t-2)^2$\n\n이다.\n\n$(t-2)^2\\ge0$이므로\n\n$S\\le12$\n\n이고 $t=2$는 $0<t<6$을 만족한다.\n\n따라서 사각형 $PQCR$의 넓이의 최댓값은\n\n$12$\n\n이다.",
+    "solution": "[키포인트] 좌표를 정한 뒤 전체 삼각형에서 두 삼각형의 넓이를 뺀다.\n\n$A=(0,0)$, $B=(6,0)$, $C=(0,6)$\n\n으로 두고\n\n$P=(t,0)$\n\n이라 하자.\n\n$P$는 $\\overline{AB}$의 내부에 있으므로\n\n$0<t<6$\n\n이다.\n\n직선 $BC$의 방정식은\n\n$x+y=6$\n\n이다.\n\n$BC$의 기울기는 $-1$이므로 $BC$에 수직인 직선의 기울기는 $1$이다.\n\n$P(t,0)$을 지나므로\n\n$PQ:\\ y=x-t$\n\n이다.\n\n$Q$는 $BC$와 $PQ$의 교점이므로\n\n$x+y=6$\n$y=x-t$\n\n를 연립하면\n\n$x+(x-t)=6$\n$2x=t+6$\n$x=\\dfrac{t+6}{2}$\n\n따라서\n\n$y=\\dfrac{t+6}{2}-t$\n$=\\dfrac{6-t}{2}$\n\n이므로\n\n$Q=\\left(\\dfrac{t+6}{2},\\dfrac{6-t}{2}\\right)$\n\n이다.\n\n또 $PR\\parallel BC$이므로 $PR$의 기울기는 $-1$이다.\n\n$P(t,0)$을 지나므로\n\n$PR:\\ y=-x+t$\n\n이다.\n\n$R$은 $AC$, 즉 $x=0$ 위의 점이므로\n\n$R=(0,t)$\n\n이다.\n\n이제 넓이를 구한다.\n\n$\\triangle ABC$의 넓이는\n\n$\\dfrac12\\cdot6\\cdot6=18$\n\n이다.\n\n$\\triangle APR$의 넓이는\n\n$\\dfrac12\\cdot t\\cdot t$\n$=\\dfrac{t^2}{2}$\n\n이다.\n\n$BP=6-t$\n\n이고 $Q$의 $y$좌표가 $\\dfrac{6-t}{2}$이므로\n\n$\\triangle BPQ$의 넓이는\n\n$\\dfrac12\\cdot(6-t)\\cdot\\dfrac{6-t}{2}$\n$=\\dfrac{(6-t)^2}{4}$\n\n이다.\n\n따라서 사각형 $PQCR$의 넓이를 $S$라 하면\n\n$S=18-\\dfrac{t^2}{2}-\\dfrac{(6-t)^2}{4}$\n$=18-\\dfrac{2t^2}{4}-\\dfrac{t^2-12t+36}{4}$\n$=18-\\dfrac{3t^2-12t+36}{4}$\n$=9+3t-\\dfrac34t^2$\n\n완전제곱식으로 정리하면\n\n$S=12-\\dfrac34(t-2)^2$\n\n이다.\n\n$(t-2)^2\\ge0$이므로\n\n$S\\le12$\n\n이고 $t=2$는 $0<t<6$을 만족한다.\n\n따라서 사각형 $PQCR$의 넓이의 최댓값은\n\n$12$\n\n이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -970,7 +970,7 @@ window.questionBank = [
     "content": "[주관식 3 (서술형)]\n최고차항의 계수가 1인 삼차 다항식 $f(x)$와 모든 항의 계수가 실수인 두 다항식 $P(x), Q(x)$가 다음 조건을 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td style=\"text-align:left;\">(가) $f(x)$를 $P(x)$로 나누었을 때의 몫은 $Q(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\n<tr><td style=\"text-align:left;\">(나) $f(x)$를 $Q(x)$로 나누었을 때의 몫은 $P(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\n</table>\n</div>\n$P(0)=-1, Q(0)=2$일 때, $f(2)$의 값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
     "choices": [],
     "answer": "3",
-    "solution": "[키포인트] 두 나눗셈에서 나머지가 같다는 조건과 차수를 이용해 $P(x),Q(x)$를 정한다.\n\n조건 (가)에서\n\n$f(x)=P(x)Q(x)+P(x)+\\{Q(x)\\}^2$\n\n이다.\n\n조건 (나)에서도 같은 식을 얻는다.\n\n나머지\n\n$P(x)+\\{Q(x)\\}^2$\n\n의 차수는 $P(x)$와 $Q(x)$의 차수보다 모두 작아야 한다.\n\n$f(x)$가 삼차다항식이고 몫과 제수의 차수를 생각하면\n\n$P(x)$는 이차식,\n\n$Q(x)$는 일차식이다.\n\n따라서 나머지 $P(x)+\\{Q(x)\\}^2$는 이차항이 소거되어 상수이다.\n\n그 상수를 $c$라 하면\n\n$c=P(0)+\\{Q(0)\\}^2$\n\n$=-1+2^2$\n\n$=3$\n\n이다.\n\n따라서\n\n$P(x)+\\{Q(x)\\}^2=3$\n\n이므로\n\n$P(x)=3-\\{Q(x)\\}^2$\n\n이다.\n\n$Q(x)$는 일차식이고 $Q(0)=2$이므로\n\n$Q(x)=ux+2$\n\n라 두자.\n\n그러면\n\n$P(x)=3-(ux+2)^2$\n\n$=3-(u^2x^2+4ux+4)$\n\n$=-u^2x^2-4ux-1$\n\n이다.\n\n또\n\n$f(x)=P(x)Q(x)+3$\n\n이므로 $f(x)$의 최고차항은\n\n$(-u^2x^2)(ux)$\n\n$=-u^3x^3$\n\n이다.\n\n$f(x)$의 최고차항의 계수가 $1$이므로\n\n$-u^3=1$\n\n$u^3=-1$\n\n$u=-1$\n\n이다.\n\n따라서\n\n$Q(x)=-x+2$\n\n이고\n\n$P(x)=3-(-x+2)^2$\n\n$=3-(x^2-4x+4)$\n\n$=-x^2+4x-1$\n\n이다.\n\n이제\n\n$f(x)=P(x)Q(x)+3$\n\n$=(-x^2+4x-1)(-x+2)+3$\n\n곱을 전개하면\n\n$=x^3-2x^2-4x^2+8x+x-2+3$\n\n$=x^3-6x^2+9x+1$\n\n이다.\n\n따라서\n\n$f(2)$\n\n$=2^3-6\\cdot2^2+9\\cdot2+1$\n\n$=8-24+18+1$\n\n$=3$\n\n따라서 답은\n\n$3$\n\n이다.",
+    "solution": "[키포인트] 두 나눗셈에서 나머지가 같다는 조건과 차수를 이용해 $P(x),Q(x)$를 정한다.\n\n조건 (가)에서\n\n$f(x)=P(x)Q(x)+P(x)+\\{Q(x)\\}^2$\n\n이다.\n\n조건 (나)에서도 같은 식을 얻는다.\n\n나머지\n\n$P(x)+\\{Q(x)\\}^2$\n\n의 차수는 $P(x)$와 $Q(x)$의 차수보다 모두 작아야 한다.\n\n$f(x)$가 삼차다항식이고 몫과 제수의 차수를 생각하면\n\n$P(x)$는 이차식,\n\n$Q(x)$는 일차식이다.\n\n따라서 나머지 $P(x)+\\{Q(x)\\}^2$는 이차항이 소거되어 상수이다.\n\n그 상수를 $c$라 하면\n\n$c=P(0)+\\{Q(0)\\}^2$\n$=-1+2^2$\n$=3$\n\n이다.\n\n따라서\n\n$P(x)+\\{Q(x)\\}^2=3$\n\n이므로\n\n$P(x)=3-\\{Q(x)\\}^2$\n\n이다.\n\n$Q(x)$는 일차식이고 $Q(0)=2$이므로\n\n$Q(x)=ux+2$\n\n라 두자.\n\n그러면\n\n$P(x)=3-(ux+2)^2$\n$=3-(u^2x^2+4ux+4)$\n$=-u^2x^2-4ux-1$\n\n이다.\n\n또\n\n$f(x)=P(x)Q(x)+3$\n\n이므로 $f(x)$의 최고차항은\n\n$(-u^2x^2)(ux)$\n$=-u^3x^3$\n\n이다.\n\n$f(x)$의 최고차항의 계수가 $1$이므로\n\n$-u^3=1$\n$u^3=-1$\n$u=-1$\n\n이다.\n\n따라서\n\n$Q(x)=-x+2$\n\n이고\n\n$P(x)=3-(-x+2)^2$\n$=3-(x^2-4x+4)$\n$=-x^2+4x-1$\n\n이다.\n\n이제\n\n$f(x)=P(x)Q(x)+3$\n$=(-x^2+4x-1)(-x+2)+3$\n\n곱을 전개하면\n\n$=x^3-2x^2-4x^2+8x+x-2+3$\n$=x^3-6x^2+9x+1$\n\n이다.\n\n따라서\n\n$f(2)$\n$=2^3-6\\cdot2^2+9\\cdot2+1$\n$=8-24+18+1$\n$=3$\n\n따라서 답은\n\n$3$\n\n이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
