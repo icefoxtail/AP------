@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "PHASE3D_WORKER_MALFORMED_RESPONSE_RECOVERY_v1",
+  "unit": "invalid-worker-response-calculation-stage-recovery",
+  "status": "PASS",
+  "acceptance": "A syntactically valid JSON response with a mismatched wire input hash must fail as INVALID_WORKER_RESPONSE, leave no loadable calculation stage, lock, or staging residue, and never enter warm cache. Same-key recovery must recompute complete bytes before a warm hit.",
+  "observed": {
+    "focusedRuns": 10,
+    "focusedPasses": 10,
+    "focusedFailures": 0,
+    "invalidResponseError": "INVALID_WORKER_RESPONSE",
+    "stageLoadableAfterError": false,
+    "lockPresentAfterError": false,
+    "stagingResidueAfterError": false,
+    "recoveryCacheHit": false,
+    "recoveryProducerCalls": 1,
+    "recoveredOutput": "\"recovered-after-invalid-response\"",
+    "warmCacheHit": true,
+    "warmProducerCalls": 0,
+    "warmOutput": "\"recovered-after-invalid-response\"",
+    "regressionTests": 56,
+    "regressionPasses": 56,
+    "regressionFailures": 0,
+    "pythonTests": 141,
+    "pythonFailures": 0
+  },
+  "focusedRun": {
+    "passed": 10,
+    "failed": 0,
+    "log": {
+      "path": "logs/worker-malformed-focused-10x.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-malformed-recovery\\malformed\\visual-engine\\production\\worker-malformed-focused-10x.log",
+      "bytes": 2589,
+      "sha256": "sha256:e88d430e01e2bdfc56933e27af242f0cc6b80f06b313e39b20551e9254e29064",
+      "command": "node --test --test-name-pattern=\"invalid worker protocol stays uncached\" archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs (10 repetitions)"
+    }
+  },
+  "regressionSubset": {
+    "passed": 56,
+    "failed": 0,
+    "nodeVersion": "v24.14.1",
+    "log": {
+      "path": "logs/phase3d-malformed-node-regression.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-malformed-recovery\\malformed\\visual-engine\\production\\phase3d-malformed-node-regression.log",
+      "bytes": 6174,
+      "sha256": "sha256:bf1cdcdd3106ac1e9f5fb971cdfbd1c994691ab2f60081aeb7151be9330933dd",
+      "command": "node --test Phase3D nine-file regression subset"
+    }
+  },
+  "pythonSuite": {
+    "passed": 141,
+    "failed": 0,
+    "log": {
+      "path": "logs/phase3d-malformed-python-regression.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-malformed-recovery\\malformed\\visual-engine\\production\\phase3d-malformed-python-regression.log",
+      "bytes": 337,
+      "sha256": "sha256:0fd5e3483a6b4c9737507acadc8894172e2e31c62dd13df13d39abcc9b30a444",
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py"
+    }
+  },
+  "implementation": {
+    "testName": "invalid worker protocol stays uncached until same-key recovery commits valid bytes",
+    "codeRefs": [
+      {
+        "path": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+        "bytes": 3224,
+        "sha256": "sha256:0335e565fa711987691a9b9a4e6ec8f1a7587a8bc51a263d6e9d1765421b60e1"
+      },
+      {
+        "path": "archive/tools/geometry-equation/production/worker.mjs",
+        "bytes": 2163,
+        "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+      },
+      {
+        "path": "archive/tools/geometry-equation/production/store.mjs",
+        "bytes": 7756,
+        "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+      }
+    ]
+  },
+  "classification": "RESUME_CACHE_RECOVERY_NEGATIVE; synthetic isolated worker workspace; no student candidate modified",
+  "openDebt": [
+    "This test covers a valid-JSON wire hash mismatch; malformed JSON and other invalid response schemas remain separate.",
+    "Provider timeout and browser/server cancellation remain open.",
+    "Canonical current-UID execution remains INPUT_REQUIRED."
+  ],
+  "lastUpdatedUtc": "2026-10-06T11:39:01.436Z"
+}

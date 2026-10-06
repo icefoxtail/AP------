@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "PHASE3D_WORKER_MALFORMED_EVIDENCE_INDEX_v1",
+  "classification": "RESUME_CACHE_RECOVERY_NEGATIVE; synthetic isolated worker workspace; no student candidate modified",
+  "entries": [
+    {
+      "path": "logs/worker-malformed-focused-10x.log",
+      "bytes": 2589,
+      "sha256": "sha256:e88d430e01e2bdfc56933e27af242f0cc6b80f06b313e39b20551e9254e29064",
+      "command": "node --test --test-name-pattern=\"invalid worker protocol stays uncached\" archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs (10 repetitions)"
+    },
+    {
+      "path": "logs/phase3d-malformed-node-regression.log",
+      "bytes": 6174,
+      "sha256": "sha256:bf1cdcdd3106ac1e9f5fb971cdfbd1c994691ab2f60081aeb7151be9330933dd",
+      "command": "node --test Phase3D nine-file regression subset"
+    },
+    {
+      "path": "logs/phase3d-malformed-python-regression.log",
+      "bytes": 337,
+      "sha256": "sha256:0fd5e3483a6b4c9737507acadc8894172e2e31c62dd13df13d39abcc9b30a444",
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py"
+    }
+  ],
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+      "bytes": 3224,
+      "sha256": "sha256:0335e565fa711987691a9b9a4e6ec8f1a7587a8bc51a263d6e9d1765421b60e1"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 2163,
+      "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    }
+  ]
+}
