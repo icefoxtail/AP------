@@ -145,13 +145,13 @@ window.questionBank = [
     "id": 5,
     "content": "다음 중 두 실수의 대소 관계가 옳은 것은? (4점)",
     "choices": [
-      "$\\sqrt{0.3} < 0.3$",
-      "$2 < \\sqrt{3}$",
-      "$1 < 4 - \\sqrt{7}$",
-      "$\\sqrt{10} < 3$",
-      "$1 + \\sqrt{5} < 3$"
+      "$2<\\sqrt3$",
+      "$\\sqrt{0.3}<0.3$",
+      "$\\sqrt{10}<3$",
+      "$1<4-\\sqrt7$",
+      "$1+\\sqrt5<3$"
     ],
-    "answer": "③",
+    "answer": "④",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -170,7 +170,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $\\sqrt{0.3} > \\sqrt{0.09} = 0.3$\\n② $2 = \\sqrt{4} > \\sqrt{3}$\\n③ $\\sqrt{7} \\approx 2.6$ 이므로 $4-2.6=1.4 \\implies 1 < 1.4$ (참)\\n④ $\\sqrt{10} > \\sqrt{9} = 3$\\n⑤ $\\sqrt{5} \\approx 2.2$ 이므로 $1+2.2=3.2 > 3$\\n\\therefore ③",
+    "solution": "각 부등식을 확인한다.\n① $2=\\sqrt4>\\sqrt3$이므로 거짓이다.\n② $0.3=\\sqrt{0.09}<\\sqrt{0.3}$이므로 거짓이다.\n③ $\\sqrt{10}>\\sqrt9=3$이므로 거짓이다.\n④ $\\sqrt7<\\sqrt9=3$이므로 $1<4-\\sqrt7$은 참이다.\n⑤ $\\sqrt5>\\sqrt4=2$이므로 $1+\\sqrt5>3$이다.\n따라서 옳은 것은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -473,7 +473,7 @@ window.questionBank = [
       "$2+4\\sqrt{2}$",
       "$4+8\\sqrt{2}$"
     ],
-    "answer": "①",
+    "answer": "②",
     "category": "무리수의 활용",
     "originalCategory": "무리수의 활용",
     "standardCourse": "중3 수학",
@@ -492,12 +492,14 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "정팔각형 넓이 공식 $2(1+\\sqrt{2})s^2$ 또는 분할 계산 시 $8+4\\sqrt{2}$\\n\\therefore ①",
+    "solution": "한 변의 길이가 $2$인 정팔각형의 꼭짓점을 바깥 정사각형에 넣으면, 모서리마다 빗변이 $2$인 직각이등변삼각형 4개가 잘린다. 각 삼각형의 직각변은 $\\sqrt2$이므로 바깥 정사각형의 한 변은 $2+2\\sqrt2$이다.\n정팔각형의 넓이\n$=(2+2\\sqrt2)^2-4\\times\\frac12(\\sqrt2)^2$\n$=12+8\\sqrt2-4=8+8\\sqrt2$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q14.png",
+    "imageAlt": "한 변의 길이가 2인 정팔각형"
   },
   {
     "id": 15,
@@ -598,7 +600,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$4(x^2-\\frac{1}{4}x+\\frac{1}{64}) = (2x-\\frac{1}{8})^2 \\implies \\frac{1}{16}$ 미스매치 주의, 계산상 $\\frac{1}{16}$ 및 $\\pm 16a$\\n\\therefore ④",
+    "solution": "첫째 식은 $4x^2-x+\\Box=(2x-\\frac14)^2$이므로 $\\Box=\\frac1{16}$이다.\n둘째 식은 $a^2+\\Box+64=(a\\pm8)^2$이므로 가운데 항은 $\\pm16a$이다.\n따라서 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -639,7 +641,9 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q18.png",
+    "imageAlt": "한 변의 길이가 265cm인 정사각형에서 한 변 135cm인 정사각형을 잘라낸 도형"
   },
   {
     "id": 19,
@@ -706,7 +710,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "⑤ $(2x-5)(x+2) = 2x^2-x-10$ (원본 발문 $+x$와 불일치)\\n\\therefore ⑤",
+    "solution": "⑤를 전개하면\n$(2x-5)(x+2)=2x^2+4x-5x-10=2x^2-x-10$이다.\n주어진 $2x^2+x-10$과 $x$항의 부호가 다르므로 옳지 않은 것은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -752,22 +756,16 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "(서술형 1) 수직선 위 점 $P(0), R(1)$에 대하여 $\\overline{PA}=\\overline{PQ}, \\overline{RB}=\\overline{RS}$일 때, 두 점 $A(a), B(b)$에 대해 $a, b$ 및 $\\frac{a}{b}$를 구하여라. (6점)",
-    "choices": [
-      "$a=-\\sqrt{2}, b=1+\\sqrt{2}, \\frac{a}{b}=\\sqrt{2}-2$",
-      "$a=\\sqrt{2}, b=1-\\sqrt{2}, \\frac{a}{b}=2-\\sqrt{2}$",
-      "$a=-\\sqrt{2}, b=1+\\sqrt{2}, \\frac{a}{b}=-2-\\sqrt{2}$",
-      "$a=-1, b=2, \\frac{a}{b}=-\\frac{1}{2}$",
-      "$a=-\\sqrt{2}, b=\\sqrt{2}, \\frac{a}{b}=-1$"
-    ],
-    "answer": "①",
+    "content": "(서술형 1) 다음 그림은 한 변의 길이가 1인 두 정사각형을 수직선 위에 그린 것이다. $\\overline{PA}=\\overline{PQ}$, $\\overline{RB}=\\overline{RS}$이고, 수직선에서 두 점 A, B의 좌표를 각각 $a, b$라 할 때, $a, b$의 값과 $\\frac{a}{b}$의 값을 구하여라. (6점)",
+    "choices": [],
+    "answer": "(1) $a=1-\\sqrt2$, (2) $b=3+\\sqrt2$, (3) $\\frac{a}{b}=\\frac{5-4\\sqrt2}{7}$",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "제곱근",
@@ -776,16 +774,17 @@ window.questionBank = [
       "비율",
       "분모유리화",
       "도형",
-      "서술형",
-      "객관식"
+      "서술형"
     ],
     "wide": false,
-    "solution": "$a = 0-\\sqrt{2}, b = 1+\\sqrt{2} \\implies \\frac{-\\sqrt{2}}{1+\\sqrt{2}} = \\sqrt{2}-2$\\n\\therefore ①",
+    "solution": "각 정사각형의 한 변이 $1$이므로 대각선의 길이는 $\\sqrt2$이다.\n첫째 정사각형에서 $P=1$이고 $PA=PQ=\\sqrt2$이므로\n$a=1-\\sqrt2$이다.\n둘째 정사각형에서 $R=3$이고 $RB=RS=\\sqrt2$이므로\n$b=3+\\sqrt2$이다.\n따라서\n$\\frac{a}{b}=\\frac{1-\\sqrt2}{3+\\sqrt2}\\times\\frac{3-\\sqrt2}{3-\\sqrt2}=\\frac{5-4\\sqrt2}{7}$이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q22.png",
+    "imageAlt": "수직선 위에 놓인 두 한 변의 길이가 1인 정사각형과 점 A, B"
   },
   {
     "id": 23,
@@ -853,12 +852,14 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "solution": "$AB=2\\sqrt{3}, AD=2\\sqrt{5} \\implies 둘레=2(2\\sqrt{3}+2\\sqrt{5}), 넓이=4\\sqrt{15}$\\n\\therefore ①",
+    "solution": "(1) 정사각형 $AEFB$의 넓이가 $12$이므로\n$AB=\\sqrt{12}=2\\sqrt3$이다.\n(2) 정사각형 $ADGH$의 넓이가 $20$이므로\n$AD=\\sqrt{20}=2\\sqrt5$이다.\n(3) 직사각형 $ABCD$의 둘레는\n$2(AB+AD)=2(2\\sqrt3+2\\sqrt5)=4\\sqrt3+4\\sqrt5$이다.\n(4) 넓이는\n$AB\\times AD=(2\\sqrt3)(2\\sqrt5)=4\\sqrt{15}$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q24.png",
+    "imageAlt": "넓이가 12와 20인 정사각형 두 개가 꼭짓점 A에서 이어진 도형"
   },
   {
     "id": 25,
