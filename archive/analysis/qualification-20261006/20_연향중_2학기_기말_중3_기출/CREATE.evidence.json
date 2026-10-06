@@ -1,0 +1,1998 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "20_연향중_2학기_기말_중3_기출",
+  "artifactSha": "5bdc0634a122aba6f0a41f058815e5ba87a4ba94",
+  "productionPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+  "sourceModeSummary": "17 ORIGINAL; 4 AUDITED_REPAIR (q4/q5/q9 JS TeX escape repair; q14 source transcription correction)",
+  "sourceInput": {
+    "commit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+    "path": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+    "gitBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+    "rawSha256": "61a0b8b69519859a69ef78d36b3f523fffa57546895f02c628d57de343b13d58",
+    "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+    "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+    "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+    "questionCount": 21
+  },
+  "solutionRewrite": "FULL_ALL_QUESTIONS",
+  "solutionRewriteCount": "21/21",
+  "goldenCalibrationReviewed": true,
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "goldenCalibration": {
+    "samples": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "items": [
+          {
+            "qid": 1,
+            "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+            "observation": "반대쪽 비를 곱하는 내분 공식과 x/y·중점·거리 계산을 나눠 보임."
+          },
+          {
+            "qid": 2,
+            "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+            "observation": "평행조건의 기울기와 점 대입 뒤 최종 m+n 계산을 분리."
+          },
+          {
+            "qid": 8,
+            "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+            "observation": "Source graph sign evidence is separated into coefficient signs, then new line slope/intercepts determine the excluded quadrant.",
+            "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+            "visualObservation": "Actual flow SVG inspected: first-line slope/intercept signs imply a,b opposite and b,c same; new line has negative slope and positive x/y intercepts, so it passes quadrants I, II and IV and excludes III."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "items": [
+          {
+            "qid": 6,
+            "solutionSha256": "b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+            "observation": "완전제곱에서 반지름 제곱, 엄격한 부등식, 제외 경계로 이어짐.",
+            "visualSha256": "70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+            "visualObservation": "Actual SVG circle centers/radii and strict number-line interval checked against equation."
+          },
+          {
+            "qid": 7,
+            "solutionSha256": "8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+            "observation": "평행선 거리 공식 및 절댓값의 두 해를 계산.",
+            "visualSha256": "cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+            "visualObservation": "Actual line coefficients/endpoints and slope relation checked against labeled distance."
+          }
+        ]
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "items": [
+          {
+            "qid": 10,
+            "solutionSha256": "7c72f3a036e518df8cb19bf8759dc175ad8ab89a79e04d0c1964b3b6cbac7b94",
+            "observation": "각 변 길이 제곱을 구해 이등변을 판정."
+          },
+          {
+            "qid": 11,
+            "solutionSha256": "b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+            "observation": "무게중심 좌표조건을 x/y 별도 식으로 풀어 좌표합 계산.",
+            "visualSha256": "40f785c43f1f6e72c485b8f16d676294421868421b190ace2399da3c694e8134",
+            "visualObservation": "Actual axes, plotted O/A coordinates and centroid output checked."
+          }
+        ]
+      }
+    ],
+    "negativeSample": {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+      "observation": "Directly read false-PASS README: requires actual SVG coordinate/topology checks, separate enumerated small-board blocks, exact active lookup before null Meta, and runtime escape checks."
+    }
+  },
+  "metaAuthority": {
+    "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "crosswalkSha256": "3655220c4dd9f43933897f8a2101665e8a31a9a806ebfca78e92eb3fd5884743",
+    "statisticsProjection": "M3-RPM-081–092 are RPM_ONLY / NO_ACTIVE_MAPPING; explicit null debt retained."
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ad6256c3007c62f87b35a293ffae2914b1f71885f3e6226a62d99b166858bdf9",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 1,
+        "sourcePage": 1,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 1,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "두 그림에서 현-원주각 대응을 적용해 x, y를 구하고 합산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-074",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각과 중심각",
+              "l4": "같은 호에 대한 원주각"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q01.png",
+          "assetSha256": "7da1f88be630e4905bd3494a5965cf3d4da347f1819a7c682188a73c1a848f63",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "equal chords and inscribed/central angle. One principal relation or a short linked interpretation."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q01.png",
+        "sha256": "7da1f88be630e4905bd3494a5965cf3d4da347f1819a7c682188a73c1a848f63",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q01.png"
+      }
+    },
+    {
+      "qid": 2,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "bb73020f814987e2b905e36b5b230c362b086d9b46526a6e3cc8a734c45b5218",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 2,
+        "sourcePage": 1,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 1,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "중심각과 원주각, 큰 호/작은 호의 구별로 두 각을 각각 구한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-075",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각과 중심각",
+              "l4": "중심각과 원주각"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q02.png",
+          "assetSha256": "32c15df0c7777d1c842dda748c42863f2fe9b76e7fbfc62aa31706aedbadd010",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "same arc and major/minor arc distinction. One principal relation or a short linked interpretation."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q02.png",
+        "sha256": "32c15df0c7777d1c842dda748c42863f2fe9b76e7fbfc62aa31706aedbadd010",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q02.png"
+      }
+    },
+    {
+      "qid": 3,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4382e7ea576bbad97c0a76860f57a5cb0467fc01470528e7fd729a33e66fd5ee",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 3,
+        "sourcePage": 1,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 1,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "지름의 반원과 원주각으로 호 BC를 구한 뒤 x를 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-076",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각과 중심각",
+              "l4": "반원에 대한 원주각"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q03.png",
+          "assetSha256": "59a3b28dee55ed1520e1144d29a10a9efbe9db07792bfdeb782e0f6343c0b180",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "diameter semicircle and inscribed angle. Direct definition or one-step relation."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q03.png",
+        "sha256": "59a3b28dee55ed1520e1144d29a10a9efbe9db07792bfdeb782e0f6343c0b180",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q03.png"
+      }
+    },
+    {
+      "qid": 4,
+      "sourceMode": "AUDITED_REPAIR",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "28e9588debc7c9e01c86c9bf106873977694df14eed065239cc641ff430782ec",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 4,
+        "sourcePage": 1,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "status": "AUDITED_REPAIR",
+          "reason": "Source-visible angle TeX commands were corrupted by JavaScript BEL escape; restored angle notation."
+        },
+        "repairedTruth": {
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 1,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "AUDITED_TEX_ESCAPE_REPAIR",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "교차하는 두 현의 각 관계와 외부 할선각에서 호를 구해 x,y로 변환한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-080",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각의 활용",
+              "l4": "복합 각 추론"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q04-r1.png",
+          "assetSha256": "770da840ca8a7d2446a262cefe88ee2520219cbca2946fc2a33dfb81332cfd29",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "intersecting chord angle and external secant angle. Multiple linked geometric/statistical conditions; judged by required reasoning, not length."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q04-r1.png",
+        "sha256": "770da840ca8a7d2446a262cefe88ee2520219cbca2946fc2a33dfb81332cfd29",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q04-r1.png"
+      }
+    },
+    {
+      "qid": 5,
+      "sourceMode": "AUDITED_REPAIR",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6faf36e5e55e84ff30fedd12558176c1064de176d366dfed06db3a7d84aa0835",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 5,
+        "sourcePage": 1,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "status": "AUDITED_REPAIR",
+          "reason": "Runtime carriage-return control escape from source JS single-backslash \\rm was restored to the source-visible TeX \\rm command."
+        },
+        "repairedTruth": {
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 1,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "AUDITED_TEX_ESCAPE_REPAIR",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "두 원주각으로 호의 각도를 구하고 같은 원의 호 길이 비례로 길이를 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-074",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각과 중심각",
+              "l4": "같은 호에 대한 원주각"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q05-hires-r1.png",
+          "assetSha256": "2c7d4f04db920553aa4eb71815312ea5786cf5d50ca9b2868ac4535e152a3334",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "inscribed angles and proportional arc length. One principal relation or a short linked interpretation."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q05-hires-r1.png",
+        "sha256": "2c7d4f04db920553aa4eb71815312ea5786cf5d50ca9b2868ac4535e152a3334",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q05-hires-r1.png"
+      }
+    },
+    {
+      "qid": 6,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "df664e44e4d860ff64f2abd586c06486d521c6b1828143ff2c3b4d72355aea6f",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 6,
+        "sourcePage": 1,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 1,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "접선-현 각으로 호 BC를 구하고 나머지 호 관계에서 x를 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-079",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각의 활용",
+              "l4": "접선과 현이 이루는 각"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q06-r2.png",
+          "assetSha256": "dde22b47cc9622613a6ee6ba4f9c95afd2eb3f9b687b825bf421992b94b8a423",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "tangent-chord relation and complementary arcs. Multiple linked geometric/statistical conditions; judged by required reasoning, not length."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q06-r2.png",
+        "sha256": "dde22b47cc9622613a6ee6ba4f9c95afd2eb3f9b687b825bf421992b94b8a423",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q06-r2.png"
+      }
+    },
+    {
+      "qid": 7,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "0dc01c80a593b1b27dbe908269930894aba6a6e78f94288ea980600db6caf260",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 7,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "원주각에서 작은 호 BC를 구한 뒤 두 접선의 각을 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-080",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각의 활용",
+              "l4": "복합 각 추론"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q07-r3.png",
+          "assetSha256": "22c01d22d26f1ad9a6cd741048cb1a0b1a30155103c5bb255e02e5a0dc4a54e1",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "inscribed angle and two-tangent angle. One principal relation or a short linked interpretation."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q07-r3.png",
+        "sha256": "22c01d22d26f1ad9a6cd741048cb1a0b1a30155103c5bb255e02e5a0dc4a54e1",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q07-r3.png"
+      }
+    },
+    {
+      "qid": 8,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "f9a5a0354ff752e58c404f3122c63511bb16b1936a4175aff01aea019403e470",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 8,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "반원과 호의 중점 조건으로 호 DC, 원주각 x를 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-080",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각의 활용",
+              "l4": "복합 각 추론"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q08.png",
+          "assetSha256": "9823fe90a845b08964e73a25eafd1e65754aacdc565d1e481bb0680ed23f1315",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "semicircle, arc midpoint and inscribed angle. One principal relation or a short linked interpretation."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q08.png",
+        "sha256": "9823fe90a845b08964e73a25eafd1e65754aacdc565d1e481bb0680ed23f1315",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q08.png"
+      }
+    },
+    {
+      "qid": 9,
+      "sourceMode": "AUDITED_REPAIR",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "c03968710ae0698f486529597db6af64a7dac59672612633d01bf507d4904aae",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 9,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "status": "AUDITED_REPAIR",
+          "reason": "Source-visible angle TeX commands were corrupted by JavaScript BEL escape; restored angle notation."
+        },
+        "repairedTruth": {
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "AUDITED_TEX_ESCAPE_REPAIR",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "내접사각형 각과 접선-현 각을 사용해 x,y를 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-080",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각의 활용",
+              "l4": "복합 각 추론"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q09-r2.png",
+          "assetSha256": "b997779a68745cd4c49e780bc43094f815bf916c672ee429834fcf11ce220a5c",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "cyclic quadrilateral and tangent-chord relation. Multiple linked geometric/statistical conditions; judged by required reasoning, not length."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q09-r2.png",
+        "sha256": "b997779a68745cd4c49e780bc43094f815bf916c672ee429834fcf11ce220a5c",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q09-r2.png"
+      }
+    },
+    {
+      "qid": 10,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "a30b7a42361f0692398c3bbe74003aee17ad62378721e46718114f6c49302b6e",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 10,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "대푯값·산포도 정의를 보기별로 점검한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-081",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "대푯값과 산포도",
+              "l3": "대푯값",
+              "l4": "평균·중앙값·최빈값"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "NO_PROBLEM_VISUAL_REQUIRED",
+          "assetStatus": "NOT_APPLICABLE",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvgRequired": false,
+          "reason": "No visual required by source."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "representative-value and dispersion definitions. Direct definition or one-step relation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key."
+    },
+    {
+      "qid": 11,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7637638e8cfc90614c4a0b6f81954f7205ddd427812d56f3a03523e3ed7652fa",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 11,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "자료별 도수에서 가장 큰 도수를 갖는 값을 찾는다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-081",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "대푯값과 산포도",
+              "l3": "대푯값",
+              "l4": "평균·중앙값·최빈값"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "NO_PROBLEM_VISUAL_REQUIRED",
+          "assetStatus": "NOT_APPLICABLE",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvgRequired": false,
+          "reason": "No visual required by source."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "frequency count. Direct definition or one-step relation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key."
+    },
+    {
+      "qid": 12,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "4730471ca25075c85709076aeb3805686f6e7ca1486b3067661043c03dfd7f43",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 12,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "두 자료의 정렬 중앙값 조건을 동시에 부등식으로 좁힌다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-087",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "대푯값과 산포도",
+              "l3": "자료 비교",
+              "l4": "조건으로 자료 추론"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "NO_PROBLEM_VISUAL_REQUIRED",
+          "assetStatus": "NOT_APPLICABLE",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvgRequired": false,
+          "reason": "No visual required by source."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "two simultaneous median constraints. One principal relation or a short linked interpretation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key."
+    },
+    {
+      "qid": 13,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "b014e1aff348b5e14e72077b855ef3d621d8ec592e0ac225b89a8449b8eb3108",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 13,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "편차의 합이 0이라는 조건에서 C의 편차를 구한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-083",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "대푯값과 산포도",
+              "l3": "산포도",
+              "l4": "편차"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q13.png",
+          "assetSha256": "bd7e223175013d55d99fc5d0f24d05ce52f018a47b36e6ed29fc6a73457fd0be",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "sum of deviations zero. Direct definition or one-step relation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key.",
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q13.png",
+        "sha256": "bd7e223175013d55d99fc5d0f24d05ce52f018a47b36e6ed29fc6a73457fd0be",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q13.png"
+      }
+    },
+    {
+      "qid": 14,
+      "sourceMode": "AUDITED_REPAIR",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "7c41901c33e7799fa892252e086502f84df44747d84555660afc0f9d1257204e",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 14,
+        "sourcePage": 2,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "repair": {
+          "status": "AUDITED_REPAIR",
+          "reason": "Original page visibly states variance 2 and variance 3; staged transcription had 20 and 30."
+        },
+        "repairedTruth": {
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 2,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "AUDITED_REPAIR_TO_SOURCE_PIXELS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "각 자료의 분산에서 제곱편차 합을 얻어 합동 자료의 분산을 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-084",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "대푯값과 산포도",
+              "l3": "산포도",
+              "l4": "분산"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "NO_PROBLEM_VISUAL_REQUIRED",
+          "assetStatus": "NOT_APPLICABLE",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvgRequired": false,
+          "reason": "No visual required by source."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "pooled variance from two equal-size groups. One principal relation or a short linked interpretation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key."
+    },
+    {
+      "qid": 15,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "242c72d02f75944ff76e72e20b85fd69b7043a8ec113d76e90c906de449e710a",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 15,
+        "sourcePage": 3,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 3,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "평균식으로 a+b, 표준편차식으로 제곱편차 합을 구해 a²+b²를 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-085",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "대푯값과 산포도",
+              "l3": "산포도",
+              "l4": "표준편차"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "NO_PROBLEM_VISUAL_REQUIRED",
+          "assetStatus": "NOT_APPLICABLE",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvgRequired": false,
+          "reason": "No visual required by source."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "mean and standard-deviation constraints. Multiple linked geometric/statistical conditions; judged by required reasoning, not length."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key."
+    },
+    {
+      "qid": 16,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "6f6f944f4474bf3344d9fbc1a62f903f72b4beb7e525863da9dd155ba40c17dd",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 16,
+        "sourcePage": 3,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 3,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "산점도 및 상관관계에 대한 다섯 설명을 정의와 대조한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-089",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "상관관계",
+              "l3": "산점도",
+              "l4": "자료를 산점도로"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "NO_PROBLEM_VISUAL_REQUIRED",
+          "assetStatus": "NOT_APPLICABLE",
+          "assetRef": null,
+          "assetSha256": null,
+          "solutionSvgRequired": false,
+          "reason": "No visual required by source."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 1,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "하",
+        "rationale": "scatterplot and correlation definitions. Direct definition or one-step relation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key."
+    },
+    {
+      "qid": 17,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "9b8b8421544fd1118890808519a4fe2e56b0ceac77fed4eb7312fa444447bdb7",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 17,
+        "sourcePage": 3,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 3,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "산점도의 음의 상관관계와 각 상황의 변화 방향을 비교한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-091",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "상관관계",
+              "l3": "상관관계",
+              "l4": "음의 상관관계"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q17.png",
+          "assetSha256": "a06488f0dc805fa227a3fc6e75d9415d0d679b1822dfee4f14f2fbbe2498c4d3",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "negative correlation situations. One principal relation or a short linked interpretation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key.",
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q17.png",
+        "sha256": "a06488f0dc805fa227a3fc6e75d9415d0d679b1822dfee4f14f2fbbe2498c4d3",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q17.png"
+      }
+    },
+    {
+      "qid": 18,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "fa020799db5e71158708f932b72d9025d2d4445adf67f163dd94854ba7f40bb7",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 18,
+        "sourcePage": 3,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 3,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "산점도에서 세로값이 가로값보다 큰 점의 개수를 전체 인원으로 나눈다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-088",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "상관관계",
+              "l3": "산점도",
+              "l4": "산점도 읽기"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q18.png",
+          "assetSha256": "df2c67c1f5ef51edfcf0f1f62d26fc15ec229801568a4d7b943807f99a6dee3b",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "scatterplot coordinate comparison. One principal relation or a short linked interpretation."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key.",
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q18.png",
+        "sha256": "df2c67c1f5ef51edfcf0f1f62d26fc15ec229801568a4d7b943807f99a6dee3b",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q18.png"
+      }
+    },
+    {
+      "qid": 19,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "2d5fb24fbf245908b4566c6fccf533c27fff40cda6bc06d3b4bf009ffb7161e0",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 19,
+        "sourcePage": 3,
+        "contentParity": "PASS",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 3,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "원주각과 외부 할선각에서 호의 관계를 얻어 Q의 각을 계산한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-080",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각의 활용",
+              "l4": "복합 각 추론"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q19-r1.png",
+          "assetSha256": "4562d3f48d901659ddd446199665e58d087762e7cb566dd657b3ea5033eb29b3",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "inscribed angle and two external secant relations. Multiple linked geometric/statistical conditions; judged by required reasoning, not length."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q19-r1.png",
+        "sha256": "4562d3f48d901659ddd446199665e58d087762e7cb566dd657b3ea5033eb29b3",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q19-r1.png"
+      }
+    },
+    {
+      "qid": 20,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "927d9f4713075bf7fac51700f451dc2ea2956b101a81231c5beaca1c16469847",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 20,
+        "sourcePage": 3,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 3,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "정오각형의 중심각/내각으로 같은 호와 원주각을 두 방식으로 구한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-075",
+            "path": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원주각",
+              "l3": "원주각과 중심각",
+              "l4": "중심각과 원주각"
+            },
+            "mappingStatus": "DIRECT_ACTIVE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          },
+          "projectionStatus": "PROJECTION_REUSE",
+          "reason": "Current 2015 M3 RPM leaf and active geometry crosswalk used."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q20-r3.png",
+          "assetSha256": "39538c1478e15b19e753e6aa9f0b21893c805cc3fce4804abd7d40960ed2dc4d",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "regular pentagon central and inscribed angles. One principal relation or a short linked interpretation."
+      },
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q20-r3.png",
+        "sha256": "39538c1478e15b19e753e6aa9f0b21893c805cc3fce4804abd7d40960ed2dc4d",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q20-r3.png"
+      }
+    },
+    {
+      "qid": 21,
+      "sourceMode": "ORIGINAL",
+      "smallBoardContinuityStatus": "PASS",
+      "solutionSha256": "ca00145a32988ca5b0c49143e530455bcd95c351fcdc6d445cc31f5c1c218ce3",
+      "sourceParityAudit": {
+        "sourceQuestionNo": 21,
+        "sourcePage": 4,
+        "contentParity": "PASS_OR_AUDITED_REPAIR",
+        "choicesParity": "PASS_OR_AUDITED_REPAIR",
+        "imageRefParity": "PASS"
+      },
+      "provenanceEvidence": {
+        "sourceParity": {
+          "status": "PASS",
+          "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+          "sourcePage": 4,
+          "sourceProvenanceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/provenance/archive/evidence/source-intake-m3-20261004/20_연향중_2학기_기말_중3_기출/source_provenance.json",
+          "sourceProvenanceSha256": "596887281c969c6a7299cab8eb87613e6a23d5145d6e11312ae02225ca3c2afd",
+          "sourceInputCommit": "ddce2a10b12c8cc7a7a52716e05fde3e15fc5e63",
+          "sourceInputPath": "archive/exams/original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+          "sourceInputBlobSha": "832d926437e742720a49dce14f4567ca72fe2359",
+          "contentAndChoices": "source pixel transcription retained; layout-only newlines do not alter source atoms"
+        }
+      },
+      "axisEvidence": {
+        "questionLayout": {
+          "status": "PASS",
+          "sourceTextAtomParity": "PASS",
+          "choicesExactParity": "PASS",
+          "lineBreakRule": "source condition/question/subpart boundaries; equations/units remain indivisible",
+          "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        },
+        "solutionLayout": {
+          "status": "PASS",
+          "studentReproducibility": "PASS",
+          "smallBoardStructure": "PASS",
+          "boardFlowContinuity": "PASS",
+          "decisiveStep": "두 학생 평균, 제곱편차합, 분산, 표준편차를 순서대로 구해 비교한다.",
+          "lineBreakReview": "equation setup, transformation, intermediate result, substitution and conclusion checked by mathematical stage"
+        },
+        "meta": {
+          "status": "PASS_WITH_EXPLICIT_PROJECTION_DEBT",
+          "target": {
+            "curriculum": "2015",
+            "scope": "M3-2",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "rpm": {
+            "recordId": "M3-RPM-085",
+            "path": {
+              "majorUnit": "통계",
+              "midUnit": "대푯값과 산포도",
+              "l3": "산포도",
+              "l4": "표준편차"
+            },
+            "mappingStatus": "RPM_ONLY",
+            "problemTypeKey": null,
+            "templateKey": null
+          },
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reason": "Current 2015 M3 RPM records the exact statistics leaf RPM_ONLY; no active M3 projection fabricated."
+        },
+        "visualSvg": {
+          "disposition": "PRESERVE_REQUIRED_SOURCE_PROBLEM_IMAGE",
+          "assetStatus": "SOURCE_CROP_PRESERVED",
+          "assetRef": "assets/images/20_연향중_2학기_기말_중3_기출/q21-r1.png",
+          "assetSha256": "548e1c3d3d1f2493bdb2e438a765476a1f4526f99670f28e3281355f8deae94f",
+          "solutionSvgRequired": false,
+          "reason": "Mathematical givens appear in the source diagram/table/scatterplot and are preserved."
+        }
+      },
+      "difficultyCurrentPass": {
+        "reviewedSourceAndFinalSolution": true,
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyLevel": "중",
+        "rationale": "mean, variance and standard deviation for two datasets. Multiple linked geometric/statistical conditions; judged by required reasoning, not length."
+      },
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "metaDebtReason": "Relevant 2015 M3-2 statistics RPM leaves are RPM_ONLY / NO_ACTIVE_MAPPING in the current crosswalk; preserve explicit null instead of inventing a non-M3 key.",
+      "assetEvidence": {
+        "ref": "assets/images/20_연향중_2학기_기말_중3_기출/q21-r1.png",
+        "sha256": "548e1c3d3d1f2493bdb2e438a765476a1f4526f99670f28e3281355f8deae94f",
+        "workingPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/assets/images/20_연향중_2학기_기말_중3_기출/q21-r1.png"
+      }
+    }
+  ]
+}

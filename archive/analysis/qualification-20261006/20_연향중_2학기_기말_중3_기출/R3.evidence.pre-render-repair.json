@@ -1,0 +1,249 @@
+{
+  "schemaVersion": "JS_ARCHIVE_STAGE_EVIDENCE_v2",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R3",
+  "examUid": "20_연향중_2학기_기말_중3_기출",
+  "artifactSha": "d695fac44b3005d8ff304549c94f80fc840ff218",
+  "targetedScope": {
+    "openFindingQids": [],
+    "changedQids": [
+      1,
+      9,
+      14,
+      21
+    ],
+    "directDependencyQids": []
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "changedLocus": [
+        "solution"
+      ],
+      "directDependencies": [
+        "solutionSha256",
+        "smallBoardContinuityStatus",
+        "independent answer/solution identity"
+      ],
+      "openFindings": []
+    },
+    {
+      "qid": 9,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "changedLocus": [
+        "solution"
+      ],
+      "directDependencies": [
+        "solutionSha256",
+        "smallBoardContinuityStatus",
+        "independent answer/solution identity"
+      ],
+      "openFindings": []
+    },
+    {
+      "qid": 14,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "changedLocus": [
+        "content source restoration"
+      ],
+      "directDependencies": [
+        "source parity",
+        "student bundle/current-body freeze",
+        "answer",
+        "solution",
+        "decisiveStep"
+      ],
+      "evidenceRefs": [
+        "archive/analysis/qualification-20261006/20_연향중_2학기_기말_중3_기출/R1.q14-clean-independent-freeze.json",
+        ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/R1.source-repair-adjudication.json"
+      ],
+      "openFindings": []
+    },
+    {
+      "qid": 21,
+      "verdict": "PASS_TARGETED_RELEASE",
+      "changedLocus": [
+        "difficultyBucket"
+      ],
+      "directDependencies": [
+        "difficultyCurrentPass",
+        "artifact/evidence SHA binding"
+      ],
+      "openFindings": []
+    }
+  ],
+  "lockedScopeIntegrity": true,
+  "lockedScopeReview": {
+    "r1FinalArtifactSha": "d695fac44b3005d8ff304549c94f80fc840ff218",
+    "r2FinalArtifactSha": "d695fac44b3005d8ff304549c94f80fc840ff218",
+    "candidatePath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/20_연향중_2학기_기말_중3_기출.js",
+    "productionArtifactUnchanged": true,
+    "wholeExamSemanticReview": "NOT_PERFORMED",
+    "physicalStructureScan": "PASS_GENERIC_R3_ARTIFACT_CONTRACT",
+    "genericR3ValidationReportRef": "archive/analysis/qualification-20261006/20_연향중_2학기_기말_중3_기출/R3.validation.json",
+    "genericR3ValidationReportSha256": "d9ab656bdab3a0681d60249a0b2003f9d1e4f92938e8c9426225ebf12a4ab144",
+    "genericR3ValidatorInvocations": 1
+  },
+  "releaseIntegrity": true,
+  "releaseIntegrityReview": {
+    "r1Status": "PASS",
+    "r2Status": "PASS",
+    "openFindingCount": 0,
+    "q14SourceCorrection": {
+      "evidenceRef": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/R1.source-repair-adjudication.json",
+      "freshIndependentFreezeRef": "archive/analysis/qualification-20261006/20_연향중_2학기_기말_중3_기출/R1.q14-clean-independent-freeze.json",
+      "originalInvalidFreezePreserved": true
+    },
+    "q18Adjudication": {
+      "r1Ref": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/R1.q18-answer-adjudication.json",
+      "r2Ref": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/R2.q18-answer-adjudication.json",
+      "originalFreezePreserved": true,
+      "studentBodyChanged": false,
+      "finalSameStageAnswer": "8/15",
+      "storedAnswerComparison": "MATCH",
+      "candidateMutated": false
+    }
+  },
+  "artifactDispositions": {
+    "artifactSha": "d695fac44b3005d8ff304549c94f80fc840ff218",
+    "rows": [
+      {
+        "qid": 1,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 2,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 3,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 4,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 5,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 6,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 7,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 8,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 9,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 10,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 11,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 12,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 13,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 14,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 15,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 16,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 17,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 18,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      },
+      {
+        "qid": 19,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 20,
+        "metaDebtFields": [],
+        "metaDebtReason": null
+      },
+      {
+        "qid": 21,
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "metaDebtReason": "Exact 2015 M3-2 statistics leaf is RPM_ONLY / NO_ACTIVE_MAPPING; preserve nulls and do not invent non-M3 keys."
+      }
+    ]
+  }
+}

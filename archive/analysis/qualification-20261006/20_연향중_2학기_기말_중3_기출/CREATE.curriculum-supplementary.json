@@ -1,0 +1,1753 @@
+{
+  "schemaVersion": "JS_ARCHIVE_CURRICULUM_METHOD_INVENTORY_v1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "examUid": "20_연향중_2학기_기말_중3_기출",
+  "stage": "CREATE",
+  "reviewKind": "SUPPLEMENTARY_REVIEW_AFTER_CREATE_PASS",
+  "performedAfterInitialCreatePass": true,
+  "preflightClaimed": false,
+  "createdAtUtc": "2026-10-06 05:10:05 UTC",
+  "source": {
+    "sourceExamYear": 2020,
+    "curriculum": "2015",
+    "scope": "M3-2",
+    "sourcePdfSha256": "ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
+    "targetDenominator": 21
+  },
+  "currentArtifact": {
+    "path": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/20_연향중_2학기_기말_중3_기출.js",
+    "gitBlobSha": "5bdc0634a122aba6f0a41f058815e5ba87a4ba94",
+    "fileSha256": "4f524809ea45bc1a580ba99f984d82eb3e006f1badf891e1c43846d2433a1a9d",
+    "questionCount": 21
+  },
+  "authoritiesRead": {
+    "files": {
+      "protocol": {
+        "path": "docs/rules/02_PIPELINES/해설프로토콜.md",
+        "version": "2026-10-01 CURRENT HARD GATE / METHOD INVENTORY",
+        "sha256": "d6b62662edc191b0c67aee06dbc1d3a2be9744250baf47f59f63b37091c91306"
+      },
+      "student": {
+        "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+        "version": "ACTIVE v1; §5 Educational terminology and student language",
+        "sha256": "80c6ac583351320043e50fe504456b0383140b75d51ba7a9b579357e725bcff9"
+      },
+      "rpmReadme": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+        "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+        "sha256": "3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+      },
+      "master": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "version": "RPM_PRIMARY_TAXONOMY_v1.0 / LOCKED",
+        "sha256": "c8de39f9946e221538100880e3e0932fcfa10ac907c6a68079e560feb16c394c"
+      },
+      "rpmPolicy": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/RPM_PRIMARY_POLICY.md",
+        "version": "RPM Primary Policy v0.3",
+        "sha256": "f3c0ff2082f2aa2ad7f56c6bc9dea1611ff0751096350a4cb7028b6f4d5d50b1"
+      },
+      "applicability": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+        "version": "Curriculum Applicability Policy v0.3",
+        "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+      },
+      "m11": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+        "version": "2015개정 M1-1 RPM Primary Canonical Draft v0.3",
+        "sha256": "6c90317c35592bd11559cac7c3809d41db7538342ccda544f06e5184c7521b0e"
+      },
+      "m12": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+        "version": "2015개정 M1-2 RPM Primary Canonical Draft v0.3",
+        "sha256": "aec7fb9f83b947cd4eb2f33f497fe574cc0e7a8f868bff26ea17a56835f2e5b4"
+      },
+      "m21": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md",
+        "version": "2015개정 M2-1 RPM Primary Canonical Draft v0.3",
+        "sha256": "7d80ce780a18929ecff4c329ffe7811d340e7a921b9c6900b7a8aa170f2ac9ba"
+      },
+      "m22": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "version": "2015개정 M2-2 RPM Primary Canonical Draft v0.3",
+        "sha256": "3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+      },
+      "m31": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
+        "version": "2015개정 M3-1 RPM Primary Canonical Draft v0.3",
+        "sha256": "b63027060ee870e07e66a7f04c7dcecc27687bd90f36d4461efb8a18112dd852"
+      },
+      "m32": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-2.md",
+        "version": "2015개정 M3-2 RPM Primary Canonical Draft v0.3",
+        "sha256": "9599be33b88fa7039c6609f72d28802f6a09faecb56a6d0b3e667f9709fc7320"
+      }
+    },
+    "authorityRelationship": "RPM v1.0 LOCKED is RPM-primary L1/L2 taxonomy; M3-2 L3/L4 normalized semantic mappings are CANONICAL_DRAFT; curriculum applicability policy separates default-scope legality. Target is 2015 curriculum because the 2020 source exam predates 2022 revision."
+  },
+  "cumulativeScope": {
+    "rule": "A 2015 M3 student may use completed 2015 M1-1, M1-2, M2-1, M2-2, and M3-1 methods; current unit remains M3-2.",
+    "reviewedScopes": [
+      "M1-1",
+      "M1-2",
+      "M2-1",
+      "M2-2",
+      "M3-1",
+      "M3-2"
+    ],
+    "higherScopeMethodsChecked": [
+      "2022/M3 post-revision items",
+      "high-school trigonometry",
+      "coordinate geometry as a proof tool",
+      "vectors/projections",
+      "calculus",
+      "inferential statistics"
+    ],
+    "prohibitedDependencyStatus": "NOT_USED"
+  },
+  "studentLanguageAudit": {
+    "canonicalPath": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+    "rule": "§5 official curriculum term → familiar school-math phrasing → approved Korean canonical label; no internal keys or unnecessary English.",
+    "allowedTermsObserved": [
+      "원주각",
+      "중심각",
+      "호",
+      "현",
+      "접선",
+      "접점",
+      "내접사각형",
+      "정오각형",
+      "대푯값",
+      "최빈값",
+      "중앙값",
+      "편차",
+      "분산",
+      "표준편차",
+      "산점도",
+      "상관관계",
+      "기울기"
+    ],
+    "internalMetaKeysInSolutions": 0,
+    "unnecessaryEnglishExplanatoryTerms": 0,
+    "goldenHighSchoolMethodsExcludedFromCurriculumAuthority": true
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|1",
+      "sourcePageNo": 1,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "ad6256c3007c62f87b35a293ffae2914b1f71885f3e6226a62d99b166858bdf9",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "같은 원에서 같은 길이의 현과 그 현이 보는 원주각 관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "같은 현·호에 대한 원주각 및 원과 현의 관계 범위."
+        },
+        {
+          "item": "원주각과 중심각 및 작은 호·큰 호 관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "동일 호의 원주각·중심각 범위."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "같은 호에 대한 원주각의 크기는 같음",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "같은 호 대응을 사용."
+        },
+        {
+          "item": "원주각은 같은 호 중심각의 절반",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "원주각·중심각 관계."
+        },
+        {
+          "item": "한 바퀴의 각도는 360°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "원의 전체 호를 보각으로 계산."
+        }
+      ],
+      "notations": [
+        {
+          "item": "∠x, ∠y, 호 표기, 도 단위 °",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "원주각·중심각 표기."
+        }
+      ],
+      "methods": [
+        {
+          "item": "두 그림에서 같은 현/호에 대한 원주각을 대응하고 큰 호와 작은 호를 구별한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "중3 원의 성질의 기본 angle-chase."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 2,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|2",
+      "sourcePageNo": 1,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "bb73020f814987e2b905e36b5b230c362b086d9b46526a6e3cc8a734c45b5218",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "원주각·중심각 및 원주각이 보는 호",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각 단원."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "m(호)=2×m(그 호를 보는 원주각)",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "원주각과 중심각 관계."
+        },
+        {
+          "item": "중심각의 크기는 그 중심각이 보는 호의 크기와 같음",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "중심각 정의/관계."
+        },
+        {
+          "item": "큰 호=360°−작은 호",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "전체 원에서 보각 호를 계산."
+        }
+      ],
+      "notations": [
+        {
+          "item": "∠BAD, ∠BCD, ∠BOD 및 호 BD",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "문항이 주는 점 이름과 각/호 표기."
+        }
+      ],
+      "methods": [
+        {
+          "item": "주어진 원주각에서 작은 호를 구하고 큰 호 각과 중심각을 구분해 합산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "중심각·원주각·호의 관계만 사용."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 3,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|3",
+      "sourcePageNo": 1,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "4382e7ea576bbad97c0a76860f57a5cb0467fc01470528e7fd729a33e66fd5ee",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "지름이 보는 반원의 원주각은 직각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 반원 원주각."
+        },
+        {
+          "item": "삼각형 내각의 합",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "이미 배운 기본 각 관계."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "반원=180°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "지름이 정하는 반원."
+        },
+        {
+          "item": "삼각형 세 내각의 합=180°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M1-2 다각형/삼각형 각의 계산."
+        },
+        {
+          "item": "같은 호의 원주각은 같음",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "같은 호 AC 대응."
+        }
+      ],
+      "notations": [
+        {
+          "item": "지름 AB, 호 AC/CB, ∠ADC, x",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "기본 도형 기호."
+        }
+      ],
+      "methods": [
+        {
+          "item": "반원에서 주어진 호를 빼고 남은 호를 구한 뒤 그 호의 원주각을 절반으로 계산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "원주각과 삼각형 각의 합으로 풀이."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 4,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|4",
+      "sourcePageNo": 1,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "28e9588debc7c9e01c86c9bf106873977694df14eed065239cc641ff430782ec",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "원주각과 호의 대응",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각의 활용."
+        },
+        {
+          "item": "교차 현의 복합 각 관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "M3-2 복합 각 추론으로 다루며, 원주각 성질과 각의 합/보각 관계로 정당화되는 중등 원의 각 추론."
+        },
+        {
+          "item": "두 할선으로 만든 바깥각 관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "M3-2 복합 각 추론; 원주각과 삼각형 내각 합에서 얻는 각 차 관계."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "교차 현 각=(마주 보는 두 호의 합)/2",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "중등 원의 각 관계."
+        },
+        {
+          "item": "두 할선 바깥각=(먼 호−가까운 호)/2",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "원주각과 삼각형 내각 합으로 구성되는 복합 각 관계."
+        },
+        {
+          "item": "연립한 합·차에서 두 호를 각각 계산",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "일차식 덧셈·뺄셈 수준."
+        }
+      ],
+      "notations": [
+        {
+          "item": "호 BD, AC와 ∠BED, ∠P, x, y",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "문항의 arc/angle labeling."
+        }
+      ],
+      "methods": [
+        {
+          "item": "교차 현 각의 합 관계와 바깥 할선각의 차 관계를 세워 호를 푼 뒤 원주각으로 변환한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null,
+            null
+          ],
+          "rationale": "상위과정 대수/삼각법 없이 M3 복합 각 chase."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "reviewNote": "복합 원 각 관계는 M3-2 L4-2.2.2.4의 복합 각 추론에 두고, 원주각 관계·삼각형 각의 합으로 설명 가능한 중등 도구로 판정. 고등 원의 정리/좌표기하 도구 사용 아님."
+    },
+    {
+      "qid": 5,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|5",
+      "sourcePageNo": 1,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "6faf36e5e55e84ff30fedd12558176c1064de176d366dfed06db3a7d84aa0835",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "원주각이 보는 호의 각도",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각."
+        },
+        {
+          "item": "같은 원에서 호의 길이는 중심각의 크기에 비례",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+              "version": "2015개정 M1-2 RPM Primary Canonical Draft v0.3",
+              "sha256": "aec7fb9f83b947cd4eb2f33f497fe574cc0e7a8f868bff26ea17a56835f2e5b4"
+            },
+            null
+          ],
+          "rationale": "M1-2 원·부채꼴 호 길이 관계 및 현재 원주각에서 호 각도 전환."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "호의 크기=2×원주각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3 원주각 성질."
+        },
+        {
+          "item": "같은 원에서 호 길이의 비=대응하는 중심각/호 각도의 비",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+              "version": "2015개정 M1-2 RPM Primary Canonical Draft v0.3",
+              "sha256": "aec7fb9f83b947cd4eb2f33f497fe574cc0e7a8f868bff26ea17a56835f2e5b4"
+            }
+          ],
+          "rationale": "M1-2 부채꼴 호의 길이 비례."
+        }
+      ],
+      "notations": [
+        {
+          "item": "호 AB/CD/DE 및 cm 단위",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+              "version": "2015개정 M1-2 RPM Primary Canonical Draft v0.3",
+              "sha256": "aec7fb9f83b947cd4eb2f33f497fe574cc0e7a8f868bff26ea17a56835f2e5b4"
+            }
+          ],
+          "rationale": "호와 길이 단위 구분."
+        }
+      ],
+      "methods": [
+        {
+          "item": "두 원주각에서 각 호의 크기를 구하고 같은 원 호의 길이 비로 미지 길이를 계산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+              "version": "2015개정 M1-2 RPM Primary Canonical Draft v0.3",
+              "sha256": "aec7fb9f83b947cd4eb2f33f497fe574cc0e7a8f868bff26ea17a56835f2e5b4"
+            }
+          ],
+          "rationale": "반지름 공식이나 고등 삼각법을 사용하지 않음."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 6,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|6",
+      "sourcePageNo": 1,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "df664e44e4d860ff64f2abd586c06486d521c6b1828143ff2c3b4d72355aea6f",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "접선과 현이 이루는 각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원의 접선·접선과 현이 이루는 각."
+        },
+        {
+          "item": "같은 호의 원주각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각."
+        },
+        {
+          "item": "전체 원의 호와 나머지 호",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "한 원의 각도 360° 합."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "접선과 현의 각=같은 현이 보는 원주각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "접선-현 각 성질."
+        },
+        {
+          "item": "호 ABC+호 ADC=360°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "전체 원의 호 합."
+        },
+        {
+          "item": "일차식을 풀어 AB 호를 계산",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "중1 문자식·일차방정식 수준."
+        }
+      ],
+      "notations": [
+        {
+          "item": "접점 C, 접선 CP, 호 AB/ADC, u, 도 단위",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "표준 원/변수 표기."
+        }
+      ],
+      "methods": [
+        {
+          "item": "접선-현 각으로 한 호를 구하고 전체 원 보충 관계에 조건을 넣어 나머지 호와 x를 계산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "M3 원의 성질 및 중1 등식 계산."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 7,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|7",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "0dc01c80a593b1b27dbe908269930894aba6a6e78f94288ea980600db6caf260",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "원주각과 그 호",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각."
+        },
+        {
+          "item": "한 점에서 그은 두 접선의 각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원의 접선 L4 한 점에서 그은 두 접선."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "원주각이 보는 호=2×원주각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "원주각 기본 관계."
+        },
+        {
+          "item": "두 접선의 끼인각=180°−두 접점 사이 작은 호의 중심각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "반지름-접선 수직과 사각형 각 합으로 얻는 중등 접선 각 관계."
+        }
+      ],
+      "notations": [
+        {
+          "item": "접점 B,C, 외부점 A, 호 BC, 각도 °",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "표준 도형 기호."
+        }
+      ],
+      "methods": [
+        {
+          "item": "주어진 원주각으로 작은 호를 구하고 두 접선의 각을 보각으로 계산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "원주각과 접선 성질만 사용."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 8,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|8",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "f9a5a0354ff752e58c404f3122c63511bb16b1936a4175aff01aea019403e470",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "지름이 정하는 반원",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 반원 원주각."
+        },
+        {
+          "item": "호의 중점은 양쪽 호를 같은 크기로 나눈다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원의 성질과 호."
+        },
+        {
+          "item": "원주각은 보는 호의 절반",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "반원 180°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "지름 호."
+        },
+        {
+          "item": "같은 호의 두 부분 각도는 각각 전체의 절반",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "호의 중점 정의."
+        },
+        {
+          "item": "원주각=호의 크기/2",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "원주각 성질."
+        }
+      ],
+      "notations": [
+        {
+          "item": "호 AC의 중점 D, 호 DC, ∠CAB, x",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "호/각 표준 표기."
+        }
+      ],
+      "methods": [
+        {
+          "item": "반원에서 주어진 호를 빼고, 호 중점으로 나눈 뒤 원주각을 구한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3 원주각과 M1 호 개념."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 9,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|9",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "c03968710ae0698f486529597db6af64a7dac59672612633d01bf507d4904aae",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "원에 내접하는 사각형의 마주 보는 각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 내접사각형 각."
+        },
+        {
+          "item": "접선-현 각과 원주각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 접선과 현."
+        },
+        {
+          "item": "삼각형 각의 합",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M1-2 각의 계산."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "내접사각형의 마주 보는 각의 합=180°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3 내접사각형."
+        },
+        {
+          "item": "접선-현 각=해당 현을 보는 원주각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3 접선과 현."
+        },
+        {
+          "item": "삼각형 내각 합=180°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M1-2 다각형의 각."
+        }
+      ],
+      "notations": [
+        {
+          "item": "사각형 ABCD, 접선 AT, x/y, 도 단위",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "문항의 도형 이름."
+        }
+      ],
+      "methods": [
+        {
+          "item": "내접사각형으로 내각을 구하고 같은 호 원주각과 접선-현 각으로 x/y를 각각 판정한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "중등 circle angle chase."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 10,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|10",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "solutionSha256": "a30b7a42361f0692398c3bbe74003aee17ad62378721e46718114f6c49302b6e",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "대푯값(중앙값·최빈값)과 산포도",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 통계 L1-3."
+        },
+        {
+          "item": "편차의 평균은 0",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "평균과 편차 정의."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "편차의 합/자료수=편차의 평균=0",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "편차 정의와 평균."
+        }
+      ],
+      "notations": [
+        {
+          "item": "자료의 변량 및 편차",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "통계 표준어."
+        }
+      ],
+      "methods": [
+        {
+          "item": "각 문장을 대푯값·산포도·편차 정의와 대조한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "정의 판단이며 확률·고등 통계 기법 없음."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 11,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|11",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "solutionSha256": "7637638e8cfc90614c4a0b6f81954f7205ddd427812d56f3a03523e3ed7652fa",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "최빈값은 도수가 가장 큰 값",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 대표값."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "최빈값=가장 자주 관찰된 자료값",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "최빈값 정의."
+        }
+      ],
+      "notations": [
+        {
+          "item": "자료값과 도수",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "통계 표현."
+        }
+      ],
+      "methods": [
+        {
+          "item": "각 자료값의 출현 횟수를 세고 가장 큰 횟수의 값을 고른다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "직접 빈도 세기."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 12,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|12",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "solutionSha256": "4730471ca25075c85709076aeb3805686f6e7ca1486b3067661043c03dfd7f43",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "홀수 자료의 중앙값과 짝수 자료의 중앙값",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 대표값."
+        },
+        {
+          "item": "순서대로 배열하고 가운데 자료를 읽음",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "중앙값 정의."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "홀수 개 중앙값=가운데 값; 짝수 개 중앙값=가운데 두 값의 평균",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "중앙값 정의."
+        }
+      ],
+      "notations": [
+        {
+          "item": "a, 부등식 ≥/≤, 오름차순 배열",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+              "version": "2015개정 M1-1 RPM Primary Canonical Draft v0.3",
+              "sha256": "6c90317c35592bd11559cac7c3809d41db7538342ccda544f06e5184c7521b0e"
+            }
+          ],
+          "rationale": "문자와 유리수 비교는 누적 선행."
+        }
+      ],
+      "methods": [
+        {
+          "item": "각 조건의 중앙값을 순서 배열로 표현하고 두 허용 구간의 교집합과 보기를 비교한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+              "version": "2015개정 M1-1 RPM Primary Canonical Draft v0.3",
+              "sha256": "6c90317c35592bd11559cac7c3809d41db7538342ccda544f06e5184c7521b0e"
+            }
+          ],
+          "rationale": "부등식과 정렬만 사용."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 13,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|13",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "solutionSha256": "b014e1aff348b5e14e72077b855ef3d621d8ec592e0ac225b89a8449b8eb3108",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "편차=변량−평균",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 산포도."
+        },
+        {
+          "item": "편차의 총합은 0",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "평균 정의."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "Σ(편차)=0",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "평균과 편차 관계."
+        },
+        {
+          "item": "변량=평균+편차",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "편차 정의 재배열."
+        }
+      ],
+      "notations": [
+        {
+          "item": "A~E 자료, 편차, 단위 분",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "편차 표/단위."
+        }
+      ],
+      "methods": [
+        {
+          "item": "알려진 네 편차를 합해 C의 편차를 구하고 평균에 더해 대기 시간을 구한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "편차 정의와 한 번의 대입."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 14,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|14",
+      "sourcePageNo": 2,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "solutionSha256": "7c41901c33e7799fa892252e086502f84df44747d84555660afc0f9d1257204e",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "분산은 편차 제곱의 평균",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 산포도."
+        },
+        {
+          "item": "두 집단 합칠 때 각 집단의 자료 수와 편차 제곱합을 더함",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "분산 정의에서 직접 결합."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "집단의 제곱편차 합=자료수×분산",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "분산 정의, 평균 0이므로 전체 mean 유지."
+        },
+        {
+          "item": "합동 분산=전체 제곱편차 합/전체 자료수",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "전체 평균 0 조건을 이용."
+        }
+      ],
+      "notations": [
+        {
+          "item": "자료 집합 a,b,c 및 d,e,f; 분산; 제곱",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "기호와 분산 단위."
+        }
+      ],
+      "methods": [
+        {
+          "item": "각 3개 자료 집단의 제곱편차 합을 복원하고 합동 6개 자료의 평균·분산을 계산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "가중치가 자료 수로 결정되는 정의 기반 계산, 추론통계 아님."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 15,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|15",
+      "sourcePageNo": 3,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "solutionSha256": "242c72d02f75944ff76e72e20b85fd69b7043a8ec113d76e90c906de449e710a",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "평균은 자료 합/자료 수",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 대표값."
+        },
+        {
+          "item": "표준편차는 분산의 양의 제곱근",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "M3-2 산포도 + M3-1 제곱근."
+        },
+        {
+          "item": "완전제곱 전개와 제곱의 합",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
+              "version": "2015개정 M3-1 RPM Primary Canonical Draft v0.3",
+              "sha256": "b63027060ee870e07e66a7f04c7dcecc27687bd90f36d4461efb8a18112dd852"
+            }
+          ],
+          "rationale": "M3-1 다항식의 곱셈."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "a+b=자료 수×평균−알려진 값의 합",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "평균 정의."
+        },
+        {
+          "item": "분산=(편차 제곱합)/자료수=표준편차²",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "분산·표준편차 정의."
+        },
+        {
+          "item": "(4+t)²+(4−t)²=32+2t²",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
+              "version": "2015개정 M3-1 RPM Primary Canonical Draft v0.3",
+              "sha256": "b63027060ee870e07e66a7f04c7dcecc27687bd90f36d4461efb8a18112dd852"
+            }
+          ],
+          "rationale": "합/차의 제곱 공식의 전개."
+        }
+      ],
+      "notations": [
+        {
+          "item": "a,b, 평균, 편차 a−4, 표준편차 2",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "중등 문자식 표기."
+        }
+      ],
+      "methods": [
+        {
+          "item": "평균 조건과 표준편차 조건을 각각 식으로 세우고 대칭인 편차를 이용해 a²+b²를 계산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
+              "version": "2015개정 M3-1 RPM Primary Canonical Draft v0.3",
+              "sha256": "b63027060ee870e07e66a7f04c7dcecc27687bd90f36d4461efb8a18112dd852"
+            }
+          ],
+          "rationale": "M3 통계와 M3-1 대수만 사용."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 16,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|16",
+      "sourcePageNo": 3,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+      "solutionSha256": "6f6f944f4474bf3344d9fbc1a62f903f72b4beb7e525863da9dd155ba40c17dd",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "산점도와 양·음의 상관관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 상관관계."
+        },
+        {
+          "item": "기울기가 양수인 직선",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "누적 M2-1 일차함수 기울기 표기."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "오른쪽 위 방향의 모임은 양의 상관관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "상관관계 시각적 정의."
+        }
+      ],
+      "notations": [
+        {
+          "item": "산점도, 양·음의 상관관계, 기울기",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "학교 수학에서 표준 표현."
+        }
+      ],
+      "methods": [
+        {
+          "item": "보기별 주장을 정의와 대조하고 참인 문장을 선택한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "기울기 용어는 중등 일차함수에서 이미 학습."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 17,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|17",
+      "sourcePageNo": 3,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+      "solutionSha256": "9b8b8421544fd1118890808519a4fe2e56b0ceac77fed4eb7312fa444447bdb7",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "산점도에서 두 변량의 상관 방향",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 산점도/상관관계."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "한 변량 증가에 다른 변량 감소→음의 상관관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 상관관계 정의."
+        }
+      ],
+      "notations": [
+        {
+          "item": "두 변량과 증가·감소 관계",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "통계 표기."
+        }
+      ],
+      "methods": [
+        {
+          "item": "각 상황에서 한 값이 커질 때 다른 값이 커지는지 작아지는지 판단한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "산점도 유형과 맥락을 비교."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 18,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|18",
+      "sourcePageNo": 3,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+      "solutionSha256": "fa020799db5e71158708f932b72d9025d2d4445adf67f163dd94854ba7f40bb7",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "산점도 좌표의 비교와 비율",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 산점도 해석."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "오른쪽 눈 시력>왼쪽 눈 시력 ⇔ 세로값>가로값",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "축 정의를 좌표의 대소로 옮김."
+        },
+        {
+          "item": "비율=조건을 만족하는 사람 수/전체 사람 수",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "기본 분수/비율."
+        }
+      ],
+      "notations": [
+        {
+          "item": "산점도 (x,y), x/y 대소, 7/15",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+              "version": "2015개정 M1-1 RPM Primary Canonical Draft v0.3",
+              "sha256": "6c90317c35592bd11559cac7c3809d41db7538342ccda544f06e5184c7521b0e"
+            }
+          ],
+          "rationale": "좌표와 분수 표기는 누적 기초."
+        }
+      ],
+      "methods": [
+        {
+          "item": "축 이름을 확인하고 y>x 점을 세어 전체 15명으로 나눈다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "산점도 읽기와 유한 집합 세기."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 19,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|19",
+      "sourcePageNo": 3,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "2d5fb24fbf245908b4566c6fccf533c27fff40cda6bc06d3b4bf009ffb7161e0",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "원주각과 호의 각도",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각."
+        },
+        {
+          "item": "두 할선으로 이루어진 외각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "복합 각 추론; 삼각형 내각 합으로 유도 가능."
+        },
+        {
+          "item": "원 전체의 호 합",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "한 바퀴 360°."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "arc AC=2×∠ADC",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "원주각."
+        },
+        {
+          "item": "외부 할선각=(먼 호−가까운 호)/2",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "원주각과 삼각형 내각 합에서 유도되는 복합 관계."
+        },
+        {
+          "item": "네 호의 합=360°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "전체 원."
+        }
+      ],
+      "notations": [
+        {
+          "item": "호 AB, BC, CD, DA 및 ∠ADC, ∠P, x",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "문항 점/호/각."
+        }
+      ],
+      "methods": [
+        {
+          "item": "내부 원주각으로 한 쌍의 호 합을 얻고 바깥각 관계로 차를 얻어 x를 계산한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "중등 원주각 composite angle; 미적분·삼각비·벡터 불사용."
+        }
+      ],
+      "outOfCurriculumDependencies": [],
+      "reviewNote": "복합 원 각 관계는 M3-2 L4-2.2.2.4의 복합 각 추론에 두고, 원주각 관계·삼각형 각의 합으로 설명 가능한 중등 도구로 판정. 고등 원의 정리/좌표기하 도구 사용 아님."
+    },
+    {
+      "qid": 20,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|20",
+      "sourcePageNo": 3,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "solutionSha256": "927d9f4713075bf7fac51700f451dc2ea2956b101a81231c5beaca1c16469847",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "정오각형의 내각과 중심각",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "누적 M1-2 정다각형의 각."
+        },
+        {
+          "item": "같은 호의 원주각은 중심각의 절반",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 원주각·중심각."
+        },
+        {
+          "item": "같은 호들의 원주각 합",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "각 더하기."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "정오각형 내각=(5−2)×180°/5",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "다각형 내각 합에서 각을 계산."
+        },
+        {
+          "item": "중심각=360°/5=72°",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "정오각형의 중심각 등분."
+        },
+        {
+          "item": "원주각=중심각/2",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "같은 호 대응."
+        }
+      ],
+      "notations": [
+        {
+          "item": "정오각형 ABCDE, O, 호 BC/CD/DE, ∠CAD",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "표준 도형 명명."
+        }
+      ],
+      "methods": [
+        {
+          "item": "중심각 방식과 정오각형 내각에서 같은 호 원주각을 합산하는 방식을 각각 적용한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "고급 원주율·좌표기하 없이 두 가지 중등 각 추론."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    },
+    {
+      "qid": 21,
+      "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|21",
+      "sourcePageNo": 4,
+      "standardCourse": "중3 수학",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "solutionSha256": "ca00145a32988ca5b0c49143e530455bcd95c351fcdc6d445cc31f5c1c218ce3",
+      "status": "ALLOWED",
+      "concepts": [
+        {
+          "item": "평균·편차·분산·표준편차",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "M3-2 대표값과 산포도."
+        },
+        {
+          "item": "제곱근의 뜻·비교",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "누적 M3-1 제곱근."
+        }
+      ],
+      "formulas": [
+        {
+          "item": "평균=점수합/5",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "평균 정의."
+        },
+        {
+          "item": "분산=편차 제곱합/5",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null
+          ],
+          "rationale": "분산 정의."
+        },
+        {
+          "item": "표준편차=√분산",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "표준편차 정의."
+        }
+      ],
+      "notations": [
+        {
+          "item": "점수, 평균, 편차, 분산, √2, √10",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "교육과정 통계 및 제곱근 표기."
+        }
+      ],
+      "methods": [
+        {
+          "item": "두 자료의 평균을 구하고 각 편차 제곱합으로 분산·표준편차를 각각 구해 작은 표준편차를 비교한다",
+          "status": "ALLOWED",
+          "authorityRefs": [
+            null,
+            null
+          ],
+          "rationale": "기본 기술통계와 제곱근만 사용."
+        }
+      ],
+      "outOfCurriculumDependencies": []
+    }
+  ],
+  "summary": {
+    "curriculumMethodAuditCount": "21/21",
+    "allowedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "uncertainQids": [],
+    "notAllowedRequiredQids": [],
+    "curriculumViolationQids": [],
+    "outOfCurriculumDependencies": [],
+    "overallStatus": "PASS"
+  },
+  "artifactEffect": {
+    "javascriptChanged": false,
+    "affectedQids": [],
+    "answerSolutionDecisiveStepMetaVisualUnchanged": true,
+    "previousCreateEvidenceAndValidationPreserved": true,
+    "reason": "All actual concepts, formulas, notations, and decisive methods in q1–q21 map to the 2015 M3-2 or completed lower-scope RPM-canonical methods; no NOT_ALLOWED or UNCERTAIN dependency found."
+  }
+}

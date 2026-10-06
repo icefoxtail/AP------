@@ -1,0 +1,77 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "20_연향중_2학기_기말_중3_기출",
+  "performedBeforeTargetSolutionAuthoring": true,
+  "protocol": "JS아카이브_학생용해설_운영규칙_v1.md §3/§6/§11; current source-only CREATE fresh rewrite policy",
+  "goldenCalibrationSet": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+  ],
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+      "items": [
+        {
+          "qid": 1,
+          "solutionSha256": "4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+          "observation": "내분점 공식의 반대쪽 비 계수 적용을 먼저 설명하고 x/y 좌표를 각각 분수식→간단화→값으로 전개한 뒤 중점, 거리식, 제곱합, 근호 간단화, 답으로 분리했다."
+        },
+        {
+          "qid": 2,
+          "solutionSha256": "b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+          "observation": "평행 조건으로 기울기를 고정한 뒤 점 대입을 별도 식으로 보이고 상수항 계산과 최종 m+n을 각각 분리했다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "items": [
+        {
+          "qid": 6,
+          "solutionSha256": "b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+          "observation": "원의 표준형 변환에서 완전제곱과 반지름 제곱을 한 단계씩 분리하고 r²>0으로 strict inequality를 적용, 경계 두 점을 제외한 부호 구간을 확인했다.",
+          "visualSha256": "70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+          "visualObservation": "SVG actual circle centers/radii inspected: k=-1 center(-1/2,-1), k=9 center(9/2,-1), both r=3/2; number-line excludes 0,8 and marks k<0 or k>8."
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+          "observation": "평행 직선의 거리 공식을 명시하고 절댓값 방정식의 두 경우를 모두 풀어 두 k값의 곱을 마무리했다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256": "17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+      "items": [
+        {
+          "qid": 10,
+          "solutionSha256": "7c72f3a036e518df8cb19bf8759dc175ad8ab89a79e04d0c1964b3b6cbac7b94",
+          "observation": "좌표 차의 제곱을 각 변마다 따로 계산하고 같은 제곱길이에서 양의 길이임을 연결해 이등변 조건을 판정했다."
+        },
+        {
+          "qid": 11,
+          "solutionSha256": "b3ac789351f044d52d2aca24f81621b68ccbbfd56b14355c514085fe883c4706",
+          "visualSha256": "40f785c43f1f6e72c485b8f16d676294421868421b190ace2399da3c694e8134",
+          "visualObservation": "제일고 q11 SVG actual coordinates checked for centroid relation; axes/polygon labeled and numeric centroid shown consistently.",
+          "observation": "무게중심 좌표 평균을 x/y 두 식으로 각각 세우고 합 조건, 새 무게중심, a+b를 순서대로 보였다."
+        }
+      ]
+    }
+  ],
+  "negativeSample": {
+    "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "sha256": "39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+    "observation": "직접 읽음: 실제 SVG 좌표/위상 검산, 나열형 풀이의 분리, exact-active Meta lookup으로 null 판정, evaluated runtime TeX escape 검사가 false-PASS를 막는 핵심 회귀 게이트."
+  },
+  "calibrationConclusions": [
+    "Samples calibrate student-facing explanation flow/layout/visual presentation only; they do not authorize middle-school curriculum, Meta, or difficulty.",
+    "Use actual equations at every decisive transformation; split cases and labeled subparts; judge legibility by semantic boundaries rather than line count.",
+    "Negative fixture is a hard warning against checklist counts and SVG labels without actual geometry."
+  ]
+}

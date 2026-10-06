@@ -1,0 +1,141 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "examUid": "20_연향중_2학기_기말_중3_기출",
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 8,
+        "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$",
+        "observation": "Directly reviewed the written sign deductions from slope and intercept through coefficient signs and the resulting quadrant conclusion.",
+        "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+        "visualSha256": "sha256:e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 9,
+        "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+        "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)",
+        "observation": "Directly reviewed the tangent-slope conversion, perpendicular slope relation, equation steps, and final parameter.",
+        "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+        "visualSha256": "sha256:0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+        "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 6,
+        "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+        "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.\n주어진 식은\n$x^2+y^2-kx+2y+2k+1=0$이다.\n$x$와 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2-k",
+        "observation": "Directly reviewed completing the square, strict positive radius condition, excluded boundary cases, and split intervals.",
+        "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg",
+        "visualSha256": "sha256:70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+        "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 7,
+        "solutionSha256": "sha256:8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+        "solutionExcerpt": "두 직선\n$2x-y+1=0$,\n$2x-y+k=0$\n은 $x$, $y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$Ax+By+C_1=0$, $Ax+By+C_2=0$\n사이의 거리는\n$\\dfra",
+        "observation": "Directly reviewed both sign cases for the absolute value equation and the final product.",
+        "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+        "visualSha256": "sha256:cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+        "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ]
+  },
+  "goldenCalibrationActualViewLedger": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+      "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812",
+      "items": [
+        {
+          "qid": 8,
+          "solutionSha256": "sha256:7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+          "solutionExcerpt": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$",
+          "observation": "Directly reviewed the written sign deductions from slope and intercept through coefficient signs and the resulting quadrant conclusion.",
+          "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+          "visualSha256": "sha256:e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+          "visualObservedRenderPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/q8-solution-golden.png",
+          "visualObservedRenderSha256": "sha256:636237b414b24561a112c3e37f078917dea0803cc3cffc7aff0a9914173a6a4a",
+          "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+        },
+        {
+          "qid": 9,
+          "solutionSha256": "sha256:9d9a8678a8390eefc9dfdda5f6f88d772c24fa8a0a166ecf309bdc00b668bf96",
+          "solutionExcerpt": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n점이 $(3,2)",
+          "observation": "Directly reviewed the tangent-slope conversion, perpendicular slope relation, equation steps, and final parameter.",
+          "visualPath": "assets/images/25_매산여고_2학기_중간_고1_기출/q9-solution.svg",
+          "visualSha256": "sha256:0d8a7ead822386b5191ccf3dd4c1123556ee8fcd407aded9218312f8a97f8112",
+          "visualObservedRenderPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/q9-solution-golden.png",
+          "visualObservedRenderSha256": "sha256:97de4070559e0a7d00efa40d03c9065d716e0deda81bdbae8dc6fa81241b3368",
+          "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d",
+      "items": [
+        {
+          "qid": 6,
+          "solutionSha256": "sha256:b67b1dd954e46112bb32991d499fec3db169d9e9a4f7f3622af4f64bb7a6c0a7",
+          "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.\n주어진 식은\n$x^2+y^2-kx+2y+2k+1=0$이다.\n$x$와 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2-k",
+          "observation": "Directly reviewed completing the square, strict positive radius condition, excluded boundary cases, and split intervals.",
+          "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg",
+          "visualSha256": "sha256:70e4ed2618194d48d780040b9cf74594b5aff3551026e8bc5deba4545513e1e5",
+          "visualObservedRenderPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/q06-solution-golden.png",
+          "visualObservedRenderSha256": "sha256:84a3e3c30d531277afcaecd22cf0df4c543fb329bca0cf8edfbcf025aedb0859",
+          "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+        },
+        {
+          "qid": 7,
+          "solutionSha256": "sha256:8fb096a4aab0570433d7e539e7c7d75368d03ad04801f4ce5971f341fd01a17a",
+          "solutionExcerpt": "두 직선\n$2x-y+1=0$,\n$2x-y+k=0$\n은 $x$, $y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$Ax+By+C_1=0$, $Ax+By+C_2=0$\n사이의 거리는\n$\\dfra",
+          "observation": "Directly reviewed both sign cases for the absolute value equation and the final product.",
+          "visualPath": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+          "visualSha256": "sha256:cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+          "visualObservedRenderPath": ".tmp/archive/qualification-20261006/20_연향중_2학기_기말_중3_기출/q07-solution-golden.png",
+          "visualObservedRenderSha256": "sha256:4a3c470e869fa2cd417d4a2fa5e0e134f6cbf9faf65f3cf6b3dbdae8f153152f",
+          "visualObservation": "Rendered and visually opened the SVG; checked geometry and labels against the adjacent written decisive steps."
+        }
+      ]
+    }
+  ],
+  "negativeSampleObservation": "Read the README directly before repair. It requires checking actual SVG coordinates/topology rather than labels, keeping enumerated source decisions in distinct solution blocks, resolving nullable Meta with exact ACTIVE lookup, and checking evaluated runtime TeX escaping."
+}

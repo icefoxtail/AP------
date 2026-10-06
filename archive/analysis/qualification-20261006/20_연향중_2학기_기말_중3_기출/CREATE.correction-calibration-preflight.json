@@ -1,0 +1,27 @@
+{
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "CREATE",
+  "examUid": "20_연향중_2학기_기말_중3_기출",
+  "preflightKind": "MINIMAL_CORRECTION_REVIEW_PREFLIGHT",
+  "performedBeforeCorrection": true,
+  "reason": "Initial generic CREATE validator found an unrecorded JavaScript carriage-return TeX escape in q5 and sample1 did not bind an actually inspected Golden solution SVG. This preflight precedes both corrections.",
+  "sample": {
+    "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+    "sha256": "0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+    "items": [
+      {
+        "qid": 8,
+        "solutionSha256": "7cedf2ff155c782e9c507d252dcb3fcbda9d58a7f7d300b05bab246c648dc94b",
+        "observation": "Source graph sign evidence is separated into coefficient signs, then new line slope/intercepts determine the excluded quadrant.",
+        "visualPath": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q8-solution.svg",
+        "visualSha256": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "visualObservation": "Actual flow SVG inspected: first-line slope/intercept signs imply a,b opposite and b,c same; new line has negative slope and positive x/y intercepts, so it passes quadrants I, II and IV and excludes III."
+      }
+    ]
+  },
+  "changedLoci": [
+    "q5.choices runtime TeX \rm escaping",
+    "Golden sample1 visualSha256 binding for qid 8"
+  ]
+}
