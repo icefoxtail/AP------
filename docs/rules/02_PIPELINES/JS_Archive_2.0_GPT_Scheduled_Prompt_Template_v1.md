@@ -83,6 +83,16 @@ old pilot의 동일 examUid CREATE/R1 PASS는 selector에서 무시한다.
 
 전 qid의 source/content/choices/answer, QUESTION_LAYOUT, 작은칠판 solution, Meta Foundation, difficulty 4필드, visual disposition/필요 asset, engine-safe final JS, artifact/evidence binding을 실제 완성한다.
 
+META SEMANTIC HARD — CREATE:
+- Meta Foundation은 필드 존재 확인이 아니라 전 qid semantic 판정 작업이다.
+- 각 qid에서 content + choices + final solution의 primaryMethod/decisiveStep을 읽고 L1/L2/L3/L4, RPM primary, crossConceptKeys[], conditionKeys[], integrationPattern, difficulty 4필드를 실제 판정한다.
+- 특히 crossConceptKeys / conditionKeys / integrationPattern은 생략 가능한 부가 필드가 아니다. 기존 값이나 빈 배열을 자동 승계하지 않는다.
+- crossConceptKeys=[]는 “검토하지 않음”이 아니라 실제 풀이의 결정 단계에 독립된 교차 개념이 없다고 판정한 결과여야 한다.
+- conditionKeys=[]도 실제 문제 조건을 전수 판독한 뒤 canonical Condition에 해당하는 조건이 없다고 판정한 결과여야 한다.
+- integrationPattern=NONE도 CrossConcept/Condition 결합 구조를 판독한 뒤 NONE이 맞다고 판정한 결과여야 한다.
+- 빈 배열/기존 NONE을 기본값으로 일괄 채우는 행위 금지. 반대로 개수 목표를 맞추기 위한 과잉 부여도 금지.
+- Meta semantic authority는 최신 Meta Foundation canonical/GPT Meta Foundation 실행 프로토콜을 따른다.
+
 evidence 최소 identity:
 qualityContractVersion
 campaignId
@@ -119,6 +129,14 @@ SOLUTION_LAYOUT,
 SMALL_BOARD/BOARD_FLOW_CONTINUITY,
 Meta/difficulty,
 Visual necessity/semantic parity.
+
+META SEMANTIC HARD — R1:
+- CREATE의 Meta verdict를 자동 승계하지 않는다.
+- 전 qid에서 L3/L4, RPM primary, crossConceptKeys[], conditionKeys[], integrationPattern, difficulty를 content + final solution의 실제 결정 단계 기준으로 독립 재판정한다.
+- crossConceptKeys=[] / conditionKeys=[] / integrationPattern=NONE도 적극적인 NONE 판정으로 확인되어야 한다. “필드가 존재한다”는 이유만으로 PASS 금지.
+- 시험지 전체 relational Meta가 비정상적으로 전부 빈 배열/NONE인 경우 자동 FAIL시키지는 않되, 각 qid를 실제 판독했는지 다시 확인하고 semantic 근거 없이 일괄 기본값이면 수정한다.
+- 개수 quota/최소 비율은 두지 않는다. semantic truth만 판정한다.
+- Meta semantic 판정은 validator에 위임하지 않는다. validator는 structural binding만 담당한다.
 
 CREATE verdict 자동 승계 금지.
 repair는 same-stage 최소수정.
