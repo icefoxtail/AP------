@@ -23,7 +23,7 @@ window.questionBank = [
       "선분 $AB$ 위의 점 $M$에 대하여 $\\overline{AM}=\\overline{MB}$일 때, 점 $M$을 선분 $AB$의 중점이라고 한다."
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "① 점, 선, 면은 도형의 기본 요소이다.\n\n② 삼각형의 꼭짓점은 세 선이 만나는 교점 3개이다.\n\n③ 직육면체의 교선은 모서리이므로\n12개이다.\n8개가 아니다.\n\n④ 서로 다른 두 점을 지나는 직선은 하나이다.\n\n⑤ AM=MB이면 M은 AB의 중점이다.\n\n따라서 옳지 않은 것은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -62,7 +62,7 @@ window.questionBank = [
       "$12$개"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "한 점을 시작점으로 잡으면\n나머지 3개 점을 향하는 반직선을 만들 수 있다.\n\n시작점은 4개이므로\n4\\times3=12\n\n따라서 서로 다른 반직선은 12개이고\n정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q2.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -102,7 +102,7 @@ window.questionBank = [
       "$100^\\circ$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "맞꼭지각의 크기는 서로 같다.\n\nx+40=70\nx=30\n\n또 y와 70^\\circ는 한 직선 위의 이웃한 각이므로\ny=180-70=110\n\n따라서\ny-x=110-30=80\n\n정답은 ④이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q3.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -142,7 +142,7 @@ window.questionBank = [
       "$6\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "M은 AB의 중점이므로\nAM=MB=\\dfrac{16}{2}=8\\,\\mathrm{cm}\n\nN은 AM의 중점이므로\nNM=\\dfrac{8}{2}=4\\,\\mathrm{cm}\n\n따라서 정답은 ③이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q4.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -180,7 +180,7 @@ window.questionBank = [
       "한 직선에 수직인 서로 다른 두 직선은 수직이다."
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "① 한 직선에 평행한 서로 다른 두 직선은 같은 방향이므로 서로 평행하다.\n\n② 한 평면에 수직인 두 평면은 서로 만날 수도 있다.\n\n③ 한 직선에 평행한 두 평면이 서로 평행하다고 할 수 없다.\n\n④ 한 평면에 평행한 두 직선은 서로 다른 방향일 수 있다.\n\n⑤ 한 직선에 수직인 두 직선이 서로 수직인 것은 아니다.\n\n따라서 옳은 것은 ①이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "$270^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "꺾인 두 점을 지나 l,m과 평행한 보조선을 각각 그린다.\n\n가운데 선분이 보조선과 이루는 각을 \\alpha^\\circ라 하자.\n\n위쪽 꺾인 점에서\nx=220^\\circ-\\alpha\n\n아래쪽 꺾인 점에서\ny=\\alpha+50^\\circ\n\n따라서\nx+y=(220-\\alpha)+(\\alpha+50)\n=270^\\circ\n\n정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q6.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -259,7 +259,7 @@ window.questionBank = [
       "$\\overline{DE}$"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "전개도를 접어 \\overline{AB}의 위치를 먼저 잡는다.\n\n\\overline{CD},\\overline{DM},\\overline{EF},\\overline{EL}은\n\\overline{AB}와 만나지 않고 평행하지도 않아서\n꼬인 위치가 된다.\n\n반면 \\overline{DE}는\n접은 뒤 \\overline{AB}와 꼬인 위치가 아니다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q7.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -299,7 +299,7 @@ window.questionBank = [
       "$155^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "각 꺾인 점을 지나 l,m과 평행한 보조선을 그리면\n동위각과 엇각으로 표시된 각들을 한 직선 위에 차례로 옮길 수 있다.\n\n그 결과\na+b+c+d+25^\\circ=180^\\circ\n\n따라서\na+b+c+d=155^\\circ\n\n정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q8.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -337,7 +337,7 @@ window.questionBank = [
       "세 선분의 길이가 주어진 삼각형의 모양은 한 가지로 정해진다."
     ],
     "answer": "②",
-    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "작도에서는 눈금 없는 자와 컴퍼스를 사용한다.\n\n선분의 길이를 다른 곳으로 옮길 때에는\n컴퍼스로 길이를 잡아 옮긴다.\n\n따라서\n“선분의 길이를 옮기는 데 자를 이용한다.”는\n②가 옳지 않다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -370,7 +370,7 @@ window.questionBank = [
     "content": "그림에서 ㉠~㉥은 점 $P$를 지나고 직선 $l$에 평행한 직선을 작도하는 과정을 나타낸 것이다. 작도 순서를 바르게 나타낸 것은? [4점]",
     "choices": [],
     "answer": "②",
-    "solution": "점 P를 지나 직선 l과 평행한 직선을 작도하려면 보조선을 이용해 생긴 각을 점 P에서 같은 크기로 옮긴다. 원본 도식의 여섯 표시를 이 작도 순서에 맞춰 나열한 것은 ②이다.",
+    "solution": "점 P를 지나 l과 평행한 직선을 만들기 위해\n먼저 보조선을 긋고,\n아래 교점에서 만든 호와 현의 길이를\n점 P로 그대로 옮긴다.\n\n그림의 ㉠~㉥을 실제 작도 순서대로 따르면\n선택지 ②의 순서가 된다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-POSITION_RELATION",
@@ -413,7 +413,7 @@ window.questionBank = [
       "$AB=3\\,\\mathrm{cm},\\ BC=9\\,\\mathrm{cm},\\ CA=7\\,\\mathrm{cm}$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "① AB, AC와 그 끼인각 \\angle A가 주어져 하나로 정해진다.\n\n② 한 변 AB와 그 양 끝 각 \\angle A,\\angle B가 주어져 하나로 정해진다.\n\n③ AB=8,\\ BC=9와 \\angle C=40^\\circ는\n두 변과 끼인각이 아닌 한 각이 주어진 경우라\n하나로 결정된다고 할 수 없다.\n\n④ 한 변 AB와 두 각이 주어져 하나로 정해진다.\n\n⑤ 세 변 3,9,7은\n3+7>9이므로 삼각형이 만들어지고 SSS로 하나로 정해진다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -452,7 +452,7 @@ window.questionBank = [
       "$\\angle E$"
     ],
     "answer": "②",
-    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "\\triangle ABC\\equiv\\triangle DEF이므로\nA\\leftrightarrow D,\\quad\nB\\leftrightarrow E,\\quad\nC\\leftrightarrow F\n\n따라서\nDE=AB,\nDF=AC,\n\\angle E=\\angle B,\n\\angle F=\\angle C\n는 그림의 표시와 합동 관계로 바로 알 수 있다.\n\n하지만 EF는 BC에 대응하고\nBC의 길이는 그림에 직접 주어져 있지 않다.\n\n따라서 추가 계산 없이 알 수 없는 것은\n\\overline{EF}이고 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q12.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -490,7 +490,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "삼각형의 세 변이 4,9,x이므로\n\n9-4<x<9+4\n\n5<x<13\n\n보기에서 이 범위를 만족하지 않는 값은\nx=4\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -529,7 +529,7 @@ window.questionBank = [
       "알 수 없다."
     ],
     "answer": "②",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "\\triangle ABC가 정삼각형이므로\nAC=BC,\\quad \\angle ACB=60^\\circ\n\n\\triangle ECD가 정삼각형이므로\nCD=CE,\\quad \\angle DCE=60^\\circ\n\nB,C,D가 한 직선 위에 있으므로\n\\angle ACD=180^\\circ-60^\\circ=120^\\circ\n\n또\n\\angle BCE=180^\\circ-60^\\circ=120^\\circ\n\n따라서\nAC=BC,\nCD=CE,\n\\angle ACD=\\angle BCE\n\n두 변과 그 끼인각이 각각 같으므로\n\\triangle ACD\\equiv\\triangle BCE\n(SAS 합동)\n\n정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -569,7 +569,7 @@ window.questionBank = [
       "$34$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "원자료를 줄기와 잎 그림에 맞춰 정렬한다.\n\n20대:\n24,25,25,27,29\n이므로 a=5\n\n30대:\n30,32,33,33,36,38\n이므로 b=8\n\n40대:\n41,42,42,47,47,48,49\n이므로 c=7\n\n따라서\na\\times b-c\n=5\\times8-7\n=33\n\n정답은 ④이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q15.png",
     "imageSize": "tall",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
@@ -610,7 +610,7 @@ window.questionBank = [
       "$35\\%$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "40대 선생님은\n41,42,42,47,47,48,49\n의 7명이다.\n\n전체는 20명이므로\n\\dfrac7{20}\\times100=35\\%\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -649,7 +649,7 @@ window.questionBank = [
       "$85$세"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "가장 적은 나이는\n24세\n\n가장 많은 나이는\n56세\n\n따라서\n24+56=80\n\n정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -688,7 +688,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "전체 30명의 20\\%는\n30\\times0.2=6명\n\n160\\,\\mathrm{cm} 이상인 학생은\n160\\sim170 계급과\n170\\sim180 계급이다.\n\n170\\sim180의 도수가 3명이므로\n160\\sim170의 도수는\n6-3=3명\n\n따라서 정답은 ①이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q18.png",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
@@ -728,7 +728,7 @@ window.questionBank = [
       "$17$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "도수의 합은 30명이다.\n\n알고 있는 도수는\n130\\sim140:4명\n150\\sim160:9명\n160\\sim170:3명\n170\\sim180:3명\n\n따라서\n140\\sim150의 도수는\n30-(4+9+3+3)=11명\n\n150\\,\\mathrm{cm} 미만은\n4+11=15명\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -762,7 +762,7 @@ window.questionBank = [
     "content": "서논술형 1. 다음 그림에서 $\\overline{BD}=3\\overline{AB}$이고 $C$는 $\\overline{AD}$의 중점이고 $\\overline{BC}=6\\,\\mathrm{cm}$일 때, $\\overline{AD}$의 길이를 구하고 구하는 방법을 서술하시오. [6점]",
     "choices": [],
     "answer": "$24\\,\\mathrm{cm}$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $24\\,\\mathrm{cm}$이다.",
+    "solution": "AB=x\\,\\mathrm{cm}라 하자.\n\nBD=3AB이므로\nBD=3x\n\n따라서\nAD=AB+BD=4x\n\nC는 AD의 중점이므로\nAC=CD=2x\n\nBC=AC-AB=2x-x=x\n\nBC=6이므로\nx=6\n\n따라서\nAD=4x=24\\,\\mathrm{cm}",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q20.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -797,7 +797,7 @@ window.questionBank = [
     "content": "서논술형 2. 다음 그림에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AB}\\parallel\\overline{CD}$일 때, 합동인 두 삼각형을 찾아 합동 기호를 사용하여 나타내고, 합동인 이유를 평행선의 성질을 이용하여 구체적으로 서술하시오. (단, 평행사변형의 대변의 길이가 같음은 이용하지 마시오.) [7점]",
     "choices": [],
     "answer": "$\\triangle ABC\\equiv\\triangle CDA$ (ASA 합동)",
-    "solution": "풀이: 주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $\\triangle ABC\\equiv\\triangle CDA$ (ASA 합동)이다.",
+    "solution": "AD\\parallel BC이므로\n\\angle BCA=\\angle DAC\n(엇각)\n\nAB\\parallel CD이므로\n\\angle BAC=\\angle DCA\n(엇각)\n\nAC는 공통인 변이다.\n\n따라서 한 변 AC와 그 양 끝 각이 각각 같으므로\n\\triangle ABC\\equiv\\triangle CDA\n(ASA 합동)이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q21.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
@@ -832,7 +832,7 @@ window.questionBank = [
     "content": "서논술형 3. 다음 그림과 같이 직사각형 모양의 종이를 $\\angle EGF=120^\\circ$가 되도록 접었을 때, $\\angle GFE$의 크기를 구하고 구하는 과정을 서술하시오. (풀이를 그림을 그려 나타내시오.) [7점]",
     "choices": [],
     "answer": "$30^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $30^\\circ$이다.",
+    "solution": "접은 뒤 서로 포개지는 대응선분의 길이는 같으므로\nGE=GF\n\n따라서 \\triangle EGF는 이등변삼각형이다.\n\n\\angle EGF=120^\\circ이므로\n두 밑각의 합은\n180^\\circ-120^\\circ=60^\\circ\n\n두 밑각의 크기는 같으므로\n\\angle GFE=\\dfrac{60^\\circ}{2}=30^\\circ",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q22.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",

@@ -19,7 +19,8 @@ window.questionBank = [
       "기출",
       "이등변삼각형의 밑각과 각의 이등분선",
       "이등변삼각형의 성질",
-      "밑각"
+      "밑각",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle B$의 이등분선이 $\\overline{AC}$와 만나는 점을 $D$라고 하자. $\\angle BDC=72^\\circ$일 때, $\\angle BAD$의 크기는? [3점]",
@@ -87,7 +88,8 @@ window.questionBank = [
       "기출",
       "직각삼각형의 RHA 합동",
       "직각삼각형의 합동",
-      "RHA"
+      "RHA",
+      "도형"
     ],
     "wide": false,
     "content": "다음 중 오른쪽 그림과 같이 $\\angle B=\\angle E=90^\\circ$인 두 직각삼각형 $ABC$와 $DEF$가 RHA 합동이 되기 위한 조건인 것은? [4점]",
@@ -153,7 +155,8 @@ window.questionBank = [
       "기출",
       "외심과 내심의 각",
       "외접원·내접원 활용",
-      "외심·내심을 이용한 복합도형"
+      "외심·내심을 이용한 복합도형",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 각각 점 $I$, 점 $O$가 두 삼각형 $ABC$, $DEF$의 내심, 외심일 때, $x+y$의 값은? [3점]",
@@ -219,7 +222,8 @@ window.questionBank = [
       "기출",
       "두 외심을 이용한 각과 거리",
       "외접원·내접원 활용",
-      "외심·내심을 이용한 복합도형"
+      "외심·내심을 이용한 복합도형",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 점 $O$, $O\\prime$가 각각 $\\triangle ABC$, $\\triangle ADC$의 외심이고, 점 $A$에서 변 $BC$에 내린 수선의 발을 $D$라고 하자. $\\angle ABD=45^\\circ$, $\\angle BOC=160^\\circ$일 때, 다음 중 옳지 않은 것을 고르면? [5점]",
@@ -288,7 +292,8 @@ window.questionBank = [
       "기출",
       "직각삼각형의 RHS 합동과 이등변삼각형",
       "직각삼각형의 합동",
-      "RHS"
+      "RHS",
+      "도형"
     ],
     "wide": false,
     "content": "다음 $\\triangle ABC$의 변 $AC$ 위의 점 $F$에서 변 $BC$에 내린 수선의 발을 $E$라고 하고, 점 $E$에서 변 $AB$에 내린 수선의 발을 $D$라고 하자. $\\overline{BE}=\\overline{CF}$, $\\overline{BD}=\\overline{CE}$, $\\angle C=50^\\circ$, $\\overline{AF}=3$, $\\overline{BE}=5$일 때, $\\overline{AB}$의 길이는? [5점]",
@@ -354,7 +359,8 @@ window.questionBank = [
       "기출",
       "이등변삼각형의 꼭짓각 이등분선",
       "이등변삼각형의 성질",
-      "꼭짓각의 이등분선"
+      "꼭짓각의 이등분선",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\overline{BA}=\\overline{BC}$인 이등변삼각형 $ABC$에서 $\\angle B$의 이등분선과 $\\overline{AC}$의 교점을 $D$라고 하자. 점 $P$가 $\\overline{BD}$ 위의 점일 때, 다음 중 옳지 않은 것을 모두 고르면? (정답 2개) [4점]",
@@ -420,7 +426,8 @@ window.questionBank = [
       "기출",
       "내심과 각의 이등분선",
       "내심",
-      "각의 이등분선과 내심"
+      "각의 이등분선과 내심",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 점 $I$는 $\\triangle ABC$의 내심이다. $BI$의 연장선과 $AC$의 교점을 $D$, $CI$의 연장선과 $AB$의 교점을 $E$라고 하고 $\\angle BDC=100^\\circ$, $\\angle BEC=104^\\circ$일 때, $\\angle BIC$의 크기는? [5점]",
@@ -486,7 +493,8 @@ window.questionBank = [
       "기출",
       "외심과 내심의 관계",
       "외접원·내접원 활용",
-      "외심·내심을 이용한 복합도형"
+      "외심·내심을 이용한 복합도형",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$의 외심을 $O$, 내심을 $I$라고 하자. $\\angle BIC=108^\\circ$일 때, $\\angle OBI$의 크기는? [4점]",
@@ -552,7 +560,8 @@ window.questionBank = [
       "기출",
       "수직이등분선과 외심",
       "외심",
-      "수직이등분선과 외심"
+      "수직이등분선과 외심",
+      "도형"
     ],
     "wide": false,
     "content": "다음 활동을 보고 보기 중 옳은 것만을 있는 대로 고르면? [4점]<br><div class=\"note-box\">(1) 두 꼭짓점 $A$, $B$가 겹치도록 접었다가 펼쳐 변 $AB$의 수직이등분선을 만든다.<br>(2) 같은 방법으로 변 $AC$의 수직이등분선을 만든다.<br>(3) 만들어진 두 선분의 교점을 $O$라고 한다.</div><br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $\\overline{AO}=\\overline{BO}=\\overline{CO}$<br>ㄴ. $\\overline{AO}$는 $\\angle A$의 이등분선<br>ㄷ. $\\angle A=50^\\circ$이면 $\\angle BOC=100^\\circ$<br>ㄹ. $\\triangle ABC$가 정삼각형이면 $O$는 내심이다.</div>",
@@ -618,7 +627,8 @@ window.questionBank = [
       "기출",
       "내심과 평행선",
       "내심",
-      "각의 이등분선과 내심"
+      "각의 이등분선과 내심",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\triangle ABC$의 내심 $I$를 지나고 $\\overline{BC}$에 평행한 직선이 $\\overline{AB}$, $\\overline{AC}$와 만나는 점을 각각 $D$, $E$라고 할 때, $\\overline{AB}+\\overline{AC}$의 길이는? [4점]",
@@ -687,7 +697,8 @@ window.questionBank = [
       "기출",
       "평행사변형의 변의 성질",
       "평행사변형의 성질",
-      "변·각의 성질"
+      "변·각의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 평행사변형 $ABCD$에서 $x+y$의 값을 구하면? [3점]",
@@ -885,7 +896,8 @@ window.questionBank = [
       "기출",
       "평행사변형의 각의 이등분선과 직사각형",
       "직사각형·마름모·정사각형",
-      "각 사각형의 성질"
+      "각 사각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 평행사변형 $ABCD$의 네 내각의 이등분선의 교점을 각각 $E$, $F$, $G$, $H$라고 할 때, $\\square EFGH$에 대한 설명으로 옳지 않은 것은? [4점]",
@@ -1019,7 +1031,8 @@ window.questionBank = [
       "기출",
       "직사각형의 대각선",
       "직사각형·마름모·정사각형",
-      "특수 사각형의 대각선 성질"
+      "특수 사각형의 대각선 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 직사각형 $ABCD$에서 $\\overline{AC}=4x+6$, $\\overline{BO}=4x-2$일 때, 대각선 $\\overline{AC}$의 길이를 구하면? (단, 점 $O$는 두 대각선의 교점) [3점]",
@@ -1085,7 +1098,8 @@ window.questionBank = [
       "기출",
       "정사각형과 이등변삼각형",
       "직사각형·마름모·정사각형",
-      "각 사각형의 성질"
+      "각 사각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 $\\square ABCD$는 정사각형이고, $\\overline{CD}=\\overline{CE}$일 때, $\\angle BED$의 크기를 구하면? [5점]",
@@ -1151,7 +1165,8 @@ window.questionBank = [
       "기출",
       "마름모의 대각선 성질",
       "직사각형·마름모·정사각형",
-      "특수 사각형의 대각선 성질"
+      "특수 사각형의 대각선 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 마름모 $ABCD$의 꼭짓점 $A$에서 $\\overline{CD}$에 내린 수선의 발을 $E$라고 하고, $\\overline{AE}$와 $\\overline{BD}$의 교점을 $F$라고 할 때, $\\angle ACB$의 크기를 구하면? (단, 점 $O$는 두 대각선의 교점) [5점]",
@@ -1217,7 +1232,8 @@ window.questionBank = [
       "기출",
       "닮은 삼각형의 대응각·대응변",
       "닮은 도형",
-      "대응변·대응각"
+      "대응변·대응각",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $\\triangle ABC\\sim\\triangle DEF$일 때, 옳은 것을 고르면? [4점]",
@@ -1283,7 +1299,8 @@ window.questionBank = [
       "기출",
       "닮음비와 넓이비",
       "닮음의 활용",
-      "넓이·부피 비"
+      "넓이·부피 비",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $\\triangle ABC\\sim\\triangle DEF$이다. $\\triangle DEF$의 넓이가 $50\\,\\mathrm{cm}^2$일 때, $\\triangle ABC$의 넓이를 구하면? [4점]",
@@ -1349,7 +1366,8 @@ window.questionBank = [
       "기출",
       "직각삼각형의 RHA 합동과 넓이",
       "직각삼각형의 합동",
-      "RHA"
+      "RHA",
+      "도형"
     ],
     "wide": false,
     "content": "<div class=\"note-box\"><div style=\"font-weight:600;\">서술형 문제 (20점)</div>다음 서술형 문제는 서술형 답안지에 제시되는 풀이 과정을 반드시 자세히 기록하기를 바랍니다. (풀이 과정이 없으면 감점됩니다.)</div><br>다음 직각삼각형 $ABC$에서 $\\angle A$의 이등분선과 $\\overline{BC}$의 교점을 $D$, 점 $D$에서 변 $AC$에 내린 수선의 발을 $E$라고 할 때, $\\triangle DEC$의 넓이를 구하시오. (단, 삼각형의 합동을 이용할 것) [5점]",
@@ -1412,7 +1430,8 @@ window.questionBank = [
       "기출",
       "내심과 내접원의 반지름",
       "외접원·내접원 활용",
-      "반지름·각 계산"
+      "반지름·각 계산",
+      "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\triangle ABC$의 넓이는 $84$일 때, $\\triangle ABC$의 내접원의 넓이를 구하시오. [5점]",
@@ -1475,7 +1494,8 @@ window.questionBank = [
       "기출",
       "정사각형과 삼각형의 합동",
       "직사각형·마름모·정사각형",
-      "각 사각형의 성질"
+      "각 사각형의 성질",
+      "도형"
     ],
     "wide": false,
     "content": "다음 정사각형 $ABCD$의 대각선 $AC$ 위에 한 점 $P$에 대하여 $\\angle BPC=55^\\circ$일 때, $\\angle PDC$의 크기를 구하시오. (단, 삼각형의 합동을 이용할 것) [5점]",
@@ -1536,7 +1556,8 @@ window.questionBank = [
       "기출",
       "평행사변형의 넓이 분할",
       "넓이와 활용",
-      "분할도형"
+      "분할도형",
+      "도형"
     ],
     "wide": false,
     "content": "다음 평행사변형 $ABCD$에서 $\\overline{AO}$, $\\overline{CO}$의 중점을 각각 $M$, $N$이라고 할 때, $\\triangle ABM$과 $\\triangle CBN$의 넓이의 합을 구하시오. (단, 점 $O$는 두 대각선의 교점) [5점]",

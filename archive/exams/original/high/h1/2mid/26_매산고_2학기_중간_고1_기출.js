@@ -494,7 +494,7 @@ window.questionBank = [
       "접선"
     ],
     "wide": false,
-    "content": "평행이동 $(x,y)\\to(x+k,y-2)$에 의하여 원 $x^2+y^2+2x-6y-15=0$이 옮겨지는 원이 직선 $2x-3y+6=0$과 접하도록 하는 모든 상수 $k$값의 합은? [4.5점]",
+    "content": "평행이동 $(x,y)\\to(x+k,y-2)$에 의하여 원<br>$x^2+y^2+2x-6y-15=0$이 옮겨지는 원이 직선<br>$2x-3y+6=0$과 접하도록 하는 모든 상수 $k$값의 합은? [4.5점]",
     "choices": [
       "$-4$",
       "$-3$",
@@ -746,7 +746,7 @@ window.questionBank = [
       "집합의 연산법칙"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $A$, $B$에 대하여 $S(A,B)=(A\\cap B^C)\\cup(A\\cup B^C)^C$라 할 때, 다음 중 보기에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $n(S(A,B))=n(A\\cup B)$이면 $n(A\\cap B)=0$이다.<br>ㄴ. $S(A,B)=A^C$이면 $A\\cup B=U$이다.<br>ㄷ. $S(A,B)\\cap C^C=S(A\\cap B,B\\cap C)$이다.</div>",
+    "content": "전체집합 $U$의 공집합이 아닌 부분집합 $A$, $B$에 대하여 $S(A,B)=(A\\cap B^C)\\cup(A\\cup B^C)^C$라 할 때, 다음 중 보기에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $n(S(A,B))=n(A\\cup B)$이면<br>$n(A\\cap B)=0$이다.<br>ㄴ. $S(A,B)=A^C$이면 $A\\cup B=U$이다.<br>ㄷ. $S(A,B)\\cap C^C=S(A\\cap B,B\\cap C)$이다.</div>",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -803,7 +803,7 @@ window.questionBank = [
       "매개변수"
     ],
     "wide": false,
-    "content": "두 집합<br>$A=\\{(x,\\dfrac{3}{4}x+2)\\mid x\\text{는 실수}\\}$, $B=\\{(x,y)\\mid (x+a)^2+(y-a)^2=a^2\\}$에 대하여 $n(A\\cap B)=1$이 되게 하는 모든 실수 $a$값의 합은? [4.9점]",
+    "content": "두 집합<br>$A=\\{(x,\\dfrac{3}{4}x+2)\\mid x\\text{는 실수}\\}$,<br>$B=\\{(x,y)\\mid (x+a)^2+(y-a)^2=a^2\\}$에 대하여 $n(A\\cap B)=1$이 되게 하는 모든 실수 $a$값의 합은? [4.9점]",
     "choices": [
       "$\\dfrac{13}{3}$",
       "$\\dfrac{14}{3}$",

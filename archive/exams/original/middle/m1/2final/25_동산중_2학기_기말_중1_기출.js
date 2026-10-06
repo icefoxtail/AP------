@@ -25,7 +25,7 @@ window.questionBank = [
         "$z\\div3=3z$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 곱셈 기호를 생략할 때 수는 문자 앞에 쓰고, 같은 문자의 곱은 거듭제곱으로 나타낸다.\\n①은 $(-2)\\times a=-2a$, ②는 보통 $bc$, ④는 $3(y+2)$, ⑤는 $\\dfrac{z}{3}$으로 나타낸다. $x\\times x\\times x=x^3$만 옳다.\\n따라서 정답은 ③이다.",
+      "solution": "[키포인트] 곱셈 기호를 생략할 때 수는 문자 앞에 쓰고, 같은 문자의 곱은 거듭제곱으로 나타낸다.\n①은 $(-2)\\times a=-2a$, ②는 보통 $bc$, ④는 $3(y+2)$, ⑤는 $\\dfrac{z}{3}$으로 나타낸다. $x\\times x\\times x=x^3$만 옳다.\n따라서 정답은 ③이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -68,7 +68,7 @@ window.questionBank = [
         "$\\dfrac{x-1}{5}$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 1개가 남았으므로 먼저 나누어 준 사탕의 수를 구한다.\\n전체 $x$개 중 남은 1개를 제외하면 $x-1$개를 5명이 똑같이 나누므로 한 명이 가지는 개수는 $\\dfrac{x-1}{5}$이다.\\n따라서 정답은 ⑤이다.",
+      "solution": "[키포인트] 1개가 남았으므로 먼저 나누어 준 사탕의 수를 구한다.\n전체 $x$개 중 남은 1개를 제외하면 $x-1$개를 5명이 똑같이 나누므로 한 명이 가지는 개수는 $\\dfrac{x-1}{5}$이다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -111,7 +111,7 @@ window.questionBank = [
         "$8$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 문자에 주어진 값을 그대로 대입한다.\\n$x=2$이므로 $3x-2=3\\times2-2=6-2=4$이다.\\n따라서 정답은 ②이다.",
+      "solution": "[키포인트] 문자에 주어진 값을 그대로 대입한다.\n$x=2$이므로 $3x-2=3\\times2-2=6-2=4$이다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -154,7 +154,7 @@ window.questionBank = [
         "$5$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 거듭제곱을 먼저 계산한 뒤 부호와 나눗셈을 처리한다.\\n$x=-2$, $y=-3$을 대입하면 $-x^2-\\dfrac3y=-(-2)^2-\\dfrac3{-3}=-4+1=-3$이다.\\n따라서 정답은 ②이다.",
+      "solution": "[키포인트] 거듭제곱을 먼저 계산한 뒤 부호와 나눗셈을 처리한다.\n$x=-2$, $y=-3$을 대입하면 $-x^2-\\dfrac3y=-(-2)^2-\\dfrac3{-3}=-4+1=-3$이다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -197,7 +197,7 @@ window.questionBank = [
         "일차식이다."
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 항의 부호까지 포함하여 각 항과 계수를 판단한다.\\n$x-3$의 항은 $x$, $-3$이고, $x$의 계수는 $1$, 상수항은 $-3$이다. 두 항으로 이루어진 일차식이므로 옳은 설명은 ⑤이다.\\n따라서 정답은 ⑤이다.",
+      "solution": "[키포인트] 항의 부호까지 포함하여 각 항과 계수를 판단한다.\n$x-3$의 항은 $x$, $-3$이고, $x$의 계수는 $1$, 상수항은 $-3$이다. 두 항으로 이루어진 일차식이므로 옳은 설명은 ⑤이다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -240,7 +240,7 @@ window.questionBank = [
         "㉠ $-3$, ㉡ $+x$, ㉢ $3x-2$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 동류항끼리 모아 계수와 상수항을 각각 계산한다.\\n$2x$와 $+x$, $+1$과 $-3$이 각각 동류항이다. 따라서 $2x+x+1-3=3x-2$이므로 ㉠은 $+x$, ㉡은 $-3$, ㉢은 $3x-2$이다.\\n따라서 정답은 ③이다.",
+      "solution": "[키포인트] 동류항끼리 모아 계수와 상수항을 각각 계산한다.\n$2x$와 $+x$, $+1$과 $-3$이 각각 동류항이다. 따라서 $2x+x+1-3=3x-2$이므로 ㉠은 $+x$, ㉡은 $-3$, ㉢은 $3x-2$이다.\n따라서 정답은 ③이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -283,7 +283,7 @@ window.questionBank = [
         "$3x+9$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 괄호 앞의 빼기 기호를 분배할 때 각 항의 부호가 바뀐다.\\n$(7-x)-(-3x-2)=7-x+3x+2=2x+9$이다.\\n따라서 정답은 ④이다.",
+      "solution": "[키포인트] 괄호 앞의 빼기 기호를 분배할 때 각 항의 부호가 바뀐다.\n$(7-x)-(-3x-2)=7-x+3x+2=2x+9$이다.\n따라서 정답은 ④이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -326,7 +326,7 @@ window.questionBank = [
         "$-3x+5$"
       ],
       "answer": "①",
-      "solution": "[키포인트] 분수로 나누는 것은 그 역수를 곱하는 것과 같다.\\n$(15x-25)\\div\\left(-\\dfrac52\\right)=(15x-25)\\times\\left(-\\dfrac25\\right)=-6x+10$이다.\\n따라서 정답은 ①이다.",
+      "solution": "[키포인트] 분수로 나누는 것은 그 역수를 곱하는 것과 같다.\n$(15x-25)\\div\\left(-\\dfrac52\\right)=(15x-25)\\times\\left(-\\dfrac25\\right)=-6x+10$이다.\n따라서 정답은 ①이다.",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
       "subUnit": "문자의 사용과 식의 값",
       "subUnitConfidence": "rule_inferred",
@@ -412,7 +412,7 @@ window.questionBank = [
         "$3x=12000$"
       ],
       "answer": "②",
-      "solution": "[키포인트] 거스름돈은 낸 돈에서 물건값을 뺀 금액이다.\\n공책 3권의 가격은 $3x$원이고 10000원을 냈으므로 거스름돈은 $10000-3x$원이다. 이것이 2000원이므로 $10000-3x=2000$이다.\\n따라서 정답은 ②이다.",
+      "solution": "[키포인트] 거스름돈은 낸 돈에서 물건값을 뺀 금액이다.\n공책 3권의 가격은 $3x$원이고 10000원을 냈으므로 거스름돈은 $10000-3x$원이다. 이것이 2000원이므로 $10000-3x=2000$이다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
       "subUnit": "일차방정식의 활용",
       "subUnitConfidence": "rule_inferred",
@@ -455,7 +455,7 @@ window.questionBank = [
         "$2x+1=3$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\\n① $2\\neq0$, ② $2\\neq-4$, ③ $2\\neq0$, ④ $-\\dfrac12\\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\\n따라서 정답은 ⑤이다.",
+      "solution": "[키포인트] 각 방정식에 $x=1$을 대입하여 등식이 성립하는지 확인한다.\n① $2\neq0$, ② $2\neq-4$, ③ $2\neq0$, ④ $-\\dfrac12\neq2$이고, ⑤는 $2\\times1+1=3$으로 성립한다.\n따라서 정답은 ⑤이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
@@ -541,7 +541,7 @@ window.questionBank = [
         "$x=9$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 괄호를 풀고 $x$항을 한쪽으로 모은다.\\n$2(x-9)=-4x$에서 $2x-18=-4x$, 따라서 $6x=18$이므로 $x=3$이다.\\n따라서 정답은 ④이다.",
+      "solution": "[키포인트] 괄호를 풀고 $x$항을 한쪽으로 모은다.\n$2(x-9)=-4x$에서 $2x-18=-4x$, 따라서 $6x=18$이므로 $x=3$이다.\n따라서 정답은 ④이다.",
       "subUnitKey": "M1-03-LINEAR_EQUATION",
       "subUnit": "일차방정식",
       "subUnitConfidence": "rule_inferred",
@@ -614,10 +614,7 @@ window.questionBank = [
       "standardUnitOrder": 4,
       "questionType": "객관식",
       "layoutTag": "grid",
-      "tags": [
-        "도형",
-        "좌표평면과 그래프"
-      ],
+      "tags": ["도형","좌표평면과 그래프","그래프"],
       "wide": false,
       "image": "assets/images/25_동산중_2학기_기말_중1_기출/q15.png",
       "content": "다음 좌표평면 위의 네 점 $A$, $B$, $C$, $D$의 좌표를 나타낸 것으로 옳은 것을 고르시오. [3점]",
@@ -629,7 +626,7 @@ window.questionBank = [
         "$E(0,-4)$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 점의 위치에서 먼저 $x$좌표를 읽고 그다음 $y$좌표를 읽는다.\\n그림에서 $A=(-3,2)$, $B=(0,1)$, $C=(4,3)$, $D=(3,-2)$이다. 보기 중 그림과 일치하는 것은 $C(4,3)$이다.\\n따라서 정답은 ③이다.",
+      "solution": "[키포인트] 점의 위치에서 먼저 $x$좌표를 읽고 그다음 $y$좌표를 읽는다.\n그림에서 $A=(-3,2)$, $B=(0,1)$, $C=(4,3)$, $D=(3,-2)$이다. 보기 중 그림과 일치하는 것은 $C(4,3)$이다.\n따라서 정답은 ③이다.",
       "subUnitKey": "M1-04-COORDINATE_PLANE",
       "subUnit": "좌표평면",
       "subUnitConfidence": "rule_inferred",
@@ -663,10 +660,7 @@ window.questionBank = [
       "standardUnitOrder": 4,
       "questionType": "객관식",
       "layoutTag": "grid",
-      "tags": [
-        "도형",
-        "좌표평면과 그래프"
-      ],
+      "tags": ["도형","좌표평면과 그래프","그래프"],
       "wide": false,
       "image": "assets/images/25_동산중_2학기_기말_중1_기출/q16.png",
       "content": "다음은 좌표와 좌표평면에 대한 그림이다. 이에 대한 설명으로 옳은 것을 모두 고르시오. [4점]",
@@ -721,7 +715,7 @@ window.questionBank = [
         "어느 사분면에도 속하지 않는다."
       ],
       "answer": "②",
-      "solution": "[키포인트] 제4사분면에서는 $a>0$, $b<0$임을 이용해 새 좌표의 부호를 판단한다.\\n$b-a$는 음수이고, $\\dfrac{a}{b}$는 음수이므로 $-\\dfrac{a}{b}$는 양수이다. 따라서 점 $B$의 좌표는 $(음수, 양수)$이므로 제2사분면에 있다.\\n따라서 정답은 ②이다.",
+      "solution": "[키포인트] 제4사분면에서는 $a>0$, $b<0$임을 이용해 새 좌표의 부호를 판단한다.\n$b-a$는 음수이고, $\\dfrac{a}{b}$는 음수이므로 $-\\dfrac{a}{b}$는 양수이다. 따라서 점 $B$의 좌표는 $(음수, 양수)$이므로 제2사분면에 있다.\n따라서 정답은 ②이다.",
       "subUnitKey": "M1-04-COORDINATE_PLANE",
       "subUnit": "좌표평면",
       "subUnitConfidence": "rule_inferred",
@@ -760,7 +754,7 @@ window.questionBank = [
       "content": "속력을 점점 올린 뒤 일정한 속력으로 달린 자동차의 시간에 따른 속력의 변화를 나타낸 그래프를 고르시오. [3점]",
       "choices": [],
       "answer": "①",
-      "solution": "[키포인트] 속력이 점점 커지면 그래프가 올라가고, 이후 일정하면 수평선이 된다.\\n처음에는 속력이 증가하고 그 뒤에는 일정해야 하므로 증가하는 선 뒤에 수평선이 이어지는 그래프를 고른다.\\n따라서 정답은 ①이다.",
+      "solution": "[키포인트] 속력이 점점 커지면 그래프가 올라가고, 이후 일정하면 수평선이 된다.\n처음에는 속력이 증가하고 그 뒤에는 일정해야 하므로 증가하는 선 뒤에 수평선이 이어지는 그래프를 고른다.\n따라서 정답은 ①이다.",
       "subUnitKey": "M1-04-GRAPH_RELATION",
       "subUnit": "그래프와 관계",
       "subUnitConfidence": "rule_inferred",
@@ -856,7 +850,7 @@ window.questionBank = [
         "사탕 50개를 $x$명이 똑같이 나누어 먹었을 때 한 사람이 먹는 사탕의 개수 $y$"
       ],
       "answer": "①, ④",
-      "solution": "[키포인트] 정비례는 $y=ax$ 꼴로 나타나는 관계이다.\\n①은 $y=500x$, ④는 $y=10x$로 정비례한다. ②는 $y=14+x$, ③은 $y=24-x$, ⑤는 $y=\\dfrac{50}{x}$이므로 정비례가 아니다.\\n따라서 정답은 ①, ④이다.",
+      "solution": "[키포인트] 정비례는 $y=ax$ 꼴로 나타나는 관계이다.\n①은 $y=500x$, ④는 $y=10x$로 정비례한다. ②는 $y=14+x$, ③은 $y=24-x$, ⑤는 $y=\\dfrac{50}{x}$이므로 정비례가 아니다.\n따라서 정답은 ①, ④이다.",
       "subUnitKey": "M1-04-GRAPH_RELATION",
       "subUnit": "그래프와 관계",
       "subUnitConfidence": "rule_inferred",

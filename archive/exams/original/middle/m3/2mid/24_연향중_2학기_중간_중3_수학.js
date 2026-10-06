@@ -26,7 +26,7 @@ window.questionBank = [
       "$\\dfrac{4}{3}$"
     ],
     "answer": "①",
-    "solution": "직각삼각형에서 각 $C$를 기준으로 보면 $AC=5$는 빗변이고 $BC=3$은 이웃한 변이다.\n$\\cos C=\\dfrac{BC}{AC}=\\dfrac35$\n따라서 정답은 ①이다.",
+    "solution": "직각삼각형에서 각 $C$를 기준으로 변의 역할을 먼저 정한다.\n직각은 $B$에 있으므로\n$AC=5$는 빗변이고\n$BC=3$은 각 $C$에 이웃한 변이다.\n코사인은\n$\\cos C=\\dfrac{\\text{이웃한 변}}{\\text{빗변}}$이므로\n$\\cos C=\\dfrac{BC}{AC}\n=\\dfrac35$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q1.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -313,7 +313,7 @@ window.questionBank = [
       "$42\\sqrt2$"
     ],
     "answer": "④",
-    "solution": "평행사변형이므로 $BC=AD=6\\sqrt2$이다.\n점 $A$에서 $BC$에 내린 높이를 $h$라 하면\n$h=AB\\sin45^\\circ=7\\times\\dfrac{\\sqrt2}{2}=\\dfrac{7\\sqrt2}{2}$이다.\n\n따라서 평행사변형의 넓이는\n$BC\\times h=6\\sqrt2\\times\\dfrac{7\\sqrt2}{2}=42$이다.\n따라서 정답은 ④이다.",
+    "solution": "평행사변형이므로 마주 보는 두 변의 길이가 같아\n$BC=AD=6\\sqrt2$이다.\n$BC$를 밑변으로 잡고, 점 $A$에서 직선 $BC$에 내린 높이를 $h$라 하자.\n$\\angle B=45^\\circ$이고 $AB=7$이므로\n직각삼각형에서\n$\\sin45^\\circ=\\dfrac{h}{AB}\n=\\dfrac{h}{7}$이다.\n따라서\n$h=7\\sin45^\\circ\n=7\\times\\dfrac{\\sqrt2}{2}\n=\\dfrac{7\\sqrt2}{2}$이다.\n그러므로 평행사변형 $ABCD$의 넓이는\n$BC\\times h\n=6\\sqrt2\\times\\dfrac{7\\sqrt2}{2}\n=42$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q10.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -408,7 +408,7 @@ window.questionBank = [
       "$\\dfrac52$"
     ],
     "answer": "①",
-    "solution": "좌표의 차를 이용해 세 변의 길이를 비교한다.\n$AB^2=(-1+4)^2+(-1-1)^2=3^2+(-2)^2=13$\n$AC^2=(1+1)^2+(2+1)^2=2^2+3^2=13$\n$BC^2=(1+4)^2+(2-1)^2=5^2+1^2=26$이다.\n\n따라서 $AB=AC$이고\n$AB^2+AC^2=BC^2$이므로 $\\angle A=90^\\circ$인 직각이등변삼각형이다.\n그러므로 $\\angle B=45^\\circ$이다.\n\n$\\sin B\\cos B=\\dfrac{\\sqrt2}{2}\\times\\dfrac{\\sqrt2}{2}=\\dfrac12$이다.\n따라서 정답은 ①이다.",
+    "solution": "먼저 좌표를 이용하여 세 변의 길이를 확인한다.\n$A(-1,-1)$, $B(-4,1)$이므로\n$AB^2=(-1+4)^2+(-1-1)^2\n=3^2+(-2)^2\n=13$이다.\n또\n$AC^2=(1+1)^2+(2+1)^2\n=2^2+3^2\n=13$이다.\n그리고\n$BC^2=(1+4)^2+(2-1)^2\n=5^2+1^2\n=26$이다.\n\n따라서\n$AB=AC$이고\n$AB^2+AC^2=13+13=26=BC^2$이다.\n그러므로 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각이등변삼각형이다.\n따라서\n$\\angle B=45^\\circ$이다.\n\n이제\n$\\sin B\\times\\cos B\n=\\sin45^\\circ\\times\\cos45^\\circ$\n$=\\dfrac{\\sqrt2}{2}\\times\\dfrac{\\sqrt2}{2}$\n$=\\dfrac12$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q13.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",

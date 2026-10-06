@@ -22,7 +22,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$180=2^2\\times3^2\\times5$\n\n따라서\n\n$a=2,\\quad b=3,\\quad c=5$\n\n$a\\times b-c=2\\times3-5=1$\n\n정답은 ④이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -59,7 +59,7 @@ window.questionBank = [
       "-4"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$a★b=3a-b$\n\n$2★3=3\\times2-3$\n\n$=6-3$\n\n$=3$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -96,7 +96,7 @@ window.questionBank = [
       "오전 9시 40분"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "세 열차가 다시 동시에 출발하는 간격은\n\n$\\operatorname{lcm}(20,35,10)$\n\n$=140$분\n\n$140$분 $=2$시간 $20$분\n\n오전 $5$시에서 $2$시간 $20$분 뒤는\n\n오전 $7$시 $20$분\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -133,7 +133,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "$100=2^2\\times5^2$\n\n보기의 $9=3^2$를 곱하면\n\n$100\\times9=2^2\\times3^2\\times5^2$\n\n약수의 개수는\n\n$(2+1)(2+1)(2+1)=27$\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -170,7 +170,7 @@ window.questionBank = [
       "45개"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "분모가 $75$인 기약분수의 분자는\n$1$부터 $74$까지 중 $75$와 서로소인 수이다.\n\n$75=3\\times5^2$\n\n개수는\n\n$75\\left(1-\\dfrac13\\right)\\left(1-\\dfrac15\\right)$\n\n$=75\\times\\dfrac23\\times\\dfrac45$\n\n$=40$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -207,7 +207,7 @@ window.questionBank = [
       "$2\\times3\\times5\\times7$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "최대공약수는 각 소인수의 작은 지수를 취한다.\n\n$a=2\\times3\\times5=30$\n\n최소공배수는 큰 지수를 취한다.\n\n$b=2^2\\times3^2\\times5^2\\times7=6300$\n\n따라서\n\n$\\dfrac ba=\\dfrac{6300}{30}=210$\n\n$=2\\times3\\times5\\times7$\n\n정답은 ⑤이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -244,7 +244,7 @@ window.questionBank = [
       "모든 자연수는 약수의 개수가 2개 이상이다."
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "①\n\n$\\gcd(8,15)=1$\n\n이므로 $8$과 $15$는 서로소이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -283,7 +283,7 @@ window.questionBank = [
       "유리수는 양의 유리수와 음의 유리수로 이루어져 있다."
     ],
     "answer": "②,⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②,⑤이다.",
+    "solution": "② 정수에는 가장 작은 수가 없다.\n\n⑤ 유리수에는 $0$도 포함된다.\n\n따라서 옳지 않은 것은\n\n②, ⑤이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -320,7 +320,7 @@ window.questionBank = [
       "9개"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "조건은\n\n$-4\\le x\\le\\dfrac{10}{3}$\n\n이를 만족하는 정수는\n\n$-4,-3,-2,-1,0,1,2,3$\n\n모두 $8$개이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -357,7 +357,7 @@ window.questionBank = [
       "$(-2)\\times8\\div4$"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "각 값을 계산하면\n\n① $=-4$\n\n② $=-4$\n\n③ $=-2$\n\n④ $=-4$\n\n⑤ $=-4$\n\n나머지 넷과 다른 것은 ③이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -394,7 +394,7 @@ window.questionBank = [
       "13"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "$\\dfrac12-\\left[\\{(-2)^4-8\\div\\dfrac43\\}+3\\right]$\n\n$=\\dfrac12-\\left[(16-6)+3\\right]$\n\n$=\\dfrac12-13$\n\n$=-\\dfrac{25}{2}$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -431,7 +431,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "세 수의 곱을 계산한다.\n\n$(-2)\\left(-\\dfrac32\\right)\\left(\\dfrac13\\right)=1$\n\n$(-2)\\left(-\\dfrac32\\right)(-3)=-9$\n\n$(-2)\\left(\\dfrac13\\right)(-3)=2$\n\n$\\left(-\\dfrac32\\right)\\left(\\dfrac13\\right)(-3)=\\dfrac32$\n\n가장 큰 값은 $2$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -468,7 +468,7 @@ window.questionBank = [
       "-2"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "$6-(-2)-(-1)^3+(-6)$\n\n$=6+2-(-1)-6$\n\n$=6+2+1-6$\n\n$=3$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -507,7 +507,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$-4$부터 $4$까지의 합은 $0$이므로\n마방진의 한 줄의 합도 $0$이다.\n\n가운데가 $0$인 $3\\times3$ 마방진에서\n서로 마주 보는 두 칸의 합은 $0$이다.\n\n왼쪽 아래가 $+1$이므로\n오른쪽 위 ㉠은\n\n$-1$\n\n따라서 정답은 ②이다.",
     "image": "assets/images/19_팔마중_1학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
@@ -545,7 +545,7 @@ window.questionBank = [
       "1개"
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "정수를 $x$라 하자.\n\n$x+\\dfrac{11}{5}<0$\n\n$x<-\\dfrac{11}{5}$\n\n또\n\n$x+\\dfrac{26}{5}>0$\n\n$x>-\\dfrac{26}{5}$\n\n따라서\n\n$-\\dfrac{26}{5}<x<-\\dfrac{11}{5}$\n\n정수는\n\n$-5,-4,-3$\n\n모두 $3$개이다.\n\n정답은 ③이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -582,7 +582,7 @@ window.questionBank = [
       "$(x+y)\\div(-2)\\times c=-\\dfrac{c(x+y)}{2}$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "⑤를 정리하면\n\n$(x+y)\\div(-2)\\times c$\n\n$=-\\dfrac{x+y}{2}\\times c$\n\n$=-\\dfrac{c(x+y)}{2}$\n\n따라서 옳은 것은 ⑤이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -619,7 +619,7 @@ window.questionBank = [
       "1997"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "두 항씩 묶으면\n\n$(-1)+(-1)^2=-1+1=0$\n\n$(-1)^3+(-1)^4=-1+1=0$\n\n이와 같이 $1996$번째 항까지 합은 $0$이다.\n\n마지막 항은\n\n$(-1)^{1997}=-1$\n\n따라서 전체 합은 $-1$이다.\n\n정답은 ②이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -656,7 +656,7 @@ window.questionBank = [
       "$a=8, b=4$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$30!$에서 $5$의 지수는\n\n$\\left\\lfloor\\dfrac{30}{5}\\right\\rfloor\n+\\left\\lfloor\\dfrac{30}{25}\\right\\rfloor$\n\n$=6+1=7$\n\n$7$의 지수는\n\n$\\left\\lfloor\\dfrac{30}{7}\\right\\rfloor=4$\n\n따라서\n\n$a=7,\\quad b=4$\n\n정답은 ④이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -693,7 +693,7 @@ window.questionBank = [
       "30"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "최대공약수가 $6$이므로\n\n$A=6m,\\quad B=6n$\n\n이라 두면\n\n$\\gcd(m,n)=1$\n\n최소공배수가 $36$이므로\n\n$6mn=36$\n\n$mn=6$\n\n두 수가 모두 두 자리여야 하므로\n\n$m,n=2,3$\n\n따라서\n\n$A,B=12,18$\n\n$A+B=30$\n\n정답은 ⑤이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
@@ -730,7 +730,7 @@ window.questionBank = [
       "-4"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "$x=-3,\\ y=-2$\n\n$8x-11y$\n\n$=8(-3)-11(-2)$\n\n$=-24+22$\n\n$=-2$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -763,7 +763,7 @@ window.questionBank = [
     "content": "$a$의 역수를 $-\\dfrac{4}{3}$, $\\dfrac{3}{8}$의 역수를 $b$라고 할 때, $a+b$의 값을 구하여라.\\n(1) $a$의 값을 구하여라.\\n(2) $b$의 값을 구하여라.\\n(3) $a+b$의 값을 구하여라.",
     "choices": [],
     "answer": "$a=-\\dfrac{3}{4}$, $b=\\dfrac{8}{3}$, $a+b=\\dfrac{23}{12}$",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $a=-\\dfrac{3}{4}$, $b=\\dfrac{8}{3}$, $a+b=\\dfrac{23}{12}$이다.",
+    "solution": "$a$의 역수가 $-\\dfrac43$이므로\n\n$a=-\\dfrac34$\n\n$\\dfrac38$의 역수는\n\n$b=\\dfrac83$\n\n따라서\n\n$a+b=-\\dfrac34+\\dfrac83$\n\n$=-\\dfrac9{12}+\\dfrac{32}{12}$\n\n$=\\dfrac{23}{12}$",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -796,7 +796,7 @@ window.questionBank = [
     "content": "두 학생 $A$, $B$가 계단에서 가위바위보 놀이를 하는데 이기면 2칸 올라가고, 비기면 1칸 올라가고, 지면 1칸 내려가기로 했다. 처음 위치를 0으로 하고, 1칸 올라가는 것을 $+1$, 1칸 내려가는 것을 $-1$이라고 하자. 가위바위보를 10번 하여 $A$학생은 5번 이기고 3번 비겼다고 할 때, 게임이 끝난 후 두 학생 $A$, $B$의 위치를 나타내는 수의 차를 구하여라.\\n(1) $A$학생의 위치를 구하는 풀이과정을 쓰고 답을 구하여라.\\n(2) $B$학생의 위치를 구하는 풀이과정을 쓰고 답을 구하여라.\\n(3) 두 학생 $A$, $B$의 위치를 나타내는 수의 차를 구하여라.",
     "choices": [],
     "answer": "$A=11$, $B=2$, 차 $9$",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $A=11$, $B=2$, 차 $9$이다.",
+    "solution": "A는 $10$번 중\n\n승 $5$번, 무 $3$번, 패 $2$번이다.\n\n$A=5\\times2+3\\times1-2\\times1$\n\n$=11$\n\nB는\n\n승 $2$번, 무 $3$번, 패 $5$번이다.\n\n$B=2\\times2+3-5$\n\n$=2$\n\n두 위치의 차는\n\n$11-2=9$",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -829,7 +829,7 @@ window.questionBank = [
     "content": "$-4$보다 3만큼 큰 수를 $A$, $|x|=\\dfrac{1}{2}$인 $x$ 중에서 큰 수를 $B$라 할 때, $AB+2(-B)^2$의 값을 구하여라.\\n(1) $A$의 값을 구하여라.\\n(2) $B$의 값을 구하여라.\\n(3) $AB+2(-B)^2$의 값을 구하여라.",
     "choices": [],
     "answer": "$A=-1$, $B=\\dfrac{1}{2}$, 값 $0$",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 $A=-1$, $B=\\dfrac{1}{2}$, 값 $0$이다.",
+    "solution": "$A=-4+3=-1$\n\n$|x|=\\dfrac12$인 두 수 중 큰 수는\n\n$B=\\dfrac12$\n\n따라서\n\n$AB+2(-B)^2$\n\n$=(-1)\\left(\\dfrac12\\right)\n+2\\left(-\\dfrac12\\right)^2$\n\n$=-\\dfrac12+2\\times\\dfrac14$\n\n$=0$",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "candidate_evidence",

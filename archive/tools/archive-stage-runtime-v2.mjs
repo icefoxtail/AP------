@@ -1,5 +1,6 @@
 import { QUALITY_CONTRACT_V2 } from './archive-stage-validator-artifact-v2.mjs';
 import { validateCodexRenderReceipt, validateCodexMainDoneReceipt } from './archive-codex-closeout-v2.mjs';
+import { validateGptMainDoneReceipt } from './archive-gpt-closeout-v2.mjs';
 const STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'MAIN', 'RENDER', 'PUBLICATION', 'MAIN_DONE']);
 const NEXT_STAGE = Object.freeze({
   CREATE: 'R1',
@@ -27,15 +28,22 @@ export function buildStageState({
   closurePending = false,
   qualityContractVersion,
   executionLine,
+  campaignId,
+  stream,
 } = {}) {
   required(typeof workComplete === 'boolean', 'STAGE_STATE_WORK_COMPLETE_BOOLEAN_REQUIRED');
   required(typeof closurePending === 'boolean', 'STAGE_STATE_CLOSURE_PENDING_BOOLEAN_REQUIRED');
   if(qualityContractVersion !== undefined) {
     required(qualityContractVersion===QUALITY_CONTRACT_V2,'STAGE_QUALITY_CONTRACT_UNSUPPORTED');
     required(['CODEX','GPT_SCHEDULED'].includes(executionLine),'STAGE_EXECUTION_LINE_REQUIRED');
+    if (executionLine === 'GPT_SCHEDULED') {
+      required(nonEmpty(campaignId),'STAGE_GPT_CAMPAIGN_ID_REQUIRED');
+      required(['A','B','C'].includes(String(stream || '').toUpperCase()),'STAGE_GPT_STREAM_REQUIRED');
+    }
   }
   return {
     ...(qualityContractVersion ? {qualityContractVersion,executionLine} : {}),
+    ...(executionLine === 'GPT_SCHEDULED' ? {campaignId,stream:String(stream).toUpperCase()} : {}),
     stage: normalizeStage(stage),
     workComplete,
     closurePending,
@@ -44,7 +52,7 @@ export function buildStageState({
 
 export function buildContinuation(input = {}) {
   const stage = normalizeStage(input.stage);
-  const contract=buildStageState({stage,qualityContractVersion:input.qualityContractVersion,executionLine:input.executionLine});
+  const contract=buildStageState({stage,qualityContractVersion:input.qualityContractVersion,executionLine:input.executionLine,campaignId:input.campaignId,stream:input.stream});
 
   for (const field of [
     'examUid',
@@ -60,6 +68,7 @@ export function buildContinuation(input = {}) {
 
   return {
     ...(contract.qualityContractVersion ? {qualityContractVersion:contract.qualityContractVersion,executionLine:contract.executionLine} : {}),
+    ...(contract.executionLine === 'GPT_SCHEDULED' ? {campaignId:contract.campaignId,stream:contract.stream} : {}),
     stage,
     examUid: input.examUid,
     inputArtifactSha: input.inputArtifactSha,
@@ -72,7 +81,7 @@ export function buildContinuation(input = {}) {
 }
 
 function targetKey(value) {
-  return value.stage + ':' + value.examUid;
+  return [value.executionLine || 'LEGACY', value.campaignId || '-', value.stream || '-', value.stage, value.examUid].join(':');
 }
 
 export function handoffContinuation({ state, continuation } = {}) {
@@ -114,6 +123,10 @@ export function consumeValidationPass({ state, validationReport } = {}) {
   if(current.qualityContractVersion) {
     required(validationReport.qualityContractVersion===current.qualityContractVersion,'CLOSURE_CONTRACT_DOWNGRADE_FORBIDDEN');
     required(validationReport.executionLine===current.executionLine,'CLOSURE_EXECUTION_LINE_MISMATCH');
+    if (current.executionLine === 'GPT_SCHEDULED') {
+      required(validationReport.campaignId===current.campaignId,'CLOSURE_GPT_CAMPAIGN_ID_MISMATCH');
+      required(String(validationReport.stream || '').toUpperCase()===current.stream,'CLOSURE_GPT_STREAM_MISMATCH');
+    }
   }
   const currentContract=validationReport.qualityContractVersion===QUALITY_CONTRACT_V2;
   if(currentContract) required(validationReport.artifactContract?.active===true,'CLOSURE_ARTIFACT_GATE_REQUIRED');
@@ -124,6 +137,7 @@ export function consumeValidationPass({ state, validationReport } = {}) {
     state: buildStageState({
       stage: nextStage,
       ...(currentContract ? {qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:validationReport.executionLine} : {}),
+      ...(validationReport.executionLine === 'GPT_SCHEDULED' ? {campaignId:validationReport.campaignId,stream:validationReport.stream} : {}),
       workComplete: false,
       closurePending: false,
     }),
@@ -136,6 +150,7 @@ export function consumeValidationPass({ state, validationReport } = {}) {
       evidenceRef: validationReport.evidenceRef,
       validatorMode: validationReport.validatorMode,
       disposition: 'PASS',
+      ...(validationReport.executionLine === 'GPT_SCHEDULED' ? {qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'GPT_SCHEDULED',campaignId:validationReport.campaignId,stream:validationReport.stream} : {}),
     },
   };
 }
@@ -201,4 +216,13 @@ export function consumeCodexMainDone({state,...input}) {
   required(buildStageState(state).stage==='PUBLICATION','PUBLICATION_STAGE_REQUIRED');
   const result=validateCodexMainDoneReceipt(input);required(result.ok,'MAIN_DONE_CLOSURE_FAILED:'+result.issues.join(','));
   return {state:buildStageState({stage:'MAIN_DONE',workComplete:true,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'CODEX'}),receipt:input.receipt};
+}
+
+export function consumeGptMainDone({state,...input}) {
+  const current=buildStageState(state);
+  required(current.stage==='MAIN','GPT_MAIN_STAGE_REQUIRED');
+  required(current.executionLine==='GPT_SCHEDULED','GPT_MAIN_EXECUTION_LINE_REQUIRED');
+  const result=validateGptMainDoneReceipt({...input,campaignId:current.campaignId,stream:current.stream});
+  required(result.ok,'GPT_MAIN_DONE_CLOSURE_FAILED:'+result.issues.join(','));
+  return {state:buildStageState({stage:'MAIN_DONE',workComplete:true,qualityContractVersion:QUALITY_CONTRACT_V2,executionLine:'GPT_SCHEDULED',campaignId:current.campaignId,stream:current.stream}),receipt:input.receipt};
 }

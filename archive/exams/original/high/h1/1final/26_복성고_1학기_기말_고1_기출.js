@@ -78,7 +78,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 행렬 $A=\\begin{pmatrix}-6&a\\\\3&0\\end{pmatrix}$, $B=\\begin{pmatrix}b&1\\\\-2&0\\end{pmatrix}$에 대하여 $A=kB$일 때, $a+b+k$의 값은? [3.6점]",
+    "content": "두 행렬 <br>$A=\\begin{pmatrix}-6&a\\\\3&0\\end{pmatrix}$, $B=\\begin{pmatrix}b&1\\\\-2&0\\end{pmatrix}$에 대하여 $A=kB$일 때, $a+b+k$의 값은? [3.6점]",
     "choices": [
       "$-3$",
       "$-1$",
@@ -171,7 +171,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "두 행렬 $A=\\begin{pmatrix}2&0\\\\-5&4\\end{pmatrix}$, $B=\\begin{pmatrix}1&-1\\\\3&2\\end{pmatrix}$에 대하여 $A+2B$의 $(1,1)$성분을 $a$, $2A-B$의 $(2,1)$성분을 $b$라 하자. $a-b$의 값은? [3.7점]",
+    "content": "두 행렬 <br>$A=\\begin{pmatrix}2&0\\\\-5&4\\end{pmatrix}$, $B=\\begin{pmatrix}1&-1\\\\3&2\\end{pmatrix}$에 대하여 $A+2B$의 $(1,1)$성분을 $a$, $2A-B$의 $(2,1)$성분을 $b$라 하자. $a-b$의 값은? [3.7점]",
     "choices": [
       "16",
       "17",
@@ -512,7 +512,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "이차정사각행렬 $A$의 $(i,j)$성분이 $a_{ij}=0 (i<j)$, $a_{ij}=1 (i\\ge j)$일 때, $A+A^2+\\cdots+A^{10}$의 모든 성분의 합은? [4.3점]",
+    "content": "이차정사각행렬 $A$의 $(i,j)$성분이 $a_{ij}=0 (i<j)$, <br>$a_{ij}=1 (i\\ge j)$일 때, $A+A^2+\\cdots+A^{10}$의 모든 성분의 합은? [4.3점]",
     "choices": [
       "60",
       "65",
@@ -577,7 +577,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "그림과 같은 $A,B,C,D$ 4개의 영역을 서로 다른 $k$($k\\ge4$)가지 이하의 색으로 칠하려고 한다. 같은 색을 여러 번 사용해도 좋으나 인접한 영역은 서로 다른 색으로 칠하여 구분할 때, 칠하는 방법의 수가 480이 되도록 하는 $k$의 값은? (단, 각 영역에는 한 가지 색만 칠하고, 경계선을 공유하는 경우만 인접한 영역으로 생각한다.) [4.7점]",
+    "content": "그림과 같은 $A,B,C,D$ 4개의 영역을 서로 다른 $k$<br>($k\\ge4$)가지 이하의 색으로 칠하려고 한다. 같은 색을 여러 번 사용해도 좋으나 인접한 영역은 서로 다른 색으로 칠하여 구분할 때, 칠하는 방법의 수가 480이 되도록 하는 $k$의 값은? (단, 각 영역에는 한 가지 색만 칠하고, 경계선을 공유하는 경우만 인접한 영역으로 생각한다.) [4.7점]",
     "choices": [
       "5",
       "6",
@@ -609,7 +609,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "세 이차정사각행렬 $A=\\begin{pmatrix}a&0\\\\0&0\\end{pmatrix}$, $B,C$가 다음 조건을 만족시킨다.<br><div class='note-box'>1) $AB=CA$<br>2) 행렬 $B$의 모든 성분의 합이 $-2$이다.<br>3) 행렬 $C$의 $(1,1)$성분과 $(2,1)$성분이 같다.</div>$B+C=\\begin{pmatrix}0&-2\\\\1&2\\end{pmatrix}$일 때, 행렬 $C$의 모든 성분의 합은? (단, $a$는 0이 아닌 상수이다.) [4.7점]",
+    "content": "세 이차정사각행렬 $A=\\begin{pmatrix}a&0\\\\0&0\\end{pmatrix}$, $B,C$가 다음 조건을 만족시킨다.<br><div class='note-box'>1) $AB=CA$<br>2) 행렬 $B$의 모든 성분의 합이 $-2$이다.<br>3) 행렬 $C$의 $(1,1)$성분과 $(2,1)$성분이 같다.</div><br>$B+C=\\begin{pmatrix}0&-2\\\\1&2\\end{pmatrix}$일 때, 행렬 $C$의 모든 성분의 합은? (단, $a$는 0이 아닌 상수이다.) [4.7점]",
     "choices": [
       "1",
       "2",

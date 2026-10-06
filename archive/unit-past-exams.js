@@ -338,7 +338,7 @@
     const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
     const meta = {
       title: paper.title, customTitle: paper.title, identityTitle: paper.title, count: questions.length,
-      generatedAt: new Date().toISOString(), category: '단원별 기출', grade: profile.grade, gradeLabel: profile.gradeLabel,
+      generatedAt: paper.snapshotGeneratedAt ||= new Date().toISOString(), category: '단원별 기출', grade: profile.grade, gradeLabel: profile.gradeLabel,
       qpp: Number(getQpp()), includeQr: false,
       scopeLabel: collection?.scopeLabel || '2학기 기말까지', unitKey: unit.key, unitName: unit.name, subject: collection?.course || unit.course, sourceType: 'mixed',
       subUnitKeys: selectedSubUnits.map(item => item.key), subUnits: selectedSubUnits,
@@ -354,8 +354,10 @@
       metadataRevision: [...new Set(paper.records.map(record => record.metadataRevision).filter(Boolean))].join(',') || '',
       printHeaderOptions: { ...printHeaderOptions }
     };
-    localStorage.setItem(`mixedQuestions_${paper.snapshotKey}`, JSON.stringify(questions));
-    localStorage.setItem(`mixedMeta_${paper.snapshotKey}`, JSON.stringify(meta));
+    if (!readyShelf()) {
+      localStorage.setItem(`mixedQuestions_${paper.snapshotKey}`, JSON.stringify(questions));
+      localStorage.setItem(`mixedMeta_${paper.snapshotKey}`, JSON.stringify(meta));
+    }
     return meta;
   }
   async function prepareOutputEnvelope(paper, questions, meta, mode = 'exam') {
@@ -371,7 +373,7 @@
     ]);
     paper.outputEnvelopeCache ||= {};
     const cached = paper.outputEnvelopeCache[mode];
-    if (cached?.signature === signature) return cached.envelope;
+    if (cached?.signature === signature && cached.envelope.expiresAt > Date.now() + 30000) return cached.envelope;
     const envelope = await output.publishOutputEnvelope({
       sourceKind: 'unit-past',
       sourceId: paper.snapshotKey,
@@ -448,13 +450,17 @@
         collection: paper.selection?.collection || null, school: paper.school || '', schoolKey: paper.schoolKey || '',
         questionUids: paper.records.map(record => core.getQuestionUid(record)).filter(Boolean)
       };
-      localStorage.setItem(`APMATH_UNIT_PAST_ASSIGN_${paper.snapshotKey}`, JSON.stringify(pending));
       const url = new URL('index.html', window.location.href);
       url.searchParams.set('unitPastAssign', paper.snapshotKey); url.searchParams.set('qpp', getQpp());
       if (readyShelf()) {
         url.searchParams.set('archive2Embedded', '1');
+        url.searchParams.set('outputRequestId', outputEnvelope.outputRequestId);
+        url.searchParams.set('outputOwnerId', outputEnvelope.ownerId);
         openReadyAssignment(url, paper);
-      } else window.location.href = appendSessionHash(url.toString());
+      } else {
+        localStorage.setItem(`APMATH_UNIT_PAST_ASSIGN_${paper.snapshotKey}`, JSON.stringify(pending));
+        window.location.href = appendSessionHash(url.toString());
+      }
     } catch (error) { console.error(error); setStatus(error.message || '출제 준비에 실패했습니다.', true); alert(error.message || '출제 준비에 실패했습니다.'); }
   }
   function openReadyAssignment(url, paper) {

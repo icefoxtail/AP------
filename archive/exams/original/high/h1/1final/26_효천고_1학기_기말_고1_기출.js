@@ -70,7 +70,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 행렬 $A=\\begin{pmatrix}1&a\\\\0&-1\\end{pmatrix}$, $B=\\begin{pmatrix}2&2\\\\b&-2\\end{pmatrix}$에 대하여 $2A=B$일 때, $a+b$의 값은? [3점]",
+    "content": "두 행렬 $A=\\begin{pmatrix}1&a\\\\0&-1\\end{pmatrix}$, $B=\\begin{pmatrix}2&2\\\\b&-2\\end{pmatrix}$에 대하여 <br>$2A=B$일 때, $a+b$의 값은? [3점]",
     "choices": [
       "$1$",
       "$2$",
@@ -649,7 +649,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "<strong>서술형 2. [5점]</strong><br>다음 그림과 같이 이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표는 $1$, $5$이다. $h(x)=f(x)-g(x)$라 한다. $0\\le x\\le4$에서 이차함수 $h(x)$의 최솟값이 $-8$이다. $0\\le x\\le4$에서 $h(x)$의 최댓값과 그때의 $x$값을 구하는 과정을 서술하시오.",
+    "content": "<strong>서술형 2. [5점]</strong><br>다음 그림과 같이 이차함수 $y=f(x)$의 그래프와 <br>직선 $y=g(x)$가 만나는 두 점의 $x$좌표는 $1$, $5$이다. $h(x)=f(x)-g(x)$라 한다. $0\\le x\\le4$에서 이차함수 $h(x)$의 최솟값이 $-8$이다. $0\\le x\\le4$에서 $h(x)$의 최댓값과 그때의 $x$값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "최댓값 $10$, $x=0$",
     "solution": "[키포인트] 두 그래프의 교점은 $h(x)=0$의 두 근이고, 그림에서 $h$의 최고차항 계수가 양수임을 읽는다.\n조건 정리: $h(1)=h(5)=0$이고, 그림에서 $f$가 이차함수, $g$가 직선이며 $h=f-g$는 위로 열린 이차함수이다.\n풀이 방향: $h(x)=c(x-1)(x-5)$로 두고 최솟값으로 $c$를 정한다.\n정석 풀이: $h(x)=c(x-1)(x-5)$ $(c>0)$이고, 두 근의 중점인 $x=3$에서 최솟값을 갖는다. $h(3)=c(2)(-2)=-4c=-8$이므로 $c=2$이다. 따라서 $h(x)=2(x-1)(x-5)$이다. 구간 $0\\le x\\le4$에서 꼭짓점의 값은 $-8$이고 양 끝값은 $h(0)=2(-1)(-5)=10$, $h(4)=2(3)(-1)=-6$이다. 그러므로 최댓값은 $10$이고 그때 $x=0$이다.\n따라서 구하는 최댓값은 $10$이고, 그때의 $x$값은 $0$이다.",
@@ -674,7 +674,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "<strong>서술형 3. [5점]</strong><br>$2$보다 큰 짝수인 자연수 $n$에 대하여 $A_n=\\begin{pmatrix}1&n\\\\0&(-1)^n\\end{pmatrix}$, $B_n=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}$이라고 정의하자. $X=\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$에 대하여 $A_nB_nX=\\begin{pmatrix}1\\\\1\\end{pmatrix}$이 성립할 때, $x$가 자연수가 되는 $n$의 값 중 최솟값을 구하는 과정을 서술하시오.",
+    "content": "<strong>서술형 3. [5점]</strong><br>$2$보다 큰 짝수인 자연수 $n$에 대하여 <br>$A_n=\\begin{pmatrix}1&n\\\\0&(-1)^n\\end{pmatrix}$, <br>$B_n=\\begin{pmatrix}1&0\\\\0&(n-1)!\\end{pmatrix}$이라고 정의하자. <br>$X=\\begin{pmatrix}-x^2\\\\y\\end{pmatrix}$에 대하여 $A_nB_nX=\\begin{pmatrix}1\\\\1\\end{pmatrix}$이 성립할 때, $x$가 자연수가 되는 $n$의 값 중 최솟값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$10$",
     "solution": "[키포인트] 행렬곱을 차례로 계산하여 $x^2=n-1$이라는 조건을 만든다.\n조건 정리: $n$은 짝수이므로 $(-1)^n=1$이다.\n풀이 방향: 먼저 $B_nX$를 구하고, 다시 $A_n$을 곱하여 두 성분의 연립식으로 바꾼다.\n정석 풀이: $B_nX=\\begin{pmatrix}-x^2\\\\(n-1)!y\\end{pmatrix}$이다. $n$이 짝수이므로 $A_nB_nX=\\begin{pmatrix}-x^2+n(n-1)!y\\\\(n-1)!y\\end{pmatrix}$이다. 이것이 $\\begin{pmatrix}1\\\\1\\end{pmatrix}$과 같으므로 $(n-1)!y=1$이고, 첫째 성분에서 $-x^2+n=1$이다. 따라서 $x^2=n-1$이다. $n$은 2보다 큰 짝수이므로 $n-1$은 1보다 큰 홀수이고 동시에 완전제곱수여야 한다. 가장 작은 값은 $9=3^2$이므로 $n-1=9$, $n=10$이다.\n따라서 구하는 최솟값은 $10$이다.",
