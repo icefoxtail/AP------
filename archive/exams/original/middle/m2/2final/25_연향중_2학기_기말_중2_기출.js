@@ -25,7 +25,7 @@ window.questionBank = [
       "$30\\rm\\,cm$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 닮은 도형에서 대응하는 변의 길이의 비는 닮음비와 같다.\n조건 정리: $\\triangle ABC\\sim\\triangle DEF$이고 닮음비가 $3:1$이므로 $AB:DE=BC:EF=CA:FD=3:1$이다.\n풀이 방향: 큰 삼각형의 두 변을 이용해 작은 삼각형의 나머지 두 변을 구한다.\n정석 풀이: $BC=24\\rm\\,cm$이므로 $EF=24\\div3=8\\rm\\,cm$이고, $CA=18\\rm\\,cm$이므로 $FD=18\\div3=6\\rm\\,cm$이다. 또 $DE=10\\rm\\,cm$이다. 따라서 $\\triangle DEF$의 둘레는 $10+8+6=24\\rm\\,cm$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 닮은 도형에서 대응하는 변의 길이의 비는 닮음비와 같다.\n$BC=24\\rm\\,cm$이므로 $EF=24\\div3=8\\rm\\,cm$이고, $CA=18\\rm\\,cm$이므로 $FD=18\\div3=6\\rm\\,cm$이다. 또 $DE=10\\rm\\,cm$이다. 따라서 $\\triangle DEF$의 둘레는 $10+8+6=24\\rm\\,cm$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q1.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
@@ -61,7 +61,7 @@ window.questionBank = [
     "content": "다음 중 $\\overline{BC}\\parallel\\overline{DE}$인 것은? [4점]",
     "choices": [],
     "answer": "②",
-    "solution": "[키포인트] 두 직선이 평행하려면 교점을 기준으로 대응하는 두 선분의 길이의 비가 같아야 한다.\n풀이 방향: 각 보기에서 두 직선이 평행일 때 성립해야 하는 선분의 비를 확인한다.\n정석 풀이: ②에서 $AD:AB=2:6=1:3$이고 $AE:AC=3:9=1:3$이다. 두 비가 같으므로 삼각형의 두 변을 같은 비로 나누는 점을 이은 선분의 성질에 따라 $DE\\parallel BC$이다. 다른 보기들은 대응하는 선분의 비가 같지 않다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 두 직선이 평행하려면 교점을 기준으로 대응하는 두 선분의 길이의 비가 같아야 한다.\n②에서 $AD:AB=2:6=1:3$이고 $AE:AC=3:9=1:3$이다. 두 비가 같으므로 삼각형의 두 변을 같은 비로 나누는 점을 이은 선분의 성질에 따라 $DE\\parallel BC$이다. 다른 보기들은 대응하는 선분의 비가 같지 않다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q2.png",
     "imageSize": "tall",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
@@ -104,7 +104,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이로 생기는 삼각형들은 서로 닮음이다.\n풀이 방향: $\\triangle ABD\\sim\\triangle ABC$에서 대응변의 비를 이용한다.\n정석 풀이: $\\angle ADB=\\angle ABC=90^\\circ$이고 $\\angle A$가 공통이므로 $\\triangle ABD\\sim\\triangle ABC$이다. 따라서 $AB:AC=AD:AB$이므로 $6:AC=3:6$이다. 그러므로 $AC=12$이고 $DC=AC-AD=12-3=9$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이로 생기는 삼각형들은 서로 닮음이다.\n$\\angle ADB=\\angle ABC=90^\\circ$이고 $\\angle A$가 공통이므로 $\\triangle ABD\\sim\\triangle ABC$이다. 따라서 $AB:AC=AD:AB$이므로 $6:AC=3:6$이다. 그러므로 $AC=12$이고 $DC=AC-AD=12-3=9$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q3.png",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q3-solution.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
@@ -188,7 +188,7 @@ window.questionBank = [
       "$\\dfrac53\\rm\\,cm$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 사다리꼴의 두 대각선의 교점은 두 대각선을 평행한 두 밑변의 길이의 비로 나눈다.\n풀이 방향: 대각선에서 $AP:PC$를 구한 뒤 $\\triangle CPQ\\sim\\triangle CAD$를 이용한다.\n정석 풀이: 사다리꼴에서 두 대각선의 교점은 각 대각선을 두 밑변의 길이의 비로 나누므로 $AP:PC=AD:BC=4:8=1:2$이다. 따라서 $CP:CA=2:3$이다. $P$는 $AC$ 위, $Q$는 $DC$ 위에 있고 $PQ\\parallel AD$이므로 $\\triangle CPQ\\sim\\triangle CAD$이다. 그러므로 $PQ:AD=CP:CA=2:3$이고, $PQ=4\\times\\dfrac23=\\dfrac83\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 사다리꼴의 두 대각선의 교점은 두 대각선을 평행한 두 밑변의 길이의 비로 나눈다.\n사다리꼴에서 두 대각선의 교점은 각 대각선을 두 밑변의 길이의 비로 나누므로 $AP:PC=AD:BC=4:8=1:2$이다. 따라서 $CP:CA=2:3$이다. $P$는 $AC$ 위, $Q$는 $DC$ 위에 있고 $PQ\\parallel AD$이므로 $\\triangle CPQ\\sim\\triangle CAD$이다. 그러므로 $PQ:AD=CP:CA=2:3$이고, $PQ=4\\times\\dfrac23=\\dfrac83\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q5.png",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q5-solution.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
@@ -231,7 +231,7 @@ window.questionBank = [
       "$114\\rm\\,cm^3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n조건 정리: 높이를 $1:1:1$로 나누었으므로 꼭짓점에서 첫 번째 절단면까지의 작은 정사면체와 전체 정사면체의 닮음비는 $1:3$, 두 번째 절단면까지의 정사면체와 전체의 닮음비는 $2:3$이다.\n정석 풀이: 전체 부피를 $V$라 하면 (가)의 부피는 $\\dfrac1{27}V$이고, (가)+(나)의 부피는 $\\dfrac8{27}V$이다. 따라서 (나)의 부피는 $\\dfrac7{27}V=42$이므로 $V=162$이다. (다)의 부피는 $V-\\dfrac8{27}V=\\dfrac{19}{27}V$이므로 $\\dfrac{19}{27}\\times162=114\\rm\\,cm^3$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n전체 부피를 $V$라 하면 (가)의 부피는 $\\dfrac1{27}V$이고, (가)+(나)의 부피는 $\\dfrac8{27}V$이다. 따라서 (나)의 부피는 $\\dfrac7{27}V=42$이므로 $V=162$이다. (다)의 부피는 $V-\\dfrac8{27}V=\\dfrac{19}{27}V$이므로 $\\dfrac{19}{27}\\times162=114\\rm\\,cm^3$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q6.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
@@ -316,7 +316,7 @@ window.questionBank = [
       "$40$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 평행선으로 생기는 닮음에서 대각선 $BD$가 $P,Q$에 의해 삼등분되는 것을 먼저 찾는다.\n풀이 방향: $P,Q$의 위치를 구한 뒤 $\\triangle BCD$에서 양 끝의 작은 삼각형 넓이를 뺀다.\n정석 풀이: $M$은 $BC$의 중점이므로 $BM=\\dfrac12BC$이고 $AD=BC$이다. $AD\\parallel BM$이므로 $\\triangle APD\\sim\\triangle MPB$이고 $AD:BM=2:1$이다. 따라서 $DP:PB=2:1$, 즉 $BP=\\dfrac13BD$이다. 같은 방법으로 $N$은 $CD$의 중점이고 $DN\\parallel AB$이므로 $\\triangle DQN\\sim\\triangle BQA$에서 $DQ:BQ=1:2$, 따라서 $DQ=\\dfrac13DB$이다. $\\triangle BCD$의 넓이는 $72\\div2=36$이다. $\\triangle BPM$은 $\\triangle BCD$에서 $BP:BD=1:3$, $BM:BC=1:2$이므로 넓이가 $36\\times\\dfrac13\\times\\dfrac12=6$이다. $\\triangle DQN$도 같은 이유로 넓이가 $6$이다. 그러므로 오각형 $PMCNQ$의 넓이는 $36-6-6=24$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 평행선으로 생기는 닮음에서 대각선 $BD$가 $P,Q$에 의해 삼등분되는 것을 먼저 찾는다.\n$M$은 $BC$의 중점이므로 $BM=\\dfrac12BC$이고 $AD=BC$이다. $AD\\parallel BM$이므로 $\\triangle APD\\sim\\triangle MPB$이고 $AD:BM=2:1$이다. 따라서 $DP:PB=2:1$, 즉 $BP=\\dfrac13BD$이다. 같은 방법으로 $N$은 $CD$의 중점이고 $DN\\parallel AB$이므로 $\\triangle DQN\\sim\\triangle BQA$에서 $DQ:BQ=1:2$, 따라서 $DQ=\\dfrac13DB$이다. $\\triangle BCD$의 넓이는 $72\\div2=36$이다. $\\triangle BPM$은 $\\triangle BCD$에서 $BP:BD=1:3$, $BM:BC=1:2$이므로 넓이가 $36\\times\\dfrac13\\times\\dfrac12=6$이다. $\\triangle DQN$도 같은 이유로 넓이가 $6$이다. 그러므로 오각형 $PMCNQ$의 넓이는 $36-6-6=24$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q8.png",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q8-solution.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
