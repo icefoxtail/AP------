@@ -26,7 +26,7 @@ window.questionBank = [
       "$13$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\\n$AB=24$이므로 $AM=12$이고, $OM=5$이다.\\n직각삼각형 $AOM$에서 $AO^2=AM^2+OM^2=12^2+5^2=169$이다.\\n따라서 $x=AO=13$이므로 정답은 ⑤이다.",
+    "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n$AB=24$이므로 $AM=12$이고, $OM=5$이다.\n직각삼각형 $AOM$에서 $AO^2=AM^2+OM^2=12^2+5^2=169$이다.\n따라서 $x=AO=13$이므로 정답은 ⑤이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -57,7 +57,7 @@ window.questionBank = [
       "$88^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같다.\\n따라서 $AB=AC$이므로 $\\triangle ABC$는 이등변삼각형이다.\\n$\\angle ABC=\\angle BCA=\\dfrac{180^\\circ-44^\\circ}{2}=68^\\circ$이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같다.\n따라서 $AB=AC$이므로 $\\triangle ABC$는 이등변삼각형이다.\n$\\angle ABC=\\angle BCA=\\dfrac{180^\\circ-44^\\circ}{2}=68^\\circ$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -88,7 +88,7 @@ window.questionBank = [
       "$220^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원주각의 크기는 그 원주각이 보는 호에 대한 중심각의 절반이다.\\n$\\angle APB=110^\\circ$이므로 이 각이 보는 큰 호 $AB$의 중심각은 $2\\times110^\\circ=220^\\circ$이다.\\n그림의 $x$는 이 큰 중심각이므로 $x=220^\\circ$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 원주각의 크기는 그 원주각이 보는 호에 대한 중심각의 절반이다.\n$\\angle APB=110^\\circ$이므로 이 각이 보는 큰 호 $AB$의 중심각은 $2\\times110^\\circ=220^\\circ$이다.\n그림의 $x$는 이 큰 중심각이므로 $x=220^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -119,7 +119,7 @@ window.questionBank = [
       "$16\\pi\\rm\\,cm$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분한다.\\n$OD\\perp AB$이므로 $AD=BD=6$이다. 원의 반지름을 $r$라 하면 $OD=r-4$이다.\\n직각삼각형 $ODB$에서 $r^2=6^2+(r-4)^2$이므로 $8r=52$, $r=\\dfrac{13}{2}$이다.\\n원의 둘레는 $2\\pi r=13\\pi\\rm\\,cm$이다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분한다.\n$OD\\perp AB$이므로 $AD=BD=6$이다. 반지름을 $r$라 하면 $OC=r$이고 $CD=4$이므로 $OD=OC-CD=r-4$이다.\n직각삼각형 $ODB$에서 빗변은 $OB=r$이고 두 직각변은 $OD=r-4$, $BD=6$이다. 따라서\n$r^2=6^2+(r-4)^2=36+r^2-8r+16$이다.\n양변에서 $r^2$을 없애면 $8r=52$이므로 $r=\\dfrac{13}{2}$이다.\n원의 둘레는 $2\\pi r=2\\pi\\times\\dfrac{13}{2}=13\\pi\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -150,7 +150,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\\n$AP=AR=x$라 두면 $BP=BQ=10-x$, $CR=CQ=6-x$이다.\\n따라서 $BC=BQ+QC=(10-x)+(6-x)=12$이다.\\n$16-2x=12$이므로 $x=2$이다.\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n$AP=AR=x$라 두면 $BP=BQ=10-x$, $CR=CQ=6-x$이다.\n따라서 $BC=BQ+QC=(10-x)+(6-x)=12$이다.\n$16-2x=12$이므로 $x=2$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -181,7 +181,7 @@ window.questionBank = [
       "$90^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 원 밖의 한 점에서 그은 두 할선이 이루는 각은 두 호의 크기의 차의 절반이다.\\n반원 $AB$의 호의 크기는 $180^\\circ$이고, $\\angle COD=50^\\circ$이므로 호 $CD$의 크기는 $50^\\circ$이다.\\n따라서 $x=\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ$이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 원 밖의 한 점에서 그은 두 할선이 이루는 각은 두 호의 크기의 차의 절반이다.\n반원 $AB$의 호의 크기는 $180^\\circ$이고, $\\angle COD=50^\\circ$이므로 호 $CD$의 크기는 $50^\\circ$이다.\n따라서 $x=\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -212,7 +212,7 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 호의 길이의 비는 같은 원에서 중심각의 크기의 비와 같다.\\n호 $BC$의 길이 $9\\rm\\,cm$가 중심각 $120^\\circ$에 대응하므로 원의 둘레는 $27\\rm\\,cm$이다.\\n호 $BA$의 길이 $3\\rm\\,cm$에 대응하는 중심각은 $40^\\circ$이다.\\n$\\angle APC$가 보는 호 $ABC$의 중심각은 $40^\\circ+120^\\circ=160^\\circ$이므로 $x=80^\\circ$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 같은 원에서 호의 길이와 그 호에 대응하는 중심각의 크기는 비례한다.\n호 $BC$의 길이 $9\\rm\\,cm$가 중심각 $120^\\circ$에 대응한다. 원 전체의 중심각은 $360^\\circ$이므로 원의 둘레는\n$9\\times\\dfrac{360}{120}=27\\rm\\,cm$이다.\n호 $BA$의 길이는 $3\\rm\\,cm$이므로 이에 대응하는 중심각을 $\\theta$라 하면\n$\\dfrac{3}{27}=\\dfrac{\\theta}{360}$이다. 따라서 $\\theta=40^\\circ$이다.\n$\\angle APC$가 보는 호는 호 $AB$와 호 $BC$를 합친 호 $ABC$이다. 그 중심각의 크기는 $40^\\circ+120^\\circ=160^\\circ$이므로 원주각은\n$x=\\dfrac{160^\\circ}{2}=80^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -243,7 +243,7 @@ window.questionBank = [
       "$80^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 접선과 현이 이루는 각은 그 각의 내부에 있는 호에 대한 원주각과 같다.\\n$\\angle BAT=80^\\circ$이므로 같은 현 $AB$를 보는 원주각 $\\angle ACB=80^\\circ$이다.\\n또 $\\angle ABC=40^\\circ$이므로 $x=180^\\circ-80^\\circ-40^\\circ=60^\\circ$이다.\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 접선과 현이 이루는 각은 그 각의 내부에 있는 호에 대한 원주각과 같다.\n$\\angle BAT=80^\\circ$이므로 같은 현 $AB$를 보는 원주각 $\\angle ACB=80^\\circ$이다.\n또 $\\angle ABC=40^\\circ$이므로 $x=180^\\circ-80^\\circ-40^\\circ=60^\\circ$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -300,7 +300,7 @@ window.questionBank = [
       "$12\\pi\\rm\\,cm^2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 접선의 길이와 중심각을 이용해 반지름과 부채꼴의 넓이를 구한다.\\n$PA=PB$이고 $\\angle APB=60^\\circ$이므로 $\\triangle PAB$는 정삼각형이다. 또 $OA\\perp PA$, $OB\\perp PB$이므로 $\\angle AOB=120^\\circ$이다.\\n직각삼각형 $POA$에서 $\\angle APO=30^\\circ$이고 $AP=3\\sqrt3$이므로 $OA=3$이다.\\n색칠한 부분은 중심각 $120^\\circ$인 부채꼴이므로 넓이는 $\\dfrac{120}{360}\\pi\\times3^2=3\\pi\\rm\\,cm^2$이다.\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 접선의 길이로 직각삼각형을 만들고, 부채꼴의 중심각과 반지름을 구한다.\n같은 점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB=3\\sqrt3$이다. 따라서 $\\triangle PAB$는 꼭짓각 $60^\\circ$인 이등변삼각형이고, 밑각도 각각 $60^\\circ$여서 정삼각형이다.\n$OP$는 $\\angle APB$를 이등분하므로 $\\angle APO=30^\\circ$이다. 또한 접점에서 반지름은 접선에 수직이므로 $\\angle OAP=90^\\circ$이다.\n직각삼각형 $OAP$는 $30^\\circ$-$60^\\circ$-$90^\\circ$ 삼각형이다. $30^\\circ$의 맞은편 변은 $60^\\circ$의 맞은편 변의 $\\dfrac1{\\sqrt3}$배이므로\n$OA=AP\\times\\dfrac1{\\sqrt3}=3\\sqrt3\\times\\dfrac1{\\sqrt3}=3\\rm\\,cm$이다.\n색칠한 부분은 중심각 $\\angle AOB=180^\\circ-\\angle APB=120^\\circ$인 부채꼴이다. 따라서 넓이는\n$\\dfrac{120}{360}\\times\\pi\\times3^2=3\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "$\\dfrac{26}{5}\\rm\\,cm$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 접점에서의 반지름은 접선에 수직이고, $OP$는 두 접점에 대한 대칭축이다.\\n$\\triangle OAP$는 직각삼각형이므로 $OP=\\sqrt{3^2+4^2}=5$이다.\\n$AB\\perp OP$이고 $OP$가 $AB$를 이등분한다. 닮음을 이용하면 $\\dfrac{AB}{2}=\\dfrac{OA\\cdot AP}{OP}=\\dfrac{3\\times4}{5}=\\dfrac{12}{5}$이다.\\n따라서 $AB=\\dfrac{24}{5}\\rm\\,cm$이므로 정답은 ③이다.",
+    "solution": "[키포인트] 접점에서 반지름은 접선에 수직이고, 중심과 외부점을 이은 선분은 두 접점과 대칭을 이룬다.\n$OA\\perp PA$이므로 $\\triangle OAP$는 $A$에서 직각이다. 피타고라스 정리에 따라\n$OP^2=OA^2+AP^2=3^2+4^2=25$이므로 $OP=5\\rm\\,cm$이다.\n$M$을 $AB$와 $OP$의 교점이라 하자. 두 접선의 접점은 $OP$를 축으로 대칭이므로 $OP\\perp AB$이고 $M$은 $AB$의 중점이다. 따라서 $AB=2AM$이다.\n직각삼각형 $OMA$와 $OAP$에서 $\\angle OMA=\\angle OAP=90^\\circ$이고, $OM$은 $OP$ 위에 있으므로 $\\angle AOM=\\angle AOP$이다. 따라서 두 삼각형은 닮음이다. 대응변의 비에서\n$\\dfrac{AM}{AP}=\\dfrac{OA}{OP}$이므로\n$AM=AP\\times\\dfrac{OA}{OP}=4\\times\\dfrac35=\\dfrac{12}{5}\\rm\\,cm$이다.\n그러므로 $AB=2AM=\\dfrac{24}{5}\\rm\\,cm$이고 정답은 ③이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -362,7 +362,7 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 접선과 현의 성질, 평행선, 교차하는 두 현의 각을 차례로 연결한다.\\n$\\angle CBT'=20^\\circ$이므로 접선과 현의 성질에 의해 $\\angle BAC=20^\\circ$이고, 따라서 호 $BC$의 크기는 $40^\\circ$이다. $AC$가 지름이므로 같은 반원의 호 $AB$의 크기는 $180^\\circ-40^\\circ=140^\\circ$이다.\\n$AD\\parallel TT'$이므로 $\\angle BAD$는 직선 $BA$와 접선 $TT'$이 이루는 각과 같다. 접선과 현 $BA$의 성질에 의해 이 각은 $\\angle BDA$와 같으므로 $\\angle BAD=\\angle BDA$이다. 따라서 두 원주각이 보는 호 $BD$와 호 $BA$의 크기가 같아 호 $BD$의 크기는 $140^\\circ$이다. 그러므로 호 $CD$의 크기는 $140^\\circ-40^\\circ=100^\\circ$이고, $AC$가 지름이므로 호 $AD$의 크기는 $180^\\circ-100^\\circ=80^\\circ$이다.\\n두 현 $AC$, $BD$가 점 $P$에서 만나므로 $x=\\dfrac{80^\\circ+40^\\circ}{2}=60^\\circ$이다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 접선과 현이 이루는 각으로 호를 구하고, 평행선과 원주각으로 나머지 호를 찾는다.\n접선과 현 $BC$가 이루는 각이 $20^\\circ$이므로 접선과 현의 성질에 의해 $\\angle BAC=20^\\circ$이다. 따라서 호 $BC$의 크기는 $2\\times20^\\circ=40^\\circ$이다.\n$AC$는 지름이므로 $A$에서 $C$까지 $B$를 지나는 반원의 호는 $180^\\circ$이다. 따라서 그 반원에서 호 $AB$의 크기는 $180^\\circ-40^\\circ=140^\\circ$이다.\n$AD$는 접선과 평행하다. 그러므로 $\\angle BAD$는 접선과 현 $BA$가 이루는 각과 같고, 접선과 현의 성질에 따라 그 각은 $\\angle BDA$와 같다. 따라서 $\\angle BAD=\\angle BDA$이다.\n$\\angle BAD$와 $\\angle BDA$는 각각 호 $BD$와 호 $BA$를 보는 원주각이므로 두 호의 크기는 같다. 따라서 호 $BD=140^\\circ$이고, 호 $CD=140^\\circ-40^\\circ=100^\\circ$이다.\n$AC$는 지름이므로 $A$에서 $C$까지 $D$를 지나는 반원의 호도 $180^\\circ$이다. 따라서 호 $AD=180^\\circ-100^\\circ=80^\\circ$이다.\n두 현 $AC$, $BD$가 $P$에서 만나므로 교차하는 두 현이 이루는 각의 크기는 마주 보는 두 호의 합의 절반이다. 이에 따라\n$x=\\dfrac{\\text{호 }AD+\\text{호 }BC}{2}=\\dfrac{80^\\circ+40^\\circ}{2}=60^\\circ$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -391,7 +391,7 @@ window.questionBank = [
       "ㄹ, ㅁ"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 한 변량이 커질수록 다른 변량이 작아지는 관계가 음의 상관관계이다.\\nㄹ은 겨울철 월평균 기온이 높아질수록 도시가스 사용량이 줄어드는 경향이 있고, ㅁ은 수면으로부터 깊어질수록 바닷물 속 산소 함유량이 줄어드는 경향이 있다.\\n따라서 음의 상관관계인 것은 ㄹ, ㅁ이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 한 변량이 커질수록 다른 변량이 작아지는 관계가 음의 상관관계이다.\nㄹ은 겨울철 월평균 기온이 높아질수록 도시가스 사용량이 줄어드는 경향이 있고, ㅁ은 수면으로부터 깊어질수록 바닷물 속 산소 함유량이 줄어드는 경향이 있다.\n따라서 음의 상관관계인 것은 ㄹ, ㅁ이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
@@ -422,7 +422,7 @@ window.questionBank = [
       "중앙값 $29,31$, 최빈값 $38$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 자료가 20개이므로 중앙값은 10번째와 11번째 값의 평균이고, 최빈값은 가장 자주 나타나는 값이다.\\n자료를 작은 값부터 보면 10번째 값은 $29$, 11번째 값은 $31$이므로 중앙값은 $\\dfrac{29+31}{2}=30$이다.\\n$38$이 세 번으로 가장 많이 나타나므로 최빈값은 $38$이다.\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 자료가 20개이므로 중앙값은 10번째와 11번째 값의 평균이고, 최빈값은 가장 자주 나타나는 값이다.\n자료를 작은 값부터 보면 10번째 값은 $29$, 11번째 값은 $31$이므로 중앙값은 $\\dfrac{29+31}{2}=30$이다.\n$38$이 세 번으로 가장 많이 나타나므로 최빈값은 $38$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -451,7 +451,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 평균으로 $a+b$를 구하고 중앙값 조건으로 두 값을 결정한다.\\n평균이 $6$이고 자료가 $7$개이므로 전체 합은 $42$이다. 따라서 $a+b+1+2+3+8+14=42$에서 $a+b=14$이다.\\n중앙값이 $4$이므로 $a,b$ 중 하나는 $4$이고 다른 하나는 $10$이어야 한다. $a>b$이므로 $a=10$, $b=4$이다.\\n따라서 $a-b=6$이므로 정답은 ③이다.",
+    "solution": "[키포인트] 평균으로 두 미지수의 합을 구하고, 정렬했을 때 중앙값 자리에 오는 수를 확인한다.\n자료가 $7$개이고 평균이 $6$개이므로 전체 합은 $7\\times6=42$개이다. 따라서\n$a+b+1+2+3+8+14=42$에서 $a+b=14$이다.\n자료를 작은 순서로 놓았을 때 중앙값은 네 번째 수이다. 고정된 수 $1,2,3$ 다음에 네 번째 수가 $4$가 되어야 하므로 $a,b$ 중 작은 수가 $4$이다. 두 수의 합이 $14$이므로 다른 수는 $14-4=10$이다.\n$a>b$이므로 $a=10$, $b=4$이다. 따라서 $a-b=10-4=6$이고 정답은 ③이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -482,7 +482,7 @@ window.questionBank = [
       "$12$개"
     ],
     "answer": "①",
-    "solution": "[키포인트] 편차의 합은 항상 0이다.\\n$2+a-4+1+0+3=0$이므로 $a=-2$이다.\\n화요일 안타 수는 평균 $10$에 편차 $-2$를 더한 $8$개이다.\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 편차의 합은 항상 0이다.\n$2+a-4+1+0+3=0$이므로 $a=-2$이다.\n화요일 안타 수는 평균 $10$에 편차 $-2$를 더한 $8$개이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -513,7 +513,7 @@ window.questionBank = [
       "정국이의 수면 시간이 윤기의 수면 시간보다 더 고르다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 평균은 수면 시간의 중심을, 표준편차는 수면 시간의 고른 정도를 나타낸다.\\n표준편차가 작을수록 더 고르다. 정국의 표준편차는 $1$, 윤기의 표준편차는 $2.5$이다.\\n따라서 정국의 수면 시간이 윤기의 수면 시간보다 더 고르다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 평균은 수면 시간의 중심을, 표준편차는 수면 시간의 고른 정도를 나타낸다.\n표준편차가 작을수록 더 고르다. 정국의 표준편차는 $1$, 윤기의 표준편차는 $2.5$이다.\n따라서 정국의 수면 시간이 윤기의 수면 시간보다 더 고르다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -542,7 +542,7 @@ window.questionBank = [
       "ㄹ, ㅁ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 편차와 분산의 정의를 정확히 확인한다.\\nㄱ의 편차는 변량에서 평균을 뺀 값이므로 틀리고, ㄴ의 편차의 합은 항상 $0$이므로 옳다.\\nㄷ의 분산은 편차의 제곱의 평균이므로 틀리며, ㄹ은 분산이 클수록 평균에서 더 멀리 흩어지므로 옳다. ㅁ은 평균의 크기와 표준편차의 크기가 직접 연결되지 않으므로 틀리다.\\n따라서 옳은 것은 ㄴ, ㄹ이므로 정답은 ③이다.",
+    "solution": "[키포인트] 편차와 분산의 정의를 정확히 확인한다.\nㄱ의 편차는 변량에서 평균을 뺀 값이므로 틀리고, ㄴ의 편차의 합은 항상 $0$이므로 옳다.\nㄷ의 분산은 편차의 제곱의 평균이므로 틀리며, ㄹ은 분산이 클수록 평균에서 더 멀리 흩어지므로 옳다. ㅁ은 평균의 크기와 표준편차의 크기가 직접 연결되지 않으므로 틀리다.\n따라서 옳은 것은 ㄴ, ㄹ이므로 정답은 ③이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -573,7 +573,7 @@ window.questionBank = [
       "국어 성적과 영어 성적 사이의 상관관계는 양의 상관관계이다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 산점도에서 각 점의 좌표와 전체적인 분포를 직접 확인한다.\\nA, B, C, D, E의 국어 성적을 보면 B가 약 $50$점으로 가장 낮고, E는 약 $80$점이다. 따라서 'E의 국어 성적이 가장 낮다'는 설명은 옳지 않다.\\n나머지 설명은 산점도의 좌표와 전체적인 양의 상관관계에 맞는다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 산점도에서 표시된 점의 좌표를 읽고, 보기의 비교 대상과 대조한다.\n가로축은 국어 성적, 세로축은 영어 성적이다. 그래프에서 $B=(50,80)$이고 $E=(80,40)$이다. 따라서 A, B, C, D, E의 국어 성적은 각각 $60,50,70,95,80$점이며, 가장 낮은 점수는 $B$의 $50$점이다.\n그러므로 “E의 국어 성적이 가장 낮다”는 설명은 옳지 않다. 따라서 정답은 ④이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
@@ -602,7 +602,7 @@ window.questionBank = [
       "$24$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 평균으로 $a+b$를 구한 뒤 분산으로 $a^2+b^2$를 구한다.\\n평균이 $6$이므로 $9+7+10+a+b+3=36$, 따라서 $a+b=7$이다.\\n분산이 $8$이므로 편차 제곱의 합은 $6\\times8=48$이다. 이미 알려진 네 값의 편차 제곱의 합은 $3^2+1^2+4^2+(-3)^2=35$이므로 $(a-6)^2+(b-6)^2=13$이다.\\n이를 전개하고 $a+b=7$을 대입하면 $a^2+b^2=25$이다. 따라서 $2ab=(a+b)^2-(a^2+b^2)=49-25=24$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 평균으로 $a+b$를 구하고, 분산 정의에 대입해 $a^2+b^2$를 구한다.\n평균이 $6^\\circ\\rm C$이고 자료가 6개이므로 자료의 합은 $6\\times6=36$이다. 따라서\n$9+7+10+a+b+3=36$에서 $a+b=7$이다.\n분산은 편차 제곱의 평균이다. 그러므로 편차 제곱의 합은 $6\\times8=48$이다. 평균 $6$에서 알려진 네 값의 편차는 $3,1,4,-3$이고, 그 제곱의 합은\n$3^2+1^2+4^2+(-3)^2=9+1+16+9=35$이다.\n따라서 미지수 두 값의 편차 제곱의 합은\n$(a-6)^2+(b-6)^2=48-35=13$이다.\n이를 전개하면 $a^2+b^2-12(a+b)+72=13$이다. 여기에 $a+b=7$을 대입하면\n$a^2+b^2-84+72=13$이므로 $a^2+b^2=25$이다.\n$(a+b)^2=a^2+2ab+b^2$를 이용하면\n$2ab=(a+b)^2-(a^2+b^2)=7^2-25=24$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -628,7 +628,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $O$의 접점이다. $\\overline{AF}=2\\rm\\,cm$, $\\overline{CF}=3\\rm\\,cm$일 때, 원 $O$의 둘레의 길이를 구하시오. [5점]",
     "choices": [],
     "answer": "$2\\pi\\rm\\,cm$",
-    "solution": "[키포인트] 같은 점에서 그은 접선의 길이가 같다는 성질과 직각삼각형의 성질을 이용한다.\\n$AF=AD=2$, $CF=CE=3$이라 하고 $BD=BE=t$라 두면 $AB=t+2$, $BC=t+3$, $AC=5$이다.\\n$\\angle B=90^\\circ$이므로 $(t+2)^2+(t+3)^2=5^2$이다. 정리하면 $t^2+5t-6=0$이므로 길이 조건에서 $t=1$이다.\\n따라서 삼각형의 세 변은 $3,4,5$이고 내접원의 반지름은 $1\\rm\\,cm$이다. 원의 둘레는 $2\\pi\\times1=2\\pi\\rm\\,cm$이다.\\n따라서 구하는 길이는 $2\\pi\\rm\\,cm$이다.",
+    "solution": "[키포인트] 접점에서 같은 점까지 그은 접선의 길이는 같고, 직각삼각형의 피타고라스 정리를 쓴다.\n$AF=AD=2\\rm\\,cm$, $CF=CE=3\\rm\\,cm$이다. $BD=BE=t\\rm\\,cm$라 두면\n$AB=AD+DB=t+2$, $BC=BE+EC=t+3$이다. 또 $AC=AF+FC=2+3=5\\rm\\,cm$이다.\n$\\angle B=90^\\circ$이므로 피타고라스 정리에 따라\n$(t+2)^2+(t+3)^2=5^2$이다.\n전개하면 $t^2+4t+4+t^2+6t+9=25$이고, 정리하면 $2t^2+10t-12=0$, 즉 $t^2+5t-6=0$이다.\n인수분해하면 $(t+6)(t-1)=0$이므로 $t=-6$ 또는 $t=1$이다. 길이 $t$는 음수가 될 수 없으므로 $t=1$이다.\n따라서 $AB=3\\rm\\,cm$, $BC=4\\rm\\,cm$, $AC=5\\rm\\,cm$이다. 이 직각삼각형의 넓이는 $\\dfrac{3\\times4}{2}=6\\rm\\,cm^2$이고, 반둘레는 $\\dfrac{3+4+5}{2}=6\\rm\\,cm$이다. 내접원의 반지름은 넓이를 반둘레로 나눈 값이므로 $r=\\dfrac66=1\\rm\\,cm$이다.\n원의 둘레는 $2\\pi r=2\\pi\\times1=2\\pi\\rm\\,cm$이다. 따라서 구하는 길이는 $2\\pi\\rm\\,cm$이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -654,7 +654,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림에서 반직선 $PB$는 원 $O$의 접선이고, $\\overline{AC}$는 원 $O$의 지름이다. $\\angle BAC=36^\\circ$일 때, $\\angle x$의 크기를 구하시오. [5점]",
     "choices": [],
     "answer": "$18^\\circ$",
-    "solution": "[키포인트] 지름에 대한 원주각과 접선과 현이 이루는 각의 성질을 함께 사용한다.\\n$AC$가 지름이므로 $\\angle ABC=90^\\circ$이다. 따라서 $\\angle ACB=180^\\circ-90^\\circ-36^\\circ=54^\\circ$이다.\\n접선과 현의 성질에 의해 $\\angle PBC=\\angle BAC=36^\\circ$이다. 또한 $CP$는 $CA$의 연장선이므로 $\\angle BCP=180^\\circ-54^\\circ=126^\\circ$이다.\\n$\\triangle BCP$에서 $x=180^\\circ-36^\\circ-126^\\circ=18^\\circ$이다.\\n따라서 구하는 각의 크기는 $18^\\circ$이다.",
+    "solution": "[키포인트] 지름에 대한 원주각과 접선과 현이 이루는 각의 성질을 함께 사용한다.\n$AC$가 지름이므로 $\\angle ABC=90^\\circ$이다. 따라서 $\\angle ACB=180^\\circ-90^\\circ-36^\\circ=54^\\circ$이다.\n접선과 현의 성질에 의해 $\\angle PBC=\\angle BAC=36^\\circ$이다. 또한 $CP$는 $CA$의 연장선이므로 $\\angle BCP=180^\\circ-54^\\circ=126^\\circ$이다.\n$\\triangle BCP$에서 $x=180^\\circ-36^\\circ-126^\\circ=18^\\circ$이다.\n따라서 구하는 각의 크기는 $18^\\circ$이다.",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -678,7 +678,7 @@ window.questionBank = [
     "content": "[서술형 3] $4$개의 변량 $15$, $20$, $27$, $x$의 중앙값이 $19$일 때, 평균을 구하시오. [5점]",
     "choices": [],
     "answer": "$20$",
-    "solution": "[키포인트] 네 자료의 중앙값은 가운데 두 값의 평균이다.\\n중앙값이 $19$이므로 가운데 두 값의 합은 $38$이다. $15<x<20$이어야 하므로 가운데 두 값은 $x$와 $20$이다.\\n따라서 $x+20=38$에서 $x=18$이다.\\n평균은 $\\dfrac{15+18+20+27}{4}=\\dfrac{80}{4}=20$이다.\\n따라서 구하는 평균은 $20$이다.",
+    "solution": "[키포인트] 네 자료의 중앙값은 가운데 두 값의 평균이다.\n중앙값이 $19$이므로 가운데 두 값의 합은 $38$이다. $15<x<20$이어야 하므로 가운데 두 값은 $x$와 $20$이다.\n따라서 $x+20=38$에서 $x=18$이다.\n평균은 $\\dfrac{15+18+20+27}{4}=\\dfrac{80}{4}=20$이다.\n따라서 구하는 평균은 $20$이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
@@ -704,7 +704,7 @@ window.questionBank = [
     "content": "[서술형 4] 아래 표는 민지와 해린이가 각각 $5$번의 볼링 경기에서 얻은 점수를 조사하여 나타낸 것이고, 민지와 해린이의 볼링 점수의 평균은 각각 $95$점, $96$점이다. 다음을 구하여라. [5점]",
     "choices": [],
     "answer": "(1) 민지: $2$점, 해린: $\\sqrt2$점 (2) 해린",
-    "solution": "[키포인트] 각 사람의 평균에서 각 점수가 얼마나 떨어져 있는지 편차를 구한 뒤, 편차의 제곱의 평균으로 분산과 표준편차를 구한다.\\n민지의 평균은 $95$점이다. 편차는 $-3, 1, 0, -1, 3$이고 편차 제곱의 합은 $9+1+0+1+9=20$이다. 따라서 분산은 $\\dfrac{20}{5}=4$이므로 표준편차는 $2$점이다.\\n해린의 점수는 $96, 94, 97, 95, 98$이고 평균은 $96$점이다. 편차는 $0, -2, 1, -1, 2$이고 편차 제곱의 합은 $0+4+1+1+4=10$이다. 따라서 분산은 $\\dfrac{10}{5}=2$이므로 표준편차는 $\\sqrt2$점이다.\\n$\\sqrt2<2$이므로 볼링 점수의 변화가 더 작은 사람은 해린이다.\\n따라서 (1) 민지의 표준편차는 $2$점, 해린의 표준편차는 $\\sqrt2$점이고, (2) 볼링 점수의 변화가 더 작은 사람은 해린이다.",
+    "solution": "[키포인트] 각 사람의 평균에서 각 점수가 얼마나 떨어져 있는지 편차를 구한 뒤, 편차의 제곱의 평균으로 분산과 표준편차를 구한다.\n민지의 평균은 $95$점이다. 편차는 $-3, 1, 0, -1, 3$이고 편차 제곱의 합은 $9+1+0+1+9=20$이다. 따라서 분산은 $\\dfrac{20}{5}=4$이므로 표준편차는 $2$점이다.\n해린의 점수는 $96, 94, 97, 95, 98$이고 평균은 $96$점이다. 편차는 $0, -2, 1, -1, 2$이고 편차 제곱의 합은 $0+4+1+1+4=10$이다. 따라서 분산은 $\\dfrac{10}{5}=2$이므로 표준편차는 $\\sqrt2$점이다.\n$\\sqrt2<2$이므로 볼링 점수의 변화가 더 작은 사람은 해린이다.\n따라서 (1) 민지의 표준편차는 $2$점, 해린의 표준편차는 $\\sqrt2$점이고, (2) 볼링 점수의 변화가 더 작은 사람은 해린이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
