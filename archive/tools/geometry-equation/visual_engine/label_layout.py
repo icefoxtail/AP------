@@ -5,6 +5,8 @@ import html
 from .geometry_model import finite
 
 DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
+OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
+POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 
 @dataclass(frozen=True)
 class Box:
@@ -65,6 +67,17 @@ def candidate(at,width,height,direction,gap):
     return Box(x+gap if dx>0 else x-gap-width if dx<0 else x-width/2,
                y+gap if dy>0 else y-gap-height if dy<0 else y-height/2,width,height)
 
+def point_box_has_unambiguous_owner(box,owner,competitors):
+    """Require every measured box corner to stay inside its owner's Voronoi cell."""
+    ox,oy=owner['geometry'][:2]
+    for x,y in ((box.x,box.y),(box.right,box.y),(box.x,box.bottom),(box.right,box.bottom)):
+        owner_distance2=(x-ox)**2+(y-oy)**2
+        for marker in competitors:
+            cx,cy=marker['geometry'][:2]
+            competitor_distance2=(x-cx)**2+(y-cy)**2
+            if owner_distance2+POINT_OWNER_DISTANCE_TOLERANCE_PX2>=competitor_distance2:return False
+    return True
+
 def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False):
     """P0..P4, 8 candidates, coordinate relocation, suppression, side panel.
 
@@ -79,6 +92,14 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     for label in sorted(labels,key=lambda v:(v.get('priority',2),v['id'])):
         priority=label.get('priority',2)
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
+        owner_marker=None;competing_markers=[]
+        if require_measurements and label.get('kind') in OWNER_BOUND_POINT_LABELS:
+            owner_id=label.get('target')
+            if not isinstance(owner_id,str) or not owner_id:raise ValueError('POINT_LABEL_OWNER_REQUIRED:'+label['id'])
+            markers=[obstacle for obstacle in obstacles if obstacle.get('kind')=='point']
+            matches=[marker for marker in markers if marker.get('id')==owner_id]
+            if len(matches)!=1:raise ValueError('POINT_LABEL_OWNER_MARKER_REQUIRED:'+label['id'])
+            owner_marker=matches[0];competing_markers=[marker for marker in markers if marker.get('id')!=owner_id]
         if require_measurements:
             if label['id'] not in measurements:raise ValueError('BROWSER_LABEL_MEASUREMENT_REQUIRED:'+label['id'])
             measured=measurements[label['id']]
@@ -90,17 +111,19 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
             w,h=finite(w),finite(h)
         chosen=None;method=None
+        def acceptable(box):
+            return safe_area.contains(box) and not any(collision(box,o) for o in occupied) and (owner_marker is None or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if 'candidateCenters' in label:
             from .publication import box_owned
             for x, y in label['candidateCenters']:
                 box = Box(x-w/2, y-h/2, w, h)
-                if safe_area.contains(box) and box_owned(label, box) and not any(collision(box,o) for o in occupied):
+                if acceptable(box) and box_owned(label, box):
                     chosen=box;method='OWNER_BOUND_RELOCATION';break
         for gap in (() if 'candidateCenters' in label else label.get('gaps',(12,8,20,32,48))):
             for direction in directions:
                 box=candidate(label['at'],w,h,direction,gap)
-                if safe_area.contains(box) and not any(collision(box,o) for o in occupied):
+                if acceptable(box):
                     chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
                     break
             if chosen:break
@@ -115,7 +138,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             pw=max(pw,w);ph=max(ph,h)
             for row in range(0,int(panel.height),24):
                 box=Box(panel.x,panel.y+row,pw,ph)
-                if panel.contains(box) and safe_area.contains(box) and not any(collision(box,o) for o in occupied):
+                if panel.contains(box) and acceptable(box):
                     chosen=box;method='SIDE_PANEL';label={**label,'text':text,'markup':html.escape(label.get('panelPrefix',''))+label['markup'] if label.get('markup') else None};break
         if chosen is None:
             unresolved.append(label['id'])
