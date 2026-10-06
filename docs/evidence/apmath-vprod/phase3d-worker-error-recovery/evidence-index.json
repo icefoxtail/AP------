@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "PHASE3D_WORKER_ERROR_EVIDENCE_INDEX_v1",
+  "classification": "RESUME_CACHE_RECOVERY_NEGATIVE; two synthetic isolated workspaces; no student candidate modified",
+  "entries": [
+    {
+      "path": "logs/worker-error-recovery-focused-10x.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-error-recovery\\worker-error\\visual-engine\\production\\worker-error-recovery-focused-10x.log",
+      "bytes": 2577,
+      "sha256": "sha256:0e48586c71b76354198f54934be0e3f17cac8af579f584602fb296df092eb18f",
+      "command": "node --test --test-name-pattern=\"worker output-limit and nonzero-exit stages\" archive/tools/geometry-equation/tests/worker-error-recovery.test.mjs (10 repetitions)"
+    },
+    {
+      "path": "logs/phase3d-worker-error-regression-subset.log",
+      "sourcePath": ".tmp\\archive\\phase3d-worker-error-recovery\\worker-error\\visual-engine\\production\\phase3d-worker-error-regression-subset.log",
+      "bytes": 5567,
+      "sha256": "sha256:3e092110fae2c910a3b0487bc994e98135774a919249b13db12cca93b680a00f",
+      "command": "node --test p1-boundaries production-runner production-contract worker-error-recovery display-envelope record-visual-browser-evidence tests"
+    }
+  ],
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-error-recovery.test.mjs",
+      "bytes": 3463,
+      "sha256": "sha256:ce737d08c9975195206fba1dfd97dc6b26438c9635a0e677126399e8d906a59a"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/store.mjs",
+      "bytes": 7756,
+      "sha256": "sha256:d5ff5678b15b87af4c2c203f5a5fe2c8edc37e3e78122146c15a34193f6e29b1"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 1588,
+      "sha256": "sha256:46ad4b4d55e43320561d062f8248c8653a248f435df6a1fb5e957d3cf8ca7b3b"
+    }
+  ]
+}
