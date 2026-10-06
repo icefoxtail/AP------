@@ -1,0 +1,1031 @@
+{
+  "schemaVersion": "APMATH_PHASE3E_MEASURED_PANEL_REPAIR_REFRESH_v7",
+  "classification": "MEASURED_GRAPH_FORMULA_PANEL_REPAIR_EXPERIMENTAL_LOCATOR_NOT_QUALIFICATION",
+  "status": "PASS",
+  "acceptance": {
+    "failureClass": "Graph formula fragment overflows the current measured side panel after requested-profile typography composition.",
+    "measuredFormulaWidthPx": 143.84375,
+    "priorPanelWidthPx": 140,
+    "panelPaddingPx": 24,
+    "selectedPanelWidthPx": 167.9,
+    "maximumPanelWidthPx": 200,
+    "repairStage": "LAYOUT",
+    "repairReason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+    "repairBudgetLimit": 3,
+    "sourceFactsMayChange": false,
+    "labelInventoryMayChange": false,
+    "fullDownstreamReauditRequired": true,
+    "measuredOwnerSafeLabelRelocation": {
+      "failureClass": "OWNER_LABEL_NO_DEFAULT_CANDIDATE",
+      "supportedKinds": [
+        "POINT_NAME",
+        "COORDINATE_LABEL"
+      ],
+      "gapsPx": [
+        64,
+        80,
+        96,
+        128
+      ],
+      "ownerPolicy": "EXACT_POINT_VORONOI_BOX_CORNERS",
+      "ownerTolerancePxSquared": 0.000001,
+      "browserBoundsTolerancePx": 0.25,
+      "sharedBudgetReason": "MEASURED_OWNER_SAFE_LABEL_RELOCATION",
+      "coverage": "CONTROLLED_FIXTURE_ONLY_NO_REAL_CANDIDATE_TRIGGERED"
+    }
+  },
+  "repairInputContract": "Content-addressed input binds question UID, raw source and solution SHA-256, semantic frozen-plan hash, source-condition hash, graph-plan hash, source-fact hash, base math SVG SHA-256, formula label/text, final typography fragment SHA-256, browser-measured formula width/height, requested profile and profile policy hash, source/verified-solution policy hashes, Archive/display policy refs hash, and original panel/padding/cap. Variable stage paths are excluded so exact replay can compare the same action.",
+  "repairOutputContract": "Output hash binds selected panel width, unchanged semantic plan/source condition/source fact/graph plan/label inventory hashes, exact measured formula identity, width, and padding.",
+  "priorPanelFailure": {
+    "packagePath": "docs/evidence/apmath-vprod/p3b/profile-composition-replays/q10-graph/attempt-01-measured-panel-too-narrow/result.json",
+    "resultRef": {
+      "path": "docs/evidence/apmath-vprod/p3b/profile-composition-replays/q10-graph/attempt-01-measured-panel-too-narrow/result.json",
+      "bytes": 14303,
+      "sha256": "sha256:2b3ac68c6f99cebb85a93b23720752109688f201268812e5bfd5c626350f1184"
+    },
+    "status": "UNRESOLVED",
+    "error": "LAYOUT_INVENTORY_INCOMPLETE:{\"labels\":[{\"id\":\"tick-x--1-label\",\"kind\":\"GRAPH_ANNOTATION\",\"target\":\"x-axis\",\"at\":[65.52008236188445,209.23076923076923],\"text\":\"−1\",\"font\":11.5,\"priority\":0,\"allowSuppress\":false,\"preferred\":\"S\",\"gaps\":[12,20,32,48],\"directions\":[\"S\",\"N\"],\"box\":{\"x\":49.61383236188445,\"y\":221.23076923076923,\"width\":31.8125,\"height\":18.625},\"baseline\":[49.61383236188445,236.13076923076923],\"placement\":\"AUTO_S\"},{\"id\":\"tick-x-1-label\",\"kind\":\"GRAPH_ANNOTATION\",\"target\":\"x-axis\",\"at\":[178.47991763811555,209.23076923076923],\"text\":\"1\",\"font\":11.5,\"priority\":0,\"allowSuppress\":false,\"preferred\":\"S\",\"gaps\":[12,20,32,48],\"directions\":[\"S\",\"N\"],\"box\":{\"x\":172.26116763811555,\"y\":221.23076923076923,\"width\":12.4375,\"height\":16.578125},\"baseline\":[172.26116763811555,234.49326923076922],\"placement\":\"AUTO_S\"},{\"id\":\"tick-y-1-label\",\"kind\":\"GRAPH_ANNOTATION\",\"target\":\"y-axis\",\"at\":[122,110.76923076923077],\"text\":\"2\",\"font\":11.5,\"priority\":0,\"allowSuppress\":false,\"preferred\":\"W\",\"gaps\":[12,20,32,48],\"directions\":[\"W\",\"E\"],\"box\":{\"x\":97.5625,\"y\":102.48016826923077,\"width\":12.4375,\"height\":16.578125},\"baseline\":[97.5625,115.74266826923078],\"placement\":\"AUTO_W\"},{\"id\":\"axis-x\",\"kind\":\"GRAPH_ANNOTATION\",\"at\":[212,209.23076923076923],\"text\":\"x\",\"font\":13,\"priority\":4,\"allowSuppress\":false,\"math\":true,\"gaps\":[12,20,32,48],\"box\":{\"x\":204.8828125,\"y\":185.96514423076923,\"width\":14.234375,\"height\":11.265625},\"baseline\":[204.8828125,194.97764423076922],\"placement\":\"AUTO_N\"},{\"id\":\"axis-y\",\"kind\":\"GRAPH_ANNOTATION\",\"at\":[122,32],\"text\":\"y\",\"font\":13,\"priority\":4,\"allowSuppress\":false,\"math\":true,\"gaps\":[12,20,32,48],\"box\":{\"x\":134,\"y\":23.9453125,\"width\":12.1875,\"height\":16.109375},\"baseline\":[134,36.8328125],\"placement\":\"AUTO_E\"}],\"suppressed\":[],\"unresolved\":[\"formula\"],\"trace\":[{\"id\":\"tick-x--1-label\",\"fallback\":\"AUTO_S\"},{\"id\":\"tick-x-1-label\",\"fallback\":\"AUTO_S\"},{\"id\":\"tick-y-1-label\",\"fallback\":\"AUTO_W\"},{\"id\":\"formula\",\"fallback\":\"POLISH_REQUIRED\",\"suggestions\":[\"LEADER_LINE\",\"VIEWPORT_EXPANSION\",\"PANEL_SPLIT\"]},{\"id\":\"axis-x\",\"fallback\":\"AUTO_N\"},{\"id\":\"axis-y\",\"fallback\":\"AUTO_E\"}],\"status\":\"POLISH_REQUIRED\",\"basis\":\"BROWSER_MEASURED_FROZEN_FRAGMENTS\"}",
+    "repairLedger": [],
+    "classification": "MEASURED_COMPOSITION_POLICY_DEFECT_PRESERVED"
+  },
+  "priorPackageBuildAttempt": {
+    "path": ".tmp/archive/phase3e-formula-panel-repair/panel-test/visual-engine/production/package-attempt-01-incomplete",
+    "status": "INCOMPLETE_UNMANIFESTED",
+    "reason": "The first packager referenced a nonexistent graph observer path. Its copied files are preserved locally but excluded from this package index and manifest."
+  },
+  "priorPackageBuildAttempts": [
+    {
+      "path": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v5/",
+      "status": "INCOMPLETE_UNMANIFESTED",
+      "reason": "The first v5 packager appended results/ twice to the regression log paths after copying candidate stages. It remains preserved and is excluded from this v9 index/manifest."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v1/",
+      "status": "PARTIAL_UNMANIFESTED",
+      "reason": "The first owner-layout package script had a candidateResults variable typo after copying bytes. It remains preserved and is excluded from the v9 index/manifest."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v8/",
+      "status": "PARTIAL_UNMANIFESTED",
+      "reason": "The first v8 packager referenced an undefined q10PriorPath variable after copying byte-addressed evidence; the correct existing variable is q10PreviousPath. This partial directory is preserved and excluded from the v9 index/manifest."
+    }
+  ],
+  "priorP3ePackage": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v7/measured-panel-repair-ledger.json",
+  "workerCancellationEvidencePackage": "docs/evidence/apmath-vprod/phase3d-worker-cancel-recovery/worker-cancel-recovery-ledger.json",
+  "archiveCaptureCancellationEvidencePackage": "docs/evidence/apmath-vprod/p3d/capture-cancel-v3/cancellation-ledger.json",
+  "workerResultSchemaEvidencePackage": "docs/evidence/apmath-vprod/p3d/worker-exact-response-schema-v1/exact-response-schema-ledger.json",
+  "measuredOwnerLayoutRepairEvidencePackage": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v2/measured-owner-layout-repair-ledger.json",
+  "candidates": [
+    {
+      "candidate": "q10-graph",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/2fdf0e563aa3a62724a6f1c1f9a2eb81388adffb787953b2fc4dcfa1fc00249d/result.json",
+        "bytes": 27638,
+        "sha256": "sha256:f4dcfd96be937f5b1aa43461f1b214b453a62c25b4930fa329f63ccb77428011"
+      },
+      "previousResultPackagePath": "q10-graph/p3e-required-result-fingerprint-replay/previous-result.json",
+      "currentResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      },
+      "currentResultPackagePath": "q10-graph/p3e-required-result-fingerprint-replay/result.json",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+      "runId": "visual-d06883b9-68da-48da-ae13-239d90b83c90",
+      "workRoot": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production",
+      "capability": "polynomial-spike-v1",
+      "currentCodeFingerprint": "sha256:dfdc474b7f94fddbca7ada4654bfe559eef9cc538d366bb24d0c537684cd64fb",
+      "previousCodeFingerprint": "sha256:5894999ac449ec37f1f0bc2d919320d379ae7c1be01a6619da098ea5ec9ab727",
+      "frozenSemanticPlanSha256": "sha256:ec59edee666662aaa02b2e82ac095357c764cb648b3a36c922ea89df8eb45244",
+      "semanticPlanUnchanged": true,
+      "sourceRef": {
+        "bytes": 32756,
+        "path": "archive/exams/original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+        "sha256": "sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54"
+      },
+      "solutionRef": {
+        "bytes": 393,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_INPUT/dc2555c4dc5c239c21bd267bc98907202f7d1f8c1000e2a2eacbeb61decce333/solution.txt",
+        "sha256": "sha256:6473a37b3ad8f0a6a8ac5bab6a8ab395abd0201f353c58df48ad749536cbcab8"
+      },
+      "candidateSvgRef": {
+        "bytes": 23399,
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/BUILD/fc4ce5d71872d674d0c6f12f24cd1bea9c86d74f3fb83664f1a905ddafaf8ae8/q10-solution.svg",
+        "sha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5"
+      },
+      "candidateSvgSha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5",
+      "requestedSizeClass": "medium",
+      "selectedSizeClass": "full",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "FAIL",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:formula",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-x",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-y",
+            "PROFILE_GRAPH_AUDIT_FAIL",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL",
+            "GRAPH_PROFILE_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "FAIL",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PROFILE_GRAPH_AUDIT_FAIL",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "GRAPH_PROFILE_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "FAIL",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PROFILE_GRAPH_AUDIT_FAIL",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "GRAPH_PROFILE_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "PASS",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "composition": {
+        "compositionOnly": true,
+        "displayEnvelopeInputIdentitySha256": "sha256:f77ae0fa18df841810d85f5636075311dcfea7166386b693ca77205bb88202ef",
+        "formulaLabelId": "formula",
+        "formulaTextWidthPx": 143.84375,
+        "fragmentRef": "sha256:56098cbcecf9cb01d26d64e6f4d5c56717ae86a79f9fbd9fe80fe809a7caaf1c",
+        "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+        "labelInventoryAfterSha256": "sha256:e7886eb2875bf6142a6243c42c3c1cc6388835d58a48c6fc9689d65b834ea8cf",
+        "labelInventoryBeforeSha256": "sha256:e7886eb2875bf6142a6243c42c3c1cc6388835d58a48c6fc9689d65b834ea8cf",
+        "labelInventoryParity": true,
+        "measurementRef": {
+          "bytes": 27420,
+          "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/MEASURE/50b11691a1b79e4e09b7f3019bf658005236c88973c1daa6c3bca5775b687368/measure.json",
+          "sha256": "sha256:0d8efc223e2d1a42176aea240bd7d52cd9745c1b55802fd684737aca2abf0f69"
+        },
+        "panelPaddingPx": 24,
+        "previousRepairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+        "priorPanelPx": 140,
+        "repairInput": {
+          "baseSvgSha256": "sha256:055ebaa51fbc19fcf08cfd4f5c2e437ffbb5b2c93b31fe23a6c04215eb52af95",
+          "currentPanelPx": 140,
+          "displayPolicyRefsSha256": "sha256:2136a942e5b479a772b5b82a543d660745e7b0bb4458a685ccc8452820cfc3d9",
+          "formulaFragmentSha256": "sha256:56098cbcecf9cb01d26d64e6f4d5c56717ae86a79f9fbd9fe80fe809a7caaf1c",
+          "formulaLabelId": "formula",
+          "formulaText": "y=3·x^(2)−1",
+          "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+          "maximumPanelPx": 200,
+          "measuredFormula": {
+            "heightPx": 25.859375,
+            "widthPx": 143.84375
+          },
+          "panelPaddingPx": 24,
+          "profilePolicySha256": "sha256:641eac60214dad8dd2a17be9a81eefaf26372c79b217903e98dabe3d1a3b6472",
+          "questionUid": "25_연향중_1학기_기말_중3_기출c|10",
+          "requestedSizeClass": "medium",
+          "schemaVersion": "MEASURED_GRAPH_FORMULA_PANEL_INPUT_v2",
+          "solutionSha256": "sha256:6473a37b3ad8f0a6a8ac5bab6a8ab395abd0201f353c58df48ad749536cbcab8",
+          "sourceConditionsSha256": "sha256:e0d259ce7c44f0145ecf21218ab6c92ec640ccfa943acf832e7c2d2299d62495",
+          "sourceFactSha256": "sha256:3ad2ba4f14069a5ed258165bec70da7697ad5eab09f4aed1979ec2a038ee28d9",
+          "sourcePlanSha256": "sha256:383a770b0fd74e69138add2d2c62777fd0409fd45a7bd128981b5cf9c2e1bd5c",
+          "sourcePolicySha256": "sha256:bfa54ce18908cc89352bc03007e5681e58046f230345185db14812f20b10f218",
+          "sourceSha256": "sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54",
+          "typographyPolicySha256": "sha256:e017d57c2804756c076333f01f2958faadf8cf6542abd400b29dde15fe375587",
+          "verifiedSolutionPolicySha256": "sha256:89af81d8d560fc7bcfd66a4d4188990a502e666a30780704ba16fe5ebab09889"
+        },
+        "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+        "repairIteration": 3,
+        "repairOutput": {
+          "formulaFragmentSha256": "sha256:56098cbcecf9cb01d26d64e6f4d5c56717ae86a79f9fbd9fe80fe809a7caaf1c",
+          "formulaLabelId": "formula",
+          "formulaText": "y=3·x^(2)−1",
+          "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+          "labelInventorySha256": "sha256:e7886eb2875bf6142a6243c42c3c1cc6388835d58a48c6fc9689d65b834ea8cf",
+          "measuredFormulaWidthPx": 143.84375,
+          "panelPaddingPx": 24,
+          "priorPanelPx": 140,
+          "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "schemaVersion": "MEASURED_GRAPH_FORMULA_PANEL_OUTPUT_v2",
+          "selectedPanelPx": 167.9,
+          "sourceConditionsSha256": "sha256:e0d259ce7c44f0145ecf21218ab6c92ec640ccfa943acf832e7c2d2299d62495",
+          "sourceFactSha256": "sha256:3ad2ba4f14069a5ed258165bec70da7697ad5eab09f4aed1979ec2a038ee28d9",
+          "sourcePlanSha256": "sha256:383a770b0fd74e69138add2d2c62777fd0409fd45a7bd128981b5cf9c2e1bd5c"
+        },
+        "repairOutputSha256": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+        "repairReplayRelation": "EXACT_REPLAY",
+        "repairReplayed": true,
+        "repairResumed": false,
+        "requestedSizeClass": "medium",
+        "schemaVersion": "MEASURED_GRAPH_FORMULA_PANEL_v2",
+        "selectedPanelPx": 167.9,
+        "semanticPlanParity": true,
+        "solutionRef": {
+          "bytes": 393,
+          "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/SOLUTION_INPUT/dc2555c4dc5c239c21bd267bc98907202f7d1f8c1000e2a2eacbeb61decce333/solution.txt",
+          "sha256": "sha256:6473a37b3ad8f0a6a8ac5bab6a8ab395abd0201f353c58df48ad749536cbcab8"
+        },
+        "sourceConditionParity": true,
+        "sourceConditionsSha256": "sha256:e0d259ce7c44f0145ecf21218ab6c92ec640ccfa943acf832e7c2d2299d62495",
+        "sourceFactParity": true,
+        "sourceFactSha256": "sha256:3ad2ba4f14069a5ed258165bec70da7697ad5eab09f4aed1979ec2a038ee28d9",
+        "sourcePlanSha256": "sha256:383a770b0fd74e69138add2d2c62777fd0409fd45a7bd128981b5cf9c2e1bd5c",
+        "sourceRef": {
+          "bytes": 32756,
+          "path": "archive/exams/original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+          "sha256": "sha256:8845958bc8c593225185013e26c02826198c46d4c7758df1c02b5ef021ab1a54"
+        },
+        "status": "PASS",
+        "typographyPolicy": {
+          "baseFontPx": 24.9,
+          "comfortCssPx": 0.25,
+          "cssTargetFontPx": 11.25,
+          "displayScale": 0.453125,
+          "fontFloorCssPx": 11,
+          "maximumBaseFontPx": 32,
+          "minimumBaseFontPx": 20,
+          "requestedSizeClass": "medium",
+          "rounding": "CEIL_TO_TENTH_BASE_PX",
+          "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1"
+        }
+      },
+      "postBuildGraphBinding": {
+        "candidateSvgRef": {
+          "bytes": 23399,
+          "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/BUILD/fc4ce5d71872d674d0c6f12f24cd1bea9c86d74f3fb83664f1a905ddafaf8ae8/q10-solution.svg",
+          "sha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5"
+        },
+        "candidateSvgSha256": "sha256:4e219736de56cc511640b73a39f7a60203bfdcca06633e1c9ffdea33b403bad5",
+        "graphPlanSha256": "sha256:6cb73db8da67d25b371159572a01b5be8a442102449be2bfda1872f973b6f574",
+        "phase": "POST_COMPOSITION_BUILD",
+        "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+        "repairOutputSha256": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2"
+      },
+      "actualArchive": {
+        "matrixSha256": "86e8885f35ebb8c210773c7bf35fc1a6827abc6d9f5919122985b6d9f2f4e83e",
+        "rows": [
+          {
+            "capture": {
+              "clippedTextCount": 0,
+              "criticalCollisionCount": 0,
+              "failedSvgCount": 0,
+              "labelCollisionCount": 0,
+              "loadedSvgCount": 1,
+              "missingGlyphCount": 0,
+              "overflowCount": 0,
+              "status": "MEASURED"
+            },
+            "errors": [],
+            "id": "va-2a6cc447b6e7c16a252a26e67c36862ebf953eac3614217df476135452cdd838-sol-desktop",
+            "status": "PASS"
+          }
+        ],
+        "runtime": "playwright-chromium",
+        "scope": "bound code regression candidates in unmodified archive runtime",
+        "status": "PASS",
+        "synthetic": false
+      },
+      "independentVisualReviewStatus": "PASS",
+      "auditSlice": {
+        "status": "FAIL",
+        "errors": [
+          "CANONICAL_UID_AUTHORITY_REQUIRED",
+          "NOT_A_COMPLETE_EXPERIMENTAL_SLICE",
+          "STAGE_MISSING:UID_AUTHORITY"
+        ]
+      },
+      "repairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "previousRepairLedger": [
+        {
+          "inputSha": "sha256:1aa04fc3eb34d34de33b1e5c8e64c1d65be2cb704a3a06427f61543e9a24efc0",
+          "iteration": 1,
+          "outputSha": "sha256:14130c481b12c40fdd0a3c0b8acc3365133952786ece0492bb0bdb95887dfceb",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:09f46f3dfcd56aa2c50b1129f6bad99d72ecad624df88a7af5ae55ec8aad44fd",
+          "iteration": 2,
+          "outputSha": "sha256:32875f4fbbdc636fd53711457d0c11f64559fd030303fb99cb9e01e9b61d3d41",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        },
+        {
+          "inputSha": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+          "iteration": 3,
+          "outputSha": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+          "reason": "MEASURED_GRAPH_FORMULA_PANEL_OVERFLOW",
+          "stage": "LAYOUT"
+        }
+      ],
+      "replayLog": null,
+      "stageCount": 69
+    },
+    {
+      "candidate": "q01-geometry",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/9f4025551c98008d0402e1ad8d7eb40a6e774bb46939a51b5ef02327b6ce3550/result.json",
+        "bytes": 24986,
+        "sha256": "sha256:eb96b1d196d500b868cf9e37d9cba19903f584f8dcee2042d0bded490652cb0a"
+      },
+      "previousResultPackagePath": "q01-geometry/p3e-required-result-fingerprint-replay/previous-result.json",
+      "currentResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "currentResultPackagePath": "q01-geometry/p3e-required-result-fingerprint-replay/result.json",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "questionUid": "25_효천고_2학기_중간_고1_기출|1",
+      "runId": "visual-ed741b36-d931-4999-9850-f76d9af07473",
+      "workRoot": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production",
+      "capability": "construction-spike-v1",
+      "currentCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "previousCodeFingerprint": "sha256:3b16d34eacd00df5a446653e220762291e905d10626e1ddd35e75eff6734bd39",
+      "frozenSemanticPlanSha256": "sha256:a808338d9704e86cbf302bc501df097c6035eede5cd5be00e3b4afb91bc95ae8",
+      "semanticPlanUnchanged": true,
+      "sourceRef": {
+        "bytes": 54538,
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c"
+      },
+      "solutionRef": {
+        "bytes": 384,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/SOLUTION_INPUT/5bbe56490595cc682802ab32374e8921fb12ff28b37a528bf4bc52369e6a6ee5/solution.txt",
+        "sha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682"
+      },
+      "candidateSvgRef": {
+        "bytes": 27699,
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/BUILD/9197d479af85360aef834f5e98d7a9c95e5ffc3300029ad4573fd47ec22ad10f/q01-solution.svg",
+        "sha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f"
+      },
+      "candidateSvgSha256": "sha256:f41ae2db5282b880c87cdaab54e1334ea1d3097d38440271030a5fcac2be392f",
+      "requestedSizeClass": "medium",
+      "selectedSizeClass": "medium",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-3-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:ABLength-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-coordinate",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-coordinate",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-x",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-y",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "composition": null,
+      "postBuildGraphBinding": null,
+      "actualArchive": {
+        "matrixSha256": "47a2c22b6ca9d8a3d7fbb7fb27cac72cf5422b2d236315a0b15c77621d78a3c0",
+        "rows": [
+          {
+            "capture": {
+              "clippedTextCount": 0,
+              "criticalCollisionCount": 0,
+              "failedSvgCount": 0,
+              "labelCollisionCount": 0,
+              "loadedSvgCount": 1,
+              "missingGlyphCount": 0,
+              "overflowCount": 0,
+              "status": "MEASURED"
+            },
+            "errors": [],
+            "id": "va-972603905f8f438d2091e56e13fbe0651ab5457d4e68b80bbe4e51221b2a0536-sol-desktop",
+            "status": "PASS"
+          }
+        ],
+        "runtime": "playwright-chromium",
+        "scope": "bound code regression candidates in unmodified archive runtime",
+        "status": "PASS",
+        "synthetic": false
+      },
+      "independentVisualReviewStatus": "PASS",
+      "auditSlice": {
+        "status": "FAIL",
+        "errors": [
+          "CANONICAL_UID_AUTHORITY_REQUIRED",
+          "NOT_A_COMPLETE_EXPERIMENTAL_SLICE",
+          "STAGE_MISSING:UID_AUTHORITY"
+        ]
+      },
+      "repairLedger": [],
+      "previousRepairLedger": [],
+      "replayLog": null,
+      "stageCount": 64
+    },
+    {
+      "candidate": "coordinate-free-q01",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/e6fa13860e4b56e015428183b43691f5a48a5aa0d44681e7eeb361f1f4219da6/result.json",
+        "bytes": 25496,
+        "sha256": "sha256:29839a83184ecd1579bfe718d0a33a4526bf2c1101fb38e70fe675edfd9f9b1b"
+      },
+      "previousResultPackagePath": "coordinate-free-q01/p3e-required-result-fingerprint-replay/previous-result.json",
+      "currentResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      },
+      "currentResultPackagePath": "coordinate-free-q01/p3e-required-result-fingerprint-replay/result.json",
+      "status": "EXPERIMENTAL_LOCATOR_COMPLETE",
+      "identityStatus": "EXPERIMENTAL_LOCATOR",
+      "questionUid": "25_삼산중_2학기_기말_중2_기출|1",
+      "runId": "visual-356c630c-ca80-4baa-8c43-4015bfa41fd2",
+      "workRoot": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production",
+      "capability": "construction-spike-v1",
+      "currentCodeFingerprint": "sha256:fd22f8866f7cafda56a7bd9f33f867ff35d5dc484afb8da1dc98b280604f8cc2",
+      "previousCodeFingerprint": "sha256:3b16d34eacd00df5a446653e220762291e905d10626e1ddd35e75eff6734bd39",
+      "frozenSemanticPlanSha256": "sha256:e08e4580b4b8cdcc129fc29c6dffe0855ddfa3f5e0870cfbb0967ccd9ef66a70",
+      "semanticPlanUnchanged": true,
+      "sourceRef": {
+        "bytes": 41090,
+        "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sha256": "sha256:f2b726065d3802ccdb9d3454ad92a2deece34772674188c24cd4f4b96374796e"
+      },
+      "solutionRef": {
+        "bytes": 212,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/SOLUTION_INPUT/40a2b66f43d571d4cd6105460e26321aac93e686d777a6ef9e7c4dfb3e116bbc/solution.txt",
+        "sha256": "sha256:c6385f4a00da8b246224a366dd9bb3c1429c6c575acb7f09e85e04a90953668e"
+      },
+      "candidateSvgRef": {
+        "bytes": 19211,
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/BUILD/fb23b9d18efa876532b55cde6e3a54781588dacff61b8a2ab707c2773f6fcfc3/q01-solution.svg",
+        "sha256": "sha256:6c1daa75b63a69a548f8bd99b0c8bc0c2b8c018f57306c5425904b265fb40ed9"
+      },
+      "candidateSvgSha256": "sha256:6c1daa75b63a69a548f8bd99b0c8bc0c2b8c018f57306c5425904b265fb40ed9",
+      "requestedSizeClass": "medium",
+      "selectedSizeClass": "medium",
+      "profileStatus": [
+        {
+          "sizeClass": "small",
+          "supportStatus": "FAIL",
+          "minimumViewportCssFontPx": 8.1703125,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:A-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:B-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:C-name",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:HypotenuseX",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:LengthAB-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:LengthBC-value",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:SquareAC-value",
+            "PROFILE_BROWSER_MEASUREMENT_FAILED",
+            "FONT_FLOOR_FAIL",
+            "LAYOUT_AUDIT_FAIL"
+          ]
+        },
+        {
+          "sizeClass": "medium",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 11.282812499999999,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "large",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 14.00625,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        },
+        {
+          "sizeClass": "full",
+          "supportStatus": "PASS",
+          "minimumViewportCssFontPx": 19.33255615234375,
+          "graphStatus": "NOT_APPLICABLE",
+          "topologyStatus": "PASS",
+          "errors": []
+        }
+      ],
+      "composition": null,
+      "postBuildGraphBinding": null,
+      "actualArchive": {
+        "matrixSha256": "b396e340da0fed93dc25feefc7fdf3e3a58b3f4f372ae8f1502ac49584769ece",
+        "rows": [
+          {
+            "capture": {
+              "clippedTextCount": 0,
+              "criticalCollisionCount": 0,
+              "failedSvgCount": 0,
+              "labelCollisionCount": 0,
+              "loadedSvgCount": 1,
+              "missingGlyphCount": 0,
+              "overflowCount": 0,
+              "status": "MEASURED"
+            },
+            "errors": [],
+            "id": "va-569fe0a9aa9cc86b222606fba0a849db3b4343827eb03d732b809d41f2707904-sol-desktop",
+            "status": "PASS"
+          }
+        ],
+        "runtime": "playwright-chromium",
+        "scope": "bound code regression candidates in unmodified archive runtime",
+        "status": "PASS",
+        "synthetic": false
+      },
+      "independentVisualReviewStatus": "PASS",
+      "auditSlice": {
+        "status": "FAIL",
+        "errors": [
+          "CANONICAL_UID_AUTHORITY_REQUIRED",
+          "NOT_A_COMPLETE_EXPERIMENTAL_SLICE",
+          "STAGE_MISSING:UID_AUTHORITY"
+        ]
+      },
+      "repairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "previousRepairLedger": [
+        {
+          "inputSha": "sha256:9acd9427e635f985fa5d87bee4b2eab0b15e9b747bec79a9142c8c882a855dbd",
+          "iteration": 1,
+          "outputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "reason": "INVALID_BRANCH",
+          "stage": "NORMALIZER"
+        },
+        {
+          "inputSha": "sha256:c6ea4c2d6609f4676f4dbfc07bf4cd4fa64ebf8ef0e2e583b8300d32e2e891ca",
+          "iteration": 2,
+          "outputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "reason": "sha256:2d1d2d9be341be6ff837cceec2204aa5bd0845a4055661573518504a0df8b3f7",
+          "stage": "SOURCE_REVIEW"
+        },
+        {
+          "inputSha": "sha256:0b38689770e572e409becfe063f7e9b3602d03aefef6bcaebb82791b84d99169",
+          "iteration": 3,
+          "outputSha": "sha256:d8792c46986c3123e94ceac442ea6eda4878c9f322d747c3c42b69397eee22a5",
+          "reason": "REALIZATION_RECIPE_REQUIRED",
+          "stage": "NORMALIZER"
+        }
+      ],
+      "replayLog": null,
+      "stageCount": 63
+    }
+  ],
+  "attemptHistory": [
+    {
+      "attempt": "pre-fix-missing-result-negative",
+      "classification": "CONTRACT_DEFECT_PRESERVED",
+      "status": "FAIL",
+      "observedError": "NON_JSON_VALUE",
+      "expectedError": "INVALID_WORKER_RESPONSE",
+      "contractCommit": "dc466abee",
+      "contractBlobSha1": "36b4f0600696d7b92ed127f3e9570816253c3ce3"
+    },
+    {
+      "attempt": "pre-fix-unexpected-field-negative",
+      "classification": "CONTRACT_DEFECT_PRESERVED",
+      "status": "FAIL",
+      "observedError": "MISSING_EXPECTED_REJECTION",
+      "expectedError": "INVALID_WORKER_RESPONSE",
+      "contractCommit": "feb5e914f",
+      "contractBlobSha1": "6bcefd8a00fc69135bcc4dcaf54775f9d5f11e1e"
+    },
+    {
+      "attempt": 1,
+      "candidate": "q10-graph",
+      "classification": "EXACT_RESPONSE_SCHEMA_FINGERPRINT_REPLAY_EXACT_BUDGET_ACTION",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/2fdf0e563aa3a62724a6f1c1f9a2eb81388adffb787953b2fc4dcfa1fc00249d/result.json",
+        "bytes": 27638,
+        "sha256": "sha256:f4dcfd96be937f5b1aa43461f1b214b453a62c25b4930fa329f63ccb77428011"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      },
+      "repairIteration": 3,
+      "repairReplayed": true,
+      "repairReplayRelation": "EXACT_REPLAY",
+      "repairLedgerLength": 3,
+      "repairInputSha256": "sha256:382d8d62bb5ce1e9ff322b4d121835cef97086246d1e82278e2faa918833453c",
+      "repairOutputSha256": "sha256:054b699e72230c7abcf59253b59e8f7dcca18c7e827c2cf5e340b3f5127925a2",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 2,
+      "candidate": "q01-geometry",
+      "classification": "EXACT_RESPONSE_SCHEMA_FINGERPRINT_REPLAY",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/9f4025551c98008d0402e1ad8d7eb40a6e774bb46939a51b5ef02327b6ce3550/result.json",
+        "bytes": 24986,
+        "sha256": "sha256:eb96b1d196d500b868cf9e37d9cba19903f584f8dcee2042d0bded490652cb0a"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "repairLedgerLength": 0,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 3,
+      "candidate": "coordinate-free-q01",
+      "classification": "EXACT_RESPONSE_SCHEMA_FINGERPRINT_REPLAY_PRESERVE_THREE_REPAIRS",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/e6fa13860e4b56e015428183b43691f5a48a5aa0d44681e7eeb361f1f4219da6/result.json",
+        "bytes": 25496,
+        "sha256": "sha256:29839a83184ecd1579bfe718d0a33a4526bf2c1101fb38e70fe675edfd9f9b1b"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      },
+      "repairLedgerLength": 3,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 4,
+      "candidate": "q10-graph",
+      "classification": "MEASURED_OWNER_LAYOUT_FINAL_FINGERPRINT_REPLAY_EXACT_PANEL_ACTION",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/2fdf0e563aa3a62724a6f1c1f9a2eb81388adffb787953b2fc4dcfa1fc00249d/result.json",
+        "bytes": 27638,
+        "sha256": "sha256:f4dcfd96be937f5b1aa43461f1b214b453a62c25b4930fa329f63ccb77428011"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/e3bce86cb5405ea6f14d5fcdaaebc348a8818e810ba76520ae9005b73faf0a17/result.json",
+        "bytes": 27959,
+        "sha256": "sha256:89d47794bddfd2741e5c991476c2b230d212736d20e434b25b83991f94486c65"
+      },
+      "repairLedgerLength": 3,
+      "repairReplayed": true,
+      "repairReplayRelation": "EXACT_REPLAY",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 5,
+      "candidate": "q01-geometry",
+      "classification": "MEASURED_OWNER_LAYOUT_FINAL_FINGERPRINT_REPLAY",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/9f4025551c98008d0402e1ad8d7eb40a6e774bb46939a51b5ef02327b6ce3550/result.json",
+        "bytes": 24986,
+        "sha256": "sha256:eb96b1d196d500b868cf9e37d9cba19903f584f8dcee2042d0bded490652cb0a"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-ed741b36-d931-4999-9850-f76d9af07473/25_효천고_2학기_중간_고1_기출/visual-engine/production/stages/RESULT/0b9fb22ca6015cd838bb2074026573b9c2c89e506dad73a5c6050372597cea1c/result.json",
+        "bytes": 25306,
+        "sha256": "sha256:5f57ea75dce469ed0e37d71eb9ee91a7a4a105e8e1561ca94de7d00e020cc15a"
+      },
+      "repairLedgerLength": 0,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    },
+    {
+      "attempt": 6,
+      "candidate": "coordinate-free-q01",
+      "classification": "MEASURED_OWNER_LAYOUT_FINAL_FINGERPRINT_REPLAY_PRESERVE_THREE_REPAIRS",
+      "previousResultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/e6fa13860e4b56e015428183b43691f5a48a5aa0d44681e7eeb361f1f4219da6/result.json",
+        "bytes": 25496,
+        "sha256": "sha256:29839a83184ecd1579bfe718d0a33a4526bf2c1101fb38e70fe675edfd9f9b1b"
+      },
+      "resultRef": {
+        "path": ".tmp/archive/visual-356c630c-ca80-4baa-8c43-4015bfa41fd2/25_삼산중_2학기_기말_중2_기출/visual-engine/production/stages/RESULT/5ae0347d4695bc45719b2da7f2e35b956f0f0ae706766b13efc97229b98a6c77/result.json",
+        "bytes": 25816,
+        "sha256": "sha256:2e8d30677567b073285c1e4c719f66dba4301a692550aeb1aaaebcea7efc7cab"
+      },
+      "repairLedgerLength": 3,
+      "selectedProfile": "medium",
+      "actualArchive": "PASS",
+      "visualReview": "PASS"
+    }
+  ],
+  "tests": {
+    "focusedMalformedProtocol": {
+      "repetitions": 10,
+      "casesPerRun": 6,
+      "failures": 0,
+      "evidencePackage": "docs/evidence/apmath-vprod/p3d/worker-exact-response-schema-v1/exact-response-schema-ledger.json"
+    },
+    "measuredOwnerLayout": {
+      "focusedChromiumRuns": 10,
+      "failures": 0,
+      "node": {
+        "passed": 124,
+        "failed": 0,
+        "logPath": "logs/node-regression-124.json"
+      },
+      "python": {
+        "passed": 142,
+        "failed": 0,
+        "logPath": "logs/python-regression-142.json"
+      },
+      "evidencePackage": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v2/measured-owner-layout-repair-ledger.json"
+    },
+    "node": {
+      "passed": 124,
+      "failed": 0,
+      "logPath": "logs/node-regression-124.json"
+    },
+    "python": {
+      "passed": 142,
+      "failed": 0,
+      "logPath": "logs/python-regression-142.json"
+    }
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "bytes": 62066,
+      "sha256": "sha256:aacff6c9ff202ba7851e59e99509f1cea9594f2db4ccdb0c6acc52eb591651c7"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/fingerprint.mjs",
+      "bytes": 2896,
+      "sha256": "sha256:275b85928c3ef60bc4b6cacc1c3eb66848022866fd626cfee3ce35f918d7ada9"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/layout-repair.mjs",
+      "bytes": 11877,
+      "sha256": "sha256:8e22c25721738a227b77002ba665ccba400e84338331275500d97384f2abbc3b"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/layout-repair-audit.mjs",
+      "bytes": 13570,
+      "sha256": "sha256:427f3d897cfce15aa7ec8e6682bff418d976e451f580c11c7cf35fedcc70ef70"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/repair-budget.mjs",
+      "bytes": 2010,
+      "sha256": "sha256:f5be8019a761ea956f592d91fb6f3ab4e9a1dc4100d9821a6bfd52c623207c46"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/worker.mjs",
+      "bytes": 2163,
+      "sha256": "sha256:a6c76ca5f7a1e8ec89edf4b77622614be8ac4a5eee007e0abfca53bbe6480419"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/display-envelope.mjs",
+      "bytes": 34255,
+      "sha256": "sha256:9bfed60220f7344d380d4e16618c1045b292f06978f41c0fa2f1cd6938f5f919"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/typography.mjs",
+      "bytes": 4193,
+      "sha256": "sha256:6db63f3de540050eae8086e0317f114c3856164d7505588098b82e37feb07470"
+    },
+    {
+      "path": "archive/tools/geometry-equation/visual_engine/engine.py",
+      "bytes": 17710,
+      "sha256": "sha256:1bb01b3d27e656a5755d3cc8d6882196211da038342e20d30b0ca78752b48c07"
+    },
+    {
+      "path": "archive/tools/geometry-equation/visual_engine/label_layout.py",
+      "bytes": 11057,
+      "sha256": "sha256:9d1f3ce5f2569beb6b5d30f313f817503a02ee7abab73547b4f5c9d7c6d7127f"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/graph_observer.py",
+      "bytes": 11846,
+      "sha256": "sha256:26e09fbf407817edcad293fc8d68acd3294eb40361fdf2a21e2e66942cdb9bc3"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/layout-repair-binder.test.mjs",
+      "bytes": 7935,
+      "sha256": "sha256:8e4039fe6ef49859aaefe0fd865b4f1b3eee98c7d5f6277f2e9ffaa358c453af"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/test_label_layout.py",
+      "bytes": 8958,
+      "sha256": "sha256:c1e2681d048f24f4da4b444349456e1b55eb640cea0d05b9ec999a48e8e76aae"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/repair-budget-replay.test.mjs",
+      "bytes": 2221,
+      "sha256": "sha256:0e02d08614d836c48d704987a2f369025f1c5a368af5aeddf628e53b3ed66d36"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-cancel-recovery.test.mjs",
+      "bytes": 3472,
+      "sha256": "sha256:99f03033492c0f7549706d40e9639a0be8070e0b633fd613990d5e2e170d7477"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/archive-cancel-recovery.test.mjs",
+      "bytes": 10821,
+      "sha256": "sha256:0ed82e4cef9ee5bf990e027580fbfa1fd984f5abd8c6ad3909204b9eb419e50f"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+      "bytes": 7998,
+      "sha256": "sha256:c1ef7d3985a2b60c86b657cae3fec4ea8bc052b1fab5a571fda62a72923bec15"
+    }
+  ],
+  "logs": [
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/q10-graph-final-label-policy-closure-replay.json",
+      "destination": "logs/q10-final-label-policy-fingerprint-replay.json",
+      "classification": "FINAL_CURRENT_FINGERPRINT_EXACT_BUDGET_REPLAY",
+      "cliExitCode": 2,
+      "bytes": 2833,
+      "sha256": "sha256:42608417b013c40ac75370b2fdee90277f4ab834b825247b3bf1c8af48774792"
+    },
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/q01-geometry-final-label-policy-closure-replay.json",
+      "destination": "logs/q01-final-label-policy-fingerprint-replay.json",
+      "classification": "FINAL_CURRENT_FINGERPRINT_REPLAY",
+      "cliExitCode": 2,
+      "bytes": 2811,
+      "sha256": "sha256:deaca59a843f0622aa72d9d764533ae308033cb4c9ac04d6d8e934ec29801536"
+    },
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/coordinate-free-q01-final-label-policy-closure-replay.json",
+      "destination": "logs/coordinate-free-final-label-policy-fingerprint-replay.json",
+      "classification": "FINAL_CURRENT_FINGERPRINT_PRESERVE_THREE_REPAIRS",
+      "cliExitCode": 2,
+      "bytes": 2822,
+      "sha256": "sha256:ba9d05e2223827e73c34bc4a0231a598b599f5a4583167ffff12485578e68fa0"
+    },
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/node-regression-final-label-policy-closure.json",
+      "destination": "logs/node-regression-124.json",
+      "classification": "FULL_NODE_REGRESSION_SUITE",
+      "cliExitCode": 0,
+      "bytes": 15955,
+      "sha256": "sha256:af71b7a4a75946befeab093d3d3adc413c28a00f8d307bbe3baec7fb06eb6592"
+    },
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/python-regression-final-label-policy-closure.json",
+      "destination": "logs/python-regression-142.json",
+      "classification": "FULL_PYTHON_REGRESSION_SUITE",
+      "cliExitCode": 0,
+      "bytes": 566,
+      "sha256": "sha256:32155d41cd5907e6a23218944563d9a4291019de890ec248de109b18c157aa14"
+    },
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/regression-summary-final-label-policy-closure.json",
+      "destination": "logs/owner-layout-regression-summary.json",
+      "classification": "TEN_FOCUSED_CHROMIUM_RUNS_AND_FULL_REGRESSIONS",
+      "cliExitCode": 0,
+      "bytes": 2487,
+      "sha256": "sha256:504c23fc23e00d4825f69ce28667bd21978c7cade171bec46c1033c3d7551c0d"
+    },
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/q10-graph-measured-owner-repair-replay.json",
+      "destination": "attempts/q10-prepared-output-access-failure.json",
+      "classification": "PHASE2_INTEGRATION_DEFECT_PRESERVED",
+      "cliExitCode": 2,
+      "bytes": 2692,
+      "sha256": "sha256:64c9c37ff68cb5bac86fd5fa4868986553978542552e5be945a965462f2c81a2"
+    },
+    {
+      "source": ".tmp/archive/phase3d-owner-safe-label-repair/replay-control/python-regression-current.json",
+      "destination": "attempts/python-missing-measurement-order-failure.json",
+      "classification": "REGRESSION_FAILURE_PRESERVED_THEN_FIXED",
+      "cliExitCode": 1,
+      "bytes": 1611,
+      "sha256": "sha256:f87a6bcde9222dd793887587135c8fb04c5414065449b0a58e72b82e64a970b5"
+    },
+    {
+      "source": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v2/measured-owner-layout-repair-ledger.json",
+      "destination": "logs/p3d-owner-safe-layout-repair-ledger.json",
+      "classification": "P3D_CONTROLLED_FIXTURE_AND_REPLAY_EVIDENCE",
+      "bytes": 18994,
+      "sha256": "sha256:d9f3afbe5b90da57c8d342fb069bef0c51a71ff26ab97c959da59d2e72660932"
+    },
+    {
+      "source": "docs/evidence/apmath-vprod/p3d/measured-owner-safe-layout-repair-v2/evidence-manifest.json",
+      "destination": "logs/p3d-owner-safe-layout-repair-manifest.json",
+      "classification": "P3D_MANIFEST_BINDING",
+      "bytes": 8480,
+      "sha256": "sha256:f6fc5e082fa4d55aaada07df10fde25786f48b40472a8aa474e9a9a3826b916d"
+    }
+  ],
+  "supersedesPriorP3eResultPackage": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v7/measured-panel-repair-ledger.json",
+  "previousBudgetedPanelRepairReplayRef": {
+    "path": ".tmp/archive/visual-d06883b9-68da-48da-ae13-239d90b83c90/25_연향중_1학기_기말_중3_기출c/visual-engine/production/stages/RESULT/2fdf0e563aa3a62724a6f1c1f9a2eb81388adffb787953b2fc4dcfa1fc00249d/result.json",
+    "bytes": 27638,
+    "sha256": "sha256:f4dcfd96be937f5b1aa43461f1b214b453a62c25b4930fa329f63ccb77428011"
+  },
+  "sourceAuthorityStatus": "INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED",
+  "qualificationStatus": "NOT_QUALIFIED",
+  "limitations": [
+    "All three real-source candidates remain EXPERIMENTAL_LOCATOR_COMPLETE and outside qualification counts.",
+    "Graph q10 remains full-only; small/medium/large graph overview audits fail after the panel repair, while topology passes.",
+    "The formula-panel controller covers only measured graph-formula panel overflow. The owner-safe label relocation mechanism is supported by a controlled fixture only; none of the three real candidates triggered it. Other unresolved layout classes remain unresolved.",
+    "The P3E action changes only the measured description panel; semantic plan, source conditions/facts, graph plan, formula and complete prepared-label inventory are unchanged.",
+    "The q10 shared repair budget is at its three-entry limit; final fingerprint replay reused entry 3, and any further distinct repair input fails closed at REPAIR_BUDGET_EXHAUSTED.",
+    "The host CLI returns exit code 2 for locator runs because only PHASE2_SLICE_COMPLETE exits 0; each recorded result itself completed as EXPERIMENTAL_LOCATOR_COMPLETE."
+  ],
+  "currentHeadBeforeCommit": "UNCOMMITTED_MEASURED_OWNER_LAYOUT_REPAIR",
+  "lastUpdatedUtc": "2026-10-06T18:58:54.853Z"
+}
