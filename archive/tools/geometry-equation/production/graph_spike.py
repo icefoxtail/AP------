@@ -17,7 +17,7 @@ def expression(plan):
 
 def produce(plan):
     vp=Viewport(*plan['viewport'],width=420,height=280,panel=0,margin=32,equal=False)
-    critical=[p['x'] for p in plan.get('requiredPoints',[])]
+    critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
     if plan['family']=='sqrt-affine':
         b,a=[float(Fraction(v)) for v in plan['radicand']]
         if a<=0:raise ValueError('UNSUPPORTED_SQRT_RADICAND')

@@ -17,7 +17,7 @@ Known numeric peer limit: Cindy is a bounded numeric cross-check, not an exact p
 | Family | Production execution | Independent math / topology audit | Overview and required feature audit | Actual Archive publication | Status |
 |---|---|---|---|---|---|
 | Quadratic polynomial | `polynomial-spike-v1` runner accepts exact rational coefficient strings and a bounded domain/viewport; sampler and quadratic framing are active | Independent polynomial observer verifies source curve segments, roots/coverage, and the quadratic overview frame | Vertex, opening direction, and both visible arms are checked; full/large/medium profiles are audited separately | Graph q10 locator selected full; large failed each arm at 39.34px versus a 40px minimum; full passed | `EXPERIMENTAL` vertical slice only; qid_v1 locator is not qualification evidence |
-| Cubic / quartic polynomial | Existing sampler and worker grammar can execute bounded polynomial expressions through degree four | Observer has a polynomial source-bound mode through degree four | `graph_framing.py` and overview observer currently implement `QUADRATIC_OVERVIEW_v1` only; cubic/quartic feature framing is absent | No cubic/quartic real-source profile slice | `NOT_PUBLICATION_SUPPORTED` |
+| Cubic / quartic polynomial | Existing sampler and worker grammar execute bounded polynomial expressions through degree four. Experimental overview accepts exact rational coefficient strings of degree exactly 3 or 4 only when source domain is explicitly `ALL_REALS`; framing is display-only. Restricted intervals remain unsupported. | Separately launched observer recomputes real roots, derivative roots/extrema or stationary inflections, inflection points, multiplicities, and left/right tail directions from the source polynomial; it checks the final SVG polyline. | Every derived/required feature and both tails must remain visible at the actual profile. Coincident feature roles merge; repeated source roots and features below 1 CSS px separation at the audited profile fail closed or return unsupported. | Controlled synthetic-content fixtures exercise measured Chromium fragments, small/medium/large/full profile audits, selected-profile actual Archive capture, candidate-SHA binding, and local-only resources. Cubic selected large; quartic selected full; both final rows PASS. No canonical source candidate. | `EXPERIMENTAL / CONTROLLED FIXTURE ONLY`; `NOT_PUBLICATION_SUPPORTED`; no qualified UID |
 | Rational | AST sampler detects denominator guards; observer code can bound a restricted rational numerator/denominator grammar | Observer accepts numerator degree ≤4 and denominator degree ≤2 on bounded nonsingular intervals | Pole, hole, branch continuity, asymptote ownership, and overview coverage are not closed as a production request family; general family frame resolver is absent | No rational candidate profile slice | `NOT_PUBLICATION_SUPPORTED`; denominator limits and topology remain explicit |
 | Square root | AST sampler detects square-root domain guards; observer supports a positive-slope affine radicand | Independent secant-envelope audit exists for that narrow observer grammar | General radical framing, endpoint presentation, and mixed compositions are not closed | No square-root candidate profile slice | `NOT_PUBLICATION_SUPPORTED`; only the observer’s narrow grammar is available |
 | Absolute value | Expression AST evaluates `abs`; sampler can emit samples | No independent corner/branch observer is connected to the real UID runner | Corner location/ownership and tangent discontinuity treatment are absent | No profile evidence | `NOT_PUBLICATION_SUPPORTED` |
@@ -28,19 +28,51 @@ Known numeric peer limit: Cindy is a bounded numeric cross-check, not an exact p
 
 The relevant implementation split is visible in [function sampler](../../archive/tools/geometry-equation/visual_engine/function_sampling.py), [graph observer](../../archive/tools/geometry-equation/production/graph_observer.py), [graph framer](../../archive/tools/geometry-equation/production/graph_framing.py), and the [Phase 2 runner](../../archive/tools/geometry-equation/production/phase2.mjs). The production runner does not report a family supported merely because the expression parser accepts it.
 
+## Phase 4 cubic/quartic fixture evidence
+
+This fixture slice is **`EXPERIMENTAL / CONTROLLED FIXTURE ONLY`**. It does not
+qualify publication or provide a canonical UID result. The candidate bank content
+is synthetic, although the collector used actual Chromium, measured the frozen
+MathJax fragments before BUILD, loaded the exact final SVG bytes in the local
+Archive, blocked external requests, and captured raw screenshots.
+
+| Fixture | Frozen exact function | Derived features and tails | Small | Medium | Large | Full | Selected Archive result |
+|---|---|---|---|---|---|---|---|
+| Cubic | `y=x³−3x` | Roots `−√3, 0, √3`; extrema at `−1, 1`; `x=0` merges ROOT and INFLECTION; left DOWN, right UP | Fail | Fail | Pass | Pass | large; PASS |
+| Quartic | `y=x⁴−x` | Roots `0, 1`; derivative root `∛(1/4)`; both tails UP | Fail | Fail | Fail | Pass | full; PASS |
+
+The Archive image boxes measured small `126×105`, medium `174×145`, large
+`216×180`, and full `298.140625×248.453125` CSS px. The minimum rendered label
+font was 8.17 px at small, 11.28 px at medium, 14.01 px at large, and 19.33 px at
+full. Quartic large fails graph-tail/arm coverage even though its font floor
+passes. The independent `y=x³` feature-inventory unit covers merging a
+stationary-inflection role; that repeated-root polynomial is not a supported
+source fixture.
+
+Positive/negative coverage includes exact feature inventory, tail direction,
+role merging, repeated roots, restricted/missing domains, sub-resolution
+features, wrong chords, missing features, clipped tails, and a viewport-out-and-
+back curve. The Node Phase 2 spec test verifies that every frozen math feature is
+sampled and tail metadata is not mistaken for an x-coordinate. Full regressions
+after the contract-test update passed Node 132/132 and Python 151/151.
+
+The [tracked fixture ledger](../evidence/apmath-vprod/p4/cubic-quartic-overview-v4/phase4-ledger.json),
+[evidence index](../evidence/apmath-vprod/p4/cubic-quartic-overview-v4/evidence-index.json),
+and [hash manifest](../evidence/apmath-vprod/p4/cubic-quartic-overview-v4/evidence-manifest.json) preserve the machine inputs and actual captures.
+
 ## Cross-family publication gates
 
 | Gate | Current evidence | Remaining debt |
 |---|---|---|
 | DisplayEnvelope | Actual `.sol-meta` content-box width is measured before layout; same candidate bytes are captured at small/medium/large/full; every profile binds source, solution, policy, SVG SHA, screenshot, label fonts, strokes, and topology/graph references | Only three locator-based real-source candidate slices exist; no canonical v2 authority |
-| Owner-safe measured layout | Frozen MathJax fragments are measured in Chromium; final per-profile `getBBox`/client bounds feed collision, clipping, and font checks; graph q10 uses a measured side panel | General owner-safe relocation/framing repair loop and full-required-label mutation suite are incomplete |
-| Resume/cache/atomic stage output | Immutable manifests, temp-workspace isolation, stage locks, cache invalidation boundaries, and concurrent async workspace tests exist; frozen result replay re-runs actual captures and reloads the stored repair ledger | Timeout recovery/partial writer reconciliation, full source/policy/provider invalidation matrix, and complete warm/cold publication tests remain open |
-| Bounded repair | Plan/normalizer/source review repair ledger is capped at three and is persisted across replay; no final SVG patching is used | A general one-budget measured-layout/profile repair controller is not implemented; unresolved layout remains explicit |
+| Owner-safe measured layout | Frozen MathJax fragments are measured in Chromium; final per-profile `getBBox`/client bounds feed collision, clipping, and font checks. The bounded Phase 3 owner relocation binds point/coordinate fragments to an exact target and Voronoi owner; the q10 formula panel uses a measured, content-addressed action. | Owner relocation was triggered only by a controlled fixture, not a real candidate. q10 is unresolved at its unchanged 3/3 repair cap. Other label/panel defect classes remain unsupported rather than silently repaired. |
+| Resume/cache/atomic stage output | Immutable manifests, temp-workspace isolation, stage locks, competing-writer evidence, provider/observer and review-input invalidation, worker-timeout/cancellation recovery, actual Archive capture cancellation, and provider `turn/interrupt` plus child-close evidence are tested. The local-only Archive page verifies vendored QRious response SHA and local MathJax. | Evidence is bounded to the tested mutation/timeout/cancellation cases; it does not claim a universal cache invalidation or cross-browser qualification. The P3E v11 candidate outcomes are a pre-Phase-4 snapshot, not current after Phase 4 fingerprint changes. |
+| Bounded repair | Plan/normalizer/source-review repairs persist a shared three-entry ledger. Measured formula-panel composition and a narrowly typed measured point/coordinate-label relocation are bound to frozen inputs; no direct final SVG patch is used. | q10 remains unresolved at 3/3. The owner relocation has no real-candidate trigger. General repairs for arbitrary labels, typography, graph framing, and unmeasured layout classes remain unsupported and fail closed. |
 | Source authority / qualification | Current resolver returns `INPUT_REQUIRED / UID_AUTHORITY_REGISTRY_REQUIRED`; the qid_v1 map cannot be promoted to v2 ACTIVE authority | Canonical real-UID count: Geometry 0/6, Graph 0/4, total 0/10. Experimental locator examples are excluded |
 
 ## Negative tests still required for capability expansion
 
-The profile gate has 17 fixture logic tests and three real-source locator profile packages. Those tests do not qualify any Graph family. Required family-specific negatives remain `NOT_RUN` until a corresponding family vertical slice exists: wrong cubic/quartic chord; repeated/clustered roots; rational pole; removable hole marker; square-root endpoint; absolute-value corner; piecewise open/closed endpoint; viewport-out-and-back curve; clipped endpoint; overview with one arm cut; over-zoomed/flattened overview; sub-11px actual profile; and final Archive image/profile mismatch.
+The cubic/quartic controlled slice now covers wrong chord and omitted-feature rejection, repeated/clustered roots, restricted/missing source domains, viewport-out-and-back curves, clipped/unreadable tails, and profile-scaled feature/font resolution. These fixture negatives do not qualify a real Graph UID. Other family-specific cases remain open until their own bounded slices: rational poles/removable holes; square-root endpoints; absolute-value corners; piecewise open/closed endpoints; exponential/logarithmic/trigonometric branch and asymptote coverage. Cross-family profile fixtures continue to reject sub-11px labels and mismatched final Archive image/profile bindings, but they do not replace a family-specific actual-source review.
 
 ## Qualification disposition
 

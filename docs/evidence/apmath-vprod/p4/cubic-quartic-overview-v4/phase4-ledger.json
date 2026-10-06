@@ -1,0 +1,639 @@
+{
+  "schemaVersion": "APMATH_PHASE4_CUBIC_QUARTIC_SLICE_LEDGER_v1",
+  "classification": "EXPERIMENTAL_CONTROLLED_FIXTURE_ONLY_NOT_PUBLICATION_SUPPORTED",
+  "status": "BOUNDED_CUBIC_QUARTIC_IMPLEMENTATION_AND_FIXTURES_PASS",
+  "canonicalQualifiedUidCount": 0,
+  "publicationSupported": false,
+  "productionAuthorized": false,
+  "active": false,
+  "scope": {
+    "family": "polynomial",
+    "degree": [
+      3,
+      4
+    ],
+    "coefficientGrammar": "exact integer or rational strings",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "restrictedSourceDomains": "UNSUPPORTED",
+    "framingChangesSource": false,
+    "repeatedSourceRoots": "UNSUPPORTED",
+    "minimumDistinctFeatureSeparationCssPx": 1,
+    "features": [
+      "real roots",
+      "derivative roots/extrema/stationary inflections",
+      "inflection points",
+      "multiplicity",
+      "left/right tail directions"
+    ],
+    "stationaryInflectionRoles": "MERGE_AT_SAME_POINT",
+    "remainingFamilies": {
+      "rational": "NOT_IMPLEMENTED_IN_THIS_SLICE",
+      "sqrt": "NOT_IMPLEMENTED_IN_THIS_SLICE",
+      "absoluteValue": "NOT_IMPLEMENTED_IN_THIS_SLICE",
+      "piecewise": "UNSUPPORTED",
+      "exponential": "NOT_IMPLEMENTED_IN_THIS_SLICE",
+      "logarithmic": "NOT_IMPLEMENTED_IN_THIS_SLICE",
+      "trigonometric": "NOT_IMPLEMENTED_IN_THIS_SLICE"
+    }
+  },
+  "fixtureResults": {
+    "cubic": {
+      "result": {
+        "path": "payload/cubic/fixture-result.json",
+        "bytes": 197312,
+        "sha256": "sha256:a74db57a4728bd81e82dc92bcd0cec1a247ad2ac6213e711eb933cef67f096e8"
+      },
+      "model": {
+        "graphPlan": {
+          "path": "payload/cubic/model/graph-plan.json",
+          "bytes": 2572,
+          "sha256": "sha256:fbb2f0a11a9052af52ebd93ec8f7c6c2b66db5c718513362ab22011aa81a5d6b"
+        },
+        "graphModelSvg": {
+          "path": "payload/cubic/model/graph-model.svg",
+          "bytes": 6903,
+          "sha256": "sha256:5037e02e3dc9ed3fad4179e32f4bfb7e6d8da15cbb3bb42dcc39d7ed51faa1e8"
+        },
+        "graphModelTransform": {
+          "path": "payload/cubic/model/graph-model-transform.json",
+          "bytes": 115,
+          "sha256": "sha256:12ae6c0cd6d83923b6e25d2f759ab2e9f5bd87f71d7cf3f721b2b7b7fcc19856"
+        },
+        "modelAudit": {
+          "path": "payload/cubic/model/model-audit.json",
+          "bytes": 59747,
+          "sha256": "sha256:31a494dafe33faf6eda5e18ceacfa4ca6fc7b10c6eb2eac366fbf2cb168609e1"
+        },
+        "visualSpec": {
+          "path": "payload/cubic/model/visual-spec.json",
+          "bytes": 878,
+          "sha256": "sha256:90c70ed0ec5ac6d8988ac9ef84ff49d86ed88417c012b05fd02409c3c427eae0"
+        },
+        "finalSvg": {
+          "path": "payload/cubic/model/final.svg",
+          "bytes": 23430,
+          "sha256": "sha256:a88d561513ae6b51be5444258dd766aa1afc7c150e50bd291173f0f6015ace32"
+        },
+        "staticAudit": {
+          "path": "payload/cubic/model/static-audit.json",
+          "bytes": 50877,
+          "sha256": "sha256:1252189db78ea0137b300405db75602b6f807efe18a18e998a0a82330c7b681f"
+        }
+      },
+      "candidateAsset": {
+        "path": "payload/cubic/candidate-archive-asset.svg",
+        "bytes": 23430,
+        "sha256": "sha256:a88d561513ae6b51be5444258dd766aa1afc7c150e50bd291173f0f6015ace32"
+      },
+      "fragmentMeasurements": {
+        "path": "payload/cubic/frozen-fragment-browser-measurements.json",
+        "bytes": 8312,
+        "sha256": "sha256:86946da6ff27e20cab7148ccb2dde72c4173abebbccf86a2a365f2aafbed1bdc"
+      },
+      "profiles": {
+        "small": {
+          "path": "payload/cubic/profiles/small.png",
+          "bytes": 2617,
+          "sha256": "sha256:28ae5a607186ea51cbe012a5267316dd15f2008bf1a03630f6b74c166acdcdf5"
+        },
+        "medium": {
+          "path": "payload/cubic/profiles/medium.png",
+          "bytes": 3683,
+          "sha256": "sha256:cb7745c89d047e0a195e5655ddc6d15d1816ee20b617be47a9ce8a834dcf2033"
+        },
+        "large": {
+          "path": "payload/cubic/profiles/large.png",
+          "bytes": 3780,
+          "sha256": "sha256:7d4bcaae6e8417ba2cbbc75e250979a87086864c02d5778a8e2b51671dba8614"
+        },
+        "full": {
+          "path": "payload/cubic/profiles/full.png",
+          "bytes": 5267,
+          "sha256": "sha256:81c5555432c9033bee3ca97129990c98b15008c182490a3e98cc2e14d2bf7eef"
+        }
+      },
+      "archive": {
+        "archivePreflight": {
+          "run": ".tmp/archive/phase4-poly34-cubic-f791f8e0-4c31-4823-9da5-53e05e836573-preflight/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-full",
+          "status": "PASS",
+          "row": {
+            "path": "payload/cubic/archivePreflight/archive-row.json",
+            "bytes": 35758,
+            "sha256": "sha256:d5664fb7cf970507f60c7cc199f8688c6dcbd7c3e8a42872f1f1e38628b434bf"
+          },
+          "screenshot": {
+            "path": "payload/cubic/archivePreflight/archive-screenshot.png",
+            "bytes": 5216,
+            "sha256": "sha256:bc9cc0ba450e707003377a22fa4fc423ff8019189bf8398c46dba021957f1841"
+          },
+          "context": {
+            "path": "payload/cubic/archivePreflight/archive-context.png",
+            "bytes": 8490,
+            "sha256": "sha256:1e5f2b2bf482df772699ef76def2539de0156152b51b6d44dc73608d012d1f09"
+          },
+          "envelopeContext": {
+            "path": "payload/cubic/archivePreflight/archive-envelope-context.png",
+            "bytes": 8490,
+            "sha256": "sha256:1e5f2b2bf482df772699ef76def2539de0156152b51b6d44dc73608d012d1f09"
+          },
+          "summary": {
+            "path": "payload/cubic/archivePreflight/archive-summary.json",
+            "bytes": 678,
+            "sha256": "sha256:6645a5bdd6e3457bcac6e4508c1b1e560e0cbb5d1bcd8490097516ed50d2827d"
+          },
+          "matrix": {
+            "path": "payload/cubic/archivePreflight/archive-render-matrix.json",
+            "bytes": 3657,
+            "sha256": "sha256:fcf0f23d7d1f1b07b712a40400525f38b5e0bb034310589cb6f2eeae600c6bae"
+          }
+        },
+        "actualArchive": {
+          "run": ".tmp/archive/phase4-poly34-cubic-f791f8e0-4c31-4823-9da5-53e05e836573-final/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-large",
+          "row": {
+            "path": "payload/cubic/actualArchive/archive-row.json",
+            "bytes": 35590,
+            "sha256": "sha256:b4672735c0d7957b5faac149dedf31193b05f9f326bd86cda3cf41e1bbc2ed4a"
+          },
+          "screenshot": {
+            "path": "payload/cubic/actualArchive/archive-screenshot.png",
+            "bytes": 3801,
+            "sha256": "sha256:c14ea5c32cea395d973cb0c3fd9d84ff09be4c11fa7aff5343f89fdae111bd1c"
+          },
+          "context": {
+            "path": "payload/cubic/actualArchive/archive-context.png",
+            "bytes": 7136,
+            "sha256": "sha256:c90f1ae7565dde1bb54d127ecbf2f91dcae9bf159f84ba369cdfa8f76ffbe528"
+          },
+          "envelopeContext": {
+            "path": "payload/cubic/actualArchive/archive-envelope-context.png",
+            "bytes": 7136,
+            "sha256": "sha256:c90f1ae7565dde1bb54d127ecbf2f91dcae9bf159f84ba369cdfa8f76ffbe528"
+          },
+          "summary": {
+            "path": "payload/cubic/actualArchive/archive-summary.json",
+            "bytes": 680,
+            "sha256": "sha256:9681aecbad080381277c4783fd24c28e7f643b9087dd9e84d640dc9c4ae0637c"
+          },
+          "matrix": {
+            "path": "payload/cubic/actualArchive/archive-render-matrix.json",
+            "bytes": 3659,
+            "sha256": "sha256:f8750afa8c8666cf55c644df2ef599962ffe47bfd00ef786649531fefbc95aa7"
+          }
+        }
+      },
+      "selectedSizeClass": "large",
+      "profileRows": [
+        {
+          "sizeClass": "small",
+          "status": "FAIL",
+          "minimumCssFontPx": 8.1703125,
+          "graphStatus": "FAIL",
+          "graphErrors": [
+            "OVERVIEW_LEFT_ARM_TOO_NARROW",
+            "OVERVIEW_LEFT_END_DIRECTION_UNREADABLE",
+            "OVERVIEW_RIGHT_ARM_TOO_NARROW",
+            "OVERVIEW_RIGHT_END_DIRECTION_UNREADABLE"
+          ],
+          "layoutErrors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:formula",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-x",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-y"
+          ],
+          "displayScale": 0.328125,
+          "imageRect": {
+            "x": -99913.921875,
+            "y": 10,
+            "width": 126,
+            "height": 105
+          }
+        },
+        {
+          "sizeClass": "medium",
+          "status": "FAIL",
+          "minimumCssFontPx": 11.282812499999999,
+          "graphStatus": "FAIL",
+          "graphErrors": [
+            "OVERVIEW_LEFT_ARM_TOO_NARROW",
+            "OVERVIEW_RIGHT_ARM_TOO_NARROW"
+          ],
+          "layoutErrors": [],
+          "displayScale": 0.453125,
+          "imageRect": {
+            "x": -99937.921875,
+            "y": 10,
+            "width": 174,
+            "height": 145
+          }
+        },
+        {
+          "sizeClass": "large",
+          "status": "PASS",
+          "minimumCssFontPx": 14.00625,
+          "graphStatus": "PASS",
+          "graphErrors": [],
+          "layoutErrors": [],
+          "displayScale": 0.5625,
+          "imageRect": {
+            "x": -99958.921875,
+            "y": 10,
+            "width": 216,
+            "height": 180
+          }
+        },
+        {
+          "sizeClass": "full",
+          "status": "PASS",
+          "minimumCssFontPx": 19.33255615234375,
+          "graphStatus": "PASS",
+          "graphErrors": [],
+          "layoutErrors": [],
+          "displayScale": 0.7764078776041666,
+          "imageRect": {
+            "x": -100000,
+            "y": 10,
+            "width": 298.140625,
+            "height": 248.453125
+          }
+        }
+      ],
+      "candidateSvgSha256": "sha256:a88d561513ae6b51be5444258dd766aa1afc7c150e50bd291173f0f6015ace32"
+    },
+    "quartic": {
+      "result": {
+        "path": "payload/quartic/fixture-result.json",
+        "bytes": 194551,
+        "sha256": "sha256:703dfa1fa651620d2abcc68b5aa0135d2cae765711a30f5136cf9f3f71394ff3"
+      },
+      "model": {
+        "graphPlan": {
+          "path": "payload/quartic/model/graph-plan.json",
+          "bytes": 1901,
+          "sha256": "sha256:934840c1862edb2fff66b52964ba8c8fc923efa10ab715d8a6ebbd9cf69b1462"
+        },
+        "graphModelSvg": {
+          "path": "payload/quartic/model/graph-model.svg",
+          "bytes": 6866,
+          "sha256": "sha256:aaf3b2b4e473c14636c5b8e70d10b02c9ab50bb0d02027d03e21e71c5ea519ad"
+        },
+        "graphModelTransform": {
+          "path": "payload/quartic/model/graph-model-transform.json",
+          "bytes": 129,
+          "sha256": "sha256:3d44b689325b914a070617895bd2837ec6a7027fabcdc4ae6eb2b5ed282d6eb3"
+        },
+        "modelAudit": {
+          "path": "payload/quartic/model/model-audit.json",
+          "bytes": 58803,
+          "sha256": "sha256:38fbe1d13bb4e54f86d95a3c4045a9b668f8460bba63df295cfbe8bb248c9b4f"
+        },
+        "visualSpec": {
+          "path": "payload/quartic/model/visual-spec.json",
+          "bytes": 760,
+          "sha256": "sha256:3c09c08c6e0467ce22de584c7c0c4a0c1d0dc3e9eca8a49ec0bb821d58674ffa"
+        },
+        "finalSvg": {
+          "path": "payload/quartic/model/final.svg",
+          "bytes": 25536,
+          "sha256": "sha256:fd80a4f5a4f5d11305c5debac9b21fb5118e26d4a95381eaf87685f11c2abbca"
+        },
+        "staticAudit": {
+          "path": "payload/quartic/model/static-audit.json",
+          "bytes": 47506,
+          "sha256": "sha256:c627fbbe17b2085b4add964f132e0d5763b91532caba13f63bbc36d2e947aa68"
+        }
+      },
+      "candidateAsset": {
+        "path": "payload/quartic/candidate-archive-asset.svg",
+        "bytes": 25536,
+        "sha256": "sha256:fd80a4f5a4f5d11305c5debac9b21fb5118e26d4a95381eaf87685f11c2abbca"
+      },
+      "fragmentMeasurements": {
+        "path": "payload/quartic/frozen-fragment-browser-measurements.json",
+        "bytes": 10100,
+        "sha256": "sha256:fcf0eda20a0d0f11c9d75ce06f83369eea04d8f1539a743d27bc85ae13cbb8b3"
+      },
+      "profiles": {
+        "small": {
+          "path": "payload/quartic/profiles/small.png",
+          "bytes": 2497,
+          "sha256": "sha256:0031630d0b5cc61ac0d0376cb0b6683b639db0e1367d46bf7ffcdf0603d14e88"
+        },
+        "medium": {
+          "path": "payload/quartic/profiles/medium.png",
+          "bytes": 3524,
+          "sha256": "sha256:d226ea5f272b24797bea963e2083570916a2f90bde0cc8b9be4f2b35f0dc9a7d"
+        },
+        "large": {
+          "path": "payload/quartic/profiles/large.png",
+          "bytes": 3679,
+          "sha256": "sha256:f94f9e2c3739d9df5960acad94f85072bff78082145dcc76b56f4390119c8fc4"
+        },
+        "full": {
+          "path": "payload/quartic/profiles/full.png",
+          "bytes": 5174,
+          "sha256": "sha256:7a9b5720e7d3e50a49e677a528f6b91e14fb334e3e6697ea58f33d02f5590549"
+        }
+      },
+      "archive": {
+        "archivePreflight": {
+          "run": ".tmp/archive/phase4-poly34-quartic-37b13c2c-a293-4dba-9f48-a3a08e3f5b22-preflight/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-full",
+          "status": "PASS",
+          "row": {
+            "path": "payload/quartic/archivePreflight/archive-row.json",
+            "bytes": 37271,
+            "sha256": "sha256:5ed48eacd20aeb141b864d084ea0815110a7dbd91309a27850ebc86f1af1ba47"
+          },
+          "screenshot": {
+            "path": "payload/quartic/archivePreflight/archive-screenshot.png",
+            "bytes": 5286,
+            "sha256": "sha256:2edcc296490e9d008bb411b3a4eb1dc1a6f4be215a3a7077e210593be650dffe"
+          },
+          "context": {
+            "path": "payload/quartic/archivePreflight/archive-context.png",
+            "bytes": 8453,
+            "sha256": "sha256:1d6632333c4d22266db8e9539656f2183110df623988e71b7b76d79749754cb5"
+          },
+          "envelopeContext": {
+            "path": "payload/quartic/archivePreflight/archive-envelope-context.png",
+            "bytes": 8453,
+            "sha256": "sha256:1d6632333c4d22266db8e9539656f2183110df623988e71b7b76d79749754cb5"
+          },
+          "summary": {
+            "path": "payload/quartic/archivePreflight/archive-summary.json",
+            "bytes": 680,
+            "sha256": "sha256:169970de2a48d564aada2f06ae5884c7e718a766ba1deb449a785acb28592766"
+          },
+          "matrix": {
+            "path": "payload/quartic/archivePreflight/archive-render-matrix.json",
+            "bytes": 3667,
+            "sha256": "sha256:ee227590d489110984f7541f4a37d20b3186155d15ac07d4922b005d38b2ca60"
+          }
+        },
+        "actualArchive": {
+          "run": ".tmp/archive/phase4-poly34-quartic-37b13c2c-a293-4dba-9f48-a3a08e3f5b22-final/25_효천고_2학기_중간_고1_기출/visual-engine/production/archive-full",
+          "row": {
+            "path": "payload/quartic/actualArchive/archive-row.json",
+            "bytes": 37283,
+            "sha256": "sha256:e1cbccf764dd067ad89e4f7bf282d24f2c34010f11babfb52c9d4f714fcf12ff"
+          },
+          "screenshot": {
+            "path": "payload/quartic/actualArchive/archive-screenshot.png",
+            "bytes": 5286,
+            "sha256": "sha256:2edcc296490e9d008bb411b3a4eb1dc1a6f4be215a3a7077e210593be650dffe"
+          },
+          "context": {
+            "path": "payload/quartic/actualArchive/archive-context.png",
+            "bytes": 8453,
+            "sha256": "sha256:1d6632333c4d22266db8e9539656f2183110df623988e71b7b76d79749754cb5"
+          },
+          "envelopeContext": {
+            "path": "payload/quartic/actualArchive/archive-envelope-context.png",
+            "bytes": 8453,
+            "sha256": "sha256:1d6632333c4d22266db8e9539656f2183110df623988e71b7b76d79749754cb5"
+          },
+          "summary": {
+            "path": "payload/quartic/actualArchive/archive-summary.json",
+            "bytes": 680,
+            "sha256": "sha256:bea4a599fdc2b3c1b2f1f921d672c53ad45ffc3bb6b0a72f61a7040bf6295e9e"
+          },
+          "matrix": {
+            "path": "payload/quartic/actualArchive/archive-render-matrix.json",
+            "bytes": 3659,
+            "sha256": "sha256:03bdb11f8f6eb93757aabfc99fd3a2a2c39093533ffed42f93294f43c2a726d8"
+          }
+        }
+      },
+      "selectedSizeClass": "full",
+      "profileRows": [
+        {
+          "sizeClass": "small",
+          "status": "FAIL",
+          "minimumCssFontPx": 8.1703125,
+          "graphStatus": "FAIL",
+          "graphErrors": [
+            "OVERVIEW_LEFT_END_DIRECTION_UNREADABLE",
+            "OVERVIEW_RIGHT_ARM_TOO_NARROW",
+            "OVERVIEW_RIGHT_ARM_TOO_SHORT",
+            "OVERVIEW_RIGHT_END_DIRECTION_UNREADABLE"
+          ],
+          "layoutErrors": [
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x--2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-x-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y--1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-1-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-2-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:tick-y-3-label",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:formula",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-x",
+            "PUBLICATION_FONT_BELOW_11_CSS_PX:axis-y"
+          ],
+          "displayScale": 0.328125,
+          "imageRect": {
+            "x": -99913.921875,
+            "y": 10,
+            "width": 126,
+            "height": 105
+          }
+        },
+        {
+          "sizeClass": "medium",
+          "status": "FAIL",
+          "minimumCssFontPx": 11.282812499999999,
+          "graphStatus": "FAIL",
+          "graphErrors": [
+            "OVERVIEW_LEFT_END_DIRECTION_UNREADABLE",
+            "OVERVIEW_RIGHT_ARM_TOO_NARROW",
+            "OVERVIEW_RIGHT_ARM_TOO_SHORT",
+            "OVERVIEW_RIGHT_END_DIRECTION_UNREADABLE"
+          ],
+          "layoutErrors": [],
+          "displayScale": 0.453125,
+          "imageRect": {
+            "x": -99937.921875,
+            "y": 10,
+            "width": 174,
+            "height": 145
+          }
+        },
+        {
+          "sizeClass": "large",
+          "status": "FAIL",
+          "minimumCssFontPx": 14.00625,
+          "graphStatus": "FAIL",
+          "graphErrors": [
+            "OVERVIEW_RIGHT_ARM_TOO_SHORT",
+            "OVERVIEW_RIGHT_END_DIRECTION_UNREADABLE"
+          ],
+          "layoutErrors": [],
+          "displayScale": 0.5625,
+          "imageRect": {
+            "x": -99958.921875,
+            "y": 10,
+            "width": 216,
+            "height": 180
+          }
+        },
+        {
+          "sizeClass": "full",
+          "status": "PASS",
+          "minimumCssFontPx": 19.33255615234375,
+          "graphStatus": "PASS",
+          "graphErrors": [],
+          "layoutErrors": [],
+          "displayScale": 0.7764078776041666,
+          "imageRect": {
+            "x": -100000,
+            "y": 10,
+            "width": 298.140625,
+            "height": 248.453125
+          }
+        }
+      ],
+      "candidateSvgSha256": "sha256:fd80a4f5a4f5d11305c5debac9b21fb5118e26d4a95381eaf87685f11c2abbca"
+    }
+  },
+  "regression": {
+    "runId": "phase4-final-regression-f3849d26b9114cd6b52890acc2d222e3",
+    "node": {
+      "command": "node --test archive/tools/geometry-equation/tests/*.test.mjs",
+      "exitCode": 0,
+      "passed": 132,
+      "failed": 0,
+      "log": {
+        "path": "payload/logs/node-full.txt",
+        "bytes": 23650,
+        "sha256": "sha256:f645ef5328062cd68fcd4f88a8bd3d8b5049466b774bb20d25362da4ba9ea905"
+      }
+    },
+    "python": {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py' -v",
+      "exitCode": 0,
+      "ran": 151,
+      "failed": 0,
+      "log": {
+        "path": "payload/logs/python-full.txt",
+        "bytes": 18164,
+        "sha256": "sha256:69d14ccd34e9c026e29b32bc2bb7b68aefd471ac3d73567348ca9865014b3060"
+      }
+    },
+    "summary": {
+      "path": "payload/logs/regression-summary.json",
+      "bytes": 1132,
+      "sha256": "sha256:e71b878f4bc60c363231ea81563a9028caf2253fb587fc9b690b272e0db9616d"
+    }
+  },
+  "attemptHistory": {
+    "path": "attempt-ledger.json",
+    "count": 6,
+    "classification": "FAILED_OR_INCOMPLETE_INPUTS_PRESERVED_NO_REPAIR_BUDGET_CLAIM",
+    "reference": {
+      "path": "attempt-ledger.json",
+      "bytes": 5301,
+      "sha256": "sha256:b250729d5873b620ed2b6ce5a664ae8cc535b0bd2f2e489df289762d7d8ec37b"
+    }
+  },
+  "codeRefs": [
+    {
+      "path": "archive/tools/geometry-equation/production/graph_framing.py",
+      "bytes": 10040,
+      "sha256": "sha256:c63e540566734e6087255b726b48c297761e281df9d2a25ed099f92197e19f1c"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/graph_observer.py",
+      "bytes": 22261,
+      "sha256": "sha256:5e85a135b716fc23bc975944befccb4decb572cf33b48e3a74976b0de7b00340"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/graph_spike.py",
+      "bytes": 2046,
+      "sha256": "sha256:bad56591c9dd4ef9e862d62858f280790643d1d0d6a364b0a3f05d56fa7153fb"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/phase2.mjs",
+      "bytes": 65110,
+      "sha256": "sha256:eb4ad93ab7dc8ecee078ab489e73394cf4c90fcd9b84cd744f876fb9e2ca635b"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/test_graph_overview.py",
+      "bytes": 3878,
+      "sha256": "sha256:68f3fec664b5fc76f6d9622d80bd6febb511fbd80100d3bd15c007106a3306fd"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/test_cubic_quartic_overview.py",
+      "bytes": 7960,
+      "sha256": "sha256:bcf81e51323e57a140ee6ec297f51275e09c1bd5757f8098182320345af370df"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/phase4-cubic-quartic-spec.test.mjs",
+      "bytes": 1310,
+      "sha256": "sha256:1329242435088b706e3aa2017d4781a0ed0fb54c6efc70e236e4332d9d043ba9"
+    },
+    {
+      "path": "archive/tools/geometry-equation/tests/cubic-quartic-archive-publication.test.mjs",
+      "bytes": 18587,
+      "sha256": "sha256:ddd9253255fa6e355575e8bba71f2e7d469ec75fb6673b23f358368c0b202d99"
+    },
+    {
+      "path": "archive/tools/geometry-equation/production/README.md",
+      "bytes": 10183,
+      "sha256": "sha256:05aba3514e1ed73bde78547ba74e3726f9e47cbe37256ab4725f7836f03bf4df"
+    },
+    {
+      "path": "docs/reports/APMath_Visual_Production_Phase4_Capability_Matrix_20261006.md",
+      "bytes": 13290,
+      "sha256": "sha256:f7946a8e1568d200cccfc2df68c9c6a3552f720e4b1af401b6ea6d8b2f3e62ef"
+    }
+  ],
+  "relatedPhase3Snapshot": {
+    "classification": "PRE_PHASE4_EXIT_SNAPSHOT_NOT_CURRENT_FOR_POST_PHASE4_FINGERPRINT",
+    "phase3ExitLedger": {
+      "path": "docs/evidence/apmath-vprod/phase3-exit-v1/phase3-exit-ledger.json",
+      "bytes": 10782,
+      "sha256": "sha256:dda7804a5edf6c7388a92f94494147c7047c9a24752b08f3105e00f96cd714df"
+    },
+    "p3eV11Ledger": {
+      "path": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v11/measured-panel-repair-ledger.json",
+      "bytes": 193482,
+      "sha256": "sha256:e30aac2c18cc33641295e153d0d7840137c484e99c6a0e0a5b19d77c82487263"
+    },
+    "p3eV11Manifest": {
+      "path": "docs/evidence/apmath-vprod/p3e/measured-panel-repair-v11/evidence-manifest.json",
+      "bytes": 92051,
+      "sha256": "sha256:2f2f8a85c1fdd68135347dede183506b1ed3925e5c2543de21428b9cac5fb6b6"
+    },
+    "q10Disposition": "UNRESOLVED_AT_UNCHANGED_SHARED_REPAIR_CAP_3_OF_3_NO_REPLAY"
+  },
+  "matrixRef": {
+    "path": "docs/reports/APMath_Visual_Production_Phase4_Capability_Matrix_20261006.md",
+    "bytes": 13290,
+    "sha256": "sha256:f7946a8e1568d200cccfc2df68c9c6a3552f720e4b1af401b6ea6d8b2f3e62ef"
+  },
+  "evidenceIndexPath": "evidence-index.json",
+  "manifestPath": "evidence-manifest.json",
+  "packagingHistory": [
+    {
+      "path": "docs/evidence/apmath-vprod/p4/cubic-quartic-overview-v1",
+      "status": "INCOMPLETE_UNMANIFESTED_EXCLUDED",
+      "reason": "Initial packaging pass checked the wrong Archive row identity field before recognizing the candidate SVG SHA is asserted from response bytes."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/cubic-quartic-overview-v2",
+      "status": "INCOMPLETE_UNMANIFESTED_EXCLUDED",
+      "reason": "Partial package from the same early row-SHA check; excluded from the final index."
+    },
+    {
+      "path": "docs/evidence/apmath-vprod/p4/cubic-quartic-overview-v3",
+      "status": "INCOMPLETE_UNMANIFESTED_EXCLUDED",
+      "reason": "Partial package from the same early row-SHA check; excluded from the final index."
+    }
+  ]
+}
