@@ -65,6 +65,7 @@ function fixture(t,{minimumByClass={small:6.56,medium:9.06,large:11.25,full:20},
       synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',
       candidateSvgRef,candidateSvgSha256:candidateSvgRef.sha256,naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,sourceRef,solutionRef,policyRefs:plan.policyRefs,inputIdentitySha256:plan.inputIdentitySha256,
       imageRect:observedProfiles[index].imageRect,computedStyle:observedProfiles[index].computedStyle,profilePolicySha256:plan.profiles[index].profilePolicySha256,
+      rawCapture:{viewBox:{x:0,y:0,width:intrinsic.width,height:intrinsic.height},svg:observedProfiles[index].imageRect},
       screenshotViewport:{width,height},screenshotRef:pngRef,
       labelMeasurements:labelInventory.map(label=>({id:label.id,finalViewportCssFontPx:minimumByClass[sizeClass]})),
       layoutStatus:'PASS',graphRequired:false,topologyRequired:false,strokeStatus:'PASS',strokeMeasurements:[{id:'axis-x',sizeClass,candidateSvgSha256:candidateSvgRef.sha256,inputIdentitySha256:plan.inputIdentitySha256,finalViewportCssStrokePx:1}],
@@ -180,6 +181,14 @@ test('logic: the measured solution-meta content box is bound as the CSS scaling 
   assert.throws(()=>planDisplayEnvelope({root:fx.root,questionUid:fx.uid,requestedSizeClass:'medium',intrinsicSvg:intrinsic,candidateLabelInventory:labelInventory,observation:preflight.observation,preflightEvidence:fx.preflightEvidence,archiveEngineSha256:fx.policyRefs[0].ref.sha256,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:fx.policyRefs}),/ACTUAL_ARCHIVE_PREFLIGHT_MEASUREMENT_MISMATCH/);
 });
 
+test('logic: final support rereads and verifies the actual Archive preflight refs',t=>{
+  const staleHash=fixture(t),mutatedPlan={...staleHash.plan,preflightEvidenceSha256:'sha256:'+'0'.repeat(64)};
+  assert.throws(()=>qualifyDisplayEnvelope(mutatedPlan,{root:staleHash.root,candidateSvgRef:staleHash.candidateSvgRef,profileAudits:staleHash.profileAudits}),/DISPLAY_ENVELOPE_PREFLIGHT_IDENTITY_INVALID/);
+  const staleBytes=fixture(t),screenshot=staleBytes.preflightEvidence.screenshotRef;
+  fs.appendFileSync(path.join(staleBytes.root,...screenshot.path.split('/')),Buffer.from([0]));
+  assert.throws(()=>qualify(staleBytes),/STALE_FILE/);
+});
+
 test('logic: every expected label requires a finite final viewport CSS font metric',t=>{
   for(const badValue of [null,'not-a-number',0]){
     const fx=fixture(t);
@@ -242,7 +251,7 @@ test('logic: raw measurement and screenshot refs are mandatory, unique, hash-bou
 function actualCaptureRef(fx,patch={}){
   const envelope=qualify(fx),pngRef=write(fx.root,'actual/archive-context.png',fakePng(1440,1000)),archiveAssetPath='assets/images/fixture-exam/q01-solution.svg',targetId='fixture-asset';
   const target={id:targetId,src:`http://archive.invalid/archive/${archiveAssetPath}`,loaded:true,sizeClass:'large',naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,rect:rect(216,180),computedStyle:{maxWidth:'92%',maxHeight:'180px',objectFit:'contain',transform:'none'},solutionMetaRect:rect(790,430),solutionMetaContentWidth:772,qBoxRect:rect(820,470)};
-  const archiveRowRef=write(fx.root,'actual/archive-row.json',canonicalJson({status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',state:{targets:[target]},responses:[{url:target.src,status:200,sha256:fx.candidateSvgRef.sha256}]}));
+  const archiveRowRef=write(fx.root,'actual/archive-row.json',canonicalJson({status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',state:{targets:[target]},responses:[{url:target.src,status:200,sha256:fx.candidateSvgRef.sha256.slice(7)}]}));
   const actual={schemaVersion:'DISPLAY_ARCHIVE_ACTUAL_v1',status:'PASS',synthetic:false,runtime:'playwright-chromium',browserVersion:'Chromium fixture',questionUid:fx.uid,sizeClass:'large',candidateSvgRef:fx.candidateSvgRef,candidateSvgSha256:fx.candidateSvgRef.sha256,naturalWidth:intrinsic.width,naturalHeight:intrinsic.height,sourceRef:fx.sourceRef,solutionRef:fx.solutionRef,policyRefs:envelope.policyRefs,inputIdentitySha256:envelope.inputIdentitySha256,screenshotRef:pngRef,screenshotViewport:{width:1440,height:1000},archiveRowRef,archiveAssetPath,targetId,qBoxRect:rect(820,470),solutionMetaRect:rect(790,430),solutionMetaContentWidth:772,imageRect:rect(216,180),computedStyle:{maxWidth:'92%',maxHeight:'180px',objectFit:'contain',transform:'none'},minimumCssFontPx:11.25,...patch};
   const actualRef=write(fx.root,'actual/archive-capture.json',canonicalJson(actual));
   return {envelope,actualRef};

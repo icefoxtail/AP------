@@ -1,5 +1,7 @@
 import {readBoundFile,objectSha} from '../../pipeline-core/canonical.mjs';
 import {planHash} from './contracts.mjs';
+import {loadBank} from '../build-visual-render-matrix.mjs';
+import {qualifyDisplayEnvelope,compareActualDisplayEnvelope} from './display-envelope.mjs';
 import {sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint} from './source-policy.mjs';
 import {validateReviewLineage} from './blinded-review.mjs';
 import {resolveQuestion} from './resolve-request.mjs';
@@ -13,7 +15,7 @@ export function auditSlice(root,resultRef){
     if(objectSha(stage)!==receiptSha256)errors.push('STALE_STAGE_MANIFEST');
     stage.outputs.forEach(output=>readBoundFile(root,output));stages.push(stage);
   }
-  for(const name of ['UID_AUTHORITY','VERIFIED_SOLUTION','PLAN','SOURCE_REVIEW','MATH','MATH_REVIEW','TYPESET','MEASURE','NORMALIZE','BUILD','STATIC_AUDIT','ARCHIVE_BANK','CAPTURE','VISUAL_REVIEW'])if(!stages.some(s=>s.stage===name))errors.push('STAGE_MISSING:'+name);
+  for(const name of ['UID_AUTHORITY','VERIFIED_SOLUTION','PLAN','SOURCE_REVIEW','MATH','MATH_REVIEW','TYPESET','MEASURE','NORMALIZE','DISPLAY_ENVELOPE_PREFLIGHT','DISPLAY_ENVELOPE','BUILD','STATIC_AUDIT','DISPLAY_ENVELOPE_AUDIT','DISPLAY_ENVELOPE_ACTUAL','DISPLAY_ENVELOPE_FINAL','ARCHIVE_BANK','CAPTURE','VISUAL_REVIEW'])if(!stages.some(s=>s.stage===name))errors.push('STAGE_MISSING:'+name);
   const plan=JSON.parse(readBoundFile(root,result.planRef));if(planHash(plan)!==plan.planSha256)errors.push('STALE_PLAN');
   if(plan.graphPlan){
     if(!stages.some(s=>s.stage==='GRAPH_OVERVIEW_FRAME'))errors.push('GRAPH_OVERVIEW_FRAME_REQUIRED');
@@ -30,6 +32,26 @@ export function auditSlice(root,resultRef){
   for(const record of [verification,sourceReview,visual])if(record?.output?.status!=='PASS'||record.subagentToolsEnabled!==false||!record.providerInvocationId||!record.contextId)errors.push('PROVIDER_REVIEW_NOT_BOUND');
   if(new Set([verification.contextId,sourceReview?.contextId,visual.contextId]).size!==3)errors.push('REVIEW_CONTEXT_NOT_INDEPENDENT');
   if(visual.inputPacket.finalSvgSha256!==result.finalSvgRef.sha256)errors.push('REVIEW_SVG_BINDING_MISMATCH');
+  let envelope=null,profileRefs=[],actualComparison=null;
+  try{
+    const displayPlan=JSON.parse(readBoundFile(root,stages.findLast(s=>s.stage==='DISPLAY_ENVELOPE').outputs[0]));
+    const candidateAudit=JSON.parse(readBoundFile(root,stages.findLast(s=>s.stage==='DISPLAY_ENVELOPE_AUDIT').outputs[0]));
+    const finalAudit=JSON.parse(readBoundFile(root,stages.findLast(s=>s.stage==='DISPLAY_ENVELOPE_FINAL').outputs[0]));
+    envelope=candidateAudit.envelope;profileRefs=candidateAudit.profileAudits||[];
+    if(profileRefs.length!==4||new Set(profileRefs.map(v=>v.sizeClass)).size!==4)errors.push('DISPLAY_PROFILE_INVENTORY_NOT_COMPLETE');
+    const recomputed=qualifyDisplayEnvelope(displayPlan,{root,candidateSvgRef:result.finalSvgRef,profileAudits:profileRefs});
+    if(recomputed.status!=='PASS'||objectSha(recomputed)!==objectSha(envelope))errors.push('DISPLAY_ENVELOPE_AUDIT_RECOMPUTE_MISMATCH');
+    if(envelope?.candidateSvgRef?.sha256!==result.finalSvgRef.sha256)errors.push('DISPLAY_ENVELOPE_FINAL_SVG_MISMATCH');
+    actualComparison=compareActualDisplayEnvelope(envelope,{root,actualRef:finalAudit.actualRef});
+    if(finalAudit.status!=='PASS'||actualComparison.status!=='PASS'||objectSha(actualComparison)!==objectSha(finalAudit.comparison))errors.push('DISPLAY_ENVELOPE_ACTUAL_RECOMPUTE_MISMATCH');
+    const actualEvidence=JSON.parse(readBoundFile(root,finalAudit.actualRef));
+    const bankStage=stages.findLast(s=>s.stage==='ARCHIVE_BANK'),candidateRef=bankStage.outputs.find(o=>o.path.endsWith('.js'));
+    const bank=loadBank(readBoundFile(root,candidateRef).toString('utf8'));
+    const ordinal=Number(result.identity.questionUid.split('|').at(-1)),question=bank.find(q=>q.id===ordinal);
+    if(question?.solutionImage!==actualEvidence.archiveAssetPath)errors.push('ARCHIVE_BANK_DISPLAY_ENVELOPE_ASSET_MISMATCH');
+    if(question?.solutionImageSize!==envelope.sizeClass)errors.push('ARCHIVE_BANK_DISPLAY_ENVELOPE_SIZE_MISMATCH');
+    if(envelope.policyChange&&envelope.policyChange.to!==envelope.sizeClass)errors.push('DISPLAY_ENVELOPE_POLICY_CHANGE_NOT_EXPLICIT');
+  }catch(error){errors.push('DISPLAY_ENVELOPE_AUDIT_CLOSURE:'+error.message);}
   readBoundFile(root,result.finalSvgRef);readBoundFile(root,result.sourceRef);readBoundFile(root,result.solutionRef);
   const capture=stages.findLast(s=>s.stage==='CAPTURE');
   const screenshotShas=new Set(capture.outputs.filter(o=>o.path.endsWith('.png')).map(o=>o.sha256));
